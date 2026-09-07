@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+project:
+  name: "Erdős #1049: no coordinatewise denominator clearing at the rational base 3/2"
+  description: >-
+    At the rational base 3/2 the coordinatewise clearing corridor is impossible for every
+    window length N ≥ 1, every shift K ≥ 1, and every choice of cleared denominator Q and
+    divisor coefficient. The corridor is the direct transfer of the integer-base argument,
+    in which one clears the K-th coordinate and then forces the positive remaining tail
+    below one, and its two halves are incompatible at 3/2: the divisibility 3^K | Q digit
+    with digit ≤ N + K caps 3^K by Q(N+K), while the tail inequality Q 2^(N+K+1) < 3^(K+1)
+    demands the reverse, so an exponential quantity would have to sit below a linear one.
+    Behind the exclusion is an exact identity: the denominator-cleared tail state B r^N (F -
+    prefix_N) satisfies T_(N+1) = r T_N - B coeff(N+1) s^(N+1) for every nonzero r, so the
+    whole corridor is governed by one forcing term. That term carries the factor s^(N+1),
+    which is 1 at an integer base and is at least 2^(N+1) at every genuine rational base s ≥
+    2 with B ≥ 1 and positive coefficients, which is the exact reason the classical corridor
+    survives integer bases and dies at 3/2. For work on irrationality of Lambert-type series
+    at rational bases, the consequence is that the entire literal coordinatewise-clearing
+    corridor is eliminated, and any successful method must exploit cancellation inside the
+    tail state or global structure that no single coordinate sees; priority for this
+    exclusion is unassessed. Deriving the cleared state from rationality of the Lambert
+    value at 3/2, excluding other linear-form constructions, and irrationality at 3/2 remain
+    open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11J82"]
+sources:
+  - title: "Rational-base cleared-tail barriers for Erdős Problem 1049"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1049"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1049"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact recurrence and forcing hypotheses and the limited coordinatewise no-go boundary were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "No Comparator verdict, Palomar outcome, novelty ruling, or submission is claimed."
+status:
+  scope: "Three exact source-backed declarations; one trusted sorry per Challenge theorem."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ"
+      file: "ExternalVerification1049RationalBaseBarrier/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Algebraic recurrence for an abstract coefficient stream; no rationality implication."
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat"
+      file: "ExternalVerification1049RationalBaseBarrier/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Exponential forcing under explicit positivity and denominator-base hypotheses."
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor"
+      file: "ExternalVerification1049RationalBaseBarrier/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Excludes only the declared coordinatewise corridor at 3/2."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1049RationalBaseBarrier"
+  statements:
+    - source: "ErdosProblems.Erdos1049.RationalBaseLambert"
+      lean: "three same-named exact transports"
+      module: "ExternalVerification1049RationalBaseBarrier/Challenge.lean"
+      status: "exact-transport-pending-guarded-build-deferred-low-disk-exit-75"

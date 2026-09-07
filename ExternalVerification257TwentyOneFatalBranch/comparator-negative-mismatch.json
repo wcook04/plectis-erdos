@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification257TwentyOneFatalBranch.Challenge",
+  "solution_module": "ExternalVerification257TwentyOneFatalBranch.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy",
+    "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates",
+    "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
+    "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity",
+    "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

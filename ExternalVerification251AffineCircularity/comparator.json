@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification251AffineCircularity.Challenge",
+  "solution_module": "ExternalVerification251AffineCircularity.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251AffineCircularity.adjacent_small_mismatch_iff_signed_two_window",
+    "Erdos249257.ExternalVerification251AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
+    "Erdos249257.ExternalVerification251AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

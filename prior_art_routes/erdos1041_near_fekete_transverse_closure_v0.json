@@ -1,0 +1,287 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "erdos1041_near_fekete_transverse_closure_v0",
+  "source_result_ids": [
+    "finite_near_fekete_transverse_cones",
+    "eventually_pos_of_scaled_deficit_tendsto_pos",
+    "eventually_length_lt_twice_radius",
+    "eventually_length_lt_two"
+  ],
+  "source_generation": {
+    "status": "source hashes current at the adjudicated snapshot; ordinary complex proof and limited Lean sign-transfer consumers remain separate",
+    "landed_source_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+    "analytic_source_commit": "e6451784b585fd0ccb8040ac8f883a6ff44c8b6d",
+    "formal_sign_transfer_sha256": "20cd39f660e19c71bb47868721e7f69b6ae5585045087237b0bd6a9fa64d43a5",
+    "analytic_note_sha256": "74ca8dfb5339e8513df9e87f4746b3d117fa5de08ff96f2b0d7dafb836ece242",
+    "consequence_receipt_sha256": "53e204273ae91569592f8a1c9d8a174ea0e8ec14f192713d958b7cb70e5a822d",
+    "tao_receipt_sha256": "380713acbff40108682e2b9c2b44229593ac53d577999b5b1a26aad697fab0f2",
+    "reviewer_card_sha256": "4b77755a7a70b97536900160ce62ad56f414517ecce72ad4502f72fbf2367489",
+    "claim_guard": "The ordinary transverse-shell theorem and limited Lean eventual-sign/length consumers are source-bound; no tangent/bulk, end-to-end Lean, priority, or unrestricted #1041 claim is included."
+  },
+  "generated_at": "2026-08-26",
+  "status": "typed_unresolved_comparison_standard_singularity_and_matched_asymptotic_tools_with_source_specific_lemniscate_assembly",
+  "problem_id": "erdos_1041",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos1041_near_fekete_transverse_closure.card.json",
+    "reviewer_card_commit": "ec4d9b0bd788385fb1be0e761b5b20de09b35063",
+    "reviewer_card_sha256": "4b77755a7a70b97536900160ce62ad56f414517ecce72ad4502f72fbf2367489",
+    "analytic_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.md",
+    "analytic_source_commit": "e6451784b585fd0ccb8040ac8f883a6ff44c8b6d",
+    "analytic_source_sha256": "74ca8dfb5339e8513df9e87f4746b3d117fa5de08ff96f2b0d7dafb836ece242",
+    "formal_sign_transfer_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.lean",
+    "formal_sign_transfer_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+    "formal_sign_transfer_sha256": "20cd39f660e19c71bb47868721e7f69b6ae5585045087237b0bd6a9fa64d43a5",
+    "source_result_ids": [
+      "finite_near_fekete_transverse_cones",
+      "eventually_pos_of_scaled_deficit_tendsto_pos",
+      "eventually_length_lt_twice_radius",
+      "eventually_length_lt_two"
+    ],
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+      "sha256": "73bbc757b976efc894e42298d40c0d80e842168758f0e9a7c1766ccb10c9cb65"
+    }
+  },
+  "parity_audit": {
+    "status": "source_card_formal_consequence_packet_current",
+    "effect": "The ordinary near-Fekete note, limited Lean sign-transfer source, consequence receipt, reviewer card, and committed #1041 packet snapshot are hash-pinned. The analytic matched-asymptotic theorem remains ordinary proof evidence, while Lean covers only the final eventual-sign consumer.",
+    "reentry_condition": "If the note, sign-transfer source, consequence receipt, reviewer card, or packet row changes, rerun exact parity and preserve the transverse-shell-only scope, tangent/bulk exclusions, and no-unrestricted-#1041 ceiling."
+  },
+  "purpose": "Bind the finite transverse near-Fekete theorem to its exact source generation, distinguish its standard analytic ingredients from its source-specific selected-lemniscate assembly, and prevent 'new case' from being read as a historical novelty or priority claim.",
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_near_fekete_transverse_closure_v1",
+    "result_family": "erdos1041_near_fekete_transverse_cone_closure",
+    "exact_result_ids": [
+      "finite_near_fekete_transverse_cones",
+      "eventually_pos_of_scaled_deficit_tendsto_pos",
+      "eventually_length_lt_twice_radius",
+      "eventually_length_lt_two"
+    ],
+    "source_generation": {
+      "landed_source_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+      "analytic_source_commit": "e6451784b585fd0ccb8040ac8f883a6ff44c8b6d",
+      "formal_sign_transfer_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+      "reviewer_card_commit": "ec4d9b0bd788385fb1be0e761b5b20de09b35063",
+      "reviewer_card_sha256": "4b77755a7a70b97536900160ce62ad56f414517ecce72ad4502f72fbf2367489",
+      "analytic_note": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.md",
+        "sha256": "74ca8dfb5339e8513df9e87f4746b3d117fa5de08ff96f2b0d7dafb836ece242"
+      },
+      "formal_sign_transfer": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.lean",
+        "sha256": "20cd39f660e19c71bb47868721e7f69b6ae5585045087237b0bd6a9fa64d43a5",
+        "declarations": [
+          "ErdosProblems.Erdos1041.eventually_pos_of_scaled_deficit_tendsto_pos",
+          "ErdosProblems.Erdos1041.eventually_length_lt_twice_radius",
+          "ErdosProblems.Erdos1041.eventually_length_lt_two"
+        ]
+      },
+      "consequence_receipt": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/near_fekete_transverse_consequence_receipt.json",
+        "sha256": "53e204273ae91569592f8a1c9d8a174ea0e8ec14f192713d958b7cb70e5a822d"
+      },
+      "tao_receipt": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/near_fekete_transverse_tao_pipeline_receipt.json",
+        "sha256": "380713acbff40108682e2b9c2b44229593ac53d577999b5b1a26aad697fab0f2"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos1041_near_fekete_transverse_closure.card.json",
+        "sha256": "4b77755a7a70b97536900160ce62ad56f414517ecce72ad4502f72fbf2367489"
+      },
+      "status": "source_hashes_current_at_2026-08-26_snapshot; ordinary complex proof and packet assimilation remain review boundaries"
+    }
+  },
+  "classification": {
+    "prior_art_confidence_class": "unassessed_with_bounded_negative_map",
+    "novelty_confidence": "No priority claim. Compact transverse parameter sets, analytic implicit-function continuation at simple critical points, and near/far matched-asymptotic cutoffs are standard methods. The bounded search did not locate a direct antecedent for the exact all-degree selected-lemniscate path statement; non-location is not evidence of novelty.",
+    "recommended_terminology": "finite transverse-cone closure by cusp blow-up and uniform matched inverse-branch asymptotics",
+    "discouraged_terminology": [
+      "a historically new case of Erdős #1041",
+      "a general near-Fekete neighbourhood theorem",
+      "a theorem uniform through the tangent stratum h'(0)=0",
+      "a Lean-checked complex matched-asymptotic theorem"
+    ],
+    "significance": "Potentially high as a genuine local closure if the ordinary analytic proof survives specialist inspection: it turns a limiting cusp calculation into a uniform finite-perturbation result on a precisely stated transverse shell. Its relevance is sharply limited by the missing tangent and bulk regimes.",
+    "confidence_ceiling": "High for the stated transverse-shell scope and pinned source hashes; medium for the ordinary matched-asymptotic proof until focused complex-analysis review; low for any originality or unrestricted #1041 inference."
+  },
+  "primary_sources": [
+    {
+      "id": "kuznetsova_tkachev_2003_analysis_on_lemniscates",
+      "title": "Analysis on lemniscates and Hamburger's moments",
+      "authors": ["V. G. Kuznetsova", "V. G. Tkachev"],
+      "year": 2003,
+      "url": "https://www.math.kth.se/math/people/tkachev/papers/analysis.pdf",
+      "exact_anchor": "The proper-lemniscate-region and coarea/logarithmic-gradient calculations cited in the existing component-perimeter adjudication; methodological context only.",
+      "supports": "That polynomial lemniscates, their regular regions, and differential length/area tools are established analytic objects.",
+      "does_not_support": "The transverse cusp normalization, uniform selected inverse-branch continuation, two-cutoff length asymptotic, or the claimed local Erdős #1041 shell."
+    },
+    {
+      "id": "erdos_herzog_piranian_1958_problem_source",
+      "title": "Metric properties of polynomials",
+      "authors": ["P. Erdős", "F. Herzog", "G. Piranian"],
+      "year": 1958,
+      "exact_anchor": "Original problem lineage, as cited by the Erdős #1041 corpus; not an antecedent for the transverse theorem.",
+      "supports": "The parent-problem attribution only.",
+      "does_not_support": "Any claim that the local transverse shell was known, new, or sufficient for the unrestricted problem."
+    }
+  ],
+  "search_receipt": {
+    "date": "2026-08-25",
+    "method": "bounded browser search of primary/academic literature surfaces",
+    "queries": [
+      "polynomial lemniscate critical point perturbation inverse branches matched asymptotic analysis",
+      "A_n singularity versal deformation z^n epsilon z critical points primary source"
+    ],
+    "closest_located_methods": "regular polynomial-lemniscate analysis and generic singularity/deformation terminology",
+    "negative_finding": "No inspected source stated the exact uniform selected-root path inequality L_{eps,h,R}<2 R_MEC on every fixed transverse cone.",
+    "reentry_condition": "A complex-analysis reviewer should search Lemniscates, singularity-unfolding, and Newton-flow literature specifically for a uniform path-length continuation theorem; a direct antecedent or counterexample changes this route's comparison state."
+  },
+  "closest_known_result": {
+    "relation": "source_specific_assembly_from_standard_local_analytic_tools",
+    "statement": "A compact parameter family away from a singular stratum admits uniform local continuation of simple critical points and inverse branches; matched near/far estimates are the usual mechanism for upgrading compact convergence to an integrated global quantity.",
+    "exact_delta": "The source applies that pattern to a polynomial-lemniscate selected pair, obtains a rho-scale length-deficit limit uniformly in h and R, and combines it with a separately proved positive cusp coefficient. The exact selected-path geometry and length conclusion were not located in the bounded search."
+  },
+  "disconfirming_evidence": [
+    {
+      "kind": "source_scope_split",
+      "locator": "NearFeketeTransverseClosure.md, sections 1 and 5",
+      "finding": "The theorem requires a fixed transversality gap |h'(0)| >= eta ||h|| and leaves h'(0)=0 plus the D-away-from-one bulk outside its scope.",
+      "effect": "Reject a full near-Fekete-neighbourhood or unrestricted #1041 framing."
+    },
+    {
+      "kind": "evidence_class_split",
+      "locator": "NearFeketeTransverseClosure.md, sections 2 and 5; reviewer card source_parity",
+      "finding": "The complex matched-asymptotic estimate is an ordinary proof; Lean checks only the final order-theoretic sign transfer, and earlier high-precision sweeps identify scale only.",
+      "effect": "Reject a claim that the complete analytic theorem is Lean-checked or that computation proves uniformity."
+    },
+    {
+      "kind": "bounded_search_nonlocation",
+      "locator": "search_receipt",
+      "finding": "The searches returned general lemniscate and singularity material but no direct prior theorem with the displayed selected-root length conclusion.",
+      "effect": "Retain an unresolved comparison rather than inferring novelty from absence of a quick match."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "At the pinned source generation, an authored ordinary proof claims a uniform finite transverse-shell result: after cusp scaling, a selected root-pair path has L<2R_MEC for sufficiently small perturbations bounded away from h'(0)=0. The Lean declarations formalize only its final eventual-sign consumer.",
+    "forbidden_wording": [
+      "This is historically a new case of Erdős #1041.",
+      "The transverse theorem controls tangent directions or the bulk regime.",
+      "The displayed analytic convergence is formally verified.",
+      "The theorem solves Erdős #1041."
+    ],
+    "open_boundary": "Independently verify the two-cutoff complex analysis and identify the exact literature relation. Mathematically, control the tangent strata and the far-from-Fekete bulk before any unrestricted conclusion is considered."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "near-Fekete cusp blow-up and transverse finite-perturbation transfer",
+    "disposition": "retain one transverse-shell local theorem and subordinate the rescaling, branch continuation, cutoff estimate, and Lean sign consumer beneath it; do not split those steps into separate #1041 advances",
+    "paper_disposition": "supporting local-case section only, after the unrestricted target and its tangent/bulk exclusions are stated",
+    "comparator_advisory": "No new independent interface yet: the Lean sign-transfer declarations are too weak to represent the ordinary complex theorem alone. Public card visibility is nevertheless eligible under an ordinary-proof, transverse-only firewall; specialist review is downstream, not a release gate.",
+    "expert_review_act": "A complex analyst checks the uniformity of the near/far cutoff and selected inverse-branch continuation, then classifies whether that exact argument is a known lemniscate continuation theorem or a source-specific synthesis."
+  },
+  "release_disposition": {
+    "value": "public_card_only_candidate",
+    "reason": "The analytic note, source hashes, limited Lean boundary, and scope exclusions are inspectable. The pending specialist audit and packet assimilation are downstream owner work, not reasons to conceal the local result.",
+    "statement_firewall": "State only the finite transverse-cone theorem; label the analytic proof ordinary, Lean as sign-transfer only, and computation as scale discovery. Keep tangent/bulk gaps, no unrestricted #1041 claim, and no priority language adjacent.",
+    "comparator_advisory": "No independent Comparator proposition until a source-faithful ordinary statement is integrated; this is a reader-role decision, not a specialist-review veto."
+  },
+  "reviewer_attention_budget": {
+    "routine": "Cusp rescaling, compactness after the eta gap, and the final real-order sign implication.",
+    "load_bearing": "Uniformity of the selected inverse branches and the integrated length estimate across the two cutoff regions, especially the n=3 logarithmic term.",
+    "externally_sourced": "General polynomial-lemniscate and singularity/deformation vocabulary; direct antecedence remains unassessed.",
+    "still_unverified": "Independent complex-analysis proof review and a targeted literature comparison for the exact selected-path theorem.",
+    "where_to_slow_down": "Verify the order of epsilon-to-zero and M-to-infinity limits, the uniform dependence on h and R, and the negative cusp correction used to put the path inside the open unit lemniscate.",
+    "review_act": "Audit the two-cutoff complex estimates and selected-branch uniformity once; do not infer priority from the absence of a direct antecedent."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source-pinned ordinary local theorem with a Lean final-sign interface and exact source receipts",
+    "output_stage": "typed prior-art uncertainty and expert-review support",
+    "artifact": "erdos1041_near_fekete_transverse_closure_v0 prior-art route",
+    "human_understanding_delta": "Makes the theorem's actual contribution legible: a finite transverse shell is closed, not the singular/tangent or bulk geometry; it identifies the matched-asymptotic uniformity as the hard step rather than smoothing it into generic compactness.",
+    "verification_state": "The route pins the ordinary note and three limited Lean declarations; it adds no fresh build, independent proof verification, or novelty conclusion.",
+    "publication_or_review_state": "Eligible for a status-tagged public reviewer card under the transverse-only ordinary-proof firewall; no Comparator interface or paper edit is performed here, and specialist review remains downstream.",
+    "canonicalization_state": "One local transverse-transfer mechanism with standard ingredients and an explicit unresolved literature relation.",
+    "unresolved_downstream_bottleneck": "A specialist audit of the two-cutoff proof and a source-specific prior-art comparison, followed mathematically by tangent/bulk closure.",
+    "next_stage_owner": "Erdős #1041 transfer owners and a complex-analysis reviewer; Novelty Observatory on a source-generation change or returned literature evidence."
+  },
+  "next_pass": {
+    "kind": "packet_assimilation_or_transverse_proof_audit",
+    "reentry_condition": "Re-enter if the analytic note, Lean sign-transfer source, or packet consumer changes, or when the owner supplies a focused complex-analysis audit and a typed tangent-model boundary.",
+    "do_not_redo": "Do not repeat fixed-radius sweeps, final sign-transfer algebra, or generic compactness attribution."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos1041_near_fekete_transverse_closure@source-ee2bfdeb-card-ec4d9b0b",
+    "evidence_class": "Authored ordinary complex analysis with exact source receipts and three limited Lean eventual-sign/length consumers; no end-to-end Lean proof or independent specialist review.",
+    "closest_known_result": "Classical Fekete/Hadamard extremal theory, simple-critical-point continuation, and polynomial-lemniscate coarea/Green tools; no direct antecedent for the exact selected transverse-shell path theorem was located.",
+    "comparison_relation": "A source-specific assembly of standard cusp rescaling, compactness, and matched inverse-branch asymptotics; it is not a new general Fekete theorem or unrestricted #1041 result.",
+    "exact_delta": "The route closes one finite transverse cone near the extremal configuration and obtains an actual length-below-two consequence there, while leaving the tangent stratum and bulk regime explicit.",
+    "disconfirming_evidence": "The source does not control tangent perturbations, bulk configurations, generic disk-root coefficient closeness, or the unrestricted arbitrary-polynomial problem; limited Lean declarations formalize only eventual sign/length consumers.",
+    "confidence": {
+      "transverse_shell_scope_and_hash_parity": "high_internal_provisional",
+      "ordinary_matched_asymptotic_completeness": "medium_internal_provisional",
+      "originality_or_global_erdos1041_inference": "low_unresolved"
+    },
+    "significance": "High local attention value but not a flagship: a short specialist check can decide whether the transverse shell is a genuine finite-perturbation closure or an asymptotic-uniformity gap.",
+    "claim_ceiling": "Only the authored ordinary transverse-shell path statement and its three limited Lean eventual-sign/length consumers are admitted. No tangent/bulk closure, end-to-end complex formalization, priority, or unrestricted Erdős #1041 resolution is admitted.",
+    "hard_step": "Uniformly match cusp-scale and far-field inverse-branch estimates over the finite transverse cone, with constants surviving branch selection and the strict length inequality.",
+    "open_boundary": "The tangent stratum h'(0)=0, far-from-Fekete bulk, independent complex-analysis review, and exact external antecedent matching remain open.",
+    "bounded_expert_review_act": "Check the two-cutoff complex estimates and selected-branch uniformity on the stated cone, then search for an exact transverse-shell antecedent rather than generic Fekete terminology.",
+    "reentry_trigger": "Re-enter if the analytic note, formal sign-transfer source, reviewer card, or source-generation hashes change, or if a direct antecedent or tangent/bulk closure is supplied.",
+    "source_generation_binding": {
+      "landed_source_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+      "analytic_source_commit": "e6451784b585fd0ccb8040ac8f883a6ff44c8b6d",
+      "formal_sign_transfer_sha256": "20cd39f660e19c71bb47868721e7f69b6ae5585045087237b0bd6a9fa64d43a5",
+      "analytic_note_sha256": "74ca8dfb5339e8513df9e87f4746b3d117fa5de08ff96f2b0d7dafb836ece242",
+      "reviewer_card_sha256": "4b77755a7a70b97536900160ce62ad56f414517ecce72ad4502f72fbf2367489",
+      "parity_status": "source_hashes_current_at_snapshot; ordinary analytic proof and limited Lean consumer kept separate"
+    },
+    "classification": {
+      "result_family": "finite_transverse_near_Fekete_lemniscate_path_closure",
+      "evidence_class": "authored_ordinary_complex_analysis_with_exact_source_receipts_and_three_limited_Lean_consumers",
+      "closest_prior_art": "Classical Fekete/Hadamard extremal theory, simple-critical-point continuation, and polynomial-lemniscate coarea/Green tools; the bounded source set does not state this selected transverse-shell path theorem.",
+      "comparison_relation": "A source-specific assembly of standard asymptotic and lemniscate ingredients, not a new general Fekete theorem and not an unrestricted #1041 result.",
+      "novelty_confidence": "plausible_but_weakly_evidenced; no priority claim",
+      "significance_grade": "high_local_attention_candidate_but_not_flagship",
+      "why_care": "It closes one finite transverse shell near the extremal configuration and proves an actual length-below-two consequence there, while making tangent and bulk regimes explicit rather than hiding them in a limiting slogan.",
+      "hard_step": "Uniformly match the cusp-scale and far-field inverse-branch estimates over a finite transverse cone, with constants that survive the selected branch and strict length inequality.",
+      "natural_friction": "The tangent stratum h'(0)=0 and the far-from-Fekete bulk are not controlled; the final Lean declarations formalize only eventual signs/length consumers, not the complex asymptotics.",
+      "disconfirming_evidence": "The source does not control tangent perturbations, bulk configurations, generic disk-root coefficient closeness, or the unrestricted arbitrary-polynomial problem.",
+      "confidence_ceiling": "High for the pinned transverse-shell statement and source/hash parity; medium for proof completeness and exact external antecedent matching; low for originality or any global #1041 inference.",
+      "bounded_expert_act": "Check the two-cutoff complex estimates and selected-branch uniformity on the stated cone, then search for an exact transverse-shell antecedent rather than generic Fekete terminology.",
+      "reentry_condition": "Re-enter if the ordinary note, formal sign-transfer source, card, or a direct antecedent changes, or if tangent/bulk closure is supplied."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1041 near-Fekete transverse-shell closure",
+      "disposition": "retain_as_one_local_positive_mechanism_subordinate_to_global_lemniscate_geometry",
+      "paper_disposition": "supporting_lemma_in_near_Fekete_shell_section",
+      "supersession_relation": "Consolidate cusp scaling, transverse-cone compactness, matched inverse-branch asymptotics, and the Lean eventual-length consumer; do not split finite cone, cusp, and sign-transfer rows into separate #1041 advances.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "One status-tagged ordinary theorem with transverse-shell hypotheses, exact length conclusion, limited Lean consumer label, and explicit tangent/bulk nonclaims.",
+      "expert_attention_reason": "A short specialist check can determine whether this is a genuine local closure or an asymptotic-uniformity gap; either outcome changes the #1041 route map without pretending to settle the open problem."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "source_pinned_ordinary_local_proof_with_formal_consumer",
+      "output_stage": "human_understanding_and_prior_art_review_support",
+      "artifact": "finite transverse near-Fekete lemniscate path closure",
+      "human_understanding_delta": "Separates the proved transverse shell from the singular tangent and bulk regimes, and identifies matched asymptotic uniformity as the hard step.",
+      "verification_state": "Ordinary analytic note and three limited Lean declarations are source-pinned; no end-to-end Lean proof or independent specialist review is claimed.",
+      "publication_or_review_state": "Status-tagged public visibility is defensible under the transverse-only firewall; no priority or acceptance claim.",
+      "canonicalization_state": "One supporting positive mechanism beneath the #1041 component/perimeter family; no duplicate near-Fekete cards.",
+      "unresolved_downstream_bottleneck": "Tangent-stratum and bulk control, plus exact external antecedent matching.",
+      "next_stage_owner": "Mathematics Refinery for consolidation and Role 3 for statement-firewall projection; #1041 geometry owners for tangent/bulk bridges."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_hashes_current_at_2026-08-26_snapshot",
+    "bound_snapshot": {
+      "landed_source_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+      "analytic_source_commit": "e6451784b585fd0ccb8040ac8f883a6ff44c8b6d",
+      "formal_sign_transfer_sha256": "20cd39f660e19c71bb47868721e7f69b6ae5585045087237b0bd6a9fa64d43a5",
+      "analytic_note_sha256": "74ca8dfb5339e8513df9e87f4746b3d117fa5de08ff96f2b0d7dafb836ece242",
+      "reviewer_card_sha256": "4b77755a7a70b97536900160ce62ad56f414517ecce72ad4502f72fbf2367489",
+      "parity_status": "source_hashes_current_at_snapshot; ordinary analytic proof and limited Lean consumer kept separate"
+    },
+    "claim_guard": "Only the authored ordinary finite transverse-shell path statement and its three limited Lean eventual-sign/length consumers are admitted. Tangent directions, bulk configurations, end-to-end complex formalization, priority, and unrestricted Erdos 1041 resolution remain excluded.",
+    "reentry_trigger": "Re-enter if the analytic note, formal sign-transfer source, reviewer card, or source-generation hashes change, or if a direct antecedent or tangent/bulk closure is supplied."
+  }
+}

@@ -1,6 +1,7 @@
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Finset.Interval
-import Mathlib.Tactic
+import Mathlib.Tactic.Abel
+import Mathlib.Tactic.Choose
 
 /-!
 # Erdős #269: signed three-channel block rigidity

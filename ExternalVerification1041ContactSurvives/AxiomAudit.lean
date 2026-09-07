@@ -1,0 +1,3 @@
+import ExternalVerification1041ContactSurvives.Solution
+
+#print axioms Erdos249257.ExternalVerification1041ContactSurvives.contact_survives

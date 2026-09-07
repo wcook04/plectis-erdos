@@ -1,0 +1,245 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "four_step_affine_defect_rigidity",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_routine_nonautonomous_recurrence_iteration_with_explicit_Lean_checked_escape_package",
+  "problem_id": "erdos_68",
+  "purpose": "Classify the four-step affine-defect theorem against standard difference-equation terminology and fix its auxiliary, non-irrationality claim ceiling.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/four_step_affine_defect_rigidity.card.json",
+    "card_commit": "7ac7243be1652793b29daa88ec1fdf375a74f6a8",
+    "landed_source_commit": "27313562a4db8786e1a9d6857513f536fa5cc0c4",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AffineDefectRigidity.lean",
+    "source_result_id": "quadratic_neighbour_affine_defect_rigidity",
+    "source_declarations": [
+      "ErdosProblems.Erdos68.four_step_affine_defect_blowup",
+      "ErdosProblems.Erdos68.four_step_abs_affine_defect_blowup",
+      "ErdosProblems.Erdos68.factorialAffineDefect_eq_error_transform",
+      "ErdosProblems.Erdos68.eventually_factorialEndpointError_eq_zero_of_abs_sublinear",
+      "ErdosProblems.Erdos68.cofinal_affineDefect_spikes"
+    ]
+  },
+  "source_generation": {
+    "status": "source_card_packet_current_at_adjudication; exact escape package remains subordinate to the carry endpoint",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AffineDefectRigidity.lean",
+      "commit": "27313562a4db8786e1a9d6857513f536fa5cc0c4",
+      "sha256": "7cbc832de2a3a6251789ba218e1678b58aa48ddd6f47636775a97ba23ff4eb30"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "commit": "4ee2d936d21b91a1b78165714a708ef312cec3e3",
+      "sha256": "9e0a26a1d04b37e8ca977fd93b750a8d367de9d6e58b0446a80962ab84c1328c",
+      "source_result_ids": [
+        "quadratic_neighbour_affine_defect_rigidity"
+      ]
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/four_step_affine_defect_rigidity.card.json",
+      "commit": "b39af887864ffdef7ec743f3d280fab50e86c2b9",
+      "sha256": "4ae976389738d1e9800dab2c1fdd96b2612201c7bfe1852d016d2ce8140229d5"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos68_four_step_affine_defect_rigidity@source_27313562_card_b39af887_packet_4ee2d936",
+    "evidence_class": "Lean-checked explicit four-step escape package with conditional factorial-neighbor consumers; no source-specific defect producer.",
+    "comparison_relation": "This is direct forward iteration/variation of constants for a variable-coefficient integer recurrence. Hyers--Ulam stability and nonautonomous recurrence literature provide neighboring terminology, not the displayed integer escape constants.",
+    "closest_known_result": "Brzdęk--Popa--Xu (2010) and Zada--Shah--Shah (2015) frame recurrence stability and nonautonomous shadowing; neither supplies this four-step factorial-neighbor calculation.",
+    "exact_delta": "The checked package converts four strict local defect bounds into escape from the quadratic envelope, eventual endpoint equality, and cofinal affine-defect spikes. The missing weighted transform or carry producer remains external to the theorem.",
+    "disconfirming_evidence": "No bounded search located an exact named antecedent, but the proof is a short recurrence iteration; this does not support a novelty claim or optimality of four steps.",
+    "confidence": {
+      "five_declarations": "high_internal_provisional",
+      "standard_recurrence_attribution": "high_internal_provisional",
+      "cofinal_defect_producer": "low_unresolved",
+      "four_step_optimality": "unproved"
+    },
+    "claim_ceiling": "The Lean package proves the stated four-step escape and conditional factorial-neighbor consequences under explicit integer defect hypotheses; it does not prove a defect producer, four-step optimality, or Erdős #68 irrationality.",
+    "significance": "Medium supporting value: it turns a proposed #68 endpoint window into a precise producer obligation and prevents small-defect heuristics from being mistaken for irrationality progress.",
+    "hard_step": "Construct the actual weighted-transform or carry argument that supplies cofinal defects for the factorial-gap series.",
+    "open_boundary": "No endpoint window, defect producer, optimality theorem, or Erdős #68 irrationality conclusion follows.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "A conditional producer interface: four small defects force escape",
+      "supersession_or_consolidation": "Bundle signed/one-sided escape, endpoint equality, factorial-neighbor translation, and cofinal spikes beneath factorial_gap_cofinal_carry_irrationality_criterion; retire separate recurrence-result chronology.",
+      "why_care": "It states exactly what any future transform must prove and keeps the missing arithmetic producer visible."
+    },
+    "comparator_advisory": {
+      "disposition": "comparator_now_bundled_lean_firewall",
+      "proposition_scope": "Expose the five named declarations with all integer, envelope, and defect hypotheses explicit; label factorial consumers conditional and exclude optimality/irrationality.",
+      "independent_interface_justified": true,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Check the integer sign reductions and four-step inequalities, then verify that the factorial-neighbor translation is consumed only conditionally.",
+    "reentry_trigger": "Reopen when a source-specific transform/defect producer or a true sharpness theorem appears."
+  },
+  "parity_audit": {
+    "status": "source_card_packet_current",
+    "effect": "The five Lean declarations, packet result row, and reviewer card are bound to the same source generation. The package remains a conditional recurrence interface and is not promoted to a defect producer or irrationality result.",
+    "reentry_condition": "Re-enter if AffineDefectRigidity.lean, the packet result row, the reviewer card, or a source-specific cofinal defect producer changes."
+  },
+  "review_unit": {
+    "result_family": "erdos68_four_step_affine_defect_rigidity",
+    "exact_result_id": "quadratic_neighbour_affine_defect_rigidity",
+    "evidence_class": "Lean-checked finite-horizon recurrence escape and conditional endpoint consumers",
+    "confidence_ceiling": "High for the five named declarations at the pinned source; no confidence in a source-specific cofinal defect supply or #68 irrationality conclusion.",
+    "hard_step": "Construct the missing weighted-transform or carry argument that supplies the required cofinal defects for the actual factorial-gap series.",
+    "open_boundary": "The theorem does not prove an endpoint window, a defect producer, optimality of four steps, or irrationality.",
+    "expert_review_act": "Check the exact integer hypotheses and four-step inequalities, then verify that the factorial-neighbor translation is used only conditionally and is not read as a producer theorem."
+  },
+  "classification": {
+    "theorem_class": "explicit_finite_horizon_escape_estimate_for_a_nonautonomous_first_order_affine_recurrence_over_the_integers",
+    "novelty_class": "routine_recurrence_iteration_with_useful_exact_Lean_formalization_and_problem_specific_consumers",
+    "frontier_relation": "auxiliary_not_equivalent_to_the_Erdos_68_irrationality_target",
+    "formalization_class": "Lean_checked_at_pinned_source_commit",
+    "priority_claim": "none",
+    "recommended_terminology": "four-step escape lemma for a nonautonomous affine recurrence",
+    "acceptable_descriptive_alias": "four-step affine-defect rigidity",
+    "standard_mechanism": "forward iteration or variation of constants for e_(n+1)=(n+1)e_n-eta_n, strengthened by integrality of e and eta",
+    "discouraged_terminology": [
+      "new discrete stability principle",
+      "Hyers-Ulam rigidity theorem",
+      "discrete Gronwall theorem",
+      "Perron alternative",
+      "sharp four-step theorem without an optimality statement",
+      "factorial-neighbor irrationality criterion"
+    ],
+    "attribution": "Describe the proof as elementary forward iteration of a variable-coefficient linear difference equation. Cite Hyers--Ulam recurrence stability only to distinguish the neighboring shadowing problem, not as the antecedent of this exact integer escape lemma.",
+    "mathematical_interest": "Modest as an abstract recurrence theorem, but useful inside the programme: it converts a persistent quadratic-window error into a precise cofinal supply obligation for linear-size defects and prevents small-defect heuristics from being treated as compatible with the endpoint model. This warrants a supporting digest segment, not a standalone expert-talk slot, unless paired with a later transform or producer.",
+    "reusable_scope": "Integer approximation schemes with a rapidly expanding coefficient recurrence e_(n+1)=a_n e_n-eta_n and an external polynomial error envelope; constants and horizon must be recomputed outside the displayed a_n=n+1 setting.",
+    "why_it_matters": "It identifies exactly what a future #68 weighted-transform or carry argument would have to produce. The lemma does not itself produce those defects or connect them to irrationality; that asymmetry is the main human-understanding point."
+  },
+  "primary_sources": [
+    {
+      "id": "brzdek_popa_xu_2010_recurrence_stability",
+      "title": "Remarks on stability of linear recurrence of higher order",
+      "author": "Janusz Brzdęk, Dorian Popa, and Bing Xu",
+      "venue": "Applied Mathematics Letters 23 (2010), 1459-1463",
+      "doi": "10.1016/j.aml.2010.08.010",
+      "url": "https://doi.org/10.1016/j.aml.2010.08.010",
+      "exact_anchor": "The paper studies Hyers--Ulam stability questions for linear recurrences.",
+      "supports": "Hyers--Ulam stability is established neighboring terminology for asking whether approximate recurrence solutions shadow exact ones.",
+      "does_not_support": "The four-step integer escape inequality, the quadratic endpoint window, the factorial-neighbor specialization, or an Erdős #68 conclusion."
+    },
+    {
+      "id": "zada_shah_shah_2015_nonautonomous_stability",
+      "title": "Hyers--Ulam stability of non-autonomous systems in terms of boundedness of Cauchy problems",
+      "author": "Akbar Zada, Omar Shah, and Rahim Shah",
+      "venue": "Applied Mathematics and Computation 271 (2015), 512-518",
+      "doi": "10.1016/j.amc.2015.09.040",
+      "url": "https://doi.org/10.1016/j.amc.2015.09.040",
+      "exact_anchor": "The paper frames Hyers--Ulam stability for nonautonomous systems through boundedness of associated Cauchy problems.",
+      "supports": "The standard meaning of nonautonomous stability and why it is broader than a finite-block escape calculation.",
+      "does_not_support": "The exact coefficient n+1, integer one-unit gaps, four-step threshold, or any factorial-series application."
+    }
+  ],
+  "mechanism_comparison": {
+    "variation_of_constants": "The recurrence can be unfolded exactly as a homogeneous product times the initial state minus a weighted sum of defects. This is the closest standard mechanism.",
+    "Hyers_Ulam_stability": "Typically asks whether a sequence with small recurrence residual stays near an exact solution. The local theorem instead assumes four pointwise defect bounds and proves escape from a prescribed envelope.",
+    "discrete_Gronwall": "Could provide coarse cumulative growth bounds but adds no explanatory value to this exact four-step integer calculation.",
+    "local_delta": "Lean records the explicit horizon, sign reduction, factorial endpoint transform, telescope, eventual equality consumer, and cofinal spike contrapositive in one checked package."
+  },
+  "sharpness_boundary": {
+    "proved": "Under the displayed strict defect inequalities, a nonzero integer error escapes the stated quadratic envelope after four steps.",
+    "not_proved": [
+      "four is the minimal possible horizon among all formulations",
+      "n^2+2 is an optimal envelope",
+      "the linear defect threshold is optimal",
+      "the same constants hold for other coefficient sequences"
+    ],
+    "public_rule": "Use explicit or exact for the proved inequality; reserve sharp or optimal for a separately stated extremal theorem."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "affine defect recurrence factorial four step",
+      "Hyers-Ulam stability linear recurrence higher order",
+      "Hyers-Ulam stability non-autonomous systems boundedness Cauchy problems",
+      "variable coefficient first order difference equation finite escape bound"
+    ],
+    "result": "The bounded search recovered standard recurrence-stability literature but no named four-step factorial-neighbor theorem or exact antecedent for the displayed constants.",
+    "boundary": "No exact match does not support novelty: the abstract proof is a short direct iteration, and its claim ceiling remains routine consequence plus formalization."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Lean checks an explicit four-step escape lemma for the integer recurrence eta_n=(n+1)e_n-e_(n+1), together with eventual-equality and cofinal-defect consequences under the stated quadratic-window hypotheses.",
+    "forbidden_wording": [
+      "This is a new discrete stability theorem.",
+      "The four-step horizon is optimal.",
+      "Sublinear defects are impossible in general.",
+      "The originating reciprocal transform has the required endpoint bounds.",
+      "This proves the Erdős #68 series irrational."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_general_stability_theorem",
+      "not_an_optimality_theorem",
+      "not_a_defect_producer",
+      "not_an_irrationality_criterion_without_the_missing_transform",
+      "not_erdos_68_solution"
+    ]
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "strict-successor factorial-radix carries with auxiliary affine-defect and weighted-transform producers",
+    "disposition": "subordinate under factorial_gap_cofinal_carry_irrationality_criterion as one conditional producer interface",
+    "consolidation_relation": "Bundle one-sided and signed escape, eventual equality, factorial-neighbor translation, and cofinal spikes. Do not count these as separate advances or imply that the missing transform has been built.",
+    "comparator_advisory": "One bundled Lean recurrence firewall is justified, with the exact hypotheses and absent source-specific producer explicit.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "A conditional producer interface: four small defects force escape",
+      "supersession_or_consolidation": "Use one supporting subsection beneath the exact carry endpoint and retire separate recurrence-result chronology.",
+      "reason": "The theorem constrains any future transform but does not supply the actual cofinal arithmetic."
+    }
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-68-factorial-denominator-irrationality.tex",
+    "section": "A conditional producer interface: four small defects force escape",
+    "canonical_mechanism_family": "strict-successor factorial-radix carries with auxiliary affine-defect and weighted-transform producers",
+    "relation": "One subordinate recurrence interface consolidating five formal declarations beneath the exact cofinal carry/divisibility endpoint.",
+    "understanding_delta": "Persistent factorial-neighbor error within the stated window must generate linear affine-defect spikes, so any proposed transform has a precise obligation.",
+    "evidence_boundary": "Lean checks the conditional recurrence package; no transform, source-specific defect supply, optimality, or irrationality follows.",
+    "hard_step": "Produce a faithful transform or actual cofinal defects for the factorial-gap series.",
+    "meaningful_failed_route": "Assume small recurrence residuals can coexist indefinitely with a nonzero endpoint error inside the exact integer window.",
+    "open_remainder": "The source series still lacks the cofinal strict-successor divisibility failure required by the exact endpoint."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/four_step_affine_defect_rigidity.card.json",
+      "effect": "Replace pending novelty language with routine nonautonomous recurrence iteration and remove any implicit sharpness claim."
+    },
+    {
+      "consumer": "Erdős #68 proof fleet",
+      "effect": "Treat the lemma as an auxiliary consumer: the live obligation is to construct the endpoint window and cofinal defect information from the actual series."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the Lean formalization and factorial-neighbor interface as the value, not novelty in difference-equation theory or progress beyond the stated conditional boundary."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine nonautonomous recurrence iteration with a high-value conditional boundary; the arithmetic producer is absent and must not be smoothed away.",
+    "slow_down_at": "Check the integer sign reductions, the four-step defect inequalities, and the conditional translation to factorial-neighbor spikes; four steps are not claimed optimal.",
+    "automation_can_establish": [
+      "The five pinned Lean declarations and exact source hash",
+      "The stated envelope and defect quantifiers",
+      "That no cofinal defect producer or irrationality theorem is present"
+    ],
+    "human_judgment_required": [
+      "Whether the recurrence package has a closer standard nonautonomous-stability antecedent",
+      "Whether a proposed transform really supplies the hypotheses for the consumer",
+      "Whether any shorter defect window changes the programme boundary"
+    ],
+    "review_act": "Audit one declaration chain and then test a proposed source-specific defect producer; do not spend attention on novelty or four-step optimality."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_packet_current_and_claim_bound",
+    "bound_snapshot": {
+      "formal_source_commit": "27313562a4db8786e1a9d6857513f536fa5cc0c4",
+      "formal_source_sha256": "7cbc832de2a3a6251789ba218e1678b58aa48ddd6f47636775a97ba23ff4eb30",
+      "research_packet_commit": "4ee2d936d21b91a1b78165714a708ef312cec3e3",
+      "research_packet_sha256": "9e0a26a1d04b37e8ca977fd93b750a8d367de9d6e58b0446a80962ab84c1328c",
+      "reviewer_card_commit": "b39af887864ffdef7ec743f3d280fab50e86c2b9",
+      "reviewer_card_sha256": "4ae976389738d1e9800dab2c1fdd96b2612201c7bfe1852d016d2ce8140229d5"
+    },
+    "claim_guard": "This is a conditional four-step recurrence interface, not a defect producer, endpoint-window proof, optimality theorem, or #68 irrationality result.",
+    "reentry_trigger": "Re-enter when a source-specific transform/defect producer, source generation change, or genuine sharpness theorem lands."
+  }
+}

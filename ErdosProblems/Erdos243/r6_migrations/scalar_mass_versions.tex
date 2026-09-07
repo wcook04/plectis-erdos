@@ -1,0 +1,90 @@
+% Source r6 scalar-mass versions and examples.
+\section{Excluding finite normalised negative mass}\label{sec:mass}
+
+Theorem~\ref{res:bounded} uses a uniform bound on the negative part.  A different sufficient hypothesis, on the total normalised negative mass,
+gives the same endpoint.  Its proof is multiplicative rather than arithmetic:
+it bounds $C$ by a product, then uses integer discreteness.
+
+\begin{theorem}[finite normalised negative mass]\label{res:mass}
+Let \(C_n\in\N_{>0}\) and \(E_n\in\Z\) satisfy
+\[
+ C_{n+1}=C_n-E_n,\qquad
+ \forall K\ \exists N\ \forall n\ge N,\quad K|E_n|<C_n .
+\]
+If
+\[
+ \sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}<\infty ,
+\]
+then \(E_n=0\) eventually.  For an exact reciprocal-tail orbit this implies
+\(a_{n+1}=a_n^2-a_n+1\) eventually.
+\end{theorem}
+
+\begin{proof}
+Put \(\delta_n=(-E_n)_+/C_n\).  The update gives
+\(C_{n+1}\le C_n(1+\delta_n)\), so
+\[
+ C_N\le C_0\prod_{n<N}(1+\delta_n).
+\]
+The product is bounded because \(\sum\delta_n\) converges.  Choose an integer
+\(M\) above that bound and apply normalised vanishing with \(K=M\).  Then
+\(M|E_n|<C_n<M\) for all sufficiently large \(n\), forcing the integer
+\(E_n\) to be zero.  The final recurrence is Theorem~\ref{res:eventual}, whose
+hypothesis $C_{n+1}\ne0$ holds because $C_n>0$ throughout.
+\end{proof}
+
+\noindent The same product already caps $C_n$, so a strict integer rise costs a
+definite relative mass $\ge 1/K$ and only finitely many rises can occur.  After
+the last rise the tail is nonincreasing, hence eventually constant.  Normalised
+vanishing is not required for that scalar conclusion.
+
+\begin{lemma}[scalar finite mass]\label{res:massscalar}
+Let \(C_n\in\N_{>0}\) and \(E_n\in\Z\) satisfy \(C_{n+1}=C_n-E_n\).  If
+\(\sum_n(-E_n)_+/C_n<\infty\), then \(E_n=0\) eventually.  For an exact
+reciprocal-tail orbit this implies \(a_{n+1}=a_n^2-a_n+1\) eventually.
+\end{lemma}
+
+\noindent Formalised as the
+\lword{Erdos243/SparseResetRecovery.lean}{551}{bounded_of_summable_negativeRelativeMass}{product
+bound on \(C\)}, the
+\lword{Erdos243/SparseResetRecovery.lean}{612}{eventually_zero_of_summable_negativeRelativeMass_scalar}{scalar
+vanishing without normalised vanishing}, and the
+\lword{Erdos243/SparseResetRecovery.lean}{691}{sylvesterNext_eventually_of_summable_negativeRelativeMass_scalar}{Sylvester
+consumer without vanishing}.  Theorem~\ref{res:mass} remains the registered
+form that still lists vanishing, matching the earlier Lean declarations.
+
+\noindent The product argument is the
+\lword{Erdos243/SparseResetRecovery.lean}{90}{eventually_zero_of_summable_relativeGrowth}{summable
+relative growth}; its specialisation to negative mass is the
+\lword{Erdos243/SparseResetRecovery.lean}{155}{eventually_zero_of_summable_negativeRelativeMass}{vanishing
+from finite negative mass}, and the statement giving the recurrence directly is
+the
+\lword{Erdos243/SparseResetRecovery.lean}{175}{sylvesterNext_eventually_of_summable_negativeRelativeMass}{Sylvester
+recurrence from summable negative mass}.  This is a checked implication about
+the state system, not a derivation of normalised vanishing from
+Problem~\#243.  Normalised vanishing is still an input of
+Theorem~\ref{res:mass}: it is what converts the bound on $C$ into a bound on
+$|E_n|$.  Lemma~\ref{res:massscalar} does not use it.  Nothing here derives
+summability from the growth condition of Problem~\ref{res:problem}.
+
+The transfer of the previous section applies here as well.  On the canonical
+orbit of Corollary~3 of~\cite[p.~9]{koizumi2025} the recurrence
+$C_{n+1}=C_n-E_n$ holds with $C_n>0$ by Lemma~4
+~\cite[p.~11]{koizumi2025}, and normalised vanishing is the vanishing of
+the gap sequence, so Theorem~\ref{res:mass} is a conditional theorem about
+Problem~\ref{res:problem} whose sole remaining hypothesis is summability of
+$\sum_n(-E_n)_+/C_n$.  That hypothesis is not supplied there, and is the
+content of Problem~\ref{res:masshyp} below.
+
+\begin{example}[the product bound at a geometric rate]\label{ex:mass}
+Suppose $C_0=100$ and $(-E_n)_+/C_n\le2^{-n-1}$ for every $n$, so that the
+normalised negative mass is at most $1$; the constraint at $n=0$ still permits
+$E_0$ as negative as $-50$.  Since $1+x\le e^{x}$,
+\[
+ C_N\le100\prod_{n<N}\bigl(1+2^{-n-1}\bigr)\le100e<272
+\]
+for every $N$.  Normalised vanishing at $K=272$ then gives
+$272|E_n|<C_n<272$ for all large $n$, so $|E_n|<1$ and $E_n=0$ there.  The
+constant $272$ comes from the total mass and not from any single magnitude,
+which is why the hypothesis of Theorem~\ref{res:mass} is summability of
+$(-E_n)_+/C_n$ and not a bound on it.
+\end{example}

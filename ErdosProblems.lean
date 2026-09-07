@@ -1,33 +1,159 @@
--- SPDX-FileCopyrightText: 2026 Will Cook
--- SPDX-License-Identifier: Apache-2.0
---
--- Problem-centric root for the Erdős Problems library.
---
--- `Erdos249257` holds the shared machinery: the certificate kernel, the greedy
--- achievement set, the Mersenne–Lambert ladder, and the carry systems both
--- problems are built on. This library holds the work that is stated per
--- problem and reads more naturally under the problem's own name.
---
--- Both Erdős Problem 249 (irrationality of ∑ φ(n)/2ⁿ) and Erdős Problem 257
--- (irrationality of ∑_{n∈A} 1/(2ⁿ−1) for every infinite A) are OPEN. Nothing
--- imported here decides either of them.
--- Keep the reviewed finite `t ≤ 82` certificate band inside the supported
--- root closure, so a clean root build re-elaborates its proof authority.
-
-import ErdosProblems.AxiomAudit
-import ErdosProblems.DemandLedger
-import ErdosProblems.Erdos249.RankOneSharpFloor
-import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Root
-import ErdosProblems.Skip.LadderT67
+import ErdosProblems.AxiomAudit
+import ErdosProblems.Erdos1041.CriticalBlaschkePairBound
+import ErdosProblems.Erdos1041.CEGMQuarticFixedPairNoGo
+import ErdosProblems.Erdos1041.CriticalEllipseStationaryNoGo
+import ErdosProblems.Erdos1041.TiedNewtonFaceComponentSelector
+import ErdosProblems.Erdos1041.SexticCanonicalMixedSlice
+import ErdosProblems.Erdos1041.TiedNewtonFaceAdjacentEllipse
+import ErdosProblems.Erdos1041.SexticNullBranchTransverseSelector
+import ErdosProblems.Erdos1041.NearFeketeTransverseClosure
+import ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1NoGo
+import ErdosProblems.Erdos1041.PolarDerivativeCircle
+import ErdosProblems.Erdos1041.PoissonTaylorFiniteIdentity
+import ErdosProblems.Erdos1041.BlaschkePowerCriticalValues
+import ErdosProblems.Erdos1041.BlaschkeSectorConnector
+import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
+import ErdosProblems.Erdos1049.QAperyTailDenominator
+import ErdosProblems.Erdos1049.FixedDiagonalRationalClearing
+import ErdosProblems.Erdos1049.SoutheastBlockDeterminant
+import ErdosProblems.Erdos1049.BezoutPluckerJets
+import ErdosProblems.Erdos1049.QBinomialUnitIdentity
+import ErdosProblems.Erdos1049.PrimitiveTwoAdicMinor
+import ErdosProblems.Erdos1049.QuantitativeSelectorEscape
+import ErdosProblems.Erdos1049.RationalApproximationSeparation
+import ErdosProblems.Erdos1049.ThinStripDeterminant
+import ErdosProblems.Erdos243.HorizonEscapeOfMass
+import ErdosProblems.Erdos243.RepairEntropy
+import ErdosProblems.Erdos243.CleanRecoveryLengthCounterexample
+import ErdosProblems.Erdos243.CenteredEuclideanFeedback
+import ErdosProblems.Erdos243.OrientedFeedbackRoot
+import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+import ErdosProblems.Erdos243.IntegerRoundingBarrier
+import ErdosProblems.Erdos243.RecordIncrementBarrier
+import ErdosProblems.Erdos243.SaturatedSquareTransport
+import ErdosProblems.Erdos243.TwoModulusRecordCut
+import ErdosProblems.Erdos243.ProtectedEpochEnergy
+import ErdosProblems.Erdos243.CubicNeighbourIdentity
+import ErdosProblems.Erdos243.SignedDuverneyAlgebra
+import ErdosProblems.Erdos243.CoefficientDivisorFence
+import ErdosProblems.Erdos243.UncentredRecordCharge
+import ErdosProblems.Erdos251.OrderLatticeDiagonal
+import ErdosProblems.Erdos251.AffineShiftEscape
+import ErdosProblems.Erdos251.AffineCylinderCollapse
+import ErdosProblems.Erdos251.PolynomialGapSeriesValue
+import ErdosProblems.Erdos251.FreePairReduction
+import ErdosProblems.Erdos251.PairedCongruenceRationalisation
+import ErdosProblems.Erdos251.SparseRationalisationCore
+import ErdosProblems.Erdos251.ResidueFeedbackCore
+import ErdosProblems.Erdos249.RankOneSharpFloor
+import ErdosProblems.Erdos249.ResidueClassTotientSeries
+import ErdosProblems.Erdos249.PrimeSquareResidueWitness
+import ErdosProblems.Erdos249.PrefixValuationAndControlRigidity
+import ErdosProblems.Erdos249.AffineTotientSignature
+import ErdosProblems.Erdos249.BooleanEulerInverse
+import ErdosProblems.Erdos249.MersenneDilationAlgebra
+import ErdosProblems.Erdos249.PeriodicTotientIndependence
+import ErdosProblems.Erdos249.FiniteDilationPulseCore
+import ErdosProblems.Erdos249.ProgressionLocalTotientIndependence
+import ErdosProblems.Erdos249.TotientDyadicPolynomialIdentity
 import ErdosProblems.Erdos68.GapScalarNormalForm
 import ErdosProblems.Erdos68.PrimeThresholdParity
 import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
-import ErdosProblems.Erdos243.RepairEntropy
+import ErdosProblems.Erdos68.RunCylinder
+import ErdosProblems.Erdos68.MultiplicativeSuccessorRigidity
+import ErdosProblems.Erdos68.PrimePoleCriterion
+import ErdosProblems.Erdos68.SecondLayerDigit
+import ErdosProblems.Erdos68.BinaryCarryNormalForm
+import ErdosProblems.Erdos68.AffineDefectRigidity
+import ErdosProblems.Erdos68.DivisorChannelBasis
+import ErdosProblems.Erdos68.TailIdealCertificate
+import ErdosProblems.Erdos68.FiniteSourceTailCertificate
+import ErdosProblems.Erdos269.FloorProductLatticeJump
+import ErdosProblems.Erdos269.FiniteCutRank
+import ErdosProblems.Erdos269.R5PerturbationAndShadow
+import ErdosProblems.Erdos269.R6WeightedChannelRedistribution
+import ErdosProblems.Erdos257.SignedFinitePeriodNoncollapse
+import ErdosProblems.Erdos257.DyadicShellSynchronisation
+import ErdosProblems.Erdos257.DisplacementTailBudget
+import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
+import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
+import ErdosProblems.Erdos243.PaperCompleteR7.Counterexamples
+import ErdosProblems.Erdos243.PaperCompleteR7.ExistingChecks
+import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
+import ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity
+import ErdosProblems.Erdos243.PaperCompleteR7.Limits
+import ErdosProblems.Erdos243.PaperCompleteR7.OneThreshold
+import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+import ErdosProblems.Erdos243.PaperCompleteR7.ProtectedEpoch
+import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
+import ErdosProblems.Erdos243.PaperCompleteR7.RealTail
+import ErdosProblems.Erdos243.PaperCompleteR7.Reduction
+import ErdosProblems.Erdos243.PaperCompleteR7.WindowCounterexample
+import ErdosProblems.Erdos251.PaperCoreR7
+import ErdosProblems.Erdos251.PaperTailBoundsR7
+import ErdosProblems.Erdos251.PaperFiniteCertificatesR7
+import ErdosProblems.Erdos251.PaperNonconcentrationR7
+import ErdosProblems.Erdos251.PaperBoundedCarryR7
+import ErdosProblems.Erdos251.PaperSparseCouplingR7
+import ErdosProblems.Erdos251.PaperCompleteR7
+import ErdosProblems.Erdos269.PaperR7FiniteCutRank
+import ErdosProblems.Erdos269.PaperR7SharpShellBound
+import ErdosProblems.Erdos269.PaperR7AnalyticInterfaces
+import ErdosProblems.Erdos269.PaperR7BasicAssembly
+import ErdosProblems.Erdos269.PaperR7ModularMinors
+import ErdosProblems.Erdos269.PaperR7ActualOrbit
+import ErdosProblems.Erdos269.PaperR7SeriesIdentification
+import ErdosProblems.Erdos269.PaperR7InternalJumpProduct
+import ErdosProblems.Erdos269.PaperR7RationalBridge
+import ErdosProblems.Erdos269.PaperR7WindowResults
+import ErdosProblems.Erdos68.PaperCompleteAsymptotics
+import ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates
+import ErdosProblems.Erdos68.PaperCompleteExisting
+import ErdosProblems.Erdos68.PaperCompleteGcdSegment
+import ErdosProblems.Erdos68.PaperCompleteLiminf
+import ErdosProblems.Erdos68.PaperCompleteMomentHorizon
+import ErdosProblems.Erdos68.PaperCompletePrimePole
+import ErdosProblems.Erdos68.PaperCompleteRadiusLimit
+import ErdosProblems.Erdos68.PaperCompleteSupplementary
+import ErdosProblems.Erdos68.PaperCompleteSupportNoGo
+import ErdosProblems.Erdos68.PaperCompleteSupportedBands
+import ErdosProblems.Erdos249.PaperCompleteR7.DisplayedNoGo
+import ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse
+import ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification
+import ErdosProblems.Erdos249.PaperCompleteR7.ArithmeticAssemblies
+import ErdosProblems.Erdos249.PaperCompleteR7.GenericCertificates
+import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
+import ErdosProblems.Erdos257.PaperCompleteR7.Assemblies
+import ErdosProblems.Erdos257.PaperCompleteR7.CatalogueAssemblies
+import ErdosProblems.Erdos257.PaperCompleteR7.CoverKernel
+import ErdosProblems.Erdos257.PaperCompleteR7.CriticalBandNoGo
+import ErdosProblems.Erdos257.PaperCompleteR7.Displacement
+import ErdosProblems.Erdos257.PaperCompleteR7.FiniteCertificates
+import ErdosProblems.Erdos257.PaperCompleteR7.LinearChannels
+import ErdosProblems.Erdos257.PaperCompleteR7.NoGo
+import ErdosProblems.Erdos257.PaperCompleteR7.ZeroWindows
+import ErdosProblems.Erdos1041.PaperCurveAssembly
+import ErdosProblems.Erdos1041.PaperTrinomial
+import ErdosProblems.Erdos1041.PaperMetricScaling
+import ErdosProblems.Erdos1041.PaperAnalyticTargets
+import ErdosProblems.Erdos1041.PaperSeparationCounterexample
+import ErdosProblems.Erdos1041.PaperStraightObstructions
+import ErdosProblems.Erdos1041.PaperFiniteDual
+import ErdosProblems.Erdos1049.PaperFiniteAssembliesR7
+import ErdosProblems.Erdos1049.PaperOmegaIndicatorR7
+import ErdosProblems.Erdos1049.PaperHomogenisationR7
+import ErdosProblems.Erdos1049.PaperRankTwoCapR7
+import ErdosProblems.Erdos257.PaperCompleteR7.TailGluing
+import ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets
+import ErdosProblems.Erdos1041.PaperMomentConsumers
+import ErdosProblems.Erdos1041.PaperNewtonEndpoints
 
 /-!
 # Problem-centric Erdős research library
 
-This is the supported root for the problem-owned modules. The `Erdos249257`
-library remains available as the reviewed #249/#257 corpus.
+This is the supported root for the problem-owned modules.  The older
+`Erdos257PeriodNoncollapse` library remains available as a compatibility and
+shared-machinery layer.
 -/

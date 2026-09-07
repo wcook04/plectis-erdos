@@ -1,0 +1,192 @@
+{
+  "schema_version": "mathematical_consequence_receipt_v1",
+  "input_stage": "proof_generation",
+  "output_stage": "exposition_and_understanding",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/low_degree_cyclic_quotient_consequence_receipt.json",
+  "human_understanding_delta": "The quadratic, cubic, and quartic cyclic quotient cases are one coherent frontier rather than three isolated lemmas. Degree two is controlled by an exact quadratic factorization, degree three by a global charge selector and cyclotomic envelope, and degree four by the chord-lift metric plus Pendyala's attributed chord-or-radial dichotomy. The close-pair branch extends to every quotient degree, and Hilbert-space convexity sharpens its explicit quintic certificate to d^2<=5/9, within 0.003 of the exact envelope threshold. The first genuinely new boundary is the quantitatively separated quotient-root regime beginning in degree five.",
+  "verification_state": {
+    "analytic": "complete in the four companion notes",
+    "lean": "PASS: CubicQuotientFiberCase, EvenSymmetricTrinomialCase, QuarticQuotientFiberCase, ClosePairCyclicQuotientCase, and RefinedQuinticClosePair each passed an exact canonical shared-cache build via lean_fast_build.py --jobs 2",
+    "authority": "the named Lean declarations are proof authority; the current close-pair consequence wave is ready for scoped landing"
+  },
+  "publication_or_review_state": "private verified consequence sweep ready for scoped landing; public promotion and novelty adjudication deferred",
+  "canonicalization_state": "verified low-degree cyclic quotient theorem family plus all-degree close-pair criterion identified; not externally reviewed or canonicalized",
+  "unresolved_downstream_bottleneck": "Separated quotient roots in degree five and above require a polynomial-adapted hub, curved path, or component mechanism; unrestricted Erdos 1041 remains open.",
+  "next_stage_owner": "Codex mathematical closure loop, then the formal-math Refinery after Lean validation and scoped landing",
+  "progress_anchors": [
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
+      "source_digest": "sha256:8d48e206629d9d6283b7f1c66aa01651d9ff45314c0ed541f566c329131fa6dd",
+      "declarations": [
+        "cubic_has_safe_root_spoke",
+        "quartic_charge_envelope_counterexample"
+      ]
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/EvenSymmetricTrinomialCase.lean",
+      "source_digest": "sha256:fb0981cdd543d678557df048536962999c40ec627798db269a62a77f39c0d5f3",
+      "declarations": [
+        "two_short_displacements_give_short_hub"
+      ]
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticQuotientFiberCase.lean",
+      "source_digest": "sha256:64127e86c0bf185402796e4716200629038d9abbfe553908f55a4710f09a3d18",
+      "declarations": [
+        "rootLift_length_lt_two_of_le_endpoint_budget"
+      ]
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClosePairCyclicQuotientCase.lean",
+      "source_digest": "sha256:710f93eff4136b531f42615f1ae6af6c8e2ee2716bb3ca829beefa05265f2092",
+      "declarations": [
+        "closePair_chord_factor_budget",
+        "closePair_cyclicLift_length_lt_two"
+      ]
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RefinedQuinticClosePair.lean",
+      "source_digest": "sha256:22e7ad24d9a321ee3d35cbf6261a041538435145686e03eeea5fed6400e2fd8c",
+      "declarations": [
+        "quintic_refined_chord_envelope",
+        "quintic_refined_closePair_factor_budget"
+      ]
+    }
+  ],
+  "candidate_map": {
+    "scope": "explicit current-source slice",
+    "displayed_candidate_count": 15,
+    "discovered_candidate_count": 96,
+    "displayed_decision_count": 15,
+    "omitted_candidate_policy": "re-enter from the landed commit with a corpus-wide base-ref pass; no omitted lexical candidate is promoted before that authority transition"
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_b6265d39b1bc225a",
+      "decision": "verified_no_change",
+      "mathematical_reason": "cubicRoot_spoke_norm_le_one_of_charge is the exact internal implication consumed by cubic_has_safe_root_spoke; the new theorem packages it without changing its statement.",
+      "authority_surface_checked": "CubicQuotientFiberCase.lean",
+      "validation_or_reentry": "validate in the same focused module build"
+    },
+    {
+      "candidate_id": "math_consequence_2a68dd5e84e30c63",
+      "decision": "verified_no_change",
+      "mathematical_reason": "one_cubicRootCharge_gt_neg_one is the selector prerequisite, not a downstream claim whose boundary changes.",
+      "authority_surface_checked": "CubicQuotientFiberCase.lean",
+      "validation_or_reentry": "validate in the same focused module build"
+    },
+    {
+      "candidate_id": "math_consequence_8a7a7953b2b49473",
+      "decision": "verified_no_change",
+      "mathematical_reason": "rootLift_endpoint_budget_lt_two is the metric prerequisite used verbatim by the length fan-in.",
+      "authority_surface_checked": "QuarticQuotientFiberCase.lean",
+      "validation_or_reentry": "validate in the same focused module build"
+    },
+    {
+      "candidate_id": "math_consequence_ee1d2e4f2ea773ef",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the sibling edge repeats the exact endpoint-budget prerequisite and adds no separate semantic consequence.",
+      "authority_surface_checked": "QuarticQuotientFiberCase.lean",
+      "validation_or_reentry": "same-module build"
+    },
+    {
+      "candidate_id": "math_consequence_24e334ca9d8e0fd3",
+      "decision": "verified_no_change",
+      "mathematical_reason": "rootLift_axis_integral supplies the primitive for the analytic chord-lift proof; its statement is unchanged.",
+      "authority_surface_checked": "QuarticQuotientFiberCase.lean and QuarticQuotientFiberCase.md",
+      "validation_or_reentry": "same-module build and expert review of the covering-space step"
+    },
+    {
+      "candidate_id": "math_consequence_446f34d938521f15",
+      "decision": "verified_no_change",
+      "mathematical_reason": "rootLift_kernel_le_axis is an unchanged pointwise prerequisite, not a new claim boundary.",
+      "authority_surface_checked": "QuarticQuotientFiberCase.lean",
+      "validation_or_reentry": "same-module build"
+    },
+    {
+      "candidate_id": "math_consequence_8bb9981daa3eff3f",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "the Erdos 1041 research packet should gain the landed low-degree cyclic quotient family and the corrected separated-degree-five boundary, but current source lacks build and commit authority and the packet has a separate live owner.",
+      "authority_surface_checked": "research_packet.json exact result and negative-result boundaries",
+      "validation_or_reentry": "re-enter after cf_8961580c296a4f0a857c passes and the source wave lands"
+    },
+    {
+      "candidate_id": "math_consequence_9dc61b3e6b57c54d",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the constant-perturbation route is a root-continuity corollary and is not strengthened or weakened by cyclic quotient paths.",
+      "authority_surface_checked": "constant_perturbation_roots_unit_disk_v0.json",
+      "validation_or_reentry": "none unless a later perturbative neighbourhood theorem is proved"
+    },
+    {
+      "candidate_id": "math_consequence_9c7f6c53d5c7b65c",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "the general Erdos 1041 prior-art route is the right novelty-review owner, but private unvalidated source cannot yet change its adjudication state.",
+      "authority_surface_checked": "erdos1041_lemniscate_short_path_v0.json",
+      "validation_or_reentry": "novelty and source review after scoped landing"
+    },
+    {
+      "candidate_id": "math_consequence_41810a1deed5486c",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the sharp collinear Chebyshev theorem remains a distinct exact case with an independent novelty review.",
+      "authority_surface_checked": "erdos1041_sharp_collinear_root_diameter_v0.json",
+      "validation_or_reentry": "none from this delta"
+    },
+    {
+      "candidate_id": "math_consequence_471d9aa54bf53576",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the global critical two-nearest-root budget concerns critical-point distance geometry, not quotient-fibre containment.",
+      "authority_surface_checked": "global_critical_two_nearest_root_budget_v0.json",
+      "validation_or_reentry": "none from this delta"
+    },
+    {
+      "candidate_id": "math_consequence_bb282bc4d6a9a989",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the Cassini coarea falsifier remains a mechanism-elimination card; no statement in it is discharged or contradicted.",
+      "authority_surface_checked": "cassini_coarea_tree_budget_falsifier.card.json",
+      "validation_or_reentry": "none from this delta"
+    },
+    {
+      "candidate_id": "math_consequence_f3bdb5144b76bab4",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the quantitative constant-perturbation card explicitly claims no contained-path theorem, and that claim ceiling remains correct.",
+      "authority_surface_checked": "constant_perturbation_roots_unit_disk.card.json",
+      "validation_or_reentry": "none unless a perturbative transfer is later proved"
+    },
+    {
+      "candidate_id": "math_consequence_3ad882ba10136b5a",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the equilateral cubic card is a chord countermodel with a hub rescue; the new cubic quotient selector does not retract or strengthen it.",
+      "authority_surface_checked": "equilateral_cubic_chord_hub_countermodel.card.json",
+      "validation_or_reentry": "none from this delta"
+    },
+    {
+      "candidate_id": "math_consequence_b1149357e6b8d5c7",
+      "decision": "verified_no_change",
+      "mathematical_reason": "the critical two-nearest-root card remains a distance-budget theorem without a containment conclusion.",
+      "authority_surface_checked": "global_critical_two_nearest_root_budget.card.json",
+      "validation_or_reentry": "none from this delta"
+    }
+  ],
+  "semantic_second_pass": {
+    "update_now": [
+      "Correct the quartic companion's degree-five boundary from no safe origin spoke to no safe root chord plus at most one MEC-centred radial arm; this correction is already applied in current source.",
+      "Add the arbitrary-degree quantitative close-pair theorem as a separate source-current checkpoint."
+    ],
+    "deferred": [
+      "Research-packet reconciliation",
+      "General prior-art and novelty adjudication",
+      "Public reviewer packet"
+    ],
+    "surviving_boundary": "all quotient pairs quantitatively separated; unrestricted Erdos 1041 open"
+  },
+  "refinement_result": {
+    "status": "nothing_to_refine",
+    "stewardship_checked": [
+      "mathematical_consequence_map candidate precision",
+      "claim-boundary correction",
+      "owner-aware research packet deferral"
+    ],
+    "next_best_lane_checked": "separated quintic quotient roots",
+    "reentry_condition": "Lean terminal receipt or a landed source identity change"
+  }
+}

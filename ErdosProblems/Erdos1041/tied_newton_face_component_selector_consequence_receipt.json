@@ -1,0 +1,35 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComponentSelector.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.TiedNewtonFaceComponentSelector.endCount_eq_one_add_ramification",
+      "ErdosProblems.Erdos1041.TiedNewtonFaceComponentSelector.renormalizedDefect_antitone",
+      "ErdosProblems.Erdos1041.TiedNewtonFaceComponentSelector.connector_length_lt_two_mul_radius"
+    ],
+    "delta_class": "component_selector_theorem_and_exact_critical_rescue",
+    "claim_ceiling": "Topology and one quintic chart are closed; HF-strict, finite transfer, away-from-Fekete coverage, and unrestricted Erdős #1041 remain open."
+  },
+  "decisions": [
+    {
+      "candidate_id": "minimum_real_selector_interpretation",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.md",
+      "decision": "correct_now",
+      "mathematical_reason": "The no-go is angular component mismatch, not unusability of the critical hub.",
+      "validation_or_reentry": "cross-link exact critical rescue"
+    },
+    {
+      "candidate_id": "free_pair_geometric_mean_two_arm_selector",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "sharpen_now",
+      "mathematical_reason": "The component passport solves end selection; the live sign obligation is strict horizontal-fibre defect or finite CDF.",
+      "validation_or_reentry": "JSON parse, exact checker, focused Lean replay after capacity clears"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_closed": "All-degree topology/end-count selector and the calibration quintic's original critical hub.",
+    "newly_narrowed": "Containment is automatic along a horizontal critical fibre; reciprocal-derivative arclength sign remains.",
+    "surviving_boundary": "HF-strict or finite connector plus transfer and global regime composition.",
+    "claim_boundary": "The unrestricted theorem remains open."
+  }
+}

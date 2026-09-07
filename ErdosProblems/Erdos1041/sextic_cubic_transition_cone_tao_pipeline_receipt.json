@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_cubic_transition_scale_cone",
+  "recorded_at": "2026-08-25",
+  "input_stage": "paired_low_mode_delta_cone_and_transverse_normalization_residual",
+  "output_stage": "natural_delta_five_sixths_transition_cone_with_quantitative_compact_complement",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticCubicTransitionCone.md",
+    "ErdosProblems/Erdos1041/SexticCubicTransitionCone.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_cubic_transition_cone.py"
+  ],
+  "human_understanding_delta": "Balancing the low-mode linear nuisance against the sextic baseline forces the transition exponent 5/6. Pairing closes the entire region |E1|+|E2|<=Delta^(5/6)/16 for Delta^(1/6)<=1/64, with a half-deficit ray and inner-disk margin. The remaining transverse normalization is uniformly separated from the pure cubic face and is therefore compact after gauge.",
+  "verification_state": {
+    "analytic": "complete_transition_budget_young_absorption_inner_disk_and_metric_proof",
+    "symbolic": "passed_64_exact_budget_rows_4160_exact_ray_rows_and_64_exact_inner_disk_rows",
+    "lean": "passed_canonical_cached_focused_build_and_final_serialized_authority_check",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "analytic note, Lean module, exact checker, canonical research packet handoff, and claim boundary authored and focused validation passed; consequence binding in progress",
+  "unresolved_downstream_bottleneck": "Cover the compact transverse sextic coefficient section |E1|+|E2|>Delta^(5/6)/16 by a finite connector atlas and absorb the origin-anchored remainder.",
+  "next_stage_owner": "Refinery: audit the 5/6 balance and constants, then hand the compact transverse section to the finite-atlas owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation under operator direction, extending the paired cone with the exact scale balance",
+    "computation": "Exact rational replay checks all displayed constants and margins; computation is not proof authority.",
+    "formalization": "Lean checks the paired transition budget, Young ray margin, inner-disk margin, and exhaustive transverse dichotomy.",
+    "claim_boundary": "Closes the cubic transition cone at the natural Delta^(5/6) scale. It does not prove the compact transverse atlas, actual-polynomial transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}

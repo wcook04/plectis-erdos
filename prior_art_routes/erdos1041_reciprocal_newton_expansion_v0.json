@@ -1,0 +1,222 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "erdos1041_reciprocal_newton_expansion_v0",
+  "status": "adjudicated_as_classical_newton_sum_and_logarithmic_derivative_material_with_source_specific_coordinate_bridge",
+  "problem_id": "erdos_1041",
+  "purpose": "Position the reciprocal-Newton expansion as a classical power-sum/logarithmic-derivative package whose useful local contribution is an exact coordinate bridge for a near-Fekete contact calculation, not a new expansion theorem or an Erdős #1041 advance.",
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_reciprocal_newton_expansion_v1",
+    "result_family": "erdos1041_reciprocal_newton_coordinate_expansion",
+    "exact_result_id": "reciprocal_newton_expansion",
+    "source_generation": {
+      "landed_source_commit": "c042be558bd03f89226c715764d63a399a5b9628",
+      "analytic_note": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md",
+        "sha256": "97e385b99bcbe1e23a83f2119fcd56c358577106e66b4cf9aad448ffa712a0ff"
+      },
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.lean",
+        "sha256": "fc69e0d0c86c2159c5513f2bfe4142ced0d1e7de5c81180980af355a1ef21b7a",
+        "declarations": [
+          "ErdosProblems.Erdos1041.ReciprocalNewtonExpansion.norm_recipPowerSum_le",
+          "ErdosProblems.Erdos1041.ReciprocalNewtonExpansion.newton_solve",
+          "ErdosProblems.Erdos1041.ReciprocalNewtonExpansion.quadratic_contact_absorbs"
+        ]
+      },
+      "exact_replay": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_reciprocal_newton_expansion.py",
+        "sha256": "2bc7888bf7f84d59f69026144cc2a30ebe2e0e42ec515907d38e6bafd3a61c0c"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos1041_reciprocal_newton_expansion.card.json",
+        "sha256": "4fe4bdc0fb1aad543d9ac6e898a5ac097f170c509d8f059ce4342658d30b5a9c"
+      },
+      "review_unit": {
+        "path": "docs/formal_math/review_units/erdos1041_reciprocal_newton_expansion.review_unit.v1.json",
+        "sha256": "53f9d407b3571c47748ad6c7253c49aed12973b4873e117be582fe828894de2e"
+      }
+    }
+  },
+  "classification": {
+    "prior_art_confidence_class": "strong_internal_provisional_case",
+    "novelty_confidence": "no_priority_claim; R1 and R2 are the standard logarithmic-derivative/power-sum (Newton--Girard) identities, while R4 and R5 are elementary metric and quadratic-completion calculations. The source-specific R3 bridge is a useful coordinate observation, but its historical distinctness has not been established.",
+    "recommended_terminology": "reciprocal Newton-sum coordinates for the logarithmic polynomial expansion; exact contact-remainder coordinate bridge",
+    "discouraged_terminology": [
+      "a new reciprocal Newton expansion theorem",
+      "a new Newton identity",
+      "a nonlinear-transfer theorem",
+      "progress that proves Erdős #1041"
+    ],
+    "significance": "Moderate as an explanatory and diagnostic interface: it exposes that the anchored quadratic remainder belongs to an exact reciprocal power-sum coefficient, so a contact calculation need not falsely discard it as mere error. Its value is conditional on a later strict reconstruction/transfer argument, not standalone novelty."
+  },
+  "primary_sources": [
+    {
+      "id": "eidswick_1968_newton_power_sums",
+      "title": "A proof of Newton's power sum formulas",
+      "author": "J. A. Eidswick",
+      "venue": "The American Mathematical Monthly 75(4) (1968), 396-397",
+      "doi": "10.2307/2313436",
+      "url": "https://digitalcommons.unl.edu/mathfacpub/50/",
+      "exact_anchor": "The two-page article begins from a polynomial factored by its roots and derives Newton's power-sum formulas by its logarithmic derivative.",
+      "supports": "The conventional Newton-sum/logarithmic-derivative provenance for R1's generating-function identity and R2's coefficient recursion.",
+      "does_not_support": "The near-Fekete perturbation variables, the exact R3 bridge, its C2 truncation constants, contact absorption, or any Erdős #1041 transfer conclusion.",
+      "inspection": "Located through the University of Nebraska Digital Commons primary-publication record and its linked PDF on 2026-08-25; the bibliographic record gives the Monthly volume, issue, and pages."
+    },
+    {
+      "id": "newton_arithmetica_universalis_historical_context",
+      "title": "Arithmetica universalis",
+      "author": "Isaac Newton",
+      "year": 1707,
+      "url": "https://cudl.lib.cam.ac.uk/view/MS-ADD-03993",
+      "exact_anchor": "Cambridge Digital Library Newton Papers record for the Arithmetica Universalis manuscript tradition; terminology context only.",
+      "supports": "Historical context for the conventional attribution in the phrase Newton identities.",
+      "does_not_support": "A checked modern-form statement of R1--R5, the exact source-specific bridge, or a priority conclusion for this package."
+    }
+  ],
+  "closest_known_result": {
+    "relation": "standard_logarithmic_derivative_and_newton_sum_specialization",
+    "statement": "For a polynomial with nonzero roots, the local expansion of log(f(z)/f(0)) is the generating series of reciprocal power sums; Newton--Girard identities express those power sums recursively through the reversed polynomial's coefficients.",
+    "exact_delta": "R3 substitutes the near-Fekete root perturbation coordinates into those standard quantities and identifies the second-and-higher perturbation contribution as an exact coefficient rather than a discarded anchored remainder. R1's explicit C2 tail budget and R5's completed-square condition are transparent quantitative support, not a separately located historical theorem."
+  },
+  "disconfirming_evidence": [
+    {
+      "kind": "source_self_classification",
+      "locator": "ReciprocalNewtonExpansion.md, sections 1-3 and 8-9",
+      "finding": "The source itself identifies R1 as the Taylor series of log(f/f(0)), R2 as Newton's identity for the reversed polynomial, and explicitly makes no novelty claim.",
+      "effect": "Reject a novelty or standalone theorem framing for the basic expansion and recursion."
+    },
+    {
+      "kind": "scope_counterexample",
+      "locator": "ReciprocalNewtonExpansion.md, section 6",
+      "finding": "Uniform convergence to a non-positive limit does not preserve strict negativity; the source gives -x^2 plus epsilon as the elementary obstruction.",
+      "effect": "Reject the inference that coefficient convergence, or this coordinate change alone, proves nonlinear transfer."
+    },
+    {
+      "kind": "source_boundary",
+      "locator": "ReciprocalNewtonExpansion.md, sections 7 and 9; review unit terminal_and_reentry",
+      "finding": "A finite stratification, strict leaves, and curve-selection/reconstruction margin are still required beyond the coordinate theorem.",
+      "effect": "Reject any wording that the package advances Erdős #1041 or closes a producer."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The reciprocal-power-sum expansion and Newton recursion are standard. In the source's near-Fekete coordinates, the R3 identity usefully relocates a quadratic anchored remainder into an exact coefficient, with explicit local tail control; this is a source-specific diagnostic for a later contact/transfer argument.",
+    "forbidden_wording": [
+      "This discovers a new Newton expansion.",
+      "The coordinate identity establishes strict reconstruction or nonlinear transfer.",
+      "The Lean core formalizes the entire ordinary analytic note.",
+      "This proves a case of, or makes a solution-level advance on, Erdős #1041."
+    ],
+    "open_boundary": "Prove a source-pinned strict reconstruction/transfer theorem across the needed finite stratification, retaining curvature and transverse-jet margins. The reciprocal coordinate identity is an input to that task, not its solution."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "near-Fekete coefficient coordinates and strict-contact transfer diagnostics",
+    "disposition": "subordinate beneath the component-perimeter/near-Fekete transfer family; retain as one coordinate diagnostic and consolidate future restatements of R1-R5 here rather than treating them as independent #1041 advances",
+    "paper_disposition": "technical supporting lemma in the coefficient-normalized near-Fekete transfer section, introduced after the strict-transfer problem rather than as a headline result",
+    "comparator_advisory": "No independent interface is justified by the ordinary coordinate package alone. The existing focused Lean declarations can be replayed as exact component facts if a stronger transfer family needs them, with their limited formal scope stated literally.",
+    "expert_review_act": "Review the R3 substitution from reciprocal power sums to the E_m perturbation coordinates and decide whether it genuinely simplifies the strict reconstruction proof, rather than merely rewriting its margin. This is the bounded review act that could raise or lower the package's practical significance."
+  },
+  "reviewer_attention_budget": {
+    "routine": "The local logarithmic series, Newton recursion, staple-length arithmetic, and completed-square estimate.",
+    "load_bearing": "Whether R3 preserves precisely the quadratic term needed at a tied/zero-margin contact and interfaces with a real strict reconstruction argument.",
+    "externally_sourced": "Newton-sum/logarithmic-derivative terminology and historical lineage.",
+    "still_unverified": "No external specialist has adjudicated the distinctness or practical usefulness of the R3 coordinate bridge; no general nonlinear-transfer proof is claimed.",
+    "where_to_slow_down": "Check the m<n root-of-unity cancellation and the sign/factor m in R3, then check the curvature-versus-transverse-jet inequality rather than accepting uniform convergence as a substitute for strictness.",
+    "expert_act": "Check the R3 substitution and its m/factor signs against the reciprocal series, then decide whether the exact coefficient viewpoint materially simplifies a strict reconstruction proof.",
+    "review_act": "Check the R3 substitution and its m/factor signs against the reciprocal series, then decide whether the exact coefficient viewpoint materially simplifies a strict reconstruction proof."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source-pinned ordinary coordinate theorem, focused Lean components, exact replay, and frozen private review unit",
+    "output_stage": "prior-art positioning and expert-understanding support",
+    "artifact": "erdos1041_reciprocal_newton_expansion_v0 prior-art route",
+    "human_understanding_delta": "Separates a classical expansion from the source-specific coordinate insight, and puts the genuine mathematical burden back on strict reconstruction rather than cosmetic coefficient rewriting.",
+    "verification_state": "Existing source records Lean component checks and exact replay; this route pins their stated scope and adds no fresh Lean replay or independent proof review.",
+    "publication_or_review_state": "Internal attribution adjudication only; no publication, Comparator, paper, or outreach action.",
+    "canonicalization_state": "One subordinate coordinate diagnostic in the near-Fekete transfer family, not a standalone Newton theorem or an additional #1041 frontier.",
+    "unresolved_downstream_bottleneck": "A strict finite-stratification reconstruction/transfer theorem that carries the contact margin to actual polynomials.",
+    "next_stage_owner": "Erdős 1041 transfer owners for a source-pinned strict-margin theorem; Novelty Observatory on a changed source generation, a real transfer result, or an attribution challenge."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "review_unit_erdos1041_reciprocal_newton_expansion_v1@ReciprocalNewtonExpansion-c042be558b",
+    "canonical_mechanism_family": "near-Fekete reciprocal-power coordinates and strict-contact transfer diagnostics",
+    "replacement_decision": "subordinate_under_existing_mechanism",
+    "evidence_class": "Classical externally sourced Newton/logarithmic-derivative identities, source-specific ordinary analytic bridge, focused Lean component declarations, and exact finite replay; no end-to-end transfer theorem.",
+    "closest_known_result": "Newton--Girard power-sum identities in logarithmic-derivative form, with Eidswick, A proof of Newton's power sum formulas, Amer. Math. Monthly 75 (1968), 396--397, as the inspected modern derivation; Newton's Arithmetica universalis is historical attribution context only.",
+    "primary_source_basis": [
+      {
+        "source": "J. A. Eidswick, A proof of Newton's power sum formulas",
+        "locator": "Amer. Math. Monthly 75(4) (1968), pp. 396--397",
+        "relation": "Supports the standard logarithmic-derivative/Newton-sum provenance of the generating identity and recursive coefficient formulas; it does not state the near-Fekete coordinates or strict-transfer bridge."
+      },
+      {
+        "source": "Isaac Newton, Arithmetica universalis",
+        "locator": "Cambridge Digital Library manuscript record, historical terminology context",
+        "relation": "Supports historical attribution of Newton identities only, not the modern source-specific package."
+      }
+    ],
+    "comparison_relation": "R1 and R2 are standard reciprocal power-sum/logarithmic-derivative and Newton--Girard material. R3 is a source-specific substitution into near-Fekete perturbation coordinates that retains the quadratic anchored remainder as an exact coefficient; R4/R5 are elementary local tail and completed-square estimates. No inspected source states the full R3--R5 clause bundle or transfers it to Erdős #1041.",
+    "exact_delta": "The useful delta is bookkeeping at a binding contact: the apparently discarded nonlinear remainder is identified with a reciprocal coefficient, so curvature-versus-transverse-jet cost can be stated exactly. This changes the coordinate presentation, not the unresolved strict reconstruction problem.",
+    "disconfirming_evidence": "The source note itself labels R1/R2 classical and gives a -x^2+epsilon counterexample showing that uniform convergence to a nonpositive model does not preserve strict negativity. Sections 7--9 still require finite stratification, curve-selection/reconstruction, curvature, and transverse-jet margins. The Lean component does not formalize the entire ordinary analytic note.",
+    "confidence": {
+      "level": "strong_internal_provisional_case_for_explanatory_coordinate_value; none_for_independent_novelty",
+      "basis": "The exact source note, Lean declarations, checker, receipt, reviewer card, and frozen review unit are hash-bound. Classical antecedents are explicit; non-location of an identical composite package is not treated as priority evidence."
+    },
+    "significance": "Moderate explanatory value and low standalone novelty. It prevents a contact argument from hiding the quadratic term inside an uncontrolled remainder and tells a reader exactly why coefficient convergence alone cannot finish the #1041 transfer.",
+    "claim_ceiling": "Call this a reciprocal-Newton coordinate bridge with explicit local bounds. Do not call it a new Newton identity, a nonlinear-transfer theorem, a strict reconstruction result, or progress solving Erdős #1041; do not imply the Lean core covers the analytic note end-to-end.",
+    "hard_step": "The hard step remains a source-pinned strict reconstruction/transfer theorem across the finite stratification, retaining curvature and transverse-jet margins. The coordinate identity is an input to that theorem.",
+    "open_boundary": "No unrestricted or sextic #1041 conclusion follows, and no public novelty, priority, peer-review, or Comparator claim is made.",
+    "bounded_expert_review_act": "Check the R3 substitution and its m/factor signs against the reciprocal series, then decide whether the exact coefficient viewpoint materially simplifies a strict reconstruction proof. Do not broaden the act into a generic Newton-identity survey.",
+    "source_generation_binding": {
+      "formal_source_commit": "c042be558bd03f89226c715764d63a399a5b9628",
+      "formal_source_sha256": {
+        "ReciprocalNewtonExpansion.md": "97e385b99bcbe1e23a83f2119fcd56c358577106e66b4cf9aad448ffa712a0ff",
+        "ReciprocalNewtonExpansion.lean": "fc69e0d0c86c2159c5513f2bfe4142ced0d1e7de5c81180980af355a1ef21b7a",
+        "check_erdos1041_reciprocal_newton_expansion.py": "2bc7888bf7f84d59f69026144cc2a30ebe2e0e42ec515907d38e6bafd3a61c0c",
+        "reciprocal_newton_expansion_tao_pipeline_receipt.json": "e98653b854158573b7cab0b6ccb9c68e077bac6111132ee999d7370b50ba0c5f"
+      },
+      "reviewer_card_commit": "181e07e5b915fc92cfeef635e7bdef9c446dab86",
+      "reviewer_card_sha256": "4fe4bdc0fb1aad543d9ac6e898a5ac097f170c509d8f059ce4342658d30b5a9c",
+      "review_unit_commit": "b4360cf966e946eb736a38a31d95a0a167cbb43c",
+      "review_unit_sha256": "8bbab74a38f35841e022ceb76bd9bc894df4e1d585516fb9de376f6cd4a91c9e",
+      "parity_status": "Current at this snapshot; all five local source/consumer hashes match the frozen review unit. No fresh Lean replay is asserted."
+    },
+    "paper_disposition": {
+      "disposition": "supporting_lemma",
+      "target_section": "coefficient-normalized near-Fekete transfer",
+      "supersession_relation": "Consolidates reciprocal expansion, Newton recursion, contact absorption, and the strictness warning beneath the existing near-Fekete/component-perimeter transfer family; do not split R1/R2 into separate theorem objects.",
+      "reader_value": "A short supporting segment that preserves the exact quadratic cost and the failure of C0 convergence as a strictness substitute."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The ordinary coordinate package is already represented by one #1041 card and three focused Lean declarations. A second interface would fragment a diagnostic mechanism; any future exact transfer proposition can consume the existing declarations with their limited scope."
+    },
+    "expert_attention_reason": "The scarce expert question is whether R3 changes the proof strategy at a tied contact, not whether Newton identities are true. That distinction keeps classical algebra from consuming attention meant for the actual strict-transfer bottleneck.",
+    "tao_pipeline_receipt": {
+      "input_stage": "source-pinned ordinary analysis, focused Lean components, and exact replay",
+      "output_stage": "prior-art positioning and human-understanding support",
+      "artifact": "erdos1041_reciprocal_newton_expansion",
+      "human_understanding_delta": "Separates classical reciprocal Newton algebra from the local coordinate bridge and returns the proof burden to strict reconstruction.",
+      "verification_state": "The source note, Lean declarations, checker, receipt, card, and review unit are hash-bound; this adjudication adds no fresh formal replay.",
+      "publication_or_review_state": "Internal Observatory/Refinery handoff only; no public novelty, priority, acceptance, or specialist-review claim.",
+      "canonicalization_state": "One subordinate coordinate diagnostic under the near-Fekete transfer family; no duplicate Newton card or Comparator proposition.",
+      "unresolved_downstream_bottleneck": "Strict finite-stratification reconstruction/transfer with curvature and transverse-jet control.",
+      "next_stage_owner": "Erdős 1041 transfer owners for a source-pinned strict-margin theorem; Role 3 for any later release decision."
+    },
+    "reentry_trigger": "Re-enter on any bound-source/hash drift, a primary source stating the same R3--R5 composite, a strict-transfer result, or a counterexample to the contact absorption inequalities."
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "c042be558bd03f89226c715764d63a399a5b9628",
+      "formal_source_sha256": {
+        "ReciprocalNewtonExpansion.md": "97e385b99bcbe1e23a83f2119fcd56c358577106e66b4cf9aad448ffa712a0ff",
+        "ReciprocalNewtonExpansion.lean": "fc69e0d0c86c2159c5513f2bfe4142ced0d1e7de5c81180980af355a1ef21b7a",
+        "check_erdos1041_reciprocal_newton_expansion.py": "2bc7888bf7f84d59f69026144cc2a30ebe2e0e42ec515907d38e6bafd3a61c0c",
+        "reciprocal_newton_expansion_tao_pipeline_receipt.json": "e98653b854158573b7cab0b6ccb9c68e077bac6111132ee999d7370b50ba0c5f"
+      },
+      "reviewer_card_sha256": "4fe4bdc0fb1aad543d9ac6e898a5ac097f170c509d8f059ce4342658d30b5a9c",
+      "review_unit_sha256": "8bbab74a38f35841e022ceb76bd9bc894df4e1d585516fb9de376f6cd4a91c9e"
+    },
+    "claim_guard": "Classical reciprocal Newton identities plus a source-specific near-Fekete coordinate bridge and local contact bounds; no strict transfer or Erdős #1041 conclusion.",
+    "reentry_trigger": "Re-enter on source/hash drift, exact composite prior art, or a source-pinned strict-transfer result."
+  }
+}

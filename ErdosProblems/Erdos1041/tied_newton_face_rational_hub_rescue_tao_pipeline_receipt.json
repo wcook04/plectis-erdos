@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "exact_minimum_real_critical_hub_selector_no_go",
+  "output_stage": "same_model_exactly_rescued_by_joint_rational_geometry",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceRationalHubRescue.md",
+  "human_understanding_delta": "The selector counterexample is not a connector counterexample. A nearby noncritical rational hub and rational unit directions give 24 strictly negative finite Bernstein controls and a strict metric budget. Trace may locate a negative component, but the final geometric hub can move inside it.",
+  "verification_state": "exact rational checker PASS; focused serialized Lean replay of arm, tail, and length certificates",
+  "publication_or_review_state": "private authoring checkpoint; not independently reviewed; unrestricted Erdős #1041 remains open",
+  "canonicalization_state": "exact two-sided diagnosis and rescue of one tied quintic",
+  "unresolved_downstream_bottleneck": "Prove an all-degree joint selector for a negative component, noncritical hub, two negative asymptotic sectors, and cutoff; use finite Bernstein controls and then transfer strictly to the actual polynomial.",
+  "next_stage_owner": "next_mathematical_closure_agent",
+  "tool_disclosure": "Random and adversarial Bernstein searches suggested moving off the critical set; the promoted certificate is entirely rational and exact."
+}

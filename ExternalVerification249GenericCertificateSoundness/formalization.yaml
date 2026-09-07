@@ -1,0 +1,189 @@
+version: v0.4
+project:
+  name: 'Erdős #249: certificate soundness and the rational tail-period law for
+    binary coefficient sequences'
+  description: >-
+    Two declarations are compared, both about a coefficient sequence c from the
+    naturals to the naturals with c n at most n, whose binary value is the sum over
+    n at least 0 of c (n+1) / 2^(n+1) and whose scaled tail at height N is the sum
+    over j at least 0 of c (N + j + 1) / 2^(j+1). The first is certificate
+    soundness. The length-L integer window comparing the block after N + h with the
+    block after N has discrepancy given by the alternating weighted sum; if that
+    discrepancy lies strictly between N + h + L + 2 and 2^L minus that quantity
+    modulo 2^L, then the tail shift at N of step h is not an integer. The second is
+    the rational tail-period law. If the binary value equals p / (2^e * m) with m
+    positive and m dividing 2^h - 1, then for every N at least e the tail shift at N
+    of step h is an integer. The certificate radius is unchanged from the long
+    record and the ambient growth hypothesis is explicit. Neither declaration
+    supplies a certificate for any particular sequence, neither asserts anything
+    about the value of the totient series, and Erdős Problem 249 remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A63
+  - 11B83
+sources:
+- title: A basis and all its relations for the binary totient series
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The Lean development proves the generic soundness lemma and the generic
+    tail-period lemma of the long record, with the ambient coefficient class
+    c n at most n stated explicitly in both.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status; neither compared declaration is attributed to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+  note: Summability of the geometric tail and the integer division algorithm are the
+    only library inputs of substance.
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+  notes: Human mathematical review remains separate from Lean checking, Comparator
+    preparation, and any future Palomar editorial review.
+fidelity:
+  divergences: The Challenge redeclares the binary value, the scaled tail, the window
+    and the kill predicate in Mathlib-only vocabulary. The Solution redeclares the
+    same four definitions with the same bodies and transports the two source
+    theorems, so the compared statements are token-identical.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: The hypothesis set of each compared declaration and the absence of any
+    statement about the totient series were checked by the author with AI
+    assistance; no independent review is claimed.
+status:
+  scope: Two exact source-backed declarations. Challenge.lean contains two intentional
+    Comparator specification sorries.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count.
+  axiom_audit_status: source_module_audited_clean_entry_axiom_print_pending_first_public_ci_run
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_soundness
+    file: Solutions/ExternalVerification249GenericCertificateSoundness.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249GenericCertificateSoundness/comparator.json
+    canonical_claim_status: exact source transport; the source module elaborates rc=0
+      with a clean axiom print, and this entry's own print is pending its first
+      public CI run
+    local_proof_provenance: Source declaration
+      ErdosProblems.Erdos249.PaperCompleteR7.GenericCertificates.generic_soundness.
+    novelty_status: unassessed
+    contribution_class: soundness of a finite window certificate against an infinite
+      tail
+    statement: For a coefficient sequence bounded by its index, a window discrepancy
+      lying in the central arc modulo 2^L forces the tail shift of step h at height N
+      off the integers.
+    boundary: The certificate must be supplied externally. The declaration proves no
+      certificate exists for any given sequence and says nothing about the totient
+      series.
+    comparator_declaration: Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_soundness
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_tail_period
+    file: Solutions/ExternalVerification249GenericCertificateSoundness.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249GenericCertificateSoundness/comparator.json
+    canonical_claim_status: exact source transport; the source module elaborates rc=0
+      with a clean axiom print, and this entry's own print is pending its first
+      public CI run
+    local_proof_provenance: Source declaration
+      ErdosProblems.Erdos249.PaperCompleteR7.GenericCertificates.generic_tail_period.
+    novelty_status: unassessed
+    contribution_class: exact preperiod and period for a rational binary value
+    statement: A binary value equal to p / (2^e * m) with m dividing 2^h - 1 freezes
+      every tail shift of step h above height e at an integer.
+    boundary: A conditional statement about sequences that already have a rational
+      value of that shape. It supplies no rational value and refutes none.
+    comparator_declaration: Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_tail_period
+    literature_dependencies: []
+alignment:
+  namespace: Erdos249257.ExternalVerification249GenericCertificateSoundness
+  statements:
+  - source: ErdosProblems.Erdos249.PaperCompleteR7.GenericCertificates.generic_soundness
+    lean: Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_soundness
+    module: ExternalVerification249GenericCertificateSoundness/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+  - source: ErdosProblems.Erdos249.PaperCompleteR7.GenericCertificates.generic_tail_period
+    lean: Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_tail_period
+    module: ExternalVerification249GenericCertificateSoundness/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+    note: The Challenge statements are token-identical to the Solution statements and
+      use Mathlib vocabulary only.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
+palomar_qualification:
+  status: awaiting-review
+  selected_project: formal_math/erdos257_period_noncollapse
+  comparator_config: formal_math/erdos257_period_noncollapse/ExternalVerification249GenericCertificateSoundness/comparator.json
+  formalization_metadata: formal_math/erdos257_period_noncollapse/ExternalVerification249GenericCertificateSoundness/formalization.yaml
+  source_module: formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PaperCompleteR7/GenericCertificates.lean
+  release_mirror: ExternalVerification249GenericCertificateSoundness
+  repository_scope: private_source_mirrored_into_the_palomar_release_tree_not_yet_pinned_at_a_public_commit
+  challenge_dependency_boundary: Mathlib_only
+  replay_status: challenge_elaborates_rc0_with_two_intentional_sorries_solution_awaits_the_source_module_olean
+  blockers:
+  - Solution.lean has not elaborated because the .olean of the source module is
+    absent from the local build cache; the serialized project build produces it
+  - result packet is not present in a public repository at a pinned full commit SHA
+  - comparator positive acceptance and deliberate-negative mismatch rejection have not
+    been recorded on a supported runner for this entry
+  - the lakefile library entry for this package is added by the release step, not by
+    the authoring pass
+editorial_assessment:
+  plectis_signal: >-
+    These two lemmas are the frame in which every finite certificate search for the
+    binary totient series is stated. Soundness says what a window has to show, and
+    the period law says exactly which denominators a window of step h can address.
+    Together they fix the search space without narrowing it.
+  prior_art_state: >-
+    Both are the standard separation and periodicity arguments for binary expansions
+    of rationals, stated for an arbitrary index-bounded coefficient sequence. No
+    exact prior statement in this generality has been located, and neither is
+    presented as novel.
+  sharpness_gap: >-
+    The certificate radius N + h + L + 2 is the one carried by the long record. No
+    declaration here shows it cannot be reduced, and no declaration here supplies a
+    window that meets it for the totient sequence.

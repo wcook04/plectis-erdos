@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+project:
+  name: "Erdős #249 exact actual-LCM orbit frontier"
+  description: >-
+    The actual power-two LCM-diagonal tail orbit is an integer translate of a
+    scaled binary totient series, and cofinal non-integrality of this orbit is
+    equivalent to irrationality. The package supplies an exact reformulation,
+    not the missing cofinal non-integrality proof.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B83"]
+sources:
+  - title: "The actual-LCM orbit frontier for Erdős Problem 249"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #249"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/249"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; the actual-LCM orbit theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact orbit identity, irrationality equivalence, and missing cofinal non-integrality producer were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "No Comparator verdict, Palomar outcome, novelty ruling, or submission is claimed."
+status:
+  scope: "Two exact source-backed declarations; one trusted sorry per Challenge theorem."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  axiom_audit_status: "pending_guarded_build_deferred_low_disk_exit_75"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification249ActualLcmOrbit.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix"
+      file: "ExternalVerification249ActualLcmOrbit/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Exact scaled-series identity; it does not produce orbit non-integrality."
+    - declaration: "Erdos249257.ExternalVerification249ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply"
+      file: "ExternalVerification249ActualLcmOrbit/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Exact equivalence; the cofinal non-integrality supply remains unproved."
+alignment:
+  namespace: "Erdos249257.ExternalVerification249ActualLcmOrbit"
+  statements:
+    - source: "Erdos257PeriodNoncollapse.TotientActualLcmOrbitSeparation and TotientActualLcmOrbitNonintegrality"
+      lean: "exact orbit identity and exact irrationality equivalence"
+      module: "ExternalVerification249ActualLcmOrbit/Challenge.lean"
+      status: "exact-transport-pending-guarded-build-deferred-low-disk-exit-75"

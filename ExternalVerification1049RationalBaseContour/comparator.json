@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification1049RationalBaseContour.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049RationalBaseContour",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049RationalBaseContour.eightyOne_twoHundredths_lt_zudilinContour",
+    "Erdos249257.ExternalVerification1049RationalBaseContour.zudilinContour_lt_half",
+    "Erdos249257.ExternalVerification1049RationalBaseContour.threeHalves_outside_zudilinContourRegion",
+    "Erdos249257.ExternalVerification1049RationalBaseContour.thirtyoneFour_power_mem_zudilinContourRegion",
+    "Erdos249257.ExternalVerification1049RationalBaseContour.zudilinJ_ge",
+    "Erdos249257.ExternalVerification1049RationalBaseContour.zudilinC0_gt"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

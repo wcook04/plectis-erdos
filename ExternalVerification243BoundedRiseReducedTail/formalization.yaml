@@ -1,0 +1,227 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #243: exclusion of bounded-rise reduced tails"
+  description: >-
+    No exact reduced tail arising from the rational case of Erdős Problem 243 rises slowly
+    forever. Fix an index N and a positive bound B. If the multipliers satisfy a n > 1 from N
+    onward, the states are reduced with gcd(u n, v n) = 1 from N onward, the exact recurrences
+    u(n+1) + v n = a n u n and v(n+1) = a n v n hold from N onward, and every upward increment
+    obeys u(n+1) <= u n + B from N onward, then the numerator sequence u tending to infinity is
+    contradictory. Coprimality of u n and v n is definitional for a reduced tail, so the
+    exclusion applies to the actual reduced tail at every offset and every uniform bound. A
+    second theorem states the unshifted case N = 0 with the same conclusion. The third theorem
+    is the general barrier that both reduced-tail statements specialise: for a natural sequence
+    u tending to infinity and a modulus family m with m n > 1 from N onward, with m i and m j
+    coprime at distinct indices i, j at least N, and with m i coprime to u t at every pair
+    N <= i < t, a uniform upward increment bound u(n+1) <= u n + B from N onward is
+    contradictory. That statement is written in Mathlib vocabulary alone, using Nat.Coprime and
+    Filter.Tendsto, and carries an explicit uniform constant B with no project definition. The
+    mechanism takes the B moduli m N through m (N + B - 1), builds by the Chinese remainder
+    theorem a shifted block of B consecutive integers x, x + 1, ..., x + B - 1 with the i-th
+    divisible by m (N + i) and with x strictly above the value of u at index N + B, and then
+    takes the first index at which u reaches x + B. At every index from N + B onward each value
+    in the window from x to x + B is divisible by one of the selected moduli while whole-modulus
+    avoidance makes it coprime to that same modulus, so the window is unreachable there; the
+    predecessor of the first crossing therefore lies below x, and the increment bound puts the
+    crossing value below x + B. The ingredients are the Chinese remainder theorem, coprimality
+    bookkeeping and a first-crossing argument. The avoidance hypothesis is required at every
+    index later than the modulus index, the increment bound is uniform over the whole tail, and
+    the divergence of u is assumed here. No theorem in this package produces those hypotheses
+    from the reciprocal series, no theorem forces the Sylvester recurrence
+    a(n+1) = a n^2 - a n + 1, and Erdős Problem 243 remains open.
+  authors:
+    - "Will Cook"
+  responsible_maintainers:
+    - "Will Cook"
+  license: "Apache-2.0"
+
+palomar_qualification:
+  status: "not_submitted"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243BoundedRiseReducedTail/comparator.json"
+  repository_scope: "per_family_configuration_with_public_monolithic_provenance"
+  challenge_dependency_boundary: "Mathlib_only"
+  blockers:
+    - "no Lean elaboration, axiom audit, or Comparator replay has been run for this entry"
+    - "lakefile lean_lib stanza and defaultTargets row for ExternalVerification243BoundedRiseReducedTail are not yet added"
+    - "launch_selection_v1.json launch_core row is not yet added"
+  note: >-
+    Three checked declarations on one mechanism. The reduced-tail forms are the
+    statement about the actual reduced tail, where coprimality is definitional
+    rather than an added hypothesis, and the third declaration is the same
+    barrier stripped to Mathlib vocabulary with an explicit uniform constant.
+    The frontier locator for this claim family names
+    no_boundedRise_of_strictRiseAvoidance in
+    ErdosProblems/Erdos243/LcmCriticalBoundary.lean; that module is outside the
+    release build closure, so this entry deliberately routes through
+    no_boundedRise_of_tailAvoidance in ReciprocalTailRigidity.lean, which is
+    already the sole #243 module in the release closure.
+
+sources:
+  - title: "Bounded-rise exclusion on the reduced tail for Erdős Problem 243"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean,
+      declarations no_boundedRise_of_tailAvoidance, no_boundedRise_reducedTail
+      and no_eventuallyBoundedRise_reducedTail.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Irrationality of the reciprocal sum of doubly exponential sequences"
+    authors:
+      - "Junnosuke Koizumi"
+    id: "https://arxiv.org/abs/2504.05933"
+    type: "preprint"
+    relationship: "background"
+    note: >-
+      Lemma 15 records the modular recurrence that is the nearest located
+      antecedent for the bounded-rise barrier, per the prior-art disposition
+      F3c_243_crt_bounded_rise_barrier audited 2026-09-02. The barrier proved
+      here is independent of that lemma.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B37", "11A05"]
+
+editorial_assessment:
+  presentation_order:
+    - "eventual_bounded_rise_reduced_tail_exclusion"
+    - "bounded_rise_reduced_tail_exclusion"
+    - "general_coprime_modulus_bounded_rise_barrier"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with Landrun"
+      tool_setup: >-
+        Positive acceptance has not been recorded on a supported runner for this
+        entry; no terminal replay verdict recorded.
+
+status:
+  scope: >-
+    The package selects the bounded-rise exclusion chain: the eventual
+    reduced-tail form, the unshifted reduced-tail form, and the general
+    coprime-modulus barrier they specialise. Challenge has one trusted
+    specification sorry per selected theorem; proof-bearing source and Solution
+    are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  axiom_audit_status: "not_recorded"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_eventuallyBoundedRise_reducedTail"
+      file: "ExternalVerification243BoundedRiseReducedTail/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243BoundedRiseReducedTail/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_build_not_recorded"
+      source_declaration: "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail"
+      source_file: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+      contribution_class: "eventual bounded-rise exclusion on the exact reduced tail"
+      paper_result_label: "none_declared"
+      boundary: >-
+        The exact reduced recurrence from index N, the multiplier lower bound,
+        the uniform increment bound and the divergence of the numerator are
+        hypotheses rather than outputs.
+    - declaration: "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_reducedTail"
+      file: "ExternalVerification243BoundedRiseReducedTail/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243BoundedRiseReducedTail/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_build_not_recorded"
+      source_declaration: "ErdosProblems.Erdos243.no_boundedRise_reducedTail"
+      source_file: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+      contribution_class: "bounded-rise exclusion on the exact reduced tail from index zero"
+      paper_result_label: "none_declared"
+      boundary: >-
+        This is the unshifted case, requiring the reduced exact recurrence at
+        every index.
+    - declaration: "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_of_tailAvoidance"
+      file: "ExternalVerification243BoundedRiseReducedTail/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243BoundedRiseReducedTail/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_build_not_recorded"
+      source_declaration: "ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance"
+      source_file: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+      contribution_class: "general coprime-modulus bounded-rise barrier in Mathlib vocabulary"
+      paper_result_label: "none_declared"
+      boundary: >-
+        Avoidance is required at every index later than the modulus index, and
+        the modulus family is a hypothesis rather than a construction.
+
+fidelity:
+  divergences: >-
+    The package exposes the exact source theorem chain and does not add a
+    producer for the reduced exact recurrence, the uniform increment bound, or
+    the divergence of the numerator.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Source statements, strongest-first Comparator order, source routes, and the
+    open conditional boundary were reviewed against
+    ErdosProblems/Erdos243/ReciprocalTailRigidity.lean. The three selected
+    source declarations were read and are sorry-free, and the module is
+    md5-identical in the private corpus and the release tree. No Lean
+    elaboration, axiom audit, or Comparator replay was run for this entry, so
+    the axiom set and claim status are recorded as unverified.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243BoundedRiseReducedTail"
+  statements:
+    - source: "an eventually reduced exact tail with a uniformly bounded rise cannot have a divergent numerator"
+      lean: "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_eventuallyBoundedRise_reducedTail"
+      module: "ExternalVerification243BoundedRiseReducedTail/Challenge.lean"
+      status: "exact-source-transport-build-not-recorded"
+    - source: "a reduced exact tail with a uniformly bounded rise cannot have a divergent numerator"
+      lean: "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_reducedTail"
+      module: "ExternalVerification243BoundedRiseReducedTail/Challenge.lean"
+      status: "exact-source-transport-build-not-recorded"
+    - source: "a slowly rising divergent sequence cannot permanently avoid an infinite pairwise-coprime modulus family"
+      lean: "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_of_tailAvoidance"
+      module: "ExternalVerification243BoundedRiseReducedTail/Challenge.lean"
+      status: "exact-source-transport-build-not-recorded"

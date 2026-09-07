@@ -1,0 +1,209 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "critical_binomial_lemniscate_metric_star",
+  "source_result_ids": [
+    "critical_binomial_lemniscate_metric_star"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_classical_capacity_plus_known_sinusoidal_spiral_petals_with_elementary_intrinsic_metric_corollary",
+  "problem_id": "erdos_1041",
+  "purpose": "Attribute the capacity normalization and n-petal critical-binomial geometry, identify standard curve terminology, and classify the exact geodesic equality as an elementary model-family corollary rather than a general lemniscate theorem.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/critical_binomial_lemniscate_metric_star.card.json",
+    "refinery_handoff_commit": "b9c66d9dd47fe4fd257c552e2dfc3199f23e5735",
+    "source_commit": "febb88d77237983954e1b9e07b658b661a8b60fc",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacityGeodesicConjecture.md"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Capacity normalization and n-petal geometry are classical; the metric-star equality is an elementary benchmark whose value is constant calibration.",
+    "slow_down_at": "Keep the unique critical level and intrinsic metric definition explicit. Do not generalize to supercritical levels or arbitrary polynomials.",
+    "automation_can_establish": [
+      "The committed source/card/packet snapshot",
+      "The affine binomial distance calculation and petal intersection"
+    ],
+    "human_judgment_required": [
+      "Whether any primary source states the metric equality verbatim",
+      "Which constants a general capacity-geodesic inequality must reproduce"
+    ],
+    "review_act": "Check the capacity normalization and critical-level quantifiers against the cited sources; retain this as one benchmark rather than a general theorem."
+  },
+  "classification": {
+    "capacity_formula_novelty_class": "classical_polynomial_preimage_law_for_logarithmic_capacity",
+    "critical_level_topology_novelty_class": "known_n_petal_sinusoidal_spiral_or_lemniscate_with_n_poles_geometry",
+    "intrinsic_distance_novelty_class": "elementary_exact_corollary_of_petals_meeting_only_at_the_hub_no_priority_claim",
+    "quadratic_corollary_class": "routine_affine_normal_form",
+    "priority_claim": "none",
+    "recommended_terminology": [
+      "critical n-pole lemniscate",
+      "n-petal sinusoidal spiral",
+      "intrinsic metric star at the unique critical point"
+    ],
+    "nearest_prior_work": [
+      "Crane (2003), section 4.2, records the classical polynomial-preimage capacity law and the monic lemniscate specialization.",
+      "Jianu (2023), equation (13) and the following discussion, identifies |z^n-1|=1 as a sinusoidal spiral or lemniscate with n poles and decomposes the filled set into n rotated petals.",
+      "The sinusoidal-spiral curve family is classical and is traced by Jianu to Maclaurin's 1718 work."
+    ],
+    "attribution": "Use classical potential theory for capacity and sinusoidal spiral or n-pole lemniscate for the boundary curve. `Metric star' is acceptable descriptive metric language, not a standard priority-bearing name. Credit the card for extracting the exact intrinsic-distance corollary and capacity-normalized equality model.",
+    "mathematical_interest": "The geometry is elementary and highly symmetric, but it is the exact equality family any proposed capacity-geodesic inequality must reproduce. Its main value is as a sharp benchmark and falsifier, not as an isolated new theorem.",
+    "reusable_scope": "All affine images of z^n-1 at the unique critical level, and hence all monic quadratics with distinct roots after completing the square. No arbitrary polynomial or supercritical level follows.",
+    "why_it_matters": "It gives a scale-free equality model: every distinct-root intrinsic distance is exactly twice the logarithmic capacity. This calibrates constants without supplying the general inequality."
+  },
+  "primary_sources": [
+    {
+      "id": "crane_2003_capacity",
+      "title": "Topics in Conformal Geometry and Dynamics",
+      "author": "Edward Thomas Crane",
+      "type": "University of Cambridge PhD thesis",
+      "url": "https://people.maths.bris.ac.uk/~maetc/thesis.pdf",
+      "local_annex": "annexes/crane-2003-topics-conformal-geometry-dynamics",
+      "primary_text_read": true,
+      "local_pdf_sha256": "82447d4bba4e2934052cef8b8bc489cd37db97f4fa58a73ddc7fd6db87e6cf4e",
+      "exact_anchor": "Chapter 4, printed pp. 118-123: polynomial lemniscate definitions and Pólya area/preimage inequalities (Theorems 4.1-4.3); §4.2, printed pp. 120-123, gives cap(p^{-1}(K))=(cap(K)/|a_n|)^(1/n), the monic specialization cap(E(p,r))=r, and capacity/diameter bounds.",
+      "supports": "The classical capacity normalization.",
+      "does_not_support": "No n-petal topology, intrinsic geodesic, or general capacity-geodesic inequality."
+    },
+    {
+      "id": "jianu_2023_roots_family_polynomials",
+      "title": "On the Roots of a Family of Polynomials",
+      "author": "Marilena Jianu",
+      "venue": "Fractal and Fractional 7 (2023), article 339",
+      "doi": "10.3390/fractalfract7040339",
+      "url": "https://www.mdpi.com/2504-3110/7/4/339",
+      "exact_anchor": "Equation (13) and the subsequent discussion: |z^n-1|=1 is a sinusoidal spiral or lemniscate with n poles; the filled inverse image is the union of n identical rotated petals with polar equation r=(2 cos(n theta))^(1/n).",
+      "supports": "Canonical curve terminology and the n-petal decomposition.",
+      "does_not_support": "No verbatim intrinsic-distance equality or capacity-normalized metric statement was located."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "At the critical level, the classical n-pole lemniscate has n petals meeting at its unique critical point; the exact root-to-root distance 2|lambda|^(1/n) is an elementary intrinsic-metric corollary and equals twice capacity.",
+    "forbidden_wording": [
+      "We discovered the n-petal critical binomial lemniscate.",
+      "Metric star is the established classical name of the curve.",
+      "The equality proves a general capacity-geodesic inequality.",
+      "The result solves Erdos Problem 1041."
+    ],
+    "nonclaims": ["not_a_solution_of_erdos_1041", "not_a_general_polynomial_theorem", "not_a_priority_claim", "not_a_supercritical_level_statement"]
+  },
+  "disconfirmation_search": {
+    "queries": ["absolute z^n minus 1 equals 1 lemniscate petals", "sinusoidal spiral lemniscate with n poles", "critical binomial lemniscate intrinsic distance", "monic polynomial lemniscate logarithmic capacity"],
+    "result": "The capacity formula and n-petal curve are standard. No primary source was located stating the exact intrinsic geodesic equality in the card's language.",
+    "boundary": "That gap supports only an elementary exact-corollary classification, not novelty or priority."
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_equality_benchmark",
+    "reason": "The ordinary proof, classical sources, and exact boundary are inspectable. Its supporting benchmark role—not reviewer absence—explains why no independent Comparator family is recommended.",
+    "comparator_advisory": "Present only beneath the capacity/geodesic mechanism, with ordinary-proof status and classical attribution."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "proved_model_family_and_prior_art_route",
+    "output_stage": "expert_digestion_and_equality_model_canonicalization",
+    "artifact": "critical_binomial_lemniscate_metric_star_v0",
+    "human_understanding_delta": "Makes one sharp equality family carry all constant calibration and consolidates its classical and local components.",
+    "verification_state": "Authored ordinary all-degree proof plus finite calibration; no Lean theorem.",
+    "publication_or_review_state": "Eligible for public benchmark use with evidence labels; specialist review remains downstream.",
+    "canonicalization_state": "Canonical equality benchmark under the capacity/geodesic family.",
+    "unresolved_downstream_bottleneck": "General critical-component intrinsic geometry.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and \\#1041 proof owners."
+  },
+  "landing_consumers": [
+    {"path":"docs/formal_math/reviewer_cards/critical_binomial_lemniscate_metric_star.card.json","effect":"Replace pending terminology with the classical capacity and sinusoidal-spiral antecedents."},
+    {"consumer":"Mathematics Refinery","effect":"Use this as a capacity-normalized equality benchmark, not as evidence for the arbitrary-polynomial conjecture."}
+  ],
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "capacity/geodesic equality benchmarks for critical polynomial lemniscates",
+    "programme_disposition": "subordinate under the #1041 metric-versus-containment family; consolidate all affine binomial, petal, quadratic, and radial-star instances into one benchmark",
+    "paper_disposition": "technical appendix/benchmark panel in the capacity-geodesic section, not a headline theorem",
+    "supersession_or_consolidation": "Use one critical-level binomial model to calibrate constants and expose the hub geometry; do not create separate quadratic or petal cards.",
+    "human_understanding_delta": "A reader sees exactly which equality model a general capacity-geodesic inequality must reproduce and why supercritical/general geometry is harder.",
+    "open_boundary": "No general polynomial, supercritical-level, or arbitrary-component intrinsic metric theorem follows."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-current benchmark pass",
+    "source_version_binding": {
+      "ordinary_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacityGeodesicConjecture.md",
+        "commit": "17cd3c57bf526aa6b5e7c460cc4e1825f9502f1a",
+        "sha256": "4fd617b423b3660c32d105ca0862f385030b573ef22f698d35060a8578157376"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+        "commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+        "sha256": "bbcd1f19579722039c646f6437d252456b6bdf8df9a523b45e3d3311468ac0c8",
+        "source_result_id": "critical_binomial_lemniscate_metric_star"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/critical_binomial_lemniscate_metric_star.card.json",
+        "commit": "16f502934d3b5938d642ac2c0cd1a2f31aa448e8",
+        "sha256": "072e28d13bab582bcc58d4cdc8d50f2f45ea7ac33e4a4b91948c580133376558"
+      }
+    },
+    "evidence_class": "Authored ordinary all-degree critical-level binomial proof with classical capacity/petal antecedents; finite calibration only; no Lean theorem.",
+    "comparison_relation": "Crane's thesis, Chapter 4 (Theorems 4.1-4.6), explicitly records Pólya's area bounds, the polynomial-preimage capacity law, and the capacity/diameter framework for lemniscates. Those results are the correct antecedent for the scale normalization; the exact critical-binomial intrinsic-distance equality remains an elementary model-family corollary, not a new general lemniscate theorem.",
+    "confidence_ceiling": "High for the classical attribution and exact critical-level model; moderate for non-location of the metric wording; no priority claim.",
+    "disconfirming_evidence": [
+      "The equality uses the unique critical hub and petal symmetry.",
+      "No arbitrary-polynomial or supercritical-level intrinsic metric theorem is proved.",
+      "The source is an authored ordinary proof with no Lean end-to-end theorem."
+    ],
+    "hard_step": "The benchmark proof is elementary; the unresolved difficulty is obtaining intrinsic-geodesic control after the critical hub and symmetry disappear.",
+    "open_boundary": "Supercritical mergers, arbitrary polynomial lemniscates, and the general Erdős #1041 capacity-geodesic inequality remain open.",
+    "prior_art_assessment": {
+      "confidence": "high for the classical attribution and exact model; moderate for non-location of the metric wording; no priority claim",
+      "closest_primary_sources": [
+        "Crane (2003), Section 4.2: polynomial-preimage logarithmic-capacity law and monic lemniscate specialization.",
+        "Jianu (2023), equation (13) and following discussion: sinusoidal spiral/n-pole lemniscate and rotated-petal decomposition; terminology traced to Maclaurin."
+      ],
+      "exact_relation": "Capacity and petal geometry are classical. The source extracts the exact intrinsic-distance equality at the unique critical level as an elementary corollary; no primary source was located stating that metric wording verbatim.",
+      "search_scope": "Targeted searches covered critical binomial lemniscates, n-pole sinusoidal spirals, intrinsic distance, and monic capacity normalization. Non-location supports only a conservative corollary classification."
+    },
+    "mathematical_delta": {
+      "one_sentence": "At the unique critical level of (z-tau)^n-lambda, the n-petal lemniscate is a metric star and every distinct-root intrinsic distance equals 2|lambda|^(1/n), exactly twice its capacity.",
+      "genuinely_hard_step": "The benchmark is elementary; the real unresolved problem is obtaining any comparable intrinsic-geodesic bound once the forced central hub and petal symmetry disappear.",
+      "why_care": "It supplies a scale-free equality model that can falsify constants in a general capacity-geodesic conjecture and prevents symmetric examples from being mistaken for arbitrary-polynomial progress.",
+      "natural_friction": "The equality is critical-level only; supercritical mergers and general critical graphs have different intrinsic geometry."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "At the critical level, the classical n-petal binomial lemniscate has intrinsic root-to-root distance 2|lambda|^(1/n), an elementary corollary equal to twice capacity.",
+      "rejected_stronger": [
+        "the n-petal curve was discovered here",
+        "metric star is the established classical name",
+        "the equality proves a general capacity-geodesic inequality",
+        "the result covers supercritical levels or arbitrary polynomials",
+        "Erdős #1041 is solved"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "B_plus_equality_benchmark",
+      "mechanism_family": "capacity/geodesic equality benchmarks for critical polynomial lemniscates",
+      "programme_disposition": "subordinate under the #1041 metric-versus-containment family",
+      "paper_disposition": "technical benchmark panel beneath the capacity/geodesic mechanism",
+      "comparator_advisory": "No independent Comparator interface; if surfaced, label classical capacity/petal geometry and the ordinary metric corollary separately.",
+      "absolute_shortlist": "do not admit as flagship"
+    },
+    "expert_review_act": "Check the capacity normalization, petal intersection argument, and intrinsic-distance equality; compare terminology with the cited potential-theory and sinusoidal-spiral sources.",
+    "reentry_condition": "Reopen if a primary source states the exact metric equality, the critical-level hypothesis changes, or a general component-geodesic theorem is proposed.",
+    "primary_text_verification": {
+      "source_id": "crane_2003_capacity",
+      "local_pdf": "annexes/crane-2003-topics-conformal-geometry-dynamics/source.pdf",
+      "sha256": "82447d4bba4e2934052cef8b8bc489cd37db97f4fa58a73ddc7fd6db87e6cf4e",
+      "locator": "Chapter 4, printed pp. 118-123: definition of polynomial lemniscates; Theorems 4.1-4.3 (Pólya area/preimage inequalities); §4.2, printed pp. 120-123, defines logarithmic capacity, states cap(p^{-1}(K))=(cap(K)/|a_n|)^(1/n), and deduces capacity/diameter bounds and Theorem 4.6.",
+      "conclusion": "The primary text supports the capacity normalization and its classical status. It does not state the metric-star intrinsic-distance equality or a general capacity-geodesic theorem."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "ordinary_source_packet_card_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "ordinary_source_commit": "17cd3c57bf526aa6b5e7c460cc4e1825f9502f1a",
+      "ordinary_source_sha256": "4fd617b423b3660c32d105ca0862f385030b573ef22f698d35060a8578157376",
+      "research_packet_commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+      "research_packet_sha256": "bbcd1f19579722039c646f6437d252456b6bdf8df9a523b45e3d3311468ac0c8",
+      "reviewer_card_commit": "16f502934d3b5938d642ac2c0cd1a2f31aa448e8",
+      "reviewer_card_sha256": "072e28d13bab582bcc58d4cdc8d50f2f45ea7ac33e4a4b91948c580133376558",
+      "source_result_ids": [
+        "critical_binomial_lemniscate_metric_star"
+      ]
+    },
+    "claim_guard": "Only the critical-level affine binomial metric-star equality is admitted as an ordinary benchmark; no supercritical, arbitrary-polynomial, general capacity-geodesic, or #1041 solution claim.",
+    "reentry_trigger": "Re-enter if the primary source, packet/card snapshot, critical-level hypothesis, or a general component-geodesic theorem changes."
+  }
+}

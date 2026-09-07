@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "leaf_entrance_product_identity_2026_08_26",
+  "input_stage": "charged lifetime leaf terms plus actual separated binary merge tree and resultant identity",
+  "output_stage": "exact cherry-mixed-pure node factorization of the geometric leaf-entrance product",
+  "human_understanding_delta": "Actual singleton entrance charges are polynomial-coupled, not freely prescribable: their product equals n^(-2n) times the squared product of cherry critical levels divided by pure-node critical levels. Mixed nodes cancel exactly, so a long comb retains only its first cherry level and defeats any product-only charge consumer.",
+  "verification_state": "PASS exact checker: 6917 ordered binary trees through ten leaves and 24 actual-polynomial merge trees, maximum relative error 2.1848e-11. Focused Lean validation is DEFERRED, not failed: canonical wrapper returned exit 75 at the low-disk floor; no bypass or retry was used.",
+  "publication_or_review_state": "private research result; not a proof of unrestricted Erdos 1041",
+  "canonicalization_state": "new exact theorem with explicit genericity and claim boundary",
+  "unresolved_downstream_bottleneck": "couple the first cherry level or additive root-indexed leaf data to actual branch length, Gram structure, or attachment ancestry",
+  "next_stage_owner": "Type A reruns focused Lean validation only after the recorded disk-floor re-entry condition, then coevolves the current unsent Type B packet composition"
+}

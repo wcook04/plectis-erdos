@@ -1,0 +1,94 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos257_skipped_reciprocal_floor_obstruction",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_floor_arithmetic_with_source_specific_Lean_conditional_consumer",
+  "problem_id": "erdos_257",
+  "purpose": "Classify the skipped-only floor reduction and replace an incorrect release block with a claim-faithful statement firewall.",
+  "target": {"reviewer_card":"docs/formal_math/reviewer_cards/erdos257_skipped_reciprocal_floor_obstruction.card.json","source_commit":"2850b82445b639c3615fba64186e6374eb840a55","source_path":"formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfGreedyDyadicSafe.lean","source_result_id":"one_half_reciprocal_floor_obstruction_consumer"},
+  "source_result_ids": [
+    "one_half_reciprocal_floor_obstruction_consumer"
+  ],
+  "adjudication_currentness": {
+    "status": "landed_source_and_card_snapshot_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "0cffa260de05e68581bb87b4de0e06c274250834",
+      "formal_source_sha256": "ddb67339593b57e30f2672cb19fbbc12ccfa70bc725cf46604c76ffca5bad4ef",
+      "reviewer_card_commit": "34631848f67c9200b1b834f32a1e28fd44fd1c50",
+      "reviewer_card_sha256": "0068dda04ed05ca3d9d6f6c0cf207d7070035031f093a46e316053a98e5e26cd",
+      "source_result_ids": [
+        "one_half_reciprocal_floor_obstruction_consumer"
+      ]
+    },
+    "claim_guard": "This is a sufficient conditional consumer: excluding the specified reciprocal floors at actual skipped ranks yields dyadic safety and one-half membership. It does not prove the exclusions or make membership unconditional.",
+    "reentry_trigger": "Re-enter if the formal source/card generation changes or a proof of the skipped-rank floor antecedent lands."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The floor arithmetic and six conditional declarations are routine; the substantive issue is finding a producer for the skipped-rank antecedent.",
+    "slow_down_at": "Do not read a sufficient skipped-rank condition as necessary, verified, or as an unconditional Erdős #257 result.",
+    "review_act": "One bounded expert act: check the declaration quantifiers and formulate a concrete producer for the skipped-rank floor exclusion."
+  },
+  "classification": {"general_principle":"elementary unit-interval floor characterization","local_delta":"source-specific Lean-checked restriction from all ranks to actual skipped ranks and its conditional one-half consumer","priority_claim":"none","recommended_terminology":"skipped-rank reciprocal-floor obstruction","mathematical_interest":"Routine arithmetic but useful frontier compression."},
+  "claim_boundary": {"allowed_wording":"Lean proves that excluding power-of-two reciprocal floors at every actual skipped rank suffices for dyadic safety and one-half membership.","forbidden_wording":["The floors are excluded.","One-half membership is unconditional.","The condition is necessary.","Erdős Problem 257 is solved."]},
+  "release_disposition": {"value":"status_tagged_public_conditional_reduction","reason":"The exact Lean statement, source parity, and open antecedent are inspectable; the antecedent is the firewall rather than a visibility blocker.","comparator_advisory":"One bundled conditional interface; do not atomize the six declarations."},
+  "tao_pipeline_receipt": {"input_stage":"verified_conditional_reduction","output_stage":"expert_digestion_and_statement_firewall","artifact":"erdos257_skipped_reciprocal_floor_obstruction_v0","human_understanding_delta":"Narrows the true arithmetic search to actual skips and one integer event.","verification_state":"Six source-current Lean declarations.","publication_or_review_state":"Eligible for public conditional visibility; specialist review remains downstream.","canonicalization_state":"Subordinate weakest checked consumer under the cofinal-skip endpoint.","unresolved_downstream_bottleneck":"Prove the skipped-rank antecedent.","next_stage_owner":"Mathematics Refinery, Role 3, and \\#257 proof owners."},
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos257_skipped_reciprocal_floor_obstruction@HalfGreedyDyadicSafe-0cffa260-card-34631848",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfGreedyDyadicSafe.lean",
+        "commit": "0cffa260de05e68581bb87b4de0e06c274250834",
+        "sha256": "ddb67339593b57e30f2672cb19fbbc12ccfa70bc725cf46604c76ffca5bad4ef"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos257_skipped_reciprocal_floor_obstruction.card.json",
+        "commit": "34631848f67c9200b1b834f32a1e28fd44fd1c50",
+        "sha256": "0068dda04ed05ca3d9d6f6c0cf207d7070035031f093a46e316053a98e5e26cd"
+      },
+      "parity_status": "six Lean declarations and the conditional card are source-current; the skipped-rank antecedent remains open"
+    },
+    "classification": {
+      "result_family": "skipped_rank_reciprocal_floor_conditional_consumer",
+      "evidence_class": "elementary floor arithmetic with six Lean-checked conditional declarations",
+      "closest_prior_art": "Unit-interval floor characterization and radix-tail safety are elementary; the source-specific restriction to actual skipped ranks and its one-half consumer are a useful local interface, not a new general theorem.",
+      "comparison_relation": "The route compresses the endpoint search from all ranks to actual skipped ranks, but it neither proves the exclusions nor supplies a necessary condition.",
+      "novelty_confidence": "high for the exact conditional Lean statement; low for standalone novelty or priority",
+      "significance_grade": "low_standalone_depth_high_frontier_compression",
+      "why_care": "It prevents the proof fleet from spending effort on irrelevant ranks and makes the single missing antecedent explicit.",
+      "hard_step": "Prove the skipped-rank floor exclusion; the consumer is routine once that antecedent holds.",
+      "natural_friction": "A sufficient conditional reduction is not evidence that the floor exclusions hold, are necessary, or imply irrationality unconditionally.",
+      "disconfirming_evidence": "No source or computation proves the skipped-rank antecedent; one-half membership remains conditional."
+    },
+    "evidence_class": "elementary floor arithmetic with six Lean-checked conditional declarations",
+    "prior_art": "Unit-interval floor characterization and radix-tail safety are elementary; the restriction to actual skipped ranks and the one-half consumer are source-specific local interfaces, not a new general theorem.",
+    "closest_known_result": "The nearest antecedents are elementary fractional-part/floor identities and standard radix-tail safety arguments; no located source states this exact skipped-rank consumer.",
+    "comparison_relation": "conditional_endpoint_compression_without_antecedent_proof",
+    "exact_delta": "The route reduces the endpoint search from all ranks to actual skipped ranks and isolates a single reciprocal-floor exclusion as the missing producer input.",
+    "disconfirming_evidence": "No source or computation proves the skipped-rank antecedent; one-half membership remains conditional.",
+    "confidence_ceiling": "High for the exact conditional Lean statement; low for standalone novelty or priority and nil for unconditional #257 progress.",
+    "significance": "Low standalone theorem depth but high frontier-compression value: it prevents work on irrelevant ranks and exposes the single missing antecedent.",
+    "hard_step": "Prove the skipped-rank floor exclusion cofinally; the consumer is routine once that antecedent holds.",
+    "open_boundary": "Skipped-rank floor exclusion, cofinal skip production, rational-tail exclusion, and Erdős #257 remain open.",
+    "claim_ceiling": {
+      "strongest_allowed": "Lean proves that excluding the specified reciprocal floors at every actual skipped rank suffices for dyadic safety and one-half membership.",
+      "rejected_stronger": [
+        "the floors are excluded",
+        "one-half membership is unconditional",
+        "the condition is necessary",
+        "Erdős #257 is solved",
+        "a novelty or priority claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "canonical greedy cofinal-skip endpoint and conditional floor consumers",
+      "disposition": "retain as the weakest checked conditional consumer beneath the cofinal-skip endpoint; do not atomize its six declarations",
+      "paper_disposition": "supporting conditional lemma in the #257 endpoint section",
+      "supersession_or_consolidation": "Keep the actual-skip restriction and one-half consumer together; leave the antecedent as the visible open throat.",
+      "expert_attention_reason": "The useful expert act is locating a producer for the skipped-rank antecedent, not re-proving unit-interval arithmetic.",
+      "open_boundary": "Skipped-rank floor exclusion, cofinal skip production, rational-tail exclusion, and Erdős #257 remain open.",
+      "independent_comparator_interface_justified": true
+    },
+    "bounded_expert_act": "Check the six declaration quantifiers and formulate a concrete producer for the skipped-rank antecedent without treating the conditional consumer as an endpoint result.",
+    "reentry_trigger": "Re-enter only if the formal source/card generation changes or a proof of the skipped-rank antecedent lands."
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "all_index_cyclotomic_resultant_law",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_apparently_unrecorded_scoped_candidate_identity_and_exact_route_no_go",
+  "problem_id": "erdos_1049",
+  "purpose": "Adjudicate the antecedents, novelty boundary, attribution, and significance of the authored all-index cyclotomic factorization for the cleared little-q-Legendre Pade coefficient and its rank-fifteen full-resultant falsifier.",
+  "source_result_id": "fixed_diagonal_resultant_content_reduction",
+  "evidence_class": "Authored ordinary all-index proof with exact finite symbolic replay and source-pinned packet/card parity; not Lean-checked or independently peer-reviewed.",
+  "closest_known_result": "Van Assche (2001) supplies the associated little-q-Legendre Padé construction and cyclotomic clearing; Olive (1965) is only a record-level lead for the q-Lucas mechanism because its article text was not acquired or read; differentiated Chu--Vandermonde literature supplies the harmonic-collapse method; Guo--Zeng (2014) is a nearby little-q-Legendre/cyclotomic application. None states this C_n factorization or resultant law.",
+  "comparison_relation": "Standard q-Padé, q-Lucas, cyclotomic-norm, and differentiated Chu--Vandermonde ingredients are combined into an apparently unrecorded source-specific all-index synthesis; the n=15 consequence is a scoped failure of the absolute full-resultant-height route.",
+  "exact_delta": "For n=ar+b and every cyclotomic factor Phi_r, the source gives an explicit local factorization of C_n; the exact norm product first crosses the forced-clearing budget at n=15, while specialization-selective gcd/content control remains open.",
+  "disconfirming_evidence": "The bounded search did not establish literature absence; finite replay does not prove the all-index identity; no priority, Lean, peer-review, selective-gcd, decay, irrationality, or #1049 endpoint claim is admitted.",
+  "confidence_ceiling": "High for source/card/packet parity and the finite n=15 arithmetic; medium internal provisional for the all-index synthesis being apparently unrecorded after bounded primary-source comparison; low for any priority or endpoint inference.",
+  "significance": "High route-boundary value but not a headline endpoint: it retires an overpaying absolute full-resultant height surrogate and isolates the surviving specialization-selective divisor problem.",
+  "hard_step": "Audit the quotient-remainder indexing and endpoint harmonic scalar for all n and r; the n=15 crossing is only a corollary of that all-index proof.",
+  "open_boundary": "No selective-gcd theorem, determinant valuation law, analytic decay, irrationality, or Erdős #1049 solution follows.",
+  "bounded_expert_act": "Audit the all-index quotient-remainder proof and endpoint harmonic scalar against the cited q-Lucas and differentiated Chu--Vandermonde antecedents, then search one exact notation variant for an existing C_n/resultant identity.",
+  "reentry_trigger": "Reopen if a primary source with the same all-index C_n factorization appears, if the proof/card/packet generation changes, or if selective divisor/content control materially changes the route boundary.",
+  "target": {
+    "source_commit": "84be2aa0ccbb0a337a4c353bc3313ecb6992ca16",
+    "refinery_handoff_commit": "49e77490900332cf5a07900e8aebb03dbf2aecf2",
+    "reviewer_card": "docs/formal_math/reviewer_cards/all_index_cyclotomic_resultant_law.card.json",
+    "source_analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/FixedDiagonalResultantContentLab.md",
+    "statement": "Writing n = ar+b, the d_n-cleared associated little-q-Legendre Pade coefficient C_n has an exact factorization modulo Phi_r into d_n/(p^r-1), the smaller diagonal P_b(p^b), and an explicit harmonic scalar K_(a,b); the resulting exact product first exceeds the forced-clearing budget at n=15."
+  },
+  "source_generation": {
+    "status": "proof_card_and_packet_current_at_committed_snapshot; no silent assimilation of unrelated packet claims",
+    "proof_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/FixedDiagonalResultantContentLab.md",
+      "commit": "84be2aa0ccbb0a337a4c353bc3313ecb6992ca16",
+      "sha256": "3a737fc6cd31d663035b8a2ccbc3d8b3fef833df1e9125c01db3db760f29bfb0"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/all_index_cyclotomic_resultant_law.card.json",
+      "commit": "b7a9c56d919387817d1c4900414a417b0e5fe2c9",
+      "sha256": "a092ae573a81d32a7f7d15ce27654fc8057c64bff88101d3edbb6c0c9ad579b8"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "source_result_id": "fixed_diagonal_resultant_content_reduction"
+    },
+    "finite_receipt": {
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos1049_fixed_diagonal_resultant_content_receipt.json",
+      "sha256": "baf38afb513ec1fb71dd4607a538b696ae372e19954d91f93340fdc48ec1b443"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "workspace_overlay": {
+    "status": "no_uncommitted_packet_overlay; current committed packet snapshot bound",
+    "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+    "sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+    "committed_snapshot_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+    "committed_snapshot_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+    "adjudication_effect": "The route is pinned to the current committed packet snapshot; unrelated packet claims remain excluded from this adjudication.",
+    "reentry_condition": "After the packet overlay is landed or discarded, rerun source/card/packet parity and revisit only if the fixed_diagonal_resultant_content_reduction row changes."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos1049_all_index_cyclotomic_resultant_law@proof_84be2aa0_card_49e77490_packet_b71c16d4",
+    "evidence_class": "Authored ordinary all-index proof with exact finite symbolic replay and source-pinned packet/card parity; not Lean-checked or independently peer-reviewed.",
+    "comparison_relation": "Standard ingredients are Van Assche's associated little-q-Legendre Padé coefficient, q-Lucas/root-of-unity reduction, cyclotomic norms, and differentiated Chu--Vandermonde harmonic identities. The exact all-index synthesis and n=15 full-resultant crossing were not located in the bounded primary-source search.",
+      "closest_known_result": "Van Assche (2001) supplies the Padé construction and cyclotomic clearing; Olive (1965) is only a record-level lead for q-Lucas because its article text was not acquired or read; Wei--Gong--Wang (2013) supplies the differentiated Chu--Vandermonde method; Guo--Zeng (2014) is a nearby little-q-Legendre/cyclotomic application. None states this C_n factorization or resultant law.",
+    "exact_delta": "For n=ar+b and every Phi_r, the proof gives an explicit local factorization of C_n; multiplying exact local norms yields a rank-15 first crossing of the forced-clearing budget. This retires the absolute full-resultant-height route while leaving specialization-selective gcd/content control open.",
+    "disconfirming_evidence": "The bounded search did not prove absence from the literature, and the finite replay does not establish the all-index proof. No priority or novelty claim is permitted.",
+    "confidence": {
+      "standard_component_attribution": "high_internal_provisional",
+      "exact_synthesis_unrecorded": "medium_internal_provisional",
+      "n15_route_no_go": "high_internal_provisional",
+      "formal_or_peer_review_status": "not_adjudicated"
+    },
+    "confidence_ceiling": "High for the source/card/packet parity and the finite n=15 arithmetic; medium internal provisional for the exact all-index synthesis being apparently unrecorded after the bounded primary-source search; low for any claim of literature priority, independent proof review, or an Erdős #1049 conclusion.",
+    "significance": "High route-boundary value for #1049 but not a headline endpoint: it prevents repeated investment in a globally overpaying height surrogate and identifies the surviving selective-divisor bottleneck.",
+    "significance_assessment": {
+      "grade": "high_route_boundary_value_not_headline",
+      "why_care": "The exact rank-15 crossing retires the tempting absolute full-resultant height surrogate and makes the still-live selective-divisor problem explicit, saving expert attention from a false global route.",
+      "mechanism_family": "effective-height accounting for cyclotomic q-Padé content and selective-divisor residuals",
+      "expert_attention_reason": "The value is the sharp route boundary and its reusable proof architecture, not a standalone endpoint or novelty claim."
+    },
+    "hard_step": "Audit the quotient-remainder indexing and endpoint harmonic scalar for all n and r; the n=15 arithmetic is only a corollary.",
+    "claim_ceiling": "Claim only an authored ordinary all-index factorization with exact finite symbolic replay and a scoped n=15 no-go for the absolute full-resultant-height route, using standard attributed ingredients. Do not claim Lean verification, peer review, priority, a general q-Padé theorem, selective-gcd control, irrationality, or a solution of Erdős #1049.",
+    "open_boundary": "No selective-gcd theorem, determinant valuation law, analytic decay, irrationality, or Erdős #1049 solution follows.",
+    "paper_disposition": {
+      "class": "supporting route-boundary",
+      "target_section": "Why the full cyclotomic resultant is the wrong height witness",
+      "supersession_or_consolidation": "Consolidate the local factors and rank-15 crossing as one object beneath rational_approximation_exponent_budget; do not split q-Lucas, harmonic, and resultant narratives into separate results.",
+      "why_care": "It turns a vague concern about resultant overpayment into an exact, inspectable failure of one global-height strategy."
+    },
+    "comparator_advisory": {
+      "disposition": "comparator_now_status_tagged_ordinary_proof",
+      "proposition_scope": "Restate only the all-index factorization and the n=15 full-resultant route failure, with ordinary-proof and finite-replay labels plus the selective-gcd nonclaim.",
+      "independent_interface_justified": true,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_act": "Audit the all-index quotient-remainder proof and endpoint harmonic scalar against the cited q-Lucas and differentiated Chu--Vandermonde antecedents, then search one exact notation variant for an existing C_n/resultant identity; do not redo the finite n=15 replay.",
+    "bounded_expert_review_act": "Check the all-index quotient-remainder proof against the cited q-Lucas and differentiated Chu--Vandermonde antecedents, and search one exact notation variant for an existing C_n/resultant identity.",
+    "reentry_trigger": "Reopen if a primary source with the same all-index C_n factorization appears, if the proof source or packet row changes, or if specialist review finds a missing quantifier."
+  },
+  "parity_audit": {
+    "status": "source_card_packet_row_current_at_committed_snapshot",
+    "effect": "The route binds the exact proof, card, current committed packet result row, and finite receipt. The packet contains additional #1049 frontier material that is not silently promoted into this all-index object.",
+    "reentry_condition": "Re-enter only if the fixed_diagonal_resultant_content_reduction row, its proof source, or its finite receipt changes; adjudicate adjacent packet rows as separate families."
+  },
+  "review_unit": {
+    "result_family": "erdos1049_all_index_cyclotomic_resultant_law",
+    "exact_result_id": "fixed_diagonal_resultant_content_reduction",
+    "source_generation": {
+      "proof_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/FixedDiagonalResultantContentLab.md",
+      "source_commit": "84be2aa0ccbb0a337a4c353bc3313ecb6992ca16",
+      "source_sha256": "3a737fc6cd31d663035b8a2ccbc3d8b3fef833df1e9125c01db3db760f29bfb0",
+      "reviewer_card": "docs/formal_math/reviewer_cards/all_index_cyclotomic_resultant_law.card.json",
+      "reviewer_card_commit": "49e77490900332cf5a07900e8aebb03dbf2aecf2",
+      "reviewer_card_sha256": "f25d3519fb745349bc7acfeca3c7da196c6ed42707e282609cac99c7ff2f3611",
+      "parity_status": "source_analysis_and_reviewer_card_hashes_current_at_2026-08-26; no Lean or specialist proof-review claim"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "classification": {
+    "novelty_class": "apparently_unrecorded_scoped_candidate_identity_from_classical_components",
+    "negative_result_class": "reusable_exact_no_go_for_the_absolute_full_resultant_height_route",
+    "exact_formulation_status": "no_antecedent_located_in_bounded_primary_source_search",
+    "verification_class": "authored_all_index_paper_proof_with_independent_finite_symbolic_replay_not_Lean_or_peer_reviewed",
+    "priority_claim": "none",
+    "nearest_prior_work": [
+      "Van Assche (2001), equations (24)-(26), gives the associated little-q-Legendre Pade coefficient Q_n(p^n) and the cyclotomic clearing d_n whose combination is the local C_n object.",
+      "Olive (1965) is a historical record-level lead for the q-Lucas root-of-unity decomposition used in the block split; the article text was not acquired or read, so no article-text support is asserted.",
+      "Wei-Gong-Wang (2012) exemplifies the established derivative-operator method that converts Chu-Vandermonde convolution into harmonic-number identities.",
+      "Guo-Zeng (2014), Section 4, equations (4.1)-(4.3), is nearby work on little-q-Legendre expansions and cyclotomic congruences using q-Chu-Vandermonde, but it does not study Van Assche's associated Pade coefficient or its resultants."
+    ],
+    "attribution": "Credit Van Assche for the little-q-Legendre Pade construction, explicit associated coefficient, and cyclotomic clearing; retain Olive only as an unresolved record-level lead for q-Lucas because the article text was not acquired or read; and credit the classical differentiated Chu-Vandermonde literature for the harmonic-collapse mechanism. Credit the local work only for the exact all-index synthesis for C_n and the n=15 certificate, with no priority claim and pending specialist confirmation.",
+    "mathematical_interest": "The factorization exposes a hidden quotient-remainder law in a concrete q-Pade coefficient and converts an otherwise intractable global resultant into exact local norms. The first crossing then turns a vague failure of estimates into a theorem that a natural global-height strategy is false.",
+    "reusable_scope": "The proof pattern may transfer to q-Pade families with a cyclotomic clearing envelope, q-Lucas block decomposition, and a moment tail reducible to differentiated hypergeometric summation. The negative lesson is broader: absolute full-resultant height can grossly overstate the prime powers selected by a specialized content or gcd.",
+    "why_it_matters": "The honest public story has two distinct contributions. The all-index formula is a source-backed, apparently unrecorded candidate identity built from standard ingredients; the n=15 corollary is a rigorous scoped no-go result that retires one proof route while leaving specialization-selective gcd control open. Neither is an Erdos-1049 solution or a field-level novelty claim."
+  },
+  "primary_sources": [
+    {
+      "id": "van_assche_2001_little_q_legendre_pade",
+      "source_id": "van_assche_2001_little_q_legendre_pade",
+      "title": "Little q-Legendre polynomials and irrationality of certain Lambert series",
+      "author": "Walter Van Assche",
+      "venue": "The Ramanujan Journal 5 (2001), 295-310",
+      "doi": "10.1023/A:1012930828917",
+      "url": "https://arxiv.org/abs/math/0101187",
+      "local_annex": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert",
+      "source_archive": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.gz",
+      "source_archive_kind": "arxiv_source_bundle",
+      "annex_slug": "arxiv-math0101187-van-assche-little-q-legendre-lambert",
+      "source_archive_sha256": "cee65cbb6cb8ee7329cf22234ed5e7e03007f922c1f38bea0c81263250eee388",
+      "source_tex": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.tex",
+      "source_tex_sha256": "4eca6eab39303b83e3fa8a86d5724f041e018b02a2660a29365fe5603bb0823b",
+      "source_pdf": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.pdf",
+      "source_pdf_sha256": "ce878d4a92a709e77723bb398c131e5391cb8bea8c82eeeccd92e6f26fece34d",
+      "source_artifact": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.pdf",
+      "source_artifact_sha256": "ce878d4a92a709e77723bb398c131e5391cb8bea8c82eeeccd92e6f26fece34d",
+      "pdf_pages": 15,
+      "extracted_markdown": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/extracted.md",
+      "extracted_markdown_sha256": "150bcd646346d92e8bacc95c9a49ba85c1d0c1630623055f4b37de27906209fc",
+      "primary_source_read": true,
+      "primary_pdf_read": true,
+      "primary_tex_read": true,
+      "source_read_status": "primary_pdf_and_tex_read_and_local_artifacts_bound",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_and_tex_read_exact_pade_cyclotomic_clearing_anchors_compared",
+      "retrieved_at": "2026-07-08",
+      "local_locus": "extracted.md::the-q-harmonic-series; source-checked notes n010-n011",
+      "extracted_locator": "extracted.md lines 120-160 (Padé identity, Q_n(p^n), and d_n clearing)",
+      "exact_source_locator": "Source TeX lines 306--366 / printed pp. 4--7: the associated Q_n(p^n), its explicit finite sum, d_n(p)=product_{k<=n} Phi_k(p), and the denominator-clearing consequence.",
+      "exact_anchors": [
+        "Printed page 2, equations (3) and (9): definition and explicit Gaussian-binomial expansion of the little q-Legendre polynomial.",
+        "Printed pages 4-5, equations (18)-(22): the associated polynomial Q_n and its Pade-approximation role.",
+        "Printed page 6, equations (24)-(25): explicit Q_n(p^n) with denominators p^ell-1.",
+        "Printed pages 6-7, equations (26)-(30): d_n(p)=product_{k<=n} Phi_k(p), its clearing property, and growth."
+      ],
+      "supports": "The exact Pade construction and cleared coefficient from which C_n is formed.",
+      "does_not_support": "It does not state a quotient-remainder factorization of C_n modulo every Phi_r, a local resultant product, or the n=15 full-resultant crossing.",
+      "consuming_claims": [
+        "all_index_cyclotomic_resultant_law.closest_known_result",
+        "all_index_cyclotomic_resultant_law.claim_boundary.allowed_wording",
+        "all_index_cyclotomic_resultant_law.observatory_adjudication_2026_08_26.claim_ceiling"
+      ]
+    },
+    {
+      "id": "olive_1965_generalized_powers",
+      "source_id": "olive_1965_generalized_powers",
+      "title": "Generalized Powers",
+      "author": "Gloria Olive",
+      "venue": "The American Mathematical Monthly 72 (1965), 619-627",
+      "doi": "10.2307/2313851",
+      "url": "https://www.jstor.org/stable/2313851",
+      "source_artifact": null,
+      "source_access_boundary": "The official JSTOR record and issue table of contents identify the article and page range, but the direct official PDF endpoint returned HTTP 200 HTML rather than a PDF/scan on 2026-08-27. No primary artifact is locally bound; do not treat the bibliographic record as article-text evidence.",
+      "source_read_status": "unresolved_official_jstor_record_only; direct_primary_pdf_attempt_returned_html",
+      "primary_pdf_read": false,
+      "primary_tex_read": false,
+      "source_access_attempted_at": "2026-08-27",
+      "source_access_attempts": [
+        {
+          "url": "https://www.jstor.org/stable/pdf/2313851.pdf",
+          "retrieval_route": "direct_official_http",
+          "result": "HTTP 200 text/html response (3038 bytes), not a PDF or scan",
+          "artifact_acquired": false
+        }
+      ],
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "bibliographic_record_only_exact_title_venue_pages_compared",
+      "exact_source_locator": "JSTOR volume 72 no. 6 issue table of contents and stable record: Generalized Powers, pp. 619--627; article text not locally inspected.",
+      "exact_anchor": "Unverified proposed article-text locator: printed pages 619--627 may contain generalized Gaussian powers and the root-of-unity digit decomposition; article text was not inspected.",
+      "supports": "Only stable bibliographic metadata and an unresolved literature lead; no q-Lucas mechanism is attributed as read primary text.",
+      "does_not_support": "Any article-text theorem or q-Lucas attribution, little-q-Legendre Pade coefficients, harmonic moments, or resultants.",
+      "consuming_claims": []
+    },
+    {
+      "id": "wei_gong_wang_2012_differentiated_chu_vandermonde",
+      "source_id": "wei_gong_wang_2012_differentiated_chu_vandermonde",
+      "title": "Chu-Vandermonde convolution and harmonic number identities",
+      "authors": [
+        "Chuanan Wei",
+        "Dianxuan Gong",
+        "Qin Wang"
+      ],
+      "venue": "Integral Transforms and Special Functions 24 (2013), 324-330",
+      "doi": "10.1080/10652469.2012.689762",
+      "url": "https://arxiv.org/abs/1201.0420",
+      "local_annex": "annexes/arxiv-1201-0420-wei-gong-wang-chu-vandermonde-harmonic",
+      "source_archive": "annexes/arxiv-1201-0420-wei-gong-wang-chu-vandermonde-harmonic/source.tar.gz",
+      "source_archive_kind": "arxiv_source_tex",
+      "annex_slug": "arxiv-1201-0420-wei-gong-wang-chu-vandermonde-harmonic",
+      "source_archive_sha256": "8dd1a1c02df266d8f1a5b1536147adf782b8b172bccb93d341672e16c66e883e",
+      "source_tex_sha256": "3f48902982fa4b0c870314b973168632a5097b6179deb1e6e180662eefa654b3",
+      "extracted_markdown": "annexes/arxiv-1201-0420-wei-gong-wang-chu-vandermonde-harmonic/extracted.md",
+      "extracted_markdown_sha256": "02fec1292b31485f5668fb1cec3f2915323df0e4faa14b5a599c60734ea1b1c2",
+      "source_pdf": "annexes/arxiv-1201-0420-wei-gong-wang-chu-vandermonde-harmonic/source.pdf",
+      "source_pdf_sha256": "ee5e68972fb2bb76f4abd487c6d2ca2dfacc246db8a0d435e37693eb0c28ba1a",
+      "source_artifact": "annexes/arxiv-1201-0420-wei-gong-wang-chu-vandermonde-harmonic/source.pdf",
+      "source_artifact_sha256": "ee5e68972fb2bb76f4abd487c6d2ca2dfacc246db8a0d435e37693eb0c28ba1a",
+      "pdf_pages": 6,
+      "primary_source_read": true,
+      "primary_pdf_read": true,
+      "primary_tex_read": true,
+      "source_read_status": "primary_pdf_and_tex_read_and_local_artifacts_bound",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_and_tex_read_exact_derivative_chu_vandermonde_and_harmonic_identity_locators_compared",
+      "retrieved_at": "2026-08-24",
+      "local_locus": "extracted.md::chu-vandermonde-convolution-and-harmonic-number-identities-2; source-checked notes n001-n005",
+      "extracted_locator": "extracted.md lines 65-73 (Chu-Vandermonde and derivative setup) and lines 118-132 (differentiated harmonic identity)",
+      "exact_source_locator": "PDF printed pp. 1--3 / Source TeX lines 430--504 and 508--558: the Introduction defines the derivative operators and applies them to Chu--Vandermonde; Section 2 and Theorems 1--2 derive the harmonic-number identities on pp. 2--3. The source supports the differentiated harmonic-collapse mechanism, not the local C_n factorization.",
+      "exact_anchor": "Introduction and Section 2: equations (1)-(3) apply parameter derivatives to Chu-Vandermonde convolution and obtain harmonic-number binomial sums; the later subsections repeat the mechanism for several parameter placements.",
+      "supports": "Differentiating a Chu-Vandermonde evaluation to collapse a binomial-harmonic sum is an established method, not a novel ingredient of the local proof.",
+      "does_not_support": "The paper does not state the C_n factorization or its exact harmonic scalar K_(a,b).",
+      "consuming_claims": [
+        "all_index_cyclotomic_resultant_law.closest_known_result",
+        "all_index_cyclotomic_resultant_law.claim_boundary.allowed_wording",
+        "all_index_cyclotomic_resultant_law.observatory_adjudication_2026_08_26.claim_ceiling"
+      ]
+    },
+    {
+      "id": "guo_zeng_2014_little_q_legendre_congruences",
+      "source_id": "guo_zeng_2014_little_q_legendre_congruences",
+      "title": "Some q-analogues of supercongruences of Rodriguez-Villegas",
+      "authors": [
+        "Victor J. W. Guo",
+        "Jiang Zeng"
+      ],
+      "venue": "Journal of Number Theory 145 (2014), 301-316",
+      "doi": "10.1016/j.jnt.2014.06.002",
+      "url": "https://arxiv.org/abs/1401.5978",
+      "local_annex": "annexes/arxiv-1401-5978-guo-zeng-little-q-legendre-supercongruences",
+      "source_archive": "annexes/arxiv-1401-5978-guo-zeng-little-q-legendre-supercongruences/source.tar.gz",
+      "source_archive_kind": "arxiv_source_tex",
+      "annex_slug": "arxiv-1401-5978-guo-zeng-little-q-legendre-supercongruences",
+      "source_archive_sha256": "dd4cf2abb195815627ffdf522561d2f76ac8ba51119303abffdc722f0b5b45f2",
+      "source_tex_sha256": "dd4fce9b36af452213cfba11e75bb65e27bbca99f058fda7432fb4f1a1c24fbb",
+      "extracted_markdown": "annexes/arxiv-1401-5978-guo-zeng-little-q-legendre-supercongruences/extracted.md",
+      "extracted_markdown_sha256": "a238948c2bf5148e0789145f3c6b1af62bbe03facff4605fce673e0d8cc54731",
+      "source_pdf": "annexes/arxiv-1401-5978-guo-zeng-little-q-legendre-supercongruences/source.pdf",
+      "source_pdf_sha256": "6ad6bc4bb53d2f076d6257a07d17f64100b31a775d5c3acbb1c10158c4952c70",
+      "source_artifact": "annexes/arxiv-1401-5978-guo-zeng-little-q-legendre-supercongruences/source.pdf",
+      "source_artifact_sha256": "6ad6bc4bb53d2f076d6257a07d17f64100b31a775d5c3acbb1c10158c4952c70",
+      "pdf_pages": 15,
+      "primary_source_read": true,
+      "primary_pdf_read": true,
+      "primary_tex_read": true,
+      "source_read_status": "primary_pdf_and_tex_read_and_local_artifacts_bound",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_and_tex_read_exact_little_q_legendre_q_chu_vandermonde_and_cyclotomic_congruence_locators_compared",
+      "retrieved_at": "2026-08-24",
+      "local_locus": "extracted.md::proofs-of-theorems-5thmq-taurasoreference-typeref-referencet; source-checked notes n001-n005",
+      "extracted_locator": "extracted.md lines 297-319 (little-q-Legendre expansions and q-Chu-Vandermonde proof)",
+      "exact_source_locator": "PDF printed pp. 8--9 / Source TeX lines 426--453: Section 4 and equations (4.1)--(4.3) define the little q-Legendre expansions; PDF printed p. 9 / Source TeX lines 496--584: Lemma 4.1 proves the new expansion using q-Chu--Vandermonde. The source supports nearby little-q-Legendre/cyclotomic congruence context, not Van Assche's associated Pade coefficient or the local resultant law.",
+      "exact_anchor": "Section 4, printed pages 7-8, equations (4.1)-(4.3) and Lemma 4.1: three little-q-Legendre expansions, with the new expansion proved using q-Chu-Vandermonde and then applied to cyclotomic supercongruences.",
+      "supports": "The closest located primary-source combination of little-q-Legendre polynomials, cyclotomic reduction, and q-Chu-Vandermonde.",
+      "does_not_support": "It treats the diagonal polynomial in supercongruences, not Van Assche's associated Pade coefficient Q_n(p^n), its d_n-clearing, or a resultant law.",
+      "consuming_claims": [
+        "all_index_cyclotomic_resultant_law.closest_known_result",
+        "all_index_cyclotomic_resultant_law.claim_boundary.allowed_wording",
+        "all_index_cyclotomic_resultant_law.observatory_adjudication_2026_08_26.claim_ceiling"
+      ]
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_components": "The Pade coefficient and clearing, q-Lucas block decomposition, cyclotomic norms, and derivative-generated harmonic identities all have clear antecedents.",
+    "strict_delta": "The local source combines those components to identify, for every n=ar+b and every r<=n, the exact class of C_n modulo Phi_r and hence all local resultants at once. No located source performs this synthesis for the associated little-q-Legendre coefficient.",
+    "negative_delta": "Multiplying the exact local factors produces a fully exact rank-15 counterexample to any globally subcritical upper bound based on the absolute full resultant.",
+    "scope_sharpening": "The counterexample rules out the absolute full-resultant-height route only. It does not rule out a smaller specialization-selected divisor, content, or gcd, and it says nothing automatic about other q-Pade families."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "little q-Legendre cyclotomic congruence",
+      "little q-Legendre root of unity q-Lucas",
+      "little q-Legendre resultant cyclotomic",
+      "little q-Legendre harmonic numbers q-Lucas",
+      "Q_n(p^n) cyclotomic little q-Legendre",
+      "d_n(p) Q_n little q-Legendre",
+      "Pade numerator q-Lucas cyclotomic",
+      "little q-Legendre resultant full clearing"
+    ],
+    "result": "The bounded search located Van Assche's original Pade construction, Guo-Zeng's nearby little-q-Legendre cyclotomic congruences, q-Lucas sources, and differentiated Chu-Vandermonde harmonic-identity literature. It did not locate the displayed all-index factorization of the cleared associated coefficient, its resultant product, or the rank-15 crossing.",
+    "boundary": "Search failure supports only the wording 'apparently unrecorded in this bounded search'. It is not evidence of literature completeness or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "We derive an apparently unrecorded exact all-index cyclotomic factorization for Van Assche's cleared associated little-q-Legendre Pade coefficient, using standard q-Lucas and differentiated Chu-Vandermonde mechanisms. Its exact local norm product gives a scoped n=15 no-go theorem for the absolute full-resultant-height route.",
+    "forbidden_wording": [
+      "This is a new q-Lucas theorem.",
+      "This is the first cyclotomic identity for little-q-Legendre polynomials.",
+      "The factorization is proved novel in the literature.",
+      "The finite checker proves the all-index theorem.",
+      "The n=15 crossing rules out specialization-selective gcd control.",
+      "The result solves Erdos Problem 1049."
+    ],
+    "nonclaims": [
+      "not_a_solution_of_erdos_1049",
+      "not_a_literature_priority_claim",
+      "not_Lean_checked_or_peer_reviewed",
+      "not_a_complete_literature_search",
+      "not_a_general_q_Pade_family_theorem",
+      "not_a_no_go_for_specialization_selective_gcd_or_content_control"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/all_index_cyclotomic_resultant_law.card.json",
+      "effect": "Replace pending novelty language with the exact apparently-unrecorded-candidate classification, antecedent attribution, and scoped no-go significance."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalise the all-index law as a candidate identity pending specialist review and the n=15 statement as an exact strategy no-go, without upgrading either to a priority claim."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Package only with Van Assche/Olive/Chu-Vandermonde attribution and all nonclaims adjacent; do not present the bounded search as novelty proof."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The Refinery handoff is adjudicated: the all-index factorization is an apparently unrecorded scoped candidate identity assembled from classical components, and the rank-15 certificate is a reusable exact no-go for one global-height route.",
+    "do_not_redo": [
+      "Do not reopen the Erdos 1049 proof attack from the Observatory lane.",
+      "Do not infer theorem novelty from the local proof, finite checker, or absence of an exact search hit.",
+      "Do not collapse the standard ingredients and the unlocated exact synthesis into a single novelty label.",
+      "Do not describe the full-resultant failure as a failure of specialization-selective gcd control."
+    ],
+    "ranked_open_throats": [
+      "finrank_totientKernelThroughLevelFamily_eq (Erdos 249): compare the exact finite-rank corollary with affine-ordering and automatic-sequence literature.",
+      "volume_supportedMersenneAchievementSet_dichotomy (Erdos 257): determine whether the finite/infinite support-complement classification is explicit prior art or a routine specialization.",
+      "threeHalves_no_coordinatewiseCorridor (Erdos 1049): classify the local barrier as a reusable no-go or a routine convex incompatibility.",
+      "irrational_tsum_primeDyadicTerm_iff_primeGap (Erdos 251): separate exact reformulation from substantive number theory."
+    ],
+    "sibling_claim_map": "The proof fleet owns the source mathematics. The Mathematics Refinery may canonicalise this adjudicated candidate; the Public Research Exhibition may package it only within the source and nonclaim boundary. Active source claims in Erdos 68, 1041, and 257 remain untouched.",
+    "validation_state": "Primary-source anchors and bounded disconfirmation queries are recorded. Van Assche was already a full local annex; Guo-Zeng and Wei-Gong-Wang were acquired from arXiv TeX bundles, checksum-bound, annotated with exact loci/boundaries/consumers, and distilled into prior-art patterns. Reviewer-card JSON parsing, TeX rendering, and annex validation are the focused landing floor.",
+    "next_wake_condition": "Validate and land this disjoint adjudication slice, finish the pending generated-row-only landing for the Mersenne measure gate when Git contention clears, then rotate to the Erdos 249 finite-rank comparison."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Load-bearing authored all-index identity assembled from standard q-Lucas and differentiated Chu--Vandermonde steps, followed by an exact but finite n=15 route falsifier.",
+    "slow_down_at": "The quotient-remainder indexing for every n=ar+b and every cyclotomic factor Phi_r, the harmonic scalar at b=0, and the inference from local norms to the forced-clearing budget. The n=15 crossing is a corollary, not evidence for the all-index proof.",
+    "automation_can_establish": [
+      "Exact symbolic replay of the stated local factors through the checked finite range",
+      "Arithmetic of the resultant product and the n=15 budget crossing",
+      "Source/card commit parity and citation-anchor presence"
+    ],
+    "human_judgment_required": [
+      "Whether the all-index C_n factorization already appears in q-Pade or cyclotomic-congruence literature under another notation",
+      "Whether the ordinary proof handles every quantifier and endpoint case without relying on the finite replay",
+      "Whether the n=15 no-go is the clearest route-boundary statement for the #1049 paper"
+    ],
+    "review_act": "One bounded expert act: audit the all-index quotient-remainder proof and search for an exact antecedent of that synthesis; do not reopen the already attributed q-Lucas, Van Assche, or differentiated Chu--Vandermonde ingredients."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "effective-height accounting for rational-base q-Padé forms: cyclotomic local norms, full-resultant overpayment, and selective-divisor residuals",
+    "disposition": "subordinate specialist-review route-boundary beneath rational_approximation_exponent_budget; consolidate local factors and the n=15 crossing without promoting a new Padé headline",
+    "consolidation_relation": "One object contains the quotient-remainder law, standard q-Lucas/Chu--Vandermonde ingredients, exact norm product, and full-resultant failure. Primitive-content, selector, and selective-gcd mechanisms remain distinct.",
+    "comparator_advisory": "Advisory comparator_now: the all-index factorization and rank-fifteen route boundary are independently restatable from an inspectable authored ordinary proof and exact finite replay. A status-tagged firewall must preserve the ordinary-proof label, bounded-replay distinction, and selective-gcd residual.",
+    "paper_disposition": {
+      "class": "supporting route-boundary",
+      "target_section": "Why the full cyclotomic resultant is the wrong height witness",
+      "supersession_or_consolidation": "Replace local factor narratives and absolute-height hopes with one exact n=15 full-resultant failure theorem plus the surviving selective-divisor question.",
+      "reason": "It prevents repeated investment in a globally subcritical full-resultant bound already refuted exactly."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "The exact crossing redirects #1049 work away from a false full-resultant surrogate, but the object is subordinate and its all-index proof still needs specialist review.",
+      "evidence_class": "ordinary all-index proof with exact receipt and finite replay",
+      "hard_step": "specialist proof review followed by selective divisor/content and analytic decay",
+      "prior_art_uncertainty": "exact synthesis unlocated after bounded primary-source comparison; no priority inference",
+      "open_boundary": "no selective-gcd no-go, actual auxiliary family, or irrationality conclusion",
+      "demoted_predecessor": null
+    }
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1049-rational-base-lambert.tex",
+    "section": "New supporting section under the effective-height budget: ‘Why the full cyclotomic resultant is the wrong height witness’",
+    "canonical_mechanism_family": "effective-height accounting for rational-base q-Padé forms: cyclotomic local norms, full-resultant overpayment, and selective-divisor residuals",
+    "relation": "Subordinate route-boundary; consolidate quotient-remainder law, exact local norms, and n=15 certificate while retaining selective gcd/content and analytic decay as separate open work.",
+    "understanding_delta": "The full resultant can be exactly too large for the height budget without deciding the smaller selected divisor a successful construction would need.",
+    "evidence_boundary": "Authored all-index proof, exact receipt, and finite symbolic replay under bounded primary-source attribution; no Lean, peer review, general q-Padé theorem, selective-gcd result, decay theorem, irrationality, or #1049 solution.",
+    "hard_step": "Specialist-check the all-index proof, then establish selective divisor/content and analytic decay for an actual nonzero family.",
+    "meaningful_failed_route": "A globally subcritical absolute full-resultant bound is refuted at n=15; this does not rule out specialization-selected arithmetic.",
+    "open_remainder": "All-index specialist review, selective arithmetic, decay, integrality, nonvanishing, and #1049 remain open."
+  },
+  "release_disposition": {
+    "status": "status_tagged_public_and_comparator_candidate",
+    "reason": "The all-index factorization has an inspectable authored ordinary proof, exact finite symbolic replay, bounded prior-art review, and an explicit selective-gcd boundary. It may be public now with those evidence labels; Lean and independent specialist review are not release prerequisites.",
+    "owner": "Role 3 Comparator/Public task",
+    "reentry_condition": "Role 3 should make a deliberate source-parity cut preserving the source-specific coefficient, ordinary-proof status, finite-replay distinction, and selective-gcd boundary; specialist review proceeds downstream."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "ordinary_all_index_proof_generation_with_exact_computational_certificate",
+    "output_stage": "exposition_understanding_and_specialist_review",
+    "artifact": "one cyclotomic quotient-remainder identity and full-resultant route-boundary object",
+    "human_understanding_delta": "Exact local factorization is separated from the narrow conclusion of the global product: one absolute-height proxy fails, while selected arithmetic remains open.",
+    "verification_state": "Pinned proof and exact receipt with finite independent symbolic replay; no Lean or independent all-index review.",
+    "publication_or_review_state": "Eligible for status-tagged public and Comparator presentation after a claim-faithful source-parity cut; specialist proof review remains downstream and no priority claim follows.",
+    "canonicalization_state": "One subordinate boundary replaces repeated local-factor and full-resultant narratives.",
+    "unresolved_downstream_bottleneck": "Selective divisor/content control plus analytic decay for an actual family.",
+    "next_stage_owner": "Role 3 for a claim-faithful status-tagged source cut; q-series/Padé specialists for downstream review; #1049 construction owners for selective arithmetic and decay."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_source_generation_or_selective_divisor_result",
+    "reentry_condition": "Re-enter only if the pinned all-index proof/source generation changes, a primary source containing the exact C_n quotient-remainder law is found, or a selective divisor/content theorem materially changes the route boundary.",
+    "do_not_redo": "Do not repeat q-Lucas, differentiated Chu--Vandermonde, Van Assche, or the n=15 full-resultant computation; those are already attributed and consolidated.",
+    "open_bottleneck": "The exact global product only retires the absolute full-resultant surrogate. Selective gcd/content control, an actual auxiliary family, analytic decay, integrality, and nonvanishing remain the load-bearing #1049 questions.",
+    "owner": "q-series/Padé specialists for source comparison; #1049 construction owners for selective arithmetic and decay; Mathematics Refinery and Role 3 for claim-faithful integration."
+  },
+  "adjudication_currentness": {
+    "status": "proof_card_packet_and_finite_receipt_current_at_committed_snapshot",
+    "bound_snapshot": {
+      "proof_source_commit": "84be2aa0ccbb0a337a4c353bc3313ecb6992ca16",
+      "proof_source_sha256": "3a737fc6cd31d663035b8a2ccbc3d8b3fef833df1e9125c01db3db760f29bfb0",
+      "research_packet_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "research_packet_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "reviewer_card_commit": "49e77490900332cf5a07900e8aebb03dbf2aecf2",
+      "reviewer_card_sha256": "f25d3519fb745349bc7acfeca3c7da196c6ed42707e282609cac99c7ff2f3611",
+      "finite_receipt_sha256": "baf38afb513ec1fb71dd4607a538b696ae372e19954d91f93340fdc48ec1b443"
+    },
+    "claim_guard": "The ordinary all-index factorization and finite n=15 route boundary remain distinct evidence classes; no finite replay upgrades the proof to Lean, a universal valuation law, or an #1049 endpoint.",
+    "reentry_trigger": "Re-enter on proof/card/packet generation change, a primary source with the same factorization, or an expert-found indexing defect."
+  }
+}

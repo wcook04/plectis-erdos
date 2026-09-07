@@ -1,0 +1,164 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "sharp_cubic_radius_log_constraint_boundary",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_source_specific_exact_boundary_counterfamily_no_priority_claim",
+  "problem_id": "erdos_68",
+  "purpose": "Position the exact integral saturation of one square-log constraint as a route-killing boundary, not an asymptotic radius theorem or factorial-gap construction.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/sharp_cubic_radius_log_constraint_boundary.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+    "source_commit": "c147aa7adde28db1f9c71ec689c93a417a3e75e4",
+    "source_result_id": "one_kernel_sharp_radius_log_constraint_boundary",
+    "source_declarations": [
+      "Erdos68.three_mul_choose_two_mul_add_one_add_self_eq_four_mul_cube",
+      "Erdos68.sharp_radius_satisfies_square_log_constraint"
+    ]
+  },
+  "classification": {
+    "theorem_class": "exact_finite_constraint_boundary_and_infinite_integral_counterfamily",
+    "novelty_class": "source_specific_Lean_checked_method_no_go_built_from_elementary_binomial_and_logarithmic_algebra",
+    "priority_claim": "none",
+    "recommended_terminology": "exact cubic-boundary counterfamily for the square-log constraint",
+    "discouraged_terminology": [
+      "sharp factorial-gap radius theorem",
+      "optimal cubic constant theorem",
+      "factorial-gap counterexample",
+      "solution of Erdős Problem 68"
+    ],
+    "mathematical_interest": "Low standalone depth but high route-selection value: exact integrality prevents an asymptotic strictness argument from escaping through rounding and decisively retires one proposed inference.",
+    "reusable_scope": "Any finite logarithmic or entropy-style inequality proposed to force a sharp growth constant should be tested on exact integral boundary families before it is treated as a strict producer.",
+    "why_it_matters": "The Erdős Problem 68 programme must import genuinely stronger factorial-segment structure or a subcritical family rather than further polish an inequality already satisfiable at its optimized boundary."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_1988_irrationality_series",
+      "title": "On the irrationality of certain series: problems and results",
+      "author": "Paul Erdős",
+      "venue": "New Advances in Transcendence Theory, Cambridge University Press, 1988, 102--109",
+      "doi": "10.1017/CBO9780511897184.009",
+      "url": "https://doi.org/10.1017/CBO9780511897184.009",
+      "supports": "The original factorial-series problem setting and its unresolved irrationality question.",
+      "does_not_support": "The local square-log constraint, the cubic constant, or the boundary family."
+    },
+    {
+      "id": "kovac_tao_2025_ahmes_series",
+      "title": "On several irrationality problems for Ahmes series",
+      "authors": [
+        "Vjekoslav Kovač",
+        "Terence Tao"
+      ],
+      "venue": "Acta Mathematica Hungarica 175 (2025), 572--608",
+      "doi": "10.1007/s10474-025-01528-0",
+      "url": "https://arxiv.org/abs/2406.17593",
+      "supports": "A neighboring source-backed warning that growth-only data can be insufficient for Ahmes-series irrationality arguments.",
+      "does_not_support": "The source-specific one-kernel constraint, the exact $16/9$ boundary, or its integral specialization."
+    }
+  ],
+  "mechanism_comparison": {
+    "exact_local_step": "At $9(R+1)=16t^3$, the collision identity and one scalar logarithmic inequality prove strict satisfiability of the declared finite constraint.",
+    "integrality_step": "Taking $t=3s$ makes $R+1=48s^3$, so the boundary survives on an infinite integer family and cannot be dismissed as a rounding artifact.",
+    "logical_effect": "The result falsifies only a strict inference from this constraint; it neither realizes a factorial-gap radius nor bounds the true optimal constant.",
+    "surviving_route": "Add new factorial-segment information or build a genuinely subcritical family."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "factorial gap irrationality logarithmic inequality cubic radius",
+      "factorial series square log constraint sharp constant",
+      "entropy bound exact integral boundary family number theory"
+    ],
+    "result": "No exact source for the square-log constraint, the constant 16/9, or the integral boundary family was located.",
+    "boundary": "Non-location supports only source-specific terminology and a re-entry condition, never novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked exact infinite integer boundary family shows that one declared square-log constraint cannot by itself force a strict improvement over its optimized cubic constant.",
+    "forbidden_wording": [
+      "The sharp cubic radius is attained by factorial-gap objects.",
+      "The optimal radius constant is 16/9.",
+      "All one-kernel arguments fail.",
+      "Erdős Problem 68 is resolved."
+    ]
+  },
+  "reviewer_attention_budget": {
+    "recommended_minutes": "8--10",
+    "attention_class": "route_killing_exact_boundary_review",
+    "review_goal": "Check the exact identity, scalar logarithmic inequality, integral specialization, and constraint-versus-realizability seam.",
+    "expert_act": "Check the exact identity, scalar logarithmic inequality, integral specialization, and constraint-versus-realizability seam.",
+    "review_act": "Check the exact identity, scalar logarithmic inequality, integral specialization, and constraint-versus-realizability seam.",
+    "automation_boundary": "Lean verifies the finite statements; no actual radius construction or parent-problem conclusion follows."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "factorial-gap collision and radius constraints beneath the cofinal-carry endpoint",
+    "disposition": "route-killing boundary subordinate to factorial_gap_cofinal_carry_irrationality_criterion",
+    "comparator_advisory": "Reuse the existing Erdős Problem 68 statement firewall; do not create a separate interface.",
+    "paper_disposition": "route-killing failure/boundary",
+    "paper_target_section": "Why the square-log constraint cannot improve the cubic constant",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "It closes one inference but is subordinate to the existing Erdős Problem 68 endpoint.",
+      "evidence_class": "Lean-checked finite no-go and exact infinite integral family",
+      "hard_step": "stronger factorial-segment input or a subcritical family",
+      "prior_art_uncertainty": "medium for the exact formulation; no priority claim",
+      "open_boundary": "all positive producers and Erdős Problem 68 remain open",
+      "demoted_predecessor": null
+    }
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_68.md",
+    "section": "Why the square-log constraint cannot improve the cubic constant",
+    "canonical_mechanism_family": "factorial-gap collision and radius constraints beneath the cofinal-carry endpoint",
+    "relation": "One route-killing panel beneath the cofinal-carry flagship consolidates the collision identity, boundary theorem, and integral family.",
+    "understanding_delta": "Separates constraint satisfiability from factorial-gap realizability and redirects work to genuinely stronger input.",
+    "evidence_boundary": "Lean-checked finite statements; no fresh replay success, actual construction, asymptotic theorem, or irrationality result.",
+    "hard_step": "Produce new factorial-segment structure or a subcritical family.",
+    "meaningful_failed_route": "Sharpen the already-satisfiable square-log inequality to force strictness at 16/9.",
+    "open_remainder": "Subcritical control, cofinal carries, and Erdős Problem 68."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification_and_partial_exposition",
+    "output_stage": "reviewer_ready_route_retirement",
+    "artifact": "sharp_cubic_radius_log_constraint_boundary",
+    "human_understanding_delta": "The exact counterfamily, its integral nature, the narrow logical effect, and the surviving route now form one reviewable method-boundary object.",
+    "verification_state": "Two source-pinned Lean declarations; fresh replay deferred rather than failed.",
+    "publication_or_review_state": "Internally review-ready with bounded source comparison; no independent review or priority claim.",
+    "canonicalization_state": "One boundary object replaces separate collision, constant, and integrality fragments.",
+    "unresolved_downstream_bottleneck": "Stronger factorial-segment input or a subcritical producer.",
+    "next_stage_owner": "Mathematics Refinery and Role 3 for paper integration; Erdős Problem 68 proof owners for new arithmetic input."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "sharp_cubic_radius_log_constraint_boundary@source-c147aa7",
+    "evidence_class": "Lean-checked exact finite identities and an infinite integral boundary family; source-specific ordinary interpretation with no parent-problem conclusion.",
+    "closest_known_result": "Erdős (1988) supplies the factorial-series problem setting, while Kovač--Tao (2025) supply neighboring growth-only warnings. Neither source states the square-log constraint, the 16/9 expression, or this integral boundary family.",
+    "comparison_relation": "The result shows that one declared square-log constraint is satisfiable on an exact integer family at its optimized boundary; it does not identify that family with factorial gaps or determine an optimal radius.",
+    "exact_delta": "A route-killing correction: asymptotic strictness cannot be obtained from this constraint alone because integrality realizes the boundary exactly.",
+    "disconfirming_evidence": "The bounded search found no exact external source for the constraint, constant, or family; non-location supports only source-specific framing, never priority.",
+    "confidence": {
+      "level": "high_for_the_narrow Lean boundary statement; medium_for_external novelty posture",
+      "basis": "The two Lean declarations and integral specialization are explicit; the parent realization and all asymptotic claims remain open."
+    },
+    "significance": "Strong route-selection value but subordinate status: it retires one strictness inference and redirects #68 toward cofinal carries or genuinely subcritical information.",
+    "claim_ceiling": "Say that a Lean-checked exact infinite integer family satisfies the declared square-log constraint at its boundary, so that constraint cannot alone force strict improvement. Do not claim a sharp factorial-gap radius, an optimal 16/9 constant, a general one-kernel no-go, novelty, or an Erdős #68 solution.",
+    "hard_step": "The hard #68 work remains importing factorial-segment structure or a genuinely subcritical producer; this boundary calculation is complete but local.",
+    "open_boundary": "Keep as a route-killing supporting panel under the cofinal-carry endpoint; no independent Comparator interface or flagship slot is justified.",
+    "bounded_expert_review_act": "Check the exact identity, logarithmic inequality, and integer specialization, then confirm that the constraint is not being conflated with factorial-gap realizability.",
+    "reentry_trigger": "Re-enter if the source constraint, boundary family, or interpretation as a factorial-gap producer changes, or if a matching prior source is found.",
+    "source_generation_binding": {
+      "formal_source_commit": "c147aa7adde28db1f9c71ec689c93a417a3e75e4",
+      "formal_source_sha256": "39461fdf3fa1ff404e6b9ae3ba5e642c88250f62edde20216e1cd65563bd2227",
+      "primary_source_anchors": [
+        "Erdős (1988), On the irrationality of certain series: problems and results",
+        "Kovač--Tao (2025), On several irrationality problems for Ahmes series"
+      ],
+      "parity_status": "Lean source and route interpretation are current; no fresh replay or priority is asserted."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "c147aa7adde28db1f9c71ec689c93a417a3e75e4",
+      "formal_source_sha256": "39461fdf3fa1ff404e6b9ae3ba5e642c88250f62edde20216e1cd65563bd2227"
+    },
+    "claim_guard": "Boundary counterfamily only; preserve the distinction between a satisfiable constraint and factorial-gap realizability.",
+    "reentry_trigger": "Re-enter on source-generation drift or any proposed upgrade to an asymptotic or endpoint theorem."
+  }
+}

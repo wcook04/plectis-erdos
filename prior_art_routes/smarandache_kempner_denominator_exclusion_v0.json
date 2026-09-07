@@ -1,0 +1,212 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "smarandache_kempner_denominator_exclusion_v0",
+  "status": "adjudicated_standard_factorial_divisibility_function_with_source_specific_lean_consumer",
+  "problem_id": "erdos_68",
+  "purpose": "Place the factorial-divisibility screen for hypothetical rational denominators under the standard Smarandache/Kempner-function terminology, and keep its finite smoothness-exclusion role separate from an irrationality proof.",
+  "review_unit": {
+    "result_family": "factorial_gap_rational_denominator_smoothness_exclusion",
+    "exact_result_id": "kempner_index_denominator_exclusion",
+    "source_generation": {
+      "repository_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "packet_sha256_before_adjudication": "6853efcaeb284b987723c5439872e01f8104d9420ffa45623b8c8e2de795403d",
+      "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "lean_sha256_before_adjudication": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "analysis_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialDigitLawLab.md",
+      "analysis_sha256_before_adjudication": "682e31de8b35ad5fec95375ba6dba308406933e855e561037cece48dbd6283ad",
+      "revision_reason": "The prior terminology adjudication was sound but its packet, Lean, and analysis hashes predated the current committed source generation."
+    },
+    "review_generation": "2026-08-25_v1"
+  },
+  "classification": {
+    "conclusion_confidence_class": "strong_internal_provisional_case",
+    "terminology_confidence_class": "externally_human_adjudicated",
+    "novelty_confidence": "no_novelty_claim; elementary source-specific application of a standard arithmetic function",
+    "recommended_terminology": "Smarandache function (also called the Kempner function), S(q)=min{k>=1:q divides k!}",
+    "discouraged_terminology": [
+      "Kempner index as though it were the canonical name",
+      "new denominator theorem",
+      "irrationality criterion",
+      "cofinal denominator exclusion"
+    ],
+    "significance": "Low standalone theorem novelty but high diagnostic value: it upgrades a one-carry size lower bound into a smoothness exclusion that removes every denominator dividing a fixed factorial, including arbitrarily large smooth denominators.",
+    "expert_judgment_that_can_change_state": "Check only whether a more conventional label is preferred in the target paper; the mathematical status changes only if the Lean consumer or its finite carry input changes.",
+    "confidence_ceiling": "The standard arithmetic-function attribution is high-confidence; the source-specific carry implication is exact in the pinned Lean source, but its finite computational input is not a cofinal theorem.",
+    "attribution_uncertainty": "Kempner's 1918 paper is the historical source; 'Smarandache function' is later common terminology. No novelty is claimed for the implication or for the finite certificate."
+  },
+  "primary_sources": [
+    {
+      "id": "kempner_1918_smallest_factorial_multiple",
+      "title": "Miscellanea",
+      "author": "A. J. Kempner",
+      "venue": "American Mathematical Monthly 25 (1918), no. 5, 201-210",
+      "doi": "10.1080/00029890.1918.11998418",
+      "url": "https://doi.org/10.1080/00029890.1918.11998418",
+      "exact_anchor": "Section II, 'Concerning the smallest integer m! divisible by a given integer n': the factorial-divisibility function later written S(n)=min{k:n divides k!}.",
+      "supports": "The historical arithmetic object, not the factorial-gap carry implication."
+    },
+    {
+      "id": "li_sha_2020_smarandache_terminology",
+      "title": "Polynomial analogue of the Smarandache function",
+      "authors": ["Xiumei Li", "Min Sha"],
+      "url": "https://arxiv.org/abs/1906.00510",
+      "exact_anchor": "Introduction, p. 1: defines the integer function as the least k with n|k!, says Kempner gave the first correct algorithm, notes Smarandache's rediscovery, and records that it is also called the Kempner function.",
+      "supports": "Current conventional terminology and historical attribution.",
+      "does_not_support": "The factorial-gap series, the carry theorem, a finite m=300000 certificate, or irrationality."
+    },
+    {
+      "id": "luca_sandor_2009_smarandache_function",
+      "title": "On the composition of a certain arithmetic function",
+      "authors": ["Florian Luca", "Jozsef Sandor"],
+      "venue": "Functiones et Approximatio Commentarii Mathematici 41 (2009), 185-209",
+      "doi": "10.7169/facm/1261157809",
+      "url": "https://doi.org/10.7169/facm/1261157809",
+      "exact_anchor": "Abstract: S(n) is the smallest positive k with n|k!.",
+      "supports": "Use of S(n) as a standard arithmetic-function notation.",
+      "does_not_support": "Any source-specific rational-denominator screen."
+    },
+    {
+      "id": "erdos_kastanas_1994_smallest_factorial_multiple",
+      "title": "Solution 6674: The smallest factorial that is a multiple of n",
+      "authors": ["Paul Erdős", "Ilias Kastanas"],
+      "venue": "American Mathematical Monthly 101 (1994), no. 2, p. 179",
+      "url": "https://www.jstor.org/stable/2324376",
+      "exact_anchor": "Published solution record for the same smallest-factorial problem; a modern mathematical treatment of the standard function, not a source for the factorial-gap carry consumer.",
+      "supports": "Standard arithmetic-function context and terminology.",
+      "does_not_support": "The source-specific carry implication or any irrationality conclusion."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "S(q)>=m is exactly equivalent to q not dividing (m-1)!.",
+    "source_specific_delta": "The Lean theorem derives that standard condition from one non-unit carry of the factorial-gap series under a displayed rational representation.",
+    "finite_consumer": "The module's m=60 certificate gives q not dividing 59!. A separately certified m=300000 carry gives the finite q not dividing 299999! screen.",
+    "why_not_endpoint_progress": "One finite factorial-divisibility exclusion constrains possible rational denominators but does not rule out all denominators, prove cofinally many carries, or prove irrationality."
+  },
+  "evidence_set": {
+    "local": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialDigitLawLab.md"
+    ],
+    "external": [
+      "Kempner 1918, Section II",
+      "Erdős--Kastanas 1994, Solution 6674",
+      "Li--Sha 2020 introduction",
+      "Luca--Sándor 2009"
+    ],
+    "evidence_class_split": {
+      "S(q)=min{k:q|k!}": "standard externally sourced arithmetic function",
+      "carry_implies_S_ge_m": "Lean-checked source-specific consumer",
+      "m=300000": "exact finite GMP certificate consumed by Lean theorem; not a cofinal result"
+    }
+  },
+  "search_scope": {
+    "completed_at": "2026-08-25",
+    "repositories_and_sources": [
+      "Erdos68 packet, FactorialZeroPlateau.lean, FactorialDigitLawLab.md, reviewer-card inventory, and prior-art routes",
+      "Kempner 1918 and the Erdős--Kastanas 1994 published problem/solution record",
+      "Li--Sha and Luca--Sándor terminology/history references"
+    ],
+    "exact_queries": [
+      "Kempner function factorial original paper",
+      "Smarandache function min k n divides k factorial",
+      "smallest factorial multiple of n"
+    ],
+    "limitation": "This is a bounded terminology and attribution search, not an exhaustive survey of factorial-divisibility literature."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "smarandache_kempner_denominator_exclusion@FactorialZeroPlateau-30b7b4bb53",
+    "evidence_class": "Standard externally sourced arithmetic-function definition plus a source-specific Lean-checked finite denominator consumer; the m=60 and m=300000 certificates are exact finite evidence only.",
+    "closest_known_result": "Kempner, American Mathematical Monthly 25 (1918), Section II, introduced the smallest-factorial-multiple problem; Li--Sha (2020), Introduction, and Luca--Sándor (2009), Abstract, use the modern Smarandache/Kempner-function terminology S(q)=min{k:q|k!}.",
+    "comparison_relation": "The equivalence S(q)≥m iff q∤(m−1)! is the definition-level smoothness screen, not new number theory. The source-specific delta is the Lean implication from one displayed non-unit factorial carry to that screen under the rational-representation hypothesis. It is subordinate to the existing factorial carry-characterization endpoint and separate from the continued-fraction size screen.",
+    "exact_delta": "A non-unit carry at index m transfers to S(q)≥m, equivalently q∤(m−1)!, so even arbitrarily large (m−1)-smooth denominators are excluded by that finite certificate. No assertion is made about all rational denominators or a cofinal carry supply.",
+    "disconfirming_evidence": "The finite m=60/m=300000 screens do not imply a global denominator contradiction. The current FactorialZeroPlateau source changed only the surrounding terminology to ‘Smarandache function (also called the Kempner function)’; it adds no cofinal or irrationality theorem. Kempner/Li--Sha/Luca--Sándor do not support the factorial-gap carry implication.",
+    "confidence": {
+      "level": "high_for_standard_terminology_and_definition; high_for_the_pinned_finite_consumer; none_for_novelty_or_endpoint_progress",
+      "basis": "Historical and modern terminology is bound to the listed primary sources; the local Lean source, packet, and analysis hashes are current at this snapshot. The literature search was bounded and non-location is not treated as priority evidence."
+    },
+    "significance": "Low standalone novelty, useful diagnostic value: it distinguishes a factorial-divisibility/smoothness exclusion from a denominator-size bound and prevents a finite certificate from being mistaken for an irrationality proof.",
+    "claim_ceiling": "Use ‘Smarandache function (also called the Kempner function)’ with S(q)=min{k≥1:q|k!}. State only the conditional, finite Lean consumer and its exact finite certificate; do not call it a new denominator theorem, irrationality criterion, cofinal exclusion, or #68 solution.",
+    "hard_step": "The unresolved step is a cofinal non-unit-carry producer or another argument excluding every rational denominator; the review-sensitive step is keeping one finite smoothness screen separate from that global quantifier.",
+    "open_boundary": "No cofinal carry theorem, all-denominator contradiction, or irrationality conclusion is supplied.",
+    "bounded_expert_review_act": "Confirm the paper’s preferred paired name (Smarandache/Kempner) and inspect the finite-to-cofinal quantifier boundary once; no broader literature survey is needed unless a new carry source generation lands.",
+    "reentry_trigger": "Re-enter on a changed FactorialZeroPlateau or packet generation, a source version changing the finite consumer, or a primary source with an exact stronger carry-to-denominator theorem.",
+    "source_generation_binding": {
+      "formal_source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "formal_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "formal_source_sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "packet_sha256": "a0e4abc91e72921c4849f290a194971cfa9de179708637cabf0e3a1a3d6d10a1",
+      "analysis_sha256": "682e31de8b35ad5fec95375ba6dba308406933e855e561037cece48dbd6283ad",
+      "external_sources": ["Kempner-1918-Section-II", "Li--Sha-2020-Introduction", "Luca--Sandor-2009-Abstract", "Erdos--Kastanas-1994-Solution-6674"],
+      "parity_status": "The source, packet, and analysis hashes match the declared 30b7b4bb53 generation; no fresh Lean replay is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "formal_source_sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "packet_sha256": "a0e4abc91e72921c4849f290a194971cfa9de179708637cabf0e3a1a3d6d10a1"
+    },
+    "claim_guard": "Standard S(q) terminology plus a finite source-specific carry consumer; no global denominator exclusion or irrationality claim.",
+    "reentry_trigger": "Re-enter on source/hash drift or an exact primary-source match for a stronger implication."
+  },
+  "comparison_relations": [
+    {
+      "relation": "standard_definition_restatement",
+      "internal_result": "S(q)>=m iff q does not divide (m-1)!",
+      "known_result": "Kempner/Smarandache function definition",
+      "delta": "No novelty in the arithmetic equivalence; the programme-specific content is the carry consumer."
+    },
+    {
+      "relation": "source_specific_consumer",
+      "internal_result": "rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",
+      "known_result": "factorial-gap carry characterization",
+      "delta": "A single source-specific non-unit carry transfers the standard function into a finite denominator screen."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine arithmetic definition plus exact source-specific implication; the hard unresolved input is cofinal carry production",
+    "slow_down_at": "the quantifier boundary between one finite carry and a global irrationality argument",
+    "automation_can_establish": [
+      "Lean theorem and declaration names",
+      "packet/source hash parity",
+      "finite m=60 and m=300000 certificate values"
+    ],
+    "human_judgment_required": [
+      "whether the paper should say Kempner function, Smarandache function, or both",
+      "whether the finite screen deserves a short supporting lemma rather than a separate theorem section",
+      "whether a future cofinal carry producer changes the significance class"
+    ],
+    "review_act": "One bounded expert act: confirm the conventional name and inspect the finite-to-cofinal quantifier boundary."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Conditionally on a displayed rational representation, a Lean-checked non-unit carry at m implies S(q)>=m, equivalently q does not divide (m-1)!. This is a finite smoothness exclusion when the carry certificate is finite.",
+    "forbidden_wording": [
+      "The Smarandache function proves the factorial-gap series irrational.",
+      "A finite m=300000 certificate excludes every rational denominator.",
+      "The result gives a lower bound on q alone that subsumes the continued-fraction screen.",
+      "Kempner introduced a new index used by this programme."
+    ],
+    "open_boundary": "A cofinal non-unit-carry producer or another route excluding every rational denominator remains necessary for Erdős #68."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "finite rational-denominator screens for factorial-gap series",
+    "disposition": "subordinate under the existing carry-characterization mechanism; retain alongside, not above, the independent continued-fraction size screen",
+    "paper_disposition": "technical supporting lemma in the finite screens section",
+    "comparator_advisory": "No separate interface: the theorem is an elementary consumer of the existing Lean carry machinery and would duplicate the more explanatory carry-to-rationality boundary.",
+    "human_understanding_delta": "Readers can distinguish a smoothness exclusion from a size bound and can find the established function name without mistaking the source-specific implication for new number theory."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean-checked consumer plus finite-certificate interpretation",
+    "output_stage": "attribution_and_expert-understanding support",
+    "artifact": "smarandache_kempner_denominator_exclusion_v0 prior-art route and terminology correction",
+    "human_understanding_delta": "Replaces an opaque local label with the standard factorial-divisibility function and makes the non-irrationality boundary explicit.",
+    "verification_state": "The named local Lean declarations and their documentation were inspected. The external sources were used only for terminology and history; no new Lean proof is claimed.",
+    "publication_or_review_state": "Internal adjudication; no publication, Comparator integration, or novelty claim is requested.",
+    "canonicalization_state": "One existing finite-screen consumer is placed beneath the carry-characterization mechanism; no reviewer card is created.",
+    "unresolved_downstream_bottleneck": "A cofinal carry producer or a global denominator contradiction.",
+    "next_stage_owner": "Mathematical Assimilation Steward if a new source generation changes the carry evidence; otherwise no additional novelty review is needed."
+  }
+}

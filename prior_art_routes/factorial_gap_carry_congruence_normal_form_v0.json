@@ -1,0 +1,186 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "factorial_gap_carry_congruence_normal_form",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_consolidated_moving_carrier_companion_constant_and_miss_window_mechanism",
+  "problem_id": "erdos_68",
+  "purpose": "Place the exact carry congruence inside factorial-radix and Cantor-series arithmetic without mistaking a moving rational carrier for the digits of one fixed real number.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/factorial_gap_carry_congruence_normal_form.card.json",
+    "refinery_handoff_commit": "5e95e8e59c37689385198969d6172302d82bc531",
+    "source_commit": "3114984a1f16bf403b1e9048d68c928556d7e2a1",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CarryCongruenceLab.md",
+    "source_result_ids": [
+      "carry_congruence_normal_form_unit_carry_is_one_floor_congruence",
+      "companion_constant_full_floor_one_residue_normal_form",
+      "companion_constant_telescope_and_lower_window_certificate",
+      "gap_scalar_normal_form_and_uniform_spectrum_to_300000"
+    ],
+    "companion_bridge_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CompanionConstantBridge.lean",
+    "constant_miss_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean"
+  },
+  "classification": {
+    "ambient_framework": "factorial_radix_as_the_q_n_equals_n_case_of_Q_Cantor_series",
+    "fixed_number_digit_extraction_class": "standard_mixed_radix_arithmetic",
+    "moving_carrier_congruence_class": "problem_specific_elementary_refactoring_no_priority_claim",
+    "companion_series_class": "exact_identity_linking_the_open_factorial_gap_constant_to_e_and_a_fixed_positive_series",
+    "finite_certificate_class": "implementation_validation_only",
+    "priority_claim": "none",
+    "recommended_terminology": "moving factorial-radix digit congruence",
+    "discouraged_terminology": "factorial digit theorem without stating that C_m changes with m",
+    "nearest_prior_work": [
+      "Cantor (1869), Uber die einfachen Zahlensysteme, introduced the variable-radix series framework now called Cantor series.",
+      "Mance (2011), Section 1, defines Q-Cantor expansions x=floor(x)+sum E_n/(q_1...q_n) with 0<=E_n<q_n; choosing q_n=n gives factorial radix.",
+      "Hancl and Tijdeman (2008), Introduction, study irrationality of fixed factorial series sum b_n/n! and broader polynomial Cantor series."
+    ],
+    "attribution": "Attribute the numeral-system framework to Cantor and use modern Q-Cantor terminology after Mance. Describe residue extraction from a factorially scaled floor as standard mixed-radix arithmetic. Credit the local card only for the exact moving-C_m split and its Erdos #68 carry consumer.",
+    "mathematical_interest": "The congruence is elementary, but it is a clean diagnostic because it separates the forced integral residue from the only moving floor that can create a carry.",
+    "reusable_scope": "Any factorially cleared prefix with a controlled integral residue and an explicit fractional carrier admits the same reduction to one moving factorial-radix residue test.",
+    "why_it_matters": "It turns a divisibility event in the original sum into a single exact residue observable while preventing finite carry data from being promoted into an irrationality or recurrence claim."
+  },
+  "primary_sources": [
+    {
+      "id": "cantor_1869_einfache_zahlensysteme",
+      "title": "Uber die einfachen Zahlensysteme",
+      "author": "Georg Cantor",
+      "venue": "Zeitschrift fur Mathematik und Physik 14 (1869), 121-128",
+      "url": "https://link.springer.com/book/10.1007/978-3-662-00274-2",
+      "exact_anchor": "Collected works, number-theory section, reprinting the 1869 paper; modern bibliographic pagination 121-128.",
+      "supports": "Historical origin of variable-radix Cantor-series representations.",
+      "does_not_support": "No exact factorial-gap carry congruence or statement about the series sum 1/(n!-1)."
+    },
+    {
+      "id": "mance_2011_q_cantor_normal_numbers",
+      "title": "Construction of normal numbers with respect to the Q-Cantor series expansion for certain Q",
+      "author": "Bill Mance",
+      "venue": "Acta Arithmetica 148 (2011), 135-152",
+      "doi": "10.4064/aa148-2-3",
+      "url": "https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/148/2/82779/construction-of-normal-numbers-with-respect-to-the-q-cantor-series-expansion-for-certain-q",
+      "exact_anchor": "Section 1, equation (1.2): x=E_0+sum E_n/(q_1...q_n), with 0<=E_n<=q_n-1.",
+      "supports": "Modern Q-Cantor terminology and the factorial specialization q_n=n.",
+      "does_not_support": "The carrier C_m in the local theorem depends on m, so it is not the digit stream of a single fixed x under this definition."
+    },
+    {
+      "id": "hancl_tijdeman_2008_polynomial_cantor_series",
+      "title": "On the irrationality of polynomial Cantor series",
+      "authors": ["Jaroslav Hancl", "Robert Tijdeman"],
+      "venue": "Acta Arithmetica 133 (2008), 37-52",
+      "url": "https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/133/1/82186/on-the-irrationality-of-polynomial-cantor-series",
+      "exact_anchor": "Introduction, pp. 37-38: fixed sums R=sum b_n/n! and their irrationality are placed in the Cantor-series framework.",
+      "supports": "The established rational-approximation and irrationality context for fixed factorial series.",
+      "does_not_support": "No moving partial-sum floor congruence, infinite-carry result, or theorem for the factorial-minus-one constant."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "For a fixed factorial expansion x=sum a_n/n!, the n-th digit equals floor(n!x)-n floor((n-1)!x), hence is congruent to floor(n!x) modulo n.",
+    "local_delta": "The exact prefix carrier is C_m=sum_{n<=m}1/[n!(n!-1)], while the full companion constant C=S-e+2 converts the same residue into a canonical factorial-digit condition. The finite congruence, infinite telescope, and two-sided miss windows are one mechanism, not parallel endpoint results.",
+    "scalar_spectrum_subordination": "The later scalar t_m=m·factorialGapPredecessorGap(m) packages the lower-cylinder, unit-carry, and upper-jump diagnostics as three level sets of one moving state. Its reconstruction through m=300000 is an exact finite implementation certificate and a route-selection diagnostic; it is not a uniform-distribution theorem or a new cofinality mechanism.",
+    "rational_approximation_boundary": "Classical Cantor-series irrationality criteria study a fixed infinite sum and its rational partial sums. The card supplies no tail inequality or nonvanishing argument capable of converting its congruence into irrationality.",
+    "significance_boundary": "The asset is a reusable exact normal form and finite-check interface; Erdos Problem 68 remains open."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "factorial expansion floor n! x digit formula",
+      "Q-Cantor series q_n=n factorial digits",
+      "floor m! sum 1/(n!-1) congruence",
+      "factorial-minus-one series carry congruence",
+      "irrationality fixed factorial series sum b_n/n!"
+    ],
+    "result": "The search found the standard Cantor-series framework, fixed-number factorial digit arithmetic, and irrationality work for fixed factorial series. It did not locate the exact moving carrier or its residue -2 as a published theorem.",
+    "boundary": "Non-location supports only a scoped problem-specific classification; it is not evidence of novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The carry identity is an elementary moving factorial-radix digit congruence in the Q-Cantor ambient framework; its exact carrier is the m-dependent rational partial sum C_m.",
+    "forbidden_wording": [
+      "We discovered factorial-base digit extraction.",
+      "The congruence is the digit sequence of one fixed companion constant.",
+      "The carries at 52 and 591 imply infinitely many carries.",
+      "The 300000-term scalar spectrum proves uniform distribution, non-concentration, or cofinal divisibility misses.",
+      "The normal form proves irrationality or solves Erdos Problem 68."
+    ],
+    "nonclaims": [
+      "not_a_new_numeral_system",
+      "not_a_fixed_number_digit_theorem",
+      "not_an_infinite_carry_law",
+      "not_an_irrationality_result",
+      "not_a_solution_of_erdos_68"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/factorial_gap_carry_congruence_normal_form.card.json",
+      "effect": "Replace pending novelty language with factorial-radix attribution, the moving-carrier distinction, and exact primary-source anchors."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalise the split as a reusable mixed-radix diagnostic while retaining C_m dependence and the no-irrationality boundary."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_moving_carrier_and_fixed_series_comparison",
+    "priority_order": [
+      "check whether any factorial/Cantor-series source treats an m-dependent carrier rather than the digits of one fixed real",
+      "keep the companion constant identity, residue congruence, and finite scalar spectrum as one consolidated diagnostic",
+      "re-enter only if a source supplies an infinite carry or tail nonvanishing theorem strong enough to cross the stated irrationality boundary"
+    ],
+    "lane": "re-enter on a primary-source exact carrier match or a new cofinal carry/irrationality theorem; finite spectra alone do not reopen the claim"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "factorial_gap_carry_prior_art_and_claim_boundary_review",
+    "output_stage": "attribution_bound_human_review_support",
+    "artifact": "#68 moving factorial-radix carry congruence and companion-series normal form",
+    "human_understanding_delta": "The result is located inside Cantor/Q-Cantor mixed-radix arithmetic while preserving the crucial moving-carrier distinction: C_m depends on m and is not the digit stream of one fixed companion constant. The finite spectrum remains diagnostic only.",
+    "verification_state": "Cantor, Mance, and Hancl--Tijdeman anchors and the local source/result ids are bound; exact moving-carrier publication antecedent and any infinite-carry consequence remain unresolved.",
+    "publication_or_review_state": "Private significance support; no priority, fixed-digit discovery, infinite-carry, irrationality, or #68 endpoint claim.",
+    "canonicalization_state": "Keep one consolidated carry/companion/miss-window mechanism; do not split the congruence, telescope, scalar spectrum, and finite certificates into duplicate routes.",
+    "unresolved_downstream_bottleneck": "A cofinal carry or tail nonvanishing theorem that converts the exact moving residue into irrationality, beyond finite computation and standard factorial-series context.",
+    "next_stage_owner": "Novelty Observatory for exact moving-carrier antecedents; Mathematics Refinery for the single mechanism family; proof/public owners remain responsible for any endpoint upgrade."
+  },
+  "reviewer_attention_budget": {
+    "routine": "The floor congruence and companion telescope are elementary mixed-radix arithmetic once the m-dependent carrier is fixed.",
+    "load_bearing": "The carrier C_m changes with m, so the congruence is not the digit stream of one fixed real; this distinction controls every irrationality interpretation.",
+    "externally_sourced": "Cantor (1869) and Mance (2011) supply variable-radix/Q-Cantor terminology; Hancl--Tijdeman (2008) supply fixed factorial-series irrationality context.",
+    "still_unverified": "No publication antecedent for this exact moving-carrier residue or an infinite-carry consequence was located; finite spectra remain implementation evidence only.",
+    "expert_act": "Check the moving-carrier quantifiers and source anchors once, then keep the congruence, companion telescope, and miss windows as one supporting mechanism under the cofinal-carry endpoint.",
+    "review_act": "Check the moving-carrier quantifiers and source anchors once, then keep the congruence, companion telescope, and miss windows as one supporting mechanism under the cofinal-carry endpoint."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "factorial_gap_carry_congruence_normal_form@source-3114984",
+    "evidence_class": "Lean-checked exact carry/telescope declarations with source-pinned ordinary Cantor-series comparison and finite spectrum diagnostics.",
+    "closest_known_result": "Cantor-series and Q-Cantor mixed-radix digit extraction are standard; fixed factorial-series irrationality is treated by Hancl--Tijdeman. The exact m-dependent carrier split and its #68 consumer are source-specific packaging, not a new numeral system.",
+    "comparison_relation": "The result reduces each divisibility event to a moving factorial-radix residue and links it to a companion constant, while explicitly not identifying C_m with digits of one fixed number. It supplies no cofinal carry or tail nonvanishing theorem.",
+    "exact_delta": "A reusable normal-form correction: finite carries and scalar spectra are diagnostics of one moving state, not evidence for an infinite carry law or irrationality.",
+    "disconfirming_evidence": "Bounded literature searches found the standard Cantor/Q-Cantor and fixed-factorial frameworks but no exact moving-carrier publication antecedent; non-location does not support priority.",
+    "confidence": {
+      "level": "high_for_standard attribution and source-specific exact packaging; low_for_priority",
+      "basis": "The formal declarations, companion bridges, and explicit forbidden interpretations are source-pinned and inspectable."
+    },
+    "significance": "High explanatory value as the single #68 carry/companion/miss-window diagnostic; it prevents repeated finite computations from masquerading as the endpoint producer.",
+    "claim_ceiling": "Describe an elementary moving factorial-radix carry congruence in the Cantor/Q-Cantor ambient framework, with an m-dependent carrier and companion telescope. Do not claim discovery of factorial-base digit extraction, an infinite-carry law, uniform spectrum, irrationality, or an Erdős #68 solution.",
+    "hard_step": "The unresolved step is a cofinal carry or tail nonvanishing theorem strong enough to cross from the exact residue normal form to irrationality.",
+    "open_boundary": "Consolidate under factorial_gap_cofinal_carry_irrationality_criterion; no independent Comparator endpoint or flagship slot is justified.",
+    "bounded_expert_review_act": "Verify the m-dependent carrier quantifier and that each finite certificate is labelled diagnostic; identify any source with the same moving-carrier formulation.",
+    "reentry_trigger": "Re-enter if an exact publication antecedent, source-generation change, or new cofinal carry/irrationality consumer appears.",
+    "source_generation_binding": {
+      "formal_source_commit": "3114984a1f16bf403b1e9048d68c928556d7e2a1",
+      "carry_lab_sha256": "a1dd71e78c7d0636cd698f933c9a94485480c0ef46832781d0bd0620eed4ac25",
+      "companion_bridge_sha256": "18d64c58660749777137a1ee8a2e81ecf8e6bc56af1173dbdbdf441d455ee7c3",
+      "constant_miss_sha256": "e7de8e3080d2ce69bda7a1ab106160e780f850cbb7bf623a1885c3ae9a0694c3",
+      "primary_source_anchors": [
+        "Cantor (1869), Über die einfachen Zahlensysteme",
+        "Mance (2011), Q-Cantor expansion, §1 eq. (1.2)",
+        "Hancl--Tijdeman (2008), polynomial Cantor series, Introduction"
+      ],
+      "parity_status": "Formal source and external framework anchors are current; no priority or infinite-carry claim is asserted."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "3114984a1f16bf403b1e9048d68c928556d7e2a1",
+      "carry_lab_sha256": "a1dd71e78c7d0636cd698f933c9a94485480c0ef46832781d0bd0620eed4ac25"
+    },
+    "claim_guard": "C_m is m-dependent; finite congruence and spectrum do not imply fixed-number digits, cofinal carries, or irrationality.",
+    "reentry_trigger": "Re-enter on source drift or any proposed endpoint upgrade beyond the moving-carrier normal form."
+  }
+}

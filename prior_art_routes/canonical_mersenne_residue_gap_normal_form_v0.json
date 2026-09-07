@@ -1,0 +1,315 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "canonical_mersenne_residue_gap_normal_form",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_source_specific_exact_reformulation_no_priority_claim",
+  "problem_id": "erdos_249",
+  "purpose": "Position the fixed-basepoint Mersenne residue-gap equivalence as the canonical #249 endpoint map, distinguish classical ingredients from the source-specific packaging, and keep every subordinate local mechanism below the still-open universal producer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/canonical_mersenne_residue_gap_normal_form.card.json",
+    "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+    "source_result_id": "canonical_full_mersenne_residue_normal_form",
+    "source_declarations": [
+      "ErdosProblems.Erdos249.FullMersenneCenteredResidueGap",
+      "ErdosProblems.Erdos249.FullMersenneCanonicalBasepointResidueGapSupply",
+      "ErdosProblems.Erdos249.fullMersenneBlockResidue_succ",
+      "ErdosProblems.Erdos249.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational"
+    ]
+  },
+  "source_generation": {
+    "status": "source_card_packet_current_at_adjudication; exact equivalence remains an endpoint map rather than a universal gap producer",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "source_result_ids": [
+        "canonical_full_mersenne_residue_normal_form"
+      ]
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/canonical_mersenne_residue_gap_normal_form.card.json",
+      "commit": "2a5ae9cc179dd90e397cbc9f8267a0d4af95fb81",
+      "sha256": "3c949c059711a48ba3da0cf917f0a93114e2af6f1b5fc58783db05bc1659fe50"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "parity_audit": {
+    "status": "source_card_packet_current",
+    "effect": "The four named Lean declarations, packet result, and reviewer card are bound to current committed generations. The universal residue-gap supply remains open; subordinate local and support routes are not promoted to endpoint evidence.",
+    "reentry_condition": "Re-enter if CyclotomicAnchoredKill.lean, the packet result row, the reviewer card, or a universal strict-gap producer changes."
+  },
+  "review_unit": {
+    "result_family": "erdos249_canonical_mersenne_residue_gap_normal_form",
+    "exact_result_id": "canonical_full_mersenne_residue_normal_form",
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "research_packet_sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "reviewer_card": "docs/formal_math/reviewer_cards/canonical_mersenne_residue_gap_normal_form.card.json",
+      "reviewer_card_commit": "2a5ae9cc179dd90e397cbc9f8267a0d4af95fb81",
+      "formalization_scope": "named_Lean_equivalence_and_recurrence_no_fresh_replay"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Quantifier-sensitive exact equivalence: denominator decomposition and Euler-period clearing are routine, while the universal strict-gap producer remains the genuine #249 problem.",
+    "slow_down_at": "Track the forced basepoint c, odd denominator v, Euler-compatible H and M, endpoint widths, and the forall-c forall-v exists-H,M order in both directions. Do not let one residue, one H, or a finite scan stand in for the universal supply.",
+    "automation_can_establish": [
+      "The four named Lean anchors and pinned source/packet hashes",
+      "Recurrence, denominator-shape, and exact equivalence bookkeeping",
+      "Cross-link consistency for subordinate #249 mechanisms"
+    ],
+    "human_judgment_required": [
+      "Whether the normal form is best framed as an exact source-specific reduction built from classical denominator clearing and modular periodicity",
+      "Whether any external source contains the same forced-basepoint universal quantifier order",
+      "Which global cross-gap invariant could produce strict centered gaps uniformly over all denominator shapes"
+    ],
+    "review_act": "One bounded expert act: audit the two equivalence directions and quantifier transport against the pinned source, then redirect substantive attention to a universal gap producer rather than finite scans or local locks."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "forced-basepoint Mersenne residue-gap normal form for binary totient irrationality",
+    "disposition": "replace_headline_and_consolidate_all_subordinate_249_routes",
+    "consolidation_relation": "Use this as the single #249 endpoint map; subordinate anchored-kill, delay/lock, order-witness, finite-screen, and coordinate routes beneath it rather than counting them as parallel endpoints.",
+    "comparator_advisory": "No new Comparator interface beyond the existing exact equivalence firewall is justified; any later proposition must audit the universal quantifier and evidence class against these four declarations.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The exact endpoint: one universal Mersenne residue-gap supply",
+      "supersession_or_consolidation": "Replace duplicate #249 endpoint narratives and place every producer or boundary below this normal form.",
+      "reason": "It tells an expert exactly what would settle the problem and prevents finite, local, or denominator-specific evidence from being mistaken for the missing universal theorem."
+    }
+  },
+  "classification": {
+    "novelty_class": "source_specific_exact_reformulation_from_classical_components",
+    "priority_claim": "none",
+    "formalisation_status": "named Lean definitions, recurrence, and exact equivalence at the pinned source snapshot; no new elaboration in this adjudication",
+    "mathematical_interest": "High as programme architecture and human-understanding infrastructure, modest as standalone theorem novelty. The equivalence exposes one exact producer obligation while eliminating false freedom in the launch index.",
+    "reusable_scope": "A useful design pattern for radix-tail irrationality problems where a denominator splits into a radix power and a coprime factor cleared by a periodic block. It is not a hypothesis-free general irrationality theorem.",
+    "why_it_matters": "It conserves expert attention: finite scans, lock cones, anchored kills, and prime-support transfers can now be judged by whether they actually feed the same universal residue-gap supply rather than being narrated as parallel frontiers."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_1988_irrationality_series",
+      "title": "On the irrationality of certain series: problems and results",
+      "author": "Paul Erdős",
+      "venue": "New Advances in Transcendence Theory (1988), 102-109",
+      "url": "https://users.renyi.hu/~p_erdos/1988-22.pdf",
+      "local_annex": "annexes/erdos-1988-irrationality-series-problems-results",
+      "source_pdf": "annexes/erdos-1988-irrationality-series-problems-results/source.pdf",
+      "source_pdf_sha256": "b2bfc375d04b65332d6b8817633ff3968283a3f33c1f1ace366b03ac9fab8c88",
+      "extracted_markdown": "annexes/erdos-1988-irrationality-series-problems-results/extracted.md",
+      "extracted_markdown_sha256": "3e62c6462d633e0023a6b54a9e7370d6941f4d1dbf4cc2526ed2e264c6727152",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 8,
+      "extracted_locator": "extracted.md lines 1-35: the paper's opening statement of the unresolved binary totient-series question and neighboring irrationality results, corresponding to printed pp. 102-103.",
+      "exact_anchor": "Printed p. 102 states the unresolved irrationality question for sum phi(n)/2^n.",
+      "supports": "The target and historical open-problem posture.",
+      "does_not_support": "No fixed-basepoint full-Mersenne residue-gap predicate or equivalence appears there."
+    },
+    {
+      "id": "erdos_1968_irrationality_series",
+      "title": "On the irrationality of certain series",
+      "author": "Paul Erdős",
+      "venue": "The Mathematics Student 36 (1968), 222-226",
+      "local_annex": "annexes/erdos-1968-irrationality-certain-series",
+      "source_pdf": "annexes/erdos-1968-irrationality-certain-series/source.pdf",
+      "source_pdf_sha256": "340fff6a8a70d2125587ebc62e8157258ed30a86bb19afe25257bb1cb2126e57",
+      "extracted_markdown": "annexes/erdos-1968-irrationality-certain-series/extracted.md",
+      "extracted_markdown_sha256": "d5cf77ec57398e810d837dcf60ebf5169d1dc18c42dd0903d9c7acc1df65c1b0",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 5,
+      "extracted_locator": "extracted.md lines 61-90 and 103-180: the recurrence context, base-expansion nontermination strategy, CRT congruences, and selected digit gaps, corresponding to printed pp. 223-225.",
+      "exact_anchor": "Printed pp. 222-225 use base-expansion tails, CRT-selected positions, and nontermination for a different Lambert subseries.",
+      "supports": "A close primary-source methodological antecedent for congruence-selected radix-tail irrationality arguments.",
+      "does_not_support": "Different coefficients and support hypotheses; no #249 normal form or universal Mersenne gap supply."
+    },
+    {
+      "id": "apostol_1976_totient",
+      "title": "Introduction to Analytic Number Theory",
+      "author": "Tom M. Apostol",
+      "venue": "Springer, 1976",
+      "doi": "10.1007/978-1-4757-5579-4",
+      "local_annex": "annexes/apostol-1976-analytic-number-theory",
+      "source_pdf": "annexes/apostol-1976-analytic-number-theory/source.pdf",
+      "source_pdf_sha256": "705665c9e0f8db7b67ec75449c78f061e56ee0da037577f87dae0af26ea2c16b",
+      "extracted_markdown": "annexes/apostol-1976-analytic-number-theory/extracted.md",
+      "extracted_markdown_sha256": "bb007d8c8f49144dd6a379d6178fd5a159d8af861934aedc4f5cb1e3b393a7d0",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 352,
+      "extracted_locator": "extracted.md lines 1548-1724: Sections 2.2-2.5, including Theorems 2.2-2.5 on Möbius/totient identities and the product formula; lines 1935-2058: Theorem 2.9 and multiplicative-function context, corresponding to printed pp. 25-33.",
+      "exact_anchor": "Theorems 2.2-2.5 and 2.9, printed pp. 25-32.",
+      "supports": "Classical totient identities, multiplicativity, and Möbius inversion.",
+      "does_not_support": "No irrationality result or residue-gap equivalence for the binary totient series."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_components": "Rational-denominator radix decomposition, Euler periodicity for the odd part, integer-lattice separation, and finite modular remainders are classical ingredients.",
+    "exact_local_delta": "The source fixes the denominator-determined basepoint c and proves the full quantified central-gap supply equivalent to #249, with a separate local sliding recurrence.",
+    "anchored_kill_relation": "Cyclotomic anchored killing is an alternate exact coordinate. It may expose finite local certificates, but it is not a second endpoint or evidence that the canonical supply holds.",
+    "delay_lock_relation": "Delay scans and prime-successor lock cones are falsifiers or diagnostics for local proof routes. They do not alter the forall-c, forall-v producer obligation.",
+    "order_support_relation": "Bounded-order prime-support escape is a conditional producer-consumer tool. Even unbounded prime support is not itself a centered residue gap."
+  },
+  "proof_anatomy": {
+    "checked_direction_from_irrationality": "For a fixed scaled tail, irrationality gives positive distance from the integer lattice. Choosing a sufficiently large Euler-multiple H converts that distance into a central residue gap at the prescribed basepoint.",
+    "checked_direction_to_irrationality": "A hypothetical rational denominator fixes c and v; the supplied compatible Mersenne block then forbids the integral tail difference forced by denominator clearing.",
+    "genuinely_hard_step": "Produce one strict centered gap for every c and positive odd v without assuming irrationality. No current finite scan, lock theorem, anchored certificate, or prime-support result supplies this universal quantifier.",
+    "natural_friction": "The forced basepoint, Euler divisibility, strict endpoint width, and full quantifier order are load-bearing. A statement that residues eventually escape suppresses precisely the difficulty."
+  },
+  "disconfirmation_search": {
+    "scope": [
+      "complete local copy of Erdős 1988",
+      "complete local copy of Erdős 1968",
+      "official #249 page snapshot",
+      "assimilated Apostol reference",
+      "existing #249 prior-art routes"
+    ],
+    "result": "No exact fixed-basepoint full-Mersenne residue-gap antecedent was located.",
+    "boundary": "Classify as authored source-specific reformulation. Bounded search failure is not priority evidence."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Lean proves that Erdős #249 is equivalent to a forced-basepoint full-Mersenne central-residue-gap supply with the exact universal quantifier order. The equivalence is a useful canonical reduction; the supply remains open.",
+    "forbidden_wording": [
+      "The Mersenne residue-gap method proves or nearly proves Erdős #249.",
+      "The equivalence is a new independent irrationality criterion.",
+      "Finite scans or local locks support the universal supply.",
+      "One checked gap has a named individual-denominator consumer in the current source.",
+      "The bounded search establishes novelty or priority."
+    ],
+    "ai_tool_disclosure": "The normal form, Lean proof development, consolidation, and adjudication were AI-assisted. Kernel checking applies to the named declarations only and does not establish novelty, significance, the open supply, or independent human review."
+  },
+  "release_advisory": {
+    "significance_grade": "high_programme_canonicalization_modest_standalone_novelty",
+    "comparator": "Advisory yes: one statement-only equivalence firewall preserving the full quantifier order and visibly marking the supply as open. Role 3 owns the final disposition and restatement engineering.",
+    "expert_talk": "Retain as the 10-12 minute main #249 frontier map; do not market it as a novelty talk.",
+    "public_story": "The value is exact compression of the open problem and consolidation of false or conditional side routes, not an irrationality advance."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "canonical forced-basepoint Mersenne residue-gap normal form for the binary totient series",
+    "disposition": "replace the programme headline",
+    "consolidation_relation": "All anchored-kill, delay or lock, order-support, signed-moment, and finite-certificate objects sit beneath this endpoint as alternate coordinates, producers, consumers, route boundaries, or screens.",
+    "comparator_advisory": "One exact equivalence firewall with the full quantifier order is justified and should replace parallel #249 endpoint interfaces.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The exact endpoint: one universal Mersenne residue-gap supply",
+      "supersession_or_consolidation": "Replace every parallel endpoint narrative and organize all #249 mechanisms beneath this normal form.",
+      "reason": "This is the smallest lossless statement of the open producer obligation."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "admit as the #249 representative in the rolling 3-5-object cross-programme first-contact shortlist",
+      "why_care": "It redirects expert attention from local evidence to the exact universal producer needed by the open problem.",
+      "evidence_class": "Lean-checked exact equivalence and recurrence; universal producer absent",
+      "hard_step": "uniform strict centered residue gap for every forced c and positive odd v",
+      "prior_art_uncertainty": "classical ingredients; exact packaging not located by bounded search; no priority inference",
+      "open_boundary": "exact reduction only, not irrationality progress",
+      "demoted_predecessor": "bounded-order support escape and delay/lock mechanisms become subordinate rather than first-contact candidates"
+    }
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_249.md",
+    "section": "The exact endpoint: one universal Mersenne residue-gap supply",
+    "canonical_mechanism_family": "canonical forced-basepoint Mersenne residue-gap normal form for the binary totient series",
+    "relation": "Headline replacement and consolidation parent for every #249 coordinate, producer, consumer, boundary, and finite screen.",
+    "understanding_delta": "Every denominator shape fixes c,v, and the complete endpoint is one strict Euler-compatible Mersenne residue gap at that forced basepoint.",
+    "evidence_boundary": "Lean checks the equivalence and recurrence; no universal supply or irrationality proof is present.",
+    "hard_step": "Produce the strict gap for every c and positive odd v without assuming irrationality.",
+    "meaningful_failed_route": "Substitute finite scans, remote launches, local locks, or prime-support escape for the exact universal gap supply.",
+    "open_remainder": "The universal gap producer is absent and #249 remains open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification_and_canonicalization_candidate",
+    "output_stage": "human_understanding_and_adversarial_review",
+    "artifact": "canonical_mersenne_residue_gap_normal_form",
+    "human_understanding_delta": "Separates the elementary exact equivalence from the genuinely hard universal producer and places four families of subordinate mechanisms beneath one endpoint.",
+    "verification_state": "Four named Lean anchors and the current packet row are source-present with matching pinned hashes; no new replay was performed.",
+    "publication_or_review_state": "Adjudicated with a no-priority ceiling, primary-source anchors, expert-talk verdict, and Comparator advisory.",
+    "canonicalization_state": "Recommended parent endpoint for #249 residue-gap, anchored-kill, delay/lock, and order-support material.",
+    "unresolved_downstream_bottleneck": "Independent expert review and a theorem producing the strict gap for every denominator shape.",
+    "next_stage_owner": "Mathematics Refinery for canonical consolidation and Role 3 for any statement firewall or public projection."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_universal_gap_producer_or_source_generation_change",
+    "reentry_condition": "Re-enter only if the formal source/card/packet generation changes, an external source records the same exact quantifier order, or a theorem produces strict centered gaps for every c and odd v without assuming irrationality.",
+    "do_not_redo": "Do not repeat denominator decomposition, modular recurrence bookkeeping, finite scans, anchored-kill coordinates, or local lock summaries; they are subordinate evidence already mapped.",
+    "open_bottleneck": "A uniform cross-gap mechanism must produce the strict gap for every forced basepoint c and positive odd v.",
+    "owner": "#249 proof owners for the universal producer; Mathematics Refinery for consolidation; Novelty Observatory only on changed source or literature attribution."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "evidence_class": "Lean-checked exact equivalence and recurrence at the pinned source snapshot; no universal producer or fresh replay is claimed.",
+    "closest_known_result": "Classical radix/block decomposition, Euler-period clearing, and totient/Möbius arithmetic are the nearest antecedents; no located source states this forced-basepoint full-Mersenne quantifier package.",
+    "comparison_relation": "Exact reformulation of the #249 endpoint, not a stronger producer, irrationality theorem, or independent priority claim.",
+    "exact_delta": "The source fixes the denominator-determined basepoint c and proves the full forall-c, forall-positive-odd-v residue-gap supply equivalence, together with the local block recurrence.",
+    "disconfirming_evidence": "Finite scans, anchored kills, delay/lock cones, bounded-order support escape, and one denominator shape do not cover the universal quantifier order.",
+    "confidence": {
+      "level": "high_for_pinned_equivalence_low_for_universal_producer_and_originality",
+      "basis": "Four named Lean declarations and packet/card hashes are current; no theorem supplies the strict gap for every forced basepoint and odd multiplier."
+    },
+    "significance": "High programme-canonicalization value and modest standalone novelty: it gives #249 one lossless endpoint map and retires parallel endpoint narratives.",
+    "claim_ceiling": "Lean proves equivalence between #249 and the forced-basepoint full-Mersenne central-residue-gap supply with its exact quantifier order; the supply, irrationality, and #249 resolution remain open.",
+    "hard_step": "Produce a strict centered residue gap for every forced basepoint c and positive odd multiplier without assuming irrationality.",
+    "open_boundary": "No universal all-basepoint producer is proved; subordinate local locks and order-support routes remain conditional or diagnostic.",
+    "bounded_expert_review_act": "Audit the denominator split and both equivalence directions once, then test whether any proposed producer really covers every c and odd v.",
+    "reentry_trigger": "Reopen on a source/card/packet generation change, an exact external antecedent, or a theorem producing the universal strict-gap supply.",
+    "source_generation": {
+      "formal_source_sha256_observed": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "packet_sha256_observed": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "reviewer_card_sha256_observed": "3c949c059711a48ba3da0cf917f0a93114e2af6f1b5fc58783db05bc1659fe50"
+    },
+    "classification": {
+      "result_family": "erdos249_canonical_mersenne_residue_gap_normal_form",
+      "evidence_class": "Lean_checked_exact_equivalence_and_recurrence",
+      "closest_prior_art": "classical radix/block decomposition and denominator-splitting arithmetic; no located source with the exact forced-basepoint quantifier package",
+      "comparison_relation": "exact reformulation of the #249 endpoint, not a stronger producer and not an irrationality theorem",
+      "novelty_confidence": "strong_internal_provisional_case_for_packaging; no priority claim",
+      "significance_grade": "high_programme_canonicalization",
+      "why_care": "It collapses anchored-kill, delay/lock, order-support, and residue-gap narratives onto one exact universal producer obligation, saving experts from comparing false parallel endpoints.",
+      "hard_step": "Produce a strict centered residue gap for every forced basepoint and positive odd multiplier without assuming irrationality.",
+      "disconfirming_evidence": "Finite scans and local locks do not supply the universal quantifier; the current Lean equivalence leaves the producer open.",
+      "confidence_ceiling": "High for the exact equivalence at the pinned source; zero for the universal supply and #249 resolution.",
+      "bounded_expert_act": "Audit the quantifier order and denominator split once, then inspect whether any proposed producer truly covers all c and odd v.",
+      "reentry_condition": "Re-enter only on source-generation change, an exact external antecedent, or a genuine universal producer."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#249 full-Mersenne residue-gap endpoint normal form",
+      "disposition": "replace_headline_and_subordinate_side_routes",
+      "paper_disposition": "headline_core_mechanism_in_the_#249_frontier_section",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "one exact equivalence firewall with the supply explicitly open",
+      "expert_attention_reason": "This is the smallest honest map of what #249 still asks for; more cards would fragment the same producer obligation."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verification_and_canonicalization",
+      "output_stage": "expert_understanding_and_frontier_digest",
+      "artifact": "canonical_mersenne_residue_gap_normal_form",
+      "human_understanding_delta": "Makes the exact endpoint coordinate and its universal missing producer visible while demoting finite and conditional side mechanisms.",
+      "verification_state": "Named Lean equivalence and recurrence are source-pinned; no fresh replay or endpoint proof claimed.",
+      "publication_or_review_state": "internal adjudication; Comparator advisory only, no public novelty claim",
+      "canonicalization_state": "programme headline for #249; subordinate routes remain consolidated beneath it",
+      "unresolved_downstream_bottleneck": "universal strict-gap producer",
+      "next_stage_owner": "Mathematics Refinery for consolidation and Role 3 for statement-faithful projection"
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_card_packet_current_and_claim_bound",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "research_packet_commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "research_packet_sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "reviewer_card_commit": "2a5ae9cc179dd90e397cbc9f8267a0d4af95fb81",
+      "reviewer_card_sha256": "3c949c059711a48ba3da0cf917f0a93114e2af6f1b5fc58783db05bc1659fe50"
+    },
+    "claim_guard": "This is an exact equivalence and endpoint coordinate, not a universal strict-gap supply, irrationality theorem, or priority claim; subordinate locks and order-witness routes remain conditional evidence.",
+    "reentry_trigger": "Re-enter on source-generation change, an exact external antecedent, or a proof of the universal all-basepoint producer."
+  }
+}

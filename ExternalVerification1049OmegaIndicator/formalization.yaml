@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #1049: the Zudilin cone weight is a thirteen-interval indicator on [0,1)"
+  description: >-
+    The integer weight max 0 (max (floor(14x)+floor(13x)-floor(12x)-floor(15x)) (2 floor(14x)-floor(13x)-floor(15x))) takes only the values zero and one at every real point of the interval from zero to one, and it equals one exactly on an explicit union of thirteen left-closed right-open intervals with denominators 2, 3, 4, 5, 6, 7, 12, 14 and 15. The statement is quantified over every real point, so it is a real-variable theorem rather than a check at sampled points, and the endpoint conventions are the ones printed in the source. The proof partitions the interval at all forty-eight rational breakpoints induced by the denominators 12, 13, 14 and 15, fixes the four floor values on each cell, and decides membership in the support cell by cell. The readers are number theorists working on Lambert series irrationality by the Zudilin cone method. This is one lemma of the rational-base construction; it supplies no irrationality conclusion and it does not settle Erdős Problem 1049.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "draining"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1049OmegaIndicator/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1049OmegaIndicator/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  submission_authorization: "not_authorized_operator_gated"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    Prepared locally in the r7 paper-complete Lean assimilation. No Palomar
+    submission has been made. The parent Erdős problem 1049 remains open and
+    nothing in this package bears on it.
+
+boundary:
+  parent_problem_status: "open"
+  what_is_proved: >-
+    The integer weight max 0 (max (floor(14x)+floor(13x)-floor(12x)-floor(15x)) (2 floor(14x)-floor(13x)-floor(15x))) takes only the values zero and one at every real point of the interval from zero to one, and it equals one exactly on an explicit union of thirteen left-closed right-open intervals with denominators 2, 3, 4, 5, 6, 7, 12, 14 and 15. The statement is quantified over every real point, so it is a real-variable theorem rather than a check at sampled points, and the endpoint conventions are the ones printed in the source. The proof partitions the interval at all forty-eight rational breakpoints induced by the denominators 12, 13, 14 and 15, fixes the four floor values on each cell, and decides membership in the support cell by cell. The readers are number theorists working on Lambert series irrationality by the Zudilin cone method. This is one lemma of the rational-base construction; it supplies no irrationality conclusion and it does not settle Erdős Problem 1049.
+  what_is_not_proved: >-
+    No irrationality statement, no bound on an irrationality exponent, and no
+    part of the Erdős 1049 conjecture is established by this package.
+
+sources:
+  - path: "formal_math/erdos257_period_noncollapse/ExternalVerification1049OmegaIndicator/Challenge.lean"
+    role: "Mathlib-only statement"
+  - path: "formal_math/erdos257_period_noncollapse/ExternalVerification1049OmegaIndicator/Solution.lean"
+    role: "transport from the live declaration"

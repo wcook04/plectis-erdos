@@ -1,0 +1,173 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "four_ninths_diagonal_reachability_fork",
+  "generated_at": "2026-08-24",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Private Lean reduction and conditional compactness consumer with two independent actual-history reachability exclusions still unproved.",
+    "slow_down_at": "The distinction between executable-orbit statements and detached finite diagnostics; neither reachability exclusion is established.",
+    "automation_can_establish": ["source/card/packet hash parity", "exact reduction correspondence", "finite diagnostics as non-universal evidence"],
+    "human_judgment_required": ["whether a shared selected-divisor ancestry invariant can attack both events", "whether the conditional consumer is stated with exact quantifiers", "whether this remains one subordinate #257 fork"],
+    "review_act": "Check both actual-orbit equivalences against the Lean source, then test one shared-ancestry anti-reachability argument without importing detached countermodels."
+  },
+  "adjudication_currentness": {
+    "status": "private_source_card_packet_snapshot_adjudicated",
+    "bound_snapshot": {
+      "source_commit": "a06406d07091d679735c3db15034b9c4cdf613bb",
+      "reviewer_card_commit": "8b8cf9666c276225c5eb7a6e16e656fca2d01277",
+      "reviewer_card_sha256": "46e561ec3054a4b9007e094060461fcae85086c930af2239edce517b5b8e1a83",
+      "research_packet_commit": "df504282947e6aa0c0b22b5542d9e49bb1e5f376",
+      "research_packet_sha256": "7c9d8b0fe4846cd6fb785fea091eda544f66288079ea85755359c0e6325541f6"
+    },
+    "claim_guard": "Only the conditional reduction of 4/9 membership to the two stated actual-history exclusions is admitted; no exclusion, membership, rational counterexample, or #257 solution follows.",
+    "reentry_trigger": "Re-enter if either all-depth producer is proved, a source/card/packet generation changes, or a new executable-orbit counterexample appears."
+  },
+  "source_generation": {
+    "source_commit": "a06406d07091d679735c3db15034b9c4cdf613bb",
+    "source_results": [
+      "four_ninths_diagonal_small_margin_obstruction",
+      "four_ninths_coin_cancellation_removes_the_exponential"
+    ],
+    "reviewer_card_commit": "8b8cf9666c276225c5eb7a6e16e656fca2d01277",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/four_ninths_diagonal_reachability_fork.card.json",
+    "reviewer_card_sha256": "46e561ec3054a4b9007e094060461fcae85086c930af2239edce517b5b8e1a83",
+    "status": "private_Lean_reduction_generation_current_at_adjudication; finite diagnostics are non-universal"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos257_target_specific_actual_history_reachability_fork@source_a06406d0_card_8b8cf966",
+    "source_generation": {
+      "source_commit": "a06406d07091d679735c3db15034b9c4cdf613bb",
+      "reviewer_card_sha256": "46e561ec3054a4b9007e094060461fcae85086c930af2239edce517b5b8e1a83"
+    },
+    "evidence_class": "Private Lean-checked reductions and conditional consumer with finite diagnostic audits; no all-depth producer or endpoint theorem.",
+    "comparison_relation": "Recurrence unrolling, compactness, and congruence operations are standard. The exact 4/9 actual-orbit assembly and its two reachability equivalences are source-specific private work without a priority claim.",
+    "closest_known_result": "No external theorem is used for the fork; finite diagnostics are method-boundary evidence rather than source-orbit counterexamples.",
+    "exact_delta": "Conditional 4/9 membership is reduced to two explicit actual-history events: a selected landing in the lower bad window and a skipped midpoint carry equality. Compactness closes only after both all-depth exclusions are supplied.",
+    "disconfirming_evidence": "Detached countermodels and finite audits do not transfer to the executable orbit; neither reachability exclusion is proved.",
+    "confidence": {
+      "conditional_reductions": "high_internal_provisional",
+      "finite_diagnostics": "high_as_diagnostics_only",
+      "all_depth_exclusions": "low_unresolved",
+      "four_ninths_membership": "not_proved"
+    },
+    "claim_ceiling": "The private Lean development supplies a conditional 4/9 compactness consumer once two explicit actual-orbit reachability exclusions hold; it does not prove either exclusion or membership.",
+    "significance": "Medium frontier-map value: it identifies the shared selected-divisor ancestry throat beneath a tempting rational target, but does not advance the endpoint by itself.",
+    "hard_step": "Exclude both actual-orbit reachability events at every depth through a common ancestry invariant.",
+    "open_boundary": "No 4/9 membership, rational counterexample, infinite support conclusion, or Erdős #257 solution follows.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "A 4/9 diagonal reachability fork",
+      "supersession_or_consolidation": "Keep lower margin, quotient compactness, saturation, carry, and midpoint analyses as one conditional fork beneath rational_greedy_cofinal_skip_membership; retire detached endpoint narratives.",
+      "why_care": "It makes compactness versus arithmetic anti-reachability visibly separate and gives an expert one precise all-depth question."
+    },
+    "comparator_advisory": {
+      "disposition": "paper_only_private_frontier",
+      "proposition_scope": "No independent public Comparator proposition until source parity and public evidence are admitted; preserve both unproved all-depth hypotheses adjacent.",
+      "independent_interface_justified": false,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Check source correspondence and both reachability equivalences, then test whether shared selected-divisor ancestry can exclude both events without detached-state assumptions.",
+    "reentry_trigger": "Reopen when either all-depth producer is proved or the source/card generation changes."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos257_four_ninths_diagonal_reachability_fork_v2",
+    "result_family": "erdos257_target_specific_actual_history_reachability_fork",
+    "exact_result_id": "four_ninths_diagonal_reachability_fork",
+    "source_generation": "2026-08-26",
+    "evidence_class": "private Lean-checked reductions and conditional consumer with finite diagnostic audits; no all-depth producer or endpoint theorem",
+    "prior_art_relation": "The recurrence unrolling, compactness, and congruence operations are standard; the exact 4/9 actual-orbit assembly is source-specific private work with no priority claim or external novelty assertion.",
+    "confidence_ceiling": "High for the conditional reductions and their stated quantifiers; low for any claim that either reachability exclusion is true, for finite-audit generalization, or for 4/9 membership.",
+    "significance_rationale": "It isolates the real arithmetic throat beneath a tempting rational target: compactness is available, but both lower bad-window and upper midpoint exclusions must be proved on the executable orbit. This is useful frontier clarification, not progress toward a solved endpoint.",
+    "hard_step": "Rule out both source-reachable all-depth events through the shared selected-divisor ancestry of the actual greedy orbit.",
+    "open_boundary": "Neither exclusion is proved; detached countermodels and finite audits do not transfer to the actual orbit, and 4/9 membership plus Erdős 257 remain open.",
+    "expert_review_act": "Check source correspondence and the two equivalences, then test whether a shared-ancestry invariant can exclude both events without importing detached-state assumptions.",
+    "next_reentry": "Re-enter only when the source commit/card generation or either all-depth producer status changes; do not repeat finite diagnostic scans."
+  },
+  "status": "source_specific_private_Lean_frontier_reduction_no_priority_claim",
+  "problem_id": "erdos_257",
+  "purpose": "Keep the $4/9$ quotient, selected-margin, saturation, and carry analyses as one actual-orbit conditional representation mechanism rather than several endpoint narratives.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/four_ninths_diagonal_reachability_fork.card.json",
+    "source_commit": "a06406d07091d679735c3db15034b9c4cdf613bb",
+    "source_results": [
+      "four_ninths_diagonal_small_margin_obstruction",
+      "four_ninths_coin_cancellation_removes_the_exponential"
+    ]
+  },
+  "classification": {
+    "theorem_class": "source_specific_exact_reductions_from_a_canonical_rational_diagonal_to_two_actual_history_reachability_exclusions",
+    "novelty_class": "elementary_recurrence_compactness_and_divisibility_packaging_no_priority_claim",
+    "frontier_relation": "target_specific_producer_frontier_beneath_rational_greedy_cofinal_skip_membership",
+    "formalization_class": "private_Lean_checked_reductions_countermodels_and_conditional_consumer",
+    "priority_claim": "none",
+    "recommended_terminology": "the 4/9 diagonal reachability fork",
+    "discouraged_terminology": [
+      "proof that 4/9 is represented",
+      "rational counterexample to Erdős 257",
+      "finite evidence for cofinal membership",
+      "local carry contradiction",
+      "independent quotient compactness theorem"
+    ]
+  },
+  "mechanism_comparison": {
+    "completed_consumer": "Finite selected supports converge to $4/9$ once the exact two-sided defect window holds.",
+    "lower_reachability_event": "A selected landing lies in the explicit accumulated-history bad window, equivalently the sufficient rank producer fails.",
+    "upper_reachability_event": "A skipped saturation realizes the exact midpoint carry equality, equivalently the strict upper window fails.",
+    "local_route_falsifiers": "The detached depth-thirteen margin model defeats local lower-bound data; constant negative carries and CRT-built legal windows defeat fixed-suffix or local upper-bound arguments.",
+    "hard_shared_data": "Both remaining events must be attacked through the selected-divisor ancestry of the actual executable orbit."
+  },
+  "prior_art": {
+    "classification": "no external theorem or novelty claim attached",
+    "attribution": "The underlying recurrence unrolling, compactness, and congruence operations are standard. The exact source-specific $4/9$ assembly is local private Lean work and is presented for expert review, not priority.",
+    "search_boundary": "This route does not infer novelty from the absence of an exact external antecedent search."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The private Lean development reduces conditional $4/9$ membership to two explicitly source-reachable all-depth exclusions and supplies the compactness consumer if they hold.",
+    "forbidden_wording": [
+      "4/9 is in the Mersenne achievement set",
+      "the finite audits prove either reachability exclusion",
+      "the countermodels are source-orbit counterexamples",
+      "the route proves an infinite rational support",
+      "Erdős Problem 257 is resolved"
+    ]
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "canonical greedy cofinal-skip membership with target-specific finite-quotient compactness and actual-history reachability producers",
+    "programme_disposition": "one target-specific $4/9$ fork subordinate to the general rational endpoint",
+    "paper_disposition": "paper_only supporting frontier section",
+    "paper_target_section": "A 4/9 diagonal reachability fork",
+    "comparator_advisory": "no independent interface until public parity and expert review can preserve both unproved all-depth hypotheses",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "The fork supplies a concrete high-value expert question, but neither of its two all-depth producers has been proved.",
+      "open_boundary": "4/9 membership, any rational counterexample, and Erdős Problem 257 remain open.",
+      "demoted_predecessor": "none"
+    }
+  },
+  "expert_review_support": {
+    "question": "Can actual shared selected-divisor ancestry rule out both the selected bad window and the midpoint carry equality at all depths?",
+    "review_order": "Check source correspondence, then the lower bad-window equivalence, then the midpoint equality equivalence, then the negative controls.",
+    "evidence_separation": "Lean verifies reductions and the conditional consumer; finite exact audits select the throat; neither is independent review or an all-depth proof."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_paper_assimilation",
+    "artifact": "four_ninths_diagonal_reachability_fork",
+    "human_understanding_delta": "The source stack becomes one conditional representation fork with a concrete expert question instead of many loosely related 4/9 diagnostics.",
+    "verification_state": "Private Lean reductions and consumers are source-pinned; finite evidence is explicitly non-universal.",
+    "publication_or_review_state": "Paper-only internal review readiness; no public release or external acceptance.",
+    "canonicalization_state": "Consolidates lower margin, quotient compactness, saturation, adaptive carry, midpoint, and repair coordinates.",
+    "unresolved_downstream_bottleneck": "All-depth shared-ancestry anti-concentration for both source-reachable events.",
+    "next_stage_owner": "#257 proof owners, then independent mathematical reviewers."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-257-mersenne-support-subseries.tex",
+    "section": "A 4/9 diagonal reachability fork",
+    "canonical_mechanism_family": "canonical greedy cofinal-skip membership with target-specific finite-quotient compactness and actual-history reachability producers",
+    "relation": "subordinate and consolidate",
+    "understanding_delta": "Compactness is no longer mistaken for the missing arithmetic; the two actual-orbit exclusions are visible.",
+    "evidence_boundary": "Private Lean reductions and finite diagnostic evidence only.",
+    "hard_step": "Exclude both actual reachability witnesses at every depth.",
+    "meaningful_failed_route": "Fixed suffix and detached-state arguments are explicitly falsified.",
+    "open_remainder": "4/9 membership and Erdős Problem 257 remain open."
+  }
+}

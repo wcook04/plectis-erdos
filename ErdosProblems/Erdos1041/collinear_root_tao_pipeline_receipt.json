@@ -1,0 +1,61 @@
+{
+  "schema": "tao_pipeline_receipt_v0",
+  "checkpoint_id": "erdos1041_collinear_diameter_exact_sharp_v1",
+  "input_stage": "verification",
+  "output_stage": "exposition_understanding_and_review",
+  "artifact": {
+    "analytic_proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.md",
+    "lean_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.lean",
+    "sharp_lean_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+    "sharp_adapter_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+    "analytic_headline": "The sharp minimum-critical-height problem for monic real-rooted degree n polynomials of root diameter D has value (D/2)^n / (2^(n-1) cos(pi/(2n))^n), attained by the endpoint-normalized scaled Chebyshev polynomial. The minimizing critical gap gives an adjacent chord at the same level. Consequently the Erdős path conclusion holds for collinear roots in the open unit disk, and even in the closed unit disk for n>=3",
+    "clean_formal_theorem": "ErdosProblems.Erdos1041.CollinearScaleCriticalFamily.exists_diameter_chord",
+    "strict_corollary": "ErdosProblems.Erdos1041.CollinearScaleCriticalFamily.exists_erdos1041_chord",
+    "sharp_formal_theorem": "ErdosProblems.Erdos1041.SharpCollinearChebyshev.exists_peak_le_comparisonBound",
+    "sharp_alternation_kernel": "ErdosProblems.Erdos1041.SharpCollinearAlternation.exists_peak_le_of_monic_comparison"
+  },
+  "human_understanding_delta": "A constrained Chebyshev alternation argument removes the resultant bottleneck and gives the exact answer. After normalizing the extreme roots to -1 and 1, compare the monic root polynomial q with q_*(x)=T_n(r_n x)/(2^(n-1) r_n^n), r_n=cos(pi/(2n)). Both vanish at the endpoints and |q_*|<=C_n=1/(2^(n-1)r_n^n). If every adjacent gap of q had peak above C_n, q-q_* would have the two endpoint zeros plus one zero between each consecutive pair of alternating gap peaks: n distinct zeros despite degree at most n-1. Scaled Chebyshev roots make every gap peak exactly C_n, proving all-degree sharpness. Since C_n<1 for n>=3, the full path conclusion also extends to collinear roots in the closed unit disk: repeated roots give a constant path, while three or more distinct ordered roots make every adjacent gap strictly shorter than diameter two. The prior Chebyshev-Hadamard/resultant theorem remains an independent clean algebraic corollary, and the exact Legendre-Lobatto discriminant recurrence remains a stronger analysis of that secondary route.",
+  "verification_state": {
+    "analytic": "complete_exact_sharp_all_degree_argument_written",
+    "exact_computation": "rational_cubic_counterexample_proved_in_source_pending_kernel_check",
+    "computational_probe": "PASS: after removing the provisional root-solver cap, the durable checker completed 20000 deterministic normalized configurations per degree for every n=2,...,10 (180000 total) for both the Vandermonde and minimum-adjacent-gap stresses, with no violation. It returned equality ratio exactly 1 for the scaled Chebyshev roots in every tested degree. The same replay passed the Chebyshev determinant scale identity, exact Fekete recurrence, Legendre-Lobatto reconstruction, exact cubic Vandermonde identity, and exact rational unsafe-gap witness.",
+    "lean": "PASS for the exact SharpCollinearAlternation target (module build 397s; wrapper receipt 500.8s) and PASS for the exact SharpCollinearChebyshev target (module build 197s; wrapper receipt 219.5s), both through lean_fast_build.py --jobs 2 in the canonical project. A later optional equality-node extension was removed after its replay received typed exit 75 from another active canonical-project lease; the source is restored to the previously green adapter, so this defer is not a theorem failure.",
+    "formalized_boundary": "SharpCollinearAlternation.lean checks the intermediate-value/root-count contradiction and the monic same-degree cancellation. SharpCollinearChebyshev.lean checks the endpoint scale, evaluation identity, monicity, both endpoint zeros, the uniform interval bound, and exists_peak_le_comparisonBound. The ordinary proof supplies the compactness choice of one maximum in each adjacent root gap, identifies the scaled Chebyshev equality nodes, and transports the normalized real theorem back to the original complex collinear line. CollinearRootCase.lean contains the independent clean Chebyshev-Hadamard/resultant route and segment consumers but its source-current full-module replay remains separate from the sharp proof."
+  },
+  "consequence_decisions": {
+    "update_now": [
+      "math_consequence_58edeb39711b5321 research_packet.json: add the sharp collinear exact-result row and exact Lean declaration crosswalk",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.md: replace pending formal-boundary prose with the verified alternation and comparator boundary",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/collinear_root_tao_pipeline_receipt.json: move verification to exposition/review with exact validation and handoff state"
+    ],
+    "verified_no_change": [
+      "math_consequence_5a839c10f03fa086 constant_perturbation_roots_unit_disk_v0.json: different perturbative supplier; it does not consume collinear alternation",
+      "math_consequence_54bcb94a165872af erdos1041_lemniscate_short_path_v0.json: unrestricted prior-art route and source identity remain unchanged",
+      "math_consequence_132a29f0bbe4b68f global_critical_two_nearest_root_budget_v0.json: different hub metric and no collinear-order hypothesis",
+      "math_consequence_24361c7c20b0d5c7 cassini_coarea_tree_budget_falsifier.card.json: refuted coarea/tree statement remains refuted",
+      "math_consequence_5e8228ea098bab37 cassini_uniform_length_slack_obstruction.card.json: the sharp collinear level supplies no polynomial-independent length slack",
+      "math_consequence_c0dc4aa5aa6d32d1 constant_perturbation_roots_unit_disk.card.json: distinct perturbation theorem and claim boundary",
+      "math_consequence_d693e7f4f49d8f06 equilateral_cubic_chord_hub_countermodel.card.json: non-collinear chord countermodel remains valid and is the scope guard for the new theorem",
+      "math_consequence_a25ee628a4f5628a global_critical_two_nearest_root_budget.card.json: distinct global critical-root selector",
+      "math_consequence_e29878f7321e4a18 unique_nearest_straight_spoke_counterexample.card.json: distinct spoke obstruction",
+      "math_consequence_078761dd2dff290c AllStraightSegmentsCounterexampleComputationalLab.md: non-collinear direct chords remain false",
+      "math_consequence_079d7f0e2055d7e7 CassiniAttachmentDeficitLab.md: attachment-deficit analysis is unaffected",
+      "math_consequence_58d10d748d9d7ed1 NewtonBranchHubCounterexampleComputationalLab.md: Newton-branch hub counterexample concerns a different path family"
+    ],
+    "defer_with_reason": [
+      "math_consequence_ee26f6d3612eb395 Erdos1041/AGENTS.md: its hard-coded packet counts are stale independently of this theorem; captured for the instruction/navigation owner instead of widening the proof commit",
+      "math_consequence_25bb35bd621283ac ErdosProblems/papers/README.md: public paper admission is deferred until Refinery review and literature-priority checking",
+      "public Comparator and ErdosProblems.Root promotion: defer until Refinery review and source-current optional replays",
+      "scaled Chebyshev equality-node Lean cross-check: analytically complete and not load-bearing; re-enter only if the reviewer requests end-to-end sharpness formalization"
+    ],
+    "outside_scope": [
+      "cross-problem namespace matches and independently owned public-corpus worktree observations are lexical/navigation candidates only"
+    ],
+    "semantic_boundary": "The collinear ordering is the decisive new hypothesis. No consequence is propagated to unrestricted non-collinear Erdos #1041."
+  },
+  "tool_disclosure": "The clean algebraic constant was discovered by replacing monomial columns with Chebyshev columns. The exact sharp constant was then derived by comparing the normalized polynomial with a scaled Chebyshev polynomial sharing the endpoint roots. Local NumPy stress tested minimum adjacent critical heights; SymPy checked exact Legendre-Lobatto discriminants and the cubic rational identities. Computation was used for falsification and equality discovery; the written argument proves the complete sharp collinear theorem, and Lean checks its load-bearing alternation kernel plus the concrete Chebyshev comparator. All Lean validation used lean_fast_build.py --jobs 2 in the canonical project; no raw Lake or temporary project bypass was used.",
+  "publication_or_review_state": "internal_checkpoint_not_public; requires Refinery mathematical review, Lean build receipt, and literature-priority check before external circulation",
+  "canonicalization_state": "internal exact-result row and theorem coordinates prepared in the Erdos1041 research packet; not public, not community-canonical, and not imported into ErdosProblems.Root",
+  "unresolved_downstream_bottleneck": "Refinery should review the ordinary compactness/gap-maxima supplier and the affine normalization back to a complex collinear polynomial, optionally formalize the scaled Chebyshev equality-node locations, replay the independent CollinearRootCase.lean determinant module when canonical-project capacity is free, and run a literature-priority check before external circulation. No mathematical estimate is missing, and none of these steps changes the explicit boundary that unrestricted non-collinear Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery"
+}

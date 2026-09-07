@@ -1,0 +1,23 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_canonical_mixed_slice_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticCanonicalMixedSlice.md",
+    "ErdosProblems/Erdos1041/QuinticCanonicalMixedSlice.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_canonical_mixed_slice.py"
+  ],
+  "human_understanding_delta": "The exact mixed equality chart extends to a complete one-parameter theorem. After scaling by either tangent radius, all cube roots cancel and both critical chords factor as a double-contact square times a convex quadratic negative at its endpoints. Three ray tails follow by power domination and the fourth by a decreasing sparse quartic. Opposite signs of Re z on the two connectors then transfer the left certificate to every u below the sharp transition and the right certificate to every u above it, closing H_u(z)=Re(uz+iz^2-z^5) for all u>=0.",
+  "verification_state": {
+    "analytic_derivation": "complete_for_the_entire_canonical_phase_slice_all_nonnegative_amplitudes",
+    "exact_symbolic_replay": "pass_two_exact_cyclotomic_double_contact_factorizations_four_ray_tail_certificates_common_transition_cube_and_dense_independent_replay",
+    "lean_focused_build": "pass_canonical_cached_exact_target_and_final_serialized_lake_authority_check"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "new_private_authoring_module_and_exact_checker_verified_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Extend the two-connector atlas from the canonical phase slice to a quantitative phase neighbourhood, then cover the remaining compact mixed coefficient space and transfer through the finite near-Fekete expansion.",
+  "next_stage_owner": "Refinery: use the strict off-contact margins and the paired cubic sign at the double contacts to prove a phase-neighbourhood stability theorem around the canonical slice.",
+  "claim_ceiling": "This proves the complete canonical family Re(uz+iz^2-z^5), u>=0. It does not prove the global two-phase mixed-model selector, the full near-Fekete perturbation theorem, or unrestricted Erdős #1041."
+}

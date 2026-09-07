@@ -1,0 +1,183 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erd\u0151s #243: protected-epoch record energy from reusable odd-prime barriers"
+  description: >-
+    Conditional theorem: along a dynamically reduced primitive orbit with
+    arbitrary cancellation and a nearest-integer centring bound, one odd prime
+    power dividing a single denominator state forces an explicit lower bound on
+    the record energy spent before the numerator reaches half of that prime
+    power times the prime. The bound is uniform in the cancellation factors and
+    uses no product of moduli. It is a lower bound per epoch, not a global
+    finiteness statement, and Erdős #243 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243ProtectedEpochEnergy/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243ProtectedEpochEnergy/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_result"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "Lean elaboration of Challenge, Solution, NegativeSolution and AxiomAudit has not been run in this pass; the host build slot was occupied and the check is deferred to the next governed build"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This discharges the explicit `-- OPEN:` target left in
+    ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean. It does not dominate or
+    retire any existing entry: no other packaged declaration states a
+    per-epoch energy bound.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37", "11N05"]
+
+sources:
+  - title: "Protected-epoch record energy from reusable odd-prime barriers"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      One protected odd prime power is charged against the whole family of odd
+      multiples of the prime inside a fixed dyadic window, of which there are at
+      least an eighth of the prime power. The three ingredients are a barrier
+      count, a per-step capacity bound from the spacing of barriers first crossed
+      at the same step, and a per-barrier clean-record argument in which
+      persistence of the prime power kills the exact landing and adjacent
+      coprimality kills a jump of at most two. The earlier route charged one
+      modulus per barrier and needed a Chinese-remainder product whose size was
+      never controlled.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status. The result below is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem gives a lower bound on record energy inside a single
+    protected epoch. Challenge.lean has one intentional Comparator
+    specification sorry; Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholders are the trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243ProtectedEpochEnergy.protected_epoch_energy_integer"
+      file: "ExternalVerification243ProtectedEpochEnergy/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243ProtectedEpochEnergy/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorem `protected_epoch_energy_integer` in ErdosProblems/Erdos243/ProtectedEpochEnergy.lean, committed at 447d8f4b1b8d6c46e75d41276fc92e79323a7500
+        (module SHA-256 1d51a1544d6e1affdac48c1c4d19e8f74b1ba58dd1b9ea9c156634a0d8b4bcfe). This packaging pass did not run Lean;
+        elaboration is pending the next governed build.
+      novelty_status: "unassessed"
+      contribution_class: "conditional per-epoch record-energy lower bound, uniform in cancellation"
+      statement: >-
+        Let `p` be an odd prime, `l ≥ 1`, `Q = p ^ l ≥ 16`, and suppose the orbit
+        satisfies the division-free cocycle, coprimality, positivity and the
+        centring bound `2 * w n ≤ 3 * u n` from index `s`, with `Q ∣ v s`,
+        `4 * runningMax u s < p * Q`, and `p * Q ≤ 2 * u τ` for some `τ > s`.
+        Then there is a finite set `J ⊆ [s, τ)` of steps, each a global record,
+        each cancellation-free (`hc n = 1`) and each jumping by at least three,
+        with `p * Q ≤ (8 * p + 8) * |J| + 4 * ∑_{n ∈ J} (u (n+1) - u n - 2) + 8 * p`.
+      boundary: >-
+        This is a lower bound on record energy inside one protected epoch. The
+        matching upper bound, that a bounded-negative-part or summable orbit has
+        finite total energy so infinitely many protected epochs are impossible,
+        is not proved and is the open parent. The centring bound and the
+        protection hypothesis `p ^ l ∣ v s` are assumed, not derived. Nothing
+        here settles Erdős #243.
+      comparator_declaration: "Erdos249257.ExternalVerification243ProtectedEpochEnergy.protected_epoch_energy_integer"
+      literature_dependencies: []
+
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Anthropic Claude"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner. No terminal replay receipt is recorded here.
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The compared theorem is the source declaration
+    `protected_epoch_energy_integer`, exposed in Mathlib-only vocabulary via a
+    local `runningMax` shown equal to the corpus definition. It adds no claim
+    beyond the checked declaration.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source statements, their exact hypotheses and the open-problem
+    boundary were reviewed by reading the source module. Focused Lean, axiom
+    and Comparator replay remain distinct gates and are all pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243ProtectedEpochEnergy"
+  statements:
+    - source: "ErdosProblems.Erdos243.protected_epoch_energy_integer."
+      lean: "Erdos249257.ExternalVerification243ProtectedEpochEnergy.protected_epoch_energy_integer"
+      module: "ExternalVerification243ProtectedEpochEnergy/Challenge.lean"
+      status: "exact-transport-pending-check"
+      note: >-
+        The Challenge exposes the source declaration with the corpus running
+        maximum replaced by a local definition of the same primitive recursion.
+
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

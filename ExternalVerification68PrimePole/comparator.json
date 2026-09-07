@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification68PrimePole.Challenge",
+  "solution_module": "ExternalVerification68PrimePole.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68PrimePole.factorialGapPrefixLCMNumerator_mod_prime"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

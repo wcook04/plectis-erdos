@@ -1,0 +1,103 @@
+{
+  "schema":"plectis_private_lean_prior_art_route_v0",
+  "route_id":"finite_complex_translation_ray_level_separation",
+  "generated_at":"2026-08-24",
+  "status":"adjudicated_standard_finite_affine_line_avoidance_with_reusable_Lean_interface",
+  "problem_id":"erdos_1041",
+  "purpose":"Classify the simultaneous translation theorem, repair live packet parity, and distinguish setup from path progress.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Finite affine-line avoidance is routine; the local value is bundling three genericity conditions without claiming quantitative protection or metric progress.",
+    "slow_down_at": "Check that each forbidden condition really defines a proper real affine line and that the translation remains arbitrarily small; do not infer protected-set or path-length control.",
+    "automation_can_establish": [
+      "The two Lean declarations and source/card/packet hash parity",
+      "Finite-union avoidance and the three stated nonvanishing/ray/norm conditions",
+      "Absence of a quantitative or metric conclusion"
+    ],
+    "human_judgment_required": [
+      "Whether the theorem is clearly subordinate to standard finite affine avoidance",
+      "Whether the generic-position consumer needs any stronger protected-set guarantee",
+      "Which geometric containment and length theorem should consume the translated configuration"
+    ],
+    "review_act": "Verify one forbidden-line derivation and confirm the theorem is presented as setup for geometry, not as a metric or #1041 result.",
+    "attention_ceiling": "Low standalone novelty, moderate setup value, no priority or endpoint claim."
+  },
+  "target":{"reviewer_card":"docs/formal_math/reviewer_cards/finite_complex_translation_ray_level_separation.card.json","source_path":"formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/LevelSeparation.lean","source_result_id":"critical_value_level_separation"},
+  "classification":{"general_principle":"standard finite union of proper real affine hyperplanes has empty interior","local_delta":"one Lean-checked small translation ensures three simultaneous genericity conditions","priority_claim":"none","recommended_terminology":"finite affine-line avoidance for simultaneous complex genericity"},
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos1041_finite_complex_translation_ray_level_separation@source-6a235706-card-6c8d4e28",
+    "evidence_class": "Lean-checked finite genericity theorem; the local source packages a standard affine-avoidance argument and does not claim metric or endpoint progress.",
+    "closest_known_result": "The ambient fact is that a finite union of proper real affine lines (or hyperplanes) has empty interior, so an arbitrarily small translation avoids them. No distinct named theorem is needed beyond standard linear/affine geometry.",
+    "comparison_relation": "Standard finite-avoidance mathematics with reusable formal packaging: the exact source contribution is the simultaneous nonvanishing, positive-ray, and norm-distinct consumer interface.",
+    "exact_delta": "The theorem replaces three separately repeated genericity choices by one common small translation and keeps the forbidden conditions explicit for downstream geometry.",
+    "disconfirming_evidence": "No quantitative translation radius, protected-set preservation, path construction, or arbitrary-polynomial metric theorem is present; finite-line avoidance cannot advance the #1041 length target by itself.",
+    "confidence": {
+      "level": "high_for_Lean_statement_and_standard_attribution_medium_for_setup_value_low_for_standalone_novelty",
+      "basis": "The declarations and source/card hashes are pinned; the proof reduces directly to finite affine-line avoidance."
+    },
+    "significance": "Moderate setup value and low standalone depth: it makes the generic-position hypotheses transparent and prevents incompatible perturbation choices.",
+    "claim_ceiling": "For a finite injective complex family, an arbitrarily small common translation can make all values nonzero, pairwise positive-ray-distinct, and pairwise norm-distinct. No quantitative radius, protected set, metric path, or #1041 solution follows.",
+    "hard_step": "The remaining #1041 burden is geometric containment and length after genericity; this theorem only supplies the setup.",
+    "open_boundary": "Quantitative perturbation margins, protected-set variants, lemniscate containment, and all metric/end-point claims remain open.",
+    "bounded_expert_review_act": "Check the three forbidden-line families and one small-translation argument, then confirm the setup-only claim ceiling.",
+    "reentry_trigger": "Re-enter if the genericity predicate gains quantitative/protected-set clauses or the source/card/packet generation changes.",
+    "source_generation_binding": {
+      "formal_source_commit": "6a235706f09376b51c8fbf2073ebf2fa12f6b4a6",
+      "formal_source_sha256": "5045c2678ccdbff509072b786aee3fd85694d9ab1c9fbd8ceacbfa8d401b4b2c",
+      "reviewer_card_commit": "6c8d4e28b91afe80d1d964c12fb47f4b6104641d",
+      "reviewer_card_sha256": "267627aad84feedcba792a2b61d45cf06c442ecd14e8831285ceaf12ed785d55",
+      "research_packet_sha256": "0e36e15b4d27f90e2588015b39439e2567236ae0af0e304cbd0c389563b59642",
+      "parity_status": "formal source, card, and current packet hash are bound at adjudication"
+    },
+    "classification_detail": {
+      "result_family": "erdos1041_generic_position_translation",
+      "evidence_class": "Lean_checked_standard_affine_avoidance",
+      "closest_prior_art": "Finite-union-of-proper-affine-lines avoidance in elementary real/complex geometry",
+      "comparison_relation": "Routine standard fact with source-specific simultaneous consumer packaging; no priority claim",
+      "novelty_confidence": "low",
+      "significance_grade": "moderate_setup_value",
+      "why_care": "One common translation enforces all three genericity conditions and keeps the forbidden sets inspectable.",
+      "hard_step": "Downstream geometry, not the finite avoidance argument.",
+      "natural_friction": "A genericity setup is easy to mistake for quantitative perturbation or metric progress.",
+      "disconfirming_evidence": "No protected-set or path-length estimate is proved.",
+      "confidence_ceiling": "High for the formal setup; low for independent novelty.",
+      "bounded_expert_act": "Audit the forbidden-line predicates and smallness quantifier.",
+      "reentry_condition": "Predicate or source-generation change."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1041 generic-position perturbation and root-domain preservation",
+      "disposition": "subordinate_under_generic_position_perturbation_and_consolidate_with_root_continuity",
+      "paper_disposition": "supporting lemma",
+      "paper_target_section": "Generic-position setup for geometric lemniscate arguments",
+      "supersession_relation": "Keep one finite-avoidance theorem alongside the constant-perturbation root-domain lemma; retire duplicate genericity cards.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "One bundled exact proposition for the simultaneous genericity conditions; no metric or endpoint claims.",
+      "expert_attention_reason": "The formal interface prevents repeated ad hoc choices, but the mathematics is standard and should not consume headline attention."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "6a235706f09376b51c8fbf2073ebf2fa12f6b4a6",
+      "formal_source_sha256": "5045c2678ccdbff509072b786aee3fd85694d9ab1c9fbd8ceacbfa8d401b4b2c",
+      "reviewer_card_commit": "6c8d4e28b91afe80d1d964c12fb47f4b6104641d",
+      "reviewer_card_sha256": "267627aad84feedcba792a2b61d45cf06c442ecd14e8831285ceaf12ed785d55",
+      "research_packet_sha256": "0e36e15b4d27f90e2588015b39439e2567236ae0af0e304cbd0c389563b59642"
+    },
+    "claim_guard": "Only the finite simultaneous translation genericity theorem is covered; no quantitative, protected-set, metric, or #1041 endpoint claim.",
+    "reentry_trigger": "Re-enter on source, card, packet, or genericity-predicate changes."
+  },
+  "digestion_assessment": {
+    "decision": "supporting_lemma_under_generic_position_family",
+    "canonical_family": "#1041 generic-position perturbation and root-domain preservation",
+    "expert_attention_reason": "It removes repeated ad hoc genericity choices and makes their exact hypotheses visible, but adds no new geometry.",
+    "evidence_class": "Lean-checked finite affine avoidance",
+    "hard_step": "Geometric containment and length after translation.",
+    "paper_disposition": "supporting lemma in Generic-position setup for geometric lemniscate arguments",
+    "comparator_advisory": "One bundled proposition is justified; consolidate duplicate finite-avoidance statements.",
+    "open_boundary": "Quantitative margins, protected sets, and the #1041 metric target."
+  },
+  "claim_boundary":{"allowed_wording":"Every finite injective complex family admits an arbitrarily small common translation making its values nonzero, pairwise positive-ray-distinct, and pairwise norm-distinct.","forbidden_wording":["The theorem is quantitative.","It preserves an arbitrary protected set.","It gives a short path.","It solves Erdős Problem 1041."]},
+  "release_disposition":{"value":"status_tagged_public_supporting_theorem","reason":"The exact Lean theorem is inspectable; private source location is not a visibility blocker.","comparator_advisory":"One bundled reusable proposition is justified."},
+  "tao_pipeline_receipt":{"input_stage":"verified_formal_genericity_theorem","output_stage":"expert_digestion_and_programme_subordination","artifact":"finite_complex_translation_ray_level_separation_v0","human_understanding_delta":"Unifies three genericity requirements as one finite affine-line avoidance argument.","verification_state":"Two source-current Lean declarations.","publication_or_review_state":"Eligible for public and Comparator visibility with status labels.","canonicalization_state":"Supporting theorem in the generic-position family.","unresolved_downstream_bottleneck":"Geometric containment and length after perturbation.","next_stage_owner":"Mathematics Refinery, Role 3, and \\#1041 proof owners."},
+  "next_pass":{"kind":"typed_reentry_on_genericity_predicate_or_protected_set_change","reentry_condition":"Re-enter only if the finite genericity predicate gains quantitative or protected-set guarantees, or the source declarations change.","do_not_redo":"Do not repeat finite-union-of-lines avoidance or the three simultaneous nonvanishing/ray/norm conditions; they are one standard affine-avoidance theorem.","open_bottleneck":"The translation theorem gives no metric containment or path-length bound and cannot by itself advance Erdős #1041.","owner":"#1041 proof owners for geometric consumers; Mathematics Refinery and Role 3 for one supporting interface."}
+}

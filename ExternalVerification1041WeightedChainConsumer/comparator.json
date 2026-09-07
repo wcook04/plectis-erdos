@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041WeightedChainConsumer.Challenge",
+  "solution_module": "ExternalVerification1041WeightedChainConsumer.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041WeightedChainConsumer.weighted_chain_consumer"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243OriginalCoordinateBoundedDefect.Challenge",
+  "solution_module": "ExternalVerification243OriginalCoordinateBoundedDefect.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

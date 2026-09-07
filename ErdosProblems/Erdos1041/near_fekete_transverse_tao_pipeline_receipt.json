@@ -1,0 +1,22 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint": "finite_near_fekete_transverse_cones",
+  "input_stage": "proof_generation",
+  "output_stage": "verification_and_exposition",
+  "artifact": [
+    "ErdosProblems/Erdos1041/NearFeketeTransverseClosure.md",
+    "ErdosProblems/Erdos1041/NearFeketeTransverseClosure.lean"
+  ],
+  "human_understanding_delta": "The missing finite-perturbation step is uniform on every cone where the linear coefficient controls the perturbation, and uniform in the base radius on compact ranges reaching R=1. After the cusp rescaling, all higher coefficients carry positive powers of rho, so compact inverse-branch convergence plus a near/far cutoff transfers the already-proved positive cusp coefficient to the nontrivial scale-normalized inequality L<2R_MEC. The result is not being sold as mere local openness at one fixed R<1.",
+  "verification_state": "analytic proof written; all three Lean sign-transfer theorems passed the canonical cached focused build via lean_fast_build.py --jobs 2",
+  "publication_or_review_state": "internal expert draft; priority and external review not claimed",
+  "canonicalization_state": "new theorem note and focused Lean module; research packet frontier not yet rebuilt",
+  "unresolved_downstream_bottleneck": "directions tangent to h'(0)=0 require the finite family of higher-order models zeta^n+A zeta^j; the D-away-from-1 bulk remains open",
+  "next_stage_owner": "Refinery: audit the matched-asymptotic cutoff estimates and then classify the higher tangent models",
+  "claim_boundary": {
+    "proved": "finite strict scale-normalized L<2R_MEC bound on each fixed transverse cone near the regular n-gon, uniform for base radii in compact ranges up to one; hence the Erdos #1041 conclusion for open-disk members",
+    "not_proved": "unrestricted Erdos #1041 or any uniform neighborhood including h'(0)=0",
+    "tool_disclosure": "existing high-precision probes selected the cusp scale and direction law; the final result is analytic, with its order-theoretic sign transfer formalized in Lean"
+  }
+}

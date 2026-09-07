@@ -1,0 +1,294 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "proof_source_commit": "d1a530b8a1dd8e5a13ae886bb2063fafcfc90760",
+    "proof_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CrossingChordUpperBound.md",
+    "proof_source_sha256": "98bb26b150edde6c68565f902f704e88d2f1928dda3011e66ec9002544431b90",
+    "checker_commit": "d1a530b8a1dd8e5a13ae886bb2063fafcfc90760",
+    "checker_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_crossing_chord.py",
+    "checker_sha256": "129b26eeec448a54b2ced47847429702020c6360249106825efa4b025b0104",
+    "reviewer_card_commit": "786fb92fa0a36acd67c559ca047a7b647b1ed160",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/binomial_lemniscate_complementary_chords.card.json",
+    "reviewer_card_sha256": "a390733677a13f29dfc451b368edf5ea17ff9c0b37a23bb770bc89d2c1cba6f8",
+    "status": "ordinary_all_degree_proof_checker_and_card_hashes_current_at_adjudication; bounded negative search remains non-priority evidence"
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_binomial_lemniscate_complementary_chords_v2",
+    "result_family": "erdos1041_exact_binomial_symmetric_short_path",
+    "exact_result_id": "binomial_complementary_chord_short_path",
+    "source_generation": "2026-08-26",
+    "evidence_class": "complete authored all-degree ordinary proof with bounded exact replay and primary-source comparison; no Lean or independent specialist review",
+    "prior_art_relation": "The general path problem, same-family topology, and arbitrary quartic result are externally anchored by Erdős--Herzog--Piranian, Ghosh--Ramachandran, and Pendyala. The exact two-regime chord construction was not located verbatim in a bounded search; this supports an apparently distinct synthesis only, not priority.",
+    "confidence_ceiling": "High for the stated binomial theorem and source/card parity; moderate for exact literature non-location; low for originality, arbitrary-polynomial transfer, or path optimality.",
+    "significance_rationale": "This is a complete all-degree positive model-family theorem with a matched transition, making it a strong benchmark for general lemniscate mechanisms while exposing exactly what binomial symmetry buys.",
+    "hard_step": "Make the straight and complementary crossing constructions meet at the same sharp threshold while preserving containment and strict open-path length below two.",
+    "open_boundary": "No arbitrary-polynomial selector, geodesic optimality, universal #1041 theorem, or priority claim follows; radial contraction is a subordinate strictification corollary.",
+    "expert_review_act": "Check the common-chord inequality, midpoint sharpness, transition algebra, maximal crossing radius, and open/closed containment; compare only the exact special-family construction against the cited sources.",
+    "next_reentry": "Re-enter only if the proof, checker, card, or a direct primary antecedent for the exact two-regime formula changes; do not repeat the bounded exact-formula search."
+  },
+  "release_disposition": {
+    "value": "comparator_now_status_tagged_authored_ordinary_proof_model_family",
+    "statement_firewall": "Expose one bundled all-degree theorem for z^n-a with n>=2 and 0<|a|<1, retaining both chord regimes and the strict path bound. Label the proof ordinary and replay bounded; exclude arbitrary polynomials, path optimality, priority, and #1041-solution wording.",
+    "reason": "The theorem is complete, inspectable, and independently restatable with an explicit scope boundary; independent analytic review remains downstream rather than a release precondition."
+  },
+  "created_by": "codex_root",
+  "status": "adjudicated_primary_sources_compared",
+  "route_id": "binomial_lemniscate_complementary_chords",
+  "problem_id": "erdos_1041",
+  "target": {
+    "card": "docs/formal_math/reviewer_cards/binomial_lemniscate_complementary_chords.card.json",
+    "proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CrossingChordUpperBound.md",
+    "landed_source_commit": "d1a530b8a1dd8e5a13ae886bb2063fafcfc90760",
+    "statement": "For every n >= 2 and 0 < |a| < 1, the adjacent roots of z^n-a admit an explicit polygonal joining path of length < 2 wholly inside |z^n-a| < 1; the adjacent-chord and complementary crossing-chord regimes meet at the exact threshold r_*=(1+cos^n(pi/n))^(-1/n)."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Complete ordinary all-degree geometric construction with bounded numerical regression; the load-bearing work is the common-chord inequality and matched threshold, not the checker.",
+    "slow_down_at": "Check the common-chord maximum, equality threshold, maximal crossing radius, and strict open containment; do not treat connectedness or finite replay as the metric proof.",
+    "automation_can_establish": [
+      "Finite exact replay of the displayed formulas and threshold",
+      "The declared source/checker/card hash parity"
+    ],
+    "human_judgment_required": [
+      "Whether the all-degree geometric inequalities are complete",
+      "Whether a direct primary antecedent exists beyond the bounded search"
+    ],
+    "review_act": "Audit one representative low-degree transition and the general inequality, then compare scope explicitly with EHP and Pendyala."
+  },
+  "adjudication_currentness": {
+    "status": "proof_checker_card_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "proof_source_sha256": "98bb26b150edde6c68565f902f704e88d2f1928dda3011e66ec9002544431b90",
+      "checker_sha256": "129b26eeec448a54b2ced47847429702020c6360249106825efa4b025b0104",
+      "reviewer_card_sha256": "a390733677a13f29dfc451b368edf5ea17ff9c0b37a23bb770bc89d2c1cba6f8",
+      "review_generation": "2026-08-26_v2"
+    },
+    "claim_guard": "Ordinary proof plus bounded replay only; no Lean, independent review, arbitrary-polynomial transfer, optimality, priority, or #1041 solution claim.",
+    "reentry_trigger": "Reopen if the proof, checker, card, cited source set, or an arbitrary-polynomial transfer changes."
+  },
+  "classification": {
+    "overall": "independent_exact_special_family_synthesis_with_no_priority_claim",
+    "adjacent_chord_formula": "elementary_exact_symmetric_family_formula_not_located_verbatim_in_bounded_search",
+    "complementary_crossing_construction": "apparently_unrecorded_elementary_special_family_construction_no_priority_claim",
+    "open_radial_contraction": "routine_strictification_corollary_once_the_closed_path_is_known",
+    "formalisation_status": "ordinary_all_degree_proof_with_finite_numerical_replay_not_Lean",
+    "confidence": "moderate",
+    "reason_for_caution": "A bounded exact-formula search found no verbatim antecedent, but absence from that search is not a priority result and the construction is elementary enough to admit independent rediscovery."
+  },
+  "sources": [
+    {
+      "source_id": "erdos_herzog_piranian_1958_metric_properties",
+      "citation": "P. Erdos, F. Herzog, and G. Piranian, Metric properties of polynomials, Journal d'Analyse Mathematique 6 (1958), 125-148, DOI 10.1007/BF02790232",
+      "url": "https://doi.org/10.1007/BF02790232",
+      "annex_slug": "erdos-herzog-piranian-1958-metric-properties-of-polynomials",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_pdf": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "source_pdf_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-07-28",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 24,
+      "exact_locator": "printed p. 139 (PDF p. 15), Problem 5; regular-polygon context on printed pp. 142-143",
+      "extracted_locator": "extracted.md lines 594-598 (Problem 5); the regular-polygon context is on the surrounding printed pp. 142-143",
+      "relationship": "origin of the general path-length problem and relevant regular-polygon extremal context; it does not state the exact adjacent-chord maximum or the complementary construction",
+      "attribution_use": "Attribute the general <2 path problem and the component lemma to Erdos-Herzog-Piranian, not the new binomial formula."
+    },
+    {
+      "source_id": "ghosh_ramachandran_2024_lemniscate_components",
+      "citation": "S. Ghosh and K. Ramachandran, Number of components of polynomial lemniscates: a problem of Erdos, Herzog, and Piranian, J. Math. Anal. Appl. 540 (2024), 128571; arXiv:2312.13673",
+      "url": "https://arxiv.org/abs/2312.13673",
+      "annex_slug": "arxiv-2312-13673-ghosh-ramachandran-lemniscate-components",
+      "source_archive": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/source.tar.gz",
+      "source_archive_sha256": "a268c507940ecb010ef42053181d67e6bd8cced4ab7bb7c0e2dd0f1cd1cafa75",
+      "source_pdf": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/source.pdf",
+      "source_pdf_sha256": "c8eade14d4e393452031206cf09e52031616127fc3153e1c8e0dd9a2fc89ee9a",
+      "extracted_markdown": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/extracted.md",
+      "extracted_markdown_sha256": "b7a05a20f6f9fc086f3fab17211f81823ff474a5977542e5e17b04c20a1a094c",
+      "pdf_url": "https://arxiv.org/pdf/2312.13673",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "source_pdf_retrieved_at": "2026-08-27",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 20,
+      "exact_locator": "Lemma 7 and Example 8 in the preliminary section; introduction comparison of z^n-1 and z^n-1/n",
+      "extracted_locator": "extracted.md lines 129-142 (Lemma 7 and Example 8), with the introductory comparison at lines 38-44",
+      "relationship": "nearest same-family structural antecedent: critical values characterize connectedness, and the paper explicitly discusses the binomial family, but it studies component counts rather than short paths",
+      "attribution_use": "Cite for connectedness/topology of the same family; do not imply that connectedness supplies the metric construction."
+    },
+    {
+      "source_id": "pendyala_2026_degree_four_lemniscate_path",
+      "citation": "Venkata Siddharth Pendyala, A Degree-Four Lemniscate Path Theorem, arXiv:2606.24875 (2026)",
+      "url": "https://arxiv.org/abs/2606.24875",
+      "annex_slug": "arxiv-2606-24875-pendyala-degree-four-lemniscate-path",
+      "source_archive": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.tar.gz",
+      "source_archive_sha256": "678a6e830e1bef8fc9e64326fbb40f10616cd48c401aeee49202bc81d905d42b",
+      "source_pdf": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.pdf",
+      "source_pdf_sha256": "337db0cc046023b1429d9131720d199843766629cd2ad8bf8b04a40168d7bcd8",
+      "extracted_markdown": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/extracted.md",
+      "extracted_markdown_sha256": "a2b0425974ef126a45a054a587da13801636ce98d552646349026955284e967c",
+      "pdf_url": "https://arxiv.org/pdf/2606.24875",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-07-26",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 3,
+      "exact_locator": "Theorem 1",
+      "extracted_locator": "extracted.md lines 6-32 (abstract, setup, and Theorem 1); proof lines 111-148",
+      "relationship": "proves the full arbitrary-polynomial statement in degree four and therefore subsumes quartic binomials; the all-degree binomial theorem instead covers one symmetric family in every degree and exposes an exact transition",
+      "attribution_use": "Describe the scopes as orthogonal; do not present the binomial theorem as extending Pendyala's arbitrary quartic theorem."
+    }
+  ],
+  "mechanism_comparison": {
+    "topology_versus_metric": "Critical-value connectedness explains why |a|<1 is the natural binomial regime, but it neither bounds path length nor selects the complementary chord.",
+    "bounded_degree_versus_special_family": "Pendyala removes symmetry at degree four; the target keeps binomial symmetry and removes the degree bound.",
+    "exact_delta": "The target supplies the exact adjacent-chord maximum r^n(1+cos^n(pi/n)), the matching transition r_*, the maximal complementary crossing radius, and an explicit strict path of length <2.",
+    "strictification_boundary": "The lambda-contraction estimate is an elementary convex/radial strictification after the closed path is known. It should be presented as a useful corollary, not an independent novelty claim."
+  },
+  "disconfirmation_search": {
+    "performed_at": "2026-08-24",
+    "queries": [
+      "\"cos^n(pi/n)\" lemniscate",
+      "\"1+cos^n\" \"z^n\" lemniscate",
+      "\"adjacent roots\" chord polynomial lemniscate",
+      "\"z^n-a\" lemniscate path roots"
+    ],
+    "result": "No source stating the exact formula or construction was located. Returned material concerned classical lemniscate geometry or unrelated uses of adjacent-root chords.",
+    "interpretation": "bounded_negative_search_evidence_only_not_a_novelty_or_priority_proof"
+  },
+  "significance": {
+    "mathematical_interest": "A complete, exact model-family solution with a sharp transition between two geometrically natural constructions.",
+    "reusable_scope": "A benchmark and falsifier for general Erdos 1041 mechanisms, and a reusable regular-polygon chord computation for symmetric polynomial lemniscates.",
+    "why_it_matters": "It separates the topological fact of connectedness from the quantitative task of building a strict path shorter than two, while making every constant explicit.",
+    "claim_ceiling": "exact all-degree binomial-family theorem; not a general-polynomial selection theorem, not a geodesic or fixed-degree optimality theorem, and not a solution of Erdos 1041"
+  },
+  "landing_consumers": [
+    "docs/formal_math/reviewer_cards/binomial_lemniscate_complementary_chords.card.json",
+    "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/distillation.json"
+  ],
+  "checkpoint": {
+    "adjudication_date": "2026-08-24",
+    "public_wording": "An exact all-degree theorem for the binomial family, independently derived; no priority claim. The nearest located literature gives the original general problem, same-family component topology, and the arbitrary degree-four theorem, but not this exact formula or construction.",
+    "do_not_claim": [
+      "first proof or priority for the exact binomial formula",
+      "progress from the binomial family to arbitrary monic polynomials",
+      "novelty for the radial contraction inequality by itself",
+      "geodesic or optimal paths"
+    ]
+  },
+  "expert_review_support": {
+    "talk_state": "expert_talk_ready",
+    "hard_step": "Prove the sharp common chord inequality and show that the straight-chord and maximal crossing-chord regimes meet at one exact threshold.",
+    "natural_friction": "The two regimes, midpoint sharpness, equality case, and open-versus-closed strictification must remain explicit.",
+    "evidence_separation": "The theorem is an authored ordinary proof; bounded numerical replay checks formulas; external sources supply the general problem, topology, and degree-four comparison; no Lean or peer review is asserted.",
+    "surviving_frontier": "path selection without binomial symmetry for arbitrary monic polynomials"
+  },
+  "digestion_assessment": {
+    "significance_grade": "A_minus_positive_model_family_theorem",
+    "attention_priority": "high within #1041",
+    "consolidation_verdict": "one complementary-chord theorem stack, not four promoted fragments",
+    "expert_review_gap": "independent review of the analytic inequality, threshold algebra, and strict containment"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "exact symmetric model families and explicit short-path constructions for polynomial lemniscates",
+    "disposition": "admit as a genuinely irreducible all-degree positive model-family mechanism",
+    "consolidation_relation": "Keep the exact adjacent-chord maximum, matched transition, maximal complementary crossing, and radial strictification as one theorem stack. Treat collinear Chebyshev and arbitrary degree-four results as orthogonal solved scopes rather than duplicates or extensions.",
+    "comparator_advisory": "No immediate interface: the universal proof is ordinary and awaits independent analytic review or formalization. If admitted later, expose one bundled all-degree binomial theorem rather than four component propositions.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "Exact symmetric benchmark: complementary chords for every binomial degree",
+      "supersession_or_consolidation": "Use one core solved-family section and retire separate formula, threshold, maximality, and strictification chronology.",
+      "reason": "The theorem is a complete exact benchmark for a natural infinite family, while its symmetry boundary makes the general open problem unmistakable."
+    }
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "Exact symmetric benchmark: complementary chords for every binomial degree",
+    "canonical_mechanism_family": "exact symmetric model families and explicit short-path constructions for polynomial lemniscates",
+    "relation": "One irreducible all-degree binomial theorem stack; finite replay is subordinate, and collinear/all-quartic solved scopes remain orthogonal comparisons.",
+    "understanding_delta": "A sharp straight-chord regime and a complementary inner-crossing regime meet exactly, explaining how binomial symmetry produces a strict path shorter than two in every degree.",
+    "evidence_boundary": "Complete ordinary proof plus bounded replay; no Lean, independent review, arbitrary-polynomial theorem, or optimality claim.",
+    "hard_step": "The sharp chord inequality and exact matching of the two admissibility thresholds.",
+    "meaningful_failed_route": "Connectedness is nonmetric, and the straight chord fails above the sharp threshold.",
+    "open_remainder": "Arbitrary monic polynomials remain open, and the all-degree proof still needs independent review or formal verification."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "binomial_lemniscate_complementary_chords",
+    "human_understanding_delta": "The special-family theorem is now talk-ready as a sharp two-regime construction with a matched transition and explicit general-polynomial boundary.",
+    "verification_state": "Pinned proof/checker hashes match; universal status rests on ordinary proof, with bounded replay only as regression.",
+    "publication_or_review_state": "Ready for independent analytic review; no priority or peer-review claim.",
+    "canonicalization_state": "Single all-degree binomial theorem with strictification as corollary.",
+    "unresolved_downstream_bottleneck": "Independent review and an arbitrary-polynomial path-selection mechanism.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "review_unit_erdos1041_binomial_lemniscate_complementary_chords_v2@source-d1a530b8",
+    "evidence_class": "complete_authored_all_degree_ordinary_proof_with_bounded_exact_replay_and_primary_source_comparison",
+    "closest_known_result": "Erdős--Herzog--Piranian supply the general <2 path problem, Ghosh--Ramachandran supply same-family component topology, and Pendyala supplies an arbitrary degree-four theorem; none states this all-degree two-regime binomial construction.",
+    "comparison_relation": "Apparently distinct exact special-family synthesis: removes the degree bound by retaining binomial symmetry, but does not extend to arbitrary polynomials or path optimality.",
+    "exact_delta": "The source supplies the exact adjacent-chord maximum, matching transition threshold, maximal complementary crossing radius, and a strict path of length below two in every binomial degree.",
+    "disconfirming_evidence": "The bounded exact-formula search found only classical topology and the degree-four arbitrary theorem; absence from that search cannot certify originality or priority.",
+    "confidence_ceiling": "High for the stated theorem and source/card parity; moderate for literature non-location; low for originality, arbitrary-polynomial transfer, or path optimality.",
+    "significance": "High as a complete positive benchmark family: it makes explicit what binomial symmetry buys and where the arbitrary-polynomial bottleneck begins.",
+    "claim_ceiling": "For every n>=2 and 0<|a|<1, z^n-a has an explicit adjacent-root path of length <2 inside its strict unit lemniscate, with the exact two-regime threshold; no general-polynomial or optimality claim follows.",
+    "hard_step": "Prove the common-chord inequality, match the straight and complementary regimes at one threshold, and preserve strict containment while keeping length below two.",
+    "open_boundary": "Arbitrary monic-polynomial path selection, geodesic optimality, independent analytic review, and a universal #1041 theorem remain open.",
+    "bounded_expert_act": "Audit the general inequality and one transition case, then compare the special-family scope with EHP and Pendyala.",
+    "reentry_trigger": "Reopen if the proof/checker/card changes, a direct antecedent is found, or arbitrary-polynomial transport is supplied.",
+    "source_version_binding": {
+      "proof_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CrossingChordUpperBound.md",
+      "proof_source_commit": "d1a530b8a1dd8e5a13ae886bb2063fafcfc90760",
+      "proof_source_sha256": "98bb26b150edde6c68565f902f704e88d2f1928dda3011e66ec9002544431b90",
+      "checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_crossing_chord.py",
+      "checker_sha256": "129b26eeec448a54b2ced47847429702020c6360249106825efa4b025b0104",
+      "reviewer_card_sha256": "a390733677a13f29dfc451b368edf5ea17ff9c0b37a23bb770bc89d2c1cba6f8",
+      "primary_source_locators": [
+        "Erdős–Herzog–Piranian 1958, printed p. 139 and pp. 142–143",
+        "Ghosh–Ramachandran 2024, Lemma 7 and Example 8",
+        "Pendyala 2026, Theorem 1"
+      ],
+      "parity_status": "Proof, checker, card, and cited source identities are current; bounded replay is regression evidence and no Lean or independent specialist review is claimed."
+    },
+    "classification": {
+      "evidence_class": "complete authored all-degree ordinary proof with bounded exact replay and primary-source comparison",
+      "closest_prior_art": "The general <2 lemniscate path problem and same-family topology are classical/source-backed, while Pendyala's arbitrary degree-four theorem covers a different scope. The exact two-regime binomial formula was not located in the bounded search.",
+      "comparison_relation": "Apparently distinct exact special-family synthesis: removes the degree bound by retaining binomial symmetry, but does not extend to arbitrary polynomials or path optimality.",
+      "novelty_confidence": "strong internal provisional case for a distinct source-specific synthesis; moderate literature non-location; no priority claim",
+      "significance_grade": "high_positive_model_family_theorem",
+      "why_care": "It is a complete benchmark in every degree with a sharp transition between a direct chord and an inner complementary crossing, showing exactly which metric work is supplied by binomial symmetry and which part of #1041 remains open.",
+      "hard_step": "Prove the common-chord maximum, match the two regimes at the same threshold, and keep the path inside the strict lemniscate while retaining length below two.",
+      "natural_friction": "Connectedness is topological and does not provide a metric bound; the straight chord genuinely fails above the threshold, so the complementary construction is load-bearing.",
+      "disconfirming_evidence": "The bounded exact-formula search found only classical topology and the degree-four arbitrary theorem; this absence cannot certify originality or priority."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "For every n>=2 and 0<|a|<1, the binomial z^n-a has an explicit adjacent-root path of length <2 inside |z^n-a|<1, with the exact two-regime threshold r_*=(1+cos^n(pi/n))^(-1/n).",
+      "rejected_stronger": [
+        "a universal arbitrary-polynomial theorem",
+        "a geodesic or optimal-path result",
+        "a proof of Erdős #1041",
+        "a Lean-checked theorem or independent specialist review",
+        "a priority or first-proof claim"
+      ],
+      "open_boundary": "The arbitrary monic-polynomial selector/transport mechanism remains open; radial contraction is only a strictification corollary."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "exact symmetric model families and explicit short-path constructions for polynomial lemniscates",
+      "disposition": "admit as one irreducible all-degree positive model-family mechanism; consolidate chord formula, threshold, crossing, and strictification",
+      "paper_disposition": "headline/core mechanism in 'Exact symmetric benchmark: complementary chords for every binomial degree'",
+      "supersession_or_consolidation": "Keep the theorem stack together; treat collinear Chebyshev and arbitrary degree-four results as orthogonal solved scopes, not duplicates or extensions.",
+      "expert_attention_reason": "This is the strongest complete positive model-family result in #1041 and gives a reviewer a concrete benchmark before confronting the arbitrary-polynomial bottleneck.",
+      "independent_comparator_interface_justified": "No immediate Comparator interface: ordinary proof and bounded replay are inspectable, but a single public card/paper section is the better reader role until independent analytic review or formalization."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "load-bearing ordinary geometric inequality with routine finite regression",
+      "slow_down_at": "Check the common-chord inequality, equality threshold, maximal crossing radius, and open/closed containment; do not spend review time on the bounded checker as proof authority.",
+      "automation_establishes": "Finite exact replay of the displayed formulas and threshold through the declared range.",
+      "expert_judgment_required": "Whether the geometric construction is complete for all n and whether a direct primary antecedent exists beyond the bounded search.",
+      "bounded_expert_act": "Audit one representative low-degree transition and the general inequality, then compare the scope explicitly with EHP and Pendyala.",
+      "reentry_condition": "Reopen if the proof/checker/card changes, a direct antecedent is found, or an arbitrary-polynomial transfer is supplied."
+    }
+  }
+}

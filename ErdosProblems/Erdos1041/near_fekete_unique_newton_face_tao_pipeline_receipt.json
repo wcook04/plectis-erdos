@@ -1,0 +1,20 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "near_fekete_monotone_unique_newton_face_closure",
+  "input_stage": "computation_guided_proof_generation",
+  "output_stage": "verification_and_exposition",
+  "artifact": [
+    "ErdosProblems/Erdos1041/NearFeketeUniqueNewtonFaceClosure.lean",
+    "ErdosProblems/Erdos1041/NearFeketeUniqueNewtonFaceClosure.md",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_unique_newton_face.py"
+  ],
+  "human_understanding_delta": "The apparent infinity of vanishing-mode transition regimes splits cleanly by Newton faces. When the first nonzero polynomial degree m<n/2 is also the unique outer face, eps=u^(n-m), z=u^q zeta gives the active mode and baseline weight nq, while every higher-degree competitor has the exact additional integral weight q_k(n-m)-q(n-k)>=1. Strict active-mode negativity controls inward and the degree-n baseline controls outward. Tied faces and lower-degree face switches are the precise remaining transition mechanisms.",
+  "verification_state": "ordinary analytic proof complete; exact rational checker PASS on 1160 unique-face rows, 20826 power-factor rows, 1558 strict phase-supply rows, and 8848 tied or face-switch negative controls; canonical focused Lean build and serialized authority replay PASS",
+  "publication_or_review_state": "private authoring checkpoint pending expert review",
+  "canonicalization_state": "new theorem module, expert explanation, exact replay, and downstream tied-face handoff prepared",
+  "unresolved_downstream_bottleneck": "Classify and close resonant Newton faces and face switches where a lower polynomial degree is not the outer winner. Degree five is already covered by its mixed atlas; the compact sextic mixed band is the first unclosed face. The away-from-Fekete regime and unrestricted Erdos #1041 remain open.",
+  "next_stage_owner": "Refinery: normalize the first tied low-mode face, require a compact connector theorem with strict margins, then consume the positive integral gaps proved here for finite transfer.",
+  "tool_disclosure": "Exact Fraction arithmetic enumerates random unique valuation patterns through degree 80 and deliberately manufactured tied controls. Computation checks the integer mechanism and its falsifier; the analytic scaling argument and Lean kernel carry the proof.",
+  "claim_boundary": "This is an eventual theorem along tangent real-analytic near-Fekete arcs whose first nonzero degree m<n/2 is also the unique outer Newton face. It does not cover tied faces, lower-degree face switches, the Nyquist boundary, a uniform full neighbourhood, the bulk, or unrestricted Erdos #1041."
+}

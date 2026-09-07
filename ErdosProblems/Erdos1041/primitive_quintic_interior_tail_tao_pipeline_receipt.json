@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "checkpoint": "primitive_quintic_closed_disk_two_tail_theorem",
+  "input_stage": "proof_generation",
+  "output_stage": "lean_verified_theorem_assimilated_into_canonical_research_packet_for_expert_review",
+  "artifact": [
+    "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.md",
+    "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_primitive_quintic_interior_tail.py"
+  ],
+  "human_understanding_delta": "The paraorthogonal cubic separator extends harmonically through the closed unit disk without losing its exact five-root sum. For a!=0, an unsafe full tail forces 5(1-s)<=2r(x+r/2); after a two-variable completion of squares this caps its harmonic score by 2/31. One arbitrary root scores at most 4-2r, so four unsafe roots cannot supply the exact mass 5-2r. For a=0 every tail is |w|^5<=1. This removes the conjectural radial-crossing bridge and proves the complete closed-disk primitive sparse quintic theorem, including mixed root configurations.",
+  "verification_state": {
+    "analytic": "complete; exact identities and inequalities written in the companion note",
+    "computation": "PASS: SymPy checked both algebraic identities exactly; 1,200 deterministic Schur-stable configurations (6,000 roots) had at least two strict safe tails, maximum observed unsafe separator score 0.020385883725163034 < 2/31, and maximum separator-sum error 1.69e-14",
+    "lean": "PASS: canonical cached exact-target build ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail completed successfully, including the zero-a closed-disk equality lemma and the final serialized Lake authority check"
+  },
+  "publication_or_review_state": "private theorem commits f7bd1d9b3ce14997aa15fa613ed2fc1cbeb63a43 and 07f15840dd0adde3fecece71368aa721c6d96166 are landed; the exact result is assimilated into the Erdos1041 research packet; external expert review and literature-priority search remain required",
+  "canonicalization_state": "canonical research-packet exact-result entry primitive_quintic_closed_disk_two_tail_theorem records the theorem, Lean declarations, computation, claim ceiling, commits, and successor boundary",
+  "unresolved_downstream_bottleneck": "The unrestricted degree-five polynomial and all-degree Erdos 1041 remain open. The next mathematical question is whether harmonic Newton separators propagate when one or more middle coefficients are restored, or whether an explicit obstruction appears.",
+  "next_stage_owner": "Formal-math Refinery for expert exposition/review and novelty adjudication; Mathematical Closure Engine immediately continues to the nearest non-primitive degree-five propagation target",
+  "claim_ceiling": "This solves the complete closed-disk primitive sparse quintic family z^5+a*z^4+b*z+c, with strict selected tails when a!=0 and the a=0 equality classification. It does not solve unrestricted degree five or Erdos 1041.",
+  "tool_disclosure": "Fixed-seed NumPy/SymPy computation selected and audited the 2/31 mechanism. The computation is not proof authority; the analytic inequalities and Lean kernel are.",
+  "hard_steps": [
+    "recognize that the boundary separator should be harmonically extended rather than radially continued",
+    "derive the unsafe radial-defect inequality 5(1-s)<=2r(x+r/2)",
+    "complete squares at d=38/31 and u=3/31 to obtain the uniform 1/31 bracket cap",
+    "combine the 2/31 unsafe cap with the exact one-unit Newton-mass gap"
+  ],
+  "natural_friction": "The initially conjectured outward-only Schur radial crossing law survived computation but resisted direct analysis. The harmonic separator makes that monotonicity theorem unnecessary."
+}

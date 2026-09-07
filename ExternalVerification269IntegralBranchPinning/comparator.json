@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification269IntegralBranchPinning.Challenge",
+  "solution_module": "ExternalVerification269IntegralBranchPinning.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269IntegralBranchPinning.surviving_window_orbit_eq_true_state",
+    "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_eq_telescope",
+    "Erdos249257.ExternalVerification269IntegralBranchPinning.integral_state_upward_closed",
+    "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_pinning"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

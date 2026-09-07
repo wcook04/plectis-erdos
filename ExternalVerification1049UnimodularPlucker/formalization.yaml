@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #1049: unimodular Bézout--Plücker tail collapse and its modular width"
+  description: >-
+    Over an arbitrary commutative ring, a sequence of rows whose entries are coprime in the Bezout sense and whose adjacent two-by-two minors all vanish has every pairwise minor equal to zero. The hypothesis is unimodularity of the row, not invertibility of a coordinate: the row (2,3) is unimodular modulo 6 while neither entry is a unit, so this strictly extends the unit-coordinate form already recorded for this project. Specialising to the ring of integers modulo 2^S times 3^R with R positive, the collapse forces two distinct binary selectors on Fin k to have equal selected row sums whenever S + 2R is at most k, so the sufficient width is S + 2R rather than the ambient two-coordinate width 2S + 4R. The readers are number theorists and arithmetic-geometry formalisers working on rank-two approximation lattices. This is a structural lemma about integral rows; it supplies no irrationality conclusion and it does not settle Erdős Problem 1049.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "draining"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1049UnimodularPlucker/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1049UnimodularPlucker/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  submission_authorization: "not_authorized_operator_gated"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    Prepared locally in the r7 paper-complete Lean assimilation. No Palomar
+    submission has been made. The parent Erdős problem 1049 remains open and
+    nothing in this package bears on it.
+
+boundary:
+  parent_problem_status: "open"
+  what_is_proved: >-
+    Over an arbitrary commutative ring, a sequence of rows whose entries are coprime in the Bezout sense and whose adjacent two-by-two minors all vanish has every pairwise minor equal to zero. The hypothesis is unimodularity of the row, not invertibility of a coordinate: the row (2,3) is unimodular modulo 6 while neither entry is a unit, so this strictly extends the unit-coordinate form already recorded for this project. Specialising to the ring of integers modulo 2^S times 3^R with R positive, the collapse forces two distinct binary selectors on Fin k to have equal selected row sums whenever S + 2R is at most k, so the sufficient width is S + 2R rather than the ambient two-coordinate width 2S + 4R. The readers are number theorists and arithmetic-geometry formalisers working on rank-two approximation lattices. This is a structural lemma about integral rows; it supplies no irrationality conclusion and it does not settle Erdős Problem 1049.
+  what_is_not_proved: >-
+    No irrationality statement, no bound on an irrationality exponent, and no
+    part of the Erdős 1049 conjecture is established by this package.
+
+sources:
+  - path: "formal_math/erdos257_period_noncollapse/ExternalVerification1049UnimodularPlucker/Challenge.lean"
+    role: "Mathlib-only statement"
+  - path: "formal_math/erdos257_period_noncollapse/ExternalVerification1049UnimodularPlucker/Solution.lean"
+    role: "transport from the live declaration"

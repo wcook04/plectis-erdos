@@ -1,0 +1,253 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "bounded_order_witness_prime_support_escape",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_elementary_order_size_transfer_with_primitive_divisor_comparison",
+  "problem_id": "erdos_249",
+  "purpose": "Separate a routine conditional order-versus-size implication from the deep producer-side primitive-divisor theorems to which it is adjacent.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/bounded_order_witness_prime_support_escape.card.json",
+    "card_commit": "b8971c122ac2057fcc8fb539bfaab12df9887bcf",
+    "landed_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+    "headline_declarations": [
+      "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer",
+      "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer"
+    ]
+  },
+  "source_generation": {
+    "status": "source_card_packet_current_at_adjudication; bounded-order hypothesis and C(n)=2 countermodel remain explicit",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "sha256": "d3e2341f9659d2e999f0c799327cefe1b79d9923492cd375f7604365b596ab7e"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "commit": "924ab4d01355ce2975541923a344be4617640247",
+      "sha256": "ac1f30fb17a25f99d5f09c9797a2cdc652fef26061425a30ef83e72710c27c0e",
+      "source_result_id": "bounded_degree_prime_ray_support_escape"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/bounded_order_witness_prime_support_escape.card.json",
+      "commit": "b8971c122ac2057fcc8fb539bfaab12df9887bcf",
+      "sha256": "421b7675563063c6f9759ccbd7ca5fec15376b6b09fe6c05c87f34364b181af0"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1",
+    "workspace_overlay": {
+      "status": "uncommitted_packet_overlay_not_consumed",
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "observed_change": "The working tree adds source_path and source_declarations for the bounded_degree_prime_ray_support_escape row (and other packet rows), but no inspectable X-minus-two Lean declaration was found.",
+      "authority_rule": "This route remains pinned to the committed packet snapshot 924ab4d01355ce2975541923a344be4617640247; the uncommitted overlay is not evidence of source parity or a release upgrade.",
+      "reentry_condition": "After the packet overlay is landed or discarded, rerun exact source/card/packet parity. Revisit the withheld X-minus-two calibration only if a named source declaration and canonical validation receipt appear."
+    }
+  },
+  "workspace_overlay": {
+    "status": "uncommitted_packet_overlay_not_consumed",
+    "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+    "sha256": "80b6b919f801e8591cc5eaa48c6aa248059a0b51f90be7f059a6849b41da6032",
+    "adjudication_effect": "uncommitted_packet_overlay_excluded_from_adjudication",
+    "reentry_condition": "After the packet overlay is landed or discarded, rerun exact source/card/packet parity before changing the claim ceiling."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos249_bounded_order_witness_prime_support_escape@source_4cd4eac_card_b8971c12_packet_924ab4d",
+    "evidence_class": "Lean-checked conditional transfer theorem with an explicit finite-support countermodel; packet overlay is excluded",
+    "comparison_relation": "Adjacent to Bang--Zsigmondy and Bilu--Hanrot--Voutier primitive-divisor producers, but it is only the downstream order-versus-size consumer and does not construct witnesses.",
+    "closest_known_result": "Classical primitive-divisor theorems supply new primes or order information for structured sequences; no separate priority is inferred for this elementary finite-support implication.",
+    "exact_delta": "The reusable contribution is a hypothesis-explicit Lean interface: if every prime divisor of C(mq) has mq dividing p^k-1 for some k<=d, then any fixed finite prime support is eventually avoided; C(n)=2 shows cofinal nontriviality alone is insufficient.",
+    "disconfirming_evidence": "The committed packet's X-minus-two row is not backed by an inspectable source declaration or canonical validation receipt, so it is withheld from the evidence set.",
+    "confidence": {
+      "transfer_statement": "high_internal_provisional",
+      "countermodel": "high_internal_provisional",
+      "actual_erdos249_producer": "low_unresolved"
+    },
+    "significance": "Medium supporting value: it closes a routine consumer step and identifies the actual producer debt, preventing repeated attempts to derive prime escape from layer supply alone.",
+    "hard_step": "Construct bounded-degree order witnesses and cofinally nontrivial layers for the actual totient construction; then connect escaping support to the canonical residue-gap supply.",
+    "open_boundary": "No primitive-divisor theorem, witness construction, layer-supply theorem, unconditional prime-support escape, or Erdős #249 endpoint follows.",
+    "claim_ceiling": "Lean checks only the conditional order-witness transfer and its C(n)=2 boundary. No actual #249 order-witness supply, primitive-divisor production, cofinal layer theorem, unconditional prime escape, irrationality, endpoint, or priority claim is admitted.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Canonical residue-gap frontier: producer contracts and what they would buy",
+      "supersession_or_consolidation": "Consolidate both transfer declarations and the C(n)=2 boundary beneath canonical_mersenne_residue_gap_normal_form; retire any standalone primitive-divisor or parallel-endpoint framing.",
+      "why_care": "It tells a reader exactly what a future producer theorem would purchase and what cannot be inferred from nontrivial layers alone."
+    },
+    "comparator_advisory": {
+      "disposition": "independent_interface_justified_but_subordinate",
+      "proposition_scope": "Bundle finitePrimeSupportEscape_of_orderConsumer and unboundedPrimeDivisorSupply_of_orderConsumer with all order-witness and cofinal-layer hypotheses explicit, and include the C(n)=2 countermodel as a boundary note.",
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Check the quantified size contradiction and the C(n)=2 countermodel, then identify whether any standard name subsumes the exact conditional transfer.",
+    "reentry_trigger": "Reopen only when a named X-minus-two declaration with a canonical validation receipt appears, or when the packet overlay is landed/discarded and exact parity can be rerun."
+  },
+  "parity_audit": {
+    "status": "source_card_packet_current",
+    "effect": "The current Lean source, card, and indexed packet result agree; the order-witness and cofinal-layer hypotheses remain supplied inputs, not consequences.",
+    "reentry_condition": "Re-enter if the source declarations, packet result row, card, or the C(n)=2 countermodel changes."
+  },
+  "review_unit": {
+    "result_family": "erdos249_bounded_order_witness_prime_support_escape",
+    "exact_result_ids": [
+      "bounded_degree_prime_ray_support_escape",
+      "finitePrimeSupportEscape_of_orderConsumer",
+      "unboundedPrimeDivisorSupply_of_orderConsumer"
+    ],
+    "evidence_class": "Lean-checked conditional transfer theorem with explicit finite-support countermodel",
+    "confidence_ceiling": "High for the stated transfer and countermodel at the pinned source; no confidence that #249 supplies the order-witness hypothesis or irrationality mechanism.",
+    "hard_step": "Produce the bounded-degree order certificates and cofinally nontrivial layers in the actual totient construction; the transfer itself is elementary.",
+    "open_boundary": "No primitive-divisor theorem, witness construction, layer-supply theorem, or #249 endpoint follows.",
+    "expert_review_act": "Check the quantifiers in the prime-ray size contradiction and verify that dropping the order-witness hypothesis admits the C(n)=2 countermodel."
+  },
+  "classification": {
+    "theorem_class": "elementary_conditional_finite_support_escape_from_uniformly_bounded_multiplicative_order_certificates",
+    "novelty_class": "routine_implication_with_reusable_Lean_abstraction_and_explicit_missing_hypothesis_countermodel",
+    "formalization_class": "Lean_checked_general_transfer_lemma",
+    "priority_claim": "none",
+    "recommended_terminology": "bounded-degree order-witness finite-support escape lemma",
+    "discouraged_terminology": [
+      "primitive divisor theorem",
+      "Zsigmondy generalization",
+      "unconditional unbounded-prime theorem",
+      "solution of Erdős Problem 249"
+    ],
+    "nearest_prior_work": [
+      "Zsigmondy (1892) proves primitive prime divisors for a^n-b^n outside explicit classical exceptions.",
+      "Bilu, Hanrot, and Voutier (2001) prove eventual primitive divisors for Lucas and Lehmer sequences.",
+      "Those are producer theorems for structured sequences; the local theorem is only the downstream escape implication once bounded-degree order witnesses are already given."
+    ],
+    "attribution": "Attribute primitive-divisor context to Bang--Zsigmondy and its sequence generalizations. Describe the local theorem as an elementary Lean-checked transfer lemma, not as a primitive-divisor result.",
+    "mathematical_interest": "The abstraction cleanly exposes which input does the work: a uniform exponent bound converts divisibility by mq into a size lower bound on every occurring characteristic. The constant family C(n)=2 shows that cofinal nontriviality alone has no such force. The result merits a short producer-consumer-boundary segment, not a standalone theorem talk.",
+    "reusable_scope": "Any prime-indexed layer family in which every prime divisor admits a uniformly bounded exponent k with the layer index dividing p^k-1.",
+    "why_it_matters": "It turns the #249 algebraic route into a precise producer-consumer contract. The proof fleet must construct order witnesses and nontrivial layers; once those exist, finite-support escape and unbounded characteristic supply are already finished."
+  },
+  "primary_sources": [
+    {
+      "id": "zsigmondy_1892_power_residues",
+      "title": "Zur Theorie der Potenzreste",
+      "author": "Karl Zsigmondy",
+      "venue": "Monatshefte für Mathematik und Physik 3 (1892), 265-284",
+      "doi": "10.1007/BF01692444",
+      "url": "https://doi.org/10.1007/BF01692444",
+      "exact_anchor": "The primitive-divisor theorem for a^n-b^n, with its exceptional cases.",
+      "supports": "The classical producer-side relation between exponent indices, multiplicative order, and new prime divisors.",
+      "does_not_support": "The abstract C(mq) transfer lemma, its finite-set formulation, its Lean formalization, or the #249 layer hypotheses."
+    },
+    {
+      "id": "bilu_hanrot_voutier_2001",
+      "title": "Existence of primitive divisors of Lucas and Lehmer numbers",
+      "author": "Yuri Bilu, Guillaume Hanrot, and Paul M. Voutier",
+      "venue": "Journal für die reine und angewandte Mathematik 539 (2001), 75-122",
+      "doi": "10.1515/crll.2001.080",
+      "url": "https://doi.org/10.1515/crll.2001.080",
+      "exact_anchor": "Abstract and main theorem: every Lucas or Lehmer number of index n>30 has a primitive divisor.",
+      "supports": "A modern example of a deep theorem that actually supplies new order-bearing primes for a structured sequence.",
+      "does_not_support": "The hypotheses for the local totient-layer family or novelty of the elementary downstream escape implication."
+    }
+  ],
+  "mechanism_comparison": {
+    "primitive_divisor_producer": "A Bang--Zsigmondy-type theorem proves that a structured sequence term has a prime divisor absent from earlier terms, typically forcing a large multiplicative order.",
+    "local_transfer_consumer": "The local theorem assumes every occurring p satisfies mq|p^k-1 for some k<=d. Hence mq<p^k, so any fixed p can occur only for bounded q; a finite union of such bounds gives finite-support escape.",
+    "exact_delta": "A structure-free, machine-checked consumer API that can accept order witnesses from cyclotomic, resultant, finite-field, or other algebraic producers.",
+    "significance_boundary": "Without a producer proving nontrivial layers and the bounded-order certificates, the theorem yields no prime divisor at all."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "canonical Mersenne residue-gap supply with conditional cyclotomic order-witness consumers",
+    "disposition": "subordinate under canonical_mersenne_residue_gap_normal_form",
+    "consolidation_relation": "The finite-support escape theorem and conditional unbounded-divisor corollary are one transfer object. They are not a second #249 endpoint, a primitive-divisor theorem, or a replacement for the canonical full-Mersenne residue-gap equivalence.",
+    "expert_attention_reason": "The transfer closes a routine downstream implication and exposes the true producer debt. Expert attention should go to actual bounded-degree witnesses, cofinally nontrivial layers, and the bridge from escaping support to the canonical residue-gap supply.",
+    "comparator_advisory": "A single hypothesis-explicit reusable Comparator proposition is justified by the Lean-checked abstraction. Bundle both conclusions, retain the C(n)=2 boundary, and keep it subordinate to the canonical #249 equivalence.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Canonical residue-gap frontier: producer contracts and what they would buy",
+      "supersession_or_consolidation": "Use one short subsection below canonical_mersenne_residue_gap_normal_form; consolidate both transfer declarations and the constant-layer countermodel there, replacing any standalone primitive-divisor or parallel-endpoint treatment.",
+      "reason": "This is the right human explanation of what the missing order witnesses would buy, but it does not supply them or reach the canonical #249 endpoint."
+    }
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "bounded multiplicative order witness finite prime support escape",
+      "primitive prime divisor multiplicative order Zsigmondy",
+      "Lucas Lehmer sequences primitive divisors Bilu Hanrot Voutier",
+      "prime divisors p with n divides p^k minus 1 bounded k"
+    ],
+    "result": "The search recovered classical and modern primitive-divisor producer theorems, but no reason to treat the elementary finite-set escape implication as a separately novel theorem.",
+    "boundary": "The useful local contribution is formal abstraction and programme routing, not priority for the order-versus-size observation."
+  },
+  "source_authority_audit": {
+    "candidate_result_id": "x_minus_two_unbounded_prime_support",
+    "why_it_would_matter": "It would be the clean positive calibration showing that the abstract order-witness consumer is nonvacuous on a familiar cyclotomic sequence.",
+    "finding": "The current packet marks the result Lean-checked, but exact identifier, theorem-text, source-tree, and introduction-commit searches locate no Lean source, declaration list, or validation receipt outside the packet row.",
+    "verdict": "precise_negative_finding_withhold_until_inspectable",
+    "claim_ceiling_effect": "Do not add the X-2 statement to the card's proved results, Comparator proposal, or public theorem narrative. The source-pinned abstract transfer remains unaffected.",
+    "reentry_condition": "A restored named declaration plus canonical build receipt, or an explicit evidence downgrade to authored ordinary proof with a durable derivation.",
+    "capture": "cap_quick_restore_or_downgrade_missing_x_minus_two_f13bfd97c4a3"
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked elementary transfer lemma shows that uniformly bounded order certificates force every fixed finite prime support to disappear; primitive-divisor theorems are adjacent ways such certificates may be produced in structured sequences.",
+    "forbidden_wording": [
+      "This generalizes Zsigmondy's theorem.",
+      "The theorem constructs primitive prime divisors.",
+      "Nontrivial layers alone force new primes.",
+      "The actual #249 layers satisfy the order-witness hypothesis.",
+      "This proves Erdős Problem 249."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_primitive_divisor_theorem",
+      "not_a_layer_supply_theorem",
+      "not_an_order_witness_construction",
+      "not_erdos_249_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/bounded_order_witness_prime_support_escape.card.json",
+      "effect": "Replace unadjudicated language with the exact elementary classification and producer-side primitive-divisor comparison."
+    },
+    {
+      "consumer": "Erdős #249 proof fleet",
+      "effect": "Treat layer nontriviality and bounded-degree order-witness construction as the only live producers; do not reprove finite-set escape downstream."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as a reusable formal transfer interface and hypothesis boundary, not as a new primitive-divisor theorem."
+    }
+  ],
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_249.md",
+    "section": "Canonical residue-gap frontier: producer contracts and what they would buy",
+    "canonical_mechanism_family": "canonical Mersenne residue-gap supply with conditional cyclotomic order-witness consumers",
+    "relation": "Subordinates this supporting lemma beneath canonical_mersenne_residue_gap_normal_form; consolidates finite-support escape and conditional unbounded divisors; preserves C(n)=2; retires primitive-divisor and parallel-endpoint narratives.",
+    "understanding_delta": "The consumer's exact payoff is separated from its missing order-witness and nontrivial-layer producers.",
+    "evidence_boundary": "Two Lean declarations prove only the conditional transfer; no actual totient witnesses, layers, residue-gap bridge, or irrationality theorem is supplied.",
+    "hard_step": "Build actual bounded-degree witnesses and cofinally nontrivial layers, then bridge escaping support to canonical residue-gap supply.",
+    "meaningful_failed_route": "C(n)=2 falsifies the attempt to infer escape from nontrivial layers without witness certificates.",
+    "open_remainder": "Erdős Problem 249 remains open."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_current_packet_overlay_excluded",
+    "bound_snapshot": {
+      "result_family_version": "erdos249_bounded_order_witness_prime_support_escape@source_4cd4eac_card_b8971c12_packet_924ab4d",
+      "source_generation": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "packet_overlay_status": "excluded",
+      "parity_status": "transfer and C(n)=2 boundary source-bound; unbacked X-minus-two row withheld"
+    },
+    "claim_guard": "Only the Lean-checked conditional order-witness-to-finite-support escape and its C(n)=2 boundary are admitted. Primitive-divisor production, actual #249 order witnesses, cofinal layer supply, unconditional prime escape, endpoint, and priority claims remain excluded.",
+    "reentry_trigger": "Re-enter when a named X-minus-two declaration receives a canonical validation receipt, or when the packet overlay is landed/discarded and exact parity is rerun."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The transfer is elementary size-versus-order arithmetic; the review load is hypothesis discipline and ensuring the C(n)=2 countermodel is not silently discarded.",
+    "slow_down_at": "Check the quantifiers on every prime divisor, the uniform bound k<=d, cofinal nontriviality, and the finite-support contradiction before invoking any primitive-divisor analogy.",
+    "automation_can_establish": [
+      "Pinned Lean transfer declarations and source/card identity",
+      "The finite-support escape and unbounded-prime corollary under explicit hypotheses",
+      "The C(n)=2 boundary and excluded packet overlay"
+    ],
+    "human_judgment_required": [
+      "Whether Bang--Zsigmondy/Bilu--Hanrot--Voutier are useful context without implying a producer theorem",
+      "Whether the actual #249 construction can supply bounded-order witnesses",
+      "Whether one subordinate Comparator interface is worth the producer contract"
+    ],
+    "review_act": "One bounded quantifier/source audit; then redirect expert attention to producing order witnesses rather than re-proving the consumer.",
+    "attention_ceiling": "Medium supporting value as a producer-consumer boundary; no primitive-divisor or #249 endpoint significance claim."
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicFaceConnectorNoGo.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicRadialDeficitCone.lean"
+    ],
+    "declarations": [
+      "ErdosProblems.Erdos1041.SexticCubicFaceConnectorNoGo.not_all_nonpos_of_halfStep_mem",
+      "ErdosProblems.Erdos1041.SexticCubicRadialDeficitCone.sameParity_staple_length_lt_two"
+    ],
+    "delta_class": "positive_radius_atlas_no_go_reconciled_with_deficit_bearing_stability_cones",
+    "authority_at_review": "Clean landed Lean sources; fresh focused Lake checks of the paired-deficit and transition consumers; reviewer cards are private internal exposition only.",
+    "claim_ceiling": "The pure cubic face rules out a uniform equal-positive-radius root-direction atlas, while explicit deficit-bearing cones prove short staples under stated finite Fourier hypotheses. No normalization dichotomy, actual-polynomial transfer, or Erdős #1041 solution follows."
+  },
+  "decisions": [
+    {
+      "candidate_id": "paired_deficit_cone_formal_consumer",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicPairedDeficitCone.lean",
+      "decision": "verified_no_change",
+      "mathematical_reason": "This module directly imports the radial-deficit cone and replaces the four-mode budget by a paired six-deficit budget. Its low-mode condition and fifth-root scale are a stronger downstream hypothesis, not a consequence that upgrades the original cone.",
+      "authority_surface_checked": "direct import, paired_fourierNormSum_le_six_delta, paired_selectedRay_margin, paired_innerDisk_margin",
+      "validation_or_reentry": "fresh focused Lake build; re-enter if approximate tangent pairing is strengthened or its hypotheses are transferred to actual polynomials"
+    },
+    {
+      "candidate_id": "transition_cone_formal_consumer",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicTransitionCone.lean",
+      "decision": "verified_no_change",
+      "mathematical_reason": "This module imports the paired cone and enlarges the low-mode scale to the cubic-to-transverse transition regime. It records an exhaustive numerical dichotomy but does not establish either branch for arbitrary actual perturbations.",
+      "authority_surface_checked": "direct import, transition_fourierNormSum, paired_transition_selectedRay_margin, transition_or_transverse",
+      "validation_or_reentry": "fresh focused Lake build; re-enter when the transverse complement receives a path-producing chart or the dichotomy is connected to the nonlinear transfer"
+    },
+    {
+      "candidate_id": "private_reviewer_handoffs",
+      "file": "docs/formal_math/reviewer_cards/erdos1041_sextic_cubic_face_positive_radius_connector_no_go.card.json; docs/formal_math/reviewer_cards/erdos1041_sextic_cubic_radial_deficit_staple_cone.card.json",
+      "decision": "update_now",
+      "mathematical_reason": "The no-go and its viable deficit-bearing replacement must be presented as one directed architectural consequence: the positive-radius atlas fails precisely because it omits the radial deficit that the cone restores.",
+      "authority_surface_checked": "source theorem statements, exact checkers, focused Lean builds, and card claim boundaries",
+      "validation_or_reentry": "reviewer-card validation; revise only if a stronger cone changes its stated hypotheses or a transfer theorem lands"
+    },
+    {
+      "candidate_id": "canonical_erdos1041_research_packet",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The packet already records the no-go, radial-deficit cone, and the remaining normalization dichotomy. This receipt adds their formal consumer relation without changing packet authority or its open claim ceiling.",
+      "authority_surface_checked": "exact-results entries, landed formal-source list, claim ceiling, and surviving sextic transfer residual",
+      "validation_or_reentry": "re-enter if the packet changes its source identity or a transition/transverse result alters the surviving actual-transfer obligation"
+    },
+    {
+      "candidate_id": "derivative_dissemination_and_public_corpus_surfaces",
+      "file": "docs/formal_math/type_b_packets; attached public corpus",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "The results remain private-source mathematical checkpoints without an immutable public source-parity and release decision. A reviewer card improves inspection but does not authorize public or Comparator promotion.",
+      "authority_surface_checked": "private-authoring status and federated corpus identity boundary",
+      "validation_or_reentry": "re-enter on a public-source admission request with an immutable source commit and owner-approved claim mapping"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_closed": "The false uniform equal-positive-radius cubic-face atlas is replaced by a formal chain of deficit-bearing cone interfaces and their paired/transition consumers.",
+    "newly_narrowed": "The remaining task is not to search for another positive-radius connector on the pure cubic face; it is to prove an actual-polynomial normalization dichotomy whose branches enter a cone or a complementary transverse chart.",
+    "surviving_boundary": "Connect the low-mode/transition dichotomies to all actual cubic-dominant perturbations and absorb the origin-anchored nonlinear remainder without weakening the strict path and level conclusions.",
+    "claim_boundary": "The consumer imports and focused Lean builds establish interface availability only. They do not prove the normalization dichotomy, actual transfer, a global sextic theorem, or Erdős #1041."
+  },
+  "checkpoint_class": "checkpoint_rotate"
+}

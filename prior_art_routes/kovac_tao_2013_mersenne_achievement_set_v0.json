@@ -1,0 +1,177 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-07-10T23:11:00Z",
+  "status": "research_only_source_identity_corrected_no_public_attribution",
+  "route_id": "bartoszewicz_filipczak_szymonik_2013_multigeometric_cantorvals",
+  "purpose": "Record the source-identity correction for the retained general achievement-set archive and prevent its legacy path from producing false Kovač–Tao or Mersenne-specific attribution.",
+  "source_annex": {
+    "slug": "arxiv-1304-4218-kovac-tao",
+    "display_name": "Bartoszewicz–Filipczak–Szymonik — Multigeometric sequences and Cantorvals",
+    "arxiv_id": "1304.4218",
+    "arxiv_url": "https://arxiv.org/abs/1304.4218",
+    "published_doi": "10.2478/s11533-013-0396-4",
+    "identity_status": "primary_record_verified_legacy_slug_is_not_author_metadata",
+    "authors": [
+      "Artur Bartoszewicz",
+      "Małgorzata Filipczak",
+      "Emilia Szymonik"
+    ],
+    "source_archive": "annexes/arxiv-1304-4218-kovac-tao/source.gz",
+    "source_archive_sha256": "db9d56a320e3719ad1d2fe77a2f0f869268fbbf387680666a1d1ac1e17712f4b",
+    "extraction_status": "source_archive_retained_as_general_research_context",
+    "annex_notes": "annexes/arxiv-1304-4218-kovac-tao/annex_notes.json",
+    "annex_notes_sha256": "981d3b4bd39958bbd6d0415f48e4682dffc82522196f0cf93c7eaebb0a180d63",
+    "validated_by": "./repo-python annex_import.py validate --slug arxiv-1304-4218-kovac-tao"
+  },
+  "related_existing_evidence": {
+    "annex_slug": "arxiv-2406-17593-kovac-tao-ahmes-series",
+    "role": "separate, already-routed source for strict superincreasingness, unique support coding, and Cantor topology of fixed-base Lambert subsums; it must not be conflated with this archive",
+    "authority_ref": "state/formal_math_research_operations/pilots/erdos257_issue217/july_2026_report_assimilation.json::prior_art_annexes"
+  },
+  "private_lean_targets": {
+    "package_root": "formal_math/erdos257_period_noncollapse",
+    "declaration_families": [
+      "GreedyAchievementSet"
+    ],
+    "target_files": [
+      "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GreedyAchievementSet.lean"
+    ],
+    "public_export_impact": "none_selected_export_globs_ignore_prior_art_routes"
+  },
+  "claim_family_intake": {
+    "granularity": "research_only_identity_correction_not_a_public_bibliography_verdict",
+    "provisional_classification": "general_achievement_set_context_without_verified_mersenne_specialisation",
+    "comparison_questions": [
+      "Does this general Cantorval paper contain a stated theorem whose hypotheses specialise to the positive Mersenne-Lambert weights?",
+      "If so, does it establish the same strict-tail, unique-coding, or Cantor-topology conclusion already attributed to the separate 2025 Kovač–Tao source?",
+      "Until both answers are evidenced, should the source remain research-only rather than enter the public bibliography?"
+    ],
+    "required_crosswalk_fields": [
+      "premises",
+      "conclusion",
+      "specialisation_map",
+      "proof_mechanism",
+      "strict_delta",
+      "allowed_wording"
+    ]
+  },
+  "adjudication": {
+    "review_unit_version": "arXiv:1304.4218 / DOI 10.2478/s11533-013-0396-4; retained annex snapshot db9d56a320e3719ad1d2fe77a2f0f869268fbbf387680666a1d1ac1e17712f4b",
+    "evidence_class": "externally sourced ordinary achievement-set/Cantorval results; source identity and theorem scope inspected, with no local Mersenne specialization established",
+    "closest_known_prior_art": [
+      "The introduction restates Kakeya's strict-tail dichotomy for summable sequences (extracted source lines 61-69); this is general achievement-set background, not a Mersenne theorem.",
+      "The paper's Theorem 1 (extracted source lines 136-148) records the Nymann--Guthrie--Sáenz topological trichotomy for l1 achievement sets.",
+      "The paper's Theorem 2 (extracted source lines 173-190) treats finite-block multigeometric sequences (k_1,...,k_m;q) and Cantorval criteria; its hypotheses are finite-block/geometric and do not match the positive Mersenne weights."
+    ],
+    "exact_delta": "The archive corrects a legacy Kovač--Tao label to Bartoszewicz--Filipczak--Szymonik and supplies general Cantorval context. The local #257 family uses the Mersenne-Lambert weights 1/(2^n-1), whose ratios are not a fixed finite block repeated by one geometric parameter; no theorem in the inspected source states the local strict-tail, unique-coding, greedy-skip, or Mersenne endpoint equivalence.",
+    "specialisation_map": {
+      "source_to_local": "No exact map: Theorem 2's finite-block multigeometric hypotheses do not specialize to the Mersenne denominator sequence without an additional theorem.",
+      "shared_language_only": "Both sources concern achievement sets/subsum geometry; that shared vocabulary is contextual rather than a premise/conclusion match."
+    },
+    "proof_mechanism": "Source-level compactness and finite-block subsum arithmetic for general achievement sets; no Mersenne-specific denominator or greedy-carry mechanism is present.",
+    "disconfirmation_search": "Inspected the annex abstract/introduction and main Theorem 1/Theorem 2 passages; no occurrence of Mersenne denominators, the Erdős--Borwein sum, greedy actual skips, or the local endpoint equivalence was found. The archive notes explicitly retain the source as research-only and separately credit the Kovač--Tao/Ahmes route for fixed-base strict superincreasingness.",
+    "confidence_ceiling": "Strong confidence in the author-identity correction and in a general-achievement-set context classification; no novelty, priority, or direct Mersenne antecedent claim is justified.",
+    "significance_rationale": "The correction prevents a false citation and keeps general Cantorval terminology available for orientation. It does not materially alter the #257 proof frontier until a theorem-level Mersenne specialization is found.",
+    "bounded_expert_review_act": "Check the exact Mersenne sequence against the hypotheses of Theorem 2 and the cited Kakeya/Nymann--Guthrie--Sáenz results. Promote this route only if a source passage gives a genuine premise/conclusion specialization; otherwise leave it as private identity-correction context."
+  },
+  "public_claim_boundary": {
+    "local_effect": "private source-identity correction only; no conclusion about novelty, citation wording, or public paper content follows from this retained general-context source",
+    "proof_authority": "not_accepted",
+    "publication_effect": "none",
+    "non_claims_preserved": [
+      "not_a_kovac_tao_source",
+      "not_a_direct_mersenne_geometry_source",
+      "not_a_new_Cantor_geometry_claim",
+      "not_a_novelty_claim_for_gap_asymptotics_or_3_4_fixture",
+      "not_a_public_citation_or_paper_edit",
+      "not_erdos_257_solution"
+    ],
+    "forbidden_until_exact_comparison": [
+      "replace_literature_novelty_unchecked_prose",
+      "conflate_the_legacy_slug_with_author_metadata",
+      "treat_general_cantorval_context_as_a_direct_mersenne_antecedent",
+      "treat_annex_content_as_Lean_theorem_authority"
+    ]
+  },
+  "annex_section_routes": [
+    {
+      "annex_target": "document_root",
+      "note_id": "n001",
+      "local_task": "Recover a stable theorem/proof anchor from the source archive, then compare it with the existing Ahmes-series route and the local greedy declaration family."
+    }
+  ],
+  "next_private_mapping_pass": {
+    "status": "closed_as_research_only_pending_new_exact_specialisation_evidence",
+    "recommended_order": [
+      "preserve_identity_correction",
+      "seek_a_stated_mersenne_specialisation_only_if_future_work_requires_it",
+      "otherwise_leave_out_of_public_attribution"
+    ],
+    "first_command": "./repo-python annex_import.py show --slug arxiv-1304-4218-kovac-tao"
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_exact_Mersenne_specialisation",
+    "priority_order": [
+      "test the Mersenne weight sequence against the finite-block multigeometric hypotheses without assuming a ratio match",
+      "check the cited Kakeya/Nymann--Guthrie--Sáenz antecedents for the exact local strict-tail/greedy-skip conclusion",
+      "retain research-only identity correction if no theorem-level specialization is found"
+    ],
+    "lane": "re-enter only when a primary-source passage supplies an exact premise/conclusion map or disconfirms the current no-specialization boundary"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source_identity_and_achievement_set_context_review",
+    "output_stage": "attribution_bound_human_review_support",
+    "artifact": "#257 Bartoszewicz--Filipczak--Szymonik archive correction and Mersenne-specialization boundary",
+    "human_understanding_delta": "A legacy Kovač--Tao label is replaced by the verified authors, while general Kakeya/Cantorval and finite-block multigeometric results are explicitly separated from the Mersenne-Lambert greedy endpoint.",
+    "verification_state": "Annex metadata, source archive hash, extracted theorem passages, and local route identity were inspected; no Mersenne specialization or endpoint implication was found.",
+    "publication_or_review_state": "Private attribution support only; no public citation, novelty, priority, or #257 endpoint claim.",
+    "canonicalization_state": "One research-only identity-correction route retained; no duplicate Mersenne prior-art card or Comparator interface created.",
+    "unresolved_downstream_bottleneck": "A primary-source theorem-level specialization from general achievement-set/Cantorval hypotheses to the exact Mersenne sequence and local greedy-skip conclusion.",
+    "next_stage_owner": "Novelty Observatory for any exact specialization evidence; Mathematics Refinery for later source-bound consolidation; downstream publication owners remain out of scope."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "bartoszewicz_filipczak_szymonik_multigeometric_cantorvals@arXiv-1304.4218-annex-v1",
+    "evidence_class": "Externally sourced ordinary achievement-set context with verified author identity and theorem scope; no local Mersenne specialization or formal theorem is established.",
+    "closest_known_result": "Bartoszewicz--Filipczak--Szymonik, arXiv:1304.4218, Theorem 1 (Nymann--Guthrie--Sáenz trichotomy) and Theorem 2 (finite-block multigeometric Cantorval criteria), with Kakeya strict-tail background.",
+    "comparison_relation": "The source shares achievement-set/Cantorval language but its finite-block multigeometric hypotheses do not specialize to the Mersenne-Lambert weights. It is not a direct antecedent for strict-tail support recovery, greedy actual skips, or the #257 endpoint equivalence.",
+    "exact_delta": "The route corrects a legacy Kovač--Tao attribution to the verified three authors and supplies general Cantorval terminology. No new Mersenne theorem or local greedy mechanism is contributed.",
+    "disconfirming_evidence": "Inspection of the archive abstract/introduction and Theorems 1–2 found no Mersenne denominators, Erdős–Borwein constant, greedy-skip condition, or endpoint implication. Non-specialization is a scope boundary, not evidence of local novelty.",
+    "confidence": {
+      "level": "high_for_author_identity_and_general_context_medium_for_scope_comparison_low_for_local_significance",
+      "basis": "Pinned archive and extracted text, source notes, and theorem passages establish the author correction and finite-block hypotheses; no theorem-level Mersenne map was found."
+    },
+    "significance": "High attribution hygiene but low frontier impact: it prevents a false citation and gives a general achievement-set context label. Retain as a research-only supporting note, not a flagship or endpoint mechanism.",
+    "claim_ceiling": "Public wording may cite Bartoszewicz--Filipczak--Szymonik for general multigeometric achievement sets/Cantorvals and Kakeya background. Do not attribute this archive to Kovač--Tao or claim a Mersenne specialization, novelty, priority, or #257 progress.",
+    "hard_step": "Find a primary source whose hypotheses actually cover the non-geometric Mersenne sequence and its greedy-skip conclusion; the current source does not.",
+    "open_boundary": "A theorem-level specialization remains absent. No Comparator interface is justified; this route belongs under attribution/context rather than the #257 endpoint family.",
+    "bounded_expert_review_act": "Check the exact Mersenne weight sequence against Theorem 2's finite-block multigeometric hypotheses; if they fail, preserve the identity-correction and research-only disposition.",
+    "reentry_trigger": "Re-enter on a verified theorem-level Mersenne specialization or a source-version/author-metadata correction.",
+    "source_generation_binding": {
+      "external_source_version": "arXiv:1304.4218",
+      "external_archive_sha256": "db9d56a320e3719ad1d2fe77a2f0f869268fbbf387680666a1d1ac1e17712f4b",
+      "external_extracted_sha256": "474e7c77c5461ea6338c54bbe723c337edfca79e62a806617b3cdd77b938446d",
+      "parity_status": "Author identity, theorem scope, and extraction are source-pinned; no local specialization, Lean authority, or public citation update is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "external_source_version": "arXiv:1304.4218",
+      "external_archive_sha256": "db9d56a320e3719ad1d2fe77a2f0f869268fbbf387680666a1d1ac1e17712f4b",
+      "external_extracted_sha256": "474e7c77c5461ea6338c54bbe723c337edfca79e62a806617b3cdd77b938446d"
+    },
+    "claim_guard": "General achievement-set/Cantorval context only; verified author correction; no direct Mersenne antecedent or #257 endpoint claim.",
+    "reentry_trigger": "Re-enter on source-version, author metadata, or theorem-level specialization changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Attribution and scope correction with little frontier mathematics; the key judgment is whether a claimed Mersenne specialization exists.",
+    "slow_down_at": "Legacy Kovač--Tao slug versus actual authors, and finite-block multigeometric assumptions versus Mersenne weights.",
+    "automation_can_establish": ["Archive metadata, author identity, and theorem-anchor parity", "Hypothesis mismatch checks against the local weight sequence"],
+    "human_judgment_required": ["Whether any alternate primary source supplies the missing Mersenne specialization", "Whether to omit this context from the main paper and retain it in bibliography notes"],
+    "review_act": "One bounded act: verify the finite-block hypothesis mismatch; otherwise keep the route research-only and consolidated."
+  },
+  "release_topology_link": {
+    "public_prior_art_policy_owner": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+    "public_prior_art_drift_report_target": "microcosm-substrate/receipts/lean_formal_methods_os/public_prior_art_drift_report_v0.json"
+  }
+}

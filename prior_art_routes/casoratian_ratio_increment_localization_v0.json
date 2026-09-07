@@ -1,0 +1,116 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "casoratian_ratio_increment_localization_v0",
+  "status": "adjudicated_conditional_source_specific_p_adic_localization",
+  "problem_id": "erdos_1049",
+  "review_unit": {"result_family":"q_apery_casoratian_p_adic_ratio_localization","exact_result_ids":["casoratian_closed_form_and_block_structure_theorem"],"source_generation":{"packet":"formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json","packet_sha256":"66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01","proof":"formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/CasoratianBlockLawProof.md","proof_sha256":"63285f9a2286d385733af5565540486da37a231bbd8b24255d4eebc2b9534709","certificate":"formal_math/probes/erdos1049_casoratian_block_law.py","certificate_sha256":"18891bd0d7da9c48eb36f8556aaea7e2637047363026aa751a1c56b625643470"}},
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Standard determinant transport with a conditional p-adic hypothesis and a decisive finite exception; the global height implication is the real gap.",
+    "slow_down_at": "Check denominator-unit scope, determinant-to-increment derivation, and the (11,31) counterexample before accepting any block language.",
+    "automation_can_establish": [
+      "Exact finite replay and source hashes",
+      "The displayed residue-block calculation"
+    ],
+    "human_judgment_required": [
+      "Whether an all-index continuity theorem supplies the R_j-unit input",
+      "Whether the localizer has a direct prior-art antecedent"
+    ],
+    "review_act": "Audit one residue-block calculation and state the first unproved global height implication."
+  },
+  "adjudication_currentness": {
+    "status": "proof_certificate_packet_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "proof_sha256": "63285f9a2286d385733af5565540486da37a231bbd8b24255d4eebc2b953470",
+      "certificate_sha256": "18891bd0d7da9c48eb36f8556aaea7e2637047363026aa751a1c56b625643470",
+      "review_generation": "2026-08-26_v2"
+    },
+    "claim_guard": "Conditional p-adic localization only; no all-prime valuation law, height gain, irrationality, or #1049 theorem claim.",
+    "reentry_trigger": "Reopen if all-index continuity, a direct antecedent, source correction, or a global height consumer appears."
+  },
+  "evidence_class":{"ordinary_source_derivation":"Closed determinant, ratio-increment formula, and p-adic localization under the displayed denominator-unit hypothesis.","exact_computation":"Bounded rational replay and the exact (p,j)=(11,31) counterexample.","open":"All-index denominator-unit/continuity, height-versus-decay, and irrationality at 3/2."},
+  "classification":{"prior_art_confidence_class":"strong_internal_provisional_case","theorem_class":"conditional p-adic localization after standard discrete Abel--Liouville transport","novelty_confidence":"No priority claim. Transport is standard and already adjudicated under q_apery_casoratian_noncollapse; this exact rational-base p-adic application is source-specific, with no direct antecedent located in the bounded search.","significance":"Supporting method boundary: it locates candidate poles and blocks an incorrect whole-loss-block premise, but supplies no global effective-height gain.","canonical_relation":"Subordinate but not duplicate: q_apery_casoratian_noncollapse owns generic transport/noncollapse; this route owns the denominator-unit localizer and its exception."},
+  "primary_sources":[{"id":"amdeberhan_zeilberger_1998_q_apery","title":"q-Apery Irrationality Proofs by q-WZ Pairs","authors":["Tewodros Amdeberhan","Doron Zeilberger"],"venue":"Advances in Applied Mathematics 20 (1998), 275-283","url":"https://arxiv.org/abs/math/9804122","source_date":"1998-04-24","source_archive":"annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.pdf","source_archive_sha256":"339a4324a6cd0bcfd8eb872d0a408140fcba06ee383bf421248a91919b1430e2","source_tex":"annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.tex","source_tex_sha256":"d5e28002d543f1d8c22fca2312319957fb0c34481fe0d6eb4fd8ff4aad2dda4f","extracted_markdown":"annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/extracted.md","extracted_markdown_sha256":"b706b896b43d755fafa907b6ce6b0d3c3a3542875d0a2d03e56b66624941161f","retrieved_at":"2026-08-11","pdf_pages":7,"primary_pdf_read":true,"primary_tex_read":true,"source_reviewed_at":"2026-08-27","verification_state":"primary_pdf_and_tex_read_exact_q_wz_casoratian_and_integer_base_boundary_compared","exact_source_locator":"PDF pp. 2--4 / source.tex lines 131--166: Section 1.6 derives the common second-order recurrence, the Casoratian subtraction, the ratio increment O(b_n^{-2}), and convergence to h_q(1); source.tex lines 172--206 / PDF pp. 4--5: Section 1.7, Lemmas 1--2, and Theorem 1 clear denominators and state irrationality for integer |q|>1.","exact_anchor":"PDF pp. 2--4 / source.tex lines 131--166: the shared q-WZ recurrence and Casoratian ratio increment; source.tex lines 172--206 / PDF pp. 4--5: denominator clearing and the integer-base irrationality theorem.","supports":"Recurrence lineage, the explicit Casoratian transport, denominator clearing, and the integer-base attribution boundary.","does_not_support":"This rational-base localization, the R_j-unit condition, the p=11 exception, height control, or irrationality at 3/2."}],
+  "closest_known_result":{"relation":"standard_discrete_Abel_Liouville_identity_plus_source_specific_conditional_localization","exact_delta":"Under the R_j-unit condition, the source uses the closed increment to locate potential p-adic poles at j congruent to -1 modulo ord_p(3/2).","disconfirming_evidence":"(p,j)=(11,31) refutes the old whole harmonic-loss-block reading when the unit condition fails at an interior residue."},
+  "search_receipt":{"completed_at":"2026-08-25","queries":["discrete Abel formula Casoratian second order difference equation","Amdeberhan Zeilberger q-Apery Irrationality Proofs q-WZ Pairs recurrence"],"result":"The primary record and generic search establish recurrence lineage and standard Casoratian terminology. No direct literature antecedent for this exact localization was found; non-location is not novelty evidence.","reentry_condition":"Repeat comparison after a proved all-index R_j-unit/continuity theorem or a direct antecedent."},
+  "claim_boundary":{"allowed_wording":"For the displayed source recurrence, standard Casoratian transport yields an explicit increment; under the R_j-unit hypothesis, its possible nonintegral p-adic increments occur only at the indicated residue-block boundaries. Exact computation records a counterexample to whole-block language.","forbidden_wording":["A new Casoratian theorem.","A p-adic block law without the denominator-unit hypothesis.","An all-prime harmonic valuation formula.","A height, decay, irrationality, or Erdős #1049 theorem."],"open_boundary":"All-index denominator-unit/continuity input and the separate effective-height/analytic-decay inequalities remain required."},
+  "programme_disposition":{"canonical_mechanism_family":"effective-height accounting for rational-base Padé forms: Casoratian p-adic localization boundary","disposition":"Subordinate beneath qapery_two_form_height_decay_obstruction and q_apery_casoratian_noncollapse; consolidate prime diagnostics and the p=11 exception here.","expert_review_act":"Check determinant-to-increment derivation, denominator-unit scope, and the (11,31) exception before assessing any harmonic continuity claim.","paper_disposition":"Supporting lemma/boundary in ‘Local determinant geometry before the height bill’."},
+  "tao_pipeline_receipt":{"input_stage":"source-derived recurrence algebra plus finite exact replay","output_stage":"attribution, claim ceiling, and consolidation support","artifact":"casoratian_ratio_increment_localization_v0","human_understanding_delta":"Separates standard determinant transport from the conditional p-adic localizer and retains the counterexample that prevents global block language.","verification_state":"Authored source derivation and pinned finite exact computation; no Lean or independent human verification.","publication_or_review_state":"Paper-supporting explanatory object with explicit attribution uncertainty; no priority claim.","canonicalization_state":"Subordinate p-adic layer, not a parallel general Casoratian family.","unresolved_downstream_bottleneck":"All-index continuity and effective height-versus-decay control.","next_stage_owner":"#1049 analytic/height proof owners and Mathematics Refinery."},
+  "landing_consumers":["docs/formal_math/reviewer_cards/casoratian_ratio_increment_localization.card.json","formal_math/erdos257_period_noncollapse/prior_art_routes/q_apery_casoratian_noncollapse_v0.json","#1049 rational-base Lambert paper"],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "casoratian_ratio_increment_localization@packet-66a01b72-proof-63285f9a",
+    "evidence_class": "authored_conditional_p_adic_localization_after_standard_discrete_determinant_transport_with_exact_finite_replay",
+    "closest_known_result": "Casoratian/Abel--Liouville transport and q-Apéry recurrence lineage are standard; the rational-base denominator-unit localizer and its (11,31) exception are source-specific in the bounded search.",
+    "comparison_relation": "Subordinate p-adic method boundary beneath generic q-Apéry Casoratian noncollapse; not a new Casoratian theorem or all-prime valuation law.",
+    "exact_delta": "Under the R_j-unit hypothesis, the source localizes possible nonintegral p-adic increments to residue-block boundaries and records the exact exception that blocks unconditional whole-block language.",
+    "disconfirming_evidence": "The (11,31) finite exception refutes the unconditional whole-loss-block reading, and localization alone supplies no global effective-height gain.",
+    "confidence_ceiling": "Strong internal provisional case for the conditional application; no priority, all-index continuity, height, irrationality, or #1049 claim.",
+    "significance": "Medium as a method boundary: it identifies candidate p-adic poles and prevents a false harmonic continuity premise from entering the height argument.",
+    "claim_ceiling": "For the displayed recurrence, standard Casoratian transport gives an explicit increment; under the denominator-unit hypothesis, possible nonintegral p-adic increments occur only at the indicated residue-block boundaries.",
+    "hard_step": "Prove the all-index denominator-unit/continuity input and then connect localized increments to a global height-versus-decay inequality.",
+    "open_boundary": "All-index continuity and the separate effective-height/analytic-decay inequalities remain required; no irrationality or #1049 theorem follows.",
+    "bounded_expert_act": "Audit one residue-block calculation and state the first unproved global height implication.",
+    "reentry_trigger": "Reopen if all-index continuity, a direct antecedent, source correction, or a global height consumer appears.",
+    "source_version_binding": {
+      "packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/CasoratianBlockLawProof.md",
+      "proof_sha256": "63285f9a2286d385733af5565540486da37a231bbd8b24255d4eebc2b9534709",
+      "certificate": "formal_math/probes/erdos1049_casoratian_block_law.py",
+      "certificate_sha256": "18891bd0d7da9c48eb36f8556aaea7e2637047363026aa751a1c56b625643470",
+      "primary_source_locators": [
+        "Amdeberhan–Zeilberger 1998, q-Apéry source sequences and shared recurrence",
+        "standard discrete Abel–Liouville/Casoratian transport"
+      ],
+      "parity_status": "Authored source derivation, exact finite replay, and primary recurrence lineage are bound; no Lean or independent human verification is claimed."
+    },
+    "classification": {
+      "evidence_class": "authored conditional p-adic localization after standard discrete determinant transport, with exact finite replay",
+      "closest_prior_art": "Casoratian/Abel–Liouville transport and q-Apéry recurrence lineage are standard. The exact rational-base denominator-unit localizer and its (11,31) exception are source-specific in the bounded search.",
+      "comparison_relation": "Subordinate p-adic method boundary beneath generic q-Apéry Casoratian noncollapse; not a new Casoratian theorem or all-prime valuation law.",
+      "novelty_confidence": "strong internal provisional case for the conditional application; no priority claim",
+      "significance_grade": "medium_route_boundary",
+      "why_care": "It locates candidate p-adic poles and kills an incorrect whole-loss-block premise, keeping the effective-height discussion honest about where local divisibility can actually occur.",
+      "hard_step": "Prove the all-index denominator-unit/continuity input and then connect the localized increments to a global height-versus-decay inequality.",
+      "natural_friction": "The R_j-unit hypothesis is load-bearing; the exact (11,31) counterexample must remain adjacent whenever a harmonic continuity claim is discussed.",
+      "disconfirming_evidence": "The finite exception refutes the unconditional whole-block reading, and no global effective-height gain follows from localization alone."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "For the displayed recurrence, standard Casoratian transport gives an explicit increment; under the R_j-unit hypothesis, possible nonintegral p-adic increments occur only at the indicated residue-block boundaries.",
+      "rejected_stronger": [
+        "a new Casoratian theorem",
+        "a p-adic block law without the denominator-unit hypothesis",
+        "an all-prime harmonic valuation formula",
+        "a height, decay, irrationality, or Erdős #1049 theorem",
+        "a priority claim"
+      ],
+      "open_boundary": "All-index denominator-unit/continuity and separate effective-height/analytic-decay inequalities remain required."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "effective-height accounting for rational-base Padé forms: Casoratian p-adic localization boundary",
+      "disposition": "subordinate beneath qapery_two_form_height_decay_obstruction and q_apery_casoratian_noncollapse; consolidate prime diagnostics and the p=11 exception",
+      "paper_disposition": "supporting lemma/boundary in 'Local determinant geometry before the height bill'",
+      "supersession_or_consolidation": "Do not create a parallel general Casoratian family; retain the localizer and counterexample as one conditional object.",
+      "expert_attention_reason": "The useful review act is checking the hypothesis and exception, not re-proving standard transport or treating localization as a height theorem.",
+      "independent_comparator_interface_justified": "No standalone Comparator proposition; include as a bundled conditional boundary beneath the existing q-Apéry interface."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "standard determinant transport with a conditional p-adic hypothesis and decisive finite exception",
+      "slow_down_at": "Check the denominator-unit scope, determinant-to-increment derivation, and the (11,31) counterexample.",
+      "automation_establishes": "The exact finite replay and source hashes.",
+      "expert_judgment_required": "Whether any all-index continuity theorem supplies the missing R_j-unit input and whether the localizer has a direct antecedent.",
+      "bounded_expert_act": "Audit one residue-block calculation and state the first unproved global height implication.",
+      "reentry_condition": "Reopen if all-index continuity, a direct antecedent, source correction, or a global height consumer appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "source-derived recurrence algebra plus finite exact replay",
+      "output_stage": "attribution, claim ceiling, and consolidation support",
+      "artifact": "casoratian_ratio_increment_localization_v0",
+      "human_understanding_delta": "Separates standard determinant transport from the conditional p-adic localizer and retains the counterexample preventing global block language.",
+      "verification_state": "Authored derivation and pinned finite exact computation; no Lean or independent human verification.",
+      "publication_or_review_state": "Paper-supporting explanatory object with explicit attribution uncertainty; no priority or endpoint claim.",
+      "canonicalization_state": "Subordinate p-adic layer, not a parallel general Casoratian family.",
+      "unresolved_downstream_bottleneck": "All-index continuity and effective height-versus-decay control.",
+      "next_stage_owner": "#1049 analytic/height owners and Mathematics Refinery."
+    }
+  }
+}

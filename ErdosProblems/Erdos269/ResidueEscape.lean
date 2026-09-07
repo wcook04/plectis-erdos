@@ -1,5 +1,5 @@
 import Mathlib.Data.Int.ModEq
-import Mathlib.Tactic.Ring
+import Mathlib.Tactic
 
 /-!
 # Erdős #269: the finite least-positive-residue obstruction
@@ -160,5 +160,28 @@ theorem leastPositiveResidue_eq_natAbs_of_pos_le_modEq
     residue_le_bound_of_bounded_positive_state
       hresidue.1 le_rfl hcle hmodNat
   omega
+
+/-! ## Affine-cylinder endpoint nesting -/
+
+/-- One affine zero-lift step moves the lower endpoint strictly upward and,
+under the Bellman cap inequality `9*d + A' ≤ b*A`, moves the upper endpoint
+weakly downward.  Thus consecutive trapped-state intervals are nested; the
+multi-window intersection reduces to its final constraint.  This feeds the
+same canonical residue consumer above, while leaving the source-specific
+block-digit inequality and the final rational-point construction open. -/
+theorem affineCylinder_step_nested
+    (M b F d A A' : ℚ)
+    (hM : 0 < M) (hb : 0 < b) (hd : 0 < d)
+    (hcap : 9 * d + A' ≤ b * A) :
+    F / M < (b * F + d) / (b * M) ∧
+      (9 * (b * F + d) + A') / (9 * (b * M)) ≤
+        (9 * F + A) / (9 * M) := by
+  constructor
+  · rw [div_lt_div_iff₀ hM (mul_pos hb hM)]
+    nlinarith [mul_pos hd hM]
+  · rw [div_le_div_iff₀ (by positivity : (0 : ℚ) < 9 * (b * M))
+      (by positivity : (0 : ℚ) < 9 * M)]
+    have hcapM := mul_le_mul_of_nonneg_right hcap hM.le
+    nlinarith
 
 end ErdosProblems.Erdos269

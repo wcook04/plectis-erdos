@@ -1,0 +1,18 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "tied_newton_face_asymmetric_diameter_tube",
+  "input_stage": "all_degree_even_symmetric_diameter_cone_plus_productive_wait_perturbation_analysis",
+  "output_stage": "exact_all_degree_two_scale_asymmetric_real_axis_certificate",
+  "artifact": [
+    "ErdosProblems/Erdos1041/TiedNewtonFaceAsymmetricDiameterTube.md",
+    "ErdosProblems/Erdos1041/TiedNewtonFaceAsymmetricDiameterTube.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_asymmetric_diameter_tube.py"
+  ],
+  "human_understanding_delta": "The opposite-end carrier is stable far beyond exact even symmetry. A finite collection of arbitrary real lower modes is controlled by one inner constant-term budget and one outer leading-term budget, yielding an explicit asymmetric open tube with a uniform strict sign margin in every even degree. Composed with the existing staple-length identity, moving actual root directions cost no metric margin; only compactified containment remains.",
+  "verification_state": "ordinary proof, exact rational checker, focused Lean build, and final serialized Lake authority check passed",
+  "publication_or_review_state": "private source-authority result; not externally published",
+  "canonicalization_state": "ordinary theorem is source authority; Lean covers the two-region domination kernel honestly",
+  "unresolved_downstream_bottleneck": "prove uniform compactified chord-and-tail containment for actual near-Fekete polynomials and cover tied faces outside the lopsided two-scale tube",
+  "next_stage_owner": "all-degree tied selector and resolved stratified transfer"
+}

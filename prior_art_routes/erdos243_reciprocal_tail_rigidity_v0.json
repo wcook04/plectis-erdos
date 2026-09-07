@@ -1,0 +1,382 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-07-26T00:00:00Z",
+  "created_by": "claude_code",
+  "status": "adjudicated_source_bound_conditional_rigidity_with_open_coordinate_equivalence",
+  "route_id": "erdos243_reciprocal_tail_rigidity",
+  "source_result_ids": [
+    "bounded_tail_normalized_vanishing_consumer",
+    "summable_negative_relative_mass_termination",
+    "summable_negative_mass_sylvester_consumer",
+    "centered_zero_forces_sylvester_step",
+    "eventual_centered_zero_forces_sylvester_recurrence"
+  ],
+  "problem_id": "erdos_243",
+  "purpose": "Route the four source-checked Erdos 243 problem and theorem sources into the prior-art lane, with exact annex, hash, theorem, and printed-page evidence.",
+  "provenance_note": "Citations and verification prose are synchronized with ErdosProblems/Erdos243/research_packet.json::primary_sources. This route adds the source-archival, identity, and exact-locator ladder state.",
+  "sources": [
+    {
+      "source_id": "erdos_straus_1964_ahmes_series",
+      "citation": "P. Erdos and E. G. Straus, On the irrationality of certain Ahmes series (1964), Theorem 3",
+      "url": "https://users.renyi.hu/~p_erdos/1964-19.pdf",
+      "verification_state": "primary_pdf_read_exact_theorem_compared",
+      "pdf_url": "https://users.renyi.hu/~p_erdos/1964-19.pdf",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "annex_slug": "erdos-straus-1964-ahmes-series",
+      "annex_state": "imported_and_source_checked_2026-07-28",
+      "source_pdf": "annexes/erdos-straus-1964-ahmes-series/source.pdf",
+      "source_archive_sha256": "349d491423317417b6a2ecaa6799aba5923b514d52f5f6bd4e343249f90836d9",
+      "extracted_markdown": "annexes/erdos-straus-1964-ahmes-series/extracted.md",
+      "extracted_markdown_sha256": "49c596156ffc29e9f49a0bcbcbd2de4661cfb051ac647011e31e4be81e09abc6",
+      "relationship": "closest antecedent for the LCM-weighted signed limsup criterion and the eventual Sylvester conclusion",
+      "exact_locator": "Primary-host PDF, printed p. 132 (PDF p. 4): Theorem 3; printed p. 129 (PDF p. 1) front matter and pp. 129-133 for theorem context",
+      "exact_statement_extracted": "Theorem 3 assumes (i) limsup n_k^2/n_{k+1} <= 1 and (ii\u0027\u0027) limsup [N_k/n_{k+1} * (n_{k+1}^2/n_{k+2} - 1)] <= 0; then sum 1/n_k is rational iff n_{k+1}=n_k^2-n_k+1 eventually.",
+      "supports": [
+        "Primary-source attribution for the signed-limsup theorem and its eventual Sylvester conclusion"
+      ],
+      "does_not_support": [
+        "The local positive-part reformulation as a verbatim Erdos-Straus theorem statement",
+        "The full Erdos 243 target without its stated hypotheses",
+        "The current Lean proof"
+      ],
+      "packet_verification": "The complete five-page scan was acquired and visually checked. Theorem 3 is on printed p. 132 and has the non-strict hypotheses limsup n_k^2/n_(k+1) <= 1 and limsup (N_k/n_(k+1))*(n_(k+1)^2/n_(k+2)-1) <= 0. The public paper's displayed >0 statement is the valid contrapositive after the one-step reindexing, under the ratio-limit hypothesis; the positive-part limit formulation is derived rather than the authors' literal wording.",
+      "derived_positive_part_reindex_check": {
+        "packet_index": "n",
+        "source_index": "k = n - 1",
+        "prefix_identity": "N_{n-1} = L_{n-1}",
+        "term_identity": "N_k/n_{k+1}*(n_{k+1}^2/n_{k+2}-1) = L_{n-1}/a_n*(a_n^2/a_{n+1}-1)",
+        "sign_safe_consequence": "If the positive part of the packet term tends to zero, the source term has limsup at most zero.",
+        "source_sign_condition": "The scan's Theorem 3 hypothesis is the non-strict limsup <= 0, so positive-part convergence to zero matches the source sign condition at the displayed-term level.",
+        "status": "exact_reindex_checked_source_sign_condition_matched_formal_transport_remains"
+      },
+      "citation_eligible": true,
+      "citation_boundary": "Cite as Theorem 3, printed p. 132. Do not attribute the local positive-part reformulation to Erdos and Straus as a verbatim theorem statement.",
+      "remaining_debt": [
+        "formalize the source-to-packet transport with the full sequence hypotheses and quantifiers, then separately derive the positive-part undershoot from the target assumptions"
+      ],
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "The primary-host PDF was opened and read on 2026-08-26; its front matter gives the exact title, authors, 1964 receipt date, and printed pp. 129-133, matching the archived source."
+    },
+    {
+      "source_id": "duverney_2001_fast_converging_rational_series",
+      "citation": "D. Duverney, Irrationality of fast converging series of rational numbers, J. Math. Sci. Univ. Tokyo 8 (2001), 275-316, Corollary 3.2",
+      "url": "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf",
+      "verification_state": "primary_pdf_read_exact_theorem_compared",
+      "pdf_url": "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "annex_slug": "duverney-2001-fast-converging-rational-series",
+      "annex_state": "curated_and_source_checked_2026-07-28",
+      "source_pdf": "annexes/duverney-2001-fast-converging-rational-series/source.pdf",
+      "source_archive_sha256": "f8ab2039c94959b21ede4616e399a4159dbc7ca7d2865c7567a2f82a148115f6",
+      "extracted_markdown": "annexes/duverney-2001-fast-converging-rational-series/extracted.md",
+      "extracted_markdown_sha256": "6e73a6f944f5542a7288350ca75ea812612a8460b9b1d9a3f6a52a715bfc3a99",
+      "relationship": "published conditional signed-series criterion whose all-positive specialization is the closest direct antecedent for the public paper's summability statement",
+      "exact_locator": "Publisher PDF, printed p. 287 (PDF p. 13): Corollary 3.2, equations (3.5)-(3.6); proof on printed pp. 299-300 (PDF pp. 25-26)",
+      "exact_statement_extracted": "Corollary 3.2 assumes u_n in N\\{0}, u_n -> +infinity, sum_{n=0}^infinity (u_{n+1}/u_n^2 - 1) < +infinity, and a_n in {-1,1}; then sum_{n=0}^infinity a_n/u_n is rational if and only if u_{n+1}=u_n^2-(a_{n+1}/a_n)u_n+a_{n+2}/a_{n+1} for every n >= N.",
+      "supports": [
+        "Primary-source attribution for the conditional signed-series criterion and its stated eventual recurrence",
+        "The all-positive specialization u_{n+1}=u_n^2-u_n+1 after setting a_n=1"
+      ],
+      "does_not_support": [
+        "Dropping the divergence, summability, or sign hypotheses",
+        "The full Erdos 243 target without its stated hypotheses",
+        "The current Lean proof"
+      ],
+      "packet_verification": "Corollary 3.2 is on printed p. 287. It assumes u_n -> infinity, summability of u_(n+1)/u_n^2-1, and signs a_n in {-1,1}; taking all signs +1 gives the quoted eventual Sylvester recurrence criterion.",
+      "citation_eligible": true,
+      "citation_boundary": "Cite Corollary 3.2, printed p. 287, and retain the divergence, summability, and sign hypotheses before specializing.",
+      "remaining_debt": [],
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "The publisher PDF was opened and read on 2026-08-26; it is byte-identical to the archived annex source, and Corollary 3.2 was compared at printed p. 287 (PDF p. 13)."
+    },
+    {
+      "source_id": "erdos_graham_1980_combinatorial_number_theory",
+      "citation": "P. Erdos and R. L. Graham, Old and New Problems and Results in Combinatorial Number Theory, Monographies de L'Enseignement Mathematique 28 (1980), p. 64",
+      "url": "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf",
+      "verification_state": "primary_pdf_read_exact_problem_compared",
+      "pdf_url": "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "annex_slug": "erdos-graham-1980-combinatorial-number-theory",
+      "annex_state": "curated_image_only_scan_2026-07-28",
+      "source_pdf": "annexes/erdos-graham-1980-combinatorial-number-theory/source.pdf",
+      "source_archive_sha256": "0cbf0c32f0ab1e1c71db5121a88bac905bf976c4a6ab6bb6d7d9cf9ddd184ed3",
+      "extraction_state": "image_only_scan_no_searchable_text_layer",
+      "relationship": "authoritative printed source for the Erdos 243 problem statement and its exact asymptotic and recurrence scope",
+      "exact_locator": "UCSD-host PDF, printed p. 64 (PDF p. 60): paragraph beginning 'It is not too hard to show'; the displayed question immediately before the citations [Er (68)] and [Er-Str (63)]",
+      "exact_statement_extracted": "The scan asks whether a_{n+1}/a_n^2 -> 1 implies that sum_{n>=1} 1/a_n is irrational unless a_{n+1}=a_n^2-a_n+1 for n >= n_0.",
+      "supports": [
+        "Primary-source attribution for the Erdos 243 open question",
+        "The exact ratio limit and eventual Sylvester recurrence scope of the question"
+      ],
+      "does_not_support": [
+        "A theorem or proof of irrationality",
+        "The current Lean proof",
+        "Any conclusion that the open question has been resolved"
+      ],
+      "packet_verification": "Printed p. 64 is PDF page 60 in the scan and asks exactly whether a_(n+1)/a_n^2 -> 1 forces irrationality of sum 1/a_n unless the Sylvester recurrence holds eventually.",
+      "citation_eligible": true,
+      "citation_boundary": "Cite as an open question on printed p. 64, not as a theorem.",
+      "remaining_debt": [
+        "full-text OCR browse layer is absent for the image-only scan; this does not affect the visually checked p. 64 citation"
+      ],
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "The complete monograph scan was acquired from Graham's UCSD publication page and printed p. 64 was visually inspected and compared on 2026-08-26; the source remains an image-only scan with no searchable text layer."
+    },
+    {
+      "source_id": "koizumi_2026_doubly_exponential_reciprocal_sum",
+      "citation": "Junnosuke Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences, arXiv:2504.05933; INTEGERS 26 (2026), A28",
+      "url": "https://arxiv.org/abs/2504.05933",
+      "verification_state": "primary_arxiv_pdf_read_exact_theorem_compared",
+      "annex_slug": "arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum",
+      "annex_state": "imported_2026-07-26",
+      "source_archive": "annexes/arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum/source.tar.gz",
+      "source_archive_sha256": "35e2ec1d4801b8a2ded0ed945280ced664fd46f7966e547ac0dd8aa82d28a940",
+      "extracted_markdown": "annexes/arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum/extracted.md",
+      "extracted_markdown_sha256": "13b509b1da5735e6cb5299d47fe87289641349ba467c63789bd7eab86b724d2d",
+      "relationship": "closest antecedent for the pseudo-greedy integer-state recurrence and the eventual-nonnegative gap criterion",
+      "pdf_url": "https://arxiv.org/pdf/2504.05933",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "exact_locator": "arXiv v1 PDF p. 2, Theorem 1 and Corollaries 2-3; PDF p. 3, Theorem 4, Erdős-Graham Question 5, and Conjecture 6; PDF pp. 9-12, Theorem 16, Lemma 15, Proposition 19, and Corollary 20",
+      "exact_statement_extracted": "Theorem 1 gives the pseudo-greedy nearest-integer reconstruction under the stated ratio and reciprocal-sum hypotheses; Theorem 16 on PDF p. 10 proves that Conjecture 6 is equivalent to an affirmative answer to Erdős-Graham Question 5; Proposition 19 and Corollary 20 on PDF p. 12 record the eventual-zero-gap criteria and their sequence consequence.",
+      "supports": "Primary-source attribution for the pseudo-greedy state recurrence, the eventually nonnegative gap criterion, and the explicit equivalence with the open Erdős-Graham question.",
+      "does_not_support": "A solution of Erdős-Graham Question 5, a universal termination theorem, or any claim that the local equivalence is progress beyond the open problem.",
+      "packet_verification": "The hash-pinned arXiv LaTeX source was line-checked. Lemma 15 supplies the integer-state recurrence, Lemma 13 the zero-gap absorption, Proposition 19(2) the eventual-nonnegative gap criterion, Corollary 20 the transport to the original sequence, and Theorem 16 the equivalence with Erdos-Graham Question 5.",
+      "citation_eligible": true,
+      "claim_ceiling_consequence": "Because Theorem 16 identifies the pseudo-greedy conjecture with Erdos-Graham Question 5, any local result phrased as pseudo-greedy termination is a restatement of the open question, not progress past it. Public wording must not present the equivalence as a partial solution.",
+      "remaining_debt": [
+        "compare the journal PDF against the hash-pinned arXiv source before treating journal pagination or version-specific wording as checked"
+      ],
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "The archive was imported via arXiv identifier 2504.05933. The official INTEGERS index independently lists the same title and author as volume 26 (2026), A28; exact theorem comparison in this route is against the arXiv source."
+    }
+  ],
+  "adjudicated_objects": [
+    {
+      "object_id": "summable_negative_mass_tail_rigidity",
+      "reviewer_card": "docs/formal_math/reviewer_cards/summable_negative_mass_tail_rigidity.card.json",
+      "adjudicated_at": "2026-08-24",
+      "classification": "standard_discrete_gronwall_and_integrality_pipeline_with_problem_specific_signed_defect_packaging",
+      "priority_claim": "none",
+      "source_result_ids": [
+        "bounded_tail_normalized_vanishing_consumer",
+        "summable_negative_relative_mass_termination",
+        "summable_negative_mass_sylvester_consumer",
+        "centered_zero_forces_sylvester_step",
+        "eventual_centered_zero_forces_sylvester_recurrence"
+      ],
+      "nearest_prior_work": [
+        "Clark 1987 for the product-form discrete Grönwall step.",
+        "Duverney 2001, Corollary 3.2 on printed p. 287, for the closest conditional summability-to-eventual-Sylvester theorem.",
+        "Erdős--Straus 1964, Theorem 3 on printed p. 132, for the signed-limsup antecedent.",
+        "Koizumi 2026 for the pseudo-greedy integer-state coordinate and equivalence with Erdős--Graham Question 5."
+      ],
+      "mathematical_interest": "Useful as a clean conditional rigidity interface: one-sided summable growth bounds an integral height, discreteness kills the defect, and a separate exact identity forces the Sylvester recurrence.",
+      "hard_step_exposed": "The genuinely open work is not the final extinction argument; it is proving summability of negative relative mass and normalized centered-state vanishing for the actual reciprocal-tail orbit.",
+      "strongest_allowed_claim": "Five Lean-checked packet results form a conditional two-module pipeline to eventual Sylvester recurrence. This packages standard and source-adjacent ingredients; it does not prove the hypotheses for the unrestricted orbit or advance past the equivalent open problem.",
+      "comparator_disposition": "not_comparator_priority: the existing declarations already form a compact firewall, and further atomization would inflate counts rather than clarify the mechanism.",
+      "ai_tool_disclosure": "AI-assisted source comparison and source-parity review; primary-source statements, Lean declarations, and open inference are separately labelled."
+    },
+    {
+      "object_id": "gap_product_criterion",
+      "packet_result_id": "gap_product_criterion",
+      "adjudicated_at": "2026-08-25",
+      "classification": "externally_sourced_pseudo_greedy_gap_criterion_reformulated_in_local_integer_state_coordinates_with_local_proof_uninspectable",
+      "priority_claim": "none",
+      "closest_primary_source": "Koizumi 2026, Proposition 19(1)-(2) and Corollary 20: eventual nonnegativity of the pseudo-greedy gap, or nonnegative liminf of its exact product-normalized form, forces eventual zero gap and hence the Sylvester recurrence.",
+      "exact_source_anchor": "annexes/arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum/extracted.md, Proposition 19 and Corollary 20; hash-pinned source comparison already recorded above.",
+      "local_claim_ceiling": "The packet may describe an exact coordinate reformulation of Koizumi's criterion. It may not be called a new gap-product theorem, a Lean-checked result, or a completed local proof until the normalization formula and both implications are exposed in an inspectable source artifact.",
+      "evidence_gap": "The live packet contains only the one-line statement and status advisory_complete_proof_pending_lean. No note, declaration, proof body, formula defining the normalized gap-product state, or checking receipt is linked. The coverage audit must therefore leave this row uncovered.",
+      "human_understanding_delta": "Moves expert attention away from reproving the elementary positive-integer stabilization argument and toward checking the exact coordinate correspondence between the local D/C/E state and Koizumi's epsilon_n product.",
+      "paper_disposition": "supporting externally sourced equivalence, subordinate within the one-sided Sylvester closure section; omit until the coordinate map is inspectable",
+      "comparator_advisory": "No independent interface now. Reconsider only after a statement firewall can display the local normalization, rationality hypotheses, and exact relation to Koizumi Proposition 19 without inference from the packet label.",
+      "reentry_condition": "A committed source note or Lean theorem states the normalized gap-product variable, proves both eventual implications with exact hypotheses, and pins the correspondence to Koizumi Proposition 19/Corollary 20."
+    },
+    {
+      "object_id": "one_sided_sylvester_closure",
+      "packet_result_id": "one_sided_sylvester_closure",
+      "adjudicated_at": "2026-08-25",
+      "source_version_binding": {
+        "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "packet_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+        "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+        "packet_statement": "Under rationality, the eventual tail cap, nonnegative gap, lower Sylvester step, and exact Sylvester recurrence are equivalent."
+      },
+      "classification": "unresolved_four_way_equivalence_assembled_from_known_one_way_pseudo_greedy_criteria_without_an_inspectable_local_coordinate_proof",
+      "priority_claim": "none",
+      "closest_primary_source": "Koizumi 2026, Lemmas 12--15, Theorem 16, Proposition 19, and Corollary 20. Proposition 19 proves eventual nonnegative gap implies eventual zero gap; Corollary 20 records the lower-Sylvester sufficient condition and attributes it to Badea; Theorem 16 identifies pseudo-greedy termination with the Erdős--Graham question under the stated asymptotic regime.",
+      "primary_source_locator": "annexes/arxiv-2504.05933-koizumi-doubly-exponential-reciprocal-sum/extracted.md, lines 154--166, 189--220, and 250--277 in the hash-pinned extraction recorded above.",
+      "exact_relation_to_prior_art": "The packet's four-way equivalence is stronger as a packaging statement than the located literature. The source supplies separate sufficient implications and the global open-problem equivalence; it does not state an equivalence involving the packet's undefined eventual tail-cap predicate.",
+      "disconfirming_evidence": "A bounded repository search found the result id and the phrases eventual tail cap and lower Sylvester step only in the one-line packet row, with no definition, proof note, Lean declaration, computation, or receipt. The located primary source likewise does not state the advertised four-way local equivalence.",
+      "confidence_ceiling": "High confidence that the packet row is not presently inspectable or independently attributable as a theorem. No confidence judgement is made on whether a missing private derivation is mathematically correct.",
+      "significance_rationale": "A correct coordinate theorem could usefully collapse several one-sided sufficient conditions into one canonical closure mechanism. Without the coordinate definitions and reverse implications, however, it changes neither the known Erdős--Straus/Badea/Koizumi frontier nor the open #243 problem.",
+      "strongest_allowed_claim": "The packet records an advisory synthesis suggesting a four-way equivalence. The currently inspectable evidence supports only the separately sourced sufficient directions and the already known pseudo-greedy/open-problem correspondence.",
+      "rejected_stronger_wording": [
+        "proved one-sided Sylvester closure theorem",
+        "new equivalence beyond Koizumi",
+        "Lean-checked closure",
+        "progress toward resolving Erdős #243"
+      ],
+      "bounded_expert_review_act": "Provide or inspect one committed coordinate note that defines the eventual tail cap and every other predicate, proves all reverse implications under exact rationality and asymptotic hypotheses, and crosswalks each step to Koizumi Lemmas 12--15, Proposition 19, Corollary 20, and Theorem 16.",
+      "paper_disposition": "Omit as an independent theorem; subordinate the two inspectable sufficient directions under the existing reciprocal-tail rigidity mechanism until the four-way coordinate proof exists.",
+      "comparator_advisory": "No independent proposition interface is justified. A later interface would require an exact statement firewall for all four predicates and both directions, not the packet label.",
+      "reentry_condition": "A committed source artifact or Lean theorem defines all four predicates at packet commit 746717d or a named successor generation, proves every implication with exact hypotheses, and pins the literature crosswalk."
+    }
+  ],
+  "public_claim_boundary": {
+    "proof_authority": "not_accepted",
+    "publication_effect": "theorem_and_printed_page_locator_may_be_added",
+    "non_claims_preserved": [
+      "not_an_erdos_243_solution",
+      "not_a_novelty_claim_for_the_reciprocal_tail_criterion",
+      "not_progress_past_erdos_graham_question_5"
+    ],
+    "forbidden_until_exact_comparison": [
+      "present pseudo-greedy termination as a partial solution rather than an equivalent formulation",
+      "attribute the packet's reindexing or positive-part formulation to Erdos and Straus",
+      "surface gap_product_criterion as a proved local theorem before its normalization and coordinate correspondence are inspectable",
+      "surface one_sided_sylvester_closure as a proved four-way equivalence before its predicates and reverse implications are inspectable"
+    ]
+  },
+  "release_topology_link": {
+    "public_prior_art_policy_owner": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+    "claim_contract_row": "codex/standards/std_microcosm.json::formal_math_claim_assurance_contract::rows[problem_id=erdos_243]"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "tail normalization, one-sided cancellation growth, and recurrence rigidity",
+    "disposition": "supporting conditional rigidity interface; consolidate product growth, lattice extinction, summable negative mass, and the separate Sylvester consumer",
+    "consolidation_relation": "The abstract termination theorem is the parent mechanism. Bounded-tail extinction is its terminal consumer; the reciprocal-tail centred-zero bridge is a distinct source-specific downstream consumer. Reject separate novelty or endpoint narratives for those declarations.",
+    "comparator_advisory": "One bundled conditional interface is advisory-justified only when public-source parity and reuse justify it. Do not expose producer, extinction, and target-specific consumer as separate Comparator rows.",
+    "paper_disposition": {
+      "class": "supporting conditional-rigidity mechanism",
+      "target_section": "Excluding finite normalised negative mass",
+      "supersession_or_consolidation": "Place the full causal chain once and subordinate duplicate producer/consumer descriptions.",
+      "reason": "The paper needs the sharp distinction between a standard terminal mechanism and the genuinely unproved actual-orbit supply hypotheses."
+    }
+  },
+  "release_disposition": {
+    "value": "comparator_candidate",
+    "reason": "The two-module conditional pipeline is Lean-pinned and reusable, but its statement must retain the exact hypotheses and its ordinary significance remains conditional rather than an Erdős #243 result.",
+    "comparator_advisory": "Advisory only: one bundled conditional theorem if a later public-parity review selects it; no atomized producer/consumer interface and no endpoint claim."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-243-reciprocal-tail-rigidity.tex",
+    "section": "Excluding finite normalised negative mass",
+    "canonical_mechanism_family": "tail normalization, one-sided cancellation growth, and recurrence rigidity",
+    "relation": "Consolidate the standard product bound, integer-lattice extinction, summable negative-mass hypothesis, and the separate centred-zero Sylvester consumer into one conditional pipeline.",
+    "understanding_delta": "The precise missing work is moved upstream: the downstream termination proof is routine once actual-orbit summability and normalized vanishing are supplied.",
+    "evidence_boundary": "Five Lean declarations in two pinned modules support the conditional pipeline; no actual-orbit hypothesis, fresh replay, independent review, or endpoint theorem is claimed.",
+    "hard_step": "Prove actual-orbit summability of negative relative mass and normalized centred-state vanishing, or another global rigidity bridge with equivalent force.",
+    "meaningful_failed_route": "Weaken summability to vanishing relative mass, contradicted by the harmonic integral-defect family.",
+    "open_remainder": "The unrestricted reciprocal-tail orbit and its global LCM/repair-payment alternatives remain unresolved; Erdős #243 stays open."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_coordinate_proof_or_source_generation_change",
+    "priority_order": [
+      "inspectable proof of the packet's four-way one-sided Sylvester equivalence",
+      "kernel-check the positive-part corollary and exact index shift from Erdős--Straus Theorem 3",
+      "journal-version comparison for Koizumi before using journal pagination"
+    ],
+    "lane": "re-enter only when a committed coordinate proof, changed packet generation, or source-version correction alters the claim ceiling"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source_archived_prior_art_and_conditional_Lean_pipeline",
+    "output_stage": "attribution_bound_human_review_support",
+    "artifact": "Erdős #243 reciprocal-tail rigidity source map and conditional closure",
+    "human_understanding_delta": "The paper can now present Erdős--Straus, Duverney, Erdős--Graham, and Koizumi as distinct antecedent layers while keeping the local four-way packet equivalence explicitly unresolved and the actual-orbit supply gap visible.",
+    "verification_state": "Four source identities and printed locators are hash-bound; the local conditional pipeline and its no-go boundary are recorded, but the packet's reverse coordinate implications are not treated as proved.",
+    "publication_or_review_state": "Status-faithful conditional review support; no endpoint, priority, or peer-acceptance claim.",
+    "canonicalization_state": "One supporting tail-normalization/recurrence-rigidity mechanism; producer, extinction, and target-specific consumers remain consolidated rather than atomized.",
+    "unresolved_downstream_bottleneck": "An inspectable coordinate proof for the packet's four-way equivalence and a global theorem supplying the actual reciprocal-tail hypotheses.",
+    "next_stage_owner": "Mathematics Refinery for conditional paper/card assimilation; Novelty Observatory on new source generations; Role 3 for any later Comparator decision."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos243_reciprocal_tail_rigidity@source-map-2026-08-26-packet-746717d",
+    "evidence_class": "Source-archived primary literature plus Lean-checked conditional modules; packet-level reverse coordinate equivalence is not treated as proved.",
+    "closest_known_result": "Erdős--Straus gives the signed-limsup criterion, Duverney gives a close summability-to-Sylvester specialization, and Koizumi gives the pseudo-greedy integer-state criterion and its equivalence with the Erdős--Graham question.",
+    "comparison_relation": "The landed conditional pipeline consolidates standard terminal rigidity and source-adjacent criteria. The packet's stronger four-way tail-cap equivalence is not currently inspectable.",
+    "exact_delta": "The route makes the conditional chain from summable negative mass and normalized vanishing to eventual integrality and Sylvester recurrence explicit, while isolating the missing actual-orbit producer and reverse coordinate bridge.",
+    "disconfirming_evidence": "Koizumi's Theorem 16 identifies pseudo-greedy termination with the Erdős--Graham question; packet labels alone do not prove a stronger local equivalence, and no actual-orbit summability or normalized-vanishing input is supplied.",
+    "confidence_ceiling": "High for the attribution split and conditional Lean declarations; low for source-specific novelty or endpoint progress; no confidence is claimed for the uninspectable packet equivalence.",
+    "significance": "High supporting conditional value: it moves attention to the actual-orbit hypotheses rather than the routine discrete extinction step.",
+    "hard_step": "Prove the actual-orbit hypotheses or provide an inspectable coordinate bridge whose reverse implications exceed the cited Erdős--Straus, Duverney, and Koizumi directions.",
+    "open_boundary": "The unrestricted reciprocal-tail orbit, global LCM/repair-payment alternatives, the packet's four-way equivalence, and Erdős #243 remain open.",
+    "source_version_binding": {
+      "route_sources": [
+        "Erdos--Straus 1964, Theorem 3, printed p. 132",
+        "Duverney 2001, Corollary 3.2, printed p. 287",
+        "Erdos--Graham 1980, printed p. 64",
+        "Koizumi 2026, Lemmas 12--15, Proposition 19, Corollary 20, and Theorem 16"
+      ],
+      "packet_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "parity_status": "source identities and printed locators current; local four-way packet equivalence remains non-inspectable"
+    },
+    "classification": {
+      "result_family": "tail_normalization_one_sided_cancellation_and_recurrence_rigidity",
+      "evidence_class": "source-archived primary literature plus Lean-checked conditional modules; packet-level reverse coordinate equivalence is not treated as proved",
+      "closest_prior_art": "Erdos--Straus gives the signed-limsup criterion, Duverney gives a close summability-to-Sylvester specialization, and Koizumi gives the pseudo-greedy integer-state criterion and its equivalence with the Erdos--Graham question.",
+      "comparison_relation": "The landed conditional pipeline is a useful consolidation of standard terminal rigidity and source-adjacent criteria. The packet's four-way tail-cap equivalence would be a stronger local packaging, but its predicates and reverse implications are not currently inspectable.",
+      "novelty_confidence": "high for the attribution split and conditional Lean declarations; low for any source-specific novelty or endpoint progress",
+      "significance_grade": "high_supporting_conditional_mechanism",
+      "why_care": "It moves expert attention to the true bottleneck—supplying summable negative mass and normalized vanishing for the actual orbit—instead of treating the discrete extinction step as the difficult part.",
+      "hard_step": "Prove the actual-orbit hypotheses or provide an inspectable coordinate bridge whose reverse implications are stronger than the already known Koizumi/Deverney directions.",
+      "natural_friction": "The final integrality and Sylvester recurrence are routine once the hypotheses hold; the open work is global and cannot be inferred from the conditional pipeline.",
+      "disconfirming_evidence": "Koizumi's Theorem 16 identifies pseudo-greedy termination with the Erdos--Graham question, so pseudo-greedy termination language is not partial progress past the open problem."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The pinned Lean declarations provide a reusable conditional tail-rigidity pipeline to eventual Sylvester recurrence under explicit summability, bounded-tail, and normalized-vanishing hypotheses, with the closest literature named and the packet's stronger four-way equivalence left unresolved.",
+      "rejected_stronger": [
+        "an Erdos #243 irrationality theorem",
+        "a new four-way equivalence beyond the cited literature",
+        "pseudo-greedy termination as a partial solution",
+        "a proved actual-orbit summability or normalized-vanishing input",
+        "a priority or novelty claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "tail normalization, one-sided cancellation growth, and recurrence rigidity",
+      "disposition": "retain as one supporting conditional-rigidity mechanism; consolidate producer, extinction, and Sylvester consumer declarations rather than creating separate objects",
+      "paper_disposition": "supporting lemma in 'Excluding finite normalised negative mass'",
+      "supersession_or_consolidation": "Keep the source-literature ladder and the exact conditional Lean pipeline together; omit the uninspectable packet four-way equivalence as an independent theorem.",
+      "expert_attention_reason": "A short coordinate audit can decide whether the packet's stronger equivalence is real, while the existing conditional theorem is already useful without it.",
+      "open_boundary": "The unrestricted reciprocal-tail orbit, global LCM/repair-payment alternatives, and Erdos #243 remain open.",
+      "independent_comparator_interface_justified": "one bundled conditional interface only; no atomized producer/consumer rows"
+    },
+    "bounded_expert_act": "Inspect a committed coordinate proof defining the packet's tail-cap and reverse implications, then crosswalk each direction to Erdos--Straus Theorem 3, Duverney Corollary 3.2, and Koizumi Proposition 19/Corollary 20/Theorem 16.",
+    "reentry_trigger": "Re-enter only when that coordinate proof becomes inspectable, the packet generation changes, or a source-version correction changes the claim ceiling."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Conditional Lean recurrence modules are routine once their hypotheses are supplied; the load-bearing issue is the uninspectable reverse coordinate bridge and the missing actual-orbit producer.",
+    "slow_down_at": "Crosswalk the signed-limsup, summability, and pseudo-greedy directions to the printed Erdos--Straus, Duverney, Erdos--Graham, and Koizumi statements before treating the packet as a new equivalence.",
+    "automation_can_establish": [
+      "Pinned Lean conditional declarations and source-literature locators",
+      "The explicit nonclaims around actual-orbit hypotheses",
+      "That the packet-level reverse equivalence is not admitted as proved"
+    ],
+    "human_judgment_required": [
+      "Whether the coordinate bridge is genuinely stronger than the cited directions",
+      "Whether the actual orbit supplies summable negative mass and normalized vanishing",
+      "Which wording keeps pseudo-greedy termination from sounding like endpoint progress"
+    ],
+    "review_act": "Audit one reverse implication against the cited theorem statements; stop there unless a committed coordinate proof resolves the packet gap."
+  },
+  "adjudication_currentness": {
+    "status": "literature_locators_and_conditional_modules_bound; packet_reverse_equivalence_excluded",
+    "bound_snapshot": {
+      "packet_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df",
+      "primary_source_locators": [
+        "Erdos--Straus 1964, Theorem 3, p. 132",
+        "Duverney 2001, Corollary 3.2, p. 287",
+        "Erdos--Graham 1980, p. 64",
+        "Koizumi 2026, Lemmas 12--15, Proposition 19, Corollary 20, Theorem 16"
+      ]
+    },
+    "claim_guard": "Only the conditional tail-rigidity pipeline is admitted; the packet's four-way equivalence, actual-orbit hypotheses, pseudo-greedy termination, and #243 endpoint remain open or source-bound.",
+    "reentry_trigger": "Re-enter when a committed coordinate proof makes the reverse implications inspectable, the packet generation changes, or a cited source correction changes the ceiling."
+  }
+}

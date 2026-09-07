@@ -1,0 +1,20 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "input_stage": "computation_guided_phase_sensitive_proof_generation",
+  "output_stage": "lean_verified_boundary_theorem_assimilated_into_stronger_interior_successor",
+  "artifact": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_primitive_quintic_boundary_tail.py"
+  ],
+  "human_understanding_delta": "The primitive sparse quintic has a rigid paraorthogonal boundary. Missing z^3 and z^2 coefficients fix the first three real angular moments. The cubic separator Q_r(x)=(-r/2-x)(1-x)^2 has total mass 5-2r, but a single safe root contributes at most 4-2r and every unsafe root contributes nonpositively. The exact one-unit gap forces two distinct strict safe tails when a is nonzero; a=0 is the sharp all-equality case.",
+  "verification_state": {
+    "analytic": "complete; Newton identities, unit-circle real moments, and the cubic separator give the two-tail conclusion",
+    "lean": "PASS: canonical cached exact-target build ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail completed successfully on 2026-08-24 after the earlier typed capacity defers",
+    "computation": "exact Fraction separator replay and a nontrivial rational-coefficient paraorthogonal boundary example pass; a deterministic 320-track Schur radial audit observed 802 outward tail crossings and zero inward crossings, as evidence only"
+  },
+  "publication_or_review_state": "private expert handoff; not externally reviewed; no novelty priority or unrestricted-solution claim",
+  "canonicalization_state": "verified predecessor to PrimitiveQuinticInteriorTail; retain as the sharp paraorthogonal boundary statement and equality classification",
+  "unresolved_downstream_bottleneck": "The previously named strict-interior propagation bottleneck is closed by the harmonic-separator theorem in PrimitiveQuinticInteriorTail. The remaining boundary is unrestricted degree five and all-degree Erdos 1041.",
+  "next_stage_owner": "Formal-math Refinery should place this immediately before PrimitiveQuinticInteriorTail and preserve the a=0 boundary equality case"
+}

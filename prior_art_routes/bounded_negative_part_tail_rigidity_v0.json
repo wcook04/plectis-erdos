@@ -1,0 +1,205 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "bounded_negative_part_tail_rigidity",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_source_specific_two_branch_rigidity_no_priority_claim",
+  "problem_id": "erdos_243",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/bounded_negative_part_tail_rigidity.card.json",
+    "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+    "source_result_id": "bounded_negative_part_rigidity"
+  },
+  "classification": {
+    "novelty_class": "source_specific_Lean_checked_two_branch_rigidity_synthesis",
+    "priority_claim": "none",
+    "formalisation_status": "global theorem, eventual wrapper, and Sylvester consumer are source-pinned Lean declarations",
+    "argument_distinctness": "Distinct from summable_negative_mass_tail_rigidity: that route bounds height by a discrete-Grönwall product, whereas this route splits by sign and sends the recurrent negative branch through stable gcd reduction and a CRT first-crossing barrier.",
+    "mathematical_interest": "High conditional mechanism value. A weak-looking one-sided lower bound becomes exact tail rigidity only because the two sign regimes have different arithmetic termination engines.",
+    "reusable_scope": "Exact integer tail recurrences with absorbing zero defect, natural descent on the nonnegative branch, and a verified fresh-modulus obstruction after stable-gcd reduction.",
+    "why_it_matters": "It removes the entire bounded-negative regime from the #243 frontier and identifies cofinally unbounded negative excursions as the surviving obstruction, without pretending to prove that the actual orbit enters either regime."
+  },
+  "primary_sources": [
+    {
+      "id": "koizumi_2026_reciprocal_sum",
+      "citation": "J. Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences, INTEGERS 26 (2026), A28",
+      "relationship": "Closest published pseudo-greedy reciprocal-tail state framework and equivalence boundary; it does not supply the eventual lower bound or the present two-branch theorem."
+    },
+    {
+      "id": "kanold_1967_jacobsthal",
+      "citation": "H.-J. Kanold, Ueber eine zahlentheoretische Funktion von Jacobsthal, Math. Ann. 170 (1967), 314-326",
+      "relationship": "Static Jacobsthal-function antecedent for forbidden blocks underlying the fresh-modulus branch."
+    },
+    {
+      "id": "ford_green_konyagin_maynard_tao_2018",
+      "citation": "K. Ford, B. Green, S. Konyagin, J. Maynard, and T. Tao, Long gaps between primes, J. Amer. Math. Soc. 31 (2018), 65-105, Lemma 1.1",
+      "relationship": "Primary covering-congruence/CRT antecedent for constructing consecutive forbidden blocks; the dynamic first-crossing abstraction is separately adjudicated in bounded_rise_fresh_coprime_moduli."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "A source-pinned Lean theorem shows that exact product-cleared tails with strict centering, normalized vanishing, and an eventual uniform lower bound on centered error have eventual zero defect.",
+    "forbidden_wording": [
+      "the unrestricted reciprocal-tail orbit has bounded negative part",
+      "all signed affine recurrences rigidify",
+      "summable negative mass and bounded negative part are the same mechanism",
+      "the theorem unconditionally forces a Sylvester tail",
+      "the result solves Erdos Problem 243",
+      "the exact synthesis is novel or first"
+    ]
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "two-branch exact-tail rigidity: nonnegative descent versus stable-gcd reduction and fresh-modulus obstruction",
+    "disposition": "admit genuinely distinct conditional mechanism; pair with but do not merge into the summable-negative-mass route",
+    "evidence_class": "source-pinned Lean theorem stack with primary-source-backed component attribution",
+    "hard_step": "actual-orbit production of an eventual one-sided lower bound; specialist audit of stable-gcd reduction",
+    "prior_art_uncertainty": "the components are standard or separately sourced; the exact synthesis was not located verbatim in bounded review; no priority inference",
+    "open_boundary": "cofinally unbounded negative excursions and the unrestricted endpoint remain open",
+    "comparator_interface_justified": true,
+    "comparator_minimal_restatement": "Exact dynamics plus strict centering, division-free normalized vanishing, and a uniform lower bound on the centered error imply eventual zero centered error; optionally expose the eventual-hypothesis wrapper separately.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Excluding a bounded negative part",
+      "supersession_or_consolidation": "One section contains global and eventual forms and the source-specific consumer, adjacent to the distinct summable-mass route."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "High-value conditional #243 mechanism, but it does not decide which regime the actual orbit occupies.",
+      "evidence_class": "Lean-checked conditional theorem",
+      "hard_step": "produce the actual-orbit lower bound",
+      "prior_art_uncertainty": "exact packaging unlocated; no priority claim",
+      "open_boundary": "unbounded negative excursions and #243 remain open",
+      "demoted_predecessor": null
+    }
+  },
+  "representative_reassessment_2026_08_24": {
+    "decision": "retain_as_erdos_243_programme_representative_but_not_absolute_flagship",
+    "comparison_set": [
+      "bounded_negative_part_tail_rigidity: eventual one-sided bound plus normalized vanishing implies exact tail extinction by two arithmetic branches",
+      "summable_negative_mass_tail_rigidity: stronger summability input yields boundedness through discrete Gronwall and then lattice extinction",
+      "subexponential_divisibility_chain_strict_growth: all-power subexponential size forces density-zero strict divisibility growth but permits infinitely many jumps",
+      "reduced_tail_cancellation_payment: a single dynamically reduced step has an exact old-prime-overlap content sandwich"
+    ],
+    "why_this_represents_the_programme": "It gives the broadest clean conditional regime and the most informative surviving dichotomy: either normalized vanishing fails or negative centered errors escape every eventual lower bound. The other three mechanisms explain how one might enter, constrain, or locally account for this regime without replacing its claim ceiling.",
+    "expert_attention_reason": "Review the stable-gcd reduction and fresh-modulus first-crossing branch, then decide whether the actual reciprocal-tail orbit admits the required one-sided bound. Routine jump budgets and local content identities should not consume separate headline attention.",
+    "evidence_class": "source-current Lean theorem stack with primary-source attribution for the classical CRT/Jacobsthal framework; no actual-orbit producer or independent review",
+    "hard_step": "Produce an eventual lower bound for the actual centered error, or prove that normalized vanishing forces one; the theorem itself does not choose the orbit's regime.",
+    "open_boundary": "Cofinal unbounded negative excursions, failure of normalized vanishing, global old-prime reuse, and Erdős #243 remain open.",
+    "comparator_advisory": "One source-neutral conditional extinction firewall is justified. The summable producer and sparse/local consumers should remain statement-adjacent evidence rather than additional endpoint interfaces."
+  },
+  "source_generation": {
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/bounded_negative_part_tail_rigidity.card.json",
+      "commit": "3308a4719eef80fea32ad34f2f20b3c139173c96",
+      "sha256": "a7a95ed7f19c0672ac4edebd64d258ed9e7de474dbfd107bae198792d6fd3124"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+      "source_result_ids": [
+        "bounded_negative_part_rigidity"
+      ]
+    },
+    "status": "current_source_card_committed_packet_pinned; dirty packet/card overlays unconsumed"
+  },
+  "parity_audit": {
+    "status": "source_card_current_committed_packet_overlay_unconsumed",
+    "effect": "The two-branch Lean theorem stack is pinned to the current formal source and committed reviewer-card/packet snapshots. Worktree overlays are not evidence and do not upgrade the conditional theorem into an actual-orbit result.",
+    "reentry_condition": "After the #243 card or packet overlay lands or is discarded, rerun exact source/card/packet parity and preserve the eventual-lower-bound hypothesis, the separate summable-mass mechanism, and the no-irrationality ceiling."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The Lean theorem stack is conditional and splits the sign branches; the actual-orbit eventual lower bound is the load-bearing producer gap.",
+    "slow_down_at": "Check strict centering, normalized vanishing, the stable-gcd reduction, and the fresh-modulus first-crossing order. Do not collapse this into the summable-negative-mass route.",
+    "automation_establishes": "The global and eventual two-branch rigidity declarations and the Sylvester consumer at the pinned source snapshot.",
+    "expert_judgment_required": "Whether any actual reciprocal-tail evidence supplies the eventual one-sided lower bound needed to activate the conditional theorem.",
+    "review_act": "Audit the sign split and stable-gcd/CRT termination once, then test one orbit-level hypothesis for the required eventual lower bound.",
+    "attention_ceiling": "Do not present the conditional extinction theorem as an unconditional statement about the reciprocal-tail orbit or #243."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_conditional_theorem_stack",
+    "output_stage": "exposition_review_support_and_release_advisory",
+    "artifact": "bounded_negative_part_tail_rigidity",
+    "human_understanding_delta": "Separates the two sign branches, distinguishes this theorem from the summable-mass route, and identifies the actual-orbit lower bound as the unresolved producer.",
+    "verification_state": "Named Lean declarations are pinned; component attribution is source-backed; no fresh build or independent human review is claimed.",
+    "publication_or_review_state": "Comparator candidate for the source-neutral conditional theorem; paper supporting lemma; no endpoint or priority claim.",
+    "canonicalization_state": "One mechanism object with global/eventual forms and subordinate Sylvester consumer, paired with but not merged into summable-negative-mass rigidity.",
+    "unresolved_downstream_bottleneck": "Independent recurrence-theory review and an actual-orbit negative-part producer.",
+    "next_stage_owner": "Mathematics Refinery for hierarchy; Role 3 for statement firewall; #243 proof owners for the producer."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "evidence_class": "Lean-checked conditional two-branch rigidity with a Sylvester consumer; component attribution is source-backed and dirty card/packet overlays remain excluded.",
+    "closest_known_result": "Discrete Grönwall/product bounds, stable-gcd descent, and CRT/Jacobsthal first-crossing arguments are the standard components; the exact sign-split synthesis is source-specific and carries no priority claim.",
+    "comparison_relation": "Distinct conditional #243 mechanism, paired with but not merged into summable-negative-mass rigidity; it removes one regime only under an eventual lower-bound hypothesis.",
+    "exact_delta": "The source combines nonnegative natural descent with a stable-gcd/fresh-modulus negative branch and an eventual wrapper, yielding exact tail extinction once strict centering, normalized vanishing, and a uniform lower bound are supplied.",
+    "disconfirming_evidence": "The theorem is conditional; dirty card/packet overlays are not evidence; no current source proves the actual orbit has the required eventual lower bound or chooses the bounded-negative regime.",
+    "confidence": {
+      "level": "high_for_pinned_conditional_theorem_low_for_actual_orbit_and_originality",
+      "basis": "Named Lean declarations and source hashes are pinned, while the actual-orbit producer and independent review remain absent."
+    },
+    "significance": "High conditional frontier value: if the actual orbit supplies the lower bound, the bounded-negative regime is removed and unbounded negative excursions become the honest obstruction.",
+    "claim_ceiling": "Under the stated exact-tail, strict-centering, normalized-vanishing, and eventual-uniform-lower-bound hypotheses, the centered defect is eventually zero; no unconditional orbit rigidity, Sylvester tail, irrationality, or #243 solution follows.",
+    "hard_step": "Produce the eventual lower bound for the actual reciprocal-tail orbit, or derive it from a separate normalized-vanishing argument.",
+    "open_boundary": "Cofinal unbounded negative excursions, failure of normalized vanishing, old-prime reuse, and the unrestricted #243 endpoint remain open.",
+    "bounded_expert_review_act": "Audit the sign split and stable-gcd/CRT termination, then test whether an orbit-level argument supplies the eventual lower bound.",
+    "reentry_trigger": "Reopen after the card/packet overlay lands or is discarded, or when a genuine actual-orbit lower-bound producer appears.",
+    "source_generation": {
+      "formal_source_sha256_observed": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "reviewer_card_sha256_observed": "a7a95ed7f19c0672ac4edebd64d258ed9e7de474dbfd107bae198792d6fd3124",
+      "packet_sha256_observed": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+      "parity_status": "committed_source_current_with_dirty_card_or_packet_overlays_unconsumed"
+    },
+    "classification": {
+      "result_family": "bounded_negative_part_tail_rigidity",
+      "evidence_class": "Lean_checked_conditional_two_branch_rigidity_with_Sylvester_consumer",
+      "closest_prior_art": "discrete Grönwall/product bounds, stable-gcd descent, and CRT first-crossing arguments; the exact signed split is source-specific",
+      "comparison_relation": "distinct conditional mechanism, paired with but not merged into summable-negative-mass rigidity",
+      "novelty_confidence": "strong_internal_provisional_for_synthesis; no priority claim",
+      "significance_grade": "high_conditional_frontier_value",
+      "why_care": "It removes the bounded-negative regime from #243 if the actual orbit supplies the stated eventual lower bound, leaving unbounded negative excursions as the honest obstruction.",
+      "hard_step": "Produce the eventual lower bound for the actual reciprocal-tail orbit; the theorem does not establish that hypothesis.",
+      "disconfirming_evidence": "The source theorem is conditional and current packet/card overlays are not yet consumed; it cannot be read as an unconditional orbit result.",
+      "confidence_ceiling": "High for the named Lean branches at the pinned source; zero for the actual-orbit producer and #243 endpoint.",
+      "bounded_expert_act": "Audit the sign split and stable-gcd/CRT termination once, then test whether any orbit evidence supplies the eventual lower bound.",
+      "reentry_condition": "Re-enter after the #243 card or packet overlay lands/discards, or when a genuine actual-orbit lower-bound producer appears."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#243 reciprocal-tail sign-branch rigidity",
+      "disposition": "subordinate_conditional_mechanism_under_#243_frontier",
+      "paper_disposition": "supporting_lemma_with_actual_orbit_hypothesis_adjacent",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "one source-neutral conditional theorem; no endpoint badge",
+      "expert_attention_reason": "It is valuable only as a conditional removal of one regime, so its hypotheses must remain the first thing the reviewer sees."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified_conditional_theorem_stack",
+      "output_stage": "expert_understanding_and_release_advisory",
+      "artifact": "bounded_negative_part_tail_rigidity",
+      "human_understanding_delta": "Separates arithmetic termination engines by sign and keeps the actual-orbit producer visibly open.",
+      "verification_state": "Named Lean declarations pinned; dirty overlays explicitly excluded; no fresh build claimed.",
+      "publication_or_review_state": "status-tagged conditional visibility is defensible; no priority or endpoint claim",
+      "canonicalization_state": "one mechanism paired with, not merged into, summable-mass rigidity",
+      "unresolved_downstream_bottleneck": "actual-orbit eventual lower-bound producer",
+      "next_stage_owner": "Mathematics Refinery and #243 proof owners"
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_card_committed_packet_snapshot_bound; dirty_overlays_excluded",
+    "bound_snapshot": {
+      "formal_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "formal_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "reviewer_card_commit": "3308a4719eef80fea32ad34f2f20b3c139173c96",
+      "reviewer_card_sha256": "a7a95ed7f19c0672ac4edebd64d258ed9e7de474dbfd107bae198792d6fd3124",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba"
+    },
+    "claim_guard": "The two-branch rigidity theorem is conditional; dirty card or packet overlays cannot upgrade it to an actual-orbit or endpoint claim.",
+    "reentry_trigger": "Reopen after a card/packet overlay lands or is discarded, or when a genuine actual-orbit eventual-lower-bound producer appears."
+  }
+}

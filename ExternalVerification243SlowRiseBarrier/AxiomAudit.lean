@@ -1,0 +1,3 @@
+import ExternalVerification243SlowRiseBarrier.Solution
+
+#print axioms Erdos249257.ExternalVerification243SlowRiseBarrier.no_slowRise_reducedTail

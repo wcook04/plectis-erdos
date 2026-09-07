@@ -1,0 +1,360 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "factorial_gap_cofinal_carry_irrationality_criterion",
+  "source_result_ids": [
+    "not_irrational_factorialGapSeries_of_eventually_unit_carries",
+    "irrational_factorialGapSeries_of_cofinal_nonunit_carries",
+    "irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+    "factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat",
+    "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
+  ],
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_classical_factorial_radix_mechanism_with_source_specific_exact_reformulation_no_priority_claim",
+  "problem_id": "erdos_68",
+  "purpose": "Place the exact strict-successor carry equivalence in the classical Cantor/factorial-series literature while separating its standard arithmetic mechanism from its source-specific moving-prefix formulation and still-open cofinal producer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/factorial_gap_cofinal_carry_irrationality_criterion.card.json",
+    "refinery_handoff_commit": "cd6cba5182168359c65614bf8399347d29117c8c",
+    "reviewer_card_sha256": "e57b39c2dee12ea87303863b0f2dec30f88effc2da54c8bfa81f691fc4f6250b",
+    "source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+    "source_sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+    "historical_card_source_commit": "9e8b192e45f9dd83a858d25d337a945c9c547ee7",
+    "historical_card_source_sha256": "50d16afec49cd71f59d49aa7526c413c6e6f1b7c2ce3beaae680faa96447936c",
+    "source_declarations": [
+      "not_irrational_factorialGapSeries_of_eventually_unit_carries",
+      "irrational_factorialGapSeries_of_cofinal_nonunit_carries",
+      "irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+      "factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat",
+      "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
+    ]
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Classical factorial-radix context plus a source-specific exact endpoint equivalence; the specialist burden is the missing cofinal producer, not the reduction itself.",
+    "slow_down_at": "Preserve the moving-prefix definition of Z_m and the beyond-every-cutoff quantifier; finite carry screens are not cofinal evidence.",
+    "automation_can_establish": [
+      "The five named Lean equivalence and translation declarations at the pinned source",
+      "The exact integer divisibility restatement"
+    ],
+    "human_judgment_required": [
+      "Whether the factorial-radix attribution is correctly scoped",
+      "Whether any future mechanism actually forces cofinal m-not-dividing-Z_m failures"
+    ],
+    "review_act": "Audit both directions once, then redirect attention to the cofinal producer rather than another finite carry computation."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_current_packet_generation_observed_separately",
+    "bound_snapshot": {
+      "formal_source_sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "reviewer_card_sha256": "e57b39c2dee12ea87303863b0f2dec30f88effc2da54c8bfa81f691fc4f6250b",
+      "packet_sha256": "9e0a26a1d04b37e8ca977fd93b750a8d367de9d6e58b0446a80962ab84c1328c",
+      "review_generation": "2026-08-26_v2"
+    },
+    "claim_guard": "Source and reviewer-card pins are current for this review snapshot; packet parity is retained as a separately observed generation and does not upgrade the claim ceiling.",
+    "reentry_trigger": "Re-enter on source, card, or packet generation change, or on a genuine cofinal divisibility-failure producer."
+  },
+  "review_unit": {
+    "result_family": "erdos68_factorial_gap_cofinal_carry_criterion",
+    "exact_result_ids": [
+      "not_irrational_factorialGapSeries_of_eventually_unit_carries",
+      "irrational_factorialGapSeries_of_cofinal_nonunit_carries",
+      "irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+      "factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat",
+      "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
+    ],
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "current_clean_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "current_clean_sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "historical_card_commit": "cd6cba5182168359c65614bf8399347d29117c8c",
+      "historical_card_sha256": "e57b39c2dee12ea87303863b0f2dec30f88effc2da54c8bfa81f691fc4f6250b",
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+        "commit": "4ee2d936d21b91a1b78165714a708ef312cec3e3",
+        "sha256": "9e0a26a1d04b37e8ca977fd93b750a8d367de9d6e58b0446a80962ab84c1328c"
+      },
+      "delta": "The source advanced only by clarifying the standard name Smarandache/Kempner function for min{k : q divides k!}; the five named theorem declarations are still present. This is a terminology correction, not a mathematical strengthening.",
+      "status": "current_clean_source_card_packet_identified; focused Lean replay deferred"
+    },
+    "evidence_class": "Five Lean-checked exact equivalence/translation declarations at the historical source generation, with the current clean source differing only in explanatory terminology; no cofinal producer theorem.",
+    "confidence_ceiling": "High for the exact historical equivalence and its stated open boundary; medium for current-generation assurance until focused replay and card parity refresh; low for any originality claim beyond source-specific packaging.",
+    "prior_art_relation": "Cantor/Oppenheim and Hancl--Tijdeman supply the factorial/Cantor-series framework; the exact moving-prefix strict-successor equivalence remains apparently unlocated in the bounded search, with no priority inference.",
+    "release_disposition": {
+      "value": "comparator_candidate",
+      "reason": "The equivalence is independently restatable and materially useful as the #68 endpoint firewall; specialist review is downstream, and the missing cofinal producer remains explicit.",
+      "statement_firewall": "State the literal series, strict successors Z_m, carries b_m, both directions of the iff, and the equivalent cofinal m-not-dividing-Z_m predicate. Do not imply cofinal failure or irrationality."
+    },
+    "expert_act": "Audit the convergence dependency and quantifier transport once, then search only for an arithmetic mechanism forcing m not to divide Z_m beyond every cutoff; do not re-review finite carry screens as endpoint evidence.",
+    "next_pass": {
+      "kind": "card_source_parity_refresh_and_focused_lean_replay",
+      "reentry_condition": "Refresh the reviewer card to current source commit 30b7b4b and run the exact five declarations through lean_fast_build.py; reopen novelty adjudication only if theorem quantifiers or source content change.",
+      "do_not_redo": "Do not repeat the Cantor/Oppenheim/Hancl--Tijdeman search or split the two directions and divisibility translation into separate result objects."
+    }
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "strict-successor factorial-radix carries and cofinal divisibility failure",
+    "disposition": "replace the #68 programme and standalone-paper headline with this single exact equivalence",
+    "consolidation_relation": "Bundle both carry directions and the m-divides-Z_m translation; subordinate Wilson supply, collision/LCM, congruence, nearest-integer, and affine-defect objects as producers, obstructions, rigidity tools, or finite screens.",
+    "comparator_advisory": "One bundled equivalence firewall is justified. Do not split the two directions or integral translation into separate programme results.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The exact endpoint: irrationality is cofinal strict-successor divisibility failure",
+      "supersession_or_consolidation": "Replace fragmented carry and denominator endpoints and organize all remaining #68 mechanisms beneath this theorem.",
+      "reason": "It is the smallest lossless statement separating the completed reduction from the missing arithmetic producer."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "admit as the #68 representative in the rolling 3-5-object cross-programme first-contact shortlist",
+      "why_care": "It focuses expert work on the exact cofinal divisibility producer and prevents finite diagnostics from masquerading as endpoint progress.",
+      "evidence_class": "five source-pinned Lean declarations; external classical context; producer absent",
+      "hard_step": "cofinally force m not to divide Z_m",
+      "prior_art_uncertainty": "exact synthesis unlocated in reviewed sources; no priority inference",
+      "open_boundary": "no cofinal failure or irrationality theorem",
+      "demoted_predecessor": "Wilson private-supply and four-step affine-defect mechanisms become subordinate rather than first-contact candidates"
+    }
+  },
+  "representative_reassessment_2026_08_24": {
+    "decision": "retain_as_erdos_68_programme_representative_and_absolute_orientation_candidate",
+    "reason": "It is the unique exact endpoint equivalence and finite integer producer test. All other current #68 objects are supply lemmas, route boundaries, finite screens, or conditional producer interfaces.",
+    "comparison_set": [
+      "erdos68_wilson_prefix_private_supply: bare cofinal freshness solved, quantitative fit absent",
+      "factorial_gap_prime_power_collision_incidence: scalar one-owner route excluded, moving and multi-owner weighted routes open",
+      "four_step_affine_defect_rigidity: exact recurrence filter, weighted-transform bridge and source producer absent",
+      "factorial_coboundary_finite_state_collapse: classical coboundary route collapses back to eventual unit carries rather than supplying a second endpoint"
+    ],
+    "specific_expert_judgment_requested": "Identify a theorem or new mechanism that forces actual strict-successor divisibility misses cofinally. Reject evidence that supplies only fresh factors, finite misses, unweighted LCM growth, or an unattached affine recurrence.",
+    "open_boundary": "No current theorem proves m fails to divide Z_m beyond every cutoff; Erdős #68 remains open.",
+    "comparator_advisory": "One exact iff firewall should represent the endpoint. Do not fragment its two directions or divisibility translation into multiple programme counts."
+  },
+  "classification": {
+    "ambient_framework": "factorial_radix_as_the_q_n_equals_n_case_of_variable_radix_Cantor_series",
+    "eventual_stationarity_mechanism": "classical_elementary_rationality_mechanism",
+    "exact_moving_prefix_equivalence": "source_specific_exact_reformulation_apparently_unrecorded_in_the_reviewed_sources",
+    "integral_divisibility_endpoint": "problem_specific_finite_normal_form",
+    "priority_claim": "none",
+    "terminology_update": "Use Smarandache function (also called the Kempner function) for min{k : q divides k!}; this source comment correction does not alter the strict-successor theorem.",
+    "recommended_terminology": "strict-successor carry criterion for the factorial-gap series",
+    "acceptable_alias": "cofinal strict-successor divisibility criterion",
+    "discouraged_terminology": [
+      "Engel expansion criterion",
+      "new Cantor-series irrationality criterion",
+      "factorial-base digit theorem"
+    ],
+    "attribution": "Attribute variable-radix series to Cantor, general Cantor-series irrationality criteria to Oppenheim, and the fixed factorial-series context to Hancl--Tijdeman. Attribute only the exact moving-prefix strict-successor package and its Lean formalization to the present source.",
+    "mathematical_interest": "The equivalence is useful because it is lossless: it identifies the exact missing producer rather than merely another sufficient irrationality test.",
+    "reusable_scope": "The proof pattern transfers to rational-prefix strict successors whose normalized values converge to a target, whose distinguished carry makes the normalization stationary, and whose non-distinguished carries exclude bounded denominators.",
+    "why_it_matters": "It converts the open irrationality question into a concrete cofinal integer-divisibility failure and makes clear that any finite carry computation is only a denominator screen."
+  },
+  "primary_sources": [
+    {
+      "id": "cantor_1869_einfache_zahlensysteme",
+      "title": "Uber die einfachen Zahlensysteme",
+      "author": "Georg Cantor",
+      "venue": "Zeitschrift fur Mathematik und Physik 14 (1869), 121-128",
+      "url": "https://link.springer.com/book/10.1007/978-3-662-00274-2",
+      "exact_anchor": "Collected works reprint of the 1869 paper, pp. 121-128 in the original pagination.",
+      "supports": "Historical variable-radix framework now called Cantor series.",
+      "does_not_support": "No strict-successor construction or theorem for the factorial-minus-one series."
+    },
+    {
+      "id": "oppenheim_1954_irrationality_criteria",
+      "title": "Criteria for Irrationality of Certain Classes of Numbers",
+      "author": "A. Oppenheim",
+      "venue": "The American Mathematical Monthly 61 (1954), 235-241",
+      "doi": "10.1080/00029890.1954.11988450",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/00029890.1954.11988450",
+      "exact_anchor": "Article metadata and pp. 235-241; the paper generalizes Cantor-type irrationality criteria for series with divisibility-linked denominators.",
+      "supports": "Classical irrationality-criterion background for Cantor-type series.",
+      "does_not_support": "No located occurrence of Z_m, b_m, or the exact cofinal divisibility equivalence for sum 1/(n!-1)."
+    },
+    {
+      "id": "hancl_tijdeman_2008_polynomial_cantor_series",
+      "title": "On the irrationality of polynomial Cantor series",
+      "authors": [
+        "Jaroslav Hancl",
+        "Robert Tijdeman"
+      ],
+      "venue": "Acta Arithmetica 133 (2008), 37-52",
+      "url": "https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/133/1/82186/on-the-irrationality-of-polynomial-cantor-series",
+      "exact_anchor": "Introduction, pp. 37-38, places fixed sums of the form sum b_n/n! in the Cantor-series framework and cites Cantor and Oppenheim.",
+      "supports": "Established terminology and irrationality context for fixed factorial series.",
+      "does_not_support": "The local P_m changes with m and the reviewed paper does not supply its strict-successor recurrence or exact iff."
+    },
+    {
+      "id": "kovac_tao_2024_cantor_ahmes_series",
+      "title": "On the irrationality of Cantor and Ahmes series",
+      "authors": [
+        "Vjekoslav Kovac",
+        "Terence Tao"
+      ],
+      "venue": "arXiv:2406.17593 (2024)",
+      "url": "https://arxiv.org/abs/2406.17593",
+      "exact_anchor": "Introduction, paragraph immediately before the higher-dimensional-results section: the authors state that irrationality of sum_{n=2}^infinity 1/(n!-1) remains open and cite Erdos and the problem list.",
+      "supports": "Current problem-status boundary and the need not to market the equivalence as an irrationality result.",
+      "does_not_support": "No attribution or priority for the exact strict-successor carry equivalence."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "Factorial scaling is the natural q_n=n specialization of mixed-radix Cantor arithmetic, and an eventually stationary normalized rational sequence has a rational limit.",
+    "local_delta": "The source chooses the strict upper factorial-grid point Z_m=floor(m!P_m)+1 of the changing rational prefix P_m, proves its convergence after normalization, and obtains the exact recurrence b_m=mZ_{m-1}+1-Z_m. Rationality is then equivalent, in both directions, to eventual unit carries.",
+    "integral_translation": "The identity b_m=1 iff m divides Z_m turns the complete analytic endpoint into a cofinal finite divisibility predicate on exact rational prefixes.",
+    "not_Engel": "The construction is not naturally an Engel expansion: it does not present S as an Engel digit sequence with nested product denominators. Its closest standard home is factorial-radix/Cantor-series recurrence arithmetic.",
+    "significance_boundary": "The reformulation is exact and strategically valuable, but it leaves the cofinal failure producer wholly unproved."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "sum 1/(n!-1) irrationality carry factorial",
+      "Cantor series rationality eventual digits Oppenheim",
+      "factorial series irrationality eventual digit Hancl Tijdeman",
+      "m divides Z_m factorial carry",
+      "m Z_(m-1) carry factorial series"
+    ],
+    "result": "The search located classical Cantor-series arithmetic, Oppenheim's general irrationality criteria, modern fixed factorial-series work, and the current statement that the literal problem is open. It did not locate the moving-prefix strict-successor recurrence or the exact cofinal carry/divisibility equivalence.",
+    "boundary": "Non-location justifies only the scoped phrase 'apparently unrecorded in the reviewed sources'; it is not evidence for priority or broad novelty."
+  },
+  "current_problem_status_evidence": {
+    "source": "Erdős Problems #68",
+    "url": "https://www.erdosproblems.com/68",
+    "checked_at": "2026-08-24",
+    "status": "open",
+    "supports": "The literal irrationality problem remains publicly listed as open and the site explicitly warns that finite computation cannot resolve it.",
+    "authority_boundary": "Current problem-status evidence, not a primary source for the theorem, prior art, or novelty."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The Lean source gives a source-specific exact strict-successor reformulation of Erdos #68 within classical factorial-radix arithmetic: irrationality is equivalent to cofinally many failures of m dividing Z_m.",
+    "forbidden_wording": [
+      "This is a new general Cantor-series irrationality criterion.",
+      "This is an Engel-expansion theorem.",
+      "The equivalence proves the factorial-gap series irrational.",
+      "A finite list of non-unit carries establishes the cofinal condition.",
+      "Failure to locate the formula proves novelty or priority."
+    ],
+    "nonclaims": [
+      "not_a_proof_of_cofinal_nonunit_carries",
+      "not_an_irrationality_result",
+      "not_a_distribution_theorem_for_carries",
+      "not_a_new_numeral_system",
+      "not_a_solution_of_erdos_68"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/factorial_gap_cofinal_carry_irrationality_criterion.card.json",
+      "effect": "Replace the pending novelty posture with classical factorial-radix attribution, source-specific exact-reformulation language, and the no-priority boundary."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Use the strict-successor carry terminology and preserve the distinction between an exact reduction and its still-open cofinal producer."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Describe the result as an exact cofinal-divisibility equivalence, not as progress on proving cofinal failures or irrationality."
+    }
+  ],
+  "expert_review_support": {
+    "talk_state": "programme_entry_talk_ready",
+    "hard_step": "Prove cofinally many failures of m dividing the exact strict successor Z_m.",
+    "natural_friction": "Both directions and the beyond-every-cutoff quantifier must remain explicit; finite misses are denominator screens only.",
+    "programme_map": [
+      "factorial_gap_cofinal_carry_irrationality_criterion: exact endpoint",
+      "factorial_gap_carry_congruence_normal_form: moving digit diagnostic",
+      "nearest_integer_linear_form_divisibility_boundary: denominator-screen limitation",
+      "four_step_affine_defect_rigidity: local recurrence constraint"
+    ],
+    "evidence_separation": "Lean checks the exact equivalence and integral translation; finite computations diagnose carries; prior literature supplies the Cantor-series framework; the cofinal producer remains open."
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "strict-successor factorial-radix carries and cofinal divisibility failure",
+    "programme_disposition": "replace headline with the exact two-way endpoint and subordinate every other #68 object as a producer, obstruction, finite screen, or scope boundary",
+    "expert_attention_reason": "The equivalence is lossless and makes every future route comparable against one exact integer predicate.",
+    "evidence_class": "Lean-checked exact reformulation, primary-source framework comparison, and current open-status verification; no cofinal producer",
+    "hard_step": "Force cofinally many failures of m dividing Z_m for the actual strict successors.",
+    "prior_art_uncertainty": "The ambient arithmetic is classical; the exact moving-prefix equivalence is apparently unrecorded in the bounded search, with no priority claim.",
+    "open_boundary": "Finite misses are denominator screens only and the irrationality problem remains open.",
+    "comparator_interface": "One bundled exact equivalence is justified; do not split directions or the integral restatement into separate mechanism counts.",
+    "paper_disposition": "headline/core mechanism",
+    "paper_target_section": "The exact endpoint: irrationality is cofinal strict-successor divisibility failure",
+    "paper_supersession_relation": "One section replaces separate carry-direction, divisibility-translation, and denominator-screen endpoint narratives; all later machinery is typed relative to it."
+  },
+  "digestion_assessment": {
+    "significance_grade": "A_minus_endpoint_normal_form",
+    "attention_priority": "high within #68",
+    "consolidation_verdict": "one two-way carry/divisibility object, not multiple producer counts",
+    "expert_review_gap": "identify or refute arithmetic producers for cofinal strict-successor divisibility failure"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "factorial_gap_cofinal_carry_irrationality_criterion",
+    "human_understanding_delta": "Provides a correct expert entry from the irrationality problem to its exact cofinal integer-divisibility obligation and subordinate mechanism landscape.",
+    "verification_state": "Pinned source hash matches and named declarations are present; no new theorem is introduced.",
+    "publication_or_review_state": "Programme-entry explanation is ready for canonical review.",
+    "canonicalization_state": "Single exact endpoint object with typed downstream mechanisms.",
+    "unresolved_downstream_bottleneck": "Cofinal failure of m dividing Z_m.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-68-factorial-denominator-irrationality.tex",
+    "section": "The exact endpoint: irrationality is cofinal strict-successor divisibility failure",
+    "canonical_mechanism_family": "strict-successor factorial-radix carries and cofinal divisibility failure",
+    "relation": "Replaces the headline and consolidates both carry directions, the integral translation, and denominator-screen endpoints; subordinates all #68 mechanisms as producers, obstructions, or finite screens; retires duplicate endpoints.",
+    "understanding_delta": "One cofinal integer predicate replaces fragmented carry and denominator endpoint language.",
+    "evidence_boundary": "Five Lean declarations check the exact equivalence and integral translation; finite scans do not prove cofinality or irrationality.",
+    "hard_step": "Force m not to divide Z_m beyond every cutoff for the actual strict successors.",
+    "meaningful_failed_route": "Finite carry misses, residuals, and denominator screens do not reach the universal cofinal condition.",
+    "open_remainder": "No cofinal divisibility-failure producer is known; Erdős Problem 68 remains open."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "evidence_class": "Lean_checked_exact_factorial_radix_equivalence_with_classical_Cantor_series_context",
+    "closest_known_result": "Cantor variable-radix series, Oppenheim irrationality criteria, and Hancl--Tijdeman factorial-series work supply the ambient framework; no reviewed source states this moving-prefix strict-successor package.",
+    "comparison_relation": "Exact endpoint reformulation, not a new general Cantor-series theorem or a cofinality-producing result.",
+    "exact_delta": "The source packages both directions of the moving-prefix carry equivalence and the integral m-divides-Z_m translation as one Lean-checked endpoint firewall; the cofinal producer remains open.",
+    "disconfirming_evidence": "Finite non-unit carries and denominator screens do not imply cofinal failure, and the reviewed classical sources do not provide the moving-prefix recurrence.",
+    "confidence_ceiling": "High for the five named Lean equivalences and integral translation; no irrationality or #68 solution follows, and no priority is claimed.",
+    "significance": "High as a lossless #68 endpoint map: it makes every future producer route answer one exact cofinal divisibility question without fragmenting the programme.",
+    "claim_ceiling": "The Lean source gives a source-specific exact equivalence: the factorial-gap series is irrational iff m fails to divide the exact strict successor Z_m cofinally. It does not prove that cofinal failure.",
+    "hard_step": "Force m not to divide the exact prefix strict successor Z_m beyond every cutoff for the actual factorial-gap sequence.",
+    "open_boundary": "No cofinal divisibility-failure producer is known; finite misses remain denominator screens and Erdős #68 remains open.",
+    "bounded_expert_act": "Check the Cantor/factorial attribution and both directions of the strict-successor equivalence while preserving the moving-prefix quantifiers.",
+    "reentry_trigger": "Re-enter on source, reviewer-card, or packet generation change, or on a genuine cofinal divisibility-failure producer.",
+    "source_generation": {
+      "formal_source_sha256_observed": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "reviewer_card_sha256_observed": "e57b39c2dee12ea87303863b0f2dec30f88effc2da54c8bfa81f691fc4f6250b",
+      "packet_sha256_observed": "9e0a26a1d04b37e8ca977fd93b750a8d367de9d6e58b0446a80962ab84c1328c",
+      "parity_status": "formal_source_and_card_current; packet_generation_observed_separately_from_prior_route_snapshot"
+    },
+    "classification": {
+      "result_family": "factorial_gap_cofinal_carry_irrationality_criterion",
+      "evidence_class": "Lean_checked_exact_factorial_radix_equivalence_with_classical_Cantor_series_context",
+      "closest_prior_art": "Cantor variable-radix series, Oppenheim irrationality criteria, and Hancl--Tijdeman factorial-series work; exact moving-prefix strict-successor packaging is source-specific",
+      "comparison_relation": "exact endpoint reformulation, not a new general Cantor-series theorem or a producer",
+      "novelty_confidence": "strong_internal_provisional_for_exact_package; no priority claim",
+      "significance_grade": "high_as_#68_endpoint_map",
+      "why_care": "It converts factorial-gap irrationality into one concrete cofinal divisibility-failure predicate, so every carry route can be judged against the same obligation.",
+      "hard_step": "Force m not to divide the exact prefix strict successor Z_m beyond every cutoff for the actual sequence.",
+      "disconfirming_evidence": "Finite non-unit carries and denominator screens do not imply cofinal failure; the equivalence itself leaves the producer open.",
+      "confidence_ceiling": "High for the five named Lean equivalences and integral translation; no irrationality or #68 solution follows.",
+      "bounded_expert_act": "Check the Cantor/factorial attribution and both directions of the strict-successor equivalence, preserving the moving-prefix quantifiers.",
+      "reentry_condition": "Re-enter on source/card/packet generation change or a genuine cofinal divisibility-failure producer."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#68 factorial-radix strict-successor carry endpoint",
+      "disposition": "replace_headline_and_subordinate_carry_routes",
+      "paper_disposition": "headline_core_endpoint_section",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "one bundled exact equivalence and integral restatement",
+      "expert_attention_reason": "This is the lossless endpoint map; splitting carry directions or denominator screens would recreate the fragmentation it removes."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verification",
+      "output_stage": "expert_understanding_and_canonicalization",
+      "artifact": "factorial_gap_cofinal_carry_irrationality_criterion",
+      "human_understanding_delta": "Connects classical factorial-radix arithmetic to the exact unresolved cofinal predicate and keeps finite evidence subordinate.",
+      "verification_state": "Five named Lean declarations present at the pinned source; packet parity caveat retained; no fresh replay claimed.",
+      "publication_or_review_state": "internal adjudication with exact Comparator advisory; no priority claim",
+      "canonicalization_state": "#68 representative and endpoint map",
+      "unresolved_downstream_bottleneck": "cofinal failure of m dividing Z_m",
+      "next_stage_owner": "Mathematics Refinery and #68 producer owners"
+    }
+  }
+}

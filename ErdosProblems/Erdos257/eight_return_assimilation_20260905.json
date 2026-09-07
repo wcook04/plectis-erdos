@@ -1,0 +1,679 @@
+{
+  "schema": "erdos257_eight_return_assimilation_v1",
+  "batch_id": "erdos257_eight_returns_20260905",
+  "source_checkpoint": "b7fe203e39845fc5e178de41666d2f502447c2b0",
+  "arrival_state": "closed",
+  "expected_more": "no",
+  "arrival_count": 8,
+  "custody_verified": true,
+  "custody_path": "state/formal_math/type_b_return_batches/erdos257_eight_returns_20260905/intake.json",
+  "sources": [
+    {
+      "return_id": "r1",
+      "sha256": "97ef93a3e006541b20cfb346406f1c17e1be4658bee01093db4686d2639a94bf"
+    },
+    {
+      "return_id": "r2",
+      "sha256": "fb77afc7f27253283efc03a9dbf20c154c7ee2523603c63d0c4b72de6b21d958"
+    },
+    {
+      "return_id": "r3",
+      "sha256": "9ec80fbf9a50efc38b660eab81c56a73a4361e57c411fdb4fa437831dd116fd1"
+    },
+    {
+      "return_id": "r4",
+      "sha256": "dd73c79128db97febccde7d47a2785596c113648668f49cd052fa1d23427b925"
+    },
+    {
+      "return_id": "r5",
+      "sha256": "19fefb7ed00c4a8571af7c0a2b29910c4ea50c4d73dd75e9482257f005681f7e"
+    },
+    {
+      "return_id": "r6",
+      "sha256": "ae8821763d625c6fd3aa8d2fcbe9eed1365340b231342539cd47a814587dd53e"
+    },
+    {
+      "return_id": "r7",
+      "sha256": "d1dd2b9037d430a6b4122b42ffd2075c240b0d7c3c06edc2a59c18b84c633d30"
+    },
+    {
+      "return_id": "r8",
+      "sha256": "4448f08c92350504d44a3ae101d38bd5d1ad47faaf7bc1f71ee7bc34bf6d3514"
+    }
+  ],
+  "coverage": [
+    {
+      "claim_id": "weighted_close_returns",
+      "return_ids": [
+        "r1"
+      ],
+      "statement": "Divisibility-weighted supports, arbitrary nested chains, hereditary all-base irrationality, reciprocal-summable additions, and the explicit reciprocal-divergent short-gap host.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Sixth section; full retained r1 proof"
+    },
+    {
+      "claim_id": "affine_countermodel",
+      "return_ids": [
+        "r1"
+      ],
+      "statement": "The affine recurrence with divisor-load bounds alone permits permanent supercapacity; the normalized defect tends to the unrepresented mass. Canonical actual-orbit constraints are not refuted.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Retained r1 section 8, including the exact affine countermodel"
+    },
+    {
+      "claim_id": "quantitative_logstar_mass",
+      "return_ids": [
+        "r3"
+      ],
+      "statement": "Rationality forces liminf H_A(x)/ell(x) at least lambda/2; the finite gcd-weighted inequality, sub-log-star hereditary irrationality and square-background divergent-mass example.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Full retained r3 proof"
+    },
+    {
+      "claim_id": "prime_power_thinning",
+      "return_ids": [
+        "r7"
+      ],
+      "statement": "Every infinite prime-power sub-support at every integer base, fixed dilations and finite modifications, via the stated correlation theorem and selected-prime scale.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Full retained r7 proof; Tao–Teräväinen 2512.01739v2 Theorem 3.1"
+    },
+    {
+      "claim_id": "fractional_positive_covers",
+      "return_ids": [
+        "r8"
+      ],
+      "statement": "Positive fractional divisor covers; exact optimal costs for complete divisor frames; moving-core reciprocal-divergent host; no persistent core and no divergent pairwise-coprime sub-support; prime-number-theorem no-gap addendum.",
+      "disposition": "composed_into_stronger_result",
+      "authority_band": "ordinary_proof",
+      "evidence": "Full retained r8 proof and variable_exponent_cover"
+    },
+    {
+      "claim_id": "positive_cover_obstructions",
+      "return_ids": [
+        "r8"
+      ],
+      "statement": "Prime supports cannot have finite positive-cover cost; full positive support has displacement at least 1/2; arbitrary frame Möbius coefficients can be negative.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Retained r8 section 8, including all three failure proofs"
+    },
+    {
+      "claim_id": "finite_multiplier_prime_obstruction",
+      "return_ids": [
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "statement": "Infinitely supported admissible selections have simultaneous unbounded prime-cofactor jumps for every finite multiplier menu; ratio tends to two along a subsequence.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Synthesis section 3, r2 general proof"
+    },
+    {
+      "claim_id": "actual_420_producer_refuted",
+      "return_ids": [
+        "r2",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "statement": "The actual modulus-420 tetraprime repair producer fails infinitely often. The 80-anchor certificate gives defect jump at least 2 and causal-margin failure at least 3.",
+      "disposition": "strengthened_and_landed",
+      "authority_band": "ordinary_proof_with_exact_finite_certificate",
+      "evidence": "Synthesis section 3; exact_audit.prime_progressions"
+    },
+    {
+      "claim_id": "actual_120_jump_seven",
+      "return_ids": [
+        "r5",
+        "r6"
+      ],
+      "statement": "The 80-anchor certificate strengthens the modulus-120 prime jump from 6 to 7.",
+      "disposition": "strengthened_and_landed",
+      "authority_band": "ordinary_proof_with_exact_finite_certificate",
+      "evidence": "Synthesis section 3"
+    },
+    {
+      "claim_id": "prime_repair_rigidity",
+      "return_ids": [
+        "r5"
+      ],
+      "statement": "Bounded prime jumps characterize finite greedy support; eventual repairs at every prime characterize zero and one-atom targets below one.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Retained r5 sections 1–2"
+    },
+    {
+      "claim_id": "repair_survival_equivalence",
+      "return_ids": [
+        "r2",
+        "r5"
+      ],
+      "statement": "Cofinal one-step repairs are equivalent to greedy survival; at 4/9 this is strengthened to an explicit repair in every square-root window.",
+      "disposition": "composed_into_stronger_result",
+      "authority_band": "lean_kernel_checked_for_the_4_9_specialization",
+      "evidence": "BatchReturnSynthesis.lean focused build PASS; general returned survival equivalence remains an ordinary proof."
+    },
+    {
+      "claim_id": "twenty_one_phase_amplification",
+      "return_ids": [
+        "r4"
+      ],
+      "statement": "Membership, restricted divergence infinitude, positive upper density and divergent harmonic mass are equivalent; two selected anchors improve the density bound from 1/5 to 2/7. A twelve-anchor certificate further gives 337/840 > 2/5 for its enlarged favorable-class set.",
+      "disposition": "strengthened_and_landed",
+      "authority_band": "ordinary_proof_with_exact_finite_certificate",
+      "evidence": "Synthesis section 4; 60 of 105 exact phase classes"
+    },
+    {
+      "claim_id": "finite_prefix_no_survival",
+      "return_ids": [
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "statement": "Fatal rational targets can share any prescribed finite compatible prefix; 3/4 selects all ranks at least 2 but has positive gap; a whole divisor word without the target remainder does not decide survival.",
+      "disposition": "landed",
+      "authority_band": "ordinary_proof",
+      "evidence": "Synthesis section 3 and retained r5 section 5"
+    },
+    {
+      "claim_id": "six_step_bound_refuted",
+      "return_ids": [
+        "r3"
+      ],
+      "statement": "The proposed six-step contraction already fails at Q_73=1 and Q_79=3.",
+      "disposition": "rejected_exactly",
+      "authority_band": "exact_finite_counterexample",
+      "evidence": "Returned exact example; no universal contraction admitted"
+    },
+    {
+      "claim_id": "large_prime_single_certificate",
+      "return_ids": [
+        "r4"
+      ],
+      "statement": "The expensive individual Proth-prime witness is unnecessary after the small exact prefix plus Dirichlet proves an infinite obstruction family.",
+      "disposition": "superseded_by_stronger_route",
+      "authority_band": "advisory_certificate_not_replayed",
+      "evidence": "80-anchor infinite-family proof replaces this verification cost"
+    },
+    {
+      "claim_id": "parent_solution",
+      "return_ids": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8"
+      ],
+      "statement": "No return proves universal irrationality or membership of either rational target.",
+      "disposition": "blocked_external",
+      "authority_band": "open_mathematical_problem",
+      "evidence": "Re-entry: a proof covering remaining mixed-divisor supports or a valid infinite rational representation"
+    }
+  ],
+  "proof_graph": [
+    {
+      "inputs": [
+        "r1",
+        "r8",
+        "ReciprocalSupportIrrationality"
+      ],
+      "output": "variable_exponent_cover",
+      "effect": "Summable domination permits block-dependent exponents tending to zero."
+    },
+    {
+      "inputs": [
+        "r2",
+        "r5",
+        "BooleanMobiusCarry",
+        "FourNinthsCofinalRepairConsumer"
+      ],
+      "output": "sqrt_repair_window",
+      "effect": "The support-uniform tail bound makes every repair deadline finite and explicit."
+    },
+    {
+      "inputs": [
+        "r5",
+        "r6"
+      ],
+      "output": "actual_120_jump_seven",
+      "effect": "Eighty certified anchors sharpen the smaller multiplier obstruction."
+    },
+    {
+      "inputs": [
+        "r4",
+        "actual_selected_5_and_7"
+      ],
+      "output": "twenty_one_phase_amplification",
+      "effect": "Two exact phase contributions increase the conditional upper-density bound to 2/7."
+    },
+    {
+      "inputs": [
+        "r1",
+        "r3",
+        "r7",
+        "r8"
+      ],
+      "output": "remaining_mixed_divisor_regime",
+      "effect": "Intersect complements of the sufficient regimes; do not add irrational component sums."
+    }
+  ],
+  "new_results": [
+    "sqrt_repair_window",
+    "radix_close_return_consumer",
+    "variable_exponent_cover",
+    "actual_120_jump_seven",
+    "twenty_one_phase_amplification"
+  ],
+  "exact_audit": {
+    "schema_version": "erdos257_eight_return_exact_audit_v1",
+    "arithmetic": "exact integers and fractions; outward enclosures for greedy bits",
+    "horizon": 4096,
+    "selected_count": 2065,
+    "enclosure_width": 2066,
+    "anchors": [
+      13,
+      17,
+      23,
+      37,
+      43,
+      61,
+      71,
+      73,
+      89,
+      101,
+      103,
+      107,
+      121,
+      127,
+      131,
+      137,
+      139,
+      157,
+      167,
+      179,
+      191,
+      197,
+      211,
+      221,
+      223,
+      229,
+      247,
+      251,
+      253,
+      257,
+      289,
+      299,
+      307,
+      311,
+      323,
+      341,
+      349,
+      353,
+      359,
+      367,
+      377,
+      389,
+      391,
+      419,
+      439,
+      443,
+      449,
+      451,
+      479,
+      499,
+      503,
+      517,
+      523,
+      527,
+      529,
+      533,
+      541,
+      557,
+      559,
+      569,
+      571,
+      577,
+      587,
+      599,
+      611,
+      617,
+      629,
+      641,
+      647,
+      649,
+      659,
+      671,
+      677,
+      689,
+      697,
+      701,
+      703,
+      709,
+      713,
+      727
+    ],
+    "prime_progressions": {
+      "120": {
+        "residue": "49508288073088691246957409607232601571449219332497154544379536137965765798130835671656882901236201203254632704432702702539185850921789616628750455713",
+        "modulus": "54504537328171036235182469292366166867650516696327142617665544372072402713538534684392898606865542609087669032402975452336718367987291321059174813629",
+        "prime_lower_cutoff": 727,
+        "load_upper_bound": 27,
+        "defect_jump_lower_bound": 7,
+        "infinite_family_authority": "ordinary proof plus Dirichlet, not finite replay"
+      },
+      "420": {
+        "residue": "37504312590098641599923175298794814820835712679139390991679386484592677105268182199498923089009861461967467500867761680298360972257921885205003621759",
+        "modulus": "54504537328171036235182469292366166867650516696327142617665544372072402713538534684392898606865542609087669032402975452336718367987291321059174813629",
+        "prime_lower_cutoff": 727,
+        "load_upper_bound": 37,
+        "defect_jump_lower_bound": 2,
+        "infinite_family_authority": "ordinary proof plus Dirichlet, not finite replay"
+      }
+    },
+    "repair_windows_checked": 3961,
+    "max_observed_wait": 4,
+    "repair_count": 2086,
+    "six_phase_certificate": [
+      [
+        3,
+        11
+      ],
+      [
+        4,
+        44
+      ],
+      [
+        6,
+        53
+      ],
+      [
+        7,
+        212
+      ],
+      [
+        9,
+        137
+      ],
+      [
+        12,
+        305
+      ]
+    ],
+    "two_anchor_phase_count": 60,
+    "two_anchor_period": 105,
+    "two_anchor_phases": [
+      3,
+      4,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21,
+      22,
+      24,
+      27,
+      30,
+      31,
+      33,
+      34,
+      36,
+      37,
+      39,
+      42,
+      45,
+      48,
+      49,
+      51,
+      52,
+      54,
+      55,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      66,
+      67,
+      69,
+      72,
+      73,
+      75,
+      76,
+      78,
+      79,
+      81,
+      82,
+      84,
+      87,
+      90,
+      93,
+      94,
+      96,
+      97,
+      99,
+      102
+    ],
+    "orbit_inequalities_checked": 4104,
+    "twenty_one_six_step_counterexample": {
+      "Q73": 1,
+      "Q79": 3
+    },
+    "endpoint_status": "open; finite windows do not establish all windows"
+  },
+  "lean_validation": {
+    "status": "PASS",
+    "module": "ErdosProblems.Erdos257.BatchReturnSynthesis",
+    "command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos257.BatchReturnSynthesis",
+    "exit_code": 0,
+    "source_sha256": "98bd02f77c5724d9b29612429777dfd3b9e85a613f00877aa7528e073c69d913",
+    "proof_log_sha256": "0fac62b728a651ed7262604be9892b40567466ca6c2c825bcafd74f3b6fef0d1",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "source_declarations": [
+      "ErdosProblems.Erdos257.exists_repair_in_sqrt_window",
+      "ErdosProblems.Erdos257.four_ninths_mem_iff_repairCofinal",
+      "ErdosProblems.Erdos257.four_ninths_mem_iff_repair_sqrt_windows",
+      "ErdosProblems.Erdos257.four_ninths_not_mem_of_strict_sqrt_window",
+      "ErdosProblems.Erdos257.irrational_erdosSupportSeries_of_radix_closeReturn"
+    ],
+    "root_import": "ErdosProblems/Root.lean",
+    "integration_boundary": "Focused module and dependency cone passed. Whole-corpus root integration was not rerun.",
+    "earlier_future": "cf_2a5a0b80dad84fb78758",
+    "earlier_future_disposition": "consumed; one local unfolding error repaired; superseded by successful focused wrapper run"
+  },
+  "prior_art": {
+    "prime_power_source": "https://arxiv.org/html/2512.01739v2",
+    "checked_input": "Theorem 3.1 and authors’ full-prime-power remark",
+    "novelty": "unassessed; no priority claim"
+  },
+  "specialization_audit": {
+    "reciprocal_summable": "Already Lean checked; no separate credit for powerful supports or reciprocal-summable corollaries.",
+    "new_analytic_scope": "Explicit divergent-reciprocal hosts distinguish weighted, fractional and sub-log-star regimes from the checked theorem. Prime powers include arbitrarily thinned primes.",
+    "variable_exponent_limit": "The example defeats fixed exponents for its displayed frame decomposition only; no exclusion of every alternative cover."
+  },
+  "authority_homes": [
+    "ErdosProblems/Erdos257/EightReturnSynthesis.md",
+    "ErdosProblems/Erdos257/EightReturnAnalyticProofs.md",
+    "ErdosProblems/Erdos257/BatchReturnSynthesis.lean"
+  ],
+  "parent_status": "open",
+  "smallest_remaining_residual": "Universal irrationality and rational-target membership remain open. The weighted, log-star, prime-power and fractional analytic proofs are retained in full but not completely formalized. Formal all-base consumers and 4/9 repair deadlines now check in Lean; the 1/21 density amplification uses the exact finite certificate and an ordinary global proof.",
+  "research_packet_decision": {
+    "mode": "successor_required_for_sent_returns",
+    "retired_ask": "prove_four_ninths_modulus420_tetraprime_repair",
+    "next_discriminant": "Control mixed-divisor dilation errors or actual adaptive repair windows; do not request another eventual fixed-multiplier repair proof.",
+    "dispatch": "none"
+  },
+  "closure_verdict": "all_eight_returns_adjudicated; strengthened_formal_reductions_and_ordinary_extensions_landed; parent_problem_open",
+  "validation": {
+    "custody": "8/8 hashes and exact byte lengths verified",
+    "finite_audit": "PASS; exact integer enclosures, 4104 rational orbit checks, 60/105 phases, 1/21 six-step counterexample",
+    "frontier_integrity": "PASS: 8 packets, zero issues, source-current",
+    "claim_frontier": "Owner builder and checker pass after the source checkpoint; refreshed again for Lean authority.",
+    "corpus_index": "Unrelated project AGENTS marker issue captured as cap_quick_problem_corpus_index_check_finds_pre_exi_107f494c48a8",
+    "active_paper": "Tectonic PASS, variable-exponent theorem page 5 visually inspected; source and rendered PDF digest pair refreshed by publication owner",
+    "public_release": "Paper and full-proof source commits landed; active paper owner carries shared metadata and release checks. All positive analytic regimes remain ordinary proofs."
+  },
+  "consequence_review": {
+    "source_anchor": "BatchReturnSynthesis.lean::four_ninths_mem_iff_repair_sqrt_windows",
+    "candidates": [
+      {
+        "candidate_id": "math_consequence_5031c91cbd730150",
+        "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+        "decision": "update_now",
+        "reason": "Research authority or conditional package needs the new ordinary proof boundary."
+      },
+      {
+        "candidate_id": "math_consequence_exact_copy_group_227a335689c7ec12",
+        "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/02_TAO_PROOF_DIGESTION_AND_SIGNAL_SELECTION/27_ERDOS_257_RESEARCH_PACKET.json",
+        "decision": "verified_unchanged",
+        "reason": "Historical sent packet identity is immutable; the source-current successor decision is in this receipt."
+      },
+      {
+        "candidate_id": "math_consequence_8a1c5bd6107315ab",
+        "file": "state/formal_math_research_operations/type_b_handoffs/erdos257_half_counterexample_solution_six_wave11_2026_07_23/00_OCCUPIED_FRONTIER_LEDGER.md",
+        "decision": "verified_unchanged",
+        "reason": "Historical sent packet identity is immutable; the source-current successor decision is in this receipt."
+      },
+      {
+        "candidate_id": "math_consequence_75bad7cbb64254f9",
+        "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/AGENTS.md",
+        "decision": "verified_unchanged",
+        "reason": "Read as a routing or alternate-consumer surface; its original conditional theorem is not discharged by the new equivalence."
+      },
+      {
+        "candidate_id": "math_consequence_709e83a5dc392d29",
+        "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FourNinthsDiagonalMarginInvariant.md",
+        "decision": "verified_unchanged",
+        "reason": "Read as a routing or alternate-consumer surface; its original conditional theorem is not discharged by the new equivalence."
+      },
+      {
+        "candidate_id": "math_consequence_bbefceff85b0150c",
+        "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneRunningMaximumProducerAudit.md",
+        "decision": "verified_unchanged",
+        "reason": "Read as a routing or alternate-consumer surface; its original conditional theorem is not discharged by the new equivalence."
+      },
+      {
+        "candidate_id": "math_consequence_748b4111470d25b5",
+        "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/WORKING_GUIDE.md",
+        "decision": "verified_unchanged",
+        "reason": "Read as a routing or alternate-consumer surface; its original conditional theorem is not discharged by the new equivalence."
+      },
+      {
+        "candidate_id": "math_consequence_d01ab3c748aa70e1",
+        "file": "formal_math/erdos257_period_noncollapse/ExternalVerification257ActualUpperSuccessor/README.md",
+        "decision": "verified_unchanged",
+        "reason": "Read as a routing or alternate-consumer surface; its original conditional theorem is not discharged by the new equivalence."
+      },
+      {
+        "candidate_id": "math_consequence_c4fff157c6f11434",
+        "file": "formal_math/erdos257_period_noncollapse/ExternalVerification257FourNinthsTetraprime/README.md",
+        "decision": "update_now",
+        "reason": "Research authority or conditional package needs the new ordinary proof boundary."
+      }
+    ],
+    "additional_consumers": [
+      {
+        "surface": "active public #257 paper, proof supplements, reviewed claim-family matrix",
+        "decision": "update_now",
+        "reason": "Full ordinary proofs and refuted producer must be readable without the intake capsule."
+      },
+      {
+        "surface": "Comparator and Palomar theorem submissions",
+        "decision": "defer",
+        "reason": "New module lacks a successful focused Lean check; no new challenge, score, acceptance or submission is claimed."
+      },
+      {
+        "surface": "ErdosProblems.Root import",
+        "decision": "defer",
+        "reason": "Wire only after the candidate module passes its focused build."
+      }
+    ]
+  },
+  "proof_sources": [
+    {
+      "path": "EightReturnSynthesis.md",
+      "sha256": "455f41504602dbef5534281b37847bf9d71c32ab7e0b227d99d440e9ba026870"
+    },
+    {
+      "path": "EightReturnAnalyticProofs.md",
+      "sha256": "76f0d1c594777763080c9e7871b666f3469c88727ae6854c77e4bb34a030cbe2"
+    },
+    {
+      "path": "eight_return_exact_audit.py",
+      "sha256": "4544fb866745c0767a6700dd88b83c52f0a79857425f36ef793148ef11eb54bc"
+    },
+    {
+      "path": "scripts/selected_phase_density_audit.py",
+      "sha256": "ee193a0448e412a9f9d50a337c03c01da96205bc80a90326915dffc2d0ddd114"
+    }
+  ],
+  "selected_phase_density_audit": {
+    "schema": "erdos257_selected_phase_density_audit_v1",
+    "arithmetic": "integer enclosures for selected anchors; exact integer phase comparisons",
+    "horizon": 64,
+    "period_cap": 1260,
+    "anchors": [
+      5,
+      7,
+      8,
+      9,
+      10,
+      18,
+      20,
+      24,
+      28,
+      42,
+      45,
+      60
+    ],
+    "period": 1260,
+    "favorable_count": 1011,
+    "conditional_upper_density_lower_bound": "337/840",
+    "favorable_mask_hex": "0xedbeffff9eff6dbfdbecfffb6dfedfefbfdbffb6fbfdbedfedb7f9ecfefbedbfdf6fbed9effedbfdbeffefb3dfedbeff7f9eff6dbfdbecfefb6ffedfefbfdbffb6ffed9effecb7fbecfedbfdbedf6fb6d9edfedbfdbeffefb3ffedbffb7f9edf6dfedbeff6fbffbedfedbfdfef96ff6d9edbecbffbecfedbffbecf7fb6d9edfefbfdbeff6fbfdbedbfdb7f9edf6ffedbfcb6fbfdbedfedbfffeffefb6d8",
+    "anchor_prefix_checked_by_two_methods": true,
+    "minimum_positive_gap": "14715332274447337881867848694743421159831086/66137746473937529842656221840876325853598293275",
+    "unfavorable_count": 249,
+    "boundary": "Upper-density bound conditional on 1/21 membership; no lower-density or membership theorem."
+  },
+  "selected_phase_density_refinement": {
+    "status": "ordinary_proof_with_exact_finite_certificate",
+    "statement": "For the twelve-anchor favorable classes modulo 1260, 1/21 membership is equivalent to conditional divergence upper density at least 2/5; the exact lower bound is 337/840. The earlier two-anchor restricted-set bound 2/7 remains separate.",
+    "proof": "EightReturnSynthesis.md#4-strengthening-the-121-divergence-amplification",
+    "source_commit_before_refinement": "f4e8c5e3428484801f36a89edd915201406e28a0"
+  },
+  "generalization": {
+    "status": "already_propagated_verified",
+    "owners": [
+      "codex/doctrine/skills/reasoning/type_b_batch_math_assimilation.md",
+      "codex/doctrine/skills/reasoning/lean_type_b_continuation.md"
+    ],
+    "evidence": "Direct ordinary-proof source_paths, paper anchors, complete proof bytes and actual emitted programme-family rows were checked separately; metadata existence alone did not discharge the reader layer."
+  }
+}

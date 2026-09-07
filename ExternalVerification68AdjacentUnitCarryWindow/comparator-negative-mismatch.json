@@ -1,0 +1,1 @@
+{"challenge_module":"ExternalVerification68AdjacentUnitCarryWindow.Challenge","solution_module":"ExternalVerification68AdjacentUnitCarryWindow.NegativeSolution","theorem_names":["Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.consecutive_unit_carries_iff_positive_offset_le_den"],"permitted_axioms":["propext","Quot.sound","Classical.choice"],"enable_nanoda":true}

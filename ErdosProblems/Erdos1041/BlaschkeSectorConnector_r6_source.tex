@@ -1,0 +1,731 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,newpxtext,newpxmath,microtype}
+\usepackage[a4paper,left=27mm,right=27mm,top=25mm,bottom=27mm]{geometry}
+\usepackage{booktabs,array,longtable}
+\usepackage[hyphens]{url}
+\urlstyle{same}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Erd\H{o}s \#1041: round-six research return}\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{.22em}
+\linespread{1.025}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\D}{\mathbb D}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\length}{\operatorname{length}}
+\newcommand{\Area}{\operatorname{Area}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\K}{\mathcal K}
+\newcommand{\clip}[1]{\left[#1\right]_{-1}^{1}}
+\title{Scale-free bounds, quadratic coordinates, and metric cusps in polynomial lemniscates}
+\author{Round-six mathematical and editorial return}
+\date{7 September 2026}
+\hypersetup{pdftitle={Erdos 1041: round-six research return},pdfauthor={Research return prepared with ChatGPT},pdflang={en-GB}}
+\begin{document}
+\maketitle
+\begin{abstract}
+The registered $13/25$ theorem already implies a degree-uniform connection
+bound $(5/2)\mu^{1/n}$ in the smaller open level $(25/13)\mu$.
+We extract that consequence and give an explicit, nonasymptotic connection
+for the Blaschke-power polynomials
+$[z(z+b)]^N-(1+bz)^N$, for every $N\ge3$ and $0<b\le1/(10N)$.
+Inverting the quadratic factor preserves cancellation along two radial
+pieces; an amplitude deficit pays for the intervening circular arc.
+The registered degree-24 spectral witness consequently has a connection
+shorter than $1/2$ at level at most $3750/3763$.
+Weighted radial barriers also give a two-sided cusp law of order
+$\delta^{1/(n-1)}$ for the optimal all-curve distance at $z^n-1$, along this
+family in every fixed even degree $n\ge6$.
+We distinguish these ordinary proofs from the supplied algebraic Lean
+components, and give applicable revisions and a map of the remaining
+geometric obstruction.
+\end{abstract}
+
+\noindent\textit{Scope.} The scaling result below is already a corollary of
+the live corpus theorem. The sector construction, finite metric consequence
+and two-sided cusp estimate are new ordinary arguments in this return.
+They have not been independently reviewed or formalised in Lean, and no
+novelty claim is established. Erd\H{o}s \#1041 is not claimed solved.
+
+\section{The stronger general bound already in the live theorem}
+
+For a squarefree monic polynomial $f$ of degree $n\ge2$, write
+\[
+ \mu(f)=\min_{f'(c)=0}|f(c)|>0,\qquad K_t(f)=\{z:|f(z)|\le t\}.
+\]
+The live Theorem \texttt{res:low-critical-thirteen-twentyfifths} states that
+$\mu(f)\le13/25$ gives a curve shorter than two between distinct roots in
+$\{|f|<1\}$. There is no root-location hypothesis. The ordinary source
+\path{AngularBudgetLowCriticalClosure.md} already states its scaling form
+as Corollary B$''$; the exact-result entry
+\path{erdos1041_all_degree_mu_13_25_2026_09_05} includes the same conclusion.
+
+\begin{proposition}[registered scaling consequence]\label{thm:scale}
+Every squarefree monic polynomial of degree $n\ge2$ has two distinct roots
+joined in $\{|f|<(25/13)\mu\}$ by a curve of length less than
+\[
+ 2\bigl((25/13)\mu\bigr)^{1/n}.
+\]
+In every degree the length can be chosen less than $(5/2)\mu^{1/n}$.
+\end{proposition}
+\begin{proof}
+Set $s=((25/13)\mu)^{1/n}$ and $g(z)=s^{-n}f(sz)$. Then $g$ is monic,
+its critical points are $c/s$, and $\mu(g)=s^{-n}\mu=13/25$.
+The live theorem gives a curve of length less than two in $\{|g|<1\}$.
+Multiplication by $s$ proves the first claim.
+For $n\ge3$,
+\[
+ (25/13)^{1/n}\le(25/13)^{1/3}<5/4,
+ \qquad \frac{25}{13}<\frac{125}{64}.
+\]
+For $n=2$, write $f(z)=(z-a)^2-d^2$ with $d\ne0$.
+The segment $a+td$, $-1\le t\le1$, has length $2|d|=2\sqrt\mu$
+and satisfies $|f|\le\mu$.
+\end{proof}
+
+The sharper common coefficient supplied by this argument is
+$2(25/13)^{1/3}=2.487113\ldots$; the rational $5/2$ is convenient for the
+introduction. Neither is asserted optimal. If $f$ has a repeated root,
+$\mu=0$ and a constant path in $K_0$ joins two listed occurrences. The strict
+squarefree displays must not be extended to claim length less than zero or
+containment in $\{|f|<0\}$.
+
+This changes the paper's hierarchy. The $71/10$ theorem remains a valid
+independent area argument and should be retained, as requested. It is no
+longer the strongest threshold-free numerical bound visible from the paper's
+own hypotheses. It uses the larger level $2\mu$ and the larger length
+coefficient. Its expository value is the complete, transparent area
+allocation, without the circle-slice certificate.
+
+\section{An explicit connection in every degree of a Blaschke-power family}
+
+The family comes from the round-five corpus. The new point is a uniform
+finite theorem with no unspecified starting degree.
+For $0<b<1$, put
+\[
+ A(z)=z(z+b),\quad D(z)=1+bz,\quad
+ B(z)=\frac{A(z)}{D(z)},\quad F_{N,b}(z)=A(z)^N-D(z)^N.
+\]
+The finite Blaschke-product interpretation of $B$ is standard
+\cite{blaschke}. The argument below also proves the required root geometry
+by direct algebra.
+
+\begin{theorem}[quadratic-sector connection]\label{thm:sector}
+Let $N\ge3$ and $0<b\le1/(10N)$, and define
+\[
+ \lambda=Nb,\qquad m=2N-1,\qquad
+ t=\left(\frac{2\lambda}{5}\right)^{1/m},\qquad q=\frac\pi N.
+\]
+The monic polynomial $F_{N,b}$ has $2N$ simple roots on the unit circle.
+Two of them are joined by an explicitly parametrised, piecewise smooth
+curve $\gamma$ satisfying
+\begin{align}
+ \max_\gamma |F_{N,b}|&\le \exp(-\lambda t/25)<1,\label{eq:collar}\\
+ \length(\gamma)&\le\mathcal L_{N,b}(t)\nonumber\\
+ &:=2(1-t)+qt
+    +b(1-t^2+qt^2)
+    +3b^2\left(2(t^{-1}-1)+q/t\right)\label{eq:exactlength}\\
+ &\le2-\frac{689}{1050}t<2.\label{eq:uniformlength}
+\end{align}
+For every $0<r<1$, the monic polynomial
+$G(z)=r^{2N}F_{N,b}(z/r)$ has simple roots strictly inside the unit disc,
+and $r\gamma$ has length $r\length(\gamma)$ and level at most
+$r^{2N}\exp(-\lambda t/25)$.
+\end{theorem}
+
+\subsection{Root placement and a low-degree coordinate}
+
+For $z=x+iy$ and $R=|z|$,
+\begin{equation}\label{eq:normdefect}
+ |A(z)|^2-|D(z)|^2
+ =(R^2-1)(R^2+1+2bx).
+\end{equation}
+The second factor equals $(x+b)^2+y^2+1-b^2>0$.
+At a root of $F_{N,b}$, $|A|=|D|$, so $|z|=1$.
+Moreover $A,D$ have no common zero for $b<1$.
+If this root were multiple, $F=F'=0$ would imply
+\[
+ DA'-AD'=bz^2+2z+b=0.
+\]
+On $|z|=1$, however, $|2z|=2>2b\ge|b(z^2+1)|$.
+Thus all $2N$ roots are simple and lie on the circle.
+
+Let
+\[
+ \Sigma=\{p:t\le|p|\le1,\ 0\le\arg p\le\pi/N\}.
+\]
+First observe that $t>10b$. Indeed,
+\[
+ \frac{(10b)^{2N-1}}{(2/5)Nb}
+ \le\frac{25}{N^{2N-1}}\le\frac{25}{3^5}<1.
+\]
+On a neighbourhood of $\Sigma$, define
+\begin{equation}\label{eq:H}
+ e(p)=\frac{b^2}{4}(p^{-1}-p)^2,\quad
+ s(p)=\sqrt{1+e(p)},\quad
+ H(p)=\frac b2(p^2-1)-ps(p),
+\end{equation}
+using the principal square root. If $u=|p|\in[t,1]$, then
+\begin{equation}\label{eq:small-e}
+ |e(p)|\le b^2/u^2\le1/100,\quad
+ \Rea s(p)>0,\quad |s(p)|\ge99/100,\quad
+ |s(p)-1|\le|e(p)|.
+\end{equation}
+The last inequality follows from $(s-1)(s+1)=e$ and $|s+1|\ge1$.
+All the formulae are analytic on a neighbourhood of the closed sector.
+
+The quadratic formula gives the exact identities
+\begin{equation}\label{eq:pullback}
+ H^2+b(1-p^2)H-p^2=0,\qquad
+ A(H)=p^2D(H),\qquad
+ F_{N,b}(H)=D(H)^N(p^{2N}-1).
+\end{equation}
+Equation~\eqref{eq:normdefect} and $|p|\le1$ imply $|H(p)|\le1$.
+Consequently $D(H)\ne0$. The points $H(1)=-1$ and
+$H(e^{i\pi/N})$ are roots of $F_{N,b}$, and they are distinct because
+their values of $A/D=p^2$ differ.
+
+This is the change of variable responsible for the theorem. The inverse
+belongs to the quadratic map $B$, rather than to the high-degree
+polynomial $F_{N,b}$. Crowding of critical values of $F_{N,b}$ therefore does
+not limit this inverse neighbourhood.
+
+\subsection{The amplitude deficit pays for the turn}
+
+Write $p=ue^{i\theta}\in\Sigma$. Since $\theta\le\pi/3$,
+$\Rea\{(b/2)(p^2-1)\}\le0$, and~\eqref{eq:small-e} gives
+\[
+ \Rea H(p)\le-u\cos\theta+b^2/u
+ \le-\frac12u+\frac1{100}u=-\frac{49}{100}u.
+\]
+Together with $|H|\le1$ and $b\le u/10$, this proves
+\begin{align*}
+ |D(H)|^2
+ &\le1-\frac{49}{50}bu+b^2
+ \le1-\frac{22}{25}bu,\\
+ |D(H)|^N&\le\exp\left(-\frac{11}{25}\lambda u\right).
+\end{align*}
+
+Take the path in the $p$-plane consisting of
+\[
+ 1\longrightarrow t\longrightarrow te^{i\pi/N}
+ \longrightarrow e^{i\pi/N},
+\]
+with two radial segments and the shorter circular arc. Define $\gamma$ as
+its image under $H$.
+On either radial piece, $p^{2N}=u^{2N}\in[0,1]$, so
+$|p^{2N}-1|\le1$. On the circular piece,
+\[
+ |p^{2N}-1|\le1+t^{2N}
+ =1+\frac25\lambda t.
+\]
+Hence, throughout the path,
+\[
+ |F_{N,b}(H(p))|
+ \le e^{-11\lambda t/25}(1+2\lambda t/5)
+ \le e^{-\lambda t/25}<1.
+\]
+This proves~\eqref{eq:collar}. Taking absolute values of $A^N$ and $D^N$
+separately would destroy the radial cancellation in~\eqref{eq:pullback}.
+The turn becomes affordable only after the path has accumulated a strict
+amplitude deficit.
+
+\subsection{Integrate the actual derivative bound}
+
+Let $E(p)=H(p)+p$. From~\eqref{eq:H},
+\[
+ E'=bp+1-s-\frac{pe'}{2s},\qquad
+ |pe'|\le2b^2/u^2.
+\]
+Thus
+\begin{equation}\label{eq:derivative}
+ |E'(p)|\le bu+3b^2/u^2,
+ \qquad |H'(p)|\le1+bu+3b^2/u^2.
+\end{equation}
+The coefficient $3$ is deliberately nonoptimal:
+$1+100/99<3$. Integrating~\eqref{eq:derivative} on the two radial pieces
+and the circular piece yields~\eqref{eq:exactlength}.
+
+Since $q\le22/21$ and $b/t\le1/10$, the first two terms are at most
+$2-(20/21)t$. The remaining terms are bounded above by
+\[
+ b(1+q)+\frac{3b^2}{t}(2+q)
+ \le\left(\frac{43}{210}+\frac{96}{1050}\right)t
+ =\frac{311}{1050}t.
+\]
+Subtracting gives~\eqref{eq:uniformlength} and completes the proof of
+Theorem~\ref{thm:sector}. The contraction statement is direct.
+
+\begin{corollary}[the previous asymptotic regime, with an explicit threshold]
+For fixed $0<\lambda\le1/10$ and $b=\lambda/N$, every $N\ge3$ is covered,
+and the refined estimate gives
+\[
+ \length(\gamma)
+ \le\frac{\log(5/(2\lambda))+\pi+o(1)}{N}.
+\]
+\end{corollary}
+\begin{proof}
+Here $t=\exp[-\log(5/(2\lambda))/(2N-1)]$. In
+\eqref{eq:exactlength}, the $b$-term is $O(N^{-2})$ and the $b^2$-term is
+$O(N^{-3})$, while the first two terms have the displayed expansion.
+\end{proof}
+
+\section{A finite high-critical witness with a path shorter than one half}
+
+The round-five certificate concerns
+\begin{equation}\label{eq:G24}
+ N=12,\quad b=1/120,\quad r=999999999/10^9,\quad
+ G(z)=r^{24}F_{12,1/120}(z/r).
+\end{equation}
+All its roots are simple and have modulus $r<1$.
+The existing exact rational certificate, replayed in this review, encloses
+all 23 critical points in disjoint discs and proves
+\begin{align}
+ |G(c)+1|&<1/12,\label{eq:oldvalues}\\
+ \frac1{23}\sum_{G'(c)=0}|G(c)|^{8/23}
+ &>\frac{46001266667}{46000000000}
+ >1+\frac1{40000}.\label{eq:oldmoment}
+\end{align}
+These are pre-existing spectral claims, not new deductions from a numerical
+root finder. Equation~\eqref{eq:oldvalues} implies $\mu(G)>11/12$ and, for
+any pair of critical values,
+\[
+ |v_i/v_j-1|<2/11.
+\]
+Thus $|v_i/v_j-a|<13/11<4/3$ for every $a\in[0,1]$.
+No selected critical value passes the displayed radius-$4/3$ test.
+
+\begin{corollary}[new finite metric consequence]\label{cor:24}
+Two roots of the very same polynomial~\eqref{eq:G24} have an explicit curve
+$\gamma_G$ with
+\[
+ \length(\gamma_G)
+ <\frac{58672129}{117936000}<\frac12,
+ \qquad
+ \max_{\gamma_G}|G|\le\frac{3750}{3763}<1.
+\]
+\end{corollary}
+\begin{proof}
+Now $\lambda=1/10$ and $t=(1/25)^{1/23}>13/15$, since
+$(13/15)^{23}<1/25$. In~\eqref{eq:exactlength}, for these fixed $N,b$,
+every term in
+\[
+ 2-(2-q)t+b[1-(1-q)t^2]+3b^2[(2+q)/t-2]
+\]
+is decreasing in $t$, and the expression is increasing in $q$.
+Use $q<11/42$ and $t>13/15$. The exact resulting upper bound is
+\[
+ 2-\left(2-\frac{11}{42}\right)\frac{13}{15}
+ +\frac1{120}\left[1-\left(1-\frac{11}{42}\right)
+                 \left(\frac{13}{15}\right)^2\right]
+ +\frac3{120^2}\left[2\left(\frac{15}{13}-1\right)
+                    +\frac{11}{42}\frac{15}{13}\right]
+ =\frac{58672129}{117936000}<\frac12.
+\]
+Furthermore $\lambda t/25>13/3750$ and $e^{-x}\le(1+x)^{-1}$ for $x\ge0$.
+Equation~\eqref{eq:collar} gives the stated level. Contraction by $r$ only
+improves both inequalities.
+\end{proof}
+
+This is a quantitative failure of two sufficient tests to characterise
+metric difficulty. It is not a counterexample to the parent problem, nor
+to the numerator-four moment theorem. It also does not show that no theorem
+using more complete critical-spectrum information can control paths.
+Its precise assertion is that the tested high-critical, nonseparated regime
+can contain a polynomial with a connection shorter than one half.
+
+\section{Weighted radial barriers and an exact cusp order}
+
+For a monic polynomial with roots in the closed unit disc, let
+\[
+ \Lambda(f)=\inf\{\length(\gamma):\gamma\subset K_1(f)
+     \text{ joins two different listed root occurrences}\}.
+\]
+For $z^n-1$ the punctured sublevel has separate root sectors. Every connection
+between distinct roots passes through zero, so $\Lambda(z^n-1)=2$.
+
+\subsection{A reusable barrier lemma}
+
+\begin{lemma}[weighted perturbation barrier]\label{lem:barrier}
+Let $n>j\ge1$, $0<\eta<1$, and $P(z)=z^n-1+E(z)$.
+Suppose all roots are simple, lie on the unit circle, and there is exactly
+one root in each sector between the rays
+$\arg z=(2k+1)\pi/n$. Assume
+\[
+ |E(z)|\le\eta |z|^j\quad(|z|\le1),\qquad
+ |E(z)|\le\eta |z|^{n-1}\quad(|z|\ge1).
+\]
+Then
+\[
+ \Lambda(P)\ge2\left(1-\eta^{1/(n-j)}\right).
+\]
+\end{lemma}
+\begin{proof}
+On a separating ray, $z^n=-|z|^n$, so
+$|z^n-1|=1+|z|^n$. For $\eta^{1/(n-j)}<|z|\le1$,
+\[
+ |P(z)|\ge1+|z|^n-\eta |z|^j>1.
+\]
+For $|z|\ge1$ the same conclusion follows from
+$|z|^n-\eta |z|^{n-1}>0$. The rays outside radius
+$R=\eta^{1/(n-j)}$ are therefore barriers extending to infinity.
+A path between roots in different sectors must enter $|z|\le R$.
+Its portions before and after that first inward excursion have total length
+at least $2(1-R)$.
+\end{proof}
+
+The vanishing order of $E$ matters. A uniform bound $|E|\le\eta$ would
+retain only the exponent $1/n$. Retaining the zero of the perturbation at
+the origin gives the exponent $1/(n-1)$ used next.
+
+\subsection{Apply the lemma to the sector family}
+
+Put $n=2N$ and $E_b=F_{N,b}-(z^{2N}-1)$.
+The coefficient of $z^N$ cancels exactly, and all the other nonzero
+coefficients in the upper and lower halves have opposite signs. Hence
+\begin{equation}\label{eq:delta}
+ \delta_b:=\|E_b\|_{\mathrm{coeff},1}
+ =2\bigl((1+b)^N-1-b^N\bigr),\qquad
+ 2\lambda\le\delta_b\le\frac{20}{9}\lambda.
+\end{equation}
+For the upper bound use $\binom Nk\le N^k$, then sum the geometric series:
+$\sum_{k\ge1}\lambda^k\le\lambda/(1-\lambda)$ with $\lambda\le1/10$.
+Every monomial of $E_b$ has degree between $1$ and $2N-1$, so
+\[
+ |E_b(z)|\le\delta_b|z|\quad(|z|\le1),\qquad
+ |E_b(z)|\le\delta_b|z|^{2N-1}\quad(|z|\ge1).
+\]
+These bounds also show that no zero crosses a separating ray as $b$ varies
+from zero to its final value. All roots remain simple and on the circle;
+at $b=0$ there is exactly one in each sector. Continuity of the simple roots
+therefore gives the sector-count hypothesis for all permitted $b$.
+
+\begin{theorem}[two-sided fixed-degree cusp]\label{thm:cusp}
+For the family of Theorem~\ref{thm:sector}, with $n=2N$, $m=n-1$ and
+$\delta_b$ as in~\eqref{eq:delta},
+\begin{equation}\label{eq:cusp}
+ \boxed{
+ \frac{689}{1050}\left(\frac{9\delta_b}{50}\right)^{1/m}
+ \le 2-\Lambda(F_{N,b})
+ \le 2\delta_b^{1/m}.}
+\end{equation}
+In particular, for every fixed even $n\ge6$,
+$2-\Lambda(F_{N,b})\asymp\delta_b^{1/(n-1)}$ as $b\downarrow0$.
+No local H\"older estimate at $z^n-1$ with exponent greater than
+$1/(n-1)$ holds for $\Lambda$ on the full closed-root-disc coefficient class.
+\end{theorem}
+\begin{proof}
+The lower bound on $\Lambda$ follows from Lemma~\ref{lem:barrier} with
+$\eta=\delta_b<1$ and $j=1$, so $2-\Lambda\le2\delta_b^{1/m}$.
+The constructed curve gives
+$2-\Lambda\ge(689/1050)(2\lambda/5)^{1/m}$.
+Since $\lambda\ge9\delta_b/20$, this implies the other half of
+\eqref{eq:cusp}. If a local estimate
+$|\Lambda(f)-\Lambda(z^n-1)|\le C\|f-(z^n-1)\|_{\mathrm{coeff},1}^{\alpha}$
+held with $\alpha>1/(n-1)$, substitution of this family and division by
+$\delta_b^{1/(n-1)}$ would contradict the positive lower constant.
+\end{proof}
+
+\begin{remark}[relation to the supplied numerical observation]
+\path{StraightSpokeHubCriterionLab.md}, \S6d, measures a cusp exponent
+$1/(n-1)$ for a normalised canonical-branch statistic in several degrees.
+Theorem~\ref{thm:cusp} proves that order for the all-curve functional
+$\Lambda$, on an explicit family in every even degree $n\ge6$.
+It does not prove that a canonical arc minimises $\Lambda$, or establish a
+H\"older upper modulus for arbitrary perturbations of the binomial.
+\end{remark}
+
+The constants can be tightened. In fact the weighted barrier above uses
+$\eta=\delta_b$, rather than the rougher $(20/9)\lambda$.
+Neither a leading coefficient for the cusp nor an exact minimising curve is
+claimed here. The two-sided power law is already enough to exclude a
+Lipschitz or Hessian-scale argument at this singular configuration.
+
+\subsection{A natural rescaled geometry}
+
+Fix $n=2N$ and put $\varepsilon=\lambda^{1/(n-1)}$. Direct expansion gives,
+uniformly for $w$ in compact sets,
+\begin{equation}\label{eq:blowup}
+ \frac{F_{N,b}(\varepsilon w)+1}{\varepsilon^n}
+ \longrightarrow w^n-w.
+\end{equation}
+The first term from $A^N-z^n$ is $\lambda z^{n-1}$, of size
+$\varepsilon^{2n-2}$ after substitution; the first term from $D^N-1$ is
+$\lambda z=\varepsilon^nw$. The remaining terms are of higher order.
+Thus the formal limiting admissible region is
+\[
+ \Omega_n=\{w:\Rea(w^n-w)\ge0\}.
+\]
+Indeed, writing the left side of~\eqref{eq:blowup} as $Q_b(w)$, the exact
+scaled containment condition is
+\[
+ \Rea Q_b(w)\ge\frac{\varepsilon^n}{2}|Q_b(w)|^2.
+\]
+For even $n$, no critical point of $w^n-w$ lies on the zero real-part level,
+so the finite-plane boundary is regular. Its critical points satisfy
+$nw^{n-1}=1$, and a purely imaginary such point cannot occur because $n-1$
+is odd. This does not by itself prove convergence of the renormalised
+intrinsic distances, whose endpoints recede to infinity.
+
+A precise follow-up is whether
+\[
+ \lim_{b\downarrow0}
+ \frac{2-\Lambda(F_{N,b})}{(Nb)^{1/(n-1)}}
+\]
+exists, and whether it is the renormalised distance between ends of
+$\Omega_n$. Equation~\eqref{eq:cusp} supplies positive finite bounds;
+identification of this variational limit remains unproved here.
+
+For degree tending to infinity, the same explicit upper path also recovers
+the registered exponential degeneration. With $\lambda_N=e^{-\alpha N}$,
+$t_N\to e^{-\alpha/2}$ and the error terms in~\eqref{eq:exactlength} vanish.
+The weighted barriers give the matching lower limit. Consequently
+$\Lambda(F_{N,\lambda_N/N})\to2(1-e^{-\alpha/2})$, consistent with the
+round-five theorem. The new estimate supplies a uniform finite precursor
+and the stronger fixed-degree cusp assertion.
+
+\section{The mechanism hidden behind the live $13/25$ theorem}
+
+The most reusable registered geometric idea is the passage from angular
+projection to common circle slices. The mechanism belongs in the short note
+before the implementation details of its exact certificate.
+
+Under the no-short-connection assumption, a conformal normalisation of an
+ancestor component produces points $b_1,\ldots,b_k$ in the hyperbolic disc.
+With $a=\Area(C_t)/\pi$, the source gives pairwise separation
+\[
+ d(b_i,b_j)\ge D=4\operatorname{artanh}\sqrt{\tanh(1/a)},
+ \qquad \cosh(D/2)=e^{2/a},
+\]
+a lower radial bound $d_j=d(0,b_j)\ge d_*(a)>0$, and
+\[
+ \sum_j\ell(d_j)\ge x=\log(t/\mu),\qquad
+ \ell(d)=-\log\tanh(d/2).
+\]
+The exact formula for $d_*$, the point supplying the normalisation, and the
+comparison differential inequality remain in the complete registered proof.
+
+\begin{lemma}[common-slice dual bound]\label{lem:slice}
+Let $b_1,\ldots,b_k$ be pairwise hyperbolically $D$-separated points with
+$d_j\ge d_*>0$. Define
+\[
+ w(d,r)=\arccos\clip{\frac{\cosh d\cosh r-\cosh(D/2)}
+                              {\sinh d\sinh r}}.
+\]
+Then $\sum_jw(d_j,r)\le\pi$ for every $r>0$. If radii $r_i>0$ and
+weights $\sigma_i\ge0$ satisfy
+\[
+ \ell(d)\le U+\sum_i\sigma_iw(d,r_i)\quad(d\ge d_*),
+ \qquad U>0,
+\]
+then $\sum_j\ell(d_j)\le kU+\pi\sum_i\sigma_i$.
+\end{lemma}
+\begin{proof}
+The open hyperbolic balls of radius $D/2$ about the $b_j$ are disjoint.
+Their intersections with a fixed hyperbolic circle about zero are disjoint
+arcs. The hyperbolic cosine law gives angular lengths $2w(d_j,r)$, including
+empty and full-circle cases. Sum their lengths, then sum the proposed
+majorant over $j$ and use the nonnegative weights.
+\end{proof}
+
+This is an explicit geometric dual certificate. Any nonnegative weights
+work once their majorant is proved. Optimisation proposes weights; it does
+not confer proof authority. The reported $13/25$ certificate has been
+replayed in full mode in this review: 126 duals, with
+$X_{\rm cert}=635762889599/10^{12}$ and threshold $13/25$.
+
+The failed predecessor uses only consecutive angular gaps. It allows an
+alternating radial profile $d_*,d_*+D,d_*,d_*+D,\ldots$.
+Every mixed neighbouring pair has radial difference $D$ and therefore costs
+zero forced angle. The scalar budget admits arbitrarily many nearby roots
+separated in its cyclic list by distant decoys. This is a failure of the
+relaxation; the profile need not come from an actual hyperbolic packing.
+Common slices retain the all-pair disjointness that the relaxation discarded.
+
+The construction in Section~2 has a related logical feature. It retains the
+quadratic pullback constraint before bounding the high power. In both
+arguments, a simplification made too early destroys exactly the relation
+needed to join the estimates.
+
+\section{Revision architecture and the surviving obstruction}
+
+\subsection{What is already improved}
+
+The supplied live note has 24 pages. Its trinomial theorem and complete
+proof already finish on page one. Its Abel control-polygon paragraph already
+explains the unrestricted coefficient. These changes should be retained,
+rather than recommended again as though the prior edits had not landed.
+The exact sextic remains a useful boundary immediately afterwards.
+
+The applicable patch preserves the title, the first theorem and its complete
+proof byte for byte, and the public commit pin. It retains the $13/25$,
+$71/10$ and radius-$4/3$ results. It inserts only the registered scaling
+consequence, not the new sector or cusp theorems pending adjudication.
+
+The main changes are mathematical rather than typographical. The strongest
+general bound is made visible. The low-critical proof is explained through
+circle slices and a finite dual majorant. Numerically subsumed arity/capacity
+conclusions move to the long record with their component-sensitive meaning
+intact. Repeated verification inventories are replaced by a compact guide
+beginning with the actual first theorem. The complete removed text is
+archived alongside the patch.
+
+\subsection{Two local corrections}
+
+The parent separation corollary must state $0<|v|<1$, since it divides by
+$v$. The old wording gives only $|v|<1$ and is not sufficient in the
+presence of multiple roots.
+
+The one-root perimeter discussion currently invokes $z^N-z$ at level one.
+Its critical values all have modulus below one, so it cannot furnish the
+claimed one-root component there. The correct family in the underlying
+source is $z^N-az$ with fixed $a>1$, then $N\to\infty$ and $a\downarrow1$.
+For any $r<1/a$, the central component eventually contains $|z|\le r$.
+A circle of radius between $1/a$ and one isolates exactly one root by
+Rouch\'e. This proves the limiting perimeter lower bound $2\pi/a$;
+letting $a\downarrow1$ gives the necessary universal constant $2\pi$.
+It proves no corresponding upper bound.
+
+\subsection{A structural map of insufficient information}
+
+\begin{center}\small
+\begin{tabular}{p{.24\linewidth}p{.32\linewidth}p{.34\linewidth}}
+\toprule
+Information retained & Exact failure & Information a successor must retain\\
+\midrule
+Partial sums only implicitly & Sextic leaves a prescribed spoke & Explicit convex control of the selected spoke, or another curve\\
+Consecutive angular gaps & Alternating radii evade the relaxed budget & Disjointness on common slices\\
+Initial merge arity & Later mergers erase a capacity gap & Component geometry at the actual working level\\
+Angular mean length & Attachable directions can occupy a shrinking window & Attachment-conditioned estimates or freely chosen attachments\\
+Two scalar critical-value tests & Degree-24 witness fails both but has length below $1/2$ & A coordinate or selection retaining geometric cost\\
+A Hessian-scale perturbation model & Two-sided $\delta^{1/(n-1)}$ cusp & Singular scaling and the relevant intrinsic geometry\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The exact all-curve question remains $\Lambda(f)\le2$ on the closed-root-disc
+class. The registered lower-semicontinuity theorem passes a bound from a
+dense generic subclass to the whole fixed-degree class. Scaling an enclosing
+disc of radius $R<1$ then gives a strict length below two and strict
+unit-level containment. This argument does not require a uniform forward
+transport of an already selected curve.
+
+The generic slit-sheet construction is already an ordinary theorem. A
+sufficient remaining route is
+\[
+ \min_{\substack{f'(c)=0\\|f(c)|\le1}}L_f(c)\le2,
+\]
+where $L_f(c)$ is the admissible canonical root-to-root descent length.
+This minimum bounds $\Lambda$ from above; equality is not established.
+The new sector curve is not forced to be a Newton descent of $F_{N,b}$.
+It illustrates why the minimisation should remain open to other competitors.
+
+The source route's assertions that FP$_m$ for $m\ge5$ remains open and
+that generic slit construction is still missing are obsolete mathematical
+frontiers. The relevant ordinary proof records are, respectively:
+\begin{quote}\small
+\path{FreePointQuadraticAllDegrees.md};\\
+\path{AttachmentAwareReeb.md};\\
+\path{GenericSufficiencyClosure.md}.
+\end{quote}
+Formalising their full analytic content is a separate task.
+
+\section{Further questions, antecedents and proof assurance}
+
+The most concrete new question is the rescaled variational limit in
+Section~4. A more general construction question is to identify conditions on
+an analytic coordinate $H$ and amplitude $a$ under which
+\[
+ f(H(p))=a(p)(p^m-1)
+\]
+admits a short radial--circular--radial connection. The sufficient ingredients
+in this proof are endpoint phases, an amplitude deficit on a common sector,
+and an integrable derivative bound. None of these is automatically available
+for a general polynomial.
+
+For the low-critical route, the useful optimisation is now a better
+majorant on common slices or a sharper comparison using that same geometry.
+Returning to angular shadows would reintroduce the proved failure.
+For the remaining high-critical class, a theorem must select a curve together
+with its admissibility and length; separate marginal statements cannot be
+combined without a compatibility argument.
+
+The connected \#249 source gives another example. Its file
+\begin{quote}\small\path{TotientActualLcmOrbitSeparation.lean}\end{quote}
+ends with an irrationality theorem whose actual-orbit separation supply is
+an explicit hypothesis. A
+favourable abstract residue and a bound on the actual orbit are not by
+themselves a jointly attained margin. This is a shared proof-design issue,
+not a theorem transferring the present geometry to the totient problem.
+No sibling source is edited in this return.
+
+Tao's partial-progress discussion stresses the precise point where an
+unsuccessful technique stops working \cite{taopartial}; his
+results-to-effort guidance supports including cheap consequences of live
+results and retaining illuminating examples \cite{taoeffort}.
+Here that means showing Proposition~\ref{thm:scale}, the circle-slice
+mechanism, and a finite obstruction that is also explicitly solved.
+A list of model or verification counts does not convey these arguments.
+
+Pendyala's degree-four theorem directly concerns the parent root-pair
+question \cite{pendyala}. The Blaschke-product root geometry is classical
+\cite{blaschke}. The polynomial family and its asymptotic spectral and
+metric behaviour are already in the round-five corpus.
+The uniform finite sector proof and fixed-degree all-curve cusp bounds above
+are the additions of this review. The literature search did not establish
+their novelty. Neither a failed search nor a formal proof would establish
+priority.
+
+Palomar's current requirements distinguish an independently stated Challenge,
+a proved Solution and an immutable source revision; they do not turn a
+finite scalar component into a complete analytic theorem \cite{palomar}.
+The provided Lean module contains proposed algebraic and inequality
+components and no admitted theorem. It is uncompiled here. It does not claim
+to formalise analytic square roots, the integrated path, sector topology or
+intrinsic-distance minimisation.
+
+\paragraph{Executed checks.}
+The full angular-budget checker passed with 126 duals and threshold $13/25$.
+The degree-24 rational critical-value certificate passed again.
+The new rational checker verifies the radius, length and collar constants,
+the homogeneity comparison and finite coefficient regressions.
+An optional SymPy script checks three polynomial identities exactly.
+These checks are accompanied by their outputs and reproduction commands.
+The ordinary geometry is proved in this document rather than certified by
+sampling. No Lean compilation, Comparator run or independent human review is
+claimed.
+
+\begin{thebibliography}{9}
+\bibitem{blaschke} S.~R. Garcia, J.~Mashreghi and W.~T. Ross,
+\emph{Finite Blaschke products: a survey}, arXiv:1512.05444v2 (2016);
+Harmonic Analysis, Function Theory, Operator Theory, and their Applications,
+Theta Series in Advanced Mathematics (2017), 133--158.
+\url{https://arxiv.org/abs/1512.05444}.
+\bibitem{pendyala} V.~S. Pendyala, \emph{A Degree-Four Lemniscate Path Theorem},
+arXiv:2606.24875v1 (2026), Theorem~1.
+\url{https://arxiv.org/abs/2606.24875}.
+\bibitem{taopartial} T. Tao, \emph{On the importance of partial progress},
+originally posted 17 July 2012, accessed 7 September 2026.
+\url{https://terrytao.wordpress.com/career-advice/on-the-importance-of-partial-progress/}.
+\bibitem{taoeffort} T. Tao, \emph{Maximising the results-to-effort ratio},
+accessed 7 September 2026.
+\url{https://terrytao.wordpress.com/advice-on-writing-papers/maximising-the-results-to-effort-ratio/}.
+\bibitem{palomar} Palomar, \emph{How to submit}, accessed 7 September 2026.
+\url{https://palomar-registry.org/how-to-submit}.
+\bibitem{corpus} W. Cook and the Plectis corpus, round-six supplied packet,
+\path{01_short_note.tex}, \path{03_research_packet.json}, and the accompanying
+\#1041 source slice. Public browse revision
+\texttt{32545d77c4b5cfd72ebd36c8dcd2418bf7cc4d31}; the supplied live source
+has precedence over the public snapshot. All ordinary-source filenames in
+this return are relative to \path{ErdosProblems/Erdos1041/} unless stated.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification1041DiskFamilySeparation.Challenge",
+  "solution_module": "ExternalVerification1041DiskFamilySeparation.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_lt_two_of_uniform_separation",
+    "Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_radius_two_lt_two",
+    "Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_three_six_fifths_lt_two",
+    "Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamily_length_lt_two_of_squared_bound",
+    "Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamily_length_lt_two_of_uniform_separation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

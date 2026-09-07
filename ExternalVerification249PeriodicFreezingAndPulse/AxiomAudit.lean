@@ -1,0 +1,4 @@
+import ExternalVerification249PeriodicFreezingAndPulse.Solution
+
+#print axioms Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.periodic_freezing
+#print axioms Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.bounded_isolated_pulse

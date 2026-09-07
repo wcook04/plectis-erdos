@@ -1,0 +1,220 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "qapery_prefix_plucker_irreversible_cap_v0",
+  "status": "adjudicated_as_standard_determinantal_divisor_monotonicity_with_source_specific_finite_anchor",
+  "problem_id": "erdos_1049",
+  "purpose": "Position the natural-prefix q-Apéry Plücker cap as a finite route-killing certificate in standard determinantal-divisor language, while preserving the separate moving-tail route.",
+  "review_unit": {
+    "unit_id": "review_unit_erdos1049_prefix_plucker_irreversible_cap_v1",
+    "result_family": "qapery_natural_prefix_plucker_depth_irreversible_cap",
+    "exact_result_id": "qapery_prefix_plucker_depth_irreversible_cap",
+    "source_generation": {
+      "landed_source_commit": "f06fb5f0b3968ddf986a1dd398fc67fceaac2490",
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+        "commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+        "sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b"
+      },
+      "finite_certificate": {
+        "path": "state/formal_math/erdos257_period_noncollapse/erdos1049_primitive_plucker_receipt.json",
+        "sha256": "eb83c901dddfe78d4f554987788c6437728d075edb4a34ae0c98ba7ec96056e7"
+      },
+      "replay_owner": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_primitive_plucker_compression.py",
+        "sha256": "a52c8ea1ca7ff289c8d6c37abaa336e87110e0f05456f73c4631cb491446f43a"
+      }
+    }
+  },
+  "classification": {
+    "prior_art_confidence_class": "strong_internal_provisional_case",
+    "novelty_confidence": "no_priority_claim; gcd monotonicity under adjoining two-by-two minors is routine determinantal-divisor arithmetic, while the displayed q-Apéry three-row anchor is a source-specific exact finite certificate",
+    "recommended_terminology": "natural-prefix determinantal-divisor cap (or early-minor gcd cap)",
+    "discouraged_terminology": [
+      "a new Plücker compression theorem",
+      "an all-index q-Apéry valuation law",
+      "a no-go for moving-tail compression",
+      "an irrationality theorem at base 3/2"
+    ],
+    "significance": "High as an architectural boundary and low as standalone novelty: it decisively retires the natural expanding-prefix compression route, so large adjacent minors cannot continue to absorb proof effort meant for a family-wide modulus."
+  },
+  "primary_sources": [
+    {
+      "id": "magliveras_trung_wei_2008_primitive_sets",
+      "title": "Primitive sets in a lattice",
+      "authors": ["Spyros S. Magliveras", "Tran van Trung", "Wandi Wei"],
+      "venue": "Australasian Journal of Combinatorics 40 (2008), 173-186",
+      "url": "https://ajc.maths.uq.edu.au/download/40/ajc_v40_p173.pdf",
+      "exact_anchor": "Lemma 3.2, printed p. 179, and Theorem 4.1, pp. 183-184, on gcds of maximal minors and their invariance under unimodular completion.",
+      "source_archive": "annexes/magliveras-trung-wei-2008-primitive-sets-lattice/source.pdf",
+      "source_archive_sha256": "4e3776647c99944213d8f7e7d5ca96cf7ca68863814cff8a4566a8032ed07cf8",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 14,
+      "extracted_markdown": "annexes/magliveras-trung-wei-2008-primitive-sets-lattice/extracted.md",
+      "extracted_markdown_sha256": "5d554a56d90c1e6f5235c1de6884ddde7bc413afc0b5f9d57cf925123264cbe0",
+      "retrieved_at": "2026-08-24",
+      "verification_state": "primary_pdf_read_exact_primitive_minor_gcd_and_unimodular_completion_anchors_compared",
+      "exact_source_locator": "Printed p. 179 / extracted.md lines 323--328: Lemma 3.2 characterizes primitivity by gcd of maximal minors; printed pp. 183--184 / extracted.md lines 567--622: Theorem 4.1 and its correctness discussion give the unimodular Hermite-completion framework. The source supports standard determinantal-divisor context only.",
+      "supports": "The standard determinantal-divisor and primitive-lattice framework in which a common divisor of minors is the relevant family-wide arithmetic invariant.",
+      "does_not_support": "The q-Apéry row values, their gcd 6, the adjacent-depth contrast, or the moving-tail boundary."
+    },
+    {
+      "id": "smith_1861_indeterminate_equations",
+      "title": "On systems of linear indeterminate equations and congruences",
+      "author": "Henry John Stephen Smith",
+      "venue": "Philosophical Transactions of the Royal Society of London 151 (1861)",
+      "doi": "10.1098/rstl.1861.0016",
+      "url": "https://royalsocietypublishing.org/doi/10.1098/rstl.1861.0016",
+      "exact_anchor": "Historical source for the normal-form family now called Smith normal form; used only for terminology context.",
+      "supports": "The conventional Smith/determinantal-divisor vocabulary.",
+      "does_not_support": "A verbatim antecedent for the source-specific finite cap."
+    }
+  ],
+  "closest_known_result": {
+    "relation": "routine_specialization_of_determinantal_divisor_monotonicity",
+    "statement": "For a row family, the rank-two determinantal divisor is the gcd of its two-by-two minors; adjoining rows adds minors and hence can only decrease that gcd by divisibility.",
+    "exact_delta": "The local contribution is the exact primitive q-Apéry anchor w_0,w_1,w_2 with minor gcd 6 and the resulting decision that every natural prefix retaining it has 2- and 3-adic common depth at most one."
+  },
+  "disconfirming_evidence": [
+    {
+      "kind": "finite_exact_countercertificate",
+      "locator": "erdos1049_primitive_plucker_receipt.json and check_primitive_plucker_compression.py",
+      "finding": "Adjacent determinants can have growing 2- and 3-adic valuations even though the three-row family gcd is exactly 6.",
+      "effect": "Reject the local-to-global inference from an adjacent exterior valuation to natural-prefix common compression."
+    },
+    {
+      "kind": "scope_split",
+      "locator": "Erdos1049/research_packet.json::qapery_moving_tail_plucker_opening",
+      "finding": "Discarding the early anchors changes the family and leaves a distinct moving-tail mechanism.",
+      "effect": "The cap cannot be stated as a no-go for re-anchored tails or for analytic q-Apéry constructions."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "An exact three-row q-Apéry certificate has rank-two determinantal divisor 6; every natural prefix retaining those rows has determinantal divisor dividing 6. This is a source-specific finite application of elementary determinantal-divisor monotonicity.",
+    "forbidden_wording": [
+      "Growing adjacent determinants produce growing natural-prefix compression.",
+      "The finite anchor rules out moving-tail compression.",
+      "This formally proves a q-Apéry all-index theorem or irrationality at 3/2."
+    ],
+    "open_boundary": "A re-anchored moving-tail family still requires an all-index common-modulus theorem, controlled coefficient height, and analytic decay/nonvanishing evidence."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "early-minor gcd caps versus moving-tail determinantal compression",
+    "disposition": "retain as the single natural-prefix route-killing boundary; subordinate the finite row values and adjacent-depth contrast here, and do not merge it with moving-tail modular compression",
+    "paper_disposition": "supporting route-killing segment in 'Why natural prefixes cannot accumulate determinant depth'; it should precede, not replace, the moving-tail discussion",
+    "comparator_advisory": "No new interface is justified by this route alone: the key anchor is finite exact computation, while the general gcd monotonicity is elementary and already standard.",
+    "expert_review_act": "Check the primitive normalization and all three pairwise minors in the pinned receipt, then confirm that every proposed prefix consumer retains those exact anchor rows."
+  },
+  "reviewer_attention_budget": {
+    "routine": "Gcd monotonicity after the row family and all its minors are fixed.",
+    "load_bearing": "The exact identification of the correct family: natural prefix versus a re-anchored moving tail.",
+    "externally_sourced": "Determinantal-divisor and Smith-normal-form terminology.",
+    "still_unverified": "No fresh independent replay of the finite q-Apéry receipt is asserted by this route.",
+    "where_to_slow_down": "Verify the primitive row normalization and that the candidate family literally contains w_0,w_1,w_2 before applying the cap."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source-pinned finite certificate and frozen review unit",
+    "output_stage": "prior-art positioning and route-killing human-understanding support",
+    "artifact": "qapery_prefix_plucker_irreversible_cap_v0 prior-art route",
+    "human_understanding_delta": "Makes the decisive invariant family-wide rather than local: a striking large adjacent determinant does not repair a small early determinantal divisor.",
+    "verification_state": "The numerical anchor is an existing exact certificate with a replay owner; this route performs source/version binding and no fresh replay or Lean proof.",
+    "publication_or_review_state": "Internal adjudication only; no publication, Comparator, or outreach action.",
+    "canonicalization_state": "One natural-prefix cap, explicitly separate from the moving-tail and analytic-height mechanisms.",
+    "unresolved_downstream_bottleneck": "All-index moving-tail compression with compatible analytic control.",
+    "next_stage_owner": "Erdős 1049 moving-tail and analytic proof owners; Novelty Observatory only on a new source generation or an attribution correction."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "qapery_natural_prefix_plucker_depth_irreversible_cap@source-f06fb5-card-current",
+    "evidence_class": "finite_exact_qapery_certificate_with_standard_determinantal_divisor_monotonicity",
+    "source_generation": {
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+        "commit": "source-current",
+        "sha256": "75a38d269b04aa46e160f5c2fd7d5f968bbee4a39cf5370c2332211ee1eb8547"
+      },
+      "finite_certificate": {
+        "path": "state/formal_math/erdos257_period_noncollapse/erdos1049_primitive_plucker_receipt.json",
+        "sha256": "be73bf11215b6c51e8bbf92ced23fc6a3be66e647f11de84a31fa8948db0f4fd"
+      },
+      "replay_owner": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_primitive_plucker_compression.py",
+        "sha256": "a52c8ea1ca7ff289c8d6c37abaa336e87110e0f05456f73c4631cb491446f43a"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos1049_prefix_plucker_irreversible_cap.card.json",
+        "sha256": "13ddce345210fa214f76905fd9e49ff33cad491a209f11479f434d746d5a0389"
+      },
+      "primary_sources": [
+        "Magliveras–Trung–Wei, Primitive sets in a lattice, Australasian J. Combin. 40 (2008), Lemma 3.2 and Theorem 4.1",
+        "Smith, On systems of linear indeterminate equations and congruences, Phil. Trans. Roy. Soc. 151 (1861)"
+      ]
+    },
+    "comparison_relation": "The family-wide rank-two determinantal divisor is the gcd of all two-by-two minors; adjoining rows can only decrease it. The q-Apéry row values and the gcd-6 anchor are a finite source-specific specialization, not a new Plücker-compression theorem.",
+    "closest_known_result": "Determinantal-divisor monotonicity and Smith-normal-form terminology are classical; the exact q-Apéry three-row certificate and its natural-prefix consequence were not located as an external named result.",
+    "exact_delta": "The finite anchor shows that every natural prefix retaining the first three rows has common divisor dividing 6, even when later adjacent determinants exhibit larger 2- or 3-adic valuations; this decisively separates local exterior growth from family-wide compression.",
+    "disconfirming_evidence": "The certificate is finite and only caps natural prefixes. Re-anchored moving tails, all-index valuation laws, height decay, and irrationality remain untouched; finite adjacent minors cannot pay the global height bill by themselves.",
+    "confidence_ceiling": "High for the exact finite cap and standard gcd monotonicity; low novelty/no priority claim; no moving-tail or #1049 endpoint implication.",
+    "significance": "high_architectural_boundary_value_low_standalone_novelty",
+    "claim_ceiling": "An exact three-row q-Apéry anchor has determinantal divisor 6, so every natural prefix containing it has divisor dividing 6. Do not generalize this to re-anchored tails, all-index valuations, or irrationality.",
+    "hard_step": "Construct and control a moving-tail family with an all-index common-modulus law, coefficient height, nonvanishing, and analytic decay simultaneously.",
+    "open_boundary": "Moving-tail compression and the full #1049 height/decay/irrationality route remain open.",
+    "bounded_expert_act": "Verify the three primitive row values and all pairwise minors in the pinned certificate, then check that any proposed prefix consumer literally retains those anchor rows.",
+    "reentry_trigger": "Re-enter if the packet, certificate, replay script, or reviewer card changes, or if a re-anchored moving-tail theorem appears.",
+    "programme_disposition": "retire_natural_prefix_plucker_compression_route_and_subordinate_under_erdos1049_moving_tail",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why natural prefixes cannot accumulate determinant depth",
+      "supersession_or_consolidation": "Keep the gcd-6 anchor, adjacent-depth contrast, and finite replay as one cap; do not split row values, minors, or Smith terminology into additional cards.",
+      "reason": "It prevents a striking local determinant valuation from being mistaken for family-wide compression and redirects attention to the distinct moving-tail problem."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The general divisor monotonicity is standard and the finite anchor is better exposed as a computation-labelled boundary under the existing #1049 determinant core."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "finite exact certificate plus standard determinantal-divisor framework",
+      "output_stage": "expert understanding and route canonicalization",
+      "artifact": "qapery_prefix_plucker_irreversible_cap_v0",
+      "human_understanding_delta": "A reviewer can see why large adjacent minors do not repair a small early family divisor and why re-anchored tails are a separate unresolved route.",
+      "verification_state": "Existing exact certificate and replay owner are source-bound; no fresh replay or Lean claim added.",
+      "publication_or_review_state": "Status-tagged computation/route-boundary visibility is eligible; no priority or acceptance claim.",
+      "canonicalization_state": "One subordinate natural-prefix cap beneath the moving-tail determinant family.",
+      "unresolved_downstream_bottleneck": "All-index moving-tail compression with compatible height and analytic control.",
+      "next_stage_owner": "Mathematics Refinery for consolidation and #1049 moving-tail proof owners for any new source generation."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine divisor monotonicity with a load-bearing family-identification step",
+    "slow_down_at": "Natural prefix means the exact anchor rows remain present; discarding them changes the family and escapes the cap.",
+    "automation_establishes": "The exact gcd-6 anchor and finite adjacent-minor comparison.",
+    "expert_semantic_judgment": "Whether a proposed compression argument is natural-prefix or re-anchored moving-tail, and whether it needs an all-index theorem.",
+    "review_act": "Check primitive normalization and all three minors against the finite receipt before accepting any route-level conclusion."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#1049 natural-prefix determinantal-divisor caps versus moving-tail compression",
+    "disposition": "retire_natural_prefix_compression_as_a_global_route; subordinate finite evidence under moving-tail architecture",
+    "consolidation_relation": "Keep row values, adjacent-depth contrast, and finite replay in one cap object; no separate Plücker novelty narrative.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "It closes a common but invalid inference from local determinant growth to family-wide arithmetic depth.",
+      "evidence_class": "Finite exact certificate with standard determinantal-divisor monotonicity",
+      "hard_step": "Build and control the re-anchored moving-tail family.",
+      "prior_art_uncertainty": "Low for standard divisor language; exact q-Apéry anchor is local and not claimed novel.",
+      "open_boundary": "No all-index compression, height decay, or #1049 result.",
+      "demoted_predecessor": "natural-prefix local exterior valuation as global compression",
+      "status_boundary": "Retain as a computation-labelled route boundary beneath the #1049 architecture."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_committed_packet_certificate_replay_and_card_pins_bound_at_2026_08_27",
+    "bound_snapshot": {
+      "research_packet_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "research_packet_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "finite_certificate_sha256": "eb83c901dddfe78d4f554987788c6437728d075edb4a34ae0c98ba7ec96056e7",
+      "replay_owner_sha256": "a52c8ea1ca7ff289c8d6c37abaa336e87110e0f05456f73c4631cb491446f43a",
+      "reviewer_card_sha256": "13ddce345210fa214f76905fd9e49ff33cad491a209f11479f434d746d5a0389"
+    },
+    "claim_guard": "Finite natural-prefix divisor cap only at the current committed packet generation; no moving-tail no-go, all-index valuation, height, decay, or irrationality theorem.",
+    "reentry_trigger": "Any packet/certificate/replay/card change or a genuine moving-tail theorem."
+  }
+}

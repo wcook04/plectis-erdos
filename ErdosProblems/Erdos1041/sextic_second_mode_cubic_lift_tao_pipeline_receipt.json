@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_second_mode_arbitrary_tangent_cubic_lift",
+  "recorded_at": "2026-08-25",
+  "input_stage": "pure_second_mode_phase_circle_and_cubic_face_boundary_scout",
+  "output_stage": "analytic_antipodal_symmetry_lift_with_lean_kernel",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticSecondModeCubicLift.md",
+    "ErdosProblems/Erdos1041/SexticSecondModeCubicLift.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_second_mode_cubic_lift.py"
+  ],
+  "human_understanding_delta": "The tangent cubic has a fixed sign on an adjacent sixth-root chord. Antipodal reflection preserves the even second-mode/sextic model, reverses that cubic sign, and leaves the sixth-root ray certificate unchanged. Thus the full pure second-mode phase circle survives arbitrary tangent cubic amplitude.",
+  "verification_state": {
+    "analytic": "complete_exact_chord_identity_and_antipodal_argument",
+    "symbolic": "exact_sympy_identity_and_parity_replay_passed",
+    "lean": "warning_free_canonical_cached_build_and_final_serialized_authority_check_passed",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "Lean source, exposition, exact checker, and packet handoff validated",
+  "unresolved_downstream_bottleneck": "Prove a uniform mixed E1 neighborhood of this unbounded cubic lift, synchronized with the strict phase collars, canonical null box, and 4/5 first-mode overlap.",
+  "next_stage_owner": "Refinery: treat the arbitrary-cubic E1=0 plane as the base carrier and quantify only the first-mode perturbation cost.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation and Lean formalization under operator direction",
+    "computation": "A bounded normalized-face scout collapsed to the known pure-cubic radius-zero stratum; the exact sign identity then replaced sampling.",
+    "formalization": "Lean checks the cubic chord shape, its sign, even/odd antipodal identities, the safe-chord disjunction, and radial vanishing criterion.",
+    "claim_boundary": "Closes the E1=0 tangent plane for arbitrary cubic amplitude. It does not provide the uniform mixed E1 neighborhood, nonlinear transfer, or unrestricted Erdos #1041."
+  }
+}

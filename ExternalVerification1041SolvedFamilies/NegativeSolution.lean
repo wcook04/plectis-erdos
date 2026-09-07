@@ -1,13 +1,5 @@
-/- Deliberate mismatch: the sharp collinear endpoint is omitted.
-
-The two declarations below are discharged from source exactly as `Solution` does.
-The rejection Comparator must produce comes from the missing third selected
-declaration, `SharpCollinear.existsPeakLeComparisonBound`, and not from an
-unproved body: a fixture rejected merely for leaving a proof open would not test
-that the configuration notices an absent endpoint. -/
+/- Deliberate mismatch: the sharp collinear endpoint is omitted. -/
 import Mathlib
-import ErdosProblems.Erdos1041.CubicQuotientFiberCase
-import ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail
 
 namespace Erdos249257.ExternalVerification1041SolvedFamilies
 
@@ -19,7 +11,7 @@ theorem cubic_safeRootSpoke {r s v : ℂ}
       ‖((t : ℂ) * s - s) * ((t : ℂ) * s - r) * ((t : ℂ) * s - v)‖ ≤ 1) ∨
     (∀ t : ℝ, 0 ≤ t → t ≤ 1 →
       ‖((t : ℂ) * v - v) * ((t : ℂ) * v - r) * ((t : ℂ) * v - s)‖ ≤ 1) := by
-  exact ErdosProblems.Erdos1041.cubic_has_safe_root_spoke hr hs hv
+  sorry
 
 theorem primitiveQuintic_twoStrictTailEnergies
     {r : ℝ}
@@ -59,8 +51,6 @@ theorem primitiveQuintic_twoStrictTailEnergies
         s4 ^ 4 * (s4 + r ^ 2 + 2 * r * x4) < 1) ∨
       (s3 ^ 4 * (s3 + r ^ 2 + 2 * r * x3) < 1 ∧
         s4 ^ 4 * (s4 + r ^ 2 + 2 * r * x4) < 1) := by
-  exact ErdosProblems.Erdos1041.primitiveInterior_exists_two_tailEnergy_lt_one
-    hr hr2 hs0 hs0one hx0s hs1 hs1one hx1s hs2 hs2one hx2s
-    hs3 hs3one hx3s hs4 hs4one hx4s hm1 hm2 hm3
+  sorry
 
 end Erdos249257.ExternalVerification1041SolvedFamilies

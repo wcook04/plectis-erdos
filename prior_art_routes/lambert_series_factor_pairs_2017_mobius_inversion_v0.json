@@ -1,0 +1,278 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-07-10T23:11:00Z",
+  "status": "adjudicated_classical_lambert_substrate_exact_crosswalk_local_composite_delta_open",
+  "route_id": "lambert_series_factor_pairs_2017_mobius_inversion",
+  "purpose": "Capture the supplied Lambert-series factorisation source as private antecedent routing for BooleanMobiusCarry, without recasting classical identities or the local composite certificate as public mathematics claims.",
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "lambert_series_factor_pairs_2017_mobius_inversion@BooleanMobiusCarry-4cd4eac",
+    "canonical_mechanism_family": "classical Lambert/Moebius divisor transforms with a Boolean carry composite interface",
+    "replacement_decision": "subordinate_under_existing_mechanism",
+    "evidence_class": "Primary-source arXiv TeX theorem comparison plus private Lean declarations; exact local composite crosswalk completed with conservative non-attribution boundaries.",
+    "primary_source_basis": [
+      "arXiv:1706.02359, Theorem 1: factorization-pair coefficient identity for Lambert-series transforms (annex source archive 02653556b13c9eaca593d2f8ea6ac0a362f11db0fc1cd5b19bd1aa5d1d00ea18).",
+      "arXiv:1706.02359, Theorem 9: inverse/Moebius relations and determinant recurrences; Introduction cites NIST Handbook §27.7, Hardy--Wright §17.10, and Merca--Schmidt factorization work."
+    ],
+    "closest_known_result": "Theorem 1 and Theorem 9 cover the ambient Lambert divisor-sum and Moebius-inversion machinery; no inspected primary passage packages the Boolean quotient-only iff, carry normalization, support reconstruction, and square-root tail strip together.",
+    "comparison_relation": "Source-level Theorems 1 and 9 are direct antecedents for the two divisor-transform rows only. The Boolean converse, normalized carry equivalence, and square-root strip are additional local coordinates with no established theorem-by-theorem implication from the source.",
+    "exact_delta": "The local BooleanMobiusCarry family adds a Boolean converse, normalized carry/fixed-fraction equivalence, and a binary square-root growth interface on top of the classical transforms. These are formal composite coordinates, not a new Lambert-series identity.",
+    "disconfirming_evidence": "The inspected theorem statements and conclusion contain no full local clause bundle and no Erdős #257 endpoint. Generic Lambert/Moebius antecedence cannot establish the converse, carry normalization, or square-root strip.",
+    "confidence": {
+      "level": "high_for_classical_attribution_and_clause_boundary; none_for_independent_novelty",
+      "basis": "The primary arXiv TeX archive, extracted text, exact theorem locators, and local declaration family are hash-bound. Absence of an exact composite antecedent is bounded-search evidence, not a priority claim."
+    },
+    "significance": "Low standalone novelty but useful formalisation and teaching value: it cleanly separates standard Lambert/Moebius infrastructure from the source-specific Boolean/carry/growth packaging and prevents a formal interface from being mistaken for new generating-function mathematics.",
+    "claim_ceiling": "Call this a formal composite interface over classical Lambert/Moebius identities. Do not call it a new Lambert-series theorem, new Moebius inversion, irrationality criterion, or Erdős #257 solution.",
+    "hard_step": "The hard mathematical delta is the local Boolean converse, carry normalization, and square-root strip; the source comparison now establishes that these clauses are not stated together in the cited factor-pair theorems.",
+    "open_boundary": "No public endpoint, all-index growth consequence, independent priority, or exact literature match for the complete composite bundle is established.",
+    "paper_disposition": {
+      "classification": "technical_appendix",
+      "target_section": "Boolean support reconstruction over the Lambert/Moebius substrate",
+      "relation": "Consolidate beneath the existing #257 binary/Moebius mechanism; do not create a parallel Lambert theorem or card.",
+      "why_here": "A short appendix preserves the classical source lineage and the formalisation delta without consuming headline attention."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The classical identities are already standard and the local composite crosswalk is not yet a single independently restated proposition with a public endpoint consumer.",
+      "existing_consumer": "Keep the BooleanMobiusCarry declarations as private formal evidence until Mathematics Refinery supplies an exact semantic firewall."
+    },
+    "bounded_expert_judgment": "Map each local clause to Theorems 1 and 9 once. If no implication covers the Boolean converse, carry normalization, and square-root strip, retain the conservative composite-interface label and the technical-appendix disposition.",
+    "bounded_expert_review_act": "Completed 2026-08-27: inspected the primary theorem text and recorded the premise/conclusion map for each local clause; the result remains a formal composite interface.",
+    "expert_act": "Completed 2026-08-27: inspected the primary theorem text and recorded the premise/conclusion map for each local clause; the result remains a formal composite interface.",
+    "reentry_trigger": "Re-enter only on a changed source generation, an exact primary-source theorem covering the complete local clause bundle, or a new public consumer that materially changes the significance boundary.",
+    "source_generation_binding": {
+      "external_archive_sha256": "02653556b13c9eaca593d2f8ea6ac0a362f11db0fc1cd5b19bd1aa5d1d00ea18",
+      "external_extracted_markdown_sha256": "8aca3b029d0fff69913b366705fa4d16f2cf5307a99cc4f20b73cfcbdfaed9ff",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean",
+      "formal_source_sha256": "da6c145c88f2910e5d56f2b7705abd5ea12c7d235fb8afbb4d4f68d7ff231be5",
+      "packet_sha256": "a0e4abc91e72921c4849f290a194971cfa9de179708637cabf0e3a1a3d6d10a1",
+      "source_format": "arXiv source TeX archive with committed extracted text; no PDF is needed for this source comparison",
+      "source_reviewed_at": "2026-08-27",
+      "primary_tex_read": true,
+      "exact_source_locators": [
+        "Extracted source lines 32–46, Theorem 1: fixed C(q) gives s_{n,k}=[q^n](q^k/(1−q^k))C(q) and the coefficient factorization identity.",
+        "Extracted source lines 138–163, Theorem 9(i)–(iii) and proofs: inverse factor-pair/Möbius relations and the B_m generating-function identity; lines 166–180 record the Möbius-inverted Lambert series and determinant recurrences.",
+        "Extracted source lines 186–190: later variants replace Möbius by other multiplicative functions; this does not state the local Boolean quotient certificate or square-root tail strip."
+      ],
+      "parity_status": "Source TeX archive, extracted text, and local formal source are bound at this snapshot; no fresh Lean replay is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "da6c145c88f2910e5d56f2b7705abd5ea12c7d235fb8afbb4d4f68d7ff231be5",
+      "external_archive_sha256": "02653556b13c9eaca593d2f8ea6ac0a362f11db0fc1cd5b19bd1aa5d1d00ea18"
+    },
+    "claim_guard": "Classical Lambert/Moebius attribution plus a private formal composite interface; no new Lambert theorem or #257 endpoint.",
+    "reentry_trigger": "Re-enter on source/hash drift, exact composite antecedent discovery, or a changed public consumer."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine classical transforms plus a source-specific Boolean/carry/growth composition whose exact crosswalk is the only nonroutine review point.",
+    "slow_down_at": "Do not collapse standard divisor-sum identities into the unproved Boolean converse or the square-root tail bound.",
+    "automation_can_establish": [
+      "annex archive and extracted-text hashes",
+      "local declaration names and source hash",
+      "JSON schema and route-binding parity"
+    ],
+    "human_judgment_required": [
+      "whether the four local clause groups compose into a useful formal normal form",
+      "whether a technical appendix is preferable to a standalone result",
+      "whether any later primary source contains the complete composite antecedent"
+    ],
+    "review_act": "One bounded expert act: inspect Theorems 1 and 9 against the four local clause groups and confirm the formal-composite, no-priority wording."
+  },
+  "paper_disposition": {
+    "classification": "technical_appendix",
+    "target_section": "Boolean support reconstruction over the Lambert/Moebius substrate",
+    "supersession_relation": "Subordinate under the existing #257 binary/Moebius mechanism; no duplicate Lambert/Moebius card."
+  },
+  "comparator_advisory": {
+    "independent_interface_justified": false,
+    "reason": "No exact public proposition isolates a materially new mechanism beyond the standard transforms and the still-unproved local composite crosswalk."
+  },
+  "adjudication": {
+    "review_unit_version": "arXiv 1706.02359 annex snapshot; source archive 02653556b13c9eaca593d2f8ea6ac0a362f11db0fc1cd5b19bd1aa5d1d00ea18",
+    "evidence_class": "externally sourced ordinary Lambert-series factorization theorems; no local theorem crosswalk has yet been proved",
+    "closest_known_prior_art": [
+      "Theorem 1: general factorization-pair coefficient identity s_{n,k}=[q^n](q^k/(1-q^k))C(q)",
+      "Theorem 9: inverse-matrix/Möbius relations and determinant-based recurrences for the factorization pair",
+      "Introduction citations to NIST Handbook §27.7, Hardy--Wright §17.10, and prior Merca--Schmidt factorization work"
+    ],
+    "exact_delta": "The source supplies divisor-sum transforms, Möbius inversion, and partition-factorization matrices. It does not state the Boolean quotient-only certificate, carry recurrence, support reconstruction, or square-root strip used by the local BooleanMobiusCarry target; whether those clauses compose into a distinct formal normal form remains open.",
+    "disconfirmation_search": "The annex's explicit theorem statements and conclusion were inspected; no occurrence of the local certificate's full clause bundle or a #257 endpoint claim was found. Generic Lambert/Möbius identities are not evidence for that bundle.",
+    "confidence_ceiling": "Strong attribution for the ambient Lambert/Möbius identities; no novelty or significance claim for the local composite interface until an exact premise/conclusion crosswalk is supplied.",
+    "significance_rationale": "The paper is useful as a classical substrate and terminology anchor, while the strict delta question prevents formalization from being mistaken for new Lambert-series mathematics.",
+    "local_declaration_crosswalk": [
+      "positiveSupportBitAF_mul_zeta and moebius_mul_supportCoeffAF are direct divisor-sum/Möbius-inversion coordinates.",
+      "eq_supportCoeffAF_booleanMobiusSupport_of_boolean is the converse Boolean reconstruction; no matching source theorem was located in the annex.",
+      "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry adds the binary tempered-carry normalization and fixed-fraction equivalence, which is not a statement of the Lambert-series factor-pair source.",
+      "binaryCoeffTail_supportCoeff_le_two_sqrt_add_four and the square-root strip are local growth/tempering interfaces, not consequences of Theorems 1 or 9."
+    ],
+    "bounded_expert_review_act": "Map these four clause groups to exact passages in Theorems 1 and 9 and their cited factorization literature. If the Boolean converse, carry normalization, or square-root strip is not implied, retain the conservative label 'formal composite interface over classical Lambert/Möbius identities' and do not call it a new Lambert-series theorem."
+  },
+  "source_annex": {
+    "slug": "arxiv-1706-02359-lambert-series-factor-pairs",
+    "display_name": "New Factor Pairs for Factorizations of Lambert Series Generating Functions",
+    "arxiv_id": "1706.02359",
+    "arxiv_url": "https://arxiv.org/abs/1706.02359",
+    "source_archive": "annexes/arxiv-1706-02359-lambert-series-factor-pairs/source.gz",
+    "source_archive_sha256": "02653556b13c9eaca593d2f8ea6ac0a362f11db0fc1cd5b19bd1aa5d1d00ea18",
+    "extracted_markdown": "annexes/arxiv-1706-02359-lambert-series-factor-pairs/extracted.md",
+    "extracted_markdown_sha256": "8aca3b029d0fff69913b366705fa4d16f2cf5307a99cc4f20b73cfcbdfaed9ff",
+    "annex_notes": "annexes/arxiv-1706-02359-lambert-series-factor-pairs/annex_notes.json",
+    "annex_notes_sha256": "17d51f712966c3584755e73138f88fac0300b9f56964869ab65f5b24eab4bccc",
+    "validated_by": "./repo-python annex_import.py validate --slug arxiv-1706-02359-lambert-series-factor-pairs"
+  },
+  "private_lean_targets": {
+    "package_root": "formal_math/erdos257_period_noncollapse",
+    "declaration_families": [
+      "BooleanMobiusCarry"
+    ],
+    "target_files": [
+      "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean"
+    ],
+    "public_export_impact": "none_selected_export_globs_ignore_prior_art_routes"
+  },
+  "claim_family_intake": {
+    "granularity": "declaration_family_crosswalk_not_module_level_bibliography_verdict",
+    "provisional_classification": "classical_lambert_mobius_substrate_with_composite_certificate_delta_unassessed_no_priority_claim",
+    "comparison_questions": [
+      "Which divisor-sum and Möbius-inversion identities are direct classical antecedents of the local rows?",
+      "Does an antecedent package the quotient-only certificate iff, carry recurrence, support reconstruction, and square-root strip together?",
+      "What wording remains valid for a Lean formal normal form if every mathematical ingredient has an antecedent?"
+    ],
+    "required_crosswalk_fields": [
+      "premises",
+      "conclusion",
+      "specialisation_map",
+      "proof_mechanism",
+      "strict_delta",
+      "allowed_wording"
+    ]
+  },
+  "exact_declaration_crosswalk": {
+    "status": "complete_source_tex_compared_2026-08-27",
+    "source_basis": {
+      "title": "New Factor Pairs for Factorizations of Lambert Series Generating Functions",
+      "authors": "Mircea Merca and Maxie D. Schmidt",
+      "arxiv_version": "1706.02359v1",
+      "official_record": "https://arxiv.org/abs/1706.02359",
+      "source_archive": "annexes/arxiv-1706-02359-lambert-series-factor-pairs/source.gz",
+      "source_archive_sha256": "02653556b13c9eaca593d2f8ea6ac0a362f11db0fc1cd5b19bd1aa5d1d00ea18",
+      "extracted_text": "annexes/arxiv-1706-02359-lambert-series-factor-pairs/extracted.md",
+      "extracted_text_sha256": "8aca3b029d0fff69913b366705fa4d16f2cf5307a99cc4f20b73cfcbdfaed9ff",
+      "exact_locators": [
+        "Extracted source lines 32–46, Theorem 1: the general factorization-pair coefficient identity.",
+        "Extracted source lines 138–163, Theorem 9(i)–(iii): inverse/Möbius relations and the matrix/generating-function identity.",
+        "Extracted source lines 166–180: Möbius-inverted Lambert series and determinant-based inverse recurrences."
+      ]
+    },
+    "local_source_basis": {
+      "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean",
+      "sha256": "da6c145c88f2910e5d56f2b7705abd5ea12c7d235fb8afbb4d4f68d7ff231be5",
+      "line_locators": [
+        "lines 75–109: positiveSupportBitAF_mul_zeta and moebius_mul_supportCoeffAF.",
+        "lines 177–202: eq_supportCoeffAF_booleanMobiusSupport_of_boolean and its Boolean converse proof.",
+        "lines 287–310: binaryCoeffTail_supportCoeff_le_two_sqrt_add_four.",
+        "lines 944–964: exists_normalized_support_fraction_iff_exists_booleanMobiusCarry."
+      ]
+    },
+    "rows": [
+      {
+        "family": "zeta_divisor_transform",
+        "external_premises": "A fixed Lambert factor C(q), an arbitrary coefficient sequence, and the factorization-pair definition.",
+        "external_conclusion": "Theorem 1 identifies the factorization coefficients by [q^n](q^k/(1−q^k))C(q) and derives the corresponding coefficient identity.",
+        "specialisation_map": "The local support coefficient is the divisor sum of the positive support indicator; positiveSupportBitAF_mul_zeta uses the arithmetic-function zeta transform with C(q) specialized to the support-count coordinate.",
+        "local_declarations": ["positiveSupportBitAF_mul_zeta"],
+        "relation": "classical substrate coordinate, not a verbatim restatement of Theorem 1's general factor-pair theorem.",
+        "strict_delta": "The local theorem exposes the support-set indicator and its exact arithmetic-function interface for later certificate consumers.",
+        "allowed_wording": "The local zeta/divisor identity is a Lean formalization of classical Lambert-series transform infrastructure."
+      },
+      {
+        "family": "moebius_inverse_transform",
+        "external_premises": "A fixed factorization pair and its inverse matrix, with the divisor-sum relation of Theorem 9(i)–(ii).",
+        "external_conclusion": "Theorem 9 gives inverse factor-pair coefficients through Möbius-weighted divisor sums and the associated generating-function identity.",
+        "specialisation_map": "The local supportCoeffAF is the divisor-count transform of the support indicator; moebius_mul_supportCoeffAF composes the Möbius inverse with that transform to recover the indicator.",
+        "local_declarations": ["moebius_mul_supportCoeffAF", "mobius_supportCoeff_eq_one_iff", "mobius_supportCoeff_boolean"],
+        "relation": "classical Möbius-inversion coordinate after notation translation; not evidence for the complete local certificate.",
+        "strict_delta": "The local rows make Boolean membership and support recovery explicit for the chosen support coefficient.",
+        "allowed_wording": "The local Möbius rows formalize classical inversion infrastructure and should be cited as such."
+      },
+      {
+        "family": "boolean_reconstruction_and_carry_growth",
+        "external_premises": "Theorem 1 and Theorem 9 provide factorization and inverse-transform identities.",
+        "external_conclusion": "No located passage states the local Boolean converse, quotient-only carry normalization, fixed-fraction iff, or square-root tail strip as one theorem.",
+        "specialisation_map": "The local BooleanMobiusSupport reconstruction, BooleanMobiusCarry certificate, and support-coefficient tail estimate are composed on top of the classical transforms.",
+        "local_declarations": ["eq_supportCoeffAF_booleanMobiusSupport_of_boolean", "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry", "binaryCoeffTail_supportCoeff_le_two_sqrt_add_four"],
+        "relation": "local formal composition over classical substrate; no complete external antecedent located.",
+        "strict_delta": "The Boolean converse, normalized carry/fixed-fraction equivalence, and square-root growth envelope remain local interfaces with formalisation-qualified wording.",
+        "allowed_wording": "A Lean-checked formal composite interface over classical Lambert/Möbius identities; no new Lambert theorem, no priority claim, and no Erdős #257 endpoint."
+      }
+    ],
+    "comparison_result": "The source comparison closes the classical attribution rows and falsifies any reading of Theorems 1 or 9 as the complete Boolean/carry/growth certificate. The remaining object is a formal composite interface, not a new Lambert-series theorem.",
+    "consumer_effect": "Paper, citation, and claim-integrity consumers can cite Theorems 1 and 9 for the classical substrate while preserving the local Boolean/carry/growth claim ceiling."
+  },
+  "public_claim_boundary": {
+    "local_effect": "private source routing only; the exact classical-to-local crosswalk is recorded above and preserves the formal-composite claim ceiling",
+    "proof_authority": "not_accepted",
+    "publication_effect": "none",
+    "non_claims_preserved": [
+      "not_a_new_Mobius_inversion_theorem",
+      "not_a_new_Lambert_series_identity",
+      "not_a_public_certificate_novelty_claim",
+      "not_erdos_257_solution"
+    ],
+    "forbidden_until_exact_comparison": [
+      "replace_literature_novelty_unchecked_prose",
+      "shorten_formal_normal_form_to_new_characterisation",
+      "treat_annex_content_as_Lean_theorem_authority"
+    ]
+  },
+  "annex_section_routes": [
+    {
+      "annex_target": "introduction/lambert-series-factorization-theorems",
+      "note_id": "n001",
+      "local_task": "Extract exact transform/inversion passages and test whether the local certificate clauses occur as a composed antecedent."
+    }
+  ],
+  "next_private_mapping_pass": {
+    "status": "complete_exact_classical_crosswalk",
+    "completed_at": "2026-08-27",
+    "result": "Theorem 1 and Theorem 9 are classical transform antecedents for the local zeta/Möbius rows; the Boolean converse, carry normalization, and square-root strip remain local formal composition.",
+    "recommended_order": [
+      "extract_classical_transform_rows",
+      "map_local_certificate_clauses",
+      "test_composite_antecedent_overlap",
+      "set_formalisation_qualified_wording",
+      "refresh_only_the_approved_public_projection"
+    ],
+    "first_command": "./repo-python annex_import.py show --slug arxiv-1706-02359-lambert-series-factor-pairs --prefix introduction/lambert-series-factorization-theorems",
+    "reentry_condition": "Re-enter only on a changed source generation, a primary theorem matching the complete local Boolean/carry/growth bundle, or a changed public consumer."
+  },
+  "release_topology_link": {
+    "public_prior_art_policy_owner": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+    "public_prior_art_drift_report_target": "microcosm-substrate/receipts/lean_formal_methods_os/public_prior_art_drift_report_v0.json"
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_exact_composite_crosswalk",
+    "priority_order": [
+      "map each local BooleanMobiusCarry clause to Theorems 1 and 9",
+      "test whether the converse, carry normalization, and square-root strip occur together in cited factorization literature",
+      "retain formalisation-qualified wording if no composite antecedent is found"
+    ],
+    "lane": "re-enter only when an exact premise/conclusion map or a disconfirming antecedent changes the local composite significance ceiling"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "classical_Lambert_Mobius_source_crosswalk",
+    "output_stage": "attribution_bound_human_review_support",
+    "artifact": "#269 BooleanMobiusCarry Lambert-series prior-art route",
+    "human_understanding_delta": "The source is fixed as classical divisor-transform infrastructure, while the Boolean converse, tempered-carry normalization, support reconstruction, and square-root strip remain visibly local composite clauses rather than a claimed new Lambert theorem.",
+    "verification_state": "Theorem 1/Theorem 9 text, annex hashes, and local declaration families are bound; no exact composite antecedent has been established and no endpoint claim follows.",
+    "publication_or_review_state": "Private attribution support only; no priority, novelty, or public certificate claim.",
+    "canonicalization_state": "One classical-substrate crosswalk retained; no duplicate Lambert/Möbius theorem or Comparator interface created.",
+    "unresolved_downstream_bottleneck": "No exact external antecedent for the complete local Boolean/carry/growth bundle; retain formalisation-qualified wording and do not create a standalone Comparator interface.",
+    "next_stage_owner": "Novelty Observatory for an exact literature match; Mathematics Refinery for formalisation-qualified consolidation; Role 3 for any later release decision."
+  }
+}

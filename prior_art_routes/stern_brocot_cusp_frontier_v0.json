@@ -1,0 +1,151 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "stern_brocot_cusp_frontier_v0",
+  "status": "adjudicated_unbound_proposal_retired_from_active_credit",
+  "problem_id": "erdos_249",
+  "purpose": "Prevent an undefined Stern--Brocot asymptotic from being presented as a complete proof or given generic historical attribution, while preserving the exact evidence required for a future review.",
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "stern_brocot_cusp_frontier@sharp_stern_brocot_cusp_frontier-2026-08-25_v0",
+    "canonical_mechanism_family": "unbound Stern--Brocot asymptotic proposal",
+    "replacement_decision": "retire_inflated_route",
+    "evidence_class": "Source-unverified packet proposal: no inspectable definition, proof-bearing note, formal declaration, checker, or primary-source locator for the named asymptotic.",
+    "primary_source_basis": [
+      "Classical Stern--Brocot and Farey-tree theory is ambient terminology only; the current packet contains no primary text establishing the proposed E_n/C_n normalization or constants.",
+      "The repository's bounded exact-identifier search and frontier-currency inspection are retained as negative evidence, not as a literature novelty claim."
+    ],
+    "closest_known_result": "No theorem-level antecedent can be identified until E_n, C_n, the one-run/two-run decomposition, and the remainder are defined in an immutable source. Generic Stern--Brocot vocabulary does not support the proposed limits.",
+    "comparison_relation": "There is no premise/conclusion object to compare: the packet row is an unbound proposal, so classical Stern--Brocot/Farey results cannot be mapped to it without a source-defined normalization.",
+    "exact_delta": "No inspectable mathematical delta is established. The only durable result is a claim-boundary correction that removes the row from active theorem credit.",
+    "disconfirming_evidence": "The current #249 packet and bounded repository searches contain no definitions of E_n or C_n, no proof-bearing note, no Lean declaration, no executable checker, and no external locator for the asserted constants or remainder.",
+    "confidence": {
+      "level": "high_for_retirement_and_source-gap_classification; none_for_correctness, novelty, or significance",
+      "basis": "The packet is current as provenance, but no source artifact exists to support a theorem-level judgement."
+    },
+    "significance": "No current standalone mathematical significance can be assigned. The useful contribution is navigational: it prevents an asymptotic slogan from consuming expert attention or being mistaken for #249 progress.",
+    "claim_ceiling": "State only that the corpus records an unassessed Stern--Brocot cusp-asymptotic proposal whose definitions and proof are not source-bound. Do not claim a standard theorem, asymptotic, priority, or #249 advance.",
+    "hard_step": "Supply one immutable source generation defining the frontier and correction pair, exact normalization and decomposition, quantitative remainder proof, and target consumer.",
+    "open_boundary": "Until that source exists, correctness, attribution, novelty, and relevance remain unresolved rather than negative mathematical results.",
+    "paper_disposition": {
+      "classification": "omit_with_reason",
+      "target_section": "none; retain only in an internal retired-route ledger",
+      "relation": "Retire from the established active-result inventory; do not create a paper theorem or supporting section.",
+      "why_here": "An undefined proposal cannot help a skeptical reader distinguish proved mathematics from an open construction question."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "No independently restatable verified or source-inspectable proposition exists.",
+      "release_boundary": "Keep out of Comparator and public theorem surfaces until the exact source gap is repaired by its owner."
+    },
+    "bounded_expert_act": "No expert novelty review is warranted now. If a source-bearing construction lands, inspect one immutable generation for definitions, normalization, remainder, and consumer before reopening.",
+    "reentry_trigger": "Re-enter only when a source-bound generation provides the missing definitions and proof spine, with an exact primary-text comparison target.",
+    "source_generation_binding": {
+      "packet_commit": "c32f436a2c1c4d1d1666d74ee19b74a5a703da27",
+      "packet_sha256": "7652ca1207b97adcc67f14890f5ff93006e4df2dd9af331d9e16a8118ae871fa",
+      "source_scope": "No #249 source module, proof-bearing note, reviewer card, exact checker, or external source was located.",
+      "parity_status": "Packet provenance is current, but mathematical evidence is absent; no proof, computation, or primary-source theorem is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_gap",
+    "bound_snapshot": {
+      "packet_commit": "c32f436a2c1c4d1d1666d74ee19b74a5a703da27",
+      "packet_sha256": "7652ca1207b97adcc67f14890f5ff93006e4df2dd9af331d9e16a8118ae871fa"
+    },
+    "claim_guard": "Retired unbound proposal only; no theorem, novelty, significance, or Comparator claim.",
+    "reentry_trigger": "Re-enter after an immutable source generation defines the object and proof spine."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The review is a source-availability decision, not a mathematical proof review; the missing object definition is the entire bottleneck.",
+    "slow_down_at": "Do not infer constants, standardness, or relevance from the Stern--Brocot label alone.",
+    "automation_can_establish": [
+      "packet/source path presence",
+      "bounded exact-identifier search results",
+      "provenance and currency hashes"
+    ],
+    "human_judgment_required": [
+      "whether a future source actually defines the same normalization",
+      "whether the proposed remainder and target consumer are mathematically relevant after landing"
+    ],
+    "review_act": "One bounded expert act after re-entry: compare the source-defined E_n/C_n theorem line-by-line with the packet row; no review is appropriate before then."
+  },
+  "paper_disposition": {
+    "classification": "omit_with_reason",
+    "target_section": "internal retired-route ledger only",
+    "supersession_relation": "Retired from active theorem inventory pending a source-bearing replacement."
+  },
+  "comparator_advisory": {
+    "independent_interface_justified": false,
+    "reason": "No exact proposition is available to restate or verify."
+  },
+  "adjudication": {
+    "verdict": "retire_unbound_claim_not_assess_theorem",
+    "evidence_class": "single current packet row with no bound definitions, proof-bearing source, checker, or primary-source locator",
+    "closest_known_prior_art": "Classical Stern--Brocot and Farey-tree theory is ambient vocabulary only; it is not an antecedent for the unspecified frontier, correction terms, or constants in this row.",
+    "exact_delta": "No theorem-level delta can be compared because E_n, C_n, the one-run/two-run decomposition, and the remainder estimate are not defined in an inspectable source.",
+    "disconfirming_evidence": "The current #249 packet and bounded exact-identifier searches contain the row but no definitions of E_n or C_n, proof-bearing note, Lean declaration, executable checker, or external source anchor.",
+    "confidence_ceiling": "High confidence that the packet row is not presently evidence for a theorem; truth, novelty, and attribution remain unassessed until a complete source object lands.",
+    "significance_rationale": "The durable contribution is a navigation correction: a suggestive Stern--Brocot label and asymptotic constants cannot carry #249 method credit without a defined frontier and proof spine.",
+    "bounded_expert_review_act": "Re-enter only after one immutable generation defines the frontier and correction pair, states the exact decomposition and constants, proves the nonnegative O(n^2 8^-n) remainder, and identifies the target consumer under the same normalization."
+  },
+  "review_unit": {
+    "result_family": "stern_brocot_root_frontier_cusp_asymptotic",
+    "exact_result_id": "sharp_stern_brocot_cusp_frontier",
+    "source_generation": {
+      "repository_commit": "c32f436a2c1c4d1d1666d74ee19b74a5a703da27",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "packet_sha256_before_adjudication": "7652ca1207b97adcc67f14890f5ff93006e4df2dd9af331d9e16a8118ae871fa",
+      "local_formal_source_scope": "No #249 source module, proof-bearing note, reviewer card, or exact checker was located for this named asymptotic."
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "confidence_class": "unassessed",
+    "novelty_confidence": "not_assessable_without_a_defined_frontier_and_a_source-bound_argument",
+    "significance": "Potentially useful only if a precisely defined Stern--Brocot frontier supplies a quantitative asymptotic relevant to the #249 endpoint; at present the material contribution is the claim-boundary repair.",
+    "closest_known_framework": "Classical Stern--Brocot and Farey-tree asymptotics are an ambient subject, not an antecedent for an unspecified frontier E_n, correction C_n, or constants 1 and 7/3.",
+    "expert_judgment_that_can_change_state": "Review one immutable note that defines E_n and C_n, states the exact one-run and two-run decomposition, proves the nonnegative O(n^2 8^-n) remainder with constants, and compares the result to a source that uses the same frontier normalization."
+  },
+  "prior_art_locators": [],
+  "disconfirming_evidence": [
+    {
+      "kind": "bounded_repository_search",
+      "locator": "#249 packet, #249 source tree, reviewer-card surface, and prior-art-route surface for sharp_stern_brocot_cusp_frontier, one-run cusp, two-run, E_n, C_n, and the claimed constants",
+      "finding": "The packet row was the sole result-specific occurrence. No definitions of E_n or C_n, proof-bearing note, exact checker, Lean declaration, or external source locator was found.",
+      "effect": "Neither the stated asymptotic nor a conventional attribution can currently be assessed."
+    },
+    {
+      "kind": "frontier_integrity_currency",
+      "locator": "formal_math_frontier_integrity --check-currency, Erdős #249 row",
+      "finding": "The packet is current as provenance, so currency does not fill the missing evidence gap.",
+      "effect": "A current packet can still contain an unbound mathematical formulation."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The corpus records a proposed Stern--Brocot cusp asymptotic whose definitions and proof have not yet been bound to a source; its constants and remainder are unassessed.",
+    "forbidden_wording": [
+      "A complete proof gives the Stern--Brocot cusp asymptotic.",
+      "Lean proves the limits 2^n E_n -> 1 and 4^n(E_n-C_n) -> 7/3.",
+      "The one-run and two-run expansion is a standard named theorem in this normalization.",
+      "This asymptotic advances or solves Erdős Problem 249."
+    ],
+    "open_boundary": "Definitions, normalization, decomposition, remainder proof, and relevance to the binary-totient endpoint must each be supplied before prior-art or significance classification."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "unbound Stern--Brocot asymptotic proposal; no canonical theorem yet",
+    "disposition": "retire from the established active-result inventory until an immutable source generation supplies the mathematical object and evidence spine",
+    "paper_disposition": "omit; at most mention as an unassessed construction question once the exact frontier has been defined",
+    "comparator_advisory": "No interface: there is no independently restatable verified or source-inspectable proposition.",
+    "human_understanding_delta": "Separates a suggestive combinatorial label from the missing frontier definition, expansion, and quantitative proof that a skeptical reader would need before evaluating the constants."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "claim and source audit",
+    "output_stage": "claim-boundary correction",
+    "artifact": "stern_brocot_cusp_frontier_v0 prior-art route and packet status repair",
+    "human_understanding_delta": "A reviewer can now see that the central objects and remainder proof are absent, rather than mistaking an asymptotic slogan for a completed argument.",
+    "verification_state": "Bounded local repository search and #249 frontier-currency inspection; no proof, formal check, computation, or external theorem is claimed.",
+    "publication_or_review_state": "Internal correction only; no paper, reviewer card, Comparator interface, public theorem, or novelty assertion.",
+    "canonicalization_state": "Retires an unsupported pseudo-result rather than creating a separate theorem object.",
+    "unresolved_downstream_bottleneck": "A defined frontier/correction pair, a proof-bearing decomposition with exact remainder, and a primary-source comparison under the same normalization.",
+    "next_stage_owner": "Mathematical Assimilation Steward if a source-bearing construction lands; Novelty Observatory on the resulting immutable review unit."
+  }
+}

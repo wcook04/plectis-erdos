@@ -1,0 +1,359 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "fixed_prime_last_loss_tail_mechanism",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_classical_harmonic_J_p_descent_with_elementary_weighted_denominator_tail_transfer",
+  "problem_id": "erdos_1049",
+  "purpose": "Attribute the harmonic loss set and its p-adic descent correctly, classify 'last loss' as descriptive packaging, isolate the exact recurrence-specific weighted transfer, consolidate the finite moving-prime tail-lattice census, and prevent either finite evidence stream from being promoted to an all-index q-Apéry theorem.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/fixed_prime_last_loss_tail_mechanism.card.json",
+    "refinery_handoff_commit": "04f64590c08a7bea6955de0881d47bd9bd006962",
+    "source_path": "formal_math/probes/erdos1049_fixed_prime_infinite_tail.py",
+    "source_result_ids": [
+      "fixed_prime_infinite_tail_closes_step_one",
+      "qapery_tail_denominator_prime_support",
+      "window_divisor_supply_and_first_appearance_law"
+    ],
+    "argument_map": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/FixedPrimeInfiniteTailProof.md"
+  },
+  "classification": {
+    "ambient_framework": "p_adic_valuation_of_harmonic_partial_sums_and_recursive_generation_of_harmonic_divisibility_sets",
+    "harmonic_loss_set": "classical_Eswarathasan_Levine_J_p",
+    "descent_and_branching": "classical_Boyd_p_adic_algorithm",
+    "exact_J5": "classical_source_result_independently_replayed_locally",
+    "weighted_denominator_tail_transfer": "elementary_source_specific_conditional_corollary_apparently_unlocated_as_a_named_result",
+    "priority_claim": "none",
+    "recommended_terminology": "finite-J_p denominator-tail transfer",
+    "acceptable_alias": "last-loss fixed-prime tail lemma",
+    "discouraged_terminology": [
+      "last-loss theorem",
+      "new harmonic-prime criterion",
+      "unconditional fixed-prime q-Apery tail",
+      "proof of the Eswarathasan--Levine conjecture"
+    ],
+    "attribution": "Credit Eswarathasan--Levine for introducing J_p, conjecturing its finiteness, defining harmonic primes, and determining J_5. Credit Boyd for the p-adically convergent harmonic descent and branching-process framework. Credit the local card only for the elementary weighted congruence that transfers a finite J_p into a denominator tail under a separate all-index continuity hypothesis, the exact finite q-Apéry replay, and the semantic audit that keeps the source's unproved all-level monodromy outside the claim.",
+    "mathematical_interest": "The transfer is elementary but useful: it prevents an early Wolstenholme loss from being mistaken for a permanent obstruction and identifies the recurrence-specific continuity premise as the actual throat.",
+    "reusable_scope": "Recurrence and Pade denominators whose p-adic leading term is a unit-weighted reciprocal sum congruent to a fixed unit multiple of H_K modulo p.",
+    "why_it_matters": "It preserves the fixed-prime strategy after the final harmonic loss without overstating the evidence, while the finite moving-prime census records the complementary failure mode. The harmonic input at p=5 is classical and exact, but both all-index continuity and cofinal moving-prime support remain open."
+  },
+  "primary_sources": [
+    {
+      "id": "eswarathasan_levine_1991_p_integral_harmonic_sums",
+      "source_id": "eswarathasan_levine_1991_p_integral_harmonic_sums",
+      "title": "p-Integral harmonic sums",
+      "authors": [
+        "Arulappah Eswarathasan",
+        "Eugene Levine"
+      ],
+      "venue": "Discrete Mathematics 91 (1991), 249-257",
+      "doi": "10.1016/0012-365X(90)90234-9",
+      "url": "https://doi.org/10.1016/0012-365X(90)90234-9",
+      "exact_anchor": "The abstract defines J(p), conjectures its finiteness, proves the conjecture for p<=7, and records the minimal harmonic-prime pattern. For p=5 this gives the positive-index set {4,20,24}.",
+      "exact_source_locator": "Publisher abstract only; a full-text theorem/page locator is unavailable because the primary artifact could not be acquired.",
+      "supports": "Only the official publisher record and abstract-level bibliographic context for J_p, the finiteness conjecture, and the reported J_5 pattern; this row is not primary-text evidence.",
+      "does_not_support": "Any full-text theorem or page-level attribution, the q-Apery denominator sequence, weighted coefficient continuity, or the local denominator-tail transfer.",
+      "source_read_status": "unresolved_official_publisher_abstract_only; direct_primary_pdf_attempt_http_403",
+      "primary_pdf_read": false,
+      "source_artifact": null,
+      "source_artifact_source_url": "https://www.sciencedirect.com/science/article/pii/0012365X90902349",
+      "source_access_attempted_at": "2026-08-27",
+      "source_access_attempts": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/0012365X90902349/pdfft?isDTMRedir=true&download=true",
+          "retrieval_route": "direct_official_http",
+          "result": "HTTP 403 Cloudflare challenge; no primary artifact returned",
+          "artifact_acquired": false
+        }
+      ],
+      "source_access_boundary": "The official publisher record and abstract were located, but the direct PDF endpoint returned HTTP 403 with a Cloudflare challenge. No full-text artifact is claimed or redistributed in this route; the E-L attribution remains abstract-level and unresolved pending a readable primary copy.",
+      "consuming_claims": []
+    },
+    {
+      "id": "boyd_1994_p_adic_harmonic_partial_sums",
+      "source_id": "boyd_1994_p_adic_harmonic_partial_sums",
+      "annex_slug": "boyd-1994-p-adic-harmonic-partial-sums",
+      "title": "A p-adic study of the partial sums of the harmonic series",
+      "author": "David W. Boyd",
+      "venue": "Experimental Mathematics 3 (1994), 287-302",
+      "doi": "10.1080/10586458.1994.10504298",
+      "url": "https://eudml.org/doc/229081",
+      "exact_anchor": "Section 3, printed pp. 290--293, recursively generates the sets J_p; Proposition 3.3, printed p. 292, characterizes finiteness of J_p by v_p(H_n) tending to infinity; Theorem 5.2, printed p. 294, gives the p-adically convergent expansion for H_{pn}-p^{-1}H_n; Sections 6-7, printed pp. 297--302, formulate the branching-process model and finiteness heuristics.",
+      "supports": "The closest established framework for finite harmonic loss trees, descendants, and p-adic continuation beyond early losses.",
+      "does_not_support": "The source-specific unit weights g_m, q-Apery monodromy, or a permanent primitive-denominator divisor.",
+      "source_read_status": "primary_archive_pdf_read_and_local_artifact_bound",
+      "source_artifact": "annexes/boyd-1994-p-adic-harmonic-partial-sums/source.pdf",
+      "source_artifact_sha256": "ab522093e470884b0ec9bdb2388773aaa95e14f9aaddbd09decd4e896afd09b2",
+      "pdf_pages": 16,
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "source_artifact_source_url": "https://emis.de/ft/52006",
+      "source_artifact_distribution": "local_only_ignored; not part of the public publication surface",
+      "source_artifact_locator": "Title page; Section 3; Proposition 3.3; Theorem 5.2; Sections 6-7",
+      "exact_source_locator": "PDF title page; printed Sections 3 and 5, Proposition 3.3 and Theorem 5.2; printed Sections 6-7.",
+      "consuming_claims": [
+        "fixed_prime_last_loss_tail_mechanism.classification.descent_and_branching",
+        "fixed_prime_last_loss_tail_mechanism.classification.attribution",
+        "fixed_prime_last_loss_tail_mechanism.claim_boundary.allowed_wording"
+      ]
+    },
+    {
+      "id": "sanna_2016_p_adic_harmonic_valuation",
+      "source_id": "sanna_2016_p_adic_harmonic_valuation",
+      "annex_slug": "sanna-2016-p-adic-harmonic-valuation",
+      "title": "On the p-adic valuation of harmonic numbers",
+      "author": "Carlo Sanna",
+      "venue": "Journal of Number Theory 166 (2016), 41-46",
+      "doi": "10.1016/j.jnt.2016.02.020",
+      "url": "https://iris.unito.it/bitstream/2318/1622121/1/padicharm.pdf",
+      "exact_anchor": "PDF p. 1, abstract and Introduction: defines J_p, records J_5={4,20,24}, and states that the Eswarathasan--Levine finiteness conjecture remains open. PDF p. 1, Lemma 1.2: J_p is finite if and only if v_p(H_n) tends to negative infinity. PDF pp. 1--2, Theorems 1.1 and 1.3: proves a zero-density bound and a positive-logarithmic-density valuation subset, not finiteness for every p.",
+      "supports": "Modern exact status boundary and the valuation interpretation of a finite harmonic divisibility set.",
+      "does_not_support": "A weighted reciprocal-sum transfer, fixed q-Apery prime, or all-index recurrence continuity.",
+      "source_read_status": "author_manuscript_pdf_read_and_local_artifact_bound",
+      "source_artifact": "annexes/sanna-2016-p-adic-harmonic-valuation/source.pdf",
+      "source_artifact_sha256": "c9897de412142d35c4ec286d5d0981fa361d16a92ffba6e582f41025d6fa5e53",
+      "pdf_pages": 4,
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "source_artifact_source_url": "https://drive.usercontent.google.com/download?id=1JyI8lp2P4KjwG5o-0hmTbFnaxZtk_Shb&export=download&confirm=t",
+      "source_artifact_provenance": "Author website linked copy; institutional repository URL remains the canonical resolvable source URL.",
+      "source_artifact_distribution": "local_only_ignored; not part of the public publication surface",
+      "source_artifact_locator": "PDF p. 1: abstract, Introduction, Lemma 1.2, and Theorem 1.1; PDF p. 2: Theorem 1.3 and continuation of the density argument",
+      "exact_source_locator": "PDF p. 1: abstract, Introduction, Lemma 1.2, and Theorem 1.1; PDF p. 2: Theorem 1.3 and continuation of the density argument.",
+      "consuming_claims": [
+        "fixed_prime_last_loss_tail_mechanism.classification.harmonic_loss_set",
+        "fixed_prime_last_loss_tail_mechanism.classification.exact_J5",
+        "fixed_prime_last_loss_tail_mechanism.classification.attribution",
+        "fixed_prime_last_loss_tail_mechanism.claim_boundary.allowed_wording"
+      ]
+    },
+    {
+      "id": "carofiglio_cherubini_gambini_2025_harmonic_conjectures",
+      "source_id": "carofiglio_cherubini_gambini_2025_harmonic_conjectures",
+      "annex_slug": "arxiv-2503-15714-harmonic-conjectures",
+      "title": "On Eswarathasan--Levine and Boyd's conjectures for harmonic numbers",
+      "authors": [
+        "Leonardo Carofiglio",
+        "Giacomo Cherubini",
+        "Alessandro Gambini"
+      ],
+      "venue": "arXiv:2503.15714 [math.NT], version 1 (2025-03-19)",
+      "url": "https://arxiv.org/abs/2503.15714",
+      "exact_anchor": "PDF pp. 1--2: defines J_p, states the Eswarathasan--Levine finiteness and harmonic-prime conjectures, and reproduces the recursion H_{pn+k} ≡ H_k + p^{-1}H_n (mod p), citing Theorem 3.1 of the 1991 paper; PDF p. 3, Theorem 1.4: reports the finite-range computational boundary through p=16843 with the exceptional p=1381 case and the no-valuation-4 result away from that exception.",
+      "supports": "A current primary status boundary for the harmonic-loss framework: the 1991 recursion and conjectures remain the classical input, while the modern paper supplies finite computational evidence rather than an all-level finiteness or fixed-prime q-Apery theorem.",
+      "does_not_support": "The source does not prove the Eswarathasan--Levine conjecture for every prime, the q-Apery coefficient-continuity premise, a permanent fixed-prime denominator divisor, or the #1049 irrationality target.",
+      "source_read_status": "primary_arxiv_pdf_read_and_local_artifact_bound",
+      "source_artifact": "annexes/arxiv-2503-15714-harmonic-conjectures/source.pdf",
+      "source_artifact_sha256": "dc246c14cf4f32451f820ea07c4f0814c0d506f5ffc8140d788928440b000812",
+      "pdf_pages": 9,
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "source_artifact_source_url": "https://arxiv.org/pdf/2503.15714",
+      "source_artifact_distribution": "local_only_ignored; not part of the public publication surface",
+      "source_artifact_locator": "PDF pp. 1--2: definitions, conjectures, and the H_{pn+k} recursion; PDF p. 3: Theorem 1.4 and its explicit finite-range exceptions and limitations",
+      "exact_source_locator": "PDF pp. 1--2: definitions, conjectures, and the H_{pn+k} recursion; PDF p. 3: Theorem 1.4 and its explicit finite-range exceptions and limitations.",
+      "consuming_claims": [
+        "fixed_prime_last_loss_tail_mechanism.classification.harmonic_loss_set",
+        "fixed_prime_last_loss_tail_mechanism.classification.exact_J5",
+        "fixed_prime_last_loss_tail_mechanism.observatory_adjudication_2026_08_26.claim_ceiling",
+        "fixed_prime_last_loss_tail_mechanism.claim_boundary.allowed_wording"
+      ]
+    }
+  ],
+  "source_generation_binding": {
+    "generation_id": "harmonic-primary-artifacts-20260827-v2",
+    "artifact_coverage": "3_of_4_full_text_artifacts_bound; Eswarathasan--Levine remains abstract-level publisher evidence with an explicit no-full-text claim",
+    "primary_source_artifacts": [
+      {
+        "source_id": "boyd_1994_p_adic_harmonic_partial_sums",
+        "artifact": "annexes/boyd-1994-p-adic-harmonic-partial-sums/source.pdf",
+        "sha256": "ab522093e470884b0ec9bdb2388773aaa95e14f9aaddbd09decd4e896afd09b2"
+      },
+      {
+        "source_id": "sanna_2016_p_adic_harmonic_valuation",
+        "artifact": "annexes/sanna-2016-p-adic-harmonic-valuation/source.pdf",
+        "sha256": "c9897de412142d35c4ec286d5d0981fa361d16a92ffba6e582f41025d6fa5e53"
+      },
+      {
+        "source_id": "carofiglio_cherubini_gambini_2025_harmonic_conjectures",
+        "artifact": "annexes/arxiv-2503-15714-harmonic-conjectures/source.pdf",
+        "sha256": "dc246c14cf4f32451f820ea07c4f0814c0d506f5ffc8140d788928440b000812"
+      }
+    ],
+    "unbound_source_boundary": {
+      "source_id": "eswarathasan_levine_1991_p_integral_harmonic_sums",
+      "status": "publisher_record_and_abstract_only",
+      "url": "https://www.sciencedirect.com/science/article/pii/0012365X90902349",
+      "claim_limit": "Use only the bibliographic and abstract-level J_p/J_5 attribution; do not imply a locally archived full-text source."
+    },
+    "integrity_note": "Local-only artifacts were downloaded from the named primary/archive endpoints, checked as PDFs, hashed, and read at the locators recorded on each source row; ignored artifact paths are intentionally not a public redistribution claim."
+  },
+  "mechanism_comparison": {
+    "classical_harmonic_object": "J_p records indices where the numerator of H_K is divisible by p. Its finite-tree computation and p-adic descendants are established harmonic-number machinery.",
+    "local_weighted_object": "The recurrence application replaces H_K by a unit-weighted reciprocal sum. The continuity hypothesis forces this weighted sum to agree with g_* H_K modulo p.",
+    "transfer": "Outside J_p the weighted normalized quantity has valuation -1, so a finite J_p yields a permanent denominator divisor after its largest element.",
+    "Wolstenholme_boundary": "Wolstenholme explains the unavoidable early index p-1 in J_p for p>=5. It blocks a tail beginning before p-1 but says nothing against a tail beginning after max J_p.",
+    "remaining_throat": "For the q-Apéry specialization, the p=5 loss set and finite row replay are not the open issue; the all-index coefficient continuity/monodromy premise is. FixedPrimeInfiniteTailProof.md derives (C5) from (M), certifies (M) only for N=1,2,3, and explicitly leaves (M) at every level open."
+    ,
+    "moving_prime_boundary": "The separate primitive-tail census has explicit loss blocks and only finite start coverage. Its Lean declarations are conditional consumers for a common denominator divisor or a prime exterior-determinant witness; it does not supply those witnesses cofinally.",
+    "window_probe_subordination": "The exact window-divisor probe through starts 0..14 found a nontrivial gcd at every tested upper-half start and verified seven first-appearance prime divisibilities by 3^s-2^s. This is a finite diagnostic of the same denominator-tail theme, not an independent cofinal law: the fixed-prime conditional mechanism already supplies the correct all-index question, namely the recurrence-specific continuity premise."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "harmonic numbers divisible by prime p set J_p p-adic tree",
+      "p-integral harmonic sums J_5 4 20 24",
+      "Boyd p-adic harmonic partial sums branching process",
+      "finite J_p harmonic valuation tends negative infinity",
+      "weighted harmonic sum denominator tail p-adic continuity"
+    ],
+    "result": "The exact harmonic object, J_5 computation, descent tree, and finiteness conjecture are established in Eswarathasan--Levine, Boyd, and later harmonic-valuation work. The bounded search did not locate a standard name or prior statement for the recurrence-specific weighted congruence-to-denominator-tail transfer.",
+    "boundary": "The weighted transfer is elementary and may be folklore; non-location does not support novelty or priority. 'Last loss' should remain a descriptive project alias."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Using the classical finite set J_5={4,20,24}, the proved weighted p-adic transfer would force a permanent 5-divisor in the q-Apéry primitive denominator tail if the displayed all-level monodromy/continuity premise holds; that premise is currently certified only for N<=3 and rows through 301.",
+    "forbidden_wording": [
+      "The project discovered J_5.",
+      "A Wolstenholme loss disproves every later fixed-prime tail.",
+      "The q-Apery continuity premise is proved for all levels.",
+      "The fixed-prime denominator tail is an unconditional theorem for #1049.",
+      "The finite loss blocks prove that no fixed prime can persist at all indices.",
+      "The finite tail-lattice census supplies a cofinal moving supporting prime.",
+      "The window-divisor scan through start 14 proves its first-appearance law cofinally or independently closes step 1.",
+      "Step 1 of the 3/2 producer is unconditionally closed.",
+      "This proves irrationality or solves Erdos #1049."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_new_J5_computation",
+      "not_a_proof_of_finite_Jp_for_all_primes",
+      "not_an_all_index_q_Apery_tail",
+      "not_a_height_or_decay_theorem",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/fixed_prime_last_loss_tail_mechanism.card.json",
+      "effect": "Keep established J_p attribution and the weighted-transfer delta while consolidating the finite moving-prime tail-lattice boundary into the same semantic object."
+    },
+    {
+      "consumer": "Erdos #1049 proof fleet",
+      "effect": "Treat p=5 harmonic loss finiteness as settled input, but keep all-index q-Apéry continuity and the separate first-power determinant condition open. The finite window-divisor scan is subordinate diagnostic evidence, not a separate closure obligation."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present 'last loss' as explanatory packaging around classical harmonic-number machinery, not as a new named theorem or an unconditional denominator-tail result."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_all_level_continuity_or_moving_prime_supply",
+    "priority_order": [
+      "keep Eswarathasan--Levine, Boyd, and Sanna as the harmonic J_p/valuation framework and the local weighted transfer as a conditional corollary",
+      "audit any future q-Apéry claim only against an all-level coefficient-continuity/monodromy proof, not finite rows or early Wolstenholme losses",
+      "treat moving-prime window scans as subordinate finite diagnostics unless cofinal witness production is proved"
+    ],
+    "lane": "re-enter only when all-level continuity or cofinal moving-prime support is source-current and independently checkable"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "fixed_prime_harmonic_loss_and_denominator_tail_prior_art_review",
+    "output_stage": "conditional_mechanism_human_review_support",
+    "artifact": "#1049 finite-J_p denominator-tail transfer after the last harmonic loss",
+    "human_understanding_delta": "Classical J_5={4,20,24} and Boyd's p-adic descent are separated from the local weighted transfer. The actual throat is the unproved all-level q-Apéry continuity premise; neither finite rows nor Wolstenholme losses decide it.",
+    "verification_state": "Primary harmonic sources, finite q-Apéry replay, and the displayed conditional congruence are bound; all-index continuity is not proved.",
+    "publication_or_review_state": "Private conditional-significance support; no priority, unconditional fixed-prime tail, height/decay theorem, irrationality, or #1049 endpoint claim.",
+    "canonicalization_state": "One fixed-prime/last-loss semantic object consolidating harmonic input, weighted transfer, and subordinate moving-prime diagnostics; no separate finite-census closure card.",
+    "unresolved_downstream_bottleneck": "An all-level coefficient-continuity/monodromy proof or a cofinal moving-prime witness theorem.",
+    "next_stage_owner": "Novelty Observatory for any exact weighted-transfer antecedent; Mathematics Refinery for conditional consolidation; #1049 proof/public owners for the open continuity or supply theorem."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "fixed_prime_last_loss_tail_mechanism@qapery-proof-source-20260826",
+    "evidence_class": "Conditional ordinary congruence with classical external harmonic input and finite q-Apéry replay; not Lean or independently reviewed.",
+    "closest_known_result": "Eswarathasan--Levine's J_p harmonic-prime sets, Boyd's p-adic descent/branching framework, and Sanna's valuation characterization; no named antecedent for the recurrence-specific weighted transfer was located.",
+    "comparison_relation": "The harmonic machinery is classical; the source-specific delta is an elementary conditional congruence transferring a finite J_p into a permanent denominator divisor under an all-index coefficient-continuity hypothesis.",
+    "exact_delta": "The fixed-prime route survives the final known harmonic loss only conditionally: the weighted transfer identifies the all-level continuity premise as the throat, while finite q-Apéry replay and moving-prime scans remain diagnostics.",
+    "disconfirming_evidence": "No all-index continuity, height/decay theorem, cofinal moving-prime supply, or irrationality consequence is present; finite rows through 301 cannot establish the continuity premise.",
+    "confidence": {
+      "J5_attribution_and_conditional_logic": "high_internal_provisional",
+      "source_specific_transfer_folklore_status": "medium_internal_provisional",
+      "unconditional_denominator_tail": "low_unresolved"
+    },
+    "significance": "Medium supporting value with high semantic-boundary value: it prevents an early Wolstenholme loss from being misread as permanent obstruction and isolates the true continuity obligation.",
+    "claim_ceiling": "The known J_5 loss set and the conditional weighted congruence are admitted. No unconditional fixed-prime denominator tail, moving-prime theorem, height/decay result, irrationality, endpoint, or priority claim is admitted.",
+    "hard_step": "Prove the all-index q-Apéry monodromy/continuity premise or produce an independent cofinal moving-prime witness; the conditional transfer itself is not the endpoint.",
+    "open_boundary": "The all-level continuity premise and any cofinal moving-prime supply remain open, so the #1049 denominator-tail and irrationality routes remain unresolved.",
+    "bounded_expert_review_act": "Check the weighted congruence against the declared recurrence normalization and search p-adic Padé literature for an exact antecedent; do not treat finite rows as continuity evidence.",
+    "reentry_trigger": "Re-enter if all-level continuity, a direct weighted-transfer antecedent, a cofinal moving-prime theorem, or the source/card generation changes.",
+    "source_generation_binding": {
+      "proof_source_sha256": "",
+      "primary_harmonic_sources": [
+        "Eswarathasan--Levine 1991, DOI 10.1016/0012-365X(90)90234-9",
+        "Boyd 1994, DOI 10.1080/10586458.1994.10504298",
+        "Sanna 2016, DOI 10.1016/j.jnt.2016.02.020"
+      ],
+      "parity_status": "classical harmonic attribution current; local weighted transfer and finite q-Apéry replay are source-bound; all-level continuity remains unproved"
+    },
+    "classification": {
+      "result_family": "finite_J_p_weighted_denominator_tail_transfer",
+      "evidence_class": "conditional_ordinary_congruence_with_classical_external_harmonic_input_and_finite_replay",
+      "closest_prior_art": "Eswarathasan--Levine's J_p harmonic-prime sets, Boyd's p-adic descent/branching framework, and Sanna's valuation characterization; no located standard name for the recurrence-specific weighted transfer.",
+      "comparison_relation": "The harmonic machinery is classical. The source-specific delta is an elementary conditional congruence transferring a finite J_p into a permanent denominator divisor when an all-index coefficient-continuity premise holds.",
+      "novelty_confidence": "plausible_but_weakly_evidenced_conditional_packaging; no priority claim",
+      "significance_grade": "medium_supporting_boundary_high_semantic_value",
+      "why_care": "It prevents an early Wolstenholme loss from being misread as a permanent obstruction and identifies all-level recurrence continuity—not the known J_5 set—as the actual fixed-prime throat.",
+      "hard_step": "Prove the all-index q-Apéry monodromy/continuity premise; finite rows through 301 do not establish it.",
+      "natural_friction": "The transfer is conditional, the harmonic loss set is externally sourced, and moving-prime window scans remain finite diagnostics only.",
+      "disconfirming_evidence": "No all-index continuity, height/decay theorem, cofinal moving-prime supply, or irrationality consequence is present.",
+      "confidence_ceiling": "High for the cited J_5 attribution and conditional logic; medium for the source-specific transfer's folklore status; zero for an unconditional #1049 denominator tail.",
+      "bounded_expert_act": "Check the weighted congruence against the declared recurrence normalization and search p-adic Padé literature for an exact antecedent; do not treat finite rows as continuity evidence.",
+      "reentry_condition": "Re-enter if all-level continuity, a direct weighted-transfer antecedent, or the source/card generation changes."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1049 fixed-prime harmonic-loss / denominator-tail transfer",
+      "disposition": "retain_as_one_conditional_supporting_mechanism_and_consolidate_moving_prime_diagnostics",
+      "paper_disposition": "supporting_lemma_in_p_adic_loss_and_tail_section",
+      "supersession_relation": "Keep Eswarathasan--Levine, Boyd, Sanna, the conditional weighted transfer, and finite q-Apéry replay in one semantic object; do not split J_5, Wolstenholme, and window scans into separate advances.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "Status-tagged conditional proposition with explicit all-level continuity hypothesis, classical-source labels, finite-replay boundary, and no endpoint implication.",
+      "expert_attention_reason": "The object changes the interpretation of the fixed-prime route: the known early loss is not the blocker, but the conditional bridge must be checked before the route is credited."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "classical_harmonic_loss_framework_plus_source_specific_conditional_transfer",
+      "output_stage": "claim_calibrated_conditional_mechanism_for_human_review",
+      "artifact": "finite-J_p denominator-tail transfer after the last harmonic loss",
+      "human_understanding_delta": "Separates classical J_p data, the elementary weighted congruence, finite q-Apéry replay, and the unproved all-level continuity throat.",
+      "verification_state": "Primary harmonic attribution and conditional logic are bound; finite replay is diagnostic; all-index continuity is open.",
+      "publication_or_review_state": "Conditional status-tagged visibility is defensible; no priority, unconditional tail, irrationality, or #1049 endpoint claim.",
+      "canonicalization_state": "One fixed-prime/last-loss mechanism consolidates harmonic input, weighted transfer, and subordinate moving-prime diagnostics.",
+      "unresolved_downstream_bottleneck": "All-level q-Apéry continuity/monodromy or an independent cofinal moving-prime witness theorem.",
+      "next_stage_owner": "Mathematics Refinery for consolidation and Role 3 for statement firewall; #1049 proof owners for the open continuity or supply theorem."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "classical_harmonic_attribution_current_local_transfer_source_bound_all_level_continuity_open",
+    "bound_snapshot": {
+      "primary_harmonic_sources": [
+        "Eswarathasan--Levine 1991, DOI 10.1016/0012-365X(90)90234-9",
+        "Boyd 1994, DOI 10.1080/10586458.1994.10504298",
+        "Sanna 2016, DOI 10.1016/j.jnt.2016.02.020"
+      ],
+      "parity_status": "classical harmonic attribution current; local weighted transfer and finite q-Apery replay source-bound; all-level continuity unproved"
+    },
+    "claim_guard": "The known J_5 loss set and the conditional weighted congruence are admitted, but an all-level q-Apéry continuity/monodromy premise remains open. No unconditional fixed-prime denominator tail, moving-prime supply theorem, height/decay result, irrationality, endpoint, or priority claim is admitted.",
+    "reentry_trigger": "Re-enter if all-level continuity, a direct weighted-transfer antecedent, a cofinal moving-prime theorem, or the source/card generation changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Classical J_p attribution and the weighted congruence are comparatively routine; the load-bearing issue is the unproved all-level recurrence continuity premise.",
+    "slow_down_at": "Check the exact p-adic normalization, the finite J_5={4,20,24} input, and the phrase 'if continuity holds' before interpreting any denominator tail.",
+    "automation_can_establish": [
+      "Primary harmonic-source locators",
+      "The conditional weighted-transfer statement and finite q-Apéry replay boundary",
+      "That finite rows through 301 do not prove all-level continuity"
+    ],
+    "human_judgment_required": [
+      "Whether the source-specific weighted transfer has a named p-adic Padé antecedent",
+      "Whether the conditional bridge is worth a status-tagged Comparator proposition",
+      "Whether moving-prime scans should remain subordinate diagnostics"
+    ],
+    "review_act": "One bounded source and hypothesis audit; then direct expert attention to proving continuity or constructing a cofinal moving-prime witness.",
+    "attention_ceiling": "Medium supporting value with high semantic boundary value; no unconditional tail or endpoint significance claim."
+  }
+}

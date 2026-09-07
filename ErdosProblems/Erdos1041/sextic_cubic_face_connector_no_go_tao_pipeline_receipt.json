@@ -1,0 +1,31 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_cubic_face_positive_radius_connector_no_go",
+  "recorded_at": "2026-08-25",
+  "input_stage": "full_sextic_mixed_model_adversarial_connector_scout",
+  "output_stage": "exact_pure_cubic_face_no_go_and_stratified_atlas_architecture",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticCubicFaceConnectorNoGo.md",
+    "ErdosProblems/Erdos1041/SexticCubicFaceConnectorNoGo.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_cubic_face_connector_no_go.py",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_mixed_global_atlas.py"
+  ],
+  "human_understanding_delta": "The apparent numerical zero on the cubic coefficient face is structural. Every positive-radius non-antipodal sixth-root chord crosses a half-step ray where z^3 is nonzero purely imaginary and Re(z^3-z^6)=|z|^6>0. Thus a global positive-radius sextic atlas is impossible; the exact cubic face must use its radius-zero origin connector and a separate stability cone.",
+  "verification_state": {
+    "analytic": "complete_exact_half_step_intersection_and_positive_escape_proof",
+    "symbolic": "passed_exact_Q_sqrt3_all_twelve_gap_representative_replay_with_escape_coefficients_27_over_64_and_1_over_27",
+    "lean": "passed_canonical_cached_focused_build_and_serialized_authority_replay_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "research packet and claim ceiling updated; source-current connection refresh, scoped validation, and consequence mapping completed; all source-level canonicalization is complete and this receipt is prepared for scoped Git landing",
+  "unresolved_downstream_bottleneck": "Prove a quantitative radius-zero origin-connector stability cone around the pure cubic face, then construct positive-radius atlases only on the complementary compact sextic faces and transfer the stratified result to actual polynomials.",
+  "next_stage_owner": "Refinery: audit the twelve-pair geometric classification and preserve the distinction between the false positive-radius atlas and the still-valid radius-zero cyclic-trinomial mechanism; research owner then proves the stable cubic-origin cone.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex adversarial computation and analytic derivation under operator direction, using the existing quintic atlas and cyclic-trinomial corpus",
+    "computation": "A bounded differential-evolution scout drove the cubic-face optimum to radius zero. Exact symbolic algebra, not the optimizer, proves the no-go for every positive radius and all non-antipodal pairs.",
+    "formalization": "Lean formalizes positivity from a nonzero purely imaginary cube, the canonical adjacent midpoint identity, and the set-containment contradiction.",
+    "claim_boundary": "No-go for equal-positive-radius root-direction truncated-spoke connectors on H(z)=Re(z^3-z^6). This does not refute radius-zero connectors, other path families, the sextic near-Fekete theorem, or unrestricted Erdos #1041."
+  }
+}

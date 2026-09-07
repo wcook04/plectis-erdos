@@ -1,0 +1,361 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos1041_constant_factor_component_perimeter",
+  "generated_at": "2026-08-27",
+  "status": "adjudicated_established_mechanisms_with_apparently_unlocated_source_specific_all_degree_constant_factor_theorem",
+  "problem_id": "erdos_1041",
+  "source_result_ids": [
+    "unconditional_constant_factor_pair_geodesic"
+  ],
+  "purpose": "Position the authored all-degree constant-factor path theorem against the closest regular-level, global-perimeter, and finite-degree primary sources while preserving its ordinary-proof and sharp-target boundaries.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos1041_constant_factor_component_perimeter.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md",
+    "source_commit": "bdc39f96f6ba5737adff1ea5be1acb9511714718",
+    "source_result_id": "unconditional_constant_factor_pair_geodesic"
+  },
+  "source_generation": {
+    "status": "proof_card_and_packet_snapshot_current_for_declared_result",
+    "proof_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md",
+      "commit": "bdc39f96f6ba5737adff1ea5be1acb9511714718",
+      "sha256": "468464ba059381ba34b6378feca99e36d3e932031364d93e7c6d54e31fed12e6"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "current_commit": "7c7bc59bb737f356b5d2cf4a9c7b833d8141cf41",
+      "current_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+      "result_row_reviewed": "exact_results[63].id=unconditional_constant_factor_pair_geodesic",
+      "result_row_sha256": "d6eed735c1000f0d98febb04c0086a7521de5d7109d3a7b171039777a3abc695",
+      "card_snapshot_commit": "db0cea11c9a6545b21b78c61cf031ef206ece747",
+      "card_snapshot_sha256": "0a463beca6906a28858a05f859b83a93522fbb33053ffe8f355cb9a1a1c6307b"
+    },
+    "finite_checker": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py",
+      "sha256": "3e7211325410b02a0d917d7b2800e75d0d3d94fc46833c8f8e5d5da91d03e42a"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/erdos1041_constant_factor_component_perimeter.card.json",
+      "commit": "db0cea11c9a6545b21b78c61cf031ef206ece747",
+      "sha256": "0a463beca6906a28858a05f859b83a93522fbb33053ffe8f355cb9a1a1c6307b"
+    },
+    "review_generation": "2026-08-27_primary_text_attribution_refresh"
+  },
+  "parity_audit": {
+    "status": "result_row_current_and_bound_to_committed_packet",
+    "effect": "The declared result row is inspected in the committed 7c7bc59 packet; unrelated packet rows are not imported. The committed card snapshot is db0cea11 and the proof/checker hashes are unchanged.",
+    "reentry_condition": "Re-enter only if the declared result row, proof source, or card changes, or if a primary source containing the exact component inequality is found."
+  },
+  "claim_ceiling": "An authored ordinary proof gives, for every monic degree-n polynomial, a path of length at most 8 mu^(1/n) inside K_(2mu) joining two zero occurrences; in the squarefree case the zero locations are distinct. It does not prove K_mu containment, length below 2, or Erdős #1041.",
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "unconditional_constant_factor_pair_geodesic@proof-bdc39f96-card-db0cea11-packet-a8c108e9",
+    "source_generation_binding": {
+      "proof_commit": "bdc39f96f6ba5737adff1ea5be1acb9511714718",
+      "proof_sha256": "468464ba059381ba34b6378feca99e36d3e932031364d93e7c6d54e31fed12e6",
+      "card_commit": "db0cea11c9a6545b21b78c61cf031ef206ece747",
+      "card_sha256": "0a463beca6906a28858a05f859b83a93522fbb33053ffe8f355cb9a1a1c6307b",
+      "reviewed_packet_snapshot_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+      "current_packet_commit": "7c7bc59bb737f356b5d2cf4a9c7b833d8141cf41",
+      "current_packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+      "result_row_reviewed": "exact_results[63].id=unconditional_constant_factor_pair_geodesic",
+      "result_row_sha256": "d6eed735c1000f0d98febb04c0086a7521de5d7109d3a7b171039777a3abc695",
+      "packet_delta_policy": "the declared result row was inspected in the committed packet; unrelated rows are not silently included"
+    },
+    "evidence_class": "authored_ordinary_universal_proof_with_exact_finite_regression_and_primary_source_context",
+    "comparison_relation": "Pólya's 1928 primary scan supports the global filled-lemniscate area--capacity input only. The local winding/coarea estimate and assembled all-degree 8-rho theorem remain a source-specific synthesis of established regular-level calculus, length-area, capacity, Koebe, and boundary-selection mechanisms; the exact component-multiplicity inequality was not located in the bounded primary-source search.",
+    "closest_known_result": "Pólya (1928), printed pp. 280--282, is the inspected global area--capacity antecedent; Kuznetsova--Tkachev supplies regular-level lemniscate coarea calculus; Eremenko--Hayman supplies a degree-dependent global perimeter bound; Pendyala supplies a distinct sharp degree-four path theorem. None of these inspected sources states the exact componentwise multiplicity inequality or the assembled all-degree 8-rho result.",
+    "exact_delta": "The source-specific delta is the removal of ambient-degree dependence: a universal authored path bound 8 mu^(1/n) in K_(2mu), obtained by localizing winding to one component and detouring a singular critical level, versus the located global O(n) perimeter context and finite-degree sharp theorem.",
+    "disconfirming_evidence": "Global O(n) perimeter bounds retain ambient degree; the critical-level area derivative can diverge; and the sharp degree-four theorem uses a different finite-degree hub mechanism. These boundaries prevent upgrading the result to K_mu, a sharp constant, or a universal solution of #1041.",
+    "confidence_ceiling": "High for the authored ordinary theorem, committed result-row/card parity, finite regression, and Pólya's global area--capacity attribution; medium for exact-literature non-location and specialist proof completeness; no priority, first-proof, or acceptance inference.",
+    "claim_ceiling": "Claim only that an authored ordinary proof gives, for every monic degree-n polynomial, a path of length at most 8 mu^(1/n) inside K_(2mu) joining two zero occurrences, with distinct locations only in the squarefree case. Do not claim Lean verification, K_mu containment, length below 2, priority, or an Erdős #1041 solution.",
+    "novelty_confidence": {
+      "state": "plausible_but_weakly_evidenced",
+      "ceiling": "No priority, first-proof, or community-acceptance claim; a specialist must still test exact antecedents and proof completeness."
+    },
+    "significance_assessment": {
+      "grade": "high_attention_candidate",
+      "why_care": "It is the only current all-degree arbitrary-geometry partial theorem in this route: it removes ambient-degree dependence at the cost of moving from K_mu to K_(2mu), thereby locating a geometric critical-level obstruction rather than merely reporting a weaker constant.",
+      "mechanism_family": "componentwise length-area control and regular-level root-pair geometry for polynomial lemniscates",
+      "expert_attention_reason": "A short specialist audit can decide whether the local winding-to-area step and regular-level boundary assembly are valid; that decision materially changes the #1041 arbitrary-geometry claim ceiling."
+    },
+    "exact_claim_ceiling": "An authored ordinary proof gives, for every monic degree-n polynomial, a path of length at most 8 mu^(1/n) inside K_(2mu) joining two zero occurrences; only in the squarefree case does this yield two distinct zero locations. It does not prove K_mu containment, length below 2, or Erdős #1041.",
+    "open_boundary": "The exact local inequality still needs specialist antecedent/completeness review; the theorem remains at K_(2mu) with constant 8, is not Lean-checked, and leaves the sharp K_mu/length-2 #1041 statement open.",
+    "hard_step": "Verify the componentwise winding/coarea Cauchy--Schwarz inequality and the regular-level detour/boundary hop across a singular critical level; the finite regression does not establish this universal assembly.",
+    "hard_step_and_natural_friction": "The load-bearing step is the componentwise winding/coarea Cauchy-Schwarz inequality and its regular-level detour past a singular critical level. Preserve that geometric trade rather than presenting the gap from 8 to 2 as a cosmetic constant loss.",
+    "disconfirming_evidence_preserved": [
+      "Global O(n) perimeter bounds retain ambient degree and cannot by themselves yield an absolute root-pair bound.",
+      "The critical-level area derivative can diverge, so a direct K_mu perimeter argument is not available from this route.",
+      "Pendyala's sharp degree-four theorem is a different finite-degree mechanism, not an all-degree antecedent."
+    ],
+    "review_scope": {
+      "primary_sources_used": [
+        "Erdos-Herzog-Piranian 1958, Metric properties of polynomials, Problem 5/page 139",
+        "Pólya 1928, Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete, printed pp. 228--232 and 280--282 (scan SHA-256 2de0cd74d07f02ff08be81e1eaac35b5529e1c60e35e1c5c9b4c4ca0602fd205)",
+        "Kuznetsova-Tkachev 2003, Length functions of lemniscates, Lemma 1 and equations (19)-(24)",
+        "Eremenko-Hayman 1999, On the length of lemniscates, Theorem 1 and Lemmas 1-2",
+        "Pendyala 2026, A Degree-Four Lemniscate Path Theorem, Theorem 1"
+      ],
+      "search_scope": "bounded primary-source phrase search plus exact inspection of the four cited papers; no claim that the entire literature was exhausted",
+      "closest_relation": "established ingredients; exact local inequality and all-degree assembly apparently unlocated",
+      "uncertainty": "high for Pólya's global area--capacity attribution; medium for literature non-location and specialist proof completeness; high for the pinned source/card statement and its stated boundary"
+    },
+    "paper_disposition": {
+      "class": "headline/core_mechanism",
+      "target_section": "Complements and further questions — 5. The global Newton-flow claim ceiling",
+      "relation": "Consolidate local inequality, regular-level detour, lifts, boundary hop, and 8-rho theorem as one partial result; keep sharp special-family theorems subordinate and orthogonal.",
+      "reason": "This object changes the first-contact claim ceiling for arbitrary geometry while making the remaining critical-level obstruction inspectable."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "ordinary authored proof; zero occurrences versus squarefree distinct locations; K_(2mu); constant 8; finite checker is regression only; no Lean, priority, sharp target, or #1041 solution",
+      "release_owner": "Role 3; Observatory does not award acceptance or canonical status"
+    },
+    "bounded_expert_act": "Audit the local componentwise winding/coarea inequality and the regular-level-to-boundary assembly; use Pólya only for the inspected global area--capacity step and do not re-search that attribution.",
+    "reentry_trigger": "Re-enter if a primary source containing the exact component-multiplicity inequality is found, the ordinary proof source or declared packet row changes, or a K_mu/critical-level strengthening lands."
+  },
+  "review_unit": {
+    "result_family": "erdos1041_componentwise_perimeter_constant_factor_path",
+    "exact_result_id": "unconditional_constant_factor_pair_geodesic",
+    "source_generation": {
+      "ordinary_proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md",
+      "ordinary_proof_commit": "bdc39f96f6ba5737adff1ea5be1acb9511714718",
+      "ordinary_proof_sha256": "468464ba059381ba34b6378feca99e36d3e932031364d93e7c6d54e31fed12e6",
+      "reviewer_card": "docs/formal_math/reviewer_cards/erdos1041_constant_factor_component_perimeter.card.json",
+      "reviewer_card_commit": "db0cea11c9a6545b21b78c61cf031ef206ece747",
+      "reviewer_card_sha256": "0a463beca6906a28858a05f859b83a93522fbb33053ffe8f355cb9a1a1c6307b",
+      "research_packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6"
+    },
+    "review_generation": "2026-08-27_primary_text_attribution_refresh",
+    "confidence_ceiling": "High for the authored ordinary theorem, source/hash parity, and stated K_(2mu) boundary; medium for the claim that the exact synthesis is unlocated in the surveyed literature; no priority or acceptance inference."
+  },
+  "classification": {
+    "polya_filled_lemniscate_area_capacity": "established_primary_scan_1928_global_input_only",
+    "regular_level_calculus": "established_Kuznetsova_Tkachev_2003",
+    "global_lemniscate_perimeter_context": "established_Eremenko_Hayman_1999",
+    "sharp_degree_four_path_theorem": "established_Pendyala_2026_different_method",
+    "length_area_and_univalent_tools": "classical",
+    "exact_component_multiplicity_inequality": "apparently_unlocated_in_bounded_primary_source_search",
+    "all_degree_constant_factor_path_synthesis": "source_specific_authored_result_apparently_unlocated",
+    "priority_claim": "none; specialist confirmation is downstream and not a release gate",
+    "recommended_terminology": "componentwise length--area estimate for polynomial lemniscates",
+    "discouraged_terminology": [
+      "new coarea formula",
+      "solution of Erdos 1041",
+      "sharp lemniscate path theorem",
+      "critical-level perimeter theorem",
+      "Lean-checked constant-factor theorem"
+    ],
+    "mathematical_interest": "The result gives a single all-degree absolute path bound and identifies the critical-level area singularity, rather than ambient degree, as the remaining obstruction in this route.",
+    "reusable_scope": "Regular components of proper holomorphic level sets where boundary winding gives a local mapping degree and the enclosed-area derivative is controlled.",
+    "why_it_matters": "It converts a previously degree-dependent boundary-hop estimate into a degree-free partial theorem, while showing why optimizing constants alone cannot recover the sharp statement at K_mu."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_herzog_piranian_1958",
+      "title": "Metric properties of polynomials",
+      "authors": ["Paul Erdos", "Fritz Herzog", "George Piranian"],
+      "venue": "Journal d'Analyse Mathematique 6 (1958), 125--148",
+      "url": "https://users.renyi.hu/~p_erdos/1958-05.pdf",
+      "exact_anchor": "Page 139, immediately above and in Problem 5: one component contains at least two zeros, and the question asks for a path of length less than 2 joining two of the listed z_nu.",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 24,
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "retrieved_at": "2026-07-28",
+      "verification_state": "primary_pdf_read_exact_problem_locator_compared",
+      "exact_source_locator": "Printed p. 139 / PDF p. 15 / extracted.md lines 594--602: if all zeros lie in the unit disk, one component of E contains at least two zeros; Problem 5 immediately asks for a path of length less than 2 joining two listed zeros.",
+      "supports": "Historical problem source and the multiplicity-based setting.",
+      "does_not_support": "The componentwise length--area inequality or the all-degree 8-rho theorem."
+    },
+    {
+      "id": "polya_1928_filled_lemniscate_area",
+      "title": "Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete",
+      "authors": ["George Pólya"],
+      "venue": "Sitzungsberichte der Preussischen Akademie der Wissenschaften, Physikalisch-Mathematische Klasse (1928), printed pp. 228--232 and 280--282",
+      "url": "https://archive.org/details/sitzungsbericht1928preu",
+      "primary_scan_sha256": "2de0cd74d07f02ff08be81e1eaac35b5529e1c60e35e1c5c9b4c4ca0602fd205",
+      "exact_anchor": "Printed pp. 228--232 (scan pp. 258--262) give the four-times transfinite-radius projection bound; printed pp. 280--282 (scan pp. 312--314) state the area--capacity inequality and the polynomial sublevel bound |E_R| <= pi R^(2/n), with translated monomial equality.",
+      "supports": "The global filled-lemniscate area--capacity input used in level selection.",
+      "does_not_support": "The componentwise inequality H^1(partial C')^2 <= 2 pi k' sigma A'(sigma), the critical-level detour, or the assembled all-degree 8-rho path theorem."
+    },
+    {
+      "id": "eremenko_hayman_1999",
+      "title": "On the length of lemniscates",
+      "authors": ["Alexandre Eremenko", "Walter Hayman"],
+      "venue": "Michigan Mathematical Journal 46 (1999), 409--415",
+      "url": "https://www.math.purdue.edu/~eremenko/dvi/erdos23.pdf",
+      "exact_anchor": "Theorem 1 gives total boundary length at most alpha_0 n < 9.173n for a degree-n monic polynomial; Lemmas 1--2 use intersection multiplicity and projections rather than the present area derivative.",
+      "supports": "The best classical global degree-dependent perimeter context explicitly displaced by the local estimate.",
+      "does_not_support": "A component-local k-dependent coarea inequality or any root-pair geodesic theorem."
+    },
+    {
+      "id": "kuznetsova_tkachev_2003",
+      "title": "Length functions of lemniscates",
+      "authors": ["Olga S. Kuznetsova", "Vladimir G. Tkachev"],
+      "venue": "Manuscripta Mathematica 112 (2003), 519--538",
+      "doi": "10.1007/s00229-003-0411-3",
+      "url": "https://arxiv.org/abs/math/0306327",
+      "exact_anchor": "Definition 1 and Section 2.1, especially Lemma 1 and equations (19)--(24), treat proper regular lemniscate regions, coarea differentiation, and the logarithmic gradient f'/f.",
+      "supports": "Closest located primary-source framework for regular-level coarea calculus on analytic lemniscates.",
+      "does_not_support": "The inequality L(partial C)^2 <= 2 pi k sigma A'(sigma), the critical-level detour, or the root-pair assembly."
+    },
+    {
+      "id": "pendyala_2026_degree_four",
+      "title": "A Degree-Four Lemniscate Path Theorem",
+      "author": "Venkata Siddharth Pendyala",
+      "venue": "arXiv:2606.24875v1 (2026)",
+      "url": "https://arxiv.org/abs/2606.24875",
+      "local_annex": "annexes/arxiv-2606-24875-erdos1041-quartic-lemniscate-path",
+      "exact_anchor": "Theorem 1 and its proof: zeros are listed with multiplicity and the sharp original path conclusion is proved for degree four using a four-point radial lemma and a minimum-enclosing-disk hub.",
+      "source_archive": "annexes/arxiv-2606-24875-erdos1041-quartic-lemniscate-path/source.pdf",
+      "source_archive_sha256": "337db0cc046023b1429d9131720d199843766629cd2ad8bf8b04a40168d7bcd8",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 3,
+      "extracted_markdown": "annexes/arxiv-2606-24875-erdos1041-quartic-lemniscate-path/extracted.md",
+      "extracted_markdown_sha256": "a2b0425974ef126a45a054a587da13801636ce98d552646349026955284e967c",
+      "retrieved_at": "2026-07-31",
+      "verification_state": "primary_pdf_read_exact_theorem_and_multiplicity_convention_compared",
+      "exact_source_locator": "PDF p. 1, abstract and Theorem 1 statement; PDF pp. 1--3, proof of Theorem 1: degree-four zeros counted with multiplicity and a possibly degenerate polygonal path of length less than 2.",
+      "supports": "The closest direct modern theorem on the same path problem and the correct zero-multiplicity convention.",
+      "does_not_support": "An all-degree theorem, the componentwise coarea inequality, or the 8-rho construction."
+    }
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "polynomial lemniscate component perimeter coarea area derivative proper holomorphic map",
+      "area derivative lemniscate perimeter",
+      "proper holomorphic map perimeter area derivative boundary length Cauchy Schwarz",
+      "polynomial roots path inside lemniscate length two Erdos problem"
+    ],
+    "result": "The inspected Pólya scan now fixes the global area--capacity attribution; the search also found Kuznetsova--Tkachev's regular-level/coarea framework, Eremenko--Hayman's global perimeter theorem, and Pendyala's different sharp degree-four path theorem. It still did not locate the exact local multiplicity inequality or the assembled all-degree constant-factor theorem.",
+    "boundary": "Non-location supports only apparently unlocated pending specialist confirmation, never a priority or first-in-literature claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "An authored ordinary proof gives, in every degree, a path between two zero occurrences of length at most 8 mu^(1/n) inside K_(2mu); in the squarefree branch the zero locations are distinct. The proof is a source-specific synthesis of classical length--area, capacity, Koebe, and boundary-selection mechanisms.",
+    "forbidden_wording": [
+      "Every monic polynomial has two distinct zero locations.",
+      "The coarea or length--area method is new.",
+      "The theorem works at the critical level K_mu.",
+      "The finite checker proves the universal theorem.",
+      "The result proves the sharp length-2 statement or solves Erdos 1041."
+    ],
+    "nonclaims": ["not_priority_claim", "not_Lean_checked", "not_independently_reviewed", "not_sharp_constant", "not_K_mu_containment", "not_erdos_1041_solution"]
+  },
+  "expert_review_support": {
+    "hard_step": "Localize winding to one regular component, pair it with the area derivative by Cauchy--Schwarz, and then pay for moving off the singular first critical level without reintroducing ambient degree.",
+    "natural_friction": "The regular-level detour and K_(2mu) containment must remain visible; the gap to the target is geometric, not merely the numerical difference between constants 8 and 2.",
+    "false_route_retired": "The global 9.173n perimeter estimate is not the right obstruction for a local root pair; local multiplicity removes n, but the critical-level singularity survives.",
+    "evidence_separation": "The universal statement is an authored ordinary proof, the Python receipt is finite regression, classical papers supply mechanisms and nearby theorems, and independent specialist review remains open."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Load-bearing ordinary proof with classical ingredients; the local component inequality and its passage through a singular critical level are the only places where a specialist can materially change the assessment.",
+    "slow_down_at": "The winding-to-area Cauchy--Schwarz estimate on one regular component, the choice of a level away from the first critical value, and the boundary hop that preserves K_(2mu) while producing two zero occurrences.",
+    "automation_can_establish": [
+      "Source/card commit and packet parity",
+      "Finite regression of the stated constants and containment inequalities",
+      "Citation existence and exact anchors for the surrounding lemniscate literature"
+    ],
+    "human_judgment_required": [
+      "Whether an existing proper-holomorphic or lemniscate source already contains the local multiplicity inequality",
+      "Whether the regular-level detour and boundary assembly are complete under the stated zero-occurrence quantifiers",
+      "Whether this is the right arbitrary-geometry first-contact theorem for #1041 despite its nonsharp constant"
+    ],
+    "review_act": "One bounded expert act: audit the componentwise coarea inequality and the regular-level-to-boundary assembly line by line, then search only for an exact antecedent of that local inequality. Do not spend the review budget rechecking the already separated global perimeter or degree-four comparisons."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_private_source_with_finite_regression",
+    "output_stage": "exposition_understanding_and_publication_ready_canonicalization",
+    "artifact": "erdos1041_constant_factor_component_perimeter",
+    "human_understanding_delta": "Positions the all-degree weakening against its closest regular-level, global-perimeter, and sharp degree-four antecedents; exposes the hard critical-level detour; and repairs the zero-multiplicity convention.",
+    "verification_state": "Source-current ordinary proof and packet hashes recorded; finite checker receipt passed; no Lean or independent peer review.",
+    "publication_or_review_state": "Eligible now for claim-faithful status-tagged public paper, theorem-card, exhibition, and Comparator visibility. The universal theorem remains authored ordinary mathematics rather than Lean-checked; specialist review remains downstream with no priority or acceptance claim.",
+    "canonicalization_state": "One mechanism stack combines the local inequality, level selection, lifts, boundary hop, and constant-factor theorem; Conjecture P stays an open boundary rather than a promoted result.",
+    "unresolved_downstream_bottleneck": "Independent proof review, specialist prior-art confirmation, and the sharp K_mu/length-2 problem.",
+    "next_stage_owner": "Role 3 for ordinary-proof status-tagged integration; Mathematics Refinery and complex-analysis specialists for downstream proof scrutiny."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "componentwise length--area control and regular-level root-pair geometry for polynomial lemniscates",
+    "disposition": "status-tagged public all-degree partial theorem; consolidate the local inequality, regular-level selection, lift assembly, boundary hop, and critical-level residue",
+    "consolidation_relation": "The component inequality is the reusable mechanism; the 8-rho pair path is its first all-degree consumer. Keep the sharp collinear Chebyshev theorem, the committed concyclic self-inversive alternation theorem, and binomial model-family theorems as orthogonal solved scopes, and do not split the unit-disk consumer or Conjecture P into parallel headlines.",
+    "comparator_advisory": "A status-tagged ordinary-proof firewall is appropriate now. It must retain the zero-occurrence convention, squarefree distinction, K_(2mu) containment, constant 8, and the absence of Lean verification; it must not imply the sharp target or an Erdős #1041 solution.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "Complements and further questions — 5. The global Newton-flow claim ceiling",
+      "supersession_or_consolidation": "Replace generic ceiling prose with one theorem-and-boundary object rather than a chronology of coarea, lift, and perimeter fragments.",
+      "reason": "The theorem changes the correct claim ceiling for this route while making the critical-level obstruction and sharp target explicit."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "admit as the #1041 representative and fifth member of the rolling 3-5-object cross-programme first-contact shortlist",
+      "why_care": "It is a genuine all-degree positive theorem and locates the remaining obstruction at the critical level rather than in ambient degree.",
+      "evidence_class": "authored ordinary universal proof, source parity, bounded primary-source review, finite regression; specialist review remains downstream",
+      "hard_step": "independent verification of the component coarea inequality and K_(2mu) path assembly",
+      "prior_art_uncertainty": "exact synthesis apparently unlocated; no priority inference",
+      "open_boundary": "constant 8 in K_(2mu), multiplicity convention, no Lean/review, sharp #1041 open",
+      "demoted_predecessor": "sharp collinear, committed concyclic, and binomial special-family theorems remain orthogonal supporting sections rather than first-contact candidates; none is logically superseded"
+    }
+  },
+  "flagship_reassessment_2026_08_24": {
+    "decision": "retain_as_absolute_frontier_review_candidate_and_erdos_1041_programme_representative",
+    "comparison_set": [
+      "erdos1041_sharp_collinear_root_diameter: sharp all-degree solved family with complete ordinary proof and partial Lean kernel",
+      "concyclic_self_inversive_alternation: committed sharp alternation/chord mechanism and bounded-radius solved family, ordinary proof plus exact and numerical checking",
+      "binomial_lemniscate_complementary_chords: explicit all-degree binomial solved family",
+      "erdos1041_constant_factor_component_perimeter: arbitrary-root all-degree partial theorem with enlarged containment and unreviewed ordinary proof"
+    ],
+    "reason": "The special-family theorems are sharper and better localized, but only the componentwise length--area theorem changes the arbitrary-geometry all-degree claim ceiling. Flagship placement therefore asks experts to scrutinize the most consequential unreviewed theorem; it does not rank its quality above the solved families or award community significance.",
+    "specific_expert_judgment_requested": "Check the local winding/coarea inequality and the regular-level assembly, confirm that no proper-holomorphic or lemniscate antecedent already contains the same component-multiplicity estimate, and judge whether the K_(2mu) theorem is the right arbitrary-geometry first-contact result.",
+    "committed_snapshot_boundary": "This reassessment uses the clean bdc39f96 packet row and the later committed concyclic theorem. Uncommitted packet additions are evidence for future triage, not public source parity."
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_and_comparator_candidate",
+    "reason": "The all-degree ordinary proof, source/hash parity, finite regression labelled as regression, primary-source positioning, multiplicity convention, K_(2mu) containment, and critical-level boundary are inspectable. Lean formalization and specialist review are downstream value-adds, not visibility gates.",
+    "comparator_advisory": "Expose one status-tagged statement firewall only if it preserves ordinary-proof status, zero occurrences versus squarefree distinct locations, K_(2mu), constant 8, and the absence of a sharp length-2 conclusion. The finite checker is regression evidence, not proof authority."
+  },
+  "publication_eligibility": {
+    "class": "status_tagged_public_and_comparator_candidate",
+    "basis": "inspectable authored universal proof, pinned source parity, explicit evidence split, bounded attribution search, and adjacent containment/multiplicity/open boundaries",
+    "statement_firewall": "State only the all-degree path between two zero occurrences of length at most 8 mu^(1/n) inside K_(2mu), with the squarefree distinct-location refinement. Label it ordinary proof; do not imply Lean checking, independent review, priority, K_mu containment, constant 2, Conjecture P, or an Erdős #1041 solution."
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "Complements and further questions — 5. The global Newton-flow claim ceiling",
+    "canonical_mechanism_family": "componentwise length--area control and regular-level root-pair geometry for polynomial lemniscates",
+    "relation": "Consolidate the component coarea inequality, regular-level detour, lift construction, boundary selection, constant-factor theorem, and critical-level residue into one paper object.",
+    "understanding_delta": "An all-degree 8-rho theorem in K_(2mu) is distinguished from the sharp length-2 target in K_mu, with the latter's singular perimeter obstruction still visible.",
+    "evidence_boundary": "Authored ordinary proof, source/hash parity, and finite regression only; no Lean proof, independent review, priority claim, sharp theorem, or #1041 solution.",
+    "hard_step": "Review the local winding/coarea assembly and resolve or bypass the critical-level one-root perimeter barrier.",
+    "meaningful_failed_route": "Treat the global O(n) perimeter theorem or numerical constant improvement as enough to obtain an absolute critical-level root pair.",
+    "open_remainder": "Conjecture P, sharp K_mu containment, strict length 2, specialist review, and Erdős #1041 remain open."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_primary_source_match_or_proof_generation_change",
+    "reentry_condition": "Re-enter only if a primary source is found containing the local component-multiplicity inequality, the ordinary proof source changes, or the critical-level/K_mu claim is strengthened.",
+    "do_not_redo": "Do not rerun the global O(n) perimeter comparison, finite regression, or routine Koebe/area attribution; those are already separated from the load-bearing local estimate.",
+    "open_bottleneck": "Independent checking of the local winding/coarea inequality and regular-level assembly is the bounded expert act; the sharp K_mu and length-2 theorem remain open regardless of attribution.",
+    "owner": "Complex-analysis proof lane for theorem checking; Mathematics Refinery and Role 3 for status-tagged integration; Novelty Observatory for changed primary-source evidence."
+  },
+  "adjudication_currentness": {
+    "status": "current_committed_result_row_adjudicated",
+    "bound_snapshot": {
+      "proof_commit": "bdc39f96f6ba5737adff1ea5be1acb9511714718",
+      "proof_sha256": "468464ba059381ba34b6378feca99e36d3e932031364d93e7c6d54e31fed12e6",
+      "card_commit": "db0cea11c9a6545b21b78c61cf031ef206ece747",
+      "card_sha256": "0a463beca6906a28858a05f859b83a93522fbb33053ffe8f355cb9a1a1c6307b",
+      "reviewed_packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+      "review_generation": "2026-08-27_primary_text_attribution_refresh"
+    },
+    "consumed_snapshot": {
+      "proof_commit": "bdc39f96f6ba5737adff1ea5be1acb9511714718",
+      "packet_commit": "7c7bc59bb737f356b5d2cf4a9c7b833d8141cf41",
+      "packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+      "result_row_id": "unconditional_constant_factor_pair_geodesic",
+      "result_row_sha256": "d6eed735c1000f0d98febb04c0086a7521de5d7109d3a7b171039777a3abc695"
+    },
+    "claim_guard": "Only the declared result row and inspected Pólya attribution are consumed; unrelated packet rows cannot strengthen the theorem.",
+    "reentry_trigger": "Re-enter if the declared result row, proof/card generation, or exact local-inequality source comparison changes."
+  }
+}

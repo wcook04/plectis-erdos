@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041SeparationOrCounterexample.Challenge",
+  "solution_module": "ExternalVerification1041SeparationOrCounterexample.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041SeparationOrCounterexample.separation_or_counterexample"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

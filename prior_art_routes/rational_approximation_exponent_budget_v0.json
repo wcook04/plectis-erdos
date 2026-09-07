@@ -1,0 +1,397 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "rational_approximation_exponent_budget",
+  "source_result_id": "rank_budget_law_for_rational_bases",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_standard_effective_height_small_form_bookkeeping_with_problem_specific_conditional_threshold",
+  "problem_id": "erdos_1049",
+  "purpose": "Place the clearing--homogenisation--decay inequality in the standard small-integer-linear-form framework, classify the base 3/2 rank-three constant as a conditional design threshold, and prevent rank or formal order from being used as a surrogate for effective integral height.",
+  "target": {
+    "source_result_id": "rank_budget_law_for_rational_bases",
+    "reviewer_card": "docs/formal_math/reviewer_cards/rational_approximation_exponent_budget.card.json",
+    "refinery_handoff_commit": "7df3d0a38eaad34de849c907b66f59a349d51cc4",
+    "source_commit": "7946af8bbbe7a292bc244dec2f6b02e151bf9ea4",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RankBudgetLaw.md",
+    "finite_scan_commit": "5e8eec99fb5bdd2190d2ee3dbdc70291a287e8b1",
+    "finite_scan_path": "formal_math/probes/erdos1049_rank_budget_law.py"
+  },
+  "source_generation": {
+    "status": "source_card_packet_current_at_committed_snapshot; conditional exponent budget remains a diagnostic rather than a construction",
+    "ordinary_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RankBudgetLaw.md",
+      "commit": "7946af8bbbe7a292bc244dec2f6b02e151bf9ea4",
+      "sha256": "2e41f502110e20af95b5c0f32b32c294009be83d017651f8c0595619e7f30219"
+    },
+    "finite_scan_source": {
+      "path": "formal_math/probes/erdos1049_rank_budget_law.py",
+      "commit": "5e8eec99fb5bdd2190d2ee3dbdc70291a287e8b1",
+      "sha256": "eb072e7e6c93378a47ed05c7c05693aa95b51a1c77e3d598c64ff483a40cc764"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "source_result_ids": [
+        "rank_budget_law_for_rational_bases"
+      ]
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/rational_approximation_exponent_budget.card.json",
+      "commit": "7df3d0a38eaad34de849c907b66f59a349d51cc4",
+      "sha256": "1eddc7bbd80463d6343801f24d6b61b4d113088407c976bcc86039779eef4f9d"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "parity_audit": {
+    "status": "source_card_packet_current_at_committed_snapshot",
+    "effect": "The ordinary source, finite calibration script, packet result, and reviewer card are bound to current committed generations. The rank-three constant remains conditional finite/design evidence and is not promoted to a construction, asymptotic no-go, or irrationality result.",
+    "reentry_condition": "Re-enter if RankBudgetLaw.md, the finite scan, the packet result row, the reviewer card, or a concrete family with proved decay, clearing, integrality, and nonvanishing changes."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "rank_budget_law_for_rational_bases@source-5e8eec99-card-7df3d0a3-packet-b71c16d4",
+    "source_generation_binding": {
+      "ordinary_source_commit": "7946af8bbbe7a292bc244dec2f6b02e151bf9ea4",
+      "ordinary_source_sha256": "2e41f502110e20af95b5c0f32b32c294009be83d017651f8c0595619e7f30219",
+      "finite_scan_commit": "5e8eec99fb5bdd2190d2ee3dbdc70291a287e8b1",
+      "finite_scan_sha256": "eb072e7e6c93378a47ed05c7c05693aa95b51a1c77e3d598c64ff483a40cc764",
+      "research_packet_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "research_packet_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "reviewer_card_commit": "7df3d0a38eaad34de849c907b66f59a349d51cc4",
+      "reviewer_card_sha256": "1eddc7bbd80463d6343801f24d6b61b4d113088407c976bcc86039779eef4f9d"
+    },
+    "evidence_class": "authored_ordinary_effective_height_balance_with_exact_finite_calibration_and_standard_framework_attribution",
+    "comparison_relation": "The decay-versus-effective-height inequality is standard Nesterenko-style small-linear-form bookkeeping. Fischler-Zudilin supplies the common-divisor refinement and Fischler-Rivoal supplies prescribed coefficient-growth/decrease language. The source-specific contribution is the exact rational-evaluation clearing decomposition and conditional rank-three threshold, not a new general criterion.",
+    "closest_known_result": "Fischler--Zudilin's refined Nesterenko criterion supplies the common-divisor effective-height comparison, while Fischler--Rivoal supplies the prescribed coefficient-growth/decrease formulation. Neither states this rational-evaluation clearing decomposition or the base-3/2 conditional rank-three threshold.",
+    "exact_delta": "The route-specific delta is an explicit ledger that separates rational-evaluation homogenisation, coefficient clearing, and analytic decay on one degree scale, yielding the conditional kappa_3 threshold without inferring a family from rank.",
+    "novelty_confidence": {
+      "state": "source_bound_known_framework_with_programme_specific_threshold",
+      "ceiling": "No novelty, priority, first criterion, or community-acceptance claim; the threshold is conditional on an actual auxiliary family."
+    },
+    "significance_assessment": {
+      "grade": "high_programme_filter_medium_cross_programme_reuse",
+      "why_care": "It forces decay, homogenisation, and integral clearing to be budgeted on one degree scale before rank or vanishing order is treated as evidence; this retires a recurring rank-only reasoning error.",
+      "mechanism_family": "effective-height accounting for rational and q-Padé auxiliary forms",
+      "expert_attention_reason": "The useful expert decision is whether a proposed family actually proves all four ledger obligations; the abstract inequality itself is routine."
+    },
+    "exact_claim_ceiling": "Under a separately proved decay exponent and denominator-clearing exponent, the effective-height/small-form balance gives the conditional threshold kappa_3 < 2 - 3 log(2)/log(3) = 0.107210739... at rank three and base 3/2. No construction, integrality, nonvanishing, height theorem, asymptotic no-go, or #1049 solution follows.",
+    "open_boundary": "No qualifying auxiliary family has jointly proved decay, homogenisation, clearing, integrality, and nonvanishing; the finite rank-three scan is calibration only, so no asymptotic no-go, irrationality, or #1049 endpoint follows.",
+    "hard_step_and_natural_friction": "The missing step is an actual nonzero integral auxiliary family with jointly proved decay, homogenisation, clearing, and nonvanishing. Finite direct solves calibrate cost only; they cannot supply an all-index family or an asymptotic rank-only obstruction.",
+    "disconfirming_evidence_preserved": [
+      "The corrected cubic Hankel cost boundary rejects rank-only inference.",
+      "Finite degree-3-through-12 direct solves are exact finite evidence, not an asymptotic construction or no-go.",
+      "A positive exponent budget does not imply integrality or nonvanishing."
+    ],
+    "review_scope": {
+      "primary_sources_used": [
+        "Fischler-Zudilin (2010), hypothesis (N), Theorems A-B, and common-divisor refinement",
+        "Fischler-Rivoal (2010), prescribed coefficient growth/decrease framework",
+        "Current RankBudgetLaw.md source and finite rank-budget scan"
+      ],
+      "search_scope": "bounded primary-source framework comparison and exact source/packet/card inspection; no exhaustive Padé literature claim",
+      "closest_relation": "standard effective-height/small-linear-form exponent balance with a source-specific conditional threshold",
+      "uncertainty": "high for standard attribution and source parity; low for novelty of the abstract inequality; high for any family-specific endpoint consequence"
+    },
+    "paper_disposition": {
+      "class": "headline_core_mechanism",
+      "target_section": "The effective-height budget: what a successful auxiliary family must pay",
+      "relation": "Replace rank-only architecture with one exponent ledger; subordinate selector kernels, determinant content, and finite threshold calculations beneath the obligations they actually prove.",
+      "reason": "It is the clearest human architecture for #1049 even though the underlying inequality is standard."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "minimum_firewall": "conditional ordinary criterion only; explicitly require proved decay, clearing, homogenisation, and nonvanishing for any family-specific use; finite scan is calibration; no #1049 endpoint",
+      "disposition": "paper_only_architecture_until_a_family_specific_statement_exists",
+      "release_owner": "Role 3; no standalone Comparator proposition requested for the abstract paper criterion"
+    },
+    "bounded_expert_act": "For a concrete proposed family, check all four exponent obligations on the same degree scale and compare the resulting inequality with the standard Fischler-Zudilin/Fischler-Rivoal framework.",
+    "reentry_trigger": "Re-enter when an actual auxiliary family changes the decay, clearing, integrality, or nonvanishing ledger, or when a closer primary antecedent is identified."
+  },
+  "review_unit": {
+    "result_family": "erdos1049_effective_height_small_form_exponent_budget",
+    "exact_result_id": "rank_budget_law_for_rational_bases",
+    "source_generation": {
+      "ordinary_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RankBudgetLaw.md",
+      "ordinary_source_commit": "7946af8bbbe7a292bc244dec2f6b02e151bf9ea4",
+      "ordinary_source_sha256": "2e41f502110e20af95b5c0f32b32c294009be83d017651f8c0595619e7f30219",
+      "finite_scan_source": "formal_math/probes/erdos1049_rank_budget_law.py",
+      "finite_scan_source_sha256": "eb072e7e6c93378a47ed05c7c05693aa95b51a1c77e3d598c64ff483a40cc764",
+      "reviewer_card": "docs/formal_math/reviewer_cards/rational_approximation_exponent_budget.card.json",
+      "reviewer_card_commit": "7df3d0a38eaad34de849c907b66f59a349d51cc4",
+      "formalization_scope": "ordinary_proof_and_exact_finite_calibration_no_Lean_anchor"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine exponent balance with a high-value semantic firewall: decay, homogenisation, clearing, integrality, and nonvanishing must be proved on one scale before rank has any force.",
+    "slow_down_at": "Separate analytic decay from rational-evaluation homogenisation and coefficient clearing; retain E>0 and the conditional nature of the 3/2 specialization. The 0.107210739... value prices a hypothetical family and proves neither existence nor no-go.",
+    "automation_can_establish": [
+      "Exact threshold arithmetic and bounded degree-3-through-12 finite calibration",
+      "Source/card/primary-reference parity",
+      "That no asymptotic family, integrality, nonvanishing, Lean, or irrationality claim is present"
+    ],
+    "human_judgment_required": [
+      "Whether the displayed balance is best named standard effective-height/small-linear-form bookkeeping",
+      "Whether the Fischler--Zudilin and Fischler--Rivoal comparisons cover the normalization used here",
+      "Which concrete auxiliary family could satisfy all four family-dependent obligations"
+    ],
+    "review_act": "One bounded expert act: check source correspondence and sign/normalization conventions, then require a family-specific decay/clearing/integrality/nonvanishing proof before allocating further construction attention."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "effective-height accounting for rational and q-Padé auxiliary forms",
+    "disposition": "replace the #1049 architecture and standalone-paper headline, while remaining outside the cross-programme flagship shortlist",
+    "consolidation_relation": "Consolidate rank, decay, homogenisation, clearing, and finite-solve narratives; subordinate selector kernels, determinant constructions, content no-gos, and threshold calculations by the exponents they actually prove.",
+    "comparator_advisory": "No interface at present: the criterion and specializations are ordinary paper mathematics without public formal authority, and no auxiliary family is asserted.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The effective-height budget: what a successful auxiliary family must pay",
+      "supersession_or_consolidation": "Replace rank-only architecture and organize every proposed construction or no-go beneath one exponent ledger.",
+      "reason": "It is the best human explanation of the programme's design constraint despite being routine mathematics."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do not admit; retain the existing five-object cross-programme first-contact shortlist",
+      "why_care": "The object is a decisive programme filter but supplies no family, positive theorem, or endpoint reduction.",
+      "evidence_class": "ordinary criterion plus primary-source framework anchors and bounded finite calibration",
+      "hard_step": "construct an integral nonzero family with favorable proved exponents",
+      "prior_art_uncertainty": "low; standard framework, no priority claim",
+      "open_boundary": "no family, integrality, nonvanishing, irrationality, or #1049 solution",
+      "demoted_predecessor": "none; all #1049 construction fragments remain subordinate under this architecture"
+    }
+  },
+  "representative_reassessment_2026_08_24": {
+    "decision": "retain_as_erdos_1049_programme_representative",
+    "reason": "It is the only common cost model spanning external published regions, Lean-checked local arithmetic certificates, selector kernels, determinant constructions, and route-killing content/valuation bounds.",
+    "comparison_set": [
+      "erdos1049_seven_halves_height_certificate: comparator-now numerical admission inequality; Bundschuh--Väänänen irrationality implication remains external-evidence-only",
+      "four_jet_binary_selector_kernel: Lean-checked local finite-group cancellation purchase; analytic survival and height unpaid",
+      "zudilin_primitive_residual_border_charge_no_go: exact exhaustion of one nested first-order valuation route",
+      "primitive_pade_content_normalization_no_go: projective scaling/content normalization cannot manufacture the missing effective gain"
+    ],
+    "expert_attention_reason": "Review an actual candidate family only when all four obligations—nonvanishing, integrality, decay, and clearing—are stated on the same exponent scale. Certificates or local cancellations that leave one obligation absent should remain subordinate.",
+    "specific_expert_judgment_requested": "Identify a published family satisfying the complete ledger at 3/2, or confirm precisely which exponent or assurance obligation fails; do not infer feasibility from nominal rank or vanishing order.",
+    "open_boundary": "No concrete rank-three 3/2 family with kappa below the threshold, integrality, nonvanishing, and sufficient decay is present.",
+    "comparator_advisory": "No budget interface. Preserve the layered 7/2 numerical firewall and, if useful, one four-jet finite-collision firewall; Role 3 owns integration."
+  },
+  "classification": {
+    "abstract_exponent_balance_novelty_class": "routine_asymptotic_effective_height_versus_small_linear_form_bookkeeping",
+    "standard_framework": "Nesterenko_style_small_integer_linear_forms_with_common_divisor_effective_height_refinement",
+    "recommended_terminology": "effective-height versus small-linear-form exponent balance",
+    "discouraged_terminology": "rank budget law as though it were a standard named theorem",
+    "rank_three_3_over_2_threshold_class": "problem_specific_exact_conditional_design_inequality_no_priority_claim",
+    "cubic_hankel_boundary_class": "source_specific_cost_to_gain_negative_diagnostic_not_a_literature_novelty_claim",
+    "priority_claim": "none",
+    "nearest_prior_work": [
+      "Fischler and Zudilin (2010), hypothesis (N) and Theorems A--B on printed p. 740, compare exponential small-form decay alpha with exponential coefficient height beta; their Theorem 2 on p. 742 improves the threshold using common divisors of coefficients.",
+      "Fischler and Rivoal (2010), Introduction and section 4.3, study integer linear forms with prescribed coefficient growth and form decrease and encode the comparison by the logarithmic ratio -log(alpha)/log(beta)."
+    ],
+    "attribution": "Describe the general inequality as elementary Nesterenko-style effective-height/small-form bookkeeping. Cite Fischler--Zudilin for common-divisor reductions in effective coefficient height and Fischler--Rivoal for prescribed growth/decrease language. Credit the local card only for isolating the exact clearing decomposition used by this programme and for the conditional 3/2 specialization.",
+    "mathematical_interest": "The abstract inequality is elementary, but the card has real diagnostic value: it forces decay, rational-evaluation homogenisation, and proved coefficient clearing onto one degree scale before a construction is treated as viable.",
+    "reusable_scope": "The balance applies to any rational-evaluation construction with an independently proved decay estimate and an actual integral clearing bound. It is useful in Pade, Hermite--Pade, hypergeometric, q-hypergeometric, recurrence, and determinant constructions, but only after the family-specific rates are established.",
+    "why_it_matters": "It retires a recurrent reasoning error: nominal rank, number of functions, or order of vanishing does not by itself control the height of the cleared integer form. The conditional constant 0.107210739... is therefore a target for arithmetic efficiency, not evidence that a rank-three family exists."
+  },
+  "primary_sources": [
+    {
+      "id": "fischler_zudilin_2010_nesterenko_refinement",
+      "title": "A refinement of Nesterenko's linear independence criterion with applications to zeta values",
+      "authors": [
+        "Stephane Fischler",
+        "Wadim Zudilin"
+      ],
+      "venue": "Mathematische Annalen 347 (2010), 739-763",
+      "doi": "10.1007/s00208-009-0457-y",
+      "url": "https://link.springer.com/article/10.1007/s00208-009-0457-y",
+      "local_annex": "annexes/fischler-zudilin-2010-nesterenko-refinement",
+      "source_sha256": "848505203331c85e8fbfa78658ab14b2dc71cdcef65b54f0842d03c091f8bb21",
+      "pdf_url": "https://www.imo.universite-paris-saclay.fr/~stephane.fischler/linearindep.pdf",
+      "source_pdf": "annexes/fischler-zudilin-2010-nesterenko-refinement/source.pdf",
+      "source_pdf_sha256": "848505203331c85e8fbfa78658ab14b2dc71cdcef65b54f0842d03c091f8bb21",
+      "extracted_markdown": "annexes/fischler-zudilin-2010-nesterenko-refinement/extracted.md",
+      "extracted_markdown_sha256": "2c6443143f5e058796fe2c97b9b094b8c93ca82b37de8d56637f7f551589e986",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 25,
+      "extracted_locator": "extracted.md lines 18-22 (common-divisor motivation), 67-83 (Theorem A/B), and 179-188 (Theorem 2), corresponding to printed pp. 739-763.",
+      "exact_anchor": "Abstract and section 1.1, printed pp. 739-740: small-form rate alpha and coefficient-height rate beta; Theorem B: alpha beta<1. Section 1.2, especially Theorem 2 on p. 742: common divisors improve the effective threshold.",
+      "supports": "The standard smallness-versus-integral-height framework and the use of proved common divisors to reduce effective coefficient cost.",
+      "does_not_support": "No preliminary rational-evaluation clearing identity, rank-to-decay inference, rank-three q-family, or base-3/2 constant is stated."
+    },
+    {
+      "id": "fischler_rivoal_2010_prescribed_growth",
+      "title": "Irrationality exponent and rational approximations with prescribed growth",
+      "authors": [
+        "Stephane Fischler",
+        "Tanguy Rivoal"
+      ],
+      "venue": "Proceedings of the American Mathematical Society 138 (2010), 799-808",
+      "doi": "10.1090/S0002-9939-09-10084-9",
+      "url": "https://arxiv.org/abs/0910.4448",
+      "local_annex": "annexes/fischler-rivoal-2010-prescribed-growth",
+      "source_sha256": "9d5ece7e05c442eb28e725e73aa2f0be64a57f0a9577c2bab79ce739fe9ad22d",
+      "pdf_url": "https://arxiv.org/pdf/0910.4448",
+      "source_archive": "annexes/fischler-rivoal-2010-prescribed-growth/source.tar.gz",
+      "source_archive_kind": "arxiv_source_tex",
+      "source_archive_sha256": "9d5ece7e05c442eb28e725e73aa2f0be64a57f0a9577c2bab79ce739fe9ad22d",
+      "extracted_markdown": "annexes/fischler-rivoal-2010-prescribed-growth/extracted.md",
+      "extracted_markdown_sha256": "92b0b0715923b6e76d00a9d2780ae1767cf56170b60da6ffe9ac034e671609d1",
+      "primary_source_read": true,
+      "primary_tex_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_tex_read_exact_prescribed_growth_and_multivariate_height_locators_compared",
+      "exact_source_locator": "Gzip source TeX lines 179--216: Lemma 1 and Theorem 1 state the prescribed geometric decrease/growth exponent comparison; lines 546--704: the multivariate height formulation and its Nesterenko-criterion connection.",
+      "extracted_locator": "extracted.md lines 4-22 (Lemma 1 and Theorem 1), lines 30-45 (Theorem 2 and prescribed-growth framework), and lines 234-243 (Nesterenko criterion connection), corresponding to printed pp. 2-3 and 9-10.",
+      "pdf_read_evidence": {
+        "status": "read_archived_source_bundle",
+        "retrieval_url": "https://arxiv.org/pdf/0910.4448",
+        "retrieved_at": "2026-08-26",
+        "exact_locator": "arXiv:0910.4448v1, printed pp. 2-3 (Theorems 1-2) and pp. 9-10 (Section 4.3): prescribed coefficient growth/decrease and the logarithmic exponent comparison.",
+        "archival_state": "The canonical annex retains the exact arXiv source bundle and extracted text; the source archive hash and extracted-text hash replace the prior ephemeral PDF-cache reference."
+      },
+      "exact_anchor": "Introduction, printed pp. 2-3, Theorems 1-2: prescribed geometric decrease alpha and coefficient growth beta. Printed pp. 9-10, Section 4.3: multivariate height H(L), small-form rate, and exponent -log(alpha)/log(beta), followed by the Nesterenko criterion.",
+      "supports": "The standard prescribed-growth/prescribed-decrease viewpoint and logarithmic exponent comparison.",
+      "does_not_support": "No decomposition into homogenisation and coefficient clearing, no 3/2 threshold, and no Hermite--Pade family-specific rate is supplied."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "An integer linear form can drive a Diophantine conclusion only when its smallness beats its effective integral coefficient height, together with the relevant nonvanishing and regularity hypotheses.",
+    "local_generalization_delta": "Before integrality, the card explicitly splits effective height into the b^D homogenisation cost of evaluation at a/b and an independently proved a^(kappa D) coefficient-clearing cost, then subtracts both from the decay exponent on the same D-scale.",
+    "conditional_specialization": "For an assumed rank-r family with lambda=r-1, algebra gives t<(r-1-kappa)/r. At q=3/2 and r=3 this is exactly kappa_3<2-3log(2)/log(3).",
+    "negative_consumer": "The cubic Hankel example shows why order alone is insufficient: cubic decay paired with cubic cost remains a fixed unfavorable ratio. The finite degree-3-through-12 solve is computational evidence only.",
+    "significance_boundary": "The card is a design and triage interface. It supplies neither a family, an integrality theorem, nonvanishing, an irrationality contradiction, nor a solution of Erdos Problem 1049."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "small linear forms coefficient growth decay criterion",
+      "Nesterenko criterion common divisors coefficients",
+      "rational approximations prescribed growth decrease",
+      "height exponent budget Pade rational evaluation clearing",
+      "Hermite Pade homogenization denominator clearing exponent"
+    ],
+    "result": "The bounded primary-source search located the standard Nesterenko/Fischler--Zudilin effective-height framework and Fischler--Rivoal prescribed-growth formalism. It did not locate the exact three-term clearing decomposition or the base-3/2 rank-three constant as a named result.",
+    "boundary": "Failure to locate verbatim wording supports only the scoped classification of the numerical specialization as a local conditional diagnostic; it is not evidence of priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The displayed inequality is elementary Nesterenko-style effective-height versus small-form bookkeeping. In the local rational-evaluation model it yields the exact conditional rank-three target kappa_3<2-3log(2)/log(3) at 3/2; no family attaining that target is known here.",
+    "forbidden_wording": [
+      "We discovered a new rational-approximation criterion.",
+      "Rank three solves Erdos Problem 1049 at 3/2.",
+      "The number of functions or order of vanishing determines the effective height.",
+      "The finite direct-solve scan proves an asymptotic rank-three no-go.",
+      "A positive exponent budget supplies integrality, nonvanishing, or irrationality."
+    ],
+    "nonclaims": [
+      "not_a_solution_of_erdos_1049",
+      "not_a_rank_three_construction",
+      "not_a_new_nesterenko_criterion",
+      "not_a_rank_only_inference",
+      "not_an_asymptotic_no_go_from_the_finite_scan",
+      "not_an_integrality_or_nonvanishing_theorem"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/rational_approximation_exponent_budget.card.json",
+      "effect": "Replace pending novelty language with standard-framework attribution, the scoped conditional-threshold classification, and exact primary-source anchors."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalise the abstract balance as a reusable diagnostic, keep every family-dependent rate explicit, and avoid promoting the local title into standard terminology."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "If exposed, place the no-solution and no-construction boundary adjacent to the 3/2 constant and label the finite scan as finite evidence."
+    }
+  ],
+  "expert_review_support": {
+    "hard_step": "Produce one concrete auxiliary family with jointly proved decay, effective clearing, integrality, and nonvanishing; the exponent algebra merely tests those inputs.",
+    "natural_friction": "Keep homogenisation and coefficient clearing separate, and keep the rank-three constant conditional. A finite generic solve cannot establish an asymptotic family or no-go.",
+    "evidence_separation": "The displayed balance has an ordinary proof; the 3/2 arithmetic scan is exact but finite; Fischler--Zudilin and Fischler--Rivoal supply the external framework; no Lean or independent human review is claimed."
+  },
+  "digestion_assessment": {
+    "significance_grade": "A_minus_programme_architecture_C_theorem_novelty",
+    "attention_priority": "high because every #1049 construction must pass this ledger",
+    "consolidation_verdict": "one effective-height budget section, not parallel rank, clearing, homogenisation, and finite-scan result objects",
+    "expert_review_gap": "review the ordinary derivation and then audit family-specific exponent claims only when a real family is supplied"
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "effective-height accounting for rational and q-Padé auxiliary forms",
+    "programme_disposition": "replace architecture headline and subordinate every construction or no-go by the exponents it proves or fails to prove",
+    "expert_attention_reason": "The budget is the common comparison language that prevents nominal rank and vanishing order from consuming attention before effective height is known.",
+    "evidence_class": "ordinary proof, primary-source framework attribution, and exact bounded computation; no Lean or independent review",
+    "hard_step": "Build a nonzero integral auxiliary family whose proved clearing exponent beats the displayed threshold while retaining sufficient decay.",
+    "prior_art_uncertainty": "Low: standard Nesterenko-style bookkeeping; the source-specific 3/2 number carries no novelty claim.",
+    "open_boundary": "No family, integrality, nonvanishing, irrationality, or endpoint conclusion.",
+    "comparator_interface": "Advisory comparator_now: the generic conditional balance is independently restatable and useful as an architecture firewall. Role 3 may status-tag the authored ordinary proof now, provided every family-dependent hypothesis, the finite-calibration boundary, and the absence of any constructed auxiliary family remain explicit.",
+    "paper_disposition": "headline/core mechanism",
+    "paper_target_section": "The effective-height budget: what a successful auxiliary family must pay",
+    "paper_supersession_relation": "One section replaces separate rank-budget and cost narratives; construction cards and route-killing failures become typed consumers beneath it."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_1049.md",
+    "section": "The effective-height budget: what a successful auxiliary family must pay",
+    "canonical_mechanism_family": "effective-height accounting for rational and q-Padé auxiliary forms",
+    "relation": "Replaces the architecture headline and consolidates rank, homogenisation, clearing, and finite-solve narratives; subordinates families and no-gos by their proved exponents; retires rank-only framing.",
+    "understanding_delta": "Every candidate must pay a single decay--homogenisation--clearing ledger before it can be called a small-form route.",
+    "evidence_boundary": "Ordinary balance plus standard framework attribution and bounded finite calibration; no Lean, independent review, family, integrality, nonvanishing, or irrationality claim.",
+    "hard_step": "Build an actual nonzero integral family with the jointly proved favorable exponents.",
+    "meaningful_failed_route": "Rank, vanishing order, and finite generic solves do not establish asymptotic clearing or a family.",
+    "open_remainder": "No qualifying family is supplied for 3/2 and Erdős Problem 1049 remains open."
+  },
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The exponent balance is adjudicated as routine effective-height/small-form bookkeeping; the 3/2 constant is an exact problem-specific conditional target, the corrected Hankel comparison remains a local negative diagnostic, and the source-current generic rank-three scan is bounded evidence rather than an asymptotic no-go.",
+    "do_not_redo": [
+      "Do not search for novelty in the abstract act of comparing exponential smallness and coefficient height.",
+      "Do not infer lambda=r-1 or a favorable kappa from rank alone.",
+      "Do not frame the 0.107210739... target as a construction, irrationality result, or solution."
+    ],
+    "ranked_open_throats": [
+      "value_ray_transport_polynomial_lemniscates: compare radial-cone lifting and Newton-stretch identities with classical polynomial lemniscate and covering-map theory.",
+      "generated contribution row parity: land only the owned Mersenne achievement-set adjudication row without foreign generated hunks.",
+      "finrank_totientKernelThroughLevelFamily_eq: compare the exact finite-rank corollary with affine-ordering and automatic-sequence literature."
+    ],
+    "sibling_claim_map": "The proof fleet owns construction and endpoint work. The Refinery may reuse this diagnostic. The Exhibition must not describe it as progress beyond a conditional budget analysis.",
+    "validation_state": "Source hashes and a no-write 3/2 arithmetic spot check match the 5e8eec99 snapshot; reviewer-card JSON/render and scoped-commit validation are owned by the current Refinery refresh.",
+    "next_wake_condition": "Validate and land this adjudication, then consume the value-ray transport handoff."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_actual_auxiliary_family",
+    "priority_order": [
+      "keep the ordinary decay--homogenisation--clearing inequality as the common ledger for all #1049 candidates",
+      "audit a concrete family only after its integrality, nonvanishing, decay, and clearing exponents are proved on the same scale",
+      "do not promote the finite rank-three scan or the conditional 0.107210739... threshold into an asymptotic construction or no-go"
+    ],
+    "lane": "re-enter only when a source-current auxiliary family changes one of the four ledger obligations or a primary source supplies a closer exact antecedent"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "effective_height_budget_prior_art_and_architecture_review",
+    "output_stage": "programme_architecture_human_review_support",
+    "artifact": "#1049 effective-height versus small-linear-form exponent ledger",
+    "human_understanding_delta": "The ledger is now the single architecture filter for #1049: nominal rank and vanishing order are insufficient until homogenisation, coefficient clearing, decay, integrality, and nonvanishing are jointly proved. The 3/2 constant is a conditional design target only.",
+    "verification_state": "The ordinary balance, Fischler--Zudilin/Fischler--Rivoal framework anchors, and bounded degree-3-through-12 computation are separated; no auxiliary family or Lean end-to-end theorem is claimed.",
+    "publication_or_review_state": "Private architecture significance support; ordinary mathematics may be status-tagged if the statement firewall preserves all family-dependent hypotheses. No priority, construction, irrationality, or #1049 endpoint claim.",
+    "canonicalization_state": "One headline effective-height mechanism replacing separate rank, clearing, homogenisation, and finite-scan narratives; all construction fragments remain typed consumers beneath it.",
+    "unresolved_downstream_bottleneck": "Produce a concrete nonzero integral auxiliary family whose proved clearing exponent beats the conditional threshold while retaining sufficient decay.",
+    "next_stage_owner": "Novelty Observatory for exact framework comparison; Mathematics Refinery for architecture consolidation; Comparator/Public owners for any later status-tagged proposition."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_packet_current_at_committed_snapshot_and_conditional_claim_bound",
+    "legacy_source_reaudit_handoff": {
+      "state": "primary_text_read_evidence_bound_archive_reentry_required",
+      "superseded_review_unit": "docs/formal_math/review_units/erdos1049_effective_height_budget.review_unit.v1.json",
+      "current_successor_unit": "docs/formal_math/review_units/erdos1049_effective_height_budget.review_unit.v3.json",
+      "evidence_ref": "primary_sources[fischler_rivoal_2010_prescribed_growth].pdf_read_evidence",
+      "owner_next_action": "Import arXiv:0910.4448v1 PDF into the canonical annex without absorbing existing dirty registry/index changes, then replace the ephemeral cache path with the immutable annex path.",
+      "reentry_trigger": "Canonical PDF import lands and the successor review unit records its repository path, hash, and printed-page locators."
+    },
+    "bound_snapshot": {
+      "source_result_id": "rank_budget_law_for_rational_bases",
+      "ordinary_source_commit": "7946af8bbbe7a292bc244dec2f6b02e151bf9ea4",
+      "ordinary_source_sha256": "2e41f502110e20af95b5c0f32b32c294009be83d017651f8c0595619e7f30219",
+      "finite_scan_sha256": "eb072e7e6c93378a47ed05c7c05693aa95b51a1c77e3d598c64ff483a40cc764",
+      "research_packet_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "research_packet_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "reviewer_card_commit": "7df3d0a38eaad34de849c907b66f59a349d51cc4",
+      "reviewer_card_sha256": "1eddc7bbd80463d6343801f24d6b61b4d113088407c976bcc86039779eef4f9d"
+    },
+    "claim_guard": "The exponent ledger is a standard conditional framework and design filter; the 3/2 threshold is not a construction, no-go theorem, irrationality result, or #1049 solution.",
+    "reentry_trigger": "Re-enter when a concrete auxiliary family changes decay, clearing, integrality, or nonvanishing, or a closer primary framework antecedent is identified."
+  }
+}

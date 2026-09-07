@@ -1,0 +1,20 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "two_root_path_length_lower_semicontinuity",
+  "input_stage": "returned_research_assimilation",
+  "output_stage": "verification_and_canonicalization",
+  "artifact": [
+    "ErdosProblems/Erdos1041/GenericSufficiencyClosure.md",
+    "ErdosProblems/Erdos1041/GenericSufficiencyClosure.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_generic_sufficiency_closure.py"
+  ],
+  "human_understanding_delta": "The collar/slack producer was asking for upper semicontinuity of the two-root lemniscate path length Lam, which negative_results entry 3 shows has no uniform modulus. The reduction only ever needed lower semicontinuity, and that is free: roots in the closed unit disk force every sublevel set into the fixed disk |z|<=2, so bounded-length paths for a convergent sequence of polynomials are equi-Lipschitz in a fixed compact set and Arzela-Ascoli plus lower semicontinuity of length transports a path to the limit. Hence {Lam<=2} is closed and any dense subclass suffices. Combined with the already-recorded minimum-enclosing-disk normalisation, which supplies both strict inequalities from R<1 and spends no slack, the unrestricted problem in degree n becomes the single extremal statement that z^n-1 maximises Lam on the compact closed-disk class, with Lam(z^n-1)=2 proved exactly by the petal split.",
+  "verification_state": "ordinary analytic proof complete; exact checker PASS on all seven arms (4000 a priori containment rows, 4000 strictification rows, 6000 sublevel-characterisation rows, 6000 petal rows plus sector disjointness for degrees 2..40, 11011 extremal radial rows, 58 Cassini degenerations, 39078 shrinking-family rows); canonical focused Lean build and serialized authority replay PASS, warning-free",
+  "publication_or_review_state": "private authoring checkpoint pending expert review",
+  "canonicalization_state": "open producer collar_component_and_slack_stability_after_generic_perturbation retired as unnecessary rather than discharged; its direct positive solution by a value-preserving holomorphic isotopy is recorded in the note appendix but not landed as the route",
+  "unresolved_downstream_bottleneck": "Nothing here produces a path. The remaining obligation is unchanged and is now stated once: exhibit, for every member of some dense subclass of the closed-disk class, two roots joined inside the closed lemniscate by a curve of length at most 2. The sextic mixed band, COVER, and the componentwise combined-charge lemma remain the live candidate routes.",
+  "next_stage_owner": "Refinery: restate every genericity-dependent route in this directory against Corollary D, and drop the transfer half of each of them.",
+  "tool_disclosure": "Exact Fraction and Gaussian-rational arithmetic only; the rational parametrisation of the unit circle supplies roots of exact modulus one. Computation pins the finite steps and the two exact witnesses; the analytic proof and the Lean kernel carry the theorem.",
+  "claim_boundary": "Proved: lower semicontinuity of Lam, dense-class sufficiency, the exact extremal value Lam(z^n-1)=2, and the equivalence of Erdos #1041 in degree n with sup Lam = 2 on the closed-disk class. Not proved: Erdos #1041. Upper semicontinuity of Lam is untouched. Novelty is not claimed: the compactness argument should be assumed classical until a priority search says otherwise; what is claimed is the use."
+}

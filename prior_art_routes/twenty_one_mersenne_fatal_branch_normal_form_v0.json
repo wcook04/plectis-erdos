@@ -1,0 +1,488 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "twenty_one_mersenne_fatal_branch_normal_form",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_source_specific_exact_dynamical_reformulation_and_route_consolidation",
+  "problem_id": "erdos_257",
+  "source_result_ids": [
+    "one_over_twenty_one_fatal_aligned_branch_classification",
+    "one_over_twenty_one_fatal_right_boundary_factorization",
+    "one_over_twenty_one_cofinally_bounded_defect_reduction",
+    "one_over_twenty_one_fatal_tail_subexponential_defect_split",
+    "one_over_twenty_one_cofinal_normalized_return_characterization",
+    "one_over_twenty_one_cofinal_scaled_remainder_characterization",
+    "one_over_twenty_one_closed_row_canonicalization"
+  ],
+  "purpose": "Classify the denominator-21 fatal-branch theorem as one target-specific normal form, consolidate its equivalent defect and return formulations, and prevent any of them from being described as a representation or counterexample.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/twenty_one_mersenne_fatal_branch_normal_form.card.json",
+    "fatal_branch_source_commit": "517eda8f87932b567dd5c8d11f0a11f8505c73e8",
+    "fatal_branch_source_sha256": "d8eb0904daa9735a25555db567a243e6b61c41a15c4eb160adab94de896d713d",
+    "fatal_branch_source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean",
+    "defect_source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean",
+    "defect_source_sha256": "da6c145c88f2910e5d56f2b7705abd5ea12c7d235fb8afbb4d4f68d7ff231be5",
+    "source_result_ids": [
+      "one_over_twenty_one_fatal_aligned_branch_classification",
+      "one_over_twenty_one_fatal_right_boundary_factorization",
+      "one_over_twenty_one_cofinally_bounded_defect_reduction",
+      "one_over_twenty_one_fatal_tail_subexponential_defect_split",
+      "one_over_twenty_one_cofinal_normalized_return_characterization",
+      "one_over_twenty_one_cofinal_scaled_remainder_characterization",
+      "one_over_twenty_one_closed_row_canonicalization"
+    ]
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Lean-checked target-specific equivalences consolidate seven packet coordinates into one fatal-branch normal form; the strategic value is frontier clarification, not a positive producer.",
+    "slow_down_at": "Check absorbing-fatality quantifiers, transfer among normalized return/defect/closed-row forms, and the distinction between finite orbit evidence and cofinal behavior.",
+    "automation_can_establish": [
+      "Exact Lean equivalence declarations and source/card/packet parity",
+      "Finite orbit arithmetic and named cylinder/row identities",
+      "That no coordinate form silently upgrades to 1/21 membership"
+    ],
+    "human_judgment_required": [
+      "Whether the target-specific normal form is best explained beneath the general cofinal-skip theorem",
+      "Whether any genuine supercapacity-exclusion idea remains beyond equivalent coordinates",
+      "Whether finite correction-amplification failures teach a reusable boundary"
+    ],
+    "review_act": "One bounded expert act: verify one equivalence transfer at the pinned source, then direct effort only to cofinal return production or affine-supercapacity exclusion."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "canonical greedy cofinal-skip membership with target-specific fatal-branch producers",
+    "disposition": "subordinate under rational_greedy_cofinal_skip_membership as the representative #257 frontier map; consolidate all equivalent coordinate rows",
+    "paper_disposition": "headline/core mechanism for 'The denominator-21 frontier: one fatal affine branch', not an independent flagship",
+    "comparator_advisory": "One bundled target-specific equivalence firewall is justified; do not expose equivalent coordinate forms as separate interfaces."
+  },
+  "classification": {
+    "theorem_class": "exact_target_specific_membership_nonmembership_dynamical_normal_form",
+    "novelty_class": "source_specific_exact_reformulation_and_formalized_route_consolidation_no_priority_claim",
+    "frontier_relation": "equivalent_description_of_the_open_1_over_21_membership_question_not_a_positive_producer",
+    "formalization_class": "Lean_checked_exact_equivalences",
+    "priority_claim": "none",
+    "recommended_terminology": "denominator-21 fatal-branch normal form",
+    "discouraged_terminology": [
+      "classification of all Mersenne achievement orbits",
+      "new general greedy dichotomy",
+      "proof of 1/21 membership",
+      "rational Mersenne counterexample",
+      "solution of Erdos 257"
+    ],
+    "promotion_verdict": "one_target_specific_normal_form; subordinate_equivalent_return_and_defect_rows",
+    "why_it_matters": "It identifies the exact remaining 1/21 obstruction and shows that several proposed asymptotic producers are coordinate-equivalent rather than independent advances."
+  },
+  "review_unit": {
+    "result_family": "erdos257_twenty_one_fatal_branch_normal_form",
+    "exact_result_ids": [
+      "one_over_twenty_one_fatal_aligned_branch_classification",
+      "one_over_twenty_one_fatal_right_boundary_factorization",
+      "one_over_twenty_one_cofinally_bounded_defect_reduction",
+      "one_over_twenty_one_fatal_tail_subexponential_defect_split",
+      "one_over_twenty_one_cofinal_normalized_return_characterization",
+      "one_over_twenty_one_cofinal_scaled_remainder_characterization",
+      "one_over_twenty_one_closed_row_canonicalization",
+      "one_over_twenty_one_final_skip_parity_cancellation",
+      "one_over_twenty_one_fatal_erdos_borwein_interval"
+    ],
+    "claim_version": "2026-08-26 source-parity maturity pass",
+    "source_generation": {
+      "formal_sources": [
+        {
+          "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean",
+          "recorded_commit": "517eda8f87932b567dd5c8d11f0a11f8505c73e8",
+          "clean_snapshot_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+          "sha256": "d8eb0904daa9735a25555db567a243e6b61c41a15c4eb160adab94de896d713d",
+          "status": "clean_blob_matches_card_and_route_hash; focused_elaboration_replay_deferred"
+        },
+        {
+          "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean",
+          "recorded_commit": "6819e97099de852aa78d30e1ff2b3477b70505c6",
+          "clean_snapshot_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+          "sha256": "da6c145c88f2910e5d56f2b7705abd5ea12c7d235fb8afbb4d4f68d7ff231be5",
+          "status": "clean_blob_matches_card_hash; focused elaboration replay deferred"
+        }
+      ],
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+        "committed_snapshot": "746717d54ba8d7c3262852028997562ff4d865df",
+        "sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3"
+      },
+      "reviewer_card": "docs/formal_math/reviewer_cards/twenty_one_mersenne_fatal_branch_normal_form.card.json"
+    },
+    "evidence_class": "Lean-checked exact target-specific equivalences and route-narrowing results; source blobs are hash-current at the clean snapshot, while focused elaboration replay remains deferred; finite orbit evidence is diagnostic only.",
+    "prior_art_scope": "Kakeya's achievement-set setting, standard superincreasing greedy decoding, and Kovač--Tao's strict-tail reciprocal-Lambert coding are ambient antecedents; no exact denominator-21 fatal-branch statement was located.",
+    "significance_grade": "B_plus_frontier_map",
+    "expert_act": "Check the absorbing-fatality quantifiers and equivalence transfer at the pinned source, then decide whether a genuinely new return or supercapacity-exclusion idea exists; do not review equivalent coordinates as separate advances.",
+    "release_and_paper": "One bundled target-specific Comparator advisory and a single supporting section beneath the general rational cofinal-skip headline; no specialist-review gate, no 1/21 representation, and no Erdős #257 endpoint.",
+    "next_pass": {
+      "kind": "focused_elaboration_replay_or_source_generation_change",
+      "reentry_condition": "Run the exact named declarations through the canonical lean_fast_build.py route when capacity is available, or reopen immediately if either source blob, packet generation, or claim quantifiers change.",
+      "do_not_redo": "Do not repeat the Kakeya/Merkle--Hellman/Kovač--Tao ambient search or split the seven coordinate forms into separate cards."
+    }
+  },
+  "primary_sources": [
+    {
+      "id": "kakeya_1914_partial_sums",
+      "title": "On the Set of Partial Sums of an Infinite Series",
+      "author": "Soichi Kakeya",
+      "venue": "Proceedings of the Tokyo Mathematico-Physical Society, second series 7 (1914), 250-251",
+      "doi": "10.11429/ptmps1907.7.14_250",
+      "url": "https://www.jstage.jst.go.jp/article/ptmps1907/7/14/7_14_250/_article",
+      "exact_anchor": "The classical setting of sets of subseries sums of a convergent positive series.",
+      "supports": "Achievement-set terminology and ambient object.",
+      "does_not_support": "Greedy fatality, denominator 21, quotient alignment, or the exact local equivalences."
+    },
+    {
+      "id": "merkle_hellman_1978",
+      "title": "Hiding Information and Signatures in Trapdoor Knapsacks",
+      "authors": ["Ralph Merkle", "Martin Hellman"],
+      "venue": "IEEE Transactions on Information Theory 24 (1978), 525-530",
+      "doi": "10.1109/TIT.1978.1055927",
+      "url": "https://doi.org/10.1109/TIT.1978.1055927",
+      "exact_anchor": "Greedy decoding of a superincreasing subset-sum code.",
+      "supports": "The standard algorithmic mechanism behind unique greedy digit recovery.",
+      "does_not_support": "Infinite-tail survival, fatal excess, or any 1/21 theorem."
+    },
+    {
+      "id": "kovac_tao_2024_ahmes_series",
+      "title": "On several irrationality problems for Ahmes series",
+      "authors": ["Vjekoslav Kovač", "Terence Tao"],
+      "venue": "arXiv:2406.17593 (2024)",
+      "url": "https://arxiv.org/abs/2406.17593",
+      "exact_anchor": "Remark 13",
+      "supports": "Strict-tail dominance, unique coding, and Cantor topology for fixed-base reciprocal-Lambert subsums.",
+      "does_not_support": "The source-defined fatal aligned branch, denominator-21 defect, or bounded-return equivalences."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "Strict-tail positive weights admit unique greedy coding, and achievement-set membership is a tail-survival question.",
+    "local_delta": "For the single rational target 1/21, the Lean development turns failure of survival into one explicit fatal/cofinite/aligned branch, proves exact equivalences with three asymptotic coordinates, and narrows its late closed-row dynamics to permanent affine supercapacity.",
+    "relation_to_general_card": "The existing rational cofinal-skip card is target-independent. This asset describes the sole target-specific branch that would prevent those cofinal skips for 1/21.",
+    "route_boundary": "The equivalences and closed-row analysis sharpen the question but do not produce the required returns or contradict permanent affine supercapacity.",
+    "semantic_consolidation": "Closed-row determinism, saturated-entrance ancestry, and eventual affine supercapacity are structural layers of the same fatal branch. They should not be promoted as an independent representation theorem or positive producer."
+  },
+  "adjudicated_objects": [
+    {
+      "object_id": "one_over_twenty_one_final_skip_numerator_floor",
+      "packet_result_id": "one_over_twenty_one_final_skip_numerator_floor",
+      "reviewer_card": "docs/formal_math/reviewer_cards/twenty_one_mersenne_fatal_branch_normal_form.card.json",
+      "adjudicated_at": "2026-08-25",
+      "source_version_binding": {
+        "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+        "packet_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+        "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+        "formal_source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean",
+        "formal_source_commit": "517eda8f87932b567dd5c8d11f0a11f8505c73e8",
+        "formal_source_sha256": "d8eb0904daa9735a25555db567a243e6b61c41a15c4eb160adab94de896d713d",
+        "source_generation_status": "current_clean_blob_matches_pinned_card_hash; focused_elaboration_replay_deferred",
+        "current_clean_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+        "current_clean_source_sha256": "d8eb0904daa9735a25555db567a243e6b61c41a15c4eb160adab94de896d713d",
+        "reentry_condition": "Replay the four named final-skip declarations against the current clean source before treating this historical generation as source-current."
+      },
+      "source_declarations": [
+        "rat_thirdChannelWindow_dyadicExcess",
+        "lastTwentyOneSkip_dyadicExcess_window",
+        "greedyTwentyOneRemainderRat_den_odd",
+        "lastTwentyOneSkip_remainder_num_ge_four"
+      ],
+      "classification": "source_bound_necessary_final_skip_rational_parity_signature_subordinate_to_fatal_branch",
+      "priority_claim": "none",
+      "nearest_prior_art": [
+        "Kakeya 1914 for the ambient positive-series achievement-set setting.",
+        "Merkle--Hellman 1978 for standard superincreasing greedy decoding, not this infinite-tail target.",
+        "Kovač--Tao 2024, Remark 13, for strict-tail unique coding of reciprocal-Lambert weights.",
+        "Elementary rational reduction and gcd/parity arithmetic explain the local p<3Delta, Delta<p, and odd-denominator steps; no primary source located for this exact denominator-21 p>=4 filter."
+      ],
+      "exact_delta": "For a hypothetical final denominator-21 skip with reduced predecessor p/q, the exact three-channel window gives p<3Delta and Delta<p. Every denominator on the 1/21 Mersenne orbit is odd; p=2 is the already-forbidden Mersenne exceptional coordinate, while p=3 would force q even. Therefore p>=4. This is a necessary filter only and does not bound p above or contradict the fatal branch.",
+      "argument_distinctness": "This is a sharper local numerator floor inside the already canonical fatal-branch approximation interface, not a second endpoint or a new greedy theorem. It refines the existing parity-sensitive gcd inequalities without changing the branch classification.",
+      "evidence_class": "Lean-checked at the pinned historical source generation; exact packet statement; current-source parity is stale and requires focused replay; no external theorem supplies the p>=4 conclusion.",
+      "disconfirmation_search": {
+        "queries": [
+          "\"final skip\" numerator Mersenne greedy",
+          "denominator 21 Mersenne greedy residual parity",
+          "rational achievement set final skipped term numerator gcd",
+          "Mersenne residual p<3 Delta Delta<p"
+        ],
+        "result": "The local search found only the existing target-specific fatal-branch normal form and general achievement-set/strict-tail antecedents; it did not locate an external statement of this exact p>=4 floor.",
+        "uncertainty": "Non-location supports a conservative source-specific classification, not a priority or novelty claim."
+      },
+      "confidence_ceiling": "High for the exact historical-generation theorem; medium for current-source status until focused replay; low for any originality claim beyond source-specific packaging.",
+      "significance_rationale": "The floor removes the first three predecessor numerators from a final-skip scenario and makes the missing approximation/height obstruction more concrete. Its value is triage and route sharpening: it directs attention to an upper bound or recurrence producer rather than another parity case split.",
+      "strongest_allowed_claim": "At the pinned source generation, a hypothetical final 1/21 skip has the exact dyadic-excess window and reduced predecessor numerator p>=4. The result is a subordinate necessary boundary inside the canonical fatal-branch normal form.",
+      "rejected_stronger_wording": [
+        "the final fatal skip is impossible",
+        "p>=4 excludes the TwentyOneFatalAlignedBranch",
+        "the 1/21 branch has been ruled out",
+        "this proves 1/21 membership or advances Erdős #257",
+        "the exact p>=4 floor is a new general achievement-set theorem"
+      ],
+      "reviewer_attention_budget": {
+        "routine": "Check the reduced-residual definitions, denominator-oddness lemma, and the p=2/p=3 exclusions at the pinned source.",
+        "load_bearing": "Find an upper-height, recurrence, or approximation-measure argument that uses p>=4 to exclude the permanent fatal branch; the floor alone is far too weak.",
+        "externally_sourced": "Only the ambient achievement-set and strict-tail greedy context; no external source for the exact numerator floor.",
+        "still_unverified": "Current-source replay after the source advanced, and any implication from the floor to a quantitative contradiction.",
+        "where_to_slow_down": "Do not turn finite scans or p>=4 into a cofinal quantifier or a bound on p."
+      },
+      "paper_disposition": "Subordinate supporting boundary in the existing 'The denominator-21 frontier: one fatal affine branch' section; do not create a separate section or chronology.",
+      "comparator_advisory": "No independent proposition interface. Keep the exact declarations bundled under the existing fatal-branch firewall; reconsider only if a future source-current theorem makes the numerator floor a reusable cross-target mechanism.",
+      "reentry_condition": "After focused replay against current clean source 4cd4eac, update only the source-generation fields if the declarations remain unchanged; escalate for new adjudication only if the current source changes the quantifiers or conclusion."
+    },
+    {
+      "object_id": "one_over_twenty_one_multiple120_primorial_repair_socket",
+      "packet_result_id": "one_over_twenty_one_multiple120_primorial_repair_socket",
+      "adjudicated_at": "2026-08-25",
+      "source_version_binding": {
+        "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+        "formal_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOnePrimorialRepair.lean",
+        "formal_source_commit": "d4a25e23fcd12a760c923f414a6b75a13af460dd",
+        "formal_source_sha256": "f11ecc8eef4baa9ca39418802618c2b466862bb00bea559c9e6476516b034a75",
+        "audit_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOnePrimorialRepairAudit.md",
+        "receipt_path": "state/formal_math/erdos257_period_noncollapse/twenty_one_primorial_repair_receipt.json",
+        "receipt_payload_sha256": "3b75e840ab281915be46e318f980a3a969a004acdf68a45ecc66cdb72f9452a1",
+        "source_generation_status": "source_current_at_adjudication"
+      },
+      "source_declarations": [
+        "twentyOnePrimorialUnionLoad_sevenColumn",
+        "twentyOnePrimorialUnionLoad_le_supportCoeff",
+        "twentyOneSupportCoeff_two_mul_eq_add_topTwoAdicLayer",
+        "twentyOnePrimorialUnionLoad_multiple240_topTwoAdicLayer",
+        "twentyOneFloorBit_pred_multiple120",
+        "twentyOneMultiple120DefectNonrise_of_primorialRepair",
+        "twentyOneGreedyDefect_le_rank_of_nonrise",
+        "twentyOneGreedyCarry_cofinalLinearReturn_of_multiple120DefectNonrise",
+        "one_div_twenty_one_mem_mersenneAchievementSet_of_primorialRepair",
+        "one_div_twenty_one_mem_mersenneAchievementSet_of_multiple240PrimorialRepairSlack",
+        "twentyOneMultiple240PrimorialRepairSlack_of_coupledFactorDescent",
+        "one_div_twenty_one_mem_mersenneAchievementSet_of_coupledFactorDescent"
+      ],
+      "classification": "source_current_exact_negative_route_boundary_with_preserved_coordinate_identities",
+      "priority_claim": "none",
+      "nearest_prior_art": [
+        "Inclusion-exclusion over divisor columns and finite counterexample audits are elementary proof-audit mechanisms.",
+        "The ambient achievement-set and strict-tail greedy context is covered by Kakeya 1914, Merkle--Hellman 1978, and Kovač--Tao 2024, Remark 13, already cited for the parent fatal-branch object.",
+        "No external source was located for these denominator-21 primorial-load inequalities or their canonical falsification."
+      ],
+      "exact_delta": "The seven-column inclusion-exclusion, doubled-layer, and prime-pullback identities remain exact. The proposed PU120, PU240+, prime-column, and coupled factor-descent inequalities fail on the certified orbit: through rank 20,000,002 there are 17 PU120 and 11 PU240+ violations; the first multiple-240 failure is rank 5,296,080 = 240*22,067 with prime cofactor 22,067, defect 12, and pullback-column load 6, so the required 12 <= 11 is false.",
+      "argument_distinctness": "This is a route-killing negative result, not another target-specific equivalence. It preserves the quotient identities as descriptive coordinates while retiring the static primorial-repair and coupled-descent producers.",
+      "evidence_class": "Lean-checked exact identities and conditional consumers at source-current commit, plus an exact canonical orbit audit and certified deeper falsification; no endpoint theorem.",
+      "disconfirmation_search": {
+        "queries": [
+          "PU120 primorial repair denominator 21",
+          "PU240 prime pullback column bound",
+          "coupled factor descent TwentyOnePrimorialRepair",
+          "Mersenne achievement set 1/21 primorial repair"
+        ],
+        "result": "The local corpus contains the named source and its repair-supply audits but no external theorem matching the proposed inequalities; the deeper canonical falsifier is internal exact evidence against those route assumptions.",
+        "uncertainty": "The negative result closes the declared producers, not every possible divisor-layer or return mechanism."
+      },
+      "confidence_ceiling": "High for the stated finite/certified falsifications and source-current identities; no novelty or priority inference.",
+      "significance_rationale": "This is high-value negative information: it retires several attractive all-depth producers before further proof investment and identifies the surviving alternatives as source-sensitive return, permanent affine-supercapacity, or a genuinely different mechanism.",
+      "strongest_allowed_claim": "The exact source preserves the seven-column and prime-pullback identities but falsifies the declared PU120, PU240+, prime-column, and coupled factor-descent proof producers on a certified deeper orbit. It does not settle 1/21 membership or Erdős #257.",
+      "rejected_stronger_wording": [
+        "the primorial repair proves 1/21 membership",
+        "the finite audit is a counterexample to the achievement-set conjecture",
+        "all divisor-layer repair mechanisms are impossible",
+        "the negative route resolves Erdős #257"
+      ],
+      "reviewer_attention_budget": {
+        "routine": "Verify the source-current theorem names, receipt identity, and the first deeper violation coordinates.",
+        "load_bearing": "Ensure the preserved identities are not conflated with the falsified inequalities, and that the negative audit does not overreach to all possible repair/return mechanisms.",
+        "externally_sourced": "Only the ambient achievement-set and greedy context; the route-killing counterexamples are internal exact evidence.",
+        "still_unverified": "Whether a structurally different coupled invariant can exploit the surviving identities without assuming PU120 or PU240+.",
+        "where_to_slow_down": "The finite horizon is certified and deep, but it is not a cofinal impossibility theorem for unrelated mechanisms."
+      },
+      "paper_disposition": "Route-killing boundary panel in the existing 'The denominator-21 frontier: one fatal affine branch' section; do not create a separate primorial-repair headline.",
+      "comparator_advisory": "No independent proposition interface. Keep the negative audit and exact identities as one subordinate boundary object; a separate interface would invite counting a retired producer as progress.",
+      "reentry_condition": "Re-enter only if a new source generation proposes a materially different repair invariant that does not reuse the falsified PU120, PU240+, prime-column, or coupled factor-descent premises."
+    }
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "achievement set greedy fatal branch conserved tail excess",
+      "superincreasing subsum greedy remainder bounded return",
+      "Mersenne achievement set 1/21 greedy",
+      "reciprocal Lambert subsum denominator 21"
+    ],
+    "result": "The search located the classical achievement-set and superincreasing greedy mechanisms and the strict-tail Mersenne specialization, but not the source-defined denominator-21 branch or its coordinate equivalences.",
+    "boundary": "Non-location supports a source-specific reformulation classification only, not priority or broad novelty."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The Lean source gives an exact target-specific normal form: 1/21 is represented exactly when one explicit fatal/cofinite/aligned greedy branch is absent, equivalently when the canonical defect or scaled remainder has the stated cofinal small-return behavior.",
+    "forbidden_wording": [
+      "The fatal branch has been excluded.",
+      "The finite defect computation proves cofinal returns.",
+      "The equivalence is a new general theorem about achievement sets.",
+      "The result represents 1/21.",
+      "The result disproves universal irrationality in Erdos 257."
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/twenty_one_mersenne_fatal_branch_normal_form.card.json",
+      "effect": "Consolidate six exact packet rows into one target-specific semantic object."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Promotion verdict: retain the fatal-branch equivalence as the canonical 1/21 object and treat bounded-return, normalized-return, and subexponential-defect formulations as subordinate coordinate forms."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Claim ceiling: exact Lean-checked reformulation of the open 1/21 membership question; no positive return theorem, representation, rational counterexample, or Erdős #257 resolution. Exact locators are the card inspection rail and the source paths above."
+    }
+  ],
+  "expert_review_support": {
+    "talk_state": "expert_talk_ready",
+    "hard_step": "Prove cofinal recurrence of a closed or small-defect state, or rule out the single permanent affine supercapacity branch; the existing coordinate equivalences do neither.",
+    "natural_friction": "The absorbing fatal witness, conserved excess, and cofinal quantifiers must remain explicit so that a finite diagnostic scan cannot be mistaken for the missing producer.",
+    "false_route": "Cofinite tail selection makes late right-boundary numerators factor through one fixed ancestor, eliminating the hoped-for fresh correction-amplification depth.",
+    "evidence_separation": "Lean checks the exact equivalences and route-narrowing results; external papers supply only the ambient achievement-set and greedy-decoding mechanisms; finite computation is diagnostic; recurrence and supercapacity exclusion are open."
+  },
+  "digestion_assessment": {
+    "significance_grade": "B_plus_frontier_map",
+    "attention_priority": "high within #257, medium programme-wide",
+    "consolidation_verdict": "retain one semantic object; do not count equivalent defect, return, alignment, and closed-row coordinates as separate advances",
+    "expert_review_gap": "independent source-to-narrative correspondence review"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "canonical greedy cofinal-skip membership with target-specific fatal-branch producers",
+    "disposition": "subordinate under rational_greedy_cofinal_skip_membership as the canonical 1/21 producer and frontier map",
+    "consolidation_relation": "Keep all fatality, alignment, defect, return, closed-row, and affine-supercapacity coordinates in this one object. Do not count them as parallel advances or as a second programme endpoint.",
+    "comparator_advisory": "One target-specific fatal-branch equivalence firewall is justified; equivalent coordinate forms should remain bundled and subordinate to the general cofinal-skip interface.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The denominator-21 frontier: one fatal affine branch",
+      "supersession_or_consolidation": "Follow the general cofinal-skip theorem with one concrete core section consolidating all seven source rows. Use the failed correction-amplification route as a boundary panel and retire separate coordinate-by-coordinate chronology.",
+      "reason": "The object does not solve the target, but it gives the paper's canonical concrete explanation of the only surviving 1/21 obstruction and the exact theorem still missing."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "The object is the right concrete #257 frontier map, but it is logically subordinate to the already-shortlisted rational cofinal-skip endpoint and should not consume a second flagship slot.",
+      "evidence_class": "Lean-checked target-specific equivalences and route narrowing; external context only; no positive producer",
+      "hard_step": "Prove cofinal small/closed returns or rule out permanent affine supercapacity for 1/21.",
+      "prior_art_uncertainty": "Ambient mechanisms are established; the exact target-specific package is source-specific without priority inference.",
+      "open_boundary": "The fatal branch remains possible and neither 1/21 membership nor Erdős #257 follows.",
+      "demoted_predecessor": null
+    }
+  },
+  "release_disposition": "comparator_candidate",
+  "release_disposition_reason": "One bundled Lean-checked target-specific equivalence firewall is advisory-justified, but it must preserve the open fatal branch and cannot certify 1/21 membership, a rational counterexample, or the Erdős #257 endpoint.",
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_257.md",
+    "section": "The denominator-21 frontier: one fatal affine branch",
+    "canonical_mechanism_family": "canonical greedy cofinal-skip membership with target-specific fatal-branch producers",
+    "relation": "Subordinate this target-specific frontier map beneath rational_greedy_cofinal_skip_membership; consolidate seven coordinate-equivalent source rows and retain correction-amplification only as a failed-route boundary panel.",
+    "understanding_delta": "The reader sees one absorbing fatal affine branch, rather than independent alignment, defect, return, closed-row, and supercapacity advances.",
+    "evidence_boundary": "Lean checks the exact target-specific equivalences and route narrowing; external work gives only the ambient achievement-set/greedy context; finite computation is diagnostic; no return producer or branch exclusion is established.",
+    "hard_step": "Force cofinal closed or small-defect returns, or contradict permanent affine supercapacity for the exact 1/21 orbit.",
+    "meaningful_failed_route": "Late right-boundary factorization through one fixed ancestor removes fresh correction-amplification depth, but does not establish the fatal branch.",
+    "open_remainder": "No 1/21 representation, rational counterexample, finite-support conclusion, or Erdős #257 resolution follows."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "twenty_one_mersenne_fatal_branch_normal_form",
+    "human_understanding_delta": "The formal stack is now organized as one intelligible frontier map with its hard step, failed route, evidence layers, and nonclaims exposed.",
+    "verification_state": "Pinned source hashes match; no new theorem claim is introduced by this review cycle.",
+    "publication_or_review_state": "Expert-talk support and exact downstream claim ceiling are ready; independent expert review remains.",
+    "canonicalization_state": "Seven source rows remain consolidated beneath one target-specific object.",
+    "unresolved_downstream_bottleneck": "Independent semantic review and a genuine return or supercapacity-exclusion theorem.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-parity maturity pass",
+    "result_family_version": "twenty_one_mersenne_fatal_branch_normal_form@source_4cd4eac_card_130456e_packet_df504282",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean",
+        "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+        "sha256": "d8eb0904daa9735a25555db567a243e6b61c41a15c4eb160adab94de896d713d",
+        "status": "clean source blob matches the pinned theorem generation; focused elaboration replay deferred"
+      },
+      "packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+        "commit": "df504282947e6aa0c0b22b5542d9e49bb1e5f376",
+        "sha256": "7c9d8b0fe4846cd6fb785fea091eda544f66288079ea85755359c0e6325541f6",
+        "source_result_ids": [
+          "one_over_twenty_one_fatal_aligned_branch_classification",
+          "one_over_twenty_one_fatal_right_boundary_factorization",
+          "one_over_twenty_one_cofinally_bounded_defect_reduction",
+          "one_over_twenty_one_fatal_tail_subexponential_defect_split",
+          "one_over_twenty_one_cofinal_normalized_return_characterization",
+          "one_over_twenty_one_cofinal_scaled_remainder_characterization",
+          "one_over_twenty_one_closed_row_canonicalization"
+        ]
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/twenty_one_mersenne_fatal_branch_normal_form.card.json",
+        "commit": "130456e8c9b817811694436cb2d447f4541fb314",
+        "sha256": "e35e3494649161c674efc36e969a3d687e56cb50758b701e7b963898ad7f3e07"
+      }
+    },
+    "evidence_class": "Lean-checked exact target-specific equivalences and route narrowing; external sources establish only the ambient achievement-set and strict-tail greedy setting; finite orbit work is diagnostic.",
+    "prior_art_assessment": {
+      "confidence": "strong_internal_provisional_case_for_source_specific_packaging; no official novelty or priority claim",
+      "closest_primary_sources": [
+        "Kakeya (1914), On the Set of Partial Sums of an Infinite Series: achievement-set setting.",
+        "Merkle--Hellman (1978), Hiding Information and Signatures in Trapdoor Knapsacks: finite superincreasing greedy decoding.",
+        "Kovač--Tao (2024), On several irrationality problems for Ahmes series, Remark 13: strict-tail reciprocal-Lambert coding and Cantor topology."
+      ],
+      "exact_relation": "Those sources support the ambient vocabulary and greedy mechanism, not the denominator-21 fatal aligned branch, its cofinal-return equivalences, or the closed-row/supercapacity refinement.",
+      "search_scope": "The route's targeted searches for achievement-set fatal branches, superincreasing tail returns, Mersenne 1/21, and reciprocal-Lambert denominator 21 found no matching external statement; non-location is not a priority result."
+    },
+    "comparison_relation": "Achievement-set topology and superincreasing greedy decoding are standard ambient mechanisms. The source-specific delta is the denominator-21 absorbing fatal branch and its exact equivalence to return, defect, closed-row, and affine-supercapacity coordinates.",
+    "closest_known_result": "Kakeya (1914) supplies achievement-set context; Merkle--Hellman (1978) supplies finite superincreasing greedy decoding; Kovač--Tao (2024), Remark 13, supplies strict-tail reciprocal-Lambert coding. None states this denominator-21 fatal normal form.",
+    "exact_delta": "At the pinned generation, seven Lean-checked target-specific forms are proved equivalent, reducing the open 1/21 membership question to one explicit absorbing branch and one missing cofinal producer or exclusion.",
+    "disconfirming_evidence": "Finite orbit scans and correction-amplification attempts do not establish cofinal returns; fixed-depth losses are boundary evidence only. The fatal branch remains possible.",
+    "confidence_ceiling": "High for Lean source/card/packet parity and the exact equivalences; medium internal provisional for the source-specific packaging being unlocated after bounded search; low for novelty, priority, 1/21 membership, or an Erdős #257 conclusion.",
+    "hard_step": "Produce cofinal small or closed returns, or rule out permanent affine supercapacity; coordinate changes alone cannot supply either implication.",
+    "open_boundary": "The fatal branch is not excluded; no 1/21 representation, rational counterexample, general achievement-set dichotomy, or #257 endpoint follows.",
+    "mathematical_delta": {
+      "one_sentence": "For the rational target 1/21, nonmembership is reduced to one explicit absorbing fatal/aligned greedy branch, with bounded-return, normalized-return, scaled-defect, closed-row, and affine-supercapacity descriptions proved equivalent.",
+      "hard_step": "Produce cofinal small or closed returns, or rule out the permanent affine supercapacity trajectory; no coordinate change supplies either implication.",
+      "why_care": "It prevents seven target-specific formal rows from being mistaken for seven advances and leaves a skeptical reader with one exact obstruction and one well-defined missing theorem.",
+      "natural_friction": "The fatal branch is not excluded; the finite orbit evidence does not establish cofinality; and the failed correction-amplification route loses fresh depth at a fixed ancestor."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "At the pinned source generation, the exact 1/21 Mersenne achievement-set question has the stated fatal-branch normal form and equivalent return/defect coordinates, all subordinate to the general cofinal-skip interface.",
+      "rejected_stronger": [
+        "1/21 is represented",
+        "the fatal branch has been excluded",
+        "the finite orbit scan proves a cofinal return or rational counterexample",
+        "this is a general new achievement-set dichotomy",
+        "Erdős #257 is solved or disproved"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "B_plus_frontier_map",
+      "mechanism_family": "canonical greedy cofinal-skip membership with target-specific fatal-branch producers",
+      "programme_disposition": "subordinate under rational_greedy_cofinal_skip_membership; consolidate all equivalent coordinates and retain primorial/correction-amplification failures only as boundary evidence",
+      "paper_disposition": "headline/core mechanism for the single supporting section 'The denominator-21 frontier: one fatal affine branch'; not an independent flagship",
+      "comparator_advisory": "One bundled target-specific equivalence firewall is justified; no interfaces for equivalent coordinate forms or retired finite producers.",
+      "absolute_shortlist": "retain as the representative #257 frontier map, but do not consume a separate absolute flagship slot"
+    },
+    "expert_review_act": "At the pinned source, check the absorbing-fatality quantifiers and one equivalence transfer, then decide whether a genuinely new recurrence or supercapacity-exclusion idea exists; do not count coordinate-equivalent rows separately.",
+    "reentry_condition": "Run the named declarations through canonical lean_fast_build.py when capacity is available, or reopen immediately if the source blob, packet generation, or quantifiers change."
+  },
+  "adjudication_currentness": {
+    "status": "lean_source_packet_card_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "d8eb0904daa9735a25555db567a243e6b61c41a15c4eb160adab94de896d713d",
+      "defect_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "defect_source_sha256": "da6c145c88f2910e5d56f2b7705abd5ea12c7d235fb8afbb4d4f68d7ff231be5",
+      "research_packet_commit": "df504282947e6aa0c0b22b5542d9e49bb1e5f376",
+      "research_packet_sha256": "7c9d8b0fe4846cd6fb785fea091eda544f66288079ea85755359c0e6325541f6",
+      "reviewer_card_commit": "130456e8c9b817811694436cb2d447f4541fb314",
+      "reviewer_card_sha256": "e35e3494649161c674efc36e969a3d687e56cb50758b701e7b963898ad7f3e07",
+      "source_result_ids": [
+        "one_over_twenty_one_fatal_aligned_branch_classification",
+        "one_over_twenty_one_fatal_right_boundary_factorization",
+        "one_over_twenty_one_cofinally_bounded_defect_reduction",
+        "one_over_twenty_one_fatal_tail_subexponential_defect_split",
+        "one_over_twenty_one_cofinal_normalized_return_characterization",
+        "one_over_twenty_one_cofinal_scaled_remainder_characterization",
+        "one_over_twenty_one_closed_row_canonicalization"
+      ]
+    },
+    "claim_guard": "Only the target-specific 1/21 fatal-branch equivalences are admitted; no representation, rational counterexample, general achievement-set dichotomy, priority, or Erdős #257 endpoint claim.",
+    "reentry_trigger": "Re-enter if the formal source, packet/card snapshot, named equivalence quantifiers, or source result set changes."
+  }
+}

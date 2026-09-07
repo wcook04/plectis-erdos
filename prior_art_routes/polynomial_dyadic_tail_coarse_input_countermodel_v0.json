@@ -1,0 +1,237 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "polynomial_dyadic_tail_coarse_input_countermodel",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_constructed_countermodel_with_problem_specific_method_elimination_value",
+  "problem_id": "erdos_251",
+  "source_result_ids": [
+    "positive_even_polynomial_gap_rational_tail_countermodel"
+  ],
+  "purpose": "Classify the explicit polynomial orbit honestly: not as a novel recurrence theorem, but as an exact countermodel to a named coarse-input inference and a boundary marker for future work on the prime dyadic series.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/polynomial_dyadic_tail_coarse_input_countermodel.card.json",
+    "card_landing_commit": "ec9c82c0215017ae04e9a7cda04ee7552e34ccf9",
+    "card_landing_receipt": "wie_20260824T044421Z_a6913a65",
+    "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    "source_result_id": "positive_even_polynomial_gap_rational_tail_countermodel"
+  },
+  "classification": {
+    "recurrence_class": "elementary_first_order_affine_difference_equation_with_an_explicit_polynomial_particular_orbit",
+    "countermodel_class": "constructed_counterexample_to_derivability_from_an_explicit_list_of_coarse_hypotheses",
+    "prime_number_theory_class": "none_the_word_is_not_a_prime_gap_sequence_and_uses_no_prime_specific_input",
+    "priority_claim": "none",
+    "recommended_terminology": "polynomial dyadic-tail coarse-input countermodel",
+    "acceptable_short_alias": "coarse-input countermodel for the adjacent-small-mismatch route",
+    "discouraged_terminology": [
+      "counterexample to Erdos Problem 251",
+      "prime-gap counterexample",
+      "new irrationality criterion",
+      "model of the consecutive-prime gaps"
+    ],
+    "nearest_prior_work": [
+      "Erdos (1988), p. 103, is the primary statement of the fixed dyadic prime series and makes clear that even the k=1 case was unresolved.",
+      "Erdos and Pomerance (1978), section 7, provide a genuinely arithmetic adjacent dyadic-series irrationality theorem whose proof uses eventual binary periodicity plus number-theoretic structure; this is a useful contrast to the present deliberately non-arithmetic orbit.",
+      "The closed-form recurrence verification itself is routine finite-difference algebra and does not warrant a standalone novelty claim."
+    ],
+    "attribution": "Attribute the target problem and its difficulty to Erdos's 1988 problem statement. Describe the local asset as an authored Lean-checked stress test which rules out a specified proof route under specified coarse assumptions, not as prior work on prime-gap distribution.",
+    "mathematical_interest": "Low theorem depth but high diagnostic precision: one exact family simultaneously satisfies positivity, parity, strict polynomial growth, unboundedness, nonperiodicity, and rational tail integrality while avoiding every adjacent plus-or-minus-two event.",
+    "reusable_scope": "Affine radix-tail arguments in which an irrationality producer is claimed from qualitative growth or recurrence properties alone. A candidate proof should first be tested against explicit rational polynomial orbits satisfying those same coarse properties.",
+    "why_it_matters": "It prevents additional generic gap-growth lemmas from being misreported as progress on #251. To escape the countermodel, a proof must consume a property of actual consecutive primes, a stronger multi-offset producer, or a separate theorem excluding rational prime-tail orbits."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_1988_irrationality_series_problems_results",
+      "title": "On the irrationality of certain series: problems and results",
+      "author": "Paul Erdos",
+      "venue": "New Advances in Transcendence Theory (1988), 102-109",
+      "url": "https://users.renyi.hu/~p_erdos/1988-22.pdf",
+      "exact_anchor": "Printed p. 103: Erdos says he could not prove irrationality of sum p_n^k/2^n, even for k=1, and calls the case probably very difficult.",
+      "supports": "Historical attribution, the exact fixed-denominator target, and the need to keep the present non-prime orbit outside the endpoint claim.",
+      "does_not_support": "No polynomial tail countermodel, adjacent-small-mismatch producer, or claim that coarse prime-gap properties suffice."
+    },
+    {
+      "id": "erdos_pomerance_1978_largest_prime_factors",
+      "title": "On the largest prime factors of n and n+1",
+      "author": "Paul Erdos and Carl Pomerance",
+      "venue": "Aequationes Mathematicae 17 (1978), 311-321",
+      "doi": "10.1007/BF01818569",
+      "url": "https://doi.org/10.1007/BF01818569",
+      "exact_anchor": "Section 7, printed p. 320: irrationality of a binary series encoding whether P(n)>P(n+1), proved from eventual periodicity, Polya's finiteness theorem, and the positive-density result of section 6.",
+      "supports": "A close methodological comparison showing that an adjacent dyadic-series result becomes substantive only when its digit word is tied to genuine arithmetic structure.",
+      "does_not_support": "It is not about the nth-prime numerator series, consecutive-prime gaps, or the polynomial orbit in the local card."
+    },
+    {
+      "id": "erdos_problems_251_registry",
+      "title": "Erdos Problem 251",
+      "author": "Erdos Problems database contributors",
+      "venue": "Live problem registry",
+      "url": "https://www.erdosproblems.com/251",
+      "exact_anchor": "The displayed problem asks whether sum p_n/2^n is irrational and currently records it as open.",
+      "supports": "Current problem wording and status only.",
+      "does_not_support": "Novelty, priority, or mathematical sufficiency of the local countermodel."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "Given a chosen polynomial state T_n, defining g_(n+1)=2T_n-T_(n+1) automatically manufactures a polynomial forcing word for the affine dyadic-tail recurrence. Direct expansion checks all displayed properties here.",
+    "local_delta": "The useful work is hypothesis alignment: one orbit is certified to meet every named coarse property while also being integral and having no adjacent plus-or-minus-two digit event.",
+    "contrast_with_arithmetic_prior_work": "The Erdos-Pomerance dyadic theorem succeeds because eventual periodicity conflicts with a number-theoretic property of its actual arithmetic digit sequence. The polynomial orbit demonstrates why qualitative growth of a surrogate word cannot replace such input for #251.",
+    "significance_boundary": "The construction retires only recurrence-plus-coarse-growth proofs of the h=1 producer. It neither challenges the producer for actual prime gaps nor rules out larger offsets, other digit events, or direct irrationality arguments."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "exact formula 2(n+4)^2 dyadic tail recurrence",
+      "4n+10 prime gap dyadic tail",
+      "polynomial dyadic tail irrationality counterexample",
+      "prime gaps binary weighted series affine recurrence countermodel",
+      "sum p_n over 2^n irrationality consecutive prime gaps"
+    ],
+    "result": "The bounded exact-formula and mechanism search located no source for this particular orbit. It did locate the original #251 problem, the adjacent Erdos-Pomerance arithmetic-digit theorem, and current work on the distinct variable-denominator assertion. None converts this elementary orbit into a standalone novelty claim.",
+    "boundary": "Non-location of the exact polynomial is weak evidence only. Because the construction is routine once the desired recurrence is prescribed, the correct classification remains authored stress test and method-elimination asset, not apparently new theorem."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked polynomial rational orbit shows that positivity, evenness, monotone unbounded polynomial growth, nonperiodicity, and the dyadic-tail recurrence alone do not force the adjacent plus-or-minus-two producer.",
+    "forbidden_wording": [
+      "This is a counterexample to Erdos Problem 251.",
+      "Prime gaps can follow this polynomial word.",
+      "The adjacent-small-mismatch route is false for the actual prime sequence.",
+      "No proof through prime gaps can work.",
+      "The exact polynomial orbit is a novel recurrence theorem."
+    ],
+    "nonclaims": [
+      "not_a_prime_gap_model",
+      "not_a_solution_or_counterexample_to_erdos_251",
+      "not_a_no_go_for_all_offsets_or_all_producers",
+      "not_a_literature_priority_claim",
+      "not_a_fresh_Lean_elaboration_receipt"
+    ]
+  },
+  "canonicalization_decision": {
+    "parent": "prime_gap_dyadic_summation_by_parts_reformulation",
+    "programme_family": "prime-gap dyadic summation-by-parts endpoint with coarse-input countermodels",
+    "disposition": "subordinate_route_killing_boundary",
+    "consolidates_or_retires": [
+      "periodic_fractional_orbit_countermodel as advisory genealogy",
+      "free_carry_telescoping as subordinate explanatory identity"
+    ],
+    "paper": "route-killing boundary in Why coarse gap growth cannot prove the dyadic endpoint",
+    "comparator": "compact exact countermodel firewall justified with an explicit not-prime-gaps boundary",
+    "absolute_frontier_shortlist": "do_not_admit_keep_prime_gap_dyadic_summation_by_parts_reformulation"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/polynomial_dyadic_tail_coarse_input_countermodel.card.json",
+      "effect": "The landed card now carries this elementary-countermodel classification and retains the exact programme-significance boundary."
+    },
+    {
+      "consumer": "Erdos #251 proof fleet",
+      "effect": "Treat recurrence, positivity, parity, monotone polynomial growth, and nonperiodicity as insufficient inputs. Route effort to actual consecutive-prime arithmetic, multi-offset producers, or direct rational-tail exclusion."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "The card is now a landed stable method-boundary asset. Present it as a coarse-input no-go, never as a prime-gap counterexample or a result about the actual \\#251 series."
+    }
+  ],
+  "landing_state": {
+    "status": "landed_and_reconciled",
+    "card_commit": "ec9c82c0215017ae04e9a7cda04ee7552e34ccf9",
+    "adjudication_reconciliation_date": "2026-08-24",
+    "do_not_redo": "The earlier validated-uncommitted CAS state is obsolete; consume the landed card and this adjudicated route."
+  },
+  "adjudication_currentness": {
+    "status": "landed_source_and_card_snapshot_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "reviewer_card_commit": "e2709c530461cb623ec0078f43d57e4be101b93b",
+      "reviewer_card_sha256": "0626d04c14e9a2f0b3e9689e5e3cea5f57fe80f76c75975d7b656b8f1dfe9df0",
+      "source_result_ids": [
+        "positive_even_polynomial_gap_rational_tail_countermodel"
+      ]
+    },
+    "claim_guard": "This is an exact non-prime polynomial orbit that refutes only derivability from the listed coarse recurrence, positivity, parity, monotonicity, unboundedness, and nonperiodicity hypotheses; it is not a prime-gap counterexample or an Erdős #251 result.",
+    "reentry_trigger": "Re-enter if the formal family/card generation changes or a proof using stronger actual-prime input changes the stated boundary."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Elementary constructed orbit with exact Lean checks; the difficult judgment is logical scope, not the recurrence expansion.",
+    "slow_down_at": "Keep the surrogate word separate from actual consecutive-prime gaps and distinguish a route-killing countermodel from a target counterexample.",
+    "review_act": "One bounded expert act: verify the listed hypotheses and identify the minimal genuinely prime-specific assumption needed to evade this coarse-input obstruction."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_prime_specific_input_or_claim_change",
+    "reentry_condition": "Re-enter only if a source supplies a genuinely prime-specific property of consecutive gaps, a stronger multi-offset producer is proposed, or the card's quantifiers/evidence generation changes.",
+    "do_not_redo": "Do not repeat the polynomial recurrence expansion, finite Lean replay, or generic growth search; those establish only the present coarse-input countermodel.",
+    "open_bottleneck": "A proof of the actual #251 assertion must use arithmetic structure of consecutive primes or an independent rational-tail exclusion not present in this surrogate orbit.",
+    "owner": "Novelty Observatory for any changed comparison; #251 proof fleet for a prime-specific producer or direct endpoint theorem."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_constructed_countermodel_without_prior_art_claim",
+    "output_stage": "human_understanding_and_method_boundary",
+    "artifact": "#251 coarse-input countermodel route authority and its landed reviewer card",
+    "human_understanding_delta": "The exact polynomial orbit now visibly separates a route-killing coarse-hypothesis countermodel from the still-open arithmetic problem: recurrence, parity, monotone polynomial growth, and nonperiodicity cannot by themselves supply the adjacent plus-or-minus-two producer.",
+    "verification_state": "Lean-checked source and exact polynomial replay are inherited from the landed card; no fresh Lean elaboration or prime-gap theorem is asserted.",
+    "publication_or_review_state": "Internal significance and attribution support only; no priority, prime-gap counterexample, or #251 endpoint claim.",
+    "canonicalization_state": "Subordinate route-killing boundary under prime_gap_dyadic_summation_by_parts_reformulation; do not admit as an absolute flagship or duplicate endpoint.",
+    "unresolved_downstream_bottleneck": "Identify and prove the genuinely prime-specific input needed to replace the defeated coarse-growth inference, or establish rational-tail exclusion by another route.",
+    "next_stage_owner": "#251 proof fleet for mathematical escape; Mathematics Refinery for any claim-card change; Novelty Observatory only when source generation or prior-art comparison changes."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "polynomial_dyadic_tail_coarse_input_countermodel@PrimeGapDyadicTail-9eb76529-card-2c031c14",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+        "sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/polynomial_dyadic_tail_coarse_input_countermodel.card.json",
+        "commit": "2c031c14b50de92e0a4782f829d850537d614df0",
+        "sha256": "bc61249cbab34832a2d8b32dd9880a021fa6769a76ac432123d453be6a925cdf"
+      },
+      "parity_status": "Lean source and canonical card are source-current; the family is a constructed countermodel to a coarse-input implication only"
+    },
+    "classification": {
+      "result_family": "polynomial_dyadic_tail_coarse_input_countermodel",
+      "evidence_class": "Lean-checked explicit constructed countermodel with elementary recurrence verification",
+      "closest_prior_art": "The target dyadic prime series and its open status are due to Erdős (1988); Erdős--Pomerance (1978) supplies a genuinely arithmetic adjacent-series irrationality theorem. The present polynomial orbit deliberately contains no prime-specific input.",
+      "comparison_relation": "The construction does not challenge the actual prime-gap sequence. It shows only that positivity, evenness, strict polynomial growth, unboundedness, nonperiodicity, and a rational dyadic tail do not force an adjacent plus-or-minus-two producer.",
+      "novelty_confidence": "high for the exact formal countermodel and its logical no-go boundary; no standalone novelty or priority claim",
+      "significance_grade": "high_method_boundary_value_low_theorem_depth",
+      "why_care": "It prevents generic growth/parity lemmas from being mistaken for arithmetic information about consecutive primes and tells future proofs exactly what extra input they must consume.",
+      "hard_step": "Identify a genuinely prime-specific or multi-offset property that excludes this rational polynomial orbit; the countermodel itself is elementary once written down.",
+      "natural_friction": "A coarse-input countermodel can retire a derivation route without deciding the target problem; actual prime gaps may satisfy additional structure absent here.",
+      "disconfirming_evidence": "The orbit is not a prime-gap sequence and makes no claim about the truth of Erdős #251 or the dyadic prime series."
+    },
+    "evidence_class": "Lean-checked explicit constructed countermodel with elementary recurrence verification",
+    "closest_known_result": "Erdős (1988) states the open dyadic prime series, while Erdős--Pomerance (1978) proves a different adjacent dyadic-series irrationality theorem using genuine arithmetic digits; neither is a polynomial surrogate orbit.",
+    "comparison_relation": "exact_route_killing_countermodel_to_coarse_hypothesis_implication",
+    "exact_delta": "The local delta is hypothesis alignment: one rational polynomial orbit satisfies every listed qualitative recurrence/growth condition while avoiding all adjacent plus-or-minus-two events, so those conditions cannot imply the producer.",
+    "disconfirming_evidence": "The construction uses no primes and therefore cannot refute the actual prime-gap sequence or Erdős #251; the finite Lean check establishes only the displayed family.",
+    "confidence_ceiling": "High for the exact formal countermodel and its logical no-go boundary; no standalone novelty, priority, prime-gap, or endpoint claim.",
+    "significance": "High method-boundary value but low theorem depth: it retires a broad coarse-growth inference and identifies the need for genuinely prime-specific or multi-offset input.",
+    "exact_claim_ceiling": "The exact family refutes derivability of the adjacent plus-or-minus-two producer from the listed coarse recurrence, positivity, parity, monotonicity, unboundedness, and nonperiodicity hypotheses alone; it is not a prime-gap counterexample or #251 result.",
+    "hard_step": "Identify the minimal prime-specific or multi-offset hypothesis that excludes the surrogate orbit; the orbit's algebraic verification is routine once prescribed.",
+    "open_boundary": "Actual consecutive-prime arithmetic, stronger producer mechanisms, and the Erdős #251 irrationality question remain open.",
+    "claim_ceiling": {
+      "strongest_allowed": "The exact family refutes derivability of the adjacent plus-or-minus-two producer or irrationality from the listed coarse recurrence, positivity, parity, monotonicity, unboundedness, and nonperiodicity hypotheses alone.",
+      "rejected_stronger": [
+        "a counterexample to Erdős #251",
+        "a counterexample to actual consecutive-prime gaps",
+        "a new irrationality criterion",
+        "a statement about prime-gap distribution",
+        "a priority or novelty claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "coarse-input stress tests for affine radix-tail irrationality routes",
+      "disposition": "retain as one route-killing countermodel beneath the #251 arithmetic-input boundary; do not create a second prime-gap or irrationality card",
+      "paper_disposition": "route-killing failure/boundary in 'What coarse recurrence data cannot prove'",
+      "supersession_or_consolidation": "Use one explicit polynomial family and its exact Lean checks; retire duplicate qualitative-growth no-go narratives.",
+      "expert_attention_reason": "The expert act is to state the missing prime-specific hypothesis, not to debate whether this non-prime family is a target counterexample.",
+      "open_boundary": "Actual consecutive-prime arithmetic, adjacent-small-mismatch production, and Erdős #251 remain open.",
+      "independent_comparator_interface_justified": true
+    },
+    "bounded_expert_act": "Check the recurrence, positivity/evenness, gap exclusion, and rational-tail identities, then write the minimal additional prime-specific hypothesis needed to evade the countermodel.",
+    "reentry_trigger": "Re-enter only if the formal family, card scope, or a proof using stronger actual-prime input changes the boundary."
+  }
+}

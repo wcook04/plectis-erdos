@@ -1,0 +1,315 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "global_critical_two_nearest_root_budget",
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "ordinary_source_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+    "ordinary_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalCriticalTwoNearestBudget.md",
+    "ordinary_source_sha256": "fd02399e9a0821d64c817fa081185796fadb5d78c40f59c4f9b68d5b7f1267de",
+    "lean_core_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+    "lean_core_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+    "lean_core_sha256": "22f1b1dc8b8e4bf39530c093aaec5eabe299cdb0c32bbde928718b2ad7f25534",
+    "reviewer_card_commit": "ed885e97dfdf45dcbb76eeec9666bdfda3926d0d",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/global_critical_two_nearest_root_budget.card.json",
+    "reviewer_card_sha256": "fa86725e26ec661fd6962f6aa5a634b29f83328041bce55117a116322d9e8b72",
+    "status": "ordinary_global_theorem_and_Lean_decisive_core_current_at_adjudication; no full_Lean_or_specialist_review_claim"
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_global_critical_two_nearest_root_budget_v2",
+    "result_family": "erdos1041_critical_hub_metric_budget",
+    "exact_result_id": "global_critical_two_nearest_root_budget",
+    "source_generation": "2026-08-26",
+    "evidence_class": "complete authored ordinary complex-geometric proof with a Lean-checked decisive real core and finite diagnostic replay; not an end-to-end Lean theorem",
+    "prior_art_relation": "Grace, Sendov/Marden, Walsh, and related critical-point localization supply nearby classical directions. The reverse quantifier fixing a critical point and bounding the sum of its two nearest root distances was not located in a bounded primary-source search; no priority claim follows.",
+    "confidence_ceiling": "High for the exact metric theorem and proof/formalization split; moderate for literature non-location; low for any contained-path consequence or unrestricted Erdős #1041 conclusion.",
+    "significance_rationale": "This closes the Euclidean endpoint budget for the critical-hub strategy: distance is not the remaining obstruction. The reusable lesson is the metric-versus-containment split, which redirects effort toward a lemniscate-contained connector.",
+    "hard_step": "Use reciprocal equilibrium at a prescribed critical point together with the disk constraint to force a sharp two-nearest-root sum bound, while keeping the reverse quantifier explicit.",
+    "open_boundary": "The theorem does not put spokes or any connector inside the lemniscate, does not prove the full theorem in Lean, and does not solve Erdős #1041.",
+    "expert_review_act": "Check the reciprocal-balance inequality, disk-geometric step, affine scaling, and exact quantifier reversal against the cited Grace/Walsh/Sendov landscape; then assess whether a contained connector can consume the metric budget.",
+    "next_reentry": "Re-enter only if the ordinary proof, Lean core, reviewer card, or a direct primary antecedent changes; do not repeat the bounded critical-point search."
+  },
+  "status": "adjudicated_exact_reverse_quantifier_theorem_with_classical_ingredients_and_unlocated_antecedent",
+  "problem_id": "erdos_1041",
+  "purpose": "Distinguish the exact two-nearest-root budget from Grace--Heawood, Sendov, and zero-centered critical-point exclusion theorems, and bind the result to its precise formalization and containment boundaries.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/global_critical_two_nearest_root_budget.card.json",
+    "landed_source_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalCriticalTwoNearestBudget.md",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+    ],
+    "headline_declarations": [
+      "ErdosProblems.Erdos1041.two_add_le_two_of_disk_inverse_balance",
+      "ErdosProblems.Erdos1041.exists_two_roots_dist_sum_le_two_mul_geomMean"
+    ]
+  },
+  "classification": {
+    "theorem_class": "global_reverse_quantifier_critical_point_to_two_nearest_roots_disk_diameter_budget",
+    "novelty_class": "classical_ingredients_exact_statement_unlocated_in_bounded_primary_source_search",
+    "formalization_class": "ordinary_complete_complex_geometric_theorem_with_Lean_checked_decisive_real_core_and_related_geometric_mean_result",
+    "priority_claim": "none",
+    "recommended_terminology": "global critical-point two-nearest-root budget",
+    "acceptable_descriptive_alias": "two-nearest-root unit-disk budget",
+    "discouraged_terminology": [
+      "Sendov theorem",
+      "Grace--Heawood converse",
+      "fully Lean-checked global theorem",
+      "critical-spoke containment theorem",
+      "solution of Erdős Problem 1041"
+    ],
+    "mathematical_interest": "The result combines the reciprocal equilibrium at one prescribed critical point with the global disk constraint to obtain a sharp diameter-scale statement for the two nearest roots, not merely existence of one nearby root.",
+    "reusable_scope": "Polynomials whose roots lie in a closed disk, after affine translation and scaling of that disk.",
+    "why_it_matters": "It proves that endpoint distance is never the obstruction in the critical-hub approach to Erdős #1041. Exact counterexamples then show that the remaining obstruction is containment of a connector inside the lemniscate."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Complete authored reverse-quantifier metric theorem with a Lean-checked decisive real core and finite diagnostic replay; the strategic value is closing the distance half of the critical-hub strategy.",
+    "slow_down_at": "Verify the reciprocal-balance disk estimate, the reverse quantifier fixing an arbitrary critical point, and the affine scaling from the unit disk.",
+    "automation_can_establish": [
+      "Lean core declarations and source/card hash parity",
+      "Exact finite diagnostic arithmetic",
+      "Presence of the no-containment and no-#1041-solution claim guards"
+    ],
+    "human_judgment_required": [
+      "Whether the exact two-nearest-root sum formula is already known under another critical-point terminology",
+      "Whether the ordinary complex proof preserves all multiplicity and nonroot cases",
+      "Which contained connector can consume the now-closed metric budget"
+    ],
+    "review_act": "One bounded expert act: audit the reciprocal-balance inequality, quantifier reversal, and equality boundary against Grace/Walsh/Sendov literature, then redirect effort to connector containment."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "critical-point reciprocal equilibrium, disk geometry, and the metric-versus-containment split",
+    "disposition": "replace fragmented critical-hub proximity narratives as the parent metric-budget object; keep spoke and Newton-branch counterexamples subordinate",
+    "paper_disposition": "headline/core mechanism in 'The metric budget is solved; containment is not'",
+    "comparator_advisory": "One exact proposition interface is justified with ordinary-proof and Lean-core labels; no separate interfaces for scale corollaries or counterexamples."
+  },
+  "primary_sources": [
+    {
+      "id": "marden_1983_critical_points",
+      "title": "Conjectures on the Critical Points of a Polynomial",
+      "author": "Morris Marden",
+      "venue": "American Mathematical Monthly 90 (1983), 267--276",
+      "doi": "10.1080/00029890.1983.11971207",
+      "url": "https://doi.org/10.1080/00029890.1983.11971207",
+      "exact_anchor": "pp. 267--268: Gauss--Lucas, Sendov's root-to-critical unit-distance question, and the inverse-distance equilibrium interpretation.",
+      "supports": "The classical unit-disk localization setting and reciprocal-force interpretation.",
+      "does_not_support": "A theorem fixing a critical point and bounding the sum of its two nearest root distances."
+    },
+    {
+      "id": "khavinson_pereira_putinar_saff_shimorin_2011",
+      "title": "Borcea's variance conjectures on the critical points of polynomials",
+      "author": "Dmitry Khavinson, Rajesh Pereira, Mihai Putinar, Edward B. Saff, and Serguei Shimorin",
+      "venue": "Notions of Positivity and the Geometry of Polynomials (2011)",
+      "doi": "10.1007/978-3-0348-0142-3_16",
+      "url": "https://arxiv.org/abs/1010.5167",
+      "exact_anchor": "Section 2 for unit-disk distance products and Section 8 for reciprocal-balance exclusion regions and the Alexander--Walsh theorem.",
+      "supports": "The modern nearby landscape: root-to-critical distance products and one-root exclusion geometry derived from reciprocal balance.",
+      "does_not_support": "The prescribed-critical-point two-nearest-root sum bound."
+    },
+    {
+      "id": "grace_1902_zeros_polynomial",
+      "title": "The zeros of a polynomial",
+      "author": "J. H. Grace",
+      "venue": "Proceedings of the Cambridge Philosophical Society 11 (1902), 352--357",
+      "exact_anchor": "The classical two-zero localization theorem, conventionally restated as locating a derivative zero in an explicit disk determined by two zeros.",
+      "supports": "The closest classical theorem involving two zeros and one critical point.",
+      "does_not_support": "The reverse input direction or the sum of the two nearest root distances from every critical point."
+    }
+  ],
+  "supporting_survey": {
+    "title": "Critical points of polynomials",
+    "author": "Vilmos Totik",
+    "year": 2021,
+    "url": "http://publicatio.bibl.u-szeged.hu/23761/1/GL.pdf",
+    "exact_anchor": "Theorem 14 (Grace), Theorem 15 (Walsh), and Theorem 16 plus its corollary (Dimitrov), in the circular-domains section.",
+    "use": "Confirms the conventional directions and terminology of the closest classical localization results; it is not used as novelty authority."
+  },
+  "mechanism_comparison": {
+    "grace_heawood": "Input: two prescribed zeros. Output: existence of a critical point in a disk determined by them.",
+    "sendov_marden": "Input: one prescribed zero of a unit-disk polynomial. Output sought: a critical point within unit distance.",
+    "alexander_walsh": "Input: one prescribed zero and its separation from the other zeros. Output: an exclusion disk containing no nontrivial critical point.",
+    "local_theorem": "Input: one prescribed critical point of a unit-disk polynomial. Output: its two nearest roots have total distance at most two.",
+    "geometric_mean_scale_interface": "The Lean-checked conditional theorem gives two distinct roots with total distance at most twice the positive geometric mean of the root distances. It is a local scale interface within the same metric mechanism; the global theorem adds disk geometry to obtain the absolute diameter bound.",
+    "exact_delta": "The quantifier direction and paired sum conclusion are distinct from all three located families. The proof nevertheless uses classical logarithmic-derivative equilibrium and elementary disk geometry.",
+    "significance_boundary": "The theorem is metric only. It does not make the root-to-hub segments or any replacement path lie in the unit lemniscate."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "polynomial critical point two nearest zeros sum distances theorem",
+      "two nearest roots critical point polynomial",
+      "Grace Heawood theorem critical point two zeros distance",
+      "critical point two zeros polynomial distance",
+      "logarithmic derivative reciprocal balance nearest roots polynomial theorem",
+      "Marden critical point nearest zeros unit disk"
+    ],
+    "sources_inspected": [
+      "Marden (1983), complete article",
+      "Khavinson--Pereira--Putinar--Saff--Shimorin (2011), complete preprint",
+      "Totik (2021), circular-domain and bibliography sections",
+      "Google exact-phrase and mechanism searches"
+    ],
+    "result": "The search recovered Gauss--Lucas, Grace, Sendov, Walsh, Dimitrov, and Alexander--Walsh localization results, but no statement of the exact prescribed-critical-point two-nearest-root sum theorem.",
+    "boundary": "An unlocated antecedent is not evidence of priority. Public wording must retain no-priority language and distinguish the ordinary global proof from its Lean-checked core; independent specialist review is downstream of publication rather than a visibility gate."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For every critical point of a polynomial whose roots lie in the closed unit disk, the two nearest roots have total distance at most two. This exact reverse-quantifier statement was not located in a bounded primary-source search; its ingredients are classical and no priority is claimed.",
+    "forbidden_wording": [
+      "This is a new converse to Grace--Heawood.",
+      "This proves Sendov's conjecture.",
+      "The full theorem is Lean-checked.",
+      "The selected spokes stay inside the lemniscate.",
+      "This solves Erdős Problem 1041."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_full_Lean_formalization",
+      "not_path_containment",
+      "not_erdos_1041_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/global_critical_two_nearest_root_budget.card.json",
+      "effect": "Expose the exact theorem, proof/formalization split, closest prior art, and no-priority ceiling."
+    },
+    {
+      "path": "docs/formal_math/reviewer_cards/unique_nearest_straight_spoke_counterexample.card.json",
+      "effect": "Keep as the paired negative consumer showing why the metric theorem does not imply containment."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Promote the metric theorem as a high-value positive result, immediately paired with the exact straight-spoke counterexample and the statement that Erdős #1041 remains open."
+    }
+  ],
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "The metric budget is solved; containment is not",
+    "canonical_mechanism_family": "critical-point reciprocal equilibrium, disk geometry, and the metric-versus-containment split",
+    "relation": "One parent metric closure. The geometric-mean declaration is a local scale interface; the straight-spoke and fixed-hub Newton examples are containment boundaries, not competing metric results.",
+    "understanding_delta": "The critical-hub route already has its optimal Euclidean endpoint budget, so all future work must answer a contained-connector question.",
+    "evidence_boundary": "Complete ordinary proof plus a named Lean real kernel and finite historical regression. The whole theorem is not labelled fully Lean-checked.",
+    "hard_step": "Find a contained path mechanism for the budgeted pair.",
+    "meaningful_failed_route": "Straight spokes and metric-selected canonical Newton branches both fail as generic containment consumers.",
+    "open_remainder": "Containment selection, full formalization, and Erdős #1041 remain open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_publication_ready_and_canonicalization",
+    "artifact": "global_critical_two_nearest_root_budget",
+    "human_understanding_delta": "A scattered critical-hub route becomes one exact metric closure plus one visibly separate containment bottleneck.",
+    "verification_state": "Ordinary complete proof, named Lean algebraic core, and finite diagnostic regression with distinct scopes.",
+    "publication_or_review_state": "Public/Comparator eligible under explicit evidence labels; external review is an invited downstream process, not a release precondition.",
+    "canonicalization_state": "Parent theorem subsumes the proximity narratives and attaches the containment falsifiers as boundary consumers.",
+    "unresolved_downstream_bottleneck": "A lemniscate-contained connector under the established Euclidean budget.",
+    "next_stage_owner": "Role 3 for publication projection and Mathematics Refinery for source-parity maintenance."
+  },
+  "publication_eligibility": {
+    "class": "comparator_candidate",
+    "rationale": "The theorem, source proof, Lean core, nearest literature context, and claim boundaries are inspectable. The interface must label the global theorem as ordinary proof and the real inequality as Lean-checked.",
+    "not_blocked_by": "absence_of_external_specialist_review"
+  },
+  "release_disposition": "status_tagged_public_and_comparator_candidate",
+  "release_disposition_reason": "The complete ordinary theorem and its Lean-checked real core are inspectable with explicit literature uncertainty and a strict containment boundary. Public/Comparator visibility is appropriate with evidence labels; the theorem is not a full Lean result or an Erdős #1041 solution.",
+  "programme_placement": {
+    "canonical_mechanism_family": "critical-point reciprocal equilibrium, disk geometry, and the metric-versus-containment split",
+    "disposition": "replace fragmented critical-hub proximity narratives as the parent metric-budget object; keep straight-spoke and Newton-branch counterexamples subordinate as containment boundaries",
+    "consolidation_relation": "The geometric-mean scale declaration and the two-nearest-root theorem are one metric closure. Do not count them as separate endpoint advances.",
+    "evidence_class": "complete authored ordinary complex-geometric proof, Lean-checked decisive real core, and finite diagnostic replay",
+    "hard_step": "A skeptical reader must verify the reverse quantifiers and reciprocal-balance disk estimate; the remaining programme difficulty is a contained connector, not metric access.",
+    "prior_art_uncertainty": "Grace, Gauss--Lucas, Sendov/Marden, and reciprocal-balance exclusion results are close classical context. The exact prescribed-critical-point two-nearest-root sum statement was not located in the bounded comparison; no priority claim follows.",
+    "open_boundary": "No path-containment theorem, full Lean formalization, unrestricted adjacent-root theorem, or Erdős #1041 resolution follows.",
+    "comparator_interface_justified": true,
+    "comparator_minimal_restatement": "For roots in the closed unit disk and any critical point, the two nearest roots have sum of distances at most 2; evidence is an authored ordinary proof with a Lean-checked real kernel.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The metric budget is solved; containment is not",
+      "supersession_or_consolidation": "Use one parent theorem, then attach exact straight-spoke and metric-selected Newton counterexamples as containment-boundary panels. Retire fragmented proximity chronologies.",
+      "reason": "This changes the first-contact story for #1041: distance is no longer the critical-hub bottleneck, so future work must solve connector containment."
+    }
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-current prior-art and significance pass",
+    "result_family_version": "global_critical_two_nearest_root_budget@source_80a3f18_card_ed885e97",
+    "source_version_binding": {
+      "ordinary_proof": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalCriticalTwoNearestBudget.md",
+        "commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+        "sha256": "fd02399e9a0821d64c817fa081185796fadb5d78c40f59c4f9b68d5b7f1267de"
+      },
+      "lean_core": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+        "commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+        "sha256": "22f1b1dc8b8e4bf39530c093aaec5eabe299cdb0c32bbde928718b2ad7f25534"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/global_critical_two_nearest_root_budget.card.json",
+        "commit": "ed885e97dfdf45dcbb76eeec9666bdfda3926d0d",
+        "sha256": "fa86725e26ec661fd6962f6aa5a634b29f83328041bce55117a116322d9e8b72"
+      }
+    },
+    "evidence_class": "Complete authored ordinary theorem with named Lean real/algebraic kernels and finite diagnostic replay; not end-to-end Lean and not independently peer-reviewed.",
+    "prior_art_assessment": {
+      "confidence": "high for the stated metric theorem and proof split; moderate for bounded literature non-location; no priority claim",
+      "closest_primary_sources": [
+        "Grace (1902): classical two-zero/critical-point localization in the forward direction.",
+        "Marden (1983): Gauss--Lucas, Sendov, and reciprocal-force interpretations in the unit-disk setting.",
+        "Khavinson--Pereira--Putinar--Saff--Shimorin (2011): reciprocal-balance exclusion regions and distance-product context."
+      ],
+      "exact_relation": "These sources supply nearby critical-point and reciprocal-balance mechanisms, not the reverse-quantifier theorem fixing an arbitrary critical point and bounding the sum of its two nearest root distances.",
+      "search_scope": "The bounded search covered nearest-root critical-point sums, Grace/Heawood converse language, Sendov/Marden, and reciprocal-balance disk estimates; no identical statement was located. Non-location is not novelty evidence."
+    },
+    "comparison_relation": "Grace, Walsh, Sendov/Marden, and reciprocal-balance exclusion regions are classical nearby mechanisms. The source-specific delta is the reverse-quantifier bound that fixes an arbitrary critical point and controls the sum of its two nearest root distances.",
+    "closest_known_result": "Grace (1902) gives the forward two-zero-to-critical-point direction; Marden (1983) and the Khavinson--Pereira--Putinar--Saff--Shimorin survey cover unit-disk reciprocal balance and distance products. None states this prescribed-critical-point two-nearest-root sum bound.",
+    "exact_delta": "Every critical point of a closed-unit-disk polynomial admits two nearest roots with total distance at most 2, with a geometric-mean refinement; this closes metric access but not lemniscate containment.",
+    "disconfirming_evidence": "Straight spokes can leave the lemniscate and the full complex proof is not end-to-end Lean. The bounded search did not establish literature absence, and no path-below-two or #1041 conclusion follows.",
+    "confidence_ceiling": "High for the ordinary theorem, Lean-core split, and source/card parity; medium for exact literature non-location; low for originality, priority, full Lean status, contained paths, or an #1041 solution.",
+    "hard_step": "Combine reciprocal equilibrium at a prescribed critical point with disk geometry while preserving the reverse quantifier and sharp equality boundary.",
+    "open_boundary": "Connector containment inside the lemniscate, full Lean formalization, unrestricted adjacent-root claims, and Erdős #1041 remain open.",
+    "mathematical_delta": {
+      "one_sentence": "For every prescribed critical point of a polynomial with roots in the closed unit disk, the two nearest roots have total distance at most 2, sharply closing the metric half of the critical-hub strategy.",
+      "genuinely_hard_step": "Keep the reverse quantifier explicit while combining reciprocal equilibrium with disk geometry to force the sharp two-nearest-root sum bound.",
+      "why_care": "It changes what a researcher should try next: the critical-hub route no longer needs a better Euclidean pair estimate; it needs a connector that stays inside the lemniscate.",
+      "natural_friction": "The selected roots may have straight spokes leaving the lemniscate, and the full complex proof is ordinary mathematics even though its decisive real kernel is Lean-checked."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Every critical point of a polynomial with roots in the closed unit disk has two nearest roots whose distances sum to at most 2; the complete proof is ordinary and the named real kernel is Lean-checked.",
+      "rejected_stronger": [
+        "a new Grace--Heawood converse",
+        "Sendov's conjecture is proved",
+        "the selected spokes stay inside the lemniscate",
+        "the whole theorem is end-to-end Lean-checked",
+        "Erdős #1041 is solved"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "A_minus_metric_closure",
+      "mechanism_family": "critical-point reciprocal equilibrium and metric-versus-containment separation",
+      "programme_disposition": "replace fragmented critical-hub proximity routes as the parent metric object",
+      "paper_disposition": "headline/core mechanism in 'The metric budget is solved; containment is not', immediately paired with containment counterexamples",
+      "comparator_advisory": "One exact proposition interface is justified with ordinary-proof and Lean-core labels; no interfaces for the attached counterexamples or scale corollaries.",
+      "absolute_shortlist": "retain as a plausible cross-programme flagship candidate; its value is the change in the open-problem bottleneck, not a solution claim"
+    },
+    "expert_review_act": "Check the reciprocal-balance inequality, the disk-to-real reduction, and the quantifier reversal against the cited Grace/Marden landscape; then assess whether any contained-connector theorem can consume the established metric budget.",
+    "reentry_condition": "Reopen if the ordinary proof, Lean core, reviewer card, or a direct primary antecedent changes, or if a contained-path consumer is proved."
+  },
+  "source_result_ids": [
+    "global_critical_two_nearest_root_budget",
+    "critical_pair_metric_scale"
+  ],
+  "adjudication_currentness": {
+    "status": "ordinary_source_lean_core_card_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "ordinary_source_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+      "ordinary_source_sha256": "fd02399e9a0821d64c817fa081185796fadb5d78c40f59c4f9b68d5b7f1267de",
+      "lean_core_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+      "lean_core_sha256": "22f1b1dc8b8e4bf39530c093aaec5eabe299cdb0c32bbde928718b2ad7f25534",
+      "reviewer_card_commit": "ed885e97dfdf45dcbb76eeec9666bdfda3926d0d",
+      "reviewer_card_sha256": "fa86725e26ec661fd6962f6aa5a634b29f83328041bce55117a116322d9e8b72",
+      "source_result_ids": [
+        "global_critical_two_nearest_root_budget",
+        "critical_pair_metric_scale"
+      ]
+    },
+    "claim_guard": "Only the prescribed-critical-point two-nearest-root metric bound and its geometric-mean refinement are admitted; no contained spokes, path-below-two theorem, full Lean proof, priority, or Erdős #1041 solution.",
+    "reentry_trigger": "Re-enter if the ordinary proof, Lean core, reviewer card, source result rows, or a direct primary antecedent changes."
+  }
+}

@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #243: gcd stabilisation and reduction along an exact reciprocal-tail orbit"
+  description: >-
+    Conditional theorem in pure Nat/Int vocabulary. Along an exact
+    product-cleared orbit whose negative centred errors admit one common bound
+    along a cofinal set of indices, the tail gcd is eventually a constant
+    positive g, and division by g yields a reduced exact tail: positive
+    quotients, coprime quotients, and both original recurrences. Positivity of
+    the numerators is derived from the cofinal negative errors, not assumed.
+    This is one arithmetic ingredient of the rigidity argument; Erdos #243
+    remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243GcdStabilisation/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243GcdStabilisation/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "supporting_ingredient_grade_conditional_result"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "the library entry for this directory has not been added to lakefile.toml; the parent applies that"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This packages the short note's Proposition res:gcdstab as a single tuple.
+    No existing ExternalVerification243* package states the tail-gcd
+    stabilisation together with the reduced exact tail it produces.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A05", "11B37", "11A63"]
+
+sources:
+  - kind: "paper"
+    title: "Excluding the Bounded Negative Part: Lean-checked rigidity for Erdos Problem 243"
+    authors: ["Will Cook"]
+    location: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-243-reciprocal-tail-rigidity.tex"
+    statement_label: "res:gcdstab"
+  - kind: "lean_source"
+    location: "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean"
+    declaration: "ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces"
+  - kind: "lean_source"
+    location: "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+    declaration: "ErdosProblems.Erdos243.tailGcd_eventuallyConstant_of_cofinally_boundedNegative"
+
+toolchain:
+  lean: "leanprover/lean4:v4.29.1"
+  mathlib: "5e932f97dd25535344f80f9dd8da3aab83df0fe6"
+
+boundary:
+  parent_problem: "Erdos #243"
+  parent_status: "open"
+  conditional_on:
+    - "a single bound on the negative centred errors along a cofinal set of indices"
+  not_established:
+    - "the cofinal negative bound for an arbitrary orbit satisfying the growth and rationality hypotheses"
+    - "any unconditional resolution of Erdos #243"
+  permitted_axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"

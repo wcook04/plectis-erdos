@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification249MobiusMersenneLadderStructure.Challenge",
+  "solution_module": "ExternalVerification249MobiusMersenneLadderStructure.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence",
+    "Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence_of_eventually",
+    "Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave",
+    "Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg",
+    "Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneLambertRung_eq",
+    "Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.lambertRung_shifted_hankelDet_eq_zero",
+    "Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_ne_mobiusMersenneLambertRung"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

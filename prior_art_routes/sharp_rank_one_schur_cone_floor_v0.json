@@ -1,0 +1,290 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "sharp_rank_one_schur_cone_floor",
+  "source_result_ids": [
+    "sharp_rank_one_schur_cone_floor"
+  ],
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_source_specific_exact_quotient_extremum_with_elementary_positive_convex_hull_transfer",
+  "problem_id": "erdos_249",
+  "purpose": "Fix the moment, Hankel, Schur, convexity, and sharpness terminology for the rank-one quotient obstruction while preserving its positive-finite-mixture boundary.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/sharp_rank_one_schur_cone_floor.card.json",
+    "card_commit": "a8a5c92b9cb9166edceeb8b31d71b0ba6af186d6",
+    "landed_source_commit": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSubrankObstruction.lean"
+    ],
+    "supporting_source_commits": {
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSubrankObstruction.lean": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3"
+    },
+    "source_result_id": "sharp_rank_one_schur_cone_floor",
+    "source_declarations": [
+      "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five",
+      "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff",
+      "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+      "ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty"
+    ]
+  },
+  "source_generation": {
+    "status": "source_card_current_committed_packet_current",
+    "formal_sources": [
+      {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+        "commit": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+        "sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365"
+      },
+      {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+        "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+        "sha256": "44f7b7977060826cc5558cfcee40b9bebfa478564d134aef8e2fb9607bf3748d"
+      }
+    ],
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "source_result_id": "sharp_rank_one_schur_cone_floor"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/sharp_rank_one_schur_cone_floor.card.json",
+      "commit": "a8a5c92b9cb9166edceeb8b31d71b0ba6af186d6",
+      "sha256": "46583653badf961c7492ff6167c10799de546179131813ffe0202023bc3f049a"
+    },
+    "review_generation": "2026-08-26_observatory_parity_repair_v1"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The exact discrete quotient minimization is the substantive calculation; the positive finite-mixture transfer is elementary convexity.",
+    "slow_down_at": "Keep the signed Möbius weights and finite positive normalization explicit. Do not infer positivity of the underlying moment sequence or generalize from rank one.",
+    "automation_can_establish": [
+      "The four named Lean declarations and their source/card/packet hashes",
+      "The unique minimizer and certified >21/320 finite positive-mixture separation"
+    ],
+    "human_judgment_required": [
+      "Whether the exact quotient minimizer has an external antecedent",
+      "Whether signed, off-diagonal, or higher-rank routes genuinely escape this floor"
+    ],
+    "review_act": "Check the quotient parametrization, the unique minimizer, and the finite convex-hull step; then treat signed and higher-rank constructions as open rather than excluded."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "sharp_rank_one_schur_cone_floor@source-7a4710b-card-a8a5c92-packet-d269854",
+    "source_generation_binding": {
+      "formal_sources": [
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "commit": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+          "sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365"
+        },
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+          "sha256": "44f7b7977060826cc5558cfcee40b9bebfa478564d134aef8e2fb9607bf3748d"
+        }
+      ],
+      "research_packet_commit": "d269854aa7a8e550702a3cf6f10ed8b14d9a47ef",
+      "research_packet_sha256": "bf38d76ee458c9417ce5fe9237c50b50e7a0c82bfb98b1a01e4040d02ba512ae",
+      "reviewer_card_commit": "a8a5c92b9cb9166edceeb8b31d71b0ba6af186d6",
+      "reviewer_card_sha256": "46583653badf961c7492ff6167c10799de546179131813ffe0202023bc3f049a",
+      "source_result_ids": [
+        "sharp_rank_one_schur_cone_floor"
+      ],
+      "parity": "committed source/card/packet snapshot; uncommitted packet overlay excluded"
+    },
+    "evidence_class": "Lean_checked_exact_rank_one_extremum_and_positive_finite_mixture_gap",
+    "prior_art": "Hamburger's positive-moment/Hankel framework and Schur-complement calculus (e.g. Haynsworth) are classical context; neither states this signed-ladder quotient minimum or finite positive-hull transfer.",
+    "closest_known_result": "Classical positive moment/Hankel and partitioned-Hermitian Schur-complement theory; no identified antecedent for the exact Möbius–Mersenne five-atom minimizer.",
+    "comparison_relation": "Schur-complement, Hankel, and finite positive-mixture language is classical context. The exact five-atom minimizer and 21/320 target-gap calculation are source-specific and deliberately not promoted to a general moment theorem.",
+    "exact_delta": "The source supplies a Lean-checked unique minimum for one signed-ladder rank-one quotient family and transfers its certified separation to finite positive normalized mixtures; the convexity transfer is elementary.",
+    "confidence_ceiling": "High for the stated finite positive rank-one calculation and source/card/packet parity; low for any signed, higher-rank, infinite-mixture, or priority inference.",
+    "disconfirming_evidence": [
+      "The ladder has signed Möbius weights and negative shifted Hankel determinants, so positive-moment-cone language would misdescribe it.",
+      "The proof quantifies only over the declared scalar quotient family and finite positive normalized mixtures; no signed or higher-rank extension is present.",
+      "The rational 21/320 certificate is not the exact optimal real gap."
+    ],
+    "claim_ceiling": "Lean proves the unique minimum of the declared signed-ladder rank-one quotient family and a >21/320 separation for every nonempty finite positive normalized mixture. It does not prove a general moment, Schur-cone, signed-mixture, higher-rank, Padé, or #249 theorem.",
+    "significance_assessment": {
+      "grade": "medium_attention_route_killing_boundary",
+      "why_care": "It closes every explicitly parameterized finite positive averaging variant in this rank-one family, preventing extra atoms or convex averaging from being mistaken for denominator-compression progress.",
+      "mechanism_family": "sharp positive rank-one quotient floor for the Möbius–Mersenne ladder",
+      "hard_step": "Exact global minimization over the discrete scalar quotient family and its positive-hull inheritance.",
+      "open_boundary": "Signed cancellation, off-diagonal coupling, higher rank, infinite mixtures, and the #249 endpoint remain untouched."
+    },
+    "hard_step": "The nontrivial step is the exact global minimization over the discrete quotient family; positive finite-mixture inheritance is a one-line convexity consequence.",
+    "open_boundary": "Signed cancellation, off-diagonal coupling, higher rank, infinite mixtures, and the Erdős #249 endpoint remain open.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Positive rank-one models cannot reach the target",
+      "relation": "Keep the unique minimizer and finite positive-mixture inheritance as one boundary object beneath the canonical residue-gap endpoint; reject a broader Schur-cone narrative.",
+      "reason": "The theorem eliminates one concrete construction family but does not address signed or higher-rank routes."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "Finite positive normalized mixtures of the declared scalar quotient family only; exact 21/320 separation; no signed, higher-rank, infinite-mixture, general Padé, or irrationality claim."
+    },
+    "bounded_expert_act": "Check the quotient-family parametrization and the use of finite positive convexity; verify that no external moment theorem is being smuggled into the rank-one statement.",
+    "reentry_trigger": "Re-enter when the packet overlay lands, a signed/off-diagonal extension is proved, or a precise external antecedent for the exact minimizer is found."
+  },
+  "parity_audit": {
+    "status": "source_card_current_committed_packet_pinned",
+    "effect": "Both Lean source files, the reviewer card, and the packet result match their recorded committed hashes; the packet source-declaration rows are now part of the committed snapshot 08cd783. The rank-one claim ceiling remains unchanged.",
+    "reentry_condition": "Re-enter if either source file, the card, or the packet result row changes; rerun exact hash parity before any public or Comparator change."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_committed_packet_current_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commits": {
+        "RankOneSharpFloor.lean": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+        "RankOneSubrankObstruction.lean": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3"
+      },
+      "formal_source_sha256": {
+        "RankOneSharpFloor.lean": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
+        "RankOneSubrankObstruction.lean": "44f7b7977060826cc5558cfcee40b9bebfa478564d134aef8e2fb9607bf3748d"
+      },
+      "research_packet_commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "research_packet_sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "reviewer_card_commit": "a8a5c92b9cb9166edceeb8b31d71b0ba6af186d6",
+      "reviewer_card_sha256": "46583653badf961c7492ff6167c10799de546179131813ffe0202023bc3f049a",
+      "source_result_ids": [
+        "sharp_rank_one_schur_cone_floor"
+      ]
+    },
+    "claim_guard": "Only the declared signed-ladder rank-one quotient minimum and finite positive normalized-mixture gap are admitted; no general moment, signed, higher-rank, or #249 endpoint claim.",
+    "reentry_trigger": "Re-enter when the committed packet overlay lands, a source/card hash changes, a signed/off-diagonal extension is proved, or an exact external antecedent is identified."
+  },
+  "classification": {
+    "theorem_class": "exact_extremum_over_a_discrete_scalar_quotient_family_plus_positive_finite_convex_hull_inheritance",
+    "novelty_class": "source_specific_exact_calculation_and_formalization_not_a_general_moment_or_Schur_theorem",
+    "frontier_relation": "auxiliary_method_elimination_not_equivalent_to_the_Erdos_249_target",
+    "formalization_class": "Lean_checked_exact_extremum_gap_and_finite_positive_average_consequences",
+    "priority_claim": "none",
+    "recommended_terminology": "exact minimum and certified target-gap floor for a positive hull of rank-one quotients",
+    "acceptable_short_term": "sharp positive rank-one quotient floor",
+    "construction_genealogy": "rank-one monomial Schur quotient from a truncated signed Hankel construction",
+    "discouraged_terminology": [
+      "positive moment cone",
+      "positive Schur cone without defining positivity as external weights",
+      "new Hankel positivity theorem",
+      "sharp 21/320 gap constant",
+      "all rank-one Padé obstruction",
+      "signed or higher-rank no-go"
+    ],
+    "attribution": "Treat Hamburger moment/Hankel positivity and Schur-complement calculus as classical context. Attribute the exact five-atom minimizer and Möbius--Mersenne target-gap calculation to the local source without asserting priority.",
+    "mathematical_interest": "The unique global minimizer is a nontrivial exact fact about this signed ladder. The convex-hull step is elementary but strategically useful because it closes every finite positive averaging variant at once.",
+    "reusable_scope": "Any explicitly parameterized scalar quotient family for which an exact pointwise target separation is known; positive finite normalized mixtures inherit the same separation.",
+    "why_it_matters": "It prevents additional atoms or positive averaging from being mistaken for denominator-compression progress and directs the #249 construction lane toward signed cancellation, off-diagonal coupling, or genuinely higher rank."
+  },
+  "primary_sources": [
+    {
+      "id": "hamburger_1920_extended_moment_problem",
+      "title": "Über eine Erweiterung des Stieltjesschen Momentenproblems",
+      "author": "Hans Hamburger",
+      "venue": "Mathematische Annalen 81 (1920), 235-319",
+      "doi": "10.1007/BF01564869",
+      "url": "https://doi.org/10.1007/BF01564869",
+      "exact_anchor": "Hamburger's moment problem supplies the classical setting in which positivity is encoded by Hankel quadratic forms and matrices.",
+      "supports": "The conventional positive-moment/Hankel-positivity meaning against which the card's terminology must be checked.",
+      "does_not_support": "Treating the signed Möbius--Mersenne ladder as a positive moment sequence, the source-specific quotient minimum, or an Erdős #249 conclusion."
+    },
+    {
+      "id": "haynsworth_1968_partitioned_hermitian_inertia",
+      "title": "Determination of the inertia of a partitioned Hermitian matrix",
+      "author": "Emilie V. Haynsworth",
+      "venue": "Linear Algebra and its Applications 1 (1968), 73-81",
+      "doi": "10.1016/0024-3795(68)90050-5",
+      "url": "https://doi.org/10.1016/0024-3795(68)90050-5",
+      "exact_anchor": "The inertia formula for partitioned Hermitian matrices is a classical matrix setting for Schur-complement reasoning.",
+      "supports": "Schur-complement terminology as matrix genealogy for a rank-one quotient.",
+      "does_not_support": "Calling the normalized positive hull a Schur cone, the signed-ladder extremum, or the claimed numerical gap."
+    }
+  ],
+  "terminology_decision": {
+    "moment": "The entries are moment-like power sums, but the Möbius coefficients are signed and the shifted 2x2 Hankel determinants are negative. Positive-moment-cone language is therefore inappropriate.",
+    "Hankel": "Hankel is appropriate for the surrounding determinant construction and log-concavity statements, not as a claim that the sequence has a positive representing measure.",
+    "Schur": "Schur quotient or rank-one Schur-complement quotient is acceptable if the defining block matrix is displayed. Schur cone is not conventional for the normalized finite positive averages proved here.",
+    "convexity": "Because the theorem normalizes by the sum of positive weights, its exact geometric object is the finite convex hull of the scalar quotient values, not an unnormalized cone.",
+    "rank_one": "Rank one describes the source construction family. The theorem does not quantify over all rank-one rational approximants or all rank-one Hankel/Padé kernels."
+  },
+  "sharpness_boundary": {
+    "exact": [
+      "the quotient family has a unique minimum at (e,Y)=(1,5)",
+      "the minimum quotient is the displayed rational number",
+      "1/16 holds uniformly and the adjacent larger unit fraction 1/15 fails"
+    ],
+    "certified_but_not_exact_optimum": "The target gap is uniformly greater than 21/320. The exact optimal real gap is Q(1,5)-Theta_2, not the rational number 21/320.",
+    "public_rule": "Attach sharp to the quotient minimizer or the unit-fraction boundary, not to 21/320 as though it were the exact gap."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Lean identifies the unique minimum of one signed-ladder rank-one quotient family and proves that every nonempty finite positive normalized mixture remains more than 21/320 above Theta_2.",
+    "forbidden_wording": [
+      "The Möbius--Mersenne ladder lies in a positive moment cone.",
+      "All positive Schur or Padé constructions are excluded.",
+      "Signed mixtures inherit the gap.",
+      "Higher-rank or off-diagonal kernels inherit the gap.",
+      "21/320 is the exact optimal real gap.",
+      "This proves Erdős Problem 249."
+    ],
+    "nonclaims": [
+      "not_a_positive_moment_sequence_claim",
+      "not_an_infinite_mixture_theorem",
+      "not_a_signed_mixture_obstruction",
+      "not_a_higher_rank_obstruction",
+      "not_a_general_Pade_or_Hankel_no_go",
+      "not_an_irrationality_proof",
+      "not_a_priority_claim"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/sharp_rank_one_schur_cone_floor.card.json",
+      "effect": "Replace positive-cone headline language with the exact quotient-family and finite-convex-hull boundary, and distinguish exact from certified sharpness."
+    },
+    {
+      "consumer": "Erdős #249 proof fleet",
+      "effect": "Retire only additional positive averaging inside this exact quotient family; keep signed, off-diagonal, and higher-rank denominator-compression routes open."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the unique minimizer as the substantive exact result and the convex-hull transfer as a scoped method boundary, not as a new general moment theorem."
+    }
+  ],
+  "consolidation_decision": {
+    "programme_family": "canonical Mersenne residue-gap endpoint with signed-moment and positive-model route obstructions",
+    "relation": "Subordinate this exact finite-convex-hull floor beneath mobius_mersenne_strict_log_concavity. The latter is the broader all-rungs structural obstruction; this route supplies its quantitative rank-one specialization.",
+    "headline": "canonical_mersenne_residue_gap_normal_form remains the #249 headline, programme representative, and absolute-frontier object",
+    "duplicate_rule": "Do not mint separate objects for the 21/320 certificate, the 1/16 versus 1/15 threshold, or the primitive-form corollary.",
+    "paper_disposition": "route-killing failure/boundary in the paper subsection 'Why positive moment models fail: the exact rank-one floor'",
+    "comparator_advisory": "At most one compact proposition interface for the unique minimum and positive-mixture inheritance; Role 3 decides integration."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Hamburger moment problem Hankel positivity primary source",
+      "Schur complement partitioned Hermitian matrix inertia Haynsworth",
+      "positive rank-one Schur cone moment quotient",
+      "signed moment sequence rank-one quotient extremum"
+    ],
+    "result": "The bounded search recovered the classical positive-moment and Schur-complement frameworks but no conventional object called the positive rank-one Schur cone matching these normalized quotients.",
+    "boundary": "No phrase match does not establish novelty; the exact result remains a source-specific extremal calculation with elementary convex-hull inheritance."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_rank_one_to_higher_rank_boundary",
+    "priority_order": [
+      "retain Hamburger/Hankel and Schur-complement language only as classical context, not as a positive-moment theorem attribution",
+      "check whether a primary source records the exact signed-ladder quotient minimizer or its finite positive-mixture transfer",
+      "keep signed mixtures, off-diagonal coupling, and higher-rank kernels outside the proved floor"
+    ],
+    "lane": "re-enter only on an exact antecedent or a new higher-rank/off-diagonal result; the current floor is intentionally rank-one and finite-mixture scoped"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "rank_one_signed_ladder_extremum_prior_art_review",
+    "output_stage": "method_boundary_human_review_support",
+    "artifact": "#249 exact rank-one quotient minimum and positive finite-mixture floor",
+    "human_understanding_delta": "The object is no longer described as a positive Schur or moment cone: Lean proves a unique minimizer for one signed-ladder quotient family, and elementary convexity transfers that separation only to finite positive normalized mixtures.",
+    "verification_state": "Four named Lean declarations and the source-specific quotient family are pinned; Hamburger and Haynsworth supply terminology context but not the local extremum or target gap.",
+    "publication_or_review_state": "Private route-killing significance support; no priority, general moment/Hankel theorem, signed-mixture, higher-rank, or #249 endpoint claim.",
+    "canonicalization_state": "Subordinate one quantitative rank-one floor beneath the canonical Mersenne residue-gap family; do not split the minimizer, 1/16 threshold, 21/320 certificate, and convex-hull corollary.",
+    "unresolved_downstream_bottleneck": "Whether signed cancellation, off-diagonal coupling, or higher-rank constructions evade this positive finite-mixture floor.",
+    "next_stage_owner": "Novelty Observatory for exact extremum antecedents; Mathematics Refinery for single-family consolidation; #249 proof/public owners for routes outside the floor."
+  }
+}

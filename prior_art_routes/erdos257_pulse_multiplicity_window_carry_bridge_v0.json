@@ -1,0 +1,185 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos257_pulse_multiplicity_window_carry_bridge",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_finite_support_coordinate_dictionary_with_exact_sign_no_go",
+  "problem_id": "erdos_257",
+  "purpose": "Position the pulse/window/carry identity relative to classical achievement sets and strict-tail coding, and prevent its exact finite coordinate conversion from being mistaken for the missing all-depth producer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos257_pulse_multiplicity_window_carry_bridge.card.json",
+    "source_commit": "ca5e9ead6b91495f0094944fd0e70b94511c943f",
+    "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfCylinderPullbackCardPropagation.lean",
+    "source_result_id": "one_half_pulse_register_exact_multiplicity_window_bridge",
+    "source_declarations": [
+      "sum_rowPulse_eq_pairedSupportCoeff",
+      "fixedSupportPulseCharge_eq_finiteCoeffWindowNumerator",
+      "finiteCoeffWindowNumerator_sub_baseline_eq_centeredCarry",
+      "fixedSupportPulseCharge_sub_geometric_eq_centeredCarry",
+      "three_mul_affineRightRunCharge_eq_fixedSupport_add_geometric",
+      "three_mul_affineRightRunCharge_eq_multiplicityWindow_add_geometric"
+    ]
+  },
+  "source_result_ids": [
+    "one_half_pulse_register_exact_multiplicity_window_bridge"
+  ],
+  "adjudication_currentness": {
+    "status": "landed_source_and_card_snapshot_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "ca5e9ead6b91495f0094944fd0e70b94511c943f",
+      "formal_source_sha256": "9decab861e3a76b69927cbc2e060fab15aa2b2b21b1f0d19c0d9fbafba74f584",
+      "reviewer_card_commit": "b3bda243dc59ed37ebb75b4b99908ae083de2805",
+      "reviewer_card_sha256": "058f645dcfeca2e73eee1560351276c89ff2cbd7b46779a6bdc6be853bfa1ce0",
+      "source_result_ids": [
+        "one_half_pulse_register_exact_multiplicity_window_bridge"
+      ]
+    },
+    "claim_guard": "This is a finite-support coordinate dictionary and finite sign boundary; it does not identify finite support with completed rational support or supply a cofinal producer for Erdős #257.",
+    "reentry_trigger": "Re-enter if the formal source/card generation changes or a cofinal coupled endpoint estimate is supplied."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The six identities are routine once the registers are declared; the substantive review is the finite sign obstruction and its effect on the missing cofinal endpoint estimate.",
+    "slow_down_at": "Do not conflate finite seam support, completed rational support, or a large carry with one-half membership or the all-depth terminal packet inequality.",
+    "review_act": "One bounded expert act: check the six declaration quantifiers and finite witness, then state the minimal coupled cofinal estimate that would evade the sign obstruction."
+  },
+  "classification": {
+    "theorem_class": "finite_support_radix_coordinate_conversion_and_endpoint_telescoping_identity",
+    "novelty_class": "elementary_source_specific_exact_reformulation_with_reusable_formal_dictionary_and_finite_route_killing_counterevidence",
+    "formalization_class": "six Lean_checked_identifications_plus_a_separately_hash_pinned_finite_computation",
+    "priority_claim": "none",
+    "recommended_terminology": "finite pulse-window carry telescoping",
+    "terminology_boundary": "Achievement set and subsum set are standard. Carry and telescoping are ordinary arithmetic language. Pulse register, selected-divisor multiplicity window, and centered Möbius carry are project coordinates, not located standard theorem names.",
+    "attribution": "Credit Kakeya for the classical subsum-set setting and Kovač--Tao for the strict-tail unique-coding background of these Lambert weights. Attribute the exact pulse/window/carry dictionary and Lean formalization to the local development without a priority claim.",
+    "mathematical_interest": "Moderate as an internal and reusable coordinate dictionary, low as a standalone novelty claim. It proves that three ledgers are literally the same finite quantity and reveals that the surviving difficulty is a coupled endpoint estimate.",
+    "reusable_scope": "Finite-support radix registers whose digits are linear combinations of selected-divisor incidence coefficients and whose centered recurrence has a telescoping boundary form.",
+    "why_it_matters": "It eliminates duplicate proof languages and prevents enormous individual carries, sparse holes, or a positive-looking finite trace from being substituted for the required coupled boundary theorem."
+  },
+  "primary_sources": [
+    {
+      "id": "kakeya_1914_partial_sums",
+      "title": "On the Set of Partial Sums of an Infinite Series",
+      "author": "Soichi Kakeya",
+      "venue": "Proceedings of the Tokyo Mathematico-Physical Society, second series 7 (1914), 250--251",
+      "doi": "10.11429/ptmps1907.7.14_250",
+      "url": "https://www.jstage.jst.go.jp/article/ptmps1907/7/14/7_14_250/_article",
+      "exact_anchor": "The original treatment of sets of subseries sums for a convergent positive series.",
+      "supports": "The classical achievement-set or subsum-set framework.",
+      "does_not_support": "The Mersenne pulse coordinates, centered carry identity, or endpoint inequality."
+    },
+    {
+      "id": "kovac_tao_2024_ahmes_series",
+      "title": "On several irrationality problems for Ahmes series",
+      "authors": ["Vjekoslav Kovač", "Terence Tao"],
+      "url": "https://arxiv.org/abs/2406.17593",
+      "exact_anchor": "Remark 13 proves strict tail dominance for the fixed-base Lambert weights and concludes unique subsum coding and Cantor-set structure.",
+      "supports": "The closest source-backed background for the finite-support codes being compared.",
+      "does_not_support": "The base-four pulse register, divisor-multiplicity coefficients, telescoping formula, or one-half producer."
+    },
+    {
+      "id": "nitecki_2011_subsum_sets",
+      "title": "Subsum Sets: Intervals, Cantor Sets, and Cantorvals",
+      "author": "Zbigniew Nitecki",
+      "url": "https://arxiv.org/abs/1106.3779",
+      "exact_anchor": "Sections 1--2 survey the standard subsum-set terminology and the tail-versus-term geometry inherited from Kakeya.",
+      "supports": "Conventional modern vocabulary for positive summable achievement sets.",
+      "does_not_support": "Any source-specific carry or pulse identity."
+    }
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "digital carries finite difference telescoping endpoint carry binary coefficients",
+      "achievement set Mersenne greedy subsums carry",
+      "selected divisor multiplicity carry recurrence",
+      "pulse window carry telescoping"
+    ],
+    "result": "The search located the classical subsum framework, strict-tail unique coding, and broad digit/carry literature, but no source using the exact pulse/window/carry coordinate triple or stating this identity.",
+    "boundary": "Non-location does not imply novelty because the telescoping step is immediate from the declared carry recurrence."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For finite supports, six Lean-checked identities convert the #257 base-four pulse register into a paired binary multiplicity window and telescope its centered part to two endpoint carries; a hash-pinned finite audit refutes a sign-monotone use of that dictionary.",
+    "forbidden_wording": [
+      "This is a new general carry theorem.",
+      "The centered window is nonnegative at every depth.",
+      "Finite seam support represents the completed rational support.",
+      "The identity proves the upper terminal packet inequality.",
+      "The bridge proves one-half membership or solves Erdős #257."
+    ]
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "canonical greedy cofinal-skip endpoint with target-specific finite-support carry and cylinder producers",
+    "disposition": "subordinate under the one-half producer analysis; consolidate pulse, window, affine-baseline, and sign-falsifier statements in this single object",
+    "paper_disposition": "supporting lemma and route-killing boundary",
+    "comparator_advisory": "One bundled finite-support interface is defensible because all six statements are Lean checked and independently restatable. Do not expose the finite audit or any open endpoint implication as part of the proposition.",
+    "absolute_frontier_shortlist_decision": "do not admit; retain rational_greedy_cofinal_skip_membership as the #257 flagship and programme representative"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean_checked_finite_support_coordinate_dictionary_and_sign_falsifier",
+    "output_stage": "human_understanding_and_route_boundary",
+    "artifact": "#257 finite pulse-window carry telescoping bridge",
+    "human_understanding_delta": "The pulse register, paired-support coefficient, selected-divisor multiplicity window, affine baseline, and centered carry are one finite quantity; the surviving difficulty is a coupled endpoint estimate, not a choice of notation.",
+    "verification_state": "Six named Lean identities and the finite sign audit are source-pinned; no cofinal producer, completed rational support, or endpoint inequality is claimed.",
+    "publication_or_review_state": "Eligible for one status-tagged finite-support card/interface with explicit open-boundary labels; no priority or #257 endpoint claim.",
+    "canonicalization_state": "One subordinate pulse/window/carry object; no duplicate pulse, affine-baseline, or sign-falsifier cards.",
+    "unresolved_downstream_bottleneck": "A coupled cofinal-support and terminal-packet theorem that survives the finite sign obstruction.",
+    "next_stage_owner": "Mathematics Refinery for consolidation and #257 proof owners for the coupled endpoint producer."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos257_pulse_multiplicity_window_carry_bridge@HalfCylinderPullbackCardPropagation-ca5e9ead-card-b3bda243",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfCylinderPullbackCardPropagation.lean",
+        "commit": "ca5e9ead6b91495f0094944fd0e70b94511c943f",
+        "sha256": "9decab861e3a76b69927cbc2e060fab15aa2b2b21b1f0d19c0d9fbafba74f584"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos257_pulse_multiplicity_window_carry_bridge.card.json",
+        "commit": "b3bda243dc59ed37ebb75b4b99908ae083de2805",
+        "sha256": "058f645dcfeca2e73eee1560351276c89ff2cbd7b46779a6bdc6be853bfa1ce0"
+      },
+      "parity_status": "six Lean identities and the finite audit are source-current; finite support is not completed rational support"
+    },
+    "classification": {
+      "result_family": "finite_pulse_window_carry_telescoping",
+      "evidence_class": "six Lean-checked finite-support identifications plus a separately hash-pinned finite computation",
+      "closest_prior_art": "Kakeya supplies the achievement/subsum-set setting; Kovač--Tao and Nitecki supply strict-tail coding and conventional terminology. No located source states this exact pulse/window/carry coordinate triple.",
+      "comparison_relation": "The local contribution is an exact coordinate dictionary and finite sign no-go, not a new general carry theorem or an endpoint producer.",
+      "novelty_confidence": "high for the formal identities and their finite boundary; low for standalone novelty or priority",
+      "significance_grade": "moderate_reusable_coordinate_high_route_map_value",
+      "why_care": "It eliminates duplicate proof languages and blocks a common error: treating a large individual carry, sparse seam, or positive finite trace as the coupled terminal theorem still missing.",
+      "hard_step": "Supply a cofinal coupled endpoint estimate after the finite sign obstruction; the coordinate conversion itself is routine once declared.",
+      "natural_friction": "Finite seam support and finite-support identities do not represent the completed rational support or imply one-half membership.",
+      "disconfirming_evidence": "The finite audit refutes a sign-monotone use of the dictionary, and no upper terminal packet inequality is supplied."
+    },
+    "evidence_class": "six Lean-checked finite-support identifications plus a separately hash-pinned finite computation",
+    "prior_art": "Kakeya supplies the achievement/subsum-set setting; Kovač--Tao and Nitecki supply strict-tail coding and conventional terminology. No located source states this exact pulse/window/carry coordinate triple.",
+    "closest_known_result": "Classical achievement-set/subsum-set coding and strict-tail uniqueness are the nearest frameworks; the pulse/window/carry dictionary is a source-specific finite reformulation.",
+    "comparison_relation": "exact_coordinate_dictionary_and_finite_sign_no_go",
+    "exact_delta": "The six declarations identify the pulse, paired-support, multiplicity-window, affine-baseline, and centered-carry ledgers as one finite quantity, while the finite witness blocks a sign-monotone endpoint inference.",
+    "disconfirming_evidence": "The finite audit refutes a sign-monotone use of the dictionary, and no upper terminal packet inequality or cofinal producer is supplied.",
+    "confidence_ceiling": "High for the six formal identities and finite boundary; low for standalone novelty or priority and nil for an Erdős #257 endpoint claim.",
+    "significance": "Moderate reusable-coordinate value and high route-map value: it removes duplicate proof languages and isolates the coupled cofinal estimate still needed.",
+    "hard_step": "Supply a cofinal coupled endpoint estimate that survives the finite sign obstruction; the coordinate conversion itself is routine once declared.",
+    "open_boundary": "Cofinal skipped-rank supply, terminal packet inequalities, rational-tail exclusion, and Erdős #257 remain open.",
+    "claim_ceiling": {
+      "strongest_allowed": "For finite supports, six Lean identities convert the base-four pulse register into a paired binary multiplicity window and telescope its centered part to endpoint carries; a finite audit refutes a specified sign-monotone route.",
+      "rejected_stronger": [
+        "a new general carry theorem",
+        "nonnegativity of the centered window at every depth",
+        "finite seam support as completed rational support",
+        "the upper terminal packet inequality",
+        "one-half membership or an Erdős #257 solution",
+        "a priority or novelty claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "canonical greedy cofinal-skip endpoint with finite-support carry and cylinder producers",
+      "disposition": "retain as one subordinate coordinate dictionary and route-killing boundary under the one-half producer analysis; consolidate all six identities",
+      "paper_disposition": "supporting lemma plus route-killing boundary in the #257 producer section",
+      "supersession_or_consolidation": "Keep pulse, window, affine-baseline, centered-carry, and sign-falsifier statements together; do not create endpoint or notation subcards.",
+      "expert_attention_reason": "The useful review act is deciding which coupled terminal estimate survives the finite sign obstruction, not choosing between equivalent ledgers.",
+      "open_boundary": "Cofinal skipped-rank supply, terminal packet inequalities, rational-tail exclusion, and Erdős #257 remain open.",
+      "independent_comparator_interface_justified": true
+    },
+    "bounded_expert_act": "Check the six declarations' quantifiers and reproduce the finite sign witness, then formulate the minimal cofinal coupled estimate that would evade it.",
+    "reentry_trigger": "Re-enter only if the source/card generation changes or a cofinal producer/terminal inequality is supplied."
+  }
+}

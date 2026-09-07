@@ -1,0 +1,310 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "bounded_rise_fresh_coprime_moduli",
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "public_source_commit": "d666db67b1e40dc1fa6781ad09030193de126417",
+    "public_source_path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "private_reduced_tail_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "private_reduced_tail_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "private_reduced_tail_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+    "private_strict_rise_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "private_strict_rise_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+    "private_strict_rise_source_sha256": "da5323838ee6412f15f2a9a169188edd46d105ba5a9b36a4161a1ca3cff33fbe",
+    "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+    "research_packet_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+    "reviewer_card_commit": "7d9cda155ee2ca95a4e070cd2c37978f21d290f7",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/bounded_rise_fresh_coprime_moduli.card.json",
+    "reviewer_card_sha256": "b5eb4b02eb02a6f5dfa75594b922c1b8deed51ce1d0a927b150271b84782b10b",
+    "status": "public/private source variants packet and card hashes current at adjudication; CRT/Jacobsthal antecedents remain external"
+  },
+  "workspace_overlay": {
+    "status": "uncommitted_packet_overlay_not_consumed",
+    "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+    "sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+    "committed_snapshot_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+    "adjudication_effect": "The packet working-tree overlay is excluded; this route remains pinned to committed snapshot 0708c6fe.",
+    "reentry_condition": "After the packet overlay lands or is discarded, rerun exact source/card/packet parity before changing the claim ceiling."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos243_dynamic_crt_first_crossing_barrier@public_d666db67_private_14bf635_packet_0708c6fe_card_7d9cda15",
+    "evidence_class": "Public Lean-checked dynamic theorem with separately pinned private consumers and primary-source CRT/Jacobsthal attribution.",
+    "comparison_relation": "The forbidden block is classical CRT/Jacobsthal/covering-congruence mathematics; the source-specific delta is the first-crossing transfer for a divergent, possibly nonmonotone sequence with bounded upward increments and permanent later-state nondivisibility.",
+    "closest_known_result": "Kanold's Jacobsthal-gap framework and Ford--Green--Konyagin--Maynard--Tao's CRT residue-cover construction support the static block; Hildebrand gives a nearby pairwise-coprime offset assignment. None states this exact dynamic formulation.",
+    "exact_delta": "The theorem converts fresh pairwise-coprime moduli into a one-sided dynamic no-go without monotonicity, while the public/private source split keeps the unrestricted #243 tail hypothesis visibly open.",
+    "disconfirming_evidence": "The bounded search located only static CRT/covering antecedents; that supports exact-packaging language, not absence or priority. Pairwise coprimality is sufficient, not shown necessary.",
+    "evidence_class": "Public Lean-checked dynamic theorem with separately pinned private consumers and primary-source CRT/Jacobsthal attribution",
+    "confidence_ceiling": "High for source/card parity and the dynamic theorem's stated hypotheses; medium for exact literature non-location; low for any claim that bounded rise holds for the unrestricted #243 tail or that #243 is solved.",
+    "hard_step": "Preserve later-state avoidance through the first-crossing index without monotonicity; the unrestricted tail producer remains open.",
+    "bounded_expert_act": "Check the first-crossing quantifier order and verify that static CRT sources are used only for the forbidden block.",
+    "reentry_trigger": "Reopen if the public/private source variants, packet snapshot, card, or a direct prior formulation changes.",
+    "significance_assessment": {
+      "grade": "medium_high_reusable_interface_low_novelty",
+      "why_care": "It turns a classical CRT forbidden block into a one-sided dynamic obstruction reusable across recurrence consumers, while exposing that the unrestricted #243 tail lacks the bounded-rise hypothesis.",
+      "mechanism_family": "fresh-modulus CRT barriers in reduced-tail recurrence dynamics"
+    },
+    "confidence": {
+      "dynamic_theorem": "high_internal_provisional",
+      "classical_attribution": "high_internal_provisional",
+      "unrestricted_erdos243_application": "low_unresolved"
+    },
+    "significance": "Medium-high reusable-interface value and low novelty confidence: it is a durable semantic firewall that prevents treating a classical CRT block as control of the unrestricted reciprocal tail.",
+    "claim_ceiling": "The public Lean theorem formalises the dynamic corollary under divergence, uniformly bounded upward increments, fresh pairwise-coprime moduli, and permanent later-state nondivisibility. It does not establish those hypotheses for the unrestricted #243 tail and does not solve #243.",
+    "hard_step": "Preserve the later-state avoidance quantifier through the first-crossing index without monotonicity; the unrestricted tail remains the real #243 bottleneck.",
+    "open_boundary": "No bounded-rise theorem for the unrestricted tail, no arbitrary non-coprime-modulus version, and no irrationality or Erdős #243 endpoint follows.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Fresh moduli versus bounded rise: the CRT first-crossing barrier",
+      "supersession_or_consolidation": "Use one dynamic CRT lemma with public and private hypothesis packages; subordinate the reduced-tail and strict-rise consumers and retire static-CRT duplicate narratives.",
+      "why_care": "It makes the exact missing hypothesis visible and reusable across recurrence consumers."
+    },
+    "comparator_advisory": {
+      "disposition": "comparator_now_public_lean_theorem",
+      "proposition_scope": "Expose the public no_boundedRise_of_tailNondivisibility theorem with explicit hypotheses and classical-CRT attribution; keep private variants linked as consumers.",
+      "independent_interface_justified": true,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Check the first-crossing quantifier order and verify that the cited static CRT sources are used only for the forbidden block, not for the dynamic conclusion.",
+    "reentry_trigger": "Reopen if the public/private source variants, packet snapshot, card, or a direct prior formulation of the dynamic theorem changes."
+  },
+  "parity_audit": {
+    "status": "source_and_card_current_committed_packet_overlay_unconsumed",
+    "effect": "The public theorem, both private Lean consumers, and the reviewer card match their recorded hashes. The pinned packet snapshot 0708c6fe is current as a commit, but the packet has an uncommitted working-tree overlay; that overlay is not evidence and cannot upgrade the public/private claim boundary.",
+    "reentry_condition": "After the #243 packet overlay lands or is discarded, rerun exact source/card/packet parity. Preserve the classical CRT/Jacobsthal attribution, the bounded-rise hypothesis, and the open unrestricted-tail boundary."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos243_bounded_rise_fresh_coprime_moduli_v2",
+    "result_family": "erdos243_dynamic_crt_first_crossing_barrier",
+    "exact_result_ids": [
+      "bounded_rise_reduced_tail_excluded",
+      "strict_rise_crt_barrier"
+    ],
+    "source_generation": "2026-08-26",
+    "evidence_class": "public Lean-checked dynamic theorem plus separately pinned private reduced-tail and strict-rise variants, with primary-source CRT/Jacobsthal attribution",
+    "prior_art_relation": "The static forbidden block is classical CRT/Jacobsthal/covering-congruence mathematics (Kanold; Ford--Green--Konyagin--Maynard--Tao; Hildebrand). The source-specific delta is the nonmonotone first-crossing packaging with later-state nondivisibility; no priority claim is made.",
+    "confidence_ceiling": "High for source/card parity and the dynamic theorem's stated hypotheses; medium for the exact literature non-location; low for any claim that bounded rise holds for the unrestricted #243 tail or that #243 is solved.",
+    "significance_rationale": "This is a genuinely reusable formal interface: it converts a classical CRT forbidden block into a one-sided dynamic obstruction and prevents repeated ad hoc proofs across tail consumers.",
+    "hard_step": "Apply the first-crossing argument without monotonicity while preserving the later-state avoidance quantifier; the remaining #243 difficulty lies outside bounded rise.",
+    "open_boundary": "Pairwise coprimality is only a sufficient CRT compatibility condition, bounded rise is not established for the unrestricted reciprocal tail, and no irrationality/endpoint theorem follows.",
+    "expert_review_act": "Check the quantifier order (each fresh modulus divides no later state), the one-sided rise bound, and the first-crossing contradiction; compare the static block only to the cited CRT/Jacobsthal sources.",
+    "next_reentry": "Re-enter only if the public/private source, packet, card, or a direct antecedent for the exact dynamic formulation changes; do not repeat the completed static CRT search."
+  },
+  "release_disposition": {
+    "value": "comparator_candidate_and_public_supporting_lemma",
+    "statement_firewall": "Expose the public Lean-checked dynamic theorem and identify it as a formalized corollary of classical CRT forbidden-block construction. Keep the private reduced-tail and strict-rise variants as consumers/hypothesis variants; do not imply a bounded-rise theorem for the unrestricted #243 tail or a #243 solution.",
+    "reason": "The general theorem is independently restatable, formally checked, and reusable; its elementary prior-art status is explicit, so visibility does not depend on pending specialist review."
+  },
+  "status": "adjudicated_reusable_formalized_crt_corollary_not_standalone_novelty",
+  "problem_id": "erdos_243",
+  "purpose": "Determine whether the public dynamic nondivisibility theorem is standard under another name and bind a source-backed significance classification to its reviewer card.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The first-crossing argument is elementary but quantifier-sensitive; the value is the reusable public/private hypothesis firewall, not a new CRT theorem.",
+    "slow_down_at": "The later-state nondivisibility quantifier and first index at which the divergent sequence crosses a forbidden CRT block, without assuming monotonicity.",
+    "automation_can_establish": [
+      "Public/private source, packet, and reviewer-card hash parity",
+      "The Lean-checked dynamic theorem and exact hypotheses",
+      "Finite CRT forbidden-block constructions"
+    ],
+    "human_judgment_required": [
+      "Whether classical CRT/Jacobsthal attributions are scoped only to the forbidden block",
+      "Whether the theorem is presented as a dynamic corollary rather than a new CRT result",
+      "Whether the unrestricted #243 tail is kept outside the consumer"
+    ],
+    "review_act": "Check the first-crossing quantifier order once and verify that static CRT sources are not being used to claim control of the unrestricted reciprocal tail."
+  },
+  "target": {
+    "canonical_public_declaration": "ErdosProblems.Erdos243.no_boundedRise_of_tailNondivisibility",
+    "public_authority_commit": "d666db67b1e40dc1fa6781ad09030193de126417",
+    "public_introduction_commit": "69f870a9a5398e1373953ece77b1b28ba09ea5ba",
+    "refinery_handoff_commit": "5473bb5e89b4d3d5cf5a239420ea43af13f12008",
+    "reviewer_card": "docs/formal_math/reviewer_cards/bounded_rise_fresh_coprime_moduli.card.json",
+    "private_research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+    "private_source_result_id": "bounded_rise_reduced_tail_excluded",
+    "private_source_declaration": "ErdosProblems.Erdos243.no_boundedRise_reducedTail",
+    "statement": "A natural-number sequence tending to infinity, with uniformly bounded one-step upward increments, cannot permanently avoid divisibility by an indexed tail of fresh pairwise-coprime moduli."
+  },
+  "classification": {
+    "novelty_class": "reusable_formalized_corollary_of_classical_CRT_forbidden_block_construction",
+    "exact_formulation_status": "independent_dynamic_packaging_not_located_verbatim_in_bounded_search",
+    "formalisation_class": "formalisation_of_an_elementary_dynamic_consequence",
+    "priority_claim": "none",
+    "nearest_prior_work": [
+      "The Jacobsthal-function literature studies the maximal gaps between integers coprime to a fixed product, exactly the static forbidden-block object created in the proof.",
+      "Ford-Green-Konyagin-Maynard-Tao (2018), Section 1 and Lemma 1.1, encode a residue-class cover of an interval and use the Chinese remainder theorem to translate it into a consecutive block whose entries share prescribed small prime factors.",
+      "Hildebrand (1987), Section 4, equations (4.1) and the congruences immediately following, uses pairwise-coprime moduli and CRT to impose divisibility on a fixed tuple of translated offsets."
+    ],
+    "attribution": "Describe the mechanism as the classical Chinese-remainder forbidden-block construction, with Jacobsthal and covering-congruence theory as the nearest literature family. Credit the local work for isolating and formally verifying the time-indexed first-crossing corollary, not for inventing the underlying number theory.",
+    "mathematical_interest": "The result is elementary in proof depth but genuinely useful in scope: it converts an unbounded supply of fresh divisibility obstructions into a dynamical no-go theorem without assuming monotonicity or coprimality between a modulus and every later state.",
+    "reusable_scope": "Any recurrence or process that emits fresh pairwise-coprime moduli which divide no later state can invoke the same barrier. The reciprocal-tail dynamics for Erdos 243 are one consumer rather than the theorem's identity.",
+    "why_it_matters": "The correct public story is a clean reusable abstraction and formalisation of a classical CRT mechanism. Calling it novel mathematics would inflate an elementary corollary; hiding it as routine plumbing would miss its cross-problem value."
+  },
+  "primary_sources": [
+    {
+      "id": "kanold_1967_jacobsthal_function",
+      "title": "Uber eine zahlentheoretische Funktion von Jacobsthal",
+      "author": "Hans-Joachim Kanold",
+      "venue": "Mathematische Annalen 170 (1967), 314-326",
+      "doi": "10.1007/BF01362349",
+      "url": "https://eudml.org/doc/161543",
+      "exact_anchor": "Opening definition: Jacobsthal's g(n) is the maximum distance between consecutive positive integers coprime to n; the paper then studies this forbidden-gap function for squarefree products.",
+      "supports": "The established name and literature family for static consecutive blocks avoiding coprimality to a product.",
+      "does_not_support": "It does not state the time-indexed bounded-rise theorem."
+    },
+    {
+      "id": "ford_green_konyagin_maynard_tao_2018_long_gaps",
+      "title": "Long gaps between primes",
+      "authors": [
+        "Kevin Ford",
+        "Ben Green",
+        "Sergei Konyagin",
+        "James Maynard",
+        "Terence Tao"
+      ],
+      "venue": "Journal of the American Mathematical Society 31 (2018), 65-105",
+      "doi": "10.1090/jams/876",
+      "url": "https://arxiv.org/abs/1412.5029",
+      "exact_anchor": "Section 1, Lemma 1.1: residue classes a_p mod p cover an interval [y]; CRT chooses m congruent to -a_p mod p, making each m+t in the interval divisible by a selected p. The adjacent paragraph identifies Jacobsthal's j as the maximal gap between integers coprime to a product.",
+      "supports": "The exact static CRT residue-cover to forbidden-consecutive-block mechanism used by the Lean theorem.",
+      "does_not_support": "It does not formulate the subsequent first-crossing argument for a bounded-rise sequence."
+    },
+    {
+      "id": "hildebrand_1987_divisor_function_consecutive",
+      "title": "The divisor function at consecutive integers",
+      "author": "Adolf Hildebrand",
+      "venue": "Pacific Journal of Mathematics 129 (1987), 307-319",
+      "url": "https://msp.org/pjm/1987/129-2/pjm-v129-n2-p06-s.pdf",
+      "exact_anchor": "Section 4, printed pages 312-313: after imposing pairwise coprimality in condition (*), the congruences n_0 = -a_i mod m_i are solved by CRT, so each translated offset n_0+a_i has its assigned divisor m_i.",
+      "supports": "A primary-source instance of assigning distinct offsets to pairwise-coprime divisibility moduli by CRT.",
+      "does_not_support": "Its analytic theorem and tuple construction are otherwise unrelated to the dynamic no-go result."
+    }
+  ],
+  "mechanism_comparison": {
+    "classical_static_step": "Choose B tail moduli and solve x+r = 0 mod m_r for 0 <= r < B. This makes an arbitrarily high block of B consecutive forbidden values.",
+    "local_dynamic_step": "Because u tends to infinity, take the first time it reaches x+B. The previous value cannot lie in the forbidden block and is therefore below x; the bound u_(n+1) <= u_n+B then prevents the crossing.",
+    "strict_delta": "The time-indexed nondivisibility hypotheses and one-sided, nonmonotone first-crossing packaging are the local abstraction. The CRT block itself and its relation to Jacobsthal/covering congruences are classical.",
+    "scope_sharpening": "Pairwise coprimality is a clean sufficient CRT compatibility condition, not a demonstrated necessary condition. The theorem intentionally makes no assertion for arbitrary non-coprime moduli."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "bounded upward increments divisibility sequence",
+      "uniformly bounded pairwise coprime moduli sequence divisibility",
+      "tends to infinity Chinese remainder theorem bounded increments sequence",
+      "fresh moduli Chinese remainder theorem sequence"
+    ],
+    "result": "No primary source or standard theorem name for the exact dynamic nondivisibility formulation was located. Results instead clustered around Jacobsthal functions, covering congruences, prime gaps, and CRT constructions of prescribed divisibility blocks.",
+    "boundary": "The bounded search supports an exact-packaging finding, not a claim that the formulation is absent from the literature."
+  },
+  "claim_boundary": {
+    "allowed_wording": "We formalise a reusable dynamic corollary of the classical CRT forbidden-block construction: permanent avoidance of fresh pairwise-coprime moduli is incompatible with divergence and uniformly bounded upward increments.",
+    "forbidden_wording": [
+      "This is a new Chinese remainder theorem.",
+      "The bounded-rise obstruction is a new number-theory theorem.",
+      "No previous source contains this dynamic formulation.",
+      "The theorem solves Erdos Problem 243."
+    ],
+    "nonclaims": [
+      "not_a_solution_of_erdos_243",
+      "not_a_novelty_claim_for_CRT_or_Jacobsthal_theory",
+      "not_a_complete_literature_search",
+      "not_a_theorem_for_arbitrary_non_coprime_moduli",
+      "not_a_statement_that_the_reduced_tail_has_bounded_rise"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/bounded_rise_fresh_coprime_moduli.card.json",
+      "effect": "Replace pending novelty language by the exact reusable-corollary classification and source route."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalise as a reusable CRT first-crossing lemma, not as a new endpoint theorem."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Lead with reusable scope and Lean verification only if the classical-mechanism attribution and Erdos-243 nonclaim remain adjacent."
+    }
+  ],
+  "source_result_ids": [
+    "bounded_rise_reduced_tail_excluded"
+  ],
+  "expert_review_support": {
+    "talk_state": "expert_talk_ready",
+    "hard_step": "Transfer a classical CRT forbidden block into a contradiction for a divergent, possibly nonmonotone bounded-rise sequence by choosing the first crossing.",
+    "natural_friction": "Offset-to-modulus assignment, permanent later-state avoidance, and the first-crossing index must remain explicit.",
+    "evidence_separation": "External sources support the static CRT/Jacobsthal mechanism; Lean checks the dynamic theorem; the private #243 theorem is one consumer; the endpoint remains open.",
+    "source_boundary": "The public source proves the stronger nondivisibility theorem, while the private authoring copy supplies the exact reduced-tail specialization."
+  },
+  "digestion_assessment": {
+    "significance_grade": "B_plus_reusable_interface",
+    "attention_priority": "medium-high for reuse, low for novelty",
+    "consolidation_verdict": "one dynamic CRT lemma and a subordinate #243 consumer",
+    "expert_review_gap": "verify source correspondence and maintain the endpoint boundary"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "fresh-modulus CRT barriers in reduced-tail recurrence dynamics",
+    "disposition": "admit as a genuinely irreducible reusable mechanism; subordinate the reduced-tail and strict-rise/lcm realizations as consumers and variants",
+    "consolidation_relation": "Keep one dynamic CRT first-crossing theorem with two source-faithful hypothesis packages. Do not mint separate novelty objects for the private #243 consumers or the static forbidden block.",
+    "comparator_advisory": "One public general theorem interface is justified. Private reduced-tail and strict-rise specializations should remain linked consumers unless Role 3 finds a distinct statement-firewall need.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Fresh moduli versus bounded rise: the CRT first-crossing barrier",
+      "supersession_or_consolidation": "Use one reusable-method subsection in the reduced-tail dynamics chapter, consolidate both hypothesis variants, and subordinate the #243 specializations rather than adding a theorem chronology.",
+      "reason": "The theorem cleanly excludes a recurrence regime and is reusable, but unrestricted tail control—not CRT—is the paper's unresolved core."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "This is a durable reusable interface and a valuable semantic firewall, but it excludes only a bounded-rise regime and does not displace any current cross-programme flagship.",
+      "evidence_class": "public Lean theorem, private Lean consumers/variant, and classical primary-source support for the static CRT mechanism",
+      "hard_step": "The first-crossing transfer is complete; unrestricted reduced-tail control remains the missing programme-level step.",
+      "prior_art_uncertainty": "Classical mechanism secure; exact dynamic wording not located verbatim in a bounded search and therefore not priority-bearing.",
+      "open_boundary": "No bounded-rise theorem for the unrestricted #243 tail and no reciprocal-sum endpoint.",
+      "demoted_predecessor": null
+    }
+  },
+  "release_disposition": "comparator_candidate",
+  "release_disposition_reason": "One public Lean-checked general first-crossing interface is justified; private reduced-tail and strict-rise variants remain consumers, and the release must not imply unrestricted-tail control or an Erdős #243 result.",
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-243-reciprocal-tail-rigidity.tex",
+    "section": "Fresh moduli versus bounded rise: the CRT first-crossing barrier",
+    "canonical_mechanism_family": "fresh-modulus CRT barriers in reduced-tail recurrence dynamics",
+    "relation": "Consolidate the public nondivisibility theorem and strict-rise hypothesis variant around one dynamic CRT first-crossing proof; subordinate the #243 consumers and retire duplicate CRT/novelty narratives.",
+    "understanding_delta": "The reusable content is the nonmonotone first-crossing transfer, not a new CRT result or a recurrence-rigidity endpoint.",
+    "evidence_boundary": "Public and private Lean claims are separately pinned; classical sources support the static CRT block; no unrestricted-tail control or #243 solution is established.",
+    "hard_step": "Control the unrestricted reduced-tail dynamics outside the bounded-rise regime.",
+    "meaningful_failed_route": "A static or finite CRT block does not prove the dynamic hypotheses for the unrestricted tail, and the two source variants are not promoted as logically equivalent.",
+    "open_remainder": "The unrestricted reciprocal-tail rigidity problem remains open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "bounded_rise_fresh_coprime_moduli",
+    "human_understanding_delta": "Separates the classical forbidden-block mechanism from the local nonmonotone first-crossing abstraction and its #243 consumer.",
+    "verification_state": "Public and private formal claims remain separately pinned; no new theorem is introduced.",
+    "publication_or_review_state": "Expert-talk and attribution support are ready.",
+    "canonicalization_state": "Single reusable dynamic interface, not a novelty count.",
+    "unresolved_downstream_bottleneck": "Control of the unrestricted #243 tail outside bounded rise.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_dynamic_hypothesis_or_source_generation_change",
+    "reentry_condition": "Re-enter only if a source changes the public dynamic theorem, a weaker/non-coprime modulus hypothesis is proved, or the unrestricted #243 reduced-tail dynamics acquires bounded-rise control.",
+    "do_not_redo": "Do not repeat Jacobsthal/covering-congruence attribution or the first-crossing proof; the classical static block and the Lean dynamic interface are already separated.",
+    "open_bottleneck": "The theorem excludes only permanent avoidance under bounded upward rise. It supplies no bounded-rise fact for the actual reduced tail and no reciprocal-sum endpoint.",
+    "owner": "#243 proof fleet for unrestricted-tail control; Mathematics Refinery and Role 3 for one public interface; Novelty Observatory for changed source or hypothesis scope."
+  },
+  "adjudication_currentness": {
+    "status": "public_private_source_card_current_committed_packet_overlay_unconsumed",
+    "bound_snapshot": {
+      "public_source_commit": "d666db67b1e40dc1fa6781ad09030193de126417",
+      "private_reduced_tail_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "private_strict_rise_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+      "reviewer_card_sha256": "b5eb4b02eb02a6f5dfa75594b922c1b8deed51ce1d0a927b150271b84782b10b",
+      "review_generation": "2026-08-26_dynamic_crt_maturity_v3"
+    },
+    "claim_guard": "Only the public dynamic fresh-coprime-moduli no-go with its explicit divergence and bounded-rise hypotheses is admitted; no unrestricted #243 tail theorem, novelty, priority, or irrationality claim is admitted.",
+    "reentry_trigger": "Re-enter if the public/private source variants, packet/card generation, CRT attribution, or unrestricted-tail hypotheses change."
+  }
+}

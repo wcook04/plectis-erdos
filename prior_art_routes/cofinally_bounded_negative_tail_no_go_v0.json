@@ -1,0 +1,219 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "cofinally_bounded_negative_tail_no_go",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_composition_subordinated_under_bounded_negative_part_tail_rigidity_packet_bound",
+  "problem_id": "erdos_243",
+  "purpose": "Classify the normalized-vanishing bounded-negative theorem as an exact composition rather than a new recurrence theorem, and bind its high #243 frontier value to its narrow claim boundary.",
+  "source_result_id": "cofinally_bounded_negative_branch_excluded",
+  "evidence_class": "Lean-checked quantifier-exact composition of elementary gcd stabilization, normalized divergence, and the separately formalized CRT bounded-rise barrier; no endpoint producer or unrestricted-tail theorem.",
+  "closest_known_result": "Classical CRT forbidden-block and prescribed-divisor constructions (Ford--Green--Konyagin--Maynard--Tao; Hildebrand) supply the terminal barrier. The bounded-gcd stabilization and recurrence composition are elementary source-specific steps.",
+  "comparison_relation": "A routine stable-gcd reduction that transports a bounded-negative branch into an already adjudicated CRT contradiction; it is subordinate to the parent bounded-negative-part rigidity mechanism.",
+  "exact_delta": "Cofinal negative occurrences with 0<e<=B force the divisibility-chain gcd to stabilize; normalized vanishing then makes the reduced state diverge, so bounded rise contradicts the CRT barrier.",
+  "disconfirming_evidence": "The theorem does not address cofinally unbounded negative excursions, choose the orbit's actual regime, give a quantitative extinction index, or solve #243; no discrete-Grönwall input is used.",
+  "confidence_ceiling": "High for the formal composition and dependency classification; high for the classical CRT attribution; none for a general recurrence-rigidity or #243 endpoint claim.",
+  "claim_ceiling": "Lean checks only the cofinally bounded-negative branch exclusion via stable gcd and the CRT bounded-rise barrier. It is a parent consumer, not a new recurrence theorem and not an exclusion of all negative tails.",
+  "significance": "Medium-to-high programme value as a branch-closure map and proof-search filter; low independent theorem novelty because the mechanism is an exact composition of elementary and already-adjudicated pieces.",
+  "hard_step": "Keep the stable-gcd quantifiers and the reduced-tail CRT hypotheses aligned; do not silently extend bounded negative occurrences to all negative behavior.",
+  "open_boundary": "Cofinally unbounded negative excursions and the missing bridge into a bounded-negative regime remain open; no quantitative extinction or irrationality conclusion follows.",
+  "bounded_expert_act": "Verify the dependency chain from bounded negative occurrences to stable gcd to reduced CRT contradiction, and confirm that the parent statement firewall excludes unbounded negative tails.",
+  "reentry_trigger": "Reopen if the parent source generation, CRT barrier, or a bridge controlling cofinally unbounded negative excursions changes.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine formal composition with a high-value scope boundary; the hard part is quantifier preservation across the gcd reduction and CRT consumer.",
+    "slow_down_at": "The transition from bounded cofinal negative occurrences to eventual constant gcd, and the exact hypotheses needed by the reduced-tail barrier.",
+    "automation_can_establish": [
+      "Divisibility-chain monotonicity and bounded stabilization",
+      "Normalized-vanishing divergence and stable-gcd transfer",
+      "Lean source/card parity for the composition"
+    ],
+    "human_judgment_required": [
+      "Whether the parent theorem already subsumes the branch as a non-independent interface",
+      "Whether any wording accidentally quantifies over unbounded negative excursions"
+    ],
+    "review_act": "One bounded expert act: audit the stable-gcd/CRT dependency and confirm the unbounded-negative firewall."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "reviewer_card_commit": "f4ec2d526288c479450f72133fe9e43a2379ce2b",
+      "reviewer_card_sha256": "22b3c7266442e05b96f5bee1754c08951e565114ffe1c6dde7ce938d939a2282",
+      "research_packet_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd"
+    },
+    "claim_guard": "Only the cofinally bounded-negative branch is closed by a stable-gcd/CRT composition; unbounded negative excursions, quantitative extinction, and #243 remain open.",
+    "reentry_trigger": "Reopen on parent source, CRT barrier, or unbounded-negative bridge changes."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/cofinally_bounded_negative_tail_no_go.card.json",
+    "landed_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "source_result_id": "cofinally_bounded_negative_branch_excluded",
+    "headline_declaration": "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_cofinallyBoundedNegative_of_normalizedVanishes"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos243_cofinally_bounded_negative_tail_no_go@source-14bf635-card-f4ec2d5",
+    "source_generation": {
+      "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "reviewer_card_commit": "f4ec2d526288c479450f72133fe9e43a2379ce2b",
+      "reviewer_card_sha256": "22b3c7266442e05b96f5bee1754c08951e565114ffe1c6dde7ce938d939a2282",
+      "research_packet_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+      "parity_status": "source and card hashes current; no fresh Lean replay claimed"
+    },
+    "evidence_class": "Lean-checked exact stable-gcd/CRT composition; no general recurrence theorem, unrestricted negative-tail result, or #243 endpoint.",
+    "closest_known_result": "Classical CRT forbidden-block constructions supply the terminal reduced-tail barrier; local gcd stabilization and normalized divergence are elementary.",
+    "comparison_relation": "Subordinate branch closure under the bounded_negative_part_tail_rigidity parent, not an independent theorem family.",
+    "exact_delta": "Cofinal bounded negative defects force eventual gcd constancy, after which normalized vanishing contradicts the reduced CRT bounded-rise barrier.",
+    "disconfirming_evidence": "No control of cofinally unbounded negative excursions or actual orbit regime selection; no discrete-Grönwall route or quantitative extinction bound.",
+    "confidence": {
+      "formal_composition": "high_internal_provisional",
+      "classical_CRT_attribution": "high",
+      "general_negative_tail_exclusion": "none"
+    },
+    "significance": "Medium-to-high frontier-map value, low standalone novelty: it retires one qualitative branch and prevents duplicate proof search.",
+    "claim_ceiling": "Use as the parent theorem's exact bounded-negative branch consumer only; do not call it a new recurrence-rigidity, discrete-Grönwall, all-negative-tail, or #243 theorem.",
+    "hard_step": "Preserve the stable-gcd and CRT hypotheses through every quantifier transfer.",
+    "open_boundary": "Unbounded negative excursions and the bridge into bounded negativity remain open.",
+    "bounded_expert_act": "Audit the stable-gcd/CRT dependency and the unbounded-negative firewall.",
+    "reentry_trigger": "Reopen on parent or CRT source changes or a new unbounded-negative bridge.",
+    "mechanism_family": "#243 bounded-negative branch closure via stable gcd and CRT",
+    "disposition": "subordinate_under_bounded_negative_part_tail_rigidity",
+    "expert_attention_reason": "The main value is search-space reduction: one qualitative orbit class is closed without disguising the surviving branch.",
+    "paper_disposition": "technical appendix",
+    "paper_section": "Excluding a cofinally bounded negative part",
+    "supersession_relation": "The parent bounded_negative_part_tail_rigidity theorem subsumes this composition; retain the route as its explicit Lean dependency and do not create a parallel endpoint.",
+    "comparator_interface_justified": false,
+    "comparator_reason": "The exact declarations are already consumed by the parent theorem; an independent proposition would duplicate the same mechanism and inflate counts."
+  },
+  "classification": {
+    "theorem_class": "problem_specific_composite_reduction_from_bounded_negative_occurrences_to_a_reduced_tail_CRT_contradiction",
+    "novelty_class": "routine_composition_of_elementary_stabilization_and_an_already_adjudicated_reusable_CRT_corollary",
+    "formalization_class": "Lean_checked_quantifier_exact_composition_and_consumer",
+    "priority_claim": "none",
+    "recommended_terminology": "stable-gcd reduction of bounded negative tails to the CRT bounded-rise barrier",
+    "discouraged_terminology": [
+      "new discrete Grönwall theorem",
+      "new divisibility-sequence theorem",
+      "general bounded-error recurrence rigidity",
+      "solution of Erdős Problem 243"
+    ],
+    "nearest_prior_work": [
+      "The stabilization step is the elementary fact that a bounded nondecreasing natural sequence is eventually constant, with divisibility supplying monotonicity.",
+      "The terminal obstruction is the separately adjudicated dynamic corollary of the classical CRT forbidden-block construction, with Jacobsthal and covering-congruence literature as its nearest family.",
+      "No separate discrete-Grönwall theorem is used in this proof."
+    ],
+    "attribution": "Attribute the CRT mechanism classically and the quantifier-exact stable-gcd reduction/Lean composition to the local #243 source. Do not advertise the composite as independent novelty.",
+    "mathematical_interest": "Low independent theorem depth but substantial programme value: it removes an entire qualitative orbit class and identifies cofinally unbounded negative excursions as the surviving burden.",
+    "reusable_scope": "Exact integer tail recurrences where gcds form a divisibility chain, bounded signed defects cofinally bound those gcds, and a reduced divergent state is incompatible with bounded rise.",
+    "why_it_matters": "It turns three soft-looking asymptotic hypotheses into a hard structural exclusion and prevents the proof fleet from revisiting any cofinally bounded negative branch."
+  },
+  "primary_sources": [
+    {
+      "id": "ford_green_konyagin_maynard_tao_2018_long_gaps",
+      "title": "Long gaps between primes",
+      "author": "Kevin Ford, Ben Green, Sergei Konyagin, James Maynard, and Terence Tao",
+      "venue": "Journal of the American Mathematical Society 31 (2018), 65-105",
+      "doi": "10.1090/jams/876",
+      "url": "https://arxiv.org/abs/1412.5029",
+      "exact_anchor": "Section 1, Lemma 1.1: CRT translates a residue-class cover into a consecutive block whose entries have assigned prime divisors.",
+      "supports": "The classical static forbidden-block mechanism consumed by the reduced-tail theorem.",
+      "does_not_support": "The stable-gcd reduction, normalized-vanishing bridge, or #243 recurrence."
+    },
+    {
+      "id": "hildebrand_1987_consecutive_divisors",
+      "title": "The divisor function at consecutive integers",
+      "author": "Adolf Hildebrand",
+      "venue": "Pacific Journal of Mathematics 129 (1987), 307-319",
+      "url": "https://msp.org/pjm/1987/129-2/pjm-v129-n2-p06-s.pdf",
+      "exact_anchor": "Section 4, pages 312-313: pairwise-coprime moduli and CRT impose assigned divisors on translated offsets.",
+      "supports": "A primary example of the prescribed-offset CRT construction underlying the final contradiction.",
+      "does_not_support": "The dynamic first-crossing step or any tail-gcd statement."
+    }
+  ],
+  "mechanism_decomposition": {
+    "step_1": "Tail gcds divide their successors and are positive, hence form a nondecreasing natural sequence.",
+    "step_2": "At a negative occurrence with 0<e<=B, the shape equation gives gcd(C_t,D_t)=gcd(C_t,e)<=B. Cofinal such occurrences bound the whole gcd chain and force eventual constancy.",
+    "step_3": "Positive normalized magnitude with K*m_n<C_n for every fixed K eventually forces C_n to tend to infinity.",
+    "step_4": "Divide by the stable gcd. The reduced exact tail is coprime, divergent, and has bounded rise, contradicting the previously adjudicated CRT barrier.",
+    "exact_delta": "The local source formalizes every quantifier transfer and preservation statement needed to compose these steps without hidden real-division assumptions."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "internal corpus: no_cofinallyBoundedNegative_of_normalizedVanishes dependencies",
+      "internal corpus: bounded negative tail gcd stabilization",
+      "internal prior-art route: bounded rise fresh coprime moduli",
+      "internal card: summable negative mass discrete Gronwall"
+    ],
+    "result": "Dependency inspection shows the theorem does not use the summable-negative-mass discrete-Grönwall route. It composes elementary divergence and gcd stabilization with the separately adjudicated CRT reduced-tail theorem.",
+    "boundary": "No literature non-location claim is needed: the theorem's local definitions and direct dependency graph already determine the conservative classification."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked stable-gcd reduction closes the cofinally bounded negative-magnitude branch by invoking the formalized CRT bounded-rise barrier.",
+    "forbidden_wording": [
+      "This is a new recurrence-rigidity theorem.",
+      "Discrete Grönwall proves the result.",
+      "All negative tails are excluded.",
+      "Normalized vanishing alone forces exact recurrence.",
+      "This solves Erdős Problem 243."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_discrete_Gronwall_result",
+      "not_an_unbounded_negative_excursion_exclusion",
+      "not_a_quantitative_extinction_bound",
+      "not_erdos_243_solution"
+    ]
+  },
+  "canonicalization_decision": {
+    "parent": "bounded_negative_part_tail_rigidity",
+    "disposition": "subordinate_inspection_component",
+    "reason": "The stable-gcd/CRT composition is exactly the negative branch of the stronger two-branch theorem. A standalone talk or Comparator interface would duplicate the parent and misallocate expert attention.",
+    "paper": "technical appendix within Excluding a bounded negative part",
+    "comparator": "no independent interface; use the parent theorem's statement firewall",
+    "absolute_frontier_shortlist": "do_not_admit_retain_current_five"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/cofinally_bounded_negative_tail_no_go.card.json",
+      "effect": "Replace the unassessed state with a dependency-exact routine-composition classification."
+    },
+    {
+      "consumer": "Formal Conjectures contribution owner",
+      "effect": "Treat the declaration as a checked problem-specific composite interface, not an independent external theorem candidate."
+    },
+    {
+      "consumer": "Erdős #243 proof fleet",
+      "effect": "Retire cofinally bounded negative magnitudes completely; work only on cofinally unbounded excursions or on missing bridges into the exact natural regime."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the theorem for frontier closure and exact composition, not standalone novelty."
+    }
+  ],
+  "next_ranked_targets": [
+    "exists_small_translation_separating_arguments (Erdos 1041): classify as finite affine-line avoidance/generic-position formalization.",
+    "irrational_tsum_primeDyadicTerm_iff_primeGap (Erdos 251): separate exact reformulation from substantive number theory.",
+    "finite_period_noncollapse_rat_den_interface (Erdos 257): classify semantic interface without reviving obsolete #257 integration work."
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_composite_conditional_theorem",
+    "output_stage": "consolidated_frontier_boundary_and_proof_auditor_support",
+    "artifact": "#243 cofinally bounded negative-tail no-go",
+    "human_understanding_delta": "The route is visibly a stable-gcd/CRT composition beneath bounded_negative_part_tail_rigidity, not a new recurrence theorem or a duplicate discrete-Gronwall route.",
+    "verification_state": "The source-pinned Lean composition and exact dependency chain are current; no fresh build or endpoint producer is asserted.",
+    "publication_or_review_state": "Supporting frontier-closure evidence only; no priority, generic recurrence, or #243 endpoint claim.",
+    "canonicalization_state": "Retain as a technical appendix/parent consumer; use the parent statement firewall rather than an independent Comparator interface.",
+    "unresolved_downstream_bottleneck": "Control cofinally unbounded negative excursions or prove the actual orbit enters a bounded-negative regime; normalized vanishing alone is insufficient.",
+    "next_stage_owner": "#243 proof fleet for the surviving aperiodic/unbounded branch; Mathematics Refinery for hierarchy; Role 3 for any later status-tagged integration."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_parent_source_or_unbounded_negative_bridge",
+    "reentry_condition": "Re-enter only if the parent two-branch theorem or its source generation changes, a stronger bridge into the bounded-negative regime appears, or a theorem addresses cofinally unbounded negative excursions.",
+    "do_not_redo": "Do not repeat the gcd monotonicity, bounded stabilization, or CRT reduction; these are already source-pinned and subordinate to the parent.",
+    "open_bottleneck": "The composition cannot choose the actual orbit's regime and supplies no quantitative extinction index, summability input, or unrestricted-tail conclusion.",
+    "owner": "#243 proof fleet for the open negative branch; Novelty Observatory only for changed source generation or prior-art evidence."
+  }
+}

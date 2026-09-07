@@ -1,0 +1,183 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "evidence_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md",
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_type_b_return_assimilation.py",
+    "delta_class": "statement_strengthened",
+    "authority_at_review": "explicit current authored ordinary proof with exact symbolic and rational replay; no Lean declaration or external review claimed",
+    "claim_ceiling": "The moving-index radial product theorem has an exact positive defect and quantitative strict margin. Fixed/compatible selection, chord or carrier containment, COVER, combined charge, FP-GM, and unrestricted Erdős 1041 remain open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "source_anchor_count": 2,
+    "discovered_candidate_count": 172,
+    "displayed_candidate_count": 16,
+    "omitted_candidate_count": 156,
+    "review_scope": "The explicit current-source slice was machine-extracted, then semantically narrowed to the source-current Erdős 1041 radial authority, its completed packet experiments, and the exact fixed-index/component/chord nonimplications."
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_97c13fbeae8e9d98",
+      "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/certificate_search_receipts/ramanujan_2_5_column_minor_transport_v1.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The match is the generic local symbol Q_j in an unrelated Ramanujan matrix-ratio certificate; no polynomial radial quantity or implication is shared.",
+      "authority_surface_checked": "matched excerpt and owning problem identity",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_10d2ae854c82bad1",
+      "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/certificate_search_receipts/ramanujan_2_5_projective_contraction_v1.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The match is the generic notation min_i inside an unrelated Hilbert-metric statement; it carries no Erdős 1041 consequence.",
+      "authority_surface_checked": "matched excerpt and owning problem identity",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_6ab6c5b1cbdb4073",
+      "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/proof_packets/ramanujan_2_5_column_minor_transport_v1.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "The Q_j match is a local denominator label in an unrelated proof packet.",
+      "authority_surface_checked": "matched excerpt and owning problem identity",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_29f48b0de1850021",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/01_RESULT_AUTHORITY_AND_100_PERCENT_ASSIMILATION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "This is a completed dissemination experiment snapshot whose displayed matches concern the unchanged connected-cluster area theorem, not the strengthened radial row. Source authority is updated in the live research packet.",
+      "authority_surface_checked": "completed packet identity and connected-cluster claim boundary",
+      "validation_or_reentry": "regenerate only through a new packet experiment built from the source-current research packet"
+    },
+    {
+      "candidate_id": "math_consequence_dd2f79b32ac31dc0",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/02_TAO_PROOF_DIGESTION_AND_SIGNAL_SELECTION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Completed packet snapshot; its connected-cluster statement is unaffected and it is not claim authority for the radial strengthening.",
+      "authority_surface_checked": "snapshot role and matched statement",
+      "validation_or_reentry": "new packet experiment only"
+    },
+    {
+      "candidate_id": "math_consequence_f73470cf9aaf0187",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/03_PRIOR_ART_CITATIONS_NOVELTY_AND_SIGNIFICANCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Completed packet snapshot; no novelty or attribution conclusion follows from the internal quantitative strengthening.",
+      "authority_surface_checked": "snapshot role and matched statement",
+      "validation_or_reentry": "re-enter only with independent prior-art or review evidence"
+    },
+    {
+      "candidate_id": "math_consequence_b42c503daf6858f6",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/04_LEAN_COMPARATOR_PALOMAR_AND_REVIEW_ASSURANCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "No Lean declaration was added and the auxiliary moving-index theorem is not a Comparator or parent-theorem candidate.",
+      "authority_surface_checked": "snapshot role and formal-authority boundary",
+      "validation_or_reentry": "re-enter if the analytic theorem is formalized and selected for an independent statement interface"
+    },
+    {
+      "candidate_id": "math_consequence_56e09e4b700b75a4",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/05_PAPER_LATTICE_AND_CANONICAL_EXPOSITION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The strengthening is consolidated in the existing private theorem object; it does not warrant a separate paper coordinate or rewrite a completed packet snapshot.",
+      "authority_surface_checked": "snapshot role and canonicalization boundary",
+      "validation_or_reentry": "re-enter if the radial defect becomes part of a target-deciding mechanism or reviewer handoff"
+    },
+    {
+      "candidate_id": "math_consequence_910c52024d36fc5b",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/06_PUBLIC_REPOS_WEBSITE_AND_COLD_CLONE_EXPERIENCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Private ordinary-proof strengthening does not alter public-corpus reachability or release authority.",
+      "authority_surface_checked": "snapshot role and public/private authority boundary",
+      "validation_or_reentry": "re-enter only after an explicit public promotion decision"
+    },
+    {
+      "candidate_id": "math_consequence_2648c01457485ea8",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/07_DISSEMINATION_ROUTE_PORTFOLIO_AND_PLUG_AND_PLAY_ADAPTERS/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The auxiliary theorem does not change dissemination routing or external-recipient priority.",
+      "authority_surface_checked": "snapshot role and dissemination boundary",
+      "validation_or_reentry": "re-enter on an explicit dissemination decision"
+    },
+    {
+      "candidate_id": "math_consequence_0040539b34bd52fd",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/08_CONTINUOUS_GOAL_FLEET_AND_INCREMENTAL_1041_INGESTION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The completed fleet packet is experiment history. The new return is closed in a separate governed intake because its exact upstream experiment identity is unknown.",
+      "authority_surface_checked": "snapshot lifecycle and current intake closure",
+      "validation_or_reentry": "new source-current packet or matching late arrival only"
+    },
+    {
+      "candidate_id": "math_consequence_2ef56b568e381516",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The exact-result row must state the defect factor, quantitative strict bound, equality classification, evidence receipt, and unchanged selection/connectivity boundary.",
+      "authority_surface_checked": "target, claim ceiling, exact-results row, source/verifier/receipt links, and open-producer boundary",
+      "validation_or_reentry": "JSON parse, exact checker, frontier-integrity audit, and cold-reader query"
+    },
+    {
+      "candidate_id": "math_consequence_f913b396a166ad7c",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/stern_brocot_cusp_frontier_v0.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The match is the validator command name formal_math_frontier_integrity in an unrelated prior-art route.",
+      "authority_surface_checked": "matched excerpt and owning problem identity",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_d5d070484c2e76f5",
+      "file": "docs/formal_math/review_routes/erdos1041_connected_cluster_area_forcing_source_result_handoff.v1.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The radial defect does not alter the connected-cluster Bergman hypotheses, area direction, or source handoff.",
+      "authority_surface_checked": "connected-cluster theorem statement and evidence boundary",
+      "validation_or_reentry": "re-enter if a theorem converts the radial margin into the required component selector or area upper criterion"
+    },
+    {
+      "candidate_id": "math_consequence_db402a42391db56a",
+      "file": "docs/formal_math/reviewer_cards/erdos1041_connected_cluster_bergman_certificate.card.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The card explains a different componentwise Bergman certificate; no premise is discharged by moving-index radial coverage.",
+      "authority_surface_checked": "card statement, hard step, and open remainder",
+      "validation_or_reentry": "re-enter on a component-compatible selector"
+    },
+    {
+      "candidate_id": "math_consequence_e9e7bbcc4e0ea7db",
+      "file": "docs/formal_math/type_b_packets/erdos1041_concentrated_solution_octuple_2026_08_27/manifest_01_unrestricted_fanin.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The manifest is a completed source experiment and correctly preserves the Q_U/q_C mismatch. The new return has unknown upstream experiment identity and is preserved in a separate intake rather than rewriting this manifest.",
+      "authority_surface_checked": "manifest source references, completion lifecycle, and Q_U/q_C boundary",
+      "validation_or_reentry": "successor packet built from the current research packet only"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "At every radius t<1, the best root-ray value has an explicit energy-plus-modulus exponential margin; equality in the original product contraction is confined to the all-boundary case.",
+    "newly_discharged": "The weak question whether moving-index coverage is strict for an interior-root configuration is discharged positively.",
+    "nonimplications_preserved": "Strict pointwise existence does not select one index continuously, produce two compatible tail segments, contain a chord, identify one lemniscate component, prove COVER, compensate attachment age, or settle the parent theorem.",
+    "surviving_boundary": "Convert unlabelled strict radial coverage into a connected, attachment-compatible root-to-root carrier of intrinsic length at most two, or use an independent target-deciding mechanism.",
+    "neighboring_routes": "TruncatedSpokeReduction supplies the exact metric consumer once two tails and a chord are contained; AttachmentCoupledEnergySelector supplies the exact common-ancestry ceiling; neither premise is discharged."
+  },
+  "connectivity_receipt": {
+    "claimed_lean_module": null,
+    "reason": "No Lean source or declaration changed. The progress anchor is an ordinary analytic theorem with an exact symbolic/rational evidence script.",
+    "existing_authority_reused": [
+      "GenericSufficiencyClosure.md",
+      "TruncatedSpokeReduction.md",
+      "AttachmentCoupledEnergySelector20260826.md"
+    ],
+    "consumer_edge_advanced": "arbitrary-modulus pairwise factor identity -> quantitative moving-index strict radial cover -> live research-packet exact-result row",
+    "projection_refresh": "No generated projection is source authority; cold-reader validation decides whether an owner refresh is needed."
+  },
+  "source_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_type_b_return_assimilation.py"
+  ],
+  "propagated_surface_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "state/formal_math/type_b_return_batches/erdos1041_20260827_return_stream_05/intake.json",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/root_ray_strict_defect_20260827_tao_pipeline_receipt.json",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/root_ray_strict_defect_20260827_consequence_receipt.json"
+  ],
+  "checkpoint_class": "terminal_arrival_closure",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The existing assimilation and consequence skills already require duplicate suppression, exact strengthening, candidate disposition, and preservation of nonimplications. This pass exposed no reusable protocol defect.",
+    "reentry_condition": "Re-enter if a new matching return arrives, a target-deciding radial selector lands, or a downstream surface presents the weak product bound as the current strongest radial theorem."
+  }
+}

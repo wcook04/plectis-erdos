@@ -1,0 +1,304 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "prime_gap_dyadic_summation_by_parts_reformulation",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_publicly_recorded_reformulation_with_exact_Lean_formalization",
+  "problem_id": "erdos_251",
+  "purpose": "Classify the prime-to-gap dyadic identity and its irrationality equivalences against the exact public antecedent and standard rational-affine invariance, while preventing an equivalent coordinate change from being counted as endpoint progress.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/prime_gap_dyadic_summation_by_parts_reformulation.card.json",
+    "landed_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+    "source_result_ids": [
+      "gap_series_identity",
+      "zero_based_factor_two_normalization",
+      "polynomial_prime_growth_summability_adapter",
+      "elementary_prime_bound_and_unconditional_convergence"
+    ],
+    "source_declarations": [
+      "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
+      "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
+      "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
+      "ErdosProblems.Erdos251.irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap"
+    ]
+  },
+  "review_unit": {
+    "result_family": "erdos251_prime_gap_dyadic_summation_by_parts_reformulation",
+    "exact_result_id": "irrational_tsum_primeDyadicTerm_iff_primeGap",
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json",
+      "research_packet_commit": "6e4f79c5a30366a5b47a7f9bd1dfd720732e5f8b",
+      "research_packet_sha256": "8c7ed22255ca73adc2afc94eab1370cdb2faf7bdbcbc35c0bd3a93652d10846f",
+      "research_packet_worktree_status": "clean_committed_snapshot",
+      "reviewer_card": "docs/formal_math/reviewer_cards/prime_gap_dyadic_summation_by_parts_reformulation.card.json",
+      "public_antecedent": "Erdos Problems #251 discussion, post 926 (2025-10-07)"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "source_generation": {
+    "status": "bound_current_committed_source_snapshot",
+    "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+    "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+    "research_packet_commit": "6e4f79c5a30366a5b47a7f9bd1dfd720732e5f8b",
+    "research_packet_sha256": "8c7ed22255ca73adc2afc94eab1370cdb2faf7bdbcbc35c0bd3a93652d10846f",
+    "worktree_status": "clean_committed_snapshot"
+  },
+  "release_disposition": {
+    "value": "represented_by_existing_headline",
+    "reason": "This is the existing #251 coordinate-equivalence object, with the source-current coarse polynomial countermodel retained as typed route-boundary evidence; it is not a new endpoint theorem.",
+    "comparator_advisory": "Keep the existing normalized irrationality-equivalence interface only. Public visibility is allowed under Lean-checked equivalence, sourced antecedent, and explicit countermodel labels; no second interface or specialist-review gate is needed."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "geometric summation by parts, rational-affine invariance, and the source-specific unconditional convergence stack",
+    "disposition": "consolidate as the single #251 programme-entry coordinate theorem, not as number-theoretic endpoint progress",
+    "consolidation_relation": "Bundle finite endpoint identity, convergence, normalized/displayed translations, and irrationality equivalences; subordinate continued-fraction denominator screens, tail interfaces, and coarse countermodels as technical or boundary evidence.",
+    "comparator_advisory": "The existing normalized equivalence is sufficient. Do not add separate interfaces for scaling, translation, or convergence helpers.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "Summation by parts, with the endpoint retained",
+      "supersession_or_consolidation": "Use once as the opening coordinate theorem and remove duplicate identity, normalization, and chronology sections.",
+      "reason": "It is the canonical human entry despite low theorem novelty because it identifies the actual gap tail as the only meaningful downstream object."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "admit as the #251 representative in the rolling 3-5-object cross-programme first-contact shortlist",
+      "why_care": "It collapses duplicate formulations and forces expert attention onto genuinely prime-specific infinite structure.",
+      "evidence_class": "four Lean declarations plus direct public antecedent; no endpoint advance",
+      "hard_step": "an actual consecutive-prime tail obstruction",
+      "prior_art_uncertainty": "low; direct antecedent removes priority",
+      "open_boundary": "coordinate equivalence and finite screens do not prove irrationality",
+      "demoted_predecessor": "the certified finite denominator floor becomes technical-appendix evidence rather than a first-contact candidate"
+    }
+  },
+  "classification": {
+    "theorem_class": "discrete_summation_by_parts_identity_followed_by_rational_translation_and_nonzero_scaling_invariance",
+    "novelty_class": "standard_publicly_recorded_reformulation_with_exact_formalization_value",
+    "frontier_relation": "exactly_equivalent_coordinate_change_not_progress_toward_the_open_irrationality_endpoint",
+    "formalization_class": "Lean_checked_convergence_identity_normalization_and_irrationality_equivalences",
+    "priority_claim": "none",
+    "recommended_terminology": "prime-gap dyadic summation-by-parts reformulation",
+    "acceptable_descriptive_alias": "prime-to-gap dyadic coordinate change",
+    "standard_mechanism": "shift the geometrically weighted prime series, subtract to expose first differences, then use invariance of rationality under rational affine transformations with nonzero scale",
+    "discouraged_terminology": [
+      "new irrationality criterion",
+      "prime-gap theorem",
+      "strict reduction of Erdős #251",
+      "progress toward irrationality",
+      "entropy theorem",
+      "binary aperiodicity result"
+    ],
+    "attribution": "Attribute the #251 prime-gap equivalence explicitly to the public 7 October 2025 Erdős Problems comment by Terence Tao. Attribute the algebraic mechanism to standard summation by parts and the rational-affine corollaries to elementary field arithmetic; mathlib's official irrationality API is the direct formal antecedent for the exact Lean lemmas.",
+    "mathematical_interest": "Low as an abstract theorem and low as a novelty claim, but useful as a formally certified change of coordinates: it moves the programme from absolute prime values to local gaps, where carry, recurrence, finite-word, and statistical mechanisms can be stated exactly.",
+    "reusable_scope": "Any convergent geometrically weighted sequence whose first-difference series is related by summation by parts, provided the boundary term is justified and the affine scale is a nonzero rational.",
+    "why_it_matters": "It prevents two equivalent formulations from being treated as separate achievements and gives all later #251 work one exact gap-series interface. The remaining mathematics must constrain the actual infinite gap word or its induced binary tail, not reprove the coordinate change."
+  },
+  "primary_sources": [
+    {
+      "id": "tao_erdos_251_comment_2025",
+      "title": "Erdős Problem #251 discussion, post 926",
+      "author": "Terence Tao",
+      "venue": "Erdős Problems discussion",
+      "date": "2025-10-07",
+      "url": "https://www.erdosproblems.com/forum/thread/251#post-926",
+      "exact_anchor": "The comment states that summation by parts makes the original prime series irrationality question equivalent to irrationality of the dyadic consecutive-prime-gap series.",
+      "supports": "This is an exact public antecedent for the programme's prime-gap reformulation and decisively rules out a novelty or priority claim for the equivalence.",
+      "does_not_support": "The internal Lean convergence proof, index normalization, downstream recurrence machinery, or any solution of Erdős #251. The site itself marks comments as unverified."
+    },
+    {
+      "id": "mathlib4_real_irrational_api",
+      "title": "Mathlib.NumberTheory.Real.Irrational",
+      "author": "mathlib contributors",
+      "venue": "Official mathlib4 documentation",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/Real/Irrational.html",
+      "exact_anchors": [
+        "irrational_natCast_add_iff",
+        "irrational_natCast_mul_iff"
+      ],
+      "supports": "The exact rational-translation and nonzero-natural-scaling invariances used after the summation identity are standard named formal-library facts.",
+      "does_not_support": "The prime-to-gap summation identity, convergence of the source series, or any prime-gap distribution statement."
+    },
+    {
+      "id": "erdos_problem_251_source_catalogue",
+      "title": "Erdős Problem #251",
+      "author": "Thomas F. Bloom, editor",
+      "venue": "Erdős Problems",
+      "url": "https://www.erdosproblems.com/251",
+      "exact_anchor": "The page states the open target, cites Erdős's original sources [Er58b], [ErGr80, p.62], and [Er88c, p.103], and records that the problem remains open.",
+      "supports": "The target and attribution boundary: the problem is Erdős's, and the exact endpoint remains unresolved.",
+      "does_not_support": "Novelty of any internal theorem or correctness of every discussion comment."
+    }
+  ],
+  "mechanism_comparison": {
+    "summation_by_parts": "The identity is the discrete integration-by-parts move that changes values into first differences under geometric weights. This is the only nontrivial algebraic step in the equivalence.",
+    "rational_affine_invariance": "Once $S=2+G$ and $D=2S$ are known, irrationality equivalence is elementary: $x$ is rational exactly when $a+bx$ is rational for rational $a$ and nonzero rational $b$.",
+    "public_antecedent": "Tao's 2025 comment states the same #251 equivalence by the same summation-by-parts mechanism, so the correct novelty ceiling is formalization and exact normalization only.",
+    "local_delta": "The programme supplies a Lean-checked polynomial-growth summability adapter, an elementary quartic upper bound for the nth prime, unconditional summability, the exact infinite identity, both index conventions, and named consumer theorems that later recurrence and carry work can depend on.",
+    "semantic_consolidation": "The polynomial-growth adapter and elementary quartic prime bound are subordinate convergence producers for the infinite identity. They are part of this proof stack, not separate novelty objects or new asymptotic prime-distribution claims."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "\"prime gap\" \"dyadic series\" irrationality",
+      "\"sum\" \"prime gaps\" \"2^n\" irrational",
+      "\"p_n\" \"2^n\" \"prime gaps\" series",
+      "mathlib4 Irrational natCast add iff"
+    ],
+    "result": "The bounded search found an exact public statement of the equivalence on the Erdős Problems #251 page and the exact formal invariance lemmas in official mathlib documentation. These are sufficient to reject theorem-level novelty; no broader literature claim is needed.",
+    "boundary": "The search is not evidence that the gap-series viewpoint has no earlier appearance. Because a direct prior public statement is already present, the classification stays conservative without asserting historical first occurrence."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Lean formalizes the standard summation-by-parts reformulation of Erdős #251: the normalized prime series equals 2 plus the consecutive-prime-gap dyadic series, so the normalized and displayed prime series are irrational exactly when the gap series is irrational.",
+    "forbidden_wording": [
+      "We discovered the prime-gap equivalence.",
+      "The equivalence is new progress toward Erdős #251.",
+      "The prime-gap formulation is strictly easier.",
+      "The result proves a new theorem about prime gaps.",
+      "The reformulation proves binary aperiodicity or irrationality.",
+      "The result implements Tao's proposed entropy route."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_new_number_theory_theorem",
+      "not_a_prime_gap_distribution_result",
+      "not_an_entropy_or_aperiodicity_result",
+      "not_erdos_251_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/prime_gap_dyadic_summation_by_parts_reformulation.card.json",
+      "effect": "Give reviewers an exact identity, a conservative novelty classification, and a clean explanation of why the gap coordinates matter without inflating the equivalence."
+    },
+    {
+      "consumer": "Erdős #251 proof fleet",
+      "effect": "Treat the equivalence as closed infrastructure. Direct substantive work to infinite gap-tail, carry, recurrence, or statistical producers rather than re-deriving the change of coordinates."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Credit the public antecedent, emphasize formal verification and consumer value, and state explicitly that the endpoint remains unchanged."
+    }
+  ],
+  "next_ranked_open_throats": [
+    "exists_totientDyadicSectionBasis (Erdős 249): classify the exact finite-section basis theorem against standard Möbius inversion or triangular-basis language.",
+    "finite_period_noncollapse_rat_den_interface (Erdős 257): perform semantic claim-boundary review only; do not redo the obsolete integration work."
+  ],
+  "expert_review_support": {
+    "talk_state": "programme_entry_talk_ready",
+    "hard_step": "No deep step occurs in the coordinate change; the unresolved work is an infinite obstruction for the actual prime-gap tail.",
+    "natural_friction": "The finite endpoint, convergence input, finite-denominator boundary, and coarse-input countermodel must remain visible.",
+    "programme_map": [
+      "prime_gap_dyadic_summation_by_parts_reformulation: exact entry identity",
+      "certified_dyadic_series_denominator_floor: finite exact rationality screen",
+      "polynomial_dyadic_tail_coarse_input_countermodel: generic-gap no-go",
+      "denominator_resonant_free_pair_tail_law: conditional rational-tail interface"
+    ],
+    "evidence_separation": "Lean checks the identity and convergence stack; continued fractions provide finite computation; the polynomial orbit is an exact countermodel; actual prime-gap arithmetic remains open."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos251_prime_gap_dyadic_summation_by_parts_reformulation@source-9eb76529-card-a2ac8076",
+    "evidence_class": "Lean-checked convergence, summation-by-parts, normalization, and irrationality-equivalence declarations with a direct public #251 antecedent; no endpoint theorem.",
+    "closest_known_result": "Terence Tao's 7 October 2025 Erdős Problems #251 comment states the same prime-series to consecutive-prime-gap equivalence by summation by parts. Rational-affine irrationality invariance is elementary and already represented in mathlib.",
+    "comparison_relation": "Publicly recorded coordinate reformulation with exact formalization value; the internal source adds checked convergence and normalization plumbing, not theorem-level novelty.",
+    "exact_delta": "The source gives one source-current Lean interface bundling the infinite identity, convergence adapter, index conventions, rational translations, and irrationality equivalences so later #251 work can target the actual gap tail.",
+    "disconfirming_evidence": "No new prime-gap distribution input, cofinal carry obstruction, entropy result, denominator exclusion, or irrationality proof is present. The finite denominator screen and coarse polynomial countermodel are boundary evidence only.",
+    "confidence": {
+      "level": "high_for_formal_statement_and_public_attribution_high_for_claim_scope_low_for_standalone_novelty",
+      "basis": "Formal source, card, and packet commits are pinned; the exact public antecedent fixes the novelty ceiling while the packet worktree is explicitly marked foreign-dirty."
+    },
+    "significance": "High orientation value and low theorem novelty: this is the single entry coordinate theorem that prevents duplicate formulations and exposes the genuine prime-specific bottleneck.",
+    "claim_ceiling": "Lean formalizes the standard summation-by-parts reformulation of Erdős #251 and its rational-affine irrationality equivalences. It does not establish an obstruction for the actual consecutive-prime gap tail or solve #251.",
+    "hard_step": "Obtain an arithmetic, carry, recurrence, or dynamical obstruction for the infinite actual-prime gap word; the coordinate change itself has no deep unresolved step.",
+    "open_boundary": "The public equivalence remains open in every affine-equivalent normalization; finite denominator floors, generic polynomial countermodels, and convergence adapters do not supply the missing prime-specific input.",
+    "bounded_expert_review_act": "Verify the public Tao antecedent against the source normalization and then redirect expert attention to a genuine consecutive-prime tail theorem rather than rechecking the coordinate identity.",
+    "reentry_trigger": "Re-enter only if the public antecedent or source generation changes, or if a theorem about the actual consecutive-prime gap tail creates a new comparison target.",
+    "source_generation_binding": {
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "reviewer_card_commit": "a2ac807614913326dd002679154baf660d2be350",
+      "reviewer_card_sha256": "a3934b8554c271a2e881d64fe140a348f6a36adc1ead1f4dc69d913975312688",
+      "research_packet_commit": "6e4f79c5a30366a5b47a7f9bd1dfd720732e5f8b",
+      "research_packet_sha256": "8c7ed22255ca73adc2afc94eab1370cdb2faf7bdbcbc35c0bd3a93652d10846f",
+      "parity_status": "Formal source, reviewer card, and committed packet snapshots are bound; packet worktree is dirty under a foreign current owner and is not treated as evidence."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "research_packet_commit": "6e4f79c5a30366a5b47a7f9bd1dfd720732e5f8b",
+      "research_packet_sha256": "8c7ed22255ca73adc2afc94eab1370cdb2faf7bdbcbc35c0bd3a93652d10846f"
+    },
+    "claim_guard": "Only the standard prime-gap coordinate reformulation and its exact Lean formalization are covered; no prime-gap distribution or irrationality endpoint claim.",
+    "reentry_trigger": "Re-enter on source, card, packet, or public-antecedent changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine coordinate identity with high orientation value and essentially no theorem-level novelty; the review task is to prevent duplication and keep the prime-specific gap obstruction visible.",
+    "slow_down_at": "The boundary term in summation by parts, the index/normalization translations, and the exact quantifier preserving irrationality under rational affine maps. The public Tao antecedent settles the novelty ceiling.",
+    "automation_can_establish": [
+      "Lean convergence, summation identity, normalization, and irrationality-equivalence declarations",
+      "Index-convention and affine-translation consistency",
+      "Source/card parity and the finite-screen cross-links"
+    ],
+    "human_judgment_required": [
+      "Whether the public #251 comment and the formal source are aligned under the same normalization",
+      "Which later gap-tail mechanisms deserve reader attention once this entry theorem is accepted as infrastructure",
+      "Whether any proposed downstream claim is genuinely prime-specific rather than another coordinate restatement"
+    ],
+    "review_act": "One bounded expert act: verify the exact public antecedent and the endpoint-preserving normalization, then redirect review time to an actual consecutive-prime tail obstruction. Do not search for novelty in the summation identity itself."
+  },
+  "representative_reassessment_2026_08_24": {
+    "decision": "retain",
+    "basis": "The exact coordinate theorem is low-novelty infrastructure but the highest-value first-contact object: it collapses the original and gap formulations without weakening the endpoint and exposes the actual arithmetic producer.",
+    "subordinate_finite_evidence": "certified_dyadic_series_denominator_floor is a technical-appendix denominator screen, not evidence toward irrationality",
+    "subordinate_negative_boundary": "polynomial_dyadic_tail_coarse_input_countermodel is the exact route-killing guard against generic coefficient hypotheses, not a claim about primes",
+    "specific_expert_judgment_requested": "Locate a published actual-prime-gap input that bears on the infinite weighted tail modulo rationals, or state precisely that currently cited size, unboundedness, distribution, and nonperiodicity results do not provide the required bridge.",
+    "open_boundary": "No cofinal carry, rational-tail exclusion, entropy theorem, or irrationality result for the actual gap word is known in this programme.",
+    "shortlist_boundary": "Cross-programme placement conserves orientation attention only; it is not a novelty, importance, priority, acceptance, or canonical-status award."
+  },
+  "digestion_assessment": {
+    "significance_grade": "B_plus_programme_entry",
+    "attention_priority": "high for orientation, low for novelty",
+    "consolidation_verdict": "one identity/convergence object with downstream evidence linked, not merged",
+    "expert_review_gap": "review downstream uses for genuine prime-specific input"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "prime_gap_dyadic_summation_by_parts_reformulation",
+    "human_understanding_delta": "Provides a correct expert entry from the original prime series to the gap-tail research landscape without mistaking equivalent coordinates or finite evidence for endpoint progress.",
+    "verification_state": "Pinned source and existing Comparator equivalence are current; no new theorem is introduced.",
+    "publication_or_review_state": "Programme-entry explanation is ready for canonical review.",
+    "canonicalization_state": "Single infrastructure object with a typed downstream map.",
+    "unresolved_downstream_bottleneck": "Actual consecutive-prime arithmetic strong enough to force irrationality.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_251.md",
+    "section": "Summation by parts, with the endpoint retained",
+    "canonical_mechanism_family": "geometric summation by parts, rational-affine invariance, and the source-specific unconditional convergence stack",
+    "disposition": "headline/core mechanism",
+    "relation": "Use once as the opening coordinate theorem. Consolidate identity, convergence, normalization, and equivalences; subordinate the certified finite denominator screen as a technical appendix (80000-bit authoritative; 4096-bit provenance only), conditional tail interfaces, and the polynomial countermodel as route-boundary evidence; supersede duplicate coordinate-change headlines and chronology.",
+    "understanding_delta": "The prime-gap series is the correct local coordinate for later work, but the coordinate change itself contributes no prime-specific irrationality producer.",
+    "evidence_boundary": "Lean checks the source identities and equivalences, and the existing Comparator represents the normalized equivalence. No actual-prime tail obstruction or endpoint theorem follows.",
+    "hard_step": "Obtain a cofinal arithmetic or dynamical obstruction for the actual consecutive-prime gap tail.",
+    "meaningful_failed_route": "Generic coefficient irregularity does not force the producer, as the rational polynomial-tail countermodel shows.",
+    "open_remainder": "Erdős #251 remains open in every affine-equivalent coordinate."
+  },
+  "downstream_handoff": {
+    "programme_mechanism_family": "actual consecutive-prime gap tails, radix recurrences, and carry obstructions for Erdős #251",
+    "programme_disposition": "consolidate as the single entry coordinate change beneath the actual gap-tail mechanism; not a new irreducible theorem family",
+    "paper": "Headline/core opening section 'Summation by parts, with the endpoint retained'; one endpoint-retaining entry, no duplicate chronology insertion.",
+    "comparator": "Existing equivalence is sufficient; no new interface.",
+    "public": "State equivalent coordinates and the open prime-specific producer together."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_public_antecedent_or_prime_specific_tail_input",
+    "reentry_condition": "Re-enter only if the public #251 equivalence/source generation changes or a theorem about the actual consecutive-prime gap tail supplies a new arithmetic obstruction.",
+    "do_not_redo": "Do not repeat summation by parts, rational-affine invariance, convergence adapters, or finite denominator screens; these are closed entry infrastructure.",
+    "open_bottleneck": "The coordinate change preserves the open endpoint. A cofinal carry, rational-tail exclusion, entropy/dynamical obstruction, or other prime-specific theorem is still required.",
+    "owner": "#251 proof fleet for actual gap-tail arithmetic; Mathematics Refinery and Role 3 for entry-surface consolidation; Novelty Observatory for changed public attribution."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_square_contact_null_branch",
+  "recorded_at": "2026-08-25",
+  "input_stage": "bounded_adversarial_model_search_and_canonical_sextic_square_contact_theorem",
+  "output_stage": "analytic_proof_and_formal_verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNullBranch.md",
+    "ErdosProblems/Erdos1041/SexticNullBranch.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch.py"
+  ],
+  "human_understanding_delta": "The apparent next adversarial obstruction is the unique first-order null direction of four square contacts. One prescribed zero-contact connector continues exactly until it acquires an additional ray-endpoint zero, and its chord proof is a convex interpolation between two square-factor certificates. A subsequent all-pair check shows that a companion connector is already strict for sampled positive parameters, so this is not claimed to be an equality edge of the optimized objective.",
+  "verification_state": {
+    "analytic": "authored_complete_exact_factorization_and_convex_interpolation",
+    "symbolic": "passed_exact_sympy_replay_over_Q_sqrt3",
+    "lean": "passed_canonical_cached_focused_build_jobs_2_and_final_serialized_lake_authority_check",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "private_problem_packet_exact_result_propagated_not_external_canonicalization",
+  "unresolved_downstream_bottleneck": "Prove the observed strict companion connector along the null branch and quantify its neighbourhood, then cover the remaining normalized sextic coefficient faces and prove the finite actual-polynomial remainder transfer. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: check the exact branch parameterization, the endpoint Bernstein signs, the normalized ray comparison, and the claim boundary before any external circulation.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation from the local corpus and bounded computation under operator direction",
+    "computation": "Differential evolution located the null ratio after the already-closed slice was excluded; SymPy recovered and checks the exact Q(sqrt(3)) identities.",
+    "formalization": "Lean checks the real-algebraic certificate in the canonical cached project.",
+    "claim_boundary": "A homogeneous sextic one-parameter zero-contact connector theorem only. Optimality of that contact family is not proved and bounded all-pair computation finds a stricter companion connector for sampled beta>0. This is not the full sextic model, finite transfer, or unrestricted Erdos #1041."
+  }
+}

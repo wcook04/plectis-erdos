@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "all_degree_tied_face_zero_trace_equality",
+  "output_stage": "negative_paired_critical_trace_and_lexicographic_saddle",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFacePairedTrace.md",
+  "human_understanding_delta": "The disk constraint does not add an arbitrary next term to a tied low Newton face. Newton's identities give sum_c c^(n-m)=m(n-m)A_m/n, while disk tangency pairs A_m with -conj(A_m)z^(n-m). Their critical-value trace is therefore the strictly negative norm square -m(n-m)|A_m|^2/n. Since the complementary gap q(n-2m) is smallest for the maximal active low mode, that mode breaks every all-zero leading trace at the first available order and selects a lexicographically negative saddle.",
+  "verification_state": "ordinary Newton-identity and face-order proof; negative paired trace and finite lexicographic selector Lean checked; exact Gaussian-rational recurrence replay in degrees 5 through 40; exact symbolic quintic equality calibration",
+  "publication_or_review_state": "private authoring checkpoint; not independently reviewed and not a solution of unrestricted Erdős #1041",
+  "canonicalization_state": "all-degree tied-face strict-saddle selector; metric scattering-length residual preserved",
+  "unresolved_downstream_bottleneck": "Prove or refute that a lexicographically selected negative merger admits a two-ended connector with renormalized defect L(R)-2R<=0, then carry a strict margin through finite Newton-face transfer.",
+  "next_stage_owner": "mathematical_closure_engine",
+  "tool_disclosure": "Exact Newton recurrences exposed the negative-square trace. Adversarial differential-evolution searches found the known quintic equality chart and the pure sextic equality stratum rather than a counterexample; those searches guided the theorem but are not proof."
+}

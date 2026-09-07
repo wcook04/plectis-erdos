@@ -1,0 +1,220 @@
+version: v0.4
+project:
+  name: 'Erdős #251: bounded-perturbation countermodel anchored at the actual prime
+    gaps'
+  description: >-
+    For every positive integer M and every natural number K there are digits δ(n) in
+    {0, 1}, all zero for n below K, such that the dyadic series over the perturbed
+    actual prime gaps, the sum of (g(n) + M δ(n)) / 2^(n+1) with g(n) = p_(n+1) - p_n
+    and p_0 = 2, has a value that fails to be irrational. The same digits carry an
+    explicit rational r with the sum of (g(n) + M δ(n)) / 2^(n+1) equal to r. Every
+    perturbed gap satisfies g(n) ≤ g(n) + M δ(n) ≤ g(n) + M together with
+    (g(n) + M δ(n)) mod M = g(n) mod M, so the perturbation raises each gap by at most
+    M and preserves every gap modulo M. The mechanism is proved for an arbitrary
+    natural-digit dyadic series: if the sum of g(n) / 2^(n+1) is S, then for every
+    M ≥ 1, every K, and every real r with S < r < S + M / 2^K there are digits δ(n) in
+    {0, 1}, all zero for n below K, with the sum of (g(n) + M δ(n)) / 2^(n+1) equal to
+    r. The digit supply is the binary expansion: for 0 ≤ D < 1 the digits
+    ⌊2^(n+1) D⌋ - 2⌊2^n D⌋ sum to D against the weights 2^(-(n+1)).
+    The five compared declarations are statements about perturbed gap sequences and
+    about the binary expansion. They determine no value of the sum of g(n) / 2^(n+1),
+    and Erdős Problem 251 is undecided here. The consequence they support is a
+    strategy-elimination statement: a hypothesis on a gap sequence that is preserved by
+    the replacement of g(n) with g(n) + M δ(n) for digits δ(n) in {0, 1} holds for a
+    sequence whose dyadic sum is rational, so that hypothesis cannot imply
+    irrationality of the sum, and an irrationality proof must use a property of the
+    primes that a bounded additive perturbation destroys. No compared declaration
+    formalizes the invariance of any named gap theorem under the perturbation, so the
+    coverage of that strategy elimination is outside the Lean witness. Telescoping
+    constructions of this species in this neighbourhood were published first by Vjeko
+    Kovač, whose April 2026 note refutes the variable-denominator conjecture printed
+    under Erdős Problem 251. Priority for the bounded, prime-anchored form recorded
+    here is unassessed.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+palomar_qualification:
+  status: draining
+  selected_project: formal_math/erdos257_period_noncollapse
+  comparator_config: formal_math/erdos257_period_noncollapse/ExternalVerification251BoundedPerturbationCountermodel/comparator.json
+  formalization_metadata: formal_math/erdos257_period_noncollapse/ExternalVerification251BoundedPerturbationCountermodel/formalization.yaml
+  repository_scope: private_source_mirrored_into_the_palomar_release_tree_pending_first_build
+  challenge_dependency_boundary: Mathlib_only
+  replay_status: no_build_or_axiom_print_recorded_for_this_entry
+  research_interest_status: strategy_elimination_no_go_anchored_at_the_actual_prime_gaps
+  submission_authorization: operator_directed_submission_campaign_pending_first_build
+  blockers:
+  - ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean has no recorded build
+    in either tree; the private ErdosProblems.lean does not import it
+  - lakefile lean_lib stanza and defaultTargets row for this entry are not yet added
+    in the release tree
+  - terminal positive and deliberate-negative Comparator receipts are pending
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11B83
+  - 11A41
+sources:
+- title: A bounded-perturbation countermodel for the actual prime-gap dyadic series
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: This formalization is the first presentation recorded here of the bounded,
+    residue-preserving perturbation anchored at the actual consecutive prime gaps.
+    It is a strategy-elimination theorem beneath the still-open Erdős Problem 251.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: On the Erdős problem #251
+  authors:
+  - Vjeko Kovač
+  id: https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf
+  type: preprint
+  relationship: background
+  note: 'Posted to the Erdős Problems thread for 251 on 15 April 2026. Theorem 1
+    constructs integers g_n with g_n at least 2 and g_n = o(p_n) whose series sums to
+    1, refuting the variable-denominator conjecture printed under the problem. That
+    construction is the same species of telescoping freedom used here, applied to a
+    different object, and it was published first.'
+  license: unknown
+  author_endorsement: not-contacted
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status. The countermodel recorded here is a local strategy-elimination theorem
+    and is not attributed to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Five exact source-backed declarations expose the bounded-perturbation
+    countermodel for the actual prime gaps, its pointwise size and residue bounds,
+    the general construction for any natural-digit dyadic series, and the binary-digit
+    summation that supplies the perturbation. No value of the unperturbed prime-gap
+    series is claimed and no irrationality theorem is claimed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  axiom_audit_status: pending_first_build_of_this_entry_the_source_module_is_newly_ported_and_no_axiom_print_has_been_recorded_in_this_repository
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.not_irrational_bounded_perturbation_primeGap
+    file: ExternalVerification251BoundedPerturbationCountermodel/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first build
+      of this entry
+    local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
+    novelty_status: unassessed
+    contribution_class: bounded-perturbation countermodel for the actual prime gaps
+    boundary: The perturbed series is the object shown non-irrational. The unperturbed
+      prime-gap series is untouched.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.exists_rational_bounded_perturbation_primeGap
+    file: ExternalVerification251BoundedPerturbationCountermodel/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first build
+      of this entry
+    local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
+    novelty_status: unassessed
+    contribution_class: explicit rational witness for the perturbed series
+    boundary: The rational value is selected between S and S + M / 2^K; no rational
+      value of the unperturbed series is produced.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.perturbed_gap_bounds
+    file: ExternalVerification251BoundedPerturbationCountermodel/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first build
+      of this entry
+    local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
+    novelty_status: unassessed
+    contribution_class: pointwise size and residue bounds for the perturbation
+    boundary: Holds for any digit sequence bounded by 1, with no reference to the
+      series value.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.exists_bounded_perturbation
+    file: ExternalVerification251BoundedPerturbationCountermodel/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first build
+      of this entry
+    local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
+    novelty_status: unassessed
+    contribution_class: general natural-digit dyadic construction
+    boundary: Reaches the targets r in the interval from S to S + M / 2^K only, and
+      says nothing about the primes.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.hasSum_binaryDigit
+    file: ExternalVerification251BoundedPerturbationCountermodel/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first build
+      of this entry
+    local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
+    novelty_status: standard
+    contribution_class: binary expansion of a real number in the unit interval
+    boundary: Elementary Mathlib-level fact recorded because it supplies the digits.
+    literature_dependencies: []
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+fidelity:
+  divergences: The challenge reproduces the zero-based prime, prime-gap, and binary-digit
+    definitions and the five exact source statements. It asserts no invariance property
+    of any named gap theorem.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: The perturbation bounds, the rational witness, and the open boundary for the
+    unperturbed series were checked by the author with AI assistance. No independent
+    review is claimed and no axiom print has been recorded for this entry.
+alignment:
+  namespace: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel
+  statements:
+  - source: ErdosProblems.Erdos251.not_irrational_bounded_perturbation_primeGap
+    lean: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.not_irrational_bounded_perturbation_primeGap
+    module: ExternalVerification251BoundedPerturbationCountermodel/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.exists_rational_bounded_perturbation_primeGap
+    lean: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.exists_rational_bounded_perturbation_primeGap
+    module: ExternalVerification251BoundedPerturbationCountermodel/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.perturbed_gap_bounds
+    lean: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.perturbed_gap_bounds
+    module: ExternalVerification251BoundedPerturbationCountermodel/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.exists_bounded_perturbation
+    lean: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.exists_bounded_perturbation
+    module: ExternalVerification251BoundedPerturbationCountermodel/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.hasSum_binaryDigit
+    lean: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.hasSum_binaryDigit
+    module: ExternalVerification251BoundedPerturbationCountermodel/Challenge.lean
+    status: exact-transport-axiom-print-pending
+acknowledgements: Mathlib contributors; Vjeko Kovač for the published telescoping
+  construction on Erdős Problem 251; Thomas F. Bloom for the Erdős Problems catalogue.

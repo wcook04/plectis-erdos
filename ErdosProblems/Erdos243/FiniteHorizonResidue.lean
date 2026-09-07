@@ -1,4 +1,4 @@
-import Mathlib.Data.Int.ModEq
+import ErdosProblems.IntModEq
 import Mathlib.Data.Nat.Factorial.Basic
 import Mathlib.Tactic.Ring
 
@@ -37,15 +37,14 @@ theorem forcedNumerator_modEq
   simpa [forcedNumerator] using
     (hquad.sub hlinear).add_right (n + 3 : ℤ)
 
-/-- Exact division cancels the same nonzero factor from values and modulus. -/
+/-- Compatibility name for exact division of values and their congruence
+modulus.  The generic statement is `Int.ModEq.ediv_of_dvd_of_modEq_mul_left`. -/
 theorem quotient_modEq_of_modEq_mul
     {d m a b : ℤ} (hd : d ≠ 0)
     (ha : d ∣ a) (hb : d ∣ b)
     (h : a ≡ b [ZMOD d * m]) :
     a / d ≡ b / d [ZMOD m] := by
-  obtain ⟨a, rfl⟩ := ha
-  obtain ⟨b, rfl⟩ := hb
-  simpa [Int.mul_ediv_cancel_left _ hd] using h.mul_left_cancel' hd
+  exact Int.ModEq.ediv_of_dvd_of_modEq_mul_left hd ha hb h
 
 /-- Modulus sufficient for `remaining` forced updates starting at `index`.
 It is represented recursively so each exact division removes the visible first

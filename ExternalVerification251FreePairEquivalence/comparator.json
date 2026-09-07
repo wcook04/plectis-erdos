@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification251FreePairEquivalence.Challenge",
+  "solution_module": "ExternalVerification251FreePairEquivalence.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral",
+    "Erdos249257.ExternalVerification251FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral",
+    "Erdos249257.ExternalVerification251FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts",
+    "Erdos249257.ExternalVerification251FreePairEquivalence.exists_free_pair_lattice",
+    "Erdos249257.ExternalVerification251FreePairEquivalence.free_pair_integral_iff_modEq",
+    "Erdos249257.ExternalVerification251FreePairEquivalence.primeGapRealTail_recurrence",
+    "Erdos249257.ExternalVerification251FreePairEquivalence.primeGapRealTail_zero"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

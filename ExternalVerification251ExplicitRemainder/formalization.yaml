@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #251: an explicit quartic remainder bound with two finite certificates"
+  description: >-
+    The truncation error between a finite signed prime-gap window of length L and the
+    complete real tail shift it approximates is at most 1250 times 2 to the minus L times
+    the sum of P at N+h+L+2 and P at N+L+2, where P is the explicit quartic
+    x^4 + 8x^3 + 36x^2 + 104x + 150. The constant is evaluated rather than carried. Two
+    finite certificates follow: a small window with a small bound keeps the shift inside the
+    open unit interval, and a window farther from the integers than the bound makes the
+    shift non-integral. The bound is unconditional and it exhibits no block meeting either
+    certificate, so it does not settle Erdős Problem 251.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "prepared_local_only"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251ExplicitRemainder/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251ExplicitRemainder/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "no_comparator_or_runner_replay_recorded"
+  submission_authorization: "not_authorised; prepared locally by the r7 assimilation worker"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "no Comparator or NanoDa replay has been recorded on a supported runner"
+    - "the lakefile library entry for this directory is added by the parent, not by this worker"
+  note: >-
+    Prepared during batch erdos_paper_complete_lean_r7_20260907. No local
+    artifact is represented as a Palomar verdict or registry entry, and no
+    submission has been made.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11N05", "68V20"]
+
+sources:
+  - title: "Erdős Problem Notes: Problem 251"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #251"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/251"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering and open status.
+      Nothing here is attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"

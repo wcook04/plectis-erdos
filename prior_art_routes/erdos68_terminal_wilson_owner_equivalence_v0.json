@@ -1,0 +1,230 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos68_terminal_wilson_owner_equivalence",
+  "generated_at": "2026-08-24",
+  "status": "novelty_and_significance_adjudicated_public_parity_pending",
+  "problem_id": "erdos_68",
+  "purpose": "Position the terminal factorial-residue first-hit theorem as a routine Wilson consequence with a useful owner interface, while separating its finite witness from the missing cofinal producer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos68_terminal_wilson_owner_equivalence.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+    "source_declaration": "ErdosProblems.Erdos68.prime_terminal_factorialGap_hit_iff",
+    "source_result_id": "erdos68_terminal_wilson_private_owner_pairs",
+    "formal_source_commit": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+    "formal_source_sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849",
+    "research_packet_commit": "e885d7635c7976f6dbf1f9eeac5fc72fb089297c",
+    "research_packet_sha256": "5097c60981be4e0146c5e720e046b4612937ac08bde96e6601e193245eb0a670"
+  },
+  "source_generation": {
+    "status": "source_packet_and_card_files_current; embedded_card_pins_current",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "commit": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+      "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "commit": "e885d7635c7976f6dbf1f9eeac5fc72fb089297c",
+      "sha256": "5097c60981be4e0146c5e720e046b4612937ac08bde96e6601e193245eb0a670",
+      "source_result_id": "erdos68_terminal_wilson_private_owner_pairs"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/erdos68_terminal_wilson_owner_equivalence.card.json",
+      "commit": "a31d8f8b7d3d64d1d786a49f96efc3f5d7ab7f3f",
+      "sha256": "6f35700182b13ffbe83e6f08d19e3860735ae720e0701526649804dfb7f7f181"
+    },
+    "review_generation": "2026-08-26_observatory_parity_repair_v1"
+  },
+  "parity_audit": {
+    "status": "source_packet_and_card_embedded_parity_current",
+    "effect": "The current source, packet result, and card file are identified and hashed, and the card's embedded source_parity matches those generations. Public declaration parity and independent semantic review remain separate boundaries; this route does not authorize Comparator or public theorem exposure.",
+    "reentry_condition": "Reopen if the formal declaration, packet row, reviewer-card embedded parity, finite digest, or a cofinal terminal-owner producer changes."
+  },
+  "classification": {
+    "mathematical_status": "Lean_checked_elementary_equivalence_plus_exact_finite_consumer_witness",
+    "novelty_status": "exact_reformulation_and_source_specific_interface_not_novel_Wilson_theorem",
+    "priority_claim": "none",
+    "recommended_terminology": "terminal first occurrence of the factorial residue 1 modulo a prime",
+    "descriptive_local_alias": "Wilson terminal-owner rigidity",
+    "mathematical_interest": "The equivalence deletes every future renewal obligation for one owner class and exposes cofinal compatible-prime supply as the actual hard #68 bottleneck.",
+    "reusable_scope": "Any factorial-gap argument in which a fixed prime's first residue-1 occurrence is forced to the Wilson endpoint."
+  },
+  "primary_source_comparison": [
+    {
+      "source": "Xiyu Hu, Factorial residues modulo a prime: beyond the square-root bound, arXiv:2608.01781 (2026)",
+      "locator": "annexes/arxiv-2608-01781/extracted.md::Introduction",
+      "relation": "Current primary source for the standard value-set A_p and factorial-residue terminology; it does not study terminal first hits."
+    },
+    {
+      "source": "M. Z. Garaev, F. Luca, I. E. Shparlinski, Exponential Sums and Congruences with Factorials, arXiv:math/0403424 (2004)",
+      "locator": "annexes/arxiv-math-0403424/extracted.md::Introduction",
+      "relation": "Established congruence/distribution context, methodologically distinct from the elementary least-index equivalence."
+    }
+  ],
+  "attribution_gap": {
+    "search_scope": "Google Scholar phrase searches plus primary-source inspection of the annexed current value-set and established congruence papers.",
+    "result": "No conventional name or exact antecedent for the least-index/global-owner packaging was located.",
+    "claim_boundary": "Absence from this bounded search is not novelty evidence.",
+    "reentry_condition": "A source explicitly studying the least k with k! congruent to 1 modulo p, especially the case k=p-2."
+  },
+  "claim_boundary": {
+    "allowed_wording": "If residue 1 first occurs at the Wilson endpoint q-2, then q divides k!-1 exactly at k=q-2 for all k>=2; a bounded exact census contains a compatible pair 37,41.",
+    "required_qualifiers": [
+      "terminal first-hit hypothesis",
+      "Lean-checked equivalence versus finite computation",
+      "no cofinal supply",
+      "no Erdős #68 conclusion"
+    ],
+    "forbidden_wording": [
+      "Wilson's theorem supplies infinitely many private owners",
+      "the finite census is density evidence",
+      "a new Wilson theorem",
+      "Erdős #68 is solved"
+    ]
+  },
+  "reviewer_attention_budget": {
+    "routine": "The four index ranges proving global uniqueness.",
+    "load_bearing": "The terminal first-hit assumption and the finite-to-cofinal boundary.",
+    "automation_boundary": "Lean checks the equivalence; exact computation checks the bounded witness; experts still own attribution, semantic review, and significance.",
+    "next_human_check": "Confirm the owner-language correspondence and decide whether the clean equivalence merits a public statement firewall after public parity is established.",
+    "review_act": "Audit the four-range owner-language correspondence and exact terminal-first-hit quantifiers; separately verify that no finite census field is presented as cofinal evidence.",
+    "expert_act": "Audit the four-range owner-language correspondence and exact terminal-first-hit quantifiers; separately verify that no finite census field is presented as cofinal evidence."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "factorial-gap moving-prime ownership: prefix-private supply, reflection/collision boundaries, and terminal global owners",
+    "disposition": "subordinate under the existing #68 cofinal-carry mechanism; keep terminal ownership distinct from prefix-private supply",
+    "paper_disposition": "supporting lemma in 'Terminal Wilson owners: global uniqueness versus cofinal supply'; the bounded census remains an adjacent finite-evidence panel",
+    "comparator_advisory": "Comparator-now for the exact Lean equivalence; computation-only for the bounded census and endpoint consumer, with no independent cofinality interface."
+  },
+  "adjudication_currentness": {
+    "status": "formal_source_packet_card_snapshot_adjudicated; embedded card parity current",
+    "bound_snapshot": {
+      "formal_source_commit": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+      "formal_source_sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849",
+      "research_packet_commit": "e885d7635c7976f6dbf1f9eeac5fc72fb089297c",
+      "research_packet_sha256": "5097c60981be4e0146c5e720e046b4612937ac08bde96e6601e193245eb0a670",
+      "reviewer_card_commit": "a31d8f8b7d3d64d1d786a49f96efc3f5d7ab7f3f",
+      "reviewer_card_sha256": "6f35700182b13ffbe83e6f08d19e3860735ae720e0701526649804dfb7f7f181"
+    },
+    "claim_guard": "Only the conditional terminal-first-hit Wilson owner equivalence is admitted as Lean-checked; the finite census is computation-only and no cofinality, density, irrationality, or #68 endpoint follows.",
+    "reentry_trigger": "Re-enter if the formal declaration, packet row, reviewer-card embedded parity, finite digest, or a cofinal terminal-owner producer changes."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "factorial-gap moving-prime ownership: prefix-private supply, reflection/collision boundaries, and terminal global owners",
+    "disposition": "subordinate under existing mechanism",
+    "consolidation_relation": "Keep terminal global ownership distinct from cofinal prefix-private supply; subordinate the finite census and endpoint pair to the single equivalence.",
+    "evidence_class": "Lean-checked equivalence plus finite exact computation",
+    "hard_step": "cofinal compatible terminal-first-hit prime supply",
+    "prior_art_uncertainty": "bounded search found no exact least-index packaging; no novelty inference",
+    "open_boundary": "no infinitude, density, cofinality, public parity, or #68 endpoint",
+    "comparator_interface_justified": true,
+    "comparator_minimal_restatement": "Terminal first hit at q-2 implies q divides k!-1 exactly when k=q-2 for every k>=2; exclude all finite census and cofinal language.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Terminal Wilson owners: global uniqueness versus cofinal supply",
+      "supersession_or_consolidation": "One equivalence with subordinate finite witness, following the distinct prefix-private supply theorem."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "Useful owner interface but routine and conditional, beneath the admitted #68 cofinal-carry endpoint.",
+      "evidence_class": "Lean equivalence plus finite computation",
+      "hard_step": "cofinal terminal-owner producer",
+      "prior_art_uncertainty": "exact packaging unlocated; no priority claim",
+      "open_boundary": "no cofinality or irrationality",
+      "demoted_predecessor": null
+    }
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-68-factorial-denominator-irrationality.tex",
+    "section": "Terminal Wilson owners: global uniqueness versus cofinal supply",
+    "canonical_mechanism_family": "factorial-gap moving-prime ownership: prefix-private supply, reflection/collision boundaries, and terminal global owners",
+    "relation": "Place the equivalence after cofinal prefix-private supply; subordinate census and finite pair.",
+    "understanding_delta": "Separates fresh support, terminal uniqueness, and compatible cofinal supply.",
+    "evidence_boundary": "Lean equivalence and finite computation only; no public parity or infinitary producer.",
+    "hard_step": "Prove cofinal compatible terminal-first-hit supply.",
+    "meaningful_failed_route": "Promote a finite pair or prefix-private supply to terminal cofinality.",
+    "open_remainder": "Cofinal producer and #68 remain open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_attribution_review",
+    "artifact": "erdos68_terminal_wilson_owner_equivalence",
+    "human_understanding_delta": "The routine Wilson implication, finite mechanism witness, and genuinely open cofinal producer are no longer blended into one apparent result.",
+    "verification_state": "Pinned Lean and exact-computation evidence; no fresh elaboration or independent review.",
+    "publication_or_review_state": "Private review object; public parity pending; no acceptance claim.",
+    "canonicalization_state": "Consolidation candidate only, with theorem primary and census subordinate.",
+    "unresolved_downstream_bottleneck": "Cofinal compatible terminal-prime supply or a rigorous obstruction to it.",
+    "next_stage_owner": "Mathematics Refinery, then Role 3."
+  },
+  "release_disposition": "layered_status_tagged_public_and_comparator_candidate",
+  "release_disposition_reason": "The Lean equivalence is exact and independently separable from the finite census. Public/Comparator visibility may expose the theorem with its terminal-first-hit hypothesis; the census remains finite computation only and public parity is not a prerequisite for the theorem's status-tagged visibility.",
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-current layered release pass",
+    "result_family_version": "erdos68_terminal_wilson_private_owner_pairs@source_3286a15_card_6f3570",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+        "commit": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+        "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+        "commit": "e885d7635c7976f6dbf1f9eeac5fc72fb089297c",
+        "sha256": "5097c60981be4e0146c5e720e046b4612937ac08bde96e6601e193245eb0a670",
+        "source_result_id": "erdos68_terminal_wilson_private_owner_pairs"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos68_terminal_wilson_owner_equivalence.card.json",
+        "commit": "a31d8f8b7d3d64d1d786a49f96efc3f5d7ab7f3f",
+        "sha256": "6f35700182b13ffbe83e6f08d19e3860735ae720e0701526649804dfb7f7f181"
+      },
+      "finite_checker": {
+        "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_terminal_private_owners.py",
+        "maximum_prime": 50000,
+        "status": "exact bounded computation; no infinitary inference"
+      }
+    },
+    "evidence_class": "Lean-checked terminal-first-hit equivalence plus exact finite census and one finite endpoint consumer; no cofinal theorem or irrationality result",
+    "prior_art_assessment": {
+      "confidence": "strong internal provisional classification; no priority claim",
+      "closest_primary_sources": [
+        "Wilson's theorem for the endpoint congruence (q-2)! ≡ 1 mod q.",
+        "Classical factorial-residue and Wilson-quotient literature for the ambient modular setting; the exact owner-language packaging is source-specific."
+      ],
+      "exact_relation": "Wilson supplies the endpoint hit, but not terminality. The source-specific theorem shows that a first hit at q-2 is globally unique; it does not produce such primes or compatible pairs cofinally.",
+      "search_scope": "The route's bounded search found no exact least-index owner equivalence; non-location is not evidence of novelty or priority."
+    },
+    "comparison_relation": "Wilson's endpoint congruence is classical; the source-specific delta is the conditional terminal-first-hit equivalence that turns one endpoint hit into a unique global owner, without producing such primes cofinally.",
+    "closest_known_result": "Wilson's theorem and factorial-residue/Wilson-quotient literature provide the modular endpoint context; no cited source supplies this exact least-index owner packaging.",
+    "exact_delta": "If q first satisfies (q-2)! congruent to 1 modulo q, then q divides k!-1 exactly at k=q-2 for every k>=2, yielding one globally unique owner class.",
+    "disconfirming_evidence": "A finite compatible pair does not imply density or cofinality; the terminal-first-hit hypothesis may fail for most primes, and no #68 irrationality conclusion follows.",
+    "confidence_ceiling": "High for the Lean equivalence and finite witness under their stated hypotheses; medium for exact literature non-location; low for priority, cofinal supply, density, or an Erdős #68 endpoint.",
+    "hard_step": "The open work is not the four-range uniqueness proof but a cofinal producer of compatible terminal-first-hit primes at the needed scales.",
+    "open_boundary": "Cofinal compatible terminal-prime supply, public parity, density, and Erdős #68 remain open.",
+    "mathematical_delta": {
+      "one_sentence": "Under the terminal first-hit hypothesis, q divides k!-1 exactly at k=q-2 for every k≥2, so one prime has one global owner in the factorial-gap sequence.",
+      "genuinely_hard_step": "The four-range uniqueness implication is routine; the missing mathematics is a cofinal supply of compatible terminal-first-hit primes at the scales used by #68.",
+      "why_care": "It cleanly separates a reusable owner lemma from the finite 37,41 witness and prevents Wilson's theorem from being mistaken for a cofinal supply theorem.",
+      "natural_friction": "The terminal hypothesis is the substantive input; finite counts and endpoint consumers do not establish infinitude, density, or cofinality."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "If q≥5 first hits residue 1 at q-2, then q has that unique factorial owner for all k≥2; a finite exact census supplies a 37,41 mechanism witness.",
+      "rejected_stronger": [
+        "Wilson's theorem supplies infinitely many private owners",
+        "the finite census proves density or cofinality",
+        "the 37,41 pair proves the #68 endpoint",
+        "Erdős #68 irrationality follows"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "B_supporting_owner_interface",
+      "mechanism_family": "factorial-gap moving-prime ownership: prefix-private supply, reflection/collision boundaries, and terminal global owners",
+      "programme_disposition": "subordinate under the existing #68 cofinal-carry mechanism; keep terminal ownership distinct from prefix-private supply",
+      "paper_disposition": "supporting lemma in 'Terminal Wilson owners: global uniqueness versus cofinal supply'; finite census is an adjacent evidence panel",
+      "comparator_advisory": "Comparator-now for the exact Lean equivalence; paper/computation-only for the bounded census and endpoint consumer. No independent cofinality interface.",
+      "absolute_shortlist": "do not admit as a flagship"
+    },
+    "expert_review_act": "Check the four-range owner-language correspondence and the exact quantifiers of the Lean equivalence; separately confirm that no finite census field is projected as a cofinal claim.",
+    "reentry_condition": "Reopen if the formal declaration, packet row, finite digest, or public parity changes, or if a cofinal terminal-owner producer appears."
+  }
+}

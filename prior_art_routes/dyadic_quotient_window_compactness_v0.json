@@ -1,0 +1,182 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "dyadic_quotient_window_compactness",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_scaled_remainder_estimate_with_standard_achievement_set_closedness_and_problem_specific_divisor_hole_boundary",
+  "problem_id": "erdos_257",
+  "purpose": "Name the quotient-window mechanism without inflating an elementary error estimate into a new compactness principle, and separate it from the genuinely arithmetic all-depth producers.",
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "dyadic_quotient_window_compactness@FourNinthsQuotientCompactness-66576fe3",
+    "source_result_id": "four_ninths_coin_cancellation_removes_the_exponential",
+    "canonical_mechanism_family": "canonical greedy cofinal-skip membership with target-specific quotient-window producers",
+    "replacement_decision": "subordinate_under_existing_mechanism",
+    "evidence_class": "Source-current Lean-checked quotient bridge, conditional compactness consumer, and saturated-crossing reduction; ordinary scaled-remainder estimate; finite audits diagnostic only.",
+    "primary_source_basis": [
+      "Kakeya, On the Set of Partial Sums of an Infinite Series, Proc. Tokyo Math.-Phys. Soc. 7 (1914), pp. 250--251: classical subseries-sum compactness setting.",
+      "Bartoszewicz--Glab--Marchwicki, Achievement sets of conditionally convergent series, arXiv:1604.07575, Introduction: established terms ‘achievement set’ and ‘set of subsums’ for 0--1 sums."
+    ],
+    "closest_known_result": "The abstract limit step is standard achievement-set closedness for absolutely summable series, and the displayed scaled-remainder estimate is elementary. No inspected primary source states the Mersenne Four-Ninths quotient defect or its saturated divisor-hole consumer.",
+    "comparison_relation": "Kakeya and modern achievement-set literature supply the compactness vocabulary only. The local Lean bridge identifies the executable Four-Ninths state with an exact Mersenne quotient defect, and the saturation theorem gives a conditional whole-support divisor-hole event; neither is claimed as a general compactness theorem.",
+    "exact_delta": "The local source turns the Four-Ninths finite state into a quotient-plus-fraction coordinate and packages a two-sided dyadic window as a sufficient membership consumer. The lower selected-landing and upper anti-saturation producers remain separate and open.",
+    "disconfirming_evidence": "Finite audits with no observed saturation do not prove the all-depth window. The conditional divisor-hole reduction does not show that saturation never occurs, and the generic closedness argument does not produce a selected support or 4/9 membership.",
+    "confidence": {
+      "level": "high_for_standard_achievement_set_terminology_and_elementary_estimate; strong_internal_provisional_case_for_the_problem-specific Lean bridge; none_for_priority_or_endpoint_novelty",
+      "basis": "Primary literature anchors and all source-specific Lean/hash pins are recorded in the canonical card; bounded non-location is not treated as priority evidence."
+    },
+    "significance": "Moderate explanatory value as a producer--consumer separation: it closes the easy limit step and identifies the arithmetic throat without competing with the general #257 endpoint. Low standalone novelty.",
+    "claim_ceiling": "Call it a subscale quotient-defect criterion or quotient-window consumer for achievement-set membership. Do not claim a new compactness principle, all-depth window, 4/9 membership, rational counterexample, or Erdős #257 solution.",
+    "hard_step": "The genuinely hard step is proving the actual all-depth lower selected-landing and upper anti-saturation producers; the compactness consumer itself is not the bottleneck.",
+    "open_boundary": "No theorem supplies the two-sided window for the actual Four-Ninths orbit, excludes every saturated crossing, or proves 4/9 membership.",
+    "paper_disposition": {
+      "classification": "supporting_lemma_and_route_boundary",
+      "target_section": "A Four-Ninths quotient-window case study",
+      "relation": "Consolidate beneath rational_greedy_cofinal_skip_membership; keep the quotient bridge, compactness consumer, saturation obstruction, and failed local-suffix route together.",
+      "why_here": "This is the clearest way to show experts exactly which limit argument is finished and which arithmetic producers remain open."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "reason": "One bundled conditional firewall is materially useful if it states the two-sided window, exact membership implication, conditional saturation boundary, and open producers together; the generic estimate and finite audit must not be split into separate interfaces.",
+      "release_boundary": "Role 3 decides final admission; this adjudication does not confer release or significance."
+    },
+    "bounded_expert_act": "Check once that the scaled error identity has the full all-depth two-sided hypothesis and that the divisor-hole statement is conditional on an upward saturated crossing; no broader literature survey is needed unless the source generation changes.",
+    "reentry_trigger": "Re-enter on source/card/packet hash drift, an exact primary-source match for the quotient-defect bundle, or a proved all-depth producer that changes the endpoint significance.",
+    "source_generation_binding": {
+      "card_commit": "b4da486cd11af73795fd3d7eae7f522816731607",
+      "card_sha256": "1ee52f890547a9ccfb13b7335872de241238fc86cb4ca5e16c84b06ee911b319",
+      "quotient_bridge_commit": "a06406d07091d679735c3db15034b9c4cdf613bb",
+      "quotient_bridge_sha256": "dbced404df566fc6a37397fccc223d010ac17262dd5de42f82a801a790ed07b5",
+      "compactness_commit": "66576fe3760e78061e2cebe7078db5c70800c391",
+      "compactness_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FourNinthsQuotientCompactness.lean",
+      "compactness_sha256": "3b6818ead39c7c834d9fe3e45db183b7dfa8d86909aac1093488a74c383067f6",
+      "saturation_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FourNinthsUpperSaturation.lean",
+      "saturation_sha256": "2a967ee2a81a11d0f4040f83dd49d095d154cedb9b5f05a2bc458bddf236b0a4",
+      "finite_audit_sha256": "ca7c4981ce9687910ca5d9371e9cc8cbc00bf4ec9020ec75264ed334ae0c254c",
+      "parity_status": "Card, source, packet result id, and pinned Lean hashes are bound at this snapshot; no fresh Lean replay is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "card_commit": "b4da486cd11af73795fd3d7eae7f522816731607",
+      "source_result_id": "four_ninths_coin_cancellation_removes_the_exponential",
+      "compactness_commit": "66576fe3760e78061e2cebe7078db5c70800c391",
+      "compactness_sha256": "3b6818ead39c7c834d9fe3e45db183b7dfa8d86909aac1093488a74c383067f6"
+    },
+    "claim_guard": "Conditional quotient-window consumer and saturation boundary only; all-depth producers, 4/9 membership, and #257 remain open.",
+    "reentry_trigger": "Re-enter on card/source/packet drift, exact composite antecedent discovery, or a proved actual-orbit producer."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The limit estimate and achievement-set closedness are routine; the scarce expert attention belongs on the two all-depth arithmetic producers and the conditionality of the saturation reduction.",
+    "slow_down_at": "Keep the exact signed defect separate from its two-sided window hypothesis; do not turn a finite no-saturation scan into a universal producer.",
+    "automation_can_establish": [
+      "Lean declaration and source/hash parity",
+      "the exact scaled remainder identity",
+      "finite audit statistics and JSON/card consistency"
+    ],
+    "human_judgment_required": [
+      "whether the target-specific packaging is best presented as a quotient-window criterion",
+      "whether the bundled conditional firewall is independently useful",
+      "whether a later all-depth producer changes its significance class"
+    ],
+    "review_act": "One bounded expert act: inspect the two-sided hypothesis and the first-saturation conditional boundary, then confirm the supporting-case-study disposition."
+  },
+  "paper_disposition": {
+    "classification": "supporting_lemma_and_route_boundary",
+    "target_section": "A Four-Ninths quotient-window case study",
+    "supersession_relation": "Subordinate under rational_greedy_cofinal_skip_membership; no second #257 endpoint."
+  },
+  "comparator_advisory": {
+    "independent_interface_justified": true,
+    "reason": "A single bundled conditional proposition is useful for status-tagged exposure; generic compactness and finite diagnostics remain subordinate components."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/dyadic_quotient_window_compactness.card.json",
+    "refinery_handoff_receipt": "wie_20260824T035850Z_e33565aa",
+    "source_commit": "66576fe3760e78061e2cebe7078db5c70800c391",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FourNinthsQuotientCompactness.lean"
+  },
+  "classification": {
+    "finite_error_bound_class": "elementary_scaled_remainder_or_floor_defect_estimate",
+    "limit_step_class": "standard_closedness_of_an_achievement_set_of_an_absolutely_summable_sequence",
+    "saturation_boundary_class": "problem_specific_divisor_hole_reduction",
+    "combined_packaging_class": "useful_conditional_producer_consumer_interface_no_priority_claim",
+    "priority_claim": "none",
+    "recommended_terminology": "subscale quotient-defect criterion for achievement-set membership",
+    "acceptable_short_name": "quotient-window criterion",
+    "discouraged_terminology": "dyadic compactness theorem without stating the elementary scaled-error identity",
+    "nearest_prior_work": [
+      "Kakeya (1914) initiated the study of sets of subseries sums and established the compact-set setting for absolutely convergent series.",
+      "Modern achievement-set literature uses `achievement set' or `set of subsums' for all 0-1 subseries sums of an absolutely summable sequence.",
+      "No primary source was located for the card's exact Mersenne-floor defect Delta_d or its saturated divisor-hole consumer."
+    ],
+    "attribution": "Attribute the achievement-set and compactness background to Kakeya and the later subsum-set literature. Describe the displayed O((Delta_d+|D_d|)/4^d) implication as an elementary scaled-remainder estimate. Credit the local programme only for the Four-Ninths quotient bridge and the exact divisor-hole boundary.",
+    "mathematical_interest": "The abstract estimate is elementary; the useful content is architectural. It turns two difficult arithmetic inequalities into explicitly named producers feeding a trivial but exact convergence consumer.",
+    "reusable_scope": "Finite-support approximations in which a common scale splits every term and target into an integer quotient plus uniformly controlled fractional mass.",
+    "why_it_matters": "It prevents more effort being spent reproving convergence while exposing the real theorem search: prove the signed defect stays nonnegative and subscale, or rule out the first saturated crossing."
+  },
+  "primary_sources": [
+    {
+      "id": "kakeya_1914_partial_sums",
+      "title": "On the Set of Partial Sums of an Infinite Series",
+      "author": "Soichi Kakeya",
+      "venue": "Proceedings of the Tokyo Mathematico-Physical Society, second series, volume 7 (1914), 250-251",
+      "doi": "10.11429/ptmps1907.7.14_250",
+      "url": "https://www.jstage.jst.go.jp/article/ptmps1907/7/14/7_14_250/_article",
+      "exact_anchor": "Article pp. 250-251; the original two-page treatment of sets of sums of subseries of a convergent series.",
+      "supports": "Historical and mathematical antecedent for viewing all finite/infinite selected subsums as one closed compact object.",
+      "does_not_support": "No Mersenne denominators, quotient defect, Four-Ninths diagonal, or divisor-hole theorem."
+    },
+    {
+      "id": "bartoszewicz_glab_marchwicki_2016_achievement_sets",
+      "title": "Achievement sets of conditionally convergent series",
+      "authors": ["Artur Bartoszewicz", "Szymon Glab", "Jacek Marchwicki"],
+      "url": "https://arxiv.org/abs/1604.07575",
+      "exact_anchor": "Introduction: A(x_n)={sum epsilon_n x_n : epsilon_n in {0,1}} is called the set of subsums or achievement set.",
+      "supports": "Current established terminology distinguishing an achievement set from a particular approximation algorithm.",
+      "does_not_support": "No scaled floor-defect criterion or arithmetic saturation obstruction."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "If 4^d(S_{D_d}-4/9) is the sum of a bounded fractional-mass term, minus a defect Delta_d, minus a target fractional part, then Delta_d=o(4^d) and |D_d|=o(4^d) imply S_{D_d}->4/9.",
+    "local_delta": "The Lean development identifies the executable signed remainder with this exact quotient defect and proves that a first upper-window escape from saturation forces a simultaneous divisor hole across the entire selected support.",
+    "compactness_boundary": "The numerical convergence is already explicit. Closedness of the achievement set is the final standard topological step; no diagonal subsequence or symbolic-dynamics compactness theorem is needed.",
+    "significance_boundary": "The card is a defensible standalone conditional interface, not a standalone deep compactness theorem and not evidence that either all-depth producer is true."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "achievement set finite subsums compact absolutely convergent series",
+      "scaled floor remainder quotient defect convergence criterion",
+      "Mersenne reciprocal subsums achievement set",
+      "dyadic quotient window compactness",
+      "divisor hole selected support saturation crossing"
+    ],
+    "result": "The search located the classical achievement-set framework and modern subsum terminology, but no source for the exact quotient-defect identity, the 4/9 consumer, or the all-support divisor-hole boundary.",
+    "boundary": "Non-location supports a problem-specific packaging classification only; it does not establish novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "An elementary subscale quotient-defect estimate, followed by standard achievement-set closedness, converts the all-depth Four-Ninths window into membership; the arithmetic producers remain open.",
+    "forbidden_wording": [
+      "A new compactness principle proves 4/9 membership.",
+      "Finite verification establishes the quotient window at all depths.",
+      "The divisor-hole reduction rules out every saturated crossing.",
+      "The card proves universal irrationality or solves Erdos Problem 257."
+    ],
+    "nonclaims": [
+      "not_a_new_compactness_theorem",
+      "not_an_all_depth_window_proof",
+      "not_a_divisor_coverage_theorem",
+      "not_a_membership_result",
+      "not_a_solution_of_erdos_257"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/dyadic_quotient_window_compactness.card.json",
+      "effect": "Replace pending language with the scaled-remainder/achievement-set classification when the originating owner releases or lands the card."
+    },
+    {
+      "consumer": "Mathematics Refinery and the active Four-Ninths proof lane",
+      "effect": "Treat compactness as a finished consumer and concentrate proof search on the two all-depth arithmetic producers and the saturated divisor-hole event."
+    }
+  ]
+}

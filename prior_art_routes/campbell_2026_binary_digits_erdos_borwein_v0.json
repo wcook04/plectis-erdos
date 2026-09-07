@@ -1,0 +1,217 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-07-07T19:52:00Z",
+  "status": "adjudicated_external_source_proof_idea_only_no_local_claim",
+  "route_id": "campbell_2026_binary_digits_erdos_borwein",
+  "purpose": "Route Campbell 2026 as proof-idea and bibliography substrate for private Lean work without changing public Repo A promotion state.",
+  "source_annex": {
+    "slug": "arxiv-2605-24160",
+    "display_name": "On the binary digits of the Erdos-Borwein constant",
+    "arxiv_id": "2605.24160",
+    "arxiv_url": "https://arxiv.org/abs/2605.24160",
+    "source_archive": "annexes/arxiv-2605-24160/source.tar.gz",
+    "source_archive_sha256": "a4a7930d73132813bc2b103f592b1ff12afba0cbfc4726a26fedc987166fcf08",
+    "extracted_markdown": "annexes/arxiv-2605-24160/extracted.md",
+    "extracted_markdown_sha256": "5d7b02c8123924bc40bb1ed7df6ccf159f9a3b130b79dcbcc7cbeb929d2f761b",
+    "annex_notes": "annexes/arxiv-2605-24160/annex_notes.json",
+    "annex_notes_sha256": "0e03bb7585cb2b6b495e105428e4ec4b8beaea2470ced392b4bb8a11e324d8e5",
+    "validated_by": "./repo-python annex_import.py validate --slug arxiv-2605-24160"
+  },
+  "public_claim_boundary": {
+    "paper_claim_family": "binary_11_occurs_infinitely_often_in_erdos_borwein_constant",
+    "local_effect": "proof_idea_input_only_until_lean_mapping_and_target_runner_receipts_exist",
+    "proof_authority": "not_accepted",
+    "publication_effect": "none",
+    "non_claims_preserved": [
+      "not_erdos_257_solution",
+      "not_erdos_249_solution",
+      "not_publication_authority",
+      "not_provider_proof_authority"
+    ],
+    "forbidden_until_local_mapping": [
+      "mark_249_or_257_solved",
+      "promote_repo_a_public_snapshot",
+      "rewrite_last_good_public_snapshot",
+      "treat_annex_source_as_lean_theorem_authority"
+    ]
+  },
+  "adjudication": {
+    "review_unit_version": "arXiv 2605.24160 annex snapshot; source archive a4a7930d73132813bc2b103f592b1ff12afba0cbfc4726a26fedc987166fcf08; extracted text 5d7b02c8123924bc40bb1ed7df6ccf159f9a3b130b79dcbcc7cbeb929d2f761b",
+    "evidence_class": "externally sourced ordinary proof in an annexed paper; local fixed-shift transport is authored paper mathematics and the Lean companion remains validation-pending",
+    "closest_known_prior_art": [
+      "Campbell 2026, 'On the binary digits of the Erdős--Borwein constant,' arXiv:2605.24160, Section 3 'A full solution,' theorem at extracted.md line 262: binary block 11 occurs infinitely often",
+      "Alford--Granville--Pomerance 1994, Annals of Mathematics 139, p. 705 input as used in extracted.md lines 75--93: primes in arithmetic progressions outside a bounded exceptional set",
+      "Erdős 1948 and Vandehey 2013, as cited in extracted.md lines 41--62: irrationality/tail framework for the Erdős--Borwein constant"
+    ],
+    "exact_delta": "The external theorem supplies a binary-block construction for the fixed Erdős--Borwein constant using CRT and prime-interval counting. It is not a theorem about the local Mersenne/totient endpoint, and it does not establish the local GreedyShiftWindowZero producer. The fixed-shift transport in the route is a separate authored reduction, pointwise in the rational shift, with no O(M)-window synchronization.",
+    "disconfirmation_search": "The annex itself frames the result as a solution of Crandall's binary-11 question and suggests that arbitrary binary strings remain open; no statement there maps its CRT construction to the #257 half-membership endpoint or #249 prime-support escape. The bounded local mapping search found no target-runner receipt or Lean theorem consuming Campbell's result.",
+    "confidence_ceiling": "Strong external-source confidence for Campbell's binary-11 theorem; only a weak internal/proof-idea case for transfer to the local corpus. No novelty or priority claim for either the external theorem or the local transport.",
+    "significance_rationale": "Useful as a reusable CRT/prime-interval proof pattern and as a warning about the scale cost of fixing a rational shift, but it is not a local endpoint advance. Its main value is to sharpen the re-entry condition for any future Campbell-shaped synchronization attempt.",
+    "bounded_expert_review_act": "Check whether a future local construction can consume only the binary-block conclusion without inheriting the external proof's shift-period modulus; if not, retire the route as proof-idea-only rather than extending the Lean mapping."
+  },
+  "private_lean_targets": {
+    "package_root": "formal_math/erdos257_period_noncollapse",
+    "initial_modules": [
+      "Erdos257PeriodNoncollapse/MersenneLambertLadder.lean",
+      "Erdos257PeriodNoncollapse/LcmDiagonalReduction.lean",
+      "Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+      "Erdos257PeriodNoncollapse/GapFareyBound.lean",
+      "Erdos257PeriodNoncollapse/CarrySurvivorExtinction.lean",
+      "Erdos257PeriodNoncollapse/TotientTailPeriodKiller.lean",
+      "Erdos257PeriodNoncollapse/CertificateKernel.lean"
+    ],
+    "local_docs": [
+      "docs/formal_math/erdos249_mersenne_lambert_ladder_note.md",
+      "docs/formal_math/erdos257_wave17_gap_certificate_note.md"
+    ],
+    "public_export_impact": "none_selected_export_globs_ignore_prior_art_routes"
+  },
+  "annex_section_routes": [
+    {
+      "annex_target": "introduction",
+      "note_id": "n003",
+      "local_task": "map public statement, notation, and bibliography ids before any theorem translation",
+      "candidate_local_files": [
+        "docs/formal_math/erdos249_mersenne_lambert_ladder_note.md",
+        "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json"
+      ]
+    },
+    {
+      "annex_target": "erdoss-irrationality-proof-secerdos",
+      "annex_target_actual": "erdőss-irrationality-proof-secerdos",
+      "note_id": "n004",
+      "local_task": "compare the Erdos CRT/Lambert mechanism with existing Mersenne-Lambert and coprimality modules",
+      "candidate_local_files": [
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/MersenneLambertLadder.lean",
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/LcmDiagonalReduction.lean",
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean"
+      ]
+    },
+    {
+      "annex_target": "a-full-solution",
+      "note_id": "n005",
+      "local_task": "mine only a proof-idea checklist first: statement map, dependency map, lemma candidates, Lean feasibility, and bug checks",
+      "candidate_local_files": [
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GapFareyBound.lean",
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/CarrySurvivorExtinction.lean",
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientTailPeriodKiller.lean"
+      ]
+    },
+    {
+      "annex_target": "conclusion",
+      "note_id": "n006",
+      "local_task": "preserve frontier boundary; do not widen local claims beyond the binary-11 route"
+    }
+  ],
+  "next_private_mapping_pass": {
+    "status": "completed_with_period_freezing_no_go_and_open_shift_window",
+    "recommended_order": [
+      "statement_equivalence_matrix",
+      "dependency_and_citation_map",
+      "lemma_candidate_inventory",
+      "lean_feasibility_spikes",
+      "counterexample_or_gap_audit",
+      "target_runner_receipt_if_any_local_theorem_changes"
+    ],
+    "first_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 Erdos257PeriodNoncollapse/CampbellShiftSynchronization.lean"
+  },
+  "packet_5_assimilation": {
+    "recorded_at": "2026-07-13",
+    "lean_companion": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/CampbellShiftSynchronization.lean",
+    "validation_status": "focused_runner_pending",
+    "validation_receipt": {
+      "status": "validation_capacity_deferred",
+      "exit_code": 75,
+      "ticket_id": "rct_e6a8b077ff94c5b9a05b",
+      "run_id": "cmdrun_20260713T220637Z_10537_a713a13b98f6",
+      "proof_scope": "not_proof_evidence",
+      "reentry_condition": "no active owner holds lean-project-build:formal_math/erdos257_period_noncollapse"
+    },
+    "lean_theorem_targets": [
+      "lastHalfSkip_shift_fatalInterval",
+      "lastHalfSkip_shadow_mem_gap",
+      "lastHalfSkip_shifted_mem_dyadicCylinder",
+      "campbellQuarterExponent_periodFreeze_noSync",
+      "campbellPhaseFreeze_parameters_impossible",
+      "half_mem_mersenneAchievementSet_of_shiftWindowZero"
+    ],
+    "corrected_fixed_shift_theorem": {
+      "status": "paper_proof_audited_not_lean_formalized",
+      "statement": "For every fixed reduced rational shift R=a/D with odd D>1, Campbell's construction has an infinite subsequence forcing prefixes of one fixed non-dyadic rational phase in E-R, with block length at least floor(k/2-log2(32D)).",
+      "primary_inputs": [
+        "annexes/arxiv-2605-24160/extracted.md#Alfordetal",
+        "annexes/arxiv-2605-24160/extracted.md#taillemma",
+        "annexes/arxiv-2605-24160/extracted.md#a-full-solution"
+      ],
+      "boundary": "Derived local transport, not a theorem stated by Campbell and not Lean proof authority. It is pointwise in R and supplies no O(M)-window synchronization."
+    },
+    "period_freezing_no_go": {
+      "status": "lean_source_written_validation_pending",
+      "parameter_collision": "d^4 <= P <= 4*t <= 4*d with d>=2",
+      "closed_mechanism": "adjoin the finite shift period or its unavoidable phase factor to Campbell's prime progression while requiring n<=2M",
+      "period_input_boundary": "The reduced-shift period lower bound M|h_F remains a paper argument; the Lean parameter theorem exposes its resulting scale hypothesis explicitly."
+    },
+    "open_residual": {
+      "id": "greedy_shift_window_zero",
+      "lean_prop": "GreedyShiftWindowZero",
+      "statement": "Under every putative last skip M>=3, force the shifted value outside the all-one depth-2M cylinder without selecting a prime residue modulo the shift period.",
+      "only_campbell_shaped_escape": "phase averaging over uncontrolled finite-shift phases, or a reachable-prefix coefficient argument that avoids an M-scale CRT modulus"
+    },
+    "claim_ceiling": [
+      "not_erdos_257_solution",
+      "not_infinitely_many_skips",
+      "not_half_membership_without_GreedyShiftWindowZero",
+      "fixed_shift_theorem_is_paper_proof_only",
+      "runner_exit_75_is_pending_validation_not_failure"
+    ]
+  },
+  "release_topology_link": {
+    "public_prior_art_policy_owner": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+    "public_prior_art_drift_report_target": "microcosm-substrate/receipts/lean_formal_methods_os/public_prior_art_drift_report_v0.json",
+    "snapshot_steward_target": "microcosm-substrate/receipts/lean_formal_methods_os/snapshot_steward_v0.json"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "campbell_binary_digits_erdos_borwein@arXiv-2605.24160-annex-v1",
+    "evidence_class": "Externally sourced ordinary proof idea in an annexed paper; local fixed-shift transport is authored paper mathematics and the Lean companion remains validation-pending.",
+    "closest_known_result": "Campbell's arXiv:2605.24160 Section 3 proves that binary block 11 occurs infinitely often for the Erdős–Borwein constant using CRT and prime-interval counting, building on the cited arithmetic-progression input.",
+    "comparison_relation": "Strong external source for a fixed binary-block construction, but not a theorem about the Mersenne/totient half-membership endpoint or the local GreedyShiftWindowZero producer.",
+    "exact_delta": "The route contributes a reusable CRT/prime-interval proof pattern and a pointwise fixed-rational-shift transport; it supplies no O(M)-window synchronization and no local endpoint theorem.",
+    "disconfirming_evidence": "Campbell's result is framed as a solution of the binary-11 question, not arbitrary binary strings, and the local mapping has no target-runner receipt or completed Lean proof. Period freezing shows why a direct M-scale transfer is blocked.",
+    "confidence": {
+      "level": "high_for_external_binary-11_statement_medium_for_fixed-shift_paper_transport_low_for_local_transfer",
+      "basis": "The annex archive, extracted source, and cited theorem location are pinned; local Lean validation is explicitly pending and not treated as evidence."
+    },
+    "significance": "High attribution and route-selection value, moderate proof-idea value, and no endpoint significance: it prevents Campbell's binary-11 theorem from being silently recast as a #257/#249 solution while preserving a concrete synchronization template.",
+    "claim_ceiling": "Campbell proves infinitely many occurrences of the binary block 11 for the fixed Erdős–Borwein constant. The local corpus has only a paper-level fixed-shift transport and a validation-pending Lean companion; no #257 or #249 endpoint follows.",
+    "hard_step": "Avoid the M-scale CRT period while producing an O(M)-window synchronization or another reachable-prefix argument for the local shifted tail.",
+    "open_boundary": "No public theorem or Comparator interface should inherit the external binary-block result until an exact local mapping and validation receipt exist.",
+    "bounded_expert_review_act": "Check the source theorem location and test whether any local construction consumes only the binary-block conclusion without importing its shift-period modulus; if not, retain proof-idea-only status.",
+    "reentry_trigger": "Re-enter on a new arXiv version, completed local declaration-family crosswalk, or a target-runner receipt for CampbellShiftSynchronization.",
+    "source_generation_binding": {
+      "external_source_version": "arXiv:2605.24160",
+      "external_source_archive_sha256": "a4a7930d73132813bc2b103f592b1ff12afba0cbfc4726a26fedc987166fcf08",
+      "external_extracted_sha256": "5d7b02c8123924bc40bb1ed7df6ccf159f9a3b130b79dcbcc7cbeb929d2f761b",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "98061b99ced876e1b268306853a8ca7ab0d4a6ff98370d0c80a4f1b85e87cb23",
+      "parity_status": "External source and local companion are pinned; Lean validation remains pending and no public-projection upgrade is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "external_source_version": "arXiv:2605.24160",
+      "external_source_archive_sha256": "a4a7930d73132813bc2b103f592b1ff12afba0cbfc4726a26fedc987166fcf08",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "98061b99ced876e1b268306853a8ca7ab0d4a6ff98370d0c80a4f1b85e87cb23"
+    },
+    "claim_guard": "Only the external binary-11 theorem and explicitly separate local proof idea are covered; no transfer, Lean completion, or Erdős endpoint claim.",
+    "reentry_trigger": "Re-enter on source-version, local mapping, or validation-receipt changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "External proof-idea comparison with high attribution value; the difficult local issue is synchronization, not binary-block existence.",
+    "slow_down_at": "The distinction between a fixed shift and the moving O(M)-window required by #257, and the validation-pending status of the Lean companion.",
+    "automation_can_establish": ["Annex/source hashes and theorem-location parity", "Finite fixed-shift algebra once a target runner exists"],
+    "human_judgment_required": ["Whether any local transfer avoids the period-freezing obstruction", "Whether to retire the route as proof-idea-only"],
+    "review_act": "One bounded expert act: verify the external binary-11 statement and the local synchronization boundary."
+  }
+}

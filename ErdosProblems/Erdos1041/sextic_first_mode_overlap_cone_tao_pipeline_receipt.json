@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_first_second_mode_overlap_cone",
+  "recorded_at": "2026-08-25",
+  "input_stage": "first_mode_dominant_tangent_chart_and_pure_second_mode_phase_circle",
+  "output_stage": "quantitative_four_fifths_overlap_into_second_mode_region",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticFirstModeOverlapCone.md",
+    "ErdosProblems/Erdos1041/SexticFirstModeOverlapCone.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_first_mode_overlap_cone.py"
+  ],
+  "human_understanding_delta": "The sextic baseline lets the adjacent first-mode selector survive when the second mode is up to 5/4 as large. A rational polynomial certificate proves the 4/5 ratio, while computation locates the optimal worst-projection threshold near 0.73681. The residual mixed annulus is now quantitatively separated from the equal-mode boundary.",
+  "verification_state": {
+    "analytic": "complete_overlap_ray_polynomial_sqrt_three_cubic_and_small_chord_proof",
+    "symbolic": "passed_4097_exact_polynomial_rows_69649_exact_ray_rows_and_4160_exact_chord_rows",
+    "lean": "passed_canonical_cached_focused_build_and_final_serialized_authority_check_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "analytic theorem, Lean polynomial certificate, exact checker, canonical research packet update, and reduced mixed-annulus handoff authored and focused validation passed",
+  "unresolved_downstream_bottleneck": "Bridge the compact mixed annulus |E1|/|E2|<4/5, away from the pure second-mode collar, to the canonical null-box atlas; then absorb the nonlinear remainder.",
+  "next_stage_owner": "Refinery: audit the 4/5 polynomial certificate and route the reduced annulus to the finite mixed-atlas owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation under operator direction, extending the adjacent first-mode selector",
+    "computation": "One-variable optimization calibrated the sharp ratio; the rational 4/5 theorem is proved analytically and in Lean.",
+    "formalization": "Lean checks the positive auxiliary cubic, overlap polynomial, normalized and scaled ray bounds, and strict overlap chord.",
+    "claim_boundary": "Closes the homogeneous ratio region |E1|/|E2|>=4/5. It does not prove the deeper mixed annulus, nonlinear transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}

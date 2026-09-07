@@ -1,0 +1,180 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #251: unconditional prime-gap reformulation of the dyadic prime series"
+  description: >-
+    Seven declarations are compared and every one of them is unconditional.
+    Write p_n for the (n+1)st prime in the zero-based enumeration and
+    g_n = p_(n+1) - p_n for the consecutive prime gap. The displayed series of
+    Erdős Problem 251 satisfies the exact identity
+    sum_(n>=0) p_n / 2^n = 4 + 2 * sum_(n>=0) g_n / 2^(n+1), and it is
+    irrational if and only if the prime-gap series sum_(n>=0) g_n / 2^(n+1) is
+    irrational. The normalized series satisfies the corresponding exact
+    identity sum_(n>=0) p_n / 2^(n+1) = 2 + sum_(n>=0) g_n / 2^(n+1) and
+    carries the same irrationality equivalence. The prime series
+    sum_(n>=0) p_n / 2^(n+1) and the prime-gap series sum_(n>=0) g_n / 2^(n+1)
+    are both summable. Convergence rests on the explicit elementary bound
+    p_n <= 1250 * (n+1)^4, which is proved here from a central binomial
+    coefficient estimate for the prime counting function and is compared as a
+    declaration in its own right. The identities come from finite summation by
+    parts over the dyadic weights followed by a passage to the limit that uses
+    the summability proved in the same package, so the two series differ by an
+    explicit rational affine change of variable. Every declaration is a
+    reformulation of the target. No declaration asserts irrationality of the
+    displayed series, of the normalized series, or of the prime-gap series, so
+    Erdős Problem 251 is untouched and the remaining problem is to prove
+    irrationality of the prime-gap series. This theorem family is the first
+    presentation recorded in the development and its novelty is unassessed.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251PrimeGapIdentity/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251PrimeGapIdentity/formalization.yaml"
+  repository_scope: "mirrored_into_palomar_release_plectis_erdos_lean_branch_palomar_toolchain_v4_30"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_comparator_replay_pending"
+  research_interest_status: "research_note_grade_exact_unconditional_reduction"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "focused Lean and axiom checks are pending"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B83", "11N05"]
+
+sources:
+  - title: "Prime-gap dyadic-tail reduction"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development is the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #251"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/251"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+
+fidelity:
+  divergences: >-
+    The challenge reproduces the source definitions literally. Four source
+    theorems carry the hypothesis that the normalized prime series is
+    summable; that hypothesis is discharged inside the solution by the
+    unconditional source proof summable_primeDyadicTerm, so the compared
+    statements are unconditional.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The polynomial prime bound, the two exact identities, the two irrationality
+    equivalences, and the absence of any irrationality conclusion were checked
+    by the author with AI assistance; no independent review is claimed.
+
+status:
+  scope: >-
+    Seven exact source-backed unconditional declarations; one trusted sorry per
+    Challenge theorem.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 7
+  axiom_audit_status: "axiom_print_pending_no_public_ci_run_recorded_for_this_entry"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport with the summability hypothesis discharged unconditionally; axiom print pending"
+      novelty_status: "unassessed"
+      boundary: "Irrationality equivalence for the displayed indexing; neither side is proved irrational."
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport with the summability hypothesis discharged unconditionally; axiom print pending"
+      novelty_status: "unassessed"
+      boundary: "Exact identity between the displayed prime series and the prime-gap series; it proves no irrationality."
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport with the summability hypothesis discharged unconditionally; axiom print pending"
+      novelty_status: "unassessed"
+      boundary: "Irrationality equivalence for the normalized indexing; neither side is proved irrational."
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending"
+      novelty_status: "unassessed"
+      boundary: "Exact identity between the normalized prime series and the prime-gap series; it proves no irrationality."
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_summable"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending"
+      novelty_status: "unassessed"
+      boundary: "Convergence only."
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending"
+      novelty_status: "unassessed"
+      boundary: "Convergence only."
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.prime0_le_polynomial"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending"
+      novelty_status: "unassessed"
+      boundary: "Explicit elementary upper bound for the nth prime; it is loose and it is used only to obtain convergence."
+
+  local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+  local_negative_comparator: "ExternalVerification251PrimeGapIdentity/comparator-negative-mismatch.json"
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification251PrimeGapIdentity"
+  statements:
+    - source: "ErdosProblems.Erdos251.prime0_le_polynomial"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.prime0_le_polynomial"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-transport-axiom-print-pending"
+    - source: "ErdosProblems.Erdos251.summable_primeDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_summable"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-transport-axiom-print-pending"
+    - source: "ErdosProblems.Erdos251.summable_primeGapDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-transport-axiom-print-pending"
+    - source: "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-transport-axiom-print-pending"
+    - source: "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap applied to summable_primeDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-composite-axiom-print-pending"
+    - source: "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap applied to summable_primeDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-composite-axiom-print-pending"
+    - source: "ErdosProblems.Erdos251.irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap applied to summable_primeDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-composite-axiom-print-pending"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

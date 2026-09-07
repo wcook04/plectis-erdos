@@ -1,0 +1,210 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #257: rational-fibre null theorem and supported Mersenne achievement-set geometry"
+  description: >-
+    A supported Mersenne achievement set is the set of reals coded by binary
+    strings whose support lies in a fixed set J of allowed digit positions,
+    where digit position k contributes the Mersenne weight 1 / (2^(k+1) - 1).
+    Two declarations are compared. The first is a measure no-go on rational
+    fibres. If 0 is not in J and the sum of 1 / (2^m - 1) over m in J is a
+    rational number, the achievement set supported on J has Lebesgue measure
+    zero. Positive-measure selection over a rational fibre is excluded by
+    that measure-zero conclusion. An exceptional null point stays unexcluded.
+    In that first declaration the set J indexes exponents in the hypothesis
+    and digit positions in the conclusion. The second declaration classifies
+    the whole family, with no hypothesis on J. The supported digit map is
+    injective, its range is compact, its range is nowhere dense, the range is
+    perfect whenever J is infinite, and the Lebesgue measure of the range
+    satisfies an exact dichotomy: when the omitted digit positions form a
+    finite set F the measure is the reciprocal of 2^|F|, and when infinitely
+    many digit positions are omitted the measure is zero. Both statements are
+    proved for the literal Mathlib-only definitions repeated in the Challenge
+    module. The compared declarations establish no irrationality of any
+    infinite Mersenne subseries, and Erdős Problem 257 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257AchievementSetGeometry/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257AchievementSetGeometry/formalization.yaml"
+  repository_scope: "staged_into_palomar_release_tree_on_branch_palomar_toolchain_v4_30"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "rational_fibre_measure_no_go_plus_support_uniform_achievement_set_geometry"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "prior art for achievement-set geometry is disclosed as classical input and the novelty delta of the rational-fibre null theorem is unassessed"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    Two declarations are compared. The rational-fibre null theorem is the
+    #257-directed statement; the geometry theorem is the support-uniform
+    classification. No local artifact is represented as a Palomar verdict or
+    registry entry.
+
+classification:
+  arxiv: ["math.CA", "math.NT"]
+  msc2020: ["28A80", "11B83"]
+
+sources:
+  - title: "Supported Mersenne achievement-set rigidity"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The source development proves hereditary unique coding, compactness,
+      nowhere density, perfection for infinite support, exact finite-face
+      volumes, the infinite-complement null theorem, and the rational-value
+      null theorem. This presentation is the first recorded here; novelty is
+      unassessed and achievement-set geometry has classical antecedents.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references,
+      and open status. The compared theorems are not attributed to the
+      catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation, and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The Challenge repeats the source definitions in Mathlib-only vocabulary.
+    The rational-fibre null theorem is transported literally, including its
+    zero-free support hypothesis. The geometry theorem combines existing
+    source endpoints into their support-uniform statement, preserving the
+    exact infinite-support hypothesis on perfection and the literal two-branch
+    volume dichotomy. Neither compared statement adds an irrationality claim.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem family, the literal Challenge definitions, and the
+    open-problem boundary were checked by the author with AI assistance. No
+    independent human peer review or Palomar decision is claimed.
+
+status:
+  scope: >-
+    Two compared theorems. The first is the rational-fibre Lebesgue-null
+    theorem. The second packages injectivity, compactness, nowhere density,
+    perfection under the exact infinite-support hypothesis, and the complete
+    finite-complement and infinite-complement Lebesgue-volume dichotomy.
+    Challenge.lean carries one intentional Comparator specification sorry per
+    compared theorem; Solution.lean and its imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    The only deliberate placeholders are the two trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count;
+    Solution.lean transports complete checked source proofs.
+  axiom_audit_status: awaiting_public_ci_axiom_print_for_both_compared_declarations
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value"
+      file: "ExternalVerification257AchievementSetGeometry/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257AchievementSetGeometry/comparator.json"
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      local_proof_provenance: >-
+        Source theorem
+        ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value
+        in ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean.
+      novelty_status: "unassessed"
+      contribution_class: "rational-fibre measure no-go for Boolean support selection"
+      statement: >-
+        If 0 is not in J and the value coded by J is rational, the supported
+        Mersenne achievement set has Lebesgue measure zero.
+      boundary: >-
+        The theorem excludes no individual point and proves no irrationality.
+      comparator_declaration: "Erdos249257.ExternalVerification257AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume"
+      file: "ExternalVerification257AchievementSetGeometry/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257AchievementSetGeometry/comparator.json"
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      local_proof_provenance: >-
+        Source theorems in
+        ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean.
+      novelty_status: "unassessed"
+      contribution_class: "support-uniform achievement-set geometry and exact measure classification"
+      statement: >-
+        Every supported Mersenne digit map is injective with compact
+        nowhere-dense range; infinite allowed support gives a perfect range,
+        and the volume is exactly dyadic for finite omitted support and zero
+        for infinite omitted support.
+      boundary: >-
+        The theorem does not establish irrationality of every infinite
+        Mersenne subseries or solve universal Erdős 257.
+      comparator_declaration: "Erdos249257.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume"
+      literature_dependencies: []
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257AchievementSetGeometry"
+  statements:
+    - source: "ErdosProblems.Erdos257.MersenneSubseriesRigidity"
+      lean: "two same-named exact transports"
+      module: "ExternalVerification257AchievementSetGeometry/Challenge.lean"
+      status: "two-exact-transports-awaiting-public-ci-axiom-print"
+      note: >-
+        The Challenge repeats every underlying definition in Mathlib-only
+        vocabulary and exposes the rational-fibre null theorem together with
+        the support-uniform geometry theorem.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

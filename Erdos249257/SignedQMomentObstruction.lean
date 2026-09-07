@@ -119,7 +119,7 @@ def hankelDet (m : ℕ → ℚ) (n : ℕ) : ℚ :=
 
 /-! ## The infinite Möbius--Mersenne ladder
 
-The first two atoms are `1` and `-3⁻ʳ`.  The remaining atoms have a
+The first two atoms are `1` and `-3⁻ʳ`.  The remaining atoms admit a
 uniform geometric majorant, giving a kernel-checked analytic entrypoint for
 the signed-Hankel packet rather than only its finite determinant algebra.
 -/

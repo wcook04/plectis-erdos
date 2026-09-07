@@ -1,0 +1,76 @@
+version: "v0.4"
+project:
+  name: "Erdős #1041: signed-moment tetranomial selector"
+  description: "Exact signed finite-family energy and two-index safe-spoke selection for centered tetranomials; distinct root values require injective indexing."
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+sources:
+  - title: "Signed-moment tetranomial selector for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean source and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Exact source transport and open-boundary wording were checked with AI assistance; no independent review is claimed."
+palomar_qualification:
+  superseded_by: "ExternalVerification1041TetranomialSpokes"
+  superseded_note: "Merged on 2026-09-01 with its sibling into one configuration carrying all six declarations: same tetranomial, same spoke, same hypothesis shape. Kept privately as source provenance; not selected for release or submission on its own."
+  status: "candidate_pending_public_identity_and_terminal_comparator"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_axiom_audit_passed_terminal_comparator_pending"
+  note: "All three exact source transports replay with the exact Palomar axiom budget. No external verdict or submission is claimed."
+status:
+  scope: "Three exact source-backed declarations; injective root indexing, arbitrary-coefficient moment production, complete root enumeration, cyclic lifting, path assembly, and unrestricted Erdős #1041 remain outside Lean."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "passed_2026_08_31_exactly_propext_Quot_sound_Classical_choice"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041SignedMomentTetranomial.sum_normSq_const_add_mul"
+      file: "ExternalVerification1041SignedMomentTetranomial/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      novelty_status: "unassessed"
+      boundary: "Exact finite-family energy identity; it does not supply a root family or moment bound."
+    - declaration: "Erdos249257.ExternalVerification1041SignedMomentTetranomial.exists_two_tails_norm_lt_one_of_exact_L2_budget"
+      file: "ExternalVerification1041SignedMomentTetranomial/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      novelty_status: "unassessed"
+      boundary: "Selects distinct indices under the exact energy budget; it does not identify distinct values without injectivity."
+    - declaration: "Erdos249257.ExternalVerification1041SignedMomentTetranomial.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+      file: "ExternalVerification1041SignedMomentTetranomial/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      novelty_status: "unassessed"
+      boundary: "Assumes an indexed finite root family and exact moment budget; distinct indices need not be distinct root values without injectivity."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041SignedMomentTetranomial"
+  statements:
+    - source: "ErdosProblems.Erdos1041.TetranomialL2Selector"
+      lean: "sum_normSq_const_add_mul; exists_two_tails_norm_lt_one_of_exact_L2_budget; exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+      module: "ExternalVerification1041SignedMomentTetranomial/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"

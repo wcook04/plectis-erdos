@@ -1,0 +1,3 @@
+import ExternalVerification1041GeometricTail.Solution
+
+#print axioms Erdos249257.ExternalVerification1041GeometricTail.tsum_geometric_tail

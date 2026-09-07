@@ -1,30 +1,7 @@
-# The package name is historical: this library began as two problems and the
-# module namespace `Erdos249257` is imported by every downstream file. Renaming
-# it to match the current eight-problem scope would rewrite the import graph of
-# the whole repository for cosmetic gain, so the name stays and the description
-# carries the current scope instead.
-name = "erdos249257"
-version = "0.9.0"
-description = "Lean 4 formalisation work on eight open Erdős problems: 68, 243, 249, 251, 257, 269, 1041, and 1049. All eight remain open. The library states what is checked and where each result stops."
-homepage = "https://github.com/wcook04/plectis-lean-erdos249-257"
-license = "Apache-2.0"
-licenseFiles = ["LICENSE"]
-readmeFile = "README.md"
-# Keywords are navigation, not claims. They name the mathematical territory the
-# eight problems actually occupy, which the previous list -- two problem numbers
-# from the original scope -- no longer did.
-keywords = [
-  "erdos-problems",
-  "number-theory",
-  "irrationality",
-  "series",
-  "prime-gaps",
-  "totient",
-  "lean4",
-  "mathlib",
-  "formalized-mathematics",
-]
-defaultTargets = ["Erdos249257", "ErdosProblems"]
+name = "erdos257_period_noncollapse"
+version = "0.1.0"
+keywords = ["math", "erdos257", "period-noncollapse"]
+defaultTargets = ["Erdos257PeriodNoncollapse", "ErdosProblems"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -35,65 +12,286 @@ scope = "leanprover-community"
 rev = "v4.29.1"
 
 [[lean_lib]]
-name = "Erdos249257"
+name = "Erdos257PeriodNoncollapse"
 
-# Problem-centric statements, built on the shared machinery in Erdos249257.
 [[lean_lib]]
 name = "ErdosProblems"
-# FactorialZeroPlateau's exact gcd certificates exceed Lean's default
-# interpreter stack on the public Linux runner.  This is a compile-time
-# resource bound only, so keep it weak rather than invalidating proof traces.
-weakLeanArgs = ["--tstack=65536"]
 
-# Downstream consumer example (examples/Examples.lean). Not a default target:
-# CI builds it explicitly with `lake build Examples` after the library.
-[[lean_lib]]
-name = "Examples"
-srcDir = "examples"
-
-# Statement-isolated modules used by the external Comparator packet.  This is
-# intentionally not a default target: Challenge contains the trusted statement
-# holes, while CI asks Comparator to check Solution against them explicitly.
-[[lean_lib]]
-name = "ExternalVerification"
-
-# A programme-local packet for one exact #1049 numerical certificate. It is
-# separate from the nineteen-interface headline packet so adding a focused
-# reviewer handle does not silently change the reviewed headline count.
 [[lean_lib]]
 name = "ExternalVerification1049"
 
-# Statement forms belonging to other formal corpora, restated verbatim here and
-# derived from this library, so that an external `formal_proof` link resolves to
-# the exact proposition that corpus carries rather than a nearby one.  Not a
-# default target and not part of the mathematical corpus: these modules add no
-# mathematics, so counting their declarations among this library's own would
-# overstate it.  CI builds this explicitly after Erdos249257.
 [[lean_lib]]
-name = "FormalConjecturesAdapter"
-srcDir = "adapters"
-# `FormalConjecturesVariants` is the other direction: statements upstream does
-# not carry at all, offered as new `variants.*` declarations rather than as
-# proofs of existing holes. Same reason it is not a default target and not
-# counted as this library's own mathematics.
-globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants"]
+name = "ExternalVerification1049AdelicHeightBridge"
 
-# Ground-truth fixtures for semantic residual evaluation.  Eight labelled proof
-# sketches over two elementary targets, including deliberate target-restatement
-# and false-residual specimens, used by `scripts/residual_evaluator.py` to check
-# that the evaluator vetoes what it should and abstains where it must.  Not a
-# default target and not part of the mathematical corpus: these are test
-# specimens, so counting their declarations among this library's own would
-# overstate it.  CI builds this explicitly.
 [[lean_lib]]
-name = "ResidualBench"
-srcDir = "residualbench"
+name = "ExternalVerification1049PrimeSupportSelectors"
 
-# Three solved polynomial families beneath the open Erdos #1041 problem: the
-# sharp collinear Chebyshev comparison kernel, the primitive quintic two-tail
-# energy selector, and the translated cubic quotient-fibre spoke.  The checked
-# kernels support, but are strictly weaker than, the ordinary analytic
-# theorems the paper assembles from them.  Not a default target.
+[[lean_lib]]
+name = "ExternalVerification1049HermitePadeNoGo"
+
+[[lean_lib]]
+name = "ExternalVerification1049RationalBaseBarrier"
+
+[[lean_lib]]
+name = "ExternalVerification1049BezoutPluckerJets"
+
+[[lean_lib]]
+name = "ExternalVerification257FourNinthsTetraprime"
+
+[[lean_lib]]
+name = "ExternalVerification257ReciprocalSupport"
+
+[[lean_lib]]
+name = "ExternalVerification257FinitePeriodNoncollapse"
+
+[[lean_lib]]
+name = "ExternalVerification257AchievementSetGeometry"
+
+[[lean_lib]]
+name = "ExternalVerification257BooleanMobiusCarry"
+
+[[lean_lib]]
+name = "ExternalVerification257PositiveSkipEquivalence"
+
+[[lean_lib]]
+name = "ExternalVerification257RationalTailRigidity"
+
+[[lean_lib]]
+name = "ExternalVerification257ScaledGreedyTrap"
+
+[[lean_lib]]
+name = "ExternalVerification257TwentyOneFatalBranch"
+
+[[lean_lib]]
+name = "ExternalVerification257TerminalScaledVanishing"
+
+[[lean_lib]]
+name = "ExternalVerification257ActualUpperSuccessor"
+
+[[lean_lib]]
+name = "ExternalVerification68PrimePole"
+
+[[lean_lib]]
+name = "ExternalVerification68StrictSuccessorCarry"
+
+[[lean_lib]]
+name = "ExternalVerification68PrimeUnitTranslator"
+
+[[lean_lib]]
+name = "ExternalVerification68AdjacentUnitCarryWindow"
+
+[[lean_lib]]
+name = "ExternalVerification68ChannelRadius"
+
+[[lean_lib]]
+name = "ExternalVerification251PolynomialShiftCountermodel"
+
+[[lean_lib]]
+name = "ExternalVerification251LcmDiagonalCriterion"
+
+[[lean_lib]]
+name = "ExternalVerification251PrimeGapIdentity"
+
+[[lean_lib]]
+name = "ExternalVerification251AffineCircularity"
+
+[[lean_lib]]
+name = "ExternalVerification251ActualPrimeGapTail"
+
+[[lean_lib]]
+name = "ExternalVerification243BoundedNegativePartRigidity"
+
+[[lean_lib]]
+name = "ExternalVerification243SummableNegativeMassRigidity"
+
+[[lean_lib]]
+name = "ExternalVerification243RepairEntropy"
+
+[[lean_lib]]
+name = "ExternalVerification243RecordIncrementBarrier"
+
+[[lean_lib]]
+name = "ExternalVerification243SaturatedSquareTransport"
+
+[[lean_lib]]
+name = "ExternalVerification243SlowRiseBarrier"
+
+[[lean_lib]]
+name = "ExternalVerification243TwoModulusRecordCut"
+
+[[lean_lib]]
+name = "ExternalVerification243ProtectedEpochEnergy"
+
+[[lean_lib]]
+name = "ExternalVerification249DyadicTotientKernel"
+
+[[lean_lib]]
+name = "ExternalVerification249TotientKernelBasis"
+
+[[lean_lib]]
+name = "ExternalVerification249RankOneSharpFloor"
+
+[[lean_lib]]
+name = "ExternalVerification249CanonicalMersenneFrontier"
+
+[[lean_lib]]
+name = "ExternalVerification249FullDepthRayAmplifier"
+
+[[lean_lib]]
+name = "ExternalVerification249ActualLcmOrbit"
+
+[[lean_lib]]
+name = "ExternalVerification249BinaryCyclotomicAnchors"
+
+[[lean_lib]]
+name = "ExternalVerification249CarryRankFrontier"
+
+[[lean_lib]]
+name = "ExternalVerification269ThreePrimeStructure"
+
+[[lean_lib]]
+name = "ExternalVerification269CarryMechanism"
+
+[[lean_lib]]
+name = "ExternalVerification269AllScaleLattice"
+
+[[lean_lib]]
+name = "ExternalVerification269ActualShellOrbit"
+
+[[lean_lib]]
+name = "ExternalVerification269IntegralBranchPinning"
+
+
+[[lean_lib]]
+name = "ExternalVerification1041RootRetention"
+
+[[lean_lib]]
+name = "ExternalVerification1041TranslationAvoidance"
+
+[[lean_lib]]
+name = "ExternalVerification1041NewtonDecay"
+
+[[lean_lib]]
+name = "ExternalVerification1041LevelSeparation"
+
+[[lean_lib]]
+name = "ExternalVerification1041Noncritical"
+
+[[lean_lib]]
+name = "ExternalVerification1041ReciprocalHalfPlane"
+
+[[lean_lib]]
+name = "ExternalVerification1041FiniteAvoidance"
+
+[[lean_lib]]
+name = "ExternalVerification1041ReciprocalRigidity"
+
+
+
+[[lean_lib]]
+name = "ExternalVerification1041NewtonDerivative"
+
+[[lean_lib]]
+name = "ExternalVerification1041NewtonSolve"
+
+[[lean_lib]]
+name = "ExternalVerification1041GeometricTail"
+
+[[lean_lib]]
+name = "ExternalVerification1041StapleLength"
+
+[[lean_lib]]
+name = "ExternalVerification1041NormRecipPowerSum"
+
+[[lean_lib]]
+name = "ExternalVerification1041QuadraticContact"
+
+[[lean_lib]]
+name = "ExternalVerification1041StapleEquality"
+
+[[lean_lib]]
+name = "ExternalVerification1041OrliczNoUniformLinear"
+
+[[lean_lib]]
+name = "ExternalVerification1041SecondAgeBound"
+
+[[lean_lib]]
+name = "ExternalVerification1041WeightedChainConsumer"
+
+[[lean_lib]]
+name = "ExternalVerification1041LifetimeOrliczBound"
+
+[[lean_lib]]
+name = "ExternalVerification1041ContactSurvives"
+
+[[lean_lib]]
+name = "ExternalVerification1041CriticalGeometry"
+
+[[lean_lib]]
+name = "ExternalVerification1041CyclicTrinomialFiber"
+
+[[lean_lib]]
+name = "ExternalVerification1041AllDegreeTrinomial"
+
+[[lean_lib]]
+name = "ExternalVerification1041QuarticQuotientFiber"
+
+[[lean_lib]]
+name = "ExternalVerification1041CyclicTetranomialCoefficient"
+
+[[lean_lib]]
+name = "ExternalVerification1041SignedMomentTetranomial"
+
+[[lean_lib]]
+name = "ExternalVerification1041TetranomialSpokes"
+
 [[lean_lib]]
 name = "ExternalVerification1041SolvedFamilies"
-globs = ["ExternalVerification1041SolvedFamilies.*"]
+
+[[lean_lib]]
+name = "ExternalVerification68MovingFactorScaleSplit"
+
+[[lean_lib]]
+name = "ExternalVerification243PeriodicNegativeOrbit"
+
+[[lean_lib]]
+name = "ExternalVerification1041FirstMergeCriticalValueSeparation"
+
+[[lean_lib]]
+name = "ExternalVerification68CompanionOrbitBoundary"
+
+[[lean_lib]]
+name = "ExternalVerification243OriginalCoordinateBoundedDefect"
+
+[[lean_lib]]
+name = "ExternalVerification243GcdStabilisation"
+
+[[lean_lib]]
+name = "ExternalVerification251FiniteTruncationEscape"
+
+[[lean_lib]]
+name = "ExternalVerification251ExplicitRemainder"
+
+[[lean_lib]]
+name = "ExternalVerification269FiniteCutRank"
+
+[[lean_lib]]
+name = "ExternalVerification269ModularMinors"
+
+[[lean_lib]]
+name = "ExternalVerification68GapGcd"
+
+[[lean_lib]]
+name = "ExternalVerification249PeriodicFreezingAndPulse"
+
+[[lean_lib]]
+name = "ExternalVerification249GenericCertificateSoundness"
+
+[[lean_lib]]
+name = "ExternalVerification1041SeparationOrCounterexample"
+
+[[lean_lib]]
+name = "ExternalVerification1049OmegaIndicator"
+
+[[lean_lib]]
+name = "ExternalVerification1049UnimodularPlucker"

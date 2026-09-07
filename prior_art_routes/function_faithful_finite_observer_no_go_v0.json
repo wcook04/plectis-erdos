@@ -1,0 +1,322 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "function_faithful_finite_observer_no_go",
+  "source_result_ids": [
+    "full_kernel_finite_observer_no_go"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_first_isomorphism_and_rank_factorization_obstruction_with_useful_symbolic_realization_interface",
+  "problem_id": "erdos_269",
+  "purpose": "Replace potentially misleading observer terminology with the exact quotient-factorization statement, while mapping the specialized symbolic use to minimal-realization and weighted-automata antecedents.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/function_faithful_finite_observer_no_go.card.json",
+    "refinery_handoff_commit": "c7b2c30b4760f320f53d6310802e90d9541b6ad4",
+    "source_commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/WeightedPhaseCarry.lean"
+  },
+  "source_generation": {
+    "status": "formal_layers_current; reviewer-card packet hash is stale and must not be called full parity-current",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+      "commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+      "sha256": "dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3"
+    },
+    "application_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/KernelCarryRank.lean",
+      "commit": "d16f7b7b876fa2e61db555c67871abaf99713d51",
+      "sha256": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "commit": "90e3383a1bde0410b98be1b6d6706a20b2e892a3",
+      "sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/function_faithful_finite_observer_no_go.card.json",
+      "commit": "1ec46202edf66a46f9d4979a6675279388461adf",
+      "sha256": "acaa55c61875d0a928be6aff494c84f3dd23819d750691e7f496564fa199678e"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "parity_audit": {
+    "status": "formal_layers_packet_and_card_hashes_current; bridge_not_end_to_end_formalized",
+    "effect": "WeightedPhaseCarry, KernelCarryRank, the corrected #269 packet, and the reviewer card hash to the pinned source generations. The two Lean layers remain separately checked; the ordinary semantic correspondence is intentionally not upgraded to a composed Lean theorem.",
+    "reentry_condition": "Re-enter if either Lean layer, the packet/card generation, or the ordinary whole-function-faithfulness correspondence changes; a reachable-subspace theorem is a new result family, not an implicit extension."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "full_kernel_finite_observer_no_go@formal-29099573-application-d16f7b7b-packet-90e3383a-card-1ec46202",
+    "source_generation_binding": {
+      "formal_source_commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+      "formal_source_sha256": "dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3",
+      "application_source_commit": "d16f7b7b876fa2e61db555c67871abaf99713d51",
+      "application_source_sha256": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+      "reviewer_card_commit": "1ec46202edf66a46f9d4979a6675279388461adf",
+      "reviewer_card_sha256": "acaa55c61875d0a928be6aff494c84f3dd23819d750691e7f496564fa199678e"
+    },
+    "evidence_class": "two_separately_Lean_checked_layers_with_ordinary_semantic_correspondence",
+    "prior_art": "The abstract kernel-factorization step is the first isomorphism theorem and rank monotonicity. Kalman, Schützenberger, and Carlyle–Paz provide nearby realization/finite-rank frameworks only when their dynamics or shift hypotheses are present; they are not direct antecedents for the bare map.",
+    "closest_known_result": "Classical observable-quotient/minimal-realization and finite Hankel-rank characterizations; no identified source states the literal #269 full-kernel minor interface.",
+    "comparison_relation": "The abstract quotient/range argument is the first isomorphism theorem and rank monotonicity. Kalman, Schützenberger, and Carlyle-Paz are valid analogies only when genuine input/output dynamics, word-function shifts, or Hankel structure are present; they are not direct antecedents for the literal #269 kernel claim.",
+    "exact_delta": "The local asset binds two separately Lean-checked layers: finite-factorization through a faithful complete-function observer, and the arbitrary-minor obstruction for the literal three-prime kernel. The ordinary correspondence between layers remains explicit and unformalized.",
+    "novelty_confidence": {
+      "state": "source_bound_standard_obstruction_with_source_specific_symbolic_interface",
+      "ceiling": "No novelty, priority, acceptance, or #269 endpoint claim; the bridge between formal layers remains ordinary semantic correspondence."
+    },
+    "significance_assessment": {
+      "grade": "high_route_killing_boundary",
+      "why_care": "Once infinite rank of the literal full realization is independently certified, every lossless finite-dimensional factorization of that complete function is excluded, sharply separating genuine compression from scalar summaries or reachable-subspace restrictions.",
+      "mechanism_family": "full symbolic-kernel complexity and finite-representation no-go boundaries",
+      "expert_attention_reason": "The expert decision is semantic, not algebraic: test whether a proposed observer preserves complete functions or only selected evaluations, and whether its reachable range is actually finite-rank."
+    },
+    "open_boundary": "Finite scalar summaries, finite-rank reachable restrictions, nonlinear observers, and the arithmetic irrationality route remain open; no composed observer-to-kernel theorem or #269 endpoint follows.",
+    "exact_claim_ceiling": "A lossless finite-dimensional factorization of the complete realization forces finite realized rank. Separately, the literal three-prime kernel has no finite separable representation at the pinned minor layer. The current source does not compose these into one Lean theorem and does not exclude scalar summaries, finite-rank reachable restrictions, nonlinear observers, or irrationality arguments.",
+    "hard_step_and_natural_friction": "The quotient proof and minor calculation are elementary once their hypotheses are supplied. The load-bearing unresolved step is establishing whether the proposed dynamics reaches a genuinely finite-rank subspace; do not erase that distinction by calling every finite observer impossible.",
+    "disconfirming_evidence_preserved": [
+      "Selected scalar evaluations are not whole-function faithfulness.",
+      "A finite-rank reachable restriction may evade the literal full-kernel obstruction.",
+      "Nonlinear observers and the arithmetic irrationality route are outside the theorem's scope.",
+      "The two Lean layers have no end-to-end composition theorem in the current source."
+    ],
+    "review_scope": {
+      "primary_sources_used": [
+        "Kalman (1963), irreducible input/output realizations",
+        "Schützenberger (1961), finite-dimensional linear representations of formal word functions",
+        "Carlyle-Paz (1971), finite-rank characterization for sequential word functions",
+        "Pinned WeightedPhaseCarry.lean and KernelCarryRank.lean"
+      ],
+      "search_scope": "bounded control/automata/linear-realization comparison and exact local-source inspection; no claim of exhaustive realization-theory review",
+      "closest_relation": "standard quotient/factorization rank obstruction with a source-specific full-function kernel interface",
+      "uncertainty": "high for the two formal layers and source parity; medium for the ordinary bridge and cross-field analogy; low for the explicit nonclaims"
+    },
+    "paper_disposition": {
+      "class": "route_killing_failure_boundary",
+      "target_section": "Why lossless finite-state compression fails for the full symbolic kernel",
+      "relation": "Keep quotient factorization, arbitrary-minor certificate, and reachable/nonfaithful escape hatches as one boundary object; do not split observer, automata, and minor narratives.",
+      "reason": "It retires a specific lossless-compression architecture while preserving meaningful finite-model routes."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "two exact Lean proposition layers, ordinary bridge explicitly labelled, complete-function faithfulness and literal full-kernel scope, no all-observer/general dynamics, no scalar-summary exclusion, no irrationality",
+      "release_owner": "Role 3; expose the two layers as one mechanism family without claiming a composed Lean theorem"
+    },
+    "bounded_expert_act": "Check one proposed observer against the whole-function-faithfulness quantifier and decide whether its reachable range is independently finite-rank or merely a finite scalar summary.",
+    "reentry_trigger": "Re-enter if a genuine realization-correspondence theorem, a reachable-rank result, or a source-backed change to either formal layer lands."
+  },
+  "parity_audit": {
+    "current_research_packet_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+    "reviewer_card_embedded_research_packet_sha256": "38897613c741bda9abd4602c73f4ee9b18ba24f424b9c38365e20c9bae331a3f",
+    "status": "card_packet_hash_drift",
+    "effect": "The route binds the current packet and both formal source blobs, but the card's internal source_parity still records an older packet snapshot; the card owner must refresh that field before claiming card-level packet parity.",
+    "reentry_condition": "Re-enter after the reviewer card source_parity is regenerated against packet commit 90e3383a1bde0410b98be1b6d6706a20b2e892a3 or the packet identity changes."
+  },
+  "classification": {
+    "abstract_theorem_class": "first_isomorphism_theorem_and_rank_monotonicity_under_linear_factorization",
+    "control_analogue_class": "observability_quotient_and_minimal_realization_boundary",
+    "automata_analogue_class": "finite_rank_characterization_of_finite_dimensional_linear_or_weighted_automaton_realizations",
+    "local_interface_class": "useful_full_function_preservation_no_go_no_priority_claim",
+    "priority_claim": "none",
+    "recommended_terminology": "finite-dimensional factorization obstruction",
+    "acceptable_local_alias": "function-faithful observer, explicitly marked descriptive",
+    "discouraged_terminology": "finite observer theorem without dynamics, observability map, or reconstruction semantics",
+    "nearest_prior_work": [
+      "Kalman (1963) develops irreducible input/output realizations from controllability and observability and determines the minimal state dimension.",
+      "Schützenberger (1961) develops finite-dimensional linear representations for formal word functions and a minimal representation theory.",
+      "Carlyle and Paz (1971) characterize real-valued word functions admitting finite-state sequential realizations by a finite-rank condition."
+    ],
+    "attribution": "Attribute the abstract proof to the first isomorphism theorem. Invoke Kalman only when genuine input/output dynamics and observability are present, and Schützenberger--Carlyle--Paz only when the realization is a word function with the needed shift/Hankel structure. Credit the local asset for the precise full-function kernel interface and its #269 infinite-minor consumer.",
+    "mathematical_interest": "The proof is elementary; the value is semantic. It prevents a finite statistic preserving one output from being confused with a lossless finite realization of the entire symbolic function.",
+    "reusable_scope": "Any linear compression C:S->E proposed as a lossless representation of a linear realization R:S->F, especially finite-state reductions of kernels, generating functions, and symbolic trajectories.",
+    "why_it_matters": "Once infinite realized rank is independently certified, the theorem retires every finite-dimensional lossless compression at once and forces a proposed finite model to expose either lost information or a genuine finite-rank restriction."
+  },
+  "primary_sources": [
+    {
+      "id": "kalman_1963_mathematical_description",
+      "title": "Mathematical Description of Linear Dynamical Systems",
+      "author": "R. E. Kalman",
+      "venue": "Journal of the Society for Industrial and Applied Mathematics, Series A: Control 1 (1963), 152-192",
+      "doi": "10.1137/0301010",
+      "url": "https://epubs.siam.org/doi/10.1137/0301010",
+      "exact_anchor": "Abstract and the irreducible-realization development: input/output relations determine the completely observable and controllable part, and the minimal number of state variables is computed.",
+      "supports": "Established control-theoretic framing for observable quotients and minimal finite-dimensional realizations.",
+      "does_not_support": "The card's bare map C has no dynamics or reconstruction law, so it is not by itself a Kalman observer."
+    },
+    {
+      "id": "schutzenberger_1961_family_automata",
+      "title": "On the Definition of a Family of Automata",
+      "author": "Marcel-Paul Schützenberger",
+      "venue": "Information and Control 4 (1961), 245-270",
+      "doi": "10.1016/S0019-9958(61)80020-X",
+      "url": "https://www-igm.univ-mlv.fr/~berstel/SiteSchutzenberger/Travaux/A/1961-4DefinitionFamilyAutInfCtl.pdf",
+      "exact_anchor": "Part III.B, reduction to standard form: minimal finite-dimensional matrix representations of formal word functions.",
+      "supports": "Classical finite-dimensional linear-representation framework for complete symbolic functions.",
+      "does_not_support": "No theorem for an arbitrary pair of linear maps absent word-action compatibility."
+    },
+    {
+      "id": "carlyle_paz_1971_stochastic_finite_automata",
+      "title": "Realizations by Stochastic Finite Automata",
+      "authors": ["Jack W. Carlyle", "Azaria Paz"],
+      "venue": "Journal of Computer and System Sciences 5 (1971), 26-40",
+      "doi": "10.1016/S0022-0000(71)80005-3",
+      "url": "https://doi.org/10.1016/S0022-0000(71)80005-3",
+      "exact_anchor": "Main characterization summarized in the abstract: finite rank is equivalent to realizability by a finite-state sequential system with real weights.",
+      "supports": "The established automata-theoretic finite-rank boundary nearest to the #269 full symbolic-range application.",
+      "does_not_support": "No identification of the local #269 kernel, minors, or reachable subspace."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "Kernel inclusion ker C subset ker R makes R constant on fibers of C, hence R factors uniquely through range(C); therefore rank(R) <= rank(C).",
+    "local_delta": "The formal interface states the abstract obstruction at division-ring generality. A separate Lean theorem excludes finite separable representations of the literal three-prime kernel using arbitrary-order nonsingular minors. The source snapshot does not package the identification between these two interfaces as one Lean theorem.",
+    "observer_boundary": "In control theory, observability concerns recovery of states from an output trajectory generated by system dynamics. The card's C is only a static linear compression unless extra dynamics are supplied.",
+    "automata_boundary": "Finite Hankel rank and recognizable-series theorems require word shifts or a monoid representation. The bare abstract theorem is more general but correspondingly more elementary.",
+    "significance_boundary": "The result is a reusable semantic guard and no-go interface, not a new realization theorem."
+  },
+  "review_unit": {
+    "result_family": "erdos269_full_kernel_finite_observer_no_go",
+    "exact_result_id": "full_kernel_finite_observer_no_go",
+    "source_generation": {
+      "formal_layers": [
+        "ErdosProblems.Erdos269.finite_realisedSpan_of_functionFaithfulObserver",
+        "ErdosProblems.Erdos269.not_finite_separable_threePrimeKernel"
+      ],
+      "source_commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+      "application_commit": "d16f7b7b876fa2e61db555c67871abaf99713d51",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892a3",
+      "reviewer_card_commit": "1ec46202edf66a46f9d4979a6675279388461adf"
+    },
+    "evidence_class": "two separately Lean-checked layers plus ordinary semantic correspondence; no end-to-end composition theorem",
+    "confidence_ceiling": "High for the abstract factorization layer and the literal-kernel minor layer at the pinned source commits; medium for the ordinary bridge and prior-art analogy; no priority, acceptance, or #269 endpoint claim.",
+    "hard_step": "Establish whether the proposed dynamics reaches a genuinely finite-rank subspace; the quotient proof itself is elementary.",
+    "expert_review_act": "Check one proposed observer against the whole-function-faithfulness quantifier and decide whether its reachable range is independently finite-rank or merely a finite scalar summary."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "kernel inclusion linear maps factor through image rank inequality",
+      "Kalman observable quotient minimal realization",
+      "finite Hankel rank finite dimensional linear representation formal series",
+      "Carlyle Paz stochastic finite automata finite rank",
+      "function faithful observer terminology"
+    ],
+    "result": "The search found standard quotient factorization, minimal observable realizations, and finite-rank weighted-automata characterizations, but no established use of `function-faithful observer' for the bare kernel-inclusion map.",
+    "boundary": "This supports replacing the public name, not a priority claim for the elementary theorem."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A lossless finite-dimensional factorization of the complete realization would force finite realized rank. Separately, the literal three-prime kernel has no finite separable representation. Identifying a proposed observer with such a representation is a transparent mathematical bridge, not a named formal application theorem in the current source.",
+    "forbidden_wording": [
+      "We discovered observability or minimal realization theory.",
+      "Every finite observer in the control-theoretic sense is impossible.",
+      "One scalar readout preserving selected values preserves the full function.",
+      "The theorem proves the #269 kernel has infinite rank or solves Erdös Problem 269."
+    ],
+    "nonclaims": [
+      "not_a_new_first_isomorphism_theorem",
+      "not_a_Kalman_observer_theorem_without_dynamics",
+      "not_a_Hankel_rank_theorem_without_shift_structure",
+      "not_an_infinite_rank_proof",
+      "not_a_single_Lean_theorem_composing_the_observer_and_kernel_layers",
+      "not_a_solution_of_erdos_269"
+    ]
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "full symbolic-kernel complexity and finite-representation no-go boundaries for the three-prime programme",
+    "disposition": "admit as a genuinely irreducible route-killing mechanism alongside the torus/Fourier and collision families",
+    "consolidation_relation": "Keep quotient factorization, literal-kernel arbitrary minors, the two-coordinate falsifier, and reachable-subspace escape hatch in one object. The two formal layers remain distinct statements joined by an ordinary correspondence.",
+    "comparator_advisory": "Expose the two exact Lean proposition layers in one mechanism family and label their bridge as ordinary mathematics; preserve literal-full-kernel and whole-function-faithfulness scope.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why lossless finite-state compression fails for the full symbolic kernel",
+      "supersession_or_consolidation": "Use one boundary section and retire fragmented observer, automata, and minor narratives.",
+      "reason": "The object rules out one lossless finite-dimensional architecture exactly while retaining the reachable-restriction and nonfaithful escape routes."
+    }
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_and_comparator_candidate",
+    "reason": "The two formal layers are independently restatable and source-pinned; the route now exposes their current generation and keeps the ordinary bridge explicit rather than silently upgrading it to Lean correspondence.",
+    "comparator_advisory": "Expose two exact proposition layers in one mechanism family. State whole-function faithfulness, literal full-kernel scope, and the missing composed bridge in the firewall; do not generalize to all finite observers, scalar summaries, reachable restrictions, nonlinear models, or irrationality.",
+    "paper_disposition": "route-killing failure/boundary under Why lossless finite-state compression fails for the full symbolic kernel"
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_269.md",
+    "section": "Why lossless finite-state compression fails for the full symbolic kernel",
+    "canonical_mechanism_family": "full symbolic-kernel complexity and finite-representation no-go boundaries for the three-prime programme",
+    "relation": "One irreducible compression no-go with two formal layers and an explicitly ordinary interface bridge; distinct from torus/Fourier and collision mechanisms.",
+    "understanding_delta": "Finite observation is impossible only when it losslessly preserves the complete full-kernel realization; finite scalar summaries and reachable restrictions are not silently excluded.",
+    "evidence_boundary": "Lean checks each layer separately, not their composition; no reachability theorem or irrationality result follows.",
+    "hard_step": "Determine the rank and structure of the actual reachable symbolic subspace.",
+    "meaningful_failed_route": "Replace whole-function faithfulness by agreement at selected scalar evaluations.",
+    "open_remainder": "Reachable finite-rank collapse, nonfaithful or nonlinear models, and #269 irrationality remain open."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/function_faithful_finite_observer_no_go.card.json",
+      "effect": "Replace pending terminology with finite-dimensional factorization, scoped Kalman/automata analogues, and exact nonclaims."
+    },
+    {
+      "consumer": "Mathematics Refinery and Comparator semantic-boundary review",
+      "effect": "Require every finite-state reduction claim to state whether it preserves the full realization, only a scalar output, or a separately proved finite-rank reachable restriction."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Two Lean layers are exact; the load-bearing work is the ordinary semantic bridge and the quantifier separating complete-function faithfulness from finite scalar or reachable summaries.",
+    "slow_down_at": "Check the arbitrary-minor premise in KernelCarryRank.lean, then test a proposed observer against the exact whole-function equality quantifier before invoking Kalman, Schützenberger, or Hankel terminology.",
+    "automation_can_establish": [
+      "The pinned quotient/range declarations and arbitrary-minor certificate",
+      "The source hashes and the explicit nonclaims",
+      "That scalar-evaluation and nonlinear escape hatches are not covered by the literal theorem"
+    ],
+    "human_judgment_required": [
+      "Whether the two Lean layers compose for the declared three-prime full kernel",
+      "Whether a proposed model has genuinely finite-rank reachable dynamics",
+      "Whether the control/automata analogies are explanatory rather than claimed antecedents"
+    ],
+    "review_act": "Audit one candidate observer end to end: whole-function faithfulness, reachable rank, and the exact minor premise. Do not spend review time on scalar summaries that the theorem explicitly leaves open."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_full_kernel_to_reachable_subspace_bridge",
+    "priority_order": [
+      "keep the quotient-factorization and arbitrary-minor Lean layers visibly separate while checking the ordinary correspondence between them",
+      "compare any proposed finite observer against the exact full-function, scalar-evaluation, reachable-subspace, and nonlinear escape hatches",
+      "re-enter only if a source supplies a genuine dynamical/Hankel realization theorem or if the reachable rank is independently resolved"
+    ],
+    "lane": "re-enter on a source-backed realization correspondence or a new rank statement; do not broaden the claim from full-function faithfulness"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "full_symbolic_kernel_observer_prior_art_and_semantic_boundary_review",
+    "output_stage": "human_understanding_and_route_killing_boundary",
+    "artifact": "#269 finite-dimensional factorization obstruction for complete symbolic realizations",
+    "human_understanding_delta": "The object is now presented as a standard quotient/rank obstruction with scoped Kalman and weighted-automata analogues; its useful contribution is the exact semantic boundary between lossless whole-function compression and finite scalar or reachable summaries.",
+    "verification_state": "Lean source identity and the two formal layers are pinned; the ordinary bridge from quotient factorization to the literal three-prime kernel is not one composed Lean theorem.",
+    "publication_or_review_state": "Private significance support and route-killing boundary; no priority, observability-theory discovery, infinite-rank theorem, or #269 endpoint claim.",
+    "canonicalization_state": "Keep one irreducible full-kernel compression family, consolidating observer, automata, quotient, and minor narratives; do not mint a separate observer theorem.",
+    "unresolved_downstream_bottleneck": "Determine whether the reachable symbolic subspace has a finite-rank collapse and whether a proposed model preserves the complete function or only selected evaluations.",
+    "next_stage_owner": "Novelty Observatory for realization-theory comparison; Mathematics Refinery for the two-layer consolidation; Comparator/Public owners for any later exact proposition firewall."
+  },
+  "adjudication_currentness": {
+    "status": "formal_layers_current_but_packet_card_parity_stale",
+    "bound_snapshot": {
+      "formal_source_commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+      "formal_source_sha256": "dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3",
+      "application_source_commit": "d16f7b7b876fa2e61db555c67871abaf99713d51",
+      "application_source_sha256": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892a3",
+      "research_packet_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+      "reviewer_card_commit": "1ec46202edf66a46f9d4979a6675279388461adf",
+      "reviewer_card_sha256": "acaa55c61875d0a928be6aff494c84f3dd23819d750691e7f496564fa199678e",
+      "source_result_ids": [
+        "full_kernel_finite_observer_no_go"
+      ]
+    },
+    "consumed_snapshot": {
+      "formal_source_commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+      "application_source_commit": "d16f7b7b876fa2e61db555c67871abaf99713d51",
+      "reviewer_card_commit": "1ec46202edf66a46f9d4979a6675279388461adf"
+    },
+    "stale_boundary": {
+      "research_packet_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+      "reason": "the reviewer-card packet hash is not parity-current; no packet-level claim is admitted"
+    },
+    "claim_guard": "The two formal layers remain individually source-bound, but the ordinary bridge is not a composed Lean theorem and the stale packet cannot support a stronger release or novelty statement.",
+    "reentry_trigger": "A committed packet/card parity repair, a formal composition theorem, or an independently proved reachable-rank statement."
+  }
+}

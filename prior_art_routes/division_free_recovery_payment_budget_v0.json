@@ -1,0 +1,54 @@
+{
+  "schema":"formal_math_prior_art_route_v0",
+  "route_id":"division_free_recovery_payment_budget_v0",
+  "status":"adjudicated_routine_finite_product_iteration_subordinate_upper_budget",
+  "problem_id":"erdos_243",
+  "review_unit":{"result_family":"primitive_content_recovery_payment_budget","exact_result_ids":["division_free_weighted_recovery_payment"],"source_generation":{"packet":"formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json","packet_sha256":"b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3","formal_source":"formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SparseResetRecovery.lean","formal_source_sha256":"9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e"}},
+  "evidence_class":{"lean_checked":"Five named private Lean declarations prove the one-step, interval, recovery, and clean-recovery upper budgets.","external":"No external theorem is needed for the finite product iteration.","open":"No lower payment, recovery frequency, or tail-rigidity conclusion."},
+  "classification":{"prior_art_confidence_class":"strong_internal_provisional_case","theorem_class":"routine repeated positive-factor inequality with endpoint cancellation","novelty_confidence":"No priority claim. ‘Discrete Gronwall-style’ is an informal shape comparison, not a claim that this is a new or standard named Gronwall theorem.","significance":"Supporting only: a precise upper-budget firewall prevents the invalid reversal to a missing lower-payment theorem.","canonical_relation":"Subordinate upper-budget consumer beneath primitive_matrix_determinant_content and cumulative_lcm_overlap_debt_relocation; distinct from, but not a third, cancellation-payment mechanism."},
+  "search_receipt":{"completed_at":"2026-08-25","queries":["\"discrete Gronwall\" product inequality recurrence finite iteration"],"result":"Broad discrete-Gronwall literature was found, but no direct source for this elementary specialized identity. Non-location is not novelty evidence.","reentry_condition":"Repeat only if the interface is generalized or a literature claim becomes necessary."},
+  "claim_boundary":{"allowed_wording":"Under the displayed division-free relative-error and recovery hypotheses, Lean proves an exponential upper bound on the complete recovery product.","forbidden_wording":["The upper budget yields a lower payment.","Recoveries are frequent.","The inequality proves tail rigidity or Erdős #243.","A new discrete Gronwall theorem."],"open_boundary":"A separate global lower-payment or recovery-frequency theorem is required for any rigidity consequence."},
+  "programme_disposition":{"canonical_mechanism_family":"primitive two-dimensional determinant/content control with recovery-budget consumers","disposition":"Subordinate paper-only upper-budget corollary; do not create a standalone headline or Comparator interface.","expert_review_act":"Check inequality direction, recovery endpoint orientation, and clean-recovery simplification; then seek a genuinely new lower-payment producer rather than a stronger restatement of this bound.","paper_disposition":"Technical supporting lemma in ‘Primitive content and the cancellation-payment bottleneck’."},
+  "tao_pipeline_receipt":{"input_stage":"private Lean recurrence inequalities","output_stage":"claim-ceiling and canonicalization support","artifact":"division_free_recovery_payment_budget_v0","human_understanding_delta":"Makes the upper-versus-lower payment asymmetry explicit and prevents an elementary iteration from being mistaken for a payment producer.","verification_state":"Five source-pinned private Lean declarations; no fresh elaboration.","publication_or_review_state":"Paper-only supporting object because it is subordinate and private-source-pinned, not because external review is absent.","canonicalization_state":"Upper-budget consumer beneath the primitive content/overlap-debt parents.","unresolved_downstream_bottleneck":"Global lower payment or recovery frequency for the actual orbit.","next_stage_owner":"#243 proof owners and Mathematics Refinery."},
+  "landing_consumers":["docs/formal_math/reviewer_cards/division_free_recovery_payment_budget.card.json","docs/formal_math/reviewer_cards/primitive_matrix_determinant_content.card.json","docs/formal_math/reviewer_cards/cumulative_lcm_overlap_debt_relocation.card.json"],
+  "reviewer_attention_budget": {
+    "routine": "Finite iteration of positive relative-error factors once the recurrence hypotheses are assumed.",
+    "load_bearing": "The inequality direction and the distinction between an upper recovery budget and the absent lower payment/frequency theorem.",
+    "externally_sourced": "No external theorem is required; discrete Gronwall is only an informal shape analogy.",
+    "still_unverified": "Any global lower-payment, recovery-frequency, or tail-rigidity conclusion for the actual orbit.",
+    "review_act": "Check the endpoint orientation and inequality direction, then verify that no lower-payment conclusion is being smuggled into the upper bound."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "division_free_recovery_payment_budget@packet-2026-08-25-v0",
+    "evidence_class": "Five private Lean-checked finite upper-budget inequalities for an abstract recovery recurrence; no external theorem or fresh elaboration is claimed.",
+    "closest_known_result": "The form resembles discrete Gronwall/product iteration, but the exact source-specific identity is elementary and no standard named theorem is asserted.",
+    "comparison_relation": "The checked inequalities bound cumulative recovery from above; they do not produce lower payment, recurrence frequency, or tail rigidity.",
+    "exact_delta": "The route's value is a firewall against reversing an upper budget into the missing lower-payment producer, while consolidating it beneath the primitive content/overlap-debt mechanism.",
+    "disconfirming_evidence": "The formal declarations assume the relative-error and recovery hypotheses and begin from an abstract state; no bridge to the actual #243 orbit is supplied.",
+    "confidence": {
+      "level": "high_for_the_stated_finite_upper_budget; low_for_any_global_rigidity_consequence",
+      "basis": "Source hashes and named declarations are pinned; the absent lower-payment and frequency inputs are explicit."
+    },
+    "significance": "Supporting route-boundary value only: it prevents a routine finite product estimate from being mistaken for a rigidity theorem or #243 progress.",
+    "claim_ceiling": "State the conditional exponential upper bound under its hypotheses and its subordinate role. Do not claim a new discrete-Gronwall theorem, lower payment, or #243 consequence.",
+    "hard_step": "Find a genuine lower-payment or recovery-frequency theorem for the actual orbit; strengthening this upper estimate does not address that gap.",
+    "open_boundary": "No independent Comparator interface is justified beyond any existing hypothesis-explicit primitive-content consumer; keep this as one technical supporting lemma.",
+    "bounded_expert_review_act": "Verify one complete product iteration and endpoint cancellation, then test the proposed use for an illicit inequality reversal.",
+    "reentry_trigger": "Re-enter only if a lower-payment producer, actual-orbit bridge, or materially generalized recurrence is proved.",
+    "source_generation_binding": {
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "formal_source_commit": "14bf635fe7165af31b60829accbb0676309921d",
+      "formal_source_sha256": "9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e2",
+      "parity_status": "Private source-pinned declarations are current for the finite upper budget; no fresh elaboration is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "formal_source_commit": "14bf635fe7165af31b60829accbb0676309921d2"
+    },
+    "claim_guard": "Upper-budget consumer only; lower-payment, frequency, actual-orbit, and #243 conclusions remain open.",
+    "reentry_trigger": "Re-enter on source, packet, or actual-orbit bridge changes."
+  }
+}

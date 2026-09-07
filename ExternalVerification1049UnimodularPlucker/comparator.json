@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1049UnimodularPlucker.Challenge",
+  "solution_module": "ExternalVerification1049UnimodularPlucker.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049UnimodularPlucker.adjacent_det_zero_forces_all_det_zero_of_isCoprime",
+    "Erdos249257.ExternalVerification1049UnimodularPlucker.zmod_binary_tail_collision_of_isCoprime"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

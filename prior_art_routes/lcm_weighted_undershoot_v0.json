@@ -1,0 +1,262 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "lcm_weighted_undershoot_v0",
+  "status": "adjudicated_as_erdos_straus_theorem_three_corollary_with_unformalized_lcm_state_translation",
+  "problem_id": "erdos_243",
+  "purpose": "Bind the LCM-weighted undershoot route to the actual Erdős--Straus theorem it invokes, distinguish the sourced recurrence criterion from the local LCM-state formalization, and retire any suggestion that the positive-part formulation is a new rigidity theorem.",
+  "review_unit": {
+    "result_family": "rational_reciprocal_tail_lcm_weighted_sylvester_criterion",
+    "exact_result_id": "lcm_weighted_undershoot",
+    "source_generation": {
+      "review_snapshot_commit": "4b427257da96d1d3a8302598f2257a95167aa2a0",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "packet_last_landed_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "formal_sources": [
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+          "last_landed_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+          "sha256": "da5323838ee6412f15f2a9a169188edd46d105ba5a9b36a4161a1ca3cff33fbe",
+          "declarations": [
+            "lcmState_weightedBlock_telescope",
+            "lcmState_blockEndpoint_le",
+            "lcmState_insideBlock_le",
+            "eventually_zero_of_weightedBlockDebt"
+          ]
+        },
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "last_landed_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+          "sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+          "declarations": [
+            "sylvesterNext_eventually_of_centered_zero",
+            "boundedNegativePart_sylvesterNext_eventually"
+          ]
+        }
+      ]
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "source_theorem_confidence_class": "externally_human_adjudicated_primary_source",
+    "local_translation_confidence_class": "strong_internal_provisional_case",
+    "novelty_confidence": "no_priority_claim; the recurrence implication is an Erdős--Straus theorem-three corollary after an exact reindexing, while the LCM-state vocabulary is a local formal packaging",
+    "recommended_terminology": "LCM-weighted sufficient criterion for eventual Sylvester recurrence (Erdős--Straus Theorem 3 corollary)",
+    "discouraged_terminology": [
+      "new LCM-weighted rigidity theorem",
+      "Lean-checked Erdős--Straus Theorem 3",
+      "a solution of Erdős #243",
+      "an equivalence under the positive-part condition"
+    ],
+    "significance": "High for orientation, not novelty: it identifies a historically sharp enough weighted small-defect route that would settle the target if established. The useful local contribution is to expose the missing bridge as a concrete bounded/debt condition rather than treating the source theorem as a black box.",
+    "expert_judgment_that_can_change_state": "Check a fully quantified reindexing from the packet's LCM state to Theorem 3's N_k/n_(k+1) factor, including all positivity and limsup hypotheses. A formal transport theorem would promote the local bridge; a counterexample to that transport would demote this route to source-context only."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_straus_1964_ahmes_series",
+      "title": "On the irrationality of certain Ahmes series",
+      "authors": ["P. Erdős", "E. G. Straus"],
+      "year": 1964,
+      "url": "https://users.renyi.hu/~p_erdos/1964-19.pdf",
+      "exact_anchor": "printed p. 132, Theorem 3 and its proof around displayed equation (10)",
+      "supports": "Under its condition (i) and limsup condition (ii''), rationality of the reciprocal series is equivalent to eventual n_(k+1)=n_k^2-n_k+1. The proof explicitly weakens an earlier condition (ii).",
+      "does_not_support": "The literal positive-part formulation used in the packet, any Lean declaration, the local LCM-state vocabulary, or an unrestricted solution of Erdős #243.",
+      "inspection": "Downloaded from the Erdős archive and text-extracted on 2026-08-25; the five-page scan places Theorem 3 on printed p. 132."
+    },
+    {
+      "id": "koizumi_2026_reciprocal_doubly_exponential",
+      "title": "Irrationality of the reciprocal sum of doubly exponential sequences",
+      "author": "Junnosuke Koizumi",
+      "venue": "INTEGERS 26 (2026), A28",
+      "url": "https://arxiv.org/html/2504.05933v1",
+      "exact_anchor": "Lemma 13, Lemma 15, Proposition 19(2), Corollary 20",
+      "supports": "Modern tail-state coordinates and the eventual-nonnegative-gap route recorded in the packet.",
+      "does_not_support": "The historical Theorem-3 hypothesis or a proof that the present LCM-weighted undershoot condition holds."
+    }
+  ],
+  "closest_known_result": {
+    "relation": "derived_sufficient_condition_from_primary_source",
+    "statement": "Erdős--Straus Theorem 3 already supplies the rationality-to-eventual-Sylvester implication for a weaker-defect hypothesis stated with the cumulative factor N_k/n_(k+1).",
+    "exact_delta": "After the exact reindexing k=n-1, the packet's condition (L_(n-1)/a_n)*(a_n^2/a_(n+1)-1)_+ -> 0 yields limsup of the signed Erdos--Straus term <= 0, matching the non-strict condition displayed in Theorem 3. The statement-level sign transport is therefore aligned, while the full source-to-packet quantifiers and the derivation of the undershoot from target assumptions remain open; the local Lean sources separately formalize conditional LCM weighted telescopes and an eventual-zero consumer."
+    ,"source_index_sign_check": {
+      "source_locator": "Erdos--Straus (1964), printed p. 132, Theorem 3",
+      "source_index": "k",
+      "packet_index": "n = k + 1",
+      "prefix_identity": "N_k = L_{n-1}",
+      "next_denominator_identity": "n_{k+1} = a_n and n_{k+2} = a_{n+1}",
+      "reindexed_term": "L_{n-1}/a_n*(a_n^2/a_{n+1}-1)",
+      "positive_part_logic": "x_+ -> 0 implies limsup x <= 0, which matches the non-strict source condition",
+      "disposition": "displayed_term_reindex_checked; full_hypothesis_and_quantifier_transport_remains"
+    }
+  },
+  "disconfirming_evidence": [
+    {
+      "kind": "primary_source_scope_check",
+      "locator": "Erdős--Straus (1964), printed p. 132, Theorem 3",
+      "finding": "The paper states condition (ii'') directly with a non-strict limsup <= 0 and notes its relation to an earlier condition; it does not state the packet's positive-part limit verbatim.",
+      "effect": "The positive-part wording must be labeled a derived sufficient condition, not quoted as the historical theorem."
+    },
+    {
+      "kind": "formal_scope_check",
+      "locator": "LcmCriticalBoundary.lean, declarations lcmState_weightedBlock_telescope through eventually_zero_of_weightedBlockDebt",
+      "finding": "The formal theorem begins from an abstract LCM-state recurrence and explicit block-coverage/debt/vanishing hypotheses.",
+      "effect": "It validates an internal conditional consumer, not the original asymptotic premise or the external theorem's full transport."
+    },
+    {
+      "kind": "frontier_relation_check",
+      "locator": "Erdos243/research_packet.json::frontier_integrity.producer_relations.target_deciding_but_stronger",
+      "finding": "formalise_lcm_weighted_theorem is recorded as a stronger producer, not as an equivalence to the declared target.",
+      "effect": "Do not present this route as resolving or characterizing the open conjecture."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "Erdős--Straus Theorem 3 gives a sourced rationality criterion implying eventual Sylvester recurrence under its stated weighted limsup hypothesis. The packet's positive-part LCM-weighted undershoot is a proposed sufficient reindexed formulation; the repository separately formalizes a conditional LCM-state telescope and block-debt consumer.",
+    "forbidden_wording": [
+      "The LCM-weighted undershoot theorem is new.",
+      "The source paper states the positive-part condition.",
+      "The formal declarations establish the reindexing to Erdős--Straus Theorem 3.",
+      "The criterion proves Erdős #243 without proving the undershoot hypothesis.",
+      "The positive-part condition is necessary."
+    ],
+    "open_boundary": "The displayed index substitution and sign direction now match the non-strict source condition. The remaining work is to formalize the source-to-packet sequence hypotheses and quantifiers, then derive the weighted undershoot from the target assumptions; neither task is supplied by the external theorem or current Lean consumer."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "weighted defect criteria for reciprocal-tail Sylvester rigidity",
+    "disposition": "subordinate beneath the Erdős--Straus/Koizumi reciprocal-tail criterion lineage; consolidate any restatement of the weighted threshold here rather than adding a new result family",
+    "paper_disposition": "supporting sourced criterion in the historical and exact-frontier section; follow immediately with the unproved LCM transport and undershoot-production bottleneck",
+    "comparator_advisory": "No new independent interface: the exact local telescope/conditional consumer can be exposed with its hypotheses if useful, but Theorem 3 itself and the unformalized transport must not be represented as a new kernel claim.",
+    "human_understanding_delta": "Separates the three layers that can otherwise blur together: a 1964 recurrence criterion, a modern tail-coordinate translation, and a locally formalized conditional LCM debtor. It puts expert attention on the missing transport/production step rather than on rediscovering a historical theorem."
+  },
+  "reviewer_attention_budget": {
+    "routine": "The algebraic LCM weighted telescope once its abstract recurrence is assumed.",
+    "load_bearing": "The exact reindexing and sign control needed to derive Erdős--Straus condition (ii'') from the positive-part LCM undershoot.",
+    "externally_sourced": "Erdős--Straus Theorem 3 and its rationality-to-eventual-Sylvester conclusion.",
+    "still_unverified": "The source-to-packet reindexing, the packet-to-Lean LCM-state identification at the theorem's quantifier strength, and production of the undershoot from the open target assumptions.",
+    "where_to_slow_down": "Check indices N_k versus a_n and preserve the one-sided/positive-part direction; replacing the source limsup by an asserted equivalence is the principal overclaim risk.",
+    "expert_act": "Verify one complete index-preserving reindexing from the packet condition to Erdős--Straus (1964), Theorem 3; otherwise retain the route as an open sufficient-condition proposal.",
+    "review_act": "Check the N_k versus a_n index shift and the positive-part sign in one complete reindexing; do not upgrade the candidate rate without this calculation."
+  },
+  "adjudicated_objects": [
+    {
+      "object_id": "subcritical_one_over_n_threshold",
+      "packet_result_id": "subcritical_one_over_n_threshold",
+      "adjudicated_at": "2026-08-25",
+      "source_version_binding": {
+        "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "packet_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+        "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+        "packet_status": "advisory_corollary_pending_lean",
+        "formal_source_currency": {
+          "audit_status": "lagging_evidence",
+          "later_source_commit": "14bf635fe7165af31b60829accbb0676309921d",
+          "later_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+          "later_source_change": "Adds boundedNegativePart_sylvesterNext_eventually; it does not define or prove this threshold corollary."
+        }
+      },
+      "classification": "unresolved_claimed_subcritical_rate_corollary_with_no_inspectable_lcm_bridge",
+      "priority_claim": "none",
+      "recommended_terminology": "claimed subcritical positive-defect rate criterion",
+      "terminology_correction": "Do not call it a strengthened hypothesis relative to Koizumi's o(1/n) rate. The displayed limsup bound permits positive deviations of order c/n with c<1; if valid, it would be a weaker assumption yielding a stronger sufficient criterion.",
+      "closest_primary_sources": [
+        {
+          "citation": "P. Erdős and E. G. Straus, On the irrationality of certain Ahmes series (1964), Theorem 3, printed p. 132",
+          "relation": "The source criterion uses the prefix-product/LCM weight N_k divided by the next denominator and a signed limsup condition; it does not state this unweighted index threshold."
+        },
+        {
+          "citation": "Junnosuke Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences (2026), Remark 21, printed p. 13 in the pinned paper extraction",
+          "relation": "Records the sufficient rate a_n^2/a_(n+1)=1+o(1/n) through the Erdős--Straus route; this is the nearest located rate statement, not the packet's limsup-<1 condition."
+        }
+      ],
+      "exact_delta": "The packet proposes limsup n*(a_n^2/a_(n+1)-1)_+ < 1 as sufficient. The known source route instead needs a vanishing LCM-weighted positive defect. No inequality bounding L_(n-1)/a_n by the index n, nor any equivalent bridge, is present in the packet or current Lean source.",
+      "evidence_class": "packet-level advisory synthesis; no source anchor, ordinary proof, exact computation, or Lean declaration",
+      "disconfirmation_search": {
+        "queries": [
+          "subcritical_one_over_n_threshold",
+          "limsup n (a_n^2/a_(n+1)-1)_+ < 1",
+          "Erdos Straus LCM weighted undershoot one over n",
+          "Koizumi Remark 21 o(1/n) reciprocal doubly exponential"
+        ],
+        "result": "The exact result id occurs only in the packet and generated coverage snapshots. The pinned primary sources expose the LCM-weighted criterion and o(1/n) rate, but no matching threshold theorem."
+      },
+      "confidence_ceiling": "High confidence that the row is not currently inspectable as a theorem or direct literature corollary. No claim is made that the proposed threshold is false; its missing LCM-growth bridge is the unresolved mathematical obligation.",
+      "significance_rationale": "If proved, the threshold could enlarge the known sufficient-rate regime beyond o(1/n), making it a useful asymptotic bridge. At present it is only a potentially stronger theorem proposal and does not change the #243 frontier.",
+      "strongest_allowed_claim": "The repository records an unproved candidate for a subcritical positive-defect rate criterion. The inspectable prior art remains Erdős--Straus's weighted theorem and Koizumi's o(1/n) sufficient rate.",
+      "rejected_stronger_wording": [
+        "strengthened hypothesis",
+        "proved threshold corollary",
+        "Lean-checked rate theorem",
+        "new Erdős #243 progress"
+      ],
+      "reviewer_attention_budget": {
+        "routine": "Comparing the displayed rate to the published o(1/n) statement once all definitions are fixed.",
+        "load_bearing": "Derive a quantifier-preserving bound that turns the index-rate assumption into the Erdős--Straus LCM-weighted positive-defect condition, with the correct one-step index shift.",
+        "externally_sourced": "Erdős--Straus Theorem 3 and Koizumi Remark 21.",
+        "still_unverified": "The candidate's arithmetic bridge, exact hypotheses, and any sharpness or counterexample at the constant 1.",
+        "where_to_slow_down": "Do not replace L_(n-1)/a_n by n without proving that bound for the declared sequence class; the packet currently supplies neither the bound nor the sequence hypotheses that would imply it."
+      },
+      "paper_disposition": "Subordinate as an open rate-bridge question in the historical LCM-criterion section; do not present as a theorem or as a separate mechanism family.",
+      "comparator_advisory": "No independent proposition interface is justified. Reconsider only after an inspectable proof states the sequence hypotheses, proves the LCM-growth bridge, and preserves the exact index/sign conventions.",
+      "reentry_condition": "A successor packet generation or committed source note defines the candidate sequence class, proves the LCM-weighted implication (or gives a counterexample), and pins the comparison to Erdős--Straus Theorem 3 and Koizumi Remark 21."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "lcm_weighted_undershoot@packet-2026-08-25-v0",
+    "evidence_class": "Sourced Erdős--Straus theorem plus a source-specific conditional LCM-state formal consumer; the positive-part reindexing remains an unproved internal proposal.",
+    "closest_known_result": "Erdős--Straus (1964), Theorem 3, gives the rationality-to-eventual-Sylvester implication under its cumulative LCM-weighted limsup hypothesis; Koizumi (2026), Remark 21, records the nearby o(1/n) sufficient rate.",
+    "comparison_relation": "The packet's positive-part undershoot is intended as a sufficient reindexing of the historical hypothesis, not a quotation or equivalence. The Lean LCM telescope starts from an abstract state and does not prove the source-to-packet transport.",
+    "exact_delta": "The durable contribution is a three-layer map: historical criterion, proposed sign-safe LCM formulation, and a checked conditional debtor/telescope. It exposes the transport and production obligations instead of presenting the local recurrence as a new rigidity theorem.",
+    "disconfirming_evidence": "The primary paper does not state the positive-part condition verbatim; no bound converting the displayed index-rate assumption into the LCM-weighted source condition is present; the formal declarations assume the abstract LCM state and debt hypotheses.",
+    "confidence": {
+      "level": "high_for_historical_attribution_and_local_conditional_algebra; low_for_source_to_packet_transport_and_candidate_rate",
+      "basis": "The five-page Erdős--Straus scan and Koizumi source are pinned, while the proposed reindexing and undershoot producer have no inspectable proof."
+    },
+    "significance": "High orientation value as a route boundary: if the transport and undershoot were proved, the historical theorem would settle the target; presently this is not an endpoint advance or a novel theorem.",
+    "claim_ceiling": "State the Erdős--Straus theorem with its own hypotheses, label the positive-part LCM condition a proposed sufficient reindexing, and state the Lean telescope only conditionally. Do not claim a new criterion, equivalence, or #243 solution.",
+    "hard_step": "Prove the exact index/sign-preserving transport from the original reciprocal-tail sequence to the Erdős--Straus LCM-weighted hypothesis, then derive the required undershoot from target assumptions.",
+    "open_boundary": "The source-to-packet reindexing, packet-to-Lean state identification, and actual undershoot producer remain open; no independent Comparator proposition is justified for the unproved bridge.",
+    "bounded_expert_review_act": "Check one fully quantified reindexing against printed p.132, preserving N_k versus a_n and the one-sided positive-part direction; test whether the candidate rate really implies the source limsup.",
+    "reentry_trigger": "A successor packet or source note supplies a defined sequence class and a proved transport (or counterexample), with the same Erdős--Straus/Koizumi anchors.",
+    "source_generation_binding": {
+      "packet_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "formal_sources": [
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+          "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+          "sha256": "da5323838ee6412f15f2a9a169188edd46d105ba5a9b36a4161a1ca3cff33fbe"
+        },
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "commit": "14bf635fe7165af31b60829accbb0676309921d2",
+          "sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb"
+        }
+      ],
+      "primary_source_anchors": [
+        "Erdős--Straus, On the irrationality of certain Ahmes series (1964), printed p.132, Theorem 3",
+        "Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences (2026), Remark 21"
+      ],
+      "parity_status": "Historical theorem and formal local consumer are source-current at pinned snapshots; proposed transport is unverified."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "packet_commit": "746717d54ba8d7c3262852028997562ff4d865df",
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "formal_source_commits": ["4cd4eac29c6eefb6c041cb61b980de271c77ccc3", "14bf635fe7165af31b60829accbb0676309921d"]
+    },
+    "claim_guard": "Historical sourced criterion, proposed reindexing, and conditional Lean consumer must remain separate.",
+    "reentry_trigger": "Re-enter when packet, source theorem interpretation, formal state hypotheses, or the proposed transport changes."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "primary-source theorem plus internal formal conditional arithmetic",
+    "output_stage": "attribution_and_expert-understanding support",
+    "artifact": "lcm_weighted_undershoot_v0 prior-art route",
+    "human_understanding_delta": "Turns an apparently fresh LCM idea into a readable source lineage and identifies the genuinely difficult unproved bridge, retaining rather than concealing the difference between source theorem, translation, and formal consumer.",
+    "verification_state": "The five-page primary scan was downloaded and inspected at its printed theorem locator; current packet and Lean source hashes were pinned; no fresh Lean replay, source-to-Lean transport proof, or independent review is asserted.",
+    "publication_or_review_state": "Internal adjudication only; no Comparator, card, paper, publication, or outreach edit.",
+    "canonicalization_state": "One sourced weighted-defect criterion family, subordinate to the reciprocal-tail rigidity frontier and distinct from the cumulative-overlap-debt accounting card.",
+    "unresolved_downstream_bottleneck": "A rigorous reindexing/transport theorem and then a genuine derivation of the weighted undershoot from the target hypotheses.",
+    "next_stage_owner": "Problem 243 proof owners for the transport and undershoot producer; Novelty Observatory only when an immutable new source generation or an external attribution challenge appears."
+  }
+}

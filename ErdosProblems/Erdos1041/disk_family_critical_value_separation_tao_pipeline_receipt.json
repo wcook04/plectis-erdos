@@ -1,0 +1,29 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "research_actor_mode": "agent",
+  "input_stage": "generation",
+  "output_stage": "verification",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.md",
+  "human_understanding_delta": "The 2026-08-30 separation certificate lost in three removable places: series Cauchy-Schwarz instead of the Bergman kernel, a triangle inequality on the level instead of the P-w0 lemniscate, and the global Polya bound instead of the proper-component capacity gap. Removing all three, and freeing the disk centre along the value segment [0,1], turns the branch-centre thresholds 4/3/2 into the degree-free 4/3 and confines the unresolved second critical value to an explicit lens: a simultaneous near tie in modulus (ratio below coth(1)=1.313) and in argument (about 82 degrees).",
+  "verification_state": "ordinary analytic proof composing three corpus lemmas; Lean-checked numerical kernel (uniform 4/3 threshold, radius-2 and degree-three radius-6/5 regimes, sign-free consumer) with axioms exactly propext, Quot.sound, Classical.choice; exact symbolic checker; recorded adversarial falsifier with no ratio above one",
+  "publication_or_review_state": "private authoring; not externally reviewed; no priority claim; Dubinin 2013 Theorem 1 identified as entering the corpus at the branch-monotonicity row, not this proof, with full text not yet obtained",
+  "canonicalization_state": "supersedes first_merge_critical_value_separation_certificate_2026_08_30; contains the uncapped FirstTwoCriticalOptimizedBergman theorem at centre 0 and MinimalHubWindowJoin with the exterior-fibre factor",
+  "unresolved_downstream_bottleneck": "The near-tie lens {1<=|w|<coth(1)} cap {|w-1|<coth(1)} for the second critical value. The extremal family sits at its centre with equality in the target, so no positive-loss Bergman/Polya estimate closes it; the three-sheeted resolved cover has Bergman constant diverging like log(1/|1-v_2|).",
+  "next_stage_owner": "Erdos1041 research frontier (exact near-tie / near-Fekete transfer); paper revision at res:critical-value-separation and res:minimal-hub-window (the latter currently states x_n^* decreases to 1, but it decreases to coth(1))",
+  "proof_effect": "strengthened_and_landed",
+  "focused_validation": "pass: lean_fast_build.py ErdosProblems.Erdos1041.DiskFamilyCriticalValueSeparation (command future cf_6542ff51d15b449d91d8, exit 0) and ErdosProblems.Erdos1041.DiskFamilyCriticalValueSeparationAxiomAudit (Build completed successfully, all seven audited declarations on propext/Classical.choice/Quot.sound); exact checker ALL PASS; probe receipt disk_family_critical_value_separation_probe_receipt.json",
+  "integration_validation": "research_packet JSON parse after row append; see closeout",
+  "paper_assimilation": {
+    "paper": "erdos-1041-lemniscate-newton-flow.tex (read-only this session; revision owed)",
+    "section": "res:critical-value-separation and res:separation-thresholds",
+    "canonical_mechanism_family": "two-sheeted resolved cover of a value disk plus Bergman segment inequality plus exterior-fibre capacity gap",
+    "relation": "strict_strengthening_and_centre_generalization_of_the_separation_theorem",
+    "understanding_delta": "Separation from any real centre of the value segment, at radius 4/3 in every degree, closes the connector; the residual is a two-parameter near-tie lens, not a modulus ratio alone.",
+    "evidence_boundary": "ordinary complex analysis; Lean checks only the numerical kernel; measurement is falsifier evidence only",
+    "hard_step": "the near-tie lens, where the resolved branch point approaches the connector and every area estimate diverges",
+    "meaningful_failed_route": "three-sheeted resolved cover over a disk containing both 1 and v_2: simply connected, but its Bergman constant diverges in the near-tie limit",
+    "open_remainder": "unrestricted Erdős 1041, degree five, multiple saddles"
+  },
+  "source_manifest": []
+}

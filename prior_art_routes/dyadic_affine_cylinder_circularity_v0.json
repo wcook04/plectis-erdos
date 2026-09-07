@@ -1,0 +1,208 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "dyadic_affine_cylinder_circularity",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_components_with_source_specific_two_stage_Lean_method_no_go",
+  "problem_id": "erdos_251",
+  "purpose": "Classify the paired adaptive and fixed-lattice circularity theorems, consolidate the remaining #251 packet rows without card inflation, and state the exact surviving external producer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/dyadic_affine_cylinder_circularity.card.json",
+    "source_commit": "f581de8ea3c44da94b3470fcb669d486031e124c",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+    "source_result_ids": [
+      "data_dependent_affine_cylinder_circularity",
+      "fixed_lattice_block_residue_second_circularity"
+    ]
+  },
+  "classification": {
+    "adaptive_test_class": "literal_algebraic_pullback_of_even_integrality",
+    "fixed_lattice_test_class": "valid_forward_consumer_whose_reverse_is_forced_by_rational_denominator_separation_and_scale_domination",
+    "theorem_novelty_class": "elementary_components_with_source_specific_exact_method_diagnosis",
+    "formalization_class": "paired_all_index_Lean_equivalences_plus_exact_finite_coordinate_regression",
+    "priority_claim": "none",
+    "recommended_terminology": "self-referential dyadic block-residue criterion",
+    "acceptable_alias": "adaptive and fixed-lattice block circularity",
+    "attribution": "Treat recurrence iteration, denominator spacing, and scale amplification as elementary. Cite Erdős--Straus for the classical product-denominator carry framework and its need for independent tail control. Credit the local source for proving that these two particular #251 block predicates fail that independence test exactly.",
+    "mathematical_interest": "The components are routine, but the paired equivalence is a strong negative result: it closes both a data-adaptive architecture and its most natural fixed-target repair.",
+    "reusable_scope": "Expanding affine recurrences over rationals, especially residue or cylinder tests whose target or scale is derived from the same orbit.",
+    "why_it_matters": "It prevents finite-block computation and increasing dyadic depth from being mistaken for a prime-specific irrationality mechanism."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_straus_1974_irrationality_series",
+      "title": "On the irrationality of certain series",
+      "authors": ["Paul Erdős", "Ernst G. Straus"],
+      "venue": "Pacific Journal of Mathematics 55 (1974), 85-92",
+      "doi": "10.2140/pjm.1974.55.85",
+      "url": "https://msp.org/pjm/1974/55-1/pjm-v55-n1-p08-s.pdf",
+      "exact_anchor": "Section 2, especially Theorem 2.1 and the eventual integer-carry relation: rational product-denominator series produce arithmetic recurrences, but an independent tail-size condition is what turns them into irrationality criteria.",
+      "supports": "The established carry-recurrence framework and the semantic distinction between rationality-derived arithmetic and an independent contradiction-producing tail input.",
+      "does_not_support": "The local adaptive-cylinder identity, fixed-lattice reverse implication, prime-gap application, or a novelty claim."
+    },
+    {
+      "id": "koutsoukou_argyraki_li_2021_formalization",
+      "title": "Irrationality and Transcendence Criteria for Infinite Series in Isabelle/HOL",
+      "authors": ["Angeliki Koutsoukou-Argyraki", "Wenda Li"],
+      "venue": "Experimental Mathematics 32 (2023), 184-199; arXiv:2101.05257",
+      "url": "https://arxiv.org/abs/2101.05257",
+      "exact_anchor": "The Erdős--Straus formalization discussion separates the exact eventual integer recurrence from the analytic inequalities needed by the criterion and records minor proof-level repairs without changing the source theorem.",
+      "supports": "Modern formal-verification context for treating an exact carry recurrence and its scope boundary as independently auditable objects.",
+      "does_not_support": "Independent review or antecedence for the #251 paired circularity theorem."
+    }
+  ],
+  "mechanism_comparison": {
+    "adaptive_collapse": "The observed block appears in both the iterate identity and the affine target, so it cancels and leaves only basepoint integrality.",
+    "fixed_forward": "If the basepoint is integral, the block's fixed-lattice error is exactly the bounded terminal state.",
+    "fixed_reverse": "If the basepoint is a noninteger rational, its denominator spacing amplified by a deep dyadic scale forces block escape automatically.",
+    "surviving_route": "A successful proof needs information not implied by tail nonintegrality itself: a consecutive-prime correlation, fractional-tail nonconcentration, equidistribution, or another external arithmetic obstruction."
+  },
+  "remaining_row_disposition": [
+    {"result_id": "actual_prime_gaps_unbounded", "classification": "standard_factorial_prime_free_interval_fact_with_Lean_formalization_value", "consumer": "radix_tail_shift_integrality", "promotion": "subordinate premise only; no standalone card"},
+    {"result_id": "odd_denominator_candidate_anti_concentration", "classification": "routine consequence of denominator resonance plus actual-gap nonperiodicity", "consumer": "radix_tail_shift_integrality", "promotion": "fold into existing arithmetic consumer stack"},
+    {"result_id": "free_carry_telescoping", "classification": "elementary telescoping identity exposing excessive freedom in unrestricted carry models", "consumer": "polynomial_dyadic_tail_coarse_input_countermodel", "promotion": "subordinate precursor; no standalone card"},
+    {"result_id": "periodic_fractional_orbit_countermodel", "classification": "advisory conceptual countermodel strictly superseded by the exact polynomial Lean countermodel", "consumer": "polynomial_dyadic_tail_coarse_input_countermodel", "promotion": "provenance only; do not market separately"},
+    {"result_id": "adjacent_mismatch_event_factorises_and_decorrelates", "classification": "finite_mechanism_discriminating_measurement", "consumer": "open cofinal_adjacent_small_mismatch producer", "promotion": "evidence card deferred until a theorem or stable statistical protocol exists"},
+    {"result_id": "actual_prime_adjacent_mismatch_event_density", "classification": "finite_measurement_supporting_the_actual_producer_but_not_cofinality", "consumer": "open prime_theorem_to_local_smallness producer", "promotion": "retain as computational evidence; no theorem card"}
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "Erdos Straus rational series integer carry recurrence",
+      "rational binary series integral tail recurrence",
+      "adaptive affine lattice recurrence residue obstruction"
+    ],
+    "result": "The search recovered the classical integral-carry framework but no named antecedent for the exact adaptive/fixed paired circularity statement. Its algebraic ingredients are immediate enough that non-location does not support novelty.",
+    "boundary": "The defensible claim is source-specific method diagnosis, not invention of a new recurrence or Diophantine-approximation theorem."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For the rational dyadic tail recurrence, Lean proves both the observed-block affine test and its fixed-lattice repair are equivalent to the non-eventual-integrality conclusion under their stated hypotheses, so neither is an independent prime-gap producer.",
+    "forbidden_wording": [
+      "All fixed-lattice residue tests are circular.",
+      "The forward fixed-lattice consumer is false.",
+      "Finite block scans prove nonintegrality or irrationality.",
+      "The paired no-go solves Erdős #251."
+    ],
+    "nonclaims": ["not_a_priority_claim", "not_a_general_fixed_lattice_no_go", "not_a_prime_distribution_theorem", "not_a_tail_nonconcentration_theorem", "not_erdos_251_solution"]
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "dyadic_affine_cylinder_circularity",
+    "human_understanding_delta": "Adaptive and fixed-lattice tests are one producer-versus-consumer admission test, preserving the correct forward implication and the rational-denominator reverse together.",
+    "verification_state": "Six source-pinned Lean declarations at f581de8ea3c44da94b3470fcb669d486031e124c establish the paired all-index structure; coordinate computation is regression only and no fresh replay is claimed.",
+    "publication_or_review_state": "A paired talk scaffold, paper placement, and compact Comparator advisory are ready for review; no independent mathematical review is asserted.",
+    "canonicalization_state": "The two-stage result consolidates adaptive and fixed-lattice variants, leaving finite measurements subordinate.",
+    "unresolved_downstream_bottleneck": "An external actual-prime tail obstruction not implied by rational denominator separation.",
+    "next_stage_owner": "#251 proof owners, Mathematics Refinery, and Role 3."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_251.md",
+    "section": "Why block residues do not supply the missing prime theorem",
+    "canonical_mechanism_family": "actual consecutive-prime gap tails, dyadic recurrences, and producer-versus-consumer circularity boundaries",
+    "relation": "Consolidate adaptive and fixed-lattice block tests as one route-killing boundary beneath the summation-by-parts coordinate theorem; retire depth-escalation and scan narratives.",
+    "understanding_delta": "It preserves the valid consumer while revealing why its apparent supply is not independent in the rational regime.",
+    "evidence_boundary": "Source-pinned Lean equivalences and finite regression only; no actual-prime producer or irrationality theorem.",
+    "hard_step": "Find an external prime-tail obstruction that cannot be reproduced by generic denominator separation.",
+    "meaningful_failed_route": "Treat larger fixed-lattice scans or deeper dyadic blocks as an independent producer after the reverse theorem supplies them from nonintegrality.",
+    "open_remainder": "The required prime-specific infinite tail theorem and Erdős #251 remain open."
+  },
+  "release_disposition": {
+    "value": "comparator_candidate",
+    "reason": "One bundled paired-equivalence firewall is independently Lean-checked and prevents a recurring producer/consumer error.",
+    "comparator_advisory": "Keep both directions, rational and scale hypotheses, and the surviving valid forward consumer in one interface."
+  },
+  "landing_consumers": [
+    {"path": "docs/formal_math/reviewer_cards/dyadic_affine_cylinder_circularity.card.json", "effect": "Replace pending novelty status with the paired circularity adjudication and exact public claim ceiling."},
+    {"consumer": "Mathematics Refinery and Public Research Exhibition", "effect": "Promote one two-stage method no-go; consolidate four routine rows and retain two density rows as finite evidence rather than new public objects."},
+    {"consumer": "Comparator semantic boundary", "effect": "Expose the difference between a correct one-way consumer and an independent producer, together with the reverse theorem that defeats independence here."}
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "dyadic_affine_cylinder_circularity@source-f581de8-card-current",
+    "evidence_class": "Lean_checked_paired_equivalences_with_exact_finite_coordinate_regression",
+    "source_generation": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+        "commit": "f581de8ea3c44da94b3470fcb669d486031e124c",
+        "sha256": "3d1d011245503897ebbd04d90aa5d4ce30cd89bf99cdc07227bee6cfd02034ce"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/dyadic_affine_cylinder_circularity.card.json",
+        "sha256": "f76dc649fef10523b1722d5456eb5b3b25283489de3cd00b4bf252358ebf65d6"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json",
+        "sha256": "68a0fba54c8237cf18209feafc39bb81fcb71801eec279ab0f919111642ea1ef"
+      },
+      "primary_sources": [
+        "Erdős–Straus, On the irrationality of certain series, Pacific J. Math. 55 (1974), §2",
+        "Koutsoukou-Argyraki–Li, Irrationality and Transcendence Criteria for Infinite Series in Isabelle/HOL, Ex. Math. 32 (2023)"
+      ]
+    },
+    "comparison_relation": "The adaptive block predicate is algebraically equivalent to eventual integrality because the test reuses the same orbit-derived target; the fixed-lattice reverse is forced by rational denominator spacing and dyadic scale growth. The forward fixed-lattice implication remains a valid conditional consumer.",
+    "closest_known_result": "The integral-carry recurrence and the need for an independent tail obstruction are classical in Erdős–Straus; no named prior source was located for this exact paired adaptive/fixed circularity diagnosis.",
+    "exact_delta": "The six Lean declarations close both the data-dependent test and its natural fixed-lattice repair as independent producers under the stated rational hypotheses, while preserving the one-way consumer and the external prime-tail requirement.",
+    "disconfirming_evidence": "The statement is elementary recurrence algebra plus denominator separation; finite scans cannot supply the missing prime theorem, and the result does not generalize to every fixed-lattice predicate.",
+    "confidence_ceiling": "High for the paired Lean equivalences and their semantic no-go; low novelty/no priority claim; no prime-distribution or #251 endpoint claim.",
+    "significance": "high_method_boundary_value_medium_formalization_value",
+    "claim_ceiling": "State only the adaptive and fixed-lattice circularity under their explicit hypotheses. Do not say all block tests are circular, that the valid forward consumer is false, or that #251 is solved.",
+    "hard_step": "Supply an actual-prime tail obstruction independent of rational denominator separation: correlation, nonconcentration, equidistribution, or another genuinely external input.",
+    "open_boundary": "No prime-specific infinite-tail producer, no irrationality theorem, and no general fixed-lattice no-go.",
+    "bounded_expert_act": "Verify the quantifier directions in the six Lean declarations and check that the paper preserves the valid forward consumer while rejecting only the independent-producer interpretation.",
+    "reentry_trigger": "Re-enter if AffineCylinderCollapse.lean, the card, or the #251 packet changes, or if a new prime-tail theorem supplies an independent producer.",
+    "programme_disposition": "retire_adaptive_and_fixed_lattice_depth_escalation_as_independent_producers_under_erdos251",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why block residues do not supply the missing prime theorem",
+      "supersession_or_consolidation": "Consolidate the adaptive collapse, fixed-lattice reverse, valid forward consumer, and finite measurements into one boundary beneath the exact summation-by-parts coordinate theorem.",
+      "reason": "It prevents deeper scans and denominator spacing from being mistaken for prime-specific arithmetic information while preserving the correct conditional direction."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "reason": "The paired all-index equivalences are independently restatable and materially correct a recurring producer/consumer confusion; expose one bundled semantic firewall, not component rows."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "Lean paired circularity equivalences and finite regression",
+      "output_stage": "expert understanding and route retirement",
+      "artifact": "dyadic_affine_cylinder_circularity_v0",
+      "human_understanding_delta": "A cold reader can see exactly why the adaptive predicate is self-referential, why the fixed-lattice reverse is automatic, and where a genuinely prime-specific input is still needed.",
+      "verification_state": "Six source-pinned Lean declarations; finite coordinate replay is diagnostic only.",
+      "publication_or_review_state": "Status-tagged route boundary is eligible; no external review or acceptance claim.",
+      "canonicalization_state": "One consolidated #251 producer-versus-consumer boundary.",
+      "unresolved_downstream_bottleneck": "Independent actual-prime tail obstruction.",
+      "next_stage_owner": "Mathematics Refinery for consolidation, Comparator/Public for the bundled firewall, and #251 proof owners for the external producer."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "elementary equivalences with a nontrivial semantic independence diagnosis",
+    "slow_down_at": "The valid forward fixed-lattice consumer is retained; only its use as an independent producer is eliminated by the reverse theorem.",
+    "automation_establishes": "The six Lean equivalences and finite regression payload.",
+    "expert_semantic_judgment": "Whether any proposed block residue contains information not already forced by rational denominator separation.",
+    "review_act": "Audit the source quantifiers and compare the claimed surviving producer to the exact external tail requirement."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#251 dyadic affine block circularity and independent-prime-tail boundary",
+    "disposition": "retire_inflated_depth_escalation_route; subordinate beneath the summation-by-parts endpoint",
+    "consolidation_relation": "Keep adaptive and fixed-lattice variants, plus finite measurements, as one route-killing object; do not mint separate scan cards.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "It closes two natural but circular producer architectures and redirects attention to an actually external prime-tail theorem.",
+      "evidence_class": "Lean-checked paired equivalences with finite regression",
+      "hard_step": "Find independent prime-specific tail information.",
+      "prior_art_uncertainty": "Low for the carry framework; exact paired packaging is local and not claimed novel.",
+      "open_boundary": "No #251 irrationality result.",
+      "demoted_predecessor": "depth-escalation and fixed-lattice scan narratives",
+      "status_boundary": "Retain as high-value route boundary beneath the #251 flagship coordinate object."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_card_and_packet_pins_bound_at_2026_08_27",
+    "bound_snapshot": {
+      "formal_source_commit": "f581de8ea3c44da94b3470fcb669d486031e124c",
+      "formal_source_sha256": "3d1d011245503897ebbd04d90aa5d4ce30cd89bf99cdc07227bee6cfd02034ce",
+      "reviewer_card_sha256": "f76dc649fef10523b1722d5456eb5b3b25283489de3cd00b4bf252358ebf65d6",
+      "research_packet_commit": "6e4f79c5a30366a5b47a7f9bd1dfd720732e5f8b",
+      "research_packet_sha256": "8c7ed22255ca73adc2afc94eab1370cdb2faf7bdbcbc35c0bd3a93652d10846f"
+    },
+    "claim_guard": "Paired adaptive/fixed circularity only; no general fixed-lattice no-go, prime-tail theorem, or #251 solution.",
+    "reentry_trigger": "Any source/card/packet change or a genuinely independent prime-tail producer."
+  }
+}

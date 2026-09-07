@@ -1,0 +1,312 @@
+version: v0.4
+project:
+  name: 'Erdős #249: irrationality of fixed-resolution observables of the totient
+    word'
+  description: >-
+    Fix a natural number m at least 2, an integer-valued letter map f on residues with
+    f 0 = 0, and a residue r below m with gcd(r+1, m) = 1 and f r nonzero. The sum over
+    all natural numbers n of f(φ(n) mod m) / 2^n is irrational. Six declarations are
+    compared. At the dyadic resolutions m = 2^k with k at least 1 the coprimality
+    condition is automatic at every even residue, so every integer-valued letter map
+    vanishing at the zero residue and nonzero at some even residue below 2^k has
+    irrational binary value. Specialising the letter map to the least nonnegative
+    residue gives the headline consequence: for every m at least 3 the series A_m,
+    the sum over all natural numbers n of (φ(n) mod m) / 2^n, is irrational. Three
+    further declarations expose the machinery. The isolated pulse separation is the
+    Diophantine core. For an integer sequence a whose terms are bounded in absolute
+    value by C, a letter t at position N+1+L with t nonzero and a(N+1+i) = 0 for every
+    i at most 2L other than i = L, and a positive integer q with 2qC < 2^L, every
+    integer k satisfies q(|t| - C/2^L)/2^(N+1+L) ≤ |qV - k|, where V is the sum over
+    all natural numbers n of a(n)/2^n. The packaged consumer of that separation proves
+    that a bounded integer sequence carrying, for every L, a nonzero letter flanked by
+    L zeros on each side has irrational binary value. The two-sided prime isolation
+    supplies those pulses. For m at least 2 and r with gcd(r+1, m) = 1 and any bounds
+    L and N there is a prime p exceeding both N and L+1 with φ(p) congruent to r modulo
+    m and with m dividing φ(p-j) and φ(p+j) for every j with 0 < j ≤ L. Auxiliary primes
+    congruent to 1 modulo m come from Dirichlet's theorem on primes in arithmetic
+    progressions, and the Chinese remainder theorem glues them into a single congruence
+    class for p. The separation mechanism is the Lambert-series argument of P. Erdős,
+    On arithmetical properties of Lambert series, Journal of the Indian Mathematical
+    Society 12 (1948); the declarations compared here apply it to the reduced sequences
+    φ(n) mod m and no exact prior statement of them has been located. Every compared
+    declaration is a statement about a reduced sequence φ(n) mod m or about an abstract
+    bounded integer sequence. The value of the series in Erdős Problem 249, the sum over
+    n at least 1 of φ(n)/2^n, is the subject of no declaration here, and that problem
+    remains open. The converse half of the rational-relation classification for
+    rational-valued letter maps and the bit-plane independence corollary are absent from
+    this package. The rationality of A_1 and A_2 has no Lean witness in this development,
+    so the hypothesis m at least 3 is stated without a sharpness claim.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A25
+  - 11N13
+sources:
+- title: Fixed-resolution observables of the totient word and their binary values
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The Lean development proves the special-value irrationality theorem, the
+    quantitative isolated-pulse separation, and the two-sided prime isolation that
+    supplies the pulses.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: On arithmetical properties of Lambert series
+  authors:
+  - Paul Erdős
+  type: paper
+  relationship: background
+  note: Journal of the Indian Mathematical Society 12 (1948). The isolated-digit
+    separation mechanism used by every compared declaration is the mechanism of this
+    paper. The compared declarations state it for the reduced sequences φ(n) mod m.
+  license: unknown
+  author_endorsement: n/a
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status; this theorem family is not attributed to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+  note: Dirichlet's theorem on primes in arithmetic progressions enters through
+    Nat.forall_exists_prime_gt_and_modEq.
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+  notes: Human mathematical review remains separate from Lean checking, Comparator
+    preparation, and any future Palomar editorial review.
+fidelity:
+  divergences: The package exposes six source-current public endpoints of
+    ErdosProblems/Erdos249/ResidueClassTotientSeries.lean directly. The Challenge
+    redeclares the three definitions dyadicValue, totientObservableValue and
+    totientResidueValue in Mathlib-only vocabulary with the source bodies.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: The hypothesis set of each compared declaration, the ancestry of the
+    separation mechanism, and the absence of any statement about the unreduced series
+    were checked by the author with AI assistance; no independent review is claimed.
+status:
+  scope: Six exact source-backed declarations. Challenge.lean contains six intentional
+    Comparator specification sorries.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count.
+  axiom_audit_status: axiom_print_pending_first_public_ci_run_for_this_entry
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.residue_series_irrational
+    file: Solutions/ExternalVerification249ResidueClassTotientSeries.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249ResidueClassTotientSeries/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/ResidueClassTotientSeries.lean.
+    novelty_status: unassessed
+    contribution_class: special-value irrationality for a reduced totient series
+    statement: For every natural number m with 3 ≤ m, the sum over all natural numbers
+      n of (φ(n) mod m) / 2^n is irrational.
+    boundary: The summand is the least nonnegative residue of φ(n) modulo m. The
+      statement covers no series built from φ(n) itself, and Erdős Problem 249 remains
+      open. No Lean witness in this development evaluates A_1 or A_2, so no sharpness
+      of the hypothesis 3 ≤ m is claimed.
+    comparator_declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.residue_series_irrational
+    literature_dependencies:
+    - statement: "the isolated-digit separation mechanism"
+      source: "P. Erdős, On arithmetical properties of Lambert series, J. Indian Math. Soc. 12 (1948)"
+  - declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_totientObservable
+    file: Solutions/ExternalVerification249ResidueClassTotientSeries.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249ResidueClassTotientSeries/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/ResidueClassTotientSeries.lean.
+    novelty_status: unassessed
+    contribution_class: special-value irrationality for a reduced totient series
+    statement: For a natural number m with 2 ≤ m, an integer-valued map f with f 0 = 0,
+      and a residue r < m with gcd(r+1, m) = 1 and f r ≠ 0, the sum over all natural
+      numbers n of f(φ(n) mod m) / 2^n is irrational.
+    boundary: The letter map is integer valued and the resolution m is fixed. Rational-valued
+      letter maps and the converse direction of the classification lie outside the
+      statement.
+    comparator_declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_totientObservable
+    literature_dependencies:
+    - statement: "the isolated-digit separation mechanism"
+      source: "P. Erdős, On arithmetical properties of Lambert series, J. Indian Math. Soc. 12 (1948)"
+  - declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.fixed_resolution_observable_irrational
+    file: Solutions/ExternalVerification249ResidueClassTotientSeries.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249ResidueClassTotientSeries/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/ResidueClassTotientSeries.lean.
+    novelty_status: unassessed
+    contribution_class: special-value irrationality for a reduced totient series
+    statement: For a natural number k with 1 ≤ k, an integer-valued map f with f 0 = 0,
+      and an even residue r < 2^k with f r ≠ 0, the sum over all natural numbers n of
+      f(φ(n) mod 2^k) / 2^n is irrational.
+    boundary: The dyadic specialisation in which the coprimality condition of the
+      general theorem is automatic at every even residue. Odd residues are outside the
+      statement.
+    comparator_declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.fixed_resolution_observable_irrational
+    literature_dependencies:
+    - statement: "the isolated-digit separation mechanism"
+      source: "P. Erdős, On arithmetical properties of Lambert series, J. Indian Math. Soc. 12 (1948)"
+  - declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.isolated_pulse_separation
+    file: Solutions/ExternalVerification249ResidueClassTotientSeries.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249ResidueClassTotientSeries/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/ResidueClassTotientSeries.lean.
+    novelty_status: unassessed
+    contribution_class: quantitative Diophantine separation for bounded binary
+      expansions
+    statement: For an integer sequence a with |a(n)| ≤ C for every n, a letter t = a(N+1+L)
+      with t ≠ 0, vanishing a(N+1+i) for every i ≤ 2L with i ≠ L, a positive integer q
+      with 2qC < 2^L, and any integer k, the bound q(|t| - C/2^L)/2^(N+1+L) ≤ |qV - k|
+      holds, where V is the sum over all natural numbers n of a(n)/2^n.
+    boundary: A separation at scale 2^(-(N+1+L)) around a single isolated pulse. The
+      statement supplies no irrationality measure and no bound on any arithmetic
+      sequence.
+    comparator_declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.isolated_pulse_separation
+    literature_dependencies:
+    - statement: "the isolated-digit separation mechanism"
+      source: "P. Erdős, On arithmetical properties of Lambert series, J. Indian Math. Soc. 12 (1948)"
+  - declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.two_sided_prime_isolation
+    file: Solutions/ExternalVerification249ResidueClassTotientSeries.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249ResidueClassTotientSeries/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/ResidueClassTotientSeries.lean.
+    novelty_status: unassessed
+    contribution_class: arithmetic supply of two-sided isolated totient pulses
+    statement: For a natural number m with 2 ≤ m, natural numbers L, N and r with
+      gcd(r+1, m) = 1, there is a prime p with N < p and L+1 < p such that φ(p) is
+      congruent to r modulo m and m divides both φ(p-j) and φ(p+j) for every j with
+      0 < j ≤ L.
+    boundary: Existence of the isolating primes. The statement gives no density and no
+      effective bound on the least such p.
+    comparator_declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.two_sided_prime_isolation
+    literature_dependencies:
+    - statement: "Dirichlet's theorem on primes in arithmetic progressions"
+      source: "Mathlib, Nat.forall_exists_prime_gt_and_modEq"
+  - declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_dyadicValue_of_pulses
+    file: Solutions/ExternalVerification249ResidueClassTotientSeries.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249ResidueClassTotientSeries/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/ResidueClassTotientSeries.lean.
+    novelty_status: unassessed
+    contribution_class: number-theory-free irrationality criterion for binary values
+    statement: For an integer sequence a with |a(n)| ≤ C for every n, if for every L
+      there is a position p with L+1 < p, a(p) ≠ 0, and a(p-j) = a(p+j) = 0 for every j
+      with 0 < j ≤ L, then the sum over all natural numbers n of a(n)/2^n is irrational.
+    boundary: A criterion about bounded integer sequences. It asserts nothing about any
+      particular arithmetic function until pulses are supplied.
+    comparator_declaration: Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_dyadicValue_of_pulses
+    literature_dependencies:
+    - statement: "the isolated-digit separation mechanism"
+      source: "P. Erdős, On arithmetical properties of Lambert series, J. Indian Math. Soc. 12 (1948)"
+alignment:
+  namespace: Erdos249257.ExternalVerification249ResidueClassTotientSeries
+  statements:
+  - source: ErdosProblems.Erdos249.residue_series_irrational
+    lean: Erdos249257.ExternalVerification249ResidueClassTotientSeries.residue_series_irrational
+    module: ExternalVerification249ResidueClassTotientSeries/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+  - source: ErdosProblems.Erdos249.irrational_totientObservable
+    lean: Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_totientObservable
+    module: ExternalVerification249ResidueClassTotientSeries/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+  - source: ErdosProblems.Erdos249.fixed_resolution_observable_irrational
+    lean: Erdos249257.ExternalVerification249ResidueClassTotientSeries.fixed_resolution_observable_irrational
+    module: ExternalVerification249ResidueClassTotientSeries/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+  - source: ErdosProblems.Erdos249.isolated_pulse_separation
+    lean: Erdos249257.ExternalVerification249ResidueClassTotientSeries.isolated_pulse_separation
+    module: ExternalVerification249ResidueClassTotientSeries/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+  - source: ErdosProblems.Erdos249.two_sided_prime_isolation
+    lean: Erdos249257.ExternalVerification249ResidueClassTotientSeries.two_sided_prime_isolation
+    module: ExternalVerification249ResidueClassTotientSeries/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+  - source: ErdosProblems.Erdos249.irrational_dyadicValue_of_pulses
+    lean: Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_dyadicValue_of_pulses
+    module: ExternalVerification249ResidueClassTotientSeries/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+    note: Challenge exposes the six endpoints in literal Mathlib-only vocabulary, and
+      Comparator binds every endpoint by name.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
+palomar_qualification:
+  status: awaiting-review
+  selected_project: formal_math/erdos257_period_noncollapse
+  comparator_config: formal_math/erdos257_period_noncollapse/ExternalVerification249ResidueClassTotientSeries/comparator.json
+  formalization_metadata: formal_math/erdos257_period_noncollapse/ExternalVerification249ResidueClassTotientSeries/formalization.yaml
+  source_module: formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean
+  release_mirror: ExternalVerification249ResidueClassTotientSeries
+  repository_scope: private_source_mirrored_into_the_palomar_release_tree_not_yet_pinned_at_a_public_commit
+  challenge_dependency_boundary: Mathlib_only
+  replay_status: comparator_replay_and_axiom_print_pending_first_public_ci_run_for_this_entry
+  blockers:
+  - result packet is not present in a public repository at a pinned full commit SHA
+  - comparator positive acceptance and deliberate-negative mismatch rejection have not
+    been recorded on a supported runner for this entry
+  - the source module was authored against Lean v4.29.1 in the private tree and is
+    ported byte-identically into the v4.30.0 release tree; the first release build is
+    the toolchain check
+editorial_assessment:
+  plectis_signal: >-
+    The only unconditional irrationality theorem in the #249 corpus, settling a
+    two-parameter family of special values of reduced totient series. The private
+    research packet bands the result auxiliary and not novel: the separation mechanism
+    is Erdős 1948, and the object is φ(n) mod m rather than φ(n). The prior-art hold
+    reason "prior art that destroys the stated delta" is live until a targeted search
+    settles whether an exact prior statement of the reduced-series family exists.
+  prior_art_state: >-
+    research_packet.json exact_results[59] records "PRIOR ART: the mechanism is Erdős
+    1948; no exact prior statement located (nearest: Vandehey arXiv:1206.0340, the AFP
+    Erdős–Straus entry); labelled auxiliary, not novel."
+  sharpness_gap: >-
+    The source docstring asserts A_1 = 0 and A_2 = 3/4, so that 3 ≤ m is sharp. No Lean
+    declaration in this development evaluates totientResidueValue 1 or
+    totientResidueValue 2, so the released description states no sharpness claim.

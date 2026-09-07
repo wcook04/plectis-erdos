@@ -1,0 +1,154 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "prime_pole_principal_residue_criterion_v0",
+  "status": "adjudicated_elementary_local_p_adic_cancellation_identity_with_source_specific_finite_factorial_gap_consumer",
+  "problem_id": "erdos_68",
+  "purpose": "Give the finite maximal-q-adic cancellation law its honest local-algebra classification, distinguish Wilson's endpoint input from denominator survival, and prevent a finite residue calculation from being read as a p-adic or irrationality theorem for the infinite factorial-gap series.",
+  "review_unit": {
+    "result_family": "finite_factorial_gap_maximal_q_adic_stratum_cancellation",
+    "exact_result_id": "prime_pole_principal_residue_criterion",
+    "source_generation": {
+      "repository_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "packet_sha256": "6853efcaeb284b987723c5439872e01f8104d9420ffa45623b8c8e2de795403d",
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+      "formal_source_sha256": "95417e6044ee30c58907a8a38e2c6c369fa43e06706fff56d8f3e5a6949d2ea3",
+      "ordinary_explanation": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterionLab.md",
+      "ordinary_explanation_sha256": "6a9f1375a12f8b1238ed6c4d067b1d60d2cd8366ced4c45898384315f780b408",
+      "exact_probe": "formal_math/probes/erdos68_prime_pole_scan.py",
+      "exact_probe_sha256": "9899326f3b8d50f88dff449913de2b999961da14acb483fe9c0b6913c80048e2"
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "conclusion_confidence_class": "strong_internal_provisional_case",
+    "terminology_confidence_class": "externally_human_adjudicated_for_standard_p_adic_valuation_and_Wilson_terminology_only",
+    "novelty_confidence": "no_priority_claim; routine finite local-denominator algebra in a source-specific factorial-gap setting",
+    "recommended_terminology": "maximal q-adic stratum cancellation formula, with q-adic valuation and common-denominator numerator stated explicitly",
+    "discouraged_terminology": [
+      "prime-pole theorem as if it were established terminology",
+      "principal residue criterion as if it were a classical named result",
+      "Wilson denominator-survival theorem",
+      "p-adic proof of factorial-gap irrationality"
+    ],
+    "significance": "Moderate as a rigorous route-boundary result: it identifies the exact finite obstruction to turning a large displayed q-adic denominator into a reduced-prefix denominator, and its explicit cancellation witnesses retire the tempting one-Wilson-hit shortcut. It has no standalone novelty or endpoint significance.",
+    "expert_judgment_that_can_change_state": "An expert can only upgrade the attribution posture by locating an established source that uses this exact maximal-stratum formulation. Mathematical reach changes only with a cofinal noncancellation theorem together with an Archimedean residue-avoidance bridge."
+  },
+  "closest_known_result": {
+    "relation": "uses_a_classical_endpoint_congruence_but_requires_an_additional_finite_cancellation_identity",
+    "statement": "Wilson's theorem supplies an endpoint divisibility q | (q-1)!+1, hence an endpoint maximal-hit candidate in the factorial-gap prefix. The source theorem instead sums every summand of maximal q-adic valuation after common-denominator clearing; lower strata vanish modulo q and the remaining cofactor inverses may cancel.",
+    "exact_delta": "Wilson alone gives no reduced-prefix survival. The Lean theorem gives the exact finite criterion C_(q,M) != 0, while the q=139 and q=2593 identities prove that a Wilson endpoint can be cancelled by other maximal hits. No claim is made that this finite formula is a new p-adic theorem."
+  },
+  "primary_sources": [
+    {
+      "id": "waring_1770_meditationes_algebraicae",
+      "title": "Meditationes Algebraicae",
+      "author": "Edward Waring",
+      "venue": "Cambridge, 1770; third edition, 1782",
+      "exact_anchor": "The third edition records Wilson's factorial congruence as Problem 5; the relevant modern name is Wilson's theorem.",
+      "supports": "Only the classical endpoint congruence used to exhibit a maximal q-adic hit.",
+      "does_not_support": "The maximal-stratum common-denominator identity, the two cancellation examples, a cofinal noncancellation theorem, or any factorial-gap irrationality conclusion."
+    },
+    {
+      "id": "source_prime_pole_criterion_lean",
+      "title": "PrimePoleCriterion.lean",
+      "author": "Will Cook, with large-language-model agents as production tools",
+      "venue": "repository formal source",
+      "exact_anchor": "theorem factorialGapPrefixLCMNumerator_mod_prime; theorems primePoleResidue_139_cancel and primePoleResidue_2593_cancel",
+      "supports": "The exact finite local-algebra statement and the two displayed modular cancellations under the pinned source hash.",
+      "does_not_support": "External priority, an established standard name, a valuation of the infinite series, a cofinal theorem, or irrationality."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "kind": "exact_internal_counterexamples",
+      "locator": "PrimePoleCriterion.lean: primePoleResidue_139_cancel and primePoleResidue_2593_cancel; PrimePoleCriterionLab.md endpoint-cancellation table",
+      "finding": "At M=q-1, the Wilson endpoint is a maximal hit at q=139 and q=2593, but the inverse sums of all maximal-hit cofactors vanish modulo q.",
+      "effect": "The endpoint hit does not force q-adic denominator survival; a one-hit Wilson argument is false."
+    },
+    {
+      "kind": "primary_literature_and_exact_phrase_search",
+      "locator": "Waring/Wilson historical search and exact-formula queries for factorial principal residue and p-adic common-denominator cancellation, performed 2026-08-25",
+      "finding": "Wilson's theorem is the clear classical ingredient. No primary source was located for the source-specific factorial-gap maximal-stratum formula or for 'prime-pole'/'principal residue' as standard theorem names.",
+      "effect": "Treat the names as descriptive local labels and do not infer novelty from the absence of a matching exact phrase."
+    },
+    {
+      "kind": "formal_scope_inspection",
+      "locator": "PrimePoleCriterion.lean module header and factorialGapPrefixLCMNumerator_mod_prime",
+      "finding": "The formal result is finite in M and works only with the literal finite prefix LCM. It assigns no q-adic value to the infinite real tail.",
+      "effect": "No p-adic analytic continuation, cofinal prime statement, or irrationality consequence is available from this source alone."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "For a finite factorial-gap prefix and a prime q, Lean proves that after clearing by the literal prefix LCM, reduction of the full maximal q-adic power is governed exactly by the sum of inverse cofactors from all maximal q-adic hits modulo q. Wilson supplies one endpoint hit but does not ensure that this finite residue is nonzero.",
+    "forbidden_wording": [
+      "Wilson's theorem proves survival of the prime-power denominator.",
+      "The prime-pole calculation gives a q-adic value of the infinite factorial-gap series.",
+      "The local scan proves cofinal noncancellation or irrationality.",
+      "Prime-pole principal residue is a classical named theorem.",
+      "The returned scan through 200000 is locally regenerated evidence."
+    ],
+    "open_boundary": "A target-facing route still needs a cofinal noncancellation statement and then a proof that the prescribed residue class misses the associated short Archimedean interval. Nonvanishing alone is explicitly insufficient when the cofactor changes the interval scale."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "finite rational-denominator screens for factorial-gap series",
+    "disposition": "subordinate beneath the canonical carry-to-rationality boundary as one finite denominator-survival diagnostic; consolidate all Wilson-endpoint discussion here and retire any standalone Wilson-to-irrationality story",
+    "paper_disposition": "technical appendix or a short route-killing box in the finite-screen section, headed 'maximal p-adic strata can cancel'",
+    "comparator_advisory": "No additional interface is justified: the formula is a finite local consumer of existing factorial-gap arithmetic, while its target-facing bridge is unproved. The named Lean theorem remains inspectable source evidence, not a new standalone programme claim.",
+    "human_understanding_delta": "The exact finite question becomes visible: not whether Wilson produces a q-hit, but whether all top q-adic contributions cancel after common-denominator clearing. The two cancellation witnesses preserve that natural friction."
+  },
+  "reviewer_attention_budget": {
+    "routine": "Once the literal prefix LCM is fixed, lower q-adic strata have a q factor after division and only maximal strata remain modulo q.",
+    "load_bearing": "The valuation split and the invertibility of every maximal-hit cofactor modulo q; the complete inverse sum, not the endpoint term, controls survival.",
+    "externally_sourced": "Wilson's endpoint congruence only. The core identity is checked in the pinned Lean source; no external p-adic theorem is being imported.",
+    "still_unverified": "Cofinal noncancellation, the joint (C_p,w,t) Archimedean avoidance law, and any connection to the infinite factorial-gap series.",
+    "where_to_slow_down": "Verify that the maximal exponent is attained and no higher exponent occurs; then examine all maximal hits. Do not replace the full residue sum by the Wilson endpoint or the returned 200000 scan.",
+    "review_act": "Check one maximal-stratum reduction modulo q and one cancellation witness; retain the finite-screen interpretation unless a cofinal noncancellation theorem is supplied."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "prime_pole_principal_residue_criterion@packet-2026-08-25-v0",
+    "evidence_class": "Finite Lean-checked maximal-q-adic cancellation identity with exact modular counterexamples; Wilson's endpoint congruence is externally sourced.",
+    "closest_known_result": "Wilson's theorem is the classical endpoint congruence; q-adic valuation and common-denominator residue splitting are standard local algebra. No standard source for the descriptive 'prime-pole' name was located.",
+    "comparison_relation": "Wilson supplies a maximal q-adic hit, but after clearing the prefix LCM every maximal hit contributes to the residue sum. The complete inverse-cofactor sum, not the endpoint term, controls denominator survival.",
+    "exact_delta": "The durable contribution is a finite route-killing diagnosis: explicit q=139 and q=2593 cancellations refute the one-Wilson-hit shortcut while preserving the exact finite criterion.",
+    "disconfirming_evidence": "The source is finite in the prefix length; no q-adic value of the infinite series, cofinal noncancellation, or Archimedean residue-avoidance bridge is present.",
+    "confidence": {
+      "level": "high_for_finite_identity_and_cancellation_witnesses; routine_for_Wilson_attribution; low_for_any_infinite-series_consequence",
+      "basis": "Pinned Lean/probe hashes and explicit modular witnesses are inspectable; the cofinal bridge is absent."
+    },
+    "significance": "Moderate route-boundary value: it tells the proof fleet exactly why a tempting Wilson shortcut fails. It is not a standalone novelty claim or #68 endpoint advance.",
+    "claim_ceiling": "State the finite maximal-stratum residue criterion and the two cancellation examples. Do not call it a classical principal-residue theorem, a p-adic infinite-series result, or an irrationality proof.",
+    "hard_step": "Establish cofinal noncancellation and then couple it to a short Archimedean residue-avoidance estimate; finite scans cannot supply either.",
+    "open_boundary": "The route remains a finite denominator-survival diagnostic under the canonical factorial-carry endpoint; no independent Comparator interface or public endpoint claim is justified.",
+    "bounded_expert_review_act": "Inspect the maximal-valuation split and verify that all maximal-hit cofactors enter the residue; test the two displayed cancellation primes before considering any infinite extrapolation.",
+    "reentry_trigger": "Re-enter on a source generation that proves a cofinal noncancellation or an exact external formulation of this maximal-stratum identity.",
+    "source_generation_binding": {
+      "packet_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "formal_source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "formal_source_sha256": "95417e6044ee30c58907a8a38e2c6c369fa43e06706fff56d8f3e5a6949d2ea3",
+      "probe_sha256": "9899326f3b8d50f88dff449913de2b999961da14acb483fe9c0b6913c80048e2",
+      "primary_source_anchor": "Waring, Meditationes Algebraicae (1770/1782), Wilson factorial congruence; exact modern attribution is Wilson's theorem.",
+      "parity_status": "Finite Lean identity and exact probe are pinned; the larger returned scan and all cofinal claims remain unpromoted."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "packet_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "formal_source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c"
+    },
+    "claim_guard": "Finite maximal-stratum cancellation, Wilson's endpoint input, and any infinite/cofinal statement remain separate evidence classes.",
+    "reentry_trigger": "Re-enter if packet, finite source/probe, or the cofinal bridge changes."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "finite Lean verification and exact local computation",
+    "output_stage": "attribution_and_expert-understanding support",
+    "artifact": "prime_pole_principal_residue_criterion_v0 prior-art route",
+    "human_understanding_delta": "Separates a checked finite maximal-stratum identity, Wilson's classical endpoint input, and the unproved cofinal/Archimedean bridge; it turns two cancellations into an explicit reason a natural route fails.",
+    "verification_state": "Pinned Lean source and exact probe hashes were inspected. The local scan through q<=3000 is the stated exact replay; the larger returned horizon is not revalidated or promoted here.",
+    "publication_or_review_state": "Internal novelty and attribution adjudication only; no publication, Comparator change, or claim of independent human review.",
+    "canonicalization_state": "One finite denominator-survival diagnostic is placed under the carry-characterization mechanism; no reviewer card is created.",
+    "unresolved_downstream_bottleneck": "A cofinal noncancellation theorem plus residue-class avoidance in the target short interval.",
+    "next_stage_owner": "Mathematical Assimilation Steward if a source-current cofinal producer lands; Novelty Observatory only on a new immutable review generation."
+  }
+}

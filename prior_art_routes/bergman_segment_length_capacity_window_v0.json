@@ -1,0 +1,232 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "bergman_segment_length_capacity_window",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_classical_Bergman_and_area_mechanisms_with_apparently_unlocated_sharp_segment_constant_and_two_root_application",
+  "problem_id": "erdos_1041",
+  "purpose": "Classify the sharp Bergman segment estimate and its two-root lemniscate consumer while keeping ordinary proof, classical input, finite measurement, and open endpoint separate.",
+  "programme_disposition": {
+    "canonical_mechanism_family": "component-capacity and Bergman/coarea control for polynomial lemniscate paths",
+    "disposition": "subordinate under erdos1041_constant_factor_component_perimeter as the canonical sharp two-root analytic consumer; consolidate rather than create a duplicate endpoint",
+    "paper_disposition": "supporting lemma in 'Exact component capacity and the sharp two-root Bergman window'",
+    "comparator_advisory": "No duplicate independent interface; surface the ordinary sharp inequality and two-root consumer with explicit evidence labels under the existing #1041 mechanism."
+  },
+  "adjudication_currentness": {
+    "status": "ordinary_source_card_packet_snapshot_adjudicated",
+    "bound_snapshot": {
+      "source_commit": "1bdd1720b8f27410a1a4228d20182522fde64f11",
+      "source_sha256": "1d0cf574fe023ea04842debb9e79cc72050f096e823628550dad968a3800c319",
+      "research_packet_commit": "c8031c94ec2e1833cb59ed8555655c4211535adc",
+      "research_packet_sha256": "7fc3b7e8d23a08b521df3c538f2eb426b5ead959525f1a6b6ad96912d937f36d",
+      "reviewer_card_commit": "c2722562973a545fdb64bc66913aaee96a29004a",
+      "reviewer_card_sha256": "b28945e9dca699bfd2ccd8e31a425268f5be7bf8b5c8636a09598c449df93873"
+    },
+    "claim_guard": "Only the ordinary sharp Bergman segment inequality, exact two-root capacity consumer, and their stated scope are admitted; no Lean proof, binding-level theorem, global capacity-geodesic result, priority, or #1041 solution.",
+    "reentry_trigger": "Re-enter if the source proof, reviewer card, packet, exact trace antecedent, binding-window theorem, or degenerate-stratum result changes."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/bergman_segment_length_capacity_window.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BergmanSegmentLengthBound.md",
+    "source_commit": "1bdd1720b8f27410a1a4228d20182522fde64f11",
+    "source_result_id": "bergman_segment_length_bound_and_capacity_window"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos1041_bergman_segment_length_bound_and_capacity_window@source_1bdd1720",
+    "source_generation": {
+      "source_sha256": "1d0cf574fe023ea04842debb9e79cc72050f096e823628550dad968a3800c319",
+      "reviewer_card_sha256": "b28945e9dca699bfd2ccd8e31a425268f5be7bf8b5c8636a09598c449df93873"
+    },
+    "evidence_class": "Authored ordinary Bergman/potential-theory proof with finite calibration; classical Bergman-Carleson and Pólya-Crane inputs are externally sourced, not Lean-checked.",
+    "comparison_relation": "The RKHS restriction framework, polynomial-preimage area bound, and lemniscatic capacity language are classical. The exact diameter L1 constant, univalent extremal, and two-root capacity window are source-specific and only apparently unlocated in the bounded search.",
+    "closest_known_result": "Hastings (1975) supplies Bergman-Carleson restriction context; Crane (2004) supplies the sharp polynomial preimage area bound; Sète--Liesen (2017) supplies conventional lemniscatic-domain capacity framing.",
+    "exact_delta": "Kernel positivity gives a sharp conformal-diameter estimate, and the two-root component transfer yields a degree-free capacity window outside [v,coth(1)v).",
+    "disconfirming_evidence": "Finite numerical reach is not theorem coverage; the binding t=v case, degenerate multiple critical points, and near-Fekete equality stratum remain open. Non-location is not priority evidence.",
+    "confidence": {
+      "ordinary_segment_inequality": "medium_internal_provisional",
+      "classical_attribution": "high_internal_provisional",
+      "exact_two_root_consumer": "medium_internal_provisional",
+      "global_erdos1041_endpoint": "low_unresolved"
+    },
+    "claim_ceiling": "An ordinary Bergman-kernel calculation gives the sharp conformal-diameter estimate and, in the exactly two-root component, the outside-[v,coth(1)v) capacity window; it is not Lean-checked and does not reach the binding or global #1041 endpoint.",
+    "significance": "High within #1041 as a positive analytic route-boundary, but subordinate to the arbitrary-component perimeter mechanism and not a global solution.",
+    "hard_step": "Reach the binding critical-level window and control degenerate first merges where the Green-capacity defect can vanish.",
+    "open_boundary": "No Lean proof, global capacity-geodesic theorem, near-Fekete theorem, or Erdős #1041 solution follows.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Exact component capacity and the sharp two-root Bergman window",
+      "supersession_or_consolidation": "Subordinate this two-root analytic consumer beneath erdos1041_constant_factor_component_perimeter; keep Bergman, capacity, and finite measurement as one evidence-layered object.",
+      "why_care": "It converts a loose geometric bottleneck into a sharp positive estimate while making the binding gap explicit."
+    },
+    "comparator_advisory": {
+      "disposition": "public_card_only_subordinate_no_duplicate_interface",
+      "proposition_scope": "Surface the ordinary sharp inequality and two-root consumer with explicit evidence labels; reuse the existing #1041 component-perimeter interface instead of adding a duplicate.",
+      "independent_interface_justified": false,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Check the sharp Bergman trace calculation, Green-defect normalization, and exact two-root transfer against the cited classical frameworks.",
+    "reentry_trigger": "Reopen on an exact antecedent for the trace constant, a theorem at t=v, or a degenerate-stratum result."
+  },
+  "classification": {
+    "Bergman_kernel_RKHS_mechanism": "classical",
+    "restriction_measure_context": "established_Bergman_Carleson_embedding_theory_Hastings_1975",
+    "polynomial_preimage_area_bound": "classical_Polya_case_and_sharp_Crane_2004_generalization",
+    "exact_diameter_L1_constant_and_univalent_extremal": "apparently_unlocated_in_bounded_search",
+    "two_root_lemniscate_capacity_window": "source_specific_proved_application_apparently_unlocated",
+    "measured_reach": "finite_computation_not_theorem",
+    "priority_claim": "none_pending_specialist_confirmation",
+    "recommended_terminology": "sharp Bergman segment inequality",
+    "discouraged_terminology": ["new Bergman kernel method", "sharp Koebe theorem", "proof of the capacity-geodesic conjecture", "solution of Erdős Problem 1041"],
+    "mathematical_interest": "The exact restriction norm is attained by a conformal derivative and becomes asymptotically sharp on a genuine equality family, so it is both a clean Hilbert-space extremal calculation and a quantitatively meaningful geometric consumer.",
+    "reusable_scope": "Conformal images of fixed interior curves where Euclidean area is the natural $A^2$ norm and a restriction functional can be computed more sharply than generic univalent distortion.",
+    "why_it_matters": "It turns a loose proof bottleneck into a sharp positive theorem and confines the two-root capacity obligation to a degree-independent neighborhood of the merge level."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_herzog_piranian_1958",
+      "title": "Metric properties of polynomials",
+      "authors": ["Paul Erdős", "Fritz Herzog", "George Piranian"],
+      "venue": "Journal d'Analyse Mathématique 6 (1958), 125-148",
+      "url": "https://users.renyi.hu/~p_erdos/1958-05.pdf",
+      "exact_anchor": "Problem 5 on page 139 gives the originating short-path question in the polynomial lemniscate.",
+      "supports": "The historical problem and its metric-polynomial setting.",
+      "does_not_support": "The Bergman segment estimate, the capacity window, or current numerical reach."
+    },
+    {
+      "id": "hastings_1975_Bergman_Carleson",
+      "title": "A Carleson measure theorem for Bergman spaces",
+      "author": "William W. Hastings",
+      "venue": "Proceedings of the American Mathematical Society 52 (1975), 237-241",
+      "doi": "10.1090/S0002-9939-1975-0374886-9",
+      "url": "https://www.ams.org/journals/proc/1975-052-01/S0002-9939-1975-0374886-9/",
+      "exact_anchor": "The main theorem characterizes measures supporting norm embeddings from Bergman spaces, establishing the ambient restriction-measure framework.",
+      "supports": "That Bergman norms against lower-dimensional measures belong to established Carleson-embedding theory.",
+      "does_not_support": "The exact $A^2$-to-$L^1$ norm on a diameter, its conformal extremal, or the lemniscate application."
+    },
+    {
+      "id": "crane_2004_polynomial_preimages",
+      "title": "The areas of polynomial images and pre-images",
+      "author": "Edward Crane",
+      "venue": "Bulletin of the London Mathematical Society 36 (2004), 786-792",
+      "doi": "10.1112/S0024609304003509",
+      "url": "https://doi.org/10.1112/S0024609304003509",
+      "arxiv": "https://arxiv.org/abs/math/0302189",
+      "exact_anchor": "The preimage theorem proves the sharp area bound $\\operatorname{Area}(p^{-1}(K))\\le\\pi^{1-1/n}\\operatorname{Area}(K)^{1/n}$; the disk case is identified as Pólya's classical inequality.",
+      "supports": "The area ceiling $\\operatorname{Area}\\{|f|<t\\}\\le\\pi t^{2/n}$ used in the source theorem.",
+      "does_not_support": "The Bergman trace constant or the two-root critical-level reduction."
+    },
+    {
+      "id": "sete_liesen_2017_lemniscatic_domains",
+      "title": "On conformal maps from multiply connected domains onto lemniscatic domains",
+      "authors": [
+        "Olivier Sète",
+        "Jörg Liesen"
+      ],
+      "venue": "Computational Methods and Function Theory 17 (2017), 1--15",
+      "url": "https://arxiv.org/abs/1501.01812",
+      "exact_anchor": "Section 2 states Walsh's lemniscatic-domain theorem and records the Green function and logarithmic-capacity normalization for multiply connected complements.",
+      "supports": "The conventional Green-function/capacity framework for multiply connected polynomial-preimage geometry.",
+      "does_not_support": "The exact outside-root additive defect identity or the Bergman two-root consumer."
+    }
+  ],
+  "mechanism_comparison": {
+    "classical_layer": "The disk Bergman kernel represents evaluation, Carleson theory frames restriction measures, Riemann--Hurwitz counts branch points, and Pólya--Crane controls polynomial-preimage area.",
+    "exact_local_layer": "Kernel positivity on the real diameter makes the constant phase extremal and yields an explicit sharp $L^1$ trace norm with a univalent equality case.",
+    "problem_consumer": "A degree-two Blaschke representation identifies the descent arc with a conformal diameter, so the exact norm becomes a root-to-root length bound.",
+    "capacity_effect": "The Pólya area ceiling cancels the degree-dependent scale and leaves the threshold $t/v\\ge\\coth(1)$.",
+    "remaining_throat": "The binding limit $t=v$, degenerate multiple critical points, and the near-Fekete equality stratum remain outside the theorem."
+  },
+  "component_capacity_assessment": {
+    "classification": "classical_Green_capacity_mechanism_with_source_specific_exact_outside_root_decomposition_no_priority_claim",
+    "search_result": "A bounded search located Walsh lemniscatic-domain and modern Green/capacity treatments but no verbatim outside-root defect identity.",
+    "safe_wording": "An ordinary Green-function decomposition gives an exact component-capacity defect, assembled from classical potential-theory ingredients and used here as a source-specific input to the two-root Bergman estimate.",
+    "reentry_condition": "An exact antecedent from a potential-theory specialist or a source stating the same excluded-root sum formula. Non-location alone never upgrades novelty."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Bergman space restriction real interval sharp inequality integral absolute value",
+      "Bergman conformal map diameter length area inequality",
+      "Bergman Carleson measure line segment exact norm",
+      "polynomial lemniscate two-root path Bergman kernel"
+    ],
+    "result": "The bounded search located the established Bergman-Carleson restriction framework and sharp polynomial-preimage area theory, but not the exact diameter $L^1$ norm, its univalent extremal, or the two-root $\\coth(1)$ capacity-window statement.",
+    "boundary": "The non-location supports an apparently unlocated scoped result pending specialist review, never a priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "An ordinary Bergman-kernel calculation gives a sharp conformal-diameter length estimate; in an exactly two-root polynomial-lemniscate component it proves the capacity path bound outside the degree-free interval $[v,\\coth(1)v)$.",
+    "forbidden_wording": ["The Bergman or Carleson mechanism is new.", "The numerical sample coverage is theorem coverage.", "A grid root count certifies the two-root hypothesis.", "The result reaches the binding merge level or degenerate regular-polygon family.", "The full capacity-geodesic conjecture or Erdős Problem 1041 is proved."],
+    "nonclaims": ["not_a_priority_claim", "not_Lean_checked", "not_a_global_capacity_theorem", "not_a_near_Fekete_theorem", "not_erdos_1041_solution"]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/bergman_segment_length_capacity_window.card.json",
+      "effect": "Create a source-rich public-story boundary for a high-value current Erdős Problem 1041 result."
+    },
+    {
+      "consumer": "Erdős Problem 1041 proof fleet",
+      "effect": "Use the exact area-sensitive criterion at every admissible two-root hub; focus new mathematics on the binding window and degenerate first merges."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present proved sharp inequality, source-specific consumer, and measured reach as three separate evidence classes."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The current Erdős Problem 1041 Bergman result is classified as a sharp apparently unlocated diameter constant and high-value source-specific application built from classical Bergman-Carleson and Pólya-Crane mechanisms.",
+    "do_not_redo": ["Do not describe the RKHS kernel argument or polynomial-preimage area bound as new.", "Do not merge the 104-of-108 measurement into the theorem claim.", "Do not claim the theorem at $t=v$ or on degenerate multi-lobe first merges."],
+    "ranked_open_throats": ["specialist check for the exact sharp diameter trace constant", "binding critical-level window", "degenerate multi-root first merges and near-Fekete equality stratum"],
+    "next_wake_condition": "A literature match for the exact trace constant, a theorem at the binding window, a degenerate-stratum result, or another uncovered high-value programme head appears."
+  },
+  "reviewer_attention_budget": {
+    "recommended_minutes": "12--15",
+    "attention_class": "ordinary_proof_and_external_framework_review",
+    "review_goal": "Check the sharp Bergman norm, the Green-defect normalization, the exact two-root transfer, and the ordinary-proof/computation boundary.",
+    "automation_boundary": "Finite replay calibrates examples only; no Lean or specialist review is present.",
+    "attribution_reentry": "Exact formula/constant matches from Bergman or potential-theory specialists.",
+    "review_act": "Check the sharp Bergman trace calculation, Green-defect normalization, and exact two-root transfer against the cited classical frameworks; do not treat finite reach as theorem evidence."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "component-capacity and Bergman/coarea control for polynomial lemniscate paths",
+    "disposition": "subordinate under erdos1041_constant_factor_component_perimeter as the canonical sharp two-root analytic consumer",
+    "comparator_advisory": "No duplicate independent interface: the existing #1041 mechanism interface is sufficient. Role 3 may surface the exact component-capacity identity as a status-tagged ordinary-proof component with its two-root consumer and boundaries adjacent.",
+    "paper_disposition": "supporting lemma",
+    "paper_target_section": "Exact component capacity and the sharp two-root Bergman window",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "Sharp two-root progress, but narrower than the existing arbitrary-component Erdős Problem 1041 flagship.",
+      "evidence_class": "ordinary proofs, classical source framework, and finite calibration",
+      "hard_step": "binding and degenerate geometry where the Green defect may vanish",
+      "prior_art_uncertainty": "medium for the exact scoped formulas; no priority claim",
+      "open_boundary": "no global capacity-geodesic theorem or Erdős Problem 1041 solution",
+      "demoted_predecessor": null
+    }
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "Exact component capacity and the sharp two-root Bergman window",
+    "canonical_mechanism_family": "component-capacity and Bergman/coarea control for polynomial lemniscate paths",
+    "relation": "One supporting section beneath the constant-factor component-perimeter flagship consolidates the exact trace, Green defect, area transfer, and two-root window.",
+    "understanding_delta": "Names the capacity information discarded by global estimates and explains the surviving binding/degenerate boundary.",
+    "evidence_boundary": "Ordinary proofs and finite calibration only; no Lean, independent review, or endpoint theorem.",
+    "hard_step": "Binding and degenerate/multi-root geometry, particularly zero-defect extremal configurations.",
+    "meaningful_failed_route": "Global capacity and generic distortion throw away component-specific information; the refined defect still vanishes on the extremal shell.",
+    "open_remainder": "Binding window, degenerate merges, arbitrary components, capacity-geodesic conjecture, and Erdős Problem 1041."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification_and_partial_exposition",
+    "output_stage": "reviewer_ready_source_positioned_supporting_mechanism",
+    "artifact": "bergman_segment_length_capacity_window",
+    "human_understanding_delta": "The sharp trace and exact component-capacity loss are now one attributed mechanism with the computation and endpoint boundaries visible.",
+    "verification_state": "Two ordinary proofs at current hashes plus calibrated finite replay; no Lean or independent review.",
+    "publication_or_review_state": "Eligible now for status-tagged public paper, theorem-card, and exhibition visibility. The ordinary proofs and finite replay remain distinct, and potential-theory review is downstream rather than a release gate.",
+    "canonicalization_state": "One two-root analytic support object beneath the broader Erdős Problem 1041 flagship.",
+    "unresolved_downstream_bottleneck": "Binding/degenerate geometry and exact specialist antecedent review.",
+    "next_stage_owner": "Role 3 for status-tagged supporting projection, Mathematics Refinery for consolidation, and potential-theory specialists for downstream review."
+  },
+  "release_disposition": "status_tagged_public_supporting_mechanism",
+  "release_disposition_reason": "The ordinary proofs, calibrated replay, source framework, exact two-root scope, and binding/degenerate boundary are inspectable. Public status-tagged visibility is appropriate; consolidation under the broader #1041 mechanism, not reviewer absence, is the reason against a second standalone Comparator family.",
+  "publication_eligibility": {
+    "class": "status_tagged_public_supporting_mechanism",
+    "basis": "two inspectable ordinary proofs, pinned classical framework, calibration explicitly separated from proof, exact two-root scope, and adjacent binding/degenerate boundary",
+    "statement_firewall": "Present the component-capacity identity and two-root Bergman consumer as ordinary proof. Do not imply Lean verification, a global capacity-geodesic theorem, control of binding or degenerate levels, or an Erdős #1041 solution."
+  }
+}

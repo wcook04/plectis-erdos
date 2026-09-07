@@ -1,0 +1,300 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "qapery_two_form_height_decay_obstruction",
+  "source_result_ids": [
+    "qapery_unimodular_height_decay_obstruction",
+    "qapery_selector_remainder_nullspace_escape",
+    "qapery_stored_selector_normalized_remainder_no_go",
+    "qapery_joint_local_real_unimodular_opening"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_consolidated_modular_to_real_selector_failure_repair_and_height_boundary",
+  "problem_id": "erdos_1049",
+  "adjudication_currentness": {
+    "status": "formal_source_and_finite_receipt_current_claim_bound",
+    "bound_snapshot": {
+      "formal_source_commit": "4cdb58efad5d0413ffd04f3aa15293068de991f5",
+      "formal_source_sha256": "55e53268f87b5f1eeb6b3749bd1ebc2340adf4db63bfa199bfecec3aaa2341b6",
+      "finite_receipt_sha256": "d275bf0cc9c3de14bc64314070b93a912de0019d9995b94b1368eb2cc71e25eb",
+      "reviewer_card_commit": "ac69cca1d14ee4fe44c0dfab71a918efd78a8fae",
+      "reviewer_card_sha256": "3118e3b18db3b2b08c469e5581e00d151b32acf734e0c7402f559ee96fa9dde2"
+    },
+    "claim_guard": "The general two-form core is Lean-checked and the selector evidence is finite and range-limited; no all-start height law, cofinal decay, irrationality, priority, or Erdős #1049 solution is claimed.",
+    "reentry_trigger": "Re-enter only if an all-start construction, a closer primary cost law, or the source/card/packet generation changes."
+  },
+  "purpose": "Separate the classical integer-linear-form irrationality mechanism from the exact two-selector determinant budget that diagnoses the local q-Apery recombination route.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/qapery_two_form_height_decay_obstruction.card.json",
+    "source_commit": "4cdb58efad5d0413ffd04f3aa15293068de991f5",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean",
+    "source_result_ids": [
+      "qapery_unimodular_height_decay_obstruction",
+      "qapery_selector_remainder_nullspace_escape",
+      "qapery_stored_selector_normalized_remainder_no_go",
+      "qapery_joint_local_real_unimodular_opening"
+    ],
+    "finite_receipt": "state/formal_math/erdos257_period_noncollapse/erdos1049_qapery_joint_local_real_lattice_receipt.json"
+  },
+  "review_unit": {
+    "result_family": "erdos1049_qapery_two_form_height_decay_obstruction",
+    "exact_result_ids": [
+      "qapery_unimodular_height_decay_obstruction",
+      "qapery_selector_remainder_nullspace_escape",
+      "qapery_stored_selector_normalized_remainder_no_go",
+      "qapery_joint_local_real_unimodular_opening",
+      "qapery_remainder_versus_integerisation_at_three_halves",
+      "qapery_cleared_determinant_carries_determinant_specific_local_content"
+    ],
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean",
+      "formal_source_commit": "4cdb58efad5d0413ffd04f3aa15293068de991f5",
+      "formal_source_sha256": "55e53268f87b5f1eeb6b3749bd1ebc2340adf4db63bfa199bfecec3aaa2341b6",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "research_packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "reviewer_card": "docs/formal_math/reviewer_cards/qapery_two_form_height_decay_obstruction.card.json",
+      "reviewer_card_commit": "ac69cca1d14ee4fe44c0dfab71a918efd78a8fae",
+      "formalization_scope": "five_general_Lean_declarations_plus_range_limited_exact_receipts"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The exterior determinant estimate and rational linear-form gap are elementary; the consequential boundary is separating a Lean-checked general core from finite q-Apéry selector evidence and from any all-start asymptotic claim.",
+    "slow_down_at": "Check determinant preservation, lower versus upper height bounds, the exact n=1..7 range, and the inference gap between finite basis reduction and cofinal analytic decay. Backend non-exposure is not arithmetic nonexistence.",
+    "automation_can_establish": [
+      "The five general Lean declarations and pinned source parity",
+      "Exact finite modular, normalized-remainder, joint-real, rational-bracket, and local-content receipts",
+      "That no all-start height law, cofinal decay, or irrationality claim is present"
+    ],
+    "human_judgment_required": [
+      "Whether the two-form height-decay language is the clearest classical linear-form framing",
+      "Whether the finite selector cost is genuinely source-specific after comparison with q-Apéry and determinant literature",
+      "Which all-start construction could prove a favorable height upper bound together with cofinal decay"
+    ],
+    "review_act": "One bounded expert act: audit the determinant/height quantifiers and finite-range labels, then redirect attention to an all-start source-derived recombination rather than extending the finite horizon."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "two-form exterior determinant height-decay boundary for q-Apéry recombination",
+    "disposition": "admit_one_route_killing_failure_boundary_and_consolidate_selector_descendants",
+    "consolidation_relation": "Make this the parent for modular nullspace escape, normalized-remainder failure, joint local-real repair, rational-base integerisation, and determinant-specific local content; keep Casoratian recurrence and primitive-content normalization as distinct mechanisms.",
+    "comparator_advisory": "A layered Comparator posture is justified: expose the exact general Lean determinant/rational-gap core now, while labeling all q-Apéry costs and local content as finite computation evidence with explicit ranges.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Two-form recombination: determinant cost before decay",
+      "supersession_or_consolidation": "Replace parallel selector narratives with one parent method-boundary section and a finite-certificate appendix.",
+      "reason": "It prevents circular asymptotic reasoning while preserving the precise theorem that a successful all-start construction would still need."
+    }
+  },
+  "classification": {
+    "ambient_framework": "integer_linear_forms_Pade_approximation_and_linear_independence_criteria",
+    "general_rational_gap": "classical_qualitative_irrationality_mechanism",
+    "two_row_height_decay_inequality": "elementary_exterior_product_estimate",
+    "finite_q_Apery_cost_diagnosis": "source_specific_exact_method_boundary_apparently_unlocated_in_reviewed_sources",
+    "priority_claim": "none",
+    "recommended_terminology": "two-form determinant height-decay obstruction",
+    "acceptable_alias": "q-Apery selector-recombination height boundary",
+    "discouraged_terminology": [
+      "new irrationality criterion",
+      "Nesterenko criterion for q-Apery selectors",
+      "optimal continued-fraction obstruction",
+      "proof that q-Apery recombination cannot work"
+    ],
+    "attribution": "Credit the qualitative nonzero-integral-form-to-zero mechanism to classical rational approximation, with Van Assche's Lemma 1 as the exact nearby source; credit Amdeberhan--Zeilberger for the q-WZ/q-Apery integerization and decay architecture; use Fischler--Zudilin for the broader modern height-versus-smallness and divisor-sensitive linear-independence framework. Credit the local Lean source and receipt only for the two-row exterior estimate, the four-start exact cost replay, and the method-boundary inference.",
+    "mathematical_interest": "The general lemmas are elementary, but their combination gives a precise audit of a sophisticated computational rescue: most of the enormous start-3 coefficient height is forced, and asymptotic simultaneous decay cannot be assumed without already proving irrationality.",
+    "reusable_scope": "Integral two-form constructions subjected to unimodular basis changes, especially Pade, Apéry, continued-fraction, selector, and lattice-reduction arguments.",
+    "why_it_matters": "It changes the public #1049 story from 'continued fractions repair the selector route' to the honest statement that they repair four finite instances while leaving the source-derived cofinal height-and-decay theorem completely open."
+  },
+  "primary_sources": [
+    {
+      "id": "van_assche_2001_little_q_legendre",
+      "title": "Little q-Legendre polynomials and irrationality of certain Lambert series",
+      "author": "Walter Van Assche",
+      "venue": "The Ramanujan Journal 5 (2001), 295-310",
+      "url": "https://arxiv.org/abs/math/0101187",
+      "exact_anchor": "Introduction, Lemma 1: if integral forms b_n x-a_n are nonzero and tend to zero, then x is irrational. Sections 2-3 construct little-q-Legendre Pade approximants, integerize them, and compare denominator growth with remainder decay.",
+      "supports": "The precise classical qualitative consumer and its placement inside the closest little-q-Legendre Lambert-series method.",
+      "does_not_support": "The local two-selector determinant inequality, the four tail-start cost table, or the 3/2 rational-base programme."
+    },
+    {
+      "id": "amdeberhan_zeilberger_1998_q_apery",
+      "title": "q-Apery Irrationality Proofs by q-WZ Pairs",
+      "authors": [
+        "Tewodros Amdeberhan",
+        "Doron Zeilberger"
+      ],
+      "venue": "Advances in Applied Mathematics 20 (1998), 275-283",
+      "url": "https://arxiv.org/abs/math/9804122",
+      "exact_anchor": "Sections 1.3-1.6 define the q-WZ mollifier, summed numerator/denominator sequences, and scalar recurrence; Section 1.7 proves integerization and compares the denominator-height estimate with the approximation error before Theorem 1.",
+      "supports": "The source q-Apery architecture from which the local selector rows and height/decay question arise.",
+      "does_not_support": "Generic unimodular recombination of two selector rows, the determinant-forced coefficient-height bound, or a rational-base 3/2 theorem."
+    },
+    {
+      "id": "fischler_zudilin_2010_nesterenko_refinement",
+      "title": "A refinement of Nesterenko's linear independence criterion with applications to zeta values",
+      "authors": [
+        "Stephane Fischler",
+        "Wadim Zudilin"
+      ],
+      "venue": "Mathematische Annalen 347 (2010), 739-763",
+      "doi": "10.1007/s00208-009-0457-y",
+      "url": "https://www.imo.universite-paris-saclay.fr/~stephane.fischler/linearindep.pdf",
+      "exact_anchor": "Introduction, Theorem A, states Nesterenko's coefficient-growth versus small-linear-form criterion; Theorem 1 and Corollaries 1-2 incorporate common divisors of coefficients, explicitly motivated by hypergeometric and q-analog constructions.",
+      "supports": "The conventional modern framework for balancing coefficient height, linear-form decay, and arithmetic content.",
+      "does_not_support": "The elementary local constant 2, the two-selector finite data, or the conclusion that this particular recombination route fails."
+    }
+  ],
+  "mechanism_comparison": {
+    "classical_core": "At a rational target a nonzero integral linear form has a denominator-sized gap, so a nonzero sequence tending to zero proves irrationality. Quantitative criteria balance coefficient growth, arithmetic content, and decay.",
+    "local_generalization": "Two simultaneous forms carry an exterior determinant. A unimodular change of basis preserves that determinant, so simultaneous smallness imposes an explicit coefficient-height cost.",
+    "source_specific_delta": "The exact finite chain first shows modular selectors outside both algebraic nullspaces, then shows their normalized real remainders exceed one at starts 1 through 4, and finally repairs starts 0 through 3 by putting the real coordinate into the lattice objective. The determinant receipt shows that at start 3 at least 1874 of the observed 2261 coefficient bits are structurally forced.",
+    "logical_boundary": "Continued fractions can find finite small combinations, but an all-start theorem making both integral forms tend to zero would itself be an irrationality proof. It cannot be treated as a generic auxiliary lemma independent of the endpoint."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "determinant criterion two linear forms irrationality coefficient height decay",
+      "Nesterenko linear independence criterion integer linear forms height smallness",
+      "q-Apery irrationality determinant unimodular recombination",
+      "continued fraction recombination two Pade linear forms determinant",
+      "little q-Legendre irrationality integral forms remainder decay"
+    ],
+    "result": "Primary-source searches located the classical one-form irrationality lemma, the q-Apery and little-q-Legendre Pade constructions, and general Siegel--Nesterenko height/smallness criteria. No reviewed source stated this exact two-selector inequality together with the four-start q-Apery cost diagnosis or gave it a standard name.",
+    "boundary": "Non-location supports only an apparently unrecorded source-specific diagnostic. It is not evidence for priority, and the elementary inequality itself should not be marketed as novel."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked two-form exterior estimate and three exact finite selector receipts show that modular nullspace escape is analytically insufficient, a joint real-coordinate objective repairs the displayed starts, and generic unimodular recombination has a substantial determinant-forced height cost; classical rational-gap reasoning shows that cofinal simultaneous decay would already prove irrationality.",
+    "forbidden_wording": [
+      "This is a new irrationality or linear-independence criterion.",
+      "Continued fractions cannot prove the 3/2 case.",
+      "The displayed height lower bound is asymptotically sharp.",
+      "The four-start data establish an all-start q-Apery theorem.",
+      "This proves irrationality at 3/2 or solves Erdos #1049."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_new_general_criterion",
+      "not_an_all_start_height_law",
+      "not_an_optimality_theorem",
+      "not_a_cofinal_decay_theorem",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "release_advisory": {
+    "significance_grade": "high_method_boundary_value_moderate_source_specific_diagnostic_low_general_novelty",
+    "hierarchy": "Parent of qapery_two_selector_remainder_escape finite evidence; distinct from the q-Apéry Casoratian recurrence invariant.",
+    "comparator": "A minimal interface is justified for the exact Lean determinant and rational-gap core. Keep finite q-Apéry costs computational and range-limited.",
+    "paper": "Route-killing boundary in 'Two-form recombination: determinant cost before decay'.",
+    "shortlist": "Do not admit; no all-start effective-height or irrationality theorem is present."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/qapery_two_form_height_decay_obstruction.card.json",
+      "effect": "Expose the standard-versus-source-specific split, exact source anchors, significance, and strict endpoint boundary."
+    },
+    {
+      "consumer": "Erdos #1049 proof fleet",
+      "effect": "Do not extend the finite continued-fraction horizon as if it addressed the asymptotic throat; require source-derived recombination, height upper bounds, and cofinal decay."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as a rigorous method-boundary diagnosis, not a new irrationality criterion or a negative theorem about all q-Apery approaches."
+    },
+    {
+      "consumer": "qapery_two_selector_remainder_escape",
+      "effect": "Subordinate its finite starts and backend-exposure lesson as technical evidence beneath this determinant/height parent."
+    }
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_general_Lean_core_and_finite_q_Apery_replay",
+    "output_stage": "expert_understanding_and_canonicalization",
+    "artifact": "qapery_two_form_height_decay_obstruction parent route",
+    "human_understanding_delta": "Consolidates the entire finite selector arc: modular nullspace escape, normalized-real failure, joint local-real repair, determinant-forced height, and the absent cofinal decay theorem.",
+    "verification_state": "General core Lean-checked; modular escape, normalized-remainder failure, and joint local-real repair are exact finite computations with separate receipts; no all-start theorem.",
+    "publication_or_review_state": "Private review-ready boundary with layered Comparator advisory.",
+    "canonicalization_state": "One parent method boundary with the two-selector replay subordinate and the Casoratian distinct.",
+    "unresolved_downstream_bottleneck": "Source-derived all-start recombinations with controlled height and cofinal analytic decay.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and Problem 1049 proof owners."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1049-rational-base-lambert.tex",
+    "section": "Two-form recombination: determinant cost before decay",
+    "canonical_mechanism_family": "two-form exterior determinant height-decay boundary for q-Apéry recombination",
+    "relation": "Consolidate the exact Lean core and all finite selector diagnostics here; subordinate qapery_two_selector_remainder_escape and determinant-local content as finite evidence.",
+    "evidence_boundary": "General statements are Lean-checked; q-Apéry costs and local content are exact only through the declared finite ranges. No asymptotic valuation, height, decay, or irrationality theorem follows.",
+    "hard_step": "Construct an all-start source-derived recombination with controlled height and cofinal decay.",
+    "open_remainder": "The effective-height balance required for Erdős Problem 1049 remains open."
+  },
+  "release_disposition": {
+    "value": "layered_comparator_candidate",
+    "reason": "The exact general core is independently restatable and Lean-checked; finite q-Apéry evidence is useful as a method boundary but must remain range-limited.",
+    "comparator_advisory": "Comparator may expose the general determinant/rational-gap declarations now. It must not promote finite selector starts, local content, or ratio improvement into an all-start theorem or irrationality result."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_all_start_height_decay_family_or_source_generation_change",
+    "reentry_condition": "Re-enter only if the formal source/card/packet generation changes, a primary source supplies a materially closer exact cost law, or an all-start recombination proves both controlled height and cofinal decay.",
+    "do_not_redo": "Do not repeat finite selector starts, backend exposure checks, raw-ratio plots, or n<=7 local-content arithmetic; these are already consolidated range-limited evidence.",
+    "open_bottleneck": "The missing theorem is an all-start source-derived family with a proved effective-height upper bound and cofinal analytic decay.",
+    "owner": "#1049 proof owners for construction; Mathematics Refinery and Role 3 for layered integration; Novelty Observatory only on changed source or attribution."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "qapery_two_form_height_decay_obstruction@TwoSelectorRemainderEscape-4cdb58ef-card-ac69cca1",
+    "evidence_class": "Five general Lean declarations plus exact finite selector receipts with explicit range limits.",
+    "closest_known_result": "Classical rational approximation and linear-forms criteria supply the qualitative nonzero-integral-form mechanism; Van Assche is a nearby Padé source, Amdeberhan--Zeilberger the q-Apéry integerization architecture, and Fischler--Zudilin the modern height/smallness framework.",
+    "comparison_relation": "The exterior determinant/rational-gap core is elementary and reusable. The source-specific contribution is the finite q-Apéry construction audit showing forced height and subcritical local content, not a new irrationality criterion or all-start no-go theorem.",
+    "exact_delta": "The route makes the modular-to-real selector repair and determinant-forced height cost explicit for the checked starts while keeping every asymptotic obligation separate.",
+    "disconfirming_evidence": "Finite n<=7 content remains subcritical, but no all-index valuation law, determinant nonvanishing theorem, effective-height upper bound, cofinal decay, or irrationality conclusion is supplied.",
+    "confidence_ceiling": "High for the general formal core and finite method boundary; low for any priority claim or asymptotic q-Apéry conclusion.",
+    "significance": "High route-killing boundary value with medium reuse: it turns a vague selector rescue into a precise simultaneous height-and-decay obligation.",
+    "hard_step": "Construct an all-start recombination with a proved effective-height upper bound, integrality/nonvanishing, and cofinal analytic decay on the same degree scale.",
+    "open_boundary": "An all-start controlled-height/cofinal-decay family, any irrationality conclusion, and Erdős #1049 remain open.",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean",
+        "commit": "4cdb58efad5d0413ffd04f3aa15293068de991f5",
+        "sha256": "55e53268f87b5f1eeb6b3749bd1ebc2340adf4db63bfa199bfecec3aaa2341b6"
+      },
+      "finite_receipt": {
+        "path": "state/formal_math/erdos257_period_noncollapse/erdos1049_qapery_joint_local_real_lattice_receipt.json",
+        "commit": "4cdb58efad5d0413ffd04f3aa15293068de991f5",
+        "sha256": "d275bf0cc9c3de14bc64314070b93a912de0019d9995b94b1368eb2cc71e25eb"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/qapery_two_form_height_decay_obstruction.card.json",
+        "commit": "ac69cca1d14ee4fe44c0dfab71a918efd78a8fae",
+        "sha256": "3118e3b18db3b2b08c469e5581e00d151b32acf734e0c7402f559ee96fa9dde2"
+      },
+      "parity_status": "general Lean core and finite receipts are source-current; finite q-Apéry ranges are not all-start evidence"
+    },
+    "classification": {
+      "result_family": "qapery_two_form_exterior_determinant_height_decay_boundary",
+      "evidence_class": "five general Lean declarations plus exact finite selector receipts with explicit range limits",
+      "closest_prior_art": "Classical rational approximation and linear-forms criteria supply the qualitative nonzero-integral-form mechanism; Van Assche is a nearby Padé source, Amdeberhan--Zeilberger the q-Apéry integerization architecture, and Fischler--Zudilin the modern height/smallness framework.",
+      "comparison_relation": "The exterior determinant/rational-gap core is elementary and reusable. The source-specific contribution is the finite q-Apéry construction audit showing forced height and subcritical local content, not a new irrationality criterion or all-start no-go theorem.",
+      "novelty_confidence": "high for the general formal core and finite method boundary; low for any priority claim or asymptotic q-Apéry conclusion",
+      "significance_grade": "high_route_killing_boundary_medium_reuse",
+      "why_care": "It changes the #1049 story from a vague selector rescue to a precise obligation: a successful all-start family must control determinant height and obtain cofinal decay simultaneously.",
+      "hard_step": "Construct an all-start source-derived recombination with a proved effective-height upper bound and cofinal analytic decay; finite starts cannot supply either asymptotic input.",
+      "natural_friction": "The exact general core is simple, while the selector diagnostics are finite and range-limited; do not smooth that distinction into a theorem that q-Apéry cannot work.",
+      "disconfirming_evidence": "Finite n<=7 local content remains subcritical, but no all-index valuation law, nonvanishing theorem, height bound, or irrationality conclusion is supplied."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The Lean core proves the declared two-form determinant/rational-gap and nullspace factorization statements; finite q-Apéry receipts exhibit a method boundary for the checked starts and do not establish an all-start obstruction.",
+      "rejected_stronger": [
+        "q-Apéry recombination cannot work",
+        "a new irrationality criterion",
+        "an all-index valuation or determinant nonvanishing law",
+        "an effective-height upper bound or cofinal decay theorem",
+        "an Erdős #1049 solution or priority claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "two-form exterior determinant height-decay boundary for q-Apéry recombination",
+      "disposition": "retain as one route-killing failure/boundary parent; consolidate selector escape, local-real repair, integerisation, and finite content underneath it",
+      "paper_disposition": "route-killing failure/boundary in 'Two-form recombination: determinant cost before decay'",
+      "supersession_or_consolidation": "Keep the exact Lean core as the independently restatable object and label every q-Apéry cost as finite computation evidence; do not create endpoint or content subcards.",
+      "expert_attention_reason": "The expert act is to test a concrete all-start family against the four obligations, not to infer impossibility from the finite selector starts.",
+      "open_boundary": "An all-start controlled-height/cofinal-decay family, any irrationality conclusion, and Erdős #1049 remain open.",
+      "independent_comparator_interface_justified": true
+    },
+    "bounded_expert_act": "Check the five general declarations and then audit one proposed all-start family for determinant height, integrality, nonvanishing, and decay on the same degree scale.",
+    "reentry_trigger": "Re-enter only if an all-start construction, a closer primary cost law, or the source/card/packet generation changes."
+  }
+}

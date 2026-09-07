@@ -1,0 +1,183 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "metric_prime_escape_v0",
+  "status": "adjudicated_metric_route_quantifier_mismatch_no_producer",
+  "problem_id": "erdos_249",
+  "purpose": "Separate an asserted almost-everywhere lacunary phase statement from the fixed totient prime-tail hypothesis that the formal #249 endpoint actually consumes.",
+  "adjudication": {
+    "verdict": "retain_as_route_killing_boundary_not_a_producer",
+    "evidence_class": "Lean-checked fixed-orbit conditional consumer plus unverified metric proposal; no exact primary theorem bound",
+    "closest_known_prior_art": "Lacunary trigonometric-series and generalized Riesz-product methods are the correct ambient vocabulary, but the bounded search found no primary theorem matching the proposed prime-indexed simultaneous phase-locking estimate.",
+    "exact_delta": "The formal consumer assumes a cofinal strict 9/10 gap for the named totient prime-tail orbit and derives irrationality. A metric statement about almost every phase parameter would quantify over a different set and does not instantiate that fixed orbit. No metric estimate, exceptional-set theorem, or transfer is present.",
+    "proof_mechanism_comparison": "The checked route is deterministic and pointwise at a specified orbit. The proposed metric route would require a Riesz-product/lacunary measure estimate followed by an independent arithmetic argument placing the totient orbit outside the exceptional set; those are two separate obligations, not one theorem.",
+    "disconfirming_evidence": "TotientStrictPrimeEscape.lean explicitly leaves the producer unproved; local packet/card searches contain no exact Riesz-product construction or fixed-orbit specialization, and generic framework terminology supplies neither quantifier.",
+    "confidence_ceiling": "High confidence in the conditional Lean consumer and in the quantifier-mismatch diagnosis; novelty and truth of the proposed metric theorem remain unassessed rather than refuted.",
+    "significance_rationale": "The useful result is a route-killing correction: it prevents full-measure phase behavior from being mistaken for evidence about one arithmetically defined prime-tail orbit, while preserving the exact conditional endpoint as the canonical mechanism.",
+    "bounded_expert_review_act": "Inspect one exact primary lacunary/Riesz-product theorem and its exceptional set. Only reopen this route if its hypotheses fit the proposed frequencies and a separate deterministic transfer to the named totient orbit is supplied."
+  },
+  "review_unit": {
+    "result_family": "metric_lacunary_phase_escape_vs_fixed_totient_prime_tail_orbit",
+    "exact_result_id": "metric_prime_escape",
+    "source_generation": {
+      "repository_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "packet_sha256_before_adjudication": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e",
+      "formal_consumer": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "formal_consumer_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
+      "formal_consumer_scope": "The Lean source proves only that DTWNaturalPrimeTailOrbitStrictGap for the named totient tail orbit implies irrationality.",
+      "revision_reason": "The quantifier and attribution boundary was correct, but the route pointed to an older packet generation; the formal consumer remains source-current."
+    },
+    "review_generation": "2026-08-25_v1"
+  },
+  "classification": {
+    "confidence_class": "unassessed",
+    "novelty_confidence": "not_assessable_without_an_exact_metric theorem and a fixed-orbit transfer",
+    "significance": "High as a route boundary: an almost-everywhere phase-escape theorem, even if established, does not settle the deterministic prime-tail producer at the particular totient constant.",
+    "closest_known_framework": "Classical lacunary trigonometric-series and generalized Riesz-product theory is an ambient framework only; no source matching the asserted simultaneous phase-locking estimate was located in the bounded search.",
+    "expert_judgment_that_can_change_state": "Review an exact Riesz-product construction with its lacunarity assumptions and exponential measure estimate, then separately prove that the named totient tail orbit lies in its good set or derive the fixed-orbit conclusion by another deterministic argument.",
+    "confidence_ceiling": "The conditional Lean consumer is source-current; the metric producer has no exact theorem citation and remains unassessed, not refuted or novel.",
+    "attribution_uncertainty": "Generic Riesz-product terminology is well established, but no primary source for this exact prime-indexed simultaneous phase-locking estimate was found."
+  },
+  "prior_art_locators": [],
+  "evidence_set": {
+    "local": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+    ],
+    "framework_context_only": [
+      "general lacunary trigonometric-series theory",
+      "generalized Riesz-product constructions"
+    ],
+    "evidence_class_split": {
+      "conditional_bridge": "Lean-checked implication from the fixed-prime-tail hypothesis",
+      "metric_producer": "unverified ordinary-mathematics proposal",
+      "fixed_orbit_transfer": "open deterministic obligation"
+    }
+  },
+  "search_scope": {
+    "completed_at": "2026-08-25",
+    "repositories_and_sources": [
+      "Erdos249 packet, TotientStrictPrimeEscape.lean, reviewer-card inventory, and prior-art routes",
+      "bounded searches for dissociated Riesz products, lacunary phase locking, and prime-indexed simultaneous estimates"
+    ],
+    "exact_queries": [
+      "Riesz product dissociated frequencies exponential measure decay lacunary phase locking",
+      "prime-indexed simultaneous phase locking Riesz product",
+      "totient tail orbit lacunary phase escape"
+    ],
+    "negative_finding": "No exact phase-locking inequality, primary locator, or fixed-orbit specialization was found.",
+    "limitation": "Generic framework searches do not establish the proposed theorem and were not treated as novelty evidence."
+  },
+  "comparison_relations": [
+    {
+      "relation": "conditional_consumer_only",
+      "internal_result": "DTWNaturalPrimeTailOrbitStrictGap implies irrationality",
+      "known_result": "No exact metric producer located",
+      "delta": "The formal theorem is a deterministic consumer for one named orbit, not an almost-everywhere statement."
+    },
+    {
+      "relation": "quantifier_mismatch",
+      "internal_result": "almost-everywhere metric phase escape proposal",
+      "known_result": "a single arithmetically defined totient orbit",
+      "delta": "Full-measure behavior cannot be instantiated at the named orbit without a separate transfer or deterministic proof."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "unverified metric theorem plus a separate fixed-orbit transfer; the conditional Lean consumer is routine once its hypothesis is supplied",
+    "slow_down_at": "the exceptional-set and quantifier passage from almost every real number to the specific totient tail orbit",
+    "automation_can_establish": [
+      "the exact conditional Lean statement",
+      "packet/consumer hash parity",
+      "whether a cited source contains the claimed quantifiers"
+    ],
+    "human_judgment_required": [
+      "whether an exact primary Riesz-product theorem exists under another formulation",
+      "whether the proposed frequencies satisfy its lacunarity/dissociation hypotheses",
+      "whether any deterministic arithmetic argument reaches the fixed orbit"
+    ],
+    "review_act": "One bounded expert act: inspect one exact metric theorem and its exceptional set; do not treat generic Riesz-product references as support."
+  },
+  "disconfirming_evidence": [
+    {
+      "kind": "formal_source_inspection",
+      "locator": "TotientStrictPrimeEscape.lean:18-23, 64-70",
+      "finding": "The formal hypothesis quantifies over prime indices and the specific values (tailOrbitFirstExp h (p-h-1)).re. The module proves the conditional implication from that hypothesis to irrationality and explicitly says the producer remains unproved.",
+      "effect": "Formalization checks the consumer, not a metric theorem and not the producer itself."
+    },
+    {
+      "kind": "bounded_repository_and_web_search",
+      "locator": "#249 sources, reviewer cards, prior-art routes, and a bounded exact-formula/lacunary-Riesz query",
+      "finding": "No local Riesz-product proof, primary locator, exact phase-locking inequality, or specialization from an almost-everywhere statement to the totient orbit was found. The exact-phrase web search returned no matching theorem statement.",
+      "effect": "Generic Riesz-product terminology cannot certify the claimed almost-everywhere statement or its relevance to the fixed orbit."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The formal corpus contains a conditional fixed-prime-tail orbit criterion for the totient series. A proposed metric lacunary route is unassessed, and an almost-everywhere conclusion would not by itself verify that fixed-orbit criterion.",
+    "forbidden_wording": [
+      "A Riesz product proves strict prime escape for the totient series almost surely or at the named constant.",
+      "Metric lacunarity settles the DTWNaturalPrimeTailOrbitStrictGap producer.",
+      "The Lean theorem formalizes a Riesz-product proof.",
+      "This proves irrationality of the Erdős #249 series."
+    ],
+    "open_boundary": "Identify an exact metric theorem if one exists, state its exceptional set and parameters, and supply a non-metric argument placing the totient tail orbit outside that exceptional set."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "conditional prime-tail endpoint with generic-metric-route boundary",
+    "disposition": "subordinate the metric assertion to the exact conditional Lean consumer; retire it as a completed producer until both metric and fixed-orbit legs are source-bound",
+    "paper_disposition": "route-killing boundary in the endpoint discussion, not a theorem section",
+    "comparator_advisory": "No additional interface: the existing conditional Lean criterion is the only independently restatable object, and no metric theorem is currently bound.",
+    "human_understanding_delta": "Makes the quantifier mismatch visible: full-measure behavior is not evidence about one arithmetically defined orbit."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "metric_prime_escape@packet-2026-08-25-v1",
+    "evidence_class": "Lean-checked conditional fixed-orbit consumer plus an unverified metric/Riesz-product proposal; no primary theorem is bound for the metric producer.",
+    "closest_known_result": "Classical lacunary trigonometric-series and generalized Riesz-product theory is ambient framework only; the local exact object is TotientStrictPrimeEscape's deterministic prime-tail implication.",
+    "comparison_relation": "Almost-everywhere phase behavior concerns a measure-theoretic set of parameters, while the formal consumer names one arithmetically fixed totient orbit. The metric proposal does not instantiate the fixed-orbit hypothesis without a separate deterministic transfer.",
+    "exact_delta": "The route's durable contribution is a quantifier-mismatch and route-killing diagnosis: it preserves the conditional Lean criterion and separates it from an unproved metric producer.",
+    "disconfirming_evidence": "TotientStrictPrimeEscape.lean proves only the conditional implication; bounded local/source searches found no exact simultaneous phase-locking estimate, exceptional-set theorem, or fixed-orbit specialization. Generic Riesz-product terminology is insufficient evidence.",
+    "confidence": {
+      "level": "high_for_conditional_consumer_and_quantifier_mismatch_low_for_metric_producer_and_novelty",
+      "basis": "Packet and formal-consumer hashes are pinned; the metric theorem lacks an exact citation and the fixed-orbit transfer is explicitly open."
+    },
+    "significance": "High route-selection value as a falsifier of a tempting but invalid metric-to-pointwise leap; not an endpoint advance or flagship mechanism.",
+    "claim_ceiling": "State only the conditional fixed-prime-tail implication and the unassessed status of the metric proposal. Do not claim a Riesz-product proof, fixed-orbit escape, #249 solution, novelty, or priority.",
+    "hard_step": "Supply both an exact metric estimate with hypotheses and a deterministic argument placing the named totient orbit in its good set; either leg alone is insufficient.",
+    "open_boundary": "No new Comparator interface is justified; retain the existing conditional Lean proposition and the route-killing boundary in the endpoint discussion.",
+    "bounded_expert_review_act": "Inspect one exact lacunary/Riesz-product theorem and its exceptional set, then test whether its hypotheses and quantifiers can reach the fixed totient orbit.",
+    "reentry_trigger": "Re-enter on a primary source for the claimed metric estimate or a completed deterministic fixed-orbit transfer.",
+    "source_generation_binding": {
+      "packet_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "packet_sha256": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e",
+      "formal_consumer_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
+      "parity_status": "Conditional Lean consumer is source-current; metric producer and fixed-orbit transfer remain unverified and open."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "packet_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "packet_sha256": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e",
+      "formal_consumer_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24"
+    },
+    "claim_guard": "Only the deterministic conditional consumer is checked; an almost-everywhere metric theorem would require a separate fixed-orbit transfer.",
+    "reentry_trigger": "Re-enter on packet/source, metric theorem, or fixed-orbit transfer changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Route-killing quantifier audit; the conditional consumer is routine once supplied, while the metric producer is unbound.",
+    "slow_down_at": "Exceptional-set quantifiers and the passage from almost every parameter to the specific totient tail orbit.",
+    "automation_can_establish": ["Packet/formal-source hash parity", "Exact conditional Lean statement and claim boundary"],
+    "human_judgment_required": ["Whether a primary theorem matches the proposed frequencies", "Whether a deterministic transfer to the fixed orbit exists"],
+    "review_act": "One bounded act: inspect one exact metric theorem; do not treat generic Riesz-product language as support."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "claim and prior-art audit",
+    "output_stage": "quantifier and evidence-boundary correction",
+    "artifact": "metric_prime_escape_v0 prior-art route",
+    "human_understanding_delta": "A reviewer can distinguish the checked conditional bridge, a hypothetical metric theorem, and the genuinely missing deterministic specialization.",
+    "verification_state": "Lean source was inspected for the exact conditional statement; local and bounded web searches did not locate the asserted Riesz-product theorem. No metric proof or numerical experiment is claimed.",
+    "publication_or_review_state": "Internal review route only; no theorem promotion, public claim, Comparator expansion, or novelty assertion.",
+    "canonicalization_state": "Consolidates a generic metric label beneath the fixed-orbit endpoint rather than treating it as a parallel solution route.",
+    "unresolved_downstream_bottleneck": "An exact source-bound metric estimate and, independently, a proof connecting its good set to the named totient prime-tail orbit.",
+    "next_stage_owner": "Novelty Observatory after a primary source or deterministic specialization is supplied; proof fleet only for the fixed-orbit mathematical obligation."
+  }
+}

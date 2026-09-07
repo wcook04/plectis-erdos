@@ -4,8 +4,8 @@
 Everything in Parts I--IV of this document is either an unconditional theorem at a fixed or
 bounded scale, an exact reformulation, or a producer socket whose supply is missing. None of it
 decides Erd\H{o}s \#257, and the wall analysis explains why in a way that is more useful than
-``the problem is hard'': the recorded failures are not a hundred separate defeats but repeated
-measurements of one obstruction, and the obstruction has a shape. This section takes the next
+``the problem is hard'': the recorded failures are repeated
+measurements of one obstruction and not a hundred separate defeats, and the obstruction has a shape. This section takes the next
 step, which the rest of the corpus did not take. For each surviving route it states the exact
 statement that is missing, says what \emph{kind} of mathematical object would furnish it, names
 the technique family that is closest and the precise reason that technique does not reach, and
@@ -65,9 +65,9 @@ $\log_2 r$ (\ev{Cert}, maximal observed run $19$ at row $158{,}096$).
 \qquad
 E_d := 4\cdot\mathtt{overshoot}_d+\mathtt{abovePulse}_d,
 \]
-(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}), with the
+(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5182}), with the
 closed consumer
-\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790},
+\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5614},
 \ev{Lean}. The $\forall j\le d$ band check collapses to a single nearest-boundary index per row by
 \lean{dyadicBandEscape_iff_exists_critical}{HalfUpperResetCriticalBand.lean:108}, and rows
 $13\le d\le 30$ are kernel-verified by
@@ -161,8 +161,8 @@ that dual length is a power saving against $M$.
 At $H=\log M$ the dual sum is of length $M/\log M$
 and there is no saving at all: the method returns the trivial bound. This is not a deficiency of
 one paper; it is the reason short-interval divisor problems are stated with power-length windows.
-Technique family (a) is therefore not merely unproved here, it is out of range by an
-\emph{exponential} amount in the window length, and no quantitative improvement in Kloosterman
+Technique family (a) is therefore out of range by an
+\emph{exponential} amount in the window length, and not merely unproved here, and no quantitative improvement in Kloosterman
 bounds changes that, because the obstruction is the length of the dual sum, not the quality of
 its estimate.
 
@@ -404,9 +404,9 @@ of
 some problems on prime factors of consecutive integers}}.  This is a cited
 analytic result, not a theorem formalised in the pinned Lean corpus.
 
-The existing pairwise-coprime Lean theorem does not recover it because that
-theorem assumes $\sum_{a\in A}1/a<\infty$, whereas $\sum_p1/p$ diverges.  Its
-generic block-certificate engine would also demand, in the prime case,
+The reciprocal-summable Lean theorem does not recover it because
+$\sum_p1/p$ diverges.  The older pairwise-coprime theorem's generic
+block-certificate engine would also demand, in the prime case,
 \[
   2^r\mid\omega(N+r)\qquad(1\le r\le K),
 \]
@@ -444,7 +444,7 @@ Five biconditionals, each with $(1/2:\R)\in\mathcal{A}$ on the right:
 \]
 where $G:=\mathtt{greedyMersenneSupport}(1/2)$. The forward directions of (2)--(5) are landed
 Lean (\lean{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:97},
-\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
+\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:431},
 \lean{half_mem_mersenneAchievementSet_of_cofinalStripReturn}{CofinalStripReturn.lean:157},
 \lean{half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:134},
 all \ev{Lean}). What is missing is the reverse directions, and they all run through one lemma.
@@ -462,7 +462,7 @@ $k\ge1$,
 \]
 \end{lem}
 \begin{proof}
-By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lean:871} (\ev{Lean}),
+By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lean:870} (\ev{Lean}),
 \[
 \bigl(\mathtt{integerHalfCarry}\ A\ N:\R\bigr)
 = 2^{\,N+1}\Bigl(\tfrac12-\mathtt{erdosSupportSeries}\ 2\ A\Bigr)
@@ -504,7 +504,7 @@ $\Pi^0_1$ goal.
 
 \textbf{Scope limits to be stated verbatim in the docstrings.} (1) does \emph{not} extend to every
 $A$ with $1\notin A$: without
-\lean{erdosSupportSeries_greedyMersenneSupport_le}{HalfCarryReachability.lean:888} (which supplies
+\lean{erdosSupportSeries_greedyMersenneSupport_le}{HalfCarryReachability.lean:887} (which supplies
 $\delta:=1/2-S_G\ge0$ for the greedy support specifically) one obtains only the one-sided
 equivalence $\text{hbound}\iff(1/2-S_A)\le0$. The mechanism in all five cases is the same and
 should be recorded once: $2^{\,N+1}\delta$ dominates any $\sqrt{N}$ envelope, so a strip
@@ -526,7 +526,7 @@ Membership is then read off by
 The sparse branch is already closed twice over: it contradicts
 \lean{supportCoeffZeroWindow_length_le_eps_logb}{SublogDivisorCoverage.lean:435} (\ev{Lean},
 unconditional and uniform in $A$) whenever the series is rational, and the far sparse edge is
-covered outright by \lean{irrational_erdosSum_of_lcm_gap}{CertificateKernel.lean:5883} (\ev{Lean}).
+covered outright by \lean{irrational_erdosSum_of_lcm_gap}{CertificateKernel.lean:6071} (\ev{Lean}).
 The dense branch is the missing producer: for $A$ whose divisor incidence is bounded below
 infinitely often, construct
 \[
@@ -546,11 +546,13 @@ branch asks: for an \emph{arbitrary} $0$--$1$ arithmetic function, find a block 
 arguments on which the convolution with $\mathbf{1}$ is $2$-adically aligned. M\"obius inversion
 $\mathbf{1}_A = \mu * \mathtt{supportCoeff}\,A$ is exact and costs nothing, which makes the
 $2$-adic structure of the incidence directly readable, and that is the technique family to use:
-$2$-adic M\"obius/Dirichlet algebra on the divisor lattice, not analysis. The reason the corpus's
-landed theorems all live inside the two-axis box (divisor independence \emph{and} a global tail
-budget) is that CRT prescribes an incidence pattern only when the divisibility conditions
-$a\mid n$ for $a\in A$ are independent; for general $A$ they are entangled through pairwise gcds
-and CRT has nothing to prescribe.
+$2$-adic M\"obius/Dirichlet algebra is one possible source of compatible
+incidence prescriptions. Shared factors impose compatibility conditions on
+CRT data, which an application must verify. This is a requirement of that
+construction. The small-shift results in
+\S\ref{sec:257-weighted-returns} show why neither divisor independence nor
+ordinary reciprocal summability should be imposed on every irrationality
+argument.
 
 \subsubsection*{The specific obstacle, proved}
 
@@ -666,7 +668,7 @@ a small modulus predicts. That datum does not discriminate.
 Third, and this is the sharpest internal check available: pseudorandomness is a claim about the
 \emph{absence} of structure, and the corpus contains an unmistakable piece of \emph{present}
 structure --- strict superincreasingness of the Mersenne weights, which forces the digit coding to
-be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1582},
+be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1580},
 \ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
 coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
 description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The

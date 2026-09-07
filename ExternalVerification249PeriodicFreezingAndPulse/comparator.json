@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249PeriodicFreezingAndPulse.Challenge",
+  "solution_module": "ExternalVerification249PeriodicFreezingAndPulse.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.periodic_freezing",
+    "Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.bounded_isolated_pulse"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

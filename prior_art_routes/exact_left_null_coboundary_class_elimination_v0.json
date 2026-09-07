@@ -1,0 +1,278 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "exact_left_null_coboundary_class_elimination",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_finite_dimensional_duality_with_exact_source_specific_ansatz_certificate",
+  "review_unit": {
+    "result_family": "erdos269_exact_left_null_coboundary_class_elimination",
+    "exact_result_ids": [
+      "phase_conditioned_source_linear_coboundary_no_go",
+      "phase_conditioned_source_quadratic_coboundary_no_go"
+    ],
+    "source_generation": {
+      "linear_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/SourceLinearCoboundaryNoGo.md",
+      "linear_source_commit": "0de6d172dba8771c8dee80080377f0d395effeea",
+      "linear_source_sha256": "e61f31305394fac2374e06959cfbd4741a49066967b9f7be4aabc1c02965bf82",
+      "linear_replay": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_source_linear_coboundary.py",
+      "linear_replay_sha256": "6b5859d3a30c5d0ba1c604fedc7e6f916999dd047ac7c8a9202e3e59fafab493",
+      "quadratic_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/SourceQuadraticCoboundaryNoGo.md",
+      "quadratic_source_commit": "d25d0f17292a2d0e2de55e4860dc9aab43882a60",
+      "quadratic_source_sha256": "c9a6e0f3495d637f86e74c328c97dda25d200305111458e4f16e10a3d300aad4",
+      "quadratic_replay": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_source_quadratic_coboundary.py",
+      "quadratic_replay_sha256": "4ca5341cba0df1b8caac91b4f757f8d9be3bd76c83c710e4ec20a8f8a42060c8",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "research_packet_worktree_status": "dirty_foreign_current_owner",
+      "research_packet_worktree_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+      "reviewer_card": "docs/formal_math/reviewer_cards/exact_left_null_coboundary_class_elimination.card.json",
+      "reviewer_card_commit": "997cb82a1f99ba9092d87f157908d63ea40277af",
+      "evidence_scope": "ordinary finite-dimensional duality plus deterministic exact-integer replays; no Lean theorem"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "problem_id": "erdos_269",
+  "source_result_ids": [
+    "phase_conditioned_source_linear_coboundary_no_go",
+    "phase_conditioned_source_quadratic_coboundary_no_go"
+  ],
+  "evidence_class": "Ordinary finite-dimensional duality plus deterministic exact-integer replays for two declared first-onset feature classes; no Lean theorem, all-class exclusion, or integral-tail conclusion.",
+  "closest_known_result": "The implication lambda^T M=0 and lambda^T d != 0 implies Mc=d is elementary column-space/left-nullspace separation. Fredholm gives historical solvability-alternative context; Farkas is neighboring inequality-cone theory, not the exact equality certificate.",
+  "comparison_relation": "A source-specific exact method-boundary certificate for nested 36-parameter linear and 180-parameter quadratic phase-conditioned coboundary classes, not a new duality theorem.",
+  "exact_delta": "The first 27 source equations fail in the 36-parameter class and the first 116 fail in the containing 180-parameter class, with primitive integer left-null witnesses and exact replay.",
+  "disconfirming_evidence": "Later onset, higher degree, nonpolynomial structure, unbounded memory, and exact integral tails are not tested; the research packet is marked dirty under a foreign owner and is not treated as current theorem authority.",
+  "confidence_ceiling": "High for the two finite certificates and terminology; moderate for historical attribution; none for all polynomial coboundaries, integral-tail exclusion, novelty, or #269 resolution.",
+  "claim_ceiling": "Exact primitive integer left-null certificates eliminate only the two explicitly declared first-onset feature classes. They do not exclude integral tails or arbitrary coboundaries.",
+  "significance": "B_method_boundary: high search-space reduction inside #269, low standalone novelty because the duality lemma is routine.",
+  "hard_step": "Keep source coordinates, phase copies, first-onset quantifiers, and primitive witness scope visible; do not compress finite-class failure into a global no-go.",
+  "open_boundary": "A completeness theorem for the relevant carry ansatz, or a genuinely different later-onset/higher-complexity mechanism, is still required for any #269 advance.",
+  "bounded_expert_act": "Reconstruct one feature matrix and primitive separator, then verify that the stated class and onset are exactly the ones replayed.",
+  "reentry_trigger": "Reopen if source coordinates, replay certificates, packet authority, or the proposed completeness bridge changes.",
+  "adjudication_currentness": {
+    "status": "source_card_current_at_bound_snapshot_with_packet_foreign_dirty_boundary",
+    "bound_snapshot": {
+      "linear_source_commit": "0de6d172dba8771c8dee80080377f0d395effeea",
+      "linear_source_sha256": "e61f31305394fac2374e06959cfbd4741a49066967b9f7be4aabc1c02965bf82",
+      "linear_replay_sha256": "6b5859d3a30c5d0ba1c604fedc7e6f916999dd047ac7c8a9202e3e59fafab493",
+      "quadratic_source_commit": "d25d0f17292a2d0e2de55e4860dc9aab43882a60",
+      "quadratic_source_sha256": "c9a6e0f3495d637f86e74c328c97dda25d200305111458e4f16e10a3d300aad4",
+      "quadratic_replay_sha256": "4ca5341cba0df1b8caac91b4f757f8d9be3bd76c83c710e4ec20a8f8a42060c8",
+      "reviewer_card_commit": "997cb82a1f99ba9092d87f157908d63ea40277af",
+      "reviewer_card_sha256": "58e34d471289e23a91a26a69abcb71488e57ac3558d158eacb5c5a03144f15b9",
+      "research_packet_status": "dirty_foreign_current_owner; not used to upgrade theorem currentness"
+    },
+    "claim_guard": "Finite first-onset class elimination only; no integral-tail, later-onset, higher-degree, Lean, priority, or #269 endpoint claim.",
+    "reentry_trigger": "Reopen on source/replay/card changes, packet ownership resolution, or a completeness bridge."
+  },
+  "purpose": "Classify the terminology and novelty ceiling of the exact left-null certificate, and prevent its finite feature-class elimination from being read as an exclusion of integral tails.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/exact_left_null_coboundary_class_elimination.card.json",
+    "card_commit": "74eb65b7188448b72a84815651f0fb7305ea3ac0",
+    "landed_source_commit": "d25d0f17292a2d0e2de55e4860dc9aab43882a60",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/SourceQuadraticCoboundaryNoGo.md",
+    "supporting_source_path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_source_quadratic_coboundary.py",
+    "linear_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/SourceLinearCoboundaryNoGo.md",
+    "linear_supporting_source_path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_source_linear_coboundary.py",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+    "research_packet_sha256": "3e015ae738034292f36707ddf2a160e66b364d466697ddc1e6dedec0d253e7bd",
+    "source_result_ids": [
+      "phase_conditioned_source_linear_coboundary_no_go",
+      "phase_conditioned_source_quadratic_coboundary_no_go"
+    ],
+    "receipt_freshness_gap": "cap_quick_repair_stale_erdos_269_quadratic_cobound_ba7f3bcbe3c1"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos269_exact_left_null_coboundary_class_elimination@linear-0de6d17-quadratic-d25d0f1-card-997cb82",
+    "source_generation": {
+      "linear_source_commit": "0de6d172dba8771c8dee80080377f0d395effeea",
+      "linear_source_sha256": "e61f31305394fac2374e06959cfbd4741a49066967b9f7be4aabc1c02965bf82",
+      "linear_replay_sha256": "6b5859d3a30c5d0ba1c604fedc7e6f916999dd047ac7c8a9202e3e59fafab493",
+      "quadratic_source_commit": "d25d0f17292a2d0e2de55e4860dc9aab43882a60",
+      "quadratic_source_sha256": "c9a6e0f3495d637f86e74c328c97dda25d200305111458e4f16e10a3d300aad4",
+      "quadratic_replay_sha256": "4ca5341cba0df1b8caac91b4f757f8d9be3bd76c83c710e4ec20a8f8a42060c8",
+      "reviewer_card_commit": "997cb82a1f99ba9092d87f157908d63ea40277af",
+      "reviewer_card_sha256": "58e34d471289e23a91a26a69abcb71488e57ac3558d158eacb5c5a03144f15b9",
+      "research_packet_status": "dirty_foreign_current_owner; not used to upgrade theorem currentness",
+      "parity_status": "source, replay, and card hashes current at snapshot; no Lean replay claimed"
+    },
+    "evidence_class": "Ordinary finite-dimensional equality duality plus exact-integer replays for nested first-onset feature classes; no Lean theorem or all-class exclusion.",
+    "closest_known_result": "Column-space/left-nullspace consistency is elementary; Fredholm is historical alternative context and Farkas is a neighboring inequality theorem.",
+    "comparison_relation": "Finite source-specific class elimination, not a new theorem of alternatives.",
+    "exact_delta": "Primitive integer separators certify failure at equations 27 and 116 for the declared 36- and 180-parameter classes.",
+    "disconfirming_evidence": "No later-onset, higher-degree, nonpolynomial, unbounded-memory, or integral-tail exclusion is established.",
+    "confidence": {
+      "finite_certificates": "high_internal_provisional",
+      "standard_duality_attribution": "high",
+      "all_class_or_integral_tail_exclusion": "none"
+    },
+    "significance": "B_method_boundary: valuable search-space reduction for #269, routine abstract lemma.",
+    "claim_ceiling": "Use only for the two named first-onset feature classes; never call it an integral-tail or all-polynomial no-go.",
+    "hard_step": "Expose the feature matrix, phase copies, onset, and primitive separators so the finite scope cannot be smoothed away.",
+    "open_boundary": "Completeness of the ansatz and all richer/later mechanisms remain open.",
+    "bounded_expert_act": "Reconstruct one feature matrix and separator and check the exact quantifier scope.",
+    "reentry_trigger": "Reopen on source/replay/card changes, packet authority repair, or a completeness bridge.",
+    "mechanism_family": "#269 exact finite-feature coboundary class elimination",
+    "disposition": "admit_one_method_boundary_and_consolidate_nested_classes",
+    "expert_attention_reason": "The main value is retiring repeated fitting in two nested classes without overstating the surviving integral branch.",
+    "paper_disposition": "route-killing failure/boundary",
+    "paper_section": "Why finite-feature carry models fail: exact left-null certificates",
+    "supersession_relation": "Keep linear and quadratic failures as one nested certificate object; do not split them into parallel endpoints.",
+    "comparator_interface_justified": false,
+    "comparator_reason": "The source-specific exact replays are useful reader-facing evidence but do not warrant an independent proposition interface."
+  },
+  "classification": {
+    "theorem_class": "finite_dimensional_column_space_solvability_dualized_by_the_left_nullspace",
+    "novelty_class": "routine_linear_algebra_with_a_locally_useful_exact_certificate_for_one_large_declared_ansatz_class",
+    "evidence_class": "deterministic_exact_integer_replay_not_Lean",
+    "priority_claim": "none",
+    "recommended_terminology": "exact left-nullspace inconsistency certificate for a declared finite-dimensional coboundary class",
+    "acceptable_short_term": "exact left-null coboundary certificate",
+    "alternative_terminology": [
+      "linear dual infeasibility certificate",
+      "column-space inconsistency witness",
+      "finite-dimensional alternative certificate"
+    ],
+    "discouraged_terminology": [
+      "row-space inconsistency",
+      "Farkas certificate without explaining that the system is equality-only",
+      "Fredholm theorem as the source-specific result",
+      "integral-tail no-go",
+      "coboundary obstruction without naming the feature class and onset"
+    ],
+    "attribution": "Call the implication λ^T M=0 and λ^T d≠0 implies Mc=d infeasible elementary finite-dimensional duality. Fredholm is historical context for the alternative principle; Farkas is a neighboring theorem of alternatives for inequalities and cones, not the most precise label here.",
+    "mathematical_interest": "The abstract lemma is routine. The useful object is the nested pair of auditable primitive integer separators: 36 source-linear coefficients fail at equation 27, and the containing 180-parameter quadratic family still fails on 116 equations. They convert two failed fits into exact negative knowledge while exposing the later-onset boundary.",
+    "reusable_scope": "Any fixed finite feature family whose proposed coboundary, potential, or observer equation is linear in unknown coefficients.",
+    "why_it_matters": "It retires two nested but precisely specified #269 mechanisms and forces the next attempt to change degree, functional type, memory, phase state, or onset instead of merely fitting a longer prefix.",
+    "advisory_significance_grade": "B_method_boundary"
+  },
+  "primary_sources": [
+    {
+      "id": "fredholm_1903_functional_equations",
+      "title": "Sur une classe d'équations fonctionnelles",
+      "author": "Ivar Fredholm",
+      "venue": "Acta Mathematica 27 (1903), 365-390",
+      "doi": "10.1007/BF02421317",
+      "url": "https://doi.org/10.1007/BF02421317",
+      "exact_anchor": "Fredholm's solvability alternative relates an equation to orthogonality against solutions of the adjoint homogeneous problem.",
+      "supports": "Historical context for calling the left-nullspace solvability condition a finite-dimensional alternative.",
+      "does_not_support": "The 180-parameter feature class, the primitive integer witness, the coboundary application, or any Erdős #269 conclusion."
+    },
+    {
+      "id": "farkas_1902_simple_inequalities",
+      "title": "Theorie der einfachen Ungleichungen",
+      "author": "Gyula Farkas",
+      "venue": "Journal für die reine und angewandte Mathematik 124 (1902), 1-27",
+      "doi": "10.1515/crll.1902.124.1",
+      "url": "https://doi.org/10.1515/crll.1902.124.1",
+      "exact_anchor": "The paper gives the classical alternative underlying dual certificates for systems of linear inequalities.",
+      "supports": "The broader theorem-of-alternatives and dual-certificate family.",
+      "does_not_support": "Using 'Farkas certificate' as the most precise name for this unconstrained equality system or any source-specific coboundary claim."
+    }
+  ],
+  "terminology_decision": {
+    "best_headline": "exact left-nullspace inconsistency certificate for a declared finite-dimensional coboundary class",
+    "why_not_row_space": "For Mc=d, consistency asks whether d lies in the column space of M. The separating vector lies in ker(M^T), the orthogonal complement of that column space.",
+    "why_not_fredholm_headline": "The finite matrix statement is an immediate dimension/orthogonality fact; invoking Fredholm as the headline inflates a routine lemma and obscures the source-specific certificate.",
+    "why_not_farkas_headline": "No inequalities, positivity cone, or sign restrictions occur. Farkas is neighboring history, not the exact form being used.",
+    "role_of_primitive_integer_scaling": "Primitivity makes the witness canonical up to sign and compact for audit; integrality makes replay exact. Neither creates a stronger mathematical exclusion than the left-null separation itself."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Exact primitive integer left-nullspace certificates prove that the first 27 source equations admit no potential in the declared 36-parameter phase-conditioned source-linear class and that the first 116 admit none in the containing 180-parameter phase-conditioned quadratic class, both beginning at the first source state.",
+    "forbidden_wording": [
+      "No integral normalized tail exists.",
+      "All polynomial coboundaries are excluded.",
+      "All quadratic coboundaries are excluded without naming coordinates and phases.",
+      "Later-onset potentials are excluded.",
+      "This proves Erdős Problem 269."
+    ],
+    "nonclaims": [
+      "not_an_integral_tail_exclusion",
+      "not_a_higher_degree_or_nonpolynomial_exclusion",
+      "not_an_unbounded_memory_exclusion",
+      "not_a_later_onset_exclusion",
+      "not_a_Lean_theorem",
+      "not_a_priority_claim"
+    ]
+  },
+  "expert_talk_support": {
+    "talk_ready": true,
+    "required_sequence": [
+      "integral-tail branch versus finite-feature representation",
+      "column-space/left-nullspace certificate",
+      "36-parameter first-onset linear failure",
+      "180-parameter quadratic enlargement failure",
+      "exact-computation and AI/tool disclosure",
+      "later-onset and higher-complexity mechanisms left open"
+    ],
+    "anti_smoothing_rule": "Display the class definitions and the rank/certificate data; never compress the result to 'quadratic models fail' or 'integral tails are excluded'."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine duality with an auditable but source-specific exact-feature construction",
+    "slow_down_at": "the declared source coordinates, four phase copies, first-onset scope, primitive integer witnesses, and the distinction between finite-class elimination and integral-tail exclusion",
+    "automation_boundary": "Exact integer replays certify the two stated classes; no Lean proof, later-onset exclusion, all-polynomial theorem, integral-tail theorem, or independent review is asserted.",
+    "expert_remaining_work": "Reconstruct one feature matrix and primitive separator, then prove a completeness theorem for an ansatz class or move to a genuinely different carry mechanism."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "exact_left_null_coboundary_class_elimination",
+    "human_understanding_delta": "The nested linear/quadratic certificates are now one expert-talk-ready method boundary with the genuinely open later-onset and higher-complexity mechanisms preserved.",
+    "verification_state": "Source and packet hashes are current; fresh temporary exact replays of the 36- and 180-column certificates pass, as do JSON, diff, and coverage checks; no Lean status is asserted.",
+    "publication_or_review_state": "Terminology, attribution, significance grade, and talk structure are adjudicated; independent expert replay remains.",
+    "canonicalization_state": "One nested-class object, not two result-count fragments.",
+    "unresolved_downstream_bottleneck": "Independent certificate review and a theorem forcing hypothetical integral carries into an excluded class.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_269.md",
+    "section": "Why finite-feature carry models fail: exact left-null certificates",
+    "canonical_mechanism_family": "full symbolic-kernel complexity and exact finite-feature coboundary no-go boundaries",
+    "relation": "Consolidate the nested 36- and 180-parameter first-onset failures as one method boundary; do not split source-linear and quadratic fit failures into separate paper claims or a second #269 endpoint.",
+    "understanding_delta": "The paper can show a genuine exact class certificate with its escape hatches rather than narrating a long failed fit.",
+    "evidence_boundary": "Ordinary finite-dimensional duality plus deterministic exact-integer replays; no Lean, independent review, all-class exclusion, or integral-tail conclusion.",
+    "hard_step": "Force every hypothetical integral carry into an excluded class or develop a faithful alternative mechanism with a global consequence.",
+    "meaningful_failed_route": "Treat longer first-onset fitting or numerical rank behavior as a later-onset or integral-tail exclusion.",
+    "open_remainder": "Later onset, richer function classes, exact integral tails, and Erdős #269 remain open."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "exact finite-feature coboundary class elimination for symbolic carry models",
+    "disposition": "admit_one_method_boundary_and_consolidate_nested_classes",
+    "consolidation_relation": "Keep the 36-parameter linear and containing 180-parameter quadratic first-onset failures as one nested certificate object; do not create separate endpoint or degree headlines.",
+    "comparator_advisory": "No independent Comparator interface is justified by this source-specific large feature construction; that is a duplication/reader-role decision, not a specialist-review gate. The exact ordinary replays may be publicly surfaced with their evidence labels and finite-class firewall.",
+    "paper_disposition": {
+      "class": "route_killing_failure_boundary",
+      "target_section": "Why finite-feature carry models fail: exact left-null certificates",
+      "supersession_or_consolidation": "Replace separate source-linear and quadratic-fit narratives with one nested-class boundary and retain the later-onset/higher-complexity escapes adjacent.",
+      "reason": "The useful contribution is saved expert effort: two exact class eliminations stop repeated fitting without pretending to exclude integral tails."
+    }
+  },
+  "release_disposition": {
+    "value": "public_card_only",
+    "reason": "The exact statement, source coordinates, replay scripts, and finite-class nonclaims are inspectable. A standalone Comparator proposition would duplicate the source-specific computation rather than add a materially independent checked interface.",
+    "comparator_advisory": "Allow public visibility under ordinary-duality plus exact-computation labels; do not withhold it because independent review is pending, and do not promote it to a Lean or all-class theorem."
+  },
+  "next_pass": {
+    "reentry_condition": "Re-enter only if the source generation, feature coordinates, replay certificates, or claim boundary changes, or if a proof connects every hypothetical integral carry to an excluded class.",
+    "do_not_redo": [
+      "generic left-nullspace terminology",
+      "the two finite first-onset replays",
+      "fit-horizon extensions inside the same declared classes"
+    ],
+    "open_bottleneck": "A completeness theorem for the relevant carry ansatz, or a deliberately different mechanism covering later onset, higher degree, nonpolynomial structure, or unbounded memory.",
+    "owner": "Erdos269 proof owners for mathematics; Mathematics Refinery for canonical review copy; Role 3 for any public projection change"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/exact_left_null_coboundary_class_elimination.card.json",
+      "effect": "Replace pending terminology with column-space/left-nullspace language and preserve the exact feature-phase-onset boundary."
+    },
+    {
+      "consumer": "Erdős #269 proof fleet",
+      "effect": "Do not extend the fit horizon inside the same class; change the ansatz or prove that any integral tail must fall into a newly certified class."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as a rigorous method-boundary certificate, never as evidence that the integral branch itself is impossible."
+    }
+  ]
+}

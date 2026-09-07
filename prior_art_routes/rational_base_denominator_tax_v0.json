@@ -1,0 +1,233 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "rational_base_denominator_tax",
+  "source_result_id": "rational_base_cleared_tail_recurrence",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_cleared_tail_recurrence_with_reusable_normalization_boundary",
+  "problem_id": "erdos_1049",
+  "purpose": "Classify the rational-base forcing identity, anchor it in standard denominator-clearing practice, and preserve the exact normalization and endpoint boundaries.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/rational_base_denominator_tax.card.json",
+    "card_commit": "16a7da219fca06548eafc954b9168eea1a6a3f81",
+    "landed_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+    "source_result_id": "rational_base_cleared_tail_recurrence",
+    "headline_declarations": [
+      "ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ",
+      "ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat",
+      "ErdosProblems.Erdos1049.rationalBaseForcingNat_one"
+    ]
+  },
+  "source_generation": {
+    "status": "current_clean_source_card_snapshot",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+      "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "sha256": "8172e9ff026ed7537062c46f9e05851f8216193c5ed17e70470d873b1451f46a"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/rational_base_denominator_tax.card.json",
+      "commit": "1174474f78634b7a8e8eeb67948ba1f1b697c199",
+      "sha256": "6a3af7f4c0655b3f34004cb34e0a099087edb6daa217c4db280341912448aac7"
+    },
+    "review_generation": "2026-08-26_observatory_route_maturity_v1",
+    "claim_guard": "Lean checks only the recurrence, positive forcing lower bound, and s=1 boundary; no noncancellation, height, decay, or irrationality theorem is claimed."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "rational_base_cleared_tail_recurrence@source_4cd4eac_card_16a7da2",
+    "result_family": "rational_base_cleared_tail_recurrence",
+    "evidence_class": "Lean-checked elementary recurrence, sharp positive forcing lower bound, and exact integer-base boundary",
+    "closest_prior_art": "Rational-parameter Lambert/Padé denominator clearing in Coussement--Smet and the integer-base little-q-Legendre setting of Van Assche; the abstract three-declaration package is source-specific and routine.",
+    "comparison_relation": "A reusable normalization audit beneath the #1049 effective-height route, not a global rational-base no-go or irrationality theorem.",
+    "exact_delta": "The source abstracts the coefficient sequence, exposes the s^(N+1) forcing factor for s>=2, and records the sharp s=1 collapse as one exact boundary object.",
+    "disconfirming_evidence": "The forcing scale alone does not prevent cancellation or prove nonvanishing; a family-specific height/decay/noncancellation argument is still absent.",
+    "confidence_ceiling": "High for the three named Lean declarations and their quantifiers; low for standalone novelty, with no priority claim.",
+    "significance": "Moderate construction-filter value: it prevents integer-base normalization from being silently reused at a nonintegral rational base.",
+    "claim_ceiling": "No assertion that every rational-base method fails, that the tail is nonzero or integral, or that Erdős #1049 is solved.",
+    "hard_step": "Find a 3/2 auxiliary family whose decay, integrality/noncancellation, and effective-height budget survive the denominator forcing.",
+    "open_boundary": "The denominator-base forcing is a cost term, not a cancellation or irrationality conclusion.",
+    "bounded_expert_act": "Check the arbitrary-coefficient recurrence, positivity hypotheses, and exact s=1 collapse once; then require any proposed family to account for s^(N+1).",
+    "reentry_trigger": "Re-enter if the Lean source/card generation or a family-level normalization/height theorem changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Elementary local algebra with normalization dependence as the load-bearing issue.",
+    "slow_down_at": "The distinction between an exponential forcing term and an actual noncancellation or height lower bound.",
+    "automation_can_establish": [
+      "source/card hash parity",
+      "the three named Lean declarations",
+      "the s=1 versus s>=2 quantifier boundary"
+    ],
+    "human_judgment_required": [
+      "whether a proposed normalization genuinely changes the forcing burden",
+      "whether the card is correctly subordinate to the effective-height architecture",
+      "whether any future family supplies the missing decay and noncancellation evidence"
+    ],
+    "review_act": "Audit the recurrence and positivity boundary, then compare a candidate 3/2 construction against the explicit denominator forcing."
+  },
+  "adjudication_currentness": {
+    "status": "current_at_clean_source_card_snapshot",
+    "bound_snapshot": {
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "8172e9ff026ed7537062c46f9e05851f8216193c5ed17e70470d873b1451f46a",
+      "reviewer_card_commit": "1174474f78634b7a8e8eeb67948ba1f1b697c199",
+      "reviewer_card_sha256": "6a3af7f4c0655b3f34004cb34e0a099087edb6daa217c4db280341912448aac7",
+      "review_generation": "2026-08-26_observatory_route_maturity_v1"
+    },
+    "claim_guard": "Keep the rational-base cleared-tail recurrence as one supporting #1049 construction filter; do not promote it to a global no-go or endpoint claim.",
+    "reentry_trigger": "Recompute if the source/card generation or a family-level height/noncancellation result changes."
+  },
+  "classification": {
+    "theorem_class": "elementary_denominator_clearing_or_Horner_tail_error_recurrence",
+    "novelty_class": "routine_identity_with_reusable_Lean_normalization_interface_sharp_natural_bound_and_exact_integer_base_boundary",
+    "formalization_class": "Lean_checked_abstraction_from_an_Erdos_1049_rational_base_Lambert_coordinate",
+    "priority_claim": "none",
+    "recommended_terminology": "rational-base cleared-tail recurrence",
+    "acceptable_project_alias": "denominator-base tax",
+    "terminology_boundary": "Denominator clearing, integrality factor, and cleared error term are established language. Denominator tax is an explanatory metaphor, not a located standard theorem name.",
+    "nearest_prior_work": [
+      "Coussement and Smet (2009) treat Lambert series with a rational parameter q_1=s_1/t_1 and construct explicit factors making Padé approximants integral; their denominator factors contribute directly to the asymptotic budget.",
+      "Van Assche (2001) treats the adjacent reciprocal-integer q-base Lambert setting by Padé approximation with little q-Legendre polynomials.",
+      "Neither source states the card's abstract one-step tail recurrence or the exact s=1 versus s>=2 natural forcing dichotomy."
+    ],
+    "attribution": "Call the recurrence elementary denominator-clearing algebra. Attribute the abstract Lean API, sharp natural lower bound, and exact normalization boundary to the local source; cite rational-parameter Padé work only for the established clearing-factor framework.",
+    "mathematical_interest": "Low standalone depth but useful methodological precision: it makes a normalization cost explicit before an integer-base argument is transferred to a nonintegral rational base.",
+    "reusable_scope": "Power-series and Lambert-type tails evaluated at a rational base r/s and cleared only by numerator powers r^N, with arbitrary rational coefficient sequences.",
+    "why_it_matters": "At 3/2, the denominator base contributes a factor 2^(N+1) to every positive forcing step. Any cancellation, height, or Padé construction must account for that factor rather than importing an integer-base recurrence unchanged."
+  },
+  "primary_sources": [
+    {
+      "id": "coussement_smet_2009_rational_Lambert_Pade",
+      "title": "Irrationality proof of certain Lambert series using little q-Jacobi polynomials",
+      "authors": [
+        "Jonathan Coussement",
+        "Christophe Smet"
+      ],
+      "venue": "Journal of Computational and Applied Mathematics 233 (2009), 680-690",
+      "doi": "10.1016/j.cam.2009.02.036",
+      "url": "https://arxiv.org/abs/math/0701345",
+      "source_archive": "annexes/arxiv-math0701345-coussement-smet-lambert-little-q-jacobi/source.tex",
+      "source_archive_kind": "arxiv_source_tex",
+      "source_archive_sha256": "b9c7db180b67f6284b3abb642bf4c58e413e7bfac2a0b15c449e1fa654d9d1fa",
+      "extracted_markdown": "annexes/arxiv-math0701345-coussement-smet-lambert-little-q-jacobi/extracted.md",
+      "extracted_markdown_sha256": "bda9797980096c4b5baf774cdb96cca734df5a78266a3c64f79967b78dd54b73",
+      "primary_source_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_tex_read_exact_rational_parameter_and_clearing_factor_locators_compared",
+      "exact_anchor": "source.tex lines 364-365 set q_1=s_1/t_1 with gcd(s_1,t_1)=1; lines 585-615 define the integral clearing factor e_n^± and explain why the s_1^n and product factors cancel denominators.",
+      "supports": "Established rational-parameter Padé practice in which denominator clearing and its exponential/asymptotic cost are explicit mathematical data.",
+      "does_not_support": "The card's exact tail recurrence, its all-sequence abstraction, or an Erdős #1049 result."
+    },
+    {
+      "id": "van_assche_2001_little_q_Legendre",
+      "title": "Little q-Legendre polynomials and irrationality of certain Lambert series",
+      "author": "Walter Van Assche",
+      "venue": "The Ramanujan Journal 5 (2001), 295-310",
+      "url": "https://arxiv.org/abs/math/0101187",
+      "source_archive": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.pdf",
+      "source_archive_sha256": "ce878d4a92a709e77723bb398c131e5391cb8bea8c82eeeccd92e6f26fece34d",
+      "pdf_pages": 15,
+      "extracted_markdown": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/extracted.md",
+      "extracted_markdown_sha256": "150bcd646346d92e8bacc95c9a49ba85c1d0c1630623055f4b37de27906209fc",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_little_q_legendre_and_theorem_1_locators_compared",
+      "exact_anchor": "PDF p. 1, abstract and introduction, set the integer reciprocal-base Lambert-series framework; PDF p. 3, equation (7), defines the little q-Legendre polynomials; PDF p. 10, Theorem 1, states the integer-base irrationality approximation result.",
+      "supports": "The adjacent integer-base Lambert/Padé framework against which the nonintegral rational-base normalization must be distinguished.",
+      "does_not_support": "The s>=2 forcing lower bound, the s=1 boundary theorem, or a 3/2 endpoint."
+    }
+  ],
+  "mechanism_comparison": {
+    "elementary_core": "Expanding P_(N+1)-P_N and multiplying by B r^(N+1) gives T_(N+1)=r T_N-B c_(N+1) s^(N+1).",
+    "forcing_bound": "For natural data with s>=2 and positive B,c_(N+1), monotonicity gives 2^(N+1)<=s^(N+1)<=B c_(N+1) s^(N+1).",
+    "integer_boundary": "At s=1 the denominator-base power disappears exactly, leaving A_N=B c_(N+1).",
+    "literature_relation": "Padé papers use much more elaborate global clearing factors. They confirm that clearing cost is standard and consequential, but do not turn this local recurrence into a named theorem.",
+    "exact_delta": "A compact division-free Lean interface exposes the coefficient-independent recurrence, the sharp natural bound, and the normalization discontinuity as reusable inputs."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "rational q Lambert series irrationality q=a/b denominator clearing",
+      "rational base Lambert series denominator 3/2",
+      "Padé rational parameter integrality clearing factor",
+      "cleared tail recurrence rational base",
+      "denominator tax recurrence q series"
+    ],
+    "result": "The search found extensive denominator-clearing practice and rational-parameter Padé constructions, but no named antecedent for the card's exact abstract recurrence or its proposed denominator-tax label.",
+    "boundary": "No novelty inference follows because the recurrence and lower bound are immediate algebra."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked elementary cleared-tail recurrence shows exactly where a nonintegral rational base inserts an exponential forcing factor; the integer-base normalization is the sharp boundary.",
+    "forbidden_wording": [
+      "Denominator tax is an established named theorem.",
+      "Exponential forcing prevents cancellation.",
+      "The cleared tail is nonzero or integral.",
+      "Every rational-base method fails.",
+      "This proves irrationality in Erdős Problem 1049."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_nonvanishing_theorem",
+      "not_a_height_lower_bound",
+      "not_a_global_Pade_no_go",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/rational_base_denominator_tax.card.json",
+      "effect": "Replace pending wording with the elementary cleared-tail classification, standard clearing-factor antecedent, and exact normalization significance."
+    },
+    {
+      "consumer": "Erdős #1049 proof fleet",
+      "effect": "Use the forcing factor as a completed normalization audit; any surviving route must prove noncancellation or offset it quantitatively rather than cite the factor alone."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present as a reusable formal recurrence and warning about rational-base transfer, not as a novel theorem or endpoint result."
+    }
+  ],
+  "expert_review_support": {
+    "hard_step": "For a concrete rational-base auxiliary family, prove noncancellation and enough decay/height control after the denominator-base forcing is charged, or prove another normalization genuinely changes that cost.",
+    "natural_friction": "The forcing factor is large but does not forbid cancellation. Preserve the arbitrary-coefficient quantifier, positivity hypotheses, and exact s=1 collapse rather than presenting an elementary recurrence as a global no-go.",
+    "evidence_separation": "The recurrence, lower bound, and integer-base identity are Lean-checked. Coussement--Smet and Van Assche provide surrounding clearing context. No family-level analytic proof or external review is needed to state the local theorem."
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "rational-approximation height and denominator-clearing architecture",
+    "programme_disposition": "supporting construction filter beneath rational_approximation_exponent_budget; keep recurrence, forcing, and base-one collapse as one mechanism",
+    "expert_attention_reason": "It identifies the first exact nontransferable step from integer-base to rational-base tail arguments.",
+    "evidence_class": "three source-pinned Lean declarations and elementary direct algebra; no auxiliary family or endpoint theorem",
+    "hard_step": "A family-specific argument that survives, cancels, or faithfully renormalizes the s^(N+1) forcing term.",
+    "prior_art_uncertainty": "Low for elementary clearing and surrounding rational-parameter Padé practice; no priority claim.",
+    "open_boundary": "No nonzero tail, integrality, height bound, global no-go, irrationality, or #1049 solution.",
+    "comparator_interface": "One status-tagged bundled local recurrence firewall is appropriate after Role 3 source-parity review; it must not export analytic conclusions.",
+    "paper_disposition": "supporting construction filter",
+    "paper_target_section": "The cleared-tail recurrence and the size of the forcing term",
+    "paper_supersession_relation": "One section supersedes separate recurrence, denominator-tax, and integer-base-transfer narratives; the effective-height budget remains the #1049 architecture headline."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1049-rational-base-lambert.tex",
+    "section": "The cleared-tail recurrence and the size of the forcing term",
+    "canonical_mechanism_family": "rational-approximation height and denominator-clearing architecture",
+    "relation": "Subordinate construction filter beneath rational_approximation_exponent_budget; consolidate recurrence, forcing, and exact base-one boundary.",
+    "understanding_delta": "Makes the denominator-base exponential cost explicit while preserving that a large forcing term is not itself an irrationality or cancellation theorem.",
+    "evidence_boundary": "Three Lean declarations establish the local law. Rational-parameter Padé sources give context only; no construction, height result, or endpoint implication is claimed.",
+    "hard_step": "Give a family-specific response to the forcing term with proved decay, integrality, and noncancellation.",
+    "meaningful_failed_route": "Transfer an integer-base argument to r/s without retaining or quantitatively offsetting s^(N+1).",
+    "open_remainder": "No certified rational-base family at 3/2 and no solution of Erdős #1049."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_formal_local_recurrence",
+    "output_stage": "exposition_understanding_and_publication_ready_canonicalization",
+    "artifact": "rational_base_denominator_tax card, route, and paper construction-filter paragraph",
+    "human_understanding_delta": "Consolidates an exact recurrence and its sharp normalization boundary into the question every rational-base construction must answer: where is the denominator-base forcing paid?",
+    "verification_state": "Source-pinned Lean declarations verify the local theorem; cancellation, height, and endpoint claims are deliberately outside the evidence.",
+    "publication_or_review_state": "Eligible for status-tagged public and Comparator consideration under the Lean evidence label; external review is a downstream value-add, not an admission gate.",
+    "canonicalization_state": "One rational-base cleared-tail law replaces scattered local forcing rhetoric beneath the effective-height architecture.",
+    "unresolved_downstream_bottleneck": "A concrete auxiliary family with a full forcing, decay, integrality, and noncancellation account.",
+    "next_stage_owner": "Role 3 for status-tagged public/Comparator projection and #1049 construction owners for the family-level response."
+  },
+  "publication_eligibility": {
+    "class": "status_tagged_public_and_comparator_candidate",
+    "basis": "exact claim-faithful Lean declarations, inspectable source parity, settled elementary attribution, and explicit open boundary",
+    "firewall": "State the recurrence, positivity hypotheses, and s=1 boundary together; do not state or imply noncancellation, an analytic no-go, or irrationality."
+  }
+}

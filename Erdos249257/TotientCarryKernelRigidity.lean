@@ -293,7 +293,8 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank
 minor.**  If the totient series were rational, its tempered integral carry
 would have unbounded dyadic section rank.
 
-This does not by itself prove irrationality: a separate theorem bounding the
+This is the strongest current consumer of the separated-minor producer.  It
+does not by itself prove irrationality: a separate theorem bounding the
 dyadic section rank of every rationality-supplied tempered carry is still
 required, and no such finite-rank compression theorem follows from the
 recurrence and temperedness alone. -/

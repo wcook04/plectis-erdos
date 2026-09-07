@@ -1,0 +1,179 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "unit_anchored_adjacent_plucker_tail_collapse",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_unit_chart_rank_one_algebra_with_reusable_formal_modular_compression_interface",
+  "problem_id": "erdos_1049",
+  "purpose": "Position the adjacent-minor propagation theorem inside standard commutative-ring rank-one algebra, preserve the load-bearing unit hypothesis, and decide whether its finite-selector compression warrants an independent exact proposition firewall.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/unit_anchored_adjacent_plucker_tail_collapse.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean",
+    "source_commit": "0d532ec9fe405ab794df08371457f0d30926d82b",
+    "source_result_id": "qapery_moving_tail_plucker_opening",
+    "source_declarations": [
+      "ErdosProblems.Erdos1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero",
+      "ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_tail_pair_det_zero_of_adjacent_det_zero",
+      "ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_binary_tail_collision_of_adjacent_det_zero",
+      "ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth"
+    ]
+  },
+  "classification": {
+    "novelty_class": "standard_unit_chart_rank_one_propagation_with_source_specific_formal_modular_compression_interface",
+    "priority_claim": "none",
+    "recommended_terminology": "unit-anchored adjacent-minor rank-one propagation",
+    "nearest_prior_work": "Călugăreanu (2025), Theorem 1, places vanishing 2-by-2 minors over commutative rings in the rank-one determinantal family; Section 3 explicitly warns that vanishing minors need not yield a column-row decomposition over an arbitrary ring. The local unit coordinate supplies an affine-chart factorization directly.",
+    "mathematical_interest": "The algebra is elementary, but the interface is sharp and reusable: a local adjacent-minor check plus units forces global pairwise collapse and reduces a finite selector search from N-squared vector states to N scalar states.",
+    "reusable_scope": "Sequences in R-squared over any commutative ring with a unit anchor at each row; finite-selector compression over Z/NZ; source-specific two-three depth conversion as a subordinate corollary.",
+    "why_it_matters": "It isolates exactly what determinantal information can reduce a modular pigeonhole budget and prevents invalid rank-one propagation in the presence of zero divisors."
+  },
+  "primary_sources": [
+    {
+      "id": "calugareanu_2025_aba_trace",
+      "title": "The formula ABA=Tr(AB)A for matrices",
+      "author": "Grigore Călugăreanu",
+      "venue": "Beiträge zur Algebra und Geometrie 66 (2025), 531--537",
+      "doi": "10.1007/s13366-024-00756-9",
+      "url": "https://doi.org/10.1007/s13366-024-00756-9",
+      "exact_anchor": "Theorem 1 characterizes matrices over a commutative ring whose 2-by-2 minors vanish via ABA=Tr(AB)A for every B. Section 3, especially the paragraph following the inner-rank-one proof, states that all 2-by-2 minors vanishing does not in general imply a column-row decomposition over an arbitrary commutative ring.",
+      "supports": "The standard rank-one/determinantal setting and the need for an additional ring-theoretic or unit-chart hypothesis before claiming factorization.",
+      "does_not_support": "It does not state adjacent-to-global propagation for a sequence, the finite-selector threshold, the two-three depth conversion, or any q-Apéry application."
+    }
+  ],
+  "mechanism_comparison": {
+    "classical_core": "All 2-by-2 minors vanishing is the determinantal rank-one condition, but over general commutative rings it need not produce a column-row factorization.",
+    "authored_exact_delta": "A unit second coordinate gives an explicit affine-chart scalar for each adjacent step, so local minor vanishing propagates globally without imposing a domain hypothesis.",
+    "finite_consumer": "Once every row lies on the anchor line over Z/NZ, binary selector sums occupy at most N states rather than N-squared states.",
+    "source_specific_boundary": "The q-Apéry programme must still prove uniform units, valuations, analytic height decay, and nonvanishing."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "adjacent 2x2 minors rank one matrix commutative ring Plucker coordinates unit",
+      "Plucker coordinates commutative ring rank one matrix minors",
+      "Plucker coordinates over commutative rings rank one"
+    ],
+    "result": "The bounded search found the modern commutative-ring vanishing-minor characterization and its explicit warning about factorization, but no primary source for the exact sequence-level adjacent-unit propagation plus selector package.",
+    "boundary": "Failure to locate verbatim packaging is not evidence of novelty. The algebraic core remains classified as standard and the local contribution as a useful exact interface."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "unit_anchored_adjacent_plucker_tail_collapse@formal-0d532ec9-card-current",
+    "evidence_class": "Four source-pinned Lean declarations for unit-chart adjacent-minor propagation and finite ZMod selector compression; external literature is contextual primary-source evidence only.",
+    "closest_known_result": "Călugăreanu (2025), Theorem 1 and Section 3, supplies the commutative-ring vanishing-minor/rank-one setting and warns that unrestricted factorization can fail; the present unit-anchor hypothesis gives an explicit affine-chart factorization. The selector step is ordinary finite pigeonhole counting.",
+    "comparison_relation": "Standard determinantal rank-one algebra plus a source-specific, formally checked sequence-level propagation and modular-compression interface; not a new Plücker theorem or q-Apéry result.",
+    "exact_delta": "The local package proves that adjacent vanishing minors propagate to all pairwise minors when each second coordinate is a unit, then reduces binary selector states from at most N^2 to N over Z/NZ, with the exact two-three depth corollary.",
+    "disconfirming_evidence": "Călugăreanu's factorization warning and the explicit Z/4Z counterexample show the unit hypothesis is essential; the prime-field binary-sum example shows the strict N<2^k threshold cannot be weakened. No source theorem supplies the q-Apéry unit, valuation, height, or nonvanishing hypotheses.",
+    "confidence": {
+      "level": "high_for_four_Lean_interfaces_and_standard_rank_one_context_medium_for_source_specific_packaging_low_for_q_Apery_activation",
+      "basis": "Formal source, card, and packet hashes are pinned; the external comparison establishes the standard algebraic context but does not settle priority for the exact sequence packaging."
+    },
+    "significance": "High reusable-interface value with low algebraic novelty: it provides an exact bridge from local determinant checks to one-dimensional modular selector budgets and makes the arithmetic activation bottleneck explicit.",
+    "claim_ceiling": "Lean checks unit-anchored adjacent-to-global minor propagation, the ZMod one-coordinate collision, and the strict N<2^k/two-three depth bounds. No unrestricted ring factorization, q-Apéry activation, analytic height or nonvanishing theorem, irrationality, or priority claim.",
+    "hard_step": "Show that the actual q-Apéry moving tail satisfies the unit-anchor and adjacent-minor hypotheses uniformly, then connect the collision to analytic height and remainder estimates.",
+    "open_boundary": "Uniform arithmetic activation, analytic height decay, remainder nonvanishing, and Erdős #1049 remain open; the abstract interface alone does not produce any of them.",
+    "bounded_expert_review_act": "Check one source-to-card theorem correspondence and test whether the unit-chart propagation plus N<2^k selector statement is independently useful in a transfer-matrix or modular-compression argument.",
+    "reentry_trigger": "Re-enter on a source/card/packet generation change, an exact antecedent for the sequence-level packaging, or a source theorem activating the unit and adjacent-minor hypotheses with analytic bounds.",
+    "source_generation_binding": {
+      "formal_source_commit": "0d532ec9fe405ab794df08371457f0d30926d82b",
+      "formal_source_sha256": "4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3",
+      "research_packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "reviewer_card_sha256": "c1b2ef90957b1baab16af10a1c1c92b6a115909c21d1e52f1c04b0bd5a29063d",
+      "parity_status": "formal source, research packet, and reviewer card hashes recorded at adjudication; source result qapery_moving_tail_plucker_opening is exact"
+    },
+    "classification": {
+      "result_family": "erdos1049_determinantal_tail_rank_collapse",
+      "evidence_class": "Lean_checked_exact_unit_chart_propagation_and_modular_selector_compression",
+      "closest_prior_art": "Călugăreanu 2025 for commutative-ring vanishing minors and factorization caveats; finite pigeonhole for selector compression",
+      "comparison_relation": "Source-specific formal interface built from standard rank-one algebra; no priority claim",
+      "novelty_confidence": "strong_internal_provisional_case_for_packaging_only; standard_core",
+      "significance_grade": "high_reusable_interface_low_algebraic_novelty",
+      "why_care": "The exact unit-anchor condition changes the selector budget from a two-coordinate N^2 state count to N scalar states, which can materially shorten any later arithmetic activation argument.",
+      "hard_step": "Uniformly supplying the unit and adjacent-minor hypotheses for the q-Apéry tail and closing the analytic consumer.",
+      "natural_friction": "Without units, adjacent zero minors do not propagate over rings with zero divisors; without arithmetic activation, the modular collision is only a conditional interface.",
+      "disconfirming_evidence": "The Z/4Z counterexample and prime-field threshold witness block stronger ring-factorization and selector-count claims.",
+      "confidence_ceiling": "High for the formal interfaces; medium for independent usefulness; no official novelty or priority conclusion.",
+      "bounded_expert_act": "Audit the four declaration correspondences and identify one external transfer-matrix or modular-compression use, without treating q-Apéry activation as proved.",
+      "reentry_condition": "Source/card/packet generation change or a genuine arithmetic activation theorem."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "determinantal tail rank collapse and modular selector compression",
+      "disposition": "admit_one_irreducible_supporting_mechanism_and_consolidate_selector_variants",
+      "paper_disposition": "supporting_lemma",
+      "paper_target_section": "Determinantal tail compression: from adjacent minors to one scalar state",
+      "supersession_relation": "Keep propagation, ZMod compression, and the two-three depth corollary together; supersede separate selector/depth fragments.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "One exact firewall for unit-anchored adjacent-to-global minor propagation plus the strict N<2^k binary-selector collision; retain the depth conversion as a subordinate corollary.",
+      "expert_attention_reason": "This is the cleanest exact bridge between local determinant structure and finite-state compression, while the arithmetic activation failure remains visible rather than being mistaken for a proof."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "Routine unit-chart algebra and finite pigeonhole counting; the expert-risk is silently dropping the unit hypothesis or treating the conditional collision as q-Apéry progress.",
+      "slow_down_at": "Check every second coordinate is a unit, verify the strict N<2^k quantifier, and keep the source-specific arithmetic activation separate from the abstract theorem.",
+      "automation_can_establish": "The four Lean declaration correspondences, source/card/packet parity, and the explicit Z/4Z and prime-field boundary witnesses.",
+      "human_judgment_required": "Whether this exact propagation-plus-compression interface is reusable outside the motivating q-Apéry setting and whether the paper placement makes the unresolved analytic throat legible.",
+      "bounded_review_act": "One expert reads the four declarations against the source and identifies one independent modular-compression use; no priority or q-Apéry activation judgment is requested.",
+      "reentry_condition": "Re-enter only after a source/card generation change, an exact antecedent for the sequence packaging, or a theorem supplying the q-Apéry unit/adjacent-minor hypotheses."
+    },
+    "adjudication_currentness": {
+      "bound_snapshot": {
+        "formal_source_commit": "0d532ec9fe405ab794df08371457f0d30926d82b",
+        "formal_source_sha256": "4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3",
+        "research_packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+        "reviewer_card_sha256": "c1b2ef90957b1baab16af10a1c1c92b6a115909c21d1e52f1c04b0bd5a29063d"
+      },
+      "source_generation": "2026-08-24 source; adjudication refreshed 2026-08-26",
+      "status": "current_at_adjudication",
+      "staleness_boundary": "Any source, packet, card, or q-Apéry activation change invalidates this adjudication and requires a new exact snapshot."
+    }
+  },
+  "claim_boundary": {
+    "allowed_wording": "We formalise a standard unit-chart rank-one propagation mechanism and derive an exact finite-selector compression interface with sharp unit and counting boundaries.",
+    "forbidden_wording": [
+      "Vanishing adjacent minors always force rank one over any ring.",
+      "We discovered the relationship between minors and rank one.",
+      "The selector collision activates the q-Apéry construction automatically.",
+      "This proves irrationality at base 3/2 or solves Erdős Problem 1049."
+    ]
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "0d532ec9fe405ab794df08371457f0d30926d82b",
+      "formal_source_sha256": "4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3",
+      "research_packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "reviewer_card_sha256": "c1b2ef90957b1baab16af10a1c1c92b6a115909c21d1e52f1c04b0bd5a29063d"
+    },
+    "claim_guard": "The adjudication covers only the four abstract Lean interfaces; q-Apéry activation, analytic estimates, irrationality, and priority remain outside the bound.",
+    "reentry_trigger": "Re-enter on source, packet, card, or arithmetic-activation changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine unit-chart algebra and finite pigeonhole counting; the risk is silently dropping units or treating a conditional collision as q-Apéry progress.",
+    "slow_down_at": "Check every second coordinate is a unit, verify strict N<2^k, and keep arithmetic activation separate from the abstract theorem.",
+    "automation_can_establish": [
+      "The four Lean declaration correspondences and source/card/packet parity",
+      "The explicit zero-divisor and selector-threshold boundary witnesses"
+    ],
+    "human_judgment_required": [
+      "Whether the propagation-plus-compression interface is reusable outside q-Apéry",
+      "Whether the paper placement keeps the unresolved analytic throat legible"
+    ],
+    "review_act": "Read the four declarations against the source and identify one independent modular-compression use; do not infer priority or q-Apéry activation.",
+    "attention_ceiling": "High reusable-interface value, low algebraic novelty, no official novelty or priority conclusion."
+  },
+  "release_advisory": {
+    "significance_grade": "high_reusable_interface_low_algebraic_novelty",
+    "canonical_mechanism_family": "determinantal tail rank collapse and modular selector compression",
+    "programme_disposition": "admit one irreducible supporting mechanism; consolidate all selector consequences beneath it",
+    "comparator": "One exact proposition firewall is justified for adjacent-unit propagation plus the strict N<2^k selector consequence. Keep the two-three depth conversion subordinate and exclude q-Apéry activation claims.",
+    "paper": "Supporting lemma in the determinantal-tail compression section.",
+    "shortlist": "Do not admit to the absolute flagship shortlist without arithmetic activation and analytic closure."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean_checked_exact_interface",
+    "output_stage": "primary_source_positioned_expert_understanding_and_canonicalization",
+    "artifact": "unit_anchored_adjacent_plucker_tail_collapse route",
+    "human_understanding_delta": "Distinguishes standard minor/rank algebra from the exact unit-chart propagation and the source-specific arithmetic bottleneck.",
+    "verification_state": "Four Lean declarations and source hashes are pinned; the external source is contextual and no q-Apéry activation is inferred.",
+    "publication_or_review_state": "Ready for status-tagged public and Comparator consideration; external review remains downstream.",
+    "canonicalization_state": "One parent mechanism with two finite-selector consumers.",
+    "unresolved_downstream_bottleneck": "Uniform q-Apéry arithmetic activation and analytic height/nonvanishing estimates.",
+    "next_stage_owner": "Role 3, Mathematics Refinery, and the Erdős 1049 proof lane."
+  }
+}

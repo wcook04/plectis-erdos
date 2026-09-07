@@ -1,0 +1,202 @@
+version: v0.4
+project:
+  name: 'Erdős #249: coefficient freezing for totient sections and the bounded
+    isolated pulse criterion'
+  description: >-
+    Two declarations are compared. The first is a rigidity statement for the totient
+    kernel. Let L i (n) = a i * n + b i be finitely many affine forms with positive
+    slopes and pairwise nonzero cross determinants a i * b j - a j * b i, and let the
+    coefficient sequences w i from the naturals to the rationals each be periodic with
+    their own positive period. If the sum over i of w i (n) * φ(a i * n + b i) vanishes
+    for every sufficiently large n, then w i (n) = 0 for every i and every n. Both the
+    per-coefficient periods and the eventual quantifier are as printed in the note: the
+    relation is assumed only above a threshold, and no common period is assumed. The
+    second declaration is the Diophantine criterion in the note's own shape. For an
+    integer sequence a with |a n| ≤ C for every n, if for every height L₀ there are L
+    at least L₀ and N greater than L with a N nonzero and a (N - j) = a (N + j) = 0 for
+    every j with 0 < j ≤ L, then the sum over n at least 0 of a (n+1) / 2^(n+1) is
+    irrational. The n = 0 term of the full binary value is an integer and is removed
+    explicitly, so the conclusion is stated over the positive indices as printed. The
+    separation mechanism is that of P. Erdős, On arithmetical properties of Lambert
+    series, Journal of the Indian Mathematical Society 12 (1948). Neither declaration
+    concerns the series of φ(n)/2^n, no declaration here supplies a certificate for it,
+    and Erdős Problem 249 remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A25
+  - 11B83
+sources:
+- title: A basis and all its relations for the binary totient series
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The Lean development proves the freezing corollary with per-coefficient
+    periods and an eventual relation, and the positive-index form of the bounded
+    isolated-pulse lemma.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: On arithmetical properties of Lambert series
+  authors:
+  - Paul Erdős
+  type: paper
+  relationship: background
+  note: Journal of the Indian Mathematical Society 12 (1948). The isolated-digit
+    separation mechanism behind the pulse criterion is the mechanism of this paper.
+  license: unknown
+  author_endorsement: n/a
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status; neither compared declaration is attributed to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+  note: Dirichlet's theorem on primes in arithmetic progressions enters the freezing
+    proof through the affine independence theorem it invokes.
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+  notes: Human mathematical review remains separate from Lean checking, Comparator
+    preparation, and any future Palomar editorial review.
+fidelity:
+  divergences: The Challenge states both theorems in Mathlib-only vocabulary with no
+    redeclared definitions; every symbol is Mathlib's. The Solution transports the two
+    source declarations in
+    ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean directly.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: The hypothesis set of each compared declaration and the absence of any
+    statement about the unreduced totient series were checked by the author with AI
+    assistance; no independent review is claimed.
+status:
+  scope: Two exact source-backed declarations. Challenge.lean contains two intentional
+    Comparator specification sorries.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count.
+  axiom_audit_status: axiom_print_pending_first_public_ci_run_for_this_entry
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.periodic_freezing
+    file: Solutions/ExternalVerification249PeriodicFreezingAndPulse.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PeriodicFreezingAndPulse/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration
+      ErdosProblems.Erdos249.PaperCompleteR7.periodic_freezing.
+    novelty_status: unassessed
+    contribution_class: rigidity of the totient kernel under periodic coefficients
+    statement: For finitely many affine forms a i * n + b i with positive slopes and
+      pairwise nonzero cross determinants, and rational coefficient sequences each
+      periodic with its own positive period, an eventual vanishing relation among the
+      sections φ(a i * n + b i) forces every coefficient to vanish identically.
+    boundary: A statement about relations among totient sections. It supplies no value
+      of any series and no certificate for Erdős Problem 249.
+    comparator_declaration: Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.periodic_freezing
+    literature_dependencies:
+    - statement: "Dirichlet's theorem on primes in arithmetic progressions"
+      source: "Mathlib, via the affine independence theorem for totient sections"
+  - declaration: Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.bounded_isolated_pulse
+    file: Solutions/ExternalVerification249PeriodicFreezingAndPulse.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PeriodicFreezingAndPulse/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    local_proof_provenance: Source declaration
+      ErdosProblems.Erdos249.PaperCompleteR7.bounded_isolated_pulse.
+    novelty_status: unassessed
+    contribution_class: number-theory-free irrationality criterion for binary values
+    statement: For an integer sequence a bounded in absolute value by C, if above every
+      height there is a nonzero letter flanked by a block of zeros of that height on
+      both sides, then the sum over n at least 0 of a(n+1)/2^(n+1) is irrational.
+    boundary: A criterion about bounded integer sequences over the positive indices. It
+      asserts nothing about any particular arithmetic function until pulses are
+      supplied, and it supplies none.
+    comparator_declaration: Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.bounded_isolated_pulse
+    literature_dependencies:
+    - statement: "the isolated-digit separation mechanism"
+      source: "P. Erdős, On arithmetical properties of Lambert series, J. Indian Math. Soc. 12 (1948)"
+alignment:
+  namespace: Erdos249257.ExternalVerification249PeriodicFreezingAndPulse
+  statements:
+  - source: ErdosProblems.Erdos249.PaperCompleteR7.periodic_freezing
+    lean: Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.periodic_freezing
+    module: ExternalVerification249PeriodicFreezingAndPulse/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+  - source: ErdosProblems.Erdos249.PaperCompleteR7.bounded_isolated_pulse
+    lean: Erdos249257.ExternalVerification249PeriodicFreezingAndPulse.bounded_isolated_pulse
+    module: ExternalVerification249PeriodicFreezingAndPulse/Challenge.lean
+    status: exact-transport-axiom-print-pending-first-public-ci-run
+    note: The Challenge statements are token-identical to the Solution statements and
+      use Mathlib vocabulary only.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
+palomar_qualification:
+  status: awaiting-review
+  selected_project: formal_math/erdos257_period_noncollapse
+  comparator_config: formal_math/erdos257_period_noncollapse/ExternalVerification249PeriodicFreezingAndPulse/comparator.json
+  formalization_metadata: formal_math/erdos257_period_noncollapse/ExternalVerification249PeriodicFreezingAndPulse/formalization.yaml
+  source_module: formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean
+  release_mirror: ExternalVerification249PeriodicFreezingAndPulse
+  repository_scope: private_source_mirrored_into_the_palomar_release_tree_not_yet_pinned_at_a_public_commit
+  challenge_dependency_boundary: Mathlib_only
+  replay_status: comparator_replay_and_axiom_print_pending_first_public_ci_run_for_this_entry
+  blockers:
+  - result packet is not present in a public repository at a pinned full commit SHA
+  - comparator positive acceptance and deliberate-negative mismatch rejection have not
+    been recorded on a supported runner for this entry
+  - the lakefile library entry for this package is added by the release step, not by
+    the authoring pass
+editorial_assessment:
+  plectis_signal: >-
+    The freezing corollary is the reusable half of the kernel-rank theorem: it is what
+    lets a relation with periodic coefficients be excluded without recomputing the
+    evaluation matrix. The pulse criterion is the note's own quantifier shape, which
+    the earlier library interface did not state.
+  prior_art_state: >-
+    The separation mechanism is Erdős 1948 and the independence mechanism is the
+    standard Chinese-remainder-plus-Dirichlet evaluation argument. No exact prior
+    statement of either declaration in this form has been located, and neither is
+    presented as novel.
+  sharpness_gap: >-
+    The freezing statement is stated for positive slopes and pairwise nonzero cross
+    determinants. No declaration here shows either hypothesis cannot be relaxed.

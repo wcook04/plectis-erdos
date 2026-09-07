@@ -1,0 +1,199 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "unique_nearest_straight_spoke_counterexample",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_exact_problem_specific_method_counterexample_no_priority_claim",
+  "problem_id": "erdos_1041",
+  "purpose": "Classify the exact unique-nearest unsafe-spoke quintic against the original lemniscate path problem and nearby radial/path constructions without promoting it to a counterexample to the problem.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/unique_nearest_straight_spoke_counterexample.card.json",
+    "source_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+    "source_result_id": "unique_nearest_straight_spoke_counterexample",
+    "argument_map": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearestSpokeCounterexampleComputationalLab.md"
+  },
+  "classification": {
+    "ambient_framework": "polynomial_lemniscate_short_paths_and_critical_point_root_geometry",
+    "standard_core": "logarithmic_derivative_reciprocal_balance_at_a_critical_point",
+    "exact_quintic_certificate": "lean_checked_problem_specific_counterexample_to_one_internal_selector_completion",
+    "priority_claim": "none",
+    "recommended_terminology": "critical-hub straight-spoke selection counterexample",
+    "acceptable_alias": "unique-nearest unsafe-spoke quintic",
+    "discouraged_terminology": [
+      "counterexample to Erdos 1041",
+      "counterexample to the critical-point distance theorem",
+      "counterexample to radial access",
+      "all-critical-hub obstruction",
+      "proof that curved paths are necessary in every configuration"
+    ],
+    "attribution": "Credit Erdős--Herzog--Piranian for the original path problem and component theorem. Credit Pendyala for the independent degree-four polygonal theorem and the neighboring radial-access framework. Attribute only the exact reciprocal-balanced rational quintic and its Lean-checked escape to the local source, with no priority claim.",
+    "mathematical_interest": "The construction cleanly separates a sharp endpoint-distance theorem from containment of its canonical straight connectors, and removes the last tie-breaking loophole in that proposed completion.",
+    "reusable_scope": "Metric endpoint selection followed by an unjustified straight-segment feasibility inference inside a nonlinear sublevel set.",
+    "why_it_matters": "It redirects the #1041 route from further sharpening of the already sufficient distance budget toward curved inverse branches, component overlap, or another independent containment mechanism."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_herzog_piranian_1958_metric_properties",
+      "title": "Metric properties of polynomials",
+      "authors": [
+        "Paul Erdős",
+        "Fritz Herzog",
+        "George Piranian"
+      ],
+      "venue": "Journal d'Analyse Mathématique 6 (1958), 125-148",
+      "doi": "10.1007/BF02790232",
+      "url": "https://users.renyi.hu/~p_erdos/1958-05.pdf",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "pdf_pages": 24,
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_problem_5_locator_compared",
+      "exact_anchor": "Printed p. 139 / PDF p. 15, Problem 5, asks for a path of length less than two joining two roots inside the strict unit lemniscate; the surrounding result guarantees a component containing at least two roots.",
+      "supports": "The originating problem and its exact topological/metric setting.",
+      "does_not_support": "Nearest-root critical-point selection or straight-spoke containment."
+    },
+    {
+      "id": "pendyala_2026_degree_four_lemniscate_path",
+      "title": "A Degree-Four Lemniscate Path Theorem",
+      "author": "Venkata Siddharth Pendyala",
+      "venue": "arXiv:2606.24875v1 (2026)",
+      "url": "https://arxiv.org/abs/2606.24875",
+      "annex_slug": "arxiv-2606-24875-pendyala-degree-four-lemniscate-path",
+      "source_archive": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.pdf",
+      "source_archive_sha256": "337db0cc046023b1429d9131720d199843766629cd2ad8bf8b04a40168d7bcd8",
+      "pdf_pages": 3,
+      "extracted_markdown": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/extracted.md",
+      "extracted_markdown_sha256": "a2b0425974ef126a45a054a587da13801636ce98d552646349026955284e967c",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_theorem_1_proof_locator_compared",
+      "exact_anchor": "PDF p. 1, Theorem 1, proves the arbitrary degree-four case by a polygonal path; PDF p. 3, proof of Theorem 1, uses smallest-enclosing-disk and radial alternatives rather than the local nearest-critical-root rule falsified here.",
+      "supports": "The nearest current proved degree frontier and an alternative polygonal-path architecture.",
+      "does_not_support": "A universal critical-hub spoke selector or the exact quintic counterexample."
+    },
+    {
+      "id": "pendyala_2026_radial_access",
+      "title": "Radial Access for Polynomial Lemniscates: The Cubic Theorem and a Degree-Six Obstruction",
+      "author": "Venkata Siddharth Pendyala",
+      "venue": "SSRN preprint 6850818 (2026)",
+      "doi": "10.2139/ssrn.6850818",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6850818",
+      "exact_anchor": "The paper defines radial access from the origin, proves it through degree three, and supplies a degree-six obstruction.",
+      "supports": "Established neighboring terminology and evidence that straight radial containment is a distinct, degree-sensitive property.",
+      "does_not_support": "Root-to-critical-point spokes, metric-selected endpoints, or the local rational quintic."
+    }
+  ],
+  "mechanism_comparison": {
+    "metric_theorem": "Reciprocal balance and unit-disk geometry select two nearby roots at a critical point with total distance at most two.",
+    "invalid_transfer": "The same two distance-minimizing segments need not lie inside the strict unit lemniscate.",
+    "local_delta": "The exact quintic makes the unsafe root uniquely nearest, eliminating repairs based on tie-breaking among equal-distance roots.",
+    "adjacent_positive_work": "Pendyala's degree-four theorem obtains a polygonal path by a different global geometric split, so it neither implies nor is threatened by the counterexample.",
+    "surviving_routes": "Curved descending branches, another critical or noncritical hub, visibility overlap, and component/Reeb geometry remain available."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "polynomial lemniscate critical point nearest root straight segment",
+      "polynomial lemniscate radial access obstruction",
+      "Erdos 1041 critical point root spoke",
+      "polynomial root critical point reciprocal balance path length",
+      "degree four lemniscate polygonal path critical point"
+    ],
+    "result": "The bounded search located the original 1958 problem, Pendyala's degree-four polygonal theorem, and Pendyala's distinct radial-access obstruction. It did not locate the nearest-critical-root selector assertion or an exact counterexample to it.",
+    "boundary": "The witness is exact and apparently unrecorded in the reviewed sources, but non-location does not support priority or broad novelty language."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked rational quintic shows that the unique root nearest to one critical point can have a straight spoke that exits the strict unit lemniscate, so a sharp critical-point distance theorem cannot be completed by that spoke rule alone.",
+    "forbidden_wording": [
+      "The critical-point distance theorem is false.",
+      "No critical point yields a short path.",
+      "Every straight spoke fails.",
+      "This polynomial is a counterexample to Erdos #1041.",
+      "The witness has literature priority."
+    ],
+    "nonclaims": [
+      "not_an_endpoint_problem_solution",
+      "not_an_all_hub_obstruction",
+      "not_an_exclusion_of_curved_paths",
+      "not_a_degree_minimality_result",
+      "not_a_priority_claim"
+    ]
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_method_boundary",
+    "reason": "The exact Lean witness, rational replay, source pins, and narrow geometric scope are inspectable. Consolidation under the critical-hub containment family—not reviewer absence—explains why no independent Comparator family is recommended.",
+    "comparator_advisory": "If surfaced, pair the unsafe-spoke proposition with the still-valid nearest-root metric theorem and retain all one-hub and curved-path boundaries."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_exact_countermodel",
+    "output_stage": "expert_digestion_and_method_family_consolidation",
+    "artifact": "unique_nearest_straight_spoke_counterexample_v0",
+    "human_understanding_delta": "Makes the false metric-to-containment inference and its replacement problem visible.",
+    "verification_state": "Lean-checked exact witness plus rational replay; no all-hub or endpoint claim.",
+    "publication_or_review_state": "Status-tagged public visibility is eligible now; specialist review remains downstream.",
+    "canonicalization_state": "Subordinate witness in the critical-hub selection-versus-containment family.",
+    "unresolved_downstream_bottleneck": "A curved or topological containment theorem using the valid metric budget.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and \\#1041 proof owners."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/unique_nearest_straight_spoke_counterexample.card.json",
+      "effect": "Expose the exact counterexample, its nearest prior work, and its narrow method-level claim boundary."
+    },
+    {
+      "consumer": "Erdos #1041 proof fleet",
+      "effect": "Do not spend another wave trying to derive straight-spoke containment solely from the global two-nearest-root distance budget."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as a reusable selector-versus-feasibility no-go, paired with the still-valid metric theorem and surviving curved routes."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "routine": "The reciprocal-balance identity and rational witness replay are finite algebra once the quintic is fixed.",
+    "load_bearing": "The exact geometric assertion is narrow: the unique nearest root to one critical point has a straight spoke that leaves the strict unit lemniscate.",
+    "externally_sourced": "Erdős--Herzog--Piranian supply the originating path problem; Pendyala supplies adjacent degree-four and radial-access frameworks, not this selector witness.",
+    "still_unverified": "Whether an earlier source contains the same nearest-critical-root selector obstruction; the bounded search found no exact match and does not establish priority.",
+    "review_act": "Check the nearest-root quantifier and strict-exit computation, then place the witness as one selector-versus-feasibility boundary under the critical-hub family rather than a separate endpoint theorem."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "unique_nearest_straight_spoke_counterexample@source-1fd3e0a",
+    "evidence_class": "Lean-checked exact rational quintic counterexample to one internal selector completion, with source-pinned ordinary problem context and finite computational replay.",
+    "closest_known_result": "Erdős--Herzog--Piranian establish the original strict-lemniscate path problem; Pendyala's degree-four polygonal theorem and separate radial-access work are neighboring architectures. Neither supports or refutes the nearest-critical-root straight-spoke rule.",
+    "comparison_relation": "The witness falsifies only the implication from a metric-selected nearest root to safe straight-spoke containment. It leaves the nearest-root distance theorem, curved inverse branches, component overlap, and the global #1041 question untouched.",
+    "exact_delta": "A reusable method-boundary correction: endpoint distance control is not a feasibility certificate for the selected straight segment.",
+    "disconfirming_evidence": "The bounded primary-source search located adjacent problem and degree-frontier results but no exact selector assertion or matching witness; non-location is not a priority claim.",
+    "confidence": {
+      "level": "high_for_the_narrow Lean counterexample and its method boundary; low_for_priority",
+      "basis": "The source declaration, rational replay, and forbidden stronger interpretations are explicit and inspectable."
+    },
+    "significance": "High route-selection value within #1041: it retires a tempting but invalid straight-spoke completion and redirects attention to curved or component-level containment.",
+    "claim_ceiling": "State that one Lean-checked rational quintic makes the unique nearest-root straight spoke unsafe inside the strict unit lemniscate. Do not call it a counterexample to Erdős #1041, radial access in general, all critical hubs, or curved paths; make no priority claim.",
+    "hard_step": "The hard step is the exact nearest-root and strict-exit verification for the chosen quintic; no global path theorem follows.",
+    "open_boundary": "No independent endpoint Comparator interface is justified; consolidate under the critical-hub containment family with the metric theorem and surviving curved routes adjacent.",
+    "bounded_expert_review_act": "Audit the exact nearest-root quantifier and exit certificate, then check whether any cited degree-four/radial-access source uses the same selector rule.",
+    "reentry_trigger": "Re-enter if a matching prior witness is found, the source polynomial or quantifier changes, or a global containment claim is proposed.",
+    "source_generation_binding": {
+      "formal_source_commit": "1fd3e0a22904ea1301b1ac76f31862f75b635537",
+      "formal_source_sha256": "22f1b1dc8b8e4bf39530c093aaec5eabe299cdb0c32bbde928718b2ad7f25534",
+      "argument_map_sha256": "1deb7569645f3cc861e0792654777a9591017a468de558069787164c6a42cb1a",
+      "primary_source_anchors": [
+        "Erdős--Herzog--Piranian (1958), Problem 5, printed p. 139",
+        "Pendyala (2026), A Degree-Four Lemniscate Path Theorem",
+        "Pendyala (2026), Radial Access for Polynomial Lemniscates"
+      ],
+      "parity_status": "Formal witness and argument-map hashes are current; external comparison remains bounded and no priority is asserted."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+      "formal_source_sha256": "22f1b1dc8b8e4bf39530c093aaec5eabe299cdb0c32bbde928718b2ad7f25534"
+    },
+    "claim_guard": "Selector counterexample only; preserve the nearest-root metric theorem, curved-path options, and all global #1041 boundaries.",
+    "reentry_trigger": "Re-enter on source-generation drift or any proposed upgrade beyond this narrow method obstruction."
+  }
+}

@@ -2,32 +2,44 @@
 version: "v0.4"
 
 project:
-  name: "Erdős #1041: checked kernels for three solved polynomial families"
+  name: "Erdős #1041: checked kernels for three completely solved polynomial families"
   description: >-
-    Exact checked endpoints underlying the sharp all-degree collinear
-    root-diameter theorem, the complete primitive sparse quintic family, and
-    translated cubic quotient fibres in every degree 3q with q at least two.
+    The accompanying ordinary mathematics completely solves three structured families of
+    Erdős #1041: collinear root configurations in every degree, the primitive sparse
+    quintics, and translated cubic quotient fibres in every degree 3q with q at least two.
+    This configuration verifies in Lean the three load-bearing kernels of those solutions,
+    and only those three. For every degree n at least two, a monic polynomial of degree n
+    vanishing at -1 and 1, with n-1 increasing interior nodes in the closed interval and
+    values alternating in sign along them, has one node at which the absolute value is at
+    most 2^-(n-1) times cos(pi/2n)^-n. Five real disk coordinates satisfying the first three
+    rotated Newton moments for r strictly between 0 and 2 contain two distinct indices whose
+    tail energy is strictly below one, and three roots in the open unit disc admit one
+    complete radial spoke along which their monic cubic stays inside the closed unit
+    lemniscate. Each family solution is reduced to a single finite inequality, so the
+    delicate step in the geometry of polynomial sublevel sets is the part submitted for
+    checking. The alternation argument sits in the classical Chebyshev context, a bounded
+    search found no earlier form of the quintic selector, and priority is unresolved. Affine
+    transport, the final selection, and the surrounding analytic assembly are ordinary
+    proofs rather than Lean-checked conclusions, and the unrestricted problem is untouched.
   authors: ["Will Cook"]
   license: "Apache-2.0"
   responsible_maintainers: ["Will Cook"]
 
 palomar_qualification:
-  status: "high_interest_candidate_paper_revision_applied_axiom_audit_replayed_in_this_public_repository_pending_commit_pin"
-  selected_project: "."
-  comparator_config: "ExternalVerification1041SolvedFamilies/comparator.json"
-  formalization_metadata: "ExternalVerification1041SolvedFamilies/formalization.yaml"
-  repository_scope: "prepared_in_this_public_repository_pending_commit_pin"
+  status: "awaiting-review"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1041SolvedFamilies/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1041SolvedFamilies/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
   challenge_dependency_boundary: "Mathlib_only"
-  replay_status: "challenge_solution_and_axiom_audit_replayed_in_this_repository_with_exactly_propext_Classical_choice_and_Quot_sound_on_all_three_selected_endpoints_terminal_Comparator_NanoDa_is_run_by_Palomar_not_the_submitter"
+  replay_status: "focused_Lean_and_exact_axiom_audit_passed_supported_Comparator_NanoDa_terminal_replay_pending"
   research_interest_status: "three_strong_checked_kernels_with_ordinary_solved_family_assemblies"
   submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
   blockers:
-    - "the packet is present in this public repository but its pinning commit SHA is not yet created"
-  resolved_blockers:
-    - "the critical-value-separation and solved-families revision is applied to paper/erdos-1041-lemniscate-newton-flow.tex in this repository; thm:sharp-collinear-diameter, thm:primitive-quintic-two-tail, thm:translated-cubic-quotient-fibres, and bdry:solved-polynomial-families all resolve"
-    - "the three Erdos1041 source modules and the packet are present in this public repository and replay under its own lakefile"
-  not_a_blocker:
-    - "A local terminal Comparator/NanoDa replay is our own assurance standard, not a Palomar submitter requirement. Palomar writes its own NanoDa-enabled protected configuration, runs the mechanical review, and registers nothing until the submitter chooses registration after seeing that review. The supported local runner additionally requires a Linux systemd boundary and returns typed exit 75 on macOS."
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "the application-ready paper patch has not been promoted to the authoritative public paper"
+    - "public immutable source identity is pending"
   note: >-
     A focused build first exposed a missing Polynomial namespace opening in
     the challenge and solution. After repair, the Challenge, Solution,
@@ -41,6 +53,30 @@ classification:
   arxiv: ["math.CV"]
   msc2020: ["30C10", "30C15"]
 
+editorial_assessment:
+  plectis_signal:
+    score: 98
+    band: "summit"
+    components:
+      theorem_closure: 25
+      parent_problem_proximity: 25
+      mechanism_depth: 20
+      hypothesis_sharpness: 15
+      consequence_reach: 13
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness,
+      or submission authorization.
+    rationale: >-
+      The lead family is a sharp all-degree theorem with a best constant and
+      equality configurations. The package also contains a complete
+      primitive-quintic mechanism and an infinite translated cubic-fibre
+      family, all immediately beneath the open parent problem.
+  presentation_order:
+    - "sharp_collinear_all_degree_best_constant"
+    - "primitive_sparse_quintic_complete_family"
+    - "translated_cubic_quotient_fibres_all_degrees_3q"
 
 sources:
   - title: "Sharp collinear root-diameter theorem"
@@ -48,19 +84,19 @@ sources:
     type: "original-proof"
     relationship: "other"
     license: "Apache-2.0"
-    author_endorsement: "author-submission"
+    author_endorsement: "participated"
   - title: "Primitive sparse quintic tail theorem"
     authors: ["Will Cook"]
     type: "original-proof"
     relationship: "other"
     license: "Apache-2.0"
-    author_endorsement: "author-submission"
+    author_endorsement: "participated"
   - title: "Translated cubic quotient fibres"
     authors: ["Will Cook"]
     type: "original-proof"
     relationship: "other"
     license: "Apache-2.0"
-    author_endorsement: "author-submission"
+    author_endorsement: "participated"
   - title: "Erdős Problem #1041"
     authors: ["Thomas F. Bloom"]
     id: "https://www.erdosproblems.com/1041"

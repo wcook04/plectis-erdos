@@ -1,4 +1,10 @@
 import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
+import Lean.Elab.Tactic.Omega
+import Mathlib.Algebra.BigOperators.Intervals
+import Mathlib.Algebra.BigOperators.Ring.Finset
+import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.Ring
 
 /-!
 # Erdős #269: carry-lift extinction

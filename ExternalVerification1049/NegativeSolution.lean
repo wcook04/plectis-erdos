@@ -3,9 +3,16 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import ExternalVerification1049.Statements
+import Mathlib.Analysis.Real.Pi.Bounds
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
-/-! Deliberate nearby mismatch: the strict inequality is weakened. -/
+/-!
+# Deliberate nearby mismatch for the #1049 numerical-height packet
+
+This theorem has the same name as the challenge declaration but an altered
+weak inequality and an extra hypothesis. Comparator accepting this file is a
+security regression.
+-/
 
 namespace Erdos249257.ExternalVerification1049
 

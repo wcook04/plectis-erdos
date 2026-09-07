@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257TerminalScaledVanishing.Challenge",
+  "solution_module": "ExternalVerification257TerminalScaledVanishing.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

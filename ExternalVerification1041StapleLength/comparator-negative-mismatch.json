@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041StapleLength.Challenge",
+  "solution_module": "ExternalVerification1041StapleLength.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041StapleLength.staple_length_lt_two"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

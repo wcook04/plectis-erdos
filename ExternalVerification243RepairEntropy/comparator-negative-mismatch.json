@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243RepairEntropy.Challenge",
+  "solution_module": "ExternalVerification243RepairEntropy.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

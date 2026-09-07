@@ -1,262 +1,285 @@
-<!-- SPDX-FileCopyrightText: 2026 Will Cook -->
-<!-- SPDX-License-Identifier: Apache-2.0 -->
+# Erdős Lean development
 
-# Plectis: research on eight open Erdős problems
+The source tree now has two entry libraries:
 
-![System map: pipeline, problem-sized Lean worlds, public artifacts, and the clone-work-return-credit loop](.github/system-map.png)
+- `ErdosProblems` is the problem-centric home for new work, grouped by the
+  actual Erdős problem number and mathematical object.
+- `Erdos257PeriodNoncollapse` remains the compatibility root for the large
+  historical #249/#257 development. Existing imports are not being renamed in
+  place.
 
-This repository holds research on eight open Erdős problems: 68, 243, 249,
-251, 257, 269, 1041, and 1049. **All eight problems remain open.** It does not
-solve any of them. It contains formal statements and proofs checked in Lean,
-computations, papers, recorded failed approaches, and the exact questions that
-remain unresolved, so that another researcher can inspect the work and continue
-it.
+## Orient the corpus before opening a problem
 
-The work was developed inside a private research system built with coding
-agents. This public repository carries its own navigation, validation, and
-contribution workflows, so the released work can be read, checked, and
-continued without that system. Individual results have different statuses,
-stated in [RESULTS](docs/RESULTS.md) and in their source records. Lean checks
-formal statements; what a result means, whether it is new, and whether it
-matters need separate mathematical judgement.
+From the repository root, start with the compact navigation card rather than
+walking owner directories or opening every research packet:
 
-Large-language-model agents drafted prose, proofs, and software. Will Cook
-reviewed the claims and sources and is responsible for the release.
-
-If you solve one, the result and credit are yours. If this repository or
-Plectis materially helped, cite the release and say so. If useful, star or share
-the repository so another researcher finds it.
-The contribution record keeps solvers, collaborators, prior work, tools, and
-infrastructure distinct.
-
-Three ways in, each sufficient on its own. Read a problem:
-[A reader's way in](HUMAN_ENTRY.md) is a command-free tour of the problems and
-the evidence boundary. Check a stated result: the second block below runs the
-claim verifier. Continue the work: [start a bounded research shift](docs/FRONTIER_RELAY.md)
-from one exact public revision.
-
-Choose one checkout. Make one no-checkout clone, then apply exactly one of
-the three sparse manifests to it; they are alternatives, and applying two
-leaves the last one in place. The proof build needs `elan`; install it from
-the [Lean setup guide](https://leanprover-community.github.io/get_started.html).
-
-```bash
-# One no-checkout clone. Then apply ONE manifest from the three blocks below.
-git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-erdos.git
+```sh
+./repo-python formal_math/erdos257_period_noncollapse/scripts/corpus_navigation.py \
+  --entry --json
 ```
 
-```bash
-# Manifest 1 of 3: the 43-module quick proof checkout
-git -C plectis-erdos cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
-git -C plectis-erdos checkout
+Its `recommended_routes` separates the all-problem frontier chooser, source
+topology, cross-problem computation map, and selected-problem evidence
+neighborhood. The card is organizational only: it opens no packet, runs no
+computation, and assigns no mathematical status. Once an exact problem number
+is selected, obtain its bounded papers, comparator, and research-handoff
+neighborhood before traversing broad evidence folders:
+
+```sh
+./repo-python -m system.lib.mathematical_working_memory \
+  --query "Erdos #<number>" --problem-cockpit --context-budget 12000
 ```
 
-```bash
-# Manifest 2 of 3: the full Lean source, then one bounded proof build
-git -C plectis-erdos cat-file -e HEAD:scripts/lean-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
-git -C plectis-erdos checkout
-cd plectis-erdos && python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
+For a task-oriented map of the problem packets, proof-bearing modules,
+dependency planning, and validation commands, start with
+[`ErdosProblems/WORKING_GUIDE.md`](ErdosProblems/WORKING_GUIDE.md). It points
+to the live status authorities rather than maintaining a second status table.
+
+Problem-owner routes are manifest-backed rather than duplicated here. From this
+directory, list their current supported entries with:
+
+```sh
+jq -r '.problems[] | [.id, .directory, .lean_module] | @tsv' \
+  ErdosProblems/assimilation_manifest.json
 ```
 
-```bash
-# Manifest 3 of 3: reader files (papers, maps, claim records; no Lean source)
-git -C plectis-erdos cat-file -e HEAD:scripts/reader-sparse-checkout && git -C plectis-erdos show HEAD:scripts/reader-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
-git -C plectis-erdos checkout
+The manifest is the machine-readable index of packet owners and supported
+entry modules; open obligations and public-review state remain with the
+problem-owned sources it names. None of the open problems is marked solved
+merely because an exact reduction, no-go theorem, strengthened subcase, or
+finite certificate has been landed.
+
+Public projection is downstream of private proof authority. A problem module
+is eligible for the public corpus only after its focused Lean target passes,
+its hypotheses and non-claims are reviewed, and the public claim registry can
+name the surviving open proposition. Public mutation also requires a
+source-current corpus identity and collision-free intended target paths.
+
+Fetch the pinned Mathlib cache once:
+
+```sh
+lake exe cache get
 ```
 
-```bash
-# Complete current corpus, fetch its pinned history, then inspect one claim
-git clone --depth=1 --filter=blob:none --single-branch https://github.com/wcook04/plectis-erdos.git plectis-current
-cd plectis-current
-git fetch --filter=blob:none --unshallow origin main
-python3 scripts/verify_claims.py --claim eb_full_support
-cd ..
+For ordinary focused work, build the narrow module you changed:
 
-# Blobless history for release validation
-git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-erdos.git plectis-release
+```sh
+../../repo-python scripts/lean_fast_build.py --jobs 2 \
+  Erdos257PeriodNoncollapse.CertificateKernel
 ```
 
-The verifier links a claim to its declaration, paper, receipts, and stopping
-point; `--verify-all` checks them all.
-[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) gives the smaller reader checkout,
-the 43-module quick Lean checkout, the complete proof source, and the full
-release replay. The [architecture and repository guide](ARCHITECTURE.md) and
-its [printable PDF](claim-faithful-publication-systems-paper.pdf) assume no Lean
-or project history.
+Build and audit the complete problem-owned root with:
 
-Cloning runs no project code and the repository defines no submodules, Git LFS
-filters, or hooks. The verifier runs tracked Python; proof builds run the pinned
-Lean toolchain and Mathlib. [SECURITY](SECURITY.md) explains the boundary and
-private reporting route.
+```sh
+../../repo-python scripts/lean_fast_build.py --jobs 1 ErdosProblems
+```
 
-## What is here
+`ErdosProblems.AxiomAudit` records the assumptions of the wave's principal
+theorems during that build.
 
-One paper per problem, each pairing checked progress with its open obligation.
+## Exact #1049 Comparator route
 
-## Problem papers
+The repository also contains one bounded Comparator and Palomar-interface
+fixture for the 7/2 numerical height inequality. The selected declaration is
+`Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight`;
+it is not a proof of irrationality or a solution of Erdős #1049. The
+statement-only Challenge is `ExternalVerification1049/Challenge.lean`, the
+proved source transport is `ExternalVerification1049/Solution.lean`, and the
+deliberate nearby mismatch is
+`ExternalVerification1049/NegativeSolution.lean`.
 
-[**#68**](erdos-68-factorial-denominator-irrationality.pdf) reduces irrationality
-to infinitely many failures of one divisibility test; producing them remains
-open.
+From the selected project root `formal_math/erdos257_period_noncollapse`, run
+the checked-in verifier on a supported Linux runner:
 
-[**#243**](erdos-243-reciprocal-tail-rigidity.pdf) excludes a bounded negative
-part after Koizumi's normalised vanishing. The required bound remains open.
+```sh
+./scripts/verify-comparator.sh
+```
 
-[**#249**](erdos-249-binary-totient-series.pdf) gives explicit rational bases for
-the dyadic sections of Euler's totient, exact level rank `2ᵉ + 1`, denominator
-exclusion to about `7.96 × 10³⁴`, and diagonal certificates for every `t ≤ 82`.
-No unbounded producer is proved.
+The verifier bootstraps the pinned Comparator, Landrun, NanoDa, and the
+v4.29.1-matched `lean4export`, then runs the canonical positive configuration
+and the deliberate negative.  The positive run must terminate successfully;
+the negative run must terminate unsuccessfully with a declaration name/type
+mismatch naming
+`Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight`.
+This is the supported replay route, not a replay receipt.
+Until one immutable submitted commit contains this selected project and a
+supported runner produces both terminal results, this preparation is neither
+Comparator acceptance nor Palomar eligibility.
 
-[**#251**](erdos-251-prime-gap-dyadic-series.pdf) checks the prime-gap identity
-and a tail-shift equivalence. The concrete prime-tail bridge remains open.
+### Palomar intake boundary
 
-[**#257**](erdos-257-mersenne-support-subseries.pdf) checks full support,
-finite-period noncollapse, and the Mersenne achievement set's topology and
-measure. The universal statement and the `1/2` and `1/21` targets remain open.
+Palomar treats this as a selected project below the repository root. An
+operator-authorized submission must select the repository-relative project
+directory `formal_math/erdos257_period_noncollapse` and explicitly provide
+`formal_math/erdos257_period_noncollapse/comparator.json`; the selected
+project's `formalization.yaml` is its default metadata file. The policy's
+500 MiB limit applies to the complete checked-out repository, not just the
+selected project, so selecting this nested directory does not make the current
+monorepo an eligible submission. The operator must first provide a smaller
+public repository and immutable commit containing the selected project; that
+submission's single conventional licence file must remain at repository root
+and match `project.license`. No Comparator or Palomar verdict is implied until
+that repository-size condition and the terminal replay pair both hold.
 
-[**#269**](erdos-269-three-prime-running-lcm.pdf) records a two-prime
-transcendence argument. **This is not first and not formalised.** Steve Fan
-posted the same argument on erdosproblems.com on 26 June 2026, before this note;
-no priority or Lean theorem is claimed. Three or more primes remain open.
+This object also has a deliberate editorial ceiling: the selected declaration
+is an elementary numerical entrance condition, and the metadata records it as
+a subordinate Comparator audit fixture rather than a standalone Palomar
+research claim. A Comparator replay cannot establish Palomar's separate
+research-interest tests. Any future submission would therefore require an
+operator-reviewed decision that the stated result could warrant a serious
+research note and has a credible specialist audience; this preparation does
+not make that decision on the operator's behalf.
 
-[**#1041**](erdos-1041-lemniscate-newton-flow.pdf) checks Newton-flow decay, ray
-separation, collision geometry, and root retention. Topology and metric gluing
-remain open.
+## Contribution route for a public clone
 
-[**#1049**](erdos-1049-rational-base-lambert.pdf) checks construction-specific
-no-go theorems and four-jet cancellation at base `3/2`. It proves no
-irrationality result, and the primitive construction remains open.
+A contributor can work from an immutable starting commit in a public clone or
+in a smaller exported repository using Git, Lean, Lake, and the checked-in
+replay script. For this selected fixture, return the starting commit, the
+resulting commit, the repository-relative paths changed, and the exact command
+output for both the positive and deliberate-negative replay on the same
+commit. If the supported Linux environment is unavailable, return that result
+as an environment-unavailable outcome rather than turning a local Lean build
+into a Comparator verdict. Preserve the Challenge statement, the declared
+axiom budget, the source attribution, and the explicit non-claims when making
+changes, so another contributor can inspect the difference and continue from
+the cited generation. A returned commit is review material until the selected
+repository, configuration, and terminal replay pair satisfy the current
+Palomar rules.
 
-## What the checks establish
+For low-level manual debugging, a Linux host with Comparator and its required
+systemd sandbox can invoke the two configurations directly:
 
-Comparator checks nineteen proof-bearing modules against separately declared
-statements and a fixed axiom budget; an altered statement must be rejected.
-[`formalization.yaml`](formalization.yaml) records each selected result's source,
-boundary, `sorry` count, and axioms. The
-[verification packet](docs/EXTERNAL_VERIFICATION.md) covers all eight problem
-programmes. Comparator does not assess exposition, citations, computation,
-meaning, novelty, or significance.
+```sh
+systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pty \
+  -E PATH="$PATH" --working-directory "$PWD" -- bash -c \
+  'lake env comparator comparator.json'
 
-[`docs/claims.json`](docs/claims.json) owns every claim record and its status,
-[`docs/PALOMAR_RESULT_SHOWCASE.json`](docs/PALOMAR_RESULT_SHOWCASE.json) owns the
-reader-priority ranking, and [prior art](docs/PRIOR_ART.md) records classical,
-subsuming, and earlier public work. Status labels describe evidence rather than
-score it: a checked rendering is not a priority claim, and a conditional
-reduction still depends on its named open condition.
+systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pty \
+  -E PATH="$PATH" --working-directory "$PWD" -- bash -c \
+  'lake env comparator ExternalVerification1049/comparator-negative-mismatch.json'
+```
 
-`v0.9.0` is the citation anchor, and [`docs/claims.json`](docs/claims.json) pins
-its formal-source checkpoint. This public checkout is self-contained; only its
-pinned Lean source is proof authority; do not infer results from private or
-unreleased work.
+Both configurations set `enable_nanoda: true`, so a supported replay also
+checks the positive proof and deliberate negative mismatch with the additional
+NanoDa kernel.
 
-## Give your agent a research shift
+The first command must accept the exact name and type; the second must exit
+nonzero with a declaration-mismatch diagnostic. These commands are a replay
+recipe, not a replay receipt. The three fixtures can be compiled locally with
+`lake env lean`, but that does not establish a Comparator verdict. Re-open the
+[Palomar submission rules](https://palomar-registry.org/how-to-submit) and
+[pinned current policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/d5a647db3757303b1d928cfae4d3d232eed3e79e/CONTRIBUTING.md)
+before any operator-authorized registry action.
 
-[Start a bounded research shift](docs/FRONTIER_RELAY.md): inspect one exact
-public revision, attempt a substantive continuation, and prepare a checkable
-local return with contributor credit. The
-[portable `plectis-frontier` skill](.agents/skills/plectis-frontier/SKILL.md)
-wraps the existing mining and return workflows for OpenClaw and other skill
-clients. It does not require the private Plectis system or a new account.
-Installation, source smoke tests and actual hosted-agent compatibility remain
-separate checks; the guide states what each establishes.
+For a local Lean compilation check from the project root:
 
-## Read or run it
+```sh
+lake env lean ExternalVerification1049/Challenge.lean
+lake env lean ExternalVerification1049/Solution.lean
+lake env lean ExternalVerification1049/NegativeSolution.lean
+```
 
-The reading order is [RESULTS](docs/RESULTS.md), [SCOPE](SCOPE.md), the
-[source map](docs/SOURCE_MAP.md), and [prior art](docs/PRIOR_ART.md).
-[METHODOLOGY](METHODOLOGY.md) governs claim changes.
+The exact Erdős #249 interface is split across three focused targets:
 
-[`examples/Examples.lean`](examples/Examples.lean) is the minimal downstream
-consumer; its conditional shell-pressure example leaves the analytic hypothesis
-explicit and does not prove universal #257.
+```sh
+../../repo-python scripts/lean_fast_build.py --jobs 2 \
+  Erdos257PeriodNoncollapse.CyclicTensorMobiusShadow \
+  Erdos257PeriodNoncollapse.MersenneShadowDenominatorGrowth \
+  Erdos257PeriodNoncollapse.DiagonalPincerDecomposition \
+  Erdos257PeriodNoncollapse.DiagonalFreshLossBridge \
+  Erdos257PeriodNoncollapse.SquaredMersenneDiagonalEnclosure \
+  Erdos257PeriodNoncollapse.ActualForeignResidueProjection \
+  Erdos257PeriodNoncollapse.LambertDiagonalEnclosure
+```
 
-An agent arriving cold starts at [`AGENTS.override.md`](AGENTS.override.md).
-[The Agent Workbench](docs/AGENT_WORKBENCH.md) keeps machine routing and kernel
-probes out of the human reading path; only kernel receipts assert.
+`CyclicTensorMobiusShadow` owns the prime-factor tensor product and integral
+adjugate. `MersenneShadowDenominatorGrowth` exposes the exact reduced
+denominator after replacing the large Möbius numerator by the odd Jordan
+scalar. `DiagonalPincerDecomposition` turns that reduced rational shadow into
+the complement-free target for `foreignDiagonalDefect`. These are finite
+algebraic interfaces only: the unbounded full-target avoidance supply remains
+the unresolved analytic input to Erdős #249. `DiagonalFreshLossBridge` keeps
+that target constitutional while exposing the exact denominator-free `[1, 2]`
+binary cone projection as a direct finite consumer. It proves that any firing
+projection misses the full target and names the precise unbounded projection
+supply that would close the irrationality theorem; it does not assert that the
+supply is available.
 
-The repository began with #249 and #257 and was named for them; it is now
-`plectis-erdos`, and the old address `plectis-lean-erdos249-257` redirects, so
-existing citations resolve. The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) and the
-two claim-bounded reasoning surfaces
-([#249](erdos249-totient-reasoning-surface.pdf),
-[#257](erdos257-mersenne-reasoning-surface.pdf)) are kept
-for archive and provenance, not as a reading route; the per-problem papers are
-the live route.
-The [agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits that route.
+`SquaredMersenneDiagonalEnclosure` is the canonical finite verifier for the
+actual diagonal.  It exposes the exact rational centre, the sharp symmetric
+square-tail radius, the reduced-denominator formula, and the first-support
+directed interval consumer without a `2H ≤ D` precondition.
+`ActualForeignResidueProjection` retains the residue-channel coordinates and
+finite complement bound. `LambertDiagonalEnclosure` turns a supplied
+`ForeignResidueTailLimit` into the residue consumer, but that limit is not on
+the direct square verifier's critical path.
 
-## Citation and licence
+The companion exact evaluator supports `raw_residue`, `resummed_residue`,
+`square_centre`, `offset_adversary`, `square_controls`, and `lcm_diagonal`:
 
-Citation metadata for `v0.9.0` is in [`CITATION.cff`](CITATION.cff). Code,
-scripts, and documentation are Apache-2.0; the manuscript layer is CC-BY-4.0, and
-[`REUSE.toml`](REUSE.toml) is complete. Corrections are received through the
-issue forms; [`CONTRIBUTING.md`](CONTRIBUTING.md) explains the local checks and
-credit route, [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) states the participation
-standard, and [`SECURITY.md`](SECURITY.md) gives the private route.
+```sh
+../../repo-python scripts/check_actual_foreign_residue_projection.py \
+  --mode square_centre --height 420 --cutoff 421
+```
 
-The independently authored `.agents/skills/plectis-frontier` distribution
-wrapper is the narrow MIT-0 exception recorded in `REUSE.toml`. It does not
-relicense the research corpus or transfer credit for participants' mathematics.
+For the Erdős #257 adelic-height adjudication layer, build the scalar
+localisation and linear-descent obstruction directly:
 
-<!-- BEGIN generated_corpus_at_a_glance -->
-<!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
-## Corpus at a glance
+```sh
+../../repo-python scripts/lean_fast_build.py --jobs 2 \
+  Erdos257PeriodNoncollapse.AdelicHeightObstruction
+../../repo-python scripts/check_adelic_height_obstruction.py
+```
 
-The layer a mathematician should judge is small: 130 curated claim records in 30 contribution families, reaching Lean source through 404 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
+`AdelicHeightObstruction` proves that reducing a scalar multiple to a
+surviving denominator channel transfers the full complementary denominator
+into the coefficient, gives the corresponding numerator-multiple identity,
+formalizes the elementary real/2-adic height bound, and shows that any linear
+channel descending through scalar evaluation factors through that evaluation.
+The exact script checks the denominator-parity fixtures and five dyadic-block
+complement diagnostics. These are obstruction theorems and finite regression
+receipts, not a universal irrationality theorem for arbitrary support.
 
-The rest is engineering inventory. About 93% of the 153,671 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+For a wide generated-certificate target, use the memory-bounded wrapper:
 
-| Engineering inventory | Current size |
-|---|---:|
-| Lean modules (the two library roots) | 1,058 |
-| Formal results and supporting lemmas | 151,397 |
-| Curated claim records | 130 |
-| Contribution families | 30 |
+```sh
+../../repo-python scripts/lean_fast_build.py --jobs 2 \
+  Erdos257PeriodNoncollapse.DiagonalPincerCertificatesT47
+```
 
-Generated shards are counted as formal source and never as separate
-mathematical claims. Claim records span every status, including cited and
-open, and are partitioned exactly once.
-These are navigation counts, not novelty claims.
-<!-- END generated_corpus_at_a_glance -->
+Run that command from this directory. The wrapper finds the target's local
+import graph, prebuilds stale or missing modules in dependency order with at
+most two concurrent Lean processes, and finishes with an ordinary `lake build`
+of the requested target. The final Lake step remains the proof-authority check.
+The complete local import partition is also the singleflight identity: an
+identical concurrent request never starts a second dependency build.
 
-<!-- BEGIN generated_principal_declaration_anchors -->
-<!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
-## Following a result into Lean
+After restoring `.lake` outputs from a CI or local cache, add
+`--lake-staleness`. It asks Lake's content-trace checker which targets are
+actually current instead of treating checkout timestamps as evidence that the
+entire import cone must be rebuilt; incomplete restored outputs safely fall
+back to the mtime planner.
 
-The paper links each headline result to the relevant source. For a particular
-topic, start with the [source map](docs/SOURCE_MAP.md); it gives the module
-order without asking you to decode Lean declaration names first.
-<!-- END generated_principal_declaration_anchors -->
+`--plan` prints compact dependency-wave counts; use `--verbose-plan` only when
+you need every planned module name. The import scan reads only Lean's header,
+so generated proof bodies are not loaded merely to construct the local graph.
 
-## Further in
+If an identical build is already running, or host capacity is currently
+allocated, the wrapper returns exit `75` with a typed active-run or capacity
+ticket receipt. That means validation is deferred or already owned, not that
+the theorem failed. The caller should record the receipt, finish non-build
+work, or move to a disjoint task instead of launching raw `lake build`. A
+later integration owner must retry a capacity-deferred target; the ticket is
+an admission receipt, not an autonomous background executor.
 
-If the mathematics has held your attention this far, there is more behind
-it, and you can go as deep as you like.
+Do not run a focused target build and a full-project build concurrently. A
+focused PASS is the source-lane proof for a scoped commit; the full root target
+is a separate integration-validation state and must remain labelled pending
+until it passes. `--wait-if-duplicate` is intentionally rejected with a typed
+manual-reinvoke handoff: neither integration owners nor sibling agents should
+keep a turn alive waiting on a build lease.
 
-The whole repository is also a website,
-[wcook04.github.io/plectis](https://wcook04.github.io/plectis/): the eight
-problems as pages, every paper readable in the browser with its PDF and LaTeX
-source beside it, and a glossary that explains the vocabulary on hover. The
-[Will Cook page](https://wcook04.github.io/) is the shorter front door to the
-same work.
-
-The mathematics was produced inside a private research system built with
-coding agents. The site's front page says why that system exists: so that work
-done with AI can be understood, checked, and continued. Two public parts of it
-are open. The [Plectis repository](https://github.com/wcook04/plectis) holds
-88 small tools taken from it, each stating one claim, taking one fixed input,
-running one local check and writing a receipt you can read; its
-[paper](https://wcook04.github.io/plectis/maths/papers/plectis-public-system.html)
-says what a stranger can and cannot conclude from such a check. Three
-[recorded videos](https://wcook04.github.io/plectis/#demo-videos) show the
-private frontend itself, in one-, five- and thirty-minute cuts. They are
-demonstrations, not validation records.
-
-Down that rabbit hole: the component map, the agent workflows the system runs
-on, and how a claim of finished work is read against the evidence before it
-counts. None of it is needed to read or continue the mathematics above.
-
-## Where I actually am
-
-[Where I actually am](HUMAN_ENTRY.md#where-i-actually-am) says who wrote this and
-why it was released in the state it is in. The
-[routes are on the site](https://wcook04.github.io/plectis/#contact).
+Do not use `lake -Kjobs=2 build` as a concurrency guard on Lake 5. `-K` sets a
+package configuration option; it does not bound the build scheduler. Increase
+`--jobs` only after measuring memory headroom, since the large certificate
+modules can each occupy several gigabytes while elaborating.

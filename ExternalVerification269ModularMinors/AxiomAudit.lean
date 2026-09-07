@@ -1,0 +1,3 @@
+import ExternalVerification269ModularMinors.Solution
+
+#print axioms Erdos249257.ExternalVerification269ModularMinors.admissible_modular_minors

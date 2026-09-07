@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_null_branch_global_box_atlas",
+  "recorded_at": "2026-08-25",
+  "input_stage": "explicit_tiny_beta_finite_transfer_and_limiting_selector_atlas",
+  "output_stage": "full_canonical_parameter_interval_homogeneous_null_box_connector_theorem",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNullBranchGlobalBoxAtlas.md",
+    "ErdosProblems/Erdos1041/SexticNullBranchGlobalBoxAtlas.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_global_box_atlas.py"
+  ],
+  "human_understanding_delta": "The beta-to-zero null transition is not merely locally stable. Limiting-profile minimization partitions the full transverse cube into four explicit selector polytopes, only 17 vertices up to reflection. A small-beta margin split and exact Bernstein certificates on the remaining compact beta interval keep one full connector nonpositive all the way to betaStar. Radial containment reduces to four subset inequalities for a derivative A*y^5+B*y+C.",
+  "verification_state": {
+    "analytic": "authored_complete_selector_polytope_small_beta_taylor_binomial_tail_chord_and_radial_monotonicity_argument",
+    "symbolic": "passed_exact_Q_sqrt3_selector_vertex_two_jet_binomial_tail_17_vertex_bivariate_chord_central_cubic_and_136_univariate_ray_certificate_replay",
+    "lean": "passed_canonical_cached_focused_build_and_serialized_authority_replay_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "research packet and exact claim ceiling updated; source-current connection refresh, consequence propagation, corpus-index validation, and frontier-integrity validation completed; scoped commit pending",
+  "unresolved_downstream_bottleneck": "Classify the remaining compact sextic coefficient faces and transfer the homogeneous connector atlas to arbitrary nearby actual polynomials. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: audit the degree-20 differentiated binomial-tail majorants and selector-polytope vertex lists, then use this compact null-box closure as an input to the remaining sextic face atlas and actual-polynomial transfer.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation from the existing null branch, companion, transverse selector, second-order atlas, and finite transfer under operator direction",
+    "computation": "Adversarial floating-point optimization first indicated uniform negativity through betaStar. The theorem itself uses exact Q(sqrt(3)) vertex enumeration, binomial tail majorants, and Bernstein subdivision; sampling is calibration only.",
+    "formalization": "Lean formalizes the small-beta payments, Taylor implication, convex-vertex propagation, four-way minimum selector, and exact constants. The external exact checker carries the finite algebraic certificate payload.",
+    "claim_boundary": "Complete finite homogeneous canonical null-box theorem on beta in (0,betaStar] and transverse cube [-78,78]^3. Other sextic faces, actual-polynomial transfer, and unrestricted Erdos #1041 are not claimed."
+  }
+}

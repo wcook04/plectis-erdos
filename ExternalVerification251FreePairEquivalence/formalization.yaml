@@ -1,0 +1,236 @@
+version: v0.4
+project:
+  name: 'Erdős #251: free-pair equivalence for the actual prime-gap dyadic series'
+  description: >-
+    The dyadic series over the actual consecutive prime gaps is irrational if and only
+    if for every positive modulus t and every cutoff there are two indices beyond the
+    cutoff, congruent modulo t, whose scaled real tails differ by a non-integer. The
+    scaled real tail at index N is 2^(N+1) times the sum of the series terms from index
+    N+1 onwards, and the pair offset is free, so the criterion ranges over every pair of
+    congruent indices beyond the cutoff. This is an equivalence whose left side is
+    Erdős Problem 251 itself. Seven declarations are compared. The same equivalence
+    holds for every real orbit T satisfying T(N+1) = 2 T(N) - g(N+1) with integer
+    digits g: irrationality of T(0) is equivalent to the free-pair criterion for T. On
+    every such orbit the free-pair criterion is equivalent to the fixed-offset
+    criterion that every positive shift length h admits arbitrarily late basepoints N
+    with T(N+h) - T(N) a non-integer, so the free-offset form and the fixed-offset form
+    are interchangeable on these orbits. The rational side is exact: every rational-valued
+    orbit satisfying the same recurrence over the rationals has a cutoff N₀ and a
+    positive modulus t such that, for all indices N and M beyond N₀, T(M) - T(N) is an
+    integer exactly when N is congruent to M modulo t. The modulus is identified: at a
+    basepoint N₀ whose reduced denominator is odd, T(M) - T(N) is an integer exactly
+    when N is congruent to M modulo the multiplicative order of 2 in the ring of
+    integers modulo that denominator. The integral pairs of a rational orbit are
+    therefore one congruence lattice. Two declarations connect the abstract layer to
+    the actual series: the scaled real tails of the prime-gap series satisfy the
+    integer-digit recurrence with the actual consecutive prime gaps as digits, and the
+    initial scaled tail equals 2S - 1 with S the value of the series. Priority for the
+    argument has not been assessed. The closest published statement located is
+    J.-C. Schlage-Puchta, The irrationality of some number theoretical series,
+    arXiv:1105.1451, whose Theorem 2 treats periodic base-b digit expansions and whose
+    Theorem 3 treats linear independence for the series of p_n^k / n!, and neither
+    theorem concerns a dyadic tail recurrence. No declaration exhibits a congruent pair
+    of indices with non-integral tail difference for the actual prime gaps. The
+    equivalence supplies no such pair, and Erdős Problem 251 is not decided here.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11B83
+  - 11J72
+sources:
+- title: The free-pair reduction for Erdős Problem 251
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The Lean development is the first presentation recorded here; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: The irrationality of some number theoretical series
+  authors:
+  - J.-C. Schlage-Puchta
+  id: https://arxiv.org/abs/1105.1451
+  type: preprint
+  relationship: background
+  note: Nearest located published equivalence in this neighbourhood; Theorem 2 covers
+    periodic base-b digit expansions and Theorem 3 covers linear independence for the
+    series of p_n^k / n!, and both concern a different object from the dyadic tail
+    recurrence used here.
+  license: unknown
+  author_endorsement: not-contacted
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status; this theorem family is not attributed to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+palomar_qualification:
+  status: not_submitted
+  challenge_dependency_boundary: Mathlib_only
+  replay_status: not_run
+  note: New entry created for the Palomar release batch on branch palomar/toolchain-v4.30.
+    No Palomar submission id exists for this entry and no verdict or novelty ruling
+    is claimed.
+editorial_assessment:
+  plectis_signal: The only unconditional equivalence in the corpus whose left side is
+    the target problem itself. It relocates Erdős Problem 251 to a single hitting
+    condition with a free offset. Prior-art disposition F2_251_free_pair_equivalence
+    records confidence low-to-medium, since the systematic sweep of the dyadic
+    tail-recurrence and Bezivin-style functional-equation literature was not run.
+  prior_art_key: F2_251_free_pair_equivalence
+status:
+  scope: Seven exact source-backed declarations state the free-pair equivalence for
+    the actual prime-gap dyadic series and for every real integer-digit dyadic orbit,
+    together with the rational free-pair lattice and its modulus. No producer of a
+    nonintegral congruent pair is claimed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 7
+  axiom_audit_status: awaiting_first_public_ci_run_for_this_entry
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral
+    file: ExternalVerification251FreePairEquivalence/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251FreePairEquivalence/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    local_proof_provenance: ErdosProblems/Erdos251/FreePairReduction.lean
+    novelty_status: unassessed
+    contribution_class: unconditional equivalence whose left side is the target problem
+    boundary: Supplies no congruent pair with nonintegral tail difference, so the
+      irrationality question is untouched.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral
+    file: ExternalVerification251FreePairEquivalence/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251FreePairEquivalence/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    local_proof_provenance: ErdosProblems/Erdos251/FreePairReduction.lean
+    novelty_status: unassessed
+    contribution_class: abstract free-pair equivalence for integer-digit dyadic orbits
+    boundary: Applies to any orbit satisfying the recurrence; it produces no orbit
+      and no pair.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts
+    file: ExternalVerification251FreePairEquivalence/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251FreePairEquivalence/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    local_proof_provenance: ErdosProblems/Erdos251/FreePairReduction.lean
+    novelty_status: unassessed
+    contribution_class: identification of the free-offset criterion with the fixed-offset
+      criterion
+    boundary: Both criteria remain unproduced for the actual prime gaps.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251FreePairEquivalence.exists_free_pair_lattice
+    file: ExternalVerification251FreePairEquivalence/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251FreePairEquivalence/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    local_proof_provenance: ErdosProblems/Erdos251/FreePairReduction.lean
+    novelty_status: unassessed
+    contribution_class: exact congruence lattice of integral pairs on a rational orbit
+    boundary: Describes rational orbits; it decides no rationality question.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251FreePairEquivalence.free_pair_integral_iff_modEq
+    file: ExternalVerification251FreePairEquivalence/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251FreePairEquivalence/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    local_proof_provenance: ErdosProblems/Erdos251/FreePairReduction.lean
+    novelty_status: unassessed
+    contribution_class: identification of the lattice modulus as the multiplicative
+      order of 2
+    boundary: Conditional on an odd-denominator basepoint supplied by the rational
+      orbit.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251FreePairEquivalence.primeGapRealTail_recurrence
+    file: ExternalVerification251FreePairEquivalence/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251FreePairEquivalence/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    local_proof_provenance: ErdosProblems/Erdos251/FreePairReduction.lean
+    novelty_status: unassessed
+    contribution_class: unconditional recurrence for the actual real prime-gap tails
+    boundary: The recurrence alone determines no arithmetic nature of the series.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251FreePairEquivalence.primeGapRealTail_zero
+    file: ExternalVerification251FreePairEquivalence/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251FreePairEquivalence/comparator.json
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    local_proof_provenance: ErdosProblems/Erdos251/FreePairReduction.lean
+    novelty_status: unassessed
+    contribution_class: exact identification of the initial tail with 2S - 1
+    boundary: An affine identity between the initial tail and the series value.
+    literature_dependencies: []
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+fidelity:
+  divergences: The challenge reproduces the prime-gap definitions, the dyadic
+    recurrence vocabulary, and seven exact source statements without asserting any
+    producer of a nonintegral congruent pair.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: The equivalence direction, the rational lattice modulus, and the open boundary
+    were checked by the author with AI assistance; no independent review is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification251FreePairEquivalence
+  statements:
+  - source: ErdosProblems.Erdos251.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral
+    lean: Erdos249257.ExternalVerification251FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral
+    module: ExternalVerification251FreePairEquivalence/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.irrational_initial_iff_cofinalFreePairNonintegral
+    lean: Erdos249257.ExternalVerification251FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral
+    module: ExternalVerification251FreePairEquivalence/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts
+    lean: Erdos249257.ExternalVerification251FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts
+    module: ExternalVerification251FreePairEquivalence/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.exists_free_pair_lattice
+    lean: Erdos249257.ExternalVerification251FreePairEquivalence.exists_free_pair_lattice
+    module: ExternalVerification251FreePairEquivalence/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.free_pair_integral_iff_modEq
+    lean: Erdos249257.ExternalVerification251FreePairEquivalence.free_pair_integral_iff_modEq
+    module: ExternalVerification251FreePairEquivalence/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.primeGapRealTail_recurrence
+    lean: Erdos249257.ExternalVerification251FreePairEquivalence.primeGapRealTail_recurrence
+    module: ExternalVerification251FreePairEquivalence/Challenge.lean
+    status: exact-transport-axiom-print-pending
+  - source: ErdosProblems.Erdos251.primeGapRealTail_zero
+    lean: Erdos249257.ExternalVerification251FreePairEquivalence.primeGapRealTail_zero
+    module: ExternalVerification251FreePairEquivalence/Challenge.lean
+    status: exact-transport-axiom-print-pending
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

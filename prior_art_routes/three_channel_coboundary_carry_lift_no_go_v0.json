@@ -1,0 +1,208 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "three_channel_coboundary_carry_lift_no_go",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_components_with_source_specific_exact_composition",
+  "problem_id": "erdos_269",
+  "purpose": "Classify the block-null/two-anchor carry extinction result as a standard graph-potential mechanism composed with exact source-specific carry algebra, and prevent it from being presented as an irrationality advance.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/three_channel_coboundary_carry_lift_no_go.card.json",
+    "source_commit": "7a8295244568cc889926d6819b3668a744458f67",
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+    ]
+  },
+  "classification": {
+    "abstract_theorem_class": "exact_one_cochain_or_graph_potential_characterization_on_a_finite_state_word",
+    "anchor_class": "spanning_tree_grounding_of_a_vertex_potential",
+    "recurrence_class": "fundamental_product_solution_of_a_scalar_nonautonomous_homogeneous_difference_equation",
+    "local_interface_class": "Lean_checked_conditional_elimination_of_an_unweighted_block_null_carry_lift_route",
+    "priority_claim": "none",
+    "recommended_terminology": "finite-state coboundary rigidity with carry-error propagation",
+    "acceptable_local_alias": "three-channel block-null carry-lift extinction",
+    "discouraged_terminology": "new rigidity theorem, carry irrationality criterion, or bounded-carry contradiction without stating ordinary block-nullity and both anchors",
+    "attribution": "Attribute the potential-difference and constant-nullspace facts to standard incidence-matrix/graph-coboundary theory. Credit the local asset for its exact Lean formalization, its composition with the Erdos 269 carry recurrence, and its representation-independent first-block falsifier.",
+    "mathematical_interest": "The abstract proof is elementary. The durable value is diagnostic: it proves that the desired ordinary block equations are not a harmless normalization of the actual weighted carry equations.",
+    "reusable_scope": "Finite-alphabet recurrence lifts whose perturbations have zero sums between repeated states, together with anchor transitions and expanding homogeneous error dynamics.",
+    "why_it_matters": "It retires a whole family of rounding-based carry lifts and forces future work to attack the exact weighted defect or construct a genuinely different bounded residue lift."
+  },
+  "primary_sources": [
+    {
+      "id": "strang_graphs_networks_incidence",
+      "title": "Introduction to Linear Algebra, Chapter 10.1: Graphs and Networks",
+      "author": "Gilbert Strang",
+      "publisher": "Wellesley-Cambridge Press; author-hosted chapter",
+      "url": "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_10-1.pdf",
+      "exact_anchor": "pp. 452-454, especially equation (1) and the discussion immediately after it: the incidence matrix sends node potentials to edge differences; loop sums characterize its column space; connected nullspace potentials are constant.",
+      "supports": "The conventional incidence-matrix, potential-difference, spanning-tree, and additive-constant framing used for the block-null theorem and its two-anchor extinction.",
+      "does_not_support": "The source-specific channel word, carry recurrence, exponential error bound, or Erdos 269 application."
+    },
+    {
+      "id": "gao_brodzki_mukherjee_2019_synchronization",
+      "title": "The Geometry of Synchronization Problems and Learning Group Actions",
+      "authors": ["Tingran Gao", "Jacek Brodzki", "Sayan Mukherjee"],
+      "venue": "Discrete & Computational Geometry 62 (2019), 112-174",
+      "doi": "10.1007/s00454-018-0002-1",
+      "url": "https://arxiv.org/abs/1610.09051",
+      "exact_anchor": "Introduction and Section 2: edge potentials on connected graphs are organized by graph cohomology, with synchronizability/trivial holonomy corresponding to consistency of vertex-potential data.",
+      "supports": "Modern standard use of potential, coboundary/cohomology, and consistency language for finite graph edge data.",
+      "does_not_support": "Novelty for the elementary additive three-state specialization or any carry-lift conclusion."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "A path increment with return sums zero depends only on endpoint states and is an exact one-cochain; zero differences on a spanning tree force the potential constant.",
+    "local_delta": "The exact Erdos 269 lift algebra turns vanishing perturbation into multiplicative error growth and proves that unit-accurate canonical representatives fail the first complete block.",
+    "weighted_boundary": "The actual recurrence telescopes to endpoint errors plus a weighted interior sum. That identity does not imply the ordinary unweighted block-null premise.",
+    "significance_boundary": "This is a proof-strategy no-go and semantic correction, not evidence that the target series is irrational."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "graph incidence matrix vertex potentials edge differences constant nullspace spanning tree",
+      "graph coboundary exact one form zero cycle sums",
+      "finite graph edge potential synchronizability cohomology",
+      "nonautonomous scalar recurrence fundamental product solution"
+    ],
+    "result": "The graph-potential and recurrence components are standard. No established source was found for the exact three-prime carry composition or the four-state first-block witness, so those are described as source-specific exact implementations without a priority claim.",
+    "boundary": "Absence of a matching packaged statement is not evidence of novelty; the public story should emphasize mechanism elimination and the weighted/unweighted distinction."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Ordinary block-nullity and two spanning anchor transitions force the three-state perturbation to vanish; for the exact carry lift this makes every nonzero initial error grow by the radix product, while unit-accurate canonical lifts fail the first block directly.",
+    "forbidden_wording": [
+      "We discovered a new graph-coboundary rigidity theorem.",
+      "Every bounded carry lift is impossible.",
+      "The actual rationality carry satisfies ordinary block-nullity.",
+      "The result excludes the weighted carry route, exact integral tails, or solves Erdos 269."
+    ],
+    "nonclaims": [
+      "not_a_new_incidence_matrix_theorem",
+      "not_a_construction_of_the_block_null_hypothesis",
+      "not_a_weighted_rigidity_theorem",
+      "not_an_integral_tail_exclusion",
+      "not_a_solution_of_erdos_269"
+    ]
+  },
+  "digestion_assessment": {
+    "decision": "route-killing boundary subordinate to the #269 mod-one collision endpoint",
+    "canonical_family": "finite-state coboundary grounding with carry-error propagation",
+    "expert_attention_reason": "retires all unit-accurate unweighted rounding variants at once while preserving the genuinely weighted route",
+    "evidence_class": "six source-pinned Lean declarations composed from standard graph-potential and recurrence mechanisms",
+    "hard_step": "control the actual weighted block defect rather than assume ordinary block-nullity",
+    "paper_disposition": "route-killing failure/boundary in Why unweighted carry lifts cannot work",
+    "comparator_advisory": "at most one weighted-versus-unweighted semantic firewall; no component-row expansion",
+    "open_boundary": "no weighted rigidity, integral-tail exclusion, or #269 result"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/three_channel_coboundary_carry_lift_no_go.card.json",
+      "effect": "Consolidate four packet results into one adjudicated negative mechanism with exact source and claim boundaries."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Promote one route-elimination story; do not market the standard graph-potential pieces or the four packet rows as separate discoveries."
+    },
+    {
+      "consumer": "Comparator semantic boundary",
+      "effect": "Require the unweighted ChannelBlockNull premise to remain visibly distinct from the actual weighted carry block-defect identity."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "three_channel_coboundary_carry_lift_no_go@source-7a82952-card-current",
+    "evidence_class": "Lean_checked_conditional_graph_coboundary_composition_with_exact_first_block_countermodel",
+    "source_generation": {
+      "formal_sources": [
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
+          "commit": "7a8295244568cc889926d6819b3668a744458f67",
+          "sha256": "2c9d599188304481e3489a22ff2b2dd5204a0383bb6eb808b1ab50a672a18825"
+        },
+        {
+          "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/CarryLiftExtinction.lean",
+          "commit": "7a8295244568cc889926d6819b3668a744458f67",
+          "sha256": "7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1"
+        }
+      ],
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/three_channel_coboundary_carry_lift_no_go.card.json",
+        "sha256": "4aa3d2a5c940b455c5164d6349f1f78a3318ebc64367e6ac5c595c85f5b6519e"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+        "sha256": "63d363b459968ab6e0a3b6bbc1b119ebddbff34dea403ab735eb3f0153318bc7"
+      },
+      "primary_sources": [
+        "Strang, Introduction to Linear Algebra, Ch. 10.1, pp. 452-454",
+        "Gao–Brodzki–Mukherjee, Discrete & Computational Geometry 62 (2019), §2"
+      ]
+    },
+    "comparison_relation": "The abstract return-block statement is the standard exact-potential/graph-coboundary characterization on a finite state word; the carry-lift extinction and first-block witness are a source-specific conditional composition. The actual recurrence has weighted interior terms, so the premise is not established for the genuine orbit.",
+    "closest_known_result": "Incidence-matrix potential differences, spanning-tree grounding, and exact one-cochain language are standard in Strang and in modern synchronization/cohomology treatments. No primary source located for this exact three-channel carry composition or its first-block arithmetic witness.",
+    "exact_delta": "The local Lean package proves that ordinary block-nullity plus two anchor transitions forces the three-state perturbation to vanish; radix-product propagation then rules out bounded nonzero error, and unit-accurate canonical representatives fail the first complete block. It also exposes the weighted/unweighted premise gap.",
+    "disconfirming_evidence": "The clean coboundary theorem does not apply unless ordinary return sums vanish; the actual weighted recurrence supplies a different block-defect identity. Thus the result cannot exclude weighted lifts, integral tails, or #269 itself.",
+    "confidence_ceiling": "High for the six named Lean declarations and their conditional composition; low novelty/no priority claim; no claim about the actual weighted orbit.",
+    "significance": "high_route_boundary_value_medium_reusable_scope",
+    "claim_ceiling": "State only the conditional unweighted block-null/two-anchor extinction and the exact first-block obstruction. Do not call it a new graph-coboundary theorem, a bounded-carry contradiction, a weighted-rigidity theorem, or a #269 irrationality result.",
+    "hard_step": "Replace the unavailable ordinary block-null hypothesis with a theorem about the genuine weighted block defect, or find a faithful non-coboundary obstruction.",
+    "open_boundary": "Weighted rigidity, integral-tail exclusion, and the #269 endpoint remain open; the no-go covers only the unweighted rounding-lift family.",
+    "bounded_expert_act": "Check the graph-potential attribution, verify the two anchor transitions and first-block witness, and confirm that no statement silently transfers ordinary block-nullity to the weighted recurrence.",
+    "reentry_trigger": "Re-enter on source/card/packet hash changes, a weighted-rigidity result, or an actual-orbit proof of the ordinary block-null premise.",
+    "programme_disposition": "retire_unweighted_rounding_lift_family_and_subordinate_under_erdos269_orbit_separation",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why unweighted carry lifts cannot certify the #269 tail",
+      "supersession_or_consolidation": "Consolidate the graph-potential theorem, radix-error propagation, weighted-boundary warning, and first-block witness as one mechanism; do not split the four packet rows into parallel results.",
+      "reason": "The negative result saves attention by ruling out an entire unweighted lift family while leaving the weighted route visible and honestly unresolved."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "reason": "The conditional theorem and exact first-block falsifier are independently restatable and materially prevent a semantic misapplication; expose one firewall with the weighted-premise boundary adjacent."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "Lean conditional graph-coboundary theorem and exact route falsifier",
+      "output_stage": "expert understanding and canonical route retirement",
+      "artifact": "three_channel_coboundary_carry_lift_no_go_v0",
+      "human_understanding_delta": "A reviewer sees exactly which unweighted lift is eliminated and why the weighted recurrence survives, without mistaking a conditional cochain theorem for an endpoint proof.",
+      "verification_state": "Six source-pinned Lean declarations; no actual-orbit block-nullity claim and no fresh build.",
+      "publication_or_review_state": "Status-tagged negative route boundary is eligible; no specialist review or acceptance claim.",
+      "canonicalization_state": "One subordinate #269 route-killing mechanism consolidating four packet rows.",
+      "unresolved_downstream_bottleneck": "A weighted rigidity or faithful non-coboundary producer for the integral-tail branch.",
+      "next_stage_owner": "Mathematics Refinery for consolidation, Comparator/Public for the single firewall, and #269 proof owners for the weighted route."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "standard finite-state potential theorem with a load-bearing hypothesis mismatch",
+    "slow_down_at": "The premise is ordinary unweighted block-nullity; the actual carry recurrence has weighted interior terms and is not covered by the no-go.",
+    "automation_establishes": "Lean conditional extinction, radix-product error propagation, and the exact first-complete-block witness.",
+    "expert_semantic_judgment": "Whether the conventional coboundary terminology is accurate and whether the public statement preserves the weighted/unweighted distinction.",
+    "review_act": "Audit the two anchor transitions and the weighted defect equation against the pinned source files."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#269 finite-state coboundary versus weighted carry-defect separation",
+    "disposition": "retire_inflated_unweighted_lift_route; subordinate under orbit-separation mechanisms",
+    "consolidation_relation": "Keep all four source result IDs in one parent boundary object; no separate graph-theorem or first-block novelty card.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "It eliminates a broad tempting route and states the exact hypothesis that future work must replace.",
+      "evidence_class": "Lean-checked conditional theorem plus exact countermodel/witness",
+      "hard_step": "Prove a weighted analogue or another faithful obstruction.",
+      "prior_art_uncertainty": "Low for graph-potential terminology; local carry composition has no located named antecedent but is not claimed novel.",
+      "open_boundary": "No weighted-rigidity or #269 irrationality theorem.",
+      "demoted_predecessor": "standalone carry-irrationality or universal bounded-lift contradiction",
+      "status_boundary": "Retain as route-killing support below the five absolute first-contact objects."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_card_and_packet_pins_bound_at_2026_08_26",
+    "bound_snapshot": {
+      "formal_source_commit": "7a8295244568cc889926d6819b3668a744458f67",
+      "formal_source_sha256": {
+        "ThreeChannelBlockRigidity.lean": "2c9d599188304481e3489a22ff2b2dd5204a0383bb6eb808b1ab50a672a18825",
+        "CarryLiftExtinction.lean": "7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1"
+      },
+      "reviewer_card_sha256": "4aa3d2a5c940b455c5164d6349f1f78a3318ebc64367e6ac5c595c85f5b6519e",
+      "research_packet_sha256": "63d363b459968ab6e0a3b6bbc1b119ebddbff34dea403ab735eb3f0153318bc7"
+    },
+    "claim_guard": "Conditional ordinary block-nullity theorem and exact first-block route falsifier only; no weighted-rigidity, integral-tail exclusion, or #269 solution.",
+    "reentry_trigger": "Any source/card/packet change or a genuine theorem connecting the actual weighted recurrence to the ordinary block-null hypothesis."
+  }
+}

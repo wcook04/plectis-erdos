@@ -1,0 +1,268 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "unit_stride_finite_field_activation",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_affine_permutation_transfer_with_exact_nonuniform_boundary_and_activation_instances",
+  "problem_id": "erdos_243",
+  "purpose": "Identify the core as a standard affine permutation of a finite field, reserve project-local terminology for the table-transfer interface, and prevent two source-conditioned cylinder profiles from being read as a global #243 theorem.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The affine bijection and multiset invariance are routine; the source-specific unit checks and retained-digit exceptions are the parts that need careful reading.",
+    "slow_down_at": "Verify that every source stride and quotient division is a unit in the stated finite field before transferring a table, and keep finite activation counts separate from cofinal orbit behavior.",
+    "automation_can_establish": [
+      "Source script, reviewer-card, and committed research-packet hash parity",
+      "The displayed affine reindexing and finite table multiplicities",
+      "That nonunit retained-digit cases are reported as exceptions rather than silently included"
+    ],
+    "human_judgment_required": [
+      "Whether the project-facing table-transfer phrase is clearly subordinate to standard permutation-polynomial terminology",
+      "Whether the finite factor-41/61 and factor-25/35 examples are presented without a global probability or activation inference",
+      "Which later theorem, if any, could supply global tail entry for the actual #243 orbit"
+    ],
+    "review_act": "Check one uniform unit-stride row and one nonunit retained-digit row against their exact hypotheses, then confirm the appendix placement and no-endpoint claim.",
+    "attention_ceiling": "Moderate reusable interface value, low standalone novelty, no #243 endpoint or priority claim."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/unit_stride_finite_field_activation.card.json",
+    "refinery_handoff_commit": "4e1559f6bf1f51befd3654cec6b45af6544da4fa",
+    "source_path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor31_41_field_activation.py",
+    "source_result_ids": [
+      "height_thirty_thirtyfive_factor31_41_field_activation",
+      "height_twenty_four_binary_parent_fiber_split",
+      "height_twenty_nine_factor30_35_exact_split",
+      "height_thirtyone_error10_factor41_cofinal_activation",
+      "height_fortyone_error20_factor61_cofinal_activation"
+    ]
+  },
+  "classification": {
+    "ambient_framework": "permutation polynomials and affine group actions on finite fields",
+    "core_lemma": "standard_degree_one_permutation_polynomial",
+    "multiset_invariance": "immediate_reindexing_under_a_bijection",
+    "table_transfer_interface": "source_specific_computational_packaging",
+    "exact_243_tables": "finite_source_conditioned_local_applications",
+    "priority_claim": "none",
+    "recommended_terminology": "affine-permutation table transfer over a finite field",
+    "acceptable_aliases": [
+      "unit-stride finite-field table transfer",
+      "uniform residue-cylinder activation"
+    ],
+    "discouraged_terminology": [
+      "new finite-field activation theorem",
+      "global residue-cylinder law",
+      "probabilistic activation theorem for Erdos #243"
+    ],
+    "attribution": "Describe t maps to x_0+s t as a degree-one permutation polynomial or an affine permutation in AGL(1,p). Attribute no priority for the bijection or the resulting multiset invariance. Credit the local card only for exposing this elementary fact as the compression interface for the declared source tables.",
+    "mathematical_interest": "The result is not independently deep, but the interface is operationally valuable: once the source stride is a unit, a huge parent census collapses to one p-row table without losing exact outcome multiplicities.",
+    "reusable_scope": "Any finite-field-indexed computation in which parent dependence enters through an invertible affine change of the table coordinate.",
+    "why_it_matters": "It separates a universal one-line algebra fact from the genuinely source-dependent work of proving unit transport and computing the outcome table."
+  },
+  "references": [
+    {
+      "id": "carlitz_1953_permutations_finite_field",
+      "title": "Permutations in a finite field",
+      "author": "Leonard Carlitz",
+      "venue": "Proceedings of the American Mathematical Society 4 (1953), 538",
+      "doi": "10.1090/S0002-9939-1953-0055965-8",
+      "url": "https://doi.org/10.1090/S0002-9939-1953-0055965-8",
+      "exact_anchor": "The paper places invertible linear polynomials x maps to a x+b among the generators used to represent permutations of a finite field.",
+      "supports": "Historical permutation-polynomial framing for invertible affine maps.",
+      "does_not_support": "The #243 source transport, payment labels, cylinder tables, or cofinal-return interpretation."
+    },
+    {
+      "id": "lidl_niederreiter_finite_fields_chapter_7",
+      "title": "Finite Fields, Chapter 7: Permutation Polynomials",
+      "authors": ["Rudolf Lidl", "Harald Niederreiter"],
+      "publisher": "Cambridge University Press",
+      "url": "https://www.cambridge.org/core/books/abs/finite-fields/permutation-polynomials/66302C24A8016C5B9754B35B95E38C59",
+      "exact_anchor": "Chapter 7 supplies the canonical modern permutation-polynomial vocabulary; degree-one maps a x+b with a nonzero are the elementary affine examples.",
+      "supports": "Standard terminology and mathematical home.",
+      "does_not_support": "Any programme-specific activation or recurrence conclusion."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_fact": "A nonconstant affine map of a field is bijective, hence precomposition merely reorders a complete finite-field table.",
+    "local_interface": "The source coordinate of every declared parent is proved to be an affine image with unit stride before the canonical outcome table is reused; the factor-41 and factor-61 rows are exact uniform examples.",
+    "nonunit_boundary": "Over a composite residue ring or with zero/nonunit stride, the image may be a proper coset and the full table need not transfer. The factor-25 retained-digit split and factor-35 inert/active stratification are exact programme examples showing that this boundary is load-bearing.",
+    "remaining_throat": "The exact table counts do not supply a global contraction, probability law, or endpoint argument for #243."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "finite field linear permutation polynomial ax+b",
+      "affine general linear group AGL(1,q) permutation",
+      "Carlitz permutations in a finite field linear polynomials",
+      "finite field table multiset invariant affine reindexing"
+    ],
+    "result": "The core is standard at the definition level in both permutation-polynomial and affine-group language. No distinct named theorem was found or is needed for the multiset transfer, which is immediate reindexing under a bijection.",
+    "boundary": "The project-facing phrase 'unit-stride table transfer' is descriptive compression vocabulary, not a novelty or priority claim."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos243_unit_stride_finite_field_activation@source-64749ba9-card-821dc2f7-packet-0708c6fe",
+    "evidence_class": "Exact source-conditioned computation together with the elementary degree-one finite-field permutation lemma; the script, card, and committed packet are pinned, while no new Lean replay or global #243 theorem is claimed.",
+    "closest_known_result": "Carlitz (1953) and Lidl--Niederreiter, Finite Fields, Chapter 7, provide the standard permutation-polynomial and affine-group vocabulary: t maps to a t+b with a nonzero is a bijection of F_p. The multiset transfer is immediate reindexing and needs no separate named theorem.",
+    "comparison_relation": "The algebraic core is standard. The source-specific contribution is a transparent interface that checks a unit source stride before reusing one exact outcome table, while retaining nonunit and retained-digit cases as explicit exceptions.",
+    "exact_delta": "The route turns a parent-indexed census into one p-row table with identical multiplicities whenever the source stride is a unit, and it records the factor-25/factor-35 nonuniform boundary where that compression is invalid. It supplies no new permutation-polynomial result or activation law.",
+    "disconfirming_evidence": "Carlitz and Lidl--Niederreiter do not support the #243 table counts, payment labels, or recurrence interpretation. Composite moduli and zero/nonunit strides can produce proper cosets, so the unit hypothesis cannot be dropped; finite activation proportions do not imply a probability law or cofinal recurrence behavior.",
+    "confidence": {
+      "level": "high_for_standard_affine_bijection_and_source_parity_medium_for_reusable_interface_value_low_for_global_243_significance",
+      "basis": "The source/card/packet hashes are explicit and the transfer is a one-line bijection argument; significance is operational rather than theorem-level, and no exact external antecedent for the project packaging was found."
+    },
+    "significance": "Useful hypothesis hygiene and computation compression with low standalone novelty: it prevents repeated parent enumeration and makes the nonunit boundary visible to readers.",
+    "claim_ceiling": "When the exact source stride is a unit in F_p, the affine map permutes the field and transfers one complete finite outcome table with identical multiplicities to every declared parent. The listed #243 rows are finite source-conditioned applications only; there is no global activation theorem, probability statement, contraction, irrationality, or #243 solution.",
+    "hard_step": "For an actual #243 argument, prove the source-stride and division-unit hypotheses on the relevant cylinders and then find a global tail-entry/activation mechanism beyond this finite table interface.",
+    "open_boundary": "Nonunit and retained-digit layers, global tail dynamics, source-packet overlay parity, and every endpoint or irrationality claim remain outside this object.",
+    "bounded_expert_review_act": "Check one representative table against the affine-permutation hypotheses, verify the unit/nonunit split over the stated modulus, and confirm that the finite table is not being read as a global frequency law.",
+    "reentry_trigger": "Re-enter if the source script, reviewer card, or packet generation changes, or if a primary source matching the table-transfer packaging is found; preserve the unit-stride and nonuniform-boundary guards.",
+    "source_generation_binding": {
+      "source_script_commit": "64749ba97958f56be8b4b9601407e66fa6a8cdc4",
+      "source_script_sha256": "f7c1ebd44dd8b6ba7613942f937230c79d76231bab84e64e5c47f32c35d79635",
+      "reviewer_card_commit": "821dc2f79157189b22ec93e0fc3960cab6e280db",
+      "reviewer_card_sha256": "af6114794c08d67926882607afa1ae5272387d2910fe4ef5cfb5c6573c600846",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+      "parity_status": "source script, card, and committed packet are pinned; a dirty packet overlay is explicitly excluded from evidence"
+    },
+    "classification": {
+      "result_family": "erdos243_residue_cylinder_affine_table_compression",
+      "evidence_class": "source_conditioned_exact_computation_plus_standard_finite_field_lemma",
+      "closest_prior_art": "Carlitz (1953) and Lidl--Niederreiter Chapter 7 for degree-one permutation polynomials; no source supports the programme-specific activation tables",
+      "comparison_relation": "Standard affine reindexing exposed as a source-specific computation interface; no priority claim",
+      "novelty_confidence": "low_for_core_fact_medium_for_interface_packaging",
+      "significance_grade": "moderate_reusable_technical_interface",
+      "why_care": "It replaces a large parent census by one exact row only under a checked unit hypothesis and prevents nonunit layers from being silently over-compressed.",
+      "hard_step": "Establish the unit source stride and a global tail-entry mechanism; neither follows from finite activation counts.",
+      "natural_friction": "Affine bijectivity is elementary, but the source's unit checks and retained-digit exceptions are easy to lose when summarizing the table output.",
+      "disconfirming_evidence": "Nonunit strides and composite residue rings can have proper-coset images; finite table proportions have no cofinal or probabilistic force.",
+      "confidence_ceiling": "High for the stated finite transfer; low for novelty and no endpoint significance.",
+      "bounded_expert_act": "Audit one uniform factor-41 or factor-61 row and one nonuniform factor-25/35 row against the exact hypotheses.",
+      "reentry_condition": "Source/card/packet generation change or an exact external theorem matching the packaging."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#243 residue-cylinder compression and conditional tail-entry producers",
+      "disposition": "subordinate_under_bounded_negative_part_tail_rigidity_and_consolidate_activation_instances",
+      "paper_disposition": "technical_appendix",
+      "paper_target_section": "Finite-field compression of residue-cylinder tables",
+      "supersession_relation": "Consolidate all unit-stride activation examples and retained-digit exceptions here; do not split finite tables into separate cards or promote them over the #243 representative.",
+      "independent_comparator_interface_justified": false,
+      "comparator_scope": "No separate proposition for the standard bijection; retain the finite rows as exact-computation evidence with their source-conditioned labels.",
+      "expert_attention_reason": "The value is preventing an invalid global inference and making the exact compression conditions inspectable, not adding a new finite-field theorem."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "source_script_commit": "64749ba97958f56be8b4b9601407e66fa6a8cdc4",
+      "source_script_sha256": "f7c1ebd44dd8b6ba7613942f937230c79d76231bab84e64e5c47f32c35d79635",
+      "reviewer_card_commit": "821dc2f79157189b22ec93e0fc3960cab6e280db",
+      "reviewer_card_sha256": "af6114794c08d67926882607afa1ae5272387d2910fe4ef5cfb5c6573c600846",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba"
+    },
+    "claim_guard": "Only the unit-stride finite-field table transfer and the explicitly listed finite source applications are covered; nonunit layers, global activation, and the #243 endpoint remain open.",
+    "reentry_trigger": "Re-enter on source/card/packet changes or an exact primary-source match for the project-specific table interface."
+  },
+  "digestion_assessment": {
+    "decision": "technical_appendix_subordinate_to_bounded_negative_part_tail_rigidity",
+    "canonical_family": "#243 residue-cylinder compression and conditional tail-entry producers",
+    "expert_attention_reason": "It makes a routine affine permutation reusable while exposing the nonunit boundary that blocks a tempting global inference.",
+    "evidence_class": "source-pinned exact computation plus standard finite-field lemma",
+    "hard_step": "Unit and division checks on source cylinders, followed by a global tail-entry mechanism absent here.",
+    "paper_disposition": "technical appendix in Finite-field compression of residue-cylinder tables",
+    "comparator_advisory": "No independent interface; preserve one consolidated status-tagged computation object.",
+    "open_boundary": "Global #243 tail dynamics and any probability, contraction, or irrationality conclusion."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A unit source stride induces an affine permutation of F_p, so one complete outcome table transfers with identical multiplicities to every declared parent cylinder; exact #243 computations show both genuine uniform prime-field activations and retained-digit nonuniform layers where this compression is unavailable.",
+    "forbidden_wording": [
+      "The affine-permutation lemma is new.",
+      "The two source-conditioned tables classify every #243 branch.",
+      "A positive table proportion is a global probability law.",
+      "The stale source-owned receipt has been refreshed.",
+      "This proves contraction, irrationality, or Erdős #243."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_new_permutation_polynomial_result",
+      "not_a_global_cylinder_classification",
+      "not_a_probability_theorem",
+      "not_a_receipt_refresh",
+      "not_erdos_243_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/unit_stride_finite_field_activation.card.json",
+      "effect": "Replace pending novelty language with standard affine-permutation terminology and keep activation explicitly application-specific."
+    },
+    {
+      "consumer": "Erdos #243 proof fleet",
+      "effect": "Reuse a table only after proving the exact source stride and every quotient division are units modulo the target prime."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the card as a transparent exact-computation compression interface, not as a new finite-field theorem."
+    }
+  ],
+  "programme_placement": {
+    "canonical_mechanism_family": "residue-cylinder compression and conditional tail-entry producers",
+    "disposition": "subordinate methods lemma beneath the #243 tail-rigidity and actual-orbit producer architecture",
+    "consolidation_relation": "Keep the affine-permutation lemma, activation-count corollary, and two local tables in one object; do not promote either table to a standalone theorem card.",
+    "paper_disposition": {
+      "class": "technical appendix",
+      "target_section": "Finite-field compression of residue-cylinder tables",
+      "supersession_or_consolidation": "Consolidate every unit-stride table-transfer instance here while leaving nonunit and global-orbit arguments in their owning mechanisms.",
+      "reason": "The universal algebra is routine; the value is transparent computation compression and hypothesis hygiene."
+    },
+    "absolute_frontier_shortlist_decision": "do not admit; bounded_negative_part_tail_rigidity remains the #243 representative",
+    "comparator_advisory": "No independent proposition interface is needed for the standard affine bijection. The finite source-conditioned tables belong in exact-computation evidence, not Comparator theorem counts."
+  },
+  "source_generation": {
+    "source_script": {
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor31_41_field_activation.py",
+      "commit": "64749ba97958f56be8b4b9601407e66fa6a8cdc4",
+      "sha256": "f7c1ebd44dd8b6ba7613942f937230c79d76231bab84e64e5c47f32c35d79635"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/unit_stride_finite_field_activation.card.json",
+      "commit": "821dc2f79157189b22ec93e0fc3960cab6e280db",
+      "sha256": "af6114794c08d67926882607afa1ae5272387d2910fe4ef5cfb5c6573c600846"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+      "source_result_ids": [
+        "height_thirty_thirtyfive_factor31_41_field_activation",
+        "height_twenty_four_binary_parent_fiber_split",
+        "height_twenty_nine_factor30_35_exact_split",
+        "height_thirtyone_error10_factor41_cofinal_activation",
+        "height_fortyone_error20_factor61_cofinal_activation"
+      ]
+    },
+    "status": "source_card_current_committed_packet_pinned; dirty packet overlay unconsumed"
+  },
+  "parity_audit": {
+    "status": "source_card_current_committed_packet_overlay_unconsumed",
+    "effect": "The affine-permutation lemma and the exact source-conditioned tables are pinned to current script/card and committed packet hashes. The packet worktree overlay is not evidence and does not upgrade the finite tables into a global #243 theorem or probability law.",
+    "reentry_condition": "After the #243 packet overlay lands or is discarded, rerun exact script/card/packet parity; preserve the unit-stride hypothesis, nonuniform retained-digit boundary, and the no-global-activation/no-#243 ceiling."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "exact computation plus elementary finite-field lemma",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "unit_stride_finite_field_activation",
+    "human_understanding_delta": "Separates the universal affine reindexing fact from source-owned activation tables and the nonuniform retained-digit boundary.",
+    "verification_state": "The script/card/packet pins are exact; finite table output is source-conditioned computation, not a probability theorem or global orbit result.",
+    "publication_or_review_state": "Technical-appendix material; no standalone novelty or Comparator interface.",
+    "canonicalization_state": "One affine-permutation table-transfer object consolidates uniform and nonuniform activation instances.",
+    "unresolved_downstream_bottleneck": "Establishing any global tail-entry/activation producer for the actual #243 orbit.",
+    "next_stage_owner": "Mathematics Refinery for appendix consolidation; Role 3 for any later release firewall."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-243-reciprocal-tail-rigidity.tex",
+    "section": "Finite-field compression of residue-cylinder tables",
+    "canonical_mechanism_family": "residue-cylinder compression and conditional tail-entry producers",
+    "relation": "Keep the degree-one affine permutation and activation-count transfer as one technical appendix object; retain nonunit strides and global orbit arguments in their owning mechanisms.",
+    "understanding_delta": "The table compression is exact reindexing, while the activation instances and retained-digit exceptions are finite source evidence only.",
+    "evidence_boundary": "No global residue-cylinder classification, probability law, contraction, irrationality, or #243 solution.",
+    "hard_step": "Produce a global tail-entry mechanism for the actual recurrence outside the unit-stride table interface.",
+    "open_remainder": "#243 unrestricted tail dynamics remain open."
+  }
+}

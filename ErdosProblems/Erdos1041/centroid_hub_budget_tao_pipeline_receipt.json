@@ -1,0 +1,19 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "input_stage": "computation_guided_proof_generation",
+  "output_stage": "verified_analytic_proof_and_formal_kernel",
+  "artifact": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidHubBudget.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidHubBudget.lean"
+  ],
+  "human_understanding_delta": "The root centroid is not merely a candidate hub. In every degree it lies strictly inside the unit lemniscate by the exact variance identity plus AM-GM, and it lies inside the major-axis-two ellipse of some root pair by a pair-sum identity plus Cauchy-Schwarz. Hence two of the free-hub mechanism's three obligations are automatic at one explicit polynomial-adapted hub; only spoke containment remains.",
+  "verification_state": {
+    "analytic": "complete",
+    "lean": "exact target ErdosProblems.Erdos1041.CentroidHubBudget passed the canonical shared-cache build on 2026-08-24; it checks the five-point real-coordinate variance identity and quintic pair-budget kernel",
+    "computation": "the initial radius-9999/10000 adaptive-MEC quintic and 878 accepted random separated quintics produced no falsifier, but the scaled exact rational witness at radius 99999/100000 has four certified centroid-spoke escapes; see CentroidHubCounterexample.md"
+  },
+  "publication_or_review_state": "private expert handoff; the 47-comment Erdos Problems forum thread was assimilated for attribution and negative-route review, but this theorem is not externally reviewed and no novelty or priority claim is made",
+  "canonicalization_state": "canonical all-degree centroid interior and ellipse theorem retained analytically; exact quintic scalar kernel Lean-verified; universal centroid visibility retired by an exact rational counterexample",
+  "unresolved_downstream_bottleneck": "Replace the fixed centroid by a movable, critical, or curved hub in the separated quintic regime; unrestricted Erdős #1041 remains open.",
+  "next_stage_owner": "formal-math Refinery for expert assimilation; Codex mathematical closure loop continues on the primitive quintic containment residual"
+}

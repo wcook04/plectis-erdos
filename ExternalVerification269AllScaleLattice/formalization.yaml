@@ -1,0 +1,149 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #269: all-scale rationality lattice and collision target"
+  description: >-
+    Exact finite-prefix clearing and general-denominator reduction for the
+    actual three-prime running-LCM shell tail: rationality places every
+    normalized state on one lattice and forces a collision modulo one.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "expanded_candidate_pending_focused_revalidation_terminal_comparator_replay_and_public_identity"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269AllScaleLattice/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269AllScaleLattice/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "original_five_endpoints_focused_checked_new_prime_power_endpoint_pending_focused_revalidation"
+  research_interest_status: "research_note_grade_exact_general_denominator_reduction"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "the expanded six-endpoint package and axiom audit require terminal focused revalidation"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B83"]
+
+sources:
+  - title: "Three-prime running-LCM all-scale rationality lattice"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+    note: >-
+      Exact source-independent interface extracted from the checked Erdős
+      269 formal development.
+  - title: "Erdős Problem #269"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/269"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Six compared declarations expose symmetric prime-power boundary clearing,
+    the exact half-height normalizer, finite-window clearing, infinite-tail
+    splitting, the simultaneous all-scale rational lattice, and forced
+    collision modulo one.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: "expanded_package_pending_focused_revalidation"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification269AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat"
+      file: "ExternalVerification269AllScaleLattice/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269AllScaleLattice/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_checked"
+      local_proof_provenance: "ErdosProblems/Erdos269/RationalLatticeReduction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "simultaneous all-scale rationality lattice"
+      boundary: "An arithmetic reduction; pairwise incongruence is not proved."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat"
+      file: "ExternalVerification269AllScaleLattice/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269AllScaleLattice/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_checked"
+      local_proof_provenance: "ErdosProblems/Erdos269/RationalLatticeReduction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "general-denominator normalized-tail collision target"
+      boundary: "Does not eliminate the collision forced by rationality."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight"
+      file: "ExternalVerification269AllScaleLattice/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269AllScaleLattice/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_pending_expanded_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos269/RationalLatticeReduction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "simultaneous 2-, 3-, and 5-power boundary clearing law"
+      boundary: "Supplies arithmetic clearing boundaries; only the dyadic family is currently coupled to the normalized tail recurrence."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The Challenge copies the actual shell-tail definitions and exact source
+    conclusions; it adds no pairwise-incongruence or irrationality claim.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The denominator hypothesis, normalizer, tail offsets, collision indices,
+    and open-problem boundary were reviewed. The original five endpoints passed
+    focused checking; the new prime-power endpoint and reordered package need a
+    fresh focused receipt. Terminal Comparator and NanoDa replay remain pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification269AllScaleLattice"
+  statements:
+    - source: "ErdosProblems.Erdos269.smoothHeight_mul_prime_dvd_boundaryHeight"
+      lean: "Erdos249257.ExternalVerification269AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight"
+      module: "ExternalVerification269AllScaleLattice/Challenge.lean"
+      status: "exact-transport-pending-expanded-focused-check"
+    - source: "ErdosProblems.Erdos269.two_mul_heightNormalizer235"
+      lean: "Erdos249257.ExternalVerification269AllScaleLattice.two_mul_heightNormalizer235"
+      module: "ExternalVerification269AllScaleLattice/Challenge.lean"
+      status: "exact-transport-focused-checked"
+    - source: "ErdosProblems.Erdos269.heightNormalizer235_mul_windowMass_eq_int"
+      lean: "Erdos249257.ExternalVerification269AllScaleLattice.heightNormalizer235_mul_windowMass_eq_int"
+      module: "ExternalVerification269AllScaleLattice/Challenge.lean"
+      status: "exact-transport-focused-checked"
+    - source: "ErdosProblems.Erdos269.dyadicShellTsumTailR235_eq_range_add"
+      lean: "Erdos249257.ExternalVerification269AllScaleLattice.dyadicShellTsumTailR235_eq_range_add"
+      module: "ExternalVerification269AllScaleLattice/Challenge.lean"
+      status: "exact-transport-focused-checked"
+    - source: "ErdosProblems.Erdos269.qsmul_normalizedTailState_eq_int_of_value_eq_rat"
+      lean: "Erdos249257.ExternalVerification269AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat"
+      module: "ExternalVerification269AllScaleLattice/Challenge.lean"
+      status: "exact-transport-focused-checked"
+    - source: "ErdosProblems.Erdos269.exists_normalizedTailState_collision_of_value_eq_rat"
+      lean: "Erdos249257.ExternalVerification269AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat"
+      module: "ExternalVerification269AllScaleLattice/Challenge.lean"
+      status: "exact-transport-focused-checked"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

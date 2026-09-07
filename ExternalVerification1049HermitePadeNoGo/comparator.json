@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification1049HermitePadeNoGo.Challenge",
+  "solution_module": "ExternalVerification1049HermitePadeNoGo.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion",
+    "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos",
+    "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff",
+    "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical",
+    "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

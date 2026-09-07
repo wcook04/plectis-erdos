@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #68: finite prime-pole numerator formula"
+  description: >-
+    Exact reduction modulo a prime of the literal finite-prefix LCM numerator
+    to the maximal-valuation cofactor layer and its reciprocal residue sum.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "supporting_entry_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification68PrimePole/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification68PrimePole/formalization.yaml"
+  repository_scope: "public_source_and_authoritative_paper_present_exact_identity_to_pin"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pending"
+  research_interest_status: "supporting_finite_prime_pole_identity"
+  submission_authorization: "portfolio_disposition_and_terminal_receipts_pending"
+  blockers:
+    - "terminal positive acceptance and deliberate-negative rejection are pending"
+    - "exact public immutable source identity must be pinned in final metadata"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A07"]
+
+sources:
+  - title: "Finite prime-pole arithmetic for Erdős #68"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #68"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/68"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    One exact finite-prefix congruence. It neither proves the displayed
+    residue nonzero nor assigns a valuation to the infinite real series.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  axiom_audit_status: "terminal_replay_pending"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification68PrimePole.factorialGapPrefixLCMNumerator_mod_prime"
+      file: "ExternalVerification68PrimePole/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification68PrimePole/comparator.json"
+      canonical_claim_status: "exact_source_transport"
+      local_proof_provenance: "ErdosProblems/Erdos68/PrimePoleCriterion.lean"
+      novelty_status: "unassessed"
+      contribution_class: "finite prime-pole congruence"
+      boundary: >-
+        The result does not show the principal residue is nonzero and is not
+        an irrationality theorem by itself.
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    Challenge repeats the exact finite source definitions and theorem type and
+    adds no nonvanishing, infinite-tail, or irrationality conclusion.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The maximal-exponent, attainment, and finite-only boundaries were checked;
+    terminal Comparator replay remains pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification68PrimePole"
+  statements:
+    - source: "ErdosProblems.Erdos68.factorialGapPrefixLCMNumerator_mod_prime"
+      lean: "Erdos249257.ExternalVerification68PrimePole.factorialGapPrefixLCMNumerator_mod_prime"
+      module: "ExternalVerification68PrimePole/Challenge.lean"
+      status: "exact-transport"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

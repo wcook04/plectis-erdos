@@ -2,11 +2,11 @@ import ErdosProblems.Erdos68.PrimeZeroBranch
 import ErdosProblems.Erdos68.GapScalarNormalForm
 
 /-!
-# Erdős #68: the conditional odd-threshold producer interface
+# Erdős #68: the exact odd-threshold producer interface
 
-The eventual odd-index threshold below is a conjectural hypothesis.  This file
-does not assert it or record a finite computation as evidence for an eventual
-statement.  It kernel-checks the exact target composition and separates the
+The finite computation suggests that every odd index from `25` onward meets
+the tail-free predecessor-gap threshold.  This file does not assert that
+conjecture.  It kernel-checks its exact target composition and separates the
 two arithmetic obligations hidden by the rounding digit notation:
 
 * the carry is at least one (equivalently the digit `D_m = carry - 1` is not

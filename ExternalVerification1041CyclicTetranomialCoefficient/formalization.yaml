@@ -1,0 +1,64 @@
+version: "v0.4"
+project:
+  name: "Erdős #1041: coefficient-controlled cyclic tetranomial spokes"
+  description: "Exact Abel factorization and root-dependent/coefficient-only strict spoke bounds; not a solution of unrestricted Erdős #1041."
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+sources:
+  - title: "Coefficient-controlled cyclic tetranomial spokes for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The coefficient hypotheses and the unformalized selection and path-assembly boundary were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  superseded_by: "ExternalVerification1041TetranomialSpokes"
+  superseded_note: "Merged on 2026-09-01 with its sibling into one configuration carrying all six declarations: same tetranomial, same spoke, same hypothesis shape. Kept privately as source provenance; not selected for release or submission on its own."
+  status: "candidate_pending_mechanical_gates"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "First-wave candidate; no external verdict or submission is claimed."
+status:
+  scope: "Three exact source-backed declarations; two-root selection, cyclic-fibre lifting, and path assembly remain outside Lean."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "pending_guarded_build_deferred_low_disk_exit_75"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient.tetranomialRoot_spoke_norm_lt_one_of_rootBudget"
+      file: "ExternalVerification1041CyclicTetranomialCoefficient/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check"
+      novelty_status: "unassessed"
+      boundary: "Does not formalize root selection, cyclic-fibre lifting, path assembly, the unrestricted tetranomial selector, or unrestricted Erdős #1041."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient"
+  statements:
+    - source: "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase"
+      lean: "three same-named source transports"
+      module: "ExternalVerification1041CyclicTetranomialCoefficient/Challenge.lean"
+      status: "exact-transport-pending-guarded-build"

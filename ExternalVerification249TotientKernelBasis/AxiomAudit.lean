@@ -1,0 +1,4 @@
+import ExternalVerification249TotientKernelBasis.Solution
+
+#print axioms Erdos249257.ExternalVerification249TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent
+#print axioms Erdos249257.ExternalVerification249TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension

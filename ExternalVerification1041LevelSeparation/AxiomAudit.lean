@@ -1,0 +1,3 @@
+import ExternalVerification1041LevelSeparation.Solution
+
+#print axioms Erdos249257.ExternalVerification1041LevelSeparation.exists_small_translation_separating_arguments_and_norms

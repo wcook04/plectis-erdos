@@ -1,0 +1,100 @@
+{
+  "schema": "aiw-formal-math-return-wave/1",
+  "problem_id": "erdos_269",
+  "received_on": "2026-07-23",
+  "target_status": "open_for_three_prime_support",
+  "target": "Prove irrationality of the running-LCM series for support {2,3,5}.",
+  "source_returns": [
+    {
+      "attachment": "c2950c0a-1f33-4e08-95d6-191f2bccc458/pasted-text.txt",
+      "sha256": "897acebfd46ee7fd891dce0761cfd61bf750c90da3863820191bd555b0919d96",
+      "role": "explicit logarithmic-window reduction, signed three-channel block-nullspace classification, scalar-tail anti-concentration bridge, and exact search through B <= 10000 and dyadic starts <= 1900"
+    },
+    {
+      "attachment": "0fb7b0f9-0a47-4465-ac00-20908e3f68b5/pasted-text.txt",
+      "sha256": "134ca1f696ec35def670143a45f7b4ea0691a0be76d88138d3030058b6981717",
+      "role": "exact multivariate kernel, non-rational pure-power slices, no finite common multibase Mahler module, and exact countable affine-phase closure"
+    },
+    {
+      "attachment": "cf4bebbf-e4df-413d-99ad-90bd4d05114f/pasted-text.txt",
+      "sha256": "6ecfbcf3281e865130ac759eabc906668c1eb751caaa1f43fad8856c384c3379",
+      "role": "target-faithful weighted affine phases, carry residue-transfer decomposition, unit-carry shadows, and the exact function-faithful observer remainder"
+    },
+    {
+      "attachment": "8da706fa-0772-425f-b096-220ab36e8750/pasted-text.txt",
+      "sha256": "0ea1af43ba624a40deb9bc8ec4dcbf28b6be912848ed527cb71e231bbe6bca95",
+      "role": "carry-to-coboundary audit, exact weighted block defect, canonical-lift first-block obstruction, and bounded residue-lift remainder"
+    },
+    {
+      "attachment": "7d629511-ab83-40cb-9acf-ee9b958a9427/pasted-text.txt",
+      "sha256": "31820fc577e5e14df12b072b3e95c27df25d54da01c53c74eaa6a27a4c1b9631",
+      "role": "bounded-radix zero-or-constant-escape theorem, exact-cancellation route collapse, least-positive-residue predicate correction, and adversarial scalar-tail computation"
+    }
+  ],
+  "strongest_positive_advances": [
+    {
+      "id": "signed_three_channel_block_rigidity",
+      "status": "lean_landing_in_progress",
+      "statement": "Every signed perturbation with zero sum on every consecutive pure-power channel block is a channel coboundary epsilon_N = C(b_{N+1}) - C(b_N); two early transition anchors kill the entire perturbation."
+    },
+    {
+      "id": "bad_window_scalar_tail_bridge",
+      "status": "human_proof_complete_pending_lean",
+      "statement": "A bad dyadic residue window forces the exact dyadic starting tail B tau_a exponentially close to an integer. Cofinal polynomial separation of this scalar tail would imply the required cofinal residue escape and irrationality."
+    },
+    {
+      "id": "countable_affine_phase_closure",
+      "status": "human_proof_complete_source_dependent",
+      "statement": "The exact three-prime floor-count kernel admits a countably infinite Cartier/Mahler closure under dilations 2, 3, and 5."
+    },
+    {
+      "id": "weighted_phase_carry_observer_boundary",
+      "status": "lean_checked",
+      "statement": "The weighted phase exponent and coefficient reindexing, exact carry residue-plus-coboundary formula, finite unit-carry tail-splice identity, and finite-dimensional factorisation criterion are kernel-checked in WeightedPhaseCarry.lean."
+    },
+    {
+      "id": "carry_lift_extinction_boundary",
+      "status": "lean_checked",
+      "statement": "CarryLiftExtinction.lean kernel-checks the exact weighted block-defect identity, the complete block-null plus two-anchor extinction consumer, exponential error growth from any nonzero initial error, uniform-bounded impossibility, and a representation-independent four-state first-block obstruction."
+    },
+    {
+      "id": "bounded_radix_tail_escape",
+      "status": "lean_checked",
+      "statement": "BoundedRadixTailEscape.lean proves that every integral-digit affine orbit with radices in [2,30] either hits an integer or is at least 1/31 from every integer cofinally often; it also checks the forward exact-cancellation-to-rationality algebra."
+    }
+  ],
+  "structural_no_go_results": [
+    "The pure-power channel generating functions are non-rational, subject to the stated discrepancy and transcendence inputs.",
+    "No finite-dimensional rational-function module containing the exact kernel can be stable under two multiplicatively independent scalar dilations; therefore the proposed finite common 2-3-5 Mahler bypass is closed.",
+    "Finite-rank closure cannot be restored by adjoining finitely many rational, affine, derivative, coboundary, or boundary states.",
+    "Even constant positive integral carry and rational telescoping shadows coexist with the same jump geometry; scalar carry therefore cannot identify full symbolic phase functions.",
+    "The direct carry recurrence yields weighted block balance with an interior (base_n-1)E_n term, not the unweighted ChannelBlockNull hypothesis consumed by three-channel rigidity.",
+    "Any unit-accurate integer lift at the first four states that satisfies both genuine early anchors has first complete 2-channel block sum one, so canonical floor, ceiling, and nearest-integer lifts cannot close the proposed block-null route."
+  ],
+  "finite_evidence": [
+    "The integer-only returned search found an escaping window of length at most 18 for every B <= 10000 coprime to 30 and every dyadic start 100 <= a <= 1900. This is not the cofinal theorem."
+  ],
+  "open_producers": [
+    {
+      "id": "exclude_exact_integral_dyadic_tails",
+      "priority": 1,
+      "statement": "For every positive B coprime to 30, exclude every exact integral value of B times the actual dyadic tail. The generic quantitative separation is now automatic outside this cancellation branch."
+    },
+    {
+      "id": "cofinal_local_residue_escape",
+      "priority": 2,
+      "statement": "Directly prove that every hypothetical denominator coprime to 30 has cofinally many logarithmic windows whose least positive residue exceeds the quadratic tail bound."
+    },
+    {
+      "id": "carry_faithful_weighted_phase_observer",
+      "priority": 3,
+      "statement": "Use all-scale true cone or block identities to produce a finite equivariant observer whose kernel is contained in the kernel of the full weighted symbolic realisation; scalar evaluation or finite residues are insufficient."
+    },
+    {
+      "id": "bounded_residue_lift_balance",
+      "priority": 4,
+      "statement": "Construct a bounded rationality-derived residue lift satisfying ordinary channel-block nullity and the two transition anchors, or prove a weighted three-channel rigidity theorem that directly consumes the exact carry block-defect identity."
+    }
+  ],
+  "claim_ceiling": "The {2,3,5} case of Erdős #269 remains open. Generic cofinal scalar-tail separation is Lean-checked outside exact integrality, so polynomial separation is no longer the independent producer. The exact remaining scalar obstruction is to exclude integral scaled dyadic tails for every denominator coprime to 30; the actual dyadic recurrence and corrected residue-window bridge still require formal instantiation."
+}

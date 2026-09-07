@@ -1,0 +1,85 @@
+# Authored in the r7 paper-complete Lean assimilation for Erdős #1041.
+# Editorial judgement -- a Plectis signal, a novelty verdict, paper alignment --
+# is deliberately absent rather than guessed; see `review.not_established`.
+version: "v0.4"
+
+project:
+  name: "Erdős #1041: separation-or counterexample"
+  description: >-
+    This directory isolates the displayed counterexample proposition of the
+    short note: an explicit monic cubic with all zeros in the open unit disc,
+    two simple critical points, least critical modulus above 13/25, critical
+    values on distinct positive rays, and normalised critical-value separation
+    strictly below 2/375. It refutes a covering reading of a separation
+    criterion and makes no claim about the parent problem.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "mechanical_conformance_only_Comparator_and_public_pin_not_run"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1041SeparationOrCounterexample/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1041SeparationOrCounterexample/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  blockers:
+    - "the library entry for this directory is not yet added to lakefile.toml"
+    - "terminal Comparator and NanoDa replay are pending"
+    - "public immutable source identity is pending"
+
+sources:
+  - title: "Erdős #1041: separation-or counterexample"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  trusted_challenge_sorry_count: 1
+  sorry_count: 0
+  parent_problem_status: "open"
+  paper_label: "short_note/res:sep-or-false"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041SeparationOrCounterexample.separation_or_counterexample"
+      file: "ExternalVerification1041SeparationOrCounterexample/Solution.lean"
+      comparator_config: "ExternalVerification1041SeparationOrCounterexample/comparator.json"
+      local_proof_provenance: "ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean"
+      novelty_status: "not_assessed_no_priority_claim"
+  boundary: >-
+    The entry establishes the listed properties of one explicit cubic. It gives
+    no path, no length bound, and no progress on Erdős Problem #1041, which is
+    open.
+
+automation:
+  methods:
+    - method: "agent"
+      models: []
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization in this repository; candidate source arrived as a Type B research return and was repaired against the pinned toolchain here"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The Challenge states the proposition over Mathlib alone, with the positive-ray
+    predicate and the least critical modulus written out rather than imported from
+    the project namespace. The Solution supplies the witness and transports the
+    local theorems named in local_proof_provenance.
+  not_established:
+    - "novelty or priority against the literature"
+    - "editorial significance; no Plectis signal is asserted"
+    - "Comparator acceptance, Palomar qualification, or peer review"

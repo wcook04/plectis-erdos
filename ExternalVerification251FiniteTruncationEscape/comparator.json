@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251FiniteTruncationEscape.Challenge",
+  "solution_module": "ExternalVerification251FiniteTruncationEscape.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251FiniteTruncationEscape.cofinal_escape_of_finite_truncation",
+    "Erdos249257.ExternalVerification251FiniteTruncationEscape.irrational_prime_series_of_finite_truncation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

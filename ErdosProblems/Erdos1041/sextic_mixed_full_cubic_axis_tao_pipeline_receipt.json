@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_mixed_open_cell_full_tangent_cubic_axis_two_tile_cover",
+  "recorded_at": "2026-08-25",
+  "input_stage": "upper_cubic_halfline_tile_and_exact_failure_of_antipodal_lifting",
+  "output_stage": "two_adjacent_tile_cover_of_every_real_cubic_coefficient_with_lean_kernel",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticMixedFullCubicAxis.md",
+    "ErdosProblems/Erdos1041/SexticMixedFullCubicAxis.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_mixed_full_cubic_axis.py"
+  ],
+  "human_understanding_delta": "The arbitrary-cubic obstruction is resolved by changing adjacent pair rather than taking an antipode. Pair (0,1) covers c>=-10^-4 and reflected pair (5,0) covers c<=10^-4, both at radius 2/3 and throughout the same 10^-4 product ball in A and B. Their overlap covers every real cubic coefficient, so the cubic coordinate is no longer a residual at this genuinely mixed open cell.",
+  "verification_state": {
+    "analytic": "complete_reflected_bernstein_ray_margin_and_two_halfline_gluing_proof",
+    "symbolic": "exact_sympy_seven_control_and_ray_margin_replay_passed",
+    "lean": "warning_free_canonical_cached_build_and_final_serialized_authority_check_passed",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "Full cubic-axis two-tile theorem, expert explanation, exact checker, and atlas handoff validated",
+  "unresolved_downstream_bottleneck": "Cover the remaining compact two-complex-dimensional low-mode coefficient section by symmetry transports and additional strict cells, then absorb the nonlinear remainder.",
+  "next_stage_owner": "Refinery: project the two-tile cell and its sixth-root symmetry orbit into normalized (A,B) parameter space, compute the nearest uncovered boundary point, and certify the next cell.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex computational selector discovery, analytic proof, and Lean formalization under operator direction",
+    "computation": "A bounded pair-radius scout exposed the reflected tile; exact SymPy replay verifies its seven Bernstein controls and ray margin.",
+    "formalization": "Lean checks the reflected complex chord identity, coefficient signs, perturbation stability, cubic sign, both rays, and exhaustive two-halfline cover.",
+    "claim_boundary": "Covers every tangent cubic coefficient over one explicit open mixed (A,B) cell. It does not cover the full compact (A,B) band, transfer nonlinear actual-polynomial errors, or solve unrestricted Erdos #1041."
+  }
+}

@@ -1,0 +1,193 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #68: factorial-gap quotient gcd and terminal-block segment inequality"
+  description: >-
+    Two finite arithmetic statements about the factorial gaps n! - 1. The first fixes the
+    gcd of two gaps: for 2 <= i < j the gcd of i! - 1 and j! - 1 divides the quotient gap
+    j!/i! - 1, is bounded above by it, and that quotient is strictly smaller than
+    j^(j-i). The second bounds a terminal block of length k ending at N: the sum of the
+    logarithms of the moduli over that block is at most the logarithm of the common
+    denominator lcm of d! - 1 over 2 <= d <= N, plus a collision term binom(k+1, 3) log N,
+    one factor for each pair in the block. The mechanism for the first is the identity
+    j!/i! = descFactorial j (j - i) together with reduction of j! - 1 modulo i! - 1; the
+    second is the logarithm of an integer product-lcm-gcd inequality, with the interval
+    identity between the recursive block product and the Finset.Icc sum proved rather than
+    assumed. The readers are number theorists working on irrationality of factorial
+    reciprocal sums. Priority has not been assessed. Both theorems bound a common
+    denominator, not a reduced one, and neither decides the rationality of the sum of
+    (n! - 1)^{-1}.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "local_preparation_only"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification68GapGcd/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification68GapGcd/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "no_runner_replay_recorded"
+  submission_authorization: "not_authorised_no_submission_made"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "no Comparator acceptance or deliberate-negative rejection has been recorded on a supported runner"
+  note: >-
+    Prepared locally during the r7 paper-complete assimilation. No Palomar
+    submission has been made and no local artifact is represented as a
+    Palomar verdict or registry entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A05", "11B65"]
+
+sources:
+  - title: "Factorial-gap quotient gcd and terminal-block segment bound"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Both proofs are carried out in ErdosProblems/Erdos68/PaperCompleteGcdSegment.lean
+      over the project's factorial-gap library.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #68"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/68"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering and open status.
+      Neither theorem is attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Two compared theorems: the three-part factorial-gap gcd statement and the
+    terminal-block logarithmic segment inequality. Challenge.lean carries two
+    intentional Comparator specification sorries; Solution.lean and the
+    imported source module are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    The only deliberate placeholders are the two trusted theorem bodies in
+    Challenge.lean.
+  axiom_audit_status: "focused_lean_passed_exact_permitted_axioms"
+  actual_axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification68GapGcd.factorial_gap_gcd"
+      file: "ExternalVerification68GapGcd/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification68GapGcd/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        Direct transport of ErdosProblems.Erdos68.PaperComplete.factorial_gap_gcd from
+        ErdosProblems/Erdos68/PaperCompleteGcdSegment.lean at source SHA-256 542529c8adaf0bb9355eebd80a4b8a3a09b980a4996a416c89db4c54ed28a33b.
+      novelty_status: "unassessed"
+      contribution_class: "finite factorial-gap divisibility and quotient bound"
+      statement: >-
+        For 2 <= i < j the gcd of i! - 1 and j! - 1 divides j!/i! - 1, is at most
+        j!/i! - 1, and j!/i! - 1 is strictly below j^(j-i).
+      boundary: >-
+        A finite arithmetic statement about factorial gaps. It does not decide the
+        rationality of the sum of (n! - 1)^{-1} and does not settle Erdős Problem 68.
+      comparator_declaration: "Erdos249257.ExternalVerification68GapGcd.factorial_gap_gcd"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification68GapGcd.segment_inequality"
+      file: "ExternalVerification68GapGcd/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification68GapGcd/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        Direct transport of ErdosProblems.Erdos68.PaperComplete.segment_inequality from
+        ErdosProblems/Erdos68/PaperCompleteGcdSegment.lean at source SHA-256 542529c8adaf0bb9355eebd80a4b8a3a09b980a4996a416c89db4c54ed28a33b.
+      novelty_status: "unassessed"
+      contribution_class: "terminal-block common-denominator lower bound"
+      statement: >-
+        The sum of log (n! - 1) over a terminal block of length k ending at N is at most
+        log of the common denominator through N plus binom(k+1, 3) log N.
+      boundary: >-
+        A bound on the common denominator of a prefix, not on the reduced denominator.
+        It supplies no irrationality argument for Erdős Problem 68.
+      comparator_declaration: "Erdos249257.ExternalVerification68GapGcd.segment_inequality"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Claude Opus"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The Challenge restates the common denominator as an explicit Finset.Icc lcm so that it
+    is Mathlib-only; that definition unfolds to the project definition, so the transported
+    statement is token-identical to the Challenge.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The two source theorems, the Mathlib-only Challenge shape, the finite scope and the
+    open-problem boundary were reviewed. Terminal Comparator replay, independent human
+    peer review, Palomar decision, and registry acceptance remain unclaimed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification68GapGcd"
+  statements:
+    - source: "Source theorem for the factorial-gap quotient gcd."
+      lean: "Erdos249257.ExternalVerification68GapGcd.factorial_gap_gcd"
+      module: "ExternalVerification68GapGcd/Challenge.lean"
+      status: "exact-direct-transport"
+      note: "Hypotheses and all three conclusions are preserved."
+    - source: "Source theorem for the terminal-block segment inequality."
+      lean: "Erdos249257.ExternalVerification68GapGcd.segment_inequality"
+      module: "ExternalVerification68GapGcd/Challenge.lean"
+      status: "exact-direct-transport"
+      note: >-
+        The common denominator is spelled out as a Finset.Icc lcm, which unfolds to the
+        project definition.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

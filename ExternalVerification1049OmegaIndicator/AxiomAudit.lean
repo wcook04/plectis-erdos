@@ -1,0 +1,3 @@
+import ExternalVerification1049OmegaIndicator.Solution
+
+#print axioms Erdos249257.ExternalVerification1049OmegaIndicator.omegaWeight_indicator

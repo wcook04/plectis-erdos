@@ -1,0 +1,181 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "mersenne_achievement_set_measure",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_exact_specialisation_not_standalone_novelty",
+  "problem_id": "erdos_257",
+  "purpose": "Resolve the contradictory prior-art labels on volume_mersenneAchievementSet and give downstream public surfaces an exact, source-backed claim boundary.",
+  "target": {
+    "private_declaration": "Erdos257PeriodNoncollapse.GreedyAchievementSet.volume_mersenneAchievementSet",
+    "private_source": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GreedyAchievementSet.lean:996",
+    "public_declaration": "Erdos257PeriodNoncollapse.GreedyAchievementSet.volume_mersenneAchievementSet",
+    "semantic_node": "Z12::mersenne_achievement_set_measure_one",
+    "claim_bundle": "greedy_achievement_geometry",
+    "statement": "The achievement set of the positive series x_n = 1 / (2^n - 1) has Lebesgue measure exactly 1."
+  },
+  "classification": {
+    "novelty_class": "routine_exact_specialisation_of_classical_achievement_set_measure_formula",
+    "formalisation_class": "formalisation_of_the_exact_specialisation",
+    "nearest_prior_work": [
+      "Bartoszewicz, Filipczak, and Prus-Wisniowski (2013), Theorem 21.10: for a quickly convergent positive series, the achievement-set measure is lim 2^n r_n.",
+      "Kovac and Tao (2024), Remarks 12-13: the fixed-base Lambert weights 1/(t^n-1) satisfy the strict-tail condition and consequently have Cantor topology and unique coding.",
+      "Bartoszewicz, Glab, and Marchwicki (2018), Example 4.5: an explicit worked use of the same lim 2^n r_n measure formula for another quickly convergent sequence."
+    ],
+    "attribution": "Attribute the general measure formula to the classical achievement-set literature, with the 2013 theorem as the exact modern source anchor. Attribute the Mersenne strict-tail/Cantor premise to Kovac-Tao. Do not attribute the exact measure-one computation to Kovac-Tao.",
+    "mathematical_interest": "The exact value 1 exhibits a fat, nowhere-dense Cantor set at the base-two boundary. The corresponding fixed-base weights for t >= 3 have measure zero under the same formula, so base two is the sharp measure phase boundary within this family.",
+    "reusable_scope": "The same two-line squeeze evaluates lim 2^n r_n for asymptotically geometric quickly convergent subsum families; it separates the topological strict-tail input from the quantitative measure computation.",
+    "why_it_matters": "It corrects an inflated and internally contradictory public-story route without diminishing the result's geometric interest: the Lean theorem is a useful exact formalisation, but not evidence of a new standalone measure theorem."
+  },
+  "primary_sources": [
+    {
+      "id": "kovac_tao_2024_ahmes_series",
+      "title": "On several irrationality problems for Ahmes series",
+      "url": "https://arxiv.org/abs/2406.17593",
+      "local_annex": "annexes/arxiv-2406-17593-kovac-tao-ahmes-series/extracted.md",
+      "exact_anchors": [
+        "extracted.md:257-270, Remark 12: the fast-series condition gives Cantor topology and unique coding.",
+        "extracted.md:297-299, Remark 13: for each fixed t >= 2, sum_{l>n} 1/(t^l-1) < 1/(t^n-1)."
+      ],
+      "supports": "The strict-tail premise, Cantor topology, and unique support coding for the fixed-base Lambert series.",
+      "does_not_support": "No Lebesgue-measure formula or exact measure-one computation is stated there."
+    },
+    {
+      "id": "bartoszewicz_filipczak_prus_wisniowski_2013_subsums",
+      "title": "Topological and algebraic aspects of subsums of series",
+      "url": "https://dspace.uni.lodz.pl/xmlui/handle/11089/28723",
+      "doi": "10.18778/7525-971-1.21",
+      "exact_anchor": "Theorem 21.10, printed page 350 (PDF page 6): if a_n > r_n for every n, then the achievement set is Cantor and its Lebesgue measure is lim_n 2^n r_n.",
+      "supports": "The exact general measure formula whose Mersenne specialisation gives 1."
+    },
+    {
+      "id": "bartoszewicz_glab_marchwicki_2018_recovering",
+      "title": "Recovering a purely atomic finite measure from its range",
+      "url": "https://im0.p.lodz.pl/~sglab/szymon/recovering.pdf",
+      "exact_anchor": "Example 4.5, printed page 8 (PDF page 7): explicitly applies lambda(A(x_n)) = lim_n 2^n r_n = 1 to a quickly convergent example.",
+      "supports": "A primary worked application confirming how the classical limit formula is used; it is not the Mersenne specialisation."
+    }
+  ],
+  "specialisation_proof": {
+    "notation": "Let x_n = 1/(2^n-1) and r_n = sum_{k>n} x_k.",
+    "strict_tail_source": "Kovac-Tao Remark 13 proves x_n > r_n, so Theorem 21.10 applies.",
+    "squeeze": [
+      "Since 1/(2^k-1) > 2^-k, one has r_n > sum_{k>n} 2^-k = 2^-n.",
+      "For k > n, 1/(2^k-1) = 2^-k/(1-2^-k) <= 2^-k/(1-2^-(n+1)), hence r_n <= 2^-n/(1-2^-(n+1)).",
+      "Therefore 1 < 2^n r_n <= 1/(1-2^-(n+1)), so 2^n r_n tends to 1."
+    ],
+    "conclusion": "Theorem 21.10 gives Lebesgue measure 1. This is a direct specialisation of the general formula, independent of the Lean implementation."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "exact measure of the achievement set for sum 1/(2^n-1)",
+      "Erdos-Borwein series subsum set Lebesgue measure one",
+      "Mersenne achievement set measure 1",
+      "Kovac Tao achievement set measure"
+    ],
+    "result": "No primary source explicitly stating the exact Mersenne value 1 was located in this bounded search. The nearest exact source is the general 2013 limit theorem, from which the value follows immediately.",
+    "boundary": "Failure to locate an explicit special-case statement is not evidence of novelty and must not be reported as a literature-completeness claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "We formalise the exact Mersenne specialisation of the classical quickly-convergent achievement-set measure formula: the full achievement set has measure 1.",
+    "forbidden_wording": [
+      "Kovac and Tao proved that the Mersenne achievement set has measure one.",
+      "The measure-one theorem is new.",
+      "No previous source contains the result.",
+      "Measure one resolves rational membership or Erdos Problem 257."
+    ],
+    "nonclaims": [
+      "not_a_solution_of_erdos_257",
+      "not_a_rational_membership_theorem",
+      "not_a_novelty_claim_for_Cantor_topology",
+      "not_a_novelty_claim_for_the_general_measure_formula",
+      "not_a_complete_literature_search"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "tools/meta/factory/build_formal_conjectures_contribution_manifest.py",
+      "row": "NEW_STATEMENTS[volume_mersenneAchievementSet].prior_art_gate",
+      "effect": "Replace the contested gate by this adjudicated semantic boundary."
+    },
+    {
+      "path": "docs/formal_math/generated_formal_conjectures_contribution.md",
+      "section": "external-statement candidate row for volume_mersenneAchievementSet",
+      "effect": "Carry the corrected attribution and novelty boundary into the generated contribution surface."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The measure-one row is adjudicated as a routine exact specialisation and formalisation, with three primary-source anchors and a bounded disconfirmation search.",
+    "do_not_redo": [
+      "Do not return to the obsolete 33-interface or Erdos-257-only Comparator integration.",
+      "Do not treat exact proposition replay as novelty evidence.",
+      "Do not repeat the Kovac-Tao measure search without new source evidence."
+    ],
+    "ranked_open_throats": [
+      "Erdos243.no_boundedRise_of_tailNondivisibility: dynamic fresh-coprime-moduli barrier; Mathematics Refinery handoff commit 5473bb5e89b4d3d5cf5a239420ea43af13f12008, public authority d666db67b1e40dc1fa6781ad09030193de126417.",
+      "finrank_totientKernelThroughLevelFamily_eq (Erdos 249): exact finite-rank statement against Martin 2006 and related totient literature.",
+      "volume_supportedMersenneAchievementSet_dichotomy (Erdos 257): determine whether the finite/infinite complement classification is explicit prior art or another routine specialisation.",
+      "irrational_factorialGapSeries_iff_cofinal_nonunit_carries (Erdos 68): classify the exact carry equivalence after its active source claims clear.",
+      "threeHalves_no_coordinatewiseCorridor (Erdos 1049): adjudicate the reusable barrier/no-go statement.",
+      "irrational_tsum_primeDyadicTerm_iff_primeGap (Erdos 251): separate exact reformulation from substantive number theory.",
+      "no_eventuallyPeriodicNegative_orbit (Erdos 243): classify the dynamical obstruction independently of the parent problem.",
+      "exists_totientDyadicSectionBasis (Erdos 249): determine formalisation versus new reusable finite-linear-algebra package.",
+      "finite_period_noncollapse_rat_den_interface (Erdos 257): retain semantic review without reviving obsolete integration work.",
+      "no_cofinallyBoundedNegative_of_normalizedVanishes (Erdos 243): compare with standard recurrence and asymptotic lemmas.",
+      "exists_small_translation_separating_arguments and constant_perturbation_roots_in_unitDisk (Erdos 1041): defer until active claims clear, then distinguish scoped improvements from routine consequences."
+    ],
+    "sibling_claim_map": "Proof fleet owns mathematics; Mathematics Refinery owns canonicalisation; Public Research Exhibition owns cleared packaging. The Observatory supplies exact adjudication receipts only. Active source claims in Erdos 68, 1041, and 257 remain out of bounds.",
+    "validation_state": "Source route and builder regression are local; generated projection refresh is required before commit.",
+    "next_wake_condition": "After the generated contribution manifest refresh and focused regression pass, begin the bounded-rise/fresh-coprime-moduli primary-source adjudication."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_generated_gate_or_new_support_source",
+    "reentry_condition": "Re-enter only when the contribution-manifest gate is regenerated, a primary source states the exact Mersenne measure-one specialisation, or the finite-period/rational-denominator interface is materially changed.",
+    "do_not_redo": "Do not repeat the general achievement-set measure search, the Mersenne tail squeeze, or the Kovač--Tao attribution; the exact specialisation is already classified as routine formalisation.",
+    "open_bottleneck": "The measure-one result has no rational-membership force. The remaining semantic review concerns finite-period rational screens, not the closed measure computation.",
+    "owner": "Contribution-manifest builder owner for projection refresh; #257 proof fleet for finite-period/rational-denominator semantics; Novelty Observatory for changed source evidence."
+  },
+  "reviewer_attention_budget": {
+    "routine": "The measure computation is a direct squeeze after the classical quickly-convergent achievement-set formula is instantiated.",
+    "load_bearing": "A reviewer must keep the strict-tail/Cantor premise, the limit formula, and the Mersenne squeeze as separate inputs; none implies rational-membership information.",
+    "externally_sourced": "Bartoszewicz--Filipczak--Prus-Wisniowski Theorem 21.10 supplies the measure formula; Kovač--Tao Remarks 12--13 supply strict-tail/Cantor context; Bartoszewicz--Głąb--Marchwicki gives a worked use.",
+    "still_unverified": "Whether the exact Mersenne specialisation has an earlier explicit statement beyond the general formula; no complete literature search is claimed.",
+    "review_act": "Check the source-to-specialisation map once, then decide whether the measure-one row belongs as a geometric supporting lemma under the general #257 greedy endpoint or should be omitted from the first-contact paper narrative."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "mersenne_achievement_set_measure@source-2026-08-24",
+    "evidence_class": "Lean-checked exact Mersenne specialisation with a source-pinned ordinary achievement-set measure theorem and explicit finite squeeze; no new general measure theorem.",
+    "closest_known_result": "Bartoszewicz--Filipczak--Prus-Wisniowski Theorem 21.10 gives the general Cantor-set measure formula, while Kovač--Tao give the fixed-base strict-tail/Cantor premise. The exact value 1 is the immediate Mersenne instantiation, not an attributed theorem of Kovač--Tao.",
+    "comparison_relation": "The source-specific contribution is formalising and calculating the t=2 specialisation. It does not strengthen the general formula, establish rational membership, or produce the cofinal-skip producer used by the #257 endpoint.",
+    "exact_delta": "A clean attribution correction: classify the row as routine exact specialisation/formalisation and retain its geometric boundary (fat nowhere-dense measure-one set) as context, not as an irrationality mechanism.",
+    "disconfirming_evidence": "Bounded exact searches found no primary source explicitly stating the Mersenne value 1; this absence is not evidence of novelty and the general theorem makes the calculation immediate.",
+    "confidence": {
+      "level": "high_for_routine_specialisation_and_attribution; low_for_any_priority inference",
+      "basis": "The general formula and strict-tail premise are explicitly anchored, and the squeeze is elementary and inspectable."
+    },
+    "significance": "Useful geometric supporting context and a formalisation-quality example; it does not alter the #257 endpoint or its hard producer.",
+    "claim_ceiling": "Say that the Mersenne achievement set has Lebesgue measure 1 by specialising the classical quickly-convergent formula, with the strict-tail/Cantor premise separately sourced. Do not claim novelty, a Kovač--Tao measure theorem, rational-membership information, or #257 resolution.",
+    "hard_step": "There is no new hard mathematical step beyond correctly matching the source hypotheses and taking the two-sided tail squeeze; the hard #257 step remains cofinal canonical skips.",
+    "open_boundary": "The measure-one fact does not decide rational membership or the cofinal-skip condition; no independent Comparator endpoint is justified beyond a status-tagged formalisation proposition if the owning release lane elects to surface it.",
+    "bounded_expert_review_act": "Verify the citation/quantifier match for Theorem 21.10 and the strict-tail hypothesis, then keep the row subordinate to the general greedy endpoint.",
+    "reentry_trigger": "Re-enter on a materially changed source generation, an explicit prior source for the exact Mersenne value, or a new claim connecting measure to rational membership.",
+    "source_generation_binding": {
+      "formal_source_commit": "c547b45326e0d32c7cc62634c275af31a2832f29",
+      "formal_source_sha256": "1e335bbbb537a112ce4253060c9ca03f8dda947c96d254c2cc79364b327740d5",
+      "primary_source_anchors": [
+        "Bartoszewicz--Filipczak--Prus-Wisniowski (2013), Theorem 21.10, printed p. 350",
+        "Kovač--Tao (2024), Remarks 12--13",
+        "Bartoszewicz--Głąb--Marchwicki (2018), Example 4.5"
+      ],
+      "parity_status": "Formal source and external theorem anchors are current at this review; no explicit special-case priority is asserted."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "c547b45326e0d32c7cc62634c275af31a2832f29",
+      "formal_source_sha256": "1e335bbbb537a112ce4253060c9ca03f8dda947c96d254c2cc79364b327740d5"
+    },
+    "claim_guard": "Measure one is a classical-formula specialisation and formalisation; it does not imply rational membership, cofinal skips, or an Erdős #257 solution.",
+    "reentry_trigger": "Re-enter if the formal theorem, cited external anchors, or the measure-to-membership interpretation changes."
+  }
+}

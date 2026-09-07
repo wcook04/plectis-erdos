@@ -1,0 +1,33 @@
+{
+ "input_stage": "generation",
+ "output_stage": "verification",
+ "artifact": [
+  "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicPotentialBound.lean",
+  "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicFormACutCertificate.md",
+  "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py",
+  "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/probe_erdos1041_concyclic_structure.py",
+  "state/formal_math/probes/erdos1041_concyclic_fac_certificate_receipt.json",
+  "state/formal_math/probes/erdos1041_fac_n7_10_rerun_20260825.log"
+ ],
+ "human_understanding_delta": "V<=1 for concyclic zeros is reduced to finitely many one-dimensional polynomial containment checks per configuration; sufficient chord/spoke certificates are Lean-checked from log(1+u)<=u alone; first-moment-only certificates are proven infeasible for n>=4 so any proof needs joint multi-harmonic bookkeeping; the concentric-alternation law min_k max_{G_k} log|g(s e^{i psi})| <= log(1+s^n) is isolated as the sharp interpolating statement between Theorem C (s=1) and the origin (s=0), measured at float-noise slack over 930 checks n=3..8, and its s=1 proof is shown provably non-transportable (no circle zeros at s<1).",
+ "verification_state": {
+  "lean": "ErdosProblems.Erdos1041.ConcyclicPotentialBound builds clean, no warnings, axiom-free, import Mathlib only",
+  "deterministic_checker": "verdict PASS: A regular attainment 8 rows; B 930 law checks worst excess +1.0e-16; C 84 configs all V<=1; D negative control fires; E 150 domination hits contained",
+  "adversarial_rerun": "degrees 6..10 seed 20260825 landed; worst excess -4.588e-08 at n=10; never crosses 1"
+ },
+ "publication_or_review_state": "internal private corpus only; no public claim",
+ "canonicalization_state": "packet row added to exact_results; producer concyclic_form_a_cut_objective_below_one updated with dated addendum; producer_relations classification repaired (frontier integrity now ok)",
+ "unresolved_downstream_bottleneck": "The near-regular shell: joint multi-harmonic cluster/cone bookkeeping is required (quantify why back-side clustering rotates s_1 into the used gap); Conjecture U awaits a genuinely new proof idea; co-connectivity observation (E3) unproven.",
+ "next_stage_owner": "next Erdos-1041 concyclic session; unrestricted movable-hub lane unaffected",
+ "paper_assimilation": {
+  "paper": "erdos-1041-lemniscate-newton-flow",
+  "section": "candidate future section: concyclic class results",
+  "canonical_mechanism_family": "log-potential domination + form-a-cut certificate systems on coaxal circles",
+  "relation": "extends ConcyclicAlternation Theorem C from s=1 to all radii as a calibrated law; complements TwoSmallestRootTruncation modulus axis",
+  "understanding_delta": "first-moment shortcuts are dead; certificate search space is finite and exact",
+  "evidence_boundary": "Lean kernel + deterministic battery + measurement; no theorem of Erdos #1041 claimed",
+  "hard_step": "mid-range spoke control under multi-harmonic spectra",
+  "meaningful_failed_route": "first-moment-only spine with crude tails (infeasible by exhaustive scalar scan)",
+  "open_remainder": "full V<=1; concentric-alternation proof; co-connectivity theorem"
+ }
+}

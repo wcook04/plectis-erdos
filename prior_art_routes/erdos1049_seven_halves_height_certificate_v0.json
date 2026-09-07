@@ -1,0 +1,211 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "status": "adjudicated_layered_comparator_now_external_consumer_only_source_parity_current",
+  "route_id": "erdos1049_seven_halves_height_certificate_v0",
+  "card_id": "erdos1049_seven_halves_height_certificate",
+  "problem_id": "erdos_1049",
+  "source_result_id": "seven_halves_height_criterion",
+  "programme": "erdos_1049",
+  "classification": "routine_exact_formal_admission_certificate_for_a_published_analytic_theorem",
+  "canonical_mechanism_family": "literature-theorem admission certificates and authority firewalls for rational-base Lambert series",
+  "claim_boundary": {
+    "allowed_wording": "Lean checks the exact seven-halves numerical height condition in source-facing and transformed forms; Bundschuh--Väänänen Theorem 2 supplies the separate external analytic implication only after its inherited q=7/2 hypotheses are checked.",
+    "evidence_class": "Lean-checked exact numerical certificate plus source-archived external theorem; no end-to-end Lean irrationality proof",
+    "forbidden_wording": [
+      "Lean proves irrationality at 7/2",
+      "the certificate advances the 3/2 case",
+      "solution of Erdős #1049"
+    ],
+    "open_boundary": "The q=3/2 construction, any general rational-base theorem, and independent verification of the inherited external hypotheses remain open or unverified."
+  },
+  "release_disposition": {
+    "value": "layered_comparator_now_and_external_evidence_only",
+    "comparator_now": "The seven named Lean declarations for the source-facing and transformed seven-halves numerical height conditions.",
+    "paper_only_external_evidence_only": "Bundschuh--Väänänen's analytic irrationality implication and all inherited hypotheses; no end-to-end kernel claim.",
+    "statement_firewall": "Expose the formal certificate as Comparator-now and label the analytic implication external evidence only; do not merge the two into a Lean irrationality proposition.",
+    "reason": "The local certificate is independently restatable and inspectable, while the analytic consumer remains source-backed rather than kernel-checked."
+  },
+  "source_generation": {
+    "status": "formal_certificate_and_external_theorem_current_with_layered_evidence_boundary_and_source_parity_current",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+      "commit": "73773158fad4fedb8632c981fc879fd483717e00",
+      "sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "commit": "f47fc3d4c2b04173cd4ab89f649cd2e07020c66b",
+      "sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2",
+      "source_result_id": "seven_halves_height_criterion"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/erdos1049_seven_halves_height_certificate.card.json",
+      "commit": "9bae89879e03c8715fadc1f08d3e5a030d2e8ff4",
+      "sha256": "29ab65e67534875f1f31ecc07d9620421d997af5db8f2124c12e476331e4918f"
+    }
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "seven_halves_height_criterion@formal-73773158-packet-f47fc3d4-card-9bae8987",
+    "evidence_class": "seven_Lean_checked_numerical_declarations_plus_primary_source_analytic_theorem",
+    "comparison_relation": "Bundschuh-Vaananen (Compositio Mathematica 91 (1994), Theorem 2) is the direct source for the rational-base irrationality implication. Van Assche and Zudilin are nearby integer-base or conditional contexts, not replacements for the q=7/2 source theorem.",
+    "closest_known_result": "Bundschuh--Väänänen Theorem 2 is the direct published antecedent for the analytic irrationality implication; the local seven-declaration interface is an exact admission certificate for its q=7/2 numerical height condition, not a new analytic theorem.",
+    "exact_delta": "The formal delta is the exact seven-halves source-facing height inequality, its equivalent transformed membership certificate, and compact arithmetic components, with the external theorem and inherited hypotheses kept outside the kernel claim.",
+    "novelty_confidence": {
+      "state": "source_bound_known_literature_theorem_with_local_formal_admission_certificate",
+      "ceiling": "No novelty, priority, or local irrationality claim; the external analytic implication remains source-backed and non-kernel-checked."
+    },
+    "significance_assessment": {
+      "grade": "high_assurance_value_low_originality",
+      "why_care": "It gives Comparator a precise numerical entrance certificate while preventing a published analytic implication from being misrepresented as a Lean proof.",
+      "mechanism_family": "literature-theorem admission certificates and authority firewalls for rational-base Lambert series",
+      "expert_attention_reason": "Only the q=7/2 standing-hypothesis correspondence needs specialist attention; the logarithmic inequality itself is routine."
+    },
+    "exact_claim_ceiling": "Lean verifies both log(7)/log(7/2) < (1/2+1/pi^2)^(-1) and its transformed certificate through the seven named declarations. Bundschuh-Vaananen Theorem 2 may supply irrationality only after separate checking of its q=7/2 hypotheses. No end-to-end formal irrationality proof, 3/2 result, general rational-base theorem, or novelty claim follows.",
+    "open_boundary": "The external q=7/2 hypothesis correspondence still needs bounded expert checking; the q=3/2 construction, general rational-base theorem, and any irrationality conclusion remain outside this Lean certificate.",
+    "hard_step_and_natural_friction": "The hard boundary is inherited hypotheses and source correspondence, not the numerical margin. Preserve the distinction between an exact formal certificate and an external theorem consumer.",
+    "disconfirming_evidence_preserved": [
+      "The Lean declarations do not encode every standing hypothesis of Bundschuh-Vaananen.",
+      "The external theorem is not imported into Comparator and is not kernel-checked here.",
+      "The 3/2 base and general rational-base problem remain outside this certificate."
+    ],
+    "review_scope": {
+      "primary_sources_used": [
+        "Bundschuh-Vaananen (1994), pp. 175-177 and proof pp. 189-193",
+        "Current RationalBaseLambert.lean declarations",
+        "Current Erdos1049 research packet and reviewer card"
+      ],
+      "search_scope": "exact source theorem and q=7/2 certificate correspondence; no claim of exhaustive rational-base literature review",
+      "closest_relation": "published analytic theorem plus a local exact entrance certificate",
+      "uncertainty": "high for the seven numerical declarations and source parity; medium for the q=7/2 standing-hypothesis transfer until specialist checking"
+    },
+    "paper_disposition": {
+      "class": "supporting_lemma",
+      "target_section": "Published rational-base region and the 3/2 barrier",
+      "relation": "Keep one subordinate admission object under the published Bundschuh-Vaananen mechanism; do not split the numerical certificate from its external-consumer warning.",
+      "reason": "The value is an assurance and navigation boundary, not new irrationality mathematics."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "Comparator-now for the exact seven-declaration numerical height certificate; external-evidence-only for Bundschuh-Vaananen irrationality; no end-to-end Lean theorem",
+      "release_owner": "Role 3; preserve the two-layer declaration in any downstream surface"
+    },
+    "bounded_expert_act": "Verify the printed Bundschuh-Vaananen standing hypotheses at q=7/2 and retain the layered wording; do not broaden the seven-declaration numerical interface.",
+    "reentry_trigger": "Re-enter if the source theorem/version, q=7/2 hypotheses, seven-declaration Lean interface, or packet/card generation changes."
+  },
+  "adjudication": {
+    "verdict": "comparator_now_for_exact_numerical_height_certificate_paper_only_for_external_irrationality",
+    "evidence_class": "seven Lean-checked numerical declarations plus primary-source Bundschuh--Väänänen Theorem 2; no end-to-end formal analytic proof",
+    "closest_known_prior_art": "Bundschuh--Väänänen (Compositio Math. 91 (1994), Theorem 2, pp. 175--177 and proof pp. 189--193) is the direct source for the rational-base analytic implication. Van Assche and Zudilin provide nearby integer-base/conditional context but do not replace that source at q=7/2.",
+    "exact_delta": "The local source proves the literal q=7/2 height inequality and its transparent transformed certificate via 2^18<7^7 and pi>3. The remaining place, nonvanishing, and analytic hypotheses and the irrationality conclusion remain external to the 1994 theorem.",
+    "disconfirming_evidence": "The Lean declarations do not encode every standing hypothesis of Bundschuh--Väänänen and do not prove irrationality; the source theorem is not imported into Comparator. The 3/2 base and general rational-base problem remain outside this height region.",
+    "confidence_ceiling": "High for the exact numerical certificate and its source correspondence; no local novelty or priority claim; external analytic consequence is source-backed but not kernel-checked.",
+    "significance_rationale": "This is an assurance firewall, not new irrationality mathematics: it lets Comparator expose a useful exact entrance condition without collapsing it into the published analytic theorem.",
+    "bounded_expert_review_act": "Verify only the q=7/2 specialization of the printed standing hypotheses and retain the two-layer wording. Do not broaden Comparator beyond the seven named numerical declarations."
+  },
+  "source_target": {
+    "result_id": "seven_halves_height_criterion",
+    "lean_file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1049.BundschuhVaananenHeightRegion",
+      "ErdosProblems.Erdos1049.sevenHalves_power_certificate",
+      "ErdosProblems.Erdos1049.sevenHalves_rational_margin",
+      "ErdosProblems.Erdos1049.sevenHalves_log_ratio_lt_seven_eighteenths",
+      "ErdosProblems.Erdos1049.sevenEighteenths_lt_bundschuhVaananenMargin",
+      "ErdosProblems.Erdos1049.sevenHalves_mem_bundschuhVaananenHeightRegion",
+      "ErdosProblems.Erdos1049.sevenHalves_archimedean_height_condition"
+    ]
+  },
+  "primary_source": {
+    "citation": "Peter Bundschuh and Keijo Väänänen, Arithmetical investigations of a certain infinite product, Compositio Mathematica 91 (1994), 175-199",
+    "url": "https://numdam.org/item/CM_1994__91_2_175_0.pdf",
+    "anchors": "standing hypotheses and height definition, pp. 175-176; Theorem 2, p. 177; proof, pp. 189-193",
+    "source_archive": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/source.pdf",
+    "source_archive_sha256": "e4937a5bbf141c01dc60c6bdb91e0f8a8ad399d69e8e3156b4b27881631913cc",
+    "pdf_pages": 26,
+    "extracted_markdown": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/extracted.md",
+    "extracted_markdown_sha256": "50f65688430d44fd90389b39029bb6089492a348a8ce5a3d9898f5ae2b21a52b",
+    "retrieved_at": "2026-08-26",
+    "verification_state": "primary_pdf_read_exact_hypotheses_and_threshold_compared",
+    "hypothesis_correspondence": {
+      "number_field": "K=Q",
+      "valuation": "the real place v=∞; q=7/2 has |q|_∞>1 and is not of absolute value 1",
+      "parameter": "alpha=-1, with alpha != -q^j for every j>=1",
+      "height_parameter": "lambda=log(7)/log(7/2)",
+      "source_threshold": "Theorem 2, special alpha=-1 case: lambda < (1/2 + 1/pi^2)^(-1)",
+      "local_equivalent_margin": "Lean proves the literal source threshold at q=7/2 and its equivalent transformed margin log(2)/log(7) < 1/2 - 1/pi^2"
+    },
+    "correspondence_status": "source_text_and_local_certificate_compared; place, parameter, and threshold correspondence is explicit, while the analytic theorem remains external",
+    "relation": "The published theorem supplies the analytic irrationality implication. The local Lean development certifies only the equivalent numerical height inequality at q=7/2; it does not formalize the theorem's analytic consumer or all inherited hypotheses."
+  },
+  "claim_ceiling": "Lean verifies the source-facing q=7/2 numerical height condition and its transformed certificate. Bundschuh--Väänänen Theorem 2, after separate inherited-hypothesis checking, supplies the irrationality conclusion. No end-to-end formal irrationality proof, 3/2 result, general rational-base theorem, or novelty claim follows.",
+  "disposition": {
+    "programme": "subordinate under the published Bundschuh--Väänänen height-region mechanism",
+    "comparator": "comparator_now for a minimal numerical-height proposition; external_evidence_only for irrationality",
+    "paper": "supporting lemma in Published rational-base region and the 3/2 barrier",
+    "absolute_frontier_shortlist": "do_not_admit_retain_current_five"
+  },
+  "review_focus": {
+    "routine": "integer powers, logarithmic monotonicity, and the pi margin",
+    "hard_step": "source correspondence and inherited hypotheses; the analytic theorem remains external",
+    "open_boundary": "3/2 and the general rational-base problem"
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_source_version_or_statement_firewall_change",
+    "reentry_condition": "Re-enter only if the Bundschuh--Väänänen source version, its q=7/2 hypotheses, or the seven-declaration Lean interface changes.",
+    "do_not_redo": "Do not replay the elementary logarithmic inequality or treat the external theorem as a new local proof; the current split is deliberate.",
+    "open_bottleneck": "A source-hypothesis check for the q=7/2 specialization and a later 3/2 auxiliary-family theorem remain the only substantive downstream questions.",
+    "owner": "Comparator/Public Role 3 for the exact certificate firewall; Mathematics Refinery for card wording; Novelty Observatory for source-generation changes."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification_plus_primary_source",
+    "output_stage": "human_understanding_and_review_firewall",
+    "human_understanding_delta": "Separates the formal entrance certificate from the externally proved analytic implication.",
+    "publication_or_review_state": "layered Comparator/paper disposition",
+    "canonicalization_state": "one subordinate assurance object",
+    "unresolved_downstream_bottleneck": "minimal Comparator firewall and paper assimilation",
+    "next_stage_owner": "Comparator/Public Role 3 and Mathematics Refinery"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine exact Lean arithmetic locally; the scarce human-review work is theorem-version correspondence and inherited Bundschuh--Väänänen hypotheses.",
+    "slow_down_at": "The q=7/2 inherited-hypothesis specialization and the boundary between the seven formal declarations and the external analytic consumer.",
+    "automation_can_establish": [
+      "Formal source, packet, and reviewer-card hashes",
+      "The seven exact seven-halves certificate declarations",
+      "Absence of any local 3/2 or general rational-base conclusion"
+    ],
+    "human_judgment_required": [
+      "Whether the printed Bundschuh--Väänänen hypotheses transfer exactly at q=7/2",
+      "Whether public wording keeps Comparator-now and external-evidence-only layers distinct",
+      "Whether adjacent citation-only sources should remain unarchived"
+    ],
+    "review_act": "Audit the q=7/2 theorem-version correspondence once, while preserving the formal/external firewall; do not repeat the elementary logarithmic inequality."
+  },
+  "adjudication_currentness": {
+    "status": "formal_source_packet_and_card_parity_current",
+    "legacy_source_reaudit_handoff": {
+      "state": "primary_text_read_archived_successor_bound",
+      "superseded_review_unit": "docs/formal_math/review_units/erdos1049_seven_halves_height_certificate.review_unit.v1.json",
+      "current_successor_unit": "docs/formal_math/review_units/erdos1049_seven_halves_height_certificate.review_unit.v2.json",
+      "evidence_ref": "docs/formal_math/review_units/erdos1049_seven_halves_height_certificate.review_unit.v2.json::citation_closure.records[bv1994].primary_text_read",
+      "archived_primary_source": {
+        "path": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/source.pdf",
+        "sha256": "e4937a5bbf141c01dc60c6bdb91e0f8a8ad399d69e8e3156b4b27881631913cc",
+        "locators": "Printed pp. 175-176 standing hypotheses and height definition; Theorem 2 p. 177; proof pp. 189-193",
+        "read_at": "2026-08-26"
+      },
+      "owner_next_action": "Coverage/review-unit owner should consume the archived primary-text binding; do not reopen superseded units or broaden the seven-declaration certificate.",
+      "reentry_trigger": "Create a new successor review unit only if the Bundschuh--Vaananen source/version, q=7/2 hypothesis correspondence, seven-declaration interface, or paper firewall changes."
+    },
+    "bound_snapshot": {
+      "formal_source_commit": "73773158fad4fedb8632c981fc879fd483717e00",
+      "formal_source_sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+      "research_packet_commit": "f47fc3d4c2b04173cd4ab89f649cd2e07020c66b",
+      "research_packet_sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2",
+      "reviewer_card_commit": "9bae89879e03c8715fadc1f08d3e5a030d2e8ff4",
+      "reviewer_card_sha256": "29ab65e67534875f1f31ecc07d9620421d997af5db8f2124c12e476331e4918f",
+      "review_generation": "2026-08-30_source_facing_height_firewall_v5"
+    },
+    "claim_guard": "Comparator may expose only the seven exact formal numerical components; Bundschuh--Väänänen remains external evidence and no 3/2, general rational-base, endpoint, novelty, or priority claim is admitted.",
+    "reentry_trigger": "Re-enter if the formal source, packet, reviewer-card parity, or q=7/2 source-hypothesis correspondence changes."
+  }
+}

@@ -1,0 +1,4 @@
+import ExternalVerification1049UnimodularPlucker.Solution
+
+#print axioms Erdos249257.ExternalVerification1049UnimodularPlucker.adjacent_det_zero_forces_all_det_zero_of_isCoprime
+#print axioms Erdos249257.ExternalVerification1049UnimodularPlucker.zmod_binary_tail_collision_of_isCoprime

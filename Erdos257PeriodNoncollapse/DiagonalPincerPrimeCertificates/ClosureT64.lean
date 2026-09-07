@@ -1,0 +1,21 @@
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Support
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level0A
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level0B
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level1A
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level1B
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level2A
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level2B
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level3A
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level3B
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level4A
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level4B
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level5A
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level5B
+import Erdos257PeriodNoncollapse.DiagonalPincerPrimeCertificates.ClosureT64.Level6A
+
+/-!
+# Shared Lucas closure through t=64
+
+Stable import surface for the dependency-safe generated certificate shards.
+The shard layout preserves kernel proof authority and exposes parallel build width.
+-/

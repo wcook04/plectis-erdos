@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification251LcmDiagonalCriterion.Challenge",
+  "solution_module": "ExternalVerification251LcmDiagonalCriterion.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift",
+    "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts",
+    "Erdos249257.ExternalVerification251LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd",
+    "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule",
+    "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

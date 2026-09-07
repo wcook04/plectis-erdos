@@ -1,0 +1,376 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-07-28T00:00:00Z",
+  "created_by": "codex_root",
+  "status": "adjudicated_source_identity_and_cassini_countermodel_boundary",
+  "route_id": "erdos1041_lemniscate_short_path",
+  "problem_id": "erdos_1041",
+  "purpose": "Route the prior art for Erdos 1041, repair inherited source-identity failures, bind the operator-confirmed main.pdf to its byte-identical public manuscript, and verify the original 1958 citation against the publisher.",
+  "source_result_ids": [
+    "cassini_tree_budget_falsifier",
+    "cassini_positive_attachment_deficit",
+    "cassini_no_uniform_length_slack"
+  ],
+  "adjudication_currentness": {
+    "status": "landed_source_and_card_snapshot_adjudicated",
+    "bound_snapshot": {
+      "lean_source_commit": "8c16aac691ddb11f8322bfcff8dfda5ba62eeb25",
+      "lean_source_sha256": "58b9e3c200fa99b76271f160ef2d6e8e55698310ea7cd6cb9965f1d4a52269c7",
+      "research_packet_commit": "c8031c94ec2e1833cb59ed8555655c4211535adc",
+      "research_packet_sha256": "7fc3b7e8d23a08b521df3c538f2eb426b5ead959525f1a6b6ad96912d937f36d",
+      "reviewer_card_commit": "a39ae9bf971a4981b5f21db69fdb536f170c586b",
+      "reviewer_card_sha256": "8ff6dfdcf7c563dd6b7929e3d916fb5d7f1d2e3c347052b5654373b09ad1f7e8",
+      "source_result_ids": [
+        "cassini_tree_budget_falsifier",
+        "cassini_positive_attachment_deficit",
+        "cassini_no_uniform_length_slack"
+      ]
+    },
+    "claim_guard": "This route reconciles source identities and refutes a specific epsilon-sharp metric budget in two candidate drafts; it is not a counterexample to Erdős #1041 and does not certify the complete manuscripts or an author-reported quartic formalisation.",
+    "reentry_trigger": "Re-enter if a draft changes its load-bearing budget, a replacement coarea normalization appears, a source identity changes, or the quartic formalisation becomes independently inspectable."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The Cassini arithmetic is elementary; the scarce review work is matching exact draft propositions and source identities without collapsing a false premise into a false target theorem.",
+    "slow_down_at": "Keep the original EHP problem, Pendyala's degree-four result, pseudonymous drafts, and the Cassini route falsifier as distinct evidence layers.",
+    "review_act": "One bounded expert act: verify the Cassini inequality and proposition-number correspondence, then check that surviving direct or constant-factor routes are not swept into the no-go."
+  },
+  "adjudicated_objects": [
+    {
+      "object_id": "cassini_tree_budget_falsifier",
+      "reviewer_card": "docs/formal_math/reviewer_cards/cassini_coarea_tree_budget_falsifier.card.json",
+      "adjudicated_at": "2026-08-24",
+      "classification": "source_linked_exact_countermodel_to_two_candidate_proof_propositions",
+      "priority_claim": "none",
+      "evidence_layers": {
+        "ordinary_proof": "The Cassini level-length tail is bounded by 4(sqrt(a^2+a)-a), and the straight segment verifies that the target theorem itself survives.",
+        "Lean": "The displayed majorant is below root distance 2a for a>4/5; at a=9/10 the strict deficit exceeds 4/25; the associated abstract TreeBudgetAssertion is false.",
+        "source_audit": "Proposition 12 of the March draft and Proposition 7 of the shorter draft assert the same epsilon-sharp tree budget."
+      },
+      "nearest_prior_work": [
+        "Erdős--Herzog--Piranian 1958 supplies the original short-path problem and the component lemma, but no metric tree budget.",
+        "Ghosh--Ramachandran 2024 supplies modern component topology, but no root-spanning length estimate.",
+        "Pendyala 2026 proves the degree-four case by a distinct direct construction and is unaffected."
+      ],
+      "mathematical_interest": "A low-degree metric witness invalidates the load-bearing fan-in of two unrestricted drafts before their local topology matters.",
+      "reusable_scope": "Any connected-spanning budget must first dominate the diameter of the terminal set; epsilon-small attachment cannot repair a fixed positive deficit.",
+      "strongest_allowed_claim": "The three-layer evidence refutes the two named propositions. It is neither an end-to-end Lean refutation of the manuscripts nor a counterexample to Erdős #1041.",
+      "comparator_disposition": "not_comparator_priority: the isolated inequality is routine and detaches the decisive source-correspondence evidence.",
+      "ai_tool_disclosure": "AI-assisted countermodel search, source audit, Lean checking, and significance adjudication; proof, formal arithmetic, and source correspondence remain separately labelled."
+    }
+  ],
+  "self_error_repair": {
+    "what_went_wrong": [
+      "The packet paired tmp/pdfs/erdos1041-main.pdf with arXiv:2603.18757 and tmp/pdfs/erdos1041-revised.pdf with arXiv:2606.24875. Both pairings are false.",
+      "arXiv:2603.18757 is 'DA-Mamba: Learning Domain-Aware State Space Model for Global-Local Alignment in Domain Adaptive Object Detection', an unrelated computer-vision paper.",
+      "arXiv:2606.24875 is 'A Degree-Four Lemniscate Path Theorem' by Venkata Siddharth Pendyala, submitted 23 Jun 2026. It IS the quartic paper the packet described.",
+      "Claude commit 33bee21aad imported both local PDFs under annex slugs named after those false arXiv ids, hash-pinning the wrong identity into the substrate.",
+      "Claude commit 7b09f07b95 then rewrote the packet's role text for 2606.24875, which was CORRECT, to match the mislabeled file. That correction pointed the wrong way and has been reverted."
+    ],
+    "how_it_was_caught": "Reading the erdosproblems.com/1041 discussion, where Venkata Pendyala's comment of 24 Jun 2026 states the quartic result and names arXiv:2606.24875 as its preprint. That contradicted the local file, and checking the two arXiv abstract pages settled it.",
+    "lesson": "A sha256 proves a file is the file you hashed. It proves nothing about the file being the work the citation names. Source identity needs the identifier resolved against the publisher, not just the bytes pinned.",
+    "reverted_commits": [
+      "33bee21aad (annex slugs)",
+      "7b09f07b95 (packet role rewrite)"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "pendyala_2026_degree_four_lemniscate_path",
+      "citation": "Venkata Siddharth Pendyala, A Degree-Four Lemniscate Path Theorem, arXiv:2606.24875 (submitted 23 June 2026)",
+      "url": "https://arxiv.org/abs/2606.24875",
+      "verification_state": "exact_theorem_compared",
+      "annex_slug": "arxiv-2606-24875-pendyala-degree-four-lemniscate-path",
+      "annex_state": "imported_2026-07-26_from_arxiv",
+      "source_archive": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.tar.gz",
+      "source_archive_sha256": "678a6e830e1bef8fc9e64326fbb40f10616cd48c401aeee49202bc81d905d42b",
+      "extracted_markdown": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/extracted.md",
+      "extracted_markdown_sha256": "a2b0425974ef126a45a054a587da13801636ce98d552646349026955284e967c",
+      "source_pdf": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.pdf",
+      "source_pdf_sha256": "337db0cc046023b1429d9131720d199843766629cd2ad8bf8b04a40168d7bcd8",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-07-26",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 3,
+      "relationship": "the genuine degree-four case of the Erdos 1041 statement; a bounded-degree partial result, not the general problem",
+      "exact_statement_extracted": "We prove the degree-four case of a path problem of Erdos, Herzog, and Piranian. If f is monic of degree four and all zeros of f, counted with multiplicity, lie in the open unit disk, then two zeros from this list can be joined inside {z : |f(z)| < 1} by a possibly degenerate polygonal path of length less than 2.",
+      "exact_locator": "PDF p. 1, abstract; PDF p. 2, Theorem 1 and Four-point radial lemma",
+      "author_reported_formalisation": "The author states on erdosproblems.com (24 Jun 2026) that the result has been formalised and verified in Lean using the Aristotle AI based API, and that he is unsure how to share the Lean files. The Lean artefacts are NOT public, so the formalisation claim is author-reported and unverified here.",
+      "citation_eligible": true,
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "imported via annex_import --arxiv 2606.24875; arXiv served this identifier"
+    },
+    {
+      "source_id": "erdos1041_general_candidate_draft_main",
+      "citation": "shtuka, A Short Path Joining Two Zeros Inside a Polynomial Lemniscate, manuscript posted 24 March 2026",
+      "url": "https://shtuka123.github.io/1041/main.pdf",
+      "verification_state": "exact_theorem_compared_and_proposition_12_refuted",
+      "annex_slug": "erdos1041-general-candidate-draft-main",
+      "annex_state": "imported_2026-07-26_from_local_pdf",
+      "source_archive": "annexes/erdos1041-general-candidate-draft-main/source.pdf",
+      "source_archive_sha256": "8e6b34ffe34c77e35a5fd96e0d67745c00c6aa7aedba90d9c729263f99e92dee",
+      "source_pdf": "annexes/erdos1041-general-candidate-draft-main/source.pdf",
+      "source_pdf_sha256": "8e6b34ffe34c77e35a5fd96e0d67745c00c6aa7aedba90d9c729263f99e92dee",
+      "extracted_markdown": "annexes/erdos1041-general-candidate-draft-main/extracted.md",
+      "extracted_markdown_sha256": "9dd5304d6862a28af15b9ecb3880c39b9275ceeee4059eb58b1f150476b70080",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 48,
+      "exact_locator": "PDF p. 1, Theorem 1; PDF p. 16, Proposition 12 (statement of the epsilon-sharp tree budget)",
+      "relationship": "claims the FULL Erdos 1041 statement, but its load-bearing Proposition 12 epsilon-sharp root-spanning tree budget is refuted by the exact Cassini a=9/10 witness",
+      "refutation_theorem": "ErdosProblems.Erdos1041.CassiniTreeBudget.cassini_nine_tenths_falsifies_tree_budget",
+      "refutation_receipt": "state/formal_math/erdos257_period_noncollapse/erdos1041_candidate_tree_budget_source_audit_receipt.json",
+      "exact_statement_extracted": "Theorem 1. Let f(z) = prod (z - z_j) with |z_j| < 1, zeros with multiplicity. Then there exist indices i, j and a rectifiable curve gamma in Lambda_f joining z_i to z_j with len(gamma) < 2. In particular, if f is squarefree and n >= 2, the endpoints may be chosen to be distinct zeros.",
+      "assumed_input": "the Erdos-Herzog-Piranian component lemma",
+      "citation_eligible": false,
+      "citation_ineligible_reason": "The public file is pseudonymous and has no publisher-resolved author identity; preserve it as inspected candidate evidence, not citation authority.",
+      "citation_boundary": "Cite the public handle shtuka and URL only. The PDF contains no real-name author metadata, and no real-name identity is inferred.",
+      "provenance_state": "resolved_to_public_pseudonymous_manuscript",
+      "identity_resolved": "unresolved",
+      "identity_resolution_note": "Operator confirmed main.pdf as the intended file on 2026-07-28; the public URL and annex source have identical SHA-256 8e6b34ffe34c77e35a5fd96e0d67745c00c6aa7aedba90d9c729263f99e92dee."
+    },
+    {
+      "source_id": "erdos1041_general_candidate_draft_revised",
+      "citation": "A Short Path Joining Two Zeros Inside a Polynomial Lemniscate (unattributed revised draft, local PDF)",
+      "url": null,
+      "verification_state": "exact_proposition_7_compared_and_refuted",
+      "annex_slug": "erdos1041-general-candidate-draft-revised",
+      "annex_state": "imported_2026-07-26_from_local_pdf",
+      "source_archive": "annexes/erdos1041-general-candidate-draft-revised/source.pdf",
+      "source_archive_sha256": "e097cd36a24f8533e1262fa4f5998b98da2046791690737936b089078418dcbd",
+      "source_pdf": "annexes/erdos1041-general-candidate-draft-revised/source.pdf",
+      "source_pdf_sha256": "e097cd36a24f8533e1262fa4f5998b98da2046791690737936b089078418dcbd",
+      "extracted_markdown": "annexes/erdos1041-general-candidate-draft-revised/extracted.md",
+      "extracted_markdown_sha256": "f2e0105a8671e70ff5f113699634d2fbb35d3bbc8672a759523713a704aee562",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 13,
+      "exact_locator": "PDF p. 1, Theorem 1; PDF p. 6, Proposition 7 (statement of the epsilon-sharp tree budget)",
+      "relationship": "shorter revision of the same unrestricted claim (39,317 extracted chars against 136,418); its Proposition 7 repeats the main draft's epsilon-sharp root-spanning tree budget and is refuted by the same exact Cassini a=9/10 witness",
+      "refutation_theorem": "ErdosProblems.Erdos1041.CassiniTreeBudget.cassini_nine_tenths_falsifies_tree_budget",
+      "refutation_receipt": "state/formal_math/erdos257_period_noncollapse/erdos1041_candidate_tree_budget_source_audit_receipt.json",
+      "citation_eligible": false,
+      "citation_ineligible_reason": "same unresolved provenance as the main draft",
+      "provenance_state": "unresolved",
+      "identity_resolved": "unresolved",
+      "identity_resolution_note": "local PDF with no author and no publisher identifier; same failure as the main draft"
+    },
+    {
+      "source_id": "erdos_herzog_piranian_1958_metric_properties",
+      "citation": "P. Erdős, F. Herzog, and G. Piranian, Metric properties of polynomials, Journal d'Analyse Mathématique 6 (1958), 125-148, DOI 10.1007/BF02790232; Problem 5 appears on printed p. 139",
+      "url": "https://doi.org/10.1007/BF02790232",
+      "verification_state": "exact_theorem_compared",
+      "annex_slug": "erdos-herzog-piranian-1958-metric-properties-of-polynomials",
+      "annex_state": "imported_2026-07-28_from_publisher_pdf",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "source_pdf": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_pdf_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-07-28",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 24,
+      "relationship": "origin of the problem AND of the component lemma every candidate assumes; erdosproblems.com states EHP proved that the set always has a connected component containing at least two zeros",
+      "citation_eligible": true,
+      "load_bearing": true,
+      "exact_locator": "printed p. 139 (PDF page 15): the paragraph immediately before Problem 5 states that one component of E contains at least two zeros; Problem 5 asks whether two zeros can be joined within E by a path of length less than 2",
+      "bibliography_erratum": "The main manuscript and the inherited route gave 123-148. The Springer record and publisher PDF establish 125-148.",
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "Springer article record and publisher PDF verified on 2026-07-28; DOI, authors, volume, and page range agree."
+    },
+    {
+      "source_id": "ghosh_ramachandran_2024_lemniscate_components",
+      "citation": "S. Ghosh and K. Ramachandran, Number of components of polynomial lemniscates: a problem of Erdos, Herzog, and Piranian, J. Math. Anal. Appl. 540 (2024), no. 1, 128571; preprint arXiv:2312.13673",
+      "url": "https://arxiv.org/abs/2312.13673",
+      "verification_state": "primary_pdf_read_exact_theorem_compared",
+      "annex_slug": "arxiv-2312-13673-ghosh-ramachandran-lemniscate-components",
+      "annex_state": "imported_2026-07-26_from_arxiv",
+      "relationship": "modern treatment of the same EHP lemniscate problem, cited by both local drafts; concerns the NUMBER of components rather than path length, so it is adjacent context and not a direct antecedent of the short-path claim",
+      "citation_eligible": true,
+      "newly_found": "not present in the research packet; recovered from the drafts' bibliographies during this pass",
+      "source_archive": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/source.tar.gz",
+      "source_archive_sha256": "a268c507940ecb010ef42053181d67e6bd8cced4ab7bb7c0e2dd0f1cd1cafa75",
+      "source_pdf": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/source.pdf",
+      "source_pdf_sha256": "c8eade14d4e393452031206cf09e52031616127fc3153e1c8e0dd9a2fc89ee9a",
+      "extracted_markdown": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/extracted.md",
+      "extracted_markdown_sha256": "b7a05a20f6f9fc086f3fab17211f81823ff474a5977542e5e17b04c20a1a094c",
+      "pdf_url": "https://arxiv.org/pdf/2312.13673",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 20,
+      "exact_locator": "PDF p. 1, abstract; PDF p. 3, introductory answer to Question 1.2; PDF p. 3, Theorem 2.1(a)-(c)",
+      "exact_statement_extracted": "For monic degree-n polynomials whose zeros lie in a compact K, the paper defines the maximal component count C_n(K) and proves M(K)<1 when 0<c(K)<1, M(K)=1 when c(K)>=1, and C_n(K)=1 for every n when K is connected with c(K)<=1/4; it also records the positive liminf result under the stated regularity and capacity hypotheses.",
+      "supports": "Primary-source context for the component-count problem and its capacity-dependent results, not a root-to-root path-length theorem.",
+      "does_not_support": "The Erdős #1041 path-length conclusion, the constant-2 root-pair bound, or any Lean/formal verification claim.",
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "The arXiv abstract page and v1 PDF were opened and compared on 2026-08-26; title, authors, version, date, theorem statement, and page locators agree."
+    },
+    {
+      "source_id": "pendyala_2026_shortest_path_zero_to_boundary",
+      "citation": "Venkata Siddharth Pendyala, Shortest paths in polynomial lemniscate sublevel sets and a problem of Erdős, arXiv:2606.19178v1 (submitted 17 June 2026)",
+      "url": "https://arxiv.org/abs/2606.19178",
+      "pdf_url": "https://arxiv.org/pdf/2606.19178",
+      "verification_state": "primary_pdf_read_exact_theorem_compared",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "exact_locator": "PDF p. 1 abstract; PDF p. 2, Theorem 1.2 and the introductory definition of S(n); PDF pp. 1-2 distinguish the zero-to-boundary functional from neighboring lemniscate questions",
+      "exact_statement_extracted": "For monic degree-n polynomials with zeros in the closed unit disk, S(n) is the supremal shortest path length from 0 to the unit circle inside the normalized sublevel set; Theorem 1.2 proves c sqrt(log n) <= S(n) <= pi n for all sufficiently large n and hence S(n) tends to infinity.",
+      "relationship": "Adjacent but distinct path functional: it joins 0 to the unit circle, not two roots of a polynomial as in Erdős #1041.",
+      "supports": "An independently authored, primary-source result on polynomial lemniscate path geometry and the exact zero-to-boundary normalization.",
+      "does_not_support": "The root-to-root Erdős #1041 conclusion, the unrestricted constant-2 theorem, any claim that #1041 is solved, or a Lean/formal verification claim.",
+      "citation_eligible": true,
+      "identity_resolved": "resolved_against_arxiv",
+      "identity_resolution_note": "The arXiv abstract and v1 PDF were opened and compared on 2026-08-26; title, author, version, date, theorem statement, and page locators agree."
+    }
+  ],
+  "public_dispute_record": {
+    "verified_at": "2026-07-28",
+    "verified_by": "codex_root via live Chrome read of erdosproblems.com",
+    "problem_status": "OPEN. The page carries the FALSIFIABLE tag ('Open, but could be disproved with a finite counterexample') and states that the open status reflects the current belief of the site owner. Last edited 06 December 2025.",
+    "claimed_proofs_on_site": 0,
+    "comment_count": 47,
+    "formalised_statement": "https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/1041.lean",
+    "the_gap": {
+      "found_by": "Nat Sothanaphan, 18:49 on 27 Apr 2026, running a standard check with GPT-5.5",
+      "target": "the GPT-5.4 solution announcement posted by kasko37 on 22 Apr 2026 (Overleaf link)",
+      "statement": "In proof of Lemma 6, the subharmonicity is oddly applied to conclude |phi'(r)| <= (1/2pi) * integral_0^{2pi} |phi'(r e^{i theta})| d theta. The left-hand side should be at the circle centre, i.e. |phi'(0)|.",
+      "assessment": "GPT's opinion is that this is not easily repairable.",
+      "independent_corroboration": "Ho Boon Suan had earlier messaged the same exact gap independently.",
+      "note": "This gap is against the April GPT-5.4 claim. It is NOT established here that it is the same gap as any defect in the local drafts."
+    },
+    "expert_assessment_of_a_general_draft": {
+      "by": "Terence Tao, 20:48 on 24 Mar 2026, on the draft posted by user 'shtuka'",
+      "verdict": "willing to rate the argument as plausibly correct",
+      "caveat": "with regards to publication-level quality of exposition and literature review the manuscript still needs a lot of work, tied to the tendency of current-level AI writing to dwell on routine results, often without citing relevant literature, and not emphasise high-level structure",
+      "structure_named": "four key results, the first being the EHP component lemma (at least one component U with two or more zeros)"
+    },
+    "prior_art_debt_mechanism": {
+      "source": "the draft author 'shtuka', 23:38 on 24 Mar 2026",
+      "statement": "the missing citations are attributed to having told GPT not to search the internet, because without that instruction the model tends to see the problem is open and give up rather than attempt it",
+      "why_this_matters": "This is a causal mechanism for prior-art debt, not carelessness. The prompt strategy that makes a model attempt an open problem is the same one that strips its literature awareness, so uncited rediscovery is a predictable by-product of how the candidate was produced rather than an oversight to be scolded. Any producer using that strategy owes an explicit literature pass afterwards."
+    },
+    "site_affordance_worth_noting": "Every post carries a first-class 'This post looks like it contains undisclosed AI' flag alongside like and needs-update flags, so AI disclosure is a structural feature of the forum rather than a convention."
+  },
+  "public_claim_boundary": {
+    "proof_authority": "not_accepted",
+    "publication_effect": "none",
+    "non_claims_preserved": [
+      "not_an_erdos_1041_solution",
+      "not_a_counterexample_to_the_erdos_1041_statement",
+      "not_a_claim_that_the_degree_four_result_bears_on_the_general_problem",
+      "not_a_real_name_attribution_for_the_pseudonymous_shtuka_manuscript",
+      "not_a_verification_of_the_author_reported_Lean_formalisation_of_the_quartic_case"
+    ],
+    "forbidden_until_exact_comparison": [
+      "cite either local draft as an arXiv paper or infer a real-name author for shtuka",
+      "describe Erdos 1041 as solved or as having a claimed proof on erdosproblems.com",
+      "attribute the Erdos-Herzog-Piranian component lemma to any candidate; all of them assume it",
+      "treat the Lemma 6 subharmonicity gap as applying to the local drafts without checking"
+    ]
+  },
+  "release_topology_link": {
+    "public_prior_art_policy_owner": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+    "claim_contract_row": "codex/standards/std_microcosm.json::formal_math_claim_assurance_contract::rows[problem_id=erdos_1041]"
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_source_identity_or_general_proof_change",
+    "priority_order": [
+      "new publisher-resolved general proof or correction to either pseudonymous draft",
+      "independent check of the reported quartic Lean formalisation if its artefacts become inspectable",
+      "direct comparison of any future general proof with the Cassini tree-budget falsifier"
+    ],
+    "lane": "re-enter only when a source identity, inspectable proof artefact, or load-bearing proposition changes; do not reopen the refuted tree-budget route by prose variation"
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "#1041 source-identity reconciliation plus route-killing metric budget audit",
+    "disposition": "consolidate the source audit and Cassini falsifier as one failure/boundary object beneath the positive metric theorem stack; do not create a parallel general-proof card",
+    "evidence_class": "publisher/arXiv-resolved source identities, source-inspected pseudonymous drafts, exact ordinary Cassini calculation, and Lean-checked finite countermodel",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why the epsilon-sharp root-spanning budget is not a safe route",
+      "supersession_or_consolidation": "Use the existing cassini_coarea_tree_budget_falsifier card as the single mathematical witness; retain this route for provenance, attribution, and draft-status context."
+    },
+    "human_understanding_delta": "A reader can separate the original EHP problem, the genuine degree-four result, the unattributed general drafts, and the exact defect in their shared budget premise without mistaking any one for a general solution.",
+    "expert_attention_reason": "The scarce review act is source-and-premise verification: a false load-bearing budget can make an apparently complete proof irrelevant before the endpoint geometry is considered.",
+    "open_boundary": "Erdős #1041 remains open; a future publisher-resolved general proof must survive the Cassini witness and independently justify its own metric budget."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos1041_lemniscate_short_path@CassiniTreeBudget-8c16aac6-packet-c8031c94-card-a39ae9bf",
+    "source_version_binding": {
+      "lean_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CassiniTreeBudget.lean",
+        "commit": "8c16aac691ddb11f8322bfcff8dfda5ba62eeb25",
+        "sha256": "58b9e3c200fa99b76271f160ef2d6e8e55698310ea7cd6cb9965f1d4a52269c7"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+        "commit": "c8031c94ec2e1833cb59ed8555655c4211535adc",
+        "sha256": "7fc3b7e8d23a08b521df3c538f2eb426b5ead959525f1a6b6ad96912d937f36d",
+        "source_result_ids": [
+          "cassini_tree_budget_falsifier",
+          "cassini_positive_attachment_deficit",
+          "cassini_no_uniform_length_slack"
+        ]
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/cassini_coarea_tree_budget_falsifier.card.json",
+        "commit": "a39ae9bf971a4981b5f21db69fdb536f170c586b",
+        "sha256": "8ff6dfdcf7c563dd6b7929e3d916fb5d7f1d2e3c347052b5654373b09ad1f7e8"
+      },
+      "parity_status": "Lean source, packet rows, and canonical Cassini card are source-current; ordinary coarea and draft correspondence remain separately labelled."
+    },
+    "evidence_class": "Exact source-identity audit plus Lean-checked Cassini countermodel; the general drafts are inspected but not accepted proof authorities, and the quartic Lean claim is author-reported and unverified here.",
+    "prior_art_assessment": {
+      "confidence": "high for the EHP/Pendyala/Ghosh--Ramachandran attribution split and Cassini proposition correspondence; no priority claim",
+      "closest_primary_sources": [
+        "Erdős--Herzog--Piranian (1958), Metric properties of polynomials, Problem 5 and the component lemma (publisher-resolved)",
+        "Ghosh--Ramachandran (2024), component-count treatment of the same lemniscate problem (adjacent, not a path-length antecedent)",
+        "Pendyala (2026), A Degree-Four Lemniscate Path Theorem, arXiv:2606.24875 (genuine bounded-degree result)"
+      ],
+      "attribution_boundary": "The two general drafts remain pseudonymous or locally unattributed; cite their public handles only, and do not infer a real-name author or publisher status.",
+      "disconfirming_evidence": "The exact a=9/10 Cassini witness falsifies the shared epsilon-sharp tree-budget propositions; this is a route falsifier, not a counterexample to the EHP statement."
+    },
+    "mathematical_delta": {
+      "one_sentence": "The route establishes a source-faithful boundary: two apparent general proofs rely on a common metric budget that an exact Cassini example disproves, while the original problem and genuine quartic result remain distinct.",
+      "genuinely_hard_step": "Matching the exact named draft propositions to the Lean Cassini witness while preserving the difference between a false proof premise and the still-open target theorem.",
+      "why_care": "It prevents expert attention being spent polishing a refuted route and makes the remaining geometric bottleneck legible.",
+      "natural_friction": "The source audit cannot certify an unknown future proof; the quartic formalisation is not independently inspectable, and the general drafts are not citation-grade authorities."
+    },
+    "comparison_relation": "source_identity_reconciliation_plus_route_killing_metric_countermodel",
+    "disconfirming_evidence": "The Cassini straight chord remains a valid path of length below two, so the witness is not a counterexample to #1041; the source audit cannot certify an unknown future proof.",
+    "confidence_ceiling": "High for the source-identity split and named-budget refutation; modest for standalone novelty; no priority, complete-manuscript, quartic-formalisation, or #1041 claim.",
+    "hard_step": "Match the ordinary coarea normalization and exact proposition dependence to the Lean Cassini witness without overextending the no-go to other budgets.",
+    "open_boundary": "Erdős #1041 remains open; replacement coarea budgets, contained connectors, and independent verification of the quartic formalisation remain unresolved.",
+    "bounded_expert_act": "Verify the Cassini inequality, named proposition correspondence, and the separation of surviving direct/constant-factor routes from the refuted budget.",
+    "reentry_trigger": "Reopen only when a source identity, inspectable proof artefact, corrected load-bearing proposition, or independent quartic verification changes.",
+    "claim_ceiling": {
+      "strongest_allowed": "The named epsilon-sharp tree-budget propositions in the inspected drafts are refuted by an exact Cassini witness, and the source identities/attributions are reconciled; #1041 itself remains open.",
+      "rejected_stronger": [
+        "Erdős #1041 is solved or disproved",
+        "the Cassini witness is a counterexample to the target statement",
+        "the pseudonymous drafts are publisher-accepted or real-name attributed",
+        "the author-reported quartic Lean formalisation is verified here"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "A_route_killing_boundary",
+      "comparator_advisory": "No independent Comparator interface for this provenance route; retain the existing exact Cassini falsifier as the auditable proposition.",
+      "absolute_frontier_shortlist": "do_not_admit; preserve as a demoted route-killing boundary beneath the positive #1041 metric stack",
+      "expert_review_act": "Check the Cassini inequality and proposition-number correspondence, then inspect any future publisher-resolved general proof against the same budget failure before discussing endpoint progress.",
+      "reentry_condition": "Reopen only when a source identity, inspectable proof artefact, corrected load-bearing proposition, or independent verification of the quartic formalisation changes."
+    }
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source_identity_reconciliation_and_exact_countermodel_adjudication",
+    "output_stage": "human_review_and_claim_boundary_support",
+    "artifact": "Erdős #1041 lemniscate short-path prior-art map",
+    "human_understanding_delta": "The original EHP problem/component lemma, the genuine degree-four result, the two pseudonymous general drafts, and the Cassini refutation of their tree-budget premise are separated without treating any as a general solution or as a verified Lean formalisation.",
+    "verification_state": "Publisher/arXiv identities and hashes are bound; the Cassini witness is exact and Lean-checked; the quartic Lean claim is author-reported and unverified here; the general drafts remain source-inspected but pseudonymous.",
+    "publication_or_review_state": "Internal prior-art and method-boundary support only; no public proof, priority, or acceptance claim.",
+    "canonicalization_state": "One countermodel/source-identity mechanism retained; no duplicate general-proof or degree-four endpoint card is created.",
+    "unresolved_downstream_bottleneck": "An inspectable, publisher-resolved general proof—or a verified correction—must survive the Cassini budget boundary before any #1041 endpoint narrative changes.",
+    "next_stage_owner": "Novelty Observatory on changed source evidence; Mathematics Refinery for any consolidation; Role 3 for release topology."
+  }
+}

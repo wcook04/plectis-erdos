@@ -1,0 +1,207 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "denominator_resonant_free_pair_tail_law",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_rational_binary_tail_periodicity_with_source_specific_free_pair_consumer_refinement",
+  "problem_id": "erdos_251",
+  "purpose": "Classify the tail congruence as standard rational-radix arithmetic, isolate the free-pair and integer-free-window refinements as consumer improvements, and preserve the open existence problem.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/denominator_resonant_free_pair_tail_law.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/FreePairStateCompressionLab.md",
+    "source_result_id": "free_pair_shift_and_redundant_plus_minus_two_wall"
+  },
+  "review_unit": {
+    "result_family": "erdos251_denominator_resonant_free_pair_tail_law",
+    "exact_result_id": "free_pair_shift_and_redundant_plus_minus_two_wall",
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/FreePairStateCompressionLab.md",
+      "formal_source_commit": "2118250931477b4b8a2ced4f081bb0e69e55e34c",
+      "formal_source_sha256": "59b514def741d7d07c4dd4fcd8d74d9f09732ac75a37c83cbde48cea5562cdd8",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json",
+      "research_packet_sha256": "a1af16f396668db8fbe710255eee90f6e15464b903d49e04fc4a5cfa53438480",
+      "reviewer_card": "docs/formal_math/reviewer_cards/denominator_resonant_free_pair_tail_law.card.json",
+      "reviewer_card_commit": "af369fa95c4ca33c6abf9b4dd3c9411e86e9a432",
+      "formalization_scope": "ordinary_source_algebra_no_Lean_anchor"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine rational-radix denominator clearing and multiplicative-order periodicity, with a material semantic correction from fixed-offset correlation to an arbitrary resonant pair.",
+    "slow_down_at": "Check the lower-index threshold, the quantifier over every same-order-residue pair, and the asymmetry between conditional integrality under rationality and the missing nonintegral-pair producer. Repeated states or finite scans do not supply the contradiction.",
+    "automation_can_establish": [
+      "Source/hash and research-packet parity",
+      "The displayed denominator-resonant algebra and finite state-compression bookkeeping",
+      "That no Lean, cofinal prime-gap, or finite-scan extrapolation claim is present"
+    ],
+    "human_judgment_required": [
+      "Whether the displayed tail congruence is adequately described by standard rational-radix periodicity and carry language",
+      "Whether the free-pair consumer is genuinely weaker than the retired fixed-offset route after notation translation",
+      "Which actual consecutive-prime theorem could force a nonintegral resonant pair cofinally"
+    ],
+    "review_act": "One bounded expert act: verify the classical periodicity attribution and the exact quantifier transfer, then redirect attention to a prime-specific resonant-pair producer rather than another fixed-offset search."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#251 rational-tail arithmetic: multiplicative-order congruence, free resonant pairs, and carry-state consumers",
+    "disposition": "subordinate_under_prime_gap_dyadic_summation_entry_and_consolidate_consumer_variants",
+    "consolidation_relation": "Keep this as the single conditional free-pair interface; fold fixed-offset, zero-window, and redundant plus/minus-two language beneath it, with finite measurements retained only as diagnostics.",
+    "comparator_advisory": "No independent Comparator proposition interface is justified beyond the status-tagged source card: the theorem is ordinary conditional arithmetic and its value is the residual correction, not a new endpoint proposition.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "The tail recurrence and integral shifts",
+      "supersession_or_consolidation": "Use once beneath the #251 summation-by-parts entry; retire separate fixed-offset and second-mismatch narratives.",
+      "reason": "It tells the reader exactly what rationality gives and what remains hard: find a cofinal nonintegral difference among denominator-resonant consecutive-prime indices."
+    }
+  },
+  "classification": {
+    "ambient_framework": "rational radix expansions, multiplicative order, and integral carry recurrences",
+    "free_pair_integrality": "standard_two_index_consequence_of_rational_binary_tail_periodicity",
+    "state_compression": "elementary_lattice_spacing_and_pigeonhole_counting",
+    "consumer_refinement": "source_specific_relaxation_from_fixed_offset_to_arbitrary_resonant_pair",
+    "priority_claim": "none",
+    "recommended_terminology": "multiplicative-order tail congruence",
+    "acceptable_alias": "denominator-resonant free-pair law",
+    "attribution": "Attribute the underlying mechanism to standard rational-radix periodicity and the classical product-denominator carry framework. Credit the local card only for recognizing the weaker pair-selection condition needed by the #251 consumer and separating the integer-free-window route from the zero mismatch artifact.",
+    "mathematical_interest": "The theorem is elementary, but the residual correction is material: a bounded-distance prime-gap correlation is not required; any two useful indices in the same denominator class suffice.",
+    "reusable_scope": "Integer-digit radix tails under a rationality hypothesis, with the denominator period taken in the unit part of the denominator.",
+    "why_it_matters": "It prevents proof search from targeting an unnecessarily strong fixed-offset correlation theorem."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_straus_1974_irrationality_series",
+      "title": "On the irrationality of certain series",
+      "authors": ["Paul Erdős", "Ernst G. Straus"],
+      "venue": "Pacific Journal of Mathematics 55 (1974), 85-92",
+      "doi": "10.2140/pjm.1974.55.85",
+      "url": "https://msp.org/pjm/1974/55-1/pjm-v55-n1-p08-s.pdf",
+      "exact_anchor": "Section 2, Theorem 2.1 and equation (2.4): rational product-denominator series are characterized by an eventual integer carry relation under tail smallness.",
+      "supports": "The broader classical integral-carry framework containing the dyadic tail calculation.",
+      "does_not_support": "The #251 free-pair consumer, prime-gap state compression, or existence of a nonintegral resonant pair."
+    },
+    {
+      "id": "wang_2026_positive_dyadic_density",
+      "title": "Positive dyadic density for rational weighted binary expansions",
+      "author": "Han Wang",
+      "venue": "arXiv:2606.24972v2 (2026)",
+      "url": "https://arxiv.org/abs/2606.24972",
+      "local_pdf": "annexes/arxiv-2606-24972v2-han-wang-positive-dyadic-density/source.pdf",
+      "local_pdf_sha256": "c0b75ab662c82026b67ac0ce781c25f7d2f80e12c4b5cb6d63557add35a3ff25",
+      "pdf_pages": 32,
+      "extracted_markdown": "annexes/arxiv-2606-24972v2-han-wang-positive-dyadic-density/extracted.md",
+      "extracted_markdown_sha256": "8ff9b479acd06c4f70dfe059fcf7fef43d17a9c7182aaa9b4b83c585f74067ef",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_anchor": "Section 3.1, Proposition 3.1 (printed page 5): rationality yields an integral linearly bounded cleared tail satisfying a binary affine recurrence.",
+      "supports": "A recent explicit integral-tail-state formulation for rational weighted binary expansions.",
+      "does_not_support": "The particular two-index congruence packaging or the #251 prime-gap application."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_periodicity": "Writing the denominator as 2^sigma d with d odd, powers of 2 repeat modulo d with period ord_d(2).",
+    "free_pair_consequence": "If M and N share that residue class after the 2-part is cleared, the fractional parts of the two cleared tails agree, so their difference is integral.",
+    "local_improvement": "The consumer may choose M and N freely inside one residue class; it need not establish a single bounded shift that works cofinally.",
+    "remaining_throat": "One still must produce a resonant pair whose tail difference lies outside the integers."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "rational binary expansion tail multiplicative order denominator",
+      "rational weighted binary expansion integral carry tail",
+      "product denominator series integer recurrence rationality",
+      "same residue class multiplicative order tail difference integer"
+    ],
+    "result": "The arithmetic mechanism is standard rational-radix periodicity and appears within the broader integral-carry literature. No distinct named theorem is warranted for the two-index subtraction.",
+    "boundary": "The phrase 'free-pair' is defensible only as project-facing consumer terminology, not as a novelty claim."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos251_denominator_resonant_free_pair_tail_law@formal-2118250931-card-current",
+    "evidence_class": "Direct ordinary proof of rational dyadic-tail congruence with a conditional state-compression corollary; Erdős--Straus and Wang are primary-source context, not proof of the prime-gap producer.",
+    "closest_known_result": "Erdős--Straus (1974), Theorem 2.1, supplies the broader product-denominator integral-carry framework; Wang (2026), Proposition 3.1, gives an explicit rational weighted-binary integral tail state. The local free-pair congruence is an immediate two-index consequence of this standard periodicity.",
+    "comparison_relation": "Standard rational-radix periodicity and carry arithmetic, with a source-specific correction that the #251 consumer needs arbitrary same-order-residue pairs rather than a fixed offset.",
+    "exact_delta": "The route removes an unnecessary bounded-distance correlation requirement and identifies integer-free windows as eliminating the auxiliary zero-mismatch condition; it does not produce the required nonintegral pair.",
+    "disconfirming_evidence": "Repeated or equal rational tail states yield zero differences; finite prime-gap scans do not establish cofinality; no source theorem forces a nonintegral resonant pair in the actual consecutive-prime tail.",
+    "confidence": {
+      "level": "high_for_direct_congruence_and_standard_attribution_medium_for_consumer_value_low_for_prime_specific_producer",
+      "basis": "Source, card, and packet hashes are recorded; the arithmetic is explicit, while the producer needed by #251 remains absent."
+    },
+    "significance": "Material proof-strategy correction with low standalone novelty: it converts a fixed-offset correlation search into a freer denominator-resonant hitting problem and preserves the exact missing throat.",
+    "claim_ceiling": "Under rationality, every sufficiently late pair in one multiplicative-order residue class has integral tail difference. No cofinal prime-gap correlation, nonintegral-pair existence, irrationality, or priority claim.",
+    "hard_step": "Use consecutive-prime arithmetic to force a cofinal denominator-resonant pair whose tail difference is nonintegral.",
+    "open_boundary": "The prime-specific producer and Erdős #251 remain open; state compression and finite scans cannot substitute for it.",
+    "bounded_expert_review_act": "Verify the lower-index threshold and two-index quantifier against the source, then assess one actual prime-gap producer candidate without re-opening fixed-offset scans.",
+    "reentry_trigger": "Re-enter on source/card/packet generation changes, a stronger rational-tail theorem, or a genuine cofinal nonintegral resonant-pair argument.",
+    "source_generation_binding": {
+      "formal_source_commit": "2118250931477b4b8a2ced4f081bb0e69e55e34c",
+      "formal_source_sha256": "59b514def741d7d07c4dd4fcd8d74d9f09732ac75a37c83cbde48cea5562cdd8",
+      "research_packet_sha256": "68a0fba54c8237cf18209feafc39bb81fcb71801eec279ab0f919111642ea1ef",
+      "reviewer_card_sha256": "50055a2a926d7cd6df9199b3e3828689587ac1b263d54b7764978dd39eb8d27a",
+      "parity_status": "source, packet, and card hashes current at adjudication; no Lean anchor asserted"
+    },
+    "classification": {
+      "result_family": "erdos251_rational_tail_resonance",
+      "evidence_class": "ordinary_exact_rational_tail_algebra_with_conditional_counting_consumer",
+      "closest_prior_art": "Erdős--Straus 1974 integral-carry framework and Wang 2026 rational weighted-binary tail state",
+      "comparison_relation": "Standard core with source-specific free-pair consumer refinement; no priority claim",
+      "novelty_confidence": "strong_internal_provisional_case_for_consumer_correction_only",
+      "significance_grade": "high_route_guidance_low_standalone_novelty",
+      "why_care": "It prevents the proof fleet spending effort on a fixed offset that the rationality implication never requires.",
+      "hard_step": "Find a cofinal nonintegral difference in the required denominator-resonant class for actual consecutive-prime gaps.",
+      "natural_friction": "Rationality forces resonant differences to be integral, so abundance of pairs is not itself a contradiction.",
+      "disconfirming_evidence": "Finite scans and repeated states provide no cofinal nonintegral pair.",
+      "confidence_ceiling": "High for the direct law; low for the missing prime producer; no official novelty or endpoint claim.",
+      "bounded_expert_act": "Check the congruence quantifiers and review one producer route.",
+      "reentry_condition": "Source/card/packet change or a genuine producer theorem."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "actual consecutive-prime gap tails, radix recurrences, and carry obstructions",
+      "disposition": "subordinate_under_prime_gap_dyadic_summation_and_consolidate_fixed_offset_variants",
+      "paper_disposition": "supporting_lemma",
+      "paper_target_section": "The tail recurrence and integral shifts",
+      "supersession_relation": "Supersede fixed-offset and redundant ±2 consumer fragments; retain one free-pair statement and its integer-free-window boundary.",
+      "independent_comparator_interface_justified": false,
+      "comparator_scope": "No independent interface beyond the existing #251 reformulation; this ordinary conditional lemma is a paper-level route correction.",
+      "expert_attention_reason": "Its value is redirecting scarce proof effort toward the actual cofinal producer, not adding another theorem count."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "2118250931477b4b8a2ced4f081bb0e69e55e34c",
+      "formal_source_sha256": "59b514def741d7d07c4dd4fcd8d74d9f09732ac75a37c83cbde48cea5562cdd8",
+      "research_packet_sha256": "68a0fba54c8237cf18209feafc39bb81fcb71801eec279ab0f919111642ea1ef",
+      "reviewer_card_sha256": "50055a2a926d7cd6df9199b3e3828689587ac1b263d54b7764978dd39eb8d27a"
+    },
+    "claim_guard": "This snapshot covers only the rational-tail congruence and conditional consumer correction; no prime-gap producer or irrationality claim is included.",
+    "reentry_trigger": "Re-enter on source, packet, card, or prime-specific producer changes."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Under rationality, tail differences are integral for any two sufficiently late indices congruent modulo the multiplicative order of 2 in the odd denominator part; this relaxes the #251 consumer from fixed offsets to free resonant pairs.",
+    "forbidden_wording": [
+      "The project discovered rational-radix periodicity.",
+      "A suitable nonintegral resonant pair is known to exist cofinally.",
+      "State compression proves irrationality.",
+      "The result implies a new prime-gap distribution theorem.",
+      "This solves Erdős #251."
+    ],
+    "nonclaims": ["not_a_priority_claim", "not_a_prime_gap_theorem", "not_a_pair_existence_theorem", "not_an_irrationality_theorem", "not_erdos_251_solution"]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/denominator_resonant_free_pair_tail_law.card.json",
+      "effect": "Replace pending novelty language with standard radix-periodicity attribution and isolate the consumer-side delta."
+    },
+    {
+      "consumer": "Erdos #251 proof fleet",
+      "effect": "Search for arbitrary denominator-resonant nonintegral pairs rather than a fixed bounded offset."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as a correction to the proof residual, not a new radix-expansion theorem."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_prime_specific_resonant_pair_producer_or_source_generation_change",
+    "reentry_condition": "Re-enter only if the source/card generation changes, a primary source supplies a materially stronger rational-tail theorem, or an actual consecutive-prime argument forces nonintegral resonant differences cofinally.",
+    "do_not_redo": "Do not repeat rational-radix periodicity, finite state-compression counts, fixed-offset searches, or finite residue scans; those boundaries are settled.",
+    "open_bottleneck": "The missing input is prime-specific and cofinal: a denominator-resonant pair with certified nonintegral tail difference.",
+    "owner": "#251 proof owners for the arithmetic producer; Mathematics Refinery for paper consolidation; Novelty Observatory only on changed source or attribution."
+  }
+}

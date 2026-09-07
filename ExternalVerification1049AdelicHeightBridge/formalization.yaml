@@ -1,0 +1,293 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #1049: exact first transformed Zudilin row and the 2^64 < 3^41 < 2^65 bracket"
+  description: >-
+    In every column l, the first transformed normalised Zudilin row v*_(l+1) - v*_l has
+    order exactly l+1 and coefficient exactly -6 at that order. The two-sided integer
+    certificate 2^64 < 3^41 < 2^65 is exact, 65 cannot be replaced by 64, and every constant
+    below descends from it. Uniformly over the entire admissible rectangular Hermite–Padé
+    exponent cone, meaning every rho ≥ 0 and every sigma ≥ 1 + rho, the achievable threshold
+    stays more than 3/13 below log 2 / log 3, so no exponent choice in that cone buys enough
+    decay for the coefficient growth it pays. The cubic Hankel determinant accumulates a raw
+    denominator power 4N^3 - 3N^2, of which more than 39/41 must be cleared because the
+    surviving charge threshold (log 3 / log 2 - 1)/3 lies below 8/41, and three natural
+    producers fail that requirement for every admissible N: the source scalar content of
+    degree at most N^3 - N, the scalar content together with the universally forced
+    first-order residual border of combined degree at most 2N^3 - N, and the positive scalar
+    ray C1 ≥ 2 C0, which misses by the fixed relative margin 17/41. At bottom depth 41T any
+    130T + 2S binary forms contain two distinct selectors with the same four-jet signature,
+    130 is exactly optimal at T = 1 since 2^(129 + 2S) is strictly below the number of
+    signatures, and a general bounded-fibre pigeonhole converts such a collision into an
+    escape from the remainder nullspace whenever equal remainders occur with multiplicity at
+    most k and the signature count times k is below the number of selectors. For anyone
+    building Hermite–Padé or q-Apéry approximations to the Lambert value at 3/2, the
+    consequence is that a successful family must carry cancellation absent from the scalar
+    and border models, and that reaching the nullspace escape by this counting route needs
+    at least 130 + 2S forms at bottom depth 41; the ancestry is the classical rectangular
+    Hermite–Padé threshold, and priority for these certificates is unassessed. Transformed
+    rows j ≥ 2, the all-rank normalised-Hankel order and leading-coefficient theorem, the
+    construction of an approximation family, a remainder-fibre bound for one, analytic
+    decay, and irrationality at 3/2 remain open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1049AdelicHeightBridge/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1049AdelicHeightBridge/formalization.yaml"
+  repository_scope: "private_source_with_public_paper_source_registration_pending"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "source_challenge_solution_focused_build_and_serialized_replay_passed"
+  research_interest_status: "all_column_first_transformed_row_plus_sharp_exact_obstruction_family"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "terminal positive and deliberate-negative Comparator receipts pending"
+    - "public Lean source and portfolio-ledger registration pending"
+    - "public immutable source identity pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11J82"]
+
+sources:
+  - title: "Adelic height bridge for Erdős Problem #1049"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1049"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1049"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Exact all-column initial monomial for transformed row j=1, plus arithmetic
+    exclusions and finite collision/escape interfaces at 3/2. Transformed
+    rows j>=2, the full all-rank normalized-Hankel equality, an approximation
+    family, an actual remainder-fibre bound, analytic decay, and irrationality
+    remain outside this Comparator claim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 11
+  axiom_audit_status: "passed_exact_propext_Quot_sound_Classical_choice"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_authored_wrapper_focused_build_serialized_replay_and_axiom_audit_passed"
+      source_declaration: "ErdosProblems.Erdos1049.zudilinTransformedNormalizedMoment_one_initialMonomial"
+      source_file: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "unconditional all-column first transformed-row initial monomial"
+      paper_result_label: "res:zudilin-sharp-qorder"
+      paper_boundary_label: "sec:hankel-order"
+      boundary: >-
+        Exact only for transformed row j=1. Rows j>=2 and the paper's full
+        all-rank normalized-Hankel order and leading-coefficient theorem remain
+        outside this Comparator declaration.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "sharp 41/65 upper power certificate"
+      boundary: "An arithmetic certificate, not an irrationality result."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "sharp 41/65 lower power certificate"
+      boundary: "Establishes the sharp rational scale; unit-block rank optimality uses a separate integer comparison."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "uniform rectangular Hermite--Pade gap"
+      boundary: "Only the explicit admissible exponent model is excluded."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "cubic Hankel charge ceiling"
+      boundary: "Does not prove a determinant valuation or decay estimate."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "Zudilin scalar-content no-go"
+      boundary: "Conditional on the explicit source-facing degree ceiling."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "Zudilin scalar-plus-border no-go"
+      boundary: "Higher residual valuations and determinant cancellation remain open."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "quantitative scalar-ray margin"
+      boundary: "Excludes the source scalar cone, not all coefficient constructions."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "rank-41 four-jet collision threshold"
+      boundary: "Kernel existence only; polynomial-pair and analytic nonvanishing are not proved."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact unit-block rank optimality"
+      boundary: "Exact optimality is asserted only for T=1, not every block multiple."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt"
+      file: "ExternalVerification1049AdelicHeightBridge/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049AdelicHeightBridge/comparator.json"
+      canonical_claim_status: "source_proved_exact_transport_focused_build_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      novelty_status: "unassessed"
+      contribution_class: "bounded-fibre escape pigeonhole"
+      boundary: "No remainder-fibre bound for an actual approximation family is supplied."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The challenge reproduces the normalized-moment, height, and four-jet
+    definitions and copies eleven source endpoint types. It exposes only the
+    first transformed row of the staged normalized-Hankel theorem and adds no
+    all-rank claim, analytic family construction, remainder-fibre estimate, or
+    irrationality statement.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Source statements, Mathlib-only challenge boundary, exact first-row and
+    unit-block boundaries, Comparator metadata, and open-problem scope were
+    reviewed. Source, Challenge, and Solution pass focused Lean build plus
+    serialized replay, and all eleven selected endpoints report exactly the
+    configured `propext`, `Quot.sound`, and `Classical.choice` axiom budget.
+    Terminal Comparator/NanoDa receipts are tracked separately.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1049AdelicHeightBridge"
+  paper:
+    repository: "https://github.com/wcook04/plectis-lean-erdos249-257"
+    source: "paper/erdos-1049-rational-base-lambert.tex"
+    staged_patch: "ErdosProblems/papers/erdos-1049-prime-support-selectors.patch"
+    result_routes:
+      zudilin_firstTransformedRow_initialMonomial: "res:zudilin-sharp-qorder"
+    shared_boundary: "sec:hankel-order"
+    status: "source_current_patch_dry_applies_public_promotion_not_authorized"
+  statements:
+    - source: "ErdosProblems.Erdos1049.zudilinTransformedNormalizedMoment_one_initialMonomial"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      paper_result_label: "res:zudilin-sharp-qorder"
+      paper_boundary_label: "sec:hankel-order"
+      status: "exact-transport-focused-Lean-and-serialized-replay-passed"
+    - source: "ErdosProblems.Erdos1049.threePow_fortyOne_lt_twoPow_sixtyFive"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.twoPow_sixtyFour_lt_threePow_fortyOne"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.threeHalves_rectangular_hp_gap_gt_threeThirteenths"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.threeHalves_hankelChargeThreshold_lt_eightFortyOne"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.zudilinScalarContent_cannot_meet_required_charge"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.zudilinScalarPlusBorder_cannot_meet_required_charge"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.three_two_scalar_margin_lt_explicit"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank_41"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.fourJet_card_gt_two_pow_of_rank_41"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos1049.exists_ne_map_eq_map_ne_of_card_mul_lt"
+      lean: "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt"
+      module: "ExternalVerification1049AdelicHeightBridge/Challenge.lean"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

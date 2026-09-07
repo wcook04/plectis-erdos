@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049OmegaIndicator.Challenge",
+  "solution_module": "ExternalVerification1049OmegaIndicator.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049OmegaIndicator.omegaWeight_indicator"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "pointwise_totient_boundary_mode_countermodel_v0",
+  "problem_id": "erdos_249",
+  "target": "Determine the significance and exact scope of the permanent pointwise-totient endpoint mode.",
+  "purpose": "Classify the countermodel as a quantifier and correlation firewall rather than new totient theory or endpoint progress.",
+  "status": "adjudicated_elementary_countermodel_and_method_boundary",
+  "classification": {
+    "novelty_class": "routine_elementary_source_specific_countermodel_with_reusable_quantifier_boundary",
+    "priority_claim": "none",
+    "nearest_prior_work": "The proof uses only phi(3)=2, elementary binary recurrence algebra, and arbitrarily large primes; no specialized external theorem is being claimed or displaced.",
+    "mathematical_interest": "Low standalone depth, high route-elimination value.",
+    "reusable_scope": "Preflight for symbolic recurrence arguments that replace one correlated arithmetic word by independently admissible letters."
+  },
+  "primary_sources": [
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c",
+      "supports": "Five named Lean declarations proving the infinite pointwise mode and excluding its homogeneous word from every actual shift."
+    },
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PointwiseTotientCountermodelLab.md",
+      "sha256": "03ef24c17cf6301f5b59d7fabb8bb2e633bbf6ea1ae5171071edb681e6b9d002",
+      "supports": "Ordinary proof and exact scope explanation."
+    }
+  ],
+  "mechanism_comparison": {
+    "pointwise_model": "Each letter may use a different totient preimage, so the constant word two is legal and exactly trapped.",
+    "actual_word": "The arguments are fixed consecutively; a sufficiently large prime forces a letter at least four at every shift.",
+    "surviving_route": "Use correlations among actual consecutive totient values rather than independent image membership."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Pointwise totient legality, positivity, parity, and the moving envelope do not force endpoint escape; the actual consecutive word excludes the homogeneous countermodel.",
+    "forbidden_wording": [
+      "All fixed-quotient boundary modes exist for the actual totient word.",
+      "Correlation-sensitive arguments cannot work.",
+      "The countermodel proves or disproves Erdős Problem 249."
+    ]
+  },
+  "disconfirmation_search": {
+    "scope": "Elementary theorem inspection rather than novelty search: the ingredients are routine and no priority claim is available.",
+    "reentry_condition": "Search specialized symbolic-dynamics or totient-word literature only if a broader classification of correlated boundary modes is proposed."
+  },
+  "digestion_assessment": {
+    "decision": "route-killing countermodel subordinate to canonical_mersenne_residue_gap_normal_form",
+    "expert_attention_reason": "It retires all arguments that use only independent pointwise legality and states the exact correlation input future work must add.",
+    "evidence_class": "five source-pinned Lean declarations plus ordinary proof and exact replay",
+    "paper_disposition": "route-killing failure/boundary in Why pointwise totient legality cannot force escape",
+    "comparator_advisory": "at most one semantic firewall contrasting the legal constant word with actual-word exclusion",
+    "open_boundary": "inhomogeneous correlated boundary modes, endpoint escape, and #249 remain open"
+  },
+  "landing_consumers": [
+    "docs/formal_math/reviewer_cards/pointwise_totient_boundary_mode_countermodel.card.json",
+    "Mathematics Refinery",
+    "Comparator/Public Role 3"
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_correlated_totient_word",
+    "priority_order": [
+      "preserve the independent-letter countermodel as a quantifier firewall, not as a model of the actual consecutive totient word",
+      "require any stronger route to state the correlation or order information about consecutive phi-values that it uses",
+      "search specialized symbolic-dynamics/totient-word literature only if a broader correlated boundary-mode theorem is proposed"
+    ],
+    "lane": "re-enter on an exact correlated-word antecedent or a new theorem about actual consecutive totient values; do not broaden the countermodel beyond its independent-letter quantifiers"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "pointwise_totient_countermodel_scope_review",
+    "output_stage": "route_killing_boundary_human_review_support",
+    "artifact": "#249 pointwise totient legality versus actual-word correlation firewall",
+    "human_understanding_delta": "The countermodel now reads as a precise quantifier correction: independent pointwise legality admits a trapped constant word, while a large-prime argument excludes that word for consecutive totients. Any surviving approach must exploit correlation rather than positivity/parity/envelope data alone.",
+    "verification_state": "Five source-pinned Lean declarations, the ordinary scope proof, and exact replay are bound; no specialized symbolic-dynamics or totient-word priority claim is made.",
+    "publication_or_review_state": "Private route-killing significance support; no general totient theorem, correlation impossibility, or #249 endpoint claim.",
+    "canonicalization_state": "One semantic firewall subordinate to canonical_mersenne_residue_gap_normal_form; do not split the legal constant word and actual-word exclusion into separate interfaces.",
+    "unresolved_downstream_bottleneck": "A correlated boundary-mode analysis for the actual consecutive totient word, including endpoint escape, remains open.",
+    "next_stage_owner": "Novelty Observatory if a correlated-word antecedent appears; Mathematics Refinery for one consolidated firewall; #249 proof/public owners for correlation-sensitive routes."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "pointwise_totient_boundary_mode_countermodel@source-current-card-current",
+    "evidence_class": "Lean_checked_elementary_countermodel_and_actual_word_separation",
+    "source_generation": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+        "commit": "current-pinned-source",
+        "sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c"
+      },
+      "scope_note": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PointwiseTotientCountermodelLab.md",
+        "sha256": "03ef24c17cf6301f5b59d7fabb8bb2e633bbf6ea1ae5171071edb681e6b9d002"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/pointwise_totient_boundary_mode_countermodel.card.json",
+        "sha256": "2c123b47b6dbb4aee195a1996587cfcd35acba09a2a31eda6b79e54dbbbce64a"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+        "sha256": "7be1206afc314b4bae4c9f2d51dc3c9ae474a4159ae566241c06045741bed99a"
+      },
+      "primary_sources": [
+        "Elementary Euler-totient identity phi(p)=p-1 and Euclid's unbounded-prime theorem; no specialized external priority source is required for this countermodel."
+      ]
+    },
+    "comparison_relation": "The constant-two word is legal when each letter is chosen independently from the totient image, but it is not an admissible consecutive totient word because arbitrarily large prime indices force letters larger than two. This is a quantifier/correlation firewall, not a theorem about all totient words.",
+    "closest_known_result": "The ingredients are elementary totient and prime facts; no named prior theorem was located for this exact pointwise-versus-consecutive-word packaging, and no novelty is claimed.",
+    "exact_delta": "Five Lean declarations make the independent-letter trap, prime-forced actual-letter excursion, and their separation explicit, preventing pointwise legality, positivity, parity, and envelope bounds from being mistaken for correlated arithmetic control.",
+    "disconfirming_evidence": "The countermodel says nothing about inhomogeneous correlated boundary modes; it neither proves nor refutes the endpoint and cannot be generalized from independent letters to the actual consecutive word.",
+    "confidence_ceiling": "High for the stated Lean countermodel and actual-word exclusion; low novelty/no priority claim; no #249 endpoint or irrationality implication.",
+    "significance": "high_quantifier_firewall_value_low_standalone_depth",
+    "claim_ceiling": "Pointwise totient legality plus positivity/parity/envelope data do not force endpoint escape; a large-prime argument excludes only the homogeneous constant-two word from the actual consecutive word. Do not claim all correlated modes are impossible.",
+    "hard_step": "Analyze correlated boundary modes of consecutive totients and obtain endpoint escape or a denominator-exclusion theorem using relations between neighboring phi-values.",
+    "open_boundary": "No correlated-mode classification, endpoint escape, irrationality, or #249 solution.",
+    "bounded_expert_act": "Check the independent-letter quantifiers and the prime-index separation; confirm that the proposed surviving route states its consecutive-totient correlation input explicitly.",
+    "reentry_trigger": "Re-enter if a correlated-word theorem appears, the source/card changes, or a stronger claim is proposed for the actual totient word.",
+    "programme_disposition": "retire_independent_pointwise_legality_as_an_endpoint_producer_and_subordinate_under_canonical_mersenne_residue_normal_form",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why pointwise totient legality cannot force escape",
+      "supersession_or_consolidation": "Keep the constant-two independent-letter trap and the prime-forced actual-word exclusion as one semantic firewall; do not split the five declarations or market a general totient theorem.",
+      "reason": "It redirects expert attention from independent image membership to the missing consecutive-value correlation."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "reason": "The finite countermodel and actual-word separation are independently restatable and prevent a material quantifier error; use one bundled semantic firewall only."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "Lean pointwise countermodel and actual-word prime separation",
+      "output_stage": "expert understanding and route canonicalization",
+      "artifact": "pointwise_totient_boundary_mode_countermodel_v0",
+      "human_understanding_delta": "The reader can distinguish independent pointwise legality from the actual consecutive totient word and sees exactly why correlation, not more positivity or parity bookkeeping, is required.",
+      "verification_state": "Five source-pinned Lean declarations plus ordinary scope proof; no specialized external theorem or endpoint claim.",
+      "publication_or_review_state": "Status-tagged negative boundary is eligible; no external review, acceptance, or priority claim.",
+      "canonicalization_state": "One semantic firewall subordinate to the #249 exact endpoint normal form.",
+      "unresolved_downstream_bottleneck": "Correlated boundary-mode analysis for consecutive totients.",
+      "next_stage_owner": "Mathematics Refinery for consolidation and #249 proof owners for correlation-sensitive mechanisms."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "elementary countermodel with a decisive quantifier distinction",
+    "slow_down_at": "Independent pointwise witnesses may be reused at every position; the actual word is consecutive and must be treated as correlated.",
+    "automation_establishes": "The five Lean declarations, prime-forced excursion, and exact constant-word construction.",
+    "expert_semantic_judgment": "Whether a proposed endpoint producer uses genuine consecutive-totient relations rather than pointwise image membership.",
+    "review_act": "Audit the quantifier order and the large-prime separation before accepting any stronger totient-mode claim."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#249 pointwise legality versus consecutive-totient correlation",
+    "disposition": "retire_pointwise_mode_as_independent_producer; subordinate under canonical_mersenne_residue_gap_normal_form",
+    "consolidation_relation": "Keep the independent-letter trap and actual-word exclusion as one route boundary; no separate constant-word or prime-excursion interfaces.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "It prevents a broad class of quantifier mistakes and identifies the exact correlation theorem still needed.",
+      "evidence_class": "Lean-checked elementary countermodel plus actual-word separation",
+      "hard_step": "Correlated consecutive-totient boundary-mode analysis.",
+      "prior_art_uncertainty": "Low; elementary ingredients, no priority claim.",
+      "open_boundary": "No #249 endpoint theorem.",
+      "demoted_predecessor": "independent pointwise totient legality as a producer",
+      "status_boundary": "Retain as high-value route boundary beneath the #249 flagship."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_scope_card_and_packet_pins_bound_at_2026_08_26",
+    "bound_snapshot": {
+      "formal_source_sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c",
+      "scope_note_sha256": "03ef24c17cf6301f5b59d7fabb8bb2e633bbf6ea1ae5171071edb681e6b9d002",
+      "reviewer_card_sha256": "2c123b47b6dbb4aee195a1996587cfcd35acba09a2a31eda6b79e54dbbbce64a",
+      "research_packet_sha256": "7be1206afc314b4bae4c9f2d51dc3c9ae474a4159ae566241c06045741bed99"
+    },
+    "claim_guard": "Independent-letter countermodel and actual-word constant-two exclusion only; no general correlated-mode theorem or #249 solution.",
+    "reentry_trigger": "Any source/card/packet change or a genuine theorem about correlated consecutive-totient modes."
+  }
+}

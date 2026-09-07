@@ -1,0 +1,109 @@
+version: "v0.4"
+project:
+  name: "Erdős #1041: sublevel containment of trinomial root spokes"
+  description: >-
+    Write f(z) = z^m + a z^r + c over the complex numbers, let w satisfy f(w) = 0, and
+    call the spoke of w the segment of points u w for real u in [0,1] running from the
+    origin to the root. Five declarations are compared. The sharpest is an exact
+    sublevel containment: for all natural numbers r ≤ m, all complex a, c, w with
+    f(w) = 0 and ‖w‖^m ≤ ‖c‖, and every real u in [0,1], the value
+    u^m w^m + a u^r w^r + c, which is f at the point u w, satisfies ‖f(u w)‖ ≤ ‖c‖.
+    The whole spoke of such a root lies in the sublevel set of the constant term,
+    ‖f‖ ≤ ‖f(0)‖. That statement assumes neither 1 ≤ r nor ‖c‖ < 1 nor ‖w‖ < 1, and
+    the hypothesis ‖w‖^m ≤ ‖c‖ on the root is an additional condition that the
+    open-disk hypotheses do not supply. Imposing ‖c‖ < 1 on the same root turns the
+    bound into ‖f(u w)‖ < 1 on the whole spoke. A further declaration reaches every
+    root of the trinomial under a different hypothesis set: for 1 ≤ r ≤ m, ‖w‖ < 1 and
+    ‖c‖ < 1 give ‖f(u w)‖ < 1 for every u in [0,1], so each such root supplies a
+    complete radial displacement whose image stays strictly inside the unit lemniscate.
+    No condition on the middle coefficient a appears in any of these statements. The
+    mechanism is an exact factorisation that eliminates a at the root: for every real
+    u, f(u w) = (1 - u^r) c - (u^r - u^m) w^m. The fifth declaration records the metric
+    budget consumed downstream, that two complex numbers of modulus below one have
+    moduli summing to less than two, which is the threshold appearing in Erdős #1041.
+    The subject is the geometry of polynomial lemniscates, of interest to geometric
+    function theory; novelty is unassessed. Fibre selection, assembly of the selected
+    displacements into a lifted path, and Erdős Problem 1041 itself remain outside Lean.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+sources:
+  - title: "Cyclic-trinomial fibre spokes for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact fibre hypotheses and the unformalized path-assembly boundary were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "First-wave candidate; no external verdict or submission is claimed."
+status:
+  scope: "Five exact source-backed declarations; ordinary fibre selection and path assembly remain outside Lean."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_printed_the_three_originally_compared_declarations_within_permitted_axioms_with_no_sorryAx_the_two_declarations_added_afterwards_await_the_next_public_ci_run"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant"
+      file: "ExternalVerification1041CyclicTrinomialFiber/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      novelty_status: "unassessed"
+      boundary: "Requires the root hypothesis ‖w‖^m ≤ ‖c‖, which the open-disk hypotheses do not supply; formalizes no fibre selection, no lifted-path assembly, and no part of unrestricted Erdős #1041."
+    - declaration: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one"
+      file: "ExternalVerification1041CyclicTrinomialFiber/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      novelty_status: "unassessed"
+      boundary: "Strict unit-lemniscate form of the sublevel bound under the same root hypothesis ‖w‖^m ≤ ‖c‖ together with ‖c‖ < 1."
+    - declaration: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one"
+      file: "ExternalVerification1041CyclicTrinomialFiber/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check"
+      novelty_status: "unassessed"
+      boundary: "Does not formalize fibre selection, lifted-path assembly, or unrestricted Erdős #1041."
+    - declaration: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_factorization"
+      file: "ExternalVerification1041CyclicTrinomialFiber/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check"
+      novelty_status: "unassessed"
+      boundary: "Algebraic identity at a root; it bounds no modulus on its own."
+    - declaration: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements"
+      file: "ExternalVerification1041CyclicTrinomialFiber/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check"
+      novelty_status: "unassessed"
+      boundary: "Metric budget for two displacements; it selects no fibre and constructs no path."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber"
+  statements:
+    - source: "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase"
+      lean: "five same-named source transports"
+      module: "ExternalVerification1041CyclicTrinomialFiber/Challenge.lean"
+      status: "five-exact-transports-three-printed-public-ci-run-33646295554-two-awaiting-next-run"

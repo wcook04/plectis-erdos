@@ -1,0 +1,203 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erd\u0151s #243: saturated square transport across one primitive cancellation and the exact reach of its Legendre defect"
+  description: >-
+    Two declarations about one primitive step of a reciprocal tail dynamic. The
+    first is an unconditional exact divisibility: the whole next reduced
+    numerator divides the removed content times the product of the two centred
+    errors, minus the square of the denominator. No positivity, primitivity,
+    coprimality or cleanliness hypothesis appears. The second records the exact
+    reach of the quadratic-character consequence, which obstructs only a unit
+    non-square part and is blind to a square payment. Neither bounds the
+    cancellation factors, and Erdős #243 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243SaturatedSquareTransport/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243SaturatedSquareTransport/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_result"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "Lean elaboration of Challenge, Solution, NegativeSolution and AxiomAudit has not been run in this pass; the host build slot was occupied and the check is deferred to the next governed build"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The transport is strictly stronger than the corpus lemma that transports
+    only modulo the largest divisor of the next numerator coprime to the
+    removed content. It dominates no packaged entry: no other packaged
+    declaration states a transport identity for this step.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11A15", "11B37"]
+
+sources:
+  - title: "Saturated square transport and the Legendre defect charge"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Two orientation identities follow from the cocycle with no sign or size
+      side condition. Multiplying them and using the cocycle again to remove the
+      spurious multiplier gives an exact identity whose right-hand side is the
+      raw numerator times an explicit integer, which is the whole content of the
+      transport. The negative half is equally deliberate: when the removed
+      content is a perfect square the congruence degenerates and carries no
+      quadratic-character information, so this method can never detect square
+      deletion.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status. The result below is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Two compared theorems: the unconditional exact transport, and the exact
+    reach of its Legendre-defect corollary. Challenge.lean has two intentional
+    Comparator specification sorries; Solution.lean and the imported source are
+    sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    The only deliberate placeholders are the trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243SaturatedSquareTransport.saturated_square_transport_raw"
+      file: "ExternalVerification243SaturatedSquareTransport/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243SaturatedSquareTransport/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorem `saturated_square_transport_raw` in ErdosProblems/Erdos243/SaturatedSquareTransport.lean, committed at 447d8f4b1b8d6c46e75d41276fc92e79323a7500
+        (module SHA-256 1647bc4e0497187d1d5493badc01c5ec4e9f1960100d4c9872e78d39a938320e). This packaging pass did not run Lean;
+        elaboration is pending the next governed build.
+      novelty_status: "unassessed"
+      contribution_class: "unconditional exact transport identity for one primitive step"
+      statement: >-
+        If `w + v = a * u`, `w = hc * u'`, `a * v = hc * v'`,
+        `e = v - (a - 1) * u` and `e' = v' - (a' - 1) * u'`, then
+        `u' ∣ hc * e * e' - v ^ 2` over the integers.
+      boundary: >-
+        This is one step of the dynamic, with no orbit content. It bounds
+        neither the cancellation factors nor the numerators, and it settles
+        nothing about Erdős #243.
+      comparator_declaration: "Erdos249257.ExternalVerification243SaturatedSquareTransport.saturated_square_transport_raw"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification243SaturatedSquareTransport.legendre_defect_forces_nonsquare_content"
+      file: "ExternalVerification243SaturatedSquareTransport/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243SaturatedSquareTransport/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorem `legendre_defect_forces_nonsquare_content` in ErdosProblems/Erdos243/SaturatedSquareTransport.lean, committed at 447d8f4b1b8d6c46e75d41276fc92e79323a7500
+        (module SHA-256 1647bc4e0497187d1d5493badc01c5ec4e9f1960100d4c9872e78d39a938320e). This packaging pass did not run Lean;
+        elaboration is pending the next governed build.
+      novelty_status: "unassessed"
+      contribution_class: "exact reach of the quadratic-character obstruction, including its blindness"
+      statement: >-
+        If `u' ∣ b * e * e' - (b * s) ^ 2` and a prime `p` divides `u'` with
+        `e * e'` a non-square in `ZMod p`, then `b ≠ 1`.
+      boundary: >-
+        The conclusion is exactly `b ≠ 1`, that is, the removed content is not a
+        pure square. It gives no bound on the size of the content, it says
+        nothing when the content is a perfect square, and it does not exclude
+        `hc = 1` by any route. Quadratic-character counting cannot detect square
+        deletion, and this declaration is where that limit is recorded.
+      comparator_declaration: "Erdos249257.ExternalVerification243SaturatedSquareTransport.legendre_defect_forces_nonsquare_content"
+      literature_dependencies: []
+
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Anthropic Claude"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner. No terminal replay receipt is recorded here.
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    Both source declarations are already stated in Mathlib-only vocabulary, so
+    the Challenge restates them verbatim and the Solution applies them
+    directly. No definition is reinterpreted and no claim is added.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source statements, their exact hypotheses and the open-problem
+    boundary were reviewed by reading the source module. Focused Lean, axiom
+    and Comparator replay remain distinct gates and are all pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243SaturatedSquareTransport"
+  statements:
+    - source: "ErdosProblems.Erdos243.saturated_square_transport_raw."
+      lean: "Erdos249257.ExternalVerification243SaturatedSquareTransport.saturated_square_transport_raw"
+      module: "ExternalVerification243SaturatedSquareTransport/Challenge.lean"
+      status: "exact-transport-pending-check"
+      note: >-
+        The Challenge restates the source theorem with identical vocabulary.
+    - source: "ErdosProblems.Erdos243.legendre_defect_forces_nonsquare_content."
+      lean: "Erdos249257.ExternalVerification243SaturatedSquareTransport.legendre_defect_forces_nonsquare_content"
+      module: "ExternalVerification243SaturatedSquareTransport/Challenge.lean"
+      status: "exact-transport-pending-check"
+      note: >-
+        The Challenge restates the source theorem with identical vocabulary.
+
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

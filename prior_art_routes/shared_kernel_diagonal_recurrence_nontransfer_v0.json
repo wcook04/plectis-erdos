@@ -1,0 +1,215 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "shared_kernel_diagonal_recurrence_nontransfer",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_annihilator_specificity_with_source_specific_exact_operator_nonannihilation_certificate",
+  "problem_id": "erdos_1049",
+  "purpose": "Classify the exact index-zero failure of recurrence transfer between two moving specializations of the little-q-Legendre kernel, with primary-source attribution and a strict boundary between a general holonomic principle and the source-specific factorized certificate.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/shared_kernel_diagonal_recurrence_nontransfer.card.json",
+    "refinery_handoff_commit": "0e85f71bbe82f853cd1a15aae18f297fe873e216",
+    "source_commit": "4c64d8846dff8c760856b94aee89413518d585e2",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_diagonal_nonequivalence.py",
+    "source_result_id": "qapery_van_assche_diagonal_nonequivalence"
+  },
+  "classification": {
+    "ambient_framework": "holonomic_and_q_WZ_annihilating_operator_arithmetic",
+    "general_principle": "standard_operator_specificity_under_summation_or_specialization",
+    "exact_factorized_residual": "source_specific_exact_operator_nonannihilation_certificate",
+    "priority_claim": "none",
+    "recommended_terminology": "operator nontransfer between moving specializations",
+    "acceptable_alias": "shared-kernel recurrence nontransfer certificate",
+    "discouraged_terminology": [
+      "new diagonal theorem",
+      "failure of holonomic closure under specialization",
+      "proof that the Van Assche sequence has no scalar recurrence",
+      "shared-kernel diagonal recurrence theorem"
+    ],
+    "attribution": "Credit Amdeberhan--Zeilberger for the q-WZ summand, creative-telescoping certificate, and scalar operator for their sequence; Van Assche for the little-q-Legendre polynomial construction and the distinct moving evaluation at p^n; and Zeilberger's holonomic-systems work for the annihilating-operator language. Credit the local asset only for testing the Amdeberhan--Zeilberger operator on the Van Assche specialization and factoring the exact nonzero residual.",
+    "mathematical_interest": "The calculation is elementary once the two source formulas are aligned, but the parameter-uniform factorization turns a plausible informal identification into a decisive negative result.",
+    "reusable_scope": "The guardrail applies whenever one multivariate or parameterized kernel is evaluated along different moving loci: the annihilator must be derived or verified for each resulting sequence before transferring asymptotics, valuations, or arithmetic content.",
+    "why_it_matters": "It retires a concrete invalid shortcut in the #1049 programme while preserving the correct next question: derive a recurrence specific to the Van Assche specialization, if one is useful."
+  },
+  "primary_sources": [
+    {
+      "id": "amdeberhan_zeilberger_1998_q_apery",
+      "title": "q-Apery Irrationality Proofs by q-WZ Pairs",
+      "authors": [
+        "Tewodros Amdeberhan",
+        "Doron Zeilberger"
+      ],
+      "venue": "Advances in Applied Mathematics 20 (1998), 275-283",
+      "url": "https://arxiv.org/abs/math/9804122",
+      "exact_anchor": "Sections 1.3-1.5 define the q-WZ summand b(n,k), the summed sequence b(n), and L=y_2(n)N^2+y_1(n)N+y_0(n); summing the telescoping identity proves Lb=0. Section 1.6 writes the resulting scalar recurrence explicitly.",
+      "supports": "The operator is derived as an annihilator of the specific q-WZ sum that becomes the p^(n+1) little-q-Legendre specialization.",
+      "does_not_support": "No claim that the same L annihilates every moving evaluation of the little-q-Legendre kernel."
+    },
+    {
+      "id": "van_assche_2001_little_q_legendre",
+      "title": "Little q-Legendre polynomials and irrationality of certain Lambert series",
+      "author": "Walter Van Assche",
+      "venue": "The Ramanujan Journal 5 (2001), 295-310",
+      "url": "https://arxiv.org/abs/math/0101187",
+      "exact_anchor": "Equation (10) gives the finite little-q-Legendre sum. Equations (24)-(26) specialize at p^n; immediately after equation (25), Van Assche states that his P_n(p^n|q) is 'nearly' the Amdeberhan--Zeilberger b_n and identifies their value as P_n(p^(n+1)|q).",
+      "supports": "Primary-source distinction between the two moving specializations of the common polynomial kernel.",
+      "does_not_support": "No assertion that the Amdeberhan--Zeilberger scalar recurrence transfers to the p^n specialization."
+    },
+    {
+      "id": "zeilberger_1995_holonomic_recitations",
+      "title": "Three Recitations on Holonomic Systems and Hypergeometric Series",
+      "author": "Doron Zeilberger",
+      "venue": "Journal of Symbolic Computation 20 (1995), 699-724",
+      "url": "https://arxiv.org/abs/math/9403215",
+      "exact_anchor": "Tutorial development of recurrence operators, holonomic systems, and telescoping certificates for definite hypergeometric sums.",
+      "supports": "Standard language in which an operator annihilates a declared sequence or sum and must be transported through an appropriate closure or telescoping argument.",
+      "does_not_support": "No theorem that one operator is invariant under changing a moving specialization, and no little-q-Legendre comparison at issue here."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "In holonomic/WZ practice, the recurrence is attached to the univariate sequence produced after a definite sum or specialization. A common underlying term or polynomial family does not by itself identify the annihilator ideals of two different resulting sequences.",
+    "local_delta": "The local checker substitutes the first three values of A_n=P_n(p^n|p^(-1)) into the operator derived for B_n=P_n(p^(n+1)|p^(-1)) and factors the index-zero residual as a strictly negative product for every p>1.",
+    "terminology_boundary": "'Diagonal pullback' is understandable but risks collision with formal diagonal and D-finite closure terminology. 'Moving specialization' is more literal here; 'operator nontransfer' states exactly what the counterexample proves.",
+    "remaining_route": "The certificate excludes only the named Amdeberhan--Zeilberger operator. It neither denies holonomicity nor excludes a different scalar recurrence for A_n."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "little q-Legendre P_n(p^n) Amdeberhan Zeilberger recurrence",
+      "same hypergeometric kernel different specialization recurrence operator",
+      "holonomic systems specialization annihilating operator diagonal pullback",
+      "q-WZ recurrence moving diagonal"
+    ],
+    "result": "The source papers explicitly distinguish the p^n and p^(n+1) evaluations and derive the q-Apery operator only for the latter sum. General holonomic references supply annihilator and creative-telescoping language, but the bounded search found no standard named 'nontransfer theorem' or prior publication of this factorized residual.",
+    "boundary": "The negative certificate is best classified as source-specific and apparently unrecorded in the reviewed sources. Non-location is not a novelty or priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The shared little-q-Legendre kernel does not transfer this particular q-Apery scalar operator from the p^(n+1) specialization to the p^n specialization; an exact index-zero residual proves nonannihilation for every p>1.",
+    "forbidden_wording": [
+      "Different moving specializations never share recurrences.",
+      "The Van Assche specialization is non-holonomic.",
+      "No scalar recurrence exists for the Van Assche sequence.",
+      "Holonomic closure under specialization fails.",
+      "The counterexample proves an irrationality result for Erdos #1049."
+    ],
+    "nonclaims": [
+      "not_a_general_nontransfer_theorem",
+      "not_a_nonholonomicity_result",
+      "not_an_exclusion_of_other_recurrences",
+      "not_an_all_index_endpoint_content_theorem",
+      "not_an_irrationality_result",
+      "not_a_solution_of_erdos_1049"
+    ]
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_route_boundary",
+    "reason": "The exact residual, source formulae, checker, and scope boundary are inspectable. Consolidation under the programme recurrence-and-height mechanism—not absence of external review—explains why no independent Comparator family is recommended.",
+    "comparator_advisory": "Surface only as a subordinate exact symbolic counterexample to the named operator transfer; preserve the possibility of other recurrences."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_negative_certificate",
+    "output_stage": "expert_digestion_and_canonical_route_retirement",
+    "artifact": "shared_kernel_diagonal_recurrence_nontransfer_v0",
+    "human_understanding_delta": "Separates a standard annihilator-specificity principle from the exact source-specific residual and makes the surviving recurrence problem explicit.",
+    "verification_state": "Pinned symbolic replay plus packet-recorded Lean index-zero check; no all-index endpoint claim.",
+    "publication_or_review_state": "Status-tagged public visibility is eligible now; specialist review remains downstream.",
+    "canonicalization_state": "Subordinate boundary in the \\#1049 recurrence-and-height mechanism family.",
+    "unresolved_downstream_bottleneck": "A useful diagonal-specific recurrence and full height/nonvanishing argument.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and \\#1049 proof owners."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/shared_kernel_diagonal_recurrence_nontransfer.card.json",
+      "effect": "Replace pending novelty language with standard annihilator-specificity framing, exact source anchors, and operator-nontransfer terminology."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Keep the exact factorized residual as a reusable method-boundary asset while describing the general lesson as standard holonomic hygiene."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Present the result as a source-specific negative certificate against one recurrence transfer, never as nonholonomicity or an #1049 endpoint."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "shared_kernel_diagonal_recurrence_nontransfer@source-4c64d884-card-0e85f71b",
+    "evidence_class": "exact_symbolic_computation_with_primary_source_formulas_and_source_recorded_Lean_index_zero_check",
+    "source_generation": {
+      "checker": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_diagonal_nonequivalence.py",
+        "commit": "4c64d8846dff8c760856b94aee89413518d585e2",
+        "sha256": "7ee46d4d9a04d74669160c689bdbf8c507965871197e3e0b144b3ac965fbc545"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/shared_kernel_diagonal_recurrence_nontransfer.card.json",
+        "commit": "0e85f71bbe82f853cd1a15aae18f297fe873e216",
+        "sha256": "b50e28ccbe36cb75c6856f2812f49bb576151516fc6cbc88bf215c585f72b74d"
+      },
+      "primary_formula_sources": ["Amdeberhan--Zeilberger 1998", "Van Assche 2001", "Zeilberger 1995"]
+    },
+    "comparison_relation": "Standard holonomic/WZ practice attaches an annihilator to the resulting summed sequence; the local certificate shows that a different moving specialization does not inherit this particular operator.",
+    "closest_known_result": "Amdeberhan--Zeilberger derive the q-Apéry operator for the p^(n+1) specialization; Van Assche explicitly distinguishes the p^n evaluation; Zeilberger supplies the annihilator/creative-telescoping framework.",
+    "exact_delta": "Substitution of the first three p^n-specialization values into the named operator factors the index-zero residual as a strictly negative product for every p>1.",
+    "disconfirming_evidence": "The residual excludes only the named operator transfer. It does not exclude another scalar recurrence, non-holonomicity, or a different construction.",
+    "confidence_ceiling": "High for the exact residual and source alignment; medium for literature non-location; no general nontransfer, nonholonomicity, irrationality, or #1049 claim.",
+    "significance": "high_route_boundary_low_novelty",
+    "claim_ceiling": "The Amdeberhan--Zeilberger q-Apéry scalar operator does not annihilate the Van Assche p^n moving specialization; an exact index-zero residual proves nonannihilation for every p>1. Other recurrences remain possible.",
+    "hard_step": "Keep operator-specific nonannihilation distinct from a claim about all recurrences; the semantic boundary is the load-bearing part of the negative result.",
+    "open_boundary": "A useful diagonal-specific recurrence and the complete integrality/nonvanishing/height argument for #1049 remain open.",
+    "bounded_expert_act": "Check the source formula alignment and factorization, then confirm that the statement excludes only this named operator transfer.",
+    "reentry_trigger": "Re-enter if the checker/card/source hashes change, a diagonal-specific recurrence is derived, or an exact prior nontransfer result is located.",
+    "programme_disposition": "consolidate_under_erdos1049_recurrence_and_height_method_boundaries",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Operator hygiene: a q-Apéry recurrence does not transfer across moving diagonals",
+      "supersession_or_consolidation": "Keep this as one source-specific negative certificate beneath the effective-height architecture; do not split the residual calculation from its operator-specificity explanation.",
+      "reason": "It retires a tempting invalid shortcut and leaves the correct next question—derive a recurrence for the actual specialization—visible."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The finite symbolic certificate is a route boundary, not an independent endpoint proposition; expose it through the existing #1049 architecture."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified_negative_certificate",
+      "output_stage": "expert_digestion_and_route_retirement",
+      "artifact": "shared_kernel_diagonal_recurrence_nontransfer_v0",
+      "human_understanding_delta": "Prevents readers from transporting a q-Apéry recurrence between distinct moving evaluations and identifies the exact recurrence-specific gap.",
+      "verification_state": "Pinned symbolic checker and source-recorded Lean residual check; no all-index endpoint claim.",
+      "publication_or_review_state": "Status-tagged route-boundary visibility is eligible; no specialist-review prerequisite.",
+      "canonicalization_state": "Subordinate boundary in the #1049 recurrence-and-height family.",
+      "unresolved_downstream_bottleneck": "Diagonal-specific recurrence plus full arithmetic/height control.",
+      "next_stage_owner": "Mathematics Refinery and Role 3 for route-family consolidation."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine_source_alignment_with_load_bearing_scope_boundary",
+    "slow_down_at": "The word 'nontransfer' names one operator and two loci only; it is not a theorem about all recurrences.",
+    "automation_establishes": "The exact index-zero residual factorization and finite symbolic substitution.",
+    "expert_semantic_judgment": "Whether the source formulas are aligned exactly and whether the literature search supports only conservative non-location wording.",
+    "review_act": "Verify the named operator, both moving specializations, and the list of excluded stronger interpretations."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#1049 operator-specific recurrence and effective-height audit",
+    "disposition": "subordinate route-killing boundary beneath rational_approximation_exponent_budget",
+    "consolidation_relation": "Consolidate this residual with the q-Apéry/Van Assche source distinction; leave determinant/content and exponent-budget objects as separate architecture components.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_rational_approximation_exponent_budget",
+      "why_care": "It eliminates a concrete recurrence-transfer shortcut without inflating a finite residual into a nonholonomicity claim.",
+      "evidence_class": "Exact symbolic computation with primary source formulas and source-recorded Lean check",
+      "hard_step": "Derive and validate any replacement recurrence for the p^n specialization.",
+      "prior_art_uncertainty": "Low for holonomic operator-specificity language; medium for this exact residual's non-location; no priority claim.",
+      "open_boundary": "No diagonal-specific recurrence or #1049 endpoint theorem.",
+      "demoted_predecessor": "unqualified shared-kernel recurrence transfer",
+      "status_boundary": "Retain rational_approximation_exponent_budget as the #1049 programme representative; this is a route boundary beneath it."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_checker_and_card_pins_bound_at_2026_08_26",
+    "bound_snapshot": {
+      "checker_commit": "4c64d8846dff8c760856b94aee89413518d585e2",
+      "checker_sha256": "7ee46d4d9a04d74669160c689bdbf8c507965871197e3e0b144b3ac965fbc545",
+      "reviewer_card_commit": "0e85f71bbe82f853cd1a15aae18f297fe873e216",
+      "reviewer_card_sha256": "b50e28ccbe36cb75c6856f2812f49bb576151516fc6cbc88bf215c585f72b74d"
+    },
+    "claim_guard": "named-operator nontransfer only; not nonholonomicity, no-other-recurrence, irrationality, or #1049 solution",
+    "reentry_trigger": "checker/card/source hash change or replacement recurrence"
+  }
+}

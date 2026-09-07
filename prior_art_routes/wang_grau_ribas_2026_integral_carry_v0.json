@@ -1,0 +1,227 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-07-10T23:11:00Z",
+  "status": "adjudicated_external_antecedent_with_local_abstraction_delta",
+  "route_id": "wang_grau_ribas_2026_integral_carry",
+  "purpose": "Keep the Wang source comparison in the private annex and declaration-family routing lane, with the current official arXiv version bound separately from the retained historical v2 annex.",
+  "adjudication": {
+    "verdict": "current_v4_external_antecedent_for_forward_carry_lemma_local_rigidity_delta_remains_distinct",
+    "evidence_class": "primary-source ordinary proof in Han Wang, arXiv:2606.24972v4, Lemma 2.1 (printed pp. 3–4), compared with Lean-checked GenericTailOrbitRigidity",
+    "closest_known_prior_art": "Wang's current Lemma 2.1 defines the polynomially weighted tail carry R_N=Q∑_{j≥1}w(N+j)d_{N+j}b^{-j}, proves eventual integrality, R_{N+1}=bR_N-Qw(N+1)d_{N+1}, and a polynomial bound 1≤R_N≤C(N+1)^d; in the binary linear specialization this is the forward carry antecedent. The paper's Theorem 1.1 then proves positive density in polynomial-scale windows.",
+    "exact_delta": "Under b=2, w(n)=n, c(n)=n*d_n, v=Q, and u(N)=R_N, current v4 directly covers the rationality-implies-integral-recurrence-and-polynomial-bound direction (eventually in N). The local Lean file additionally handles arbitrary nonnegative c≤n from N=0, proves the converse rationality criterion from a tempered integer orbit, identifies every tempered orbit with the scaled analytic tail, and exposes the homogeneous 2^N parasite boundary. Those converse/uniqueness statements are not attributed to Wang's Lemma 2.1.",
+    "proof_mechanism_comparison": "Both routes use binary tail clearing and an affine carry recurrence. Wang's current difficult step is polynomial locking of repeated gap words followed by interior/exterior continuation counts at polynomial window scale; the local theorem stops before that density argument and instead isolates recurrence rigidity as a reusable algebra/analysis interface.",
+    "disconfirming_evidence": "Current v4 does not state the local iff theorem for arbitrary nonnegative c≤n, does not formulate uniqueness of every subexponential integer orbit, and does not address the local #257 endpoint. The local Lean source does not formalize Wang's polynomial-window density proof or its repeated-prefix counting argument.",
+    "confidence_ceiling": "Strong external confidence for the current v4 forward recurrence antecedent and source identity: the downloaded 10-page PDF is sole-authored by Han Wang and its official arXiv record now lists v4. Strong internal confidence for the local abstraction delta; no novelty or priority claim.",
+    "significance_rationale": "This is a high-value attribution correction rather than a new endpoint: it prevents generic binary-carry recurrence language from being presented as unexplored while preserving the genuinely reusable local converse/rigidity interface and the separate combinatorial density mechanism.",
+    "bounded_expert_review_act": "Completed 2026-08-27: checked the current v4 PDF's Lemma 2.1 and polynomial-window mechanism against the local declaration family; retain the local result as a formal abstraction/restatement-plus-delta, not a new carry theorem."
+  },
+  "source_annex": {
+    "slug": "arxiv-2606-24972-wang-grau-ribas",
+    "display_name": "Retained historical Wang–Grau Ribas v2 annex — Positive dyadic density for rational weighted binary expansions",
+    "arxiv_id": "2606.24972",
+    "arxiv_url": "https://arxiv.org/abs/2606.24972",
+    "source_archive": "annexes/arxiv-2606-24972-wang-grau-ribas/source.tar.gz",
+    "source_archive_sha256": "4c057fa98b0e75d234892327b5a81fbc3223a121d739dca8839872cf9991bae7",
+    "extracted_markdown": "annexes/arxiv-2606-24972-wang-grau-ribas/extracted.md",
+    "extracted_markdown_sha256": "54f4cc7d5a6f6606bf45fec4e711bb2705c7b4ac16e3e45e9fd88be7575139e6",
+    "annex_notes": "annexes/arxiv-2606-24972-wang-grau-ribas/annex_notes.json",
+    "annex_notes_sha256": "2f0d4e6d430f2f0a3088a06a092e05828de627eb67a5b74f6ccd119fc8ad93f5",
+    "validated_by": "./repo-python annex_import.py validate --slug arxiv-2606-24972-wang-grau-ribas",
+    "historical_version": {
+      "arxiv_version": "v2",
+      "source_pdf": "annexes/arxiv-2606-24972-wang-grau-ribas/source.pdf",
+      "source_pdf_sha256": "c0b75ab662c82026b67ac0ce781c25f7d2f80e12c4b5cb6d63557add35a3ff25",
+      "role": "retained historical evidence; not current official source identity"
+    },
+    "current_official_source": {
+      "title": "Sparse Polynomial-Weighted Expansions",
+      "author": "Han Wang",
+      "arxiv_version": "2606.24972v4",
+      "official_record": "https://arxiv.org/abs/2606.24972",
+      "source_pdf": "annexes/arxiv-2606-24972-wang-grau-ribas-v4/source.pdf",
+      "source_pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "pdf_pages": 10,
+      "source_reviewed_at": "2026-08-27",
+      "exact_locators": [
+        "PDF printed pp. 3–4, Section 2, Lemma 2.1 (Carries and gaps): for polynomial weight w and base b, rationality yields eventual integral R_N, the recurrence R_{N+1}=bR_N−Qw(N+1)d_{N+1}, the polynomial height bound, and the logarithmic gap bound.",
+        "PDF printed p. 2, Theorem 1.1 (Polynomial-window density), and printed pp. 5–10, Lemmas 2.4 and 3.1–3.2 plus the conclusion: the nontrivial contribution is polynomial locking and interior/exterior continuation counting, not the local carry recurrence."
+      ]
+    }
+  },
+  "private_lean_targets": {
+    "package_root": "formal_math/erdos257_period_noncollapse",
+    "declaration_families": [
+      "GenericTailOrbitRigidity",
+      "RationalSupportCarrySkeleton"
+    ],
+    "target_files": [
+      "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GenericTailOrbitRigidity.lean",
+      "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean"
+    ],
+    "public_export_impact": "none_selected_export_globs_ignore_prior_art_routes"
+  },
+  "claim_family_intake": {
+    "granularity": "declaration_family_crosswalk_not_module_level_bibliography_verdict",
+    "provisional_classification": "source_compared_v4_external_antecedent_with_formal_abstraction_delta",
+    "candidate_specialisation": "c(n)=n*d_n; v=Q; u(N)=R_N",
+    "comparison_questions": [
+      "Does the source state the local rationality-to-tempered-orbit direction after this specialisation?",
+      "Does it state the converse or uniqueness of a subexponential integer orbit?",
+      "Which parts of the generic nonnegative linearly bounded iff and rigidity surface remain a strict local delta?"
+    ],
+    "required_crosswalk_fields": [
+      "premises",
+      "conclusion",
+      "specialisation_map",
+      "proof_mechanism",
+      "strict_delta",
+      "allowed_wording"
+    ]
+  },
+  "exact_declaration_crosswalk": {
+    "status": "complete_current_v4_source_compared_2026-08-27",
+    "source_basis": {
+      "pdf": "annexes/arxiv-2606-24972-wang-grau-ribas-v4/source.pdf",
+      "pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "pdf_pages": 10,
+      "official_record": "https://arxiv.org/abs/2606.24972",
+      "exact_locators": [
+        "Lemma 2.1, printed pp. 3–4: eventual integrality, affine carry recurrence, polynomial height bound, and logarithmic gap bound.",
+        "Theorem 1.1, printed p. 2: positive density in polynomial-scale windows; Lemma 2.4, printed p. 5, and Propositions 3.1–3.2, printed pp. 6–8: polynomial locking and interior/exterior continuation counts."
+      ]
+    },
+    "local_source_basis": {
+      "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GenericTailOrbitRigidity.lean",
+      "sha256": "f0506ba8880da2f5914da0a2e7d2b5435e19104b66294cde0e78648a50704487",
+      "line_locators": [
+        "lines 67–70: IsTemperedBinaryOrbit recurrence and u(N)/2^N → 0 boundary.",
+        "lines 337–363: temperedBinaryOrbit_eq_scaledTail and the homogeneous doubling-orbit rigidity engine.",
+        "lines 366–440: rationality-to-orbit construction, orbit-to-rationality converse, and the exact iff surface."
+      ],
+      "companion_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean",
+      "companion_sha256": "6a0b7b25bcdc9e704eefccf8392419bfd692a9374290386a2949ef30bedfb6a5"
+    },
+    "rows": [
+      {
+        "family": "forward_carry",
+        "external_premises": "b≥2; integer-valued polynomial weight w; infinite support; rational weighted expansion; N sufficiently large after clearing the denominator's base-supported part.",
+        "external_conclusion": "R_N is integral, R_{N+1}=bR_N−Qw(N+1)d_{N+1}, and R_N has a polynomial height bound; in the binary linear case this yields logarithmic support gaps.",
+        "specialisation_map": "b=2, w(n)=n, c(n)=n*d_n, v=Q, u(N)=R_N; the source's eventual recurrence is the c(n)=n*d_n instance of the local IsTemperedBinaryOrbit recurrence.",
+        "local_declarations": ["IsTemperedBinaryOrbit", "exists_temperedBinaryOrbit_of_rational"],
+        "relation": "direct external antecedent for the forward carry direction, with the local statement generalized to arbitrary c(n)≤n and normalized from N=0.",
+        "strict_delta": "The local file exposes the generic coefficient interface and the explicit tempered boundary; neither changes the source's polynomial-window density theorem.",
+        "allowed_wording": "Wang v4 supplies the forward carry antecedent in the polynomially weighted setting; the local Lean declaration generalizes and packages that recurrence interface."
+      },
+      {
+        "family": "tempered_orbit_rigidity",
+        "external_premises": "The current v4 source gives the carry recurrence and its analytic tail representation in the polynomial-weighted setting.",
+        "external_conclusion": "No located theorem in v4 states that every subexponential integer orbit with the recurrence equals the canonical scaled tail.",
+        "specialisation_map": "Local difference d(N)=u(N)−v*T_c(N) obeys d(N+1)=2d(N); the quotient boundary forces d=0.",
+        "local_declarations": ["doublingOrbit_eq_zero_of_tempered", "temperedBinaryOrbit_eq_scaledTail"],
+        "relation": "local formal abstraction delta; not attributed to Wang v4.",
+        "strict_delta": "Explicit uniqueness/rigidity of the tempered orbit, including the homogeneous 2^N parasite boundary.",
+        "allowed_wording": "The local Lean source separately proves a tempered-orbit rigidity interface; no novelty or priority claim is made."
+      },
+      {
+        "family": "rationality_converse_and_iff",
+        "external_premises": "The current v4 source assumes rationality to construct the carry and proceeds to polynomial-window density.",
+        "external_conclusion": "No located theorem in v4 states the local arbitrary-coefficient converse or the exact rationality iff tempered-orbit criterion.",
+        "specialisation_map": "The local orbit at N=0 recovers the original series through binaryCoeffTail_zero, while the tempered boundary removes the homogeneous solution.",
+        "local_declarations": ["rational_of_exists_temperedBinaryOrbit", "binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit", "not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit"],
+        "relation": "local formal converse/iff surface; not imported from the external density theorem.",
+        "strict_delta": "Converse rationality and exact iff for arbitrary nonnegative linearly bounded coefficients, separated from Wang's nontrivial density argument.",
+        "allowed_wording": "The local Lean source provides a separately checked converse/iff interface; it does not import or reproduce Wang's density conclusion."
+      }
+    ],
+    "comparison_result": "The current v4 source closes the forward attribution boundary and confirms that the hard external step is polynomial locking plus interior/exterior counting. The local converse and tempered-orbit rigidity remain distinct formal interfaces, with no priority or novelty claim.",
+    "consumer_effect": "Citation and claim-integrity consumers can distinguish Wang's forward antecedent from the local formal abstraction without treating the source PDF, Lean declarations, or #257 endpoint as one theorem."
+  },
+  "public_claim_boundary": {
+    "local_effect": "private routing and source capture only; the current-v4 exact statement comparison is recorded above and does not authorize publication or priority language",
+    "proof_authority": "not_accepted",
+    "publication_effect": "none",
+    "non_claims_preserved": [
+      "not_a_new_carry_mechanism_claim",
+      "not_a_priority_claim_for_generic_rigidity",
+      "not_a_public_citation_or_paper_edit",
+      "not_erdos_257_solution"
+    ],
+    "forbidden_until_exact_comparison": [
+      "replace_literature_novelty_unchecked_prose",
+      "state_that_converse_or_rigidity_is_new",
+      "treat_annex_content_as_Lean_theorem_authority"
+    ]
+  },
+  "annex_section_routes": [
+    {
+      "annex_target": "carry-recurrence-and-method-seccarry-method",
+      "note_id": "n001",
+      "local_task": "Build a theorem-level forward/converse/rigidity comparison only when the claim-boundary work is activated."
+    }
+  ],
+  "next_private_mapping_pass": {
+    "status": "complete_current_v4_crosswalk",
+    "completed_at": "2026-08-27",
+    "source_version": "arXiv:2606.24972v4",
+    "result": "Lemma 2.1 is the current forward carry antecedent after the binary-linear specialisation; no current-v4 theorem located for the local arbitrary-coefficient iff, tempered-orbit rigidity, or homogeneous-parasite boundary.",
+    "recommended_order": [
+      "extract_exact_source_statements",
+      "record_specialisation_map",
+      "separate_forward_converse_and_rigidity_rows",
+      "set_allowed_public_wording",
+      "refresh_only_the_approved_public_projection"
+    ],
+    "first_command": "./repo-python annex_import.py show --slug arxiv-2606-24972-wang-grau-ribas --prefix carry-recurrence-and-method-seccarry-method",
+    "reentry_condition": "Re-enter on a newer official arXiv version, an exact source theorem matching the local converse/uniqueness surface, or a public projection that attempts to merge the local formal result with Wang's density theorem."
+  },
+  "release_topology_link": {
+    "public_prior_art_policy_owner": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+    "public_prior_art_drift_report_target": "microcosm-substrate/receipts/lean_formal_methods_os/public_prior_art_drift_report_v0.json"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos243_erdos260_wang_current_v4_integral_carry@source-3a57af1a",
+    "evidence_class": "Primary-source ordinary proof in Han Wang arXiv:2606.24972v4, Lemma 2.1 and Theorem 1.1, compared with Lean-checked local carry/rigidity declaration families; no public projection is changed here.",
+    "closest_known_result": "Wang's current Lemma 2.1 gives the eventual integral affine carry recurrence and polynomial height bound in the polynomially weighted setting. Its binary-linear specialisation is a direct external antecedent for the forward carry direction.",
+    "comparison_relation": "Strong current-v4 external antecedent for the forward recurrence; the local formal abstraction remains distinct only in its arbitrary-coefficient converse rationality criterion, tempered-orbit uniqueness, and explicit homogeneous-parasite boundary, none of which are attributed to Wang.",
+    "exact_delta": "The source-specific delta is a declaration-family abstraction that isolates recurrence rigidity from Wang's later polynomial locking and interior/exterior density argument; it does not claim a new carry mechanism.",
+    "disconfirming_evidence": "Current v4 does not by itself establish the local iff theorem for arbitrary nonnegative linearly bounded coefficients, the tempered-orbit uniqueness statement, or the #257 endpoint. The local Lean files do not formalize Wang's polynomial-window density proof.",
+    "confidence": {
+      "level": "high_for_forward_antecedent_and_attribution_medium_for_local_abstraction_delta",
+      "basis": "The current official v4 PDF is locally downloaded and SHA-bound; its title page names Han Wang, the arXiv record lists v4, and the retained v2 annex is explicitly marked historical."
+    },
+    "significance": "High attribution value and moderate formalisation value: it prevents generic binary-carry recurrence language from being presented as unexplored while preserving a reusable separation between local rigidity and global density counting.",
+    "claim_ceiling": "Wang v4 supplies the eventual forward integral-carry recurrence and polynomial height bound in his stated polynomially weighted setting. The local Lean family supplies only its separately checked abstraction and converse/uniqueness candidates; no new carry theorem, density result, or Erdős endpoint follows.",
+    "hard_step": "The difficult external step is polynomial locking plus interior/exterior continuation counting for polynomial-scale windows; the local formal route stops before that density argument.",
+    "open_boundary": "No current-v4 theorem was located for the local arbitrary-coefficient iff or uniqueness of every subexponential integer orbit, and no #257 irrationality or #260 density conclusion is imported into the Lean source.",
+    "bounded_expert_review_act": "Completed source crosswalk: verify the binary-linear specialisation of Lemma 2.1 and preserve the separation between the external density proof and the local converse/rigidity interface.",
+    "reentry_trigger": "Re-enter on a new official arXiv version, an exact source theorem matching the local converse/uniqueness surface, or any public projection that attempts to state the external density theorem and local formal result as one claim.",
+    "source_generation_binding": {
+      "external_source": "arXiv:2606.24972v4, Lemma 2.1 (printed pp. 3–4), Theorem 1.1 (printed p. 2), and polynomial-window mechanism (printed pp. 5–10)",
+      "external_source_pdf": "annexes/arxiv-2606-24972-wang-grau-ribas-v4/source.pdf",
+      "external_source_pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "external_source_pdf_pages": 10,
+      "historical_v2_annex_sha256": "4c057fa98b0e75d234892327b5a81fbc3223a121d739dca8839872cf9991bae7",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": {"GenericTailOrbitRigidity.lean": "f0506ba8880da2f5914da0a2e7d2b5435e19104b66294cde0e78648a50704487", "RationalSupportCarrySkeleton.lean": "6a0b7b25bcdc9e704eefccf8392419bfd692a9374290386a2949ef30bedfb6a5"},
+      "parity_status": "Current v4 PDF and local source snapshots are bound; the exact forward crosswalk is recorded and no public citation, Comparator, or endpoint upgrade is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "external_source_version": "arXiv:2606.24972v4",
+      "external_source_pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "historical_v2_annex_sha256": "4c057fa98b0e75d234892327b5a81fbc3223a121d739dca8839872cf9991bae7",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3"
+    },
+    "claim_guard": "Only the forward carry antecedent and separately checked local abstraction are covered; no imported density, converse, uniqueness, or Erdős endpoint claim.",
+    "reentry_trigger": "Re-enter on source-version or exact declaration-crosswalk changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "External theorem comparison with high attribution value; local recurrence algebra is routine relative to the source's density argument.",
+    "slow_down_at": "The specialisation b=2, w(n)=n, c(n)=n d_n, v=Q, u(N)=R_N and the separation of forward carry from converse/uniqueness and polynomial-window counting.",
+    "automation_can_establish": ["Source/archive hashes and local declaration parity", "Finite specialisation algebra"],
+    "human_judgment_required": ["Whether any later Wang section implies a stronger local statement", "How to credit formal abstraction without claiming new carry mathematics"],
+    "review_act": "Crosswalk complete at current v4: preserve the external/local claim firewall and re-enter only on a source-version or exact theorem-match change."
+  }
+}

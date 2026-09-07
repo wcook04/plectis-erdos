@@ -1,0 +1,35 @@
+import ErdosProblems
+
+/-! Reproducible axiom requests. Not run in the authoring environment. -/
+
+#print axioms ErdosProblems.Erdos269.PaperR7.admissible_modular_minors
+#print axioms ErdosProblems.Erdos269.PaperR7.allReducedTailsNonintegral_iff
+#print axioms ErdosProblems.Erdos269.PaperR7.literal_integer_forcing_and_four_radices
+#print axioms ErdosProblems.Erdos269.PaperR7.long_actual_orbit
+#print axioms ErdosProblems.Erdos269.PaperR7.long_all_scale_lattice
+#print axioms ErdosProblems.Erdos269.PaperR7.long_dyadic_alphabet
+#print axioms ErdosProblems.Erdos269.PaperR7.long_no_bounded_length
+#print axioms ErdosProblems.Erdos269.PaperR7.long_window_growth
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_cell_constancy_and_jumps
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_cubic_height_bounds
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_generic_denominator_reduction
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_jump_count
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_pinning_and_rigidity
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_shell_projection_and_quadratic
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_two_by_two_fixture
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_two_prime_rank
+#print axioms ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation
+#print axioms ErdosProblems.Erdos269.PaperR7.rank_cutMatrix
+#print axioms ErdosProblems.Erdos269.PaperR7.short_actual_orbit
+#print axioms ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge
+#print axioms ErdosProblems.Erdos269.PaperR7.short_window_equivalence
+#print axioms ErdosProblems.Erdos269.PaperR7.trueNormalizedState_le_8640_div_343
+#print axioms ErdosProblems.Erdos269.PaperR7.two_prime_transcendence_from_analytic_inputs
+#print axioms ErdosProblems.Erdos269.PaperR7.uniform_carry_midpoint_witness
+#print axioms ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far
+#print axioms ErdosProblems.Erdos269.exponent_unique_in_short_interval
+#print axioms ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight
+#print axioms ErdosProblems.Erdos269.no_bounded_positive_int_state_of_leastPositiveResidue
+#print axioms ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape
+#print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight

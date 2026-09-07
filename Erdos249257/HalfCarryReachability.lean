@@ -725,9 +725,8 @@ theorem boolean_sub_signedMobiusBaseline_eq_centeredCoboundary
   rw [hbaseline]
   exact mobiusCenteredHalfCarry_coboundary A N
 
-/-- Any subexponential Möbius-centred carry yields exact half-membership
-through the canonical denominator-two orbit; the temperedness bound is the
-displayed hypothesis. -/
+/-- Any subexponential Möbius-centred carry already closes exact
+half-membership through the existing canonical denominator-two orbit. -/
 theorem support_half_of_mobiusCenteredHalfCarry_tempered
     (A : Set ℕ) (hone : 1 ∉ A)
     (htempered : Tendsto

@@ -1,0 +1,142 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "nearest_integer_linear_form_divisibility_boundary",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_rational_lattice_spacing_with_conditional_erdos68_divisibility_screen",
+  "problem_id": "erdos_68",
+  "purpose": "Classify the rounded rank-two residual by its exact conditional arithmetic content and prevent nearest-integer boundedness from being reported as an irrationality mechanism.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/nearest_integer_linear_form_divisibility_boundary.card.json",
+    "card_commit_at_review": "cf68aacb12c83871c49e5908263eb6aca5b51e77",
+    "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
+    "source_declarations": [
+      "exists_channelResidual_eq_moment_mul_factorialGapSeries_add_int",
+      "exists_cramerFactorialGridResidual_eq_det_mul_factorialGapSeries_add_int",
+      "primeTranslator_scaled_channelResidual_eq_int",
+      "exists_primeTranslator_residual_abs_le_half",
+      "exists_primeTranslator_strict_reduced_kernel"
+    ]
+  },
+  "classification": {
+    "theorem_class": "rational_lattice_spacing_and_denominator_divisibility_for_nearest_integer_linear_forms",
+    "novelty_class": "standard_elementary_core_with_source_specific_conditional_residual_reclassification",
+    "frontier_relation": "denominator_smoothness_screen_not_an_irrationality_producer",
+    "formalization_class": "source_residual_architecture_Lean_checked_generic_rational_lattice_lemma_direct_on_card",
+    "priority_claim": "none",
+    "recommended_terminology": "rational-lattice divisibility screen for a nearest-integer linear form",
+    "acceptable_descriptive_alias": "nearest-integer linear-form divisibility boundary",
+    "standard_mechanism": "distance to the nearest integer on the lattice $(1/q)\\mathbb Z$, together with coprimality of a reduced numerator and denominator",
+    "discouraged_terminology": [
+      "irrationality criterion",
+      "unconditional denominator exclusion",
+      "denominator lower bound",
+      "small linear form",
+      "rank-two irrationality mechanism"
+    ],
+    "attribution": "Treat distance-to-the-nearest-integer and the rational lattice-spacing lemma as standard elementary Diophantine approximation. Attribute only the exact factorial-gap residual identity, determinant coefficient, and prime-unit translation architecture to the local Lean source.",
+    "mathematical_interest": "The generic lemma is routine. The valuable result is the exact semantic correction: conditional on $S=a/q$, strict rounded nonvanishing says $q\\nmid\\det A$ and nothing more unless an independent sub-lattice smallness estimate is supplied.",
+    "reusable_scope": "Any construction producing $NS+K$ with $N,K\\in\\mathbb Z$ and then translating to a nearest integer. The interpretation applies only after declaring a reduced rational representation $S=a/q$.",
+    "why_it_matters": "It stops a bounded residual from being mistaken for a Diophantine contradiction and relocates the #68 rank-two construction into the live denominator-smoothness lane, where its determinant can be compared with existing factorial divisibility exclusions."
+  },
+  "primary_sources": [
+    {
+      "id": "cassels_1957_diophantine_approximation",
+      "title": "An Introduction to Diophantine Approximation",
+      "author": "J. W. S. Cassels",
+      "publisher": "Cambridge University Press",
+      "year": 1957,
+      "url": "https://books.google.com/books?id=3gY9AAAAIAAJ",
+      "exact_anchor": "Chapter I develops the one-dimensional distance-to-the-nearest-integer framework used throughout classical Diophantine approximation.",
+      "supports": "Canonical terminology and context for $\\|x\\|$ as distance to the nearest integer and for comparing a linear form with its underlying rational lattice.",
+      "does_not_support": "The factorial-gap residual, its Cramer determinant, or any #68-specific divisibility conclusion."
+    }
+  ],
+  "mechanism_comparison": {
+    "nearest_integer_bound": "For every real $x$, $\\|x\\|\\le1/2$; this is normalization, not decay.",
+    "rational_lattice": "If $S=a/q$ is reduced, then $NS+K$ lies in $(1/q)\\mathbb Z$ and its nearest-integer residual is zero exactly when $q\\mid N$.",
+    "genuine_irrationality_form": "A rationality contradiction would need a nonzero residual strictly below $1/q$, or another independent argument incompatible with the lattice.",
+    "source_specific_consumer": "The Lean source supplies $N=\\det A$ and an integral translation direction; it does not supply cofinal strict nonvanishing or sub-lattice smallness."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Cassels Introduction Diophantine Approximation distance to nearest integer",
+      "nearest integer rational denominator lattice divisibility",
+      "linear form nearest integer denominator divisibility"
+    ],
+    "result": "The surrounding notation and lattice viewpoint are standard Diophantine approximation. No independent theorem-level novelty remains in the generic lemma; the only substantive classification task is the exact source-specific conditional interpretation.",
+    "boundary": "The citation establishes standard context, not a claim that Cassels states this factorial-gap specialization."
+  },
+  "claim_boundary": {
+    "allowed_wording": "If the factorial-gap series is $S=a/q$ in lowest terms, then strict nonvanishing of the rounded Cramer residual is exactly the conditional divisibility exclusion $q\\nmid\\det A$; the universal $1/2$ nearest-integer bound is compatible with rationality and supplies no irrationality contradiction.",
+    "forbidden_wording": [
+      "The rounded residual unconditionally excludes denominators.",
+      "A nonzero residual bounded by one half proves irrationality.",
+      "The construction gives a lower bound on q.",
+      "The source proves strict nonvanishing cofinally.",
+      "The Cramer determinant supplies a sub-lattice small linear form."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_unconditional_denominator_information",
+      "not_a_denominator_lower_bound",
+      "not_cofinal_nonvanishing",
+      "not_erdos_68_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/nearest_integer_linear_form_divisibility_boundary.card.json",
+      "effect": "Make the rationality hypothesis visible in the title and replace ambiguous boundary language with standard rational-lattice terminology."
+    },
+    {
+      "consumer": "Erdős #68 proof fleet",
+      "effect": "Evaluate the rank-two producer as a determinant-denominator smoothness exclusion; require separate strict smallness for any irrationality claim."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "State the conditional $q\\nmid\\det A$ interpretation exactly and keep the universal nearest-integer radius visibly separate from Diophantine decay."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "routine": "The half-unit nearest-integer bound and lattice membership of NS+K when S=a/q are elementary.",
+    "load_bearing": "Whether a claimed residual estimate is below the exact lattice spacing 1/q, and whether strict nonvanishing is cofinal rather than a finite scan.",
+    "externally_sourced": "Cassels' Chapter I nearest-integer and rational-approximation framework.",
+    "still_unverified": "Any denominator-growth, sub-lattice smallness, or cofinal nonvanishing bridge for the factorial-gap series.",
+    "review_act": "Check one reduced-rational calculation and compare every proposed bound with 1/q; reject any inference based only on the universal 1/2 radius."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "nearest_integer_linear_form_divisibility_boundary@card-cf68aac",
+    "evidence_class": "Standard elementary rational-lattice lemma plus a Lean-checked source-specific factorial-gap residual identity and conditional divisibility screen.",
+    "closest_known_result": "Cassels' one-dimensional Diophantine approximation framework supplies distance-to-nearest-integer and rational-lattice terminology; the exact Cramer/factorial-gap translation is local source work.",
+    "comparison_relation": "For a reduced rational S=a/q, an integer translate NS+K lies in (1/q)Z, so a nonzero rounded residual excludes q dividing N only conditionally. The universal half-unit nearest-integer bound is normalization, not an irrationality estimate.",
+    "exact_delta": "The route's useful contribution is semantic: it reclassifies the rank-two rounded residual as a denominator-divisibility screen and makes the missing sub-lattice smallness/cofinal nonvanishing obligations explicit.",
+    "disconfirming_evidence": "No source theorem supplies an unconditional denominator lower bound, cofinal strict nonvanishing, or residual below 1/q; the Lean declarations provide the determinant channel and integral translation but not those bridges.",
+    "confidence": {
+      "level": "high_for_standard_lattice_interpretation_and_pinned_conditional_source_identity; low_for_any_irrationality_implication",
+      "basis": "Cassels is an appropriate standard reference and the local declarations are source-pinned; stronger target-facing claims are explicitly absent."
+    },
+    "significance": "Moderate route-boundary value: it prevents a common nearest-integer overclaim and redirects expert effort toward denominator smoothness or genuine sub-lattice decay, but it is not a new theorem or #68 advance.",
+    "claim_ceiling": "State only the conditional equivalence q not dividing det A under S=a/q in lowest terms, together with the standard half-unit bound. Do not call it an irrationality criterion or denominator lower bound.",
+    "hard_step": "Supply an independent cofinal strict nonvanishing plus a residual estimate below the rational lattice spacing, or an equivalent denominator-exclusion theorem.",
+    "open_boundary": "The rank-two construction has no unconditional denominator information, cofinal producer, or #68 irrationality conclusion; no new Comparator interface is needed beyond the existing inspectable conditional source result.",
+    "bounded_expert_review_act": "Check one reduced-rational calculation from NS+K to q dividing N, then test whether any proposed residual estimate is genuinely below 1/q rather than merely below 1/2.",
+    "reentry_trigger": "Re-enter only if the card/source gains a proved sub-lattice smallness or cofinal nonvanishing theorem, or if a primary source gives a more specific established formulation.",
+    "source_generation_binding": {
+      "card_commit": "cf68aacb12c83871c49e5908263eb6aca5b51e77",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "95417e6044ee30c58907a8a38e2c6c369fa43e06706fff56d8f3e5a6949d2ea3",
+      "primary_source_anchor": "Cassels, An Introduction to Diophantine Approximation (1957), Chapter I",
+      "parity_status": "Card and source identity are pinned; the classification is conditional and no endpoint claim is promoted."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "card_commit": "cf68aacb12c83871c49e5908263eb6aca5b51e77",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3"
+    },
+    "claim_guard": "Nearest-integer boundedness and rational-lattice divisibility remain separate from any irrationality or denominator-growth theorem.",
+    "reentry_trigger": "Re-enter on card, source declaration, or any claimed sub-lattice estimate change."
+  }
+}

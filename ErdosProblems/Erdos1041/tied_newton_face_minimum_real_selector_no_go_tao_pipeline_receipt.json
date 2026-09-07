@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "adjacent_arm_and_tail_containment_after_metric_closure",
+  "output_stage": "greedy_minimum_real_critical_hub_selector_exactly_refuted",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.md",
+  "human_understanding_delta": "Critical-value negativity and geometric usability cannot be selected in two independent stages. The exact quintic has a unique most-negative real critical value at c=1/4, but every adjacent bracketing certificate through that hub is blocked by the same positive waypoint at 2/3 for every cutoff. A successful theorem must optimize or certify hub, adjacent pair, and cutoff jointly.",
+  "verification_state": "ordinary exact critical-root classification; derivative factorization, rational values, cubic-root comparison, Viete conjugate-pair gap, and cutoff dichotomy Lean checked; independent SymPy rational replay PASS; focused serialized Lean replay PASS",
+  "publication_or_review_state": "private authoring checkpoint; not independently reviewed and not a solution of unrestricted Erdős #1041",
+  "canonicalization_state": "exact degree-five mechanism no-go with explicit claim boundary",
+  "unresolved_downstream_bottleneck": "Prove or refute existence, over all negative critical hubs, adjacent bracketing pairs, and radii, of simultaneous finite-arm and outward-tail containment. A finite Bernstein-control formulation is the current exact target; paired trace and the adjacent ellipse then supply strictness and metric control.",
+  "next_stage_owner": "mathematical_closure_engine",
+  "tool_disclosure": "The rational coefficients were discovered by a bounded coefficient search and then replaced by exact factorization and inequalities. Numerical critical roots are diagnostic only; every promoted comparison is analytic and symbolically replayed."
+}

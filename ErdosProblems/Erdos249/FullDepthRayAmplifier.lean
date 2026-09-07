@@ -50,8 +50,8 @@ irrationality itself.
 
 namespace ErdosProblems.Erdos249.FullDepthRayAmplifier
 
-open Erdos249257
-open Erdos249257.TotientTailPeriodKiller
+open Erdos257PeriodNoncollapse
+open Erdos257PeriodNoncollapse.TotientTailPeriodKiller
 open ErdosProblems.Erdos249.PeriodMultipleEscape
 
 /-- The `h`-shift of the local totient tail at basepoint `N`. -/

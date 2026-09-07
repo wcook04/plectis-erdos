@@ -1,0 +1,29 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_normalized_cubic_compactness_470",
+  "recorded_at": "2026-08-25",
+  "input_stage": "anisotropic_cubic_cone_complement_and_radial_energy_bound",
+  "output_stage": "lean_checked_rational_compact_coefficient_box",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNormalizedCubicCompactness.md",
+    "ErdosProblems/Erdos1041/SexticNormalizedCubicCompactness.lean"
+  ],
+  "human_understanding_delta": "The second-mode exit threshold forces the balance radius rho to be at least 25s/128. Radial energy then bounds the normalized cubic coordinate by 470, within 1.6 percent of the sharp calibration 462.65. The remaining mixed atlas is therefore a literal compact box with a tight kernel-checked rational boundary.",
+  "verification_state": {
+    "analytic": "complete_rational_balance_radius_energy_and_ratio_proof",
+    "symbolic": "not_needed_exact_rational_argument",
+    "lean": "warning_free_canonical_cached_build_and_final_serialized_authority_check_passed",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "Lean compactness theorem, concise exposition, research packet boundary, and atlas handoff validated; strengthened from 2048 to 470",
+  "unresolved_downstream_bottleneck": "Construct the finite connector cover on |E1|/|E2|<4/5 and |E3|/rho^3<=470, using strict phase collars and canonical null-box cells, then absorb the nonlinear remainder.",
+  "next_stage_owner": "Refinery: use 470 as the formal compact-box boundary and 462.65 as the sharp analytic calibration of the same input inequalities.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation and Lean formalization under operator direction",
+    "computation": "No computation is needed for the rational theorem; 462.65 is the analytic calibration and motivated the rational ceiling 470.",
+    "formalization": "Lean checks the 25-over-128 radius lower bound, seven-halves cubic energy bound, 470 product inequality, and ratio form.",
+    "claim_boundary": "Proves compactness of the normalized cubic coordinate. It does not construct the compact atlas, transfer to all actual polynomials, or settle unrestricted Erdos #1041."
+  }
+}

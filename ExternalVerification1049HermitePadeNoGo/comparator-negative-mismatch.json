@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049HermitePadeNoGo.Challenge",
+  "solution_module": "ExternalVerification1049HermitePadeNoGo.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

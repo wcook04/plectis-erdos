@@ -1,0 +1,171 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "affine_cylinder_delay_cap_countermodel_v0",
+  "status": "adjudicated_source_specific_finite_countermodel_with_routine_components",
+  "problem_id": "erdos_269",
+  "review_unit": {
+    "result_family": "nested_affine_cylinder_delay_countermodels",
+    "exact_result_ids": [
+      "affine_cylinder_delay_101_counterexample",
+      "escape_is_generic_with_no_accumulation",
+      "farey_band_nonmonotone_occupancy"
+    ],
+    "source_generation": {
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean",
+      "formal_source_sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e",
+      "computational_certificate": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_affine_cylinders.py",
+      "computational_certificate_sha256": "3718141d62942420bdcd351a9f8532ba1311593e283fca6bfadbb8a493323791"
+    }
+  },
+  "evidence_class": {
+    "formal": "The named Lean declarations prove the one-step nesting and cap-composition interfaces under their displayed hypotheses.",
+    "exact_computation": "The pinned integer reconstruction certifies one depth-200 first-clear zero-lift trap at anchor 100, with first firing at 406.",
+    "open": "No arbitrary-depth admissibility theorem, scale-dependent escape law, integral-tail exclusion, or Erdős #269 irrationality theorem follows."
+  },
+  "classification": {
+    "prior_art_confidence_class": "strong_internal_provisional_case",
+    "novelty_confidence": "No priority claim. The interval nesting and rational reconstruction components are elementary; the source-specific first-clear construction has no located named antecedent, and non-location is not evidence of novelty.",
+    "significance": "A useful negative mechanism: it retires uniform post-clear delay caps through 199 and prevents deeper finite scans from masquerading as all-depth evidence.",
+    "finite_scan_relation": "The small-denominator escape census is superseded as a global-delay extrapolation by the depth-200 witness. The Farey-band scan is subordinate exact evidence that nested intervals and coarse width do not decide rational admissibility.",
+    "recommended_terminology": "nested affine-cylinder finite delay countermodel",
+    "reusable_scope": "Finite route retirement for affine residue recurrences with a separately stated rational-point admissibility condition."
+  },
+  "closest_known_result": {
+    "relation": "routine_interval_nesting_plus_exact_rational_reconstruction",
+    "exact_delta": "The #269 source applies those components to canonical residues and an exact first-clear denominator band, producing one bounded counterexample rather than a general recurrence theorem.",
+    "external_literature_status": "No direct primary-source antecedent for the exact construction was located in the bounded searches below; this is recorded as uncertainty, not novelty."
+  },
+  "disconfirmation_search": {
+    "completed_at": "2026-08-25",
+    "queries": [
+      "\"nested interval\" \"rational reconstruction\" continued fractions",
+      "\"affine cylinder\" rational points recurrence interval nested"
+    ],
+    "outcome": "Generic continued-fraction and nested-interval material was located for the first query; the second gave no relevant mathematical result. Neither search provides a direct antecedent or a priority basis.",
+    "reentry_condition": "Repeat a primary-source comparison if an arbitrary-depth construction or a scale-dependent escape theorem changes the object from finite route boundary to a general result."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked nesting interface and pinned exact computation exhibit one depth-200 first-clear trap, refuting every uniform post-clear delay cap through 199 in the stated #269 model.",
+    "forbidden_wording": [
+      "Nested cylinders contain admissible rational points at arbitrary depth.",
+      "The depth-200 witness proves unbounded delay or an asymptotic delay law.",
+      "The finite escape census or Farey-band occupancy scan proves a cofinal rational-admissibility law.",
+      "The construction excludes integral tails or solves Erdős #269.",
+      "The construction is novel or has priority."
+    ],
+    "open_boundary": "The decisive arithmetic question is whether arbitrarily deep final intervals contain rational points in the required first-clear band, or whether a source-faithful scale-dependent escape law excludes them."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "all-scale lattice and residue-escape dynamics: nested affine-cylinder delay countermodels",
+    "disposition": "retire fixed-cap search; consolidate the small-denominator escape census, Farey-band occupancy scan, and all deeper finite witnesses under this one countermodel; do not create a separate Comparator proposition",
+    "expert_review_act": "Check the first-clear-band reconstruction and the exact witness replay, then judge whether the relevant next question is arbitrary-depth denominator admissibility or a distinct arithmetic escape mechanism.",
+    "paper_disposition": "route-killing failure/boundary in ‘The structural frontier: finite cylinders refute fixed escape horizons’."
+  },
+  "source_generation": {
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean",
+      "commit": "a3cc53b0b23d9556dcda68db96cdca16f0d46912",
+      "sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e"
+    },
+    "computational_certificate": {
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_affine_cylinders.py",
+      "commit": "13ec87bc5f02a92b015f564e1b165c947fa67bec",
+      "sha256": "3718141d62942420bdcd351a9f8532ba1311593e283fca6bfadbb8a493323791"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/affine_cylinder_delay_cap_countermodel.card.json",
+      "commit": "3935fe5c1ae8b350eaabcdbfde5b960b2af09e2e",
+      "sha256": "2bd12254c860383a7fa188e62c6f236ba8dc6b887dfb12ad1404276a470c42f0"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "source_result_ids": [
+        "affine_cylinder_delay_101_counterexample",
+        "escape_is_generic_with_no_accumulation",
+        "farey_band_nonmonotone_occupancy"
+      ]
+    },
+    "finite_certificate": {
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos269_affine_cylinder_depth_receipt.json",
+      "commit": "5e43249f6d6ddcb17a93e6190abe64af17a5e530",
+      "sha256": "2c2076355c9d7cb70009ab76bfc7cbd698430c0a8a856bebc2059be9e5a1fe7f"
+    },
+    "status": "current_source_card_committed_packet_pinned; no public-parity upgrade"
+  },
+  "parity_audit": {
+    "status": "current_source_card_packet_parity_with_public_cut_deferred",
+    "effect": "The formal nesting interface, exact checker, reviewer card, finite receipt, and committed packet all match current source hashes. The finite witness remains one depth-200 certificate; the worktree packet overlay, if any, is not evidence.",
+    "reentry_condition": "If the #269 packet or finite checker changes, rerun source/card/packet/receipt parity before revising the claim ceiling. Preserve the distinction between fixed-cap refutation and arbitrary-depth admissibility."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean interface plus exact finite computation",
+    "output_stage": "claim-ceiling clarification and literature-bound review support",
+    "artifact": "affine_cylinder_delay_cap_countermodel_v0",
+    "human_understanding_delta": "Separates elementary geometric nesting from the unproved arithmetic rational-point question, and places both finite scans beneath that boundary so depth or local occupancy is no longer mistaken for an all-depth result.",
+    "verification_state": "Source-pinned Lean interface and exact finite replay; no fresh Lean replay.",
+    "publication_or_review_state": "Inspectable internal countermodel with explicit attribution uncertainty; no priority or external-review claim.",
+    "canonicalization_state": "One route-killing family owns all fixed-cap and deeper-witness narratives.",
+    "unresolved_downstream_bottleneck": "Arbitrary-depth admissibility or a scale-dependent escape theorem.",
+    "next_stage_owner": "#269 proof owners and Mathematics Refinery."
+  },
+  "landing_consumers": [
+    "docs/formal_math/reviewer_cards/affine_cylinder_delay_cap_countermodel.card.json",
+    "Mathematics Refinery",
+    "#269 structural-frontier paper"
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos269_nested_affine_cylinder_delay_countermodels@source-a3cc53b-card-3935fe5",
+    "evidence_class": "Lean-checked nesting interfaces plus exact depth-200 computation and finite receipt; no arbitrary-depth theorem.",
+    "closest_known_result": "Nested-interval geometry and rational reconstruction/continued-fraction denominator tests are standard. No direct primary-source antecedent for this exact first-clear construction was located, so no novelty is inferred.",
+    "comparison_relation": "Source-specific finite countermodel assembled from routine interval nesting and exact reconstruction; its value is route retirement, not a new recurrence theorem.",
+    "exact_delta": "The depth-200 first-clear witness refutes every uniform post-clear delay cap through 199 in the stated #269 affine-cylinder model, superseding fixed-cap extrapolation from shallower scans.",
+    "disconfirming_evidence": "A single finite witness does not prove unbounded delay, arbitrary-depth admissibility, a scale-dependent escape law, integral-tail exclusion, or #269 irrationality.",
+    "confidence": {
+      "level": "high_for_finite_witness_and_claim_scope_medium_for_reusable_route-boundary_value_low_for_standalone_novelty",
+      "basis": "Formal source, checker, card, packet, and finite receipt hashes are pinned; the unresolved arithmetic question is explicitly separated."
+    },
+    "significance": "High route-killing value for #269: it prevents finite delay caps and deeper scans from being presented as an all-depth escape theorem, while remaining a finite countermodel.",
+    "claim_ceiling": "The pinned Lean interfaces and exact computation refute every uniform post-clear delay cap through 199 in this model. They do not establish unbounded delay or solve #269.",
+    "hard_step": "Determine arbitrary-depth rational-point admissibility in the required first-clear bands, or prove a source-faithful scale-dependent escape law.",
+    "open_boundary": "The finite construction leaves the all-depth denominator/admissibility problem untouched; any asymptotic or irrationality conclusion is outside the evidence.",
+    "bounded_expert_review_act": "Replay the first-clear denominator reconstruction and verify the quantifier ‘every cap through 199’; then assess whether the next attack should target admissibility or a distinct escape mechanism.",
+    "reentry_trigger": "Re-enter if an arbitrary-depth construction, scale-dependent escape theorem, or source/card/packet generation changes the finite-boundary classification.",
+    "source_generation_binding": {
+      "formal_source_commit": "a3cc53b0b23d9556dcda68db96cdca16f0d46912",
+      "formal_source_sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e",
+      "computational_certificate_commit": "13ec87bc5f02a92b015f564e1b165c947fa67bec",
+      "computational_certificate_sha256": "3718141d62942420bdcd351a9f8532ba1311593e283fca6bfadbb8a493323791",
+      "reviewer_card_commit": "3935fe5c1ae8b350eaabcdbfde5b960b2af09e2e",
+      "reviewer_card_sha256": "2bd12254c860383a7fa188e62c6f236ba8dc6b887dfb12ad1404276a470c42f0",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "finite_certificate_commit": "5e43249f6d6ddcb17a93e6190abe64af17a5e530",
+      "finite_certificate_sha256": "2c2076355c9d7cb70009ab76bfc7cbd698430c0a8a856bebc2059be9e5a1fe7f",
+      "parity_status": "Formal source, checker, card, committed packet, and finite receipt are bound; no public-parity or asymptotic upgrade is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "a3cc53b0b23d9556dcda68db96cdca16f0d46912",
+      "formal_source_sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e",
+      "reviewer_card_commit": "3935fe5c1ae8b350eaabcdbfde5b960b2af09e2e",
+      "reviewer_card_sha256": "2bd12254c860383a7fa188e62c6f236ba8dc6b887dfb12ad1404276a470c42f0",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0"
+    },
+    "claim_guard": "Only the finite fixed-cap refutation and its exact replay are covered; no arbitrary-depth or irrationality claim.",
+    "reentry_trigger": "Re-enter on source, checker, card, packet, or finite-receipt changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Finite exact countermodel with routine geometric components and high route-boundary value.",
+    "slow_down_at": "The distinction between refuting caps through 199 and proving unbounded delay; preserve the first-clear admissibility quantifier.",
+    "automation_can_establish": ["Exact integer reconstruction and depth-200 replay", "Hash parity across source, checker, card, packet, and receipt"],
+    "human_judgment_required": ["Whether any claimed asymptotic law is genuinely supported", "Which all-depth arithmetic question should receive expert attention"],
+    "review_act": "One bounded expert act: verify the finite witness and its exact quantifier before redirecting attention to the open arithmetic boundary."
+  }
+}

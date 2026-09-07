@@ -1,0 +1,132 @@
+version: v0.4
+project:
+  name: 'Erdős #249: a parity-perturbed rational control for the binary totient
+    series'
+  description: >-
+    The binary totient series is the sum over n at least 1 of φ(n)/2^n, and Erdős
+    Problem 249 asks whether that value is irrational. Five declarations are compared.
+    The strongest exhibits one explicit sequence c of natural numbers and proves four
+    properties of it together: c n is at most n for every n, c n equals φ(n) at every
+    odd n, the absolute value of c n minus φ(n) is at most 2 for every n, and the
+    binary series of c is exactly 5/4. A second declaration isolates that value
+    identity, and a third records that the binary series of c is rational. The fourth
+    declaration produces for that same c a positive natural number v and an integer
+    sequence u satisfying the exact carry recurrence u(N+1) = 2u(N) - v·c(N+1) with
+    u(N)/2^N tending to zero, and proves that for every e the canonical dyadic carry
+    sections of u through levels 1 to e span a rational vector space of dimension at
+    least 2^e - 1. The fifth declaration is the general form behind it: for every
+    coefficient sequence agreeing with φ at every odd argument, every positive v, and
+    every tempered integral binary orbit u of that sequence, the same rank bound
+    2^e - 1 holds at every level e. The construction is a centred base-four expansion
+    with digit set {-2, -1, 0, 1} applied to 5/4 minus the binary totient series and
+    deposited at the even arguments, so the odd arguments carry the totient unchanged
+    and every odd dyadic section of c is the corresponding odd totient section. These
+    declarations bound method. Every hypothesis of the carry anti-compression theorem,
+    and its conclusion, holds for a sequence whose series is the rational number 5/4,
+    so an irrationality proof for the binary totient series requires an input beyond
+    the carry recurrence, temperedness, the growth bound c n ≤ n, and the odd totient
+    channels. Any such proof must separate φ from a sequence that agrees with it at
+    every odd argument and differs from it by at most 2 at the even arguments. Nothing
+    here bears on whether the binary totient series is irrational, and Erdős Problem
+    249 remains open. This theorem family is the first presentation recorded in the
+    development and its novelty is unassessed.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A25
+sources:
+- title: A parity-perturbed rational control for the binary totient series
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The Lean development is the first presentation recorded here; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status; this theorem family is not attributed to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+review:
+  status: self-assessed
+  notes: The construction, the value identity, and the absence of any irrationality
+    conclusion were checked by the author with AI assistance; no independent review
+    is claimed.
+  reviewers: []
+status:
+  scope: Five exact source-backed declarations; one trusted sorry per Challenge theorem.
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  axiom_audit_status: awaiting_the_next_public_ci_run_for_this_entry
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249ParityPerturbedRationalControl.parity_perturbed_rational_control
+    file: ExternalVerification249ParityPerturbedRationalControl/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    novelty_status: unassessed
+    boundary: Properties of one explicit sequence; it proves nothing about the value
+      of the binary totient series.
+  - declaration: Erdos249257.ExternalVerification249ParityPerturbedRationalControl.control_series
+    file: ExternalVerification249ParityPerturbedRationalControl/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    novelty_status: unassessed
+    boundary: The value identity for the constructed sequence alone.
+  - declaration: Erdos249257.ExternalVerification249ParityPerturbedRationalControl.not_irrational_control
+    file: ExternalVerification249ParityPerturbedRationalControl/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    novelty_status: unassessed
+    boundary: Rationality of the constructed series; the irrationality question for
+      the totient series is untouched.
+  - declaration: Erdos249257.ExternalVerification249ParityPerturbedRationalControl.control_temperedOrbit_carryRank_unbounded
+    file: ExternalVerification249ParityPerturbedRationalControl/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    novelty_status: unassessed
+    boundary: A carry-rank lower bound for one rational-valued sequence; it excludes
+      a class of arguments and proves no irrationality statement.
+  - declaration: Erdos249257.ExternalVerification249ParityPerturbedRationalControl.finrank_canonicalCarryKernel_ge_of_oddAgree
+    file: ExternalVerification249ParityPerturbedRationalControl/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; axiom print pending the next public
+      CI run
+    novelty_status: unassessed
+    boundary: Conditional rank bound under an assumed tempered integral binary orbit;
+      no orbit is constructed and no series value is determined.
+alignment:
+  namespace: Erdos249257.ExternalVerification249ParityPerturbedRationalControl
+  statements:
+  - source: ErdosProblems.Erdos249.ParityPerturbedRationalControl
+    lean: five same-named exact transports
+    module: ExternalVerification249ParityPerturbedRationalControl/Challenge.lean
+    status: five-exact-transports-awaiting-first-public-ci-axiom-print

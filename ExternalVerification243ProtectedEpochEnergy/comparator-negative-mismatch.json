@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243ProtectedEpochEnergy.Challenge",
+  "solution_module": "ExternalVerification243ProtectedEpochEnergy.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243ProtectedEpochEnergy.protected_epoch_energy_integer"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

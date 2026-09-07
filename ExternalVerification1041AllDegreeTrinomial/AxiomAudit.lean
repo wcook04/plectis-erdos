@@ -1,0 +1,2 @@
+import ExternalVerification1041AllDegreeTrinomial.Solution
+#print axioms Erdos249257.ExternalVerification1041AllDegreeTrinomial.trinomial_erdos1041_conclusion

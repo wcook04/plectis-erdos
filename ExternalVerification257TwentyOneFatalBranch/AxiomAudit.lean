@@ -1,0 +1,16 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+import ExternalVerification257TwentyOneFatalBranch.Solution
+
+namespace Erdos249257.ExternalVerification257TwentyOneFatalBranch
+
+#print axioms twentyOneClosedRow_forces_quotientGreedy
+#print axioms one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates
+#print axioms one_div_twenty_one_mem_iff_not_fatalAlignedBranch
+#print axioms twentyOneFatalAlignedBranch_eventually_strict_supercapacity
+#print axioms twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+
+end Erdos249257.ExternalVerification257TwentyOneFatalBranch

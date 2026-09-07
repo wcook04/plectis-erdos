@@ -1,0 +1,245 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-08-26",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Authored ordinary universal proof with adversarial repairs, finite replay, and a sharp uncovered-family boundary; no Lean proof.",
+    "slow_down_at": "The singleton-defect identity, q>128 shift budget, and both finite-height density limits, not the finite checker output.",
+    "automation_can_establish": ["proof/checker/card hash parity", "finite replay arithmetic", "support-hypothesis extraction"],
+    "human_judgment_required": ["whether the repaired proof is complete under every quantifier", "how much overlaps Duverney--Tachiya full-monomial prior art", "whether the scoped theorem merits status-tagged Comparator visibility"],
+    "review_act": "Replay the rational-tail integrality reduction, isolated q^t u divisor collapse, shift construction, powerful-number count, and density limits; then search beyond the cited full-monomial literature."
+  },
+  "adjudication_currentness": {
+    "status": "proof_checker_card_snapshot_adjudicated_with_external_prior_art_boundary",
+    "bound_snapshot": {
+      "proof_source_commit": "d5b51d849cdff33d58aa990b199331b890d0d21d",
+      "proof_source_sha256": "cbdcf87c5b007bd745368e3d973091463e368baecc3fef5f5a7afbb42cda7533",
+      "checker_commit": "a9e3ca01224cda228f5983b67201551227aaafda",
+      "checker_sha256": "66206f611a25dfb74c4ad2a3e24b31a1438e60bd77bcdc1c1d6fef90483b29a1",
+      "reviewer_card_commit": "66f65a9875d4c5a4fe1f83140a6599d35b80f41f",
+      "reviewer_card_sha256": "6070a157d30dd9f1015071685dbc81c95b0cf67e2fbf39f8ef946467a0f532b3"
+    },
+    "claim_guard": "Only the fixed-t prime-power-rich powerful-support theorem is admitted as an authored ordinary proof candidate; no theorem for every powerful support, no Lean status, no priority, and no #257 solution.",
+    "reentry_trigger": "Re-enter if the proof/checker/card changes, a direct powerful-support antecedent appears, or the excluded family boundary is revised."
+  },
+  "source_generation": {
+    "proof_source_commit": "d5b51d849cdff33d58aa990b199331b890d0d21d",
+    "proof_origin_commit": "a9e3ca01224cda228f5983b67201551227aaafda",
+    "proof_source_path": "docs/formal_math/erdos257_iteration46_powerful_supports_2026_08_24.md",
+    "proof_source_sha256": "cbdcf87c5b007bd745368e3d973091463e368baecc3fef5f5a7afbb42cda7533",
+    "checker_commit": "a9e3ca01224cda228f5983b67201551227aaafda",
+    "checker_path": "docs/formal_math/erdos257_powerful_support/verify.py",
+    "checker_sha256": "66206f611a25dfb74c4ad2a3e24b31a1438e60bd77bcdc1c1d6fef90483b29a1",
+    "reviewer_card_commit": "66f65a9875d4c5a4fe1f83140a6599d35b80f41f",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/prime_power_rich_powerful_support_irrationality.card.json",
+    "reviewer_card_sha256": "6070a157d30dd9f1015071685dbc81c95b0cf67e2fbf39f8ef946467a0f532b3",
+    "status": "adversarial_ordinary_proof_review_with_finite_replay_and_primary_source_comparison; independent proof and specialist review remain downstream"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos257_scoped_powerful_support_irrationality@proof_d5b51d84_card_66f65a98_checker_a9e3ca01",
+    "source_generation": {
+      "proof_sha256": "cbdcf87c5b007bd745368e3d973091463e368baecc3fef5f5a7afbb42cda7533",
+      "checker_sha256": "66206f611a25dfb74c4ad2a3e24b31a1438e60bd77bcdc1c1d6fef90483b29a1",
+      "reviewer_card_sha256": "6070a157d30dd9f1015071685dbc81c95b0cf67e2fbf39f8ef946467a0f532b3"
+    },
+    "evidence_class": "Authored ordinary universal proof with adversarial repairs, finite replay, and primary-source comparison; not Lean-checked or independently human-reviewed.",
+    "comparison_relation": "Erdős (1968) supplies the summable pairwise-coprime support method, while Duverney--Tachiya (2019) covers full monomial images such as k^s. The scoped delta is the fixed isolated-prime-power witness theorem for irregular powerful supports.",
+    "closest_known_result": "The full monomial family is prior art; no bounded search located this prime-power-rich irregular-support formulation. That non-location does not establish priority.",
+    "exact_delta": "Powerful-divisor rigidity makes a selected q^t u defect a singleton, yielding irrationality for every base under the fixed-t, missing-lower-q-powers hypothesis and repaired density limits.",
+    "disconfirming_evidence": "The family {36k^2} remains uncovered, and the theorem does not cover every powerful support. Finite replay is not formal proof.",
+    "confidence": {
+      "stated_hypothesis_theorem": "medium_internal_provisional",
+      "proof_after_repairs": "medium_internal_provisional",
+      "prior_art_nonlocation": "low_to_medium_internal_provisional",
+      "every_powerful_support": "explicitly_false_or_unproved"
+    },
+    "claim_ceiling": "Candidate ordinary-proof irrationality theorem only for supports with a fixed t>=2 and infinitely many isolated q^t witnesses; the full powerful-support class and Erdős #257 remain open.",
+    "significance": "High within #257 as a scoped support-family theorem candidate, but subordinate to the general cofinal-skip frontier and not a programme-wide flagship.",
+    "hard_step": "Independently verify the singleton-defect identity, q>128 shift budget, and both finite-height density limits in the repaired ordinary proof.",
+    "open_boundary": "No Lean theorem, every-powerful-support result, full monomial novelty, or Erdős #257 solution follows.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Prime-power-rich powerful supports: a scoped irrationality theorem under review",
+      "supersession_or_consolidation": "Present one theorem stack with the exact support hypothesis, Duverney--Tachiya overlap, and {36k^2} boundary; consolidate certificate and density steps.",
+      "why_care": "It supplies a materially stronger support-family mechanism while making the uncovered powerful supports impossible to overlook."
+    },
+    "comparator_advisory": {
+      "disposition": "status_tagged_public_and_comparator_candidate",
+      "proposition_scope": "Expose the ordinary theorem only with fixed t, infinitely many q^t witnesses, missing lower q-powers, ordinary-proof label, finite-replay separation, and the {36k^2} nonclaim.",
+      "independent_interface_justified": true,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Replay the proof parameter order and search powerful-support Lambert-series literature beyond Erdős and Duverney--Tachiya.",
+    "reentry_trigger": "Reopen on proof correction, a direct antecedent, or a theorem covering the currently excluded support family."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos257_prime_power_rich_powerful_support_v2",
+    "result_family": "erdos257_scoped_powerful_support_irrationality",
+    "exact_result_id": "prime_power_rich_powerful_support_irrationality",
+    "source_generation": "2026-08-26",
+    "evidence_class": "authored ordinary universal proof with two adversarial repairs, finite checker replay, and primary-source comparison; not Lean or independently human-reviewed",
+    "prior_art_relation": "Erdos 1968 supplies the summable pairwise-coprime support method, while Duverney--Tachiya 2019 already covers full monomial images such as k^s. The present delta is the irregular-support theorem under a fixed isolated prime-power witness; bounded non-location is not a priority claim.",
+    "confidence_ceiling": "High for the stated hypotheses, proof/card hash parity, and uncovered-family boundary; moderate for the ordinary proof pending independent verification; low for originality or extension to every powerful support.",
+    "significance_rationale": "This is a broad candidate support-family theorem whose mechanism is reusable: powerful-divisor rigidity turns one isolated fixed-height prime power into a singleton tail defect. It is supporting #257 mathematics, not a new flagship or endpoint solution.",
+    "hard_step": "Verify the singleton-defect identity at n=q^t u and both repaired finite-height density truncations, including the q>128 admissible-shift budget.",
+    "open_boundary": "The proof requires fixed t>=2 with infinitely many q^t witnesses and missing lower q-powers; it excludes supports such as {36k^2}, does not cover every powerful support, and does not solve Erdos 257.",
+    "expert_review_act": "Independently replay the rational-tail integrality reduction, the q^t u divisor collapse, the shift construction, the square-root powerful-number count, and the two density limits; then search Lambert-series/powerful-support literature beyond the cited Erdos and Duverney--Tachiya cases.",
+    "next_reentry": "Re-enter only if the proof, checker, card, source identity, or a direct primary antecedent changes; do not repeat the bounded negative search."
+  },
+  "created_by": "codex_root",
+  "status": "candidate_scoped_theorem_primary_sources_compared_no_priority_claim",
+  "route_id": "prime_power_rich_powerful_support_irrationality",
+  "problem_id": "erdos_257",
+  "target": {
+    "card": "docs/formal_math/reviewer_cards/prime_power_rich_powerful_support_irrationality.card.json",
+    "proof": "docs/formal_math/erdos257_iteration46_powerful_supports_2026_08_24.md",
+    "checker": "docs/formal_math/erdos257_powerful_support/verify.py",
+    "source_origin_commit": "a9e3ca01224cda228f5983b67201551227aaafda",
+    "reviewed_proof_sha256": "cbdcf87c5b007bd745368e3d973091463e368baecc3fef5f5a7afbb42cda7533",
+    "statement": "For an infinite powerful support A with a fixed t>=2 and infinitely many primes q such that q^t is in A but q^v is not in A for 1<=v<t, sum_{d in A}1/(b^d-1) is irrational for every integer b>=2."
+  },
+  "result_identity": {
+    "local_result_key": "erdos_257:prime_power_rich_powerful_support_irrationality",
+    "version": "ordinary-proof-review-v1",
+    "authority_record": "formal_math/erdos257_period_noncollapse/prior_art_routes/prime_power_rich_powerful_support_irrationality_v0.json",
+    "proof_sha256": "cbdcf87c5b007bd745368e3d973091463e368baecc3fef5f5a7afbb42cda7533",
+    "checker_sha256": "66206f611a25dfb74c4ad2a3e24b31a1438e60bd77bcdc1c1d6fef90483b29a1",
+    "packet_registration_state": "registered_exact_result",
+    "packet_result_id": "prime_power_rich_powerful_support_irrationality",
+    "packet_registration_reentry": "Reconcile this authority route and the reviewer card with the packet if the packet result identity, reviewed proof, checker, or fixed-height support boundary changes."
+  },
+  "classification": {
+    "overall": "candidate_prime_power_rich_powerful_support_family_theorem_no_priority_claim",
+    "mechanism": "finite_shifted_tail_certificate_plus_powerful_divisor_rigidity",
+    "formalisation_status": "authored_ordinary_proof_with_finite_replay_not_Lean",
+    "nearest_prior_overlap": "full_monomial_support_case_is_Duverney_Tachiya_2019_prior_art",
+    "confidence": "moderate_pending_independent_proof_and_specialist_literature_review"
+  },
+  "sources": [
+    {
+      "source_id": "erdos_1968_irrationality_certain_series",
+      "citation": "Paul Erdos, On the irrationality of certain series, The Mathematics Student 36 (1968/1969), 222-226",
+      "annex_slug": "erdos-1968-irrationality-certain-series",
+      "source_artifact": "annexes/erdos-1968-irrationality-certain-series/source.pdf",
+      "source_sha256": "340fff6a8a70d2125587ebc62e8157258ed30a86bb19afe25257bb1cb2126e57",
+      "source_pdf": "annexes/erdos-1968-irrationality-certain-series/source.pdf",
+      "source_pdf_sha256": "340fff6a8a70d2125587ebc62e8157258ed30a86bb19afe25257bb1cb2126e57",
+      "extracted_markdown": "annexes/erdos-1968-irrationality-certain-series/extracted.md",
+      "extracted_markdown_sha256": "d5cf77ec57398e810d837dcf60ebf5169d1dc18c42dd0903d9c7acc1df65c1b0",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 5,
+      "source_read_status": "primary_scan_read_and_annex_extracted; local_only_archive",
+      "exact_locator": "pp. 222-226, theorem for summable pairwise-coprime supports and the stated unproved removal of coprimality",
+      "relationship": "classical summable-support antecedent; it does not provide the present powerful-divisor-rigidity construction"
+    },
+    {
+      "source_id": "duverney_tachiya_2019_chowla_erdos_refinement",
+      "citation": "Daniel Duverney and Yohei Tachiya, Refinement of the Chowla--Erdos method and linear independence of certain Lambert series, Forum Mathematicum 31 (2019), 1557-1566",
+      "url": "https://doi.org/10.1515/forum-2018-0299",
+      "annex_slug": "duverney-tachiya-2019-chowla-erdos-refinement",
+      "source_artifact": "annexes/duverney-tachiya-2019-chowla-erdos-refinement/source.pdf",
+      "source_sha256": "63e117c607868089e4ac6d41dc330ad742b3721f062c52d8ca92070425ae3f5e",
+      "source_pdf": "annexes/duverney-tachiya-2019-chowla-erdos-refinement/source.pdf",
+      "source_pdf_sha256": "63e117c607868089e4ac6d41dc330ad742b3721f062c52d8ca92070425ae3f5e",
+      "extracted_markdown": "annexes/duverney-tachiya-2019-chowla-erdos-refinement/extracted.md",
+      "extracted_markdown_sha256": "8ca11b3db35953262c9e01e8de23233e1018648ccb5cc0142c6241e0570430c2",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 11,
+      "source_read_status": "primary_author_pdf_read_and_annex_extracted",
+      "exact_locator": "Corollary 1.2 and formulas (1.11)-(1.12): article pp. 1559-1560; author preprint pp. 3-4. Crossref metadata and the publisher record resolve at DOI 10.1515/forum-2018-0299.",
+      "relationship": "proves linear independence for monomial images of full multiplicative semigroups; with F_infinity(P)=N it already covers sum_k 1/(b^{k^s}-1), but not arbitrary irregular support subsets"
+    }
+  ],
+  "proof_review": {
+    "hard_step": "Powerful rigidity makes the chosen defect at n=q^t u exactly one rather than a sieve estimate.",
+    "repairs_landed": [
+      "renamed the theorem from every powerful support to prime-power-rich powerful supports",
+      "chose q>128 before asserting squarefree-coprime density above 0.6",
+      "inserted finite-height truncation and the O(sqrt X) powerful-number count in both limiting density arguments"
+    ],
+    "remaining_review": "independent verification of the full certificate parameter order and every quantifier"
+  },
+  "disconfirmation_search": {
+    "performed_at": "2026-08-24",
+    "queries": [
+      "\"powerful numbers\" Lambert series irrationality",
+      "\"squarefull\" \"Lambert series\" irrationality",
+      "Google Scholar: \"powerful numbers\" irrationality Lambert",
+      "Google Scholar: \"square-full\" Lambert series irrational"
+    ],
+    "result": "No antecedent for the prime-power-rich powerful-support theorem was located. The bounded search did locate and verify the Duverney--Tachiya full monomial-support overlap through the local paper annex.",
+    "interpretation": "negative_search_evidence_only_not_novelty_or_priority"
+  },
+  "claim_boundary": {
+    "allowed_wording": "Candidate every-base irrationality theorem for prime-power-rich powerful supports, with an authored ordinary proof and finite replay; independent proof and prior-art review remain.",
+    "forbidden_wording": [
+      "irrationality for every powerful support",
+      "the whole powerful sub-universe is settled",
+      "a new proof of the full {k^s} case",
+      "Lean-verified theorem",
+      "solution of Erdos 257",
+      "first proof or established priority"
+    ]
+  },
+  "expert_review_support": {
+    "talk_state": "expert_talk_ready",
+    "natural_friction": "fixed t, missing lower q-powers, finite-height density errors, and A={36k^2} must remain visible",
+    "surviving_frontier": "remove the isolated-prime-power hypothesis or prove an appropriate large relative prime-power factor condition for all powerful supports"
+  },
+  "digestion_assessment": {
+    "significance_grade": "A_candidate_scoped_family_theorem",
+    "attention_priority": "high within erdos_257",
+    "consolidation_verdict": "one theorem stack with corollaries, not multiple novelty units",
+    "expert_review_gap": "ordinary-proof verification plus specialist search in Lambert-series and powerful-number literature"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "finite shifted-tail certificates from powerful-divisor rigidity and isolated fixed-height prime powers",
+    "disposition": "admit one status-tagged scoped support-family theorem; subordinate its corollaries, finite replay, and density estimates; keep it distinct from the general cofinal-skip frontier and from the prior full-monomial family.",
+    "consolidation_relation": "One theorem stack with one exact support hypothesis and the explicit {36k^2} boundary; do not split the certificate, density, or corollary steps into parallel theorem narratives.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Prime-power-rich powerful supports: a scoped irrationality theorem under review",
+      "supersession_or_consolidation": "Place the support theorem once, with its proof-status label, Duverney--Tachiya overlap, and uncovered family adjacent; consolidate corollaries and finite replay into that proof package rather than a chronology.",
+      "reason": "The object is materially stronger than a finite obstruction and its ordinary proof is inspectable. A status-tagged Comparator firewall may accompany the paper while preserving the fixed-height support hypothesis, proof status, prior-art overlap, and uncovered family."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "The scoped theorem may be mathematically useful, but it clarifies a support-family branch beneath the already admitted general #257 endpoint rather than changing the programme-wide first-contact frontier.",
+      "evidence_class": "authored ordinary proof with finite replay; independent review remains downstream",
+      "hard_step": "independent verification of the singleton-defect certificate and repaired density limits",
+      "prior_art_uncertainty": "the full monomial case is prior art; irregular-support antecedents remain specialist-review debt",
+      "open_boundary": "the theorem excludes {36k^2}, does not cover every powerful support, and does not solve #257",
+      "demoted_predecessor": null
+    }
+  },
+  "release_disposition": "status_tagged_public_and_comparator_candidate",
+  "release_disposition_reason": "The adversarially repaired ordinary proof, pinned source/checker hashes, exact support hypotheses, prior-art overlap, and uncovered {36k^2} family are inspectable. A public or Comparator statement must label the proof as ordinary and finite replay as non-authoritative; Lean transport and specialist review remain downstream value-adds, not visibility gates.",
+  "publication_eligibility": {
+    "class": "status_tagged_public_and_comparator_candidate",
+    "basis": "inspectable adversarially repaired ordinary proof, pinned source/checker hashes, explicit fixed-height isolated-prime-power hypothesis, primary-source overlap, and sharp uncovered-family boundary",
+    "statement_firewall": "Fix t>=2. Require a powerful support containing q^t for infinitely many primes q while excluding every lower positive q-power for those witnesses; conclude irrationality of the supported reciprocal sum for every integer base >=2. Label it ordinary proof and keep finite replay separate. Do not claim every powerful support: {36k^2} remains uncovered."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-257-mersenne-support-subseries.tex",
+    "section": "Prime-power-rich powerful supports: a scoped irrationality theorem under review",
+    "canonical_mechanism_family": "finite shifted-tail certificates from powerful-divisor rigidity and isolated fixed-height prime powers",
+    "relation": "Consolidate one candidate support-family theorem and its corollaries; retain Duverney--Tachiya's full-monomial antecedent and the {36k^2} boundary; retire every-powerful-support and finite-replay headlines.",
+    "understanding_delta": "Powerful rigidity is useful only with the isolated fixed-height witness that forces the singleton defect; sparsity alone is not the theorem.",
+    "evidence_boundary": "Authored ordinary proof with finite replay and repaired density arguments; no Lean or independent proof review; not every powerful support is covered.",
+    "hard_step": "Obtain independent proof review and extend or delimit the isolated-prime-power mechanism.",
+    "meaningful_failed_route": "A finite replay or powerful-number sparsity cannot replace the singleton-defect argument, and the full monomial case is prior art.",
+    "open_remainder": "The theorem remains under independent review; {36k^2} and Erdős #257 remain open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "proof_generation_and_finite_replay",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "prime_power_rich_powerful_support_irrationality",
+    "human_understanding_delta": "Makes the theorem's true support class, load-bearing rigidity step, prior-art overlap, density repairs, and uncovered powerful-support frontier explicit.",
+    "verification_state": "Adversarial ordinary-proof review with two repairs landed; finite checker parity retained; no Lean or independent human review asserted.",
+    "publication_or_review_state": "Eligible now for status-tagged public paper, theorem-card, exhibition, and Comparator visibility. It must retain ordinary-proof status, finite-replay separation, prior-art overlap, and the exact uncovered family; specialist review remains downstream and no priority or acceptance claim follows.",
+    "canonicalization_state": "single candidate support-family theorem",
+    "unresolved_downstream_bottleneck": "independent proof review and powerful-support literature review",
+    "next_stage_owner": "Role 3 for claim-faithful status-tagged integration; Mathematics Refinery and specialists for downstream proof and literature scrutiny"
+  }
+}

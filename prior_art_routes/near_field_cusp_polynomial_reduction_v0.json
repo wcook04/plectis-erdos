@@ -1,0 +1,336 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "ordinary_proof_commit": "50f20c664ff2c7d23ba6c29e6b2bcbba0252e32f",
+    "ordinary_proof_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFieldCuspPolynomial.md",
+    "ordinary_proof_sha256": "ae2cb99fee289bdfbf1cd8d509253d0cad0a726b272dcef8c918ca5810db889d",
+    "stability_proof_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+    "stability_proof_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeCuspLaw.md",
+    "stability_proof_sha256": "7548a7cded737f9b1feeaf62cd69e532452cc4461cbff0819f0935370c9d3bfe",
+    "ordinary_checker_commit": "50f20c664ff2c7d23ba6c29e6b2bcbba0252e32f",
+    "ordinary_checker_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_field_cusp_polynomial.py",
+    "ordinary_checker_sha256": "895bc50a3c870ed3a8ded7eda9f12c529480a170ab677a224ed516dd00d7616e",
+    "stability_checker_commit": "6fd8df0e0afc14b7ea63550b6534ee6414daf060",
+    "stability_checker_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py",
+    "stability_checker_sha256": "70fa6b5413957151542f3f828794747bf160e2eaefdb93343521a8af83381301",
+    "reviewer_card_commit": "db2b36c162aad90c2f212d04a6699c0012b1f793",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/near_field_cusp_polynomial_reduction.card.json",
+    "reviewer_card_sha256": "738a5fe89e06534b6f0562e50c708698833daf32f71a8fec6b34f88d116ffaf9",
+    "research_packet_commit": "7c7bc59bb737f356b5d2cf4a9c7b833d8141cf41",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "research_packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+    "source_result_ids": [
+      "quantitative_fekete_stability_hadamard_defect",
+      "near_fekete_cusp_positivity_n3_proved",
+      "capacity_geodesic_margin_is_first_order_in_the_critical_radius"
+    ],
+    "status": "ordinary_near_fekete_stack_and_finite_regressions_current_at_adjudication; no Lean_or_finite_perturbation_claim"
+  },
+  "parity_audit": {
+    "status": "source_card_packet_and_checker_current",
+    "effect": "The ordinary proofs, finite regression scripts, reviewer card, and indexed #1041 packet rows are pinned to current hashes. The stability and capacity statements remain ordinary mathematics; finite regressions do not prove the all-degree sign or finite-perturbation bridge.",
+    "reentry_condition": "Re-enter if any proof, checker, card, packet row, or source-origin lineage changes; preserve the separation between the Gram/Hadamard bridge, the exact normal form, the later limit-model theorem, and the open finite-perturbation remainder."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_near_fekete_cusp_stack_v2",
+    "result_family": "erdos1041_near_fekete_stability_cusp_reduction",
+    "exact_result_id": "quantitative_fekete_stability_hadamard_defect",
+    "source_generation": "2026-08-26",
+    "evidence_class": "ordinary Gram/Hadamard stability and normal-form proofs with finite regression instruments and separately sourced turning/bridge/window results; not Lean or independently reviewed",
+    "prior_art_relation": "Quantitative Hadamard/Gram-defect bounds are classical, with Grone--Johnson--Marques de Sa--Wolkowicz as the closest primary antecedent. Newton-flow radial transport is standard. The combined near-Fekete/cusp package and exact exponential wording are not claimed as new or priority-bearing.",
+    "confidence_ceiling": "High for the scoped stability bridge, normal-form identities, and evidence separation; moderate for exact literature non-location; low for arbitrary coefficient closeness, finite-perturbation transfer, or #1041 resolution.",
+    "significance_rationale": "The stack makes a difficult dependency legible: near-maximal Vandermonde ratio gives a Gram-defect budget, but the remaining cusp positivity and finite-perturbation bridge are separate. It is a reusable theory bridge, not a new determinant inequality.",
+    "hard_step": "Keep classical Gram stability, exact cusp coordinates, separately sourced all-degree turning/bridge/window positivity, and the still-open finite-perturbation remainder distinct rather than treating finite traces as a continuum theorem.",
+    "open_boundary": "No arbitrary disk-root coefficient closeness, uniform finite-perturbation remainder, away-from-Fekete theorem, full Lean proof, or Erdős #1041 solution follows.",
+    "expert_review_act": "Audit the normalized Gram eigenvalue inequality, the radial-deficit identities, the source lineage of the later turning/bridge/window theorem, and the missing finite-perturbation estimate; check that no finite regression is promoted to an all-degree sign result.",
+    "next_reentry": "Re-enter only if any pinned source, checker, card generation, or finite-perturbation theorem changes; do not repeat the classical Hadamard attribution search."
+  },
+  "created_by": "codex_root",
+  "status": "adjudicated_consolidated_near_fekete_stability_capacity_scale_and_cusp_stack",
+  "route_id": "near_field_cusp_polynomial_reduction",
+  "problem_id": "erdos_1041",
+  "target": {
+    "card": "docs/formal_math/reviewer_cards/near_field_cusp_polynomial_reduction.card.json",
+    "proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFieldCuspPolynomial.md",
+    "checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_field_cusp_polynomial.py",
+    "stability_proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeCuspLaw.md",
+    "stability_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py --part stability",
+    "source_origin_commit": "38918b4d6c",
+    "capacity_slack_proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacityGeodesicConjecture.md",
+    "degree_three_proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeCuspPositivityProof.md",
+    "source_result_ids": [
+      "quantitative_fekete_stability_hadamard_defect",
+      "near_fekete_cusp_positivity_n3_proved",
+      "capacity_geodesic_margin_is_first_order_in_the_critical_radius"
+    ],
+    "statement": "A Gram/Hadamard defect inequality gives a quantitative near-Fekete stability bridge; the capacity comparison identifies critical radius as the first-order metric-slack scale; an elementary L2 estimate proves the aligned degree-three cusp constant positive; and the general limit model normalizes to G_n(w)=w^n-nw+n-1 with exact radial-deficit identities. The all-degree sign theorem belongs to a later source-current turning/bridge/window stack, while finite-perturbation control remains open."
+  },
+  "classification": {
+    "overall": "classical_quantitative_hadamard_corollary_with_scoped_fekete_consumer_plus_elementary_exact_problem_specific_normalisation_no_priority_claim",
+    "standard_core": "Newton_flow_value_rays_and_double_critical_point_normalisation",
+    "source_specific_delta": "quantitative_gram_defect_bridge_plus_first_order_capacity_slack_scale_plus_degree_three_L2_foothold_plus_global_G_n_normal_form_with_corrected_lineage",
+    "formalisation_status": "ordinary_gram_hadamard_proof_plus_ordinary_normal_form_proofs_and_committed_finite_regression_instruments_not_Lean",
+    "significance_grade": "medium_high_as_a_near_fekete_theory_bridge_but_not_as_a_new_matrix_inequality",
+    "priority_claim": "none",
+    "stability_prior_art_state": "adjudicated_classical_quantitative_hadamard_framework_exact_exponential_wording_not_traced"
+  },
+  "sources": [
+    {
+      "source_id": "grone_johnson_marques_de_sa_wolkowicz_1984_improving_hadamard",
+      "citation": "B. Grone, C. R. Johnson, E. Marques de Sa, and H. Wolkowicz, Improving Hadamard's inequality, Linear and Multilinear Algebra 16 (1984), 305-322",
+      "url": "https://doi.org/10.1080/03081088408817634",
+      "annex_slug": "grone-johnson-marques-wolkowicz-1984-improving-hadamard",
+      "source_archive": "annexes/grone-johnson-marques-wolkowicz-1984-improving-hadamard/source.pdf",
+      "source_pdf": "annexes/grone-johnson-marques-wolkowicz-1984-improving-hadamard/source.pdf",
+      "source_archive_sha256": "94f6aec0eba727db2487cc946d0a7757560639cb4619a76068bf3ad8a4770f71",
+      "source_pdf_sha256": "94f6aec0eba727db2487cc946d0a7757560639cb4619a76068bf3ad8a4770f71",
+      "extracted_markdown": "annexes/grone-johnson-marques-wolkowicz-1984-improving-hadamard/extracted.md",
+      "extracted_markdown_sha256": "4226eba9d349169f9eb07772c8ccc89b2fc0f224518d470823c83e3ec567420d",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-27",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 19,
+      "exact_locator": "printed pp. 305-313, especially the introduction and equation (1.2)",
+      "relationship": "Closest primary antecedent: best-possible determinant bounds from diagonal, trace, and trace-square data; after Gram diagonal normalization, the trace-square excess is the squared Frobenius defect used by Theorem A."
+    },
+    {
+      "source_id": "erdos_herzog_piranian_1958_metric_properties",
+      "citation": "P. Erdos, F. Herzog, and G. Piranian, Metric properties of polynomials, Journal d'Analyse Mathematique 6 (1958), 125-148",
+      "url": "https://doi.org/10.1007/BF02790232",
+      "annex_slug": "erdos-herzog-piranian-1958-metric-properties-of-polynomials",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_pdf": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "source_pdf_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-27",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 24,
+      "exact_locator": "printed p. 139, Problem 5",
+      "extracted_locator": "extracted.md lines 594-598 (Problem 5)",
+      "relationship": "origin of the ambient short-path problem; no near-Fekete cusp normal form"
+    },
+    {
+      "source_id": "sutherland_1992_newton_flow",
+      "citation": "Scott Sutherland, Bad Polynomials for Newton's Method, 1992 preprint",
+      "url": "https://www.math.stonybrook.edu/preprints/ims92-7.pdf",
+      "annex_slug": "sutherland-1992-newton-flow",
+      "source_archive": "annexes/sutherland-1992-newton-flow/source.pdf",
+      "source_pdf": "annexes/sutherland-1992-newton-flow/source.pdf",
+      "source_archive_sha256": "e0dbfa6ad56d14971d4f901dc8568731e22359feeb1efb429b240f156b88d29e",
+      "source_pdf_sha256": "e0dbfa6ad56d14971d4f901dc8568731e22359feeb1efb429b240f156b88d29e",
+      "extracted_markdown": "annexes/sutherland-1992-newton-flow/extracted.md",
+      "extracted_markdown_sha256": "3c9bec90e731ead82e755639d11bbad349e6a7279cb69ad880bc167b11cda0d7",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-27",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 46,
+      "exact_locator": "printed p. 42, definition of z-dot=-f/f' and statement that solution curves map under f to straight radial lines",
+      "relationship": "primary attribution for the standard radial value-transport mechanism"
+    },
+    {
+      "source_id": "mihalache_vigneron_2024_tera_polynomial",
+      "citation": "Nicolae Mihalache and Francois Vigneron, How to split a tera-polynomial, arXiv:2402.06083 (2024)",
+      "url": "https://arxiv.org/abs/2402.06083",
+      "exact_locator": "Newton-flow discussion introducing Newton's rays or iso-angle rays",
+      "relationship": "modern terminology for inverse images of fixed argument under polynomial Newton flow; not the source of the present G_n reduction"
+    }
+  ],
+  "source_current_lineage": [
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeCuspLaw.md",
+      "locator": "Theorem A and Corollaries C1-C2",
+      "relationship": "ordinary Gram/Hadamard defect proof that bridges a near-maximal Fekete ratio to small normalized Gram defect and its explicitly scoped radial or unit-circle consequences"
+    },
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacityGeodesicConjecture.md",
+      "locator": "section 7, Proposition 4",
+      "relationship": "ordinary proof that the pair-budget slack is first order in the critical radius, reducing the finite-perturbation metric task to an o(rho_crit) geodesic-deficit estimate"
+    },
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeCuspPositivityProof.md",
+      "locator": "Lemmas 1-3 and the theorem in section 3",
+      "relationship": "ordinary elementary proof of aligned degree-three cusp positivity via the explicit branch graph and an L2 turning estimate; not an all-direction or all-degree proof"
+    },
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MonotoneTurningProof.md",
+      "locator": "Theorem in section 8 and consequences in section 9",
+      "relationship": "ordinary proof of monotone turning on both aligned branches at every degree"
+    },
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BridgeIdentityProof.md",
+      "locator": "sections 4 and 4a",
+      "relationship": "bridge from turning-deficit control to kappa positivity and its direction-scope boundary"
+    },
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConeBoundMonotoneFunctional.md",
+      "locator": "Proposition W and Theorem R",
+      "relationship": "unique admissible-hub window and all-direction limit-model positivity"
+    }
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "quantitative Hadamard inequality determinant Frobenius norm correlation matrix stability",
+      "refinement Hadamard determinant inequality correlation matrix off-diagonal",
+      "Improving Hadamard's inequality Grone Johnson Marques de Sa Wolkowicz",
+      "\"z^n - n z + n - 1\" polynomial",
+      "\"w^n - n w + n-1\"",
+      "\"z^n-nz+n-1\" roots",
+      "\"Newton flow\" polynomial radial lines critical point normal form"
+    ],
+    "result": "The search located the 1984 quantitative Hadamard antecedent for the matrix layer and standard sources for Newton-flow transport, but no source for the full near-Fekete metric package. The exact exponential constant was not located verbatim; this residual wording gap supports no originality or priority claim.",
+    "interpretation": "positive_matrix_antecedent_plus_bounded_negative_search_for_full_package"
+  },
+  "claim_boundary": {
+    "allowed_wording": "An ordinary Gram/Hadamard defect inequality gives a quantitative near-Fekete stability bridge, and an exact all-degree normal form and radial-deficit interface is subordinate to separate later proofs of limit-model positivity.",
+    "forbidden_wording": [
+      "the model is independent of degree",
+      "this note's twelve-gate checker proves kappa_n positive for every degree",
+      "phi=0 is proved worst for the full cusp constant",
+      "finite numerical tracing proves a continuum sign condition",
+      "the exponential Gram penalty is a new quantitative Hadamard theorem",
+      "near-maximal radial moments alone give coefficient closeness for arbitrary disk roots",
+      "solution or local resolution of Erdos 1041",
+      "new Newton-flow theorem or priority claim"
+    ]
+  },
+  "proof_review": {
+    "repairs_landed": [
+      "corrected false degree-independence wording",
+      "added a proof-bearing section for the exact imaginary-variation and angular-deficit identities",
+      "separated the singular Gram case, ordinary spectral proof, and finite stability regression from the normal-form and later turning layers",
+      "corrected the checker's nonexistent section-6 locator",
+      "removed the stale open-sign-gate story and reconciled the note with the later turning/bridge/window theorem stack"
+    ],
+    "hard_step": "the first-order capacity calculation fixes the error scale, and the degree-three proof shows that an L2 turning estimate rather than coordinatewise variation controls the cusp; the historical all-degree limit-model steps were turning sign and admissible-hub selection, proved elsewhere in the current corpus",
+    "surviving_frontier": "an o(rho_crit) geodesic-deficit estimate with uniform finite-perturbation remainder, h'(0)=0, the away-from-Fekete regime, and independent semantic review"
+  },
+  "expert_review_support": {
+    "talk_state": "expert_talk_ready",
+    "natural_friction": "Gram stability, exact normalization, later limit-model theorem, finite measurements, finite perturbations, and the global problem must remain separate",
+    "evidence_separation": "ordinary proof for Theorem A and Propositions 1-6; committed finite stability regression and guarded computation for kappa and branch geometry; separate ordinary-proof sources for the turning/bridge/window theorem; external literature only for Newton-flow terminology"
+  },
+  "digestion_assessment": {
+    "attention_priority": "medium-high as a near-Fekete theory bridge, not as a novel determinant inequality",
+    "consolidation_verdict": "one near-Fekete theorem object: retain the stability bridge, normal form, and later limit-model theorem together",
+    "expert_review_gap": "independent semantic review of the scoped Fekete consumer, then review of the full turning/bridge/window dependency chain and finite-perturbation passage"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "Erdos #1041 near-Fekete geometric stability, cusp normal forms, and finite-perturbation transfer",
+    "disposition": "supporting lemma subordinate under the component-perimeter mechanism",
+    "paper_disposition": "supporting lemma in 'Complements and further questions — 4. Coefficient perturbation and stability', not a headline or endpoint claim",
+    "consolidation_relation": "Keep the Gram defect bridge, exact G_n normal form, capacity-slack scale, degree-three foothold, and later sourced limit-model theorem as one stack; do not split finite measurements or revive the obsolete open-sign gate, and keep the finite-perturbation transfer visibly open.",
+    "independent_comparator_interface_justified": false,
+    "comparator_reason": "The evidence is ordinary proof plus finite regression and a separately sourced analytic stack; existing #1041 interfaces suffice, while finite-perturbation control remains open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "ordinary_proof_generation_and_guarded_measurement",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "near_field_cusp_polynomial_reduction",
+    "human_understanding_delta": "Makes the near-Fekete pipeline legible: Gram stability locates the near-extremal regime, then the normal form and later theorem stack handle its limit-model geometry without implying finite-perturbation control.",
+    "verification_state": "Theorem A and exact identities are ordinary pinned proofs; stability regression and other checkers remain finite measurement; later theorem stack is separately sourced.",
+    "publication_or_review_state": "ready_for_analytic_review_as_subordinate_interface_only",
+    "canonicalization_state": "one_near_fekete_theory_stack_contains_stability_normal_form_and_later_limit_model_theorem",
+    "unresolved_downstream_bottleneck": "independent review of the scoped Fekete consumer, finite-perturbation remainder, and exact-source comparison only if verbatim exponential-constant priority becomes relevant",
+    "next_stage_owner": "Novelty Observatory for stability attribution, Mathematics Refinery for review synthesis, and Role 3 after a cleared source-trust disposition"
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "Complements and further questions — 4. Coefficient perturbation and stability",
+    "canonical_mechanism_family": "near-Fekete geometric stability, cusp normal forms, and finite-perturbation transfer for polynomial lemniscates",
+    "relation": "Supporting explanation beneath the one near-Fekete theory stack: retain the Gram bridge, G_n normal form, and radial-deficit layer together; cite later turning/bridge/window work for positivity and do not revive the obsolete open-sign gate as a separate frontier.",
+    "understanding_delta": "The paper can distinguish a classical stability bridge, exact limit-model coordinates, separately sourced positivity, and the still-open finite-perturbation transfer instead of narrating them as one proof.",
+    "evidence_boundary": "Ordinary pinned proofs and finite regression/checking instruments only; the later all-degree positivity theorem is separately sourced, and no Lean, independent review, or finite-perturbation theorem is supplied.",
+    "hard_step": "Uniform finite-perturbation remainder control, including h'(0)=0 and the transition away from the Fekete shell.",
+    "meaningful_failed_route": "Promote finite sign sweeps to continuum/all-degree proof or promote radial moment control to arbitrary coefficient closeness.",
+    "open_remainder": "Analytic review, finite perturbations, away-from-Fekete geometry, and Erdős #1041 remain open."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "result_family_version": "erdos1041_near_fekete_stability_cusp_reduction@source_2026-08-26_v2",
+    "evidence_class": "Authored ordinary Gram/Hadamard stability and normal-form proofs with finite regression instruments and separately sourced limit-model results; not Lean or independently reviewed.",
+    "comparison_relation": "The matrix mechanism is a classical quantitative Hadamard/Gram-defect bridge; the exact near-Fekete cusp packaging is source-specific composition, with no priority claim.",
+    "closest_known_result": "Grone--Johnson--Marques de Sa--Wolkowicz (1984) supplies the closest quantitative Hadamard antecedent; Newton-flow radial transport is standard. No source for the full combined metric package or exact exponential wording was located.",
+    "exact_delta": "The route composes a normalized Gram-defect budget, an exact G_n(w)=w^n-nw+n-1 cusp normal form, a first-order capacity-slack scale, and a degree-three L2 foothold, while leaving the finite-perturbation passage separate.",
+    "disconfirming_evidence": "The closest primary Hadamard work already covers the determinant-stability mechanism, finite regressions do not establish an all-degree sign theorem, and no literature search located the combined package or verbatim exponential constant.",
+    "confidence": {
+      "scoped_stability_bridge": "high_internal_provisional",
+      "exact_literature_non_location": "moderate_internal_provisional",
+      "priority_or_new_matrix_inequality": "low_unresolved"
+    },
+    "significance": "Medium-high supporting value as a near-Fekete theory bridge: it makes the dependency map and the missing finite-perturbation theorem legible without adding a new determinant inequality.",
+    "hard_step": "The genuinely unresolved step is a uniform finite-perturbation/geodesic-deficit estimate; the reader must also keep the separately sourced limit-model positivity distinct from finite roots and finite sweeps.",
+    "open_boundary": "No arbitrary disk-root coefficient closeness, uniform finite-perturbation remainder, away-from-Fekete theorem, full Lean proof, or Erdős #1041 solution follows.",
+    "claim_ceiling": "Only the pinned ordinary Gram/Hadamard bridge, exact normal-form identities, finite regressions, and separately sourced limit-model results are admitted. No new Hadamard theorem, all-degree finite perturbation, arbitrary-root coefficient control, endpoint result, or priority claim is admitted.",
+    "bounded_expert_review_act": "Audit the normalized Gram eigenvalue inequality and radial-deficit identities, verify the later turning/bridge/window source lineage, and check that finite regression is not promoted to an all-degree sign result.",
+    "reentry_trigger": "Reopen only if a pinned proof, checker, reviewer card, packet row, or genuine finite-perturbation theorem changes; do not repeat the classical Hadamard attribution search.",
+    "source_generation": {
+      "stability_proof_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+      "stability_proof_sha256_observed": "7548a7cded737f9b1feeaf62cd69e532452cc4461cbff0819f0935370c9d3bfe",
+      "ordinary_proof_sha256_observed": "ae2cb99fee289bdfbf1cd8d509253d0cad0a726b272dcef8c918ca5810db889d"
+    },
+    "classification": {
+      "result_family": "near_fekete_stability_cusp_reduction",
+      "evidence_class": "authored_ordinary_Gram_Hadamard_proof_plus_finite_regression_and_separately_sourced_limit_model",
+      "closest_prior_art": "Grone--Johnson--Marques de Sa--Wolkowicz quantitative Hadamard refinements; standard Newton-flow radial transport",
+      "comparison_relation": "classical matrix stability bridge composed with a source-specific cusp normal form; no priority claim",
+      "novelty_confidence": "low_for_inequality; moderate_for_packaging_and_exact_normal_form; verbatim exponential constant not traced",
+      "significance_grade": "medium_high_as_a_theory_bridge",
+      "why_care": "It tells a reader exactly how near-maximal Vandermonde geometry buys a Gram-defect budget, while preventing that budget from being mistaken for arbitrary coefficient closeness or a solved lemniscate problem.",
+      "hard_step": "The missing finite-perturbation remainder and the separation between the limit-model positivity theorem and finite roots; finite sweeps cannot replace this bridge.",
+      "disconfirming_evidence": "The closest primary Hadamard antecedent already covers the matrix mechanism, and no literature search located the full combined metric package or exact exponential wording.",
+      "confidence_ceiling": "High for the scoped bridge and evidence separation; low for any priority claim, arbitrary-root coefficient control, or #1041 resolution.",
+      "bounded_expert_act": "Audit the normalized-eigenvalue inequality and the finite-perturbation handoff; confirm that finite regression is not promoted to an all-degree theorem.",
+      "reentry_condition": "Re-enter only if the pinned proof, checker, card, packet, or finite-perturbation theorem changes."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1041 near-Fekete geometric stability and cusp transfer",
+      "disposition": "subordinate_under_component_perimeter_mechanism",
+      "paper_disposition": "supporting_lemma_in_coefficient_perturbation_and_stability",
+      "independent_comparator_interface_justified": false,
+      "expert_attention_reason": "The value is a coherent dependency map; splitting the classical bridge, normal form, and finite diagnostics would obscure the real open remainder."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "ordinary_proof_and_guarded_measurement",
+      "output_stage": "expert_understanding_and_review_support",
+      "artifact": "near_field_cusp_polynomial_reduction",
+      "human_understanding_delta": "Separates classical stability, exact normalization, separately sourced limit-model positivity, and the still-open finite transfer.",
+      "verification_state": "Pinned ordinary proofs and finite checkers; no Lean or finite-perturbation theorem.",
+      "publication_or_review_state": "internal supporting adjudication; no outbound action",
+      "canonicalization_state": "one near-Fekete stack, no duplicate determinant card",
+      "unresolved_downstream_bottleneck": "uniform finite-perturbation/geodesic-deficit estimate",
+      "next_stage_owner": "Mathematics Refinery and #1041 analytic proof owners"
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_generation_current_card_and_packet_pins_verified",
+    "bound_snapshot": {
+      "stability_proof_commit": "ee2bfdebfe6d7d4827cf0d1b243f37fd3667c3e7",
+      "stability_proof_sha256": "7548a7cded737f9b1feeaf62cd69e532452cc4461cbff0819f0935370c9d3bfe",
+      "ordinary_proof_sha256": "ae2cb99fee289bdfbf1cd8d509253d0cad0a726b272dcef8c918ca5810db889d",
+      "source_generation": "2026-08-26_v2",
+      "card_packet_parity": "current_for_the_scoped_stability_stack"
+    },
+    "claim_guard": "The route exposes an authored ordinary Gram/Hadamard defect bridge, exact near-Fekete normal-form identities, finite regression instruments, and separately sourced limit-model positivity only; it does not establish arbitrary coefficient closeness, a uniform finite-perturbation remainder, Lean verification, or an Erdos 1041 solution.",
+    "reentry_trigger": "Re-enter only if the pinned stability proof, source lineage, reviewer card or packet changes, or a genuine finite-perturbation theorem is added; do not repeat the classical Hadamard attribution search."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The normalized-eigenvalue inequality and exact normal form are elementary once stated; reviewer load is the source-specific composition and the missing finite-perturbation passage.",
+    "slow_down_at": "Check the exponential log inequality, the unit-circle hypothesis for radial-moment consequences, the separation between limit-model positivity and finite roots, and the distinction between finite regression and an all-degree sign theorem.",
+    "automation_can_establish": [
+      "Pinned source commits and observed hashes",
+      "Finite regression outputs and exact normal-form identities",
+      "That the route carries no Lean, arbitrary-root coefficient, or endpoint-solution claim"
+    ],
+    "human_judgment_required": [
+      "Whether the cited Hadamard/Gram antecedent is the closest conventional framing",
+      "Whether the later turning/bridge/window sources are being used only as separately sourced inputs",
+      "Whether the paper's finite-perturbation boundary is visible at first contact"
+    ],
+    "review_act": "One bounded expert audit of the normalized Gram defect inequality and its finite-perturbation handoff; no novelty inference from the packaging.",
+    "attention_ceiling": "Medium-high explanatory value as one near-Fekete theory bridge, with no priority or independent Comparator interface claim."
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "zudilin_all_d_first_appearance_noncancellation",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_established_mechanisms_with_apparently_unlocated_source_specific_all_d_first_appearance_noncancellation",
+  "problem_id": "erdos_1049",
+  "source_result_ids": [
+    "zudilin_all_d_first_appearance_noncancellation"
+  ],
+  "purpose": "Separate the published Padé/Hankel family and standard cyclic-resultant and valuation mechanisms from the authored source-specific all-index noncancellation result, then expose its exact programme significance and boundary.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/zudilin_all_d_first_appearance_noncancellation.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinFirstBlockResultantProof.md",
+    "source_commit": "a75c02550ac608bca46e786fef57f7b7c89e166e",
+    "source_result_id": "zudilin_all_d_first_appearance_noncancellation",
+    "source_sha256": "0b300544bc48e88840147b53e135b7ebd97d959c0e0e8ae6dbb2b7b9089ec8c8",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+    "research_packet_commit": "9a05984602df6ede6673701c8e6fe21afc2772cd",
+    "research_packet_sha256": "6e64c324833f8d8fbac27061dd70c7d2317734795c89eaf381f2f25e540ef747",
+    "reviewer_card_commit": "c408b094c03eb1b9ae48a4bfac64b21692f09fca"
+  },
+  "classification": {
+    "ambient_framework": "arithmetic Hankel determinants from q-hypergeometric Pade approximants",
+    "source_family": "published_Zudilin_2016",
+    "cyclotomic_Hankel_extraction": "established_adjacent_precedent_Krattenthaler_Rochev_Vaananen_Zudilin_2009",
+    "cyclic_resultant_terminology": "standard_Hillar_Levine_2007",
+    "unique_minimum_valuation_logic": "standard_non_Archimedean_or_tropical_determinant_mechanism",
+    "exact_all_d_first_appearance_noncancellation": "source_specific_authored_result_apparently_unlocated_verbatim",
+    "priority_claim": "none_pending_specialist_confirmation",
+    "recommended_terminology": "all-d first-appearance noncancellation certificate",
+    "discouraged_terminology": [
+      "new cyclic-resultant theorem",
+      "Zudilin's first-appearance theorem",
+      "complete Hankel noncancellation",
+      "solution of the 3/2 height problem"
+    ],
+    "attribution": "Credit Zudilin 2016 for the generalized-q-logarithm Padé forms and Hankel determinant framework; Krattenthaler--Rochev--Väänänen--Zudilin 2009 for adjacent cyclotomic Hankel factor extraction; Hillar--Levine 2007 for cyclic-resultant terminology. Attribute only the explicit first-block symbol, supporting-line valuation proof, and all-d first-appearance consequence to the local authored source.",
+    "mathematical_interest": "The theorem resolves a genuine uniform cancellation question inside a difficult arithmetic determinant construction: each cyclotomic first-appearance block has a certified nonzero leading residue.",
+    "reusable_scope": "Structured wrapped Hankel or twisted-circulant blocks whose coefficients admit explicit non-Archimedean weights and an affine supporting line.",
+    "why_it_matters": "It closes the expanding homogeneous boundary mode uniformly, preventing further local first-appearance audits from masquerading as progress and redirecting the proof programme to global cumulative growth."
+  },
+  "evidence_set": {
+    "local": [
+      "ZudilinFirstBlockResultantProof.md",
+      "zudilin_all_d_first_appearance_noncancellation.card.json",
+      "check_zudilin_first_block_resultant.py",
+      "erdos1049_zudilin_first_block_resultant_receipt.json"
+    ],
+    "external": [
+      "Zudilin 2016 generalized-q-logarithm Padé/Hankel family",
+      "Krattenthaler--Rochev--Väänänen--Zudilin 2009 cyclotomic Hankel extraction",
+      "Hillar--Levine 2007 cyclic-resultant terminology"
+    ],
+    "evidence_class_split": {
+      "all_d_certificate": "authored ordinary proof",
+      "finite_regression": "exact bounded computation",
+      "ambient_methods": "externally sourced framework",
+      "global_height_or_irrationality": "not established"
+    }
+  },
+  "search_scope": {
+    "completed_at": "2026-08-25",
+    "repositories_and_sources": [
+      "Erdos1049 packet, source proof, reviewer card, regression checker, and prior-art route",
+      "bounded primary-source comparison for q-logarithm Padé/Hankel, cyclotomic extraction, cyclic resultants, and non-Archimedean determinant minima"
+    ],
+    "limitation": "The exact source-specific all-d first-appearance combination was not located verbatim; this supports no priority inference."
+  },
+  "comparison_relations": [
+    {
+      "relation": "standard_mechanisms_plus_source_specific_combination",
+      "internal_result": "wrapped-Hankel resultant plus 2-adic unique-minimum first-appearance certificate",
+      "known_result": "published Zudilin family and adjacent cyclotomic/resultant methods",
+      "delta": "Only the explicit first-block symbol, all-index supporting-line inequalities, and residue transfer are source-specific here."
+    },
+    {
+      "relation": "local_route_boundary",
+      "internal_result": "first-appearance noncancellation",
+      "known_result": "effective-height budget for #1049",
+      "delta": "Eliminating minimum-layer cancellation does not supply cumulative cubic height, higher-layer control, or irrationality."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "one source-specific universal non-Archimedean certificate inside standard determinant machinery",
+    "slow_down_at": "normalization to W_d, dyadic supporting-line strictness away from the anti-diagonal, and transfer to the complete residue",
+    "automation_can_establish": [
+      "finite symbolic/resultant regression",
+      "source and packet hash parity",
+      "bounded valuation assignments"
+    ],
+    "human_judgment_required": [
+      "independent verification of the all-d supporting inequalities",
+      "whether the exact combination is already present under another formulation",
+      "whether any higher-layer or cumulative growth consequence follows"
+    ],
+    "review_act": "One bounded specialist act: verify the universal supporting-line and endpoint-transfer steps; then stop repeating first-layer searches."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "cyclotomic first-appearance determinant residues, cyclic resultants, and 2-adic unique-minimum certificates",
+    "disposition": "subordinate as one route-killing boundary beneath the effective-height budget; do not split symbol, resultant, valuation, and residue into separate objects",
+    "paper_disposition": "route-killing failure/boundary",
+    "paper_section": "First-appearance noncancellation: local leading terms do not solve the height problem",
+    "comparator_advisory": "A status-tagged ordinary-proof firewall is justified; preserve the all-d quantifier, finite-regression label, first-layer-only scope, and no-irrationality boundary.",
+    "human_understanding_delta": "The route is visibly closed at the minimum first-appearance layer, while the global cumulative-height obligation remains untouched."
+  },
+  "primary_sources": [
+    {
+      "id": "zudilin_2016_generalized_q_logarithm",
+      "title": "On the irrationality of generalized q-logarithm",
+      "author": "Wadim Zudilin",
+      "venue": "Research in Number Theory 2 (2016), Article 15",
+      "doi": "10.1007/s40993-016-0042-x",
+      "url": "https://link.springer.com/article/10.1007/s40993-016-0042-x",
+      "arxiv": "https://arxiv.org/abs/1601.02688",
+      "local_annex": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm",
+      "exact_anchor": "Sections 3-4: cleared Padé forms, the Hankel determinants, equation (6), Lemma 1, and the normalized analytic q-order argument.",
+      "source_archive": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/source.gz",
+      "source_archive_kind": "arxiv_source_bundle",
+      "source_archive_sha256": "4c20ef7a8fe0075a65536c87cfec9c123b2b018c977b9f11f026dfc2fd1a2dcf",
+      "source_text": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/source.tex",
+      "source_text_sha256": "4404dbbdb2e592e7e945d12c534b184efdce0e98a3381fcd9a294e17f7cba033",
+      "extracted_markdown": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "extracted_markdown_sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e",
+      "primary_source_read": true,
+      "primary_tex_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "retrieved_at": "2026-07-08",
+      "verification_state": "primary_source_archive_and_tex_read_exact_hankel_and_q_order_locators_compared",
+      "exact_source_locator": "Source TeX lines 278--380 / extracted.md lines 104--151: Section 4 defines the Hankel determinants, Lemma 1 gives the q-order bound, and the proof of Theorem 1 consumes the determinant estimate. The source-specific all-d first-appearance extension remains outside this source.",
+      "supports": "The exact generalized-q-logarithm Padé/Hankel family and its published analytic role.",
+      "does_not_support": "The wrapped first-block polynomial W_d, its cyclic resultant, the all-d unique-minimum valuation theorem, or irrationality at base 3/2."
+    },
+    {
+      "id": "krattenthaler_rochev_vaananen_zudilin_2009",
+      "title": "On the non-quadraticity of values of the q-exponential function and related q-series",
+      "authors": ["Christian Krattenthaler", "Igor Rochev", "Keijo Väänänen", "Wadim Zudilin"],
+      "venue": "Acta Arithmetica 136 (2009), 243-269",
+      "doi": "10.4064/aa136-3-4",
+      "url": "https://arxiv.org/abs/0812.2921",
+      "exact_anchor": "Section 4, especially Proposition 4, gives cyclotomic factorization for a different arithmetic Hankel determinant.",
+      "supports": "Direct adjacent precedent for cyclotomic factor extraction in q-series Hankel determinants.",
+      "does_not_support": "The present wrapped block, its 2-adic supporting line, or its all-d first-appearance consequence."
+    },
+    {
+      "id": "hillar_levine_2007_cyclic_resultants",
+      "title": "Polynomial recurrences and cyclic resultants",
+      "authors": ["Christopher J. Hillar", "Lionel Levine"],
+      "venue": "Proceedings of the American Mathematical Society 135 (2007), 1607-1618",
+      "doi": "10.1090/S0002-9939-06-08672-2",
+      "url": "https://arxiv.org/abs/math/0411414",
+      "exact_anchor": "The introduction defines resultants Res(f,x^m-1) as cyclic resultants and studies their recurrence structure.",
+      "supports": "Standard terminology for the determinant's resultant form, after the scalar twist is accounted for.",
+      "does_not_support": "The wrapped-Hankel determinant formula for this block or the noncancellation valuation argument."
+    }
+  ],
+  "mechanism_comparison": {
+    "published_family": "Zudilin's cleared Padé forms produce the arithmetic Hankel framework and analytic q-order input.",
+    "standard_linear_algebra": "Diagonalization on roots of Kx^d-1 identifies the wrapped block determinant with a twisted cyclic resultant.",
+    "standard_valuation_logic": "A unique minimum term in a non-Archimedean determinant expansion cannot cancel.",
+    "source_specific_work": "The local proof computes the exact symbol and dyadic weights, constructs the affine supporting slope for every d, and transfers block nonsingularity to the complete first-appearance residue.",
+    "remaining_throat": "Cumulative global resultant or norm growth, higher valuation layers, or a different integral model must provide enough cubic charge for the rational base 3/2."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "wrapped Hankel matrix determinant resultant polynomial K x^d - 1",
+      "cyclic Hankel matrix determinant resultant polynomial roots of unity",
+      "Zudilin generalized q logarithm Hankel cyclotomic resultant",
+      "unique minimum valuation determinant noncancellation tropical"
+    ],
+    "result": "The bounded search located standard cyclic-resultant terminology, general unique-minimum valuation logic, the exact 2016 source family, and adjacent 2009 cyclotomic Hankel extraction. It did not locate the explicit source-specific wrapped symbol or the all-d first-appearance noncancellation statement.",
+    "boundary": "Non-location justifies only 'apparently unlocated in the bounded search, pending specialist confirmation'; it is not evidence of priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For the first cyclotomic block in Zudilin's 2016 generalized-q-logarithm Hankel family, an authored cyclic-resultant representation and 2-adic unique-minimum argument prove noncancellation at first appearance for every cyclotomic index d.",
+    "forbidden_wording": [
+      "The cyclic-resultant or unique-minimum method is new.",
+      "Zudilin stated this all-d first-appearance theorem.",
+      "The finite checker proves the universal statement.",
+      "All higher-order determinant cancellation is excluded.",
+      "The result supplies sufficient cubic content or proves irrationality at 3/2.",
+      "Erdős #1049 is solved."
+    ],
+    "nonclaims": ["not_a_priority_claim", "not_Lean_checked", "not_a_global_Hankel_noncancellation_theorem", "not_a_height_threshold_theorem", "not_an_irrationality_theorem", "not_erdos_1049_solution"]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/zudilin_all_d_first_appearance_noncancellation.card.json",
+      "effect": "Provide an inspectable primary-source-backed classification for the previously uncovered current #1049 result."
+    },
+    {
+      "consumer": "Erdos #1049 proof fleet",
+      "effect": "Retire further first-appearance cancellation audits and demand a global cumulative-growth mechanism."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the theorem as an authored source-specific all-index certificate built from established machinery, with the finite-regression and no-irrationality boundaries adjacent."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The uncovered current #1049 first-appearance result is now attributed and classified: established cyclic-resultant and valuation machinery, apparently unlocated source-specific all-d noncancellation, no priority claim.",
+    "do_not_redo": [
+      "Do not reclassify cyclic resultants or unique-minimum valuation logic as source-specific inventions.",
+      "Do not attribute the wrapped first-block theorem to Zudilin 2016.",
+      "Do not treat finite regression through bounded d as the universal proof.",
+      "Do not reopen local first-appearance cancellation without new contrary evidence."
+    ],
+    "ranked_open_throats": [
+      "specialist confirmation of whether this exact source-specific all-d first-block theorem appears elsewhere",
+      "global cumulative norm or resultant growth strong enough for the 3/2 height comparison",
+      "higher valuation layers or a distinct integral model"
+    ],
+    "next_wake_condition": "A specialist attribution correction, a global cumulative-growth theorem, a higher-layer determinant result, or another uncovered high-value current result appears."
+  },
+  "expert_review_support": {
+    "talk_state": "specialist_talk_ready",
+    "hard_step": "The all-index 2-adic supporting-line proof must establish strict valuation separation off the anti-diagonal for every d and then exploit affine-weight invariance across determinant permutations.",
+    "natural_friction": "The normalized symbol, dyadic case split, strict inequalities, and endpoint transfer must remain inspectable; the phrase 'tropical determinant' is not an adequate proof summary.",
+    "false_route_retired": "Minimum-layer cancellation can no longer supply the missing charge; repeating finite first-appearance audits is not a productive endpoint route.",
+    "evidence_separation": "Published papers supply the ambient family and neighboring mechanisms; the all-d certificate is an authored ordinary proof; finite symbolic replay is regression evidence; no Lean or independent peer review is asserted."
+  },
+  "digestion_assessment": {
+    "significance_grade": "A_minus_method_boundary",
+    "attention_priority": "high within #1049",
+    "consolidation_verdict": "one mechanism stack rather than separate resultant, valuation, and residue promotions",
+    "expert_review_gap": "independent specialist review of the symbol, all-index inequalities, and residue transfer"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "cyclotomic first-appearance determinant residues, cyclic resultants, and 2-adic unique-minimum certificates",
+    "disposition": "subordinate beneath rational_approximation_exponent_budget as one local cancellation boundary; retain one all-d first-appearance certificate and redirect #1049 work to cumulative height, higher layers, or a different integral model.",
+    "consolidation_relation": "Consolidate the wrapped symbol, cyclic resultant, supporting-line valuation, and first-residue transfer; retire separate first-layer audits and do not turn a local certificate into a Padé headline.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "First-appearance noncancellation: local leading terms do not solve the height problem",
+      "supersession_or_consolidation": "Place the all-d proof once with the standard antecedents, explicit proof/computation split, and the insufficiency of its local charge; remove repeated first-appearance audit narratives.",
+      "reason": "The result closes a genuine uniform escape while leaving the global effective-height obstruction untouched. Its authored-proof evidence is inspectable and may be publicly status-tagged; specialist verification remains a downstream mathematical task."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do not admit; leave the rolling 3-5-object cross-programme shortlist unchanged",
+      "why_care": "Retain as a high-value #1049 route boundary, but the effective-height budget is the stronger first-contact object.",
+      "evidence_class": "authored ordinary all-index proof plus bounded regression; specialist review remains downstream",
+      "hard_step": "independent verification of the dyadic supporting-line and residue transfer",
+      "prior_art_uncertainty": "standard mechanisms, apparently unlocated source-specific combination, no priority inference",
+      "open_boundary": "first-appearance layer only; cumulative height and irrationality open",
+      "demoted_predecessor": "none"
+    }
+  },
+  "release_disposition": "status_tagged_public_and_comparator_candidate",
+  "release_disposition_reason": "The universal statement, authored ordinary proof, bounded regression, source lineage, and first-layer-only boundary are inspectable and claim-faithful. The public projection must label the evidence as ordinary proof, distinguish finite regression from the all-d theorem, and deny global height or irrationality consequences. Specialist review is a downstream value-add, not a release gate.",
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1049-rational-base-lambert.tex",
+    "section": "First-appearance noncancellation: local leading terms do not solve the height problem",
+    "canonical_mechanism_family": "cyclotomic first-appearance determinant residues, cyclic resultants, and 2-adic unique-minimum certificates",
+    "relation": "Subordinate one local route-killing certificate beneath the effective-height budget; consolidate symbol, resultant, valuation, and residue layers and retire recurring first-layer audits.",
+    "understanding_delta": "Local first-appearance noncancellation is uniformly closed, leaving global height rather than another first-layer calculation as the relevant question.",
+    "evidence_boundary": "Authored all-d proof plus bounded regression; no Lean, independent review, global height, irrationality, or #1049 endpoint claim.",
+    "hard_step": "Verify the all-d supporting-line proof and obtain a cumulative global height mechanism.",
+    "meaningful_failed_route": "Finite first-layer checks and the local leading residue do not yield a global cubic-height theorem.",
+    "open_remainder": "3/2 irrationality and Erdős #1049 remain open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_publication_ready_canonicalization",
+    "artifact": "zudilin_all_d_first_appearance_noncancellation",
+    "human_understanding_delta": "The authored all-index theorem is now an expert-talk-ready method boundary with its hard step, standard antecedents, computational regression, and missing global height mechanism clearly separated.",
+    "verification_state": "Pinned source and packet hashes match; universal status rests on ordinary proof, not bounded computation or Lean.",
+    "publication_or_review_state": "Eligible for status-tagged public paper, card, exhibition, and Comparator consideration now; the authored ordinary proof remains distinct from Lean checking and independent specialist review remains downstream.",
+    "canonicalization_state": "Single all-d first-appearance certificate built from established mechanisms and source-specific valuation work.",
+    "unresolved_downstream_bottleneck": "Independent proof review and cumulative cubic height growth.",
+    "next_stage_owner": "Role 3 for claim-faithful status-tagged integration; Mathematics Refinery and specialists for downstream proof scrutiny."
+  },
+  "publication_eligibility": {
+    "class": "status_tagged_public_and_comparator_candidate",
+    "basis": "inspectable authored all-index proof, bounded exact regression labelled as finite evidence, pinned source lineage, explicit attribution uncertainty, and adjacent local-first-layer boundary",
+    "statement_firewall": "Expose the all-d first-appearance noncancellation statement only with ordinary-proof status. Keep the supporting-line proof and finite regression distinct; do not infer higher-layer noncancellation, cumulative height, irrationality at 3/2, or an Erdős #1049 solution."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "zudilin_all_d_first_appearance_noncancellation@proof-a75c0255-card-c408b094-packet-9a059846",
+    "result_family_version": "zudilin_all_d_first_appearance_noncancellation@proof_a75c0255_card_c408b094_packet_9a059846",
+    "source_version_binding": {
+      "authored_proof": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinFirstBlockResultantProof.md",
+        "commit": "a75c02550ac608bca46e786fef57f7b7c89e166e",
+        "sha256": "0b300544bc48e88840147b53e135b7ebd97d959c0e0e8ae6dbb2b7b9089ec8c8"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+        "commit": "9a05984602df6ede6673701c8e6fe21afc2772cd",
+        "sha256": "6e64c324833f8d8fbac27061dd70c7d2317734795c89eaf381f2f25e540ef747",
+        "source_result_id": "zudilin_all_d_first_appearance_noncancellation"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/zudilin_all_d_first_appearance_noncancellation.card.json",
+        "commit": "c408b094c03eb1b9ae48a4bfac64b21692f09fca",
+        "sha256": "9e4c56ea9c43cc2934d4ac68216a9e919c6a7092e48764061baad4d235933e41"
+      },
+      "finite_checker": {
+        "path": "formal_math/erdos257_period_noncollapse/scripts/check_zudilin_first_block_resultant.py",
+        "status": "bounded regression only; does not carry the universal quantifier"
+      }
+    },
+    "evidence_class": "authored ordinary all-index proof with exact finite regression; not Lean-checked and not independently peer-reviewed",
+    "prior_art_assessment": {
+      "confidence": "strong_internal_provisional_case_for_source-specific combination; no official novelty or priority claim",
+      "closest_primary_sources": [
+        "Zudilin (2016), On the irrationality of generalized q-logarithm, Sections 3-4: the Padé/Hankel family and analytic q-order framework.",
+        "Krattenthaler--Rochev--Väänänen--Zudilin (2009), Section 4, especially Proposition 4: adjacent cyclotomic factor extraction in a different q-exponential Hankel family.",
+        "Hillar--Levine (2007), introduction: standard cyclic-resultant terminology and recurrence context."
+      ],
+      "exact_relation": "The cited works establish the ambient Padé/Hankel, cyclotomic-factor, and cyclic-resultant mechanisms. They do not state the wrapped symbol W_d, the all-d dyadic supporting-line valuation, or the first-appearance residue transfer used here.",
+      "search_scope": "Targeted searches covered wrapped/cyclic Hankel resultants, Zudilin generalized-q-logarithm determinants, cyclotomic first-appearance factors, and unique-minimum non-Archimedean determinants. No matching external statement was located; this is non-location evidence only."
+    },
+    "comparison_relation": "Standard Padé/Hankel, cyclotomic-factor, cyclic-resultant, and unique-minimum valuation mechanisms are established by the cited literature. The source-specific delta is the wrapped symbol W_d, the all-d supporting-line inequalities, and transfer to the first-appearance residue; no cited source states that synthesis.",
+    "closest_known_result": "Zudilin (2016) supplies the generalized-q-logarithm Padé/Hankel family; Krattenthaler--Rochev--Väänänen--Zudilin (2009) supplies adjacent cyclotomic Hankel extraction; Hillar--Levine (2007) supplies cyclic-resultant terminology. These are antecedents, not statements of the present all-d certificate.",
+    "exact_delta": "For every cyclotomic index d, the authored wrapped-resultant proof establishes a nonzero first-appearance residue via a 2-adic supporting-line unique minimum, while finite regression checks only bounded instances.",
+    "disconfirming_evidence": "The bounded search did not locate an exact antecedent, but non-location is not priority evidence. The finite checker cannot establish the universal quantifier, and no higher-layer cancellation or cumulative-height consequence is shown.",
+    "confidence_ceiling": "High for source/card/packet parity and the stated ordinary proof plus finite regression; medium internal provisional for the exact synthesis being unlocated after the bounded search; low for originality, priority, independent review, or any #1049 endpoint claim.",
+    "hard_step": "Prove the strict dyadic supporting inequalities off the anti-diagonal for every d and carry the unique-minimum valuation through the wrapped determinant and complete residue transfer.",
+    "open_boundary": "First-appearance noncancellation is local. Cumulative global height, higher valuation layers, an alternative integral model, and irrationality at 3/2 remain open.",
+    "mathematical_delta": {
+      "one_sentence": "The authored proof closes first-appearance cancellation uniformly for every cyclotomic index by an explicit wrapped-Hankel resultant and a 2-adic supporting-line unique-minimum argument.",
+      "genuinely_hard_step": "For d=2^a m, proving the strict dyadic supporting inequalities off the anti-diagonal while all determinant permutation sums preserve the affine weight is the load-bearing universal step.",
+      "why_care": "It retires a real local escape route in the #1049 construction and redirects attention from repeated first-layer audits to cumulative height, higher valuation layers, or a different integral model.",
+      "natural_friction": "The all-d proof is ordinary authored mathematics; the finite checker is only regression evidence; closing first appearance does not create the cubic cumulative charge needed at 3/2."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "For the first cyclotomic block in Zudilin's generalized-q-logarithm Hankel family, the authored wrapped-resultant/supporting-line proof gives nonzero first-appearance residue for every d.",
+      "rejected_stronger": [
+        "Zudilin stated or proved this all-d theorem",
+        "the finite regression proves the universal statement",
+        "all higher-order determinant cancellation is excluded",
+        "the result supplies the cubic height threshold or proves irrationality at 3/2",
+        "Erdős #1049 is solved"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "A_minus_route_boundary",
+      "mechanism_family": "cyclotomic first-appearance determinant residues, cyclic resultants, and 2-adic unique-minimum certificates",
+      "programme_disposition": "subordinate beneath rational_approximation_exponent_budget; consolidate wrapped symbol, resultant, valuation, and residue transfer as one local method boundary",
+      "paper_disposition": "route-killing failure/boundary in 'First-appearance noncancellation: local leading terms do not solve the height problem'; not a headline or separate Padé theorem",
+      "comparator_advisory": "A single status-tagged ordinary-proof proposition is justified. It must expose the exact source family and first-layer quantifier, label the regression finite, and deny cumulative-height or irrationality consequences.",
+      "absolute_shortlist": "do not admit as a flagship; retain as a high-value #1049 route boundary beneath the effective-height object"
+    },
+    "expert_review_act": "Independently verify the dyadic supporting-line inequalities, unique-minimum determinant step, and transfer to the first-appearance residue; then test whether any cumulative-height consequence actually follows (currently none is claimed).",
+    "reentry_condition": "Reopen if the authored proof, checker, packet source row, or card hashes change, or if a primary source is found that states the same all-d first-appearance theorem."
+  },
+  "adjudication_currentness": {
+    "status": "authored_source_packet_card_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "authored_proof_commit": "a75c02550ac608bca46e786fef57f7b7c89e166e",
+      "authored_proof_sha256": "0b300544bc48e88840147b53e135b7ebd97d959c0e0e8ae6dbb2b7b9089ec8c8",
+      "finite_checker_commit": "8e15c843431a793369baaaf758e165535b2e9c6e",
+      "finite_checker_sha256": "f4b015720ba88c021a18375567b0ca4633763ae0fc2aa84d9d6198e9f797b813",
+      "research_packet_commit": "9a05984602df6ede6673701c8e6fe21afc2772cd",
+      "research_packet_sha256": "6e64c324833f8d8fbac27061dd70c7d2317734795c89eaf381f2f25e540ef747",
+      "reviewer_card_commit": "c408b094c03eb1b9ae48a4bfac64b21692f09fca",
+      "reviewer_card_sha256": "9e4c56ea9c43cc2934d4ac68216a9e919c6a7092e48764061baad4d235933e41",
+      "source_result_ids": [
+        "zudilin_all_d_first_appearance_noncancellation"
+      ]
+    },
+    "claim_guard": "Only the authored all-d first-appearance noncancellation certificate and its bounded regression are admitted; no priority, Lean, higher-layer cancellation, cumulative-height, irrationality, or #1049 endpoint claim.",
+    "reentry_trigger": "Re-enter if the authored proof, finite checker, packet/card snapshot, source result row, or a primary-source attribution changes."
+  }
+}

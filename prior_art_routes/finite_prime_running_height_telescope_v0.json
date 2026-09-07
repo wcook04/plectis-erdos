@@ -1,0 +1,206 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "finite_prime_running_height_telescope",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_running_height_telescope_with_counting_weighted_jump_refinement_consolidated",
+  "problem_id": "erdos_269",
+  "purpose": "Determine whether the finite-prime running-height identity has an established name, separate its routine telescoping core from its useful arithmetic packaging, and bind the exact significance boundary to the reviewer card.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/finite_prime_running_height_telescope.card.json",
+    "refinery_handoff_commit": "e573552fcd80624eb7805d8193114a5ddf33d2b5",
+    "source_index_commit": "51515e0f4db00d5e57a68a0f6f61dae69ec5ad7d",
+    "source_result_ids": [
+      "running_height_prime_power_telescope",
+      "prime_power_jump_identity_with_counts"
+    ],
+    "statement": "If H_0=1 and H_j=b_j H_(j-1), then sum_(j<=N) (b_j-1)/H_j=1-1/H_N; ordering the prime-power jumps of a nonempty finite prime set gives the corresponding unit-mass prime-labelled series."
+  },
+  "classification": {
+    "novelty_class": "routine_reciprocal_finite_difference_telescope_with_reusable_finite_prime_event_packaging",
+    "exact_formulation_status": "the_prime_labelled_running_height_wording_was_not_located_verbatim_in_a_bounded_search",
+    "formalisation_class": "direct_elementary_proof_and_exact_source_specialization_checker_not_Lean_formalized",
+    "priority_claim": "none",
+    "nearest_prior_work": [
+      "NIST DLMF Section 2.10(ii), equation 2.10.9, records the standard summation-by-parts finite-difference framework in which sums of consecutive differences telescope to endpoint terms.",
+      "Gill and Johansen (1990), printed pages 1501-1502, treat survival functions as product-integrals of hazard measures and explicitly include discrete integrating measures. With S_j=1/H_j and h_j=1-1/b_j, the local mass S_(j-1)h_j=S_(j-1)-S_j is the scalar one-jump specialization.",
+      "The exact prime-power event ordering and the 17/2 Fourier boundary-correction consumer are not stated in those sources; they are the local arithmetic packaging."
+    ],
+    "attribution": "Call the abstract result the reciprocal finite-difference telescope, or equivalently a discrete survival/jump-mass identity. Do not present it as a named new theorem or attribute the finite-prime arithmetic statement to survival-analysis authors.",
+    "mathematical_interest": "The proof depth is minimal, but the invariant formulation is useful: every positive multiplicative height chain carries a canonically normalized reciprocal jump measure, and finite prime sets split that unit mass into labelled prime-power channels with an exact finite residual.",
+    "reusable_scope": "The endpoint identity applies to every positive multiplicative chain. The separately labelled form applies whenever jump events have unique labels, including finite-prime running LCMs; simultaneous jumps must be grouped before assigning channel weights.",
+    "why_it_matters": "The honest public story is not a novelty theorem. Its value is exact bookkeeping: in Erdos 269 it proves that the three coordinate-axis masses total one, so the symmetric half-weight contributes exactly 1/2 and the full Fourier correction is exactly 17/2. The finite truncation also exposes the cutoff error as precisely 1/H_P(R)."
+  },
+  "primary_or_official_sources": [
+    {
+      "id": "nist_dlmf_summation_by_parts",
+      "title": "DLMF Section 2.10(ii): Summation by Parts",
+      "institution": "National Institute of Standards and Technology",
+      "url": "https://dlmf.nist.gov/2.10",
+      "exact_anchor": "Equation 2.10.9 expresses summation by parts through consecutive differences v_j-v_(j+1), with endpoint terms explicit.",
+      "supports": "The standard finite-difference and endpoint-cancellation framework.",
+      "does_not_support": "It does not state the multiplicative-chain or finite-prime formula."
+    },
+    {
+      "id": "gill_johansen_1990_product_integration",
+      "title": "A Survey of Product-Integration with a View Toward Application in Survival Analysis",
+      "authors": [
+        "Richard D. Gill",
+        "Soren Johansen"
+      ],
+      "venue": "Annals of Statistics 18 (1990), 1501-1555",
+      "doi": "10.1214/aos/1176347865",
+      "url": "https://projecteuclid.org/journals/annals-of-statistics/volume-18/issue-4/A-Survey-of-Product-Integration-with-a-View-Toward-Application/10.1214/aos/1176347865.full",
+      "local_annex": "annexes/gill-johansen-1990-product-integration-survival",
+      "exact_anchor": "Abstract and printed page 1501 identify the survival/hazard product-integral correspondence; printed page 1502 explicitly includes discrete as well as continuous integrating measures.",
+      "supports": "The established discrete survival/jump-mass interpretation of S_(j-1)-S_j.",
+      "does_not_support": "It does not state the arithmetic prime-power telescope or the Erdos 269 Fourier correction."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "Set S_j=1/H_j. Then (b_j-1)/H_j=S_(j-1)-S_j, so summing is literal endpoint cancellation. Equivalently, with discrete hazard h_j=1-1/b_j, the jump mass is S_(j-1)h_j.",
+    "local_arithmetic_step": "Order all distinct events p^m<=R. At event p^m the running height multiplies by p, so its jump mass is (p-1)/H_P(p^m) and the label p partitions the total unit mass.",
+    "strict_delta": "The exact prime-labelled finite truncation, its inclusive-height convention, its consumption by the three-axis Fourier midpoint correction, and the counting-function-weighted value identity are one local summation-by-parts synthesis. None raises the one-line telescope itself above routine status.",
+    "scope_sharpening": "Primality is unnecessary for the abstract chain. It is used only to make positive prime-power events distinct and hence separately labelable; simultaneous events require grouping. In the weighted refinement, the prime-channel coefficient A(p^m) remains a multidimensional smooth-lattice count, so the channel split is not a one-slope reduction."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "\"finite prime\" \"running height\" telescope",
+      "\"multiplicative jump\" telescope survival",
+      "discrete Stieltjes jump mass telescoping survival product integral",
+      "prime power running lcm reciprocal jump sum"
+    ],
+    "result": "No exact theorem name or verbatim finite-prime formulation was located. Search results resolved instead to ordinary summation by parts, discrete survival/product-integral theory, or unrelated meanings of prime and height.",
+    "boundary": "Failure to locate exact wording supports only the classification of the packaging as locally formulated; it is not evidence of mathematical novelty."
+  },
+  "claim_boundary": {
+    "allowed_wording": "We use a reciprocal finite-difference telescope, equivalently a discrete survival/jump-mass identity, to package the prime-power boundaries of a finite running LCM. The resulting labelled masses have exact finite residual 1/H_P(R) and total mass one.",
+    "forbidden_wording": [
+      "This is a new telescoping theorem.",
+      "The finite-prime identity is a new result in survival analysis.",
+      "No previous source contains this identity.",
+      "The identity proves irrationality in Erdos Problem 269."
+    ],
+    "nonclaims": [
+      "not_a_solution_of_erdos_269",
+      "not_a_novelty_claim_for_telescoping_or_product_integration",
+      "not_a_complete_literature_search",
+      "not_a_Learn_formalization",
+      "not_an_infinite_prime_set_theorem",
+      "not_a_convergence_theorem_for_the_conditionally_summed_Fourier_modes"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/finite_prime_running_height_telescope.card.json",
+      "effect": "Replace pending novelty language by the routine-core/useful-packaging classification and exact source route."
+    },
+    {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+      "effect": "Preserve the exact 17/2 consumer while preventing the boundary-mass telescope from being narrated as standalone novelty."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the identity as reusable exact bookkeeping with classical finite-difference attribution, adjacent to the Erdos 269 nonclaim."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The finite-prime handoff is adjudicated: routine reciprocal telescoping at the core, useful exact arithmetic packaging and a material 17/2 consumer, with no novelty or priority claim.",
+    "do_not_redo": [
+      "Do not search for a grand named theorem behind literal endpoint cancellation.",
+      "Do not attribute the finite-prime formula to Gill-Johansen; use their paper only for the standard survival/jump interpretation.",
+      "Do not infer novelty from the absence of exact wording in a bounded search."
+    ],
+    "ranked_open_throats": [
+      "primitive_matrix_determinant_content: separate the standard Bezout/Smith-normal-form determinant-content identity from the private square-payment normal form.",
+      "binomial_lemniscate_complementary_chords: adjudicate the exact adjacent-chord threshold and open contraction construction without conflating it with arbitrary-polynomial Erdos 1041.",
+      "generated contribution row parity: land only the owned Mersenne achievement-set adjudication row without consuming foreign generated hunks."
+    ],
+    "sibling_claim_map": "The proof fleet owns source mathematics; the Refinery owns canonicalization; the Exhibition may publish only the source-backed classification. Active source claims in Erdos 68, 1041, and 257 remain untouched.",
+    "validation_state": "Pending JSON parse, reviewer-card render, annex validation, and scoped commit.",
+    "next_wake_condition": "Validate and commit this disjoint adjudication slice, then consume the primitive-matrix handoff."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "finite_prime_running_height_telescope@source-4cd4eac-card-71c962d3",
+    "evidence_class": "authored_elementary_telescope_with_exact_source_specialization_checker_and_primary_source_context",
+    "source_generation": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/PrimeJumpMigration.lean",
+        "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+        "sha256": "41af7fd74ba30e52cd25703dd3239b02a004aeb9cf72a8c2db2fd5b32a41b274"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/finite_prime_running_height_telescope.card.json",
+        "commit": "e573552fcd80624eb7805d8193114a5ddf33d2b5",
+        "sha256": "4a198e31d05366346dc5b2cb7e6bd6cb1e8af2b70db9d749e917ac600322b7c7"
+      },
+      "source_index_commit": "51515e0f4db00d5e57a68a0f6f61dae69ec5ad7d",
+      "primary_sources": ["NIST DLMF 2.10.9", "Gill--Johansen 1990, pp. 1501--1502"]
+    },
+    "comparison_relation": "The abstract identity is literal reciprocal finite-difference telescoping, equivalently a discrete survival/jump-mass identity. Prime powers only add a source-specific event labelling and finite-LCM specialization.",
+    "closest_known_result": "DLMF 2.10.9 supplies summation by parts; Gill--Johansen supplies the discrete survival/product-integral interpretation. Neither states the local prime-labelled arithmetic consumer.",
+    "exact_delta": "The source packages unit total jump mass, exact finite residual 1/H_P(R), prime-channel labels, and the #269 17/2 Fourier boundary consumer with a direct checker.",
+    "disconfirming_evidence": "The one-line telescope is classical and no infinite-prime or conditionally summed Fourier theorem follows; channel counts do not reduce to a single-slope model.",
+    "confidence_ceiling": "High for the reciprocal telescope and source-specific finite-prime packaging; low novelty and no priority claim; no convergence or #269 irrationality inference.",
+    "significance": "reusable_bookkeeping_medium_route_value",
+    "claim_ceiling": "Use the reciprocal finite-difference telescope/discrete jump-mass identity for a finite running LCM: labelled prime-power masses have exact finite residual 1/H_P(R) and total mass one. It does not prove irrationality or a conditionally summed Fourier representation.",
+    "hard_step": "Separate classical endpoint cancellation from the local arithmetic labelling and from the distinct analytic/Fourier interchange problem.",
+    "open_boundary": "No infinite-prime extension, no conditional Fourier convergence theorem, and no Erdős #269 solution.",
+    "bounded_expert_act": "Confirm the DLMF and Gill--Johansen attribution, then check that the 17/2 use does not smuggle in an unproved Fourier interchange.",
+    "reentry_trigger": "Re-enter if the source/card changes, a closer named antecedent is found, or an analytic summation theorem changes the #269 consumer.",
+    "programme_disposition": "subordinate_under_erdos269_torus_fourier_and_collision_mechanisms",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Prime-power boundary mass: exact bookkeeping before Fourier summation",
+      "supersession_or_consolidation": "Consolidate the finite-prime telescope, labelled channels, and 17/2 boundary correction here; keep the torus/Fourier summation firewall separate.",
+      "reason": "It gives an exact accounting invariant without confusing it with the unresolved analytic interchange."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The abstract telescope is routine and the prime-labelled consumer is subordinate arithmetic evidence, not a separate endpoint proposition."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified_elementary_identity_and_source_specialization",
+      "output_stage": "expert_digestion_and_analytic_statement_firewall",
+      "artifact": "finite_prime_running_height_telescope_v0",
+      "human_understanding_delta": "Separates classical jump-mass cancellation from the source-specific 17/2 consumer and the still-open Fourier summation step.",
+      "verification_state": "Direct elementary proof and exact source specialization checker; no Lean formalization claim.",
+      "publication_or_review_state": "Status-tagged supporting visibility is eligible; no specialist-review prerequisite.",
+      "canonicalization_state": "One subordinate #269 bookkeeping object.",
+      "unresolved_downstream_bottleneck": "Conditional Fourier interchange and arithmetic collision exclusion.",
+      "next_stage_owner": "Mathematics Refinery and Role 3 for consolidation under the #269 analytic family."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine_endpoint_cancellation_with_source_specific_labelled_consumer",
+    "slow_down_at": "The finite-prime labels and 17/2 correction do not establish the conditionally summed Fourier identity.",
+    "automation_establishes": "Finite exact prime-power event ordering and residual calculations.",
+    "expert_semantic_judgment": "Whether the arithmetic consumer is being presented as bookkeeping rather than an analytic convergence theorem.",
+    "review_act": "Check the standard finite-difference attribution and the separation from the torus/Fourier summation firewall."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#269 reciprocal jump-mass bookkeeping and Fourier boundary correction",
+    "disposition": "subordinate supporting lemma beneath erdos269_torus_fourier_value_representation and mod_one_orbit_collision_rationality_criterion",
+    "consolidation_relation": "Keep the abstract telescope, finite-prime labels, and exact residual as one object; do not split them into new #269 endpoints.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "It prevents exact mass accounting from being mistaken for the missing analytic or Diophantine step.",
+      "evidence_class": "Direct elementary proof plus exact finite-prime checker and sourced classical framework",
+      "hard_step": "Prove the Fourier summation/interchange or all-scale collision exclusion separately.",
+      "prior_art_uncertainty": "Low; standard telescope and survival/jump language are directly sourced; exact prime-labelled packaging is local and no priority is claimed.",
+      "open_boundary": "No #269 irrationality theorem.",
+      "demoted_predecessor": "standalone finite-prime novelty narrative",
+      "status_boundary": "Retain the existing five absolute first-contact objects; this is supporting #269 evidence."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_and_card_pins_bound_at_2026_08_26",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "41af7fd74ba30e52cd25703dd3239b02a004aeb9cf72a8c2db2fd5b32a41b274",
+      "reviewer_card_commit": "e573552fcd80624eb7805d8193114a5ddf33d2b5",
+      "reviewer_card_sha256": "4a198e31d05366346dc5b2cb7e6bd6cb1e8af2b70db9d749e917ac600322b7c7"
+    },
+    "claim_guard": "routine reciprocal telescope and finite-prime bookkeeping only; no new theorem, Fourier convergence, or #269 solution",
+    "reentry_trigger": "source/card change or analytic summation upgrade"
+  }
+}

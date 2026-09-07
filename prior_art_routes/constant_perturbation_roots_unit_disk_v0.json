@@ -1,0 +1,210 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "constant_perturbation_roots_unit_disk",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_quantitative_root_continuity_corollary",
+  "problem_id": "erdos_1041",
+  "purpose": "Classify the constant-perturbation disk theorem by its exact imported dependency, prevent novelty inflation, and preserve its useful role in the #1041 generic-position construction.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The root-continuity estimate is imported and routine; the only local work is instantiating its coefficient indexing and strict disk margin.",
+    "slow_down_at": "Check the exact Mathlib declaration, the constant-term perturbation convention, and the distinction between a sufficient margin and an optimal stability radius.",
+    "automation_can_establish": [
+      "Source/card/packet hash parity",
+      "The Lean declaration correspondence and displayed strict-margin arithmetic",
+      "That no path-length or #1041 endpoint claim is present"
+    ],
+    "human_judgment_required": [
+      "Whether the imported theorem is cited with the right quantitative scope",
+      "Whether this lemma is clearly subordinate to the generic-position construction",
+      "Whether any downstream geometric consumer actually needs a sharper perturbation bound"
+    ],
+    "review_act": "Verify one local specialization against Mathlib and confirm the supporting-lemma placement; do not search for novelty in standard root continuity.",
+    "attention_ceiling": "Low standalone significance, high local provenance value, no priority or endpoint claim."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/constant_perturbation_roots_unit_disk.card.json",
+    "landed_source_commit": "7e80158d80c9beccbaa930a0b45da2db70f253d4",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+    "source_result_id": "constant_perturbation_roots_in_unitDisk",
+    "headline_declarations": [
+      "ErdosProblems.Erdos1041.NewtonFlowRaySeparation.constant_perturbation_root_near_original",
+      "ErdosProblems.Erdos1041.NewtonFlowRaySeparation.constant_perturbation_roots_in_unitDisk"
+    ]
+  },
+  "classification": {
+    "theorem_class": "quantitative_polynomial_root_continuity_specialized_to_a_constant_coefficient_perturbation",
+    "novelty_class": "routine_consequence_with_reusable_Lean_packaging",
+    "formalization_class": "Lean_checked_specialization_of_an_existing_Mathlib_theorem",
+    "priority_claim": "none",
+    "recommended_terminology": "quantitative continuity-of-roots disk-preservation lemma",
+    "discouraged_terminology": [
+      "new polynomial perturbation theorem",
+      "optimal Schur-stability radius",
+      "Rouché solution of Erdős Problem 1041"
+    ],
+    "nearest_prior_work": [
+      "Bhatia, Elsner, and Krause (1990) study quantitative variation of polynomial roots in terms of coefficient variation.",
+      "The immediate formal antecedent is Mathlib's coefficientwise continuity-of-roots theorem, which supplies exactly the proximity estimate used by the local source."
+    ],
+    "attribution": "Call the mathematics a standard quantitative continuity-of-roots consequence. Attribute only the formal specialization and #1041 consumer interface to the local source.",
+    "mathematical_interest": "Low standalone depth but high local utility: it turns an abstract sufficiently-small perturbation into the exact strict margin consumed by the generic-position step.",
+    "reusable_scope": "Monic split polynomials over the complex numbers under small constant coefficient changes.",
+    "why_it_matters": "It prevents the perturbation used to separate arguments and critical geometry from silently violating the problem's open-unit-disk root hypothesis."
+  },
+  "primary_sources": [
+    {
+      "id": "bhatia_elsner_krause_1990_root_variation",
+      "title": "Bounds for the variation of the roots of a polynomial and the eigenvalues of a matrix",
+      "author": "Rajendra Bhatia, Ludwig Elsner, and Gerd Krause",
+      "venue": "Linear Algebra and its Applications 142 (1990), 195-209",
+      "doi": "10.1016/0024-3795(90)90267-G",
+      "url": "https://doi.org/10.1016/0024-3795(90)90267-G",
+      "exact_anchor": "The abstract states that the paper derives bounds for distances between roots of two polynomials in terms of their coefficients.",
+      "supports": "The classical quantitative root-variation framework and the non-novelty classification of coefficient-to-root perturbation bounds.",
+      "does_not_support": "The exact local constants without theorem-level comparison, the formal Lean interface, or any lemniscate path claim."
+    }
+  ],
+  "exact_dependency": {
+    "library_source": "Mathlib/Analysis/Normed/Field/Approximation.lean",
+    "declaration": "Polynomial.exists_roots_norm_sub_lt_of_norm_coeff_sub_lt",
+    "library_description": "Continuity of Roots: coefficientwise-close monic polynomials of equal degree, with the comparison polynomial split, have nearby roots with the displayed degree-dependent bound.",
+    "local_specialization": "Set the perturbed polynomial to f + C shift and the comparison polynomial to f; all coefficient differences vanish except at index zero."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "polynomial roots coefficient perturbation bound (n+1) epsilon power 1/n",
+      "Ostrowski continuity roots polynomial coefficients quantitative bound",
+      "Bhatia Elsner Krause bounds variation roots polynomial 1990",
+      "constant perturbation monic polynomial roots unit disk Rouche theorem"
+    ],
+    "result": "The search returned a substantial classical perturbation literature. More decisively, source inspection identified the exact imported Mathlib root-proximity theorem from which the local result follows directly.",
+    "boundary": "No exact optimality comparison was attempted because the local statement is already a sufficient-margin consumer and makes no sharpness claim."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos1041_constant_perturbation_roots_unit_disk@source-7e80158d-card-current",
+    "evidence_class": "Lean-checked specialization of Mathlib's coefficientwise continuity-of-roots theorem, with Bhatia--Elsner--Krause as classical quantitative context; no new end-to-end geometric proof is claimed.",
+    "closest_known_result": "Mathlib's `Polynomial.exists_roots_norm_sub_lt_of_norm_coeff_sub_lt` is the immediate formal antecedent. Bhatia--Elsner--Krause (1990) provide the classical coefficient-to-root variation framework.",
+    "comparison_relation": "Routine quantitative root-continuity consequence, specialized to a constant coefficient perturbation and exposed as a reusable #1041 disk-preservation interface.",
+    "exact_delta": "The local consumer turns a sufficiently small constant shift into an explicit strict open-unit-disk margin for the perturbed roots; it adds packaging and a checked downstream hypothesis, not a new stability theorem.",
+    "disconfirming_evidence": "The imported theorem gives only a sufficient proximity bound; no optimal radius, sharpness, Rouché novelty, lemniscate path, or arbitrary-polynomial metric result follows. Disk preservation can coexist with failure of the desired length bound.",
+    "confidence": {
+      "level": "high_for_formal_dependency_and_claim_scope_high_for_standard_attribution_low_for_standalone_novelty",
+      "basis": "The exact Mathlib declaration is named and the source/card/packet hashes are recorded; the mathematical content is an immediate specialization."
+    },
+    "significance": "Low standalone depth but useful formal hygiene: it prevents the generic-position perturbation from silently leaving the admissible root domain.",
+    "claim_ceiling": "A Lean-checked specialization supplies an explicit sufficient constant-perturbation margin preserving roots in the open unit disk. It is a supporting lemma only: no optimality, lemniscate metric estimate, short path, or Erdős #1041 solution.",
+    "hard_step": "The remaining #1041 work is geometric containment and length after perturbation; this continuity lemma does not address either.",
+    "open_boundary": "Optimal stability radius, path construction, component assembly, and all global #1041 claims remain open.",
+    "bounded_expert_review_act": "Verify the Mathlib specialization's coefficient indexing and one strict-margin application, then confirm it is cited as imported continuity rather than as a new perturbation theorem.",
+    "reentry_trigger": "Re-enter only on changes to the Mathlib declaration, local perturbation constants, source/card/packet generation, or the downstream geometric consumer.",
+    "source_generation_binding": {
+      "formal_source_commit": "7e80158d80c9beccbaa930a0b45da2db70f253d4",
+      "formal_source_sha256": "83aeede17c435e5156967bb283d547af318d10b2eb33d8038a5b8c1d3c2e9d9d",
+      "reviewer_card_sha256": "b8bab37edcbf3e220dae2be2f7856de1b080b62d45dbfec0c038e88253ae23d7",
+      "research_packet_sha256": "0e36e15b4d27f90e2588015b39439e2567236ae0af0e304cbd0c389563b59642",
+      "parity_status": "formal source, card, and packet are hash-bound at adjudication"
+    },
+    "classification": {
+      "result_family": "erdos1041_root_domain_preservation_support",
+      "evidence_class": "Lean_checked_library_specialization",
+      "closest_prior_art": "Mathlib root-continuity theorem; Bhatia--Elsner--Krause 1990 for classical root-variation bounds",
+      "comparison_relation": "Routine imported quantitative continuity packaged for the generic-position consumer; no priority claim",
+      "novelty_confidence": "low",
+      "significance_grade": "low_standalone_high_local_utility",
+      "why_care": "It makes the admissibility margin explicit and machine-checkable before geometric arguments consume the perturbed roots.",
+      "hard_step": "Geometric containment and length remain outside the lemma.",
+      "natural_friction": "A sufficient coefficient-to-root estimate is easy to overread as an optimal stability or metric theorem.",
+      "disconfirming_evidence": "No sharpness comparison or path estimate is present; the immediate theorem is already in Mathlib.",
+      "confidence_ceiling": "High for the formal supporting fact, low for any independent mathematical novelty.",
+      "bounded_expert_act": "Check the exact imported declaration and one local root-margin instantiation.",
+      "reentry_condition": "Library or downstream-consumer change."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1041 generic-position perturbation and root-domain preservation",
+      "disposition": "subordinate_under_generic_position_perturbation; consolidate_with_existing_supporting_lemmas",
+      "paper_disposition": "supporting lemma",
+      "paper_target_section": "Generic-position perturbations preserve admissible roots",
+      "supersession_relation": "Keep one imported continuity lemma beneath the generic-position construction; retire any duplicate Rouché/stability card that repeats the same Mathlib dependency.",
+      "independent_comparator_interface_justified": false,
+      "comparator_scope": "Nested supporting declaration only; do not expose an independent proposition family for a standard library consequence.",
+      "expert_attention_reason": "The expert value is scope control and provenance, not a new theorem."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "7e80158d80c9beccbaa930a0b45da2db70f253d4",
+      "formal_source_sha256": "83aeede17c435e5156967bb283d547af318d10b2eb33d8038a5b8c1d3c2e9d9d",
+      "reviewer_card_sha256": "b8bab37edcbf3e220dae2be2f7856de1b080b62d45dbfec0c038e88253ae23d7",
+      "research_packet_sha256": "0e36e15b4d27f90e2588015b39439e2567236ae0af0e304cbd0c389563b59642"
+    },
+    "claim_guard": "Only the explicit constant-perturbation open-disk preservation lemma is covered; no sharp radius, path, or #1041 endpoint claim.",
+    "reentry_trigger": "Re-enter on source/card/packet or imported-library changes."
+  },
+  "digestion_assessment": {
+    "decision": "supporting_lemma_subordinate_to_generic_position_perturbation",
+    "canonical_family": "#1041 generic-position perturbation and root-domain preservation",
+    "expert_attention_reason": "It makes the domain-preservation hypothesis inspectable while eliminating a false impression of new root-variation theory.",
+    "evidence_class": "Lean-checked Mathlib specialization",
+    "hard_step": "The geometric path and length estimates that follow the perturbation.",
+    "paper_disposition": "supporting lemma in Generic-position perturbations preserve admissible roots",
+    "comparator_advisory": "No independent interface; retain as a nested supporting declaration.",
+    "open_boundary": "No optimality, lemniscate metric theorem, or #1041 solution."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked specialization of quantitative root continuity gives an explicit sufficient margin preserving the open unit disk under constant perturbation.",
+    "forbidden_wording": [
+      "This is a new root perturbation theorem.",
+      "The epsilon threshold is optimal.",
+      "The result proves a short path inside the lemniscate.",
+      "This solves Erdős Problem 1041."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_an_optimal_stability_radius",
+      "not_a_lemniscate_metric_theorem",
+      "not_erdos_1041_solution"
+    ]
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_supporting_lemma",
+    "reason": "The exact Lean dependency and scope are inspectable. Its technical-appendix role and duplication of a general Mathlib mechanism—not reviewer absence—exclude an independent Comparator family.",
+    "comparator_advisory": "Use only as a nested supporting declaration beneath the generic-position construction."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_formal_support_lemma",
+    "output_stage": "expert_digestion_and_subordination",
+    "artifact": "constant_perturbation_roots_unit_disk_v0",
+    "human_understanding_delta": "Separates the classical imported estimate from the local formal consumer and removes novelty ambiguity.",
+    "verification_state": "Source-current Lean specialization of the named Mathlib theorem.",
+    "publication_or_review_state": "Eligible for public supporting use with formalization status; review remains downstream.",
+    "canonicalization_state": "Technical lemma inside the generic-position perturbation family.",
+    "unresolved_downstream_bottleneck": "Geometric containment and length after perturbation.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and \\#1041 proof owners."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_library_bound_or_geometric_consumer_change",
+    "reentry_condition": "Re-enter only if the Mathlib root-continuity theorem, the local perturbation constants, or the downstream geometric containment/length consumer changes.",
+    "do_not_redo": "Do not repeat the Bhatia--Elsner--Krause attribution or the coefficientwise continuity specialization; the result is routine imported mathematics.",
+    "open_bottleneck": "The lemma only preserves roots in the open disk under a sufficient perturbation margin. It supplies no lemniscate metric bound, optimal radius, or #1041 path theorem.",
+    "owner": "#1041 proof owners for geometric containment and length; Mathematics Refinery and Role 3 for nested supporting use."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/constant_perturbation_roots_unit_disk.card.json",
+      "effect": "Replace unassessed wording with a routine-consequence classification and exact imported dependency."
+    },
+    {
+      "consumer": "Formal Conjectures contribution owner",
+      "effect": "Treat the declaration as a useful formalized supporting lemma, not an external novelty candidate."
+    },
+    {
+      "consumer": "Erdős #1041 proof fleet",
+      "effect": "Use the disk-preservation interface without reopening its standard perturbation theory; the remaining work is geometric containment and length."
+    }
+  ],
+  "next_ranked_targets": [
+    "threeHalves_no_coordinatewiseCorridor (Erdos 1049): classify the local barrier and its reusable scope.",
+    "no_cofinallyBoundedNegative_of_normalizedVanishes (Erdos 243): compare with recurrence and discrete-Grönwall antecedents."
+  ]
+}

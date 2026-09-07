@@ -1,0 +1,119 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SixReturnJointAssimilation20260826.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826.fullEnergyChargedLifetimeBudget",
+      "ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826.leafChargedLifetimeBudget",
+      "ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826.leafChargedLifetime_strictImprovement",
+      "ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826.spectralDeviation_sum_le",
+      "ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826.criticalPoleTrace_charge_nonneg"
+    ],
+    "delta_class": "statement_strengthened_and_multi_return_reconciled",
+    "authority_at_review": "explicit current source with green focused Lean replay, exact symbolic identities, deterministic regression, exact rational certificate, and ordinary analytic proofs",
+    "claim_ceiling": "The returned lifetime and Gram theorems are strictly strengthened and all six returns are reconciled. The new simultaneous residual is not proved empty; unrestricted Erdos 1041 remains open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "displayed_candidate_count": 7,
+    "discovered_candidate_count": 1382,
+    "omitted_candidate_count": 1375,
+    "review_scope": "All seven displayed lexical candidates plus the semantic Erdos1041 research packet, lifetime, Gram, critical-pole, translated-cut, and monodromy consumers."
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_5fdd046a61706b0d",
+      "file": "state/formal_math_research_operations/capability_map.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The candidate is a false lexical match on the ordinary word checks, not a declaration or Erdős 1041 dependency.",
+      "authority_surface_checked": "candidate excerpt and owning state schema",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_2f8a64aff3873812",
+      "file": "state/formal_math_research_operations/fable_proof_campaign_2026_07_13.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "The candidate is an unrelated campaign-language match on checks.",
+      "authority_surface_checked": "candidate excerpt and problem identity",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_2efc0ff548a63215",
+      "file": "state/formal_math_research_operations/pilots/erdos249/adjacent_carry_probe.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "Erdős 249 state has no mathematical dependence on the 1041 leaf or Gram statements; the identifier match is generic JSON vocabulary.",
+      "authority_surface_checked": "problem id and matched excerpt",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_466ec3102ffab653",
+      "file": "state/formal_math_research_operations/pilots/erdos249/canonical_phase_receipt.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "Unrelated Erdős 249 receipt with a generic checks key.",
+      "authority_surface_checked": "problem id and receipt role",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_643852b9f0dde5de",
+      "file": "state/formal_math_research_operations/pilots/erdos249/curvature_seam_2026_07_12/curvature_seam_brief.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "The word curvature is not a bridge between the number-theory pilot and the 1041 component charge; no shared theorem object exists.",
+      "authority_surface_checked": "problem id, source excerpt, and target objects",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_97eb44e9919fb473",
+      "file": "state/formal_math_research_operations/pilots/erdos249/exact_lcm_phase_receipt.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "Unrelated Erdős 249 receipt with generic checks fields.",
+      "authority_surface_checked": "problem id and receipt role",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_fb98088d55e9f459",
+      "file": "state/formal_math_research_operations/pilots/erdos249/lcm_factor_ideal_pulse_probe.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "Unrelated Erdős 249 probe with a generic checks key.",
+      "authority_surface_checked": "problem id and matched excerpt",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "semantic_erdos1041_research_packet",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The canonical packet must record the leaf-charged lifetime theorem, sharper Gram constant, six-return source bundle, and unchanged unrestricted claim boundary.",
+      "authority_surface_checked": "landed_formal_source, exact_results, claim-ceiling addenda, and current correction boundary",
+      "validation_or_reentry": "JSON parse, frontier-integrity audit, corpus-index check, focused Lean replay, and cold-reader cockpit"
+    },
+    {
+      "candidate_id": "semantic_returned_lifetime_and_antichain",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/EightPacketFrontierCoevolution20260826.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Its FE source law remains correct. The new theorem is a downstream additive consumer and belongs in its own joint-assimilation source rather than rewriting the dated packet-design artifact.",
+      "authority_surface_checked": "forest leaf-energy theorem, desk boundaries, and dated role",
+      "validation_or_reentry": "re-enter if a successor packet is compiled from the new frontier"
+    },
+    {
+      "candidate_id": "semantic_connected_cluster_and_pole_charge",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTreeLengthCharge.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The critical-pole dispersion theorem is conditional on a trace inequality and therefore does not alter the existing open combined-charge status.",
+      "authority_surface_checked": "component charge, trace form, and claim boundary",
+      "validation_or_reentry": "re-enter only when the CPT calibration itself is proved or refuted exactly"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "The chain-additive lifetime budget now includes a positive full-energy excess at every actual node plus singleton entrance energy, and fixed-discriminant Gram stability costs one power of M_delta rather than two.",
+    "newly_discharged": "Every row satisfying either returned weaker scalar bound is covered by the strengthened version.",
+    "nonimplications_preserved": "No promotion is made from full-fibre action to a monodromy pair, from disk pole mass to critical-tree trace, or from complex Lagrange cancellation to critical-centred pair selection.",
+    "surviving_boundary": "Allocate the root-indexed or compensated budget to one attachment-compatible pair in one safe component.",
+    "neighboring_routes": "COVER, combined charge, critical-centred spoke-or-cut, safe-block action, and topology-sensitive near-Fekete transfer remain distinct consumers of the same allocation debt."
+  },
+  "checkpoint_class": "checkpoint_yield_open_arrival_stream",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The reusable protocol lesson is already explicit in the Type-B batch skill: claim-level coverage, cross-return comparison, parent re-derivation, and nonpromotion of conditional endpoints. This run exercised rather than changed that contract.",
+    "reentry_condition": "Rerun after another return arrives, after a target-deciding pair/localization theorem lands, or when the current open stream is deliberately closed."
+  }
+}

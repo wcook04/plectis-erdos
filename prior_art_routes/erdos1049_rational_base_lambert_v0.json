@@ -1,0 +1,445 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "formal_source_commit": "73773158fad4fedb8632c981fc879fd483717e00",
+    "formal_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+    "formal_source_sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+    "research_packet_commit": "f47fc3d4c2b04173cd4ab89f649cd2e07020c66b",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+    "research_packet_sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2",
+    "reviewer_card_commit": "9bae89879e03c8715fadc1f08d3e5a030d2e8ff4",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/erdos1049_seven_halves_height_certificate.card.json",
+    "reviewer_card_sha256": "29ab65e67534875f1f31ecc07d9620421d997af5db8f2124c12e476331e4918f",
+    "bundschuh_vaananen_source_archive_sha256": "e4937a5bbf141c01dc60c6bdb91e0f8a8ad399d69e8e3156b4b27881631913cc",
+    "soundararajan_negative_source_archive_sha256": "cf66e3b840624fc5efe9544448d887cd50302fe30a784dc70e8030ecbcdf86c9",
+    "zudilin_2016_source_archive_sha256": "4c20ef7a8fe0075a65536c87cfec9c123b2b018c977b9f11f026dfc2fd1a2dcf",
+    "status": "formal_source_packet_and_reviewer_card_current; Zudilin 2004, Zudilin 2016, and Rhin--Viola are source-checked adjacent comparisons"
+  },
+  "parity_audit": {
+    "current_research_packet_sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2",
+    "reviewer_card_embedded_research_packet_sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2",
+    "status": "card_packet_hash_current",
+    "effect": "The route and seven-declaration reviewer card bind the same current packet digest and preserve the formal-source, published-theorem, and Comparator replay boundaries.",
+    "reentry_condition": "Re-enter after the formal source, packet identity, reviewer-card source_parity, or cited-source comparison changes."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1049_rational_base_lambert_prior_art_v2",
+    "result_family": "erdos1049_published_height_region_and_rational_base_boundary",
+    "exact_result_ids": [
+      "seven_halves_height_criterion",
+      "rank_budget_law_for_rational_bases"
+    ],
+    "source_generation": "2026-08-27",
+    "evidence_class": "Lean-checked numerical admission certificate plus primary-source Bundschuh--Väänänen theorem; adjacent Zudilin 2004/2016 and Rhin--Viola comparisons are source-checked and claim-bounded, while Soundararajan is a hash-pinned negative attribution finding",
+    "prior_art_relation": "The 7/2 irrationality mechanism is published Bundschuh--Väänänen (1994), not new mathematics. Zudilin (2004), Zudilin (2016), and Rhin--Viola (1996) are source-checked adjacent context with explicit boundaries; Soundararajan (2019) does not support the returned q-integrality description.",
+    "confidence_ceiling": "High for the seven local Lean declarations, the archived Bundschuh--Väänänen correspondence, the source-checked adjacent comparisons, and the Soundararajan correction; low for any original rational-base method or 3/2 implication.",
+    "significance_rationale": "This is an assurance firewall: it prevents a routine numerical predicate from being misreported as a formalized irrationality theorem and makes the published threshold versus the open 3/2 gap explicit.",
+    "hard_step": "Keep the external theorem, its inherited hypotheses, and the local Lean inequality separate; the mathematical frontier is a construction beyond the published height region, not another admission certificate.",
+    "open_boundary": "No 3/2 irrationality result or general rational-base theorem follows. Zudilin (2016) supplies only an unquantified non-integer extension remark, not a computed threshold or a 3/2 theorem; the ordinary-versus-q-specialized boundary for Rhin--Viola remains explicit.",
+    "expert_review_act": "Check the inherited q=7/2 hypotheses against Bundschuh--Väänänen Theorem 2 and verify that every public statement labels the seven Lean declarations as numerical admission only; keep Zudilin 2004/2016 and Rhin--Viola as source-bounded adjacent context, not q=3/2 support.",
+    "next_reentry": "Re-enter only if the source packet/card changes, a cited source correction changes the comparison, or a local 3/2 claim boundary changes; do not repeat the completed source comparisons."
+  },
+  "release_disposition": {
+    "value": "layered_comparator_now_and_external_evidence_only",
+    "comparator_now": [
+      "ErdosProblems.Erdos1049.BundschuhVaananenHeightRegion",
+      "ErdosProblems.Erdos1049.sevenHalves_power_certificate",
+      "ErdosProblems.Erdos1049.sevenHalves_rational_margin",
+      "ErdosProblems.Erdos1049.sevenHalves_log_ratio_lt_seven_eighteenths",
+      "ErdosProblems.Erdos1049.sevenEighteenths_lt_bundschuhVaananenMargin",
+      "ErdosProblems.Erdos1049.sevenHalves_mem_bundschuhVaananenHeightRegion",
+      "ErdosProblems.Erdos1049.sevenHalves_archimedean_height_condition"
+    ],
+    "paper_only_external_evidence_only": "Bundschuh--Väänänen's analytic irrationality implication and all inherited source hypotheses; Zudilin 2004/2016 and Rhin--Viola remain adjacent source-bounded context, not rational-base or 3/2 proof authority.",
+    "statement_firewall": "Say only that Lean proves the exact source-facing and transformed numerical height conditions at 7/2 and that Bundschuh--Väänänen Theorem 2 supplies the external analytic implication after inherited-hypothesis checking. Do not say Lean proves irrationality, that 81/200 is published, that Zudilin proves the rational 3/2 specialization, or that Soundararajan supports q-integrality.",
+    "reason": "The exact local certificate is inspectable and independently restatable; specialist review is downstream. The analytic conclusion remains explicitly external and does not justify a separate 3/2 or general rational-base result."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos1049_seven_halves_height_certificate.card.json",
+    "reviewer_card_commit": "9bae89879e03c8715fadc1f08d3e5a030d2e8ff4",
+    "reviewer_card_sha256": "29ab65e67534875f1f31ecc07d9620421d997af5db8f2124c12e476331e4918f",
+    "source_result_id": "seven_halves_height_criterion",
+    "formal_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+    "formal_source_commit": "73773158fad4fedb8632c981fc879fd483717e00",
+    "formal_source_sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+    "research_packet_commit": "f47fc3d4c2b04173cd4ab89f649cd2e07020c66b",
+    "research_packet_sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2"
+  },
+  "classification": {
+    "theorem_class": "published_external_irrationality_theorem_with_Lean_checked_numerical_admission_certificate",
+    "novelty_class": "routine_exact_formalization_of_a_published_7_over_2_hypothesis; no_new_irrationality_mathematics",
+    "attribution": "Bundschuh--Väänänen Theorem 2 owns the analytic implication; the seven local declarations own only the source-facing and transformed numerical admission conditions. Zudilin 2004/2016 and Rhin--Viola supply bounded adjacent context, and Soundararajan is a negative attribution finding.",
+    "significance": "High as a claim-assurance firewall and layered Comparator candidate; no evidence that the 3/2 barrier is crossed.",
+    "confidence_ceiling": "High for local Lean declarations, the archived Bundschuh--Väänänen correspondence, and exact adjacent-source boundaries; no priority or endpoint claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Lean checks the exact seven-halves numerical height condition in source-facing and transformed forms; Bundschuh--Väänänen Theorem 2 supplies the separate external analytic implication after its inherited hypotheses are checked.",
+    "evidence_class": "Lean-checked numerical certificate plus source-archived external theorem; no end-to-end Lean irrationality proof",
+    "forbidden_wording": [
+      "Lean proves irrationality at 7/2",
+      "the certificate advances the 3/2 case",
+      "Zudilin proves the rational 3/2 specialization",
+      "Soundararajan supplies q-integrality theory",
+      "attribute a rational-base theorem or 3/2 endpoint to Zudilin 2004/2016 or Rhin--Viola",
+      "solution of Erdős #1049"
+    ],
+    "open_boundary": "The 3/2 construction and general rational-base theorem remain open; Zudilin 2016 supplies no computed threshold, and the adjacent source comparisons remain bounded by their exact locators."
+  },
+  "created_by": "claude_code",
+  "status": "adjudicated_load_bearing_source_with_source_checked_adjacent_comparisons",
+  "route_id": "erdos1049_rational_base_lambert",
+  "problem_id": "erdos_1049",
+  "purpose": "Route the five prior-art sources identified in the Erdos 1049 research packet into the prior-art lane. One is a NEGATIVE finding: the research return described Soundararajan as modern exact q-integrality theory, and the packet's own verification records that the cited paper does not support that description. Zudilin 2016 is bound as a source-checked non-integer-extension remark with no computed threshold, making the correction durable in the claim-assurance contract.",
+  "adjudicated_objects": [
+    {
+      "object_id": "seven_halves_arithmetic_certificate",
+      "reviewer_card": "docs/formal_math/reviewer_cards/erdos1049_seven_halves_height_certificate.card.json",
+      "adjudicated_at": "2026-08-24",
+      "classification": "routine_exact_formalization_of_published_theorem_numerical_hypothesis",
+      "priority_claim": "none",
+      "source_correspondence": "For K=Q, v|infinity, q=7/2 and alpha=-1, Bundschuh--Väänänen Theorem 2 has lambda=log(7)/log(7/2), and its special threshold is equivalent to log(2)/log(7)<1/2-1/pi^2. The printed standing hypotheses allow rational noninteger q: they require |q|_v>1 at one place and |q|_w!=1 at infinite places.",
+      "formal_boundary": "Lean checks the literal source threshold and its transformed certificate through 2^18<7^7 and pi>3. It does not formalize Theorem 2, its inherited hypotheses, or the irrationality consequence.",
+      "significance": "The arithmetic is elementary. The durable value is a precise formal/external authority boundary and a compact Comparator-ready numerical certificate.",
+      "nearest_alternatives": [
+        "Van Assche 2001 gives the same 2.50828 measure constant for integer bases but not q=7/2.",
+        "Zudilin 2016 remarks on rational noninteger bases under an uncomputed height constant but does not state the explicit 7/2 threshold."
+      ],
+      "strongest_allowed_claim": "Lean verifies the source-facing q=7/2 numerical height condition and its transformed certificate; after separately checking all source hypotheses, Bundschuh--Väänänen Theorem 2 supplies irrationality.",
+      "rejected_wording": [
+        "Lean proves irrationality at 7/2",
+        "the local height predicate encodes all source hypotheses",
+        "the certificate advances q=3/2",
+        "the arithmetic certificate is new irrationality mathematics"
+      ]
+    }
+  ],
+  "provenance_note": "Citations and verification prose are lifted verbatim in substance from ErdosProblems/Erdos1049/research_packet.json::primary_sources. This route adds the source-archival ladder state and promotes the Soundararajan correction to a first-class negative finding.",
+  "sources": [
+    {
+      "source_id": "bundschuh_vaananen_1994_infinite_product",
+      "citation": "P. Bundschuh and K. Vaananen, Arithmetical investigations of a certain infinite product, Compositio Mathematica 91 (1994), 175-199, Theorem 2",
+      "url": "https://numdam.org/item/CM_1994__91_2_175_0.pdf",
+    "verification_state": "primary_pdf_read_exact_theorem_compared",
+      "annex_slug": "numdam-cm-1994-91-bundschuh-vaananen-infinite-product",
+      "annex_state": "imported_2026-07-26",
+      "relationship": "supplies the external threshold theorem the alpha=-1 specialisation depends on",
+      "packet_verification": "The alpha=-1 threshold lambda < (1/2 + 1/pi^2)^(-1) was matched directly. The complete 7/2 parameter inequality log(2)/log(7) < 7/18 < 1/2 - 1/pi^2 is now Lean-checked; only the external theorem statement and its specialization remain source-backed rather than kernel-internal.",
+      "citation_eligible": true,
+      "load_bearing": true,
+      "remaining_debt": [
+        "the source theorem, inherited hypotheses, and irrationality implication remain external rather than kernel-internal"
+      ],
+      "source_archive": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/source.pdf",
+    "source_pdf": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/source.pdf",
+    "source_archive_sha256": "e4937a5bbf141c01dc60c6bdb91e0f8a8ad399d69e8e3156b4b27881631913cc",
+    "source_pdf_sha256": "e4937a5bbf141c01dc60c6bdb91e0f8a8ad399d69e8e3156b4b27881631913cc",
+    "extracted_markdown": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/extracted.md",
+    "extracted_markdown_sha256": "50f65688430d44fd90389b39029bb6089492a348a8ce5a3d9898f5ae2b21a52b",
+    "pdf_url": "https://numdam.org/item/CM_1994__91_2_175_0.pdf",
+    "primary_pdf_read": true,
+    "retrieved_at": "2026-08-26",
+    "source_reviewed_at": "2026-08-27",
+    "pdf_pages": 26,
+    "exact_locator": "NUMDAM publisher PDF, printed pp. 175-177; Theorem 2 on printed p. 177 (PDF p. 4), including the general lambda threshold and the special alpha=-1 threshold",
+    "exact_statement_extracted": "Theorem 2 gives the general condition lambda < 3/(2 + 3*pi^(-2)) and states that in the special case alpha=-1 one may allow lambda < (1/2 + pi^(-2))^(-1), with the corresponding quantitative lower bound for sufficiently large height.",
+    "supports": "The external threshold theorem used as the load-bearing source for the alpha=-1 route and its exact specialization boundary.",
+    "does_not_support": "The local rational-base 3/2 endpoint theorem, the Lean-checked specialization, or any claim that the external theorem is kernel-internal.",
+      "source_verification": {
+        "verified_at": "2026-07-26",
+        "verified_by": "claude_code",
+        "reverified_at": "2026-08-24",
+        "reverified_by": "codex_root",
+        "method": "complete NUMDAM PDF hash-pinned; all 26 physical pages read sequentially and load-bearing pp. 175-177 visually rechecked against the scan on 2026-08-24",
+        "substance_verdict": "match",
+        "coordinate_verdict": "match",
+        "detail": "Source Theorem 2 states the general threshold lambda < 3/(2 + 3*pi^-2) and then: 'In the special case a = -1 we may even allow lambda < (1/2 + 1/pi^2)^-1'. That is exactly the alpha = -1 threshold the Erdos 1049 packet claimed, and the coordinate is genuinely Theorem 2, unlike the Balasubramanian-Giri-Srivastav route where the transcribed numbering did not match the source.",
+        "extraction_caveat": "The extracted text is OCR from a scanned PDF and carries mangled Unicode. The load-bearing standing hypotheses and Theorem 2 threshold were therefore verified visually against the original scan rather than inferred from OCR.",
+        "remaining_debt": [
+          "the specialisation from the source theorem to the Lean-checked inequality is the steward's step and is not itself source-backed"
+        ]
+      },
+      "load_bearing_status": "retired_source_now_archived_and_theorem_compared",
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "imported via annex_import --url from numdam.org, the publisher's own item URL for Compositio Mathematica 91 (1994)"
+    },
+    {
+      "source_id": "zudilin_2004_heine_permutation_group",
+      "citation": "W. Zudilin, Heine's basic transform and a permutation group for q-harmonic series, Acta Arithmetica 111.2 (2004), 153-164",
+      "url": "https://www.impan.pl/shop/en/publication/transaction/download/product/82435",
+      "verification_state": "primary_pdf_read_exact_theorem_compared",
+      "pdf_url": "https://www.impan.pl/shop/en/publication/transaction/download/product/82435",
+    "primary_pdf_read": true,
+    "retrieved_at": "2026-08-27",
+    "source_reviewed_at": "2026-08-27",
+    "pdf_pages": 12,
+    "annex_slug": "zudilin-2004-heine-permutation-group",
+      "annex_state": "imported_and_source_checked_2026-08-27",
+      "source_archive": "annexes/zudilin-2004-heine-permutation-group/source.pdf",
+      "source_pdf": "annexes/zudilin-2004-heine-permutation-group/source.pdf",
+      "relationship": "supplies the cone, normalisation, order-12 group, cyclotomic divisor, and generic estimate used by the q-harmonic route",
+      "source_archive_sha256": "0948a67eda0310b1fc354f417007317898b3c7582f992260763e85a4e138700e",
+      "source_pdf_sha256": "0948a67eda0310b1fc354f417007317898b3c7582f992260763e85a4e138700e",
+      "extracted_markdown": "annexes/zudilin-2004-heine-permutation-group/extracted.md",
+      "extracted_markdown_sha256": "1006c3a54384cfa98c8044767a2f53bfb279c6057952ee93a0912e8784ff6398",
+      "exact_locator": "IMPAN-host PDF, printed pp. 153-154 (PDF pp. 1-2), Theorem 1; printed pp. 155-156 (PDF pp. 3-4), q-basis and Lemmas 1-2; printed pp. 159-162 (PDF pp. 7-10), order-12 group, Lemma 7, and the proof of Theorem 1",
+      "exact_statement_extracted": "For p=1/q in Z\\{0, +/-1}, the paper defines h_p(1) and proves Theorem 1: mu(h_p(1)) <= 2.46497868..., uniformly in p. The construction uses the order-12 group generated by tau and sigma with tau^6=sigma^2=(tau sigma)^2=id, then takes alpha_0=14, alpha_1=12, alpha_2=14, beta=27 and obtains C_1/C_0=2.46497868... .",
+      "supports": [
+        "Primary-source attribution for the q-harmonic series, integer-base domain, order-12 permutation group, and uniform irrationality-exponent estimate",
+        "The cyclotomic denominator and generic C_1/C_0 estimate used by the q-harmonic construction"
+      ],
+      "does_not_support": [
+        "A rational p=3/2 specialization",
+        "The returned all-scale homogeneous endpoint formulas or adjacent normalized exponent",
+        "The current #1049 Lean proof",
+        "Attributing the cone-wide 3/2 margin deduction to Zudilin"
+      ],
+      "packet_verification": "Direct inspection confirms the cone alpha1<=alpha2, alpha1+alpha2<beta<=alpha0+alpha2, the exact normalization M, the order-12 group, the cyclotomic divisor, the functionals C0 and C1, and the generic estimate mu(h_p(1))<=C1/C0 when C0>0. The paper assumes p=1/q is an integer with |p|>1 throughout. It does not state a rational p=3/2 theorem, the returned all-scale homogeneous endpoint formulas, or the adjacent normalized exponent. The cone-wide 3/2 margin argument is therefore a later deduction: apply the source estimate at an integer base, combine it with mu>=2, and then use the resulting parameter inequality at the rational specialization.",
+      "citation_eligible": true,
+      "strict_delta": "The source assumes an integer base p=1/q with |p|>1. The rational p=3/2 specialisation, the all-scale homogeneous endpoint formulas, and the adjacent normalised exponent are NOT in the source; they are a later deduction and must be attributed as such.",
+      "remaining_debt": [
+        "the cone-wide 3/2 margin argument must never be presented as Zudilin's result"
+      ],
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "The official IMPAN PDF was downloaded, opened, and compared on 2026-08-27; its front matter identifies Wadim Zudilin and Acta Arithmetica 111.2 (2004), pp. 153-164, matching the archived source."
+    },
+    {
+      "source_id": "rhin_viola_1996_permutation_group_zeta2",
+      "citation": "G. Rhin and C. Viola, On a permutation group related to zeta(2), Acta Arithmetica 77.1 (1996), 23-56",
+      "url": "https://matwbn.icm.edu.pl/ksiazki/aa/aa77/aa7713.pdf",
+      "verification_state": "primary_pdf_read_exact_theorem_compared",
+      "pdf_url": "https://matwbn.icm.edu.pl/ksiazki/aa/aa77/aa7713.pdf",
+    "primary_pdf_read": true,
+    "retrieved_at": "2026-08-27",
+    "source_reviewed_at": "2026-08-27",
+    "pdf_pages": 34,
+    "annex_slug": "rhin-viola-1996-permutation-group-zeta2",
+      "annex_state": "imported_and_source_checked_2026-08-27",
+      "source_archive": "annexes/rhin-viola-1996-permutation-group-zeta2/source.pdf",
+      "source_pdf": "annexes/rhin-viola-1996-permutation-group-zeta2/source.pdf",
+      "source_archive_sha256": "c8bf7203c3f7ea6783c96937d54791b527cb75a40c9f93b77859672dcde7a5c4",
+      "source_pdf_sha256": "c8bf7203c3f7ea6783c96937d54791b527cb75a40c9f93b77859672dcde7a5c4",
+      "extracted_markdown": "annexes/rhin-viola-1996-permutation-group-zeta2/extracted.md",
+      "extracted_markdown_sha256": "c4a5cb566b300b38b99c7b1c905d9586fdfe6593468e22493a765a5ac500791d",
+      "relationship": "general prior art for permutation-group denominator reduction in hypergeometric irrationality measures",
+      "exact_locator": "ICM-host PDF, printed p. 29 (PDF p. 7), Theorem 2.1; printed p. 33 (PDF p. 11), Theorem 2.2; printed pp. 38-40 (PDF pp. 16-18), permutation group Phi and its 12 left cosets; printed p. 41 (PDF p. 19), Lemma 3.1",
+      "exact_statement_extracted": "Theorem 2.1 expresses the integral J_0 as a-b*zeta(2) with b in Z and factorial-denominator integrality controlled by d^M_0 d^N_0. Theorem 2.2 selects the best invariant pair M,N. In Section 3 the transformations generate Phi isomorphic to S_5, with 12 left cosets of the subgroup T of order 10.",
+      "supports": [
+        "Primary-source attribution for permutation-group denominator reduction in ordinary hypergeometric irrationality measures",
+        "The factorial-denominator integrality statements, invariant best-pair construction, and Phi isomorphic to S_5 group structure"
+      ],
+      "does_not_support": [
+        "The q-specialized 2-adic or 3-adic endpoint claims used by #1049",
+        "A rational-base 3/2 theorem or the returned q-harmonic endpoint formulas",
+        "The current #1049 Lean proof"
+      ],
+      "packet_verification": "The official ICM-hosted PDF was read and compared at the exact theorem and group locators above. It is relevant prior art for permutation-group denominator reduction in ordinary hypergeometric irrationality measures, but it does not establish the q-specialized 2-adic/3-adic endpoint claims used here.",
+      "citation_eligible": true,
+      "remaining_debt": [
+        "retain the ordinary-versus-q-specialized boundary in every outward attribution"
+      ],
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "The official ICM PDF was downloaded, opened, and compared on 2026-08-27; its front matter identifies G. Rhin and C. Viola, Acta Arithmetica 77.1 (1996), pp. 23-56, matching the archived annex source."
+    },
+    {
+      "source_id": "soundararajan_2019_integral_factorial_ratios",
+      "citation": "K. Soundararajan, Integral Factorial Ratios, arXiv:1901.05133 (2019)",
+      "url": "https://arxiv.org/abs/1901.05133",
+      "annex_slug": "arxiv-1901-05133-soundararajan-integral-factorial-ratios",
+      "annex_state": "imported_2026-07-26",
+      "source_archive": "annexes/arxiv-1901-05133-soundararajan-integral-factorial-ratios/source.tar.gz",
+      "source_archive_sha256": "cf66e3b840624fc5efe9544448d887cd50302fe30a784dc70e8030ecbcdf86c9",
+      "extracted_markdown": "annexes/arxiv-1901-05133-soundararajan-integral-factorial-ratios/extracted.md",
+      "extracted_markdown_sha256": "1380bd5c1dcf49449004f09a4dc7e6da95c4ccdf2a961819a24c273ec1966601",
+      "finding_class": "negative_finding_source_does_not_support_the_returned_description",
+      "relationship": "NONE established; routed to make the correction durable",
+      "verification_state": "primary_arxiv_pdf_read_negative_claim_compared",
+      "pdf_url": "https://arxiv.org/pdf/1901.05133",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-26",
+      "exact_locator": "arXiv v1 PDF p. 1, abstract and Theorem 1.1; PDF pp. 2-4, Theorem 1.2 and the introduction's factorial-ratio framework",
+      "exact_statement_extracted": "The paper studies and classifies integral factorial ratios, including Theorem 1.1 and the restrictions in Theorem 1.2; its abstract and introduction do not state q-Pochhammer cyclotomic valuation theory or a rational-base 3/2 endpoint theorem.",
+      "supports": "Primary-source evidence for integral factorial-ratio classification and its factorial-ratio/finite-monodromy context only.",
+      "does_not_support": "The returned description of modern exact q-integrality theory, q-Pochhammer valuation claims, the rational 3/2 endpoint theorem, or any local Lean verification.",
+      "packet_verification": "This is a factorial-ratio classification paper, not a source for q-Pochhammer cyclotomic valuations or the rational 3/2 endpoint theorem. The return's description of it as modern exact q-integrality theory is not supported by the cited paper.",
+      "citation_eligible": false,
+      "citation_ineligible_reason": "the source does not support the claim it was returned for; citing it would reproduce the original mis-description",
+      "correction_record": "A research return described this paper as modern exact q-integrality theory. That description is wrong. The paper is now archived and hash-pinned specifically so the correction is checkable rather than resting on a packet note.",
+      "identity_resolved": "resolved_against_publisher",
+      "identity_resolution_note": "imported via annex_import --arxiv 1901.05133; arXiv served this identifier"
+    },
+    {
+      "source_id": "zudilin_2016_generalized_q_logarithm",
+      "citation": "W. Zudilin, On the irrationality of generalized q-logarithm, Research in Number Theory 2 (2016), Paper 24",
+      "url": "https://arxiv.org/abs/1601.02688",
+      "pdf_url": "https://arxiv.org/pdf/1601.02688",
+      "verification_state": "primary_arxiv_tex_read_exact_noninteger_remark_compared",
+      "primary_pdf_read": false,
+      "retrieved_at": "2026-08-27",
+      "annex_slug": "arxiv-1601-02688-zudilin-generalized-q-logarithm",
+      "annex_state": "imported_source_tex_checked_2026-08-27",
+      "relationship": "adjacent prior-art boundary for extending q-logarithm methods to non-integer rational bases",
+      "source_archive": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/source.tex",
+      "source_archive_kind": "arxiv_source_tex",
+      "source_archive_sha256": "4404dbbdb2e592e7e945d12c534b184efdce0e98a3381fcd9a294e17f7cba033",
+      "source_bundle_sha256": "4c20ef7a8fe0075a65536c87cfec9c123b2b018c977b9f11f026dfc2fd1a2dcf",
+      "extracted_markdown": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "extracted_markdown_sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e",
+      "primary_source_read": true,
+      "primary_tex_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_locator": "arXiv source TeX, lines 200-204 (end of Section 2, immediately after Theorem 2); extracted.md:L67",
+      "exact_statement_extracted": "The source's closing Section 2 remark says the results can be given for non-integer p=r/s with |p|>1 under an assumption log|r|>c log|s| for some computable c>0, and that irrationality measures can be produced; it explicitly says the quantitative issues are not pursued there.",
+      "supports": [
+        "Primary-source attribution for a proposed non-integer rational-base extension of the generalized q-logarithm method",
+        "The boundary that such an extension requires a computable logarithmic height condition"
+      ],
+      "does_not_support": [
+        "A computed value of c",
+        "A theorem for F(3/2) or the Erdős #1049 rational-base Lambert value",
+        "A source-backed claim that the local #1049 Lean route has crossed the 3/2 boundary"
+      ],
+      "packet_verification": "The archived arXiv TeX and extracted text match the exact non-integer extension remark. The source's main theorem is for integer p, and the closing remark does not compute c or instantiate the claim at 3/2; the paper is therefore an adjacent boundary source only.",
+      "citation_eligible": true,
+      "remaining_debt": [
+        "no computable c is supplied in the cited passage",
+        "no rational-base 3/2 specialization or Erdős #1049 irrationality implication is stated"
+      ],
+      "identity_resolved": "resolved_against_arxiv",
+      "identity_resolution_note": "The official arXiv source bundle identifies Wadim Zudilin and the title, and the archived TeX matches arXiv:1601.02688; the source TeX was checked rather than treating the bibliography entry as proof authority."
+    }
+  ],
+  "public_claim_boundary": {
+    "proof_authority": "not_accepted",
+    "publication_effect": "none",
+    "non_claims_preserved": [
+      "not_an_erdos_1049_solution",
+      "not_a_novelty_claim_for_the_rational_base_route",
+      "not_a_public_citation_or_paper_edit_for_unreviewed_rational_base_claims",
+      "not_supported_by_soundararajan_for_q_integrality"
+    ],
+    "forbidden_until_exact_comparison": [
+      "attribute the rational p=3/2 specialisation or the cone-wide margin argument to Zudilin",
+      "cite Soundararajan as q-integrality support",
+      "treat the Bundschuh-Vaananen threshold theorem as kernel-internal rather than source-backed",
+      "turn Zudilin 2016's unquantified non-integer remark into a 3/2 theorem or computed threshold"
+    ]
+  },
+  "release_topology_link": {
+    "public_prior_art_policy_owner": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+    "claim_contract_row": "codex/standards/std_microcosm.json::formal_math_claim_assurance_contract::rows[problem_id=erdos_1049]"
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_adjacent_source_acquisition_or_claim_change",
+    "priority_order": [
+      "preserve Zudilin 2016's unquantified non-integer extension as adjacent context only",
+      "preserve the ordinary-versus-q-specialized boundary for Zudilin 2004 and Rhin--Viola 1996",
+      "recheck the Bundschuh--Väänänen specialization only if its inherited hypotheses or theorem version changes"
+    ],
+    "lane": "re-enter only when a cited source correction changes the comparison, a new quantitative rational-base claim is introduced, or the local 3/2 claim boundary changes"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source_archived_adjudication_and_negative_attribution_correction",
+    "output_stage": "claim_bound_human_review_support",
+    "artifact": "Erdős #1049 rational-base Lambert prior-art route",
+    "human_understanding_delta": "The load-bearing Bundschuh--Väänänen theorem, the Lean-only 7/2 arithmetic certificate, the source-checked but bounded Zudilin/Rhin--Viola context, the Zudilin 2016 non-integer extension remark, and the Soundararajan misdescription correction are now visibly separate evidence layers.",
+    "verification_state": "Bundschuh--Väänänen, Zudilin 2004/2016, Rhin--Viola, and Soundararajan are source-checked with explicit claim boundaries; the external irrationality implication is not kernel-internal.",
+    "publication_or_review_state": "Internal attribution support only; no public citation, priority, or endpoint claim for the rational-base route.",
+    "canonicalization_state": "One load-bearing source route retained; adjacent comparisons remain subordinate and no duplicate q-integrality claim is created.",
+    "unresolved_downstream_bottleneck": "Independent checking of all inherited hypotheses and any quantitative non-integer theorem before a public rational-base or 3/2 narrative; Zudilin 2016 gives no computable constant here.",
+    "next_stage_owner": "Novelty Observatory for source acquisition/correction; Mathematics Refinery for claim-card assimilation; Role 3 for any later release decision."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "seven_halves_height_criterion@formal-73773158-card-9bae8987",
+    "evidence_class": "Lean-checked exact 7/2 height-region membership and certificate components, paired with a source-archived Bundschuh--Väänänen analytic implication; adjacent Zudilin 2004/2016 and Rhin--Viola comparisons are source-checked but bounded.",
+    "closest_known_result": "Bundschuh--Väänänen Theorem 2 owns the analytic irrationality implication; the local result formalizes only its numerical admission predicate. Zudilin 2004/2016 and Rhin--Viola are source-checked neighboring context, with Zudilin 2016 offering only an unquantified non-integer extension remark, while Soundararajan is a recorded negative-attribution correction.",
+    "comparison_relation": "Routine exact formalization and claim-assurance firewall for a published 7/2 mechanism, not a new irrationality theorem, rational-base theorem, or 3/2 advance.",
+    "exact_delta": "Seven named Lean declarations certify the source-facing and transformed 7/2 numerical height conditions and compact components while preserving the external theorem and inherited hypotheses as separate evidence.",
+    "disconfirming_evidence": "Zudilin 2016 gives no computed non-integer threshold; Soundararajan does not support q-integrality; no 3/2 construction or general rational-base result follows.",
+    "confidence": {
+      "level": "high_for_local_certificate_and_archived_bundschuh_vaananen_identity_medium_for_adjacent_context_low_for_3_over_2",
+      "basis": "Formal source, current packet, and reviewer-card packet digest are generation-bound; the external implication remains non-kernel evidence."
+    },
+    "significance": "High assurance value: it makes the formal/external boundary inspectable without inflating a published 7/2 mechanism into new irrationality mathematics.",
+    "claim_ceiling": "Lean checks the exact source-facing and transformed 7/2 numerical height conditions; after separately checking Bundschuh--Väänänen's inherited hypotheses, that external theorem supplies the analytic implication. No Lean irrationality, 3/2, general rational-base, endpoint, or priority claim.",
+    "hard_step": "Preserve theorem-version correspondence and inherited hypotheses while keeping the formal certificate distinct from the external analytic consumer.",
+    "open_boundary": "The 3/2 construction and any general rational-base theorem remain open. Zudilin 2016 does not provide a computed threshold, and all adjacent source statements remain bounded by their exact locators.",
+    "bounded_expert_review_act": "Audit the inherited q=7/2 hypotheses against Bundschuh--Väänänen Theorem 2, then check that the Zudilin 2016 remark is not inflated into a quantitative 3/2 result and every public statement labels only the seven Lean declarations as kernel-checked.",
+    "reentry_trigger": "Reopen on source/card/packet changes, card parity refresh, revised Bundschuh--Väänänen hypotheses, or a new quantitative rational-base source claim.",
+    "source_generation_binding": {
+      "formal_source_commit": "73773158fad4fedb8632c981fc879fd483717e00",
+      "formal_source_sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+      "research_packet_commit": "f47fc3d4c2b04173cd4ab89f649cd2e07020c66b",
+      "research_packet_sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2",
+      "reviewer_card_commit": "9bae89879e03c8715fadc1f08d3e5a030d2e8ff4",
+      "reviewer_card_sha256": "29ab65e67534875f1f31ecc07d9620421d997af5db8f2124c12e476331e4918f",
+      "parity_status": "formal source, packet, and embedded card packet hash are current"
+    },
+    "classification": {
+      "result_family": "seven_halves_rational_base_height_certificate",
+      "evidence_class": "Lean_checked_exact_height_region_and_certificate_components_plus_external_published_irrationality_implication",
+      "closest_prior_art": "Bundschuh--Väänänen Theorem 2 supplies the analytic implication; Zudilin 2004/2016 and Rhin--Viola are source-checked adjacent context with bounded statements, while Soundararajan is a recorded negative-attribution correction.",
+      "comparison_relation": "The local mathematical contribution is an exact formal numerical admission certificate for a published theorem's hypotheses, not a new irrationality theorem or a 3/2 advance.",
+      "novelty_confidence": "source_bound_routine_formalization; no priority claim",
+      "significance_grade": "high_assurance_value_layered_release_candidate",
+      "why_care": "It cleanly separates a kernel-checked height-region fact from the external theorem that turns that fact into irrationality, preventing both Lean-overclaim and source-attribution drift.",
+      "hard_step": "Preserve the exact quantifiers and inherited hypotheses of Bundschuh--Väänänen while exposing only the local Lean certificate to formal consumers.",
+      "natural_friction": "The 7/2 implication is external and paper-only; the rational 3/2 route, adjacent source acquisition, and any general rational-base theorem remain open.",
+      "disconfirming_evidence": "Zudilin 2016 gives no computed non-integer threshold; Soundararajan does not support q-integrality; no 3/2 conclusion follows.",
+      "confidence_ceiling": "High for the seven named Lean certificate components, source identities, and exact adjacent-source boundaries; no endpoint or priority claim.",
+      "bounded_expert_act": "Audit the exact theorem-version correspondence and inherited hypotheses, then keep the formal certificate and external implication as separate evidence objects.",
+      "reentry_condition": "Re-enter if the formal source/card packet changes, Bundschuh--Väänänen hypotheses are revised, or a new quantitative rational-base source claim is introduced."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1049 rational-base height certificate with external analytic consumer",
+      "disposition": "retain_layered_assurance_object_not_new_irrationality_mechanism",
+      "paper_disposition": "technical_assurance_subsection_under_external_7_over_2_theorem",
+      "supersession_relation": "Keep exact Lean certificate components together; do not merge the external Bundschuh--Väänänen implication into the kernel claim or create separate Zudilin/q-integrality cards.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "Comparator-now for the exact Lean height-region membership and compact certificate declarations; paper-only/external-evidence-only for the Bundschuh--Väänänen irrationality implication.",
+      "expert_attention_reason": "The layered disposition is the material correction: it makes a real exact formal result visible without misrepresenting the external analytic step as Lean-checked."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "Lean_certificate_plus_external_theorem_attribution",
+      "output_stage": "layered_claim_firewall_and_reader_ready_assurance",
+      "artifact": "seven-halves height certificate, Bundschuh--Väänänen consumer, and bounded adjacent-source comparison",
+      "human_understanding_delta": "Readers can distinguish the exact formal certificate, the external irrationality implication, and the unresolved 3/2 frontier at first contact.",
+      "verification_state": "Lean checks the source-facing and transformed numerical height conditions and certificate components; external irrationality remains paper-only.",
+      "publication_or_review_state": "Comparator-now for exact formal declarations; external implication remains status-tagged paper-only evidence.",
+      "canonicalization_state": "One layered #1049 assurance object with source-checked adjacent comparisons subordinate and claim-bounded.",
+      "unresolved_downstream_bottleneck": "A genuine 3/2 construction or verified quantitative rational-base theorem; Zudilin 2016's remark alone supplies no threshold.",
+      "next_stage_owner": "Mathematics Refinery for layered card assimilation and Role 3 for statement-firewall projection."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_packet_and_card_embedded_hash_current",
+    "bound_snapshot": {
+      "formal_source_commit": "73773158fad4fedb8632c981fc879fd483717e00",
+      "formal_source_sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+      "research_packet_commit": "f47fc3d4c2b04173cd4ab89f649cd2e07020c66b",
+      "research_packet_sha256": "864e10841b70c306a2e539ead2489afc060abe8d577a64cde66f93abe44ad7e2",
+      "reviewer_card_commit": "9bae89879e03c8715fadc1f08d3e5a030d2e8ff4",
+      "reviewer_card_sha256": "29ab65e67534875f1f31ecc07d9620421d997af5db8f2124c12e476331e4918f",
+      "card_packet_parity": "current_embedded_packet_hash_bound"
+    },
+    "claim_guard": "Lean exposes only the seven exact 7/2 numerical certificate components; Bundschuh--Väänänen remains external, and no 3/2, general rational-base, priority, or endpoint claim is admitted.",
+    "reentry_trigger": "Reopen if the formal source, packet identity, reviewer-card source_parity, cited-source comparison, or quantitative rational-base claim changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The local numerical certificate is routine Lean arithmetic; the human-review load is the boundary between that certificate and Bundschuh--Väänänen's external analytic theorem, plus the exact limits of the source-checked adjacent citations.",
+    "slow_down_at": "Check the inherited Bundschuh--Väänänen hypotheses and alpha=-1 specialization, then preserve the current reviewer-card packet binding and the negative Soundararajan attribution correction.",
+    "automation_can_establish": [
+      "Formal source, research-packet, reviewer-card hash bindings",
+      "The seven named 7/2 numerical certificate declarations and their exact claim ceiling",
+      "That the route does not assert a 3/2 or general rational-base theorem"
+    ],
+    "human_judgment_required": [
+      "Whether the public wording keeps the Lean certificate separate from the external irrationality implication",
+      "Whether the exact Zudilin 2004/2016 and Rhin--Viola boundaries are preserved in outward wording",
+      "Whether the current embedded card hash is clearly disclosed at first contact"
+    ],
+    "review_act": "Audit the source-version correspondence and inherited hypotheses once; do not repeat the completed Bundschuh--Väänänen comparison or infer novelty from the formalization.",
+    "attention_ceiling": "No independent priority or significance claim; the value is layered assurance and a precise 3/2 boundary."
+  }
+}

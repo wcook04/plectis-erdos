@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification251BoundedPerturbationCountermodel.Challenge",
+  "solution_module": "ExternalVerification251BoundedPerturbationCountermodel.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.not_irrational_bounded_perturbation_primeGap",
+    "Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.exists_rational_bounded_perturbation_primeGap",
+    "Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.perturbed_gap_bounds",
+    "Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.exists_bounded_perturbation",
+    "Erdos249257.ExternalVerification251BoundedPerturbationCountermodel.hasSum_binaryDigit"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

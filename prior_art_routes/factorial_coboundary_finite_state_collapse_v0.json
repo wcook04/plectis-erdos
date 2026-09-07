@@ -1,0 +1,178 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "status": "adjudicated_route_closure_subordinate_no_priority",
+  "route_id": "factorial_coboundary_finite_state_collapse",
+  "problem_id": "erdos_68",
+  "card_path": "docs/formal_math/reviewer_cards/factorial_coboundary_finite_state_collapse.card.json",
+  "classification": {
+    "external_core": "Erdos--Straus cumulative-product rationality iff bounded integer coboundary",
+    "local_delta": "Lean-checked finite-state collapse of the factorial carry specialization to eventual zero defect",
+    "novelty_class": "source_specific_route_closure_from_a_classical_criterion",
+    "priority_claim": "none",
+    "recommended_terminology": "finite-state collapse of the factorial Erdos--Straus coboundary",
+    "why_it_matters": "It retires the coboundary lane as an independent #68 endpoint and redirects attention to cofinal strict-successor divisibility misses."
+  },
+  "primary_sources": [
+    {
+      "source_id": "koutsoukou_argyraki_li_paulson_2021_erdos_straus",
+      "citation": "A. Koutsoukou-Argyraki, W. Li, and L. C. Paulson, Irrationality and Transcendence Criteria for Infinite Series in Isabelle/HOL (2021), arXiv v2",
+      "locator": "Theorem 3.1, pp. 4--5; proof reconstruction p. 6; formal Isabelle statement p. 7",
+      "annex_slug": "koutsoukou-argyraki-li-paulson-2021-irrationality-transcendence-isabelle",
+      "source_artifact": "annexes/koutsoukou-argyraki-li-paulson-2021-irrationality-transcendence-isabelle/source.pdf",
+      "source_artifact_sha256": "8ad9e715deaf16d3936e32c166402be851bec68e69168afbd9bff5dccf587c3d",
+      "extracted_markdown": "annexes/koutsoukou-argyraki-li-paulson-2021-irrationality-transcendence-isabelle/extracted.md",
+      "extracted_markdown_sha256": "ad7eaacd04aa95e6a8c3bc00e743b30098b6245bcaf82e3407a9b98ef3b09805",
+      "source_read_status": "primary_arxiv_pdf_read_and_local_artifact_bound",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_source_locator": "PDF pp. 4--5 / extracted.md lines 145--173: Theorem 3.1 restates Erdős--Straus Theorem 2.1 and gives the bounded integer coboundary criterion; extracted.md lines 269--277 preserve the formal Isabelle statement.",
+      "relation": "Formalizes and attributes Erdős--Straus Theorem 2.1; supplies the external cumulative-product coboundary criterion only.",
+      "supports": "The externally sourced cumulative-product rationality criterion and its bounded integer coboundary condition, used as prior-art context for the local factorial carry transport.",
+      "does_not_support": "Direct application to the target n!-1 denominators, the local finite-state collapse, a cofinal non-unit-carry producer, irrationality, or an Erdős #68 solution.",
+      "consuming_claims": [
+        "factorial_coboundary_finite_state_collapse.observatory_adjudication_2026_08_26.closest_known_result",
+        "factorial_coboundary_finite_state_collapse.observatory_adjudication_2026_08_26.comparison_relation",
+        "factorial_coboundary_finite_state_collapse.expert_talk_outline.beats[0]"
+      ]
+    }
+  ],
+  "source_assurance": {
+    "annex": "annexes/koutsoukou-argyraki-li-paulson-2021-irrationality-transcendence-isabelle",
+    "exact_notes": [
+      "n001",
+      "n002",
+      "n003",
+      "n010",
+      "n011",
+      "n012",
+      "n013"
+    ],
+    "lean_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+    "lean_source_sha256": "50d16afec49cd71f59d49aa7526c413c6e6f1b7c2ce3beaae680faa96447936c",
+    "declarations": [
+      "eventually_bounded_coboundary_state",
+      "eventually_zero_of_bounded_coboundary_core",
+      "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
+    ]
+  },
+  "release_advisory": {
+    "significance_grade": "high_route_closure_value_low_independent_novelty",
+    "canonical_parent": "factorial_gap_cofinal_carry_irrationality_criterion",
+    "comparator": "One compact local eventual-zero proposition is advisory; do not encode the external rationality theorem as locally formalized.",
+    "paper": "One route-killing subsection beneath the exact carry endpoint.",
+    "shortlist": "Do not admit; the #68 endpoint equivalence already occupies the absolute and programme-level attention surfaces."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source_verification_and_formal_local_specialization",
+    "output_stage": "expert_understanding_and_canonicalization",
+    "artifact": "factorial_coboundary_finite_state_collapse route",
+    "human_understanding_delta": "Separates the external criterion, necessary carry transport, local finite-state theorem, and still-open endpoint producer.",
+    "verification_state": "Exact external locators and pinned Lean declarations.",
+    "publication_or_review_state": "Private review-ready route closure; no acceptance or priority claim.",
+    "canonicalization_state": "Subordinate to the cofinal carry/divisibility endpoint.",
+    "unresolved_downstream_bottleneck": "Cofinal strict-successor divisibility misses.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "factorial_coboundary_finite_state_collapse@FactorialZeroPlateau-30b7b4bb53",
+    "evidence_class": "Mixed: the Erdős--Straus cumulative-product criterion is an externally sourced ordinary theorem; the finite-state collapse and factorial carry endpoint equivalence are Lean-checked declarations at the pinned source snapshot.",
+    "closest_known_result": "Erdős--Straus (1974), as restated and formalized by Koutsoukou-Argyraki, Li, and Paulson, arXiv:2101.05257v2, Theorem 3.1 (pp. 4--5) and formal Isabelle statement (p. 7). The source criterion concerns cumulative-product denominators and a bounded integer coboundary.",
+    "comparison_relation": "The external criterion is direct prior art and is not a new #68 mechanism. The local contribution is a source-specific specialization after the independently checked factorial carry transport: the half-radix window forces a finite state, a late B-multiple forces state zero, and zero absorbs. This closes a duplicate route rather than producing the endpoint.",
+    "exact_delta": "For B>0, an eventual integer state satisfying B d_m = m c_m - c_{m+1}, 2|c_{m+1}|<m, and the sharp carry window lies in -B<c_m≤0. At a sufficiently late index q divisible by B, c_{q+1} is the unique multiple of B in that interval, hence zero; the recurrence then forces d_m=0 thereafter, i.e. eventual unit carries.",
+    "disconfirming_evidence": "The cited theorem does not apply directly to the separate denominators n!-1; it enters only through the checked carry expansion. No source or local declaration supplies a coboundary existence theorem for the target series, a cofinal non-unit-carry producer, or irrationality. The current source clarification only renames the Smarandache/Kempner denominator screen and does not enlarge this route.",
+    "confidence": {
+      "level": "high_for_external_criterion_and_local_route_closure; low_for_any_independent_novelty_claim",
+      "basis": "The annex preserves the rendered arXiv v2 source, exact theorem/page locators, and formal statement; the current Lean file is hash-bound to 30b7b4bb53. Non-location of a verbatim finite-state specialization is not treated as evidence of priority."
+    },
+    "significance": "High route-closure and human-understanding value, low independent novelty: it prevents a classical coboundary criterion from being counted as a second #68 endpoint and makes the cumulative-product versus n!-1 denominator boundary explicit.",
+    "claim_ceiling": "Say that the external Erdős--Straus criterion is source-backed prior art and that the local Lean specialization closes this proposed route by reducing it to eventual unit carries. Do not claim a new criterion, direct n!-1 theorem, coboundary existence, cofinal non-unit carries, irrationality, priority, or a #68 solution.",
+    "hard_step": "The actual open step is producing cofinally many strict-successor divisibility misses/non-unit carries. The review-sensitive semantic step is transporting the target series to the factorial carry coordinate without applying the external criterion to the wrong denominators.",
+    "open_boundary": "The endpoint equivalence remains open on the cofinal strict-successor-miss side; the external criterion contributes no independent producer.",
+    "bounded_expert_review_act": "Check the cumulative-product hypotheses against the carry transport once, then verify that the finite-state absorption argument uses only the displayed state window; report any exact source match for a stronger mixed-radix collapse without turning non-location into novelty.",
+    "reentry_trigger": "Re-enter on a changed FactorialZeroPlateau source generation, a new version of arXiv:2101.05257, an exact prior theorem for the finite-state collapse, or a counterexample to the state-window/absorption hypotheses.",
+    "source_generation_binding": {
+      "formal_source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "formal_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "formal_source_sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "external_source_version": "arXiv:2101.05257v2",
+      "external_source_annex": "annexes/koutsoukou-argyraki-li-paulson-2021-irrationality-transcendence-isabelle",
+      "external_locator": "Theorem 3.1 pp. 4--5; proof reconstruction p. 6; formal Isabelle statement p. 7",
+      "parity_status": "Current source parity is explicit; only denominator terminology changed after 9e8b192e45, while the three named route declarations remain source-current. Focused Lean replay is deferred, not failed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "formal_source_sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "external_source_version": "arXiv:2101.05257v2"
+    },
+    "claim_guard": "External cumulative-product criterion plus source-specific finite-state route closure; no direct n!-1 criterion or irrationality claim.",
+    "reentry_trigger": "Re-enter on source-version/hash drift, exact prior-art match, or a counterexample to the finite-state absorption hypotheses."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Externally sourced criterion plus routine finite-state absorption; the load-bearing issue is semantic transport and denominator scope.",
+    "slow_down_at": "Do not conflate cumulative-product denominators with the target denominators n!-1, and do not mistake eventual zero defect for a cofinal non-unit carry producer.",
+    "automation_can_establish": [
+      "Current source hash and commit binding",
+      "Presence of the three named Lean declarations",
+      "JSON/card/source route parity"
+    ],
+    "human_judgment_required": [
+      "Whether a literature source gives an exact finite-state specialization under another name",
+      "Whether the route-closure explanation is the right placement beneath the #68 endpoint"
+    ],
+    "review_act": "One bounded act: verify the external theorem domain and the local transport, then retain this as a single route-killing subsection rather than a second endpoint."
+  },
+  "expert_talk_outline": {
+    "audience": "Number theorists working with factorial/Cantor series or rationality coboundaries",
+    "duration": "6--8 minutes",
+    "beats": [
+      "State the Erdős--Straus cumulative-product coboundary criterion with its exact source locator.",
+      "Explain why the criterion cannot be applied directly to n!-1 denominators.",
+      "Use the checked factorial carry transport and half-radix window to trap the state in -B<c_m≤0.",
+      "Use a late B-multiple to force c=0 and show absorption.",
+      "Return to the endpoint: this route is exactly eventual unit carries, while cofinal misses remain open."
+    ],
+    "genuinely_hard_step": "The open mathematical bottleneck is the cofinal strict-successor miss producer; the review bottleneck is preserving the transport/domain distinction.",
+    "natural_friction_to_preserve": "A classical theorem does not become a solution by changing coordinates; its cumulative-product domain and the local carry transport must remain visible.",
+    "attribution_and_tool_disclosure": "Attribute the criterion to Erdős--Straus and the formal source/context to Koutsoukou-Argyraki--Li--Paulson. Disclose the AI-assisted Lean formalization and exact source comparison."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-68-factorial-gap-series.tex",
+    "section": "Why the Erdős--Straus coboundary gives no second endpoint",
+    "canonical_mechanism_family": "strict-successor factorial-radix carries and cofinal divisibility failure",
+    "relation": "Route-killing failure/boundary subordinate to factorial_gap_cofinal_carry_irrationality_criterion; reject a parallel coboundary headline.",
+    "understanding_delta": "The reader can see the external criterion, the necessary transport, the finite-state collapse, and why attention returns to cofinal misses.",
+    "evidence_boundary": "External ordinary theorem plus source-pinned Lean specialization; no coboundary existence or irrationality conclusion.",
+    "hard_step": "Produce cofinal strict-successor divisibility misses.",
+    "meaningful_failed_route": "Treating the Erdős--Straus bounded coboundary as an independent obstruction after the factorial carry change of coordinates.",
+    "open_remainder": "Erdős Problem 68 remains open on the cofinal non-unit-carry side."
+  },
+  "downstream_handoff": {
+    "programme_level_canonical_mechanism_family": "strict-successor factorial-radix carries and cofinal divisibility failure",
+    "disposition": "retire inflated route: subordinate beneath factorial_gap_cofinal_carry_irrationality_criterion",
+    "expert_attention_reason": "It saves review time by closing a duplicate classical route and protects the denominator-domain boundary.",
+    "exact_evidence_class": "External source theorem plus three current-source Lean declarations",
+    "hard_step": "Cofinal strict-successor divisibility misses",
+    "prior_art_uncertainty": "Low for the external theorem and terminology; unresolved for any verbatim prior theorem matching the finite-state specialization, with no priority inferred.",
+    "open_boundary": "No coboundary existence, cofinal non-unit carry theorem, or irrationality conclusion.",
+    "independent_comparator_interface_justified": true,
+    "comparator_reason": "A compact local proposition for state trapping and eventual-zero absorption is independently restatable; the external criterion remains source-labelled context and should not be encoded as local Lean evidence.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why the Erdős--Straus coboundary gives no second endpoint",
+      "supersession_or_consolidation": "Subordinate under the exact carry/divisibility endpoint; no parallel headline.",
+      "reason": "The mathematical value is the route closure and scope correction, not an endpoint theorem."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_route_closure",
+      "why_care": "It changes the architecture by retiring a duplicate route, but adds no independent endpoint producer.",
+      "evidence_class": "External ordinary criterion plus Lean-checked local collapse",
+      "hard_step": "Cofinal strict-successor misses",
+      "prior_art_uncertainty": "Low for the source theorem; low confidence for any broader novelty claim",
+      "open_boundary": "Problem 68 remains open",
+      "demoted_predecessor": "The coboundary lane is demoted from prospective endpoint to route-closure subsection."
+    }
+  }
+}

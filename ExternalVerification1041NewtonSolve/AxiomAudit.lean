@@ -1,0 +1,3 @@
+import ExternalVerification1041NewtonSolve.Solution
+
+#print axioms Erdos249257.ExternalVerification1041NewtonSolve.newton_solve

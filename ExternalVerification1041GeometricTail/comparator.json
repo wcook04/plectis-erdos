@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041GeometricTail.Challenge",
+  "solution_module": "ExternalVerification1041GeometricTail.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041GeometricTail.tsum_geometric_tail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

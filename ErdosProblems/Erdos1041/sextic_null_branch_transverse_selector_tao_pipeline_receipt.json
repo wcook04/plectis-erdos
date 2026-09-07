@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_null_branch_transverse_selector",
+  "recorded_at": "2026-08-25",
+  "input_stage": "positive_null_branch_uniform_margin_with_unresolved_beta_to_zero_transition",
+  "output_stage": "analytic_first_order_transition_classification_and_formal_verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNullBranchTransverseSelector.md",
+    "ErdosProblems/Erdos1041/SexticNullBranchTransverseSelector.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_transverse_selector.py"
+  ],
+  "human_understanding_delta": "The beta-to-zero difficulty is now stratified exactly. The four canonical square-contact gradients are the vertices of a regular tetrahedron: their common kernel is precisely the already-discovered null line, and their least value controls the full transverse energy with sharp constant three. A completing-square estimate converts this into an explicit quadratic tube, so every genuinely transverse perturbation closes at first order and only O(delta^2) distance from the null branch reaches the secondary model.",
+  "verification_state": {
+    "analytic": "authored_complete_contact_calculation_sharp_tetrahedral_selector_null_kernel_and_quadratic_absorption",
+    "symbolic": "exact_sympy_identities_plus_100000_exact_rational_selector_stress",
+    "lean": "passed_canonical_cached_focused_build_jobs_2_and_final_serialized_lake_authority_replay_without_warnings",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "private_problem_packet_exact_result_propagated_not_external_canonicalization",
+  "unresolved_downstream_bottleneck": "Prove a finite connector atlas for the bounded second-order sextic model inside the explicit transverse O(beta^2) tube, then overlap it with the positive-branch stability theorem and transfer the homogeneous atlas to actual nearby polynomials. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: verify the four contact coordinates, sharp constant three, the 6075 delta^4 outer threshold, and the fixed-ray-slack handoff; then exactify the numerically negative second-order four-connector atlas.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation from the local sextic square-contact corpus under operator direction",
+    "computation": "Symbolic algebra exposed the Hadamard identities and a bounded exact-rational replay stress-tested the selector. A separate floating-point four-connector probe guides the next secondary-model conjecture but is not used as proof here.",
+    "formalization": "Lean checks the tetrahedral selector, null-kernel classification, quadratic contact absorption, and explicit outer-tube threshold in the canonical cached project.",
+    "claim_boundary": "Complete first-order classification and explicit outer quadratic-tube reduction at the canonical sextic null branch; no second-order atlas, actual-polynomial transfer, or unrestricted Erdos #1041 proof is claimed."
+  }
+}

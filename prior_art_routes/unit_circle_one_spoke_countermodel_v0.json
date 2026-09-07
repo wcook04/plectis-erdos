@@ -1,0 +1,190 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-08-24T00:00:00Z",
+  "created_by": "codex_root",
+  "status": "adjudicated_exact_countermodel_with_interior_packet_specialization_consolidated",
+  "route_id": "unit_circle_one_spoke_countermodel",
+  "problem_id": "erdos_1041",
+  "source_result_id": "two_safe_origin_spokes_counterexample",
+  "evidence_class": "Exact Gaussian-rational countermodel with strict rational margins, a certified finite checker, and an open-family scaling consequence; no Lean theorem or general COVER result.",
+  "closest_known_result": "Wagner studies products of distances to circle point sets as polynomial moduli on the boundary; Mandel--Robins treat self-inversive circle-rooted structure and interlacing. Neither supplies the one-root-index-valid-for-all-inward-radii quantifier or this configuration.",
+  "comparison_relation": "A source-specific finite falsifier of a nonstandard radial selector principle in a classical circle-rooted polynomial setting; the packet's interior witness is a weaker specialization of the same mechanism.",
+  "exact_delta": "For each of five root indices, one explicit rational parameter t_j gives |P(t_j w_j)|>1, so no single index is safe on the whole interval; strict margins persist on an angular open family and under common radius scaling.",
+  "disconfirming_evidence": "The search found no exact configuration or equivalent radial-selection theorem, but absence of a phrase match is not novelty evidence; the result does not refute COVER, visibility overlap, or Erdős 1041.",
+  "confidence_ceiling": "High for the finite countermodel and its open-family persistence; moderate for nearest-prior attribution; none for minimality, priority, or any general self-inversive obstruction.",
+  "claim_ceiling": "An exact five-point countermodel kills only the ONE-SPOKE radial selector: every root ray has a certified unsafe parameter. It is a route-killing boundary for selector arguments, not a counterexample to COVER or Erdős 1041.",
+  "significance": "High corrective value inside #1041 because it retires a tempting quantifier exchange; low-to-moderate independent value as a compact exact radial-selection counterexample.",
+  "hard_step": "Respect the quantifier order and verify the five strict rational violations; self-inversive symmetry and continuity are context, not the obstruction itself.",
+  "open_boundary": "Aggregate visibility-overlap/COVER and the full #1041 path problem remain open; no minimal degree, optimal radius, or general selector classification is established.",
+  "bounded_expert_act": "Check that each root index has its own unsafe t_j and that the proposed wording never upgrades this finite falsifier into a COVER or self-inversive theorem.",
+  "reentry_trigger": "Reopen if the checker configuration, packet specialization, or the aggregate COVER route changes, or if a general radial-selector theorem is proposed.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Exact finite rational countermodel with routine continuity/scaling; the hard issue is semantic quantifier discipline, not computation depth.",
+    "slow_down_at": "Check that the unsafe parameter may depend on the root index and that no single safe index is being asserted after the witnesses are evaluated.",
+    "automation_can_establish": [
+      "Exact rational evaluation of all five witness parameters",
+      "Strict product margins and persistence under small angular/radial perturbations",
+      "The interior specialization's containment beneath the unit-circle witness"
+    ],
+    "human_judgment_required": [
+      "Whether the selector principle is the actual consumed premise in the downstream route",
+      "Whether source language remains separate from COVER and self-inversive claims"
+    ],
+    "review_act": "One bounded expert act: verify the five index-wise certificates and the quantifier firewall against aggregate COVER wording."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "source_commit": "9cf0a16c015a56b354bbecd18924c22c42d7294e",
+      "source_sha256": "e9f63e5f24a1deeda420a62101d5b6f72862931d775371cb44917b0711ed5083",
+      "reviewer_card_commit": "c9d8b72d72f9749b2430ad04438a1b95004734e5",
+      "reviewer_card_sha256": "51c31b4a317e494e21ee6a7c27041cdc12c68f9a4d269e714b3e6683dc27aa9d"
+    },
+    "claim_guard": "The finite rational witness and strict-margin persistence are exact; no priority, minimality, general self-inversive obstruction, COVER refutation, or #1041 solution is admitted.",
+    "reentry_trigger": "Reopen if the checker, source card, packet specialization, or aggregate COVER route changes."
+  },
+  "target": {
+    "card": "docs/formal_math/reviewer_cards/unit_circle_one_spoke_countermodel.card.json",
+    "checker": "formal_math/probes/erdos1041_one_spoke_countermodel.py",
+    "source_result_ids": [
+      "two_safe_origin_spokes_counterexample"
+    ],
+    "interior_specialization_receipt": "state/formal_math/erdos257_period_noncollapse/erdos1041_origin_spoke_pair_counterexample_receipt.json",
+    "landed_commit": "9cf0a16c015a56b354bbecd18924c22c42d7294e",
+    "statement": "Five explicit Gaussian-rational points on the unit circle have no root-indexed radial segment along which the associated distance product stays at most one for every t in [0,1]."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos1041_unit_circle_one_spoke_countermodel@source-9cf0a16-card-c9d8b72",
+    "source_generation": {
+      "source_commit": "9cf0a16c015a56b354bbecd18924c22c42d7294e",
+      "source_sha256": "e9f63e5f24a1deeda420a62101d5b6f72862931d775371cb44917b0711ed5083",
+      "reviewer_card_commit": "c9d8b72d72f9749b2430ad04438a1b95004734e5",
+      "reviewer_card_sha256": "51c31b4a317e494e21ee6a7c27041cdc12c68f9a4d269e714b3e6683dc27aa9d",
+      "parity_status": "checker, card, and source commit are current at the adjudication snapshot; no fresh replay claimed"
+    },
+    "evidence_class": "Exact Gaussian-rational finite countermodel with strict-margin continuity and scaling; no Lean theorem or general COVER result.",
+    "closest_known_result": "Wagner for boundary products of distances and polynomial-modulus interpretation; Mandel--Robins for self-inversive circle-rooted structure. Both are contextual antecedents, not the radial selector countermodel.",
+    "comparison_relation": "Finite source-specific falsifier of a nonstandard one-index-for-all-radii selector, with the interior packet witness consolidated beneath it.",
+    "exact_delta": "Every one of the five candidate root indices has a certified unsafe t_j, while the strict margins yield an angular open family and a scaled open-disk family.",
+    "disconfirming_evidence": "No exact prior configuration was located, but search absence does not establish novelty; aggregate COVER and #1041 remain untouched.",
+    "confidence": {
+      "finite_countermodel": "high_internal_provisional",
+      "nearest_prior_attribution": "moderate_internal_provisional",
+      "general_selector_obstruction": "none"
+    },
+    "significance": "High route-killing significance for the ONE-SPOKE branch; low-to-moderate standalone significance as an exact finite counterexample.",
+    "claim_ceiling": "Use only as an exact countermodel to ONE-SPOKE and its interior specialization; do not call it a self-inversive obstruction, a COVER counterexample, or an Erdős 1041 result.",
+    "hard_step": "Maintain the for-each-index unsafe parameter quantifier and check the strict rational margins.",
+    "open_boundary": "COVER, visibility overlap, and the full #1041 problem remain open.",
+    "reviewer_attention_budget": {
+      "difficulty_topology": "Exact finite rational countermodel with routine continuity/scaling; the hard issue is semantic quantifier discipline, not computation depth.",
+      "slow_down_at": "Check that the unsafe parameter may depend on the root index and that no single safe index is being asserted after the witnesses are evaluated.",
+      "automation_can_establish": [
+        "Exact rational evaluation of all five witness parameters",
+        "Strict product margins and persistence under small angular/radial perturbations",
+        "The interior specialization's containment beneath the unit-circle witness"
+      ],
+      "human_judgment_required": [
+        "Whether the selector principle is the actual consumed premise in the downstream route",
+        "Whether source language remains separate from COVER and self-inversive claims"
+      ],
+      "review_act": "One bounded expert act: verify the five index-wise certificates and the quantifier firewall against aggregate COVER wording."
+    },
+    "bounded_expert_act": "Verify the five index-wise certificates and the wording firewall against aggregate COVER claims.",
+    "reentry_trigger": "Reopen on checker/card/source changes or a new general radial-selector argument.",
+    "mechanism_family": "#1041 radial-selector route-killing countermodel",
+    "disposition": "subordinate_under_existing_erdos1041_component_perimeter_and_visibility_mechanisms",
+    "expert_attention_reason": "The value is semantic: it prevents an invalid exchange of quantifiers from being mistaken for progress toward COVER.",
+    "paper_disposition": "route-killing failure/boundary",
+    "paper_section": "Why a single root-indexed radial spoke cannot carry the COVER proof",
+    "supersession_relation": "The interior two-safe-spokes packet row is a weaker specialization and is consolidated beneath this exact zero-safe-spoke countermodel.",
+    "comparator_interface_justified": false,
+    "comparator_reason": "The finite falsifier is useful reader-facing boundary evidence, but its value is primarily route interpretation; no independent Comparator proposition is needed beyond the existing countermodel consumer."
+  },
+  "classification": {
+    "overall": "exact_problem_specific_countermodel_to_an_internal_selection_principle_no_priority_claim",
+    "configuration": "explicit_finite_falsifier_not_located_in_bounded_exact_search",
+    "self_inversive_status": "standard_structural_property_of_the_associated_circle_rooted_polynomial_not_the_source_of_the_radial_obstruction",
+    "angular_open_family": "routine_stability_of_finitely_many_strict_continuous_inequalities",
+    "radial_open_disk_family": "routine_homogeneous_scaling_from_an_exact_positive_margin",
+    "novelty_or_priority": "none_claimed",
+    "confidence": "moderate_for_nearest_prior_work_high_for_claim_boundary"
+  },
+  "recommended_language": {
+    "short_name": "five-point root-indexed radial modulus countermodel",
+    "object_language": "For P(z)=product_k(z-w_k), every root ray contains a point t_j w_j with |P(t_j w_j)|>1.",
+    "open_family_language": "a strict open angular neighborhood in the five-point configuration torus, together with an explicit common-radius interval",
+    "avoid": "Do not call it a generic self-inversive obstruction: self-inversiveness names the reciprocal-conjugate symmetry, not the failed radial selection property."
+  },
+  "sources": [
+    {
+      "source_id": "wagner_1989_product_distances_point_set_sphere",
+      "citation": "Gerold Wagner, On the product of distances to a point set on a sphere, J. Austral. Math. Soc. (Series A) 47 (1989), 466-482, DOI 10.1017/S1446788700033206",
+      "url": "https://doi.org/10.1017/S1446788700033206",
+      "annex_slug": "wagner-1989-product-distances-point-set-sphere",
+      "source_pdf": "annexes/wagner-1989-product-distances-point-set-sphere/source.pdf",
+      "source_pdf_sha256": "f25054f912a02aede930d9b510416b0221bb0bc5fb6b9cea27aa26edc14cd57a",
+      "pdf_pages": 17,
+      "extracted_markdown": "annexes/wagner-1989-product-distances-point-set-sphere/extracted.md",
+      "extracted_markdown_sha256": "1fea5532e7cdfb4815f201df9af7bc3b2de9f4531b6395bc4ef5286876e351e3",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_locator": "printed p. 467: on the unit circle, the product of distances is the modulus of a polynomial whose zeros lie on the circle",
+      "relationship": "nearest located object-level antecedent for products of distances to circle point sets and their polynomial-modulus interpretation",
+      "claim_boundary": "Wagner varies the evaluation point on the boundary circle and studies extremal maxima; he does not select one zero-indexed inward ray uniformly over t in [0,1]."
+    },
+    {
+      "source_id": "mandel_robins_2019_dragging_roots_unit_circle",
+      "citation": "Arnaldo Mandel and Sinai Robins, Dragging the roots of a polynomial to the unit circle, arXiv:1908.03208 (2019)",
+      "url": "https://arxiv.org/abs/1908.03208",
+      "annex_slug": "mandel-robins-2019-dragging-roots-unit-circle",
+      "exact_locators": [
+        "Introduction: self-inversive polynomials, circle-rootedness, and angle interlacing",
+        "Proposition 7: reciprocal-conjugate root symmetry for full self-inversive polynomials"
+      ],
+      "relationship": "primary structural context for the associated polynomial class",
+      "claim_boundary": "The paper studies root location and interlacing, not modulus control on root-indexed inward radial segments."
+    }
+  ],
+  "mechanism_comparison": {
+    "polynomial_form": "The distance product is |P(t w_j)| for the monic circle-rooted polynomial P(z)=product_k(z-w_k).",
+    "quantifier_obstruction": "ONE-SPOKE exchanges pointwise availability for a single index valid over a continuum: it asserts existence of j such that every t is safe. The certificate supplies, for each j, one exact t_j that is unsafe.",
+    "self_inversive_boundary": "Circle-rooted P is self-inversive up to a unimodular scalar, but reciprocal symmetry alone supplies no upper bound on |P| along these five rays.",
+    "openness": "Because the five violations occur at fixed t_j with strict margins, their simultaneous persistence is a direct finite intersection of open conditions; common scaling follows from degree-five homogeneity.",
+    "packet_consolidation": "The packet row two_safe_origin_spokes_counterexample uses the same five directions at radius 99999/100000. It is a weaker interior specialization of this zero-safe-spoke countermodel and must remain subordinate rather than becoming a parallel mechanism."
+  },
+  "disconfirmation_search": {
+    "performed_at": "2026-08-24",
+    "queries": [
+      "self-inversive polynomial zeros unit circle radial segment product",
+      "P(r z_j) polynomial zeros unit circle",
+      "exact coordinate search for (-20+99i)/101 and (-28+195i)/197",
+      "339/1000 radial polynomial unit circle"
+    ],
+    "result": "No source containing the exact configuration, the ONE-SPOKE quantifier pattern, or an equivalent radial selection theorem was located. The nearest sources concern boundary distance products and root-location/interlacing.",
+    "interpretation": "bounded_negative_search_evidence_only_not_a_novelty_or_priority_proof"
+  },
+  "significance": {
+    "programme_effect": "high corrective significance: it retires the proposed equality-stratum ONE-SPOKE producer and corrects the earlier 'at most one safe spoke' wording to zero",
+    "independent_interest": "low-to-moderate as a compact exact counterexample to a natural but nonstandard root-indexed selection claim",
+    "reusable_scope": "falsifier for arguments that exchange for-each-parameter root selection with one root index valid on an interval",
+    "open_family_significance": "robustness certificate showing the failure is not isolated; not a separate novelty claim",
+    "claim_ceiling": "countermodel to ONE-SPOKE only; COVER, the visibility-overlap lemma, and Erdos 1041 remain intact and open"
+  },
+  "landing_consumers": [
+    "docs/formal_math/reviewer_cards/unit_circle_one_spoke_countermodel.card.json",
+    "annexes/wagner-1989-product-distances-point-set-sphere/distillation.json",
+    "annexes/mandel-robins-2019-dragging-roots-unit-circle/distillation.json"
+  ],
+  "checkpoint": {
+    "adjudication_date": "2026-08-24",
+    "public_wording": "An exact five-point countermodel to the internal ONE-SPOKE selection principle. It belongs to the classical setting of circle-rooted/self-inversive polynomials and distance products, but no direct antecedent for this radial quantifier pattern was located. No priority claim.",
+    "do_not_claim": [
+      "a counterexample to COVER or Erdos 1041",
+      "a new theorem in self-inversive polynomial theory",
+      "minimality of degree five",
+      "optimality of the radius 99999/100000",
+      "novelty of the continuity or scaling corollaries"
+    ]
+  }
+}

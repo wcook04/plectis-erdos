@@ -54,7 +54,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
+\newcommand{\commit}{1da2a504f8d8aa3cdc2cf686ec48bc8a67457984}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -175,6 +175,12 @@ For $n\in\Npos$ let $w_n=(2^n-1)^{-1}$, and for $J\subseteq\Npos$ let
 $\mathcal A_J=\{\sum_{n\in J}\varepsilon_nw_n:\varepsilon_n\in\{0,1\}\}$.
 Erd\H{o}s Problem~257 asks whether every infinite-support sum is irrational.
 This paper is a Lean-backed structural audit, not a solution.  Its
+strongest unconditional theorem proves irrationality at every integer base
+for every infinite support with convergent reciprocal mass.  The proof uses
+binary LCM--Ces\`aro close returns, a radix-transfer bound, and an exact
+integer-orbit contradiction; it needs no coprimality, periodicity, density, or
+powerful-support hypothesis.  Its novelty and priority are unassessed, and it
+is not identified with Erd\H{o}s's omitted coprimality-free argument.  Other
 unconditional checked content includes exact finite-denominator
 noncollapse; unique coding, compactness, and nowhere density for every
 restricted achievement set $\mathcal A_J$; perfectness when $J$ is infinite;
@@ -191,8 +197,8 @@ normalisation and reduce to explicit infinite-orbit alternatives; neither
 membership question is decided.
 
 Published work independently settles prime
-support at base~$2$ and squarefree support at every power-of-two base.  We
-claim no priority for those cited results.  Universal \#257 and both target
+support at base~$2$ and squarefree support at every power-of-two base.
+Universal \#257 and both target
 membership questions remain open.
 \end{abstract}
 

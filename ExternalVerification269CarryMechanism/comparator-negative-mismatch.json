@@ -1,0 +1,10 @@
+{
+  "challenge_module": "ExternalVerification269CarryMechanism.Challenge",
+  "solution_module": "ExternalVerification269CarryMechanism.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269CarryMechanism.carry_eq_residueDigit_add_coboundary",
+    "Erdos249257.ExternalVerification269CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

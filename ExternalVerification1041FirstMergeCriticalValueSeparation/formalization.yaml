@@ -1,0 +1,220 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #1041: exact all-degree critical-value separation thresholds and a sign-free first-merge length bound"
+  description: >-
+    Write S for the normalized distance separating the remaining critical values from a
+    simple saddle, and set C(n, S) = (1 + S)^(2/n) log(S / (S - 1)). This configuration
+    verifies in Lean three exact all-degree threshold inequalities and one general
+    consumer, and only those. For every integer n at least 3, C(n, 4) < 1. For every
+    integer n at least 4, C(n, 3) < 1. For every integer n at least 6, C(n, 2) < 1. For
+    every degree n and all real S and length, if length squared is at most 4 C(n, S) and
+    C(n, S) < 1, then length is strictly below 2, with no positivity or sign hypothesis
+    on the length. Composed with the ordinary analytic estimate of the companion paper,
+    which bounds the canonical connector at a simple saddle by 2 (1 + S)^(1/n)
+    sqrt(log(S / (S - 1))) once every other critical value sits at normalized distance at
+    least S, the three thresholds settle the separation radii 4, 3 and 2 completely: at
+    each of those radii the first merge is forced strictly below the constant 2 in every
+    degree from the stated cutoff upward, with no upper bound on the degree and no
+    further hypothesis on the root configuration. Every cutoff is the first degree at
+    which its inequality holds, since C(2, 4) exceeds 1.43, C(3, 3) exceeds 1.02 and
+    C(5, 2) exceeds 1.07, so each of the three statements is sharp in the degree. Radius
+    two is the tight case, where C(6, 2) equals 0.99969 to five places. What makes an
+    infinite family of transcendental inequalities finite is that C(n, S) is antitone in
+    the degree for every S greater than 1, because the exponent 2/n decreases while the
+    base 1 + S exceeds 1, so a single base-degree inequality propagates to every larger
+    degree; each base case then reduces to an exact rational comparison, 5^(2/3) < 3 by
+    cubing, 4^(2/4) = 2, and (3^(2/6))^3 = 3 with 3 (0.6931471808)^3 < 1, closed with
+    log x < x - 1 and the nine-digit rational upper bound on log 2. The audience is complex analysts working on lemniscate connectivity
+    and the geometry of polynomial sublevel sets, and readers of Newton-flow
+    saddle-connection geometry. The elementary logarithm bound and the Pólya
+    area-capacity inequality are classical ancestry, a bounded search found no earlier
+    statement of these coefficient thresholds, and priority is unresolved. The analytic
+    continuation of the square-resolved inverse branch, its univalence, the area formula
+    and the Pólya inequality that together produce the squared connector bound are
+    ordinary proofs in the companion paper rather than Lean-checked conclusions, the
+    near-tie and simultaneous multiple-saddle configurations remain untouched, and the
+    unrestricted Erdős Problem 1041 is not decided here.
+  authors: ["Will Cook"]
+  responsible_maintainers: ["Will Cook"]
+  license: "Apache-2.0"
+
+palomar_qualification:
+  status: "candidate_pending_public_identity_and_terminal_comparator"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1041FirstMergeCriticalValueSeparation/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1041FirstMergeCriticalValueSeparation/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_exact_axiom_audit_passed_terminal_comparator_pending"
+  research_interest_status: "three_exact_all_degree_separation_thresholds_with_a_sign_free_length_consumer"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "the staged paper revision has not been promoted to the authoritative paper"
+    - "public immutable source identity is pending"
+  note: >-
+    Lean checks the numerical threshold kernel. The ordinary analytic
+    continuation, covering, univalence, area, and Pólya inputs stay in the
+    companion paper. No unrestricted Erdős #1041 theorem, Palomar outcome, or
+    submission is claimed.
+
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 92
+    band: "summit"
+    components:
+      theorem_closure: 21
+      parent_problem_proximity: 24
+      mechanism_depth: 18
+      hypothesis_sharpness: 16
+      consequence_reach: 13
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness, or
+      submission authorization.
+    rationale: >-
+      The ordinary theorem gives a substantial all-degree sufficient regime
+      immediately below the open parent problem. The formal object checks its
+      complete numerical kernel but intentionally stops before the analytic
+      covering and area inputs, so its score remains below fully checked solved
+      families of comparable reach.
+  presentation_order:
+    - "three_exact_all_degree_separation_regimes"
+    - "general_squared_length_consumer"
+
+sources:
+  - title: "First-merge critical-value separation for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The ordinary analytic certificate and paper prove the covering-space and
+      coefficient argument; Lean checks the exact threshold kernel.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors: ["The mathlib contributors"]
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    The package selects one composite exact-threshold endpoint and the general
+    squared-length consumer. Challenge.lean has one intended specification
+    sorry per selected theorem; the proof-bearing source is intended sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  axiom_audit_status: "passed_2026_09_02_exactly_propext_Quot_sound_Classical_choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds"
+      file: "ExternalVerification1041FirstMergeCriticalValueSeparation/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041FirstMergeCriticalValueSeparation/comparator.json"
+      canonical_claim_status: "source_authored_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos1041.firstMerge_exact_convenient_thresholds"
+      source_file: "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean"
+      local_proof_provenance: "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean"
+      novelty_status: "unassessed"
+      literature_dependencies: []
+      statement: >-
+        For every integer n at least 3, (1 + 4)^(2/n) log(4/3) < 1; for every integer n at
+        least 4, (1 + 3)^(2/n) log(3/2) < 1; and for every integer n at least 6,
+        (1 + 2)^(2/n) log 2 < 1.
+      contribution_class: "exact all-degree coefficient thresholds"
+      paper_result_label: "res:critical-value-thresholds"
+      boundary: >-
+        The result consumes the analytic coefficient formula. It constructs no
+        inverse branch and performs no continuation.
+    - declaration: "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound"
+      file: "ExternalVerification1041FirstMergeCriticalValueSeparation/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041FirstMergeCriticalValueSeparation/comparator.json"
+      canonical_claim_status: "source_authored_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos1041.firstMerge_length_lt_two_of_squared_bound"
+      source_file: "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean"
+      local_proof_provenance: "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean"
+      novelty_status: "unassessed"
+      literature_dependencies: []
+      statement: >-
+        For every degree n and all real S and length, if length squared is at most
+        4 (1 + S)^(2/n) log(S / (S - 1)) and (1 + S)^(2/n) log(S / (S - 1)) < 1, then
+        length is strictly below 2. No positivity or sign hypothesis on the length is
+        assumed.
+      contribution_class: "sign-free strict connector-length threshold consumer"
+      paper_result_label: "res:critical-value-separation"
+      boundary: >-
+        The squared-length estimate enters as an explicit hypothesis supplied by
+        the ordinary analytic argument in the companion paper.
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Ordinary complex analysis and mathematical interpretation"
+      tool_setup: "Human-directed proof and claim-boundary review"
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: "Positive acceptance and deliberate-negative mismatch rejection; no terminal verdict recorded"
+
+fidelity:
+  divergences: >-
+    The Comparator package exposes only the formal numerical kernel. The
+    reader-facing paper contains the stronger ordinary analytic theorem and
+    states exactly which continuation and area inputs are not formalized.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Source statements, paper labels, challenge shapes, and analytic/formal
+    boundaries were aligned statically. Focused source/challenge/solution/
+    deliberate-negative/axiom-audit elaboration passed, with both selected
+    declarations using exactly propext, Quot.sound, and Classical.choice.
+    A mechanical replay on 2026-09-02 rebuilt the Challenge and the Solution
+    and reread both axiom sets inside the permitted budget. The Challenge and
+    the Solution have not yet been machine-compared to state the same theorem,
+    so the terminal Comparator verdict remains pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation"
+  statements:
+    - source: "the three exact convenient critical-value separation thresholds"
+      lean: "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds"
+      module: "ExternalVerification1041FirstMergeCriticalValueSeparation/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"
+    - source: "the squared connector estimate plus coefficient threshold forces length below two without a sign hypothesis"
+      lean: "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound"
+      module: "ExternalVerification1041FirstMergeCriticalValueSeparation/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

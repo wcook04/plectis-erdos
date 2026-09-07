@@ -1,0 +1,79 @@
+{
+  "schema": "aiw-formal-math-return-wave/1",
+  "problem_id": "erdos_68",
+  "received_on": "2026-07-23",
+  "target_status": "open",
+  "target": "Prove irrationality of S = sum_{n >= 2} 1 / (n! - 1).",
+  "source_returns": [
+    {
+      "attachment": "a6f296ba-c45c-44a1-a657-9a5edfb2d91a/pasted-text.txt",
+      "sha256": "5a60d552319b23b9899ce8df6197a4d79677479ae6ee70ac0a4715e1d0947e4e",
+      "role": "strict-successor recurrence, canonical endpoint dichotomy, summable zero-branch reduction, all-one-run compression, denominator obstruction, and exact computation through 70000"
+    },
+    {
+      "attachment": "ffe863ea-293d-4173-9a2b-21ef37ea45da/pasted-text.txt",
+      "sha256": "88be1c9ecba7a362e427a0a4bc0497ee52476a6f014cdff90392b7f74ca083c2",
+      "role": "unimodular divisor-incidence no-go, positive inverse recurrence, sparse exact-kernel rational shadows, rank-one tail collapse, and surviving channel-determinant criterion"
+    },
+    {
+      "attachment": "6b6a1686-93ec-48a0-bb16-5cc7e06dcfd2/pasted-text.txt",
+      "sha256": "357b08992129fdd44fc5a1e3ca93d0b92d9ef404ced97826a6f99efa2866612b",
+      "role": "universal coefficient-jet prefix divisibility, sharp nonconsecutive minors, exact S-only bridge collapse, and polynomial prime-channel conservation"
+    },
+    {
+      "attachment": "1301e4f4-a827-4549-82a4-8e86b39b87a9/pasted-text.txt",
+      "sha256": "836c666b7aa72753aab72f2b72e6214d59b8021fc73d0dff693c3add2ccd439b",
+      "role": "endpoint lcm numerator, collision core, pairwise-coprime private quotients, complete private-modulus survival, and CRT residue closing criterion"
+    }
+  ],
+  "strongest_positive_advances": [
+    {
+      "id": "prime_endpoint_zero_branch_reduction",
+      "status": "human_proof_complete_pending_lean",
+      "statement": "A strict-successor prime hit splits into a zero endpoint cylinder of length R_p/p and a maximal-digit cylinder; only the zero cylinder can support eventual rationality. It is enough to escape the zero cylinder at unbounded primes, and R_p/p < 2/p^2."
+    },
+    {
+      "id": "all_one_run_endpoint_compression",
+      "status": "human_proof_complete_pending_lean",
+      "statement": "An arbitrary run of strict-successor digits equal to one is equivalent to one endpoint interval, and any such run forces a factorial-scale reduced-denominator obstruction."
+    },
+    {
+      "id": "collision_core_private_modulus_survival",
+      "status": "human_proof_complete_pending_lean",
+      "statement": "Deleting all pairwise-collision support produces pairwise-coprime private quotients whose product R_p survives primitive endpoint reduction completely. A positive endpoint is at least (rho_p/R_p)/C_p for an explicit nonzero CRT residue rho_p."
+    },
+    {
+      "id": "endpoint_support_escape_closer",
+      "status": "conditional_closer",
+      "statement": "Infinitely many primes satisfying rho_p/R_p > C_p (2p+1)/(2p^2(2p-1)!) would prove irrationality."
+    }
+  ],
+  "structural_no_go_results": [
+    "Every finite divisor-closed incidence matrix for the exact divisor kernel is unit lower triangular, hence unimodular with trivial Smith content.",
+    "Sparse exact-kernel rational shadows can preserve prime powers, row-content congruences, prime blocks, and every fixed-dilation congruence while having a prescribed rational sum.",
+    "Arbitrary nonconsecutive coefficient-jet minors retaining k prefix directions remain divisible by the k-th power of the common raw denominator, and the bound is sharp.",
+    "Any coefficient-jet determinant eliminating all target constants except 1 and S is zero in rank at least three or collapses to the ordinary reduced partial-sum form in rank two."
+  ],
+  "finite_evidence": [
+    "The returned exact interval computation reports no prime strict-successor hit below 70000; this has not yet been locally regenerated.",
+    "The returned collision-residue checker reports endpoint-support escape for every odd prime p <= 199; this remains a finite certificate."
+  ],
+  "open_producers": [
+    {
+      "id": "unbounded_prime_escape_zero_branch",
+      "priority": 1,
+      "statement": "For arbitrarily large primes p, prove fractionalPart((p-1)! S) >= R_p/p."
+    },
+    {
+      "id": "unbounded_endpoint_support_escape",
+      "priority": 2,
+      "statement": "For infinitely many primes, control the collision core and least positive private-support CRT residue strongly enough to satisfy the exact endpoint-support closing inequality."
+    },
+    {
+      "id": "unbounded_nonrankOne_channel_determinant_supply",
+      "priority": 3,
+      "statement": "Produce primitive channel annihilators with nonzero factorial moment and nonzero residual strictly between -1 and 1."
+    }
+  ],
+  "claim_ceiling": "No packet proves the pointwise escape theorem or the irrationality of the Erdős #68 series. Metric almost-everywhere escape, finite computation, and conditional determinant or CRT criteria do not change the open status."
+}

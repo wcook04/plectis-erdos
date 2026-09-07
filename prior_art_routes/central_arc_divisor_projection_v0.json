@@ -1,0 +1,186 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "central_arc_divisor_projection",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_least_residue_interval_lift_with_source_specific_converse_counterexample",
+  "problem_id": "erdos_249",
+  "purpose": "Correct the direction-sensitive terminology, classify the implication as elementary modular interval arithmetic, and preserve the exact #249 witness that blocks the converse reduction.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/central_arc_divisor_projection.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_mersenne_divisor_centrality.py",
+    "source_result_id": "mersenne_divisor_centrality_one_way"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine least-residue interval inequality with a decisive finite converse counterexample; the value is direction control, not theorem depth.",
+    "slow_down_at": "Check the divisor-to-multiple direction and exact N=63/M=21/B=7 residues; do not infer residue supply or denominator exclusion.",
+    "automation_can_establish": [
+      "The source script's exact residue decomposition",
+      "The finite converse witness and source result id"
+    ],
+    "human_judgment_required": [
+      "Whether a future source supplies a cofinal central-residue mechanism",
+      "Whether downstream uses preserve the modulus direction"
+    ],
+    "review_act": "Read both modulus directions once and attach the counterexample to every downstream use."
+  },
+  "adjudication_currentness": {
+    "status": "source_script_and_card_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "source_script_sha256": "92f40819c7a80516a9793c02af6dd7fc1f8176c398eff7f2e9493b12d36b70e9",
+      "source_result_id": "mersenne_divisor_centrality_one_way",
+      "review_generation": "2026-08-26_v2"
+    },
+    "claim_guard": "One-way central-residue lift plus exact finite converse failure only; no cofinal supply, denominator exclusion, irrationality, priority, or #249 solution claim.",
+    "reentry_trigger": "Reopen if the divisor direction changes or a source-backed residue-supply theorem appears."
+  },
+  "classification": {
+    "ambient_framework": "least residues under reduction along divisibility",
+    "forward_implication": "elementary_interval_inequality",
+    "converse_failure": "source_specific_exact_counterexample",
+    "priority_claim": "none",
+    "recommended_terminology": "central-residue lift along divisibility",
+    "acceptable_alias": "one-way endpoint-safety lift",
+    "discouraged_terminology": [
+      "central-arc projection theorem",
+      "new Mersenne residue theorem",
+      "odd-denominator reduction principle"
+    ],
+    "attribution": "No specialized attribution is warranted for the direct inequality. Credit the local card only for making the proof-direction gate explicit and binding it to the exact totient-block counterexample.",
+    "mathematical_interest": "Low as a standalone theorem, high as a proof-hygiene gate because the reverse direction would falsely reduce odd-denominator cases to the pure dyadic axis.",
+    "reusable_scope": "Arguments using open central intervals of least residues while passing between a modulus and one of its divisors.",
+    "why_it_matters": "It retires a tempting invalid reduction while retaining the valid quotient-modulus-to-full-modulus implication."
+  },
+  "mechanism_comparison": {
+    "canonical_map": "For M dividing N, reduction is a map from Z/NZ to Z/MZ.",
+    "proved_logical_direction": "If the least residue modulo M avoids both endpoint arcs, then every compatible least residue modulo N does too.",
+    "failed_converse": "Centrality modulo N can collapse into an endpoint arc after reduction modulo M.",
+    "exact_source_witness": "z=-82, N=63, M=21, B=7 gives residues 44 and 2 respectively.",
+    "remaining_throat": "The lemma transports certified centrality but produces no cofinal source of central residues."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "least residue central interval divisor multiple modulus",
+      "residue interval preserved reduction modulo divisor",
+      "centered residue lift divisibility lemma"
+    ],
+    "result": "The statement reduces immediately to writing the least residue modulo N as jM plus the least residue modulo M. No distinct conventional theorem name or novelty-bearing antecedent is appropriate.",
+    "boundary": "Non-location is not evidence of novelty; the result is too elementary for a priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Centrality of the least residue modulo a divisor lifts to centrality modulo the multiple; the converse fails on the exact displayed #249 block.",
+    "forbidden_wording": [
+      "Centrality projects both ways along divisibility.",
+      "Full Mersenne centrality descends to every odd-denominator quotient.",
+      "The lemma supplies cofinally many central residues.",
+      "The witness excludes a denominator beyond its displayed finite block.",
+      "This proves irrationality or solves Erdős #249."
+    ],
+    "nonclaims": ["not_a_priority_claim", "not_a_new_Mersenne_theorem", "not_a_residue_supply_theorem", "not_a_denominator_exclusion", "not_erdos_249_solution"]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/central_arc_divisor_projection.card.json",
+      "effect": "Replace pending novelty language and misleading projection terminology with a directionally correct elementary classification."
+    },
+    {
+      "consumer": "Erdos #249 proof fleet",
+      "effect": "Permit quotient-modulus centrality to lift to the full Mersenne modulus, but forbid the reverse pure-dyadic reduction."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Use the asset as a method-boundary correction, not a standalone novelty claim."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_residue_supply_or_divisor_direction",
+    "priority_order": [
+      "retain the one-way divisor-to-multiple lift and the exact N=63, M=21, B=7 converse counterexample",
+      "require any future reduction to state its modulus direction before invoking centrality",
+      "re-enter only if a source supplies a cofinal central-residue mechanism; this lemma itself supplies none"
+    ],
+    "lane": "re-enter on a source-backed residue-supply theorem or a corrected modulus-direction claim; do not generalize the finite witness"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "least_residue_divisor_direction_review",
+    "output_stage": "method_boundary_human_review_support",
+    "artifact": "#249 central-residue lift along divisibility with converse counterexample",
+    "human_understanding_delta": "The asset is now a directional proof-hygiene gate: centrality modulo a divisor lifts to the multiple, while the converse fails on an exact finite totient block. It does not create any supply of central residues.",
+    "verification_state": "The elementary residue decomposition, exact N=63/M=21/B=7 witness, and source result id are bound; no specialized theorem or cofinality claim is asserted.",
+    "publication_or_review_state": "Private method-boundary support; no priority, new Mersenne theorem, denominator exclusion, irrationality, or #249 endpoint claim.",
+    "canonicalization_state": "One semantic firewall subordinate to the #249 residue-gap family; do not split the forward lemma and converse witness into separate result objects.",
+    "unresolved_downstream_bottleneck": "A genuine cofinal source of central residues or another correlation-sensitive endpoint mechanism is still absent.",
+    "next_stage_owner": "Novelty Observatory for any exact residue-supply antecedent; Mathematics Refinery for single-firewall assimilation; #249 proof/public owners for endpoint work."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "central_arc_divisor_projection@script-92f40819-card-2026-08-24",
+    "evidence_class": "elementary_exact_modular_interval_inequality_plus_exact_finite_counterexample",
+    "closest_known_result": "The direct implication follows immediately by writing a least residue modulo the multiple as jM plus the least residue modulo the divisor; no distinct novelty-bearing antecedent or specialized terminology is warranted.",
+    "comparison_relation": "One-way proof-hygiene firewall for #249 residue arguments, not a new Mersenne theorem or residue-supply mechanism.",
+    "exact_delta": "The source binds centrality modulo a divisor to centrality modulo a multiple and records the exact finite N=63, M=21, B=7 witness showing the converse fails.",
+    "disconfirming_evidence": "Centrality modulo a multiple can collapse into an endpoint arc after reduction; the finite witness blocks any converse or pure-dyadic reduction.",
+    "confidence_ceiling": "High for the elementary implication and exact finite witness; routine classification with no priority, novelty, supply, or endpoint claim.",
+    "significance": "Low standalone, high method-boundary value: it retires a tempting invalid reduction while retaining the valid quotient-to-full-modulus lift.",
+    "claim_ceiling": "If the least residue is central modulo a divisor M, it is central modulo a multiple N; the converse fails at the exact N=63, M=21, B=7 witness.",
+    "hard_step": "None in the forward inequality; the useful work is preserving the direction and finite converse failure.",
+    "open_boundary": "A genuine cofinal central-residue or correlation mechanism remains required for #249.",
+    "bounded_expert_act": "Read both modulus directions once and attach the finite witness to every downstream use.",
+    "reentry_trigger": "Reopen if the divisor direction changes or a source-backed residue-supply theorem appears.",
+    "source_version_binding": {
+      "source_script": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_mersenne_divisor_centrality.py",
+      "source_script_sha256": "92f40819c7a80516a9793c02af6dd7fc1f8176c398eff7f2e9493b12d36b70e9",
+      "source_result_id": "mersenne_divisor_centrality_one_way",
+      "primary_literature_scope": "No specialized primary source is needed for the direct least-residue inequality; the bounded search found only elementary residue decompositions and no conventional named theorem.",
+      "parity_status": "Exact N=63/M=21/B=7 witness and direction-sensitive statement are source-bound; no cofinal computation or external theorem is claimed."
+    },
+    "classification": {
+      "evidence_class": "elementary exact modular interval inequality plus exact finite counterexample",
+      "closest_prior_art": "The direct implication is immediate from writing a least residue modulo the multiple as jM plus the least residue modulo the divisor; no distinct novelty-bearing antecedent or specialized terminology is warranted.",
+      "comparison_relation": "One-way proof-hygiene firewall for #249 residue arguments, not a new Mersenne theorem or residue-supply mechanism.",
+      "novelty_confidence": "strongly classified as routine; no priority or novelty claim",
+      "significance_grade": "low_standalone_high_method_boundary",
+      "why_care": "It prevents an invalid converse from collapsing odd-denominator cases to the pure dyadic axis, while retaining the valid divisor-to-multiple lift.",
+      "hard_step": "None in the forward inequality; the useful work is preserving the exact converse failure and its quantifier direction.",
+      "natural_friction": "Centrality modulo a multiple need not descend to a divisor; the finite witness must remain adjacent whenever the lemma is used.",
+      "disconfirming_evidence": "The result is elementary enough that no named theorem or literature novelty is expected; its value is semantic correction rather than mathematical depth."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "If the least residue is central modulo a divisor M, it is central modulo a multiple N; the converse fails at the exact N=63, M=21, B=7 witness.",
+      "rejected_stronger": [
+        "centrality projects both ways along divisibility",
+        "full Mersenne centrality descends to every odd-denominator quotient",
+        "a cofinal source of central residues",
+        "a denominator exclusion or irrationality theorem",
+        "a solution of Erdős #249",
+        "a priority claim"
+      ],
+      "open_boundary": "A genuine cofinal residue-supply or correlation mechanism is still required for #249."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "Mersenne residue-gap proof-direction firewalls",
+      "disposition": "consolidate as one semantic boundary beneath the #249 residue-gap family; do not split the forward lemma and converse witness",
+      "paper_disposition": "route-killing failure/boundary in the #249 method-audit section",
+      "supersession_or_consolidation": "Retire any projection terminology that suggests a converse; preserve the finite witness as the canonical guard.",
+      "expert_attention_reason": "The object saves review time by killing a tempting invalid reduction; re-proving the interval inequality is not a worthwhile standalone review task.",
+      "independent_comparator_interface_justified": "No standalone Comparator proposition; include it as a bundled statement firewall with the exact counterexample."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "routine inequality with a decisive finite counterexample",
+      "slow_down_at": "Check the modulus direction and the exact N=63/M=21/B=7 residues; do not infer supply or denominator exclusion.",
+      "automation_establishes": "The source script's exact residue decomposition and finite witness.",
+      "expert_judgment_required": "Only whether a future source supplies a cofinal central-residue mechanism beyond this firewall.",
+      "bounded_expert_act": "Read the two modulus directions once and attach the counterexample to every downstream use.",
+      "reentry_condition": "Reopen only if the divisor direction changes or a source-backed residue-supply theorem appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "exact finite modular check",
+      "output_stage": "method-boundary understanding and canonicalization",
+      "artifact": "central_arc_divisor_projection",
+      "human_understanding_delta": "Makes the one-way lift and converse failure impossible to conflate.",
+      "verification_state": "Exact source script and finite witness are bound; no specialized theorem is claimed.",
+      "publication_or_review_state": "Private/paper method-boundary support; no standalone public novelty claim.",
+      "canonicalization_state": "One semantic firewall beneath the #249 residue-gap family.",
+      "unresolved_downstream_bottleneck": "Cofinal central-residue supply.",
+      "next_stage_owner": "Mathematics Refinery for single-firewall assimilation and #249 proof owners for the endpoint producer."
+    }
+  }
+}

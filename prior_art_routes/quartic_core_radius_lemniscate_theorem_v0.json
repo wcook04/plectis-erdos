@@ -1,0 +1,268 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "quartic_core_radius_lemniscate_theorem",
+  "source_result_ids": [
+    "quartic_core_radius_lemniscate_theorem"
+  ],
+  "created_by": "Mathematics Refinery",
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "ordinary_source_commit": "868fa391a1feeff47bad653a44a21d2d1ba05ae7",
+    "ordinary_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticCoreRadiusCase.md",
+    "ordinary_source_sha256": "670db12ba4c3859e69381d50021a5a6332c45021f8f3b2d67ed902e9ce710afc",
+    "lean_kernel_commit": "868fa391a1feeff47bad653a44a21d2d1ba05ae7",
+    "lean_kernel_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticCoreRadiusCase.lean",
+    "lean_kernel_sha256": "0c7359394ad4b8113ee500e846d50eb9b0d4b6b247adf1ecce754bce5bce0793",
+    "checker_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quartic_case.py",
+    "checker_sha256": "6c48cf7031330c7059643b1dc17c6de89c28809bfb155f6d26dd5fb3bca689a5",
+    "checker_commit": null,
+    "reviewer_card_commit": "feffa37f1f5eccba82362c18991b4046d25a0fa0",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/quartic_core_radius_lemniscate_theorem.card.json",
+    "reviewer_card_sha256": "90142efcba530f79fc849c2ede62362a07dbefebcd4c7862568e2fa5c4304cb3",
+    "status": "ordinary_source_and_lean_kernel_current; finite_checker_is_untracked_and_not_a_committed_parity_anchor"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Pendyala's quartic theorem is external input; local transport and scalar kernels are elementary, while quartet selection is the unresolved mathematical bottleneck.",
+    "slow_down_at": "Keep the favourable-core condition (QC), the sufficient—not optimal—radius, and the untracked checker explicit. Do not relabel the external theorem as Lean-checked.",
+    "automation_can_establish": [
+      "Pinned ordinary source, Lean-kernel, packet, and card hashes",
+      "The local scalar/rational kernels and exact finite witness"
+    ],
+    "human_judgment_required": [
+      "Whether (QC) can be guaranteed for arbitrary root configurations",
+      "Whether the radius packaging is distinct from the published quartic theorem"
+    ],
+    "review_act": "Verify the factor-budget quantifiers against Pendyala Theorem 1, then assess only the open quartet-selection step; do not treat the finite checker as theorem proof."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_quartic_core_radius_class_v2",
+    "result_family": "erdos1041_bounded_degree_lemniscate_factor_budget",
+    "exact_result_id": "quartic_core_radius_lemniscate_theorem",
+    "source_generation": "2026-08-26",
+    "evidence_class": "published Pendyala degree-four input plus authored ordinary transport, Lean-checked scalar kernels, and an untracked finite replay script; not an end-to-end Lean theorem",
+    "prior_art_relation": "Pendyala's arbitrary-polynomial degree-four theorem is the attributed geometric input; the source-specific all-degree sufficient radius class is an elementary factor-budget composition and is not claimed as a duplicate or priority result.",
+    "confidence_ceiling": "High for the stated conditional radius-class implication and evidence partition; moderate for the bounded absence of a verbatim antecedent; low for threshold optimality, universal quartet selection, or unrestricted #1041.",
+    "significance_rationale": "This is a useful local-to-general mechanism: a contained quartic path becomes an arbitrary-degree path whenever the unselected-root product fits an explicit multiplicative budget. It is a positive radius-class theorem, not the global problem.",
+    "hard_step": "Transport the published quartic path through the strict outside-factor product bound while keeping the open containment and strict length budget visible.",
+    "open_boundary": "Quartet selection beyond the stated radius class, threshold optimality, separated-quintic complement, and unrestricted Erdős #1041 remain open; the checker is not committed evidence.",
+    "expert_review_act": "Verify the factor-budget inequalities and quantifiers against Pendyala Theorem 1, inspect the Lean kernel declarations, and decide whether the untracked finite checker should be landed or removed from the evidence rail.",
+    "next_reentry": "Re-enter only if the ordinary source, Lean kernel, reviewer card, or checker ownership changes; do not repeat the degree-four literature attribution."
+  },
+  "target": "quartic_core_radius_lemniscate_theorem",
+  "problem_id": "erdos1041_lemniscate_short_path",
+  "classification": {
+    "overall": "source_specific_generalization_of_published_quartic_theorem_with_no_priority_claim",
+    "published_input": "Pendyala 2026 Theorem 1 is the exact degree-four strict-path theorem; it is not claimed as Lean formalized here.",
+    "factor_budget": "elementary multiplicative transport with source-pinned Lean checks for strict scalar fan-in and the uniform budget identity",
+    "uniform_radius_class": "new source-specific sufficient radius packaging, not a globally sharp radius theorem",
+    "separated_witness": "exact Gaussian-rational strict-extension certificate with finite Fraction replay and Lean rational arithmetic",
+    "formalisation_status": "Lean checks named local algebraic kernels only; the all-degree theorem is an inspectable ordinary composition of published geometry and those kernels",
+    "confidence": "high for evidence partition and source parity; moderate for absence of a verbatim antecedent because the comparison was bounded",
+    "reason_for_caution": "The new theorem must not be rephrased as a formal proof of Pendyala's construction, a universal quartet-selection theorem, or an unrestricted #1041 result."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "bounded-degree lemniscate paths promoted by multiplicative outside-factor control",
+    "disposition": "admit one positive all-degree radius-class theorem and consolidate scalar fan-in, uniform threshold, and separated witness",
+    "consolidation_relation": "Pendyala's theorem is the attributed geometric core. Close-pair, sparse-selector, binomial, collinear, and component-perimeter objects remain separate mechanisms or solved scopes; do not create separate cards for the factor identity or witness arithmetic.",
+    "comparator_advisory": "One status-tagged interface is appropriate now: preserve the external Pendyala hypothesis, (QC), the ordinary composition label, and Lean's limited scalar role. No independent interface for the uniform arithmetic or finite witness.",
+    "paper_disposition": {
+      "class": "headline/core solved radius class",
+      "target_section": "A quartic core with an explicit outside-factor budget",
+      "supersession_or_consolidation": "One theorem stack containing the factor-budget implication, uniform-radius corollary, and exact separated quintic. Pendyala's theorem remains attributed input, not a duplicate claim.",
+      "reason": "It extracts a reusable all-degree mechanism from a valid local theorem while making the selection obstruction explicit."
+    }
+  },
+  "mechanism_comparison": {
+    "degree_four_vs_all_degree": "Pendyala proves an unrestricted four-root result. The target has arbitrary degree but only a quantified favourable-core hypothesis, which pays exactly for every extra root factor.",
+    "close_pair_boundary": "The exact quintic witness has every squared pair distance above 5/9, so it proves strict extension beyond the current close-pair certificate rather than merely repeating it.",
+    "global_flow_boundary": "The factor budget needs no global Newton-flow tree or Reeb gluing. It is therefore independent of the invalid March 2026 spanning-tree proposition.",
+    "uniform_boundary": "The threshold $2^{4/n-1}$ is the output of one selected-core estimate. It does not claim optimality or a favorable off-centre quartet in the complement."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "A quartic core with an explicit outside-factor budget",
+    "canonical_mechanism_family": "bounded-degree lemniscate paths promoted by multiplicative outside-factor control",
+    "relation": "A single positive all-degree radius-class section immediately after the problem/prior-art framing; no chronology of scalar identities or witness coordinates.",
+    "understanding_delta": "A contained local path can become an arbitrary-degree theorem once every unselected root is charged by one auditable multiplicative budget.",
+    "evidence_boundary": "Published Pendyala input, Lean scalar kernel, ordinary transport, and finite exact witness remain visibly distinct. Public status labels are sufficient; external review is not a visibility prerequisite.",
+    "hard_step": "Find an optimizing quartet/centre or another geometry that enforces a comparable budget outside the current radius class.",
+    "meaningful_failed_route": "Neither the invalid global tree argument nor an uncharged reuse of a quartic path supplies an arbitrary-degree result.",
+    "open_remainder": "General quartet selection, threshold optimality, the large-radius separated-quintic complement, and Erdős #1041 remain open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_analytic_proof_and_formal_kernel",
+    "output_stage": "exposition_understanding_publication_ready_and_canonicalization",
+    "artifact": "quartic_core_radius_lemniscate_theorem",
+    "human_understanding_delta": "The result is now a named mechanism rather than an internal consequence: Pendyala path plus a factor ledger yields an all-degree class, and the failed global gluing route is no longer conflated with it.",
+    "verification_state": "Published source theorem, named Lean scalar declarations, exact Fraction witness replay, and an ordinary proof whose composition seam is explicit.",
+    "publication_or_review_state": "Status-labelled public card/paper/Comparator candidate is eligible now; independent review is a downstream scholarly event, not a release gate.",
+    "canonicalization_state": "One theorem stack consolidates the fan-in, radius corollary, and extension witness under an attributable local-to-general principle.",
+    "unresolved_downstream_bottleneck": "The complement needs a core-selection theorem or a different all-degree path mechanism.",
+    "next_stage_owner": "Role 3 for projection and publication; Mathematics Refinery for ongoing source parity."
+  },
+  "sources": [
+    {
+      "id": "pendyala_2026",
+      "role": "published_load_bearing_quartic_input",
+      "citation": "Venkata Siddharth Pendyala, A Degree-Four Lemniscate Path Theorem, arXiv:2606.24875 (2026), Theorem 1, p. 1.",
+      "local_annex": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path",
+      "source_archive": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.pdf",
+      "source_archive_sha256": "337db0cc046023b1429d9131720d199843766629cd2ad8bf8b04a40168d7bcd8",
+      "pdf_pages": 3,
+      "extracted_markdown": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/extracted.md",
+      "extracted_markdown_sha256": "a2b0425974ef126a45a054a587da13801636ce98d552646349026955284e967c",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_theorem_1_lemma_1_proof_locators_compared",
+      "exact_locator": "PDF p. 1, Theorem 1 and Lemma 1; PDF p. 3, proof of Theorem 1 using smallest-enclosing-disk normalization and two radial arms."
+    },
+    {
+      "id": "erdos_herzog_piranian_1958",
+      "role": "original_problem",
+      "citation": "P. Erdős, F. Herzog, and G. Piranian, Journal d'Analyse Mathématique 6 (1958), Problem 5, p. 139.",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "pdf_pages": 24,
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_problem_5_locator_compared",
+      "exact_locator": "Printed p. 139 / PDF p. 15, Problem 5, asks for a path of length less than two joining two roots inside the strict unit lemniscate."
+    }
+  ],
+  "expert_review_support": {
+    "requested_judgment": "Verify the transport of Pendyala's contained path through the strict external-factor bound, and assess whether existing small-enclosing-disk or root-clustering theory can select a quartet satisfying (QC) beyond the stated radius class.",
+    "not_a_release_gate": true
+  },
+  "disconfirmation_search": {
+    "tests": [
+      "Exact quintic witness has all ten squared pair distances above 5/9, excluding the present close-pair certificate.",
+      "Exact product is dense, excluding the programme's sparse trinomial and tetranomial selector routes.",
+      "The source note explicitly separates configurations of circumradius at least 2^(-1/5) with no favourable off-centre quartet budget as the open complement."
+    ],
+    "result": "No overclaim: the theorem is a sufficient core-budget class, not a universal configuration theorem."
+  },
+  "significance": {
+    "value": "high_positive_all_degree_transfer",
+    "reason": "It gives a concrete, auditable way to promote a published degree-four strict path to arbitrary degree and produces an exact all-degree radius class with a strict-extension witness."
+  },
+  "digestion_assessment": {
+    "verified_result_state": "publication-ready under explicit evidence labels",
+    "expert_talk_status": "10-12 minute expert explanation ready",
+    "consolidation": "one local-to-general factor-budget object",
+    "absolute_frontier": "do_not_admit_retain_five; this is a strong #1041 positive mechanism but does not displace the arbitrary-geometry component-perimeter expert-scrutiny candidate"
+  },
+  "landing_consumers": [
+    "docs/formal_math/reviewer_cards/quartic_core_radius_lemniscate_theorem.card.json",
+    "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1041-lemniscate-newton-flow.tex"
+  ],
+  "checkpoint": "source_commit_868fa391a1feeff47bad653a44a21d2d1ba05ae7",
+  "status": "adjudicated_and_publication_eligible_under_explicit_evidence_labels",
+  "release_disposition": "layered_status_tagged_public_and_comparator_candidate",
+  "release_advisory": {
+    "comparator_now": "Expose the exact factor-budget implication and uniform radius-class statement with ordinary-proof status, attributed Pendyala input, and Lean-local-kernel labels.",
+    "paper_only": "Keep the untracked finite checker and separated quintic witness as finite computation evidence; they do not create an additional interface.",
+    "firewall": "Do not imply Pendyala's theorem was formalized here, that quartet selection is universal, that the threshold is optimal, or that #1041 is solved."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-current prior-art and significance pass",
+    "source_version_binding": {
+      "ordinary_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticCoreRadiusCase.md",
+        "commit": "868fa391a1feeff47bad653a44a21d2d1ba05ae7",
+        "sha256": "670db12ba4c3859e69381d50021a5a6332c45021f8f3b2d67ed902e9ce710afc"
+      },
+      "lean_kernel": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticCoreRadiusCase.lean",
+        "commit": "868fa391a1feeff47bad653a44a21d2d1ba05ae7",
+        "sha256": "0c7359394ad4b8113ee500e846d50eb9b0d4b6b247adf1ecce754bce5bce0793"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+        "commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+        "sha256": "bbcd1f19579722039c646f6437d252456b6bdf8df9a523b45e3d3311468ac0c8",
+        "source_result_id": "quartic_core_radius_lemniscate_theorem"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/quartic_core_radius_lemniscate_theorem.card.json",
+        "commit": "feffa37f1f5eccba82362c18991b4046d25a0fa0",
+        "sha256": "90142efcba530f79fc849c2ede62362a07dbefebcd4c7862568e2fa5c4304cb3"
+      },
+      "external_input": {
+        "citation": "Venkata Siddharth Pendyala, A Degree-Four Lemniscate Path Theorem, arXiv:2606.24875 (2026), Theorem 1, p. 1.",
+        "role": "published load-bearing quartic theorem; not formalized here"
+      },
+      "finite_checker": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quartic_case.py",
+        "status": "untracked finite replay; not a committed parity anchor"
+      }
+    },
+    "evidence_class": "Published degree-four input plus authored ordinary transport, Lean-checked scalar/rational kernels, and an exact finite witness; not end-to-end Lean.",
+    "prior_art": "Pendyala (2026), Theorem 1, supplies the degree-four contained path; Erdős–Herzog–Piranian (1958) is the originating short-path problem context. No source located the exact outside-factor radius packaging.",
+    "closest_known_result": "Pendyala's arbitrary-polynomial degree-four theorem is the load-bearing geometric antecedent; the local contribution is a conditional all-degree transport under an explicit product budget.",
+    "comparison_relation": "This is a conditional transport and radius-class theorem, not a rediscovery or formalization of Pendyala's quartic result. It adds an inspectable outside-root ledger while leaving quartet selection open.",
+    "exact_delta": "The source turns one contained quartic path into an arbitrary-degree path whenever (QC) holds, with Lean checks for the scalar/rational kernels and an exact separated witness; the all-degree composition remains an authored ordinary proof.",
+    "novelty_confidence": "High for the evidence partition and conditional radius-class statement; moderate for absence of a verbatim antecedent under bounded search; no priority claim.",
+    "disconfirming_evidence": [
+      "The finite checker is untracked and cannot serve as a committed parity anchor.",
+      "Lean checks only local algebraic kernels, not the complete transport or Pendyala theorem.",
+      "The displayed radius is sufficient, not proved sharp, and no favorable quartet is known for every configuration."
+    ],
+    "prior_art_assessment": {
+      "confidence": "high for the evidence partition and conditional radius-class theorem; moderate for bounded non-location; no priority claim",
+      "closest_primary_sources": [
+        "Pendyala (2026), Theorem 1: arbitrary-polynomial degree-four contained path.",
+        "Erdős--Herzog--Piranian (1958), Problem 5: the original lemniscate short-path problem."
+      ],
+      "exact_relation": "Pendyala supplies the geometric quartic path. The local source contributes the all-degree outside-factor ledger, explicit radius class, and separated witness; it does not duplicate or relabel the published theorem.",
+      "search_scope": "The bounded comparison checked degree-four lemniscate paths, outside-factor transport, quartet-selection language, and small-enclosing-disk alternatives; no verbatim source for this exact factor-budget packaging was found."
+    },
+    "mathematical_delta": {
+      "one_sentence": "A contained degree-four path extends to arbitrary degree whenever a selected quartet/centre satisfies the explicit outside-root product budget, yielding a sufficient all-degree radius class.",
+      "genuinely_hard_step": "The transport itself is elementary once (QC) holds; the open mathematical step is selecting a favorable quartet/centre beyond the displayed radius class.",
+      "why_care": "It turns a published local theorem into a reusable all-degree mechanism and makes the exact selection obstruction visible instead of hiding it in a global gluing claim.",
+      "natural_friction": "The finite witness is diagnostic, the checker is untracked, Lean verifies only local kernels, and the radius threshold is sufficient rather than optimal."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Under the stated favourable-core product condition (QC), Pendyala's contained quartic path transports to arbitrary degree; in particular the displayed radius class is sufficient.",
+      "rejected_stronger": [
+        "Pendyala's full theorem is Lean-checked here",
+        "a favorable quartet exists for every root configuration",
+        "the radius threshold is sharp or optimal",
+        "the finite checker proves the all-degree theorem",
+      "Erdős #1041 is solved"
+    ]
+  },
+    "hard_step": "The difficult unresolved step is selecting a quartet and centre satisfying (QC) for arbitrary root configurations; factor transport is elementary once that condition is available.",
+    "open_boundary": "No universal quartet-selection theorem, optimal radius, arbitrary-polynomial intrinsic metric theorem, or end-to-end Lean proof follows.",
+    "significance_and_disposition": {
+      "significance_grade": "A_minus_positive_transfer",
+      "mechanism_family": "bounded-degree lemniscate paths promoted by multiplicative outside-factor control",
+      "programme_disposition": "admit one positive radius-class mechanism; consolidate scalar fan-in, uniform threshold, and separated witness",
+      "paper_disposition": "headline/core solved radius class in 'A quartic core with an explicit outside-factor budget'",
+      "comparator_advisory": "One status-tagged ordinary-proof proposition is justified. Keep Pendyala's external hypothesis, the transport condition, Lean-local scope, and finite witness labels explicit.",
+      "absolute_shortlist": "retain as a strong #1041 candidate but do not displace the metric parent as the first-contact flagship"
+    },
+    "expert_review_act": "Verify the factor-budget inequalities and quantifiers against Pendyala Theorem 1, inspect the named Lean kernels, and decide whether the untracked finite checker belongs on the evidence rail; then seek quartet-selection mechanisms for the open complement.",
+    "reentry_condition": "Reopen if the ordinary source, Lean kernel, external citation, reviewer card, or checker ownership changes; do not repeat the degree-four attribution search."
+  },
+  "adjudication_currentness": {
+    "status": "ordinary_source_lean_kernel_packet_card_committed_snapshot",
+    "bound_snapshot": {
+      "ordinary_source_commit": "868fa391a1feeff47bad653a44a21d2d1ba05ae7",
+      "ordinary_source_sha256": "670db12ba4c3859e69381d50021a5a6332c45021f8f3b2d67ed902e9ce710afc",
+      "lean_kernel_commit": "868fa391a1feeff47bad653a44a21d2d1ba05ae7",
+      "lean_kernel_sha256": "0c7359394ad4b8113ee500e846d50eb9b0d4b6b247adf1ecce754bce5bce0793",
+      "research_packet_commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+      "research_packet_sha256": "bbcd1f19579722039c646f6437d252456b6bdf8df9a523b45e3d3311468ac0c8",
+      "reviewer_card_commit": "feffa37f1f5eccba82362c18991b4046d25a0fa0",
+      "reviewer_card_sha256": "90142efcba530f79fc849c2ede62362a07dbefebcd4c7862568e2fa5c4304cb3",
+      "source_result_ids": [
+        "quartic_core_radius_lemniscate_theorem"
+      ]
+    },
+    "claim_guard": "Admit only the conditional all-degree transport under (QC) with external degree-four input; no universal quartet selection, optimal radius, end-to-end Lean proof, or #1041 solution.",
+    "reentry_trigger": "Re-enter if the ordinary source, Lean kernel, packet/card snapshot, external citation, or checker ownership changes."
+  }
+}

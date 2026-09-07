@@ -212,6 +212,24 @@ theorem homEvalThreeTwo_mod_three (W : ℕ) (P : Polynomial ℤ) :
     simp [hthree]
   · simp
 
+/-- Modulo `2`, homogeneous evaluation retains only the coefficient at the
+declared top width. -/
+theorem homEvalThreeTwo_mod_two (W : ℕ) (P : Polynomial ℤ) :
+    (homEvalThreeTwo W P : ZMod 2) = (P.coeff W : ZMod 2) * 3 ^ W := by
+  simp only [homEvalThreeTwo, Int.cast_sum, Int.cast_mul, Int.cast_pow]
+  rw [Finset.sum_eq_single W]
+  · norm_num
+  · intro i hi hiW
+    have hi_le : i ≤ W := by
+      have hi_lt : i < W + 1 := Finset.mem_range.mp hi
+      omega
+    have hi_lt : i < W := lt_of_le_of_ne hi_le hiW
+    have hsub : 0 < W - i := Nat.sub_pos_of_lt hi_lt
+    have htwo : (2 : ZMod 2) ^ (W - i) = 0 := by
+      rw [show (2 : ZMod 2) = 0 by decide, zero_pow hsub.ne']
+    simp [htwo]
+  · simp
+
 /-! ## Generic homogeneous evaluation and the cyclotomic endpoint theorem -/
 
 /-- Integer homogeneous evaluation at a reduced numerator--denominator pair.
@@ -314,24 +332,6 @@ theorem cyclotomicHomEval_isCoprime_mul
       simp [Polynomial.cyclotomic_one]
     · left
       exact Polynomial.cyclotomic_coeff_zero ℤ (by omega)
-
-/-- Modulo `2`, homogeneous evaluation retains only the coefficient at the
-declared top width. -/
-theorem homEvalThreeTwo_mod_two (W : ℕ) (P : Polynomial ℤ) :
-    (homEvalThreeTwo W P : ZMod 2) = (P.coeff W : ZMod 2) * 3 ^ W := by
-  simp only [homEvalThreeTwo, Int.cast_sum, Int.cast_mul, Int.cast_pow]
-  rw [Finset.sum_eq_single W]
-  · norm_num
-  · intro i hi hiW
-    have hi_le : i ≤ W := by
-      have hi_lt : i < W + 1 := Finset.mem_range.mp hi
-      omega
-    have hi_lt : i < W := lt_of_le_of_ne hi_le hiW
-    have hsub : 0 < W - i := Nat.sub_pos_of_lt hi_lt
-    have htwo : (2 : ZMod 2) ^ (W - i) = 0 := by
-      rw [show (2 : ZMod 2) = 0 by decide, zero_pow hsub.ne']
-    simp [htwo]
-  · simp
 
 /-- A unit constant coefficient prevents any factor `3` in the homogeneous
 specialisation. -/

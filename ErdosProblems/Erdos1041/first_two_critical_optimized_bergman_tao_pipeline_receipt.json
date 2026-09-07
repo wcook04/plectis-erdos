@@ -1,0 +1,35 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "research_actor_mode": "mixed",
+  "input_stage": "generation",
+  "output_stage": "verification_and_assimilation",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstTwoCriticalOptimizedBergman.md",
+  "human_understanding_delta": "The returned separated-level theorem is valid but stops at a nonoptimal geometric-mean level. The exact first-merge Bergman cost is strictly decreasing, so pushing the regular level to min(beta_2,1) yields a strictly stronger all-degree sufficient theorem and a smaller tied-level residual.",
+  "verification_state": "ordinary analytic proof with Lean-checked scalar sign and budget kernels plus exact symbolic replay; unrestricted target not claimed",
+  "publication_or_review_state": "private authoring assimilation; not externally reviewed",
+  "canonicalization_state": "returned Theorem 5 strengthened into one optimized canonical sufficient theorem; remaining returned claims receive explicit dispositions in the artifact",
+  "unresolved_downstream_bottleneck": "The regime beta_1/min(beta_2,1) close to one remains. It still requires polynomial geometry, a target-deciding merge-tree aggregate, FP-GM/FM-2, COVER, combined charge, or a complete near-Fekete transfer.",
+  "next_stage_owner": "Erdos1041 research frontier and the still-open Type-B return stream",
+  "proof_effect": "strengthened_and_landed",
+  "focused_validation": "pass: lean_fast_build.py --jobs 2 ErdosProblems.Erdos1041.FirstTwoCriticalOptimizedBergman; final serialized Lake replay passed without warnings; exact checker passed",
+  "integration_validation": "pass: research_packet JSON parse, formal_math_frontier_integrity status ok with zero structural issues and no stale unconsumed correction, and problem corpus index PASS",
+  "paper_assimilation": {
+    "paper": "Erdos 1041 private research corpus",
+    "section": "first-two-critical-level Bergman sufficient regime",
+    "canonical_mechanism_family": "proper first-merge component plus exterior-fibre capacity and connected-cluster Bergman",
+    "relation": "strict_strengthening_of_returned_sufficient_theorem",
+    "understanding_delta": "The best regular observation level is the target ceiling min(beta_2,1), not sqrt(beta_1 beta_2).",
+    "evidence_boundary": "ordinary complex-analysis composition, Lean scalar kernels, exact symbolic identities, and non-authoritative decimal regression",
+    "hard_step": "force a certificate when the first two critical levels are nearly tied at the target ceiling",
+    "meaningful_failed_route": "freeze the first-merge component at the geometric-mean level and inherit avoidable square-root ratio slack",
+    "open_remainder": "unrestricted Erdős 1041 remains open"
+  },
+  "source_manifest": [
+    {
+      "sha256": "822ed7d0b34cf9962d0632f87c3668531ca692b4f4268d4063f99f9c30857f19",
+      "path": "public-source-redacted://pasted-text.txt",
+      "return_id": "return_001"
+    }
+  ]
+}

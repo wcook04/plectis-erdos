@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "returned_leftmost_fibre_product_identity_inside_a_false_LF_route",
+  "output_stage": "exact_all_fibre_product_contraction_plus_complete_velocity_moment_hierarchy",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceFibreProduct.md",
+  "human_understanding_delta": "The returned all-speed product formula is valid and extends beyond the leftmost labelled pair. Lagrange interpolation adds the full signed hierarchy sum z_j^ell z_j'=0 for ell<=n-2. This phase-sensitive barycentric system is the stronger surviving object. Product contraction plus zero velocity sum is still insufficient for a marked pair, and the exact leftmost-fibre no-go proves the proposed LF conclusion false.",
+  "verification_state": "exact symbolic checker PASS; focused serialized Lean build and final authority replay PASS",
+  "publication_or_review_state": "private authoring checkpoint; resultant and Lagrange identities are ordinary finite algebra, while Lean checks their half-plane product consumer",
+  "canonicalization_state": "the valid algebra is separated from the false leftmost-pair sign conclusion and strengthened by all velocity moments",
+  "unresolved_downstream_bottleneck": "Exploit the complete barycentric moment hierarchy with component monodromy to prove an existential good pair or component aggregate, or switch to a direct finite connector; compact-away forcing remains independent.",
+  "next_stage_owner": "mathematical_closure_engine",
+  "tool_disclosure": "The return supplied the resultant product identity. The velocity moment hierarchy and insufficiency boundary were derived and exactly replayed locally."
+}

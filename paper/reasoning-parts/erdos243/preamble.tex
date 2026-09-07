@@ -1,0 +1,38 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% Long-form reasoning record seeded from the complete problem note.
+% The short note and this record are now independent publication units.
+% This flat manuscript is generated from reviewable parts below.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+% Problem-specific source pin: #243's cancellation and feedback interfaces
+% advance independently of the corpus default.
+\renewcommand{\commit}{1da2a504f8d8aa3cdc2cf686ec48bc8a67457984}
+\renewcommand{\commitshort}{1da2a504f8d8}
+\hypersetup{
+  pdftitle={Reciprocal-tail rigidity: complete reasoning record for Erdős Problem 243},
+  pdfsubject={Erdős Problem Notes: Problem 243},
+  pdfkeywords={irrationality, Ahmes series, Sylvester sequence, unit fractions, Lean 4},
+}
+
+% Names for the state maps and the two search objects.  They are set as
+% upright operators so that they read as maps rather than as products.
+\newcommand{\sylnext}{\operatorname{syl}}
+\newcommand{\den}{\operatorname{den}}
+\newcommand{\tail}{\operatorname{tail}}
+\newcommand{\ctr}{\operatorname{ctr}}
+\newcommand{\defect}{\operatorname{def}}
+\newcommand{\fnum}{\operatorname{num}}
+\newcommand{\surv}{\operatorname{Surv}}
+\newcommand{\Fp}{\mathbb{F}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Gal}{Gal}
+
+\runninghead{Erd\H{o}s \#243: complete reasoning record}
+\title{Reciprocal-Tail Rigidity: Complete Reasoning Record}
+\subtitle{Erd\H{o}s Problem~\#243}
+\author{Will Cook}
+\date{July 2026}
+
+\begin{document}

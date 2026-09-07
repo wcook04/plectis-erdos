@@ -1,0 +1,266 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "certified_dyadic_series_denominator_floor",
+  "generated_at": "2026-08-26",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Finite exact continued-fraction certificate assembled from Lean envelope identities, exact interval computation, and classical best-approximation theory.",
+    "slow_down_at": "The forced common prefix, separation from the penultimate convergent, and the finite-versus-cofinal claim boundary.",
+    "automation_can_establish": ["all pinned source/packet/computation/receipt/card hashes", "exact quotient-prefix and denominator arithmetic", "the corrected bit-length inequality"],
+    "human_judgment_required": ["whether the certificate is best framed as denominator screening rather than irrationality evidence", "whether the source-specific bracket has an antecedent", "whether the target-specific integer merits only an appendix"],
+    "review_act": "Reproduce the interval, forced-prefix termination, separation test, and final Q once; compare the certificate packaging with classical continued-fraction sources without inferring novelty."
+  },
+  "adjudication_currentness": {
+    "status": "formal_source_computation_receipt_packet_card_snapshot_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "computation_commit": "a17211ed6db4c7ac71e4b247444e59c7c8d61fa9",
+      "computation_sha256": "7a6a001f6b4e39b96f34e4103a2fe92921cc93ef541f33aa8fbe6e4eb2d58fc4",
+      "receipt_commit": "ac866e31d51e8c44b5dac86eee726af8a07334b1",
+      "receipt_sha256": "c177fa894ec64ce4245a2c1c65673469f383280b94830783d8d9b2b9cfb07d36",
+      "research_packet_commit": "6e4f79c5a30366a5b47a7f9bd1dfd720732e5f8b",
+      "research_packet_sha256": "8c7ed22255ca73adc2afc94eab1370cdb2faf7bdbcbc35c0bd3a93652d10846f",
+      "reviewer_card_commit": "163a7aa1f6842fba46bb2f94c5f728ba8924226e",
+      "reviewer_card_sha256": "4e4ffe9b4ea47508a3858935dd6b511fb24deb665cd23a94389b59fdeb17dbad"
+    },
+    "claim_guard": "Only the finite exact denominator exclusion below the displayed convergent Q is admitted; no irrationality, irrationality measure, cofinal obstruction, prime-gap distribution theorem, or #251 endpoint.",
+    "reentry_trigger": "Re-enter if any pinned source, computation, receipt, packet, card, or direct continued-fraction antecedent changes."
+  },
+  "source_generation": {
+    "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+    "formal_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+    "computation_commit": "a17211ed6db4c7ac71e4b247444e59c7c8d61fa9",
+    "computation_path": "formal_math/probes/certified_continued_fraction.py",
+    "computation_sha256": "7a6a001f6b4e39b96f34e4103a2fe92921cc93ef541f33aa8fbe6e4eb2d58fc4",
+    "receipt_commit": "ac866e31d51e8c44b5dac86eee726af8a07334b1",
+    "receipt_path": "state/formal_math/probes/erdos251_certified_cf_receipt.json",
+    "receipt_sha256": "c177fa894ec64ce4245a2c1c65673469f383280b94830783d8d9b2b9cfb07d36",
+    "research_packet_commit": "6e4f79c5a30366a5b47a7f9bd1dfd720732e5f8b",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json",
+    "research_packet_sha256": "8c7ed22255ca73adc2afc94eab1370cdb2faf7bdbcbc35c0bd3a93652d10846f",
+    "reviewer_card_commit": "163a7aa1f6842fba46bb2f94c5f728ba8924226e",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/certified_dyadic_series_denominator_floor.card.json",
+    "reviewer_card_sha256": "4e4ffe9b4ea47508a3858935dd6b511fb24deb665cd23a94389b59fdeb17dbad",
+    "status": "source_packet_computation_and_card_hashes_current_at_adjudication; reviewer-card commit handle corrected; continued-fraction theory remains external and finite replay remains outside Lean"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos251_finite_exact_rational_denominator_screening@source_7e259fd9_packet_0c29777b_card_ef2f484b",
+    "source_generation": {
+      "formal_source_sha256": "0d846f638bd852b249de0ee8172ba108f6cd519dc32dc31044fde0028687ff99",
+      "computation_sha256": "7a6a001f6b4e39b96f34e4103a2fe92921cc93ef541f33aa8fbe6e4eb2d58fc4",
+      "receipt_sha256": "c177fa894ec64ce4245a2c1c65673469f383280b94830783d8d9b2b9cfb07d36",
+      "packet_sha256": "68a0fba54c8237cf18209feafc39bb81fcb71801eec279ab0f919111642ea1ef",
+      "reviewer_card_sha256": "4e4ffe9b4ea47508a3858935dd6b511fb24deb665cd23a94389b59fdeb17dbad"
+    },
+    "evidence_class": "Lean-checked tail envelope and integer-translate identities plus exact Python interval continued-fraction certificate; classical best-approximation theory is external.",
+    "comparison_relation": "Continued-fraction cylinders, convergents, best approximation of the second kind, and exact-real computation are standard. The source-specific dyadic bracket, forced prefix, separation test, and final denominator are an exact finite certificate, not a new theorem.",
+    "closest_known_result": "Vuillemin (1990) supplies exact-real continued-fraction computation; classical convergent approximation literature supplies denominator ordering. No priority claim is inferred for the target-specific certificate.",
+    "exact_delta": "The certified interval forces 23,369 quotients and an exact final convergent with Q>10^12040; integer translates inherit the denominator bound. This is finite screening only.",
+    "disconfirming_evidence": "No finite denominator floor proves irrationality or an irrationality measure; prime-gap distribution and cofinal obstruction remain absent.",
+    "confidence": {
+      "finite_certificate": "high_internal_provisional",
+      "source_packet_parity": "high_internal_provisional",
+      "classical_terminology": "high_internal_provisional",
+      "erdos251_endpoint": "low_unresolved"
+    },
+    "claim_ceiling": "An exact interval continued-fraction computation certifies a finite reduced-denominator lower bound for the target and its integer translate; it does not establish irrationality, an irrationality measure, or an infinite obstruction.",
+    "significance": "Medium-high cross-programme assurance value: it turns huge decimal evidence into an auditable finite denominator screen while making the finite/cofinal boundary explicit.",
+    "hard_step": "Force every quotient from the exact bracket and prove separation from the penultimate convergent before applying best approximation.",
+    "open_boundary": "No irrationality, irrationality measure, cofinal denominator obstruction, or prime-gap theorem follows.",
+    "paper_disposition": {
+      "class": "technical appendix",
+      "target_section": "Certified finite denominator screens",
+      "supersession_or_consolidation": "Consolidate the 4096-bit predecessor and 80000-scale certificate as one engine; treat the earlier screen as provenance, not a second theorem.",
+      "why_care": "It provides reproducible finite assurance without pretending that computation closes the infinite problem."
+    },
+    "comparator_advisory": {
+      "disposition": "public_card_only_no_new_target_specific_interface",
+      "proposition_scope": "Expose the exact denominator floor with Lean/Python evidence labels and the immediate non-irrationality boundary; do not add a Comparator proposition for the target-specific integer.",
+      "independent_interface_justified": false,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Reproduce the exact interval, forced-prefix termination, sign separation, and final integer Q; compare only certificate packaging with classical continued-fraction sources.",
+    "reentry_trigger": "Reopen if any pinned evidence generation changes or an exact primary antecedent for this certificate interface appears."
+  },
+  "parity_audit": {
+    "status": "all_pinned_generations_match_current_blobs",
+    "effect": "The route target, Lean source, computation, receipt, packet, and reviewer-card commit/hash handles now agree. The finite continued-fraction replay remains outside Lean and is not promoted to an irrationality proof.",
+    "reentry_condition": "Re-enter only when one of the pinned source, computation, receipt, packet, card, or literature-comparison generations changes."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos251_certified_dyadic_series_denominator_floor_v2",
+    "result_family": "erdos251_finite_exact_rational_denominator_screening",
+    "exact_result_ids": [
+      "first_finite_denominator_exclusion",
+      "certified_continued_fraction_denominator_exclusion"
+    ],
+    "source_generation": "2026-08-26",
+    "evidence_class": "Lean-checked tail envelope and integer-translate identities; exact Python interval continued-fraction certificate; classical external best-approximation theorem",
+    "prior_art_relation": "Continued-fraction cylinders, convergents, best approximation of the second kind, and exact-real continued-fraction computation are standard antecedents. The target-specific bracket, separation certificate, and integer-translate consumer are source-specific without a priority claim.",
+    "confidence_ceiling": "High for current source/packet/computation/card hash parity and the finite claim; medium for the bounded literature comparison; low for originality or any Erdos #251 endpoint implication.",
+    "significance_rationale": "This closes one auditable finite-denominator-screening lane across the #68, #249, and #251 series while making the finite-versus-cofinal boundary impossible to miss.",
+    "hard_step": "Force every quotient from the exact bracket and prove separation from the penultimate convergent before invoking the best-approximation denominator ordering.",
+    "open_boundary": "No finite denominator floor excludes all rationals; an infinite/cofinal obstruction tied to actual consecutive-prime arithmetic is still missing for Erdos #251.",
+    "expert_review_act": "Reproduce the exact bracket, forced-prefix termination, sign-separation test, and final integer Q; compare only the certificate packaging against classical continued-fraction literature.",
+    "next_reentry": "Re-enter only if the source, packet, computation, receipt, card, or literature comparison changes; do not repeat the completed standard-mechanism search."
+  },
+  "release_disposition": {
+    "value": "public_card_only",
+    "statement_firewall": "Expose only the finite reduced-denominator lower bound Q > 10^12040, the exact interval/separation mechanism, and the Lean/Python assurance split. State immediately that no irrationality, irrationality measure, cofinal obstruction, or prime-gap distribution theorem follows.",
+    "reason": "The evidence and source identities are inspectable and the claim boundary is explicit; independent replay is a downstream review act, not a visibility veto. No separate Comparator proposition is justified for the target-specific integer."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_source_or_literature_change",
+    "reentry_condition": "Re-enter if any pinned source/evidence generation changes or a primary source gives a direct antecedent for this exact certificate interface.",
+    "do_not_redo": "Do not repeat the finite computation, the 4096-bit predecessor comparison, or the completed classical continued-fraction terminology search."
+  },
+  "status": "adjudicated_cross_programme_standard_continued_fraction_mechanism_with_three_exact_certificates",
+  "problem_id": "erdos_251",
+  "purpose": "Classify the exact interval continued-fraction screen against classical best-approximation theory and exact-real computation, while fixing its finite, non-irrationality claim ceiling.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/certified_dyadic_series_denominator_floor.card.json",
+    "card_state_at_review": "landed canonical reviewer card",
+    "landed_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    "source_result_id": "certified_continued_fraction_denominator_exclusion",
+    "source_result_keys": [
+      "erdos_68:certified_continued_fraction_denominator_exclusion",
+      "erdos_249:certified_continued_fraction_denominator_exclusion",
+      "erdos_251:certified_continued_fraction_denominator_exclusion"
+    ],
+    "computation_path": "formal_math/probes/certified_continued_fraction.py",
+    "receipt_path": "state/formal_math/probes/erdos251_certified_cf_receipt.json"
+  },
+  "classification": {
+    "theorem_class": "finite_rational_denominator_exclusion_from_an_exact_interval_continued_fraction_prefix_and_best_approximation",
+    "novelty_class": "standard_classical_continued_fraction_mechanism_with_a_useful_source_specific_exact_computational_certificate",
+    "frontier_relation": "auxiliary_finite_screen_not_equivalent_to_the_Erdos_251_irrationality_target",
+    "formalization_class": "Lean_checked_tail_envelope_and_integer_translate_identity_plus_exact_replayed_computation_outside_Lean",
+    "priority_claim": "none",
+    "recommended_terminology": "certified continued-fraction denominator lower bound",
+    "acceptable_descriptive_alias": "exact interval continued-fraction denominator-exclusion certificate",
+    "standard_mechanism": "an exact interval determines a common continued-fraction cylinder; separation from the penultimate convergent and best approximation of the second kind exclude every smaller reduced denominator",
+    "discouraged_terminology": [
+      "irrationality criterion",
+      "irrationality measure",
+      "new Diophantine approximation theorem",
+      "Gauss--Kuzmin evidence",
+      "Levy asymptotic",
+      "prime-gap distribution result"
+    ],
+    "attribution": "Attribute the denominator exclusion to classical continued-fraction convergent and best-approximation theory. Describe exact endpoint propagation as exact continued-fraction or exact-real computation; the programme-specific contribution is the rigorous dyadic bracket, explicit separation test, replayable certificate, and integer-translate consumer.",
+    "mathematical_interest": "Low as a new abstract theorem but substantial as a rigorous computational certificate: it replaces decimal evidence by an auditable exclusion of every reduced denominator below one exact integer and cleanly separates finite screening from irrationality.",
+    "reusable_scope": "Any real target with a rigorous rational interval, a forced endpoint continued-fraction prefix, and an explicit separation check; integer translates inherit the same reduced-denominator lower bound.",
+    "why_it_matters": "Across #68, #249, and #251, one auditable engine closes enormous but finite denominator ranges without inflating any instance into an endpoint claim. Target-specific arithmetic remains in the bracket; future work still needs a cofinal obstruction or another genuinely infinite argument."
+  },
+  "primary_sources": [
+    {
+      "id": "vuillemin_1990_exact_real_continued_fractions",
+      "title": "Exact Real Computer Arithmetic with Continued Fractions",
+      "author": "Jean E. Vuillemin",
+      "venue": "IEEE Transactions on Computers 39 (1990), 1087-1105",
+      "doi": "10.1109/12.57047",
+      "url": "https://doi.org/10.1109/12.57047",
+      "exact_anchor": "IEEE Xplore metadata and abstract, vol. 39 no. 8 (August 1990), pp. 1087-1105; the abstract describes continued fractions as a representation of computable reals with algorithms producing exact output terms.",
+      "supports": "Exact continued fractions are an established computational representation rather than a new certificate paradigm invented by this programme.",
+      "does_not_support": "The source-specific dyadic bracket, its 23369 forced quotients, the 39998-bit denominator, or the Erdős #251 transfer."
+    },
+    {
+      "id": "brauer_macon_1949_convergent_approximation",
+      "title": "On the Approximation of Irrational Numbers by the Convergents of Their Continued Fractions",
+      "author": "Alfred Brauer and Nathaniel Macon",
+      "venue": "American Journal of Mathematics 71 (1949), 349-361",
+      "doi": "10.2307/2372249",
+      "url": "https://doi.org/10.2307/2372249",
+      "exact_anchor": "The paper belongs to the classical literature on approximation properties of continued-fraction convergents.",
+      "supports": "Convergent-based denominator exclusion belongs to established best-approximation theory.",
+      "does_not_support": "The exact interval algorithm, the source-specific separation check, or any claim about the prime-gap series."
+    }
+  ],
+  "mechanism_comparison": {
+    "continued_fraction_cylinder": "A finite continued-fraction word describes a cylinder of reals. Propagating both exact rational endpoints until their floors disagree certifies membership in one such cylinder.",
+    "best_approximation_of_second_kind": "Once the relevant convergent is certified and equality with the preceding one is excluded, the standard denominator ordering of convergents rules out equality with every rational of smaller denominator.",
+    "exact_real_computation": "Vuillemin supplies a canonical computational antecedent for exact continued-fraction representations. The local implementation is narrower: it consumes a finite rational bracket and emits a checkable finite exclusion certificate.",
+    "integer_translation": "Adding an integer preserves a rational number's reduced denominator. The Lean identity S=2+G therefore transfers the certificate without new approximation theory.",
+    "local_delta": "The exact source-specific value is the conjunction of a Lean-backed tail envelope, a one-unit integer bracket at scale 80000, 23369 forced quotients, an explicit sign-separation check, a 39998-bit final denominator, and a replay receipt.",
+    "scale_predecessor": "The packet's first complete 4096-bit certificate excludes denominators through about 10^602 by the same every-convergent check. It is strictly subsumed by the 80000-bit certificate and should be cited as computational provenance, not adjudicated as a second theorem."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "exact real computer arithmetic continued fractions interval",
+      "continued fraction interval common prefix denominator lower bound",
+      "best approximation second kind convergent denominator exclusion",
+      "certified continued fraction rational denominator bound"
+    ],
+    "result": "The bounded search recovered classical convergent-approximation literature and Vuillemin's exact-real continued-fraction framework, but no reason to treat the elementary interval-to-denominator implication as a new theorem.",
+    "boundary": "Absence of an exact phrase match does not support novelty. The mechanism is a direct certificate-level assembly of standard ingredients; only the computed target-specific instance is distinct."
+  },
+  "claim_boundary": {
+    "allowed_wording": "An exact interval continued-fraction computation, combined with classical best approximation and an explicit separation test, certifies that any rational value of the dyadic prime series or its integer-translated prime-gap series has reduced denominator at least the displayed exact convergent Q, with Q greater than 10^12040.",
+    "forbidden_wording": [
+      "The series is irrational.",
+      "The computation gives an irrationality measure.",
+      "The partial quotients satisfy Gauss--Kuzmin or Levy asymptotics.",
+      "The continued-fraction theorem is new.",
+      "The computation is Lean-checked.",
+      "The result proves a statement about the distribution of prime gaps."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_an_irrationality_result",
+      "not_an_irrationality_measure",
+      "not_a_cofinal_denominator_obstruction",
+      "not_a_partial_quotient_distribution_theorem",
+      "not_a_Lean_formalization_of_continued_fraction_theory",
+      "not_erdos_251_solution"
+    ]
+  },
+  "source_and_replay_boundary": {
+    "lean_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+    "computation_sha256": "7a6a001f6b4e39b96f34e4103a2fe92921cc93ef541f33aa8fbe6e4eb2d58fc4",
+    "fresh_replay": "/tmp/codex-erdos251-certified-cf-20260824.json",
+    "replay_summary": "23369 forced quotients; bracket width 1; exact denominator Q has bit length 39998 and Q > 10^12040; separation verified",
+    "binary_exponent_correction": "Bit length 39998 means 2^39997 <= Q < 2^39998, not Q >= 2^39998.",
+    "receipt_freshness": "The stored receipt retains a historical research-packet hash; its arithmetic was independently replayed, while provenance refresh remains with the source owner."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/certified_dyadic_series_denominator_floor.card.json",
+      "effect": "Replace pending novelty language by standard continued-fraction mechanism plus source-specific exact certificate, and prefer denominator lower bound over an unqualified floor."
+    },
+    {
+      "consumer": "Erdős #251 proof fleet",
+      "effect": "Treat both finite screens as one completed scalable consumer. Do not recycle either denominator magnitude as evidence for irrationality; the live requirement is an infinite or cofinal obstruction."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the 4096-bit run as predecessor provenance and the 80000-bit run as its strict successor; keep auditability, exact replay, and the finite-versus-infinite boundary as the significance."
+    }
+  ],
+  "digestion_verdict": {
+    "programme_level_canonical_mechanism_family": "finite exact rational-denominator screening for the dyadic prime/gap series",
+    "disposition": "subordinate_under_existing_prime_gap_dyadic_tail_architecture_and_consolidate_both_finite_runs",
+    "expert_talk_value": "medium-high as a 6-8 minute certificate-and-boundary segment because the striking numerical scale creates a predictable overclaim risk",
+    "hard_step": "certifying common endpoint quotients and the separated-convergent best-approximation consumer, not generating many partial quotients",
+    "assurance_split": "Lean tail envelope and integer translate; exact Python interval certificate; classical external continued-fraction theorem; no independent human replay",
+    "canonicalization": "one scalable certificate object, with the 4096-bit run subordinate provenance and partial-quotient statistics excluded",
+    "public_ceiling": "finite denominator exclusion below the exact Q only; no irrationality evidence, irrationality measure, or prime-gap distribution claim",
+    "independent_comparator_interface_justified": false,
+    "comparator_reason": "No separate proposition firewall is needed for a target-specific finite integer; reconsider only if the generic interval-certificate theorem receives independent review or formalization.",
+    "paper_disposition": "technical appendix",
+    "paper_target_section": "Certified finite denominator screens",
+    "paper_supersession_relation": "The 80000-bit certificate supersedes the 4096-bit run as the displayed instance; retain the earlier run only as provenance and keep one finite-screen sentence in the main argument."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified analytic inputs and exact finite computation",
+    "output_stage": "human-review/significance digest",
+    "artifact": "certified_dyadic_series_denominator_floor card and route",
+    "human_understanding_delta": "Makes the certificate hinge, mixed assurance, corrected bit-length interpretation, and finite/infinite boundary explicit.",
+    "verification_state": "Lean plus exact Python plus classical external mathematics; independent replay pending",
+    "publication_or_review_state": "supporting private object pending independent replay",
+    "canonicalization_state": "two numerical runs consolidated into one method",
+    "unresolved_downstream_bottleneck": "cofinal actual-prime tail obstruction",
+    "next_stage_owner": "Refinery and proof fleet; Role 3 only for later release"
+  }
+}

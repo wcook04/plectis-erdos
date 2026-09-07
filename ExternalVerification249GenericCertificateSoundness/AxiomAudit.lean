@@ -1,0 +1,4 @@
+import ExternalVerification249GenericCertificateSoundness.Solution
+
+#print axioms Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_soundness
+#print axioms Erdos249257.ExternalVerification249GenericCertificateSoundness.generic_tail_period

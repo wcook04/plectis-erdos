@@ -1,4 +1,4 @@
-import Erdos249257.TropicalCurvatureCarry
+import Erdos257PeriodNoncollapse.TropicalCurvatureCarry
 import Mathlib.Tactic
 
 /-!

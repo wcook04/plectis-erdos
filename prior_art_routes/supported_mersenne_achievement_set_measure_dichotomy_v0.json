@@ -1,0 +1,252 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "supported_mersenne_achievement_set_measure_dichotomy",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_transported_Bernoulli_coordinate_face_law_with_exact_Lean_package",
+  "problem_id": "erdos_257",
+  "purpose": "Classify the exact finite/infinite support-complement measure dichotomy and separate its reusable formal package from standalone theorem novelty or rational-membership claims.",
+  "source_result_id": "volume_supportedMersenneAchievementSet_dichotomy",
+  "evidence_class": "Lean-checked exact Mersenne coordinate-face measure law with classical achievement-set and unique-coding antecedents; no new general measure theorem or endpoint claim.",
+  "closest_known_result": "Bartoszewicz--Filipczak--Prus-Wiśniowski supply the quickly-convergent achievement-set measure formula; Kovač--Tao supply strict Mersenne tails and unique coding; the arbitrary-support law is the transported fair Bernoulli cylinder calculation.",
+  "comparison_relation": "Routine Bernoulli cylinder calculus transported through injective Mersenne coding, with a source-specific Lean package and rational-fibre consumer; not a new achievement-set measure theorem.",
+  "exact_delta": "Finite forbidden coordinates have measure 2^(-|F|), while an infinite forbidden complement is null; this closes positive-measure orientation selection but leaves exceptional null orientations pointwise uncontrolled.",
+  "disconfirming_evidence": "Nullity is not emptiness; the cited classical sources do not state the exact restricted-support Mersenne package; no rational-membership classification or #257 resolution follows.",
+  "confidence_ceiling": "High for the Lean-checked coordinate-face law and its standard attribution; zero for pointwise exclusion of null fibres, novelty/priority, or an Erdős #257 solution.",
+  "claim_ceiling": "Lean checks the exact Mersenne coordinate-face measure law: finite forbidden F leaves measure 2^(-|F|), infinite forbidden coordinates leave measure zero, and the result is a reusable formalization of standard cylinder calculus with a #257 null-orientation consumer.",
+  "significance": "Medium reusable formalization value and high method-boundary value: it retires positive-measure selection while preserving the crucial null-versus-empty distinction.",
+  "hard_step": "Verify the injective coding-to-cylinder transport and the exact point where the rational-fibre consumer stops at measure zero.",
+  "open_boundary": "Exceptional null orientations remain uncontrolled; no pointwise nonexistence, rational-membership classification, irrationality, or #257 endpoint theorem follows.",
+  "bounded_expert_act": "Verify the coding-to-cylinder transport and null-versus-empty firewall against the cited achievement-set and Kovač--Tao hypotheses; do not search for a new general measure theorem.",
+  "reentry_trigger": "Reopen if the Mersenne coding, achievement-set measure source, or exceptional null-orientation analysis changes, or if a pointwise theorem upgrades the current measure-zero boundary.",
+  "adjudication_currentness": {
+    "status": "source_card_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "source_commit": "a28f1600ffe8e6e61de45701e1f4f15b8ddddbd8",
+      "source_sha256": "11b77a30e74ab9f9d1910f981fe50697dacc6ba784ebacc25a920ab61a50085a",
+      "reviewer_card_commit": "35c5dfad9088e9a3f4843d2fac0b7fd3d1db9334",
+      "reviewer_card_sha256": "1dcc95f18e13350ae2ae2bd5fd0d75f6bd8d4f2a843fbfa6f6306dd306a13848"
+    },
+    "claim_guard": "The exact finite/infinite coordinate-face law is Lean-checked and standard in mechanism; nullity is not emptiness, and no rational-membership or #257 endpoint claim is admitted.",
+    "reentry_trigger": "Reopen if the Mersenne coding, achievement-set measure source, or exceptional null-orientation analysis changes, or if a pointwise theorem upgrades the current measure-zero boundary."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/supported_mersenne_achievement_set_measure_dichotomy.card.json",
+    "source_commit": "a28f1600ffe8e6e61de45701e1f4f15b8ddddbd8",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+    "source_result_id": "volume_supportedMersenneAchievementSet_dichotomy",
+    "statement": "For the Mersenne achievement set restricted to allowed coordinates J, the Lebesgue measure is 2^(-|F|) when the forbidden complement is a finite set F and is zero when the complement is infinite."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos257_supported_mersenne_achievement_set_measure_dichotomy@source-a28f1600-card-35c5dfad",
+    "source_generation": {
+      "source_commit": "a28f1600ffe8e6e61de45701e1f4f15b8ddddbd8",
+      "source_sha256": "11b77a30e74ab9f9d1910f981fe50697dacc6ba784ebacc25a920ab61a50085a",
+      "reviewer_card_commit": "35c5dfad9088e9a3f4843d2fac0b7fd3d1db9334",
+      "reviewer_card_sha256": "1dcc95f18e13350ae2ae2bd5fd0d75f6bd8d4f2a843fbfa6f6306dd306a13848",
+      "parity_status": "source and card hashes current; no fresh replay claimed"
+    },
+    "evidence_class": "Lean-checked exact coordinate-face measure law plus classical achievement-set/unique-coding antecedents; no new general measure theorem or endpoint claim.",
+    "closest_known_result": "Bartoszewicz--Filipczak--Prus-Wiśniowski for quickly-convergent achievement-set measure; Kovač--Tao for strict Mersenne tails/unique coding; exact restricted-support law is transported fair Bernoulli cylinder calculus.",
+    "comparison_relation": "Routine Bernoulli cylinder law through injective Mersenne coding, packaged in Lean with a rational-fibre consumer; not a new general measure theorem.",
+    "exact_delta": "Finite forbidden F has measure 2^(-|F|); infinite forbidden complement is null, closing positive-measure orientation selection but not pointwise exceptional orientations.",
+    "disconfirming_evidence": "Nullity is not emptiness; cited sources do not state exact restricted-support package; no rational-membership classification or #257 solution.",
+    "confidence": {
+      "formal_measure_law": "high_internal_provisional",
+      "standardness": "high",
+      "pointwise_rational_fibre_exclusion": "none"
+    },
+    "significance": "Medium reusable formalization value and high method-boundary value: positive-measure selection is closed while null-versus-empty remains explicit.",
+    "claim_ceiling": "Lean checks the exact Mersenne coordinate-face measure law for finite and infinite forbidden coordinate sets; no pointwise nonexistence, irrationality, novelty, priority, or #257 endpoint claim.",
+    "hard_step": "Audit injective coding-to-cylinder transport and the null-versus-empty firewall.",
+    "open_boundary": "Exceptional null orientations remain uncontrolled.",
+    "bounded_expert_act": "Verify coding-to-cylinder transport and cited hypotheses; do not search for a new general measure theorem.",
+    "reentry_trigger": "Reopen on coding/source changes or a pointwise theorem upgrading measure-zero boundary."
+  },
+  "review_unit": {
+    "result_family": "erdos257_supported_mersenne_achievement_set_measure_dichotomy",
+    "exact_result_id": "volume_supportedMersenneAchievementSet_dichotomy",
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "formal_source_commit": "a28f1600ffe8e6e61de45701e1f4f15b8ddddbd8",
+      "reviewer_card": "docs/formal_math/reviewer_cards/supported_mersenne_achievement_set_measure_dichotomy.card.json"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "classification": {
+    "theorem_class": "coordinate_face_measure_classification_for_an_injectively_coded_binary_achievement_set",
+    "novelty_class": "routine_fair_Bernoulli_cylinder_measure_law_transported_through_the_Mersenne_digit_coding",
+    "formalization_class": "Lean_checked_exact_specialization_and_problem_specific_null_orientation_consumer",
+    "priority_claim": "none",
+    "nearest_prior_work": [
+      "Bartoszewicz, Filipczak, and Prus-Wiśniowski (2013), Theorem 21.10, supplies the general quickly-convergent achievement-set measure formula from which the full Mersenne set has measure one.",
+      "Kovač and Tao (2024), Remarks 12-13, supply the strict-tail and unique-coding context for the fixed-base Mersenne series.",
+      "The finite/infinite coordinate-face dichotomy is the elementary cylinder law for a fair Bernoulli product: fixing m coordinates costs 2^(-m), and fixing infinitely many prescribed coordinates has probability zero."
+    ],
+    "attribution": "Attribute the full achievement-set measure formula to the classical subsum-set literature and the Mersenne strict-tail/unique-coding premise to Kovač--Tao. Describe the restricted-support dichotomy as standard Bernoulli cylinder calculus transported through the coding; credit the local work for the exact Lean package and #257 consumer, not for a new general measure theorem.",
+    "mathematical_interest": "The law identifies Lebesgue measure on the fat Mersenne Cantor set with fair binary cylinder mass on every coordinate face. Its striking sharpness is that the positions of finitely many forbidden digits do not matter, while any infinite forbidden set destroys all positive measure.",
+    "reusable_scope": "Binary achievement sets with injective coding, measurable disjoint translated digit faces, equal face measures, and a known full-set normalization. With unequal digit probabilities, replace the dyadic factor by the corresponding cylinder product.",
+    "why_it_matters": "The result closes positive-measure selection as a route to choosing an orientation in a rational two-copy #257 fibre, while preserving the crucial distinction that a null set may still contain exceptional points."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine transported Bernoulli-cylinder measure calculus with a high-value semantic boundary: infinite nullity is not pointwise emptiness.",
+    "slow_down_at": "The use of injective Mersenne coding to make coordinate faces disjoint, the squeeze from finite forbidden sets to an infinite forbidden complement, and the exact point where the rational-fibre consumer stops at measure zero.",
+    "automation_can_establish": [
+      "Lean topology, measurability, disjointness, translation, and finite/infinite induction declarations",
+      "The dyadic face-mass calculation and source/card parity",
+      "Finite coordinate examples used as regression evidence"
+    ],
+    "human_judgment_required": [
+      "Whether the restricted-support law is best presented as a standard cylinder corollary or as a reusable formal interface",
+      "Whether the cited achievement-set and Kovač--Tao sources supply exactly the needed coding hypotheses",
+      "Whether any pointwise argument can control the exceptional null orientations without silently upgrading measure zero to emptiness"
+    ],
+    "review_act": "One bounded expert act: verify the coding-to-cylinder transport and the null-versus-empty firewall. Do not spend review effort searching for a new general measure theorem or treating the card as a #257 endpoint."
+  },
+  "primary_sources": [
+    {
+      "id": "bartoszewicz_filipczak_prus_wisniowski_2013_subsums",
+      "title": "Topological and algebraic aspects of subsums of series",
+      "authors": [
+        "Artur Bartoszewicz",
+        "Marek Filipczak",
+        "Franciszek Prus-Wiśniowski"
+      ],
+      "venue": "Traditional and Present-Day Topics in Real Analysis (2013), 345-369",
+      "doi": "10.18778/7525-971-1.21",
+      "url": "https://dspace.uni.lodz.pl/xmlui/handle/11089/28723",
+      "exact_anchor": "Theorem 21.10, printed page 350 (PDF page 6): for a quickly convergent positive series, the achievement set is Cantor and its Lebesgue measure is lim_n 2^n r_n.",
+      "supports": "The general quantitative measure formula and therefore the full Mersenne normalization after the elementary squeeze.",
+      "does_not_support": "It does not state the arbitrary-support Mersenne face dichotomy or the rational-fibre consumer."
+    },
+    {
+      "id": "kovac_tao_2024_ahmes_series",
+      "title": "On several irrationality problems for Ahmes series",
+      "authors": [
+        "Vjekoslav Kovač",
+        "Terence Tao"
+      ],
+      "venue": "arXiv:2406.17593 (2024)",
+      "url": "https://arxiv.org/abs/2406.17593",
+      "local_annex": "annexes/arxiv-2406-17593-kovac-tao-ahmes-series/extracted.md",
+      "exact_anchors": [
+        "Remark 12: the fast-series condition gives Cantor topology and unique coding.",
+        "Remark 13: for fixed t >= 2, the tail after n is strictly smaller than 1/(t^n-1)."
+      ],
+      "supports": "The strict Mersenne tail and unique binary coding that make digit faces disjoint.",
+      "does_not_support": "It does not state the full-set measure-one formula, restricted-support measure law, or rational-fibre nullity."
+    },
+    {
+      "id": "bartoszewicz_glab_marchwicki_2018_recovering",
+      "title": "Recovering a purely atomic finite measure from its range",
+      "authors": [
+        "Artur Bartoszewicz",
+        "Szymon Głąb",
+        "Jacek Marchwicki"
+      ],
+      "venue": "Journal of Mathematical Analysis and Applications 467 (2018), 825-841",
+      "url": "https://im0.p.lodz.pl/~sglab/szymon/recovering.pdf",
+      "exact_anchor": "Example 4.5, printed page 8 (PDF page 7), explicitly applies the formula lambda(A(x_n))=lim_n 2^n r_n=1 to a quickly convergent example.",
+      "supports": "A primary worked use of the same classical limit formula.",
+      "does_not_support": "The Mersenne specialization or arbitrary coordinate restrictions."
+    }
+  ],
+  "mechanism_comparison": {
+    "achievement_set_measure": "The 2013 limit theorem supplies the ambient normalization lambda(E_N)=1 for Mersenne weights after an elementary squeeze.",
+    "Bernoulli_cylinder_law": "Injective coding and disjoint equal translates identify every finite coordinate face with a fair binary cylinder of mass 2^(-m). An infinite prescribed zero set lies inside cylinders of arbitrarily small mass.",
+    "local_delta": "Lean checks all topology, measurability, disjointness, translation, finite induction, infinite-complement squeeze, and the rational-support consumer in one explicit source chain.",
+    "scope_boundary": "The numerical dyadic law is not automatic for overlapping achievement sets, noninjective codings, or unequal digit branches."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "achievement set restricted coordinates measure subseries",
+      "achievement set finite codimension measure",
+      "Mersenne achievement set support complement measure",
+      "quickly convergent achievement set measure subseries",
+      "Bernoulli product cylinder fixing infinitely many coordinates zero"
+    ],
+    "result": "The bounded search recovered the general quickly-convergent measure formula and broader subsum-set literature, but no primary source stating this exact arbitrary-support Mersenne dichotomy. The theorem nevertheless remains routine: its proof is the elementary fair-cylinder calculation once full measure and unique coding are known.",
+    "boundary": "No exact phrase match does not support novelty or priority. The correct classification follows from the mechanism, not from search absence."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Lean checks the exact coordinate-face measure law for the Mersenne achievement set: a finite forbidden set F leaves measure 2^(-|F|), while infinitely many forbidden coordinates leave measure zero. This is a reusable formalization of standard Bernoulli cylinder calculus, with a #257 null-orientation consumer.",
+    "forbidden_wording": [
+      "This is a new achievement-set measure theorem.",
+      "Kovač and Tao proved the restricted-support dichotomy.",
+      "Lebesgue-null orientation space is empty.",
+      "The result excludes every rational Mersenne subsum.",
+      "The measure dichotomy solves Erdős Problem 257."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_new_general_measure_theorem",
+      "not_a_pointwise_nonexistence_theorem",
+      "not_a_rational_membership_classification",
+      "not_a_solution_of_erdos_257"
+    ]
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "supported_mersenne_achievement_set_measure_dichotomy",
+    "human_understanding_delta": "The finite face law, infinite nullity, and rational-fibre consumer are one reusable object; nullity remains distinct from pointwise exclusion.",
+    "verification_state": "Five source-pinned Lean declarations at a28f1600ffe8e6e61de45701e1f4f15b8ddddbd8; no fresh replay is claimed.",
+    "publication_or_review_state": "Supporting talk, paper disposition, and public-card-only recommendation are ready; no independent review is asserted.",
+    "canonicalization_state": "One support-measure mechanism beneath the cofinal-skip endpoint, not parallel #257 progress.",
+    "unresolved_downstream_bottleneck": "Pointwise control of exceptional null orientations.",
+    "next_stage_owner": "#257 proof owners, Mathematics Refinery, and Role 3."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_257.md",
+    "section": "Coordinate faces: why positive-measure selection cannot resolve a rational fibre",
+    "canonical_mechanism_family": "canonical greedy cofinal-skip membership with geometric support-fibre boundaries",
+    "relation": "Subordinate to the cofinal-skip endpoint and consolidate finite deletion, infinite nullity, and the rational-fibre consumer.",
+    "understanding_delta": "Rational greedy fibres are null orientation spaces, not proven empty sets.",
+    "evidence_boundary": "Five Lean declarations; no pointwise fibre theorem or #257 solution.",
+    "hard_step": "Control exceptional null orientations.",
+    "meaningful_failed_route": "Infer emptiness from measure zero.",
+    "open_remainder": "Exceptional orientations and Erdős #257 remain open."
+  },
+  "release_disposition": {
+    "value": "public_card_only",
+    "reason": "A reusable structural card; the cofinal-skip equivalence remains the only #257 endpoint firewall.",
+    "comparator_advisory": "No independent Comparator interface."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_coding_measure_or_exceptional_fibre_result",
+    "reentry_condition": "Re-enter only if the injective Mersenne coding, achievement-set measure source, or exceptional null-orientation analysis changes, or if a pointwise theorem upgrades the current measure-zero boundary.",
+    "do_not_redo": "Do not repeat the fair Bernoulli cylinder calculation, full-set measure normalization, or Kovač--Tao tail attribution; those are already standard and source-bound.",
+    "open_bottleneck": "Measure zero closes positive-measure selection but does not prove the rational fibre empty. Pointwise control of exceptional orientations remains the only mathematical gap in this route.",
+    "owner": "#257 proof owners for exceptional-fibre control; Mathematics Refinery and Role 3 for public-card assimilation; Novelty Observatory only on changed source generation."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/supported_mersenne_achievement_set_measure_dichotomy.card.json",
+      "effect": "Expose the exact theorem, standard mechanism, formalization value, and null-versus-empty boundary to reviewers."
+    },
+    {
+      "consumer": "Erdős #257 proof fleet",
+      "effect": "Treat positive-measure orientation selection as closed for rational fibres; do not infer that the remaining null fibre has no points."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Canonicalise as a reusable formalized coordinate-face law, with classical achievement-set and Kovač--Tao attribution adjacent and no novelty inflation."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The arbitrary-support Mersenne measure dichotomy is adjudicated as standard Bernoulli coordinate-face calculus transported through unique coding, with an exact Lean package and rational-fibre method-boundary consumer.",
+    "do_not_redo": [
+      "Do not reopen the #257 endpoint proof from the Observatory lane.",
+      "Do not repeat the already-settled full-set measure-one novelty search.",
+      "Do not treat nullity as emptiness or Comparator acceptance as significance evidence.",
+      "Do not attribute the restricted-support theorem to Kovač--Tao."
+    ],
+    "ranked_open_throats": [
+      "irrational_tsum_primeDyadicTerm_iff_primeGap (Erdős 251): classify exact integer-translate equivalence as reformulation rather than number-theoretic progress.",
+      "exists_totientDyadicSectionBasis (Erdős 249): separate routine finite-dimensional basis extraction from any sequence-specific structural delta.",
+      "finite_period_noncollapse_rat_den_interface (Erdős 257): semantic review only, without reviving obsolete integration work."
+    ],
+    "sibling_claim_map": "Proof owners retain every source module. This rotation owns only the new reviewer card and prior-art route; no active #257 source claim is touched.",
+    "validation_state": "Card JSON and one-page render plus route JSON are the focused validation floor; no Lean build is required because the pinned source is unchanged.",
+    "next_wake_condition": "After scoped landing, rotate to the #251 integer-translate equivalence unless a newer high-value Refinery handoff arrives."
+  }
+}

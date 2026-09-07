@@ -1,0 +1,234 @@
+version: v0.4
+project:
+  name: 'Erdős #269: the cofinal local-window escape is equivalent to irrationality
+    of the three-prime running-LCM value'
+  description: >-
+    The actual cofinal local-window escape for the {2,3,5} dyadic shell orbit is
+    equivalent to irrationality of the running-LCM value, with no hypotheses.
+    Write H(x) = 2^(log 2 x) 3^(log 3 x) 5^(log 5 x) for the three-prime running-LCM
+    height, let the dyadic shell at index a be the set of exponent triples (i,j,k)
+    with 2^a <= 2^i 3^j 5^k < 2^(a+1), let the shell mass be the sum of 1/H(2^i 3^j 5^k)
+    over that shell, and let S(a) be the sum of the shell masses from index a onward.
+    The actual radix word b(a) is 2 times 3 or 1 according to whether a pure 3-power
+    lies strictly inside the dyadic block, times 5 or 1 according to whether a pure
+    5-power does; the actual ordered digit m(a) is the shell cardinality corrected by
+    the two threshold counts with the suffix coefficients 10 and 4 when the 3-jump
+    precedes the 5-jump and 2 and 12 in the reverse order. The escape proposition at
+    a short bound sb asserts that for every positive B coprime to 30 and every
+    starting index there are lo at least that index and a positive window length len
+    for which the window base is nonzero and the least positive residue of
+    -B times the window forcing modulo the absolute window base exceeds sb B (lo+len);
+    the actual escape is this proposition at the radix word b, the digit m, and the
+    short bound B times 90 (n+1)^2. Eight declarations are compared. The actual escape
+    holds if and only if S(0) is irrational, and if and only if S(1) is irrational.
+    Irrationality of S(1) implies the escape at every short bound sb admitting a
+    function c with sb B n at most c B (n+1)^2, which covers the actual short bound
+    and every rescaling and sharpening of it inside the quadratic family. A rational
+    value S(1) = p/q with q positive yields a positive B coprime to 30, a finite onset
+    a0, and an integer sequence d satisfying d(n+1) = b(n) d(n) - B m(n),
+    0 < d(n), and |d(n)| at most B times 90 (n+1)^2 for every n at least a0. The
+    normalized state X(a) = (H(2^a)/2) S(a) satisfies the exact window identity
+    X(lo+len) = W X(lo) - F for the integer window base W and window forcing F of b
+    and m. If that residue at (lo, len) is at most K and K is at least
+    B times 90 (lo+len+1)^2, then B X(lo) lies within K / 2^len of an integer, for
+    every K meeting the width condition and with no growth condition on K. For all c
+    and lo there is a positive len with c (lo+len+1)^2 < 2^len. The equivalence
+    establishes that the escape proposition is exactly as strong as the target, so
+    proving it is proving Erdős #269. It proves neither side. Erdős #269 remains open,
+    and nothing here bounds, computes, or decides the irrationality of S(0).
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A05
+  - 11B83
+sources:
+- title: Window-escape equivalence for the three-prime running-LCM value
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+  note: Real window identity for the genuine normalized state, exact residue pinning
+    at an arbitrary short bound, elementary exponential-over-quadratic window length,
+    the rationality-to-carry bridge, and the two-directional equivalence between the
+    actual cofinal local-window escape and irrationality of the value.
+- title: 'Erdős Problem #269'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/269
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status.
+- title: Running-LCM factorisation identity for a finite prime set
+  authors:
+  - Steve Fan
+  id: https://www.erdosproblems.com/269
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+  note: The identity expressing the running least common multiple of a smooth prefix
+    as the product of the maximal pure prime powers is due to Steve Fan in the
+    erdosproblems.com/269 comment of 26 June 2026. It supplies the reading of H as a
+    running LCM. No declaration compared here is that identity.
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Eight compared theorems expose the headline equivalence against S(0), the
+    equivalence against S(1), the forward implication from irrationality to the actual
+    escape, the quadratic-family form of that implication, the rationality-to-carry
+    bridge, the real window identity for the genuine normalized state, the residue
+    pinning inequality at an arbitrary admissible short bound, and the elementary
+    exponential-over-quadratic window length. Challenge.lean contains eight deliberate
+    specification sorries; the proof-bearing Solution imports the checked source.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 8
+  axiom_audit_status: focused_lean_and_axiom_audit_pending
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification269WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value
+    file: Solutions/ExternalVerification269WindowEscapeEquivalence.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269WindowEscapeEquivalence/comparator.json
+    canonical_claim_status: source_proved_wrapper_axiom_audit_pending
+    local_proof_provenance: ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean
+    novelty_status: unassessed
+    contribution_class: unconditional equivalence between a named producer and the
+      target
+    boundary: Proves an equivalence of two propositions and proves neither of them.
+      No irrationality or transcendence conclusion.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification269WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic
+    file: Solutions/ExternalVerification269WindowEscapeEquivalence.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269WindowEscapeEquivalence/comparator.json
+    canonical_claim_status: source_proved_wrapper_axiom_audit_pending
+    local_proof_provenance: ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean
+    novelty_status: unassessed
+    contribution_class: quadratic-family form of the forward implication
+    boundary: Requires a quadratic dominating function for the short bound. Says
+      nothing about short bounds of higher growth.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification269WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat
+    file: Solutions/ExternalVerification269WindowEscapeEquivalence.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269WindowEscapeEquivalence/comparator.json
+    canonical_claim_status: source_proved_wrapper_axiom_audit_pending
+    local_proof_provenance: ErdosProblems/Erdos269/RationalityCarryBridge.lean
+    novelty_status: unassessed
+    contribution_class: unconditional rationality-to-carry bridge
+    boundary: Conditional on the value being rational. Produces a carry sequence and
+      excludes nothing on its own.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification269WindowEscapeEquivalence.near_integer_of_residue_le_general
+    file: Solutions/ExternalVerification269WindowEscapeEquivalence.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269WindowEscapeEquivalence/comparator.json
+    canonical_claim_status: source_proved_wrapper_axiom_audit_pending
+    local_proof_provenance: ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean
+    novelty_status: unassessed
+    contribution_class: exact residue pinning at an arbitrary admissible short bound
+    boundary: Requires the short bound to dominate the state width. A finite
+      approximation statement with no irrationality conclusion.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification269WindowEscapeEquivalence.trueNormalizedState_window
+    file: Solutions/ExternalVerification269WindowEscapeEquivalence.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269WindowEscapeEquivalence/comparator.json
+    canonical_claim_status: source_proved_wrapper_axiom_audit_pending
+    local_proof_provenance: ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean
+    novelty_status: unassessed
+    contribution_class: exact real window identity for the genuine normalized state
+    boundary: A structural identity holding for every window. No irrationality
+      conclusion.
+    literature_dependencies: []
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+  - method: other
+    models: []
+    framework: Comparator with NanoDa and Landrun
+    tool_setup: Positive and deliberate-negative replay pending a supported runner
+fidelity:
+  divergences: The Challenge copies the literal source definitions of the shell orbit,
+    the compressed radix word, the ordered block digit, the window algebra, and the
+    escape proposition, together with the eight exact source conclusions. It adds no
+    analytic or irrationality consequence.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Definitional chain, equivalence direction, quadratic domination hypothesis,
+    carry-bridge hypotheses, window identity, residue pinning width condition, and
+    open-problem boundary reviewed. Focused Lean and axiom-audit checks and Comparator
+    replay remain pending.
+alignment:
+  namespace: Erdos249257.ExternalVerification269WindowEscapeEquivalence
+  statements:
+  - source: ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+  - source: ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+  - source: ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+  - source: ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_quadratic
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+  - source: ErdosProblems.Erdos269.exists_reducedCarry_of_value_eq_rat
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+  - source: ErdosProblems.Erdos269.trueNormalizedState_window
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.trueNormalizedState_window
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+  - source: ErdosProblems.Erdos269.near_integer_of_residue_le_general
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.near_integer_of_residue_le_general
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+  - source: ErdosProblems.Erdos269.exists_pow_gt_quadratic
+    lean: Erdos249257.ExternalVerification269WindowEscapeEquivalence.exists_pow_gt_quadratic
+    module: ExternalVerification269WindowEscapeEquivalence/Challenge.lean
+    status: exact-transport-axiom-audit-pending
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue;
+  Steve Fan for the running-LCM factorisation identity recorded on the catalogue page.

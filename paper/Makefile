@@ -8,26 +8,18 @@
 # Notes: one short standalone note per problem in the ErdosProblems expansion
 # library. Every name here must appear exactly once in
 # docs/publication_contract.json.
-PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
-  cold-clone-to-proof-receipt open-source-mathematics-strategy \
-  erdos249-totient-reasoning-surface \
-  erdos257-mersenne-reasoning-surface \
-  erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
-  erdos-68-factorial-denominator-irrationality \
-  erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
-  erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
-  erdos-1049-rational-base-lambert
-NOTES = erdos-68-factorial-denominator-irrationality \
-  erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
-  erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
-  erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
-  erdos-1049-rational-base-lambert
+PAPERS := $(shell python3 ../scripts/export_paper_corpus.py --native-targets)
+ifeq ($(strip $(PAPERS)),)
+$(error The public paper registry could not provide valid native build targets)
+endif
+NOTES := $(shell python3 ../scripts/export_paper_corpus.py --native-targets --form "Problem note")
 ALIASES = module-aliases.tex
 PREAMBLE = problem-note-preamble.tex
 REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
-REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
-REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
+REASONING_PAPERS = $(filter %-reasoning-surface,$(PAPERS))
+REASONING_PARTS = $(wildcard reasoning-parts/*/*.tex)
+REASONING_NOTE_SOURCES = $(NOTES:%=%.tex)
 
 .PHONY: all check clean sync-root
 
@@ -48,14 +40,15 @@ check: all
 	python3 $(REASONING_ASSEMBLER) --check
 	python3 ../scripts/check_rendered_paper_boundary.py
 	python3 ../scripts/check_problem_note_sources.py
+	python3 ../scripts/check_public_paper_links.py
 
 # The public reasoning manuscripts are flat generated projections. Their
 # authored parts remain small enough for focused mathematical review.
-erdos249-totient-reasoning-surface.tex: $(REASONING_249_PARTS) $(REASONING_ASSEMBLER)
-	python3 $(REASONING_ASSEMBLER) --write --paper 249
+$(REASONING_PAPERS:%=%.tex): $(REASONING_PARTS) $(REASONING_NOTE_SOURCES) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write
 
-erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
-	python3 $(REASONING_ASSEMBLER) --write --paper 257
+# Every paper consumes the common link and typography macros.
+$(PAPERS:%=%.pdf): paper-house-style.sty
 
 # The notes share one preamble, so a change there rebuilds all of them.
 $(NOTES:%=%.pdf): $(PREAMBLE)
@@ -66,7 +59,7 @@ $(NOTES:%=%.pdf): $(PREAMBLE)
 $(ALIASES): erdos249-257-main-paper.tex ../scripts/build_paper_module_aliases.py
 	python3 ../scripts/build_paper_module_aliases.py
 
-%.pdf: %.tex $(ALIASES)
+%.pdf: %.tex $(ALIASES) paper-house-style.sty
 	@if command -v tectonic >/dev/null 2>&1; then \
 	  tectonic $< ; \
 	else \

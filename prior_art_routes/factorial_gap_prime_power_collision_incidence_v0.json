@@ -1,0 +1,268 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "factorial_gap_prime_power_collision_incidence",
+  "source_result_ids": [
+    "quotient_cancelled_collision_cap_reduction",
+    "upper_hit_normalized_collision_multiplicity_transfer",
+    "normalized_collision_hit_count_consumer",
+    "normalized_collision_repeated_hit_layer_count",
+    "normalized_collision_prime_power_hit_spacing_witness",
+    "endpoint_prime_normalized_collision_block_diameter_ceiling",
+    "universal_endpoint_prime_power_hit_packing",
+    "endpoint_prime_power_hit_count_packing_bound",
+    "endpoint_prime_truncated_repeated_hit_layers",
+    "endpoint_prime_anchor_free_incidence_cutoff",
+    "base_omitted_prime_anchor_free_incidence_cutoff",
+    "universal_prime_power_spacing_and_global_block_diameter_ceiling",
+    "wilson_reflection_normalized_collision_and_full_block_incidence_bridge",
+    "collision_core_prime_power_hit_characterization",
+    "incremental_pairwise_collision_core_recurrence",
+    "collisionCore_div_base_mul_denominatorLcm_dvd_denominatorProd",
+    "factorialBlock_unique_owner_projection_lcm_ceiling",
+    "factorialBlock_not_unique_owner_projection_of_lcm_ge",
+    "adjacent_unit_carry_window_prime_power_collision_law",
+    "adjacent_unit_carry_two_step_factorization_no_go"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_established_factorial_congruence_incidence_theme_with_problem_specific_exact_formalization",
+  "problem_id": "erdos_68",
+  "adjudication_currentness": {
+    "status": "source_card_packet_current_and_claim_bound",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026",
+      "research_packet_commit": "4ee2d936d21b91a1b78165714a708ef312cec3e3",
+      "research_packet_sha256": "9e0a26a1d04b37e8ca977fd93b750a8d367de9d6e58b0446a80962ab84c1328c",
+      "reviewer_card_commit": "32d138d538a3fc0730a83eb3e6172269cb86a0ea",
+      "reviewer_card_sha256": "e92faa63ed45da067f0fda73126502edfd8a043c00f1f7e7be9b9a07c6288677"
+    },
+    "claim_guard": "This is a source-specific incidence and one-owner method boundary, not a weighted global closure, broad collision-method no-go, Erdős #68 solution, or priority claim.",
+    "reentry_trigger": "Re-enter on formal-source, packet/card generation, primary hit-count update, or a genuine weighted aggregate estimate."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The local valuation and packing interfaces are exact, but the decisive weighted aggregation over moving prime-power layers is absent.",
+    "slow_down_at": "Keep the one-owner LCM obstruction separate from the unresolved multi-owner and weighted endpoint problem; do not promote local hit sparsity to a global product bound.",
+    "automation_can_establish": [
+      "Named Lean incidence, spacing, packing, and one-owner declarations at the pinned source snapshot",
+      "Source/card/packet hash parity and exact result-family joins",
+      "The ordinary LCM comparison when its primary-source hypotheses are restated"
+    ],
+    "human_judgment_required": [
+      "Whether the normalized incidence packaging has a standard external name beyond factorial-congruence hit counts",
+      "Whether the primary hit-count estimates can be aggregated without losing endpoint scale",
+      "Which weighted or projection-sensitive mechanism could address the remaining #68 bottleneck"
+    ],
+    "review_act": "One bounded expert act: audit the valuation converse and test a weighted summation of the primary hit-count bounds against the exact layer-cardinality formula."
+  },
+  "purpose": "Consolidate local collision incidence, its product-to-LCM accounting, and the resulting one-owner architecture obstruction into one semantic object; attribute the ambient factorial-congruence estimates and preserve the gap to the unresolved weighted endpoint problem.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/factorial_gap_prime_power_collision_incidence.card.json",
+    "source_commit": "86e3956ef9bce3f574aaf3fb7f3a1d726cf7736e",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+    "companion_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+    "adjacent_window_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+    "source_result_ids": [
+      "quotient_cancelled_collision_cap_reduction",
+      "upper_hit_normalized_collision_multiplicity_transfer",
+      "normalized_collision_hit_count_consumer",
+      "normalized_collision_repeated_hit_layer_count",
+      "normalized_collision_prime_power_hit_spacing_witness",
+      "endpoint_prime_normalized_collision_block_diameter_ceiling",
+      "universal_endpoint_prime_power_hit_packing",
+      "endpoint_prime_power_hit_count_packing_bound",
+      "endpoint_prime_truncated_repeated_hit_layers",
+      "endpoint_prime_anchor_free_incidence_cutoff",
+      "base_omitted_prime_anchor_free_incidence_cutoff",
+      "universal_prime_power_spacing_and_global_block_diameter_ceiling",
+      "wilson_reflection_normalized_collision_and_full_block_incidence_bridge",
+      "collision_core_prime_power_hit_characterization",
+      "incremental_pairwise_collision_core_recurrence",
+      "collisionCore_div_base_mul_denominatorLcm_dvd_denominatorProd",
+      "factorialBlock_unique_owner_projection_lcm_ceiling",
+      "factorialBlock_not_unique_owner_projection_of_lcm_ge",
+      "adjacent_unit_carry_window_prime_power_collision_law",
+      "adjacent_unit_carry_two_step_factorization_no_go"
+    ],
+    "ordinary_source_derived_result_ids": [
+      "factorial_gap_lcm_lower_bound"
+    ]
+  },
+  "classification": {
+    "ambient_framework": "factorial_congruence_hit_multiplicity_modulo_primes_and_prime_powers",
+    "local_formal_delta": "exact second-valuation-layer interpretation after distinguished-base normalization, with valuation converse, spacing, packing, reflection, product-over-lcm, and one-owner-ceiling consumers",
+    "source_derived_global_delta": "Garaev--Luca--Shparlinski Theorem 12 plus Stirling summation gives factorial-gap LCM growth; combined with a separately Lean-checked necessary ceiling, it eliminates the one-owner scalar-localizer architecture asymptotically.",
+    "priority_claim": "none",
+    "recommended_terminology": "prime-power factorial-congruence incidence and packing",
+    "discouraged_terminology": [
+      "new factorial-congruence estimate",
+      "collision-core asymptotic theorem",
+      "weighted endpoint bound",
+      "all collision methods are impossible",
+      "Erdos 68 breakthrough"
+    ],
+    "promotion_verdict": "one_semantic_method_boundary_card; do_not_promote_packet_interfaces_individually",
+    "why_it_matters": "It converts the collision core into an auditable repeated-incidence object and identifies two exact architectural nontransfers: post-assumption adjacent-window collision arithmetic telescopes to the universal reduced-fraction bound, while factorial-gap LCM growth eliminates a scalar one-owner localizer but not a raw-state, multi-owner, weighted, or residue-sensitive mechanism.",
+    "semantic_consolidation": "The adjacent-carry telescoping no-go, prime-power converse, product-over-LCM theorem, and LCM-growth one-owner obstruction are interfaces of this same collision-incidence object. They sharpen its auditability but do not create separate result claims."
+  },
+  "primary_sources": [
+    {
+      "id": "garaev_luca_shparlinski_2004",
+      "title": "Character Sums and Congruences with n!",
+      "authors": ["Moubariz Z. Garaev", "Florian Luca", "Igor E. Shparlinski"],
+      "venue": "Transactions of the American Mathematical Society 356 (2004), 5089-5102",
+      "doi": "10.1090/S0002-9947-04-03612-8",
+      "url": "https://arxiv.org/abs/math/0403422",
+      "exact_anchor": "arXiv v1, Theorem 12, p. 16",
+      "supports": "For a fixed nonzero residue modulo a prime, the number of factorial hits in an interval of length N is O(N^(2/3)).",
+      "does_not_support": "No normalized collision core, prime-power valuation identity, weighted endpoint residue, or irrationality conclusion."
+    },
+    {
+      "id": "luca_shparlinski_2005",
+      "title": "Prime divisors of shifted factorials",
+      "authors": ["Florian Luca", "Igor E. Shparlinski"],
+      "venue": "Bulletin of the London Mathematical Society 37 (2005), 809-817",
+      "doi": "10.1112/S0024609305004923",
+      "url": "https://doi.org/10.1112/S0024609305004923",
+      "exact_anchor": "printed p. 811, Lemmas 4-5; printed p. 812, equation (2); printed p. 816, final valuation remark",
+      "supports": "Prime and general-modulus hit-count bounds; with q=p^e, direct prime-power reuse control and aggregate p-adic load estimates.",
+      "does_not_support": "No endpoint-weighted CRT nonconcentration, normalized collision-cap theorem, or cofinal carry failure."
+    },
+    {
+      "id": "klurman_munsch_2015",
+      "title": "Distribution of factorials modulo p",
+      "authors": ["Oleksiy Klurman", "Marc Munsch"],
+      "venue": "arXiv:1505.01198v1 (2015)",
+      "url": "https://arxiv.org/abs/1505.01198",
+      "exact_anchor": "Lemma 2.4, PDF pp. 4-5",
+      "supports": "A short-interval O(N^(3/4)) bound for solutions of (n!)^2=P(n) mod p; P=1 bounds plus/minus-one factorial hits.",
+      "does_not_support": "It is weaker for the present fixed-prime multiplicity purpose than the assimilated O(N^(2/3)) bound and gives no weighted global closure."
+    }
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "factorial congruence n! equals 1 modulo prime number of solutions interval",
+      "prime power divisibility n! minus 1 hit count",
+      "factorial residues repeated hits modulo p^a",
+      "lcm collision core repeated valuation factorial"
+    ],
+    "result": "The reviewed primary sources contain the ambient hit-count and valuation-control mechanisms. No verbatim normalized collision-core formulation or printed factorial-gap LCM corollary was located; the latter is derived explicitly from Theorem 12 and Stirling.",
+    "boundary": "The non-location supports only problem-specific packaging language; it does not establish novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The Lean source gives an exact problem-specific interface from normalized collision valuations to repeated prime-power factorial-congruence hits, together with elementary spacing, packing, product-to-LCM, and one-owner-ceiling bounds. Garaev--Luca--Shparlinski multiplicity plus Stirling yields the ordinary source-derived LCM comparison that retires this one scalar architecture.",
+    "forbidden_wording": [
+      "The packet contains thirteen novel collision theorems.",
+      "The packing bound is a new general factorial-congruence estimate.",
+      "Local hit sparsity bounds the weighted collision product sufficiently.",
+      "The one-owner LCM obstruction rules out multi-owner, residue-sensitive, or moving-factor constructions.",
+      "Prime-power collision layers introduced only after assuming consecutive unit carries can contradict that pair.",
+      "Wilson reflection supplies the required cofinal family.",
+      "The mechanism proves Erdos 68."
+    ]
+  },
+  "release_advisory": {
+    "significance_grade": "high_method_boundary_value_low_standalone_novelty",
+    "programme_hierarchy": "Subordinate beneath erdos68_unit_factor_scale_split and factorial_gap_cofinal_carry_irrationality_criterion.",
+    "comparator": "No independent interface advised. Preserve the mixed assurance split in the paper: Lean local stack versus external theorem plus ordinary asymptotic derivation.",
+    "paper": "Route-killing boundary in 'Collision incidence and the one-owner LCM boundary'; do not promote local interfaces or the lcm corollary as separate results.",
+    "shortlist": "Do not admit; the Problem 68 cofinal-carry endpoint remains the sole flagship."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/factorial_gap_prime_power_collision_incidence.card.json",
+      "effect": "Represent the local packet interfaces, factorial-gap LCM growth, and the one-owner scalar-localizer obstruction as one source-backed semantic mechanism."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Promotion verdict: one method-boundary object; consolidate local corollaries and retain multi-owner weighted products, complementary residues, and moving factors as the live gap."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Claim ceiling: exact local repeated-incidence formalization in an established factorial-congruence theme; no new asymptotic estimate and no irrationality progress claim. Exact locators are the card inspection rail and the three primary-source anchors above."
+    },
+    {
+      "consumer": "erdos68_unit_factor_scale_split",
+      "effect": "Treat as the scalar one-owner failure boundary beneath the moving-factor conditional consumer; preserve multi-owner, weighted, and residue-sensitive alternatives."
+    },
+    {
+      "consumer": "factorial_gap_cofinal_carry_irrationality_criterion",
+      "effect": "Record architecture elimination only; this object supplies no cofinal strict-successor divisibility miss."
+    }
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean-checked local incidence interfaces and a source-derived factorial-gap LCM comparison",
+    "output_stage": "one review-ready canonical method-boundary object",
+    "artifact": "factorial_gap_prime_power_collision_incidence reviewer card and authority route",
+    "human_understanding_delta": "Local valuation identities, the exact post-assumption adjacent-window circularity, and the global one-owner no-go now appear as one proof architecture rather than as unrelated packet rows.",
+    "verification_state": "Lean covers the local collision stack, four exact adjacent-window telescope declarations, and necessary-ceiling statements; the LCM growth is an ordinary derivation from an attributed theorem and Stirling, not a new formal proof.",
+    "publication_or_review_state": "private reviewer-card refinement; release disposition requires separate source-parity review",
+    "canonicalization_state": "consolidated into the existing collision-incidence family; no new card or Comparator interface",
+    "unresolved_downstream_bottleneck": "cofinal quantitative control of the raw predecessor state before the carry-pair assumption, through a genuinely moving, multi-owner, residue-sensitive, Archimedean, or independent prefix mechanism",
+    "next_stage_owner": "Novelty Observatory for attribution/source-parity review; Role 3 only if a cleared projection is later justified"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "factorial_gap_prime_power_collision_incidence@source-4cd4eac-card-32d138d5",
+    "evidence_class": "Lean_checked_local_incidence_spacing_and_packing_interfaces_plus_primary_source_hit_counts_and_ordinary_LCM_derivation",
+    "source_generation_binding": {
+      "current_formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "current_formal_source_sha256": "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026",
+      "current_research_packet_commit": "4ee2d936d21b91a1b78165714a708ef312cec3e3",
+      "current_research_packet_sha256": "9e0a26a1d04b37e8ca977fd93b750a8d367de9d6e58b0446a80962ab84c1328c",
+      "current_reviewer_card_commit": "32d138d538a3fc0730a83eb3e6172269cb86a0ea",
+      "current_reviewer_card_sha256": "e92faa63ed45da067f0fda73126502edfd8a043c00f1f7e7be9b9a07c6288677",
+      "parity_status": "current source, packet, and card hashes recorded; source result family extends the earlier incidence stack with universal packing and endpoint hit-count consumers"
+    },
+    "source_generation": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "research_packet_commit": "4ee2d936d21b91a1b78165714a708ef312cec3e3",
+      "reviewer_card_commit": "32d138d538a3fc0730a83eb3e6172269cb86a0ea",
+      "parity_status": "current source, packet, and card hashes recorded"
+    },
+    "closest_known_result": "Garaev--Luca--Shparlinski, Luca--Shparlinski, and Klurman--Munsch supply factorial hit-count and shifted-factorial congruence estimates; no located source states this normalized collision-core valuation or block-packing formulation.",
+    "comparison_relation": "The ambient factorial-congruence and incidence theme is established. The source-specific delta is an exact normalization/packing interface that retires only the scalar one-owner architecture and leaves weighted multi-owner aggregation open.",
+    "exact_delta": "The current source consolidates local valuation, prime-power spacing, finite packing, product-to-LCM accounting, and the one-owner ceiling into one auditable object; the ordinary LCM comparison is source-derived rather than a new Lean theorem.",
+    "disconfirming_evidence": "The one-owner LCM route is asymptotically impossible, but multi-owner, residue-sensitive, moving-factor, raw-state, and weighted routes remain untouched; local hit sparsity is not a weighted endpoint bound.",
+    "confidence_ceiling": "High for the named Lean interfaces and current source parity; medium for the ordinary LCM comparison; zero for an Erdős #68 endpoint or broad collision-method no-go.",
+    "significance": "High method-boundary value and low standalone novelty: it closes a finite packing subproblem while exposing the missing weighted aggregation and projection producer.",
+    "claim_ceiling": "The Lean source gives the stated normalized-incidence, spacing, packing, product-to-LCM, and one-owner bounds; primary-source hit counts plus Stirling retire that one scalar architecture. No weighted global closure, broad no-go, or Erdős #68 solution follows.",
+    "hard_step": "Convert layerwise prime-power hit-count bounds into a global weighted bound strong enough for the branch-free projection inequality.",
+    "open_boundary": "The aggregate prime-power product, complementary-residue nonconcentration, cofinal carry-failure producer, and all weighted multi-owner constructions remain open.",
+    "bounded_expert_act": "Check the normalization-to-incidence valuation converse and test whether the primary-source hit counts can be summed with the exact layer-cardinality formula without losing endpoint scale.",
+    "reentry_trigger": "Re-enter when the formal source, packet/card generation, or a weighted aggregate estimate changes.",
+    "classification": {
+      "result_family": "endpoint_prime_power_factorial_congruence_incidence_and_packing",
+      "evidence_class": "Lean_checked_local_incidence_spacing_and_packing_interfaces_plus_primary_source_hit_counts_and_ordinary_LCM_derivation",
+      "closest_prior_art": "Garaev--Luca--Shparlinski, Luca--Shparlinski, and Klurman--Munsch supply factorial hit-count and shifted-factorial congruence estimates; no located source states the normalized collision-core valuation or block packing formulation.",
+      "comparison_relation": "The ambient congruence and incidence theme is established. The source-specific delta is an exact normalization/packing interface that retires the scalar one-owner architecture but leaves the weighted multi-owner product open.",
+      "novelty_confidence": "strong_internal_provisional_for_source_specific_packaging; no priority claim",
+      "significance_grade": "high_method_boundary_value_low_standalone_novelty",
+      "why_care": "The new universal hit-count packing turns local repeated prime-power layers into a concrete finite cardinality bound, clarifying exactly what remains: weighted aggregation over moving endpoint primes and projection control.",
+      "hard_step": "Convert layerwise hit-count bounds into a global weighted bound for the normalized collision core strong enough for the branch-free projection inequality.",
+      "natural_friction": "The source proves local incidence and packing, not the aggregate prime-power product, complementary-residue nonconcentration, or a cofinal carry-failure producer.",
+      "disconfirming_evidence": "The one-owner LCM route is asymptotically impossible, but multi-owner, residue-sensitive, moving-factor, and raw-state routes remain untouched.",
+      "confidence_ceiling": "High for the named Lean interfaces and current source parity; medium for the ordinary LCM comparison; zero for an Erdős #68 endpoint or broad collision-method no-go.",
+      "bounded_expert_act": "Check the normalization-to-incidence valuation converse and test whether the primary-source hit-count bounds can be summed with the exact layer-cardinality formula without losing the endpoint scale.",
+      "reentry_condition": "Re-enter when EndpointWeightedPrivateSupport.lean, the packet/card generation, or a weighted aggregate estimate changes."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#68 prime-power factorial-congruence incidence and one-owner LCM boundary",
+      "disposition": "refresh_existing_method_boundary_and_consolidate_new_packing_consumers",
+      "paper_disposition": "route_killing_boundary_in_collision_incidence_and_one_owner_LCM_section",
+      "supersession_relation": "Supersede the older source snapshot with the 4cd4eac generation; retain all local incidence, spacing, packing, and one-owner statements as one object, not separate packet-level advances.",
+      "independent_comparator_interface_justified": false,
+      "comparator_scope": "No new interface: the mixed Lean/source-derived assurance and unresolved weighted aggregate are best consumed through the existing collision-incidence object.",
+      "expert_attention_reason": "This is a high-information method boundary: it closes the finite packing subproblem while preventing a misleading claim that local sparsity already controls the weighted endpoint product."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "source-current_Lean_incidence_stack_plus_external_hit_count_bounds",
+      "output_stage": "versioned_method_boundary_and_human_review_request",
+      "artifact": "endpoint prime-power factorial-congruence incidence and packing",
+      "human_understanding_delta": "Separates exact local valuation/packing from the still-missing weighted global aggregation and projection producer.",
+      "verification_state": "Lean source, packet, and card hashes are current; LCM growth remains ordinary source-derived mathematics, not a new kernel theorem.",
+      "publication_or_review_state": "Keep as a status-tagged supporting boundary under the existing collision object; no priority, endpoint, or broad no-go claim.",
+      "canonicalization_state": "One refreshed collision-incidence family with no packet-interface proliferation.",
+      "unresolved_downstream_bottleneck": "Weighted aggregate control over moving prime-power layers and a cofinal projection/nonconcentration producer.",
+      "next_stage_owner": "Mathematics Refinery for source-snapshot assimilation; #68 proof owners for weighted aggregation; Role 3 only for existing-family projection."
+    }
+  }
+}

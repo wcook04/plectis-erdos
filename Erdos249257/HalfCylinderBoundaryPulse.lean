@@ -80,6 +80,31 @@ theorem rowPulse_eq_zero_of_late_strictSuffix
     not_dvd_two_mul_add_one_of_late_strictSuffix hd2 hde hes hlate,
     not_dvd_two_mul_add_two_of_late_strictSuffix hd2 hde hes hlate]
 
+/-- If the largest skipped rank remains strictly late at the next row, then
+the boundary rank itself is pulse-invisible.  The stronger inequality
+`2 * (s + 1) < 3 * d` places both new incidence indices strictly below the
+next possible positive multiple `3 * d`; divisibility by `d` would force
+one of them to reach that multiple. -/
+theorem rowPulse_eq_zero_of_nextLate_boundary
+    {s d : ℕ} (hd2 : 2 ≤ d) (hds : d < s)
+    (hnextLate : 2 * (s + 1) < 3 * d) :
+    rowPulse s d = 0 := by
+  have hone : ¬ d ∣ 2 * s + 1 := by
+    intro hdiv
+    have htwice : d ∣ 2 * d := ⟨2, by omega⟩
+    have hrem : d ∣ (2 * s + 1) - 2 * d := Nat.dvd_sub hdiv htwice
+    have hpos : 0 < (2 * s + 1) - 2 * d := by omega
+    have hle : d ≤ (2 * s + 1) - 2 * d := Nat.le_of_dvd hpos hrem
+    omega
+  have htwo : ¬ d ∣ 2 * s + 2 := by
+    intro hdiv
+    have htwice : d ∣ 2 * d := ⟨2, by omega⟩
+    have hrem : d ∣ (2 * s + 2) - 2 * d := Nat.dvd_sub hdiv htwice
+    have hpos : 0 < (2 * s + 2) - 2 * d := by omega
+    have hle : d ≤ (2 * s + 2) - 2 * d := Nat.le_of_dvd hpos hrem
+    omega
+  simp [rowPulse, hone, htwo]
+
 /-- For a late largest skipped rank, the filled suffix is pulse-invisible:
 the whole word pulse is carried by the lower prefix below `d`. -/
 theorem exists_lowerPrefix_wordPulse_eq_of_largestFalse_late
@@ -157,6 +182,7 @@ theorem rowPulse_boundary_of_late_firstCrossing
   · exact Or.inr ⟨htwo, rowPulse_eq_one_of_boundary_two hd2 htwo⟩
 
 #print axioms rowPulse_eq_zero_of_late_strictSuffix
+#print axioms rowPulse_eq_zero_of_nextLate_boundary
 #print axioms exists_lowerPrefix_wordPulse_eq_of_largestFalse_late
 #print axioms late_firstCrossing_boundary
 #print axioms rowPulse_boundary_of_late_firstCrossing

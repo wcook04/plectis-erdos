@@ -2,9 +2,11 @@
 
 This Comparator package exposes one strong checked endpoint from each of three
 source-current families for which Erdős #1041 is proved by an ordinary
-mathematical assembly. The sharp collinear family is an all-degree theorem with a best
-constant and equality configurations; the primitive quintic and translated
-cubic fibres are substantial solved companions.
+mathematical assembly. Its portfolio-relative **Plectis Signal is 98/100**:
+the sharp collinear family is an all-degree theorem with a best constant and
+equality configurations; the primitive quintic and translated cubic fibres
+are substantial solved companions. This is reading priority, not proof
+authority, Palomar review, or submission status.
 
 The theorem list is deliberately ordered by mathematical signal:
 

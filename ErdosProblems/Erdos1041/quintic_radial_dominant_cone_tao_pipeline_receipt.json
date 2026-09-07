@@ -1,0 +1,24 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_radial_dominant_cone_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticRadialDominantCone.md",
+    "ErdosProblems/Erdos1041/QuinticRadialDominantCone.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_radial_dominant_cone.py"
+  ],
+  "human_understanding_delta": "The radial-dominant quintic branch collapses to a scalar five-Delta Fourier budget. A factorized weighted Young inequality then proves a Delta/2 margin on every fifth-root ray, while a disk of radius Delta/10 has margin 2Delta/5. Thus the branch has all five safe arms and every truncation chord, not merely one selected connector.",
+  "verification_state": {
+    "analytic_derivation": "complete_for_radial_dominant_quintic_fourier_model",
+    "exact_symbolic_replay": "pass_factorized_weighted_young_identity",
+    "deterministic_stress_replay": "pass_400000_samples_max_normalized_ray_margin_minus_0_4997603_max_normalized_disk_margin_minus_0_5999998",
+    "lean_focused_build": "pass_canonical_cached_exact_target_serialized_authority_check"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "verified_radial_cone_module_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Transfer the transverse atlas and radial cone margins through the exact finite polynomial on complete truncated arms, including the near/far overlap.",
+  "next_stage_owner": "Current proof owner through verification and scoped commit; then Refinery owns the degree-five finite-transfer glue.",
+  "claim_ceiling": "This closes the radial-dominant quintic Fourier model only. Do not claim the exact finite near-Fekete theorem or unrestricted Erdős #1041."
+}

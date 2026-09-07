@@ -1,0 +1,186 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "prime_power_boundary_ladder_affine_cocycle",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_classical_product_denominator_integral_carry_criterion_with_elementary_source_specific_prime_power_boundary_reindexing",
+  "problem_id": "erdos_269",
+  "purpose": "Place the rationality equivalence under the classical product-denominator carry criterion, give the prime-power boundary normalization its narrow source-specific significance, and keep numerical tail replay separate from proof authority.",
+  "source_result_ids": [
+    "prime_power_boundary_ladder_recurrence"
+  ],
+  "adjudication_currentness": {
+    "status": "current_at_source_card_snapshot",
+    "bound_snapshot": {
+      "source_commit": "10da4b52098fe400584bf49c5b19df958886184b",
+      "source_sha256": "73bcfcfcee9991388175b1f871d89a19ff17ec5f7986c057cecf841884b077d0",
+      "reviewer_card_commit": "c9260471a1a262a34b16d2adbe6763b60d4460c9",
+      "reviewer_card_sha256": "eb4f8004b39c9b511e5dd925a003cbaa42915694706d26d2ce93359963ffcff2"
+    },
+    "claim_guard": "Classical carry rationality plus a source-specific prime-power boundary reindexing; no irrationality or all-index orbit exclusion.",
+    "reentry_trigger": "Reopen if the source/card generation, carry hypotheses, or the claimed #269 consumer changes."
+  },
+  "reviewer_attention_budget": {
+    "review_act": "Check one ordered smooth-height step and the translation from composite radix digits to the prime-multiplier carry recurrence.",
+    "expert_judgment_required": "Assess terminology and the residual polynomial-growth orbit only; no priority decision is requested.",
+    "attention_disposition": "supporting_arithmetic_throat"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos269_prime_power_boundary_ladder@source-10da4b5-card-c926047",
+    "source_generation_binding": {
+      "source_commit": "10da4b52098fe400584bf49c5b19df958886184b",
+      "source_sha256": "73bcfcfcee9991388175b1f871d89a19ff17ec5f7986c057cecf841884b077d0",
+      "reviewer_card_commit": "c9260471a1a262a34b16d2adbe6763b60d4460c9",
+      "reviewer_card_sha256": "eb4f8004b39c9b511e5dd925a003cbaa42915694706d26d2ce93359963ffcff2"
+    },
+    "evidence_class": "Ordinary product-denominator carry algebra with an elementary prime-power boundary normalization; finite tail replay is illustrative only.",
+    "closest_known_result": "Erdős--Straus (1974), Section 2 Theorem 2.1 and equation (2.4), supplies the product-denominator rationality/carry criterion. Wang (2026), Proposition 3.1, gives a fixed-binary integral-tail recurrence. Neither source gives this smooth-semigroup prime-power reindexing.",
+    "comparison_relation": "A source-specific normal-form specialization of classical Cantor/product-denominator carry arithmetic, not a new rationality theorem.",
+    "exact_delta": "Ordering prime powers in the finite smooth semigroup turns the composite height update into U_(j+1)=p_j U_j-C_j and isolates the prime-power boundary counts C_j.",
+    "disconfirming_evidence": "The recurrence does not exclude its polynomial-growth integral orbit. Numerical tail replay is finite evidence only; no irrationality, equidistribution, collision, or #269 endpoint follows.",
+    "confidence": {
+      "source_card_parity": "high_internal_provisional",
+      "classical_carry_attribution": "high",
+      "independent_novelty": "low: elementary reindexing with no located named theorem"
+    },
+    "significance": "B_supporting: clarifies the arithmetic throat and gives a reusable prime-boundary coordinate, while the abstract criterion is standard.",
+    "claim_ceiling": "Call it a prime-power boundary integral carry recurrence and a classical carry-criterion specialization; do not call it a new cocycle theory or irrationality result.",
+    "hard_step": "Preserve the distinction between exact boundary normalization and the still-unproved exclusion of a polynomial-growth integral carry orbit.",
+    "open_boundary": "The source must still rule out the particular integral orbit for #269; arbitrary affine recurrences and finite replay do not supply that step.",
+    "bounded_expert_act": "Recompute one successive prime-power boundary and verify the carry recurrence under the stated growth and normalization hypotheses.",
+    "reentry_trigger": "Reopen on source/card changes, a proof of orbit exclusion, or a stronger literature antecedent for the boundary normal form.",
+    "mechanism_family": "#269 product-denominator carry arithmetic",
+    "disposition": "admit_as_supporting_prime_boundary_normal_form",
+    "expert_attention_reason": "This is the cleanest coordinate for the unresolved #269 arithmetic throat, but it should not consume attention as a new rationality theorem.",
+    "paper_disposition": "supporting lemma",
+    "paper_section": "Erdős #269 — prime-power boundary carry normal form",
+    "supersession_relation": "Retain under the classical Erdős--Straus carry criterion; finite numerical replay remains subordinate evidence.",
+    "comparator_interface_justified": false,
+    "comparator_reason": "The local recurrence is a coordinate normalization for the existing #269 route and does not add an independently valuable proposition interface."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/prime_power_boundary_ladder_affine_cocycle.card.json",
+    "refinery_handoff_commit": "c9260471a1a262a34b16d2adbe6763b60d4460c9",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RationalLatticeTorusSqueezeLab.md",
+    "source_result_id": "prime_power_boundary_ladder_recurrence"
+  },
+  "classification": {
+    "ambient_framework": "Cantor-series and product-denominator rationality through integral carry recurrences",
+    "rationality_equivalence": "classical_Erdos_Straus_product_denominator_carry_criterion_specialized_with_polynomial_growth_uniqueness",
+    "prime_power_boundary_reindexing": "elementary_source_specific_normal_form_apparently_unlocated_as_a_named_result",
+    "finite_tail_replay": "numerical_illustration_only",
+    "priority_claim": "none",
+    "recommended_terminology": "prime-power boundary integral carry recurrence",
+    "acceptable_aliases": [
+      "prime-boundary ladder normal form",
+      "prime-boundary mixed-radix carry recurrence"
+    ],
+    "discouraged_terminology": [
+      "new integral-cocycle rationality theorem",
+      "prime-power boundary cocycle theory",
+      "irrationality criterion for Erdos #269"
+    ],
+    "attribution": "Credit Erdős--Straus for the general product-denominator integer-carry rationality criterion. Wang supplies a recent explicit bounded integral-tail-state formulation in fixed binary radix. Credit the local card only for the direct smooth-semigroup prime-power boundary normalization, its all-scale prefix clearing, and its exact #269 specialization.",
+    "mathematical_interest": "The boundary ordering materially simplifies the exact residual: composite radices {2,6,10,30} and weighted digits are replaced by prime multipliers {2,3,5} and unweighted smooth-number gap counts.",
+    "reusable_scope": "Tails whose denominator height changes only when one of finitely many prime-power scales is crossed and whose normalized tail has controlled growth.",
+    "why_it_matters": "It identifies the correct arithmetic throat for #269--exclusion of one particular polynomial-growth integral carry orbit--without presenting a classical rationality mechanism as new."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_straus_1974_irrationality_series",
+      "title": "On the irrationality of certain series",
+      "authors": ["Paul Erdős", "Ernst G. Straus"],
+      "venue": "Pacific Journal of Mathematics 55 (1974), 85-92",
+      "doi": "10.2140/pjm.1974.55.85",
+      "url": "https://msp.org/pjm/1974/55-1/pjm-v55-n1-p08-s.pdf",
+      "exact_anchor": "Section 2, Theorem 2.1, especially equation (2.4) and the telescoping proof: under |b_n|/(a_{n-1}a_n) tending to zero, the product-denominator series is rational exactly when an eventual integer relation B b_n = c_n a_n - c_{n+1} exists with a small carry c_{n+1}.",
+      "supports": "The classical rationality-via-integral-carry recurrence and its telescoping converse.",
+      "does_not_support": "The finite smooth-semigroup boundary ordering, prime-valued successive multipliers, the exact counts C_j, or any #269 irrationality claim."
+    },
+    {
+      "id": "wang_2026_positive_dyadic_density",
+      "title": "Positive dyadic density for rational weighted binary expansions",
+      "author": "Han Wang",
+      "venue": "arXiv:2606.24972v2 (2026)",
+      "url": "https://arxiv.org/abs/2606.24972",
+      "exact_anchor": "Section 3.1, Proposition 3.1 (printed page 5): for a rational weighted binary expansion, the cleared tail R_N is integral, satisfies R_{N+1}=2R_N-Q(N+1)d_{N+1}, and is linearly bounded.",
+      "supports": "A recent explicit integral-carry state with polynomial growth in a fixed-radix weighted expansion.",
+      "does_not_support": "Variable prime radices, the smooth-height boundary normal form, or the local converse based on exponential separation."
+    }
+  ],
+  "mechanism_comparison": {
+    "classical_product_denominator_form": "A rational series value is encoded by integer carries satisfying a first-order affine recurrence; tail smallness controls the carries and telescoping recovers the value.",
+    "local_boundary_form": "Ordering distinct prime powers makes exactly one height factor change at each step. Removing that new factor yields U_{j+1}=p_j U_j-C_j.",
+    "local_converse": "Two polynomial-growth solutions of the same prime-multiplier recurrence cannot differ, because a nonzero difference grows by at least 2 at every step.",
+    "remaining_throat": "For #269, one must rule out the particular polynomial-growth integral orbit; the recurrence itself and finite numerical replay do not do so."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Cantor series rationality integer recurrence carries product denominators",
+      "Erdos Straus irrationality certain series c_n a_n c_n+1",
+      "mixed radix rational expansion integral carry recurrence",
+      "smooth numbers prime power boundary tail recurrence",
+      "polynomial bounded integral affine orbit rational series"
+    ],
+    "result": "The rationality-carry equivalence is classical and appears in a more general product-denominator form in Erdős--Straus. A bounded search did not locate a standard name or earlier exact statement for ordering all prime-power boundaries of a finite smooth semigroup to obtain the unweighted recurrence U_{j+1}=p_jU_j-C_j.",
+    "boundary": "Non-location supports only source-specific descriptive packaging, not novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The #269 smooth-height tail admits an elementary prime-power boundary integral carry recurrence; its rationality interface is a specialization of the classical Erdős--Straus product-denominator carry criterion.",
+    "forbidden_wording": [
+      "The project discovered the integral-carry rationality criterion.",
+      "The recurrence excludes rationality.",
+      "The 200-step tail replay proves the all-index theorem.",
+      "The polynomial-growth hypothesis is automatic for arbitrary affine recurrences.",
+      "This proves or nearly proves Erdős #269."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_new_general_cocycle_theory",
+      "not_an_irrationality_theorem",
+      "not_an_equidistribution_or_collision_theorem",
+      "not_an_exact_infinite_tail_computation",
+      "not_erdos_269_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/prime_power_boundary_ladder_affine_cocycle.card.json",
+      "effect": "Replace pending novelty language with classical carry-criterion attribution and isolate the boundary reindexing as the exact local delta."
+    },
+    {
+      "consumer": "Erdos #269 proof fleet",
+      "effect": "Use the prime-boundary recurrence as the clean residual interface, but treat exclusion of its polynomial-growth integral orbit as open."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the asset as a useful source-specific normalization within classical Cantor-series carry arithmetic, not as a new general rationality theorem."
+    }
+  ],
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-269-three-prime-running-lcm.tex",
+    "section": "The prime-power boundary ladder",
+    "canonical_mechanism_family": "prime-power boundary integral carry recurrences for smooth-height tails",
+    "relation": "One all-scale carry coordinate before the dyadic-block route; consolidate clearing, recurrence, and polynomial-growth uniqueness.",
+    "understanding_delta": "All prime-power boundaries reveal one changing prime factor at a time, reducing rationality to one explicit integral-orbit exclusion problem.",
+    "evidence_boundary": "Ordinary all-index derivation; finite high-precision replay is illustrative only; no Lean or infinite-tail computation claim.",
+    "hard_step": "Exclude the genuine polynomial-growth integral orbit.",
+    "meaningful_failed_route": "The retracted frozen-digit torus representation has the wrong shift covariance, and finite replay cannot restore it.",
+    "open_remainder": "Integral-orbit exclusion and Erdős #269 remain open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "ordinary_derivation_and_finite_diagnostic_replay",
+    "output_stage": "exposition_understanding_publication_ready_and_canonicalization",
+    "artifact": "prime_power_boundary_ladder_affine_cocycle",
+    "human_understanding_delta": "The arithmetic residual is now a prime-at-a-time recurrence rather than a composite-radix numerical pattern.",
+    "verification_state": "Direct elementary proof with finite numerical illustration deliberately separated.",
+    "publication_or_review_state": "Public/Comparator eligible under status labels; independent review is downstream rather than a release precondition.",
+    "canonicalization_state": "One classical carry framework plus one source-specific boundary normal form.",
+    "unresolved_downstream_bottleneck": "The polynomial-growth integral orbit has not been excluded.",
+    "next_stage_owner": "Role 3 for projection, #269 proof owners for orbit exclusion, and Mathematics Refinery for parity."
+  },
+  "publication_eligibility": {
+    "class": "comparator_candidate",
+    "rationale": "The recurrence, source proof, attribution, and boundary are inspectable. Any public interface must label the all-index proof ordinary and the 200-step replay finite numerical illustration.",
+    "not_blocked_by": "absence_of_external_specialist_review"
+  }
+}

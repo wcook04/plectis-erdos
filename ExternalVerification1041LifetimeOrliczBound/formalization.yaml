@@ -1,0 +1,175 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #1041: attachment-age/lifetime Orlicz frontier"
+  description: >-
+    A merge edge's lifetime is the exact universal nonlinear transform
+    k Phi(x) of its attachment-age increment. The transform is strictly
+    convex but sublinear at the origin, so no positive uniform linear age
+    charge exists. Weighted chain bounds and an exact root-summed identity
+    yield a sharp two-young-root selector. These results sharpen the metric
+    allocation frontier without solving Erdős #1041.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_family_pending_analytic_core_formalization_and_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1041LifetimeOrliczBound/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1041LifetimeOrliczBound/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_submission_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_exact_nonlinear_currency_no_go_and_selector"
+  submission_authorization: "operator_directed_palomar_campaign_external_action_not_performed_by_this_local_task"
+  blockers:
+    - "the present lead Challenge covers only the lifetime-to-Orlicz scalar division consumer, not the ordinary analytic core"
+    - "the exact integral substitution, convexity and Jensen argument, and merge-tree double count are not yet Lean-formalized in a composite Comparator package"
+    - "the selected result family is not pinned in the operator's submission repository at one immutable public commit"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection are not recorded on a supported runner for the final selected package"
+  note: >-
+    The coherent theorem family is the intended Palomar submission object;
+    its five current scalar interfaces are subordinate formal consumers, not
+    separate submission candidates. The open parent problem is not a veto.
+    No local artifact is represented as a Palomar verdict or registry entry.
+
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15", "37F10"]
+
+sources:
+  - title: "Attachment age is the exact Orlicz coordinate of lifetime"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The source note proves the exact integral transform, nonlinear chain
+      bounds, root-summed age/product identity, and two-young-root selector.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references,
+      and open status; it is not the source of the Orlicz theorem family.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    The current lead Challenge exposes the literal lifetime-to-Orlicz division
+    consumer. Four source declarations cover the scalar consumer layer across
+    five Comparator packages; two no-uniform-linear packages duplicate one
+    theorem type. The analytic core remains ordinary exact mathematics.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder in this selected package is the trusted
+    theorem body in Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "existing_scalar_source_checked_composite_analytic_core_pending"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041LifetimeOrliczBound.orlicz_le_of_lifetime_le"
+      file: "ExternalVerification1041LifetimeOrliczBound/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041LifetimeOrliczBound/comparator.json"
+      canonical_claim_status: "source_backed_scalar_consumer_not_yet_full_family_interface"
+      local_proof_provenance: >-
+        ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.lean, companion to
+        ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.md.
+      novelty_status: "unassessed"
+      contribution_class: "formal scalar consumer of an exact nonlinear merge-tree theorem family"
+      statement: >-
+        A positive size and exact lifetime factorization convert a lifetime
+        upper bound into the corresponding Orlicz-value upper bound.
+      boundary: >-
+        This declaration does not formalize the integral change of variables,
+        convexity, Jensen inequalities, root-summed double count, compatible
+        path selection, or unrestricted Erdős #1041.
+      comparator_declaration: "Erdos249257.ExternalVerification1041LifetimeOrliczBound.orlicz_le_of_lifetime_le"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical proof and claim-boundary review"
+      tool_setup: "Human-directed theorem-family and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, Comparator packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "deterministic high-precision replay"
+      tool_setup: >-
+        scripts/check_erdos1041_attachment_age_lifetime_orlicz.py checks the
+        transform, shape, Jensen, tree double-counting, selector, and bounded
+        actual-polynomial rows as regression evidence.
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation, and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The selected declaration is only one scalar consequence of the coherent
+    paper theorem family. Palomar submission readiness requires a final exact
+    package whose formal claims do not imply coverage of the unformalized
+    analytic arguments.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source proof, sharp no-linear obstruction, Jensen bounds, selector,
+    and remaining geometric boundary were reviewed. Full analytic
+    formalization, supported Comparator replay, and independent peer review
+    remain separate gates.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041LifetimeOrliczBound"
+  statements:
+    - source: "ErdosProblems.Erdos1041.AttachmentAgeLifetimeOrlicz.orlicz_le_of_lifetime_le"
+      lean: "Erdos249257.ExternalVerification1041LifetimeOrliczBound.orlicz_le_of_lifetime_le"
+      module: "ExternalVerification1041LifetimeOrliczBound/Challenge.lean"
+      status: "exact-scalar-consumer"
+      note: >-
+        This package is the lead disposition surface for the coherent family,
+        but its current compared type is intentionally only the literal scalar
+        theorem it actually proves.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

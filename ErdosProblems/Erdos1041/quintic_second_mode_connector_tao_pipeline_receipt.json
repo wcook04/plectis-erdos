@@ -1,0 +1,23 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_second_mode_all_phase_connector_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticSecondModeConnector.md",
+    "ErdosProblems/Erdos1041/QuinticSecondModeConnector.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_second_mode_connector.py"
+  ],
+  "human_understanding_delta": "The dangerous quintic second Fourier mode admits a strict Form-A connector away from the singular origin for every coefficient phase, not just one chart. Five root-pair rotations reduce the phase circle to [2pi/5,4pi/5]; a two-sided cosine envelope reduces that sector to two reflected boundary phases; and a degree-13 Bernstein elevation gives the uniform chord margin H<=-1/1000. This eliminates the pure second-mode phase circle and leaves only mixed Newton-mode transition faces in degree five.",
+  "verification_state": {
+    "analytic_proof": "complete",
+    "exact_symbolic_replay": "pass_v2_exact_rotation_reflection_and_bernstein_plus_20001_phase_calibration",
+    "lean_focused_build": "pass_canonical_cached_exact_target_serialized_authority_check"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "new_private_all_phase_authoring_module_verified_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Prove a strict connector theorem for the compact degree-five mixed model Re(Az+Bz^2-z^5), then consume the anchored remainder and overlap it with the existing non-near-Fekete regime; analogous finite Newton-mode faces remain in higher degrees.",
+  "next_stage_owner": "Refinery: consume the all-phase pure second-mode margin as a boundary chart for the mixed first/second-mode transition compactum.",
+  "claim_ceiling": "This closes the full coefficient-phase circle of the homogeneous quintic second-mode model, not the mixed-mode transition or unrestricted Erdős #1041 theorem."
+}

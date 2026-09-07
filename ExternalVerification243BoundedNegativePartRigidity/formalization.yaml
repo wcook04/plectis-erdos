@@ -1,0 +1,199 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #243: bounded-negative-part rigidity for reciprocal-tail dynamics"
+  description: >-
+    Clearing denominators in the rational case of Erdős Problem 243 produces an
+    exact integer orbit: multipliers a n greater than 1 drive
+    C (n+1) + D n = a n * C n and D (n+1) = a n * D n, and the centred error is
+    E n = D n - (a n - 1) * C n. The compared theorem proves complete rigidity
+    of the bounded-negative branch of that orbit. An eventual one-sided lower
+    bound -B ≤ E n on the centred error, together with division-free normalized
+    vanishing K * Int.natAbs (E n) < C n at every scale K, forces two
+    conclusions at once: the centred error is exactly zero from some index
+    onward, and the multipliers satisfy the exact Sylvester recurrence
+    a (n+1) = a n ^ 2 - a n + 1 from some index onward. The second conclusion is
+    the Sylvester recurrence itself, which is the target shape for this
+    dynamics, so the theorem reaches that endpoint inside the stated regime. The
+    hypothesis list contains no periodicity assumption, no eventual periodicity
+    assumption, and no sign condition on the centred error, so the statement
+    covers aperiodic orbits and orbits whose centred error changes sign
+    infinitely often. The
+    normalized-vanishing hypothesis is stated division-free over the natural
+    numbers, so the theorem consumes no real-analytic input. Eventual strict
+    centring Int.natAbs (E n) < C n is the K = 1 instance of normalized
+    vanishing and is absorbed into that hypothesis. The proof runs a natural-tail
+    descent on the eventually nonnegative branch and a gcd-stabilisation and
+    scale-reduction obstruction on the recurring bounded-negative branch, then
+    composes the resulting zero-defect statement with the algebraic step that
+    turns a vanishing centred state into the Sylvester successor. The exact
+    recurrence, the one-sided lower bound, and normalized vanishing are
+    hypotheses of the theorem. No declaration in this package produces them for
+    an arbitrary orbit, orbits with cofinally unbounded negative centred error
+    lie outside the statement, and Erdős Problem 243 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_rigidity_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The open parent problem is an explicit theorem boundary, not an editorial
+    veto. No local artifact is represented as a Palomar verdict or registry
+    entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37"]
+
+sources:
+  - title: "Bounded-negative-part rigidity for reciprocal-tail dynamics"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The proof combines natural-tail descent on the nonnegative branch with
+      gcd stabilization, scale reduction, and a shifted CRT obstruction on
+      the recurring bounded-negative branch.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status; the rigidity theorem is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem packages eventual zero centred defect and the eventual
+    exact Sylvester recurrence under the bounded-negative hypotheses.
+    Challenge.lean has one intentional Comparator specification sorry.
+    Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+      file: "ExternalVerification243BoundedNegativePartRigidity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243BoundedNegativePartRigidity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorems in
+        ErdosProblems/Erdos243/ReciprocalTailRigidity.lean at working-tree
+        source SHA-256
+        b67410ec01838b03740985bb4200c683d074b473772db0077562d66cdc2009cf,
+        after the redundant eventual-strict-centring hypothesis was removed
+        from eventuallyBoundedNegativePart_eventually_zero and
+        boundedNegativePart_sylvesterNext_eventually. The enclosing commit is
+        pending.
+      novelty_status: "unassessed"
+      contribution_class: "conditional exact reciprocal-tail rigidity reaching the Sylvester recurrence"
+      statement: >-
+        The centred error vanishes from some index onward and the multiplier
+        sequence follows the exact Sylvester recurrence from some index
+        onward.
+      boundary: >-
+        The exact recurrence, the eventual one-sided lower bound, and
+        division-free normalized vanishing are hypotheses. Orbits with
+        cofinally unbounded negative centred error lie outside the statement,
+        and Erdős Problem 243 remains open.
+      comparator_declaration: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner. NanoDa is disabled in comparator.json. No terminal
+        replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The compared theorem combines the source zero-defect theorem and its exact
+    Sylvester consequence into their natural two-part reader endpoint. It adds
+    no claim beyond those two checked declarations and it adds no producer for
+    the one-sided bound or for normalized vanishing.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem family, exact hypotheses, one-sided boundedness,
+    normalized-vanishing condition, hypothesis parity between Challenge and
+    Solution, and the open-problem boundary were reviewed. Focused Lean, the
+    axiom audit, and the Comparator replay remain distinct gates.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity"
+  statements:
+    - source: >-
+        ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
+        and boundedNegativePart_sylvesterNext_eventually.
+      lean: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+      module: "ExternalVerification243BoundedNegativePartRigidity/Challenge.lean"
+      status: "exact-composite-transport-pending-check"
+      note: >-
+        The Challenge exposes the complete result family in literal
+        Mathlib-only vocabulary.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

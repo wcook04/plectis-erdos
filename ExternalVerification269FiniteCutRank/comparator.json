@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269FiniteCutRank.Challenge",
+  "solution_module": "ExternalVerification269FiniteCutRank.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269FiniteCutRank.rank_cutColumnMatrix"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

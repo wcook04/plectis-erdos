@@ -1,0 +1,318 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "pade_threshold_law_v0",
+  "status": "adjudicated_measured_cross_base_law_asymptotic_proof_unverified",
+  "problem_id": "erdos_1049",
+  "purpose": "Downgrade the scalar q-Apéry cross-base threshold from an apparent theorem to its honest measured/asymptotic evidence class, while preserving its useful architecture filter and the exact 3/2 height-gap boundary.",
+  "review_unit": {
+    "result_family": "scalar_q_apery_pade_threshold_over_rational_bases",
+    "exact_result_id": "pade_threshold_law_over_rational_bases",
+    "source_generation": {
+      "repository_commit": "5e8eec99fb5bdd2190d2ee3dbdc70291a287e8b1",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "source_note": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/PadeThresholdLawLab.md",
+      "source_note_sha256": "bb6a45c9f3deb4df9f87d03d3afd911a61c86f236886c4d6ce07fac0981e38e9",
+      "probe": "formal_math/probes/erdos1049_pade_threshold_law.py",
+      "probe_sha256": "4a071982f5cbb230a99e34e729f8970c1ed8f30ae469798e1a67896d2ddc35af"
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Measurement-heavy scalar-family diagnostic with several unproved asymptotic consumers; the hard question is derivation, not regression.",
+    "slow_down_at": "Separate exact finite values from fitted asymptotics and check every uniformity, nonvanishing, and height premise.",
+    "automation_can_establish": [
+      "Declared probe outputs and finite falsifiers",
+      "Source, packet, and probe hash parity"
+    ],
+    "human_judgment_required": [
+      "Whether an all-index derivation of the kappa/phi law exists",
+      "Whether the scalar family can be ruled out rigorously rather than measured"
+    ],
+    "review_act": "Audit one base-to-base fit against the source note and identify the first unproved asymptotic step; do not repeat scans."
+  },
+  "adjudication_currentness": {
+    "status": "source_note_probe_packet_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "source_note_sha256": "bb6a45c9f3deb4df9f87d03d3afd911a61c86f236886c4d6ce07fac0981e38e9",
+      "probe_sha256": "4a071982f5cbb230a99e34e729f8970c1ed8f30ae469798e1a67896d2ddc35af",
+      "review_generation": "2026-08-25_v0"
+    },
+    "claim_guard": "Measured cross-base evidence only; no all-index asymptotic theorem, scalar impossibility, irrationality, or #1049 solution claim.",
+    "reentry_trigger": "Reopen on an all-index derivation, nonvanishing/height theorem, source correction, packet/probe change, or disconfirming computation."
+  },
+  "classification": {
+    "conclusion_confidence_class": "strong_internal_provisional_case_for_measured_pattern",
+    "evidence_class": "ordinary asymptotic interpretation plus exact finite numerical probe; no Lean or all-index proof",
+    "novelty_confidence": "no priority claim; the q-Apéry and effective-height frameworks are established, while the cross-base fitted law is source-specific and unverified as a theorem",
+    "recommended_terminology": "measured scalar q-Apéry height-decay threshold law",
+    "discouraged_terminology": [
+      "exact threshold theorem",
+      "proved 3/pi^2 clearing law",
+      "scalar Padé impossibility theorem",
+      "solution or irrationality proof for Erdős #1049"
+    ],
+    "significance": "High as a construction-triage diagnostic: it prices the scalar q-Apéry family across known bases and shows the measured 3/2 gap is positive. The mathematical theorem value is currently low-to-moderate because the asymptotic decomposition, uniform convergence, nonvanishing, and clearing law are not proved in this artifact.",
+    "expert_judgment_that_can_change_state": "Either supply an all-index derivation of the recurrence convergence, primitive-height asymptotics, and phi-weighted clearing decomposition, or downgrade the object permanently to a calibrated numerical architecture map."
+  },
+  "closest_known_result": {
+    "relation": "standard_q_apery_and_effective_height_framework_with_source_specific_measured_extension",
+    "statement": "Amdeberhan--Zeilberger and Van Assche supply the q-Apéry/little-q-Legendre Padé architecture and the qualitative small-integral-form consumer; Fischler--Zudilin supply the modern height-versus-smallness and common-divisor framework.",
+    "exact_delta": "The local lab measures a cross-base exponent pattern and identifies a candidate 3/pi^2 primitive-cyclotomic contribution term by term, but does not derive that law or prove it uniformly over rational bases.",
+    "negative_boundary": "A positive measured GAP at 3/2 is a height-versus-decay diagnostic only; it does not prove scalar impossibility beyond the tested family or establish irrationality."
+  },
+  "primary_sources": [
+    {
+      "id": "amdeberhan_zeilberger_1998_q_apery",
+      "title": "q-Apéry Irrationality Proofs by q-WZ Pairs",
+      "authors": ["Tewodros Amdeberhan", "Doron Zeilberger"],
+      "venue": "Advances in Applied Mathematics 20 (1998), 275-283",
+      "url": "https://arxiv.org/abs/math/9804122",
+      "pdf_url": "https://arxiv.org/pdf/math/9804122",
+      "source_archive": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.gz",
+      "source_archive_kind": "arxiv_source_bundle",
+      "source_archive_sha256": "57b957c967eed4a7681b02616e000ca0cf3f4d91f5bb2f36a366337737c89a39",
+      "source_tex": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.tex",
+      "source_tex_sha256": "d5e28002d543f1d8c22fca2312319957fb0c34481fe0d6eb4fd8ff4aad2dda4f",
+      "source_pdf": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.pdf",
+      "source_pdf_sha256": "339a4324a6cd0bcfd8eb872d0a408140fcba06ee383bf421248a91919b1430e2",
+      "extracted_markdown": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/extracted.md",
+      "extracted_markdown_sha256": "b706b896b43d755fafa907b6ce6b0d3c3a3542875d0a2d03e56b66624941161f",
+      "primary_source_read": true,
+      "primary_pdf_read": true,
+      "primary_tex_read": true,
+      "retrieved_at": "2026-08-11",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_and_tex_read_exact_q_wz_recurrence_and_integer_base_irrationality_locators_compared",
+      "pdf_pages": 7,
+      "extracted_locator": "extracted.md lines 45-175 (q-WZ construction and Theorem 1) and lines 185-263 (Theorem 2)",
+      "exact_source_locator": "PDF pp. 2--4 / Source TeX lines 72--115 and 196--207: Sections 1.1--1.5 give the q-WZ one-form, recurrence, and telescoping identities, while Section 1.7/Theorem 1 states the integer-base irrationality boundary; Source TeX lines 305--316 give the analogous logarithm theorem. The source supports the q-Apéry architecture and qualitative small-form consumer only.",
+      "exact_anchor": "Sections 1.3-1.7: q-WZ construction, scalar recurrence, integerization, and comparison of denominator height with approximation error.",
+      "supports": "The source q-Apéry architecture and qualitative consumer.",
+      "does_not_support": "The cross-base fitted kappa, the 3/pi^2 decomposition, or the 3/2 measured gap."
+    },
+    {
+      "id": "van_assche_2001_little_q_legendre",
+      "title": "Little q-Legendre polynomials and irrationality of certain Lambert series",
+      "author": "Walter Van Assche",
+      "venue": "The Ramanujan Journal 5 (2001), 295-310",
+      "url": "https://arxiv.org/abs/math/0101187",
+      "pdf_url": "https://arxiv.org/pdf/math/0101187",
+      "source_archive": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.gz",
+      "source_archive_kind": "arxiv_source_bundle",
+      "source_archive_sha256": "cee65cbb6cb8ee7329cf22234ed5e7e03007f922c1f38bea0c81263250eee388",
+      "source_tex": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.tex",
+      "source_tex_sha256": "4eca6eab39303b83e3fa8a86d5724f041e018b02a2660a29365fe5603bb0823b",
+      "source_pdf": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.pdf",
+      "source_pdf_sha256": "ce878d4a92a709e77723bb398c131e5391cb8bea8c82eeeccd92e6f26fece34d",
+      "extracted_markdown": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/extracted.md",
+      "extracted_markdown_sha256": "150bcd646346d92e8bacc95c9a49ba85c1d0c1630623055f4b37de27906209fc",
+      "primary_source_read": true,
+      "primary_pdf_read": true,
+      "primary_tex_read": true,
+      "retrieved_at": "2026-07-08",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_and_tex_read_exact_pade_cyclotomic_clearing_and_asymptotic_locators_compared",
+      "pdf_pages": 15,
+      "extracted_locator": "extracted.md lines 99-128 (Markov/Padé identity and evaluation at p^n), lines 130-160 (associated Q_n and d_n clearing), and lines 194-224 (positive error and asymptotic estimates)",
+      "exact_source_locator": "PDF printed pp. 4--7 / Source TeX lines 306--378: equations (18)--(30) define the associated little-q-Legendre Padé coefficient, its p^n evaluation, cyclotomic clearing d_n, and growth; PDF pp. 8--9 / Source TeX lines 497--524 give the positive error, decay rate, and irrationality-measure conclusion. The source does not state the rational-base 3/2 fitted law.",
+      "exact_anchor": "Introduction and Sections 2-3: little-q-Legendre Padé forms, integerization, and the qualitative nonzero-small-form mechanism.",
+      "supports": "Closest classical Lambert-series Padé context.",
+      "does_not_support": "The rational-base 3/2 measured exponent law or its source-specific content decomposition."
+    },
+    {
+      "id": "fischler_zudilin_2010_effective_height",
+      "title": "A refinement of Nesterenko's linear independence criterion with applications to zeta values",
+      "authors": ["Stéphane Fischler", "Wadim Zudilin"],
+      "venue": "Mathematische Annalen 347 (2010), 739-763",
+      "doi": "10.1007/s00208-009-0457-y",
+      "url": "https://doi.org/10.1007/s00208-009-0457-y",
+      "pdf_url": "https://www.imo.universite-paris-saclay.fr/~stephane.fischler/linearindep.pdf",
+      "source_pdf": "annexes/fischler-zudilin-2010-nesterenko-refinement/source.pdf",
+      "source_pdf_sha256": "848505203331c85e8fbfa78658ab14b2dc71cdcef65b54f0842d03c091f8bb21",
+      "extracted_markdown": "annexes/fischler-zudilin-2010-nesterenko-refinement/extracted.md",
+      "extracted_markdown_sha256": "2c6443143f5e058796fe2c97b9b094b8c93ca82b37de8d56637f7f551589e986",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-24",
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 25,
+      "extracted_locator": "extracted.md lines 18-22 (common-divisor motivation), 67-83 (Theorem A/B), and 179-188 (Theorem 2)",
+      "exact_source_locator": "PDF pp. 740--742 / extracted.md lines 18--22 and 67--83: the common-divisor motivation and Theorems A/B state coefficient-growth versus small-form decay; PDF pp. 747--748 / extracted.md lines 179--188 give Theorem 2's effective-height refinement. The source supports the general height comparison, not the q-Apéry cross-base law.",
+      "exact_anchor": "Theorem A and Theorem 2: coefficient-growth versus small-form decay, with common-divisor improvements to effective height.",
+      "supports": "The standard effective-height comparison used to interpret GAP.",
+      "does_not_support": "Any q-Apéry cross-base asymptotic or 3/2 numerical identification."
+    }
+  ],
+  "evidence_set": {
+    "local": [
+      "PadeThresholdLawLab.md",
+      "erdos1049_pade_threshold_law.py",
+      "research_packet.json"
+    ],
+    "external": [
+      "Amdeberhan--Zeilberger 1998",
+      "Van Assche 2001",
+      "Fischler--Zudilin 2010"
+    ],
+    "evidence_class_split": {
+      "q_generic_seeds_and_finite_matches": "exact computation over tested rational bases",
+      "kappa_and_phi_decomposition": "measured asymptotic identification, not derived",
+      "GAP_sign_at_3_over_2": "finite/calibrated diagnostic",
+      "irrationality_or_scalar_no_go": "not established"
+    }
+  },
+  "search_scope": {
+    "completed_at": "2026-08-25",
+    "repositories_and_sources": [
+      "Erdos1049 packet, PadeThresholdLawLab.md, probe, existing q-Apéry routes, and reviewer-card inventory",
+      "bounded primary-source comparison for q-Apéry, little-q-Legendre, and effective-height criteria"
+    ],
+    "exact_queries": [
+      "q-Apéry Padé rational base exponent clearing",
+      "little q Legendre Lambert series height decay",
+      "phi weighted cyclotomic clearing asymptotic q Apery",
+      "3/pi^2 q Apéry threshold"
+    ],
+    "negative_finding": "No primary source was found for the exact cross-base kappa law or the term-by-term phi decomposition.",
+    "limitation": "Finite calibration and numerical agreement are not evidence of a universal asymptotic theorem or novelty."
+  },
+  "comparison_relations": [
+    {
+      "relation": "framework_application",
+      "internal_result": "measured scalar q-Apéry threshold",
+      "known_result": "q-Apéry/little-q-Legendre Padé and effective-height frameworks",
+      "delta": "The local work maps a tested family across rational bases and proposes a candidate exponent law; it does not add a proved criterion."
+    },
+    {
+      "relation": "architecture_filter",
+      "internal_result": "GAP(3/2)>0 in the measured scalar family",
+      "known_result": "#1049 effective-height budget",
+      "delta": "The measured gap supports route triage, but nonvanishing and all-index arithmetic cancellation remain separate obligations."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "empirical asymptotic pattern with several unproved universal steps; the hard question is derivation, not regression",
+    "slow_down_at": "the transition from three-point estimates and finite base calibration to the asserted kappa law and phi-weighted decomposition",
+    "automation_can_establish": [
+      "exact recurrence seeds and finite rational-base matches",
+      "the seven probe falsifiers and their numerical thresholds",
+      "source/probe hash parity"
+    ],
+    "human_judgment_required": [
+      "whether the q-generic convergence has a proof for every rational q>1",
+      "whether the primitive-height decomposition can be derived uniformly",
+      "whether the measured law is useful enough for a public architecture map despite lacking theorem status"
+    ],
+    "review_act": "One bounded expert act: audit one all-index derivation of the kappa/phi decomposition; absent that, keep the object explicitly measured."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The exact probe and source note report a calibrated cross-base pattern for the scalar q-Apéry family, including a positive measured GAP at 3/2 and a candidate threshold near 1/2-1/pi^2. The abstract height-versus-decay balance is standard and the full #1049 problem remains open.",
+    "forbidden_wording": [
+      "The 3/pi^2 clearing law is proved.",
+      "The scalar Padé family is ruled out at every index by theorem.",
+      "The threshold is exact for all rational bases.",
+      "The finite probe proves irrationality or a #1049 solution.",
+      "The fitted constant is a new theorem or priority result."
+    ],
+    "open_boundary": "Uniform recurrence convergence, primitive-height asymptotics, phi decomposition, nonvanishing, and any implication beyond the measured scalar family remain open."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "effective-height accounting for scalar q-Apéry Padé forms",
+    "disposition": "subordinate the measured law beneath the effective-height budget as a calibrated architecture map; do not split it into a threshold theorem or scalar impossibility headline",
+    "paper_disposition": "technical appendix / measured route boundary",
+    "paper_section": "Empirical scalar q-Apéry threshold: calibration, not a theorem",
+    "comparator_advisory": "No independent Comparator proposition is justified while the cross-base law and phi decomposition remain measured. The existing ordinary effective-height balance is the appropriate status-tagged interface.",
+    "human_understanding_delta": "The paper can use the cross-base data to explain why 3/2 misses the scalar architecture, without laundering fitted asymptotics into a universal theorem.",
+    "expert_attention_reason": "The route is useful only if the proof/measurement boundary stays visible; one derivation audit is more valuable than more base scans."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "exact computation and authored asymptotic interpretation",
+    "output_stage": "claim-boundary and attribution support",
+    "artifact": "pade_threshold_law_v0 prior-art route",
+    "human_understanding_delta": "Converts an apparent exact threshold into a calibrated architecture map with explicit unproved asymptotic obligations.",
+    "verification_state": "Probe and source hashes are current; finite falsifiers pass; no Lean or all-index asymptotic proof is claimed.",
+    "publication_or_review_state": "Internal route correction; reader-facing use should be status-tagged measured evidence beneath the effective-height section.",
+    "canonicalization_state": "One measured scalar-family object is subordinated under the existing effective-height mechanism; no new theorem card or interface is created.",
+    "unresolved_downstream_bottleneck": "Uniform derivation of the kappa/phi law and separate nonvanishing/height proof obligations.",
+    "next_stage_owner": "Mathematics Refinery for any consolidation into the effective-height paper section; Novelty Observatory only after a new source generation or all-index proof appears."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "pade_threshold_law_v0@packet-5e8eec99-source-note-bb6a45c9",
+    "evidence_class": "exact_finite_numerical_probe_plus_authored_asymptotic_interpretation_no_all_index_theorem",
+    "closest_known_result": "q-Apéry/Little-q-Legendre constructions and Fischler--Zudilin effective-height criteria supply the established framework; the fitted cross-base kappa/phi law and positive 3/2 GAP are source-specific measurements.",
+    "comparison_relation": "Calibrated scalar-family architecture map beneath the effective-height budget, not a scalar Padé impossibility theorem.",
+    "exact_delta": "The local work maps a tested scalar family across rational bases and proposes a candidate threshold, but does not derive the law uniformly or prove nonvanishing and clearing asymptotics.",
+    "disconfirming_evidence": "The primary q-Apéry and effective-height sources establish the surrounding architecture but do not imply the measured 3/pi^2 law or a universal threshold.",
+    "confidence_ceiling": "Strong only for the measured diagnostic; zero for a universal theorem, scalar impossibility, priority, irrationality, or #1049 solution.",
+    "significance": "Medium as construction triage: it prices a known scalar family and identifies the obligations any proposed scalar construction must pay, while more scans cannot replace the missing derivation.",
+    "hard_step": "Derive uniform recurrence convergence, primitive-height asymptotics, the phi-weighted clearing decomposition, and nonvanishing before interpreting the fitted law mathematically.",
+    "open_boundary": "Uniform asymptotic derivation, primitive nonvanishing, height control, and any implication beyond the measured scalar family remain open.",
+    "bounded_expert_act": "Audit one base-to-base fit against the source note and identify the first unproved asymptotic step; keep the object explicitly measured absent a derivation.",
+    "reentry_trigger": "Reopen on an all-index derivation, nonvanishing/height theorem, source correction, packet/probe change, or disconfirming computation.",
+    "source_version_binding": {
+      "packet_commit": "5e8eec99fb5bdd2190d2ee3dbdc70291a287e8b1",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "packet_sha256": "66a01b727379394c8f5f459ceb7f7eeb9a34499b034966f27b6a702d8d83ba01",
+      "source_note": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/PadeThresholdLawLab.md",
+      "source_note_sha256": "bb6a45c9f3deb4df9f87d03d3afd911a61c86f236886c4d6ce07fac0981e38e9",
+      "probe": "formal_math/probes/erdos1049_pade_threshold_law.py",
+      "probe_sha256": "4a071982f5cbb230a99e34e729f8970c1ed8f30ae469798e1a67896d2ddc35af",
+      "primary_source_locators": [
+        "Amdeberhan–Zeilberger 1998, Sections 1.3–1.7",
+        "Van Assche 2001, Introduction and Sections 2–3",
+        "Fischler–Zudilin 2010, Theorems A and 2"
+      ],
+      "parity_status": "The exact probe, source note, packet, and cited classical frameworks are bound; no Lean or all-index asymptotic proof is claimed."
+    },
+    "classification": {
+      "evidence_class": "exact finite numerical probe plus authored asymptotic interpretation; no all-index theorem",
+      "closest_prior_art": "q-Apéry/Little-q-Legendre constructions and effective-height criteria are established; the fitted cross-base kappa/phi law and positive 3/2 GAP are source-specific measurements, not located literature theorems.",
+      "comparison_relation": "Calibrated scalar-family architecture map beneath the effective-height budget, not a scalar Padé impossibility theorem.",
+      "novelty_confidence": "strong internal provisional case for the measured diagnostic only; zero for a theorem or priority claim",
+      "significance_grade": "medium_route_triage_diagnostic",
+      "why_care": "It explains why the known scalar q-Apéry family appears to miss the 3/2 target and identifies the exact asymptotic obligations any proposed scalar construction must pay.",
+      "hard_step": "Prove uniform recurrence convergence, primitive-height asymptotics, the phi-weighted clearing decomposition, and nonvanishing before interpreting the fitted law mathematically.",
+      "natural_friction": "Finite base scans and fitted constants can look exact; the source must keep calibration, asymptotic interpretation, and theorem status visibly separate.",
+      "disconfirming_evidence": "Amdeberhan–Zeilberger, Van Assche, and Fischler–Zudilin establish the surrounding architecture but do not imply the measured 3/pi^2 law or a universal threshold."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The exact probe reports a cross-base scalar q-Apéry pattern, including a positive measured GAP at 3/2 and a candidate threshold near 1/2−1/pi^2; the general height-versus-decay balance is standard.",
+      "rejected_stronger": [
+        "the 3/pi^2 clearing law is proved",
+        "the scalar family is ruled out at every index",
+        "the threshold is exact for all rational bases",
+        "the finite probe proves irrationality or solves Erdős #1049",
+        "the fitted constant is a new theorem or priority result"
+      ],
+      "open_boundary": "Uniform asymptotic derivation, primitive nonvanishing, height bounds, and any implication beyond this measured scalar family remain open."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "effective-height accounting for scalar q-Apéry Padé forms",
+      "disposition": "subordinate as one calibrated route boundary beneath rational_approximation_exponent_budget; do not create a threshold theorem or scalar impossibility headline",
+      "paper_disposition": "technical appendix / measured route boundary in 'Empirical scalar q-Apéry threshold: calibration, not a theorem'",
+      "supersession_or_consolidation": "Consolidate cross-base measurements, fitted GAP, and proof obligations into one architecture map; retire duplicate base-scan fragments.",
+      "expert_attention_reason": "The useful question is whether the asymptotic law can be derived; more scans do not substitute for that proof and should not consume expert attention.",
+      "independent_comparator_interface_justified": "No independent Comparator proposition for the fitted law; the existing ordinary effective-height balance is the appropriate status-tagged interface."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "measurement-heavy diagnostic with unverified asymptotic consumer",
+      "slow_down_at": "Separate exact finite values from fitted asymptotics and check every implied uniformity/nonvanishing premise.",
+      "automation_establishes": "The declared probe outputs, finite falsifiers, and source hashes.",
+      "expert_judgment_required": "Whether an all-index derivation of the kappa/phi law exists and whether the scalar family can be ruled out rigorously.",
+      "bounded_expert_act": "Audit one base-to-base fit against the source note and list the first unproved asymptotic step; do not repeat scans.",
+      "reentry_condition": "Reopen only when an all-index derivation, nonvanishing/height theorem, source correction, or disconfirming computation appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "exact computation and authored asymptotic interpretation",
+      "output_stage": "claim-boundary and route-triage understanding",
+      "artifact": "pade_threshold_law_v0",
+      "human_understanding_delta": "Turns an apparent exact threshold into a calibrated architecture map with explicit unproved obligations.",
+      "verification_state": "Probe and source hashes are current; no Lean or all-index asymptotic proof.",
+      "publication_or_review_state": "Suitable for a status-tagged technical appendix, not a theorem or endpoint claim.",
+      "canonicalization_state": "One measured scalar-family object beneath the effective-height parent.",
+      "unresolved_downstream_bottleneck": "Uniform derivation of the kappa/phi law plus nonvanishing and height control.",
+      "next_stage_owner": "Mathematics Refinery for consolidation into the effective-height section; proof owners only after an all-index derivation lands."
+    }
+  }
+}

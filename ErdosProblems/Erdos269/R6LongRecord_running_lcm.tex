@@ -1,0 +1,37 @@
+% Companion long-record migration for Erdős #269 round 6.
+% Destination label: supporting extract of original sec:lcm (compressed identity retained in the short note)
+% Not frozen R. Not a blind \input. Labels may collide with the short note;
+% assign destination labels as specified in R6LongRecordMigrations.md.
+% Extracted from Type B edits/relocation_extracts.tex.
+
+\section{The running least common multiple as a product of pure powers}\label{sec:lcm}
+
+\begin{proposition}[the running least common multiple]\label{res:lcm}
+Let $p,q,r$ be pairwise distinct primes and $x\ge1$.  Then
+$\Lprefix(x)=\hgt(x)$.
+\end{proposition}
+
+\begin{proof}
+For divisibility in one direction, every smooth $n\le x$ has exponents bounded
+by the corresponding integer logarithms, so $n\mid\hgt(x)$, and hence
+$\Lprefix(x)\mid\hgt(x)$.  For the other, the three pure powers
+$p^{\lfloor\log_p x\rfloor}$, $q^{\lfloor\log_q x\rfloor}$ and
+$r^{\lfloor\log_r x\rfloor}$ are themselves smooth numbers not exceeding $x$,
+so each divides $\Lprefix(x)$.  Distinct primes have coprime powers, so their
+product divides $\Lprefix(x)$ as well.  The two divisibilities give equality.
+\end{proof}
+
+\begin{proposition}\label{res:cube}
+For every $x\ge1$, $\hgt(x)\le x^{3}$.
+\end{proposition}
+
+\begin{proof}
+Each of the three factors is a power of its base not exceeding $x$.
+\end{proof}
+
+The opposite estimate follows from
+$x/b<b^{\lfloor\log_b x\rfloor}$ for each $b\in\{p,q,r\}$:
+\[
+ \frac{x^3}{pqr}<\hgt(x)\le x^3.
+\]
+In particular the reciprocal kernel is summable over the exponent lattice.

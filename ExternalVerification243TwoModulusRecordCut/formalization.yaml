@@ -1,0 +1,207 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erd\u0151s #243: the two-modulus record cut and its sharpness at jump five"
+  description: >-
+    Two declarations. The finite cut shows that no primitive step crosses a
+    height congruent to five modulo six with a jump of at most four, when two
+    moduli greater than one divide the height and the height plus two and both
+    divide the next reduced denominator. The orbit form assumes those moduli
+    persist in the reduced denominator and every record-setting jump is at most
+    four, and concludes that the orbit never reaches the height. Persistence is
+    a hypothesis, the cut is sharp at jump four, and Erdős #243 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243TwoModulusRecordCut/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243TwoModulusRecordCut/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_result"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "Lean elaboration of Challenge, Solution, NegativeSolution and AxiomAudit has not been run in this pass; the host build slot was occupied and the check is deferred to the next governed build"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This extends the odd protected cut of PrimitiveRecordBarrier from record
+    jumps of size at most two to size at most four, replacing the prime-power
+    protection machinery by bare persistence hypotheses. It is a cut, not a
+    supply lemma, and it dominates no packaged entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11A05", "11B37"]
+
+sources:
+  - title: "The two-modulus record cut for reciprocal tail dynamics"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      One forbidden landing no longer suffices once jumps reach four, because
+      there are five candidate landings. Two moduli kill two of them against
+      coprimality of the next pair; the congruence on the height does the rest,
+      since it makes the height plus one divisible by six and so collide in turn
+      with the three numerators three, two and one below the height. The source
+      module also records a genuine primitive step that crosses both forbidden
+      landings in a single jump of size five, so no purely congruential
+      strengthening of these hypotheses extends the cut.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status. The result below is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Two compared theorems: the finite step cut and its orbit-level consequence.
+    Challenge.lean has two intentional Comparator specification sorries;
+    Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    The only deliberate placeholders are the trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_cut"
+      file: "ExternalVerification243TwoModulusRecordCut/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243TwoModulusRecordCut/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorem `two_modulus_cut` in ErdosProblems/Erdos243/TwoModulusRecordCut.lean, committed at 447d8f4b1b8d6c46e75d41276fc92e79323a7500
+        (module SHA-256 c7d890fc04e2700d01f4e7edcc37e37c38d3cf489be421f0affa0c96e3f23bad). This packaging pass did not run Lean;
+        elaboration is pending the next governed build.
+      novelty_status: "unassessed"
+      contribution_class: "finite congruential cut on one primitive crossing step"
+      statement: >-
+        If `H % 6 = 5`, `m ∣ H`, `l ∣ H + 2`, `1 < m`, `1 < l`, `m ∣ v'`,
+        `l ∣ v'`, `Nat.Coprime u' v'`, `Nat.Coprime u u'`, `u < H`, `H ≤ u'` and
+        `u' ≤ u + 4`, then `False`.
+      boundary: >-
+        The cut is sharp at jump four. The source module records the primitive
+        step `u = 33`, `v = 7585`, `a = 231`, `u' = 38` crossing `H = 35` past
+        both forbidden landings with coprime endpoints in one jump of size five,
+        so no purely congruential strengthening of these hypotheses reaches jump
+        five. It settles nothing about Erdős #243.
+      comparator_declaration: "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_cut"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_record_cut"
+      file: "ExternalVerification243TwoModulusRecordCut/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243TwoModulusRecordCut/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorem `two_modulus_record_cut` in ErdosProblems/Erdos243/TwoModulusRecordCut.lean, committed at 447d8f4b1b8d6c46e75d41276fc92e79323a7500
+        (module SHA-256 c7d890fc04e2700d01f4e7edcc37e37c38d3cf489be421f0affa0c96e3f23bad). This packaging pass did not run Lean;
+        elaboration is pending the next governed build.
+      novelty_status: "unassessed"
+      contribution_class: "conditional orbit-level height cut under assumed modulus persistence"
+      statement: >-
+        Under the primitive-step relations from an index `s`, with `1 < m`,
+        `1 < l`, `H % 6 = 5`, `m ∣ H`, `l ∣ H + 2`, `m ∣ v n` and `l ∣ v n` for
+        all `n ≥ s`, `runningMax u s < H`, and every record-setting step from `s`
+        rising by at most four, the orbit satisfies `u n < H` for all `n ≥ s`.
+      boundary: >-
+        Persistence of the two moduli in the reduced denominator is a hypothesis,
+        not a conclusion. Discharging it for primes that never leave the
+        denominator is an open analytic input of the same shape as the supply
+        hypothesis of the odd protected cut. No hypothesis is imposed at
+        non-record steps and no bound is imposed on the cancellation factors.
+        Erdős #243 remains open.
+      comparator_declaration: "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_record_cut"
+      literature_dependencies: []
+
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Anthropic Claude"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner. No terminal replay receipt is recorded here.
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The finite cut is stated in Mathlib-only vocabulary and transports
+    verbatim. The orbit form uses a local running maximum shown equal to the
+    corpus definition. No claim is added beyond the checked declarations.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source statements, their exact hypotheses and the open-problem
+    boundary were reviewed by reading the source module. Focused Lean, axiom
+    and Comparator replay remain distinct gates and are all pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243TwoModulusRecordCut"
+  statements:
+    - source: "ErdosProblems.Erdos243.two_modulus_cut."
+      lean: "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_cut"
+      module: "ExternalVerification243TwoModulusRecordCut/Challenge.lean"
+      status: "exact-transport-pending-check"
+      note: >-
+        The Challenge restates the source theorem with identical vocabulary.
+    - source: "ErdosProblems.Erdos243.two_modulus_record_cut."
+      lean: "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_record_cut"
+      module: "ExternalVerification243TwoModulusRecordCut/Challenge.lean"
+      status: "exact-transport-pending-check"
+      note: >-
+        The Challenge exposes the source declaration with the corpus running
+        maximum replaced by a local definition of the same primitive recursion.
+
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

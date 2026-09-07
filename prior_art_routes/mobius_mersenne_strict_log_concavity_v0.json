@@ -1,0 +1,273 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "mobius_mersenne_strict_log_concavity",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_apparently_unlocated_sequence_specific_all_rungs_sign_theorem",
+  "problem_id": "erdos_249",
+  "purpose": "Separate the sequence-specific all-rungs sign theorem from its classical moment-theoretic consequence and record the nearest Möbius--Lambert framework without inferring priority.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/mobius_mersenne_strict_log_concavity.card.json",
+    "card_commit": "d2160ba73fbfb65a2e2da0c7dee0fbec6fd2d4d5",
+    "landed_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+    "verifier_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/verify_mobius_mersenne_hankel.py",
+    "headline_declarations": [
+      "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_strict_logConcave",
+      "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_hankel_two_neg"
+    ]
+  },
+  "classification": {
+    "theorem_class": "all_index_strict_log_concavity_for_a_specific_Mobius_weighted_reciprocal_power_sequence",
+    "novelty_class": "apparently_unlocated_sequence_specific_candidate_result_with_classical_Stieltjes_moment_corollary",
+    "formalization_class": "Lean_checked_all_rungs_theorem_with_exact_finite_low_rung_and_uniform_tail_components",
+    "priority_claim": "none",
+    "recommended_terminology": "strict log-concavity of the Möbius-weighted Mersenne reciprocal power sums",
+    "acceptable_project_alias": "Möbius--Mersenne signed-Hankel obstruction",
+    "terminology_boundary": "Log-concavity, Hankel minors, Stieltjes moments, and signed moments are standard terms. Möbius--Mersenne ladder and signed-Hankel obstruction are descriptive project packaging, not located standard names.",
+    "nearest_prior_work": [
+      "Wang and Zhu (2016), Corollary 2.3 and Theorem 2.4, place Stieltjes moment sequences on the opposite side: their adjacent Hankel minors are positive and the sequences are infinitely log-convex.",
+      "Merca and Schmidt (2017) develop factorization and transformation results for Lambert series involving the Möbius and Euler totient functions, supplying a nearby transform framework.",
+      "Neither source defines the full reciprocal-power sequence Theta_r=sum_d mu(d)/(2^d-1)^r or proves its strict reverse Hankel inequality."
+    ],
+    "attribution": "Attribute the Stieltjes-moment obstruction to the classical Hankel-positivity criterion, with Wang--Zhu as a modern exact anchor. Attribute the all-rungs sequence-specific sign theorem and its dominant-two-atom proof to the local Lean source, while describing it only as apparently unlocated pending specialist review.",
+    "mathematical_interest": "Moderate standalone interest: an arithmetic signed discrete moment sequence has every adjacent Hankel minor strictly negative, proved uniformly rather than experimentally. This is a genuine structural theorem even though it is far below irrationality or infinite-rank conclusions.",
+    "reusable_scope": "Dominant-finite-atom plus contracting-tail proofs of Hankel-sign laws for signed reciprocal-power sums and signed Lambert/Möbius transforms.",
+    "why_it_matters": "It rigorously kills every nonnegative Stieltjes-moment explanation of this ladder and converts a finite numerical pattern into an all-index invariant, while making clear that signed measures and higher Hankel rank remain untouched."
+  },
+  "primary_sources": [
+    {
+      "id": "wang_zhu_2016_logconvex_Stieltjes",
+      "title": "Log-convex and Stieltjes moment sequences",
+      "authors": [
+        "Yi Wang",
+        "Bao-Xuan Zhu"
+      ],
+      "venue": "Advances in Applied Mathematics 81 (2016), 115-127",
+      "doi": "10.1016/j.aam.2016.06.008",
+      "url": "https://arxiv.org/abs/1612.04114",
+      "exact_anchor": "Section 2: Lemma 2.2 characterizes Stieltjes moment sequences by positive-definite Hankel matrices for the sequence and its shift; Corollary 2.3 gives positive adjacent order-two Hankel minors; Theorem 2.4 gives infinite log-convexity.",
+      "supports": "The exact classical-side implication refuted by the card: a Stieltjes moment sequence must be log-convex, so a negative adjacent Hankel minor obstructs such a representation.",
+      "does_not_support": "The Möbius--Mersenne sequence, its strict log-concavity, or any novelty claim for the local theorem."
+    },
+    {
+      "id": "merca_schmidt_2017_Lambert_factor_pairs",
+      "title": "New Factor Pairs for Factorizations of Lambert Series Generating Functions",
+      "authors": [
+        "Mircea Merca",
+        "Maxie D. Schmidt"
+      ],
+      "year": 2017,
+      "url": "https://arxiv.org/abs/1706.02359",
+      "exact_anchor": "Sections 1.1-1.2 introduce the Lambert-series factorization framework and name Möbius and Euler totient applications; Theorems 2.1 and 2.9 give generalized factorization identities, with further transformations in Section 3.",
+      "supports": "A nearby primary framework for arithmetic-function-weighted Lambert transformations involving both Möbius and totient functions.",
+      "does_not_support": "Powers of the Mersenne reciprocal denominator, adjacent Hankel signs, the two-atom tail proof, or an Erdős #249 result."
+    }
+  ],
+  "mechanism_comparison": {
+    "local_sequence": "Theta_r is the r-th power moment of the signed discrete atomic measure sum_d mu(d) delta_(1/(2^d-1)). Its signed weights remove every automatic Hankel-positivity conclusion.",
+    "local_proof": "The source isolates the atoms d=1,2, whose exact reverse-Hankel gap dominates a geometrically contracting signed tail after r=5; the exact verifier and Lean enclosures settle r=1,2,3,4. The packet's analytic core, eventual induction, verifier, and all-rungs ladder are four stages of this proof, not four independent results.",
+    "moment_literature_relation": "Positive Stieltjes moment theory predicts log-convexity, exactly the opposite sign. It supplies the corollary, not the hard sequence-specific inequality.",
+    "Lambert_literature_relation": "General Möbius/totient Lambert transformations explain why the first rungs are natural arithmetic objects, but the searched literature did not supply an all-rungs Hankel theorem.",
+    "exact_delta": "A complete all-index strict sign law for this exact sequence, with a machine-checked finite/uniform proof split and an honest higher-rank boundary."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "sum mu(d)/(2^d-1)^r log concavity",
+      "Mobius Mersenne Hankel determinant",
+      "Mobius weighted Mersenne reciprocal power sums",
+      "signed moment sequence negative Hankel minors Mobius",
+      "generalized Lambert series powers denominator Mobius",
+      "binary totient series Mobius transform Hankel"
+    ],
+    "result": "Exact-formula, descriptive-name, Möbius--Lambert, signed-moment, and Hankel searches located the standard positive-moment criterion and broad Lambert transform literature, but no statement of the all-rungs strict inequality for this sequence.",
+    "boundary": "This is evidence for an apparently unlocated candidate result, not proof of novelty or priority. Specialist review and wider historical searching can revise the classification."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked all-rungs theorem gives strictly negative adjacent order-two Hankel minors for the Möbius-weighted Mersenne reciprocal power sums; no antecedent was located in the documented search, while the resulting positive-Stieltjes obstruction is classical.",
+    "forbidden_wording": [
+      "This is the first proof of the theorem.",
+      "The Möbius--Mersenne ladder is an established sequence name.",
+      "Every higher Hankel determinant is nonzero or negative.",
+      "The sequence has infinite Hankel rank.",
+      "The signed atomic representation is impossible.",
+      "This proves irrationality of the binary totient series or solves Erdős Problem 249."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_higher_Hankel_sign_theorem",
+      "not_an_infinite_rank_theorem",
+      "not_a_signed_moment_obstruction",
+      "not_erdos_249_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/mobius_mersenne_strict_log_concavity.card.json",
+      "effect": "Replace pending status with the apparently-unlocated sequence-specific classification, classical moment attribution, exact terminology boundary, and no-priority wording."
+    },
+    {
+      "consumer": "Erdős #249 proof fleet",
+      "effect": "Retire positive-Stieltjes models for this ladder, but do not infer higher-rank or denominator consequences; signed and higher-order mechanisms remain open."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the all-rungs sign theorem as a candidate sequence-specific result deserving specialist review, and present the Stieltjes obstruction as its classical corollary."
+    }
+  ],
+  "source_result_ids": [
+    "mobius_mersenne_hankel_analytic_core",
+    "mobius_mersenne_eventual_strict_log_concavity",
+    "mobius_mersenne_hankel_ladder",
+    "mobius_mersenne_hankel_exact_verifier"
+  ],
+  "expert_review_support": {
+    "talk_state": "expert_talk_ready",
+    "hard_step": "Uniformly dominate all signed tail perturbations by the exact two-atom Hankel gap after r=5, then discharge the first four rungs exactly.",
+    "natural_friction": "The contraction constants and exceptional-rung enclosure must remain visible; the classical Stieltjes corollary is not the proof of the arithmetic sign law.",
+    "evidence_separation": "Lean checks the all-rungs theorem, the exact verifier supports the finite arithmetic, moment theory supplies only the positive-measure corollary, and no higher-order Hankel conclusion is proved.",
+    "surviving_routes": "signed-measure models, higher-rank or higher-order Hankel structure, residue-gap arguments, and direct denominator methods"
+  },
+  "digestion_assessment": {
+    "significance_grade": "A_minus_method_boundary",
+    "attention_priority": "high within #249, medium programme-wide",
+    "consolidation_verdict": "one theorem stack, not four producer promotions",
+    "expert_review_gap": "independent tail-constant and low-rung review plus broader historical search"
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "canonical Mersenne residue-gap endpoint with signed-moment and positive-model route obstructions",
+    "disposition": "subordinate under canonical_mersenne_residue_gap_normal_form as one irreducible route-killing boundary",
+    "consolidation_relation": "Keep the two-atom gap, tail contraction, exact exceptional rungs, all-index fan-in, and Stieltjes corollary as one object. Do not promote separate rungs, ranks, or positivity corollaries.",
+    "comparator_advisory": "One bundled all-rungs adjacent-Hankel sign interface is justified; no separate interfaces for the proof stages or classical corollary.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why positive moment models fail: strict reverse Hankel signs",
+      "supersession_or_consolidation": "Use one boundary section beneath the canonical residue-gap endpoint and retire fragmented positive-rank-one narratives.",
+      "reason": "The theorem kills the positive Stieltjes model class exactly while leaving signed, higher-rank, and endpoint mechanisms open."
+    }
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_249.md",
+    "section": "Why positive moment models fail: strict reverse Hankel signs",
+    "canonical_mechanism_family": "canonical Mersenne residue-gap endpoint with signed-moment and positive-model route obstructions",
+    "relation": "One all-rungs route-killing theorem stack beneath the canonical endpoint; the Stieltjes obstruction is a classical corollary, not a second result.",
+    "understanding_delta": "Strictly negative adjacent Hankel minors exclude every nonnegative Stieltjes representation while showing exactly which signed and higher-rank possibilities survive.",
+    "evidence_boundary": "Lean and exact finite verification cover order-two signs only; no higher Hankel, infinite-rank, denominator, novelty, or irrationality conclusion follows.",
+    "hard_step": "Dominate the signed tail uniformly and verify the four exceptional rungs exactly.",
+    "meaningful_failed_route": "Use a positive moment or rank-one model for the Möbius--Mersenne ladder.",
+    "open_remainder": "Find a surviving signed or higher-rank mechanism connected to the canonical residue-gap supply."
+  },
+  "source_generation": {
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+      "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004"
+    },
+    "verifier": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/verify_mobius_mersenne_hankel.py",
+      "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "sha256": "200f1d4ffb49ffac7044cec4e88633c655410bebd072324e95a2fc73a1281c23"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/mobius_mersenne_strict_log_concavity.card.json",
+      "commit": "d2160ba73fbfb65a2e2da0c7dee0fbec6fd2d4d5",
+      "sha256": "fb796ff166743380960b0eac735a94b21150be8980e4d59a497fbc52c622ae43"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "source_result_ids": [
+        "mobius_mersenne_hankel_analytic_core",
+        "mobius_mersenne_eventual_strict_log_concavity",
+        "mobius_mersenne_hankel_ladder",
+        "mobius_mersenne_hankel_exact_verifier"
+      ]
+    },
+    "status": "committed_source_card_packet_current"
+  },
+  "adjudication_currentness": {
+    "status": "committed_source_card_packet_current_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "verifier_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "verifier_sha256": "200f1d4ffb49ffac7044cec4e88633c655410bebd072324e95a2fc73a1281c23",
+      "reviewer_card_commit": "d2160ba73fbfb65a2e2da0c7dee0fbec6fd2d4d5",
+      "reviewer_card_sha256": "fb796ff166743380960b0eac735a94b21150be8980e4d59a497fbc52c622ae43",
+      "research_packet_commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "research_packet_sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "source_result_ids": [
+        "mobius_mersenne_hankel_analytic_core",
+        "mobius_mersenne_eventual_strict_log_concavity",
+        "mobius_mersenne_hankel_ladder",
+        "mobius_mersenne_hankel_exact_verifier"
+      ]
+    },
+    "claim_guard": "Only the all-rungs adjacent order-two Hankel sign law and its classical positive-Stieltjes obstruction are bound; the packet overlay is excluded and no higher-rank, signed-measure, irrationality, or priority claim is allowed.",
+    "reentry_trigger": "Re-enter when the packet overlay lands, the source/card generation changes, an exact external antecedent is found, or a higher-order signed-moment consequence is proved."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "All-rungs order-two Hankel sign theorem with a uniform tail estimate and four exact exceptional rungs; the positive-Stieltjes consequence is classical.",
+    "slow_down_at": "Check the dominant-two-atom/tail inequality and keep the order-two boundary distinct from any higher-rank or signed-measure claim.",
+    "review_act": "One bounded expert act: crosswalk the strict sign theorem against signed-moment/Hankel terminology and verify that the positive-Stieltjes corollary is the only measure-theoretic consequence used."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "mobius_mersenne_strict_log_concavity@source-4cd4eac-card-bed5d640-packet-924ab4d",
+    "source_generation_binding": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "verifier_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "verifier_sha256": "200f1d4ffb49ffac7044cec4e88633c655410bebd072324e95a2fc73a1281c23",
+      "reviewer_card_commit": "bed5d640bb643a8902b520af15118d6a2233690f",
+      "reviewer_card_sha256": "bd2154615b9248e3695e27e375e8b4b4e802cd95cfb9382a45b5ca7019b350d3",
+      "research_packet_commit": "924ab4d01355ce2975541923a344be4617640247",
+      "research_packet_sha256": "ac1f30fb17a25f99d5f09c9797a2cdc652fef26061425a30ef83e72710c27c0e",
+      "packet_overlay_status": "uncommitted_nonowned_overlay_excluded"
+    },
+    "evidence_class": "Lean_checked_all_rungs_strict_Hankel_sign_theorem_with_exact_finite_verifier",
+    "closest_known_result": "Wang--Zhu's Stieltjes-moment criteria and infinite log-convexity, Coons's totient non-k-regularity, and Merca--Schmidt's Möbius/Lambert transformations are the nearest frameworks; none states this exact Möbius--Mersenne all-rungs sign law.",
+    "comparison_relation": "Hankel positivity and Stieltjes moment criteria are classical; Wang–Zhu supplies the opposite positive-log-convexity framework. The all-rungs negative sign for this Möbius-weighted Mersenne sequence is source-specific and apparently unlocated in the bounded search, not a priority claim.",
+    "exact_delta": "The source-specific contribution is an all-rungs adjacent order-two sign law for the Möbius-weighted Mersenne reciprocal-power sequence, upgrading finite sign evidence to a uniform positive-Stieltjes-model obstruction without claiming any higher-order sign law.",
+    "disconfirming_evidence": "Coons's prior non-k-regularity and standard Hankel/Stieltjes criteria already cover the broad obstruction framework; finite checks are not the all-rungs proof, and the uncommitted packet overlay is excluded from this snapshot.",
+    "confidence_ceiling": "High for source/card/committed-packet parity and the stated adjacent-minor theorem; medium for exact external antecedent matching; low for any higher-rank or originality inference.",
+    "claim_ceiling": "Lean proves strictly negative adjacent order-two Hankel minors for the stated Θ_r sequence for every r≥1, yielding only the classical positive-Stieltjes-moment obstruction; no higher-rank, signed-measure, irrationality, or priority claim.",
+    "significance_assessment": {
+      "grade": "medium_attention_route_killing_boundary",
+      "why_care": "It turns a finite sign pattern into an all-index obstruction to positive Stieltjes-moment models, eliminating one explanatory route for #249 while preserving signed and higher-rank alternatives.",
+      "mechanism_family": "Möbius-weighted Mersenne reciprocal moments and strict reverse Hankel signs",
+      "hard_step": "Uniform dominant-two-atom plus contracting-tail control across every rung; the downstream #249 producer remains unrelated and open.",
+      "open_boundary": "No higher Hankel sign, infinite-rank, signed-measure impossibility, irrationality, or #249 solution follows."
+    },
+    "hard_step": "Uniformly dominate the contracting Möbius tail by the exact two-atom Hankel gap across every rung while discharging the exceptional first four rungs exactly.",
+    "open_boundary": "No bridge to the #249 residue-gap producer is established; higher Hankel structure, signed models, infinite rank, and irrationality remain open.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why positive moment models fail: strict reverse Hankel signs",
+      "relation": "Keep the two-atom proof, tail contraction, exact low-rung checks, and Stieltjes corollary as one boundary object beneath the canonical residue-gap endpoint.",
+      "reason": "The theorem is structurally useful but does not supply the universal residue-gap producer."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "All r≥1 adjacent order-two minors are strictly negative for the stated Θ_r sequence; positive-Stieltjes obstruction only; no higher-Hankel or irrationality claim."
+    },
+    "bounded_expert_act": "Check the dominant-two-atom/tail inequality against standard signed-moment and Hankel terminology, then verify that the positive-Stieltjes corollary is the only measure-theoretic consequence used.",
+    "reentry_trigger": "Re-enter when the packet overlay lands, an exact external antecedent is found, or a higher-order signed-moment consequence is proved."
+  },
+  "parity_audit": {
+    "status": "committed_source_card_packet_parity_with_overlay_boundary",
+    "effect": "The all-rungs Lean source, exact verifier, reviewer card, and committed packet snapshot are hash-pinned. Any later card or packet worktree overlay is not evidence and cannot raise the theorem above adjacent-Hankel signs and the classical positive-Stieltjes obstruction.",
+    "reentry_condition": "When the card or #249 packet overlay lands or is discarded, rerun source/verifier/card/packet parity and preserve the no-priority, no-higher-Hankel, no-infinite-rank, and no-irrationality boundaries."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "mobius_mersenne_strict_log_concavity",
+    "human_understanding_delta": "The all-index sign law is now teachable as an arithmetic dominant-gap proof with a classical moment corollary and an explicit higher-rank boundary.",
+    "verification_state": "Pinned source/verifier/packet hashes are current and the exact verifier passes. Fresh focused Lean replay is capacity-deferred under ticket rct_ddfbb8f7ad3c1c044a59; this is not proof-failure evidence. No new theorem is introduced.",
+    "publication_or_review_state": "Expert-talk and claim-ceiling support are ready; specialist review remains.",
+    "canonicalization_state": "One all-rungs theorem stack with the positive-Stieltjes no-go as its corollary.",
+    "unresolved_downstream_bottleneck": "Independent review and a surviving mechanism that bears on #249 irrationality.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  }
+}

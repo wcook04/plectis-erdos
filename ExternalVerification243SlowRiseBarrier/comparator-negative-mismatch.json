@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243SlowRiseBarrier.Challenge",
+  "solution_module": "ExternalVerification243SlowRiseBarrier.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243SlowRiseBarrier.no_slowRise_reducedTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

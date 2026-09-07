@@ -1,0 +1,148 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #1041: straight-chord selection from quantitative collinear critical-gap data"
+  description: >-
+    Three declarations are compared. The strongest fixes a natural number n at least two, a
+    complex polynomial p, a real number D with 0 < D < 2, and a nonempty finite index type
+    iota, and assumes quantitative collinear critical-family data for p at diameter D and
+    level (D/2)^n / 2^(n-2). That data assigns to each index one critical point and two
+    distinct roots of p, bounds the distance between those two roots by D, bounds the product
+    over all indices of the moduli of p at the critical points by the level raised to the
+    cardinality of iota, and bounds the modulus of p along the straight segment joining the
+    two roots by the modulus of p at the paired critical point. Under those hypotheses some
+    index carries two distinct roots of p joined by a straight segment on which the modulus
+    of p is strictly below one, with the two roots at distance strictly below two. That is
+    the conclusion shape of Erdős Problem 1041 for the selected pair of roots. The second
+    declaration proves the same selection at an arbitrary positive diameter: for every D
+    greater than zero the same data at level (D/2)^n / 2^(n-2) yields an index whose two
+    distinct roots lie at distance at most D and whose joining segment carries modulus of p
+    at most that level. The third declaration is the single-pair consumer. A collinear peak
+    certificate for p at points a, b, c consists of dist a b < 2, modulus of p at c strictly
+    below one, and domination of the modulus of p along the segment from a to b by the
+    modulus of p at c; from that certificate the modulus of p is strictly below one along the
+    whole segment and dist a b < 2. The critical-family fields, in particular the critical
+    product bound and the segment domination, are hypotheses of all three declarations. No
+    declaration constructs such a family from a polynomial. The interval Fekete, resultant,
+    and real-root interlacing arguments that supply those fields sit outside the Lean
+    statements. The mechanism inside Lean is finite geometric-mean selection: a product of
+    Fintype.card iota nonnegative reals bounded by the level raised to that cardinality has
+    a term at most the level, and the arithmetic bound (D/2)^n / 2^(n-2) < 1 for 0 < D < 2
+    and n at least two turns the selected term into the strict lemniscate conclusion. This
+    theorem family is the first presentation recorded in the development and its novelty is
+    unassessed. The hypotheses remain hypotheses, so Erdős Problem 1041 is untouched, and the
+    remaining problem is to derive the critical-family data from an actual collinear-root
+    polynomial.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1041CollinearChord/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1041CollinearChord/formalization.yaml"
+  repository_scope: "private_source_mirrored_into_palomar_release_tree"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_comparator_replay_pending"
+  research_interest_status: "hypothesis_conditional_erdos1041_shaped_chord_selection_from_quantitative_collinear_critical_gap_data"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "focused Lean and axiom checks are pending"
+    - "terminal positive Comparator receipt is pending"
+    - "the critical-family data are assumed and are not constructed from any polynomial"
+
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+
+sources:
+  - title: "Quantitative straight-segment certificates for collinear roots"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development is the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The hypothesis-conditional scope of the critical-family data and the absence of any
+    construction of that data from a polynomial were checked by the author with AI
+    assistance; no independent review is claimed.
+
+status:
+  scope: "Three exact source-backed declarations; one trusted sorry per Challenge theorem."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "axiom_print_pending_the_next_public_ci_run"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041CollinearChord.CollinearScaleCriticalFamily.exists_erdos1041_chord"
+      file: "ExternalVerification1041CollinearChord/Solution.lean"
+      comparator_config: "ExternalVerification1041CollinearChord/comparator.json"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CollinearRootCase.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      novelty_status: "unassessed"
+      boundary: "Selects a chord from assumed critical-family data at diameter D below two; constructs no such data and proves no unconditional statement about any polynomial."
+    - declaration: "Erdos249257.ExternalVerification1041CollinearChord.CollinearScaleCriticalFamily.exists_diameter_chord"
+      file: "ExternalVerification1041CollinearChord/Solution.lean"
+      comparator_config: "ExternalVerification1041CollinearChord/comparator.json"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CollinearRootCase.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      novelty_status: "unassessed"
+      boundary: "Keeps the level (D/2)^n / 2^(n-2) and the diameter budget D at every positive D; the lemniscate conclusion requires D below two."
+    - declaration: "Erdos249257.ExternalVerification1041CollinearChord.polynomial_straightSegment_solution_of_collinearPeak"
+      file: "ExternalVerification1041CollinearChord/Solution.lean"
+      comparator_config: "ExternalVerification1041CollinearChord/comparator.json"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CollinearRootCase.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      novelty_status: "unassessed"
+      boundary: "Consumes one prescribed peak certificate; the certificate fields are hypotheses."
+
+fidelity:
+  divergences: >-
+    The three theorem statements are copied from the source declarations. The Challenge
+    reproduces the source definition realSegment and the source structures
+    CollinearPeakCertificate and CollinearScaleCriticalFamily literally so that the compared
+    statements are self-contained over Mathlib.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041CollinearChord"
+  statements:
+    - source: "ErdosProblems.Erdos1041.CollinearScaleCriticalFamily.exists_erdos1041_chord"
+      lean: "Erdos249257.ExternalVerification1041CollinearChord.CollinearScaleCriticalFamily.exists_erdos1041_chord"
+      module: "ExternalVerification1041CollinearChord/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1041.CollinearScaleCriticalFamily.exists_diameter_chord"
+      lean: "Erdos249257.ExternalVerification1041CollinearChord.CollinearScaleCriticalFamily.exists_diameter_chord"
+      module: "ExternalVerification1041CollinearChord/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1041.polynomial_straightSegment_solution_of_collinearPeak"
+      lean: "Erdos249257.ExternalVerification1041CollinearChord.polynomial_straightSegment_solution_of_collinearPeak"
+      module: "ExternalVerification1041CollinearChord/Challenge.lean"
+      status: "exact-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

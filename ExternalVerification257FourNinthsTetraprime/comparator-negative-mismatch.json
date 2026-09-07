@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257FourNinthsTetraprime.Challenge",
+  "solution_module": "ExternalVerification257FourNinthsTetraprime.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_baseKernel",
+    "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprimePrimeRepair_defect_le_thirty_five",
+    "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_completeCounterexample"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041QuadraticContact.Challenge",
+  "solution_module": "ExternalVerification1041QuadraticContact.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041QuadraticContact.quadratic_contact_absorbs"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

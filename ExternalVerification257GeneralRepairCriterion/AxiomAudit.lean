@@ -1,0 +1,4 @@
+import ExternalVerification257GeneralRepairCriterion.Solution
+
+#print axioms Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs
+#print axioms Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows

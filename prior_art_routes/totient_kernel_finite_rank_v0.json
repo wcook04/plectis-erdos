@@ -1,0 +1,270 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "totient_kernel_finite_rank",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_short_Martin_application_with_apparently_unrecorded_exact_filtration_rank",
+  "problem_id": "erdos_249",
+  "purpose": "Separate known nonregularity and the load-bearing affine-ordering theorem from the exact finite-level rank, basis, and relation-normal-form delta.",
+  "source_result_id": "totient_k_kernel_finite_level_rank_and_basis",
+  "evidence_class": "Authored ordinary all-k proof plus a base-2 Lean slice and primary-source antecedents; not an endpoint or priority claim.",
+  "closest_known_result": "Allouche--Shallit supply the k-kernel/k-regular framework, Coons supplies global totient non-k-regularity, and Martin supplies the affine-form domination input. No bounded primary source located the exact finite-level rank k^e+1 or displayed bases.",
+  "comparison_relation": "The finite-level rank law is a scoped quantitative refinement of known nonregularity, not a new non-k-regularity theorem; its decisive affine-form separation is inherited from Martin.",
+  "exact_delta": "Multiplicative reductions plus Martin's separation give a finite filtration dimension k^e+1, explicit bases, and a relation normal form; only the base-2 instance is Lean-covered.",
+  "disconfirming_evidence": "Coons already gives infinite-rank/non-k-regularity globally; the all-k proof is ordinary and unrefereed; the bounded search found no exact finite-level antecedent but that absence is not priority evidence.",
+  "confidence_ceiling": "High for the base-2 formal slice and source attribution; medium internal provisional for the all-k k^e+1 law being apparently unrecorded; no external priority, general-k formalization, tail bound, or #249 endpoint inference.",
+  "claim_ceiling": "An ordinary all-k proof, with the base-2 case Lean-checked, derives the exact finite-level totient k-kernel dimension k^e+1 and explicit bases as a scoped application of Martin's affine-ordering theorem; no first non-k-regularity claim, priority, general-k formalization, tail bound, or Erdős #249 advance is admitted.",
+  "significance": "Medium-high reusable structural value: it quantifies finite-depth kernel complexity and makes the inherited Martin input explicit, but it is not a new analytic mechanism or irrationality step.",
+  "hard_step": "Audit Martin's affine-form hypotheses in the all-k independence reduction and verify the cross-level dilation identities.",
+  "open_boundary": "An exact finite-level antecedent may exist under different notation; the all-k proof remains ordinary, only base 2 is Lean-covered, and no rational-tail or Erdős #249 conclusion follows.",
+  "bounded_expert_act": "Compare the k^e+1 filtration and displayed bases against exact k-kernel rank literature, then audit the Martin-to-independence reduction for every nonproportionality hypothesis.",
+  "reentry_trigger": "Reopen on an exact finite-level antecedent, correction to the all-k proof, or an expanded formal source snapshot.",
+  "adjudication_currentness": {
+    "status": "source_card_and_base2_lean_slice_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "reviewer_card_commit": "d1ebcb054240ca9fc9d02248dd894fb9f7cf47cd",
+      "reviewer_card_sha256": "40e5ea9e97dcd6c0609761316b883ebe445a910d49028893fbdfebaef53d7aab",
+      "public_base_two_commit": "45d3107",
+      "source_file_hashes": {
+        "docs/formal_math/odd_slope_affine_totient_independence.md": "2d3c87ebf336befeda91cb2ec4ffbc1e0c657492ff7daced88d604342b663a7b",
+        "formal_math/odd_slope_affine_totient/TotientKernelReduction.lean": "4f1a0308810b703d5398b10e19acd0e340716234d28de1359851c0f878f60db1",
+        "formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008"
+      }
+    },
+    "claim_guard": "The all-k finite-level rank and basis law remains an authored ordinary result; only the base-2 slice is Lean-checked, and no nonregularity novelty, tail bound, irrationality, or #249 endpoint claim is admitted.",
+    "reentry_trigger": "Reopen on an exact finite-level antecedent, correction to the all-k proof, or an expanded formal source snapshot."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/totient_kernel_finite_rank.card.json",
+    "card_commit": "d1ebcb054240ca9fc9d02248dd894fb9f7cf47cd",
+    "public_base_two_commit": "45d3107",
+    "formalization_scope": "base_2_only",
+    "ordinary_proof_scope": "all_integer_bases_k_ge_2"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos249_totient_kernel_finite_level_rank@card_d1ebcb05_sources_01bd5c99_b71400bd_7398a40b",
+    "source_generation": {
+      "file_hashes": {
+        "docs/formal_math/odd_slope_affine_totient_independence.md": "2d3c87ebf336befeda91cb2ec4ffbc1e0c657492ff7daced88d604342b663a7b",
+        "formal_math/odd_slope_affine_totient/TotientKernelReduction.lean": "4f1a0308810b703d5398b10e19acd0e340716234d28de1359851c0f878f60db1",
+        "formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008",
+        "docs/formal_math/reviewer_cards/totient_kernel_finite_rank.card.json": "40e5ea9e97dcd6c0609761316b883ebe445a910d49028893fbdfebaef53d7aab"
+      },
+      "formalization_scope": "base_2_only; all-k ordinary proof"
+    },
+    "evidence_class": "Authored ordinary all-k proof plus base-2 Lean slice and primary-source antecedents; not an endpoint or priority claim.",
+    "comparison_relation": "Allouche--Shallit supply k-kernel/k-regular terminology, Coons supplies global totient non-k-regularity, and Martin supplies the affine-form domination input. The finite-level k^e+1 rank and explicit bases are the scoped local synthesis.",
+    "closest_known_result": "Coons's infinite-rank consequence and the general k-regular framework are prior; no bounded primary source located the exact finite-level rank formula or relation normal form.",
+    "exact_delta": "The reductions give a precise finite filtration dimension k^e+1 and two explicit bases, refining coarse nonregularity without claiming a new nonregularity theorem.",
+    "disconfirming_evidence": "The all-k argument remains ordinary and unrefereed, and only base 2 is Lean-covered. Search absence is not priority evidence.",
+    "confidence": {
+      "base_2_formal_slice": "high_internal_provisional",
+      "all_k_rank_formula": "medium_internal_provisional",
+      "prior_art_nonlocation": "medium_internal_provisional",
+      "erdos249_endpoint_relevance": "low_unresolved"
+    },
+    "significance": "Medium-high reusable structural value: it quantifies finite-depth kernel complexity, but inherits its decisive independence theorem from Martin and does not produce a #249 tail bound.",
+    "claim_ceiling": "An ordinary all-k proof, with the base-2 case Lean-checked, derives the exact finite-level totient k-kernel dimension k^e+1 and explicit bases as a scoped application of Martin's affine-ordering theorem; no first non-k-regularity claim, priority, general-k formalization, tail bound, or Erdős #249 advance is admitted.",
+    "hard_step": "Audit Martin's affine-form hypotheses in the all-k independence reduction and verify the cross-level dilation identities.",
+    "open_boundary": "No external priority, general-k formalization, rational-tail upper bound, or Erdős #249 advance follows.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Totient k-kernel filtration: a quantitative refinement of nonregularity",
+      "supersession_or_consolidation": "Present one finite-level rank/basis object beneath the canonical #249 route; do not split known infinite-rank, basis, and relation narratives.",
+      "why_care": "It replaces an infinite-rank slogan with an exact finite-depth law while making the inherited Martin input explicit."
+    },
+    "comparator_advisory": {
+      "disposition": "comparator_candidate_status_tagged_mixed_formalization",
+      "proposition_scope": "Expose only the base-2 Lean-checked finite-level statement; label the all-k extension ordinary-proof and keep Martin/Coons attribution adjacent.",
+      "independent_interface_justified": true,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Compare the k^e+1 filtration with exact k-kernel rank literature and audit the all-k Martin-to-independence reduction.",
+    "reentry_trigger": "Reopen on an exact finite-level antecedent, correction to the all-k proof, or expanded formal source snapshot."
+  },
+  "review_unit": {
+    "result_family": "erdos249_totient_kernel_finite_level_rank",
+    "exact_result_id": "totient_k_kernel_finite_level_rank_and_basis",
+    "source_generation": {
+      "reviewer_card": "docs/formal_math/reviewer_cards/totient_kernel_finite_rank.card.json",
+      "reviewer_card_commit": "d1ebcb054240ca9fc9d02248dd894fb9f7cf47cd",
+      "reviewer_card_sha256": "40e5ea9e97dcd6c0609761316b883ebe445a910d49028893fbdfebaef53d7aab",
+      "public_base_two_snapshot": "45d3107",
+      "formalization_scope": "base_2_only",
+      "ordinary_proof_scope": "all_integer_bases_k_ge_2",
+      "source_files": [
+        {
+          "path": "docs/formal_math/odd_slope_affine_totient_independence.md",
+          "last_commit": "01bd5c9975ee9f1b9d89082724eec20c93558996",
+          "sha256": "2d3c87ebf336befeda91cb2ec4ffbc1e0c657492ff7daced88d604342b663a7b"
+        },
+        {
+          "path": "formal_math/odd_slope_affine_totient/TotientKernelReduction.lean",
+          "last_commit": "b71400bd4ad91b8b7a37d0c5591904ed8c8356ae",
+          "sha256": "4f1a0308810b703d5398b10e19acd0e340716234d28de1359851c0f878f60db1"
+        },
+        {
+          "path": "formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
+          "last_commit": "7398a40b366339283447b104db0444d304d09b45",
+          "sha256": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008"
+        }
+      ]
+    },
+    "review_generation": "2026-08-26_source_currentness_ratchet_v2",
+    "evidence_class": "authored_ordinary_proof_plus_base_2_Lean_slice_plus_primary_source_antecedents",
+    "confidence_ceiling": "strong_internal_provisional_case_for_an_apparently_unrecorded_scoped_corollary; no_external_priority_or_acceptance",
+    "significance_rationale": "Quantitative finite-level kernel rank is reusable and more informative than global nonregularity, but the decisive affine-form separation is inherited from Martin and the result gives no tail-orbit upper bound.",
+    "hard_step": "Audit that Martin's simultaneous inequalities apply to every affine-form family used in the all-k independence reduction, then verify the cross-level dilation identities.",
+    "open_boundary": "Exact finite-level antecedent may exist under different notation; the all-k proof remains ordinary and unrefereed, and no #249 endpoint implication follows.",
+    "expert_review_act": "Compare the k^e+1 filtration law and displayed bases against exact k-kernel rank literature, then check the Martin-to-independence reduction for all stated nonproportionality hypotheses.",
+    "next_reentry": "Re-enter only on a primary-source hit/disconfirmation for the finite-level law, a correction to the all-k proof, or a new formal source snapshot."
+  },
+  "classification": {
+    "theorem_class": "exact_finite_filtration_dimension_and_basis_for_the_totient_k_kernel",
+    "novelty_class": "apparently_unrecorded_scoped_corollary_of_Martin_refining_known_non_k_regularity",
+    "formalization_class": "base_2_rank_basis_and_infinite_dimension_Lean_checked_general_k_ordinary_proof_only",
+    "priority_claim": "none",
+    "recommended_terminology": "finite-level dimension of the totient k-kernel",
+    "terminology_boundary": "The k-kernel and k-regularity are Allouche--Shallit terminology. Finite-level dimension and filtration-compatible basis are literal descriptions, not located named invariants.",
+    "nearest_prior_work": [
+      "Martin (2006), Theorem 1, proves arbitrarily strong simultaneous orderings of Euler-totient values on pairwise nonproportional positive affine forms; the linear-independence step is a direct corollary.",
+      "Coons (2010), Theorem 3.2, proves that the Euler totient sequence is not k-regular for every k>=2, already implying that its full integer-valued k-kernel has infinite rational span.",
+      "Allouche and Shallit (1992) introduce the ring/module framework of k-regular sequences and the k-kernel viewpoint, but do not give this finite-level rank formula."
+    ],
+    "attribution": "Credit Martin for the decisive affine-totient domination mechanism, Allouche--Shallit for the framework, and Coons for prior nonregularity/infinite-rank knowledge. Attribute only the exact k^e+1 filtration law, the displayed bases, and the complete reductions to the local ordinary proof, with base 2 separately identified as Lean-checked.",
+    "mathematical_interest": "A clean quantitative refinement of nonregularity: the bounded-depth kernel span has maximal-looking linear growth in the number of level-e sections plus one persistent lower-level direction. The result is concise and reusable, but its independence argument is an application rather than a new analytic mechanism.",
+    "reusable_scope": "Kernel filtrations of arithmetic functions where same-level affine sections can be separated by a domination theorem and divisibility supplies exact cross-level reductions.",
+    "why_it_matters": "It replaces the coarse statement 'the kernel has infinite rank' by an exact dimension law and complete relation model, while preventing that refinement from being misreported as new nonregularity or as an irrationality result."
+  },
+  "primary_sources": [
+    {
+      "id": "martin_2006_simultaneous_totient_inequalities",
+      "title": "Simultaneous inequalities among values of the Euler phi-function",
+      "author": "Greg Martin",
+      "year": 2006,
+      "url": "https://arxiv.org/abs/math/0603053",
+      "exact_anchor": "Theorem 1: for positive affine forms a_i n+b_i with nonzero pairwise cross-determinants and any C>0, prescribed simultaneous phi-ratio inequalities hold on a set of positive lower density.",
+      "supports": "The domination argument that makes totient sequences on pairwise nonproportional affine forms rationally linearly independent.",
+      "does_not_support": "k-kernel terminology, the rank k^e+1, either explicit basis, or the relation normal form."
+    },
+    {
+      "id": "coons_2010_nonautomaticity",
+      "title": "(Non)Automaticity of number theoretic functions",
+      "author": "Michael Coons",
+      "venue": "Journal de Théorie des Nombres de Bordeaux 22 (2010), 339-352",
+      "doi": "10.5802/jtnb.718",
+      "url": "https://jtnb.centre-mersenne.org/item/JTNB_2010__22_2_339_0/",
+      "exact_anchor": "Theorem 3.2: the Euler totient function is not k-regular for any k>=2.",
+      "supports": "Prior knowledge of non-k-regularity and hence, for this integer-valued kernel, failure of finite-dimensional rational kernel span.",
+      "does_not_support": "Any finite-level dimension, explicit basis, or complete cross-level relation formula."
+    },
+    {
+      "id": "allouche_shallit_1992_k_regular",
+      "title": "The ring of k-regular sequences",
+      "authors": [
+        "Jean-Paul Allouche",
+        "Jeffrey Shallit"
+      ],
+      "venue": "Theoretical Computer Science 98 (1992), 163-197",
+      "doi": "10.1016/0304-3975(92)90001-V",
+      "url": "https://doi.org/10.1016/0304-3975(92)90001-V",
+      "exact_anchor": "The paper introduces k-regular sequences through finite generation of the module generated by the k-kernel and develops their ring structure.",
+      "supports": "The canonical framework and terminology in which the totient sections and their spans live.",
+      "does_not_support": "The totient-specific finite-level rank calculation."
+    }
+  ],
+  "mechanism_comparison": {
+    "known_global_fact": "Coons already excludes finite generation of the full totient k-kernel module.",
+    "load_bearing_input": "Martin's arbitrary-factor simultaneous inequalities imply linear independence for totient values on pairwise nonproportional affine forms.",
+    "elementary_reductions": "Multiplicativity collapses sections whose residues share powers of k and reduces all bounded levels to a top-level family plus phi(n).",
+    "exact_delta": "Combining the reductions with Martin's separation gives dimension k^e+1, two bases, and every rational relation among bounded-level sections.",
+    "formal_boundary": "Only k=2 has the stated Lean coverage; the all-k result remains an ordinary, unrefereed proof."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Euler totient k-kernel dimension rank k^e+1",
+      "totient k-regular finite level kernel rank",
+      "phi(k^j n+r) linear independence affine forms",
+      "totient kernel explicit basis",
+      "Martin simultaneous inequalities k-kernel corollary"
+    ],
+    "result": "The search recovered the k-regular framework, Coons's global nonregularity theorem, Martin's exact domination input, and a later functional-equation obstruction, but no source recording the finite-level rank k^e+1 or the two bases.",
+    "boundary": "The result should be described as an apparently unrecorded scoped corollary. Search absence is not proof of novelty, and the load-bearing analytic mechanism is Martin's."
+  },
+  "claim_boundary": {
+    "allowed_wording": "An ordinary all-k proof, with the base-2 case Lean-checked, derives the exact finite-level totient k-kernel dimension k^e+1 and explicit bases as a short application of Martin's affine-ordering theorem; no prior statement of this corollary was located.",
+    "forbidden_wording": [
+      "This proves for the first time that the totient sequence is not k-regular.",
+      "Martin proved the k-kernel rank formula.",
+      "The general-k theorem is Lean-checked.",
+      "Finite-level rank gives an upper bound for a rational scaled-tail orbit.",
+      "This advances or solves Erdős Problem 249."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_new_global_nonregularity",
+      "not_general_k_formalization",
+      "not_a_tail_orbit_upper_bound",
+      "not_erdos_249_progress"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/totient_kernel_finite_rank.card.json",
+      "effect": "Add a machine-readable novelty/significance state matching the already careful prose attribution and formalization boundary."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalize the finite-level rank and bases as the reusable object; do not recanonicalize known infinite rank as the contribution."
+    },
+    {
+      "consumer": "Public Research Exhibition and Erdős #249 proof fleet",
+      "effect": "Present as a quantitative automatic-sequence refinement with diagnostic value, not as an irrationality step or a new proof of nonregularity."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_finite_level_rank_priority",
+    "priority_order": [
+      "search the cited k-regularity and totient-kernel literature for an exact finite-level dimension or basis statement, not merely global nonregularity",
+      "if no exact antecedent is found, preserve the wording as an apparently unrecorded scoped corollary of Martin's affine-ordering theorem",
+      "keep the all-k ordinary proof and base-2 Lean coverage visibly separate in any later public projection"
+    ],
+    "lane": "re-enter only when a primary source records the k^e+1 filtration law or when the ordinary proof/formalization boundary changes"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "totient_k_kernel_prior_art_and_significance_review",
+    "output_stage": "attribution_bound_human_review_support",
+    "artifact": "#249 finite-level totient k-kernel dimension and basis refinement",
+    "human_understanding_delta": "The object is framed as a quantitative refinement of known non-k-regularity: Martin supplies the affine-form separation, Allouche--Shallit supplies the k-kernel language, and Coons supplies the global nonregularity boundary; the exact k^e+1 finite filtration law and displayed bases remain the local corollary under review.",
+    "verification_state": "Primary-source anchors and the local ordinary/base-2 formalization split are recorded; no exact literature statement of the finite-level rank or bases was located in the bounded search.",
+    "publication_or_review_state": "Private significance support; no priority, first-proof, irrationality, or #249 endpoint claim.",
+    "canonicalization_state": "Retain one finite-level rank mechanism under the totient-kernel family; do not duplicate the known global nonregularity result or create a separate Martin theorem card.",
+    "unresolved_downstream_bottleneck": "Independent literature confirmation or disconfirmation of the exact filtration dimension/basis statement, plus expert checking of the all-k ordinary proof beyond the base-2 Lean slice.",
+    "next_stage_owner": "Novelty Observatory for exact finite-level antecedent search; Mathematics Refinery for consolidation; Comparator/Public owners decide any later statement firewall."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "A concise quantitative corollary whose hard step is imported affine-form separation: the finite-level rank calculation is elementary once Martin's domination theorem is correctly applied.",
+    "slow_down_at": "The reduction of every bounded k-kernel section to top-level affine forms plus phi(n), and the distinction between the all-k ordinary proof and the base-2 Lean slice. Do not let Coons's global nonregularity theorem stand in for the finite-level rank proof.",
+    "automation_can_establish": [
+      "Base-2 Lean declarations and explicit basis/relation normal forms",
+      "Finite-level dimension calculations and section-index bookkeeping",
+      "Citation and source-generation parity"
+    ],
+    "human_judgment_required": [
+      "Whether an exact k^e+1 finite-level rank or basis already appears in k-regularity literature under another notation",
+      "Whether the all-k ordinary proof uses Martin's theorem with all required nonproportionality hypotheses",
+      "Whether the finite-level refinement merits a standalone paper subsection rather than a footnote to nonregularity"
+    ],
+    "review_act": "One bounded expert act: compare the displayed filtration law and basis with exact k-kernel rank statements in the cited literature, then audit the Martin-to-independence reduction. Do not re-adjudicate known non-k-regularity."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-249-binary-totient-series.tex",
+    "section": "Exact finite-level rank and the explicit odd-core basis",
+    "canonical_mechanism_family": "totient k-kernel filtration, affine-form separation, and quantitative nonregularity refinement",
+    "relation": "Retain one quantitative finite-level refinement beneath the known global non-k-regularity result; consolidate the basis and relation normal form rather than presenting separate rank and infinite-dimensionality discoveries.",
+    "understanding_delta": "The paper distinguishes what Coons already implies globally from the local exact dimension law and explicit basis that are the only additional claims under review.",
+    "evidence_boundary": "All-k statement is an authored ordinary proof; base-2 declarations are Lean checked; Martin, Coons, and Allouche--Shallit provide prior-art framework and load-bearing input; no tail-orbit or #249 endpoint implication follows.",
+    "hard_step": "Confirm the exact finite-level antecedent status and the all-k application of Martin's affine-ordering theorem.",
+    "meaningful_failed_route": "Do not repackage known infinite-dimensionality or non-k-regularity as the contribution, and do not infer a rational-tail rank bound.",
+    "open_remainder": "Exact literature priority for the k^e+1 law/bases and independent review of the all-k ordinary proof remain open."
+  }
+}

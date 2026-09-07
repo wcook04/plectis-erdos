@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification251PrimeGapIdentity.Challenge",
+  "solution_module": "ExternalVerification251PrimeGapIdentity.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PrimeGapIdentity.prime0_le_polynomial",
+    "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_summable",
+    "Erdos249257.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable",
+    "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries",
+    "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries",
+    "Erdos249257.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries",
+    "Erdos249257.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

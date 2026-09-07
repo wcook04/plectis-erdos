@@ -1,0 +1,287 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "totient_dyadic_odd_core_basis",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_scoped_odd_core_basis_refining_known_totient_nonregularity",
+  "problem_id": "erdos_249",
+  "purpose": "Separate the standard k-kernel framework and known nonregularity from the source-specific explicit odd-core basis and complete relation normal form.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/totient_dyadic_odd_core_basis.card.json",
+    "source_commit": "08e9b85b1fb9fd058403e873329becc4da0e559d",
+    "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
+    "source_sha256": "2d0ba9fc907034123786f334d7b16c0e550a94a54ce326e9194b2ff7fd4e2d68",
+    "source_declarations": [
+      "linearIndependent_oddCoreTotientKernelFamily",
+      "span_range_fullTotientKernel_eq_span_range_oddCore",
+      "totientDyadicSectionBasis"
+    ]
+  },
+  "adjudication_currentness": {
+    "status": "landed_source_and_card_snapshot_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "08e9b85b1fb9fd058403e873329becc4da0e559d",
+      "formal_source_sha256": "2d0ba9fc907034123786f334d7b16c0e550a94a54ce326e9194b2ff7fd4e2d68",
+      "reviewer_card_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "reviewer_card_sha256": "dad52576ae4adc32b21002bb9c188023a423eef546aee7da11d5042a1c67cce5",
+      "source_result_ids": [
+        "totientDyadicSectionBasis"
+      ]
+    },
+    "claim_guard": "This is a base-two explicit kernel basis and relation normal form; it refines known totient nonregularity but supplies no rational-tail bound or Erdős #249 irrationality conclusion.",
+    "reentry_trigger": "Re-enter if the formal source/card generation changes, a direct literature antecedent is found, or a rational-tail consumer is supplied."
+  },
+  "review_unit": {
+    "result_family": "erdos249_totient_dyadic_odd_core_basis",
+    "exact_result_id": "totientDyadicSectionBasis",
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
+      "formal_source_commit": "08e9b85b1fb9fd058403e873329becc4da0e559d",
+      "reviewer_card": "docs/formal_math/reviewer_cards/totient_dyadic_odd_core_basis.card.json",
+      "reviewer_card_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "formalization_scope": "base_2_only",
+      "ordinary_antecedent_scope": "all-base k-kernel terminology, Coons nonregularity, and Martin affine-totient separation"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "A compact Lean-checked infinite-basis assembly; the structural proof is routine after finite canonical independence and exact two-adic reductions are in place, but its endpoint non-consequence must remain explicit.",
+    "slow_down_at": "Separate Coons's global non-2-regularity from the stronger displayed basis and complete relation normal form. Preserve the finite-character passage, the two zero-residue channels, and the positive-even residue reduction; do not infer a rational-tail bound.",
+    "automation_can_establish": [
+      "The three named base-2 Lean declarations and pinned source-hash parity",
+      "Odd-core indexing, zero/even residue reductions, and finite-level relation bookkeeping",
+      "Card/route/source-generation consistency"
+    ],
+    "human_judgment_required": [
+      "Whether the exact dyadic odd-core basis appears in the cited k-regularity or totient-kernel literature under another notation",
+      "Whether the finite canonical independence input has the intended Martin-theorem provenance",
+      "Whether this should remain a supporting normal-form section rather than a standalone #249 endpoint result"
+    ],
+    "review_act": "One bounded expert act: compare the displayed dyadic basis and relation normal form with exact k-kernel/totient literature, then redirect attention to the absent rational-tail finite-dimensional bridge. Do not re-adjudicate Coons's known nonregularity."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "finite-level rank, primitive-section bases, and complete relation normal forms for totient kernels",
+    "disposition": "subordinate_under_existing_totient_kernel_finite_rank_and_consolidate",
+    "consolidation_relation": "Use the dyadic basis as the formal base-2 companion to totient_kernel_finite_rank; consolidate all three declarations and zero/even reductions in one supporting object, with no parallel nonregularity or endpoint narrative.",
+    "comparator_advisory": "No independent proposition interface is justified: the existing #249 endpoint firewall is sufficient, and this route is a diagnostic kernel-structure companion.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Kernel structure: an odd-core normal form",
+      "supersession_or_consolidation": "Retain one subsection under the finite-level rank mechanism; remove declaration-by-declaration and second-endpoint presentations.",
+      "reason": "Its human value is an explicit primitive basis and relation normal form, together with a visible proof that this structure still does not control a rational scaled tail."
+    }
+  },
+  "classification": {
+    "theorem_class": "explicit_basis_and_complete_relation_normal_form_for_the_base_2_kernel_span_of_Eulers_totient",
+    "novelty_class": "apparently_unrecorded_scoped_corollary_of_Martin_separation_with_standard_finite_character_assembly",
+    "frontier_relation": "quantitative_kernel_structure_not_an_irrationality_producer",
+    "formalization_class": "base_2_Lean_checked",
+    "priority_claim": "none",
+    "recommended_terminology": "odd-core basis for the dyadic totient kernel span",
+    "acceptable_descriptive_alias": "complete dyadic totient relation normal form",
+    "standard_mechanism": "finite-character linear independence, affine-totient separation, and exact two-adic residue reduction",
+    "discouraged_terminology": [
+      "Mobius inversion theorem",
+      "new nonregularity theorem",
+      "general-k basis theorem",
+      "irrationality criterion",
+      "solution of Erdős #249"
+    ],
+    "attribution": "Credit Allouche--Shallit for k-kernel and k-regular terminology, Coons for prior non-k-regularity of Euler's totient, and Martin for the affine-totient separation mechanism. Attribute the explicit dyadic odd-core basis and complete relation normal form to the local Lean development without asserting priority.",
+    "mathematical_interest": "The theorem replaces the coarse infinite-rank statement by a concrete countable basis and a complete description of all rational relations. The basis assembly is standard, but the totient-specific normal form is a crisp reusable invariant.",
+    "reusable_scope": "Arithmetic kernels whose finite affine sections admit a separation theorem and whose divisible residues reduce exactly to primitive or odd-core sections.",
+    "why_it_matters": "It tells automatic-sequence and formalization readers exactly where every dyadic totient relation comes from while preventing that structural refinement from being misreported as new nonregularity or as progress on the generating-series irrationality problem."
+  },
+  "primary_sources": [
+    {
+      "id": "allouche_shallit_1992_k_regular",
+      "title": "The ring of k-regular sequences",
+      "authors": ["Jean-Paul Allouche", "Jeffrey Shallit"],
+      "venue": "Theoretical Computer Science 98 (1992), 163-197",
+      "doi": "10.1016/0304-3975(92)90001-V",
+      "url": "https://doi.org/10.1016/0304-3975(92)90001-V",
+      "exact_anchor": "The paper defines k-regular sequences through finite generation of the module generated by the k-kernel and develops the ring framework.",
+      "supports": "The canonical framework and terminology for the family of dyadic sections.",
+      "does_not_support": "The totient-specific odd-core basis or relation normal form."
+    },
+    {
+      "id": "coons_2010_nonautomaticity",
+      "title": "(Non)Automaticity of number theoretic functions",
+      "author": "Michael Coons",
+      "venue": "Journal de Théorie des Nombres de Bordeaux 22 (2010), 339-352",
+      "doi": "10.5802/jtnb.718",
+      "url": "https://jtnb.centre-mersenne.org/item/JTNB_2010__22_2_339_0/",
+      "exact_anchor": "Theorem 3.2 proves that Euler's totient is not k-regular for any k>=2.",
+      "supports": "Prior nonregularity and, for this integer-valued kernel, the already-known failure of finite rational kernel span.",
+      "does_not_support": "An explicit basis, finite-level dimensions, or the relation normal form."
+    },
+    {
+      "id": "martin_2006_simultaneous_totient_inequalities",
+      "title": "Simultaneous inequalities among values of the Euler phi-function",
+      "author": "Greg Martin",
+      "year": 2006,
+      "url": "https://arxiv.org/abs/math/0603053",
+      "doi": "10.48550/arXiv.math/0603053",
+      "exact_anchor": "Theorem 1 gives prescribed simultaneous totient-ratio inequalities on pairwise nonproportional positive affine forms.",
+      "supports": "The decisive affine-form domination used to prove independence of the finite canonical totient-section families.",
+      "does_not_support": "k-kernel terminology, the odd-core index, or the basis statement."
+    }
+  ],
+  "mechanism_comparison": {
+    "k_kernel_framework": "Standard Allouche--Shallit language for all residue subsequences under powers of the base.",
+    "known_nonregularity": "Coons already rules out finite generation for the full totient k-kernel.",
+    "independence_input": "Martin's affine-totient separation yields the finite canonical minors used by the Lean source.",
+    "infinite_assembly": "Finite-character linear independence and basis construction are standard linear algebra.",
+    "source_specific_delta": "The exact odd-core indexing, residue reductions, and complete base-2 relation normal form."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Euler totient k-kernel basis",
+      "2-kernel Euler totient linear relations",
+      "Euler phi k-regular Coons",
+      "simultaneous inequalities Euler phi affine forms Martin"
+    ],
+    "result": "Primary sources establish the framework, nonregularity, and affine separation mechanism. The bounded search did not locate the explicit dyadic odd-core basis or a statement that the elementary zero/even reductions generate every rational relation.",
+    "boundary": "Absence from a bounded search supports only an apparently unrecorded scoped-corollary classification, never priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Building on Allouche--Shallit's k-kernel framework, Coons's known nonregularity result, and Martin's affine-totient separation theorem, the Lean source gives an explicit odd-core basis and complete rational relation normal form for the dyadic totient kernel span; no prior statement of that exact normal form was located.",
+    "forbidden_wording": [
+      "The proof is Möbius inversion.",
+      "This first proves that Euler's totient is not 2-regular.",
+      "The theorem holds for every base k.",
+      "The basis bounds rational tail orbits.",
+      "The theorem advances or solves Erdős #249."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_new_global_nonregularity",
+      "not_general_k_formalization",
+      "not_a_tail_orbit_bound",
+      "not_erdos_249_progress"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/totient_dyadic_odd_core_basis.card.json",
+      "effect": "Expose the basis with correct standard antecedents and a conservative scoped novelty ceiling."
+    },
+    {
+      "consumer": "Erdős #249 proof fleet",
+      "effect": "Treat the theorem as a kernel-structure invariant only; do not infer a rational-tail upper bound or endpoint progress."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Use odd-core basis terminology, credit the three antecedent mechanisms, and distinguish explicit normal form from already-known nonregularity. Present it as the source-pinned dyadic companion to the all-base finite-level rank theorem, not as a parallel #249 endpoint."
+    }
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "totient_dyadic_odd_core_basis",
+    "human_understanding_delta": "The three Lean declarations now form one teachable dyadic normal form: every section reduces to an independent odd-core family, while the absence of a rational-tail consequence is explicit.",
+    "verification_state": "The three named declarations and the SHA-256 of TotientMahlerDefect.lean agree with pinned commit 08e9b85b1fb9fd058403e873329becc4da0e559d. No fresh Lean replay is claimed.",
+    "publication_or_review_state": "A supporting expert-talk scaffold, source-linked public-card-only disposition, and paper placement are ready for downstream review; no independent mathematical review is claimed.",
+    "canonicalization_state": "The object is consolidated as the formal base-2 companion beneath totient_kernel_finite_rank, rather than three declarations or a second #249 endpoint narrative.",
+    "unresolved_downstream_bottleneck": "A rationality-to-finite-dimensional-tail bridge is missing, so the exact kernel structure gives no irrationality contradiction.",
+    "next_stage_owner": "Mathematics Refinery for parent/child consolidation, Novelty Observatory for attribution correction, and Role 3 for any public-card projection."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_249.md",
+    "section": "Kernel structure: an odd-core normal form",
+    "canonical_mechanism_family": "finite-level rank and complete relation normal forms for totient kernels",
+    "relation": "Subordinate the base-2 formal theorem to totient_kernel_finite_rank; consolidate all three declarations and the zero/even reductions into one supporting section, and retire declaration-count or parallel-endpoint presentation.",
+    "understanding_delta": "The finite-level rank picture now has a fully formal dyadic infinite-basis companion, making the exact scope and the endpoint non-consequence visible together.",
+    "evidence_boundary": "The three base-2 declarations are source-pinned Lean theorems. No fresh replay, all-base formalization, independent review, rational-tail upper bound, or #249 solution is claimed.",
+    "hard_step": "Find a faithful rational-tail finite-dimensional consequence or another global obstruction; kernel structure alone does not supply one.",
+    "meaningful_failed_route": "Promote known nonregularity, the countable basis, or a base-2 formal theorem into a rationality contradiction without a finite-dimensional tail bridge.",
+    "open_remainder": "The canonical #249 residue-gap supply and binary totient-series irrationality remain open."
+  },
+  "release_disposition": {
+    "value": "public_card_only",
+    "reason": "A source-linked base-2 normal form is suitable for explanatory public exposition, while the #249 Comparator firewall remains the canonical residue-gap equivalence.",
+    "statement_firewall": "The odd-core family is a Lean-checked basis only for the dyadic totient kernel. It gives no general-base theorem, rational-tail upper bound, or irrationality conclusion.",
+    "comparator_advisory": "No independent Comparator interface: retain one #249 endpoint firewall and use this only as its diagnostic kernel-structure companion."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos249_totient_dyadic_odd_core_basis@source-08e9b85b-card-44903c4d",
+    "source_version_binding": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
+      "formal_source_commit": "08e9b85b1fb9fd058403e873329becc4da0e559d",
+      "formal_source_sha256": "2d0ba9fc907034123786f334d7b16c0e550a94a54ce326e9194b2ff7fd4e2d68",
+      "reviewer_card_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "source_declarations": [
+        "linearIndependent_oddCoreTotientKernelFamily",
+        "span_range_fullTotientKernel_eq_span_range_oddCore",
+        "totientDyadicSectionBasis"
+      ],
+      "primary_source_locators": [
+        "Allouche–Shallit 1992, k-kernel/module framework",
+        "Coons 2010, Theorem 3.2",
+        "Martin 2006, Theorem 1"
+      ],
+      "parity_status": "Base-two Lean declarations and cited antecedents are source-pinned; no general-base formalization or irrationality consumer is claimed."
+    },
+    "classification": {
+      "evidence_class": "base-two Lean-checked explicit basis and complete relation normal form",
+      "closest_prior_art": "Allouche–Shallit supply k-kernel terminology, Coons supplies totient non-k-regularity, and Martin supplies affine-totient separation. None states this dyadic odd-core basis or complete relation normal form.",
+      "comparison_relation": "Apparently unrecorded scoped structural refinement of known totient-kernel nonregularity, not a new nonregularity theorem or irrationality criterion.",
+      "novelty_confidence": "strong internal provisional case for the explicit dyadic normal form; moderate literature non-location; no priority claim",
+      "significance_grade": "medium_reusable_kernel_structure",
+      "why_care": "It replaces a coarse infinite-rank statement with a concrete basis and tells formalization and automatic-sequence readers exactly where every dyadic totient relation comes from.",
+      "hard_step": "Combine affine-totient separation with exact two-adic residue reduction to prove both independence and spanning of the odd-core family.",
+      "natural_friction": "The basis is structural, not a rational-tail bound: it does not turn kernel rank into an irrationality contradiction or control the #249 orbit.",
+      "disconfirming_evidence": "Coons's nonregularity theorem already rules out finite rational kernel span; the local advance is the explicit basis, not the first nonregularity result."
+    },
+    "evidence_class": "base-two Lean-checked explicit basis and complete rational relation normal form",
+    "prior_art": "Allouche--Shallit supply k-kernel terminology, Coons supplies totient non-k-regularity, and Martin supplies affine-totient separation. None states this dyadic odd-core basis or complete relation normal form.",
+    "closest_known_result": "The k-kernel framework and Coons's known nonregularity are the nearest global antecedents; the odd-core basis is a scoped source-specific refinement.",
+    "comparison_relation": "explicit_dyadic_structural_refinement_of_known_nonregularity",
+    "exact_delta": "The Lean source replaces a coarse infinite-rank assertion with an explicit independent odd-core basis spanning the full dyadic kernel range and a complete rational relation normal form.",
+    "disconfirming_evidence": "The basis does not bound rational tails or imply an irrationality contradiction; Coons already supplies the global nonregularity conclusion.",
+    "confidence_ceiling": "Strong internal provisional case for the scoped dyadic normal form, moderate literature non-location, and no priority, general-base, or endpoint claim.",
+    "significance": "Medium reusable kernel-structure value: it makes the dyadic relation space explicit while preserving the missing tail bridge as the real bottleneck.",
+    "hard_step": "Combine affine-totient separation with exact two-adic residue reduction to prove independence and spanning of the odd-core family.",
+    "open_boundary": "No bridge from the dyadic kernel basis to rational scaled tails, residue supply, or Erdős #249 irrationality is established.",
+    "bounded_expert_act": "Crosswalk the odd/even reduction against Coons/Martin and state whether a rational-tail finite-dimensional consequence is known.",
+    "reentry_trigger": "Reopen if a general-base theorem, direct literature antecedent, or rational-tail consumer appears.",
+    "claim_ceiling": {
+      "strongest_allowed": "In base two, the Lean source gives an explicit linearly independent odd-core basis spanning the full Euler-totient kernel range and a complete rational relation normal form.",
+      "rejected_stronger": [
+        "a new global totient nonregularity theorem",
+        "a basis theorem for every base k",
+        "a rational-tail or orbit bound",
+        "an irrationality criterion",
+        "progress toward or a solution of Erdős #249",
+        "a priority claim"
+      ],
+      "open_boundary": "No bridge from this dyadic kernel structure to rational scaled tails, residue supply, or #249 irrationality is established."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "finite-level rank and primitive-section bases for totient kernels",
+      "disposition": "subordinate under the existing totient-kernel finite-rank mechanism; consolidate all three declarations and zero/even reductions",
+      "paper_disposition": "supporting lemma in 'Kernel structure: an odd-core normal form'",
+      "supersession_or_consolidation": "Do not create declaration-by-declaration or second-endpoint narratives; retain one dyadic structural companion.",
+      "expert_attention_reason": "The object is useful to formalization readers but does not alter the #249 endpoint; attention should move to the missing rational-tail bridge.",
+      "independent_comparator_interface_justified": "No independent Comparator proposition; the existing #249 endpoint firewall is sufficient and this remains diagnostic kernel structure."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "finite-character linear independence plus exact residue reduction, with no endpoint consumer",
+      "slow_down_at": "Check the base-two quantifier and the distinction between spanning the kernel range and controlling an infinite tail orbit.",
+      "automation_establishes": "The three named Lean declarations and source hash.",
+      "expert_judgment_required": "Whether the explicit normal form has appeared under another totient-kernel basis terminology and whether any rational-tail bridge is known.",
+      "bounded_expert_act": "Crosswalk the odd/even reduction to Coons/Martin and state the first missing analytic/arithmetic consumer.",
+      "reentry_condition": "Reopen if a general-base theorem, direct literature antecedent, or rational-tail consumer appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verification",
+      "output_stage": "exposition understanding and review support",
+      "artifact": "totient_dyadic_odd_core_basis",
+      "human_understanding_delta": "The three declarations form one teachable dyadic normal form while the absence of a tail consequence stays explicit.",
+      "verification_state": "Named base-two Lean declarations and SHA-256 are pinned; no fresh replay.",
+      "publication_or_review_state": "Supporting expert-talk/public-card-only material; no endpoint or priority claim.",
+      "canonicalization_state": "One formal base-two companion beneath totient-kernel finite rank.",
+      "unresolved_downstream_bottleneck": "A rationality-to-finite-dimensional-tail bridge.",
+      "next_stage_owner": "Mathematics Refinery for parent/child consolidation and #249 proof owners for the missing bridge."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification249ParityPerturbedRationalControl.Challenge",
+  "solution_module": "ExternalVerification249ParityPerturbedRationalControl.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249ParityPerturbedRationalControl.parity_perturbed_rational_control",
+    "Erdos249257.ExternalVerification249ParityPerturbedRationalControl.control_series",
+    "Erdos249257.ExternalVerification249ParityPerturbedRationalControl.not_irrational_control",
+    "Erdos249257.ExternalVerification249ParityPerturbedRationalControl.control_temperedOrbit_carryRank_unbounded",
+    "Erdos249257.ExternalVerification249ParityPerturbedRationalControl.finrank_canonicalCarryKernel_ge_of_oddAgree"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

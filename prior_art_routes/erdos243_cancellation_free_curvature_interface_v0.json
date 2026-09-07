@@ -1,0 +1,98 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "erdos243_cancellation_free_curvature_interface_v0",
+  "status": "adjudicated_as_subordinate_local_content_overlap_identity",
+  "problem_id": "erdos_243",
+  "review_unit": {"result_family": "bounded_negative_part_tail_rigidity", "exact_result_ids": ["cancellation_free_curvature_square", "cancellation_free_dual_remainder"], "source_generation": {"formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/DynamicCancellation.lean", "sha256": "0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76", "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3"}},
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine local cancellation algebra with an unresolved global consumer; the source-specific value is variable correspondence and formal scope control.",
+    "slow_down_at": "Check the cancellation-free hypotheses and variable crosswalk before treating the square or remainder as an orbit-wide estimate.",
+    "automation_can_establish": [
+      "The two exact identities in the pinned private Lean source",
+      "Source and packet hash parity"
+    ],
+    "human_judgment_required": [
+      "Whether a known global recurrence or residue theorem can consume these identities",
+      "Which unstated global producer hypothesis is still absent"
+    ],
+    "review_act": "Crosswalk each identity to the parent tail-rigidity variables and state the missing global producer explicitly."
+  },
+  "adjudication_currentness": {
+    "status": "private_source_and_packet_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "formal_source_sha256": "0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76",
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "review_generation": "2026-08-26_v2"
+    },
+    "claim_guard": "Private Lean local identities only; no public parity, global curvature, Sylvester recurrence, irrationality, or #243 endpoint claim.",
+    "reentry_trigger": "Reopen on public source parity, packet generation change, or an inspectable global consumer."
+  },
+  "classification": {"prior_art_confidence_class": "strong_internal_provisional_case", "novelty_confidence": "no priority claim; exact gcd/content overlap algebra and second-difference rearrangement are standard elementary recurrence arithmetic", "significance": "supporting only: it isolates the local square/dual remainder but supplies no global mass, sign, frequency, or tail-rigidity conclusion"},
+  "closest_known_result": {"relation": "routine_local_recurrence_and_content_identity", "exact_delta": "The source packages the identity in the #243 cancellation variables and pins two private Lean declarations."},
+  "claim_boundary": {"allowed_wording": "These are source-specific formalized local identities subordinate to bounded-negative-part tail rigidity.", "forbidden_wording": ["A new global curvature theorem", "A proof of eventual Sylvester recurrence", "An Erdős #243 solution"], "open_boundary": "A global sign/mass or payment-frequency producer is still required."},
+  "programme_disposition": {"canonical_mechanism_family": "global reciprocal-tail rigidity with local cancellation interfaces", "disposition": "consolidate beneath bounded_negative_part_tail_rigidity; do not create a parallel result family", "expert_review_act": "Check the variable correspondence and identify any genuinely global consumer; absent that, retain the local classification."},
+  "tao_pipeline_receipt": {"input_stage": "private Lean local identities", "output_stage": "canonicalization and claim-ceiling clarification", "artifact": "erdos243_cancellation_free_curvature_interface_v0", "human_understanding_delta": "Separates routine local cancellation algebra from the absent global anti-shadowing theorem.", "verification_state": "Two source-pinned private Lean declarations; no fresh replay.", "publication_or_review_state": "Internal adjudication only.", "canonicalization_state": "Subordinate parent consumer.", "unresolved_downstream_bottleneck": "Global residue, negative-mass, or payment-frequency control.", "next_stage_owner": "Erdős 243 proof owners and Mathematics Refinery."},
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos243_cancellation_free_curvature_interface@private-source-0da6cf5d-packet-b16de4ff",
+    "evidence_class": "Lean_checked_private_local_identities_with_source_pinned_declarations",
+    "closest_known_result": "Square-plus-curvature rearrangement, gcd/content cancellation, and changing-modulus remainder forms are standard elementary recurrence arithmetic; the exact variable correspondence and formal packaging are source-specific.",
+    "comparison_relation": "Source-specific formal restatement beneath the reciprocal-tail rigidity parent, not an independent global curvature or anti-shadowing theorem.",
+    "exact_delta": "Two private Lean declarations give exact complementary local forms—a square-plus-curvature identity and a signed changing-modulus remainder identity—for the declared cancellation-free step.",
+    "disconfirming_evidence": "The existing reciprocal-tail, LCM, and repair routes still require a global producer; no local identity supplies sign, mass, frequency, or eventual recurrence control.",
+    "confidence_ceiling": "Strong for the displayed private identities and attribution boundary; no public-parity, priority, novelty, global, or #243 endpoint claim.",
+    "significance": "Medium as a supporting interface: it prevents the false inference that a local curvature square controls global negative mass or accumulated cancellation.",
+    "claim_ceiling": "The pinned private Lean source proves two exact local cancellation-free identities for the declared variables; they are subordinate to bounded-negative-part tail rigidity.",
+    "hard_step": "Supply an orbit-wide sign, residue, payment-frequency, or mass theorem that consumes the local identities; the algebra itself is routine once variables are aligned.",
+    "open_boundary": "Global residue distribution, negative-mass accumulation, cumulative-LCM growth, and repair-payment frequency remain unproved.",
+    "bounded_expert_act": "Crosswalk each identity to the parent tail-rigidity variables and state which global producer hypothesis is still absent.",
+    "reentry_trigger": "Reopen only when public source parity lands, the packet generation changes, or an inspectable global consumer is supplied.",
+    "source_version_binding": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "formal_source_sha256": "0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76",
+      "packet_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+      "source_result_ids": ["cancellation_free_curvature_square", "cancellation_free_dual_remainder"],
+      "source_declarations": ["ErdosProblems.Erdos243.cancellationFree_curvature_square", "ErdosProblems.Erdos243.cancellationFree_dualRemainder"],
+      "parity_status": "Private source and packet hashes are current for this review unit; no public-parity or fresh elaboration claim is made.",
+      "primary_literature_scope": "No external priority search is needed to classify the displayed identities as elementary recurrence/content algebra; any source-specific novelty question remains unadjudicated."
+    },
+    "classification": {
+      "evidence_class": "Lean-checked private local identities with source-pinned declarations",
+      "closest_prior_art": "The square-plus-curvature rearrangement, gcd/content cancellation, and changing-modulus remainder form are standard elementary recurrence arithmetic; the source-specific value is the exact variable correspondence and formal packaging.",
+      "comparison_relation": "A source-specific formal restatement/interface beneath the reciprocal-tail rigidity parent, not an independent global curvature theorem.",
+      "novelty_confidence": "strong internal provisional case for the attribution boundary; no priority or external novelty claim",
+      "significance_grade": "medium_supporting_interface",
+      "why_care": "It tells a reviewer exactly what the local cancellation calculation buys and prevents the attractive but false inference that a curvature square controls the orbit's global sign or accumulated mass.",
+      "hard_step": "Supply an orbit-wide sign, frequency, residue, or payment-growth theorem that consumes the local identities; the local algebra itself is routine once variables are aligned.",
+      "natural_friction": "Cancellation-free does not mean anti-shadowing: the identities permit locally compatible behavior while leaving global negative mass and recurrence production untouched.",
+      "disconfirming_evidence": "The existing reciprocal-tail and LCM/repair routes still require a global producer; no declared local identity supplies that missing input."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Two source-pinned private Lean declarations give exact complementary local forms—a square-plus-curvature identity and a signed changing-modulus remainder identity—for the declared cancellation-free step.",
+      "rejected_stronger": [
+        "a new global curvature or anti-shadowing theorem",
+        "eventual Sylvester recurrence or actual-orbit tail rigidity",
+        "a proof of Erdős #243 or irrationality",
+        "a public-parity or independently reviewed result",
+        "a priority or novelty claim"
+      ],
+      "open_boundary": "Global residue distribution, negative-mass accumulation, cumulative-LCM growth, or repair-payment frequency remains unproved."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "global reciprocal-tail rigidity with local cancellation and residue interfaces",
+      "disposition": "subordinate under bounded_negative_part_tail_rigidity; consolidate the two identities with their parent and do not create a parallel #243 endpoint",
+      "paper_disposition": "supporting lemma in 'Local cancellation algebra and the global anti-shadowing gap'",
+      "supersession_or_consolidation": "This route supersedes no other mechanism and should not be split into separate square and remainder cards.",
+      "expert_attention_reason": "A short source-variable audit is enough; scarce attention belongs on the missing global producer rather than rechecking routine algebra twice.",
+      "independent_comparator_interface_justified": "No standalone interface; a bundled conditional/local identity may be referenced by the existing parent only if the evidence label remains private Lean and the global non-implications stay adjacent."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "routine local algebra with an externally unresolved global consumer",
+      "slow_down_at": "Check the cancellation-free hypotheses and variable correspondence before interpreting the square or remainder as an orbit-wide estimate.",
+      "automation_establishes": "The two exact identities in the pinned private Lean source.",
+      "expert_judgment_required": "Whether a known global recurrence/residue theorem can consume these identities without adding an unstated hypothesis.",
+      "bounded_expert_act": "Crosswalk each identity to the parent tail-rigidity variables and state explicitly which global producer hypothesis is still absent.",
+      "reentry_condition": "Reopen only when public source parity lands, the packet generation changes, or an inspectable global consumer is supplied."
+    }
+  }
+}

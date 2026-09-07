@@ -1,0 +1,347 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos1041_sharp_collinear_root_diameter",
+  "source_result_id": "sharp_collinear_root_diameter_extremal",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_classical_Chebyshev_mechanism_with_sharp_source_specific_fixed_diameter_assembly",
+  "problem_id": "erdos_1041",
+  "adjudication_currentness": {
+    "status": "source_card_packet_and_kernel_hashes_current_claim_bound",
+    "bound_snapshot": {
+      "source_commit": "ec2b7acee417c490bac40f28f4f35196d96ccb07",
+      "proof_source_sha256": "abd9d2fb67b2eec2c46c088c9654959e5c578039da12c71fb7a8968b45891cb6",
+      "research_packet_commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+      "research_packet_sha256": "e8d2b09a4be1ae62438a954e0cbabc9f9a1676b6e9e5c38393de6a64a7c50be4",
+      "reviewer_card_sha256": "30b1393eb0f2011820155f98ed2e3a42e05c81043b7d83b5bd33c439e9517029"
+    },
+    "claim_guard": "The theorem is a sharp collinear selected-gap subcase with ordinary proof and partial Lean assurance; it is not an arbitrary-complex-root result, a fully formalized theorem, an Erdos #1041 solution, or a priority claim.",
+    "reentry_trigger": "Re-enter if the ordinary proof, Lean seam, packet/card generation, or a direct literature antecedent changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The load-bearing step is the endpoint-normalized Chebyshev comparison and root-count contradiction; the Lean layer is partial rather than end-to-end.",
+    "slow_down_at": "Preserve the selected-adjacent-gap and collinearity quantifiers, and do not turn the finite replay or Lean kernels into a whole-theorem certificate.",
+    "automation_can_establish": [
+      "The two named Lean alternation/comparator kernels and bounded equality-family replay",
+      "Source, packet, card, and kernel hash parity"
+    ],
+    "human_judgment_required": [
+      "Whether the exact fixed-diameter maximin is absent from the cited Chebyshev and real-rooted lemniscate literature",
+      "Whether the ordinary proof's normalization and transport are complete",
+      "How this benchmark should guide the non-collinear #1041 search"
+    ],
+    "review_act": "One bounded expert act: audit the equality-family normalization and root-count contradiction, then compare the exact objective with Eremenko--Lempert and Dubickas--Pritsker."
+  },
+  "purpose": "Expose the sharp all-degree collinear-root critical-gap theorem as a standalone endpoint-constrained Chebyshev alternation object, while keeping its source-comparison, Lean seam, and non-collinear boundary visible.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos1041_sharp_collinear_root_diameter.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.md",
+    "source_commit": "ec2b7acee417c490bac40f28f4f35196d96ccb07",
+    "source_result_id": "sharp_collinear_root_diameter_extremal"
+  },
+  "source_generation": {
+    "source_commit": "ec2b7acee417c490bac40f28f4f35196d96ccb07",
+    "proof_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.md",
+    "proof_source_sha256": "abd9d2fb67b2eec2c46c088c9654959e5c578039da12c71fb7a8968b45891cb6",
+    "lean_alternation_kernel": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+    "lean_alternation_kernel_sha256": "5c49a2c0859f07fa6ee5e3ade4e405bf892d70b38e90b64d9a057d7cc007f8c4",
+    "lean_comparator_adapter": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+    "lean_comparator_adapter_sha256": "7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc",
+    "finite_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_collinear_chebyshev.py",
+    "finite_checker_sha256": "f8f55fddafa96f941fc0707d11ef0fa12831c0d69ac27ee41f5767aa4a366f63",
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos1041_sharp_collinear_root_diameter.card.json",
+    "reviewer_card_sha256": "30b1393eb0f2011820155f98ed2e3a42e05c81043b7d83b5bd33c439e9517029",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "research_packet_commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+    "research_packet_sha256": "e8d2b09a4be1ae62438a954e0cbabc9f9a1676b6e9e5c38393de6a64a7c50be4",
+    "status": "source_card_and_kernel_hashes_current_at_adjudication; ordinary proof and partial Lean seam remain explicitly separated"
+  },
+  "parity_audit": {
+    "status": "source_card_packet_current",
+    "effect": "The ordinary proof, both Lean seams, finite checker, packet snapshot, and reviewer card are now bound to the same current packet generation. The result remains a collinear subcase with partial formal assurance, not an unrestricted #1041 theorem.",
+    "reentry_condition": "Re-enter if CollinearRootCase.md, either Lean seam, the finite checker, the packet, the reviewer card, or the specialist comparison changes."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_sharp_collinear_root_diameter_v2",
+    "result_family": "erdos1041_ordered_root_chebyshev_extremal",
+    "exact_result_id": "sharp_collinear_root_diameter_extremal",
+    "source_generation": "2026-08-26",
+    "evidence_class": "complete authored ordinary proof, two source-pinned Lean load-bearing kernels, and bounded exact replay",
+    "prior_art_relation": "Chebyshev alternation and neighboring real-rooted lemniscate extremals are classical; the exact fixed-diameter selected-adjacent-gap maximin assembly remains source-specific in the reviewed literature, without a priority claim.",
+    "confidence_ceiling": "High for the collinear theorem and source/hash parity; medium for the exact literature non-location; low for any originality or unrestricted Erdos #1041 inference.",
+    "significance_rationale": "This is a sharp all-degree solved subcase whose proof exposes global real order as the resource; it materially clarifies why the non-collinear programme remains open.",
+    "hard_step": "Use an endpoint-vanishing monic scaled-Chebyshev comparator and alternating oversized gap peaks to force a degree-cancelled root-count contradiction.",
+    "open_boundary": "Only one selected adjacent gap in a collinear zero set is controlled; no arbitrary complex-root theorem, end-to-end Lean theorem, or Erdos #1041 solution follows.",
+    "expert_review_act": "Check the ordinary normalization/transport and root-count argument, then compare the exact fixed-diameter objective against the cited Chebyshev and real-rooted lemniscate literature.",
+    "next_reentry": "Re-enter only if the source theorem, card, packet, Lean seam, or specialist comparison changes; do not repeat the completed bounded search."
+  },
+  "classification": {
+    "mathematical_status": "authored_exact_all_degree_collinear_subcase_with_partial_Lean_assurance",
+    "classical_components_to_check": [
+      "Chebyshev minimax and alternation theory",
+      "real-rooted polynomial interlacing and critical-gap extrema",
+      "endpoint-constrained monic comparison principles",
+      "Vandermonde/resultant and interval Fekete mechanisms in the independent supporting route"
+    ],
+    "novelty_status": "sharp_source_specific_fixed_diameter_maximin_assembly_of_classical_Chebyshev_alternation_no_priority_claim",
+    "priority_claim": "none",
+    "recommended_terminology": "sharp endpoint-constrained Chebyshev alternation theorem for collinear-root critical gaps",
+    "discouraged_terminology": [
+      "solution of Erdős #1041",
+      "arbitrary complex-root chord theorem",
+      "fully Lean-checked sharp theorem",
+      "new Chebyshev theorem",
+      "every adjacent chord is safe"
+    ],
+    "mathematical_interest": "The theorem identifies global real ordering, not merely a better numerical constant, as the resource that permits a sharp chord selection. It solves the collinear all-degree subcase and gives an exact equality family.",
+    "reusable_scope": "Monic same-degree polynomial comparison on an interval where shared endpoint zeros, alternating target-gap extrema, and a uniformly bounded comparator create a degree-cancellation contradiction.",
+    "nearest_prior_work": "Erdős--Herzog--Piranian (1958) initiate the metric-polynomial and real-zero interval programme. Eremenko--Lempert (1994) prove a neighboring sharp connected-lemniscate derivative extremum with scaled Chebyshev extremizers. Dubickas--Pritsker (2020) optimize real-rooted lemniscates under a fixed-discriminant constraint and explicitly build on Pommerenke's real-zero lemniscate geometry. Classical Chebyshev alternation supplies the proof mechanism; Zolotarev/Akhiezer problems provide contextual fixed-data minimax terminology. None of the located sources is asserted to contain the exact fixed-root-diameter minimum-adjacent-critical-height maximin statement.",
+    "attribution": "Attribute the problem lineage to Erdős--Herzog--Piranian, alternation and the monic interval extremal to classical Chebyshev theory, cite Eremenko--Lempert and Dubickas--Pritsker for neighboring lemniscate extremals, and describe the exact fixed-diameter assembly as authored source mathematics without priority language."
+  },
+  "primary_sources": [
+    {
+      "id": "eremenko_lempert_1994_extremal_polynomials",
+      "title": "An Extremal Problem for Polynomials",
+      "authors": ["Alexandre Eremenko", "Laszlo Lempert"],
+      "venue": "Proceedings of the American Mathematical Society 122 (1994), 191--193",
+      "doi": "10.1090/S0002-9939-1994-1207536-1",
+      "url": "https://www.math.purdue.edu/~eremenko/dvi/lempert.pdf",
+      "source_pdf": "https://www.math.purdue.edu/~eremenko/dvi/lempert.pdf",
+      "source_pdf_sha256": "48403cb94479d037f33dbd13bd6aa9c0219dadd704f4c1f7aafec145246293b6",
+      "pdf_pages": 3,
+      "primary_text_read": true,
+      "primary_pdf_read": true,
+      "primary_source_read": true,
+      "primary_text_sha256": "48403cb94479d037f33dbd13bd6aa9c0219dadd704f4c1f7aafec145246293b6",
+      "retrieved_at": "2026-08-27",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_theorem_and_Chebyshev_equality_boundary_compared",
+      "exact_source_locator": "Printed pp. 191-193 / PDF pp. 1-3: the abstract states the connected-level-set derivative bound; the Chebyshev normalization and properties (i)-(iv) are on printed p. 191 / PDF p. 1; Theorem 1 is on printed p. 192 / PDF p. 2 and gives equality only for f(z)=c^(-n)f_n(cz), |c|=1.",
+      "source_artifact_locator": "PDF p. 1 (printed p. 191), Chebyshev definition and properties (i)-(iv); PDF p. 2 (printed p. 192), Theorem 1 and equality characterization; PDF p. 3 (printed p. 193), completion of the uniqueness proof.",
+      "exact_anchor": "Abstract and Theorem 1, pp. 191-193: for a monic polynomial with connected unit lemniscate, the derivative at a normalized point is bounded by 2^(1/n-1)n^2, with equality only for a rotated/scaled Chebyshev family; pp. 191-192 also list its real negative zeros and critical values ±1.",
+      "supports": "A directly read primary neighboring sharp connected-lemniscate derivative extremal and the exact Chebyshev equality family, including its real ordered zeros and critical-value normalization.",
+      "does_not_support": "The present fixed-root-diameter maximin over the least adjacent critical-gap height, the selected chord consumer, or the claimed Lean assurance."
+    },
+    {
+      "id": "erdos_herzog_piranian_1958_metric_properties",
+      "title": "Metric Properties of Polynomials",
+      "authors": ["P. Erdős", "F. Herzog", "G. Piranian"],
+      "venue": "Journal d'Analyse Mathématique 6 (1958), 125--148",
+      "url": "https://users.renyi.hu/~p_erdos/1958-05.pdf",
+      "exact_anchor": "PDF p. 1 (printed p. 125), Summary: Sections 2--3 study exact real-axis metric quantities when all roots lie on a real interval, while Section 5 turns to components in the unit disk. PDF p. 15 (printed p. 139), immediately after the unit-disk component argument: the paper records that one component contains at least two zeros and states Problem 5 asking whether two zeros can be joined in E by a path of length less than 2.",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "pdf_pages": 24,
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "retrieved_at": "2026-07-28",
+      "primary_pdf_read": true,
+      "primary_source_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_real_zero_programme_locator_compared",
+      "exact_source_locator": "Printed p. 139 / PDF p. 15 / extracted.md lines 594--602: the unit-disk case has a component containing at least two zeros, and the immediately following Problem 5 asks for a path of length less than 2 between listed zeros.",
+      "source_artifact_locator": "PDF p. 1 (printed p. 125), Summary; PDF p. 15 (printed p. 139), unit-disk component conclusion and Problem 5",
+      "supports": "Primary historical source for the problem family and its real-zero metric subprogramme.",
+      "does_not_support": "The endpoint-normalized Chebyshev maximin constant or the selected adjacent-gap theorem."
+    },
+    {
+      "id": "dubickas_pritsker_2020_real_root_extremals",
+      "title": "Extremal Problems for Polynomials with Real Roots",
+      "authors": ["Artūras Dubickas", "Igor Pritsker"],
+      "venue": "Journal of Approximation Theory 250 (2020), 105325",
+      "url": "https://arxiv.org/abs/1901.07324",
+      "source_pdf": "https://arxiv.org/pdf/1901.07324",
+      "source_pdf_sha256": "639961741bcaf6f604ccf6f1b841f4662449fc5c0eff72d165c741de1f48d0f6",
+      "pdf_pages": 23,
+      "primary_pdf_read": true,
+      "primary_source_read": true,
+      "retrieved_at": "2026-08-27",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_real_root_extremal_and_lemniscate_locators_compared",
+      "exact_source_locator": "arXiv PDF p. 2: Problems 1-2 and Theorem 3 give the fixed-discriminant real-root extremal and equality family; arXiv PDF p. 6: Corollary 7 and Theorem 8 connect the extremal problem to largest disks in real-rooted polynomial lemniscates and state the asymptotic 1/2 limit.",
+      "source_artifact_locator": "arXiv PDF p. 2, Problems 1-2 and Theorem 3; arXiv PDF p. 6, Corollary 7 and Theorem 8; arXiv PDF pp. 20-22, references and source lineage.",
+      "exact_anchor": "Problems 1--2 and Theorems 3 and 8 optimize off-axis values and largest inscribed disks for monic real-rooted polynomials at fixed discriminant.",
+      "supports": "Closest located modern real-rooted polynomial-lemniscate extremal framework.",
+      "does_not_support": "A fixed-root-diameter objective, the least adjacent critical height, or the scaled-Chebyshev equality family used here."
+    },
+    {
+      "id": "pommerenke_1961_real_zero_metric_ii",
+      "title": "On Some Metric Properties of Polynomials with Real Zeros. II",
+      "authors": ["Christian Pommerenke"],
+      "venue": "Michigan Mathematical Journal 8 (1961), 49--54",
+      "doi": "10.1307/mmj/1028998514",
+      "url": "https://doi.org/10.1307/mmj/1028998514",
+      "exact_anchor": "Classical real-zero lemniscate geometry cited and used as antecedent by Dubickas--Pritsker.",
+      "supports": "The real-rooted lemniscate geometry lineage.",
+      "does_not_support": "The exact fixed-diameter adjacent-critical-height extremum."
+    }
+  ],
+  "evidence_layers": {
+    "ordinary_source": "CollinearRootCase.md proves normalization, maximum selection, the sharp constrained Chebyshev theorem, equality configuration, and the disk consumers.",
+    "Lean_kernel": {
+      "alternation": "ErdosProblems.Erdos1041.SharpCollinearAlternation.exists_peak_le_of_monic_comparison",
+      "comparator": "ErdosProblems.Erdos1041.SharpCollinearChebyshev.exists_peak_le_comparisonBound",
+      "boundary": "These declarations cover the sign/root-count and concrete comparator portions. They do not claim one end-to-end declaration for the complex affine transport and compact maximum choices."
+    },
+    "finite_computation": "The deterministic Python checker stress-tests degrees 2 through 10 and verifies equality/reconstruction identities. It is falsification and regression evidence only."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For monic degree-n polynomials whose zero occurrences are collinear and have diameter D, an adjacent-root chord has level at most (D/2)^n/(2^(n-1) cos(pi/(2n))^n); this is sharp, with equality on the endpoint-normalized scaled-Chebyshev family.",
+    "required_qualifiers": [
+      "collinearity",
+      "zeros counted with multiplicity and the degenerate repeated-root path convention",
+      "ordinary full proof versus partial Lean kernel/adapter assurance",
+      "no unrestricted non-collinear conclusion",
+      "bounded primary-source comparison complete; specialist priority review still pending"
+    ],
+    "forbidden_wording": [
+      "Erdős #1041 is solved",
+      "all root pairs or all adjacent gaps lie in the unit lemniscate",
+      "the finite checker proves sharpness",
+      "the entire theorem is Lean checked",
+      "the result is novel or first without specialist source comparison"
+    ]
+  },
+  "expert_review_support": {
+    "hard_step": "Choose the endpoint-vanishing monic scaled-Chebyshev comparator and turn a hypothetical collection of oversized alternating gap peaks into one too many roots of the degree-cancelled difference polynomial.",
+    "natural_friction": "The order on the entire zero set is indispensable. The exact rational cubic unsafe-gap example blocks any simplification from selected-gap control to all-adjacent-gap control.",
+    "evidence_separation": "The written source carries the full theorem; Lean verifies two load-bearing internal layers; finite numerical/equality replay has only bounded scope; a conservative primary-source positioning is complete, while specialist priority review and independent mathematical review remain open."
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "ordered-root Chebyshev extremals and geometric boundaries for polynomial lemniscates",
+    "programme_disposition": "admit as a genuinely irreducible solved subcase and replace the collinear headline; consolidate all direct consumers and scope guards here",
+    "expert_attention_reason": "An all-degree sharp theorem with equality and a short alternation spine deserves scarce review attention, and its collinearity boundary clarifies the true geometry of the open problem.",
+    "evidence_class": "complete ordinary proof, partial Lean assurance, bounded replay, and primary-source positioning; independent review absent",
+    "hard_step": "Endpoint-constrained monic Chebyshev comparison plus the degree-cancelled alternating root-count contradiction.",
+    "prior_art_uncertainty": "The classical mechanism and neighboring Eremenko--Lempert theorem are clear; the exact fixed-diameter formulation still needs specialist literature review before any originality statement.",
+    "open_boundary": "One selected collinear gap only; no arbitrary complex-root theorem, no end-to-end Lean statement, and no #1041 solution.",
+    "comparator_interface": "Advisory comparator_now: Role 3 may restate the exact ordinary theorem with an explicit ordinary-proof evidence tag and separately link the two Lean-checked internal kernels. The statement firewall must preserve collinearity, selected-gap quantifiers, and the absence of one end-to-end Lean declaration; missing specialist review is not a release veto.",
+    "paper_disposition": "headline/core mechanism",
+    "paper_target_section": "The sharp collinear theorem: order buys an exact Chebyshev extremal",
+    "paper_supersession_relation": "One section replaces separate collinear inequalities, equality notes, disk consumers, determinant refinements, and unsafe-gap cards; the non-collinear guard transitions directly to the open geometric programme.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "A sharp solved subcase with equality and a clean geometric lesson merits scarce expert review, but it does not displace the arbitrary-root component-perimeter mechanism from the cross-programme flagship shortlist.",
+      "evidence_class": "complete ordinary proof, two Lean-checked internal kernels, bounded replay, and conservative primary-source positioning; independent review absent",
+      "hard_step": "Endpoint-constrained monic Chebyshev comparison plus the degree-cancelled alternating root-count contradiction.",
+      "prior_art_uncertainty": "The classical mechanism is secure; the exact fixed-diameter maximin formulation still needs specialist priority review.",
+      "open_boundary": "Selected collinear gap only; no arbitrary complex-root theorem, end-to-end Lean theorem, or #1041 solution.",
+      "demoted_predecessor": null
+    }
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "private exact proof packet with partial formal verification and finite replay",
+    "output_stage": "standalone expert-understanding and primary-source-positioned review object",
+    "artifact": "erdos1041_sharp_collinear_root_diameter",
+    "human_understanding_delta": "The sharp theorem becomes a single mechanism-plus-boundary narrative: ordered zeros create alternating peaks, endpoint Chebyshev comparison forces a controlled gap, and non-collinear geometry remains open.",
+    "verification_state": "Source hashes/packet identity current at ec2b7ace; past exact Lean receipts are cited, not freshly replayed; finite stress is explicitly non-proof evidence.",
+    "publication_or_review_state": "Eligible for status-tagged paper, theorem-card, exhibition, and Comparator visibility with conservative novelty positioning and the mixed ordinary/Lean evidence seam explicit; independent specialist review remains downstream.",
+    "canonicalization_state": "The sharp theorem is primary. The clean resultant/Fekete route is a subordinate independent cross-check, while unsafe cubics are scope guards rather than new headline results.",
+    "unresolved_downstream_bottleneck": "Specialist priority review, independent review of ordinary transport steps, and any desired end-to-end Lean packaging. The original non-collinear problem is still open.",
+    "next_stage_owner": "Mathematics Refinery for source-positioning consumption and Role 3 for the status-tagged paper/Comparator statement firewall; external approximation-theory specialists may review after publication."
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "The sharp collinear theorem: order buys an exact Chebyshev extremal",
+    "canonical_mechanism_family": "ordered-root Chebyshev extremals and geometric boundaries for polynomial lemniscates",
+    "relation": "Replaces the collinear headline; consolidates sharp theorem, equality family, disk consumers, determinant cross-checks, and unsafe-gap guard; subordinates weaker refinements; retires fragmented collinear narratives.",
+    "understanding_delta": "Collinear order, not a better global constant, supplies the exact Chebyshev extremal and explains the non-collinear boundary.",
+    "evidence_boundary": "Complete ordinary proof plus two Lean kernels and bounded replay; affine transport is not fully Lean-packaged and independent specialist review is pending.",
+    "hard_step": "Endpoint-vanishing monic Chebyshev comparison followed by the degree-cancelled alternating root-count contradiction.",
+    "meaningful_failed_route": "The nonselected adjacent gap of an exact rational cubic is unsafe, and dropping collinearity loses the order needed by the alternation proof.",
+    "open_remainder": "Only one selected collinear gap is controlled; arbitrary complex roots and Erdős Problem 1041 remain open."
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_and_comparator_candidate",
+    "statement_firewall": "Expose exactly the collinear, selected-gap theorem with its equality family. Label the ordinary proof, two Lean internal kernels, and finite replay separately; keep the non-collinear and end-to-end Lean boundaries adjacent. Do not imply priority or a solution of Erdos #1041.",
+    "reason": "The source/card/packet identities and evidence seam are inspectable; specialist review is downstream rather than a visibility veto."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_source_or_specialist_comparison_change",
+    "reentry_condition": "Re-enter if any pinned source or evidence generation changes, or if a specialist identifies a direct antecedent for the fixed-diameter maximin statement.",
+    "do_not_redo": "Do not repeat the Chebyshev terminology search, finite equality replay, or already-pinned Lean declarations."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "review_unit_erdos1041_sharp_collinear_root_diameter_v2@source-ec2b7ace",
+    "evidence_class": "Complete authored ordinary proof with two source-pinned Lean load-bearing kernels and bounded exact replay.",
+    "closest_known_result": "Eremenko--Lempert's directly read Theorem 1 (Proc. AMS 122 (1994), pp. 191-193) gives a sharp derivative extremum for connected unit lemniscates, with a uniquely normalized scaled-Chebyshev equality family whose zeros are real and ordered. EHP, Dubickas--Pritsker, and Pommerenke supply adjacent real-zero metric lineages.",
+    "comparison_relation": "The present fixed-diameter selected-adjacent-gap maximin shares Eremenko--Lempert's Chebyshev extremizer geometry but optimizes a different object: a root-diameter-constrained adjacent critical-level/chord quantity rather than a derivative at one normalized point. No located source is asserted to contain this exact objective, and no priority claim is made.",
+    "exact_delta": "The source proves one sharp all-degree collinear subcase with an endpoint-normalized scaled-Chebyshev equality family; partial Lean kernels check load-bearing alternation/comparator layers but not the end-to-end theorem.",
+    "disconfirming_evidence": "The exact rational cubic guard blocks promotion from one selected gap to all adjacent gaps; Eremenko--Lempert's derivative objective is not the present fixed-diameter maximin; neighboring literature does not supply that objective, and finite replay is not proof authority.",
+    "confidence_ceiling": "High for the authored collinear theorem, source/hash parity, and the Eremenko--Lempert attribution; medium for literature non-location of the exact maximin; low for originality or unrestricted #1041 inference.",
+    "significance": "High solved-subcase boundary value: global real order is identified as the resource that makes sharp chord selection possible while leaving complex geometry as the throat.",
+    "hard_step": "Choose the endpoint-vanishing monic scaled-Chebyshev comparator and turn alternating oversized gap peaks into a degree-cancelled root-count contradiction.",
+    "open_boundary": "Only one selected adjacent gap in a collinear zero set is controlled; non-collinear path selection, arbitrary complex roots, and end-to-end formalization remain open.",
+    "bounded_expert_act": "Audit the ordinary normalization and root-count argument, then compare the exact fixed-diameter objective with the cited Chebyshev and real-rooted lemniscate literature.",
+    "reentry_trigger": "Re-enter if the source theorem, Lean seam, packet/card generation, or direct antecedent comparison changes.",
+    "source_version_binding": {
+      "proof_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.md",
+      "proof_source_commit": "ec2b7acee417c490bac40f28f4f35196d96ccb07",
+      "proof_source_sha256": "abd9d2fb67b2eec2c46c088c9654959e5c578039da12c71fb7a8968b45891cb6",
+      "lean_kernels": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean"
+      ],
+      "lean_kernel_sha256": [
+        "5c49a2c0859f07fa6ee5e3ade4e405bf892d70b38e90b64d9a057d7cc007f8c4",
+        "7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc"
+      ],
+      "research_packet_sha256": "e8d2b09a4be1ae62438a954e0cbabc9f9a1676b6e9e5c38393de6a64a7c50be4",
+      "primary_source_locators": [
+        "Erdős–Herzog–Piranian 1958, real-zero metric programme",
+        "Eremenko–Lempert 1994, Theorem 1",
+        "Dubickas–Pritsker 2020, Theorems 3 and 8",
+        "Pommerenke 1961, real-zero lemniscate geometry"
+      ],
+      "parity_status": "Ordinary proof, Lean load-bearing kernels, finite checker, card, and packet identities are source-pinned; no end-to-end Lean theorem or priority claim is added."
+    },
+    "classification": {
+      "evidence_class": "complete authored ordinary proof with two source-pinned Lean kernels and bounded exact replay",
+      "closest_prior_art": "Eremenko–Lempert's directly read Theorem 1 (Proc. AMS 122 (1994), pp. 191-193) supplies the nearest sharp connected-lemniscate derivative extremal and scaled-Chebyshev equality family; EHP, Dubickas–Pritsker, and Pommerenke provide neighboring real-zero metric contexts. None is asserted to contain this fixed-diameter selected-adjacent-gap maximin statement.",
+      "comparison_relation": "Apparently distinct sharp all-degree collinear subcase sharing the Chebyshev equality geometry but optimizing a different root-diameter/adjacent-gap objective, with a mixed ordinary/Lean evidence seam; not an arbitrary-complex-root theorem.",
+      "novelty_confidence": "strong internal provisional case for the exact assembly, moderate literature non-location after direct Eremenko–Lempert comparison, no priority claim",
+      "significance_grade": "high_solved_subcase_boundary",
+      "why_care": "It identifies global real ordering as the resource that makes a sharp chord selection possible, giving the open non-collinear problem a meaningful benchmark rather than only another constant.",
+      "hard_step": "Use endpoint-normalized scaled-Chebyshev comparison and alternating oversized gap peaks to force a degree-cancelled root-count contradiction.",
+      "natural_friction": "Only one selected adjacent gap is controlled; multiplicities and ordinary transport remain explicit, and partial Lean kernels do not certify the whole theorem.",
+      "disconfirming_evidence": "Eremenko–Lempert proves a derivative extremum rather than the present fixed-diameter adjacent-gap objective; the other located sources provide neighboring extremals and programme history but not this statement, and bounded non-location is not evidence of priority."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "For monic degree-n polynomials with collinear zero occurrences of diameter D, one selected adjacent-root chord has the stated sharp level bound, attained by the endpoint-normalized scaled-Chebyshev family.",
+      "rejected_stronger": [
+        "a theorem for arbitrary complex roots or all adjacent gaps",
+        "a solution of Erdős #1041",
+        "a fully Lean-checked end-to-end theorem",
+        "the finite checker as proof authority",
+        "a new Chebyshev theorem or priority claim"
+      ],
+      "open_boundary": "The non-collinear root geometry and transport from this selected-gap bound to a universal short path remain open."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "sharp ordered-root/Chebyshev subcases for polynomial lemniscate path problems",
+      "disposition": "admit as one irreducible solved subcase; retain determinant/Fekete work as subordinate cross-checks and scope guards as boundaries",
+      "paper_disposition": "headline/core mechanism in 'The sharp collinear theorem: order buys an exact Chebyshev extremal'",
+      "supersession_or_consolidation": "Consolidate alternation, equality family, Lean kernels, and finite replay into one theorem stack; do not split constants or adapters into separate claims.",
+      "expert_attention_reason": "This is a strong exact benchmark whose conceptual value is identifying what real order buys and why complex geometry remains the throat.",
+      "independent_comparator_interface_justified": "One status-tagged selected-gap proposition is justified, provided ordinary proof, partial Lean kernels, finite replay, multiplicity convention, and non-collinear boundary remain adjacent."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "load-bearing ordinary comparison with partial formal assurance",
+      "slow_down_at": "Check endpoint normalization, alternation/root-count contradiction, and the selected-gap quantifier; do not promote the Lean seam to end-to-end verification.",
+      "automation_establishes": "The named alternation/comparator kernels and bounded exact replay.",
+      "expert_judgment_required": "Whether the fixed-diameter maximin is genuinely absent from the cited Chebyshev/lemniscate literature and whether ordinary transport is complete.",
+      "bounded_expert_act": "Audit one equality-family normalization and one root-count contradiction, then compare the exact objective with Eremenko–Lempert and Dubickas–Pritsker.",
+      "reentry_condition": "Reopen if the ordinary proof, Lean seam, packet/card generation, or direct antecedent changes."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified authored proof with partial formal kernels",
+      "output_stage": "expert-readable source-positioned theorem boundary",
+      "artifact": "erdos1041_sharp_collinear_root_diameter",
+      "human_understanding_delta": "Makes the collinear resource and non-collinear gap explicit in one sharp benchmark.",
+      "verification_state": "Ordinary proof plus source-pinned kernels and finite replay; no end-to-end Lean claim.",
+      "publication_or_review_state": "Eligible for status-tagged paper/theorem-card/Comparator exposure; publication is not priority or acceptance.",
+      "canonicalization_state": "One primary sharp collinear mechanism with subordinate cross-checks.",
+      "unresolved_downstream_bottleneck": "Universal non-collinear path selection.",
+      "next_stage_owner": "Mathematics Refinery for source-positioning and Role 3 for the statement firewall."
+    }
+  }
+}

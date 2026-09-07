@@ -1,0 +1,195 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #68: moving private-factor scale split"
+  description: >-
+    Three Lean-backed endpoints showing that one moving private-factor source
+    can support exact conditional irrationality criteria, arbitrary split
+    factors can replace two denominator owners, and every fixed owner pair is
+    eventually absorbed by the factorial base.
+  authors:
+    - "Will Cook"
+  responsible_maintainers:
+    - "Will Cook"
+  license: "Apache-2.0"
+
+palomar_qualification:
+  status: "focused_lean_and_exact_axiom_audit_passed_mechanical_replay_pending"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification68MovingFactorScaleSplit/comparator.json"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  blockers:
+    - "the result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The open parent problem is not a merit veto. The two leading declarations
+    are exact conditional irrationality theorems; neither supplies its cofinal
+    arithmetic hypothesis. These local artifacts are not yet a Comparator
+    verdict, Palomar outcome, registry entry, or peer review.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A05"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 28
+    band: "conditional"
+    components:
+      mathematical_advancement: 13
+      parent_problem_proximity: 6
+      theorem_strength: 4
+      mechanism_depth: 3
+      consequence_reach: 2
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness, or
+      submission authorization.
+  presentation_order:
+    - "moving_private_factor_scale_split_implies_irrational"
+    - "split_factor_normalized_collision_implies_irrational"
+    - "fixed_owner_pair_eventually_absorbed"
+
+sources:
+  - title: "Moving-factor scale splits for Erdős Problem 68"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Lean source in PrimeZeroBranch.lean and
+      EndpointWeightedPrivateSupport.lean; the paper presents the exact two
+      conditional consumers and fixed-owner boundary at named labels.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #68"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/68"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    The package selects two conditional irrationality theorems and one exact
+    fixed-owner absorption no-go. Challenge.lean has one intentional
+    specification sorry per selected theorem; the proof-bearing source is
+    sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  axiom_audit_status: "passed_exact_propext_Quot_sound_Classical_choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational"
+      file: "ExternalVerification68MovingFactorScaleSplit/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification68MovingFactorScaleSplit/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitScaleSplit"
+      source_file: "ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      source_sha256: "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+      contribution_class: "conditional one-moving-factor irrationality theorem"
+      paper_result_label: "res:moving-factor-scale-split"
+      boundary: >-
+        The theorem does not establish either cofinal quantitative scale bound.
+    - declaration: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational"
+      file: "ExternalVerification68MovingFactorScaleSplit/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification68MovingFactorScaleSplit/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_complementary_factor_disagreement_normalizedCollisionCap"
+      source_file: "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean"
+      source_sha256: "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
+      contribution_class: "conditional split-factor irrationality theorem"
+      paper_result_label: "res:split-factor-normalized-collision"
+      boundary: >-
+        The theorem does not produce cofinal factor projections, disagreement,
+        or the normalized collision bound.
+    - declaration: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed"
+      file: "ExternalVerification68MovingFactorScaleSplit/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification68MovingFactorScaleSplit/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos68.factorialBlockFixedPairPrivateQuotients_eq_one"
+      source_file: "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean"
+      source_sha256: "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
+      contribution_class: "fixed-owner absorption no-go"
+      paper_result_label: "bdry:fixed-owner-absorption"
+      boundary: >-
+        The no-go excludes only fixed owners; moving owners and factors remain
+        the necessary unresolved source of cofinal certificates.
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: "Positive acceptance and deliberate-negative mismatch rejection on a supported runner; no terminal replay verdict recorded"
+
+fidelity:
+  divergences: >-
+    The three compared declarations transport three final source endpoints and
+    do not expose the remaining seventeen supporting declarations as padded
+    registry entries. The package does not add a cofinal producer.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Source statements, paper labels, Challenge shapes, open hypotheses, and the
+    fixed-owner boundary were reviewed. Focused source/challenge/solution/
+    deliberate-negative/axiom-audit elaboration passed, with all three selected
+    declarations using exactly propext, Quot.sound, and Classical.choice.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification68MovingFactorScaleSplit"
+  statements:
+    - source: "one moving prefix-private prime plus two exact scale bounds implies irrationality"
+      lean: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational"
+      module: "ExternalVerification68MovingFactorScaleSplit/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"
+    - source: "arbitrary split factors plus normalized collision disagreement imply irrationality"
+      lean: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational"
+      module: "ExternalVerification68MovingFactorScaleSplit/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"
+    - source: "every fixed pair of owners is eventually absorbed"
+      lean: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed"
+      module: "ExternalVerification68MovingFactorScaleSplit/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

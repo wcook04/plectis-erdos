@@ -1,0 +1,185 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "totient_prime_double_affine_mode_obstruction",
+  "source_result_ids": [
+    "actual_totient_word_excludes_constant_two_boundary_mode",
+    "actual_totient_word_excludes_eventually_affine_endpoint_modes"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_canonical_parent_supporting_mechanism_consolidating_prime_triangle_duplicate",
+  "problem_id": "erdos_249",
+  "purpose": "Place the prime-double determinant in standard divided-difference language and preserve the exact boundary of the Lean-checked endpoint-mode elimination.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/totient_prime_double_affine_mode_obstruction.card.json",
+    "card_commit_at_review": "80a1ec9274a21db6ea6b4e4e46d56659a9bc8749",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean",
+    "source_declaration": "ErdosProblems.Erdos249.PeriodMultipleEscape.not_eventuallyAffine_pureDyadicEndpointError",
+    "source_result_id": "actual_totient_word_excludes_eventually_affine_endpoint_modes"
+  },
+  "source_generation": {
+    "status": "current_clean_Lean_card_packet_snapshot",
+    "formal_sources": [
+      {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean",
+      "commit": "56de8534525e354e80eabc8efe1a9ae06710df4e",
+        "sha256": "9483a646e6bcb4a505149b00fc41b20b49f820ad5bada081184427132727f017"
+      },
+      {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+        "sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c"
+      }
+    ],
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/totient_prime_double_affine_mode_obstruction.card.json",
+      "commit": "80a1ec9274a21db6ea6b4e4e46d56659a9bc8749",
+      "sha256": "b695b58a46490b4c5c11a57455fb9036d51ffa8c9fa1c3068f39591c8c2b8c0c"
+    },
+    "review_generation": "2026-08-26_observatory_route_maturity_v1"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "totient_prime_double_affine_mode_obstruction@source_56de853_card_80a1ec9",
+    "result_family": "totient_prime_double_affine_mode_obstruction",
+    "evidence_class": "Lean-checked all-basepoint fixed-quotient affine-mode exclusion plus elementary recurrence/interpolation extraction",
+    "closest_prior_art": "Finite-difference and divided-difference noncollinearity are standard; the prime-double totient witness is elementary. No priority claim is made for the source-specific endpoint consumer.",
+    "comparison_relation": "The object deletes eventual affine fixed-quotient endpoint modes, but it does not control non-affine linear-scale traps or prove endpoint escape.",
+    "exact_delta": "It packages the generic recurrence-to-driving-word transfer with the cofinal determinant -p(q-p) witness and absorbs the constant-two predecessor as a special case.",
+    "disconfirming_evidence": "Failure of exact eventual affinity does not imply escape from a linear envelope; the universal Mersenne residue-gap producer remains open.",
+    "confidence_ceiling": "High for the pinned Lean consumer and its exact logical boundary; low for standalone novelty, which is explicitly unclaimed.",
+    "significance": "Medium supporting value: it removes one entire rigid response class and makes the surviving nonlinear frontier explicit.",
+    "claim_ceiling": "No endpoint escape, no irrationality, no distribution theorem for phi, and no conclusion about non-affine linear-scale modes.",
+    "hard_step": "Control genuinely non-affine linear-scale endpoint dynamics or produce the universal strict residue gap.",
+    "open_boundary": "The exact affine-mode no-go is not a substitute for the #249 endpoint producer.",
+    "bounded_expert_act": "Check uniformity in basepoint and quotient, the cofinal prime witnesses, and the distinction between not eventually affine and endpoint escape.",
+    "reentry_trigger": "Re-enter if the linked Lean declarations, packet rows, card generation, or a non-affine control theorem changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Elementary finite-difference certificate with a source-specific endpoint consumer.",
+    "slow_down_at": "The logical gap between deleting eventual affine modes and controlling all linear-scale boundary dynamics.",
+    "automation_can_establish": [
+      "source/card/packet hash parity",
+      "Lean declaration presence",
+      "determinant arithmetic"
+    ],
+    "human_judgment_required": [
+      "whether the source-specific packaging is useful beyond the standard interpolation fact",
+      "whether any future result really controls non-affine modes",
+      "whether the paper keeps the no-endpoint-escape boundary visible"
+    ],
+    "review_act": "Verify the all-basepoint fixed-quotient quantifiers and preserve the not-eventually-affine versus endpoint-escape distinction."
+  },
+  "adjudication_currentness": {
+    "status": "current_at_clean_committed_source_card_packet_snapshot_2026_08_27",
+    "bound_snapshot": {
+      "formal_source_commit": "56de8534525e354e80eabc8efe1a9ae06710df4e",
+      "research_packet_commit": "08cd7834a7533115d3ff3569ff45eb005ebc0e8d",
+      "research_packet_sha256": "4802631665dbfded67b0528003b1154f514e0d15d7b0572cceba1e60bdc5eb44",
+      "reviewer_card_commit": "80a1ec9274a21db6ea6b4e4e46d56659a9bc8749",
+      "review_generation": "2026-08-26_observatory_route_maturity_v1"
+    },
+    "claim_guard": "Keep the affine-mode no-go as one subordinate #249 mechanism; do not promote it to endpoint escape or irrationality.",
+    "reentry_trigger": "Recompute after any linked source, packet, card, or non-affine frontier change."
+  },
+  "classification": {
+    "theorem_class": "cofinal_nonzero_second_divided_difference_obstruction_to_eventual_affinity_of_a_forcing_word_and_its_endpoint_response",
+    "novelty_class": "standard_affine_interpolation_test_with_source_specific_Lean_checked_totient_consumer",
+    "frontier_relation": "eventually_affine_mode_elimination_not_endpoint_escape",
+    "formalization_class": "totient_endpoint_specialization_Lean_checked_generic_recurrence_transfer_direct_on_card",
+    "priority_claim": "none",
+    "recommended_terminology": "cofinal nonzero second-divided-difference obstruction to eventual affine forcing",
+    "acceptable_descriptive_alias": "prime-double noncollinear affine-mode obstruction",
+    "standard_mechanism": "an affine function has vanishing second divided difference on every triple, and substituting an affine response into the first-order forced recurrence makes the forcing eventually affine",
+    "discouraged_terminology": [
+      "general anti-shadowing theorem",
+      "endpoint escape theorem",
+      "all linear-scale modes fail",
+      "new theorem on totient distribution",
+      "solution of Erdős #249"
+    ],
+    "attribution": "Use standard finite-difference or affine-interpolation language for the three-point certificate. Attribute the cofinal prime-double totient witness and its fixed-quotient endpoint consumer to the local Lean source, without claiming priority for the elementary determinant.",
+    "mathematical_interest": "The generic interpolation fact is routine. The source-specific value is that the tiny exact witness $-p(q-p)$ occurs arbitrarily late and therefore deletes an entire asymptotic response class without density estimates.",
+    "reusable_scope": "Forced first-order recurrences where a proposed eventual polynomial response algebraically forces a polynomial driving word; cofinal nonzero divided differences then eliminate that response degree.",
+    "why_it_matters": "It converts an informal claim that the totient word is irregular into an exact certificate consumed by the endpoint recurrence, subsumes the earlier constant-two exclusion, and leaves non-affine linear-scale trapping visibly open."
+  },
+  "terminology_sources": [
+    {
+      "id": "norlund_1924_differenzenrechnung",
+      "title": "Vorlesungen über Differenzenrechnung",
+      "author": "Niels Erik Nørlund",
+      "publisher": "Springer",
+      "year": 1924,
+      "url": "https://eudml.org/doc/204170",
+      "exact_anchor": "The monograph is a foundational systematic treatment of finite and divided differences and polynomial interpolation.",
+      "supports": "The standard language in which vanishing second divided differences characterize affine data.",
+      "does_not_support": "The totient prime-double witness or the endpoint recurrence specialization."
+    },
+    {
+      "id": "elaydi_difference_equations",
+      "title": "An Introduction to Difference Equations",
+      "author": "Saber Elaydi",
+      "publisher": "Springer",
+      "edition": "third",
+      "year": 2005,
+      "url": "https://link.springer.com/book/10.1007/0-387-27602-5",
+      "exact_anchor": "The chapters on linear nonhomogeneous difference equations and undetermined coefficients give the standard forcing/response framework.",
+      "supports": "Conventional recurrence terminology for substituting a proposed polynomial response into a forced linear recurrence.",
+      "does_not_support": "The exact totient word or its cofinal prime construction."
+    }
+  ],
+  "mechanism_comparison": {
+    "affine_graph_test": "Three distinct graph points are collinear exactly when their second divided difference vanishes.",
+    "recurrence_transfer": "For $E_{H+1}=2E_H+a_{c+H+1}-k$, an eventual affine formula for $E_H$ rearranges to an eventual affine formula for the shifted word $a_{c+H+1}$.",
+    "totient_witness": "At $p,q,2p$, the totient graph determinant is $-p(q-p)\\ne0$ for primes $2<p<q$.",
+    "cofinality": "Arbitrarily large primes place such a nonzero certificate beyond every cutoff; no density or spacing estimate is consumed.",
+    "homogeneous_predecessor": "A single sufficiently large prime argument already proves the actual shifted word is not constantly two. This is the degree-zero homogeneous special case and should not be released as a separate novelty object once the affine theorem is available.",
+    "remaining_boundary": "Approximate affine behavior, bounded affine error, periodic modulation, and general non-affine linear-scale modes remain untouched."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Nørlund divided differences affine three points",
+      "finite differences affine function second divided difference zero",
+      "linear nonhomogeneous recurrence polynomial forcing"
+    ],
+    "result": "The generic graph and recurrence steps are standard divided-difference and forced-recurrence algebra. No theorem-level novelty should be assigned to them. The exact totient consumer is best presented as a source-specific certificate.",
+    "boundary": "The bounded search was for terminology and mechanism ancestry, not for priority over the elementary determinant identity."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The Lean-checked consecutive-totient endpoint consumer uses arbitrarily late prime-double triples with nonzero second divided difference to rule out exact eventual affine fixed-quotient error tails; the constant-two boundary mode is a routine special case.",
+    "forbidden_wording": [
+      "The result proves endpoint escape.",
+      "Every linear-scale endpoint mode is excluded.",
+      "The totient sequence has a new distribution property.",
+      "The criterion controls approximate affine shadowing.",
+      "The result advances or solves Erdős #249."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_endpoint_escape",
+      "not_approximate_anti_shadowing",
+      "not_all_linear_scale_modes",
+      "not_erdos_249_progress"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/totient_prime_double_affine_mode_obstruction.card.json",
+      "effect": "Replace custom-first terminology with standard second-divided-difference language while retaining prime-double as a descriptive alias."
+    },
+    {
+      "consumer": "Erdős #249 proof fleet",
+      "effect": "Treat the constant-two and all eventual affine fixed-quotient modes as one retired class, and keep non-affine linear-scale traps as the exact surviving boundary."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present one standard generic mechanism with its cofinal totient consumer; mention constant-two only as the homogeneous predecessor, not a second result."
+    },
+    {
+      "consumer": "duplicate authority",
+      "effect": "Retire totient_prime_triangle_affine_tail_obstruction as a historical alias: it has the same recurrence, three points, determinant, source result, and claim boundary."
+    }
+  ]
+}

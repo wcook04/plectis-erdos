@@ -1,0 +1,348 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "generated_at": "2026-08-26",
+  "purpose": "Expose one source-current positive Bergman-area theorem stack while keeping its classical conformal ingredients, scoped lemniscate consumer, and open #1041 boundary machine-readable at first contact.",
+  "source_generation": {
+    "analytic_source_commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+    "analytic_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BergmanGeodesicInvariance.md",
+    "analytic_source_sha256": "aa3df28c5240a211685dd442ec7464a53152c846889902bd873a4b6953eafc6e",
+    "replay_source_commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+    "replay_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_geodesic.py",
+    "replay_source_sha256": "4c29d97e846eb3c6833b19dca79193c0d4eee762cfd2772e00cb7f7f25502fb6",
+    "reviewer_card_commit": "a21824c173411c6a097c9d0377a2e52b556eee12",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/bergman_geodesic_area_bound.card.json",
+    "reviewer_card_sha256": "755a9e08a57f19a093d1e0c47f65d2403676b0079eb10b35131fc56af43404b6",
+    "status": "ordinary_proof_replay_and_card_hashes_current_at_adjudication; no Lean or independent specialist review is claimed"
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/bergman_geodesic_area_bound.card.json",
+    "reviewer_card_commit": "a21824c173411c6a097c9d0377a2e52b556eee12",
+    "reviewer_card_sha256": "755a9e08a57f19a093d1e0c47f65d2403676b0079eb10b35131fc56af43404b6",
+    "analytic_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BergmanGeodesicInvariance.md",
+    "analytic_source_commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+    "analytic_source_sha256": "aa3df28c5240a211685dd442ec7464a53152c846889902bd873a4b6953eafc6e",
+    "replay_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_geodesic.py",
+    "replay_source_commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+    "replay_source_sha256": "4c29d97e846eb3c6833b19dca79193c0d4eee762cfd2772e00cb7f7f25502fb6",
+    "source_result_ids": [
+      "bergman_geodesic_moebius_invariance"
+    ]
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Complete authored ordinary area--pseudohyperbolic geodesic theorem with focused exact replay and a standard Green/Blaschke bridge; the unresolved value is its scoped lemniscate boundary.",
+    "slow_down_at": "Check Möbius-invariant energy normalization, endpoint integral sharpness, equality family, and the hypotheses needed for the root-centred Green factorization.",
+    "automation_can_establish": [
+      "Exact replay arithmetic and source/card hash parity",
+      "Presence of the simply-connected finite-area and no-universal-lemniscate claim guards",
+      "The cited source locators and theorem metadata"
+    ],
+    "human_judgment_required": [
+      "Whether the sharp formula is already known under Bergman or hyperbolic-geodesic terminology",
+      "Whether the Green/Blaschke consumer preserves all domain and endpoint quantifiers",
+      "Which multiply-connected or near-Fekete configurations remain outside the theorem"
+    ],
+    "review_act": "One bounded expert act: audit the invariant energy calculation and equality case against Gehring--Hayman and Bergman literature, then test the scoped lemniscate consumer."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_bergman_geodesic_area_bound_v2",
+    "result_family": "erdos1041_conformal_geodesic_positive_region",
+    "exact_result_id": "bergman_geodesic_moebius_invariance",
+    "source_generation": "2026-08-26",
+    "evidence_class": "complete authored ordinary proof plus focused exact replay; standard Bergman/Green/Blaschke framework and bounded primary-source comparison",
+    "prior_art_relation": "Gehring--Hayman supplies the nearest classical hyperbolic-geodesic length comparison, while Bergman covariance, area identities, and Green/Blaschke factorization are standard framework. The exact sharp area--pseudohyperbolic endpoint form and scoped lemniscate synthesis are apparently unrecorded under bounded search, without a priority claim.",
+    "confidence_ceiling": "High for source/card/replay parity and the stated simply connected-domain theorem; medium for exact literature non-location; low for priority, universal lemniscate coverage, or any unrestricted Erdos #1041 conclusion.",
+    "significance_rationale": "This is a positive, reusable conformal-geometric region rather than a route-killing no-go: it converts finite area and endpoint pseudohyperbolic distance into a sharp length certificate and exposes its near-shell failure boundary.",
+    "hard_step": "Retain the Möbius-invariant Bergman-energy normalization sharply enough for the exact endpoint logarithm and equality family; then apply the Green/Blaschke bridge only within its simply connected scope.",
+    "open_boundary": "No multiply connected theorem, near-Fekete-shell control, universal path-below-two result, Lean proof, or solution of Erdos #1041 follows.",
+    "expert_review_act": "Check the invariant energy calculation, endpoint normalization, equality family, and root-centred Green factorization; compare the exact formula to Gehring--Hayman and Bergman literature without treating specialist review as a release gate.",
+    "next_reentry": "Re-enter only if the analytic note, replay script, card, or a direct primary antecedent for the exact sharp formula changes; do not repeat the completed bounded search."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For every simply connected planar domain of finite area, the hyperbolic geodesic length is bounded by the sharp Bergman-area/pseudohyperbolic-distance formula, with the stated equality family; the Green/Blaschke specialization is a sufficient criterion for selected polynomial lemniscates.",
+    "evidence_class": "complete authored ordinary proof with focused exact replay; no Lean proof",
+    "forbidden_wording": [
+      "new Green-function identity",
+      "universal path-below-two theorem",
+      "multiply connected or near-Fekete coverage",
+      "Lean-verified inequality",
+      "solution of Erdős #1041",
+      "priority or acceptance claim"
+    ],
+    "open_boundary": "The theorem does not control multiply connected domains, the near-Fekete shell, or the universal constant-two endpoint."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_source_or_prior_art_change",
+    "reentry_condition": "Re-enter only if the analytic note, replay script, card, or a direct primary antecedent for the exact sharp formula changes.",
+    "bounded_expert_act": "Check the invariant energy calculation, endpoint normalization, equality family, and root-centred Green factorization, then run one broader Bergman/conformal-mapping search.",
+    "do_not_redo": "Do not repeat the completed focused replay or generic Gehring--Hayman attribution search."
+  },
+  "release_disposition": {
+    "value": "public_card_only",
+    "statement_firewall": "Expose the sharp simply connected-domain area--pseudohyperbolic geodesic inequality, its equality family, and the scoped polynomial-lemniscate consumer. Label the proof ordinary and replay exact; keep multiply connected, near-shell, universal-length, Lean, priority, and #1041-solution claims out.",
+    "reason": "The pinned proof and replay are inspectable and the claim boundary is explicit. Independent complex-analysis review is downstream rather than a visibility veto; Comparator remains inappropriate for this ordinary-proof object."
+  },
+  "status": "adjudicated_positive_ordinary_theorem_public_card_only_no_priority",
+  "route_id": "bergman_geodesic_area_bound_v0",
+  "problem_id": "erdos_1041",
+  "source_result_ids": [
+    "bergman_geodesic_moebius_invariance"
+  ],
+  "canonical_card": "docs/formal_math/reviewer_cards/bergman_geodesic_area_bound.card.json",
+  "adjudication_date": "2026-08-26",
+  "classification": "apparently_unrecorded_sharp_Bergman_space_area_endpoint_distance_inequality_with_standard_Green_Blaschke_factorization_and_scoped_lemniscate_application",
+  "promotion_verdict": "promote_as_a_high_value_positive_conformal_geometry_theorem_with_no_priority_claim_and_with_the_Green_identity_explicitly_attributed_as_standard",
+  "adjudication": {
+    "verdict": "admit_as_independent_positive_theorem_stack_public_card_only",
+    "evidence_class": "complete authored ordinary proof with focused exact replay; classical Green/Blaschke and Gehring--Hayman ingredients externally attributed; no Lean proof",
+    "closest_known_prior_art": "Gehring--Hayman supplies the nearest Euclidean-length comparison for hyperbolic geodesics, and Pritsker supplies Green-potential/Blaschke framework. Neither located source states the exact sharp area--pseudohyperbolic-distance inequality with this equality family.",
+    "exact_delta": "The source-specific theorem converts finite Bergman area and endpoint pseudohyperbolic distance into a sharp Euclidean geodesic-length bound, then specializes the Green/Blaschke identity to selected polynomial lemniscates. It is sufficient geometry for a subset of #1041 configurations, not the universal short-path claim.",
+    "disconfirming_evidence": "The ordinary proof and replay do not establish near-Fekete-shell or multiply-connected coverage, a universal constant-two path, Lean verification, or an Erdős #1041 solution. Generic Green identities and kernel covariance are not novelty evidence.",
+    "confidence_ceiling": "Strong internal confidence in correctness and sharpness of the ordinary theorem; medium confidence that the exact area--endpoint formulation is unrecorded; no priority claim until broader Bergman/conformal-mapping review.",
+    "significance_rationale": "This is a high-value positive conformal-geometry mechanism because the equality family makes the available length budget explicit and exposes the precise geometric boundary where the #1041 endpoint remains uncovered.",
+    "bounded_expert_review_act": "Check one broader Bergman/conformal-mapping search for the exact area--pseudohyperbolic formula and equality family. Preserve public-card-only status unless that search changes the attribution ceiling; do not create a Comparator interface for an ordinary proof."
+  },
+  "primary_sources": [
+    {
+      "source_id": "gehring_hayman_1962_conformal_mapping_inequality",
+      "citation": "F. W. Gehring and W. K. Hayman, An inequality in the theory of conformal mapping, Journal de Mathématiques Pures et Appliquées 41 (1962), 353--361.",
+      "url": "https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/gehringhayman-inequality-for-quasihyperbolic-geodesics/B8D1BF1FDBAB2EBDF20F5F9925B76E49",
+      "source_artifact": null,
+      "source_access_boundary": "The official Cambridge page is a record for the later 1989 paper The Gehring--Hayman inequality for quasihyperbolic geodesics; its citation metadata identifies the 1962 Gehring--Hayman article, but the 1962 article itself was not acquired as a PDF, scan, or source bundle.",
+      "source_read_status": "unresolved_official_record_only; original_primary_artifact_not_acquired",
+      "primary_pdf_read": false,
+      "primary_tex_read": false,
+      "source_access_attempted_at": "2026-08-27",
+      "source_access_attempts": [
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B8D1BF1FDBAB2EBDF20F5F9925B76E49/S0305004100071681a.pdf/div-class-title-the-gehring-hayman-inequality-for-quasihyperbolic-geodesics-div.pdf",
+          "retrieval_route": "direct_official_http",
+          "result": "The URL resolves to a PDF endpoint for the later Volume 114 Issue 3 paper, not the 1962 Journal de Mathématiques Pures et Appliquées article.",
+          "artifact_acquired": false
+        }
+      ],
+      "source_reviewed_at": "2026-08-27",
+      "exact_source_locator": "Cambridge official record metadata: citation_reference identifies the 1962 article, volume 41, pp. 353--361; the original article text was not locally inspected.",
+      "relation": "Record-level bibliographic lead for the nearest classical Euclidean-length theorem for hyperbolic geodesics. Because the original primary artifact is not bound, no theorem-text detail is attributed as read evidence; the route retains only the bounded relation that this prior work is adjacent and not the exact sharp area--pseudohyperbolic-distance formula.",
+      "supports": "Only the existence, authorship, title, venue, volume, and page-range metadata of the 1962 prior-art lead.",
+      "does_not_support": "Any exact theorem statement, proof detail, equality case, sharp constant, or claim that the 1962 article states or refutes the present area--pseudohyperbolic formula.",
+      "consuming_claims": []
+    },
+    {
+      "source_id": "pritsker_2013_green_potentials_blaschke",
+      "citation": "Igor E. Pritsker, Inequalities for sums of Green potentials and Blaschke products, Bulletin of the London Mathematical Society 43 (2011), 561--575.",
+      "url": "https://doi.org/10.1112/blms/bdq122",
+      "arxiv_url": "https://arxiv.org/abs/1307.6196",
+      "annex_slug": "arxiv-1307-6196-pritsker-green-potentials-blaschke",
+      "source_artifact": "annexes/arxiv-1307-6196-pritsker-green-potentials-blaschke/source.tar.gz",
+      "source_artifact_sha256": "fe6b8836e2751431ee5c6da822ad431c31760d59a30ea549db4698f77414b525",
+      "source_archive": "annexes/arxiv-1307-6196-pritsker-green-potentials-blaschke/source.tar.gz",
+      "source_archive_sha256": "fe6b8836e2751431ee5c6da822ad431c31760d59a30ea549db4698f77414b525",
+      "source_tex": "annexes/arxiv-1307-6196-pritsker-green-potentials-blaschke/source.tar.gz::GpotBpr.tex",
+      "source_tex_sha256": "31401532ac10e61367f77dd6da232d2d57dcb69226dccda5818467e09afc6f79",
+      "extracted_markdown": "annexes/arxiv-1307-6196-pritsker-green-potentials-blaschke/extracted.md",
+      "extracted_markdown_sha256": "23ccf10f292106bfee8f1d1eb3c70395e0403f5fafa663199cbee516c705ddc7",
+      "source_read_status": "primary_arxiv_source_bundle_read_and_local_artifact_bound",
+      "primary_pdf_read": false,
+      "primary_tex_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_source_locator": "GpotBpr.tex lines 99--120 / extracted.md lines 16--30: pseudohyperbolic Green-function definition and Theorem 1 Riesz representation; GpotBpr.tex lines 165--191 / extracted.md lines 66--79: finite Blaschke products and Theorem 4 inequality; GpotBpr.tex lines 193--216 / extracted.md lines 80--112: sharpness and extremal-array boundary.",
+      "relation": "Primary source for the Green-potential representation of pseudohyperbolic farthest-point distance and the finite-Blaschke-product supremum-norm inequalities. It supports treating the root-centred Green/Blaschke bridge as established framework rather than a new potential-theory theorem.",
+      "supports": "The displayed Green-potential/pseudohyperbolic representation, the finite Blaschke product factorization, and the scoped product inequality in the cited theorem statements.",
+      "does_not_support": "The present Bergman-area geodesic inequality, its equality family, a universal polynomial-lemniscate path theorem, multiply connected or near-Fekete coverage, Lean verification, priority, or a solution of Erdős #1041.",
+      "consuming_claims": [
+        "bergman_geodesic_area_bound_v0.adjudication.closest_known_prior_art",
+        "bergman_geodesic_area_bound_v0.adjudication.exact_delta",
+        "bergman_geodesic_area_bound_v0.observatory_adjudication_2026_08_26.prior_art_assessment.closest_primary_sources",
+        "bergman_geodesic_area_bound_v0.observatory_adjudication_2026_08_26.comparison_relation"
+      ]
+    },
+    {
+      "source_id": "erdos_herzog_piranian_1958_metric_properties_polynomials",
+      "citation": "P. Erdős, F. Herzog, and G. Piranian, Metric Properties of Polynomials, Journal d'Analyse Mathématique 6 (1958), 125--148.",
+      "url": "https://link.springer.com/article/10.1007/BF02790120",
+      "annex_slug": "erdos-herzog-piranian-1958-metric-properties-of-polynomials",
+      "source_artifact": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_artifact_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "source_read_status": "primary_pdf_read_and_local_artifact_bound",
+      "primary_pdf_read": true,
+      "primary_tex_read": false,
+      "source_reviewed_at": "2026-08-27",
+      "exact_source_locator": "Printed p. 139 / PDF p. 15 / extracted.md lines 594--602: the source asks whether E(f) contains a path of length less than 2 joining two zeros; this is the cited short-path boundary.",
+      "relation": "Primary source for the original polynomial short-path problem boundary. The present theorem supplies a sufficient criterion for a subset of configurations and does not resolve Problem 5.",
+      "supports": "The original short-path question and its placement in the metric-properties-of-polynomials problem list.",
+      "does_not_support": "The present Bergman-area geodesic inequality, the Green/Blaschke bridge, universal coverage, Lean verification, priority, or a solution of Erdős #1041.",
+      "consuming_claims": [
+        "bergman_geodesic_area_bound_v0.adjudication.exact_delta",
+        "bergman_geodesic_area_bound_v0.adjudication.disconfirming_evidence",
+        "bergman_geodesic_area_bound_v0.observatory_adjudication_2026_08_26.comparison_relation",
+        "bergman_geodesic_area_bound_v0.observatory_adjudication_2026_08_26.open_boundary"
+      ]
+    }
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "hyperbolic geodesic Euclidean length area simply connected domain Bergman",
+      "Euclidean length hyperbolic geodesic domain Gehring Hayman",
+      "log 1/(1-rho^2) Bergman geodesic area",
+      "Green function finite Blaschke product zeros sum pseudohyperbolic"
+    ],
+    "outcome": "The search recovered Gehring--Hayman and modern Gehring--Hayman generalizations, plus Green-potential/Blaschke literature, but no source stating the exact sharp area--endpoint-distance inequality. This supports only an apparently-unrecorded exact-form classification, never a priority assertion."
+  },
+  "semantic_comparison": {
+    "correctness_and_reach": "The ordinary proof is complete and the equality family makes the constant sharp. The result applies to every simply connected planar domain of finite area, while polynomial lemniscates enter only through later consumers.",
+    "relation_to_open_problem": "It is a sufficient length certificate and a positive-region enlargement for #1041, not an equivalent reformulation or endpoint theorem.",
+    "prior_art_overlap": "The kernel covariance, area norm, Green identity, and finite-Blaschke factorization are classical. The exact combination and sharp equality statement were not located.",
+    "argument_distinctness": "The mechanism spends a global Bergman $A^2$ area budget against an exactly evaluated invariant geodesic energy, rather than using Gehring--Hayman comparison or a Koebe distortion constant.",
+    "formalization_status": "Ordinary complete proof with focused symbolic/numerical replay; not Lean checked.",
+    "public_significance": "A strong standalone theorem with a transparent equality case and a precise failure boundary. It changes the public story from only route eliminations to a reusable positive conformal-geometric mechanism."
+  },
+  "public_exhibition_handoff": {
+    "claim_ceiling": "For every simply connected planar domain of finite area, the Euclidean length of the hyperbolic geodesic between $a$ and $b$ is at most $\\sqrt{(\\operatorname{Area}/\\pi)\\log(1/(1-\\rho(a,b)^2))}$, and this bound is sharp. The formula is an apparently unrecorded exact Bergman-space consequence of standard kernel covariance and area identities. Its Green/Blaschke specialization gives new sufficient criteria for selected polynomial lemniscates, but Erdős #1041 remains open.",
+    "exact_locators": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BergmanGeodesicInvariance.md Sections 1--3 and 8",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_geodesic.py",
+      "docs/formal_math/reviewer_cards/bergman_geodesic_area_bound.card.json"
+    ]
+  },
+  "rejected_wording": [
+    "new Bergman geodesic theorem",
+    "new Green-function identity",
+    "sharp solution of the polynomial lemniscate path problem",
+    "proof of Erdős #1041",
+    "Lean-verified geodesic inequality"
+  ],
+  "programme_placement": {
+    "canonical_mechanism_family": "conformal-geometric positive regions for polynomial lemniscates: sharp Bergman-area geodesic control and Green/Blaschke root-distance transport",
+    "disposition": "admit as an independent positive theorem stack alongside the all-degree component-perimeter and solved special-family results; do not inflate its scoped lemniscate criterion into the #1041 endpoint",
+    "consolidation_relation": "Consolidate invariant energy, exact sharp inequality, equality family, classical root factorization, and scoped lemniscate consumer. Keep component perimeter, binomial chords, and collinear Chebyshev as orthogonal theorem families.",
+    "comparator_advisory": "No Comparator interface: this is an ordinary proof plus exact replay. A public card is eligible only after proof/replay immutability, with its ordinary-proof and open-boundary labels intact.",
+    "paper_disposition": {
+      "class": "independent core positive theorem",
+      "target_section": "A sharp Bergman-area bound for hyperbolic geodesics",
+      "supersession_or_consolidation": "Replace separate energy, equality-domain, Green-factorization, and symmetric-family narratives with one theorem stack and one explicit near-shell boundary.",
+      "reason": "It supplies a reusable exact positive region without concealing why its domain/endpoint hypotheses leave the endpoint problem open."
+    }
+  },
+  "paper_assimilation": {
+    "paper": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "New core section before ‘Complements and further questions’: ‘A sharp Bergman-area bound for hyperbolic geodesics’",
+    "canonical_mechanism_family": "conformal-geometric positive regions for polynomial lemniscates: sharp Bergman-area geodesic control and Green/Blaschke root-distance transport",
+    "relation": "Independent positive theorem stack; consolidate energy, sharp inequality, equality family, classical Green factorization, and scoped consumer without merging it into component-perimeter, binomial, or collinear theorem families.",
+    "understanding_delta": "Finite area and endpoint pseudohyperbolic distance provide an exact sharp length budget, so the near-extremal failure is visible as a geometric boundary rather than a missing calculation.",
+    "evidence_boundary": "Complete ordinary proof and focused replay at pinned commit 1be3007b9c077e349ae425e6f374f58d38508045; standard framework attribution and no priority claim. No Lean, independent specialist review, public immutable proof cut, universal path theorem, or #1041 solution.",
+    "hard_step": "Cover the near-Fekete shell or multiply connected geometry by a distinct metric/topological mechanism.",
+    "meaningful_failed_route": "Analytic sharpness or root-factorization alone does not yield a universal lemniscate short-path theorem, because the required domain and endpoint geometry need not hold.",
+    "open_remainder": "Specialist review, public immutable sources, near-shell geometry, the sharp constant-two target, and Erdős #1041 remain open."
+  },
+  "release_disposition": {
+    "status": "public_card_only",
+    "reason": "An ordinary analytic proof with replay may be a source-linked public card after immutable source parity, but cannot receive a Comparator badge or a Lean-verified label.",
+    "owner": "Role 3 Comparator/Public task",
+    "reentry_condition": "Publicly immutable proof note and replay, then independent specialist review of the exact inequality and equality family."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "ordinary_proof_generation_with_exact_replay",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "one sharp Bergman-area geodesic theorem stack with its equality family and scoped lemniscate consumer",
+    "human_understanding_delta": "A Möbius-invariant Bergman energy converts finite area and endpoint distance into a sharp length certificate while making the near-shell failure boundary explicit.",
+    "verification_state": "Complete ordinary proof with pinned source/replay hashes and a focused successful all-parts replay; neither Lean nor independent review is claimed.",
+    "publication_or_review_state": "Private expert-review-ready theorem; public-card-only after source immutability and specialist review, never Comparator under the present trust model.",
+    "canonicalization_state": "One theorem stack now governs energy, equality, standard Green bridge, and consumer; duplicate submechanism narratives are retired.",
+    "unresolved_downstream_bottleneck": "A distinct mechanism for near-extremal and multiply connected geometry, plus review of the ordinary proof.",
+    "next_stage_owner": "Independent complex-analysis reviewers, Role 3 for public-card disposition, and #1041 proof owners for the uncovered geometry."
+  },
+  "reentry_condition": "Upgrade the originality ceiling only after a specialist or a broader historical search confirms that the exact area--pseudohyperbolic-distance inequality and equality family are absent from the conformal-mapping and Bergman-space literature.",
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "conformal-geometric positive regions for polynomial lemniscates: sharp Bergman-area geodesic control and Green/Blaschke root-distance transport",
+    "programme_disposition": "retain as one independent positive theorem stack alongside the component-perimeter parent; do not inflate its scoped lemniscate criterion into the #1041 endpoint",
+    "paper_disposition": "headline/core positive theorem in 'A sharp Bergman-area bound for hyperbolic geodesics', with the scoped lemniscate bridge as a subordinate consumer",
+    "supersession_or_consolidation": "Consolidate invariant energy, exact endpoint formula, equality family, standard root factorization, and scoped consumer. Retire separate energy/equality-domain narratives.",
+    "human_understanding_delta": "The reader sees a sharp finite-area metric certificate and its exact failure boundary, rather than a vague conformal-geometry promise.",
+    "expert_attention_reason": "This is a reusable positive region, but its hypotheses explain why it cannot reach the near-Fekete shell or multiply connected endpoint geometry.",
+    "open_boundary": "Multiply connected domains, near-Fekete-shell control, universal path-below-two, and #1041 remain open."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-current prior-art and significance pass",
+    "result_family_version": "bergman_geodesic_area_bound@source_1be3007_card_a21824c",
+    "source_version_binding": {
+      "analytic_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BergmanGeodesicInvariance.md",
+        "commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+        "sha256": "aa3df28c5240a211685dd442ec7464a53152c846889902bd873a4b6953eafc6e"
+      },
+      "replay_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_geodesic.py",
+        "commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+        "sha256": "4c29d97e846eb3c6833b19dca79193c0d4eee762cfd2772e00cb7f7f25502fb6",
+        "status": "focused exact replay; not Lean"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/bergman_geodesic_area_bound.card.json",
+        "commit": "a21824c173411c6a097c9d0377a2e52b556eee12",
+        "sha256": "755a9e08a57f19a093d1e0c47f65d2403676b0079eb10b35131fc56af43404b6"
+      }
+    },
+    "evidence_class": "Complete authored ordinary proof with focused exact replay and standard Bergman/Green/Blaschke framework; no Lean theorem and no independent specialist review.",
+    "prior_art_assessment": {
+      "confidence": "high for the stated simply connected-domain theorem and source parity; moderate for exact literature non-location; no priority claim",
+      "closest_primary_sources": [
+        "Gehring--Hayman (1962): classical hyperbolic-geodesic Euclidean-length comparison.",
+        "Pritsker (2011): Green-potential and Blaschke-product inequalities supporting the root-factorization bridge.",
+        "Erdős--Herzog--Piranian (1958): original polynomial-lemniscate short-path problem."
+      ],
+      "exact_relation": "The cited literature supplies nearby geodesic comparison and Green/Blaschke framework. The source-specific sharp area--pseudohyperbolic endpoint formula and equality family were not located verbatim.",
+      "search_scope": "Targeted searches covered Bergman area/geodesic length, Möbius-invariant endpoint energy, logarithmic endpoint formulas, and Green/Blaschke root products. Non-location is not priority evidence."
+    },
+    "comparison_relation": "Gehring--Hayman supplies classical hyperbolic-geodesic length comparison and Pritsker supplies Green/Blaschke potential inequalities. The source-specific delta is the sharp Bergman-area/pseudohyperbolic endpoint formula and equality family with a scoped lemniscate consumer.",
+    "closest_known_result": "Gehring--Hayman (1962), Pritsker (2011), and Erdős--Herzog--Piranian (1958) are the nearest primary antecedents; none states this exact area-normalized endpoint formula or resolves the short-path problem.",
+    "exact_delta": "For simply connected finite-area domains, the authored proof gives an exact sharp endpoint-distance bound and transfers it through Green/Blaschke products to selected polynomial lemniscates.",
+    "disconfirming_evidence": "The theorem is conditional on simply connected finite-area geometry and selected factorization hypotheses; multiply connected/near-Fekete cases and the universal path-below-two theorem remain untouched. The replay is not Lean.",
+    "confidence_ceiling": "High for source/card/replay parity and the stated ordinary theorem; medium for exact literature matching; low for originality, priority, Lean verification, or any unrestricted #1041 conclusion.",
+    "hard_step": "Retain the pseudohyperbolic endpoint parameter sharply through the invariant Bergman energy calculation and verify the equality family without importing unstated boundary regularity.",
+    "open_boundary": "No universal polynomial-lemniscate path theorem, multiply-connected extension, near-Fekete coverage, Lean proof, or Erdős #1041 solution follows.",
+    "mathematical_delta": {
+      "one_sentence": "For every simply connected finite-area planar domain, hyperbolic geodesic length obeys a sharp Bergman-area/pseudohyperbolic endpoint formula, with a standard Green/Blaschke bridge to selected polynomial lemniscates.",
+      "genuinely_hard_step": "The invariant energy normalization and exact endpoint integral must retain the pseudohyperbolic parameter sharply enough for the equality family to survive.",
+      "why_care": "It supplies a concrete positive region and an exact near-shell failure boundary, directing future #1041 work toward multiply connected or near-extremal geometry.",
+      "natural_friction": "The theorem is conditional on a favorable simply connected domain and endpoint geometry; it is not a universal lemniscate path theorem."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "For every simply connected finite-area planar domain, the authored proof gives the stated sharp area--pseudohyperbolic endpoint geodesic bound; Green/Blaschke factorization yields a sufficient criterion for selected polynomial lemniscates.",
+      "rejected_stronger": [
+        "a new Green-function identity",
+        "coverage of multiply connected domains or the near-Fekete shell",
+        "Lean verification of the inequality",
+        "a universal path-below-two theorem",
+        "Erdős #1041 is solved"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "A_minus_positive_region",
+      "mechanism_family": "sharp Bergman-area geodesic control with Green/Blaschke root-distance transport",
+      "programme_disposition": "retain as an independent positive theorem stack alongside the component-perimeter and solved-family mechanisms",
+      "paper_disposition": "headline/core positive theorem with scoped lemniscate consumer",
+      "comparator_advisory": "No Comparator interface under the current evidence model; public-card-only status is appropriate with ordinary-proof and exact-replay labels.",
+      "absolute_shortlist": "retain as a plausible #1041 flagship candidate, subject to the open-domain boundary"
+    },
+    "expert_review_act": "Check the Möbius-invariant energy calculation, endpoint normalization, logarithmic-strip equality family, and root-centred Green factorization against Gehring--Hayman and Bergman literature.",
+    "reentry_condition": "Reopen if the analytic note, replay, card, or a direct primary antecedent changes, or if a mechanism reaches the near-Fekete/multiply-connected boundary."
+  },
+  "adjudication_currentness": {
+    "status": "authored_source_replay_card_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "analytic_source_commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+      "analytic_source_sha256": "aa3df28c5240a211685dd442ec7464a53152c846889902bd873a4b6953eafc6e",
+      "replay_source_commit": "1be3007b9c077e349ae425e6f374f58d38508045",
+      "replay_source_sha256": "4c29d97e846eb3c6833b19dca79193c0d4eee762cfd2772e00cb7f7f25502fb6",
+      "reviewer_card_commit": "a21824c173411c6a097c9d0377a2e52b556eee12",
+      "reviewer_card_sha256": "755a9e08a57f19a093d1e0c47f65d2403676b0079eb10b35131fc56af43404b6",
+      "source_result_ids": [
+        "bergman_geodesic_moebius_invariance"
+      ]
+    },
+    "claim_guard": "Only the simply-connected finite-area Bergman geodesic inequality, equality family, and scoped Green/Blaschke lemniscate consumer are admitted; no Lean, universal path-below-two, multiply-connected extension, priority, or #1041 endpoint claim.",
+    "reentry_trigger": "Re-enter if the analytic proof, replay script, reviewer card, source result, or a direct primary antecedent changes."
+  }
+}

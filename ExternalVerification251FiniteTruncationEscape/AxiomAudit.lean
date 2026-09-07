@@ -1,0 +1,4 @@
+import ExternalVerification251FiniteTruncationEscape.Solution
+
+#print axioms Erdos249257.ExternalVerification251FiniteTruncationEscape.cofinal_escape_of_finite_truncation
+#print axioms Erdos249257.ExternalVerification251FiniteTruncationEscape.irrational_prime_series_of_finite_truncation

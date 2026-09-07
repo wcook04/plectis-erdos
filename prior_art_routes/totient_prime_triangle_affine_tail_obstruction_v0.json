@@ -1,0 +1,167 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "totient_prime_triangle_affine_tail_obstruction",
+  "generated_at": "2026-08-24",
+  "status": "retired_duplicate_route_redirect_to_totient_prime_double_affine_mode_obstruction",
+  "problem_id": "erdos_249",
+  "source_result_ids": [
+    "actual_totient_word_excludes_eventually_affine_endpoint_modes"
+  ],
+  "adjudication_currentness": {
+    "status": "current_duplicate_at_clean_source_card_snapshot",
+    "bound_snapshot": {
+      "formal_source_commit": "56de8534525e354e80eabc8efe1a9ae06710df4e",
+      "formal_source_sha256": "9483a646e6bcb4a505149b00fc41b20b49f820ad5bada081184427132727f017",
+      "reviewer_card_commit": "c52a3484754287f9d30d1ef6efa03e0015c8d9e9",
+      "reviewer_card_sha256": "d6b01bb511af478ca646fa75130c7ede581899c6693d9627c2c5720807b756af",
+      "canonical_parent_route": "totient_prime_double_affine_mode_obstruction"
+    },
+    "claim_guard": "This route is a retired duplicate alias; the parent owns the one affine-mode statement and its claim firewall.",
+    "reentry_trigger": "Reopen only if the linked source/card changes or the parent route's consolidation relation changes."
+  },
+  "reviewer_attention_budget": {
+    "review_act": "Confirm that the triangle presentation adds no statement beyond the parent prime-double affine-mode obstruction.",
+    "expert_judgment_required": "No separate mathematical review is warranted; review only the parent route if the exact endpoint consumer changes.",
+    "attention_disposition": "zero_click_duplicate_consolidation"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos249_totient_prime_triangle_affine_tail_obstruction@source-56de853-card-c52a348",
+    "source_generation_binding": {
+      "formal_source_commit": "56de8534525e354e80eabc8efe1a9ae06710df4e",
+      "formal_source_sha256": "9483a646e6bcb4a505149b00fc41b20b49f820ad5bada081184427132727f017",
+      "reviewer_card_commit": "c52a3484754287f9d30d1ef6efa03e0015c8d9e9",
+      "reviewer_card_sha256": "d6b01bb511af478ca646fa75130c7ede581899c6693d9627c2c5720807b756af"
+    },
+    "evidence_class": "Lean-checked endpoint-mode consumer with elementary three-point determinant; exact evidence is source-specific and no new theorem is claimed.",
+    "closest_known_result": "Finite differences, divided differences, and eventual-affinity tests are standard. Martin (2006) and Coons (2010) give stronger global totient-irregularity antecedents; neither states this endpoint transfer.",
+    "comparison_relation": "Exact duplicate of the parent prime-double noncollinear affine-mode obstruction: same recurrence, p,q,2p witness, determinant, source result, and logical boundary.",
+    "exact_delta": "No independent mathematical delta. The triangle naming is a historical alias; all usable content is already consolidated in totient_prime_double_affine_mode_obstruction.",
+    "disconfirming_evidence": "The consumer excludes only eventual affine fixed-quotient endpoint modes. It does not exclude non-affine linear traps, moving quotients, endpoint escape, irrationality, or solve Erdős #249.",
+    "confidence": {
+      "source_card_parity": "high_internal_provisional",
+      "standard_terminology": "high",
+      "independent_novelty": "none: duplicate route"
+    },
+    "significance": "C_consolidation: useful as a redirect and historical locator, but not worth separate expert attention or a second paper result.",
+    "claim_ceiling": "Describe only the parent Lean-checked eventual-affinity exclusion; never present this alias as a new totient theorem or endpoint escape result.",
+    "hard_step": "Preserve the distinction between a three-point noncollinearity certificate and any global control of the endpoint envelope.",
+    "open_boundary": "Non-affine linear-scale traps and the actual #249 residue-gap producer remain open under the parent route.",
+    "bounded_expert_act": "One-line cross-check of source_result_id, source/card hashes, and parent-route identity; no separate proof reconstruction.",
+    "reentry_trigger": "Reopen on source/card regeneration, parent-route wording changes, or evidence of a genuinely distinct consumer.",
+    "mechanism_family": "#249 cofinal noncollinear affine-mode obstruction",
+    "disposition": "consolidate_duplicate_under_parent",
+    "expert_attention_reason": "Avoid spending scarce review time twice on an identical p,q,2p determinant and recurrence consumer.",
+    "paper_disposition": "omit with reason",
+    "paper_section": "Erdős #249 — prime-double affine-mode obstruction (parent route)",
+    "supersession_relation": "Retire this triangle alias under totient_prime_double_affine_mode_obstruction; preserve its Martin/Coons locators only on the parent.",
+    "comparator_interface_justified": false,
+    "comparator_reason": "The parent already owns the exact proposition and statement firewall; a second interface would fragment one mechanism."
+  },
+  "purpose": "Preserve prior-art anchors and historical locators while redirecting this duplicate route to the single parent affine-mode obstruction.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/totient_prime_triangle_affine_tail_obstruction.card.json",
+    "card_commit": "c52a3484754287f9d30d1ef6efa03e0015c8d9e9",
+    "landed_source_commit": "56de8534525e354e80eabc8efe1a9ae06710df4e",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean",
+    "source_result_id": "actual_totient_word_excludes_eventually_affine_endpoint_modes",
+    "headline_declarations": [
+      "ErdosProblems.Erdos249.PeriodMultipleEscape.pureDyadicEndpointError_succ",
+      "ErdosProblems.Erdos249.PeriodMultipleEscape.not_eventuallyAffine_pureDyadicEndpointError"
+    ]
+  },
+  "classification": {
+    "theorem_class": "eventual_affinity_transfer_for_a_first_order_endpoint_cocycle_plus_cofinal_totient_noncollinearity",
+    "novelty_class": "routine_elementary_mechanism_with_reusable_problem_specific_Lean_route_elimination",
+    "formalization_class": "Lean_checked_all_basepoint_all_fixed_quotient_endpoint_no_go_with_exact_symbolic_determinant_receipt",
+    "priority_claim": "none",
+    "recommended_terminology": "prime-double-prime certificate for a totient-driven affine-tail obstruction",
+    "acceptable_project_alias": "prime-double-prime affine-tail obstruction",
+    "terminology_boundary": "Finite difference, affine recurrence, eventual affinity, and noncollinearity are standard. Prime-double-prime certificate is a literal description of this witness, not a located theorem name.",
+    "nearest_prior_work": [
+      "Martin (2006), Theorem 1, proves arbitrarily strong simultaneous inequalities for totient values on pairwise nonproportional affine forms, a much stronger global irregularity input than the three elementary values used here.",
+      "Coons (2010), Theorem 3.2, proves that the totient sequence is not k-regular for any k>=2; since eventually affine integer sequences are k-regular, it already excludes eventual affinity of the totient word by a more global method.",
+      "Neither source states the fixed-quotient endpoint cocycle or transfers totient non-affinity to the exact endpoint error coordinate."
+    ],
+    "attribution": "Call the determinant and finite-difference steps elementary. Cite Martin and Coons only as stronger antecedents for totient irregularity. Attribute the exact endpoint recurrence, all-basepoint/fixed-quotient Lean theorem, and sharp residual boundary to the local source.",
+    "mathematical_interest": "Low standalone depth but useful proof-engineering value: a three-point arithmetic certificate closes an entire asymptotic ansatz without a long endpoint scan.",
+    "reusable_scope": "First-order affine endpoint cocycles whose forcing words admit arbitrarily late noncollinear triples or another cofinal obstruction to eventual polynomial behavior.",
+    "why_it_matters": "Its evidence now strengthens the retained parent route; the duplicate route itself should consume no separate expert, paper, Comparator, or shortlist attention.",
+    "consolidation_status": "same recurrence, p-q-2p witness, determinant -p(q-p), source result, and logical boundary as totient_prime_double_affine_mode_obstruction",
+    "canonical_parent": "totient_prime_double_affine_mode_obstruction"
+  },
+  "primary_sources": [
+    {
+      "id": "martin_2006_simultaneous_totient_inequalities",
+      "title": "Simultaneous inequalities among values of the Euler phi-function",
+      "author": "Greg Martin",
+      "year": 2006,
+      "url": "https://arxiv.org/abs/math/0603053",
+      "exact_anchor": "Theorem 1 gives prescribed simultaneous totient-ratio inequalities by an arbitrary factor C on a positive-lower-density set for pairwise nonproportional positive affine forms.",
+      "supports": "A strong established antecedent showing large, cofinal irregularity among totient values on affine forms.",
+      "does_not_support": "The prime-double-prime determinant, endpoint cocycle, or eventual-affinity transfer theorem."
+    },
+    {
+      "id": "coons_2010_nonautomaticity",
+      "title": "(Non)Automaticity of number theoretic functions",
+      "author": "Michael Coons",
+      "venue": "Journal de Théorie des Nombres de Bordeaux 22 (2010), 339-352",
+      "doi": "10.5802/jtnb.718",
+      "url": "https://jtnb.centre-mersenne.org/item/JTNB_2010__22_2_339_0/",
+      "exact_anchor": "Theorem 3.2 states that the Euler totient function is not k-regular for any k>=2.",
+      "supports": "A stronger global complexity obstruction for the totient word; eventual affine integer sequences lie inside the k-regular class.",
+      "does_not_support": "The endpoint-error sequence, a fixed quotient, or the card's exact all-basepoint recurrence consumer."
+    }
+  ],
+  "mechanism_comparison": {
+    "transfer_core": "Substitution of E_H=AH+B into E_(H+1)=2E_H+a_(H+1)-k forces a_(H+1)=-AH+A-B+k.",
+    "arithmetic_core": "For primes 2<p<q, the totient graph points at p,q,2p have affine determinant -p(q-p), hence are noncollinear and occur beyond every threshold.",
+    "literature_relation": "Known results establish much richer totient irregularity. The local theorem is valuable because it is an exact cheap consumer of the particular endpoint cocycle, not because it discovers that phi is irregular.",
+    "exact_delta": "A machine-checked cofinal contradiction for every basepoint and fixed quotient, paired with an honest statement of the nonlinear modes it does not touch."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Euler totient eventually affine sequence",
+      "totient values p 2p noncollinear affine",
+      "Euler phi finite differences eventual polynomial",
+      "totient k-regular eventual affine",
+      "affine recurrence forcing word eventual affine obstruction"
+    ],
+    "result": "The search located stronger totient-ordering and nonregularity results but no named theorem for this three-point certificate or its endpoint-cocycle composition.",
+    "boundary": "No novelty follows: both displayed calculations are immediate. The defensible contribution is the exact formal consumer and route-elimination boundary."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked endpoint-cocycle argument uses an elementary cofinal prime-double-prime determinant to exclude every eventually affine tail for every basepoint and fixed quotient.",
+    "forbidden_wording": [
+      "The prime-double-prime obstruction is a new theorem about Euler's totient function.",
+      "The endpoint error escapes every linear envelope.",
+      "All fixed-quotient traps are excluded.",
+      "Moving quotients or nonlinear normalizations are covered.",
+      "This supplies the Mersenne residue-gap theorem or solves Erdős Problem 249."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_general_totient_irregularity_theorem",
+      "not_a_non_affine_linear_scale_exclusion",
+      "not_a_moving_quotient_theorem",
+      "not_erdos_249_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/totient_prime_triangle_affine_tail_obstruction.card.json",
+      "effect": "Replace pending language with the elementary classification, stronger antecedent boundary, and exact endpoint significance."
+    },
+    {
+      "consumer": "Erdős #249 proof fleet",
+      "effect": "Do not revisit eventual affine fixed-quotient tails; concentrate on non-affine linear-scale traps, moving quotients, or stronger residue-gap producers."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Do not present separately. Preserve Martin and Coons as context on the parent route, and resolve this identifier as a retired alias."
+    },
+    {
+      "consumer": "Comparator and standalone paper",
+      "effect": "Create no independent proposition interface or paper result; the parent card owns the one exact statement firewall and supporting segment."
+    }
+  ]
+}

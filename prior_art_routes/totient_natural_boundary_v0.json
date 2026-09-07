@@ -1,0 +1,267 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "totient_natural_boundary_v0",
+  "source_result_id": "totient_natural_boundary",
+  "status": "adjudicated_external_classical_conclusion_source_specific_mechanism_unverified",
+  "problem_id": "erdos_249",
+  "purpose": "Bind the natural-boundary conclusion for the Euler-totient ordinary generating function to its classical external route, while retiring the unsupported local claim that a squarefree-root quadratic radial coefficient has already been proved.",
+  "review_unit": {
+    "result_family": "totient_ordinary_generating_function_boundary",
+    "exact_result_id": "totient_natural_boundary",
+    "source_generation": {
+      "repository_commit": "7e66b67dba01d1307e22891d38965f028ac769e6",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "packet_sha256_before_adjudication": "caad023b9f0f6227fcc40f2a29d392910b43db82e19b082b0f6441e79d79cb97",
+      "local_formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "local_formal_source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
+      "revision_reason": "The packet's source-path support row landed in commit 7e66b67d; the formal source is unchanged and the primary Carlson reproduction is now locally bound."
+    },
+    "review_generation": "2026-08-26_primary_text_refresh_v3"
+  },
+  "currentness_guard": {
+    "observed_at": "2026-08-27",
+    "adjudicated_packet_sha256": "caad023b9f0f6227fcc40f2a29d392910b43db82e19b082b0f6441e79d79cb97",
+    "current_worktree_packet_sha256": "2d05e8ef0c4b0c1f4fc6eee4b459e055610fd1ee811def46fb00cbebfc2d81a1",
+    "status": "stale_against_concurrent_packet_edit",
+    "observed_change": "Commit 7e66b67d landed the packet's source_path and source_declarations links for several Lean-checked #249 rows; the packet then received another uncommitted edit while the local FiniteEulerSieve source hash and the external endpoint attribution remained unchanged.",
+    "claim_ceiling_while_stale": "Retain the classical Pólya--Carlson plus Banks--Luca--Shparlinski endpoint attribution and the unverified status of the squarefree-root radial mechanism; do not claim current packet parity until the packet owner lands or abandons the edit.",
+    "reentry_condition": "Recompute packet parity and re-adjudicate only after the packet reaches a committed source generation or the owner explicitly resolves the concurrent edit."
+  },
+  "adjudication_currentness": {
+    "status": "stale_against_uncommitted_packet_edit",
+    "bound_snapshot": {
+      "packet_sha256_observed": "caad023b9f0f6227fcc40f2a29d392910b43db82e19b082b0f6441e79d79cb97",
+      "formal_source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
+      "packet_commit": "7e66b67dba01d1307e22891d38965f028ac769e6",
+      "review_generation": "2026-08-27_v4"
+    },
+    "claim_guard": "Keep the external endpoint attribution and unverified radial-mechanism boundary; do not claim current packet parity while the worktree packet differs from the committed bound.",
+    "reentry_trigger": "Recompute packet parity after a committed packet generation or a source-pinned derivation/citation for the radial coefficient formula."
+  },
+  "classification": {
+    "conclusion_confidence_class": "externally_human_adjudicated",
+    "source_specific_mechanism_confidence_class": "unassessed",
+    "novelty_confidence": "no_local_novelty_claim; classical consequence",
+    "attribution_posture": "The conclusion belongs to Carlson's classical dichotomy after the direct Banks--Luca--Shparlinski irrationality input for the totient series. The local Euler-sieve identities are not evidence for the asserted all-squarefree-root radial-coefficient mechanism.",
+    "significance": "High as a source-of-truth correction and low as a new theorem: it separates an already classical analytic conclusion from a potentially useful but currently ungrounded local mechanism.",
+    "expert_judgment_that_can_change_state": "Inspect a complete proof of the proposed squarefree-root radial expansion, or identify a primary source proving that exact coefficient formula. Without one, retain only the external natural-boundary conclusion.",
+    "confidence_ceiling": "The endpoint attribution is strong and directly grounded in the read Carlson and Banks--Luca--Shparlinski texts; the local radial mechanism remains unassessed, not presumptively false or novel.",
+    "attribution_uncertainty": "No primary source for the exact squarefree-root quadratic coefficient formula was located in the bounded search; absence of a hit is not evidence of novelty."
+  },
+  "closest_known_result": {
+    "relation": "establishes_the_endpoint_conclusion_by_a_different_classical_route",
+    "statement": "Carlson's original theorem (reproduced text, original pp. 2-3) gives the rational-or-unit-circle-natural-boundary dichotomy for an integer-coefficient series regular in the unit disk. Banks--Luca--Shparlinski, Theorem 1 and §4.5 (pp. 3-4, 15-17), prove irrationality of the totient generating series; their combination yields the boundary conclusion.",
+    "exact_delta": "The packet's prior wording asserted a much finer, root-by-root mechanism: an explicit nonzero quadratic radial coefficient at every squarefree root of unity. Neither the local Lean file nor the located primary literature source supplies that formula."
+  },
+  "primary_sources": [
+    {
+      "id": "carlson_1921_polya_carlson",
+      "title": "Über Potenzreihen mit ganzzahligen Koeffizienten",
+      "authors": ["F. Carlson"],
+      "venue": "Mathematische Zeitschrift 9 (1921), 1-13",
+      "doi": "10.1007/bf01378331",
+      "url": "https://doi.org/10.1007/bf01378331",
+      "primary_text_url": "https://people.math.ethz.ch/~airibar/Polya_Carlson.pdf",
+      "primary_text_read": true,
+      "primary_text_status": "downloaded_reproduction_with_original_appendix_scan_read",
+      "primary_text_sha256": "a030d8e64ec51300d3f1c0d3d689a782d2defe10d4331447c7f7353efdf7af88",
+      "local_source_pdf": "annexes/carlson-1921-polya-carlson/source.pdf",
+      "local_source_pdf_sha256": "a030d8e64ec51300d3f1c0d3d689a782d2defe10d4331447c7f7353efdf7af88",
+      "local_source_pdf_pages": 36,
+      "source_reviewed_at": "2026-08-27",
+      "exact_anchor": "Downloaded reproduced note with Carlson's original article in the appendix: PDF pp. 12-14 contain the original printed pp. 1-3; the dichotomy is stated on PDF p. 14 (original printed p. 3), with the finite-singularity setup on PDF p. 13 (original printed p. 2).",
+      "supports": "Carlson's text states that a non-rational integer-coefficient power series with only finitely many singularities in the unit disk either has an interior branch point or cannot be continued beyond the unit circle; for a series regular in the disk this yields the rational-or-unit-circle-natural-boundary dichotomy.",
+      "does_not_support": "No totient-specific radial expansion or squarefree-root coefficient formula; the downloaded file is a modern reproduction carrying an appendix scan, not a claim of a publisher-original digital scan."
+    },
+    {
+      "id": "banks_luca_shparlinski_2005_totient_irrationality",
+      "title": "Irrationality of Power Series for Various Number Theoretic Functions",
+      "authors": ["William D. Banks", "Florian Luca", "Igor E. Shparlinski"],
+      "venue": "manuscripta mathematica 117 (2005), 183-197",
+      "doi": "10.1007/s00229-005-0564-3",
+      "url": "https://doi.org/10.1007/s00229-005-0564-3",
+      "primary_text_url": "https://mospace.umsystem.edu/bitstreams/0310eff7-efd2-4efb-bc42-268fe8a765c5/download",
+      "primary_text_read": true,
+      "primary_text_status": "author_manuscript_pdf_read",
+      "primary_text_sha256": "a2b06612327c4dcb83c4f8773a685ee6f869732a66e9323ed7b423baedd48c4e",
+      "exact_anchor": "Theorem 1, pp. 3-4, defines the irrationality-precision criterion; §4.5, pp. 15-17, treats F(X)=sum_{n>=1} phi(n)X^n and derives the stated finite bound for Delta_d(F).",
+      "supports": "Banks--Luca--Shparlinski explicitly include the Euler totient series F(X)=Σ phi(n)X^n and prove in Theorem 1 a finite bound for Delta_d(F); their definition on p. 3 makes finiteness for every d equivalent to irrationality, and §4.5 gives the mod-3 recurrence/counting proof.",
+      "does_not_support": "No claim about a quadratic radial coefficient at every squarefree root is used here, and the paper does not supply Carlson's natural-boundary implication."
+    },
+    {
+      "id": "bell_bruin_coons_2012_multiplicative_generating_functions",
+      "title": "Transcendence of generating functions whose coefficients are multiplicative",
+      "authors": ["Jason P. Bell", "Nils Bruin", "Michael Coons"],
+      "venue": "Transactions of the American Mathematical Society 364 (2012)",
+      "doi": "10.1090/S0002-9947-2011-05479-6",
+      "url": "https://arxiv.org/abs/1003.2221",
+      "exact_anchor": "Introduction, pp. 1-2: Theorem 1.2 records Carlson's dichotomy; the next paragraph names phi and cites Banks--Luca--Shparlinski for irrationality. The abstract and Theorem 1.5 give the broader multiplicative-series rational/transcendental classification.",
+      "supports": "A directly inspected, published bridge locating both antecedents and their roles.",
+      "does_not_support": "It is a secondary bridge for the totient conclusion, not proof of the packet's local radial-coefficient mechanism."
+    }
+  ],
+  "evidence_set": {
+    "local": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+    ],
+    "external": [
+      "Carlson 1921",
+      "Banks--Luca--Shparlinski 2005",
+      "Bell--Bruin--Coons 2012"
+    ],
+    "evidence_class_split": {
+      "endpoint": "sourced external theorem chain",
+      "local_identities": "Lean source inspection only; no fresh replay claimed",
+      "squarefree_root radial expansion": "unverified internal proposal"
+    }
+  },
+  "search_scope": {
+    "completed_at": "2026-08-26",
+    "repositories_and_sources": [
+      "Erdos249 packet, local Lean source, reviewer-card inventory, prior-art routes",
+      "Bell--Bruin--Coons introduction and theorem references",
+      "Carlson's reproduced original article text (original pp. 2-3)",
+      "Banks--Luca--Shparlinski author-manuscript PDF (Theorem 1 and §4.5)"
+    ],
+    "exact_queries": [
+      "totient_natural_boundary",
+      "natural boundary",
+      "quadratic radial",
+      "squarefree root radial coefficient"
+    ],
+    "limitation": "This was a bounded attribution search, not a claim of exhaustive literature review."
+  },
+  "comparison_relations": [
+    {
+      "relation": "endpoint_equivalent_by_external_route",
+      "internal_result": "totient_natural_boundary",
+      "known_result": "Pólya--Carlson plus Banks--Luca--Shparlinski",
+      "delta": "The internal packet's squarefree-root radial expansion is finer and is not supplied by the classical endpoint route."
+    },
+    {
+      "relation": "local_support_only",
+      "internal_result": "FiniteEulerSieve finite identities",
+      "known_result": "No located source for the proposed coefficient formula",
+      "delta": "Finite Euler-factor algebra does not bridge to the all-root analytic statement."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "externally sourced endpoint plus unverified source-specific analytic mechanism",
+    "slow_down_at": "the passage from finite Euler-factor identities to a root-by-root radial expansion; no such bridge is currently present",
+    "automation_can_establish": [
+      "packet/source hash parity",
+      "finite algebra declarations and bounded repository search"
+    ],
+    "human_judgment_required": [
+      "whether the squarefree-root coefficient formula is already known under another name",
+      "whether a future complete derivation is genuinely distinct from the classical endpoint route",
+      "whether the local mechanism is worth specialist attention after a source-bearing proof exists"
+    ],
+    "review_act": "One bounded expert act: inspect one complete derivation or primary citation for the proposed coefficient formula."
+  },
+  "disconfirming_evidence": [
+    {
+      "kind": "local_source_inspection",
+      "locator": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "finding": "The module formalizes only finite Euler-factor and prime-power second-difference identities. Its header expressly says that no external transcendence theorem is asserted as Lean authority.",
+      "effect": "It cannot substantiate either the global natural-boundary theorem or the claimed all-squarefree-root radial expansion."
+    },
+    {
+      "kind": "bounded_repository_search",
+      "locator": "Erdos249 sources, reviewer cards, and prior-art routes for 'totient_natural_boundary', 'natural boundary', and 'quadratic radial'",
+      "finding": "No proof-bearing local note, verifier, or primary-source anchor for the coefficient formula was found.",
+      "effect": "The fine mechanism is unassessed rather than an authored complete proof pending formalisation."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The Euler-totient ordinary generating function has the unit circle as a natural boundary by the directly read irrationality result of Banks--Luca--Shparlinski combined with Carlson's directly read dichotomy. The repository has not yet established its proposed explicit squarefree-root radial-coefficient proof.",
+    "forbidden_wording": [
+      "We prove a new natural-boundary theorem for the totient generating function.",
+      "Lean proves the natural boundary or the squarefree-root expansion.",
+      "Every squarefree root has a proved nonzero quadratic radial coefficient in this repository.",
+      "The finite Euler-sieve identities formalize the analytic endpoint conclusion."
+    ],
+    "open_boundary": "A source-pinned proof of the proposed root-by-root radial expansion may still be mathematically useful, but it is neither required for the known endpoint conclusion nor established by this review."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "classical Pólya--Carlson natural-boundary consequence for arithmetic generating series",
+    "disposition": "retire inflated local proof status; subordinate any future radial expansion as a distinct mechanism rather than an endpoint claim",
+    "paper_disposition": "omit as a headline theorem; if needed, cite as settled background and state the local radial-expansion question separately",
+    "comparator_advisory": "No new Comparator proposition is justified: the conclusion is external classical mathematics and the local Lean statements are finite algebra only.",
+    "human_understanding_delta": "A skeptical reader can now see why the endpoint is already known, what proof route establishes it, and exactly what still needs proof before the source-specific analytic mechanism can be discussed.",
+    "expert_attention_reason": "The saved attention is in preventing a familiar natural-boundary theorem from being mistaken for a new local singularity analysis; only the proposed root-by-root coefficient mechanism merits a future specialist look.",
+    "bounded_expert_review_act": "Check one complete derivation or primary citation for the squarefree-root quadratic radial coefficient formula; if absent, leave the local mechanism unassessed and keep the endpoint as settled background."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification_and_source_audit",
+    "output_stage": "attribution_and_human_review_support",
+    "artifact": "totient_natural_boundary_v0 prior-art route and packet claim correction",
+    "human_understanding_delta": "Replaces a falsely smooth internal proof posture with a two-layer account: classical endpoint conclusion versus unverified local mechanism.",
+    "verification_state": "Carlson's reproduced original article text and the Banks--Luca--Shparlinski author-manuscript PDF were read at the recorded locators; Bell--Bruin--Coons was used only as secondary bridge context; local Lean source and repository evidence were inspected; no Lean replay was required or claimed.",
+    "publication_or_review_state": "Internal adjudication only; no outbound contact, release, or official novelty claim.",
+    "canonicalization_state": "One existing packet result is corrected; no reviewer card or parallel endpoint object is created.",
+    "unresolved_downstream_bottleneck": "A complete source-pinned proof or primary reference for the asserted squarefree-root quadratic radial expansion.",
+    "next_stage_owner": "Mathematical Assimilation Steward for any future source-pinned analytic proof; Novelty Observatory only on a new immutable review generation."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_root_expansion_source_or_packet_generation_change",
+    "reentry_condition": "Re-enter only if a complete source-pinned derivation or primary citation for the squarefree-root quadratic radial coefficient formula appears, or if the packet's source generation changes.",
+    "do_not_redo": "Do not repeat the Carlson/Banks--Luca--Shparlinski endpoint attribution or finite Euler-sieve inspection; the classical natural-boundary conclusion is already settled by that external route.",
+    "open_bottleneck": "The only unresolved mechanism is the proposed root-by-root radial expansion; without a source-bearing proof it remains unassessed and cannot be used as local evidence for #249.",
+    "owner": "Mathematical Assimilation Steward for any new analytic derivation; Novelty Observatory for immutable source-generation changes; no Comparator or public endpoint work is opened."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_primary_text_refresh_v3",
+    "evidence_class": "externally_sourced_endpoint_plus_unverified_internal_mechanism",
+    "closest_known_result": "Carlson's original dichotomy (reproduced text, original pp. 2-3) combined with the direct Banks--Luca--Shparlinski irrationality proof (Theorem 1 and §4.5, pp. 3-4 and 15-17) establishes the endpoint by a classical external route; Bell--Bruin--Coons is retained only as a secondary bridge.",
+    "comparison_relation": "The endpoint is externally equivalent to a known classical route, while the proposed squarefree-root quadratic radial coefficient is a strictly finer unresolved mechanism.",
+    "exact_delta": "The repository contributes finite Euler-sieve identities and a claim correction; it does not supply the global root-by-root radial expansion that would distinguish the local mechanism from the settled endpoint.",
+    "disconfirming_evidence": "FiniteEulerSieve.lean contains only finite algebra; the read Carlson and Banks--Luca--Shparlinski texts prove the classical endpoint chain but do not state the squarefree-root quadratic coefficient formula, and bounded source search found no primary citation or proof-bearing local note for it.",
+    "confidence_ceiling": "Strong for the external endpoint attribution because both component texts were read directly; unassessed for the source-specific radial mechanism, with no local novelty or priority claim.",
+    "significance": "High as attention-conserving claim correction and low as a new endpoint theorem: it prevents a classical conclusion from being presented as a new local singularity analysis.",
+    "claim_ceiling": "The totient ordinary generating function has the unit circle as a natural boundary by the directly read Banks--Luca--Shparlinski irrationality proof combined with Carlson's directly read dichotomy; the repository has not established the proposed squarefree-root radial proof.",
+    "hard_step": "Bridge finite Euler-factor identities to a proved nonzero quadratic radial coefficient at every squarefree root of unity; that bridge is absent.",
+    "open_boundary": "A source-pinned derivation or primary citation for the squarefree-root radial expansion is still missing, and the packet hash remains stale against a concurrent uncommitted edit.",
+    "bounded_expert_act": "Inspect one complete derivation or primary citation for the squarefree-root quadratic coefficient formula.",
+    "reentry_trigger": "Re-enter only after a committed packet generation or a source-pinned derivation/citation changes this evidence set.",
+    "source_generation": {
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "packet_sha256_observed": "80b6b919f801e8591c5eaa48c6aa248059a0b51f90be7f059a6849b41da6032",
+      "parity_status": "stale_uncommitted_concurrent_packet_edit",
+      "formal_source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d"
+    },
+    "classification": {
+      "result_family": "totient_ordinary_generating_function_boundary",
+      "evidence_class": "externally_sourced_endpoint_plus_unverified_internal_mechanism",
+      "closest_prior_art": "Carlson's original dichotomy (reproduced text, original pp. 2-3) combined with the direct Banks--Luca--Shparlinski irrationality proof (Theorem 1 and §4.5, pp. 3-4 and 15-17); Bell--Bruin--Coons is secondary context",
+      "comparison_relation": "endpoint_equivalent_by_external_route; proposed squarefree-root radial coefficient is a strictly finer unresolved mechanism",
+      "novelty_confidence": "no_local_novelty_claim_for_endpoint; source_specific radial mechanism unassessed",
+      "significance_grade": "high_as_claim_correction_low_as_new_endpoint",
+      "why_care": "Prevents a settled natural-boundary conclusion from consuming attention as though it were a new root-by-root singularity theorem.",
+      "hard_step": "The missing bridge is from finite Euler-factor identities to a proved coefficient expansion at every squarefree root of unity.",
+      "disconfirming_evidence": "FiniteEulerSieve.lean contains only finite algebra; the read Carlson and Banks--Luca--Shparlinski texts do not state the squarefree-root quadratic radial formula, and bounded source search found no primary citation for it.",
+      "confidence_ceiling": "The external endpoint attribution is strong because both component texts were read directly; the internal radial mechanism remains unassessed, not presumed false or novel.",
+      "bounded_expert_act": "Inspect one complete derivation or primary citation for the squarefree-root quadratic coefficient formula.",
+      "reentry_condition": "Re-enter only after a committed packet generation or a source-pinned derivation/citation changes this evidence set."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "classical arithmetic-generating-series natural-boundary consequence",
+      "disposition": "retire_inflated_route_and_subordinate_any_future_radial_expansion",
+      "paper_disposition": "settled-background-note; omit_as_headline",
+      "independent_comparator_interface_justified": false,
+      "expert_attention_reason": "The useful action is claim correction and attention conservation, not another endpoint card."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "source_audit",
+      "output_stage": "attribution_and_human_understanding",
+      "artifact": "totient_natural_boundary_v0",
+      "human_understanding_delta": "Separates the classical endpoint from the unresolved local radial proposal while preserving the packet-generation freshness gap.",
+      "verification_state": "External theorem chain and local Lean source inspected; no fresh Lean replay claimed.",
+      "publication_or_review_state": "internal adjudication only; no outbound action",
+      "canonicalization_state": "one corrected endpoint object; no duplicate card",
+      "unresolved_downstream_bottleneck": "source-bearing proof or citation for the radial coefficient formula",
+      "next_stage_owner": "Mathematical Assimilation Steward, then Novelty on a new immutable generation"
+    }
+  }
+}

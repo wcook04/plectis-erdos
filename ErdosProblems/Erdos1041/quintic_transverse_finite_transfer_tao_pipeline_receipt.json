@@ -1,0 +1,24 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_transverse_finite_transfer_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticTransverseFiniteTransfer.md",
+    "ErdosProblems/Erdos1041/QuinticTransverseFiniteTransfer.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_transverse_finite_transfer.py"
+  ],
+  "human_understanding_delta": "The finite transverse transfer closes by a two-level split. Strict atlas boxes have a common exact 1e-8 margin. At the sole equality orbit, deficit-dominant perturbations use log|f(0)| to absorb pairing defects, while tangent-dominant perturbations make those defects O(rho^4); the new cubic barycentre then beats the O(rho^2) anchored remainder. Splitting further at delta=10^9 rho makes the cubic and tetrahedral selectors overlap with explicit constants.",
+  "verification_state": {
+    "analytic_derivation": "complete_for_actual_quintic_transverse_branch_and_combined_near_fekete_neighbourhood",
+    "exact_outward_atlas_replay": "pass_3834_strict_boxes_81_local_boxes_181_groups_common_margin_1e_minus_8",
+    "rational_budget_replay": "pass_all_six_transfer_absorptions_cubic_margin_3_over_10",
+    "lean_focused_build": "pass_canonical_cached_exact_target"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "verified_quintic_near_fekete_closure_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Extend the finite mode-envelope transfer to degree at least six and overlap it with the unrestricted non-near-Fekete regime.",
+  "next_stage_owner": "Current proof owner through verification and scoped commit; then Refinery owns expert review and the degree-six finite face.",
+  "claim_ceiling": "This closes an explicit actual-polynomial near-Fekete neighbourhood in degree five. Do not claim unrestricted Erdős #1041, all quintics, or any higher-degree neighbourhood."
+}

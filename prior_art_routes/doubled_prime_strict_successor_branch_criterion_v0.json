@@ -1,0 +1,192 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "doubled_prime_strict_successor_branch_criterion",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_residue_class_decomposition_with_source_specific_strict_successor_consumer_no_priority_claim",
+  "problem_id": "erdos_68",
+  "purpose": "Classify the exact two-branch square-divisibility criterion as elementary residue-slot arithmetic, choose terminology that does not overstate it as Hensel lifting, and isolate the source-specific cofinal #68 consumer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/doubled_prime_strict_successor_branch_criterion.card.json",
+    "refinery_handoff_commit": "b51381d64d4de299bfeb57bd86c8f59623a19ac9",
+    "source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
+    ],
+    "source_declarations": [
+      "pow_dvd_dilation_strictSuccessor_iff",
+      "sq_dvd_double_strictSuccessor_prime_iff",
+      "sq_dvd_double_strictFacTop_factorialGapPrefix_iff",
+      "irrational_factorialGapSeries_of_cofinal_double_prime_branch_failures"
+    ]
+  },
+  "classification": {
+    "ambient_framework": "factorial_radix_strict_successor_recurrence_arithmetic",
+    "general_slot_law": "elementary_complete_residue_system_decomposition_modulo_a_prime_power",
+    "two_branch_specialization": "exact_source_specific_packaging_of_the_k_equals_two_case",
+    "factorial_gap_consumer": "source_specific_conditional_endpoint_reduction",
+    "priority_claim": "none",
+    "recommended_terminology": "prime-power residue-slot criterion for a strict-successor recurrence",
+    "acceptable_alias": "doubled-prime two-branch criterion",
+    "discouraged_terminology": [
+      "Hensel lifting theorem",
+      "lifting-the-exponent lemma",
+      "new p-adic digit theorem",
+      "prime-square rarity theorem"
+    ],
+    "attribution": "Describe the slot selection as elementary modular arithmetic in the factorial-radix/Cantor-series setting. Credit the present source only for the sharp strict-successor normal form, its exact all-k Lean packaging, and the literal #68 cofinal branch-failure consumer.",
+    "mathematical_interest": "The arithmetic is routine, but the exact decomposition is strategically useful: the opaque condition p^2 divides N becomes two explicit and exhaustive carry/predecessor branches.",
+    "reusable_scope": "Any recurrence N=kpN_prev+1-b with a complete sharp interval for b can first select the residue slot b=1+pr and then test the reduced predecessor congruence modulo p^(k-1).",
+    "why_it_matters": "It exposes the exact remaining producer and prevents a finite list of prime-square misses, or exclusion of only one branch, from being mistaken for an irrationality argument."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "factorial-gap cofinal strict-successor carry and divisibility criteria",
+    "disposition": "subordinate as one local prime-square translator beneath factorial_gap_cofinal_carry_irrationality_criterion",
+    "consolidation_relation": "Retain the all-k residue-slot theorem and its k=2 specialization together; do not make the two branches separate producer objects or a second #68 endpoint.",
+    "paper_disposition": {
+      "class": "technical appendix",
+      "target_section": "Prime-square translators for the strict-successor criterion",
+      "supersession_or_consolidation": "Place after the canonical cofinal-miss equivalence as one exact arithmetic specialization; supersede no endpoint theorem.",
+      "reason": "The slot decomposition is reusable and formal, but it does not attack the actual cofinal-distribution bottleneck."
+    },
+    "absolute_frontier_shortlist_decision": "do not admit; factorial_gap_cofinal_carry_irrationality_criterion remains the #68 representative and flagship",
+    "comparator_advisory": "No independent interface by default. If surfaced, consolidate the general slot law and doubled-prime specialization under the existing strict-successor arithmetic family and keep the cofinal consumer conditional."
+  },
+  "primary_sources": [
+    {
+      "id": "cantor_1869_einfache_zahlensysteme",
+      "title": "Uber die einfachen Zahlensysteme",
+      "author": "Georg Cantor",
+      "venue": "Zeitschrift fur Mathematik und Physik 14 (1869), 121-128",
+      "url": "https://link.springer.com/book/10.1007/978-3-662-00274-2",
+      "exact_anchor": "Original pp. 121-128, reprinted in Cantor's collected works.",
+      "supports": "Historical variable-radix framework in which factorial scaling and carries belong.",
+      "does_not_support": "No prime-power residue-slot theorem, strict-successor normalization, or factorial-minus-one consumer."
+    },
+    {
+      "id": "mance_2011_q_cantor_normal_numbers",
+      "title": "Construction of normal numbers with respect to the Q-Cantor series expansion for certain Q",
+      "author": "Bill Mance",
+      "venue": "Acta Arithmetica 148 (2011), 135-152",
+      "doi": "10.4064/aa148-2-3",
+      "url": "https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/148/2/82779/construction-of-normal-numbers-with-respect-to-the-q-cantor-series-expansion-for-certain-q",
+      "exact_anchor": "Section 1, equation (1.2), gives modern Q-Cantor digit notation; q_n=n is the factorial-radix specialization.",
+      "supports": "Modern mixed-radix vocabulary for digit intervals and factorial scaling.",
+      "does_not_support": "The local moving rational prefix is not a fixed Q-Cantor digit stream, and the paper does not give the two-branch square criterion."
+    },
+    {
+      "id": "kovac_tao_2024_cantor_ahmes_series",
+      "title": "On the irrationality of Cantor and Ahmes series",
+      "authors": [
+        "Vjekoslav Kovac",
+        "Terence Tao"
+      ],
+      "venue": "arXiv:2406.17593 (2024)",
+      "url": "https://arxiv.org/abs/2406.17593",
+      "exact_anchor": "Introduction, paragraph before the higher-dimensional-results section, states that irrationality of sum from n=2 to infinity of 1/(n!-1) remains open.",
+      "source_archive": "annexes/arxiv-2406-17593-kovac-tao-ahmes-series/source.pdf",
+      "source_archive_sha256": "5ef233db5bf94a072de7e094e6d42864ba2d1f639e7cb951c02b4cf1d3d52b57",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 28,
+      "extracted_markdown": "annexes/arxiv-2406-17593-kovac-tao-ahmes-series/extracted.md",
+      "extracted_markdown_sha256": "db080e9606744507cd0f95c52f7a3f2e2956fe3d1bf98a0dc286dd7b80e1f7cf",
+      "retrieved_at": "2026-07-28",
+      "verification_state": "primary_pdf_read_exact_open_problem_boundary_compared",
+      "exact_source_locator": "PDF p. 4 / extracted.md lines 118--124: the introduction identifies the factorial-gap series sum_{n>=2} 1/(n!-1) as an open problem; PDF pp. 13--14 / extracted.md lines 468--493 give the nearby Lambert-subseries strict-tail result and its proof.",
+      "supports": "The present problem-status ceiling: a conditional branch-failure consumer is not an irrationality result.",
+      "does_not_support": "No antecedent or priority claim for the strict-successor residue-slot decomposition."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "Reducing N=kpN_prev+1-b modulo p forces b to occupy one residue class modulo p. A sharp interval containing exactly k such representatives writes that class uniquely as b=1+pr; division by p leaves the congruence p^(k-1) divides kN_prev-r.",
+    "why_not_Hensel": "Hensel lifting concerns lifting roots of polynomial congruences under derivative hypotheses. Here there is no iterative root-lifting problem: the theorem is a direct quotient-remainder decomposition of one linear congruence.",
+    "why_not_LTE": "The lifting-the-exponent lemma evaluates p-adic valuations of expressions such as x^n-y^n. The current result merely factors one forced p after selecting a residue slot.",
+    "local_delta": "For k=2, the sharp carry range leaves exactly b=1 and b=1+p, producing the two displayed predecessor congruences. The Lean consumer then connects cofinal failure of both branches to the already established rational-denominator obstruction for the literal factorial-gap series.",
+    "significance_boundary": "The theorem classifies square hits; it provides no estimate, distribution law, or proof that either branch fails cofinally."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "digit slot prime power divisibility congruence lifting",
+      "strict successor factorial expansion carry prime power",
+      "base p digit lifting congruence predecessor carry",
+      "N equals kp N predecessor plus 1 minus b prime power divisibility"
+    ],
+    "result": "The bounded search returned generic Hensel, p-adic digit, and lifting-the-exponent material but no standard named theorem matching this linear residue-slot decomposition or its strict-successor #68 consumer.",
+    "boundary": "The absence of a named hit supports descriptive terminology only. It does not establish novelty or priority for elementary modular arithmetic."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The square-divisibility event in this strict-successor recurrence has an exact two-branch residue-slot decomposition; cofinal failure of both branches would imply irrationality of the factorial-gap series.",
+    "forbidden_wording": [
+      "This is a new Hensel-lifting theorem.",
+      "The criterion proves that prime-square hits are rare.",
+      "Failure of one branch excludes p^2 divisibility.",
+      "A finite prime scan proves cofinal branch failure.",
+      "The criterion proves Erdos #68."
+    ],
+    "nonclaims": [
+      "not_a_Hensel_lifting_result",
+      "not_an_LTE_result",
+      "not_a_distribution_theorem",
+      "not_a_cofinal_prime_family",
+      "not_an_irrationality_result",
+      "not_a_solution_of_erdos_68"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/doubled_prime_strict_successor_branch_criterion.card.json",
+      "effect": "Replace pending novelty language with elementary residue-slot classification, reject Hensel/LTE terminology, and preserve the conditional cofinal boundary."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalise the exact two-branch interface as a reusable modular decomposition, not as a prime-square rarity theorem."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "State only that the theorem identifies two exhaustive branches and that proving cofinal failure of both remains open."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos68_doubled_prime_strict_successor_branch_criterion@source-4cd4eac-card-e73e50e",
+    "evidence_class": "Lean-checked prime-power residue-slot arithmetic with a source-specific strict-successor cofinal consumer; no distribution theorem.",
+    "closest_known_result": "Complete residue systems modulo a prime power and mixed-radix/factorial Cantor-series digit arithmetic are classical; Hensel lifting and LTE are not the right descriptions of this one-step linear decomposition.",
+    "comparison_relation": "Elementary modular arithmetic packaged into a reusable strict-successor translator; the local novelty ceiling is formal interface and exact source-specific consumer, not a new p-adic theorem.",
+    "exact_delta": "The square-divisibility event at 2p is split into two exhaustive carry/predecessor branches, making the hidden residue choice explicit for the factorial-gap endpoint route.",
+    "disconfirming_evidence": "No proof that either branch fails cofinally, no prime-square rarity or distribution estimate, and no irrationality or Erdős #68 solution follows.",
+    "confidence": {
+      "level": "high_for_Lean_statement_and_elementary_attribution_medium_for_reusable_scope_low_for_standalone_novelty",
+      "basis": "The source/card commits and exact declarations are pinned; the residue-slot argument is direct quotient-remainder arithmetic."
+    },
+    "significance": "Useful technical translator beneath the factorial-gap carry family; low standalone depth but high boundary value because it prevents one-branch or finite-scan overclaims.",
+    "claim_ceiling": "The strict-successor recurrence has an exact two-branch prime-square criterion, and cofinal failure of both branches would imply irrationality of the factorial-gap series. No cofinal failure is proved here.",
+    "hard_step": "Supply genuine cofinal information about both branch failures for the actual factorial-gap digits; the modular decomposition itself is routine.",
+    "open_boundary": "Finite branch checks, single-branch exclusions, Hensel/LTE analogies, and the exact criterion do not produce the required cofinal producer.",
+    "bounded_expert_review_act": "Verify the residue-slot exhaustion and predecessor congruence, then confirm the conditional cofinal consumer is not presented as a rarity or irrationality theorem.",
+    "reentry_trigger": "Re-enter if the source adds cofinal branch information, the recurrence changes, or the public factorial-gap antecedent changes.",
+    "source_generation_binding": {
+      "formal_source_commits": ["4cd4eac29c6eefb6c041cb61b980de271c77ccc3"],
+      "formal_source_sha256": {"StrictSuccessorArithmetic.lean": "e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b", "FactorialZeroPlateau.lean": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa"},
+      "reviewer_card_commit": "e73e50ef300c4cbca939a6a5e85af8139fbe5f34",
+      "reviewer_card_sha256": "8a9af1c1b3a016d3d2128dad0cf6b27fdabbfb71362456741b291cd61d3ca623",
+      "parity_status": "Formal source, card, and route declarations are bound to committed snapshots."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "reviewer_card_commit": "b51381d64d4de299bfeb57bd86c8f59623a19ac9",
+      "reviewer_card_sha256": "17c88fdbc56f5ecfc4e89db5dfb23aeeec9ba6766e50b4278ab7671a0fd0d427"
+    },
+    "claim_guard": "Only the exact two-branch strict-successor criterion and conditional consumer are covered; no cofinal branch-failure or irrationality claim.",
+    "reentry_trigger": "Re-enter on source, card, recurrence, or downstream cofinal-consumer changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine residue-slot arithmetic with moderate explanatory value and low novelty.",
+    "slow_down_at": "The exhaustive carry range and the fact that only simultaneous cofinal branch failure would feed the irrationality consumer.",
+    "automation_can_establish": ["Residue decomposition and exact branch equivalence", "Source/card parity and declaration links"],
+    "human_judgment_required": ["Whether later branch producers are genuinely cofinal", "Whether the theorem is kept subordinate to the canonical factorial-gap criterion"],
+    "review_act": "One bounded expert act: check the two branches and the strict conditional claim ceiling."
+  }
+}

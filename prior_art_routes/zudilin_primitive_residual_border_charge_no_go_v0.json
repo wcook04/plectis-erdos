@@ -1,0 +1,310 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "zudilin_primitive_residual_border_charge_no_go",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_established_cyclotomic_Hankel_factor_method_with_apparently_unlocated_source_specific_exact_residual_no_go",
+  "problem_id": "erdos_1049",
+  "source_result_ids": [
+    "zudilin_specialized_scalar_content_factor_and_charge_ceiling",
+    "zudilin_primitive_residual_border_factor_and_charge_no_go"
+  ],
+  "purpose": "Attribute the Hankel family and cyclotomic-factor method correctly, classify the exact residual factor and charge insufficiency conservatively, and expose the surviving mechanism boundary for #1049.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/zudilin_primitive_residual_border_charge_no_go.card.json",
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinScalarContentLab.md",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinResidualBorderChargeLab.md",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+    ],
+    "source_commits": {
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinScalarContentLab.md": "9fd9a91a46a1126da0c766a69c79ccb551f54e94",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinResidualBorderChargeLab.md": "a7693031dcb3abefdeb6d559c7095ae0bc2638e6",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean": "833064175b16db024f35b07c57e6a685d5d7cda7"
+    },
+    "source_result_ids": [
+      "zudilin_specialized_scalar_content_factor_and_charge_ceiling",
+      "zudilin_primitive_residual_border_factor_and_charge_no_go"
+    ]
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "An authored all-rank factorization and assignment-sharpness argument is paired with five Lean consumers and exact finite regression; the strategic value is a method boundary, not a new endpoint.",
+    "slow_down_at": "Distinguish entrywise valuation lower bounds from the determinant valuation, verify the southeast-block assignment witness, and check the scalar-plus-border comparison against the 3/2 threshold.",
+    "automation_can_establish": [
+      "Named Lean consumer signatures and source/hash parity",
+      "Exact finite rank-four/rank-five regression and divisor arithmetic",
+      "Presence of the no-irrationality and no-global-cancellation firewall"
+    ],
+    "human_judgment_required": [
+      "Whether the ordinary assignment argument is valid for every stated rank and index",
+      "Whether the residual 1-or-4 law is already published under another formulation",
+      "Which higher-layer, cancellation, or integral-model route remains mathematically viable"
+    ],
+    "review_act": "One bounded expert act: audit the assignment-sharp residual bound and charge comparison, then retire further entrywise first-order searches unless new evidence appears."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "cyclotomic first-appearance determinant residues, cyclic resultants, and first-order border-charge exhaustion",
+    "disposition": "subordinate under zudilin_all_d_first_appearance_noncancellation and rational_approximation_exponent_budget; consolidate scalar, residual, assignment, and finite-rank evidence",
+    "paper_disposition": "route-killing failure/boundary in the effective-height section, not a standalone Padé headline",
+    "comparator_advisory": "One status-tagged method-boundary proposition is justified; keep ordinary factorization, Lean consumers, and finite regression distinct."
+  },
+  "classification": {
+    "ambient_framework": "arithmetic Hankel determinants built from q-hypergeometric Pade forms",
+    "Hankel_family_and_analytic_order": "published_Zudilin_2016",
+    "cyclotomic_factor_extraction_method": "established_adjacent_precedent_Krattenthaler_Rochev_Vaananen_Zudilin_2009",
+    "exact_scalar_factor_and_Hankel_divisor": "source_specific_authored_deduction_from_published_displayed_forms_apparently_unlocated_verbatim",
+    "exact_residual_exponent_and_assignment_sharpness": "source_specific_authored_result_apparently_unlocated_verbatim",
+    "three_halves_charge_no_go": "problem_specific_exact_negative_consumer",
+    "priority_claim": "none_pending_specialist_confirmation",
+    "recommended_terminology": "first-order cyclotomic border-charge no-go",
+    "discouraged_terminology": [
+      "new cyclotomic Hankel factorization method",
+      "Zudilin's 3/2 theorem",
+      "complete failure of the Hankel route"
+    ],
+    "attribution": "Credit Zudilin 2016 for the generalized-q-logarithm Pade forms, Hankel determinant, backward-shift argument, and normalized q-order bound. Credit Krattenthaler--Rochev--Väänänen--Zudilin 2009 for established explicit cyclotomic extraction in an adjacent arithmetic Hankel family. Credit the local source only for the specialized scalar-factor deduction and ceiling, the residual 1-or-4 exponent, sharp valuation assignment, finite specialization sandwich, and local 3/2 charge no-go.",
+    "mathematical_interest": "The factor formula is specialized, but the negative result has strong methodological value: it proves the obvious first-order arithmetic repair is exhausted exactly rather than merely undersized in finite experiments.",
+    "reusable_scope": "Structured determinants whose entry valuations define a minimum-weight permutation problem and whose Diophantine consumer requires a quantified content degree.",
+    "why_it_matters": "It sharply redirects #1049 away from nested entrywise valuation arguments toward genuine determinant cancellation, higher layers, global norms, or a new integral model."
+  },
+  "primary_sources": [
+    {
+      "id": "zudilin_2016_generalized_q_logarithm",
+      "title": "On the irrationality of generalized q-logarithm",
+      "author": "Wadim Zudilin",
+      "venue": "Research in Number Theory 2 (2016), Article 15",
+      "doi": "10.1007/s40993-016-0042-x",
+      "url": "https://link.springer.com/article/10.1007/s40993-016-0042-x",
+      "local_annex": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm",
+      "arxiv": "https://arxiv.org/abs/1601.02688",
+      "pdf_url": "https://arxiv.org/pdf/1601.02688",
+      "source_archive": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/source.gz",
+      "source_archive_sha256": "4c20ef7a8fe0075a65536c87cfec9c123b2b018c977b9f11f026dfc2fd1a2dcf",
+      "source_text": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/source.tex",
+      "source_text_sha256": "4404dbbdb2e592e7e945d12c534b184efdce0e98a3381fcd9a294e17f7cba033",
+      "extracted_markdown": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "extracted_markdown_sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e",
+      "primary_source_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "extracted_locator": "extracted.md lines 39-45 (Theorem 1 setting), lines 74-121 (Padé/Hankel setup and Lemma 1), and lines 151-158 (alternative proof route); source TeX lines 278-380 provide the corresponding Section 4 determinant/order details.",
+      "exact_anchor": "Section 3 gives the cleared Pade forms A_n, B_n, C_n and D_n. Section 4 defines V_n(mu), equation (6) gives the normalized entries, Lemma 1 and the row operators yield ord_q V_n* at least n(n-1)(2n-1)/6, and the proof of Theorem 1 consumes integrality and nonvanishing for integer p.",
+      "supports": "The exact source family, clearing formulas, Hankel architecture, and analytic q-order lower bound from which the local arithmetic audit starts.",
+      "does_not_support": "The residual exponent 1 or 4, the all-d primitive border factor, its valuation-assignment sharpness, the numerical 39/41 threshold, or irrationality at p=3/2."
+    },
+    {
+      "id": "krattenthaler_rochev_vaananen_zudilin_2009",
+      "title": "On the non-quadraticity of values of the q-exponential function and related q-series",
+      "authors": ["Christian Krattenthaler", "Igor Rochev", "Keijo Väänänen", "Wadim Zudilin"],
+      "venue": "Acta Arithmetica 136 (2009), 243-269",
+      "doi": "10.4064/aa136-3-4",
+      "url": "https://arxiv.org/abs/0812.2921",
+      "exact_anchor": "Section 4, 'Cyclotomic factorization', especially Proposition 4 and its determinant divisibility argument, extracts explicit cyclotomic powers from a different q-exponential Hankel determinant. The paper combines these factors with analytic bounds in its nonquadraticity argument.",
+      "supports": "Direct prior art for cyclotomic factor extraction as an arithmetic Hankel-determinant mechanism.",
+      "does_not_support": "Zudilin's 2016 generalized-q-logarithm residual matrix, the exponent 1-or-4 carry law, the exact N-2d assignment, or the 3/2 no-go."
+    }
+  ],
+  "mechanism_comparison": {
+    "published_2016_layer": "Cleared Pade forms produce an integral Hankel determinant with strong normalized analytic decay for integer p.",
+    "established_arithmetic_analogy": "The 2009 q-exponential work shows that large cyclotomic coefficient factors in Hankel determinants can be decisive arithmetic input.",
+    "local_scalar_layer": "Direct specialization of the displayed 2016 forms at x=z=1 gives the exact common scalar factor and an all-rank Hankel divisor; its degree ceiling is already insufficient at 3/2.",
+    "local_source_specific_layer": "After removing those scalar row factors, every southeast residual entry has exact Phi_d-order one or four and forces a border factor.",
+    "sharpness": "A minimum-weight permutation attains N-2d, so valuations of individual entries contain no unclaimed first-order power.",
+    "negative_consumer": "Even the scalar factor plus an overestimate of all border factors falls below the required 3/2 content charge.",
+    "remaining_throat": "Only cancellation among minimum-order terms, higher valuation layers of cubic density, a global norm/resultant gain, or a different integral model can revive this Hankel lane."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Zudilin generalized q-logarithm Hankel determinant cyclotomic factor",
+      "generalized q-logarithm primitive residual determinant Phi_d",
+      "Hankel determinant cyclotomic southeast block valuation",
+      "q-hypergeometric Hankel common factor assignment valuation"
+    ],
+    "result": "The search located the exact 2016 source family and direct adjacent cyclotomic-Hankel precedent in the 2009 q-exponential paper. It did not locate the residual 1-or-4 carry formula, sharp N-2d assignment, or the source-specific 3/2 charge comparison as published statements.",
+    "boundary": "Non-location supports only an apparently unrecorded scoped calculation pending specialist confirmation, never a priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Within Zudilin's 2016 generalized-q-logarithm Hankel family at x=z=1, the authored residual valuation formula and Lean determinant consumer prove the universally forced first-order cyclotomic border factor is sharp at the entry-valuation level and insufficient, even with scalar content, for the local 3/2 threshold.",
+    "forbidden_wording": [
+      "Cyclotomic factors in arithmetic Hankel determinants are new.",
+      "Zudilin proved or claimed the 39/41 threshold.",
+      "The local source proves irrationality at rational base 3/2.",
+      "All determinant cancellation or higher residual divisibility is excluded.",
+      "The whole Hankel method is impossible for Erdős #1049."
+    ],
+    "nonclaims": ["not_a_priority_claim", "not_a_new_general_Hankel_factor_method", "not_a_higher_layer_no_go", "not_an_irrationality_theorem", "not_erdos_1049_solution"]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/zudilin_primitive_residual_border_charge_no_go.card.json",
+      "effect": "Keep the scalar precursor and primitive residual factor in one source-backed two-stage extraction card rather than counting them as separate discoveries."
+    },
+    {
+      "consumer": "Erdos #1049 proof fleet",
+      "effect": "Do not spend further cycles nesting the same entrywise first-order valuations; require a genuinely distinct higher-layer or integral-model mechanism."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the asset as a strong source-specific method no-go inside established cyclotomic Hankel arithmetic, with the rational-base and no-solution boundaries adjacent."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The #1049 scalar-content and primitive-residual packet rows are now one adjudicated extraction stack: established cyclotomic-Hankel method, source-specific exact factors, and a local 3/2 first-order charge no-go.",
+    "do_not_redo": [
+      "Do not re-search whether cyclotomic factor extraction in Hankel determinants exists; the 2009 paper is direct precedent.",
+      "Do not attribute the residual factor or 3/2 threshold to Zudilin 2016.",
+      "Do not treat finite rank-four/rank-five factorizations as the all-rank proof."
+    ],
+    "ranked_open_throats": [
+      "specialist confirmation of whether the exact residual 1-or-4 factor has appeared for this 2016 family",
+      "higher-valuation-layer cancellation or global norm gain of cubic density",
+      "distinct rank-three/rank-four congruence-constrained integral construction for 3/2"
+    ],
+    "next_wake_condition": "A new source-specific determinant factor, higher-layer cancellation theorem, specialist attribution correction, or newly uncarded current result appears."
+  },
+  "release_advisory": {
+    "significance_grade": "high_method_boundary_value_with_specialist_review_pending",
+    "canonical_parent": "rational_approximation_exponent_budget",
+    "comparator": "Advisory interface for the generic southeast-block divisor and exact charge inequalities; preserve ordinary-proof and specialization firewalls.",
+    "paper": "Principal determinant-arithmetic route boundary beneath the effective-height ledger.",
+    "shortlist": "Do not admit without a positive higher-layer cancellation or auxiliary-family theorem."
+  },
+  "consolidation_consumer": {
+    "canonical_parent": "rational_approximation_exponent_budget",
+    "consolidates": [
+      "zudilin specialized scalar content ceiling",
+      "primitive residual 1-or-4 exponent law",
+      "sharp N-2d valuation assignment",
+      "rank-four and rank-five finite specialization checks",
+      "scalar-plus-border 3/2 charge no-go"
+    ],
+    "replacement_rule": "Do not publish these layers as independent mechanism counts; retain one two-stage extraction and route-boundary object."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source_adjudication_formal_consumers_and_authored_factorization",
+    "output_stage": "expert_understanding_and_canonicalization",
+    "artifact": "zudilin_primitive_residual_border_charge_no_go route",
+    "human_understanding_delta": "Identifies the exact exhausted mechanism and the surviving determinant-level alternatives.",
+    "verification_state": "Primary sources pinned; ordinary all-rank derivation, Lean consumers, and finite replay remain distinct.",
+    "publication_or_review_state": "Private specialist-review candidate; no priority or endpoint claim.",
+    "canonicalization_state": "One method-boundary object beneath the effective-height representative.",
+    "unresolved_downstream_bottleneck": "Higher-layer cancellation or another cubic-density content mechanism.",
+    "next_stage_owner": "Mathematics Refinery, specialist reviewer, and Role 3."
+  },
+  "release_disposition": "status_tagged_public_and_comparator_candidate",
+  "release_disposition_reason": "The exact first-order entry-valuation no-go, source lineage, Lean consumers, finite regression, and scope boundary are inspectable. Specialist review is downstream, not a visibility gate; any projection must separate ordinary all-rank reasoning from Lean consumers and finite checks.",
+  "programme_placement": {
+    "canonical_mechanism_family": "cyclotomic first-appearance determinant residues, cyclic resultants, and first-order border-charge exhaustion",
+    "disposition": "subordinate under zudilin_all_d_first_appearance_noncancellation and rational_approximation_exponent_budget; do not count scalar and primitive residual stages as separate advances",
+    "consolidation_relation": "Keep the scalar precursor, primitive residual exponent, assignment-sharpness witness, and finite rank-four/rank-five sandwich in one route-killing boundary object. The all-d first-appearance certificate is the parent local mechanism; this object records why entrywise first-order supply still cannot pay the effective-height bill.",
+    "evidence_class": "authored ordinary all-rank factorization and assignment argument, five Lean-checked consumers, exact finite regression, and primary-source comparison",
+    "hard_step": "Independent verification that the southeast-block valuation bound is assignment-sharp and that the combined scalar-plus-border ceiling is compared against the stated 3/2 threshold without confusing determinant minimum order with determinant valuation.",
+    "prior_art_uncertainty": "Zudilin 2016 and the 2009 cyclotomic-Hankel paper establish the ambient machinery; the exact residual 1-or-4 exponent, sharp N-2d assignment, and charge no-go were not located in those sources. This is a bounded non-location result, not priority evidence.",
+    "open_boundary": "Cancellation among minimum-order terms, higher valuation layers, global norms, and alternate integral models remain open; no irrationality or #1049 endpoint follows.",
+    "comparator_interface_justified": true,
+    "comparator_minimal_restatement": "In the declared Zudilin Hankel family, scalar content plus the exact first-order cyclotomic border factor remains below the required 3/2 charge; the result is a method no-go, not a theorem about all determinant divisibility.",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "First-order border charge: entrywise valuation supply is exhausted",
+      "supersession_or_consolidation": "Place once beneath the all-d first-appearance certificate and effective-height budget. Remove any separate scalar-content, residual-factor, or finite-rank chronology.",
+      "reason": "The value is strategic: it closes the obvious nested entrywise repair while preserving the genuinely live determinant-cancellation and higher-layer routes."
+    }
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-current prior-art and significance pass",
+    "result_family_version": "zudilin_primitive_residual_border_charge_no_go@source_9fd9a91_a769303_8330641_card_a5a810a_packet_7578b07",
+    "source_version_binding": {
+      "scalar_lab": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinScalarContentLab.md",
+        "commit": "9fd9a91a46a1126da0c766a69c79ccb551f54e94",
+        "sha256": "2afed13386a86c556631fc432ade3b6e57dfd7a8df88be9c12537c14496fec90"
+      },
+      "residual_lab": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinResidualBorderChargeLab.md",
+        "commit": "a7693031dcb3abefdeb6d559c7095ae0bc2638e6",
+        "sha256": "3ffd75c5650384a90045d5f91d52c8dbe2bca589fd2aeb4e20b8e80e3850dc3a"
+      },
+      "lean_consumers": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+        "commit": "833064175b16db024f35b07c57e6a685d5d7cda7",
+        "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+        "commit": "d34f9a9c37b3e401d71be76c3484972ef8238736",
+        "sha256": "b001e564a3462a286a5b6408a8bdf32b4fd5d99784a87a8fafc6904bda6bd580",
+        "source_result_ids": [
+          "zudilin_specialized_scalar_content_factor_and_charge_ceiling",
+          "zudilin_primitive_residual_border_factor_and_charge_no_go"
+        ]
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/zudilin_primitive_residual_border_charge_no_go.card.json",
+        "commit": "a5a810a3d963655432854fb493a8ddb90ac71a7e",
+        "sha256": "002cc016d0b2c1c4f267f5e45578624eb1162e90c43dca7a9f942102ebe7adac"
+      }
+    },
+    "evidence_class": "Authored ordinary all-rank factorization and assignment-sharpness argument; five Lean consumers; exact rank-four/rank-five regression; primary-source comparison. No Lean end-to-end theorem or independent specialist review.",
+    "prior_art_assessment": {
+      "confidence": "strong_internal provisional method-boundary case; no official novelty or priority claim",
+      "closest_primary_sources": [
+        "Zudilin (2016), Sections 3-4: generalized-q-logarithm Padé forms, Hankel determinants, and analytic q-order.",
+        "Krattenthaler--Rochev--Väänänen--Zudilin (2009), Section 4: established cyclotomic factor extraction in an adjacent q-exponential Hankel family."
+      ],
+      "exact_relation": "Those sources establish the ambient determinant and cyclotomic techniques, not the source-specific scalar-plus-border exponent ceiling, residual 1-or-4 law, or assignment-sharp N-2d no-go.",
+      "search_scope": "The bounded search covered generalized-q-logarithm Hankel residual factors, southeast-block valuation assignments, and first-order cyclotomic charge. No matching source statement was found; non-location is not priority evidence."
+    },
+    "comparison_relation": "Zudilin's generalized-q-logarithm Padé/Hankel family and adjacent cyclotomic extraction are established antecedents. The source-specific delta is the scalar-plus-border charge ceiling, residual 1-or-4 exponent, assignment-sharp N-2d witness, and the resulting 3/2 method no-go.",
+    "closest_known_result": "Zudilin (2016) supplies the ambient Padé/Hankel and analytic q-order framework; Krattenthaler--Rochev--Väänänen--Zudilin (2009) supplies nearby cyclotomic Hankel extraction. Neither states the present residual border law or charge comparison.",
+    "exact_delta": "After scalar extraction, the primitive residual's first-order cyclotomic border contribution is assignment-sharp and, even with the scalar factor, remains below the displayed 3/2 effective-height charge.",
+    "disconfirming_evidence": "Minimum-order terms in a determinant may cancel, so the argument closes only noncancelling entrywise supply. Finite checks do not establish the all-rank law, and no higher-layer/global-norm conclusion follows.",
+    "confidence_ceiling": "High for the source/card/packet parity, named Lean consumers, and finite arithmetic; medium internal provisional for the exact residual law being unlocated after bounded primary-source search; low for priority, independent review, or any #1049 endpoint claim.",
+    "hard_step": "Show that the southeast-block assignment attains the entrywise valuation lower bound and compare the exact scalar-plus-border degree with the 3/2 threshold without conflating minimum term order and determinant valuation.",
+    "open_boundary": "Determinant-level cancellation, higher valuation layers, global norms, alternate integral models, and irrationality at 3/2 remain open.",
+    "mathematical_delta": {
+      "one_sentence": "After scalar extraction, the primitive residual contributes an exact first-order cyclotomic border charge, and even this deliberately generous combined supply stays below the effective 3/2 height threshold.",
+      "genuinely_hard_step": "Prove assignment sharpness for the residual determinant: the entrywise valuation lower bound is attained by an explicit permutation, so no nested entrywise argument can force more charge.",
+      "why_care": "It retires the most tempting arithmetic repair route and tells the proof fleet where not to spend effort: determinant-level cancellation, higher layers, global norms, or another integral model are required.",
+      "natural_friction": "A minimum valuation among determinant terms is not automatically the determinant valuation because minimum terms may cancel; this no-go closes only the noncancelling entrywise strategy."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Within the declared Zudilin family, scalar content plus the exact first-order primitive border charge cannot meet the displayed 3/2 threshold; this is a source-specific method boundary.",
+      "rejected_stronger": [
+        "all cyclotomic determinant cancellation is impossible",
+        "the entire Hankel route is ruled out",
+        "the finite rank checks establish an all-rank valuation theorem",
+        "irrationality at 3/2 follows",
+        "Erdős #1049 is solved"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "A_minus_route_boundary",
+      "mechanism_family": "cyclotomic first-appearance determinant residues and first-order border-charge exhaustion",
+      "programme_disposition": "subordinate beneath the landed all-d first-appearance and effective-height objects; consolidate scalar, residual, and finite rank evidence",
+      "paper_disposition": "route-killing failure/boundary in the effective-height section, not a standalone theorem headline",
+      "comparator_advisory": "One status-tagged method-boundary proposition is justified. Keep the ordinary factorization, Lean consumers, and finite regression labelled separately.",
+      "absolute_shortlist": "do not admit as a flagship; retain as a high-value #1049 boundary"
+    },
+    "expert_review_act": "Check the southeast-block assignment witness, the exact scalar-plus-border degree comparison, and the determinant-cancellation caveat; then identify whether a higher-layer or global-norm mechanism survives.",
+    "reentry_condition": "Reopen if any of the three source files, packet result rows, reviewer card, or charge quantifiers change, or if a primary source is found for the exact residual law."
+  },
+  "adjudication_currentness": {
+    "status": "authored_source_packet_card_and_lean_consumers_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "scalar_lab_commit": "9fd9a91a46a1126da0c766a69c79ccb551f54e94",
+      "scalar_lab_sha256": "2afed13386a86c556631fc432ade3b6e57dfd7a8df88be9c12537c14496fec90",
+      "residual_lab_commit": "a7693031dcb3abefdeb6d559c7095ae0bc2638e6",
+      "residual_lab_sha256": "3ffd75c5650384a90045d5f91d52c8dbe2bca589fd2aeb4e20b8e80e3850dc3a",
+      "lean_consumers_commit": "833064175b16db024f35b07c57e6a685d5d7cda7",
+      "lean_consumers_sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03",
+      "research_packet_commit": "7578b07f27b240d7201a2cc81fc7b2c08ced1328",
+      "research_packet_sha256": "75a38d269b04aa46e160f5c2fd7d5f968bbee4a39cf5370c2332211ee1eb8547",
+      "reviewer_card_commit": "a5a810a3d963655432854fb493a8ddb90ac71a7e",
+      "reviewer_card_sha256": "002cc016d0b2c1c4f267f5e45578624eb1162e90c43dca7a9f942102ebe7adac",
+      "source_result_ids": [
+        "zudilin_specialized_scalar_content_factor_and_charge_ceiling",
+        "zudilin_primitive_residual_border_factor_and_charge_no_go"
+      ]
+    },
+    "claim_guard": "Only the source-specific scalar-plus-first-order primitive border-charge no-go is admitted; no blanket determinant-cancellation theorem, higher-layer result, irrationality, priority, or #1049 endpoint claim.",
+    "reentry_trigger": "Re-enter if any source lab, Lean consumer, packet/card snapshot, charge quantifier, or primary-source attribution changes."
+  }
+}

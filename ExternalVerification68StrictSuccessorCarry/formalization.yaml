@@ -1,0 +1,256 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #68: companion-orbit and strict-successor characterizations"
+  description: >-
+    Two Lean-checked lossless reformulations of the factorial-gap irrationality
+    problem. For the fixed companion constant C, non-irrationality is
+    equivalent to eventual concentration of floor(m! C) at -2 modulo m, and
+    irrationality is equivalent to cofinal escape. In the strict-successor
+    coordinate, non-irrationality is equivalent to eventual unit carries and
+    irrationality to cofinal failures of exact prefix divisibility. Neither
+    theorem proves that the cofinal failures occur or solves Erdős Problem 68.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification68StrictSuccessorCarry/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification68StrictSuccessorCarry/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "current_macos_host_exit_75_systemd_boundary_unavailable_terminal_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_exact_open_problem_reduction"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The open parent problem is not a merit veto. This configuration exposes
+    the principal exact theorem family as one coherent two-theorem result and is intended for the
+    operator-directed Palomar campaign once its public identity and mechanical
+    evidence are fixed. These local artifacts are not yet a Comparator verdict,
+    Palomar outcome, registry entry or peer review.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A05"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 20
+    band: "conditional"
+    components:
+      theorem_closure: 5
+      parent_problem_proximity: 5
+      mechanism_depth: 4
+      hypothesis_sharpness: 3
+      consequence_reach: 3
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness,
+      or submission authorization.
+    rationale: >-
+      The lead theorem is an exact fixed-constant factorial-orbit equivalence
+      immediately beneath the parent irrationality problem. It identifies the
+      exceptional residue in both directions and is paired with the independent
+      exact strict-successor/divisibility coordinate.
+  presentation_order:
+    - "fixed_companion_orbit_rationality_boundary"
+    - "strict_successor_carry_complete_characterization"
+
+sources:
+  - title: "Exact companion-orbit and strict-successor characterizations for Erdős Problem 68"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      This formalization presents the exact fixed-companion-orbit rationality
+      boundary first, followed by the complete strict-successor reduction from
+      the factorial-gap series to cofinal non-unit carries and failures of a
+      computable integer divisibility test.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #68"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/68"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status. The strict-successor characterization is not attributed to
+      the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    The first composite theorem states the fixed companion-orbit rationality
+    criterion and cofinal-miss dual. The second states the eventual-unit carry
+    criterion, cofinal-nonunit dual, pointwise carry/divisibility equivalence,
+    and cofinal-divisibility reformulation. Challenge.lean has one intentional
+    specification sorry per selected theorem; the proof-bearing Solution.lean
+    and its source theorem family are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    The only deliberate placeholders are the two trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count;
+    Solution.lean transports the two companion-orbit endpoints and assembles
+    four strict-successor endpoints under focused local Lean elaboration.
+  axiom_audit_status: "checked_exactly_propext_Classical.choice_Quot.sound"
+  actual_axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization"
+      file: "ExternalVerification68StrictSuccessorCarry/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "ExternalVerification68StrictSuccessorCarry/comparator.json"
+      canonical_claim_status: "lean_checked_composite_wrapper"
+      local_proof_provenance: >-
+        Source endpoints in
+        ErdosProblems/Erdos68/CompanionOrbitRationality.lean, focused-build
+        checked together with the exact three-axiom audit on 31 August 2026.
+      novelty_status: "unassessed"
+      contribution_class: "exact fixed-orbit rationality boundary"
+      statement: >-
+        The factorial-gap series is non-irrational exactly when the factorial
+        orbit of the fixed companion constant is eventually -2 modulo its
+        index, and irrational exactly when that residue is missed cofinally.
+      boundary: >-
+        No theorem proves that cofinal misses occur. The result is a lossless
+        equivalence and does not solve Erdős 68.
+      comparator_declaration: "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
+      file: "ExternalVerification68StrictSuccessorCarry/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "ExternalVerification68StrictSuccessorCarry/comparator.json"
+      canonical_claim_status: "lean_checked_composite_wrapper"
+      local_proof_provenance: >-
+        Four source theorems assembled from
+        ErdosProblems/Erdos68/FactorialZeroPlateau.lean at local source commit
+        184164e401de1a5397012ec17224fac11706deb0 and source SHA-256
+        2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa.
+      novelty_status: "unassessed"
+      contribution_class: "exact open-problem reduction and integer characterization"
+      statement: >-
+        The factorial-gap series is non-irrational exactly when its exact
+        carry is eventually one, irrational exactly when non-unit carries
+        occur cofinally, and irrational exactly when the rational-prefix
+        strict successor fails divisibility by its index cofinally.
+      boundary: >-
+        No theorem proves the cofinal carries or divisibility failures. The
+        result is a lossless reduction and does not solve Erdős 68.
+      comparator_declaration: "Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner. The supported entrypoint returned exit 75 on the
+        current macOS host because its required systemd boundary is absent;
+        no terminal replay verdict is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The two compared declarations package six source endpoints into two
+    coherent characterization theorems. They do not add the missing cofinal
+    producer or infer any mathematical claim solely from prose.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem family, literal Challenge/Solution declaration shape,
+    reduction scope and open-problem boundary were reviewed. The Challenge,
+    Solution, deliberate-negative fixture and axiom audit pass focused local
+    Lean elaboration. The supported replay entrypoint was also exercised and
+    returned the typed environment-unavailable exit 75 on this non-systemd
+    host. No independent human peer review, Comparator verdict, Palomar
+    decision or registry acceptance is claimed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification68StrictSuccessorCarry"
+  statements:
+    - source: >-
+        The checked fixed companion-orbit endpoints giving the exact eventual
+        exceptional-residue and cofinal-miss equivalences.
+      lean: "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization"
+      module: "ExternalVerification68StrictSuccessorCarry/Challenge.lean"
+      status: "exact-composite-transport"
+      note: >-
+        This is the strongest-first Comparator theorem and routes to paper
+        label res:companion-orbit-rationality-boundary.
+    - source: >-
+        The source theorem family giving the eventual-unit, cofinal-nonunit,
+        pointwise strict-successor divisibility and cofinal-miss equivalences.
+      lean: "Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
+      module: "ExternalVerification68StrictSuccessorCarry/Challenge.lean"
+      status: "exact-composite-transport"
+      note: >-
+        The Challenge exposes the complete exact reduction in literal
+        Mathlib-only vocabulary while preserving the unresolved producer.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

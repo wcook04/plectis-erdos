@@ -1,0 +1,374 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos269_torus_fourier_value_representation",
+  "source_result_id": "torus_fourier_representation_of_the_value",
+  "source_result_ids": [
+    "torus_fourier_representation_of_the_value"
+  ],
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "analysis_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "analysis_source_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+    "analysis_source_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+    "analytic_completion_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TensorDirichletJordanCompletion.md",
+    "analytic_completion_commit": "c8074e387af78965592c65b63026c879b38ee930",
+    "analytic_completion_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+    "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+    "research_packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "worktree_overlay": {
+        "sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+        "status": "uncommitted_nonowned_overlay_excluded_from_adjudication",
+        "reentry_condition": "Rebind only after the packet source-link additions land in a committed snapshot and pass source-parity validation."
+      }
+    },
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos269_torus_fourier_value_representation.card.json",
+    "reviewer_card_commit": "708a8a40cac0abc5f01b93384dae4b966f407478",
+    "reviewer_card_sha256": "136765f06dd6257e45c43d413d552da5a635428b3c2dd80945d773fac184a066",
+    "status": "source_hashes_current_at_2026-08-26_snapshot; summation proof and arithmetic consequence remain separate review boundaries"
+  },
+  "parity_audit": {
+    "status": "analysis_completion_committed_packet_card_current; packet_worktree_overlay_excluded",
+    "effect": "The torus analysis, ordinary symmetric-limit completion, committed packet row, and reviewer card are bound to the 2026-08-26 committed snapshot. A non-owned packet worktree overlay is recorded but excluded until it lands; the analytic completion remains a separate source from the pointwise torus algebra and independently reviewable.",
+    "reentry_condition": "Re-enter if either source, the packet row, the symmetric summation convention, or the reviewer card changes; do not treat a new arithmetic consequence as covered by this representation route without a new adjudication."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "torus_fourier_representation_of_the_value@analysis-90e3383a-completion-c8074e38-packet-90e3383a-card-708a8a40",
+    "source_generation_binding": {
+      "analysis_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "analysis_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+      "analytic_completion_commit": "c8074e387af78965592c65b63026c879b38ee930",
+      "analytic_completion_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "reviewer_card_commit": "708a8a40cac0abc5f01b93384dae4b966f407478",
+      "reviewer_card_sha256": "136765f06dd6257e45c43d413d552da5a635428b3c2dd80945d773fac184a066"
+    },
+    "evidence_class": "authored_ordinary_fourier_completion_with_exact_pointwise_algebra_and_finite_mode_replay",
+    "comparison_relation": "The floor/telescope identities and geometric mode factors are source-specific coordinates built from standard Fourier expansion and geometric-series algebra. The global rectangular symmetric identity is a classical-type Fourier completion argument with an authored bounded-variation/dominated-convergence proof; no literature-first or priority claim is supported.",
+    "novelty_confidence": {
+      "state": "source_bound_packaging_with_classical_completion",
+      "ceiling": "No novelty, priority, first representation, regularization, irrationality, or transcendence claim; exact antecedent matching remains an expert literature question."
+    },
+    "significance_assessment": {
+      "grade": "medium_attention_supporting_mechanism",
+      "why_care": "It gives a value-level coordinate system that cleanly separates exact torus algebra from the genuinely analytic summation gate, preventing finite Fourier decay and the 17/2 correction from being mistaken for a Diophantine conclusion.",
+      "mechanism_family": "three-prime logarithmic torus coordinates and symmetric Fourier-mode factorization",
+      "expert_attention_reason": "A focused analytic audit can decide whether the bounded-variation tensor domination and midpoint-stratum bookkeeping are valid; this improves the programme's value representation without pretending to supply the missing arithmetic producer."
+    },
+    "exact_claim_ceiling": "The reciprocal running height has an exact floor/telescope torus identity and 17/2 prime-axis correction; each formal mode factors into geometric series governed by logarithmic linear forms; the global rectangular symmetric identity is an authored ordinary proof under its stated summation convention. No full-torus orbit claim, Diophantine estimate, irrationality result, or Lean theorem follows.",
+    "hard_step_and_natural_friction": "The load-bearing step is uniform bounded-variation control through rectangular tensor partial sums and the pure-axis/origin midpoint correction. Finite M<=320 decay and the 17/2 calculation are replay evidence, not independent proof; the arithmetic exact-integral-tail branch remains untouched.",
+    "disconfirming_evidence_preserved": [
+      "Ambient torus coordinates do not establish rational independence, dense orbit closure, unique ergodicity, product frequencies, or rank.",
+      "Finite symmetric mode tables cannot justify the limiting interchange or any irrationality conclusion.",
+      "No supplied Diophantine estimate excludes the exact-integral-tail branch."
+    ],
+    "review_scope": {
+      "primary_sources_used": [
+        "The Fourier and geometric-series precedents cited in the card's primary_sources list",
+        "The current TorusCocycleAndDiophantineTypeLab.md source",
+        "The separate TensorDirichletJordanCompletion.md analytic source"
+      ],
+      "search_scope": "bounded exact-source and cited-framework inspection; no claim that all torus/Fourier summation literature was exhausted",
+      "closest_relation": "classical Fourier completion plus source-specific floor-defined torus packaging",
+      "uncertainty": "medium for exact external antecedent matching and authored analytic proof completeness; high for source/hash parity and the stated non-implications"
+    },
+    "paper_disposition": {
+      "class": "supporting_lemma_and_technical_appendix",
+      "target_section": "A literal two-dimensional analytic route",
+      "relation": "Keep the torus weight, 17/2 correction, formal modes, and summation theorem as one value-representation subsection; subordinate radix coding and finite-observer obstructions as distinct neighboring mechanisms.",
+      "reason": "The object clarifies the analytic bottleneck but does not itself move the #269 arithmetic endpoint."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "authored ordinary symmetric identity with explicit summation convention; exact floor/telescope and 17/2 algebra; finite replay only; no Lean, full-torus dynamics, Diophantine consequence, or irrationality claim",
+      "release_owner": "Role 3; Observatory supplies significance and claim calibration only"
+    },
+    "bounded_expert_act": "Audit the bounded-variation/dominated-convergence proof and midpoint-stratum bookkeeping, then compare the completed identity against exact torus/Fourier summation antecedents.",
+    "reentry_trigger": "Re-enter if the analytic completion, summation convention, source generation, or an actual logarithmic-mode Diophantine estimate changes."
+  },
+  "status": "adjudicated_source_specific_torus_packaging_current_generation_review_downstream_no_priority_claim",
+  "problem_id": "erdos_269",
+  "purpose": "Position a torus/Fourier coordinate system for the three-prime value while preventing a formal conditional expansion or finite numerical replay from becoming an irrationality or exact-representation claim without a summation theorem.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos269_torus_fourier_value_representation.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "source_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+    "source_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+    "analytic_completion_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TensorDirichletJordanCompletion.md",
+    "analytic_completion_commit": "c8074e387af78965592c65b63026c879b38ee930",
+    "analytic_completion_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+    "source_result_id": "torus_fourier_representation_of_the_value"
+  },
+  "review_unit": {
+    "result_family": "erdos269_torus_fourier_value_representation",
+    "exact_result_id": "torus_fourier_representation_of_the_value",
+    "source_generation": {
+      "analysis_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+      "analysis_source_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "analysis_source_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+      "analytic_completion_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TensorDirichletJordanCompletion.md",
+      "analytic_completion_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+      "reviewer_card": "docs/formal_math/reviewer_cards/erdos269_torus_fourier_value_representation.card.json",
+      "reviewer_card_commit": "708a8a40cac0abc5f01b93384dae4b966f407478",
+      "formalization_scope": "authored_ordinary_symmetric_fourier_proof_no_Lean_anchor"
+    },
+    "review_generation": "2026-08-26_maturity_ratchet_v2",
+    "confidence_ceiling": "High for the exact floor/telescope algebra and geometric mode factorization; medium for the authored symmetric-limit proof until independent analytic review; low for any originality claim; no arithmetic endpoint inference.",
+    "significance_rationale": "The object is valuable as a clean value-level coordinate and as a firewall against confusing finite Fourier evidence with the missing Diophantine estimate; it is not an irrationality result.",
+    "expert_act": "Audit the one-dimensional bounded-variation bound, tensor rectangular domination, and midpoint stratum bookkeeping, then compare the completed identity with any exact torus/Fourier summation antecedent."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The floor identity, prime-axis telescope, and one-mode geometric factors are routine; the load-bearing analytic seam is uniform bounded-variation control plus dominated convergence for the rectangular symmetric limit.",
+    "slow_down_at": "Check the fixed one-dimensional partial-sum bound, tensor domination against the geometric lattice measure, and midpoint-versus-pointwise correction on every discontinuity stratum. Finite partial sums are replay only.",
+    "automation_can_establish": [
+      "Exact algebraic components and source/checker/receipt parity",
+      "Finite mode and partial-sum replay through M=320",
+      "That no full-torus, equidistribution, Lean, or irrationality claim is present"
+    ],
+    "human_judgment_required": [
+      "Whether the authored completion is a correct tensor-product application of classical Dirichlet--Jordan bounded-variation convergence",
+      "Whether the 17/2 correction convention is applied consistently across the jump strata",
+      "Which Diophantine estimate could consume the logarithmic modes and exclude the exact-integral-tail branch"
+    ],
+    "review_act": "One bounded expert act: audit the uniform-bound/dominated-convergence bookkeeping and midpoint convention, then treat any arithmetic consequence as a separate open producer."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "three-prime logarithmic torus coordinates and Fourier-mode factorization",
+    "disposition": "subordinate_under_the_269_value_route_and_consolidate_analytic_components",
+    "consolidation_relation": "Keep the pointwise torus weight, 17/2 correction, formal mode factorization, authored symmetric completion, and finite tables as one analytic object; keep radix coding, observer no-go, and arithmetic producers distinct.",
+    "comparator_advisory": "A status-tagged ordinary-proposition interface is justified for the corrected rectangular symmetric identity, provided the summation convention, 17/2 correction, finite-replay boundary, and non-implications remain in the statement firewall.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "A literal two-dimensional analytic route",
+      "supersession_or_consolidation": "Use one analytic subsection and retire separate numerical, correction-only, and formal-mode representation narratives.",
+      "reason": "The value-level identity is a legible analytic mechanism, but its significance is as a coordinate for a future Diophantine estimate, not as an irrationality result."
+    }
+  },
+  "source_version_delta": {
+    "superseded_review_unit": "746717d54ba8d7c3262852028997562ff4d865df",
+    "current_review_unit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+    "correction": "The later source narrows the finite escape census: it retracts the earlier generic/no-accumulation extrapolation and records a depth-200 affine-cylinder delay witness. The four-layer torus/Fourier identity and its analytic firewall remain the reviewed mechanism.",
+    "release_effect": "No stronger arithmetic claim is admitted; the corrected finite-escape boundary is now part of the source-current review unit."
+  },
+  "classification": {
+    "exact_algebraic_components": [
+      "floor/fractional-part torus weight identity",
+      "prime-axis telescoping correction",
+      "geometric factorization of an individual formal Fourier mode"
+    ],
+    "dynamical_boundary": "The coordinate map uses an ambient torus. It does not establish rational independence of its logarithmic parameters, dense/full-torus orbit closure, unique ergodicity, product frequencies, or a rank claim; none is needed for the pointwise identities.",
+    "analytic_component_requiring_review": "The authored proof now uses finite rectangular expansion, uniform bounded-variation partial-sum bounds, and dominated convergence to identify the symmetric Fourier limit. Independent review must check that argument and the stratum bookkeeping; no new regularization theorem is claimed.",
+    "novelty_status": "classical_Fourier_completion_with_source_specific_floor_torus_packaging_no_priority_claim",
+    "priority_claim": "none",
+    "recommended_terminology": "torus/Fourier coordinate system for a floor-defined smooth-lattice value",
+    "discouraged_terminology": [
+      "proved Fourier representation of the value",
+      "irrationality proof",
+      "trace formula",
+      "first representation",
+      "regularized identity"
+    ],
+    "mathematical_interest": "The mechanism puts the same logarithmic Diophantine data that governs residue escape and projective defects directly into the value, while identifying conditional summation as the actual analytic gate.",
+    "reusable_scope": "Reciprocal heights on finitely generated smooth semigroups whose logarithmic floors define a discontinuous torus observable and whose lattice weights factor geometrically."
+  },
+  "evidence_layers": {
+    "ordinary_source": "The source derives the floor identity, axis telescope, and formal mode formula, while itself noting conditional summability.",
+    "finite_probe": "The source-pinned script checks sampled pointwise agreement, truncated telescope arithmetic, and modes through 320; it cannot establish the limiting summation theorem.",
+    "Lean": "No Lean theorem is available for this analytic object.",
+    "external_review": "Novelty Observatory compared the completion route with the classical Dirichlet--Jordan framework; no independent proof review is recorded."
+  },
+  "primary_sources": [
+    {
+      "id": "jordan_1881_fourier_series",
+      "title": "Sur la série de Fourier",
+      "author": "Camille Jordan",
+      "venue": "Comptes rendus hebdomadaires des séances de l'Académie des sciences 92 (1881), 228-230",
+      "exact_anchor": "volume 92, pp. 228-230",
+      "primary_text_url": "https://fr.wikisource.org/wiki/Page:Comptes_rendus_hebdomadaires_des_séances_de_l’Académie_des_sciences,_tome_092,_1881.djvu/228",
+      "primary_text_read": true,
+      "primary_text_status": "downloaded_wikisource_scan_page_read",
+      "local_source_scan": "annexes/jordan-1881-fourier-series/source-page-228.jpg",
+      "local_source_scan_sha256": "d32560e72a1d0e8de8330d7c72acf7a274e8c875578b9cef9b73f8972757e78e",
+      "local_source_scan_dimensions": "1920x2601 grayscale JPEG",
+      "source_reviewed_at": "2026-08-27",
+      "exact_locator": "Wikisource scan page 228, printed p. 228: definition of functions à oscillation limitée and propositions 1–4; pp. 228-230 remain the bibliographic scope of the note, while the locally downloaded scan binds page 228 only",
+      "supports": "Jordan's original note defines limited oscillation, records its decomposition as a difference of two finite nondecreasing functions, and states that Dirichlet's Fourier argument applies. This is a primary antecedent for the bounded-variation/Dirichlet convergence framework; the modern midpoint-at-jumps formulation is not asserted as an explicit sentence in the scanned page.",
+      "does_not_support": "It does not state the source-specific smooth-lattice value, the tensor-product rectangular interchange, the 17/2 axis correction, or any #269 arithmetic conclusion."
+    }
+  ],
+  "disconfirmation_search": {
+    "scope": "bounded primary-source comparison against Dirichlet--Jordan convergence, tensor-product Fourier limits, torus observables with jump strata, and reciprocal-Lambert value representations",
+    "result": "Jordan's bounded-variation midpoint theorem supports the convergence mechanism used by the authored proof, but no located source states this three-prime floor observable, the 17/2 correction, or the value-level packaging. The tensor step is treated as a standard-looking application, not a new Fourier theorem.",
+    "boundary": "Non-location supports source-specific packaging and a conservative no-priority posture only; it does not certify the authored interchange proof or imply a Diophantine/irrationality conclusion."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The reciprocal running height has an exact torus weight identity, the discontinuity axes have an exact 17/2 correction calculation, and individual formal Fourier modes factor into geometric series governed by logarithmic linear forms.",
+    "required_qualifiers": [
+      "the global rectangular symmetric identity is an authored ordinary proof pending independent analytic review",
+      "ambient torus coordinates do not imply full-torus orbit or frequency claims",
+      "finite partial sums are computational evidence only",
+      "no three-prime irrationality conclusion",
+      "no Lean or independent analytic review"
+    ],
+    "forbidden_wording": [
+      "absolute convergence of the mode coefficients or a new regularization theorem is proved",
+      "partial-sum convergence proves the representation",
+      "the representation proves irrationality or transcendence",
+      "the exact-integral-tail branch is excluded",
+      "this is a literature-first construction"
+    ]
+  },
+  "expert_review_support": {
+    "hard_step": "Review the uniform bounded-variation partial-sum bound, its tensor use under dominated convergence, and the pure-prime-axis/origin midpoint correction. The programme's hard step after that is a Diophantine consequence of the logarithmic modes.",
+    "natural_friction": "The calculated 17/2 correction and plausible numerical 1/M decay did not prove the identity; the new ordinary proof does. They remain finite replay rather than independent assurance.",
+    "evidence_separation": "Pointwise algebra, finite rectangular expansion, uniform bounded-variation domination, and the global symmetric identity are authored ordinary mathematics; numerical mode boxes are finite replay; classical antecedents are adjudicated, while independent proof review remains pending."
+  },
+  "digestion_verdict": {
+    "programme_level_canonical_mechanism_family": "three-prime logarithmic torus coordinates and Fourier-mode factorization",
+    "disposition": "admit_genuinely_distinct_coordinate mechanism with an ordinary proved global rectangular identity; consolidate all partial-sum evidence here and keep the Diophantine consequence visibly open",
+    "expert_attention_reason": "High architecture value and high overclaim risk from a clean correction constant plus persuasive finite convergence.",
+    "hard_step": "Independent review of tensor Dirichlet--Jordan domination and exact discontinuity-stratum bookkeeping, then a new Diophantine estimate from the logarithmic modes",
+    "prior_art_uncertainty": "classical completion low uncertainty; verbatim smooth-semigroup packaging medium uncertainty; no priority inference",
+    "open_boundary": "No Diophantine producer, exact-integral-tail exclusion, or #269 endpoint result follows from the completed ordinary identity",
+    "independent_comparator_interface_justified": false,
+    "paper_disposition": "headline/core mechanism",
+    "target_section": "The three-prime value: logarithmic torus coordinates and the analytic firewall",
+    "supersession_or_consolidation": "Replace scattered value-level torus and partial-sum narratives with one four-layer mechanism ledger; retain radix coding separately and subordinate every finite Fourier table."
+  },
+  "representative_reassessment_2026_08_24": {
+    "decision": "retain_as_distinct_analytic_paper_core_but_remove_programme_representative_role",
+    "new_representative": "mod_one_orbit_collision_rationality_criterion",
+    "reason": "The structural collision theorem states the universal rationality frontier with Lean-checked source support. This object instead asks for independent analytic review and a subsequent Diophantine consequence.",
+    "non_supersession": "The floor-torus identity, 17/2 correction, and authored rectangular symmetric Fourier proof remain one irreducible analytic mechanism.",
+    "paper_relation": "Cross-link from the structural-frontier section into a separate analytic-value section; do not merge their evidence classes or claim ceilings."
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_and_comparator_candidate",
+    "reason": "The global rectangular symmetric identity has an inspectable authored ordinary proof, pinned source parity, explicit symmetric-summation convention, classical attribution, finite-replay boundary, and adjacent arithmetic non-implications. It is eligible for public and Comparator visibility with those labels; Lean transport and independent analytic review are downstream assurance stages.",
+    "comparator_advisory": "A statement firewall may expose the corrected rectangular symmetric identity with authored-ordinary-proof status. It must retain the summation convention, 17/2 midpoint correction, absence of Lean and independent review, and the fact that no Diophantine or irrationality conclusion follows."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_269.md",
+    "section": "A literal two-dimensional analytic route",
+    "canonical_mechanism_family": "three-prime logarithmic torus coordinates and Fourier-mode factorization",
+    "relation": "Use one analytic-value subsection to consolidate the torus weight, 17/2 correction, formal modes, and all finite tables. Keep radix coding and the function-faithful observer boundary distinct; they are neighbouring symbolic and representation mechanisms, not additional value representations.",
+    "understanding_delta": "The downstream paper receives a four-layer proof ledger: exact coordinate, exact correction, formal modes, then one named analytic interchange theorem before any arithmetic application.",
+    "evidence_boundary": "The global rectangular symmetric identity has an authored ordinary proof; the M<=320 calculation is finite replay; there is no Lean theorem, independent review, full-torus dynamical claim, or irrationality consequence.",
+    "hard_step": "Verify the authored uniform-bound/dominated-convergence proof and then obtain a genuinely Diophantine estimate from its logarithmic modes.",
+    "meaningful_failed_route": "Promote numerical partial-sum decay or the correction telescope as if either alone were the summation proof; they are not.",
+    "open_remainder": "No Diophantine producer addressing the exact-integral-tail branch has been supplied; Erdős #269 remains open."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_analytic_review_or_source_generation_change",
+    "reentry_condition": "Re-enter only if the authored rectangular Fourier proof, its source generation, or the symmetric summation convention changes, or if an actual Diophantine estimate from the logarithmic modes is supplied.",
+    "do_not_redo": "Do not repeat finite M<=320 mode tables, the 17/2 algebra, or ambient-torus terminology checks; they are already consolidated and cannot establish the limiting identity or irrationality.",
+    "open_bottleneck": "Independent checking of the bounded-variation/dominated-convergence bookkeeping and a separate arithmetic producer excluding the exact-integral-tail branch remain open.",
+    "owner": "Analytic proof lane for the summation argument; #269 proof fleet for the Diophantine consequence; Novelty Observatory only for changed source generation or attribution."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "private mixed analytic derivation and finite computation",
+    "output_stage": "ordinary proof completion with an independent-review firewall",
+    "artifact": "erdos269_torus_fourier_value_representation",
+    "human_understanding_delta": "The programme now has a four-step proof rather than a numerical ansatz: finite mode algebra, one-dimensional bounded-variation bounds, dominated convergence, and exact midpoint correction.",
+    "verification_state": "Authored ordinary proof source and finite receipt are pinned; no Lean proof or independent analytic review is claimed.",
+    "publication_or_review_state": "Eligible now for status-tagged public theorem-card, paper, exhibition, and Comparator visibility; independent analytic review remains downstream and may correct or upgrade assurance.",
+    "canonicalization_state": "One object consolidates the value coordinate, correction, and proved rectangular Fourier identity instead of fragmenting them into numerical cards.",
+    "unresolved_downstream_bottleneck": "Independent review of the ordinary proof and a new Diophantine estimate from the logarithmic modes.",
+    "next_stage_owner": "Role 3 for claim-faithful status-tagged integration, analytic specialists for downstream review, then #269 arithmetic proof owners."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "torus_fourier_representation_of_the_value@analysis-90e3383a-completion-c8074e38-card-708a8a40",
+    "evidence_class": "Authored ordinary rectangular Fourier completion with exact pointwise algebra, exact midpoint correction, and finite mode replay; no Lean theorem or independent analytic review.",
+    "closest_known_result": "Jordan's primary note (Comptes rendus 92 (1881), p. 228, scan page 228; pp. 228-230) is the direct antecedent for limited-oscillation/BV Fourier convergence. Midpoint-at-jumps is retained only as the modern convention attached to that framework, not as a claim about an explicit sentence in Jordan's scanned page. Standard tensor/geometric-series manipulations remain the other nearest antecedent; no located source states this floor-defined three-prime observable or its 17/2 correction.",
+    "comparison_relation": "Jordan supplies the classical one-variable limited-oscillation/Dirichlet framework only. The rectangular tensor passage and floor/telescope packaging are source-specific compositions built on that framework; they are not presented as a new summation theorem, regularization, torus-dynamics theorem, or arithmetic consequence.",
+    "exact_delta": "The source binds one four-layer value mechanism: floor/telescope torus algebra, the 17/2 axis correction, geometric formal modes, and an authored rectangular symmetric interchange under an explicit convention.",
+    "disconfirming_evidence": "Finite M<=320 tables cannot justify the limit; ambient torus coordinates do not imply independence, density, unique ergodicity, product frequencies, or rank; no supplied logarithmic-form estimate excludes the exact-integral-tail branch.",
+    "confidence": {
+      "level": "high_for_algebra_and_source_parity_medium_for_ordinary_interchange_low_for_originality",
+      "basis": "Jordan's primary text was read at the exact page anchor; pointwise identities and source hashes are pinned; the authored tensor extension remains unreviewed and no priority claim is made."
+    },
+    "significance": "High architecture value as a supporting/core value-representation mechanism: it exposes the analytic gate without pretending to provide the #269 arithmetic producer.",
+    "claim_ceiling": "The reciprocal height has the exact torus weight and 17/2 correction, formal modes factor into geometric series, and the authored rectangular symmetric identity holds under its stated convention; no Lean, Diophantine, irrationality, or priority claim.",
+    "hard_step": "Check the uniform bounded-variation tensor bound, dominated-convergence passage, and pure-axis/origin midpoint bookkeeping.",
+    "open_boundary": "Independent proof review and a genuine Diophantine estimate excluding the exact-integral-tail branch remain open; #269 is not solved.",
+    "bounded_expert_review_act": "Audit the authored rectangular proof against Dirichlet--Jordan and tensor Fourier antecedents, including every jump-stratum convention.",
+    "reentry_trigger": "Reopen on a source/card/packet snapshot change, a changed summation convention or completion proof, or an actual logarithmic-mode Diophantine estimate.",
+    "source_generation_binding": {
+      "analysis_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "analytic_completion_commit": "c8074e387af78965592c65b63026c879b38ee930",
+      "analysis_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+      "analytic_completion_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+      "reviewer_card_sha256": "136765f06dd6257e45c43d413d552da5a635428b3c2dd80945d773fac184a066",
+      "parity_status": "authored analytic completion and finite replay pinned; no Lean transport or independent review"
+    },
+    "classification": {
+      "result_family": "three_prime_logarithmic_torus_fourier_value_representation",
+      "evidence_class": "authored_ordinary_fourier_completion_with_exact_pointwise_algebra_and_finite_mode_replay",
+      "closest_prior_art": "Jordan, Comptes rendus 92 (1881), pp. 228-230, especially p. 228 (primary scan read), for limited-oscillation/Dirichlet Fourier convergence; plus standard tensor/geometric-series Fourier manipulations. No located source states this floor-defined three-prime observable or its 17/2 correction.",
+      "comparison_relation": "Classical completion mechanism with source-specific floor/telescope packaging; no new summation theorem or arithmetic consequence is claimed.",
+      "novelty_confidence": "source_bound_packaging_with_classical_completion; no priority claim",
+      "significance_grade": "high_architecture_value_supporting_core",
+      "why_care": "It turns the value route into a four-layer object—exact torus algebra, exact midpoint correction, geometric formal modes, and one explicit analytic interchange gate—so finite Fourier decay cannot masquerade as a Diophantine proof.",
+      "hard_step": "Verify the uniform bounded-variation tensor bound, dominated-convergence passage, and pure-axis/origin midpoint bookkeeping under the declared rectangular symmetric convention.",
+      "natural_friction": "M<=320 mode tables and the 17/2 calculation are finite replay only; ambient torus coordinates do not imply rational independence, density, unique ergodicity, or rank.",
+      "disconfirming_evidence": "No supplied logarithmic-form estimate excludes the exact-integral-tail branch; no Lean theorem or independent analytic review is present.",
+      "confidence_ceiling": "High for pointwise algebra, source parity, and Jordan's limited-oscillation attribution; medium for the tensor antecedent match and ordinary interchange proof completeness; zero for any irrationality or priority claim.",
+      "bounded_expert_act": "Audit the authored bounded-variation/dominated-convergence proof and compare the exact rectangular identity with Jordan's p. 228 limited-oscillation framework and standard tensor Fourier antecedents; do not re-search Jordan unless the completion statement changes.",
+      "reentry_condition": "Re-enter if the analytic completion, summation convention, source generation, or an actual logarithmic-mode Diophantine estimate changes."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#269 three-prime logarithmic torus coordinates and Fourier-mode factorization",
+      "disposition": "retain_as_one_irreducible_analytic_value_mechanism_and_consolidate_finite_evidence",
+      "paper_disposition": "headline_core_mechanism_in_the_value_representation_section",
+      "supersession_relation": "Replace scattered torus, correction, and partial-sum narratives with this four-layer object; keep radix coding and finite-observer obstructions distinct.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "Status-tagged authored ordinary rectangular identity with explicit summation convention, 17/2 correction, finite-replay label, and no arithmetic upgrade.",
+      "expert_attention_reason": "The mechanism has high explanatory value and unusually high overclaim risk; one focused analytic check materially changes the reader's belief about what the #269 value route actually establishes."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "private_mixed_analytic_derivation_and_finite_computation",
+      "output_stage": "ordinary_proof_completion_with_claim_firewall_and_prior_art_context",
+      "artifact": "three-prime torus/Fourier value representation",
+      "human_understanding_delta": "Separates exact coordinate algebra, midpoint correction, formal modes, and the analytic interchange theorem before any arithmetic application.",
+      "verification_state": "Authored ordinary proof and finite receipt are source-pinned; no Lean proof or independent analytic review is claimed.",
+      "publication_or_review_state": "Status-tagged visibility is defensible; reviewer availability is not a release veto, and no irrationality or priority claim is made.",
+      "canonicalization_state": "One analytic-value mechanism consolidates all finite Fourier tables and correction computations.",
+      "unresolved_downstream_bottleneck": "Independent proof check and a Diophantine estimate excluding the exact-integral-tail branch.",
+      "next_stage_owner": "Role 3 for statement-faithful projection; analytic specialists for review; #269 arithmetic owners for the missing producer."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "committed_analysis_and_completion_snapshot_adjudicated; packet_overlay_excluded",
+    "bound_snapshot": {
+      "analysis_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "analysis_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+      "analytic_completion_commit": "c8074e387af78965592c65b63026c879b38ee930",
+      "analytic_completion_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "reviewer_card_commit": "708a8a40cac0abc5f01b93384dae4b966f407478",
+      "reviewer_card_sha256": "136765f06dd6257e45c43d413d552da5a635428b3c2dd80945d773fac184a066",
+      "source_result_id": "torus_fourier_representation_of_the_value"
+    },
+    "consumed_snapshot": {
+      "analysis_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "analytic_completion_commit": "c8074e387af78965592c65b63026c879b38ee930",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "reviewer_card_commit": "708a8a40cac0abc5f01b93384dae4b966f407478"
+    },
+    "excluded_overlay": {
+      "sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+      "reason": "uncommitted packet source-link additions are not silently assimilated"
+    },
+    "claim_guard": "The Fourier identity, 17/2 correction, and ordinary completion remain status-tagged; no overlay row can upgrade them to Lean-checked or arithmetic evidence.",
+    "reentry_trigger": "Rebind after the packet source-link additions land in a committed snapshot, or when the summation convention/completion proof changes."
+  }
+}

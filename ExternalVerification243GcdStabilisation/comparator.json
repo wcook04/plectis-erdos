@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243GcdStabilisation.Challenge",
+  "solution_module": "ExternalVerification243GcdStabilisation.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243GcdStabilisation.gcd_stabilises_and_reduces"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

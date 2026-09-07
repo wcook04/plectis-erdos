@@ -1,0 +1,57 @@
+{
+  "schema":"formal_math_prior_art_route_v0",
+  "route_id":"erdos68_nonterminal_factorial_square_lift_v0",
+  "problem_id":"erdos_68",
+  "target":"Classify the nonterminal factorial square-lift equivalence and its role in the #68 mechanism hierarchy.",
+  "purpose":"Separate standard first-order q-adic algebra from the source-specific quotient-balance producer.",
+  "status":"adjudicated_routine_q_adic_linearization_with_factorial_consumer",
+  "classification":{"novelty_class":"routine_first_order_q_adic_linearization_with_problem_specific_factorial_block_consumer","priority_claim":"none","nearest_prior_work":"The identity is the elementary mod-q² expansion of two factors congruent to one modulo q; no specialized novelty claim is warranted.","mathematical_interest":"Diagnostic rather than standalone: it identifies the exact extra event beyond repeated prime support.","reusable_scope":"Two-factor first-order lifting modulo q²."},
+  "primary_sources":[{"path":"formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean","sha256":"e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b","declarations":["pow_dvd_dilation_strictSuccessor_iff","sq_dvd_double_strictSuccessor_prime_iff"],"exact_source_locator":"Lines 56-91 define pow_dvd_dilation_strictSuccessor_iff; lines 167-197 define sq_dvd_double_strictSuccessor_prime_iff. These are the generic residue-slot and two-branch quotient-balance declarations.","supports":"Generic quotient-balance equivalence and the prime-square residue-slot specialization."},{"path":"formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean","sha256":"2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa","declarations":["sq_dvd_double_strictFacTop_factorialGapPrefix_iff","irrational_factorialGapSeries_of_cofinal_double_prime_branch_failures"],"exact_source_locator":"Lines 1425-1449 define sq_dvd_double_strictFacTop_factorialGapPrefix_iff; lines 1452-1467 define its prime specialization and the conditional cofinal branch-failure consumer. These are the factorial-gap source-specific declarations.","supports":"Factorial-gap specialization and the conditional irrationality consumer."},{"commit":"ebbaa3d809fcf2ba9e68228f3c0c2c36f3ebdc4f","supports":"Historical declaration-level public parity for the theorem bodies; retained as lineage, not current source authority."}],
+  "mechanism_comparison":{"repeated_support":"q divides both factorial gaps.","square_lift":"q additionally divides the sum of the two exact first-order quotients.","surviving_producer":"Control quotient balances on an infinite family of actual repeated hits."},
+  "claim_boundary":{"allowed_wording":"A repeated nonterminal factorial collision lifts to q² exactly when the earlier-factor and descending-block quotients cancel modulo q.","forbidden_wording":["Repeated q-hits automatically lift.","Quotient balances are equidistributed.","The theorem proves cofinal carries or #68."]},
+  "disconfirmation_search":{"scope":"No novelty search is needed for the elementary product expansion; attribution is deliberately limited to the source-specific factorial packaging.","reentry_condition":"Search p-adic lifting literature only if a higher-power or distribution theorem is proposed."},
+  "digestion_assessment":{"decision":"supporting lemma beneath factorial_gap_cofinal_carry_irrationality_criterion","expert_attention_reason":"prevents repeated mod-q support from being mistaken for mod-q² progress","evidence_class":"two Lean declarations with public parity","paper_disposition":"supporting lemma in Repeated prime support versus genuine square lifting","comparator_advisory":"one generic-plus-factorial statement firewall","open_boundary":"balance distribution, cofinal lifts, and #68 remain open"},
+  "landing_consumers":["docs/formal_math/reviewer_cards/erdos68_nonterminal_factorial_square_lift.card.json","Mathematics Refinery","Comparator/Public Role 3"],
+  "reviewer_attention_budget": {
+    "routine": "The mod-q² product expansion is elementary first-order q-adic linearization.",
+    "load_bearing": "A repeated q-hit lifts only when the two exact quotient terms cancel modulo q; repeated support alone is insufficient.",
+    "externally_sourced": "The generic quotient-balance pattern is standard local arithmetic; the factorial-block specialization is source-specific.",
+    "still_unverified": "No distribution or cofinal square-lift theorem is claimed; higher-power extensions would require a new source comparison.",
+    "expert_act": "Check the quotient-balance quantifiers and keep this as one supporting lemma beneath the cofinal-carry endpoint.",
+    "review_act": "Check the quotient-balance quantifiers and keep this as one supporting lemma beneath the cofinal-carry endpoint."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos68_nonterminal_factorial_square_lift@source-3286a15",
+    "evidence_class": "Two Lean-checked exact declarations with public-parity evidence; source-specific factorial consumer and no cofinal producer.",
+    "closest_known_result": "First-order lifting of factors congruent to one modulo q is standard q-adic algebra. The local value is the exact quotient-balance condition for the factorial-gap pair, not a new lifting theorem.",
+    "comparison_relation": "The result identifies the extra cancellation event needed for q² at a repeated nonterminal hit. It does not imply automatic lifting, equidistribution, cofinality, or irrationality.",
+    "exact_delta": "A route-boundary clarification: repeated prime support and genuine square lifting are distinct obligations.",
+    "disconfirming_evidence": "The route and source contain no distribution, infinite-family, or endpoint consumer beyond the two exact declarations; no priority search is warranted for the elementary algebra.",
+    "confidence": {
+      "level": "high_for_the_exact local equivalence and standard attribution; none_for a cofinal producer",
+      "basis": "Source hash and declaration scope are explicit, while the route records the missing balance-distribution step."
+    },
+    "significance": "Useful supporting lemma that prevents repeated finite q-hits from being misread as mod-q² progress; subordinate to the #68 cofinal-carry mechanism.",
+    "claim_ceiling": "State that a repeated nonterminal factorial collision lifts to q² exactly when the two first-order quotients cancel modulo q. Do not claim automatic lifts, quotient equidistribution, cofinal carries, irrationality, novelty, or a #68 solution.",
+    "hard_step": "Control quotient balances on an infinite family of actual repeated hits; that producer is absent.",
+    "open_boundary": "No independent Comparator interface or flagship slot; retain as a supporting lemma under factorial_gap_cofinal_carry_irrationality_criterion.",
+    "bounded_expert_review_act": "Verify the q² expansion and factorial quotient quantifiers, then confirm the no-automatic-lift boundary.",
+    "reentry_trigger": "Re-enter if a higher-power/distribution theorem or source-generation change lands.",
+    "source_generation_binding": {
+      "formal_source_commit": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+      "formal_source_sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849",
+      "historical_parity_commit": "ebbaa3d809fcf2ba9e68228f3c0c2c36f3ebdc4f",
+      "primary_source_anchors": ["First-order q-adic lifting of factors congruent to 1 modulo q", "Factorial-gap quotient-balance source declarations"],
+      "parity_status": "Current file hash is bound; the historical parity commit is retained as lineage only."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+      "formal_source_sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+    },
+    "claim_guard": "Exact local square-lift equivalence only; no balance distribution, cofinality, or irrationality.",
+    "reentry_trigger": "Re-enter on higher-power evidence or source drift."
+  }
+}

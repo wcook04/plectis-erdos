@@ -1,0 +1,258 @@
+% Source r6 block, retained for companion integration. Not a standalone document.
+\section{The centred integer state}\label{sec:state}
+
+The three maps defined next carry out the two steps announced at the end of
+Section~\ref{sec:problem}.  The first two clear denominators along the
+sequence, so that a rational reciprocal sum leaves a sequence of integers; the
+third subtracts from that integer the value it takes on Sylvester's sequence,
+leaving one number whose vanishing is the whole question.  All three are maps
+between integer tuples and carry no hypothesis of any kind.
+
+For $a,D,C\in\Z$ define
+\[
+ \den(a,D)=aD,
+ \quad
+ \tail(a,D,C)=aC-D,
+ \quad
+ \ctr(a,D,C)=D-(a-1)C ,
+\]
+the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{41}{nextDenState}{denominator
+update}, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{45}{nextTailState}{tail update},
+and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{49}{centeredState}{centred state}.
+Given a sequence $(a_n)$ of integers, whose terms we call the
+\emph{multipliers}, we write $D_{n+1}=\den(a_n,D_n)$ for the \emph{denominator
+state}, $C_{n+1}=\tail(a_n,D_n,C_n)$ for the \emph{tail state}, and
+$E_n=\ctr(a_n,D_n,C_n)$ for the \emph{centred state}, also called the
+\emph{error}.  The word \emph{centred} records what the third map does: it
+measures $D_n$ against $(a_n-1)C_n$, and $D_n=(a_n-1)C_n$ holds at every index
+on Sylvester's sequence (Example~\ref{ex:sylvester}), so $E$ is a deviation
+from that sequence rather than a size.  At an index where $E_n<0$ we write
+$e_n=-E_n>0$ and call it the \emph{magnitude} of the error there.
+
+\begin{proposition}[update law]\label{res:update}
+$\tail(a,D,C)=C-\ctr(a,D,C)$; that is, $C_{n+1}=C_n-E_n$.
+\end{proposition}
+
+\begin{proof}
+$C-\bigl(D-(a-1)C\bigr)=aC-D$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{57}{nextTailState_eq_sub_centered}{update
+law}.  The state therefore moves by exactly the error at each step, which is
+what makes the sign of $E$ decisive: where $E$ is positive the state falls,
+where $E$ is negative it rises, and where $E$ vanishes it is stationary.
+
+\begin{example}[the Sylvester orbit]\label{ex:sylvester}
+Take $a_n=2,3,7,43,1807,\ldots$ with $a_{n+1}=a_n^{2}-a_n+1$, and start the
+state at $D_0=C_0=1$.  The two updates give
+
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$n$ & $a_n$ & $D_n$ & $C_n$ & $E_n$\\
+\midrule
+$0$ & $2$ & $1$ & $1$ & $0$\\
+$1$ & $3$ & $2$ & $1$ & $0$\\
+$2$ & $7$ & $6$ & $1$ & $0$\\
+$3$ & $43$ & $42$ & $1$ & $0$\\
+$4$ & $1807$ & $1806$ & $1$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent and $D_n=a_n-1$ with $C_n=1$ at every index: if $D_n=a_n-1$ and
+$C_n=1$ then $C_{n+1}=a_n-(a_n-1)=1$ and $D_{n+1}=a_n(a_n-1)=a_{n+1}-1$.
+Hence $E_n=D_n-(a_n-1)C_n=0$ throughout and the tail state never moves, which
+is Proposition~\ref{res:update} in the stationary case.
+\end{example}
+
+\paragraph{The intended reading, which is not formalised.}
+Let $T_n=\sum_{k\ge n}1/a_k$ and suppose $T_0\in\Q$.  Put $D_0$ equal to a
+common denominator and $D_n=D_0a_0\cdots a_{n-1}$, and set $C_n=D_nT_n$.  Then
+$C_n\in\Z$ for every $n$, and from $T_n=1/a_n+T_{n+1}$ one gets
+$C_{n+1}=a_nC_n-D_n$, which is the tail update.  On Sylvester's sequence
+$T_n=1/(a_n-1)$ exactly, so $D_n=(a_n-1)C_n$ and $E_n=0$: the centred state
+measures deviation from the Sylvester tail identity, and it vanishes
+identically on the Sylvester orbit.
+
+None of this paragraph is formalised.  The Lean module contains no series, no
+rationality hypothesis, and no growth hypothesis; it proves identities and
+implications about the integer system above, and about its natural-number
+realisation, for which the bridging identities are the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1863}{natTail_eq_nextTailState}{tail
+realisation}, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1875}{natDen_eq_nextDenState}{denominator
+realisation}, and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1972}{natTail_eq_sub_centeredState}{signed
+update law}.  The identification with reciprocal tails motivates the
+definitions.  The formal development does not check that identification.
+
+\begin{proposition}[scale equivariance]\label{res:scale}
+For every $s,a,D,C\in\Z$,
+\[
+ \den(a,sD)=s\,\den(a,D),\qquad
+ \tail(a,sD,sC)=s\,\tail(a,D,C),
+\]
+\[
+ \ctr(a,sD,sC)=s\,\ctr(a,D,C).
+\]
+\end{proposition}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{65}{nextDenState_scale}{denominator
+equivariance}, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{70}{nextTailState_scale}{tail
+equivariance}, and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{75}{centeredState_scale}{centred
+equivariance}.  The system depends only on the ray through $(D,C)$.  This is
+used twice below: once to normalise the finite search of
+Appendix~\ref{app:residue}, and once, in Theorem~\ref{res:periodic}, as the
+induction step that removes common scale.
+
+\section{The defect identity and its two consequences}\label{sec:defect}
+
+Section~\ref{sec:state} connects the Sylvester recurrence to the error in one
+direction only: on Sylvester's sequence the error vanishes.  The converse is
+what the problem needs, and it comes from a single identity, which expresses
+the deviation of $a_{n+1}$
+from the Sylvester successor, multiplied by the tail state $C_{n+1}$, as a
+combination of the errors at $n$ and at $n+1$, the first weighted by
+$a_n^{2}$.  Its two consequences are
+Theorem~\ref{res:eventual}, in which an eventually vanishing error forces the
+recurrence provided the tail state is eventually nonzero, and
+Theorem~\ref{res:absorb}, in which, under strict centring (the condition
+$|E_n|<C_n$ at every index), one vanishing error propagates to every later
+index.
+
+Write $\defect(a,a')=a'-\sylnext(a)$ for the deviation of the next term from
+the Sylvester successor, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{53}{sylvesterDefect}{Sylvester
+defect}.
+
+\begin{theorem}[defect identity]\label{res:defect}
+For all $a,a',D,C\in\Z$,
+\[
+ \defect(a,a')\cdot\tail(a,D,C)
+ =a^{2}\,\ctr(a,D,C)-\ctr\bigl(a',\den(a,D),\tail(a,D,C)\bigr),
+\]
+that is, $\Delta_n\,C_{n+1}=a_n^{2}E_n-E_{n+1}$.
+\end{theorem}
+
+\begin{proof}
+A direct expansion: both sides equal
+$a'aC-a'D-a^{3}C+a^{2}D+a^{2}C-aD-aC+D$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1769}{sylvesterDefect_mul_nextTailState}{defect
+identity}.  It is a polynomial identity in four indeterminates, with no
+hypothesis of any kind, and it carries the whole argument twice over: once for
+rigidity, and once for absorption.
+
+\begin{example}[one defect and the error it creates]\label{ex:defect}
+Continue Example~\ref{ex:sylvester} but replace $a_3=43$ by $a_3=44$.  The
+states $D_3=42$ and $C_3=1$ are unchanged, since they depend only on
+$a_0,a_1,a_2$, and $E_2=0$ still.  The defect is
+$\Delta_2=a_3-\sylnext(a_2)=44-43=1$, and
+$E_3=D_3-(a_3-1)C_3=42-43=-1$, so the identity reads
+\[
+ \Delta_2C_3=1\cdot1=1=49\cdot0-(-1)=a_2^{2}E_2-E_3 .
+\]
+By Proposition~\ref{res:update} the tail state then rises, $C_4=C_3-E_3=2$.  A
+single unit of defect at one index has produced a negative error of magnitude
+$1$ at the next, and the state has started to climb.
+\end{example}
+
+\begin{theorem}[two vanishing errors force the step]\label{res:step}
+Let $a,a',D,C\in\Z$ with $\tail(a,D,C)\ne0$.  If
+$\ctr(a,D,C)=0$ and $\ctr\bigl(a',\den(a,D),\tail(a,D,C)\bigr)=0$, then
+$a'=\sylnext(a)$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{res:defect} the product $\defect(a,a')\cdot\tail(a,D,C)$ is
+zero, and the second factor is nonzero by hypothesis.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1781}{sylvesterNext_eq_of_centered_zero}{local
+rigidity step}.  The hypothesis $C_{n+1}\ne0$ is not removable: at $C_{n+1}=0$
+the identity gives no information about $a'$.
+
+\begin{theorem}[sequence form]\label{res:eventual}
+Let $a,D,C:\N\to\Z$ satisfy $D_{n+1}=\den(a_n,D_n)$ and
+$C_{n+1}=\tail(a_n,D_n,C_n)$.  If $E_n=0$ for all sufficiently large $n$ and
+$C_{n+1}\ne0$ for all sufficiently large $n$, then $a_{n+1}=a_n^{2}-a_n+1$ for
+all sufficiently large $n$.
+\end{theorem}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1799}{sylvesterNext_eventually_of_centered_zero}{eventual
+Sylvester recurrence}.  The proof is routine: take the larger of the two
+thresholds and apply Theorem~\ref{res:step} at each later index.  Every later
+section is directed at the hypothesis of this theorem, that is, at forcing $E$
+to vanish eventually.
+
+The defect identity has a second consequence, which is what makes a single
+vanishing error worth having.
+
+\begin{theorem}[zero is absorbing]\label{res:absorb}
+Let $a,C,D:\N\to\N$ be an exact natural orbit, so
+$C_{n+1}+D_n=a_nC_n$ and $D_{n+1}=a_nD_n$, and let
+$E_n=\ctr(a_n,D_n,C_n)$.  Suppose the centring is strict, $|E_n|<C_n$ for
+every $n$.  If $E_n=0$ then $E_{n+1}=0$.
+\end{theorem}
+
+\begin{proof}
+Putting $E_n=0$ in Theorem~\ref{res:defect} gives
+$\Delta_n C_{n+1}=-E_{n+1}$, so $C_{n+1}$ divides $E_{n+1}$.  A multiple of
+$C_{n+1}$ of absolute value smaller than $C_{n+1}$ is zero, and
+$|E_{n+1}|<C_{n+1}$ by hypothesis.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2221}{centeredState_zero_absorbing}{absorption
+of a vanishing centred state}, with the companion
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2248}{eventually_nonzero_of_zero_absorbing}{contrapositive
+along a tail}: if zero is absorbing beyond some index and $E$ does not vanish
+eventually, then $E$ is nowhere zero beyond that index.
+
+Absorption changes the shape of the problem.  Either $E$ hits zero once and
+stays there, or it is never zero.  Sections~\ref{sec:constant}
+and~\ref{sec:periodic} address the special all-negative case only.  The
+mixed-sign analysis
+in Sections~\ref{sec:bounded} and~\ref{sec:mass} instead separates cofinally
+negative errors from an eventually positive tail.
+
+\section{Descent when the error is nonnegative}\label{sec:descent}
+
+The hypothesis of the theorem below is the update law of
+Proposition~\ref{res:update} read inside $\N$: the error is nonnegative at
+every index, so the tail state never rises.  This is the easy case, and it is
+settled in three lines.
+
+\begin{theorem}[descent]\label{res:descent}
+Let $C,E:\N\to\N$ satisfy $C_{n+1}+E_n=C_n$ for every $n$.  Then $E_n=0$ for
+all sufficiently large $n$.
+\end{theorem}
+
+\begin{proof}
+A one-line descent.  The relation forces $C_{n+1}\le C_n$, so $C$ is a nonincreasing sequence of
+natural numbers and is eventually equal to its minimum; beyond that index
+$C_{n+1}=C_n$, and the relation gives $E_n=0$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1837}{centeredState_eventually_zero}{stabilisation
+of the nonnegative error}, on the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1819}{antitone_nat_eventually_constant}{eventual
+constancy of a nonincreasing sequence}.
+
+The hypothesis is exactly one-sidedness: $C$ and $E$ take values in $\N$.  If
+$E_n<0$ at infinitely many indices then $C$ rises there, nothing descends, and
+the argument is unavailable.  That is the whole difficulty, and the rest of
+this note is directed at it.

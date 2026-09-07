@@ -1,0 +1,30 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "result_id": "power_mean_carrier_attachment_no_go",
+  "problem_id": "erdos_1041",
+  "input_stage": "exact_power_mean_cover_lattice_and_root_attachment_probe",
+  "output_stage": "exact_mechanism_elimination_with_lean_source_pending_validation",
+  "artifact": [
+    "ErdosProblems/Erdos1041/BarycentricEnvelope.md#1b-exact-attachment-no-go-at-the-regular-quartic",
+    "ErdosProblems/Erdos1041/PowerMeanCarrierAttachmentNoGo.lean"
+  ],
+  "human_understanding_delta": "The fixed-weight p=1 carrier, although the largest member of the exact power-mean lattice, fails to recognize a genuinely safe root-to-origin arm on the regular quartic. Convex duality reduces common-carrier existence to a one-parameter product; its value at t=1/2 already exceeds one by an exact radical and rational margin.",
+  "verification_state": "Ordinary proof establishes the minimax formula and its carrier interpretation. Lean source formalizes the strict radical/rational obstruction and radial-arm scalar strictness; focused validation returned exit 75 because free disk was below the build firewall floor, so Lean authority remains pending rather than failed. An independent exact SymPy/Fraction replay checks the product identity and margin.",
+  "publication_or_review_state": "private authoring checkpoint; no external specialist review",
+  "canonicalization_state": "The no-go is housed beside the power-mean lattice it limits; no parallel carrier mechanism is created.",
+  "unresolved_downstream_bottleneck": "COVER remains true on the witness. A successful route must permit carrier switching with path control, prove COVER directly, or use combined charge/FP-GM.",
+  "next_stage_owner": "Mathematical Closure Engine: rotate to a structurally distinct target-deciding route.",
+  "paper_assimilation": {
+    "paper": "private Erdős 1041 research corpus",
+    "section": "correlated convex carriers and COVER",
+    "canonical_mechanism_family": "power-mean carrier attachment",
+    "relation": "exact no-go for a sufficient mechanism; parent theorem untouched",
+    "understanding_delta": "Separates exact pointwise carrier coverage from the root-attachment geometry needed by COVER.",
+    "evidence_boundary": "ordinary convex duality plus exact replay; Lean scalar kernel written with focused validation deferred by exit 75 low-disk firewall",
+    "hard_step": "control a path while carrier weights switch; one fixed carrier is impossible even at equality",
+    "meaningful_failed_route": "fixed p=1 root attachment along the first-merge arm",
+    "open_remainder": "switching-carrier control, COVER, combined charge, FP-GM, and unrestricted Erdős 1041"
+  },
+  "tool_disclosure": "Finite first-merge scans selected the regular-quartic obstruction. The landed counterexample is exact and does not rely on floating-point evidence.",
+  "claim_boundary": "Proved: no fixed p=1 carrier at level one contains the origin and a root for the radius-99/100 regular quartic, while the actual radial arm is safe and shorter than one. Not proved or refuted: switching-carrier paths, COVER, or Erdős 1041."
+}

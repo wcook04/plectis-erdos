@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251ExplicitRemainder.Challenge",
+  "solution_module": "ExternalVerification251ExplicitRemainder.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251ExplicitRemainder.explicit_remainder_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

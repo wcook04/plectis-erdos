@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269ActualShellOrbit.Challenge",
+  "solution_module": "ExternalVerification269ActualShellOrbit.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

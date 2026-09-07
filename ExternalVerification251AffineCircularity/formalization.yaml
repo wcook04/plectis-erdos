@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #251: signed windows and affine circularity"
+  description: >-
+    Exact signed-window classification and two recurrence-level equivalences
+    showing that affine and fixed-lattice escape tests are circular.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251AffineCircularity/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251AffineCircularity/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_deferred_typed_low_disk_exit_75"
+  research_interest_status: "research_note_grade_exact_strategy_elimination"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "focused Lean and axiom checks were deferred by the 17.18 GB disk firewall at 5.76 GB free"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11B83", "11J72"]
+
+sources:
+  - title: "Signed windows and affine circularity for dyadic tail recurrences"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #251"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/251"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Three compared theorems give the exact signed local normal form and two
+    circularity equivalences. No actual-prime-gap producer is claimed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "deferred_typed_low_disk_exit_75"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification251AffineCircularity.adjacent_small_mismatch_iff_signed_two_window"
+      file: "ExternalVerification251AffineCircularity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251AffineCircularity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos251/AffineShiftEscape.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact local normal form"
+      boundary: "Does not prove cofinal occurrence for actual prime gaps."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral"
+      file: "ExternalVerification251AffineCircularity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251AffineCircularity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos251/AffineCylinderCollapse.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact circularity equivalence"
+      boundary: "The affine escape test is not an independent prime-theoretic producer."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+      file: "ExternalVerification251AffineCircularity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251AffineCircularity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos251/AffineCylinderCollapse.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact fixed-lattice circularity equivalence"
+      boundary: "Requires the exact terminal bound and dyadic-domination hypotheses."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The challenge reproduces the rational recurrence, parity, affine-cylinder,
+    terminal-bound, dyadic-domination, and cofinal quantifiers exactly.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Exact hypotheses and the open prime-specific boundary were reviewed."
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification251AffineCircularity"
+  statements:
+    - source: "ErdosProblems.Erdos251.adjacent_small_mismatch_iff_signed_two_window"
+      lean: "Erdos249257.ExternalVerification251AffineCircularity.adjacent_small_mismatch_iff_signed_two_window"
+      module: "ExternalVerification251AffineCircularity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral"
+      lean: "Erdos249257.ExternalVerification251AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral"
+      module: "ExternalVerification251AffineCircularity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+      lean: "Erdos249257.ExternalVerification251AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+      module: "ExternalVerification251AffineCircularity/Challenge.lean"
+      status: "exact-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

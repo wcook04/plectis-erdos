@@ -1,0 +1,71 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #251: a finite-truncation escape criterion for the prime-gap dyadic series"
+  description: >-
+    A cofinal supply of finite prime-gap blocks whose signed dyadic window lies farther
+    from the integers than an explicit majorant tail mass forces every fixed positive shift
+    of the complete real prime-gap tail to be non-integral cofinally, and hence forces the
+    prime dyadic series to be irrational. The omitted part of each shift is identified
+    exactly as the later complete shift scaled by a power of two rather than estimated away,
+    and summability of the majorant remainder is required only at the configurations the
+    supply names. The readers are analytic number theorists working on irrationality of
+    prime-indexed dyadic series. The supply hypothesis is not proved for the actual prime
+    gaps and is exactly the open input, so this is a conditional criterion and it does not
+    settle Erdős Problem 251.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "prepared_local_only"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251FiniteTruncationEscape/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251FiniteTruncationEscape/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "no_comparator_or_runner_replay_recorded"
+  submission_authorization: "not_authorised; prepared locally by the r7 assimilation worker"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "no Comparator or NanoDa replay has been recorded on a supported runner"
+    - "the lakefile library entry for this directory is added by the parent, not by this worker"
+  note: >-
+    Prepared during batch erdos_paper_complete_lean_r7_20260907. No local
+    artifact is represented as a Palomar verdict or registry entry, and no
+    submission has been made.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11N05", "68V20"]
+
+sources:
+  - title: "Erdős Problem Notes: Problem 251"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #251"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/251"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering and open status.
+      Nothing here is attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"

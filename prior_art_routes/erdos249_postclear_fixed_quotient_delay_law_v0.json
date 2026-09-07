@@ -1,0 +1,189 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos249_postclear_fixed_quotient_delay_law",
+  "source_result_ids": [
+    "post_clear_delay_grows_like_log2_c",
+    "canonical_residue_delay_four_and_five_no_go",
+    "supply_delay_two_parameter_law_and_diophantine_translation",
+    "dyadic_family_denominator_exclusion_with_margin"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_consolidated_delay_cap_retirement_two_parameter_translation_and_finite_denominator_screen",
+  "problem_id": "erdos_249",
+  "purpose": "Classify the delay scan as finite counterevidence against a fixed-cap research programme, not an asymptotic theorem or independent irrationality mechanism.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos249_postclear_fixed_quotient_delay_law.card.json",
+    "source_result_ids": [
+      "post_clear_delay_grows_like_log2_c",
+      "canonical_residue_delay_four_and_five_no_go",
+      "supply_delay_two_parameter_law_and_diophantine_translation",
+      "dyadic_family_denominator_exclusion_with_margin"
+    ],
+    "receipt": "state/formal_math/probes/erdos249_fixed_quotient_delay_receipt.json",
+    "probe": "formal_math/probes/erdos249_fixed_quotient_delay_law.py"
+  },
+  "classification": {
+    "theorem_class": "none_finite_exact_recurrence_scan_and_counterexample_to_declared_caps",
+    "novelty_class": "source_specific_experimental_diagnosis_and_route_retirement_no_priority_claim",
+    "evidence_class": "exact_bounded_computation_with_replayable_witnesses",
+    "recommended_terminology": "post-clear fixed-quotient delay scan",
+    "acceptable_alias": "fixed-cap retirement certificate",
+    "attribution": "Attribute Erdős Problem 249 to Erdős--Graham. Attribute only the recurrence coordinate, finite scan, and exact witnesses to the local computation. Do not attach theorem attribution to the observed logarithmic profile.",
+    "mathematical_interest": "Low as standalone mathematics, high as research steering: it distinguishes a geometrically automatic phase from the informative trap and retires repeated searches for small universal caps.",
+    "reusable_scope": "Experimental audits of affine modular recurrences where a target window initially covers the full residue space and a fixed local state can persist after that automatic phase.",
+    "why_it_matters": "It saves expert and compute attention by replacing successive failed constants with the correct asymptotic question, while recording an exact counterexample to every cap at most 17."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_graham_1980_old_new_problems",
+      "title": "Old and New Problems and Results in Combinatorial Number Theory",
+      "authors": ["Paul Erdős", "Ronald L. Graham"],
+      "venue": "L'Enseignement Mathématique, Monographie 28 (1980)",
+      "exact_anchor": "Page 61 states the irrationality problem for the binary totient series.",
+      "supports": "Original problem attribution and the universal endpoint question.",
+      "does_not_support": "The fixed-quotient recurrence, delay scan, or logarithmic hypothesis."
+    },
+    {
+      "id": "erdos_problems_249_registry",
+      "title": "Erdős Problem 249",
+      "author": "Erdős Problems database contributors",
+      "url": "https://www.erdosproblems.com/249",
+      "exact_anchor": "Current open-status page, citing ErGr80 p. 61 and Er88c p. 102.",
+      "supports": "Current open-status and source locator only.",
+      "does_not_support": "Novelty, priority, or the finite delay mechanism."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The probe and witnesses are exact finite computation; the expert question is whether a replacement invariant survives the automatic full-residue phase.",
+    "slow_down_at": "Do not promote the observed logarithmic profile to an asymptotic law or infer cofinal supply from cap failures.",
+    "automation_can_establish": [
+      "Probe replay and exact witness semantics",
+      "The finite cap exclusions and source/card parity"
+    ],
+    "human_judgment_required": [
+      "Whether the two-parameter delay coordinate is the right successor invariant",
+      "Whether a future theorem-level cofinal replacement exists"
+    ],
+    "review_act": "Replay one rejected cap and verify the post-clear quantifiers, then redirect attention to a cofinal replacement invariant rather than another finite cap."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Erdos Problem 249 totient binary irrationality",
+      "fixed quotient delay totient dyadic recurrence",
+      "totient series modular trapping logarithmic delay"
+    ],
+    "result": "The search located the original problem route and current open-status record, but no named antecedent for the source-specific post-clear delay statistic or its observed logarithmic profile.",
+    "boundary": "Non-location supplies no novelty inference; the object is finite experimental diagnosis."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Exact scans falsify the pursued fixed post-clear caps through 17, measure a phi(v)-scaled admissible-step delay law over eight odd multipliers, and directly exclude a large finite dyadic denominator family with explicit margin; every asymptotic or universal residue-gap conclusion remains open.",
+    "forbidden_wording": [
+      "Post-clear delay is unbounded.",
+      "Every delay is O(log c).",
+      "No universal cap exists.",
+      "The finite scan proves terminal anti-locking.",
+      "This advances the irrationality endpoint of Erdős Problem 249."
+    ]
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "canonical Mersenne residue-gap endpoint with subordinate lock and delay route diagnostics",
+    "disposition": "route-killing failure/boundary; subordinate beneath canonical_mersenne_residue_gap_normal_form",
+    "consolidation_relation": "One card owns all fixed-cap failures, the post-clear definition, the two-parameter admissible-step translation, and finite dyadic-family screens. Future finite records update this evidence stack rather than creating new theorem cards.",
+    "paper_disposition": "route-killing failure/boundary",
+    "paper_target_section": "Why fixed delay caps are the wrong invariant",
+    "absolute_frontier_shortlist_decision": "do not admit; canonical_mersenne_residue_gap_normal_form remains the #249 representative and flagship",
+    "comparator_advisory": "No independent proposition interface. The finite witness belongs in reproducible computation evidence and route-history exposition."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos249_postclear_fixed_quotient_delay_law@probe-7932b706-receipt-a0cce367-card-f50bd3cc",
+    "source_version_binding": {
+      "probe": {
+        "path": "formal_math/probes/erdos249_fixed_quotient_delay_law.py",
+        "commit": "7932b7062b2aca0c5e0d577787d0e41fc38eb9b6",
+        "sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247"
+      },
+      "receipt": {
+        "path": "state/formal_math/probes/erdos249_fixed_quotient_delay_receipt.json",
+        "commit": "a0cce367759d99c3cd66a46f216038630798e88b",
+        "sha256": "f18cadb0882faf838ab62efa230bca277fd598e98f69e06c9cbaf8e82540c828"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos249_postclear_fixed_quotient_delay_law.card.json",
+        "commit": "f50bd3cc92308330410720f80dfc8f28c64fdcb6",
+        "sha256": "afd078944160008e8d3a58eb1585ca117570234369bd8e6c5b314fbb892df3f8"
+      },
+      "parity_status": "probe, receipt, and card are source-current for this bounded computation; no theorem beyond the recorded witnesses is inferred"
+    },
+    "evidence_class": "Exact bounded computation with replayable witnesses; no universal asymptotic theorem.",
+    "prior_art": "Finite affine-modular recurrence scans, cycle detection, and fixed-cap counterexamples are standard computational techniques; Erdős–Graham supplies the problem attribution, not the delay statistic.",
+    "closest_known_result": "The original Erdős–Graham binary totient problem and standard finite recurrence/cycle audits; no located antecedent for this post-clear delay coordinate.",
+    "comparison_relation": "The scan is a route-retirement diagnostic: it separates the automatic full-residue phase from the informative trap and refutes declared fixed caps without proving a logarithmic or cofinal law.",
+    "exact_delta": "The local computation records exact counterexamples through cap 17, a two-parameter admissible-step translation, and a finite dyadic denominator screen; it contributes no asymptotic theorem.",
+    "disconfirming_evidence": [
+      "The target window initially covers the full residue space, so early success is automatic.",
+      "Finite cap failures do not imply unbounded delay, terminal anti-locking, or cofinal supply.",
+      "The observed logarithmic profile is not proved and cannot carry an irrationality conclusion."
+    ],
+    "confidence_ceiling": "High for the replayable finite witnesses and route-retirement conclusion; low for any asymptotic, cofinal, denominator, or priority claim.",
+    "classification": {
+      "result_family": "post_clear_fixed_quotient_delay_diagnostics",
+      "evidence_class": "exact bounded computation with replayable witnesses and no universal theorem",
+      "closest_prior_art": "Finite affine-modular recurrence scans, cycle detection, and fixed-cap counterexamples are standard computational techniques. The local post-clear coordinate and its witness family are source-specific diagnostics, not a new asymptotic law.",
+      "comparison_relation": "The scan sharpens the programme's route map by retiring fixed delay caps and separating the automatic full-residue phase from the informative trap. It does not establish the observed logarithmic profile as a theorem.",
+      "novelty_confidence": "high for the exact finite witnesses and route-retirement conclusion; low for any asymptotic or priority claim",
+      "significance_grade": "high_steering_value_low_standalone_novelty",
+      "why_care": "It prevents repeated searches for constants that the exact witnesses already rule out and redirects effort toward the correct two-parameter supply/delay invariant.",
+      "hard_step": "Find a cofinal, source-backed invariant after the automatic phase; the finite scan cannot supply that asymptotic input.",
+      "natural_friction": "The observed delay growth and cap failures are finite evidence only; they do not imply cofinal delay, irrationality, or a new denominator theorem.",
+      "disconfirming_evidence": "The exact witnesses refute every tested cap at most 17, while the target window initially covers the full residue space; this undercuts fixed-cap routes rather than the #249 endpoint."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The replayable computation exhibits the automatic post-clear phase and exact counterexamples to the declared fixed caps, supporting retirement of that route and preservation of the two-parameter delay law as a diagnostic question.",
+      "rejected_stronger": [
+        "a proved logarithmic delay asymptotic",
+        "a universal post-clear delay lower bound",
+        "a denominator-exclusion or irrationality theorem",
+        "a cofinal supply result for Erdős #249",
+        "a novelty or priority claim"
+      ]
+    },
+    "significance_assessment": {
+      "grade": "high_steering_value_low_standalone_novelty",
+      "why_care": "It prevents repeated searches for constants already refuted by exact witnesses and redirects the programme toward a post-automatic-phase invariant.",
+      "mechanism_family": "finite fixed-cap diagnostics for affine modular residue-gap recurrences",
+      "expert_attention_reason": "Review time should go to identifying a cofinal replacement invariant, not enlarging another finite cap scan."
+    },
+    "hard_step": "Find a cofinal, source-backed invariant after the automatic phase; the finite scan cannot supply that asymptotic input.",
+    "open_boundary": "No unbounded-delay theorem, universal residue-gap supply, denominator exclusion, or Erdős #249 endpoint follows.",
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "canonical Mersenne residue-gap endpoint with subordinate lock and delay diagnostics",
+      "disposition": "retire the fixed-cap route and consolidate its witnesses beneath canonical_mersenne_residue_gap_normal_form; do not create a parallel theorem or Comparator proposition",
+      "paper_disposition": "route-killing failure/boundary in 'Why fixed delay caps are the wrong invariant'",
+      "supersession_or_consolidation": "Keep the probe, receipt, and finite witness family as one reproducible computation section; future finite updates extend this evidence stack rather than adding cards.",
+      "expert_attention_reason": "The useful expert act is deciding whether a proposed replacement invariant really survives the automatic phase, not rechecking another fixed constant.",
+      "open_boundary": "The universal strict Mersenne residue-gap supply and Erdős #249 remain open.",
+      "independent_comparator_interface_justified": false
+    },
+    "bounded_expert_act": "Replay the probe, inspect the exact witness semantics, and verify that each rejected cap is stated with the same post-clear quantifiers; then test any replacement invariant against the automatic phase.",
+    "reentry_trigger": "Re-enter only if the probe/receipt/card generation changes or a theorem-level cofinal replacement invariant is supplied."
+  },
+  "adjudication_currentness": {
+    "status": "probe_receipt_card_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "probe_commit": "7932b7062b2aca0c5e0d577787d0e41fc38eb9b6",
+      "probe_sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247",
+      "receipt_commit": "a0cce367759d99c3cd66a46f216038630798e88b",
+      "receipt_sha256": "f18cadb0882faf838ab62efa230bca277fd598e98f69e06c9cbaf8e82540c828",
+      "reviewer_card_commit": "f50bd3cc92308330410720f80dfc8f28c64fdcb6",
+      "reviewer_card_sha256": "afd078944160008e8d3a58eb1585ca117570234369bd8e6c5b314fbb892df3f8",
+      "source_result_ids": [
+        "post_clear_delay_grows_like_log2_c",
+        "canonical_residue_delay_four_and_five_no_go",
+        "supply_delay_two_parameter_law_and_diophantine_translation",
+        "dyadic_family_denominator_exclusion_with_margin"
+      ]
+    },
+    "claim_guard": "Only the exact bounded cap exclusions, post-clear diagnostic, and finite denominator screen are admitted; no asymptotic delay, cofinal supply, denominator theorem, or #249 endpoint claim.",
+    "reentry_trigger": "Re-enter when the probe, receipt, card, or a theorem-level cofinal replacement invariant changes."
+  }
+}

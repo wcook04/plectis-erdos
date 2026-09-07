@@ -792,30 +792,36 @@ theorem no_periodicNegative_orbit
 
 /-- An eventually periodic negative-magnitude tail is impossible in the same
 natural regime: shift to the first periodic index and apply
-`no_periodicNegative_orbit`. -/
+`no_periodicNegative_orbit`.
+
+Every hypothesis is imposed only from the offset `N` onwards.  The multiplier
+bound, the denominator recurrence, the numerator recurrence and the shape
+equation are consumed by the proof only at indices `N + n`, so restricting them
+to the tail costs nothing and matches the target object, whose product-cleared
+recurrence holds only from the clearing index onwards. -/
 theorem no_eventuallyPeriodicNegative_orbit
     (a D C e : ℕ → ℕ) (N h M : ℕ)
     (hh : 0 < h)
     (hM : 0 < M)
-    (ha : ∀ n, 2 ≤ a n)
+    (ha : ∀ n, N ≤ n → 2 ≤ a n)
     (hepos : ∀ n, 0 < e (N + n))
     (helt : ∀ n, e (N + n) < a (N + n))
-    (hD : ∀ n, D (n + 1) = a n * D n)
-    (hC : ∀ n, C (n + 1) = C n + e n)
-    (hshape : ∀ n, D n + e n = (a n - 1) * C n)
+    (hD : ∀ n, N ≤ n → D (n + 1) = a n * D n)
+    (hC : ∀ n, N ≤ n → C (n + 1) = C n + e n)
+    (hshape : ∀ n, N ≤ n → D n + e n = (a n - 1) * C n)
     (hperiod : ∀ n, e (N + n + h) = e (N + n))
     (hphase : ∀ n, C (N + n + h) = C (N + n) + M) :
     False := by
   apply no_periodicNegative_orbit
     (fun n ↦ a (N + n)) (fun n ↦ D (N + n))
     (fun n ↦ C (N + n)) (fun n ↦ e (N + n)) h M
-    hh hM (fun n ↦ ha (N + n)) hepos helt
+    hh hM (fun n ↦ ha (N + n) (Nat.le_add_right N n)) hepos helt
   · intro n
-    simpa only [Nat.add_assoc] using hD (N + n)
+    simpa only [Nat.add_assoc] using hD (N + n) (Nat.le_add_right N n)
   · intro n
-    simpa only [Nat.add_assoc] using hC (N + n)
+    simpa only [Nat.add_assoc] using hC (N + n) (Nat.le_add_right N n)
   · intro n
-    exact hshape (N + n)
+    exact hshape (N + n) (Nat.le_add_right N n)
   · intro n
     simpa only [Nat.add_assoc] using hperiod n
   · intro n
@@ -1879,94 +1885,6 @@ theorem natDen_eq_nextDenState
   have hCast := congrArg (fun x : ℕ ↦ (x : ℤ)) (hD n)
   simpa only [Nat.cast_mul, nextDenState] using hCast
 
-/-! ## Realizing an exact tail as a reciprocal series
-
-The two natural recurrences also recover the reciprocal series itself.  After
-division by the denominator state, one step removes exactly `1 / aₙ` from the
-tail ratio.  Iteration gives a finite telescoping identity, and convergence of
-the remaining ratio to zero identifies the infinite sum.
-
-These statements construct no orbit and supply no growth or centering
-hypothesis.  In particular, they do not exclude the unbounded negative branch
-and do not prove irrationality or resolve Erdős #243.
--/
-
-/-- The real ratio represented by the natural tail state. -/
-noncomputable def tailRatio (C D : ℕ → ℕ) (n : ℕ) : ℝ :=
-  C n / D n
-
-/-- One exact tail step removes the reciprocal term `1 / aₙ`. -/
-theorem tailRatio_eq_reciprocal_add_next
-    (a C D : ℕ → ℕ)
-    (ha : ∀ n, 0 < a n)
-    (hDpos : ∀ n, 0 < D n)
-    (hC : ∀ n, C (n + 1) + D n = a n * C n)
-    (hD : ∀ n, D (n + 1) = a n * D n)
-    (n : ℕ) :
-    tailRatio C D n =
-      1 / (a n : ℝ) + tailRatio C D (n + 1) := by
-  have ha_ne : (a n : ℝ) ≠ 0 := by
-    exact_mod_cast (Nat.ne_of_gt (ha n))
-  have hD_ne : (D n : ℝ) ≠ 0 := by
-    exact_mod_cast (Nat.ne_of_gt (hDpos n))
-  have hC_real :
-      (C (n + 1) : ℝ) + D n = a n * C n := by
-    exact_mod_cast hC n
-  have hD_real :
-      (D (n + 1) : ℝ) = a n * D n := by
-    exact_mod_cast hD n
-  simp only [tailRatio, hD_real]
-  field_simp [ha_ne, hD_ne]
-  linarith
-
-/-- Finite telescoping leaves exactly the tail ratio at the endpoint. -/
-theorem tailRatio_eq_partialReciprocalSum_add
-    (a C D : ℕ → ℕ)
-    (ha : ∀ n, 0 < a n)
-    (hDpos : ∀ n, 0 < D n)
-    (hC : ∀ n, C (n + 1) + D n = a n * C n)
-    (hD : ∀ n, D (n + 1) = a n * D n)
-    (N : ℕ) :
-    tailRatio C D 0 =
-      (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) + tailRatio C D N := by
-  induction N with
-  | zero => simp
-  | succ N ih =>
-      calc
-        tailRatio C D 0 =
-            (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) +
-              tailRatio C D N := ih
-        _ = (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) +
-              (1 / (a N : ℝ) + tailRatio C D (N + 1)) := by
-                rw [tailRatio_eq_reciprocal_add_next a C D ha hDpos hC hD N]
-        _ = (∑ n ∈ Finset.range (N + 1), 1 / (a n : ℝ)) +
-              tailRatio C D (N + 1) := by
-                rw [Finset.sum_range_succ]
-                ring
-
-/-- If the endpoint tail ratio tends to zero, the reciprocal series sums to
-the initial tail ratio. -/
-theorem reciprocalSeries_hasSum_of_tailRatio_tendsto_zero
-    (a C D : ℕ → ℕ)
-    (ha : ∀ n, 0 < a n)
-    (hDpos : ∀ n, 0 < D n)
-    (hC : ∀ n, C (n + 1) + D n = a n * C n)
-    (hD : ∀ n, D (n + 1) = a n * D n)
-    (hzero :
-      Filter.Tendsto (tailRatio C D) Filter.atTop (nhds 0)) :
-    HasSum (fun n ↦ 1 / (a n : ℝ)) (tailRatio C D 0) := by
-  refine (hasSum_iff_tendsto_nat_of_nonneg ?_ _).2 ?_
-  · intro n
-    positivity
-  have hpartial : ∀ N,
-      (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) =
-        tailRatio C D 0 - tailRatio C D N := by
-    intro N
-    have hfinite :=
-      tailRatio_eq_partialReciprocalSum_add a C D ha hDpos hC hD N
-    linarith
-  simpa only [hpartial, sub_zero] using tendsto_const_nhds.sub hzero
-
 /-- Along an exact natural orbit, the signed centered state gives the integer
 tail identity `Cₙ₊₁ = Cₙ - Eₙ`. -/
 theorem natTail_eq_sub_centeredState
@@ -2348,7 +2266,9 @@ theorem boundedNegativePart_eventually_zero
     exact hcast.symm
 
 /-- Eventual signed form matching the analytic bounded-negative-part regime:
-strict centering and the lower bound may begin at different indices. -/
+the one-sided lower bound and the normalized vanishing may begin at different
+indices.  Eventual strict centering is not a separate hypothesis: it is the
+`K = 1` instance of normalized vanishing. -/
 theorem eventuallyBoundedNegativePart_eventually_zero
     (a C D : ℕ → ℕ) (E : ℕ → ℤ)
     (ha : ∀ n, 1 < a n)
@@ -2356,12 +2276,12 @@ theorem eventuallyBoundedNegativePart_eventually_zero
     (hC : ∀ n, C (n + 1) + D n = a n * C n)
     (hD : ∀ n, D (n + 1) = a n * D n)
     (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
-    (hcentered : ∃ N, ∀ n, N ≤ n → Int.natAbs (E n) < C n)
     (hbound : ∃ N B : ℕ, ∀ n, N ≤ n → -(B : ℤ) ≤ E n)
     (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
       K * Int.natAbs (E n) < C n) :
     ∃ N, ∀ n, N ≤ n → E n = 0 := by
-  obtain ⟨NC, hcentered⟩ := hcentered
+  obtain ⟨NC, hcentered⟩ := hvanish 1
+  simp only [one_mul] at hcentered
   obtain ⟨NB, B, hbound⟩ := hbound
   let N := max NC NB
   obtain ⟨K, hK⟩ := boundedNegativePart_eventually_zero
@@ -2382,5 +2302,52 @@ theorem eventuallyBoundedNegativePart_eventually_zero
   have hNk : N + k = n := Nat.add_sub_of_le hNn
   have hKk : K ≤ k := by omega
   simpa [hNk] using hK k hKk
+
+/-- Paper-facing endpoint for the bounded-negative-part branch.  Along an
+exact positive product-cleared reciprocal-tail orbit
+`Cₙ₊₁ + Dₙ = aₙ Cₙ`, `Dₙ₊₁ = aₙ Dₙ` with centered state
+`Eₙ = Dₙ - (aₙ - 1) Cₙ`, an eventual uniform lower bound `-B ≤ Eₙ`, and
+division-free normalized vanishing `K |Eₙ| < Cₙ` for every `K`, the original
+denominators satisfy the exact Sylvester recurrence `aₙ₊₁ = aₙ² - aₙ + 1`
+from some index onward.  Eventual strict centering is the `K = 1` instance of
+normalized vanishing and is therefore not stated separately.
+
+This composes `eventuallyBoundedNegativePart_eventually_zero` with
+`sylvesterNext_eventually_of_centered_zero`.  No periodicity or eventual
+periodicity is assumed anywhere in the chain, so the statement covers the
+whole bounded-negative regime including aperiodic orbits.
+
+The theorem is conditional on its normalized-vanishing hypothesis and
+therefore does not settle Erdős #243; the unrestricted problem still admits
+integer centered states with cofinally unbounded negative excursions, which
+these hypotheses exclude. -/
+theorem boundedNegativePart_sylvesterNext_eventually
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hbound : ∃ N B : ℕ, ∀ n, N ≤ n → -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n →
+      (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ) := by
+  have hzero : ∃ N, ∀ n, N ≤ n → E n = 0 :=
+    eventuallyBoundedNegativePart_eventually_zero
+      a C D E ha hCpos hC hD hE hbound hvanish
+  apply sylvesterNext_eventually_of_centered_zero
+    (fun n ↦ (a n : ℤ)) (fun n ↦ (D n : ℤ)) (fun n ↦ (C n : ℤ))
+  · intro n
+    exact natDen_eq_nextDenState a D hD n
+  · intro n
+    exact natTail_eq_nextTailState a C D hC n
+  · obtain ⟨N, hN⟩ := hzero
+    refine ⟨N, fun n hn ↦ ?_⟩
+    have hn0 := hN n hn
+    rw [hE n] at hn0
+    exact hn0
+  · refine ⟨0, fun n _hn ↦ ?_⟩
+    exact_mod_cast (Nat.ne_of_gt (hCpos (n + 1)))
 
 end ErdosProblems.Erdos243

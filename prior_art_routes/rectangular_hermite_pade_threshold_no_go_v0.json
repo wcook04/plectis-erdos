@@ -1,0 +1,225 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "rectangular_hermite_pade_threshold_no_go",
+  "source_result_id": "rectangular_hermite_pade_threshold_no_go",
+  "adjudication_currentness": {
+    "status": "Lean_source_and_canonical_card_current_claim_bound",
+    "bound_snapshot": {
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "812f2ca2ea8b18f8ce8e0a68ae14897aa851fba2e050a07881d839168182f2cc",
+      "reviewer_card_commit": "03809cc8cb5e84c46570776aca312d07668c24ca",
+      "reviewer_card_sha256": "4fd84125c35a59c45c191300344ed60ff7d4e789f9d069bc58013a63be830081"
+    },
+    "claim_guard": "The certificate applies only to the explicitly declared rectangular two-function exponent model and admissible cone; it is not a universal Hermite--Padé theorem, approximant-existence result, arithmetic-cancellation no-go, priority claim, or #1049 solution.",
+    "reentry_trigger": "Re-enter only if the exponent model, cone, source/card generation, or a materially different auxiliary geometry changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The formal polynomial certificate is exact; the expert question is model scope, not additional algebra.",
+    "slow_down_at": "Keep equality at (rho,sigma)=(0,1) as a model boundary and do not infer analytic approximant existence or a universal simultaneous-approximation no-go.",
+    "automation_can_establish": [
+      "Lean identity, cone nonpositivity, unique equality, and threshold transfer",
+      "Source/card hash parity"
+    ],
+    "human_judgment_required": [
+      "Whether a proposed construction genuinely exits the declared exponent geometry",
+      "Whether arithmetic cancellation changes the height ledger",
+      "Whether the model is the right abstraction for the intended #1049 family"
+    ],
+    "review_act": "Check the declared cone and formulas against one concrete construction proposal, then determine whether it exits this no-go model."
+  },
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_sharp_optimization_of_authored_exponent_model",
+  "problem_id": "erdos_1049",
+  "purpose": "Classify the exact cone optimization without promoting an authored exponent model into a universal Hermite--Padé obstruction.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/rectangular_hermite_pade_threshold_no_go.card.json",
+    "card_commit": "26dc6f80d4726833eeee93d73e92c72c068abb99",
+    "landed_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+    "source_result_id": "rectangular_hermite_pade_threshold_no_go"
+  },
+  "classification": {
+    "theorem_class": "sharp_two_variable_polynomial_optimization_on_a_polyhedral_cone",
+    "novelty_class": "elementary_model_specific_optimization_with_reusable_formal_route_elimination",
+    "formalization_class": "Lean_checked_identity_nonpositivity_unique_equality_and_threshold_transfer",
+    "priority_claim": "none",
+    "recommended_terminology": "sharp cone optimization for the rectangular Hermite--Padé exponent model",
+    "acceptable_project_alias": "rectangular Hermite--Padé threshold no-go",
+    "terminology_boundary": "Hermite--Padé approximation and exponent balance are standard. Rectangular refers to the chosen degree geometry; threshold no-go applies only to the displayed formulas and admissible cone.",
+    "nearest_prior_work": [
+      "Hermite's simultaneous approximation constructions are the historical source of the Hermite--Padé tradition.",
+      "Mahler's perfect-systems theory provides a classical structural framework for simultaneous Padé approximation.",
+      "Coussement and Smet (2009) explicitly balance rational-parameter Lambert-series Padé decay against denominator-clearing growth and note that an extra denominator power destroys the required asymptotics.",
+      "None of these sources states the authored D,H,C model or the exact optimizer (rho,sigma)=(0,1)."
+    ],
+    "attribution": "Attribute the approximation framework and exponent-budget methodology to classical Hermite--Padé and rational-parameter Padé literature. Attribute only the declared model, exact cleared-gap identity, unique optimizer, and Lean route-elimination certificate to the local source.",
+    "mathematical_interest": "Low standalone depth but high construction-triage value: the entire admissible rectangle is optimized symbolically, with a strict loss away from the degenerate one-function boundary.",
+    "reusable_scope": "Approximation proposals reduced to explicit rational threshold functions on polyhedral parameter cones; denominator clearing can expose a sign-definite polynomial certificate.",
+    "why_it_matters": "It prevents an expensive analytic construction from being pursued when its own proposed exponent ledger cannot improve the baseline, while leaving constructions with different ledgers logically open."
+  },
+  "primary_sources": [
+    {
+      "id": "mahler_1968_perfect_systems",
+      "title": "Perfect systems",
+      "author": "Kurt Mahler",
+      "venue": "Compositio Mathematica 19 (1968), 95-166",
+      "url": "http://www.numdam.org/item/CM_1968__19_1-2_95_0/",
+      "exact_anchor": "The paper develops perfect systems for simultaneous Padé approximation and the associated degree geometry.",
+      "supports": "Classical Hermite--Padé framework and rectangular multi-index context.",
+      "does_not_support": "The card's exponent formulas, cone, threshold, or optimization."
+    },
+    {
+      "id": "coussement_smet_2009_rational_Lambert_Pade",
+      "title": "Irrationality proof of certain Lambert series using little q-Jacobi polynomials",
+      "authors": [
+        "Jonathan Coussement",
+        "Christophe Smet"
+      ],
+      "venue": "Journal of Computational and Applied Mathematics 233 (2009), 680-690",
+      "doi": "10.1016/j.cam.2009.02.036",
+      "url": "https://arxiv.org/abs/math/0701345",
+      "exact_anchor": "Section 2, equations (2.15)-(2.17) and Remark 2.5: explicit clearing factors enter the asymptotic budget, and an additional denominator power would ruin it.",
+      "supports": "The established practice of comparing approximation decay with height and denominator-clearing cost in rational-parameter Lambert-series Padé arguments.",
+      "does_not_support": "A two-function rectangular no-go, the saving 3 sigma^2/pi^2, or the optimizer (0,1)."
+    }
+  ],
+  "mechanism_comparison": {
+    "local_core": "Set u=sigma-1-rho and clear the positive threshold denominator; the gap is a sum of negative multiples of rho, u, rho^2, u^2, and rho u.",
+    "equality_core": "Vanishing forces rho=0 and u=0, hence sigma=1; every genuinely rectangular point is strictly worse.",
+    "literature_relation": "Classical sources motivate simultaneous approximation and exponent bookkeeping. The actual optimization is elementary algebra internal to the chosen model.",
+    "exact_delta": "A complete formal optimization over the full cone rho>=0, sigma>=1+rho, including the unique equality boundary and removal of an obsolete rho upper bound."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "rectangular Hermite Pade exponent threshold optimization",
+      "Hermite Pade decay height cyclotomic saving",
+      "rational Lambert series Hermite Pade two function rectangle",
+      "Hermite Pade threshold 1/2 minus 1/pi squared",
+      "simultaneous Pade denominator clearing exponent balance"
+    ],
+    "result": "The search located classical Hermite--Padé geometry and rational-Lambert exponent budgeting, but no source for the exact D,H,C model or its sharp cone optimizer.",
+    "boundary": "This does not support novelty: once the model is declared, the proof is a direct sign decomposition. The contribution is the exact formal audit and its route-elimination consumer."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For the explicitly declared rectangular two-function exponent model, a Lean-checked polynomial certificate proves T<=1/2-1/pi^2 on the full admissible cone, with equality only at (0,1).",
+    "forbidden_wording": [
+      "Every rectangular Hermite--Padé construction obeys these exponents.",
+      "All simultaneous approximation is worse than one-function Padé.",
+      "No useful approximants or arithmetic cancellation exist in the family.",
+      "The equality point proves existence or uniqueness of an analytic approximant.",
+      "This proves irrationality or a universal no-go for Erdős Problem 1049."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_universal_Hermite_Pade_theorem",
+      "not_an_approximant_existence_theorem",
+      "not_an_arithmetic_cancellation_no_go",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "digestion_assessment": {
+    "decision": "route-killing model audit subordinate to rational_approximation_exponent_budget",
+    "canonical_family": "exact exponent-budget optimization for rational-base auxiliary constructions",
+    "expert_attention_reason": "retires the full authored rectangular cone before analytic construction effort",
+    "evidence_class": "five pinned Lean declarations with Mahler and Coussement--Smet as framework rather than theorem antecedents",
+    "hard_step": "validate the proposed exponent ledger or replace it by a genuinely different construction",
+    "paper_disposition": "route-killing failure/boundary in Why the rectangular two-function exponent model cannot win",
+    "comparator_advisory": "one model-specific threshold firewall is justified; do not split identity, sign, equality, and transfer into counts",
+    "open_boundary": "no universal Hermite--Padé, cancellation, approximant-existence, or #1049 claim"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/rectangular_hermite_pade_threshold_no_go.card.json",
+      "effect": "Replace pending status with the model-specific elementary classification and exact literature boundary."
+    },
+    {
+      "consumer": "Erdős #1049 proof fleet",
+      "effect": "Do not optimize further inside this exponent rectangle; change the approximation geometry, arithmetic saving, or height model before revisiting the route."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present as a formal model-selection certificate, not a theorem about all Hermite--Padé approximation."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_changed_exponent_geometry",
+    "priority_order": [
+      "retain Mahler and Coussement--Smet as simultaneous-Padé and exponent-budget context, not antecedents for the exact optimizer",
+      "treat the sign certificate as a complete audit of the declared cone and retire only that model",
+      "re-enter only after a proposed construction changes the degree geometry, arithmetic saving, or effective-height ledger"
+    ],
+    "lane": "re-enter on a different declared exponent model or a primary-source exact optimizer; do not broaden this no-go to universal Hermite--Padé statements"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "rectangular_Hermite_Pade_model_prior_art_and_scope_review",
+    "output_stage": "route_killing_model_boundary_human_review_support",
+    "artifact": "#1049 sharp cone optimization for the declared rectangular Hermite--Padé exponent model",
+    "human_understanding_delta": "A Lean sign decomposition retires the entire declared cone, with strict loss away from the one-function boundary, while preserving the distinction between this authored exponent model and universal Hermite--Padé or arithmetic-cancellation claims.",
+    "verification_state": "Five pinned Lean declarations establish the polynomial identity, nonpositivity, unique equality, and threshold transfer; Mahler and Coussement--Smet supply framework context only.",
+    "publication_or_review_state": "Private route-killing model support; no priority, approximant-existence, universal simultaneous-Padé, cancellation, irrationality, or #1049 endpoint claim.",
+    "canonicalization_state": "One threshold firewall subordinate to the effective-height budget architecture; do not split identity, equality, and transfer into separate result objects.",
+    "unresolved_downstream_bottleneck": "A viable construction must change the declared exponent geometry, arithmetic saving, or effective-height model rather than optimize further inside this cone.",
+    "next_stage_owner": "Novelty Observatory for exact model antecedents; Mathematics Refinery for one route-killing consolidation; #1049 proof/public owners for alternative geometries."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "rectangular_hermite_pade_threshold_no_go@HermitePadeNoGo-4cd4eac-card-03809cc8",
+    "evidence_class": "Lean-checked polynomial identity, cone nonpositivity, unique equality, and threshold transfer.",
+    "closest_known_result": "Hermite--Padé and Mahler perfect-system theory supply the simultaneous-approximation framework; Coussement--Smet exemplify decay-versus-clearing budget accounting. None states this declared D,H,C model or its optimizer.",
+    "comparison_relation": "The source proves a sharp optimization for one authored exponent model. It is not a universal Hermite--Padé theorem, an approximant-existence statement, or an arithmetic-cancellation no-go.",
+    "exact_delta": "The full admissible rectangle is retired at once by a sign-definite polynomial certificate, with equality only at the degenerate one-function boundary (0,1).",
+    "disconfirming_evidence": "Classical simultaneous Padé frameworks and different arithmetic savings remain outside the no-go; the certificate cannot rule them out.",
+    "confidence_ceiling": "High for the exact model-specific Lean certificate; low for any broader novelty, priority, or universal no-go claim.",
+    "significance": "High construction-triage value and low standalone depth: future proposals must change the exponent geometry or arithmetic ledger before further optimization.",
+    "hard_step": "Keep the authored formulas and admissible cone synchronized; any broader claim requires a new model rather than more algebra inside this one.",
+    "open_boundary": "Alternative geometries, arithmetic cancellation, integral nonvanishing families, and Erdős #1049 remain open.",
+    "bounded_expert_act": "Check the declared cone and formulas against a concrete construction proposal, then determine whether it genuinely exits the no-go model.",
+    "reentry_trigger": "Re-enter only if the exponent model, cone, source/card generation, or a materially different auxiliary geometry changes.",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+        "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+        "sha256": "812f2ca2ea8b18f8ce8e0a68ae14897aa851fba2e050a07881d839168182f2cc"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/rectangular_hermite_pade_threshold_no_go.card.json",
+        "commit": "03809cc8cb5e84c46570776aca312d07668c24ca",
+        "sha256": "4fd84125c35a59c45c191300344ed60ff7d4e789f9d069bc58013a63be830081"
+      },
+      "parity_status": "Lean source and canonical card are source-current; the optimization covers only the declared model and cone"
+    },
+    "classification": {
+      "result_family": "rectangular_hermite_pade_exponent_model_threshold_no_go",
+      "evidence_class": "Lean-checked polynomial identity, cone nonpositivity, unique equality, and threshold transfer",
+      "closest_prior_art": "Hermite--Padé and Mahler perfect-system theory supply the simultaneous-approximation framework; Coussement--Smet exemplify decay-versus-clearing budget accounting. None states this declared D,H,C model or its optimizer.",
+      "comparison_relation": "The source proves a sharp optimization for one authored exponent model. It is not a universal Hermite--Padé theorem, an approximant-existence statement, or an arithmetic-cancellation no-go.",
+      "novelty_confidence": "high for the exact model-specific Lean certificate; low for any broader novelty or priority claim",
+      "significance_grade": "high_construction_triage_value_low_standalone_depth",
+      "why_care": "It retires an entire proposed exponent rectangle at once and tells future constructions exactly which geometry or height ledger must change before more optimization is worthwhile.",
+      "hard_step": "Keep the authored formulas and admissible cone synchronized; any broader claim would require a new model, not more algebra inside this one.",
+      "natural_friction": "Equality at (rho,sigma)=(0,1) is a model boundary, not an existence or uniqueness theorem for analytic approximants.",
+      "disconfirming_evidence": "Classical simultaneous Padé frameworks and different arithmetic savings remain outside the no-go; the certificate cannot rule them out."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "For the explicitly declared rectangular two-function exponent model, Lean proves T <= 1/2 - 1/pi^2 on the full admissible cone, with equality only at (0,1).",
+      "rejected_stronger": [
+        "every rectangular Hermite--Padé construction obeys these exponents",
+        "all simultaneous approximation is worse than one-function Padé",
+        "no useful arithmetic cancellation exists",
+        "the equality point proves an analytic approximant exists",
+        "a universal Erdős #1049 no-go or solution",
+        "a priority or novelty claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "effective-height accounting and model-specific Hermite--Padé threshold firewalls",
+      "disposition": "retain as one route-killing model boundary beneath the effective-height budget architecture; consolidate identity, equality, and threshold transfer",
+      "paper_disposition": "route-killing failure/boundary in 'The effective-height budget: what a successful auxiliary family must pay'",
+      "supersession_or_consolidation": "Use one formal model-selection certificate; do not create separate cards for the sign identity, equality point, or threshold corollary.",
+      "expert_attention_reason": "The expert act is to decide whether a proposed family changes the exponent geometry or arithmetic saving, not to reinterpret this model as a universal theorem.",
+      "open_boundary": "Alternative geometries, arithmetic cancellation, integral nonvanishing families, and Erdős #1049 remain open.",
+      "independent_comparator_interface_justified": true
+    },
+    "bounded_expert_act": "Check the declared cone and formulas against a concrete construction proposal, then determine whether that proposal genuinely exits the no-go model.",
+    "reentry_trigger": "Re-enter only if the exponent model, cone, source/card generation, or a materially different auxiliary geometry changes."
+  }
+}

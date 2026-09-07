@@ -1,0 +1,250 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "status": "adjudicated_exact_reformulation_method_boundary_no_priority",
+  "route_id": "erdos68_unit_factor_scale_split_v0",
+  "problem_id": "erdos_68",
+  "source_result_ids": [
+    "tailored_prefix_private_power_to_factor_pair_bridge",
+    "factor_split_private_modulus_projection_reduction",
+    "fixed_private_owner_factorial_base_absorption"
+  ],
+  "canonical_card": "docs/formal_math/reviewer_cards/erdos68_unit_factor_scale_split.card.json",
+  "adjudication_date": "2026-08-24",
+  "classification": "elementary_complementary_factor_and_factorial_divisibility_normal_forms_with_source_specific_Lean_formalization_and_high_value_bottleneck_correction",
+  "promotion_verdict": "promote_as_one_consolidated_exact_reformulation_and_method_boundary_not_as_a_new_number_theory_theorem",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Externally sourced criterion plus routine finite-state absorption; the load-bearing issue is semantic transport and denominator scope.",
+    "slow_down_at": "Do not conflate cumulative-product denominators with the target denominators n!-1, and do not mistake eventual zero defect for a cofinal non-unit carry producer.",
+    "automation_can_establish": [
+      "Current source hash and commit binding",
+      "Presence of the three named Lean declarations",
+      "JSON/card/source route parity"
+    ],
+    "human_judgment_required": [
+      "Whether a literature source gives an exact finite-state specialization under another name",
+      "Whether the route-closure explanation is the right placement beneath the #68 endpoint"
+    ],
+    "review_act": "One bounded act: verify the external theorem domain and the local transport, then retain this as a single route-killing subsection rather than a second endpoint."
+  },
+  "primary_sources": [
+    {
+      "source_id": "li_lai_2026_largest_prime_divisor_shifted_factorials",
+      "citation": "Li Lai, On the largest prime divisor of n! + 1, Bulletin of the Australian Mathematical Society 113 (2026), 390--403, Theorem 1.1.",
+      "url": "https://doi.org/10.1017/S0004972725100543",
+      "exact_anchor": "printed p. 391 / PDF p. 2",
+      "annex_slug": "li-lai-2026-largest-prime-divisor-shifted-factorials",
+      "source_artifact": "annexes/li-lai-2026-largest-prime-divisor-shifted-factorials/source.pdf",
+      "source_artifact_sha256": "86448266ec4761456c0758a33243b63aec5c41a121fbc09afcc1de7b57e6a1f6",
+      "extracted_markdown": "annexes/li-lai-2026-largest-prime-divisor-shifted-factorials/extracted.md",
+      "extracted_markdown_sha256": "c32e7dfd5347f9d27878276a12518be26883f03422e6ec89999fd6ee33ce89a1",
+      "source_read_status": "primary_pdf_read_and_local_artifact_bound",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_source_locator": "Printed p. 391 / PDF p. 2 / extracted.md lines 68--75: Theorem 1.1 gives the positive-lower-density large-prime-factor statement and identifies Lemma 2.7 as the new ingredient; the f=-1 transfer is recorded in the local extracted source note.",
+      "relation": "For f=-1, gives a positive-lower-density set of n with P(n!-1)>(1+9 log 2-epsilon)n. The checked least-hit bridge turns this into large prefix-private anchors, but the source does not state the private-modulus unit-pair normal form or either scale estimate.",
+      "supports": "A source-backed positive-lower-density supply of large prime factors for shifted factorials, used only as an arithmetic input to the local least-hit bridge.",
+      "does_not_support": "The private-modulus unit-pair normal form, the complementary-residue inequality, the local collision-core inequality, a cofinal moving-factor construction, or an Erdős #68 solution.",
+      "consuming_claims": [
+        "erdos68_unit_factor_scale_split.semantic_comparison.prior_art_overlap",
+        "erdos68_unit_factor_scale_split.role3_handoff.claim_ceiling"
+      ]
+    },
+    {
+      "source_id": "erdos_stewart_1976_greatest_least_prime_factors_factorial_plus_one",
+      "citation": "P. Erdős and C. L. Stewart, On the greatest and least prime factors of n! + 1, Journal of the London Mathematical Society (2) 13 (1976), 513--519.",
+      "url": "https://uwaterloo.ca/pure-mathematics/sites/default/files/uploads/documents/j-london-math-soc-1976.pdf",
+      "exact_anchor": "Theorems 1--2 and the authors' explicit n!-1 transfer",
+      "annex_slug": "erdos-stewart-1976-greatest-least-prime-factors-factorial-plus-one",
+      "source_artifact": "annexes/erdos-stewart-1976-greatest-least-prime-factors-factorial-plus-one/source.pdf",
+      "source_artifact_sha256": "f6274614e75b4720908b498038ecf410abd8f822e9490167dc4c1f21f312abb3",
+      "extracted_markdown": "annexes/erdos-stewart-1976-greatest-least-prime-factors-factorial-plus-one/extracted.md",
+      "extracted_markdown_sha256": "f95fa7c6a6bd4125851425685b5ba863853d565321c240582670c59603e1c6ab",
+      "source_read_status": "primary_scan_read_and_local_artifact_bound",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_source_locator": "Printed p. 514 / PDF p. 2 / extracted.md lines 10--15: Theorems 1--2 and the explicit statement that both results also hold with n!-1; printed pp. 515--516 / PDF pp. 3--4 cover the generalized Wilson congruence.",
+      "relation": "Foundational factorial-shift prime-factor estimates. The greatest-factor result is weaker than Li--Lai for this application and supplies neither the complementary-residue nor collision-core inequality.",
+      "supports": "The foundational least/greatest-prime-factor estimates and the authors' explicit transfer from n!+1 to n!-1, as antecedent context for the local factor-split route.",
+      "does_not_support": "The private-modulus unit-pair normal form, either #68-specific scale estimate, a cofinal moving-factor construction, or an Erdős #68 solution.",
+      "consuming_claims": [
+        "erdos68_unit_factor_scale_split.semantic_comparison.prior_art_overlap",
+        "erdos68_unit_factor_scale_split.role3_handoff.claim_ceiling"
+      ]
+    },
+    {
+      "source_id": "koepf_schmersau_2011_irrationality_infinite_series_ii",
+      "citation": "W. Koepf and D. Schmersau, Irrationality of certain infinite series II, Analysis 31 (2011), 117--124.",
+      "url": "https://doi.org/10.1524/anly.2011.1094",
+      "exact_anchor": "Theorem 1.1 on p. 117 and Theorems 2.2--2.3 on pp. 119--120",
+      "annex_slug": "koepf-schmersau-2011-irrationality-infinite-series-ii",
+      "source_artifact": "annexes/koepf-schmersau-2011-irrationality-infinite-series-ii/source.pdf",
+      "source_artifact_sha256": "bc8a805242dabe17bae8e9621206e62e30956d12aaa50569bf861918bffeb635",
+      "extracted_markdown": "annexes/koepf-schmersau-2011-irrationality-infinite-series-ii/extracted.md",
+      "extracted_markdown_sha256": "676348276ed323f8cb73642214a609236fcda0c1b107d6e66ee1cda53fdd065e",
+      "source_read_status": "primary_pdf_read_and_local_artifact_bound",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_source_locator": "Printed p. 117 / PDF p. 1 / extracted.md lines 31--46: Theorem 1.1; printed pp. 119--120 / PDF pp. 3--4 / extracted.md lines 180--190 and 230--234: Theorems 2.2--2.3.",
+      "relation": "Closest general denominator-clearing comparison: an lcm-integrality condition plus a strict tail bound yields irrationality. For denominators n!-1 the natural lcm is too large for the required tail estimate, so this criterion does not subsume the present blockwise scale split.",
+      "supports": "The general lcm-integrality and strict-tail irrationality criterion, plus the rational summand hypotheses that define the comparison boundary.",
+      "does_not_support": "Application to n!-1 denominators, the private-modulus unit-pair normal form, either #68-specific scale estimate, a cofinal factor producer, or an Erdős #68 solution.",
+      "consuming_claims": [
+        "erdos68_unit_factor_scale_split.semantic_comparison.prior_art_overlap",
+        "erdos68_unit_factor_scale_split.role3_handoff.claim_ceiling"
+      ]
+    }
+  ],
+  "disconfirmation_search": {
+    "queries": [
+      "factorial denominator irrationality lcm tail criterion",
+      "largest prime factor n factorial minus one positive density",
+      "factorial gap private prime Chinese remainder complementary factors",
+      "leave one out modulus R and R/q lcm irrationality"
+    ],
+    "outcome": "The primary-source corpus recovered the standard floor/lcm irrationality criterion and the strongest live quantitative factorial-shift prime-factor inputs. It did not recover the exact private-block minimum identity or the global/local scale decomposition. The gcd/lcm core is nevertheless elementary, so non-location warrants only a source-specific exact-reformulation verdict, not an originality claim."
+  },
+  "semantic_comparison": {
+    "correctness_and_reach": "Private Lean declarations check the complete prime-power transport, exact unit-pair floor, arbitrary split-factor projection identities, fixed-owner absorption, and conditional cofinal irrationality consumers. No cofinal moving-factor or quantitative producer is proved.",
+    "relation_to_open_problem": "A sufficient conditional route to Erdős #68. It is stronger than the canonical strict-successor equivalence and does not replace that endpoint frontier.",
+    "prior_art_overlap": "The lcm identity lcm(R,R/q)=R and the complementary-factor manipulation are elementary. Li--Lai and Erdős--Stewart supply prime-factor inputs; Koepf--Schmersau supplies a nearby clearing-and-tail paradigm. None supplies the two #68-specific scale estimates.",
+    "argument_distinctness": "The contribution is interface correction plus a sharp boundary: a unit/divisor pair or two coprime factors from one moving owner replace two denominator owners, while every fixed owner is proved intrinsically finite-range.",
+    "formalization_status": "Private Lean checked and source pinned. This adjudication is semantic and source-backed; it creates no public or Comparator status.",
+    "public_significance": "High as a research map and negative correction, modest as standalone mathematics. It tells a mathematician exactly what remains after the artificial two-prime search is removed."
+  },
+  "human_understanding": {
+    "one_sentence": "One moving source of private factors is sufficient, but every fixed source is eventually absorbed and the surviving factors must clear global residue and local collision hurdles.",
+    "hard_step_to_preserve": "Cofinal moving-factor supply and the quantitative projection/collision inequalities are the contentful unsolved steps and must remain separately visible.",
+    "failed_route_lesson": "The two-denominator-owner requirement was overconstrained, while stable low-index owners were a finite-data mirage; the true demand is moving arithmetic.",
+    "anti_smoothing_rule": "Do not summarize the result as 'the CRT route works' or 'the factor-pair obstruction is solved'; only the interface is repaired."
+  },
+  "role3_handoff": {
+    "claim_ceiling": "In the private Lean development, one moving private factor source is enough to form complete unit or coprime split-factor consumers, while every fixed factorial-gap owner is eventually absorbed into the base. This is a source-specific exact reformulation and method boundary, not a new general CRT theorem, a cofinal factor producer, or an irrationality proof.",
+    "exact_locators": [
+      "docs/formal_math/reviewer_cards/erdos68_unit_factor_scale_split.card.json",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json::tailored_prefix_private_power_to_factor_pair_bridge",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean::factorialBlock_unitFactorPairFloor_eq_min",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean::factorialBlock_unitFactorPairFloor_scale_iff",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean::factorialBlock_min_factorProjection_mul_max_eq_privateModulus",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean::irrational_factorialGapSeries_of_cofinal_complementary_factor_disagreement_normalizedCollisionCap",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean::factorialBlockFixedPairPrivateQuotients_eq_one",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean::irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitScaleSplit"
+    ],
+    "integration_boundary": "Role 2 made no Comparator, public-worktree, deployment, or public-push change. Role 3 alone decides whether and how to integrate this private adjudication."
+  },
+  "rejected_wording": [
+    "new CRT theorem",
+    "two-prime obstruction solved",
+    "factorial-block closing route completed",
+    "Li--Lai proves the required scale bounds",
+    "proof of irrationality of sum 1/(n!-1)",
+    "Lean-verified public theorem"
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "erdos68_unit_factor_scale_split",
+    "human_understanding_delta": "The positive reductions and negative absorption theorem now form one intelligible mechanism: owner count is not the bottleneck, fixed owners cannot persist, and moving-factor supply plus quantitative residue control is the real mathematics.",
+    "verification_state": "Three packet results are source-pinned to current private Lean and packet hashes; semantic correspondence, declaration-presence, JSON, diff, and coverage checks pass. No fresh Lean replay is claimed.",
+    "publication_or_review_state": "Adjudicated for private review and Role 3 handoff; no public theorem, Comparator, priority, or endpoint status is created.",
+    "canonicalization_state": "Extended the existing unit-factor route instead of creating two more cards for the generalization and no-go.",
+    "unresolved_downstream_bottleneck": "Cofinal moving-factor production, quantitative global/local bounds, and independent human review.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "reentry_condition": "Re-adjudicate if a cofinal moving-factor or scale producer is proved or falsified, if a weaker exact consumer replaces them, or if a primary source is found that states the same factorial-block factor split and absorption boundary.",
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos68_unit_factor_scale_split@PrimeZeroBranch-3286a15c8e+EndpointWeightedPrivateSupport-4cd4eac29c",
+    "canonical_mechanism_family": "factorial-gap moving-factor projection with fixed-owner absorption",
+    "replacement_decision": "subordinate_under_existing_mechanism",
+    "reviewer_attention_budget": {
+      "class": "supporting_segment",
+      "minutes": "10-12",
+      "scarcity_reason": "The architecture correction is consequential for the #68 proof search, but the underlying LCM and divisibility identities are elementary and do not warrant headline treatment."
+    },
+    "evidence_class": "Source-pinned private Lean declarations plus primary-source ordinary number theory; no fresh Lean replay in this semantic pass.",
+    "closest_known_result": "Li Lai, On the largest prime divisor of n! + 1, Bull. Austral. Math. Soc. 113 (2026), Theorem 1.1 (printed p. 391/PDF p. 2), together with Erdős--Stewart, J. London Math. Soc. (2) 13 (1976), Theorems 1--2, and Koepf--Schmersau, Analysis 31 (2011), Theorem 1.1 and Theorems 2.2--2.3.",
+    "primary_source_basis": [
+      {
+        "source": "Li Lai, On the largest prime divisor of n! + 1",
+        "locator": "Theorem 1.1, printed p. 391 / PDF p. 2",
+        "relation": "Supplies a positive-lower-density large-prime input for n!-1, but not the private-factor unit/split normal form or either scale inequality."
+      },
+      {
+        "source": "P. Erdős and C. L. Stewart, On the greatest and least prime factors of n! + 1",
+        "locator": "Theorems 1--2 and the n!-1 transfer",
+        "relation": "Foundational factorial-shift estimates; no source-specific complementary-residue or collision-core consumer."
+      },
+      {
+        "source": "W. Koepf and D. Schmersau, Irrationality of certain infinite series II",
+        "locator": "Theorem 1.1 p. 117; Theorems 2.2--2.3 pp. 119--120",
+        "relation": "Nearest denominator-clearing/tail paradigm, but its global LCM bound does not subsume the blockwise scale split for n!-1."
+      }
+    ],
+    "comparison_relation": "The primary sources cover the large-prime supply and general LCM-tail paradigm. The local Lean package corrects the architecture: one moving private factor (or a coprime split of it) suffices for the exact consumer, while any fixed factorial-gap owner is eventually absorbed. This is a source-specific reformulation and route-boundary result, not a new CRT or irrationality theorem.",
+    "exact_delta": "The unit/divisor pair and arbitrary coprime split-factor projections recover the private modulus through exact LCM identities; the fixed-owner theorem proves every fixed pair has eventual quotient one. The remaining consumer still needs cofinal moving-factor supply plus a global complementary-residue or local collision bound.",
+    "disconfirming_evidence": "The LCM identities are elementary, and no inspected primary source states this complete clause bundle. Conversely, the existing finite and sourced large-prime inputs do not prove either quantitative producer inequality. No declaration gives a cofinal moving-factor theorem, denominator contradiction, or irrationality of sum 1/(n!-1).",
+    "confidence": {
+      "level": "strong_internal_provisional_case_for_route_correction; none_for_independent_novelty",
+      "basis": "Exact source/result ids, current local hashes, and the cited primary locators are bound. Non-location of a composite antecedent is not treated as a priority claim; the elementary determinant/LCM core lowers standalone novelty."
+    },
+    "significance": "High human-understanding and route-closure value, modest standalone mathematical novelty. It removes a false two-owner requirement and prevents finite fixed-owner scans from being mistaken for a cofinal arithmetic source.",
+    "claim_ceiling": "Say that the private Lean development supplies an exact one-moving-factor conditional consumer and an eventual fixed-owner absorption no-go, with the cited factorial-shift inputs as antecedents. Do not say the CRT route, scale bounds, factorial-block strategy, or Erdős #68 is solved; do not claim a new theorem, priority, or irrationality.",
+    "hard_step": "The genuinely open step is cofinal moving-factor production satisfying one of the displayed quantitative residue/collision inequalities; this is not supplied by Li--Lai, Erdős--Stewart, or the finite Lean consumers.",
+    "open_boundary": "The canonical strict-successor/carry endpoint and Erdős #68 remain open. The package is conditional and cannot turn large-prime density or finite owner scans into a global conclusion.",
+    "bounded_expert_review_act": "Verify once that Li--Lai and Erdős--Stewart are being used only as factor-supply antecedents and that the fixed-owner absorption quantifier is eventual. Then check whether any primary source states the full one-owner/split-factor consumer; absent such a source, retain the exact-reformulation label.",
+    "source_generation_binding": {
+      "formal_source_commits": {
+        "PrimeZeroBranch.lean": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+        "EndpointWeightedPrivateSupport.lean": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3"
+      },
+      "formal_source_sha256": {
+        "PrimeZeroBranch.lean": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849",
+        "EndpointWeightedPrivateSupport.lean": "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
+      },
+      "research_packet_commit": "e885d7635c7976f6dbf1f9eeac5fc72fb089297c",
+      "research_packet_sha256": "5097c60981be4e0146c5e720e046b4612937ac08bde96e6601e193245eb0a670",
+      "reviewer_card_commit": "019ddbd4c71ad47966a2bb4c1738aec4aee54790",
+      "reviewer_card_sha256": "436d94d443fcca9e0201fe368b64303bd6e978701bcf8fbfb94e0cbbde8fe350",
+      "parity_status": "Current at the 2026-08-27 route refresh; packet and card are source-coupled to the two formal files. No fresh Lean replay is asserted."
+    },
+    "paper_disposition": {
+      "disposition": "supporting_lemma",
+      "target_section": "A conditional producer interface: one moving owner can suffice",
+      "supersession_relation": "Consolidates the unit-pair, arbitrary split-factor, and fixed-owner absorption rows beneath factorial_gap_cofinal_carry_irrationality_criterion; demotes the earlier two-owner search narrative and finite-owner extrapolation.",
+      "reader_value": "A 10--12 minute supporting segment that exposes the real bottleneck instead of presenting owner multiplicity as progress."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The exact propositions already live in the existing #68 unit-factor card and source declarations; a second interface would fragment one mechanism. Comparator may consume the existing exact declarations under its own evidence policy, but this Observatory route does not add or veto an interface."
+    },
+    "expert_attention_reason": "Spend scarce attention on the distinction between a complete conditional consumer and the absent cofinal producer. This is the point most likely to change a skeptical reader's next experiment, while the elementary LCM algebra does not merit a headline.",
+    "tao_pipeline_receipt": {
+      "input_stage": "source-pinned verification plus primary-literature comparison",
+      "output_stage": "human-understanding and canonical paper placement",
+      "artifact": "erdos68_unit_factor_scale_split",
+      "human_understanding_delta": "The reader sees one moving source as sufficient, fixed owners as eventually absorbed, and the two quantitative producer inequalities as the only substantive open demand.",
+      "verification_state": "Twenty named declarations and three source-result ids are bound to the current packet/source hashes; semantic review adds no fresh Lean claim.",
+      "publication_or_review_state": "Internal Observatory adjudication and Refinery/Role 3 handoff only; no public novelty, acceptance, or priority claim.",
+      "canonicalization_state": "One consolidated supporting mechanism; no new card or Comparator proposition.",
+      "unresolved_downstream_bottleneck": "Cofinal moving-factor production and quantitative residue/collision control.",
+      "next_stage_owner": "Mathematics Refinery for canonical wording; Role 3 for any evidence-led release decision."
+    },
+    "reentry_trigger": "Re-enter on formal-source, packet, or card hash drift; a primary source stating the same full consumer; a cofinal moving-factor/scale producer; or a counterexample to fixed-owner absorption."
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commits": {
+        "PrimeZeroBranch.lean": "3286a15c8eb9dd03319817b62e13789a17e9134f",
+        "EndpointWeightedPrivateSupport.lean": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3"
+      },
+      "formal_source_sha256": {
+        "PrimeZeroBranch.lean": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849",
+        "EndpointWeightedPrivateSupport.lean": "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
+      },
+      "research_packet_sha256": "5097c60981be4e0146c5e720e046b4612937ac08bde96e6601e193245eb0a670",
+      "reviewer_card_sha256": "436d94d443fcca9e0201fe368b64303bd6e978701bcf8fbfb94e0cbbde8fe350"
+    },
+    "claim_guard": "Exact one-moving-factor conditional consumer plus fixed-owner absorption; primary-source factor-supply antecedents; no cofinal producer, irrationality, priority, or endpoint claim.",
+    "reentry_trigger": "Re-enter on any bound-source/hash drift or a full primary-source antecedent for the composite consumer."
+  }
+}

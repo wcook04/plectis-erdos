@@ -1,0 +1,20 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/TetranomialTailProductSelector.lean",
+    "ErdosProblems/Erdos1041/TetranomialTailProductSelector.md",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_tetranomial_tail_product_selector.py"
+  ],
+  "human_understanding_delta": "The old m-1 energy threshold was not intrinsic. When the tail product |R|^2 is at most one, retaining it raises the sharp two-safe threshold to m-1+|R|^2; equality occurs at |R|^2,1,...,1. The tail resultant is coefficient-explicit: for q=gcd(s,m-r), S=s/q, D=(m-r)/q, its squared modulus is |c|^(2r)|(-a)^S b^D-(-c)^D|^(2q).",
+  "verification_state": {
+    "analytic_proof": "complete",
+    "lean": "pass: exact canonical shared-cache build for ErdosProblems.Erdos1041.TetranomialTailProductSelector",
+    "computation": "pass: deterministic 3204-configuration replay certifies 3201 cases, a strict gain of 14; resultant formula relative error at most 1.17e-15"
+  },
+  "publication_or_review_state": "Lean-verified expert note ready for scoped commit and Refinery review; no external review or literature-priority claim",
+  "canonicalization_state": "candidate theorem layer above the product-sensitive Vieta selector",
+  "unresolved_downstream_bottleneck": "This theorem alone leaves three sampled tetranomials; the reciprocal-moment and close-pair selectors cover them numerically, but a universal three-selector covering theorem is not yet proved. Unrestricted Erdos 1041 remains open.",
+  "next_stage_owner": "Closure Engine for the three-selector covering conjecture, then Refinery for exposition and attribution review"
+}

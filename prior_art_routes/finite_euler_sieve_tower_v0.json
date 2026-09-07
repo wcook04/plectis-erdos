@@ -1,0 +1,146 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "finite_euler_sieve_tower_v0",
+  "status": "adjudicated_unbound_composite_proposal_retired_from_active_credit",
+  "problem_id": "erdos_249",
+  "purpose": "Prevent an unbound composite finite-Euler-sieve assertion from appearing as a sourced analytic or transcendence result, while preserving a precise re-entry contract for a future defined sieve family.",
+  "adjudication": {
+    "verdict": "retire_unbound_composite_claim_not_assess_theorem",
+    "evidence_class": "elementary finite Euler-factor Lean identities plus an unbound packet-level analytic proposal",
+    "closest_known_prior_art": "Nesterenko's modular-value framework and Bell--Bruin--Coons' multiplicative generating-function results are broad non-matching context, not antecedents for the unspecified sieve tower.",
+    "exact_delta": "The available source defines no finite sieve family, coefficient sequence, radial expansion, convergence theorem, anomaly repair, or special-value consumer, so no theorem-level comparison is possible.",
+    "disconfirming_evidence": "FiniteEulerSieve.lean contains only two elementary factor identities and a prime-power second-difference identity; repository searches found no proof-bearing analytic source or exact verifier for the composite claim.",
+    "confidence_ceiling": "High confidence that the composite packet assertion is not current evidence; the truth, novelty, and attribution of any future defined sieve remain unassessed.",
+    "significance_rationale": "The durable value is a navigation correction separating local Euler algebra from unsupported analytic/transcendence language.",
+    "bounded_expert_review_act": "Re-enter only after a complete sieve definition, coefficient/convergence proof, radial expansion, checked external theorem hypotheses, and a named #249 consumer are supplied."
+  },
+  "review_unit": {
+    "result_family": "finite_euler_sieve_approximation_to_totient_series",
+    "exact_result_id": "finite_euler_sieve_tower",
+    "subordinated_result_ids": [
+      "finite_euler_sieve_additive_anomaly_repair"
+    ],
+    "source_generation": {
+      "repository_commit": "3893de602624eb1a4930eed003aa84cc777500cf",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "packet_sha256_before_adjudication": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e",
+      "local_formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "local_formal_source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
+      "local_formal_source_scope": "two elementary finite Euler-factor identities and a prime-power second-difference identity only"
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "confidence_class": "unassessed",
+    "novelty_confidence": "not_assessable_without_a_defined_object_and_source-bound_argument",
+    "significance": "Potentially high if a concrete sieve both has the claimed singularity control and supplies a genuinely new approximation interface; currently high only as a claim-boundary repair.",
+    "subordinated_anomaly_repair": "The additive-anomaly formulation is an unassessed source-specific proposal. The local Lean module does not define its repair family, anomaly, height, convergence exponent, or special-value theorem; its elementary Euler-factor identities cannot certify those analytic claims.",
+    "closest_known_framework": "classical modular and quasimodular q-series transcendence theory, including work around Eisenstein-series values at algebraic q, is too broad to support an unspecified finite Euler sieve.",
+    "expert_judgment_that_can_change_state": "Supply one exact finite-sieve definition, its coefficient and convergence proof, the radial-expansion formula with hypotheses, and a theorem-level source citation whose hypotheses are checked against that definition."
+  },
+  "prior_art_locators": [
+    {
+      "id": "nesterenko_1996_modular_functions",
+      "title": "Modular functions and transcendence problems",
+      "author": "Yuri V. Nesterenko",
+      "venue": "Sb. Math. 187 (1996), 1319-1348",
+      "relation": "nearest broad framework only",
+      "supports": "That transcendence theorems for particular modular or quasimodular values at algebraic q require precise modular-form hypotheses.",
+      "does_not_support": "Any finite Euler-sieve definition, its coefficients, a dense radial-singularity formula, local-uniform convergence, or the proposed #249 approximation."
+    },
+    {
+      "id": "bell_bruin_coons_2012_multiplicative_generating_functions",
+      "title": "Transcendence of generating functions whose coefficients are multiplicative",
+      "authors": ["Jason P. Bell", "Nils Bruin", "Michael Coons"],
+      "url": "https://arxiv.org/abs/1003.2221",
+      "exact_anchor": "Introduction, pp. 1-2: integer-coefficient multiplicative generating series, Carlson's dichotomy, and the totient example.",
+      "relation": "closest established route for the ambient totient generating function",
+      "supports": "The separate classical natural-boundary context for the actual totient series.",
+      "does_not_support": "The proposed finite sieve, quasimodular special values, or any approximation limit."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "kind": "local_source_inspection",
+      "locator": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "finding": "The module contains only the s=1 and s=2 finite Euler-factor identities and one prime-power second-difference identity; its header says no external transcendence theorem is asserted as Lean authority.",
+      "effect": "It does not establish any member of the composite sieve-tower statement beyond its elementary local factors."
+    },
+    {
+      "kind": "bounded_repository_search",
+      "locator": "Erdos249 source, reviewer-card, and prior-art-route surfaces for finite Euler sieve, quasimodular, radial singularity, and special-value references",
+      "finding": "No sieve definition, proof-bearing note, exact verifier, or cited theorem locator was found.",
+      "effect": "There is no object to compare faithfully with the modular-form literature."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The corpus formalizes elementary finite Euler-factor algebra relevant to a possible sieve construction. A stronger finite-sieve approximation and quasimodular-transcendence package is currently an unassessed formulation, not a sourced result.",
+    "forbidden_wording": [
+      "Finite Euler sieves are proved here to have dense quadratic radial singularities.",
+      "A quasimodular theorem proves the proposed algebraic-nome transcendence claim.",
+      "The finite sieves converge locally uniformly to the #249 function.",
+      "The additive anomaly repairs have a source-verified special-value lower bound, preserve the required exponent, or advance #249.",
+      "This is a #249 irrationality route with a completed external theorem dependency."
+    ],
+    "open_boundary": "After a defined sieve family and source-pinned theorem are supplied, separately review algebraic-nome values, radial expansions, and convergence; they need not follow from one another."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "unbound finite-approximation proposal; no canonical theorem yet",
+    "disposition": "retire the composite assertion from the active result inventory until it acquires a defined object and evidence spine",
+    "paper_disposition": "omit; at most list as a source-construction question after its exact definition is available",
+    "comparator_advisory": "No interface or public theorem: no independently restatable established proposition exists yet.",
+    "human_understanding_delta": "Separates finite Euler-factor algebra from three distinct unproved analytic assertions, including the additive-anomaly proposal, and prevents a broad literature label from filling the missing proof."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "claim and source audit",
+    "output_stage": "attribution and evidence-boundary correction",
+    "artifact": "finite_euler_sieve_tower_v0 prior-art route and packet status repair",
+    "human_understanding_delta": "A reviewer can now identify the missing mathematical object and why generic quasimodular references cannot certify it.",
+    "verification_state": "Local Lean scope and repository-source absence were inspected; external literature was located only as a broad non-matching framework. No analytic theorem or computation is claimed.",
+    "publication_or_review_state": "Internal correction only; no paper, public card, Comparator interface, or novelty assertion.",
+    "canonicalization_state": "Retires a misleading composite pseudo-result rather than creating a new object.",
+    "unresolved_downstream_bottleneck": "A defined finite sieve plus proof/source anchors for each asserted analytic property, including the anomaly, convergence, height, and special-value steps.",
+    "next_stage_owner": "Mathematical Assimilation Steward if a source-bearing sieve construction lands; Novelty Observatory on the new immutable generation."
+  }
+  ,"reviewer_attention_budget": {
+    "routine": "The finite Euler-factor identities and prime-power second difference are elementary once the finite product is defined.",
+    "load_bearing": "A concrete sieve definition, convergence/radial expansion, anomaly repair, and theorem-level consumer are all absent.",
+    "externally_sourced": "Nesterenko and Bell--Bruin--Coons provide broad modular/multiplicative generating-function context only.",
+    "still_unverified": "Every analytic assertion in the composite finite-sieve proposal, including local uniform convergence and special-value bounds.",
+    "review_act": "Inspect the two finite Lean identities, then require one immutable sieve definition and source-matched analytic proof before restoring any active credit."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "finite_euler_sieve_tower@packet-2026-08-25-v0",
+    "evidence_class": "Elementary finite Euler-factor Lean identities plus an unbound packet-level analytic proposal; no theorem-level sieve construction is inspectable.",
+    "closest_known_result": "Nesterenko's modular-value work and Bell--Bruin--Coons' multiplicative generating-function results are ambient non-matching frameworks, not antecedents for the unspecified sieve tower.",
+    "comparison_relation": "The local source proves only finite factor algebra; it does not define the sieve, prove convergence, radial singularity, anomaly repair, or a #249 consumer.",
+    "exact_delta": "The durable contribution is a claim-boundary repair that separates local Euler algebra from a composite analytic/transcendence slogan with no source spine.",
+    "disconfirming_evidence": "Repository inspection found no finite-sieve definition, coefficient sequence, convergence proof, exact verifier, or source anchor for the composite assertion.",
+    "confidence": {
+      "level": "high_that_the_composite_proposal_is_not_current_evidence; routine_for_the_finite_factor_identities",
+      "basis": "The local Lean scope and source absence are explicit; broad literature labels do not fill the missing definitions."
+    },
+    "significance": "Route-killing/navigation value only: it prevents generic modular terminology from inflating an undefined #249 approximation into a result.",
+    "claim_ceiling": "State the finite Euler-factor identities and label the sieve-tower package unassessed. Do not claim convergence, transcendence, special-value bounds, novelty, or #249 progress.",
+    "hard_step": "Supply a complete finite-sieve object and prove each analytic property under checked hypotheses; these are independent obligations.",
+    "open_boundary": "No Comparator proposition or public theorem is justified until an inspectable object and evidence spine exist; retain the route as retired from active credit.",
+    "bounded_expert_review_act": "Check the exact finite identities, then demand definitions and source-matched proofs for the radial, convergence, anomaly, and special-value claims.",
+    "reentry_trigger": "Re-enter when a complete sieve definition and source-bearing analytic construction land in an immutable generation.",
+    "source_generation_binding": {
+      "packet_commit": "3893de602624eb1a4930eed003aa84cc777500cf",
+      "packet_sha256": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e",
+      "formal_source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
+      "primary_source_anchors": ["Nesterenko (1996), Modular functions and transcendence problems", "Bell--Bruin--Coons (2012), Transcendence of generating functions whose coefficients are multiplicative"],
+      "parity_status": "Finite identities are source-pinned; the composite analytic proposal remains unbound."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "packet_commit": "3893de602624eb1a4930eed003aa84cc777500cf",
+      "formal_source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d"
+    },
+    "claim_guard": "Finite local factor algebra is separate from every unproved analytic/transcendence assertion.",
+    "reentry_trigger": "Re-enter on a defined sieve source, theorem proof, or exact consumer change."
+  }
+}

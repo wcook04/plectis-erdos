@@ -1,0 +1,19 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "input_stage": "proof_generation",
+  "output_stage": "exposition_and_understanding",
+  "artifact": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DegenerateHubUniqueBranchRepair.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DegenerateHubMonodromyKernel.lean"
+  ],
+  "human_understanding_delta": "The apparent gap between one critical value and one branch point is closed without adding a hypothesis. Deleting the finite fibre over the sole critical value leaves a connected plane domain, hence a connected cover of a punctured disc. Its cyclic monodromy is transitive, so its generator is one full cycle; local monodromy then forces a single critical preimage whose local degree equals the total degree. The finite algebraic step is separated from the still-analytic covering/local-degree correspondence: Lean proves that transitivity under all integer powers forces full support and a single cycle.",
+  "verification_state": {
+    "analytic": "complete using standard finite proper covering and local monodromy facts",
+    "lean": "pass: exact canonical shared-cache build for ErdosProblems.Erdos1041.DegenerateHubMonodromyKernel; the topological covering/local-degree layer remains analytic and is not postulated as an axiom",
+    "computation": "none required"
+  },
+  "publication_or_review_state": "Lean-verified private proof-repair handoff ready for scoped commit and review by the owner of DegenerateHubBlaschkeReduction.md",
+  "canonicalization_state": "standard monodromy proof identified; not externally reviewed or canonicalized",
+  "unresolved_downstream_bottleneck": "Audit the analytic properness, local-monodromy correspondence, and Bergman-geodesic inputs before promoting the degenerate-hub threshold theorem.",
+  "next_stage_owner": "Degenerate-hub theorem owner, then the formal-math Refinery for proof-library and Lean-boundary review"
+}

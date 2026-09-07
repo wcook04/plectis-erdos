@@ -1,0 +1,246 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "three_halves_coordinatewise_corridor_no_go",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_elementary_local_route_retirement",
+  "problem_id": "erdos_1049",
+  "purpose": "Prevent an elementary contradiction for a locally authored corridor predicate from being presented as an external theorem candidate, while preserving its exact value as a proof-architecture no-go.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The contradiction is elementary; the important work is reading its quantifiers and not overextending a local predicate to all Padé or rational-base architectures.",
+    "slow_down_at": "Check the base-3/2 exponential-versus-linear inequality and the distinction between coordinatewise clearing and aggregate cancellation or height arguments.",
+    "automation_can_establish": [
+      "The two named Lean declarations and source/card/packet parity",
+      "The displayed size contradiction under the declared corridor hypotheses",
+      "That no general Padé impossibility or irrationality conclusion is encoded"
+    ],
+    "human_judgment_required": [
+      "Whether the local predicate is clearly defined enough for a reader to see exactly what is retired",
+      "Whether integer-base and Bundschuh--Väänänen comparisons are used only as boundaries",
+      "Which alternative joint-cancellation or higher-rank architecture should replace the retired route"
+    ],
+    "review_act": "Verify the local quantifiers once, then retire this architecture from headline consideration while preserving it as a route-killing boundary.",
+    "attention_ceiling": "Low standalone novelty, high proof-search value as a precise local no-go, no endpoint claim."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/three_halves_coordinatewise_corridor_no_go.card.json",
+    "landed_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+    "source_result_id": "coordinatewise_corridor_obstruction",
+    "headline_declarations": [
+      "ErdosProblems.Erdos1049.coordinatewiseCorridor_implies_pow_lt_linear",
+      "ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor"
+    ]
+  },
+  "classification": {
+    "theorem_class": "elementary_incompatibility_among_divisibility_digit_size_and_tail_smallness_hypotheses",
+    "novelty_class": "routine_consequence_with_local_method_retirement_value",
+    "formalization_class": "Lean_checked_local_proof_architecture_certificate",
+    "priority_claim": "none",
+    "recommended_terminology": "coordinatewise clearing budget obstruction at base 3/2",
+    "discouraged_terminology": [
+      "new exponential Diophantine theorem",
+      "rational-base Padé impossibility theorem",
+      "3/2 irrationality theorem",
+      "solution of Erdős Problem 1049"
+    ],
+    "nearest_prior_work": [
+      "Amdeberhan and Zeilberger (1998) are a direct integer-base predecessor for q-Apéry linear forms targeting the same Lambert value, but their denominator-clearing stage assumes an integer base.",
+      "Bundschuh and Väänänen (1994), Theorem 2, provide the directly published rational-base height criterion recorded by the programme; it covers 7/2 but not 3/2.",
+      "Neither source states the local CoordinatewiseCorridor predicate or this elementary contradiction."
+    ],
+    "attribution": "Call the proof elementary and attribute the corridor abstraction and Lean packaging to the local source. Cite the two papers only for the integer-base predecessor and rational-base programme boundary.",
+    "mathematical_interest": "Low as a standalone theorem; high enough as exact negative knowledge because it kills a tempting repeated transfer strategy with a two-line size argument.",
+    "reusable_scope": "Coordinatewise clearing schemes in rational-base Lambert or Padé problems where a single bounded digit must absorb a growing numerator-base power while denominator-base tail decay is required.",
+    "why_it_matters": "It redirects effort from per-coordinate congruence engineering toward aggregate cancellation, determinants, higher rank, or architectures with a different height budget."
+  },
+  "primary_sources": [
+    {
+      "id": "amdeberhan_zeilberger_1998_q_apery",
+      "title": "q-Apéry Irrationality Proofs by q-WZ Pairs",
+      "author": "Tewodros Amdeberhan and Doron Zeilberger",
+      "venue": "Advances in Applied Mathematics 20 (1998), 275-283",
+      "arxiv": "math/9804122",
+      "url": "https://arxiv.org/abs/math/9804122",
+      "exact_anchor": "Section 0.1 identifies the target h_q(1)=sum_(k>=1) 1/(q^k-1); Sections 1.1-1.5 give the q-polynomial identities, while Section 1.7 and Lemma 1 perform denominator clearing under the integer-base hypothesis.",
+      "source_archive": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.pdf",
+      "source_archive_sha256": "339a4324a6cd0bcfd8eb872d0a408140fcba06ee383bf421248a91919b1430e2",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 7,
+      "source_tex": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.tex",
+      "source_tex_sha256": "d5e28002d543f1d8c22fca2312319957fb0c34481fe0d6eb4fd8ff4aad2dda4f",
+      "extracted_markdown": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/extracted.md",
+      "extracted_markdown_sha256": "b706b896b43d755fafa907b6ce6b0d3c3a3542875d0a2d03e56b66624941161f",
+      "retrieved_at": "2026-08-11",
+      "verification_state": "primary_pdf_and_tex_read_integer_base_denominator_clearing_boundary_compared",
+      "exact_source_locator": "PDF pp. 1--4 / extracted.md lines 26--175: Section 0.1 defines h_q(1), Sections 1.1--1.5 give the q-WZ recurrence, and Section 1.7/Theorem 1 states where the integer-|q| clearing hypothesis enters; the source is used only for predecessor and scope-boundary context.",
+      "supports": "The direct integer-base predecessor and the location where integer-base clearing enters.",
+      "does_not_support": "A rational-base 3/2 corridor, the local no-go predicate, or a universal rational-base impossibility."
+    },
+    {
+      "id": "bundschuh_vaananen_1994_infinite_product",
+      "title": "Arithmetical investigations of a certain infinite product",
+      "author": "Peter Bundschuh and Keijo Väänänen",
+      "venue": "Compositio Mathematica 91 (1994), 175-199",
+      "url": "https://numdam.org/item/CM_1994__91_2_175_0.pdf",
+      "exact_anchor": "Theorem 2 on printed pages 176-177, proved on pages 189-193; for alpha=-1 its height condition is equivalent to log(b)/log(a) < 1/2 - 1/pi^2.",
+      "source_archive": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/source.pdf",
+      "source_archive_sha256": "e4937a5bbf141c01dc60c6bdb91e0f8a8ad399d69e8e3156b4b27881631913cc",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 26,
+      "extracted_markdown": "annexes/numdam-cm-1994-91-bundschuh-vaananen-infinite-product/extracted.md",
+      "extracted_markdown_sha256": "50f65688430d44fd90389b39029bb6089492a348a8ce5a3d9898f5ae2b21a52b",
+      "retrieved_at": "2026-08-26",
+      "verification_state": "primary_pdf_read_exact_rational_base_height_boundary_compared",
+      "exact_source_locator": "Printed pp. 175--177 / PDF pp. 1--3 and extracted text: the standing height hypotheses and Theorem 2 give the published rational-base criterion; proof pp. 189--193 / PDF pp. 15--19. The source is used to show that the local 3/2 corridor no-go is not a universal rational-base impossibility.",
+      "supports": "The directly published rational-base height region and the fact that rational-base progress need not use the rejected local corridor.",
+      "does_not_support": "Base 3/2, the coordinatewise predicate, or the local exponential-versus-linear contradiction."
+    }
+  ],
+  "mechanism_comparison": {
+    "local_mechanism": "Divisibility plus the digit ceiling turns a^K into at most Q(N+K); tail smallness then forces b^(N+K+1)<a(N+K). At a/b=3/2 this contradicts 2^(x+1)>3x for x>=2.",
+    "integer_base_boundary": "When b=1, the denominator-base exponential disappears; this is exactly why a literal integer-base intuition can look plausible before rational homogenization.",
+    "published_rational_base_boundary": "Bundschuh--Väänänen use a global analytic height condition rather than the local coordinatewise corridor, so their positive 7/2 theorem is not in tension with the no-go.",
+    "exact_delta": "A precise formal interface saying which local combination of divisibility and tail inequalities is impossible at 3/2."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "internal annex: integer-base q-Apery denominator clearing",
+      "internal annex: Bundschuh Väänänen rational-base height theorem",
+      "internal corpus: coordinatewise corridor rational base 3/2",
+      "internal corpus: exponential versus linear clearing obstruction"
+    ],
+    "result": "The annex contains the relevant integer-base and rational-base primary sources, but no external statement matching the locally authored corridor. The proof is immediate enough that non-location cannot support novelty.",
+    "boundary": "Classification rests on theorem depth and dependence on a local definition, not on an argument from silence."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos1049_three_halves_coordinatewise_corridor_no_go@source-4cd4eac-card-current",
+    "evidence_class": "Lean-checked local incompatibility certificate; Amdeberhan--Zeilberger and Bundschuh--Väänänen supply primary-source boundary context, not this no-go.",
+    "closest_known_result": "Amdeberhan--Zeilberger (1998) give integer-base q-Apéry denominator clearing, while Bundschuh--Väänänen (1994) give a rational-base height criterion. Neither states the locally defined CoordinatewiseCorridor predicate or its base-3/2 contradiction.",
+    "comparison_relation": "Routine size arithmetic packaged as an exact method-boundary certificate. It retires one literal coordinatewise architecture but leaves aggregate cancellation, determinants, higher rank, and analytic height routes untouched.",
+    "exact_delta": "The declarations identify the precise combination of divisibility, bounded digits, and tail smallness that cannot coexist at 3/2, preventing proof search from repeatedly reintroducing that architecture.",
+    "disconfirming_evidence": "The contradiction says nothing about selective divisors, joint cancellation, determinant content, higher rank, or the published rational-base height region; non-location of an external analogue is not evidence of novelty.",
+    "confidence": {
+      "level": "high_for_scoped_Lean_no_go_and_attribution_medium_for_route_retirement_value_low_for_standalone_novelty",
+      "basis": "The source declarations and hashes are pinned, and the inequality is elementary; all stronger generalizations are explicitly absent."
+    },
+    "significance": "High proof-search value as negative knowledge, low standalone mathematical depth: it sharply narrows one tempting route without pretending to constrain the whole #1049 landscape.",
+    "claim_ceiling": "A Lean-checked elementary size contradiction rules out the declared coordinatewise clearing corridor at base 3/2. It is not a general Padé no-go, exponential-Diophantine theorem, irrationality proof, or solution of #1049.",
+    "hard_step": "The hard remaining problem is to construct or rule out a joint-cancellation/effective-height architecture; this local certificate does not address it.",
+    "open_boundary": "Selective divisors, determinant and higher-rank cancellation, analytic remainder control, and #1049 irrationality remain open.",
+    "bounded_expert_review_act": "Check the exact corridor quantifiers and confirm that the paper labels the result as a retired local method rather than a universal impossibility.",
+    "reentry_trigger": "Re-enter if the corridor predicate or source generation changes, or if an alternative height architecture consumes the same hypotheses.",
+    "source_generation_binding": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "8172e9ff026ed7537062c46f9e05851f8216193c5ed17e70470d873b1451f46a",
+      "reviewer_card_sha256": "d7bc458f4eb089031a3e3b5dbd153ca132fb93a8be7dcf38af356d0e4bf81781",
+      "research_packet_sha256": "75a38d269b04aa46e160f5c2fd7d5f968bbee4a39cf5370c2332211ee1eb8547",
+      "parity_status": "formal source, card, and packet hashes are bound at adjudication"
+    },
+    "classification": {
+      "result_family": "erdos1049_coordinatewise_clearing_method_boundary",
+      "evidence_class": "Lean_checked_local_no_go_with_primary_source_boundary_context",
+      "closest_prior_art": "Amdeberhan--Zeilberger integer-base q-Apéry clearing and Bundschuh--Väänänen rational-base height criterion; neither is this local predicate",
+      "comparison_relation": "Elementary source-specific route retirement; no priority claim",
+      "novelty_confidence": "low",
+      "significance_grade": "high_route_killing_low_standalone",
+      "why_care": "It stops repeated investment in a literal per-coordinate transfer and makes the required replacement architecture explicit.",
+      "hard_step": "Find joint cancellation or effective-height control at 3/2.",
+      "natural_friction": "The local contradiction is easy to overread as a universal Padé or rational-base impossibility.",
+      "disconfirming_evidence": "Published rational-base progress uses a global height condition, and other cancellation routes are not covered.",
+      "confidence_ceiling": "High for the declared no-go, low for standalone novelty or any endpoint implication.",
+      "bounded_expert_act": "Audit the corridor quantifiers and one integer-base/rational-base boundary citation.",
+      "reentry_condition": "Predicate/source change or a genuinely alternative architecture."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1049 rational-base height and cancellation architecture filters",
+      "disposition": "retire_inflated_coordinatewise_route_and_consolidate_as_one_method_boundary",
+      "paper_disposition": "route-killing failure/boundary",
+      "paper_target_section": "Why coordinatewise clearing cannot reach the 3/2 endpoint",
+      "supersession_relation": "Consolidate the two local declarations and retire duplicate per-coordinate corridor narratives; leave aggregate, determinant, and higher-rank routes under their own mechanisms.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "One exact no-go firewall for the declared CoordinatewiseCorridor hypotheses at base 3/2; do not generalize to all Padé or rational-base methods.",
+      "expert_attention_reason": "It is valuable because it removes a recurring false path while preserving the real unresolved alternatives."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "8172e9ff026ed7537062c46f9e05851f8216193c5ed17e70470d873b1451f46a",
+      "reviewer_card_sha256": "d7bc458f4eb089031a3e3b5dbd153ca132fb93a8be7dcf38af356d0e4bf81781",
+      "research_packet_sha256": "2ad31a5af439529f9cc764727ee71634ddbc82f99366fa7104d801d60ef9884f"
+    },
+    "claim_guard": "Only the declared coordinatewise corridor no-go at base 3/2 is covered; aggregate cancellation, higher rank, and #1049 remain open.",
+    "reentry_trigger": "Re-enter on source, card, packet, or predicate changes."
+  },
+  "digestion_assessment": {
+    "decision": "route_killing_boundary_subordinate_to_rational_base_height_family",
+    "canonical_family": "#1049 rational-base height and cancellation architecture filters",
+    "expert_attention_reason": "It removes one seductive local architecture and tells the reader exactly which alternatives survive.",
+    "evidence_class": "Lean-checked local no-go",
+    "hard_step": "Joint cancellation/effective-height construction not supplied here.",
+    "paper_disposition": "route-killing failure/boundary in Why coordinatewise clearing cannot reach the 3/2 endpoint",
+    "comparator_advisory": "One consolidated exact no-go interface; no generic Padé prohibition.",
+    "open_boundary": "Selective divisors, determinant/higher-rank routes, analytic remainders, and irrationality."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked elementary size contradiction rules out one literal coordinatewise clearing architecture at base 3/2.",
+    "forbidden_wording": [
+      "All congruence corridors fail at 3/2.",
+      "Padé approximation cannot prove the 3/2 case.",
+      "This is a new exponential Diophantine theorem.",
+      "This proves irrationality at 3/2.",
+      "This solves Erdős Problem 1049."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_general_pade_no_go",
+      "not_an_aggregate_cancellation_obstruction",
+      "not_an_irrationality_result",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/three_halves_coordinatewise_corridor_no_go.card.json",
+      "effect": "Replace the unassessed external-candidate posture with a routine local route-retirement classification and exact source boundary."
+    },
+    {
+      "consumer": "Formal Conjectures contribution owner",
+      "effect": "Do not lead with this declaration as an external mathematical contribution; at most use it as a checked supporting method-boundary lemma."
+    },
+    {
+      "consumer": "Erdős #1049 proof fleet",
+      "effect": "Do not retry literal per-coordinate transfer. Seek joint cancellation, determinant structure, higher-rank forms, or a different height architecture."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present as exact negative knowledge about one proof architecture, not as progress on the endpoint problem."
+    }
+  ],
+  "next_ranked_targets": [
+    "no_cofinallyBoundedNegative_of_normalizedVanishes (Erdos 243): compare its recurrence interface with standard asymptotic and discrete-Grönwall arguments.",
+    "exists_small_translation_separating_arguments (Erdos 1041): likely routine finite-union-of-lines avoidance; classify exact generic-position interface.",
+    "irrational_tsum_primeDyadicTerm_iff_primeGap (Erdos 251): decide whether the equivalence is substantive or only a local reformulation."
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean_checked_local_method_candidate",
+    "output_stage": "route_retirement_and_human_understanding",
+    "artifact": "#1049 coordinatewise corridor obstruction at base 3/2",
+    "human_understanding_delta": "The checked contradiction retires one literal per-coordinate clearing architecture while leaving aggregate cancellation, determinant, higher-rank, and analytic height routes untouched.",
+    "verification_state": "Two named Lean declarations and the pinned RationalBaseLambert source are current; no external theorem or irrationality conclusion is asserted.",
+    "publication_or_review_state": "Supporting method-boundary evidence only; no priority, general Padé no-go, or #1049 endpoint claim.",
+    "canonicalization_state": "Consolidate as one local route-retirement lemma beneath the rational-base height family; do not count it as a standalone theorem headline.",
+    "unresolved_downstream_bottleneck": "Find a viable joint-cancellation or effective-height architecture at 3/2; this local contradiction cannot address those routes.",
+    "next_stage_owner": "#1049 proof fleet for alternative architecture; Mathematics Refinery and Role 3 for supporting-card wording."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_corridor_scope_or_alternative_height_result",
+    "reentry_condition": "Re-enter only if the corridor predicate changes, a weaker hypothesis is proposed, or an aggregate/determinant/higher-rank result makes the local method boundary materially different.",
+    "do_not_redo": "Do not repeat the two-line exponential-versus-linear contradiction or the integer-base/Bundschuh--Väänänen attribution; the local route is already retired.",
+    "open_bottleneck": "The failure says nothing about all Padé architectures, selective divisors, or irrationality at 3/2. Those alternatives remain the actual frontier.",
+    "owner": "#1049 proof fleet for alternative constructions; Novelty Observatory only for changed source generation or claim scope."
+  }
+}

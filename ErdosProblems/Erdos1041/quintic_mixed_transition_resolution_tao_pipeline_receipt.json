@@ -1,0 +1,23 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_mixed_transition_resolution_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticMixedTransitionResolution.md",
+    "ErdosProblems/Erdos1041/QuinticMixedTransitionResolution.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_mixed_transition_resolution.py"
+  ],
+  "human_understanding_delta": "Adversarial optimization of the normalized quintic mixed model did not merely approach zero: it exposed an exact algebraic equality chart with phases arg A=2pi/5 and arg B=13pi/10 and amplitude |A|^3=27/320. The leading model vanishes termwise at two antipodal chord directions, but tangent Fourier pairing E3=-conj(E2) gives opposite cubic corrections there. Selecting the negative member resolves this sharp tie lexicographically and replaces an uncontrolled transition with a finite next-mode sign test.",
+  "verification_state": {
+    "analytic_derivation": "complete_for_the_exact_equality_chart_and_paired_correction",
+    "exact_symbolic_replay": "pass_exact_zero_directions_paired_signs_stationary_eliminant_and_100_digit_amplitude_reduction",
+    "lean_focused_build": "pass_canonical_cached_exact_target_serialized_authority_check"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "new_private_authoring_module_verified_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Prove that every normalized quintic mixed model has a nonpositive truncated connector and that this symmetry orbit exhausts its equality set; then apply the paired-mode lexicographic selector uniformly through the finite perturbation remainder.",
+  "next_stage_owner": "Refinery: classify the global equality set of the compact mixed-model minimax and use the checked negative paired correction on each equality orbit.",
+  "claim_ceiling": "This resolves one exact sharp mixed-mode equality chart and refutes any proof demanding strict leading-order margin everywhere. It does not prove the global mixed-model selector, the full near-Fekete theorem, or unrestricted Erdős #1041."
+}

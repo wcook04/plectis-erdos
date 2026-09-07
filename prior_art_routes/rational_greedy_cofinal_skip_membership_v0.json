@@ -1,0 +1,345 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "rational_greedy_cofinal_skip_membership",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_scoped_rational_cofinal_actual_skip_normal_form",
+  "problem_id": "erdos_257",
+  "purpose": "Classify the rational Mersenne membership equivalence as a source-specific synthesis of standard superincreasing greedy decoding, full-sum irrationality, and the established infinite-skip consumer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/rational_greedy_cofinal_skip_membership.card.json",
+    "card_commit_at_review": "652d137e287bcd64ef8e208d6c7a52e02c2ee7c1",
+    "source_commit": "c547b45326e0d32c7cc62634c275af31a2832f29",
+    "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GreedyAchievementSet.lean",
+    "source_declarations": [
+      "greedyMersenneSkippedSupport_infinite_iff_cofinal_skips",
+      "infinite_greedyMersenneSkippedSupport_of_rat_mem",
+      "mem_mersenneAchievementSet_of_greedySkippedSupport_infinite",
+      "rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
+    ]
+  },
+  "source_generation": {
+    "status": "source_card_packet_current_at_adjudication; exact rational-membership endpoint remains distinct from target-specific skip production",
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GreedyAchievementSet.lean",
+      "commit": "c547b45326e0d32c7cc62634c275af31a2832f29",
+      "sha256": "1e335bbbb537a112ce4253060c9ca03f8dda947c96d254c2cc79364b327740d5"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+      "commit": "df504282947e6aa0c0b22b5542d9e49bb1e5f376",
+      "sha256": "7c9d8b0fe4846cd6fb785fea091eda544f66288079ea85755359c0e6325541f6",
+      "source_result_ids": [
+        "rational_greedy_skip_cofinality_characterization"
+      ]
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/rational_greedy_cofinal_skip_membership.card.json",
+      "commit": "652d137e287bcd64ef8e208d6c7a52e02c2ee7c1",
+      "sha256": "41089aa38a90a399778612a330e8500e9a7db16d4e61fb7893a066430e2c4c2d"
+    },
+    "review_generation": "2026-08-26_observatory_route_parity_v1"
+  },
+  "parity_audit": {
+    "status": "source_card_packet_current",
+    "effect": "The exact greedy equivalence, packet result, and reviewer card are bound to current committed generations. The endpoint remains a common consumer; no target-specific cofinal skip producer or #257 solution is promoted.",
+    "reentry_condition": "Re-enter if GreedyAchievementSet.lean, the packet result row, the reviewer card, or a target-specific cofinal-skip producer changes."
+  },
+  "review_unit": {
+    "result_family": "erdos257_rational_greedy_skip_cofinality",
+    "exact_result_id": "rational_greedy_skip_cofinality_characterization",
+    "evidence_class": "Lean-checked exact Mersenne equivalence plus externally sourced full-sum irrationality and strict-tail coding",
+    "confidence_ceiling": "High for the four named equivalence declarations at the pinned source; no confidence in a target-specific cofinal skip supply or #257 endpoint.",
+    "hard_step": "Produce canonical actual skips beyond every cutoff for a concrete unresolved nonnegative rational target.",
+    "open_boundary": "Finite scans, arbitrary omitted supports, negative targets, and target-specific producer heuristics do not establish the endpoint.",
+    "expert_review_act": "Verify the direction using full-sum irrationality and the reverse direction using the established infinite-skip consumer, then check that canonical greedy skips are not replaced by an arbitrary infinite complement."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "canonical greedy orbit and cofinal actual-skip production for rational Mersenne achievement-set membership",
+    "disposition": "replace the #257 programme and standalone-paper headline with this general rational-membership equivalence",
+    "consolidation_relation": "Consolidate infinite-support, cofinality, residual-convergence, and fatal-state endpoint language; subordinate 1/21 and every other target-specific remainder, compactness, affine, or branch mechanism as a producer attempt.",
+    "comparator_advisory": "One compact exact equivalence is justified. Do not split infinitude, cofinality, and the reverse consumer into separate result counts.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The canonical greedy normal form: rational membership means cofinal actual skipping",
+      "supersession_or_consolidation": "Replace parallel endpoint sections and retain target-specific mechanisms only as producer sections beneath the general theorem.",
+      "reason": "It states exactly what is finished and where target-specific open mathematics begins."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "admit as the #257 representative in the rolling 3-5-object cross-programme first-contact shortlist",
+      "why_care": "It gives one lossless comparison surface for every unresolved nonnegative rational target.",
+      "evidence_class": "four Lean declarations plus sourced external ingredients; target-specific producer absent",
+      "hard_step": "cofinally produce canonical actual skips for an unresolved target",
+      "prior_art_uncertainty": "exact synthesis unlocated verbatim; no priority inference",
+      "open_boundary": "no target-specific cofinal skips or #257 solution",
+      "demoted_predecessor": "the 1/21 fatal-branch normal form becomes a subordinate target-specific producer map"
+    }
+  },
+  "classification": {
+    "theorem_class": "rational_membership_equivalence_with_cofinal_actual_omissions_in_the_canonical_greedy_code_for_the_Mersenne_achievement_set",
+    "novelty_class": "apparently_unrecorded_scoped_synthesis_no_priority_claim",
+    "frontier_relation": "exact_common_consumer_interface_not_a_target_specific_cofinal_skip_producer",
+    "formalization_class": "Lean_checked_exact_Mersenne_specialization",
+    "priority_claim": "none",
+    "recommended_terminology": "cofinal actual-skip criterion for rational Mersenne membership",
+    "acceptable_descriptive_alias": "rational Mersenne greedy normal form",
+    "standard_mechanisms": [
+      "greedy decoding and uniqueness for a strictly superincreasing subset-sum code",
+      "irrationality of the full Erdős Lambert sum",
+      "cofinality as the order-theoretic form of infinitude",
+      "a separately verified infinite-skip survival and convergence consumer"
+    ],
+    "discouraged_terminology": [
+      "general greedy completeness theorem",
+      "arbitrary omitted-support criterion",
+      "cofinal skip proof for one half",
+      "new proof of Erdős--Borwein irrationality",
+      "solution of Erdős #257"
+    ],
+    "attribution": "Credit Kakeya for the classical subsum-set setting, Merkle--Hellman for the standard superincreasing greedy-decoding paradigm, Kovač--Tao for the strict-tail unique-coding statement for these Lambert weights, and Erdős for irrationality of the full sum. Attribute the exact rational/cofinal-actual-skip equivalence and its Lean formalization to the local development without asserting priority.",
+    "mathematical_interest": "The result is not a new greedy algorithm. Its interest is the exact bidirectional interface: rational membership forces an infinite complement by full-sum irrationality, while the source's fatal-state theorem makes cofinal actual omissions sufficient for membership.",
+    "reusable_scope": "Positive rational-weight achievement systems with strict-tail unique greedy coding, irrational total mass, rational finite subsums, and an independently proved infinite-omission convergence theorem.",
+    "why_it_matters": "It unifies every nonnegative rational target behind one producer obligation. Future #257 arguments can be compared at the level of cofinal canonical skips instead of proliferating target-specific remainder languages, while the theorem itself is not confused with solving any one target."
+  },
+  "primary_sources": [
+    {
+      "id": "kakeya_1914_partial_sums",
+      "title": "On the Set of Partial Sums of an Infinite Series",
+      "author": "Soichi Kakeya",
+      "venue": "Proceedings of the Tokyo Mathematico-Physical Society, second series 7 (1914), 250-251",
+      "doi": "10.11429/ptmps1907.7.14_250",
+      "url": "https://www.jstage.jst.go.jp/article/ptmps1907/7/14/7_14_250/_article",
+      "exact_anchor": "The original treatment of sets of sums of subseries of a convergent positive series.",
+      "supports": "The classical achievement-set or subsum-set setting.",
+      "does_not_support": "Greedy orbit terminology, rational targets, or the Mersenne equivalence."
+    },
+    {
+      "id": "merkle_hellman_1978_trapdoor_knapsacks",
+      "title": "Hiding Information and Signatures in Trapdoor Knapsacks",
+      "authors": ["Ralph Merkle", "Martin Hellman"],
+      "venue": "IEEE Transactions on Information Theory 24 (1978), 525-530",
+      "doi": "10.1109/TIT.1978.1055927",
+      "url": "https://doi.org/10.1109/TIT.1978.1055927",
+      "exact_anchor": "The superincreasing knapsack is the easy private code: subset sums have unique digit recovery by the greedy algorithm.",
+      "supports": "Canonical algorithmic antecedent for greedy decoding of superincreasing subset sums.",
+      "does_not_support": "Infinite descending weights, cofinal omissions, or the rational/full-sum irrationality argument."
+    },
+    {
+      "id": "erdos_1948_lambert_series",
+      "title": "On arithmetical properties of Lambert series",
+      "author": "Paul Erdős",
+      "venue": "Journal of the Indian Mathematical Society, new series 12 (1948), 63-66",
+      "url": "https://users.renyi.hu/~p_erdos/1948-04.pdf",
+      "exact_anchor": "The paper proves irrationality of $\\sum_{n\\ge1}1/(t^n-1)$ for every integer $t\\ge2$.",
+      "supports": "The load-bearing irrationality of the full Mersenne sum used to rule out a finite skipped complement for a rational represented target.",
+      "does_not_support": "Achievement-set membership or greedy skip criteria."
+    },
+    {
+      "id": "kovac_tao_2024_ahmes_series",
+      "title": "On several irrationality problems for Ahmes series",
+      "authors": ["Vjekoslav Kovač", "Terence Tao"],
+      "url": "https://arxiv.org/abs/2406.17593",
+      "exact_anchor": "Remark 13 proves $\\sum_{l>n}1/(t^l-1)<1/(t^n-1)$ and concludes that the fixed-base Lambert subsums are mutually distinct and form a Cantor set.",
+      "supports": "The exact strict-tail and unique-coding background for the Mersenne weights.",
+      "does_not_support": "The canonical greedy cofinal-skip equivalence for rational targets."
+    }
+  ],
+  "mechanism_comparison": {
+    "unique_greedy_code": "Strict tail dominance makes each support code unique and permits greedy digit recovery.",
+    "forward_rational_obstruction": "If a represented rational had only finitely many actual skips, the irrational full sum would equal that rational target plus a finite rational correction.",
+    "reverse_membership_consumer": "Cofinal actual skips exclude every absorbing fatal state; the source theorem then makes the greedy selected sums converge to the target.",
+    "positivity_boundary": "For negative targets, greedy may skip forever while membership is impossible; $q=-1$ is the sharp displayed countermodel.",
+    "canonicality_boundary": "The skips must be generated by the target's canonical greedy orbit, not chosen as an arbitrary infinite complement."
+  },
+  "representative_reassessment_2026_08_24": {
+    "decision": "retain the general cofinal-actual-skip equivalence as the programme representative and absolute-frontier candidate",
+    "hierarchy": [
+      {
+        "object": "rational_greedy_cofinal_skip_membership",
+        "role": "general lossless endpoint for every rational q >= 0"
+      },
+      {
+        "object": "four_ninths_diagonal_reachability_fork",
+        "role": "4/9-specific producer map; selected-landing anti-concentration and midpoint carry-equality exclusion remain open"
+      },
+      {
+        "object": "one_half_selected_ancestry_tail_survival_equivalence",
+        "role": "1/2-specific survival equivalence; an all-depth producer remains open"
+      },
+      {
+        "object": "twenty_one_mersenne_fatal_branch_normal_form",
+        "role": "1/21-specific affine and supercapacity producer map"
+      }
+    ],
+    "why_retain": "Only the general object gives a target-independent, exact statement of what membership requires. The other objects contain useful arithmetic coordinates but remain conditional or target-specific.",
+    "comparator_advisory": "Use one general equivalence firewall. A target-specific mechanism warrants a separate proposition only for independently reusable mathematics, never as a second endpoint count.",
+    "paper_disposition": "headline/core mechanism, with the three target-specific mechanisms consolidated beneath it as producer case studies",
+    "expert_judgment_requested": "Which, if any, target-specific mechanism can establish canonical actual skips beyond every cutoff without merely translating the same unresolved cofinal condition?",
+    "open_boundary": "No cofinal-skip producer has been proved for any listed unresolved target."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "greedy expansion superincreasing sequence achievement set",
+      "rational achievement set greedy cofinite complement irrational total",
+      "superincreasing sequence greedy subset sum Merkle Hellman",
+      "Mersenne achievement set rational greedy skips"
+    ],
+    "result": "The search located each standard ingredient separately but no source stating the exact rational-membership iff cofinal-canonical-skip equivalence for reciprocal-Mersenne weights.",
+    "boundary": "Non-location supports only an apparently unrecorded scoped-synthesis classification; the theorem receives no priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For nonnegative rational targets in the Mersenne achievement set, the standard strict-tail greedy code, Erdős's full-sum irrationality, and the established infinite-skip consumer combine to give membership exactly when the canonical orbit makes actual skips beyond every cutoff.",
+    "forbidden_wording": [
+      "Every greedy achievement system has this equivalence.",
+      "Any infinite omitted support proves membership.",
+      "The theorem proves cofinal skips for 1/2 or 1/21.",
+      "The result reproves Erdős's full-sum irrationality.",
+      "The theorem solves Erdős #257."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_general_greedy_theorem",
+      "not_a_target_specific_skip_producer",
+      "not_valid_for_negative_targets",
+      "not_erdos_257_solution"
+    ]
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "canonical greedy orbit and cofinal actual-skip production for rational Mersenne achievement-set membership",
+    "programme_disposition": "replace headline: this is the common rational-membership endpoint; target-specific mechanisms are subordinate producers, not parallel endpoint theorems",
+    "expert_attention_reason": "The equivalence gives the programme a single exact vocabulary while exposing the unresolved cofinal-skip producer as the real mathematical work.",
+    "evidence_class": "Lean-checked exact equivalence plus externally sourced Erdős irrationality and classical greedy/subsum background",
+    "hard_step": "Produce canonical actual skips cofinally for a concrete unresolved rational target.",
+    "prior_art_uncertainty": "Apparently unrecorded scoped synthesis only; all ingredients have conventional attribution and no priority claim is made.",
+    "open_boundary": "No target-specific cofinal-skip result, no negative-target extension, and no solution of Erdős #257.",
+    "comparator_interface": "One independent proposition interface is strongly justified; infinitude and cofinality must remain one equivalence family.",
+    "paper_disposition": "headline/core mechanism",
+    "paper_target_section": "The canonical greedy normal form: rational membership means cofinal actual skipping",
+    "paper_supersession_relation": "Replace competing support, residual, and fatal-state endpoint narratives; retain target-specific affine and compactness arguments only beneath this producer interface."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/rational_greedy_cofinal_skip_membership.card.json",
+      "effect": "Replace pending novelty language with mechanism-level attribution and a precise canonical-actual-skip terminology boundary."
+    },
+    {
+      "consumer": "Erdős #257 proof fleet",
+      "effect": "Use cofinal actual skips as the common endpoint for every nonnegative rational target; keep target-specific skip production open."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the theorem as a scoped synthesis and Lean formalization, not a new greedy principle or endpoint solution."
+    }
+  ],
+  "expert_review_support": {
+    "talk_state": "expert_talk_ready",
+    "hard_step": "Produce actual skips beyond every cutoff for a concrete unresolved rational target; the normal form does not provide that producer.",
+    "natural_friction": "Canonical-orbit ownership, nonnegativity, and the cofinal quantifier must stay explicit.",
+    "argument_structure": "The forward direction is an irrational-total-mass contradiction; the reverse direction is the local infinite-skip survival consumer; cofinality is the order-theoretic restatement of infinitude.",
+    "evidence_separation": "Erdős supplies the external irrationality theorem; the local Lean source checks the Mersenne equivalence and consumer; no finite trace proves the target-specific cofinal quantifier."
+  },
+  "digestion_assessment": {
+    "significance_grade": "A_minus_reusable_interface",
+    "attention_priority": "high within #257 because every rational target producer terminates here",
+    "consolidation_verdict": "one interface, with infinitude and cofinality treated as equivalent forms rather than separate advances",
+    "expert_review_gap": "independent review of the external irrationality dependency and the local reverse consumer"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "rational_greedy_cofinal_skip_membership",
+    "human_understanding_delta": "Separates the standard greedy background, the external irrationality input, the local reverse consumer, and the still-missing target-specific producer in a talk-ready form.",
+    "verification_state": "Pinned source hash matches and no new formal claim is introduced.",
+    "publication_or_review_state": "Expert-talk and claim-ceiling support are ready; independent expert review remains.",
+    "canonicalization_state": "Common interface for all nonnegative rational targets, with target-specific mechanisms kept subordinate.",
+    "unresolved_downstream_bottleneck": "Independent review and one genuine cofinal-skip producer.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_257.md",
+    "section": "The canonical greedy normal form: rational membership means cofinal actual skipping",
+    "canonical_mechanism_family": "canonical greedy orbit and cofinal actual-skip production for rational Mersenne achievement-set membership",
+    "relation": "Replaces the headline and consolidates infinite-support, cofinality, residual-convergence, and fatal-state endpoint language; subordinates target-specific producers; supersedes no theorem; retires duplicated endpoints.",
+    "understanding_delta": "The exact end condition is orbit-owned cofinal actual skipping, rather than one target-specific support or branch narrative.",
+    "evidence_boundary": "Lean checks the exact equivalence and local consumer; Erdős irrationality is external; no target-specific producer or finite trace is promoted.",
+    "hard_step": "Prove cofinal actual skips for one unresolved nonnegative rational target.",
+    "meaningful_failed_route": "Arbitrary omitted supports and long finite greedy traces do not establish the orbit-owned cofinal criterion; q=-1 falsifies a sign-free extension.",
+    "open_remainder": "No cofinal skips are proved for 1/2, 1/21, or another unresolved target; Erdős Problem 257 remains open."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The strict-tail greedy code and cofinality equivalence are formalized; the external irrationality input and target-specific producer are separate seams.",
+    "slow_down_at": "Check that the greedy skips are canonical orbit data, that nonnegativity is used, and that the forward direction cites Erdős's full-sum irrationality rather than silently reproving it.",
+    "automation_establishes": "The four named Lean declarations and the exact Mersenne membership equivalence at the pinned source commit.",
+    "expert_judgment_required": "Whether the equivalence is stated with the correct canonical-orbit quantifiers and whether any future producer genuinely supplies cofinal actual skips rather than an arbitrary complement.",
+    "review_act": "Audit both directions against the source declarations and the external irrationality dependency, then test one target-specific producer claim for canonical-skip ownership.",
+    "attention_ceiling": "Do not spend specialist time re-proving strict-tail uniqueness while the target-specific cofinal-skip producer remains open."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "evidence_class": "Lean-checked exact Mersenne membership equivalence, with Erdős full-sum irrationality and the reverse infinite-skip consumer as external/local inputs.",
+    "closest_known_result": "Kakeya's subsum-set framework, superincreasing greedy decoding, and Kováč--Tao strict-tail coding supply the standard ingredients; the exact rational/cofinal-canonical-skip synthesis is source-specific and carries no priority claim.",
+    "comparison_relation": "A lossless common endpoint interface for nonnegative rational Mersenne targets, not a target-specific cofinal-skip producer or a general greedy theorem.",
+    "exact_delta": "The local development binds four Lean declarations into one equivalence: rational membership iff the canonical greedy orbit makes actual skips beyond every cutoff, using external irrationality forward and the local infinite-skip consumer backward.",
+    "disconfirming_evidence": "Finite scans, arbitrary omitted supports, negative targets such as q=-1, and target-specific fatal branches do not establish the canonical cofinal quantifier.",
+    "confidence": {
+      "level": "high_for_pinned_equivalence_low_for_target_producers_and_originality",
+      "basis": "Source/card/packet hashes are current and the four declarations are Lean-pinned; the external irrationality and any producer remain distinct dependencies."
+    },
+    "significance": "High #257 endpoint-map value: it gives every future producer one exact obligation and retires parallel infinitude/cofinality endpoint narratives.",
+    "claim_ceiling": "For nonnegative rational targets, the pinned Mersenne equivalence identifies membership with cofinal actual skips of the canonical greedy orbit; no target-specific skip supply, irrationality proof, negative-target extension, or #257 solution follows.",
+    "hard_step": "Produce canonical actual skips beyond every cutoff for one unresolved nonnegative rational target.",
+    "open_boundary": "No target-specific cofinal-skip producer has been proved for 1/2, 1/21, or another unresolved target.",
+    "bounded_expert_review_act": "Verify both equivalence directions and inspect one proposed producer to ensure its skips belong to the target's canonical greedy orbit.",
+    "reentry_trigger": "Reopen on a source/card/packet generation change, a correction to the greedy convention, or a genuine target-specific cofinal producer.",
+    "source_generation": {
+      "source_commit": "c547b45326e0d32c7cc62634c275af31a2832f29",
+      "source_sha256_observed": "1e335bbbb537a112ce4253060c9ca03f8dda947c96d254c2cc79364b327740d5",
+      "card_sha256_observed": "41089aa38a90a399778612a330e8500e9a7db16d4e61fb7893a066430e2c4c2d"
+    },
+    "classification": {
+      "result_family": "erdos257_rational_greedy_skip_cofinality",
+      "evidence_class": "Lean_checked_exact_Mersenne_equivalence_plus_external_irrationality_and_local_consumer",
+      "closest_prior_art": "Kakeya subsum-set setting, superincreasing greedy decoding, and Kováč--Tao strict-tail coding; exact rational/cofinal-actual-skip packaging is source-specific",
+      "comparison_relation": "exact common consumer interface, not a target-specific producer",
+      "novelty_confidence": "strong_internal_provisional_for_the_exact_packaging; no priority claim",
+      "significance_grade": "high_as_#257_endpoint_map",
+      "why_care": "Every nonnegative rational target can now be discussed through one canonical orbit-owned producer obligation instead of target-specific support and remainder languages.",
+      "hard_step": "Produce actual canonical skips beyond every cutoff for one unresolved nonnegative rational target.",
+      "disconfirming_evidence": "Finite scans, arbitrary omitted supports, and the q=-1 boundary do not establish the canonical cofinal-skip condition.",
+      "confidence_ceiling": "High for the four named equivalence declarations; no claim for 1/2, 1/21, irrationality, or #257 solution.",
+      "bounded_expert_act": "Check both directions and verify that canonical greedy skips—not an arbitrary infinite complement—are used.",
+      "reentry_condition": "Re-enter only if source/card generation changes or a genuine target-specific cofinal producer lands."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#257 canonical greedy orbit and cofinal actual-skip endpoint",
+      "disposition": "replace_headline_and_subordinate_target_specific_producers",
+      "paper_disposition": "headline_core_endpoint_map_in_the_#257_section",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "one bundled Lean-checked equivalence with external-input labels adjacent",
+      "expert_attention_reason": "It is the reusable interface that tells the reviewer exactly what any future #257 producer must prove."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verification",
+      "output_stage": "expert_understanding_and_canonicalization",
+      "artifact": "rational_greedy_cofinal_skip_membership",
+      "human_understanding_delta": "Separates standard greedy coding and external irrationality from the local reverse consumer and the still-missing producer.",
+      "verification_state": "Pinned Lean equivalence is source-current; no target-specific producer or new replay claimed.",
+      "publication_or_review_state": "internal adjudication; exact Comparator advisory possible without a novelty claim",
+      "canonicalization_state": "#257 representative and endpoint map; coordinate refinements remain subordinate",
+      "unresolved_downstream_bottleneck": "one genuine cofinal actual-skip producer",
+      "next_stage_owner": "Mathematics Refinery and #257 producer owners"
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_card_packet_current_and_claim_bound",
+    "bound_snapshot": {
+      "formal_source_commit": "c547b45326e0d32c7cc62634c275af31a2832f29",
+      "formal_source_sha256": "1e335bbbb537a112ce4253060c9ca03f8dda947c96d254c2cc79364b327740d5",
+      "research_packet_commit": "df504282947e6aa0c0b22b5542d9e49bb1e5f376",
+      "research_packet_sha256": "7c9d8b0fe4846cd6fb785fea091eda544f66288079ea85755359c0e6325541f6",
+      "reviewer_card_commit": "652d137e287bcd64ef8e208d6c7a52e02c2ee7c1",
+      "reviewer_card_sha256": "41089aa38a90a399778612a330e8500e9a7db16d4e61fb7893a066430e2c4c2d"
+    },
+    "claim_guard": "The equivalence is the reusable endpoint map; external irrationality and any target-specific cofinal skip producer remain separate inputs and cannot be inferred from this snapshot.",
+    "reentry_trigger": "Re-enter on source/card/packet generation change, a correction to the greedy convention, or a genuine target-specific cofinal producer."
+  }
+}

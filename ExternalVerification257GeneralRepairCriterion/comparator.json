@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257GeneralRepairCriterion.Challenge",
+  "solution_module": "ExternalVerification257GeneralRepairCriterion.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs",
+    "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

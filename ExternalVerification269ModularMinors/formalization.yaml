@@ -1,0 +1,181 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #269: admissible modular minors at every order"
+  description: >-
+    At the three prime generators 2, 3 and 5, attach to an exponent vector the inverse of
+    the running-LCM height of the corresponding smooth number. For every order n there is
+    one pair of injective index maps that works simultaneously over the rationals and over
+    every admissible residue ring: the rational minor is nonzero at every layer, and for
+    every modulus B at least two and coprime to 30, and every layer, the reduced minor is a
+    unit and the reduced matrix is invertible. The index maps are selected before both the
+    modulus and the layer, which is what makes this a statement about a single selection
+    rather than a family of selections depending on the modulus. The proof factors the
+    kernel as a diagonal row unit, a carry staircase, and a diagonal column unit, and
+    computes the staircase determinant as a unit in any commutative ring where 2, 3 and 5
+    are units; admissibility is exactly that condition on the residue ring. Reduction is
+    the inverse of the natural height inside the residue ring, so no ring map from the
+    rationals is used or needed. The readers are number theorists reading the Erdős 269
+    note; the statement is a rank and invertibility result and carries no irrationality
+    content.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "draining"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269ModularMinors/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269ModularMinors/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "no_comparator_replay_performed"
+  research_interest_status: "plausible_research_note_grade_uniform_modular_minor_theorem"
+  submission_authorization: "not_authorized_local_preparation_only"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "no Comparator positive acceptance or deliberate-negative rejection has been recorded"
+  note: >-
+    Prepared locally during the round-7 paper-complete Lean assimilation. No
+    local artifact is represented as a Palomar verdict or registry entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A05", "11C20"]
+
+sources:
+  - title: "No finite separable representation at three prime generators (Erdős Problem 269)"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The modular minors are Corollary res:admissible-modular-minors of the short
+      note. The Lean proof carries out the unit computation in an arbitrary
+      commutative ring and then specialises it to the rationals and to every
+      admissible residue ring with one index selection.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #269"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/269"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering and open status.
+      The modular minor result is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem produces a single pair of injective index maps and
+    establishes three conclusions for it: rational nonvanishing at every layer,
+    unit reduced determinant for every admissible modulus and layer, and
+    invertibility of the reduced matrix. Challenge.lean has one intentional
+    Comparator specification sorry; Solution.lean and the imported source are
+    sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "focused_lean_passed_exact_permitted_axioms"
+  actual_axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification269ModularMinors.admissible_modular_minors"
+      file: "ExternalVerification269ModularMinors/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269ModularMinors/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        Direct transport of
+        ErdosProblems.Erdos269.PaperR7.admissible_modular_minors from
+        ErdosProblems/Erdos269/PaperR7ModularMinors.lean, elaborated with
+        Lean v4.29.1 and Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6.
+      novelty_status: "unassessed"
+      contribution_class: "uniform modular invertibility of selected kernel minors"
+      statement: >-
+        One index selection gives nonzero rational minors at every layer and unit
+        reduced minors over every residue ring of modulus at least two coprime to
+        thirty, at every layer.
+      boundary: >-
+        A rank and invertibility statement about the kernel. It supplies no
+        irrationality argument and does not settle Erdős 269, which remains open.
+      comparator_declaration: "Erdos249257.ExternalVerification269ModularMinors.admissible_modular_minors"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Claude Opus"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, repair and verification packaging"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The page states the corollary for the index maps of its Theorem 1 and asserts
+    invertibility over the residue ring. The Lean statement makes the selection
+    explicit by producing the maps together with all three conclusions, and adds
+    the rational nonvanishing clause so that the phrase "the maps in Theorem 1"
+    is discharged inside the same declaration. No hypothesis is weakened.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source corollary, the Challenge and Solution statement shape, the
+    reduction convention, and the open-problem boundary were reviewed. Terminal
+    Comparator replay, independent human peer review, Palomar decision, and
+    registry acceptance are unclaimed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification269ModularMinors"
+  statements:
+    - source: "Short note Corollary res:admissible-modular-minors."
+      lean: "Erdos249257.ExternalVerification269ModularMinors.admissible_modular_minors"
+      module: "ExternalVerification269ModularMinors/Challenge.lean"
+      status: "exact-existential-transport"
+      note: >-
+        The Challenge produces the index maps and states all three conclusions in
+        Mathlib-only vocabulary, matching the Solution token for token.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

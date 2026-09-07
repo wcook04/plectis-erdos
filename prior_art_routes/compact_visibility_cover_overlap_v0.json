@@ -1,0 +1,183 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-08-24T00:00:00Z",
+  "created_by": "codex_root",
+  "status": "adjudicated_standard_core_application_packaging_scoped",
+  "route_id": "compact_visibility_cover_overlap",
+  "problem_id": "erdos_1041",
+  "source_result_ids": [
+    "visibility_overlap_reduction_to_a_one_root_statement",
+    "adaptive_mec_chord_or_radial_counterexample"
+  ],
+  "adjudication_currentness": {
+    "status": "source_card_and_dense_closure_companion_current_at_committed_snapshot",
+    "bound_snapshot": {
+      "source_commit": "a5533c5bbfc3ecba5f87ac9bd84eac517d06b6e1",
+      "source_sha256": "767d0d859d6fc62472d0358d619d44c92208e0a750f6a1585c9fda353776ad72",
+      "reviewer_card_commit": "a5e48239d3f194ed9e14fd9936ca95e50869555a",
+      "reviewer_card_sha256": "8c2f6df631ab54986c23424bb476535154f63395594e29b0e7ac0d31af016b55",
+      "research_packet_sha256": "625b89fdeb0e727da56fc0b204a3c73089232184f32d8369d9d02cb2e43e9232",
+      "companion_source_commit": "32c28bf61f27dbf4e446e6f182475fa669de28b7",
+      "companion_source_sha256": "68bcf23e0ee3f446a276e6f182475fa669de28b7d7f13b982b3bc304c5179262"
+    },
+    "claim_guard": "The current source, reviewer card, and dense-closure companion are bound at committed snapshots. The dense-subclass transfer requires an actual length-<=2 path witness on a genuinely dense class; genericity, containment, or component stability alone cannot be substituted for that witness. COVER remains unproved.",
+    "reentry_trigger": "Reopen after any source/card/companion parity change, or any change to the COVER quantifiers, first-merge transport, or adaptive-MEC boundary."
+  },
+  "reviewer_attention_budget": {
+    "review_act": "Check the closedness of bounded-visibility regions and the exact quantifier order in first-merge COVER.",
+    "expert_judgment_required": "Assess the lemniscate transport and producer contract; the abstract overlap lemma itself is routine.",
+    "attention_disposition": "high_conditional_reduction_but_not_flagship"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos1041_compact_visibility_cover_overlap@source-c778-card-ce602",
+    "source_generation_binding": {
+      "source_commit": "c77898fbb9f329f9f86d4801102e9c6d710ccfd2",
+      "source_sha256": "b373871efacea2492d96189b0f390240ba636bc2f3354fa74de31627af044edc",
+      "reviewer_card_commit": "ce602d543834bc14a56b3906a815f9016a8de68b",
+      "reviewer_card_sha256": "fbe5ebd98e848439c1bb2ab767fee826a5858a9e06f9ecad8ccaee0b7857fc77",
+      "source_currentness_note": "Current source is a5533c5bbfc3ecba5f87ac9bd84eac517d06b6e1; card parity remains bound to c778."
+    },
+    "evidence_class": "Direct proof of a standard finite closed-cover overlap lemma; ordinary source-pinned #1041 conditional reduction; exact finite Gaussian-rational countermodel for the stronger chord-or-two-arms route.",
+    "closest_known_result": "Burago--Burago--Ivanov, Course in Metric Geometry, Theorem 2.5.14 and Proposition 2.5.19, supplies compact length-space compactness/attainment context. The finite closed-cover intersection argument is elementary connectedness; no special eponym was located.",
+    "comparison_relation": "Standard compactness and connectedness packaged as a useful one-root visibility consumer; the lemniscate composition is source-specific and conditional on COVER.",
+    "exact_delta": "Separates the covering set Γ from the path ambient set Ω, allowing a finite one-root cover at an existential first-merge level to yield an additive two-root path bound.",
+    "disconfirming_evidence": "The adaptive-MEC degree-five witness kills the stronger chord-or-two-arms substitute. COVER itself remains unproved; no Lean theorem, endpoint result, or Erdős #1041 solution follows.",
+    "confidence": {
+      "abstract_overlap_proof": "high_internal_provisional",
+      "lemniscate_transport_at_bound_snapshot": "moderate_internal_provisional",
+      "independent_novelty": "low for topology; unassessed for the packaging"
+    },
+    "significance": "B_canonical_conditional: high explanatory value because it replaces many failed two-object routes with one falsifiable one-root producer contract; not the #1041 flagship.",
+    "claim_ceiling": "State one-root COVER at some first-merge level implies the strict two-root path after minimum-enclosing-disk normalization. Do not claim COVER is proved or that the abstract lemma solves #1041.",
+    "hard_step": "Prove all-degree one-root COVER with the full component and level quantifiers; this is where the mathematical risk sits, not in connectedness.",
+    "open_boundary": "COVER, its level-selection mechanism, the sharp constant-one issue, and #1041 remain open. Source/card parity must be refreshed after later source edits.",
+    "bounded_expert_act": "Verify the visibility-region closedness argument and one first-merge transport instance, then check the COVER quantifier order against the pinned source snapshot.",
+    "reentry_trigger": "Reopen on source/card parity refresh, a COVER producer, or a stronger prior-art result for this exact visibility packaging.",
+    "mechanism_family": "#1041 finite compact visibility overlap and one-root COVER reduction",
+    "disposition": "admit_as_conditional_core_under_component_perimeter",
+    "expert_attention_reason": "It gives the paper its cleanest surviving obligation while preserving the exact degree-five boundary against stronger hub selectors.",
+    "paper_disposition": "supporting lemma",
+    "paper_section": "The one-root COVER reduction",
+    "supersession_relation": "Consolidate compactness, connectedness, first-merge transport, MEC strictness, and the adaptive-MEC route boundary here; keep the component-perimeter theorem as flagship parent.",
+    "comparator_interface_justified": true,
+    "comparator_reason": "One status-tagged conditional interface is independently legible when it preserves the first-merge existential-level COVER premise and ordinary-proof evidence label; expose no bare overlap lemma."
+  },
+  "target": {
+    "card": "docs/formal_math/reviewer_cards/compact_visibility_cover_overlap.card.json",
+    "source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/VisibilityOverlapReduction.md",
+    "landed_source_commit": "a5533c5bbfc3ecba5f87ac9bd84eac517d06b6e1",
+    "reviewer_card_commit": "a5e48239d3f194ed9e14fd9936ca95e50869555a",
+    "reviewer_card_sha256": "8c2f6df631ab54986c23424bb476535154f63395594e29b0e7ac0d31af016b55",
+    "companion_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md",
+    "companion_source_commit": "32c28bf61f27dbf4e446e6f182475fa669de28b7",
+    "companion_source_sha256": "68bcf23e0ee3f446a276e6f182475fa669de28b7d7f13b982b3bc304c5179262",
+    "statement": "A finite cover of a compact connected metric space by closed bounded-length visibility regions contains an overlapping pair, yielding a path between two anchors of length at most the sum of their budgets."
+  },
+  "classification": {
+    "overall": "standard_compact_metric_geometry_plus_elementary_connectedness_with_problem_specific_visibility_packaging",
+    "closed_visibility_regions": "standard_closed_sublevel_property_of_the_induced_extended_length_distance_on_a_compact_metric_space",
+    "finite_cover_overlap": "routine_connectedness_consequence_no_special_name_needed",
+    "unequal_budget_form": "direct_additive_restatement",
+    "lemniscate_composition": "useful_conditional_reduction_interface_not_a_solution_and_not_an_independent_topology_result",
+    "novelty_or_priority": "none_claimed",
+    "confidence": "high"
+  },
+  "recommended_name": {
+    "short_name": "finite closed intrinsic-ball cover overlap",
+    "visibility_name": "finite bounded-visibility cover overlap",
+    "name_status": "descriptive_local_name_not_an_established_eponym",
+    "attribution": "For the closedness step cite Burago--Burago--Ivanov, Theorem 2.5.14 and Proposition 2.5.19; for the overlap step say simply 'by connectedness' or 'the intersection graph of a finite closed cover of a connected space is connected'."
+  },
+  "sources": [
+    {
+      "source_id": "burago_burago_ivanov_2001_course_metric_geometry",
+      "citation": "D. Burago, Y. Burago, and S. Ivanov, A Course in Metric Geometry, Graduate Studies in Mathematics 33, American Mathematical Society, 2001",
+      "url": "https://www.ams.org/bookstore/pspdf/gsm-33-prev.pdf",
+      "annex_slug": "burago-burago-ivanov-2001-course-metric-geometry",
+      "source_archive": "annexes/burago-burago-ivanov-2001-course-metric-geometry/source.pdf",
+      "source_pdf": "annexes/burago-burago-ivanov-2001-course-metric-geometry/source.pdf",
+      "source_archive_sha256": "83a9f75d5ead6c9cc82ab7cb588976e6f9416e22667407610056e78624656985",
+      "source_pdf_sha256": "83a9f75d5ead6c9cc82ab7cb588976e6f9416e22667407610056e78624656985",
+      "extracted_markdown": "annexes/burago-burago-ivanov-2001-course-metric-geometry/extracted.md",
+      "extracted_markdown_sha256": "9cbe11659a18adee1055fe617f5ff7d4acac878d40d5749c6664c1e77a70e7d4",
+      "exact_locators": [
+        "Theorem 2.5.14, printed p. 48: uniformly length-bounded curves in a compact metric space have a uniformly convergent subsequence",
+        "Proposition 2.5.19, printed pp. 49--50: a rectifiably connected pair in a compact metric space has a shortest path, using lower semicontinuity of length"
+      ],
+      "relationship": "These results make the induced extended length distance attain finite values and make its finite sublevel balls closed in the original compact topology.",
+      "claim_boundary": "The text does not state the visibility terminology, the finite-cover consumer, or the lemniscate reduction."
+    },
+    {
+      "source_id": "connectedness_definition",
+      "citation": "The defining separation characterization of connectedness",
+      "url": null,
+      "exact_locator": "A connected space has no partition into two nonempty disjoint clopen subsets.",
+      "relationship": "If the intersection graph of a finite nonempty closed cover were disconnected, the unions over its two vertex classes would be disjoint nonempty closed complements, hence a separation.",
+      "claim_boundary": "This is foundational topology rather than a literature-sensitive theorem requiring an eponym."
+    }
+  ],
+  "mechanism_comparison": {
+    "intrinsic_ball_reformulation": "Let d_L be the extended length distance on X. Proposition 2.5.19 shows that whenever d_L(x,a_j) is finite it is attained, so V_j={x:d_L(x,a_j)<=r_j}; bounded-curve compactness and lower semicontinuity make this sublevel closed.",
+    "cover_consumer": "The proof needs only that a finite nonempty closed cover of a connected space has connected intersection graph; one edge gives the desired pair.",
+    "budget_additivity": "Concatenating the two witness curves is exactly the triangle inequality for d_L and gives r_i+r_j.",
+    "application_delta": "The lemniscate reduction uses the overlap consumer to turn a one-root intrinsic cover into the required two-root path, then the minimum-enclosing-disk normalization makes the final inequality strict."
+  },
+  "significance": {
+    "abstract_theorem": "low novelty and low independent research significance; it is a clean reusable lemma worth naming descriptively for navigation",
+    "visibility_packaging": "moderate expository and interface significance because it exposes the exact consumer contract for any future COVER proof",
+    "lemniscate_composition": "material scoped significance as a reduction of the two-root selection problem to a one-root cover statement, conditional on unproved COVER",
+    "reusable_scope": "compact path-planning, intrinsic-ball coverage, network realization, and sublevel-component arguments with finitely many anchors",
+    "claim_ceiling": "standard general lemma plus a conditional Erdos 1041 reduction; COVER remains unproved and the open problem remains open"
+  },
+  "disconfirmation_search": {
+    "performed_at": "2026-08-24",
+    "query_focus": [
+      "compact metric space length distance lower semicontinuous",
+      "intrinsic metric closed balls compact metric space Arzela--Ascoli",
+      "finite closed cover connected intersection graph"
+    ],
+    "result": "The metric step appears directly in standard metric-geometry sources. No distinct established eponym for the exact visibility packaging was located.",
+    "interpretation": "The absence of an eponym is not novelty evidence; descriptive naming is preferable."
+  },
+  "landing_consumers": [
+    "docs/formal_math/reviewer_cards/compact_visibility_cover_overlap.card.json",
+    "annexes/burago-burago-ivanov-2001-course-metric-geometry/distillation.json"
+  ],
+  "checkpoint": {
+    "adjudication_date": "2026-08-24",
+    "public_wording": "A standard compact-metric-geometry and connectedness lemma, packaged as a bounded-visibility interface. Its value here is the conditional reduction from one-root coverage to a two-root path, not a novelty claim for the abstract lemma.",
+    "do_not_claim": [
+      "a new compactness or connectedness theorem",
+      "an established literature name for visibility overlap",
+      "that the lemma proves COVER",
+      "that the conditional reduction settles Erdos 1041"
+    ]
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "The one-root COVER reduction",
+    "canonical_mechanism_family": "finite compact visibility overlap and first-merge component one-root coverage",
+    "relation": "Conditional core reduction: consolidate the standard overlap consumer and the MEC-normalized first-merge transport; subordinate failed two-connector mechanisms.",
+    "understanding_delta": "The exact missing producer is a one-root cover statement with explicit level and component quantifiers.",
+    "evidence_boundary": "Standard compact metric proof is direct; the #1041 transport is ordinary source-pinned prose with limited exact checker support, not Lean or independent review.",
+    "hard_step": "Prove COVER at some first-merge level for every normalized polynomial.",
+    "meaningful_failed_route": "Demand two safe root connectors at a prescribed hub or infer a two-branch budget from one selected flow hub.",
+    "open_remainder": "COVER and Erdős #1041 remain open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "conditional source reduction plus standard compact-metric ingredients",
+    "output_stage": "expert exposition and canonical one-root producer contract",
+    "artifact": "finite visibility overlap card, route, and #1041 paper assimilation",
+    "human_understanding_delta": "The downstream mathematical obligation is one exact COVER statement rather than a collection of failed two-object geometries.",
+    "verification_state": "Direct proof on card for the abstract core; ordinary source-pinned #1041 reduction with declared checker support only.",
+    "publication_or_review_state": "Paper-only and conditional; no external review, acceptance, Lean formalization, or endpoint result claimed.",
+    "canonicalization_state": "One conditional reduction family consolidates the compactness and connectedness consumer with first-merge normalization.",
+    "unresolved_downstream_bottleneck": "An all-degree COVER producer and specialist review of the lemniscate transport.",
+    "next_stage_owner": "#1041 geometry owners and complex-dynamics reviewers."
+  },
+  "downstream_handoff": {
+    "disposition": "comparator_candidate_status_tagged_conditional_core_reduction",
+    "comparator_advisory": "One status-tagged conditional interface is eligible now if it preserves the first-merge, existential-level COVER contract and labels the reduction ordinary-proof rather than Lean-checked. Do not expose the standard abstract overlap lemma alone.",
+    "shortlist_decision": "do_not_admit_retain_five"
+  }
+}

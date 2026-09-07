@@ -1,0 +1,142 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #269: pinning and rigidity of the actual integral branch"
+  description: >-
+    Exact mixed-radix telescoping, pinning, upward closure, and window-rigidity
+    theorems for the literal infinite {2,3,5} normalized shell orbit.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "expanded_candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269IntegralBranchPinning/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269IntegralBranchPinning/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_deferred_typed_low_disk_exit_75"
+  research_interest_status: "research_note_grade_actual_orbit_branch_rigidity"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "the expanded four-endpoint source transport and axiom audit require terminal focused validation"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A05", "11J72"]
+
+sources:
+  - title: "Pinning and rigidity of the actual three-prime shell orbit"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #269"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/269"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Four compared theorems expose exact mixed-radix telescoping, pinning,
+    integral upward closure, and shrinking-window rigidity for the literal
+    infinite shell orbit without claiming to exclude the integral branch.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: "expanded_package_pending_focused_validation"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_eq_telescope"
+      file: "ExternalVerification269IntegralBranchPinning/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269IntegralBranchPinning/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos269/IntegralBranchWidth.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact finite-depth mixed-radix expansion with genuine tail remainder"
+      boundary: "The identity does not itself bound the remainder or exclude an integral state."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_pinning"
+      file: "ExternalVerification269IntegralBranchPinning/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269IntegralBranchPinning/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos269/IntegralBranchExtinction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact source-orbit pinning identity"
+      boundary: "Does not exclude an integral state."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.integral_state_upward_closed"
+      file: "ExternalVerification269IntegralBranchPinning/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269IntegralBranchPinning/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos269/IntegralBranchExtinction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact integral-index final-segment theorem"
+      boundary: "Classifies propagation after an integral state, not existence."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.surviving_window_orbit_eq_true_state"
+      file: "ExternalVerification269IntegralBranchPinning/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269IntegralBranchPinning/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos269/IntegralBranchExtinction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact shrinking-window orbit rigidity"
+      boundary: "Requires the full recurrence, common windows, and exact asymptotic width hypothesis."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The challenge reproduces the literal shell, ordered radix and digit,
+    recurrence, common-window, and vanishing-width hypotheses exactly.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Exact hypotheses and the open integral-state boundary were reviewed."
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification269IntegralBranchPinning"
+  statements:
+    - source: "ErdosProblems.Erdos269.trueNormalizedState_eq_telescope"
+      lean: "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_eq_telescope"
+      module: "ExternalVerification269IntegralBranchPinning/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos269.trueNormalizedState_pinning"
+      lean: "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_pinning"
+      module: "ExternalVerification269IntegralBranchPinning/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos269.integral_state_upward_closed"
+      lean: "Erdos249257.ExternalVerification269IntegralBranchPinning.integral_state_upward_closed"
+      module: "ExternalVerification269IntegralBranchPinning/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos269.surviving_window_orbit_eq_true_state"
+      lean: "Erdos249257.ExternalVerification269IntegralBranchPinning.surviving_window_orbit_eq_true_state"
+      module: "ExternalVerification269IntegralBranchPinning/Challenge.lean"
+      status: "exact-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

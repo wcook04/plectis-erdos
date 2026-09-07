@@ -1,0 +1,3 @@
+import ExternalVerification243GcdStabilisation.Solution
+
+#print axioms Erdos249257.ExternalVerification243GcdStabilisation.gcd_stabilises_and_reduces

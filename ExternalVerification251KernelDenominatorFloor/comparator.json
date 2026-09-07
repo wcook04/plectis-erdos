@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification251KernelDenominatorFloor.Challenge",
+  "solution_module": "ExternalVerification251KernelDenominatorFloor.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251KernelDenominatorFloor.cert_10000",
+    "Erdos249257.ExternalVerification251KernelDenominatorFloor.den_bound_of_certCheck",
+    "Erdos249257.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor",
+    "Erdos249257.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor_primeGap"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

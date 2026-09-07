@@ -1,0 +1,200 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #257: a pointwise repair criterion for base-two Mersenne achievement"
+  description: >-
+    A nonnegative real belongs to the base-two Mersenne achievement set exactly when its
+    greedy defect fails to increase at cofinally many scales, and exactly when it fails to
+    increase at one scale inside every window of width 2*sqrt(K) + 12 starting at K. The
+    greedy defect at scale N is the dyadic numerator of the target minus the dyadic numerator
+    already paid by the exponents the greedy rule has selected, so it is a single sequence of
+    natural numbers attached to the target. The criterion replaces a quantifier over supports
+    by a pointwise inequality on that sequence, and the second form localises the search to a
+    window of width O(sqrt K), which is what makes a finite search at each scale meaningful.
+    Both directions are proved. The readers are number theorists working on irrationality of
+    Mersenne-type reciprocal sums. The criterion decides no particular target, in particular
+    it does not decide one half, and it supplies no infinite-support irrationality argument.
+    Erdős Problem 257 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "draining"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257GeneralRepairCriterion/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257GeneralRepairCriterion/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "no_runner_replay_recorded"
+  submission_authorization: "not_authorised_no_submission_prepared"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "no Comparator or NanoDa run has been recorded on a supported runner"
+    - "the package is not registered in lakefile.toml; only focused single-file elaboration has been performed"
+  note: >-
+    Authored in the r7 paper-complete assimilation wave. No local artifact is represented as
+    a Palomar verdict or registry entry, and no submission was made.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A55", "11J72", "11B83"]
+
+sources:
+  - title: "A general greedy repair criterion for the Mersenne achievement set"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The proof compares the greedy prefix numerator with the floor of the scaled target and
+      shows that a scale at which the defect does not increase is exactly a scale at which the
+      greedy rule recovers, then bounds the search window by the divisor bound tau(n) <= 2*sqrt(n).
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and open status.
+      The repair criterion is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Two compared theorems expose the cofinal form and the sqrt-window form of the repair
+    criterion. Challenge.lean has two intentional Comparator specification sorries;
+    Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    The only deliberate placeholders are the two trusted theorem bodies in Challenge.lean.
+  axiom_audit_status: "focused_lean_passed_exact_permitted_axioms"
+  actual_axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs"
+      file: "ExternalVerification257GeneralRepairCriterion/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257GeneralRepairCriterion/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        Transport of ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_cofinal_repairs from
+        ErdosProblems/Erdos257/GreedyRepairCriterion.lean line 175, through one identification
+        equation per definition in the chain mersenneWeight, greedyMersenneRemainder,
+        greedyMersenneSupport, supportCoeff, binaryCoeffPrefixNumerator, greedyBinaryDefect,
+        positiveMersenneSupportValue, mersenneAchievementSet.
+      novelty_status: "unassessed"
+      contribution_class: "pointwise membership criterion"
+      statement: >-
+        Membership in the base-two Mersenne achievement set is equivalent to cofinal
+        non-increase of the greedy defect.
+      boundary: >-
+        The criterion decides no particular target and gives no infinite-support irrationality
+        argument. Erdős 257 remains open.
+      comparator_declaration: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows"
+      file: "ExternalVerification257GeneralRepairCriterion/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257GeneralRepairCriterion/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        Transport of ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_sqrt_windows from
+        ErdosProblems/Erdos257/GreedyRepairCriterion.lean line 192, through the same
+        identification equations.
+      novelty_status: "unassessed"
+      contribution_class: "localised membership criterion"
+      statement: >-
+        The same equivalence holds with the witnessing scale confined to the window
+        [K, K + 2*sqrt K + 12).
+      boundary: >-
+        The window constant is the one carried by the divisor bound in the source proof. The
+        criterion decides no particular target. Erdős 257 remains open.
+      comparator_declaration: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Anthropic Claude"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: >-
+        Focused source-local Lean checking with the pinned toolchain, Lean v4.29.1 and Mathlib
+        5e932f97dd25535344f80f9dd8da3aab83df0fe6. Solution.lean and Challenge.lean each
+        elaborate at rc=0, and #print axioms over both compared theorems returns exactly
+        propext, Classical.choice and Quot.sound.
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator preparation and
+    any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The Challenge re-declares the definition chain in Mathlib vocabulary because a Mathlib-only
+    Challenge cannot name the source definitions. Solution.lean proves one identification
+    equation per definition, so the compared statements are the source statements. No unproved
+    claim is added and no hypothesis is dropped.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem pair, the Challenge and Solution statement shape, the definition
+    identification chain, and the open-problem boundary were reviewed. Comparator and NanoDa
+    replay, a deliberate-negative fixture, independent human peer review, Palomar decision and
+    registry acceptance are all unclaimed and absent.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257GeneralRepairCriterion"
+  statements:
+    - source: "Source theorem for the cofinal repair criterion."
+      lean: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs"
+      module: "ExternalVerification257GeneralRepairCriterion/Challenge.lean"
+      status: "exact-direct-transport"
+      note: >-
+        The Challenge preserves the source hypothesis and both directions of the equivalence.
+    - source: "Source theorem for the sqrt-window repair criterion."
+      lean: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows"
+      module: "ExternalVerification257GeneralRepairCriterion/Challenge.lean"
+      status: "exact-direct-transport"
+      note: >-
+        The Challenge preserves the source window bound with the constant 12.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

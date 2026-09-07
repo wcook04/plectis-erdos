@@ -1,0 +1,18 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "tied_newton_face_complex_rotated_diameter_tube",
+  "input_stage": "real_asymmetric_two_scale_tube_plus_rotational_leading_coefficient_normalization",
+  "output_stage": "all_degree_even_complex_coefficient_rotated_diameter_certificate",
+  "artifact": [
+    "ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTube.md",
+    "ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTube.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_complex_diameter_tube.py"
+  ],
+  "human_understanding_delta": "The two-scale diameter mechanism does not require real lower coefficients. In every even degree, arbitrary complex lower modes satisfying finite norm budgets preserve a uniformly negative rotated diameter along any unit direction u with u^N=1. For fixed direction and cutoff the region is an exact full-dimensional convex intersection of two weighted complex l1 balls and a half-space, and the existing moving-root staple identity keeps transfer metric-free.",
+  "verification_state": "ordinary proof, exact Gaussian-rational checker, focused Lean build, and final serialized Lake authority check passed",
+  "publication_or_review_state": "private source-authority auxiliary theorem; not externally published",
+  "canonicalization_state": "complex rotated-diameter theorem strictly supersedes the real asymmetric tube for packet allocation",
+  "unresolved_downstream_bottleneck": "prove its uniform compactified containment transfer to actual near-Fekete polynomials and cover coefficient faces outside all rotated norm-budget tubes",
+  "next_stage_owner": "all-degree joint selector and resolved stratified transfer"
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstTwoCriticalOptimizedBergman.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.FirstTwoCriticalOptimizedBergman.derivativeBracket_neg",
+      "ErdosProblems.Erdos1041.FirstTwoCriticalOptimizedBergman.lengthSq_lt_four_of_cost_lt_two",
+      "ErdosProblems.Erdos1041.FirstTwoCriticalOptimizedBergman.optimizedCost_lt_two_of_returnedBudget",
+      "ErdosProblems.Erdos1041.FirstTwoCriticalOptimizedBergman.twoRootFibreConstant"
+    ],
+    "delta_class": "statement_strengthened",
+    "authority_at_review": "explicit current source with green focused Lean replay, exact symbolic identities, deterministic regression, and ordinary analytic proof",
+    "claim_ceiling": "The optimized first-two-critical-level condition is an all-degree sufficient theorem strictly stronger than the returned geometric-mean-level condition. It does not prove the tied-level shell or unrestricted Erdos 1041."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "displayed_candidate_count": 12,
+    "discovered_candidate_count": 487,
+    "omitted_candidate_count": 475,
+    "review_scope": "All 12 displayed candidates plus the semantic ConnectedClusterBergman, ExteriorBlaschkeFibreCapacityGap, FP-GM/FM-2, and target consumers."
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_fb6bbf056c4e418b",
+      "file": "state/formal_math_research_operations/pilots/erdos257_issue217/latimer_pva_mobius_admissibility.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "This is a namespace-to-manifest collision into an unrelated Erdos 257 pilot, not a lemniscate or Bergman consumer.",
+      "authority_surface_checked": "candidate source bridge and owning problem id",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_b11aff07353b9ea5_through_409fd5c3125a9478",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/*/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "These eight files are dated purpose-specific dissemination copies rather than current mathematical authority. The canonical problem packet now carries the stronger result; recursive editing would rewrite experiment identity while more returns are expected.",
+      "authority_surface_checked": "all eight displayed dissemination packet paths and canonical Erdos1041 research_packet.json",
+      "validation_or_reentry": "re-enter through the dissemination owner after the current return stream closes or a successor packet is deliberately compiled"
+    },
+    {
+      "candidate_id": "math_consequence_ba0a6a660a877017",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The exact result list, source manifest, and claim ceiling must record that the returned theorem was strictly strengthened and that the residual is now a direct tied-level ratio at min(beta_2,1).",
+      "authority_surface_checked": "landed_formal_source, exact_results, frontier_integrity, and claim-ceiling addenda",
+      "validation_or_reentry": "JSON parse, frontier-integrity audit, corpus-index check, focused Lean replay, and cold-reader cockpit"
+    },
+    {
+      "candidate_id": "math_consequence_c1c3967a8ed4852d",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The route concerns persistence of roots under perturbation and neither states nor consumes a first-merge Bergman threshold.",
+      "authority_surface_checked": "route theorem manifest",
+      "validation_or_reentry": "re-enter only if a later generic-closure step uses this optimized condition"
+    },
+    {
+      "candidate_id": "math_consequence_ec783c7a35609a37",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The historical source identities, general-candidate refutations, and degree-four attribution remain correct. This private sufficient theorem neither validates nor refutes those manuscripts.",
+      "authority_surface_checked": "prior-art route source identities and refutation fields",
+      "validation_or_reentry": "re-enter only on public promotion or a change to a cited source claim"
+    },
+    {
+      "candidate_id": "semantic_connected_cluster_bergman",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConnectedClusterBergman.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Its k=2 length theorem is consumed verbatim. The new work changes level selection, not the Bergman statement.",
+      "authority_surface_checked": "equation (1), q_C definition, and capacity form",
+      "validation_or_reentry": "companion theorem note provides the new consumer"
+    },
+    {
+      "candidate_id": "semantic_exterior_fibre_capacity_gap",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExteriorBlaschkeFibreCapacityGap.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The exact k=2 constant 1/(n-1) is consumed unchanged. The new result optimizes t after applying this source theorem.",
+      "authority_surface_checked": "Corollary 3 and the k/(2n-k) constant",
+      "validation_or_reentry": "Lean checks twoRootFibreConstant in the new module"
+    },
+    {
+      "candidate_id": "semantic_fp_gm_and_fm2",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CEGMQuarticFixedPairNoGo.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The optimized separated-level theorem proves a larger sufficient regime but neither proves nor refutes free-pair FP-GM or the proposed stronger FM-2 route.",
+      "authority_surface_checked": "surviving free-pair producer and fixed-pair no-go boundary",
+      "validation_or_reentry": "re-enter when a universal two-link or global free-pair theorem lands"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "The first-return all-degree regime now observes the first-merge component at the target-optimal ceiling min(beta_2,1), replacing square-root ratio slack by the direct ratio beta_1/min(beta_2,1).",
+    "newly_discharged": "Every row satisfying the returned Theorem 5 is discharged by the optimized theorem.",
+    "nonimplications_preserved": "No conclusion is drawn for tied critical levels, finite optimizer universality, FM-2, FP-GM, COVER, combined charge, or the unrestricted target.",
+    "surviving_boundary": "Force a target-deciding certificate when beta_1/min(beta_2,1) is too close to one for the optimized threshold.",
+    "neighboring_routes": "Merge-tree discriminant/near-Fekete geometry is the natural semantic neighbor; current exact results do not close that topology-sensitive implication."
+  },
+  "checkpoint_class": "checkpoint_yield_open_arrival_stream",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The reusable lesson—rederive inherited auxiliary levels and optimize against the real target ceiling—is already governed by mathematical-reasoning's inherited-constant and packet-obedience guards.",
+    "reentry_condition": "Rerun after another return arrives, after the theorem is committed, or after a new tied-level/near-Fekete consequence lands."
+  }
+}

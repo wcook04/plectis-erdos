@@ -1,0 +1,152 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #251: exact rational-tail collapse for the actual prime-gap dyadic series"
+  description: >-
+    If the dyadic series over the actual consecutive prime gaps fails to be irrational, then
+    one rational candidate S represents it and the rational states 2^(N+1) (S - partial sum
+    through N + 1) are exactly the scaled real tails of the series. For every rational S,
+    without any rationality hypothesis, those states satisfy the actual prime-gap recurrence
+    T(N + 1) = 2 T(N) - g(N + 1) identically. Complete decomposition of the candidate
+    denominator then produces one positive shift h for which T(N + h) - T(N) is an integer
+    at every sufficiently late index. For that same denominator-selected shift,
+    nonperiodicity of the actual prime gaps forces T(N + h) - T(N) out of the open interval
+    from -1 to 1 infinitely often, because eventual integrality together with eventual
+    smallness would make the shift eventually zero and the gap sequence eventually periodic.
+    Every rational candidate for the actual series is therefore pinned to an exact
+    arithmetic normal form with one located obstruction, which is the object an
+    irrationality proof for this series would have to attack. Priority for the argument has
+    not been assessed. The development supplies no eventual-smallness producer and no
+    irrationality theorem, and the located obstruction is compatible with rationality, so
+    the sole surviving escape is eventual integrality of the selected shift without uniform
+    smallness and Erdős Problem 251 is not decided here.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251ActualPrimeGapTail/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251ActualPrimeGapTail/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_axiom_audit_passed_terminal_comparator_pending"
+  research_interest_status: "research_note_grade_actual_prime_gap_denominator_collapse"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11B83", "11J72"]
+
+sources:
+  - title: "The actual prime-gap rational-tail bridge for Erdős Problem 251"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #251"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/251"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Four exact source-backed declarations expose the actual prime-gap
+    rational-candidate bridge and its denominator obstruction. No eventual
+    smallness producer or irrationality theorem is claimed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: "passed_2026_08_31_exactly_propext_Quot_sound_Classical_choice"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational"
+      file: "ExternalVerification251ActualPrimeGapTail/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251ActualPrimeGapTail/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact actual-series rational-candidate representation"
+      boundary: "Conditional on non-irrationality; it supplies no contradiction."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence"
+      file: "ExternalVerification251ActualPrimeGapTail/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251ActualPrimeGapTail/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "unconditional actual-gap recurrence"
+      boundary: "The algebraic recurrence alone does not identify S with the real series."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral"
+      file: "ExternalVerification251ActualPrimeGapTail/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251ActualPrimeGapTail/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact denominator-collapse theorem"
+      boundary: "Produces eventual integrality, not eventual smallness."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+      file: "ExternalVerification251ActualPrimeGapTail/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251ActualPrimeGapTail/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "actual-gap nonperiodicity obstruction"
+      boundary: "Identifies a shift for which smallness fails; it is compatible with rationality."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+
+fidelity:
+  divergences: >-
+    The challenge reproduces the actual prime-gap definitions and four exact
+    source statements without asserting the missing smallness producer.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The denominator-collapse chain and the compatible open boundary were checked."
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification251ActualPrimeGapTail"
+  statements:
+    - source: "ErdosProblems.Erdos251.exists_rationalPrimeGapTailState_representation_of_not_irrational"
+      lean: "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational"
+      module: "ExternalVerification251ActualPrimeGapTail/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos251.rationalPrimeGapTailState_recurrence"
+      lean: "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence"
+      module: "ExternalVerification251ActualPrimeGapTail/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos251.rationalPrimeGapTailShift_eventuallyIntegral"
+      lean: "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral"
+      module: "ExternalVerification251ActualPrimeGapTail/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos251.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+      lean: "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+      module: "ExternalVerification251ActualPrimeGapTail/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

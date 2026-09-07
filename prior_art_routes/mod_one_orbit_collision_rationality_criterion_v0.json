@@ -1,0 +1,292 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "mod_one_orbit_collision_rationality_criterion",
+  "problem_id": "erdos_269",
+  "source_result_id": "rational_tail_state_collision_target",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_circle_group_torsion_collision_criterion_with_source_specific_all_denominator_consumer",
+  "review_unit": {
+    "result_family": "erdos269_mod_one_orbit_collision_rationality_criterion",
+    "exact_result_ids": [
+      "rational_tail_state_collision_target",
+      "lattice_first_hit_denominator_exclusion"
+    ],
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+      "formal_source_commit": "267be22e24a0044fa26e0dd8f302e2a365c625c8",
+      "formal_source_sha256": "e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d",
+      "first_hit_checker": "formal_math/probes/erdos269_denominator_exclusion.py",
+      "first_hit_checker_sha256": "7f792e3be8fb3c5a5141f487f39d8185d88184f8c27e1d1aae5af153103d172c",
+      "first_hit_receipt": "state/formal_math/probes/erdos269_denominator_exclusion_receipt.json",
+      "first_hit_receipt_sha256": "814e2356ac5c9abbde244818cf60f1e7ec4a26abfbfd7007798544d8a5825f92",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "research_packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "research_packet_worktree_status": "dirty_foreign_current_owner",
+      "research_packet_worktree_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+      "reviewer_card": "docs/formal_math/reviewer_cards/mod_one_orbit_collision_rationality_criterion.card.json",
+      "reviewer_card_commit": "b9562ad83a1e89f93c7f79259281b9b4992e8ed1",
+      "reviewer_card_sha256": "f321788bd103fc87ad15c23c85fbb5b7d774e5013d3d6dd32cffb9e971cf482f",
+      "evidence_scope": "Lean-checked source-specific forward reduction plus direct elementary reverse equivalence and exact finite countermodel"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "problem_id": "erdos_269",
+  "purpose": "Classify the general modulo-one collision equivalence, fix its standard group-theoretic terminology, and separate the all-scale three-prime reduction from finite denominator screens.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/mod_one_orbit_collision_rationality_criterion.card.json",
+    "card_commit": "b9562ad83a1e89f93c7f79259281b9b4992e8ed1",
+    "source_commit": "267be22e24a0044fa26e0dd8f302e2a365c625c8",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+    "source_result_id": "rational_tail_state_collision_target",
+    "statement": "For pairwise-distinct integers b_i and integer offsets a_i, alpha is rational if and only if two values b_i alpha-a_i collide modulo one."
+  },
+  "workspace_overlay": {
+    "status": "uncommitted_packet_overlay_not_consumed",
+    "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+    "sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+    "committed_snapshot_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+    "adjudication_effect": "The foreign working-tree packet overlay is excluded; this route remains pinned to committed snapshot 90e3383a.",
+    "reentry_condition": "After the packet overlay lands or is discarded, rerun exact source/card/packet parity before changing the source-specific claim ceiling."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos269_mod_one_orbit_collision_rationality_criterion@source_267be22e_card_b9562ad8_packet_90e3383",
+    "evidence_class": "Lean-checked source-specific rational-to-lattice-to-collision reduction plus direct elementary circle-group equivalence and exact finite rational counterfamily.",
+    "comparison_relation": "The abstract theorem is torsion in R/Z plus infinite pigeonhole. Kronecker and Weyl provide surrounding torus/rotation context, but neither is the proof mechanism and no equidistribution is claimed.",
+    "closest_known_result": "Classical rational/irrational circle rotations and finite cyclic subgroup torsion; the source-specific delta is the all-scale lattice transport for the genuine three-prime normalized tail and its finite-screen boundary.",
+    "exact_delta": "Rationality forces a collision among infinitely many distinct affine samples; finite collision-free scans only lower-bound a denominator. The three-prime Lean consumer remains an all-scale obstruction target, not a proof of separation.",
+    "disconfirming_evidence": "Offsets vanish modulo one, arbitrary sampling times need not be equidistributed, and the finite family alpha=1/(N+1) defeats every fixed scan horizon.",
+    "confidence": {
+      "abstract_equivalence": "high_internal_provisional",
+      "source_all_scale_reduction": "high_internal_provisional",
+      "all_scale_incongruence": "low_unresolved",
+      "irrationality": "not_proved"
+    },
+    "claim_ceiling": "The abstract circle-group torsion equivalence and the source-specific rational-to-collision reduction are admitted; finite scans remain denominator screens, and no all-scale separation or Erdős #269 irrationality follows.",
+    "significance": "High structural value within #269: it replaces denominator-by-denominator searches with one universal collision-exclusion target, while making finite evidence honest.",
+    "hard_step": "Prove all-scale pairwise incongruence for the genuine normalized tail; the abstract collision theorem is already complete.",
+    "open_boundary": "No equidistribution, irrationality measure, all-scale separation, or Erdős #269 solution follows.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The structural frontier: rationality forces a collision somewhere",
+      "supersession_or_consolidation": "Consolidate common-lattice transport, collision consumer, finite screens, and rational counterfamily; keep torus/Fourier summation as a distinct mechanism.",
+      "why_care": "It identifies the clean universal target that would settle every denominator at once and prevents finite scans from being oversold."
+    },
+    "comparator_advisory": {
+      "disposition": "public_card_only_no_new_abstract_interface",
+      "proposition_scope": "Keep the source-specific forward implication status-tagged and Lean-labelled; do not add a Comparator proposition for the routine abstract equivalence or finite screens.",
+      "independent_interface_justified": false,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Check the distinct-coefficient quantifiers and the rational finite counterfamily, then inspect that the three-prime lattice transport is not silently upgraded to all-scale separation.",
+    "reentry_trigger": "Reopen when a proof of all-scale incongruence or a source/card/packet parity change appears."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "rationality-to-common-lattice-to-circle-collision reduction for normalized affine tails",
+    "disposition": "use as the #269 programme and paper structural-frontier headline without cross-programme flagship admission",
+    "consolidation_relation": "Consolidate common-lattice transport, collision consumer, finite screens, and the rational finite counterfamily; keep the all-scale lattice card as source-parity support and torus/Fourier as a distinct mechanism.",
+    "comparator_advisory": "At most one future source-specific forward-implication firewall after deliberate source-parity admission; no interface for the routine abstract equivalence or finite screens.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "The structural frontier: rationality forces a collision somewhere",
+      "supersession_or_consolidation": "Replace denominator-by-denominator and integral-state narratives with one all-scale orbit-separation section.",
+      "reason": "It gives the cleanest universal rationality obstruction and makes the finite-data boundary exact."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do not admit; retain the existing five-object cross-programme first-contact shortlist",
+      "why_care": "Correct #269 headline, but no all-scale separation or positive theorem displaces a flagship.",
+      "evidence_class": "Lean-checked source forward implication plus direct elementary theorem and finite counterfamily",
+      "hard_step": "all-scale collision exclusion for the genuine tail",
+      "prior_art_uncertainty": "low; routine torsion fact, no priority claim",
+      "open_boundary": "no all-scale separation or irrationality",
+      "demoted_predecessor": "none; lattice support already subordinate and Fourier route distinct"
+    }
+  },
+  "release_disposition": {
+    "value": "public_card_only",
+    "reason": "The exact source-specific forward implication, direct elementary equivalence, finite rational countermodel, and finite-screen ceiling are inspectable with their evidence classes and open boundary adjacent.",
+    "comparator_advisory": "Do not withhold public visibility for absent independent review. A separate Comparator proposition is not needed now because the abstract torsion criterion is routine and the structural-frontier card already consolidates the source-specific transport, finite screens, and nonclaims."
+  },
+  "representative_reassessment_2026_08_24": {
+    "decision": "promote_to_erdos_269_programme_representative_without_cross_programme_flagship_admission",
+    "replaces_navigation_role_of": "erdos269_torus_fourier_value_representation",
+    "reason": "The collision criterion is the exact universal rationality consumer, is source-specifically Lean-checked, and states the all-denominator open frontier. The Fourier representation remains mathematically distinct but has ordinary-proof assurance and no Diophantine consequence.",
+    "non_supersession": "No Fourier theorem is retired or weakened. The move changes first-contact navigation and assurance ordering only.",
+    "comparator_advisory": "One forward implication firewall is justified after Role 3's source-parity review; the routine abstract reverse direction and finite screens remain outside Comparator.",
+    "open_boundary": "All-scale pairwise incongruence and exact-integral-tail exclusion remain unproved."
+  },
+  "classification": {
+    "theorem_class": "torsion_and_collision_characterization_for_an_infinitely_sampled_circle_rotation",
+    "novelty_class": "routine_circle_group_torsion_fact_plus_infinite_pigeonhole",
+    "formalization_class": "Lean_checked_rational_to_all_scale_lattice_to_collision_specialization_with_direct_elementary_general_equivalence_on_card",
+    "priority_claim": "none",
+    "recommended_terminology": "torsion--collision criterion in the circle group",
+    "acceptable_descriptive_alias": "sampled modulo-one rotation collision criterion",
+    "nearest_prior_work": [
+      "Kronecker's 1884 approximation theorem is the classical higher-dimensional framework for integral multiples modulo one.",
+      "Weyl's 1916 theorem places the consecutive irrational rotation orbit n alpha in the stronger uniform-distribution setting.",
+      "The exact equivalence itself is more elementary than either theorem: Q/Z is the torsion subgroup of R/Z, and an infinite sequence in a finite cyclic subgroup must collide."
+    ],
+    "attribution": "Present the core as elementary circle-group torsion plus pigeonhole, not as an application of Kronecker or Weyl. Cite those sources only for the classical rotation context. Credit the local work for producing the exact all-scale lattice representation of the three-prime tail and exposing collision as its universal rationality consumer.",
+    "mathematical_interest": "Modest as an abstract theorem, but high as a proof-interface correction: it replaces denominator-one integral-state searches by one all-denominator orbit-separation target and proves exactly what finite scans can and cannot certify.",
+    "reusable_scope": "Any real target admitting infinitely many integer-affine representations with pairwise-distinct integer coefficients. The offsets may vary arbitrarily because they vanish in R/Z; distinct coefficients are essential for the reverse implication.",
+    "why_it_matters": "For Erdős #269, rationality would force a collision somewhere in the genuine normalized tail orbit. Therefore a proof of all-scale pairwise incongruence would settle every denominator simultaneously, whereas any finite collision-free scan merely raises the minimum possible denominator."
+  },
+  "primary_sources": [
+    {
+      "id": "kronecker_1884_approximation",
+      "title": "Näherungsweise ganzzahlige Auflösung linearer Gleichungen",
+      "author": "Leopold Kronecker",
+      "venue": "Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften zu Berlin (1884), 1179-1193 and 1271-1299",
+      "url": "https://www.e-rara.ch/zut/content/titleinfo/3554897",
+      "exact_anchor": "The paper establishes the classical approximation criterion for integral multiples in a torus.",
+      "supports": "The historical torus-rotation and integral-relation framework in which rational versus irrational classes are distinguished.",
+      "does_not_support": "The arbitrary sampled-time collision equivalence, the finite denominator screen, or the three-prime normalized-tail specialization."
+    },
+    {
+      "id": "weyl_1916_uniform_distribution",
+      "title": "Über die Gleichverteilung von Zahlen mod. Eins",
+      "author": "Hermann Weyl",
+      "venue": "Mathematische Annalen 77 (1916), 313-352",
+      "doi": "10.1007/BF01475864",
+      "url": "https://doi.org/10.1007/BF01475864",
+      "exact_anchor": "The paper introduces uniform distribution modulo one and proves, in particular, uniform distribution for the consecutive multiples n alpha when alpha is irrational.",
+      "supports": "The standard terminology of irrational circle rotations and a much stronger conclusion for consecutive sampling.",
+      "does_not_support": "Uniform distribution along an arbitrary distinct integer sequence b_i, which can fail without additional hypotheses; no such distribution statement is used or claimed by the collision criterion."
+    }
+  ],
+  "mechanism_comparison": {
+    "circle_group_torsion": "The class of alpha in R/Z is torsion exactly when alpha is rational. A collision gives a nonzero integer annihilator (b_j-b_i)[alpha]=0.",
+    "finite_orbit_pigeonhole": "If alpha=p/q in lowest terms, every sampled residue lies in the q-element subgroup generated by 1/q. Infinitely many samples must collide; N distinct samples imply q>=N.",
+    "integer_offsets": "Each a_i is integral, so b_i alpha-a_i and b_i alpha define the same class modulo one. The offsets are important in the source recurrence but irrelevant to the abstract collision theorem.",
+    "Kronecker_and_Weyl": "These provide the surrounding approximation/equidistribution theory. Invoking them as the proof mechanism would inflate a one-line torsion argument and could falsely suggest distribution along arbitrary sampling times.",
+    "local_delta": "Lean proves the three-prime value's rationality creates a common all-scale lattice and then a normalized-tail collision. The card adds the reverse abstract implication, quantitative finite screens, and a sharp rational family defeating every fixed horizon."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "rational rotation finite orbit irrational rotation modulo one primary source",
+      "modulo one orbit collision rationality criterion",
+      "integer sampled irrational rotation pairwise distinct residues",
+      "Weyl 1916 uniform distribution multiples irrational alpha",
+      "Kronecker 1884 integral approximation torus"
+    ],
+    "result": "The search recovered the classical Kronecker and Weyl frameworks but no reason to elevate the exact collision equivalence beyond elementary circle-group torsion and pigeonhole.",
+    "boundary": "The absence of a named theorem is not novelty evidence. The proof is a direct structural consequence of Q/Z being the torsion subgroup of R/Z."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For infinitely many pairwise-distinct integer sampling times, a real circle rotation has a repeated sampled value exactly when its angle is rational. Lean supplies the rational-to-collision direction for the genuine three-prime normalized tail; finite collision-free data provide denominator lower bounds only.",
+    "forbidden_wording": [
+      "This is a new irrationality criterion.",
+      "The source orbit is equidistributed modulo one.",
+      "Weyl's theorem applies to the arbitrary source sampling sequence.",
+      "A long finite collision-free prefix proves irrationality.",
+      "The three-prime normalized tail is pairwise incongruent at all scales.",
+      "This proves Erdős Problem 269."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_an_equidistribution_or_density_theorem",
+      "not_an_irrationality_measure",
+      "not_an_all_scale_pairwise_incongruence_proof",
+      "not_a_solution_of_erdos_269"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/mod_one_orbit_collision_rationality_criterion.card.json",
+      "effect": "Replace pending novelty language by the circle-group torsion classification and explicitly demote affine orbit to a descriptive alias."
+    },
+    {
+      "consumer": "Erdős #269 proof fleet",
+      "effect": "Use all-scale collision obstruction as the universal rationality consumer; retain finite scans only as explicit denominator screens."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Package the source-specific all-scale lattice reduction and sharp finite counterfamily, not the elementary group fact as standalone novelty."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The mod-one collision criterion is adjudicated as routine circle-group torsion plus pigeonhole; the source-specific value is the three-prime all-scale lattice consumer and exact finite-screen boundary.",
+    "do_not_redo": [
+      "Do not invoke equidistribution for arbitrary sampled coefficients b_i.",
+      "Do not present the integer offsets as mathematically active modulo one.",
+      "Do not convert finite collision-free computation into irrationality evidence.",
+      "Do not reopen the #269 endpoint proof from the Observatory lane."
+    ],
+    "ranked_open_throats": [
+      "irrational_tsum_primeDyadicTerm_iff_primeGap (Erdős 251): classify the exact integer-translate equivalence.",
+      "exists_totientDyadicSectionBasis (Erdős 249): determine the reusable finite-linear-algebra versus routine basis boundary.",
+      "finite_period_noncollapse_rat_den_interface (Erdős 257): semantic review without obsolete Comparator reintegration."
+    ],
+    "sibling_claim_map": "The source proof fleet owns RationalLatticeReduction.lean and the open collision obstruction. This rotation owns only the landed reviewer card wording and a new disjoint prior-art route.",
+    "validation_state": "Card JSON and one-page render plus route JSON are the focused validation floor; no Lean build is required because source mathematics is unchanged.",
+    "next_wake_condition": "After scoped landing, rotate to the #251 integer-translate equivalence unless a newer high-value handoff arrives."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_and_reviewer_support",
+    "artifact": "one collision-criterion authority card with its all-scale lattice transport, finite screen boundary, and countermodel family",
+    "human_understanding_delta": "Rationality of the source value becomes one all-scale modulo-one collision obligation, not a sequence of denominator-specific exceptional cases; finite separation is therefore a denominator screen, not an irrationality proxy.",
+    "verification_state": "The source-specific transport and collision implication are Lean-checked at the pinned RationalLatticeReduction.lean SHA-256; the general circle-group equivalence and finite countermodel are direct elementary arguments on the card, with no fresh Lean replay claimed.",
+    "publication_or_review_state": "Private expert-review-ready object. Routine prior-art status is adjudicated; no public proof or Comparator disposition is asserted.",
+    "canonicalization_state": "The all-scale lattice remains a source-parity/audit support card but is subordinate to this one collision frontier map; duplicate talks and interfaces are retired.",
+    "unresolved_downstream_bottleneck": "All-scale separation for the actual normalized tail, or another proof excluding the exact-integral-tail branch.",
+    "next_stage_owner": "#269 proof owners, then Role 3 only after a deliberate source-parity and statement-firewall decision."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_269.md",
+    "section": "The structural frontier: rationality forces a collision somewhere",
+    "disposition": "headline/core mechanism",
+    "canonical_mechanism_family": "rationality-to-common-lattice-to-circle-collision reduction for normalized affine tails",
+    "relation": "Consolidates transport, collision, finite screens, and the finite rational counterfamily; subordinates the all-scale lattice card to source-parity/audit use; supersedes no theorem; retires duplicate standalone talk and firewall pressure.",
+    "understanding_delta": "One infinite collision obligation replaces many apparent denominator cases, while every finite collision-free record remains compatible with a rational target.",
+    "evidence_boundary": "Lean proves only the source-specific rational-to-lattice-to-collision direction; the abstract reverse implication is direct elementary mathematics, and no all-scale separation or irrationality conclusion is present.",
+    "hard_step": "Exclude collisions for the genuine tail or otherwise exclude exact integral dyadic tails.",
+    "meaningful_failed_route": "Finite collision-free scans cannot prove irrationality, as witnessed by the $1/(N+1)$ family at every prescribed horizon.",
+    "open_remainder": "No all-scale pairwise incongruence or exact integral-tail exclusion is proved; Erdős #269 remains open."
+  },
+  "next_pass": {
+    "reentry_condition": "Re-enter only if the RationalLatticeReduction source, finite-screen receipt, or all-scale claim boundary changes, or if a proof supplies collision exclusion for the literal normalized tail.",
+    "do_not_redo": [
+      "circle-group torsion terminology",
+      "the direct reverse implication",
+      "the 1/(N+1) finite rational counterfamily",
+      "the current first-hit denominator screen"
+    ],
+    "open_bottleneck": "All-scale pairwise collision exclusion for the genuine normalized tail, or a faithful exclusion of its exact integral dyadic-tail branch.",
+    "owner": "Erdos269 proof owners for the all-scale obstruction; Mathematics Refinery for paper assimilation; Role 3 for any public projection change"
+  },
+  "downstream_handoff": {
+    "programme_mechanism_family": "all-scale lattice and circle-collision rationality reductions for the three-prime normalized tail",
+    "programme_disposition": "admit as a genuinely irreducible mechanism alongside the torus/Fourier value representation; consolidate transport, collision, finite screens, and the rational counterfamily",
+    "paper": "Headline/core structural-frontier section after the governed source cut; consolidate the denominator narratives and cross-link, but do not merge, the distinct torus/Fourier mechanism.",
+    "comparator": "One source-specific rationality-implies-collision interface is advisory-justified after source-parity firewall review. State only the proved forward implication and leave pairwise separation explicitly open; do not create interfaces for the elementary reverse direction or finite screens.",
+    "novelty_observatory": "Preserve the routine torsion classification and reject finite-data/equidistribution upgrades."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The R/Z collision equivalence is routine; the load-bearing #269 question is whether the genuine normalized tail has all-scale incongruence, not whether finite scans are long enough.",
+    "slow_down_at": "Check pairwise-distinct coefficient quantifiers, the three-prime lattice transport, and the 1/(N+1) counterfamily before reading any finite denominator screen as asymptotic evidence.",
+    "automation_can_establish": [
+      "The pinned Lean collision and rational-to-lattice declarations",
+      "The exact finite rational counterfamily and source hashes",
+      "That no equidistribution or irrationality theorem is asserted"
+    ],
+    "human_judgment_required": [
+      "Whether the source-specific lattice transport matches the literal normalized tail",
+      "Whether any proposed all-scale separation excludes the exact integral-tail branch",
+      "Whether the surrounding torus/Fourier work should remain a distinct mechanism"
+    ],
+    "review_act": "Audit one forward implication and one genuine tail coefficient map; stop before treating finite collision-free data as a proof of irrationality."
+  },
+  "adjudication_currentness": {
+    "status": "source_bound_at_current_observatory_snapshot",
+    "bound_snapshot": {
+      "result_family_version": "erdos269_mod_one_orbit_collision_rationality_criterion@source_267be22e_card_b9562ad8_packet_90e3383",
+      "formal_source_commit": "267be22e",
+      "reviewer_card_commit": "b9562ad8",
+      "research_packet_commit": "90e3383"
+    },
+    "claim_guard": "The source-specific rationality-implies-collision interface is admitted; all-scale separation, equidistribution, irrationality, and finite-screen upgrades remain excluded.",
+    "reentry_trigger": "Re-enter on source/card/packet parity change or a proof of all-scale pairwise incongruence for the genuine tail."
+  }
+}

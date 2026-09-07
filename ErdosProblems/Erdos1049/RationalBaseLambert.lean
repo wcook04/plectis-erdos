@@ -2,9 +2,7 @@ import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Analysis.Real.Pi.Bounds
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
 
 open scoped BigOperators
@@ -13,14 +11,13 @@ open scoped BigOperators
 # Erdős #1049: rational-base Lambert arithmetic
 
 The published Bundschuh--Väänänen theorem supplies irrationality for a
-height-restricted family of rational bases, including `7/2`. This module
+height-restricted family of rational bases, including `7/2`.  This module
 formalizes the complete elementary Archimedean height inequality needed at
-`7/2`, as well as an obstruction independent of that analytic theorem: a
-literal coordinatewise transfer of the integer-base Erdős corridor would force
-an impossible power-versus-linear inequality at `3/2`.
+`7/2`.  It also formalizes an obstruction independent of that analytic theorem:
+a literal coordinatewise transfer of the integer-base Erdős corridor would
+force an impossible power-versus-linear inequality at `3/2`.
 
-The analytic irrationality theorem itself remains external. This module does
-not assert irrationality at `3/2`, nor the unrestricted rational-base
+It does not assert irrationality at `3/2`, nor the unrestricted rational-base
 conjecture.
 -/
 
@@ -28,66 +25,79 @@ namespace ErdosProblems.Erdos1049
 
 /-! ## Exact arithmetic certificate for the published `7/2` lane -/
 
-/-- The integer-power comparison underlying the logarithmic height bound. -/
+/-- The integer-power comparison used to bound
+`log 2 / log 7 < 7 / 18`.  The logarithmic monotonicity step is deliberately
+kept outside this arithmetic declaration. -/
 theorem sevenHalves_power_certificate : 2 ^ 18 < 7 ^ 7 := by
   norm_num
 
-/-- The exact rational boundary used after `1 / π² < 1 / 9`. -/
+/-- The exact rational boundary used after the elementary strict estimate
+`1 / π² < 1 / 9`.  Supplying `3 < π` and the published analytic theorem is
+a separate source-backed layer. -/
 theorem sevenHalves_rational_margin :
     (7 : ℚ) / 18 = 1 / 2 - 1 / 9 := by
   norm_num
 
-/-- The elementary parameter region occurring in the external
-Bundschuh--Väänänen theorem for a positive reduced rational base `a / b`.
-This definition records only the height inequality; it does not internalize
+/-- The height region in the Bundschuh--Väänänen theorem, written in the
+form needed for a positive reduced rational base `a / b`.  This definition
+records only the elementary parameter inequality; it does not internalize
 the external analytic irrationality theorem. -/
 def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
   Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
 
-/-- The power certificate implies the strict logarithmic ratio bound. -/
-theorem sevenHalves_log_ratio_lt :
+/-- The exact power certificate implies the logarithmic estimate used at
+base `7 / 2`. -/
+theorem sevenHalves_log_ratio_lt_seven_eighteenths :
     Real.log 2 / Real.log 7 < (7 : ℝ) / 18 := by
-  have hpow : (2 : ℝ) ^ 18 < 7 ^ 7 := by
+  have hpows : (2 : ℝ) ^ 18 < (7 : ℝ) ^ 7 := by
     exact_mod_cast sevenHalves_power_certificate
-  have hlogpow : Real.log ((2 : ℝ) ^ 18) < Real.log ((7 : ℝ) ^ 7) :=
+  have hlogs :
+      Real.log ((2 : ℝ) ^ 18) < Real.log ((7 : ℝ) ^ 7) :=
     Real.strictMonoOn_log
-      (show (2 : ℝ) ^ 18 ∈ Set.Ioi 0 by exact Set.mem_Ioi.mpr (by positivity))
-      (show (7 : ℝ) ^ 7 ∈ Set.Ioi 0 by exact Set.mem_Ioi.mpr (by positivity))
-      hpow
-  rw [Real.log_pow, Real.log_pow] at hlogpow
-  have hlog7 : 0 < Real.log 7 := Real.log_pos (by norm_num)
+      (Set.mem_Ioi.mpr (by positivity)) (Set.mem_Ioi.mpr (by positivity)) hpows
+  rw [Real.log_pow, Real.log_pow] at hlogs
+  norm_num at hlogs
+  have hlog7 : 0 < Real.log (7 : ℝ) := Real.log_pos (by norm_num)
   apply (div_lt_iff₀ hlog7).2
-  norm_num at hlogpow ⊢
+  nlinarith
+
+/-- The elementary `pi > 3` bound puts `7 / 18` strictly inside the
+Bundschuh--Väänänen height margin. -/
+theorem sevenEighteenths_lt_bundschuhVaananenMargin :
+    (7 : ℝ) / 18 < 1 / 2 - 1 / Real.pi ^ 2 := by
+  have hpiSq : (9 : ℝ) < Real.pi ^ 2 := by
+    nlinarith [Real.pi_gt_three]
+  have hinv : 1 / Real.pi ^ 2 < (1 : ℝ) / 9 :=
+    one_div_lt_one_div_of_lt (by norm_num) hpiSq
+  norm_num at hinv ⊢
   linarith
 
-/-- The elementary Archimedean estimate used in the published height test. -/
-theorem one_div_pi_sq_lt_one_nine :
-    (1 : ℝ) / Real.pi ^ 2 < 1 / 9 := by
-  have hpi : (3 : ℝ) < Real.pi := Real.pi_gt_three
-  have hsq : (9 : ℝ) < Real.pi ^ 2 := by
-    nlinarith [Real.pi_pos]
-  exact one_div_lt_one_div_of_lt (by norm_num) hsq
+/-- Fully kernel-checked parameter verification for the first nonintegral
+base covered by the published height theorem.  Combining this declaration
+with that external theorem gives irrationality of the Lambert value at
+`7 / 2`; no analytic theorem is introduced as an axiom here. -/
+theorem sevenHalves_mem_bundschuhVaananenHeightRegion :
+    BundschuhVaananenHeightRegion 7 2 := by
+  exact sevenHalves_log_ratio_lt_seven_eighteenths.trans
+    sevenEighteenths_lt_bundschuhVaananenMargin
 
-/-- The exact margin needed to verify the special `α = -1` case of the
-Bundschuh--Väänänen height criterion at `q = 7/2`. -/
-theorem sevenHalves_bundschuhVaananen_margin :
-    Real.log 2 / Real.log 7 <
-      (1 : ℝ) / 2 - 1 / Real.pi ^ 2 := by
-  have hratio := sevenHalves_log_ratio_lt
-  have hpi := one_div_pi_sq_lt_one_nine
-  norm_num at hpi ⊢
-  linarith
-
-/-- The complete elementary Archimedean height inequality for `q = 7/2`.
-Applying the external analytic irrationality theorem remains a separate step. -/
+/-- The source-facing Archimedean height inequality for `q = 7 / 2`.
+This is exactly the elementary parameter condition consumed by the external
+Bundschuh--Väänänen theorem; applying that analytic theorem remains a separate,
+source-backed step. -/
 theorem sevenHalves_archimedean_height_condition :
     Real.log 7 / Real.log ((7 : ℝ) / 2) <
       ((1 : ℝ) / 2 + 1 / Real.pi ^ 2)⁻¹ := by
   have hlog7 : 0 < Real.log 7 := Real.log_pos (by norm_num)
+  have hmargin :
+      Real.log 2 / Real.log 7 <
+        (1 : ℝ) / 2 - 1 / Real.pi ^ 2 := by
+    simpa [BundschuhVaananenHeightRegion] using
+      sevenHalves_mem_bundschuhVaananenHeightRegion
   have hratio :
       Real.log 2 <
         ((1 : ℝ) / 2 - 1 / Real.pi ^ 2) * Real.log 7 :=
-    (div_lt_iff₀ hlog7).mp sevenHalves_bundschuhVaananen_margin
+    (div_lt_iff₀ hlog7).mp hmargin
   have hcore :
       ((1 : ℝ) / 2 + 1 / Real.pi ^ 2) * Real.log 7 <
         Real.log 7 - Real.log 2 := by

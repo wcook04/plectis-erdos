@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification249ResidueClassTotientSeries.Challenge",
+  "solution_module": "ExternalVerification249ResidueClassTotientSeries.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249ResidueClassTotientSeries.residue_series_irrational",
+    "Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_totientObservable",
+    "Erdos249257.ExternalVerification249ResidueClassTotientSeries.fixed_resolution_observable_irrational",
+    "Erdos249257.ExternalVerification249ResidueClassTotientSeries.isolated_pulse_separation",
+    "Erdos249257.ExternalVerification249ResidueClassTotientSeries.two_sided_prime_isolation",
+    "Erdos249257.ExternalVerification249ResidueClassTotientSeries.irrational_dyadicValue_of_pulses"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

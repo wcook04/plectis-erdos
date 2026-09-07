@@ -1,0 +1,51 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+import ErdosProblems.Erdos243.ReciprocalTailRigidity
+
+/-!
+# The bounded-negative-part endpoint in the original denominator sequence
+
+Normalized vanishing supplies eventual strict centering by taking scale one.
+An eventual lower bound then forces zero defect, and zero absorption gives
+the natural-number Sylvester recurrence. The lower bound is a genuine
+remaining hypothesis; this result does not settle unrestricted Erdős #243.
+-/
+
+namespace ErdosProblems.Erdos243
+
+/-- The original natural denominators eventually satisfy the Sylvester
+recurrence. No separate centering or periodicity assumption is needed. -/
+theorem boundedNegativePart_natSylvester_eventually
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hbound : ∃ N B : ℕ, ∀ n, N ≤ n → -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n → a (n + 1) = a n ^ 2 - a n + 1 := by
+  have hcentered : ∃ N, ∀ n, N ≤ n → Int.natAbs (E n) < C n := by
+    simpa only [one_mul] using hvanish 1
+  have hzero := eventuallyBoundedNegativePart_eventually_zero
+    a C D E ha hCpos hC hD hE hcentered hbound hvanish
+  have hrec : ∃ N, ∀ n, N ≤ n →
+      (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ) := by
+    apply sylvesterNext_eventually_of_centered_zero
+      (fun n ↦ (a n : ℤ)) (fun n ↦ (D n : ℤ)) (fun n ↦ (C n : ℤ))
+    · exact fun n ↦ natDen_eq_nextDenState a D hD n
+    · exact fun n ↦ natTail_eq_nextTailState a C D hC n
+    · obtain ⟨N, hN⟩ := hzero
+      refine ⟨N, fun n hn ↦ ?_⟩
+      simpa only [hE n] using hN n hn
+    · refine ⟨0, fun n _hn ↦ ?_⟩
+      exact_mod_cast (Nat.ne_of_gt (hCpos (n + 1)))
+  obtain ⟨N, hN⟩ := hrec
+  refine ⟨N, fun n hn ↦ ?_⟩
+  have hs : a n ≤ a n ^ 2 := by nlinarith [ha n]
+  apply Int.natCast_inj.mp
+  simpa only [Nat.cast_add, Nat.cast_sub hs, Nat.cast_pow, Nat.cast_one,
+    sylvesterNext] using hN n hn
+
+end ErdosProblems.Erdos243

@@ -1,0 +1,348 @@
+{
+  "schema": "carry_trunk_claim_crosswalk_v0",
+  "status": "adjudicated_partial_forward_antecedent_with_open_rigidity_reciprocal_comparisons",
+  "generated_at": "2026-07-11",
+  "created_by": "claude_code",
+  "purpose": "Declaration-family claim-boundary crosswalk for the four public carry-trunk modules. Replaces the module-level 'novelty unchecked' verdict with per-family contribution classes bound to antecedents, overlap, and strict delta. Consumed by the paper carry section, module docstrings, and any future novelty audit.",
+  "adjudication": {
+    "verdict": "forward_carry_is_external_prior_art;_remaining_families_are_typed_open_comparisons",
+    "evidence_class": "mixed declaration-family crosswalk: Wang's current v4 Lemma 2.1 is a primary-source forward antecedent; the bounded v4/Lambert source checks are complete, while local converse/rigidity and reciprocal-mass families still lack a matching theorem-level antecedent",
+    "exact_delta": "The current source comparison supports downgrading carry_recurrence_forward from novelty candidate to direct prior art. The local converse/tempered-orbit rigidity remains a possible formal abstraction delta, while reciprocal_mass_and_carry_unboundedness and the together-occurrence Boolean certificate remain unresolved rather than novel.",
+    "source_version_note": "The historical v1/v2 Wang--Grau Ribas label is retained only as an annex-history note. The current official arXiv record is arXiv:2606.24972v4, titled Sparse Polynomial-Weighted Expansions by Han Wang; current claims bind the v4 PDF and Lemma 2.1 rather than silently reusing the historical v2 identity.",
+    "human_understanding_delta": "The current v4 source passage and Lambert-series comparison separate classical/externally sourced carry mechanics, a local formal converse candidate, and the still-unmatched reciprocal-mass/Boolean coupling without treating the four modules as one novelty claim.",
+    "bounded_expert_review_act": "The Wang v4 Lemma 2.1 passage and Lambert Theorems 1/9 have been checked. The only remaining expert act is a narrow disconfirmation search for an exact converse/uniqueness theorem or a formula-equivalent reciprocal-mass/Boolean package; until such a source or a counterexample appears, retain an unresolved-comparison ceiling and make no novelty or priority claim."
+  },
+  "contribution_states": [
+    "classical_substrate",
+    "direct_prior_art",
+    "formal_composition",
+    "novelty_candidate",
+    "unresolved"
+  ],
+  "public_surface": {
+    "repo": "wcook04/plectis-lean-erdos249-257",
+    "modules": [
+      "Erdos249257/GenericTailOrbitRigidity.lean",
+      "Erdos249257/GreedyAchievementSet.lean",
+      "Erdos249257/BooleanMobiusCarry.lean",
+      "Erdos249257/RationalSupportCarrySkeleton.lean"
+    ],
+    "baseline_commit": "de7a3601c48e865f1992758daa9b4d6391c86d7e"
+  },
+  "antecedent_sources": {
+    "wang_grau_ribas_2026": {
+      "title": "Sparse Polynomial-Weighted Expansions",
+      "authors": "Han Wang",
+      "arxiv": "2606.24972",
+      "version_seen": "v4 (official arXiv record checked 2026-08-27)",
+      "annex_slug": "arxiv-2606-24972-wang-grau-ribas",
+      "current_official_source": {
+        "version": "v4",
+        "title": "Sparse Polynomial-Weighted Expansions",
+        "authors": "Han Wang",
+        "official_abs_url": "https://arxiv.org/abs/2606.24972",
+        "source_pdf": "annexes/arxiv-2606-24972-wang-grau-ribas-v4/source.pdf",
+        "source_pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+        "pdf_pages": 10,
+        "source_reviewed_at": "2026-08-27",
+        "exact_locators": [
+          "Printed Lemma 2.1 (Carries and gaps): forward carry recurrence and bounded remainder for the binary weighted expansion",
+          "Printed Theorem 1.1 (Polynomial-window density): current v4 headline theorem",
+          "Printed Proposition 3.1 (Exterior contribution): source-specific later argument"
+        ],
+        "claim_boundary": "The v4 source is bound for the forward carry antecedent only; no local converse, arbitrary-coefficient iff, uniqueness of every tempered orbit, reciprocal-mass inequality, or #249/#257 endpoint is attributed to it."
+      },
+      "verified": "The historical annex and the current official arXiv v4 PDF were compared on 2026-08-27. The v4 PDF supplies the exact Lemma 2.1 carry/gap antecedent; the historical v2 identity remains retained only for provenance.",
+      "tier2_relevance": "The v4 carry/gap lemma is a direct antecedent for the forward integral-carry interface; its polynomial-window density theorem and later propositions are not imported as local endpoint evidence."
+    },
+    "kovac_tao_2024": {
+      "title": "On several irrationality problems for Ahmes series",
+      "authors": "Vjekoslav Kovac, Terence Tao",
+      "arxiv": "2406.17593",
+      "annex_slug": "arxiv-2406-17593-kovac-tao-ahmes-series"
+    },
+    "lambert_factorization_family": {
+      "note": "Representative of the classical Lambert-series divisor-transform infrastructure; see annex family erdos249_q_lambert_periodic_sieve, e.g. arxiv-1706-00393-merca-schmidt-lambert-factorizations"
+    }
+  },
+  "families": [
+    {
+      "family": "carry_recurrence_forward",
+      "module": "GenericTailOrbitRigidity",
+      "declarations": ["exists_temperedBinaryOrbit_of_rational"],
+      "state": "direct_prior_art",
+      "closest_antecedent": "wang_grau_ribas_2026",
+      "specialisation_map": "For the current v4 Lemma 2.1, b = 2, w(n) = n, c(n) = n*d_n, v = Q, and u(N) = R_N; its bounded binary remainder maps to IsTemperedBinaryOrbit and exists_temperedBinaryOrbit_of_rational. Since the source digits satisfy d_n in {0,1}, c(n) <= n; the local declaration generalises this weighted instance to arbitrary nonnegative coefficients under the same bound, so only the forward mechanism is shared.",
+      "overlap": "rationality forces an integral carry orbit (their special case of weighted digits)",
+      "strict_delta": "arbitrary nonnegative linearly bounded coefficients c(n) <= n instead of n*d_n",
+      "proof_mechanism_relation": "same mechanism; theirs is an instance of the generic statement",
+      "allowed_public_wording": "generic Lean formalisation and abstraction of the integral carry recurrence; NOT a new conceptual mechanism",
+      "disconfirming_check": null
+    },
+    {
+      "family": "carry_rigidity_and_converse",
+      "module": "GenericTailOrbitRigidity",
+      "declarations": [
+        "temperedBinaryOrbit_eq_scaledTail",
+        "doublingOrbit_eq_zero_of_tempered",
+        "binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+        "not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit"
+      ],
+      "state": "novelty_candidate",
+      "closest_antecedent": "wang_grau_ribas_2026",
+      "overlap": "shares the forward carry state",
+      "strict_delta": "explicit converse (orbit implies rationality), uniqueness/rigidity of subexponential integer orbits, and the exact iff",
+      "proof_mechanism_relation": "unknown pending exact reading",
+      "allowed_public_wording": "converse and rigidity are the local delta; no priority language",
+      "disconfirming_check": "read Wang-Grau Ribas (and its cited ancestors) for any statement of the converse or of uniqueness of a subexponential integer orbit; if present, the family contracts to generality + formalisation"
+    },
+    {
+      "family": "greedy_strict_tail_injectivity",
+      "module": "GreedyAchievementSet",
+      "declarations": ["mersenneTail_lt_weight", "positiveMersenneSupportValue_injective_normalized", "rational_member_support_bit_iff"],
+      "state": "direct_prior_art",
+      "closest_antecedent": "kovac_tao_2024",
+      "overlap": "strict domination of each term over the sum of later terms; mutual distinctness / Cantor structure of subsums of 1/(t^n - 1) at fixed t >= 2, covering t = 2",
+      "strict_delta": "Lean-checked forms and support-bit recovery",
+      "proof_mechanism_relation": "same strict-tail mechanism",
+      "allowed_public_wording": "cite Kovac-Tao directly; known geometry",
+      "disconfirming_check": null
+    },
+    {
+      "family": "greedy_quantitative_executable",
+      "module": "GreedyAchievementSet",
+      "declarations": [
+        "mersenneGap_isBigOWith",
+        "mem_mersenneAchievementSet_iff_greedy_survival",
+        "certifiedGreedyMersenneDeath_not_mem",
+        "three_fourths_not_mem_mersenneAchievementSet",
+        "cast_greedyMersenneRemainderRat"
+      ],
+      "state": "formal_composition",
+      "closest_antecedent": "kovac_tao_2024",
+      "overlap": "elementary consequences of a strongly superincreasing sequence; may be implicit or routine in the achievement-set tradition",
+      "strict_delta": "two-scale gap asymptotic with explicit constants, exact all-level greedy-survival characterisation, cast-coherent rational recurrences, decidable one-sided death certificates, kernel-checked 3/4 fixture",
+      "proof_mechanism_relation": "quantitative sharpening plus executable interface",
+      "allowed_public_wording": "refinements and executable formal interfaces over known geometry; the asymptotic and the 3/4 fixture are not headline novelty claims",
+      "disconfirming_check": "optional: scan achievement-set/Kakeya literature for the explicit two-scale gap rate"
+    },
+    {
+      "family": "lambert_mobius_identities",
+      "module": "BooleanMobiusCarry",
+      "declarations": ["positiveSupportBitAF_mul_zeta", "moebius_mul_supportCoeffAF", "eq_supportCoeffAF_booleanMobiusSupport_of_boolean"],
+      "state": "classical_substrate",
+      "closest_antecedent": "lambert_factorization_family",
+      "overlap": "indicator * zeta divisor transform and Moebius inversion are standard Lambert-series coefficient infrastructure",
+      "strict_delta": "none claimed beyond formalisation",
+      "proof_mechanism_relation": "textbook",
+      "allowed_public_wording": "classical; no novelty language of any kind",
+      "disconfirming_check": null
+    },
+    {
+      "family": "boolean_carry_certificate_normal_form",
+      "module": "BooleanMobiusCarry",
+      "declarations": [
+        "support_fraction_iff_exists_temperedCarry",
+        "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+        "card_divisors_le_two_mul_sqrt"
+      ],
+      "state": "formal_composition",
+      "closest_antecedent": null,
+      "overlap": "each ingredient classical or covered by carry_recurrence_forward",
+      "strict_delta": "quotient-only certificate equivalence; explicit square-root strip replacing the analytic tempering hypothesis; support reconstruction packaged as a certificate schema",
+      "proof_mechanism_relation": "composition of known ingredients",
+      "allowed_public_wording": "a Lean-checked normal form of this development's interface; never shorten to 'new Moebius theorem' or 'new characterisation' without the formalisation qualifier",
+      "disconfirming_check": "check whether the certificate iff and the square-root strip occur TOGETHER in any antecedent, or are only obtainable by composing known ingredients"
+    },
+    {
+      "family": "repetend_algebra",
+      "module": "RationalSupportCarrySkeleton",
+      "declarations": ["(residue recurrence, multiplicative-order periodicity, wrap digits, cycle-sum identity families)"],
+      "state": "classical_substrate",
+      "closest_antecedent": null,
+      "overlap": "ordinary radix expansion and repetend algebra; divisor-count mean = reciprocal mass is standard divisor-sum averaging",
+      "strict_delta": "none claimed beyond formalisation",
+      "proof_mechanism_relation": "textbook",
+      "allowed_public_wording": "classical; no novelty language",
+      "disconfirming_check": null
+    },
+    {
+      "family": "reciprocal_mass_and_carry_unboundedness",
+      "module": "RationalSupportCarrySkeleton",
+      "declarations": [
+        "(excess-mean decomposition family)",
+        "(reciprocal-mass >= w/h >= 1/ord_v(2) bound family)",
+        "(common-multiple collision strengthening family)",
+        "(infinite rational support => divergent reciprocal mass or mass > 1)",
+        "(global carry-state unboundedness family)"
+      ],
+      "state": "unresolved_formula_level_comparison",
+      "closest_antecedent": null,
+      "overlap": "ingredients classical (repetend algebra + divisor averaging); the coupled bounds have no antecedent currently known to us",
+      "strict_delta": "the coupled statements themselves",
+      "proof_mechanism_relation": "unknown pending audit",
+      "allowed_public_wording": "source-specific coupled reciprocal-mass/carry interface under exact-source comparison; no novelty or priority claim",
+      "disconfirming_check": "formula-led search for: reciprocal-support mass bounded below by a binary multiplicative-order term; rational Lambert subsums constrained by repetend wrap counts; support-divisor collisions forcing excess-carry density; unbounded rational tail numerators/carry states for infinite Mersenne subsums. A source merely proving carries exist or that repetends have period ord_v(2) does NOT collapse these; a source deriving the same lower bound after notation translation DOES."
+    }
+  ],
+  "audit_status": "forward_prior_art_bound_rigidity_reciprocal_and_boolean_comparison_open",
+  "latest_search_receipt": {
+    "completed_at": "2026-08-25",
+    "source": "annexes/arxiv-2606-24972-wang-grau-ribas/extracted.md",
+    "queries": [
+      "converse",
+      "tempered",
+      "unique",
+      "if and only if",
+      "carry recurrence"
+    ],
+    "finding": "The v2 source contains Proposition 3.1's forward rationality-to-integral-carry recurrence and later uniqueness statements for its affine-line continuation/counting argument, but no located theorem states the local arbitrary-coefficient iff or uniqueness of every subexponential integer orbit.",
+    "effect": "carry_recurrence_forward is now source-bound direct prior art; carry_rigidity_and_converse remains a typed formal-abstraction comparison rather than a novelty claim, and reciprocal_mass_and_carry_unboundedness remains unreviewed."
+  },
+  "reciprocal_mass_search_receipt": {
+    "completed_at": "2026-08-25",
+    "scope": "RationalSupportCarrySkeleton.lean, the #257 prior-art routes, and local annexes matching reciprocal mass, wrap ratios, multiplicative order, carry unboundedness, and Mersenne subsums",
+    "exact_queries": [
+      "reciprocal mass wrap ratio multiplicative order carry state",
+      "support divisor collision surplus Cesaro mean",
+      "Mersenne subsum reciprocal mass unbounded carry",
+      "rational Lambert subsum reciprocal mass lower bound"
+    ],
+    "finding": "The local source contains the coupled identities and inequalities (wrapRatio_le_reciprocalMass_of_binaryCoeffTail_blocks, support_fraction_oddOrder_wrapRatio_le_reciprocalMass, booleanCollision_wrap_bound_of_common_multiple, and shifted_state_unbounded_of_infinite_support). The bounded external/annex search recovered only classical divisor-sum averaging, repetend arithmetic, and generic carry criteria, not this combined lower-bound and unboundedness package.",
+    "effect": "The family is plausibly an apparently distinct formal composition with useful #257 explanatory value, but its novelty and priority remain unresolved; no separate headline or Comparator interface follows from non-location. Re-enter on a source stating the same coupled inequality after notation translation or on a disproof of one clause."
+  },
+  "boolean_certificate_search_receipt": {
+    "completed_at": "2026-08-25",
+    "source": "annexes/arxiv-1706-02359-lambert-series-factor-pairs/extracted.md",
+    "source_sha256": "8aca3b029d0fff69913b366705fa4d16f2cf5307a99cc4f20b73cfcbdfaed9ff",
+    "primary_anchors": [
+      "Theorem 1: factorization-pair coefficient identity",
+      "Theorem 9: inverse-matrix/Möbius relations and determinant recurrences"
+    ],
+    "finding": "The source supplies classical Lambert factorization and Möbius inversion infrastructure, but no together-occurrence theorem for the local Boolean quotient certificate, tempered carry normalization, support reconstruction, or square-root strip.",
+    "effect": "Keep boolean_carry_certificate_normal_form as a formal composition over classical identities with no novelty/priority claim; its value is an auditable coordinate interface, not a new Lambert-series theorem."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_new_primary_source_or_formula_match",
+    "priority_order": [
+      "carry_rigidity_and_converse (narrow: one paper to read)",
+      "reciprocal_mass_and_carry_unboundedness (formula-led search)",
+      "boolean_carry_certificate_normal_form (together-occurrence check)"
+    ],
+    "lane": "re-enter only when a cited source, new source generation, exact formula match, or disconfirming counterexample is available"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "source_comparison_and_declaration_family_crosswalk",
+    "output_stage": "attribution_bound_human_review_support",
+    "artifact": "carry trunk crosswalk for the four public #249/#257 carry modules",
+    "human_understanding_delta": "Wang v2 is bound as direct prior art for the forward carry recurrence; the local converse/rigidity, reciprocal-mass, and Boolean together-occurrence families remain visibly separate open comparisons.",
+    "verification_state": "Wang v2 and Lambert Theorems 1/9 are source-pinned and formula-checked; local declaration relations are recorded without claiming independent peer review or endpoint proof.",
+    "publication_or_review_state": "Internal adjudication only; no public novelty, priority, or acceptance claim.",
+    "canonicalization_state": "One carry-trunk crosswalk retained; no duplicate headline or independent Comparator interface created.",
+    "unresolved_downstream_bottleneck": "An exact antecedent or disconfirmation for the local iff/rigidity and coupled reciprocal-mass/Boolean inequalities.",
+    "next_stage_owner": "Novelty Observatory on a new primary source or formula-level match; Mathematics Refinery for any downstream consolidation."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "carry_trunk_claim_crosswalk@Wang-v4-Lambert-2026-08-27",
+    "evidence_class": "Mixed source-backed crosswalk: Wang's current v4 Lemma 2.1 is external ordinary-proof prior art; Lambert/Möbius identities are classical source infrastructure; local converse, rigidity, reciprocal-mass, and Boolean coupling are formal compositions with unresolved external comparison.",
+    "closest_known_result": "Han Wang, arXiv:2606.24972v4, Lemma 2.1 (printed source locator: Carries and gaps) gives the binary weighted forward carry/gap relation; Kovac--Tao, arXiv:2406.17593, supplies the strict-tail achievement-set framework; Merca--Schmidt, arXiv:1706.02359, supplies Lambert factorization and Möbius inversion.",
+    "comparison_relation": "The forward carry recurrence is direct prior art, not a local conceptual novelty. Strict-tail injectivity and Lambert/Möbius transforms are classical. The local iff/rigidity, reciprocal-mass lower bounds, and together-occurrence Boolean certificate remain typed formal-composition comparisons rather than novelty claims.",
+    "exact_delta": "The repository contributes a generic arbitrary-coefficient carry abstraction, an explicit converse/tempered-orbit interface, and a coupled reciprocal-mass/Boolean certificate normal form. These are source-specific compositions and formal interfaces; no new carry principle or Lambert theorem is asserted.",
+    "disconfirming_evidence": "Wang v4 states the forward binary carry/gap relation but no located theorem gives the local arbitrary-coefficient iff or uniqueness of every subexponential integer orbit. The Lambert source gives factorization and inversion but no coupled reciprocal-mass, support-collision, or Boolean certificate theorem. Non-location is not evidence of priority.",
+    "confidence": {
+      "level": "high_for_forward_prior_art_and_classical_substrate_medium_for_formal_composition_boundary_low_for_novelty",
+      "basis": "Pinned official Wang v4 PDF identity (sole-author title page; historical v1/v2 metadata retained separately), exact Lemma 2.1 locator, and pinned Lambert theorem anchors; the unresolved families have not received exhaustive literature review."
+    },
+    "significance": "High human-understanding and route-selection value: one crosswalk prevents four carry modules from being misread as a single new mechanism, while exposing the only potentially distinct coupled inequalities. The object is supporting architecture, not a headline result.",
+    "claim_ceiling": "Public wording may call the forward recurrence an abstraction/formalization of Wang's prior art, the strict-tail and Lambert pieces classical, and the remaining iff/rigidity/reciprocal-mass/Boolean package an unresolved source-specific formal composition. No novelty, priority, #249/#257 endpoint, or irrationality claim follows.",
+    "hard_step": "Determine whether an external theorem matches the exact converse/uniqueness or the coupled reciprocal-mass/support-collision inequalities after notation translation; absent that, preserve the unresolved-comparison ceiling.",
+    "open_boundary": "The reciprocal-mass-and-carry-unboundedness family and the Boolean together-occurrence certificate need formula-level disconfirmation or a primary-source match before any stronger significance language. Comparator should keep the existing exact propositions only; this crosswalk does not justify a new interface.",
+    "bounded_expert_review_act": "Read the current v4 source for an exact converse/uniqueness theorem and perform one formula-led search for the reciprocal-mass lower bound; report a source anchor or a typed negative, without converting non-location into novelty.",
+    "reentry_trigger": "Re-enter on a new Wang/Kovac--Tao/Lambert version, an exact formula match, or a disconfirming counterexample to one coupled clause.",
+    "source_generation_binding": {
+      "wang_external_version": "arXiv:2606.24972v4 (official record and PDF read 2026-08-27)",
+      "wang_pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "historical_wang_v2_pdf_sha256": "c0b75ab662c82026b67ac0ce781c25f7d2f80e12c4b5cb6d63557add35a3ff25",
+      "historical_wang_v2_extracted_sha256": "8ff9b479acd06c4f70dfe059fcf7fef43d17a9c7182aaa9b4b83c585f74067ef",
+      "lambert_extracted_sha256": "8aca3b029d0fff69913b366705fa4d16f2cf5307a99cc4f20b73cfcbdfaed9ff",
+      "formal_source_commit": "de7a3601c48e865f1992758daa9b4d6391c86d7e",
+      "parity_status": "Current v4 PDF identity and Lemma 2.1 crosswalk are pinned; local declaration relations are not independent peer review and do not establish endpoint progress."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication_v4",
+    "bound_snapshot": {
+      "wang_external_version": "arXiv:2606.24972v4",
+      "wang_pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "historical_wang_v2_pdf_sha256": "c0b75ab662c82026b67ac0ce781c25f7d2f80e12c4b5cb6d63557add35a3ff25",
+      "formal_source_commit": "de7a3601c48e865f1992758daa9b4d6391c86d7e"
+    },
+    "claim_guard": "Forward carry is prior art; classical transforms remain classical; local coupled families stay unresolved formal compositions with no endpoint claim.",
+    "reentry_trigger": "Re-enter on source-version, exact formula-match, or disconfirming-counterexample changes."
+  },
+  "current_source_crosswalk_2026_08_27": {
+    "status": "current_v4_exact_crosswalk",
+    "source_identity": {
+      "title": "Sparse Polynomial-Weighted Expansions",
+      "author": "Han Wang",
+      "arxiv": "2606.24972",
+      "version": "v4",
+      "official_abs_url": "https://arxiv.org/abs/2606.24972",
+      "source_pdf": "annexes/arxiv-2606-24972-wang-grau-ribas-v4/source.pdf",
+      "source_pdf_sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "pdf_pages": 10,
+      "source_reviewed_at": "2026-08-27"
+    },
+    "formal_sources": [
+      {
+        "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GenericTailOrbitRigidity.lean",
+        "sha256": "f0506ba8880da2f5914da0a2e7d2b5435e19104b66294cde0e78648a50704487",
+        "locators": "lines 67-70 (IsTemperedBinaryOrbit), 337-363 (exists_temperedBinaryOrbit_of_rational), 366-440 (tempered orbit rigidity and converse family)"
+      },
+      {
+        "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean",
+        "sha256": "6a0b7b25bcdc9e704eefccf8392419bfd692a9374290386a2949ef30bedfb6a5",
+        "locators": "rational-support carry declarations consumed by the crosswalk; no v4 theorem attribution is inferred"
+      }
+    ],
+    "exact_declaration_crosswalk": [
+      {
+        "source_locator": "Wang v4 PDF, printed Lemma 2.1 (Carries and gaps)",
+        "local_declarations": ["IsTemperedBinaryOrbit", "exists_temperedBinaryOrbit_of_rational"],
+        "relationship": "direct forward antecedent after notation translation: b=2, w(n)=n, c(n)=n*d_n, v=Q, u(N)=R_N",
+        "claim_class": "direct_prior_art",
+        "boundary": "The source is a weighted binary specialisation; the local arbitrary-coefficient interface is a formal generalisation, not a new carry principle."
+      },
+      {
+        "source_locator": "Wang v4 PDF, printed Theorem 1.1 (Polynomial-window density)",
+        "local_declarations": [],
+        "relationship": "no local density theorem is imported by this carry crosswalk",
+        "claim_class": "external_context_only",
+        "boundary": "No #249/#257 endpoint, support-density conclusion, or local theorem follows from the v4 headline result."
+      },
+      {
+        "source_locator": "Wang v4 PDF, printed Proposition 3.1 (Exterior contribution)",
+        "local_declarations": [],
+        "relationship": "no local declaration match located",
+        "claim_class": "external_context_only",
+        "boundary": "Do not transfer this source-specific later proposition into the local carry or reciprocal-mass families."
+      },
+      {
+        "source_locator": "Wang v4 PDF, no located converse/uniqueness theorem for every subexponential integer orbit",
+        "local_declarations": ["temperedBinaryOrbit_eq_scaledTail", "doublingOrbit_eq_zero_of_tempered", "binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit"],
+        "relationship": "no external antecedent located; local relations remain formal-composition candidates",
+        "claim_class": "unresolved_comparison",
+        "boundary": "Non-location does not support novelty or priority, and no endpoint claim is made."
+      }
+    ],
+    "claim_guard": "Wang v4 is cited only for the forward weighted carry/gap antecedent. The local converse, rigidity, reciprocal-mass, and Boolean together-occurrence rows remain separately labelled and unaccepted.",
+    "validation": "source identity, PDF hash, local source hashes, and declaration markers compared on 2026-08-27"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Cross-programme attribution and consolidation review; the hard mathematical issue is the coupled reciprocal-mass/Boolean implication, not the carry recurrence itself.",
+    "slow_down_at": "The v1/v2 author/version divergence, the difference between forward carry and converse rigidity, and the temptation to promote non-location to novelty.",
+    "automation_can_establish": ["Source hashes and Proposition 3.1/Lambert anchor parity", "Declaration-family relation and duplicate-fragment detection"],
+    "human_judgment_required": ["Whether a primary source contains the exact converse or coupled inequality", "Whether the unresolved families deserve a paper section or should remain appendix architecture"],
+    "review_act": "One bounded act: verify one exact antecedent candidate and one formula-led disconfirmation search, then keep the carry trunk consolidated."
+  }
+}

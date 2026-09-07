@@ -1,0 +1,401 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "pure_power_subseries_irrationality_v0",
+  "status": "adjudicated_positive_subseries_with_exact_r2_hecke_mahler_and_r3_comparison_open",
+  "problem_id": "erdos_269",
+  "purpose": "Bind the unconditional irrationality theorem for the one-channel pure-prime-power running-LCM subseries to its exact source generation and nearest Cantor-series frameworks, while separating it from the still-open full smooth-number series.",
+  "source_generation": {
+    "repository_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+    "packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+    "source_note_sha256": "9090ad541c5d39fd39be065b7adc18a21dc084e4fbf14a3761e29ccf54c7ae2c",
+    "lean_source_sha256": "5bdbb46516f43bd8875d101cc3b02d071ec86499c9ca8a5b7c54678b5859e765",
+    "checker_sha256": "33c61b27a4a3131627e75bf1907fff79fe529921a797764a3251984bb45dc81b",
+    "polynomial_cantor_source_artifact": "annexes/hancl-tijdeman-2008-polynomial-cantor-series/source.pdf",
+    "polynomial_cantor_source_artifact_sha256": "1d86c04a1d170c5f1768b8a124072fc9e7d3cc71353f063a95eaf269cd0d0f97",
+    "status": "source_note_lean_core_checker_and_primary_sources_bound; polynomial Cantor comparison read and ruled out as an exact r>=3 antecedent; r>=3 novelty remains open"
+  },
+  "adjudication": {
+    "verdict": "admit_as_positive_subseries_mechanism_with_framework_prior_art_and_no_full_target_credit",
+    "evidence_class": "authored ordinary irrationality proof with Lean-checked arithmetic core and exact finite checker; external framework sources are primary-context references, not proof authority for the local theorem",
+    "closest_known_prior_art": "Hančl--Tijdeman, 'On the irrationality of Cantor series' (J. reine angew. Math. 571, 2004), supplies the nearest variable-radix irrationality framework; their 2008 polynomial Cantor-series paper was read as a broader finite-memory comparison and does not give an exact r>=3 antecedent for this bounded-radix all-one sequence; Bugeaud--Laurent, Acta Arithmetica 209 (2023), 59--90, DOI 10.4064/aa220323-18-1, gives the exact two-prime Hecke--Mahler transcendence comparison below. The local source-specific running-LCM radix word and right-special product-Sturmian separation for r>=3 were not located in these sources.",
+    "exact_delta": "The local theorem proves irrationality for the pure-prime-power running-LCM channel (and merged pure-power ladder) with finite support size at least two, using all-one radix digits, bounded state clearing, and a separated right-special extension. The full smooth #269 shell has growing digits, so the interval-confinement/nonzero-form step does not transfer.",
+    "proof_mechanism_comparison": "The genuinely hard local step is the right-special-factor separation that produces a nonzero integer form after the bounded radix state is cleared; the finite checker only replays instances. This is a source-specific combinatorial realization inside a standard Cantor-series proof envelope, not a new general Cantor-series criterion.",
+    "disconfirming_evidence": "No bounded search found a verbatim r>=3 running-LCM theorem. The read Hančl--Tijdeman 2008 polynomial Cantor-series criterion is not an automatic match: its finite-memory coefficient hypothesis requires a coefficient sum o(a_n), while the all-one digit representation has a nonzero coefficient and the running-LCM radices are bounded. The exact two-prime comparison is source-matched to Bugeaud--Laurent by an explicit affine identity, but no argument transfers the pure-power result to the full smooth-number series.",
+    "confidence_ceiling": "Strong internal confidence in the pinned ordinary proof and Lean arithmetic core; strong framework attribution and exact r=2 Hecke--Mahler comparison; novelty for r>=3 remains unresolved. No priority claim.",
+    "significance_rationale": "This is one of the corpus's strongest positive #269 results because it isolates a complete mechanism and identifies exactly why the full shell is harder. Its value is explanatory and reusable even if later literature shows the r≥3 theorem is known.",
+    "source_review_receipt": {
+      "source": "annexes/hancl-tijdeman-2004-irrationality-cantor-ahmes/extracted.md",
+      "source_sha256": "a9a504afec47b958bbe40c37f3c2fedadd2c677d843b6c6d4859f660a49325d5",
+      "primary_anchors": [
+        "Theorem 2.1, printed pp. 372--374: rational Cantor-series limit-point denominator criterion",
+        "Theorem 3.1, printed p. 375: nearest-integer recurrence criterion",
+        "Theorem 4.1, printed pp. 376--378: adaptive Ahmes-series construction, not a fixed explicit running-LCM sequence"
+      ],
+      "finding": "The source supplies the nearest Cantor/Ahmes recurrence framework and explicitly warns that growth or ratio information alone does not force irrationality. It does not state the finite-prime running-LCM all-one digit theorem, the product-Sturmian right-special separation, or the pure-power/full-shell distinction.",
+      "effect": "Framework attribution is strengthened; the r≥3 source-specific theorem remains an unresolved comparison rather than a novelty claim."
+    },
+    "polynomial_cantor_source_review": {
+      "source": "annexes/hancl-tijdeman-2008-polynomial-cantor-series/source.pdf",
+      "source_sha256": "1d86c04a1d170c5f1768b8a124072fc9e7d3cc71353f063a95eaf269cd0d0f97",
+      "primary_anchors": [
+        "Theorem 2.1, printed pp. 2--3: Oppenheim criterion for Cantor series",
+        "Theorem 4.2, printed pp. 15--16: finite-memory variable-radix criterion with Σ_j b_{n+j,j}=o(a_n)"
+      ],
+      "finding": "The source is a primary framework comparison, not an exact antecedent for the local r>=3 theorem. The one-term all-one digit representation has a nonzero coefficient of size 1, and the pure-power running-LCM radix word is bounded, so the displayed o(a_n) hypothesis is not available; the polynomial-product presentation is also not the running-LCM jump ordering.",
+      "effect": "The exact match candidate is ruled out and the route now records a source-backed comparison boundary. This is not evidence of novelty or priority for r>=3."
+    },
+    "r2_hecke_mahler_source_match": {
+      "source_id": "bugeaud_laurent_2023_hecke_mahler",
+      "source_identity": "Yann Bugeaud and Michel Laurent, 'Transcendence and continued fraction expansion of values of Hecke-Mahler series,' Acta Arithmetica 209 (2023), 59--90, DOI 10.4064/aa220323-18-1; arXiv:2203.12901v1.",
+      "source_url": "https://arxiv.org/abs/2203.12901",
+      "source_pdf": "annexes/arxiv-2203-12901-bugeaud-laurent-hecke-mahler/source.pdf",
+      "source_pdf_sha256": "9adfd6e3d462b6cc59cb66c38a5fc3c998c37b4d54d93526885f554459784f85",
+      "primary_text_locators": [
+        "Definition of F_theta and the lower Sturmian series, printed pp. 1--2 / PDF pp. 1--2",
+        "identity xi_s(theta,rho)(beta,alpha) = (1-beta)F(theta,rho)(beta,alpha) + beta^2 alpha^floor(theta+rho), printed p. 2 / PDF p. 2",
+        "Theorem 1.1, printed p. 3 / PDF p. 3: F(theta,rho)(beta,alpha) is transcendental when |beta|<1 and |beta alpha^theta|<1"
+      ],
+      "local_two_prime_parameterization": {
+        "support": "{p,q} with p<q prime",
+        "theta": "log(p)/log(q) = log_q(p), which lies in (0,1) and is irrational because p and q are distinct primes",
+        "rho": "0",
+        "beta": "1/p",
+        "alpha": "1/q",
+        "hypothesis_check": "q^theta=p, so |beta alpha^theta| = p^(-2) < 1 and |beta| < 1"
+      },
+      "exact_affine_reduction": {
+        "height_identity": "For support exactly {p,q}, H(p^m)=p^m q^floor(m theta).",
+        "local_series": "Sigma_p = sum_{m>=1} 1/H(p^m) = sum_{m>=1} beta^m alpha^floor(m theta).",
+        "source_series": "F(theta,0)(beta,alpha) = sum_{m>=1} sum_{k=1}^{floor(m theta)} beta^m alpha^k.",
+        "affine_identity": "F(theta,0)(beta,alpha) = alpha/(1-alpha) * (beta/(1-beta) - Sigma_p), so Sigma_p = beta/(1-beta) - (1-alpha)/alpha * F(theta,0)(beta,alpha).",
+        "conclusion": "Theorem 1.1 makes F(theta,0)(beta,alpha) transcendental; the displayed nonzero algebraic affine change therefore makes the exact two-prime running-LCM subseries Sigma_p transcendental."
+      },
+      "scope_guard": "This resolves only the exact two-prime pure-power comparison. It does not establish the r>=3 source-specific theorem, the merged repeated-occurrence series, or the full smooth-number Erdős #269 series.",
+      "status": "resolved_exact_primary_source_match"
+    },
+    "bounded_expert_review_act": "The bounded Cantor/Ahmes framework comparison and exact r=2 primary-source match are complete. The remaining state-changing act is a narrow primary-source check of the r>=3 right-special/Sturmian argument; retain the conservative label 'source-specific pure-power subseries theorem' rather than 'new Cantor-series theorem'."
+  },
+  "review_unit": {
+    "result_family": "pure_prime_power_running_lcm_subseries",
+    "exact_result_id": "pure_power_block_shadow_separation",
+    "source_generation": {
+      "repository_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "source_note": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/PurePowerIrrationalityNote.md",
+      "source_note_sha256": "9090ad541c5d39fd39be065b7adc18a21dc084e4fbf14a3761e29ccf54c7ae2c",
+      "lean_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/PurePowerIrrationality.lean",
+      "lean_source_sha256": "5bdbb46516f43bd8875d101cc3b02d071ec86499c9ca8a5b7c54678b5859e765",
+      "checker": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_pure_power_irrationality.py",
+      "checker_sha256": "33c61b27a4a3131627e75bf1907fff79fe529921a797764a3251984bb45dc81b"
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "conclusion_confidence_class": "strong_internal_provisional_case",
+    "evidence_class": "authored ordinary irrationality proof with Lean-checked arithmetic core and exact finite checker",
+    "r2_status": "Bugeaud--Laurent Theorem 1.1 is source-matched through the recorded affine identity, giving transcendence of the exact two-prime pure-power running-LCM subseries",
+    "r_ge_3_status": "apparently distinct source-specific theorem; exact Cantor/Ostrowski comparison remains open",
+    "novelty_confidence": "strong internal provisional case with framework attribution and exact r=2 comparison; no official novelty or priority claim while the r>=3 comparison remains open",
+    "recommended_terminology": "irrationality of a pure-prime-power running-LCM subseries",
+    "discouraged_terminology": [
+      "solution of Erdős #269",
+      "irrationality of the full smooth-number series",
+      "new Cantor-series theorem",
+      "Hecke--Mahler theorem for every finite prime support"
+    ],
+    "significance": "High as a positive subseries theorem and diagnostic separation: the all-ones radix/digit mechanism succeeds on pure powers but fails to transfer to the full smooth shell. Standalone novelty is unresolved, especially for r>=3.",
+    "expert_judgment_that_can_change_state": "Compare the r>=3 theorem and its right-special-factor/nonzero-linear-form proof against a primary Cantor-series or Ostrowski source."
+  },
+  "closest_known_result": {
+    "relation": "standard_Cantor_series_irrationality_framework_with_source_specific_radix_word_argument",
+    "statement": "The proof is a Cantor-series style small-linear-form argument: clearing and a bounded radix state produce arbitrarily small nonzero forms, while right-special factors in a product of Sturmian words force nonzero separation.",
+    "exact_delta": "The local theorem uses the running-LCM pure-power radix word and a separated right-special extension to obtain a uniform lower gap; no located source states this exact prime-support/running-LCM formulation.",
+    "full_problem_boundary": "The full #269 series has growing shell digits rather than all digits equal to one, so the interval-confinement and right-special nonvanishing step do not transfer."
+  },
+  "primary_sources": [
+    {
+      "id": "hancl_tijdeman_2004_cantor_series",
+      "title": "On the irrationality of Cantor series",
+      "authors": ["Henk Hančl", "Robert Tijdeman"],
+      "venue": "Journal für die reine und angewandte Mathematik 571 (2004)",
+      "doi": "10.1515/crll.2004.038",
+      "url": "https://doi.org/10.1515/crll.2004.038",
+      "exact_anchor": "Published Cantor-series irrationality criteria and the standard framework for rational terms with variable radices.",
+      "supports": "Nearest general Cantor-series antecedent.",
+      "does_not_support": "The prime-support running-LCM radix word, the right-special product-Sturmian separation, or the full #269 series."
+    },
+    {
+      "id": "hancl_tijdeman_2004_cantor_ahmes",
+      "title": "On the irrationality of Cantor and Ahmes series",
+      "authors": ["Jaroslav Hančl", "Robert Tijdeman"],
+      "venue": "Publ. Math. Debrecen 65/3-4 (2004), 371--380",
+      "url": "https://publi.math.unideb.hu/paper/982/download/10_5486_PMD_2004_3254.pdf",
+      "local_pdf": "annexes/hancl-tijdeman-2004-irrationality-cantor-ahmes/source.pdf",
+      "local_pdf_sha256": "ed298debc0335714a110c21b794a3139fa53f2bd89f7876a23f71cb6a78e9f34",
+      "pdf_pages": 10,
+      "extracted_markdown": "annexes/hancl-tijdeman-2004-irrationality-cantor-ahmes/extracted.md",
+      "extracted_markdown_sha256": "a9a504afec47b958bbe40c37f3c2fedadd2c677d843b6c6d4859f660a49325d5",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_anchor": "Theorem 2.1, printed pp. 372--373, gives the rationality consequence for variable-radix Cantor series; Theorem 3.1, printed p. 375, gives the nearest-integer tail recurrence criterion.",
+      "supports": "The general variable-radix Cantor/Ahmes-series rationality framework and its finite-tail recurrence test.",
+      "does_not_support": "The prime-support running-LCM radix word, the right-special product-Sturmian separation, or the full #269 series."
+    },
+    {
+      "id": "hancl_tijdeman_polynomial_cantor_series",
+      "title": "On the irrationality of polynomial Cantor series",
+      "authors": ["Henk Hančl", "Robert Tijdeman"],
+      "venue": "Acta Arithmetica 133 (2008), 37--52",
+      "doi": "10.4064/aa133-1-3",
+      "url": "https://pub.math.leidenuniv.nl/~tijdemanr/hancti17.pdf",
+      "exact_anchor": "PDF pp. 2--3 (printed pp. 2--3), Theorem 2.1 and Corollary 2.1 give the Oppenheim Cantor-series criterion and its polynomial specialization. PDF p. 15 (printed p. 15), Theorem 4.1 supplies the polynomial expansion criterion; PDF p. 15 (printed p. 15) through p. 16 (printed p. 16), Theorem 4.2 gives the finite-memory variable-radix criterion with the hypothesis Σ_j b_{n+j,j}=o(a_n).",
+      "supports": "A broader source family for variable-radix irrationality arguments.",
+      "does_not_support": "The source-specific pure-power theorem or any #269 conclusion.",
+      "source_read_status": "primary_author_pdf_read_and_local_artifact_bound",
+      "source_artifact": "annexes/hancl-tijdeman-2008-polynomial-cantor-series/source.pdf",
+      "source_artifact_sha256": "1d86c04a1d170c5f1768b8a124072fc9e7d3cc71353f063a95eaf269cd0d0f97",
+      "pdf_pages": 17,
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "source_artifact_source_url": "https://pub.math.leidenuniv.nl/~tijdemanr/hancti17.pdf",
+      "source_artifact_distribution": "local_only_ignored; not part of the public publication surface",
+      "source_artifact_locator": "PDF pp. 2--3: Theorem 2.1 and Corollary 2.1; PDF p. 15: Theorems 4.1 and 4.2; PDF p. 16: continuation of Theorem 4.2 and Example 4.2",
+      "comparison_adjudication": {
+        "status": "read_not_an_exact_r_ge_3_antecedent",
+        "locator": "Theorem 4.2, printed pp. 15--16",
+        "reason": "For the pure-power route the Cantor digits are all 1 and the finite-support running-LCM radix word is bounded. The visible one-term digit representation therefore has a nonzero coefficient of size 1, not o(a_n); the polynomial-product setup also differs from the running-LCM jump ordering.",
+        "claim_limit": "Do not treat this comparison as a proof that the local r>=3 theorem is new; the r>=3 novelty question remains open."
+      }
+    },
+    {
+      "id": "bugeaud_laurent_2023_hecke_mahler",
+      "title": "Transcendence and continued fraction expansion of values of Hecke-Mahler series",
+      "authors": ["Yann Bugeaud", "Michel Laurent"],
+      "venue": "Acta Arithmetica 209 (2023), 59--90",
+      "doi": "10.4064/aa220323-18-1",
+      "arxiv_id": "2203.12901v1",
+      "url": "https://arxiv.org/abs/2203.12901",
+      "pdf_url": "https://arxiv.org/pdf/2203.12901",
+      "local_pdf": "annexes/arxiv-2203-12901-bugeaud-laurent-hecke-mahler/source.pdf",
+      "local_pdf_sha256": "9adfd6e3d462b6cc59cb66c38a5fc3c998c37b4d54d93526885f554459784f85",
+      "pdf_pages": 29,
+      "extracted_markdown": "annexes/arxiv-2203-12901-bugeaud-laurent-hecke-mahler/extracted.md",
+      "extracted_markdown_sha256": "18f1e63e6b8652e655850ff10c2f27c24719af3e8c6223ce792290795d9fa490",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "exact_anchor": "Definition of F_theta and the lower Sturmian series, printed pp. 1--2; the affine identity between the lower Sturmian series and F_theta,rho, printed p. 2; Theorem 1.1, printed p. 3 / final journal p. 61.",
+      "supports": "The exact two-prime pure-power running-LCM subseries after the parameter substitution and affine identity recorded in adjudication.r2_hecke_mahler_source_match.",
+      "does_not_support": "The source-specific r>=3 theorem, the merged repeated-occurrence series, the full smooth-number #269 series, or novelty/priority for the local r>=3 construction."
+    }
+  ],
+  "evidence_set": {
+    "local": [
+      "PurePowerIrrationalityNote.md",
+      "PurePowerIrrationality.lean",
+      "check_erdos269_pure_power_irrationality.py",
+      "research_packet.json"
+    ],
+    "external": [
+      "Hančl--Tijdeman 2004 Cantor-series criteria",
+      "Hančl--Tijdeman polynomial Cantor-series framework",
+      "Bugeaud--Laurent 2023 Hecke--Mahler theorem, with the exact r=2 running-LCM affine reduction recorded above"
+    ],
+    "evidence_class_split": {
+      "pure_power_irrationality": "authored ordinary proof with arithmetic Lean core",
+      "finite_regression": "exact computation/checker only",
+      "r2_Hecke_Mahler_comparison": "official primary-source theorem matched to the exact two-prime running-LCM series by an explicit affine identity",
+      "full_269": "open and explicitly not implied"
+    }
+  },
+  "search_scope": {
+    "completed_at": "2026-08-27",
+    "repositories_and_sources": [
+      "Erdos269 packet, PurePowerIrrationality note and Lean source, checker, reviewer-card inventory, and prior-art routes",
+      "bounded searches for prime-power running-LCM Cantor series, Sturmian Cantor expansions, and Hecke--Mahler correspondences; official arXiv and Acta Arithmetica primary text for Bugeaud--Laurent"
+    ],
+    "exact_queries": [
+      "pure prime-power running LCM irrationality series",
+      "irrationality Cantor series Sturmian digits right special factors linear forms",
+      "Hecke Mahler series prime power running LCM"
+    ],
+    "negative_finding": "No verbatim source matching the r>=3 running-LCM theorem was located in the bounded search.",
+    "limitation": "Failure to locate a verbatim source is not evidence of priority; a specialist Cantor-series/Ostrowski comparison remains the state-changing review act."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_primary_Cantor_or_Ostrowski_source",
+    "priority_order": [
+      "r>=3 right-special/running-LCM theorem exact antecedent",
+      "full-shell transfer disconfirmation (only if a new bridge is proposed)"
+    ],
+    "lane": "re-enter only when a cited source, new literature extract, exact formula match, or disconfirming counterexample is available"
+  },
+  "comparison_relations": [
+    {
+      "relation": "framework_specialization",
+      "internal_result": "pure-prime-power running-LCM irrationality",
+      "known_result": "Cantor-series irrationality criteria",
+      "delta": "The source-specific nonzero-form construction uses product-Sturmian right-special factors and the all-ones radix state."
+    },
+    {
+      "relation": "strict_subseries_boundary",
+      "internal_result": "one-channel pure-power subseries",
+      "known_result": "full smooth-number #269 series",
+      "delta": "The proof's interval confinement depends on all digits being one and does not apply to the growing shell-digit series."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "positive authored theorem with a nontrivial combinatorial nonzero-form step; attribution is the unresolved bottleneck",
+    "slow_down_at": "the existence of separated right-special factors in the joint Beatty/Sturmian word and the transfer from state gaps to a nonzero integer linear form",
+    "automation_can_establish": [
+      "Lean arithmetic core and declaration parity",
+      "exact rational interval checks",
+      "finite right-special scans and checker regression"
+    ],
+    "human_judgment_required": [
+      "whether the r>=3 theorem is already known in Cantor/Ostrowski literature",
+      "whether the theorem merits a standalone subseries section despite no full-#269 implication"
+    ],
+    "review_act": "One bounded expert act: compare the r>=3 argument with the closest Cantor-series/Ostrowski theorem."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The source gives an unconditional irrationality proof for each pure-prime-power running-LCM channel (and the merged pure-power ladder) for finite prime support of size at least two, with an authored ordinary proof, Lean arithmetic core, and exact finite regression. For exactly two prime generators, Bugeaud--Laurent's Theorem 1.1 gives the stronger transcendence statement for the one-channel series through the explicit affine reduction recorded above. The full smooth-number Erdős #269 series remains untouched.",
+    "forbidden_wording": [
+      "This solves Erdős #269.",
+      "The full smooth-number series is irrational.",
+      "The finite checker proves the universal theorem.",
+      "The r>=3 result is new or first.",
+      "The result is a Hecke--Mahler theorem for arbitrary prime support."
+    ],
+    "open_boundary": "Novelty and exact prior art for r>=3, and any transfer from pure powers to the full smooth shell, remain open review questions."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "all-ones Cantor/radix subseries irrationality versus growing-shell obstruction",
+    "disposition": "admit as one positive subseries mechanism beneath the #269 full-series boundary; do not merge it into the torus/Fourier or full-shell routes",
+    "paper_disposition": "supporting positive theorem",
+    "paper_section": "Pure-power channels: an all-ones radix theorem and the exact reason it does not solve #269",
+    "comparator_advisory": "An ordinary-proof status-tagged interface is potentially justified because the theorem is independently restatable; preserve the finite-checker and full-#269 non-implication firewalls. Role 3 owns any integration.",
+    "human_understanding_delta": "The paper gains a genuine positive theorem that isolates the missing difficulty: pure powers have constant digits and separated radix letters, while the full shell has growing digits and no interval confinement.",
+    "expert_attention_reason": "This object deserves one focused prior-art check because it may be the corpus's strongest positive subseries result, but it must not consume attention as a purported solution of #269."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "authored_proof_and_formal_arithmetic_verification",
+    "output_stage": "attribution_and_human_review_support",
+    "artifact": "pure_power_subseries_irrationality_v0 prior-art route",
+    "human_understanding_delta": "Separates an unconditional one-channel theorem from the full #269 target and exposes the all-ones interval mechanism and the exact transfer failure.",
+    "verification_state": "Source note, Lean arithmetic core, checker, and hashes are pinned; finite scans are not the universal proof; no independent peer review is claimed.",
+    "publication_or_review_state": "Internal adjudication; a status-tagged ordinary-proof card/Comparator candidate may be considered downstream after source parity checks.",
+    "canonicalization_state": "One subseries mechanism is isolated without minting a second #269 endpoint or merging with full-shell routes.",
+    "unresolved_downstream_bottleneck": "Primary-source novelty comparison for r>=3.",
+    "next_stage_owner": "Novelty Observatory for the bounded literature comparison; Mathematics Refinery for any card generation; Role 3 for any release integration."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_269.md",
+    "section": "Pure-power channels: an all-ones radix theorem and the exact reason it does not solve #269",
+    "canonical_mechanism_family": "all-ones Cantor/radix subseries irrationality versus the growing-shell obstruction",
+    "relation": "Add one supporting positive theorem beneath the full #269 boundary; do not merge it into the torus/Fourier, carry, or full-shell routes.",
+    "understanding_delta": "The paper can state a complete irrationality result for pure-prime-power channels while showing exactly which all-ones interval and right-special separation steps fail for the full smooth-number shell.",
+    "evidence_boundary": "Authored ordinary proof with Lean-checked arithmetic core and exact finite regression; the cited Cantor-series and Hecke--Mahler literature supplies framework/comparison only, and no full-#269 conclusion follows.",
+    "hard_step": "Verify the r>=3 right-special-factor/nonzero-form argument against primary Cantor/Ostrowski sources.",
+    "meaningful_failed_route": "Do not present the pure-power proof, finite checker, or constant-digit interval argument as a transfer to the growing-shell three-prime series.",
+    "open_remainder": "Exact prior-art status for r>=3 and any bridge from pure powers to the full #269 series remain open."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "pure_power_subseries_irrationality@source-90e3383a-note-9090ad54",
+    "source_version_binding": {
+      "repository_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "source_note": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/PurePowerIrrationalityNote.md",
+      "source_note_sha256": "9090ad541c5d39fd39be065b7adc18a21dc084e4fbf14a3761e29ccf54c7ae2c",
+      "lean_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/PurePowerIrrationality.lean",
+      "lean_source_sha256": "5bdbb46516f43bd8875d101cc3b02d071ec86499c9ca8a5b7c54678b5859e765",
+      "checker_sha256": "33c61b27a4a3131627e75bf1907fff79fe529921a797764a3251984bb45dc81b",
+      "primary_source_locators": [
+        "Hančl–Tijdeman 2004, Cantor-series irrationality criteria",
+        "Hančl–Tijdeman, polynomial Cantor-series framework",
+        "Bugeaud–Laurent Hecke–Mahler theorem, matched to the exact r=2 affine reduction"
+      ],
+      "parity_status": "Source note, Lean arithmetic core, checker, and finite regression are bound; the exact r=2 literature match is pinned, while the r>=3 comparison remains open."
+    },
+    "evidence_class": "Authored ordinary irrationality proof with Lean-checked arithmetic core and exact finite checker",
+    "closest_known_result": "Hančl--Tijdeman's Cantor-series and polynomial Cantor-series criteria are the nearest frameworks; Bugeaud--Laurent supplies the exact two-prime Hecke--Mahler comparison via the recorded affine identity. The exact prime-support running-LCM word and right-special product-Sturmian separation for r>=3 were not located there.",
+    "exact_delta": "The local theorem is an unconditional irrationality result for pure-prime-power running-LCM channels with at least two generators, using all-one digits and right-special separation; it does not transfer to the growing-digit full smooth shell.",
+    "comparison_relation": "A source-specific pure-power subseries theorem inside a standard Cantor-series proof envelope, not a new general Cantor criterion and not a full #269 theorem.",
+    "disconfirming_evidence": "No bounded search found a verbatim r>=3 theorem; no bridge to the full smooth series exists.",
+    "confidence_ceiling": "Strong for the pinned ordinary theorem and Lean arithmetic core and for the exact r=2 attribution; the r>=3 literature comparison remains unresolved; no priority claim.",
+    "hard_step": "The right-special product/Sturmian separation that yields a nonzero integer form after bounded-state clearing.",
+    "open_boundary": "Exact r>=3 prior art and any transfer from pure powers to the full smooth shell remain open.",
+    "bounded_expert_act": "Compare the r>=3 right-special argument with the nearest Cantor/Ostrowski theorem.",
+    "reentry_trigger": "Re-enter if a direct r>=3 antecedent, source generation change, or full-shell transfer appears.",
+    "significance_assessment": {
+      "grade": "high_positive_subseries_mechanism",
+      "why_care": "It proves a genuine irrationality theorem for pure-power channels and isolates why the all-ones mechanism fails for the full smooth shell.",
+      "mechanism_family": "all-ones Cantor/radix subseries irrationality versus growing-shell obstruction"
+    },
+    "classification": {
+      "evidence_class": "authored ordinary irrationality proof with Lean-checked arithmetic core and exact finite checker",
+      "closest_prior_art": "Cantor-series and Ostrowski criteria provide the variable-radix framework; Bugeaud--Laurent gives the exact two-prime Hecke--Mahler comparison through the recorded affine identity, while the local running-LCM pure-power word and right-special separation remain source-specific for r>=3.",
+      "comparison_relation": "Positive pure-prime-power subseries theorem beneath the full #269 boundary; it does not transfer to the growing smooth shell.",
+      "novelty_confidence": "strong internal provisional case with exact r=2 comparison and unresolved r>=3 comparison; no priority claim",
+      "significance_grade": "high_positive_subseries_mechanism",
+      "why_care": "It proves a genuine irrationality theorem for every pure-power channel with at least two prime generators and isolates the exact reason the all-ones radix argument fails for the full smooth-number shell.",
+      "hard_step": "Use right-special product/Sturmian separation and a nonzero linear form to defeat rationality in the running-LCM radix expansion.",
+      "natural_friction": "Pure powers have constant digits and separated radix letters; the full shell has growing digits and no interval confinement, so the theorem cannot be presented as a transfer.",
+      "disconfirming_evidence": "No primary source was located for the exact r>=3 running-LCM theorem, and no bridge to the full smooth series exists."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The source gives an unconditional irrationality proof for each pure-prime-power running-LCM channel, and the merged pure-power ladder, for finite prime support of size at least two, with a Lean arithmetic core and exact finite regression.",
+      "rejected_stronger": [
+        "a solution of Erdős #269",
+        "irrationality of the full smooth-number series",
+        "the finite checker as universal proof",
+        "a first or new r>=3 theorem",
+        "a Hecke–Mahler theorem for arbitrary finite prime support",
+        "a priority claim"
+      ],
+      "open_boundary": "Exact r>=3 prior art and transfer from pure powers to the full smooth shell remain open."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "all-ones Cantor/radix subseries irrationality versus growing-shell obstruction",
+      "disposition": "admit as one positive subseries mechanism beneath the full #269 boundary; keep it separate from torus/Fourier and full-shell routes",
+      "paper_disposition": "supporting positive theorem in 'Pure-power channels: an all-ones radix theorem and the exact reason it does not solve #269'",
+      "supersession_or_consolidation": "Consolidate pure-power channels and the merged ladder into one theorem; retire duplicate finite-checker and channel-count narratives.",
+      "expert_attention_reason": "This may be the strongest positive subseries result in the corpus; one focused prior-art audit can materially change its significance while preserving the full-shell boundary.",
+      "independent_comparator_interface_justified": "One ordinary-proof status-tagged interface is potentially justified after source-parity and the remaining r>=3 comparison; no full-#269 interface."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "load-bearing irrationality proof with unresolved attribution split",
+      "slow_down_at": "Check the right-special/nonzero-form argument and the exact support quantifiers.",
+      "automation_establishes": "Lean arithmetic core, finite checker, and source hashes.",
+      "expert_judgment_required": "Whether the r>=3 mechanism is present in Cantor/Ostrowski literature.",
+      "bounded_expert_act": "Crosswalk one right-special step to the nearest Cantor-series theorem before any novelty wording.",
+      "reentry_condition": "Reopen if a direct r>=3 antecedent, source generation change, or full-shell transfer appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "authored proof and formal arithmetic verification",
+      "output_stage": "attribution and human-review support",
+      "artifact": "pure_power_subseries_irrationality_v0",
+      "human_understanding_delta": "Separates an unconditional one-channel theorem from the full #269 target and exposes the exact transfer failure.",
+      "verification_state": "Source note, Lean arithmetic core, checker, and hashes are pinned; finite scans are not the universal proof.",
+      "publication_or_review_state": "Potentially eligible for a status-tagged ordinary-proof card after the bounded literature checks.",
+      "canonicalization_state": "One pure-power subseries mechanism, not a second #269 endpoint.",
+      "unresolved_downstream_bottleneck": "Primary-source novelty comparison for r>=3.",
+      "next_stage_owner": "Mathematics Refinery for card/paper assimilation and Novelty Observatory for the bounded comparison."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_note_lean_core_checker_and_packet_primary_sources_bound_polynomial_cantor_comparison_ruled_out_as_exact_r3_antecedent_r3_novelty_open",
+    "bound_snapshot": {
+      "repository_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "packet_sha256": "6c1ad149f4d3df6b938a09be32de3f7c484d804be0a72018bd211bd35f2539c0",
+      "source_note_sha256": "9090ad541c5d39fd39be065b7adc18a21dc084e4fbf14a3761e29ccf54c7ae2c",
+      "lean_source_sha256": "5bdbb46516f43bd8875d101cc3b02d071ec86499c9ca8a5b7c54678b5859e765",
+      "checker_sha256": "33c61b27a4a3131627e75bf1907fff79fe529921a797764a3251984bb45dc81b",
+      "polynomial_cantor_source_artifact_sha256": "1d86c04a1d170c5f1768b8a124072fc9e7d3cc71353f063a95eaf269cd0d0f97",
+      "review_generation": "2026-08-26_pure_power_maturity_v3"
+    },
+    "claim_guard": "The pure-power subseries irrationality theorem is source-bound and separate from the full smooth #269 series; the read polynomial Cantor-series source is recorded as a framework comparison ruled out as an exact r>=3 antecedent, while no r>=3 novelty, full-shell transfer, priority, or endpoint claim is admitted. The exact r=2 Bugeaud--Laurent comparison is admitted only in the parameterized affine form recorded above.",
+    "reentry_trigger": "Re-enter if the source note, Lean core, checker, packet, r>=3 literature comparison, or a full-shell bridge changes."
+  }
+}

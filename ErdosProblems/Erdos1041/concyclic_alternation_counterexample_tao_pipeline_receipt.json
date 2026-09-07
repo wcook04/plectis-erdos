@@ -1,0 +1,38 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "proof_generation_from_adversarial_computation",
+  "output_stage": "formally_verified_exact_counterexample_and_frontier_correction",
+  "artifact": [
+    "ErdosProblems/Erdos1041/ConcyclicAlternationCounterexample.md",
+    "ErdosProblems/Erdos1041/ConcyclicAlternationCounterexample.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_alternation_counterexample.py"
+  ],
+  "human_understanding_delta": "The proposed configuration-independent regular-polygon majorant fails at the first open degree. The missing Form-A bridge must select its radius jointly with the spokes or use a configuration-dependent comparator.",
+  "verification_state": "PASS: exact Fraction checker exit 0; canonical cached lean_fast_build --jobs 2 of ErdosProblems.Erdos1041.ConcyclicAlternationCounterexample exit 0, including unit-circle identities, cyclic minor-gap order, test-point arc membership, and five strict product inequalities",
+  "publication_or_review_state": "private_corpus_correction_not_externally_reviewed",
+  "canonicalization_state": "counterexample companion added; ConcyclicFormACutCertificate corrected; historical validator claim boundary corrected; research packet exact_results, negative_results, and open-producer status reconciled",
+  "unresolved_downstream_bottleneck": "The Form-A-cut objective and unrestricted Erdos 1041 remain open; the false concentric-alternation producer is retired.",
+  "next_stage_owner": "Research frontier: select and test a joint spoke-radius mechanism or configuration-dependent comparator for Form-A; Refinery/publication may independently review the exact no-go without promoting the still-open parent problem.",
+  "consequence_decisions": [
+    {
+      "candidate": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "Conjecture U was a named live route and is now exactly refuted; the packet must retire it while preserving Form-A and Erdos 1041 as open."
+    },
+    {
+      "candidate": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicFormACutCertificate.md",
+      "decision": "update_now",
+      "mathematical_reason": "The note stated Conjecture U as calibrated but open; its status and interpretation of the finite battery became false."
+    },
+    {
+      "candidate": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py",
+      "decision": "update_now",
+      "mathematical_reason": "The fixed finite sample remains a regression, but it can no longer be presented as evidence for the universal law."
+    },
+    {
+      "candidate": "other namespace-only consequence-map matches",
+      "decision": "outside_scope",
+      "mathematical_reason": "They share only the ErdosProblems.Erdos1041 namespace and neither state nor consume Conjecture U."
+    }
+  ]
+}

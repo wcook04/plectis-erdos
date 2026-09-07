@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification68ChannelRadius.Challenge",
+  "solution_module": "ExternalVerification68ChannelRadius.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower",
+    "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper",
+    "Erdos249257.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius",
+    "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_cubic_lower",
+    "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_cubic_upper",
+    "Erdos249257.ExternalVerification68ChannelRadius.sharp_radius_satisfies_square_log_constraint"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

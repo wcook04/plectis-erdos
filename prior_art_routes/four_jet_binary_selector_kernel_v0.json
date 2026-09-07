@@ -1,0 +1,272 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "four_jet_binary_selector_kernel",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_subset_sum_collision_with_exact_four_jet_threshold",
+  "problem_id": "erdos_1049",
+  "purpose": "Place the four-jet selector theorem correctly between elementary subset-sum pigeonhole, zero-sum theory, coding syndromes, and Padé auxiliary-function construction.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/four_jet_binary_selector_kernel.card.json",
+    "card_commit": "479e2528f8495e8a90c83473b1a91b5841ea3afc",
+    "landed_source_commit": "2485119547c59549b93190ae546b7b4255dc1b36",
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+    ],
+    "source_result_id": "four_jet_binary_pigeonhole_kernel"
+  },
+  "classification": {
+    "theorem_class": "binary_subset_sum_collision_in_a_finite_abelian_signature_group",
+    "novelty_class": "routine_pigeonhole_theorem_with_reusable_Lean_four_jet_interface_and_exact_depth_41_counting_threshold",
+    "formalization_class": "Lean_checked_cardinality_collision_generic_threshold_and_3_adic_optimized_threshold",
+    "priority_claim": "none",
+    "recommended_terminology": "four-jet binary subset-sum collision",
+    "acceptable_project_alias": "four-endpoint-jet signed kernel",
+    "terminology_boundary": "Subset-sum collision and finite abelian signature group are literal. Kernel is accurate only after extending the signatures to a homomorphism from Z^n; the binary selector map itself is not generally an F_2-linear code map.",
+    "nearest_prior_work": [
+      "Olson's 1969 finite-abelian-group papers are foundational zero-sum antecedents, but their target is a nonempty zero-sum subsequence rather than equality of two binary subset sums with a signed difference.",
+      "Hamming's syndrome viewpoint gives the coding-theoretic analogy: more words than syndromes force a collision, but the mixed-exponent target here is not automatically a binary linear code.",
+      "Bombieri--Vaaler (1983) supplies a much stronger lattice/Siegel-lemma framework for bounded integer relations used in auxiliary-function mathematics; it does not give this exact binary cardinality threshold."
+    ],
+    "attribution": "Call the collision theorem elementary pigeonhole. Use zero-sum, syndrome, and Siegel-lemma sources only to orient neighboring traditions. Attribute the exact four-jet encoding, mixed-prime entropy budget, Lean API, and depth-41 130T+2S certificate to the local source.",
+    "mathematical_interest": "Low standalone depth but useful construction value: it quantifies exactly how many binary degrees of freedom buy four simultaneous local cancellations with coefficients bounded by one. Its proper digestion unit is a short method-boundary segment inside a broader auxiliary-function discussion.",
+    "reusable_scope": "Auxiliary-function constructions with finitely many additive local signatures, where bounded binary coefficients are preferable to solving an unrestricted integer linear system.",
+    "why_it_matters": "It separates the combinatorial cost of local cancellation from the analytic tasks of nonvanishing, height, and remainder control, preventing a selector collision from being mistaken for a completed Padé construction. That anti-overclaim boundary is more significant than the elementary collision itself."
+  },
+  "adjudication_currentness": {
+    "status": "source_and_card_hashes_current_at_snapshot",
+    "bound_snapshot": {
+      "source_commit": "2485119547c59549b93190ae546b7b4255dc1b36",
+      "reviewer_card_commit": "479e2528f8495e8a90c83473b1a91b5841ea3afc",
+      "source_result_id": "four_jet_binary_pigeonhole_kernel",
+      "parity_status": "formal source hashes and reviewer-card hash match the adjudicated snapshot"
+    },
+    "claim_guard": "Only the Lean-checked finite collision and generic/depth-41 thresholds are bound here. No analytic realization, nonvanishing, remainder, height, irrationality, endpoint, or priority claim is implied.",
+    "reentry_trigger": "Reopen when either formal source, reviewer card, source-result row, or an analytic realization/height/remainder consumer changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine finite combinatorics with an unverified analytic consumer.",
+    "slow_down_at": "Verify the target-group cardinality, coefficient alphabet, and depth-41 count before accepting the selector as a construction.",
+    "automation_establishes": "The five named Lean declarations and their exact generic/depth-41 thresholds.",
+    "expert_judgment_required": "Whether a structured realization preserves nonzero analytic content and acceptable height after the four local cancellations.",
+    "human_judgment_required": "Whether a structured realization preserves nonzero analytic content and acceptable height after the four local cancellations.",
+    "bounded_review_act": "Inspect one depth-41 collision, map its signed vector into the proposed source construction, and record the first missing analytic hypothesis.",
+    "attention_ceiling": "Do not spend specialist time re-proving the pigeonhole step while realization, remainder, and height remain open."
+  },
+  "primary_sources": [
+    {
+      "id": "olson_1969_finite_abelian_zero_sum_I",
+      "title": "A combinatorial problem on finite Abelian groups, I",
+      "author": "John E. Olson",
+      "venue": "Journal of Number Theory 1 (1969)",
+      "doi": "10.1016/0022-314X(69)90021-3",
+      "url": "https://doi.org/10.1016/0022-314X(69)90021-3",
+      "exact_anchor": "The paper studies zero-sum subsequences in finite abelian groups and determines foundational p-group cases of the Davenport-constant problem.",
+      "supports": "The nearby established zero-sum tradition for sequences in finite abelian groups.",
+      "does_not_support": "The card's two-subset collision formulation, four-jet signature, or depth-41 threshold."
+    },
+    {
+      "id": "hamming_1950_error_correcting_codes",
+      "title": "Error Detecting and Error Correcting Codes",
+      "author": "Richard W. Hamming",
+      "venue": "Bell System Technical Journal 29 (1950), 147-160",
+      "doi": "10.1002/j.1538-7305.1950.tb00463.x",
+      "url": "https://doi.org/10.1002/j.1538-7305.1950.tb00463.x",
+      "exact_anchor": "The parity-check and syndrome framework partitions words by a finite check signature, making collision and counting bounds central coding objects.",
+      "supports": "The same-signature or same-syndrome analogy for the selector map.",
+      "does_not_support": "An F_2-linear structure on the mixed 2- and 3-primary four-jet target or the signed Padé relation."
+    },
+    {
+      "id": "bombieri_vaaler_1983_Siegel_lemma",
+      "title": "On Siegel's lemma",
+      "authors": [
+        "Enrico Bombieri",
+        "Jeffrey Vaaler"
+      ],
+      "venue": "Inventiones Mathematicae 73 (1983), 11-32",
+      "doi": "10.1007/BF01393823",
+      "url": "https://doi.org/10.1007/BF01393823",
+      "exact_anchor": "The paper gives quantitative small-height integer solutions to systems of linear equations, a standard auxiliary-function relation mechanism.",
+      "supports": "The neighboring Padé/auxiliary-function tradition of producing bounded integer kernel vectors under many constraints.",
+      "does_not_support": "Binary coefficients, a finite-group subset-sum proof, the four endpoint jets, or the exact 130T+2S threshold."
+    }
+  ],
+  "mechanism_comparison": {
+    "pigeonhole_core": "The 2^n binary selectors map to a group of size (3^R)^2(2^S)^2; strict domain excess forces two equal sums, whose indicator difference is a nonzero {-1,0,1} relation.",
+    "zero_sum_boundary": "A collision between two subsets is not the same assertion as a nonempty zero-sum sub-subsequence of the original signatures, so Davenport-constant terminology would overstate the relation.",
+    "coding_boundary": "The signatures act like syndromes, but the selector map from F_2^n is not generally linear into a group with 3-primary coordinates.",
+    "Pade_boundary": "The theorem buys congruence cancellation only. It supplies none of the nonzero polynomial, analytic remainder, or height bounds required by an irrationality construction.",
+    "exact_delta": "A source-specific four-jet data type and exact entropy ledger, including the certified sharp full-target coefficient 130 at depth 41."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "finite abelian group distinct subset sums 2^n greater than group order",
+      "binary subset sum collision finite group signed relation",
+      "Davenport constant subset sum collision difference two subsets",
+      "coding syndrome pigeonhole finite abelian group",
+      "Pade endpoint congruence Siegel lemma binary coefficients"
+    ],
+    "result": "The search located the standard neighboring theories but no reason to treat the elementary collision as a new zero-sum or coding theorem, and no antecedent for the exact four-jet/depth-41 interface.",
+    "boundary": "The interface may be independently useful, but its combinatorial theorem and threshold arithmetic do not support a novelty or priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked elementary subset-sum collision in the exact four-jet signature group produces a nonzero {-1,0,1} relation once selector entropy exceeds the full target; depth 41 gives the certified 130T+2S threshold.",
+    "forbidden_wording": [
+      "This is a new zero-sum theorem or Davenport-constant bound.",
+      "The selector map is a binary linear code homomorphism.",
+      "The signed relation is a nonzero polynomial pair.",
+      "The analytic remainder is nonzero or small.",
+      "The threshold is optimal for the structured image rather than only the full-target count.",
+      "This proves an irrationality result for Erdős Problem 1049."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_zero_sum_constant_theorem",
+      "not_a_binary_linear_code_theorem",
+      "not_an_analytic_nonvanishing_theorem",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "effective-height accounting for rational-base Padé forms, with local jet cancellation and analytic survival as separate costs",
+    "disposition": "subordinate under rational_approximation_exponent_budget as the canonical local-cancellation producer",
+    "consolidation_relation": "Treat generic cardinality, the binary signed relation, and the depth-41 130T+2S improvement as one four-jet object. Do not create parallel threshold or auxiliary-function headlines.",
+    "comparator_advisory": "One bundled finite-jet collision firewall is justified, with generic and depth-41 estimates together and the absent realization, analytic remainder, and height conclusions stated explicitly.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Buying local cancellation before paying the height bill",
+      "supersession_or_consolidation": "Use one supporting subsection beneath the effective-height architecture; consolidate both thresholds and terminate at the analytic-survival firewall rather than adding construction chronology.",
+      "reason": "The exact entropy calculation is a useful local producer, but the paper's central mathematical issue is whether any resulting auxiliary object survives analytically within the required height budget."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "Exact and reusable local-cancellation interface, but elementary and subordinate to the effective-height architecture.",
+      "evidence_class": "Lean-checked finite-group collision and thresholds",
+      "hard_step": "nonzero analytic realization with adequate height",
+      "prior_art_uncertainty": "low; neighboring traditions are source-pinned; no priority claim",
+      "open_boundary": "no analytic remainder, height theorem, or #1049 endpoint",
+      "demoted_predecessor": null
+    }
+  },
+  "release_disposition": "comparator_candidate",
+  "release_disposition_reason": "The Lean-checked finite collision is independently restatable as one bundled local-cancellation firewall, but its absence of realization, analytic remainder, and height guarantees must remain adjacent and prevents a Padé or irrationality promotion.",
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1049-rational-base-lambert.tex",
+    "section": "Buying local cancellation before paying the height bill",
+    "canonical_mechanism_family": "effective-height accounting for rational-base Padé forms, with local jet cancellation and analytic survival as separate costs",
+    "relation": "Subordinate this local producer beneath rational_approximation_exponent_budget and consolidate the generic and depth-41 estimates into one four-jet object rather than threshold or Padé headlines.",
+    "understanding_delta": "Finite selector entropy buys local cancellation only; analytic survival and height remain the costs that decide the programme.",
+    "evidence_boundary": "Lean checks the finite collision and thresholds; no nonzero realization, analytic remainder, height, irrationality, or #1049 endpoint is established.",
+    "hard_step": "Produce a nonzero analytic auxiliary with surviving remainder and adequate height after the four local cancellations.",
+    "meaningful_failed_route": "A jet-space signed relation can be zero or analytically useless, so finite collision does not by itself produce a Padé construction.",
+    "open_remainder": "The rational-base Lambert problem at 3/2 remains open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_finite_group_collision",
+    "output_stage": "exposition_review_support_and_canonicalization",
+    "artifact": "four_jet_binary_selector_kernel",
+    "human_understanding_delta": "Treats selector entropy as the exact purchase of four local cancellations and keeps realization, analytic survival, and height as separate unpaid costs.",
+    "verification_state": "Five named Lean declarations are source-pinned; no analytic theorem or independent human review is claimed.",
+    "publication_or_review_state": "Comparator candidate for one bundled finite-jet firewall; paper supporting lemma; no auxiliary-function or irrationality claim.",
+    "canonicalization_state": "One object contains generic and depth-41 thresholds, with no parallel threshold headlines.",
+    "unresolved_downstream_bottleneck": "Construct a nonzero auxiliary realization with surviving analytic remainder and adequate adelic height.",
+    "next_stage_owner": "Mathematics Refinery for consolidation and Role 3 for a single statement firewall."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/four_jet_binary_selector_kernel.card.json",
+      "effect": "Replace pending wording with the elementary subset-sum classification and exact zero-sum/coding/Padé boundaries."
+    },
+    {
+      "consumer": "Erdős #1049 proof fleet",
+      "effect": "Use the collision as a completed local-cancellation producer only; separately prove polynomial-pair nonvanishing, analytic remainder control, and height economics."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the four-jet interface and threshold as the reusable contribution, not the underlying pigeonhole principle."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "four_jet_binary_selector_kernel@source-24851195-card-479e2528",
+    "evidence_class": "Lean-checked elementary finite-abelian subset-sum collision with exact generic and depth-41 thresholds",
+    "closest_known_result": "The collision is ordinary pigeonhole counting; Olson, Hamming, and Bombieri–Vaaler are neighboring zero-sum, syndrome, and bounded-integer-relation traditions rather than antecedents for this exact mixed-prime four-jet selector.",
+    "comparison_relation": "Reusable source-specific finite selector interface beneath the effective-height architecture; not a new zero-sum constant, binary-code theorem, or Padé construction.",
+    "exact_delta": "The source fixes a four-jet mixed 2-/3-primary signature, a complete entropy ledger, and a certified depth-41 130T+2S threshold.",
+    "disconfirming_evidence": "Classical pigeonhole, zero-sum, syndrome, and Siegel-lemma frameworks already explain the generic mechanism; the local contribution is the exact source encoding and threshold, so no standalone novelty or priority is claimed.",
+    "confidence": {
+      "level": "strong_internal_provisional_exact_encoding_low_standalone_novelty",
+      "basis": "Source/card hashes are current and the finite declarations are Lean-pinned; the analytic consumer has not been established."
+    },
+    "significance": "Medium supporting method-boundary value: it quantifies the local cancellation purchase while exposing the unpaid analytic and height costs.",
+    "claim_ceiling": "The exact four-jet signature group forces a nonzero {-1,0,1} relation once binary selector entropy exceeds the full target, and depth 41 certifies the 130T+2S threshold; no analytic, endpoint, irrationality, or priority claim.",
+    "hard_step": "Produce a nonzero analytic realization whose remainder survives and whose height stays within the effective exponent budget.",
+    "open_boundary": "Realization, analytic nonvanishing, remainder decay, and height economics remain the decisive #1049 bottlenecks.",
+    "bounded_expert_review_act": "Inspect one depth-41 collision and test whether its signed selector can be realized by the proposed auxiliary without losing nonzero content or the height budget.",
+    "reentry_trigger": "Reopen on a source/card hash change, a nonzero structured realization, an analytic remainder theorem, or a height bound.",
+    "source_version_binding": {
+      "formal_sources": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+      ],
+      "source_commit": "2485119547c59549b93190ae546b7b4255dc1b36",
+      "reviewer_card_commit": "479e2528f8495e8a90c83473b1a91b5841ea3afc",
+      "source_result_id": "four_jet_binary_pigeonhole_kernel",
+      "primary_source_locators": [
+        "Olson 1969, Journal of Number Theory 1, finite-abelian zero-sum framework",
+        "Hamming 1950, Bell System Technical Journal 29, parity-check/syndrome counting",
+        "Bombieri–Vaaler 1983, Inventiones Mathematicae 73, quantitative Siegel-lemma relations"
+      ],
+      "parity_status": "Five named Lean declarations and the card's source hashes are current; no analytic realization or independent review is claimed."
+    },
+    "classification": {
+      "evidence_class": "Lean-checked elementary finite-abelian subset-sum collision with exact generic and depth-41 thresholds",
+      "closest_prior_art": "The collision is ordinary pigeonhole counting. Olson, Hamming, and Bombieri–Vaaler are neighboring zero-sum, syndrome, and bounded-integer-relation traditions, not antecedents for the exact four-jet mixed-prime selector.",
+      "comparison_relation": "Reusable source-specific finite selector interface beneath the effective-height architecture; not a new zero-sum constant, binary code theorem, or Padé construction.",
+      "novelty_confidence": "strong internal provisional case for the exact encoding and threshold; low standalone novelty and no priority claim",
+      "significance_grade": "medium_supporting_method_boundary",
+      "why_care": "It quantifies the exact combinatorial price of four local endpoint cancellations and makes clear that selector entropy is only the first payment in an auxiliary-function argument.",
+      "hard_step": "Produce a nonzero analytic realization whose remainder survives and whose height stays within the effective exponent budget; finite collision does not address any of these.",
+      "natural_friction": "The signed relation may be zero or analytically useless, and the mixed 2-/3-primary signature is not automatically an F_2-linear code map.",
+      "disconfirming_evidence": "Classical pigeonhole, zero-sum, syndrome, and Siegel-lemma frameworks already explain the generic mechanism; the local value is the exact source encoding and threshold, not a new combinatorial principle."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The exact four-jet signature group forces a nonzero {-1,0,1} relation once binary selector entropy exceeds the full target, and depth 41 certifies the 130T+2S threshold.",
+      "rejected_stronger": [
+        "a new Davenport-constant or zero-sum theorem",
+        "a binary linear-code homomorphism theorem",
+        "a nonzero polynomial pair or Padé auxiliary construction",
+        "an analytic remainder or height estimate",
+        "an irrationality theorem or solution of Erdős #1049",
+        "a priority claim"
+      ],
+      "open_boundary": "Realization, analytic nonvanishing, remainder decay, and height economics remain the decisive #1049 bottlenecks."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "effective-height accounting with local jet cancellation and analytic survival as separate costs",
+      "disposition": "subordinate under rational_approximation_exponent_budget; consolidate generic and depth-41 thresholds into one selector object",
+      "paper_disposition": "supporting lemma in 'Buying local cancellation before paying the height bill'",
+      "supersession_or_consolidation": "Retire separate threshold or zero-sum headlines; keep the finite selector as one method-boundary mechanism.",
+      "expert_attention_reason": "The useful judgment is whether the local selector can feed a genuine analytic auxiliary; re-proving its pigeonhole step should not consume scarce attention.",
+      "independent_comparator_interface_justified": "One bundled finite-jet firewall is justified, provided the displayed statement keeps the Lean evidence label and all unpaid analytic/height costs adjacent."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "routine finite combinatorics with an unverified analytic consumer",
+      "slow_down_at": "Check the target-group cardinality, coefficient alphabet, and depth-41 count; do not infer a polynomial relation or remainder from the collision.",
+      "automation_establishes": "The five named Lean declarations and exact thresholds.",
+      "expert_judgment_required": "Whether any structured realization preserves nonzero analytic content and acceptable height after the local cancellations.",
+      "bounded_expert_act": "Inspect one depth-41 collision and map its signed vector into the source construction, recording the first missing analytic hypothesis.",
+      "reentry_condition": "Reopen if a nonzero realization, analytic remainder theorem, height bound, or source correction lands."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified finite-group collision",
+      "output_stage": "expert-readable method boundary and canonicalization",
+      "artifact": "four_jet_binary_selector_kernel",
+      "human_understanding_delta": "Separates the exact local-cancellation purchase from the analytic and height payments still missing.",
+      "verification_state": "Lean checks the finite collision and thresholds only.",
+      "publication_or_review_state": "Suitable for one status-tagged Comparator/paper segment; no endpoint or acceptance claim.",
+      "canonicalization_state": "One selector object beneath the effective-height parent.",
+      "unresolved_downstream_bottleneck": "Nonzero analytic realization with adequate height.",
+      "next_stage_owner": "Mathematics Refinery for consolidation; Role 3 for statement-firewall integration."
+    }
+  }
+}

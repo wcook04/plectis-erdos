@@ -1,0 +1,1 @@
+{"challenge_module":"ExternalVerification1049BezoutPluckerJets.Challenge","solution_module":"ExternalVerification1049BezoutPluckerJets.NegativeSolution","theorem_names":["Erdos249257.ExternalVerification1049BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth"],"permitted_axioms":["propext","Quot.sound","Classical.choice"],"enable_nanoda":true}

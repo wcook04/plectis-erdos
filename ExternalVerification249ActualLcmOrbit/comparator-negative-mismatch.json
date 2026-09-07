@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249ActualLcmOrbit.Challenge",
+  "solution_module": "ExternalVerification249ActualLcmOrbit.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification243TwoModulusRecordCut.Challenge",
+  "solution_module": "ExternalVerification243TwoModulusRecordCut.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_cut",
+    "Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_record_cut"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1041FirstMergeCriticalValueSeparation.Challenge",
+  "solution_module": "ExternalVerification1041FirstMergeCriticalValueSeparation.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds",
+    "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

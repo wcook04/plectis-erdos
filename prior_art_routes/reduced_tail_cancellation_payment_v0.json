@@ -1,0 +1,205 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "reduced_tail_cancellation_payment",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_content_sandwich_with_reusable_formal_consumer",
+  "problem_id": "erdos_243",
+  "purpose": "Classify the reduced affine cancellation sandwich, replace metaphorical terminology with a standard arithmetic framework, and preserve its exact tail-GCD consumer and claim ceiling.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/reduced_tail_cancellation_payment.card.json",
+    "card_commit": "d5cd7b2f137c49d7a1e00fc66cd43e8ae56397a4",
+    "landed_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "source_result_id": "dynamic_cancellation_payment",
+    "headline_declarations": [
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.cancellationFactor_sandwich",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.cancellationFactor_eq_one_iff",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.tailGcdGrowthFactor_sandwich",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.tailGcdGrowthFactor_eq_one_iff"
+    ]
+  },
+  "source_result_ids": [
+    "dynamic_cancellation_payment"
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The two Bezout directions and gcd-square step are elementary; the source-specific value is the exact dynamic cocycle interface and its sharp witnesses.",
+    "slow_down_at": "Do not turn a one-step cancellation condition into a global old-prime frequency or stabilization theorem.",
+    "review_act": "One bounded expert act: verify the primitive-content sandwich and formulate the weakest global reuse-frequency statement needed by the #243 consumer."
+  },
+  "adjudication_currentness": {
+    "status": "landed_source_and_card_snapshot_adjudicated",
+    "bound_snapshot": {
+      "formal_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "formal_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "reviewer_card_commit": "d5cd7b2f137c49d7a1e00fc66cd43e8ae56397a4",
+      "reviewer_card_sha256": "9af0024d23f040a70f9f58b8d2b726b23ef7c830ab504a831f685fd3d3f70ab1",
+      "source_result_ids": [
+        "dynamic_cancellation_payment"
+      ]
+    },
+    "claim_guard": "This is a one-step primitive-content sandwich and exact cancellation-free iff; it identifies local old-prime overlap but gives no global frequency, stabilization, or Erdős #243 endpoint result.",
+    "reentry_trigger": "Re-enter if the source/card generation changes or a global old-prime reuse frequency or stabilization theorem lands."
+  },
+  "classification": {
+    "theorem_class": "elementary_Bezout_and_primitive_vector_content_bound_for_a_triangular_integer_map",
+    "novelty_class": "routine_local_inequality_with_reusable_Lean_cocycle_interface_exact_iff_and_sharp_witnesses",
+    "formalization_class": "Lean_checked_abstraction_from_an_Erdos_243_reduced_tail_source",
+    "priority_claim": "none",
+    "recommended_terminology": "primitive reduced-cocycle content sandwich",
+    "acceptable_project_alias": "old-prime-overlap cancellation payment",
+    "terminology_boundary": "Cancellation payment is descriptive local language, not a standard named theorem. Content, primitive vector, unimodular reduction, and Smith normal form are the established ambient terms.",
+    "nearest_prior_work": [
+      "Smith's 1861 theory of integer matrices and congruences is the classical source behind invariant-factor and primitive-content reasoning.",
+      "Kannan and Bachem (1979) formulate Smith and Hermite reduction for integer matrices via unimodular multipliers and greatest-common-divisor operations.",
+      "The exact sandwich here is much smaller than a Smith-normal-form theorem: it follows directly from two Bézout certificates and gcd(a^2,v^2)=gcd(a,v)^2."
+    ],
+    "attribution": "Call the sandwich elementary. Attribute the abstract Lean API, exact iff, sharp witnesses, and #243 transport to the local source; do not attribute the inequality itself as a new Smith-normal-form result.",
+    "mathematical_interest": "Low standalone depth but strong local utility: it turns an opaque reduction factor into an exact support constraint and records precisely where both primitive-state hypotheses enter.",
+    "reusable_scope": "Integer affine recurrences reduced to consecutive primitive pairs, including denominator, content, and gcd cocycles with the displayed triangular step.",
+    "why_it_matters": "For #243 it proves that every strict tail-GCD increase reuses a prime already shared by the multiplier and the old reduced denominator. This identifies the only local source of cancellation, but does not control how often that source occurs."
+  },
+  "primary_sources": [
+    {
+      "id": "smith_1861_linear_indeterminate_systems",
+      "title": "On Systems of Linear Indeterminate Equations and Congruences",
+      "author": "Henry John Stephen Smith",
+      "venue": "Philosophical Transactions of the Royal Society of London 151 (1861), 293-326",
+      "doi": "10.1098/rstl.1861.0016",
+      "url": "https://doi.org/10.1098/rstl.1861.0016",
+      "exact_anchor": "Integer matrices, integral equivalence, and the divisibility invariants underlying what is now called Smith normal form.",
+      "supports": "The classical normal-form framework for content and divisibility under integer linear transformations.",
+      "does_not_support": "The displayed affine cocycle, its gcd(a,v)-sandwich, its sharp witnesses, or any Erdős #243 claim."
+    },
+    {
+      "id": "kannan_bachem_1979_smith_hermite",
+      "title": "Polynomial Algorithms for Computing the Smith and Hermite Normal Forms of an Integer Matrix",
+      "author": "Ravindran Kannan and Achim Bachem",
+      "venue": "SIAM Journal on Computing 8 (1979), 499-507",
+      "doi": "10.1137/0208040",
+      "url": "https://doi.org/10.1137/0208040",
+      "exact_anchor": "Introduction and normal-form theorems: integer matrices are reduced by unimodular row and column operations, with gcd operations controlling the invariant factors.",
+      "supports": "Modern primary-source terminology for the ambient integer-matrix and unimodular-reduction framework.",
+      "does_not_support": "A named cancellation-payment law or the exact local square sandwich."
+    }
+  ],
+  "mechanism_comparison": {
+    "primitive_content_view": "The equations say h(u',v')=(au-v,av). Since (u',v') is primitive, h is exactly the content of the image vector under the triangular integer map with determinant a^2.",
+    "lower_bound": "Every divisor of both a and v divides hu' and hv'; primitivity of (u',v') converts those two divisibilities into gcd(a,v)|h.",
+    "upper_bound": "The cocycle and primitivity of (u,v) give h|a^2 and h|v^2, hence h|gcd(a^2,v^2)=gcd(a,v)^2.",
+    "exact_iff": "The sandwich immediately gives h=1 if and only if gcd(a,v)=1.",
+    "exact_delta": "A division-free Lean API packages both primitive inputs, the sharp square sandwich, the cancellation-free iff, and a direct dynamic tail specialization."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "primitive integer vector content matrix determinant gcd lemma",
+      "gcd cancellation factor affine recurrence denominator reduction",
+      "gcd(a,v) divides cancellation factor square",
+      "Smith normal form primitive vector image content",
+      "rational recurrence denominator gcd cancellation factor"
+    ],
+    "result": "The search located the standard Smith-normal-form, primitive-content, and rational-reduction frameworks but no named antecedent for this exact two-equation sandwich.",
+    "boundary": "That non-location supports no novelty inference: the proof is an immediate specialized gcd calculation."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked primitive reduced-cocycle content sandwich identifies one-step GCD growth with old multiplier-denominator overlap; the #243 tail recurrence is an exact consumer.",
+    "forbidden_wording": [
+      "This is a new cancellation theorem.",
+      "Smith normal form proves the exact displayed theorem in the cited sources.",
+      "Old-prime overlap is globally sparse or absent.",
+      "The tail GCD stabilizes.",
+      "This solves Erdős Problem 243."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_named_Smith_normal_form_theorem",
+      "not_a_frequency_bound",
+      "not_gcd_stabilization",
+      "not_erdos_243_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/reduced_tail_cancellation_payment.card.json",
+      "effect": "Replace unadjudicated and potentially over-named wording with the elementary content classification, standard framework, and exact reusable significance."
+    },
+    {
+      "consumer": "Erdős #243 proof fleet",
+      "effect": "Treat the one-step source of cancellation as settled; the remaining producer must control the global frequency or coherence of old-prime reuse."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the asset as an exact reusable formal mechanism with sharp boundaries, not as a novel standalone theorem or endpoint result."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_global_old_prime_reuse",
+    "priority_order": [
+      "retain Smith/Hermite terminology as ambient integer-content context, not as an attribution of the exact sandwich",
+      "use the exact iff to identify one-step cancellation, then ask separately how often old-prime overlap can recur",
+      "re-enter only when a frequency, coherence, or stabilization theorem changes the local-to-global boundary"
+    ],
+    "lane": "re-enter on a source-backed global old-prime reuse theorem or corrected primitive-state hypotheses; the local sandwich is complete"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "primitive_reduced_cocycle_content_prior_art_review",
+    "output_stage": "reusable_local_mechanism_human_review_support",
+    "artifact": "#243 primitive reduced-cocycle content sandwich and cancellation-free iff",
+    "human_understanding_delta": "The exact gcd(a,v)≤h≤gcd(a,v)^2 sandwich is framed as a specialized primitive-content calculation in the Smith/Hermite ambient framework. It settles the local source of one-step GCD growth without claiming any global frequency or stabilization theorem.",
+    "verification_state": "Four named Lean declarations, primitive-state hypotheses, sharp witnesses, and the #243 tail consumer are source-pinned; no named literature antecedent for the exact square sandwich was located.",
+    "publication_or_review_state": "Private reusable-mechanism support; no priority, new Smith-normal-form theorem, global old-prime sparsity, GCD stabilization, or #243 endpoint claim.",
+    "canonicalization_state": "One local cancellation-payment mechanism with exact iff and sharp boundaries; do not split lower bound, upper bound, and tail consumer into separate result objects.",
+    "unresolved_downstream_bottleneck": "Control the global frequency/coherence of old-prime reuse across the tail recurrence.",
+    "next_stage_owner": "Novelty Observatory for any exact global reuse antecedent; Mathematics Refinery for one cocycle-family consolidation; #243 proof/public owners for frequency or stabilization work."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "reduced_tail_cancellation_payment@ReciprocalTailRigidity-14bf635-card-d5cd7b2f",
+    "source_version_binding": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+        "commit": "14bf635fe7165af31b60829accbb0676309921d2",
+        "sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/reduced_tail_cancellation_payment.card.json",
+        "commit": "d5cd7b2f137c49d7a1e00fc66cd43e8ae56397a4",
+        "sha256": "9af0024d23f040a70f9f58b8d2b726b23ef7c830ab504a831f685fd3d3f70ab1"
+      },
+      "source_result_ids": [
+        "dynamic_cancellation_payment"
+      ],
+      "parity_status": "Four named declarations, primitive hypotheses, sharp witnesses, and the exact tail consumer are source-current."
+    },
+    "evidence_class": "Lean-checked primitive-content sandwich with exact iff and sharp finite witnesses",
+    "prior_art": "Smith normal form and Kannan--Bachem provide the ambient integer-content/unimodular framework; the displayed gcd(a,v)-sandwich is an elementary specialized calculation, not a named Smith theorem.",
+    "closest_known_result": "Primitive vector content under triangular integer maps and standard gcd/Bezout reduction are the nearest antecedents; no located source states this exact square sandwich and dynamic tail specialization.",
+    "comparison_relation": "source_specific_exact_local_cancellation_interface_in_standard_integer_content_framework",
+    "exact_delta": "The source makes the cancellation factor h satisfy gcd(a,v) ≤ h ≤ gcd(a,v)^2 and h=1 iff gcd(a,v)=1, then transports that identity to one-step tail-GCD growth.",
+    "disconfirming_evidence": "Sharp witnesses show intermediate values occur, and the local iff controls neither recurrence frequency nor global stabilization; no #243 endpoint follows.",
+    "confidence_ceiling": "High for the four Lean declarations and their local hypotheses; low for standalone novelty or priority and nil for global GCD stabilization or irrationality.",
+    "significance": "Low standalone theorem depth but strong reusable local value: it identifies exactly which old-prime overlap can pay one cancellation step and prevents vague content language.",
+    "hard_step": "Control the global frequency or coherence of old-prime reuse across the tail recurrence; the local sandwich itself is elementary.",
+    "open_boundary": "No frequency bound, tail-GCD stabilization, effective asymptotic, or Erdős #243 solution is established.",
+    "bounded_expert_act": "Check the two Bezout divisibility directions and the gcd-square step, then state the weakest global reuse theorem needed by the #243 consumer.",
+    "reentry_trigger": "Reopen if a global old-prime reuse theorem, corrected primitive hypotheses, or a source/card generation change appears.",
+    "claim_ceiling": {
+      "strongest_allowed": "A Lean-checked primitive reduced-cocycle content sandwich identifies one-step GCD growth with old multiplier-denominator overlap and yields an exact cancellation-free iff.",
+      "rejected_stronger": [
+        "a new general cancellation theorem",
+        "a named Smith-normal-form result",
+        "global sparsity or absence of old-prime overlap",
+        "tail-GCD stabilization",
+        "an Erdős #243 solution",
+        "a priority or novelty claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "tail normalization and primitive-content cancellation interfaces",
+      "disposition": "subordinate under the #243 tail-rigidity family; consolidate lower/upper sandwich bounds, exact iff, witnesses, and tail consumer",
+      "paper_disposition": "supporting lemma in 'Primitive reduction: what one cancellation step costs'",
+      "supersession_or_consolidation": "Do not split the two inequalities or the dynamic consumer into separate cards; keep the global old-prime reuse gap adjacent.",
+      "expert_attention_reason": "The useful review act is formulating a global reuse-frequency bound, not re-proving the local gcd arithmetic.",
+      "open_boundary": "Global old-prime reuse frequency/coherence and the unrestricted #243 endpoint remain open.",
+      "independent_comparator_interface_justified": true
+    }
+  }
+}

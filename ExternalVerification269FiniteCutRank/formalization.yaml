@@ -1,0 +1,174 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #269: exact rank of the sampled cut family"
+  description: >-
+    Over an arbitrary field, and for a scalar c distinct from 0 and 1, the cut column
+    v_k of length m carries 1 in each of its first k coordinates and c in the rest. For a
+    finite set E of cuts, each at most m, a matrix whose set of columns is exactly the
+    family indexed by E has rank equal to the cardinality of E, reduced by one exactly
+    when both extreme cuts 0 and m occur. The proof isolates the single degeneracy: the
+    consecutive differences are scalar multiples of indicators of disjoint nonempty
+    blocks, so every interior cut carries coefficient zero in any relation, while the two
+    extreme columns are proportional. The column hypothesis is an equality of column
+    ranges, so repeated and permuted columns need no separate assumption. The readers are
+    number theorists and linear algebraists reading the Erdős 269 note; the statement is
+    a finite rank computation and carries no arithmetic content about running least
+    common multiples.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "draining"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269FiniteCutRank/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269FiniteCutRank/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "no_comparator_replay_performed"
+  research_interest_status: "supporting_lemma_grade_finite_rank_computation"
+  submission_authorization: "not_authorized_local_preparation_only"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "no Comparator positive acceptance or deliberate-negative rejection has been recorded"
+  note: >-
+    Prepared locally during the round-7 paper-complete Lean assimilation. No
+    local artifact is represented as a Palomar verdict or registry entry.
+
+classification:
+  arxiv: ["math.NT", "math.RA"]
+  msc2020: ["15A03", "11A05"]
+
+sources:
+  - title: "No finite separable representation at three prime generators (Erdős Problem 269)"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The sampled cut rank is Proposition res:finite-cut-rank of the short note.
+      The Lean proof generalises the note's rational statement to an arbitrary
+      field and states the conclusion with Matrix.rank.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #269"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/269"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering and open status.
+      The rank computation is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem gives the exact rank of a matrix whose column set is the
+    sampled cut family, including the single extreme-column defect. Challenge.lean
+    has one intentional Comparator specification sorry; Solution.lean and the
+    imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "focused_lean_passed_exact_permitted_axioms"
+  actual_axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification269FiniteCutRank.rank_cutColumnMatrix"
+      file: "ExternalVerification269FiniteCutRank/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269FiniteCutRank/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        Direct transport of
+        ErdosProblems.Erdos269.PaperR7.rank_cutMatrix from
+        ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean, elaborated with
+        Lean v4.29.1 and Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6.
+      novelty_status: "unassessed"
+      contribution_class: "finite rank computation with a single extreme-column defect"
+      statement: >-
+        A matrix whose column set is the sampled cut family indexed by a finite
+        set E has rank the cardinality of E, less one exactly when both extreme
+        cuts occur.
+      boundary: >-
+        Finite linear algebra only. The theorem carries no arithmetic content
+        about running least common multiples and does not settle Erdős 269,
+        which remains open.
+      comparator_declaration: "Erdos249257.ExternalVerification269FiniteCutRank.rank_cutColumnMatrix"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Claude Opus"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, repair and verification packaging"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The short note states the proposition for a scalar in a field and describes
+    the column set in words. The Lean statement fixes that reading with an
+    equality of column ranges and uses Matrix.rank. No hypothesis is weakened
+    and no conclusion is strengthened.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source proposition, the Challenge and Solution statement shape, and the
+    open-problem boundary were reviewed. Terminal Comparator replay, independent
+    human peer review, Palomar decision, and registry acceptance are unclaimed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification269FiniteCutRank"
+  statements:
+    - source: "Short note Proposition res:finite-cut-rank, finite sampled cut rank."
+      lean: "Erdos249257.ExternalVerification269FiniteCutRank.rank_cutColumnMatrix"
+      module: "ExternalVerification269FiniteCutRank/Challenge.lean"
+      status: "exact-direct-transport"
+      note: >-
+        The Challenge states the field-general rank formula with the column-range
+        hypothesis, matching the Solution token for token.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

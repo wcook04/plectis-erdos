@@ -1,0 +1,3 @@
+import ExternalVerification1041FiniteAvoidance.Solution
+
+#print axioms Erdos249257.ExternalVerification1041FiniteAvoidance.exists_small_avoiding_finite_realAffineLines

@@ -1,0 +1,240 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "newton_descent_root_convex_hull_confinement",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_scoped_Nagumo_positive_invariance_application_to_continuous_Newton_flow",
+  "problem_id": "erdos_1041",
+  "purpose": "Give the root-hull confinement theorem standard dynamical-systems terminology, distinguish it from static Gauss--Lucas, and preserve the analytic-versus-Lean proof boundary.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/newton_descent_root_convex_hull_confinement.card.json",
+    "card_commit_at_review": "4908cce0d30fb4e6b7835b5b25eb5567a522f55f",
+    "source_commit": "7e80158d80c9beccbaa930a0b45da2db70f253d4",
+    "analytic_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonConvexHullInvariance.md",
+    "lean_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+    "source_declarations": [
+      "newtonReciprocalVector_supportingHalfPlane",
+      "re_eq_zero_of_reciprocal_sum_eq_zero"
+    ]
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Standard positive-invariance principle with a load-bearing polynomial reciprocal boundary calculation; the formal split matters more than terminology.",
+    "slow_down_at": "Check the supporting-half-plane sign and boundary equality case, then keep arclength and critical-start issues separate.",
+    "automation_can_establish": [
+      "The two named local Lean declarations",
+      "Source and reviewer-card identity pins"
+    ],
+    "human_judgment_required": [
+      "Whether an exact Newton-flow invariance antecedent exists",
+      "Whether the ordinary ODE proof handles every stated nonsingular trajectory"
+    ],
+    "review_act": "Audit one boundary-vector calculation and the equality-rigidity step against Nagumo's hypotheses."
+  },
+  "adjudication_currentness": {
+    "status": "analytic_source_lean_lemmas_card_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "source_commit": "7e80158d80c9beccbaa930a0b45da2db70f253d4",
+      "reviewer_card_commit": "4908cce0d30fb4e6b7835b5b25eb5567a522f55f",
+      "review_generation": "2026-08-26_v2"
+    },
+    "claim_guard": "Ordinary global ODE proof plus two local Lean lemmas; no full Lean flow theorem, arclength bound, priority, or #1041 solution claim.",
+    "reentry_trigger": "Reopen on a direct antecedent, metric bridge, source correction, or proof/card generation change."
+  },
+  "classification": {
+    "theorem_class": "positive_invariance_of_the_convex_hull_of_polynomial_roots_under_the_continuous_Newton_flow",
+    "novelty_class": "apparently_unrecorded_scoped_application_of_standard_Nagumo_invariance_with_source_specific_reciprocal_sum_and_boundary_rigidity",
+    "frontier_relation": "spatial_confinement_theorem_not_an_arclength_bound",
+    "formalization_class": "global_ordinary_analytic_proof_with_two_local_Lean_checked_algebraic_lemmas",
+    "priority_claim": "none",
+    "recommended_terminology": "positive invariance of the root convex hull under the continuous Newton flow",
+    "acceptable_descriptive_alias": "Newton-descent root-hull confinement",
+    "discouraged_terminology": [
+      "dynamic Gauss--Lucas theorem",
+      "fully Lean-checked Newton-flow invariance",
+      "Newton path-length theorem",
+      "global smooth Newton field",
+      "solution of Erdős #1041"
+    ],
+    "attribution": "Credit Gauss--Lucas only for static critical-point containment and Nagumo for the tangent-cone positive-invariance principle. Describe the reciprocal supporting-half-plane calculation and boundary-critical rigidity as the local polynomial-specific contribution. Keep the global ODE proof ordinary rather than Lean-checked.",
+    "mathematical_interest": "The proof is short once the reciprocal representation is written, but the global conclusion is useful: every nonsingular descending Newton trajectory begun in the root hull remains spatially confined. The equality case at a boundary critical point closes a singular geometric loophole.",
+    "reusable_scope": "Univariate complex polynomials and nonsingular forward trajectories of $z'=-f/f'$, with separate branch treatment at non-root critical starts. More generally, the support calculation applies to reciprocal-sum vector fields with sources in a convex body.",
+    "why_it_matters": "For #1041 it permanently removes spatial escape from the list of possible failures. Any remaining obstruction must be metric or combinatorial—length, turning, multiplicity, or lobe allocation—inside the convex hull."
+  },
+  "primary_sources": [
+    {
+      "id": "nagumo_1942_integralkurven",
+      "title": "Über die Lage der Integralkurven gewöhnlicher Differentialgleichungen",
+      "author": "Mitio Nagumo",
+      "venue": "Proceedings of the Physico-Mathematical Society of Japan, third series 24 (1942), 551-559",
+      "url": "https://www.jstage.jst.go.jp/article/ppmsj1919/24/0/24_0_551/_article",
+      "exact_anchor": "The paper gives the foundational tangent-direction criterion for solutions of an ordinary differential equation to remain in a closed set.",
+      "supports": "The standard positive-invariance/viability step from inward boundary vectors to forward confinement.",
+      "does_not_support": "The Newton reciprocal formula, root convex hull, or the boundary-critical equality case."
+    },
+    {
+      "id": "gauss_lucas_classical",
+      "title": "Gauss--Lucas theorem",
+      "authority": "classical theorem of Gauss and Lucas",
+      "exact_anchor": "Every zero of $f'$ lies in the convex hull of the zeros of the complex polynomial $f$.",
+      "supports": "Static placement of polynomial critical points and the reason the root hull is the natural convex body.",
+      "does_not_support": "Forward invariance of the continuous Newton flow or any trajectory-length statement."
+    }
+  ],
+  "mechanism_comparison": {
+    "static_Gauss_Lucas": "Locates critical points of $f$ inside the root hull; it says nothing about the direction of $-f/f'$ on the hull boundary.",
+    "Nagumo_positive_invariance": "Turns membership of the vector field in the tangent cone at every regular boundary point into forward invariance.",
+    "source_specific_sign_calculation": "After rotating a supporting normal, each displacement has nonnegative real part, so the reciprocal sum does too and its negated inverse has no outward component.",
+    "boundary_critical_rigidity": "Equality of the reciprocal sum at a supporting face forces every root onto that face, reducing the singular boundary case to a one-dimensional polynomial.",
+    "metric_boundary": "Convex confinement does not control arclength, turning, projection multiplicity, or the choice of a short root pair."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Newton flow convex hull zeros polynomial",
+      "continuous Newton method convex hull roots",
+      "Newton vector field root convex hull forward invariant",
+      "dynamic Gauss Lucas Newton flow"
+    ],
+    "result": "The search located classical continuous-Newton and Gauss--Lucas literature but no source stating this exact positive-invariance theorem or its boundary-critical rigidity case.",
+    "boundary": "Non-location supports an apparently unrecorded scoped-application classification only, never priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A direct reciprocal-sum supporting-half-plane calculation, combined with standard Nagumo positive invariance and a separate boundary-critical rigidity argument, shows that nonsingular continuous Newton descent started in the root convex hull cannot leave it.",
+    "forbidden_wording": [
+      "Gauss--Lucas itself proves the flow invariance.",
+      "Dynamic Gauss--Lucas is an established theorem name.",
+      "The full ODE theorem is Lean-checked.",
+      "Convex confinement bounds Newton trajectory length.",
+      "The result solves Erdős #1041."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_full_global_Lean_formalization",
+      "not_a_global_smoothness_statement_at_critical_points",
+      "not_an_arclength_bound",
+      "not_erdos_1041_solution"
+    ]
+  },
+  "digestion_assessment": {
+    "decision": "supporting mechanism, not headline or absolute-frontier candidate",
+    "canonical_family": "continuous Newton-flow geometry inside the root convex hull",
+    "why_care": "It rules out spatial escape and exposes metric length, turning, and allocation as the surviving difficulties.",
+    "evidence_class": "ordinary global analytic proof plus two Lean-checked local boundary lemmas",
+    "hard_step": "justify viability at singular boundary starts, then obtain a separate metric estimate",
+    "paper_disposition": "supporting lemma in Continuous Newton geometry: confinement is not length control",
+    "comparator_advisory": "no independent interface requested before an end-to-end statement firewall",
+    "open_boundary": "no arclength bound, admissible-hub inequality, or #1041 solution"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/newton_descent_root_convex_hull_confinement.card.json",
+      "effect": "Use positive-invariance terminology, reserve Gauss--Lucas for the static input, and state the formalization split exactly."
+    },
+    {
+      "consumer": "Erdős #1041 proof fleet",
+      "effect": "Treat spatial escape as retired; concentrate on metric and allocation questions inside the hull."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as a scoped Nagumo application with an explicit polynomial-specific boundary calculation, not a new general viability theorem."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_metric_confinement_bridge",
+    "priority_order": [
+      "retain Nagumo as the positive-invariance framework and Gauss--Lucas only as the static critical-point input",
+      "check whether a primary source gives this reciprocal supporting-half-plane calculation or the boundary-critical equality case verbatim",
+      "keep metric length, turning, lobe allocation, and critical-start regularity as separate unresolved consumers"
+    ],
+    "lane": "re-enter only on an exact Newton-flow convex-hull antecedent or a new metric bridge; confinement alone must not be promoted to an arclength result"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "Newton_flow_convex_hull_prior_art_and_scope_review",
+    "output_stage": "supporting_geometry_human_review_support",
+    "artifact": "#1041 continuous Newton-flow root-hull positive invariance",
+    "human_understanding_delta": "The theorem is framed as standard Nagumo viability plus a polynomial-specific reciprocal supporting-half-plane calculation and boundary rigidity. It retires spatial escape while keeping metric length, turning, and lobe allocation visibly unresolved.",
+    "verification_state": "Ordinary global ODE proof and two Lean-checked local lemmas are separated; Nagumo and Gauss--Lucas are attribution anchors, not proof substitutes.",
+    "publication_or_review_state": "Private supporting significance support; no priority, dynamic Gauss--Lucas theorem, full Lean claim, or #1041 endpoint claim.",
+    "canonicalization_state": "One supporting continuous-Newton geometry family; no duplicate viability or static Gauss--Lucas card.",
+    "unresolved_downstream_bottleneck": "An end-to-end metric estimate or admissible-hub inequality inside the confined hull, including critical-start and turning/allocation issues.",
+    "next_stage_owner": "Novelty Observatory for exact Newton-flow antecedents; Mathematics Refinery for supporting-lemma assimilation; #1041 proof/public owners for metric consequences."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "newton_descent_root_convex_hull_confinement@source-7e80158d-card-4908cce0",
+    "evidence_class": "global_authored_ordinary_analytic_proof_with_two_local_Lean_checked_algebraic_lemmas",
+    "closest_known_result": "Nagumo supplies the tangent-cone viability principle and Gauss--Lucas the static root-hull location of critical points; no located source states this continuous Newton-flow invariance package.",
+    "comparison_relation": "Apparently unrecorded scoped application of standard positive invariance to the polynomial Newton vector field; not a dynamic Gauss--Lucas theorem.",
+    "exact_delta": "The source adds a reciprocal supporting-half-plane calculation and boundary-critical rigidity to the standard viability step, thereby proving spatial confinement for nonsingular forward Newton descent.",
+    "disconfirming_evidence": "Gauss--Lucas is static and cannot imply flow invariance; convex confinement supplies no metric estimate, selector coherence, or arclength control.",
+    "confidence_ceiling": "Strong internal provisional case for the scoped application; moderate literature non-location; no priority, full-Lean, or endpoint claim.",
+    "significance": "High as spatial-confinement support: it removes escape from #1041 and concentrates the remaining problem on metric and combinatorial failures inside the root hull.",
+    "claim_ceiling": "Nonsingular forward trajectories of z'=-f/f' begun in the root convex hull remain there by the reciprocal supporting-half-plane calculation, Nagumo invariance, and boundary rigidity.",
+    "hard_step": "Establish inward supporting-half-plane behavior for the reciprocal Newton vector and close the boundary-critical equality loophole.",
+    "open_boundary": "Metric length, turning, lobe allocation, critical-start regularity, and a universal #1041 theorem remain open.",
+    "bounded_expert_act": "Audit one boundary-vector calculation and the equality-rigidity step against Nagumo's hypotheses.",
+    "reentry_trigger": "Reopen on an exact Newton-flow antecedent, metric bridge, source correction, or proof/card generation change.",
+    "source_version_binding": {
+      "analytic_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonConvexHullInvariance.md",
+      "source_commit": "7e80158d80c9beccbaa930a0b45da2db70f253d4",
+      "lean_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+      "reviewer_card_commit": "4908cce0d30fb4e6b7835b5b25eb5567a522f55f",
+      "source_declarations": [
+        "newtonReciprocalVector_supportingHalfPlane",
+        "re_eq_zero_of_reciprocal_sum_eq_zero"
+      ],
+      "primary_source_locators": [
+        "Nagumo 1942, tangent-direction positive-invariance criterion",
+        "Gauss–Lucas theorem, static critical-point containment"
+      ],
+      "parity_status": "Ordinary global ODE proof and two local Lean lemmas are source-bound; Nagumo and Gauss–Lucas are attribution anchors, not substitutes for the polynomial calculation."
+    },
+    "classification": {
+      "evidence_class": "global authored ordinary analytic proof with two local Lean-checked algebraic lemmas",
+      "closest_prior_art": "Nagumo supplies the viability principle and Gauss–Lucas the static convex-hull location of critical points. No located source states this continuous Newton-flow root-hull invariance with the reciprocal supporting-half-plane and boundary-critical rigidity package.",
+      "comparison_relation": "Apparently unrecorded scoped application of standard positive invariance to a polynomial-specific Newton vector field; not a dynamic Gauss–Lucas theorem.",
+      "novelty_confidence": "strong internal provisional case for the scoped application; moderate literature non-location; no priority claim",
+      "significance_grade": "high_spatial_confinement_support",
+      "why_care": "It removes spatial escape from #1041: any remaining failure must be metric or combinatorial inside the root hull, such as length, turning, multiplicity, or lobe allocation.",
+      "hard_step": "Establish inward supporting-half-plane behavior for the reciprocal Newton vector and close the boundary-critical equality loophole.",
+      "natural_friction": "Convex confinement says nothing about arclength or selector coherence, and critical starts require separate regularity treatment.",
+      "disconfirming_evidence": "Gauss–Lucas alone is static and cannot imply flow invariance; no metric estimate follows from the current theorem."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Nonsingular forward trajectories of z'=-f/f' begun in the root convex hull remain in that hull, by a reciprocal supporting-half-plane calculation plus Nagumo invariance and boundary rigidity.",
+      "rejected_stronger": [
+        "a dynamic Gauss–Lucas theorem as a standard attribution",
+        "a fully Lean-checked Newton-flow theorem",
+        "a global smoothness statement at critical points",
+        "a Newton path-length bound",
+        "a solution of Erdős #1041",
+        "a priority claim"
+      ],
+      "open_boundary": "Metric length, turning, lobe allocation, and critical-start regularity remain separate consumers."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "continuous Newton-flow geometry and convex confinement for polynomial lemniscates",
+      "disposition": "retain as one supporting confinement mechanism; do not split viability, reciprocal support, and boundary rigidity into separate cards",
+      "paper_disposition": "supporting lemma in 'Spatial confinement is not the metric theorem'",
+      "supersession_or_consolidation": "Consolidate the ordinary proof and local Lean lemmas with the static Gauss–Lucas context; keep metric route boundaries adjacent.",
+      "expert_attention_reason": "This result decisively removes one class of failure, but review should focus on the reciprocal boundary calculation rather than routine viability terminology.",
+      "independent_comparator_interface_justified": "No standalone Comparator interface; use one bundled status-tagged supporting lemma if Role 3 exposes the geometry layer."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "standard viability principle with a load-bearing polynomial boundary calculation",
+      "slow_down_at": "Check the supporting-half-plane sign and equality case, then keep arclength and critical-start issues separate.",
+      "automation_establishes": "The two named local Lean declarations.",
+      "expert_judgment_required": "Whether an exact Newton-flow invariance antecedent exists and whether the ordinary ODE proof handles every stated nonsingular trajectory.",
+      "bounded_expert_act": "Audit one boundary vector calculation and the equality-rigidity step against Nagumo's hypotheses.",
+      "reentry_condition": "Reopen if a direct antecedent, metric bridge, or source correction appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "Newton-flow convex-hull prior-art and scope review",
+      "output_stage": "supporting geometry human-review support",
+      "artifact": "newton_descent_root_convex_hull_confinement_v0",
+      "human_understanding_delta": "Frames the theorem as Nagumo viability plus a polynomial-specific reciprocal calculation, retiring spatial escape while preserving metric gaps.",
+      "verification_state": "Ordinary global ODE proof and two Lean local lemmas are separated.",
+      "publication_or_review_state": "Supporting status-tagged paper visibility; no priority or endpoint claim.",
+      "canonicalization_state": "One continuous-Newton geometry family.",
+      "unresolved_downstream_bottleneck": "Metric estimate or admissible-hub inequality inside the confined hull.",
+      "next_stage_owner": "Mathematics Refinery and #1041 proof owners."
+    }
+  }
+}

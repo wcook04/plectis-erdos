@@ -1,0 +1,177 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "coprime_lambert_mass_geometric_identity",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_classical_Euler_totient_Lambert_series_with_Lean_checked_visible_lattice_reindexing_and_problem_specific_no_go_consumer",
+  "problem_id": "erdos_249",
+  "purpose": "Identify the displayed coprime-pair sum exactly with the classical Euler-totient Lambert series and retain only the formal visible-lattice packaging and #249 anti-overreach consumer as local deltas.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/coprime_lambert_mass_geometric_identity.card.json",
+    "refinery_handoff_commit": "71c962d38efca6c60d4735afcd4d69efbb9c23fa",
+    "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean"
+  },
+  "classification": {
+    "Lambert_identity_class": "classical_Euler_totient_Lambert_series_after_removing_the_n_equals_1_term",
+    "visible_pair_class": "standard_primitive_lattice_point_or_gcd_layer_reindexing",
+    "formalization_class": "Lean_checked_real_series_summability_and_interchange_packaging",
+    "programme_consumer_class": "useful_rational_geometric_model_falsifier_no_priority_claim",
+    "priority_claim": "none",
+    "recommended_terminology": "Euler-totient Lambert series in visible-pair form",
+    "acceptable_local_alias": "gcd-layer normalization",
+    "discouraged_terminology": "new visible-pair Lambert collapse",
+    "nearest_prior_work": [
+      "DLMF 27.7.2 gives the general Lambert-series divisor-sum expansion and 27.7.4 gives sum phi(n)r^n/(1-r^n)=r/(1-r)^2.",
+      "Hardy and Wright, Theorem 309, records the same Euler-totient Lambert series.",
+      "Campbell (2012) explicitly develops totient identities through visible point vectors."
+    ],
+    "attribution": "Call the identity the classical Euler-totient Lambert series. Describe the gcd-layer proof as its visible-positive-lattice reindexing. Credit the local source for a Lean-checked summability/interchange proof and for recognizing the all-rational family as a precise #249 route falsifier.",
+    "mathematical_interest": "The identity itself is classical and elementary. The formalization is useful because it turns an attractive geometric heuristic into an exact countermodel family with no ambiguity about rearrangement.",
+    "reusable_scope": "Positive primitive-lattice decompositions, Lambert series with divisor-sum coefficients, and proof audits that must distinguish geometric visibility from arithmetic irrationality input.",
+    "why_it_matters": "It decisively retires any argument claiming that coprimality, visible directions, and geometric decay alone force irrationality, while leaving arithmetic refinements untouched."
+  },
+  "primary_and_authoritative_sources": [
+    {
+      "id": "dlmf_27_7_Lambert_series",
+      "title": "DLMF Section 27.7: Lambert Series as Generating Functions",
+      "publisher": "NIST Digital Library of Mathematical Functions",
+      "url": "https://dlmf.nist.gov/27.7",
+      "exact_anchor": "Equations 27.7.2 and 27.7.4: the divisor-sum expansion and the Euler-totient specialization.",
+      "supports": "The exact established identity and terminology.",
+      "does_not_support": "No Lean formalization or #249 inference boundary."
+    },
+    {
+      "id": "campbell_2012_visible_point_totients",
+      "title": "Ramanujan and Eckford Cohen totients from Visible Point Identities",
+      "author": "Geoffrey B. Campbell",
+      "url": "https://arxiv.org/abs/1212.2818",
+      "exact_anchor": "Introduction and visible-point-vector generating identities for Euler and Jordan totients.",
+      "supports": "Established visible-lattice framing for totient generating identities.",
+      "does_not_support": "No claim about the exact local Lean declarations or Erdös #249."
+    }
+  ],
+  "mechanism_comparison": {
+    "totient_reindexing": "For each n>=2, the ordered pairs a,b>=1 with a+b=n and gcd(a,b)=1 are counted by phi(n), because gcd(a,n-a)=gcd(a,n).",
+    "classical_reduction": "Thus L(r)=sum_{n>=2}phi(n)r^n/(1-r^n). Subtracting the n=1 term r/(1-r) from the classical total r/(1-r)^2 gives r^2/(1-r)^2=(r/(1-r))^2.",
+    "visible_layer_reduction": "Alternatively, expand each Lambert kernel and use the unique decomposition (m,n)=g(a,b) of every positive lattice point into gcd and primitive direction.",
+    "significance_boundary": "Both proofs are standard. The durable local value is the exact formal no-go consumer, not a new Lambert-series theorem."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Euler totient Lambert series phi(n) q^n/(1-q^n)",
+      "visible lattice point identity totient generating function",
+      "coprime pairs a+b=n Euler phi Lambert series",
+      "gcd layer geometric mass Lambert series"
+    ],
+    "result": "The exact one-variable identity is a standard tabulated Euler-totient Lambert series, and visible-point-vector literature already supplies the geometric framing.",
+    "boundary": "The Lean formalization and its use as a scoped irrationality-route falsifier remain legitimate local contributions; theorem novelty does not."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The source gives a Lean-checked visible-lattice proof of the classical Euler-totient Lambert identity and uses its rational specializations as an exact geometric-only countermodel family.",
+    "forbidden_wording": [
+      "We discovered a new Lambert-series identity.",
+      "Visible-pair decomposition by itself implies irrationality.",
+      "The rational model rules out all possible #249 strategies.",
+      "The identity solves Erdös Problem 249."
+    ],
+    "nonclaims": [
+      "not_a_new_totient_identity",
+      "not_a_new_visible_lattice_decomposition",
+      "not_a_general_irrationality_no_go",
+      "not_a_solution_of_erdos_249"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/coprime_lambert_mass_geometric_identity.card.json",
+      "effect": "Replace pending language with exact Euler-totient Lambert attribution and retain the formal no-go significance."
+    },
+    {
+      "consumer": "Mathematics Refinery and the #249 proof lane",
+      "effect": "Treat the geometric identity as settled classical infrastructure and require any surviving irrationality route to introduce genuinely arithmetic, non-geometric information."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "coprime_lambert_mass_geometric_identity@source-4cd4eac-card-71c962d3",
+    "evidence_class": "Lean_checked_classical_Euler_totient_Lambert_identity_with_visible_lattice_reindexing_and_source_specific_no_go_consumer",
+    "source_generation": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+        "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+        "sha256": "8d68ad20457400cdc9f9fb89ffbb682ec530662f99738277cb308abb628387d6"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/coprime_lambert_mass_geometric_identity.card.json",
+        "commit": "71c962d38efca6c60d4735afcd4d69efbb9c23fa",
+        "sha256": "27049b36a0b151b1072526f87ebe9ca2b7a10b2f1aa03e0a434d7d4d30524290"
+      },
+      "primary_sources": ["NIST DLMF 27.7.2, 27.7.4", "Hardy--Wright Theorem 309", "Campbell 2012 visible-point identities"]
+    },
+    "comparison_relation": "The displayed sum is the classical Euler-totient Lambert series; the coprime-pair and gcd-layer proofs are standard visible-lattice reindexings. The local contribution is exact Lean assurance and a scoped #249 geometric-only countermodel.",
+    "closest_known_result": "DLMF 27.7.2/27.7.4 and Hardy--Wright record the totient Lambert identity; Campbell supplies visible-point-vector framing.",
+    "exact_delta": "Lean checks the summability/interchange and packages rational specializations as an exact family showing that geometric visibility plus decay alone cannot force irrationality.",
+    "disconfirming_evidence": "The identity is rational for every rational r in [0,1), so no visible-pair or geometric-only irrationality argument survives; arithmetic refinements are not addressed.",
+    "confidence_ceiling": "High for the classical identity, source parity, and rational-family countermodel; no novelty or priority for the theorem, and no global #249 no-go claim.",
+    "significance": "high_route_retirement_low_novelty",
+    "claim_ceiling": "The source gives a Lean-checked visible-lattice proof of the classical Euler-totient Lambert identity and uses its rational specializations as an exact geometric-only countermodel family. It does not rule out arithmetic #249 strategies.",
+    "hard_step": "Keep the classical theorem's attribution separate from the local formal no-go consumer; the latter is useful because it closes a seductive route, not because the identity is new.",
+    "open_boundary": "No general irrationality obstruction, no residue-gap producer, and no Erdős #249 solution follows.",
+    "bounded_expert_act": "Confirm the totient Lambert citation and inspect whether any proposed #249 argument uses more than visible-lattice geometry and geometric decay.",
+    "reentry_trigger": "Re-enter if source/card hashes change, a closer classical identity is identified, or an arithmetic strengthening escapes the rational model.",
+    "programme_disposition": "retire_geometric_only_irrationality_route_and_subordinate_under_canonical_mersenne_endpoint",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "A geometric-only #249 route is impossible: the totient Lambert countermodel",
+      "supersession_or_consolidation": "Replace any separate visible-pair, gcd-layer, or geometric-mass narratives with this one classical identity plus formal no-go consumer.",
+      "reason": "It saves expert attention by showing exactly which proposed source of irrationality is absent, while preserving arithmetic routes."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The classical identity is routine and the route boundary is better consumed as evidence beneath the canonical #249 endpoint than as a separate proposition count."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified_classical_identity_and_exact_countermodel",
+      "output_stage": "expert_digestion_and_route_retirement",
+      "artifact": "coprime_lambert_mass_geometric_identity_v0",
+      "human_understanding_delta": "Separates a standard totient Lambert theorem from its programme-specific use in retiring geometric-only irrationality heuristics.",
+      "verification_state": "Lean-checked summability/reindexing and rational specialization; no endpoint claim.",
+      "publication_or_review_state": "Status-tagged route-boundary visibility is eligible; no specialist-review prerequisite.",
+      "canonicalization_state": "Subordinate evidence under the canonical #249 residue-gap endpoint.",
+      "unresolved_downstream_bottleneck": "Find genuinely arithmetic information beyond visible-lattice geometry.",
+      "next_stage_owner": "Mathematics Refinery and Role 3 for consolidation under #249."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine_classical_identity_with_high_value_route_boundary",
+    "slow_down_at": "The exact rational family is a countermodel to one heuristic only; do not read it as a universal #249 no-go.",
+    "automation_establishes": "The visible-lattice reindexing, summability/interchange, and rational specializations.",
+    "expert_semantic_judgment": "Whether a proposed irrationality route uses genuinely arithmetic input beyond this geometric model.",
+    "review_act": "Verify the DLMF/Hardy--Wright attribution and the precise boundary of the no-go consumer."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#249 arithmetic-vs-geometric route separation",
+    "disposition": "subordinate route-killing boundary beneath canonical_mersenne_residue_gap_normal_form",
+    "consolidation_relation": "Consolidate visible-pair and gcd-layer variants here; retain residue-gap, order-support, and other arithmetic producers as distinct subordinate routes.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_canonical_mersenne_residue_gap_normal_form",
+      "why_care": "It retires an entire geometric-only irrationality narrative with a classical exact identity and leaves the arithmetic requirement explicit.",
+      "evidence_class": "Lean-checked classical identity plus rational exact countermodel family",
+      "hard_step": "Supply arithmetic, not visibility, in any surviving #249 proof route.",
+      "prior_art_uncertainty": "Low; classical identity and visible-point framing are directly sourced; no priority claim.",
+      "open_boundary": "No arithmetic producer or #249 solution.",
+      "demoted_predecessor": "visible-pair Lambert irrationality heuristic",
+      "status_boundary": "Retain canonical_mersenne_residue_gap_normal_form as the #249 representative and absolute flagship."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_and_card_pins_bound_at_2026_08_26",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "8d68ad20457400cdc9f9fb89ffbb682ec530662f99738277cb308abb628387d6",
+      "reviewer_card_commit": "71c962d38efca6c60d4735afcd4d69efbb9c23fa",
+      "reviewer_card_sha256": "27049b36a0b151b1072526f87ebe9ca2b7a10b2f1aa03e0a434d7d4d30524290"
+    },
+    "claim_guard": "classical geometric-only countermodel; not a new identity, universal #249 no-go, or solution",
+    "reentry_trigger": "source/card hash change or arithmetic strengthening"
+  }
+}

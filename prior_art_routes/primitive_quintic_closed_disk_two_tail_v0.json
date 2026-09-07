@@ -1,0 +1,185 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "status": "adjudicated_scoped_positive_family_public_eligible_no_priority",
+  "route_id": "primitive_quintic_closed_disk_two_tail_v0",
+  "adjudication_currentness": {
+    "status": "source_bound_sparse_family_claim_current",
+    "bound_snapshot": {
+      "research_packet_sha256": "bbcd1f19579722039c646f6437d252456b6bdf8df9a523b45e3d3311468ac0c8",
+      "interior_proof_sha256": "e164af2a51b7004c3d0bb7df0acbd5bc793c734e695dade23f8b55e2b83d1657",
+      "boundary_proof_sha256": "a222260ade2d1a319dfa9b067723dc3623f21764f004c046f9d410e5629f6221",
+      "interior_lean_sha256": "62346892d5a137e02a193774dff0d79b9583e59581f1341d1b78ecfef21a9ee7",
+      "boundary_lean_sha256": "25adf76b6e209c54688d5878f0524943dd85312a2a09a59673f56a9ba74d67dc"
+    },
+    "claim_guard": "This is a complete authored sparse-quintic family proof with a Lean-checked finite moment core; it is not an unrestricted degree-five theorem, a fully Lean end-to-end theorem, a sharp 2/31 result, a priority claim, or an Erdős #1041 solution.",
+    "reentry_trigger": "Re-enter if a direct antecedent, source correction, unrestricted extension, or proof of the missing middle-coefficient case appears."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The load-bearing work is the harmonic separator; finite formal moments and boundary algebra are supporting layers.",
+    "slow_down_at": "Check the Newton-moment identities, harmonic extension, 2/31 completed-square cap, and the one-safe/four-unsafe mass contradiction.",
+    "automation_can_establish": [
+      "Finite real-coordinate moment theorems and exact/numerical calibration",
+      "Source parity for the sparse family proof and Lean files"
+    ],
+    "human_judgment_required": [
+      "Whether mixed boundary/interior roots are handled exactly by the authored specialization",
+      "Whether a direct sparse-quintic antecedent exists",
+      "How far the harmonic separator might extend beyond the sparse coefficient pattern"
+    ],
+    "review_act": "Audit one separator inequality and one path conversion, then compare the exact family with the cited Schur/paraorthogonal literature."
+  },
+  "subject": "The closed-disk two-tail theorem for $z^5+a z^4+bz+c$ and its harmonic Newton-moment separator.",
+  "source_result_id": "primitive_quintic_closed_disk_two_tail_theorem",
+  "problem_id": "erdos_1041",
+  "classification": "source_specific_scoped_improvement_with_lean_checked_core_no_priority_claim",
+  "closest_sources": [
+    {
+      "citation": "P. Delsarte, Y. Genin, and Y. Kamp, Orthogonal polynomial matrices on the unit circle, IEEE Transactions on Circuits and Systems 25 (1978).",
+      "doi": "10.1109/TCS.1978.1084452",
+      "role": "Primary context for classical unit-circle Schur and orthogonal-polynomial matrix machinery; not an antecedent for the sparse-quintic tail inequality."
+    },
+    {
+      "citation": "L. Golinskii, Quadrature formula and zeros of para-orthogonal polynomials on the unit circle, Acta Mathematica Hungarica 96 (2002).",
+      "doi": "10.1023/A:1019765002077",
+      "role": "Primary paraorthogonal zero-location context for the boundary construction; does not state the harmonic interior separator or two-tail theorem."
+    }
+  ],
+  "search_scope": {
+    "queries": [
+      "paraorthogonal polynomials unit circle zeros",
+      "Schur stable reflected polynomial unit circle",
+      "sparse quintic roots unit disk",
+      "Newton moment separator polynomial roots"
+    ],
+    "result": "No primary source stating the exact closed-disk primitive-quintic two-tail theorem or the $2/31$ harmonic-separator argument was located.",
+    "epistemic_boundary": "A bounded non-location result is not evidence of novelty or priority."
+  },
+  "claim_ceiling": {
+    "strongest_allowed": "For the complete primitive sparse quintic family, an authored proof plus a Lean-checked finite moment core gives two distinct safe root tails, hence a two-spoke unit-lemniscate path.",
+    "rejected": [
+      "a fully Lean-checked end-to-end polynomial theorem",
+      "an unrestricted degree-five theorem",
+      "a sharp $2/31$ constant",
+      "a new paraorthogonal or Schur theorem",
+      "a priority claim or solution of Erdős #1041"
+    ]
+  },
+  "argument_distinctness": {
+    "standard_components": [
+      "Schur and reflected-polynomial boundary architecture",
+      "paraorthogonal unit-circle zero context",
+      "Newton identities",
+      "harmonic extension and maximum principle",
+      "Abel summation on a radial polynomial path"
+    ],
+    "source_specific_delta": "The exact cubic separator, its harmonic interior extension, the unsafe radial-defect inequality, the completed-square $2/31$ cap, and the five-root mass contradiction.",
+    "failed_route": "Outward-only radial continuation of safe tails was supported by finite computation but replaced rather than proved."
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_theorem_and_comparator_candidate",
+    "reason": "The proof and evidence boundaries are inspectable. Lack of external review is not a release gate.",
+    "comparator_advisory": "Use one mixed-evidence proposition for the exact sparse-family theorem; keep the boundary predecessor and radial-crossing failure subordinate."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_sparse_family_result",
+    "output_stage": "prior_art_positioned_expert_digest_and_publication_handoff",
+    "artifact": "primitive_quintic_closed_disk_two_tail_v0",
+    "human_understanding_delta": "Separates classical boundary machinery from the source-specific harmonic separator and exposes the two missing coefficients as the exact scope boundary.",
+    "verification_state": "Complete authored specialization, Lean-checked finite core, and exact/finite calibration with explicit separation.",
+    "publication_or_review_state": "Eligible for public status-tagged visibility; specialist review remains downstream.",
+    "canonicalization_state": "One solved-family object replaces separate boundary and continuation narratives.",
+    "unresolved_downstream_bottleneck": "Literature specialist review and propagation beyond the primitive sparse family.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and Erdős #1041 proof owners."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "primitive_quintic_closed_disk_two_tail@packet-bbcd1f19-card-2026-08-26",
+    "evidence_class": "Authored complete sparse-family proof with Lean-checked finite real-moment core and exact/finite calibration.",
+    "closest_known_result": "Schur/reflected-polynomial and paraorthogonal boundary machinery are classical; no located source states this primitive sparse-quintic two-tail theorem or the 2/31 harmonic-separator argument.",
+    "comparison_relation": "This is a source-specific scoped improvement for a sparse quintic family, not a new Schur or paraorthogonal theorem and not an unrestricted #1041 result.",
+    "exact_delta": "Three missing coefficients force two safe tails through a harmonic separator with exact Newton-moment mass; boundary and interior tail cases are consolidated under one theorem.",
+    "disconfirming_evidence": "The nearest primary sources provide boundary context only; the outward-only radial bridge was computationally plausible but analytically unproductive, and no arbitrary quintic extension is supplied.",
+    "confidence_ceiling": "High for the stated sparse-family theorem and source parity; moderate for literature non-location; no priority claim.",
+    "significance": "High solved-family boundary value: the harmonic moment invariant explains why radial continuation is the wrong invariant for this family.",
+    "hard_step": "Construct the harmonic separator with exact Newton-moment mass and prove the completed-square unsafe-score cap that forces two safe tails.",
+    "open_boundary": "Restoring either missing middle coefficient, extending beyond the primitive sparse family, and the unrestricted #1041 problem remain open.",
+    "bounded_expert_act": "Audit one separator inequality and one path conversion, then compare the exact sparse family with Schur/paraorthogonal antecedents.",
+    "reentry_trigger": "Re-enter if a direct antecedent, source correction, unrestricted extension, or missing-middle-coefficient proof appears.",
+    "source_version_binding": {
+      "source_result_id": "primitive_quintic_closed_disk_two_tail_theorem",
+      "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "research_packet_sha256_observed": "bbcd1f19579722039c646f6437d252456b6bdf8df9a523b45e3d3311468ac0c8",
+      "ordinary_proofs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.md"
+      ],
+      "ordinary_proof_sha256": [
+        "e164af2a51b7004c3d0bb7df0acbd5bc793c734e695dade23f8b55e2b83d1657",
+        "a222260ade2d1a319dfa9b067723dc3623f21764f004c046f9d410e5629f6221"
+      ],
+      "lean_sources": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean"
+      ],
+      "lean_source_sha256": [
+        "62346892d5a137e02a193774dff0d79b9583e59581f1341d1b78ecfef21a9ee7",
+        "25adf76b6e209c54688d5878f0524943dd85312a2a09a59673f56a9ba74d67dc"
+      ],
+      "verifier_sha256": "bf794b565dacac1f2672817fc264aef7b5aba48d1861e8eb018ca718d29db7da",
+      "primary_source_locators": [
+        "Delsarte–Genin–Kamp 1978, unit-circle Schur/orthogonal-polynomial matrix context",
+        "Golinskii 2002, paraorthogonal unit-circle zero-location context"
+      ],
+      "parity_status": "Ordinary specialization, Lean finite moment core, exact/numerical calibration, and cited context are source-bound; no unrestricted degree-five theorem or priority claim."
+    },
+    "classification": {
+      "evidence_class": "authored complete sparse-family proof with Lean-checked finite real-moment core and exact/finite calibration",
+      "closest_prior_art": "Schur/reflected-polynomial and paraorthogonal boundary machinery are classical; no located source states the primitive sparse-quintic two-tail theorem or the 2/31 harmonic-separator argument.",
+      "comparison_relation": "Source-specific scoped improvement for a sparse quintic family, not a new Schur or paraorthogonal theorem and not an unrestricted #1041 result.",
+      "novelty_confidence": "strong internal provisional case for the scoped synthesis; moderate literature non-location; no priority claim",
+      "significance_grade": "high_solved_family_boundary",
+      "why_care": "It gives a complete degree-five family where three missing coefficients force two safe tails, and the harmonic separator explains why radial continuation was the wrong invariant.",
+      "hard_step": "Construct the harmonic separator with exact Newton-moment mass and prove the completed-square unsafe-score cap that forces two safe tails.",
+      "natural_friction": "The theorem relies on the sparse coefficient pattern; the outward-only radial bridge was computationally plausible but analytically unproductive and must remain visible as a failed route.",
+      "disconfirming_evidence": "The nearest primary sources provide boundary context only; no direct antecedent or arbitrary quintic extension was located."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "For monic p(z)=z^5+a z^4+bz+c with all roots in the closed unit disk, the authored proof and Lean-checked finite moment core yield two distinct safe root tails and hence two radial unit-sublevel paths.",
+      "rejected_stronger": [
+        "a fully Lean-checked end-to-end polynomial theorem",
+        "an unrestricted degree-five theorem",
+        "a sharp 2/31 constant",
+        "a new paraorthogonal or Schur theorem",
+        "a solution of Erdős #1041",
+        "a priority claim"
+      ],
+      "open_boundary": "Restoring either missing middle coefficient, extending beyond the primitive sparse family, and the unrestricted #1041 problem remain open."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "sparse-polynomial Newton-moment separators for radial lemniscate paths",
+      "disposition": "admit as one irreducible solved-family mechanism beneath the all-degree constant-factor theorem; consolidate boundary and interior tails",
+      "paper_disposition": "headline/core solved subfamily in 'Primitive sparse quintics: a harmonic moment separator'",
+      "supersession_or_consolidation": "Replace separate boundary and continuation narratives with one two-tail theorem; retain radial-crossing failure as the motivating false start.",
+      "expert_attention_reason": "This is a concrete positive family result with a genuinely new proof invariant; the key review task is the harmonic separator, not routine boundary algebra.",
+      "independent_comparator_interface_justified": "One mixed-evidence proposition is justified for the exact sparse family, with ordinary proof, Lean finite core, calibration, and unrestricted boundary adjacent."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "load-bearing harmonic separator with finite formal core and classical boundary context",
+      "slow_down_at": "Check the Newton-moment identities, harmonic extension, 2/31 completed-square cap, and the one-safe/four-unsafe mass contradiction.",
+      "automation_establishes": "Finite real-coordinate moment theorems and exact/numerical calibration.",
+      "expert_judgment_required": "Whether the authored specialization correctly handles mixed boundary/interior roots and whether any direct sparse-quintic antecedent exists.",
+      "bounded_expert_act": "Audit one separator inequality and one path conversion, then compare the exact family with the cited Schur/paraorthogonal literature.",
+      "reentry_condition": "Reopen if a direct antecedent, source correction, unrestricted extension, or proof of the missing middle-coefficient case appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified sparse-family result",
+      "output_stage": "prior-art positioned expert digest and publication handoff",
+      "artifact": "primitive_quintic_closed_disk_two_tail_v0",
+      "human_understanding_delta": "Separates classical boundary machinery from the source-specific harmonic separator and exposes the exact sparse-family boundary.",
+      "verification_state": "Complete authored specialization, Lean-checked finite core, and exact/finite calibration with explicit separation.",
+      "publication_or_review_state": "Eligible for public status-tagged theorem visibility; specialist review remains downstream.",
+      "canonicalization_state": "One solved-family object replaces separate boundary and continuation narratives.",
+      "unresolved_downstream_bottleneck": "Propagation beyond the primitive sparse family.",
+      "next_stage_owner": "Mathematics Refinery, Role 3, and #1041 proof owners."
+    }
+  }
+}

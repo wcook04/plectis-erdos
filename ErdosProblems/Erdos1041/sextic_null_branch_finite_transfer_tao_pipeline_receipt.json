@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_null_branch_finite_transfer",
+  "recorded_at": "2026-08-25",
+  "input_stage": "lean_checked_uniform_second_order_homogeneous_limiting_atlas",
+  "output_stage": "explicit_finite_beta_homogeneous_null_core_transfer",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNullBranchFiniteTransfer.md",
+    "ErdosProblems/Erdos1041/SexticNullBranchFiniteTransfer.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_finite_transfer.py"
+  ],
+  "human_understanding_delta": "The dangerous limiting-to-finite arrow can be made completely quantitative on the full bounded second-order box. Exact two-jets reproduce the four atlas profiles; a square-factor global floor handles points at least 100 beta from a contact, and a 40,481,000 beta^3 local budget is absorbed for beta at most 10^-9. Thus no new transition appears merely because beta is finite in the canonical null core.",
+  "verification_state": {
+    "analytic": "authored_complete_exact_family_two_jet_global_outer_and_local_remainder_argument",
+    "symbolic": "passed_exact_sympy_two_jet_square_factor_bernstein_box_derivative_and_ray_constant_replay",
+    "lean": "passed_canonical_cached_focused_build_and_serialized_authority_replay_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "private_problem_packet updated with exact result and claim ceiling; mathematical consequence sweep and source-current Lean connection refresh completed; scoped commit pending",
+  "unresolved_downstream_bottleneck": "Overlap this explicit beta<=10^-9 full box with positive-branch stability and the outer selector, classify the remaining compact sextic coefficient faces, and transfer the homogeneous atlas to arbitrary nearby polynomials. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: audit the fourth-root derivative budgets and exact ray slack, then construct the compact overlap atlas beyond beta=10^-9 and preserve the explicit coefficient gauge used here.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation from the exact null branch, first-order selector, and second-order atlas under operator direction",
+    "computation": "Bounded exact and floating-point chord experiments identified that the limiting margin persists. SymPy reconstructs the exact two-jets and Bernstein floor; conservative calculus constants, not sampling, support the finite theorem.",
+    "formalization": "Lean formalizes the outer quadratic absorption, finite remainder payment, four-profile selection, ray-slack absorption, and strict adjacent-connector length budget.",
+    "claim_boundary": "Finite homogeneous canonical null-core theorem for beta<=10^-9 and normalized transverse box [-78,78]^3; other sextic faces, actual-polynomial transfer, and unrestricted Erdos #1041 are not claimed."
+  }
+}

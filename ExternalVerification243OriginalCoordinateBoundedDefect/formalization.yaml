@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #243: the Sylvester recurrence from a bounded original-coordinate product defect"
+  description: >-
+    Conditional theorem in the original coordinates of the problem. A strictly
+    increasing sequence of positive integers whose reciprocal series has a
+    rational value, whose growth satisfies a(n+1)/a(n)^2 to 1, and whose product
+    defect P(n)/a(n) * (a(n)^2/a(n+1) - 1) is bounded above from some index
+    onward satisfies a(n+1) = a(n)^2 - a(n) + 1 eventually. The integer state,
+    its positivity, the exact recurrences and normalised vanishing are all
+    derived from the rational sum and the growth hypothesis, not assumed. The
+    bound on the product defect is the standing hypothesis, and Erdos #243
+    remains open without it.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243OriginalCoordinateBoundedDefect/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243OriginalCoordinateBoundedDefect/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_result"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "the library entry for this directory has not been added to lakefile.toml; the parent applies that"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This packages the short note's Corollary res:originalbounded, which no
+    existing ExternalVerification243* package covers. The ten existing packages
+    state integer-state, record, repair, transport and barrier results; none
+    states the original-coordinate conclusion from a bounded product defect.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37", "11J72"]
+
+sources:
+  - kind: "paper"
+    title: "Excluding the Bounded Negative Part: Lean-checked rigidity for Erdos Problem 243"
+    authors: ["Will Cook"]
+    location: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-243-reciprocal-tail-rigidity.tex"
+    statement_label: "res:originalbounded"
+  - kind: "lean_source"
+    location: "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean"
+    declaration: "ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect"
+  - kind: "lean_source"
+    location: "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean"
+    declaration: "ErdosProblems.Erdos243.PaperCompleteR7.canonical_integer_tail_normalized"
+  - kind: "lean_source"
+    location: "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+    declaration: "ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually"
+
+toolchain:
+  lean: "leanprover/lean4:v4.29.1"
+  mathlib: "5e932f97dd25535344f80f9dd8da3aab83df0fe6"
+
+boundary:
+  parent_problem: "Erdos #243"
+  parent_status: "open"
+  conditional_on:
+    - "an eventual upper bound on the original-coordinate product defect"
+  not_established:
+    - "the product-defect bound for an arbitrary sequence satisfying the growth and rationality hypotheses"
+    - "any unconditional resolution of Erdos #243"
+  permitted_axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"

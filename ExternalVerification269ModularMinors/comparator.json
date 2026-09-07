@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269ModularMinors.Challenge",
+  "solution_module": "ExternalVerification269ModularMinors.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269ModularMinors.admissible_modular_minors"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

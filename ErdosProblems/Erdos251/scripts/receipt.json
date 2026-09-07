@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "arithmetic": "integers and fractions.Fraction",
+  "random_seed": 251006,
+  "counts": {
+    "progression_extrema": 2834,
+    "common_interval_union": 17004,
+    "one_step_exact_targets": 129096,
+    "feedback_steps": 2880,
+    "feedback_prefix_telescopes": 2880,
+    "finite_schedule_overlap": 2880
+  },
+  "boundary": "Finite selector/overlap/congruence/telescope tests only; no prime data, Lean run, asymptotic verification or infinite theorem check."
+}

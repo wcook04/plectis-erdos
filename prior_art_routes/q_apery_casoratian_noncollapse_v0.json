@@ -1,0 +1,238 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "q_apery_casoratian_noncollapse",
+  "source_result_ids": [
+    "qapery_adjacent_casoratian_closed_form",
+    "qapery_three_halves_casoratian_shear"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_discrete_Abel_Liouville_identity_with_source_specific_q_apery_specialization",
+  "problem_id": "erdos_1049",
+  "purpose": "Classify the Casoratian transport theorem, the telescoping q-Apéry product, and the finite source replay without promoting a routine recurrence invariant into a novelty or irrationality claim.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/q_apery_casoratian_noncollapse.card.json",
+    "card_commit_at_review": "3a9833ccb0",
+    "source_commit": "c2e7930a7a7a0777a34afe417e5f6c1671eedef1",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_transduction.py",
+    "source_result_ids": [
+      "qapery_adjacent_casoratian_closed_form",
+      "qapery_three_halves_casoratian_shear"
+    ]
+  },
+  "classification": {
+    "theorem_class": "first_order_Casoratian_transport_for_two_solutions_of_a_scalar_second_order_difference_equation",
+    "novelty_class": "standard_discrete_Abel_Liouville_identity_with_an_elementary_source_specific_closed_product",
+    "frontier_relation": "diagnostic_noncollapse_invariant_not_an_irrationality_producer",
+    "formalization_class": "direct_all_index_conditional_proof_on_card_plus_exact_finite_symbolic_source_replay_outside_Lean",
+    "priority_claim": "none",
+    "recommended_terminology": "discrete Abel--Liouville Casoratian identity",
+    "acceptable_descriptive_alias": "telescoping Casoratian noncollapse certificate",
+    "standard_mechanism": "the discrete Wronskian of two solutions of one scalar second-order recurrence satisfies a first-order multiplicative recurrence; substituting the q-Apéry coefficients makes the product telescope",
+    "discouraged_terminology": [
+      "new Casoratian theorem",
+      "new q-Apéry recurrence",
+      "irrationality criterion",
+      "p-adic block law",
+      "all-index source verification",
+      "proof of Erdős #1049"
+    ],
+    "attribution": "Attribute the q-Apéry sequences and common recurrence to Tewodros Amdeberhan and Doron Zeilberger. Describe the determinant transport as the standard discrete Abel--Liouville or Casoratian identity. Present the closed product and the 3/2 valuation shear as elementary consequences derived from the published coefficients, with the defining-sum match verified only over the declared finite range.",
+    "mathematical_interest": "The abstract theorem is routine. The source-specific value is diagnostic: the exact nonzero product shows that adjacent proportionality is not the obstruction at 3/2, while its opposite 2-adic and 3-adic valuations expose why the raw determinant does not provide simultaneous local gain.",
+    "reusable_scope": "Any pair of solutions of a scalar second-order linear difference equation with nonzero leading coefficient; a nonzero seed and nonzero transport factors rule out adjacent proportionality on the interval of definition.",
+    "why_it_matters": "It cheaply retires a false collapse explanation before expensive Padé or lattice work. For this programme it redirects attention to denominator clearing, primitive height, analytic remainder, and congruence-constrained selection without claiming any of those obligations are solved."
+  },
+  "primary_sources": [
+    {
+      "id": "amdeberhan_zeilberger_1998_q_apery",
+      "title": "q-Apéry Irrationality Proofs by q-WZ Pairs",
+      "author": "Tewodros Amdeberhan and Doron Zeilberger",
+      "venue": "Advances in Applied Mathematics 20 (1998), 275-283",
+      "url": "https://arxiv.org/abs/math/9804122",
+      "doi": "10.48550/arXiv.math/9804122",
+      "local_pdf": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.pdf",
+      "local_tex": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.tex",
+      "primary_text_read": true,
+      "pdf_sha256": "339a4324a6cd0bcfd8eb872d0a408140fcba06ee383bf421248a91919b1430e2",
+      "tex_sha256": "d5e28002d543f1d8c22fca2312319957fb0c34481fe0d6eb4fd8ff4aad2dda4f",
+      "exact_anchor": "§0 (pp. 1-2) attributes q-harmonic irrationality work to Erdős and Borwein; §§1.5-1.6 define the second-order operator L, prove both sequences solve L, subtract their recurrences, and derive the successive-approximant estimate (1.6.4).",
+      "supports": "The source identity, recurrence coefficients, initial data, and direct q-Apéry attribution. It is also the closest antecedent to the local Casoratian calculation.",
+      "does_not_support": "An all-index statement at rational q=3/2 after denominator clearing, the exact closed product as a separately stated theorem, the card's valuation shear, or irrationality at 3/2."
+    }
+  ],
+  "historical_terminology_source": {
+    "id": "rosso_2015_casorati_history",
+    "title": "Felice Casorati's work on finite differences and its influence on Salvatore Pincherle",
+    "author": "Riccardo Rosso",
+    "venue": "Archive for History of Exact Sciences 69 (2015), 153-215",
+    "doi": "10.1007/s00407-014-0143-7",
+    "url": "https://arxiv.org/abs/2205.14948",
+    "supports": "Historical provenance of Casorati's finite-difference determinant and the established Casoratian terminology.",
+    "boundary": "This historical survey is terminology evidence, not an antecedent for the q-Apéry specialization."
+  },
+  "mechanism_comparison": {
+    "Casoratian": "The determinant $u_{n+1}v_n-u_nv_{n+1}$ is the standard discrete analogue of the Wronskian.",
+    "discrete_Abel_Liouville_identity": "For $A_nw_{n+2}+B_nw_{n+1}+C_nw_n=0$, direct elimination gives $W_{n+1}=(C_n/A_n)W_n$ under the card's sign convention.",
+    "q_apery_specialization": "Substitution of the published coefficients turns the transport product into a telescoping ratio; the closed form is source-specific but elementary once the recurrence and seed are granted.",
+    "finite_source_replay": "Exact symbolic checks through n=4 verify that the paper's defining sums instantiate the recurrence and closed form over that range. They do not prove the source specialization for every n."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Casoratian second order difference equation Abel identity Wronskian formula",
+      "Casorati determinant finite difference original paper",
+      "Amdeberhan Zeilberger q-Apery irrationality proofs q-WZ pairs recurrence"
+    ],
+    "result": "The search confirms that Casoratian/discrete Wronskian is established terminology and that the multiplicative transport is the discrete Abel--Liouville mechanism. The primary q-Apéry paper already contains the shared recurrence and a subtraction argument for successive approximants. No basis remains for a new general theorem claim.",
+    "boundary": "The bounded search did not establish whether the exact telescoped product has appeared elsewhere. Because it is an immediate recurrence corollary, the route conservatively assigns no novelty even without locating the identical displayed formula."
+  },
+  "claim_boundary": {
+    "allowed_wording": "From the Amdeberhan--Zeilberger q-Apéry recurrence, the standard discrete Abel--Liouville identity yields an explicit nonzero Casoratian product for every real q>1; exact finite replay verifies the defining-sum specialization only for n=0 through 4.",
+    "forbidden_wording": [
+      "The Casoratian theorem is new.",
+      "The source paper proves the rational-base 3/2 result for all n.",
+      "Finite symbolic replay is an all-index proof.",
+      "Noncollapse proves irrationality or supplies small integer linear forms.",
+      "The opposite 2-adic and 3-adic valuations give simultaneous local gain.",
+      "The false uniform p-adic hypothesis (H) follows from the Casoratian."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_Lean_theorem",
+      "not_an_all_index_source_verification",
+      "not_a_height_or_denominator_bound",
+      "not_a_padic_block_law",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "release_advisory": {
+    "significance_grade": "moderate_diagnostic_value_low_theorem_novelty",
+    "hierarchy": "Short supporting recurrence invariant, distinct from qapery_two_form_height_decay_obstruction.",
+    "comparator": "No independent interface advised without an all-index source-correspondence theorem.",
+    "paper": "Supporting lemma in 'A recurrence invariant: adjacent q-Apéry rows do not collapse'.",
+    "shortlist": "Do not admit; the result does not alter the effective-height frontier."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/q_apery_casoratian_noncollapse.card.json",
+      "effect": "Replace pending novelty language with standard discrete Abel--Liouville terminology, exact source attribution, and a conservative source-specific significance statement."
+    },
+    {
+      "consumer": "Erdős #1049 proof fleet",
+      "effect": "Use the Casoratian as a cheap noncollapse gate only. Keep height, clearing, analytic decay, and congruence selection as independent obligations."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Credit Amdeberhan--Zeilberger for the recurrence, label the general transport standard, and keep finite replay visibly separate from conditional all-index algebra."
+    }
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "conditional_recurrence_algebra_and_finite_replay",
+    "output_stage": "expert_understanding_and_canonicalization",
+    "artifact": "q_apery_casoratian_noncollapse supporting route",
+    "human_understanding_delta": "Reclassifies noncollapse as a cheap diagnostic and preserves the source-correspondence boundary.",
+    "verification_state": "Ordinary conditional proof; finite source replay; no Lean or all-index defining-sum proof.",
+    "publication_or_review_state": "Private review-ready supporting lemma with standard attribution.",
+    "canonicalization_state": "One recurrence-invariant object, distinct from height-decay and content-normalization mechanisms.",
+    "unresolved_downstream_bottleneck": "Primitive height and cofinal analytic decay at rational base 3/2.",
+    "next_stage_owner": "Mathematics Refinery and Problem 1049 proof owners."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "result_family_version": "q_apery_casoratian_noncollapse@source_c2e7930a_card_48a53188",
+    "source_generation_binding": {
+      "source_commit": "c2e7930a7a7a0777a34afe417e5f6c1671eedef1",
+      "source_sha256": "8e3aa94a2e54d3c5c5c76d1926dcdf192e830824ea174a86b59b4f8a806fffdb",
+      "reviewer_card_sha256": "48a53188e101482ac49f6f262583da442403d5034f77cdb628953f48a2a5221e",
+      "parity_boundary": "ordinary all-index conditional recurrence proof and finite defining-sum replay remain distinct"
+    },
+    "evidence_class": "Authored ordinary all-index recurrence identity plus exact finite source replay; no Lean theorem and no independent human review.",
+    "closest_known_result": "Amdeberhan--Zeilberger q-Apéry recurrence and the standard discrete Abel--Liouville/Casoratian transport identity.",
+    "comparison_relation": "Amdeberhan--Zeilberger already derive the shared q-Apéry operator and a Casoratian-style subtraction for successive approximants in §§1.5-1.6 (including their convergence estimate (1.6.4)). The present closed product and 3/2 valuation observation are source-specific derived consequences, not a new recurrence or priority claim.",
+    "exact_delta": "The route identifies a nonzero Casoratian product, so adjacent proportionality is not the 3/2 obstruction; it redirects the unresolved work to primitive height, denominator clearing, analytic decay, and congruence selection.",
+    "disconfirming_evidence": "The cited q-Apéry source already supplies the common recurrence and successive-approximant framework, while the defining-sum match is replayed only for n=0..4 and does not establish an all-index source correspondence.",
+    "confidence": {
+      "standard_transport": "high_internal_provisional",
+      "source_specific_product": "moderate_internal_provisional",
+      "irrationality_or_endpoint_consequence": "low_unresolved"
+    },
+    "significance": "Moderate supporting method-boundary value: it retires a plausible collapse explanation cheaply and prevents routine recurrence algebra from being mistaken for height or irrationality progress.",
+    "claim_ceiling": "Only the standard discrete Abel--Liouville/Casoratian transport and its source-specific closed-product diagnostic are admitted. No all-index defining-sum verification, Lean result, p-adic law, height bound, analytic decay, irrationality, endpoint, or priority claim is admitted.",
+    "hard_step": "Keep the all-index conditional transport, finite defining-sum replay, and local valuation observation separate; none of them supplies the primitive-height or analytic-decay bridge needed for #1049.",
+    "open_boundary": "The actual #1049 bottleneck remains primitive height and cofinal analytic decay at 3/2; recurrence noncollapse alone does not address it.",
+    "bounded_expert_review_act": "Check the coefficient substitution, nonzero seed/product factors, and the exact n=0..4 replay boundary once; then do not spend review time on a Casoratian novelty claim.",
+    "reentry_trigger": "Re-enter only if the source recurrence, reviewer card, finite replay, or an all-index defining-sum correspondence changes.",
+    "primary_text_verification": {
+      "source_id": "amdeberhan_zeilberger_1998_q_apery",
+      "local_pdf": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.pdf",
+      "local_tex": "annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.tex",
+      "pdf_sha256": "339a4324a6cd0bcfd8eb872d0a408140fcba06ee383bf421248a91919b1430e2",
+      "tex_sha256": "d5e28002d543f1d8c22bfca2312319957fb0c34481fe0d6eb4fd8ff4aad2dda4f",
+      "locator": "§0 (pp. 1-2) attributes q-harmonic irrationality work to Erdős and Borwein; §§1.5-1.6 define the second-order operator L, prove both sequences solve L, subtract the two recurrences, and obtain the successive-approximant estimate (1.6.4).",
+      "conclusion": "The source directly supports the shared-recurrence/Casoratian antecedent. It does not state the local all-index closed product or the rational q=3/2 valuation diagnostic."
+    },
+    "source_generation": {
+      "source_commit": "c2e7930a7a7a0777a34afe417e5f6c1671eedef1",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_transduction.py",
+      "source_sha256_observed": "8e3aa94a2e54d3c5c5c76d1926dcdf192e830824ea174a86b59b4f8a806fffdb",
+      "reviewer_card_sha256_observed": "48a53188e101482ac49f6f262583da442403d5034f77cdb628953f48a2a5221e"
+    },
+    "classification": {
+      "result_family": "q_apery_casoratian_noncollapse",
+      "evidence_class": "ordinary_all_index_recurrence_identity_plus_finite_exact_source_replay",
+      "closest_prior_art": "Amdeberhan--Zeilberger q-Apéry recurrence; standard discrete Abel--Liouville/Casoratian transport",
+      "comparison_relation": "standard general identity with a source-specific closed product and 3/2 valuation diagnostic",
+      "novelty_confidence": "low_for_general_identity; unresolved_for_exact_localization but no priority claim",
+      "significance_grade": "moderate_supporting_method_boundary",
+      "why_care": "The nonzero product cheaply retires adjacent-collapse as the 3/2 obstruction and redirects effort to height, clearing, decay, and congruence selection.",
+      "hard_step": "Keep the recurrence transport, finite defining-sum match, and p-adic/height consequences separate; the latter are not supplied by the Casoratian alone.",
+      "disconfirming_evidence": "The cited q-Apéry paper already supplies the common recurrence and successive-approximant subtraction; finite replay does not establish an all-index source correspondence beyond the declared algebra.",
+      "confidence_ceiling": "The transport identity is standard and source-attributed; the exact q-Apéry product is an elementary derived specialization, not a new theorem or irrationality result.",
+      "bounded_expert_act": "Check the coefficient substitution and the finite defining-sum/source correspondence once; do not spend review time on a novelty claim for Casoratian transport.",
+      "reentry_condition": "Re-enter only if the source recurrence, card, or all-index correspondence changes."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "effective-height accounting: q-Apéry recurrence noncollapse",
+      "disposition": "subordinate_under_existing_q_apery_height_decay_obstruction",
+      "paper_disposition": "supporting_lemma_in_recurrence_invariant_section",
+      "independent_comparator_interface_justified": false,
+      "expert_attention_reason": "One bundled diagnostic saves a false collapse search; atomizing routine recurrence declarations would increase indigestion without changing the frontier."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "conditional_recurrence_algebra_and_finite_replay",
+      "output_stage": "expert_understanding_and_canonicalization",
+      "artifact": "q_apery_casoratian_noncollapse",
+      "human_understanding_delta": "Names the standard identity, credits the source recurrence, and makes the height/decay remainder explicit.",
+      "verification_state": "Ordinary proof plus exact finite replay; no Lean or irrationality claim.",
+      "publication_or_review_state": "private supporting object; no outbound action",
+      "canonicalization_state": "one recurrence invariant distinct from content and height mechanisms",
+      "unresolved_downstream_bottleneck": "primitive height and cofinal analytic decay at 3/2",
+      "next_stage_owner": "Mathematics Refinery and #1049 proof owners"
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_and_card_hashes_current_at_snapshot",
+    "bound_snapshot": {
+      "source_commit": "c2e7930a7a7a0777a34afe417e5f6c1671eedef1",
+      "source_sha256_observed": "8e3aa94a2e54d3c5c5c76d1926dcdf192e830824ea174a86b59b4f8a806fffdb",
+      "reviewer_card_sha256_observed": "48a53188e101482ac49f6f262583da442403d5034f77cdb628953f48a2a5221e",
+      "parity_status": "ordinary conditional proof and finite source replay remain distinct"
+    },
+    "claim_guard": "Only the standard discrete Abel--Liouville/Casoratian transport and its source-specific closed-product diagnostic are admitted. Finite defining-sum replay is bounded to n=0..4; no all-index source verification, Lean theorem, p-adic law, height bound, irrationality, endpoint, or priority claim is admitted.",
+    "reentry_trigger": "Re-enter if the source recurrence, reviewer card, finite replay, or an all-index defining-sum correspondence changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The Casoratian transport is standard recurrence algebra; the human load is source attribution and keeping finite source replay separate from all-index correspondence.",
+    "slow_down_at": "Check coefficient substitution, the nonzero seed/product factors, and the exact n=0..4 defining-sum boundary before reading any valuation consequence.",
+    "automation_can_establish": [
+      "Pinned source and reviewer-card hashes",
+      "The all-index conditional transport identity",
+      "The finite defining-sum replay range and its explicit boundary"
+    ],
+    "human_judgment_required": [
+      "Whether Amdeberhan--Zeilberger is the correct source attribution for the recurrence",
+      "Whether the product is best framed as a standard discrete Abel--Liouville identity",
+      "Whether the diagnostic meaningfully redirects #1049 proof search without becoming an endpoint claim"
+    ],
+    "review_act": "One bounded source-correspondence audit; then redirect attention to primitive height and analytic decay rather than another Casoratian novelty search.",
+    "attention_ceiling": "Moderate supporting method-boundary value; no independent Comparator interface or irrationality significance claim."
+  }
+}

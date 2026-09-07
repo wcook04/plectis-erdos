@@ -1,0 +1,23 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_finite_perturbation_transfer_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticFinitePerturbationTransfer.md",
+    "ErdosProblems/Erdos1041/QuinticFinitePerturbationTransfer.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_finite_perturbation_transfer.py"
+  ],
+  "human_understanding_delta": "The radial model transfers to actual quintics through a three-zone proof. The anchored logarithmic expansion controls t at most one half with a 3Delta/8 margin; direct five-factor telescoping controls t at least one half; and the Delta/10 connector disk retains a 3Delta/4 logarithmic margin. The far-field step therefore needs no compactness theorem or asymptotic O-term.",
+  "verification_state": {
+    "analytic_derivation": "complete_for_actual_radial_dominant_near_fekete_quintics",
+    "actual_polynomial_replay": "pass_1000_configurations_5000_arms_10000_chords_minimum_delta_over_rho_cubed_4_000307",
+    "lean_focused_build": "pass_canonical_cached_exact_target_serialized_authority_check"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "verified_actual_radial_transfer_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Transfer the transverse global atlas through the paired cubic correction at its unique equality orbit, then overlap the full degree-five near-Fekete neighbourhood with the complementary geometric regime.",
+  "next_stage_owner": "Current proof owner through verification and scoped commit; then Refinery owns the transverse finite transfer.",
+  "claim_ceiling": "This proves Form A-cut for actual radial-dominant near-Fekete quintics only. Do not claim the transverse branch, all quintics, or unrestricted Erdős #1041."
+}

@@ -1,0 +1,201 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "fixed_diagonal_rational_clearing_obstruction_v0",
+  "status": "adjudicated_source_specific_outward_scalar_clearing_obstruction_with_external_van_assche_analytic_input",
+  "problem_id": "erdos_1049",
+  "purpose": "Classify the all-outward little-q-Legendre forced-clearing calculation as a source-specific scalar route boundary, attribute the analytic Padé input to Van Assche, and keep primitive clearing-supported common content as the exact surviving escape rather than silently claiming a full scalar impossibility theorem.",
+  "review_unit": {
+    "result_family": "van_assche_outward_scalar_evaluation_forced_clearing_cost",
+    "exact_result_id": "fixed_diagonal_rational_clearing_obstruction",
+    "source_generation": {
+      "repository_commit": "85c09c2be4dcd95d3eb713ce08248bf69914f42f",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "packet_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "packet_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "ordinary_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/FixedDiagonalRationalClearingLab.md",
+      "ordinary_source_sha256": "3d62636e88693e02d3dd262b430bf35a4c2961ef66a103d4dfefe65df16e8b6e",
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/FixedDiagonalRationalClearing.lean",
+      "formal_source_sha256": "017a640fd7a6e053d67fe4490a2a1145fa773aede6fe7cf14a69e2831f2d0f45",
+      "formal_declarations": [
+        "fixedDiagonalRationalClearingExponent_eq_sourceBalance",
+        "fixedDiagonalRationalClearingExponent_pos",
+        "movingDiagonalRationalClearingMainTerm_eq_sourceBalance",
+        "movingDiagonalRationalClearingMainTerm_pos",
+        "commonDivisor_dvd_adjacentSecondKindNumerator",
+        "not_tendsto_zero_of_eventually_one_le_abs"
+      ]
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "conclusion_confidence_class": "strong_internal_provisional_case",
+    "external_input_confidence_class": "externally_human_adjudicated_primary_source",
+    "novelty_confidence": "no_priority_claim; a source-specific synthesis of Van Assche Padé asymptotics, exact homogeneous-clearing algebra, and a local common-content localization",
+    "recommended_terminology": "outward scalar forced-clearing obstruction for the little-q-Legendre Padé family at base 3/2",
+    "discouraged_terminology": [
+      "Van Assche impossibility theorem",
+      "all Padé methods fail at 3/2",
+      "outward evaluation proves irrationality is impossible",
+      "full scalar no-go before primitive-content control"
+    ],
+    "significance": "High as construction triage and moderate as mathematics: every outward evaluation m>=n has the same positive forced-clearing main term, so changing the scalar evaluation direction cannot by itself create small integer forms. The remaining content channel is mathematically real and prevents an endpoint claim.",
+    "expert_judgment_that_can_change_state": "Check the passage from Van Assche's Markov identity and asymptotics to the stated uniform outward main term, then either prove a subcritical clearing-supported primitive-content bound or exhibit a family with quadratic content. Those are the only acts that can strengthen or falsify the route boundary."
+  },
+  "primary_sources": [
+    {
+      "id": "van_assche_2001_little_q_legendre_lambert",
+      "title": "Little q-Legendre polynomials and irrationality of certain Lambert series",
+      "author": "Walter Van Assche",
+      "venue": "The Ramanujan Journal 5 (2001), 295-310",
+      "arxiv": "math/0101187",
+      "url": "https://arxiv.org/abs/math/0101187",
+      "pdf_url": "https://arxiv.org/pdf/math/0101187",
+      "source_archive": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.pdf",
+      "source_archive_sha256": "ce878d4a92a709e77723bb398c131e5391cb8bea8c82eeeccd92e6f26fece34d",
+      "source_tex": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.tex",
+      "source_tex_sha256": "4eca6eab39303b83e3fa8a86d5724f041e018b02a2660a29365fe5603bb0823b",
+      "source_bundle": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.gz",
+      "source_bundle_sha256": "cee65cbb6cb8ee7329cf22234ed5e7e03007f922c1f38bea0c81263250eee388",
+      "extracted_markdown": "annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/extracted.md",
+      "extracted_markdown_sha256": "150bcd646346d92e8bacc95c9a49ba85c1d0c1630623055f4b37de27906209fc",
+      "primary_pdf_read": true,
+      "retrieved_at": "2026-08-25",
+      "exact_anchor": "The little-q-Legendre Padé construction, its moving evaluation at p^n, the Markov-function identity, and the positive norm/error estimates used by the source calculation.",
+      "extracted_locator": "extracted.md lines 99-128 (Markov/Pade identity and evaluation at p^n), lines 130-160 (associated Q_n and d_n clearing), and lines 194-224 (positive error and asymptotic estimates)",
+      "supports": "The external analytic Padé framework and positive error input.",
+      "does_not_support": "The rational-base 3/2 forced-clearing cost, all-outward m>=n comparison, primitive-content divisor reduction, or an irrationality conclusion at 3/2."
+    }
+  ],
+  "closest_known_result": {
+    "relation": "uses_a_classical_pade_family_but_adds_a_source_specific_rational_base_arithmetic_obstruction",
+    "statement": "Van Assche constructs Padé approximants from little-q-Legendre polynomials and proves irrationality results in his stated setting. The present route fixes p=3/2, evaluates the same family at all outward exponents m>=n, charges the necessary cyclotomic and homogeneous denominator clearing, and combines that cost with the source's positive error bounds.",
+    "exact_delta": "The authored conclusion is not a new Padé approximation theorem: it is the forced-clearing main term (n*m+n^2/2)log(4/3)+(3/pi^2)m^2 log 3>0 before primitive common-content division, plus the all-index restriction that content coprime to the clearing value divides 3^n+2^n."
+  },
+  "disconfirming_evidence": [
+    {
+      "kind": "exact_family_boundary",
+      "locator": "FixedDiagonalRationalClearingLab.md, adjacent determinant section",
+      "finding": "The claim that every remaining content prime has order at most 2n is false, with exact witnesses including (n,m,ell,ord)=(8,64,59,58).",
+      "effect": "A simple bounded-order proof cannot eliminate clearing-supported primitive content; the residual cannot be dismissed as a formal nuisance."
+    },
+    {
+      "kind": "source_scope_inspection",
+      "locator": "research_packet.json fixed_diagonal_rational_clearing_obstruction authority boundary",
+      "finding": "The Lean statements check finite-scale source-balance identities and positivity, not Van Assche's asymptotics or an all-index primitive-content bound.",
+      "effect": "The all-outward conclusion is source-backed ordinary mathematics with formal local arithmetic components, not a fully Lean-checked scalar impossibility theorem."
+    },
+    {
+      "kind": "primary_source_check",
+      "locator": "arXiv:math/0101187 landing page inspected 2026-08-25",
+      "finding": "Van Assche's paper is the stated 2001 little-q-Legendre/Lambert-series Padé source; its metadata and abstract establish the surrounding construction but do not state the present rational-base 3/2 claim.",
+      "effect": "Attribute the analytic family to Van Assche and retain the local calculation as a distinct, no-priority synthesis."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "For the source little-q-Legendre family at p=3/2, every outward scalar evaluation m>=n has a positive forced-clearing main term before primitive common-content division. The part of that common content coprime to the clearing value is confined by the adjacent determinant to a divisor of 3^n+2^n; clearing-supported content remains open.",
+    "forbidden_wording": [
+      "All scalar Padé constructions at 3/2 are impossible.",
+      "Van Assche's paper proves the 3/2 obstruction.",
+      "The Lean source proves Van Assche asymptotics or all-index content control.",
+      "Outward evaluation alone proves Erdős #1049.",
+      "The content-order shortcut is valid."
+    ],
+    "open_boundary": "A quantitative all-index bound on primitive common content supported on the clearing factors, strictly below the positive main term, would close this scalar family; an explicit quadratic-content construction would refute the obstruction's remaining hope. Higher-rank and inward-evaluation architectures are not covered."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "effective-height accounting for rational-base little-q-Legendre Padé forms",
+    "disposition": "subordinate beneath the #1049 rational-approximation exponent budget and consolidate all outward scalar evaluations here; do not duplicate fixed, linear, superlinear, or irregular offsets as separate frontier claims",
+    "paper_disposition": "supporting route-killing boundary in the effective-height section, immediately before the primitive-content residual",
+    "comparator_advisory": "No independent interface now: source asymptotics and open content control make a small firewall less informative than the established rational-Padé arithmetic interfaces.",
+    "human_understanding_delta": "The apparent freedom to change evaluation direction is reduced to one charged cost ledger. The genuinely hard work is not choosing m but controlling the remaining clearing-supported common content."
+  },
+  "reviewer_attention_budget": {
+    "routine": "Unique top degree of the outward evaluation and homogeneous denominator clearing once the leading coefficient is a unit.",
+    "load_bearing": "The uniform composition of Van Assche's positive error bounds with the quadratic clearing cost, and the adjacent determinant argument localizing only the coprime content.",
+    "externally_sourced": "Van Assche's little-q-Legendre Padé/Markov framework and positive norm estimates.",
+    "still_unverified": "Any all-index quantitative bound for clearing-supported primitive common content; the elementary bounded-order shortcut is disproved.",
+    "where_to_slow_down": "Check the exact scope 'before primitive division' and resist replacing the coprime-content divisor bound with a full gcd bound.",
+    "review_act": "Audit the Van Assche-to-uniform-outward passage once, then test whether a subcritical clearing-supported content bound exists; do not infer a universal Padé no-go."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "external analytic source plus formal local arithmetic and exact finite replay",
+    "output_stage": "attribution_and_expert-understanding support",
+    "artifact": "fixed_diagonal_rational_clearing_obstruction_v0 prior-art route",
+    "human_understanding_delta": "Turns many scalar evaluation experiments into one auditable obstruction with one exact escape hatch, preserving the failed order shortcut as evidence rather than smoothing it away.",
+    "verification_state": "Van Assche's primary arXiv record was inspected; the pinned Lean declarations and source hashes were checked; finite exact rows are supporting evidence only; no fresh Lean replay or independent review is asserted.",
+    "publication_or_review_state": "Internal adjudication only; no public release, Comparator edit, or priority claim.",
+    "canonicalization_state": "Fixed, linearly moving, superlinear, and irregular outward evaluations are one scalar family, subordinate to the rational-base effective-height architecture.",
+    "unresolved_downstream_bottleneck": "A subcritical clearing-supported primitive-content theorem or a counterfamily with quadratic content.",
+    "next_stage_owner": "Problem 1049 arithmetic proof owners for the content bound or counterfamily; Novelty Observatory only on a new immutable source generation."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "evidence_class": "External Van Assche little-q-Legendre analytic input plus authored rational-base arithmetic and Lean local identities; packet parity caveat remains explicit.",
+    "closest_known_result": "Van Assche's little-q-Legendre Padé/Markov construction is the primary antecedent; no located source states this p=3/2 outward forced-clearing synthesis or its primitive-content escape hatch.",
+    "comparison_relation": "Source-specific route-killing boundary for one outward scalar family, not a universal Padé impossibility theorem, irrationality result, or #1049 endpoint.",
+    "exact_delta": "Every outward m>=n evaluation carries the same positive forced-clearing main term before primitive common-content division, while the coprime part of that content is localized to a divisor of 3^n+2^n.",
+    "disconfirming_evidence": "The bounded-order shortcut is falsified by exact order witnesses; clearing-supported content, higher-rank methods, and inward evaluations remain outside the obstruction, and the packet snapshot has a stale uncommitted caveat.",
+    "confidence": {
+      "level": "strong_internal_provisional_for_route_synthesis_medium_for_external_composition_low_for_full_no_go",
+      "basis": "Pinned Lean local declarations and source hashes are available, but Van Assche asymptotics and the all-index content bound are not kernel-internal or independently reviewed."
+    },
+    "significance": "High construction-triage value: changing outward scalar offsets cannot evade the charged clearing ledger; the real remaining question is clearing-supported primitive content.",
+    "claim_ceiling": "For the source little-q-Legendre family at p=3/2, outward m>=n evaluations have a positive forced-clearing main term before primitive division, and coprime common content divides 3^n+2^n; no full scalar no-go, irrationality, endpoint, or priority claim.",
+    "hard_step": "Compose Van Assche's positive error estimates uniformly with the quadratic clearing cost and then control the clearing-supported primitive content.",
+    "open_boundary": "A subcritical all-index clearing-supported content theorem or a quadratic-content counterfamily is missing; higher-rank and inward architectures are not covered.",
+    "bounded_expert_review_act": "Audit the Van Assche-to-uniform-outward passage and test whether the remaining clearing-supported content can be bounded below the positive main term.",
+    "reentry_trigger": "Reopen on committed packet/source-generation change, a quantitative content theorem, or an explicit quadratic-content counterfamily.",
+    "source_generation": {
+      "packet_sha256_observed": "b001e564a3462a286a5b6408a8bdf32b4fd5d99784a87a8fafc6904bda6bd580",
+      "packet_parity_status": "stale_uncommitted_concurrent_packet_edit_observed_at_adjudication",
+      "packet_parity_note": "The packet hash is an observed worktree snapshot after d34f9a9c, not a committed source-generation claim; recheck parity before any downstream promotion.",
+      "ordinary_source_sha256_observed": "3d62636e88693e02d3dd262b430bf35a4c2961ef66a103d4dfefe65df16e8b6e",
+      "formal_source_sha256_observed": "017a640fd7a6e053d67fe4490a2a1145fa773aede6fe7cf14a69e2831f2d0f45"
+    },
+    "classification": {
+      "result_family": "van_assche_outward_scalar_evaluation_forced_clearing_cost",
+      "evidence_class": "external_Van_Assche_analytic_input_plus_authored_arithmetic_proof_and_Lean_local_identities",
+      "closest_prior_art": "Van Assche's little-q-Legendre Padé/Markov construction; no located source states the rational-base 3/2 forced-clearing synthesis",
+      "comparison_relation": "source-specific route-killing boundary, not a universal Padé impossibility theorem",
+      "novelty_confidence": "strong_internal_provisional_for_the_synthesis; no priority claim",
+      "significance_grade": "high_as_construction_triage",
+      "why_care": "It removes outward scalar evaluation as a free design parameter and concentrates the real question on clearing-supported primitive content.",
+      "hard_step": "Uniformly compose the external positive error estimates with the quadratic clearing cost while preserving the before-primitive-division scope.",
+      "disconfirming_evidence": "The bounded-order shortcut is falsified by exact witnesses; clearing-supported content and higher-rank/inward architectures remain outside the obstruction.",
+      "confidence_ceiling": "The forced main term and coprime-content localization are source-bound; no full scalar no-go or #1049 conclusion follows.",
+      "bounded_expert_act": "Check the Van Assche-to-uniform-outward passage and then test whether a subcritical clearing-supported content bound exists.",
+      "reentry_condition": "Re-enter only on packet/source generation change, a content theorem, or a quadratic-content counterfamily."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1049 effective-height accounting for rational-base little-q-Legendre Padé forms",
+      "disposition": "subordinate_and_consolidate_all_outward_scalar_offsets",
+      "paper_disposition": "route_killing_boundary_before_primitive_content_residual",
+      "independent_comparator_interface_justified": false,
+      "expert_attention_reason": "The useful result is one cost ledger with one surviving escape hatch; separate offset cards would obscure rather than clarify the obstruction."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "external_analytic_source_plus_formal_local_arithmetic",
+      "output_stage": "attribution_and_route_boundary_digest",
+      "artifact": "fixed_diagonal_rational_clearing_obstruction_v0",
+      "human_understanding_delta": "Turns many evaluation experiments into one source-attributed obstruction and keeps the primitive-content gap visible.",
+      "verification_state": "Pinned Lean local declarations and ordinary source inspected; Van Assche input external; no fresh replay claimed.",
+      "publication_or_review_state": "internal supporting adjudication; no public novelty claim",
+      "canonicalization_state": "one outward scalar family beneath the rational-approximation budget",
+      "unresolved_downstream_bottleneck": "subcritical clearing-supported primitive-content theorem or counterfamily",
+      "next_stage_owner": "#1049 arithmetic proof owners and Mathematics Refinery"
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_formal_and_packet_current_at_committed_snapshot",
+    "bound_snapshot": {
+      "repository_commit": "85c09c2be4dcd95d3eb713ce08248bf69914f42f",
+      "packet_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "packet_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "ordinary_source_sha256_observed": "3d62636e88693e02d3dd262b430bf35a4c2961ef66a103d4dfefe65df16e8b6e",
+      "formal_source_sha256_observed": "017a640fd7a6e053d67fe4490a2a1145fa773aede6fe7cf14a69e2831f2d0f45",
+      "packet_parity_status": "current_committed_packet_generation_bound_after_b71c16d4"
+    },
+    "claim_guard": "Only the source-bound outward scalar forced-clearing main term and coprime-content localization are admitted. Clearing-supported content, higher-rank or inward architectures, full scalar no-go, irrationality, endpoint resolution, and priority remain open or excluded.",
+    "reentry_trigger": "Re-enter on a committed packet/source-generation change, a quantitative clearing-supported content theorem, or a quadratic-content counterfamily."
+  }
+}

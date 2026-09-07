@@ -1,0 +1,17 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "proof_generation_from_an_explicit_E1_zero_gap_and_mode_discriminating_computation",
+  "output_stage": "verified_analytic_proof_and_focused_lean_core",
+  "artifact": [
+    "FormACutFirstNonzeroMode.md",
+    "FormACutFirstNonzeroMode.lean",
+    "scripts/check_erdos1041_form_a_cut_first_nonzero_mode.py",
+    "FormACutAdjacentSelector.md"
+  ],
+  "human_understanding_delta": "The mode-one adjacent selector is not the real source of near-Fekete supply. On every first nonzero Fourier mode, a closed-half-plane count provides two root rays and the exact identity H(t omega^j)=t^m Re(A omega^(mj))-t^n makes both strictly safe. The E1=0 gap is therefore a mode-selection gap, not a failure of the leading model; degree three is the unique deficient phase count.",
+  "verification_state": "ordinary_proof_complete; deterministic_checker_PASS_degrees_4_through_80; canonical_focused_Lean_build_PASS_2026_08_25",
+  "publication_or_review_state": "private_authoring_checkpoint_not_peer_reviewed_novelty_not_claimed",
+  "canonicalization_state": "corrects_the_E1_zero_scope_of_FormACutAdjacentSelector_and_consolidates_all_first_modes_into_one_model_theorem",
+  "unresolved_downstream_bottleneck": "uniformly_absorb_higher_modes_and_the_remainder_on_the_full_spokes_then_cover_the_D_bounded_away_from_one_regime",
+  "next_stage_owner": "Refinery: verify the exact half-plane count and remainder handoff; proof lane: derive a quantitative stratified near-Fekete neighborhood before returning to the bulk regime"
+}

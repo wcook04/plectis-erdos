@@ -1,0 +1,108 @@
+{
+  "rational_base_measure": {
+    "tail_cutoff": 512,
+    "exact_assertion": "300.4269 < exponent bound < 300.4270 < 301",
+    "display_only_theta_interval": [
+      0.4056830213826789,
+      0.4056830213854395
+    ],
+    "display_only_exponent_interval": [
+      300.42691448887774,
+      300.42691490671444
+    ],
+    "method": "all assertions evaluated with fractions.Fraction; floats only for display"
+  },
+  "finite_schur": {
+    "exact_cases": 12,
+    "support": "finite; exact rational Cauchy-Binet/Schur equality"
+  },
+  "lacunary": {
+    "exact_cases": 5,
+    "identity": "P_(n+1) Q_n - P_n Q_(n+1) = Q_n 2^(4^(n+1))"
+  },
+  "numerical": {
+    "evidence": "floating-point regression only; no certified infinite-tail or rounding bounds",
+    "q": 0.25,
+    "weight_coefficients_through": 1050,
+    "partition_size_cutoff": 28,
+    "partitions": 18460,
+    "polar_target": 6.597846319146879,
+    "polar_samples": [
+      [
+        50,
+        6.439489533349824
+      ],
+      [
+        100,
+        6.517115408737813
+      ],
+      [
+        200,
+        6.557081205982378
+      ],
+      [
+        400,
+        6.577362357207924
+      ],
+      [
+        800,
+        6.58757879668885
+      ],
+      [
+        1000,
+        6.58962820312767
+      ]
+    ],
+    "excitation_target": 1.6107647762098258,
+    "excitation_samples": [
+      [
+        20,
+        1.8365647801071106
+      ],
+      [
+        40,
+        1.7192095092997572
+      ],
+      [
+        80,
+        1.663908634077913
+      ],
+      [
+        160,
+        1.6370714643232986
+      ],
+      [
+        320,
+        1.623852356389719
+      ],
+      [
+        640,
+        1.6172921934911244
+      ]
+    ],
+    "full_correction_target": -0.9971279292242232,
+    "full_correction_samples": [
+      [
+        20,
+        -0.768035305801118
+      ],
+      [
+        40,
+        -0.8837024626262924
+      ],
+      [
+        80,
+        -0.940743288180137
+      ],
+      [
+        160,
+        -0.9690232539931998
+      ],
+      [
+        320,
+        -0.9830981814069872
+      ]
+    ]
+  },
+  "elapsed_seconds": 1.5310468673706055
+}

@@ -1,0 +1,76 @@
+version: "v0.4"
+project:
+  name: "Erdős #1041: strict length budget below two for quotient-fibre root lifts"
+  description: >-
+    If α > 0 and the two endpoint moduli a and b lie in [0,1), then a^α + b^α < 2, and any
+    length bounded by that budget is strictly below two, the threshold appearing in Erdős
+    #1041. The budget requires only positivity of the exponent and endpoint moduli strictly
+    below one, so the entire open range of admissible endpoints is covered. The density
+    input is an exact comparison: for α ≤ 1 and x > 0 the root-lift density on an offset
+    line, (√(d² + x²))^(α-1), is at most the density x^(α-1) on the parallel line through
+    the origin. The axis majorant integrates exactly, α ∫₀^A x^(α-1) dx = A^α for α > 0 and
+    A ≥ 0, which converts the offset comparison into the powered endpoint budget. This
+    closes the quantitative root-lift stage of the translated quartic quotient-fibre
+    construction, since every admissible lift is then held strictly under the threshold. The
+    material is elementary real analysis serving a lemniscate length problem in geometric
+    function theory; novelty is unassessed. The cited geometric lemma for the quartic, the
+    covering-space lift construction and the final path assembly remain outside Lean.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+sources:
+  - title: "Translated quartic quotient-fibre root lifts for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact root-lift hypotheses, attribution boundary, and unformalized path assembly were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "First-wave candidate; no external verdict or submission is claimed."
+status:
+  scope: "Four exact source-backed declarations; Pendyala's geometric lemma, the covering-space lift construction, and path assembly remain outside Lean."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget"
+      file: "ExternalVerification1041QuarticQuotientFiber/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check"
+      novelty_status: "unassessed"
+      boundary: "Does not formalize the root-lift construction, quartic geometric input, path assembly, or unrestricted Erdős #1041."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041QuarticQuotientFiber"
+  statements:
+    - source: "ErdosProblems.Erdos1041.QuarticQuotientFiberCase"
+      lean: "four same-named source transports"
+      module: "ExternalVerification1041QuarticQuotientFiber/Challenge.lean"
+      status: "exact-transport-pending-guarded-build"

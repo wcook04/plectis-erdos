@@ -1,0 +1,219 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "reciprocal_radial_sweep_identity",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_reciprocal_Blaschke_and_harmonic_kernel_components_with_useful_problem_specific_root_direction_packaging",
+  "problem_id": "erdos_1041",
+  "purpose": "Classify the reciprocal radial average as a regularized discrete logarithmic-energy identity, identify the angular first variation as a conjugate-Poisson kernel, and preserve the moving-selector boundary.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/reciprocal_radial_sweep_identity.card.json",
+    "refinery_handoff_commit": "4a4e42553c12cfbcf6600a024290a659c1a41df1",
+    "source_commit": "ef89a56daa9931196036658177ce54d2327712f8",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RadialResultantSweep.md"
+  },
+  "classification": {
+    "reciprocal_adjoint_class": "classical_conjugate_reciprocal_polynomial_notation",
+    "Blaschke_majorant_class": "classical_finite_Blaschke_product_factorization",
+    "equal_modulus_sum_class": "regularized_discrete_logarithmic_energy_for_a_positive_definite_circle_kernel",
+    "angular_kernel_class": "one_half_of_the_classical_conjugate_Poisson_kernel",
+    "combined_packaging_class": "useful_problem_specific_root_direction_interface_no_priority_claim",
+    "priority_claim": "none",
+    "recommended_terminology": "root-direction logarithmic-energy sweep with conjugate-Poisson angular first variation",
+    "nearest_prior_work": [
+      "Lalin and Smyth (2013), Theorem 1 setup, uses the conjugate-reciprocal adjoint h*(z)=z^n overline{h}(1/z).",
+      "Garcia, Mashreghi, and Ross (2016), equation (1.1), gives the standard finite Blaschke-product factorization associated with disk zeros.",
+      "Katznelson, An Introduction to Harmonic Analysis, Section 2.6, equation (2.9), gives Q(r,theta)=2r sin(theta)/(1-2r cos(theta)+r^2) as the conjugate Poisson kernel."
+    ],
+    "attribution": "Attribute reciprocal adjoints, finite Blaschke products, positive Fourier kernels, and the conjugate Poisson kernel to standard complex and harmonic analysis. Credit the card only for the exact root-direction synthesis, its discrete-energy positivity law, and the explicit moving-selector boundary.",
+    "mathematical_interest": "The identity converts a geometric-mean estimate into a pointwise-in-radius existence statement and makes the selector instability visible at first order.",
+    "reusable_scope": "Equal-modulus point configurations on a circle, reciprocal-polynomial estimates, finite-Blaschke comparisons, and perturbative selector problems near a regular polygon.",
+    "why_it_matters": "It identifies exactly what averaging proves and what it cannot prove: existence at every radius survives, while a single spoke across all radii does not follow."
+  },
+  "adjudication_currentness": {
+    "status": "source_and_card_hashes_current_at_snapshot",
+    "bound_snapshot": {
+      "source_commit": "ef89a56daa9931196036658177ce54d2327712f8",
+      "reviewer_card_commit": "4a4e42553c12cfbcf6600a024290a659c1a41df1",
+      "parity_status": "ordinary reciprocal/Blaschke/kernel components and source-specific synthesis are current; no Lean or fixed-selector claim"
+    },
+    "claim_guard": "Only the authored reciprocal/Blaschke radial sweep, positive equal-modulus kernel identity, and conjugate-Poisson first variation are admitted. A fixed selector, path-length theorem, finite-perturbation upgrade, priority, and Erdős #1041 solution remain excluded.",
+    "reentry_trigger": "Re-enter if the source note, reviewer card, primary-source attribution, selector-coherence estimate, or perturbation remainder changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The reciprocal, Blaschke, and Fourier identities are classical; the load-bearing issue is selector coherence across radii.",
+    "slow_down_at": "Check the conjugate-Poisson normalization and the quantifier distinction between per-radius existence and one fixed direction.",
+    "automation_can_establish": ["Source/card hashes and finite calibration", "The stated average and first-variation identities"],
+    "human_judgment_required": ["Whether any harmonic/complex-analytic theorem supplies cross-radius selector coherence", "Whether a quantitative perturbation remainder exists"],
+    "review_act": "Audit one first-variation derivation and attach the fixed-selector countermodel to any downstream path proposal.",
+    "attention_ceiling": "High method-boundary support; no standalone novelty or endpoint claim."
+  },
+  "primary_sources": [
+    {
+      "id": "lalin_smyth_2013_self_inversive",
+      "title": "Unimodularity of zeros of self-inversive polynomials",
+      "authors": ["Matilde N. Lalin", "Chris J. Smyth"],
+      "venue": "Acta Mathematica Hungarica 138 (2013), 85-101",
+      "url": "https://arxiv.org/abs/1201.0774",
+      "exact_anchor": "Theorem 1 setup and the sentence immediately following equation (5): h*(z)=z^n overline{h}(1/z).",
+      "supports": "Established conjugate-reciprocal adjoint notation and unit-circle inversion framework.",
+      "does_not_support": "No radial root-direction sum, positive power-sum energy, or selector conclusion."
+    },
+    {
+      "id": "garcia_mashreghi_ross_2016_finite_blaschke",
+      "title": "Finite Blaschke products: a survey",
+      "authors": ["Stephan Ramon Garcia", "Javad Mashreghi", "William T. Ross"],
+      "url": "https://arxiv.org/abs/1512.05444",
+      "exact_anchor": "Introduction, equation (1.1), and the following paragraph: a finite Blaschke product is a finite product of disk automorphisms and has modulus at most one in the disk.",
+      "supports": "The standard factorization and modulus inequality used to pass from f* to f.",
+      "does_not_support": "No root-direction average or fixed-selector upgrade."
+    },
+    {
+      "id": "katznelson_conjugate_poisson_kernel",
+      "title": "An Introduction to Harmonic Analysis",
+      "author": "Yitzhak Katznelson",
+      "venue": "Cambridge University Press, third edition",
+      "url": "https://www.cambridge.org/highereducation/books/an-introduction-to-harmonic-analysis/74362E0720AE170D0F863D5A7DB92CCB",
+      "exact_anchor": "Section 2.6, equation (2.9): Q(r,t)=2r sin(t)/(1-2r cos(t)+r^2), called the conjugate Poisson kernel.",
+      "supports": "The exact established name and normalization for twice the card's positive angular kernel.",
+      "does_not_support": "No polynomial perturbation formula or selector statement."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "The reciprocal logarithm has the Fourier expansion -log|1-w|=sum Re(w^m)/m, and the equal-modulus double sum has nonnegative Fourier coefficients |sigma_m|^2.",
+    "local_delta": "Evaluate that kernel only on the polynomial's own root directions, combine it with the Blaschke majorant, and linearize the resulting selector functional near a regular polygon.",
+    "quantifier_boundary": "A nonpositive geometric mean at every radius yields for-all-t exists-j, not exists-j for-all-t. The separate exact one-spoke countermodel shows the latter is false.",
+    "significance_boundary": "The synthesis is a route-selection and falsification tool, not a path theorem or a solution of Erdos Problem 1041."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "root directions reciprocal polynomial radial average logarithm",
+      "power sums squared logarithmic energy unit circle",
+      "conjugate Poisson kernel angular perturbation polynomial roots",
+      "product f star evaluated at normalized roots"
+    ],
+    "result": "The search located each standard ingredient and its established terminology but no source stating the exact combined root-direction identity, moving-selector consequence, and regular-polygon first variation as one theorem.",
+    "boundary": "Non-location justifies only a packaging-level delta; it is not evidence of theorem novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The card packages classical reciprocal/Blaschke machinery and a positive-definite logarithmic circle kernel into an exact root-direction sweep; its first variation is a conjugate-Poisson kernel and its selector may depend on radius.",
+    "forbidden_wording": [
+      "We discovered the reciprocal adjoint or conjugate Poisson kernel.",
+      "Average positivity chooses one root direction for all radii.",
+      "The first variation controls finite perturbations without a remainder estimate.",
+      "The sweep proves a two-root path or solves Erdos Problem 1041."
+    ],
+    "nonclaims": [
+      "not_a_new_Blaschke_theorem",
+      "not_a_new_harmonic_kernel",
+      "not_a_fixed_selector_theorem",
+      "not_a_path_length_theorem",
+      "not_a_solution_of_erdos_1041"
+    ]
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_diagnostic_paper_mechanism",
+    "reason": "The ordinary proofs, primary-source components, and selector boundary are inspectable. Paper synthesis—not reviewer absence—is the reason against an independent Comparator interface.",
+    "comparator_advisory": "Keep the average, quantifier boundary, first variation, and fixed-spoke countermodel together."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "proved_harmonic_diagnostic",
+    "output_stage": "expert_digestion_and_mechanism_canonicalization",
+    "artifact": "reciprocal_radial_sweep_identity_v0",
+    "human_understanding_delta": "Unifies positive average energy with the moving-selector obstruction.",
+    "verification_state": "Authored ordinary proof plus finite calibration; no Lean theorem.",
+    "publication_or_review_state": "Eligible for public paper/exhibition visibility with evidence labels.",
+    "canonicalization_state": "Canonical radial-average diagnostic family.",
+    "unresolved_downstream_bottleneck": "Coherent path selection across radii.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and \\#1041 proof owners."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/reciprocal_radial_sweep_identity.card.json",
+      "effect": "Replace pending novelty language with standard-component attribution, logarithmic-energy terminology, and the exact selector boundary."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Reuse the sweep as a harmonic-analysis diagnostic but keep the separate one-spoke countermodel adjacent to every selector claim."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "reciprocal_radial_sweep_identity@source-ef89a56d-card-4a4e4255",
+    "evidence_class": "Authored ordinary harmonic-analysis identities with finite calibration; no Lean theorem or independent specialist review.",
+    "closest_known_result": "Reciprocal adjoints, finite Blaschke products, positive logarithmic kernels, and the conjugate Poisson kernel are classical; the local contribution is their exact root-direction synthesis and moving-selector boundary.",
+    "comparison_relation": "Useful problem-specific packaging of standard complex/harmonic analysis, not a new kernel or selector theorem.",
+    "exact_delta": "Radial averaging yields a good direction at each radius, while the conjugate-Poisson first variation shows why that selector may move; no one-spoke upgrade follows.",
+    "disconfirming_evidence": "Classical sources account for every analytic component, and no supplied estimate upgrades the average to a fixed selector, finite perturbation, or two-root path.",
+    "confidence": {
+      "standard_component_attribution": "high_internal_provisional",
+      "source_specific_synthesis": "moderate_internal_provisional",
+      "fixed_selector_or_path_theorem": "low_unresolved"
+    },
+    "significance": "High method-boundary support: it prevents a seductive uniform-selector inference while keeping routine kernel identities consolidated.",
+    "claim_ceiling": "Only the reciprocal/Blaschke radial sweep, positive equal-modulus kernel identity, and conjugate-Poisson first variation are admitted. No new reciprocal-adjoint theorem, fixed selector, finite-perturbation theorem, two-root path, priority, or Erdős #1041 solution is admitted.",
+    "hard_step": "Control selector variation across radii and supply a quantitative finite-perturbation remainder; the first variation alone cannot do this.",
+    "open_boundary": "Coherent path selection across radii and any quantitative perturbation remainder remain open.",
+    "bounded_expert_review_act": "Audit one first-variation derivation and check the quantifier boundary against the fixed-selector countermodel.",
+    "reentry_trigger": "Reopen if a selector-coherence theorem, finite-perturbation estimate, or source correction appears.",
+    "source_version_binding": {
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RadialResultantSweep.md",
+      "source_commit": "ef89a56daa9931196036658177ce54d2327712f8",
+      "reviewer_card_commit": "4a4e42553c12cfbcf6600a024290a659c1a41df1",
+      "primary_source_locators": [
+        "Lalin–Smyth 2013, Theorem 1 setup",
+        "Garcia–Mashreghi–Ross 2016, equation (1.1)",
+        "Katznelson, An Introduction to Harmonic Analysis, Section 2.6, equation (2.9)"
+      ],
+      "parity_status": "Ordinary reciprocal/Blaschke/kernel components and the source-specific synthesis are bound; no Lean, fixed-selector, path-length, or priority claim is made."
+    },
+    "classification": {
+      "evidence_class": "authored ordinary harmonic-analysis identities with finite calibration",
+      "closest_prior_art": "Reciprocal adjoints, finite Blaschke products, positive logarithmic kernels, and the conjugate Poisson kernel are classical. The local contribution is their exact root-direction synthesis and moving-selector boundary.",
+      "comparison_relation": "Useful problem-specific packaging of standard complex/harmonic analysis, not a new kernel or selector theorem.",
+      "novelty_confidence": "strong attribution boundary; no priority or standalone novelty claim",
+      "significance_grade": "high_method_boundary_support",
+      "why_care": "It shows exactly what radial averaging proves—existence of a good direction at each radius—and why that does not produce one spoke working across all radii.",
+      "hard_step": "Any path theorem must control selector variation across radii and supply a finite-perturbation remainder; the displayed first variation alone cannot do so.",
+      "natural_friction": "The positive average, conjugate-Poisson first variation, and fixed-selector failure must stay in one object; separating them invites a false uniform-selector inference.",
+      "disconfirming_evidence": "Classical sources explain every analytic component, and no supplied estimate upgrades the average to a fixed selector or a two-root path."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The source packages a reciprocal/Blaschke radial energy sweep, a positive equal-modulus kernel identity, and a conjugate-Poisson first variation whose favorable direction may depend on radius.",
+      "rejected_stronger": [
+        "a new reciprocal-adjoint or conjugate-Poisson theorem",
+        "one root direction works for all radii",
+        "the first variation controls finite perturbations without a remainder",
+        "a two-root path theorem",
+        "a solution of Erdős #1041",
+        "a priority claim"
+      ],
+      "open_boundary": "Coherent path selection across radii and any quantitative perturbation remainder remain open."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "radial-average diagnostics and selector obstructions for polynomial lemniscates",
+      "disposition": "retain as one analytic diagnostic and consolidate average, first variation, and fixed-selector countermodel",
+      "paper_disposition": "supporting lemma / route boundary in 'Radial averaging does not select one spoke'",
+      "supersession_or_consolidation": "Retire separate correction-only and finite-calibration narratives; keep the moving-selector obstruction adjacent to the positive average.",
+      "expert_attention_reason": "Its value is preventing a seductive but invalid selector upgrade; expert time should target cross-radius coherence, not routine kernel identities.",
+      "independent_comparator_interface_justified": "No standalone Comparator interface; expose as one bundled paper mechanism with classical evidence labels and the fixed-selector nonclaim."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "classical harmonic identities with a hard selector-coherence gap",
+      "slow_down_at": "Check the normalization of the conjugate-Poisson kernel and the quantifier distinction between per-radius existence and one fixed direction.",
+      "automation_establishes": "Finite calibration only.",
+      "expert_judgment_required": "Whether any known harmonic/complex-analytic theorem supplies cross-radius selector coherence or a usable perturbation remainder.",
+      "bounded_expert_act": "Audit one first-variation derivation and attach the fixed-selector countermodel to the downstream path proposal.",
+      "reentry_condition": "Reopen if a selector-coherence theorem, finite-perturbation estimate, or source correction appears."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "proved harmonic diagnostic",
+      "output_stage": "expert digestion and mechanism canonicalization",
+      "artifact": "reciprocal_radial_sweep_identity_v0",
+      "human_understanding_delta": "Unifies positive average energy with the moving-selector obstruction.",
+      "verification_state": "Authored ordinary proof plus finite calibration; no Lean theorem.",
+      "publication_or_review_state": "Eligible for status-tagged paper visibility; no standalone novelty or endpoint claim.",
+      "canonicalization_state": "One canonical radial-average diagnostic family.",
+      "unresolved_downstream_bottleneck": "Coherent path selection across radii.",
+      "next_stage_owner": "Mathematics Refinery and #1041 proof owners."
+    }
+  }
+}

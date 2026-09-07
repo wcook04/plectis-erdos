@@ -1,0 +1,245 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "primitive_matrix_determinant_content",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_classical_Bezout_determinantal_divisor_core_with_problem_specific_square_payment_normal_form",
+  "problem_id": "erdos_243",
+  "purpose": "Separate the standard primitive-matrix determinant/content identity from the public reduced-step specialization and the private excursion square-payment normal form, then bind exact attribution and significance language to the reviewer card.",
+  "source_result_ids": [
+    "primitive_matrix_exact_gcd_payment"
+  ],
+  "adjudication_currentness": {
+    "status": "current_at_public_private_source_card_snapshot",
+    "bound_snapshot": {
+      "public_authority_commit": "d666db67b1e40dc1fa6781ad09030193de126417",
+      "public_source_sha256": "82f16b7f678b422b2c939a1587d27c0fc8c3be08272079e6965eb184bb28d2d6",
+      "private_authority_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "private_source_sha256": "0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76",
+      "reviewer_card_commit": "f6eb0238b4a2429e8815b268ed573cc046e19a95",
+      "reviewer_card_sha256": "d4510bfca3e6399aea4df5fd3a9e1bb4b7f831b412e5d3e584ea1ad5543ec4f3"
+    },
+    "claim_guard": "Public Lean covers the generic and reduced-step identities; the block and excursion square-payment formulas remain private Lean evidence. No global payment or endpoint claim is licensed.",
+    "reentry_trigger": "Reopen if either source snapshot, the reviewer card, primitivity hypotheses, or the public/private parity boundary changes."
+  },
+  "reviewer_attention_budget": {
+    "review_act": "Check both input/row primitivity hypotheses and the normalization by the common row scale before reading the square-payment formula.",
+    "expert_judgment_required": "Assess whether the normalized square-payment interface has reusable value beyond routine Bezout/Smith theory; no priority claim is requested.",
+    "attention_disposition": "supporting_parent_with_scoped_children"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos243_primitive_matrix_determinant_content@public-d666-private-4cd4-card-f6eb",
+    "source_generation_binding": {
+      "public_authority_commit": "d666db67b1e40dc1fa6781ad09030193de126417",
+      "public_source_sha256": "82f16b7f678b422b2c939a1587d27c0fc8c3be08272079e6965eb184bb28d2d6",
+      "private_authority_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "private_source_sha256": "0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76",
+      "reviewer_card_commit": "f6eb0238b4a2429e8815b268ed573cc046e19a95",
+      "reviewer_card_sha256": "d4510bfca3e6399aea4df5fd3a9e1bb4b7f831b412e5d3e584ea1ad5543ec4f3"
+    },
+    "evidence_class": "Public Lean-checked generic and reduced-step identities; private Lean-checked block/excursion payment consumers; primary-source integer-lattice attribution.",
+    "closest_known_result": "Magliveras--van Trung--Wei (2008), Theorem 2.1/Corollary 2.1 and equations (2.3)-(2.4), explicitly place primitive completion and 2x2 Bezout determinants in standard lattice/determinantal-divisor theory. Smith (1861) is historical normal-form context. Neither states the exact output-coordinate or recurrence-specific square-payment interface.",
+    "comparison_relation": "The generic gcd equality and reduced-step specialization are routine exact consequences of Bezout/determinantal divisors. The normalized square-payment formula is a narrower source-specific interface, apparently unlocated as a named theorem, with no novelty claim.",
+    "exact_delta": "Under separately verified primitivity, content of a two-coordinate transfer equals gcd(det M, second output); after common-scale normalization a square determinant yields |Λ|=σ·gcd(A0²,(K0u−B0e)).",
+    "disconfirming_evidence": "No global lower bound, payment frequency, tail rigidity, determinant nonvanishing, height decay, or Erdős #243 solution follows. The private excursion theorem is not a public Lean claim.",
+    "confidence": {
+      "public_private_source_parity": "high_internal_provisional",
+      "standard_core_attribution": "high",
+      "independent_novelty_of_square_payment": "unassessed_to_low; no priority claim"
+    },
+    "significance": "B_supporting_parent: a reusable local cancellation interface that clarifies which primes/exponents can pay, while the abstract theorem is elementary.",
+    "claim_ceiling": "Present one parent determinant/content mechanism with two scoped consumers. Do not call it new Smith theory, a global payment theorem, or an Erdős #243 advance.",
+    "hard_step": "Force enough cancellation payments globally; exact one-step accounting alone cannot produce tail rigidity.",
+    "open_boundary": "Payment-event production, eventual Sylvester rigidity, and the #243 endpoint remain open; preserve the public/private evidence split.",
+    "bounded_expert_act": "Reconstruct one primitive matrix transfer and verify the determinant/content equality, then inspect the extra hypotheses of the square-payment consumer.",
+    "reentry_trigger": "Reopen on source/card hash changes, a located antecedent for the square-payment normal form, or a global payment producer.",
+    "primary_text_verification": {
+      "source_id": "magliveras_trung_wei_2008_primitive_sets",
+      "local_pdf": "annexes/magliveras-trung-wei-2008-primitive-sets-lattice/source.pdf",
+      "sha256": "4e3776647c99944213d8f7e7d5ca96cf7ca68863814cff8a4566a8032ed07cf8",
+      "locator": "Printed pp. 174-176: primitive vectors are characterized by coordinate gcd one; Theorem 2.1 and Corollary 2.1 complete a row with determinant equal to its gcd; equations (2.3)-(2.4) display Bezout as a 2x2 determinant. Printed pp. 179 and 183-184 connect maximal-minor gcds and unimodular completion to the determinantal-divisor framework.",
+      "conclusion": "The generic primitive/determinantal identity is standard lattice arithmetic. The exact recurrence-specific square-payment normal form remains a local interface with no priority claim."
+    },
+    "mechanism_family": "#243 primitive two-dimensional determinant/content control",
+    "disposition": "consolidate_parent_with_two_scoped_children",
+    "expert_attention_reason": "One parent section replaces parallel cancellation stories while retaining the square-payment and reduced-step formulas only where their hypotheses are visible.",
+    "paper_disposition": "supporting lemma",
+    "paper_section": "Primitive content and the cancellation-payment bottleneck",
+    "supersession_relation": "Keep this as the parent; subordinate primitive_square_determinant_scale_payment and reduced_tail_cancellation_payment rather than creating parallel endpoint claims.",
+    "comparator_interface_justified": true,
+    "comparator_reason": "Expose the generic public determinant-content equality and only irreducible exact child statements, each with its own evidence label; do not split the family into duplicate interfaces."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/primitive_matrix_determinant_content.card.json",
+    "refinery_handoff_commit": "9d44a7a95e0f332362af991d788d9eb4ec095710",
+    "public_authority_commit": "d666db67b1e40dc1fa6781ad09030193de126417",
+    "public_declarations": [
+      "ErdosProblems.Erdos243.primitiveMatrix_gcd_eq_det_gcd",
+      "ErdosProblems.Erdos243.reducedStep_cancellationFactor_eq_square"
+    ],
+    "private_authority_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "private_declarations": [
+      "ErdosProblems.Erdos243.blockCancellationPayment_explicit",
+      "ErdosProblems.Erdos243.excursionCancellationPayment"
+    ]
+  },
+  "classification": {
+    "generic_theorem_novelty_class": "routine_two_dimensional_Bezout_and_determinantal_divisor_identity",
+    "primitive_step_novelty_class": "routine_exact_specialization_to_a_fully_reduced_step",
+    "square_payment_novelty_class": "problem_specific_exact_normal_form_with_reusable_interface_value_and_no_priority_claim",
+    "exact_square_payment_antecedent_status": "not_located_in_a_bounded_primary_source_search",
+    "formalisation_class": "generic_and_step_theorems_public_Lean_checked; square_payment_private_Lean_checked",
+    "priority_claim": "none",
+    "nearest_prior_work": [
+      "Magliveras, van Trung, and Wei (2008), printed page 174, record that primitive integer vectors are exactly coordinate-gcd-one vectors and extend to lattice bases.",
+      "Their Theorem 2.1 on printed page 175 gives completion of an integer row to a matrix whose determinant is the row gcd, and equations (2.3)-(2.4) on page 176 explicitly rewrite Bezout's identity as a 2-by-2 determinant formula.",
+      "Their Lemma 3.2 on page 179 and Theorem 4.1 on pages 183-184 place primitive sets and matrix completion in the standard gcd-of-maximal-minors, unimodular, Hermite/Smith-normal-form framework."
+    ],
+    "attribution": "Call the generic equality a two-dimensional Bezout or primitive-lattice determinantal-divisor identity. Attribute primitive-vector completion and gcd-of-minors language to standard integer-lattice theory. Credit the local work for the exact formal statement, its reduced-step specialization, and the normalized excursion consumer—not for inventing determinant control of content.",
+    "mathematical_interest": "The generic result is elementary but sharp: under two independent primitivity hypotheses it upgrades the familiar divisibility by det M to an exact gcd equality, including singular matrices. The square-payment form is more valuable as an interface than as an isolated formula: it turns dynamically removed content into a gcd of a normalized square determinant and one terminal coordinate.",
+    "reusable_scope": "The generic theorem applies to primitive two-coordinate integer transfers with a primitive chosen row. The normalized block theorem applies whenever primitive endpoints, a primitive divided row, a common scale, and a square determinant are separately verified. The excursion quotient formula is narrower because its A,B,K,alpha,beta relations are recurrence-specific.",
+    "why_it_matters": "The normal form exposes exactly which primes and exponents can pay for cancellation. It converts an opaque common factor into sigma times gcd(A0^2,z), enabling valuation bounds, prime-support audits, and product-of-payments telescoping. It does not force large payments or advance the Erdos 243 endpoint by itself."
+  },
+  "primary_sources": [
+    {
+      "id": "magliveras_trung_wei_2008_primitive_sets",
+      "title": "Primitive sets in a lattice",
+      "authors": [
+        "Spyros S. Magliveras",
+        "Tran van Trung",
+        "Wandi Wei"
+      ],
+      "venue": "Australasian Journal of Combinatorics 40 (2008), 173-186",
+      "url": "https://ajc.maths.uq.edu.au/download/40/ajc_v40_p173.pdf",
+      "local_annex": "annexes/magliveras-trung-wei-2008-primitive-sets-lattice",
+      "source_archive": "annexes/magliveras-trung-wei-2008-primitive-sets-lattice/source.pdf",
+      "source_archive_sha256": "4e3776647c99944213d8f7e7d5ca96cf7ca68863814cff8a4566a8032ed07cf8",
+      "source_pdf": "annexes/magliveras-trung-wei-2008-primitive-sets-lattice/source.pdf",
+      "source_pdf_sha256": "4e3776647c99944213d8f7e7d5ca96cf7ca68863814cff8a4566a8032ed07cf8",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 14,
+      "extracted_markdown": "annexes/magliveras-trung-wei-2008-primitive-sets-lattice/extracted.md",
+      "extracted_markdown_sha256": "5d554a56d90c1e6f5235c1de6884ddde7bc413afc0b5f9d57cf925123264cbe0",
+      "retrieved_at": "2026-08-24",
+      "verification_state": "primary_pdf_read_exact_primitive_completion_and_determinantal_divisor_anchors_compared",
+      "exact_source_locator": "Printed pp. 174--176: primitive iff coordinate gcd one and extendable to a basis; Theorem 2.1, p. 175, gives row completion with determinant equal to its gcd; equations (2.3)--(2.4), p. 176, express Bezout as a 2-by-2 determinant. Printed p. 179 and pp. 183--184 give the gcd-of-maximal-minors and unimodular-completion context.",
+      "primary_text_read": true,
+      "local_pdf_sha256": "4e3776647c99944213d8f7e7d5ca96cf7ca68863814cff8a4566a8032ed07cf8",
+      "exact_anchor": "Printed p. 174: primitive iff coordinate gcd one and extendable to a basis; Theorem 2.1, p. 175: row completion with determinant equal to its gcd; equations (2.3)-(2.4), p. 176: Bezout as a 2-by-2 determinant; Lemma 3.2, p. 179: primitivity iff gcd of maximal minors is one; Theorem 4.1, pp. 183-184: unimodular Hermite completion preserves the determinantal divisor.",
+      "supports": "The standard Bezout, unimodular-completion, and determinantal-divisor family containing the generic theorem.",
+      "does_not_support": "It does not state the exact output-coordinate gcd equality, the reduced-step square formula, or the excursion payment."
+    },
+    {
+      "id": "smith_1861_indeterminate_equations",
+      "title": "On systems of linear indeterminate equations and congruences",
+      "author": "Henry John Stephen Smith",
+      "venue": "Philosophical Transactions of the Royal Society of London 151 (1861)",
+      "doi": "10.1098/rstl.1861.0016",
+      "url": "https://royalsocietypublishing.org/doi/10.1098/rstl.1861.0016",
+      "local_annex": "annexes/smith-1861-indeterminate-equations",
+      "source_artifact": "annexes/smith-1861-indeterminate-equations/source.pdf",
+      "source_artifact_source_url": "https://archive.org/download/jstor-108738/108738.pdf",
+      "source_artifact_sha256": "dae661dcfee7d81d3f9c64d46389ec98067982c40790e92a2642bbe796b7b0f3",
+      "pdf_pages": 35,
+      "primary_pdf_read": true,
+      "source_read_status": "primary_scan_read_and_local_artifact_bound",
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_scan_read_exact_title_matrix_and_greatest_divisor_definition_compared",
+      "exact_anchor": "Historical source for the integer-matrix normal-form family now carrying Smith's name; included as attribution context, not as an assertion that the modern displayed gcd identity appears verbatim.",
+      "exact_source_locator": "PDF p. 2 / printed p. 293: title, authorship, and opening discussion define rectangular integer matrices, their determinants, greatest divisor, prime matrix, and unit-matrix terminology. PDF p. 3 / printed p. 294: Article 2 applies the prime-matrix determinant-one setup to a unique integral solution.",
+      "supports": "The historical attribution of Smith-normal-form language.",
+      "does_not_support": "No exact antecedent claim for the local theorem or the square-payment form is made from this source."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "The adjugate identities show gcd(Mz) divides det M when z is primitive. A second pair of linear identities and primitivity of the selected matrix row gives the reverse divisibility modulo the chosen output coordinate, yielding exact gcd equality.",
+    "public_specialization": "In a fully reduced scalar step, the raw output content equals gcd(q,av); input primitivity and q+v=au rewrite this as gcd(q,a^2).",
+    "private_normalized_core": "After factoring a common row scale sigma, the primitive divided row and primitive endpoints turn a square determinant A0^2 into |Lambda|=sigma*gcd(A0^2,z).",
+    "private_excursion_delta": "The recurrence-specific identities prove sigma=gcd(A,B)=gcd(B,K), divisibility of all matrix entries by sigma, the square determinant, and the exact quotient coordinate z=(Ku-Be)/sigma.",
+    "significance_boundary": "The normalized core is a reusable determinant-content interface. The full excursion formula is an exact authored specialization. Neither is evidence that a new branch of Smith-normal-form theory has been found."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "primitive vector determinant gcd integer matrix",
+      "gcd components matrix vector determinant primitive",
+      "gcd determinantal divisor Smith normal form 2x2",
+      "square determinant gcd content matrix recurrence",
+      "exact cancellation payment square determinant primitive endpoints"
+    ],
+    "result": "The search located primitive-vector completion, gcd-of-minors, Smith/Hermite normal forms, and unrelated uses of square determinant. No primary source was found for the exact recurrence-normalized sigma*gcd(A0^2,z) payment wording.",
+    "boundary": "This supports a scoped exact-packaging finding only. It does not prove that the square-payment specialization is absent from the literature or establish priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "We formalise the standard two-dimensional Bezout/determinantal-divisor mechanism as an exact output-content identity and derive a recurrence-specific square-determinant payment normal form. The latter is useful as a cancellation interface, with no novelty or priority claim.",
+    "forbidden_wording": [
+      "We discovered determinant control of primitive matrix content.",
+      "The generic gcd identity is a new Smith normal form theorem.",
+      "The square-payment normal form is absent from prior literature.",
+      "The payment formula forces enough cancellation to solve Erdos Problem 243."
+    ],
+    "nonclaims": [
+      "not_a_solution_of_erdos_243",
+      "not_a_novelty_claim_for_Bezout_or_determinantal_divisors",
+      "not_a_complete_literature_search",
+      "not_a_public_Lean_claim_for_the_private_excursion_formula",
+      "not_a_global_lower_bound_on_cancellation_payments",
+      "not_a_theorem_without_both_primitivity_hypotheses_and_exact_scale_normalization"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/primitive_matrix_determinant_content.card.json",
+      "effect": "Replace pending novelty language with the standard-core/scoped-normal-form classification and exact primary-source rail."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalise the generic theorem as a reusable determinant-content lemma and the normalized square-payment theorem as its separately scoped consumer."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Expose only the public Lean theorems unless the private excursion result is first projected; keep classical attribution and the Erdos 243 nonclaim adjacent."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The hierarchy is adjudicated: routine classical Bezout/determinantal-divisor core, routine public reduced-step specialization, and a useful private problem-specific square-payment normal form with no priority claim.",
+    "do_not_redo": [
+      "Do not search for novelty in the generic determinant-content mechanism.",
+      "Do not collapse the private square-payment formula into the generic theorem; preserve its normalization hypotheses and exact recurrence-specific delta.",
+      "Do not treat failure to locate verbatim wording as priority evidence."
+    ],
+    "ranked_open_throats": [
+      "binomial_lemniscate_complementary_chords: compare the exact adjacent-chord threshold and radial-contraction construction with classical polynomial lemniscate geometry.",
+      "generated contribution row parity: land only the owned Mersenne achievement-set adjudication row without foreign generated hunks.",
+      "finrank_totientKernelThroughLevelFamily_eq: compare the exact finite-rank corollary with affine-ordering and automatic-sequence literature."
+    ],
+    "sibling_claim_map": "The proof fleet owns the Lean statements; the Refinery may canonicalise this classification; the Exhibition must not project the private result as public. Active source claims in Erdos 68, 1041, and 257 remain untouched.",
+    "validation_state": "Pending JSON parse, reviewer-card render, annex validation, and scoped commit.",
+    "next_wake_condition": "Mathematics Refinery consumes the one-parent consolidation and Role 3 decides the minimal proposition firewall."
+  },
+  "release_advisory": {
+    "significance_grade": "high_explanatory_interface_low_algebraic_novelty",
+    "hierarchy": "Parent primitive determinant-content family; square-determinant and reduced-cocycle cards are subordinate consumers.",
+    "comparator": "One parent firewall for the public generic equality plus only irreducible exact child declarations.",
+    "paper": "One supporting section centered on the missing global payment producer.",
+    "shortlist": "Do not admit without a global payment-frequency or lower-bound theorem."
+  },
+  "consolidation_consumer": {
+    "canonical_parent": "primitive_matrix_determinant_content",
+    "subordinate_objects": [
+      "primitive_square_determinant_scale_payment",
+      "reduced_tail_cancellation_payment"
+    ],
+    "replacement_rule": "Do not publish or count the subordinate cards as independent determinant-content mechanisms."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean_checked_content_family_and_primary_source_attribution",
+    "output_stage": "expert_understanding_and_canonicalization",
+    "artifact": "primitive_matrix_determinant_content parent route",
+    "human_understanding_delta": "Unifies classical content algebra and two recurrence normalizations while exposing the absent global producer.",
+    "verification_state": "Public/private Lean split and current private source hashes recorded.",
+    "publication_or_review_state": "Private review-ready synthesis; no priority or endpoint claim.",
+    "canonicalization_state": "One parent with two subordinate consumers.",
+    "unresolved_downstream_bottleneck": "Global payment frequency or lower bounds.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  }
+}

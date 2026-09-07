@@ -1,0 +1,232 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "cubic_minimal_critical_value_short_hub",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_independent_cubic_proof_after_informal_prior_claim_and_adjacent_degree_four_publication",
+  "problem_id": "erdos_1041",
+  "purpose": "Prevent a complete local cubic proof from being mistaken for a priority result or the current degree frontier, while preserving its distinct critical-value mechanism, partial formalization, and mathematical value.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/cubic_minimal_critical_value_short_hub.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.md",
+    "source_commit": "60c6ed0a6c36ecc13891fe54b7878f606512f024",
+    "source_result_id": "cubic_minimal_critical_value_short_hub"
+  },
+  "classification": {
+    "original_problem_and_component_lemma": "published_Erdos_Herzog_Piranian_1958",
+    "earlier_cubic_proof_report": "informal_public_AI_proof_report_March_2026_without_exposed_checked_argument",
+    "adjacent_degree_frontier": "published_arXiv_degree_four_theorem_Pendyala_June_2026",
+    "exact_critical_value_Rouche_argument": "source_specific_apparently_unlocated",
+    "Lean_status": "consumer_only_not_complete_theorem",
+    "priority_claim": "none",
+    "recommended_terminology": "critical-value proof of the cubic lemniscate path theorem",
+    "discouraged_terminology": [
+      "first proof of the cubic case",
+      "Lean proof of the cubic case",
+      "best known degree bound",
+      "solution of Erdős #1041"
+    ],
+    "attribution": "Credit Erdős--Herzog--Piranian for the problem and component lemma. Record the March 2026 forum comment as earlier public provenance for a cubic-proof claim without treating it as verified literature. Credit Pendyala for the published degree-four theorem. Attribute the explicit minimal-critical-value normalization, Rouché lemma, and Lean consumer on disk to the local source without priority language.",
+    "mathematical_interest": "The proof is compact and structurally different from the degree-four smallest-enclosing-disk argument: the smaller critical value simultaneously supplies the scale, root-count condition, and safe-spoke hub.",
+    "reusable_scope": "Low-degree sparse normal forms in which critical-value inequalities control root location and exact radial identities turn small roots into contained paths.",
+    "why_it_matters": "It supplies a checkable complete cubic proof and a clean analytic/formal split, but the public story must emphasize mechanism and verification rather than degree frontier or priority."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_herzog_piranian_1958",
+      "title": "Metric properties of polynomials",
+      "authors": ["Paul Erdős", "Fritz Herzog", "George Piranian"],
+      "venue": "Journal d'Analyse Mathématique 6 (1958), 125-148",
+      "url": "https://users.renyi.hu/~p_erdos/1958-05.pdf",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "pdf_pages": 24,
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_problem_5_locator_compared",
+      "exact_anchor": "Printed p. 139 / PDF p. 15, immediately before Problem 5, proves that one component contains at least two roots; Problem 5 asks for a path of length less than two joining two roots.",
+      "supports": "The original problem and the component input used to choose a critical value below one.",
+      "does_not_support": "A cubic theorem, the normalized polynomial $P_b$, or the safe-spoke identity."
+    },
+    {
+      "id": "pendyala_2026_degree_four",
+      "title": "A Degree-Four Lemniscate Path Theorem",
+      "author": "Venkata Siddharth Pendyala",
+      "venue": "arXiv:2606.24875v1",
+      "date": "2026-06-23",
+      "url": "https://arxiv.org/abs/2606.24875",
+      "source_archive": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.pdf",
+      "source_archive_sha256": "337db0cc046023b1429d9131720d199843766629cd2ad8bf8b04a40168d7bcd8",
+      "pdf_pages": 3,
+      "extracted_markdown": "annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/extracted.md",
+      "extracted_markdown_sha256": "a2b0425974ef126a45a054a587da13801636ce98d552646349026955284e967c",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_theorem_1_lemma_1_proof_locators_compared",
+      "exact_anchor": "PDF p. 1, Theorem 1 and Lemma 1, state the degree-four path theorem and four-point radial lemma; PDF p. 3, proof of Theorem 1, applies smallest-enclosing-disk normalization and the two radial arms.",
+      "supports": "A public, stronger adjacent degree-specific theorem predating the local August source and a distinct radial-hub mechanism.",
+      "does_not_support": "The present cubic critical-value normalization or a literal derivation of the cubic theorem."
+    }
+  ],
+  "public_provenance": [
+    {
+      "id": "erdos_problems_1041_discussion",
+      "url": "https://www.erdosproblems.com/forum/thread/1041",
+      "exact_anchor": "Comment dated 19 March 2026: 'ChatGPT gave a proof for cubic polynomials, but failed to do so for degree >= 4.' The page simultaneously reports no partial solution claimed in the comments.",
+      "supports": "An earlier public claim that a cubic proof existed, sufficient to make first-proof language unsafe.",
+      "does_not_support": "Correctness, identity with the local argument, priority of a durable theorem, or a citable proof text."
+    }
+  ],
+  "mechanism_comparison": {
+    "local_cubic_method": "Choose the smaller critical value, normalize to $P_b$, use the other critical value to enter a Rouché-stable two-root region, and consume two small roots through an exact safe-spoke identity.",
+    "published_degree_four_method": "Normalize the smallest enclosing disk of four roots and use a finite radial-arm selection lemma; no critical-value or Rouché argument appears in the theorem proof.",
+    "formalization_split": "The analytic root supply remains ordinary mathematics; Lean checks only the algebraic containment and strict metric fan-in once two small roots are given.",
+    "remaining_throat": "Higher degree lacks the sparse cubic identity, and the unrestricted problem remains open despite degree-four coverage."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "Erdos polynomial lemniscate path length degree three cubic",
+      "degree-three case lemniscate path polynomial roots",
+      "cubic path of length less than 2 polynomial lemniscate",
+      "P_b(w) w^3 3/2 b w^2 lemniscate"
+    ],
+    "result": "The search located the original 1958 problem, the March 2026 informal cubic-proof report, and Pendyala's June 2026 degree-four theorem. It did not locate the explicit $P_b$ normalization, unit-circle calculation, Rouché deformation, or safe-spoke identity as a published argument.",
+    "boundary": "The earlier informal claim prevents priority language; non-location of its proof prevents identifying the arguments or treating it as verified antecedent."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The local source gives an independent complete proof of the cubic case using a smaller-critical-value normalization and a source-specific Rouché/safe-spoke argument; five downstream algebraic and metric lemmas are Lean checked.",
+    "forbidden_wording": [
+      "This is the first proof of the cubic case.",
+      "The complete cubic theorem is Lean checked.",
+      "Degree three is the best publicly known degree case.",
+      "Pendyala's degree-four paper contains this proof.",
+      "The cubic spoke mechanism extends to all degrees.",
+      "Erdős #1041 is solved."
+    ],
+    "nonclaims": ["not_a_priority_claim", "not_a_complete_Lean_proof", "not_the_current_degree_frontier", "not_a_higher_degree_theorem", "not_erdos_1041_solution"]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/cubic_minimal_critical_value_short_hub.card.json",
+      "effect": "Make the complete cubic theorem inspectable while correcting first-proof and formalization implications."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Preserve the critical-value/Rouché proof as an independent mechanism and label the ordinary analytic lemma separately from Lean consumers."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Present this as a complete cubic proof with a distinct mechanism, not as the strongest degree theorem or a novelty-priority announcement."
+    }
+  ],
+  "observatory_checkpoint": {
+    "latest_checkpoint": "A high-value complete cubic result has been reclassified from a potentially headline novelty to an independent, partially formalized proof after an earlier informal cubic claim and a published degree-four theorem.",
+    "do_not_redo": [
+      "Do not re-search whether the problem or component lemma is classical; EHP 1958 is exact authority.",
+      "Do not call the cubic result first or current degree frontier.",
+      "Do not conflate the five Lean consumers with a complete formal proof.",
+      "Do not infer that the degree-four proof contains the local critical-value argument."
+    ],
+    "ranked_open_throats": [
+      "specialist comparison with any recoverable text of the March 2026 informal cubic proof",
+      "formalization of the Rouché zero-count lemma and full cubic fan-in",
+      "a higher-degree replacement for cubic sparsity rather than another critical-hub scan"
+    ],
+    "next_wake_condition": "A durable earlier cubic proof appears, a specialist attribution correction arrives, the analytic root-count lemma is formalized, or the Observatory rotates to another programme's high-impact uncovered result."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "cubic_minimal_critical_value_short_hub@source-60c6ed0-card-current",
+    "evidence_class": "authored_complete_cubic_proof_with_partial_Lean_consumers_and_external_provenance_boundary",
+    "source_generation": {
+      "ordinary_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.md",
+        "commit": "60c6ed0a6c36ecc13891fe54b7878f606512f024",
+        "sha256": "7ebbd851553a533a959bf8f45611bf8964ff3307f1ab1f39176bd793a5d1a8a1"
+      },
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.lean",
+        "sha256": "b72d2f20eaee2613ce52f1a8a5334bde51ee89b1fd7ab80153b2cf92158d40a8"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/cubic_minimal_critical_value_short_hub.card.json",
+        "sha256": "ab7e3ced5163e759658b288db966550b36da3a723eac145fb3340ab690032906"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+        "sha256": "c74343c49955f2e798c11c8afd0154f49d36c20b5b5c3f27a97760b891024866"
+      },
+      "primary_sources": [
+        "Erdős–Herzog–Piranian, Metric properties of polynomials, J. Analyse Math. 6 (1958), p. 139 and Problem 5",
+        "Pendyala, A Degree-Four Lemniscate Path Theorem, arXiv:2606.24875v1 (2026), Theorem 1"
+      ],
+      "public_provenance": "ErdosProblems.com forum #1041, 19 March 2026 comment reporting an unverified cubic proof claim"
+    },
+    "comparison_relation": "The local argument is a complete ordinary proof of the cubic case via smaller-critical-value normalization, Rouché root count, and a safe-spoke identity. It is distinct in mechanism from Pendyala's degree-four smallest-enclosing-disk argument, but an earlier public informal cubic claim prevents any first-proof or priority wording.",
+    "closest_known_result": "Erdős–Herzog–Piranian provide the original problem and component lemma; Pendyala supplies a published degree-four theorem with a different radial-hub mechanism; the March 2026 forum claim is provenance only, not a citable proof.",
+    "exact_delta": "The source makes the cubic critical-value mechanism inspectable and separates the ordinary analytic root-supply argument from five Lean-checked algebraic/metric consumers.",
+    "disconfirming_evidence": "No recoverable text of the March forum proof was located, so argument identity and priority cannot be adjudicated. The Lean file does not formalize the full Rouché/root-count theorem or end-to-end cubic result, and no higher-degree extension follows.",
+    "confidence_ceiling": "High for the ordinary cubic theorem as written and the partial formal consumers; externally unadjudicated as to priority/identity; no current-degree-frontier or #1041 solution claim.",
+    "significance": "high_human_explanation_value_medium_theorem_scope",
+    "claim_ceiling": "Present an independent complete cubic proof with a smaller-critical-value/Rouché/safe-spoke mechanism, explicitly citing EHP, Pendyala, and the earlier informal forum provenance. Do not call it first, fully Lean checked, best known degree, or a solution of #1041.",
+    "hard_step": "The load-bearing step is the analytic zero-count/root-supply lemma and its interaction with the second critical value; Lean currently checks only downstream algebraic and metric consumers.",
+    "open_boundary": "Recover or compare the earlier informal proof, formalize the Rouché/root-count bridge if desired, and replace cubic sparsity for higher degrees; unrestricted #1041 remains open.",
+    "bounded_expert_act": "Read the EHP component passage and Pendyala Theorem 1, then compare any recoverable March forum proof text to the local critical-value argument without inferring priority from non-location.",
+    "reentry_trigger": "Re-enter if a durable earlier cubic proof appears, source attribution changes, the analytic bridge is formalized, or a higher-degree critical-hub theorem is established.",
+    "programme_disposition": "retain_as_independent_cubic_mechanism_subordinate_to_erdos1041_global_partial_theorem",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "The cubic critical-value/Rouché proof",
+      "supersession_or_consolidation": "Keep this as one low-degree proof mechanism alongside the degree-four and component-perimeter objects; do not merge it into a generic degree frontier or split its Lean consumers into separate cards.",
+      "reason": "It gives a mathematically complete, human-explainable cubic proof while preserving the honest priority and formalization boundaries."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The ordinary cubic theorem is best surfaced in the paper and one status-tagged card; the partial Lean consumers do not justify a separate end-to-end Comparator proposition."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "complete ordinary cubic proof with partial formal consumers",
+      "output_stage": "expert talk and source-attributed low-degree mechanism",
+      "artifact": "cubic_minimal_critical_value_short_hub_v0",
+      "human_understanding_delta": "A skeptical reader can follow the smaller-critical-value mechanism, see the exact analytic/formal split, and understand why neither an earlier informal claim nor the degree-four theorem permits a priority or frontier claim.",
+      "verification_state": "Ordinary proof source-pinned; five downstream Lean consumers checked; Rouché/root-count bridge not end-to-end formalized.",
+      "publication_or_review_state": "Claim-faithful ordinary theorem is eligible for status-tagged visibility; external review is downstream and no acceptance is claimed.",
+      "canonicalization_state": "One independent cubic mechanism subordinate to the global #1041 partial-theorem family.",
+      "unresolved_downstream_bottleneck": "Priority/argument-identity comparison with the earlier informal claim and higher-degree replacement mechanism.",
+      "next_stage_owner": "Mathematics Refinery for paper consolidation and #1041 proof owners for analytic formalization/higher degree."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "complete ordinary low-degree theorem with externally uncertain provenance and a formalization boundary",
+    "slow_down_at": "The critical-value choice and Rouché root count are the hard analytic step; the Lean file consumes, but does not prove, them.",
+    "automation_establishes": "Algebraic normalization, safe-spoke containment, and downstream metric lemmas.",
+    "expert_semantic_judgment": "Whether any earlier proof is materially the same and how the theorem should be positioned relative to Pendyala's degree-four result.",
+    "review_act": "Compare source passages, not slogans, and retain the no-priority/no-frontier wording."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#1041 low-degree critical-value and safe-spoke methods",
+    "disposition": "retain_as_supporting_cubic_mechanism; subordinate under global component/perimeter and degree-frontier coverage",
+    "consolidation_relation": "Keep the ordinary proof and five formal consumers together; no separate first-proof, Lean-proof, or degree-frontier objects.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_replace_component_perimeter_flagship",
+      "why_care": "It is a complete, concise cubic proof that materially improves human understanding, but it does not alter the unrestricted #1041 claim ceiling.",
+      "evidence_class": "Authored ordinary proof with partial Lean consumers and external provenance boundary",
+      "hard_step": "Rouché/root-count analytic bridge and priority comparison.",
+      "prior_art_uncertainty": "Medium: earlier forum claim is real provenance but its proof text is unavailable.",
+      "open_boundary": "No higher-degree theorem or unrestricted #1041 solution.",
+      "demoted_predecessor": "first-cubic-proof and fully-formalized-cubic narratives",
+      "status_boundary": "Retain as a high-value supporting object, not an absolute flagship replacement."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_card_packet_and_public_provenance_bound_at_2026_08_26",
+    "bound_snapshot": {
+      "ordinary_source_sha256": "7ebbd851553a533a959bf8f45611bf8964ff3307f1ab1f39176bd793a5d1a8a1",
+      "formal_source_sha256": "b72d2f20eaee2613ce52f1a8a5334bde51ee89b1fd7ab80153b2cf92158d40a8",
+      "reviewer_card_sha256": "ab7e3ced5163e759658b288db966550b36da3a723eac145fb3340ab690032906",
+      "research_packet_sha256": "c74343c49955f2e798c11c8afd0154f49d36c20b5b5c3f27a97760b891024866"
+    },
+    "claim_guard": "Complete ordinary cubic theorem with partial formal consumers and provenance uncertainty only; no first-proof, full-Lean, higher-degree, or #1041 solution claim.",
+    "reentry_trigger": "Any source/card/packet change or recoverable earlier cubic proof text."
+  }
+}

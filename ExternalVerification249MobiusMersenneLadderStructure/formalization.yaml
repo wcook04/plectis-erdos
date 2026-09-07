@@ -1,0 +1,181 @@
+# formalization.yaml v0.4 (private mirror)
+version: v0.4
+project:
+  name: 'Erdős #249: no finite linear recurrence for the Möbius-Mersenne power ladder, and its separation
+    from the literal Möbius-Lambert ladder'
+  description: The Möbius-Mersenne power ladder Theta_r is the sum of mu(d)/(2^d - 1)^r over integers
+    d at least 1, and the literal Möbius-Lambert ladder Theta-hat_r is the sum of mu(d)/(2^(r d) - 1)
+    over integers d at least 1. The power ladder satisfies no finite constant-coefficient linear recurrence.
+    For every order m, every real coefficient vector c on Fin (m+1) with at least one nonzero entry, and
+    every threshold n_0, the assumption that the sum over k of c_k Theta_{n+k} vanishes for all n at least
+    n_0 is contradictory, and the same conclusion is recorded at threshold 1. At every rung r at least
+    1 the power ladder is strictly log-concave, Theta_r Theta_{r+2} < Theta_{r+1}^2, and its shifted order-two
+    Hankel determinant Theta_r Theta_{r+2} - Theta_{r+1}^2 is strictly negative. The literal Lambert ladder
+    collapses, Theta-hat_r = 2^{-r} for every r at least 1, and for every shift s at least 1 and every
+    order N at least 2 the determinant of the matrix with entries Theta-hat_{s+i+j} indexed by Fin N is
+    zero. The assertion that the two ladders agree at every rung r at least 1 is therefore false. The
+    nontrivial input is the atomic resummation of Theta_r as the signed sum of r-th powers of the strictly
+    decreasing Mersenne atoms 1/(2^(j+1) - 1), together with the peeling of the least atom at which the
+    recurrence polynomial is nonzero, and the substitution q = 2^{-r} into the Möbius-Lambert collapse
+    identity, whose shifted Hankel matrices are rank-one outer products. This theorem family is the first
+    presentation recorded in the development and its novelty is unassessed. The arithmetic identity phi
+    = mu * id that routes Erdős Problem 249 to this ladder is recorded in a comment by Steve Fan on the
+    catalogue entry for Problem 249, and the ladder structure proved here is not attributed to that comment.
+    No declaration here asserts a measure representation for either ladder, a rank statement for the infinite
+    Hankel matrix, or any irrationality conclusion, so Erdős Problem 249 remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A25
+  - 11B37
+  - 11J72
+sources:
+- title: Structure of the Möbius-Mersenne power ladder and its separation from the Möbius-Lambert ladder
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The Lean development is the first presentation recorded here; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open status. A comment
+    by Steve Fan on that entry records the arithmetic identity phi = mu * id which routes the problem
+    to a Möbius series over Mersenne denominators. The ladder structure proved here is not attributed
+    to the catalogue or to that comment.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+review:
+  status: self-assessed
+  reviewers: []
+  notes: The statement boundaries were checked by the author with AI assistance. No independent review
+    is claimed, and no measure-theoretic or irrationality consequence is carried by any compared declaration.
+status:
+  scope: Seven exact source-backed declarations; one trusted sorry per Challenge theorem.
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 7
+  axiom_audit_status: pending_orchestrator_compile_axiom_audit_not_yet_recorded
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence
+    file: ExternalVerification249MobiusMersenneLadderStructure/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; kernel check pending
+    novelty_status: unassessed
+    boundary: No finite constant-coefficient linear recurrence on n at least 1. No statement about the
+      rank of the infinite Hankel matrix.
+    comparator_config: ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+    local_proof_provenance: Source declarations in ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+      and Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean.
+  - declaration: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence_of_eventually
+    file: ExternalVerification249MobiusMersenneLadderStructure/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; kernel check pending
+    novelty_status: unassessed
+    boundary: The eventual form with an arbitrary threshold. The coefficient vector is required to have
+      a nonzero entry.
+    comparator_config: ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+    local_proof_provenance: Source declarations in ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+      and Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean.
+  - declaration: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave
+    file: ExternalVerification249MobiusMersenneLadderStructure/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; kernel check pending
+    novelty_status: unassessed
+    boundary: Strict log-concavity at every rung r at least 1. No conclusion about any representing measure.
+    comparator_config: ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+    local_proof_provenance: Source declarations in ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+      and Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean.
+  - declaration: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg
+    file: ExternalVerification249MobiusMersenneLadderStructure/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; kernel check pending
+    novelty_status: unassessed
+    boundary: Order-two shifted Hankel determinant only.
+    comparator_config: ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+    local_proof_provenance: Source declarations in ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+      and Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean.
+  - declaration: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneLambertRung_eq
+    file: ExternalVerification249MobiusMersenneLadderStructure/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; kernel check pending
+    novelty_status: unassessed
+    boundary: Closed form for the literal Lambert ladder at every rung r at least 1.
+    comparator_config: ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+    local_proof_provenance: Source declarations in ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+      and Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean.
+  - declaration: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.lambertRung_shifted_hankelDet_eq_zero
+    file: ExternalVerification249MobiusMersenneLadderStructure/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; kernel check pending
+    novelty_status: unassessed
+    boundary: Vanishing of every shifted Hankel determinant of the literal Lambert ladder of order at
+      least two.
+    comparator_config: ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+    local_proof_provenance: Source declarations in ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+      and Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean.
+  - declaration: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_ne_mobiusMersenneLambertRung
+    file: ExternalVerification249MobiusMersenneLadderStructure/Solution.lean
+    sorry_count: 0
+    canonical_claim_status: exact source transport; kernel check pending
+    novelty_status: unassessed
+    boundary: The two ladders are refuted as equal on r at least 1. The rung at which they first differ
+      is not exposed by this declaration.
+    comparator_config: ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+    local_proof_provenance: Source declarations in ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+      and Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean.
+alignment:
+  namespace: Erdos249257.ExternalVerification249MobiusMersenneLadderStructure
+  statements:
+  - source: Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean
+    lean: mobiusMersenneTheta_strict_logConcave and mobiusMersenneTheta_hankel_two_neg as exact transports
+    module: ExternalVerification249MobiusMersenneLadderStructure/Challenge.lean
+    status: exact-transport-pending-kernel-check
+  - source: ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean
+    lean: five same-named exact transports
+    module: ExternalVerification249MobiusMersenneLadderStructure/Challenge.lean
+    status: exact-transport-pending-kernel-check
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
+palomar_qualification:
+  status: awaiting-review
+  selected_project: formal_math/erdos257_period_noncollapse
+  comparator_config: formal_math/erdos257_period_noncollapse/ExternalVerification249MobiusMersenneLadderStructure/comparator.json
+  formalization_metadata: formal_math/erdos257_period_noncollapse/ExternalVerification249MobiusMersenneLadderStructure/formalization.yaml
+  repository_scope: private_source_mirrored_into_palomar_release_branch_palomar/toolchain-v4.30
+  challenge_dependency_boundary: Mathlib_only
+  replay_status: not_yet_replayed
+  blockers:
+  - Lean kernel check of Challenge, Solution and AxiomAudit has not been run for this entry
+  - axiom audit output has not been recorded
+  - lakefile lean_lib stanza and defaultTargets row for this entry are not yet added
+  note: Entry created 2026-09-05 from the batch-2 proposal. The parent problem remains open; no local
+    artifact is represented as a Palomar verdict.

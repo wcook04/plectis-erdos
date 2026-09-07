@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification257BooleanMobiusCarry.Challenge",
+  "solution_module": "ExternalVerification257BooleanMobiusCarry.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction",
+    "Erdos249257.ExternalVerification257BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry",
+    "Erdos249257.ExternalVerification257BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport",
+    "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

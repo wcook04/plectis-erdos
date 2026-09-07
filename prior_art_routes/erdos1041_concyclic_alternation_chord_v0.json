@@ -1,0 +1,276 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos1041_concyclic_alternation_chord",
+  "source_result_id": "concyclic_alternation_theorem",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_source_specific_ordinary_proof_public_eligible_no_priority_claim",
+  "problem_id": "erdos_1041",
+  "purpose": "Canonicalize the all-degree bounded-radius concyclic theorem as one ordinary proof object, without confusing it with the open arbitrary-radius concyclic or unrestricted problems.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos1041_concyclic_alternation_chord.card.json",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicAlternation.md",
+    "source_sha256": "9297bc9557b832c523394266e9a80914f5301822433eecb074a3fc7f343956d6",
+    "source_result": "concyclic_alternation_theorem",
+    "research_packet_commit": "7c7bc59bb737f356b5d2cf4a9c7b833d8141cf41",
+    "research_packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6"
+  },
+  "source_generation": {
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicAlternation.md",
+    "source_sha256": "9297bc9557b832c523394266e9a80914f5301822433eecb074a3fc7f343956d6",
+    "source_commit": "8c00c6130399ee62913150fe1efd3facf2f90688",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "research_packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos1041_concyclic_alternation_chord.card.json",
+    "reviewer_card_sha256": "02d4d27dd9a505fd0b1aa4ce3da6f169cb1bb1306a64f8ed461abcf351e983aa",
+    "verifier_paths": {
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_alternation.py": "59f67487895bbff973e188dc8e1ee2fd7eea610dec568a0453453757eeba4c29",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py": "ffd3bd967ba425fcbac777acc0177b4920d6b0c383c05a9b506a64c412f4f517"
+    },
+    "status": "source_card_packet_and_verifier_hashes_current_at_adjudication; authored ordinary proof remains distinct from finite calibration"
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_concyclic_alternation_chord_v2",
+    "result_family": "erdos1041_ordered_circle_self_inversive_chord_transfer",
+    "exact_result_id": "concyclic_alternation_theorem",
+    "source_generation": "2026-08-26",
+    "evidence_class": "complete authored ordinary proof with source-pinned exact/floating verifier hashes; no Lean proof",
+    "prior_art_relation": "Self-inversive sign alternation, harmonic chord geometry, and regular-polygon extremals are classical ingredients; the bounded-radius selected-chord assembly was not located verbatim, without a priority claim.",
+    "confidence_ceiling": "High for the stated bounded-radius concyclic theorem and source parity; medium for exact literature non-location; low for arbitrary-radius or unrestricted Erdos #1041 inference.",
+    "significance_rationale": "A complete all-degree symmetric scope turns alternation into an interior chord theorem and makes the regular-polygon boundary explain why the full geometry remains hard.",
+    "hard_step": "Audit the sign-count/chord-normal argument and determine whether an adapted comparison survives as the circle radius approaches one.",
+    "open_boundary": "Only the bounded-radius common-circle scope is solved; arbitrary radius, arbitrary root geometry, and Erdos #1041 remain open.",
+    "expert_review_act": "Check the ordinary self-inversive reduction and inward normal derivative, then compare the exact assembly with established self-inversive and lemniscate extremal literature.",
+    "next_reentry": "Re-enter only if the source/card/packet generation or the arbitrary-radius comparison changes; do not repeat finite verifier sweeps."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Complete authored ordinary proof on a common circle, with finite calibration separated from the theorem.",
+    "slow_down_at": "The realification/sign-count step and the inward chord-normal transfer; neither establishes arbitrary-radius or unrestricted #1041 control.",
+    "automation_can_establish": [
+      "source/card/packet/verifier hash parity",
+      "finite exact and floating calibration",
+      "hypothesis and quantifier extraction"
+    ],
+    "human_judgment_required": [
+      "whether the selected-gap assembly has an established self-inversive or harmonic-measure antecedent",
+      "whether the ordinary proof's bounded-radius condition is preserved in exposition",
+      "whether the symmetric theorem deserves a supporting paper section rather than headline status"
+    ],
+    "review_act": "Audit the ordinary self-inversive reduction and inward normal derivative, then compare the exact bounded-radius assembly with established self-inversive and lemniscate extremal literature."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "ordered-circle self-inversive alternation and harmonic chord transfer",
+    "disposition": "subordinate under the #1041 critical-point metric-budget parent as the sharp common-circle solved scope; do not split calibration or sharpness into separate objects",
+    "paper_disposition": "supporting lemma in the solved symmetric-scope section, followed by the regular-polygon sharpness and arbitrary-radius boundary",
+    "comparator_advisory": "One status-tagged ordinary-proof proposition is justified with the exact common-circle and 2 rho^n hypotheses; no separate interfaces for calibration, sharpness, or arbitrary-radius speculation."
+  },
+  "adjudication_currentness": {
+    "status": "current_at_source_card_packet_verifier_snapshot",
+    "bound_snapshot": {
+      "source_commit": "8c00c6130399ee62913150fe1efd3facf2f90688",
+      "source_sha256": "9297bc9557b832c523394266e9a80914f5301822433eecb074a3fc7f343956d6",
+      "research_packet_sha256": "a8c108e99fc4381e784636b5cc237decaee34487c9fd8bf05cedcae22c0580b6",
+      "reviewer_card_sha256": "02d4d27dd9a505fd0b1aa4ce3da6f169cb1bb1306a64f8ed461abcf351e983aa",
+      "review_generation": "2026-08-26_observatory_route_maturity_v1"
+    },
+    "claim_guard": "Release remains status-tagged ordinary mathematics: one bounded-radius common-circle theorem. No Lean, arbitrary-radius, priority, or unrestricted #1041 claim is permitted.",
+    "reentry_trigger": "Recompute if source/card/packet/verifier hashes or the arbitrary-radius comparison changes."
+  },
+  "classification": {
+    "theorem_class": "all_degree_self_inversive_gap_alternation_and_harmonic_chord_transfer_with_a_bounded_radius_lemniscate_corollary",
+    "novelty_class": "classical_self_inversive_and_alternation_ingredients_in_a_source_specific_assembly; exact antecedent not located; no priority claim",
+    "formalization_class": "ordinary_proof_with_exact_and_finite_computational_calibration_no_Lean_proof",
+    "priority_claim": "none",
+    "recommended_terminology": "self-inversive gap alternation with chord transfer",
+    "discouraged_terminology": [
+      "solution of Erdős 1041",
+      "all concyclic configurations solved",
+      "new theorem in self-inversive polynomial theory",
+      "Lean-checked all-degree theorem",
+      "sharp chord constant theorem"
+    ]
+  },
+  "adjudication": {
+    "review_unit_version": "source generation 2026-08-24; ConcyclicAlternation.md sha256 9297bc9557b832c523394266e9a80914f5301822433eecb074a3fc7f343956d6",
+    "evidence_class": "complete authored ordinary proof with exact and finite calibration; no Lean theorem and no independent specialist review",
+    "closest_known_prior_art": [
+      "Mandel--Robins 2019, Introduction and Proposition 7: self-inversive/circle-rooted terminology and reciprocal-conjugate symmetry",
+      "Wagner 1989, printed p. 467: nearby circle distance-product context"
+    ],
+    "exact_delta": "The source-specific assembly combines a matched-leading-and-constant-term comparison q=z^n-c, cyclic sign alternation to select one gap, and an inward harmonic normal-derivative argument to transfer the arc bound to its chord; the bounded-radius corollary is then immediate. The bounded comparison did not locate this exact combined statement in the cited primary sources.",
+    "disconfirmation_search": "Compared the pinned source against the cited self-inversive and circle distance-product antecedents; neither contains the gap-wise alternation, chord transfer, or bounded-radius lemniscate corollary. This negative search is not a priority claim.",
+    "confidence_ceiling": "Strong internal provisional case for a source-specific ordinary theorem and public eligibility; attribution of ingredients is classical, exact novelty/priority remains unadjudicated until broader human literature review.",
+    "significance_rationale": "High explanatory value as one complete all-degree symmetric model family: it shows exactly how a boundary sign-count becomes a short interior path and why the regular polygon blocks the arbitrary-radius extension. It does not advance the unrestricted #1041 endpoint.",
+    "bounded_expert_review_act": "Audit the realification/sign-count and inward chord-normal steps against the source, then search for an equivalent selected-gap theorem under established self-inversive or harmonic-measure terminology. Independent review is a downstream value-add, not a release gate.",
+    "adjudicated_at": "2026-08-25"
+  },
+  "primary_context": [
+    {
+      "source_id": "mandel_robins_2019_dragging_roots_unit_circle",
+      "citation": "Arnaldo Mandel and Sinai Robins, Dragging the roots of a polynomial to the unit circle, arXiv:1908.03208 (2019)",
+      "exact_locator": "Introduction and Proposition 7",
+      "annex_slug": "mandel-robins-2019-dragging-roots-unit-circle",
+      "source_artifact": "annexes/mandel-robins-2019-dragging-roots-unit-circle/source.tar.gz",
+      "source_artifact_sha256": "6300321d6a63e41fe1b064892f92415230c3dd351fecdad68c4e90d14702cbb7",
+      "extracted_markdown": "annexes/mandel-robins-2019-dragging-roots-unit-circle/extracted.md",
+      "extracted_markdown_sha256": "8f80acaa067d13f481ae9504b7cb7c2ca7e74340783dd49c21a349d7e5454160",
+      "source_read_status": "primary_arxiv_source_bundle_read_and_local_artifact_bound",
+      "primary_source_read": true,
+      "relationship": "standard self-inversive/circle-rooted vocabulary and reciprocal-conjugate symmetry",
+      "supports": "Self-inversive polynomial terminology, circle-rootedness, angle interlacing, and reciprocal-conjugate symmetry used to describe the ambient polynomial class.",
+      "does_not_support": "the gap-wise alternation, chord derivative lemma, or lemniscate corollary",
+      "consuming_claims": [
+        "erdos1041_concyclic_alternation_chord.adjudication.closest_known_prior_art",
+        "erdos1041_concyclic_alternation_chord.adjudication.exact_delta"
+      ]
+    },
+    {
+      "source_id": "wagner_1989_product_distances_point_set_sphere",
+      "citation": "Gerold Wagner, On the product of distances to a point set on a sphere, J. Austral. Math. Soc. (Series A) 47 (1989), 466-482",
+      "exact_locator": "printed p. 467",
+      "annex_slug": "wagner-1989-product-distances-point-set-sphere",
+      "source_artifact": "annexes/wagner-1989-product-distances-point-set-sphere/source.pdf",
+      "source_artifact_sha256": "f25054f912a02aede930d9b510416b0221bb0bc5fb6b9cea27aa26edc14cd57a",
+      "extracted_markdown": "annexes/wagner-1989-product-distances-point-set-sphere/extracted.md",
+      "extracted_markdown_sha256": "1fea5532e7cdfb4815f201df9af7bc3b2de9f4531b6395bc4ef5286876e351e3",
+      "source_read_status": "primary_pdf_read_and_local_artifact_bound",
+      "primary_pdf_read": true,
+      "relationship": "nearby boundary distance-product context for circle point sets",
+      "supports": "The unit-circle interpretation of products of distances as the modulus of a polynomial whose zeros lie on the circle, providing the nearest boundary distance-product context.",
+      "does_not_support": "the comparison-polynomial sign count or a short interior chord",
+      "consuming_claims": [
+        "erdos1041_concyclic_alternation_chord.adjudication.closest_known_prior_art",
+        "erdos1041_concyclic_alternation_chord.adjudication.exact_delta"
+      ]
+    }
+  ],
+  "mechanism_comparison": {
+    "circle_realification": "Self-inversive boundary values become real after a fixed half-angle phase.",
+    "alternation": "The comparison q=z^n-c matches leading and constant coefficients, so violation on every gap creates too many nonzero circle roots of g-q.",
+    "chord_transfer": "A positive normal derivative of log|g| pushes the chord maximum to the chosen arc.",
+    "sharpness_boundary": "The regular polygon gives uniform arc constant 2 and shows the plain chord method cannot reach rho approaching one.",
+    "open_extension": "Adapt the comparison polynomial to the zero distribution or use a path family that reaches the regular-polygon extremal configuration."
+  },
+  "claim_boundary": {
+    "allowed_wording": "An authored ordinary proof gives a selected adjacent chord with level at most 2 rho^n for monic roots on a common circle; for 2 rho^n at most one this proves the short-path conclusion.",
+    "forbidden_wording": [
+      "the ordinary proof has independent review",
+      "the finite checkers prove the theorem",
+      "the theorem handles all radii below one",
+      "the theorem handles arbitrary complex root sets",
+      "Erdős Problem 1041 is solved"
+    ]
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "ordered-circle self-inversive alternation and harmonic chord transfer for polynomial lemniscates",
+    "programme_disposition": "admit one irreducible solved model-family theorem; keep it orthogonal to the collinear theorem, binomial family, and arbitrary-geometry component perimeter theorem",
+    "paper_disposition": "status-tagged public solved-scope section",
+    "paper_target_section": "A solved concyclic scope: self-inversive alternation selects a chord",
+    "comparator_advisory": "one status-tagged ordinary-proof firewall is appropriate now; preserve the common-circle and 2 rho^n hypotheses, finite-calibration boundary, and arbitrary-radius/open-geometry exclusions",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "This is a substantive solved family, but the arbitrary-geometry constant-factor theorem remains the #1041 first-contact review request.",
+      "open_boundary": "arbitrary-radius concyclic geometry and Erdős Problem 1041 remain open",
+      "demoted_predecessor": "none"
+    }
+  },
+  "expert_review_support": {
+    "question": "Is the self-inversive sign-count plus chord-normal-derivative proof correct, and is there a known antecedent for its combined selected-gap conclusion?",
+    "evidence_separation": "The ordinary source is proof authority; exact Fraction and finite floating receipts are calibration; no Lean or independent review exists.",
+    "next_mathematical_question": "Can an adapted self-inversive comparison or another regular-polygon-compatible path family treat arbitrary circle radius?"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "ordinary_proof_generation_and_calibration",
+    "output_stage": "exposition_understanding_and_paper_assimilation",
+    "artifact": "erdos1041_concyclic_alternation_chord",
+    "human_understanding_delta": "Separates the finished symmetric theorem from the distinct arbitrary-radius problem and makes the chord-normal lemma visibly load-bearing.",
+    "verification_state": "Source and checker hashes are pinned; calibration is non-authoritative; independent review remains absent.",
+    "publication_or_review_state": "Eligible now for claim-faithful status-tagged public paper, theorem card, exhibition, and Comparator consideration. The ordinary proof remains distinct from Lean checking; independent review is downstream, with no acceptance or priority claim.",
+    "canonicalization_state": "One object consolidates gap alternation, chord transfer, bounded-radius corollary, sharpness, and failed chord extension.",
+    "unresolved_downstream_bottleneck": "An arbitrary-radius extension mechanism; specialist verification can test the ordinary proof after public release.",
+    "next_stage_owner": "Role 3 for claim-faithful status-tagged integration; #1041 geometry owners for an arbitrary-radius comparison; complex-analysis reviewers for downstream scrutiny."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "A solved concyclic scope: self-inversive alternation selects a chord",
+    "canonical_mechanism_family": "ordered-circle self-inversive alternation and harmonic chord transfer",
+    "relation": "add one distinct solved scope",
+    "understanding_delta": "The arbitrary-geometry Newton programme is now visibly complemented, not confused, with a complete symmetric theorem.",
+    "evidence_boundary": "ordinary proof plus calibration, no Lean or independent review",
+    "hard_step": "arbitrary-radius concyclic extension",
+    "meaningful_failed_route": "uniform chord-constant or Fekete-deficit shortcut",
+    "open_remainder": "unrestricted #1041 remains open"
+  },
+  "release_disposition": "status_tagged_public_and_comparator_candidate",
+  "release_disposition_reason": "The complete ordinary proof, source/checker pins, exact common-circle scope, calibration/proof separation, attribution posture, and arbitrary-radius boundary are inspectable. External review is a downstream value-add rather than a condition of public visibility.",
+  "publication_eligibility": {
+    "class": "status_tagged_public_and_comparator_candidate",
+    "basis": "inspectable ordinary proof with exact hypotheses, explicit calibration boundary, source parity, and no unrestricted #1041 implication",
+    "statement_firewall": "State only the selected adjacent chord theorem for monic roots on one common circle with its 2 rho^n level condition. Label it ordinary proof; do not infer Lean verification, arbitrary-radius transport, priority, or a solution of Erdős #1041."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "2026-08-26 source-current prior-art and significance pass",
+    "result_family_version": "erdos1041_ordered_circle_self_inversive_chord_transfer@source_8c00c61_card_11efaf7",
+    "source_version_binding": {
+      "ordinary_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicAlternation.md",
+        "commit": "8c00c6130399ee62913150fe1efd3facf2f90688",
+        "sha256": "9297bc9557b832c523394266e9a80914f5301822433eecb074a3fc7f343956d6"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+        "commit": "605ee5e3d4e7533f806dcf524f60d46469fc074d",
+        "sha256": "7f7dabb5260873c4c83071f3f0424c9e43298ce6b06931029a318ffb2d0a7da1",
+        "source_result_id": "concyclic_alternation_theorem"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos1041_concyclic_alternation_chord.card.json",
+        "commit": "11efaf7b3452ef3d8e1a2e78988c47f7c8b36f2e",
+        "sha256": "02d4d27dd9a505fd0b1aa4ce3da6f169cb1bb1306a64f8ed461abcf351e983aa"
+      }
+    },
+    "evidence_class": "Authored ordinary all-degree proof with exact and floating calibration; no Lean proof and no independent specialist review.",
+    "prior_art_assessment": {
+      "confidence": "high for the stated bounded-radius theorem and source parity; moderate for literature non-location; no priority claim",
+      "closest_primary_sources": [
+        "Classical self-inversive polynomial and reciprocal-root literature for sign alternation.",
+        "Grace-type two-zero/critical-point localization for the surrounding circle geometry.",
+        "Regular-polygon extremals for the sharpness boundary."
+      ],
+      "exact_relation": "The source-specific assembly adds alternating gap selection, harmonic chord transfer, an inward normal derivative, and the bounded-radius lemniscate path; the classical ingredients do not by themselves state this package.",
+      "search_scope": "Targeted searches covered self-inversive adjacent-chord bounds, common-circle polynomial lemniscates, regular-polygon sharpness, and harmonic chord derivatives; no identical statement was located."
+    },
+    "comparison_relation": "Classical self-inversive symmetry, Grace-type critical-point localization, and circle distance-product estimates supply nearby ingredients; the source-specific delta is the combined selected-gap sign alternation, inward chord-normal transfer, and bounded-radius lemniscate corollary.",
+    "closest_known_result": "Mandel--Robins supplies reciprocal-conjugate self-inversive vocabulary, while Wagner supplies circle distance-product context; neither states the selected adjacent-chord transfer with the 2 rho^n threshold.",
+    "exact_delta": "For monic roots on one circle of radius rho, the matched comparison polynomial and sign alternation select an adjacent chord at level at most 2 rho^n; when 2 rho^n <= 1 this is a short path in the bounded-radius lemniscate.",
+    "disconfirming_evidence": "The regular polygon blocks a radius-uniform chord constant, finite checkers are calibration only, and no arbitrary-radius or arbitrary-root-set theorem follows.",
+    "confidence_ceiling": "High for the bounded-radius ordinary theorem and source parity; medium for exact literature non-location; low for priority, Lean proof, arbitrary-radius extension, or unrestricted #1041 inference.",
+    "hard_step": "The inward harmonic normal-derivative transfer from a selected good arc to its chord, after the self-inversive realification and sign-count step.",
+    "open_boundary": "An arbitrary-radius common-circle extension, connector containment for general root sets, and Erdős #1041 remain open.",
+    "mathematical_delta": {
+      "one_sentence": "For roots on a common circle of radius rho with 2 rho^n <= 1, alternation and harmonic chord geometry select an adjacent chord with level at most 2 rho^n, yielding the bounded-radius short-path conclusion.",
+      "genuinely_hard_step": "The chord-normal derivative is load-bearing: a good arc alone does not give a useful path-length bound, and the regular polygon shows the radius restriction is sharp.",
+      "why_care": "It supplies a complete symmetric solved scope for #1041 and makes clear why arbitrary-radius geometry cannot be obtained by cosmetic scaling.",
+      "natural_friction": "The theorem is common-circle and bounded-radius only; finite checkers calibrate the proof but do not establish it, and arbitrary root geometry remains outside scope."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "An authored ordinary proof selects an adjacent chord with level at most 2 rho^n for monic roots on a common circle; when 2 rho^n <= 1 this gives the bounded-radius short-path conclusion.",
+      "rejected_stronger": [
+        "all concyclic configurations are solved",
+        "the theorem applies to every radius below one",
+        "finite checkers prove the universal theorem",
+        "the result handles arbitrary complex root sets",
+        "Erdős #1041 is solved"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "A_minus_symmetric_boundary",
+      "mechanism_family": "self-inversive gap alternation and harmonic chord transfer",
+      "programme_disposition": "subordinate under the #1041 metric-budget parent as the sharp common-circle solved scope",
+      "paper_disposition": "supporting lemma in the solved-symmetric-scope section, followed by regular-polygon sharpness and containment boundaries",
+      "comparator_advisory": "One ordinary-proof proposition is justified with the exact radius hypothesis; no separate interfaces for calibration, sharpness, or arbitrary-radius speculation.",
+      "absolute_shortlist": "do not admit as a separate flagship"
+    },
+    "expert_review_act": "Audit the sign-count/chord-normal proof and compare the exact radius restriction with self-inversive and lemniscate extremal literature; do not review finite calibration as theorem evidence.",
+    "reentry_condition": "Reopen if the source/card/packet generation changes or an adapted arbitrary-radius comparison appears."
+  }
+}

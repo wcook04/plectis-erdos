@@ -1,0 +1,218 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "factorial_digit_level_set_consolidation_v0",
+  "status": "adjudicated_exact_finite_state_consolidation_no_cofinal_claim",
+  "problem_id": "erdos_68",
+  "purpose": "Consolidate the finite threshold, unit-carry, and canonical-digit scans into one rounding-digit state, while preserving the finite evidence boundary and the open cofinal producer.",
+  "review_unit": {
+    "result_family": "factorial_gap_rounding_digit_level_sets",
+    "exact_result_id": "factorial_digit_level_sets_and_uniformity",
+    "source_generation": {
+      "repository_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "packet_sha256": "6853efcaeb284b987723c5439872e01f8104d9420ffa45623b8c8e2de795403d",
+      "analysis_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialDigitLawLab.md",
+      "analysis_sha256": "682e31de8b35ad5fec95375ba6dba308406933e855e561037cece48dbd6283ad",
+      "probe": "formal_math/probes/erdos68_digit_law.py",
+      "probe_sha256": "41bd1ac1203fae57a98d003a7d94b3a2c2b6313733d41bdd798dbd457d6be6127",
+      "engine": "formal_math/probes/erdos68_engine.py",
+      "engine_sha256": "e34db938a6226a3e64c0db083aee08dcdb53bddc5073c316d2f2e6995d985391"
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "conclusion_confidence_class": "exact_finite_computation_with_authored_state_identities",
+    "evidence_class": "exact rational/GMP finite computation plus source-derived identities; no cofinal theorem",
+    "novelty_confidence": "no priority claim; the level-set algebra is a source-specific consolidation of rounding/carry coordinates",
+    "recommended_terminology": "rounding-digit level-set consolidation for the factorial-gap recurrence",
+    "discouraged_terminology": [
+      "uniform digit theorem",
+      "cofinal carry law",
+      "factorial-gap irrationality criterion",
+      "solution of Erdős #68"
+    ],
+    "significance": "Moderate as proof-indigestion reduction: it shows that three apparent producers are level sets of one finite rounding digit, so extending each scan separately is redundant. It has no standalone endpoint significance.",
+    "expert_judgment_that_can_change_state": "Check the exact recurrence identities and decide whether a future cofinal theorem for D_m should replace the finite diagnostic; no literature priority question is material until such a theorem exists."
+  },
+  "closest_known_result": {
+    "relation": "finite_coordinate_restatement_of_carry_and_rounding_recursions",
+    "statement": "The identities express the factorial-gap recurrence and canonical digit through the single integer rounding digit D_m; this is elementary recurrence arithmetic in a source-specific coordinate system.",
+    "exact_delta": "The consolidation identifies the shared state variable and records the exact finite census, but does not strengthen any producer beyond the checked range.",
+    "open_boundary": "The missing mathematics is a cofinal statement about the level sets of D_m, not another finite scan."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_straus_1964_ahmes_series",
+      "title": "On the irrationality of certain Ahmes series",
+      "authors": ["Paul Erdős", "E. G. Straus"],
+      "url": "https://users.renyi.hu/~p_erdos/1964-19.pdf",
+      "exact_anchor": "Theorem 3, printed p. 132: a source-adjacent signed-limsup/recurrence criterion for fast reciprocal series.",
+      "source_archive": "annexes/erdos-straus-1964-ahmes-series/source.pdf",
+      "source_archive_sha256": "349d491423317417b6a2ecaa6799aba5923b514d52f5f6bd4e343249f90836d9",
+      "source_pdf": "annexes/erdos-straus-1964-ahmes-series/source.pdf",
+      "source_pdf_sha256": "349d491423317417b6a2ecaa6799aba5923b514d52f5f6bd4e343249f90836d9",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 5,
+      "extracted_markdown": "annexes/erdos-straus-1964-ahmes-series/extracted.md",
+      "extracted_markdown_sha256": "49c596156ffc29e9f49a0bcbcbd2de4661cfb051ac647011e31e4be81e09abc6",
+      "retrieved_at": "2026-07-28",
+      "verification_state": "primary_scan_read_exact_theorem_and_non_strict_boundary_compared",
+      "exact_source_locator": "Printed p. 132 / PDF p. 4: Theorem 3 states the signed-limsup recurrence criterion; extracted.md lines 143--151 record the theorem and its hypotheses. The theorem is used here only as historical recurrence context.",
+      "supports": "Historical recurrence/irrationality context only.",
+      "does_not_support": "The finite D_m level-set census or a cofinal theorem for this factorial-gap series."
+    },
+    {
+      "id": "koizumi_2026_pseudogreedy_coordinate",
+      "title": "Irrationality of the reciprocal sum of doubly exponential sequences",
+      "authors": ["Junnosuke Koizumi"],
+      "url": "https://arxiv.org/abs/2504.05933",
+      "exact_anchor": "Lemmas 12-15 and Proposition 19 in the source comparison: pseudo-greedy integer-state and gap coordinates.",
+      "source_archive": "annexes/arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum/source.tar.gz",
+      "source_archive_sha256": "35e2ec1d4801b8a2ded0ed945280ced664fd46f7966e547ac0dd8aa82d28a940",
+      "source_pdf": "annexes/arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum/source.pdf",
+      "source_pdf_sha256": "9ad8561399e36bb4f17368064dc4765a90f164d85b65330c466e79fc716624df",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 17,
+      "extracted_markdown": "annexes/arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum/extracted.md",
+      "extracted_markdown_sha256": "13b509b1da5735e6cb5299d47fe87289641349ba467c63789bd7eab86b724d2d",
+      "retrieved_at": "2026-07-26",
+      "verification_state": "primary_source_archive_read_exact_pseudo_greedy_coordinate_lemmas_compared",
+      "exact_source_locator": "arXiv source PDF p. 8, Section 2; extracted.md lines 154--164 give Lemmas 12--13, lines 189--205 give Lemma 15, and lines 247--259 give Proposition 19. These coordinates support the surrounding coordinate framework only.",
+      "supports": "Closest modern coordinate framework for carry/gap recurrences.",
+      "does_not_support": "The factorial-gap D_m census or its finite numerical range."
+    }
+  ],
+  "evidence_set": {
+    "local": [
+      "FactorialDigitLawLab.md",
+      "erdos68_digit_law.py",
+      "erdos68_engine.py",
+      "research_packet.json"
+    ],
+    "external": [
+      "Erdős--Straus 1964 recurrence criterion",
+      "Koizumi 2026 pseudo-greedy coordinate framework"
+    ],
+    "evidence_class_split": {
+      "level_set_identities": "exact source-derived finite algebra",
+      "m_le_50000_census": "exact GMP/Fraction computation",
+      "cofinal_uniformity": "not established",
+      "irrationality": "not established"
+    }
+  },
+  "search_scope": {
+    "completed_at": "2026-08-25",
+    "repositories_and_sources": [
+      "Erdos68 packet, FactorialDigitLawLab.md, digit/engine probes, reviewer-card inventory, and prior-art routes",
+      "bounded comparison with the existing Erdős--Straus and Koizumi recurrence sources"
+    ],
+    "exact_queries": [
+      "factorial gap rounding digit carry threshold",
+      "canonical factorial digit strict successor recurrence",
+      "factorial-series carry level sets"
+    ],
+    "negative_finding": "No external source for this exact three-way finite level-set packaging was located; no novelty is inferred.",
+    "limitation": "Finite census and source-specific identities do not address any cofinal quantifier."
+  },
+  "comparison_relations": [
+    {
+      "relation": "consolidates_existing_producers",
+      "internal_result": "D_m=-1, D_m=0, D_m>=1 level sets",
+      "known_result": "separate threshold, carry, and canonical-digit packet rows",
+      "delta": "The three rows are finite level sets of one rounding digit and should not be counted as independent mechanisms."
+    },
+    {
+      "relation": "finite_only",
+      "internal_result": "m<=50000 exact census",
+      "known_result": "#68 cofinal non-unit-carry producer",
+      "delta": "No implication from the census to cofinally many carries or irrationality is available."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine finite state algebra plus exact computation; the only hard unresolved step is cofinal level-set control",
+    "slow_down_at": "the distinction between the exact D_m identities and the finite range used by the GMP stream",
+    "automation_can_establish": [
+      "all finite range identities and zero range violations",
+      "the listed D_m=-1, D_m=0, and D_m=m-2 indices",
+      "probe/source hash parity"
+    ],
+    "human_judgment_required": [
+      "whether future cofinal work should target D_m directly rather than three derived producers",
+      "whether the finite diagnostic belongs in the main paper or appendix",
+      "whether any external recurrence terminology is clearer than rounding digit"
+    ],
+    "review_act": "One bounded expert act: confirm the finite consolidation and redirect future producer work to the single D_m level-set problem.",
+    "expert_act": "Confirm the finite consolidation and redirect future producer work to the single D_m level-set problem."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For the checked range 3<=m<=50000, the exact rounding digit D_m determines the threshold-failure, unit-carry, and canonical-digit level sets, with the listed exact identities and zero range violations.",
+    "forbidden_wording": [
+      "D_m has a cofinal non-unit value",
+      "The finite census proves irrationality",
+      "The threshold, carry, and canonical-digit producers are independent breakthroughs",
+      "Erdős #68 is solved"
+    ],
+    "open_boundary": "A cofinal/non-concentration theorem for D_m, or an independent denominator contradiction, is still required."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "factorial-gap rounding-digit and carry level sets",
+    "disposition": "consolidate the three finite producer rows under one D_m diagnostic; do not create separate cards or Comparator interfaces",
+    "paper_disposition": "technical appendix / finite route map",
+    "paper_section": "One rounding digit behind three finite producer scans",
+    "comparator_advisory": "No independent proposition interface: the result is finite computation plus source-specific coordinate algebra and is subordinate to the existing carry-characterization mechanism.",
+    "human_understanding_delta": "Readers see why extending three finite scans separately is wasted attention and where the actual cofinal bottleneck lies.",
+    "expert_attention_reason": "The consolidation saves repeated finite computation and keeps the remaining theorem obligation singular."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "finite computation and source-derived identities",
+    "output_stage": "canonicalization and human-understanding support",
+    "artifact": "factorial_digit_level_set_consolidation_v0 prior-art route",
+    "human_understanding_delta": "Collapses three apparent producers into one exact finite rounding-digit state and exposes the cofinal gap.",
+    "verification_state": "Hashes and finite exact evidence are current; no cofinal or Lean endpoint theorem is claimed.",
+    "publication_or_review_state": "Internal route consolidation; paper appendix use only unless a future cofinal theorem appears.",
+    "canonicalization_state": "Three finite packet rows are subordinate under one rounding-digit mechanism.",
+    "unresolved_downstream_bottleneck": "Cofinal/non-concentration control for D_m.",
+    "next_stage_owner": "Mathematics Refinery for consolidation; proof fleet for any cofinal D_m producer; Novelty Observatory only on a new theorem generation."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "factorial_digit_level_set_consolidation@source-30b7b4",
+    "evidence_class": "Exact finite rational/GMP computation plus source-derived recurrence identities; no cofinal theorem or irrationality result.",
+    "closest_known_result": "Erdős--Straus recurrence criteria and Koizumi's pseudo-greedy coordinates provide the surrounding factorial-series framework. The three-way finite D_m level-set consolidation is source-specific bookkeeping, not a new endpoint theorem.",
+    "comparison_relation": "Threshold-failure, unit-carry, and canonical-digit events are level sets of one rounding digit D_m in the checked range; finite census cannot establish cofinality, non-concentration, or irrationality.",
+    "exact_delta": "A consolidation that saves expert attention: future producer work should target the single D_m level-set problem instead of three redundant scans.",
+    "disconfirming_evidence": "The bounded search found no external source for this exact finite packaging; no novelty is inferred and no finite range is treated as a cofinal statement.",
+    "confidence": {
+      "level": "high_for_the_finite identities and consolidation; none_for a cofinal producer",
+      "basis": "Source and probe hashes are pinned, while the route itself states the missing cofinal obligation."
+    },
+    "significance": "Moderate proof-indigestion value: it retires duplicate finite producer narratives and exposes one precise unresolved obligation under the #68 carry endpoint.",
+    "claim_ceiling": "State only the checked-range D_m level-set identities and exact finite census, with the source-derived recurrence context. Do not claim uniformity, cofinal non-unit digits, irrationality, novelty, or an Erdős #68 solution.",
+    "hard_step": "Establish cofinal/non-concentrated behavior of D_m or an independent denominator contradiction; finite scans do not address it.",
+    "open_boundary": "Keep as a technical appendix/finite route map under factorial_gap_cofinal_carry_irrationality_criterion; no independent Comparator interface or flagship slot.",
+    "bounded_expert_review_act": "Verify the finite identities and confirm that all future producer work is redirected to D_m itself rather than its three level sets.",
+    "reentry_trigger": "Re-enter when a cofinal D_m theorem, independent denominator contradiction, or source-generation change lands.",
+    "source_generation_binding": {
+      "packet_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "packet_sha256": "6853efcaeb284b987723c5439872e01f8104d9420ffa45623b8c8e2de795403d",
+      "analysis_sha256": "682e31de8b35ad5fec95375ba6dba308406933e855e561037cece48dbd6283ad",
+      "probe_sha256": "41bd1ac1203fae57a98d003a7d94b3a2c2b6313733d41bdd798dbd457d6be6127",
+      "engine_sha256": "e34db938a6226a3e64c0db083aee08dcdb53bddc5073c316d2f2e6995d985391",
+      "primary_source_anchors": [
+        "Erdős--Straus cumulative-product recurrence criterion",
+        "Koizumi (2026) pseudo-greedy factorial-series coordinate framework"
+      ],
+      "parity_status": "Packet, analysis, and probe hashes are current; finite evidence only."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "packet_commit": "30b7b4bb53e0526293a85fed007c6d73482ef36c",
+      "packet_sha256": "6853efcaeb284b987723c5439872e01f8104d9420ffa45623b8c8e2de795403d"
+    },
+    "claim_guard": "Finite D_m level sets and recurrence identities are diagnostic; no cofinality or irrationality is implied.",
+    "reentry_trigger": "Re-enter on a cofinal theorem, independent denominator contradiction, or source drift."
+  }
+}

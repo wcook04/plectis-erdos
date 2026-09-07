@@ -1,0 +1,26 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "compact_witness_projection_assimilation",
+  "input_stage": "type_b_advisory_return_audit",
+  "output_stage": "verification_and_canonicalization",
+  "artifact": [
+    "ErdosProblems/Erdos1041/GenericSufficiencyClosure.md",
+    "ErdosProblems/Erdos1041/GenericSufficiencyClosure.lean"
+  ],
+  "human_understanding_delta": "The returned compact-projection principle is correct and selector-free: a closed relation over a compact witness factor has closed existential projection, so validity on a dense class extends everywhere. For Erdos 1041 this is subsumed by the stronger existing lower-semicontinuity theorem for Lam, which compactifies complete bounded-length paths directly and avoids ellipse/contact/barycentric normalization. The return therefore changes the exposition and formal interface, not the claim ceiling.",
+  "verification_state": "Lean theorem exists_compact_witness_of_closed_relation_of_dense passed the focused lean_fast_build module build and final serialized Lake authority check; the exact GenericSufficiencyClosure checker passed all seven arms; formal_math_frontier_integrity --check-currency returned status ok with zero issues",
+  "publication_or_review_state": "private authoring checkpoint pending expert review",
+  "canonicalization_state": "Abstract compact projection retained as a Lean-checked wrapper beside Corollary D; auxiliary finite-dimensional witness normalization rejected as unnecessary for the canonical route",
+  "unresolved_downstream_bottleneck": "Prove Lam(g)<=2 on an actually successful dense subclass of K_n, or directly on all K_n. The landed unique-face theorem is only a near-Fekete local result and does not supply the global dense-success hypothesis. Compactness and closedness cannot replace this producer without circularity.",
+  "next_stage_owner": "Erdos 1041 proof campaign: construct complete length-at-most-two paths through COVER, free-pair geometry, combined charge, or another target-deciding route",
+  "tool_disclosure": "The returned bundle was audited against the live research packet and Lean sources. Its designated TYPE_B_FINAL.lean is the already-landed minimum-real-selector no-go theorem, and its own certification reports no project-local compilation. Type A formalised and validates only the abstract compact-projection kernel in the live repository.",
+  "claim_boundary": "Proved: the abstract selector-free compact-witness projection theorem. Already proved independently: lower semicontinuity of Lam and dense-class sufficiency. Not proved: a globally dense successful unique-face class, compactness/closedness of the packet's auxiliary ellipse witness model, tied-face closure, or Erdos 1041.",
+  "consequence_propagation": {
+    "anchor": "ErdosProblems.Erdos1041.GenericSufficiencyClosure.exists_compact_witness_of_closed_relation_of_dense",
+    "research_packet": "defer_with_reason: the central packet already records the stronger lower-semicontinuity result and unchanged open claim ceiling, and its path is actively owned by another session",
+    "packet_copies_and_public_surfaces": "verified_no_change: the new declaration is a canonical wrapper, not a stronger 1041 result or publication-state transition",
+    "navigation_projection": "verified_no_change: no importer or public-corpus membership changed",
+    "reentry": "Reconcile theorem metadata into research_packet.json only if its owner chooses to expose the wrapper explicitly after the active claim clears; do not change the claim ceiling."
+  }
+}

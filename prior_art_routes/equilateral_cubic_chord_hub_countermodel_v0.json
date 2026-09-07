@@ -1,0 +1,233 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "equilateral_cubic_chord_hub_countermodel",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_direct_chord_method_countermodel_with_radial_hub_corollary",
+  "problem_id": "erdos_1041",
+  "purpose": "Classify the exact equilateral-cubic midpoint obstruction and surviving origin-hub path without misreporting a method countermodel as a counterexample to the Erdős problem.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/equilateral_cubic_chord_hub_countermodel.card.json",
+    "card_commit_at_review": "9c0bdfcd72450aeb7e3c98949404e873cace71d9",
+    "source_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+    "source_result_id": "all_straight_root_pair_segments_counterexample"
+  },
+  "classification": {
+    "theorem_class": "exact_midpoint_obstruction_for_all_root_chords_of_the_equilateral_cubic_family_with_an_explicit_two_spoke_origin_path",
+    "novelty_class": "elementary_exact_symmetric_family_method_countermodel_no_priority_claim",
+    "frontier_relation": "direct_chord_strategy_no_go_that_preserves_a_short_polygonal_path",
+    "formalization_class": "concrete_radius_99_over_100_Lean_checked_full_radius_family_proved_directly_on_card",
+    "priority_claim": "none",
+    "recommended_terminology": "equilateral cubic direct-chord obstruction with a radial-hub path",
+    "acceptable_descriptive_alias": "equilateral cubic chord-versus-hub countermodel",
+    "standard_mechanism": "roots-of-unity symmetry gives the exact pair midpoint, while radial scaling toward the origin gives the protected two-spoke path",
+    "discouraged_terminology": [
+      "counterexample to Erdős #1041",
+      "new cubic radial-access theorem",
+      "curvature necessity theorem",
+      "general hub theorem",
+      "first polynomial lemniscate chord obstruction"
+    ],
+    "attribution": "Credit Erdős--Herzog--Piranian for the general path problem, Ghosh--Ramachandran for same-family component topology, and Pendyala for the distinct cubic radial-access theorem. Present the threshold and hub calculation as an independently derived elementary exact family with no priority claim.",
+    "mathematical_interest": "The calculation is elementary but unusually clean as a strategy discriminator: all three most obvious root-to-root chords fail simultaneously, yet the conjectured short connection is visibly present through the origin.",
+    "reusable_scope": "Symmetric binomial lemniscates and any proposed universal direct-segment selector. It does not transfer a hub theorem to arbitrary polynomials.",
+    "why_it_matters": "It prevents a false proof architecture from being mistaken for the geometric conjecture itself and shows that chord failure should trigger a search for polygonal hubs or aggregate containment, not a conclusion that short paths require curvature or do not exist."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_herzog_piranian_1958_metric_properties",
+      "title": "Metric properties of polynomials",
+      "authors": ["Paul Erdős", "Fritz Herzog", "George Piranian"],
+      "venue": "Journal d'Analyse Mathématique 6 (1958), 125-148",
+      "doi": "10.1007/BF02790232",
+      "url": "https://doi.org/10.1007/BF02790232",
+      "source_archive": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/source.pdf",
+      "source_archive_sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "pdf_pages": 24,
+      "extracted_markdown": "annexes/erdos-herzog-piranian-1958-metric-properties-of-polynomials/extracted.md",
+      "extracted_markdown_sha256": "63a115e18c1473fa4d7d01d213a0243e41688a2f5cd52fe0e5fd3aa5879d8545",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_problem_5_locator_compared",
+      "exact_anchor": "Printed p. 139 / PDF p. 15, Problem 5, asks for a path of length less than two joining two roots inside the strict unit lemniscate.",
+      "supports": "The originating general path-length problem and its exact metric target.",
+      "does_not_support": "The equilateral cubic threshold, a universal direct-chord selector, or the origin-hub path."
+    },
+    {
+      "id": "ghosh_ramachandran_2024_lemniscate_components",
+      "title": "Number of components of polynomial lemniscates: a problem of Erdős, Herzog, and Piranian",
+      "authors": ["Subhajit Ghosh", "K. Ramachandran"],
+      "venue": "Journal of Mathematical Analysis and Applications 540 (2024), 128571",
+      "url": "https://arxiv.org/abs/2312.13673",
+      "source_archive": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/source.pdf",
+      "source_archive_sha256": "c8eade14d4e393452031206cf09e52031616127fc3153e1c8e0dd9a2fc89ee9a",
+      "pdf_pages": 20,
+      "extracted_markdown": "annexes/arxiv-2312-13673-ghosh-ramachandran-lemniscate-components/extracted.md",
+      "extracted_markdown_sha256": "b7a05a20f6f9fc086f3fab17211f81823ff474a5977542e5e17b04c20a1a094c",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_lemma_2_5_example_2_6_locators_compared",
+      "exact_anchor": "PDF p. 5, Lemma 2.5, relates lemniscate component count to critical values; PDF p. 5, Example 2.6, applies it to z^n-1 and the closed unit disk.",
+      "supports": "The nearest same-family topological context.",
+      "does_not_support": "Any root-chord midpoint threshold or path-length construction."
+    },
+    {
+      "id": "pendyala_2026_radial_access_cubic",
+      "title": "Radial Access for Polynomial Lemniscates: The Cubic Theorem and a Degree-Six Obstruction",
+      "author": "Venkata Siddharth Pendyala",
+      "venue": "SSRN preprint 6850818 (2026)",
+      "doi": "10.2139/ssrn.6850818",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6850818",
+      "exact_anchor": "The abstract states that every admissible polynomial of degree at most three has radial access; the paper defines radial access as a full radius from the origin inside the relevant component.",
+      "supports": "Established neighboring terminology and a general positive theorem for cubic radial access.",
+      "does_not_support": "A root-to-root direct-chord obstruction, the threshold $r^3>8/9$, or the two-root path length $2r$."
+    }
+  ],
+  "mechanism_comparison": {
+    "component_topology": "Connectedness or component counts explain when roots may share a component but do not select or bound a path.",
+    "radial_access": "Pendyala's radial access concerns a radius from the origin to the unit-circle boundary. The card's radial legs instead join polynomial roots to the origin inside a strict sublevel set.",
+    "direct_chord_obstruction": "At $r^3>8/9$, every pair midpoint evaluates to modulus $9r^3/8>1$, so no root chord stays inside.",
+    "hub_path": "The identity $|f_r(sru)|=r^3(1-s^3)<1$ makes each root-to-origin radius safe and yields total length $2r<2$.",
+    "exact_delta": "The paired no-go/positive mechanism in one object, not either elementary calculation in isolation."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "\"z^3-r^3\" lemniscate chord midpoint",
+      "polynomial lemniscate direct chord roots radial path",
+      "\"Radial Access for Polynomial Lemniscates\" cubic theorem",
+      "\"sinusoidal spiral\" \"z^n-1\" lemniscate"
+    ],
+    "result": "The search located classical and recent binomial-lemniscate topology plus Pendyala's distinct radial-access theorem, but no source stating the exact all-pair midpoint threshold or the paired chord-versus-hub formulation.",
+    "boundary": "This bounded negative search supports conservative independent-derivation wording only; the elementary calculation receives no priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "For the equilateral cubic family $z^3-r^3$, $r^3>8/9$ forces every root-pair chord to leave the strict unit lemniscate, while the two radial legs through the origin give a path of length $2r<2$; this is an elementary method countermodel, not a counterexample to the Erdős problem.",
+    "forbidden_wording": [
+      "The family refutes Erdős #1041.",
+      "Pendyala's radial-access theorem states this root-to-root hub path.",
+      "Every polynomial lemniscate admits a protected hub.",
+      "Chord failure implies curvature is necessary.",
+      "The exact threshold has established priority."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_counterexample_to_erdos_1041",
+      "not_a_general_hub_theorem",
+      "not_a_curvature_theorem",
+      "not_a_general_polynomial_path_selector"
+    ]
+  },
+  "release_disposition": {
+    "value": "status_tagged_public_method_boundary",
+    "reason": "The Lean witness, ordinary family proof, sources, and scope are inspectable. Consolidation under the connector-versus-hub family—not reviewer absence—explains the lack of an independent Comparator family.",
+    "comparator_advisory": "Keep as paired paper/exhibition evidence with the surviving hub path adjacent."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_countermodel_and_exact_family_proof",
+    "output_stage": "expert_digestion_and_method_family_consolidation",
+    "artifact": "equilateral_cubic_chord_hub_countermodel_v0",
+    "human_understanding_delta": "Pairs the route failure with its constructive replacement and prevents endpoint inflation.",
+    "verification_state": "Lean instance plus ordinary family proof; stale auxiliary receipt excluded.",
+    "publication_or_review_state": "Eligible for public status-tagged visibility; specialist review remains downstream.",
+    "canonicalization_state": "Subordinate witness in the connector-versus-hub family.",
+    "unresolved_downstream_bottleneck": "General containment without symmetry.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and \\#1041 proof owners."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/equilateral_cubic_chord_hub_countermodel.card.json",
+      "effect": "Replace pending novelty language with exact method-boundary terminology and primary-source context."
+    },
+    {
+      "consumer": "Erdős #1041 proof fleet",
+      "effect": "Retire universal direct root-chord selection; preserve multisegment hub and aggregate containment routes."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Use countermodel only with the failed method named and keep the positive short path visibly adjacent to the obstruction."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "equilateral_cubic_chord_hub_countermodel@source-80a3f18f-card-9c0bdfcd",
+    "evidence_class": "Lean_checked_concrete_radius_witness_plus_exact_ordinary_family_calculation_and_primary_source_context",
+    "source_generation": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+        "commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+        "sha256": "22f1b1dc8b8e4bf39530c093aaec5eabe299cdb0c32bbde928718b2ad7f25534"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/equilateral_cubic_chord_hub_countermodel.card.json",
+        "commit": "9c0bdfcd72450aeb7e3c98949404e873cace71d9",
+        "sha256": "d6d33cef06728fa6869be49f4905ad8747adac21d52dbac9856334d270c7ab24"
+      },
+      "packet": "No separate packet consumer; the route is source/card bound and the stale auxiliary receipt is explicitly excluded."
+    },
+    "comparison_relation": "A standard roots-of-unity midpoint calculation and radial scaling identity are combined into a source-specific method countermodel: direct root chords can all fail while a two-leg hub path remains short.",
+    "closest_known_result": "Erdős--Herzog--Piranian (1958) supplies the originating path problem; Ghosh--Ramachandran supplies binomial component context; Pendyala's cubic radial-access theorem is a neighboring but different radius-to-boundary statement.",
+    "exact_delta": "The paired threshold r^3>8/9 and safe two-spoke length 2r are presented together, showing that a direct-chord selector is too strong without denying the short-path conjecture.",
+    "disconfirming_evidence": "The same symmetric family has an explicit path of length 2r<2, so chord failure is not a counterexample to #1041 and does not establish curvature necessity or a general hub theorem.",
+    "confidence_ceiling": "High for the pinned finite Lean witness and elementary family identities; medium for bounded literature non-location; no priority, acceptance, or universal-path inference.",
+    "significance": "high_method_boundary_low_novelty",
+    "claim_ceiling": "For z^3-r^3 with r^3>8/9 every root-pair chord leaves the strict unit lemniscate, while the two radial legs through the origin have length 2r<2. This is a direct-chord method countermodel, not a counterexample to Erdős #1041.",
+    "hard_step": "Preserve the distinction between the exact midpoint obstruction and the surviving hub path; the mathematics is elementary, but the scope boundary is load-bearing.",
+    "open_boundary": "No arbitrary-polynomial hub selector, no universal direct-chord theorem, and no resolution of #1041 follows.",
+    "bounded_expert_act": "Confirm the threshold calculation and check that cited radial-access terminology is not being used as attribution for the root-to-origin hub path.",
+    "reentry_trigger": "Re-enter if the source/card hashes change, a source states the exact paired threshold, or an arbitrary-polynomial hub/containment theorem is proposed.",
+    "programme_disposition": "consolidate_under_erdos1041_component_and_hub_method_boundaries",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Why direct chords are too rigid: the cubic chord-versus-hub panel",
+      "supersession_or_consolidation": "Keep this as one paired witness beneath the arbitrary-geometry component-perimeter flagship; do not split the midpoint no-go and radial path into separate headlines.",
+      "reason": "It saves expert time by retiring a false selector while showing exactly what constructive replacement remains viable."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The finite exact witness is useful evidence but is not an independent endpoint proposition; expose it through the method-boundary route and existing #1041 firewall."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "verified_finite_countermodel_and_family_proof",
+      "output_stage": "expert_digestion_and_method_boundary_consolidation",
+      "artifact": "equilateral_cubic_chord_hub_countermodel_v0",
+      "human_understanding_delta": "Separates a failed universal chord selector from a surviving short hub path, preventing a finite obstruction from being misread as an Erdős counterexample.",
+      "verification_state": "Concrete Lean instance and exact ordinary family calculation; auxiliary stale receipt excluded.",
+      "publication_or_review_state": "Eligible for status-tagged method-boundary visibility; no specialist-review prerequisite is imposed.",
+      "canonicalization_state": "Subordinate paired witness under the #1041 arbitrary-geometry flagship.",
+      "unresolved_downstream_bottleneck": "General containment and path selection without roots-of-unity symmetry.",
+      "next_stage_owner": "Mathematics Refinery and Role 3 for consolidation under the existing #1041 mechanism family."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine_exact_family_with_scope_sensitive_method_boundary",
+    "slow_down_at": "The phrase 'countermodel' refers only to the direct-chord selector; verify the adjacent positive 2r path before drawing any endpoint conclusion.",
+    "automation_establishes": "The radius-99/100 Lean witness and finite threshold arithmetic.",
+    "expert_semantic_judgment": "Whether the paired calculation is genuinely absent from the cited literature and whether the exposition keeps Pendyala's radial-access result distinct.",
+    "review_act": "Check the exact threshold, the safe hub path, and the non-implication to arbitrary polynomial lemniscates or #1041."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#1041 connector-versus-hub method boundaries",
+    "disposition": "subordinate route-killing boundary beneath erdos1041_constant_factor_component_perimeter",
+    "consolidation_relation": "Keep the exact cubic witness adjacent to, but not merged with, arbitrary-geometry component-perimeter and sharp special-family theorems.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_erdos1041_constant_factor_component_perimeter",
+      "why_care": "It eliminates a seductive but false direct-chord architecture while preserving a constructive short path in the same family.",
+      "evidence_class": "Lean-checked finite witness plus exact ordinary family proof",
+      "hard_step": "Generalize hub containment beyond symmetric binomials; no such theorem is supplied.",
+      "prior_art_uncertainty": "Low for the classical path problem and neighboring radial-access theorem; medium for exact-threshold non-location; no priority claim.",
+      "open_boundary": "No general hub selector and no #1041 solution.",
+      "demoted_predecessor": "universal direct root-chord selector",
+      "status_boundary": "Retain the arbitrary-geometry component-perimeter theorem as the #1041 representative and fifth absolute flagship."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_and_card_pins_bound_at_2026_08_26",
+    "bound_snapshot": {
+      "formal_source_commit": "80a3f18f006f5f1e1b631fbe0f0b82c00ef6afe6",
+      "formal_source_sha256": "22f1b1dc8b8e4bf39530c093aaec5eabe299cdb0c32bbde928718b2ad7f25534",
+      "reviewer_card_commit": "9c0bdfcd72450aeb7e3c98949404e873cace71d9",
+      "reviewer_card_sha256": "d6d33cef06728fa6869be49f4905ad8747adac21d52dbac9856334d270c7ab24"
+    },
+    "claim_guard": "method countermodel only; not a counterexample, universal hub theorem, curvature theorem, or #1041 solution",
+    "reentry_trigger": "source/card hash change or exact external antecedent/stronger containment result"
+  }
+}

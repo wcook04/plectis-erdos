@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "seventh_return_sextic_assimilation_2026_08_26",
+  "input_stage": "preserved Type-B return 007 plus source-current paired-sextic, low-sextic, reciprocal-transfer, and generic-closure corpus",
+  "output_stage": "corrected and strengthened sextic connector frontier",
+  "human_understanding_delta": "The return's paired two-chart cover is valid and its A-chart radius can be enlarged to the maximal simple first-mode scale. Its low large-Nyquist argument extends from |A|<=3/4, |C|>=7 to the parameterized threshold |C|>=4(alpha+8)/(3sqrt(3)) for every |A|<=alpha<=1. This closes the entire normalized B-dominant low face for |C|>=4sqrt(3). The return's use of the paired first-mode theorem on the unpaired low model is exactly false: the boundary ray values are 3/64 and -1/256 respectively. The corrected low residual is compact but larger in A than the return states.",
+  "verification_state": "PASS exact assimilation checker; PASS source-current sextic chord criterion (18/18 arms), first-mode three-quarter overlap (exact polynomial/ray/chord rows), second-mode phase circle, and cubic lift. Focused Lean validation is DEFERRED under the already recorded low-disk firewall re-entry condition; no wrapper bypass or retry was used.",
+  "publication_or_review_state": "private research result; unrestricted Erdos 1041 remains open",
+  "canonicalization_state": "claim-by-claim terminal dispositions recorded in SeventhReturnSexticAssimilation20260826.md",
+  "unresolved_downstream_bottleneck": "exact finite cover of the corrected compact low-sextic slab, all-degree primitive odd tied-face grammar, and quantitative nonlinear transfer into actual polynomials",
+  "next_stage_owner": "Type A validates, updates the return coverage ledger, and coevolves the current unsent Type-B nonet"
+}

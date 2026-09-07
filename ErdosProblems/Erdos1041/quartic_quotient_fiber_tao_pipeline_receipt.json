@@ -1,0 +1,22 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem": "Erdos_1041",
+  "checkpoint": "translated_quartic_quotient_fiber_case",
+  "date": "2026-08-24",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuarticQuotientFiberCase.md",
+    "ErdosProblems/Erdos1041/QuarticQuotientFiberCase.lean"
+  ],
+  "human_understanding_delta": "A safe quotient chord is not lost under cyclic lifting: the q-th-root lift of a line segment has length at most the sum of the 1/q powers of its endpoint moduli.  In line coordinates this is the antitone kernel bound (d^2+x^2)^((alpha-1)/2)<=|x|^(alpha-1), followed by the exact primitive alpha*integral x^(alpha-1)=x^alpha.  This makes Pendyala's quartic close-pair chord branch composable, while his separated four-point radial lemma supplies the other branch.  Hence all translated quartic quotient fibres P((z-h)^q), q>=2, satisfy Erdos #1041.",
+  "verification_state": {
+    "analytic": "complete",
+    "lean": "PASS: exact canonical shared-cache build of ErdosProblems.Erdos1041.QuarticQuotientFiberCase via lean_fast_build.py --jobs 2 on 2026-08-24",
+    "source_attribution": "Pendyala four-point radial lemma consumed from local extracted arXiv:2606.24875; chord-lift lemma derived here; no novelty priority asserted"
+  },
+  "publication_or_review_state": "local analytic and Lean-verified checkpoint ready for scoped commit and expert novelty review",
+  "canonicalization_state": "new_case_theorem_targeting_canonical_ErdosProblems.Erdos1041_namespace_with_explicit_prior_result_boundary",
+  "unresolved_downstream_bottleneck": "Quotient degree five admits simultaneous failure of safe root chords and safe origin spokes.  Unrestricted Erdős #1041 and literature priority for the chord-lift inequality remain open.",
+  "next_stage_owner": "Refinery: assimilate the verified low-degree cyclic-quotient theorem with explicit Pendyala attribution, run novelty/significance review on the chord-lift lemma, then return the closure engine to the degree-five/unrestricted boundary."
+}

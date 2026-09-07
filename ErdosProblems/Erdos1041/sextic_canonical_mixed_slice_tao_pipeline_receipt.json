@@ -1,0 +1,16 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "degree_six_finite_mode_adversarial_search_and_exact_double_contact_elimination",
+  "output_stage": "complete_analytic_canonical_slice_formally_verified_and_handed_to_research_frontier",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticCanonicalMixedSlice.md",
+    "ErdosProblems/Erdos1041/SexticCanonicalMixedSlice.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_canonical_mixed_slice.py"
+  ],
+  "human_understanding_delta": "The apparent degree-six near-zero is an exact double-contact orbit, not a failure. One algebraic radius makes the pure second-mode chord a square times a positive Bernstein cubic; lower-half-plane monotonicity then transfers the same connector to every nonnegative first-mode amplitude in the canonical phase slice.",
+  "verification_state": "PASS: exact SymPy symbolic replay and canonical cached focused Lean build with --jobs 2",
+  "publication_or_review_state": "private corpus, not externally reviewed",
+  "canonicalization_state": "private exact degree-six homogeneous slice reconciled into the research packet; not externally reviewed or canonical",
+  "unresolved_downstream_bottleneck": "The full degree-six low-mode parameter space, its remaining equality faces, and the actual-polynomial finite transfer remain open; unrestricted Erdos #1041 is not solved.",
+  "next_stage_owner": "Research frontier: use this verified slice as one boundary chart in a degree-six finite connector atlas; Refinery may review the exact factorization without promoting the parent problem."
+}

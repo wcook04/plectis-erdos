@@ -1,0 +1,259 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "cassini_coarea_tree_budget_falsifier",
+  "source_result_ids": [
+    "cassini_tree_budget_falsifier",
+    "cassini_positive_attachment_deficit",
+    "cassini_no_uniform_length_slack"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_source_linked_exact_countermodel_no_priority_claim",
+  "problem_id": "erdos_1041",
+  "purpose": "Keep the Cassini coarea-budget contradiction, positive attachment deficit, and no-uniform-slack calibration as one method-boundary object, while distinguishing the ordinary analytic bridge, Lean-checked arithmetic, and manuscript-level source audit.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/cassini_coarea_tree_budget_falsifier.card.json",
+    "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CassiniTreeBudget.lean",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "source_result_ids": [
+      "cassini_tree_budget_falsifier",
+      "cassini_positive_attachment_deficit",
+      "cassini_no_uniform_length_slack"
+    ]
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The endpoint-distance arithmetic is elementary; the review burden is preserving the ordinary coarea normalization, Lean deficit layer, and exact draft-proposition correspondence as one correction.",
+    "slow_down_at": "Do not turn a falsified epsilon-sharp budget into a counterexample to #1041 or to all coarea/Newton/Reeb constructions.",
+    "automation_can_establish": [
+      "Named Lean deficit declarations and source hashes",
+      "The Cassini witnesses and exact proposition locators"
+    ],
+    "human_judgment_required": [
+      "Whether the ordinary coarea normalization is reproduced faithfully",
+      "Which replacement global budgets remain viable"
+    ],
+    "review_act": "Verify the diameter deficit and both draft dependencies, then confirm that direct and constant-factor routes survive the route closure."
+  },
+  "classification": {
+    "novelty_class": "source_linked_exact_countermodel_to_two_candidate_propositions",
+    "priority_claim": "none",
+    "formalisation_status": "Lean checks the metric inequalities and abstract negation layer; the Cassini coarea majorant and proposition correspondence are ordinary-proof and source-audit evidence",
+    "mathematical_interest": "High as adversarial proof review, modest as standalone theorem novelty. The decisive endpoint-distance test is elementary, but it invalidates a sophisticated unrestricted fan-in before its local topology can matter.",
+    "reusable_scope": "A general admission test for any connected spanning-network budget: the proposed total length must dominate the diameter of the required terminal set. This does not forbid differently weighted coarea constructions.",
+    "why_it_matters": "It corrects two candidate manuscripts at their load-bearing metric estimate while preserving the original problem, the component topology, and direct short-path constructions."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_herzog_piranian_1958",
+      "title": "Metric Properties of Polynomials",
+      "authors": ["Paul Erdős", "Fritz Herzog", "George Piranian"],
+      "venue": "Journal d'Analyse Mathématique 6 (1958), 125-148",
+      "exact_anchor": "Printed p. 139 gives the component lemma and Problem 5.",
+      "supports": "The original short-path problem and the surviving existence of a component containing two roots.",
+      "does_not_support": "No epsilon-sharp coarea spanning-tree budget is asserted."
+    },
+    {
+      "id": "ghosh_ramachandran_2024",
+      "title": "Number of components of polynomial lemniscates",
+      "authors": ["Subhajit Ghosh", "K. Ramachandran"],
+      "venue": "2024",
+      "exact_anchor": "Lemma 7 relates component count to critical points and values.",
+      "supports": "Modern component-topology context.",
+      "does_not_support": "No root-spanning length estimate or Cassini metric budget."
+    },
+    {
+      "id": "candidate_unrestricted_drafts_2026",
+      "title": "A Short Path Joining Two Zeros Inside a Polynomial Lemniscate and shorter revision",
+      "authors": ["shtuka", "unattributed shorter revision"],
+      "venue": "candidate manuscripts, 2026",
+      "exact_anchor": "Proposition 12 of the March draft and Proposition 7 of the shorter draft assert the same epsilon-sharp spanning-tree budget.",
+      "supports": "The exact propositions refuted by the Cassini witness.",
+      "does_not_support": "Candidate manuscripts are source targets under review, not accepted prior art or proof of the open problem."
+    }
+  ],
+  "evidence_layering": {
+    "ordinary_proof": "The Cassini level-length integral is bounded by B(a)=4(sqrt(a^2+a)-a), and the straight root segment lies inside the Cassini lemniscate.",
+    "lean_checked": "For 4/5<a<1, B(a)<2a; at a=9/10 the attachment deficit exceeds 4/25; no fixed positive slack below two works across the family.",
+    "source_audit": "The same epsilon-sharp tree budget is load-bearing in Proposition 12 and Proposition 7 of the two candidate drafts.",
+    "open": "Independent human review of the ordinary coarea derivation and source correspondence, plus any replacement unrestricted construction."
+  },
+  "mechanism_comparison": {
+    "eliminated": "The unchanged epsilon-sharp additive-error coarea/tree fan-in and any polynomial-independent positive reserve below length two.",
+    "survives": "Per-polynomial strictness, direct root-to-root paths, compact component/Reeb topology, and coarea approaches with a genuinely different global budget or explicit attachment payment.",
+    "target_boundary": "Every Cassini quadratic still has a straight root segment of length 2a<2. The family is not a counterexample to Erdős #1041."
+  },
+  "disconfirmation_search": {
+    "scope": [
+      "exact proposition matching in both candidate drafts",
+      "Erdős-Herzog-Piranian 1958",
+      "modern component-topology literature",
+      "the programme's bounded-degree direct constructions"
+    ],
+    "result": "No antecedent was located for the exact dual-draft Cassini refutation.",
+    "boundary": "The arithmetic and diameter principle are elementary, so the defensible classification is a documented source-specific correction, not field-level novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Ordinary Cassini analysis, Lean-checked deficit arithmetic, and exact proposition matching jointly refute the epsilon-sharp spanning-tree budget in two candidate unrestricted drafts; the original Erdős #1041 problem remains open.",
+    "forbidden_wording": [
+      "Lean formally refutes both complete manuscripts.",
+      "Cassini ovals disprove Erdős #1041.",
+      "All coarea, Newton-flow, or Reeb-tree approaches are impossible.",
+      "The Erdős-Herzog-Piranian component lemma fails.",
+      "The elementary endpoint-distance test is a new general theorem."
+    ],
+    "ai_tool_disclosure": "The countermodel search, source matching, Lean arithmetic, consolidation, and adjudication were AI-assisted. Lean kernel checking applies only to the named formal layer; it does not verify the ordinary coarea derivation, manuscript correspondence, novelty, or significance."
+  },
+  "canonicalization": {
+    "canonical_card_id": "cassini_coarea_tree_budget_falsifier",
+    "covered_source_result_ids": [
+      "cassini_tree_budget_falsifier",
+      "cassini_positive_attachment_deficit",
+      "cassini_no_uniform_length_slack"
+    ],
+    "retired_duplicate_card_id": "cassini_uniform_length_slack_obstruction",
+    "rule": "One family, one mechanism boundary, one expert talk, and one coverage object. The uniform-slack theorem is a calibration result inside the canonical Cassini countermodel."
+  },
+  "release_advisory": {
+    "significance_grade": "high_proof_review_value_modest_standalone_novelty",
+    "comparator": "Not current priority. The isolated inequality is routine and would hide the source-correspondence layer; Role 3 may revisit only with a source-neutral firewall that adds genuine audit value.",
+    "expert_talk": "One 10-12 minute Cassini proof-audit talk covering all three source rows; no separate uniform-slack talk.",
+    "public_story": "A sophisticated spanning-tree proof fails a low-degree diameter admission test, while the desired direct short path survives."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "Cassini diameter admission test for epsilon-sharp coarea spanning-tree budgets",
+    "disposition": "retire inflated route",
+    "expert_attention_reason": "The correction conserves expert time by killing two polished unrestricted fan-ins at a metric prerequisite while preserving the live direct and constant-factor routes.",
+    "evidence_class": "Lean-checked deficit arithmetic plus ordinary Cassini analysis and exact source correspondence",
+    "hard_step": "independent verification of the coarea normalization and proposition dependence",
+    "prior_art_uncertainty": "the general diameter test is elementary; the exact dual-draft correction was not located elsewhere; no priority claim",
+    "open_boundary": "replacement coarea budgets and Erdős #1041 remain open",
+    "comparator_interface_justified": false,
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Cassini admission test: why the epsilon-sharp coarea tree budget fails",
+      "supersession_or_consolidation": "One correction section supersedes both draft-budget narratives and the retired uniform-slack duplicate."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "Canonical #1041 route-killing evidence, but subordinate to the admitted all-degree constant-factor theorem in first-contact triage.",
+      "evidence_class": "mixed formal, ordinary analytic, and source-audit evidence",
+      "hard_step": "independent analytic and correspondence review",
+      "prior_art_uncertainty": "source-specific correction unlocated; no priority inference",
+      "open_boundary": "not a counterexample to #1041 and not a ban on all coarea methods",
+      "demoted_predecessor": null
+    }
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verified_countermodel_and_source_audit",
+    "output_stage": "human_understanding_review_and_canonicalization",
+    "artifact": "cassini_coarea_tree_budget_falsifier",
+    "human_understanding_delta": "Makes the three evidence layers and strictness-versus-uniform-slack distinction teachable, while retiring a duplicate card and Comparator story.",
+    "verification_state": "Named Lean inequalities are source-pinned; ordinary coarea and proposition matching remain explicitly separate reviewed evidence.",
+    "publication_or_review_state": "Eligible as a reviewer-card/manuscript-correction story with no priority claim; independent human review remains required.",
+    "canonicalization_state": "All three packet source identities now belong to one Cassini object; the duplicate uniform-slack card is retired.",
+    "unresolved_downstream_bottleneck": "Independent review and author/community digestion of the manuscript correction; the unrestricted path theorem remains open.",
+    "next_stage_owner": "Mathematics Refinery for canonical wording and Role 3 for any reviewed public integration."
+  },
+  "release_disposition": "paper_and_reviewer_card_priority_not_comparator_priority",
+  "release_advisory": {
+    "paper_and_card": "Expose the source-linked correction as one route-killing boundary with exact manuscript proposition locators and mixed evidence labels.",
+    "comparator": "Do not create a standalone Comparator proposition for the routine diameter inequality; the material value is the ordinary Cassini calculation plus exact source correspondence.",
+    "firewall": "Do not imply that Lean refutes the complete manuscripts, that Cassini ovals disprove #1041, or that all coarea/Newton/Reeb approaches fail."
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "Cassini diameter admission test for epsilon-sharp coarea spanning-tree budgets",
+    "programme_disposition": "retire the inflated unrestricted route and consolidate both draft propositions, the uniform-slack duplicate, and the exact countermodel into one correction object",
+    "paper_disposition": "route-killing failure/boundary in 'Cassini admission test: why the epsilon-sharp coarea tree budget fails'",
+    "supersession_or_consolidation": "One correction section supersedes the two draft-budget narratives and the retired duplicate; preserve direct short-path and constant-factor routes as live alternatives.",
+    "human_understanding_delta": "A skeptical reader sees the source-specific failure at the metric prerequisite, not a purported counterexample to the original problem.",
+    "expert_attention_reason": "This retires a polished but impossible proof architecture before further topological refinement consumes specialist time.",
+    "open_boundary": "Replacement coarea budgets, contained connectors, and Erdős #1041 remain open."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "cassini_coarea_tree_budget_falsifier@CassiniTreeBudget-8c16aac6-packet-c8031c94-card-a39ae9bf",
+    "source_version_binding": {
+      "lean_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CassiniTreeBudget.lean",
+        "commit": "8c16aac691ddb11f8322bfcff8dfda5ba62eeb25",
+        "sha256": "58b9e3c200fa99b76271f160ef2d6e8e55698310ea7cd6cb9965f1d4a52269c7"
+      },
+      "research_packet": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+        "commit": "c8031c94ec2e1833cb59ed8555655c4211535adc",
+        "sha256": "7fc3b7e8d23a08b521df3c538f2eb426b5ead959525f1a6b6ad96912d937f36d",
+        "source_result_ids": [
+          "cassini_tree_budget_falsifier",
+          "cassini_positive_attachment_deficit",
+          "cassini_no_uniform_length_slack"
+        ]
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/cassini_coarea_tree_budget_falsifier.card.json",
+        "commit": "a39ae9bf971a4981b5f21db69fdb536f170c586b",
+        "sha256": "8ff6dfdcf7c563dd6b7929e3d916fb5d7f1d2e3c347052b5654373b09ad1f7e8"
+      }
+    },
+    "evidence_class": "Lean-checked deficit arithmetic and abstract negation layer plus ordinary Cassini coarea analysis and exact manuscript proposition correspondence.",
+    "comparison_relation": "The endpoint-distance lower bound is elementary. The source-specific contribution is its exact match to the epsilon-sharp spanning-tree budget in two candidate drafts; this retires that architecture without touching other coarea routes.",
+    "confidence_ceiling": "High for the named Cassini witness and proposition correspondence; modest standalone novelty because the metric test is routine; no priority claim.",
+    "disconfirming_evidence": [
+      "The straight Cassini chord remains a valid strict path of length 2a<2.",
+      "Only the unchanged epsilon-sharp additive-error budget is refuted; differently weighted or locally paid constructions remain open.",
+      "Lean does not verify the ordinary coarea derivation or complete manuscripts."
+    ],
+    "hard_step": "Preserve the three-way correspondence between ordinary coarea normalization, Lean deficit arithmetic, and the exact source propositions that depend on the budget.",
+    "open_boundary": "Replacement coarea budgets, contained connectors, and Erdős #1041 remain open; this is not a counterexample to the original problem.",
+    "prior_art_assessment": {
+      "confidence": "high for the stated countermodel/correspondence; modest standalone novelty; no priority claim",
+      "closest_primary_sources": [
+        "Erdős--Herzog--Piranian (1958), Problem 5 and component lemma: original short-path setting.",
+        "Ghosh--Ramachandran (2024), Lemma 7: component-count topology context."
+      ],
+      "exact_relation": "The diameter lower bound is elementary. The source-specific contribution is matching it to the epsilon-sharp coarea budget asserted in two candidate drafts; those drafts are targets under review, not accepted prior art.",
+      "search_scope": "Compared the two exact draft propositions, the 1958 source, modern component-topology context, and bounded-degree direct constructions; no antecedent for this dual-draft correction was located."
+    },
+    "mathematical_delta": {
+      "one_sentence": "On a normalized Cassini family, the proposed epsilon-sharp spanning-tree budget is strictly shorter than the required root-to-root diameter, so both draft propositions fail at a metric prerequisite.",
+      "genuinely_hard_step": "Preserve the three-way correspondence between ordinary coarea normalization, Lean deficit arithmetic, and the exact source propositions that depend on the budget.",
+      "why_care": "It conserves expert effort by killing a sophisticated unrestricted fan-in before local topology can obscure its impossible global length estimate.",
+      "natural_friction": "The direct Cassini chord survives; this is a proof-architecture falsifier, not a counterexample to #1041 or to all coarea ideas."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Ordinary Cassini analysis, Lean-checked deficit arithmetic, and exact proposition matching refute the epsilon-sharp spanning-tree budget in the two named drafts; #1041 remains open.",
+      "rejected_stronger": [
+        "Lean refutes the complete manuscripts",
+        "Cassini ovals disprove Erdős #1041",
+        "all coarea, Newton-flow, or Reeb-tree approaches are impossible",
+        "the Erdős--Herzog--Piranian component lemma fails",
+        "the endpoint-distance test is a new general theorem"
+      ]
+    },
+    "significance_and_disposition": {
+      "significance_grade": "A_minus_adversarial_route_closure",
+      "mechanism_family": "Cassini diameter admission test for epsilon-sharp coarea spanning-tree budgets",
+      "programme_disposition": "retire inflated route; keep one source-linked correction object",
+      "paper_disposition": "route-killing failure/boundary, not a headline theorem",
+      "comparator_advisory": "No standalone Comparator interface; the routine inequality would hide the source-correspondence layer.",
+      "absolute_shortlist": "do not admit as flagship; retain as high-value #1041 proof-audit evidence"
+    },
+    "expert_review_act": "Verify the ordinary coarea normalization, the named Lean deficit declarations, and the dependence of both draft propositions on the falsified budget; then check that surviving direct/constant-factor routes are not swept into the no-go.",
+    "reentry_condition": "Reopen if either draft changes its load-bearing budget, a replacement coarea normalization appears, or a source-neutral reusable no-go interface is proposed."
+  },
+  "adjudication_currentness": {
+    "status": "lean_source_packet_card_committed_snapshot_adjudicated",
+    "bound_snapshot": {
+      "lean_source_commit": "8c16aac691ddb11f8322bfcff8dfda5ba62eeb25",
+      "lean_source_sha256": "58b9e3c200fa99b76271f160ef2d6e8e55698310ea7cd6cb9965f1d4a52269c7",
+      "research_packet_commit": "c8031c94ec2e1833cb59ed8555655c4211535adc",
+      "research_packet_sha256": "7fc3b7e8d23a08b521df3c538f2eb426b5ead959525f1a6b6ad96912d937f36d",
+      "reviewer_card_commit": "a39ae9bf971a4981b5f21db69fdb536f170c586b",
+      "reviewer_card_sha256": "8ff6dfdcf7c563dd6b7929e3d916fb5d7f1d2e3c347052b5654373b09ad1f7e8",
+      "source_result_ids": [
+        "cassini_tree_budget_falsifier",
+        "cassini_positive_attachment_deficit",
+        "cassini_no_uniform_length_slack"
+      ]
+    },
+    "claim_guard": "Only the named epsilon-sharp budget refutation and source-linked Cassini correction are admitted; no counterexample to #1041 and no blanket ban on coarea, Newton-flow, or Reeb approaches.",
+    "reentry_trigger": "Re-enter if the named draft budgets, Cassini source, packet/card snapshot, or a replacement coarea normalization changes."
+  }
+}

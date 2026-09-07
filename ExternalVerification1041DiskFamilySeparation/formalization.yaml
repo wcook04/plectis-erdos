@@ -1,0 +1,222 @@
+version: v0.4
+project:
+  name: 'Erdős #1041: uniform disk-family critical-value separation thresholds and
+    a sign-free connector-length bound'
+  description: 'Write C(n, S, p) = (S / (n - 1))^(2/n) log((S^2 + S + p) / (S^2 -
+    S + p)) for the squared-length coefficient of the disk-family critical-value separation
+    bound, in which n is the degree, S is the separation radius measured from a real
+    centre w0 of the unit value segment, and p = w0 (1 - w0) is the centre parameter.
+    Five declarations are compared. The strongest is uniform in all three parameters:
+    for every integer n at least 3, every real S with 4/3 at most S and S at most
+    2, and every real p at least 0, C(n, S, p) < 2. Composed with the numerical consumer
+    this gives the connector statement: for every integer n at least 3, every real
+    S with 4/3 at most S and S at most 2, every real p at least 0, and every real
+    length whose square is at most 2 C(n, S, p), the length is strictly below 2. The
+    consumer is compared on its own and holds for every n, S and p: length squared
+    at most 2 C(n, S, p) together with C(n, S, p) < 2 gives length strictly below
+    2, with no sign hypothesis on the length. Two specializations are compared separately.
+    The branch-centred radius-two regime C(n, 2, 0) < 2 holds for every integer n
+    at least 3. The degree-three regime C(3, 6/5, 0) < 2 holds. The mechanism inside
+    the uniform proof is that the radial factor (S / (n - 1))^(2/n) lies in (0, 1]
+    once 0 < S and S at most n - 1, which holds throughout the stated range since
+    n at least 3 and S at most 2, that the centre parameter only lowers the logarithmic
+    ratio, so (S^2 + S + p) / (S^2 - S + p) is at most (S + 1) / (S - 1) for S greater
+    than 1 and p at least 0, that (S + 1) / (S - 1) is at most 7 once S is at least
+    4/3, and that log 7 < 2 by the nine-digit lower bound on e. The degree-three case
+    evaluates the logarithmic ratio at 11 exactly, bounds (3/5)^(2/3) by 18/25 by
+    cubing, and bounds log 11 below 5/2. The audience is complex analysts working
+    on lemniscate connectivity and the geometry of polynomial sublevel sets. Priority
+    for these coefficient thresholds is unassessed. The analytic continuation of the
+    square-resolved inverse branch, its univalence, the Bergman segment inequality,
+    Pólya''s area-capacity inequality, and the exterior-fibre capacity gap that together
+    produce the squared connector bound are ordinary proofs in the companion note.
+    Lean checks none of them. The squared bound enters both consumer declarations as
+    an explicit hypothesis, and no declaration here constructs it for any polynomial.
+    The companion note records Dubinin, Some inequalities for polynomials and rational
+    functions associated with lemniscates, Journal of Mathematical Sciences 193 (2013)
+    45 to 54, Theorem 1, as a relative Pólya inequality standing behind the area input,
+    with the full text unobtained. Erdős Problem 1041 is not decided here.'
+  authors:
+  - Will Cook
+  responsible_maintainers:
+  - Will Cook
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.CV
+  msc2020:
+  - 30C10
+  - 30C15
+sources:
+- title: Disk-family critical-value separation for Erdős Problem 1041
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The ordinary analytic certificate and companion note prove the continuation,
+    univalence and area inputs; Lean checks the exact threshold kernel and the connector
+    consumer.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #1041'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/1041
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement, numbering, references, and open
+    status; this theorem family is not attributed to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Five compared declarations expose the uniform disk-family coefficient threshold,
+    two named specializations, the sign-free squared-length consumer, and their composition.
+    Challenge.lean carries one intended specification sorry per compared theorem; the
+    proof-bearing source module is sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  axiom_audit_status: pending_first_public_ci_run_for_this_entry
+  main_results:
+  - declaration: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_lt_two_of_uniform_separation
+    file: Solutions/ExternalVerification1041DiskFamilySeparation.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
+    source_declaration: ErdosProblems.Erdos1041.diskFamilyCoefficient_lt_two_of_uniform_separation
+    source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    novelty_status: unassessed
+    literature_dependencies: []
+    statement: For every integer n at least 3, every real S with 4/3 at most S and
+      S at most 2, and every real p at least 0, (S / (n - 1))^(2/n) log((S^2 + S +
+      p) / (S^2 - S + p)) < 2.
+    contribution_class: uniform three-parameter coefficient threshold
+    boundary: The result consumes the analytic coefficient formula. It constructs no
+      inverse branch and performs no continuation.
+  - declaration: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_radius_two_lt_two
+    file: Solutions/ExternalVerification1041DiskFamilySeparation.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
+    source_declaration: ErdosProblems.Erdos1041.diskFamilyCoefficient_radius_two_lt_two
+    source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    novelty_status: unassessed
+    literature_dependencies: []
+    statement: For every integer n at least 3, (2 / (n - 1))^(2/n) log 3 < 2.
+    contribution_class: branch-centred radius-two specialization
+    boundary: A specialization of the uniform threshold at S = 2 and p = 0. It bounds
+      no connector on its own.
+  - declaration: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_three_six_fifths_lt_two
+    file: Solutions/ExternalVerification1041DiskFamilySeparation.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
+    source_declaration: ErdosProblems.Erdos1041.diskFamilyCoefficient_three_six_fifths_lt_two
+    source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    novelty_status: unassessed
+    literature_dependencies: []
+    statement: (3/5)^(2/3) log 11 < 2.
+    contribution_class: degree-three small-radius specialization
+    boundary: An exact numerical inequality at degree three, radius 6/5 and centre
+      parameter 0. It bounds no connector on its own.
+  - declaration: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamily_length_lt_two_of_squared_bound
+    file: Solutions/ExternalVerification1041DiskFamilySeparation.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
+    source_declaration: ErdosProblems.Erdos1041.diskFamily_length_lt_two_of_squared_bound
+    source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    novelty_status: unassessed
+    literature_dependencies: []
+    statement: For every degree n and all real S, p and length, if length squared is
+      at most 2 (S / (n - 1))^(2/n) log((S^2 + S + p) / (S^2 - S + p)) and that coefficient
+      is below 2, then length is strictly below 2. No positivity or sign hypothesis
+      on the length is assumed.
+    contribution_class: sign-free strict connector-length threshold consumer
+    boundary: The squared-length estimate enters as an explicit hypothesis supplied
+      by the ordinary analytic argument in the companion note.
+  - declaration: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamily_length_lt_two_of_uniform_separation
+    file: Solutions/ExternalVerification1041DiskFamilySeparation.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
+    source_declaration: ErdosProblems.Erdos1041.diskFamily_length_lt_two_of_uniform_separation
+    source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
+    canonical_claim_status: exact source transport; axiom print pending the first public
+      CI run for this entry
+    novelty_status: unassessed
+    literature_dependencies: []
+    statement: For every integer n at least 3, every real S with 4/3 at most S and
+      S at most 2, every real p at least 0, and every real length whose square is at
+      most 2 (S / (n - 1))^(2/n) log((S^2 + S + p) / (S^2 - S + p)), the length is
+      strictly below 2.
+    contribution_class: composed uniform threshold and connector consumer
+    boundary: The squared connector bound remains a hypothesis. No polynomial, branch
+      or connector is constructed.
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Ordinary complex analysis and mathematical interpretation
+    tool_setup: Human-directed proof and claim-boundary review
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+fidelity:
+  divergences: The Comparator package exposes only the formal numerical kernel. The
+    companion note contains the ordinary analytic theorem and states exactly which
+    continuation, univalence and area inputs are outside Lean.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Source statements, challenge shapes, and the analytic-versus-formal boundary
+    were aligned statically against the source module, which is sorry-free. The Challenge,
+    the Solution and the axiom audit for this entry await their first machine elaboration
+    and their first Comparator run, so the terminal verdict and the axiom print remain
+    pending.
+alignment:
+  namespace: Erdos249257.ExternalVerification1041DiskFamilySeparation
+  statements:
+  - source: ErdosProblems.Erdos1041.diskFamilyCoefficient_lt_two_of_uniform_separation
+    lean: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_lt_two_of_uniform_separation
+    module: ExternalVerification1041DiskFamilySeparation/Challenge.lean
+    status: exact-source-transport-pending-first-build
+  - source: ErdosProblems.Erdos1041.diskFamilyCoefficient_radius_two_lt_two
+    lean: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_radius_two_lt_two
+    module: ExternalVerification1041DiskFamilySeparation/Challenge.lean
+    status: exact-source-transport-pending-first-build
+  - source: ErdosProblems.Erdos1041.diskFamilyCoefficient_three_six_fifths_lt_two
+    lean: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_three_six_fifths_lt_two
+    module: ExternalVerification1041DiskFamilySeparation/Challenge.lean
+    status: exact-source-transport-pending-first-build
+  - source: ErdosProblems.Erdos1041.diskFamily_length_lt_two_of_squared_bound
+    lean: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamily_length_lt_two_of_squared_bound
+    module: ExternalVerification1041DiskFamilySeparation/Challenge.lean
+    status: exact-source-transport-pending-first-build
+  - source: ErdosProblems.Erdos1041.diskFamily_length_lt_two_of_uniform_separation
+    lean: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamily_length_lt_two_of_uniform_separation
+    module: ExternalVerification1041DiskFamilySeparation/Challenge.lean
+    status: exact-source-transport-pending-first-build
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

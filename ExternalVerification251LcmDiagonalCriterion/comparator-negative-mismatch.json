@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251LcmDiagonalCriterion.Challenge",
+  "solution_module": "ExternalVerification251LcmDiagonalCriterion.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

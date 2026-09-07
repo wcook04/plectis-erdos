@@ -1,0 +1,26 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_251",
+  "result_id": "certified_continued_fraction_denominator_exclusion",
+  "input_stage": "verification",
+  "output_stage": "exposition_understanding_and_review",
+  "artifact": [
+    "ErdosProblems/Erdos251/research_packet.json",
+    "ErdosProblems/Erdos251/FreePairStateCompressionLab.md",
+    "formal_math/probes/certified_continued_fraction.py",
+    "state/formal_math/probes/erdos251_certified_cf_receipt.json",
+    "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+  ],
+  "human_understanding_delta": "The finite denominator-exclusion result is now separated from the open irrationality target: an exact tail bracket and complete convergent-denominator check rule out rational denominators through the recorded finite bound, while the Lean-checked elementary prime bound supplies the tail estimate and the exact prime/gap-series identity transfers the bound to the gap series. The receipt makes clear that this is a finite lower bound on any hypothetical rational denominator, not an irrationality proof or a cofinality theorem.",
+  "verification_state": "The source packet records a certified continued-fraction prefix and an independent bracket/summation replay, with every convergent denominator below the stated bound checked. Lean owns the elementary prime-growth bound, convergence, and exact integer-shift identity; the continued-fraction run remains an exact finite computation receipt rather than a new Lean theorem claim.",
+  "publication_or_review_state": "Internal reviewer-ready digestion checkpoint; not Comparator-eligible and not a public irrationality claim. Any public presentation must retain the finite-boundary language and expose the exact computation receipt and source revision.",
+  "canonicalization_state": "The denominator exclusion is retained as one auxiliary exact result in the #251 packet and is not promoted to the canonical frontier. It supports the open residual by ruling out small rational witnesses while the cofinal tail-smallness and non-integral-pair producers remain unresolved.",
+  "unresolved_downstream_bottleneck": "A cofinality theorem for actual prime-gap tail events, an exact-arithmetic replacement that materially changes the evidence class, or another external fractional-tail obstruction is still required before the irrationality target can move. The finite denominator bound does not supply that theorem.",
+  "next_stage_owner": "Mathematical Assimilation Steward for packet/reviewer propagation; future prime-gap tail research for the open producer; independent mathematical review for any external claim.",
+  "claim_boundary": "Proved or certified: a finite denominator exclusion under the recorded exact bracket and Lean-backed tail bound. Not proved: irrationality, cofinality, prime-gap correlation, or tail equidistribution.",
+  "consumer_refs": [
+    "ErdosProblems/Erdos251/research_packet.json",
+    "ErdosProblems/Erdos251/FreePairStateCompressionLab.md",
+    "docs/formal_math/type_b_packets/corpus_exposition_2026_08_01/p04_erdos251_recurrence_pedagogy.md"
+  ]
+}

@@ -1,0 +1,210 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #249: carry-rank anti-compression frontier"
+  description: >-
+    Six exact Lean-checked endpoints connecting hypothetical rationality of
+    the binary totient series to a tempered integral carry with unbounded
+    dyadic-section rank and uniform eventual periodicity modulo its
+    multiplier. The package also exposes the orbit equivalence, channel
+    recovery, certified rank transport, and tail-integrality bridge. It does
+    not prove a finite rational-rank upper bound or irrationality.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_focused_kernel_audit_passed_public_pin_and_terminal_replay_pending"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/formalization.yaml"
+  repository_scope: "public_pinned_snapshot_not_yet_prepared"
+  challenge_lines: 144
+  challenge_bytes: 5543
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_Lean_and_exact_axiom_audit_passed_terminal_Comparator_NanoDa_pending"
+  research_interest_status: "major_structural_frontier_self_assessed_not_palomar_reviewed"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not yet present in a public GitHub repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+
+classification:
+  arxiv: ["math.NT", "math.RA"]
+  msc2020: ["11J72", "11C20"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 91
+    band: "summit"
+    components:
+      theorem_closure: 23
+      parent_problem_proximity: 21
+      mechanism_depth: 19
+      hypothesis_sharpness: 15
+      consequence_reach: 13
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: "portfolio-relative editorial judgment, not proof authority, novelty, Palomar acceptance, mechanical readiness, or submission authorization"
+
+sources:
+  - title: "Erdős Problems #249"
+    authors: ["Thomas Bloom"]
+    id: "https://www.erdosproblems.com/249"
+    type: "website"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors: ["The mathlib contributors"]
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    The six selected declarations preserve the exact tempered-orbit,
+    separated-minor, carry-rank, tail-integrality, and modular-period
+    hypotheses and conclusions. They do not derive a finite rank upper bound
+    or contradict the rationality-supplied carry.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
+      file: "ExternalVerification249CarryRankFrontier/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification249CarryRankFrontier/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      statement: "Hypothetical non-irrationality supplies one tempered integral carry with all-level rank growth and uniform eventual modular periodicity."
+      boundary: "Modular periodicity does not imply finite rational rank; no contradiction or irrationality theorem follows."
+      paper_alignment:
+        paper_id: "erdos-249-binary-totient-series"
+        source_path: "paper/erdos-249-binary-totient-series.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/19cb0aa21c1769828c4f70b22a4298dd52811e33/paper/erdos-249-binary-totient-series.tex"
+        result_label: "res:carryrank"
+        boundary_label: "prob:carryrank"
+        relation: "exact_paper_theorem"
+        status: "complete"
+    - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional"
+      file: "ExternalVerification249CarryRankFrontier/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification249CarryRankFrontier/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      statement: "Hypothetical non-irrationality supplies one tempered carry of rank at least 2^e-1 at every level."
+      boundary: "No finite-rank upper bound for rationality-supplied carries is proved."
+      paper_alignment:
+        paper_id: "erdos-249-binary-totient-series"
+        source_path: "paper/erdos-249-binary-totient-series.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/19cb0aa21c1769828c4f70b22a4298dd52811e33/paper/erdos-249-binary-totient-series.tex"
+        result_label: "res:carryrank"
+        boundary_label: "prob:carryrank"
+        relation: "exact_paper_theorem"
+        status: "complete"
+    - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate"
+      file: "ExternalVerification249CarryRankFrontier/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification249CarryRankFrontier/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      statement: "A separated canonical totient minor forces a 2^e-1 carry-section rank lower bound."
+      boundary: "The theorem assumes a separated minor certificate at the selected level."
+      paper_alignment:
+        paper_id: "erdos-249-binary-totient-series"
+        source_path: "paper/erdos-249-binary-totient-series.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/19cb0aa21c1769828c4f70b22a4298dd52811e33/paper/erdos-249-binary-totient-series.tex"
+        result_label: "res:carryrank"
+        boundary_label: "prob:carryrank"
+        relation: "ingredient_of_grouped_theorem"
+        status: "complete"
+    - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.totient_carryKernel_diff"
+      file: "ExternalVerification249CarryRankFrontier/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification249CarryRankFrontier/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      statement: "Adjacent carry sections recover every scaled positive-residue totient channel."
+      boundary: "This is an exact transport identity, not a rank contradiction."
+      paper_alignment:
+        paper_id: "erdos-249-binary-totient-series"
+        source_path: "paper/erdos-249-binary-totient-series.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/19cb0aa21c1769828c4f70b22a4298dd52811e33/paper/erdos-249-binary-totient-series.tex"
+        result_label: "res:carryrank"
+        boundary_label: "sec:carry-rank"
+        relation: "ingredient_of_grouped_theorem"
+        status: "complete"
+    - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int"
+      file: "ExternalVerification249CarryRankFrontier/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification249CarryRankFrontier/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      statement: "Carry displacement divisibility is equivalent to integrality of the matching totient-tail difference."
+      boundary: "The equivalence requires a positive-multiplier tempered totient orbit."
+      paper_alignment:
+        paper_id: "erdos249-totient-reasoning-surface"
+        source_path: "paper/erdos249-totient-reasoning-surface.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/19cb0aa21c1769828c4f70b22a4298dd52811e33/paper/erdos249-totient-reasoning-surface.tex"
+        result_label: "prop:CP-01-inv"
+        boundary_label: "prop:CP-01-inv"
+        relation: "exact_paper_theorem"
+        status: "complete"
+    - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit"
+      file: "ExternalVerification249CarryRankFrontier/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification249CarryRankFrontier/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      statement: "For linearly bounded coefficients, non-irrationality is equivalent to existence of a tempered integral binary orbit."
+      boundary: "The coefficient growth hypothesis is explicit and essential to the analytic construction."
+      paper_alignment:
+        paper_id: "erdos-249-binary-totient-series"
+        source_path: "paper/erdos-249-binary-totient-series.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/19cb0aa21c1769828c4f70b22a4298dd52811e33/paper/erdos-249-binary-totient-series.tex"
+        result_label: "sec:carry-rank"
+        boundary_label: "sec:carry-rank"
+        relation: "ingredient_of_grouped_theorem"
+        status: "complete"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Source and claim-boundary review"
+      tool_setup: "Human-directed review"
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted proof engineering and statement-isolated packaging"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: "Pinned cold replay after public identity exists"
+
+fidelity:
+  divergences: >-
+    The package isolates the source-current binary scaled-tail mechanism. It
+    does not claim that modular periodicity gives finite rational rank or that
+    the mechanism extends automatically to unrelated Lambert or certificate
+    representations.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Exact source types and the missing finite-rank boundary were reviewed locally; the focused Lean build and six-declaration axiom audit passed."
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification249CarryRankFrontier"
+  statements:
+    - source: "Exact rationality-to-tempered-carry and carry-rank/modular-period frontier."
+      lean: "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
+      module: "ExternalVerification249CarryRankFrontier/Challenge.lean"
+      status: "statement-isolated-focused-validation-passed"
+      note: "The joint theorem is selected together with its five exact producer and bridge interfaces."
+
+acknowledgements: "Mathlib contributors; the Erdős Problems project for problem context."

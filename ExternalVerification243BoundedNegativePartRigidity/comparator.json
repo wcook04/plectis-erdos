@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243BoundedNegativePartRigidity.Challenge",
+  "solution_module": "ExternalVerification243BoundedNegativePartRigidity.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

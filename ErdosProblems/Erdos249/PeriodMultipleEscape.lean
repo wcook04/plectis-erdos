@@ -1,5 +1,5 @@
-import Erdos249257.TotientTailPeriodKiller
-import Erdos249257.LcmConeFlatness
+import Erdos257PeriodNoncollapse.TotientTailPeriodKiller
+import Erdos257PeriodNoncollapse.LcmConeFlatness
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 
 /-!
@@ -30,8 +30,9 @@ threshold `c`, one certified kill at some period `t·d` and some `N ≥ c`
 (any depth `L`).  This is **exactly equivalent** to irrationality:
 sufficiency composes the Euler tail-period law with a telescoping step, and
 necessity is certificate completeness.  `ApFullDepthEscape` is the
-depth-locked (`L = h`) variant: sufficient, and the cleanest single open
-statement this programme has produced, but not known necessary.
+depth-locked (`L = h`) variant, the cleanest single open statement this
+programme has produced.  `FullDepthRayAmplifier.apFullDepthEscape_iff_irrational`
+proves `ApFullDepthEscape` necessary and sufficient for irrationality.
 
 ## Nesting (the fan collapses onto the dyadic tower)
 
@@ -56,8 +57,8 @@ and the Mersenne prime `2^127 - 1`.
 
 namespace ErdosProblems.Erdos249.PeriodMultipleEscape
 
-open Erdos249257
-open Erdos249257.TotientTailPeriodKiller
+open Erdos257PeriodNoncollapse
+open Erdos257PeriodNoncollapse.TotientTailPeriodKiller
 open ErdosProblems.Erdos249.CyclotomicAnchoredKill
 
 /-! ## Bridge and nesting identities -/
@@ -91,14 +92,14 @@ theorem totientBlock_add (a b N : ℕ) :
 
 /-! ## Pure-dyadic endpoint-error cocycle -/
 
-/- The signed error after subtracting one fixed integer multiple of the
+/-- The signed error after subtracting one fixed integer multiple of the
 Mersenne modulus.  On an endpoint-trapped pure-dyadic trajectory, the nearest
 integer multiplier is fixed and this is the small coordinate seen by the
 canonical residue-gap consumer. -/
 def pureDyadicEndpointError (H c : ℕ) (k : ℤ) : ℤ :=
   totientBlock H c - k * ((2 : ℤ) ^ H - 1)
 
-/- Extending a totient block by one letter doubles the old block and appends
+/-- Extending a totient block by one letter doubles the old block and appends
 the new totient letter. -/
 theorem totientBlock_height_succ (H c : ℕ) :
     totientBlock (H + 1) c =
@@ -106,7 +107,12 @@ theorem totientBlock_height_succ (H c : ℕ) :
   rw [totientBlock_add H 1 c]
   simp [totientBlock]
 
-/- The recurrence used by the excursion theorem. -/
+/-- Exact affine cocycle for a fixed Mersenne quotient:
+`E_(H+1) = 2 E_H + phi(c+H+1) - k`.
+
+This is the theorem-facing form of the pure-dyadic endpoint-word computation.
+It feeds the search for `FullMersenneCanonicalBasepointResidueGapSupply` by
+turning an opaque modular trap into a signed, one-dimensional recurrence. -/
 theorem pureDyadicEndpointError_succ (H c : ℕ) (k : ℤ) :
     pureDyadicEndpointError (H + 1) c k =
       2 * pureDyadicEndpointError H c k +
@@ -115,20 +121,7 @@ theorem pureDyadicEndpointError_succ (H c : ℕ) (k : ℤ) :
     totientBlock_height_succ, pow_succ]
   ring
 
-/- **Exact cross-gap transport for the fixed-quotient error.**  Moving from
-height `H` to `H + L` multiplies the old error by `2^L`; the complete defect
-is the actual length-`L` totient block beginning at `c + H`, measured against
-the same quotient `k`.  Thus a multi-prime-lock argument must control the
-intervening consecutive totient word, not merely count its endpoint locks. -/
-theorem pureDyadicEndpointError_add (H L c : ℕ) (k : ℤ) :
-    pureDyadicEndpointError (H + L) c k =
-      2 ^ L * pureDyadicEndpointError H c k +
-        pureDyadicEndpointError L (c + H) k := by
-  rw [pureDyadicEndpointError, pureDyadicEndpointError,
-    pureDyadicEndpointError, totientBlock_add, pow_add]
-  ring
-
-/- **Prime-position excursion inequality.**  If the next actual totient
+/-- **Prime-position excursion inequality.**  If the next actual totient
 letter is evaluated at a prime, then a fixed-quotient endpoint error must pay
 for that prime through one of two adjacent error coordinates.
 
@@ -151,7 +144,7 @@ theorem prime_forces_pureDyadicEndpointError_excursion
   have hcurrent := neg_le_abs (pureDyadicEndpointError H c k)
   linarith
 
-/- Prime-position excursions occur beyond every requested height.  This is
+/-- Prime-position excursions occur beyond every requested height.  This is
 the cofinal, actual-word form of
 `prime_forces_pureDyadicEndpointError_excursion`; it consumes Euclid's
 unbounded-prime supply rather than any pointwise description of totient
@@ -172,81 +165,7 @@ theorem exists_late_pureDyadicEndpointError_excursion
     exact prime_forces_pureDyadicEndpointError_excursion
       (p - (c + 1)) c k hpShift
 
-/- **Cofinal one-third-linear excursion.**  Around a sufficiently late
-prime, at least one of two adjacent fixed-quotient errors carries one third
-of the prime-position forcing.  This rules out every eventually
-`o(H)` fixed-quotient shadow, while stopping at the exact factor-`3` gap
-between prime forcing and the full moving endpoint boundary. -/
-theorem exists_late_pureDyadicEndpointError_oneThird_excursion
-    (c B : ℕ) (k : ℤ) :
-    ∃ H, B ≤ H ∧
-      ((c + H : ℤ) - k ≤ 3 * |pureDyadicEndpointError H c k| ∨
-        (c + H : ℤ) - k ≤
-          3 * |pureDyadicEndpointError (H + 1) c k|) := by
-  obtain ⟨H, hH, hexc⟩ :=
-    exists_late_pureDyadicEndpointError_excursion c B k
-  refine ⟨H, hH, ?_⟩
-  by_cases hcur :
-      (c + H : ℤ) - k ≤ 3 * |pureDyadicEndpointError H c k|
-  · exact Or.inl hcur
-  · right
-    have hcur' :
-        3 * |pureDyadicEndpointError H c k| < (c + H : ℤ) - k :=
-      lt_of_not_ge hcur
-    by_contra hnext
-    have hnext' :
-        3 * |pureDyadicEndpointError (H + 1) c k| <
-          (c + H : ℤ) - k :=
-      lt_of_not_ge hnext
-    linarith
-
-/- Single-coordinate form of the one-third excursion: the harmless loss of
-one unit absorbs which side of the prime carries the forcing. -/
-theorem exists_late_pureDyadicEndpointError_oneThird
-    (c B : ℕ) (k : ℤ) :
-    ∃ H, B ≤ H ∧
-      (c + H : ℤ) - k - 1 ≤
-        3 * |pureDyadicEndpointError H c k| := by
-  obtain ⟨H, hH, hcur | hnext⟩ :=
-    exists_late_pureDyadicEndpointError_oneThird_excursion c B k
-  · exact ⟨H, hH, by linarith⟩
-  · refine ⟨H + 1, by omega, ?_⟩
-    push_cast
-    linarith
-
-/- **Bounded fixed-quotient shadowing is impossible for the actual totient
-word.**  For every prescribed error bound, one of the two coordinates around
-a sufficiently late prime exceeds it.  This is a genuine unboundedness
-theorem, but deliberately not a moving-linear escape theorem: the canonical
-residue-gap boundary still grows like `c + H`. -/
-theorem exists_late_pureDyadicEndpointError_abs_gt
-    (c B : ℕ) (k : ℤ) :
-    ∃ H, B ≤ H ∧
-      (B : ℤ) < |pureDyadicEndpointError H c k| := by
-  obtain ⟨H, hH, hexc⟩ :=
-    exists_late_pureDyadicEndpointError_excursion
-      c (4 * B + k.natAbs + 1) k
-  have hB : B ≤ H := by omega
-  have hk : k ≤ (k.natAbs : ℤ) := by
-    simpa using le_abs_self k
-  have hHZ : ((4 * B + k.natAbs + 1 : ℕ) : ℤ) ≤ (H : ℤ) := by
-    exact_mod_cast hH
-  have hlarge : 3 * (B : ℤ) < (c + H : ℤ) - k := by
-    push_cast at hHZ
-    have hc : (0 : ℤ) ≤ c := by positivity
-    omega
-  by_cases hcur : (B : ℤ) < |pureDyadicEndpointError H c k|
-  · exact ⟨H, hB, hcur⟩
-  · have hcurLe : |pureDyadicEndpointError H c k| ≤ (B : ℤ) :=
-      le_of_not_gt hcur
-    have hnext : (B : ℤ) < |pureDyadicEndpointError (H + 1) c k| := by
-      by_contra hnext
-      have hnextLe : |pureDyadicEndpointError (H + 1) c k| ≤ (B : ℤ) :=
-        le_of_not_gt hnext
-      linarith
-    exact ⟨H + 1, by omega, hnext⟩
-
-/- **Prime-successor bottom lock.**  Suppose `p = c+H+1` is prime and the
+/-- **Prime-successor bottom lock.**  Suppose `p = c+H+1` is prime and the
 error remains below the upper endpoint boundary for one further step.  The
 two consecutive actual totient letters then force the error immediately
 before `p` into an explicit lower linear half-space.
@@ -271,7 +190,7 @@ theorem prime_successor_upper_trap_forces_bottom_lock
   rw [hsuccessorIndex] at hsuccessor
   linarith
 
-/- Cofinal form of the directional prime-successor constraint.  If the
+/-- Cofinal form of the directional prime-successor constraint.  If the
 upper endpoint boundary traps every height, then beyond every cutoff there is
 a prime precursor satisfying the exact bottom-lock inequality. -/
 theorem exists_late_prime_predecessor_bottom_lock_of_upper_trap
@@ -292,20 +211,20 @@ theorem exists_late_prime_predecessor_bottom_lock_of_upper_trap
 
 /-! ## Pointwise totient data cannot kill the boundary mode -/
 
-/- Binary block generated by an arbitrary natural-valued word.  This is the
+/-- Binary block generated by an arbitrary natural-valued word.  This is the
 minimal relaxation of `totientBlock` used to test which information about
 consecutive totients is actually needed by an anti-shadowing argument. -/
 def endpointWordBlock (digit : ℕ → ℕ) : ℕ → ℤ
   | 0 => 0
   | H + 1 => 2 * endpointWordBlock digit H + digit (H + 1)
 
-/- A word is pointwise totient-valued if each letter occurs somewhere in the
+/-- A word is pointwise totient-valued if each letter occurs somewhere in the
 image of Euler's totient.  This deliberately forgets that the witnesses must
 be the consecutive arguments `c+H`. -/
 def PointwiseTotientValued (digit : ℕ → ℕ) : Prop :=
   ∀ H, ∃ n, digit H = Nat.totient n
 
-/- A constant binary word is exactly its letter times the Mersenne modulus. -/
+/-- A constant binary word is exactly its letter times the Mersenne modulus. -/
 theorem endpointWordBlock_const (k H : ℕ) :
     endpointWordBlock (fun _ => k) H = (k : ℤ) * ((2 : ℤ) ^ H - 1) := by
   induction H with
@@ -314,13 +233,13 @@ theorem endpointWordBlock_const (k H : ℕ) :
       simp only [endpointWordBlock, ih, pow_succ]
       ring
 
-/- The constant-two word is pointwise totient-valued (`phi(3)=2`). -/
+/-- The constant-two word is pointwise totient-valued (`phi(3)=2`). -/
 theorem pointwiseTotientValued_const_two :
     PointwiseTotientValued (fun _ => 2) := by
   intro H
   exact ⟨3, by simpa using Nat.totient_prime Nat.prime_three⟩
 
-/- **Infinite boundary-mode countermodel.**  For every moving envelope based
+/-- **Infinite boundary-mode countermodel.**  For every moving envelope based
 at `c >= 2`, the constant-two word is positive, even, bounded by `c+H+1`, and
 each letter is individually a genuine totient value.  Nevertheless its
 fixed-quotient endpoint error with `k=2` is identically zero at every depth.
@@ -343,12 +262,12 @@ theorem exists_pointwiseTotientValued_permanent_endpointTrap
     rw [endpointWordBlock_const]
     norm_num
 
-/- **Actual-word exclusion for the homogeneous boundary mode.**  Every
+/-- **Actual-word exclusion for the homogeneous boundary mode.**  Every
 shifted consecutive totient word contains a letter different from `2`.
 
-The pointwise countermodel above can reuse the witness `phi(3)=2` independently
-at every position.  The actual word cannot: choose a prime `p >= max (c+1) 5`
-and place it at the corresponding shifted index.  Then `phi(p)=p-1>=4`.
+The pointwise countermodel above can reuse the witness `φ(3)=2` independently
+at every position.  The actual word cannot: choose a prime `p ≥ max (c+1) 5`
+and place it at the corresponding shifted index.  Then `φ(p)=p-1≥4`.
 This is the first correlation-sensitive separation between pointwise legal
 letters and the genuine consecutive totient sequence. -/
 theorem exists_actualTotientLetter_ne_two (c : ℕ) :
@@ -360,7 +279,7 @@ theorem exists_actualTotientLetter_ne_two (c : ℕ) :
   rw [hindex, Nat.totient_prime hpPrime]
   omega
 
-/- No shifted actual consecutive-totient word is the infinite constant-two
+/-- No shifted actual consecutive-totient word is the infinite constant-two
 word furnishing the pointwise permanent endpoint trap. -/
 theorem actualTotientWord_ne_const_two (c : ℕ) :
     (fun H => Nat.totient (c + H + 1)) ≠ (fun _ => 2) := by
@@ -543,18 +462,8 @@ theorem totient_series_ne_rat_of_den_dvd_128_300 (r : ℚ)
 
 #print axioms windowDiscrepancy_self_eq_totientBlock_sub
 #print axioms totientBlock_add
-#print axioms pureDyadicEndpointError_succ
-#print axioms pureDyadicEndpointError_add
 #print axioms prime_forces_pureDyadicEndpointError_excursion
 #print axioms exists_late_pureDyadicEndpointError_excursion
-#print axioms exists_late_pureDyadicEndpointError_oneThird_excursion
-#print axioms exists_late_pureDyadicEndpointError_oneThird
-#print axioms exists_late_pureDyadicEndpointError_abs_gt
-#print axioms prime_successor_upper_trap_forces_bottom_lock
-#print axioms exists_late_prime_predecessor_bottom_lock_of_upper_trap
-#print axioms endpointWordBlock_const
-#print axioms pointwiseTotientValued_const_two
-#print axioms exists_pointwiseTotientValued_permanent_endpointTrap
 #print axioms exists_actualTotientLetter_ne_two
 #print axioms actualTotientWord_ne_const_two
 #print axioms irrational_totient_series_of_periodMultipleKillSupply

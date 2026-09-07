@@ -1,0 +1,217 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos269_two_torus_radix_coding",
+  "generated_at": "2026-08-26",
+  "source_generation": {
+    "analysis_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+    "analysis_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "analysis_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+    "research_packet_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+    "research_packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+    "research_packet_sha256": "a47e63c4a9fa5222bd79dd11f78747f1d82ab0c76ffdac2b9f4037ae5da8c45f",
+    "replay_script_commit": "d733028524117ca0a43e6fb75822b084ac580b9f",
+    "replay_script_path": "formal_math/probes/erdos269_torus_coding.py",
+    "replay_script_sha256": "1662ecad9e0546fb808c15d4e53173df74533b4806e60d1321950324ee78923e",
+    "receipt_commit": "51515e0f4db00d5e57a68a0f6f61dae69ec5ad7d",
+    "receipt_path": "state/formal_math/probes/erdos269_torus_coding_receipt.json",
+    "receipt_sha256": "e1b30a648aa6ccc5feb6751f1b0eea58051d0784b65da7948d05ea686bbc765d",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/erdos269_two_torus_radix_coding.card.json",
+    "reviewer_card_sha256": "636429025e0dc9b17926bb1c8445f5599b5232c9e7746f717ed2219dd0653fe7",
+    "status": "packet_analysis_receipt_script_and_card hashes current at adjudication; finite checks and ordinary identity remain distinct evidence"
+  },
+  "parity_audit": {
+    "status": "current_source_bound_with_language_correction",
+    "effect": "The route and card bind the same analysis, packet, replay script, receipt, and card hashes. The packet's unsupported full-torus ergodicity/rank wording is treated as corrected source interpretation, not as an additional theorem or a hidden formal result.",
+    "reentry_condition": "Re-enter if the analysis, packet result row, finite replay, receipt, card, or a genuine rational-independence/carry theorem changes."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos269_two_torus_radix_coding_v2",
+    "result_family": "erdos269_product_mechanical_word_and_ambient_torus_coding",
+    "exact_result_id": "dyadic_radix_word_two_torus_coding",
+    "source_generation": "2026-08-26",
+    "evidence_class": "source-backed ordinary exact arithmetic identity plus pinned finite word/frequency/complexity checks; no Lean formalization or full-torus theorem",
+    "prior_art_relation": "Beatty/Sturmian rotation coding and product mechanical words are classical. The #269 shell-crossing factorization is source-specific packaging without a priority claim; finite measurements do not establish an ergodic theorem.",
+    "confidence_ceiling": "High for current packet/analysis/receipt/script/card parity and the exact factorization; low for affine rational independence, all-length complexity, carry control, Fourier interchange, or #269 irrationality.",
+    "significance_rationale": "This is the clean base-dynamics explanation for the four radix letters and a useful negative firewall against upgrading finite two-clock data into a full-rank torus result.",
+    "hard_step": "Prove or bypass the affine rational-independence input, then control the nonlinear carry cocycle and justify the Fourier summation needed for the target value.",
+    "open_boundary": "Ambient torus coding alone proves neither density/unique ergodicity, all-length complexity, the Fourier-value representation, nor irrationality.",
+    "expert_review_act": "Check the shell-crossing-to-Beatty identity and the exact partition convention; ensure all frequency/complexity numbers remain finite and that the carry is not silently linearized.",
+    "next_reentry": "Re-enter only if the packet, analysis, replay, receipt, card, or independence/carry argument changes; do not repeat the Morse--Hedlund terminology search."
+  },
+  "release_disposition": {
+    "value": "public_card_only_supporting_component",
+    "statement_firewall": "Present only the exact product mechanical-word coding and ambient torus representation with finite checks. Keep full-rank orbit, unique ergodicity, all-length complexity, carry control, Fourier interchange, and irrationality explicitly open.",
+    "reason": "The source identity and finite evidence are inspectable, while the broader torus/Fourier mechanism remains the canonical #269 family; no independent Comparator interface should be minted."
+  },
+  "status": "adjudicated_classical_product_mechanical_word_coding_no_priority_claim",
+  "problem_id": "erdos_269",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos269_two_torus_radix_coding.card.json",
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "analysis_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+    "source_result_id": "dyadic_radix_word_two_torus_coding",
+    "evidence_class": "ordinary exact identity plus finite computation"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Exact shell-crossing/Beatty factorization is routine ordinary mathematics; the review risk is overreading finite frequency data as ergodic or Diophantine evidence.",
+    "slow_down_at": "The shell-crossing partition convention and the distinction between an ambient torus coordinate and a proved full-rank orbit.",
+    "automation_can_establish": [
+      "Analysis, replay-script, receipt, and reviewer-card hash parity",
+      "The exact two-clock factorization",
+      "Finite word, frequency, and complexity checks"
+    ],
+    "human_judgment_required": [
+      "Whether the shell-crossing-to-Beatty identity is stated with the correct boundary convention",
+      "Whether any wording silently assumes rational independence or carry linearization",
+      "Whether this remains subordinate to the canonical torus/Fourier mechanism"
+    ],
+    "review_act": "Check the shell-crossing identity and partition convention once, then audit every frequency/complexity statement for its finite-only status."
+  },
+  "classification": {
+    "novelty_class": "classical_product_mechanical_word_coding_with_source_specific_arithmetic_identification",
+    "priority_claim": "none",
+    "recommended_terminology": "product mechanical-word coding on an ambient two-torus",
+    "argument_distinctness": "The source-specific step converts powers crossing dyadic shells into two Beatty increments. Rotation coding and the product partition are classical. Nonlinear carry and Fourier value mechanisms are later, distinct layers.",
+    "mathematical_interest": "High explanatory value and low standalone novelty. It converts an opaque four-letter radix source into two classical clocks and exposes the carry cocycle as the genuinely problem-specific object.",
+    "reusable_scope": "Smooth-semigroup radix words in which prime-power crossings of logarithmic shells can be written as products of mechanical words.",
+    "why_it_matters": "It prevents finite product-frequency agreement and two irrational slopes from being mistaken for a full-rank torus theorem while giving the #269 paper a clean base-dynamics model."
+  },
+  "primary_sources": [
+    {
+      "id": "morse_hedlund_1940_sturmian",
+      "citation": "M. Morse and G. A. Hedlund, Symbolic Dynamics II. Sturmian Trajectories, American Journal of Mathematics 62 (1940), 1-42",
+      "doi": "10.2307/2371431",
+      "relationship": "Classical primary source for Sturmian trajectories and irrational-rotation coding."
+    },
+    {
+      "id": "coven_hedlund_1973_minimal_block_growth",
+      "citation": "E. M. Coven and G. A. Hedlund, Sequences with minimal block growth, Mathematical Systems Theory 7 (1973), 138-153",
+      "doi": "10.1007/BF01762232",
+      "relationship": "Primary factor-complexity characterization antecedent; it does not imply quadratic complexity equality for a product word."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The #269 dyadic radix word factors exactly into two Beatty/Sturmian indicators and is a coding of a translation on an ambient two-torus; all stated frequency and complexity checks are finite.",
+    "forbidden_wording": [
+      "the orbit is dense or uniquely ergodic on the full torus",
+      "the two angles have affine rational rank two",
+      "factor complexity equals (n+1)^2 for every n",
+      "the coding controls the nonlinear carry",
+      "the result proves the Fourier value representation or #269 irrationality",
+      "the mechanical-word construction is new"
+    ]
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "three-prime logarithmic torus coordinates, radix coding, and Fourier-mode factorization",
+    "disposition": "subordinate under existing mechanism",
+    "evidence_class": "ordinary exact coding with pinned finite checks",
+    "hard_step": "affine rational independence, carry-cocycle control, and global Fourier interchange",
+    "prior_art_uncertainty": "low for the classical mechanism; no priority claim for the source-specific arithmetic packaging",
+    "open_boundary": "no full-torus, all-length complexity, carry, value, or irrationality theorem",
+    "comparator_interface_justified": false,
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "A literal two-dimensional analytic route",
+      "supersession_or_consolidation": "Use as the base-dynamics subsection of the broader torus/Fourier value mechanism, not a parallel headline."
+    },
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "Important explanatory correction, but classical and auxiliary rather than endpoint-changing.",
+      "evidence_class": "ordinary exact coding plus finite computation",
+      "hard_step": "full-rank dynamics, carry, and analytic value control",
+      "prior_art_uncertainty": "low; no priority claim",
+      "open_boundary": "all endpoint-relevant layers remain open",
+      "demoted_predecessor": null
+    }
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "ordinary_proof_and_finite_computation",
+    "output_stage": "exposition_review_support_and_canonicalization",
+    "artifact": "erdos269_two_torus_radix_coding",
+    "human_understanding_delta": "Identifies two classical mechanical clocks, corrects the unsupported full-rank upgrade, and separates base dynamics from carry and Fourier gates.",
+    "verification_state": "Ordinary identity and pinned finite checks; no Lean, independent review, or full-torus theorem.",
+    "publication_or_review_state": "Paper-only supporting subsection pending ordinary-proof review.",
+    "canonicalization_state": "Subordinate base-dynamics component of the torus/Fourier family.",
+    "unresolved_downstream_bottleneck": "Affine rational independence or a bypass, nonlinear carry control, and analytic Fourier interchange.",
+    "next_stage_owner": "Mathematics Refinery and #269 analysis owners; Role 3 only for subordinate paper integration."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos269_two_torus_radix_coding@analysis-90e3383a-card-51a5dbc2",
+    "source_version_binding": {
+      "analysis": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+        "commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+        "sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/erdos269_two_torus_radix_coding.card.json",
+        "commit": "51a5dbc2f3b180d25af7ff10a249de549264778f",
+        "sha256": "636429025e0dc9b17926bb1c8445f5599b5232c9e7746f717ed2219dd0653fe7"
+      },
+      "parity_status": "ordinary identity, finite checks, and card are source-current; no Lean or full-torus theorem is claimed"
+    },
+    "classification": {
+      "result_family": "product_mechanical_word_and_ambient_two_torus_coding",
+      "evidence_class": "source-backed ordinary exact coding with pinned finite word/frequency/complexity checks",
+      "closest_prior_art": "Morse--Hedlund supplies Sturmian rotation coding; Coven--Hedlund supplies factor-complexity context. The #269 shell-crossing factorization is source-specific packaging without a priority claim.",
+      "comparison_relation": "The object is a classical base-dynamics coordinate for the broader torus/Fourier route. It does not establish affine rational independence, full-torus orbit closure, unique ergodicity, all-length complexity, carry control, or the value representation.",
+      "novelty_confidence": "high for the exact factorization and non-implication boundary; low for standalone novelty or priority",
+      "significance_grade": "high_explanatory_value_low_standalone_novelty",
+      "why_care": "It turns the four radix letters into two identifiable mechanical clocks and makes the nonlinear carry cocycle the visible problem-specific layer.",
+      "hard_step": "Control affine independence and the nonlinear carry before any frequency or Fourier conclusion can be promoted.",
+      "natural_friction": "Finite product-frequency agreement and two irrational slopes are not evidence of a full-rank torus theorem.",
+      "disconfirming_evidence": "No supplied result proves density, unique ergodicity, quadratic complexity for every length, or a Diophantine/irrationality consequence."
+    },
+    "closest_known_result": "Morse--Hedlund supplies Sturmian rotation coding and Coven--Hedlund supplies factor-complexity context; the #269 shell-crossing factorization is source-specific packaging without a priority claim.",
+    "exact_delta": "The source-specific delta is an exact factorization of the four radix letters into two mechanical clocks and an ambient two-torus coordinate, with all frequency and complexity evidence finite.",
+    "evidence_class": "Source-backed ordinary exact coding with pinned finite word, frequency, and complexity checks",
+    "comparison_relation": "Classical mechanical-word coding supplies the ingredients; this route packages the #269 shell-crossing coordinate but does not establish full-torus dynamics, carry control, Fourier interchange, or irrationality.",
+    "disconfirming_evidence": "No supplied result proves density, unique ergodicity, affine rational rank two, all-length quadratic complexity, nonlinear carry control, or a Fourier/value consequence.",
+    "confidence_ceiling": "High for the exact factorization and finite-only boundary; low for standalone novelty or priority.",
+    "hard_step": "Any meaningful #269 consequence still requires affine-independence/carry control and a justified Fourier interchange; these are outside the coding identity.",
+    "open_boundary": "Full-rank orbit, carry control, Fourier interchange, and Erdős #269 remain open.",
+    "bounded_expert_act": "Check the shell-crossing-to-Beatty identity and partition convention, then verify that finite data is not presented as ergodic evidence.",
+    "reentry_trigger": "Re-enter if the analysis, replay, card, independence/carry argument, or source generation changes.",
+    "significance_assessment": {
+      "grade": "high_explanatory_value_low_standalone_novelty",
+      "why_care": "It turns the four radix letters into two identifiable mechanical clocks and makes the nonlinear carry cocycle the visible problem-specific layer.",
+      "mechanism_family": "three-prime logarithmic torus coordinates, radix coding, and Fourier-mode factorization"
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "The dyadic radix word factors exactly into two Beatty/Sturmian indicators and is represented on an ambient two-torus, with all stated frequency and complexity checks finite.",
+      "rejected_stronger": [
+        "dense or uniquely ergodic full-torus orbit",
+        "affine rational rank two",
+        "all-length quadratic factor complexity",
+        "linearized carry control",
+        "a proved Fourier value representation or #269 irrationality",
+        "a novelty or priority claim"
+      ]
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "three-prime logarithmic torus coordinates, radix coding, and Fourier-mode factorization",
+      "disposition": "retain as one subordinate base-dynamics component under the torus/Fourier value mechanism; do not create a parallel headline or Comparator row",
+      "paper_disposition": "supporting lemma in 'A literal two-dimensional analytic route'",
+      "supersession_or_consolidation": "Keep the two mechanical clocks and finite checks together; keep carry, Fourier interchange, and observer obstructions as distinct layers.",
+      "expert_attention_reason": "The useful review act is checking the shell-crossing partition convention and preventing finite data from being read as ergodic evidence.",
+      "open_boundary": "Affine rational independence, carry control, Fourier interchange, and Erdős #269 remain open.",
+      "independent_comparator_interface_justified": false
+    },
+    "bounded_expert_act": "Check the shell-crossing-to-Beatty identity and partition convention, then verify that every frequency or complexity claim remains finite and that the carry is not silently linearized.",
+    "reentry_trigger": "Re-enter only if the analysis, replay, card, independence/carry argument, or source generation changes."
+  },
+  "adjudication_currentness": {
+    "status": "analysis_replay_receipt_and_card_current_finite_only",
+    "bound_snapshot": {
+      "analysis_commit": "90e3383a1bde0410b98be1b6d6706a20b2e892d3",
+      "analysis_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+      "replay_script_commit": "d733028524117ca0a43e6fb75822b084ac580b9f",
+      "replay_script_sha256": "1662ecad9e0546fb808c15d4e53173df74533b4806e60d1321950324ee78923e",
+      "receipt_sha256": "e1b30a648aa6ccc5feb6751f1b0eea58051d0784b65da7948d05ea686bbc765d",
+      "reviewer_card_sha256": "636429025e0dc9b17926bb1c8445f5599b5232c9e7746f717ed2219dd0653fe7",
+      "review_generation": "2026-08-26_torus_coding_maturity_v3"
+    },
+    "claim_guard": "Only the exact two-clock coding and finite checks are admitted; no density, unique ergodicity, affine rank, carry control, Fourier interchange, irrationality, novelty, or priority claim is admitted.",
+    "reentry_trigger": "Re-enter if the analysis, replay, card, source generation, or an inspectable independence/carry/Fourier theorem changes."
+  }
+}

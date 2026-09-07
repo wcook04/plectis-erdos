@@ -1,0 +1,304 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "primitive_pade_content_normalization_no_go",
+  "source_result_ids": [
+    "primitive_pade_content_no_go",
+    "three_halves_homogeneous_endpoint_obstruction",
+    "zudilin_cone_endpoint_exponent_arithmetic",
+    "qapery_denominator_endpoint_units_at_three_halves"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_elementary_projective_scaling_and_endpoint_congruence_no_go",
+  "problem_id": "erdos_1049",
+  "purpose": "Classify the row-content no-go, locate it within rational-parameter Padé arithmetic, and preserve its exact local and residual-route boundaries.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/primitive_pade_content_normalization_no_go.card.json",
+    "card_commit": "ad520a96bd6bb03a0b81c779b6c8d2575ca5c2b2",
+    "landed_source_commits": [
+      "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "2485119547c59549b93190ae546b7b4255dc1b36"
+    ],
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean"
+    ],
+    "source_result_ids": [
+      "primitive_pade_content_no_go",
+      "three_halves_homogeneous_endpoint_obstruction",
+      "zudilin_cone_endpoint_exponent_arithmetic",
+      "qapery_denominator_endpoint_units_at_three_halves"
+    ],
+    "headline_declarations": [
+      "ErdosProblems.Erdos1049.rationalPadeError_mul",
+      "ErdosProblems.Erdos1049.rationalPadeExteriorDet_mul_contents",
+      "ErdosProblems.Erdos1049.natAbs_rationalPadeExteriorDet_mul_contents",
+      "ErdosProblems.Erdos1049.contentProduct_dvd_rationalPadeExteriorDet",
+      "ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units"
+    ]
+  },
+  "source_generation": {
+    "formal_sources": [
+      {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+        "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+        "sha256": "c7b54971556577d73bbc563dcf14eaf62aef8d31e1450c4e7337028e46013690"
+      },
+      {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+        "commit": "2485119547c59549b93190ae546b7b4255dc1b36",
+        "sha256": "c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b"
+      }
+    ],
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/primitive_pade_content_normalization_no_go.card.json",
+      "commit": "b62b3b3bf3c12c8afeae1fdc922ca2dfee50926f",
+      "sha256": "10898c9fd210dbe33335125148e685f91101971225f17d85c7de29ad41608c39"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+      "worktree_overlay": {
+        "sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b",
+        "status": "former_overlay_consumed_in_current_committed_snapshot",
+        "committed_snapshot_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+        "reentry_condition": "Rebind if a later packet generation changes the linked source-result rows."
+      }
+    },
+    "status": "committed_source_card_packet_snapshot_current; former_packet_overlay_consumed"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "primitive_pade_content_normalization_no_go@source-4cd4eac-24851195-card-b62b3b3-packet-d34f9a9",
+    "evidence_class": "Lean_checked_exact_row_scaling_and_endpoint_unit_obstruction_with_finite_source_consumers",
+    "closest_known_result": "Classical content normalization, projective row scaling, and Bezout/divisibility arguments are the nearest antecedents; the source-specific contribution is the pinned base-(3,2) construction-triage package, not a new general Padé theorem.",
+    "comparison_relation": "Row-content scaling and endpoint congruence are elementary algebra; the source-specific contribution is their Lean-checked construction-triage packaging at base 3/2. No complete Padé no-go or residual valuation theorem is supported.",
+    "exact_delta": "The route combines general row-scale invariance with the homogeneous endpoint-unit obstruction at (3,2), then uses q-Apéry and Van Assche only as finite source consumers; it does not add a primitive residual or height estimate.",
+    "disconfirming_evidence": "Finite q-Apéry and Van Assche checks show only local arithmetic visibility and coordinate contrast; they do not establish an all-index valuation law, determinant nonvanishing, decay, or irrationality.",
+    "claim_ceiling": "Lean checks the stated row-scaling and endpoint-unit declarations under the declared homogeneous coordinates. It does not prove a complete Padé construction no-go, a height theorem, or Erdős #1049 irrationality.",
+    "hard_step": "Any surviving #1049 route must obtain primitive residual divisibility and analytic decay that jointly beat determinant height after projective content has been removed.",
+    "open_boundary": "Residual valuations, determinant cancellation/nonvanishing, alternative integral models, and the #1049 irrationality endpoint remain open; packet overlays and finite consumers cannot close them.",
+    "confidence_ceiling": "High for the pinned exact declarations and stated local no-go; medium for broader approximation-theory antecedent matching; no originality or priority claim.",
+    "significance_assessment": {
+      "grade": "high_attention_route_killing_boundary",
+      "why_care": "It removes a tempting but illusory arithmetic gain source before more Padé construction work is spent: common row scale pays the determinant height it appears to improve, and endpoint-unit hypotheses exclude the base primes 2 and 3.",
+      "mechanism_family": "projective row-content invariance and endpoint-unit obstruction at rational base 3/2",
+      "hard_step": "Any surviving route must produce primitive residual divisibility and analytic decay that jointly beat determinant height.",
+      "open_boundary": "Residual valuations, determinant cancellation, alternative integral models, and #1049 irrationality remain open; q-Apéry and Van Assche evidence are subordinate finite consumers."
+    },
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Integer scalar content is neutral",
+      "relation": "Keep one primitive-residual audit with row scaling, endpoint units, q-Apéry, and finite Van Assche shape contrast; reject separate endpoint or consumer cards.",
+      "reason": "The value is in preventing duplicated false gain mechanisms, not in a new general Padé theorem."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "Lean-checked row-scaling and endpoint-unit declarations only; base (3,2) and stated unit hypotheses; finite q-Apéry/Van Assche data labelled separately; no residual valuation, determinant nonvanishing, or irrationality claim."
+    },
+    "bounded_expert_act": "Check whether the endpoint-unit hypotheses are stated in the exact homogeneous coordinate used by the source, and compare the local obstruction with standard projective/content-normalization language.",
+    "reentry_trigger": "Re-enter when the packet overlay lands, a different integral model is proposed, or a primitive residual-divisibility/height result changes the route."
+  },
+  "classification": {
+    "theorem_class": "elementary_projective_row_scaling_plus_endpoint_reduction_modulo_base_primes",
+    "novelty_class": "routine_algebra_and_congruences_with_reusable_Lean_construction_triage_packaging",
+    "formalization_class": "Lean_checked_composition_of_a_general_row_scaling_API_with_a_base_3_over_2_local_obstruction",
+    "priority_claim": "none",
+    "recommended_terminology": "primitive Padé row-content obstruction at base 3/2",
+    "acceptable_project_alias": "primitive Padé content-normalization no-go",
+    "terminology_boundary": "Primitive, content, common factor, denominator clearing, and normalization are established algebraic and Padé vocabulary. The combined obstruction label is descriptive and was not located as a standard theorem name.",
+    "nearest_prior_work": [
+      "Coussement and Smet (2009) construct rational-parameter Lambert-series Padé approximants with explicit integrality factors and discuss common divisors; this is the closest methodological precedent for treating clearing and content as quantitative arithmetic data.",
+      "Zudilin (2016) studies irrationality measures for a generalized q-logarithm at integer q-base and rational parameters using Padé-type arithmetic, providing an adjacent construction setting.",
+      "Neither source states the exact endpoint-unit exclusion of the primes 2 and 3 at homogeneous evaluation (3,2), nor the card's combined local no-go."
+    ],
+    "attribution": "Describe the scaling and congruence steps as elementary. Attribute the exact Lean API, the base-(3,2) composition, and the explicit residual-route interface to the local source; cite the Padé papers only for the surrounding integrality/content framework.",
+    "mathematical_interest": "Low standalone depth but real methodological value: it distinguishes removable projective row scale from primitive residual arithmetic and closes a tempting false source of local gain.",
+    "reusable_scope": "Integral approximation rows under common scaling, especially homogeneous rational-base evaluations whose endpoint coefficients are units modulo the numerator and denominator primes.",
+    "why_it_matters": "A construction cannot claim improved error-versus-determinant economics merely by inserting common row factors, and at base 3/2 the endpoint-unit hypotheses prevent those factors from supplying either required base prime. Subsequent work must inspect the primitive determinant or change the integral model."
+  },
+  "primary_sources": [
+    {
+      "id": "coussement_smet_2009_rational_Lambert_Pade",
+      "title": "Irrationality proof of certain Lambert series using little q-Jacobi polynomials",
+      "authors": [
+        "Jonathan Coussement",
+        "Christophe Smet"
+      ],
+      "venue": "Journal of Computational and Applied Mathematics 233 (2009), 680-690",
+      "doi": "10.1016/j.cam.2009.02.036",
+      "url": "https://arxiv.org/abs/math/0701345",
+      "pdf_url": "https://arxiv.org/pdf/math/0701345",
+      "local_annex": "annexes/arxiv-math0701345-coussement-smet-lambert-little-q-jacobi",
+      "source_archive": "annexes/arxiv-math0701345-coussement-smet-lambert-little-q-jacobi/source.gz",
+      "source_archive_kind": "arxiv_source_bundle",
+      "source_archive_sha256": "7e21bc46685344263e9a9073896de2e5feb0738300f1d92ee68d982a94c2b7e9",
+      "source_text": "annexes/arxiv-math0701345-coussement-smet-lambert-little-q-jacobi/source.tex",
+      "source_text_sha256": "b9c7db180b67f6284b3abb642bf4c58e413e7bfac2a0b15c449e1fa654d9d1fa",
+      "extracted_markdown": "annexes/arxiv-math0701345-coussement-smet-lambert-little-q-jacobi/extracted.md",
+      "extracted_markdown_sha256": "bda9797980096c4b5baf774cdb96cca734df5a78266a3c64f79967b78dd54b73",
+      "primary_source_read": true,
+      "primary_tex_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_tex_read_exact_little_q_jacobi_pade_integral_and_asymptotic_locators_compared",
+      "exact_source_locator": "Source TeX lines 419--452: explicit little-q-Jacobi Q_n formulas; lines 455--489: the P_n Padé integral and explicit formulas; lines 663--708: the error integral and asymptotic setup.",
+      "extracted_locator": "extracted.md lines 170-253 (Padé approximation), lines 254-309 (integral approximants and denominator cancellation), and lines 373-418 (asymptotic/nonzero consumer).",
+      "exact_anchor": "Section 2, especially Definition 2.3, Lemma 2.4, equations (2.15)-(2.17), Remark 2.5, and the subsequent discussion of common divisors of the integral approximants.",
+      "supports": "Explicit denominator clearing, integrality factors, and common-factor accounting as part of rational-parameter Padé arithmetic and its asymptotic budget.",
+      "does_not_support": "The card's projective scaling synthesis, its endpoint-unit congruences at (3,2), or an Erdős #1049 conclusion."
+    },
+    {
+      "id": "zudilin_2016_generalized_q_logarithm",
+      "title": "On the irrationality of generalized q-logarithm",
+      "author": "Wadim Zudilin",
+      "venue": "Research in Number Theory 2 (2016)",
+      "doi": "10.1007/s40993-016-0042-x",
+      "url": "https://arxiv.org/abs/1601.02688",
+      "pdf_url": "https://arxiv.org/pdf/1601.02688",
+      "local_annex": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm",
+      "source_archive": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/source.gz",
+      "source_archive_sha256": "4c20ef7a8fe0075a65536c87cfec9c123b2b018c977b9f11f026dfc2fd1a2dcf",
+      "source_archive_kind": "arxiv_source_bundle",
+      "source_text": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/source.tex",
+      "source_text_sha256": "4404dbbdb2e592e7e945d12c534b184efdce0e98a3381fcd9a294e17f7cba033",
+      "extracted_markdown": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "extracted_markdown_sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e",
+      "primary_source_read": true,
+      "primary_tex_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_tex_read_exact_hankel_and_q_order_locators_compared",
+      "exact_source_locator": "Source TeX lines 278--380 / extracted.md lines 104--151: Section 4 defines the Hankel determinants, Lemma 1 gives the q-order bound, and the proof of Theorem 1 consumes the determinant estimate; this route uses the paper only as adjacent rational-normalization prior art.",
+      "extracted_locator": "extracted.md lines 39-45 (Theorem 1 setting), lines 74-121 (Padé/Hankel setup and Lemma 1), and lines 151-158 (alternative proof route); source TeX lines 278-380 provide the corresponding Section 4 determinant/order details.",
+      "exact_anchor": "The paper's main setting takes an integer q-base and rational parameters x and z and develops irrationality measures through q-series approximation arithmetic.",
+      "supports": "An adjacent rational-parameter q-logarithm approximation setting in which arithmetic normalization is central.",
+      "does_not_support": "The exact row-content theorem, the homogeneous (3,2) endpoint reductions, or the proposed descriptive name."
+    }
+  ],
+  "mechanism_comparison": {
+    "projective_core": "Multiplying a row (U,V) by c leaves the rational quotient V/U unchanged where defined and multiplies the linear error by c; scaling two rows multiplies their exterior determinant by c_n c_m.",
+    "local_core": "At homogeneous evaluation (3,2), reduction modulo 2 isolates the top coefficient and reduction modulo 3 isolates the constant coefficient up to a unit. Unit endpoints therefore exclude the two base primes from a common divisor.",
+    "literature_relation": "The literature confirms that clearing factors and common divisors are standard quantitative features of Padé irrationality constructions. The card's endpoint test is a much more local elementary congruence, not a consequence attributed to either paper.",
+    "exact_delta": "A single Lean-checked interface turns these elementary facts into a falsifiable route test and names the residual arithmetic that remains after primitive normalization.",
+    "semantic_consolidation": "The abstract homogeneous endpoint theorem, the source-cone endpoint calculation, the q-Apéry denominator specialization, and the primitive-content synthesis are proof layers and consumers of one mechanism. They must not be counted or narrated as four independent discoveries."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "primitive Pade approximant common factor content normalization",
+      "Pade row content gcd normalization determinant",
+      "homogeneous Pade evaluation endpoint coefficient modulo numerator denominator",
+      "Zudilin q logarithm rational parameter Pade integrality common divisor",
+      "Lambert series Pade common divisor clearing factor"
+    ],
+    "result": "The search located established denominator-clearing and common-divisor practice, but no named antecedent for the exact composition of projective row scaling with the two endpoint congruences at base 3/2.",
+    "boundary": "Absence of a located name does not support novelty: both constituents are immediate algebra, and only the packaging and exact source interface merit local attribution."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked elementary no-go shows that common row content cannot improve the displayed error-versus-determinant balance or manufacture factors 2 or 3 under the stated endpoint-unit hypotheses at base 3/2.",
+    "forbidden_wording": [
+      "Primitive Padé content-normalization obstruction is an established named theorem.",
+      "Every Padé normalization is primitive.",
+      "The primitive determinant has insufficient divisibility.",
+      "All rational-base Padé constructions fail.",
+      "This proves irrationality in Erdős Problem 1049."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_global_Pade_no_go",
+      "not_a_residual_valuation_bound",
+      "not_a_determinant_nonvanishing_theorem",
+      "not_erdos_1049_solution"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/primitive_pade_content_normalization_no_go.card.json",
+      "effect": "Replace pending language with the elementary classification, primary-source framework, descriptive terminology boundary, and exact significance statement."
+    },
+    {
+      "consumer": "Erdős #1049 proof fleet",
+      "effect": "Treat common row content as a closed repair lane under the stated hypotheses; test primitive residual divisibility, determinant cancellation, or a genuinely different integral model."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present as a reusable local construction-triage lemma, not as a novel Padé theorem or endpoint result."
+    }
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_and_reviewer_support",
+    "artifact": "one supporting reviewer segment for primitive Padé content normalization at base 3/2",
+    "human_understanding_delta": "The durable reviewer object now begins by quotienting projective scale, then uses endpoint reductions to distinguish removable content from the truly open primitive residual arithmetic.",
+    "verification_state": "The five displayed declarations are pinned to the landed Lean sources; this digestion revision adds no new proof claim and no fresh elaboration claim.",
+    "publication_or_review_state": "Private review-ready asset; any public statement firewall remains conditional on Role 3 source-parity review.",
+    "canonicalization_state": "Four source rows remain one mechanism: abstract scaling, endpoint engine, source-cone witness, and q-Apéry consumer.",
+    "unresolved_downstream_bottleneck": "Quantitative primitive residual divisibility together with sufficient analytic decay at 3/2.",
+    "next_stage_owner": "Problem 1049 proof owners, then Role 3 if a source-parity-cleared public consumer becomes appropriate."
+  },
+  "expert_talk_disposition": {
+    "slot": "6-8 minute supporting segment in a broader rational-base Padé talk",
+    "headline_status": "not_a_standalone_headline",
+    "hard_step_boundary": "The elementary content and endpoint proof is not the hard step; do not conceal the open primitive residual height balance."
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1049-rational-base-lambert.tex",
+    "section": "Integer scalar content is neutral (Theorem res:content), with the base-(3,2) consumer in Endpoint residues at (3,2) and the four-jet kernel (Proposition res:commonmult and Corollary res:nomult)",
+    "canonical_mechanism_family": "effective-height accounting for rational and q-Pad\u00e9 auxiliary forms: primitive-versus-removable row arithmetic at the rational base 3/2",
+    "relation": "Supporting route-killing boundary beneath rational_approximation_exponent_budget and a distinct specialized consumer of the generic adjacent exterior-determinant audit; four local source rows become one primitive-residual audit without absorbing the arbitrary-target parent interface.",
+    "understanding_delta": "The paper can state exactly why row content is neither free divisibility nor a substitute for primitive residual arithmetic, and why the two base primes are separately blocked by opposite unit endpoints.",
+    "evidence_boundary": "Five pinned Lean declarations establish the local scaling and endpoint assertions; the route adds no fresh elaboration, no residual-valuation theorem, and no independent review claim.",
+    "hard_step": "A quantitative primitive-residual divisibility and analytic-decay balance that actually beats determinant height at 3/2.",
+    "meaningful_failed_route": "Using scalar content or a shared endpoint multiplier as an uncharged source of the missing local 2-adic or 3-adic gain.",
+    "open_remainder": "Residual valuations, determinant cancellation, alternative integral models, and Erd\u0151s #1049 remain open."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "primitive-versus-removable arithmetic in the rational-base Padé architecture",
+    "disposition": "subordinate_and_consolidate_four_source_rows_into_one_route_killing_boundary",
+    "expert_attention_reason": "Elementary proof, high bookkeeping value, and a precise redirect to the genuinely difficult residual problem.",
+    "exact_evidence_class": "Lean-checked local declarations plus primary-source framework comparison",
+    "hard_step": "primitive residual divisibility combined with sufficient analytic decay",
+    "prior_art_uncertainty": "low; no priority claim",
+    "open_boundary": "residual valuations, cancellation, alternative integral models, and #1049",
+    "independent_comparator_interface_justified": false,
+    "paper_disposition": "route-killing failure/boundary",
+    "target_section": "Why denominator clearing does not create the missing 3/2 gain",
+    "supersession_or_consolidation": "One primitive-residual audit replaces four separate row/endpoint/cone/q-Apéry narratives.",
+  "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_five",
+      "why_care": "This is a valuable construction-triage firewall, not an independent programme endpoint or effective-height producer.",
+      "evidence_class": "five Lean-checked local declarations and primary-source framework comparison",
+      "hard_step": "Primitive residual divisibility plus sufficient analytic decay after normalization.",
+      "prior_art_uncertainty": "Low; elementary standard constituents and no priority claim.",
+      "open_boundary": "Residual valuations, cancellation, alternate integral models, and #1049 remain open.",
+      "demoted_predecessor": null
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Exact local Lean algebra is routine; the high-value route-killing work is preserving projective scale, endpoint-unit hypotheses, and the distinction between finite consumers and an all-index no-go.",
+    "slow_down_at": "Check the homogeneous (3,2) endpoint coordinate and row-content invariance before accepting any q-Apéry or Van Assche finite divisor as a residual theorem.",
+    "automation_can_establish": [
+      "The pinned row-scaling and endpoint-unit declarations",
+      "Finite q-Apéry/Van Assche source data and hashes",
+      "That no residual valuation, determinant nonvanishing, or irrationality claim is present"
+    ],
+    "human_judgment_required": [
+      "Whether the endpoint-unit hypotheses match the source's homogeneous coordinate",
+      "Whether an alternative integral model escapes the local obstruction",
+      "Which projective/content terminology best communicates the standard algebra"
+    ],
+    "review_act": "Audit one endpoint-unit declaration and one row-scale identity; then test any proposed alternative model against primitive residual divisibility and height together."
+  },
+  "adjudication_currentness": {
+    "status": "committed_source_card_packet_snapshot_current",
+    "bound_snapshot": {
+      "rational_pade_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "rational_pade_source_sha256": "c7b54971556577d73bbc563dcf14eaf62aef8d31e1450c4e7337028e46013690",
+      "zudilin_source_commit": "2485119547c59549b93190ae546b7b4255dc1b36",
+      "zudilin_source_sha256": "c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b",
+      "reviewer_card_commit": "b62b3b3bf3c12c8afeae1fdc922ca2dfee50926f",
+      "reviewer_card_sha256": "10898c9fd210dbe33335125148e685f91101971225f17d85c7de29ad41608c39",
+      "research_packet_commit": "b71c16d45fbd91d43d1184b2303d758845f8a4a9",
+      "research_packet_sha256": "edf548c46310971b113c868cf59f8ff6b41e7c342aba6d1759982b3d15eb491b"
+    },
+    "claim_guard": "The local row-content and endpoint-unit obstruction is admitted at the current committed source/card/packet snapshot; it cannot be upgraded to an all-index Padé no-go or #1049 conclusion.",
+    "reentry_trigger": "Re-enter when a later packet source-link generation, a different integral model, or primitive residual/height result changes."
+  }
+}

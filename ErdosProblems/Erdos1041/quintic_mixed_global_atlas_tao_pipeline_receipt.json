@@ -1,0 +1,24 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_mixed_global_atlas_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticMixedGlobalAtlas.md",
+    "ErdosProblems/Erdos1041/QuinticMixedGlobalAtlas.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_mixed_global_atlas.py"
+  ],
+  "human_understanding_delta": "The full normalized degree-five low-mode selector is a finite compact certification problem once the unique equality orbit is resolved. Fifth-root symmetry reduces each coefficient-boundary face to rational stereographic charts. A fixed root pair and rational radius certify a whole parameter box through degree-2000 Bernstein chord controls and one of two sparse ray-tail inequalities. At equality, exact facet distances give first-order support above 0.059, while completing the square and the unit-circle normal cost stay below 25/4 times the squared perturbation. The downstream finite expansion splits honestly into a transverse low-mode branch, now supplied by this atlas, and a radial-dominant branch that still needs a cone lemma.",
+  "verification_state": {
+    "analytic_derivation": "complete_for_compact_normalized_quintic_low_mode_model",
+    "finite_atlas_generator": "pass_3834_strict_boxes_81_local_boxes_zero_unresolved",
+    "exact_interval_replay": "pass_scale_1e24_all_3834_strict_boxes_all_81_local_boxes_all_181_candidate_groups_and_local_constants",
+    "lean_focused_build": "pass_canonical_cached_exact_target_serialized_authority_check"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "verified_global_quintic_low_mode_atlas_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Consume the atlas in the transverse degree-five origin-anchored expansion and prove the complementary radial-dominant cone lemma; then address the analogous higher-degree mode envelopes.",
+  "next_stage_owner": "Current proof owner through scoped commit; then Refinery owns the transverse finite-expansion consumer and radial-dominant cone lemma.",
+  "claim_ceiling": "After Lean validation, claim the entire compact normalized degree-five low-mode model only. Do not claim the finite near-Fekete transfer or unrestricted Erdős #1041."
+}

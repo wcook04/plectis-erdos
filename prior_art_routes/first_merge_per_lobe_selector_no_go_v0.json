@@ -1,0 +1,228 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "first_merge_per_lobe_selector_no_go",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_lemniscate_tree_topology_with_uncertified_numerical_selector_stress_test",
+  "problem_id": "erdos_1041",
+  "purpose": "Separate exact first-merge topology and the elementary aggregate-versus-termwise budget distinction from an uncertified degree-four numerical witness.",
+  "source_result_ids": [
+    "first_merge_per_lobe_selector_no_go"
+  ],
+  "evidence_class": "Exact ordinary lemniscate-tree topology and additive budget logic plus an uncertified high-precision degree-four numerical candidate; no interval or formal witness certificate.",
+  "closest_known_result": "Catanese--Paluszny and Epstein--Hanin--Lundberg for lemniscate merge-tree topology; no direct source for a metric per-lobe allocation theorem or this selector tuple was located.",
+  "comparison_relation": "The first-merge decomposition is standard. The source-specific delta is a method-boundary warning that an aggregate capacity budget cannot be allocated termwise without selector stability.",
+  "exact_delta": "It preserves the aggregate capacity route while showing where a nearly tied least-critical hub can destabilize a per-lobe allocation argument; the numerical tuple remains a stress test until certified.",
+  "disconfirming_evidence": "No interval enclosure, formal certificate, all-hub obstruction, aggregate-capacity failure, or exact symbolic counterexample is present.",
+  "confidence_ceiling": "High for the standard topological implication and method warning; low for the numerical witness as theorem-level evidence; zero for a #1041 no-go or priority claim.",
+  "significance": "Medium methodological value with high overclaim risk: it retires a tempting termwise inference while leaving min-over-hubs, aggregate, and gap-conditioned routes viable.",
+  "hard_step": "Certify derivative-root locations, critical-value ordering, lobe incidence, and a strict normalized excess before calling the numerical candidate a counterexample.",
+  "open_boundary": "The four-part interval/formal certification gate is open; until it lands, the numerical candidate cannot support a theorem-level obstruction.",
+  "bounded_expert_act": "Decide whether to run the four-part interval certification or retain the tuple solely as a route-boundary stress test, and verify the cited merge-tree terminology.",
+  "reentry_trigger": "Re-enter only when interval/formal certification or an exact symbolic obstruction lands, or when the selector/aggregate route changes.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/first_merge_per_lobe_selector_no_go.card.json",
+    "card_commit_at_review": "b4b7304e6833767ea917f5bcdaaa9a0a7c2d84b4",
+    "source_commit": "febb88d77237983954e1b9e07b658b661a8b60fc",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacityGeodesicConjecture.md",
+    "supporting_source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_capacity_geodesic.py",
+    "source_symbols": [
+      "PERLOBE_WITNESS",
+      "per_lobe_all_hubs",
+      "tie_guarded_per_lobe"
+    ]
+  },
+  "classification": {
+    "theorem_class": "first_merge_intrinsic_distance_decomposition_and_Euclidean_falsification_criterion_with_a_near_tie_degree_four_numerical_candidate",
+    "novelty_class": "standard_lemniscate_tree_topology_plus_elementary_budget_logic_and_uncertified_source_specific_stress_test",
+    "frontier_relation": "warning_against_equal_per_lobe_budget_allocation_not_a_counterexample_to_the_aggregate_capacity_route",
+    "formalization_class": "exact_ordinary_topological_implication_plus_deterministic_high_precision_noninterval_witness",
+    "priority_claim": "none",
+    "recommended_terminology": "near-tie numerical stress test for per-lobe allocation at a least-critical-value selector",
+    "acceptable_short_label": "first-merge per-lobe selector stress test",
+    "discouraged_terminology": [
+      "certified per-lobe counterexample",
+      "per-lobe no-go theorem",
+      "capacity-geodesic counterexample",
+      "counterexample to Erdős #1041",
+      "Lean-checked selector obstruction"
+    ],
+    "attribution": "Credit Catanese--Paluszny and the subsequent lemniscate-tree literature for critical-level tree topology. Treat additive intrinsic distance through a separating saddle and the failure of equal termwise allocation as elementary consequences. Attribute the displayed degree-four tuple only as a local deterministic numerical candidate until certified.",
+    "mathematical_interest": "The exact topology is standard, but the method boundary is important: a sharp sum budget does not imply the same budget for each lobe. The near-tie candidate shows where selector instability may break such a proof, while preserving the aggregate route.",
+    "reusable_scope": "Optimization or localization arguments where a nearly tied minimizer chooses a decomposition and a sharp aggregate bound is then allocated termwise. The current finite witness is specific to one degree-four polynomial and one selector.",
+    "why_it_matters": "It keeps a numerical warning from hardening into a false theorem while still changing proof search: any per-lobe route must either certify this candidate away, add a critical-value gap, optimize over hubs, or exploit cancellation between lobes."
+  },
+  "primary_sources": [
+    {
+      "id": "catanese_paluszny_1991_polynomial_lemniscates",
+      "title": "Polynomial-lemniscates, trees and braids",
+      "authors": ["Fabrizio Catanese", "Marco Paluszny"],
+      "venue": "Topology 30 (1991), 623-640",
+      "doi": "10.1016/0040-9383(91)90043-4",
+      "url": "https://doi.org/10.1016/0040-9383(91)90043-4",
+      "exact_anchor": "The paper develops the tree encoding of polynomial lemniscates through critical levels and component mergers.",
+      "supports": "The standard topological framework for first merges and critical-level lobes.",
+      "does_not_support": "A metric per-lobe capacity allocation or the card's degree-four numerical witness."
+    },
+    {
+      "id": "epstein_hanin_lundberg_2020_lemniscate_tree",
+      "title": "The lemniscate tree of a random polynomial",
+      "authors": ["Michael Epstein", "Boris Hanin", "Erik Lundberg"],
+      "venue": "Annales de l'Institut Fourier 70 (2020), 1663-1687",
+      "doi": "10.5802/aif.3377",
+      "url": "https://aif.centre-mersenne.org/articles/10.5802/aif.3377/",
+      "exact_anchor": "The abstract and opening construction associate a labeled binary lemniscate tree to a generic polynomial, with branching determined by singular level components through critical points.",
+      "supports": "Modern canonical terminology and the critical-level merge-tree viewpoint.",
+      "does_not_support": "Intrinsic metric allocation, a least-critical-value selector theorem, or the finite witness."
+    }
+  ],
+  "evidence_grade": {
+    "exact": [
+      "At a simple first merge, every path between roots in the two lobes passes through the separating saddle.",
+      "Intrinsic distance across the merged component is the sum of the two lobe-to-saddle intrinsic distances.",
+      "A termwise intrinsic bound implies the corresponding Euclidean bound."
+    ],
+    "numerical_only": [
+      "The ordering and near tie of the two smallest critical-value moduli for the stored polynomial.",
+      "The branch incidence assigning the two merging roots to the least critical hub.",
+      "The strict normalized Euclidean excess 1.0003912."
+    ],
+    "public_acceptability": "Acceptable as a visibly labeled deterministic numerical stress test or counterexample candidate. Not acceptable as a theorem-level no-go or as evidence that the aggregate inequality fails.",
+    "promotion_gate": [
+      "interval enclosures for every derivative root",
+      "a certified positive gap in critical-value ordering",
+      "certified root-to-lobe incidence at the selected saddle",
+      "an interval lower bound strictly above one for the offending normalized Euclidean radius"
+    ]
+  },
+  "mechanism_comparison": {
+    "standard_topology": "The lemniscate tree records component mergers at critical levels.",
+    "exact_budget_logic": "An aggregate bound $d_a+d_b\\le2\\rho$ does not imply $d_a,d_b\\le\\rho$ separately.",
+    "selector_instability": "When the two smallest critical values are nearly tied, the identity of the selected hub may be numerically or structurally unstable.",
+    "surviving_route": "The aggregate pair-capacity inequality, a min-over-hubs formulation, gap-conditioned lobe bounds, and cancellation between lobes all remain open."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Standard first-merge topology makes the pair distance additive across the saddle, but equal per-lobe allocation is an extra assertion. A deterministic high-precision degree-four candidate violates the Euclidean consequence for the least-critical-value selector; interval or formal certification is still required for a counterexample theorem.",
+    "forbidden_wording": [
+      "The per-lobe inequality has been rigorously disproved.",
+      "The aggregate capacity-geodesic inequality fails.",
+      "Every hub selector fails.",
+      "The witness is Lean-checked or interval certified.",
+      "The result refutes Erdős #1041."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_certified_counterexample",
+      "not_an_aggregate_pair_no_go",
+      "not_a_min_over_hubs_no_go",
+      "not_erdos_1041_progress"
+    ]
+  },
+  "canonicalization_decision": {
+    "programme_family": "aggregate first-merge capacity budget with selector-stability method boundaries",
+    "disposition": "subordinate_numerical_method_boundary",
+    "paper": "route-killing boundary panel beneath the aggregate capacity route",
+    "comparator": "no independent interface until interval or formal certification",
+    "absolute_frontier_shortlist": "do_not_admit_retain_current_five",
+    "reentry_condition": "certify derivative roots, critical-value ordering, lobe incidence, and strict normalized excess"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/first_merge_per_lobe_selector_no_go.card.json",
+      "effect": "State exactly when high-precision evidence is acceptable and what certification is required for theorem-level promotion."
+    },
+    {
+      "consumer": "Erdős #1041 proof fleet",
+      "effect": "Do not spend an aggregate pair budget termwise without selector stability; retain aggregate, min-over-hubs, and gap-conditioned routes."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Publish only as a numerical stress test until the four-part certification gate is discharged."
+    }
+  ],
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "first_merge_per_lobe_selector_no_go@source-febb88d7-card-b4b7304b",
+    "evidence_class": "Exact ordinary lemniscate-tree topology and additive budget logic plus an uncertified high-precision degree-four numerical candidate; no interval or formal witness certificate.",
+    "closest_known_result": "Catanese--Paluszny and Epstein--Hanin--Lundberg for lemniscate merge-tree topology; no direct source for a metric per-lobe allocation theorem or this selector tuple was located.",
+    "comparison_relation": "The first-merge decomposition is standard. The source-specific delta is a method-boundary warning that an aggregate capacity budget cannot be allocated termwise without selector stability.",
+    "exact_delta": "It preserves the aggregate capacity route while showing where a nearly tied least-critical hub can destabilize a per-lobe allocation argument; the numerical tuple remains a stress test until certified.",
+    "disconfirming_evidence": "No interval enclosure, formal certificate, all-hub obstruction, aggregate-capacity failure, or exact symbolic counterexample is present.",
+    "confidence": {
+      "topological_implication_and_method_warning": "high_internal_provisional",
+      "numerical_witness_as_theorem_evidence": "low_unresolved",
+      "global_erdos1041_no_go_or_priority": "none_claimed"
+    },
+    "significance": "Medium methodological value with high overclaim risk: it retires a tempting termwise inference while leaving min-over-hubs, aggregate, and gap-conditioned routes viable.",
+    "claim_ceiling": "Only the exact first-merge decomposition, additive budget implication, and high-precision stress-test status are admitted. No certified per-lobe no-go, aggregate-capacity failure, priority, or Erdős #1041 conclusion is admitted.",
+    "hard_step": "Certify derivative-root locations, critical-value ordering, lobe incidence, and strict normalized excess before treating the tuple as counterexample evidence.",
+    "open_boundary": "The four-part interval/formal certification gate is open; until it lands, the numerical candidate cannot support a theorem-level obstruction.",
+    "bounded_expert_review_act": "Decide whether to run the four-part interval certification or retain the tuple solely as a route-boundary stress test, and verify the cited merge-tree terminology.",
+    "reentry_trigger": "Re-enter only when interval/formal certification or an exact symbolic obstruction lands, or when the selector/aggregate route changes.",
+    "source_generation_binding": {
+      "source_commit": "febb88d77237983954e1b9e07b658b661a8b60fc",
+      "reviewer_card_commit": "b4b7304e6833767ea917f5bcdaaa9a0a7c2d84b4",
+      "parity_status": "ordinary topology exact; degree-four selector witness high-precision and noninterval"
+    },
+    "classification": {
+      "result_family": "first_merge_per_lobe_budget_selector_stress_test",
+      "evidence_class": "exact_lemniscate_tree_topology_plus_elementary_budget_logic_plus_uncertified_high_precision_numerical_candidate",
+      "closest_prior_art": "Catanese--Paluszny and Epstein--Hanin--Lundberg for lemniscate merge-tree topology; no source found for a metric per-lobe allocation theorem or this degree-four selector tuple.",
+      "comparison_relation": "The exact first-merge decomposition is standard; the source-specific contribution is a method-boundary warning that aggregate capacity cannot be allocated termwise without selector stability.",
+      "novelty_confidence": "standard_topology_with_source_specific_uncertified_stress_test; no priority claim",
+      "significance_grade": "medium_route_killing_boundary_high_overclaim_risk",
+      "why_care": "It blocks a tempting proof shortcut: a sharp aggregate pair budget does not imply the same budget for each lobe when the chosen critical hub is nearly tied.",
+      "hard_step": "Certify derivative-root locations, critical-value ordering, lobe incidence, and a strict normalized excess before calling the numerical candidate a counterexample.",
+      "natural_friction": "The topology and budget logic are exact, but the witness is only high-precision; aggregate, min-over-hubs, and gap-conditioned routes remain viable.",
+      "disconfirming_evidence": "No interval enclosure, formal certificate, all-hub obstruction, or aggregate-capacity failure is present.",
+      "confidence_ceiling": "High for the standard topological implication and method warning; low for the numerical witness as theorem-level evidence; zero for a #1041 no-go or priority claim.",
+      "bounded_expert_act": "Run the four-part interval certification gate or replace the witness with an exact symbolic obstruction; otherwise retain it as stress-test evidence only.",
+      "reentry_condition": "Re-enter only when certification lands or the selector/aggregate route changes."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1041 aggregate first-merge capacity budget and selector-stability boundary",
+      "disposition": "retain_as_one_route_killing_failure_boundary_subordinate_to_aggregate_capacity",
+      "paper_disposition": "route_killing_boundary_panel_under_aggregate_capacity",
+      "supersession_relation": "Consolidate first-merge topology, additive intrinsic distance, and the numerical selector warning; do not create separate lobe, tie, or Euclidean excess cards.",
+      "independent_comparator_interface_justified": false,
+      "comparator_scope": "Wait for interval/formal certification of the numerical witness; the exact topology can remain reader-visible without a combined no-go proposition.",
+      "expert_attention_reason": "The object preserves a live aggregate route while preventing a common but invalid termwise inference; its value is methodological, not a solved obstruction."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "exact_topological_decomposition_plus_high_precision_selector_probe",
+      "output_stage": "method_boundary_exposition_and_certification_request",
+      "artifact": "first-merge per-lobe selector stress test",
+      "human_understanding_delta": "Separates exact merge-tree geometry from the uncertified numerical candidate and makes the four certification obligations visible.",
+      "verification_state": "Topology and budget implication are exact ordinary mathematics; numerical ordering/incidence/excess are high-precision only.",
+      "publication_or_review_state": "Reader-visible as a clearly labeled stress test; no theorem-level no-go, Comparator proposition, priority, or #1041 conclusion.",
+      "canonicalization_state": "One route-killing boundary beneath the aggregate capacity mechanism; no duplicate selector cards.",
+      "unresolved_downstream_bottleneck": "Interval/formal witness certification or a replacement exact obstruction.",
+      "next_stage_owner": "#1041 geometry owners for certification; Mathematics Refinery for consolidation; Role 3 for status-tagged reader projection."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_and_card_hashes_current_at_snapshot",
+    "bound_snapshot": {
+      "source_commit": "febb88d77237983954e1b9e07b658b661a8b60fc",
+      "reviewer_card_commit": "b4b7304e6833767ea917f5bcdaaa9a0a7c2d84b4",
+      "review_unit_version": "first_merge_per_lobe_selector_no_go@source-febb88d7-card-b4b7304b",
+      "parity_status": "ordinary topology exact; degree-four selector witness high-precision and noninterval"
+    },
+    "claim_guard": "The exact first-merge decomposition and additive budget implication are ordinary mathematics; the degree-four selector tuple is only a high-precision stress test. No interval/formal counterexample, all-hub obstruction, aggregate-capacity failure, priority, or Erdos 1041 conclusion is admitted.",
+    "reentry_trigger": "Re-enter when the four-part interval/formal certification lands, the witness is replaced by an exact obstruction, or the selector/aggregate route changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Merge-tree topology and additive intrinsic distance are routine once the critical level is fixed; the load-bearing uncertainty is numerical witness certification.",
+    "slow_down_at": "Check derivative-root isolation, critical-value ordering, lobe incidence, and strict normalized excess before using the tuple as counterexample evidence.",
+    "automation_can_establish": [
+      "Pinned source and reviewer-card commits",
+      "The exact topology/budget claim boundary",
+      "That no interval or formal witness certification is present"
+    ],
+    "human_judgment_required": [
+      "Whether the high-precision tuple is worth an interval-certification pass",
+      "Whether the warning changes proof search without being mistaken for an aggregate no-go",
+      "Whether the cited lemniscate-tree antecedents are the correct conventional framing"
+    ],
+    "review_act": "One bounded certification decision: either run the four-part interval gate or retain the object as a route-boundary stress test only.",
+    "attention_ceiling": "Medium methodological value; no theorem-level no-go or independent Comparator interface until certification."
+  }
+}

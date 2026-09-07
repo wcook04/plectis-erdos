@@ -1,0 +1,119 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "declaration": "QuinticMuStarEndpointExcessCertificate.endpoint_pair_excess_bounds",
+    "evidence_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMuStarEndpointExcessCertificate.md",
+    "evidence_sha256": "a024244c7876ec9d0ab200a34f8cfd676225c167a2b9f50dd6d91b4d20281e14",
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_mustar_endpoint_excess.py",
+    "verifier_sha256": "34228478ecff5b9520f586b2e1081d9687da46d698dcfb03f27ab006031e3522",
+    "source_commit_status": "worktree_source_pending_scoped_commit",
+    "delta_class": "new_exact_gap_zero_endpoint_excess_theorem_closing_both_mustar_phase_fibres_after_angular_propagation",
+    "formal_status": "ordinary exact analytic theorem with deterministic symbolic, resultant/Sturm, rational interval, and strict Krawczyk replay; no Lean formalization is claimed",
+    "relation_to_erdos_1041": "This discharges both exceptional gap-zero fibres in the quintic universal model wall reduction. It is a model-metric boundary theorem, not the degree-five theorem or the unrestricted parent theorem.",
+    "claim_ceiling": "The compact regular double-tight atlas is the sole remaining model-metric obligation before EX-W. Model-to-real transfer, degree five, and unrestricted Erdos 1041 remain open."
+  },
+  "source_current_consequence_map": {
+    "status": "candidates_ready_for_judgment",
+    "query": "Erdos 1041 exact mu-star endpoint excess theorem closing both gap-zero phase fibres and narrowing EX-W to the compact double-tight atlas",
+    "precision_note": "The candidate extractor returned lexical collisions on B_0, square roots, and historical namespaces. Semantic review retained the #1041 owner frontier, research packet, universal chamber, wall-sheet reduction, angular fibre theorem, and compact carrier."
+  },
+  "decisions": [
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FRONTIER.md",
+      "decision": "update_now",
+      "mathematical_reason": "The canonical frontier still listed two open endpoint rays; exact endpoint bounds plus angular propagation remove that residual and leave only the regular compact atlas.",
+      "validation_or_reentry": "exact endpoint and angular checkers, frontier integrity, and cold-reader query"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The source packet needs a new exact-result row and every surviving-obligation field must stop advertising already-closed mu* fibres.",
+      "validation_or_reentry": "JSON parse, exact checkers, consequence rerun, and source-current cold-reader query"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMuStarAngularFiberReduction.md",
+      "decision": "update_now",
+      "mathematical_reason": "Its conditional endpoint-to-arc theorem now has exact endpoint hypotheses and therefore closes both complete fibres after conjugation.",
+      "validation_or_reentry": "angular and endpoint exact checkers"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticWallSheetSubharmonicReduction.md",
+      "decision": "update_now",
+      "mathematical_reason": "Every exceptional puncture class in its boundary reduction is now discharged, so the ordinary compact double-tight carrier is its sole residual.",
+      "validation_or_reentry": "wall-sheet, side-arm, angular, and endpoint checkers"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCriticalValueCarrier.md",
+      "decision": "update_now",
+      "mathematical_reason": "The carrier claim boundary must no longer append separate endpoint inequalities to its interval-atlas residual.",
+      "validation_or_reentry": "carrier and endpoint checkers"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+      "decision": "update_now",
+      "mathematical_reason": "The universal chamber overview owns the exact decomposition of EX-U and must record that both gap-zero fibres are closed.",
+      "validation_or_reentry": "universal chamber and all exceptional-stratum checkers"
+    },
+    {
+      "file": "unrelated B_0, sqrt_iv, Erdős 249/257, and historical namespace matches",
+      "decision": "outside_scope",
+      "mathematical_reason": "These are lexical collisions or retired-project navigation edges, not consumers of the quintic mu* endpoint theorem.",
+      "validation_or_reentry": "none"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "Both selected endpoint pairs on one mu* fibre have exact excess ceilings E_+<-47/125 and E_-<-2/5, not merely numerical evidence.",
+    "newly_discharged": "The endpoint-to-arc theorem propagates the common -3/8 ceiling over the full allowed half-circle, and conjugation discharges the second gap-zero fibre.",
+    "hard_mechanism": "The factorization P(u)=(u^2-1)^2(u+i sqrt(5)) and compact H equation give quotient-free longitudinal and transverse sign polynomials. Resultant/Sturm filtering leaves one transverse turn; a strict rational Krawczyk box isolates it below 7/8, after which exact variation and terminal-projection budgets yield the two negative bounds without numerical quadrature.",
+    "natural_friction_or_failed_route": "The initially targeted -9/10 endpoint margin is false as a proof target for this certificate and unnecessary. Direct four-arm quadrature was also avoidable; total-variation control is both smaller and exact.",
+    "surviving_boundary": "Prove uniform negative pair excess on the regular compact 4 x 5 x 2 x [0,1] double-tight carrier, then establish the model-to-real transfer. No exceptional wall fibre remains.",
+    "strongest_exact_non_support": "The theorem does not prove the compact atlas, EX-W, EX-U, the local real-scale transfer, degree five, or unrestricted Erdős 1041; it has no Lean declaration and is not counted as a new solved family."
+  },
+  "canonical_consumer_handoff": {
+    "claims": {
+      "decision": "handoff_after_scoped_source_commit",
+      "payload": "Record an exact private #1041 model-boundary theorem closing the two mu* fibres; do not represent it as the parent theorem or a new solved family."
+    },
+    "individual_1041_paper_owner": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+      "decision": "handoff_now_edit_deferred_during_proof_search",
+      "payload": "At the next publication pass, replace the two open gap-zero endpoint rays by the exact -47/125 and -2/5 certificate and state that the ordinary compact double-tight atlas is the sole model-metric residual."
+    },
+    "readme_results": {
+      "decision": "defer_until_public_promotion_or_model_closure",
+      "payload": "This is a narrow private boundary theorem, not yet an appropriate parent-level headline."
+    },
+    "comparator": {
+      "decision": "not_yet_applicable",
+      "payload": "There is no Lean statement-only representative and this endpoint theorem is not a flagship family result; retain the exact checker as the current replay authority."
+    },
+    "palomar": {
+      "decision": "not_yet_applicable",
+      "payload": "Palomar consumption waits for Comparator/public-promotion eligibility or completion of the compact model atlas."
+    },
+    "independent_assurance": {
+      "decision": "ready_for_independent_replay",
+      "payload": "Replay the verifier at the recorded SHA pair and independently audit the selected-quadrant filtering, unique Krawczyk turn box, and terminal projection inequalities."
+    }
+  },
+  "source_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMuStarEndpointExcessCertificate.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_mustar_endpoint_excess.py"
+  ],
+  "propagated_surface_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMuStarAngularFiberReduction.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticWallSheetSubharmonicReduction.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCriticalValueCarrier.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FRONTIER.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/quintic_mustar_endpoint_excess_20260830_consequence_receipt.json"
+  ],
+  "checkpoint_class": "bounded_private_frontier_advance",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The source-current consequence map and exact-boundary discipline worked as designed; this pass exposed no reusable workflow defect. The reusable mathematics belongs in the #1041 owner theorem and consequence graph.",
+    "reentry_condition": "Re-enter when the compact double-tight atlas lands or is exactly obstructed, when a Lean interface is authored, or when the individual #1041 paper enters its publication pass."
+  }
+}

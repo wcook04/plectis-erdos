@@ -1,0 +1,237 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "summable_negative_mass_tail_rigidity",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_discrete_Gronwall_growth_bound_plus_integer_lattice_extinction_with_problem_specific_signed_defect_packaging",
+  "problem_id": "erdos_243",
+  "purpose": "Separate the classical product-growth estimate from the source-specific integer-defect and Sylvester-recurrence consumers.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/summable_negative_mass_tail_rigidity.card.json",
+    "refinery_handoff_commit": "b2b6a6ea749af2bef59cf59cdd4d6984303c44bd",
+    "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SparseResetRecovery.lean",
+    "source_result_ids": [
+      "bounded_tail_normalized_vanishing_consumer",
+      "summable_negative_relative_mass_termination",
+      "summable_negative_mass_sylvester_consumer"
+    ]
+  },
+  "source_result_ids": [
+    "bounded_tail_normalized_vanishing_consumer",
+    "summable_negative_relative_mass_termination",
+    "summable_negative_mass_sylvester_consumer"
+  ],
+  "source_generation": {
+    "formal_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "sha256": "9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e"
+    },
+    "consumer_source": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb"
+    },
+    "reviewer_card": {
+      "path": "docs/formal_math/reviewer_cards/summable_negative_mass_tail_rigidity.card.json",
+      "commit": "b4acaad933b11d896793a976c09dff41c9656b9c",
+      "sha256": "e5fe92253a9f42023544b959891d30d6eddb878cb7f1b4a2a0e3b610804b714d"
+    },
+    "research_packet": {
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+      "worktree_overlay": {
+        "sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+        "status": "uncommitted_nonowned_overlay_excluded_from_adjudication",
+        "reentry_condition": "Rebind after the packet's added source-declaration rows land in a committed snapshot and pass source-parity validation."
+      }
+    },
+    "status": "committed_two_source_card_packet_snapshot_current; packet_overlay_excluded"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The product bound is standard discrete Grönwall; integer-lattice extinction is elementary; the source-specific work is the signed-defect and Sylvester consumer packaging.",
+    "slow_down_at": "Check that summability, not mere pointwise decay, is used; preserve the packet overlay exclusion and the conditional reciprocal-tail hypotheses.",
+    "automation_establishes": "The three source result ids, pinned Lean source hashes, and the conditional producer-consumer declarations.",
+    "expert_judgment_required": "Whether the actual reciprocal-tail orbit supplies summable one-sided relative growth and normalized vanishing, rather than merely tending-to-zero increments.",
+    "review_act": "Compare the product form with Clark/Yang once, then inspect only the actual-orbit hypotheses and the conditional Sylvester consumer.",
+    "attention_ceiling": "Do not present the standard Grönwall estimate as a new theorem or split its consumers into duplicate endpoint cards."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "summable_negative_mass_tail_rigidity@source-4cd4eac-card-b4acaad-packet-0708c6",
+    "source_generation": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e",
+      "consumer_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "consumer_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "reviewer_card_commit": "b4acaad933b11d896793a976c09dff41c9656b9c",
+      "reviewer_card_sha256": "e5fe92253a9f42023544b959891d30d6eddb878cb7f1b4a2a0e3b610804b714d",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+      "parity_status": "committed source/card/packet snapshot current; dirty packet overlay excluded"
+    },
+    "evidence_class": "Lean-checked conditional pipeline with classical discrete-Grönwall attribution, integer-lattice extinction, and a source-specific reciprocal-tail Sylvester consumer.",
+    "closest_known_result": "Clark's product-form discrete Grönwall inequality and Yang's Bellman-type difference inequalities are the nearest standard antecedents; the signed-defect normalization and Sylvester consumer are local packaging.",
+    "exact_delta": "The route converts summable one-sided relative growth into bounded height, combines normalized vanishing with integer-lattice discreteness, and feeds eventual exactness to the reciprocal-tail consumer.",
+    "disconfirming_evidence": "Pointwise delta_n -> 0 is insufficient (the C_n=n+1, E_n=-1 boundary); dirty packet overlays are excluded; no actual-orbit summability or effective index is supplied.",
+    "claim_ceiling": "A standard discrete-Grönwall product bound plus normalized vanishing and integer-lattice discreteness forces eventual signed-defect extinction under the stated hypotheses; no new Grönwall theorem, effective bound, unconditional Sylvester tail, irrationality, or #243 solution.",
+    "hard_step": "Supply summability of one-sided relative growth and normalized vanishing for the genuine reciprocal-tail orbit.",
+    "open_boundary": "Actual-orbit hypotheses, effective extinction index, and the unrestricted #243 endpoint remain open; this route is distinct from bounded-negative-part rigidity.",
+    "disconfirming_evidence_preserved": "The harmonic relative-mass counterexample shows why decay without summability cannot be silently substituted.",
+    "confidence": {
+      "level": "high_for_conditional_pipeline_low_for_actual_orbit_and_originality",
+      "basis": "Source/card/committed-packet parity is pinned, while the product-bound antecedent is classical and the actual hypotheses remain unproved."
+    },
+    "significance": "Medium reusable endpoint value: it cleanly identifies the analytic burden and prevents repeated attempts at the already-standard boundedness step.",
+    "bounded_expert_act": "Check the discrete-Grönwall attribution and integer-lattice step, then test whether any orbit argument supplies summability and normalized vanishing.",
+    "reentry_trigger": "Reopen when the packet overlay lands, the source theorem changes, or an actual-orbit summability/normalized-vanishing theorem appears.",
+    "comparison_relation": "The product estimate is a standard discrete-Grönwall mechanism; integer-lattice extinction is elementary; the signed-defect packaging and reciprocal-tail Sylvester consumer are source-specific formal interfaces. Exact combination novelty is unlocated but no priority claim is supported.",
+    "confidence_ceiling": "High for source/card/committed-packet parity and the conditional claim; medium for exact external antecedent matching; low for originality beyond packaging.",
+    "significance_assessment": {
+      "grade": "medium_attention_reusable_endpoint",
+      "why_care": "It isolates the real #243 bottleneck: prove summable one-sided relative growth and normalized vanishing for the actual orbit. The downstream product bound and lattice extinction should not consume new proof effort.",
+      "mechanism_family": "tail normalization, one-sided cancellation growth, and recurrence rigidity",
+      "hard_step": "Supplying the two hypotheses for the genuine reciprocal-tail orbit, not reproving the product inequality.",
+      "open_boundary": "No effective extinction index, actual-orbit summability, irrationality, or Erdős #243 solution follows."
+    },
+    "paper_disposition": {
+      "class": "supporting_lemma",
+      "target_section": "Excluding finite normalised negative mass",
+      "relation": "Consolidate bounded-tail extinction, summable negative mass, and the separate centered-zero-to-Sylvester consumer as one producer-consumer pipeline; reject duplicate endpoint cards.",
+      "reason": "The value is explanatory and reusable, not a new inequality or endpoint advance."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": false,
+      "reason": "The existing bundled card is sufficient; splitting standard Grönwall, lattice extinction, and the Sylvester consumer would inflate counts without adding semantic coverage."
+    },
+    "bounded_expert_act": "Check the exact relation to Clark's product form and Duverney/Koizumi's conditional Sylvester antecedents; then inspect only the actual-orbit hypotheses.",
+    "reentry_trigger": "Re-enter when the packet overlay lands, a source theorem changes, or summability/normalized vanishing is proved for the actual orbit."
+  },
+  "classification": {
+    "growth_bound_class": "homogeneous_product_form_of_the_classical_discrete_Gronwall_inequality",
+    "extinction_step_class": "elementary_discreteness_of_the_integer_lattice_after_boundedness",
+    "signed_defect_class": "useful_problem_specific_one_sided_relative_growth_packaging",
+    "Sylvester_consumer_class": "conditional_recurrence_endpoint_specific_to_the_product_cleared_reciprocal_tail_orbit",
+    "priority_claim": "none",
+    "recommended_terminology": "summable one-sided relative-growth extinction criterion",
+    "acceptable_local_alias": "summable negative-mass tail rigidity",
+    "discouraged_terminology": "new discrete Gronwall theorem",
+    "nearest_prior_work": [
+      "Clark (1987) states the classical discrete Gronwall product bound x_n <= a* product_j(1+b_j).",
+      "Yang (1988) places broader linear and nonlinear difference inequalities explicitly in the discrete Gronwall-Bellman family.",
+      "The implication that an integer-valued quantity with absolute value below one is zero is elementary lattice discreteness, not a separate recurrence theorem."
+    ],
+    "attribution": "Attribute the multiplicative boundedness step to the discrete Grönwall tradition, with Clark's product form as the nearest exact source. Credit the local Lean asset for combining that bound with normalized vanishing of an integral signed defect and for the exact reciprocal-tail Sylvester consumer.",
+    "mathematical_interest": "The theorem is not deep as an inequality, but it is a clean termination interface: all analytic work is isolated in summability and normalized vanishing, after which discreteness forces exactness.",
+    "reusable_scope": "Positive integer-valued heights satisfying C_{n+1} <= C_n(1+delta_n), with summable nonnegative delta_n and an integer defect negligible relative to C_n.",
+    "why_it_matters": "It converts asymptotic smallness into eventual exact recurrence and makes clear that proving delta_n -> 0 is insufficient; total one-sided relative growth must be summable for this route."
+  },
+  "primary_sources": [
+    {
+      "id": "clark_1987_discrete_Gronwall",
+      "title": "Short proof of a discrete Gronwall inequality",
+      "author": "Dean S. Clark",
+      "venue": "Discrete Applied Mathematics 16 (1987), 279-281",
+      "doi": "10.1016/0166-218X(87)90064-3",
+      "url": "https://doi.org/10.1016/0166-218X(87)90064-3",
+      "exact_anchor": "Abstract and main inequality: x_n <= a* product_{j=n0}^{n-1}(1+b_j) under a standard discrete Gronwall recurrence.",
+      "supports": "The product-growth bound used to show that summable relative growth keeps C_n bounded.",
+      "does_not_support": "No integer-defect extinction statement, normalized-vanishing hypothesis, reciprocal-tail orbit, or Sylvester consequence."
+    },
+    {
+      "id": "yang_1988_discrete_Gronwall_generalizations",
+      "title": "On some new discrete generalizations of Gronwall's inequality",
+      "author": "En Hao Yang",
+      "venue": "Journal of Mathematical Analysis and Applications 129 (1988), 505-516",
+      "doi": "10.1016/0022-247X(88)90268-5",
+      "url": "https://doi.org/10.1016/0022-247X(88)90268-5",
+      "exact_anchor": "Abstract and Theorem 3: general linear Bellman-type discrete inequalities in one independent variable.",
+      "supports": "Established difference-inequality terminology and the broader recurrence setting for discrete Grönwall bounds.",
+      "does_not_support": "No signed negative-mass normalization or eventual integral extinction."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "From C_{n+1} <= C_n(1+delta_n), iteration gives C_n <= C_0 product_{i<n}(1+delta_i); summability of delta bounds this product.",
+    "local_delta": "The exact update identifies delta_n with only the negative part of an integer defect, and the normalized-vanishing hypothesis is strong enough to turn bounded C_n into eventual |E_n|<1.",
+    "bounded_tail_endpoint": "Once C_n is uniformly bounded, the named Lean consumer chooses a normalization parameter above that bound and uses integer-lattice discreteness directly. The summable negative-mass theorem supplies boundedness through the classical product estimate, so this endpoint is a proof layer rather than a separate theorem class.",
+    "sharpness_boundary": "Replacing sum delta_n < infinity by delta_n -> 0 breaks the argument and the conclusion: C_n=n+1, E_n=-1 has harmonic relative mass and never terminates.",
+    "significance_boundary": "The abstract lemma is reusable and worth retaining, but its significance is as a producer-consumer interface rather than as an independently novel inequality."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "discrete Gronwall product form recurrence product 1+b_n",
+      "summable relative growth integer sequence eventual zero defect",
+      "one-sided relative growth recurrence termination",
+      "normalized vanishing integral defect recurrence",
+      "summable negative mass Sylvester recurrence"
+    ],
+    "result": "The search located the exact classical product-bound family but no primary source combining it with this normalized-vanishing integral defect or the reciprocal-tail Sylvester endpoint.",
+    "boundary": "Non-location supports a packaging-level classification only; it does not establish theorem novelty or priority."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A standard discrete-Grönwall product bound, combined with normalized vanishing and integer-lattice discreteness, forces eventual extinction of the signed defect.",
+    "forbidden_wording": [
+      "We discovered a new discrete Grönwall inequality.",
+      "The theorem follows from delta_n tending to zero.",
+      "The result supplies an effective extinction index.",
+      "The conditional Sylvester consumer proves Erdös Problem 243."
+    ],
+    "nonclaims": [
+      "not_a_new_Gronwall_inequality",
+      "not_valid_under_pointwise_decay_alone",
+      "not_an_effective_bound",
+      "not_a_proof_of_the_open_hypotheses",
+      "not_a_solution_of_erdos_243"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/summable_negative_mass_tail_rigidity.card.json",
+      "effect": "Replace pending terminology with discrete-Grönwall attribution, integer-lattice classification, and standalone-lemma significance."
+    },
+    {
+      "consumer": "Mathematics Refinery and the #243 proof lane",
+      "effect": "Keep the lemma as a reusable endpoint, but direct new proof effort to summability and normalized vanishing rather than to the already-standard boundedness step."
+    }
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_summability_and_normalized_vanishing",
+    "priority_order": [
+      "retain Clark/Yang as the discrete-Grönwall product-bound framework and integer-lattice discreteness as elementary",
+      "require future endpoint claims to prove summability of one-sided relative growth, not merely delta_n tending to zero",
+      "keep the Sylvester consumer conditional on the reciprocal-tail hypotheses and separate from the abstract boundedness lemma"
+    ],
+    "lane": "re-enter only when a source-current summability/vanishing theorem changes the producer hypotheses or supplies an effective bound"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "summable_negative_mass_prior_art_and_endpoint_review",
+    "output_stage": "reusable_endpoint_human_review_support",
+    "artifact": "#243 summable one-sided relative-growth extinction criterion",
+    "human_understanding_delta": "The standard product-form discrete Grönwall step is separated from the source-specific integer-defect and Sylvester consumers. The decisive hypothesis is summability of one-sided relative growth; pointwise decay alone is explicitly insufficient.",
+    "verification_state": "Three source result ids and the Lean source commit are pinned; Clark/Yang support the product-bound framework, while the normalized-vanishing and reciprocal-tail consumers remain local.",
+    "publication_or_review_state": "Private reusable-endpoint support; no priority, new Grönwall theorem, effective extinction index, or #243 endpoint claim.",
+    "canonicalization_state": "One producer-consumer interface: standard boundedness plus integer-lattice extinction, with the Sylvester recurrence as a conditional downstream consumer.",
+    "unresolved_downstream_bottleneck": "Prove the summability and normalized-vanishing hypotheses, or obtain an effective bound, in the actual reciprocal-tail programme.",
+    "next_stage_owner": "Novelty Observatory for exact summability antecedents; Mathematics Refinery for one endpoint-family consolidation; #243 proof/public owners for the open hypotheses."
+  },
+  "adjudication_currentness": {
+    "status": "source_card_committed_packet_snapshot_bound; packet_overlay_excluded",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e",
+      "consumer_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "consumer_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "reviewer_card_commit": "b4acaad933b11d896793a976c09dff41c9656b9c",
+      "reviewer_card_sha256": "e5fe92253a9f42023544b959891d30d6eddb878cb7f1b4a2a0e3b610804b714d",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "bed2cde8c2ed7065ea856c56ee8d2c1c53e20ddea92b5c47c77e7c99b42b1bba",
+      "source_result_ids": [
+        "bounded_tail_normalized_vanishing_consumer",
+        "summable_negative_relative_mass_termination",
+        "summable_negative_mass_sylvester_consumer"
+      ]
+    },
+    "claim_guard": "The producer-consumer pipeline is conditional; the dirty packet overlay cannot upgrade it to actual-orbit summability, an effective index, or an #243 endpoint.",
+    "reentry_trigger": "Reopen when the packet overlay lands or is discarded, a source theorem changes, or actual-orbit summability and normalized vanishing are proved."
+  }
+}

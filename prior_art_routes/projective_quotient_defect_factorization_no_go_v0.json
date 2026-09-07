@@ -1,0 +1,226 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "projective_quotient_defect_factorization_no_go",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_determinant_identity_with_source_specific_route_retiring_countermodel",
+  "problem_id": "erdos_269",
+  "purpose": "Prevent an elementary determinant expansion from being presented as novelty while preserving the exact finite countermodel as a durable proof-route retirement.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/projective_quotient_defect_factorization_no_go.card.json",
+    "card_commit": "9109e050ebdb8b341551b6d75a3ca1e0b58b827b",
+    "landed_source_commit": "2499c0d9ca2a7fa7f6c7b0cb59135a7a5622b431",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/HalfHeightDenominatorTransport.lean",
+    "checker_path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_projective_quotient_scan.py",
+    "receipt_path": "state/formal_math/erdos257_period_noncollapse/erdos269_projective_quotient_scan_receipt.json",
+    "headline_declarations": [
+      "ErdosProblems.Erdos269.HalfHeightDenominatorTransport.reducedCarry_projective_shadow",
+      "ErdosProblems.Erdos269.HalfHeightDenominatorTransport.projectiveDefect_eq_windowQuotientDefect"
+    ]
+  },
+  "classification": {
+    "identity_class": "routine_bilinear_determinant_expansion_after_integer_quotient_remainder_substitution",
+    "countermodel_class": "exact_source_specific_finite_falsifier_of_a_uniform_quarter_modulus_bound",
+    "formalization_class": "Lean_checked_identity_and_conditional_projective_congruence_consumer_with_pinned_exact_checker_receipt",
+    "priority_claim": "none",
+    "recommended_terminology": "quotient-normalized projective defect and quarter-band counterexample",
+    "discouraged_terminology": [
+      "new projective invariant",
+      "new Diophantine approximation theorem",
+      "universal defect lower bound",
+      "solution of Erdős Problem 269"
+    ],
+    "nearest_prior_work": [
+      "Homogeneous coordinate pairs and determinant tests are standard projective-algebra language.",
+      "Blunck and Havlicek (2013), Section 2, formulate the projective line over a ring using admissible pairs in R^2 and GL_2(R).",
+      "The local quotient-normalized formula is a direct specialization of determinant bilinearity, not a distinct external theorem."
+    ],
+    "attribution": "Call the determinant and quotient/remainder manipulations elementary. Attribute the Lean interface and exact B=7 failure certificate to the local source; do not claim a new projective invariant.",
+    "mathematical_interest": "The identity exposes the exact normalized coordinate consumed by the denominator-congruence test. The counterexample then distinguishes a viable modular obstruction from an invalid attempt to force it using a uniform Euclidean smallness estimate.",
+    "reusable_scope": "Pairs of arithmetic windows whose carry and height coordinates share a proposed rational denominator and admit quotient/remainder decompositions.",
+    "why_it_matters": "It retires the quarter-band proof producer decisively. Future #269 work may still seek nonzero projective residues, but must obtain them through modular structure, adaptive window selection, or another source-specific mechanism rather than the false uniform inequality."
+  },
+  "primary_sources": [
+    {
+      "id": "blunck_havlicek_2013_projective_lines_over_rings",
+      "title": "Projective Representations I. Projective lines over rings",
+      "author": "Andrea Blunck and Hans Havlicek",
+      "venue": "arXiv:1304.0098 (2013)",
+      "url": "https://arxiv.org/abs/1304.0098",
+      "exact_anchor": "Section 2, especially the definition of P(R) as the GL_2(R)-orbit of R(1,0), admissible pairs, and the coordinate description of the distant relation.",
+      "supports": "Established homogeneous-coordinate and projective-line-over-a-ring terminology for pairs in R^2.",
+      "does_not_support": "The local carry-height factorization, the quarter-modulus conjecture, its B=7 counterexample, or any Erdős #269 conclusion."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_algebra": "For coordinate pairs (d_1,H_1) and (d_2,H_2), the cross-defect d_1H_2-d_2H_1 is their 2x2 determinant. Substituting d_i=k_iM_i-BF_i and H_i=S_iM_i and collecting B-divisible terms gives the displayed identity immediately.",
+    "local_consumer": "Reduced carries produced by one rational candidate must be projectively coherent modulo B; a nonzero determinant residue excludes that denominator.",
+    "failed_producer": "The proposed producer tried to force useful residues through the uniform estimate |cent(Q mod B)|<=B/4.",
+    "exact_retirement": "The pinned B=7 actual-window witness has centered quotient residue -2, outside the quarter band, while retaining nonzero projective residue. Therefore the inequality is false and the modular consumer remains useful."
+  },
+  "validation_state": {
+    "source_hashes": "The Lean source, checker, and stored receipt hashes match the card's pinned source-parity block.",
+    "exact_replay": "A 2026-08-24 checker run regenerated the same mathematical scan payload and B=7 counterexample.",
+    "freshness_boundary": "The check-mode comparison is not green because the receipt still pins an earlier sha256 and byte length for DyadicWindowComputationalLab.md; only that source_files metadata row differs.",
+    "owner_repair_capture": "cap_quick_refresh_erdős_269_projective_quotient_sc_33442885ba7b",
+    "interpretation": "Documentation dependency drift, not disconfirmation of the factorization or counterexample."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "projective line over ring determinant homogeneous coordinates",
+      "modular projective line unimodular pairs determinant congruence",
+      "quotient remainder projective defect congruence",
+      "centered quotient discrepancy quarter modulus bound"
+    ],
+    "result": "The search recovered standard projective-coordinate frameworks but no named theorem matching the source-specific quotient-window identity or quarter-band conjecture.",
+    "boundary": "The absence of a named match does not create novelty: the identity is elementary algebra, while the exact no-go is best classified by its concrete programme consequence."
+  },
+  "claim_boundary": {
+    "allowed_wording": "The Lean source packages an elementary determinant factorization as an exact two-window congruence interface and supplies a finite B=7 counterexample that retires the proposed quarter-band producer.",
+    "forbidden_wording": [
+      "The quotient discrepancy is a new projective invariant.",
+      "The counterexample refutes projective coherence.",
+      "No denominator can satisfy the two-window relation.",
+      "The no-go is cofinal or universal.",
+      "This proves irrationality in Erdős Problem 269."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_projective_coherence_counterexample",
+      "not_universal_in_B",
+      "not_cofinal",
+      "not_erdos_269_solution"
+    ]
+  },
+  "release_advisory": {
+    "significance_grade": "high_route_boundary_value_low_algebraic_novelty",
+    "hierarchy": "Parent projective-coherence family; projective_two_window_residue_coherence is subordinate B=11 evidence.",
+    "comparator": "One minimal interface for the two Lean declarations; finite B=7 and B=11 witnesses remain examples.",
+    "paper": "One section for the live modular consumer and failed quarter-band producer.",
+    "shortlist": "Do not admit without universal or cofinal pair supply."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/projective_quotient_defect_factorization_no_go.card.json",
+      "effect": "Replace unadjudicated novelty language with routine-algebra attribution and an exact route-retirement significance statement."
+    },
+    {
+      "consumer": "Erdős #269 proof fleet",
+      "effect": "Retire the uniform quarter-modulus inequality; preserve full modular projective incoherence as a live denominator-exclusion consumer."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the asset as a precise negative finding and design constraint, not as a new projective theorem."
+    },
+    {
+      "consumer": "projective_two_window_residue_coherence",
+      "effect": "Subordinate the B=11 finite kill as an example under this parent rather than a parallel mechanism."
+    }
+  ],
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean_projective_interfaces_and_finite_witnesses",
+    "output_stage": "expert_understanding_and_canonicalization",
+    "artifact": "projective_quotient_defect_factorization_no_go parent route",
+    "human_understanding_delta": "Unifies the viable modular consumer, B=11 example, and B=7 failed producer in one mechanism family.",
+    "verification_state": "Lean interfaces plus exact finite replay; receipt metadata drift remains explicit.",
+    "publication_or_review_state": "Private review-ready route boundary.",
+    "canonicalization_state": "One parent mechanism with the two-window card subordinate.",
+    "unresolved_downstream_bottleneck": "Universal or cofinal nonzero-defect pair supply.",
+    "next_stage_owner": "Mathematics Refinery, Role 3, and Problem 269 proof owners."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "projective_quotient_defect_factorization_no_go@source-2499c0d-card-9109e05",
+    "evidence_class": "Lean_checked_identity_plus_exact_finite_countermodel_and_conditional_consumer",
+    "source_generation": {
+      "formal_source": {
+        "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/HalfHeightDenominatorTransport.lean",
+        "commit": "2499c0d9ca2a7fa7f6c7b0cb59135a7a5622b431",
+        "sha256": "310cd828fb9547c4d7d9b47d752ff18bb4ac2e489c50d1e92190c97229d248fe"
+      },
+      "reviewer_card": {
+        "path": "docs/formal_math/reviewer_cards/projective_quotient_defect_factorization_no_go.card.json",
+        "commit": "9109e050ebdb8b341551b6d75a3ca1e0b58b827b",
+        "sha256": "ff5276d9cb4470cbf64ca5177a9cf6ad4836e60ed8f8c6de03a43ab9cfb18eda"
+      },
+      "checker": {
+        "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_projective_quotient_scan.py",
+        "sha256": "efc8ce18e2c835a4c717d4d92bb576979dd0ad78c48ddcfe70448a5f6097effe"
+      },
+      "finite_receipt": {
+        "path": "state/formal_math/erdos257_period_noncollapse/erdos269_projective_quotient_scan_receipt.json",
+        "sha256": "1661b6a5c1037dc2960180efc9b349d8f0d255f8343b993e9645a1d3fcdc8db5"
+      },
+      "primary_sources": [
+        "Blunck–Havlicek, Projective Representations I (2013), §2",
+        "DLMF 2.10.9 for determinant/summation-by-parts context"
+      ]
+    },
+    "comparison_relation": "The displayed defect is the 2x2 determinant of two homogeneous coordinate pairs after quotient/remainder substitution; the B=7 witness is a finite falsifier of one proposed producer inequality, not a refutation of projective coherence.",
+    "closest_known_result": "Homogeneous-coordinate determinant tests and projective-line-over-a-ring language are standard (Blunck–Havlicek §2); no external source located for this exact carry-height normalization or quarter-band conjecture.",
+    "exact_delta": "The source binds reduced carries and heights to an explicit B-divisible factorization, retains a modular nonzero-defect consumer, and supplies an exact B=7 witness with centered quotient defect -2 outside the B/4 band while the projective defect is 1 mod 7.",
+    "disconfirming_evidence": "The core expansion is immediate bilinearity, the finite scan is bounded, and receipt metadata for DyadicWindowComputationalLab.md is stale; none supports a universal, cofinal, or irrationality claim.",
+    "confidence_ceiling": "High for the Lean identity and exact finite quarter-band retirement; low novelty and no priority claim; conditional consumer only.",
+    "significance": "high_route_boundary_value_low_algebraic_novelty",
+    "claim_ceiling": "Present one quotient-normalized projective-defect identity and the exact B=7 finite counterexample that retires the uniform quarter-band producer. Do not call it a new invariant, a projective-coherence counterexample, a universal denominator exclusion, or a solution of #269.",
+    "hard_step": "Find universal or cofinal denominator-adaptive window pairs with nonzero modular defect without relying on the falsified small-centered-residue inequality.",
+    "open_boundary": "Universal/cofinal pair supply and the #269 irrationality implication remain open; metadata freshness must be repaired before claiming a fully current computational receipt.",
+    "bounded_expert_act": "Check the Blunck–Havlicek terminology and inspect the B=7 arithmetic against the source; then confirm that the live consumer does not silently use the stale Fourier or DyadicWindow metadata.",
+    "reentry_trigger": "Re-enter if the source, checker, receipt, or card changes, if the stale dependency is repaired, or if a cofinal pair-production theorem appears.",
+    "programme_disposition": "retire_uniform_quarter_band_producer_and_subordinate_under_erdos269_projective_coherence",
+    "paper_disposition": {
+      "class": "route-killing failure/boundary",
+      "target_section": "Projective denominator coherence: exact consumer and failed quarter-band producer",
+      "supersession_or_consolidation": "Keep the determinant factorization, B=7 retirement, and B=11 finite example as one boundary object; do not split the routine identity into a second theorem or elevate it above the #269 torus/collision mechanisms.",
+      "reason": "It saves expert time by removing a tempting but false uniform producer while preserving the modular obstruction that future work must actually supply."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "reason": "The two Lean declarations are independently restatable and the finite B=7 countermodel materially changes route selection; expose one minimal status-tagged interface, with the bounded countermodel and stale receipt boundary adjacent."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "Lean identity, conditional modular consumer, and exact finite falsifier",
+      "output_stage": "expert understanding and route canonicalization",
+      "artifact": "projective_quotient_defect_factorization_no_go_v0",
+      "human_understanding_delta": "A reviewer can distinguish routine determinant algebra, the useful conditional consumer, and the exact failure of the quarter-band producer without reading the entire #269 packet.",
+      "verification_state": "Two Lean declarations and exact finite scan are source-pinned; one dependency metadata row is stale and explicitly quarantined.",
+      "publication_or_review_state": "Status-tagged route-boundary visibility is eligible; no priority, acceptance, or specialist-review claim.",
+      "canonicalization_state": "One parent projective-coherence boundary; B=11 remains subordinate evidence.",
+      "unresolved_downstream_bottleneck": "Universal or cofinal nonzero-defect pair supply, not another finite scan.",
+      "next_stage_owner": "Mathematics Refinery for consolidation, Comparator/Public for the minimal firewall, and #269 proof owners for a genuine producer."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "routine determinant identity plus decisive finite countermodel",
+    "slow_down_at": "Do not conflate a nonzero projective residue with a proof that all denominators are excluded; the B=7 witness only kills the quarter-band producer.",
+    "automation_establishes": "Lean factorization, exact congruence interface, bounded scan, and the B=7 arithmetic witness.",
+    "expert_semantic_judgment": "Whether the projective terminology is conventional and whether the modular consumer remains logically separate from the retired smallness inequality.",
+    "review_act": "Verify the two source declarations and the B=7 first-pair payload, then classify the stale receipt row as documentation drift rather than mathematical failure."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#269 projective denominator coherence and producer retirement",
+    "disposition": "retire_inflated_uniform_quarter_band_route; subordinate the exact identity under projective-coherence mechanisms",
+    "consolidation_relation": "Absorb projective_two_window_residue_coherence and its B=11 example here; retain no parallel novelty narrative.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do_not_admit_retain_current_five",
+      "why_care": "It changes what future #269 work must prove: adaptive/cofinal modular supply, not a universal Euclidean quarter-band estimate.",
+      "evidence_class": "Lean-checked identity plus exact finite countermodel",
+      "hard_step": "Universal/cofinal pair-production remains absent.",
+      "prior_art_uncertainty": "Low for the determinant/projective language; exact local normalization has no located named antecedent but is elementary.",
+      "open_boundary": "No denominator-universal exclusion or irrationality theorem.",
+      "demoted_predecessor": "standalone projective-invariant novelty narrative",
+      "status_boundary": "Retain as a high-value route-killing boundary beneath the five absolute flagship objects."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_source_card_checker_and_receipt_bound_at_2026_08_26_with_declared_dependency_drift",
+    "bound_snapshot": {
+      "formal_source_commit": "2499c0d9ca2a7fa7f6c7b0cb59135a7a5622b431",
+      "formal_source_sha256": "310cd828fb9547c4d7d9b47d752ff18bb4ac2e489c50d1e92190c97229d248fe",
+      "reviewer_card_commit": "9109e050ebdb8b341551b6d75a3ca1e0b58b827b",
+      "reviewer_card_sha256": "ff5276d9cb4470cbf64ca5177a9cf6ad4836e60ed8f8c6de03a43ab9cfb18eda",
+      "checker_sha256": "efc8ce18e2c835a4c717d4d92bb576979dd0ad78c48ddcfe70448a5f6097effe",
+      "finite_receipt_sha256": "1661b6a5c1037dc2960180efc9b349d8f0d255f8343b993e9645a1d3fcdc8db5"
+    },
+    "claim_guard": "Routine determinant factorization and exact finite quarter-band retirement only; no projective-coherence refutation, universal denominator exclusion, Fourier theorem, or #269 solution.",
+    "reentry_trigger": "Repair the DyadicWindowComputationalLab dependency row or re-adjudicate on any source/card/checker/receipt change."
+  }
+}

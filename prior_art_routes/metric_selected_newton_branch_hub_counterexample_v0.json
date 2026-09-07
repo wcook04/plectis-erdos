@@ -1,0 +1,276 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "metric_selected_newton_branch_hub_counterexample",
+  "source_result_id": "metric_selected_newton_branch_hub_counterexample",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_standard_Newton_path_lifting_with_apparently_unrecorded_exact_fixed_hub_length_counterexample_no_priority_claim",
+  "problem_id": "erdos_1041",
+  "purpose": "Place the exact quintic counterexample in classical continuous-Newton and inverse-branch path-lifting theory, identify the precise metric transfer it falsifies, and prevent it from being read as a counterexample to Newton containment, all critical hubs, or Erdos #1041.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/metric_selected_newton_branch_hub_counterexample.card.json",
+    "refinery_handoff_commit": "9c38ac4f123a54dac22ba42c0351fcd643d86148",
+    "source_path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_newton_branch_hub.py",
+    "source_sha256": "da3774bcbc4d11ce8aea31180e51e1dcc6877b7bc943133bf9804864b84d5287",
+    "source_result_id": "metric_selected_newton_branch_hub_counterexample"
+  },
+  "classification": {
+    "ambient_framework": "continuous_Newton_flow_and_polynomial_inverse_branch_path_lifting",
+    "containment_mechanism": "standard_radial_value_transport_on_regular_levels",
+    "exact_quintic_certificate": "apparently_unrecorded_source_specific_counterexample_to_one_fixed_hub_length_transfer",
+    "priority_claim": "none",
+    "recommended_terminology": "fixed-hub Newton-branch length counterexample",
+    "acceptable_alias": "counterexample to metric-to-Newton-flow length transfer",
+    "discouraged_terminology": [
+      "counterexample to Newton flow",
+      "counterexample to polynomial path lifting",
+      "counterexample to the critical-point metric theorem",
+      "counterexample to Erdos Problem 1041",
+      "all-critical-hub obstruction"
+    ],
+    "attribution": "Credit the continuous Newton flow and radial value-line property to the established Newton-flow literature, and inverse-branch/path-lifting geometry to the standard covering framework and Kim--Martens--Sutherland. Credit the local asset only for the exact rational quintic, certified branch identity, and strict total-length lower bound at the specified hub.",
+    "mathematical_interest": "The construction separates two facts that are easy to conflate: canonical branches remain in the allowed lemniscate, yet their arclength can exceed the externally selected two-branch budget. The exact certificate makes this a reusable method-level no-go rather than a numerical warning.",
+    "reusable_scope": "Any proof architecture that first chooses a critical hub by one metric or combinatorial theorem and then substitutes that same hub's canonical inverse-ray/Newton branches without an independent arclength comparison.",
+    "why_it_matters": "It retires one natural repair of the straight-spoke route while leaving global hub selection, another critical point, Reeb/component geometry, and non-Newton paths intact."
+  },
+  "primary_sources": [
+    {
+      "id": "sutherland_1992_bad_polynomials_Newton_flow",
+      "title": "Bad Polynomials for Newton's Method",
+      "author": "Scott Sutherland",
+      "venue": "Stony Brook IMS Preprint 1992/7",
+      "url": "https://www.math.stonybrook.edu/preprints/ims92-7.pdf",
+      "source_archive": "annexes/sutherland-1992-newton-flow/source.pdf",
+      "source_archive_sha256": "e0dbfa6ad56d14971d4f901dc8568731e22359feeb1efb429b240f156b88d29e",
+      "pdf_pages": 46,
+      "extracted_markdown": "annexes/sutherland-1992-newton-flow/extracted.md",
+      "extracted_markdown_sha256": "3c9bec90e731ead82e755639d11bbad349e6a7279cb69ad880bc167b11cda0d7",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_section_5_flow_locator_compared",
+      "exact_anchor": "Section 5, printed p. 42 / PDF p. 44, defines the continuous Newton flow z-dot=-f/f' and states that f maps its trajectories to straight radial lines from the origin; critical values control singular behavior.",
+      "supports": "Standard Newton-flow terminology and the value-ray interpretation of the branches.",
+      "does_not_support": "No two-branch length budget, metric-selected hub theorem, or exact quintic obstruction."
+    },
+    {
+      "id": "jongen_jonker_twilt_1988_continuous_Newton",
+      "title": "The continuous, desingularized Newton method for meromorphic functions",
+      "authors": [
+        "H. Th. Jongen",
+        "P. Jonker",
+        "F. Twilt"
+      ],
+      "venue": "Acta Applicandae Mathematicae 13 (1988), 81-121",
+      "doi": "10.1007/BF00047503",
+      "url": "https://research.utwente.nl/en/publications/the-continuous-desingularized-newton-method-for-meromorphic-funct/",
+      "exact_anchor": "The paper develops the continuous and desingularized Newton flow for meromorphic functions and its phase portrait.",
+      "supports": "Historical continuous-Newton-flow and critical-point/separatrix framework.",
+      "does_not_support": "No fixed-hub arclength transfer or the polynomial configuration in this card."
+    },
+    {
+      "id": "kim_martens_sutherland_2018_path_lifting",
+      "title": "Geometry of Polynomials and Root-Finding via Path-Lifting",
+      "authors": [
+        "Myong-Hi Kim",
+        "Marco Martens",
+        "Scott Sutherland"
+      ],
+      "venue": "Nonlinearity 31 (2018), 414-457",
+      "doi": "10.1088/1361-6544/aa8ca8",
+      "url": "https://arxiv.org/abs/0903.3674",
+      "exact_anchor": "Abstract and algorithmic setup: roots are found by lifting a decreasing value path; complexity is governed by inverse-branch radii and angles to critical values. The paper explicitly combines covering structure, distortion, and critical-value geometry.",
+      "supports": "Modern primary-source context for polynomial inverse-branch path lifting and the metric relevance of critical values.",
+      "does_not_support": "No theorem that a hub selected by an external pair-distance argument has two Newton branches of total arclength below two."
+    },
+    {
+      "id": "hatcher_2002_covering_homotopy",
+      "title": "Algebraic Topology, Chapter 1",
+      "author": "Allen Hatcher",
+      "url": "https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf",
+      "source_archive": "annexes/hatcher-2002-algebraic-topology-covering-spaces/source.pdf",
+      "source_archive_sha256": "50b1632a200c66eeef2efba61fec49bb6d80442269f766df38817f23a01bde7c",
+      "pdf_pages": 76,
+      "extracted_markdown": "annexes/hatcher-2002-algebraic-topology-covering-spaces/extracted.md",
+      "extracted_markdown_sha256": "45638a47bb688646ddfd24c2cae455b262f31d266912e9d551f5c26e9a5dae99",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "verification_state": "primary_pdf_read_exact_proposition_1_30_path_lifting_locators_compared",
+      "exact_anchor": "Section 1.3, Proposition 1.30, printed p. 60 / PDF p. 40, gives homotopy lifting; the following path-lifting discussion is printed p. 61 / PDF p. 41.",
+      "supports": "Standard unique path and homotopy lifting over critical-value-free regions, used to identify inverse branches topologically.",
+      "does_not_support": "No arclength estimate or polynomial-specific critical-hub selection."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_core": "Away from critical values, a radial value path lifts uniquely to inverse branches, equivalently to finite-time trajectories of the continuous Newton flow. This gives containment in the corresponding strict sublevel set.",
+    "invalid_transfer": "A different theorem selects a critical hub because two roots are metrically close to it. Replacing the straight spokes by the same hub's canonical descending Newton branches preserves containment but does not preserve the sum of Euclidean spoke lengths.",
+    "local_delta": "The exact rational quintic certifies the two relevant branches through a regular half-level and uses Rouché disks plus triangle inequalities to prove their combined length exceeds 2.083996.",
+    "terminology_boundary": "'Same-hub Newton replacement' is useful internal route language, but the public mathematical noun should identify the proved failure: a fixed-hub Newton-branch length counterexample. 'Metric-selected' describes how the hub entered the proof architecture, not an intrinsic property of Newton flow.",
+    "surviving_routes": "The certificate does not minimize over critical hubs and does not rule out another path inside the lemniscate. It leaves least-critical-value selection, global hub comparison, component/Reeb-tree geometry, and non-Newton connectors open."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "polynomial Newton flow critical point separatrices root branches length",
+      "continuous Newton flow polynomial critical point inverse rays lemniscate",
+      "Newton graph polynomial critical points flow roots saddle separatrices",
+      "same critical hub Newton branches arclength",
+      "polynomial path lifting critical value branch length"
+    ],
+    "result": "The search located classical continuous-Newton flows, critical-point separatrix theory, and polynomial root-finding by path lifting with critical-value-dependent complexity. It did not locate a theorem asserting the disputed same-hub pair-length transfer or a prior exact counterexample of the displayed kind.",
+    "boundary": "The exact configuration may be described as apparently unrecorded in the reviewed sources, without priority or broad novelty inference."
+  },
+  "claim_boundary": {
+    "allowed_wording": "An exact rational quintic shows that the two canonical descending Newton branches from one prescribed metric-selected critical hub can remain inside the strict lemniscate while having combined arclength greater than two.",
+    "forbidden_wording": [
+      "Newton branches can never solve Erdos #1041.",
+      "Every critical hub has pair length greater than two.",
+      "The continuous Newton flow leaves the lemniscate.",
+      "The metric critical-point theorem is false.",
+      "The polynomial is a counterexample to Erdos #1041.",
+      "The stale Lean provenance is a fresh formal verification."
+    ],
+    "nonclaims": [
+      "not_a_counterexample_to_containment",
+      "not_an_all_hub_minimization",
+      "not_an_exclusion_of_other_paths",
+      "not_a_fresh_Lean_replay",
+      "not_a_solution_or_counterexample_to_erdos_1041"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/metric_selected_newton_branch_hub_counterexample.card.json",
+      "effect": "Replace pending novelty language with standard Newton/path-lifting attribution, fixed-hub length-counterexample terminology, and the exact surviving-route boundary."
+    },
+    {
+      "consumer": "Mathematics Refinery",
+      "effect": "Canonicalise the witness as a method-elimination asset: containment survives, metric transfer fails, global hub selection remains open."
+    },
+    {
+      "consumer": "Public Research Exhibition",
+      "effect": "Present the quintic only as a counterexample to one fixed-hub Newton-branch length replacement, with the stale Lean provenance and non-#1041 boundaries visible."
+    }
+  ],
+  "digestion_assessment": {
+    "decision": "one fixed-hub Newton-branch length counterexample as a route-killing boundary",
+    "canonical_family": "continuous Newton-flow geometry with fixed-hub branch-length transfer boundaries",
+    "why_care": "It separates strict lemniscate containment from the missing arclength estimate and eliminates all attempts that silently transfer a metric hub budget to its own canonical branches.",
+    "evidence_class": "fresh exact symbolic certificate; stale historical Lean provenance is disclosed rather than upgraded",
+    "hard_step": "a different hub-selection principle or global component geometry that controls length",
+    "paper_disposition": "route-killing boundary in A fixed-hub Newton transfer that fails",
+    "comparator_advisory": "one status-tagged fixed-hub counterexample interface is eligible now if it gives the exact rational witness, specified branches, strict containment, and lower bound while labeling the proof as fresh symbolic/ordinary and the historical Lean hash as stale",
+    "open_boundary": "other hubs, other curves, Reeb/component geometry, and Erdos 1041 remain open"
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-1041-lemniscate-newton-flow.tex",
+    "section": "A fixed-hub Newton transfer that fails",
+    "canonical_mechanism_family": "continuous Newton-flow geometry with fixed-hub branch-length transfer boundaries",
+    "relation": "Consolidate the exact quintic, branch-continuation certificate, and metric lower bound as one subordinate method boundary.",
+    "understanding_delta": "Containment and length are visibly separated at the exact point where the same-hub repair fails.",
+    "evidence_boundary": "Fresh symbolic replay is exact; stale Lean provenance is not current formal assurance.",
+    "hard_step": "Find a global or selected-hub metric theorem that survives the branch geometry.",
+    "meaningful_failed_route": "Assume that replacing two metric straight spokes by the same hub's Newton branches preserves their total length budget.",
+    "open_remainder": "No all-hub no-go, no alternative-path exclusion, and no solution of Erdos 1041."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "exact_computational_certificate_and_method_boundary",
+    "output_stage": "exposition_understanding_and_paper_assimilation",
+    "artifact": "fixed-hub Newton-branch length counterexample",
+    "human_understanding_delta": "Makes the failed metric-to-flow transfer inspectable as a single exact certificate rather than a collection of numerical warnings.",
+    "verification_state": "Fresh symbolic payload agrees with the stored certificate; stale Lean provenance remains a separate owner repair.",
+    "publication_or_review_state": "Eligible for status-tagged paper, exhibition, and Comparator-candidate presentation. It is fresh exact symbolic/ordinary evidence, not a current Lean replay, external review, acceptance, or #1041 result.",
+    "canonicalization_state": "One negative mechanism; no component-row proliferation.",
+    "unresolved_downstream_bottleneck": "A compact public firewall/replay route and a viable global length-control replacement.",
+    "next_stage_owner": "Role 3 for status-tagged public projection; #1041 geometry owners for the surviving global problem; external reviewers downstream."
+  },
+  "downstream_handoff": {
+    "disposition": "comparator_candidate_status_tagged_exact_counterexample",
+    "exact_statement_firewall": "For the displayed rational quintic and prescribed hub, two identified canonical descending Newton branches stay in the strict lemniscate but have combined length greater than 2.083996.",
+    "evidence_label": "fresh exact symbolic certificate with stale historical Lean provenance explicitly excluded from current formal assurance",
+    "forbidden_upgrade": "No all-hub statement, no failure of Newton containment, no counterexample to Erdős #1041, and no Lean-checked badge.",
+    "public_reason": "The replayable certificate and complete claim ceiling are inspectable; absent external review is not a reason to hide it.",
+    "shortlist_decision": "do_not_admit_retain_five"
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_generation": "2026-08-26_v2",
+    "result_family_version": "metric_selected_newton_branch_hub_counterexample@source_2026-08-26_v2",
+    "evidence_class": "Exact symbolic rational countermodel with ordinary branch replay; fresh symbolic certificate current, historical Lean provenance explicitly excluded.",
+    "closest_known_result": "Standard continuous Newton flow, radial value-line transport, and inverse-branch covering theory; no exact fixed-hub length counterexample was located.",
+    "comparison_relation": "A method-boundary counterexample to one metric-to-Newton transfer, not a counterexample to containment, polynomial path lifting, or Erdős #1041.",
+    "exact_delta": "For one prescribed critical hub and two prescribed canonical descending branches, strict lemniscate containment coexists with a total arclength above the selected two-branch budget.",
+    "disconfirming_evidence": "The witness addresses one hub and two branches only; other hubs, global selectors, Reeb/component paths, and non-Newton paths remain untouched, and the historical Lean hash is stale.",
+    "confidence": {
+      "exact_rational_countermodel": "high_internal_provisional",
+      "global_selector_or_all_hub_no_go": "zero_claimed",
+      "fresh_lean_assurance": "excluded"
+    },
+    "significance": "High route-killing boundary value for the metric-to-Newton transfer: it cleanly separates containment from length without claiming a global obstruction.",
+    "claim_ceiling": "Only the exact rational fixed-hub/two-branch length countermodel is admitted. No all-hub obstruction, containment failure, counterexample to Erdős #1041, fresh Lean replay, priority, or exclusion of other paths is admitted.",
+    "hard_step": "Keep the rational witness, branch identity, strict containment, and length lower bound exact while excluding stale Lean provenance from current assurance.",
+    "open_boundary": "Global hub/length control and alternative path architectures remain open; the witness does not decide the global selector problem.",
+    "bounded_expert_review_act": "Replay the symbolic branch certificate and verify the prescribed hub/branch quantifiers before using it as a method boundary.",
+    "reentry_trigger": "Re-enter when the symbolic checker or card changes, stale provenance is repaired, or a global selector claim is proposed.",
+    "source_generation": {
+      "symbolic_checker_sha256_observed": "da3774bcbc4d11ce8aea31180e51e1dcc6877b7bc943133bf9804864b84d5287",
+      "reviewer_card_sha256_observed": "6e1b737d3bb64748b46942188d550b02a9cade97ba0695cf57e5edad9a287108",
+      "parity_status": "fresh_symbolic_certificate_current; historical_Lean_provenance_stale_and_excluded"
+    },
+    "classification": {
+      "result_family": "metric_selected_newton_branch_hub_counterexample",
+      "evidence_class": "exact_symbolic_countermodel_and_ordinary_branch_replay",
+      "closest_prior_art": "standard continuous Newton flow, radial value-line transport, and inverse-branch covering theory; no located exact fixed-hub length counterexample",
+      "comparison_relation": "method-boundary counterexample to one metric-to-Newton transfer, not a counterexample to containment or #1041",
+      "novelty_confidence": "apparently_distinct_internal_case; no priority claim",
+      "significance_grade": "high_as_route_killing_boundary",
+      "why_care": "It cleanly separates lemniscate containment from metric length: canonical branches can stay inside while exceeding the selected hub's budget.",
+      "hard_step": "Keep the rational witness, branch identity, strict containment, and length lower bound exact while excluding stale Lean provenance from current assurance.",
+      "disconfirming_evidence": "The witness addresses one prescribed hub and two prescribed branches only; other hubs, paths, and global selectors remain untouched.",
+      "confidence_ceiling": "High for the displayed exact countermodel; no all-hub no-go, global #1041 counterexample, or Lean-checked badge.",
+      "bounded_expert_act": "Replay the symbolic branch certificate and verify the exact hub/branch quantifiers before using it as a method boundary.",
+      "reentry_condition": "Re-enter when the symbolic checker/card changes, stale provenance is repaired, or a global selector is proposed."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1041 fixed-hub Newton-flow length-transfer boundary",
+      "disposition": "retain_as_one_route_killing_failure_under_newton_geometry",
+      "paper_disposition": "route_killing_boundary_in_fixed_hub_newton_transfer_section",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "one status-tagged exact rational counterexample with stale Lean provenance excluded",
+      "expert_attention_reason": "This falsifies a tempting repair at the exact point of transfer without overclaiming anything about the global problem."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "exact_computational_certificate",
+      "output_stage": "method-boundary_exposition_and_review_support",
+      "artifact": "fixed-hub Newton-branch length counterexample",
+      "human_understanding_delta": "Makes containment-versus-length failure inspectable as one exact witness and preserves the surviving global alternatives.",
+      "verification_state": "Fresh symbolic replay current; historical Lean hash explicitly stale and excluded.",
+      "publication_or_review_state": "status-tagged counterexample visibility is defensible; no priority or endpoint claim",
+      "canonicalization_state": "one negative mechanism, no component-row proliferation",
+      "unresolved_downstream_bottleneck": "global hub/length control or an alternative path architecture",
+      "next_stage_owner": "Role 3 for projection and #1041 geometry owners for replacement routes"
+    }
+  },
+  "adjudication_currentness": {
+    "status": "fresh_symbolic_certificate_current_historical_lean_provenance_excluded",
+    "bound_snapshot": {
+      "symbolic_checker_sha256_observed": "da3774bcbc4d11ce8aea31180e51e1dcc6877b7bc943133bf9804864b84d5287",
+      "reviewer_card_sha256_observed": "6e1b737d3bb64748b46942188d550b02a9cade97ba0695cf57e5edad9a287108",
+      "parity_status": "fresh_symbolic_certificate_current; historical_Lean_provenance_stale_and_excluded"
+    },
+    "claim_guard": "Only the exact rational quintic fixed-hub/two-branch length countermodel is admitted. It is not an all-hub obstruction, containment failure, counterexample to Erdos 1041, fresh Lean replay, priority claim, or exclusion of other paths.",
+    "reentry_trigger": "Re-enter when the symbolic checker or card changes, stale Lean provenance is repaired, or a global selector claim is proposed."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The branch identity and containment algebra are exact; the load-bearing review is the rational arclength certificate and its quantifiers.",
+    "slow_down_at": "Verify the prescribed critical hub, the two canonical descending branches, strict lemniscate containment, and the exact lower bound before generalizing the failure.",
+    "automation_can_establish": [
+      "Fresh symbolic certificate and reviewer-card hashes",
+      "The displayed rational witness and its strict length inequality",
+      "That stale Lean provenance is excluded from current assurance"
+    ],
+    "human_judgment_required": [
+      "Whether the witness changes the Newton-transfer proof architecture",
+      "Whether standard Newton-flow and inverse-branch terminology is sufficient attribution",
+      "Whether a compact independent replay is needed before public use"
+    ],
+    "review_act": "One bounded replay of the symbolic branch certificate with explicit hub/branch quantifiers; no all-hub or #1041 inference.",
+    "attention_ceiling": "High route-killing value for one metric-to-Newton transfer, with no global no-go or priority claim."
+  }
+}

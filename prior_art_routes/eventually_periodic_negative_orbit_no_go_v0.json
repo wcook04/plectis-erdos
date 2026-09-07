@@ -1,0 +1,270 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "eventually_periodic_negative_orbit_no_go",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_scoped_lean_no_go_attribution_uncertainty_no_priority_claim",
+  "problem_id": "erdos_243",
+  "purpose": "Separate the routine eventual-period shift from the arithmetic periodic-orbit obstruction, compare the latter with primary arithmetic-dynamics literature, and bind an honest significance ceiling to the public reviewer card.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/eventually_periodic_negative_orbit_no_go.card.json",
+    "landed_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "research_packet_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "research_packet_sha256": "b16de4ffbf7e32182d00898d4136506359b3d31e5cb6a04d13f4009edc2c1df3",
+    "source_result_ids": [
+      "constant_negative_orbit_excluded",
+      "eventually_periodic_negative_magnitude_excluded"
+    ],
+    "headline_declarations": [
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_normalizedConstantNegative_orbit",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_scalePrimitiveConstantNegative_orbit",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_constantNegative_orbit",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_eventuallyConstantNegative_orbit",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_phasePrimitivePeriodicNegative_orbit",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_periodicNegative_orbit",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.no_eventuallyPeriodicNegative_orbit"
+    ]
+  },
+  "classification": {
+    "theorem_class": "arithmetic_nonexistence_theorem_for_an_eventually_periodic_magnitude_in_a_coupled_nonautonomous_integer_recurrence",
+    "novelty_class": "apparently_unrecorded_scoped_candidate_identity_pending_specialist_confirmation",
+    "formalization_class": "Lean_checked_unconditional_object_theorem_with_exact_hypothesis_boundary",
+    "priority_claim": "none",
+    "recommended_terminology": "eventually periodic negative-tail magnitude obstruction for a coupled divisibility cocycle",
+    "discouraged_terminology": [
+      "generic no-periodic-orbit theorem",
+      "Skolem--Mahler--Lech consequence",
+      "primitive-divisor theorem",
+      "solution of Erdős Problem 243"
+    ],
+    "nearest_prior_work": [
+      "Bell's generalized Skolem--Mahler--Lech theorem describes return times to a subvariety for iterates of one affine-variety automorphism in characteristic zero.",
+      "Faber and Granville prove eventual primitive prime divisors for differences in a non-eventually-periodic orbit of one rational map of degree at least two.",
+      "Neither framework directly models the present time-varying multiplier sequence coupled to additive magnitude and shape equations."
+    ],
+    "attribution": "Attribute the landed theorem and its prime-scale descent to the local #243 source. Cite Bell and Faber--Granville only to delimit neighboring arithmetic-dynamics mechanisms, not as antecedents.",
+    "mathematical_interest": "Moderate and potentially reusable: the proof turns eventual periodicity into a finite prime-budget contradiction and then removes nonprimitive common scale by induction on the phase drift.",
+    "reusable_scope": "Coupled rational-tail and cancellation recurrences with a multiplicative denominator state, additive positive magnitude, exact shape equation, and positive drift over a repeated magnitude phase.",
+    "why_it_matters": "The theorem removes every eventually periodic positive-magnitude obstruction from the exact natural #243 tail. It converts the surviving frontier from an undifferentiated negative branch into a genuinely aperiodic structural problem."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_straus_1964_ahmes_series",
+      "title": "On the irrationality of certain Ahmes series",
+      "author": "Paul Erdős and Ernst G. Straus",
+      "venue": "Journal of the Indian Mathematical Society 27 (1963), 129--133",
+      "url": "https://users.renyi.hu/~p_erdos/1964-19.pdf",
+      "exact_anchor": "Theorem 3, printed p. 132",
+      "supports": "The classical signed LCM-weighted rigidity boundary for the reciprocal-series problem from which the centered-state programme descends.",
+      "does_not_support": "The constant or periodic negative-state nonexistence theorem or its finite-prime proof."
+    },
+    {
+      "id": "duverney_2001_fast_converging_series",
+      "title": "Irrationality of fast converging series of rational numbers",
+      "author": "Daniel Duverney",
+      "venue": "Journal of Mathematical Sciences, the University of Tokyo 8 (2001), 275--316",
+      "url": "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf",
+      "exact_anchor": "Corollary 3.2, printed p. 287",
+      "supports": "A conditional signed reciprocal-series rigidity theorem under absolute summability of the quadratic-ratio error.",
+      "does_not_support": "Removal of the summability hypothesis or exclusion of the local constant or periodic centered-state shapes."
+    },
+    {
+      "id": "koizumi_2026_doubly_exponential_reciprocal_sum",
+      "title": "Irrationality of the reciprocal sum of doubly exponential sequences",
+      "author": "Junnosuke Koizumi",
+      "venue": "INTEGERS 26 (2026), A28",
+      "url": "https://arxiv.org/abs/2504.05933",
+      "exact_anchor": "Proposition 1 and Corollary 4, published PDF pp. 14--15",
+      "supports": "The nearest modern pseudo-greedy state framework and the eventual nonnegative-gap rigidity branch.",
+      "does_not_support": "The unrestricted negative-gap obstruction; the source leaves that branch open and does not state the constant or periodic finite-prime no-go."
+    },
+    {
+      "id": "bell_2006_generalised_skolem_mahler_lech",
+      "title": "A generalised Skolem-Mahler-Lech theorem for affine varieties",
+      "author": "Jason P. Bell",
+      "venue": "Journal of the London Mathematical Society 73 (2006), 367-379",
+      "arxiv": "math/0501309",
+      "url": "https://arxiv.org/abs/math/0501309",
+      "exact_anchor": "Abstract and main theorem: for an automorphism sigma of an affine variety Y, the return-time set {m : sigma^m(q) lies in X} is a finite union of complete doubly-infinite arithmetic progressions and a finite set.",
+      "supports": "The established arithmetic-dynamics meaning of eventual periodicity/arithmetic-progressions in an autonomous algebraic orbit.",
+      "does_not_support": "Nonexistence of the present coupled time-varying recurrence, divisor locking, phase-prime pigeonhole, or drift descent."
+    },
+    {
+      "id": "faber_granville_2011_prime_factors_dynamical_sequences",
+      "title": "Prime Factors of Dynamical Sequences",
+      "author": "Xander Faber and Andrew Granville",
+      "venue": "Journal für die reine und angewandte Mathematik 661 (2011), 189-214",
+      "arxiv": "0903.1344",
+      "url": "https://arxiv.org/abs/0903.1344",
+      "exact_anchor": "Abstract: for x_(n+1)=f(x_n), with one rational function f of degree at least two, non-eventual-periodicity forces a primitive prime factor of x_(n+1)-x_n for all sufficiently large n.",
+      "supports": "A primary neighboring use of prime factors to distinguish eventually periodic and nonperiodic arithmetic orbits.",
+      "does_not_support": "The converse direction, a nonautonomous multiplier cocycle, or the exact prime-scale descent used here."
+    }
+  ],
+  "mechanism_comparison": {
+    "reciprocal_series_boundary": "Erdős--Straus, Duverney, and Koizumi supply the surrounding rational-tail rigidity and sign-boundary framework. None states the exact constant or periodic negative-state shape obstruction.",
+    "constant_layer": "After removing gcd(c,m), every multiplier must use a prime of the fixed finite support of m, while divisor persistence makes each such prime available at most once. This needs no magnitude-versus-multiplier inequality.",
+    "local_mechanism": "Modular phase selection forces every multiplier to meet the finite prime support of M; repeated selected primes cause divisor locking across the periodic tail; failure of primitivity permits exact division by a common prime and induction on M.",
+    "bell_boundary": "Bell assumes iteration of one automorphism and concludes structure of a return-time set. The local theorem has time-dependent multipliers and concludes nonexistence from integrality and inequalities.",
+    "faber_granville_boundary": "Faber--Granville assume one degree-at-least-two rational map and derive new prime factors from nonperiodicity. The local proof assumes periodic magnitude and derives a contradiction from a fixed finite prime budget.",
+    "exact_delta": "A concrete finite-prime/descent obstruction tailored to the coupled D/C/e shape equations, with a sharper period-one theorem that drops the periodic layer's e_n<a_n hypothesis; eventual-tail shifts themselves are routine."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "eventually periodic integer affine recurrence divisibility",
+      "D_(n+1)=a_n D_n periodic",
+      "C_(n+1)=C_n+e_n periodic integer",
+      "periodic coefficients integer recurrence divisibility orbit",
+      "arithmetic dynamics periodic points affine maps integer orbit",
+      "constant negative centered state reciprocal tail recurrence",
+      "periodic negative gap pseudo-greedy reciprocal series"
+    ],
+    "result": "Exact-equation searches returned no relevant mathematical antecedent. The primary reciprocal-series sources give the surrounding rigidity and sign framework but not this shape obstruction; broader searches returned autonomous arithmetic dynamics, linear recurrences, Collatz-type maps, and periodic-coefficient integrable systems, none with the coupled hypotheses or proof mechanism.",
+    "boundary": "A bounded non-location result cannot establish novelty. Specialist review in recurrence sequences or arithmetic dynamics is still required before any stronger wording."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "erdos243_eventually_periodic_negative_orbit_no_go@formal-14bf635f-card-current",
+    "evidence_class": "Seven source-pinned Lean declarations proving a scoped arithmetic no-go for eventually periodic negative-tail magnitudes; Erdős--Straus, Duverney, Koizumi, Bell, and Faber--Granville are primary-source boundary context.",
+    "closest_known_result": "Erdős--Straus, Duverney, and Koizumi supply surrounding reciprocal-series and pseudo-greedy rigidity frameworks; Bell's generalized Skolem--Mahler--Lech concerns autonomous affine-variety orbits, and Faber--Granville concerns primitive factors for one rational map. None states this time-varying coupled divisibility-cocycle obstruction.",
+    "comparison_relation": "Source-specific finite-prime/divisor-locking descent in a nonautonomous coupled recurrence, adjacent to but not a consequence of Skolem--Mahler--Lech or primitive-divisor theory.",
+    "exact_delta": "The proof removes the entire eventually periodic positive-magnitude negative-tail class and leaves an explicitly aperiodic frontier; the periodic shift itself is routine, while divisor locking and prime-scale descent are the load-bearing steps.",
+    "disconfirming_evidence": "The bounded primary-source search found no verbatim antecedent; neighboring autonomous theories have incompatible hypotheses. The result says nothing about aperiodic negative tails, normalized-vanishing bridges, or #243 irrationality.",
+    "confidence": {
+      "level": "high_for_seven_Lean_declarations_and_hypothesis_boundary_medium_for_exact_antecedent_absence_low_for_global_243_significance",
+      "basis": "Formal source, card, and packet hashes are current; literature comparisons delimit neighboring frameworks but cannot establish novelty or priority."
+    },
+    "significance": "High route-killing value with moderate standalone novelty confidence: it converts an undifferentiated negative branch into a genuinely aperiodic problem and prevents repeated periodic searches.",
+    "claim_ceiling": "Lean excludes eventually periodic positive negative-tail magnitudes in the exact natural #243 recurrence. No generic affine-dynamics theorem, aperiodic exclusion, primitive-divisor consequence, irrationality, or priority claim.",
+    "hard_step": "The finite-prime phase-selection, divisor-locking, and primitive-scale descent that contradict an eventually periodic coupled orbit.",
+    "open_boundary": "Aperiodic negative tails, the normalized-vanishing/global bridge, and the #243 endpoint remain open; an exact recurrence-level antecedent is still unlocated.",
+    "bounded_expert_review_act": "Audit the seven declaration hypotheses against the recurrence and compare the divisor-locking descent with one recurrence-sequence or arithmetic-dynamics reference; do not generalize beyond the stated cocycle.",
+    "reentry_trigger": "Re-enter on source/card/packet generation changes or an exact primary-source theorem matching the coupled time-varying multiplier and finite-prime descent hypotheses.",
+    "source_generation_binding": {
+      "formal_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "formal_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+      "reviewer_card_sha256": "e8cc53f3c87b9d2cee6509fc9177939f05a806b33e2a17234391d16b976f23e2",
+      "parity_status": "formal source, packet, and reviewer card hashes current at adjudication"
+    },
+    "classification": {
+      "result_family": "erdos243_negative_tail_rigidity",
+      "evidence_class": "Lean_checked_scoped_arithmetic_no_go_with_primary_source_boundary_context",
+      "closest_prior_art": "Erdős--Straus/Duverney/Koizumi for reciprocal-series rigidity; Bell and Faber--Granville only as neighboring autonomous dynamics frameworks",
+      "comparison_relation": "Source-specific nonautonomous coupled-cocycle obstruction; no priority claim",
+      "novelty_confidence": "strong_internal_provisional_case_scoped_unrecorded_but_unconfirmed",
+      "significance_grade": "high_route_killing_boundary",
+      "why_care": "It retires every eventually periodic negative-tail explanation and focuses the remaining #243 work on genuinely aperiodic structure.",
+      "hard_step": "Finite-prime divisor locking and descent across the periodic core.",
+      "natural_friction": "Autonomous arithmetic-dynamics theorems do not transfer because the multiplier sequence varies with time and is coupled to the magnitude/shape equations.",
+      "disconfirming_evidence": "No exact antecedent was found, but non-location is not a novelty proof; all global and aperiodic branches remain open.",
+      "confidence_ceiling": "High for the scoped formal theorem; medium for independent significance; no official novelty or priority conclusion.",
+      "bounded_expert_act": "Check the recurrence hypotheses and one closest arithmetic-dynamics boundary reference.",
+      "reentry_condition": "Exact source-level antecedent or source-generation change."
+    },
+    "programme_disposition": {
+      "canonical_mechanism_family": "negative-tail rigidity for coupled divisibility recurrences",
+      "disposition": "retain_as_one_route_killing_boundary_under_bounded_negative_part_tail_rigidity",
+      "paper_disposition": "route_killing_failure_boundary",
+      "paper_target_section": "Periodic negative tails are arithmetically impossible",
+      "supersession_relation": "Consolidate constant, periodic, and eventual-periodic declarations here; retire repeated periodic-search fragments.",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "One exact no-go firewall for the seven Lean declarations with explicit eventual-periodic hypotheses; do not expose the neighboring literature as proof or infer #243 resolution.",
+      "expert_attention_reason": "This is a clean negative boundary that materially changes the search space while preserving the unresolved aperiodic and global bridge."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "formal_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "formal_source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+      "reviewer_card_sha256": "e8cc53f3c87b9d2cee6509fc9177939f05a806b33e2a17234391d16b976f23e2"
+    },
+    "claim_guard": "Only the eventually periodic negative-tail no-go is covered; aperiodic tails and the #243 endpoint remain open.",
+    "reentry_trigger": "Re-enter on source, packet, card, or exact recurrence-level antecedent changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The eventual-tail shift is routine; finite-prime phase selection, divisor locking, and descent carry the mathematical weight.",
+    "slow_down_at": "Check the nonautonomous multiplier sequence, positive drift, primitivity descent, and the exact eventual-periodic quantifiers.",
+    "automation_can_establish": [
+      "Seven Lean declaration correspondences and source/card/packet parity",
+      "The finite-prime and periodic-shape hypotheses as stated"
+    ],
+    "human_judgment_required": [
+      "Whether the scoped no-go is independently useful in recurrence or arithmetic-dynamics work",
+      "Whether the paper clearly separates this boundary from any aperiodic or irrationality claim"
+    ],
+    "review_act": "Audit the source hypotheses and one closest boundary reference; do not generalize to autonomous or aperiodic systems.",
+    "attention_ceiling": "High route-killing significance, medium novelty confidence, no priority or endpoint claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked arithmetic descent excludes eventually periodic positive negative-tail magnitudes in the exact natural #243 recurrence; a bounded primary-source search found no exact antecedent.",
+    "forbidden_wording": [
+      "This is a new theorem in arithmetic dynamics.",
+      "All eventually periodic affine recurrences are impossible.",
+      "Bell's theorem or primitive-divisor theory proves this result.",
+      "All bounded or aperiodic negative tails are excluded by this theorem alone.",
+      "This solves Erdős Problem 243."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_generic_affine_dynamics_theorem",
+      "not_a_Skolem_Mahler_Lech_corollary",
+      "not_an_aperiodic_orbit_exclusion",
+      "not_erdos_243_solution"
+    ]
+  },
+  "digestion_assessment": {
+    "decision": "route-killing boundary subordinate to bounded_negative_part_tail_rigidity",
+    "canonical_family": "negative-tail rigidity for coupled divisibility recurrences",
+    "expert_attention_reason": "eliminates the entire eventually periodic obstruction class and leaves genuine aperiodicity visible",
+    "evidence_class": "seven pinned Lean declarations; exact antecedent unlocated after bounded primary-source review",
+    "hard_step": "divisor locking and prime-scale descent in the periodic core",
+    "paper_disposition": "route-killing failure/boundary in Periodic negative tails are arithmetically impossible",
+    "comparator_advisory": "one consolidated interface; no separate constant, periodic, and eventual-tail counts",
+    "open_boundary": "aperiodic tails, the global bridge, and #243 remain open"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/eventually_periodic_negative_orbit_no_go.card.json",
+      "effect": "Replace the unassessed manifest state with a source-bounded candidate classification, exact proof mechanism, and public claim ceiling."
+    },
+    {
+      "consumer": "Formal Conjectures contribution owner",
+      "effect": "Treat the theorem as a candidate external statement pending specialist prior-art confirmation; do not conflate the routine eventual-tail shift with the arithmetic core."
+    },
+    {
+      "consumer": "Erdős #243 proof fleet",
+      "effect": "Do not revisit periodic negative magnitudes. Concentrate on genuinely aperiodic structure or on hypotheses needed to enter the exact natural-tail regime."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as a scoped Lean-checked no-go with unresolved priority, not as an endpoint theorem."
+    }
+  ],
+  "next_ranked_targets": [
+    "constant_perturbation_roots_in_unitDisk (Erdos 1041): likely standard Rouché/root-continuity consequence; adjudicate exact quantitative interface.",
+    "threeHalves_no_coordinatewiseCorridor (Erdos 1049): likely routine local barrier; decide whether reusable packaging has independent value.",
+    "no_cofinallyBoundedNegative_of_normalizedVanishes (Erdos 243): compare its recurrence/vanishing interface with standard discrete Grönwall and asymptotic recurrence lemmas."
+  ],
+  "next_pass": {
+    "kind": "typed_reentry_on_periodic_negative_tail_antecedent",
+    "priority_order": [
+      "retain the Bell/Faber--Granville comparison as a boundary on autonomous arithmetic dynamics, not as an antecedent",
+      "check only for a primary-source theorem matching the coupled time-varying multiplier, divisor locking, and finite-prime descent hypotheses",
+      "keep constant, periodic, and eventual-periodic declarations consolidated under one negative-tail rigidity family"
+    ],
+    "lane": "re-enter only when an exact recurrence-level antecedent or a correction to the seven-declaration source parity changes the current no-go ceiling"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "Lean_checked_periodic_negative_tail_prior_art_review",
+    "output_stage": "route_killing_boundary_human_review_support",
+    "artifact": "#243 eventually periodic negative-tail magnitude obstruction",
+    "human_understanding_delta": "The proof is presented as a finite-prime/divisor-locking descent for a coupled nonautonomous recurrence, not as a generic Skolem--Mahler--Lech or primitive-divisor theorem. It removes the periodic obstruction class while leaving aperiodic tails and the global bridge visible.",
+    "verification_state": "Seven named Lean declarations, source and packet hashes, and exact hypotheses are pinned; Bell, Faber--Granville, Erdős--Straus, Duverney, and Koizumi were used only to delimit neighboring frameworks.",
+    "publication_or_review_state": "Private route-killing significance support; no priority, arithmetic-dynamics discovery, or #243 endpoint claim.",
+    "canonicalization_state": "One consolidated negative-tail rigidity family; subordinate constant and periodic cases rather than separate theorem counts or interfaces.",
+    "unresolved_downstream_bottleneck": "An exact primary-source antecedent remains unlocated, and the aperiodic negative-tail/global normalized-vanishing bridge is still open.",
+    "next_stage_owner": "Novelty Observatory for any exact recurrence-level antecedent; Mathematics Refinery for consolidation; proof/public owners for the surviving aperiodic frontier."
+  }
+}

@@ -1,0 +1,836 @@
+% Original r6 appendices, unchanged. Integrate into the corrected companion before release.
+\appendix
+\section{Excluding a constant negative magnitude}\label{sec:constant}
+
+Suppose the error is negative with a constant magnitude, $E_n=-m$ for a fixed
+$m>0$ and every $n$.  By
+Proposition~\ref{res:update} the state then climbs by exactly $m$ each step,
+so $C_n=c+nm$ with $c=C_0$, and the definition of the centred state becomes a
+\emph{shape equation}
+\[
+ D_n+m=(a_n-1)\,(c+nm) .
+\tag{5.1}\label{eq:shape}
+\]
+Together with $D_{n+1}=a_nD_n$ this is a closed system in $(a,D)$, and it has
+no solutions.  The following instance shows how the failure happens; the
+theorem then shows that it cannot be avoided.
+
+\begin{example}[the shape equation running until it fails]\label{ex:shape}
+Take $m=c=1$, so that $C_n=1+n$ and the shape equation~\eqref{eq:shape} reads
+$D_n+1=(a_n-1)(1+n)$, and take $D_0=1$.  Each step is now determined: at $n=0$
+the equation reads $2=(a_0-1)\cdot1$, so $a_0=3$, and $D_1=a_0D_0=3$; at $n=1$
+it reads $4=(a_1-1)\cdot2$, so $a_1=3$, and $D_2=a_1D_1=9$; at $n=2$ it reads
+$10=(a_2-1)\cdot3$, which has no integer solution, and the orbit stops.
+Longer prefixes occur for other starting values: the finite search recorded in
+Appendix~\ref{app:residue} found none longer than $17$ among the initial
+states below $5000$.
+\end{example}
+
+\begin{theorem}[no constant negative magnitude]\label{res:constant}
+There is no pair of sequences $a,D:\N\to\N$ with $a_n\ge2$ for all $n$
+satisfying $D_{n+1}=a_nD_n$ and~\eqref{eq:shape}, for any $m>0$ and any
+$c$.  The same holds if the shape only begins at some index.
+\end{theorem}
+
+\begin{proof}[Proof when $c$ and $m$ are coprime]
+Assume first $\gcd(c,m)=1$.  Two facts about the multipliers do all the work,
+and the difficulty lies in the fact that they concern the same finite set of
+primes from opposite directions: the first makes every multiplier meet that
+set, the second lets each prime of the set meet at most one multiplier.
+
+\emph{Every $a_j$ shares a prime with $m$.}  Suppose $\gcd(a_j,m)=1$.  Then
+$m$ is invertible modulo $a_j$, so some $n$ has $c+nm\equiv0$, that is
+$a_j\mid C_n$; and $a_j\mid D_n$ for every $n>j$, since $D$ is multiplicative
+with $a_j$ among its factors.  Choosing such an $n$ beyond $j$
+and reading~\eqref{eq:shape} modulo $a_j$ gives $a_j\mid m$, contradicting
+$\gcd(a_j,m)=1$ and $a_j\ge2$.
+
+\emph{A prime divisor of $m$ occurs in at most one $a_j$.}  Suppose $p\mid m$
+and $p\mid a_j$.  For $n>j$ we have $p\mid D_n$, so~\eqref{eq:shape} gives
+$(a_n-1)C_n\equiv0 \pmod p$.  Now $C_n=c+nm\equiv c$, and $p\nmid c$ because
+$p\mid m$ and $\gcd(c,m)=1$; hence $p\mid a_n-1$, so $p\nmid a_n$.  Thus $p$
+cannot divide any later multiplier.
+
+The two facts are incompatible.  Each of the infinitely many multipliers needs
+a prime divisor of $m$, and each prime divisor of $m$ serves at most one
+multiplier, while $m$ has only finitely many prime divisors.
+\end{proof}
+
+\noindent The case $\gcd(c,m)=1$ is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{147}{no_scalePrimitiveConstantNegative_orbit}{scale-primitive
+exclusion}.  The special case $m=c=1$, worked through in
+Example~\ref{ex:shape}, where $m$ has no prime divisors at all and the first
+fact is immediately contradictory, is recorded separately as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{100}{no_normalizedConstantNegative_orbit}{normalised
+exclusion}.
+
+\begin{proof}[Removing the scale]
+For general $c$, put $g=\gcd(c,m)$.  Equation~\eqref{eq:shape} shows
+$g\mid D_n$ for every $n$, so dividing $D$, $c$ and $m$ by $g$ leaves a system
+of the same shape with coprime data, which the previous case excludes.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{286}{no_constantNegative_orbit}{exclusion
+at every scale}, and the eventual form, obtained by shifting the orbit to the
+first constant index, as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{350}{no_eventuallyConstantNegative_orbit}{eventual
+exclusion}.
+
+Theorem~\ref{res:constant} excludes a centred state that is eventually constant
+and negative, at every magnitude and every scale.  It says nothing about a
+negative state whose magnitude changes, and the argument genuinely uses
+constancy: the finiteness of the set of prime divisors of $m$ is what the
+pigeonhole uses, and a varying magnitude presents a fresh set at each index.
+
+\section{Excluding a periodic negative magnitude}\label{sec:periodic}
+
+The next case allows the magnitude to vary, provided it repeats.  Write
+$e_n=-E_n>0$ for the magnitude, as in Section~\ref{sec:state}, so that
+$C_{n+1}=C_n+e_n$; suppose $e$ has period $h$, meaning $e_{n+h}=e_n$ for every
+$n$, and that the state gains a fixed \emph{drift} $M>0$ over one period,
+meaning $C_{n+h}=C_n+M$ for every $n$.
+
+At $h=1$ this says that the magnitude is constant and that $M$ is its value,
+which is the situation of Section~\ref{sec:constant};
+Theorem~\ref{res:constant} already excludes it, and does so without the extra
+hypothesis $e_n<a_n$ imposed below.  The new content is $h\ge2$.
+
+Section~\ref{sec:constant} could run its pigeonhole on the prime divisors of
+the single number $m$.  Here the magnitude changes inside a period, and the
+number available to run it on is the drift $M$.  Three lemmas replace the two
+facts of Section~\ref{sec:constant}.  The first is
+that multipliers persist: every $a_j$ divides every strictly later denominator
+state, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{382}{base_dvd_denState_later}{persistence
+of a multiplier}.  The second is a \emph{lock}: a prime already dividing $D$ and also
+dividing the current multiplier is forced into the next tail state, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{402}{divisorLocksTailSucc}{one-step
+lock}, and once present in both $D$ and $C$ it stays in every later $D$, $C$
+and magnitude, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{429}{divisorLock_persists}{persistence
+of a lock}.  The third transports a lock backwards through the period: if a
+divisor of the drift $M$ occurs in two multipliers, it is a common divisor of
+$C_0$ and of every magnitude, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{494}{repeatedDivisor_forces_periodicCommonScale}{repeated-divisor
+transport}, using that both the period relation and the drift iterate over any
+number of periods, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{461}{periodic_add_mul}{iterated
+period} and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{476}{phaseDrift_add_mul}{iterated
+drift}.
+
+\begin{theorem}[no periodic negative magnitude]\label{res:periodic}
+Let $a,D,C,e:\N\to\N$ with $a_n\ge2$, $e_n>0$ and $e_n<a_n$ for every $n$,
+satisfying
+\[
+ D_{n+1}=a_nD_n,\qquad C_{n+1}=C_n+e_n,\qquad D_n+e_n=(a_n-1)C_n ,
+\]
+and suppose $e_{n+h}=e_n$ and $C_{n+h}=C_n+M$ for some $h>0$ and $M>0$.  This
+is impossible.
+\end{theorem}
+
+\begin{proof}
+Strong induction on the drift $M$.  The difficulty lies in the fact that a
+repeated prime divisor of $M$ need not contradict anything directly.  It
+instead forces a common scale on the whole orbit, which can be divided out, and
+the induction runs on the drift that the division reduces.
+
+Suppose first that no prime divisor of $M$ is a common divisor of $C_0$ and of
+every magnitude.  Repeated-divisor transport then applies in the
+contrapositive: a prime divisor of $M$ occurring in two of the multipliers
+would be exactly such a common divisor, so each prime divisor of $M$ occurs in
+at most one multiplier.  Against this, the argument of
+Section~\ref{sec:constant} run phase by phase (along a fixed residue class
+modulo $h$ the magnitude is constant and $C$ advances by $M$ at each period, so
+the multipliers of that phase meet an arithmetic progression exactly as in
+Section~\ref{sec:constant}) makes every multiplier share a prime with $M$.
+Since $M$ has only finitely many prime divisors and there are infinitely many
+multipliers, pigeonhole gives a contradiction.
+
+Otherwise some prime $p$ divides $M$, divides $C_0$, and divides every
+magnitude.  Then $p\mid C_n$ for every $n$, since $C_{n+1}=C_n+e_n$ and both
+summands on the right are divisible by $p$, and the shape equation
+$D_n+e_n=(a_n-1)C_n$ then gives $p\mid D_n$ for every $n$.  Divide $D$, $C$ and
+$e$ by $p$.  The multipliers are untouched, so $a_n\ge2$ and $e_n<a_n$ persist
+and the magnitudes stay positive; the three recurrences are homogeneous in
+$(D,C,e)$ and so survive; the period is still $h$; and the drift becomes
+$M/p<M$.  The inductive hypothesis applies.
+\end{proof}
+
+\noindent The first of the two cases above is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{548}{no_phasePrimitivePeriodicNegative_orbit}{phase-primitive
+exclusion}, the induction is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{690}{no_periodicNegative_orbit}{exclusion
+at every scale}, and the eventual form is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{796}{no_eventuallyPeriodicNegative_orbit}{eventual
+exclusion}.
+
+The bound $e_n<a_n$ is a genuine restriction and not a normalisation.  It is
+the range in which a multiplier cannot divide its own phase magnitude, which
+is what the lock argument needs.  It holds in the intended reading, where
+$e_n$ is a centred representative and $a_n$ grows quadratically, but it is
+assumed here and not derived.  The drift hypothesis $M>0$ is also used: a
+periodic magnitude with zero drift would be identically zero, which is the case
+already settled by Section~\ref{sec:descent}.
+
+\begin{remark}
+On the canonical orbit of~\cite{koizumi2025}, read through the dictionary of
+Section~\ref{sec:problem}, the bound $e_n<a_n$ holds eventually.  Lemma~4(2)
+there gives the centring range $-C_n/2\le E_n<C_n/2$, so $e_n=|E_n|\le C_n/2$ at
+a negative index, and the proof of Lemma~4(3) gives $C_{n+1}\le\tfrac32C_n$
+~\cite[p.~11]{koizumi2025},
+hence the uniform bound $C_n\le C_0(3/2)^{n}$.  Against this, summability of
+$\sum1/a_n$ forces
+$a_n\to\infty$, and the growth hypothesis $a_n^{2}/a_{n+1}\to1$ gives
+$a_{n+1}\ge a_n^{2}/2$ for all large $n$, hence $a_{n+1}\ge2a_n$ once
+$a_n\ge4$; so the multipliers grow at least geometrically with ratio $2$ and
+outgrow the bound on $C_n$, making $e_n/a_n$ eventually small.  Two caveats.
+Summability is used for this step, so the estimate is not available from the
+state recurrence alone; and the conclusion is eventual and not universal,
+whereas Theorem~\ref{res:periodic} imposes $e_n<a_n$ at every index, so it is
+the eventual form of the exclusion cited above that applies.  Under the
+periodicity hypothesis of Theorem~\ref{res:periodic} the estimate is in any
+case unnecessary, since a periodic magnitude is bounded while the multipliers
+tend to infinity.
+\end{remark}
+
+
+\section{Two-step cancellation and feedback}\label{app:feedback}
+
+The one-step state equations hide a second-order constraint once the raw
+numerator is reduced at two consecutive stages.  Write $u,u_1,u_2$ for the
+primitive numerator coordinates, $v,v_1$ for the corresponding denominator
+coordinates, and $h,h_1$ for the two common factors removed in reduction.  If
+the two steps have multipliers $a,a_1$, then the exact hypotheses are
+\[
+ hu_1+v=au,\qquad hv_1=av,\qquad
+ h_1u_2+v_1=a_1u_1.
+\]
+
+\begin{theorem}[two-step primitive recurrence]\label{res:secondorder}
+Under these three equations,
+\[
+ a^2u+hh_1u_2=h(a+a_1)u_1.
+\]
+\end{theorem}
+
+\begin{proof}
+Multiply the first equation by $a$, replace $av$ using the second equation,
+and then replace $h_1u_2+v_1$ using the third.  The remaining terms factor as
+the displayed right-hand side.
+\end{proof}
+
+\noindent This is the
+\lword{Erdos243/DynamicCancellation.lean}{268}{reducedStep_secondOrder}{two-step
+primitive recurrence}.  The hard point is keeping both changing cancellation
+factors visible.  The result is stronger than a one-step congruence, though it
+remains non-autonomous and cannot by itself force $a_1=a^2-a+1$.
+
+There is a complementary integer identity when the relevant step is
+cancellation-free.  Put $q=ap-p_1$, and suppose the next primitive coordinate
+satisfies
+\[
+ p_2+a^2p=(a+a_1)p_1.
+\]
+Then
+\begin{theorem}[cancellation-free curvature identity]\label{res:curvature}
+\[
+ q^2+\bigl(pp_2-p_1^2\bigr)=(a_1-a)pp_1.
+\]
+\end{theorem}
+
+The square $q^2$ is the local remainder, while $pp_2-p_1^2$ is a discrete
+curvature term.  The right side records the change in multiplier, so the
+identity supplies a diagnostic for an anti-shadowing argument without
+asserting a sign or a global monotonicity.  It is checked as
+\lword{Erdos243/DynamicCancellation.lean}{307}{cancellationFree_curvature_square}{the
+cancellation-free curvature square}; no global anti-shadowing conclusion is
+claimed.
+
+Finally, the reduced denominator transport has a precise realizability gate.
+Let $e,e_1$ be centred errors and let $\Delta$ be the Sylvester defect.  If
+\[
+ hu_1=u-e,
+ \qquad he_1=a^2e-\Delta(u-e),
+\]
+then the transport equality
+\[
+ h\bigl((a_1-1)u_1+e_1\bigr)
+   =a\bigl((a-1)u+e\bigr)
+\]
+has mismatch which factors through $u-e$.  Consequently, when $u-e\ne0$,
+\[
+ h\bigl((a_1-1)u_1+e_1\bigr)
+   =a\bigl((a-1)u+e\bigr)
+ \quad\Longleftrightarrow\quad
+ a_1=a^2-a+1+\Delta.
+\]
+This is the exact
+\lword{Erdos243/FeedbackRealizability.lean}{64}{feedback_denominator_transport_iff}{feedback
+transport equivalence}, obtained from the factored defect at
+\lword{Erdos243/FeedbackRealizability.lean}{15}{feedback_transport_defect}{feedback
+transport defect}.  The nonzero-raw-numerator hypothesis is essential: if
+$u-e=0$, the factorised mismatch cannot identify $a_1$.
+
+These three identities require orbit-level hypotheses that remain unproved:
+eventual absence of cancellation, a fixed sign for the curvature, or cofinal
+passage through the feedback gate.  The global mixed-sign and
+unbounded-negative regimes of Problem~\#243 remain open.
+
+
+\section{Record increments, protected epochs and record-amplified errors}\label{sec:records}
+
+This section works in the reduced coordinates of the tail and allows an
+arbitrary cancellation factor at every step.  Write
+$x_n=\sum_{k\ge n}1/a_k=u_n/v_n$ in lowest terms, put
+$e_n=v_n-(a_n-1)u_n$ for the centred error, $w_n=a_nu_n-v_n=u_n-e_n$ for the
+raw next numerator, and $h_n=\gcd(w_n,a_n^2)$ for the content removed, so that
+\[
+ h_nu_{n+1}=w_n,\qquad h_nv_{n+1}=a_nv_n,\qquad \gcd(u_n,u_{n+1})=1 .
+\]
+Under the growth hypothesis the selector is eventually the nearest integer and
+$e_n/u_n\to0$, so $2|e_n|<u_n$ on a tail.  Let $R_n=\max_{k\le n}u_k$ be the
+running maximum.  The \emph{true record increment} is $R_{n+1}-R_n$; the
+\emph{record-setting jump} $u_{n+1}-u_n=(R_{n+1}-R_n)+(R_n-u_n)$ also recovers
+the drawdown $R_n-u_n$.  The exact orbit
+$(8,177)\to(7,4071)\to(10,2373393)$ with multipliers $23$ and $583$ has
+records $8$ and $10$: the increment is $2$, the jump is $3$, and
+$\gcd(8,10)=2$.  The distinction governs which parity arguments are available.
+
+The results below are the finite arithmetic cores of the second return batch of
+2026-09-05, together with the global criteria they support.  Four Lean modules
+carry the finite cores and are listed in Appendix~\ref{app:index}; the global
+criteria are ordinary proofs recorded in the working note
+\texttt{WeightedRecordOctupleCriteria.md}.  Every result is conditional on its
+stated hypotheses and none settles Problem~\#243.
+
+\begin{theorem}[historical square payment]\label{res:squarepayment}
+On every step and for every prime $p$,
+$\nu_p(h_n)\ge2\,(\nu_p(v_n)-\nu_p(v_{n+1}))_+$.  Consequently, if $p^b\mid v_T$
+and $p\nmid v_s$ for some $s>T$, then $p^{2b}$ divides $\prod_{T\le n<s}h_n$, and
+this divisibility persists in every later product even if $p$ re-enters the
+denominator.
+\end{theorem}
+
+\begin{proof}
+Since $h_n\mid w_n$ and $h_n\mid a_nv_n$, the identity
+$\gcd(w_n,a_nv_n)=\gcd(w_n,a_n^2)$ gives $h_n\mid a_n^2$, hence
+$\nu_p(h_n)\le2\nu_p(a_n)$, while the denominator update gives
+$\nu_p(v_{n+1})=\nu_p(a_n)+\nu_p(v_n)-\nu_p(h_n)$.  A drop of size $\delta$
+therefore has $\nu_p(h_n)=\nu_p(a_n)+\delta\ge2\delta$.  Summing over the
+interval telescopes the drops.
+\end{proof}
+
+The per-step inequality and the telescoped product are checked in Lean.
+
+\begin{theorem}[unit record increments force the recurrence]\label{res:unitincrement}
+Assume the hypotheses of Problem~\ref{res:problem}.  If $R_{n+1}-R_n\le1$ for
+all sufficiently large $n$, then $a_{n+1}=a_n^2-a_n+1$ eventually.  Hence the
+sequence is eventually Sylvester if and only if
+$\#\{n:R_{n+1}-R_n\ge2\}<\infty$.  No hypothesis is imposed on drawdowns, on
+record-setting jumps, or on the cancellation factors.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+If the recurrence fails then $e_n\neq0$ eventually and $u_n\to\infty$.  A late
+multiplier coprime to all earlier ones carries a prime power $P=p^e\mid v_s$
+with $P\ge R_s+3$, because otherwise $a_j$ divides $\operatorname{lcm}(1,\ldots,R_{j+1}+2)$
+and $\log a_j\le\exp(o(j))$, against $\log a_j\ge c2^j$.  Let $H$ be the least
+multiple of $p$ above $R_s$, so $R_s<H\le R_s+p$.  At the first $t>s$ with
+$u_t\ge H$ one has $R_{t-1}\le H-1$ and $u_t=R_t\le R_{t-1}+1\le H$, so $u_t=H$.
+Before $t$ the raw numerators satisfy $w_n<\tfrac32u_n<\tfrac32H<pP$, so the
+valuation threshold keeps $P\mid v_t$, and $p\mid u_t$ contradicts
+$\gcd(u_t,v_t)=1$.  The converse is $u_n=1$ on a Sylvester tail.
+\end{proof}
+
+The finite cut and the composed consumer are checked in Lean with the
+prime-power supply as an explicit hypothesis; the supply is an ordinary
+argument in the working note, not a Lean theorem, and is not used here as a
+global criterion.  The two-unit record-jump theorem of the first batch, which bounds
+the record-setting jump by $2$ and needs an odd prime and a parity argument, is
+incomparable with Theorem~\ref{res:unitincrement}: a jump of at most $2$ bounds
+the increment by $2$ and an increment of at most $1$ allows arbitrarily large
+jumps after a drawdown.  True increments of size exactly $2$ are covered by
+neither theorem.
+
+\begin{theorem}[record increments against cancellation]\label{res:kgamma}
+Put $\ell(x)=\log_2\log_2\max(4,x)$, $K=\limsup(R_{n+1}-R_n)/\ell(R_n)$ and
+$\Gamma=\liminf\ell(G_n)/\ell(R_n)$, where $G_n=\gcd(C_n,D_n)$.  On a
+non-Sylvester orbit $K+\Gamma\ge1$.  In particular
+$R_{n+1}-R_n=o(\ell(R_n))$ forces $G_n\ge2^{(\log_2R_n)^{1-\eta}}$ eventually
+for every $\eta>0$.
+\end{theorem}
+
+The proof charges the retirement of fresh multipliers whose primes all leave the
+reduced denominator to $G_n$ through Theorem~\ref{res:squarepayment}, and forces
+a large increment by a Chinese-remainder block when they do not retire.  It is a
+necessary condition compatible with $\log G_n=o(n)$ and $\log R_n=o(n)$.
+
+\begin{theorem}[protected epoch energy]\label{res:epoch}
+Let $p\ge3$ be prime, $Q=p^{\ell}\mid v_s$, $Q\ge16$, $L=pQ/2$, $R_s<L/2$, and
+let $\tau>s$ satisfy $u_\tau\ge L$.  Call a step in $[s,\tau)$ charged if it is
+the first to cross an odd multiple of $p$ in $(L/2,L]$; let $K$ be the number of
+charged steps and $X$ the sum over them of $u_{n+1}-u_n-2$.  Every charged step
+is a global record with $h_n=1$ and $u_{n+1}-u_n\ge3$, and
+\[
+ pQ\le(8p+8)K+4X+8p .
+\]
+Consequently $\sum(u_n^{-1/2}+(u_{n+1}-u_n-2)/u_n)\ge1/16$ over the charged
+steps.
+\end{theorem}
+
+The integer inequality is checked in Lean and needs no minimality of $\tau$;
+the $1/16$ corollary is an ordinary comparison over it.  The global energy
+criterion --- that the parent hypotheses make the sequence eventually
+Sylvester if and only if the record-energy series converges --- is not
+supplied: the missing steps are odd-prime-power supply at every late index,
+overlap selection across epochs, and the weighted comparison of the local
+$1/16$ masses with a single series.
+
+\begin{problem}[global epoch energy]\label{res:epochglobal}
+Under the hypotheses of Problem~\ref{res:problem}, is the sequence eventually
+Sylvester if and only if
+\[
+ \sum_{n\ \text{record}}\Bigl(\frac{\mathbf 1_{u_{n+1}-u_n\ge3}}{\sqrt{u_n}}
+ +\frac{(u_{n+1}-u_n-2)_+}{u_n}\Bigr)<\infty\ ?
+\]
+\end{problem}
+
+The inequality is the quantitative record-excess obligation that the first
+batch left open: one protected prime power is reused across about $Q/8$
+barriers, at the price of stopping at the scale $pQ/2$.  The square-root term
+cannot be dropped, since a walk avoiding the multiples of a large prime with
+jumps of $3$ only near those multiples has $\sum(u_{n+1}-u_n-2)/u_n=O(\log p/p)$
+up to height $p^2/2$.
+
+\begin{theorem}[saturated square transport]\label{res:saturated}
+At every step, $u_{n+1}\mid h_ne_ne_{n+1}-v_n^2$.  In the normal form
+$h_n=bc^2$, $a_n=bc\ell$, $v_n=bcs$ one has
+$be_ne_{n+1}\equiv(bs)^2\pmod{u_{n+1}}$ with $b$, $s$ and $\ell$ units modulo
+$u_{n+1}$.  Hence for every odd prime $p\mid u_{n+1}$ the Legendre symbols of
+$e_ne_{n+1}$ and of $b$ agree, and a non-residue forces $h_n$ to be a
+non-square, in particular $h_n\ge2$.
+\end{theorem}
+
+\begin{proof}
+From $v_n-a_ne_n=(a_n-1)w_n$ and $h_ne_{n+1}=a_nv_n-(a_{n+1}-1)w_n$ one has
+$a_ne_n\equiv v_n$ and $h_ne_{n+1}\equiv a_nv_n$ modulo $w_n$; multiplying
+gives $w_n\mid v_n^2-h_ne_ne_{n+1}$ and $u_{n+1}\mid w_n$.  Substituting the
+normal form and cancelling $bc^2$ as integers gives the refined congruence;
+$v_{n+1}=b\ell s$ is coprime to $u_{n+1}$.
+\end{proof}
+
+All parts are checked in Lean.  The earlier transport of
+Section~\ref{sec:open} worked modulo the part of $u_{n+1}$ coprime to
+$G_{n+1}$; here the modulus is the whole numerator.  A pure-square payment
+$h_n=c^2$ has $b=1$ and is invisible to the congruence: the family
+$u=p^2k-1$, $a=pz$, $v=(a-1)u-1$ with $z\equiv1\ (k)$, $z\equiv0\ (k+1)$,
+$p\nmid z$ has $e=e'=-1$ and $h=p^2$ with no defect.
+
+\begin{lemma}[record-amplified error after cancellation]\label{res:amplified}
+If $t$ is the first index after $s$ with $e_t<0$, then $u$ is nonincreasing on
+$(s,t]$, so $u_t\le u_{s+1}$ and
+$A_t\ge u_s/u_{s+1}=h_s/(1-e_s/u_s)$: a cancellation is visible at the next
+negative error.
+\end{lemma}
+
+The visibility lemma is checked in Lean.  Pricing the deletion of a block
+prime instead of protecting it is the mechanism that would reach every bound
+$B$ where the parity barrier stops at $2$, but the global iteration ---
+arbitrarily late CRT blocks, density-zero paid steps, and the transfer
+$\limsup A_n<\infty$ if and only if eventual Sylvester recurrence --- is not
+supplied.
+
+\begin{problem}[global record-amplified criterion]\label{res:amplifiedglobal}
+Assume the hypotheses of Problem~\ref{res:problem}.  Put $m_n=(-e_n)_+$,
+$A_n=R_nm_n/u_n$ and $\delta_n=(a_n^2/a_{n+1}-1)_+$.  Is the sequence
+eventually Sylvester if and only if $\limsup A_n<\infty$, if and only if
+$\limsup R_n\delta_n<\infty$?  At the critical rate $\delta_n=O(1/n)$, with no
+convergence assumption on $n\delta_n$, is it eventually Sylvester if and only
+if $u_n=O(n)$, if and only if $(-e_n)_+=O(1)$?
+\end{problem}
+
+\begin{theorem}[two-modulus cut]\label{res:twomodulus}
+Let $H\equiv5\pmod6$, and let $m\mid H$ and $\ell\mid H+2$ with $m,\ell>1$
+dividing $v_{n+1}$.  Then no step has $u_n<H\le u_{n+1}$ with
+$u_{n+1}-u_n\le4$.  Consequently, if late record-setting jumps are at most $4$
+on a non-Sylvester orbit, then $\limsup\log G_n/\log u_n\ge4/3$ along records.
+\end{theorem}
+
+The cut is checked in Lean: the landings $H$ and $H+2$ die by primitivity, and
+the landings $H+1$ and $H+3$ leave both endpoints even or both divisible by
+$3$.  It is sharp, since $(u,v)=(33,5\cdot37\cdot41)$ with $a=231$ crosses
+$H=35$ by a jump of $5$ with coprime endpoints.  The $4/3$ alternative charges
+all but one of a block of pairwise coprime old moduli to $G_n$ by
+Theorem~\ref{res:squarepayment}.
+
+Three further ordinary results from the same batch are recorded in the working
+note.  The tail gcd is sandwiched as $M_n\mid G_n\mid M_n^2$ against the LCM
+overlap debt of Section~\ref{sec:lcmrecords}, so every lower bound on $G_n$
+above is a lower bound $M_n\ge\sqrt{G_n}$.  No exact integer orbit agrees with a
+rational multiple of a monic integer quadratic on more than a $3/4$ proportion
+of any long interval, uniformly in the interval's position, by a Chebotarev
+supply of prime obstructions.  The exceptional-discriminant negative-norm
+calculation uses integer $k\ge1$; at $k=1/2$ both displayed norms are positive,
+so that sign argument does not transfer unchanged to monic quadratics over
+$\mathbb Q$.
+
+No exact integer orbit agrees with a fixed rational cubic
+$An(n+1)(n+2)+B$ on a density-one set of indices: each such profile has a
+positive lower density of exceptions.  The reductions assume lower density
+zero through gcd stabilisation, primitive shape, and the field-square
+calculation; they do not yield a uniform density bound over all $A,B$.  The
+two primitive words $2n(n+1)(n+2)\pm1$ are forbidden only at the stated
+phases (plus starts $n\equiv0\pmod7$, minus starts $n\equiv1\pmod7$); disjoint
+four-index blocks then give exceptional lower density at least $1/7$ on those
+profiles.  The factor $1/(4\cdot7)=1/28$ is word-period accounting, not a uniform
+constant, and an unrestricted ``no four consecutive agreements'' wording is
+false: the plus profile admits a primitive four-step state at indices
+$1,2,3,4$.  A middle zero at the forbidden phases forces $d_1^2\equiv2$ while
+the coprime-update image is $\{0,2,5,6\}$.  The denominator-cleared identities
+$(\alpha+2)Q(\alpha-1)-(\alpha-1)Q(\alpha)=3c$ and the resulting product identity
+are checked in Lean over an arbitrary commutative ring; the divided form over
+$\mathbb Q$ does not instantiate an irreducible number-field root.  Word
+evaluation of the two mod-$7$ profiles is not orbit exclusion; exact three-step
+transport of those words over $\mathbb F_7$ is empty.
+
+The resulting cubic-rate statement is Theorem~\ref{res:cubicrate}
+in the main text.
+
+Every criterion in this section is a lower bound on a record, cancellation or
+profile observable that the hypotheses of Problem~\ref{res:problem} leave free.
+The missing implication is an upper bound on any one of them.  Eventual unit
+record increments, under the stated prime-power supply, remain an exact
+equivalence with the Sylvester endpoint.  Bounded $A_n$ and finite epoch energy
+are proposed equivalences (Problems~\ref{res:amplifiedglobal}
+and~\ref{res:epochglobal}).  The finite weighted record budget of
+Section~\ref{sec:lcmrecords} remains the named equivalent open producer.  None
+of these upper bounds has been derived from the hypotheses.
+
+
+
+\section{Antecedents and statement conventions}\label{app:antecedents}
+
+\noindent See~\cite[p.~64]{erdosgraham1980} and~\cite[p.~105]{erdos1988}.
+Bloom's current catalogue record reproduces the displayed problem and labels
+it open, while explicitly warning that the status is the website owner's
+present assessment and may not reflect all relevant literature
+\cite{erdosproblems}.  We therefore use the catalogue for numbering and
+current reported status only; the original publications carry the
+mathematical claims.  Below we index the same recurrence as
+$a_{n+1}=a_n^{2}-a_n+1$, which is the shift the formal sources use; the two
+forms are the same statement.  Write $\sylnext(a)=a^{2}-a+1$, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{37}{sylvesterNext}{Sylvester
+successor}.
+
+\paragraph{Relation to prior work.}
+Two published results reach the original problem under analytic hypotheses that
+are not assumed below.  Their hypotheses are conditions on the sequence $(a_n)$
+itself.  Duverney's is not comparable with the state-level hypotheses used
+here; the Erd\H{o}s--Straus one, read through the dictionary of the next
+paragraph, is implied by nonnegativity of $E$, the hypothesis of
+Theorem~\ref{res:descent}, so that criterion already covers the descent proved
+below (see~\cite[Cor.~4(1) and Prop.~1(1), pp.~14--15]{koizumi2025}).
+Erd\H{o}s and Straus proved that if $\lim a_n/a_{n-1}^{2}=1$, the reciprocal
+sum is rational, and $a_n$ does not satisfy the recurrence, then
+\[
+ \limsup_{n\to\infty}\ \frac{[a_1,\ldots,a_n]}{a_{n+1}}
+ \left(\frac{a_{n+1}^{2}}{a_{n+2}}-1\right)>0,
+\]
+where $[a_1,\ldots,a_n]$ is the least common
+multiple~\cite[Theorem~3, p.~132]{erdosstraus1964}.  This is the indexing in
+the original theorem.  Erd\H{o}s's 1988 survey, followed by the current
+catalogue summary, instead prints $a_n^2/a_{n+1}-1$ in the second factor while
+retaining the same prefix-LCM quotient; that displayed summary is off by one
+and is not followed here~\cite[p.~105]{erdos1988}\cite{erdosproblems}.
+Koizumi records the convenient sufficient rate
+$a_n^2/a_{n+1}=1+o(1/n)$ under which the Erd\H{o}s--Straus criterion settles
+the problem~\cite[Remark~3, p.~16]{koizumi2025}.
+
+Duverney proved a
+conditional signed form of the problem itself: for signs
+$\epsilon_n\in\{-1,1\}$, if
+$\sum_{n\ge0}(a_{n+1}/a_n^{2}-1)$ converges, then the reciprocal sum with
+numerators $\epsilon_n$ is rational if and only if
+\[
+ a_{n+1}=a_n^2-(\epsilon_{n+1}/\epsilon_n)a_n
+             +\epsilon_{n+2}/\epsilon_{n+1}
+\]
+for all large $n$~\cite[Corollary~3.2, p.~287]{duverney2001}.  Absolute
+convergence is a stronger sufficient specialisation, not the hypothesis
+printed in that corollary.  The all-positive specialisation is the form
+relevant here.
+
+Badea's positive-term criterion is adjacent but different:
+for positive rational terms $b_n/a_n$, eventual strict inequality
+\[
+ a_{n+1}>\frac{b_{n+1}}{b_n}a_n^2-\frac{b_{n+1}}{b_n}a_n+1
+\]
+forces irrationality, while rationality under the corresponding non-strict
+inequality forces eventual equality~\cite[Theorem~A, p.~313; Cor.~2.2,
+p.~316]{badea1993}.  These hypotheses are inequalities on successive denominators, not a bound on
+the negative part of the cleared error.  Positive summands do not imply
+nonnegative centred errors.  The comparison here concerns the quadratic-limit
+regime, not recovery of either full published criterion.
+
+Koizumi's work on doubly exponential sequences~\cite{koizumi2025} bears
+directly on the state system used below, and supplies the coordinates in which
+several of the statements of this note are most naturally read.  For a rational
+$r=p/q$ with pseudo-greedy expansion $(a_n)$, remainders $(x_n)$ and gap
+sequence $\varepsilon_n=x_n^{-1}+1-a_n$, his Lemma~4
+~\cite[p.~11]{koizumi2025} produces integers $c_n>0$,
+$d_n$ and $e_n$ with $x_n=c_n/d_n$ and $\varepsilon_n=e_n/c_n$, satisfying
+\[
+ a_n=\frac{d_n-e_n}{c_n}+1,\qquad
+ c_{n+1}=c_n-e_n,\qquad
+ d_{n+1}=a_nd_n ,
+\]
+and the proof of that lemma also gives $c_{n+1}=a_nc_n-d_n$.  Under the
+dictionary $(C_n,D_n,E_n)=(c_n,d_n,e_n)$ these are exactly the objects of
+Section~\ref{sec:state}: the first relation is the centring map $\ctr$ rewritten
+as $e_n=d_n-(a_n-1)c_n$, the second is Proposition~\ref{res:update}, the third
+is the denominator update, and the fourth is the tail update.  The lower-case
+$e_n$ of Section~\ref{sec:state} is $-E_n$, so it is the negative of Koizumi's
+$e_n$ at an index where the centred state is negative.
+
+His Theorem~3
+~\cite[pp.~12--13]{koizumi2025} shows
+that his Conjecture~1, that for a positive rational $r$ whose gap sequence
+satisfies $\varepsilon_n\to0$ one has $\varepsilon_n=0$ for all large $n$ ---
+is equivalent to an affirmative answer to the question of Erd\H{o}s and Graham
+recorded as his Question~1, which is Problem~\ref{res:problem} above.
+Two of the implications proved below have prior art in these canonical
+coordinates: his Lemma~2, that $\varepsilon_n=0$ forces $\varepsilon_{n+1}=0$,
+is the absorption of Theorem~\ref{res:absorb}, and his Proposition~1(2), that
+$\varepsilon_n\ge0$ for all large $n$ forces $\varepsilon_n=0$ for all large
+$n$, is the descent of Theorem~\ref{res:descent}.  These appear in canonical
+coordinates in~\cite[Lemma~2, p.~10; Prop.~1(2), p.~14]{koizumi2025}; no
+question of priority or independence is
+adjudicated here.
+
+The growth hypothesis in Problem~\ref{res:problem} is calibrated by two facts
+about Sylvester's sequence.  It satisfies $a_n\approx c_0^{2^{n}}$ with
+$c_0=1.2640847\ldots$, and shifting it further produces sequences with
+$a_n\approx C^{2^{n}}$ for arbitrarily large $C$ whose reciprocals still sum
+to a rational number~\cite[arXiv v4, p.~2]{kovactao2024}.  The classical sufficient
+condition for irrationality, $\lim_n a_n^{1/2^{n}}=\infty$, is therefore
+sharp.  Kova\v{c} and Tao identify that condition as folklore
+~\cite[arXiv v4, p.~2]{kovactao2024}; they attribute the sharpness observation to
+Erd\H{o}s (1975).  A sequence with
+$a_n/a_{n-1}^{2}\to1$ has $a_n^{1/2^{n}}$
+convergent, so that criterion says nothing about the sequences of
+Problem~\ref{res:problem}, and rationality is genuinely possible there.
+Sylvester's
+sequence is \texttt{A000058} in the OEIS and its shifts \texttt{A129871}.  For
+the recent literature on irrationality of Ahmes series we refer to Kova\v{c}
+and Tao~\cite{kovactao2024}, who resolve several problems of Erd\H{o}s and
+Graham drawn from the same two sources cited above, and whose introduction
+gives a sample of the intermediate work, including S\'andor (1984) and Badea
+(1987).  They do not treat Problem~\#243; the rigidity conclusion asked for
+there is not among their results.
+
+The \emph{Formal Conjectures} collection contains a mathematically equivalent
+unproved declaration, up to its zero-based indexing
+~\cite{formalconjectures243}.  Its summand is $\Q$-valued, so Lean's
+\texttt{Summable} hypothesis asserts the existence of a sum in $\Q$; the
+finite indexing shift changes that sum only by a rational prefix.  The
+declaration therefore does encode the rationality premise, but its proof is
+\texttt{sorry}.  Its role here is statement-level prior art; it supplies no
+proof authority, and the development below is independent of it.
+The machine-checked results concern the state system: they exclude constant and
+periodic negative magnitudes, the bounded-rise barrier of
+Theorem~\ref{res:barrier}, and the two conditional endpoints
+(Theorems~\ref{res:bounded} and~\ref{res:mass}), each stated with the exact
+hypotheses that separate it from Problem~\#243.  No claim of priority is made
+for anything below.
+
+The hypothesis is asymptotic and the conclusion is exact, so the argument must
+convert an analytic rate into an integer obstruction.  The conversion used here
+is the classical one: clear denominators along the sequence, so that
+rationality makes a tail integral, and then centre that integer at the value it
+would take on Sylvester's sequence.  What remains is a single integer error
+$E$, and the whole question is whether $E$ can avoid vanishing.
+
+
+An author-posted preprint of Bado also studies bounded errors, LCM
+compression and compensated mass~\cite{bado2026}.  Its Theorem~5.1 assumes
+$|e_n|=O(1)$, rather than a bound only on the negative part.
+This overlap calls for a dated comparison; it does not decide priority or
+validate the preprint.
+
+
+\section{Guide to the formal sources}\label{app:index}
+
+Each linked phrase opens its Lean declaration at the pinned source
+revision~\commitshort.  The state system, the exclusions, the barrier, and the
+bounded-negative-part theorem are in \texttt{ReciprocalTailRigidity.lean}; the
+finite-negative-mass theorem is in \texttt{SparseResetRecovery.lean}; and the
+repair-entropy inequalities are in \texttt{RepairEntropy.lean}.  The residue
+reduction of Appendix~\ref{app:residue} is in
+\texttt{FiniteHorizonResidue.lean}.
+
+The finite cores of Section~\ref{sec:records} are checked in the private
+authoring root and are queued for the next pinned checkpoint, so they carry no
+links at revision~\commitshort.
+\begin{itemize}
+\item \texttt{RecordIncrementBarrier.lean}: the per-step and telescoped square
+  payment of Theorem~\ref{res:squarepayment}, the unit record-increment cut,
+  and the composed consumer of Theorem~\ref{res:unitincrement}.
+\item \texttt{SaturatedSquareTransport.lean}: the raw and normal-form square
+  transport of Theorem~\ref{res:saturated}, the Legendre defect chain, and the
+  record-amplified error lemma used in Lemma~\ref{res:amplified}.
+\item \texttt{TwoModulusRecordCut.lean}: the cut of
+  Theorem~\ref{res:twomodulus} and its first-crossing form.
+\item \texttt{ProtectedEpochEnergy.lean}: the integer epoch inequality of
+  Theorem~\ref{res:epoch}.
+\item \texttt{CubicNeighbourIdentity.lean}: the denominator-cleared ring
+  identities of Theorem~\ref{res:cubicrate}, the two primitive mod-$7$ words,
+  and exact-transport impossibility of those words over $\mathbb F_7$.
+\item \texttt{SignedDuverneyAlgebra.lean}: algebraic recurrences and cleared
+  telescoping for the square-summable signed specialisation of Duverney.
+\item \texttt{SparseResetRecovery.lean}: the scalar finite-mass lemma
+  (Lemma~\ref{res:massscalar}) in addition to the vanishing form of
+  Theorem~\ref{res:mass}.
+\end{itemize}
+The two-unit record-jump theorem of the first batch is in
+\texttt{PrimitiveRecordBarrier.lean}.  Three distinctions are worth carrying into
+the source.  The
+identification of any of these modules with reciprocal tails is the exposition
+of Section~\ref{sec:state} and is not a checked statement.  The periodic exclusion
+assumes the regime $e_n<a_n$.  And the final Lean declaration lists strict
+centring and normalised vanishing as hypotheses; the former follows eventually
+from the latter with $K=1$, while the formal source derives neither from the
+original analytic problem.  For the external bridge supplying them,
+see Sections~\ref{sec:problem} and~\ref{sec:bounded}.
+
+% The exhaustive source manifest is retained in the authored TeX for automated
+% validation, and kept outside the printed note.
+\iffalse
+
+\begin{tabular}{@{}ll@{}}
+informal statement & linked Lean source\\
+Sylvester successor & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{37}{sylvesterNext}\\
+denominator update & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{41}{nextDenState}\\
+tail update & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{45}{nextTailState}\\
+centred state & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{49}{centeredState}\\
+Sylvester defect & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{53}{sylvesterDefect}\\
+update law & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{57}{nextTailState_eq_sub_centered}\\
+denominator equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{65}{nextDenState_scale}\\
+tail equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{70}{nextTailState_scale}\\
+centred equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{75}{centeredState_scale}\\
+normalised exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{100}{no_normalizedConstantNegative_orbit}\\
+scale-primitive exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{147}{no_scalePrimitiveConstantNegative_orbit}\\
+constant exclusion at every scale & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{286}{no_constantNegative_orbit}\\
+eventual constant exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{350}{no_eventuallyConstantNegative_orbit}\\
+persistence of a multiplier & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{382}{base_dvd_denState_later}\\
+one-step lock & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{402}{divisorLocksTailSucc}\\
+persistence of a lock & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{429}{divisorLock_persists}\\
+iterated period & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{461}{periodic_add_mul}\\
+iterated drift & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{476}{phaseDrift_add_mul}\\
+repeated-divisor transport & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{494}{repeatedDivisor_forces_periodicCommonScale}\\
+phase-primitive exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{548}{no_phasePrimitivePeriodicNegative_orbit}\\
+periodic exclusion at every scale & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{690}{no_periodicNegative_orbit}\\
+eventual periodic exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{796}{no_eventuallyPeriodicNegative_orbit}\\
+shifted consecutive multiples & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{833}{exists_shifted_consecutiveMultiples}\\
+bounded-rise barrier & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{897}{no_boundedRise_of_tailAvoidance}\\
+step coprimality & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{983}{reducedStep_coprime_currentFactor}\\
+pairwise coprimality & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1010}{reducedTail_pairwiseCoprime}\\
+whole-modulus avoidance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1024}{reducedTail_wholeModulusAvoidance}\\
+reduced bounded-rise exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1035}{no_boundedRise_reducedTail}\\
+eventual reduced exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1060}{no_eventuallyBoundedRise_reducedTail}\\
+gcd monotonicity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1424}{tailGcd_dvd_succ}\\
+gcd at a negative index & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1581}{tailGcd_eq_gcd_negativeMagnitude}\\
+chain stabilisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1599}{dvdChain_eventuallyConstant_of_cofinally_bounded}\\
+gcd stabilisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1630}{tailGcd_eventuallyConstant_of_cofinally_boundedNegative}\\
+tail-divergence form & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1655}{no_cofinallyBoundedNegative_of_tailTendsto}\\
+divergence from normalised vanishing & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1733}{tailState_tendsto_atTop_of_nonzero_normalizedVanishes}\\
+exclusion from normalised vanishing & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1748}{no_cofinallyBoundedNegative_of_normalizedVanishes}\\
+defect identity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1769}{sylvesterDefect_mul_nextTailState}\\
+local rigidity step & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1781}{sylvesterNext_eq_of_centered_zero}\\
+eventual Sylvester recurrence & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1799}{sylvesterNext_eventually_of_centered_zero}\\
+eventual constancy & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1819}{antitone_nat_eventually_constant}\\
+stabilisation of the nonnegative error & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1837}{centeredState_eventually_zero}\\
+tail realisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1863}{natTail_eq_nextTailState}\\
+denominator realisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1875}{natDen_eq_nextDenState}\\
+signed update law & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1972}{natTail_eq_sub_centeredState}\\
+absorption of a vanishing centred state & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2221}{centeredState_zero_absorbing}\\
+contrapositive along a tail & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2248}{eventually_nonzero_of_zero_absorbing}\\
+bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2265}{boundedNegativePart_eventually_zero}\\
+eventual bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2352}{eventuallyBoundedNegativePart_eventually_zero}\\
+repair-entropy conservation & \lrefx{Erdos243/RepairEntropy.lean}{48}{repairedFamily_recovery_energy_divisionFree}\\
+independent-repair bound & \lrefx{Erdos243/RepairEntropy.lean}{78}{repaired_card_bound_of_independent}\\
+fixed-length reset disappearance & \lrefx{Erdos243/RepairEntropy.lean}{107}{eventually_recoveryPayment_eq_one_of_fixedLength}\\
+forced numerator & \lrefx{Erdos243/FiniteHorizonResidue.lean}{22}{forcedNumerator}\\
+polynomial congruence & \lrefx{Erdos243/FiniteHorizonResidue.lean}{26}{forcedNumerator_modEq}\\
+exact-division cancellation & \lrefx{Erdos243/FiniteHorizonResidue.lean}{41}{quotient_modEq_of_modEq_mul}\\
+horizon modulus & \lrefx{Erdos243/FiniteHorizonResidue.lean}{53}{horizonModulus}\\
+ascending-factorial form & \lrefx{Erdos243/FiniteHorizonResidue.lean}{59}{horizonModulus_eq_ascFactorial}\\
+factorial value at the initial index & \lrefx{Erdos243/FiniteHorizonResidue.lean}{69}{horizonModulus_zero_eq_factorial}\\
+survival predicate & \lrefx{Erdos243/FiniteHorizonResidue.lean}{75}{ForcedSurvives}\\
+quotient transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{85}{forcedQuotient_modEq}\\
+shrinking-modulus transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{97}{forcedSurvives_iff_of_modEq}\\
+factorial residue reduction & \lrefx{Erdos243/FiniteHorizonResidue.lean}{134}{forcedSurvives_iff_of_modEq_factorial}\\
+\end{tabular}
+\fi
+
+\section{A factorial residue reduction for forced orbits}\label{app:residue}
+
+In the case $m=c=1$ of Section~\ref{sec:constant}, where the shape
+equation~\eqref{eq:shape} reads $D_n+1=(a_n-1)(n+1)$, each multiplier is
+determined by its predecessor; we call such an orbit \emph{forced}.  At index
+$n$ the numerator of the next multiplier is
+\[
+ \fnum(n,a)=(n+1)a^{2}-(n+2)a+(n+3),
+\]
+the
+\lword{Erdos243/FiniteHorizonResidue.lean}{22}{forcedNumerator}{forced
+numerator}, and the divisor is $n+2$.  The orbit survives a step when that
+division is exact, giving a survival predicate, the
+\lword{Erdos243/FiniteHorizonResidue.lean}{75}{ForcedSurvives}{survival
+predicate}.  Example~\ref{ex:shape} is the forced orbit from $a=3$ read this
+way: $\fnum(0,3)=6$ is divisible by $2$ and gives $a_1=3$, while
+$\fnum(1,3)=13$ is not divisible by $3$, so the orbit stops there.  Deciding
+survival by iteration is expensive because the orbit
+grows doubly exponentially, and it is unnecessary: survival over a finite
+horizon depends on the initial value only through a factorial residue.
+
+\begin{theorem}[factorial residue reduction]\label{res:residue}
+For all $h$ and all integers $a\equiv b \pmod{(h+1)!}$, the orbit from $a$
+survives $h$ forced updates exactly when the orbit from $b$ does.
+\end{theorem}
+
+\begin{proof}
+Let $M(0,i)=1$ and $M(h+1,i)=(i+2)M(h,i+1)$, an ascending factorial with
+$M(h,0)=(h+1)!$.  The numerator is a polynomial with integer coefficients, so
+congruences transfer; reducing the modulus gives divisibility by $i+2$ for one
+exactly when for the other, and cancelling that common factor from both values
+and modulus leaves the inductive hypothesis at $M(h,i+1)$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/FiniteHorizonResidue.lean}{134}{forcedSurvives_iff_of_modEq_factorial}{factorial
+residue reduction}, over the
+\lword{Erdos243/FiniteHorizonResidue.lean}{97}{forcedSurvives_iff_of_modEq}{shrinking-modulus
+transport}, the
+\lword{Erdos243/FiniteHorizonResidue.lean}{26}{forcedNumerator_modEq}{polynomial
+congruence}, and the
+\lword{Erdos243/FiniteHorizonResidue.lean}{41}{quotient_modEq_of_modEq_mul}{exact-division
+cancellation}; the modulus identifications are the
+\lword{Erdos243/FiniteHorizonResidue.lean}{59}{horizonModulus_eq_ascFactorial}{ascending-factorial
+form} and the
+\lword{Erdos243/FiniteHorizonResidue.lean}{69}{horizonModulus_zero_eq_factorial}{factorial
+value at the initial index}.
+
+At $h=1$ the modulus is $2!=2$, and surviving one update means
+$2\mid a^{2}-2a+3$, which holds exactly for odd $a$: for instance
+$\fnum(0,3)=6$ but $\fnum(0,4)=11$.  So one step of survival is decided by the
+parity of $a$ alone, which is Theorem~\ref{res:residue} at its smallest
+nontrivial horizon.
+
+The search this supported is superseded.  Running it over initial states below
+$5000$ produced forced prefixes of length $17$ and no longer, which was
+evidence and not a proof; Theorem~\ref{res:constant} now excludes the
+constant-negative case outright, for every seed and at every scale.  The
+reduction is retained because it is exact, and because the shrinking-modulus
+technique transfers to any forced orbit whose step is a polynomial division.

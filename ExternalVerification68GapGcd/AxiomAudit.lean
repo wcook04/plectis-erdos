@@ -1,0 +1,4 @@
+import ExternalVerification68GapGcd.Solution
+
+#print axioms Erdos249257.ExternalVerification68GapGcd.factorial_gap_gcd
+#print axioms Erdos249257.ExternalVerification68GapGcd.segment_inequality

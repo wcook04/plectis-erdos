@@ -1,0 +1,3 @@
+import ExternalVerification1041LifetimeOrliczBound.Solution
+
+#print axioms Erdos249257.ExternalVerification1041LifetimeOrliczBound.orlicz_le_of_lifetime_le

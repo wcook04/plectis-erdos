@@ -1,0 +1,210 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "generated_at": "2026-07-15T00:00:00Z",
+  "status": "adjudicated_external_shifted_correlation_alpha1_source_bound_smallball_open_no_public_claim",
+  "route_id": "balasubramanian_giri_srivastav_2017_shifted_multiplicative_correlations",
+  "purpose": "Route the Balasubramanian-Giri-Srivastav shifted-correlation theorem into the Erdos #249 arbitrary-window certificate lane. This is the pretentious-friendly replacement for the Tao-Teravainen transfer, which is blocked because phi(n)/n is pretentious to 1.",
+  "adjudication": {
+    "review_unit_version": "arXiv 1511.02221 annex snapshot; source archive 93fe73d1c61c40d660c876c396e091266df164bac922c8459cce33d09b90e7b8; extracted text eadb2aa7c0d0f4717cfb7f19c584113db298ea3a78ed6b4b81d8fafefa386c31",
+    "evidence_class": "externally sourced shifted-correlation theorem with source-verified substance; local #249 application remains conditional and private",
+    "closest_known_prior_art": [
+      "Theorem 2.2 (official arXiv v3 PDF p. 2): uniform shifted correlations for f,g in A_alpha with explicit five-case error table",
+      "Remark 2.4 (official arXiv v3 PDF p. 2): multiplicative Euler-product form of C(h)",
+      "Corollary 2.8 (official arXiv v3 PDF p. 3): the phi(n)/n specialization"
+    ],
+    "exact_delta": "Theorem 2.2 gives a uniform-in-h correlation asymptotic and the phi(n)/n product constant, with the alpha=beta=1 logarithmic error row covered by the paper's stated all-0<alpha<=beta lemma range and its mutatis-mutandis alpha>=1 clause. It still does not provide the #249 residue small-ball estimate, phase separation, certificate supply, or an irrationality conclusion.",
+    "disconfirmation_search": "The route's own kernel-checked PivotAntiReconstruction obstruction shows that positive variance/additive energy cannot imply first-harmonic phase separation because integer-period aliasing can erase the real gap. This blocks any claim that BGS variance alone completes the #249 route.",
+    "confidence_ceiling": "Strong external confidence for the stated shifted-correlation theorem, its source substance, and the alpha=1 endpoint as a covered parameter case; no confidence for the local small-ball application or any #249 endpoint claim.",
+    "significance_rationale": "High strategic value as the correct non-pretentious replacement for the blocked Tao--Teräväinen transfer, but it is a conditional bridge, not a result about the actual certificate orbit.",
+    "bounded_expert_review_act": "The alpha=1 parameter case and arXiv/journal numbering distinction are now source-checked. The remaining state-changing act is to derive or disprove a residue small-ball or phase anti-concentration bound from a higher-convolution or genuinely new input; variance and additive energy alone are already blocked by the integer-period aliasing countermodel."
+  },
+  "source_annex": {
+    "slug": "arxiv-1511-02221-balasubramanian-giri-srivastav",
+    "display_name": "Balasubramanian, Giri, Srivastav - On correlations of certain multiplicative functions",
+    "arxiv_id": "1511.02221",
+    "arxiv_url": "https://arxiv.org/abs/1511.02221",
+    "journal_ref": "Journal of Number Theory 174 (2017) 221-238",
+    "doi": "10.1016/j.jnt.2016.10.001",
+    "annex_import_status": "IMPORTED 2026-07-26 from arXiv LaTeX source via annex_import.py import --arxiv 1511.02221; source archive and extracted markdown are hash-pinned above",
+    "validated_by": "./repo-python annex_import.py validate --slug arxiv-1511-02221-balasubramanian-giri-srivastav",
+    "source_archive": "annexes/arxiv-1511-02221-balasubramanian-giri-srivastav/source.tar.gz",
+    "source_archive_sha256": "93fe73d1c61c40d660c876c396e091266df164bac922c8459cce33d09b90e7b8",
+    "source_pdf": "annexes/arxiv-1511-02221-balasubramanian-giri-srivastav/source.pdf",
+    "source_pdf_sha256": "ed38f2b85e22e5f00c63e39c6ff27f1a669ff02859c541895ecd3ffc9111ea69",
+    "primary_pdf_read": true,
+    "source_reviewed_at": "2026-08-27",
+    "pdf_pages": 13,
+    "extracted_markdown": "annexes/arxiv-1511-02221-balasubramanian-giri-srivastav/extracted.md",
+    "extracted_markdown_sha256": "eadb2aa7c0d0f4717cfb7f19c584113db298ea3a78ed6b4b81d8fafefa386c31",
+    "stale_command_corrected": "this field previously read `annex_import.py add --arxiv 1511.02221`; there is no `add` subcommand, the verb is `import`",
+    "source_archive_tracking": "The raw source.tar.gz is deliberately NOT committed: the private-backup publication range blocks annex_external_payload. The sha256 above is the durable binding, and the archive is reproducible with `./repo-python annex_import.py import --arxiv 1511.02221 --slug arxiv-1511-02221-balasubramanian-giri-srivastav`. extracted.md IS committed, so the compared text is in-repo."
+  },
+  "exact_theorem_extracted": {
+    "definition_2_1": "A_alpha := { arithmetic g : g(n) = O(n^{-alpha}) for each n }",
+    "theorem_2_2": "Suppose f in A_alpha and g in A_beta. Then, uniformly for all h with |h| <= x/2: sum_{H<=n<=x} F(n)G(n-h) = (x-H)*C(h) + O(E(x; alpha, beta)), where F = f*1, G = g*1, H = 1 if h<=0 else h, C(h) = sum_{a,b>=1, (a,b)|h} f(a)g(b)/[a,b], and the O-constant is ABSOLUTE.",
+    "error_table_2_1": "E(x;alpha,beta) = x^{1-alpha} if alpha<beta and alpha<1; x^{1-alpha} log x if alpha=beta<1; log x if 1=alpha<beta; log^2 x if alpha=beta=1; 1 if 1<alpha<beta.",
+    "remark_2_4_product": "If f,g multiplicative then C(h) = prod_p ( sum_{min{e1,e2} <= v_p(h)} f(p^e1) g(p^e2) / p^{max{e1,e2}} ).",
+    "corollary_2_8": "Paper explicitly instantiates G(n) = phi(n)/n and obtains prod_p (1-2/p^2) * prod_{p|h} (1 + 1/(p^3-2p)).",
+    "partial_summation_extension": "sum_{n<=x} Q(n)F(n)G(n-h) = C(h) int_1^x Q dt + Q(x)E(x;alpha,beta) + O(int_1^x |Q'(t)||E(t;alpha,beta)| dt), for Q differentiable with Q' bounded. This is what carries the linear n-weight from phi(n)/n back to phi(n)."
+  },
+  "veto_test": {
+    "specified_by": "Type B paper-acquisition decision, 2026-07-15: 'instantiate the paper's hypotheses with f(d)=mu(d)/d and the precise shifts used by windowDiscrepancy. If the error remains uniform over the required fixed window and the covariance is non-degenerate, this becomes the main #249 route.'",
+    "step_1_membership": {
+      "claim": "f(d) = mu(d)/d lies in A_1",
+      "reason": "|mu(d)/d| <= d^{-1}, so f(d) = O(d^{-1}), i.e. alpha = 1 exactly.",
+      "identity": "phi(n)/n = sum_{d|n} mu(d)/d = (mu(.)/. * 1)(n), so F = phi(n)/n has f = mu(.)/. and alpha = 1.",
+      "verdict": "PASS"
+    },
+    "step_2_error_uniformity": {
+      "claim": "alpha = beta = 1 is inside the theorem's error table",
+      "reason": "E(x;1,1) = log^2 x. Uniform for all |h| <= x/2 with an ABSOLUTE O-constant. The paper's 'ease of exposition' text assumes 0<alpha<=beta<1, but the error table (2.1) explicitly covers alpha=beta=1.",
+      "gate_resolved": "RESOLVED BY AUTHORS, Section 3 opening, page 4, VERBATIM: 'The statements of the lemmas in this section hold true for all 0 < alpha <= beta. However, we restrict the proofs only to the case beta > alpha and alpha < 1. The proof works mutandis-mutandis for alpha >= 1 and the case beta = alpha will have an extra log factor.' Our case alpha = beta = 1 is covered on both counts: alpha >= 1 ('works mutatis mutandis') and beta = alpha ('extra log factor'). The extra log factor is EXACTLY why table (2.1) reads E(x;1,1) = log^2 x rather than the log x of the 1 = alpha < beta row. The authors' own remark explains the precise table entry the normalised totient requires.",
+      "residual_formalisation_cost": "The WRITTEN proofs of Lemmas 3.1-3.3 specialise to alpha < 1 (e.g. Lemma 3.3(a) uses 'For alpha < 1, this error is O(y^{1-alpha}/(jl)^{1-alpha})'). A Lean formalisation must redo roughly three lemmas at alpha = 1. The authors assert this is mutatis mutandis. That is ROUTINE re-derivation, not a missing theorem - a different category from every prior blocker in this programme.",
+      "verdict": "PASS - ALPHA=1 EXPLICITLY AUTHORISED BY THE AUTHORS"
+    },
+    "step_3_singular_series_derivation": {
+      "derived": "With f(1)=g(1)=1, f(p)=g(p)=-1/p, f(p^e)=0 for e>=2, Remark 2.4 gives local_p = 1 - 2/p^2 when p does not divide h, and 1 - 2/p^2 + 1/p^3 when p | h. Hence C(h) = prod_p(1-2/p^2) * prod_{p|h}(1 + 1/(p^3-2p)).",
+      "validation": "This reproduces the paper's own Corollary 2.8 constant EXACTLY, independently. A = prod_p(1-2/p^2) = 0.322634108930.",
+      "verdict": "PASS_VALIDATED_AGAINST_SOURCE"
+    },
+    "step_4_covariance_nondegeneracy": {
+      "kernel": "Cov(h) = C(h) - (6/pi^2)^2, with E[phi(n)/n] = 6/pi^2 = 0.607927101854.",
+      "variance": "C(0) = prod_p(1-2/p^2+1/p^3) = 0.428249518938; Var(phi(n)/n) = 0.058674157769 > 0.",
+      "kernel_values": "Cov(0..8) = +0.0586741578, -0.0469412522, +0.0337172750, -0.0315777232, +0.0337172750, -0.0441357382, +0.0529216862, -0.0459606015, +0.0337172750",
+      "structural_finding": "Cov(h) ALTERNATES SIGN BY PARITY OF h. Driven by the p=2 local factor 1 + 1/(2^3 - 2*2) = 1.25, which is the largest term in the product (5x the p=3 term 1/21). For a binary-expansion problem the covariance kernel's dominant mode is exactly mod 2.",
+      "quadratic_form": "Q(lambda) = sum_{j,k} lambda_j lambda_k Cov(j-k) with the certificate's geometric weights lambda_j = 2^(L-1-j).",
+      "result": "Q(lambda)/4^(L-1) converges to 0.031031532 > 0 (stable from L=20 through L=40). The certificate coefficient vector does NOT annihilate the non-trivial Ramanujan modes.",
+      "verdict": "PASS - COVARIANCE NON-DEGENERATE WITH EXPLICIT CONSTANT"
+    },
+    "disconfirming_checks_specified_by_type_b": {
+      "check_a_annihilation": "'if the certificate coefficient vector annihilates every non-trivial Ramanujan mode ... retire this composition' -> DID NOT FIRE. Q(lambda) -> 0.031031532 * 4^(L-1).",
+      "check_b_error_vs_band": "'if the proven error is larger than the separation band ... retire' -> DID NOT FIRE at the second-moment scale. After partial summation with the n-weight the error is O(x^2 log^2 x) against a main term of order x^3 * C(h); the lambda's factor out of both sides, leaving x >> log^2 x."
+    },
+    "overall": "Type B's stated criterion for promotion is met: error uniform, covariance non-degenerate. This is now the main #249 route."
+  },
+  "private_lean_targets": {
+    "package_root": "formal_math/erdos257_period_noncollapse",
+    "consumer_theorem": "irrational_totientSeries_of_multiple_directedCertificateSupply",
+    "consumer_file": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientTailCarryPeriod.lean",
+    "consumer_line": 781,
+    "consumer_signature": "(hsupply : forall h0, 0 < h0 -> forall N0, exists m, 0 < m and exists N, N0 <= N and exists L, directedCertifiedKill (m * h0) N L) -> Irrational (sum' n, totient n / 2^n)",
+    "why_this_consumer_and_not_the_lcm_iff": "TotientTailCarryPeriod.lean:797-801 states the LCM diagonal route's own ceiling verbatim: 'Cofinal directed certificates are equivalent to Erdos #249 itself ... proving its cofinal supply is already proving the original irrationality statement.' That iff is circular BY THE REPO'S OWN ADMISSION. The theorem at line 781 is ONE-DIRECTIONAL (supply => irrational) and quantifies over ARBITRARY N >= N0 and an arbitrary multiple m of h0. That existential over N is what licenses averaging over a dyadic block N in [X,2X], which is exactly what BGS Theorem 2.2 discharges. This is the reframe Type B specified: stop forcing analytic papers through the sparse actual-LCM orbit.",
+    "declaration_families": [
+      "TotientTailCarryPeriod",
+      "TotientActualLcmOrbitArithmetic"
+    ],
+    "public_export_impact": "none_selected_export_globs_ignore_prior_art_routes"
+  },
+  "remaining_gap_do_not_overstate": {
+    "what_is_established": "The second moment of the certificate window is non-degenerate under a published, uniform-in-h correlation theorem whose hypotheses phi(n)/n provably satisfies.",
+    "formal_no_go_receipt": {
+      "theorem": "Erdos257PeriodNoncollapse.TotientTailPeriodKiller.exists_large_real_pair_energy_with_zero_first_harmonic_chord",
+      "file": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/PivotAntiReconstruction.lean",
+      "statement": "For every natural scale B there are real x,y with B <= (x-y)^2 while the squared first-harmonic exponential chord is exactly zero.",
+      "consequence": "Unbounded additive energy of real lifts cannot by itself imply first-harmonic phase separation: integer-period aliasing can erase the entire real gap. Any BGS variance intake therefore still needs an independent residue small-ball or phase anti-concentration theorem before it can produce DTWWindowSeparatedPairs.",
+      "validation": {
+        "command_future_id": "cf_69a163fd7e374ccdb440",
+        "focused_target": "Erdos257PeriodNoncollapse.PivotAntiReconstruction",
+        "exit_code": 0,
+        "result": "Build completed successfully; final serialized Lake authority check passed.",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "proof_boundary": "This is a kernel-checked obstruction to a generic variance-to-phase implication. It is not an Erdos #249 proof, not a certificate-supply theorem, and not a residue small-ball estimate."
+    },
+    "what_is_NOT_established": "Positive variance is NOT anti-concentration. Var > 0 gives Chebyshev, i.e. 'most N have |W - M| large in MAGNITUDE'. The certificate band condition is about W mod 2^L landing in the middle residue range (2H+L+2, 2^L - (2H+L+2)) - a statement about the RESIDUE, not the magnitude. Converting the second moment into a residue small-ball estimate is the open step.",
+    "next_step": "This is precisely Type B's step 6: 'Escalate to the higher-convolution papers only if variance alone does not yield a small-ball estimate.' It does not. Therefore acquire Goel-Murty (J. Number Theory 271 (2025) 99-108, DOI 10.1016/j.jnt.2024.10.013) and Chaubey-Coppola-Goel-Murty (Hardy-Ramanujan J. 48 (2025) 209-219) for the higher-convolution architecture.",
+    "second_unverified_link": "The alpha=1 proof-boundary question is resolved by the hash-pinned arXiv source notes: Section 3 explicitly authorizes all 0<alpha<=beta, alpha>=1 mutatis mutandis, and the extra logarithm at beta=alpha. The remaining gap is the residue small-ball/phase bridge, not the BGS theorem's alpha=1 applicability."
+  },
+  "public_claim_boundary": {
+    "local_effect": "private routing plus one kernel-checked obstruction theorem; no endpoint supply and no public projection",
+    "proof_authority": "accepted_for_the_formal_variance_to_phase_no_go_only",
+    "publication_effect": "none",
+    "non_claims_preserved": [
+      "not_erdos_249_solution",
+      "not_a_proof_of_the_certificate_supply",
+      "not_a_claim_that_variance_implies_anticoncentration",
+      "not_a_public_citation_or_paper_edit"
+    ]
+  },
+  "superseded_routes": {
+    "tao_teravainen_2512_01739": "KEEP INSTALLED, DEMOTED from main #249 transfer. Their Thm 3.1 needs either a non-pretentious or an equidistributed 1-bounded multiplicative function. g = phi(n)/n is 1-bounded, real, multiplicative - but PRETENTIOUS: D(g,1)^2 = sum_p (1-g(p))/p = sum_p 1/p^2 = 0.4522473877 < infinity, so g pretends to be the constant 1. The non-pretentious case is structurally unavailable. BGS is the repair because it handles f*1 with f small directly, with no pretentiousness hypothesis at all.",
+    "subspace_theorem_s_unit_family": "RETIRED WITH A WITNESS (this pass). The #257 seam remainder rem(s) = 2^(2s-1) - 2^s - sum_{d in A(s)} (4^s - 2^(2s mod d))/(2^d - 1) is an exact S-unit linear form (repo's own identity, HalfCylinderFloorErrorReset.lean:229). But |A(s)| ~ 0.43*s measured at s = 14..260, so the rank grows linearly and Subspace/Baker bounds degrade to vacuity. Independently matches Type B's non-acquisition note: 'generic Subspace-Theorem/S-unit material - the effective rank grows with the support'. This retires the transcendence-theory family for #257, which the anticoncentration doc's closing line ('Furstenberg/Baker-adjacent territory') had left open. Belongs in that doc's section 1.4 as dead route family #4."
+  },
+  "source_verification": {
+    "schema": "plectis_prior_art_source_verification_v0",
+    "verified_at": "2026-07-26",
+    "verified_by": "claude_code",
+    "ladder_state": "source_archived_hash_pinned",
+    "method": "arXiv LaTeX source imported, hash-pinned, and the transcribed statements compared against the extracted source text",
+    "substance_verdict": "match",
+    "substance_detail": [
+      "Definition of A_alpha as arithmetic functions with g(n)=O(n^{-alpha}) for each n: matches official arXiv v3 Definition 2.1 (PDF p. 2).",
+      "Main shifted-correlation asymptotic sum_{H<=n<=x} F(n)G(n-h) = (x-H)C(h) + O(E(x;alpha,beta)), uniformly for |h| <= x/2, H = 1 for h<=0 else h, C(h) = sum_{a,b>=1,(a,b)|h} f(a)g(b)/[a,b], O-constant absolute: matches official arXiv v3 Theorem 2.2 (PDF p. 2) verbatim in content.",
+      "Error table E(x;alpha,beta) five-case split: matches source display (Ealbtx) exactly.",
+      "Multiplicative product expansion for C(h): matches official arXiv v3 Remark 2.4 (PDF p. 2)."
+    ],
+    "citation_coordinate_verdict": "match_against_official_arxiv_v3_primary_text",
+    "citation_coordinate_detail": "The official arXiv v3 HTML/PDF uses the decimal coordinates already transcribed here: Definition 2.1 and Theorem 2.2 on PDF p. 2 (HTML §2), Remark 2.4 on PDF p. 2 (HTML §2), Corollary 2.8 on PDF p. 3 (HTML §2), and the alpha>=1 / beta=alpha mutatis-mutandis qualification in the opening of §3 on PDF p. 4 (HTML §3). The stable source identity is arXiv:1511.02221v3, revised 27 Sep 2016; the JNT metadata and DOI remain bibliographic metadata, not an independently checked journal-text locator. Cite the arXiv v3 source when using these coordinates.",
+    "remaining_debt": [
+      "exact_theorem_compared rung not reached: the small-ball step that consumes this theorem is still pending, so applicability to the Erdos 249 arbitrary-window lane is not settled"
+    ]
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "externally_sourced_shifted_correlation_theorem",
+    "output_stage": "source_bound_human_review_support",
+    "artifact": "BGS normalized-totient correlation route for the Erdos #249 arbitrary-window lane",
+    "human_understanding_delta": "The source theorem and its alpha=1 applicability are separated from the unresolved residue small-ball/phase bridge; the variance-to-phase shortcut is explicitly retired by the kernel countermodel.",
+    "verification_state": "ArXiv source archive and extracted text are hash-pinned; theorem content and alpha=1 boundary are source-checked; the local variance-to-phase obstruction is Lean-checked; no certificate-supply theorem is claimed.",
+    "publication_or_review_state": "Private adjudication only; no public projection or specialist-review claim.",
+    "canonicalization_state": "Retained as one conditional analytic bridge beneath the #249 anti-concentration family, not as a separate endpoint or solution route.",
+    "unresolved_downstream_bottleneck": "A genuine residue small-ball or phase anti-concentration theorem, likely requiring higher-convolution input, is still missing.",
+    "next_stage_owner": "Novelty Observatory on a new primary source or exact formula match; Mathematics Refinery and Role 3 only after the bridge is supplied."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "balasubramanian_giri_srivastav_shifted_correlations@arXiv-1511.02221-annex-v1",
+    "evidence_class": "Externally sourced ordinary theorem with hash-pinned arXiv text; local #249 use is conditional and the variance-to-phase obstruction is Lean-checked.",
+    "closest_known_result": "Balasubramanian--Giri--Srivastav, official arXiv:1511.02221v3, Theorem 2.2 (PDF p. 2) gives uniform shifted correlations for convolutional multiplicative functions, with the phi(n)/n specialization in Corollary 2.8 (PDF p. 3); Tao--Teräväinen is a demoted non-pretentious transfer route.",
+    "comparison_relation": "BGS supplies a legitimate pretentious-friendly correlation input for normalized totients, but it does not supply the #249 residue small-ball, phase separation, directed certificate, or irrationality conclusion. The local application is a conditional analytic bridge, not a new endpoint.",
+    "exact_delta": "The source contributes uniform-in-shift correlation asymptotics, the alpha=beta=1 logarithmic error boundary, and an explicit Euler-product constant. The project adds a source-faithful phi(n)/n specialization and a kernel obstruction showing that variance/additive energy alone cannot imply first-harmonic phase separation.",
+    "disconfirming_evidence": "The Lean PivotAntiReconstruction witness has arbitrarily large real separation with zero first-harmonic chord, so positive variance cannot be promoted to the required residue small-ball estimate. The route is source-versioned to the official arXiv v3 coordinates; the JNT text itself is not used as an independently checked locator.",
+    "confidence": {
+      "level": "high_for_external_correlation_theorem_and_alpha1_boundary_medium_for_local_bridge_low_for_endpoint_significance",
+      "basis": "Official arXiv v3 HTML/PDF, imported source archive, extracted text, and PDF hash are pinned; theorem substance and Section 3 alpha=1 coverage are checked. The small-ball bridge remains unproved."
+    },
+    "significance": "High strategic and attribution value: it replaces an inapplicable non-pretentious transfer with a source-compatible correlation theorem and clearly retires the variance-to-phase shortcut. It is supporting architecture, not a headline result.",
+    "claim_ceiling": "Public wording may state the BGS shifted-correlation theorem and its normalized-totient applicability as external prior art, with the local route conditional. Do not claim residue anti-concentration, certificate supply, #249 progress, novelty, or priority.",
+    "hard_step": "Derive a genuine residue small-ball or phase anti-concentration estimate from higher-convolution input; second-moment non-degeneracy is insufficient.",
+    "open_boundary": "The higher-convolution bridge remains unresolved; the route deliberately cites the official arXiv v3 primary text rather than asserting independently checked journal-version coordinates. Comparator needs no new interface beyond the existing kernel-checked variance-to-phase no-go proposition.",
+    "bounded_expert_review_act": "Verify one higher-convolution candidate against the exact residue observable and decide whether it can bypass integer-period aliasing; otherwise retain this as a conditional bridge.",
+    "reentry_trigger": "Re-enter on a new BGS source version, verified journal text, exact small-ball formula match, or a counterexample/bridge for the residue observable.",
+    "source_generation_binding": {
+      "external_source_version": "arXiv:1511.02221",
+      "external_archive_sha256": "93fe73d1c61c40d660c876c396e091266df164bac922c8459cce33d09b90e7b8",
+      "external_extracted_sha256": "eadb2aa7c0d0f4717cfb7f19c584113db298ea3a78ed6b4b81d8fafefa386c31",
+      "formal_obstruction_source": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/PivotAntiReconstruction.lean",
+      "formal_obstruction_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "parity_status": "External theorem and local obstruction are source-pinned; no local certificate-supply theorem or public projection is claimed."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "external_source_version": "arXiv:1511.02221",
+      "external_archive_sha256": "93fe73d1c61c40d660c876c396e091266df164bac922c8459cce33d09b90e7b8",
+      "formal_obstruction_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3"
+    },
+    "claim_guard": "BGS correlation is external prior art and a conditional bridge only; variance does not imply the required residue anti-concentration or #249 endpoint.",
+    "reentry_trigger": "Re-enter on source-version, journal-coordinate, exact-formula, or small-ball-bridge changes."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Analytic source comparison plus a formal no-go boundary; the hard step is residue control after second-moment information.",
+    "slow_down_at": "The alpha=1 mutatis-mutandis qualification, the official arXiv v3 coordinates, and the distinction between magnitude variance and residue small-ball control.",
+    "automation_can_establish": ["Archive/extracted-source hashes and theorem-content parity", "Finite covariance and no-go witness replay"],
+    "human_judgment_required": ["Whether a higher-convolution theorem controls the exact residue observable", "Whether the conditional bridge merits a paper section or appendix placement"],
+    "review_act": "One bounded act: inspect a higher-convolution candidate for the required residue observable; do not promote variance to anti-concentration."
+  }
+}

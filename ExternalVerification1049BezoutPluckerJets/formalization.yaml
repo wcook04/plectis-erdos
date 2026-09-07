@@ -1,0 +1,62 @@
+version: "v0.4"
+project:
+  name: "Erdős #1049: Bézout–Plücker tail collapse"
+  description: "Exact minor propagation and the halved binary-selector threshold under maximal endpoint-jet collapse."
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT", "math.CO"]
+  msc2020: ["11J72", "15A15", "05D10"]
+sources:
+  - title: "Bézout–Plücker tail collapse for Erdős Problem 1049"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1049"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1049"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement and open status; it is not the source of this conditional collision theorem."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Exact source transport; no independent review is claimed."
+palomar_qualification:
+  status: "candidate_pending_terminal_comparator_gates"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_passed_terminal_comparator_pair_pending"
+  note: "Conditional finite-algebraic family only; no actual q-Apéry/Zudilin antecedent or irrationality conclusion is claimed."
+status:
+  scope: "Four exact source-backed endpoints: anchor-minor propagation, one-dimensional selector collision, adjacent-tail propagation, and the 2/3-depth threshold."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: "focused_lean_and_axiom_audit_passed_2026_08_31"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1049BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth"
+      file: "ExternalVerification1049BezoutPluckerJets/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact_source_transport_focused_lean_and_axiom_audit_passed"
+      novelty_status: "unassessed"
+      boundary: "The theorem assumes unit tail coordinates and vanishing adjacent minors; it does not establish those hypotheses for an actual approximation family."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1049BezoutPluckerJets"
+  statements:
+    - source: "ErdosProblems.Erdos1049.BezoutPluckerJets"
+      lean: "four same-named exact source transports"
+      module: "ExternalVerification1049BezoutPluckerJets/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"

@@ -1,0 +1,302 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "subexponential_divisibility_chain_strict_growth",
+  "source_result_ids": [
+    "strict_gcd_growth_exponential_budget",
+    "strict_gcd_growth_sublinear_under_subexponential_tail",
+    "sublinear_tail_gcd_growth_from_normalized_vanishing",
+    "arbitrarily_late_constant_tail_gcd_blocks"
+  ],
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_routine_height_bound_with_reusable_formal_consumer",
+  "problem_id": "erdos_243",
+  "purpose": "Classify the strict-growth budget as elementary multiplicative-height accounting, disambiguate its terminology from classical divisibility sequences, and preserve the exact tail-GCD programme consumer.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/subexponential_divisibility_chain_strict_growth.card.json",
+    "card_commit": "cfaef5e6b5a2d48241a3673d369fedc8a9ac9260",
+    "landed_source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+    "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+    "reviewer_card_sha256": "2e895bdae93b8edc309aa376ed5fd44b70877ff38d414f74076cc5831a58e15a",
+    "source_result_id": "strict_gcd_growth_sublinear_under_subexponential_tail",
+    "headline_declarations": [
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.pow_strictGrowthCount_mul_le",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.strictGrowthCount_sublinear_of_subexponential",
+      "ErdosProblems.Erdos243.ReciprocalTailRigidity.tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes"
+    ]
+  },
+  "source_generation": {
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+    "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+    "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+    "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+    "reviewer_card": "docs/formal_math/reviewer_cards/subexponential_divisibility_chain_strict_growth.card.json",
+    "reviewer_card_sha256": "2e895bdae93b8edc309aa376ed5fd44b70877ff38d414f74076cc5831a58e15a",
+    "status": "source_packet_and_card_hashes_current_at_adjudication; fresh elaboration deferred"
+  },
+  "parity_audit": {
+    "status": "source_card_packet_hashes_current",
+    "effect": "The Lean source content is unchanged across the 0708-to-14bf source-generation advance, while the reviewer card advanced to cfaef5e with the current Tao/expert firewall. The route now binds those current commits and the packet hash explicitly.",
+    "reentry_condition": "Re-enter if the source declarations, normalized-vanishing consumer, countermodels, packet row, or reviewer card changes; do not silently broaden the theorem to eventual stabilization or prime-support control."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "strict_gcd_growth_sublinear_under_subexponential_tail@source-14bf635f-card-cfaef5e6-packet-0708c6fe",
+    "source_generation_binding": {
+      "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+      "reviewer_card_commit": "cfaef5e6b5a2d48241a3673d369fedc8a9ac9260",
+      "reviewer_card_sha256": "2e895bdae93b8edc309aa376ed5fd44b70877ff38d414f74076cc5831a58e15a"
+    },
+    "evidence_class": "Lean_checked_elementary_nested_divisibility_budget_with_exact_consumer_and_sharp_countermodels",
+    "comparison_relation": "The doubling estimate is routine positive nested-divisibility arithmetic, not a new theorem on Ward divisibility sequences. Davenport-Erdos increasing-chain work and Ward's index-divisibility terminology are nearby context but do not state this jump-count interface.",
+    "closest_known_result": "Ward (1936) supplies the classical index-divisibility-sequence terminology, while Davenport--Erdos (1936) use ordinary increasing divisibility chains for a density-to-chain existence theorem; neither is an antecedent for this prescribed-chain jump count.",
+    "exact_delta": "The source contributes a division-free Lean interface with the required all-power quantifier, its exact #243 tail-GCD consumer, a late-constant-block corollary, and explicit nonstabilizing countermodels; the displayed binary product estimate itself is elementary.",
+    "novelty_confidence": {
+      "state": "source_bound_known_arithmetic_interface",
+      "ceiling": "No novelty, priority, or first theorem claim; the value is formalized reuse and exact scope control."
+    },
+    "significance_assessment": {
+      "grade": "high_cross_programme_explanatory_value",
+      "why_care": "It converts multiplicative height control into sparse-event control with no asymptotic real analysis, and its countermodels block the recurring false inference that density-zero jumps imply eventual stabilization.",
+      "mechanism_family": "positive nested-divisibility jump budgets and sparse tail-GCD growth",
+      "expert_attention_reason": "The expert only needs to verify the quantifier order and the upstream #243 consumer; the elementary binary accounting should not consume specialist time."
+    },
+    "exact_claim_ceiling": "For a positive chain G_n dividing G_(n+1), every strict jump costs a factor at least two. If every fixed K eventually satisfies G_n^K<2^n, then K R_G(n)<n eventually for every K, so strict jumps have density zero and arbitrarily late finite constant blocks. No eventual constancy, prime-support escape, Sylvester recurrence, or #243 irrationality follows.",
+    "open_boundary": "The actual #243 normalized-vanishing/all-power input and control of sparse residual-prime reuse remain open; infinite sparse growth is compatible with the theorem, so neither eventual stabilization nor irrationality follows.",
+    "hard_step_and_natural_friction": "The general proof is elementary; the hard #243 input is proving normalized vanishing/all-power subexponential control for the actual tail and then handling sparse residual-prime reuse. Preserve the 2^{floor(sqrt n)} countermodel and the strict all-power quantifier.",
+    "disconfirming_evidence_preserved": [
+      "G_n=2^{floor(sqrt n)} has infinitely many jumps but satisfies the subexponential shape, so stabilization is false.",
+      "Long constant blocks do not identify the responsible primes or force the centered state to vanish.",
+      "The theorem is about nested divisibility in consecutive order, not Ward's index-divisibility sequences."
+    ],
+    "review_scope": {
+      "primary_sources_used": [
+        "Ward (1936), full text read: opening definition and Theorems 1-2, pp. 843-845",
+        "Davenport-Erdos (1936), increasing divisibility-chain context",
+        "Current Lean source ReciprocalTailRigidity.lean and its #243 packet consumer"
+      ],
+      "search_scope": "bounded terminology and primary-source comparison; no claim of exhaustive divisibility-sequence literature review",
+      "closest_relation": "elementary nested-divisibility height budget with a formal reusable interface",
+      "uncertainty": "high for theorem/source parity; low for novelty because the mechanism is routine and Ward's terminology boundary is now text-verified; medium for the upstream #243 hypothesis",
+      "primary_text_verification": {
+        "ward": "The transcription of the published paper was read through p. 845. Ward's opening definition uses r|s, and Sections 3-5 state/prove gcd/rank properties A/B and integrality of associated binomial coefficients. None is a prescribed consecutive-chain growth-count theorem.",
+        "locator": "https://doczz.net/doc/8166165/843-note-on-divisibility-sequences-1.-introduction.-we-ca..."
+      }
+    },
+    "paper_disposition": {
+      "class": "supporting_lemma",
+      "target_section": "Tail normalization and the sparse-cancellation frontier",
+      "relation": "Consolidate finite budget, quantified sublinear law, tail-GCD consumer, late blocks, and the nonstabilizing chain boundary as one mechanism.",
+      "reason": "It is a reusable cross-programme interface, not a standalone endpoint or headline novelty."
+    },
+    "comparator_advisory": {
+      "independent_interface_justified": true,
+      "minimum_firewall": "positive nested divisibility plus the all-power eventual bound; density-zero jumps and late constant blocks only; no stabilization, prime-support, recurrence, or irrationality claim",
+      "release_owner": "Role 3; use one consolidated proposition rather than one interface per declaration"
+    },
+    "bounded_expert_act": "Check the strict quantifier order, the three countermodels, and that the #243 specialization supplies the all-power hypothesis without importing stabilization.",
+    "reentry_trigger": "Re-enter if the source quantifiers, normalized-vanishing input, residual-jump evidence, packet/card generation, or primary terminology changes."
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos243_subexponential_divisibility_chain_strict_growth_v2",
+    "result_family": "erdos243_positive_nested_divisibility_jump_budget",
+    "exact_result_ids": [
+      "strict_gcd_growth_exponential_budget",
+      "strict_gcd_growth_sublinear_under_subexponential_tail",
+      "sublinear_tail_gcd_growth_from_normalized_vanishing",
+      "arbitrarily_late_constant_tail_gcd_blocks"
+    ],
+    "source_generation": "2026-08-26",
+    "evidence_class": "Lean-checked elementary arithmetic theorem, exact #243 consumer, and exact nonstabilizing countermodels",
+    "prior_art_relation": "The doubling budget is immediate nested-divisibility arithmetic; Ward's divisibility-sequence terminology and Davenport--Erdős increasing-chain work are nearby but not antecedents for this exact jump-count statement.",
+    "confidence_ceiling": "High for the theorem, quantifiers, and source parity; low for novelty because the inequality is routine and no priority is claimed.",
+    "significance_rationale": "It is a reusable height-to-event-sparsity interface that blocks the common but false inference from density-zero jumps or long constant blocks to eventual stabilization.",
+    "hard_step": "For #243, prove the upstream normalized-vanishing/all-power input and control sparse residual-prime reuse; the binary accounting itself is not the hard step.",
+    "open_boundary": "No eventual constancy, Sylvester recurrence, prime-support classification, or irrationality follows.",
+    "expert_review_act": "Check the strict quantifier order and the three countermodels, then verify that the #243 specialization supplies the all-power hypothesis without smuggling in eventual stabilization.",
+    "next_reentry": "Re-enter only if the source quantifiers, upstream normalized-vanishing input, packet/card generation, or residual-jump evidence changes; do not repeat the elementary product bound."
+  },
+  "classification": {
+    "theorem_class": "elementary_logarithmic_height_bound_for_proper_steps_in_a_positive_nested_divisibility_chain",
+    "novelty_class": "routine_inequality_with_reusable_Lean_interface_exact_consumer_and_sharp_scope_countermodels",
+    "formalization_class": "Lean_checked_generalization_extracted_from_an_Erdos_243_tail_rigidity_source",
+    "priority_claim": "none",
+    "recommended_terminology": "subexponential nested-divisibility-chain jump budget",
+    "acceptable_short_alias": "strict-growth budget for a divisibility chain",
+    "discouraged_terminology": [
+      "new theorem on Ward divisibility sequences",
+      "divisibility-sequence density theorem",
+      "gcd stabilization theorem",
+      "solution of Erdős Problem 243"
+    ],
+    "nearest_prior_work": [
+      "Ward (1936) is a classical primary source for divisibility sequences, but his definition is index-divisibility: u_r divides u_s when r divides s.",
+      "Davenport and Erdős (1936) use increasing divisibility chains in the ordinary order-theoretic sense and prove a density-to-chain existence theorem.",
+      "Neither source states or is needed for the local logarithmic jump bound; that bound follows immediately from the fact that every proper positive integer multiple is at least twice its predecessor."
+    ],
+    "attribution": "Call the inequality elementary. Use 'nested divisibility chain' to distinguish G_n|G_(n+1) from Ward's standard divisibility-sequence convention. Attribute the formal API, all-power interface, and tail-GCD specialization to the local source.",
+    "mathematical_interest": "Low theorem depth but high cross-programme explanatory value: it converts a multiplicative height ceiling into a frequency ceiling without division or asymptotic real analysis, and its countermodels precisely separate sparse jumps from eventual constancy. This warrants one consolidated expert-digest segment, not a novelty claim.",
+    "reusable_scope": "Positive integer statistics satisfying consecutive divisibility, especially gcd, denominator, content, or cancellation cocycles for which an all-power subexponential bound is available.",
+    "why_it_matters": "In #243 it proves that genuine tail-GCD growth events have density zero and therefore supplies arbitrarily late constant finite blocks under normalized vanishing. Across programmes it is a reusable height-to-event-sparsity interface. This eliminates any strategy requiring frequent cancellation growth while leaving sparse infinite growth, old-prime reuse, and failure of eventual stabilization fully open."
+  },
+  "primary_sources": [
+    {
+      "id": "ward_1936_divisibility_sequences",
+      "title": "Note on divisibility sequences",
+      "author": "Morgan Ward",
+      "venue": "Bulletin of the American Mathematical Society 42 (1936), 843-845",
+      "doi": "10.1090/S0002-9904-1936-06435-9",
+      "url": "https://doi.org/10.1090/S0002-9904-1936-06435-9",
+      "full_text_url": "https://doczz.net/doc/8166165/843-note-on-divisibility-sequences-1.-introduction.-we-ca...",
+      "primary_text_read": true,
+      "text_read_via": "archival full-text transcription of the published Bulletin paper; DOI retained as the canonical bibliographic locator",
+      "exact_anchor": "Published pp. 843-845 (transcription lines 20-28, 62-75): Ward defines a divisibility sequence by u_r|u_s whenever r|s, then states Properties A/B and their equivalence; the definition is index-divisibility, not the present consecutive chain.",
+      "supports": "The classical terminology boundary that must be distinguished from the present consecutive-chain condition.",
+      "does_not_support": "The local strict-growth count, all-power subexponential implication, tail-GCD consumer, or any #243 claim."
+    },
+    {
+      "id": "davenport_erdos_1936_positive_integers",
+      "title": "On sequences of positive integers",
+      "author": "Harold Davenport and Paul Erdős",
+      "venue": "Acta Arithmetica 2 (1936), 147-151",
+      "doi": "10.4064/aa-2-1-147-151",
+      "url": "https://doi.org/10.4064/aa-2-1-147-151",
+      "exact_anchor": "Section 3: a positive upper logarithmic-density set contains an infinite increasing subsequence whose successive elements divide one another.",
+      "supports": "Established order-theoretic use of increasing divisibility chains among positive integers.",
+      "does_not_support": "A jump-count estimate from a prescribed chain's endpoint size, the all-power quantifier, or the tail-GCD application."
+    }
+  ],
+  "mechanism_comparison": {
+    "elementary_core": "Write G_(j+1)=q_j G_j. Positivity and strict increase make q_j an integer at least two. Multiplying over the strict steps gives 2^R G_0<=G_n.",
+    "asymptotic_consumer": "If every fixed power G_n^K is eventually below 2^n, then 2^(K R_G(n))<=G_n^K<2^n, hence K R_G(n)<n for every fixed K eventually.",
+    "source_specific_consumer": "The #243 tail source proves gcd(C_n,D_n) is such a chain and bounds it by a tail height whose every fixed power is subexponential under normalized centered-state vanishing.",
+    "constant_block_corollary": "A finite pigeonhole argument turns sublinear jump count into arbitrarily late jump-free blocks; consecutive divisibility makes those blocks constant. This is a routine consequence of the adjudicated theorem, not a separate novelty object.",
+    "exact_delta": "A division-free Lean theorem with the quantifier order needed by downstream arithmetic cocycles, its routine constant-block consumer, and countermodels showing why density zero cannot be upgraded to stabilization."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "divisibility sequence subexponential strict growth count",
+      "divisibility chain density jumps logarithmic height",
+      "Morgan Ward divisibility sequences definition",
+      "Davenport Erdos infinite divisibility chain density",
+      "integer chain a_n divides a_(n+1) subexponential"
+    ],
+    "result": "The search located classical terminology and density-to-chain existence results, but no named antecedent for the exact jump-count inequality.",
+    "boundary": "Non-location does not imply novelty because the proof is immediate. The defensible contribution is formal packaging and the exact #243 consumer."
+  },
+  "claim_boundary": {
+    "allowed_wording": "A Lean-checked elementary height budget shows that an all-power subexponential nested divisibility chain has density-zero strict increases and hence arbitrarily late constant finite blocks; the #243 tail GCD is an exact consumer, but eventual constancy does not follow.",
+    "forbidden_wording": [
+      "This is a new theorem on divisibility sequences.",
+      "Subexponential growth forces eventual constancy.",
+      "The GCD eventually stops growing.",
+      "Old prime reuse is excluded.",
+      "This solves Erdős Problem 243."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_Ward_divisibility_sequence_theorem",
+      "not_eventual_stabilization",
+      "not_a_prime_support_theorem",
+      "not_erdos_243_solution"
+    ]
+  },
+  "programme_and_paper_disposition": {
+    "canonical_mechanism_family": "tail normalization, cancellation growth, and recurrence rigidity for Erdős #243",
+    "programme_disposition": "subordinate and consolidate: one nested-divisibility jump-budget mechanism replaces separate finite-budget, sparse-growth, tail-GCD, and constant-block result narratives",
+    "expert_attention_reason": "The mechanism has high explanatory and transfer value despite low theorem depth because it fixes the quantifier order and blocks the recurrent sparse-growth-implies-stabilization mistake.",
+    "evidence_class": "Lean-checked general arithmetic theorem and exact source consumer, primary-source terminology comparison, and exact boundary countermodels",
+    "hard_step": "Supply the all-power bound for the actual #243 orbit and control the sparse residual jumps; the displayed binary accounting is not the hard part.",
+    "prior_art_uncertainty": "No priority claim. The inequality is routine; the exact source-specific formal packaging may be useful without being novel.",
+    "open_boundary": "Infinite sparse growth and old-prime reuse remain possible, so neither eventual recurrence nor irrationality follows.",
+    "comparator_interface": "One independent general proposition interface is justified on reuse grounds, not novelty grounds; the source-specific consumers should remain subordinate.",
+    "paper_disposition": "supporting lemma",
+    "paper_target_section": "Tail normalization and the sparse-cancellation frontier",
+    "paper_supersession_relation": "Consolidate all four source results into one subsection and let the explicit nonstabilizing chain retire any stronger stabilization narrative.",
+    "absolute_frontier_shortlist_decision": {
+      "decision": "do not admit; retain the existing five-object cross-programme first-contact shortlist",
+      "why_care": "Reusable supporting interface, but conditional on an unproved upstream #243 input and too elementary to displace a flagship.",
+      "evidence_class": "four Lean declarations plus exact countermodels",
+      "hard_step": "actual normalized vanishing and sparse residual-prime control",
+      "prior_art_uncertainty": "low; routine inequality, no priority claim",
+      "open_boundary": "no stabilization, recurrence rigidity, or irrationality",
+      "demoted_predecessor": "none; all corollaries consolidate here"
+    }
+  },
+  "paper_assimilation": {
+    "paper": "sites/microcosm/papers/source/plectis-lean-erdos249-257/paper/erdos-243-reciprocal-tail-rigidity.tex",
+    "section": "Tail normalization and the sparse-cancellation frontier",
+    "canonical_mechanism_family": "positive nested-divisibility jump budgets and sparse tail-GCD growth",
+    "relation": "One supporting subsection consolidates the finite budget, sparse-jump law, tail-GCD consumer, and late constant blocks; the nonstabilizing chain is adjacent boundary evidence.",
+    "understanding_delta": "Normalized size control yields density-zero jumps and long constant blocks, not eventual stabilization.",
+    "evidence_boundary": "Four Lean declarations; no actual normalized-vanishing input, stabilization, recurrence, or irrationality.",
+    "hard_step": "Prove normalized vanishing and control sparse residual prime reuse.",
+    "meaningful_failed_route": "Infer stabilization from sparse jumps or long blocks.",
+    "open_remainder": "The upstream input and residual-jump arithmetic remain open; Erdős #243 remains open."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification",
+    "output_stage": "exposition_understanding_and_review",
+    "artifact": "subexponential_divisibility_chain_strict_growth",
+    "human_understanding_delta": "One reusable jump-budget mechanism replaces four fragmented consequences and preserves the nonstabilization boundary.",
+    "verification_state": "Four source-pinned Lean declarations and exact countermodels; no fresh replay or independent review.",
+    "publication_or_review_state": "Supporting paper subsection and candidate reusable Comparator advisory; Role 3 retains release authority.",
+    "canonicalization_state": "Finite budget, sparse-growth theorem, tail consumer, and block corollary form one object.",
+    "unresolved_downstream_bottleneck": "Actual normalized vanishing and arithmetic control of sparse residual jumps.",
+    "next_stage_owner": "Mathematics Refinery and Role 3."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_upstream_tail_bound_or_residual_jump_evidence",
+    "reentry_condition": "Re-enter only when the actual #243 normalized-vanishing hypothesis is proved, a sparse residual-prime control theorem is supplied, or the formal source generation/quantifiers change.",
+    "do_not_redo": "Do not repeat the logarithmic product bound, Ward terminology comparison, or constant-block pigeonhole corollary; they are routine and already consolidated.",
+    "open_bottleneck": "The programme still needs arithmetic control of sparse growth and old-prime reuse; density-zero jumps cannot be promoted to eventual stabilization or irrationality.",
+    "owner": "#243 proof fleet for the upstream tail and residual arithmetic; Mathematics Refinery for consolidation; Novelty Observatory for changed source or prior-art evidence."
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/subexponential_divisibility_chain_strict_growth.card.json",
+      "effect": "Replace unadjudicated wording with the routine-height classification, terminology boundary, and exact reusable significance."
+    },
+    {
+      "consumer": "Erdős #243 proof fleet",
+      "effect": "Consume density-zero tail-GCD growth and arbitrarily late constant blocks as finished consequences; seek structural control of sparse growth, prime reuse, or the centered state rather than another frequency or block-length estimate."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present one bundled reusable formal lemma with its routine constant-block corollary and sharp non-stabilization boundary, not two novelty objects."
+    }
+  ],
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Elementary nested-divisibility accounting with high cross-programme explanatory value; the specialist burden is upstream normalized-vanishing and residual-prime control, not the binary jump bound.",
+    "slow_down_at": "Check the all-power eventual bound quantifier, the strict-jump count, and the 2^{floor(sqrt n)} nonstabilizing countermodel. Do not turn density zero into eventual constancy.",
+    "automation_can_establish": [
+      "The four Lean-checked declarations and source parity",
+      "The exact density-zero and late-block consequences",
+      "The sharp countermodel boundary"
+    ],
+    "human_judgment_required": [
+      "Whether the #243 consumer really supplies the all-power hypothesis",
+      "How sparse growth interacts with residual-prime reuse",
+      "Whether Ward/Davenport--Erdos terminology is explanatory without implying a divisibility-sequence theorem"
+    ],
+    "review_act": "Verify the quantifier order and one #243 consumer application; then redirect attention to the missing actual-tail input rather than another frequency estimate."
+  },
+  "adjudication_currentness": {
+    "status": "source_packet_card_current_at_bound_snapshot",
+    "bound_snapshot": {
+      "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "research_packet_commit": "0708c6fe2f0881070e52b729fd75243bd107b2f4",
+      "research_packet_sha256": "c72a431c64df607ae83e53f5eab9467fb305cda1e11b80fd178411b45a3304bd",
+      "reviewer_card_sha256": "2e895bdae93b8edc309aa376ed5fd44b70877ff38d414f74076cc5831a58e15a"
+    },
+    "claim_guard": "Only density-zero strict growth and arbitrarily late finite constant blocks are admitted; stabilization, prime escape, Sylvester recurrence, and #243 irrationality remain excluded.",
+    "reentry_trigger": "Re-enter on source quantifier change, normalized-vanishing input, residual-jump theorem, or packet/card regeneration."
+  }
+}

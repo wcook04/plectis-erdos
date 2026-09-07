@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: positive half-greedy skip equivalence"
+  description: >-
+    Exact identification of cofinal positive rational half-greedy skips with
+    membership of one half in the base-two Mersenne achievement set, together
+    with strict positivity of every finite half-greedy residual.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257PositiveSkipEquivalence/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257PositiveSkipEquivalence/formalization.yaml"
+  repository_scope: "private_source_committed_public_checkpoint_pending"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_deferred_exit_75_low_disk"
+  research_interest_status: "exact_route_identification"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - >-
+      Guarded focused Lean validation returned typed exit 75 before proof
+      checking: 6,676,209,664 free bytes were below the 17,179,869,184-byte
+      build firewall floor.
+    - "focused Lean and axiom checks remain pending after storage clearance"
+    - "terminal positive acceptance and deliberate-negative rejection are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25"]
+
+sources:
+  - title: "Positive half-greedy skips for Erdős #257"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+    note: >-
+      Source-independent theorem interfaces extracted from the checked
+      Mersenne greedy-development.
+  - title: "Erdős Problem #257"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Two declarations prove finite residual positivity and identify cofinal
+    positive skips exactly with half-membership. They do not establish either
+    side of the equivalence and do not solve Erdős Problem 257.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem"
+      file: "ExternalVerification257PositiveSkipEquivalence/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257PositiveSkipEquivalence/comparator.json"
+      canonical_claim_status: "exact_source_transport_pending_focused_check"
+      local_proof_provenance: "Erdos257PeriodNoncollapse/BooleanMobiusSkipRowCofinal.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact route identification"
+      boundary: >-
+        The equivalence proves neither half-membership nor its negation; the
+        parent problem remains open.
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The Challenge repeats the exact source definitions and theorem types. It
+    adds no half-membership proof, no non-membership proof, and no
+    irrationality conclusion.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Exact definitions, equivalence directions, positivity input, and open
+    boundary were reviewed; mechanical replay remains pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257PositiveSkipEquivalence"
+  statements:
+    - source: "Erdos257PeriodNoncollapse.greedyMersenneRemainderRat_half_pos"
+      lean: "Erdos249257.ExternalVerification257PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos"
+      module: "ExternalVerification257PositiveSkipEquivalence/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "Erdos257PeriodNoncollapse.cofinalPositiveHalfGreedySkips_iff_half_mem"
+      lean: "Erdos249257.ExternalVerification257PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem"
+      module: "ExternalVerification257PositiveSkipEquivalence/Challenge.lean"
+      status: "exact-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

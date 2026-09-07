@@ -1,0 +1,256 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "radix_tail_shift_integrality",
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_routine_affine_recurrence_arithmetic_with_standard_multiplicative_order_input",
+  "problem_id": "erdos_251",
+  "source_result_ids": [
+    "integral_tail_shift_criterion",
+    "actual_gap_rational_candidate_recurrence",
+    "actual_real_to_rational_tail_representation",
+    "odd_denominator_totient_shift",
+    "tail_shift_integrality_propagation",
+    "small_adjacent_shift_consumer",
+    "full_denominator_candidate_shift_obstruction",
+    "prime_specific_eventual_integrality_exclusion",
+    "odd_denominator_candidate_anti_concentration",
+    "actual_prime_gaps_unbounded"
+  ],
+  "purpose": "Classify the terminology, antecedents, and exact claim ceiling of the radix-neutral packaging extracted from the Lean-checked dyadic tail-shift results.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/radix_tail_shift_integrality.card.json",
+    "card_commit": "2c5b03151c674f55a99b550d9867a3eb7e2fb4be",
+    "landed_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    "source_result_id": "integral_tail_shift_criterion",
+    "source_declarations": [
+      "ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail",
+      "ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den",
+      "ErdosProblems.Erdos251.tailShift_integral_succ",
+      "ErdosProblems.Erdos251.tailShift_integral_add",
+      "ErdosProblems.Erdos251.tailShift_eventually_zero_of_eventually_integral_of_eventually_small"
+    ]
+  },
+  "classification": {
+    "theorem_class": "elementary_iteration_of_an_integer_affine_radix_recurrence_plus_standard_modular_order_arithmetic",
+    "novelty_class": "routine_ingredients_with_useful_source_anchored_packaging_and_scope_boundary",
+    "formalization_class": "dyadic_specialization_Lean_checked_general_integer_radix_extension_proved_ordinary_on_card",
+    "priority_claim": "none",
+    "recommended_terminology": "integral-shift criterion for an integer affine radix recurrence",
+    "acceptable_descriptive_alias": "radix tail-shift integrality criterion",
+    "contextual_analogy": "purely periodic repetend denominator criterion after the radix-supported denominator part has been removed",
+    "discouraged_terminology": [
+      "new radix expansion theorem",
+      "rational-tail criterion",
+      "rationality classification",
+      "periodicity theorem",
+      "irrationality criterion for prime gaps"
+    ],
+    "attribution": "Call recurrence iteration and the unit-window step elementary, and call the denominator input the multiplicative order of b modulo the denominator; Euler's totient is an available, usually nonminimal, exponent. Treat Rényi--Parry β-expansion theory only as broader historical context, not as the source of the displayed affine identity.",
+    "mathematical_interest": "The package is not independently novel, but it exposes an exact arithmetic interface: rational denominator information supplies persistent integral shifts, while any contradiction must come from a separate smallness, mismatch, or nonperiodicity input.",
+    "reusable_scope": "Integer-valued digit/carry recurrences T_(n+1)=b T_n-a_(n+1), including states outside [0,1] and digit alphabets not restricted to 0,...,b-1.",
+    "why_it_matters": "It organizes the #251 rational-candidate, real-tail representation, denominator removal, persistent shift, and mismatch consumers around one arithmetic interface. The alternating two-state orbit prevents denominator arithmetic or integrality from being mistaken for the hard smallness/nonconcentration input."
+  },
+  "primary_sources": [
+    {
+      "id": "renyi_1957_real_number_representations",
+      "title": "Representations for real numbers and their ergodic properties",
+      "author": "Alfréd Rényi",
+      "venue": "Acta Mathematica Academiae Scientiarum Hungarica 8 (1957), 477-493",
+      "doi": "10.1007/BF02020331",
+      "url": "https://doi.org/10.1007/BF02020331",
+      "exact_anchor": "The paper introduces the broader β-expansion dynamical setting in which an expanding radix map generates digits.",
+      "supports": "Established radix-expansion context and expanding-map vocabulary.",
+      "does_not_support": "The arbitrary-integer-digit affine recurrence package, the exact integral-shift equivalence in this notation, or the #251 consumer."
+    },
+    {
+      "id": "parry_1960_beta_expansions",
+      "title": "On the β-expansions of real numbers",
+      "author": "William Parry",
+      "venue": "Acta Mathematica Academiae Scientiarum Hungarica 11 (1960), 401-416",
+      "doi": "10.1007/BF02020954",
+      "url": "https://doi.org/10.1007/BF02020954",
+      "exact_anchor": "The paper develops β-expansion and β-transformation structure beyond ordinary integer-base expansions.",
+      "supports": "Why radix-expansion is a recognizable neighboring literature rather than a proposed new name.",
+      "does_not_support": "A rational-tail criterion for arbitrary integer digits, persistent integral shifts, or any prime-gap irrationality statement."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_recurrence_arithmetic": "Iterating T_(n+1)=bT_n-a_(n+1) gives T_(n+h)=b^hT_n-A_(n,h) with A_(n,h) integral.",
+    "standard_denominator_arithmetic": "For reduced denominator q coprime to b, the shift is integral exactly when q divides b^h-1; the least positive such h is ord_q(b), while φ(q) is only a universal admissible choice.",
+    "radix_expansion_boundary": "With canonical bounded digits and fractional states, the same divisibility is familiar repetend arithmetic. Those hypotheses are absent here, so expansion periodicity and uniqueness are not conclusions of this card.",
+    "source_consumer_stack": "In #251 a proposed rational sum produces exact candidate tail states; equality with the real sum identifies their real-tail casts; denominator splitting and multiplicative order produce a persistent integral shift; an adjacent small mismatch or eventual smallness plus unbounded gaps is still required for contradiction.",
+    "local_delta": "The card packages the identity, candidate representation, exact integrality equivalence, forward persistence, mismatch/open-unit-window consumers, and a sharp finite counterexample to integrality-implies-zero in one reusable interface."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "primary paper beta expansions rational eventually periodic Renyi Parry",
+      "base b rational expansion multiplicative order repetend",
+      "integer affine radix recurrence integral tail shift"
+    ],
+    "result": "The bounded search recovered the classical β-expansion framework and standard multiplicative-order/repetend language, but no reason to treat the displayed recurrence algebra as an independent named theorem.",
+    "boundary": "Absence of an exact phrase match does not support novelty; the identity is too immediate to warrant a priority claim."
+  },
+  "claim_boundary": {
+    "allowed_wording": "This is an elementary integral-shift criterion for an integer affine radix recurrence, using standard multiplicative-order arithmetic, packaged around a Lean-checked dyadic rational-candidate and mismatch-consumer stack.",
+    "forbidden_wording": [
+      "This characterizes rational radix tails.",
+      "Integral shifts force eventual periodicity or vanishing.",
+      "The general-radix theorem is Lean checked.",
+      "The criterion proves the prime-gap dyadic series irrational.",
+      "This is a new β-expansion theorem."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_a_rationality_characterization",
+      "not_an_eventual_periodicity_theorem",
+      "not_a_general_radix_Lean_declaration",
+      "not_erdos_251_progress_without_a_smallness_or_mismatch_producer"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/radix_tail_shift_integrality.card.json",
+      "effect": "Replace pending terminology with the recurrence-arithmetic classification and preserve radix expansion only as contextual analogy."
+    },
+    {
+      "consumer": "Erdős #251 proof fleet",
+      "effect": "Treat the candidate-state, denominator, persistence, and mismatch lemmas as one finished arithmetic stack. Use multiplicative order rather than totient when the minimal resonant shift matters, and keep the genuinely open smallness/nonconcentration producer explicit."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present one routine arithmetic asset with useful formal consumer wiring, not eight separate discoveries or a new radix/rational-expansion theorem."
+    }
+  ],
+  "review_unit": {
+    "result_family": "erdos251_radix_tail_shift_integrality",
+    "exact_result_id": "integral_tail_shift_criterion",
+    "source_generation": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "reviewer_card": "docs/formal_math/reviewer_cards/radix_tail_shift_integrality.card.json",
+      "reviewer_card_commit": "2c5b03151c674f55a99b550d9867a3eb7e2fb4be"
+    },
+    "review_generation": "2026-08-25_maturity_ratchet_v1"
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Routine affine-recurrence algebra with a load-bearing semantic boundary: denominator resonance supplies an integral shift but not a contradiction.",
+    "slow_down_at": "The quantifier split between a fixed multiplicative-order shift and a separate smallness or mismatch producer; the alternating two-state orbit is the falsifier for integrality-implies-vanishing.",
+    "automation_can_establish": [
+      "Lean declaration parity for the dyadic specialization",
+      "Exact recurrence iteration and divisibility identities",
+      "Finite counterexample checks for persistent integral but nonzero states"
+    ],
+    "human_judgment_required": [
+      "Whether the packaging deserves a standalone explanatory paragraph rather than a separate theorem family",
+      "Whether the classical radix-periodicity attribution is sufficient for the intended audience",
+      "Whether a future #251 producer supplies genuinely new information beyond denominator resonance"
+    ],
+    "review_act": "One bounded expert act: verify that the displayed recurrence and multiplicative-order step are being presented as standard arithmetic, then assess only the source-specific consumer wiring and its failure boundary."
+  },
+  "programme_placement": {
+    "canonical_mechanism_family": "#251 rational-tail arithmetic: denominator resonance, integral shifts, and the missing prime-specific mismatch producer",
+    "disposition": "subordinate_under_existing_arithmetic_stack_and_consolidate_adjacent_routes",
+    "consolidation_relation": "Keep denominator_resonant_free_pair_tail_law as the two-index consumer refinement and dyadic_affine_cylinder_circularity as the route-killing independence test; neither is a parallel endpoint.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Why denominator resonance is only a consumer",
+      "supersession_or_consolidation": "Use this route as the parent arithmetic paragraph and cross-reference the free-pair and cylinder boundaries; do not create a separate radix-expansion section or endpoint narrative.",
+      "reason": "The value for a reader is the separation of standard denominator arithmetic from the still-missing prime-gap producer, not a new recurrence theorem."
+    },
+    "comparator_advisory": "No independent proposition interface is justified beyond the existing card: the exact recurrence is routine and the source-specific value is semantic wiring plus a non-implication firewall."
+  },
+  "paper_assimilation": {
+    "paper": "docs/formal_math/type_b_packets/fc_export_wow_2026_08_19/_pin/paper_251.md",
+    "section": "Why denominator resonance is only a consumer",
+    "canonical_mechanism_family": "#251 rational-tail arithmetic and producer-versus-consumer separation",
+    "relation": "Supporting-parent route for the free-pair congruence and dyadic-cylinder circularity boundaries; consolidate routine radix arithmetic here.",
+    "understanding_delta": "A rational candidate yields persistent integral shifts, but that fact alone cannot supply the strict nonintegral mismatch needed for #251.",
+    "evidence_boundary": "Dyadic specialization is Lean checked; the integer-radix extension is an authored ordinary proof; classical radix-periodicity sources provide context only.",
+    "hard_step": "Find a prime-specific cofinal smallness or mismatch producer independent of denominator resonance.",
+    "meaningful_failed_route": "Treat denominator period, deeper scans, or integral shifts as an irrationality or eventual-vanishing theorem.",
+    "open_remainder": "No prime-gap producer or #251 irrationality conclusion follows from this arithmetic interface."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "verification_and_prior_art_adjudication",
+    "output_stage": "human_understanding_and_canonicalization_support",
+    "artifact": "radix_tail_shift_integrality_v0 prior-art route",
+    "human_understanding_delta": "Binds the exact source generation and makes the standard arithmetic versus source-specific consumer boundary visible in one place.",
+    "verification_state": "The dyadic declarations and source/card commits are pinned; no fresh Lean replay or general-radix formalization is claimed.",
+    "publication_or_review_state": "Internal adjudication with no priority claim; suitable for status-tagged supporting exposition, not a standalone novelty or endpoint claim.",
+    "canonicalization_state": "Consolidated under the #251 arithmetic stack, with the free-pair and cylinder routes retained as subordinate consumers/boundaries.",
+    "unresolved_downstream_bottleneck": "A genuinely prime-specific cofinal nonintegral mismatch or smallness theorem independent of denominator resonance.",
+    "next_stage_owner": "Mathematics Refinery for paper consolidation; #251 proof owners for any new producer; Role 3 for downstream projection decisions."
+  },
+  "adjudication_currentness": {
+    "status": "current_at_2026-08-26",
+    "bound_snapshot": {
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "reviewer_card_commit": "2c5b03151c674f55a99b550d9867a3eb7e2fb4be",
+      "reviewer_card_sha256": "62f300b2aeb3d10689a29787e5e6d38a1a605cfb0b7763beb7517412ceb7fc63",
+      "source_result_ids": [
+        "integral_tail_shift_criterion",
+        "actual_gap_rational_candidate_recurrence",
+        "actual_real_to_rational_tail_representation",
+        "odd_denominator_totient_shift",
+        "tail_shift_integrality_propagation",
+        "small_adjacent_shift_consumer",
+        "full_denominator_candidate_shift_obstruction",
+        "prime_specific_eventual_integrality_exclusion",
+        "odd_denominator_candidate_anti_concentration",
+        "actual_prime_gaps_unbounded"
+      ]
+    },
+    "claim_guard": "The dyadic source stack is Lean checked; the integer-radix extension is ordinary mathematics. No denominator resonance, integral shift, or persistence statement is an irrationality, periodicity, or #251 solution theorem.",
+    "reentry_trigger": "Re-adjudicate only on a source/card generation change, a materially stronger primary-source recurrence result, or a proved prime-specific cofinal smallness or mismatch producer."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos251_radix_tail_shift_integrality@formal-9eb76529/card-2c5b0315",
+    "source_generation_binding": {
+      "formal_source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "formal_source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "reviewer_card_commit": "2c5b03151c674f55a99b550d9867a3eb7e2fb4be",
+      "reviewer_card_sha256": "62f300b2aeb3d10689a29787e5e6d38a1a605cfb0b7763beb7517412ceb7fc63",
+      "packet_result_ids": [
+        "integral_tail_shift_criterion",
+        "actual_gap_rational_candidate_recurrence",
+        "actual_real_to_rational_tail_representation",
+        "odd_denominator_totient_shift",
+        "tail_shift_integrality_propagation",
+        "small_adjacent_shift_consumer",
+        "full_denominator_candidate_shift_obstruction",
+        "prime_specific_eventual_integrality_exclusion",
+        "odd_denominator_candidate_anti_concentration",
+        "actual_prime_gaps_unbounded"
+      ]
+    },
+    "evidence_class": "Lean-checked dyadic declarations, authored ordinary integer-radix generalization, and exact finite alternating integral-nonzero countermodel; classical radix-expansion papers are contextual sources only.",
+    "closest_known_result": "Rényi (1957) and Parry (1960) establish the neighboring beta-expansion and expanding-radix framework; standard repetend arithmetic uses multiplicative order for rational base-b expansions.",
+    "comparison_relation": "standard_antecedent_with_source_anchored_packaging",
+    "exact_delta": "The source-specific delta is a single interface that joins candidate-tail identification, denominator resonance, forward integral-shift persistence, mismatch/smallness consumers, and the explicit integrality-without-vanishing countermodel; no new recurrence identity is claimed.",
+    "disconfirming_evidence": "The displayed recurrence is immediate iteration, and the denominator condition is standard multiplicative-order arithmetic; beta-expansion literature does not support a new rational-tail theorem under these unrestricted digit hypotheses.",
+    "confidence_ceiling": "strong_internal_provisional_case_for_routine_classification; no priority or external novelty claim",
+    "significance": "Useful as a high-clarity arithmetic firewall: it stops denominator period or integrality from being misread as the missing prime-gap smallness/nonconcentration input. It is supporting infrastructure, not a flagship advance.",
+    "claim_ceiling": "Call it an elementary integral-shift criterion for an integer affine radix recurrence, with a Lean-checked dyadic specialization and ordinary generalization. Do not call it a rationality/periodicity characterization, a new beta-expansion theorem, or an Erdős #251 irrationality result.",
+    "hard_step": "Produce a prime-specific cofinal smallness or nonintegral mismatch independent of denominator resonance.",
+    "open_boundary": "The arithmetic stack supplies no #251 endpoint: a persistent integral shift may remain nonzero, and the alternating two-state orbit shows integrality alone does not force vanishing.",
+    "bounded_expert_act": "Ask one expert to verify the recurrence/multiplicative-order attribution and whether the bundled consumer wiring deserves one explanatory paragraph rather than a standalone theorem family.",
+    "reentry_trigger": "Re-enter on changed formal/card generation, a primary source with a stronger exact theorem, or a genuinely new prime-specific producer.",
+    "mechanism_family": "#251 rational-tail arithmetic: denominator resonance, integral shifts, and producer-versus-consumer separation",
+    "disposition": "subordinate_under_existing_arithmetic_stack_and_consolidate_adjacent_routes",
+    "expert_attention_reason": "The main reader risk is logical overreach, not a hidden difficult proof: denominator resonance is a consumer and cannot supply the missing prime-gap estimate.",
+    "paper_disposition": "supporting lemma",
+    "paper_section": "Denominator resonance supplies integrality, not smallness",
+    "supersession_relation": "Parent the free-pair congruence and dyadic-cylinder boundary routes here; retain them as subordinate consumers/boundaries, not parallel endpoints.",
+    "comparator_interface_justified": true,
+    "comparator_reason": "One bundled status-tagged dyadic proposition interface is materially useful as a non-implication firewall; no separate interface is justified for routine radix algebra or the ordinary generalization."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_prime_specific_producer_or_source_generation_change",
+    "reentry_condition": "Re-enter only if the formal source/card generation changes, a primary source states a materially stronger recurrence theorem, or a prime-specific cofinal smallness/mismatch producer is proved.",
+    "do_not_redo": "Do not repeat beta-expansion terminology searches, finite denominator scans, or the alternating two-state counterexample; those boundaries are settled for this route.",
+    "open_bottleneck": "The missing producer must not be a restatement of rational denominator resonance.",
+    "owner": "#251 proof owners for mathematics; Mathematics Refinery for canonical paper placement; Novelty Observatory only on a changed source or literature claim."
+  }
+}

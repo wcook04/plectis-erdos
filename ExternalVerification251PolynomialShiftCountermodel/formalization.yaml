@@ -1,0 +1,214 @@
+version: v0.4
+project:
+  name: 'Erdős #251: exact countermodel to coarse gap-profile irrationality routes'
+  description: >-
+    The dyadic series of the explicit digit word g(n) = 2(n^2 + 4n + 2) sums to the
+    rational number 32, so that sum is not irrational. The same compared theorem records
+    the properties of the word that hold alongside that value. The word and the explicit
+    rational orbit T(n) = 2(n + 4)^2 satisfy the dyadic tail recurrence T(N + 1) = 2 T(N)
+    - g(N + 1) at every index. The word is positive, even and strictly increasing, hence
+    unbounded and not eventually periodic. Every fixed tail shift T(N + h) - T(N) is an
+    integer for every h and every N. Every adjacent difference g(n + 1) - g(n) equals
+    4n + 10 at every index n, so it is never 2 and never -2. Positivity, parity, polynomial
+    growth, unboundedness, nonperiodicity, the dyadic recurrence and integrality at every
+    fixed shift are therefore jointly compatible with a rational sum, and no argument that
+    uses only those properties can force irrationality. The mechanism is an integer-valued
+    quadratic orbit, which turns all-shift integrality into a polynomial identity over the
+    integers; the word has constant second difference, so its adjacent differences grow
+    linearly and clear the small window from the outset; and the exact finite telescope
+    of the series equals 32 minus the scaled terminal state, whose terminal term tends to
+    zero. The word is a model sequence and is not the consecutive-prime-gap word, so this
+    theorem is internal infrastructure that closes one of the author's own proof routes and
+    decides nothing about Erdős Problem 251. A telescoping countermodel of the same species,
+    for the neighbouring conjecture printed under #251, was published first by Vjeko Kovač
+    on 15 April 2026 and is cited below. The readers are number theorists working on the
+    irrationality of the dyadic prime-gap series.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+palomar_qualification:
+  status: candidate_pending_mechanical_gates_after_2026_09_05_statement_expansion
+  selected_project: formal_math/erdos257_period_noncollapse
+  comparator_config: formal_math/erdos257_period_noncollapse/ExternalVerification251PolynomialShiftCountermodel/comparator.json
+  formalization_metadata: formal_math/erdos257_period_noncollapse/ExternalVerification251PolynomialShiftCountermodel/formalization.yaml
+  release_mirror: ExternalVerification251PolynomialShiftCountermodel
+  repository_scope: private_source_mirrored_into_palomar_release_branch_palomar/toolchain-v4.30
+  challenge_dependency_boundary: Mathlib_only
+  replay_status: not_yet_replayed_after_statement_expansion
+  research_interest_status: internal_infrastructure_that_closes_one_of_our_own_routes
+  submission_authorization: operator_directed_submission_campaign_public_identity_pinned_at_release_cut
+  blockers:
+  - Lean kernel check of Challenge, Solution and AxiomAudit has not been rerun for the expanded
+    statement
+  - axiom audit output for the expanded statement has not been recorded
+  - the public commit identity is the release cut on palomar/toolchain-v4.30 and is not yet
+    pinned
+  note: >-
+    The earlier submitted_at_commit c39cea6a976747d132a848d26f110b9c608d5a45 and the scope
+    private_source_not_yet_pinned_in_public_repository are superseded. The entry is mirrored
+    into the release repository at the path above, and the compared statement was expanded on
+    2026-09-05 to carry the exact adjacent difference, the all-index plus-or-minus-two
+    exclusion, and the series value 32, so any earlier commit pin no longer identifies this
+    statement. The claim frontier grades
+    erdos251.polynomial_gap_countermodel_series_value_32 band S, altitude infrastructure: the
+    value 32 kills our own h = 1 producer and is never a result about #251, and Kovač's April
+    2026 telescoping countermodel for the neighbouring conjecture is cited beside it. No local
+    artifact is represented as a Palomar verdict, novelty ruling, or registry entry.
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+sources:
+- title: An exact polynomial-shift countermodel to coarse gap criteria
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: >-
+    This formalization presents the complete exact countermodel as one theorem: the explicit
+    quadratic word and orbit obey the dyadic recurrence, retain integrality at every fixed
+    shift, have adjacent difference exactly 4n + 10 at every index, and produce the rational
+    dyadic series value 32. The result is a strategy-elimination theorem beneath the still-open
+    Erdős Problem 251.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'On the Erdős problem #251'
+  authors:
+  - Vjeko Kovač
+  id: https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf
+  type: preprint
+  relationship: background
+  note: >-
+    Posted to the erdosproblems.com #251 thread on 15 April 2026. Theorem 1 constructs
+    integers g_n with g_n at least 2 and g_n = o(p_n) such that the sum of p_n/(g_1...g_n)
+    equals 1, refuting the neighbouring irrationality conjecture printed under #251. That is
+    the same species of telescoping countermodel as the construction formalized here, applied
+    to a different object and published first. It is cited beside the value 32 for that reason.
+  license: unknown
+  author_endorsement: not-contacted
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  note: >-
+    The catalogue supplies the problem statement, numbering, references, and open status.
+    The polynomial countermodel is a local strategy-elimination theorem and is not attributed
+    to the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: >-
+    The single compared theorem states the complete exact countermodel: the dyadic series of
+    the quadratic digit word sums to 32 and is not irrational; the word is positive, even, and
+    strictly increasing; it obeys the dyadic recurrence with the explicit rational orbit; every
+    fixed tail shift is integral; and every adjacent difference equals 4n + 10 at every index,
+    hence is never plus or minus two. Challenge.lean has the one intentional Comparator
+    specification sorry; the proof-bearing Solution module and the imported source modules
+    ErdosProblems/Erdos251/PrimeGapDyadicTail.lean and
+    ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in Challenge.lean. It is
+    excluded from the proof-corpus count; the Solution module assembles ten checked source
+    theorems.
+  axiom_audit_status: pending_release_build_after_2026_09_05_statement_expansion
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel
+    file: ExternalVerification251PolynomialShiftCountermodel/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PolynomialShiftCountermodel/comparator.json
+    canonical_claim_status: lean_checked_composite_wrapper
+    local_proof_provenance: ten source theorems assembled from the private problem corpus
+    novelty_status: unassessed
+    contribution_class: exact infinite countermodel and coarse-route elimination
+    statement: >-
+      The dyadic series of the explicit positive-even strictly increasing quadratic digit word
+      sums to 32 and is not irrational, while the word and its rational quadratic orbit satisfy
+      the dyadic recurrence, every fixed tail shift is integral, and every adjacent digit
+      difference equals 4n + 10 and so avoids plus or minus two.
+    boundary: >-
+      The orbit is not the actual prime-gap orbit. The theorem eliminates coarse gap-profile
+      strategies, including the author's own h = 1 adjacent-mismatch route, and it does not
+      establish or refute the actual-prime cofinal producer and does not solve Erdős 251. The
+      value 32 is a property of a model word and is not progress on the problem.
+    comparator_declaration: Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel
+    literature_dependencies: []
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - OpenAI Codex
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+  - method: other
+    models: []
+    framework: Comparator with Landrun
+    tool_setup: >-
+      Positive acceptance and deliberate-negative mismatch rejection on a supported runner;
+      no terminal replay receipt is recorded here.
+  - method: other
+    models: []
+    framework: Lean kernel
+    tool_setup: Source-local Lean checking with the pinned toolchain
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator preparation, and
+    any future Palomar editorial review.
+fidelity:
+  divergences: >-
+    The compared declaration combines ten source theorems into one coherent exact countermodel.
+    No property is inferred merely from prose, and no claim is made about the actual
+    consecutive-prime-gap word.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The ten source theorems, the literal Challenge and Solution declaration shape, the
+    countermodel scope, and the open-problem boundary were reviewed. The compared statement was
+    expanded on 2026-09-05 to carry the exact adjacent difference, the all-index form of the
+    plus-or-minus-two exclusion, and the series value; the release Lean elaboration and axiom
+    audit for that expanded statement have not been rerun. No independent human peer review,
+    Palomar decision, or registry acceptance is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification251PolynomialShiftCountermodel
+  statements:
+  - source: >-
+      The source theorem family giving the exact polynomial digit word, the recurrence, strict
+      growth, all-shifts integrality, the exact adjacent difference 4n + 10, the global failure
+      of the adjacent plus-or-minus-two event, and the rational value 32 of the dyadic series.
+    lean: Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel
+    module: ExternalVerification251PolynomialShiftCountermodel/Challenge.lean
+    status: exact-transport
+    note: >-
+      The Challenge exposes the complete countermodel as one theorem while retaining the exact
+      source definitions and open-problem boundary.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue; Vjeko
+  Kovač for the published telescoping countermodel in this neighbourhood.

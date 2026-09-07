@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification243BoundedRiseReducedTail.Challenge",
+  "solution_module": "ExternalVerification243BoundedRiseReducedTail.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_eventuallyBoundedRise_reducedTail",
+    "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_reducedTail",
+    "Erdos249257.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_of_tailAvoidance"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

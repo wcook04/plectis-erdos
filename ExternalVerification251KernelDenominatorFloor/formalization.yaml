@@ -1,0 +1,141 @@
+version: v0.4
+project:
+  name: 'Erdős #251: kernel-decided denominator floor for the prime-gap dyadic series'
+  description: >-
+    Every rational a/b equal to the prime-gap series of Erdős Problem 251, the dyadic series
+    whose term at index n is (p_(n+1) - p_n)/2^(n+1), has denominator b at least 2^589, a number
+    exceeding 10^177. The same floor holds for the zero-based prime series with term
+    p_n/2^(n+1), whose value is 2 more than the gap series. Both floors are decided inside the
+    Lean kernel. certCheck c u v u' v' X packages six integer conditions on a trial-division
+    sieve run over every m < X: the count of primes below X equals c, v and v' are positive, the
+    Farey determinant u'v = uv' + 1 holds, and two inequalities place the prime series strictly
+    inside the interval from u/v to u'/v'. den_bound_of_certCheck converts a passing certificate
+    at any truncation index c at least 9 into the bound v + v' <= b for every rational a/b equal
+    to the prime series, with the omitted tail controlled by 5000(c+1)^4/2^(c+1). cert_10000
+    discharges that certificate at c = 1229 and X = 10000 on four explicit constants of 177 and
+    178 digits by kernel evaluation, and the sum v + v' of the two recorded denominators is at
+    least 2^589. A lower bound on the denominator of a rational representation is compatible
+    with rationality of either series. The package supplies no irrationality theorem and Erdős
+    Problem 251 is not decided here.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A41
+  - 11J72
+  - 11Y16
+sources:
+- title: A kernel-decided denominator floor for the Erdős Problem 251 dyadic series
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+status:
+  scope: >-
+    Four source-backed declarations expose a kernel-decided denominator floor of 2^589 for the
+    Erdős #251 prime-gap series and for the zero-based prime series, together with the
+    trial-division certificate that produces it. No irrationality theorem is claimed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: pending_2026_09_05_release_replay
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251KernelDenominatorFloor.cert_10000
+    file: ExternalVerification251KernelDenominatorFloor/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251KernelDenominatorFloor/comparator.json
+    canonical_claim_status: exact source transport; kernel check and axiom print pending
+    local_proof_provenance: ErdosProblems/Erdos251/KernelDenominatorFloor.lean
+    novelty_status: unassessed
+    contribution_class: kernel-decided sieve certificate
+    boundary: The certificate is an arithmetic fact about explicit constants. It bounds no denominator on its own.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251KernelDenominatorFloor.den_bound_of_certCheck
+    file: ExternalVerification251KernelDenominatorFloor/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251KernelDenominatorFloor/comparator.json
+    canonical_claim_status: exact source transport; kernel check and axiom print pending
+    local_proof_provenance: ErdosProblems/Erdos251/KernelDenominatorFloor.lean
+    novelty_status: unassessed
+    contribution_class: certificate to denominator-floor converter
+    boundary: Conditional on a passing certificate at the given truncation index.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor
+    file: ExternalVerification251KernelDenominatorFloor/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251KernelDenominatorFloor/comparator.json
+    canonical_claim_status: exact source transport; kernel check and axiom print pending
+    local_proof_provenance: ErdosProblems/Erdos251/KernelDenominatorFloor.lean
+    novelty_status: unassessed
+    contribution_class: unconditional denominator floor for the prime series
+    boundary: A denominator floor is compatible with rationality of the series.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor_primeGap
+    file: ExternalVerification251KernelDenominatorFloor/Solution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251KernelDenominatorFloor/comparator.json
+    canonical_claim_status: exact source transport; kernel check and axiom print pending
+    local_proof_provenance: ErdosProblems/Erdos251/KernelDenominatorFloor.lean
+    novelty_status: unassessed
+    contribution_class: unconditional denominator floor for the Erdős #251 gap series
+    boundary: A denominator floor is compatible with rationality of the series.
+    literature_dependencies: []
+automation:
+  methods:
+  - method: agent
+    models:
+    - Claude Opus
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted verification packaging and exposition
+fidelity:
+  divergences: >-
+    The challenge redeclares the prime and prime-gap dyadic terms, the kernel-evaluable
+    trial-division sieve, the certificate predicate and the certificate constants, then states
+    the four source theorems verbatim.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The certificate constants were recomputed independently of Lean: the sieve count is 1229,
+    the Farey determinant holds, both bracketing inequalities hold, and the sum of the two
+    denominators is at least 2^589.
+alignment:
+  namespace: Erdos249257.ExternalVerification251KernelDenominatorFloor
+  statements:
+  - source: ErdosProblems.Erdos251.cert_10000
+    lean: Erdos249257.ExternalVerification251KernelDenominatorFloor.cert_10000
+    module: ExternalVerification251KernelDenominatorFloor/Challenge.lean
+    status: exact-transport-kernel-check-pending
+  - source: ErdosProblems.Erdos251.den_bound_of_certCheck
+    lean: Erdos249257.ExternalVerification251KernelDenominatorFloor.den_bound_of_certCheck
+    module: ExternalVerification251KernelDenominatorFloor/Challenge.lean
+    status: exact-transport-kernel-check-pending
+  - source: ErdosProblems.Erdos251.kernel_denominator_floor
+    lean: Erdos249257.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor
+    module: ExternalVerification251KernelDenominatorFloor/Challenge.lean
+    status: exact-transport-kernel-check-pending
+  - source: ErdosProblems.Erdos251.kernel_denominator_floor_primeGap
+    lean: Erdos249257.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor_primeGap
+    module: ExternalVerification251KernelDenominatorFloor/Challenge.lean
+    status: exact-transport-kernel-check-pending
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

@@ -1,0 +1,188 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #243: unit record-increment rigidity under arbitrary cancellation"
+  description: >-
+    Conditional theorem: if the running maximum of the reduced tail
+    numerator eventually increases by at most one per step, and a fresh
+    large prime power of the reduced denominator recurs at arbitrarily late
+    indices, dominating the current record, then the multipliers satisfy the
+    exact Sylvester recurrence eventually. No bound on the cancellation
+    factors is assumed. The theorem is conditional on its explicit tail
+    hypotheses and does not settle Erdős #243.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243RecordIncrementBarrier/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243RecordIncrementBarrier/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_rigidity_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The open parent problem is an explicit theorem boundary, not an editorial
+    veto. No local artifact is represented as a Palomar verdict or registry
+    entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37"]
+
+sources:
+  - title: "Unit record-increment rigidity for reciprocal-tail dynamics"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The proof isolates the finite arithmetic of the historical square
+      payment (a per-step and telescoped valuation-drop bound charging the
+      cancellation factors) together with an exact-landing crossing argument
+      forced by a unit bound on the growth of the running maximum, and
+      combines it with the shared centring-and-vanishing absorption argument
+      that also drives the bounded-negative-part and record-rise-two
+      branches of the same programme.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status; the rigidity theorem is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem packages true-record-increment rigidity: under a
+    unit bound on the growth of the running maximum of the reduced numerator
+    and a recurring fresh large prime power of the reduced denominator, the
+    multipliers eventually satisfy the exact Sylvester recurrence. No
+    oddness hypothesis and no bound on the cancellation factors is used.
+    Challenge.lean has one intentional Comparator specification sorry;
+    Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually"
+      file: "ExternalVerification243RecordIncrementBarrier/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243RecordIncrementBarrier/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorem `recordIncrementOne_sylvesterNext_eventually` in
+        ErdosProblems/Erdos243/RecordIncrementBarrier.lean, kernel-checked
+        this session (module SHA-256
+        928ef7a15562a2f6290355f543dcc570517fde536b6cad416cfa4e7b80958e26,
+        see state/formal_math/type_b_return_batches/erdos243_20260905_weighted_record_octuple_returns_02/work/desk_L1_lean_receipt.json);
+        not yet committed to git history.
+      novelty_status: "unassessed"
+      contribution_class: "conditional true-record-increment rigidity"
+      statement: >-
+        Under an eventual nearest-integer centring bound, division-free
+        normalized vanishing, a unit bound on the eventual growth of the
+        running maximum of the primitive numerator, and a fresh large
+        prime-power supply of the reduced denominator recurring at
+        arbitrarily late indices, the multipliers eventually satisfy
+        `a (n + 1) = a n ^ 2 - a n + 1`.
+      boundary: >-
+        The result assumes both the unit record-increment bound and the
+        prime-power supply as hypotheses; neither is derived from the
+        underlying dynamics. It does not exclude larger true record
+        increments and does not solve Erdős #243.
+      comparator_declaration: "Erdos249257.ExternalVerification243RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The compared theorem is the source-current composed consumer
+    `recordIncrementOne_sylvesterNext_eventually`, exposed verbatim in
+    Mathlib-only vocabulary via local `sylvesterNext` and `runningMax`
+    definitions that are shown equal to the corpus definitions. It adds no
+    claim beyond the checked declaration.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem, its exact hypotheses (division-free cocycle,
+    coprimality, positivity, centring, normalized vanishing, unit record
+    increment, fresh prime-power supply), and the open-problem boundary were
+    reviewed. Focused Lean, axiom and Comparator replay remain distinct
+    gates.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243RecordIncrementBarrier"
+  statements:
+    - source: "ErdosProblems.Erdos243.recordIncrementOne_sylvesterNext_eventually."
+      lean: "Erdos249257.ExternalVerification243RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually"
+      module: "ExternalVerification243RecordIncrementBarrier/Challenge.lean"
+      status: "exact-composite-transport-pending-check"
+      note: >-
+        The Challenge exposes the composed consumer in literal Mathlib-only
+        vocabulary.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_null_branch_second_order_atlas",
+  "recorded_at": "2026-08-25",
+  "input_stage": "sharp_first_order_transverse_selector_with_bounded_second_order_null_tube",
+  "output_stage": "analytic_second_order_limiting_atlas_and_formal_verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNullBranchSecondOrderAtlas.md",
+    "ErdosProblems/Erdos1041/SexticNullBranchSecondOrderAtlas.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_second_order_atlas.py"
+  ],
+  "human_understanding_delta": "The bounded beta-to-zero core is not a new degeneracy. Optimizing the four radius slopes gives two exact offsets, while the transverse contact terms form the same zero-sum tetrahedral system as at first order. Their average is -63+36sqrt(3)<-3/5, so one connector has a uniform limiting margin for every second-order perturbation. The remaining canonical transition is now a quantitative third-order remainder transfer, not another model-classification problem.",
+  "verification_state": {
+    "analytic": "authored_complete_local_quadratic_blowup_radius_slope_optimization_and_four_profile_average_cover",
+    "symbolic": "exact_sympy_reconstruction_of_four_curvatures_slopes_offsets_plus_100000_exact_rational_profile_stress",
+    "lean": "passed_canonical_cached_focused_build_and_serialized_authority_replay_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "private_problem_packet_updated_with_exact result and claim ceiling; mathematical consequence sweep completed; scoped commit pending",
+  "unresolved_downstream_bottleneck": "Prove a uniform third-order Taylor remainder bound transferring the fixed second-order 3/5 margin to finite beta, overlap with the first-order outer selector and positive-branch stability tube, then cover the remaining sextic faces and transfer to actual nearby polynomials. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: verify the four root-of-unity local expansions, the optimized radius slopes, and the zero-sum average; then formalize the finite-beta remainder overlap using this fixed limiting margin.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation from the local sextic branch and contact-selector corpus under operator direction",
+    "computation": "A bounded floating-point four-connector minimax probe revealed the persistent negative scaled margin. SymPy then recovered the exact radius slopes, offsets, curvatures, and average identity; the exact identities, not the floating-point search, support the theorem.",
+    "formalization": "Lean checks the complete-square optimizer identities, positivity constants, local quadratic maximum, profile cancellation, and uniform four-connector cover in the canonical cached project.",
+    "claim_boundary": "Complete second-order homogeneous limiting atlas at the canonical sextic null branch; finite-beta transfer, other sextic faces, actual-polynomial transfer, and unrestricted Erdos #1041 are not claimed."
+  }
+}

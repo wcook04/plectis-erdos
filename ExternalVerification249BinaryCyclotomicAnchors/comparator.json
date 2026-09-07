@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification249BinaryCyclotomicAnchors.Challenge",
+  "solution_module": "ExternalVerification249BinaryCyclotomicAnchors.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor",
+    "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply",
+    "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational",
+    "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,181 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #243: slow-rise exclusion for reduced exact reciprocal tails"
+  description: >-
+    Conditional theorem: a reduced exact tail with multipliers exceeding one
+    and numerator tending to infinity cannot, for any block length B, start
+    below the product of its first B multipliers and then rise by at most B
+    per step while the numerator stays below twice that product. The rise
+    budget is required only on that finite window, which strictly generalises
+    the uniform bounded-rise exclusion. The block-start and windowed-rise
+    hypotheses are assumed, not derived, and Erdős #243 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243SlowRiseBarrier/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243SlowRiseBarrier/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_rigidity_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "Lean elaboration of Challenge, Solution and AxiomAudit has not been run in this pass; the host build slot was occupied and the check is deferred to the next governed build"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This entry dominates the bounded-rise declaration
+    no_boundedRise_reducedTail already carried by
+    ExternalVerification243BoundedRiseReducedTail: a uniform rise bound is the
+    special case of the windowed bound proved here. The dominance is recorded
+    rather than acted on; retiring or merging the earlier entry is an
+    editorial decision for the launch selection, not a mechanical one.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37"]
+
+sources:
+  - title: "Slow-rise exclusion by common-divisor persistence on reduced reciprocal tails"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The proof replaces gcd stabilisation, which needs bounded negative
+      magnitudes, by persistence: a common divisor of the numerator and
+      denominator states at one index divides every later state, so landing on
+      a Chinese-remainder block of pairwise-coprime multipliers locks a block
+      modulus into every later centred error. Placing the block in the
+      interval from P to 2P is what confines the rise budget to a finite
+      window.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status; the exclusion theorem is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem excludes a reduced exact tail that rises slowly only
+    on a finite window. Challenge.lean has one intentional Comparator
+    specification sorry; Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243SlowRiseBarrier.no_slowRise_reducedTail"
+      file: "ExternalVerification243SlowRiseBarrier/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243SlowRiseBarrier/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorem `no_slowRise_reducedTail` in
+        ErdosProblems/Erdos243/SlowRiseBarrier.lean, committed at
+        629841823a3f1e3f6e3792ec8c069ba41909643a (module SHA-256
+        3f9ea00f795247964473c664dcc95f63fe4525a2ea65c3a5491b347c5858688b).
+        This packaging pass did not run Lean; elaboration of the Challenge,
+        Solution and AxiomAudit modules is pending the next governed build.
+      novelty_status: "unassessed"
+      contribution_class: "conditional slow-rise exclusion, strictly generalising bounded-rise exclusion"
+      statement: >-
+        For a reduced exact tail with `1 < a n` and `Nat.Coprime (u n) (v n)`
+        from `N`, cocycle equations `u (n+1) + v n = a n * u n` and
+        `v (n+1) = a n * v n`, and `u` tending to infinity, there is no block
+        length `B` with `u (N + B)` below `P = ∏ i : Fin B, a (N + i)` and
+        `u (n+1) ≤ u n + B` at every `n ≥ N + B` with `u n < 2 * P`.
+      boundary: >-
+        The block-start bound and the windowed rise bound are hypotheses. The
+        analytic transfer that supplies them on the canonical orbit, including
+        the choice of moduli and the admissibility of a doubly-logarithmic
+        rise budget, is an ordinary proof recorded in
+        SlowNegativePartRigidity.md and is not formalised. Nothing here
+        settles Erdős #243.
+      comparator_declaration: "Erdos249257.ExternalVerification243SlowRiseBarrier.no_slowRise_reducedTail"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "Anthropic Claude"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The source theorem is already stated in Mathlib-only vocabulary, so the
+    Challenge is the source statement verbatim and the Solution applies it
+    directly. No definition is reinterpreted and no claim is added.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source statement, its hypotheses, and its dominance over the
+    bounded-rise declaration were reviewed by reading the module. Focused
+    Lean, axiom and Comparator replay remain distinct gates and are all
+    pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243SlowRiseBarrier"
+  statements:
+    - source: "ErdosProblems.Erdos243.no_slowRise_reducedTail."
+      lean: "Erdos249257.ExternalVerification243SlowRiseBarrier.no_slowRise_reducedTail"
+      module: "ExternalVerification243SlowRiseBarrier/Challenge.lean"
+      status: "exact-transport-pending-check"
+      note: >-
+        The Challenge restates the source theorem with identical vocabulary.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

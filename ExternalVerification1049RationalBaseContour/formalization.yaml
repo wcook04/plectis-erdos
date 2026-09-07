@@ -1,0 +1,129 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+project:
+  name: "Erdős #1049: the rational-base contour of Zudilin's (14,12,14;27) forms"
+  description: >-
+    A Mathlib-only interface redeclares the trigamma series, the thirteen interval
+    contributions summing to J, the constants C_1 = 1091/2 and C_0 = 266 - (3/pi^2)(225 - J)
+    of Zudilin's (14,12,14;27) forms, the rational-base threshold theta* = C_0/C_1, and the
+    parameter region of reduced bases a/b with log b / log a < theta*. Six statements are
+    checked: the two-sided bound 81/200 < theta* < 1/2, the exclusion of 3/2 from the region,
+    the membership of every positive power of 31/4, and the intermediate constants J >= 77.6
+    and C_0 > 88371/400. Membership in the region is a statement about parameters. It is the
+    hypothesis consumed by the ordinary proof note attached to these forms, which derives
+    irrationality of F(a/b) = sum_{m>=1} 1/((a/b)^m - 1) for every reduced base in the region
+    from Zudilin's Lemma 7 and the accompanying lemmas. No theorem in this package formalises
+    an analytic step of that note and none asserts anything about the arithmetic nature of
+    F(a/b), so the package does not solve Erdős Problem 1049; irrationality at 3/2 remains
+    open. The direction, the thirteen demi-intervals, the values C_1 = 545.5 and
+    C_0 = 221.30008816..., and the ratio C_1/C_0 = 2.46497868... are printed in Zudilin 2004
+    (Acta Arith. 111, no. 2, p. 162), where that ratio is the integer-base
+    irrationality-exponent bound of its Theorem 1. The constant theta* checked here is the
+    reciprocal of that printed ratio. Zudilin 2016 separately announced a rational-base
+    extension of the results of that later paper without computing a value. Novelty of the
+    explicit rational-base threshold for F is unassessed.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11J82"]
+sources:
+  - title: "Rational-base irrationality for Erdős Problem 1049: the region theorem and F(31/4)"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The ordinary proof note (ErdosProblems/Erdos1049/RationalBaseIrrationality_31_4_Proof.md) consumes the region membership checked here; its analytic steps are ordinary proof, not formalised. Novelty of the explicit threshold is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1049"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1049"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Heine's basic transform and a permutation group for q-harmonic series"
+    authors: ["Wadim Zudilin"]
+    id: "https://doi.org/10.4064/aa111-2-4"
+    type: "paper"
+    relationship: "background"
+    note: "Acta Arith. 111 (2004), no. 2, 153-164. Supplies the (14,12,14;27) linear forms, the step function omega and the thirteen demi-intervals on which J is defined, and the printed constants C_1 = 545.5 and C_0 = 221.30008816... with ratio 2.46497868... at p. 162; that ratio is the integer-base irrationality-exponent bound of its Theorem 1, p. 154. The constants redeclared in this package are those printed values. The paper carries the standing hypothesis p = 1/q in Z minus {0, +-1} and states no rational-base result."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "On the irrationality of generalized q-logarithm"
+    authors: ["Wadim Zudilin"]
+    id: "https://arxiv.org/abs/1601.02688"
+    type: "paper"
+    relationship: "background"
+    note: "arXiv:1601.02688; Res. Number Theory 2 (2016), doi 10.1007/s40993-016-0042-x. The remark at the end of its Section 2 announces that the results of that paper extend to non-integer p = r/s, |p| > 1, under an assumption log|r| > c log|s| for a computable c > 0. No value of c is computed there, and the remark is made for the generalized q-logarithm of that paper. This source supplies none of the forms, lemmas or constants redeclared in this package."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex", "Claude"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The six numeric and membership statements were checked by the author with AI assistance against the printed constants of the forms; no independent review is recorded."
+palomar_qualification:
+  status: "reserve_pending_next_governed_build"
+  submitted_at_commit: "not_submitted"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "Package files restored from the v4.30 cut on 2026-09-06 (exporter reconciliation plan E7). No Comparator verdict, Palomar outcome, novelty ruling, or submission is claimed."
+status:
+  scope: "Six exact numeric and membership declarations; one trusted sorry per Challenge theorem."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: "pending_next_governed_v4_30_build"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseContour.eightyOne_twoHundredths_lt_zudilinContour"
+      file: "ExternalVerification1049RationalBaseContour/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact numeric bound on the threshold"
+      novelty_status: "unassessed"
+      boundary: "Lower bound 81/200 < theta*; no arithmetic statement about F."
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseContour.zudilinContour_lt_half"
+      file: "ExternalVerification1049RationalBaseContour/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact numeric bound on the threshold"
+      novelty_status: "unassessed"
+      boundary: "Upper bound theta* < 1/2; no arithmetic statement about F."
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseContour.threeHalves_outside_zudilinContourRegion"
+      file: "ExternalVerification1049RationalBaseContour/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact region membership"
+      novelty_status: "unassessed"
+      boundary: "3/2 lies outside the region; irrationality at 3/2 remains open."
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseContour.thirtyoneFour_power_mem_zudilinContourRegion"
+      file: "ExternalVerification1049RationalBaseContour/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact region membership"
+      novelty_status: "unassessed"
+      boundary: "Every positive power of 31/4 lies in the region; the irrationality of F at those bases is the ordinary note's theorem, not this package's."
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseContour.zudilinJ_ge"
+      file: "ExternalVerification1049RationalBaseContour/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact numeric bound on J"
+      novelty_status: "unassessed"
+      boundary: "J >= 77.6; an intermediate constant."
+    - declaration: "Erdos249257.ExternalVerification1049RationalBaseContour.zudilinC0_gt"
+      file: "ExternalVerification1049RationalBaseContour/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact numeric bound on C_0"
+      novelty_status: "unassessed"
+      boundary: "C_0 > 88371/400; an intermediate constant."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1049RationalBaseContour"
+  statements:
+    - source: "ErdosProblems.Erdos1049.RationalBaseContour"
+      lean: "six same-named exact transports"
+      module: "ExternalVerification1049RationalBaseContour/Challenge.lean"
+      status: "exact-transport-pending-next-governed-build"

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243RecordIncrementBarrier.Challenge",
+  "solution_module": "ExternalVerification243RecordIncrementBarrier.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

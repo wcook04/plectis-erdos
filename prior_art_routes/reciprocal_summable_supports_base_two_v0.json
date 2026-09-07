@@ -1,0 +1,264 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "reciprocal_summable_supports_base_two",
+  "source_result_ids": [
+    "Erdos257PeriodNoncollapse.irrational_erdosSupportSeries_two_of_summable_reciprocal",
+    "Erdos257PeriodNoncollapse.exists_shiftedSupportAtom_closeReturn_of_summable_reciprocal"
+  ],
+  "generated_at": "2026-08-24",
+  "status": "adjudicated_Erdos_stated_proof_omitted_extension_with_independent_machine_checked_base_two_reconstruction",
+  "problem_id": "erdos_257",
+  "adjudication_currentness": {
+    "status": "base_two_Lean_source_and_historical_anchors_current_claim_bound",
+    "bound_snapshot": {
+      "formal_source_commit": "c965c7029697a9b1ee5f0578979a671cad7fe047",
+      "formal_source_sha256": "69bec70f377f3b094fe7405163fffb1d7bb4ff0a1a1ff49363bba3eba7e60a8a",
+      "theorem_introduction_commit": "ec8b38e7f1",
+      "reviewer_card_commit": "969cc4a0a4e6d13f7ae01f2ff9aed91dad02e689",
+      "reviewer_card_sha256": "681dcb82f41571f3da75612bdabe73cb02b3ddab182d87328d4867e3db5469ca"
+    },
+    "claim_guard": "Erdős owns the historical extension statement; the local source independently proves only the base-two reciprocal-summable case. No omitted-proof identity, all-base theorem, prime-support coverage, priority, or #257 solution is claimed.",
+    "reentry_trigger": "Re-enter if a direct proof antecedent, another-base theorem, source correction, or divergent-mass consumer appears."
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "The load-bearing work is an independent formal reconstruction with a clear historical attribution split.",
+    "slow_down_at": "Verify support and reciprocal-summability quantifiers and the base-two specialization; do not attribute the local periodic-atom proof to Erdős's omitted proof.",
+    "automation_can_establish": [
+      "The two named Lean declarations and exact source generation",
+      "The base-two quantifier and reciprocal-summability bookkeeping"
+    ],
+    "human_judgment_required": [
+      "Whether the no-coprimality extension has an independent published proof",
+      "Whether any base-generalization is known",
+      "How this coverage theorem should redirect attention toward divergent reciprocal mass"
+    ],
+    "review_act": "Crosswalk the local theorem statement to Erdős's printed extension sentence and classify the proof as an independent reconstruction."
+  },
+  "purpose": "Separate historical theorem attribution from proof authorship and identify the exact mathematical and programme value of the checked no-coprimality result.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/reciprocal_summable_supports_base_two.card.json",
+    "theorem_introduction_commit": "ec8b38e7f1",
+    "current_source_commit": "c965c70296",
+    "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/ReciprocalSupportIrrationality.lean",
+    "source_sha256": "69bec70f377f3b094fe7405163fffb1d7bb4ff0a1a1ff49363bba3eba7e60a8a",
+    "headline_declaration": "Erdos257PeriodNoncollapse.irrational_erdosSupportSeries_two_of_summable_reciprocal",
+    "supporting_declaration": "Erdos257PeriodNoncollapse.exists_shiftedSupportAtom_closeReturn_of_summable_reciprocal"
+  },
+  "classification": {
+    "historical_statement_class": "extension_explicitly_stated_by_Erdos_with_proof_omitted",
+    "local_proof_class": "independent_complete_Lean_checked_reconstruction_at_base_two",
+    "formalization_class": "formalization_of_the_stated_conclusion_but_not_of_a_printed_proof",
+    "priority_claim": "none",
+    "recommended_terminology": "Lean-checked reconstruction of Erdős's no-coprimality extension at base two",
+    "discouraged_terminology": [
+      "new irrationality theorem",
+      "formalisation of Erdős's proof",
+      "solution of Erdős Problem 257",
+      "all-base no-coprimality theorem"
+    ],
+    "nearest_prior_work": [
+      "Erdős (1968/1969), p. 222, proves the pairwise-coprime reciprocal-summable theorem for every integer base t at least two.",
+      "The sentence following that theorem and the closing remarks on p. 226 state that pairwise coprimality can be dropped, while explicitly withholding the more complicated proof.",
+      "Kaneko-Suzuki-Tachiya (2026) give modern sparse-power-series criteria and a complete proof of a different omitted Erdős criterion; their framework is adjacent but does not state this Mersenne-support theorem.",
+      "Tao-Teräväinen (2025) prove the prime-support case by quantitative correlation methods; prime support lies outside the reciprocal-summable regime because the prime harmonic series diverges."
+    ],
+    "attribution": "Attribute the theorem statement to Erdős and the explicit base-two proof plus Lean verification to the local source. Do not imply that the proof recovers Erdős's unpublished argument.",
+    "mathematical_interest": "The theorem removes all mutual-coprimality structure from a broad sparse regime. Its proof replaces CRT separation by periodic atom averages and a recurrence obstruction, a mechanism different enough from the printed proof to be independently useful.",
+    "reusable_scope": "Infinite supports A with summable reciprocal conductor mass, at base two. More abstractly, positive periodic atoms admitting summable orbit-mean domination and a strict-minimum/close-return integer-gap endgame.",
+    "why_it_matters": "It is a genuine programme coverage theorem: every #257 attack on reciprocal-summable supports is already settled. The remaining frontier necessarily includes divergent reciprocal mass or seeks a different theorem that reaches it."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_1968_irrationality_certain_series",
+      "title": "On the irrationality of certain series",
+      "author": "Paul Erdős",
+      "venue": "The Mathematics Student 36 (1968; issued 1969), 222-226",
+      "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
+      "exact_anchor": "Printed p. 222 theorem and following sentence; p. 226 closing remarks. The theorem assumes pairwise coprimality and reciprocal summability, while the no-coprimality extension is stated without proof.",
+      "supports": "The full historical attribution and the exact distinction between printed theorem and omitted stronger proof.",
+      "does_not_support": "No shifted-atom, gcd-orbit-mean, Cesàro, or Lean proof; no claim that the omitted proof is the local proof."
+    },
+    {
+      "id": "kaneko_suzuki_tachiya_2026_sparse_criteria",
+      "title": "Refinements of Erdős's irrationality criterion for certain sparse infinite series",
+      "author": "Hajime Kaneko, Yuta Suzuki, and Yohei Tachiya",
+      "venue": "arXiv:2601.20743 (2026)",
+      "url": "https://arxiv.org/abs/2601.20743",
+      "exact_anchor": "Introduction, Theorem A and Theorems 1-2: the paper reconstructs and generalizes a different proof-omitted Erdős sparse-power-series criterion.",
+      "supports": "Modern terminology and evidence that proof-omitted Erdős criteria require a distinction between statement attribution and a later supplied proof.",
+      "does_not_support": "It does not state the arbitrary reciprocal-summable Mersenne-support theorem or the local periodic-atom proof."
+    },
+    {
+      "id": "tao_teravainen_2025_quantitative_correlations",
+      "title": "Quantitative correlations and some problems on prime factors of consecutive integers",
+      "author": "Terence Tao and Joni Teräväinen",
+      "venue": "arXiv:2512.01739 (2025)",
+      "url": "https://arxiv.org/abs/2512.01739",
+      "exact_anchor": "The irrationality theorem for sum omega(n)/2^n, equivalently the Mersenne subseries over prime exponents.",
+      "supports": "A sharp coverage comparison: important #257 support families with divergent reciprocal mass require methods beyond this theorem.",
+      "does_not_support": "No arbitrary reciprocal-summable support theorem and no antecedent for the local Cesàro proof."
+    },
+    {
+      "id": "erdos_problems_257_registry",
+      "title": "Erdős Problem 257",
+      "author": "Erdős Problems database contributors",
+      "venue": "Live problem registry",
+      "url": "https://www.erdosproblems.com/257",
+      "exact_anchor": "The current page records the universal support problem as open, the prime-support case as solved, and Erdős's belief that coprimality could be removed in the reciprocal-summable theorem.",
+      "supports": "Current programme boundary and adjacent solved cases only.",
+      "does_not_support": "Novelty or priority of the local proof."
+    }
+  ],
+  "mechanism_comparison": {
+    "printed_Erdos_mechanism": "Under pairwise coprimality, CRT creates isolated nonzero base-t digits followed by arbitrarily long zero blocks, with reciprocal summability controlling tails.",
+    "local_mechanism": "At base two, shifted Mersenne atoms have explicit gcd-orbit means bounded by 1/d. Reciprocal summability supports LCM-prefix and Cesàro limits, producing a positive close return to the strict zero-shift minimum; rationality would turn that gap into an impossible integer strictly between zero and one.",
+    "exact_delta": "The local source supplies every omitted analytic and arithmetic step for base two without assuming pairwise coprimality.",
+    "significance_boundary": "This is a strong partial theorem for #257, but it does not reach primes or any support whose reciprocal mass diverges, and it does not prove the all-base extension."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "pairwise coprime 2^n-1 irrational series Erdos",
+      "sum 1/(2^n-1) reciprocal summable support irrational",
+      "On the irrationality of certain series Math Student pairwise relatively prime",
+      "remove pairwise coprime assumption Mersenne subseries",
+      "Erdos 1969 no coprimality more complicated proof"
+    ],
+    "result": "The search recovered Erdős's proof-omitted statement, the live #257 literature map, modern sparse-series criteria, and the prime-support theorem, but no published proof of the exact no-coprimality reciprocal-summable conclusion.",
+    "boundary": "Non-location does not establish first proof or priority. It supports only the wording 'independent machine-checked reconstruction of a stated, proof-omitted extension, with no published proof located in a bounded search.'"
+  },
+  "claim_boundary": {
+    "allowed_wording": "Erdős stated that coprimality could be dropped but omitted the proof; the local Lean source gives an independent complete proof at base two for every infinite reciprocal-summable support.",
+    "forbidden_wording": [
+      "We discovered the no-coprimality theorem.",
+      "This formalises Erdős's unpublished proof.",
+      "The theorem holds at every integer base.",
+      "This solves Erdős Problem 257.",
+      "The theorem covers prime support."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_identity_with_Erdos_omitted_proof",
+      "not_all_base",
+      "not_divergent_reciprocal_mass",
+      "not_universal_erdos_257"
+    ]
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/reciprocal_summable_supports_base_two.card.json",
+      "effect": "State the historical/proof-authorship split, expose the exact source parity, and permit one status-faithful Comparator proposition for the Lean-checked final theorem; do not promote the subordinate close-return producer into a second theorem or novelty unit."
+    },
+    {
+      "consumer": "Erdos #257 proof fleet",
+      "effect": "Mark every infinite reciprocal-summable support as covered and route endpoint effort to divergent reciprocal mass or mechanisms capable of reaching it."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present this as a substantial reconstructed coverage theorem with attribution to Erdős, not as a newly conjectured theorem or universal solution."
+    }
+  ],
+  "programme_placement": {
+    "canonical_mechanism_family": "proved support-regime theorems beneath the universal Mersenne achievement-set endpoint",
+    "disposition": "admit as an irreducible major coverage theorem; subordinate to the universal rational cofinal-skip endpoint but not to any target-specific producer",
+    "consolidation_relation": "This object owns reciprocal-summable supports at base two, with or without coprimality. Retire separate weaker sparse-support cards unless they expose a genuinely different all-base theorem.",
+    "paper_disposition": {
+      "class": "headline/core mechanism",
+      "target_section": "A complete sparse-support regime: reciprocal summability without coprimality",
+      "supersession_or_consolidation": "Consolidate the printed pairwise-coprime theorem, Erdős's proof-omitted extension, and the local reconstruction as one attribution-layered section.",
+      "reason": "It is an actual broad irrationality theorem, not merely a reduction, computation, or no-go."
+    },
+    "absolute_frontier_shortlist_decision": "do not add a sixth item: rational_greedy_cofinal_skip_membership remains the universal #257 endpoint map, while this is the strongest settled sparse-support regime",
+    "comparator_advisory": "One independent proposition is strongly justified for irrational_erdosSupportSeries_two_of_summable_reciprocal, with the close-return producer subordinate and Erdős attribution adjacent."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_published_proof_or_all_base_extension",
+    "priority_order": [
+      "published proof of Erdős's no-coprimality reciprocal-summable extension",
+      "independent all-base generalization of the local periodic-atom argument",
+      "counterexample or obstruction at a base other than two"
+    ],
+    "lane": "re-enter only when a source, exact all-base theorem, or disconfirming base-specific example changes the attribution or claim ceiling"
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "historical_statement_plus_independent_formal_reconstruction",
+    "output_stage": "human_understanding_and_attribution_support",
+    "artifact": "reciprocal-summable supports without coprimality at base two",
+    "human_understanding_delta": "The paper can distinguish Erdős's proof-omitted extension, the local complete Lean reconstruction, and the still-open all-base/divergent-mass frontier without collapsing them into a discovery or universal #257 claim.",
+    "verification_state": "The exact source generation, Lean source hash, supporting declaration, and historical primary-source anchors are bound; the local theorem is machine-checked at base two, not presented as a reconstruction of Erdős's omitted proof.",
+    "publication_or_review_state": "Status-faithful internal/public-card candidate with attribution adjacent; no peer-review, priority, or acceptance claim.",
+    "canonicalization_state": "One irreducible reciprocal-summable coverage mechanism; weaker sparse-support fragments are subordinate or retired.",
+    "unresolved_downstream_bottleneck": "Whether the no-coprimality extension has a published proof or extends beyond base two, and how the divergent reciprocal-mass regime is attacked.",
+    "next_stage_owner": "Mathematics Refinery for card/paper assimilation; Novelty Observatory on a changed primary source; Role 3 for any Comparator integration."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "reciprocal_summable_supports_base_two@source-c965c70296-card-969cc4a0",
+    "evidence_class": "Independent complete Lean-checked reconstruction at base two of a conclusion explicitly stated by Erdős with proof omitted.",
+    "closest_known_result": "Erdős owns the historical theorem statement and its pairwise-coprime predecessor; Kaneko--Suzuki--Tachiya address adjacent omitted sparse-series criteria, while Tao--Teräväinen cover a different divergent prime-support regime.",
+    "comparison_relation": "This is an independent proof of Erdős's stated base-two extension, not discovery of the theorem and not a formalization of the omitted Erdős argument.",
+    "exact_delta": "The Lean source replaces CRT separation by a periodic-atom/close-return mechanism for every infinite support with summable reciprocal conductor mass at base two.",
+    "disconfirming_evidence": "The cited Erdős text explicitly withholds the no-coprimality proof; no source identifies the local periodic-atom argument as his proof, and prime support lies outside the reciprocal-summable regime.",
+    "confidence_ceiling": "High for the base-two declarations and source parity; strong internal provisional case for independent reconstruction; zero for theorem priority and low for any claim beyond base two.",
+    "significance": "High programme-coverage value: the entire reciprocal-summable support regime is settled, redirecting effort to divergent reciprocal mass or genuinely different mechanisms.",
+    "hard_step": "Turn summable reciprocal conductor mass into a shifted support atom with a close return and an integer-gap contradiction.",
+    "open_boundary": "Other bases, independent publication antecedents, prime/divergent reciprocal-mass support, and the universal Erdős #257 problem remain open.",
+    "bounded_expert_act": "Crosswalk the local theorem statement to Erdős's printed extension sentence and verify that the local proof is presented as an independent reconstruction.",
+    "reentry_trigger": "Re-enter if a direct proof antecedent, another-base theorem, source correction, or divergent-mass consumer appears.",
+    "source_version_binding": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/ReciprocalSupportIrrationality.lean",
+      "formal_source_commit": "c965c7029697a9b1ee5f0578979a671cad7fe047",
+      "formal_source_sha256": "69bec70f377f3b094fe7405163fffb1d7bb4ff0a1a1ff49363bba3eba7e60a8a",
+      "theorem_introduction_commit": "ec8b38e7f1",
+      "reviewer_card_commit": "969cc4a0a4e6d13f7ae01f2ff9aed91dad02e689",
+      "reviewer_card_sha256": "681dcb82f41571f3da75612bdabe73cb02b3ddab182d87328d4867e3db5469ca",
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.irrational_erdosSupportSeries_two_of_summable_reciprocal",
+        "Erdos257PeriodNoncollapse.exists_shiftedSupportAtom_closeReturn_of_summable_reciprocal"
+      ],
+      "primary_source_locators": [
+        "Erdős 1968/1969, The Mathematics Student 36, printed p. 222 and p. 226",
+        "Kaneko–Suzuki–Tachiya 2026, arXiv:2601.20743, Introduction and Theorems 1–2",
+        "Tao–Teräväinen 2025, arXiv:2512.01739, prime-support irrationality theorem"
+      ],
+      "parity_status": "Current base-two Lean source and historical source anchors are bound; the local proof is not represented as Erdős's omitted proof and no all-base parity is claimed."
+    },
+    "classification": {
+      "evidence_class": "independent complete Lean-checked reconstruction at base two of a conclusion explicitly stated by Erdős with proof omitted",
+      "closest_prior_art": "Erdős owns the historical theorem statement and its pairwise-coprime predecessor; the no-coprimality extension is stated but not proved in the cited pages. Kaneko–Suzuki–Tachiya show the broader methodological issue of reconstructing omitted sparse-series criteria, while Tao–Teräväinen cover a different divergent prime-support regime.",
+      "comparison_relation": "Independent proof of Erdős's stated base-two extension, not a discovery of the theorem and not a formalisation of the omitted Erdős argument.",
+      "novelty_confidence": "strong internal provisional case for an independent proof and formal verification; zero for theorem priority and low for any claim beyond base two",
+      "significance_grade": "high_programme_coverage_theorem",
+      "why_care": "It closes an entire reciprocal-summable support regime for #257, replacing pairwise-coprime CRT separation with a periodic-atom and close-return mechanism, and therefore directs future work to divergent reciprocal mass or another genuinely different regime.",
+      "hard_step": "Turn summable reciprocal conductor mass into a shifted support atom with a close return and an integer-gap contradiction; the proof's interest is the mechanism, not the historical statement alone.",
+      "natural_friction": "Base two is essential to the current formal claim, and attribution must retain the distinction between Erdős's statement and the local proof. Prime support is outside the summable regime.",
+      "disconfirming_evidence": "The cited Erdős text explicitly withholds the no-coprimality proof; no source was found identifying the local periodic-atom argument as his proof. Tao–Teräväinen's prime-support result does not subsume this theorem."
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Erdős stated the no-coprimality reciprocal-summable extension; the local source gives an independent complete Lean-checked proof at base two for every infinite support with summable reciprocal conductor mass.",
+      "rejected_stronger": [
+        "a newly discovered irrationality theorem",
+        "a formalisation of Erdős's unpublished proof",
+        "validity at every integer base",
+        "coverage of prime support or divergent reciprocal mass",
+        "a solution of Erdős #257",
+        "a priority claim"
+      ],
+      "open_boundary": "Whether an analogous proof works at other bases, whether the no-coprimality statement has appeared elsewhere, and the universal divergent-mass #257 problem remain open."
+    },
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "reciprocal-summable support irrationality without coprimality",
+      "disposition": "admit as one irreducible #257 coverage theorem; consolidate weaker sparse-support fragments beneath it and keep divergent-mass routes separate",
+      "paper_disposition": "headline/core mechanism in 'A complete sparse-support regime: reciprocal summability without coprimality'",
+      "supersession_or_consolidation": "Consolidate the printed pairwise-coprime theorem, Erdős's proof-omitted extension, and the local reconstruction as one attribution-layered section.",
+      "expert_attention_reason": "This result changes the programme map by removing a broad regime, while its historical attribution boundary can be checked in a short primary-source audit.",
+      "independent_comparator_interface_justified": "One bundled status-tagged theorem interface is justified after source-parity validation; it must say Lean-checked independent reconstruction and preserve the base-two quantifier."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "load-bearing formal reconstruction with a clear historical attribution split",
+      "slow_down_at": "Verify the support and reciprocal-summability quantifiers and the base-two specialization; then read Erdős p. 222/p. 226 to ensure no omitted proof is being claimed.",
+      "automation_establishes": "The two named Lean declarations and their exact source generation.",
+      "expert_judgment_required": "Whether the theorem has an independent published proof and whether any base-generalization is known; these are literature questions, not Lean questions.",
+      "bounded_expert_act": "Crosswalk the local theorem statement to Erdős's printed extension sentence and classify the proof as independent reconstruction.",
+      "reentry_condition": "Reopen if a direct proof antecedent, another-base theorem, source correction, or divergent-mass consumer appears."
+    }
+  }
+}

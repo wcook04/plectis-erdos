@@ -1,0 +1,273 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "erdos249_cyclotomic_anchored_kill_equivalence",
+  "generated_at": "2026-08-26",
+  "status": "adjudicated_source_specific_exact_reformulation_no_priority_claim",
+  "problem_id": "erdos_249",
+  "purpose": "Separate the exact cyclotomic anchored-kill equivalence from its finite 331 denominator certificate, identify their nearest antecedents, and prevent either from being presented as progress on the still-open cofinal producer.",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Lean coordinate equivalence plus finite exact arithmetic; the unresolved mathematical work is the universal cofinal producer, not the coordinate change.",
+    "slow_down_at": "The forall-c,v quantifier order and both rationality-to-residue directions; keep the finite 331 certificate separate from the cofinal implication.",
+    "automation_can_establish": [
+      "Pinned source, card, and packet identity",
+      "The named Lean equivalence and finite denominator certificate",
+      "Finite certificate arithmetic and search bounds"
+    ],
+    "human_judgment_required": [
+      "Whether the coordinate map matches the historical Erdős formulation without strengthening the supply premise",
+      "Whether an external source contains the exact anchored-kill predicate",
+      "Whether the finite certificate is presented only as denominator evidence"
+    ],
+    "review_act": "Audit one complete equivalence direction against Erdős 1968/1988, then classify the 331 result as finite denominator evidence only."
+  },
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos249_cyclotomic_anchored_kill_equivalence.card.json",
+    "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+    "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "formal_source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+    "research_packet_commit": "924ab4d01355ce2975541923a344be4617640247",
+    "research_packet_sha256": "80b6b919f801e8591cc5eaa48c6aa248059a0b51f90be7f059a6849b41da6032",
+    "source_result_ids": [
+      "cyclotomic_anchored_multiple_period_closure",
+      "cyclotomic_331_denominator_exclusion"
+    ]
+  },
+  "source_generation": {
+    "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+    "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+    "formal_source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+    "research_packet_commit": "924ab4d01355ce2975541923a344be4617640247",
+    "research_packet_sha256": "80b6b919f801e8591cc5eaa48c6aa248059a0b51f90be7f059a6849b41da6032",
+    "reviewer_card": "docs/formal_math/reviewer_cards/erdos249_cyclotomic_anchored_kill_equivalence.card.json",
+    "reviewer_card_sha256": "09c7bf43d0551abd3b452c80a1e2b241fae6d257301e3fa02eae0128e362ea47",
+    "public_source_commit": "ebbaa3d809fcf2ba9e68228f3c0c2c36f3ebdc4f",
+    "status": "formal_source_and_card_hashes_current; packet advanced to 2026-08-25 index commit; declaration parity is source-present and fresh elaboration deferred"
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos249_canonical_mersenne_residue_gap_normal_form_v2",
+    "result_family": "erdos249_forced_basepoint_mersenne_residue_gap_equivalence",
+    "exact_result_ids": [
+      "cyclotomic_anchored_multiple_period_closure",
+      "cyclotomic_331_denominator_exclusion"
+    ],
+    "source_generation": "2026-08-26",
+    "evidence_class": "source-pinned Lean exact equivalence, local recurrence, and finite denominator certificate; no universal residue-gap producer",
+    "prior_art_relation": "Radix-tail rationality, Euler periodicity, and denominator clearing are classical; the forced-basepoint full-Mersenne central-gap packaging is source-specific in the reviewed literature, without a priority claim.",
+    "confidence_ceiling": "High for the exact reformulation and finite 331 certificate at the pinned source; medium for literature non-location; low for any endpoint or irrationality inference.",
+    "significance_rationale": "It is the lossless #249 target map: every local lock, delay, or support argument is judged by whether it supplies the universal strict gap with the forced c,v quantifiers.",
+    "hard_step": "Produce the strict centered residue gap for every basepoint c and positive odd v with an Euler-compatible Mersenne modulus.",
+    "open_boundary": "The equivalence does not prove the universal supply, any new denominator exclusion, or irrationality; finite gaps and conditional producers remain subordinate.",
+    "expert_review_act": "Check the quantifier order and the rationality-to-residue and residue-to-rationality implications against the cited Erdős radix-tail sources; do not treat non-location as priority evidence.",
+    "next_reentry": "Re-enter if the formal source, packet generation, card statement, or a genuine all-(c,v) producer changes; do not repeat finite scans or local anchor checks."
+  },
+  "classification": {
+    "novelty_class": "source_specific_exact_reformulation_from_classical_components",
+    "finite_result_class": "exact_kernel_checked_denominator_family_exclusion",
+    "priority_claim": "none",
+    "formalisation_status": "named private Lean declarations; no fresh elaboration during the low-disk host gate",
+    "mathematical_interest": "The equivalence converts a diffuse cyclotomic strategy into one exact missing quantifier: clean anchors exist, but terminal anti-lock certificates must occur cofinally. The 331 theorem demonstrates one exact lock-breaker without supplying that quantifier.",
+    "reusable_scope": "Useful as a design pattern for radix irrationality programmes with rationality-implied eventual periods and complete local anti-lock certificates. It is not a general irrationality criterion independent of those hypotheses.",
+    "why_it_matters": "It prevents work from being spent on the already-discharged prime-anchor supply and stops finite certificates from masquerading as endpoint evidence. Its contribution is canonical research geometry, not a solution or a broad new theorem."
+  },
+  "primary_sources": [
+    {
+      "id": "erdos_1988_irrationality_series",
+      "title": "On the irrationality of certain series: problems and results",
+      "author": "Paul Erdős",
+      "venue": "New Advances in Transcendence Theory (1988), 102-109",
+      "url": "https://users.renyi.hu/~p_erdos/1988-22.pdf",
+      "local_annex": "annexes/erdos-1988-irrationality-series-problems-results",
+      "source_pdf": "annexes/erdos-1988-irrationality-series-problems-results/source.pdf",
+      "source_pdf_sha256": "b2bfc375d04b65332d6b8817633ff3968283a3f33c1f1ace366b03ac9fab8c88",
+      "extracted_markdown": "annexes/erdos-1988-irrationality-series-problems-results/extracted.md",
+      "extracted_markdown_sha256": "3e62c6462d633e0023a6b54a9e7370d6941f4d1dbf4cc2526ed2e264c6727152",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 8,
+      "extracted_locator": "extracted.md lines 1-35: the paper's opening statement of the unresolved binary totient-series question and neighboring irrationality results, corresponding to printed pp. 102-103.",
+      "exact_anchor": "Printed p. 102 states the unresolved irrationality question for sum phi(n)/2^n.",
+      "supports": "The target and historical open-problem posture.",
+      "does_not_support": "No anchored-kill equivalence, guard-cylinder predicate, cyclotomic certificate, or 331 computation appears there."
+    },
+    {
+      "id": "erdos_1968_irrationality_series",
+      "title": "On the irrationality of certain series",
+      "author": "Paul Erdős",
+      "venue": "The Mathematics Student 36 (1968), 222-226",
+      "local_annex": "annexes/erdos-1968-irrationality-certain-series",
+      "source_pdf": "annexes/erdos-1968-irrationality-certain-series/source.pdf",
+      "source_pdf_sha256": "340fff6a8a70d2125587ebc62e8157258ed30a86bb19afe25257bb1cb2126e57",
+      "extracted_markdown": "annexes/erdos-1968-irrationality-certain-series/extracted.md",
+      "extracted_markdown_sha256": "d5cf77ec57398e810d837dcf60ebf5169d1dc18c42dd0903d9c7acc1df65c1b0",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 5,
+      "extracted_locator": "extracted.md lines 61-90 and 103-180: the recurrence context, base-expansion nontermination strategy, CRT congruences, and selected digit gaps, corresponding to printed pp. 223-225.",
+      "exact_anchor": "Printed pp. 222-225: a pairwise-coprime Lambert subseries is handled by base-expansion tails, CRT-selected positions, and nontermination.",
+      "supports": "A close primary-source methodological antecedent for congruence-selected radix-tail irrationality arguments.",
+      "does_not_support": "Its theorem has different coefficients and support hypotheses and gives neither the #249 exact equivalence nor the finite 331 result."
+    },
+    {
+      "id": "apostol_1976_totient",
+      "title": "Introduction to Analytic Number Theory",
+      "author": "Tom M. Apostol",
+      "venue": "Springer, 1976",
+      "doi": "10.1007/978-1-4757-5579-4",
+      "local_annex": "annexes/apostol-1976-analytic-number-theory",
+      "source_pdf": "annexes/apostol-1976-analytic-number-theory/source.pdf",
+      "source_pdf_sha256": "705665c9e0f8db7b67ec75449c78f061e56ee0da037577f87dae0af26ea2c16b",
+      "extracted_markdown": "annexes/apostol-1976-analytic-number-theory/extracted.md",
+      "extracted_markdown_sha256": "bb007d8c8f49144dd6a379d6178fd5a159d8af861934aedc4f5cb1e3b393a7d0",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 352,
+      "extracted_locator": "extracted.md lines 1548-1724: Sections 2.2-2.5, including Theorems 2.2-2.5 on Möbius/totient identities and the product formula; lines 1935-2058: Theorem 2.9 and multiplicative-function context, corresponding to printed pp. 25-33.",
+      "exact_anchor": "Theorems 2.2-2.5 and 2.9, printed pp. 25-32: totient divisor identities, Möbius formula, multiplicativity, and inversion.",
+      "supports": "The classical totient arithmetic underlying the source-specific construction.",
+      "does_not_support": "These results do not address the irrationality of the dyadic totient series."
+    }
+  ],
+  "mechanism_comparison": {
+    "standard_components": "Eventual periodicity of rational radix expansions, multiplicative-order/cyclotomic prime anchors, and finite modular denominator exclusion are standard ingredients.",
+    "exact_local_delta": "The private Lean source defines a complete local certificate and proves that cofinal anchored certificates are equivalent to the concrete #249 irrationality target, then repackages the same predicate as a guard cylinder.",
+    "canonical_frontier_relation": "FullMersenneCanonicalBasepointResidueGapSupply remains the programme's declared exact frontier. Anchored-kill supply is an alternative exact coordinate system, not a stronger theorem or a solved producer.",
+    "continued_fraction_relation": "The continued-fraction certificate is a denominator-size screen with much broader numerical reach but no cyclotomic structure. The 331 theorem is structurally specific and numerically finite.",
+    "order_support_relation": "Order and cyclotomic divisibility provide clean anchors; they do not prove terminal anti-locking or cofinal repetition."
+  },
+  "disconfirmation_search": {
+    "scope": [
+      "complete local copy of Erdős 1988",
+      "complete local copy of Erdős 1968",
+      "official #249 page snapshot",
+      "assimilated Apostol reference",
+      "existing #249 and cyclotomic prior-art routes"
+    ],
+    "result": "No exact anchored-kill or guard-cylinder antecedent was located.",
+    "boundary": "The result is classified as an authored source-specific reformulation. Absence from this bounded search is not priority evidence."
+  },
+  "claim_boundary": {
+    "allowed_wording": "Lean proves that Erdős #249 is equivalent to a precise cofinal cyclotomic anchored-kill supply and checks two exact 331 certificates, one of which feeds a stated denominator-family exclusion. This isolates but does not prove the open cofinality theorem.",
+    "forbidden_wording": [
+      "Cyclotomic methods solve Erdős #249.",
+      "The 331 certificate supports a cofinality claim.",
+      "Clean prime anchors are the remaining bottleneck.",
+      "This is a new general irrationality criterion.",
+      "The bounded search establishes novelty or priority."
+    ],
+    "ai_tool_disclosure": "The definitions, Lean proof development, certificate computation, and adjudication were produced in an AI-assisted workflow. Kernel checking applies to the named declarations only; it does not adjudicate novelty or significance."
+  },
+  "release_layers": {
+    "exact_equivalence": "Comparator candidate after public source parity, with the cofinal supply visibly a predicate equivalent to the open target rather than a proved premise.",
+    "finite_certificate": "Separate Comparator candidate after public source parity: totient_series_ne_rat_of_den_dvd_30_300, whose source proof consumes certifiedKill_cyclotomic_30_331_natural. Retain certifiedKill_cyclotomic_30_331_anchor separately as the finite anchored-residual model.",
+    "external_interpretation": "Paper-only: any claim about progress toward proving cofinal terminal anti-locking.",
+    "owner": "Role 3 owns statement-firewall engineering and public integration."
+  },
+  "observatory_checkpoint": {
+    "latest_checkpoint": "The #249 cyclotomic object is adjudicated as a valuable exact reformulation plus a separate finite denominator screen, with no priority claim.",
+    "do_not_redo": [
+      "Do not count the finite 331 theorem as cofinal evidence.",
+      "Do not reopen clean-prime production as the programme bottleneck.",
+      "Do not replace the declared Mersenne residue-gap frontier with this equivalent coordinate system.",
+      "Do not infer novelty from Lean formalisation or bounded search failure."
+    ],
+    "next_candidate": "Rotate cross-programme to a high-impact #269 or #1041 canonical object whose public claim boundary remains unadjudicated."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "review_unit_erdos249_canonical_mersenne_residue_gap_normal_form_v2@packet-924ab4d-source-4c66b3a",
+    "source_version_binding": {
+      "formal_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "packet_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "packet_commit": "924ab4d01355ce2975541923a344be4617640247",
+      "packet_sha256": "80b6b919f801e8591cc5eaa48c6aa248059a0b51f90be7f059a6849b41da6032",
+      "reviewer_card": "docs/formal_math/reviewer_cards/erdos249_cyclotomic_anchored_kill_equivalence.card.json",
+      "reviewer_card_sha256": "09c7bf43d0551abd3b452c80a1e2b241fae6d257301e3fa02eae0128e362ea47",
+      "primary_source_locators": [
+        "Erdős 1968, The Mathematics Student 36, pp. 222–225",
+        "Erdős 1988, New Advances in Transcendence Theory, p. 102",
+        "Apostol 1976, Introduction to Analytic Number Theory, pp. 25–32"
+      ],
+      "parity_status": "Formal source, packet, card, and cited primary-source locators are current for this review unit; fresh elaboration is deferred and no public-parity claim is added."
+    },
+    "classification": {
+      "evidence_class": "Lean source-pinned exact reformulation plus an exact finite denominator certificate",
+      "closest_prior_art": "Erdős's radix-tail arguments and classical rational-base periodicity supply the method family; Apostol supplies the totient/Möbius arithmetic. No cited source supplies this exact forced-basepoint anchored-kill predicate or the 331 certificate.",
+      "comparison_relation": "Lossless source-specific coordinate reformulation of the open #249 target, accompanied by a separate finite denominator screen; neither component is a proved cofinal producer.",
+      "novelty_confidence": "strong internal provisional case for the exact packaging, low for any source-specific novelty or priority claim",
+      "significance_grade": "high_frontier_map_supporting_mechanism",
+      "why_care": "It compresses the diffuse #249 search into the exact universal quantifier that remains: every basepoint and positive odd scale must eventually receive a strict centered Mersenne gap. This prevents finite certificates or clean prime anchors from being mistaken for the endpoint.",
+      "hard_step": "Prove the strict cofinal anchored-kill supply with the declared forall-c,v quantifiers; the rationality-to-period and period-to-residue implications are the formal coordinate change, not the missing mathematics.",
+      "natural_friction": "The 331 certificate is exact but finite, and the equivalence is useful precisely because it exposes an open premise rather than proving it.",
+      "disconfirming_evidence": "The cited Erdős papers leave the target irrationality question open, and the bounded search found no exact anchored-kill antecedent; non-location is not priority evidence."
+    },
+    "closest_known_result": "Erdős's radix-tail arguments and classical rational-base periodicity supply the method family; Apostol supplies the totient/Möbius arithmetic. No cited source supplies this exact forced-basepoint anchored-kill predicate or the 331 certificate.",
+    "exact_delta": "The formal delta is a lossless coordinate equivalence from #249 irrationality to the declared cofinal anchored-kill supply, plus a separate exact finite 331 denominator-family screen.",
+    "evidence_class": "Lean source-pinned exact reformulation plus an exact finite denominator certificate; no universal residue-gap producer",
+    "comparison_relation": "Classical radix-tail periodicity, cyclotomic order arithmetic, and totient/Möbius identities supply the ingredients; the forced-basepoint anchored-kill predicate and 331 certificate are source-specific packaging with no priority claim.",
+    "disconfirming_evidence": "The historical sources leave #249 open, the bounded search found no exact anchored-kill antecedent, and finite 331 evidence cannot establish cofinal supply.",
+    "confidence_ceiling": "High for the pinned equivalence and finite certificate; medium for literature non-location; no endpoint, irrationality, novelty, or priority inference.",
+    "hard_step": "Produce the strict anchored-kill supply for every basepoint c and positive odd v; the equivalence itself is only a coordinate change.",
+    "bounded_expert_act": "Audit one complete equivalence direction against Erdős 1968/1988 and classify the 331 result as finite denominator evidence only.",
+    "reentry_trigger": "Re-enter if source/card/packet identities change, a historical antecedent is corrected, or an inspectable universal anchored-kill producer lands.",
+    "significance_assessment": {
+      "grade": "high_frontier_map_supporting_mechanism",
+      "why_care": "It compresses the diffuse #249 search into the exact universal quantifier that remains and prevents finite certificates or clean prime anchors from being mistaken for the endpoint.",
+      "mechanism_family": "Mersenne residue-gap normal forms for #249"
+    },
+    "claim_ceiling": {
+      "strongest_allowed": "Lean establishes an exact equivalence between #249 irrationality and the declared cofinal cyclotomic anchored-kill supply, and separately checks the finite 331 denominator-family exclusion.",
+      "rejected_stronger": [
+        "cyclotomic methods solve Erdős #249",
+        "the finite 331 certificate supplies cofinality",
+        "clean prime anchors are the remaining bottleneck",
+        "a new general irrationality criterion",
+        "bounded search or Lean formalisation establishes novelty or priority"
+      ],
+      "open_boundary": "No universal residue-gap producer, individual denominator exclusion beyond the finite certificate, or irrationality proof is established."
+    },
+    "open_boundary": "No universal residue-gap producer, individual denominator exclusion beyond the finite certificate, or irrationality proof is established; the equivalence isolates this missing cofinal supply rather than proving it.",
+    "programme_and_paper_disposition": {
+      "canonical_mechanism_family": "Mersenne residue-gap normal forms for #249",
+      "disposition": "replace fragmented anchored-kill/delay/lock narratives with this single exact-equivalence coordinate; retain the finite 331 certificate as subordinate evidence",
+      "paper_disposition": "headline/core mechanism for the #249 frontier-map section, with the 331 theorem as a boxed finite boundary",
+      "supersession_or_consolidation": "Subordinate fixed-quotient delay, order-witness, and finite certificate routes to this exact target map; do not count them as parallel endpoint advances.",
+      "expert_attention_reason": "One quantifier-order audit can validate the coordinate map and then redirect attention to the real cofinal producer instead of repeating finite modular scans.",
+      "independent_comparator_interface_justified": "One exact-equivalence interface and one separately status-tagged finite certificate are justified after source-parity checks; no producer or novelty row is justified."
+    },
+    "reviewer_attention_budget": {
+      "difficulty_topology": "formal coordinate equivalence plus finite exact arithmetic, with the endpoint producer externally unresolved",
+      "slow_down_at": "Check the forall-c,v order and both rationality/residue directions; keep the finite 331 statement separate from the cofinal implication.",
+      "automation_establishes": "The named Lean equivalence and finite certificate at the pinned source generation.",
+      "expert_judgment_required": "Whether the coordinate map matches the historical Erdős formulation without smuggling in a stronger supply premise, and whether any prior source has the exact anchored-kill predicate.",
+      "bounded_expert_act": "Audit one complete equivalence direction against Erdős 1968/1988 and classify the 331 theorem as finite denominator evidence only.",
+      "reentry_condition": "Reopen on source-generation drift, a corrected historical antecedent, or an inspectable universal anchored-kill producer."
+    },
+    "tao_pipeline_receipt": {
+      "input_stage": "source-pinned Lean equivalence and finite certificate",
+      "output_stage": "expert-readable frontier map and canonicalization",
+      "artifact": "erdos249_cyclotomic_anchored_kill_equivalence",
+      "human_understanding_delta": "Separates the exact open-target coordinate from finite denominator evidence and retires inflated producer narratives.",
+      "verification_state": "Named Lean declarations and source hashes are pinned; no fresh elaboration or external review is claimed.",
+      "publication_or_review_state": "Eligible for status-tagged paper/Comparator exposure after the owner applies the stated firewall; publication is not acceptance.",
+      "canonicalization_state": "One target-map mechanism with a subordinate finite certificate.",
+      "unresolved_downstream_bottleneck": "Universal cofinal anchored-kill supply.",
+      "next_stage_owner": "#249 proof owners for the producer; Mathematics Refinery and Role 3 for paper/Comparator integration."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "source_card_packet_current_fresh_elaboration_deferred",
+    "bound_snapshot": {
+      "formal_source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "formal_source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "research_packet_commit": "924ab4d01355ce2975541923a344be4617640247",
+      "research_packet_sha256": "80b6b919f801e8591cc5eaa48c6aa248059a0b51f90be7f059a6849b41da6032",
+      "reviewer_card_sha256": "09c7bf43d0551abd3b452c80a1e2b241fae6d257301e3fa02eae0128e362ea47",
+      "review_generation": "2026-08-26_cyclotomic_equivalence_maturity_v3"
+    },
+    "claim_guard": "The equivalence and finite 331 certificate are exact source-pinned facts; no universal anchored-kill supply, denominator exclusion beyond the finite screen, irrationality, novelty, or priority claim is admitted.",
+    "reentry_trigger": "Re-enter if source, card, or packet identities change, a historical antecedent is corrected, or an inspectable universal anchored-kill producer lands."
+  }
+}

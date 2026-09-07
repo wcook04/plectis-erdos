@@ -1,0 +1,126 @@
+{
+  "schema": "formal_math_prior_art_route_v0",
+  "route_id": "finite_dyadic_hankel_valuation_v0",
+  "status": "adjudicated_unbound_proposal_retired_from_active_credit",
+  "problem_id": "erdos_249",
+  "purpose": "Retire an unanchored all-finite 2-adic Hankel-valuation assertion from active mathematical credit while preserving the precise data required to reopen it as a reviewable theorem.",
+  "adjudication": {
+    "verdict": "retire_unbound_claim_not_assess_theorem",
+    "evidence_class": "single packet sentence with no definition, proof, checker, or named consumer",
+    "closest_known_prior_art": "Hankel determinants and p-adic valuations are only ambient vocabulary here; no sequence-specific antecedent is identified",
+    "exact_delta": "No theorem-level delta can be compared because the determinant family, squarefree-support statistic, and valuation formula are undefined in the available source state.",
+    "disconfirming_evidence": "Bounded repository and exact-phrase searches found no proof-bearing note, Lean declaration, executable verifier, or primary source for the asserted law.",
+    "confidence_ceiling": "High confidence that the packet sentence is not currently evidence; theorem truth, novelty, and attribution remain unassessed.",
+    "significance_rationale": "The useful result is a negative navigation correction: it prevents the word 'Hankel' from inflating an unformed aspiration into #249 progress.",
+    "bounded_expert_review_act": "Re-enter only when a complete determinant definition, quantified valuation formula, proof-bearing source, independent finite checks, and an explicit arithmetic consumer land together."
+  },
+  "review_unit": {
+    "result_family": "finite_mobius_companion_hankel_dyadic_valuation",
+    "exact_result_id": "finite_dyadic_hankel_valuation",
+    "source_generation": {
+      "repository_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "packet_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "packet_sha256": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e",
+      "packet_statement": "Every finite truncated Mobius companion Hankel determinant has an exact 2-adic valuation determined by the largest squarefree support tuple.",
+      "local_source_state": "No named Lean declaration, proof-bearing note, executable checker, reviewer card, or local formula was located by bounded exact-identifier and phrase searches."
+    },
+    "review_generation": "2026-08-25_v0"
+  },
+  "classification": {
+    "conclusion_confidence_class": "unassessed",
+    "source_specific_mechanism_confidence_class": "unassessed",
+    "novelty_confidence": "not_assessable: neither a defined determinant family nor a valuation formula is currently source-bound",
+    "attribution_posture": "Hankel determinants and p-adic valuations are standard ambient vocabulary, but no literature locator was found for the source-specific 'Mobius companion', 'largest squarefree support tuple', or their asserted exact valuation relation.",
+    "significance": "Potentially meaningful only if an exact valuation theorem can feed a specified arithmetic consumer. At present its highest value is a claim-boundary correction: an all-finite theorem sentence is not mathematical evidence without its object, formula, and proof.",
+    "expert_judgment_that_can_change_state": "Supply a definition of every truncated determinant and support tuple, a closed valuation formula with quantifiers, an ordinary proof or Lean declaration, finite regression instances, and a source-specific consumer. Only then is a prior-art comparison or novelty assessment well posed."
+  },
+  "closest_known_result": {
+    "relation": "ambient_framework_only",
+    "statement": "Classical Hankel-determinant theory studies structured determinants, and p-adic valuation is standard local arithmetic. Those broad frameworks do not determine the valuation of an unspecified Mobius companion determinant.",
+    "exact_delta": "The packet asserts a sequence-specific exact valuation controlled by a largest squarefree support tuple. The definition of that tuple, its relation to the determinant, and a proof are absent, so there is no theorem-level delta to compare with the general literature."
+  },
+  "primary_sources": [],
+  "disconfirming_evidence": [
+    {
+      "kind": "bounded_repository_source_search",
+      "locator": "exact identifiers and phrases 'finite_dyadic_hankel_valuation', 'Mobius companion', 'largest squarefree support tuple', and dyadic-Hankel variants across #249 Lean, notes, probes, reviewer cards, and prior-art routes",
+      "finding": "The assertion occurs only as the short packet sentence; no formula, proof, validation artifact, or consumer was located.",
+      "effect": "The packet status 'advisory_exact_finite_theorem_pending_lean' overstates the available evidence. The mathematical claim is unassessed rather than a complete ordinary theorem awaiting formalization."
+    },
+    {
+      "kind": "bounded_literature_search",
+      "locator": "exact-phrase searches for 'Mobius companion Hankel' with 2-adic valuation and 'largest squarefree support' with Hankel determinant, performed 2026-08-25",
+      "finding": "No matching theorem or standard terminology was found. Generic Hankel-determinant search results are not evidence for the stated sequence-specific valuation law.",
+      "effect": "No novelty inference follows from non-location; retain terminology and priority as unassessed."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The #249 packet records a proposed finite dyadic Hankel-valuation formulation. No determinant definition, exact valuation formula, proof, checker, or primary-source antecedent is currently bound in the repository, so it is not an established local theorem.",
+    "forbidden_wording": [
+      "Every finite Mobius companion Hankel determinant has a proved exact 2-adic valuation.",
+      "A Lean theorem or finite verifier supports the largest-squarefree-support rule.",
+      "This is a known Hankel valuation theorem or a new theorem of the programme.",
+      "The assertion advances Erdős #249."
+    ],
+    "open_boundary": "Re-enter only with a full definition, formula, proof-bearing source, finite checks independent of that proof, and a declared consumer. A matching source or a disproof of the formula changes the attribution state; generic Hankel literature alone does not."
+  },
+  "programme_disposition": {
+    "canonical_mechanism_family": "unbound Hankel-valuation proposal; no canonical result",
+    "disposition": "retire from active #249 method accounting and do not merge it into the established Möbius--Mersenne log-concavity or rank-one floor objects",
+    "paper_disposition": "omit, except as an explicitly unformed construction question after its exact determinant family is supplied",
+    "comparator_advisory": "No interface is justified because no independently restatable established proposition is available.",
+    "human_understanding_delta": "Separates the genuine source-pinned 2-by-2 Hankel sign obstruction from an unbound higher finite-valuation aspiration, so a reader cannot confuse a standard word ('Hankel') with a checked theorem."
+  },
+  "tao_pipeline_receipt": {
+    "input_stage": "packet claim and source-availability audit",
+    "output_stage": "evidence-boundary correction",
+    "artifact": "finite_dyadic_hankel_valuation_v0 prior-art route",
+    "human_understanding_delta": "Makes the missing mathematical object visible: the determinant sequence, the squarefree-support statistic, the valuation identity, and its proof are all still needed before an expert can even assess the claim.",
+    "verification_state": "Bounded local exact-identifier searches and external exact-phrase searches were performed. No mathematical proof, computation, Lean replay, or external theorem is claimed.",
+    "publication_or_review_state": "Internal correction only; no card, paper, Comparator interface, or novelty assertion is requested.",
+    "canonicalization_state": "Prevents an unbound formulation from fragmenting the existing rank-one and strict-log-concavity mechanisms.",
+    "unresolved_downstream_bottleneck": "A source-pinned theorem object and a defined #249 consumer.",
+    "next_stage_owner": "Mathematical Assimilation Steward when a proof-bearing determinant asset lands; Novelty Observatory only on that new immutable generation."
+  },
+  "reviewer_attention_budget": {
+    "routine": "Hankel determinant notation and p-adic valuation are standard ambient tools; the existing 2-by-2 sign calculation is finite arithmetic.",
+    "load_bearing": "The proposed higher finite determinant family, squarefree-support statistic, and exact valuation identity are not defined or proved.",
+    "externally_sourced": "General Hankel/moment and local-valuation literature supplies vocabulary only; no sequence-specific antecedent was located.",
+    "still_unverified": "All source-specific claims beyond the stated packet sentence, including the determinant construction and its arithmetic consumer.",
+    "review_act": "Require a closed determinant definition and quantified valuation formula, then compare it against the existing Möbius--Mersenne 2-by-2 sign/rank-one objects before assigning any independent significance."
+  },
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "finite_dyadic_hankel_valuation@packet-2026-08-25-v0",
+    "evidence_class": "Unbound packet sentence; no inspectable determinant definition, proof, checker, or theorem-level consumer. The local 2-by-2 sign/rank-one evidence is a separate established family.",
+    "closest_known_result": "Classical Hankel/moment determinant theory and p-adic valuation methods are ambient frameworks, while the nearest corpus objects are the source-pinned Möbius--Mersenne strict-log-concavity and positive rank-one quotient-floor calculations.",
+    "comparison_relation": "The packet proposes an exact valuation controlled by a largest squarefree support tuple, but leaves the tuple, determinant sequence, and proof absent; it therefore cannot be treated as a higher-rank extension of the existing 2-by-2 obstruction.",
+    "exact_delta": "The only durable delta is a navigation correction: keep the finite 2-by-2 sign obstruction, but retire the unformed higher-valuation aspiration until its mathematical object is supplied.",
+    "disconfirming_evidence": "Bounded repository and exact-phrase searches found no source-bearing formula, Lean declaration, executable verifier, independent finite checks, or primary-source match for the proposed sequence-specific law.",
+    "confidence": {
+      "level": "high_that_the_higher_valuation_claim_is_not_current_evidence; routine_for_the_ambient_2_by_2 vocabulary",
+      "basis": "The available source state contains only the packet sentence and an explicit absence of the objects needed for theorem-level comparison."
+    },
+    "significance": "Route-killing and consolidation value only: it prevents generic Hankel terminology from fragmenting or inflating the established Möbius--Mersenne sign/rank-one mechanism.",
+    "claim_ceiling": "Describe only the proposed finite dyadic Hankel-valuation formulation and the separate checked 2-by-2 sign obstruction. Do not claim an exact valuation theorem, higher-rank result, novelty, or #249 progress.",
+    "hard_step": "Define the determinant and support statistic, prove the all-finite valuation formula, independently check instances, and show a concrete arithmetic consumer; these are separate obligations.",
+    "open_boundary": "No independent Comparator proposition or paper result is justified. Reopen only on an immutable source generation containing the complete object, proof/evidence spine, and consumer.",
+    "bounded_expert_review_act": "Audit the determinant definition and valuation quantifiers if supplied; otherwise classify the sentence as an unformed construction question and retain it under the existing 2-by-2 family.",
+    "reentry_trigger": "Re-enter when a complete determinant family, quantified valuation identity, proof-bearing source or Lean declaration, independent finite checks, and declared consumer land together.",
+    "source_generation_binding": {
+      "packet_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "packet_sha256": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e",
+      "formal_source_sha256": "",
+      "primary_source_anchors": [],
+      "parity_status": "Packet sentence is source-pinned; no local formal or primary-source theorem is bound."
+    }
+  },
+  "adjudication_currentness": {
+    "status": "current_at_adjudication",
+    "bound_snapshot": {
+      "packet_commit": "44903c4d3c09e2b78d554e81883960ae2faa7d8f",
+      "packet_sha256": "d5b3c6ee6e888389f8ae950cb2d03a0253e149a17354e0bbac2d15246222b74e"
+    },
+    "claim_guard": "Do not infer a theorem, valuation law, or novelty from the packet sentence or from generic Hankel terminology.",
+    "reentry_trigger": "Re-enter on a defined determinant source, proof, independent check, or explicit consumer change."
+  }
+}

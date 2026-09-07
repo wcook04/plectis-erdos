@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041AllDegreeTrinomial.Challenge",
+  "solution_module": "ExternalVerification1041AllDegreeTrinomial.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041AllDegreeTrinomial.trinomial_erdos1041_conclusion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

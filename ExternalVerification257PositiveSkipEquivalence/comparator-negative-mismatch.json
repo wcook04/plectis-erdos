@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PositiveSkipEquivalence.Challenge",
+  "solution_module": "ExternalVerification257PositiveSkipEquivalence.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos",
+    "Erdos249257.ExternalVerification257PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

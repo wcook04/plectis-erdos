@@ -1,0 +1,225 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "bounded_integral_affine_radix_dichotomy",
+  "generated_at": "2026-08-24",
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Lean-checked sharp bounded-radix dichotomy with a source-specific #269 fan-in and an explicit integral branch that remains live.",
+    "slow_down_at": "The distinction between cofinal quantitative escape and exact integral-state exclusion; the latter is not supplied by the theorem.",
+    "automation_can_establish": ["source/card hash parity", "declaration presence and recurrence identities", "sharp period-two equality arithmetic"],
+    "human_judgment_required": ["whether the integer-lift statement has a standard expansivity or beta-expansion name", "whether the #269 fan-in preserves all hypotheses", "whether Bellman and telescope components are correctly consolidated"],
+    "review_act": "Check the 1/(B+1) nearest-integer lift and equality-cycle quantifiers, then verify that the source specialization leaves the exact-integral branch visibly open."
+  },
+  "adjudication_currentness": {
+    "status": "mixed_source_snapshot_with_current_card_and_per_file_commits",
+    "bound_snapshot": {
+      "source_commits": {
+        "BoundedRadixTailEscape.lean": "4e712fe89012c5fdce5e319bfc3ceae0736601de",
+        "DyadicRadixTailEscape.lean": "4e712fe89012c5fdce5e319bfc3ceae0736601de",
+        "DyadicShellSummability.lean": "48f3da3e7b125d3d9e9afb3acbb0791f8410be19",
+        "BlockMassEngines.lean": "13ec87bc5f02a92b015f564e1b165c947fa67bec"
+      },
+      "reviewer_card_commit": "7099e397ad159cefa3fab0793a09e3bfb11886e4",
+      "reviewer_card_sha256": "29b0966be6f3fe7645c8e2f4c66674aa7e0915b7870bb2e24181b886fd94dbb8"
+    },
+    "claim_guard": "Only the sharp bounded-radix zero-or-cofinally-far dichotomy and the stated #269 source fan-in are admitted; no integral-branch exclusion, irrationality, or #269 solution.",
+    "reentry_trigger": "Re-enter if any per-file source commit, card, declaration set, or an exact-integral-state exclusion changes."
+  },
+  "status": "adjudicated_expansivity_parent_with_integral_branch_transition_cap_no_gos",
+  "problem_id": "erdos_269",
+  "purpose": "Separate the classical expanding-dynamics mechanism from the exact sharp bounded-radix integer-lift formulation and its source-specific #269 consequence.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/bounded_integral_affine_radix_dichotomy.card.json",
+    "card_commit": "812456e945289af4740c74071da67649971028ad",
+    "landed_source_commit": "mixed_current_source_snapshot",
+    "source_paths": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicRadixTailEscape.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BlockMassEngines.lean"
+    ],
+    "headline_declarations": [
+      "ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far",
+      "ErdosProblems.Erdos269.dyadicBlockBase235_integer_or_cofinal_far",
+      "ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far",
+      "ErdosProblems.Erdos269.List.prod_eq_one_add_suffixCorrection",
+      "ErdosProblems.Erdos269.tailCap_bellman",
+      "ErdosProblems.Erdos269.tailCap_step_compose"
+    ]
+  },
+  "observatory_adjudication_2026_08_26": {
+    "result_family_version": "erdos269_bounded_integral_affine_radix_dichotomy@mixed_source_4e712fe_card_7099e397",
+    "source_generation": {
+      "source_commit": "mixed_current_source_snapshot",
+      "source_commits": {
+        "BoundedRadixTailEscape.lean": "4e712fe89012c5fdce5e319bfc3ceae0736601de",
+        "DyadicRadixTailEscape.lean": "4e712fe89012c5fdce5e319bfc3ceae0736601de",
+        "DyadicShellSummability.lean": "48f3da3e7b125d3d9e9afb3acbb0791f8410be19",
+        "BlockMassEngines.lean": "13ec87bc5f02a92b015f564e1b165c947fa67bec"
+      },
+      "reviewer_card_commit": "812456e945289af4740c74071da67649971028ad",
+      "file_hashes": {
+        "docs/formal_math/reviewer_cards/bounded_integral_affine_radix_dichotomy.card.json": "29b0966be6f3fe7645c8e2f4c66674aa7e0915b7870bb2e24181b886fd94dbb8",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean": "a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicRadixTailEscape.lean": "d8b6c181c8af288f270986b0d2d0e9adcf2c237b5c8491eab176791ff937d4a9",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BlockMassEngines.lean": "f7fac792bced7515f9f2e50810953f18a9896e897d352611466d4f716cf435af"
+      }
+    },
+    "evidence_class": "Lean-checked exact bounded-radix dichotomy and #269 source-tail fan-in, with ordinary sharpness-family analysis; no endpoint exclusion.",
+    "comparison_relation": "The underlying positive-expansivity mechanism is classical for expanding circle maps and has nonautonomous formulations. The local contribution is an arithmetic integer-lift packaging with the optimal 1/(B+1) radius and equality two-cycle.",
+    "closest_known_result": "Reddy (1982) gives the compact-metric expanding-map framework; Kawan (2015) treats time-dependent expansivity. Neither source gives this integer-carry lift, optimal constant, or #269 fan-in.",
+    "exact_delta": "Below 1/(B+1), nearest-integer lifts obey the same affine recurrence and expansion forces exact integrality; the period-two orbit at distance 1/(B+1) proves sharpness for every B. The #269 specialization reduces near-integrality to the unresolved exact-integral branch.",
+    "disconfirming_evidence": "The dichotomy does not imply eventual escape, positive density of escape, or irrationality; the equality family and the live integral branch are explicit boundaries.",
+    "confidence": {
+      "formal_dichotomy": "high_internal_provisional",
+      "sharpness_family": "high_internal_provisional",
+      "classical_attribution": "high_internal_provisional",
+      "endpoint_consequence": "low_unresolved"
+    },
+    "claim_ceiling": "The Lean-checked result is a sharp bounded-radix integer-lift dichotomy: either an integral state occurs or the normalized orbit is cofinally at least 1/(B+1)-far. It does not exclude the integral branch or imply #269 irrationality.",
+    "significance": "Medium-high reusable support value: it prevents treating quantitative closeness as irrationality and isolates exact-integral-state exclusion as the sole remaining #269 consumer.",
+    "hard_step": "Exclude the exact integral normalized source-tail state; the radix alphabet, digit identity, recurrence, and cofinal-far alternative are already one finished stack.",
+    "open_boundary": "No exact-integral branch exclusion, irrationality theorem, or Erdős #269 solution follows; Bellman/suffix sub-engines are subordinate bookkeeping, not separate discoveries.",
+    "paper_disposition": {
+      "class": "supporting lemma",
+      "target_section": "Ordered dyadic-shell radix dynamics: integral state or recurrent escape",
+      "supersession_or_consolidation": "Consolidate the alphabet, ordered digits, telescope, Bellman caps, recurrence, B=30 dichotomy, and sharpness family into one mechanism; retire seven-fragment treatment.",
+      "why_care": "It gives the reader an optimal quantitative dichotomy while making the remaining integral-state obstruction impossible to miss."
+    },
+    "comparator_advisory": {
+      "disposition": "comparator_now_minimal_formal_dichotomy",
+      "proposition_scope": "Expose the general bounded-radix zero-or-cofinal-far theorem and the actual B=30 source-tail specialization with explicit no-endpoint claim; keep the general sharpness family paper-labelled if not in the formal interface.",
+      "independent_interface_justified": true,
+      "not_a_novelty_or_acceptance_decision": true
+    },
+    "bounded_expert_review_act": "Check whether the 1/(B+1) integer-lift formulation appears under an established beta-expansion or positive-expansivity name, and verify the equality two-cycle quantifiers.",
+    "reentry_trigger": "Reopen when an exact-integral-state exclusion is proved or when a primary source states the same sharp arithmetic radius."
+  },
+  "classification": {
+    "theorem_class": "elementary_sharp_integer_lift_form_of_positive_expansivity_for_a_nonautonomous_bounded_radix_circle_system",
+    "novelty_class": "standard_core_mechanism_with_exact_constant_and_equality_family_not_located_in_bounded_search",
+    "formalization_class": "Lean_checked_exact_alphabet_ordered_digit_block_cap_engines_B30_dichotomy_and_actual_three_prime_tail_consumer_with_general_B_proof_on_card",
+    "priority_claim": "none",
+    "recommended_terminology": "sharp bounded-radix integer-lift expansivity lemma",
+    "acceptable_descriptive_alias": "bounded integral-affine radix dichotomy",
+    "discouraged_terminology": [
+      "new principle of expanding dynamics",
+      "beta-expansion novelty theorem",
+      "eventual separation theorem",
+      "solution of Erdős Problem 269",
+      "independent Bellman theorem",
+      "new block-mass principle"
+    ],
+    "nearest_prior_work": [
+      "Reddy (1982) places expanding maps and positive expansivity in a general compact-metric-space framework.",
+      "Kawan (2015) develops strong uniform expansivity for time-dependent systems built from uniformly expanding maps.",
+      "The local statement is an arithmetic integer-lift specialization for the sequential circle maps x -> P_n x mod 1, with an explicit optimal uniform radius."
+    ],
+    "attribution": "Describe the expansion mechanism as classical and cite Reddy for the autonomous compact-metric theory and Kawan for the nonautonomous setting. Attribute the exact bounded-radix formulation, sharp constant, and #269 specialization to the local source without asserting priority.",
+    "mathematical_interest": "The exact radius is not cosmetic: below it, nearest-integer lifts are forced to obey the same affine recurrence and their errors expand multiplicatively; the equality two-cycle proves that no larger alphabet-uniform radius is possible.",
+    "reusable_scope": "Any real recurrence x_(n+1)=P_n x_n-c_n with integer carries, uniformly bounded integer radices 2<=P_n<=B, and a downstream need to distinguish exact integrality from recurrent quantitative escape.",
+    "why_it_matters": "For the actual three-prime #269 tail, the exact alphabet, digit identity, recurrence, and fan-in reduce every sufficiently strong near-integrality strategy to one remaining consumer: exclude an integral normalized tail state. The lemma prevents repeated attempts to extract irrationality from closeness alone."
+  },
+  "primary_sources": [
+    {
+      "id": "reddy_1982_expanding_maps",
+      "title": "Expanding maps on compact metric spaces",
+      "author": "William L. Reddy",
+      "venue": "Topology and its Applications 13 (1982), 327-334",
+      "doi": "10.1016/0166-8641(82)90040-2",
+      "url": "https://doi.org/10.1016/0166-8641(82)90040-2",
+      "exact_anchor": "Abstract and main equivalence theorem: locally expansive, positively expansive, and expanding formulations agree in a general compact-metric setting.",
+      "supports": "The classical status of the positive-expansivity mechanism behind multiplication maps on the circle.",
+      "does_not_support": "The nonautonomous bounded-radix recurrence, the constant 1/(B+1), the period-two equality family, or the #269 application."
+    },
+    {
+      "id": "kawan_2015_time_dependent_expansivity",
+      "title": "Expanding and expansive time-dependent dynamics",
+      "author": "Christoph Kawan",
+      "venue": "Nonlinearity 28 (2015), 669-695",
+      "doi": "10.1088/0951-7715/28/3/669",
+      "url": "https://arxiv.org/abs/1410.2199",
+      "exact_anchor": "Abstract and Section 6: strong uniform expansivity is introduced for time-dependent systems and related to uniform local expansion.",
+      "supports": "The established nonautonomous-expansivity framing for sequences of uniformly expanding maps.",
+      "does_not_support": "The exact arithmetic lift lemma, its optimal constant, its equality family, or any Erdős #269 conclusion."
+    }
+  ],
+  "mechanism_comparison": {
+    "classical_mechanism": "Uniform expansion or positive expansivity says distinct states in an expanding dynamical system cannot remain uniformly close under all forward iterates.",
+    "local_mechanism": "Modulo the integers, the carries vanish. If every late state is within 1/(B+1) of an integer, successive nearest-integer lifts have an integer discrepancy of absolute value below one, hence zero; the lift errors then multiply by P_n>=2 and boundedness forces the initial error to vanish.",
+    "source_wiring": "For #269, the suffix-product telescope explains the block-height quotient formula, the quadratic Bellman identity and cap-composition lemmas discharge the shell-cap bookkeeping, all-scale smooth-shell factorization supplies the four-symbol radix and ordered integer digit, summability supplies the genuine infinite tail, and the recurrence feeds the B=30 dichotomy. These are subordinate inputs and consumers of one theorem stack, not separate novelty objects.",
+    "exact_delta": "The local result computes an optimal alphabet-uniform lift radius and supplies a two-cycle attaining equality for every B>=2.",
+    "significance_boundary": "The result forces a dichotomy only. It gives neither eventual escape nor a method for excluding the exact integral branch."
+  },
+  "disconfirmation_search": {
+    "queries": [
+      "expanding circle map multiplication expansivity constant 1/(n+1)",
+      "nonautonomous integer radix recurrence distance to integers",
+      "bounded radix affine recurrence cofinally far integer",
+      "beta transformation sharp expansivity constant",
+      "time-dependent expanding maps strong uniform expansivity"
+    ],
+    "result": "The search recovered the classical autonomous and nonautonomous expansivity frameworks but no primary source stating the exact all-B integer-lift dichotomy, the optimal 1/(B+1) constant, or the displayed equality two-cycle.",
+    "boundary": "Failure to locate an exact antecedent is not evidence of priority. It justifies describing the sharp arithmetic package as unlocated in a bounded search while classifying its core mechanism as standard."
+  },
+  "claim_boundary": {
+    "allowed_wording": "This is a sharp arithmetic packaging of the classical positive-expansivity mechanism for a bounded nonautonomous family of circle multiplications; its optimal 1/(B+1) form was not located in a bounded primary-source search.",
+    "forbidden_wording": [
+      "We discovered positive expansivity for radix maps.",
+      "The suffix telescope or Bellman cap is an independent novelty theorem.",
+      "The orbit is eventually 1/(B+1)-far from every integer.",
+      "The exact integral branch is impossible.",
+      "This proves irrationality in Erdős Problem 269."
+    ],
+    "nonclaims": [
+      "not_a_priority_claim",
+      "not_eventual_separation",
+      "not_positive_density_of_escape",
+      "not_integral_branch_exclusion",
+      "not_erdos_269_solution"
+    ]
+  },
+  "canonicalization_decision": {
+    "programme_family": "bounded-radix integral-or-cofinal-escape dichotomy for the ordered three-prime tail",
+    "disposition": "admit_one_reusable_supporting_mechanism",
+    "consolidates": [
+      "actual dyadic-block radix alphabet",
+      "ordered integer digit identity",
+      "suffix telescope and Bellman cap engines",
+      "genuine infinite-tail recurrence",
+      "B=30 dichotomy and source fan-in",
+      "general sharpness family",
+      "denominator-one three-transition cap failure",
+      "general residue delay-five counterexamples"
+    ],
+    "paper": "supporting lemma in Ordered dyadic-shell radix dynamics — integral state or recurrent escape",
+    "comparator": "minimal B=30 formal dichotomy and source-tail fan-in justified; general-B card theorem remains paper-level",
+    "absolute_frontier_shortlist": "do_not_admit_retain_current_five",
+    "open_boundary": "exact integral normalized source-tail states"
+  },
+  "landing_consumers": [
+    {
+      "path": "docs/formal_math/reviewer_cards/bounded_integral_affine_radix_dichotomy.card.json",
+      "effect": "Replace unadjudicated wording with the classical-expansivity attribution, exact sharp delta, and honest claim ceiling."
+    },
+    {
+      "consumer": "Erdős #269 proof fleet",
+      "effect": "Treat the suffix telescope, Bellman cap/composition, alphabet, digit identity, recurrence, and cofinal-far fan-in as one finished stack. Exact integral-state exclusion is the remaining producer obligation; do not recycle block bookkeeping or near-integrality alone as an irrationality route."
+    },
+    {
+      "consumer": "Mathematics Refinery and Public Research Exhibition",
+      "effect": "Present the result as one reusable exact lemma and sharpness family with a source-faithful #269 stack, not as seven independent discoveries or an endpoint theorem."
+    }
+  ],
+  "source_result_ids": [
+    "bounded_radix_zero_or_cofinal_constant_escape",
+    "actual_dyadic_block_radix_alphabet",
+    "dyadic_block_digit_half_height_mass",
+    "ordered_source_tail_affine_recurrence",
+    "actual_dyadic_radix_escape_fanin",
+    "block_mass_combinatorial_engines",
+    "bellman_shell_mass_composition",
+    "denominator_one_post_clear_automaton",
+    "residue_delay_five_uniform_bound_counterexample"
+  ]
+}

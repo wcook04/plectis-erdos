@@ -1,0 +1,192 @@
+{
+  "schema": "plectis_private_lean_prior_art_route_v0",
+  "route_id": "value_ray_transport_polynomial_lemniscates",
+  "source_result_id": "value_ray_transport_containment_and_stretch_boundary",
+  "observatory_adjudication_2026_08_26": {
+    "review_unit_version": "value_ray_transport_containment_and_stretch_boundary@source-f8d9812-card-8e7ce79f",
+    "source_generation_binding": {
+      "source_commit": "f8d9812fead5ee580dcdad47f34657db99364899",
+      "source_sha256": "5fb6877b74093b56154a692eaae5ac04718be526181c10d55441c92050276b55",
+      "probe_sha256": "a0f01c3f3e8db33c4c77d4dc5d3722b41059f73ccf0f488b63a199540eba7a0b",
+      "reviewer_card_sha256": "8e7ce79fb87a5892b95ec1cd462f48301fbbdb7955b8a716c945483a33ea27b4"
+    },
+    "evidence_class": "Authored ordinary critical-value-free transport and inverse-branch stretch identities with an exact binomial counterexample; bounded probe is diagnostic only and no Lean theorem is claimed.",
+    "closest_known_result": "Hatcher's homotopy-lifting framework, Sutherland's continuous Newton-flow description, and established desingularized Newton methods are the nearest antecedents. None states this lemniscate-facing stretch packaging or its binomial pointwise-contraction falsifier.",
+    "comparison_relation": "Standard covering-homotopy and finite-time Newton-flow technology with elementary inverse-branch differentiation; the source-specific delta is the endpoint-preserving lemniscate metric packaging and exact negative model, not a new transport theorem.",
+    "exact_delta": "The route separates regular-value containment from the remaining metric cost: radial value transport supplies an exact stretch ratio, while the binomial family proves that pointwise contraction cannot be the universal integral bound.",
+    "disconfirming_evidence": "The stretch identity is pointwise and the binomial model has a noncontracting branch; no integral distortion estimate, arbitrary-component theorem, length-below-two conclusion, or unrestricted #1041 result follows.",
+    "confidence_ceiling": "High for source/card/probe parity and the stated hypotheses; medium for broader literature matching; low for originality or any unrestricted #1041 inference.",
+    "significance_assessment": {
+      "grade": "medium_high_route_selection_value_not_endpoint",
+      "why_care": "It retires containment as the regular-value obstruction and identifies the exact metric-distortion integral still required, while killing pointwise contraction as a universal shortcut.",
+      "mechanism_family": "critical-value-free radial inverse-branch transport and lemniscate metric stretch",
+      "expert_attention_reason": "A short complex-analysis check can validate the lifting hypotheses and endpoint convention; the binomial falsifier prevents repeated investment in a false contraction route."
+    },
+    "claim_ceiling": "Claim only critical-value-free radial transport, the exact inverse-branch stretch identity, and the binomial pointwise-contraction counterexample under the stated hypotheses. Do not claim a global length bound, Lean proof, priority, or an Erdős #1041 solution.",
+    "hard_step": "Obtain an integral stretch bound or a different global component-level metric estimate after the exact transport identity.",
+    "open_boundary": "Critical-value cones, repeated roots, arbitrary component geometry, and the global length-below-two statement remain open; the bounded probe is not proof authority.",
+    "bounded_expert_act": "Check the critical-value-free lifting hypotheses, endpoint convention, and inverse-branch differentiation, then compare only this exact packaging with the cited Newton-flow and homotopy antecedents.",
+    "reentry_trigger": "Re-enter if the source/card/probe generation or stretch argument changes, or if an integral metric estimate or direct antecedent is supplied.",
+    "programme_disposition": {
+      "canonical_mechanism_family": "#1041 critical-value-free radial transport and metric-stretch boundary",
+      "disposition": "retain_as_one_route_selection_mechanism_subordinate_to_global_lemniscate_geometry",
+      "paper_disposition": "supporting lemma in the regular-value transport section",
+      "independent_comparator_interface_justified": true,
+      "comparator_scope": "Status-tagged ordinary transport/stretch identities and exact binomial falsifier; no global metric or #1041 upgrade."
+    }
+  },
+  "reviewer_attention_budget": {
+    "difficulty_topology": "Covering lift and logarithmic-derivative differentiation are routine; the unresolved step is an integral metric estimate after transport.",
+    "slow_down_at": "Critical-value exclusion, simple endpoint roots, branch endpoint preservation, and the distinction between pointwise stretch and an integrated path bound.",
+    "automation_can_establish": ["Source/card/probe hash parity", "Exact binomial counterexample arithmetic", "Presence of the no-global-length and no-irrationality firewall"],
+    "human_judgment_required": ["Whether the transport hypotheses have the correct covering and endpoint quantifiers", "Whether the stretch identity is applied along the intended lifted path", "Which integral metric estimate could consume the identity"],
+    "review_act": "One bounded expert act: audit the lifting and stretch derivation, then treat the binomial counterexample as a route-killing boundary rather than an endpoint result."
+  },
+  "adjudication_currentness": {
+    "status": "source_and_card_hashes_current_at_adjudication",
+    "bound_snapshot": {"source_commit": "f8d9812fead5ee580dcdad47f34657db99364899", "source_sha256": "5fb6877b74093b56154a692eaae5ac04718be526181c10d55441c92050276b55", "probe_sha256": "a0f01c3f3e8db33c4c77d4dc5d3722b41059f73ccf0f488b63a199540eba7a0b", "reviewer_card_sha256": "8e7ce79fb87a5892b95ec1cd462f48301fbbdb7955b8a716c945483a33ea27b4", "source_result_id": "value_ray_transport_containment_and_stretch_boundary"},
+    "claim_guard": "Ordinary transport/stretch identities and the exact binomial falsifier remain separate from any global length theorem; the probe is diagnostic and no priority or #1041 claim is admitted.",
+    "reentry_trigger": "Re-enter on source/card/probe generation change, a direct antecedent, or an integral metric estimate."
+  },
+  "generated_at": "2026-08-27",
+  "status": "adjudicated_standard_covering_homotopy_and_Newton_flow_with_useful_lemniscate_metric_packaging",
+  "problem_id": "erdos_1041",
+  "purpose": "Attribute radial value transport to covering-space lifting and continuous Newton flow, separate the elementary derivative identity and binomial calculations, and preserve the absence of any global length bound.",
+  "target": {
+    "reviewer_card": "docs/formal_math/reviewer_cards/value_ray_transport_polynomial_lemniscates.card.json",
+    "refinery_handoff_commit": "f696fbad351eb2fe30ea0aafe43c58257efb221a",
+    "source_commit": "f8d9812fead5ee580dcdad47f34657db99364899",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowTransport.md",
+    "source_result_id": "value_ray_transport_containment_and_stretch_boundary"
+  },
+  "source_generation": {
+    "landed_source_commit": "f8d9812fead5ee580dcdad47f34657db99364899",
+    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowTransport.md",
+    "source_sha256": "5fb6877b74093b56154a692eaae5ac04718be526181c10d55441c92050276b55",
+    "probe_path": "formal_math/probes/erdos1041_newton_flow_transport.py",
+    "probe_sha256": "a0f01c3f3e8db33c4c77d4dc5d3722b41059f73ccf0f488b63a199540eba7a0b",
+    "reviewer_card_path": "docs/formal_math/reviewer_cards/value_ray_transport_polynomial_lemniscates.card.json",
+    "reviewer_card_sha256": "8e7ce79fb87a5892b95ec1cd462f48301fbbdb7955b8a716c945483a33ea27b4",
+    "status": "source_and_card_hashes_current_at_adjudication; ordinary proof and bounded probe remain inspectable evidence"
+  },
+  "review_unit": {
+    "unit_id": "review_unit_erdos1041_value_ray_transport_polynomial_lemniscates_v2",
+    "result_family": "erdos1041_critical_value_free_radial_transport_and_stretch",
+    "exact_result_ids": ["value_ray_transport_containment_and_stretch_boundary"],
+    "source_generation": "2026-08-27",
+    "evidence_class": "authored ordinary transport and differential identities with an exact binomial counterexample; bounded source probe is diagnostic only",
+    "prior_art_relation": "Covering homotopy and continuous Newton flow are standard antecedents; the lemniscate-facing stretch-ratio packaging and pointwise-contraction falsifier are source-specific without a priority claim.",
+    "confidence_ceiling": "High for source/card hash parity and the stated hypotheses; medium for any broader literature comparison; low for originality or unrestricted Erdos #1041 inference.",
+    "significance_rationale": "This is a route-selection mechanism: it repairs containment in the regular-value regime and isolates the remaining integral metric cost, while retiring pointwise contraction as a universal shortcut.",
+    "hard_step": "Obtain an integral stretch bound or a different global component-level metric estimate.",
+    "open_boundary": "No length-below-two theorem, arbitrary-component theorem, or solution of Erdos #1041.",
+    "expert_review_act": "Check the critical-value-free lifting hypotheses, endpoint convention, and differentiation of the transported inverse branch; compare only the exact packaging, not the standard ingredients.",
+    "next_reentry": "Re-enter only if the source/card generation or the analytic stretch argument changes; do not repeat the completed Newton-flow terminology search."
+  },
+  "classification": {
+    "transport_novelty_class": "routine_covering_homotopy_lift_equivalently_finite_time_Newton_flow_on_regular_values",
+    "stretch_identity_novelty_class": "elementary_inverse_branch_differentiation_not_a_new_named_theorem",
+    "binomial_contact_class": "problem_specific_exact_model_calculation_no_priority_claim",
+    "pointwise_contraction_failure_class": "useful_exact_negative_diagnostic_for_one_proof_route",
+    "priority_claim": "none",
+    "recommended_terminology": [
+      "critical-value-free radial inverse-branch transport",
+      "finite-time Newton-flow transport",
+      "covering-homotopy lift of radial value scaling"
+    ],
+    "nearest_prior_work": [
+      "Hatcher (2002), Proposition 1.30 and the following paragraphs, gives homotopy lifting, unique path lifting, and fixed endpoints for lifted path homotopies.",
+      "Sutherland (1992), Bad Polynomials for Newton's Method, printed p. 42, defines z-dot=-f/f' as Newton flow and states that f maps its trajectories to straight lines emanating from the origin.",
+      "Jongen, Jonker, and Twilt (1988) provide the established continuous, desingularized Newton-method framework for meromorphic functions."
+    ],
+    "attribution": "Call the transport standard covering-homotopy or Newton-flow technology. Credit the local card for a clean endpoint-preserving lemniscate formulation, the exact logarithmic-derivative stretch ratio, and the binomial falsifier—not for inventing radial Newton trajectories or homotopy lifting.",
+    "mathematical_interest": "The ingredients are classical and the derivative calculation is elementary. The synthesis is nevertheless useful because it cleanly factors the open task into exact containment and a single metric-distortion integral, then proves that pointwise contraction cannot supply that integral bound.",
+    "reusable_scope": "Any holomorphic map restricted over a critical-value-free radial cone admits the same local inverse-branch transport. For polynomials with simple endpoint roots the covering argument fixes endpoints; repeated roots or cones meeting critical values require separate analysis.",
+    "why_it_matters": "It retires containment as the obstruction within the regular-value regime and identifies the remaining quantity exactly. This is a route-selection improvement, not a length theorem."
+  },
+  "primary_sources": [
+    {
+      "id": "hatcher_2002_covering_spaces",
+      "title": "Algebraic Topology, Chapter 1",
+      "author": "Allen Hatcher",
+      "url": "https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf",
+      "local_annex": "annexes/hatcher-2002-algebraic-topology-covering-spaces",
+      "source_pdf": "annexes/hatcher-2002-algebraic-topology-covering-spaces/source.pdf",
+      "source_pdf_sha256": "50b1632a200c66eeef2efba61fec49bb6d80442269f766df38817f23a01bde7c",
+      "extracted_markdown": "annexes/hatcher-2002-algebraic-topology-covering-spaces/extracted.md",
+      "extracted_markdown_sha256": "45638a47bb688646ddfd24c2cae455b262f31d266912e9d551f5c26e9a5dae99",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 76,
+      "extracted_locator": "extracted.md lines 1812-1830: Proposition 1.30 and the following path-lifting paragraph, corresponding to printed pp. 60-61.",
+      "exact_anchor": "Section 1.3, Proposition 1.30 and the following path-homotopy paragraph, printed pp. 60-61.",
+      "supports": "Homotopy lifting, unique path lifting, and fixed endpoints under a lifted homotopy.",
+      "does_not_support": "No polynomial, lemniscate, Newton-flow, or metric-stretch statement."
+    },
+    {
+      "id": "sutherland_1992_newton_flow",
+      "title": "Bad Polynomials for Newton's Method",
+      "author": "Scott Sutherland",
+      "url": "https://www.math.stonybrook.edu/preprints/ims92-7.pdf",
+      "local_annex": "annexes/sutherland-1992-newton-flow",
+      "source_pdf": "annexes/sutherland-1992-newton-flow/source.pdf",
+      "source_pdf_sha256": "e0dbfa6ad56d14971d4f901dc8568731e22359feeb1efb429b240f156b88d29e",
+      "extracted_markdown": "annexes/sutherland-1992-newton-flow/extracted.md",
+      "extracted_markdown_sha256": "3c9bec90e731ead82e755639d11bbad349e6a7279cb69ad880bc167b11cda0d7",
+      "primary_pdf_read": true,
+      "source_reviewed_at": "2026-08-27",
+      "pdf_pages": 46,
+      "extracted_locator": "extracted.md lines 1467-1472: the Newton flow, radial straight-line image of solution curves, and critical-value degeneracy statement, corresponding to printed p. 42.",
+      "exact_anchor": "Section 5, printed p. 42: Newton flow z-dot=-f/f' and the statement that f maps solution curves to radial straight lines; critical values govern degeneracy.",
+      "supports": "The standard Newton-flow name, radial value-space trajectories, and critical-point obstruction.",
+      "does_not_support": "No endpoint-preserving two-parameter path transport, exact stretch ratio, or length bound."
+    },
+    {
+      "id": "jongen_jonker_twilt_1988_continuous_Newton",
+      "title": "The continuous, desingularized Newton method for meromorphic functions",
+      "authors": ["H. Th. Jongen", "P. Jonker", "F. Twilt"],
+      "venue": "Acta Applicandae Mathematicae 13 (1988), 81-121",
+      "doi": "10.1007/BF00047503",
+      "url": "https://research.utwente.nl/en/publications/the-continuous-desingularized-newton-method-for-meromorphic-funct/",
+      "exact_anchor": "Abstract and bibliographic record establish the continuous Newton-method framework for meromorphic functions.",
+      "supports": "Historical and terminological placement of the flow.",
+      "does_not_support": "No claim of a verbatim antecedent for the card's stretch formula or lemniscate packaging."
+    }
+  ],
+  "claim_boundary": {
+    "allowed_wording": "The card packages standard covering-homotopy/Newton-flow transport for polynomial lemniscates and derives an exact stretch identity plus a binomial obstruction to pointwise contraction.",
+    "forbidden_wording": [
+      "We discovered radial Newton-flow transport.",
+      "Critical-value avoidance proves a length-below-two bound.",
+      "Pointwise expansion rules out global integral contraction.",
+      "The transport solves Erdos Problem 1041."
+    ],
+    "nonclaims": ["not_a_solution_of_erdos_1041", "not_a_global_length_bound", "not_a_new_covering_space_theorem", "not_a_pointwise_contraction_theorem"]
+  },
+  "disconfirmation_search": {
+    "queries": ["Newton flow polynomial trajectories radial lines origin", "continuous Newton method f over f prime critical values", "polynomial lemniscate radial inverse branch transport", "covering homotopy polynomial critical values"],
+    "result": "The central mechanism is explicitly standard Newton flow and covering homotopy. No primary source was located for the exact lemniscate-facing stretch-ratio packaging or the displayed binomial pointwise-contraction falsifier.",
+    "boundary": "The unlocated packaging receives no novelty or priority claim."
+  },
+  "landing_consumers": [
+    {"path":"docs/formal_math/reviewer_cards/value_ray_transport_polynomial_lemniscates.card.json","effect":"Replace pending prior art with standard covering/Newton attribution and retain the exact metric boundary."},
+    {"consumer":"Mathematics Refinery","effect":"Canonicalise the mechanism as radial inverse-branch/Newton-flow transport, with the stretch ratio as its explicit metric consumer."}
+  ],
+  "programme_disposition": {
+    "canonical_mechanism_family": "critical-value-free radial transport and Newton-step stretch accounting",
+    "disposition": "subordinate under the #1041 component-perimeter mechanism; consolidate transport, stretch, binomial contact, and pointwise-contraction failure rather than split them",
+    "paper_disposition": "supporting lemma and route-killing boundary in the section 'Value-ray transport: containment repaired, length still priced'",
+    "comparator_advisory": "No independent Comparator interface: the coupled hypotheses and metric remainder are better exposed in the status-tagged card and paper section.",
+    "expert_attention_reason": "It prevents a valid topological lift from being mistaken for a metric length theorem."
+  },
+  "release_disposition": {
+    "value": "public_card_only",
+    "statement_firewall": "State only the critical-value-free transport, exact stretch identity, and binomial pointwise-contraction counterexample; label the proof ordinary and the probe diagnostic. Do not imply a global length bound, Lean proof, priority, or #1041 solution.",
+    "reason": "The exact source/card/probe identities are inspectable and the claim boundary is explicit; specialist review is downstream, not a release veto."
+  },
+  "next_pass": {
+    "kind": "typed_reentry_on_source_or_argument_change",
+    "reentry_condition": "Re-enter if the source note, reviewer card, or analytic stretch argument changes, or if a primary source for the exact lemniscate packaging is found.",
+    "do_not_redo": "Do not repeat the completed covering-homotopy/Newton-flow search, finite probe, or pointwise-contraction calculation."
+  }
+}
