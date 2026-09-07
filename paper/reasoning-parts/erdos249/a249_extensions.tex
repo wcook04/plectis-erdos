@@ -1,0 +1,267 @@
+\section{The dyadic classification, its extensions, and two retirements}
+\label{sec:dyadic-classification-record}
+
+This part records the mathematics that the residue theorem yields once its
+unit condition is examined at a dyadic modulus, two extensions of that
+theorem, and two corrections to earlier formulations in this record. The
+first correction retires a universal question that an included Lean
+counterexample refutes. The second replaces a duplicated splice argument by
+the front-matter theorem that already supplies its content.
+
+\subsection{Notation}
+
+For $m\ge2$ and $f$ a rational-valued function on the residues modulo $m$ put
+\[
+  T_{m,f}=\sum_{n\ge1}\frac{f(\ph(n)\bmod m)}{2^n},
+  \qquad
+  A_m=\sum_{n\ge1}\frac{\ph(n)\bmod m}{2^n}.
+\]
+The registered observable theorem
+(\lean{irrational\_totientObservable}{ErdosProblems/Erdos249/ResidueClassTotientSeries.lean:502})
+states that $T_{m,f}$ is irrational whenever $f$ is integer-valued, $f(0)=0$,
+and $f(r)\ne0$ for some $r<m$ with $\gcd(r+1,m)=1$. \ev{Lean}
+The two ingredients are the bounded signed-pulse criterion
+(\lean{irrational\_dyadicValue\_of\_pulses}{ErdosProblems/Erdos249/ResidueClassTotientSeries.lean:330})
+and the reduced CRT progression
+(\lean{two\_sided\_prime\_isolation}{ErdosProblems/Erdos249/ResidueClassTotientSeries.lean:464}).
+The short note gives both proofs in full.
+
+\subsection{Every rational value at a dyadic resolution}
+
+At $m=2^k$ every even residue $r$ makes $r+1$ odd, so the unit condition is
+automatic and the criterion is exhaustive.
+
+\begin{thm}[Rational dyadic observables]\label{thm:dyadic-classification}
+Let $k\ge1$ and $m=2^k$, and let $f$ be rational-valued on the residues
+modulo $m$. Then $T_{m,f}\in\Q$ if and only if $f$ is constant on the even
+residue classes modulo $m$. If that constant is $c$, then
+$T_{m,f}=\frac14c+\frac34f(1)$, and the values of $f$ at odd residues other
+than $1$ do not affect $T_{m,f}$.
+\ev{Ordinary} \scale{uniform} \coord{residue-observable}
+\end{thm}
+
+\begin{proof}
+Only $\ph(1)$ and $\ph(2)$ are odd, and both equal $1$. If $f$ takes the
+constant value $c$ on the even residues then
+$T_{m,f}=f(1)(2^{-1}+2^{-2})+c\sum_{n\ge3}2^{-n}=\frac34f(1)+\frac14c$.
+
+Conversely, let $T_{m,f}\in\Q$ and put $c=f(0)$. Let $D\ge1$ clear the
+denominators of the finitely many values of $f$, and set $g(r)=D(f(r)-c)$.
+Then $g$ is integer-valued with $g(0)=0$, and since $\sum_{n\ge1}2^{-n}=1$,
+\[
+  \sum_{n\ge1}\frac{g(\ph(n)\bmod m)}{2^n}=D\bigl(T_{m,f}-c\bigr)\in\Q .
+\]
+If $f$ were not constant on the even residues there would be an even $r$ with
+$0<r<m$ and $g(r)\ne0$. Then $r+1$ is odd, so $\gcd(r+1,2^k)=1$, and the
+registered observable theorem makes the displayed sum irrational. The
+contradiction proves the converse.
+\end{proof}
+
+The irrationality half is exactly
+\lean{fixed\_resolution\_observable\_irrational}{ErdosProblems/Erdos249/ResidueClassTotientSeries.lean:544},
+whose own documentation records that the remaining half, the denominator
+clearing and the converse supplied by $\sum_{r\text{ even}}V_{k,r}=1/4$, is
+not formalised. \ev{Lean} for the irrationality half, \ev{Ordinary} for the
+classification.
+
+At $k=1$ the only even residue is $0$, so every letter map is constant on the
+even residues and every observable is rational. This is the exception
+$A_2=3/4$. The classification is dyadic: it decides no other modulus, and it
+decides nothing about $S$.
+
+\begin{cor}[Rational relations at a fixed dyadic resolution]
+\label{cor:dyadic-relations}
+For $k\ge1$ and $0\le r<2^k$ put
+$V_{k,r}=\sum_{n\ge1}\mathbf1_{\{\ph(n)\equiv r\ (2^k)\}}2^{-n}$.
+Then $V_{k,1}=3/4$, every other odd-indexed value vanishes, and
+$\sum_{r\text{ even}}V_{k,r}=1/4$. The $2^{k-1}$ even-indexed values are
+linearly independent over $\Q$; every rational relation among $1$ and those
+values is a rational multiple of $4\sum_{r\text{ even}}V_{k,r}-1=0$; their
+$\Q$-span has dimension $2^{k-1}$ with or without $1$ adjoined, and dimension
+$2^{k-1}-1$ modulo the rationals. \ev{Ordinary}
+\end{cor}
+
+\begin{proof}
+The evaluations restate $\ph(1)=\ph(2)=1$ and the evenness of $\ph(n)$ for
+$n\ge3$. Given rationals $a_0$ and $(a_r)_{r\text{ even}}$ with
+$a_0+\sum_{r\text{ even}}a_rV_{k,r}=0$, apply
+Theorem~\ref{thm:dyadic-classification} to $f$ with $f(r)=a_r$ for even $r$
+and $f(r)=0$ for odd $r$. Its value is $-a_0\in\Q$, so $f$ is constant on the
+even residues with some value $c$, giving $a_r=c$ for every even $r$ and
+$T_{m,f}=c/4$. Hence $a_0=-c/4$ and the relation is the displayed multiple.
+Taking $a_0=0$ forces $c=0$ and every $a_r=0$. Since $1=4\sum_{r\text{
+even}}V_{k,r}$, adjoining $1$ leaves the span unchanged.
+\end{proof}
+
+\begin{cor}[Joint independence of the dyadic residue series]
+\label{cor:joint-independence}
+Let $\operatorname{bit}_j(x)$ be the coefficient of $2^j$ in the binary expansion of $x$ and
+put $B_j=\sum_{n\ge1}\operatorname{bit}_j(\ph(n))2^{-n}$. Then $B_0=3/4$, and for every
+$k\ge2$ the numbers $1,B_1,\ldots,B_{k-1}$ are linearly independent over
+$\Q$. Consequently $1,A_4,A_8,\ldots,A_{2^k}$ are linearly independent over
+$\Q$ for every $k\ge2$. \ev{Ordinary}
+\end{cor}
+
+\begin{proof}
+$B_0=3/4$ because $\ph(n)$ is odd exactly at $n=1,2$. Let
+$a_0+\sum_{j=1}^{k-1}a_jB_j=0$ with rational $a_j$, and set
+$f(r)=\sum_{j=1}^{k-1}a_j\operatorname{bit}_j(r)$, which depends only on $r$ modulo $2^k$
+and satisfies $f(0)=0$. Its value is $-a_0\in\Q$, so
+Theorem~\ref{thm:dyadic-classification} makes $f$ vanish on every even
+residue. For $1\le j\le k-1$ the residue $2^j$ is even and below $2^k$, and
+$f(2^j)=a_j$, so every $a_j$ vanishes and then $a_0=0$. Finally
+$A_{2^\ell}=\sum_{j<\ell}2^jB_j=\frac34+\sum_{j=1}^{\ell-1}2^jB_j$ is a
+triangular change of coordinates with diagonal entries $1,2,\ldots,2^{k-1}$.
+\end{proof}
+
+This is a statement about finite rational relations in an infinite family. It
+asserts no algebraic independence, and it is not a statement about $S$.
+
+\subsection{Two extensions of the observable theorem}
+
+\begin{prop}[Every integer base]\label{prop:allbase-observable}
+Let $b\ge2$ be an integer. Under the hypotheses of the registered observable
+theorem, $\sum_{n\ge1}f(\ph(n)\bmod m)b^{-n}$ is irrational. The dyadic
+classification also holds in base $b$, with the rational value
+$f(1)(b+1)b^{-2}+c\,b^{-2}(b-1)^{-1}$. \ev{Ordinary}
+\end{prop}
+
+\begin{proof}
+The pulse construction is arithmetic and does not see the base. In the tail
+estimate write $U_N=\sum_{j\ge1}a_{N+j}b^{-j}$, so $|U_N|\le C/(b-1)\le C$ and
+$b^NA-U_N\in\Z$. With $b^L>2qC$ and $N=p-L-1$ the two zero blocks give
+$U_N=a_pb^{-L-1}+b^{-2L-1}U_{N+2L+1}$, whence
+$0<b^{-L-1}(|a_p|-Cb^{-L})\le|U_N|\le Cb^{-L}$ and $qU_N$ is an integer of
+absolute value in $(0,1/2)$. For the classification, replace
+$\sum_{n\ge1}2^{-n}=1$ by $\sum_{n\ge1}b^{-n}=(b-1)^{-1}$ and
+$\sum_{n\ge3}2^{-n}=1/4$ by $\sum_{n\ge3}b^{-n}=b^{-2}(b-1)^{-1}$.
+\end{proof}
+
+The registered Lean theorem is binary. Wong's 2015 answer proves the
+least-residue case in the single base $b=m$ \ev{Cited}; the statement here
+separates the base from the modulus, admits coefficients larger than a digit,
+and admits negative coefficients.
+
+\begin{prop}[Composite centres]\label{prop:composite-centres}
+Let $a\ge1$, $m\ge2$, and let $s$ be coprime to $m$. Let $f:\N\to\Z$ satisfy
+$f(0)=0$ and $f(\ph(a)(s-1)\bmod m)\ne0$. Then $T_{m,f}$ is irrational, and
+likewise in every integer base $b\ge2$. \ev{Ordinary} \scale{uniform}
+\end{prop}
+
+\begin{proof}
+Fix $L\ge1$ and choose $2L$ distinct primes $\ell_j^\pm$ greater than
+$\max\{a,L,m\}$ and congruent to $1$ modulo $m$. Impose $p\equiv s\pmod m$,
+$ap\equiv j\pmod{\ell_j^-}$ and $ap\equiv-j\pmod{\ell_j^+}$ for
+$1\le j\le L$. Each $\ell_j^\pm$ exceeds $a$, so $a$ is invertible modulo it
+and the prescribed residues of $p$ are nonzero because $0<j<\ell_j^\pm$. The
+moduli are pairwise coprime and every prescribed residue is a unit, so the
+Chinese remainder theorem gives a reduced progression and Dirichlet's theorem
+gives arbitrarily large primes $p$ in it. For $p>a$ we have $\gcd(a,p)=1$, so
+$\ph(ap)=\ph(a)(p-1)\equiv\ph(a)(s-1)\pmod m$ and the coefficient at the
+index $ap$ is nonzero, while $\ell_j^-\mid ap-j$, $\ell_j^+\mid ap+j$ and
+$m\mid\ell_j^\pm-1$ make the $2L$ neighbouring totients divisible by $m$ and
+the corresponding coefficients zero. The bounded signed-pulse criterion
+applies at the centres $ap$.
+\end{proof}
+
+At $a=1$ this is the registered hypothesis, since $\ph(1)=1$ and
+$\gcd(s,m)=1$ is $\gcd(r+1,m)=1$ for $r=s-1$. At $m=6$, $a=3$, $s=5$ the
+reached residue is $\ph(3)\cdot4=8\equiv2$, so the indicator of the residue
+$2$ modulo $6$ has irrational binary value, while $\gcd(2+1,6)=3$ places that
+indicator outside the prime-centre criterion. Which residues composite centres
+reach at a general modulus is not determined here, and no classification
+outside the dyadic case is claimed. \ev{Open}
+
+\subsection{Retirement: the universal rationality-side rank ceiling is false}
+\label{ssec:rankupper-retired}
+
+Definition~\ref{defn:rankupper} of Part~I and Route~5 of the invention record
+ask for a constant $C$, or any $g(e)$ growing strictly more slowly than
+$2^e-1$, bounding
+$\dim_{\Q}\operatorname{span}_{\Q}(\mathrm{canonicalCarryKernelFamily}(u,e))$
+for every $c:\N\to\N$ with $c(n)\le n$ and rational binary value, every
+$v>0$, every tempered binary orbit $u$ for $(c,v)$, and every $e$. That
+universal question is refuted inside this corpus.
+
+\begin{thm}[Odd-agreement rational control]\label{thm:parity-perturbed-control}
+There is $c:\N\to\N$ with $c(n)\le n$ for every $n$, with $c(n)=\ph(n)$ for
+every odd $n$, with $|c(n)-\ph(n)|\le2$ for every $n$, and with
+$\sum_{n\ge1}c(n)2^{-n}=5/4$. It carries $v>0$ and a tempered integral orbit
+$u$ for $(c,v)$ whose canonical carry sections satisfy
+$\dim_{\Q}\operatorname{span}_{\Q}(\mathrm{canonicalCarryKernelFamily}(u,e))\ge2^e-1$
+for every $e$. \ev{Lean}
+\end{thm}
+
+The coefficient control and its rational value are
+\lean{parity\_perturbed\_rational\_control}{ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean:396}
+with the value at
+\lean{control\_series}{ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean:379};
+the transfer of the independent odd totient channels to carry differences is
+\lean{finrank\_canonicalCarryKernel\_ge\_of\_oddAgree}{ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean:441};
+the tempered orbit of unbounded rank is
+\lean{control\_temperedOrbit\_carryRank\_unbounded}{ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean:478}.
+
+Consequently: rationality together with $0\le c(n)\le n$ does not imply a
+bounded canonical carry rank, and no ceiling growing more slowly than
+$2^e-1$ holds even when it is allowed to depend on the sequence and on the
+orbit. Any carry-rank contradiction for $S$ needs a hypothesis specific to
+$\ph$ that excludes this control, and agreement on every odd argument is not
+such a hypothesis. The $\ph$-specific lower bound is untouched
+(\lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{Erdos249257/TotientCarryKernelRigidity.lean:301}).
+\ev{Lean}
+
+This countermodel is stronger than the registered parity-coboundary example
+(\lean{exists\_totientParity\_arbitrarilyManySeparatedCarry\_rational\_countermodel}{Erdos249257/TotientParityCoboundaryCountermodel.lean:637}),
+whose value is $3/2$ and which matches only the parity of $\ph$. The two are
+separate results and both are retained. The earlier remark in Route~5, that
+the generic bridge through the omitted zero-residue channels supplies no
+counterexample, remains correct and is now beside the point: the control above
+uses the odd channels directly and needs no such bridge.
+
+\subsection{Correction: one splice theorem, not three arguments}
+\label{ssec:splice-correction}
+
+Theorem~\ref{thm:gamma} of Part~I already supplies everything the later
+splice discussion attempts. For fixed $B$ and a prime $P>B$, the stream
+$\gamma(n)=\ph(n)$ for $n\le B$ and $\gamma(n)=n-\mathbf1_{P\mid n}$
+thereafter has binary value a dyadic rational minus $1/(2^P-1)$, hence is
+rational, and agrees with $\ph$ through index $B$. Every certificate whose
+inspection horizon $N+h+L$ is at most $B$ therefore has the same outcome on
+both streams, and Corollary~\ref{cor:b1} excludes any inference from one fixed
+prefix to a cofinal supply.
+
+Three statements in the later account are withdrawn. A binary coboundary of
+value zero preserves the sum and so cannot make an unknown totient sum
+rational. The inspection horizon of a tail-difference certificate is
+$N+h+L$ and not $N+L$; the shift belongs in the shared-prefix condition.
+The stream above may be chosen afresh for each $B$, so the construction
+refutes a uniform inference from a single prefix and says nothing against a
+theorem supplying actual totient certificates at unbounded horizons. That
+remains the open supply obligation. \ev{Open}
+
+\subsection{The certified continued-fraction denominator record}
+\label{ssec:cf-record}
+
+The finite Farey exclusion of Part~I is the strongest kernel-checked
+denominator bound
+(\lean{tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{Erdos249257/CertificateKernel.lean:18572}).
+\ev{Lean}
+A larger bound holds at a weaker evidence class. An exact rational bracketing
+of $S$ at $80\,000$ binary digits, with a bracket width of $80\,002$, forces
+the first $23\,438$ partial quotients of the continued fraction of $S$: a
+quotient is emitted only when both endpoints of the bracket agree on it. Any
+representation $S=a/q$ in lowest terms then satisfies $q\ge2^{39989}$ and
+$q>10^{12038}$, the separation $|q_nS-p_n|>0$ being verified against the
+bracket rather than assumed. The largest certified partial quotient is
+$29\,403$, at index $15\,470$. \ev{Cert}
+
+The verifier is \codeid{certified\_continued\_fraction.py} and the receipt is
+\codeid{erdos249\_certified\_cf\_receipt.json}, which records the scale, the
+bracket, the certified prefix length, the separation check, the partial
+quotient histogram, and a self-check of the same arithmetic against the known
+expansions of $e$ and $\pi$. The release claim registry records the bound
+under the row \codeid{denominator\_exclusion} and states there that the
+computation carries no Lean proof. A finite prefix constrains no later
+convergent, so this bound is a denominator exclusion and nothing more; in
+particular it supports no statement about anomalous rational approach to $S$.
+\ev{Cert} \scale{fixed} \coord{farey}

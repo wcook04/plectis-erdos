@@ -12,8 +12,8 @@
 \documentclass[11pt]{article}
 \usepackage{longtable}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{0ba585f632fbbbb43af2ee9532d4e83752af3f67}
+\renewcommand{\commitshort}{32545d77c4b5}
 \hypersetup{
   pdftitle={Sharp solved families and constant-factor paths in polynomial lemniscates for Erdős Problem 1041},
   pdfsubject={Erdős Problem Notes: Problem 1041},
@@ -80,6 +80,9 @@ are nonnegative, so
 \]
 At $t=1$ the value is zero.  Concatenating the two segments gives length
 $|\zeta_1|+|\zeta_2|<2$.
+The displayed statement, with the broken line as a continuous curve of bounded
+variation and its length read as extended variation, is
+\lloc{Erdos1041/PaperTrinomial.lean}{38}.
 \end{proof}
 
 \paragraph{A finite convex certificate.}
@@ -108,7 +111,8 @@ Indeed, after $z=rw$, the polynomial factors as
 $r^6(w^2-1)(w^4+\tfrac65 w^2+1)$, so all six roots have modulus $r$.
 However $f_r(r/2)=-(327/320)r^6$.  Any $r$ with $320/327<r^6<1$ proves the
 assertion.  Only this prescribed spoke is excluded; other connectors remain
-available.
+available.  The statement with the radius supplied is
+\lloc{Erdos1041/PaperTrinomial.lean}{79}.
 
 \section{The problem and the general regimes}\label{sec:problem}
 
@@ -172,7 +176,11 @@ In every degree the length can be chosen less than $(5/2)\mu^{1/n}$.
 \begin{proof}
 Put $s=((25/13)\mu)^{1/n}$ and $g(z)=s^{-n}f(sz)$.  Then $g$ is monic and
 its least critical-value modulus is $13/25$.  Apply the theorem and scale the
-curve back by $s$.  For $n\ge3$,
+curve back by $s$.  The rescaling step, transporting both the level and the
+extended variation of an arbitrary curve under $z\mapsto h+cz$, is
+\lword{Erdos1041/PaperMetricScaling.lean}{40}{connectedBelow_affine}{the affine
+transport of a contained rectifiable connector}; the low-critical input remains
+ordinary.  For $n\ge3$,
 $(25/13)^{1/n}\le(25/13)^{1/3}<5/4$.  For $n=2$, the segment between the
 roots has length $2\sqrt\mu$ and lies in $K_\mu$.
 \end{proof}
@@ -205,6 +213,11 @@ then summing over the roots proves the finite dual bound
 \[
  \boxed{\quad k\ge\frac{x-\pi\sum_i\sigma_i}{U}.\quad}
 \]
+The summation and supremum step from the majorant and the slice bounds to the
+boxed inequality is
+\lword{Erdos1041/PaperFiniteDual.lean}{68}{arity_floor_of_sSup}{the finite dual
+arity floor, with the packing bound and the boundedness of the dual values as
+premises}; the hyperbolic supplier of those premises is ordinary.
 Angular projection alone loses the disjointness used here: balls at different
 radii may have overlapping shadows.  Common circle slices retain it.
 The resulting lower bound for $k$ feeds the length--area comparison until a
@@ -344,7 +357,10 @@ outside $\{|f|<1\}$.
 
 \noindent The certificates are exact rational-algebraic computations, checked
 as \pdecl{nearestSpoke_unique_nearest_spoke_escapes} and
-\pdecl{allStraightCubic_every_pair_midpoint_escapes}.  The first defeats a
+\pdecl{allStraightCubic_every_pair_midpoint_escapes}, and the displayed
+proposition itself, with both quintic and cubic exhibited as polynomials and the
+nearest-root condition quantified over every zero, is
+\lloc{Erdos1041/PaperStraightObstructions.lean}{178}.  The first defeats a
 tie-breaking escape hatch; the second defeats every straight root-pair
 segment.  Together with Theorem~\ref{res:critical-proximity}, they isolate the
 real gap: critical-point proximity selects a short metric pair, but universal
@@ -555,6 +571,9 @@ rays, $\mu>13/25$, and
  \bigl|1-f(c_-)/f(c_+)\bigr|<2/375<2.
 \]
 \end{proposition}
+
+\noindent The whole proposition, including the least-modulus assertion rather
+than a supplied minimum, is \lloc{Erdos1041/PaperSeparationCounterexample.lean}{189}.
 
 \begin{proposition}[one-root gamma bound is false]
 \label{res:one-root-gamma-false}
@@ -1149,35 +1168,36 @@ priority claim is inferred from this comparison.
 \appendix
 \section{Guide to the formal sources}\label{app:sources}
 
-The public \texttt{ErdosProblems.Erdos1041.NewtonFlowRaySeparation} module
-contains the checked source for this note.  The search of \S\ref{sec:finite} is
-\texttt{scripts/search\_counterexample.py} in the source package.  The
-declaration table below is pinned to the shared formal-source commit used
-throughout this problem-note series.
+The root-spoke inequality used in Theorem~\ref{res:trinomial-all-degree} is
+\lword{Erdos1041/CyclicTrinomialFiberCase.lean}{103}
+{trinomialRoot_spoke_norm_lt_one_of_norm_lt_one}{the all-root trinomial spoke theorem}.
+The ordinary proof supplies Vieta's hypothesis and concatenates the segments.
+The finite convex identity is in
+\path{ErdosProblems/Erdos1041/AbelControlPolygon.lean}.
 
-\begin{itemize}[leftmargin=*]
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{34}{newtonFlowVector}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{38}{derivative_mul_newtonFlowVector}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{77}{SamePositiveRay}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{80}{samePositiveRay_refl}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{84}{samePositiveRay_symm}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{92}{samePositiveRay_trans}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{107}{translated_samePositiveRay_parameterization}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{127}{realAffineLine}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{130}{realAffineLine_eq_affineSpan}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{147}{isClosed_realAffineLine}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{152}{dense_compl_realAffineLine}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{162}{exists_small_avoiding_finite_realAffineLines}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{179}{samePositiveRay_imp_mem_realAffineLine}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{197}{exists_small_translation_separating_arguments}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{230}{norm_lt_one_of_near_root}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{257}{constant_perturbation_root_near_original}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{287}{constant_perturbation_roots_in_unitDisk}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{306}{samePositiveRay_of_real_exp_decay}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}
-\end{itemize}
+The proximity selector, cubic and quintic selectors, and Chebyshev alternation
+kernels are in
+\path{CriticalTwoRootProximity.lean},
+\path{CubicQuotientFiberCase.lean},
+\path{PrimitiveQuinticBoundaryTail.lean},
+\path{PrimitiveQuinticInteriorTail.lean} and
+\path{SharpCollinearChebyshev.lean}, all under
+\path{ErdosProblems/Erdos1041/}.
+Their finite statements and the ordinary geometric assemblies are distinguished
+in the corresponding proofs and the long record.
+
+The complete ordinary analyses are located in
+\path{AngularBudgetLowCriticalClosure.md},
+\path{UnconditionalConstantFactorBound.md},
+\path{DiskFamilyCriticalValueSeparation.md},
+\path{FreePointQuadraticAllDegrees.md},
+\path{AttachmentAgeLifetimeOrlicz.md},
+\path{AttachmentAwareReeb.md} and
+\path{GenericSufficiencyClosure.md} in the same directory.
+The first includes the full-mode rational checker; the other files identify
+any finite formal kernels separately from their analytic arguments.
+The complete declaration and source-generation inventories remain in the
+long record.  No new formal verification is asserted by these pointers.
 
 \begin{thebibliography}{10}
 \bibitem{bloom} T.~F. Bloom, \emph{Erd\H{o}s Problems}, problem~1041.

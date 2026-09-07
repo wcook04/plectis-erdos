@@ -1,0 +1,47 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% Long-form reasoning record seeded from the complete problem note.
+% The short note and this record are now independent publication units.
+% This flat manuscript is generated from reviewable parts below.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage[htt]{hyphenat}
+\usepackage{newunicodechar}
+\newunicodechar{ℕ}{\ensuremath{\N}}
+\newunicodechar{ℚ}{\ensuremath{\Q}}
+\newunicodechar{ℤ}{\ensuremath{\Z}}
+\newunicodechar{₀}{\ensuremath{{}_0}}
+% Problem-specific source pin: #269's local-window consumer advances
+% independently of the corpus default.
+\renewcommand{\commit}{1da2a504f8d8aa3cdc2cf686ec48bc8a67457984}
+\renewcommand{\commitshort}{1da2a504f8d8}
+\hypersetup{
+  pdftitle={The three-prime running least common multiple: complete reasoning record for Erdős Problem 269},
+  pdfsubject={Erdős Problem Notes: Problem 269},
+  pdfkeywords={transcendence, Hecke-Mahler values, least common multiple, smooth numbers, lattice sums, Lean 4},
+}
+
+% The three pure-power coordinates and the running height.
+\newcommand{\hgt}{\operatorname{H}}
+\newcommand{\lo}{\lambda}
+\newcommand{\hi}{\eta}
+\newcommand{\Lprefix}{\operatorname{L}}
+\newcommand{\Kernel}{\operatorname{K}}
+\newcommand{\lpr}{\operatorname{lpr}}
+\newcommand{\Esc}{\mathsf E}
+\newcommand{\authnone}{\textcolor{BrickRed!75!black}{\sffamily\bfseries No result here}}
+\newcommand{\authliterature}{\textcolor{BurntOrange!85!black}{\sffamily\bfseries Literature}}
+\newcommand{\authlean}{\textcolor{MidnightBlue!82!black}{\sffamily\bfseries Paper + Lean}}
+\newcommand{\authexternal}{\textcolor{Violet!80!black}{\sffamily\bfseries Paper + external theorem}}
+\newcommand{\authcompute}{\textcolor{Violet!80!black}{\sffamily\bfseries Direct computation}}
+
+\runninghead{Erd\H{o}s \#269: complete reasoning record}
+\title{The Three-Prime Running LCM: Complete Reasoning Record}
+\subtitle{Erd\H{o}s Problem~\#269}
+\author{Will Cook}
+\date{July 2026}
+
+\begin{document}

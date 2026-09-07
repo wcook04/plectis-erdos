@@ -13,8 +13,8 @@ apparent waypoints are \emph{equivalent} to the full problem, not easier approac
 
 The functional $\mathtt{erdosSupportSeries}\ 2\ (-)$ denotes the base-$2$ Erd\H{o}s support series
 $\mathtt{erdosSupportSeries}\ 2\ A := \sum_{n\in A} 1/(2^n-1)$
-(\lean{erdosSupportSeries}{CertificateKernel.lean:8897}). $\mathtt{supportCoeff}\ A\ n :=
-|\{d\mid n : d\in A\}|$ (\lean{supportCoeff}{CertificateKernel.lean:8856}) is the divisor-indicator
+(\lean{erdosSupportSeries}{CertificateKernel.lean:9085}). $\mathtt{supportCoeff}\ A\ n :=
+|\{d\mid n : d\in A\}|$ (\lean{supportCoeff}{CertificateKernel.lean:9044}) is the divisor-indicator
 coefficient whose generating tail feeds every certificate below. $\mathcal{A} :=
 \mathtt{mersenneAchievementSet} = \{x\mid \exists A,\ 0\notin A\wedge x =
 \mathtt{positiveMersenneSupportValue}\ A\}$ (\lean{mersenneAchievementSet}{GreedyAchievementSet.lean:571}).
@@ -43,7 +43,7 @@ engine is
 \]
 with $\mathrm{Cert}(A)\Rightarrow \mathrm{Irrational}(\mathtt{erdosSupportSeries}\ 2\ A)$
 already proved unconditionally for \emph{every} $A$
-(\lean{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{CertificateKernel.lean:9031},
+(\lean{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{CertificateKernel.lean:9219},
 \ev{Lean}, \scale{n/a} --- the theorem is universally quantified over $A$; only its hypothesis is
 unsupplied).  Therefore the stronger statement
 \[
@@ -81,7 +81,7 @@ unconditional Lean iff, to a purely combinatorial statement about one fixed orbi
 \[
 \mathrm{HALF}\ \Longleftrightarrow\ \left(\mathtt{greedyMersenneSkippedSupport}(1/2)\right).\mathrm{Infinite}
 \]
-(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2583},
+(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2582},
 \ev{Lean}, \scale{uniform}, coordinate \coord{mobius-mersenne}, target-generic in the reverse
 direction --- the forward direction uses only that the target is rational, so the same theorem
 holds verbatim for every rational $t\ge 0$ in place of $1/2$).
@@ -134,7 +134,7 @@ socket carries no strategic advantage over proving $\mathrm{HALF}$ outright.
 Neither Prop.~\ref{prop:cpgs-equiv} nor Prop.~\ref{prop:strip-equiv} narrows the search space for
 $\mathrm{HALF}$. Their value is negative: they retire two named targets from the "worth chasing as
 an easier waystation" list. A third socket, the hypothesis $\forall N,\ \mathtt{mobiusCenteredHalfCarry}\,A\,N\le 2\sqrt N+4$
-of \lean{greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound}{HalfCarryReachability.lean:834},
+of \lean{greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound}{HalfCarryReachability.lean:833},
 is likewise proved EQUIVALENT to $\mathrm{HALF}$ for the specific support $A=G$ (Survivor 4,
 \ev{Math, adversarially verified, weakened}) --- not, as originally claimed, for every $A$ with
 $1\notin A$; the general-$A$ version is only a one-sided implication ($\mathrm{hbound}\Rightarrow
@@ -148,14 +148,14 @@ $1\notin A$; the general-$A$ version is only a one-sided implication ($\mathrm{h
 \mathrm{CofinalExactLocalMersenneHalfRows}\ :=\ \forall N,\ \exists n\ge N,\
 \mathtt{ExactLocalMersenneHalfRow}\ n
 \]
-(\lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:38}, \ev{Open},
+(\lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:41}, \ev{Open},
 \scale{cofinal}). No compatibility is required between witness supports at different endpoints
 --- the defining weakening versus a single coherent trajectory.
 \end{defn}
 $\mathrm{CofinalExactLocalMersenneHalfRows}\Rightarrow\mathrm{HALF}$ is proved unconditionally
 via compactness of $\mathcal{A}$ (continuous image of $(\mathbb{N}\to\mathrm{Fin}\,2)$ under the
 digit-coding map, hence closed)
-(\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
+(\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:431},
 \ev{Lean}). This direction is \emph{strictly weaker} than $\mathrm{HALF}$ as currently proved:
 the argument uses closedness alone and discards the producing rows, so the theorem as it stands
 does not pin a single limiting support $A$; a genuine sequential-compactness extraction (Cantor-space
@@ -281,11 +281,11 @@ short run is untouched by this theorem.
 $\mathtt{SeamTwoSidedDyadicCellEscape}$ excludes three integer values of the middle coordinate,
 $4\cdot\mathrm{rem}(s)-\mathrm{belowPulse}(s)-4\notin\{-3,-2,-1\}$, plus one right-pulse-leak
 bound $4\cdot\mathrm{overshoot}(s)+\mathrm{abovePulse}(s)\le2^{s+2}$ under
-$\mathrm{overshoot}(s)\le2^s$ (\lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374}).
+$\mathrm{overshoot}(s)\le2^s$ (\lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4990}).
 \end{defn}
 Granted this, induction from a \texttt{decide}-checked row-5 base propagates
 $\forall s\ge5,\ \mathrm{rem}(s)\le2^s\vee\mathrm{overshoot}(s)\le2^s$
-(\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}, \ev{Lean}
+(\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:5064}, \ev{Lean}
 given the hypothesis, \scale{uniform in the consequence}). One of the three cells, $-3$, is already
 closed unconditionally in the all-right-tail configuration
 (\lean{finalMiddleCell_neg_three_not_last}{HalfCylinderFinalMiddleCellEscape.lean:587}, \ev{Lean}).
@@ -298,14 +298,14 @@ about O4; no transport between the two has been attempted in the corpus.
 A distinct, exponentially cheaper tail-dominance socket targets the same downstream payoff via
 the upper-reset branch alone: $\mathrm{SeamUpperResetDyadicBandEscape} := \forall d\ge13,\forall
 j\le d,\ 2^{d-j+1}<\mathrm{resetCharge}\vee\mathrm{resetCharge}+2(d+j)\le2^{d-j+1}$
-(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}, \ev{Open},
+(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5182}, \ev{Open},
 proved \ev{Cert} through row $31$ only by exhaustive computation
 (\lean{seamUpperResetDyadicBandEscape_through_thirty}{HalfCylinderUpperResetBandCertificates.lean:78})).
 This band has \emph{linear} width $O(d)$, not dyadic $O(2^{d/2})$ width --- exponentially weaker
 than $\mathrm{SQRTESC}$ yet sufficient for the same conclusion $\mathrm{HALF}$ via
-$\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}$.
+$\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5614}$.
 It is proved logically equivalent to a single-critical-index check per row
-(\lean{seamUpperResetCriticalBandEscape_iff}{HalfUpperResetCriticalBand.lean:883}, \ev{Lean}), which is a genuine
+(\lean{seamUpperResetCriticalBandEscape_iff}{HalfUpperResetCriticalBand.lean:1565}, \ev{Lean}), which is a genuine
 quantifier-complexity reduction, not a strength reduction.
 
 \subsection{Target O2b --- Membership of $1/21$}
@@ -328,7 +328,7 @@ and
 Any unbounded sequence of closed returns instead proves membership.
 
 No finite support on ranks at least $2$ sums to $1/21$
-(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:61}).
+(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:1041}).
 Thus membership would already be an infinite-support rational counterexample
 to $\mathrm{U257}$.  The missing step is to exclude the fatal aligned
 affine-supercapacity branch (or force unbounded closed returns); neither is
@@ -373,18 +373,21 @@ O5 SeamUpperResetDyadicBandEscape & $\Rightarrow$ O2 (Lean), linear-width & \ev{
 None of the following is offered as a plan of attack, and none is close. Each is stated to make
 the shape of the missing ingredient legible.
 
-\textbf{O1 (universal).} A producer for $\mathrm{Cert}(A)$ at an arbitrary infinite $A$ is a
-statement about geometrically-weighted divisor sums achieving controlled residues modulo powers of
-two on prescribed dyadic blocks, uniformly over all infinite supports. No general result of this
-shape exists in the analytic-number-theory literature surveyed for this programme; the corpus's
-own honest assessment is that this is a genuinely new near-integer anti-concentration theorem for
-a divisor-weighted sum, not a variant of an existing one.
+\textbf{O1 (universal).} The reciprocal-summable regime is settled, so a direct
+certificate route need only treat arbitrary infinite $A$ with divergent
+reciprocal mass.  A producer for $\mathrm{Cert}(A)$ in that remaining regime is
+a statement about geometrically-weighted divisor sums achieving controlled
+residues modulo powers of two on prescribed dyadic blocks, uniformly over
+those supports.  No result of this shape is identified in the literature
+cited here.  The corpus therefore records a missing near-integer
+anti-concentration theorem for a divisor-weighted sum, without making a
+novelty or priority claim.
 
 \textbf{O2/O3/O5 (Mersenne-specific).} The sharp-capacity gap $(\ast)\to(\ast\ast)$ and the
 $-2,-1$ middle-cell exclusion are both, at bottom, requests for anti-concentration of an explicit
 divisor-count quantity ($\mathtt{localBinarySuffix}$, or $4\cdot\mathrm{rem}-\mathrm{belowPulse}-4$)
 away from a short, explicitly named integer window. These are combinatorial/arithmetic
-near-misses rather than analytic ones — the corpus's own diagnosis is that a congruence or
+near-misses rather than analytic ones.  The corpus's own diagnosis is that a congruence or
 pulse-parity obstruction, not an equidistribution theorem, is the natural tool, and no such
 obstruction has been found.
 
@@ -410,9 +413,8 @@ should be read as progress toward doing so.
 \section*{Statements and declarations}
 
 \paragraph{Artefact and data availability.} The linked Lean declarations,
-fixed toolchain, and library manifest are published in the companion
-repository. This manuscript provides navigation and exposition rather than
-proof authority.
+fixed toolchain, and library manifest are published in this repository.  This
+manuscript provides navigation and exposition rather than proof authority.
 
 \paragraph{Authority boundary.} Kernel checking establishes that a proposition
 was proved; it does not authorise the exposition, literature judgements, or any

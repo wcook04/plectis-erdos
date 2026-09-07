@@ -1,0 +1,85 @@
+\section{Record: the circle-slice arity floor in numbers}
+\label{sec:record-circle-slice}
+
+This part is long-record only.  Nothing in the short note depends on it, and
+none of it is a certified upper bound.  It records what the arity floor behind
+Theorem~\ref{res:low-critical-thirteen-twentyfifths} is worth, so that a reader
+deciding whether to attack the complementary regime $13/25<\mu<1$ can see the
+size of the remaining slack.
+
+At $a=1$ the constants of the failure inequalities are
+$\delta=0.4586751$, $D=5.3770727$, $d_{\mathrm{low}}=2.1700771$, and
+$\cosh(D/2)=e^{2}$.  Four columns are worth comparing at that area: the
+earlier corpus profile $\Lambda(k,1)=\max(\delta/2+(k-1)\lambda(g),k\tau/2)$
+with $\tau=0.2723415$; the hyperbolic packing floor $\Lambda_{\mathrm{pack}}$
+that the previous threshold $2/5$ was built on; the linear-programming value
+$M_{\mathrm{circ}}$ of the relaxation of
+Lemma~\ref{res:circle-slice-packing}; and the best configuration a floating
+optimiser could realise.
+
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$k$ & corpus $\Lambda$ & packing & $M_{\mathrm{circ}}$ & realisable \\
+\midrule
+2 & 0.3103 & 0.5899 & 0.3102 & 0.3103 \\
+3 & 0.4085 & 0.6878 & 0.3893 & 0.3784 \\
+4 & 0.5447 & 0.7475 & 0.4450 & 0.4306 \\
+5 & 0.6809 & 0.7906 & 0.4846 & 0.4694 \\
+6 & 0.8170 & 0.8244 & 0.5155 & 0.4986 \\
+7 & 0.9532 & 0.8521 & 0.5408 & 0.5208 \\
+8 & 1.0894 & 0.8757 & 0.5622 & 0.5413 \\
+10 & 1.3617 & 0.9142 & 0.5972 & 0.5759 \\
+14 & 1.9064 & 0.9710 & 0.6487 & 0.6228 \\
+20 & 2.7234 & 1.0298 & 0.7022 & 0.6717 \\
+30 & 4.0851 & 1.0955 & 0.7624 & 0.7283 \\
+100 & 13.617 & 1.2871 & 0.9428 & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both right-hand columns are floating searches, and the $M_{\mathrm{circ}}$
+column is additionally a grid value on a $2600$-point $d$-grid and a
+$1400$-point $r$-grid, so it is a lower bound for the relaxation.  The $k=2$
+row shows the size of that artifact, $0.31018$ against the exactly known
+$0.310338$.  Their proximity suggests a small gap and gives no rigorous
+bracket.
+
+The certified floors themselves, as integers after rounding up, read as
+follows at $a=1$.
+
+\begin{center}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+$x$ & 0.40 & 0.45 & 0.50 & 0.55 & 0.60 & 0.63 & 0.65 & 0.70 \\
+\midrule
+corpus profile & 3 & 4 & 4 & 5 & 5 & 5 & 5 & 6 \\
+packing floor & 2 & 2 & 2 & 2 & 2 & 3 & 3 & 4 \\
+circle-slice floor & 3 & 4 & 6 & 8 & 10 & 12 & 14 & 18 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In one explicit-Euler floating replica with step $10^{-3}$ and a geometric grid
+of $40$ initial areas from $10^{-6}$ to $1$, the supremum of the hitting time
+falls from $0.89703$ with the packing floor to $0.65503$ with the certified
+circle-slice pairs, and to $0.63003$ if the relaxation's own linear-programming
+value replaces the certified pairs.  Shrinking the relaxation by the worst
+measured slack factor $1.045$ moves it only to $0.60703$.  These computations
+suggest a mechanism ceiling near $e^{-0.607}=0.545$; they prove no such
+ceiling, and they exclude neither a stronger arity bound nor a larger certified
+regime.
+
+Two smaller leaks in the present certificate are engineering.  The dual is
+restricted to $p$ radii, ten in quick mode and fourteen in full, which at
+$a=1$, $k=8$ costs about one per cent against the unrestricted family; the
+$a$-grid is coarse and rounded up, at a comparable cost.
+
+One sub-statement is genuinely open and is smaller than the parent problem.
+Determine $M_{\mathrm{circ}}(k,a)$ exactly, that is, maximise
+$\sum_j\lambda(d_j)$ subject to $d_j\ge d_{\mathrm{low}}$ and
+$\sum_jw(d_j,r)\le\pi$ for every $r>0$.  The optimiser's solution is a
+spread-out density in $d$, and it appears to grow like
+$(\pi/\sinh(D/2))\,c\log k$.  A closed form would determine the relaxation and
+clarify the geometry of the failure configuration.  How much it would improve
+the final threshold is unproved.

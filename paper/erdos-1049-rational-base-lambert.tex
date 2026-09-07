@@ -6,8 +6,8 @@
 % `tectonic erdos-1049-rational-base-lambert.tex` or `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{0ba585f632fbbbb43af2ee9532d4e83752af3f67}
+\renewcommand{\commitshort}{32545d77c4b5}
 \hypersetup{
   pdftitle={Irrationality of F(31/4) and the exact normalized Hankel order (Erdős Problem 1049)},
   pdfsubject={Erdős Problem Notes: Problem 1049},
@@ -139,6 +139,8 @@ is zero or one.  Its support in $[0,1)$ consists of
 \end{gathered}
 \]
 These are the intervals $\mathcal I$ used to define $J$.
+The zero-one values and this thirteen-interval support are
+\lloc{Erdos1049/PaperOmegaIndicatorR7.lean}{1297}.
 
 \paragraph{Integral polynomials and their degrees.}
 The source's polynomial inclusion is Lemma~7, display~(23).
@@ -238,6 +240,8 @@ Since $0\le1-\nu_\ell\le1$, it follows that
 \paragraph{Homogenisation.}
 Because $U_n,V_n$ are integral polynomials of degree at most $W_n$,
 $b^{W_n}U_n(a/b)$ and $b^{W_n}V_n(a/b)$ are integers.
+That integrality and the cleared linear-form identity it produces are
+\lloc{Erdos1049/PaperHomogenisationR7.lean}{61}.
 Moreover
 \[
 \begin{split}
@@ -249,6 +253,8 @@ Moreover
 The coefficient is negative under the theorem's hypothesis.  Thus positive
 integral linear forms in $F(a/b)$ tend to zero.  If $F(a/b)=r/s$ were rational,
 every such form would have absolute value at least $1/|s|$, a contradiction.
+The separation bound for a nonzero integral form at a rational target is
+\lloc{Erdos1049/TwoSelectorRemainderEscape.lean}{128}.
 \end{proof}
 
 \begin{corollary}\label{res:thirtyone-four}
@@ -373,12 +379,18 @@ otherwise the nonzero integer $L_n=-b_n$ would have absolute value less
 than $1$.  Thus $b_n/a_n$ is eventually a fixed rational $r$.  If
 $F(p)\ne r$ then $|L_n|\ge|F(p)-r|$; if $F(p)=r$ then $L_n=0$.  Both
 contradict the hypotheses, so $\sigma\le\delta$.
+The integer argument of this paragraph, from the two cross-product limits to
+the contradiction, is \lloc{Erdos1049/PaperRankTwoCapR7.lean}{123}.
 The homogenised logarithm satisfies
 \[
  \limsup_{n\to\infty} n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
  \le \delta\log b-\sigma\log(a/b),
 \]
-which is negative on the stated sufficient region.  The conclusion bounds the
+which is negative on the stated sufficient region.
+The arithmetic form of that region is
+\lloc{Erdos1049/PaperRankTwoCapR7.lean}{144}, and the final numerical clause is
+\lloc{Erdos1049/PaperRankTwoCapR7.lean}{155}.
+The conclusion bounds the
 sufficient cutoff furnished by the displayed degree estimate.  An exclusion for a
 particular family requires its actual degree and remainder asymptotics.
 \end{proof}
@@ -480,28 +492,6 @@ Neither fact supplies a denominator factor for the 2004 polynomial forms.
 \section{Local cancellation and the remaining real estimate}
 \label{sec:open}
 
-\begin{theorem}[no corridor at base $3/2$]\label{res:nocorridor}
-For all $N\ge1$ and $K\ge1$ and all natural $Q,D$, the tuple
-$(3,2,N,K,Q,D)$ is not a coordinatewise corridor.
-\end{theorem}
-
-\begin{theorem}[cleared-tail recurrence]\label{res:tailrec}
-Let $r,s,B,F\in\Q$ with $r\ne0$, let $c:\N\to\Q$, and let $P_N$ and $U_N$ be
-the cleared tail state.  Then for every $N$,
-\[
- U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
-\]
-\end{theorem}
-
-\begin{theorem}[the forcing term]\label{res:forcing}
-Let $s,B$ be natural numbers and $c:\N\to\N$, and put
-$G_N=B\,c(N+1)\,s^{\,N+1}$.
-\begin{enumerate}
-\item If $s\ge2$, $B\ge1$ and $c(N+1)\ge1$, then $2^{\,N+1}\le G_N$.
-\item If $s=1$, then $G_N=B\,c(N+1)$.
-\end{enumerate}
-\end{theorem}
-
 Fix a common width $W$.  For $P\in\Z[X]$ of degree at most $W$, write
 \[
  H_W(P)=2^WP(3/2)=\sum_{i=0}^W[P]_i3^i2^{W-i}.
@@ -544,6 +534,8 @@ of the four cyclic-modulus cardinalities.  For \(R>0\),
  (3^R)^2(2^S)^2<(4^R)^2(2^S)^2=2^{4R+2S}\le2^M,
 \]
 which proves the stated sufficient threshold.
+The cardinality formula, the collision, the signed \(\{-1,0,1\}\) vector and
+the sufficient width are together \lloc{Erdos1049/PaperFiniteAssembliesR7.lean}{248}.
 \end{proof}
 
 The ambient count does not use relations between the two residue
@@ -577,6 +569,8 @@ at most $2^S3^R$ values.  Finally
  2^S3^R<2^S4^R=2^{S+2R}\le2^k,
 \]
 and pigeonhole gives the two selectors.
+The ring-generic minor collapse and the modular selector collision are
+together \lloc{Erdos1049/PaperFiniteAssembliesR7.lean}{269}.
 \end{proof}
 
 Primitive integer rows are unimodular modulo every modulus.  A particular
@@ -747,87 +741,16 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 
 
 \appendix
-\section{Guide to the formal sources}\label{app:index}
+\section{Formal source boundary}\label{app:index}
 
-Each linked phrase opens its Lean declaration at the pinned source
-revision~\commitshort.  The declarations of this note live in seven modules:
-\texttt{RationalBaseLambert}, \texttt{QAperyDiagonalNonEquivalence},
-\texttt{RationalPadeArithmetic}, \texttt{ZudilinConeArithmetic},
-\texttt{ZudilinHeightRegion}, \texttt{HermitePadeNoGo}, and
-\texttt{BezoutPluckerJets}.  The first contains
-the corridor, cleared-tail recurrence, and elementary $7/2$ certificate; the
-second checks the finite $n=0$ diagonal residual; the remaining four separate
-the Pad\'e exponent arithmetic, endpoint arithmetic, logarithmic comparisons,
-rectangular exponent model, and B\'ezout--Pl\"ucker tail collapse.  The link
-coordinates are validated against that pinned revision, so they remain correct
-as later work moves lines in the working tree.
-
-% The linked source manifest is retained in the authored TeX for automated
-% validation, and kept outside the printed note.
-\iffalse
-
-\begin{tabular}{@{}ll@{}}
-informal statement & linked Lean source\\
-Van Assche diagonal initial values & \lrefx{Erdos1049/QAperyDiagonalNonEquivalence.lean}{33}{vanAsscheDiagonal_initial_values}\\
-exact $n=0$ residual factorisation & \lrefx{Erdos1049/QAperyDiagonalNonEquivalence.lean}{67}{vanAsscheQAperyResidualAtZero_eq}\\
-nonzero $n=0$ residual for $p>1$ & \lrefx{Erdos1049/QAperyDiagonalNonEquivalence.lean}{94}{vanAsscheQAperyResidualAtZero_ne_zero}\\
-corridor predicate & \lrefx{Erdos1049/RationalBaseLambert.lean}{113}{CoordinatewiseCorridor}\\
-corridor bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{121}{coordinatewiseCorridor_implies_pow_lt_linear}\\
-exponential comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{142}{three_mul_lt_two_pow_succ}\\
-no corridor at $3/2$ & \lrefx{Erdos1049/RationalBaseLambert.lean}{155}{threeHalves_no_coordinatewiseCorridor}\\
-rational-base prefix & \lrefx{Erdos1049/RationalBaseLambert.lean}{168}{rationalBasePrefixQ}\\
-prefix step & \lrefx{Erdos1049/RationalBaseLambert.lean}{173}{rationalBasePrefixQ_succ}\\
-cleared tail state & \lrefx{Erdos1049/RationalBaseLambert.lean}{181}{rationalBaseClearedTailQ}\\
-cleared-tail recurrence & \lrefx{Erdos1049/RationalBaseLambert.lean}{187}{rationalBaseClearedTailQ_succ}\\
-forcing magnitude & \lrefx{Erdos1049/RationalBaseLambert.lean}{198}{rationalBaseForcingNat}\\
-exponential lower bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{204}{twoPow_le_rationalBaseForcingNat}\\
-integer-base collapse & \lrefx{Erdos1049/RationalBaseLambert.lean}{218}{rationalBaseForcingNat_one}\\
-integer power comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{32}{sevenHalves_power_certificate}\\
-exact rational boundary & \lrefx{Erdos1049/RationalBaseLambert.lean}{36}{sevenHalves_rational_margin}\\
-logarithmic ratio bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{48}{sevenHalves_log_ratio_lt}\\
-$\pi$ reciprocal-square bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{64}{one_div_pi_sq_lt_one_nine}\\
-strict source margin & \lrefx{Erdos1049/RationalBaseLambert.lean}{73}{sevenHalves_bundschuhVaananen_margin}\\
-complete $7/2$ height condition & \lrefx{Erdos1049/RationalBaseLambert.lean}{83}{sevenHalves_archimedean_height_condition}\\
-doubled common exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{19}{rationalPadeDenExpTwice}\\
-doubled summand exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{24}{rationalPadePSummandDenExpTwice}\\
-summand exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{30}{rationalPadePSummandDenExpTwice_le}\\
-doubled maximal exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{46}{rationalPadeQMaxDenExpTwice}\\
-exact gap identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{52}{rationalPadeQMaxDenExpTwice_gap}\\
-maximal exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{60}{rationalPadeQMaxDenExpTwice_le}\\
-Pad\'e error scaling & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{84}{rationalPadeError_mul}\\
-row-content determinant factorisation & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{94}{rationalPadeExteriorDet_mul_contents}\\
-absolute determinant scaling & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{104}{natAbs_rationalPadeExteriorDet_mul_contents}\\
-content-product divisibility & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{116}{contentProduct_dvd_rationalPadeExteriorDet}\\
-exterior determinant identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{124}{rationalPadeExteriorDet_cast_eq}\\
-homogeneous endpoint evaluation & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{98}{homEvalThreeTwo}\\
-four-jet target cardinality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{131}{fourJetSignature_card}\\
-four-jet pigeonhole kernel & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{142}{exists_distinct_binary_selectors_same_fourJet}\\
-rank--depth collision threshold & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{161}{exists_distinct_binary_selectors_same_fourJet_of_rank}\\
-bottom-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{191}{bottomJet3_eq_zero_iff_dvd}\\
-top-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{197}{topJet2_eq_zero_iff_dvd}\\
-bottom endpoint modulo three & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{203}{homEvalThreeTwo_mod_three}\\
-generic homogeneous evaluation & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{221}{homEval}\\
-left endpoint congruence & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{226}{homEval_mod_left}\\
-right endpoint congruence & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{238}{homEval_mod_right}\\
-left endpoint coprimality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{254}{homEval_isCoprime_left_of_const_unit}\\
-right endpoint coprimality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{270}{homEval_isCoprime_right_of_top_unit}\\
-two-endpoint coprimality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{286}{homEval_isCoprime_mul_of_endpoint_units}\\
-cyclotomic endpoint coprimality (Proposition~3.6) & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{302}{cyclotomicHomEval_isCoprime_mul}\\
-top endpoint modulo two & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{320}{homEvalThreeTwo_mod_two}\\
-unit constant endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{338}{three_not_dvd_homEvalThreeTwo_of_const_unit}\\
-unit top endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{356}{two_not_dvd_homEvalThreeTwo_of_top_unit}\\
-common-multiplier exclusion & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{398}{commonMultiplier_not_two_not_three_of_endpoint_units}\\
-irrationality-exponent inequality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{416}{twice_le_of_irrationalityExponent_bounds}\\
-three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{428}{three_two_scalar_margin_neg}\\
-$31/4$ logarithmic-region membership & \lrefx{Erdos1049/ZudilinHeightRegion.lean}{45}{thirtyoneFour_mem_zudilinHeightRegion}\\
-positive-power membership & \lrefx{Erdos1049/ZudilinHeightRegion.lean}{59}{thirtyoneFour_power_mem_zudilinHeightRegion}\\
-$31/4$ outside the earlier region & \lrefx{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}\\
-$81/200$ below the $3/2$ log ratio & \lrefx{Erdos1049/ZudilinHeightRegion.lean}{105}{eightyOneTwoHundredths_lt_threeHalves_log_ratio}\\
-$3/2$ outside the $81/200$ region & \lrefx{Erdos1049/ZudilinHeightRegion.lean}{122}{threeHalves_outside_zudilinHeightRegion}\\
-rectangular exponent-model bound & \lrefx{Erdos1049/HermitePadeNoGo.lean}{103}{rectangular_hp_threshold_le_classical}\\
-equality case for the exponent model & \lrefx{Erdos1049/HermitePadeNoGo.lean}{126}{rectangular_hp_threshold_eq_classical_iff}\\
-\end{tabular}
-\fi
+The rational-base specialisation and the formal moment proof are ordinary
+arguments.  Selected finite algebraic statements have Lean~4 formal proofs
+against Mathlib.  The finite signature-and-bin statement used here is
+\lword{Erdos1049/QuantitativeSelectorEscape.lean}{79}{exists_small_real_escape_of_conditional_multiplicity}{linked at revision \commitshort}.
+Its source-specific multiplicity and real-bin estimates remain hypotheses.
+The mathematical statements and their source-to-series identifications
+remain separate verification obligations.  The complete source inventory and
+failure witnesses are retained in the long record.
 
 \begin{thebibliography}{99}
 \small
