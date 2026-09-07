@@ -1,1 +1,0 @@
-{"status": "pass", "identities": ["circle norm defect", "quadratic inverse discriminant", "critical Wronskian"], "evidence": "exact symbolic polynomial identities, not Lean compilation"}

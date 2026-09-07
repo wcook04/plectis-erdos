@@ -7,8 +7,8 @@
 % Build from the public paper directory with `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{32545d77c4b5cfd72ebd36c8dcd2418bf7cc4d31}
-\renewcommand{\commitshort}{32545d77c4b5}
+\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
+\renewcommand{\commitshort}{99f4bf47422a}
 \usepackage{longtable}
 \hypersetup{
   pdftitle={Two incomparable denominator exclusions for the sum of reciprocals of n!-1 (Erdős Problem 68)},
@@ -32,6 +32,14 @@
 \begin{document}
 \maketitle
 \noteprovenance
+
+\begin{problem}[Erd\H{o}s \#68]\label{res:problem}
+Is
+\[
+  \Ser=\sum_{n\ge2}\frac1{n!-1}
+\]
+irrational?
+\end{problem}
 
 \begin{abstract}
 Every rational representation $S=a/q$, $q>0$, of
@@ -346,6 +354,27 @@ are already divisible by $g$.  Thus $g$ divides the entire tail.
 Bertrand's postulate supplies $\ell$ for $D\ge3$; take $\ell=2$ for $D=2$.
 Finally $H\le D(2D-1)<2D^2$.
 \end{proof}
+
+\begin{theorem}[quotient-band breakpoint]
+\label{res:bandbreakpoint}
+Under the band hypothesis,
+\[
+  M=(d!)^k C_d.
+\]
+In particular, in the first band $d\le i_j<2d$, channel cancellation
+$C_d=0$ forces $M=0$.  If all indices are at least $d$, channel cancellation
+and $M\ne0$ therefore force at least one index $i_j\ge2d$.
+\end{theorem}
+
+\noindent The exact factorisation is checked for every quotient band at
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{71}{factorialMoment_eq_factorial_pow_mul_channelNumerator_band}{the band identity},
+and its zero-channel consequence is
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{91}{factorialMoment_eq_zero_of_channelNumerator_eq_zero_band}{band cancellation}.
+The first-band form is explicit at
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{101}{factorialMoment_eq_factorial_mul_channelNumerator_firstBand}{first-band factorisation};
+the final breakpoint alternative is
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{130}{exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero}{breakpoint witness}.
+
 The earlier envelope $\Lambda_n=\operatorname{lcm}(1,\ldots,n)\mid u_n$
 \label{eq:channel-lcm-envelope}
 remains useful for other certificates.  Finite-source checks can end sooner
@@ -627,6 +656,103 @@ of the remaining hypothesis.  The complete source register, receipts and
 failed-route calculations belong to the long record.
 
 \par\endgroup
+\appendix
+\section{Guide to the formal sources}\label{app:sources}
+
+The public \texttt{ErdosProblems.Erdos68} package contains the checked source
+for this note.  The pinned snapshot contains fifteen cited modules:
+\texttt{AdjacentUnitCarryWindow},
+\texttt{CanonicalFactorialDigits},
+\texttt{ChannelBreakpointRigidity},
+\texttt{ChannelIntegralCongruence},
+\texttt{DivisorFactorialCentre},
+\texttt{EndpointWeightedPrivateSupport},
+\texttt{FactorialCarry},
+\texttt{FactorialChannelCertificate},
+\texttt{FactorialZeroPlateau},
+\texttt{FiniteDefectAutomaton},
+\texttt{GapScalarNormalForm},
+\texttt{PrimeThresholdParity},
+\texttt{PrimeUnitTranslator},
+\texttt{PrimeZeroBranch}, and
+\texttt{StrictSuccessorArithmetic}.
+Only these public modules belong to the manuscript source surface; no private
+auxiliary digit-rigidity file is cited or projected.  The public root imports
+every cited module.  The declaration table below is
+pinned to the shared formal-source commit used throughout this problem-note
+series.
+
+\begin{itemize}[leftmargin=*]
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{148}{consecutive_unit_carries_iff_positive_offset_le_den}
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{215}{twoStep_den_mul_transitionNormalizers}
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{243}{adjacentUnitCarryWindowDen_eq_twoStep_den}
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{337}{adjacentUnitCarryWindowOffset_eq_twoStep_reducedNumerator}
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{876}{rational_denominator_ge_of_nonunit_carry}
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{940}{sixty_seven_le_rational_denominator}
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{1090}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{953}{irrational_factorialGapSeries_of_cofinal_nonunit_carries}
+\item \lref{Erdos68/PrimeZeroBranch.lean}{6099}{factorialGap_zero_branch_iff_lower_endpoint_cylinder}
+\item \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4766}{factorialBlock_unitFactorPairFloor_scale_iff}
+\item \lref{Erdos68/PrimeUnitTranslator.lean}{1559}{exists_cramerFactorialGridResidual_eq_det_mul_factorialGapSeries_add_int}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{34}{residualCentreTerm}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{39}{factorialCoeffTerm}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{44}{residualCentre}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{49}{factorialCoeffRat}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{80}{factorial_eq_mul_pred_factorial}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{88}{pred_div_eq_of_not_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{102}{pred_div_add_one_eq_of_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{129}{residualCentreTerm_of_not_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{146}{residualCentreTerm_of_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{170}{residualCentreTerm_self}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{179}{factorialCoeffTerm_self}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{188}{residualCentre_recurrence}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{25}{factorial_pow_floor_dvd_factorial}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{39}{channelWeight}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{43}{channelWeight_mul_denominator}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{51}{channelNumerator}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{55}{factorialMoment}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{59}{channelEvent}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{65}{channelEvent_eq_zero_of_not_dvd}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{101}{lambda34}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{105}{lambda34_apply_three}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{109}{lambda34_apply_four}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{112}{lambda34_channel_two}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{119}{lambda34_factorialMoment}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{126}{lambda34_channel_three}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{133}{lambda34_channel_four}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{140}{lambda34_channel_ge_five}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{151}{lambda34ResidualOfTail}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{156}{lambda34_residual_bounds}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{868}{square_subsequence_radius_cubic_lower}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{885}{no_eventual_square_subsequence_cubic_upper}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{905}{not_isLittleO_square_subsequence_radius}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1084}{square_subsequence_radius_three_halves_lower}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1103}{no_eventual_square_subsequence_three_halves_upper}
+\end{itemize}
+
+\begingroup
+\raggedright
+\paragraph{Source-current companion orbit and Comparator routes.}
+The complete infinite rationality boundary is checked in
+\path{ErdosProblems/Erdos68/CompanionOrbitRationality.lean}.  Its paper-facing
+endpoints are
+\path{not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two}
+and
+\path{irrational_factorialGapSeries_iff_cofinal_companion_floor_misses}.
+The coherent Comparator composite
+\path{companionOrbit_completeCharacterization} routes to
+Theorem~\ref{res:companion-orbit-rationality-boundary} and
+Remark~\ref{bdry:companion-orbit-nonconcentration}.  The moving-factor
+Comparator endpoints route to \ref{res:moving-factor-scale-split},
+\ref{res:split-factor-normalized-collision}, and
+\ref{bdry:fixed-owner-absorption}.  These source-current modules, Comparator
+packages, and this manuscript stage require one common immutable public
+checkpoint before terminal external replay or Palomar readiness is claimed.
+\par
+\endgroup
+
+\clearpage
+
 \begin{thebibliography}{9}
 \small
 \raggedright

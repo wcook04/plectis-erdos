@@ -12,8 +12,8 @@
 \documentclass[11pt]{article}
 \usepackage{longtable}
 \input{problem-note-preamble}
-\renewcommand{\commit}{32545d77c4b5cfd72ebd36c8dcd2418bf7cc4d31}
-\renewcommand{\commitshort}{32545d77c4b5}
+\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
+\renewcommand{\commitshort}{99f4bf47422a}
 \hypersetup{
   pdftitle={Sharp solved families and constant-factor paths in polynomial lemniscates for Erdős Problem 1041},
   pdfsubject={Erdős Problem Notes: Problem 1041},
@@ -1149,36 +1149,35 @@ priority claim is inferred from this comparison.
 \appendix
 \section{Guide to the formal sources}\label{app:sources}
 
-The root-spoke inequality used in Theorem~\ref{res:trinomial-all-degree} is
-\lword{Erdos1041/CyclicTrinomialFiberCase.lean}{103}
-{trinomialRoot_spoke_norm_lt_one_of_norm_lt_one}{the all-root trinomial spoke theorem}.
-The ordinary proof supplies Vieta's hypothesis and concatenates the segments.
-The finite convex identity is in
-\path{ErdosProblems/Erdos1041/AbelControlPolygon.lean}.
+The public \texttt{ErdosProblems.Erdos1041.NewtonFlowRaySeparation} module
+contains the checked source for this note.  The search of \S\ref{sec:finite} is
+\texttt{scripts/search\_counterexample.py} in the source package.  The
+declaration table below is pinned to the shared formal-source commit used
+throughout this problem-note series.
 
-The proximity selector, cubic and quintic selectors, and Chebyshev alternation
-kernels are in
-\path{CriticalTwoRootProximity.lean},
-\path{CubicQuotientFiberCase.lean},
-\path{PrimitiveQuinticBoundaryTail.lean},
-\path{PrimitiveQuinticInteriorTail.lean} and
-\path{SharpCollinearChebyshev.lean}, all under
-\path{ErdosProblems/Erdos1041/}.
-Their finite statements and the ordinary geometric assemblies are distinguished
-in the corresponding proofs and the long record.
-
-The complete ordinary analyses are located in
-\path{AngularBudgetLowCriticalClosure.md},
-\path{UnconditionalConstantFactorBound.md},
-\path{DiskFamilyCriticalValueSeparation.md},
-\path{FreePointQuadraticAllDegrees.md},
-\path{AttachmentAgeLifetimeOrlicz.md},
-\path{AttachmentAwareReeb.md} and
-\path{GenericSufficiencyClosure.md} in the same directory.
-The first includes the full-mode rational checker; the other files identify
-any finite formal kernels separately from their analytic arguments.
-The complete declaration and source-generation inventories remain in the
-long record.  No new formal verification is asserted by these pointers.
+\begin{itemize}[leftmargin=*]
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{34}{newtonFlowVector}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{38}{derivative_mul_newtonFlowVector}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{77}{SamePositiveRay}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{80}{samePositiveRay_refl}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{84}{samePositiveRay_symm}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{92}{samePositiveRay_trans}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{107}{translated_samePositiveRay_parameterization}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{127}{realAffineLine}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{130}{realAffineLine_eq_affineSpan}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{147}{isClosed_realAffineLine}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{152}{dense_compl_realAffineLine}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{162}{exists_small_avoiding_finite_realAffineLines}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{179}{samePositiveRay_imp_mem_realAffineLine}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{197}{exists_small_translation_separating_arguments}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{230}{norm_lt_one_of_near_root}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{257}{constant_perturbation_root_near_original}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{287}{constant_perturbation_roots_in_unitDisk}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{306}{samePositiveRay_of_real_exp_decay}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}
+\end{itemize}
 
 \begin{thebibliography}{10}
 \bibitem{bloom} T.~F. Bloom, \emph{Erd\H{o}s Problems}, problem~1041.
