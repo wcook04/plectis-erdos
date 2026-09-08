@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041CubicRootCount.Challenge",
+  "solution_module": "NegativeSolutions.ExternalVerification1041CubicRootCount",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041CubicRootCount.cubic_root_count"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

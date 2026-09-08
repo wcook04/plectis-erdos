@@ -1,0 +1,30 @@
+version: v0.4
+project:
+  name: Weighted LCM record excess characterizes eventual Sylvester recurrence
+  description: Under rational reciprocal sum and quadratic ratio limit, eventual Sylvester
+    recurrence is equivalent to summability of weighted excess at actual LCM numerator
+    records for some nonnegative baseline.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+sources:
+- title: Canonical weighted record criterion
+  location: ErdosProblems/Erdos243/PaperCompleteR8/CanonicalWeightedRecords.lean
+  declaration: ErdosProblems.Erdos243.PaperCompleteR8.canonical_weighted_record
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Mathlib-only independent LCM state definitions and full paper hypotheses;
+      source transport. Wrapper compile pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoint compiled and axiom-audited; wrapper and Comparator unchecked.
+status:
+  scope: Weighted-record equivalence; original rationality-to-recurrence problem remains
+    open.
+  novelty_status: unassessed
+  canonical_claim_status: source audited; wrapper compile pending

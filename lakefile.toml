@@ -97,3 +97,42 @@ srcDir = "residualbench"
 [[lean_lib]]
 name = "ExternalVerification1041SolvedFamilies"
 globs = ["ExternalVerification1041SolvedFamilies.*"]
+
+[[lean_lib]]
+name = "ExternalVerification1041CubicRootCount"
+globs = ["ExternalVerification1041CubicRootCount.+"]
+
+
+[[lean_lib]]
+name = "ExternalVerification1041CubicPath"
+globs = ["ExternalVerification1041CubicPath.+"]
+
+
+[[lean_lib]]
+name = "ExternalVerification249TotientKernelBasis"
+globs = ["ExternalVerification249TotientKernelBasis.+"]
+
+
+[[lean_lib]]
+name = "ExternalVerification68FiniteDenominator"
+globs = ["ExternalVerification68FiniteDenominator.+"]
+
+
+[[lean_lib]]
+name = "ExternalVerification243WeightedRecordExcess"
+globs = ["ExternalVerification243WeightedRecordExcess.+"]
+
+
+[[lean_lib]]
+name = "ExternalVerification1049ArchimedeanCap"
+globs = ["ExternalVerification1049ArchimedeanCap.+"]
+
+
+[[lean_lib]]
+name = "Solutions"
+globs = ["Solutions.+"]
+
+
+[[lean_lib]]
+name = "NegativeSolutions"
+globs = ["NegativeSolutions.+"]

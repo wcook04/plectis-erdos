@@ -1,0 +1,30 @@
+version: v0.4
+project:
+  name: A finite denominator exclusion for the factorial-gap series
+  description: Every positive-denominator rational representation of sum n>=2 1/(n!-1)
+    has denominator at least 2^39990 and greater than 10^12040.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+sources:
+- title: Kernel checked finite size certificate
+  location: ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean
+  declaration: ErdosProblems.Erdos68.PaperComplete.FiniteLead.SizeOnly.denominator_exclusion
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct projection of audited source
+      endpoint. Wrapper compile pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoint compiled and axiom-audited; wrapper has not yet compiled
+    or run Comparator.
+status:
+  scope: One finite denominator lower bound; no irrationality or factorial-divisibility
+    exclusion.
+  novelty_status: unassessed
+  canonical_claim_status: source audited; wrapper compile pending

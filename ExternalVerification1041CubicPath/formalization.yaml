@@ -1,0 +1,41 @@
+version: v0.4
+project:
+  name: A short polygonal connector for cubic roots in the open unit disc
+  description: For p equal to the product of three linear factors with all three listed
+    roots in the open unit disc, two distinct root indices admit an explicit two-segment
+    hub path contained in the open unit lemniscate, with actual extended variation
+    less than two. The path is continuous and of bounded variation. Squarefreeness
+    guarantees distinct endpoint values; repeated-root indices may give a constant
+    path. No general-degree claim is made.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+sources:
+- title: Complete cubic polygonal connector
+  location: ErdosProblems/Erdos1041/PaperCubicCompletion.lean
+  declaration: ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete
+  relationship: other
+- title: Two-segment path and actual variation
+  location: ErdosProblems/Erdos1041/PaperCurveAssembly.lean
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge and direct source transport; focused
+      Lean elaboration and axiom audit passed on 2026-09-08. Supported-runner Comparator
+      replay has not run.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Local focused Lean build and selected-declaration axiom audit passed on 2026-09-08
+    (wave09). The audit reports only propext, Classical.choice and Quot.sound. No
+    human mathematical review or Comparator verdict is claimed.
+status:
+  scope: degree three, roots strictly in the unit disc, distinct indices; endpoint
+    distinctness under Squarefree
+  local_proof_provenance: ErdosProblems/Erdos1041/PaperCubicCompletion.lean
+  canonical_claim_status: wrapper compiled and selected theorem axiom-audited; Comparator
+    replay pending
+  novelty_status: unassessed

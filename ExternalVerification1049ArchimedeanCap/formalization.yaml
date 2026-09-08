@@ -1,0 +1,30 @@
+version: v0.4
+project:
+  name: An Archimedean cap for polynomial approximants
+  description: Quadratic degree, height and exact remainder rates imply the half cap
+    and rational-base cleared-form decay in the strict logarithmic region.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+sources:
+- title: Short-note Archimedean cap
+  location: ErdosProblems/Erdos1049/PaperShortCapR9.lean
+  declaration: ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only flat hypotheses; source theorem transport.
+      Wrapper compile pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoint compiled and axiom-audited; wrapper and Comparator remain
+    unchecked.
+status:
+  scope: Conditional cap and strict-region decay; no polynomial supplier or irrationality
+    theorem.
+  novelty_status: unassessed
+  canonical_claim_status: source audited; wrapper compile pending

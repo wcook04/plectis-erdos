@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243WeightedRecordExcess.Challenge",
+  "solution_module": "NegativeSolutions.ExternalVerification243WeightedRecordExcess",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243WeightedRecordExcess.weighted_record_excess"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

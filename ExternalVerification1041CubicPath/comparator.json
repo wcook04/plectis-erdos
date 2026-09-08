@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041CubicPath.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041CubicPath",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041CubicPath.cubic_paper_complete"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

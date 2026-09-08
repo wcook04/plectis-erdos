@@ -1,0 +1,39 @@
+version: v0.4
+project:
+  name: Two roots of a normalized cubic in the closed unit disc
+  description: For every complex b with norm(1 - b^3/2) at least one, z^3 - (3/2)b
+    z^2 + 1 has two distinct roots of norm at most one. The condition includes equality.
+    This is a normalized cubic root-count statement; it asserts no path, path-length
+    bound, or general-degree theorem.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+sources:
+- title: Normalized cubic root count by an algebraic Schur argument
+  location: ErdosProblems/Erdos1041/PaperCubicSchur.lean
+  declaration: ErdosProblems.Erdos1041.PaperCubicSchur.cubic_root_count
+  relationship: other
+- title: Exact normalized cubic target
+  location: ErdosProblems/Erdos1041/PaperAnalyticTargets.lean
+  declaration: ErdosProblems.Erdos1041.PaperAnalyticTargets.CubicRootCount
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge and direct source transport; focused
+      Lean elaboration and axiom audit passed on 2026-09-08. Supported-runner Comparator
+      replay has not run.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Local focused Lean build and selected-declaration axiom audit passed on 2026-09-08
+    (wave08). The audit reports only propext, Classical.choice and Quot.sound. No
+    human mathematical review or Comparator verdict is claimed.
+status:
+  scope: normalized cubic root count only
+  local_proof_provenance: ErdosProblems/Erdos1041/PaperCubicSchur.lean
+  canonical_claim_status: wrapper compiled and selected theorem axiom-audited; Comparator
+    replay pending
+  novelty_status: unassessed

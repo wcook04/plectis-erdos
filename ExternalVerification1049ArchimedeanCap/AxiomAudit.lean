@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049ArchimedeanCap
+
+#print axioms Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap

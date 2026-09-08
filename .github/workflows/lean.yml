@@ -803,3 +803,131 @@ jobs:
       - name: Test semantic licence map
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_license_map_contract.py
+
+  external-verification-focused:
+    name: Focused Comparator (${{ matrix.entry }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        entry:
+        - ExternalVerification1041CubicRootCount
+        - ExternalVerification1041CubicPath
+        - ExternalVerification249TotientKernelBasis
+        - ExternalVerification68FiniteDenominator
+        - ExternalVerification243WeightedRecordExcess
+        - ExternalVerification1049ArchimedeanCap
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        fetch-depth: 0
+        filter: blob:none
+        persist-credentials: false
+    - name: Install the pinned Python runtime
+      uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      with:
+        python-version: 3.12.9
+    - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+      with:
+        go-version: 1.24.12
+        cache: false
+    - name: Install pinned Lean toolchain
+      env:
+        ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
+        ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+      run: 'set -euo pipefail
+
+        archive="$RUNNER_TEMP/elan-x86_64-unknown-linux-gnu.tar.gz"
+
+        installer_dir="$RUNNER_TEMP/elan-installer"
+
+        mkdir -p "$installer_dir"
+
+        curl --fail --location --proto ''=https'' --tlsv1.2 --output "$archive" "$ELAN_ARCHIVE_URL"
+
+        printf ''%s  %s\n'' "$ELAN_ARCHIVE_SHA256" "$archive" | sha256sum --check -
+
+        tar --extract --gzip --file "$archive" --directory "$installer_dir"
+
+        "$installer_dir/elan-init" -y --default-toolchain none --no-modify-path
+
+        "$HOME/.elan/bin/elan" toolchain install "$(tr -d ''\r\n'' < lean-toolchain)"
+
+        echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+        '
+    - name: Fetch pinned project dependencies
+      run: lake exe cache get
+    - name: Build pinned Comparator toolchain
+      id: tools
+      env:
+        COMPARATOR_REV: 68a064109f01c08f47c8edc9f51d6a2bbffaa188
+        LEAN4EXPORT_REV: 6f4e21dd70c3c11d7fbd07d39e3192792c657448
+        LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+        NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
+      run: 'set -euo pipefail
+
+        git clone --filter=blob:none https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
+
+        git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"
+
+        test "$(git -C "$RUNNER_TEMP/comparator" rev-parse HEAD)" = "$COMPARATOR_REV"
+
+        (cd "$RUNNER_TEMP/comparator" && lake build comparator)
+
+        git clone --filter=blob:none https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
+
+        git -C "$RUNNER_TEMP/lean4export" checkout --detach "$LEAN4EXPORT_REV"
+
+        test "$(git -C "$RUNNER_TEMP/lean4export" rev-parse HEAD)" = "$LEAN4EXPORT_REV"
+
+        test "$(tr -d ''[:space:]'' < lean-toolchain)" = "$(tr -d ''[:space:]'' < "$RUNNER_TEMP/lean4export/lean-toolchain")"
+
+        (cd "$RUNNER_TEMP/lean4export" && lake build lean4export)
+
+        git clone --filter=blob:none https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
+
+        git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
+
+        test "$(git -C "$RUNNER_TEMP/landrun-src" rev-parse HEAD)" = "$LANDRUN_REV"
+
+        (cd "$RUNNER_TEMP/landrun-src" && go build -o "$RUNNER_TEMP/landrun" cmd/landrun/main.go)
+
+        echo "comparator_rev=$COMPARATOR_REV" >> "$GITHUB_OUTPUT"
+
+        echo "lean4export_rev=$LEAN4EXPORT_REV" >> "$GITHUB_OUTPUT"
+
+        echo "landrun_rev=$LANDRUN_REV" >> "$GITHUB_OUTPUT"
+
+        echo "comparator_lean_toolchain=$(tr -d ''\r\n'' < "$RUNNER_TEMP/comparator/lean-toolchain")" >> "$GITHUB_OUTPUT"
+
+
+        git clone --filter=blob:none https://github.com/robsimmons/nanoda_lib.git "$RUNNER_TEMP/nanoda"
+
+        git -C "$RUNNER_TEMP/nanoda" checkout --detach "$NANODA_REV"
+
+        test "$(git -C "$RUNNER_TEMP/nanoda" rev-parse HEAD)" = "$NANODA_REV"
+
+        (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked)
+
+        '
+    - name: Run exact positive and deliberate statement mismatch
+      env:
+        ENTRY: ${{ matrix.entry }}
+        EXPECTED_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      run: bash scripts/run-focused-comparator.sh
+    - name: Retain commit-bound replay evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      with:
+        name: comparator-${{ matrix.entry }}-${{ github.event.pull_request.head.sha || github.sha }}
+        path: artifacts/
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only'
+      }}
+    env:
+      GOTOOLCHAIN: local

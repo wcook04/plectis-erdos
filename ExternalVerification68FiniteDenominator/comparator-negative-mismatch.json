@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification68FiniteDenominator.Challenge",
+  "solution_module": "NegativeSolutions.ExternalVerification68FiniteDenominator",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68FiniteDenominator.finite_denominator_exclusion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

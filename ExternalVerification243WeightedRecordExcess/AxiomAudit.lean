@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243WeightedRecordExcess
+
+#print axioms Erdos249257.ExternalVerification243WeightedRecordExcess.weighted_record_excess

@@ -14,6 +14,9 @@
 -- Keep the reviewed finite `t ≤ 82` certificate band inside the supported
 -- root closure, so a clean root build re-elaborates its proof authority.
 
+import ErdosProblems.Erdos1049.PaperNoDecayR9
+import ErdosProblems.Erdos1041.PaperCubicMonic
+import ErdosProblems.Erdos1041.FreePointCentralCompletion
 import ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate
 import ErdosProblems.Erdos243.PaperCompleteR8.CanonicalWeightedRecords
 import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049ArchimedeanCap.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049ArchimedeanCap",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
