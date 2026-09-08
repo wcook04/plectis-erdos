@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041CentralFreePoint
+
+#print axioms Erdos249257.ExternalVerification1041CentralFreePoint.central_free_point_mean

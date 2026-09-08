@@ -1,8 +1,7 @@
 {
   "challenge_module": "ExternalVerification1041CubicPath.Challenge",
-  "solution_module": "Solutions.ExternalVerification1041CubicPath",
+  "solution_module": "NegativeSolutions.ExternalVerification1041CubicPathMonic",
   "theorem_names": [
-    "Erdos249257.ExternalVerification1041CubicPath.cubic_paper_complete",
     "Erdos249257.ExternalVerification1041CubicPath.monic_cubic_connector"
   ],
   "permitted_axioms": [

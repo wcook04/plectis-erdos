@@ -1,11 +1,10 @@
-# An Archimedean cap for polynomial approximants
+# Central free-point geometric mean in every positive degree
 
-Quadratic degree, height and exact remainder rates imply the half cap and rational-base cleared-form decay in the strict logarithmic region; the same all-base hypotheses exclude decay below the square boundary without a degree limit.
+For every positive number m of complex points of norm at most sqrt(1-exp(-2)), the sum of geometric row means of the factors norm(1-conj(c_j)*c_k) is at most m. The radius restriction is essential to this entry. No equality classification or full unit-disk claim is asserted.
 
 Selected declarations:
 
-- `Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap`
-- `Erdos249257.ExternalVerification1049ArchimedeanCap.cleared_below_square_not_tendsto_zero`
+- `Erdos249257.ExternalVerification1041CentralFreePoint.central_free_point_mean`
 
 Private wave21 elaboration and printed selected-declaration axiom checks passed with only `propext`, `Classical.choice`, and `Quot.sound`. This public projection still requires its own build and exact-selection positive and deliberate-mismatch Comparator replay.
 

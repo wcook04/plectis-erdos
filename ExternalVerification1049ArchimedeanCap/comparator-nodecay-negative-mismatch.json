@@ -1,8 +1,7 @@
 {
   "challenge_module": "ExternalVerification1049ArchimedeanCap.Challenge",
-  "solution_module": "Solutions.ExternalVerification1049ArchimedeanCap",
+  "solution_module": "NegativeSolutions.ExternalVerification1049ArchimedeanCapNoDecay",
   "theorem_names": [
-    "Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap",
     "Erdos249257.ExternalVerification1049ArchimedeanCap.cleared_below_square_not_tendsto_zero"
   ],
   "permitted_axioms": [

@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import ErdosProblems.Erdos1041.PaperCubicCompletion
+import ErdosProblems.Erdos1041.PaperCubicMonic
 
 namespace Erdos249257.ExternalVerification1041CubicPath
 
@@ -33,6 +34,24 @@ theorem cubic_paper_complete (p : ℂ[X]) (z : Fin 3 → ℂ)
     ErdosProblems.Erdos1041.PaperCurve.HubBelow,
     ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow] using
     (ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete p z hp hz)
+
+theorem monic_cubic_connector (p : ℂ[X]) (hm : p.Monic)
+    (hd : p.natDegree = 3) (hz : ∀ z : ℂ, p.eval z = 0 → ‖z‖ < 1) :
+    ∃ a b c : ℂ, p.eval a = 0 ∧ p.eval b = 0 ∧
+      Continuous (hub a c b) ∧
+      BoundedVariationOn (hub a c b) (Icc (0 : ℝ) 2) ∧
+      ((∀ t ∈ Icc (0 : ℝ) 2, ‖p.eval (hub a c b t)‖ < 1) ∧
+        eVariationOn (hub a c b) (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
+      (∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
+        γ 0 = a ∧ γ 2 = b ∧
+        (∀ t ∈ Icc (0 : ℝ) 2, ‖p.eval (γ t)‖ < 1) ∧
+        BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+        eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
+      (Squarefree p → a ≠ b) := by
+  simpa only [hub, ErdosProblems.Erdos1041.PaperCurve.hub,
+    ErdosProblems.Erdos1041.PaperCurve.HubBelow,
+    ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow] using
+    (ErdosProblems.Erdos1041.PaperCubicMonic.monic_cubic_connector p hm hd hz)
 
 end
 

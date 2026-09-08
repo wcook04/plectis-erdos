@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041CentralFreePoint.Challenge",
+  "solution_module": "NegativeSolutions.ExternalVerification1041CentralFreePoint",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041CentralFreePoint.central_free_point_mean"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

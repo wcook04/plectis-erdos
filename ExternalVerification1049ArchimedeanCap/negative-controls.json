@@ -1,0 +1,14 @@
+{
+  "schema": "focused-negative-controls/1",
+  "required_theorem_names": [
+    "Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap",
+    "Erdos249257.ExternalVerification1049ArchimedeanCap.cleared_below_square_not_tendsto_zero"
+  ],
+  "additional_controls": [
+    {
+      "id": "nodecay",
+      "theorem_name": "Erdos249257.ExternalVerification1049ArchimedeanCap.cleared_below_square_not_tendsto_zero",
+      "config_path": "ExternalVerification1049ArchimedeanCap/comparator-nodecay-negative-mismatch.json"
+    }
+  ]
+}

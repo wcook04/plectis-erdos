@@ -1,22 +1,19 @@
 version: v0.4
 project:
-  name: An Archimedean cap for polynomial approximants
-  description: Quadratic degree, height and exact remainder rates imply the half cap
-    and rational-base cleared-form decay in the strict logarithmic region; the same
-    all-base hypotheses exclude decay below the square boundary without a degree limit.
+  name: Central free-point geometric mean in every positive degree
+  description: For every positive number m of complex points of norm at most sqrt(1-exp(-2)),
+    the sum of geometric row means of the factors norm(1-conj(c_j)*c_k) is at most
+    m. The radius restriction is essential to this entry. No equality classification
+    or full unit-disk claim is asserted.
   authors:
   - Will Cook
   license: Apache-2.0
   responsible_maintainers:
   - Will Cook
 sources:
-- title: Short-note Archimedean cap
-  location: ErdosProblems/Erdos1049/PaperShortCapR9.lean
-  declaration: ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap
-  relationship: other
-- title: No decay below the square boundary
-  location: ErdosProblems/Erdos1049/PaperNoDecayR9.lean
-  declaration: ErdosProblems.Erdos1049.PaperR9.cleared_below_square_not_tendsto_zero
+- title: Central free-point completion from logarithmic energy and variance
+  location: ErdosProblems/Erdos1041/FreePointCentralCompletion.lean
+  declaration: ErdosProblems.Erdos1041.FreePointHilbertCertificate.geometric_row_mean_central_le
   relationship: other
 automation:
   methods:
@@ -32,8 +29,8 @@ review:
     printed only permitted propext, Classical.choice and Quot.sound axioms in private
     wave21. Elaboration is not Comparator replay.
 status:
-  scope: Conditional cap, strict-region decay and below-square failure of decay; no
-    polynomial supplier or irrationality theorem.
-  novelty_status: unassessed
+  scope: central-radius free-point inequality only, every positive finite cardinality
+  local_proof_provenance: ErdosProblems/Erdos1041/FreePointCentralCompletion.lean
   canonical_claim_status: private wrapper compiled and printed-axiom checked; public
     projection validation and exact-selection Comparator replay pending
+  novelty_status: unassessed

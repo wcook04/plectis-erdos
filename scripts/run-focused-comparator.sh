@@ -45,11 +45,18 @@ run_one() {
     -E "PALOMAR_LANDRUN_BIN=$PALOMAR_LANDRUN_BIN" -E "COMPARATOR_LANDRUN=$COMPARATOR_LANDRUN" \
     --working-directory="$PWD" -- bash -c 'exec lake env "$1" "$2"' comparator-replay "$comparator" "$1"
 }
+# Validate the complete control plan before any replay; no process-substitution
+# failure can silently turn a malformed policy into an empty control list.
+python3 scripts/focused_negative_controls.py --entry "$ENTRY" > artifacts/negative-controls.tsv
 set +e
 run_one "$ENTRY/comparator.json" > artifacts/positive.log 2>&1
 positive=$?
 run_one "$ENTRY/comparator-negative-mismatch.json" > artifacts/negative.log 2>&1
 negative=$?
+while IFS=$'\t' read -r control config; do
+  run_one "$config" > "artifacts/negative-$control.log" 2>&1
+  printf '%s\n' "$?" > "artifacts/negative-$control.exit"
+done < artifacts/negative-controls.tsv
 set -e
 python3 scripts/record_focused_comparator.py --entry "$ENTRY" --expected-commit "$EXPECTED_COMMIT" \
   --positive-exit "$positive" --negative-exit "$negative"

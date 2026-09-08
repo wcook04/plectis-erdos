@@ -1,7 +1,12 @@
-# A cubic polygonal connector
+# A short polygonal connector for cubic roots in the open unit disc
 
-A monic cubic is given by its three roots, counted with multiplicity, all strictly inside the unit disc. Two distinct indices admit an explicit two-segment path through a hub. Every point of this path lies in the open unit lemniscate, and its actual extended variation on [0,2] is less than two. The path is continuous and of bounded variation. Squarefreeness guarantees distinct endpoint values; repeated-root indices may yield a constant path.
+For p equal to the product of three linear factors with all three listed roots in the open unit disc, two distinct root indices admit an explicit two-segment hub path contained in the open unit lemniscate, with actual extended variation less than two. The path is continuous and of bounded variation. Squarefreeness guarantees distinct endpoint values; repeated-root indices may give a constant path. No general-degree claim is made.
 
-The Challenge imports only Mathlib. It writes the factorization hypothesis and curve conclusions explicitly and defines the hub by its two affine pieces. No root-count supplier, critical-value bound or path theorem is a hypothesis. The Solution unfolds the source curve definitions and transports `PaperCubicCompletion.cubic_paper_complete`.
+Selected declarations:
 
-This is a degree-three result with strict root containment. It claims neither the closed-disc boundary nor the general-degree problem. Novelty is unassessed. The focused wrapper build and axiom audit passed on 8 September 2026. The selected theorem uses only `propext`, `Classical.choice`, and `Quot.sound`. Supported-runner Comparator replay remains pending; no Palomar submission has been made.
+- `Erdos249257.ExternalVerification1041CubicPath.cubic_paper_complete`
+- `Erdos249257.ExternalVerification1041CubicPath.monic_cubic_connector`
+
+Private wave21 elaboration and printed selected-declaration axiom checks passed with only `propext`, `Classical.choice`, and `Quot.sound`. This public projection still requires its own build and exact-selection positive and deliberate-mismatch Comparator replay.
+
+The original six-package run at `3dda234b36251447c6587fdd23e6f13c9b2cd5bb` remains historical evidence for its original selections; it does not cover the new monic, NoDecay, or central theorem. No submission has been made for this selection.

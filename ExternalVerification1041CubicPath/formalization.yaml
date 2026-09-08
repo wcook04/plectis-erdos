@@ -13,6 +13,10 @@ project:
   responsible_maintainers:
   - Will Cook
 sources:
+- title: Monic cubic connector without a chosen root enumeration
+  location: ErdosProblems/Erdos1041/PaperCubicMonic.lean
+  declaration: ErdosProblems.Erdos1041.PaperCubicMonic.monic_cubic_connector
+  relationship: other
 - title: Complete cubic polygonal connector
   location: ErdosProblems/Erdos1041/PaperCubicCompletion.lean
   declaration: ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete
@@ -23,19 +27,20 @@ sources:
 automation:
   methods:
   - method: agent
-    tool_setup: Independent Mathlib-only challenge and direct source transport; focused
-      Lean elaboration and axiom audit passed on 2026-09-08. Supported-runner Comparator
-      replay has not run.
+    tool_setup: Independent Mathlib-only Challenge and canonical Solution transport.
+      Private wave21 focused elaboration and printed selected-declaration axiom checks
+      passed. Public projection build and Comparator replay for this expanded selection
+      remain pending.
 review:
   status: unchecked
   reviewers: []
-  notes: Local focused Lean build and selected-declaration axiom audit passed on 2026-09-08
-    (wave09). The audit reports only propext, Classical.choice and Quot.sound. No
-    human mathematical review or Comparator verdict is claimed.
+  notes: No human mathematical peer review claimed. All selected wrapper declarations
+    printed only permitted propext, Classical.choice and Quot.sound axioms in private
+    wave21. Elaboration is not Comparator replay.
 status:
   scope: degree three, roots strictly in the unit disc, distinct indices; endpoint
     distinctness under Squarefree
   local_proof_provenance: ErdosProblems/Erdos1041/PaperCubicCompletion.lean
-  canonical_claim_status: wrapper compiled and selected theorem axiom-audited; Comparator
-    replay pending
+  canonical_claim_status: private wrapper compiled and printed-axiom checked; public
+    projection validation and exact-selection Comparator replay pending
   novelty_status: unassessed
