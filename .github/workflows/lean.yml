@@ -872,6 +872,18 @@ jobs:
         NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
       run: 'set -euo pipefail
 
+        rust_bin="$HOME/.cargo/bin"
+
+        test -x "$rust_bin/cargo" || { echo "Hosted runner Cargo missing at $rust_bin/cargo" >&2; exit 127; }
+
+        test -x "$rust_bin/rustc" || { echo "Hosted runner rustc missing at $rust_bin/rustc" >&2; exit 127; }
+
+        export PATH="$rust_bin:$PATH"
+
+        mkdir -p artifacts
+
+        { command -v cargo; cargo --version; command -v rustc; rustc --version; } > artifacts/rust-toolchain.log
+
         git clone --filter=blob:none https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
 
         git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"

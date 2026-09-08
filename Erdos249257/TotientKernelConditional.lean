@@ -1,3 +1,4 @@
+import Erdos249257.AllBaseTotientKernel
 import Erdos249257.TotientKernelReduction
 import Erdos249257.TotientKernelIndex
 import Mathlib.LinearAlgebra.Dimension.Constructions
@@ -20,10 +21,6 @@ This module separates the two layers of the expected all-base theorem.
 namespace Erdos249257
 
 open Module
-
-/-- The `(j,r)` base-`k` kernel channel of Euler's totient, viewed over `ℚ`. -/
-def allBaseTotientKernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
-  Nat.totient (k ^ j * n + r)
 
 /-- The constant rational multiplier in the one-step composite-base residue
 reduction.  Its denominator is nonzero whenever `k > 0`. -/
