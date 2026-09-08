@@ -80,6 +80,9 @@ are nonnegative, so
 \]
 At $t=1$ the value is zero.  Concatenating the two segments gives length
 $|\zeta_1|+|\zeta_2|<2$.
+The displayed statement, with the broken line as a continuous curve of bounded
+variation and its length read as extended variation, is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L38}{Lean source}.
 \end{proof}
 
 \paragraph{A finite convex certificate.}
@@ -108,7 +111,8 @@ Indeed, after $z=rw$, the polynomial factors as
 $r^6(w^2-1)(w^4+\tfrac65 w^2+1)$, so all six roots have modulus $r$.
 However $f_r(r/2)=-(327/320)r^6$.  Any $r$ with $320/327<r^6<1$ proves the
 assertion.  Only this prescribed spoke is excluded; other connectors remain
-available.
+available.  The statement with the radius supplied is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L79}{Lean source}.
 
 \section{The problem and the general regimes}\label{sec:problem}
 
@@ -172,7 +176,11 @@ In every degree the length can be chosen less than $(5/2)\mu^{1/n}$.
 \begin{proof}
 Put $s=((25/13)\mu)^{1/n}$ and $g(z)=s^{-n}f(sz)$.  Then $g$ is monic and
 its least critical-value modulus is $13/25$.  Apply the theorem and scale the
-curve back by $s$.  For $n\ge3$,
+curve back by $s$.  The rescaling step, transporting both the level and the
+extended variation of an arbitrary curve under $z\mapsto h+cz$, is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperMetricScaling.lean#L40}{the affine
+transport of a contained rectifiable connector}; the low-critical input remains
+ordinary.  For $n\ge3$,
 $(25/13)^{1/n}\le(25/13)^{1/3}<5/4$.  For $n=2$, the segment between the
 roots has length $2\sqrt\mu$ and lies in $K_\mu$.
 \end{proof}
@@ -205,6 +213,11 @@ then summing over the roots proves the finite dual bound
 \[
  \boxed{\quad k\ge\frac{x-\pi\sum_i\sigma_i}{U}.\quad}
 \]
+The summation and supremum step from the majorant and the slice bounds to the
+boxed inequality is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperFiniteDual.lean#L68}{the finite dual
+arity floor, with the packing bound and the boundedness of the dual values as
+premises}; the hyperbolic supplier of those premises is ordinary.
 Angular projection alone loses the disjointness used here: balls at different
 radii may have overlapping shadows.  Common circle slices retain it.
 The resulting lower bound for $k$ feeds the length--area comparison until a
@@ -344,7 +357,10 @@ outside $\{|f|<1\}$.
 
 \noindent The certificates are exact rational-algebraic computations, checked
 as \pdecl{nearestSpoke_unique_nearest_spoke_escapes} and
-\pdecl{allStraightCubic_every_pair_midpoint_escapes}.  The first defeats a
+\pdecl{allStraightCubic_every_pair_midpoint_escapes}, and the displayed
+proposition itself, with both quintic and cubic exhibited as polynomials and the
+nearest-root condition quantified over every zero, is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178}{Lean source}.  The first defeats a
 tie-breaking escape hatch; the second defeats every straight root-pair
 segment.  Together with Theorem~\ref{res:critical-proximity}, they isolate the
 real gap: critical-point proximity selects a short metric pair, but universal
@@ -555,6 +571,9 @@ rays, $\mu>13/25$, and
  \bigl|1-f(c_-)/f(c_+)\bigr|<2/375<2.
 \]
 \end{proposition}
+
+\noindent The whole proposition, including the least-modulus assertion rather
+than a supplied minimum, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189}{Lean source}.
 
 \begin{proposition}[one-root gamma bound is false]
 \label{res:one-root-gamma-false}

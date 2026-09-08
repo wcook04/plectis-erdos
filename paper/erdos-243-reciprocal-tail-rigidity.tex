@@ -64,6 +64,9 @@ $\sum_{n\ge1}1/a_n\in\Q$.  Put $P_n=\prod_{j<n}a_j$.  If
 then $a_{n+1}=a_n^2-a_n+1$ for all sufficiently large $n$.
 \end{corollary}
 
+\noindent The statement is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211}{Lean source}.
+
 \paragraph{The obstruction.}
 The equation $C_{n+1}=C_n-E_n$ translates a bound on negative error into a
 bound on upward increments. At negative indices the common divisor of
@@ -159,6 +162,9 @@ Substitute $E_n=D_n-(a_n-1)C_n$ and use
 $D_{n+1}=a_nD_n$, $C_{n+1}=a_nC_n-D_n$.
 \end{proof}
 
+\noindent Both identities are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21}{Lean source}.
+
 \begin{theorem}[absorption and descent]\label{res:absorb}\label{res:descent}
 For a positive exact state with strict centring, $E_n=0$ implies
 $E_{n+1}=0$. For any positive integer state with $C_{n+1}=C_n-E_n$,
@@ -171,6 +177,9 @@ assertion, $C_n$ is eventually a nonincreasing sequence of positive
 integers, so it stabilises.
 \end{proof}
 
+\noindent Both assertions are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120}{Lean source}.
+
 \begin{corollary}[two zero errors]\label{res:step}\label{res:eventual}
 If $E_n=E_{n+1}=0$ and $C_{n+1}\ne0$, then
 $a_{n+1}=a_n^2-a_n+1$. Thus eventual zero error in a positive exact state
@@ -179,6 +188,9 @@ implies the eventual Sylvester recurrence.
 \begin{proof}
 The second error identity has nonzero factor $C_{n+1}$.
 \end{proof}
+
+\noindent The local and eventual forms are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L138}{Lean source}.
 
 Absorption holds after any eventual centring threshold. On a nonterminal
 tail it removes all subsequent zeros. Then $|E_n|\ge1$, so normalised
@@ -224,6 +236,9 @@ $\gcd(a_i,u_t)=1$, and $\gcd(a_t,v_t)=1$ gives
 $\gcd(a_i,a_t)=1$.
 \end{proof}
 
+\noindent All three conclusions are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16}{Lean source}.
+
 \begin{proposition}[gcd stabilisation]\label{res:gcdstab}
 For a positive exact state, if negative errors have bounded magnitudes
 along a cofinal set of indices, then $G_n=\gcd(C_n,D_n)$ eventually
@@ -236,6 +251,9 @@ divisibility chain is bounded along a cofinal set and therefore bounded
 everywhere; it eventually stabilises. Division by the stable value
 preserves both exact updates and leaves the states coprime.
 \end{proof}
+
+\noindent The stable gcd and the reduced exact tail are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103}{Lean source}.
 
 In the main proof, division by the stable gcd preserves divergence and a
 bounded upward increment. Theorem~\ref{res:barrier} therefore applies to
@@ -525,6 +543,8 @@ Equivalently, must there be a $K\ge1$ for which
 \]
 at infinitely many indices?
 \end{problem}
+\noindent The canonical necessary profile is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151}{Lean source}.
 
 For $B\ge0$ put
 \[

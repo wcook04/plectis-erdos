@@ -88,6 +88,8 @@ The endpoint of the exponential prefix contributes residue $`1`$ modulo $`m`$; i
 
 </div>
 
+The equivalence and its cofinal form are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L29).
+
 <div class="proof">
 
 *Proof.* First suppose $`S=a/q`$ with $`q>0`$, and take $`m`$ so large that $`q\mid(m-1)!`$. Write
@@ -162,6 +164,8 @@ S\notin\mathbb Q,\qquad
 
 </div>
 
+The pair of equivalences is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L47).
+
 <div class="proof">
 
 *Proof.* Rationality forces eventual unit carries by <a href="#eq:finite-denominator-consumer" data-reference-type="eqref" data-reference="eq:finite-denominator-consumer">[eq:finite-denominator-consumer]</a>. Conversely, if $`b_m=1`$ eventually, then $`Z_m/m!`$ is eventually constant. Since
@@ -207,6 +211,8 @@ The vectors $`e_1,U_2,U_3,\ldots`$ form an integral basis. Every finite vector h
 
 </div>
 
+The observables, the unique expansion and the coefficient formula are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260).
+
 <div class="proof">
 
 *Proof.* The moment of $`T_n`$ is zero. The floor in $`W_{d,n}`$ changes between $`n-1`$ and $`n`$ precisely when $`d\mid n`$, so
@@ -224,7 +230,7 @@ U_9=9e_8-e_9-5040e_2+1680e_3.
 \label{res:translator}
 \end{equation}
 ```
-It has moment zero and only channel $`9`$ is nonzero. Thus each channel can be adjusted separately by a multiple of its own denominator.
+It has moment zero and only channel $`9`$ is nonzero. Thus each channel can be adjusted separately by a multiple of its own denominator. The expansion is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L17) and the observable profile is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L45).
 
 <a id="the-support-restriction-and-the-residual"></a>
 
@@ -242,7 +248,7 @@ V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}
 \label{res:congruence}
 \end{equation}
 ```
-and the unique description of every low-channel kernel:
+in the equivalent integer-divisibility form [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L53), and the unique description of every low-channel kernel:
 ``` math
 \begin{equation}
 V_2=\cdots=V_D=0
@@ -305,6 +311,8 @@ g_D=\gcd(u_{D+1},\ldots,u_H),\qquad H<2D^2.
 
 </div>
 
+The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252).
+
 <div class="proof">
 
 *Proof.* The finite gcd $`g`$ divides the nonzero term $`u_{2\ell}=-(2\ell)!/2^{\ell-1}`$, so $`g\mid(2\ell)!`$. For $`n>H`$ and a divisor $`d\le D`$, the integer $`n/d`$ is at least $`2\ell`$. Hence $`g\mid(n/d)!\mid W_{d,n}`$. Every early source is divisible by $`g`$. Strong induction handles the remaining divisors $`D<d<n`$, whose coefficients are already divisible by $`g`$. Thus $`g`$ divides the entire tail. Bertrand’s postulate supplies $`\ell`$ for $`D\ge3`$; take $`\ell=2`$ for $`D=2`$. Finally $`H\le D(2D-1)<2D^2`$. ◻
@@ -348,7 +356,7 @@ The following elementary estimate quantifies this cost:
 \ge\frac{2\sqrt2}{3}.\label{res:lcm-growth}
 \end{equation}
 ```
-For a terminal block of $`k`$ terms, the product–lcm–gcd inequality and $`\gcd(i!-1,j!-1)\mid j!/i!-1`$ give
+The extended-real statement, with the real exponent $`3/2`$, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42). For a terminal block of $`k`$ terms, the product–lcm–gcd inequality and $`\gcd(i!-1,j!-1)\mid j!/i!-1`$ give
 ``` math
 \log L_N\ge\sum_{n=N-k+1}^N\log(n!-1)
 -\binom{k+1}{3}\log N.
@@ -407,7 +415,7 @@ v_q(\operatorname{den}H_M)=e
 \label{eq:prime-pole-survival}
 \end{equation}
 ```
-This first-layer test is a consequence of the general reciprocal-sum valuation formula of Louwsma and Martino \[louwsma-martino, Lemma 4.1\].
+The equivalence, with the maximum and its attainment taken from the actual prefix lcm, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L118). This first-layer test is a consequence of the general reciprocal-sum valuation formula of Louwsma and Martino \[louwsma-martino, Lemma 4.1\].
 
 The actual factorial-gap examples show why the weights matter. At $`M=138`$, the maximal $`139`$-hits are $`69,122,137`$, with cofactor residues $`6,49,73`$, and
 ``` math
@@ -448,6 +456,8 @@ R_p>1,\qquad
 then $`S`$ is irrational.*
 
 </div>
+
+The criterion at natural parameters is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156).
 
 <div class="proof">
 
@@ -528,7 +538,7 @@ The separate $`80000`$-bit exact rational enclosure forces $`23449`$ common cont
 
 # Statements and declarations
 
-The finite divisor-event identities, isolated-channel recursion, vanishing moment, individual channel values, and the factor $`12`$ are checked in `DivisorChannelBasis.lean`. The unique integral basis expansion, attainable-moment formula and compressed primitive-grid construction are ordinary proofs, described in `DivisorChannelBasis.md` and, for the grid construction, in `CompressedPrimitiveChannelKernel.md`. The quadratic stopping theorem has an ordinary finite-source proof. The earlier lcm-envelope certificate and depth-$`4`$ moment $`1380`$ are ordinary proofs with exact checks in `check_moment_saturation.py`. The finite-source checks are in `check_finite_source.py`. The inherited generic lemmas in `TailIdealCertificate.lean` assume the lcm envelope; they do not formalise the factorial arithmetic. The separate finite-source Lean draft has not been compiled. The growth liminf is the ordinary asymptotic consequence of the finite terminal-block inequality.
+The finite divisor-event identities, isolated-channel recursion, vanishing moment, individual channel values, and the factor $`12`$ are checked in `DivisorChannelBasis.lean`. The unique integral basis expansion, attainable-moment formula and compressed primitive-grid construction are ordinary proofs, described in `DivisorChannelBasis.md` and, for the grid construction, in `CompressedPrimitiveChannelKernel.md`. The quadratic stopping theorem is checked in `PaperCompleteMomentHorizon.lean`, together with the scalar recurrence, the equal-block divisibility and the prime anchor it uses. The earlier lcm-envelope certificate and depth-$`4`$ moment $`1380`$ are ordinary proofs with exact checks in `check_moment_saturation.py`. The finite-source checks are in `check_finite_source.py`. The inherited generic lemmas in `TailIdealCertificate.lean` assume the lcm envelope; they do not formalise the factorial arithmetic. The growth liminf is the ordinary asymptotic consequence of the finite terminal-block inequality; its eventual form, with the constant $`2\sqrt2/3`$, is checked in `PaperCompleteAsymptotics.lean`.
 
 The exact companion and carry criteria are represented by `CompanionOrbitRationality.lean` and `FactorialZeroPlateau.lean`; the unconditional correction <a href="#eq:companion-wrap" data-reference-type="eqref" data-reference="eq:companion-wrap">[eq:companion-wrap]</a> is in `CompanionConstantCarryLaw.lean`. The pole-residue identity and the two displayed reciprocal equalities are in `PrimePoleCriterion.lean`. The complete maximal-hit data come from the separate exact modular scan. The carry census and continued-fraction certificate use exact integer computation outside Lean.
 
@@ -600,7 +610,7 @@ The public `ErdosProblems.Erdos68` package contains the checked source for this 
 
 - [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L65)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101)
+- [](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101)
 
 - [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L105)
 

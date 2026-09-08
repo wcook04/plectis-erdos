@@ -95,7 +95,7 @@ is zero or one. Its support in $`[0,1)`$ consists of
 [6/7,13/15),\ [13/14,14/15).
 \end{gathered}
 ```
-These are the intervals $`\mathcal I`$ used to define $`J`$.
+These are the intervals $`\mathcal I`$ used to define $`J`$. The zero-one values and this thirteen-interval support are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297).
 
 #### Integral polynomials and their degrees.
 
@@ -171,7 +171,7 @@ Since $`0\le1-\nu_\ell\le1`$, it follows that
 
 #### Homogenisation.
 
-Because $`U_n,V_n`$ are integral polynomials of degree at most $`W_n`$, $`b^{W_n}U_n(a/b)`$ and $`b^{W_n}V_n(a/b)`$ are integers. Moreover
+Because $`U_n,V_n`$ are integral polynomials of degree at most $`W_n`$, $`b^{W_n}U_n(a/b)`$ and $`b^{W_n}V_n(a/b)`$ are integers. That integrality and the cleared linear-form identity it produces are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61). Moreover
 ``` math
 \begin{split}
  \log\bigl(b^{W_n}\Lambda_n(a/b)\bigr)
@@ -179,7 +179,7 @@ Because $`U_n,V_n`$ are integral polynomials of degree at most $`W_n`$, $`b^{W_n
  &=\bigl(C_1\log b-C_0\log a\bigr)n^2+o(n^2).
 \end{split}
 ```
-The coefficient is negative under the theorem’s hypothesis. Thus positive integral linear forms in $`F(a/b)`$ tend to zero. If $`F(a/b)=r/s`$ were rational, every such form would have absolute value at least $`1/|s|`$, a contradiction. ◻
+The coefficient is negative under the theorem’s hypothesis. Thus positive integral linear forms in $`F(a/b)`$ tend to zero. If $`F(a/b)=r/s`$ were rational, every such form would have absolute value at least $`1/|s|`$, a contradiction. The separation bound for a nonzero integral form at a rational target is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128). ◻
 
 </div>
 
@@ -268,12 +268,12 @@ The preceding construction uses degree and decay estimates valid at every fixed 
 ``` math
 a_nb_{n+1}-a_{n+1}b_n=a_{n+1}L_n-a_n L_{n+1}
 ```
-is then $`o(1)`$, hence eventually zero. Also $`a_n\ne0`$ for large $`n`$: otherwise the nonzero integer $`L_n=-b_n`$ would have absolute value less than $`1`$. Thus $`b_n/a_n`$ is eventually a fixed rational $`r`$. If $`F(p)\ne r`$ then $`|L_n|\ge|F(p)-r|`$; if $`F(p)=r`$ then $`L_n=0`$. Both contradict the hypotheses, so $`\sigma\le\delta`$. The homogenised logarithm satisfies
+is then $`o(1)`$, hence eventually zero. Also $`a_n\ne0`$ for large $`n`$: otherwise the nonzero integer $`L_n=-b_n`$ would have absolute value less than $`1`$. Thus $`b_n/a_n`$ is eventually a fixed rational $`r`$. If $`F(p)\ne r`$ then $`|L_n|\ge|F(p)-r|`$; if $`F(p)=r`$ then $`L_n=0`$. Both contradict the hypotheses, so $`\sigma\le\delta`$. The integer argument of this paragraph, from the two cross-product limits to the contradiction, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L123). The homogenised logarithm satisfies
 ``` math
 \limsup_{n\to\infty} n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
  \le \delta\log b-\sigma\log(a/b),
 ```
-which is negative on the stated sufficient region. The conclusion bounds the sufficient cutoff furnished by the displayed degree estimate. An exclusion for a particular family requires its actual degree and remainder asymptotics. ◻
+which is negative on the stated sufficient region. The arithmetic form of that region is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144), and the final numerical clause is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155). The conclusion bounds the sufficient cutoff furnished by the displayed degree estimate. An exclusion for a particular family requires its actual degree and remainder asymptotics. ◻
 
 </div>
 
@@ -417,7 +417,7 @@ In particular, if $`R>0`$ and $`4R+2S\le M`$, such a collision exists.*
 ``` math
 (3^R)^2(2^S)^2<(4^R)^2(2^S)^2=2^{4R+2S}\le2^M,
 ```
-which proves the stated sufficient threshold. ◻
+which proves the stated sufficient threshold. The cardinality formula, the collision, the signed $`\{-1,0,1\}`$ vector and the sufficient width are together [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248). ◻
 
 </div>
 
@@ -443,7 +443,7 @@ Thus the sufficient width is $`S+2R`$, rather than the ambient two-coordinate wi
 ``` math
 2^S3^R<2^S4^R=2^{S+2R}\le2^k,
 ```
-and pigeonhole gives the two selectors. ◻
+and pigeonhole gives the two selectors. The ring-generic minor collapse and the modular selector collision are together [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269). ◻
 
 </div>
 

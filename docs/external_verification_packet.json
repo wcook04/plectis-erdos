@@ -1688,7 +1688,7 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:9f1d70c500fbbe7188cfa605292c1ea255c1e6408c0348827ac92f19895962f6",
+    "owner_digest": "sha256:ff4797f0ff8498c0070d365afcc75714db330ccd591f9e7c4f087b2e7e013b8c",
     "projection": "docs/problems.json",
     "projection_digest": "sha256:762b794702b8b9701e27e4065b56a49a6e8d08f68b22cc0eec6686fa380ec7ec",
     "schema": "erdos249257-problem-index/1",

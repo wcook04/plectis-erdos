@@ -124,6 +124,9 @@ Consequently,
 \end{equation}
 \end{theorem}
 
+\noindent The equivalence and its cofinal form are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L29}{Lean source}.
+
 \begin{proof}
 First suppose $\Ser=a/q$ with $q>0$, and take $m$ so large that
 $q\mid(m-1)!$.  Write
@@ -204,6 +207,9 @@ S\notin\mathbb Q,\qquad
 (\forall B)(\exists m>B)\ m\nmid Z_m.
 \]
 \end{theorem}
+
+\noindent The pair of equivalences is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L47}{Lean source}.
 \begin{proof}
 Rationality forces eventual unit carries by
 \eqref{eq:finite-denominator-consumer}.  Conversely, if $b_m=1$
@@ -248,6 +254,9 @@ has the unique finite expansion
 \label{eq:channel-basis-expansion}
 \end{equation}
 \end{theorem}
+
+\noindent The observables, the unique expansion and the coefficient formula are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260}{Lean source}.
 \begin{proof}
 The moment of $T_n$ is zero.  The floor in $W_{d,n}$ changes between
 $n-1$ and $n$ precisely when $d\mid n$, so
@@ -270,7 +279,9 @@ U_9=9e_8-e_9-5040e_2+1680e_3.
 \label{res:translator}
 \end{equation}
 It has moment zero and only channel $9$ is nonzero.  Thus each channel can
-be adjusted separately by a multiple of its own denominator.
+be adjusted separately by a multiple of its own denominator.  The expansion
+is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L17}{Lean source} and the observable
+profile is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L45}{Lean source}.
 
 \subsection{The support restriction and the residual}
 Write
@@ -283,6 +294,8 @@ Equation~\eqref{eq:channel-basis-expansion} implies both the channel congruence
 V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}
 \label{res:congruence}
 \end{equation}
+in the equivalent integer-divisibility form
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L53}{Lean source},
 and the unique description of every low-channel kernel:
 \begin{equation}
 V_2=\cdots=V_D=0
@@ -344,6 +357,9 @@ Then
 g_D=\gcd(u_{D+1},\ldots,u_H),\qquad H<2D^2.
 \]
 \end{theorem}
+
+\noindent The statement is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252}{Lean source}.
 \begin{proof}
 The finite gcd $g$ divides the nonzero term
 $u_{2\ell}=-(2\ell)!/2^{\ell-1}$, so $g\mid(2\ell)!$.
@@ -408,6 +424,8 @@ The following elementary estimate quantifies this cost:
 \liminf_{N\to\infty}\frac{\log L_N}{N^{3/2}\log N}
 \ge\frac{2\sqrt2}{3}.\label{res:lcm-growth}
 \end{equation}
+The extended-real statement, with the real exponent $3/2$, is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42}{Lean source}.
 For a terminal block of $k$ terms, the product--lcm--gcd inequality and
 $\gcd(i!-1,j!-1)\mid j!/i!-1$ give
 \[
@@ -481,6 +499,8 @@ v_q(\operatorname{den}H_M)=e
 \quad\Longleftrightarrow\quad R_{q,e}(M)\ne0\pmod q.
 \label{eq:prime-pole-survival}
 \end{equation}
+The equivalence, with the maximum and its attainment taken from the actual
+prefix lcm, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L118}{Lean source}.
 This first-layer test is a consequence of the general reciprocal-sum
 valuation formula of Louwsma and Martino~\cite[Lemma~4.1]{louwsma-martino}.
 
@@ -529,6 +549,9 @@ R_p>1,\qquad
 \end{equation}
 then $S$ is irrational.
 \end{proposition}
+
+\noindent The criterion at natural parameters is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156}{Lean source}.
 \begin{proof}
 Suppose $S=a/q$.  For large $p$, $q\mid F_p\mid C_p$, so
 $L_p^{\rm blk}S$ is an integer multiple of $R_p$.  Therefore
@@ -630,14 +653,18 @@ moment, individual channel values, and the factor $12$ are checked in
 attainable-moment formula and compressed primitive-grid construction are
 ordinary proofs, described in \path{DivisorChannelBasis.md} and, for the
 grid construction, in
-\path{CompressedPrimitiveChannelKernel.md}.  The quadratic stopping theorem has an ordinary finite-source proof.
+\path{CompressedPrimitiveChannelKernel.md}.  The quadratic stopping theorem
+is checked in \path{PaperCompleteMomentHorizon.lean}, together with the
+scalar recurrence, the equal-block divisibility and the prime anchor it uses.
 The earlier lcm-envelope certificate and depth-$4$ moment $1380$ are
 ordinary proofs with exact checks in \path{check_moment_saturation.py}.
 The finite-source checks are in \path{check_finite_source.py}.
 The inherited generic lemmas in \path{TailIdealCertificate.lean} assume
 the lcm envelope; they do not formalise the factorial arithmetic.
-The separate finite-source Lean draft has not been compiled.  The growth liminf is the
-ordinary asymptotic consequence of the finite terminal-block inequality.
+The growth liminf is the
+ordinary asymptotic consequence of the finite terminal-block inequality; its
+eventual form, with the constant $2\sqrt2/3$, is checked in
+\path{PaperCompleteAsymptotics.lean}.
 
 The exact companion and carry criteria are represented by
 \path{CompanionOrbitRationality.lean} and
@@ -713,7 +740,7 @@ series.
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{55}{factorialMoment}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{59}{channelEvent}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{65}{channelEvent_eq_zero_of_not_dvd}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{101}{lambda34}
+\item \href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101}{\leanlabel{lambda34}}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{105}{lambda34_apply_three}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{109}{lambda34_apply_four}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{112}{lambda34_channel_two}

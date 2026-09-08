@@ -139,6 +139,8 @@ is zero or one.  Its support in $[0,1)$ consists of
 \end{gathered}
 \]
 These are the intervals $\mathcal I$ used to define $J$.
+The zero-one values and this thirteen-interval support are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297}{Lean source}.
 
 \paragraph{Integral polynomials and their degrees.}
 The source's polynomial inclusion is Lemma~7, display~(23).
@@ -238,6 +240,8 @@ Since $0\le1-\nu_\ell\le1$, it follows that
 \paragraph{Homogenisation.}
 Because $U_n,V_n$ are integral polynomials of degree at most $W_n$,
 $b^{W_n}U_n(a/b)$ and $b^{W_n}V_n(a/b)$ are integers.
+That integrality and the cleared linear-form identity it produces are
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61}{Lean source}.
 Moreover
 \[
 \begin{split}
@@ -249,6 +253,8 @@ Moreover
 The coefficient is negative under the theorem's hypothesis.  Thus positive
 integral linear forms in $F(a/b)$ tend to zero.  If $F(a/b)=r/s$ were rational,
 every such form would have absolute value at least $1/|s|$, a contradiction.
+The separation bound for a nonzero integral form at a rational target is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128}{Lean source}.
 \end{proof}
 
 \begin{corollary}\label{res:thirtyone-four}
@@ -373,12 +379,18 @@ otherwise the nonzero integer $L_n=-b_n$ would have absolute value less
 than $1$.  Thus $b_n/a_n$ is eventually a fixed rational $r$.  If
 $F(p)\ne r$ then $|L_n|\ge|F(p)-r|$; if $F(p)=r$ then $L_n=0$.  Both
 contradict the hypotheses, so $\sigma\le\delta$.
+The integer argument of this paragraph, from the two cross-product limits to
+the contradiction, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L123}{Lean source}.
 The homogenised logarithm satisfies
 \[
  \limsup_{n\to\infty} n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
  \le \delta\log b-\sigma\log(a/b),
 \]
-which is negative on the stated sufficient region.  The conclusion bounds the
+which is negative on the stated sufficient region.
+The arithmetic form of that region is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144}{Lean source}, and the final numerical clause is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155}{Lean source}.
+The conclusion bounds the
 sufficient cutoff furnished by the displayed degree estimate.  An exclusion for a
 particular family requires its actual degree and remainder asymptotics.
 \end{proof}
@@ -544,6 +556,8 @@ of the four cyclic-modulus cardinalities.  For \(R>0\),
  (3^R)^2(2^S)^2<(4^R)^2(2^S)^2=2^{4R+2S}\le2^M,
 \]
 which proves the stated sufficient threshold.
+The cardinality formula, the collision, the signed \(\{-1,0,1\}\) vector and
+the sufficient width are together \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248}{Lean source}.
 \end{proof}
 
 The ambient count does not use relations between the two residue
@@ -577,6 +591,8 @@ at most $2^S3^R$ values.  Finally
  2^S3^R<2^S4^R=2^{S+2R}\le2^k,
 \]
 and pigeonhole gives the two selectors.
+The ring-generic minor collapse and the modular selector collision are
+together \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269}{Lean source}.
 \end{proof}
 
 Primitive integer rows are unimodular modulo every modulus.  A particular
@@ -784,9 +800,9 @@ exponential lower bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{204}{twoPow
 integer-base collapse & \lrefx{Erdos1049/RationalBaseLambert.lean}{218}{rationalBaseForcingNat_one}\\
 integer power comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{32}{sevenHalves_power_certificate}\\
 exact rational boundary & \lrefx{Erdos1049/RationalBaseLambert.lean}{36}{sevenHalves_rational_margin}\\
-logarithmic ratio bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{48}{sevenHalves_log_ratio_lt}\\
-$\pi$ reciprocal-square bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{64}{one_div_pi_sq_lt_one_nine}\\
-strict source margin & \lrefx{Erdos1049/RationalBaseLambert.lean}{73}{sevenHalves_bundschuhVaananen_margin}\\
+logarithmic ratio bound & \href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L48}{\leanlabel{sevenHalves_log_ratio_lt}}\\
+$\pi$ reciprocal-square bound & \href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L64}{\leanlabel{one_div_pi_sq_lt_one_nine}}\\
+strict source margin & \href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L73}{\leanlabel{sevenHalves_bundschuhVaananen_margin}}\\
 complete $7/2$ height condition & \lrefx{Erdos1049/RationalBaseLambert.lean}{83}{sevenHalves_archimedean_height_condition}\\
 doubled common exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{19}{rationalPadeDenExpTwice}\\
 doubled summand exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{24}{rationalPadePSummandDenExpTwice}\\

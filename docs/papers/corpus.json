@@ -1173,7 +1173,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:38da271ec81b1326d3a50f9e5c8e98d800fe4123a4137b720fa09089fb5bd496",
+      "source_sha256": "sha256:ea6e7b0d886d93517fcedec2190338580ecf0b067555f8cc22c4f0153d598c84",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex",
@@ -1202,91 +1202,91 @@
           "level": 2,
           "id": "sec:digits",
           "title": "The carry and its wrap correction",
-          "line": 136
+          "line": 138
         },
         {
           "level": 1,
           "id": "sec:channels",
           "title": "An integral basis for factorial channels",
-          "line": 175
+          "line": 179
         },
         {
           "level": 2,
           "id": "the-support-restriction-and-the-residual",
           "title": "The support restriction and the residual",
-          "line": 229
+          "line": 235
         },
         {
           "level": 4,
           "id": "a-finite-certificate-for-the-infinite-moment-ideal.",
           "title": "A finite certificate for the infinite moment ideal.",
-          "line": 284
+          "line": 290
         },
         {
           "level": 1,
           "id": "sec:translator",
           "title": "The moment cost and the choice of support",
-          "line": 328
+          "line": 336
         },
         {
           "level": 2,
           "id": "growth-of-the-compulsory-factor",
           "title": "Growth of the compulsory factor",
-          "line": 340
+          "line": 348
         },
         {
           "level": 2,
           "id": "sec:compressed-kernel",
           "title": "Remote primitive kernels",
-          "line": 362
+          "line": 370
         },
         {
           "level": 1,
           "id": "sec:prime-pole",
           "title": "Cancellation in a reduced prefix",
-          "line": 388
+          "line": 396
         },
         {
           "level": 1,
           "id": "sec:projection",
           "title": "One joint collision and residue estimate",
-          "line": 418
+          "line": 426
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining real comparison",
-          "line": 476
+          "line": 486
         },
         {
           "level": 4,
           "id": "sec:nogo",
           "title": "The limit of short supports.",
-          "line": 503
+          "line": 513
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "The finite evidence",
-          "line": 515
+          "line": 525
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Statements and declarations",
-          "line": 527
+          "line": 537
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 527
+          "line": 537
         },
         {
           "level": 4,
           "id": "source-current-companion-orbit-and-comparator-routes.",
           "title": "Source-current companion orbit and Comparator routes.",
-          "line": 633
+          "line": 643
         }
       ],
       "citations_rendered": 4,
@@ -1295,8 +1295,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:3cffd521c43f077c5efd30b3f5b4b721352a5149f3f70d85c213514e36e7267a",
-      "pdf_byte_count": 100043,
+      "pdf_sha256": "sha256:8360f5d2ee554d70aa62c964edebbae6598ceb5edadc83563e5c8447f6c9a412",
+      "pdf_byte_count": 102105,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1309,17 +1309,17 @@
           {
             "id": "sec:channels",
             "title": "An integral basis for factorial channels",
-            "line": 175
+            "line": 179
           },
           {
             "id": "sec:projection",
             "title": "One joint collision and residue estimate",
-            "line": 418
+            "line": 426
           },
           {
             "id": "sec:open",
             "title": "The remaining real comparison",
-            "line": 476
+            "line": 486
           }
         ],
         "unresolved_count": 0
@@ -1362,7 +1362,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:6adbe20fc3e8d4b58d71f6e3e2dff57a20ada1acfc66eaf8081c7497e85cc829",
+      "source_sha256": "sha256:bbad3e8929c50fefb86aa81250095c5cead267d5ad22def620c5e85bebb2b9d9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
@@ -1385,97 +1385,97 @@
           "level": 4,
           "id": "the-obstruction.",
           "title": "The obstruction.",
-          "line": 33
+          "line": 35
         },
         {
           "level": 1,
           "id": "sec:bounded",
           "title": "Proof of bounded-negative rigidity",
-          "line": 79
+          "line": 81
         },
         {
           "level": 1,
           "id": "sec:state",
           "title": "The arithmetic ingredients",
-          "line": 103
+          "line": 105
         },
         {
           "level": 2,
           "id": "sec:defect",
           "title": "Error, absorption and descent",
-          "line": 107
+          "line": 109
         },
         {
           "level": 2,
           "id": "sec:barrier",
           "title": "The first-crossing obstruction",
-          "line": 155
+          "line": 163
         },
         {
           "level": 2,
           "id": "reduction-and-stabilisation",
           "title": "Reduction and stabilisation",
-          "line": 183
+          "line": 191
         },
         {
           "level": 1,
           "id": "sec:transfer",
           "title": "Transfer to a reciprocal series",
-          "line": 218
+          "line": 230
         },
         {
           "level": 1,
           "id": "sec:mass",
           "title": "A scalar finite-mass criterion",
-          "line": 270
+          "line": 282
         },
         {
           "level": 1,
           "id": "sec:lcmrecords",
           "title": "Weighted first crossings of LCM records",
-          "line": 299
+          "line": 311
         },
         {
           "level": 1,
           "id": "sec:secondaryrate",
           "title": "Further consequences",
-          "line": 391
+          "line": 403
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining arithmetic estimate",
-          "line": 420
+          "line": 432
         },
         {
           "level": 4,
           "id": "formal-scope-and-supporting-record.",
           "title": "Formal scope and supporting record.",
-          "line": 468
+          "line": 482
         },
         {
           "level": 4,
           "id": "declarations.",
           "title": "Declarations.",
-          "line": 474
+          "line": 488
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 480
+          "line": 494
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 486
+          "line": 500
         }
       ],
       "citations_rendered": 5,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:60a63f5d3208c7040bccb69b01123359827e7f686882e0df488ca5908a2aa986",
-      "pdf_byte_count": 95949,
+      "pdf_sha256": "sha256:c023b1ecb5332c02493feaf4d9ccfa9ecdf808aacfe0fa5eff6283f6c1bb77f9",
+      "pdf_byte_count": 96745,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1488,12 +1488,12 @@
           {
             "id": "sec:bounded",
             "title": "Proof of bounded-negative rigidity",
-            "line": 79
+            "line": 81
           },
           {
             "id": "sec:open",
             "title": "The remaining arithmetic estimate",
-            "line": 420
+            "line": 432
           }
         ],
         "unresolved_count": 0
@@ -1536,7 +1536,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:5922f56eb459a41fb7f8b0acab7383532d8a3c76909d7a60c913afe39d05aa3d",
+      "source_sha256": "sha256:a820df17beeb2d25792000065e6318eae22b8bc8650e943b440904b45889a724",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
@@ -1616,8 +1616,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:5e8e3cd822bf13e386f18fe2135e41c36c6a0c6781c54421d44b63fcbac364d1",
-      "pdf_byte_count": 97086,
+      "pdf_sha256": "sha256:98b9693dead2d9a714ccdac97988eeae8de52435cb2243830321c537283478b2",
+      "pdf_byte_count": 98277,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2582,7 +2582,7 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:1362ab9f18ae7f5f0bdb135c5b5a590357133a35733e34b41658f2fcd55499e6",
+      "pdf_sha256": "sha256:2074c954f206a56b53d834e37a33d9f38cf52342c2b04a4d1188824cd62c0ce9",
       "pdf_byte_count": 727403,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2639,7 +2639,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
       "local_source": "paper/erdos-251-prime-gap-dyadic-series.tex",
-      "source_sha256": "sha256:864cec6004affade9d51fca59263cef198d0b00b458dab210621aa2a2fe0b692",
+      "source_sha256": "sha256:0cf9c88baf52ad8bb70a9adde7580436e54d41184dfacf3f52c064b33f79a2f9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex",
@@ -2710,103 +2710,103 @@
           "level": 1,
           "id": "sec:parts",
           "title": "Summation by parts, with the endpoint retained",
-          "line": 269
+          "line": 277
         },
         {
           "level": 2,
           "id": "sec:infinite",
           "title": "The infinite identity and the irrationality equivalence",
-          "line": 312
+          "line": 320
         },
         {
           "level": 4,
           "id": "the-summability-hypothesis.",
           "title": "The summability hypothesis.",
-          "line": 360
+          "line": 368
         },
         {
           "level": 1,
           "id": "sec:tail",
           "title": "The tail recurrence and integral shifts",
-          "line": 366
+          "line": 374
         },
         {
           "level": 4,
           "id": "the-actual-prime-gap-orbit.",
           "title": "The actual prime-gap orbit.",
-          "line": 527
+          "line": 537
         },
         {
           "level": 2,
           "id": "sec:local-certificate",
           "title": "Two adjacent small shifts cannot both be integral",
-          "line": 537
+          "line": 547
         },
         {
           "level": 1,
           "id": "sec:carry",
           "title": "Nonperiodic coefficients with a rational sum",
-          "line": 603
+          "line": 613
         },
         {
           "level": 4,
           "id": "consequence-for-the-coefficients.",
           "title": "Consequence for the coefficients.",
-          "line": 631
+          "line": 641
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 647
+          "line": 657
         },
         {
           "level": 4,
           "id": "a-finite-truncation-criterion.",
           "title": "A finite truncation criterion.",
-          "line": 697
+          "line": 707
         },
         {
           "level": 4,
           "id": "the-remaining-estimate.",
           "title": "The remaining estimate.",
-          "line": 749
+          "line": 759
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 759
+          "line": 769
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 763
+          "line": 773
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 773
+          "line": 783
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 779
+          "line": 789
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 785
+          "line": 795
         }
       ],
       "citations_rendered": 12,
       "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:a4eb65208ed2e06ab08f3c08d2e538add8f167283c53501837645d3e00436ae2",
-      "pdf_byte_count": 137329,
+      "pdf_sha256": "sha256:e920cff2b31d0c25833bf5206c93cef055610c13d2ff68405eb5f09c86a10eae",
+      "pdf_byte_count": 139693,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2819,7 +2819,7 @@
           {
             "id": "sec:tail",
             "title": "The tail recurrence and integral shifts",
-            "line": 366
+            "line": 374
           },
           {
             "id": "sec:no-go",
@@ -2829,7 +2829,7 @@
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 647
+            "line": 657
           }
         ],
         "unresolved_count": 1
@@ -2872,7 +2872,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:d7d1c030a711f7c90ffa672371983d28035b85d59c5c648d23808ce2e705de8a",
+      "source_sha256": "sha256:591650bf6992d17018d26e727b97e1bad2629e3078b40ea386327d0086c5a6ca",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
@@ -2895,103 +2895,103 @@
           "level": 1,
           "id": "sec:reciprocal-support",
           "title": "Reciprocal-summable supports at every integer base",
-          "line": 65
+          "line": 67
         },
         {
           "level": 1,
           "id": "sec:eight-return-extensions",
           "title": "Extensions beyond reciprocal summability",
-          "line": 105
+          "line": 107
         },
         {
           "level": 2,
           "id": "divisibility-weighted-and-quantitative-criteria",
           "title": "Divisibility-weighted and quantitative criteria",
-          "line": 111
+          "line": 113
         },
         {
           "level": 2,
           "id": "sec:common-kernel",
           "title": "A finite estimate on common observation scales",
-          "line": 132
+          "line": 134
         },
         {
           "level": 2,
           "id": "positive-fractional-divisor-covers",
           "title": "Positive fractional divisor covers",
-          "line": 166
+          "line": 168
         },
         {
           "level": 2,
           "id": "what-every-positive-cover-must-pay",
           "title": "What every positive cover must pay",
-          "line": 208
+          "line": 210
         },
         {
           "level": 2,
           "id": "combining-the-two-support-criteria",
           "title": "Combining the two support criteria",
-          "line": 242
+          "line": 244
         },
         {
           "level": 4,
           "id": "the-prime-power-regime.",
           "title": "The prime-power regime.",
-          "line": 260
+          "line": 262
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 268
+          "line": 270
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 293
+          "line": 297
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Where the return mechanism stops",
-          "line": 308
+          "line": 312
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Unique coding and arithmetic membership",
-          "line": 333
+          "line": 337
         },
         {
           "level": 1,
           "id": "sec:actual-repairs",
           "title": "The actual greedy return inequality",
-          "line": 349
+          "line": 353
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Further questions",
-          "line": 408
+          "line": 414
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 492
+          "line": 498
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 500
+          "line": 506
         }
       ],
       "citations_rendered": 5,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:ba7afe0b4713b9184fcfe405c78f9663e33cc6cf575ac58e0110f621b3da50e3",
-      "pdf_byte_count": 121738,
+      "pdf_sha256": "sha256:8995d7c02b0ff4180d1c6b745eea3841a0a3c4fd3fa12afe5c3e92d80800a023",
+      "pdf_byte_count": 123808,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2999,12 +2999,12 @@
           {
             "id": "sec:period",
             "title": "Finite-support denominator periods",
-            "line": 268
+            "line": 270
           },
           {
             "id": "sec:map",
             "title": "Where the return mechanism stops",
-            "line": 308
+            "line": 312
           },
           {
             "id": "sec:ask",
@@ -3014,7 +3014,7 @@
           {
             "id": "sec:open",
             "title": "Further questions",
-            "line": 408
+            "line": 414
           }
         ],
         "unresolved_count": 1
@@ -3057,7 +3057,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:6124c97dd2973e2e4b187c6483648905415b4606da7a173e8c125bf0ca77f7e9",
+      "source_sha256": "sha256:4b64b5fba33cfb3559cd04749cf9e17734d80053f68e11bc7430b05247196759",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
@@ -3895,8 +3895,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:e66b04c2bd451d313c504b8d80bcfb6fe8165e48665978b230911bfbc95f4de8",
-      "pdf_byte_count": 666905,
+      "pdf_sha256": "sha256:705687fcf50f49ea5669444bc8ead91b313a40f013657135a81729e99330b418",
+      "pdf_byte_count": 667209,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3957,7 +3957,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:c38cd61a19ab4cc60a91c866e2ed07a949ecb1c891f44d5175ea1213a411c32f",
+      "source_sha256": "sha256:c32fca1ce7894f66acb77255a854a81a1ec284a50909c7df2d2df3c43e59e80c",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex",
@@ -3986,79 +3986,79 @@
           "level": 4,
           "id": "the-indices-must-be-selected.",
           "title": "The indices must be selected.",
-          "line": 96
+          "line": 102
         },
         {
           "level": 4,
           "id": "the-norm-matters.",
           "title": "The norm matters.",
-          "line": 120
+          "line": 128
         },
         {
           "level": 1,
           "id": "sec:two-prime",
           "title": "The two-prime comparison",
-          "line": 142
+          "line": 150
         },
         {
           "level": 1,
           "id": "sec:lcm",
           "title": "Exact multiplicities and normalised tails",
-          "line": 192
+          "line": 200
         },
         {
           "level": 1,
           "id": "sec:escape",
           "title": "A window test and the remaining arithmetic",
-          "line": 304
+          "line": 316
         },
         {
           "level": 4,
           "id": "the-information-the-remaining-argument-must-use.",
           "title": "The information the remaining argument must use.",
-          "line": 405
+          "line": 421
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 411
+          "line": 427
         },
         {
           "level": 4,
           "id": "proof-sources.",
           "title": "Proof sources.",
-          "line": 415
+          "line": 431
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 421
+          "line": 437
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 427
+          "line": 443
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 433
+          "line": 449
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 439
+          "line": 455
         }
       ],
       "citations_rendered": 6,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:051009d4ff32b4ebd094219562c60a483f9e8632da8f0027e965447e4c3006de",
-      "pdf_byte_count": 97210,
+      "pdf_sha256": "sha256:37b5e9d8f2d4b2b21e5967ddc7aed6e214b20742220459f08ee76deb18dee538",
+      "pdf_byte_count": 99175,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4071,12 +4071,12 @@
           {
             "id": "sec:lcm",
             "title": "Exact multiplicities and normalised tails",
-            "line": 192
+            "line": 200
           },
           {
             "id": "sec:escape",
             "title": "A window test and the remaining arithmetic",
-            "line": 304
+            "line": 316
           },
           {
             "id": "sec:open",
@@ -4124,7 +4124,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:0702e99739bdf9d3a7cab0d773a9570b7f46ab82f04358ed28aed6481cc2bcec",
+      "source_sha256": "sha256:79092aae1e682f4f29834a249ea0fe475b1931bfe5d64f917311d1d5c3517e65",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
@@ -4225,109 +4225,109 @@
           "level": 1,
           "id": "sec:newton",
           "title": "The Newton value equation",
-          "line": 371
+          "line": 373
         },
         {
           "level": 1,
           "id": "sec:arguments",
           "title": "Arguments, not moduli",
-          "line": 403
+          "line": 405
         },
         {
           "level": 1,
           "id": "sec:reciprocal",
           "title": "Local coordinates for perturbative competitors",
-          "line": 425
+          "line": 427
         },
         {
           "level": 1,
           "id": "sec:gap",
           "title": "A proof gap in the unrestricted argument",
-          "line": 435
+          "line": 437
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "Computational searches",
-          "line": 463
+          "line": 465
         },
         {
           "level": 1,
           "id": "sec:binomial",
           "title": "Exact symmetric benchmark: complementary chords for every binomial degree",
-          "line": 469
+          "line": 471
         },
         {
           "level": 1,
           "id": "sec:collinear",
           "title": "The sharp collinear theorem: order buys an exact Chebyshev extremal",
-          "line": 502
+          "line": 504
         },
         {
           "level": 1,
           "id": "sec:freepoint",
           "title": "A Poisson identity for critical-value means",
-          "line": 544
+          "line": 546
         },
         {
           "level": 1,
           "id": "sec:orlicz",
           "title": "The exact nonlinear lifetime currency",
-          "line": 625
+          "line": 627
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining geometric selection problem",
-          "line": 678
+          "line": 680
         },
         {
           "level": 4,
           "id": "a-dense-generic-class-suffices.",
           "title": "A dense generic class suffices.",
-          "line": 688
+          "line": 690
         },
         {
           "level": 4,
           "id": "a-sufficient-canonical-arc-estimate.",
           "title": "A sufficient canonical-arc estimate.",
-          "line": 700
+          "line": 702
         },
         {
           "level": 4,
           "id": "the-attachment-obstruction-is-quantitative.",
           "title": "The attachment obstruction is quantitative.",
-          "line": 710
+          "line": 712
         },
         {
           "level": 4,
           "id": "which-information-is-insufficient.",
           "title": "Which information is insufficient.",
-          "line": 721
+          "line": 723
         },
         {
           "level": 1,
           "id": "sec:evidence-ledger",
           "title": "Proof boundaries",
-          "line": 729
+          "line": 731
         },
         {
           "level": 2,
           "id": "sec:1041-sources",
           "title": "Sources and adjacent results",
-          "line": 739
+          "line": 741
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 745
+          "line": 747
         }
       ],
       "citations_rendered": 10,
       "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:f7ee586148bffbf0e93a6eb5c6cb32ea74e0e8327683ddb9b9c4f98b7e5362b6",
-      "pdf_byte_count": 144899,
+      "pdf_sha256": "sha256:0cb588908279da745eff773b1447d2252f8b27fd408ce74351fab832851eba9e",
+      "pdf_byte_count": 146854,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4340,17 +4340,17 @@
           {
             "id": "sec:newton",
             "title": "The Newton value equation",
-            "line": 371
+            "line": 373
           },
           {
             "id": "sec:gap",
             "title": "A proof gap in the unrestricted argument",
-            "line": 435
+            "line": 437
           },
           {
             "id": "sec:open",
             "title": "The remaining geometric selection problem",
-            "line": 678
+            "line": 680
           }
         ],
         "unresolved_count": 0
@@ -4393,7 +4393,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:117ef36f1c253c73fe4841c612738c749ad6bc957b74b9869b37edebf1125a2f",
+      "source_sha256": "sha256:b791b92b1c28feb59f0a646266c5b0e5af8d0e1b29ee5be2ea897bb1a1f9f481",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
@@ -4505,8 +4505,8 @@
       ],
       "citations_rendered": 8,
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:6b44e0a114fa4d30b9cbb75affced171481e86205ef22f642a0a78ed3340c08e",
-      "pdf_byte_count": 108545,
+      "pdf_sha256": "sha256:1c4328de5ba225c414d6177c2aced75031d8c0d4f9e4563fe4966a6aeca976d1",
+      "pdf_byte_count": 109855,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",

@@ -13542,7 +13542,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 668
+        "line": 700
       }
     },
     {
@@ -13578,7 +13578,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 115
+        "line": 119
       }
     },
     {
@@ -13602,7 +13602,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 99
+        "line": 102
       }
     },
     {
@@ -13614,7 +13614,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 463
+        "line": 486
       }
     },
     {
@@ -13626,7 +13626,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 469
+        "line": 492
       }
     },
     {
@@ -13638,7 +13638,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 478
+        "line": 501
       }
     },
     {
@@ -13650,7 +13650,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 516
+        "line": 534
       }
     },
     {
@@ -13674,7 +13674,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 682
+        "line": 714
       }
     },
     {
@@ -13686,7 +13686,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 691
+        "line": 723
       }
     },
     {
@@ -13698,7 +13698,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 701
+        "line": 733
       }
     }
   ],

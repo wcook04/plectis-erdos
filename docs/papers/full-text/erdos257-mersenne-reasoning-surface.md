@@ -301,7 +301,7 @@ The parity route is the same fact by hand: “$`K(M)`$ even $`\iff`$ $`M`$ a per
 
 <div id="thm:one-sided" class="thm">
 
-**Theorem 19** (One-sidedness; <span class="smallcaps">proved</span>). *$`1/2 \notin \mathcal{A}`$ is $`\Sigma^0_1`$: a single finite object — a fatal gap — certifies it. $`1/2 \in \mathcal{A}`$ is $`\Pi^0_1`$, and no finite object certifies it. Consequently no finite computation, at any depth, can establish $`1/2 \in \mathcal{A}`$. `coord:meta` <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span>*
+**Theorem 19** (One-sidedness; <span class="smallcaps">proved</span>). *$`1/2 \notin \mathcal{A}`$ is $`\Sigma^0_1`$: a single finite object — a fatal gap — certifies it. $`1/2 \in \mathcal{A}`$ is $`\Pi^0_1`$, and no finite object certifies it. Consequently no finite computation, at any depth, can establish $`1/2 \in \mathcal{A}`$. `coord:meta` <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span> The statement is checked in Lean: [<span class="smallcaps">Lean source</span>](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CatalogueAssemblies.lean#L50).*
 
 </div>
 
