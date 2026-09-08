@@ -13,11 +13,11 @@ apparent waypoints are \emph{equivalent} to the full problem, not easier approac
 
 The functional $\mathtt{erdosSupportSeries}\ 2\ (-)$ denotes the base-$2$ Erd\H{o}s support series
 $\mathtt{erdosSupportSeries}\ 2\ A := \sum_{n\in A} 1/(2^n-1)$
-(\lean{erdosSupportSeries}{CertificateKernel.lean:8897}). $\mathtt{supportCoeff}\ A\ n :=
-|\{d\mid n : d\in A\}|$ (\lean{supportCoeff}{CertificateKernel.lean:8856}) is the divisor-indicator
+(\lean{supported reciprocal-power series}{CertificateKernel.lean:8897}). $\mathtt{supportCoeff}\ A\ n :=
+|\{d\mid n : d\in A\}|$ (\lean{divisor-support coefficient}{CertificateKernel.lean:8856}) is the divisor-indicator
 coefficient whose generating tail feeds every certificate below. $\mathcal{A} :=
 \mathtt{mersenneAchievementSet} = \{x\mid \exists A,\ 0\notin A\wedge x =
-\mathtt{positiveMersenneSupportValue}\ A\}$ (\lean{mersenneAchievementSet}{GreedyAchievementSet.lean:571}).
+\mathtt{positiveMersenneSupportValue}\ A\}$ (\lean{Mersenne achievement set}{GreedyAchievementSet.lean:571}).
 $G := \mathtt{greedyMersenneSupport}(1/2)$ is the canonical greedy support for target $1/2$;
 $\mathtt{seamIntegerGreedyRemainder}\ s$ (written $\mathrm{rem}(s)$ below) is its integer seam
 remainder at row $s$, and a \emph{reset} at row $r$ is a row where the greedy orbit returns to the
@@ -43,7 +43,7 @@ engine is
 \]
 with $\mathrm{Cert}(A)\Rightarrow \mathrm{Irrational}(\mathtt{erdosSupportSeries}\ 2\ A)$
 already proved unconditionally for \emph{every} $A$
-(\lean{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{CertificateKernel.lean:9031},
+(\lean{weighted coefficient certificates imply irrationality}{CertificateKernel.lean:9031},
 \ev{Lean}, \scale{n/a} --- the theorem is universally quantified over $A$; only its hypothesis is
 unsupplied).  Therefore the stronger statement
 \[
@@ -54,7 +54,7 @@ $\mathrm{O1'}$ is actually false.  For
 $A=\{n\ge2:n\text{ squarefree}\}$ the incidence is
 $2^{\omega(n)}-1$, hence odd for every $n\ge2$, and the digitwise
 certificate schema has no instance at any even base
-(\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.not_exists_digitwise_certificates_squarefreeSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:292},
+(\lean{digitwise certificate obstruction for squarefree support}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:292},
 \ev{Lean}).  This is a method ceiling, not a counterexample to irrationality:
 Duverney--Tachiya prove the squarefree value irrational at every
 power-of-two base.  Likewise the pairwise-coprime producer does not cover the
@@ -72,7 +72,7 @@ strengthening, not an open equivalent normal form.
 \end{defn}
 $\mathrm{HALF}$ is a \emph{single instance} of the negation of $\mathrm{U257}$: any witness
 $A$ with $0\notin A$, $\mathtt{erdosSupportSeries}\ 2\ A=1/2$ is infinite
-(\lean{finite_boolSupport_ne_half}{HalfCarryReachability.lean:589}, \ev{Lean}, \scale{uniform} ---
+(\lean{finite Boolean supports cannot equal one half}{HalfCarryReachability.lean:589}, \ev{Lean}, \scale{uniform} ---
 finite supports have odd-denominator value, so can never equal a dyadic rational), hence a
 genuine counterexample to $\mathrm{U257}$. So $\mathrm{HALF}\Rightarrow\neg\mathrm{U257}$, strictly
 --- it does not decide $\mathrm{U257}$ if false, since $\mathrm{U257}$ could still fail at a
@@ -81,7 +81,7 @@ unconditional Lean iff, to a purely combinatorial statement about one fixed orbi
 \[
 \mathrm{HALF}\ \Longleftrightarrow\ \left(\mathtt{greedyMersenneSkippedSupport}(1/2)\right).\mathrm{Infinite}
 \]
-(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2583},
+(\lean{half membership characterized by infinitely many greedy skips}{GreedyAchievementSet.lean:2583},
 \ev{Lean}, \scale{uniform}, coordinate \coord{mobius-mersenne}, target-generic in the reverse
 direction --- the forward direction uses only that the target is rational, so the same theorem
 holds verbatim for every rational $t\ge 0$ in place of $1/2$).
@@ -99,9 +99,9 @@ Define
 \mathrm{CPGS}\ :=\ \forall N,\ \exists c\ge N,\ c\ \text{skipped by the rational half-greedy
 orbit}\ \wedge\ 0<\mathtt{greedyMersenneRemainderRat}(1/2)(c-1)
 \]
-(\lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22}). The positivity
+(\lean{cofinally many positive half-greedy skips}{BooleanMobiusSkipRowCofinal.lean:22}). The positivity
 conjunct is unconditionally true for every skipped $c$
-(\lean{localMersennePrefixValue_halfGreedy_lt_half}{BooleanMobiusCriticalCapacityCofinal.lean:138},
+(\lean{every local Mersenne prefix remains below one half}{BooleanMobiusCriticalCapacityCofinal.lean:138},
 \ev{Lean}, \scale{uniform} --- an odd-denominator parity fact), hence deletable without changing
 the Prop's meaning. What survives, $\forall N\,\exists c\ge N$ skipped, is exactly
 $(\mathtt{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}$, so
@@ -111,14 +111,14 @@ $(\mathtt{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}$, so
 \end{prop}
 \ev{Math, adversarially verified} (Survivor 7, composition-survivor pass). \scale{cofinal}.
 \coord{mobius-mersenne, greedy orbit}. This closes off what the source bank advertised as "the
-shortest known path" to a disproof (\lean{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84}): there is no shortcut through it, because it is not shorter.
+shortest known path" to a disproof (\lean{positive greedy skips produce cofinal exact local rows}{BooleanMobiusSkipRowCofinal.lean:84}): there is no shortcut through it, because it is not shorter.
 
 \begin{prop}[The terminal-only cofinal strip is equivalent to HALF]
 \label{prop:strip-equiv}
 Let $\mathtt{HalfCarryCofinalTerminalOnlyStrip}$ be the socket that a finite normalised word $a$
 at cofinally many depths $M$ satisfies $|\mathtt{integerHalfCarry}(\mathtt{wordSupport}\,a)(M-1)|
 \le \mathtt{halfStripBound}\,M$ where $\mathtt{halfStripBound}\,n = 2\sqrt{n}+4$
-(\lean{HalfCarryCofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:34}). Widened to strip
+(\lean{cofinal terminal-only strip condition}{TerminalOnlyCofinal.lean:34}). Widened to strip
 constant $6$ (i.e. $2\cdot\mathtt{Nat.sqrt}\,n+6$), this socket is logically equivalent to
 $\mathrm{HALF}$: every truncation of an achieving support is already a witness (not merely
 cofinally many), given three small mechanical lemmas not yet in the corpus (a general
@@ -134,7 +134,7 @@ socket carries no strategic advantage over proving $\mathrm{HALF}$ outright.
 Neither Prop.~\ref{prop:cpgs-equiv} nor Prop.~\ref{prop:strip-equiv} narrows the search space for
 $\mathrm{HALF}$. Their value is negative: they retire two named targets from the "worth chasing as
 an easier waystation" list. A third socket, the hypothesis $\forall N,\ \mathtt{mobiusCenteredHalfCarry}\,A\,N\le 2\sqrt N+4$
-of \lean{greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound}{HalfCarryReachability.lean:834},
+of \lean{square-root carry bound forces infinitely many greedy steps}{HalfCarryReachability.lean:834},
 is likewise proved EQUIVALENT to $\mathrm{HALF}$ for the specific support $A=G$ (Survivor 4,
 \ev{Math, adversarially verified, weakened}) --- not, as originally claimed, for every $A$ with
 $1\notin A$; the general-$A$ version is only a one-sided implication ($\mathrm{hbound}\Rightarrow
@@ -148,21 +148,21 @@ $1\notin A$; the general-$A$ version is only a one-sided implication ($\mathrm{h
 \mathrm{CofinalExactLocalMersenneHalfRows}\ :=\ \forall N,\ \exists n\ge N,\
 \mathtt{ExactLocalMersenneHalfRow}\ n
 \]
-(\lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:38}, \ev{Open},
+(\lean{cofinal exact local Mersenne rows}{BooleanMobiusCofinalExactRows.lean:38}, \ev{Open},
 \scale{cofinal}). No compatibility is required between witness supports at different endpoints
 --- the defining weakening versus a single coherent trajectory.
 \end{defn}
 $\mathrm{CofinalExactLocalMersenneHalfRows}\Rightarrow\mathrm{HALF}$ is proved unconditionally
 via compactness of $\mathcal{A}$ (continuous image of $(\mathbb{N}\to\mathrm{Fin}\,2)$ under the
 digit-coding map, hence closed)
-(\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
+(\lean{cofinal exact local rows imply half membership}{BooleanMobiusCofinalExactRows.lean:71},
 \ev{Lean}). This direction is \emph{strictly weaker} than $\mathrm{HALF}$ as currently proved:
 the argument uses closedness alone and discards the producing rows, so the theorem as it stands
 does not pin a single limiting support $A$; a genuine sequential-compactness extraction (Cantor-space
 diagonal argument over $(\mathrm{Fin}\,2)^{\mathbb{N}}$, using the file's own
-\lean{continuous_positiveMersenneDigitValue}{GreedyAchievementSet.lean:628}) would upgrade this to
+\lean{continuity of the positive Mersenne digit map}{GreedyAchievementSet.lean:628}) would upgrade this to
 producing $A$ explicitly, and would additionally transfer $2\in A$ for free
-(\lean{two_mem_of_exact_localMersenneQuotient}{BooleanMobiusExactRowRankTwo.lean:23}) --- but this
+(\lean{an exact local quotient contains rank two}{BooleanMobiusExactRowRankTwo.lean:23}) --- but this
 upgrade is itself unformalised (Survivor 1, \ev{Math, adversarially verified, weakened}). So O3
 sits strictly below $\mathrm{HALF}$ in the current Lean state of the corpus, not merely
 logically.
@@ -172,7 +172,7 @@ The corpus's engine for O3 is a sharp $c$-2-bit capacity test. Write
 \[
 \mathtt{localBinarySuffix}\ D\ k\ M\ :=\ 2^{M-k}-\mathtt{localPrefixQuotient}\ D\ M - 1
 \]
-(\lean{localBinarySuffix}{BooleanMobiusLocalRepair.lean:102}). For $4\le c$, every $d\in D$ with
+(\lean{local binary suffix}{BooleanMobiusLocalRepair.lean:102}). For $4\le c$, every $d\in D$ with
 $2\le d<c$, and $\mathtt{localMersennePrefixValue}\,D<1/2$:
 \begin{align}
 &\text{(loose, proved)}\quad \mathtt{localBinarySuffix}\ D\ 1\ (2c-2)\ <\ 2^{c-1}
@@ -181,11 +181,11 @@ $2\le d<c$, and $\mathtt{localMersennePrefixValue}\,D<1/2$:
 \tag{$\ast\ast$}
 \end{align}
 $(\ast)$ is proved unconditionally, uniform in $c$, no case split
-(\lean{localBinarySuffix_two_mul_sub_two_lt_upperHalfCapacity}{BooleanMobiusSkippedCoreExactRow.lean:123},
+(\lean{upper-half capacity bound for the local suffix}{BooleanMobiusSkippedCoreExactRow.lean:123},
 \ev{Lean}, \scale{uniform}).
 
 $(\ast\ast)$ is exactly one bit sharper and, via
-\lean{localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff}{BooleanMobiusSkippedCoreCriticalCapacity.lean:22}
+\lean{critical-capacity characterization for the local suffix}{BooleanMobiusSkippedCoreCriticalCapacity.lean:22}
 (an unconditional iff), is \emph{equivalent} to an exact row already crossing the integer
 half-target at $c$. The true unproved gap between $(\ast)$ and $(\ast\ast)$ is additive, not
 multiplicative: the proof of $(\ast)$ derives $\mathtt{localBinarySuffix}<2^{c-2}+|D|$ and
@@ -200,20 +200,20 @@ $2^{(c+5)/2}$).
 
 The generic (non-greedy) sharp-fill theorem itself is already unconditional and
 strictly more general than every consumer built on it:
-\lean{exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity}{BooleanMobiusSkipRow.lean:238}
+\lean{strict upper filling produces an exact row}{BooleanMobiusSkipRow.lean:238}
 (\ev{Lean}) needs only $(\ast\ast)$ for \emph{some} below-half core $D$, not a greedy prefix ---
 this is the escape route named in Prop.~\ref{prop:cpgs-equiv}'s remark: abandoning the canonical
 greedy orbit (which forces $\mathrm{CPGS}$-equivalence) for an arbitrary below-half core is a
 genuinely different, still-open target.
 
 The corpus's complete inductive skeleton from the endpoint-six seed to O3 is already assembled
-(\lean{cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply}{BooleanMobiusCriticalCapacityCofinal.lean:1309},
+(\lean{critical quotient supply produces cofinal exact rows}{BooleanMobiusCriticalCapacityCofinal.lean:1309},
 \ev{Lean}); it consumes the sharp capacity input, in its reduced canonical form
 \[
 \mathrm{HalfGreedySkippedCriticalQuotientSupply}\ :=\ \forall c\ge 4\ \text{skipped},\
 2^{(2c-2)-1}\ \le\ \mathtt{localPrefixQuotient}\big(\mathrm{insert}\ c\ (\mathtt{halfGreedyPrefixSupport}(c-1))\big)(2c-2)
 \]
-(\lean{HalfGreedySkippedCriticalQuotientSupply}{BooleanMobiusCriticalCapacityCofinal.lean:178}),
+(\lean{half-greedy skipped critical quotient supply}{BooleanMobiusCriticalCapacityCofinal.lean:178}),
 at essentially every step (\ev{Open}, \scale{cofinal}). This is a strictly harder producer than
 (O3-supply) because it is pinned to the greedy prefix rather than an arbitrary core.
 
@@ -235,7 +235,7 @@ composition already Lean-landed on the consumer end, to
 \[
 \mathrm{SQRTESC}\ \Longrightarrow\ \mathrm{LargestSkipLateStepSocket}\ \Longrightarrow\ \mathrm{HALF}
 \]
-(\lean{half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket}{HalfCylinderLargestSkipInduction.lean:167}, \ev{Lean} for the second
+(\lean{late largest-skip condition implies half membership}{HalfCylinderLargestSkipInduction.lean:167}, \ev{Lean} for the second
 arrow, \ev{Math, fleet-audited} for the first). $\mathrm{SQRTESC}$ is equivalently stated as the
 R-run length bound
 \[
@@ -281,14 +281,14 @@ short run is untouched by this theorem.
 $\mathtt{SeamTwoSidedDyadicCellEscape}$ excludes three integer values of the middle coordinate,
 $4\cdot\mathrm{rem}(s)-\mathrm{belowPulse}(s)-4\notin\{-3,-2,-1\}$, plus one right-pulse-leak
 bound $4\cdot\mathrm{overshoot}(s)+\mathrm{abovePulse}(s)\le2^{s+2}$ under
-$\mathrm{overshoot}(s)\le2^s$ (\lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374}).
+$\mathrm{overshoot}(s)\le2^s$ (\lean{two-sided dyadic seam escape criterion}{HalfCylinderMiddleCarryLowerBound.lean:4374}).
 \end{defn}
 Granted this, induction from a \texttt{decide}-checked row-5 base propagates
 $\forall s\ge5,\ \mathrm{rem}(s)\le2^s\vee\mathrm{overshoot}(s)\le2^s$
-(\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}, \ev{Lean}
+(\lean{two-sided bounds for seam escape}{HalfCylinderMiddleCarryLowerBound.lean:4448}, \ev{Lean}
 given the hypothesis, \scale{uniform in the consequence}). One of the three cells, $-3$, is already
 closed unconditionally in the all-right-tail configuration
-(\lean{finalMiddleCell_neg_three_not_last}{HalfCylinderFinalMiddleCellEscape.lean:587}, \ev{Lean}).
+(\lean{the final negative-three middle cell is not terminal}{HalfCylinderFinalMiddleCellEscape.lean:587}, \ev{Lean}).
 The two remaining cells, $-2$ and $-1$, are \ev{Open}: what would close O5 is their exclusion for the
 actual seam orbit (not a hypothetical one), together with the right-pulse-leak inequality. This is
 anti-concentration at \emph{constant} resolution (three named integers), sitting far below
@@ -298,14 +298,14 @@ about O4; no transport between the two has been attempted in the corpus.
 A distinct, exponentially cheaper tail-dominance socket targets the same downstream payoff via
 the upper-reset branch alone: $\mathrm{SeamUpperResetDyadicBandEscape} := \forall d\ge13,\forall
 j\le d,\ 2^{d-j+1}<\mathrm{resetCharge}\vee\mathrm{resetCharge}+2(d+j)\le2^{d-j+1}$
-(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}, \ev{Open},
+(\lean{upper-reset dyadic-band escape criterion}{HalfCylinderMiddleCarryLowerBound.lean:4566}, \ev{Open},
 proved \ev{Cert} through row $31$ only by exhaustive computation
-(\lean{seamUpperResetDyadicBandEscape_through_thirty}{HalfCylinderUpperResetBandCertificates.lean:78})).
+(\lean{certified upper-reset band escape through depth 30}{HalfCylinderUpperResetBandCertificates.lean:78})).
 This band has \emph{linear} width $O(d)$, not dyadic $O(2^{d/2})$ width --- exponentially weaker
 than $\mathrm{SQRTESC}$ yet sufficient for the same conclusion $\mathrm{HALF}$ via
-$\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}$.
+$\lean{upper-reset band escape implies half membership}{HalfCylinderMiddleCarryLowerBound.lean:4790}$.
 It is proved logically equivalent to a single-critical-index check per row
-(\lean{seamUpperResetCriticalBandEscape_iff}{HalfUpperResetCriticalBand.lean:883}, \ev{Lean}), which is a genuine
+(\lean{critical-band characterization of upper-reset escape}{HalfUpperResetCriticalBand.lean:883}, \ev{Lean}), which is a genuine
 quantifier-complexity reduction, not a strength reduction.
 
 \subsection{Target O2b --- Membership of $1/21$}
@@ -316,19 +316,19 @@ The second rational target has an exact current frontier:
  \quad\Longleftrightarrow\quad
  \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
 \]
-\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3507}
+\lean{membership of one twenty-first characterized by absence of a fatal aligned branch}{TwentyOneQuotientGreedy.lean:3507}
 \quad\ev{Lean}.  The fatal branch means a finite fatal greedy gap followed
 by cofinite exact selection, eventual quotient/rational alignment, and
 eventual visits to every doubling block.  If it occurs, the canonical
 quotient remainder is eventually strictly larger than $2^R$ and follows one
 explicit affine recurrence:
-\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5625}
+\lean{eventual strict supercapacity of the fatal aligned branch}{TwentyOneQuotientGreedy.lean:5625}
 and
-\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5658}.
+\lean{eventual affine supercapacity of the fatal aligned branch}{TwentyOneQuotientGreedy.lean:5658}.
 Any unbounded sequence of closed returns instead proves membership.
 
 No finite support on ranks at least $2$ sums to $1/21$
-(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:61}).
+(\lean{finite Erdos sums cannot equal one twenty-first}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:61}).
 Thus membership would already be an infinite-support rational counterexample
 to $\mathrm{U257}$.  The missing step is to exclude the fatal aligned
 affine-supercapacity branch (or force unbounded closed returns); neither is

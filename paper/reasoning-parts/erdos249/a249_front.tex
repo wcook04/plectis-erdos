@@ -37,12 +37,12 @@ The open question has a sharp equivalent inside the corpus, and it is the
 statement everything below is measured against. Write $2^{N} S = \Phi_N + R_N$
 with $\Phi_N := \sum_{n \le N} \varphi(n) 2^{N-n} \in \N$ and
 $R_N := \sum_{j \ge 0} \varphi(N+1+j)/2^{j+1} \in [0,\infty)$
-(\lean{Erdos249257.TotientTailPeriodKiller.totientTail}{TotientTailPeriodKiller.lean:57},
-\lean{two_pow_mul_totient_series_eq}{TotientTailPeriodKiller.lean:150}).
+(\lean{totient tail}{TotientTailPeriodKiller.lean:57},
+\lean{dyadic scaling identity for the totient series}{TotientTailPeriodKiller.lean:150}).
 If $S \in \Q$ then, applying Euler's theorem to the odd part of its
 denominator, there are $h > 0$ and $N_0$ with $R_{N+h} - R_N \in \Z$ for every
 $N \ge N_0$
-(\lean{Erdos249257.eventual\_period\_of\_not\_irrational}{TotientTailPeriodKiller.lean:358},
+(\lean{eventual period forced by rationality}{TotientTailPeriodKiller.lean:358},
 explicit witnesses $h = \varphi(\mathrm{oddPart}(r.\mathrm{den}))$, $N_0 = v_2(r.\mathrm{den})$).
 
 So it suffices to refute integrality cofinally on every period ray. The finite
@@ -59,14 +59,14 @@ the depth-$L$ truncation of $2^{L}(R_{N+h} - R_N)$, and
   \;<\; 2^{L} - (N{+}h{+}L{+}2),
 $}\]
 a decidable condition
-(\lean{Erdos249257.TotientTailPeriodKiller.windowDiscrepancy}{TotientTailPeriodKiller.lean:66},
-\lean{Erdos249257.TotientTailPeriodKiller.certifiedKill}{TotientTailPeriodKiller.lean:72}).
+(\lean{dyadic window discrepancy}{TotientTailPeriodKiller.lean:66},
+\lean{certified interior residue}{TotientTailPeriodKiller.lean:72}).
 
 The radius $N{+}h{+}L{+}2$ is exactly the crude tail bound coming from
 $\varphi(m) \le m$, so a certificate is sound: it forces
 $R_{N+h} - R_N \notin \Z$, and in fact certificates are \emph{complete} for
 non-integrality
-(\lean{Erdos249257.exists\_certifiedKill\_iff\_tail\_diff\_notMem\_int}{LcmConeFlatness.lean:316}).
+(\lean{certificate existence characterizes tail nonintegrality}{LcmConeFlatness.lean:316}).
 The entire \#249 side of the programme therefore reduces to one obligation.
 
 \begin{defn}[The supply obligation $\mathrm{Sep}$ --- the exact open target]
@@ -78,7 +78,7 @@ The entire \#249 side of the programme therefore reduces to one obligation.
   \mathrm{certifiedKill}(h,N,L).
 $}\]
 $\mathrm{Sep} \Rightarrow \mathrm{Irrational}(S)$
-(\lean{Erdos249257.irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394}).
+(\lean{cofinal certificates imply irrationality}{TotientTailPeriodKiller.lean:394}).
 \coord{binary-digit} \scale{cofinal} \ev{Lean}
 \end{defn}
 
@@ -87,7 +87,7 @@ quantifier shape is $\forall\forall\exists\exists$: the corpus can and does
 verify individual instances, but an instance is not the obligation. Second,
 depth cannot stay bounded: from $\mathrm{certifiedKill}(h,N,L)$ one gets
 $2(N{+}h{+}L{+}2) < 2^{L}$ immediately
-(\lean{Erdos249257.certifiedKill\_depth\_floor}{TotientTailPeriodKiller.lean:79},
+(\lean{certificate depth lower bound}{TotientTailPeriodKiller.lean:79},
 \ev{Lean}), so $L \gtrsim \log_2(N{+}h)$. A certificate is a demand that a
 weighted accumulation over a window of length $\approx \log_2 N$ lands near
 the centre of its dyadic arc, at full arithmetic resolution.
@@ -107,12 +107,12 @@ The bound is sharp for the method: $q = Q_0 + 1$ is the exact first failing
 denominator, exhibited as the mediant of two explicit unimodular Farey
 neighbours.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{Erdos249257.tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
-\lean{Erdos249257.gap\_check\_window\_1\_240\_first\_failure}{GapFareyBound.lean:225}
+\lean{denominator exclusion through the stated Farey bound}{CertificateKernel.lean:18384}
+\lean{first denominator beyond the Farey certificate}{GapFareyBound.lean:225}
 \end{thm}
 
 This is obtained from a classical Stern--Brocot gap lemma
-(\lean{farey\_gap}{GapFareyBound.lean:51}) applied at window $K = 240$, the
+(\lean{Farey interval bound}{GapFareyBound.lean:51}) applied at window $K = 240$, the
 last rung of the ladder $4838 \to 2^{22} \to 2.49\times10^{17} \to Q_0$. It is
 logically independent of $\mathrm{Sep}$: it uses no certificate and no period
 apparatus. Its own open continuation is whether $\sup_K (b+d)(K) = \infty$;
@@ -122,11 +122,11 @@ that would close \#249 through this theorem's consumer. \ev{Open}
 \label{prop:deposits}
 $\mathrm{certifiedKill}$ has been verified at: the $28$ diagonal instances of
 the LCM pincer through $t = 64$
-(\lean{Erdos249257.certifiedKill\_diagonal\_all\_imported\_through\_t64}{DiagonalPincerCertificatesT64.lean:1967},
-endpoint \lean{Erdos249257.certifiedKill\_diagonal\_t64}{DiagonalPincerCertificatesT64.lean:1928});
+(\lean{all diagonal certificates through depth 64}{DiagonalPincerCertificatesT64.lean:1967},
+endpoint \lean{depth-64 diagonal certificate}{DiagonalPincerCertificatesT64.lean:1928});
 all shifts $h \in [1,16]$ simultaneously at $(N,L) = (14,9)$, by
 \texttt{decide}
-(\lean{Erdos249257.certifiedKill\_all\_upto\_sixteen}{CarrySurvivorExtinction.lean:574});
+(\lean{simultaneous certificates for shifts through 16}{CarrySurvivorExtinction.lean:574});
 and eight further period deposits at $N = 300$. Every deposit fires within a
 small additive constant of the minimum depth permitted by
 $\mathrm{certifiedKill\_depth\_floor}$. Note the quantifier order: this deposit
@@ -139,11 +139,11 @@ $\forall h\, \forall N_0\, \exists N \exists L$.
 \label{prop:sign}
 The true actual-LCM tail difference is strictly positive for every $a \ge 8$,
 with no irrationality hypothesis
-(\lean{Erdos257PeriodNoncollapse.actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39},
-\lean{Erdos257PeriodNoncollapse.actualLcmTailOrbit\_pos}{TotientActualLcmOrbitSign.lean:144}).
+(\lean{positivity of shifted actual-LCM tail differences}{TotientActualLcmOrbitSign.lean:39},
+\lean{positivity of the actual-LCM tail orbit}{TotientActualLcmOrbitSign.lean:144}).
 In the same coordinate, integrality of the orbit forces the residue to the
 \emph{top edge}, exactly $2^{K} - e$
-(\lean{Erdos257PeriodNoncollapse.actualLcm\_integral\_forces\_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211}).
+(\lean{integral actual-LCM orbit forces the top-edge residue}{TotientActualLcmOrbitSign.lean:211}).
 Positivity does not exclude the top edge. So the strongest cofinal fact the
 corpus owns about the actual object supplies one of the two inequalities a
 certificate needs and provably cannot supply the other.
@@ -154,13 +154,13 @@ certificate needs and provably cannot supply the other.
 \label{prop:rank}
 If $S$ is rational then, for every $e$, the dyadic carry-kernel family at
 level $e$ has $\Q$-rank at least $2^{e}-1$
-(\lean{Erdos249257.not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300}).
+(\lean{rationality forces unbounded carry rank}{TotientCarryKernelRigidity.lean:300}).
 The scale side is complete and uniform in $e$: the canonical family of
 $2^{e}+1$ dyadic totient-kernel channels is linearly independent over $\Q$ at
 every depth, via CRT plus Dirichlet
-(\lean{Erdos249257.linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}),
+(\lean{linear independence of canonical totient kernels}{TotientMahlerDefect.lean:935}),
 so the full family spans an infinite-dimensional space
-(\lean{Erdos249257.not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1145}).
+(\lean{infinite dimensionality of the full totient-kernel span}{TotientMahlerDefect.lean:1145}).
 \coord{carry-rank} \scale{uniform} \ev{Lean}
 \end{prop}
 
@@ -169,7 +169,7 @@ so the full family spans an infinite-dimensional space
 Rationality gives uniform eventual periodicity of the carry's dyadic sections
 modulo $v$; that periodicity provably does \emph{not} promote to any $\Q$-rank
 bound on the carry family
-(\lean{Erdos257PeriodNoncollapse.not\_irrational\_totientSeries\_implies\_mod\_period\_and\_unbounded\_rank}{TotientTailCarryPeriod.lean:224}).
+(\lean{rationality gives periodic reductions but unbounded rank}{TotientTailCarryPeriod.lean:224}).
 \coord{carry-rank} \scale{uniform} \ev{Lean}
 \end{prop}
 
@@ -178,14 +178,14 @@ bound on the carry family
 Several re-encodings are proved \emph{equivalent}
 to $\mathrm{Irrational}(S)$, not merely sufficient for it: the period-multiple
 kill supply
-(\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}),
+(\lean{period-multiple certificate characterization}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}),
 the base certificate supply and its lcm-diagonal normal form
-(\lean{irrational\_totient\_series\_iff\_certificate\_supply}{LcmConeFlatness.lean:412};
-\lean{irrational\_totient\_series\_iff\_lcm\_diagonal\_certificate\_supply}{LcmConeFlatness.lean:426}),
+(\lean{cofinal certificate characterization of irrationality}{LcmConeFlatness.lean:412};
+\lean{LCM-diagonal certificate characterization of irrationality}{LcmConeFlatness.lean:426}),
 the directed-certificate supply and its LCM specialisation
-(\lean{Erdos257PeriodNoncollapse.CofinalDirectedLcmCertificateSupply}{TotientTailCarryPeriod.lean:866}),
+(\lean{cofinal directed LCM certificate condition}{TotientTailCarryPeriod.lean:866}),
 and the window-separated-pairs predicate
-(\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1765}).
+(\lean{separated-window characterization of irrationality}{PivotAntiReconstruction.lean:1765}).
 \coord{binary-digit} \scale{cofinal} \ev{Lean}
 \end{prop}
 
@@ -196,7 +196,7 @@ $c(n) \equiv \varphi(n) \pmod 2$ for \emph{every} $n$, and $c$ not eventually
 periodic --- indeed for every $N, G, K$ there are $K$ explicit carry pulses
 beyond $N$, pairwise separated by more than $G$ --- and yet
 $\sum_n c(n)/2^{n} = 3/2 \in \Q$
-(\lean{Erdos257PeriodNoncollapse.exists\_totientParity\_arbitrarilyManySeparatedCarry\_rational\_countermodel}{TotientParityCoboundaryCountermodel.lean:637};
+(\lean{rational parity countermodel with arbitrarily many separated carries}{TotientParityCoboundaryCountermodel.lean:637};
 sum at \texttt{:359}, aperiodicity at \texttt{:487}, parity match at \texttt{:194};
 \texttt{\#print axioms} clean).
 \coord{coefficient-word} \scale{uniform} \ev{Lean}
@@ -289,9 +289,9 @@ $\mathrm{Kill}_c(h,N,L) \Rightarrow R^{c}_{N+h} - R^{c}_{N} \notin \Z$.
 From $c(n) \le n$ one gets
 $\lvert 2^{L}(R^{c}_{N+h} - R^{c}_{N}) - A_c(h,N,L)\rvert < N{+}h{+}L{+}2$;
 this is the crude tail estimate, formalised for $\varphi$ at
-\lean{Erdos249257.tail\_after\_le}{TotientTailPeriodKiller.lean:198} and used
+\lean{tail estimate}{TotientTailPeriodKiller.lean:198} and used
 there to prove
-\lean{Erdos249257.tail\_diff\_notMem\_int\_of\_certifiedKill}{TotientTailPeriodKiller.lean:262}.
+\lean{certified residue forces a nonintegral tail difference}{TotientTailPeriodKiller.lean:262}.
 If $R^{c}_{N+h} - R^{c}_{N} = k \in \Z$ then $2^{L}k \equiv 0 \pmod{2^{L}}$
 and $A_c$ lies within $N{+}h{+}L{+}2$ of $2^{L}k$, so
 $A_c \bmod 2^{L}$ lies within $N{+}h{+}L{+}2$ of $0$ or of $2^{L}$,
@@ -316,10 +316,10 @@ $m \mid 2^{h}-1$.
 \begin{rem}
 Lemmas~\ref{lem:gsound} and~\ref{lem:gperiod} are elementary and are stated
 here in ordinary mathematics. Their $\varphi$-instances are Lean theorems
-(\lean{Erdos249257.tail\_diff\_notMem\_int\_of\_certifiedKill}{TotientTailPeriodKiller.lean:262},
-\lean{Erdos249257.eventual\_period\_of\_not\_irrational}{TotientTailPeriodKiller.lean:358}),
+(\lean{certified residue forces a nonintegral tail difference}{TotientTailPeriodKiller.lean:262},
+\lean{eventual period forced by rationality}{TotientTailPeriodKiller.lean:358}),
 and the generic tail-period direction exists on disk inside
-\lean{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit}{GenericTailOrbitRigidity.lean:426};
+\lean{tempered-orbit characterization of rational binary series}{GenericTailOrbitRigidity.lean:426};
 a generic \emph{named} theorem of the form of Lemma~\ref{lem:gperiod} does not
 exist in either tree. The composition below is mechanical but unformalised, and
 is flagged \ev{Math} throughout for that reason.
@@ -417,13 +417,13 @@ is never used as a premise elsewhere in this document.
 \item \emph{Certificate completeness.} Every certificate vocabulary is an
   \emph{iff} with the underlying non-integrality, so every re-encoding of
   $\mathrm{Sep}$ is equivalent to $\mathrm{Sep}$
-  (\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432},
+  (\lean{period-multiple certificate characterization}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432},
   forward at \texttt{:132}, converse at \texttt{:143}).
 \item \emph{Sample choice.} Any weakening in which the prover may \emph{choose}
   which indices to test collapses to $\mathrm{Irrational}(S)$ outright, because
   irrationality plus doubling expansivity already supplies a two-point sample
   with the required separation
-  (\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1765}).
+  (\lean{separated-window characterization of irrationality}{PivotAntiReconstruction.lean:1765}).
   The mechanism is visible in the converse proof
   (\texttt{\breakcode{windowSeparatedPairsAt\_of\_cofinally\_scaled\_adjacent\_chord}},
   \texttt{PivotAntiReconstruction.lean:1663}): it selects $T = \{N, N+1\}$ and
@@ -435,7 +435,7 @@ is never used as a premise elsewhere in this document.
   diamond $\mathrm{Hit}(H) \wedge \mathrm{Hit}(pH) \wedge \mathrm{Hit}(qH)
   \wedge \mathrm{Hit}(pqH)$ is equivalent to $\mathrm{Hit}(H)$ alone, with no
   primality used
-  (\lean{Erdos249257.fullTarget\_primeAdjunction\_diamond\_iff\_root}{FullTargetPrimeAdjunctionNoGo.lean:196}).
+  (\lean{prime-adjunction diamond reduction}{FullTargetPrimeAdjunctionNoGo.lean:196}).
 \end{enumerate}
 \textbf{Rules out:} ``find an easier waypoint'' as a strategy class.
 \textbf{Does not rule out:} targets over a \emph{fixed full block} with no
@@ -505,8 +505,8 @@ its own defining congruence $p \equiv 1 + 2^{K-1} \pmod{2^{K}}$ forces
 $p \ge 1 + 2^{K-1}$, so with $N = p-K$, $h = H$, $L = K$ the radius $p+H+2$
 exceeds $2^{K-1}$ for every prime $p$ and every $K$.
 \coord{two-adic-pulse} \scale{cofinal} \ev{Lean}
-\lean{Erdos257PeriodNoncollapse.exists\_prime\_deltaTotient\_twoAdic\_pulseBlock}{TotientTwoAdicPulseBlock.lean:211}
-\lean{Erdos257PeriodNoncollapse.windowDiscrepancy\_modEq\_half\_of\_twoAdic\_pulse}{TotientTwoAdicPulseBlock.lean:262}
+\lean{prime two-adic pulse-block construction}{TotientTwoAdicPulseBlock.lean:211}
+\lean{half-turn congruence of the pulse discrepancy}{TotientTwoAdicPulseBlock.lean:262}
 \end{prop}
 
 \begin{rem}[B4's own recorded repair, and its scope]
@@ -515,7 +515,7 @@ Two further Lean facts show that prescribing \emph{letters} is exhausted: the
 full terminal dyadic staircase is unconditionally impossible --- its terminal
 letter would have to be positive, strictly below a wider modulus, and divisible
 by it, hence $0$
-(\lean{Erdos257PeriodNoncollapse.not\_actualLcmTerminalDyadicStaircase\_of\_room}{TotientActualLcmTopEdgeStaircase.lean:251});
+(\lean{impossibility of a roomy terminal dyadic staircase}{TotientActualLcmTopEdgeStaircase.lean:251});
 and the surviving \emph{punctured} staircase pins its penultimate letter to
 exactly $2^{m-1}$ with $2^{m} < 2(2H{+}J{+}K{+}2)$, i.e.\ no slack at all
 (\texttt{\breakcode{puncturedDyadicStaircase\_penultimate\_eq\_half}},
@@ -541,17 +541,17 @@ growth bound, not itself a theorem on disk. \ev{Math}
   predecessor state is constant, no $\mathrm{decode}$ recovers the radius
   parameter, and any finite state type needs cardinality
   $\ge \lfloor m/2 \rfloor + 2$, unbounded in $m$
-  (\lean{Erdos249257.balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247}).
+  (\lean{balanced pulses admit no autonomous decoder}{GenericTailOrbitRigidity.lean:247}).
 \item Long common suffixes erase predecessor information \emph{exactly}: two
   affine binary orbits with different seeds satisfy
   $\mathrm{orbit}_u(L) - \mathrm{orbit}_v(L) = 2^{L}(u_0 - v_0)$, so the
   endpoint residue mod $2^{L}$ is independent of the initial carry
-  (\lean{Erdos249257.affineBinaryOrbit\_mod\_twoPow\_eq}{GenericTailOrbitRigidity.lean:307}).
+  (\lean{affine binary-orbit congruence}{GenericTailOrbitRigidity.lean:307}).
 \item Bounded local $2$-adic valuation-unit data at fixed precision excludes
   nothing: for any finite word of odd-unit symbols at fixed precision and any
   starting carry, a compatible orbit exists with every intermediate state
   centred inside its symbol's dyadic radius
-  (\lean{Erdos249257.fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137}).
+  (\lean{fixed-precision tropical obstruction}{TropicalCurvatureCarry.lean:137}).
 \end{enumerate}
 \textbf{Rules out:} the finite-automaton-computes-the-expansion family
 outright; any hope of distinguishing two carry histories after a long common
@@ -571,18 +571,18 @@ kernel has trivial kernel:
   linearly independent over $\Q$ at every depth
   (Proposition~\ref{prop:rank}), and the natural repair --- a bounded
   compressed-adjoint certificate --- is impossible
-  (\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183},
+  (\lean{impossibility of a compressed adjoint certificate}{TotientMahlerDefect.lean:1183},
   structure at \texttt{:1039}).
 \item \emph{M\"obius incidence.} $U_N(i,j) = \mu((i{+}1)/(j{+}1))$ when
   $(j{+}1) \mid (i{+}1)$ and $0$ otherwise is lower triangular with unit
   diagonal, so $\det U_N = 1$ for every $N$ and the jet map is injective: no
   finite incidence-quotient relation exists at any horizon
-  (\lean{Erdos249257.incidenceMobius\_det\_eq\_one}{IncidenceQuotientHermitePade.lean:56},
+  (\lean{unit determinant of the incidence Mobius matrix}{IncidenceQuotientHermitePade.lean:56},
   \texttt{mobiusCompanionJetMap\_injective} at \texttt{:77}).
 \item \emph{Adjugate reconstruction.} Any finite rational row exactly isolating
   one totient value has crude two-tail cost $\ge 3$, hence never $< 1$, at any
   finite grid height, using only $\varphi(x) \le x$
-  (\lean{Erdos257PeriodNoncollapse.three\_le\_totientAdjugateTailCost}{TotientTailCarryPeriod.lean:266},
+  (\lean{lower bound for the totient adjugate tail cost}{TotientTailCarryPeriod.lean:266},
   closure at \texttt{:307}).
 \item \emph{Shift-polynomial.} An explicit nonzero all-horizon countermodel
   agrees with every exact whole-ray anchor and survives every finite
@@ -596,7 +596,7 @@ Additionally, every strict-subrank monomial quotient in the M\"obius--Mersenne
 ladder overshoots its target by more than $1/480$, \emph{uniformly} --- every
 rung $r \ge 3$ lies in $[1429/1512, 1)$ and every prefix after four atoms is
 within $1/3584$ of its rung, so this is a uniform no-go rather than a census
-(\lean{rankOneSubrankQuotient\_sub\_theta\_two\_gt}{ErdosProblems/Erdos249/RankOneSubrankObstruction.lean:238}).
+(\lean{uniform rank-one subrank quotient gap}{ErdosProblems/Erdos249/RankOneSubrankObstruction.lean:238}).
 \textbf{Honest limit:} this is four checked truncations, not a proof that no
 finite-linear shortcut exists. Its correct reading is the one the source module
 gives: any winning finite-linear shortcut must live in a genuinely different
@@ -671,15 +671,15 @@ $\mathrm{DTWFirstHarmonicNormGap}$ is the statement
 $}\]
 It implies $\mathrm{Irrational}(S)$.
 \coord{first-harmonic} \scale{cofinal} \ev{Lean}
-\lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
-\lean{Erdos249257.irrational\_totient\_series\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:83}
+\lean{first-harmonic norm-gap criterion}{FirstHarmonicPivot.lean:75}
+\lean{first-harmonic norm gap implies irrationality}{FirstHarmonicPivot.lean:83}
 \end{defn}
 
 The real-part form suffices and is strictly weaker: it is enough that
 $\sum_{N \in [X,2X)} \mathrm{windowFirstCos}(h,N,L) \le \tfrac{9}{10}X$
-(\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_gap}{FirstHarmonicGap.lean:128},
+(\lean{first-harmonic average gap supplies a certificate}{FirstHarmonicGap.lean:128},
 the elementary unconditional engine; the $21/25 \to 9/10$ bridge is
-\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:53}).
+\lean{first-harmonic norm gap supplies a certificate}{FirstHarmonicPivot.lean:53}).
 Unpacked, the required object is a constant-saving cancellation estimate for
 the dyadically weighted totient-difference exponential sum
 \[\adjustbox{max width=\linewidth}{$\displaystyle
@@ -709,7 +709,7 @@ evades all seven barrier classes, and the reasons are structural.
   choice: the sum ranges over all of $[X,2X)$ at one common depth $L$. Since
   $\neg\,\mathrm{certifiedKill}(h,N,L)$ forces
   $\mathrm{windowFirstCos}(h,N,L) > 9/10$
-  (\lean{Erdos249257.windowFirstCos\_gt\_of\_not\_certifiedKill}{FirstHarmonicGap.lean:44}),
+  (\lean{failure of certification forces a large first cosine}{FirstHarmonicGap.lean:44}),
   the gap demands that a \emph{positive proportion} of basepoints in the block
   carry certificates at a \emph{single} depth. Irrationality supplies only one
   certificate per $(h,N_0)$, at a depth that may vary with $N$. The collapse
@@ -719,7 +719,7 @@ evades all seven barrier classes, and the reasons are structural.
   What is asserted is that the one proved collapse mechanism in this lane
   demonstrably requires sample choice, which this predicate denies. Note also
   that the \emph{subset} form
-  (\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_gap\_subset}{FirstHarmonicGap.lean:104})
+  (\lean{subset first-harmonic gap supplies a certificate}{FirstHarmonicGap.lean:104})
   does permit sample choice and is therefore the collapse-exposed variant.
   Attack the full-block form.
 \item \textbf{B4.} The statistic is the first additive character of the
@@ -799,8 +799,8 @@ $16(2X{+}h{+}L{+}2) \le 2^{L}$, and all four of
 $}\]
 It implies $\mathrm{Irrational}(S)$.
 \coord{first-harmonic} \scale{cofinal} \ev{Lean}
-\lean{Erdos249257.DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:569}
-\lean{Erdos249257.irrational\_totient\_series\_of\_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:577}
+\lean{pivot-residual decorrelation criterion}{FirstHarmonicPivot.lean:569}
+\lean{pivot-residual decorrelation implies irrationality}{FirstHarmonicPivot.lean:577}
 \end{defn}
 
 It inherits Survivor 1's evasions of B1, B4, B5, B6 and B7 verbatim: the four
@@ -810,15 +810,15 @@ specific advantages are three.
 
 The decomposition is an \emph{exact identity},
 proved unconditionally with \texttt{\#print axioms} clean
-(\lean{Erdos249257.windowFirstExp\_sum\_eq\_pivot\_decomposition}{FirstHarmonicPivot.lean:514},
+(\lean{pivot decomposition of the first-exponential sum}{FirstHarmonicPivot.lean:514},
 budget consumer
-\lean{Erdos249257.first\_harmonic\_gap\_of\_pivotBudgetAt}{FirstHarmonicPivot.lean:549}).
+\lean{pivot budget implies the first-harmonic gap}{FirstHarmonicPivot.lean:549}).
 The one-sided budget lowers the hard requirement from a norm bound
 $\lVert \cdot \rVert \le X/2$ to a real-part bound $\le 14X/25$. And the pivot
 rests on genuine arithmetic rather than a sampled surrogate: on the canonical
 fibre $m = 1$, $s = L-h$ the supplier set is \emph{literally} the shifted dyadic
 interval of primes, proved as a membership equality
-(\lean{Erdos249257.mem\_pivotFiber\_one\_overlap\_iff}{FirstHarmonicPivot.lean:423}),
+(\lean{one-overlap characterization of a pivot fibre}{FirstHarmonicPivot.lean:423}),
 with the totient factorisation at the pivot the honest
 $\varphi(mp) = \varphi(m)(p-1)$ and the non-divisibility discharged by size.
 
@@ -828,7 +828,7 @@ genuine correlation estimate, and only in real part.
 \textbf{What it must respect.} B6 has a residual-gauge instance:
 a residual-blind determinant or conditioning test cannot certify that genuine
 phase reconstruction rather than a locked degenerate configuration has occurred
-(\lean{Erdos249257.locked\_reconstruction\_preserves\_nonzero\_minor}{ResidualGaugeObstruction.lean:94}).
+(\lean{locked reconstruction preserves a nonzero minor}{ResidualGaugeObstruction.lean:94}).
 So this route must couple rows by an extra arithmetic identity, not merely
 gauge-normalise columns. \textbf{Honest status:} strictly a repackaging of
 Survivor 1's burden; it is listed separately only because three quarters of it
@@ -848,8 +848,8 @@ $h$ stays a \emph{fixed} distance
 $\ge \arccos(9/10)/2\pi \approx 0.0718$ from every integer.
 It implies $\mathrm{Irrational}(S)$.
 \coord{prime-pivot} \scale{cofinal} \ev{Lean}
-\lean{DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157}
-\lean{irrational\_totient\_series\_of\_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
+\lean{natural-prime tail-orbit gap criterion}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157}
+\lean{natural-prime tail-orbit gap implies irrationality}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
 \end{defn}
 
 It evades B1, B4, B5, B6 and B7 for the reasons given for Survivor 1: a
@@ -881,22 +881,22 @@ $\mathrm{certifiedKill}(td,\,N,\,td)$; unpacked,
 $}\]
 It implies $\mathrm{Irrational}(S)$.
 \coord{period-ray} \scale{cofinal} \ev{Lean}
-\lean{ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441}
-\lean{irrational\_totient\_series\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:450}
+\lean{full-depth arithmetic-progression escape criterion}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441}
+\lean{full-depth arithmetic-progression escape implies irrationality}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:450}
 \end{defn}
 
 This is the shortest fully stated open inequality the programme has produced.
 Its evasion of B2 is recorded on disk rather than argued: its ambient parent
 $\mathrm{PeriodMultipleKillSupply}$ is \emph{proved} equivalent to
 $\mathrm{Irrational}(S)$ and $\mathrm{ApFullDepthEscape}$ implies it
-(\lean{periodMultipleKillSupply\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:444}),
+(\lean{full-depth escape supplies period-multiple certificates}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:444}),
 so it is at least as strong, and possibly strictly stronger --- the file's own
 docstring records ``sufficient for irrationality; not known necessary''. Being
 possibly strictly stronger, certificate completeness cannot collapse it back.
 It evades B1 (both $N$ and $t$ unbounded), B4 (locking depth to the period
 means the entire word accumulates and no letter is prescribed), B5 and B6 (no
 state, no rank). Its substance is pure anti-concentration: via
-\lean{windowDiscrepancy\_self\_eq\_totientBlock\_sub}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:67},
+\lean{self-window discrepancy identity}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:67},
 the difference of two adjacent period blocks must have central residue mod
 $2^{h}$ at some multiple period $h = td$, and the room condition is automatic
 once $h$ is large, so nothing but the residue's position is at stake.
@@ -929,7 +929,7 @@ and uniform in $e$ (Proposition~\ref{prop:rank}).
 
 \textbf{Honest flag, and it is severe.} B6 partly indicts this route from
 inside. The most natural approach to the upper bound is dead
-(\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}),
+(\lean{impossibility of a compressed adjoint certificate}{TotientMahlerDefect.lean:1183}),
 and what rationality actually buys --- uniform eventual periodicity of the
 carry's dyadic sections mod $v$ --- provably does not promote to a $\Q$-rank
 bound (Proposition~\ref{prop:period-not-rank}). So this survivor is genuinely

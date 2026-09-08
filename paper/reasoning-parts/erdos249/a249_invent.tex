@@ -43,7 +43,7 @@ those is the per-problem directory, not \texttt{Erdos249257/}.
 
 Write $S=\sum_{n\ge 1}\varphi(n)/2^n$, $R_N=\sum_{m\ge 1}\varphi(N+m)/2^m$
 for the local tail
-(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak totientTail}{TotientTailPeriodKiller.lean:57}),
+(\lean{totient tail}{TotientTailPeriodKiller.lean:57}),
 and $\Phi_N=\sum_{n\le N}\varphi(n)2^{N-n}\in\Z$ for the integer prefix, so
 that $2^N S=\Phi_N+R_N$. For $h\ge 1$ set
 \[\adjustbox{max width=\linewidth}{$\displaystyle
@@ -71,9 +71,9 @@ the forward orbit of $\alpha_h \bmod 1$ under $x\mapsto 2x$.
 
 \noindent
 The second identity and the character form are landed:
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tail_diff_eq_scaled_\allowbreak totient_series_sub_prefix}{PivotAntiReconstruction.lean:54}
+\lean{scaled tail-difference identity}{PivotAntiReconstruction.lean:54}
 and
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp}{PivotAntiReconstruction.lean:66}
+\lean{tail-orbit first-exponential identity}{PivotAntiReconstruction.lean:66}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:binary-window}.
 The recurrence $R_{N+1}=2R_N-\varphi(N+1)$ is one line from the definition
 and is used below only for intuition \ev{Math}.
@@ -99,26 +99,26 @@ Fix $h\ge 1$ and $X_0$, and take $X$ as supplied. Choose $L$ with
 $2^{L}\ge 1024\,(2X+h+L+2)$; such $L$ exists because $2^L/L\to\infty$, and it
 satisfies the room inequality $16(2X+h+L+2)\le 2^L$ a fortiori. For every
 $N<2X$ the landed truncation bound
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak norm_windowFirstExp_\allowbreak sub_tailOrbitFirstExp_lt}{PivotAntiReconstruction.lean:202}
+\lean{approximation of the tail-orbit phase}{PivotAntiReconstruction.lean:202}
 gives
 $\bigl\|\,\mathrm{windowFirstExp}(h,N,L)-e(2^N\alpha_h)\,\bigr\|
  < 2\pi(N+L+h+2)/2^{L} \le 2\pi/1024 < 1/100$,
 so by
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstCos_le_\allowbreak add_of_tailOrbitGap}{PivotAntiReconstruction.lean:220},
+\lean{cosine comparison from the tail-orbit gap}{PivotAntiReconstruction.lean:220},
 $\mathrm{windowFirstCos}(h,N,L)\le \cos(2\pi 2^N\alpha_h)+1/100$. Summing over
 the $X$ values $N\in[X,2X)$ gives
 $\sum_N \mathrm{windowFirstCos}(h,N,L)\le \tfrac{89}{100}X+\tfrac{1}{100}X
 =\tfrac{9}{10}X$, so
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap}{FirstHarmonicGap.lean:128}
+\lean{first-harmonic average gap supplies a certificate}{FirstHarmonicGap.lean:128}
 produces $N\in[X,2X)$ with $\mathrm{certifiedKill}(h,N,L)$, and $N\ge X\ge X_0$.
 This is exactly the certificate supply consumed by
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak irrational_totient_series_\allowbreak of_certificate_supply}{TotientTailPeriodKiller.lean:394}.
+\lean{cofinal certificates imply irrationality}{TotientTailPeriodKiller.lean:394}.
 \end{proof}
 
 \noindent
 \ev{Math} \quad \scale{cofinal} \quad \coord{other:binary-window}. The proof
 uses only landed lemmas; formalising it is a variant of
-\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
+\lean{first-harmonic norm gap implies irrationality}{FirstHarmonicPivot.lean:83}
 with the constant $21/25$ replaced by the real-part constant $89/100$ and the
 room factor $16$ by $1024$. Nothing here is an improvement of the analytic
 requirement; it is a change of coordinate that makes the requirement legible.
@@ -190,9 +190,9 @@ is developed in \S\ref{sub:shape}.
   \Bigl\|\sum_{N=X}^{2X-1} e\bigl(D(h,N,L)/2^{L}\bigr)\Bigr\|\le \tfrac{21}{25}X,
 $}\]
 where $D(h,N,L)=\sum_{j<L}\bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j}$.
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75},
+\lean{first-harmonic norm-gap criterion}{FirstHarmonicPivot.lean:75},
 consumer
-\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
+\lean{first-harmonic norm gap implies irrationality}{FirstHarmonicPivot.lean:83}
 \quad \ev{Open} \quad \scale{cofinal}. By Proposition~\ref{prop:transfer} the
 weaker real-part form with constant $89/100$ suffices.
 
@@ -338,14 +338,14 @@ $16(2X+h+L+2)\le 2^{L}$, and all four of
   &\qquad \bigl\|\mathrm{pivotNonSupplierContribution}\bigr\| &\le \tfrac{8}{25}X .
 \end{aligned}
 $}\]
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:569},
+\lean{pivot-residual decorrelation criterion}{FirstHarmonicPivot.lean:569},
 consumer
-\lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:577}
+\lean{pivot-residual decorrelation implies irrationality}{FirstHarmonicPivot.lean:577}
 \quad \ev{Open} \quad \scale{cofinal}. The decomposition is an exact identity,
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstExp_sum_\allowbreak eq_pivot_decomposition}{FirstHarmonicPivot.lean:514}
+\lean{pivot decomposition of the first-exponential sum}{FirstHarmonicPivot.lean:514}
 \quad \ev{Lean}, and the supplier set at the canonical fibre is a membership
 equality with a shifted dyadic interval of primes,
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:423}
+\lean{one-overlap characterization of a pivot fibre}{FirstHarmonicPivot.lean:423}
 \quad \ev{Lean}.
 
 \paragraph{One budget has a classical one-sided majorant.}
@@ -521,9 +521,9 @@ many multiplicative values. \ev{Open}
   \ \wedge\
   \operatorname{Re}\bigl(\mathrm{tailOrbitFirstExp}(h,\,p-h-1)\bigr)<\tfrac{9}{10}.
 $}\]
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157},
+\lean{natural-prime tail-orbit gap criterion}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
+\lean{natural-prime tail-orbit gap implies irrationality}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
 \quad \ev{Open} \quad \scale{cofinal}.
 
 \paragraph{What it says, after Lemma~\ref{lem:orbit}.}
@@ -558,10 +558,10 @@ obstacle is that nothing sees it.
 
 \paragraph{A swing: replace the pointwise demand by a canonical fibre.}
 The corpus warns against the subset consumer
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap_subset}{FirstHarmonicGap.lean:104}
+\lean{subset first-harmonic gap supplies a certificate}{FirstHarmonicGap.lean:104}
 because a predicate quantifying existentially over subsets
 $T\subseteq[X,2X)$ is collapse-exposed: the proved collapse
-\lean{Erdos249257.\allowbreak dtwWindowSeparatedPairs_iff_\allowbreak irrational_totient_series}{PivotAntiReconstruction.lean:1765}
+\lean{separated-window characterization of irrationality}{PivotAntiReconstruction.lean:1765}
 works precisely by \emph{choosing} $T=\{N,N+1\}$. That warning applies to a
 free $T$.
 
@@ -572,7 +572,7 @@ $(h,X,L)$, and the corpus already contains the right one:
   \;=\;\{\,N\in[X,2X)\ :\ N+h+1\ \text{prime}\,\},
 $}\]
 a membership equality rather than a sampled surrogate
-(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:423},
+(\lean{one-overlap characterization of a pivot fibre}{FirstHarmonicPivot.lean:423},
 \ev{Lean}).
 
 The proposal is to prove
@@ -624,11 +624,11 @@ is itself a well-defined finite piece of work.
   \forall d\ge 1\ \forall N\ \exists t\ge 1:\ \mathrm{certifiedKill}(td,\,N,\,td),
 $}\]
 unpacked, $(N+2td+2:\Z)<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)$.
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441},
+\lean{full-depth arithmetic-progression escape criterion}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:450},
+\lean{full-depth arithmetic-progression escape implies irrationality}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:450},
 ambient equivalence
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}
+\lean{period-multiple certificate characterization}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}
 \quad \ev{Open} \quad \scale{cofinal}. It is the shortest fully stated open
 inequality the programme has produced.
 
@@ -637,7 +637,7 @@ of $S$ alone.}
 Writing $h=td$ and using
 $D(h,N,L)/2^{L}=(R_{N+h}-R_N)-(R_{N+L+h}-R_{N+L})/2^{L}$ at $L=h$, together
 with the landed strip $|R_{M+h}-R_M|<M+h+2$
-(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak abs_tail_\allowbreak diff_lt}{CarrySurvivorExtinction.lean:79},
+(\lean{absolute tail-difference bound}{CarrySurvivorExtinction.lean:79},
 \ev{Lean}), applied at $M=N+h$, one gets:
 
 \begin{prop}\label{prop:route4}
@@ -713,14 +713,14 @@ where $X_c=\sum_{n\ge1}c(n)/2^{n}$ and $\operatorname{rk}_e(u)$ is the
 dimension of the span of the dyadic sections of $u$ through level $e$.
 A suitable subexponential upper bound would also contradict the landed
 $\varphi$-specific floor
-\lean{Erdos249257.\allowbreak not_irrational_totientSeries_\allowbreak implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
+\lean{rationality forces unbounded carry rank}{TotientCarryKernelRigidity.lean:300}
 \quad \ev{Lean}.  No such rationality-side upper bound is proved.
 
 \paragraph{The right vocabulary, and the audited gap.}
 Finite-dimensional span of all dyadic sections is the definition of a
 $2$-regular sequence in the sense of Allouche and Shallit \ev{Cited}.  The
 unconditional theorem
-\lean{Erdos249257.\allowbreak not_finiteDimensional_\allowbreak span_fullTotientKernel}{TotientMahlerDefect.lean:1145}
+\lean{infinite dimensionality of the full totient-kernel span}{TotientMahlerDefect.lean:1145}
 says that $\varphi$ is not $2$-regular.  An attempted generic counterexample
 chose a coefficient sequence $c(n)\le n$ with rational binary series and
 non-$2$-regular dyadic kernel.  Those facts do not refute the desired bound

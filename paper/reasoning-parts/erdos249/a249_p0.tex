@@ -46,7 +46,7 @@ where $\Phi_N := \sum_{n \le N} \varphi(n) \cdot 2^{N-n} \in \mathbb{N}$ (the
 integer prefix) and $R_N := \sum_{j \ge 0} \varphi(N+1+j)/2^{j+1}$ (the
 fractional tail, \texttt{totientTail} in Lean).
 \coord{binary-digit} \scale{uniform} \ev{Lean}
-\lean{two_pow_mul_totient_series_eq}{TotientTailPeriodKiller.lean:150}
+\lean{dyadic scaling identity for the totient series}{TotientTailPeriodKiller.lean:150}
 \end{prop}
 
 \begin{proof}[Consequence]
@@ -55,7 +55,7 @@ Rationality and eventual periodicity of the base-2 expansion of $S$ is
 (by Euler's theorem applied to the odd part of the denominator) a period
 $h>0$ and pre-period $N_0$ with $R_{N+h}-R_N \in \mathbb{Z}$ for all
 $N \ge N_0$ (\texttt{eventual_period_of_not_irrational},
-\lean{eventual_period_of_not_irrational}{TotientTailPeriodKiller.lean:358},
+\lean{eventual period forced by rationality}{TotientTailPeriodKiller.lean:358},
 \ev{Lean}, explicit witness $h=\varphi(\mathrm{oddPart}(r.\mathrm{den}))$,
 $N_0=v_2(r.\mathrm{den})$). Nothing in the corpus supplies the converse
 cofinally; this is the certificate wall documented in full in Part~1 and is
@@ -77,7 +77,7 @@ For integers $a,b,c,d,r,s$ with $b>0$, $d>0$, $bc-ad=1$ (i.e.\ $a/b$ and
 $c/d$ are unimodular Farey neighbours), and $as < rb$, $rd < cs$ (i.e.\ $r/s$
 lies strictly between them): $b+d \le s$.
 \coord{farey} \scale{n/a} \ev{Lean}
-\lean{farey_gap}{GapFareyBound.lean:51}
+\lean{Farey interval bound}{GapFareyBound.lean:51}
 \end{lem}
 
 This lemma is a classical Stern--Brocot fact with zero totient or Mersenne
@@ -98,8 +98,8 @@ This bound is \emph{sharp}: $q = Q_0+1 = 79\,\allowbreak 639\,\allowbreak 646\,\
 is the exact first failing denominator, exhibited as the mediant of two
 explicit unimodular Farey neighbours.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{gap_check_window_1_240_le_79639646646701375323355774875831053}{GapFareyBound.lean:176}
-\lean{gap_check_window_1_240_first_failure}{GapFareyBound.lean:225}
+\lean{Farey certificate through the stated denominator bound}{GapFareyBound.lean:176}
+\lean{first denominator beyond the Farey certificate}{GapFareyBound.lean:225}
 \end{prop}
 
 \begin{thm}[Erd\H{o}s \#249 denominator exclusion --- the headline unconditional result]
@@ -111,7 +111,7 @@ $}\]
 Equivalently: \emph{if $S$ is rational, its reduced denominator exceeds}
 $Q_0 \approx 7.96 \times 10^{34}$.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
+\lean{denominator exclusion through the stated Farey bound}{CertificateKernel.lean:18384}
 \end{thm}
 
 \begin{rem}[What this does and does not say]
@@ -156,8 +156,8 @@ exactly, with no boundary correction, because the visible-point count on the
 half-open antidiagonal at height $n$ equals $\varphi(n)$ for every $n$,
 including $n=0,1$.
 \coord{probability} \scale{n/a} \ev{Lean}
-\lean{tsum_visible_coprime_pairs_eq_totient_series}{CertificateKernel.lean:18544}
-\lean{totient_series_eq_half_add_visible_coprime_pairs}{CertificateKernel.lean:18557}
+\lean{visible coprime-pair series equals the totient series}{CertificateKernel.lean:18544}
+\lean{visible coprime-pair decomposition of the totient series}{CertificateKernel.lean:18557}
 \end{prop}
 
 \begin{prop}[The gcd-layer normalisation]
@@ -165,8 +165,8 @@ including $n=0,1$.
 For independent fair-coin waiting times as above, $\sum_{g\ge1}\Pr(\gcd(X,Y)=g)=1$
 exactly; and for every $d>0$, $\Pr(d\mid X \wedge d\mid Y) = 1/(2^d-1)^2$.
 \coord{probability} \scale{uniform} \ev{Lean}
-\lean{tsum_pos_coprime_inv_mersenne_eq_one}{GcdMomentCalculus.lean:349}
-\lean{tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq}{GcdMomentCalculus.lean:266}
+\lean{coprime reciprocal-Mersenne sum identity}{GcdMomentCalculus.lean:349}
+\lean{joint-divisibility sum identity}{GcdMomentCalculus.lean:266}
 \end{prop}
 
 \begin{thm}[Denominator exclusion for the coprimality-probability form]
@@ -178,7 +178,7 @@ $}\]
 For every $a\in\mathbb{Z}$, $d\in\mathbb{N}$ with $0<d\le Q_1$: the visible
 coprime-pair probability $\Pr(\gcd(X,Y)=1)$ is not equal to $a/d$.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18572}
+\lean{denominator exclusion for the visible coprime-pair series}{CertificateKernel.lean:18572}
 \end{thm}
 
 \begin{thm}[Denominator exclusion for the M\"obius-square form]
@@ -188,7 +188,7 @@ $d\in\mathbb{N}$ with $0<d\le Q_1$, the signed series
 $T := \sum_{d\ge1} \mu(d)/(2^d-1)^2 = S - \tfrac12$ (see \S\ref{ssec:mobius})
 is not equal to $a/d$.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18487}
+\lean{denominator exclusion for the squared Mobius--Mersenne series}{CertificateKernel.lean:18487}
 \end{thm}
 
 \begin{rem}[Why the bound halves, and why this is not new information]
@@ -223,8 +223,8 @@ Consequently \emph{Erd\H{o}s \#249 $\iff$ $T:=\sum_{d\ge1}\mu(d)/(2^d-1)^2 \noti
 the single reduced target every other result in this subsection and
 \S\ref{ssec:lambert} feeds.
 \coord{mobius-mersenne} \scale{n/a} \ev{Lean}
-\lean{totientSeries_eq_pnat_half_pow}{SquaredMersenneDiagonalEnclosure.lean:72}
-\lean{tsum_totient_half_pow_eq_half_add_moebius_sq}{MersenneLambertLadder.lean:665}
+\lean{positive-natural half-power form of the totient series}{SquaredMersenneDiagonalEnclosure.lean:72}
+\lean{Mobius-square decomposition of the totient series}{MersenneLambertLadder.lean:665}
 \end{prop}
 
 \begin{rem}[Why the bounded coefficients matter --- the Erd\H{o}s-1948 regime]
@@ -236,7 +236,7 @@ near-integer irrationality criterion and of the level-1 sibling identity
 $L(\mu):=\sum_d \mu(d)/(2^d-1) = \tfrac12$ (rational, trivially) alongside
 $L(1) = \sum_d 1/(2^d-1) = E$, the Erd\H{o}s--Borwein constant, which
 \emph{is} proved irrational in this same kernel
-(\lean{irrational_erdosBorwein_series}{CertificateKernel.lean:8335}, \ev{Lean}).
+(\lean{irrationality of the Erdos--Borwein series}{CertificateKernel.lean:8335}, \ev{Lean}).
 
 \par\medskip
 
@@ -248,9 +248,9 @@ $\sum_{k\le x}\varphi(k)\sim 3x^2/\pi^2$, but there is no pointwise estimate
 $\varphi(n)=\Theta(n)$. A
 near-integer/Dirichlet-approximation argument of Erd\H{o}s-1948 shape
 (formalised generically as
-\lean{irrational_of_int_mul_near_int}{CertificateKernel.lean:6120} and its
+\lean{near-integer multiplier criterion for irrationality}{CertificateKernel.lean:6120} and its
 base-power specialisation
-\lean{irrational_of_pow_mul_near_int}{CertificateKernel.lean:6149}, both
+\lean{near-integer power-multiplier criterion for irrationality}{CertificateKernel.lean:6149}, both
 \ev{Lean}, \coord{n/a}, fully coordinate-free) has a genuine chance of
 transferring to $T$ precisely because its weight is bounded, in a way it does
 not have a chance of transferring directly to the raw $\varphi(n)/2^n$ series.
@@ -273,7 +273,7 @@ For $w:\mathbb{N}\to\mathbb{R}$ with $|w(d)|\le d$ for all $d>0$, and $0\le r<1$
 \sum_{d\ge1} w(d)\left(\frac{r^d}{1-r^d}\right)^2 \;=\; \sum_{n\ge1}\left(\sum_{e\mid n} w(e)\Bigl(\tfrac{n}{e}-1\Bigr)\right) r^n.
 $}\]
 \coord{mobius-mersenne} \scale{uniform} \ev{Lean}
-\lean{tsum_lambert_linear_weight_sq_pure}{GcdMomentCalculus.lean:105}
+\lean{linear-weight Lambert square identity}{GcdMomentCalculus.lean:105}
 \end{prop}
 
 This one identity, at $r=1/2$, specialises to every squared-Lambert rung the
@@ -290,7 +290,7 @@ function. The \emph{identity} is machine-checked (\ev{Lean}); irrationality of
 the \emph{value} $\zeta_q(2)-\zeta_q(1)$ is \ev{Cited} (Postelmans--Van Assche
 $q$-Pad\'e), \emph{not} formalised in this corpus.
 \coord{mobius-mersenne} \scale{n/a}
-\lean{tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series}{GcdMomentCalculus.lean:216}
+\lean{reciprocal Mersenne-square divisor-sum identity}{GcdMomentCalculus.lean:216}
 \end{prop}
 
 \begin{prop}[The Pillai/gcd-moment rung]
@@ -304,7 +304,7 @@ times of Proposition~\ref{prop:coprime}. The identity itself is
 machine-checked (\ev{Lean}); the value $\mathbb{E}[\gcd(X,Y)]$ is \ev{Open} ---
 a cousin rung to \#249, not \#249 itself.
 \coord{mobius-mersenne} \scale{n/a}
-\lean{tsum_totient_div_mersenne_sq_eq_gcd_moment_series}{GcdMomentCalculus.lean:235}
+\lean{totient-weighted Mersenne-square gcd-moment identity}{GcdMomentCalculus.lean:235}
 \end{prop}
 
 \begin{rem}[The level mirror]
@@ -333,12 +333,12 @@ implied.
 
 \paragraph{Certificate object.} For $h,N,L : \mathbb{N}$, define the window
 discrepancy $\Delta_{h,N,L} := \sum_{j<L} (\varphi(N+h+1+j)-\varphi(N+1+j))\cdot 2^{L-1-j} \in \mathbb{Z}$
-(\lean{windowDiscrepancy}{TotientTailPeriodKiller.lean:66}, \ev{Lean}), and
+(\lean{dyadic window discrepancy}{TotientTailPeriodKiller.lean:66}, \ev{Lean}), and
 \[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathrm{Sep}(h,N,L) \;:\equiv\; (N+h+L+2) < \Delta_{h,N,L} \bmod 2^{L} < 2^{L}-(N+h+L+2),
 $}\]
-(\lean{certifiedKill}{TotientTailPeriodKiller.lean:72}, \ev{Lean}, decidable). By
-completeness (\lean{exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316},
+(\lean{certified interior residue}{TotientTailPeriodKiller.lean:72}, \ev{Lean}, decidable). By
+completeness (\lean{certificate existence characterizes tail nonintegrality}{LcmConeFlatness.lean:316},
 \ev{Lean}), $(\exists L,\ \mathrm{Sep}(h,N,L)) \iff R_{N+h}-R_N \notin \mathbb{Z}$
 for every $h,N$: an unbounded (cofinal, over $h$ and $N$) supply of
 $\mathrm{Sep}$ is exactly equivalent to $\mathrm{Irrational}(S)$. The table
@@ -358,8 +358,8 @@ $r\in\mathbb{Q}$ with $1\le h\le 8$ and $r.\mathrm{den} \mid 2^{12}(2^h-1)$.
 &
 \scale{fixed}
 &
-\lean{certifiedKill_all_small}{TotientTailPeriodKiller.lean:404}
-\lean{totient_series_ne_rat_of_den_dvd}{TotientTailPeriodKiller.lean:416}
+\lean{simultaneous certificate check for small shifts}{TotientTailPeriodKiller.lean:404}
+\lean{denominator-divisibility exclusion}{TotientTailPeriodKiller.lean:416}
 \\
 Fixed-window deposit, depth 9, wider net
 &
@@ -369,7 +369,7 @@ and $r.\mathrm{den}\mid 2^{14}(2^h-1)$.
 &
 \scale{fixed}
 &
-\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:18890}
+\lean{denominator exclusion through the first sixteen Mersenne factors}{CertificateKernel.lean:18890}
 \\
 Diagonal-pincer certificates, base 12 scales
 &
@@ -382,9 +382,9 @@ respectively (in the same order).
 &
 \scale{fixed}
 &
-\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870}
-\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2852}
-\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2854}
+\lean{imported diagonal certificates}{DiagonalPincerCertificates.lean:2870}
+\lean{diagonal certificate scales}{DiagonalPincerCertificates.lean:2852}
+\lean{diagonal certificate depths}{DiagonalPincerCertificates.lean:2854}
 \\
 Diagonal-pincer certificates, extended scales through $t=64$
 &
@@ -407,7 +407,7 @@ band in the next row.
 \scale{fixed}
 &
 Per-scale Lean modules; endpoint
-\lean{certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}
+\lean{depth-64 diagonal certificate}{DiagonalPincerCertificateT64Endpoint.lean:1928}
 \\
 Contiguous lcm-diagonal band through $t\le82$
 &
@@ -419,8 +419,8 @@ depth at least $125$.
 &
 \scale{bounded}
 &
-\lean{ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82}{ErdosProblems/Skip/LadderT67.lean:71264}
-\lean{ErdosProblems.Skip.LadderT67.t83_depth_floor}{ErdosProblems/Skip/LadderT67.lean:71294}
+\lean{rung-67 diagonal certificate within depth 82}{ErdosProblems/Skip/LadderT67.lean:71264}
+\lean{rung-83 certificate depth floor}{ErdosProblems/Skip/LadderT67.lean:71294}
 \\
 Farey denominator floor
 &
@@ -430,7 +430,7 @@ first failure.
 &
 \scale{bounded}
 &
-\lean{gap_check_window_1_240_le_79639646646701375323355774875831053}{GapFareyBound.lean:176}
+\lean{Farey certificate through the stated denominator bound}{GapFareyBound.lean:176}
 \\
 Coprimality-probability / M\"obius-square Farey floor
 &
@@ -440,8 +440,8 @@ $\Pr(\gcd(X,Y)=1)$ and, separately, of $T=\sum_d\mu(d)/(2^d-1)^2$.
 &
 \scale{bounded}
 &
-\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18572}
-\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18487}
+\lean{denominator exclusion for the visible coprime-pair series}{CertificateKernel.lean:18572}
+\lean{denominator exclusion for the squared Mobius--Mersenne series}{CertificateKernel.lean:18487}
 \\
 \end{longtable}
 \normalsize

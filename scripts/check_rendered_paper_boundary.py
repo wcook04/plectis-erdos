@@ -333,6 +333,10 @@ def visible_link_namespace_labels(xml: str) -> list[str]:
 
 
 def rendered_namespace_link_errors(pdf: Path, pdftohtml: str) -> list[str]:
+    try:
+        pdf = safe_rendered_file(pdf)
+    except UnsafeRenderedInput as error:
+        return [str(error)]
     completed = run_render_tool(pdftohtml, ["-q", "-xml", "-hidden", "-stdout", str(pdf)])
     if completed.returncode != 0:
         return [f"{pdf.name}: cannot inspect visible link labels"]

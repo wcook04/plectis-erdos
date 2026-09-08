@@ -140,11 +140,11 @@ always exists, constructively.
   \exists\,\text{states},\; \mathrm{VUOrbit}\,u\,e\,\text{symbols}\,\text{states} \;\land\;
   (\forall\,\text{symbol},\, |\text{state}| \le \text{radius}).
 \]
-\lean{Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137}
+\lean{fixed-precision tropical obstruction}{TropicalCurvatureCarry.lean:137}
 built from
-\lean{Erdos249257.TotientTailPeriodKiller.vu\_step\_has\_centred\_completion}{TropicalCurvatureCarry.lean:69}
+\lean{centred completion of one valuation-unit step}{TropicalCurvatureCarry.lean:69}
 and
-\lean{Erdos249257.TotientTailPeriodKiller.vu\_word\_has\_prefix\_locked\_completion}{TropicalCurvatureCarry.lean:115}.
+\lean{prefix-locked completion of a valuation-unit word}{TropicalCurvatureCarry.lean:115}.
 
 \textbf{Scope.} Closes: any proof strategy that tries to derive a contradiction purely from "the
 local valuation-unit signature at fixed precision $u$ is incompatible with $X$" — such signatures
@@ -195,7 +195,7 @@ inequality on the right branch:
 where we write $C_s := 4\cdot\mathrm{rem}(s) - \mathrm{belowPulse}(s) - 4$ for the integer coordinate that
 appears on the middle branch of the seam recursion (the same quantity that, along an all-right run,
 is the affine excess $\mathrm{rem}(s)-2^s$ one step later — Part I, RC-2).
-\lean{Erdos249257.SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374}
+\lean{two-sided dyadic seam escape criterion}{HalfCylinderMiddleCarryLowerBound.lean:4374}
 
 \begin{prop}[The upper (carries) successor needs no exceptional-cell exclusion]
 \label{prop:upper-unconditional}
@@ -205,9 +205,9 @@ no hypothesis beyond \texttt{hcarry} itself:
 \[
   \mathrm{successorCarries} \implies \mathrm{rem}(s+1) \le 2^{s+1}.
 \]
-\lean{Erdos249257.seamUpperBranch\_nextRemainder\_le\_pow}{HalfCylinderMiddleCarryLowerBound.lean:3924}
+\lean{upper-branch remainder bound}{HalfCylinderMiddleCarryLowerBound.lean:3924}
 (from
-\lean{Erdos249257.seamUpperBranch\_remainder\_add\_resetCharge\_eq}{HalfCylinderMiddleCarryLowerBound.lean:3542},
+\lean{upper-branch reset-charge identity}{HalfCylinderMiddleCarryLowerBound.lean:3542},
 closed by \texttt{omega}). In this precise sense — no cell exclusion is ever needed on this branch
 of the step — the upper successor contributes nothing to the exceptional-cell inventory: it is
 "impossible" for the upper branch to be a source of an exceptional cell in the induction step,
@@ -228,16 +228,16 @@ by an all-right tail forever after ($\forall s\ge D{+}1$, $\mathrm{seamGreedyWor
   \mathrm{belowPulse}(D) + 2 \;\le\; 4\cdot\mathrm{rem}(D),
 \]
 i.e.\ $C_D \ge -2$ — the cell $C_D=-3$ (and every more negative value) is excluded.
-\lean{Erdos249257.middleThenAllRight\_landingExcess\_two\_le}{HalfCylinderMiddleCarryLowerBound.lean:2319}
+\lean{landing excess at most two after one middle step}{HalfCylinderMiddleCarryLowerBound.lean:2319}
 
 \textbf{Mechanism.} The proof chains three facts: (i) an all-right tail after $D$ forces the
 terminal-augmented finite prefix at $D{+}1$ strictly above $1/2$
-(\lean{Erdos249257.half\_lt\_upper\_competitor\_of\_eventually\_right}{HalfCylinderFatalGapRightTail.lean:627}),
+(\lean{eventually-right upper competitor exceeds one half}{HalfCylinderFatalGapRightTail.lean:627}),
 hence the producer carry is strictly below its complete future incidence tail
-(\lean{Erdos249257.middleProducer\_allRight\_forces\_carry\_lt\_tail}{HalfCylinderMiddleCarryLowerBound.lean:1814});
+(\lean{an all-right middle producer forces carry below the tail}{HalfCylinderMiddleCarryLowerBound.lean:1814});
 (ii) that carry/tail inequality transports to the exact rational model as
 $\mathrm{seamGreedyFloorZ}(D) < \mathrm{seamTakeThreshold}(D)$
-(\lean{Erdos249257.middleProducer\_allRight\_forces\_floorZ\_lt\_takeThreshold}{HalfCylinderMiddleCarryLowerBound.lean:1869});
+(\lean{an all-right middle producer stays below the take threshold}{HalfCylinderMiddleCarryLowerBound.lean:1869});
 (iii) combined with the pulse-absorption bound
 $\mathrm{belowPulse}(D)\le 4\cdot\mathrm{seamWordFloorError}(D)$ and the exact floor identity
 $\mathrm{seamGreedyFloorZ}(D)=\mathrm{rem}(D)-\mathrm{seamWordFloorError}(D)$, plus the unconditional strip
@@ -276,15 +276,15 @@ Write $\Theta_D$ for the real-valued producer-carry-to-tail ratio quantity that 
 $\Theta_D$ is the scaled complete-tail budget
 $\mathrm{binaryCoeffTail}(\mathrm{supportCoeff}(\text{terminal-augmented prefix}))(2D+2)$ that
 appears on the right-hand side of
-\lean{Erdos249257.middleProducer\_allRight\_forces\_carry\_lt\_tail}{HalfCylinderMiddleCarryLowerBound.lean:1814},
+\lean{an all-right middle producer forces carry below the tail}{HalfCylinderMiddleCarryLowerBound.lean:1814},
 expressed in the same integer units as $C_D$.
 
 \par\medskip
 
 The natural closing statement suggested by chaining
 \textsf{SeamMiddleProducerCardEscape} / \textsf{SeamMiddleProducerRowEscape}
-(\lean{Erdos249257.SeamMiddleProducerCardEscape}{HalfCylinderMiddleCarryLowerBound.lean:279},
-\lean{Erdos249257.SeamMiddleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:1769}) with
+(\lean{middle-producer cardinality escape criterion}{HalfCylinderMiddleCarryLowerBound.lean:279},
+\lean{middle-producer row escape criterion}{HalfCylinderMiddleCarryLowerBound.lean:1769}) with
 Corollary~\ref{cor:cd-remaining} is the \textbf{tail-dominance criterion}:
 \[
   \textbf{(TD)}\qquad \forall\, D\ge 13,\ \big(\text{late middle row},\ C_D\ne -3\big) \implies
@@ -296,7 +296,7 @@ Corollary~\ref{cor:cd-remaining} is the \textbf{tail-dominance criterion}:
 If (TD) held at every late middle row, it would supply exactly the missing half of
 \textsf{SeamTwoSidedDyadicCellEscape}'s remaining two cells and close the whole
 $\sqrt{}$-escape wall via
-\lean{Erdos249257.half\_mem\_mersenneAchievementSet\_of\_middleProducerCardEscape}{HalfCylinderMiddleCarryLowerBound.lean:2364}.
+\lean{middle-producer cardinality escape implies half membership}{HalfCylinderMiddleCarryLowerBound.lean:2364}.
 
 \par\medskip
 
@@ -324,9 +324,9 @@ whole family, then no function $\mathrm{decode}:\mathrm{State}\to\mathbb N$ can 
 parameter $r$ from $\mathrm{state}(r)$ for every $r$ — fan-out is unbounded ($\ge\lfloor m/2\rfloor+2$
 at $m=2k$). More strongly, any finite $\mathrm{Fintype}\ \mathrm{State}$ needs
 $\mathrm{card}(\mathrm{State})\ge\mathrm{radius}+1$, unbounded in $m$.
-\lean{Erdos249257.balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247}
+\lean{balanced pulses admit no autonomous decoder}{GenericTailOrbitRigidity.lean:247}
 (fan-out lower bound at
-\lean{Erdos249257.balancedPulse\_fanout\_unbounded}{GenericTailOrbitRigidity.lean:237}).
+\lean{unbounded fanout of balanced pulses}{GenericTailOrbitRigidity.lean:237}).
 
 \textbf{Scope.} Rules out, for \emph{either} \#249 or \#257, any proof strategy that tries to define
 a bounded/autonomous "carry state" summarizing pre-$m$ history and use it to exactly determine the
@@ -345,9 +345,9 @@ $N:=\{d:\mu(d)=-1\}$: $\sum_{d\in N}1/(2^d-1) = 1/2 + \sum_{d\in P}1/(2^d-1)$ wh
 \mu(d)=1\}$, and quantitatively $1/2 + 1/63 \le \sum_{d\in N}1/(2^d-1)$ (using the first positive
 tail term $d=6$, $\mu(6)=1$) — the negative-Möbius support strictly \emph{overshoots} $1/2$ by at
 least $1/63$.
-\lean{MobiusSignSupportNoGo.half\_lt\_tsum\_negativeMobius}{MobiusSignSupportNoGo.lean:164}
+\lean{negative-Mobius mass exceeds one half}{MobiusSignSupportNoGo.lean:164}
 (exact decomposition at
-\lean{MobiusSignSupportNoGo.tsum\_negativeMobius\_eq\_half\_add\_positiveMobiusTail}{MobiusSignSupportNoGo.lean:111}).
+\lean{decomposition of the negative-Mobius mass}{MobiusSignSupportNoGo.lean:111}).
 
 \textbf{Scope.} Rules out exactly one natural candidate infinite Boolean support (the negative-Möbius
 set) as a witness for $1/2\in\mathcal A$. A route-sufficiency no-go only — it says nothing about
@@ -363,13 +363,13 @@ concrete number any repair attempt (adding/removing finitely many elements) must
 No finite positive-index Boolean support has value exactly $1/2$: the reduced denominator of any
 finite Mersenne subset-sum is provably \textbf{odd} (each $2^n-1$ is odd), while $1/2$ needs an even
 denominator.
-\lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589}. Separately,
+\lean{finite Boolean supports cannot equal one half}{HalfCarryReachability.lean:589}. Separately,
 $\mathsf{CertifiedGreedyMersenneDeath}$ is a decidable, finite-depth certificate proving a real $x$
 is \emph{not} in $\mathcal A$ (e.g.\ $3/4$ is machine-certified dead at level 1, lookahead 0:
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1778}), and this
+\lean{certified exclusion of three quarters}{GreedyAchievementSet.lean:1778}), and this
 one-sidedness is structural: \textbf{absence} of a found death certificate, or survival through any
 finite depth, proves \emph{nothing} about membership.
-\lean{Erdos249257.CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1756}.
+\lean{certified greedy-death witness}{GreedyAchievementSet.lean:1756}.
 
 \textbf{Scope.} The odd-denominator fact rules out every finite support as a $1/2$-witness,
 unconditionally (this is exactly B4/C3 of Part~I/III's cut-locator machinery, and it is why any
@@ -391,11 +391,11 @@ provably escapes a shrinking strip within $K$ steps, decidable) proves the tail 
 $\mathrm{totientTail}(N{+}h)-\mathrm{totientTail}(N)$ is not an integer. Rationality would force
 integrality along an entire period ray, so one dead multiple $m\cdot h_0$ kills the whole primitive
 period $h_0$
-(\lean{Erdos257PeriodNoncollapse.irrational\_totient\_series\_of\_multiple\_survivor\_supply}{CarrySurvivorExtinction.lean:491}),
+(\lean{multiple-survivor supply implies irrationality}{CarrySurvivorExtinction.lean:491}),
 and this collapses onto the single $\mathbb N$-indexed family $\mathrm{periodLcm}(t)=\mathrm{lcm}(1,\ldots,t)$
-(\lean{Erdos257PeriodNoncollapse.irrational\_totient\_series\_of\_lcm\_survivor\_supply}{CarrySurvivorExtinction.lean:540}).
+(\lean{LCM-survivor supply implies irrationality}{CarrySurvivorExtinction.lean:540}).
 Concrete unconditional deposit: every period $h\le16$ is machine-checked dead at $(N,L)=(14,9)$
-(\lean{Erdos257PeriodNoncollapse.totient\_series\_ne\_rat\_of\_den\_dvd\_upto\_sixteen}{CarrySurvivorExtinction.lean:587}).
+(\lean{denominator exclusion through the first sixteen factors}{CarrySurvivorExtinction.lean:587}).
 
 \textbf{Scope — a naming correction on record.} \textsf{CarrySurvivorExtinction.lean},
 \textsf{AdjacentCarryTube.lean}, \textsf{AdjacentPhaseSeparation.lean}, and
@@ -423,10 +423,10 @@ $x.\mathrm{den}/H$ divides $c$:
 \[
   H\mid x.\mathrm{den} \ \land\ (c\cdot x).\mathrm{den}\mid H \implies x.\mathrm{den}/H \mid |c|.
 \]
-\lean{Erdos249257.AdelicHeightObstruction.scalarLocalization\_complement\_dvd}{AdelicHeightObstruction.lean:23}.
+\lean{localization-complement divisibility}{AdelicHeightObstruction.lean:23}.
 Equality form (height conservation): $\exists\,t:\mathbb Z,\ H\cdot c\cdot x = t\cdot x.\mathrm{num}$
 — the omitted denominator is transferred exactly to the coefficient $t$, never erased.
-\lean{Erdos249257.AdelicHeightObstruction.scalarLocalization\_integer\_eq\_mul\_num}{AdelicHeightObstruction.lean:56}.
+\lean{integer localization numerator identity}{AdelicHeightObstruction.lean:56}.
 
 \textbf{Scope.} Fully generic $\mathbb Q$-arithmetic — no reference to either Erdős problem. It is
 the reusable "clearing a denominator by multiplying by a small integer $c$ cannot discard the
@@ -437,7 +437,7 @@ below by this lemma.
 \coord{rational-denominator/height}\ \textbf{Object or representation:} about a
 \emph{representation} — pure denominator bookkeeping for $\mathbb Q$, with zero problem-specific
 content; the upstream primitive
-(\lean{Erdos249257.RationalDenominatorSurvival.divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17})
+(\lean{denominator divisibility under an integral quotient}{RationalDenominatorSurvival.lean:17})
 is the domain-neutral extraction this lemma builds on.
 \ev{Lean}\scale{n/a}
 \end{lem}
@@ -448,9 +448,9 @@ For positive $x:\mathbb Q$: if $2^r\mid x.\mathrm{num}.\mathrm{natAbs}$ and $x <
 $2^r\cdot(2^n-1) < 2\cdot x.\mathrm{den}$ — a numerator $2$-power lower bound plus a Mersenne-scale
 upper bound on $x$ together force a denominator lower bound, \emph{without} introducing a global
 prefix LCM.
-\lean{Erdos249257.AdelicHeightObstruction.positiveRat\_mersenne\_height}{AdelicHeightObstruction.lean:103}
+\lean{positive-rational Mersenne height}{AdelicHeightObstruction.lean:103}
 (generic form
-\lean{Erdos249257.AdelicHeightObstruction.positiveRat\_numDivisor\_mul\_lt\_two\_mul\_den}{AdelicHeightObstruction.lean:77}).
+\lean{numerator-divisor height bound}{AdelicHeightObstruction.lean:77}).
 A ready-made denominator-lower-bound tool for "synchronized tail" arguments on \#257's Mersenne
 sums; composes directly with Lemma~\ref{lem:scalar-localization} for a full numerator/denominator
 height-transport toolkit.
@@ -468,11 +468,11 @@ height-transport toolkit.
   \ \lor\
   4\cdot\mathrm{overshoot}(d)+\mathrm{abovePulse}(d)+2(d+j) \le 2^{d-j+1}.
 \]
-\lean{Erdos249257.SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}.
+\lean{upper-reset dyadic-band escape criterion}{HalfCylinderMiddleCarryLowerBound.lean:4566}.
 In words: at every upper-reset row $d\ge13$, the reset charge must avoid a linear-width forbidden
 band immediately below every dyadic threshold $2^{d-j+1}$, for every $j\le d$ simultaneously.
 Granted this socket,
-\lean{Erdos249257.half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}
+\lean{upper-reset band escape implies half membership}{HalfCylinderMiddleCarryLowerBound.lean:4790}
 gives $1/2\in\mathcal A$ outright.
 \end{defn}
 
@@ -484,9 +484,9 @@ E+2(d+j)\le 2^{d-j+1}$ collapses the $\forall j\in[0,d]$ band-avoidance conditio
 separate inequalities) to checking exactly \emph{one} nearest-boundary index $j$. Specialised to the
 concrete seam reset charge, $\mathsf{SeamUpperResetCriticalBandEscape}$ is proved logically
 \emph{equivalent} to Definition~\ref{defn:band-escape}'s socket.
-\lean{Erdos249257.dyadicBandEscape\_iff\_exists\_critical}{HalfUpperResetCriticalBand.lean:108}
+\lean{critical-index characterization of dyadic-band escape}{HalfUpperResetCriticalBand.lean:108}
 (seam specialisation
-\lean{Erdos249257.seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:883}).
+\lean{critical-band characterization of upper-reset escape}{HalfUpperResetCriticalBand.lean:883}).
 Zero Mersenne/seam content in the core lemma — pure $(d,E,j)$ arithmetic over powers of 2.
 \coord{dyadic-boundary, generic}\ \ev{Lean}\scale{n/a}
 \end{prop}
@@ -496,7 +496,7 @@ Zero Mersenne/seam content in the core lemma — pure $(d,E,j)$ arithmetic over 
 The linked certificate verifies Definition~\ref{defn:band-escape} by kernel computation for every
 row $13\le s\le31$. For example, $\mathrm{rem}(14)=392$ and
 $\mathrm{rem}(31)=4{,}187{,}487{,}147$. No row in this interval fails the band-avoidance test.
-\lean{Erdos249257.seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}.
+\lean{certified upper-reset band escape through depth 30}{HalfCylinderUpperResetBandCertificates.lean:78}.
 \ev{Cert}\scale{bounded}
 \end{obs}
 
