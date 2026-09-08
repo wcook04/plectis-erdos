@@ -19,7 +19,10 @@ def main():
     if entry.parent!=Path('.') or not entry.name.startswith('ExternalVerification'):raise ValueError('Expected one top-level entry')
     cfg_path=entry/'comparator.json';neg_path=entry/'comparator-negative-mismatch.json'
     cfg=json.loads(cfg_path.read_text());neg=json.loads(neg_path.read_text())
+    policy = plan(entry.name, lambda p: Path(p).read_bytes())
     expected_neg={**cfg,'solution_module':'NegativeSolutions.'+entry.name}
+    if policy is not None:
+        expected_neg['theorem_names'] = cfg['theorem_names'][:1]
     layout_ok=(neg==expected_neg and cfg['challenge_module']==entry.name+'.Challenge' and cfg['solution_module']=='Solutions.'+entry.name and cfg['enable_nanoda'] is True and bool(cfg['theorem_names']))
     tmp=Path(os.environ['RUNNER_TEMP']);git=lambda *a:subprocess.check_output(['git',*a],text=True).strip()
     revisions={k:git('-C',str(tmp/({'landrun':'landrun-src'}.get(k,k))),'rev-parse','HEAD') for k in PINS}
@@ -35,7 +38,6 @@ def main():
     passed=verdict(args.positive_exit,args.negative_exit,log,cfg['theorem_names'],identities)
     sources=[cfg_path,neg_path,Path(cfg['challenge_module'].replace('.','/')+'.lean'),Path(cfg['solution_module'].replace('.','/')+'.lean'),Path(neg['solution_module'].replace('.','/')+'.lean'),Path('lean-toolchain'),Path('lake-manifest.json'),Path('lakefile.toml'),Path('scripts/landrun-wrapper.sh')]
     receipt={'schema':'erdos-focused-comparator-runtime-receipt/1','result':'pass' if passed else 'fail','entry':entry.name,'source_commit':source_commit,'source_tree':git('rev-parse','HEAD^{tree}'),'expected_commit':args.expected_commit,'source_commit_matches':source_commit==args.expected_commit,'tracked_source_check':{'phase':'post_replay','git_exit':post_diff.returncode,'tracked_dirty_paths':dirty_paths,'matches_commit':tracked_clean},'positive_exit':args.positive_exit,'negative_exit':args.negative_exit,'positive_log_digest':digest(Path('artifacts/positive.log')),'negative_log_digest':digest(Path('artifacts/negative.log')),'expected_mismatch':"Challenge and solution theorem statement do not match: '"+cfg['theorem_names'][0]+"'",'tools':revisions,'expected_tools':PINS,'binary_digests':binaries,'project_toolchain':project_toolchain,'export_toolchain':export_toolchain,'comparator_toolchain':(tmp/'comparator/lean-toolchain').read_text().strip(),'layout_matches':layout_ok,'input_digests':{str(p):digest(p) for p in sources},'sandbox_mode':sandbox,'nanoda_required':True,'submission':'not_submitted'}
-    policy = plan(entry.name, lambda p: Path(p).read_bytes())
     controls = adjudicate(policy, lambda p: Path(p).read_bytes(), cfg['theorem_names'][0], passed,
                           lambda b: 'sha256:' + hashlib.sha256(b).hexdigest())
     if controls is not None:
