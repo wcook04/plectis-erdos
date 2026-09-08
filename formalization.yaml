@@ -36,10 +36,10 @@ status:
     subsidiary theorems, formalises selected known results, verifies finite
     instances, and records conditional reductions and method barriers.
   proof_corpus_sorry_count: 0
-  sorry_count: 16
+  sorry_count: 18
   sorry_in_definitions: 0
-  trusted_challenge_sorry_count: 16
-  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041CentralFreePoint/Challenge.lean; ExternalVerification1041CubicPath/Challenge.lean; ExternalVerification1041CubicRootCount/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean; ExternalVerification1049ArchimedeanCap/Challenge.lean; ExternalVerification243WeightedRecordExcess/Challenge.lean; ExternalVerification249TotientKernelBasis/Challenge.lean; ExternalVerification68FiniteDenominator/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
+  trusted_challenge_sorry_count: 18
+  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041CentralFreePoint/Challenge.lean; ExternalVerification1041CubicPath/Challenge.lean; ExternalVerification1041CubicRootCount/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean; ExternalVerification1049ArchimedeanCap/Challenge.lean; ExternalVerification243WeightedRecordExcess/Challenge.lean; ExternalVerification249TotientKernelBasis/Challenge.lean; ExternalVerification68FiniteDenominator/Challenge.lean; ExternalVerification68MomentIdealResidual/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
   axioms:
     - "propext"
     - "Quot.sound"
@@ -1162,9 +1162,9 @@ claim_review_matrix:
       - id: "factorial_channel_and_projection_rigidity"
         contribution_class: "locally proved result; novelty unassessed"
         evidence_mode: "Lean kernel"
-        comparator_disposition: "represented_by_isolated_headline"
-        summary: "Finite quotient-band channel factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity."
-        boundary: "These finite and structural results do not produce a cofinal obstruction."
+        comparator_disposition: "existing_isolated_headline_retained_new_endpoints_pending_wrapper_validation"
+        summary: "Exact low-channel classification, the attainable moment ideal with a content-one primitive generator, full-residual transparency modulo integers, finite quotient-band factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity."
+        boundary: "These structural results determine the finite low-channel moment lattice and the residual class modulo integers, but they do not produce a cofinal nonintegral real residual or another obstruction settling Erdős 68."
       - id: "factorial_conditional_producers"
         contribution_class: "conditional reduction"
         evidence_mode: "Lean kernel"
@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:6503b5526ba8cc9d489ffd1883fb83890e74032c0acebb5c60e062b27170d20b"
+  problem_index_digest: "sha256:92fcaac8c89e40dbb1c2077bdb11733c3def364ae4bd160d431b6033643315a2"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1686,6 +1686,6 @@ external_verification:
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "Irrationality at base three halves, or for any rational base."
       claim_registry_status: "partially_registered"
-  trusted_challenge_holes: 16
+  trusted_challenge_holes: 18
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

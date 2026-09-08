@@ -1618,13 +1618,15 @@
           "claim_ids": [
             "erdos_68",
             "channel_quotient_band_breakpoint",
+            "factorial_low_channel_moment_ideal",
+            "factorial_full_residual_integer_class",
             "factorial_finite_size_denominator"
           ],
-          "status_summary": "An open factorial-denominator endpoint plus an unconditional finite quotient-band factorisation and breakpoint under channel cancellation. Every rational representation S=a/q of S=sum(n>=2)1/(n!-1), with integer a and positive natural q, satisfies q>=2^39990 and q>10^12040. No reducedness hypothesis. This does not prove irrationality or the separate factorial-grid exclusion.",
-          "prior_art_posture": "The quotient-band identity and its breakpoint consequence are source-specific formal results; no novelty, priority, or significance claim is made.",
+          "status_summary": "An open factorial-denominator endpoint plus unconditional finite channel structure: quotient-band rigidity, the exact attainable low-channel moment ideal with a content-one primitive generator, and full-residual transparency modulo the integers. Every rational representation S=a/q, with integer a and positive natural q, satisfies q≥2^39990 and q>10^12040. These results do not prove irrationality or the separate factorial-grid exclusion.",
+          "prior_art_posture": "The quotient-band identity, exact moment lattice, and residual-class statements are source-specific formal results; no novelty, priority, or significance claim is made.",
           "primary_narrative_owner": "paper/erdos-68-factorial-denominator-irrationality.tex",
-          "source_route": "python3 scripts/query_corpus.py --claim channel_quotient_band_breakpoint",
-          "consumer_or_open_obligation": "The finite-family result supplies no cancelling family, simultaneous-channel control, residual estimate, or cofinal non-unit carry for the still-open #68 endpoint.",
+          "source_route": "python3 scripts/query_corpus.py --claim factorial_low_channel_moment_ideal",
+          "consumer_or_open_obligation": "The remaining endpoint needs a cofinal obstruction. The exact moment lattice and integer residual class do not prove that the real residual is nonzero, and they supply no cofinal non-unit carry for the still-open Erdős 68 problem.",
           "view_decision": "problem_note_reference_detail"
         },
         {
@@ -1796,7 +1798,7 @@
         "ErdosProblems.Decl.verify.D2",
         "ErdosProblems.Decl.verify.D3",
         "ErdosProblems.Decl.verify.D4",
-        "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+        "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10Audit",
         "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
         "ErdosProblems.FreePosition.FreeKill18B",
         "ErdosProblems.FreePosition.FreeKill21C",
@@ -2070,6 +2072,14 @@
           "imports": [
             "Erdos249257.FirstHarmonicPivot",
             "Erdos249257.CarrySurvivorExtinction"
+          ]
+        },
+        {
+          "id": "Erdos249257.AllBaseReciprocalSupportIrrationality",
+          "path": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.ReciprocalSupportIrrationality"
           ]
         },
         {
@@ -7684,6 +7694,16 @@
           ]
         },
         {
+          "id": "Erdos249257.ReciprocalSupportIrrationality",
+          "path": "Erdos249257/ReciprocalSupportIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.RationalSupportCarrySkeleton",
+            "Erdos249257.MersenneTailAtoms",
+            "Erdos249257.CarrySurvivorExtinction"
+          ]
+        },
+        {
           "id": "Erdos249257.RepunitMobiusNumerator",
           "path": "Erdos249257/RepunitMobiusNumerator.lean",
           "role": "Repunit and Mobius-numerator identities",
@@ -8628,6 +8648,32 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
+          "path": "ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+            "ErdosProblems.Erdos1041.PaperPrimitivePath"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10Audit",
+          "path": "ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10Audit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperPrimitivePath",
+          "path": "ErdosProblems/Erdos1041/PaperPrimitivePath.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCurveAssembly",
+            "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1041.PaperReflectedBoundary",
           "path": "ErdosProblems/Erdos1041/PaperReflectedBoundary.lean",
           "role": "Lean proof module",
@@ -9319,6 +9365,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos251.PaperSparseCouplingR7",
+          "path": "ErdosProblems/Erdos251/PaperSparseCouplingR7.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos251.PolynomialGapSeriesValue",
           "path": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
           "role": "Lean proof module",
@@ -9347,6 +9399,29 @@
           "imports": [
             "ErdosProblems.Erdos251.SparseRationalisationCore"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.ReturnedSparseWindow",
+          "path": "ErdosProblems/Erdos251/ReturnedSparseWindow.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PaperSparseCouplingR7"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.ReturnedSparseWindowAudit",
+          "path": "ErdosProblems/Erdos251/ReturnedSparseWindowAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.ReturnedSparseWindow",
+            "ErdosProblems.Erdos251.ReturnedTruncationBound"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.ReturnedTruncationBound",
+          "path": "ErdosProblems/Erdos251/ReturnedTruncationBound.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos251.ShiftedGapCountingR9",
@@ -9379,6 +9454,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.DyadicShellSynchronisation",
+          "path": "ErdosProblems/Erdos257/DyadicShellSynchronisation.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
           "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
           "role": "Lean proof module",
@@ -9393,6 +9474,71 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.GreedyAchievementSet"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR7.Displacement"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR7.CoverKernel",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR7.Displacement",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR7/Displacement.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.AllBaseReciprocalSupportIrrationality",
+            "ErdosProblems.Erdos257.RadixCloseReturn"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.CommonScale",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/CommonScale.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
+            "ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.CountableMeans",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.OrbitBound",
+            "ErdosProblems.Erdos257.DyadicShellSynchronisation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteMeans",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/FiniteMeans.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR7.CoverKernel"
           ]
         },
         {
@@ -9412,11 +9558,55 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.CountableMeans",
+            "ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets",
+            "ErdosProblems.Erdos257.PaperCompleteR7.CoverKernel"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.OrbitBound",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/OrbitBound.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.FiniteMeans",
+            "ErdosProblems.Erdos257.WeightedSupportAveraging"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn",
+          "path": "ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CommonScale"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.RadixCloseReturn",
+          "path": "ErdosProblems/Erdos257/RadixCloseReturn.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.AllBaseReciprocalSupportIrrationality"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos257.SquarefreeSupportIncidence",
           "path": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.CertificateKernel"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WeightedSupportAveraging",
+          "path": "ErdosProblems/Erdos257/WeightedSupportAveraging.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.ReciprocalSupportIrrationality"
           ]
         },
         {
@@ -9497,6 +9687,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.DivisorChannelBasis",
+          "path": "ErdosProblems/Erdos68/DivisorChannelBasis.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialChannelCertificate"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.DivisorFactorialCentre",
           "path": "ErdosProblems/Erdos68/DivisorFactorialCentre.lean",
           "role": "Lean proof module",
@@ -9572,6 +9770,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
+          "path": "ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure",
           "path": "ErdosProblems/Erdos68/PaperCompleteDyadicEnclosure.lean",
           "role": "Lean proof module",
@@ -9601,6 +9807,14 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos68.PaperCompleteFiniteLeadArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteIntegerSpan",
+          "path": "ErdosProblems/Erdos68/PaperCompleteIntegerSpan.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
           ]
         },
         {
@@ -9635,6 +9849,58 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos68.PaperCompleteKernelFloorSoundness"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+          "path": "ErdosProblems/Erdos68/PaperCompleteLowKernel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
+            "ErdosProblems.Erdos68.PaperCompleteIntegerSpan"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
+          "path": "ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+          "path": "ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+            "ErdosProblems.Erdos68.PaperCompleteMomentHorizon"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+          "path": "ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+            "ErdosProblems.Erdos68.PrimeUnitTranslator"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteTypeB",
+          "path": "ErdosProblems/Erdos68/PaperCompleteTypeB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+            "ErdosProblems.Erdos68.PaperCompleteResidualIdentity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteTypeBAudit",
+          "path": "ErdosProblems/Erdos68/PaperCompleteTypeBAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteTypeB"
           ]
         },
         {
@@ -12889,11 +13155,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "d058b9150218ae23d2cfd975580088d6167e9da8",
+      "ref": "df12e6834baa1723186f42cd9adf5b66c2742d18",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
-      "relationship_to_last_tag": "at_last_tag",
-      "public_tag": "formal-source-2026-09-08-r5"
+      "relationship_to_last_tag": "post_tag_checkpoint",
+      "public_tag": "formal-source-2026-09-08-r6"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -13605,17 +13871,25 @@
           {
             "id": "factorial_channel_and_projection_rigidity",
             "contribution_class": "locally proved result; novelty unassessed",
-            "summary": "Finite quotient-band channel factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.",
+            "summary": "Exact low-channel classification, the attainable moment ideal with a content-one primitive generator, full-residual transparency modulo integers, finite quotient-band factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.",
             "evidence_mode": "Lean kernel",
             "declarations": [
               "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band",
               "Erdos68.exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero",
+              "ErdosProblems.Erdos68.PaperComplete.attainable_moment_ideal",
+              "ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment",
+              "ErdosProblems.Erdos68.PaperComplete.minimum_moment_content_one",
+              "ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime",
+              "ErdosProblems.Erdos68.PaperComplete.residual_transparency",
+              "ErdosProblems.Erdos68.PaperComplete.summable_fullResidual",
+              "ErdosProblems.Erdos68.PaperComplete.zero_moment_residual_integral",
+              "ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference",
               "Erdos68.channelNumerator_mod_factorialMoment",
               "Erdos68.primeTranslator_channelResidual_eq_one",
               "ErdosProblems.Erdos68.projection_disagreement_excludes_bounded_endpoint"
             ],
-            "comparator_disposition": "represented_by_isolated_headline",
-            "boundary": "These finite and structural results do not produce a cofinal obstruction."
+            "comparator_disposition": "existing_isolated_headline_retained_new_endpoints_pending_wrapper_validation",
+            "boundary": "These structural results determine the finite low-channel moment lattice and the residual class modulo integers, but they do not produce a cofinal nonintegral real residual or another obstruction settling Erdős 68."
           },
           {
             "id": "factorial_conditional_producers",
@@ -14440,7 +14714,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4434
+        "line": 4433
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14466,7 +14740,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4445
+        "line": 4444
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14479,7 +14753,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4469
+        "line": 4468
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14492,7 +14766,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 733
+        "line": 732
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14505,7 +14779,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4460
+        "line": 4459
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14531,7 +14805,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 256
+        "line": 253
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14557,7 +14831,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 132
+        "line": 131
       },
       "additional_paper_anchors": [
         {
@@ -14579,7 +14853,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 487
+        "line": 485
       },
       "additional_paper_anchors": [
         {
@@ -14601,7 +14875,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 493
+        "line": 491
       },
       "additional_paper_anchors": [
         {
@@ -14623,7 +14897,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 502
+        "line": 500
       },
       "additional_paper_anchors": [
         {
@@ -14645,7 +14919,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 575
+        "line": 569
       },
       "additional_paper_anchors": [
         {
@@ -14680,7 +14954,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 747
+        "line": 746
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14693,7 +14967,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 756
+        "line": 755
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14706,7 +14980,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 766
+        "line": 765
       },
       "advancement_status": "checked_advance_recorded"
     },
@@ -14844,7 +15118,7 @@
         "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "environment": "problem",
         "title": "common-width simultaneous endpoint-jet construction",
-        "line": 2363,
+        "line": 2437,
         "label": "long1049:prob:kernel"
       },
       "advancement_status": "no_checked_advance_recorded"
@@ -14858,7 +15132,7 @@
         "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "environment": "problem",
         "title": "four-jet kernel escape",
-        "line": 2501,
+        "line": 2575,
         "label": "long1049:prob:escape"
       },
       "advancement_status": "no_checked_advance_recorded"
@@ -14872,7 +15146,7 @@
         "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "environment": "problem",
         "title": "the first saturated determinant",
-        "line": 2529
+        "line": 2603
       },
       "advancement_status": "no_checked_advance_recorded"
     },
@@ -14885,7 +15159,7 @@
         "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "environment": "problem",
         "title": "minimal non-$a_0$ deformation",
-        "line": 2545
+        "line": 2619
       },
       "advancement_status": "no_checked_advance_recorded"
     },
@@ -14898,7 +15172,7 @@
         "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "environment": "problem",
         "title": "negative normalised product-formula margin",
-        "line": 2566,
+        "line": 2640,
         "label": "long1049:eq:negative-margin"
       },
       "advancement_status": "no_checked_advance_recorded"
@@ -14912,7 +15186,7 @@
         "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "environment": "problem",
         "title": "optimal admissible height threshold",
-        "line": 2648
+        "line": 2722
       },
       "advancement_status": "no_checked_advance_recorded"
     }
@@ -15123,6 +15397,72 @@
           "name": "exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero",
           "module": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
           "line": 130
+        }
+      ]
+    },
+    {
+      "id": "factorial_low_channel_moment_ideal",
+      "label": "Exact attainable moment ideal for low-channel kernels",
+      "status": "unconditional progress",
+      "statement": "For every D ≥ 2 and every prime p with D / 2 < p ≤ D, the factorial moments attained by finite integer vectors supported on indices n ≥ 2 and cancelling every channel 2 through D are exactly the multiples of minimumMoment D p. This positive generator is independent of the eligible prime, and it is attained by a coefficient-content-one, hence primitive, vector.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "eq:attainable-moment-ideal",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "attainable_moment_ideal",
+          "module": "ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean",
+          "line": 139
+        },
+        {
+          "name": "exact_moment_ideal_with_primitive_attainment",
+          "module": "ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean",
+          "line": 242
+        },
+        {
+          "name": "minimum_moment_content_one",
+          "module": "ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean",
+          "line": 307
+        },
+        {
+          "name": "minimumMoment_independent_prime",
+          "module": "ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean",
+          "line": 321
+        }
+      ]
+    },
+    {
+      "id": "factorial_full_residual_integer_class",
+      "label": "Full residual transparency and integer classes",
+      "status": "unconditional progress",
+      "statement": "For D ≥ 2, the full residual of a low-channel vector t K_D plus a finitely supported tail synthesis is exactly t L_D times the factorial-gap tail plus the integer coordinate mass. Every finite vector with zero coefficient at index 0 has a summable full residual; a zero-moment vector supported away from index 0 has integral residual, and two such vectors with equal factorial moment have residuals differing by an integer.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "eq:residual-transparency",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "residual_transparency",
+          "module": "ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean",
+          "line": 116
+        },
+        {
+          "name": "summable_fullResidual",
+          "module": "ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean",
+          "line": 166
+        },
+        {
+          "name": "zero_moment_residual_integral",
+          "module": "ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean",
+          "line": 185
+        },
+        {
+          "name": "equal_moment_residual_integer_difference",
+          "module": "ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean",
+          "line": 195
         }
       ]
     },

@@ -1,0 +1,28 @@
+{
+  "challenge_module": "ComparatorReplay.Challenge",
+  "solution_module": "ComparatorReplay.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041CentralFreePoint.central_free_point_mean",
+    "Erdos249257.ExternalVerification1041CubicPath.cubic_paper_complete",
+    "Erdos249257.ExternalVerification1041CubicPath.monic_cubic_connector",
+    "Erdos249257.ExternalVerification1041CubicRootCount.cubic_root_count",
+    "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound",
+    "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies",
+    "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke",
+    "Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap",
+    "Erdos249257.ExternalVerification1049ArchimedeanCap.cleared_below_square_not_tendsto_zero",
+    "Erdos249257.ExternalVerification243WeightedRecordExcess.weighted_record_excess",
+    "Erdos249257.ExternalVerification249TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
+    "Erdos249257.ExternalVerification249TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension",
+    "Erdos249257.ExternalVerification249TotientKernelBasis.allBaseIntegralCoordinateAndRelationBasis",
+    "Erdos249257.ExternalVerification68FiniteDenominator.finite_denominator_exclusion",
+    "Erdos249257.ExternalVerification68MomentIdealResidual.exact_moment_ideal_with_primitive_attainment",
+    "Erdos249257.ExternalVerification68MomentIdealResidual.residual_transparency"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

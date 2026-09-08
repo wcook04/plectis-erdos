@@ -240,12 +240,11 @@ For that length the geometric sum and convexity give
  \le\frac{2L}{d(B-1)}.
 \]
 Summing the main terms and these two error budgets proves~\eqref{eq:mixed-finite-kernel}.
-The complete-cycle mass $1/(B-1)$ is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L150}{Lean source}, the bound
-$g/(B^g-1)\le1/(B-1)$ used for complete cycles is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L140}{Lean source}, and the no-wrap
-inequality $\sum_{i<d}B^i\ge dB^{(d-1)/2}$ is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L343}{Lean source}.
+The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L150}{complete-cycle mass identity}
+gives $1/(B-1)$, the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L140}{cycle-ratio bound}
+gives $g/(B^g-1)\le1/(B-1)$, and the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L343}{geometric-sum lower bound}
+gives the no-wrap inequality $\sum_{i<d}B^i\ge dB^{(d-1)/2}$.
 Nonnegative interchange permits summation against any coefficients $c_d$
 with $\sum_dc_d/d<\infty$.
 
@@ -292,8 +291,8 @@ The frozen frames have zero displacement, so
 The fixed rational lattice excludes rationality at base two.
 For every $b\ge2$, the elementary atom inequality
 $(b^r-1)/(b^d-1)\le2(2^r-1)/(2^d-1)$ for $0\le r<d$
-gives the same conclusion at base $b$; that inequality is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L232}{Lean source}.
+gives the same conclusion at base $b$; this is the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L232}{atom base-transfer inequality}.
 Any prescribed positive divisor can be included in $L$, so the witnesses
 can also be required to be arbitrarily large.
 \end{proof}
@@ -326,11 +325,11 @@ $f_{F_j}(n)\ge\eta_jt$.  Otherwise summing contradicts coverage.
 The corresponding weighted majorant is at least $\Psi(t)$.
 Averaging and using $\lfloor X/d\rfloor/X\le1/d$ proves the first
 inequality.  Convexity gives $2^\alpha-1\le\alpha$, and
-$e^u/u\ge e$ proves the second.  Those two scalar steps are
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L170}{Lean source} and
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L177}{Lean source}, and the bound
-$t^\alpha/(2^\alpha-1)\ge e\log t$ at every admissible exponent is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L188}{Lean source}.
+$e^u/u\ge e$ proves the second.  The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L170}{convexity bound}
+and the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L177}{exponential bound}
+formalise those two scalar steps, while the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L188}{optimised exponential lower bound}
+gives $t^\alpha/(2^\alpha-1)\ge e\log t$ at every admissible exponent.
 
 This bound survives optimisation over all covers.  For
 $F(q,P)=\{qd:d\mid\prod_{p\in P}p\}$, where $q\ge2$ and no $p\in P$

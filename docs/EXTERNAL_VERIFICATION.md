@@ -230,7 +230,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 3. **Factorial channel and projection rigidity** (`factorial_channel_and_projection_rigidity`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The finite channel and projection machinery is the deepest represented #68 mechanism below the endpoint equivalence, but it supplies no cofinal obstruction.
    - **Source authority.** Canonical review family `factorial_channel_and_projection_rigidity` in [claims](../docs/claims.json)
-   - **Boundary.** These finite and structural results do not produce a cofinal obstruction.
+   - **Boundary.** These structural results determine the finite low-channel moment lattice and the residual class modulo integers, but they do not produce a cofinal nonintegral real residual or another obstruction settling Erdős 68.
    - **Relation.** `supports_without_producing` `factorial_carry_characterisation`: Finite channel rigidity feeds the carry endpoint route but supplies no cofinal non-unit carry.
 
 <details>
@@ -244,8 +244,8 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
 - **Factorial channel and projection rigidity**<br>
-  Finite quotient-band channel factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.<br>
-  **Boundary.** These finite and structural results do not produce a cofinal obstruction.<br>
+  Exact low-channel classification, the attainable moment ideal with a content-one primitive generator, full-residual transparency modulo integers, finite quotient-band factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.<br>
+  **Boundary.** These structural results determine the finite low-channel moment lattice and the residual class modulo integers, but they do not produce a cofinal nonintegral real residual or another obstruction settling Erdős 68.<br>
   *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
 - **Factorial conditional producers**<br>
@@ -272,7 +272,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>targeted</code>
 
 - <code>factorial_channel_and_projection_rigidity</code><br>
-  Comparator: <code>represented_by_isolated_headline</code>
+  Comparator: <code>existing_isolated_headline_retained_new_endpoints_pending_wrapper_validation</code>
 
 - <code>factorial_conditional_producers</code><br>
   Comparator: <code>not_selected_deep_project_predicate_stack</code>

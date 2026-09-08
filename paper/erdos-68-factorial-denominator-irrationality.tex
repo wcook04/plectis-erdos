@@ -131,8 +131,7 @@ Consequently,
 \end{equation}
 \end{theorem}
 
-\noindent The equivalence and its cofinal form are
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L29}{Lean source}.
+\noindent Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L29}{cofinal companion criterion}.
 
 \begin{proof}
 First suppose $\Ser=a/q$ with $q>0$, and take $m$ so large that
@@ -215,8 +214,7 @@ S\notin\mathbb Q,\qquad
 \]
 \end{theorem}
 
-\noindent The pair of equivalences is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L47}{Lean source}.
+\noindent Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L47}{carry and divisibility criteria}.
 \begin{proof}
 Rationality forces eventual unit carries by
 \eqref{eq:finite-denominator-consumer}.  Conversely, if $b_m=1$
@@ -262,8 +260,7 @@ has the unique finite expansion
 \end{equation}
 \end{theorem}
 
-\noindent The observables, the unique expansion and the coefficient formula are
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260}{Lean source}.
+\noindent Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260}{divisor-channel coordinate theorem}.
 \begin{proof}
 The moment of $T_n$ is zero.  The floor in $W_{d,n}$ changes between
 $n-1$ and $n$ precisely when $d\mid n$, so
@@ -286,9 +283,7 @@ U_9=9e_8-e_9-5040e_2+1680e_3.
 \label{res:translator}
 \end{equation}
 It has moment zero and only channel $9$ is nonzero.  Thus each channel can
-be adjusted separately by a multiple of its own denominator.  The expansion
-is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L17}{Lean source} and the observable
-profile is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L45}{Lean source}.
+be adjusted separately by a multiple of its own denominator.  Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L17}{expansion of $U_9$} and its \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L45}{observable profile}.
 
 \subsection{The support restriction and the residual}
 Write
@@ -301,8 +296,7 @@ Equation~\eqref{eq:channel-basis-expansion} implies both the channel congruence
 V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}
 \label{res:congruence}
 \end{equation}
-in the equivalent integer-divisibility form
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L53}{Lean source},
+in the equivalent \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L53}{integer-divisibility form},
 and the unique description of every low-channel kernel:
 \begin{equation}
 V_2=\cdots=V_D=0
@@ -324,6 +318,11 @@ The series converges because $V_d=M$ beyond the support.  This equation
 identifies the limit of channel adjustment: every zero-moment correction
 changes the residual by an integer.  A further fractional cancellation
 coordinate does not arise from these corrections.
+Lean checks the displayed residual identity and its convergence on every finite paper-domain vector, and proves both
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L185}{zero-moment integrality} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195}{equal-moment invariance modulo the integers}; the source endpoints for the identity and convergence are
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L116}{residual transparency} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L166}{full-residual summability}.
 
 Only finitely many $z_n$ are nonzero.  Put $a_D=[e_1]K_D$ and
 $u_n=[e_1]U_n$.  Admissibility on $n\ge2$ becomes the single integer equation
@@ -337,8 +336,15 @@ L_D\frac{g_D}{\gcd(g_D,a_D)}\mathbb Z,
 \label{eq:attainable-moment-ideal}
 \end{equation}
 Indeed, finite integer combinations of the $u_n$ form $g_D\mathbb Z$.
-The resulting positive generator is attained, and an attaining vector is
-primitive.  Odd $u_n$ vanish by induction.  For a prime $p$, the sole nonzero
+The resulting positive generator is attained by a vector of coefficient
+content one, hence by a primitive vector.  A prime $p$ with $D/2<p\le D$ may
+be used to compute the finite gcd below, and the generator is independent of
+which eligible prime is chosen.  Lean proves the
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L139}{exact attainable ideal}, together with
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242}{primitive attainment},
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L307}{content-one attainment}, and
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L321}{independence of the eligible prime}.
+Odd $u_n$ vanish by induction.  For a prime $p$, the sole nonzero
 proper-divisor contribution at $2p$ gives $u_{2p}=-2(2p)!/2^p\ne0$.
 Every tail thus contains a nonzero coefficient, so $g_D>0$.
 
@@ -365,8 +371,7 @@ g_D=\gcd(u_{D+1},\ldots,u_H),\qquad H<2D^2.
 \]
 \end{theorem}
 
-\noindent The statement is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252}{Lean source}.
+\noindent Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252}{finite moment-horizon theorem}.
 \begin{proof}
 The finite gcd $g$ divides the nonzero term
 $u_{2\ell}=-(2\ell)!/2^{\ell-1}$, so $g\mid(2\ell)!$.
@@ -431,8 +436,7 @@ The following elementary estimate quantifies this cost:
 \liminf_{N\to\infty}\frac{\log L_N}{N^{3/2}\log N}
 \ge\frac{2\sqrt2}{3}.\label{res:lcm-growth}
 \end{equation}
-The extended-real statement, with the real exponent $3/2$, is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42}{Lean source}.
+Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42}{extended-real lcm growth bound with exponent $3/2$}.
 For a terminal block of $k$ terms, the product--lcm--gcd inequality and
 $\gcd(i!-1,j!-1)\mid j!/i!-1$ give
 \[
@@ -506,8 +510,7 @@ v_q(\operatorname{den}H_M)=e
 \quad\Longleftrightarrow\quad R_{q,e}(M)\ne0\pmod q.
 \label{eq:prime-pole-survival}
 \end{equation}
-The equivalence, with the maximum and its attainment taken from the actual
-prefix lcm, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L118}{Lean source}.
+Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L118}{prime-pole survival criterion for the actual prefix lcm}.
 This first-layer test is a consequence of the general reciprocal-sum
 valuation formula of Louwsma and Martino~\cite[Lemma~4.1]{louwsma-martino}.
 
@@ -557,8 +560,7 @@ R_p>1,\qquad
 then $S$ is irrational.
 \end{proposition}
 
-\noindent The criterion at natural parameters is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156}{Lean source}.
+\noindent Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156}{irrationality criterion at natural parameters}.
 \begin{proof}
 Suppose $S=a/q$.  For large $p$, $q\mid F_p\mid C_p$, so
 $L_p^{\rm blk}S$ is an integer multiple of $R_p$.  Therefore

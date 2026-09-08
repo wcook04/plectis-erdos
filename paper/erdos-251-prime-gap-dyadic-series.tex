@@ -249,7 +249,7 @@ Then $2^s d\mid2^{L_j}(2^{L_j}-1)$, making the displayed $L_j$-shift
 integral at $N=L_j$.  This contradicts the right-hand condition.
 \end{proof}
 
-\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153}{Lean source}.
+\noindent This is the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153}{lcm-diagonal criterion}.
 
 The factorial schedule $j!$ has the same divisibility property, but the lcm
 schedule is pointwise no larger and is the canonical endpoint used here.  The
@@ -284,9 +284,8 @@ $D_{N+1}=2D_N-\delta_N$ gives the stated half-window and, in the reverse
 direction, recovers the second unit window.
 \end{proof}
 
-\noindent The rational normal form is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/AffineShiftEscape.lean#L113}{Lean source}.
-The same equivalence for real states is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L135}{Lean source}.
+\noindent The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/AffineShiftEscape.lean#L113}{rational signed-two-window equivalence}
+has the corresponding \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L135}{real-state form}.
 
 For the longer block, set
 \[
@@ -354,8 +353,8 @@ identity together with $|D_{N+r}|\le b(N+r)$.  The triangle inequality gives
 $|B_{h,N,r}-2^rz|>b(N+r)$ for every integer $z$.
 \end{proof}
 
-\noindent The three displayed equivalences are assembled in one declaration,
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L241}{Lean source}.
+\noindent The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L241}{affine-circularity bundle}
+assembles the three displayed equivalences.
 
 The first equivalence shows that the apparent affine hierarchy contains no
 depth-dependent information: it is the pullback of even integrality through
@@ -394,8 +393,8 @@ nonnegative terms therefore have infinite sum $32$.  Strict growth makes the
 word unbounded and nonperiodic.
 \end{proof}
 
-\noindent The eight displayed clauses are assembled as one statement in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L27}{Lean source}.
+\noindent The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L27}{polynomial countermodel theorem}
+assembles the eight displayed clauses.
 
 \section{Summation by parts, with the endpoint retained}\label{sec:parts}
 
@@ -481,8 +480,8 @@ $v_n=2u_{n+1}-u_n$ and use $u_0=1$:
 \lword{Erdos251/PrimeGapDyadicTail.lean}{385}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}{gap-series
 summability theorem}, and the displayed identity is the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{404}{tsum_primeDyadicTerm_eq_two_add_primeGap}{infinite
-prime-gap identity}.  Summability of both series is part of the conclusion in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L47}{Lean source} rather than a hypothesis carried by the
+prime-gap identity}.  Summability of both series belongs to the conclusion of the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L47}{infinite prime-gap identity}, rather than to a hypothesis carried by the
 reader.
 
 \begin{corollary}[exact irrationality reformulation]\label{res:irr-equivalence}
@@ -502,8 +501,8 @@ irrationality equivalence}, the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{444}{tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap}{displayed-series
 identity}, and the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{459}{irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap}{displayed-series
-irrationality equivalence}.  The three clauses are also available as the single
-declaration \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L56}{Lean source}.
+irrationality equivalence}.  The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L56}{irrationality reformulation}
+collects the three clauses in one theorem.
 
 \paragraph{The summability hypothesis.}
 The formal source now proves the elementary polynomial bound
@@ -592,9 +591,9 @@ $2\cdot2^{h}=2^{h+1}$ and the recursion defining $B$.  The second identity is
 the first minus $T_N$.
 \end{proof}
 
-\noindent Both identities are stated together in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L68}{Lean source}, and the real-state form is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L76}{Lean source}.
+\noindent The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L68}{rational block identity}
+states both formulas, and the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L76}{real block identity}
+gives the real-state form.
 
 The shifts themselves satisfy
 \[
@@ -727,7 +726,7 @@ cancellation are packaged directly in the
 theorem}, and the quantified conclusion is the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{853}{rationalPrimeGapTailShift_eventuallyIntegral}{eventual
 integral-shift theorem} for the actual prime-gap tail state.  The displayed
-indexed form is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L84}{Lean source}.
+indexed form is the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L84}{eventual positive-shift integrality theorem}.
 
 The useful contrapositive is stated for a real recurrence.  Call its shifts
 \emph{cofinally non-integral} when, for every fixed $h\ge1$ and every
@@ -780,8 +779,8 @@ integrality},
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1551}{irrational_initial_iff_all_positive_tailShifts_nonintegral}{pointwise
 non-integrality}, and
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1572}{irrational_initial_iff_cofinalNonintegralTailShifts}{cofinal
-non-integrality}.  All four equivalences are collected in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L94}{Lean source}.
+non-integrality}.  The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L94}{rationality classification}
+collects all four equivalences.
 
 \paragraph{The actual prime-gap orbit.}
 The concrete tails
@@ -846,8 +845,8 @@ small-mismatch theorem}; and the actual-prime-gap specialisation is the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1112}{primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}{prime-gap
 specialisation}.  Theorem~\ref{res:smallpair} is conditional on its two tail
 inequalities; no theorem asserting that such pairs occur is claimed here.  The
-local obstruction and its cofinal consequence are stated as one declaration in
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L267}{Lean source}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L267}{rational small-pair bundle}
+combines the local obstruction with its cofinal consequence.
 
 All three are stated for a rational orbit, while the prime-gap tail
 $T$ of Section~\ref{sec:tail} is real, so the rational statement does
@@ -875,9 +874,10 @@ $g_{N+h+1}=g_{N+1}$, a contradiction.  The cofinal statement chooses one such
 adjacent pair after the alleged onset of integrality.
 \end{proof}
 
-\noindent Corollary~\ref{res:smallpair-real} is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L282}{Lean source}, and the resulting implication for the
-actual prime series is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L298}{Lean source}.  These live
+\noindent Corollary~\ref{res:smallpair-real} is the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L282}{real small-pair bundle}, whose
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L298}{prime-series endpoint}
+gives the resulting implication for the actual prime series.  These live
 declarations can postdate the historical public snapshot used by the source
 links.
 
@@ -908,8 +908,8 @@ bounded, a contradiction.
 \lword{Erdos251/PrimeGapDyadicTail.lean}{57}{exists_primeGap0_gt}{unboundedness
 of the actual gaps} and the conclusion as
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1023}{primeGap0_not_eventually_periodic}{non-eventual
-periodicity}.  The statement at the index convention displayed above is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L175}{Lean source}.  Combining nonperiodicity with eventual strict smallness of one
+periodicity}.  At the index convention displayed above, this is the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L175}{prime-gap nonperiodicity theorem}.  Combining nonperiodicity with eventual strict smallness of one
 positive shift would also exclude eventual integrality, but eventual
 smallness at every sufficiently large index is stronger than the cofinal
 adjacent-pair hypothesis in Theorem~\ref{res:smallpair} and is not asserted
@@ -1168,9 +1168,9 @@ full sum lies at positive distance from every integer.
 
 \noindent The last distance-to-integers inference is the elementary paper
 argument in the displayed proof: an error at most $R$ cannot reach an integer
-when the approximation is farther than $R$ from every integer.  It is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L203}{Lean source}, and the proposition itself is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261}{Lean source}.  For instance, if
+when the approximation is farther than $R$ from every integer.  The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L203}{non-integrality error bound}
+formalises this inference, and the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261}{cofinal finite-truncation criterion}
+packages the proposition.  For instance, if
 $S_{h,N,L}=3/8$ and $R_{h,N,L}(M)=1/32$, the full sum lies within $1/32$ of
 $3/8$ and so at distance at least $11/32$ from every integer, which settles
 \eqref{eq:shift-escape} at that $N$.  The prime-gap tail
@@ -1178,7 +1178,7 @@ bound, the convergence used above, and the existence of blocks satisfying
 \eqref{eq:truncation} are not consequences of that inference.  The
 proposition's full sum is real-valued, and the formal declaration is stated
 for the real tail throughout.  Its conditional endpoint for the actual prime
-series is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273}{Lean source}.
+series is the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273}{finite-truncation irrationality criterion}.
 
 \noindent Taking the classical bound $M(n)\ll n\log n$, a choice
 $L=\lceil A\log_2(N+h+2)\rceil$ with any fixed $A>1$ makes the right side a

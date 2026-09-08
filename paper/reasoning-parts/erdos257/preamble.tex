@@ -66,9 +66,26 @@
 \tl_new:N \l__leanlink_arg_tl
 \tl_new:N \l__leanlink_url_tl
 \seq_new:N \l__leanlink_split_seq
-\cs_new_protected:Npn \leanlink #1
+\cs_new_protected:Npn \reasoningleanlabel #1
   {
-    \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#1} }
+    \tl_if_blank:nTF {#1}
+      { formal statement }
+      {
+        \tl_set:Nx \l_tmpa_tl { \tl_to_str:n {#1} }
+        \regex_replace_all:nnN { \\_+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN { _+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN { \.+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN
+          { ([a-z0-9])([A-Z]) }
+          { \1\c{space}\2 }
+          \l_tmpa_tl
+        \tl_set:Nx \l_tmpa_tl { \tl_lower_case:n { \tl_use:N \l_tmpa_tl } }
+        \tl_use:N \l_tmpa_tl
+      }
+  }
+\cs_new_protected:Npn \leanlink #1#2
+  {
+    \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#2} }
     \regex_replace_all:nnN { \\allowbreak } { } \l__leanlink_arg_tl
     \regex_replace_all:nnN { \s+ } { } \l__leanlink_arg_tl
     \tl_set:Nx \l__leanlink_url_tl { \repobase }
@@ -89,9 +106,9 @@
           { }
       }
       { \tl_put_right:Nx \l__leanlink_url_tl { / \tl_use:N \l__leanlink_arg_tl } }
-    \href { \tl_use:N \l__leanlink_url_tl } { \textsc{Lean~source} }
+    \href { \tl_use:N \l__leanlink_url_tl } { \reasoningleanlabel{#1} }
   }
-\newcommand{\lean}[2]{\leanlink{#2}}
+\newcommand{\lean}[2]{\leanlink{#1}{#2}}
 \ExplSyntaxOff
 
 % Declaration names are written \mathtt{...} in maths and, unavoidably, in

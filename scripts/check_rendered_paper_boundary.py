@@ -270,9 +270,6 @@ def source_errors(path: Path) -> list[str]:
     lword_definitions = re.findall(r"\\newcommand\{\\lword\}.*$", text, flags=re.M)
     if lword_definitions and any("{#4}" not in row for row in lword_definitions):
         errors.append(r"\lword does not print its semantic label")
-    lloc_definitions = re.findall(r"\\newcommand\{\\lloc\}.*$", text, flags=re.M)
-    if lloc_definitions and any("{Lean source}" not in row for row in lloc_definitions):
-        errors.append(r"\lloc does not print a distinguishable textual source link")
     if r"\modulesigil" in "\n".join(
         re.findall(
             r"\\newcommand\{\\(?:lref|lrefx|lword|lloc)\}.*$",
@@ -528,6 +525,14 @@ def architecture_rendered_errors(pdf: Path, text: str) -> list[str]:
     return [f"{pdf.relative_to(ROOT)}: {error}" for error in errors]
 
 
+def semantic_source_label_errors(text: str) -> list[str]:
+    """Source links name their mathematics; bibliography prose remains allowed."""
+    uncommented = "\n".join(COMMENT_RE.sub("", line) for line in text.splitlines())
+    if re.search(r"\\href\{(?:[^{}]|\{[^{}]*\})*\}\s*\{Lean source\}", uncommented):
+        return ["source hyperlink uses the generic label 'Lean source'; author a mathematical phrase"]
+    return []
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -538,6 +543,16 @@ def main() -> int:
     args = parser.parse_args()
 
     errors = [error for tex, _pdf in PAPERS for error in source_errors(tex)]
+    for tex in sorted((ROOT / "paper").rglob("*.tex")):
+        try:
+            text = safe_rendered_text(tex)
+        except UnsafeRenderedInput as error:
+            errors.append(str(error))
+            continue
+        errors.extend(
+            f"{tex.relative_to(ROOT)}: {error}"
+            for error in semantic_source_label_errors(text)
+        )
     if not args.source_only:
         pdftotext = shutil.which("pdftotext")
         pdftohtml = shutil.which("pdftohtml")

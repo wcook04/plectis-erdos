@@ -217,9 +217,7 @@ are nonnegative, so
 \]
 At $t=1$ the value is zero.  Concatenating the two segments gives length
 $|\zeta_1|+|\zeta_2|<2$.
-The displayed statement, with the broken line as a continuous curve of bounded
-variation and its length read as extended variation, is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L38}{Lean source}.
+Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L38}{trinomial broken-line theorem with extended variation as length}.
 \end{proof}
 
 \paragraph{A finite convex certificate.}
@@ -248,8 +246,7 @@ Indeed, after $z=rw$, the polynomial factors as
 $r^6(w^2-1)(w^4+\tfrac65 w^2+1)$, so all six roots have modulus $r$.
 However $f_r(r/2)=-(327/320)r^6$.  Any $r$ with $320/327<r^6<1$ proves the
 assertion.  Only this prescribed spoke is excluded; other connectors remain
-available.  The statement with the radius supplied is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L79}{Lean source}.
+available.  Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L79}{prescribed-spoke counterexample at a supplied radius}.
 
 \section{The problem and the general regimes}\label{sec:problem}
 
@@ -494,10 +491,7 @@ outside $\{|f|<1\}$.
 
 \noindent The certificates are exact rational-algebraic computations, checked
 as \pdecl{nearestSpoke_unique_nearest_spoke_escapes} and
-\pdecl{allStraightCubic_every_pair_midpoint_escapes}, and the displayed
-proposition itself, with both quintic and cubic exhibited as polynomials and the
-nearest-root condition quantified over every zero, is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178}{Lean source}.  The first defeats a
+\pdecl{allStraightCubic_every_pair_midpoint_escapes}, and Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178}{polynomial counterexamples with the nearest-root condition quantified over every zero}.  The first defeats a
 tie-breaking escape hatch; the second defeats every straight root-pair
 segment.  Together with Theorem~\ref{res:critical-proximity}, they isolate the
 real gap: critical-point proximity selects a short metric pair, but universal
@@ -709,8 +703,7 @@ rays, $\mu>13/25$, and
 \]
 \end{proposition}
 
-\noindent The whole proposition, including the least-modulus assertion rather
-than a supplied minimum, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189}{Lean source}.
+\noindent Lean checks the \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189}{separation counterexample including the least-modulus assertion}.
 
 \begin{proposition}[one-root gamma bound is false]
 \label{res:one-root-gamma-false}
@@ -914,7 +907,7 @@ put $c=\cos(\pi/n)$, and set
 
 \begin{theorem}[complementary binomial chords]
 Two adjacent zeros of $z^n-a$ can be joined by an explicit polygonal path
-inside $\{|z^n-a|<1\}$ of length strictly below $2$.  For $r\le r_*$ the
+inside $\{|z^n-a|<1\}$ of length strictly below $2$.  For $r<r_*$ the
 adjacent-root chord itself works.  For $r\ge r_*$, two radial legs and an
 inner adjacent crossing chord work after an arbitrarily small radial
 contraction.  These two constructions meet at $r=r_*$, where the outer chord attains

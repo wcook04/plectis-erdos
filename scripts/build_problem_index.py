@@ -57,6 +57,9 @@ LIBRARY = "ErdosProblems"
 # the detail.  Order matters only in that the longest distinguishing prefix
 # comes first; the four are disjoint today.
 DISPOSITION_CLASSES = {
+    "existing_isolated_headline_retained_": (
+        "the existing selected interface is retained; new endpoints await Comparator validation"
+    ),
     "targeted": (
         "Comparator checked a separately declared statement of this family"
     ),

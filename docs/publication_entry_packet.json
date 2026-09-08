@@ -108,14 +108,14 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:4b7241450e9a0334eeef1ac691eb6eba120b242a6c1944fb43c1e6cca69b1b78",
-    "docs/claims.json": "sha256:acbf0c09e40576976a6af0294a251938d9aefc770a6ffd72fa59c04a724e8b0c",
+    "docs/claims.json": "sha256:91a56cf1841546b275150df56edc6ea2dd3097e15c78b8b912268b0c7cdfa3b9",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:6503b5526ba8cc9d489ffd1883fb83890e74032c0acebb5c60e062b27170d20b",
+    "docs/problems.json": "sha256:92fcaac8c89e40dbb1c2077bdb11733c3def364ae4bd160d431b6033643315a2",
     "docs/publication_contract.json": "sha256:1339293da642b50c467ddf66c1c39fb343c0c855c6e0cb3f140c683736396006",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:f0bac78bcbe71a7668c9dadcaebf0e7e5e8010026ce41a436599720574518ec3",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:ef8d7ed327493afd560397c59317038efb6b2fec6d98b7e00a7cf953bab27066",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 30,
-      "curated_claim_count": 143,
+      "curated_claim_count": 145,
       "remaining_open_proposition_count": 34,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -546,7 +546,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:6503b5526ba8cc9d489ffd1883fb83890e74032c0acebb5c60e062b27170d20b",
+      "content_digest": "sha256:92fcaac8c89e40dbb1c2077bdb11733c3def364ae4bd160d431b6033643315a2",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -559,11 +559,11 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-08-r5",
+      "public_tag": "formal-source-2026-09-08-r6",
       "publication_state": "published_committed_checkpoint",
-      "ref": "d058b9150218ae23d2cfd975580088d6167e9da8",
+      "ref": "df12e6834baa1723186f42cd9adf5b66c2742d18",
       "ref_kind": "commit",
-      "relationship_to_last_tag": "at_last_tag"
+      "relationship_to_last_tag": "post_tag_checkpoint"
     },
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "release_date": "2026-08-17",

@@ -66,9 +66,26 @@
 \tl_new:N \l__leanlink_arg_tl
 \tl_new:N \l__leanlink_url_tl
 \seq_new:N \l__leanlink_split_seq
-\cs_new_protected:Npn \leanlink #1
+\cs_new_protected:Npn \reasoningleanlabel #1
   {
-    \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#1} }
+    \tl_if_blank:nTF {#1}
+      { formal statement }
+      {
+        \tl_set:Nx \l_tmpa_tl { \tl_to_str:n {#1} }
+        \regex_replace_all:nnN { \\_+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN { _+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN { \.+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN
+          { ([a-z0-9])([A-Z]) }
+          { \1\c{space}\2 }
+          \l_tmpa_tl
+        \tl_set:Nx \l_tmpa_tl { \tl_lower_case:n { \tl_use:N \l_tmpa_tl } }
+        \tl_use:N \l_tmpa_tl
+      }
+  }
+\cs_new_protected:Npn \leanlink #1#2
+  {
+    \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#2} }
     \regex_replace_all:nnN { \\allowbreak } { } \l__leanlink_arg_tl
     \regex_replace_all:nnN { \s+ } { } \l__leanlink_arg_tl
     \tl_set:Nx \l__leanlink_url_tl { \repobase }
@@ -89,9 +106,9 @@
           { }
       }
       { \tl_put_right:Nx \l__leanlink_url_tl { / \tl_use:N \l__leanlink_arg_tl } }
-    \href { \tl_use:N \l__leanlink_url_tl } { \textsc{Lean~source} }
+    \href { \tl_use:N \l__leanlink_url_tl } { \reasoningleanlabel{#1} }
   }
-\newcommand{\lean}[2]{\leanlink{#2}}
+\newcommand{\lean}[2]{\leanlink{#1}{#2}}
 \ExplSyntaxOff
 
 % Declaration names are written \mathtt{...} in maths and, unavoidably, in
@@ -715,7 +732,8 @@ $1/2 \notin \mathcal{A}$ is $\Sigma^0_1$: a single finite object --- a fatal gap
 $1/2 \in \mathcal{A}$ is $\Pi^0_1$, and no finite object certifies it. Consequently no finite
 computation, at any depth, can establish $1/2 \in \mathcal{A}$.
 \coord{meta} \scale{uniform} \ev{Lean}
-  The statement is checked in Lean: \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CatalogueAssemblies.lean#L50}{\textsc{Lean~source}}.
+  The \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CatalogueAssemblies.lean#L50}{arbitrary-base support-subseries theorem}
+is checked in Lean.
 \end{thm}
 
 \begin{proof}
@@ -4161,7 +4179,7 @@ reset charge avoids the width-$2(d+j_0)$ band at its critical dyadic index. Then
 \begin{obs}[F2 / middle producer row escape] \ev{Lean}
 \lean{SeamMiddleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:1769},
 \lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:2371}
-(via \texttt{.toCardEscape}, \texttt{.toTailEscape}, \lean{}{HalfCylinderMiddleCarryLowerBound.lean:1510}).
+(via \texttt{.toCardEscape}, \texttt{.toTailEscape}, \lean{middleProducer_tail_lt_carry_iff_takeThreshold_lt_floorZ}{HalfCylinderMiddleCarryLowerBound.lean:1510}).
 \textbf{Yields:} if at every late middle row ($s \ge 13$, no carry, middle branch)
 $s \le \mathrm{rem}(s)$, then $1/2 \in \mathrm{mersenneAchievementSet}$. Module docstring: ``far
 weaker than an exponential bound, but stronger than the already exposed square-root-scale carry
@@ -4182,7 +4200,7 @@ Equivalently, by \texttt{remainder\_ge\_row}, the U-reset band escape of F5b.
 \textbf{Yields:} if at every late middle row $2\sqrt{2s+2}+4 < \mathrm{producerCarry}(s)$, then
 $1/2 \in \mathrm{mersenneAchievementSet}$; \texttt{producerCarry} equals the middle coordinate
 $4\,\mathrm{rem}-\mathrm{belowPulse}-4$
-(\lean{}{HalfCylinderProducerLowerBound.lean:150}), so the requirement is essentially
+(\lean{producerCarry_insert_seamBelowSupport_eq_middleCoordinate}{HalfCylinderProducerLowerBound.lean:150}), so the requirement is essentially
 $\mathrm{rem}(s) \gtrsim (\sqrt{s}+\mathrm{belowPulse})/4$.
 \textbf{Mismatch (\texttt{coordinate\_only}):} this is ``square root'' of the \emph{row index}
 $s$ (a supportCoeff tail majorant), not square root of the \emph{dyadic scale} $2^{(r+5)/2}$. The
@@ -4234,7 +4252,7 @@ orbit, plus the right-pulse-leak inequality $4\cdot\mathrm{overshoot}+\mathrm{ab
 \begin{obs}[E1 / remainder ceiling] \ev{Lean}
 \lean{SeamGreedyRemainderGapBound}{HalfCylinderSeamLimit.lean:192},
 \lean{half\_mem\_mersenneAchievementSet\_of\_seamRemainderGapBound}{HalfCylinderSeamLimit.lean:303}
-(weaker cofinal route \lean{}{HalfCylinderSeamLimit.lean:181}).
+(weaker cofinal route \lean{half_mem_mersenneAchievementSet_of_subquadraticAlong}{HalfCylinderSeamLimit.lean:181}).
 \textbf{Yields:} if $\forall s \ge 6$, $\mathrm{rem}(s) < 2^{s+1}$, then $1/2 \in
 \mathrm{mersenneAchievementSet}$. The weaker cofinal form only needs the normalized remainder to
 tend to $0$ along \emph{some} cofinal row sequence. Docstring: ``exponential upper bound
@@ -4334,7 +4352,7 @@ coherence between the $D$'s, no requirement that $D$ be a greedy prefix.
 $\to$
 \lean{cofinalExactLocalMersenneHalfRows\_of\_criticalQuotientSupply}{BooleanMobiusCriticalCapacityCofinal.lean:1309}
 (\lean{ProtectedExactLocalMersenneRow}{BooleanMobiusCriticalCapacityCofinal.lean:1087}; seed
-line 1023; strict progress \lean{}{BooleanMobiusExactRowCrossing.lean:233}).
+line 1023; strict progress \lean{skippedCoreSharpCapacity_below_or_strictly_laterExactRow}{BooleanMobiusExactRowCrossing.lean:233}).
 \textbf{Yields:} a complete, already-formalised induction from the endpoint-six seed to the full
 obligation: each protected row either doubles below half unconditionally, or recycles at its
 first crossing rank $e$, giving endpoint $2e{-}2 >$ previous endpoint. Terminates literally at
@@ -4465,8 +4483,8 @@ above.
 \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84},
 line 60; A5
 \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583},
-A6 (\lean{}{GreedyAchievementSet.lean:1515}); positivity discharge
-\lean{}{BooleanMobiusCriticalCapacityCofinal.lean:138}.
+A6 (\lean{finite_greedyMersenneSkippedSupport_of_fatalAt}{GreedyAchievementSet.lean:1515}); positivity discharge
+\lean{localMersennePrefixValue_halfGreedy_lt_half}{BooleanMobiusCriticalCapacityCofinal.lean:138}.
 \textbf{Yields:} cofinally many positive rational-greedy skips $\Rightarrow$
 \texttt{CofinalExactLocalMersenneHalfRows} $\Rightarrow 1/2 \in
 \mathrm{mersenneAchievementSet}$. Advertised elsewhere as the shortest known path.
@@ -4515,7 +4533,7 @@ on the board.
 \lean{greedy\_half\_infinite\_of\_cofinalStripReturn}{CofinalStripReturn.lean:130}, line 157;
 \lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:817},
 line 805 (nonnegativity from line 842 /
-\lean{}{HalfCylinderFinalMiddleCellEscape.lean:94}).
+\lean{mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half}{HalfCylinderFinalMiddleCellEscape.lean:94}).
 \textbf{Yields:} cofinal returns of the actual greedy carry to the square-root strip (C4c), or a
 pointwise $2\sqrt N+4$ bound on the Möbius-centred carry (G3), each give an infinite support with
 value exactly $1/2$.
@@ -4576,7 +4594,7 @@ two can work through this dichotomy.
 
 \begin{obs}[NM-01 / the single certificate socket] \ev{Lean}
 \lean{irrational\_erdosSupportSeries\_of\_weighted\_coeff\_certificates}{CertificateKernel.lean:9031}
-(carry variant \lean{}{CertificateKernel.lean:9053}).
+(carry variant \lean{erdosSupportSeries_multiples_eq_pow_base_full_support}{CertificateKernel.lean:9053}).
 \textbf{Yields:} $\forall b\ge2,\ \forall A\subseteq\mathbb N$ (no infinitude, no structure
 hypothesis at all): if $\forall q>0\ \exists N,K,L,C$ with $K\le L$, $b^r \mid
 \mathrm{supportCoeff}\,A\,(N{+}r)$ for $r\in[1,K]$, $\sum_{r=K+1}^L \mathrm{supportCoeff}\,A\,(N{+}r)
@@ -4597,7 +4615,7 @@ aggregate form.
 
 \begin{obs}[NM-02 / single-target to all-rational-targets, promotable] \ev{Lean}
 \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
-(forward \lean{}{GreedyAchievementSet.lean:2482}; reverse
+(forward \lean{erdosBorweinMersenneConstant_eq_greedy_add_skipped}{GreedyAchievementSet.lean:2482}; reverse
 \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}).
 \textbf{Yields:} $(1/2:\mathbb R)\in\mathrm{mersenneAchievementSet} \Leftrightarrow
 (\mathrm{greedyMersenneSkippedSupport}(1/2))$.Infinite.
@@ -4756,7 +4774,7 @@ density $A$. Covers only the far sparse edge — the same edge NM-05's T11 also 
 $a_k - \log_b(\text{reduced denominator of the }k\text{-th partial sum}) \to \infty$. The corpus
 already has the denominator-survival algebra to state this
 (\texttt{divisor\_dvd\_divInt\_den}, \texttt{survivingDivisor\_dvd\_scaled\_divInt\_den} at
-\lean{}{RationalDenominatorSurvival.lean:17}, and
+\lean{divisor_dvd_divInt_den}{RationalDenominatorSurvival.lean:17}, and
 \lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60} giving
 $2^{t/2}$ growth); the growth theorem for the surviving denominator of an \emph{arbitrary}
 support is what is missing.
@@ -4953,9 +4971,9 @@ directly.
 Repeated here for emphasis from the 257-cofinal-rows entry above: once the positivity conjunct of
 \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22} is recognised as
 unconditionally free (odd-numerator/even-subtrahend parity plus greedy nonnegativity, discharged
-at \lean{}{BooleanMobiusCriticalCapacityCofinal.lean:138}), the socket collapses to
+at \lean{localMersennePrefixValue_halfGreedy_lt_half}{BooleanMobiusCriticalCapacityCofinal.lean:138}), the socket collapses to
 $(\mathrm{greedyMersenneSkippedSupport}(1/2))$.Infinite, proved by A6
-(\lean{}{GreedyAchievementSet.lean:2514}) to be \emph{equivalent} to $1/2\in
+(\lean{infinite_greedyMersenneSkippedSupport_of_rat_mem}{GreedyAchievementSet.lean:2514}) to be \emph{equivalent} to $1/2\in
 \mathrm{mersenneAchievementSet}$. A proof or disproof of this one Prop settles \#257-at-1/2 and
 vice versa; it is not a waypoint toward that settlement.
 \end{rem}

@@ -1,0 +1,190 @@
+{
+  "schema": "plectis.palomar-entry-catalog/1",
+  "membership_authority": "verification/comparator-replay-membership.json",
+  "package_count": 9,
+  "interface_count": 16,
+  "entry_ready_for_replay_count": 9,
+  "blocked_package_ids": [],
+  "source_bound_package_match_count": 0,
+  "entries": [
+    {
+      "package_id": "ExternalVerification1041CentralFreePoint",
+      "config_path": "ExternalVerification1041CentralFreePoint/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification1041CentralFreePoint.Challenge",
+      "solution_module": "Solutions.ExternalVerification1041CentralFreePoint",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041CentralFreePoint.central_free_point_mean"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "229a9da9a2579da56712c453340e36a54dc479d3d6ac594367f58dadbcdaf8d2",
+      "solution_sha256": "e746db786643db61e6dcf773920877918f5aae36e0036417ec42ad963130db2f",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041CubicPath",
+      "config_path": "ExternalVerification1041CubicPath/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification1041CubicPath.Challenge",
+      "solution_module": "Solutions.ExternalVerification1041CubicPath",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041CubicPath.cubic_paper_complete",
+        "Erdos249257.ExternalVerification1041CubicPath.monic_cubic_connector"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "d26eb86badf2e53c7272bc6749dc1639c346c95aea2fffc5033ed7a8f44b9ea8",
+      "solution_sha256": "f2d0b0d1b18bf52faca448e2c0389bfb4ec0f42374c02fd19d65c966c2d7a02e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041CubicRootCount",
+      "config_path": "ExternalVerification1041CubicRootCount/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification1041CubicRootCount.Challenge",
+      "solution_module": "Solutions.ExternalVerification1041CubicRootCount",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041CubicRootCount.cubic_root_count"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "9aa36604a91ba8ca658b7ccd814b5ad6565a55f9192180093b2f2f4cfc8ec560",
+      "solution_sha256": "c96b7ae39f1ae4bd38898cc67175705d5fc3797e321306692c4120c3280a2a6c",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041SolvedFamilies",
+      "config_path": "ExternalVerification1041SolvedFamilies/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification1041SolvedFamilies.Challenge",
+      "solution_module": "ExternalVerification1041SolvedFamilies.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound",
+        "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies",
+        "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "508e5bf18231f88f361eb821864ee55a2b6dd9d6d50f49544f4eaef3188ab1f4",
+      "solution_sha256": "8a4d7f4bac5263aeb22da364d7db4a7576f3717d09a729196e13b542a9da5d39",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1049ArchimedeanCap",
+      "config_path": "ExternalVerification1049ArchimedeanCap/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification1049ArchimedeanCap.Challenge",
+      "solution_module": "Solutions.ExternalVerification1049ArchimedeanCap",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap",
+        "Erdos249257.ExternalVerification1049ArchimedeanCap.cleared_below_square_not_tendsto_zero"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "2935a2966f6856a5976a5a0c2bf472a928dc6d60ebd3d413e3107dd932a8387b",
+      "solution_sha256": "0e5e4ea1ef435f14a8bc2cf0d7bcbfa5069ce837316d6bfe0041c0bc95b9b05a",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification243WeightedRecordExcess",
+      "config_path": "ExternalVerification243WeightedRecordExcess/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification243WeightedRecordExcess.Challenge",
+      "solution_module": "Solutions.ExternalVerification243WeightedRecordExcess",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification243WeightedRecordExcess.weighted_record_excess"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "8e537684a2f9c14afad111aeb8dae78d6205554993e3082740a7fb1fa468a16c",
+      "solution_sha256": "e0d1d6e10edf1fc10e38d10c9cbf4730a84ba883eccc852f11f42cd8c6dcae02",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification249TotientKernelBasis",
+      "config_path": "ExternalVerification249TotientKernelBasis/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification249TotientKernelBasis.Challenge",
+      "solution_module": "Solutions.ExternalVerification249TotientKernelBasis",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
+        "Erdos249257.ExternalVerification249TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension",
+        "Erdos249257.ExternalVerification249TotientKernelBasis.allBaseIntegralCoordinateAndRelationBasis"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "a3a4e82608e3acb54f271df7b1afd3704c5ff855c995ee3b4c37db0ebed0d683",
+      "solution_sha256": "4d797b6c29feec7425ff4b8cebb277492ed82f025aed5c15014c9a3a31d3316b",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68FiniteDenominator",
+      "config_path": "ExternalVerification68FiniteDenominator/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification68FiniteDenominator.Challenge",
+      "solution_module": "Solutions.ExternalVerification68FiniteDenominator",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68FiniteDenominator.finite_denominator_exclusion"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "c471cc3e529eba11ec1dc5ac230390ace49059efd86c68a4a6642d396d35a71b",
+      "solution_sha256": "34f4c3f4ff5177080d1ea3040cec344834b3d82a375cc7e6efe94e7ffc748c70",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68MomentIdealResidual",
+      "config_path": "ExternalVerification68MomentIdealResidual/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification68MomentIdealResidual.Challenge",
+      "solution_module": "Solutions.ExternalVerification68MomentIdealResidual",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68MomentIdealResidual.exact_moment_ideal_with_primitive_attainment",
+        "Erdos249257.ExternalVerification68MomentIdealResidual.residual_transparency"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "a5ef7a94e8a8101a5d019bfd5a47a8e9f4a05f9d2e1362bbf21e341c563c9d74",
+      "solution_sha256": "9ee91036b3e5643b87aabfbbf13efec6302c55bad4544edb45b34fc46b83d238",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    }
+  ],
+  "boundary": "This catalog preserves per-package Comparator inputs. It is not a Comparator receipt, claim-completeness assertion, Palomar submission, review, acceptance, registration, or publication record."
+}

@@ -675,6 +675,87 @@ $\Lc_D=\lcm_{2\le d\le D}(d!-1)$ is the same quantity as in
 normalised channel contribution by an integer only, so such variations cannot
 manufacture an extra fractional cancellation coordinate.
 
+\subsection{The exact low-channel lattice and residual class}
+
+The integral divisor basis makes the preceding divisibility statement exact.
+Let $U_n$ be the isolated $n$-channel unit, let $K_D$ be the canonical vector
+with moment $L_D$ and channels $2,\ldots,D$ equal to zero, and write
+$a_D=[e_1]K_D$ and $u_n=[e_1]U_n$.  Every vector with zero initial coordinate
+and vanishing channels through $D$ has a unique expression
+\begin{equation}\label{long68:eq:low-channel-basis}
+ c=tK_D+\sum_{n>D}z_nU_n,
+ \qquad M(c)=tL_D,
+\end{equation}
+with finitely many nonzero integers $z_n$.  Requiring support on $n\ge2$
+adds precisely the scalar equation
+\begin{equation}\label{long68:eq:low-channel-support}
+ ta_D+\sum_{n>D}z_nu_n=0.
+\end{equation}
+
+\begin{theorem}[exact attainable moment ideal]\label{long68:res:moment-ideal}
+Fix $D\ge2$ and a prime $p$ with $D/2<p\le D$.  Put
+\[
+ H=D(2p-1),\qquad
+ G_D=\gcd\{|u_n|:D<n\le H\},\qquad
+ \mu_D=L_D\frac{G_D}{\gcd(G_D,a_D)}.
+\]
+The moments of finite integer vectors supported on $n\ge2$ and cancelling all
+channels $2,\ldots,D$ are exactly $\mu_D\Z$.  The integer $\mu_D$ is positive,
+is independent of the eligible prime $p$, and is attained by a vector of
+coefficient content one, hence by a primitive vector.
+\end{theorem}
+
+\begin{proof}
+The finite-horizon theorem gives $G_D>0$ and identifies it with the gcd of the
+whole tail $\{u_n:n>D\}$; moreover $H<2D^2$.  Thus the finite integer
+combinations in \eqref{long68:eq:low-channel-support} form $G_D\Z$, so that the
+equation is soluble exactly when $G_D\mid ta_D$.  Dividing by
+$\gcd(G_D,a_D)$ shows that $t$ is a multiple of
+$G_D/\gcd(G_D,a_D)$, and \eqref{long68:eq:low-channel-basis} gives the displayed
+moment ideal.  Bezout coefficients attain its positive generator.  If an
+attaining vector had a nontrivial common coefficient divisor, division by that
+divisor would produce a smaller positive attainable moment.  Hence its content
+is one.  The ideal itself is intrinsic, so two eligible primes give the same
+positive generator.
+\end{proof}
+
+For
+\[
+ \mathcal R(c)=\sum_{d\ge2}\frac{\chn dc}{d!-1},\qquad
+ H_D=\sum_{2\le d\le D}\frac1{d!-1},
+\]
+the same coordinates retain the real information that the moment ideal alone
+does not see.
+
+\begin{theorem}[full residual transparency]\label{long68:res:residual-transparency}
+For the vector in \eqref{long68:eq:low-channel-basis},
+\[
+ \mathcal R\!\left(tK_D+\sum_{n>D}z_nU_n\right)
+ =tL_D(\Ser-H_D)+\sum_{n>D}z_n.
+\]
+The residual series converges for every finite vector supported away from
+index zero.  A zero-moment vector has integral residual, and two such vectors
+with the same factorial moment have residuals differing by an integer.
+\end{theorem}
+
+\begin{proof}
+For $d>D$, the $K_D$ channel is $L_D$, while each $U_n$ contributes one to its
+isolated residual coordinate.  Termwise decomposition therefore gives the
+factorial-gap tail $L_D(\Ser-H_D)$ plus the finite coordinate mass
+$\sum z_n$.  The factorial-gap tail is summable and the coordinate correction
+has finite support, which proves convergence.  In the full divisor-basis
+coordinates the coefficient of the $e_1$ column equals the factorial moment;
+when that moment is zero only the integral coordinate mass remains.  Subtracting
+two equal-moment identities proves the last assertion.
+\end{proof}
+
+The exact Lean endpoint packages are
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242}{primitive attainment of the moment-ideal generator} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195}{the equal-moment residual class}.
+They determine the finite low-channel lattice and its residual class modulo
+$\Z$; they do not prove that the remaining real residual is nonzero along a
+cofinal family.
+
 \label{long68:res:lead-channel-radius}\phantomsection
 \begin{theorem}[square-subsequence radius bound]\label{long68:res:channel-radius}
 Let $t,M,R\in\N$ satisfy
@@ -1559,14 +1640,14 @@ claimed.
 
 % ---- part family_catalogue ----
 \clearpage
-\section{Complete result-family map}\label{long68:sec:erdos-68-complete-family-map}
+\section{Complete result-family map}\label{sec:erdos-68-complete-family-map}
 
-This section places every registered family for this problem in the shared 93-family reader order.  The five display bands control exposition only; the separate promotion state currently covers 23 families and is reported but does not hide or strengthen any family.  Mathematical statements and evidence modes come from the public claim registry.  Across all eight problems the public result-atom catalog contains 704 exact packet coordinates; this problem contributes 114.  Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
+This section places every registered family for this problem in the shared 70-family reader order.  The five display bands control exposition only; the separate promotion state currently covers 6 families and is reported but does not hide or strengthen any family.  Mathematical statements and evidence modes come from the public claim registry.  Across all eight problems the public result-atom catalog contains 681 exact packet coordinates; this problem contributes 112.  The recovered source catalog contains 682 rows; 1 row(s) belong to families absent from the current claim registry and remain disclosed as detached source rows.  Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
 
 \subsection{Factorial carry characterisation}
-\textbf{Reader position.} 1 of 93; display band: front door.  Formal editorial disposition: promote.  These are separate classifications.
+\textbf{Reader position.} 1 of 70; display band: front door.  Formal editorial disposition: promote.  These are separate classifications.
 
-\textbf{Reader entry.} Erdős 68 is irrational exactly when non-unit carries, equivalently strict-successor divisibility failures, occur arbitrarily far out.
+\textbf{Reader entry.} Exact equivalence between irrationality, cofinally many non-unit carries, and cofinal strict-successor divisibility failures.
 
 Exact equivalence between irrationality, cofinally many non-unit carries, and cofinal strict-successor divisibility failures.
 
@@ -1574,7 +1655,7 @@ Exact equivalence between irrationality, cofinally many non-unit carries, and co
 
 \textbf{Exact boundary.} An exact reformulation does not supply the required cofinal failures.
 
-\textbf{Result-atom population.} 33 of 704 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 33 of 681 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 2 executable interface(s), 2 repository-registered selected result interface(s).
 
@@ -1586,17 +1667,17 @@ Exact equivalence between irrationality, cofinally many non-unit carries, and co
 \end{itemize}
 
 \subsection{Factorial channel and projection rigidity}
-\textbf{Reader position.} 40 of 93; display band: mechanism.  Formal editorial disposition: split.  These are separate classifications.
+\textbf{Reader position.} 23 of 70; display band: mechanism.  Formal editorial disposition: split.  These are separate classifications.
 
-\textbf{Reader entry.} Two complementary toolkits test Erdős 68: channel linear algebra and weighted endpoint residue rigidity.
+\textbf{Reader entry.} Exact low-channel classification, the attainable moment ideal with a content-one primitive generator, full-residual transparency modulo integers, finite quotient-band factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.
 
-Finite quotient-band channel factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.
+Exact low-channel classification, the attainable moment ideal with a content-one primitive generator, full-residual transparency modulo integers, finite quotient-band factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.
 
 \textbf{Authority and reach.} Lean kernel; locally proved result; novelty unassessed.
 
-\textbf{Exact boundary.} These finite and structural results do not produce a cofinal obstruction.
+\textbf{Exact boundary.} These structural results determine the finite low-channel moment lattice and the residual class modulo integers, but they do not produce a cofinal nonintegral real residual or another obstruction settling Erdős 68.
 
-\textbf{Result-atom population.} 63 of 704 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 63 of 681 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} represented by selected interface; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
@@ -1605,61 +1686,23 @@ Finite quotient-band channel factorisation and breakpoint, channel congruences, 
 \begin{itemize}
   \item \nolinkurl{Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band}
   \item \nolinkurl{Erdos68.exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.attainable_moment_ideal}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.minimum_moment_content_one}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.residual_transparency}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.summable_fullResidual}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.zero_moment_residual_integral}
+  \item \nolinkurl{ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference}
   \item \nolinkurl{Erdos68.channelNumerator_mod_factorialMoment}
   \item \nolinkurl{Erdos68.primeTranslator_channelResidual_eq_one}
   \item \nolinkurl{ErdosProblems.Erdos68.projection_disagreement_excludes_bounded_endpoint}
 \end{itemize}
 
-\subsection{Canonical factorial digit termination}
-\textbf{Reader position.} 45 of 93; display band: mechanism.  Formal editorial disposition: retain.  These are separate classifications.
-
-\textbf{Reader entry.} For every real x, its canonical factorial digits eventually vanish if and only if x is rational. A zero digit tail forces the initial fractional remainder to vanish: otherwise the radix recurrence grows beyond the canonical bound of one. The proof also constructs the rational witness from the factorial-scale floor.
-
-For every real x, its canonical factorial digits eventually vanish if and only if x is rational. A zero digit tail forces the initial fractional remainder to vanish: otherwise the radix recurrence grows beyond the canonical bound of one. The proof also constructs the rational witness from the factorial-scale floor.
-
-\textbf{Authority and reach.} Lean kernel; formalized canonical expansion criterion.
-
-\textbf{Exact boundary.} This completes the canonical-expansion equivalence for arbitrary real inputs; no nontermination proof for the factorial-gap series or external challenge replay is supplied.
-
-\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
-
-\textbf{Comparator assurance.} not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
-
-\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
-
-\begin{itemize}
-  \item \nolinkurl{ErdosProblems.Erdos68.exists_rat_eq_iff_eventually_zero_canonicalDigit}
-  \item \nolinkurl{ErdosProblems.Erdos68.canonicalRemainder_eq_zero_of_zero_digit_tail}
-  \item \nolinkurl{ErdosProblems.Erdos68.exists_rat_eq_of_canonicalRemainder_eq_zero}
-\end{itemize}
-
-\subsection{Factorial analytic growth boundaries}
-\textbf{Reader position.} 48 of 93; display band: mechanism.  Formal editorial disposition: retain.  These are separate classifications.
-
-\textbf{Reader entry.} For u\_n=n!-1, u\_(n+1)/u\_n\textasciicircum{}2 tends to zero and u\_n\textasciicircum{}(1/2\textasciicircum{}n) tends to one. The absolute quadratic-growth errors are not summable.
-
-For u\_n=n!-1, u\_(n+1)/u\_n\textasciicircum{}2 tends to zero and u\_n\textasciicircum{}(1/2\textasciicircum{}n) tends to one. The absolute quadratic-growth errors are not summable.
-
-\textbf{Authority and reach.} Lean kernel; formalized applicability boundary; no novelty claim.
-
-\textbf{Exact boundary.} These limits rule out direct application of the cited fast-growth criteria; they neither formalize those external criteria nor decide factorial-gap irrationality.
-
-\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
-
-\textbf{Comparator assurance.} not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
-
-\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
-
-\begin{itemize}
-  \item \nolinkurl{Erdos68.tendsto_factorialGap_succ_div_sq}
-  \item \nolinkurl{Erdos68.not_summable_abs_factorialGap_succ_div_sq_sub_one}
-  \item \nolinkurl{Erdos68.tendsto_factorialGap_rpow_one_div_two_pow}
-\end{itemize}
-
 \subsection{Factorial conditional producers}
-\textbf{Reader position.} 64 of 93; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 43 of 70; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
 
-\textbf{Reader entry.} These theorems say exactly which cofinal arithmetic pattern would finish Erdős 68, without proving that the pattern occurs.
+\textbf{Reader entry.} Cofinal zero-branch or large private-factor hypotheses imply the required irrationality conclusion.
 
 Cofinal zero-branch or large private-factor hypotheses imply the required irrationality conclusion.
 
@@ -1667,16 +1710,16 @@ Cofinal zero-branch or large private-factor hypotheses imply the required irrati
 
 \textbf{Exact boundary.} The producer hypotheses are unproved.
 
-\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 681 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
 
 \subsection{Factorial lcm growth}
-\textbf{Reader position.} 69 of 93; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 48 of 70; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
 
-\textbf{Reader entry.} Factorial-gap denominators grow too quickly for one natural low-height scalar localization strategy.
+\textbf{Reader entry.} A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem.
 
 A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem.
 
@@ -1684,16 +1727,16 @@ A paper deduction gives a lower bound for the lcm of factorial-gap denominators 
 
 \textbf{Exact boundary.} Comparator cannot certify the cited input or authored deduction.
 
-\textbf{Result-atom population.} 3 of 704 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 3 of 681 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
 
 \subsection{Factorial finite certificates}
-\textbf{Reader position.} 82 of 93; display band: technical support.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 59 of 70; display band: technical support.  Formal editorial disposition: hold.  These are separate classifications.
 
-\textbf{Reader entry.} Exact scans reveal which carry patterns survive to index 300000 and where a tempting prime shortcut first fails.
+\textbf{Reader entry.} Lean checks small exact misses; a hash-bound GMP scan reaches index 300000 and yields the corresponding finite denominator exclusion.
 
 Lean checks small exact misses; a hash-bound GMP scan reaches index 300000 and yields the corresponding finite denominator exclusion.
 
@@ -1701,12 +1744,11 @@ Lean checks small exact misses; a hash-bound GMP scan reaches index 300000 and y
 
 \textbf{Exact boundary.} Finite computation does not change the cofinal quantifier.
 
-\textbf{Result-atom population.} 12 of 704 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 12 of 681 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
-
 % ---- part back ----
 \begin{thebibliography}{9}
 \small

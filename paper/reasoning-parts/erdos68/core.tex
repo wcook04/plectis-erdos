@@ -640,6 +640,87 @@ $\Lc_D=\lcm_{2\le d\le D}(d!-1)$ is the same quantity as in
 normalised channel contribution by an integer only, so such variations cannot
 manufacture an extra fractional cancellation coordinate.
 
+\subsection{The exact low-channel lattice and residual class}
+
+The integral divisor basis makes the preceding divisibility statement exact.
+Let $U_n$ be the isolated $n$-channel unit, let $K_D$ be the canonical vector
+with moment $L_D$ and channels $2,\ldots,D$ equal to zero, and write
+$a_D=[e_1]K_D$ and $u_n=[e_1]U_n$.  Every vector with zero initial coordinate
+and vanishing channels through $D$ has a unique expression
+\begin{equation}\label{long68:eq:low-channel-basis}
+ c=tK_D+\sum_{n>D}z_nU_n,
+ \qquad M(c)=tL_D,
+\end{equation}
+with finitely many nonzero integers $z_n$.  Requiring support on $n\ge2$
+adds precisely the scalar equation
+\begin{equation}\label{long68:eq:low-channel-support}
+ ta_D+\sum_{n>D}z_nu_n=0.
+\end{equation}
+
+\begin{theorem}[exact attainable moment ideal]\label{long68:res:moment-ideal}
+Fix $D\ge2$ and a prime $p$ with $D/2<p\le D$.  Put
+\[
+ H=D(2p-1),\qquad
+ G_D=\gcd\{|u_n|:D<n\le H\},\qquad
+ \mu_D=L_D\frac{G_D}{\gcd(G_D,a_D)}.
+\]
+The moments of finite integer vectors supported on $n\ge2$ and cancelling all
+channels $2,\ldots,D$ are exactly $\mu_D\Z$.  The integer $\mu_D$ is positive,
+is independent of the eligible prime $p$, and is attained by a vector of
+coefficient content one, hence by a primitive vector.
+\end{theorem}
+
+\begin{proof}
+The finite-horizon theorem gives $G_D>0$ and identifies it with the gcd of the
+whole tail $\{u_n:n>D\}$; moreover $H<2D^2$.  Thus the finite integer
+combinations in \eqref{long68:eq:low-channel-support} form $G_D\Z$, so that the
+equation is soluble exactly when $G_D\mid ta_D$.  Dividing by
+$\gcd(G_D,a_D)$ shows that $t$ is a multiple of
+$G_D/\gcd(G_D,a_D)$, and \eqref{long68:eq:low-channel-basis} gives the displayed
+moment ideal.  Bezout coefficients attain its positive generator.  If an
+attaining vector had a nontrivial common coefficient divisor, division by that
+divisor would produce a smaller positive attainable moment.  Hence its content
+is one.  The ideal itself is intrinsic, so two eligible primes give the same
+positive generator.
+\end{proof}
+
+For
+\[
+ \mathcal R(c)=\sum_{d\ge2}\frac{\chn dc}{d!-1},\qquad
+ H_D=\sum_{2\le d\le D}\frac1{d!-1},
+\]
+the same coordinates retain the real information that the moment ideal alone
+does not see.
+
+\begin{theorem}[full residual transparency]\label{long68:res:residual-transparency}
+For the vector in \eqref{long68:eq:low-channel-basis},
+\[
+ \mathcal R\!\left(tK_D+\sum_{n>D}z_nU_n\right)
+ =tL_D(\Ser-H_D)+\sum_{n>D}z_n.
+\]
+The residual series converges for every finite vector supported away from
+index zero.  A zero-moment vector has integral residual, and two such vectors
+with the same factorial moment have residuals differing by an integer.
+\end{theorem}
+
+\begin{proof}
+For $d>D$, the $K_D$ channel is $L_D$, while each $U_n$ contributes one to its
+isolated residual coordinate.  Termwise decomposition therefore gives the
+factorial-gap tail $L_D(\Ser-H_D)$ plus the finite coordinate mass
+$\sum z_n$.  The factorial-gap tail is summable and the coordinate correction
+has finite support, which proves convergence.  In the full divisor-basis
+coordinates the coefficient of the $e_1$ column equals the factorial moment;
+when that moment is zero only the integral coordinate mass remains.  Subtracting
+two equal-moment identities proves the last assertion.
+\end{proof}
+
+The exact Lean endpoint packages are
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean#L242}{primitive attainment of the moment-ideal generator} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f20f727ae44d6dc3b24036bf63118b8fe591912e/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean#L195}{the equal-moment residual class}.
+They determine the finite low-channel lattice and its residual class modulo
+$\Z$; they do not prove that the remaining real residual is nonzero along a
+cofinal family.
+
 \label{long68:res:lead-channel-radius}\phantomsection
 \begin{theorem}[square-subsequence radius bound]\label{long68:res:channel-radius}
 Let $t,M,R\in\N$ satisfy

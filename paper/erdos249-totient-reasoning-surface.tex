@@ -71,9 +71,26 @@
 \tl_new:N \l__leanlink_arg_tl
 \tl_new:N \l__leanlink_url_tl
 \seq_new:N \l__leanlink_split_seq
-\cs_new_protected:Npn \leanlink #1
+\cs_new_protected:Npn \reasoningleanlabel #1
   {
-    \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#1} }
+    \tl_if_blank:nTF {#1}
+      { formal statement }
+      {
+        \tl_set:Nx \l_tmpa_tl { \tl_to_str:n {#1} }
+        \regex_replace_all:nnN { \\_+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN { _+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN { \.+ } { \c{space} } \l_tmpa_tl
+        \regex_replace_all:nnN
+          { ([a-z0-9])([A-Z]) }
+          { \1\c{space}\2 }
+          \l_tmpa_tl
+        \tl_set:Nx \l_tmpa_tl { \tl_lower_case:n { \tl_use:N \l_tmpa_tl } }
+        \tl_use:N \l_tmpa_tl
+      }
+  }
+\cs_new_protected:Npn \leanlink #1#2
+  {
+    \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#2} }
     \regex_replace_all:nnN { \\allowbreak } { } \l__leanlink_arg_tl
     \regex_replace_all:nnN { \s+ } { } \l__leanlink_arg_tl
     \tl_set:Nx \l__leanlink_url_tl { \repobase }
@@ -94,9 +111,9 @@
           { }
       }
       { \tl_put_right:Nx \l__leanlink_url_tl { / \tl_use:N \l__leanlink_arg_tl } }
-    \href { \tl_use:N \l__leanlink_url_tl } { \textsc{Lean~source} }
+    \href { \tl_use:N \l__leanlink_url_tl } { \reasoningleanlabel{#1} }
   }
-\newcommand{\lean}[2]{\leanlink{#2}}
+\newcommand{\lean}[2]{\leanlink{#1}{#2}}
 \ExplSyntaxOff
 \pdfstringdefDisableCommands{\def\breakcode#1{#1}}
 
@@ -4145,11 +4162,11 @@ band, or asks only for magnitude rather than a signed inequality.
 Proving \emph{any one} of these five closes Erd\H{o}s \#249; the corpus has already proved all the
 implications from each to
 \lean{PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:1325} (chain:
-midband $\to$ residue-gap at \lean{}{TotientActualLcmTopEdgeStaircase.lean:2109}; half-word-band
-$\to$ midband at \lean{}{TotientActualLcmTopEdgeStaircase.lean:2058}; final-magnitude
-$\Leftrightarrow$ half-word-band at \lean{}{TotientActualLcmTopEdgeStaircase.lean:1479};
-flexible-magnitude $\to$ midband at \lean{}{TotientActualLcmTopEdgeStaircase.lean:2008};
-final-magnitude $\to$ flexible-magnitude at \lean{}{TotientActualLcmTopEdgeStaircase.lean:1993}).
+midband $\to$ residue-gap at \lean{powerTwoActualLcmTopEdgeResidueGapSupply_of_adjacentSuffixMidband}{TotientActualLcmTopEdgeStaircase.lean:2109}; half-word-band
+$\to$ midband at \lean{powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand}{TotientActualLcmTopEdgeStaircase.lean:2058}; final-magnitude
+$\Leftrightarrow$ half-word-band at \lean{topEdgeHalfWordBandSupply_iff_actualFinalCenteredMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1479};
+flexible-magnitude $\to$ midband at \lean{powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude}{TotientActualLcmTopEdgeStaircase.lean:2008};
+final-magnitude $\to$ flexible-magnitude at \lean{flexibleActualTopEdgeMagnitudeSupply_of_actualFinal}{TotientActualLcmTopEdgeStaircase.lean:1993}).
 \end{prop}
 
 \subsubsection{TE-05-weakest --- one scalar inequality at cofinally many odd ranks (\coord{actual-lcm-top-edge})}
