@@ -555,7 +555,7 @@ $(z;q)_m=\prod_{j=0}^{m-1}(1-zq^{j})$, the source's summand is
 \begin{equation}\label{long1049:eq:positive-source-form}
  H_n(x)=\sum_{t\ge0}
  \frac{(q^{t+1};q)_{a_1-1}}{(q;q)_{a_1-1}}\,
- \frac{(q;q)_{\beta_n-a_2-1}}{(q^{a_2+t};q)_{\beta_n-a_2-1}}\,q^{a_0t},
+ \frac{(q;q)_{\beta_n-a_2-1}}{(q^{a_2+t};q)_{\beta_n-a_2}}\,q^{a_0t},
 \end{equation}
 and \cite[(8)--(11)]{zudilin2004} gives $H_n=A_nF-B_n$ with
 $A_n,B_n\in\Q(x)$.  The two coefficients can be written down.  Let
@@ -606,9 +606,13 @@ polynomial divisibility, $\Omega_n$ being monic.  All three precede the source's
 evaluation at an integer $p$ in its~(24), and all three remain valid with an
 indeterminate.  Second, the pair extracted from the source's module inclusion is
 unique, because $F$ is not a rational function of $X$: as $h\downarrow0$,
-splitting the positive series $F(e^{h})=\sum_m\tau(m)e^{-mh}$ at
-$m=\lfloor1/h\rfloor$ bounds the initial part above and below by constant
-multiples of $h^{-1}\log(1/h)$ while the remaining terms total $O(h^{-1})$, so
+splitting the original Lambert sum $F(e^h)=\sum_{m\ge1}(e^{hm}-1)^{-1}$
+at $L=\lfloor1/h\rfloor$ gives an initial sum
+$h^{-1}\sum_{m\le L}m^{-1}+O(L)$, since
+$y^{-1}-1\le(e^y-1)^{-1}\le y^{-1}$ for $0<y\le1$.
+The remaining sum is at most
+$e^{-h(L+1)}/((1-e^{-1})(1-e^{-h}))=O(h^{-1})$.  Hence
+$F(e^h)=h^{-1}\log(1/h)+O(h^{-1})$, so
 $(X-1)F(X)\to\infty$ and $(X-1)^{2}F(X)\to0$ as $X\downarrow1$, which no
 rational function does.  Hence the coefficients of $F$ and of $1$ in an identity
 over $\Q(X)$ are determined, and~\eqref{long1049:eq:integer-polynomial-pair} identifies
@@ -907,7 +911,7 @@ taken here is the homogenisation of Step~3 in the proof of
 Theorem~\ref{long1049:res:region}, applied to the forms that carry the smaller exponent.
 It substitutes one integer-base exponent bound for another, and it leaves the
 analytic content of each bound where its own source proves it.  The bases
-gained are exactly the strip $s^{\mu}<r<s^{\mu_{\mathrm{BV}}}$, which is empty
+gained are exactly the strip $s^{\mu}<r\le s^{\mu_{\mathrm{BV}}}$, which is empty
 for $s=2$ and $s=3$ and is first occupied at $s=4$ by the single numerator
 $31$.  The kernel-checked declarations of Theorem~\ref{long1049:res:31over4} and of
 Section~\ref{long1049:sec:regionbracket} decide the integer comparisons and the rational
@@ -1093,7 +1097,7 @@ $137$ members, of which $78$ are non-integral.  The tightest members are $53/5$,
 at margin $0.000313$ below $\theta^{*}$, and $31/4$, at margin $0.001985$; the
 closest miss is $52/5$ at $\theta=0.4073243836\ldots$, short by $0.001641$.  The
 bases new relative to \cite{bv1994} are those in the strip
-$s^{\mu}<r<s^{\mu_{\mathrm{BV}}}$, which is empty for $s=2$ and $s=3$, is
+$s^{\mu}<r\le s^{\mu_{\mathrm{BV}}}$, which is empty for $s=2$ and $s=3$, is
 $\{31\}$ for $s=4$, and is $\{53,54,56\}$ for $s=5$.  The strip is infinite:
 its width $s^{\mu_{\mathrm{BV}}}-s^{\mu}$ eventually exceeds $s$, so for every
 large enough denominator it contains an integer congruent to $1$ modulo $s$.
@@ -1146,8 +1150,11 @@ The main term $K_n\log b-(K_n-W_n)\log a$ at $31/4$, computed from
 $\sum_{l\le N}\varphi(l)$ and $\Sigma_n$ alone, is negative from $n=1$ and its
 normalisation by $n^{2}$ runs $-58.478,-10.280,-4.297,-3.863$ at
 $n=1,10,100,400$ against the limit $C_1\log4-C_0\log31=-3.718\ldots$.  The
-convergence is $O(1/n)$, from the linear terms of $M_n$ and the $N\log N$ error
-in the totient estimate.  Only the limit enters Theorem~\ref{long1049:res:region}.
+elementary bound on the convergence rate is $O(\log^2(n+2)/n)$.
+Indeed, summing the $O(y\log(2y))$ endpoint errors over the floor blocks
+with $k\le n$ gives $O(n\log^2(n+2))$; the remaining main-term tail is
+$O(1)$ since its summands are $O(n^2/k^3)$.  The linear terms of $M_n$
+add $O(n)$.  The stronger rate $O(1/n)$ does not follow from these estimates.  Only the limit enters Theorem~\ref{long1049:res:region}.
 
 The order and leading coefficient of $V_N^{*}$ were computed exactly for
 $1\le N\le7$, giving orders $0,1,5,14,30,55,91$ and coefficients
@@ -1321,7 +1328,12 @@ For $m\ge j\ge0$ one has $D_jW_m(t)\in q^{E(m,j)}A$ and
 \end{lemma}
 
 \begin{proof}
-Define an operator $\Phi$ on the free module with basis $(e_u)_{u\ge0}$ by
+Define the following transition coefficients on states $(e_u)_{u\ge0}$.
+Powers $\Phi^j$ mean the finite-depth path sums, not endomorphisms of the
+algebraic direct sum: for fixed initial state $t$, endpoint $u$ and depth $j$,
+all visited states are at most $\max(t,u+j)$, so each such coefficient is a
+finite sum.  Subsequent sums over endpoints are interpreted coefficientwise
+as justified below.  The transition coefficients are
 \[
  \Phi e_0=\sum_{s\ge1}a_se_{s-1},
  \qquad
@@ -1409,10 +1421,72 @@ rational $q$ as the rank grows.  For the logic, the integer polynomials
 $f_N(q)=C_Nq^{B_N}(1-q)^{N^{3}}$, with $B_N=\sum_{j<N}j^{2}$ and
 $C_N=(N!)^{2}(N+1)!/2^{N}$, have exactly the order $B_N$ and exactly the leading
 coefficient $C_N$, while $f_N(2/3)=C_N(2/3)^{B_N}3^{-N^{3}}$ carries a further
-cubic exponential factor that neither datum sees.  Closing the analytic question
-for $V_N^{*}$ needs a separate estimate on the normalised residual
-$R_N$ in $V_N^{*}=C_Nq^{B_N}R_N(q)$, for instance nonvanishing together with
-$\log|R_N(2/3)|=o(N^{3})$.  No such estimate is proved here.
+cubic exponential factor that neither datum sees.  The following separate
+positive-measure argument supplies the fixed-base estimate for $V_N^*$;
+it is not inferred from the formal order.
+
+\paragraph{A separate positive-measure estimate.}
+For fixed $0<q<1$ write $P=(q;q)_\infty$, $Q=(\sqrt q;q)_\infty$,
+$T=(-1;q)_\infty^2$, and
+\[
+ G_q(w)=\frac1{(w;q)_\infty^3}\sum_{t\ge0}\frac{w^t}{(q;q)_t}
+          \frac{(q^tw^2;q)_\infty}{(q^tw;q)_\infty^2},
+ \qquad \gamma_k=[w^k]G_q(w),\qquad c_k=\frac{(k+1)^2(k+2)}2.
+\]
+All products converge normally on $|w|\le r<1$ and the $t$-sum is bounded
+there by a constant times $\sum_t r^t$.  The finite-to-infinite product
+identities give $v_m^*=P^4G_q(q^{m+1})$.
+The identity
+\[
+ \frac{(Aw;q)_\infty}{(w;q)_\infty}
+   =\sum_{j\ge0}\frac{(A;q)_j}{(q;q)_j}w^j\quad(0\le A\le1)
+\]
+follows by comparing coefficients in
+$(1-w)R(w)=(1-Aw)R(qw)$ with $R(0)=1$; the series converges for $|w|<1$
+since its coefficients are at most $P^{-1}$.  They are nonnegative, and
+at least $(A;q)_\infty$ if $A<1$.  For $A=1$ the series equals $1$.
+Factor the numerator of the $t$th term using
+\[
+ (q^tw^2;q)_\infty=(q^{t/2}w;q)_\infty(-q^{t/2}w;q)_\infty
+ (q^{(t+1)/2}w;q)_\infty(-q^{(t+1)/2}w;q)_\infty.
+\]
+Pair the two positive-argument factors with two copies of
+$(w;q)_\infty^{-1}$.  All remaining factors have nonnegative
+coefficients.  The $t=0$ term bounds $\gamma_k$ below by
+$Q\binom{k+3}3$.  For upper bounds, a nonnegative-coefficient regular
+factor $R$ with $R(1)\le C$, multiplying a series with nondecreasing
+coefficients $d_k$, contributes at most $Cd_k$ by convolution.
+This rule bounds the $t=0$ term by $TP^{-4}\binom{k+3}3$ and the sum
+of the $t\ge1$ terms by $TP^{-6}\binom{k+2}3$.  Consequently
+\[
+ \frac Q3 c_k\le\gamma_k\le T(P^{-4}+P^{-6})c_k.
+\]
+Thus $\sum_{k\ge0}P^4\gamma_kq^k\delta_{q^k}$ is a finite positive measure
+with infinitely many distinct support points and moments $v_m^*$.
+A nonzero polynomial of degree less than $N$ cannot vanish at all of its
+first $N$ atoms; the associated Gram matrix is positive definite.
+Finite Cauchy--Binet followed by convergence of every matrix entry and
+monotone convergence of the nonnegative tuple sums gives
+\[
+ V_N^*=\sum_{k_0<\cdots<k_{N-1}}
+ \prod_i(P^4\gamma_{k_i}q^{k_i})\prod_{i<j}(q^{k_i}-q^{k_j})^2.
+\]
+Retaining the tuple $k_i=i$ and using
+$\prod_{d=1}^{N-1}(1-q^d)^{2(N-d)}\ge P^{2N}$ gives the lower bound
+below.  For the upper bound put $k_i=i+\lambda_i$, use
+$c_{i+\lambda}/c_i\le(\lambda+1)^3$, discard residual Vandermonde factors
+bounded by $1$, and drop the ordering restriction on the nonnegative
+$\lambda_i$.  With $S(q)=(1+4q+q^2)/(1-q)^4$ this gives
+\[
+ (P^6Q/3)^N C_Nq^{B_N}\le V_N^*(q)
+ \le\bigl[P^4T(P^{-4}+P^{-6})S(q)\bigr]^N C_Nq^{B_N}.
+\]
+Both constants are positive and finite, so $V_N^*(q)>0$ and
+$\log(V_N^*(q)/(C_Nq^{B_N}))=O_q(N)$, including $N=0$ under the empty
+determinant convention.  This is a separate analytic proof; it supplies no
+new denominator factor for the 2004 polynomial forms.
+The generating-function identification and infinite determinant expansion
+in this argument are not yet formalised in Lean.
 
 \paragraph{Evidence decomposition.}
 The proof above is ordinary mathematics.  Three parts of it are kernel-checked
