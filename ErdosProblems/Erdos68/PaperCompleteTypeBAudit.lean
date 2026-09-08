@@ -1,0 +1,15 @@
+import ErdosProblems.Erdos68.PaperCompleteTypeB
+
+#print axioms ErdosProblems.Erdos68.PaperComplete.finite_gcd_bezout
+#print axioms ErdosProblems.Erdos68.PaperComplete.gcd_quotient_dvd_iff
+#print axioms ErdosProblems.Erdos68.PaperComplete.low_channel_classification
+#print axioms ErdosProblems.Erdos68.PaperComplete.low_channel_parameters_unique
+#print axioms ErdosProblems.Erdos68.PaperComplete.support_equation
+#print axioms ErdosProblems.Erdos68.PaperComplete.attainable_moment_ideal
+#print axioms ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment
+#print axioms ErdosProblems.Erdos68.PaperComplete.minimum_moment_content_one
+#print axioms ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime
+#print axioms ErdosProblems.Erdos68.PaperComplete.residual_transparency
+#print axioms ErdosProblems.Erdos68.PaperComplete.summable_fullResidual
+#print axioms ErdosProblems.Erdos68.PaperComplete.zero_moment_residual_integral
+#print axioms ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference
