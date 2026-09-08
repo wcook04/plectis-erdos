@@ -12,7 +12,7 @@ theorem. These source candidates have not yet been kernel checked.
 -/
 
 set_option maxRecDepth 1000000
-set_option maxHeartbeats 0
+set_option maxHeartbeats 1000000000
 
 namespace ErdosProblems.Erdos68.PaperComplete.FiniteLead.SizeOnly
 

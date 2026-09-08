@@ -7,7 +7,7 @@ by adding and kernel-checking the complete decidable proof, without native trust
 This source was generated but could not be compiled in the return environment.
 -/
 set_option maxRecDepth 1000000
-set_option maxHeartbeats 0
+set_option maxHeartbeats 1000000000
 
 namespace ErdosProblems.Erdos68.PaperComplete.FiniteLead.KernelBlocks.Size000
 
