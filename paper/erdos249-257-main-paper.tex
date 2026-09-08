@@ -50,6 +50,7 @@
 \cs_new_protected:Npn \paperleanlabel #1
   {
     \tl_set:Nx \l_tmpa_tl { \tl_to_str:n {#1} }
+    \regex_replace_all:nnN { (Erdos249257|erdos249257) [\.\s/]* } { } \l_tmpa_tl
     \regex_replace_all:nnN { _+ } { \c{space} } \l_tmpa_tl
     \regex_replace_all:nnN
       { ([a-z0-9])([A-Z]) }

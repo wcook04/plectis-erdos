@@ -322,6 +322,24 @@ def rendered_text(pdf: Path, pdftotext: str) -> str:
     return completed.stdout
 
 
+def visible_link_namespace_labels(xml: str) -> list[str]:
+    """Inspect displayed anchor text; namespace-bearing target URLs are valid."""
+    labels = []
+    for body in re.findall(r"<a\b[^>]*>(.*?)</a>", xml, flags=re.S):
+        label = html.unescape(re.sub(r"<[^>]*>", "", body))
+        if re.search(r"erdos[\s\u00ad]*249[\s\u00ad]*257", label, flags=re.I):
+            labels.append(label)
+    return labels
+
+
+def rendered_namespace_link_errors(pdf: Path, pdftohtml: str) -> list[str]:
+    completed = run_render_tool(pdftohtml, ["-q", "-xml", "-hidden", "-stdout", str(pdf)])
+    if completed.returncode != 0:
+        return [f"{pdf.name}: cannot inspect visible link labels"]
+    labels = visible_link_namespace_labels(completed.stdout)
+    return [f"{pdf.name}: visible source-link label includes a namespace: {label!r}" for label in labels]
+
+
 def rendered_hrefs(pdf: Path, pdftohtml: str) -> set[str]:
     """Extract the actual URI annotations emitted into the rendered PDF."""
     pdf = safe_rendered_file(pdf)
@@ -580,6 +598,8 @@ def main() -> int:
                 errors.extend(rendered_errors(pdf, text, aliases))
                 errors.extend(first_minute_errors(pdf, pdftotext))
                 errors.extend(rendered_source_link_errors(tex, pdf, pdftohtml))
+            for pdf in sorted(ROOT.glob("*.pdf")):
+                errors.extend(rendered_namespace_link_errors(pdf, pdftohtml))
             for pdf in ARCHITECTURE_PAPERS:
                 try:
                     safe_rendered_file(pdf)

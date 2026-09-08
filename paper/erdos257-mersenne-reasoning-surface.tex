@@ -72,6 +72,7 @@
       { formal statement }
       {
         \tl_set:Nx \l_tmpa_tl { \tl_to_str:n {#1} }
+    \regex_replace_all:nnN { (Erdos249257|erdos249257) [\.\s/]* } { } \l_tmpa_tl
         \regex_replace_all:nnN { \\_+ } { \c{space} } \l_tmpa_tl
         \regex_replace_all:nnN { _+ } { \c{space} } \l_tmpa_tl
         \regex_replace_all:nnN { \.+ } { \c{space} } \l_tmpa_tl
@@ -4179,7 +4180,7 @@ reset charge avoids the width-$2(d+j_0)$ band at its critical dyadic index. Then
 \begin{obs}[F2 / middle producer row escape] \ev{Lean}
 \lean{SeamMiddleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:1769},
 \lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:2371}
-(via \texttt{.toCardEscape}, \texttt{.toTailEscape}, \lean{middleProducer_tail_lt_carry_iff_takeThreshold_lt_floorZ}{HalfCylinderMiddleCarryLowerBound.lean:1510}).
+(via \texttt{.toCardEscape}, \texttt{.toTailEscape}, \lean{middleProducer_tail_lt_carry_iff_takeThreshold_lt_floorZ}{HalfCylinderMiddleCarryLowerBound.lean:1474}).
 \textbf{Yields:} if at every late middle row ($s \ge 13$, no carry, middle branch)
 $s \le \mathrm{rem}(s)$, then $1/2 \in \mathrm{mersenneAchievementSet}$. Module docstring: ``far
 weaker than an exponential bound, but stronger than the already exposed square-root-scale carry
@@ -4252,7 +4253,7 @@ orbit, plus the right-pulse-leak inequality $4\cdot\mathrm{overshoot}+\mathrm{ab
 \begin{obs}[E1 / remainder ceiling] \ev{Lean}
 \lean{SeamGreedyRemainderGapBound}{HalfCylinderSeamLimit.lean:192},
 \lean{half\_mem\_mersenneAchievementSet\_of\_seamRemainderGapBound}{HalfCylinderSeamLimit.lean:303}
-(weaker cofinal route \lean{half_mem_mersenneAchievementSet_of_subquadraticAlong}{HalfCylinderSeamLimit.lean:181}).
+(weaker cofinal route \lean{half_mem_mersenneAchievementSet_of_subquadraticAlong}{HalfCylinderSeamLimit.lean:179}).
 \textbf{Yields:} if $\forall s \ge 6$, $\mathrm{rem}(s) < 2^{s+1}$, then $1/2 \in
 \mathrm{mersenneAchievementSet}$. The weaker cofinal form only needs the normalized remainder to
 tend to $0$ along \emph{some} cofinal row sequence. Docstring: ``exponential upper bound
@@ -4483,7 +4484,7 @@ above.
 \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84},
 line 60; A5
 \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583},
-A6 (\lean{finite_greedyMersenneSkippedSupport_of_fatalAt}{GreedyAchievementSet.lean:1515}); positivity discharge
+A6 (\lean{finite_greedyMersenneSkippedSupport_of_fatalAt}{GreedyAchievementSet.lean:1513}); positivity discharge
 \lean{localMersennePrefixValue_halfGreedy_lt_half}{BooleanMobiusCriticalCapacityCofinal.lean:138}.
 \textbf{Yields:} cofinally many positive rational-greedy skips $\Rightarrow$
 \texttt{CofinalExactLocalMersenneHalfRows} $\Rightarrow 1/2 \in
@@ -4594,7 +4595,7 @@ two can work through this dichotomy.
 
 \begin{obs}[NM-01 / the single certificate socket] \ev{Lean}
 \lean{irrational\_erdosSupportSeries\_of\_weighted\_coeff\_certificates}{CertificateKernel.lean:9031}
-(carry variant \lean{erdosSupportSeries_multiples_eq_pow_base_full_support}{CertificateKernel.lean:9053}).
+(carry variant \lean{erdosSupportSeries_multiples_eq_pow_base_full_support}{CertificateKernel.lean:9054}).
 \textbf{Yields:} $\forall b\ge2,\ \forall A\subseteq\mathbb N$ (no infinitude, no structure
 hypothesis at all): if $\forall q>0\ \exists N,K,L,C$ with $K\le L$, $b^r \mid
 \mathrm{supportCoeff}\,A\,(N{+}r)$ for $r\in[1,K]$, $\sum_{r=K+1}^L \mathrm{supportCoeff}\,A\,(N{+}r)
@@ -4615,7 +4616,7 @@ aggregate form.
 
 \begin{obs}[NM-02 / single-target to all-rational-targets, promotable] \ev{Lean}
 \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
-(forward \lean{erdosBorweinMersenneConstant_eq_greedy_add_skipped}{GreedyAchievementSet.lean:2482}; reverse
+(forward \lean{erdosBorweinMersenneConstant_eq_greedy_add_skipped}{GreedyAchievementSet.lean:2476}; reverse
 \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}).
 \textbf{Yields:} $(1/2:\mathbb R)\in\mathrm{mersenneAchievementSet} \Leftrightarrow
 (\mathrm{greedyMersenneSkippedSupport}(1/2))$.Infinite.
@@ -4973,7 +4974,7 @@ Repeated here for emphasis from the 257-cofinal-rows entry above: once the posit
 unconditionally free (odd-numerator/even-subtrahend parity plus greedy nonnegativity, discharged
 at \lean{localMersennePrefixValue_halfGreedy_lt_half}{BooleanMobiusCriticalCapacityCofinal.lean:138}), the socket collapses to
 $(\mathrm{greedyMersenneSkippedSupport}(1/2))$.Infinite, proved by A6
-(\lean{infinite_greedyMersenneSkippedSupport_of_rat_mem}{GreedyAchievementSet.lean:2514}) to be \emph{equivalent} to $1/2\in
+(\lean{infinite_greedyMersenneSkippedSupport_of_rat_mem}{GreedyAchievementSet.lean:2518}) to be \emph{equivalent} to $1/2\in
 \mathrm{mersenneAchievementSet}$. A proof or disproof of this one Prop settles \#257-at-1/2 and
 vice versa; it is not a waypoint toward that settlement.
 \end{rem}
