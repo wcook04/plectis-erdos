@@ -22,7 +22,12 @@ if not receipt['matches_commit']:
     raise SystemExit(76)
 SNAPSHOT
 test "$(tr -d '[:space:]' < lean-toolchain)" = "$(tr -d '[:space:]' < "$RUNNER_TEMP/lean4export/lean-toolchain")"
-for bin in "$comparator" "$COMPARATOR_LEAN4EXPORT" "$COMPARATOR_NANODA" "$PALOMAR_LANDRUN_BIN" "$COMPARATOR_LANDRUN"; do test -x "$bin"; done
+for bin in "$comparator" "$COMPARATOR_LEAN4EXPORT" "$COMPARATOR_NANODA" "$PALOMAR_LANDRUN_BIN" "$COMPARATOR_LANDRUN"; do
+  if ! test -x "$bin"; then
+    echo "Focused Comparator executable missing or not executable: $bin" >&2
+    exit 126
+  fi
+done
 if systemd-run --user --property=RestrictAddressFamilies=AF_UNIX --wait --collect --pipe -- true > artifacts/systemd.log 2>&1; then
   manager=(systemd-run --user)
   export SANDBOX_MODE=user-manager
