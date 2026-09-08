@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Assemble the two long reasoning papers from reviewable authored parts.
+"""Assemble the long reasoning papers from reviewable authored parts.
 
 The public manuscripts are deliberately flat: Pandoc and TeX must see every
 section without following a private include tree. The authored sources live
@@ -27,6 +27,11 @@ PARTS_ROOT = ROOT / "paper" / "reasoning-parts"
 MARKER_RE = re.compile(r"^% ---- part ([a-z0-9_]+) ----\n", re.MULTILINE)
 
 PAPERS = {
+    "1041": {
+        "output": ROOT / "paper" / "erdos1041-lemniscate-reasoning-surface.tex",
+        "directory": PARTS_ROOT / "erdos1041",
+        "parts": ("core", "extended_record", "family_catalogue", "back"),
+    },
     "249": {
         "output": ROOT / "paper" / "erdos249-totient-reasoning-surface.tex",
         "directory": PARTS_ROOT / "erdos249",
@@ -134,7 +139,7 @@ def main() -> int:
     action.add_argument("--bootstrap", action="store_true")
     action.add_argument("--write", action="store_true")
     action.add_argument("--check", action="store_true")
-    parser.add_argument("--paper", choices=("all", "249", "257"), default="all")
+    parser.add_argument("--paper", choices=("all", *PAPERS), default="all")
     args = parser.parse_args()
     keys = tuple(PAPERS) if args.paper == "all" else (args.paper,)
 

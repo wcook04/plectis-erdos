@@ -131,7 +131,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:0455d0feaf5088394eb449a6a3056b89f4021f0a2fd74338c2b3766a7437e6df",
+      "source_sha256": "sha256:5449224516096f7d684eb233db8ac79c9cae3418203370e11f573dc8717322fe",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
@@ -1107,8 +1107,8 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:5c6b1c8722ac6657b36b136cbce4aa927e452e18d9487f14bb2d7e30d6de717f",
-      "pdf_byte_count": 457684,
+      "pdf_sha256": "sha256:af5d4545e87e03087a1e23c7a8140c6e92a641dd992f185c3771643f55753225",
+      "pdf_byte_count": 457678,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1173,7 +1173,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:ea6e7b0d886d93517fcedec2190338580ecf0b067555f8cc22c4f0153d598c84",
+      "source_sha256": "sha256:caa7761436c55b2437cbfaaf97ff2ab34330a9bc8bcfafa08a96cf78a333e808",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex",
@@ -1295,8 +1295,8 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:8360f5d2ee554d70aa62c964edebbae6598ceb5edadc83563e5c8447f6c9a412",
-      "pdf_byte_count": 102105,
+      "pdf_sha256": "sha256:137167d83abf3ee757ebee296a2e8a580c821c98314475ac6a79788eb7295e58",
+      "pdf_byte_count": 102327,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1362,7 +1362,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:bbad3e8929c50fefb86aa81250095c5cead267d5ad22def620c5e85bebb2b9d9",
+      "source_sha256": "sha256:3174f6c3fd770c9522249ba06ca42924093fc3a543f4a82d0da3ce0fbed9763d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
@@ -1474,8 +1474,8 @@
       ],
       "citations_rendered": 5,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:c023b1ecb5332c02493feaf4d9ccfa9ecdf808aacfe0fa5eff6283f6c1bb77f9",
-      "pdf_byte_count": 96745,
+      "pdf_sha256": "sha256:d814c1f2f5340d52de0e970772dc6c30dfeeda232269efead577d4db6d332a3e",
+      "pdf_byte_count": 96861,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1536,7 +1536,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:a820df17beeb2d25792000065e6318eae22b8bc8650e943b440904b45889a724",
+      "source_sha256": "sha256:60d4e21d526718d65d7250f24dacb0f4da889eae20703fbc2fe0200c559b7ec9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
@@ -1616,8 +1616,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:98b9693dead2d9a714ccdac97988eeae8de52435cb2243830321c537283478b2",
-      "pdf_byte_count": 98277,
+      "pdf_sha256": "sha256:86169b905f51ab8c66c2d105ab28ef2244d0f3b86f4679f99e827f3d5d117519",
+      "pdf_byte_count": 98740,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1678,7 +1678,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:c6eb6ac9a59f4ed54f69c646d3be0f9d223b462ef05b8d91f17981634bd5a177",
+      "source_sha256": "sha256:1bbe39857c3ce0e75f7359af97cc2b52638bd6a9c988697b5cec9c9f7f552c2c",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
@@ -2582,8 +2582,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:2074c954f206a56b53d834e37a33d9f38cf52342c2b04a4d1188824cd62c0ce9",
-      "pdf_byte_count": 727403,
+      "pdf_sha256": "sha256:e4461d959468a50c5c1cb863020cdb957d8353c4edab51d0e404f2583cd2df00",
+      "pdf_byte_count": 727393,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2639,7 +2639,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
       "local_source": "paper/erdos-251-prime-gap-dyadic-series.tex",
-      "source_sha256": "sha256:0cf9c88baf52ad8bb70a9adde7580436e54d41184dfacf3f52c064b33f79a2f9",
+      "source_sha256": "sha256:e7fef2cce22e2f466e9e7a45ebbfd89ec01dd5fecf7833c179265a8bd7556d9c",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex",
@@ -2805,8 +2805,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:e920cff2b31d0c25833bf5206c93cef055610c13d2ff68405eb5f09c86a10eae",
-      "pdf_byte_count": 139693,
+      "pdf_sha256": "sha256:5c6f03e787e198a4871978c1b595553f884113a8076fdd637d3b55aaa6ab0ab9",
+      "pdf_byte_count": 139726,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2872,7 +2872,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:591650bf6992d17018d26e727b97e1bad2629e3078b40ea386327d0086c5a6ca",
+      "source_sha256": "sha256:82d7b4f2856a8d2cc531c58a937a4c1cb644a0758964361bd3728db32dbfbd1f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
@@ -2990,8 +2990,8 @@
       ],
       "citations_rendered": 5,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:8995d7c02b0ff4180d1c6b745eea3841a0a3c4fd3fa12afe5c3e92d80800a023",
-      "pdf_byte_count": 123808,
+      "pdf_sha256": "sha256:e687f9672bf9e1a6655f52a23a62a76823ca934d06d1036b1b8e86783a3e85ab",
+      "pdf_byte_count": 124068,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3057,7 +3057,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:4b64b5fba33cfb3559cd04749cf9e17734d80053f68e11bc7430b05247196759",
+      "source_sha256": "sha256:ff4fa46c22689e5f081b6d16326b093c978605ecdb53236b76e803fbc16ee3d0",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
@@ -3895,8 +3895,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:705687fcf50f49ea5669444bc8ead91b313a40f013657135a81729e99330b418",
-      "pdf_byte_count": 667209,
+      "pdf_sha256": "sha256:ee4eb9ef1dfa938d2c84e172e63891272843420f591e9dfceac62dcb8a212691",
+      "pdf_byte_count": 667202,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3957,7 +3957,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:c32fca1ce7894f66acb77255a854a81a1ec284a50909c7df2d2df3c43e59e80c",
+      "source_sha256": "sha256:b2bec75cf64ef52d09c8576c4a3eb4e23872d73b9099e53906f3b87c7e169947",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex",
@@ -4057,8 +4057,8 @@
       ],
       "citations_rendered": 6,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:37b5e9d8f2d4b2b21e5967ddc7aed6e214b20742220459f08ee76deb18dee538",
-      "pdf_byte_count": 99175,
+      "pdf_sha256": "sha256:eaf8f6ac1215eaca56527a2c3d0b7c97ba3474ff844a865f47cfc2338970be67",
+      "pdf_byte_count": 99229,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4089,7 +4089,7 @@
     },
     {
       "paper_id": "erdos-1041-lemniscate-newton-flow",
-      "title": "Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates",
+      "title": "The Complete Cubic Case and Explicit Paths in Polynomial Lemniscates",
       "title_source": "manuscript",
       "question_this_paper_answers": "Which Newton-flow separation facts are checked for Erd\u0151s #1041, and what exactly fails in the recent claimed global decomposition?",
       "subject": "Erd\u0151s #1041",
@@ -4107,13 +4107,13 @@
       "preferred_citation": {
         "author": "Will Cook",
         "year": "2026",
-        "title": "Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates",
+        "title": "The Complete Cubic Case and Explicit Paths in Polynomial Lemniscates",
         "repository": "plectis-lean-erdos249-257",
         "canonical_source_commit": null,
         "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates. plectis-lean-erdos249-257. CC-BY-4.0. https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
+        "text": "Will Cook (2026). The Complete Cubic Case and Explicit Paths in Polynomial Lemniscates. plectis-lean-erdos249-257. CC-BY-4.0. https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -4124,210 +4124,232 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:79092aae1e682f4f29834a249ea0fe475b1931bfe5d64f917311d1d5c3517e65",
+      "source_sha256": "sha256:733d6a646fea3b2b21c3360eb03843c419fcf7b38988433cf8c0e8d3fb11ca7a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-1041-lemniscate-newton-flow.tex",
-      "section_count": 32,
+      "section_count": 35,
       "sections": [
         {
           "level": 1,
           "id": "erdos-1041-lemniscate-newton-flow",
-          "title": "Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates",
+          "title": "The Complete Cubic Case and Explicit Paths in Polynomial Lemniscates",
           "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:cubic-complete",
+          "title": "The complete cubic case",
+          "line": 13
+        },
+        {
+          "level": 4,
+          "id": "why-a-critical-value-is-smaller-than-one.",
+          "title": "Why a critical value is smaller than one.",
+          "line": 55
+        },
+        {
+          "level": 4,
+          "id": "why-the-normalized-cubic-has-two-small-roots.",
+          "title": "Why the normalized cubic has two small roots.",
+          "line": 70
         },
         {
           "level": 1,
           "id": "sec:trinomial",
           "title": "Monic trinomials, in every degree",
-          "line": 13
+          "line": 109
         },
         {
           "level": 4,
           "id": "a-finite-convex-certificate.",
           "title": "A finite convex certificate.",
-          "line": 42
+          "line": 138
         },
         {
           "level": 1,
           "id": "sec:problem",
           "title": "The problem and the general regimes",
-          "line": 64
+          "line": 160
         },
         {
           "level": 1,
           "id": "sec:constant-factor",
           "title": "Low critical values and a uniform path bound",
-          "line": 80
+          "line": 176
         },
         {
           "level": 4,
           "id": "the-geometric-step-behind-1325.",
           "title": "The geometric step behind 13/25.",
-          "line": 112
+          "line": 208
         },
         {
           "level": 4,
           "id": "an-independent-area-proof.",
           "title": "An independent area proof.",
-          "line": 138
+          "line": 234
         },
         {
           "level": 1,
           "id": "sec:critical-proximity",
           "title": "Critical proximity and straight-path obstructions",
-          "line": 192
+          "line": 288
         },
         {
           "level": 1,
           "id": "sec:solved-families",
           "title": "Solved polynomial families",
-          "line": 227
+          "line": 323
         },
         {
           "level": 2,
           "id": "translated-cubic-quotient-fibres",
           "title": "Translated cubic quotient fibres",
-          "line": 233
+          "line": 329
         },
         {
           "level": 2,
           "id": "primitive-sparse-quintics",
           "title": "Primitive sparse quintics",
-          "line": 249
+          "line": 345
         },
         {
           "level": 2,
           "id": "bdry:solved-polynomial-families",
           "title": "Sharp collinear roots",
-          "line": 271
+          "line": 367
         },
         {
           "level": 1,
           "id": "sec:separation",
           "title": "Critical-value separation in every degree",
-          "line": 277
+          "line": 373
         },
         {
           "level": 4,
           "id": "bdry:critical-value-separation",
           "title": "Boundary.",
-          "line": 334
+          "line": 430
         },
         {
           "level": 1,
           "id": "sec:exact-obstructions",
           "title": "Three exact covering obstructions",
-          "line": 342
+          "line": 438
         },
         {
           "level": 1,
           "id": "sec:newton",
           "title": "The Newton value equation",
-          "line": 373
+          "line": 469
         },
         {
           "level": 1,
           "id": "sec:arguments",
           "title": "Arguments, not moduli",
-          "line": 405
+          "line": 501
         },
         {
           "level": 1,
           "id": "sec:reciprocal",
           "title": "Local coordinates for perturbative competitors",
-          "line": 427
+          "line": 523
         },
         {
           "level": 1,
           "id": "sec:gap",
           "title": "A proof gap in the unrestricted argument",
-          "line": 437
+          "line": 533
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "Computational searches",
-          "line": 465
+          "line": 561
         },
         {
           "level": 1,
           "id": "sec:binomial",
           "title": "Exact symmetric benchmark: complementary chords for every binomial degree",
-          "line": 471
+          "line": 567
         },
         {
           "level": 1,
           "id": "sec:collinear",
           "title": "The sharp collinear theorem: order buys an exact Chebyshev extremal",
-          "line": 504
+          "line": 600
         },
         {
           "level": 1,
           "id": "sec:freepoint",
           "title": "A Poisson identity for critical-value means",
-          "line": 546
+          "line": 642
         },
         {
           "level": 1,
           "id": "sec:orlicz",
           "title": "The exact nonlinear lifetime currency",
-          "line": 627
+          "line": 723
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining geometric selection problem",
-          "line": 680
+          "line": 776
         },
         {
           "level": 4,
           "id": "a-dense-generic-class-suffices.",
           "title": "A dense generic class suffices.",
-          "line": 690
+          "line": 786
         },
         {
           "level": 4,
           "id": "a-sufficient-canonical-arc-estimate.",
           "title": "A sufficient canonical-arc estimate.",
-          "line": 702
+          "line": 798
         },
         {
           "level": 4,
           "id": "the-attachment-obstruction-is-quantitative.",
           "title": "The attachment obstruction is quantitative.",
-          "line": 712
+          "line": 808
         },
         {
           "level": 4,
           "id": "which-information-is-insufficient.",
           "title": "Which information is insufficient.",
-          "line": 723
+          "line": 819
         },
         {
           "level": 1,
           "id": "sec:evidence-ledger",
           "title": "Proof boundaries",
-          "line": 731
+          "line": 827
         },
         {
           "level": 2,
           "id": "sec:1041-sources",
           "title": "Sources and adjacent results",
-          "line": 741
+          "line": 837
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 747
+          "line": 843
         }
       ],
       "citations_rendered": 10,
+      "fallback_title_drift": {
+        "registry_fallback": "Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates",
+        "manuscript_title": "The Complete Cubic Case and Explicit Paths in Polynomial Lemniscates"
+      },
       "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:0cb588908279da745eff773b1447d2252f8b27fd408ce74351fab832851eba9e",
-      "pdf_byte_count": 146854,
+      "pdf_sha256": "sha256:ba471ec0b2135abc858409612ffce9cce823844dddd700abc7fb552fd5dd2410",
+      "pdf_byte_count": 154741,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4335,22 +4357,22 @@
           {
             "id": "sec:problem",
             "title": "The problem and the general regimes",
-            "line": 64
+            "line": 160
           },
           {
             "id": "sec:newton",
             "title": "The Newton value equation",
-            "line": 373
+            "line": 469
           },
           {
             "id": "sec:gap",
             "title": "A proof gap in the unrestricted argument",
-            "line": 437
+            "line": 533
           },
           {
             "id": "sec:open",
             "title": "The remaining geometric selection problem",
-            "line": 680
+            "line": 776
           }
         ],
         "unresolved_count": 0
@@ -4393,7 +4415,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:b791b92b1c28feb59f0a646266c5b0e5af8d0e1b29ee5be2ea897bb1a1f9f481",
+      "source_sha256": "sha256:bd81045af380ac8dc1e03829aff5fb2e8cbe19c9ea09e3f50e963e8465371a31",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
@@ -4505,8 +4527,8 @@
       ],
       "citations_rendered": 8,
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:1c4328de5ba225c414d6177c2aced75031d8c0d4f9e4563fe4966a6aeca976d1",
-      "pdf_byte_count": 109855,
+      "pdf_sha256": "sha256:fa61e8188abeaced64ba4bfa057b5b0754c5a42ac2b9ae4f565f5ed78b7e7fb6",
+      "pdf_byte_count": 109857,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4572,7 +4594,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:36431013833c1100758194e835e7bced30d4d8fc5dcd7e9b57e17956aa9d8414",
+      "source_sha256": "sha256:85238cf250fcf2fc523ae5e7920fddd9bd01786e3dec503d4ecf75d70c5da584",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
@@ -4858,8 +4880,8 @@
       ],
       "citations_rendered": 17,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:29e5ff7e80495a35555ed71c1bff6c00a34af4ef3a1585b29da98d38f56f5304",
-      "pdf_byte_count": 144790,
+      "pdf_sha256": "sha256:19bef75c1679353ad2bfda25a7838bd80ea97d635a1c3f37d2316803f0acf2e8",
+      "pdf_byte_count": 144792,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4925,7 +4947,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:af53dce269a5911fddd4b2406dcb2425c0373b5aa489f114d90d84525f9ec4ea",
+      "source_sha256": "sha256:45d1a4f23e18e9edef9a594daea5ed5c5e674d19552d928d1ccd34d957a6624e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/cold-clone-to-proof-receipt.tex",
@@ -5055,8 +5077,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:5c6be84b7122c1b273c9a8966bd9faab59e7590203153b1c4535d61c735e70d9",
-      "pdf_byte_count": 83163,
+      "pdf_sha256": "sha256:027561cc2d2786c2378bf07446181007fbb9dcc8e88a12d8cf5243301ea37853",
+      "pdf_byte_count": 83165,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5311,7 +5333,7 @@
       ],
       "citations_rendered": 21,
       "local_pdf": "open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:5df59aac866f6400311393473c0d690806280697ddc904b164c9a3021f1d965f",
+      "pdf_sha256": "sha256:3676e78cd7ebff6e2697c9208071ef7deb938a3d8a750203caef3021e0525b87",
       "pdf_byte_count": 132970,
       "first_pass": {
         "stated_by_the_paper": false,

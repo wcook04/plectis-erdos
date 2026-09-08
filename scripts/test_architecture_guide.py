@@ -225,10 +225,7 @@ def main() -> int:
 
     try:
         checker.validate_entry_links(
-            readme.replace(
-                "All eight problems remain open.",
-                "A conditional producer would be required",
-            ),
+            "A conditional producer would be required.\n\n" + readme,
             agents,
             paper_readme,
         )

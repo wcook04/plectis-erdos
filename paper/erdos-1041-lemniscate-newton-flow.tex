@@ -12,10 +12,10 @@
 \documentclass[11pt]{article}
 \usepackage{longtable}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{bb4e24651b37cd096d3749ef299c3317930b3a3b}
+\renewcommand{\commitshort}{bb4e24651b37}
 \hypersetup{
-  pdftitle={Sharp solved families and constant-factor paths in polynomial lemniscates for Erdős Problem 1041},
+  pdftitle={The complete cubic case and explicit paths in polynomial lemniscates for Erdős Problem 1041},
   pdfsubject={Erdős Problem Notes: Problem 1041},
   pdfkeywords={lemniscate, critical values, Newton flow, free-point inequality, saddle connection, Lean 4},
 }
@@ -25,32 +25,162 @@
 \newcommand{\pdecl}[1]{\emph{\leanlabel{#1}}}
 \newcommand{\dbar}{\mathbb{D}}
 
-\runninghead{Erd\H{o}s \#1041: solved families and constant-factor paths}
-\title{Sharp Solved Families and\\Constant-Factor Paths in Polynomial Lemniscates}
-\subtitle{Unconditional parent progress, exact obstructions, and frontier
-mechanisms for Erd\H{o}s Problem~\#1041}
+\runninghead{Erd\H{o}s \#1041: the complete cubic case}
+\title{The Complete Cubic Case and\\Explicit Paths in Polynomial Lemniscates}
+\subtitle{Critical-value hubs, solved families, and the general boundary for Erd\H{o}s Problem~\#1041}
 \author{Will Cook}
-\date{7 September 2026}
+\date{8 September 2026}
 
 \begin{document}
 \maketitle
 \noteprovenance
 
 \begin{abstract}
-Every monic trinomial $z^n+az^m+b$, $1\le m<n$, whose roots lie in the open
-unit disc has every root-to-origin segment inside $\{|f|<1\}$; any two
-roots are joined through the origin with length less than $2$.
-The root equation reduces the radial image to a convex combination of two
-controlled values.  For arbitrary squarefree monic polynomials, the condition
-$\mu=\min_{f'(c)=0}|f(c)|\le13/25$ also gives a connection shorter than $2$.
-Rescaling gives a path shorter than $(5/2)\mu^{1/n}$ in
-$\{|f|<(25/13)\mu\}$, with no root-location restriction.  An independent
-length--area argument and a separated-critical-value criterion give further
-geometric control.  A Poisson identity
-controls critical-value means.  Exact counterexamples isolate the geometric
-information these estimates leave undetermined.  The general problem remains
-open.
+Every monic cubic whose roots lie in the open unit disc has two root
+occurrences joined inside $\{|f|<1\}$ by a broken line of length less than
+$2$; for a squarefree cubic the endpoints are distinct.  A critical point
+with the least critical-value modulus is the hub.  A reflected-polynomial
+inequality puts this modulus below $1$, and a Schur estimate supplies two
+nearby roots after normalization.  The root equation controls both segments.
+We also give the origin as an explicit hub for monic trinomials in every
+degree, and develop low-critical-value and constant-factor estimates for
+general polynomials.  The unrestricted degree problem remains open.
 \end{abstract}
+
+\section{The complete cubic case}
+\label{sec:cubic-complete}
+
+Erd\H{o}s Problem~\#1041 asks whether two roots of a monic polynomial,
+all of whose roots lie in the open unit disc, can be joined inside
+$\{|f|<1\}$ by a curve shorter than $2$.  A short Euclidean segment need
+not stay in this set.  For cubics, a critical point provides a hub at which
+both containment and length can be controlled.
+
+\begin{theorem}[complete cubic case]\label{res:cubic-complete}
+Let
+\[
+ f(z)=\prod_{i=1}^{3}(z-z_i),\qquad |z_i|<1.
+\]
+There are distinct indices $i,j$ and a point $c\in\mathbb C$ such that the
+broken line $z_i\to c\to z_j$ lies in $\{|f|<1\}$ and has length strictly
+less than $2$.  It is a continuous curve of bounded variation.  If $f$ is
+squarefree, its endpoints are distinct values.  If a root is repeated, two
+occurrences of that root may be joined by the constant curve.
+\end{theorem}
+
+The proof chooses a critical point with the least critical-value modulus.
+A reflected-polynomial estimate makes this modulus smaller than $1$.
+After translation and scaling, a cubic root-count estimate supplies two
+roots at distance at most $1$ from the hub.  The root equation then controls
+the whole of each segment, not just its endpoints.
+
+\begin{proof}
+The repeated-root case is immediate, so assume $f$ is squarefree.  Choose a
+critical point $c$ for which $|f(c)|$ is least, and write $v=f(c)$.
+The critical-value estimate below gives $0<|v|<1$.  Write the other critical
+point, with multiplicity, as $c+\delta$.  Integration of
+$f'(c+x)=3x(x-\delta)$ gives
+\[
+ f(c+x)=x^3-\tfrac32\delta x^2+v.
+\]
+Choose $\alpha^3=v$ and put $B=\delta/\alpha$.  Then
+\[
+ f(c+\alpha w)=vP_B(w),\qquad
+ P_B(w)=w^3-\tfrac32Bw^2+1.
+\]
+Minimality of $|v|$ gives
+$|1-B^3/2|=|f(c+\delta)/v|\ge1$.  The root-count estimate below supplies
+two distinct roots $u,w$ of $P_B$ in the closed unit disc.
+For either such root $q$ and $0\le t\le1$, its root equation gives
+\[
+ P_B(tq)=1-t^2-t^2(1-t)q^3,\qquad
+ |P_B(tq)|\le1-t^3\le1.
+\]
+Thus both segments from $c$ to $c+\alpha u$ and $c+\alpha w$ lie in
+$\{|f|<1\}$, since their images have modulus at most $|v|<1$.
+Their concatenation has length
+\[
+ |\alpha|(|u|+|w|)\le2|v|^{1/3}<2.
+\]
+The two roots are distinct because $\alpha\ne0$.  This is the asserted
+piecewise affine curve; in the formal statement its length is the extended
+variation on $[0,2]$.
+\end{proof}
+
+\paragraph{Why a critical value is smaller than one.}
+The reflected-polynomial inequality, for a monic polynomial of degree $n\ge2$
+with roots in the closed unit disc and critical points $c_1,\ldots,c_{n-1}$
+listed with multiplicity, is
+\[
+ |f(c_j)|\le\prod_{k=1}^{n-1}|1-\overline{c_k}c_j|.
+\]
+For a cubic, let $c,d$ be its two critical points, with
+$r=|c|\ge|d|$.  Gauss--Lucas gives $r\le1$.  If $r>0$, the displayed
+inequality implies
+\[
+ |f(c)|\le(1-r^2)|1-\overline d c|
+ \le(1-r^2)(1+r^2)=1-r^4<1.
+\]
+If $r=0$, both critical points are zero, so $f(z)=z^3+f(0)$;
+Vieta and the strict root-disc hypothesis give $|f(0)|<1$.
+Taking the smaller of the two critical-value moduli proves the needed
+bound.  Squarefreeness makes that minimum nonzero.
+
+\paragraph{Why the normalized cubic has two small roots.}
+The precise algebraic estimate is
+\[
+ |1-B^3/2|\ge1
+ \quad\Longrightarrow\quad
+ P_B\text{ has two distinct roots in }\{|w|\le1\}.
+\]
+Here the closed disc is sufficient: the strict factor $|v|<1$ already
+provides both strict conclusions in the main proof.
+To see the mechanism, write $a=3B/2$ and suppose two roots $r,s$ of
+$z^3-az^2+1$ have modulus greater than $1$.  Vieta, with
+$x=1/r$, $y=1/s$ and $h=x+y$, gives
+\[
+ xyh=1,\qquad ah=h^3-1.
+\]
+For $|x|,|y|<1$, the elementary Schur estimate is
+\[
+ |x+y-\overline{x+y}xy|<1-|xy|^2.
+\]
+Indeed its left side is at most
+$(1-|y|^2)|x|+(1-|x|^2)|y|
+=(|x|+|y|)(1-|xy|)$, and
+$|x|+|y|<1+|xy|$.
+Putting $t=|h|^2$ and $X=\operatorname{Re}(h^3)$ therefore gives
+\[
+ 1<t<3,\qquad X>X_0:=\frac{t^3+2t-1}{2t}.
+\]
+The remaining scalar inequality can be checked by the factorization
+\begin{align*}
+ &27\{t^3(2X^2-t^3-3X+3)-X\}-2(t^3-2X+1)^3\\
+ &\qquad=(t^3+X-2)Q(X),\\
+ Q(X)&=-2t^6+14t^3X-37t^3+16X^2+8X+1.
+\end{align*}
+Both factors are positive: $X_0>1$,
+\[
+ Q(X_0)=-\frac{(t-1)^3(t+2)(t^2+t+1)(2t^2-7t+2)}{t^2}>0,
+\]
+and
+$Q(X)-Q(X_0)=2(X-X_0)(7t^3+8X+8X_0+4)>0$.
+Using $a^3=(h^3-1)^3/h^3$, the positive expression is
+$t^3(27\operatorname{Re}(a^3)-2|a^3|^2)$.
+Consequently $|1-4a^3/27|<1$, contradicting $|1-B^3/2|\ge1$.
+Finally, a repeated root of $z^3-az^2+1$ forces $1-4a^3/27=0$.
+Under the hypothesis all three roots are therefore simple, and at most one
+is outside the closed unit disc, as required.
+
+The complete cubic statement is checked in
+\href{https://github.com/wcook04/plectis-erdos/blob/bb4e24651b37cd096d3749ef299c3317930b3a3b/ErdosProblems/Erdos1041/PaperCubicCompletion.lean#L297}{Lean},
+as are the
+\href{https://github.com/wcook04/plectis-erdos/blob/bb4e24651b37cd096d3749ef299c3317930b3a3b/ErdosProblems/Erdos1041/PaperReflectedCompletion.lean#L254}{reflected critical-value inequality}
+and the
+\href{https://github.com/wcook04/plectis-erdos/blob/bb4e24651b37cd096d3749ef299c3317930b3a3b/ErdosProblems/Erdos1041/PaperCubicSchur.lean#L283}{normalized cubic root count}.
+These statements settle the cubic case.  They do not supply a connector of
+length less than $2$ for arbitrary degree.  The next section gives a different
+explicit hub, the origin, for monic trinomials of every degree.
 
 \section{Monic trinomials, in every degree}
 \label{sec:trinomial}
@@ -125,7 +255,7 @@ of length less than $2$ inside $\{|f|<1\}$?
 Repeated roots give a constant path between two listed occurrences, so the
 geometric question concerns squarefree polynomials.  The original question
 is Problem~5 of Erd\H{o}s--Herzog--Piranian \cite[p.~139]{ehp1958}.
-Pendyala \cite[Thm.~1]{june2026} proves the complete degree-four case.
+Pendyala \cite[Thm.~1, p.~1]{june2026} proves the complete degree-four case.
 
 Theorem~\ref{res:low-critical-thirteen-twentyfifths} treats arbitrary geometry
 when $\mu\le13/25$, without a root-location assumption.  Its scaling
@@ -548,7 +678,7 @@ not prove the analytic hypothesis $\ell^2\le4\,\mathrm{c}(n,S)$ that those
 consumers take as input, and nothing in this section asserts the unrestricted
 problem or the complementary near-tie regime.
 
-Pendyala's degree-four theorem \cite[Thm.~1]{june2026} has no
+Pendyala's degree-four theorem \cite[Thm.~1, p.~1]{june2026} has no
 critical-spectrum hypothesis.  The present separation criterion applies in
 every degree $n\ge3$ and supplies an explicit inverse-map length estimate.
 
@@ -1157,7 +1287,7 @@ No independent human review or resolution of the general problem is claimed.
 \subsection*{Sources and adjacent results}\label{sec:1041-sources}
 
 The original root-to-root problem is \cite[p.~139, Problem~5]{ehp1958}.
-Pendyala's degree-four theorem \cite[Thm.~1]{june2026} is directly comparable.
+Pendyala's degree-four theorem \cite[Thm.~1, p.~1]{june2026} is directly comparable.
 His marked-point-to-boundary problem \cite{pendyala2026shortest} has different
 endpoints and does not imply the root-pair conclusion.  The exact Cassini
 obstruction in Section~\ref{sec:gap} concerns the metric assertion of
@@ -1217,7 +1347,7 @@ throughout this problem-note series.
 \bibitem{pendyala2026shortest} V.~S. Pendyala,
   \emph{Shortest paths in polynomial lemniscate sublevel sets and a problem
   of Erd\H{o}s}, arXiv:2606.19178v1 (2026),
-  Theorem~1.2 and introductory discussion, pp.~1--2.
+  Theorem~1.2, p.~3, and introductory discussion, p.~2.
   \url{https://arxiv.org/abs/2606.19178},
   doi:\href{https://doi.org/10.48550/arXiv.2606.19178}
   {10.48550/arXiv.2606.19178}.

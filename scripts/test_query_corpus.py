@@ -1327,7 +1327,7 @@ def validate_route_memory_cards() -> None:
     )
     assert architecture_card.startswith(
         "publication architecture | gateway=paper/erdos249-257-main-paper.tex "
-        f"| retained_companions=2 | families={expected_publication_family_count}"
+        f"| retained_companions={len(query_corpus.load('docs/claims.json')['machine_readable_paper']['publication_assembly']['publication_architecture']['retained_companions'])} | families={expected_publication_family_count}"
     )
     assert (
         "family_route | classical_full_support_and_named_257_families "
@@ -2607,13 +2607,25 @@ def main() -> int:
         "no paper anchor in the inventory attaches a remaining-open "
         "proposition, so the anchor checks below would assert nothing"
     )
+    def valid_open_advancement_state(proposition, edge_count):
+        state = proposition.get("advancement_status", "checked_advance_recorded")
+        if state == "no_checked_advance_recorded":
+            return edge_count == 0
+        return state == "checked_advance_recorded" and edge_count > 0
+
+    assert valid_open_advancement_state({"advancement_status": "no_checked_advance_recorded"}, 0)
+    assert not valid_open_advancement_state({}, 0)
+    assert not valid_open_advancement_state({"advancement_status": "checked_advance_recorded"}, 0)
+    assert valid_open_advancement_state({"advancement_status": "checked_advance_recorded"}, 1)
+    assert not valid_open_advancement_state({"advancement_status": "no_checked_advance_recorded"}, 1)
+    assert not valid_open_advancement_state({"advancement_status": "unknown"}, 0)
     for proposition in open_propositions:
         open_id = proposition["id"]
         target = proposition["open_target_claim"]
         advancing_count = advancing_edge_counts.get(open_id, 0)
-        assert advancing_count, (
-            f"open proposition {open_id} has no advancing argument-graph edge, "
-            "so nothing in the corpus is recorded as moving it"
+        assert valid_open_advancement_state(proposition, advancing_count), (
+            f"open proposition {open_id} has inconsistent advancement status "
+            f"for {advancing_count} advancing argument-graph edges"
         )
         open_packet = query("--open", open_id)
         assert open_packet["kind"] == "open_proposition", (

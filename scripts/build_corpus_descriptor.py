@@ -387,13 +387,14 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         # and the eight #243/#249/#257/#269 propositions the papers already state
         # pushed the packet past it. The status field goes the same way: every
         # row in this list is open by construction, and the taxonomy that
-        # explains the word is carried beside it. Anchors and statuses stay in
+        # explains the word is carried beside it. The target-claim edge is also
+        # available through the proposition-id drilldown. Anchors and statuses stay in
         # the digest-bound claims document, reachable from these ids.
         "remaining_open_propositions": [
             {
                 key: value
                 for key, value in row.items()
-                if key not in ("paper_anchor", "status")
+                if key not in ("paper_anchor", "status", "open_target_claim")
             }
             for row in claims["remaining_open_propositions"]
         ],

@@ -90,6 +90,23 @@ def main() -> int:
         original_root = check_release.ROOT
         check_release.ROOT = root
         try:
+            require(
+                check_release.paper_formal_source_ref({}, new_ref) == new_ref,
+                "paper without override lost the global source pin",
+            )
+            historical = check_release.paper_formal_source_ref(
+                {"formal_source_ref": old_ref}, new_ref
+            )
+            require(historical == old_ref, "historical companion lost its immutable pin")
+            for invalid_ref in ("main", old_ref[:12], "0" * 40, None, 42):
+                try:
+                    check_release.paper_formal_source_ref(
+                        {"formal_source_ref": invalid_ref}, new_ref
+                    )
+                except ValueError:
+                    pass
+                else:
+                    raise AssertionError(f"invalid companion pin accepted: {invalid_ref!r}")
             cache: dict[tuple[str, str | None], list[str] | None] = {}
             require(
                 check_release.module_lines(cache, "Erdos249257/PostRef.lean", old_ref)
@@ -102,6 +119,24 @@ def main() -> int:
                 check_release.name_at_line(new_lines, "postRefOnly", 1),
                 "later module declaration was not found at its new reference",
             )
+            # The same source path at two pins must keep separate cache entries.
+            (root / "Erdos249257" / "Stable.lean").write_text(
+                "theorem changedAtNewPin : True := True.intro\n", encoding="utf-8"
+            )
+            latest_ref = commit(root, "change a shared module")
+            shared_cache: dict[tuple[str, str | None], list[str] | None] = {}
+            historical_lines = check_release.module_lines(
+                shared_cache, "Erdos249257/Stable.lean", historical
+            )
+            latest_lines = check_release.module_lines(
+                shared_cache, "Erdos249257/Stable.lean", latest_ref
+            )
+            require(historical_lines != latest_lines, "different paper pins shared source bytes")
+            require(
+                check_release.name_at_line(historical_lines, "stable", 1),
+                "historical paper declaration resolved from a later source tree",
+            )
+            git(root, "reset", "--hard", new_ref)
             matches_old, old_detail = check_release.formal_source_matches_current_lean_tree(old_ref)
             require(not matches_old, "old formal-source reference matched the later tree")
             require(

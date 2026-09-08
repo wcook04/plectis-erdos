@@ -298,9 +298,9 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 ### Which Newton-flow separation facts are checked for Erdős #1041, and what exactly fails in the recent claimed global decomposition?
 
-**Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates**
+**The Complete Cubic Case and Explicit Paths in Polynomial Lemniscates**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 32 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 35 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem and the general regimes](full-text/erdos-1041-lemniscate-newton-flow.md#sec:problem), [The Newton value equation](full-text/erdos-1041-lemniscate-newton-flow.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [The remaining geometric selection problem](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
 

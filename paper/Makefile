@@ -12,6 +12,7 @@ PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
   cold-clone-to-proof-receipt open-source-mathematics-strategy \
   erdos249-totient-reasoning-surface \
   erdos257-mersenne-reasoning-surface \
+  erdos1041-lemniscate-reasoning-surface \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-68-factorial-denominator-irrationality \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
@@ -28,6 +29,7 @@ REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
 REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
 REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
+REASONING_1041_PARTS = $(wildcard reasoning-parts/erdos1041/*.tex)
 
 .PHONY: all check clean sync-root
 
@@ -56,6 +58,9 @@ erdos249-totient-reasoning-surface.tex: $(REASONING_249_PARTS) $(REASONING_ASSEM
 
 erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 257
+
+erdos1041-lemniscate-reasoning-surface.tex: $(REASONING_1041_PARTS) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 1041
 
 # The notes share one preamble, so a change there rebuilds all of them.
 $(NOTES:%=%.pdf): $(PREAMBLE)

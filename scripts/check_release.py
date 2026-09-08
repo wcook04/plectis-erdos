@@ -646,6 +646,20 @@ def module_lines(
     return cache[key]
 
 
+def paper_formal_source_ref(row: dict[str, Any], default_ref: str) -> str:
+    """Resolve an artifact's immutable source basis without changing claim pins."""
+    ref = row.get("formal_source_ref", default_ref)
+    if not isinstance(ref, str) or re.fullmatch(r"[0-9a-f]{40}", ref) is None:
+        raise ValueError("formal_source_ref must be a full lowercase commit ID")
+    result = run(
+        ["git", "rev-parse", "--verify", f"{ref}^{{commit}}"],
+        cwd=ROOT, capture_output=True, text=True,
+    )
+    if result.returncode != 0 or result.stdout.strip() != ref:
+        raise ValueError(f"formal_source_ref {ref} is not an available commit")
+    return ref
+
+
 def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]:
     """Whether the current public proof sources are exactly ``formal_ref``.
 
@@ -1668,6 +1682,13 @@ def main(argv: list[str] | None = None) -> int:
 
     main_paper_row = machine_paper["paper"]
     paper_rows = [main_paper_row, *main_paper_row.get("companion_sources", [])]
+    paper_source_refs: dict[str, str | None] = {}
+    for row in paper_rows:
+        try:
+            paper_source_refs[row["source"]] = paper_formal_source_ref(row, formal_ref)
+        except ValueError as exc:
+            fail(f"{row['source']}: {exc}")
+            paper_source_refs[row["source"]] = None
     paper_sources = [(row["source"], read(ROOT / row["source"])) for row in paper_rows]
     paper = paper_sources[0][1]
     all_paper = "\n".join(text for _path, text in paper_sources)
@@ -1675,7 +1696,7 @@ def main(argv: list[str] | None = None) -> int:
         m = re.search(
             r"\\(?:re)?newcommand\{\\commit\}\{([^}]+)\}", paper_text
         )
-        expected_pin = formal_ref
+        expected_pin = paper_source_refs[paper_path]
         check(m is not None and m.group(1) == expected_pin,
               f"{paper_path} \\commit pin {m.group(1) if m else '<missing>'} != expected {expected_pin}")
         if paper_path == main_paper_row["source"]:
@@ -1762,12 +1783,15 @@ def main(argv: list[str] | None = None) -> int:
     check(re.search(rf"\\label\{{{re.escape(index_label)}\}}", paper) is not None,
           f"machine-readable paper index label {index_label!r} does not exist")
 
-    pinned_modules = {
-        decl["module"]
+    pinned_snapshots = {
+        (formal_ref, decl["module"])
         for claim in data["claims"]
         for decl in claim["declarations"]
     }
-    for _paper_path, paper_text in paper_sources:
+    for paper_path, paper_text in paper_sources:
+        source_ref = paper_source_refs[paper_path]
+        if source_ref is None:
+            continue
         for _macro, fname, _line_s, _name in re.findall(
             r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
             paper_text,
@@ -1778,10 +1802,10 @@ def main(argv: list[str] | None = None) -> int:
                 rel = f"ErdosProblems/{fname}"
             else:
                 rel = f"Erdos249257/{fname}"
-            pinned_modules.add(rel)
+            pinned_snapshots.add((source_ref, rel))
     pinned_cache: dict[tuple[str, str], list[str]] = {}
     snapshot_lines_batch(
-        ((formal_ref, rel) for rel in pinned_modules),
+        pinned_snapshots,
         pinned_cache,
     )
     cache.update(
@@ -1804,7 +1828,9 @@ def main(argv: list[str] | None = None) -> int:
 
     # --- 4. paper source links ----------------------------------------------
     for paper_path, paper_text in paper_sources:
-        source_ref = formal_ref
+        source_ref = paper_source_refs[paper_path]
+        if source_ref is None:
+            continue
         for macro, fname, line_s, name in re.findall(
                 r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
             if fname.startswith(("Erdos249257/", "ErdosProblems/")):

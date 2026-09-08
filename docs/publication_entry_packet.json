@@ -107,15 +107,15 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:29e5ff7e80495a35555ed71c1bff6c00a34af4ef3a1585b29da98d38f56f5304",
-    "docs/claims.json": "sha256:cc953301ee8c1ee2af9e391e05ff57e0fa306680ad2aab943037bcc9e6562e01",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:19bef75c1679353ad2bfda25a7838bd80ea97d635a1c3f37d2316803f0acf2e8",
+    "docs/claims.json": "sha256:f7242088020742e970a937335120b89aff39f835905bcbc0c7ed79ff8b7a80a5",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:762b794702b8b9701e27e4065b56a49a6e8d08f68b22cc0eec6686fa380ec7ec",
-    "docs/publication_contract.json": "sha256:c256db49d16a2ab76d6c5d1e01ec4fdb6c0244e56ab1366dbb9761cf22332856",
+    "docs/problems.json": "sha256:a27fd4dd76165434f1cffc53b0f74d6272c32563cf48b0a0950274094ee57a23",
+    "docs/publication_contract.json": "sha256:358ddddcd3c2c21ac3ca934fa3d0324b0ec57922f833391b85cd80e424b71b7e",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:36431013833c1100758194e835e7bced30d4d8fc5dcd7e9b57e17956aa9d8414",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:85238cf250fcf2fc523ae5e7920fddd9bd01786e3dec503d4ecf75d70c5da584",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
@@ -132,8 +132,8 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 30,
-      "curated_claim_count": 130,
-      "remaining_open_proposition_count": 19,
+      "curated_claim_count": 131,
+      "remaining_open_proposition_count": 20,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
     },
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 119,
+        "line": 249,
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -492,6 +492,19 @@
       },
       "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
       "status": "open"
+    },
+    {
+      "advancement_status": "no_checked_advance_recorded",
+      "id": "remaining_open.erdos_1041_additive_error_strip_gluing",
+      "open_target_claim": "erdos_1041",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 2222,
+        "source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+        "title": "additive-error strip gluing"
+      },
+      "statement": "Assuming the decorated Reeb-tree construction, join strip trajectories into a tree containing all roots with length at most (1/(2π)) times the perimeter integral plus any positive error. The global strip-flux allocation remains open.",
+      "status": "open"
     }
   ],
   "research_frontier": {
@@ -531,7 +544,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:762b794702b8b9701e27e4065b56a49a6e8d08f68b22cc0eec6686fa380ec7ec",
+      "content_digest": "sha256:a27fd4dd76165434f1cffc53b0f74d6272c32563cf48b0a0950274094ee57a23",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -544,9 +557,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-04",
+      "public_tag": "formal-source-2026-09-08",
       "publication_state": "published_committed_checkpoint",
-      "ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "ref": "bb4e24651b37cd096d3749ef299c3317930b3a3b",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

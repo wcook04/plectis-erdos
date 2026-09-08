@@ -1034,6 +1034,18 @@
             "res:terminalhalf",
             "res:cylinderhalf"
           ]
+        },
+        {
+          "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
+          "source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+          "rendered": "erdos1041-lemniscate-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #1041.",
+          "anchor_owner": "paper/erdos-1041-lemniscate-newton-flow.tex",
+          "anchor_label_allowlist": [
+            "res:degree-three",
+            "res:reflected-critical-value"
+          ],
+          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         }
       ]
     },
@@ -1058,6 +1070,12 @@
             "source": "paper/erdos257-mersenne-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete working record for Erdős #257: checked premises, finite computations, route relations, evidence bands, and surviving obligations."
+          },
+          {
+            "id": "erdos_1041_reasoning_record",
+            "source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+            "decision": "retain_as_full_problem_reasoning_record",
+            "thesis": "Complete working record for Erdős #1041: Newton-flow decay, ray separation, translation geometry, solved structural families, and the unresolved global topology and metric gluing."
           }
         ],
         "problem_series": [
@@ -1574,13 +1592,14 @@
           "id": "newton_ray_separation_frontier",
           "claim_ids": [
             "erdos_1041",
-            "newton_ray_separation_consumer"
+            "newton_ray_separation_consumer",
+            "cubic_case_complete"
           ],
-          "status_summary": "An open global short-connection endpoint plus finite Newton-flow ray-separation and perturbative root-retention inputs.",
+          "status_summary": "The complete cubic short-path theorem, finite Newton-flow ray separation, and perturbative root retention, with the general-degree short-connection assertion open.",
           "prior_art_posture": "The finite ray and perturbation statements are source-specific formal results; the global endpoint remains open, and no novelty, priority, significance, or external-review claim is made.",
           "primary_narrative_owner": "paper/erdos-1041-lemniscate-newton-flow.tex",
-          "source_route": "python3 scripts/query_corpus.py --claim newton_ray_separation_consumer",
-          "consumer_or_open_obligation": "The finite conditional connection exclusion and translation consumer do not supply the global topology and length argument required for Erdős #1041.",
+          "source_route": "python3 scripts/query_corpus.py --claim cubic_case_complete",
+          "consumer_or_open_obligation": "The cubic construction supplies the strict length and sublevel-set bounds for three listed roots. The global topology and length argument in general degree remains open.",
           "view_decision": "problem_note_reference_detail"
         },
         {
@@ -1685,7 +1704,6 @@
         "ErdosProblems.Decl.verify.D2",
         "ErdosProblems.Decl.verify.D3",
         "ErdosProblems.Decl.verify.D4",
-        "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
         "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
         "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
         "ErdosProblems.FreePosition.FreeKill18B",
@@ -8368,10 +8386,24 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1041.CubicCriticalHub",
+          "path": "ErdosProblems/Erdos1041/CubicCriticalHub.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
           "path": "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.CyclicFiberMeanSquare",
+          "path": "ErdosProblems/Erdos1041/CyclicFiberMeanSquare.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TetranomialL2Selector"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase",
@@ -8392,6 +8424,65 @@
           "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperAnalyticTargets",
+          "path": "ErdosProblems/Erdos1041/PaperAnalyticTargets.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCurveAssembly"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+          "path": "ErdosProblems/Erdos1041/PaperCubicCompletion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCubicSchur",
+            "ErdosProblems.Erdos1041.PaperReflectedCompletion",
+            "ErdosProblems.Erdos1041.CubicCriticalHub"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCubicFibres",
+          "path": "ErdosProblems/Erdos1041/PaperCubicFibres.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCurveAssembly",
+            "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+            "ErdosProblems.Erdos1041.CyclicFiberMeanSquare"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCubicSchur",
+          "path": "ErdosProblems/Erdos1041/PaperCubicSchur.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets",
+            "ErdosProblems.Erdos1041.PaperCubicFibres"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCurveAssembly",
+          "path": "ErdosProblems/Erdos1041/PaperCurveAssembly.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperReflectedBoundary",
+          "path": "ErdosProblems/Erdos1041/PaperReflectedBoundary.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperReflectedCompletion",
+          "path": "ErdosProblems/Erdos1041/PaperReflectedCompletion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperReflectedBoundary"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
@@ -11942,6 +12033,16 @@
             "operation": "narrows",
             "statement": "On the complementary fatal branch the last-skip approximant is pinned inside an exact one-sided interval around the Erdos-Borwein constant. Turning that interval into a contradiction still needs the final-skip signatures this proposition asks for."
           }
+        },
+        {
+          "from": "cubic_case_complete",
+          "relation": "advances_open_target",
+          "to": "erdos_1041",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_1041_lemniscate_connection",
+            "operation": "narrows",
+            "statement": "Settles the cubic subcase for roots strictly inside the unit disc; the general-degree assertion remains open."
+          }
         }
       ]
     }
@@ -11953,11 +12054,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "ref": "bb4e24651b37cd096d3749ef299c3317930b3a3b",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-04"
+      "public_tag": "formal-source-2026-09-08"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -13578,7 +13679,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 119
+        "line": 249
       }
     },
     {
@@ -13700,6 +13801,19 @@
         "title": "final-skip Diophantine exclusion",
         "line": 733
       }
+    },
+    {
+      "id": "remaining_open.erdos_1041_additive_error_strip_gluing",
+      "status": "open",
+      "open_target_claim": "erdos_1041",
+      "statement": "Assuming the decorated Reeb-tree construction, join strip trajectories into a tree containing all roots with length at most (1/(2π)) times the perimeter integral plus any positive error. The global strip-flux allocation remains open.",
+      "paper_anchor": {
+        "source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+        "environment": "problem",
+        "title": "additive-error strip gluing",
+        "line": 2222
+      },
+      "advancement_status": "no_checked_advance_recorded"
     }
   ],
   "claims": [
@@ -17317,6 +17431,24 @@
           "name": "finite_realisedSpan_of_factorisation",
           "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
           "line": 334
+        }
+      ]
+    },
+    {
+      "id": "cubic_case_complete",
+      "label": "Complete cubic short-path construction",
+      "status": "proved here",
+      "statement": "For a monic cubic with three listed roots strictly inside the unit disc, two distinct indices admit a continuous two-segment hub path in |p| < 1 with variation less than 2. Squarefreeness gives distinct endpoint values; repeated roots may give a constant path. General degree remains open.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1041_lemniscate_connection"
+      ],
+      "paper_label": "res:degree-three",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "cubic_paper_complete",
+          "module": "ErdosProblems/Erdos1041/PaperCubicCompletion.lean",
+          "line": 297
         }
       ]
     }

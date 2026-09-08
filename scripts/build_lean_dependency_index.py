@@ -13,6 +13,7 @@ import os
 import subprocess
 import stat
 import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -219,6 +220,9 @@ def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run Lean dependency commands in the bounded validation time domain."""
     environment = singleflight.command_environment()
     environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
+    export_path = kwargs.pop("dependency_export_path", None)
+    if export_path is not None:
+        environment["AIW_LEAN_DEPENDENCY_TSV"] = str(export_path)
     kwargs["env"] = environment
     # Both callers elaborate Lean state. A cold runner can legitimately take
     # longer than the short timeout used for metadata-only Git queries, so keep
@@ -554,34 +558,40 @@ def export_environment() -> tuple[
     dict[str, int],
     dict[str, dict[str, Any]],
 ]:
-    completed = run(
-        ["lake", "env", "lean", str(EXPORTER)],
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-        timeout=EXPORT_TIMEOUT_SECONDS,
-    )
-    if completed.returncode:
-        sys.stderr.write(completed.stdout)
-        sys.stderr.write(completed.stderr)
-        if singleflight.is_external_termination_exit(completed.returncode):
-            signal_exit = (
-                128 + abs(completed.returncode)
-                if completed.returncode < 0
-                else completed.returncode
-            )
-            print(
-                "Lean dependency exporter was externally terminated; "
-                f"preserving signal exit {signal_exit} for owner recovery",
-                file=sys.stderr,
-            )
-            raise SystemExit(signal_exit)
-        raise RuntimeError(
-            f"Lean dependency exporter exited {completed.returncode}"
+    # Keep bulk data out of run_cmd's captured diagnostic pretty-printer.
+    with tempfile.TemporaryDirectory(prefix="lean-dependency-export-") as directory:
+        output_path = Path(directory) / "environment.tsv"
+        completed = run(
+            ["lake", "env", "lean", str(EXPORTER)],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            dependency_export_path=output_path,
+            timeout=EXPORT_TIMEOUT_SECONDS,
         )
-    return parse_environment_output(completed.stdout)
+        if completed.returncode:
+            sys.stderr.write(completed.stdout)
+            sys.stderr.write(completed.stderr)
+            if singleflight.is_external_termination_exit(completed.returncode):
+                signal_exit = (
+                    128 + abs(completed.returncode)
+                    if completed.returncode < 0
+                    else completed.returncode
+                )
+                print(
+                    "Lean dependency exporter was externally terminated; "
+                    f"preserving signal exit {signal_exit} for owner recovery",
+                    file=sys.stderr,
+                )
+                raise SystemExit(signal_exit)
+            raise RuntimeError(
+                f"Lean dependency exporter exited {completed.returncode}"
+            )
+        if not output_path.is_file():
+            raise RuntimeError("Lean dependency exporter exited successfully without its TSV file")
+        return parse_environment_output(output_path.read_text(encoding="utf-8"))
 
 
 def parse_environment_output(

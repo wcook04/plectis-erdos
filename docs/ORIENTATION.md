@@ -123,6 +123,7 @@ The prior-art record, not this table, supplies antecedents.
 - `remaining_open.twenty_one_scaled_remainder_cofinal_return` — Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.
 - `remaining_open.twenty_one_actual_orbit_invariant` — Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.
 - `remaining_open.twenty_one_final_skip_exclusion` — Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.
+- `remaining_open.erdos_1041_additive_error_strip_gluing` — Assuming the decorated Reeb-tree construction, join strip trajectories into a tree containing all roots with length at most (1/(2π)) times the perimeter integral plus any positive error. The global strip-flux allocation remains open.
 
 ## Mathematical programmes
 
@@ -147,8 +148,8 @@ opens with a ten-minute verdict.
 
 Navigation inventory, not results. Generated certificate shards are
 counted as formal source, never as separate mathematical claims. The
-two roots currently expose 1,058 modules and
-153,671 declarations across #68, #243, #249,
+two roots currently expose 1,067 modules and
+153,772 declarations across #68, #243, #249,
 #251, #257, #269, #1041, and #1049; exact counts and atlas handles
 remain in `docs/orientation.json`.
 

@@ -15,7 +15,7 @@ private def isCorpusConstant (env : Environment) (name : Name) : Bool :=
       corpusRoots.any fun root => root.isPrefixOf ownerModule
   | none => false
 
-private def emitLine (stdout : IO.FS.Stream) (line : String) :
+private def emitLine (stdout : IO.FS.Handle) (line : String) :
     Lean.Elab.Command.CommandElabM Unit :=
   liftM <| stdout.putStr (line ++ "\n")
 
@@ -59,7 +59,7 @@ private def binderShapes (type : Expr) :
       }
     return rows
 
-private def emitDependencies (stdout : IO.FS.Stream) (env : Environment)
+private def emitDependencies (stdout : IO.FS.Handle) (env : Environment)
     (source : Name) (relation : String) (dependencies : NameSet) :
     Lean.Elab.Command.CommandElabM Nat := do
   let mut omittedInternal : Nat := 0
@@ -81,7 +81,11 @@ normalisation and source-coordinate join.
 -/
 run_cmd do
   let env ← getEnv
-  let stdout ← liftM IO.getStdout
+  let some outputPath ← liftM <| IO.getEnv "AIW_LEAN_DEPENDENCY_TSV" |
+    throwError "AIW_LEAN_DEPENDENCY_TSV must name a dedicated output file"
+  -- Handles close when their last reference is dropped (Init/System/IO.lean).
+  -- This command retains no handle after completion, including failure.
+  let stdout ← liftM <| IO.FS.Handle.mk outputPath .write
   for info in env.constants.map₁.values do
     let source := info.name
     if isCorpusConstant env source && !source.isInternal then

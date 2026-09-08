@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:ff4797f0ff8498c0070d365afcc75714db330ccd591f9e7c4f087b2e7e013b8c",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:762b794702b8b9701e27e4065b56a49a6e8d08f68b22cc0eec6686fa380ec7ec",
+    "projection_digest": "sha256:a27fd4dd76165434f1cffc53b0f74d6272c32563cf48b0a0950274094ee57a23",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2508,7 +2508,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1041_note",
-          "title": "Sharp Solved Families and\\\\Constant-Factor Paths in Polynomial Lemniscates",
+          "title": "The Complete Cubic Case and\\\\Explicit Paths in Polynomial Lemniscates",
           "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "rendered_path": "erdos-1041-lemniscate-newton-flow.pdf",
           "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2553,7 +2553,7 @@
         "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
-          "title": "Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates",
+          "title": "The Complete Cubic Case and Explicit Paths in Polynomial Lemniscates",
           "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "pdf": "erdos-1041-lemniscate-newton-flow.pdf",
           "full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
