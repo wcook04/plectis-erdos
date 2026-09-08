@@ -54,7 +54,7 @@ non-integrality, not merely sufficient ones:
 \]
 \lean{Erdos249257.exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316}
 (wrapped as \texttt{totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\allowbreak\_not\_int} at
-\lean{Erdos249257.totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\_not\_int}{CertificateKernel.lean:19213})
+\lean{Erdos249257.totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\_not\_int}{CertificateKernel.lean:19025})
 \quad \ev{Lean} \quad \scale{uniform} (holds for all $h,N$)
 \quad \coord{other:binary-window}.
 
@@ -163,7 +163,7 @@ is claimed.
     \mathrm{certifiedKill}(m\cdot H_t,\, q\cdot H_t,\, L)
   \ \Longrightarrow\ \mathrm{Irrational}(S).
 \]
-\lean{Erdos249257.irrational_totient_series_of_lcm_cone_window_kill_supply}{CertificateKernel.lean:19202}
+\lean{Erdos249257.irrational_totient_series_of_lcm_cone_window_kill_supply}{CertificateKernel.lean:19014}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:lcm-cone}. The
 diagonal form above is exactly the cell $q=m=1$, so any diagonal witness
 trivially witnesses the cone form.  The cone predicate is therefore a
@@ -174,7 +174,7 @@ strengthening of the tail-period law, \emph{lcm-cone flatness}: if $S$ is
 rational there is $t_1$ such that for every $t\ge t_1$ and every $q>0,m$,
 $R_{qH_t+mH_t}-R_{qH_t}\in\mathbb{Z}$ — rationality flattens the
 \emph{whole} cone $\{k H_t : k\ge 1\}$, not just one difference
-(\lean{Erdos249257.rational_totient_series_forces_lcm_cone_flatness}{CertificateKernel.lean:19190},
+(\lean{Erdos249257.rational_totient_series_forces_lcm_cone_flatness}{CertificateKernel.lean:19002},
 \ev{Lean}, unconditional).
 
 A sharper cone-form producer,
@@ -184,7 +184,7 @@ and proves that some pair in a finite multiplier menu $Q$ is non-integral;
 the corresponding supply,
 $\exists$ an unbounded-scale menu $Q$ with \texttt{coneNonflatCert} firing,
 is \ev{Open}, \scale{cofinal},
-\lean{Erdos249257.irrational_totient_series_of_lcm_cone_nonflat_supply}{CertificateKernel.lean:19328}.
+\lean{Erdos249257.irrational_totient_series_of_lcm_cone_nonflat_supply}{CertificateKernel.lean:19140}.
 
 \paragraph{Pure non-integrality form — certificate vocabulary stripped out.}
 Via the completeness iff above, the diagonal and cone forms restate,
@@ -194,9 +194,9 @@ Via the completeness iff above, the diagonal and cone forms restate,
   \ \Longleftrightarrow\ \text{diagonal obligation above}
   \ \Longrightarrow\ \mathrm{Irrational}(S),
 \]
-\lean{Erdos249257.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply}{CertificateKernel.lean:19222}
+\lean{Erdos249257.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply}{CertificateKernel.lean:19034}
 (cone analogue at
-\lean{Erdos249257.irrational\_totient\_series\_of\_lcm\_cone\_nonintegrality\_supply}{CertificateKernel.lean:19234})
+\lean{Erdos249257.irrational\_totient\_series\_of\_lcm\_cone\_nonintegrality\_supply}{CertificateKernel.lean:19046})
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:real-analytic-nonintegrality}.
 This is the frontier of \#249 with every piece of certificate machinery
 removed: \emph{does $R_{2H_t}-R_{H_t}\notin\mathbb{Z}$ for infinitely many
@@ -316,10 +316,10 @@ $2^{m-1}$,
 \quad \ev{Open} (a definition, unproved at any $a$)
 \quad \scale{bounded} \quad \coord{mobius-mersenne}.
 
-This \emph{one-sided} inequality excludes the upper endpoint arc forced
-by an integral orbit under the stated window and room bounds.
-The sign input is the unconditional positivity statement: for $a\ge8$ and
-$J+(a{+}6)<2\cdot2^a$,
+Note this is a
+\emph{one-sided} inequality — only the upper (positive) carry arc is
+excluded, not a symmetric two-sided band — because the corridor's lower half
+is already discharged unconditionally: for $a\ge8$ and $J+(a{+}6)<2\cdot2^a$,
 \[
   0 < R_{2H+J}-R_{H+J}
 \]
@@ -562,14 +562,14 @@ second open problem supported by the present argument.
 Unconditionally, for every level $e$, the dyadic totient-kernel family of
 $2^e+1$ channels is linearly independent over $\mathbb{Q}$ (via CRT and
 Dirichlet's theorem on primes in arithmetic progression):
-\lean{Erdos249257.linearIndependent_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:946}
+\lean{Erdos249257.linearIndependent_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:carry-kernel-rank}.
 Consequently, if $S$ is rational there is a tempered integral binary carry
 orbit $u$ with
 \[
   \forall e,\quad 2^e-1 \le \operatorname{rank}_{\mathbb{Q}}\operatorname{span}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr).
 \]
-\lean{Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:301}
+\lean{Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:carry-kernel-rank}.
 
 An opposite inequality — a rationality-side rank \emph{upper} bound — would
@@ -593,7 +593,7 @@ exist —
 \lean{Erdos249257.false_of_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}
 \quad \ev{Lean} — and the full family is proved infinite-dimensional in
 span:
-\lean{Erdos249257.not_finiteDimensional_span_fullTotientKernel}{TotientMahlerDefect.lean:1146}
+\lean{Erdos249257.not_finiteDimensional_span_fullTotientKernel}{TotientMahlerDefect.lean:1145}
 \quad \ev{Lean}.
 
 What rationality \emph{does} buy — uniform eventual
@@ -611,7 +611,7 @@ a Farey-gap denominator exclusion at a single fixed window $K=240$:
   \forall p\in\mathbb{Q},\quad p.\mathrm{den} \le 79639646646701375323355774875831053
   \ \Longrightarrow\ S\ne p.
 \]
-\lean{Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18572}
+\lean{Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{farey}. This bound is
 \emph{sharp} at $K=240$ — the mediant $q=79639646646701375323355774875831054$
 is proved to be the exact first failing denominator

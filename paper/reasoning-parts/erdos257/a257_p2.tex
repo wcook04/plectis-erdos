@@ -14,7 +14,7 @@ Scale answers a different question, ``over how much of the problem does this
 claim range'': \scale{fixed} is one concrete numeral or witness; \scale{bounded} produces a
 witness whose size is controlled by the input (typically $\le n$ for input $n$); \scale{uniform}
 holds unconditionally for every $n$ above an explicit threshold, with no existential slack;
-\scale{cofinal} asserts $\forall N\,\exists n\ge N,\ldots$, infinitely many witnesses, arbitrarily
+\scale{cofinal} asserts $\forall N\,\exists n\ge N,\ldots$ — infinitely many witnesses, arbitrarily
 far out, with \emph{no} coherence required between them. \scale{n/a} tags definitions and other
 scale-free statements.
 
@@ -23,7 +23,7 @@ statements: \#257 half-membership needs infinitely many exact rows or infinitely
 greedy skips (Table~\ref{tab:scale-ladder}, rows C1/C3), and the unconditional track needs a
 run-length bound that holds at every reset row out to infinity, not merely to a certified depth.
 Every machine-checked theorem in the tree is fixed, bounded, or uniform. No amount of raising a
-uniform certificate's threshold, by itself, produces a cofinal witness.  A uniform statement
+uniform certificate's threshold, by itself, produces a cofinal witness — a uniform statement
 ``$\forall n\ge N_0$'' is a single first-order sentence with no existential content past $N_0$,
 while a cofinal statement needs infinitely many \emph{witnesses to a further existential}, which is
 a strictly different logical shape.
@@ -52,7 +52,7 @@ proved (fixed, bounded, or uniform); everything below it is what the open produc
 \endhead
 \bottomrule
 \endfoot
-\papertablehead\multicolumn{4}{l}{\emph{Fixed: one concrete witness or numeral}} \\
+\papertablehead\multicolumn{4}{l}{\emph{Fixed — one concrete witness or numeral}} \\
 Smallest concrete exact row: support $\{2,3,6\}$ satisfies
 $\mathrm{localPrefixQuotient}=2^5-1$. \lean{exactLocalMersenneHalfRow\_six}{BooleanMobiusExactRowSeed.lean:34}
 \ev{Cert}
@@ -75,7 +75,7 @@ The one natural negative-Möbius candidate support overshoots: $1/2 <
 \sum_{d\in N}1/(2^d-1)$ for $N=\{d\ge2:\mu(d)=-1\}$.
 \lean{half\_lt\_tsum\_negativeMobius}{MobiusSignSupportNoGo.lean:164} \ev{Lean}
 & \scale{fixed} & one fixed candidate support $N$ & \coord{mobius-mersenne} \\
-\papertablehead\multicolumn{4}{l}{\emph{Bounded: a witness exists, controlled by the input}} \\
+\papertablehead\multicolumn{4}{l}{\emph{Bounded — a witness exists, controlled by the input}} \\
 Every exact row continues: doubles unboundedly, or recycles to some $c\le n$.
 \lean{exactLocalMersenneHalfRow\_double\_or\_recycle}{BooleanMobiusExactRowDichotomy.lean:26}
 \ev{Lean}
@@ -92,7 +92,7 @@ Truncation-rung ladder: $\mathrm{HalfRung}(J)$ proved for every $3\le J\le22$ vi
 decision procedure (\S\ref{sec:four-coordinates}, Theorem~\ref{thm:tr-finite-decision}).
 (source: \texttt{erdos257\_truncation\_rung\_ladder\_2026\_07\_24.md}, \S5) \ev{Math}+\ev{Cert}
 & \scale{bounded} & $3\le J\le22$ (finite table, exhaustive) & \coord{rung-truncation} \\
-\papertablehead\multicolumn{4}{l}{\emph{Uniform: unconditional for every $n$ past an explicit threshold}} \\
+\papertablehead\multicolumn{4}{l}{\emph{Uniform — unconditional for every $n$ past an explicit threshold}} \\
 Master achievement/greedy-survival criterion.
 \lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1458} \ev{Lean}
 & \scale{uniform} & $\forall x\ \forall n$ (iff) & \coord{greedy-orbit} \\
@@ -112,26 +112,22 @@ as an exhaustively-verified finite range). \lean{seamUpperResetDyadicBandEscape\
 \ev{Cert}
 & \scale{uniform} & $13\le r\le31$, exhaustive & \coord{seam-integer} \\
 Critical-band-index reduction: a $(d{+}1)$-way check collapses to one nearest-boundary check.
-\lean{half\_mem\_mersenneAchievementSet\_of\_upperResetCriticalBandEscape}{HalfUpperResetCriticalBand.lean:1578}
+\lean{half\_mem\_mersenneAchievementSet\_of\_upperResetCriticalBandEscape}{HalfUpperResetCriticalBand.lean:896}
 \ev{Lean}
 & \scale{uniform} & $\forall d,E$ with $E\le2^{d+1}$ & \coord{other:dyadic-boundary} \\
 Parity kill: no finite support hits $1/2$ exactly. \lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589}
 \ev{Lean}
 & \scale{uniform} & $\forall A$ finite, $0\notin A$ & \coord{other:denominator-parity} \\
 Erdős--Borwein irrationality at every integer base.
-\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8523} \ev{Lean}
+\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335} \ev{Lean}
 & \scale{uniform} & $\forall b\ge2$ & \coord{mobius-mersenne} \\
-Every infinite reciprocal-summable support gives an irrational support series at every integer
-base. \lean{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}{AllBaseReciprocalSupportIrrationality.lean:395}
-\ev{Lean}
-& \scale{uniform} & $\forall b\ge2\ \forall A$ (infinite, reciprocal-summable) & \coord{mobius-mersenne} \\
-Erdős 1968 pairwise-coprime theorem, retained as a represented specialisation.
-\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10964}
+Erdős 1968: any infinite, pairwise-coprime, reciprocal-summable index set gives an irrational
+support series. \lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776}
 \ev{Lean}
 & \scale{uniform} & $\forall b\ge2\ \forall A$ (infinite, coprime, summable) & \coord{mobius-mersenne} \\
 Generic block-certificate engine (problem-agnostic): weighted-coefficient series is irrational
 given a per-precision divisibility/window certificate.
-\lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8853}
+\lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8665}
 \ev{Lean}
 & \scale{uniform} & $\forall b\ge2\ \forall c\,(\forall m,c(m)\le m)$, given $\forall q\,\exists N,K,L,C$
 & \coord{binary-digit} \\
@@ -141,14 +137,14 @@ Finite greedy-prefix denominators are odd (source of the parity boundary exclusi
 & \scale{uniform} & $\forall n$ & \coord{other:denominator-parity} \\
 \papertablehead\multicolumn{4}{c}{\textbf{--- frontier: every entry below needs a cofinal witness,
 $\forall N\,\exists n\ge N(\ldots)$, not yet supplied ---}} \\
-\papertablehead\multicolumn{4}{l}{\emph{Cofinal: the shape both open producers actually need}} \\
+\papertablehead\multicolumn{4}{l}{\emph{Cofinal — the shape both open producers actually need}} \\
 THE master open supply: exact rows recur at arbitrarily large endpoints, with no coherence
-required between witnesses. \lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:41}
+required between witnesses. \lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:38}
 \ev{Open}
 & \scale{cofinal} & $\forall N\ \exists n\ge N,\ \mathrm{ExactLocalMersenneHalfRow}(n)$
 & \coord{mobius-mersenne} \\
 Payoff theorem consuming the row above: compactness of the achievement set forces $1/2$ itself to
-be achieved. \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:431}
+be achieved. \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71}
 \ev{Lean} (theorem proved; \emph{hypothesis} open)
 & \scale{cofinal} & given $\forall N\,\exists n\ge N(\ldots)$ & \coord{other:topological-achievement-set} \\
 Shortest known open target: the canonical rational half-greedy orbit itself has infinitely many
@@ -161,7 +157,7 @@ Payoff theorem consuming the row above, with zero further combinatorial search o
 \ev{Lean} (theorem proved; hypothesis open)
 & \scale{cofinal} & given $\forall N\,\exists c\ge N(\ldots)$ & \coord{greedy-orbit} \\
 Master half-branch dichotomy: membership iff the greedy skip set is infinite.
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2582}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
 \ev{Lean} (iff proved; both sides cofinal-shaped)
 & \scale{cofinal} & iff $(\mathrm{skippedSupport}).\mathrm{Infinite}$ & \coord{greedy-orbit} \\
 Seven-way classification hub: membership iff the seam word is not eventually right, iff
@@ -189,7 +185,7 @@ mistaken for a finite verification.}
 \begin{rem}[Nothing promotes for free]
 \label{rem:promotion-audit}
 A natural question, once the ladder is visible, is whether any \scale{uniform} or \scale{bounded}
-result already in the tree secretly \emph{is} the cofinal statement in disguise: whether some
+result already in the tree secretly \emph{is} the cofinal statement in disguise — whether some
 existing theorem's hypothesis, read carefully enough, is uniform in a parameter that a cofinal
 witness sequence could simply walk through. An audit pass read each Lean proof body (not just the
 statement) of eighteen such candidates drawn from the fixed/bounded/uniform rows of
@@ -210,8 +206,8 @@ not, by itself, manufacture the next witness at a larger depth).
 \par\medskip
 
 This is consistent with, not a substitute for, the general logical point above: promoting a
-uniform statement to a cofinal one requires new content, namely an explicit witness-producing
-construction.  Changing the quantifier bookkeeping does not suffice.
+uniform statement to a cofinal one requires new content — an explicit witness-producing
+construction — not a change of quantifier bookkeeping.
 \end{rem}
 
 \section{One orbit in four coordinates}
@@ -222,7 +218,7 @@ construction.  Changing the quantifier bookkeeping does not suffice.
 Fix the weights $x_n:=1/(2^n-1)$, $n\ge2$, and the target $1/2$. The single object under study
 throughout this programme is the greedy orbit for this target: a residual $\rho$ starts at $1/2$,
 and at rank $k$ the orbit \emph{takes} iff $\rho\ge x_k$. A skip at rank $k$ is \emph{safe} iff
-$\rho\le T_{k+1}:=\sum_{j>k}x_j$ and \emph{fatal} iff $\rho\in(T_{k+1},x_k)$.  The fatal interval is
+$\rho\le T_{k+1}:=\sum_{j>k}x_j$ and \emph{fatal} iff $\rho\in(T_{k+1},x_k)$ — the fatal interval is
 exactly the gap no later tail can repair. The repo does not study four different problems; it
 measures this one orbit through four different integer coordinates, each certified to a stated
 depth.
@@ -243,7 +239,7 @@ $5\times10^5$, tracking how far the certified region sits from the danger thresh
 \item \textbf{Sharp tail margin.} The rank-by-rank take/skip margin against the exact tail, checked
 for ranks $2$ through $3000$: $1497$ takes against $1502$ skips, zero fatal skips anywhere, minimum
 certified gap-margin $+2.9922$ bits at rank $5$, and the single tightest real data point in the
-whole corpus at rank $7$, the near-tie $1/126\ge1/127$, margin $+0.0340$ bits (source:
+whole corpus at rank $7$ — the near-tie $1/126\ge1/127$, margin $+0.0340$ bits (source:
 \texttt{erdos257\_reset\_crossing\_unification\_2026\_07\_24.md}, \S8).
 \end{itemize}
 
@@ -272,16 +268,16 @@ odd, since every weight's denominator $2^d-1$ is odd and a product/lcm of odd nu
 traced to \lean{finiteErdosSum\_den\_odd}{DyadicPrefixCompression.lean:1513}). Hence the residual
 after any finite prefix is $\rho=\tfrac12-\tfrac{P}{D}=\tfrac{D-2P}{2D}$: its reduced denominator
 is \emph{even}. Every weight $x_k=1/(2^k-1)$ has \emph{odd} denominator. An even-denominator
-rational can never equal an odd-denominator rational, so $\rho=x_k$ is impossible at any rank.
-The take comparison is never a tie.
+rational can never equal an odd-denominator rational, so $\rho=x_k$ is impossible at any rank —
+the take comparison is never a tie.
 
 \emph{Skip-safety boundary excluded (irrationality).} The tail past rank $k$ is
 $T_{k+1}=E-1-\sum_{2\le j\le k}x_j$, where $E=\sum_{n\ge1}1/(2^n-1)$ is the Erdős--Borwein
 constant: a rational shift of $E$. Erdős's own 1948 theorem gives $E$ irrational
-(\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8523}, instantiated at $b=2$), so
+(\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335}, instantiated at $b=2$), so
 $T_{k+1}$ is irrational for every $k$. The residual $\rho$ arising from any finite Boolean prefix
 is rational. An irrational number never equals a rational one, so $\rho=T_{k+1}$ is impossible at
-any rank.  The skip-safety comparison is never a tie either.
+any rank — the skip-safety comparison is never a tie either.
 
 Both boundaries of the fatal interval $(T_{k+1},x_k)$ are therefore approached only strictly, at
 every rank, unconditionally. \qed
@@ -289,7 +285,7 @@ every rank, unconditionally. \qed
 \begin{rem}
 Lemma~\ref{lem:no-ties} is exactly what licenses Proposition~\ref{prop:one-orbit}: because no
 comparison is ever exactly on a boundary, every rank's decision is stable under sufficiently fine
-truncation.  There is no knife-edge case where refining $J$, extending $s$, tightening $m_c$, or
+truncation — there is no knife-edge case where refining $J$, extending $s$, tightening $m_c$, or
 sharpening the tail margin could flip a decision that a coarser coordinate had already settled on a
 fixed prefix. This is the sense in which the four bullet points above are one decision stream, not
 four independent producers that happen to agree so far.
@@ -365,13 +361,13 @@ $[4,L_J/2]$ can be restricted to multiples of $12$, a $12\times$ speedup with no
 \label{thm:tr-finite-decision}
 Call $n\in[4,L_J/2]$ \textbf{bad} if no $M\in[n,2n-2]$ has $\mu_J(M)\le\tfrac{11}{15}$, and set
 $B(J):=\max(\mathrm{bad}\cup\{3\})$. Then $\mathrm{HalfRung}(J)$ holds iff the greedy orbit for
-$1/2$ under weights $w_n^{(J)}$ survives every rank from $2$ through $B(J)$, a finite, exact,
+$1/2$ under weights $w_n^{(J)}$ survives every rank from $2$ through $B(J)$ — a finite, exact,
 decidable check, with $B(J)$ observed to compress the certificate window by up to $\sim115{,}000\times$
 relative to the naive $L_J/2$ bound (\emph{e.g.} $J=19$: $B(19)=1008$ against $L_{19}/2=116{,}396{,}280$).
 \end{thm}
 
 \begin{rem}[Certified rungs and the open producer]
-Every rung $3\le J\le22$ survives this finite check with zero fatal ranks encountered.  These are
+Every rung $3\le J\le22$ survives this finite check with zero fatal ranks encountered — these are
 proved theorems $\mathrm{HalfRung}(3),\ldots,\mathrm{HalfRung}(22)$, not merely computational
 evidence, each an independently bankable finite fact (\ev{Math}+\ev{Cert};
 Table~\ref{tab:scale-ladder}, bounded row). By the compactness-transfer theorem of the same source

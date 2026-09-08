@@ -15,7 +15,7 @@
   pdflang={en-GB},
   pdfkeywords={Lean 4, formal mathematics, AI agents, navigation, proof receipts, incremental compilation, reproducibility},
 }
-\newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
+\newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257}
 \DefineVerbatimEnvironment{routeblock}{Verbatim}{
   fontsize=\scriptsize,
   frame=single,
@@ -26,12 +26,12 @@
   xrightmargin=0.02\linewidth
 }
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{145,599}
-\newcommand{\SemanticAuthoredInterpreted}{139,799}
-\newcommand{\SemanticDirectEvidence}{3,311}
+\newcommand{\SemanticAuthoredTheoremLike}{143,410}
+\newcommand{\SemanticAuthoredInterpreted}{139,772}
+\newcommand{\SemanticDirectEvidence}{3,284}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{5,800}
-\newcommand{\SemanticAuthoredPercent}{96.0}
+\newcommand{\SemanticStructuralOnly}{3,638}
+\newcommand{\SemanticAuthoredPercent}{97.5}
 % END generated_semantic_coverage_macros
 \emergencystretch=1.6em
 
@@ -53,18 +53,14 @@ checking. At the audited revision, a cold clone exposes a public proof cockpit
 that composes checkout and toolchain identity, corpus scale, exact open
 propositions, problem obligations, and committed workbench receipts. Beneath
 that card sit a bounded six-line tour, a mathematical map of ten programmes, a
-reviewed public claim map whose registry carries 22 explicit remaining open
-propositions in this release, and an
+reviewed public claim map with five explicit open propositions, and an
 elaborated loaded-root reference graph joined to source coordinates. These are
 committed navigation products: they require no Lean build and make omissions
 and authority boundaries explicit.
-At the audited revision the inventory behind them spanned
-1,019 Lean modules and 153,253 declarations;
+The inventory behind them spans 1,019 Lean modules and 153,253 declarations;
 503 of those modules and 8,171 of those declarations are explicitly marked
 machine-generated certificate shards, counted as formal source and never as
-separate mathematical claims.  Later revisions move the module and declaration
-totals, and \path{docs/declaration_atlas.json} carries the figure for whichever
-checkout the reader has.  The marked figures are a classification
+separate mathematical claims.  The marked figures are a classification
 floor, not the generated share: large emitted families predate the markers,
 so the true machine-generated share is substantially higher.
 
@@ -75,8 +71,7 @@ be authored by the agent; claims must cite an accepted probe, and replay reruns
 the stored bytes. Compilation is similarly separated from orientation. Lake
 outputs and content traces support focused or changed-cone builds, while an
 exact cached receipt prevents an unchanged dependency-index check from
-repeating a full environment export. A recorded case study, which is an
-internal agent rehearsal operated by the author, contains six reasoning
+repeating a full environment export. A recorded case study contains six reasoning
 notes, one accepted probe, and two claims, and its probe replays at the audited
 revision.
 
@@ -95,10 +90,8 @@ inventory, reviewed mathematical routes, public claim boundaries, and exact
 source links before Lean is built.  Accepted proof probes are issued by the
 pinned Lean process and can be replayed byte for byte.  \textbf{Evidence.}
 The audited repository contains 1,019 modules and 153,253 declarations; the
-paper includes a replayed session case study, which is an internal agent
-rehearsal operated by the author.  \textbf{Limit.} This is a
-single-environment prototype with no recorded external cold-clone use, and no
-number reported here measures how an outside reader understands the corpus.
+paper includes a replayed session case study.  \textbf{Limit.} This is a
+single-environment prototype with no recorded external cold-clone use.
 \end{paperresult}
 
 \section{The cold-clone problem}\label{sec:problem}
@@ -188,7 +181,7 @@ of understanding.
 \node[wide, fill=ForestGreen!6, below=11mm of $(semantic.south)!0.5!(dep.south)$] (claims)
   {{\scriptsize\sffamily\bfseries\color{gray!70!black} PUBLICATION SURFACE}\\[3pt]
    {\large\textbf{Reviewed public claim map}}\hfill
-   {\small\bfseries\color{ForestGreen!68!black}208 claims \(\cdot\) 22 remaining open propositions}\\[3pt]
+   {\small\bfseries\color{ForestGreen!68!black}101 claims \(\cdot\) 5 open propositions}\\[3pt]
    \footnotesize Public wording records status, evidence, the claim ceiling,
    and the nearest stronger statement.};
 \coordinate (fork) at ($(atlas.south)+(0,-4mm)$);
@@ -233,17 +226,12 @@ exhaustive direct understanding. A paper-seeded population query continues to
 rank exact live citations whose best route is structural rather than authored.
 
 \paragraph{Reviewed public claims.}
-The claim map selects 208 results for public exposition in this release. It
-records 49 as proved here, 11 as formalised here, 52 as unconditional
-progress, 67 as conditional reductions, 10 as verified finite instances, 8 as
-proved by ordinary mathematics in a note rather than by a Lean declaration, 3
-as cited only, and 8 as open. The ordinary-proof status is deliberately
-separate: those results are not Lean-checked, and any kernel-checked
-ingredient of such a result is named in its note. Twenty-two explicit frontier
-propositions describe the stronger
+The claim map selects 101 results for public exposition. It records 37 as
+proved here, 8 as formalised here, 5 as unconditional progress, 39 as
+conditional reductions, 7 as verified finite instances, 3 as cited only, and
+2 as open. Five explicit frontier propositions describe the stronger
 obligations that survive. These labels are maintainer-reviewed public meaning,
-not outputs inferred by the proof kernel. The counts move with the registry;
-\path{docs/claims.json} is the authority for the checkout in hand.
+not outputs inferred by the proof kernel.
 
 \section{A short tour with exact follow-up queries}\label{sec:tour}
 
@@ -389,8 +377,7 @@ modules into dependency waves, limits parallel jobs, and finishes with a
 serialized Lake authority check. Restored caches use Lake's content traces
 rather than checkout timestamps. In one historical four-file addition, the
 planner selected 26 modules in four waves rather than both complete roots; in a
-warm two-root dogfood plan it selected no stale modules. Both figures are
-internal measurements of the planner on this repository. The test suite covers
+warm two-root dogfood plan it selected no stale modules. The test suite covers
 trace freshness, changed-file selection, dependency ordering, bounded
 parallelism, failure propagation, and the final authority check.
 
@@ -416,8 +403,7 @@ currently scans the supported environment again.
 \section{A replayed case study}\label{sec:dogfood}
 
 The committed prospective session is a naturalistic use of the workbench, not
-a synthetic benchmark. It is an internal agent rehearsal operated by the
-author, and it is not an outside-contributor result. The ledger contains six reasoning notes, one
+a synthetic benchmark. The ledger contains six reasoning notes, one
 kernel-accepted probe, and two claims bound to that probe. It produced a binary
 carry-pivot normal form for numeral-adjacent boundary words and an exact
 divisor-incidence identity that sharpens a previously landed one-sided
@@ -437,22 +423,16 @@ the formalisation route reaches a source coordinate and exact proof cone; the
 AI-lab route exposes exhaustive-versus-selective coverage and receipt
 authority; the contributor route reaches a focused build and release check.
 Adversarial tests remove or distort each protected transition and require the
-cold-clone validator to reject the mutation. Those tests are deterministic
-mutation tests over the declared contract. This evaluates the declared
-first-contact contract, not subjective comprehension. No reader was observed,
-and no comprehension time was measured.
+cold-clone validator to reject the mutation. This evaluates the declared
+first-contact contract, not subjective comprehension.
 
 \section{Relation to prior work}\label{sec:related}
 
 Proof blueprints pair informal plans with named Lean declarations and
 author-supplied dependency links.  \texttt{leanblueprint} stores a blueprint
-in \TeX{}, records the declarations that realise a statement, records the
-statement and proof dependency edges its author declares, marks each node with
-a formalisation-readiness state, and checks that every named declaration
-exists in the project or one of its dependencies~\cite{leanblueprint}; it does
-not infer those dependency edges, and it does not check that the informal and
-formal statements agree.  That declaration-linking layer is prior art, and
-nothing in this section claims it as new here.  LeanArchitect infers formal
+in \TeX{} and its checker only confirms that each named declaration
+exists~\cite{leanblueprint}; it neither infers those links nor checks that the
+informal and formal statements agree.  LeanArchitect infers formal
 dependencies and proof-hole status and exports synchronised blueprint
 material~\cite{leanarchitect}. The Carleson project shows a blueprint used as
 a large collaboration surface. Its public blueprint split the formalisation
@@ -461,9 +441,7 @@ formalisation feedback produced localized corrections, modifications, and
 extensions to the mathematical guide, including a few changes to the general
 setup and main theorems~\cite{carleson}. The present tour has a different first-contact role. It
 begins after the repository already contains a large corpus, distinguishes
-exhaustive inventory from authored interpretation, holds Lean-checked results,
-ordinary proofs, computations, and proved obstructions in one record, and
-routes a reader into
+exhaustive inventory from authored interpretation, and routes a reader into
 exact dependency and proof-receipt tools.
 
 LeanDojo and Pantograph provide stronger interaction substrates for learned or
@@ -556,25 +534,6 @@ choose unproductive probes, omit a relevant source, or rationalise a dead end.
 Replay detects environment drift in stored probes but not every flaw in the
 surrounding interpretation. Context-blind historical experiments also cannot
 establish training-data blindness.
-
-A checkout of an earlier revision answers a narrower question than it appears
-to answer. The run implemented here supplies its own authored candidate, names
-the candidate declaration inside its request, exercises only the derived-layer
-arm, and observes no reader and no agent. It establishes that the runtime at
-the earlier revision exposes the exact remaining obligation for a stated target
-and that the kernel accepts an authored candidate carrying neither the later
-declaration name nor the later module name. Its clone carries the earlier
-source with the dependencies of the current tree, so its receipt records the
-pins that revision declared alongside the pins the build used. It does not show
-that the layers present at that revision helped a reader find and interpret the
-mathematics already there, and it does not show that those layers shortened the
-work of producing a later result, because
-later Git objects, a shared object store, generated dossiers and receipts,
-network access, context supplied in the prompt, and a model's familiarity with
-public mathematics can each reveal the target.
-\path{docs/methodology.json} lists these channels and names the ones the
-harness controls; the remainder are limitations of any historical result
-reported here.
 
 Finally, the first full project build and the first elaborated graph export
 remain material costs. The architecture moves them after comprehension,

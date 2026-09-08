@@ -179,7 +179,7 @@ $h$-uniform single-window certificate, the Farey/continued-fraction denominator 
 denominator channel, and the carry-kernel rank. None of them is closed; each is recorded with its
 exact remaining content.
 
-\subsubsection{SGN-01 --- the positive-sign corridor and survivor branch (\coord{actual-lcm-sign})}
+\subsubsection{SGN-01 --- the positive-sign half of the certified-kill band (\coord{actual-lcm-sign})}
 
 \begin{defn}
 The \emph{actual LCM tail orbit} at exponent $a$ is
@@ -202,21 +202,17 @@ vs.\ foreign prime power), with absolute constants $4,8,32$ and no lookup table 
 \lean{periodLcm_lt_eight_mul_t_mul_lcmRayArithmeticLetter}{TotientActualLcmOrbitArithmetic.lean:1906}.
 \end{thm}
 
-\begin{rem}[The survivor sign and the endpoint residue]
+\begin{rem}[Exactly half the certificate band, and where the other half goes]
 $\mathtt{certifiedKill}$ needs the residue to avoid a \emph{symmetric} radius-$(N{+}h{+}L{+}2)$
 neighbourhood of $0$ on both sides. SGN-01 gives positivity only. Its companion
 \lean{actualLcm_integral_forces_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211} proves that,
-under integrality, $J+K+(a+6)<2\cdot2^a$, and $2H+J+K+2<2^K$,
-the consequence is not a kill but the opposite: the residue is forced to the
-\emph{top edge}, exactly $P-e$ where $P=2^K$ and $e$ is the true carry orbit
-(\lean{carryOrbit}{CarrySurvivorExtinction.lean:387}). Writing $B=2H+J+K+2$,
-the proof gives $0<e<B<P$, hence $P-B<P-e<P$. This excludes the nonnegative
-true survivor; it does not discharge a lower certified-kill inequality.
-Indeed $P-e>B$ needs a further comparison, such as $2B\le P$, whereas the
-stated room condition only gives $B<P$. What remains is an independent
-arithmetic exclusion of the upper endpoint band --- row TE-04 below.
-Positivity is uniform in the height $a$, but every depth-$K$ consequence
-retains its stated window and modulus bounds.
+under integrality, the consequence is not a kill but the opposite: the residue is forced to the
+\emph{top edge}, exactly $2^K - e$ where $e$ is the true carry orbit (\lean{carryOrbit}{CarrySurvivorExtinction.lean:387}). So the
+lower half of the certified-kill band is discharged unconditionally and cofinally by SGN-01; the
+upper half is untouched, and what remains open is a genuinely different, one-sided statement about
+the top edge --- row TE-04 below. The corpus's own normal-form tables tag this row
+\scale{bounded}; that tag is misleading, since only the window offset $J$ is bounded relative to
+the height, and the height $2\cdot 2^a$ itself is unbounded: the correct tag is \scale{uniform}.
 \end{rem}
 
 \subsubsection{TE-04 --- the one-sided top-edge staircase (\coord{actual-lcm-top-edge})}
@@ -495,7 +491,7 @@ depth --- exactly the shape a doubling-orbit equidistribution argument would pro
 
 \begin{thm}
 \lean{certifiedKill_all_upto_sixteen}{CarrySurvivorExtinction.lean:574} and
-\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:19078}
+\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:18890}
 (shallower sibling \lean{certifiedKill_all_small}{TotientTailPeriodKiller.lean:404}). \ev{Cert}.
 \scale{fixed}.
 \[
@@ -527,7 +523,7 @@ per-period search.
 \subsubsection{c3 --- the Farey denominator floor and its stalled growth law (\coord{farey-window})}
 
 \begin{thm}
-\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18572},
+\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384},
 built from the classical mediant lemma \lean{farey_gap}{GapFareyBound.lean:51} and the window
 sharpness certificate \lean{gap_check_window_1_240_le_79639646646701375323355774875831053}{GapFareyBound.lean:176}
 / \lean{gap_check_window_1_240_first_failure}{GapFareyBound.lean:225}. \ev{Lean} for the general
@@ -632,9 +628,9 @@ jump) and \lean{CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFres
 (power-of-two positions), each asking $0\le \mathtt{canonicalAdjacentSuffixCentralSlack}(t{+}1)$
 cofinally, and both compose to
 $\mathrm{Irrational}(S)$ at
-\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2937}
+\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2941}
 and
-\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2944}.
+\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2948}.
 \end{defn}
 
 \begin{rem}[Census evidence only]
@@ -731,14 +727,14 @@ attributed the two theorems below to swapped files; direct reads this session co
 attribution is as given.
 
 \begin{thm}
-\lean{linearIndependent_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:946}. \ev{Lean}.
+\lean{linearIndependent_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}. \ev{Lean}.
 \scale{uniform}. Unconditional and uniform in $e$: the dyadic totient-kernel family is linearly
 independent at every depth $e$ (dimension exactly $2^e{+}1$, via CRT and Dirichlet on primes in
 arithmetic progression).
 \end{thm}
 
 \begin{thm}
-\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:301}.
+\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}.
 \ev{Lean}. \scale{uniform}. If $S$ is rational there is a tempered integral carry orbit $u$ with
 \[
   2^e - 1 \;\le\; \mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathtt{canonicalCarryKernelFamily}\ u\ e)

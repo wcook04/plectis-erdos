@@ -30,6 +30,8 @@ then $`a_{n+1}=a_n^2-a_n+1`$ for all sufficiently large $`n`$.*
 
 </div>
 
+The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211).
+
 <a id="the-obstruction."></a>
 
 #### The obstruction.
@@ -126,6 +128,8 @@ C_{n+1}=C_n-E_n,\qquad
 
 </div>
 
+Both identities are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21).
+
 <div id="res:absorb" class="theorem">
 
 **Theorem 6** (absorption and descent). *<span id="res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
@@ -138,6 +142,8 @@ C_{n+1}=C_n-E_n,\qquad
 
 </div>
 
+Both assertions are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120).
+
 <div id="res:step" class="corollary">
 
 **Corollary 7** (two zero errors). *<span id="res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
@@ -149,6 +155,8 @@ C_{n+1}=C_n-E_n,\qquad
 *Proof.* The second error identity has nonzero factor $`C_{n+1}`$. ◻
 
 </div>
+
+The local and eventual forms are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L138).
 
 Absorption holds after any eventual centring threshold. On a nonterminal tail it removes all subsequent zeros. Then $`|E_n|\ge1`$, so normalised vanishing gives $`C_n\to\infty`$.
 
@@ -201,6 +209,8 @@ u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n.
 
 </div>
 
+All three conclusions are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16).
+
 <div id="res:gcdstab" class="proposition">
 
 **Proposition 11** (gcd stabilisation). *For a positive exact state, if negative errors have bounded magnitudes along a cofinal set of indices, then $`G_n=\gcd(C_n,D_n)`$ eventually stabilises. Division by its stable value gives a reduced exact tail.*
@@ -212,6 +222,8 @@ u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n.
 *Proof.* Both updates preserve common divisors, so $`G_n\mid G_{n+1}`$. Moreover $`G_n\mid E_n`$, hence $`G_n\le -E_n`$ at a negative index. The positive divisibility chain is bounded along a cofinal set and therefore bounded everywhere; it eventually stabilises. Division by the stable value preserves both exact updates and leaves the states coprime. ◻
 
 </div>
+
+The stable gcd and the reduced exact tail are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103).
 
 In the main proof, division by the stable gcd preserves divergence and a bounded upward increment. Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">9</a> therefore applies to the reduced numerator. Sparse changes of the gcd without eventual stabilisation are a different statement; the supporting record retains that distinction and its finite-block consequences.
 
@@ -449,6 +461,8 @@ Equivalently, must there be a $`K\ge1`$ for which
 at infinitely many indices?
 
 </div>
+
+The canonical necessary profile is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151).
 
 For $`B\ge0`$ put
 ``` math

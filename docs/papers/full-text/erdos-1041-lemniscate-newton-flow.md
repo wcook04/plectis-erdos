@@ -35,7 +35,7 @@ Vieta gives $`|b|<1`$. For $`0\le t<1`$, the weights $`1-t^m`$ and $`t^m-t^n`$ a
 |f(t\zeta)|\le |b|(1-t^m)+|\zeta|^n(t^m-t^n)
  <1-t^n\le1.
 ```
-At $`t=1`$ the value is zero. Concatenating the two segments gives length $`|\zeta_1|+|\zeta_2|<2`$. ◻
+At $`t=1`$ the value is zero. Concatenating the two segments gives length $`|\zeta_1|+|\zeta_2|<2`$. The displayed statement, with the broken line as a continuous curve of bounded variation and its length read as extended variation, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L38). ◻
 
 </div>
 
@@ -59,7 +59,7 @@ lies in the open unit disc, yet the radial spoke from the origin to the zero $`r
 
 </div>
 
-Indeed, after $`z=rw`$, the polynomial factors as $`r^6(w^2-1)(w^4+\tfrac65 w^2+1)`$, so all six roots have modulus $`r`$. However $`f_r(r/2)=-(327/320)r^6`$. Any $`r`$ with $`320/327<r^6<1`$ proves the assertion. Only this prescribed spoke is excluded; other connectors remain available.
+Indeed, after $`z=rw`$, the polynomial factors as $`r^6(w^2-1)(w^4+\tfrac65 w^2+1)`$, so all six roots have modulus $`r`$. However $`f_r(r/2)=-(327/320)r^6`$. Any $`r`$ with $`320/327<r^6<1`$ proves the assertion. Only this prescribed spoke is excluded; other connectors remain available. The statement with the radius supplied is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L79).
 
 <a id="sec:problem"></a>
 
@@ -105,7 +105,7 @@ In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.*
 
 <div class="proof">
 
-*Proof.* Put $`s=((25/13)\mu)^{1/n}`$ and $`g(z)=s^{-n}f(sz)`$. Then $`g`$ is monic and its least critical-value modulus is $`13/25`$. Apply the theorem and scale the curve back by $`s`$. For $`n\ge3`$, $`(25/13)^{1/n}\le(25/13)^{1/3}<5/4`$. For $`n=2`$, the segment between the roots has length $`2\sqrt\mu`$ and lies in $`K_\mu`$. ◻
+*Proof.* Put $`s=((25/13)\mu)^{1/n}`$ and $`g(z)=s^{-n}f(sz)`$. Then $`g`$ is monic and its least critical-value modulus is $`13/25`$. Apply the theorem and scale the curve back by $`s`$. The rescaling step, transporting both the level and the extended variation of an arbitrary curve under $`z\mapsto h+cz`$, is [the affine transport of a contained rectifiable connector](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperMetricScaling.lean#L40); the low-critical input remains ordinary. For $`n\ge3`$, $`(25/13)^{1/n}\le(25/13)^{1/3}<5/4`$. For $`n=2`$, the segment between the roots has length $`2\sqrt\mu`$ and lies in $`K_\mu`$. ◻
 
 </div>
 
@@ -133,7 +133,7 @@ then summing over the roots proves the finite dual bound
 ``` math
 \boxed{\quad k\ge\frac{x-\pi\sum_i\sigma_i}{U}.\quad}
 ```
-Angular projection alone loses the disjointness used here: balls at different radii may have overlapping shadows. Common circle slices retain it. The resulting lower bound for $`k`$ feeds the length–area comparison until a short boundary connection is forced. The complete comparison proof and rational certificate are in `ErdosProblems/Erdos1041/AngularBudgetLowCriticalClosure.md`. The certified terminal time is $`635762889599/10^{12}`$, and $`(13/25)\exp(635762889599/10^{12})<1`$.
+The summation and supremum step from the majorant and the slice bounds to the boxed inequality is [the finite dual arity floor, with the packing bound and the boundedness of the dual values as premises](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperFiniteDual.lean#L68); the hyperbolic supplier of those premises is ordinary. Angular projection alone loses the disjointness used here: balls at different radii may have overlapping shadows. Common circle slices retain it. The resulting lower bound for $`k`$ feeds the length–area comparison until a short boundary connection is forced. The complete comparison proof and rational certificate are in `ErdosProblems/Erdos1041/AngularBudgetLowCriticalClosure.md`. The certified terminal time is $`635762889599/10^{12}`$, and $`(13/25)\exp(635762889599/10^{12})<1`$.
 
 <a id="an-independent-area-proof."></a>
 
@@ -222,7 +222,7 @@ This is not silently promoted to a path theorem. The same source module checks t
 
 </div>
 
-The certificates are exact rational-algebraic computations, checked as *nearest spoke unique nearest spoke escapes* and *all straight cubic every pair midpoint escapes*. The first defeats a tie-breaking escape hatch; the second defeats every straight root-pair segment. Together with Theorem <a href="#res:critical-proximity" data-reference-type="ref" data-reference="res:critical-proximity">7</a>, they isolate the real gap: critical-point proximity selects a short metric pair, but universal containment requires curved or topological geometry.
+The certificates are exact rational-algebraic computations, checked as *nearest spoke unique nearest spoke escapes* and *all straight cubic every pair midpoint escapes*, and the displayed proposition itself, with both quintic and cubic exhibited as polynomials and the nearest-root condition quantified over every zero, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178). The first defeats a tie-breaking escape hatch; the second defeats every straight root-pair segment. Together with Theorem <a href="#res:critical-proximity" data-reference-type="ref" data-reference="res:critical-proximity">7</a>, they isolate the real gap: critical-point proximity selects a short metric pair, but universal containment requires curved or topological geometry.
 
 <a id="sec:solved-families"></a>
 
@@ -353,6 +353,8 @@ None of the following is a counterexample to Erdős #1041. Each kills a coverin
 ```*
 
 </div>
+
+The whole proposition, including the least-modulus assertion rather than a supplied minimum, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189).
 
 <div id="res:one-root-gamma-false" class="proposition">
 

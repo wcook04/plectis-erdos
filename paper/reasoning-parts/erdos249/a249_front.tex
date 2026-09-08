@@ -7,20 +7,15 @@ Let $\varphi$ be Euler's totient function and put
   \;=\; 1.3676308019850223\ldots
 \]
 The series converges absolutely because $\varphi(n) \le n$. Erd\H{o}s Problem
-\#249 asks whether $S$ is irrational. The strongest unconditional theorem
-recorded here is Theorem~\ref{thm:residueobservable}: for $m \ge 2$ and an
-integer-valued letter map $f$ with $f(0) = 0$ and $f(r) \ne 0$ at some $r < m$
-with $\gcd(r+1, m) = 1$, the series $\sum_n f(\varphi(n) \bmod m)/2^n$ is
-irrational, so $A_m = \sum_n (\varphi(n) \bmod m)/2^n$ is irrational for every
-$m \ge 3$. That settles the totient word at every fixed resolution. It decides
-no instance of \#249, whose coefficients are the unreduced values
-$\varphi(n)$, and $S$ itself is open. Everything after that theorem is
-negative knowledge: this document assembles every recorded failure,
-obstruction, countermodel and dead route the programme has produced against
-\#249, and classifies each one by the exact class of argument it eliminates.
-The claim being made is that those failures are not independent. They are
-repeated measurements of a single obstruction, and that obstruction has a
-shape which can be stated.
+\#249 asks whether $S$ is irrational. \emph{It is open.} Nothing in this
+document decides it, no route recorded here is a proof, and no result here
+should be read as an approach that is close to working. What this document
+does is different in kind: it assembles every recorded failure, obstruction,
+countermodel and dead route the programme has produced against \#249, and
+classifies each one by the exact class of argument it eliminates. The claim
+being made is that those failures are not independent --- they are repeated
+measurements of a single obstruction, and that obstruction has a shape which
+can be stated.
 
 \begin{rem}[Literature coordinates]
 The nearby literature serves three distinct roles.  Kova\v{c}--Tao's
@@ -101,119 +96,18 @@ the centre of its dyadic arc, at full arithmetic resolution.
 
 The following hold with no irrationality hypothesis. They are the results a
 specialist should know before reading further; each is stated at the scale at
-which it is actually proved. The first is the strongest unconditional theorem
-in the programme about a series driven by $\varphi$ itself, and it is stated
-first for that reason. Everything after it is negative knowledge about $S$:
-obstructions, reformulations, countermodels and finite exclusions.
+which it is actually proved.
 
-\begin{thm}[Irrationality of the fixed-resolution totient observables]
-\label{thm:residueobservable}
-Let $m \ge 2$, let $f : \N \to \Z$ satisfy $f(0) = 0$, and let $r < m$ satisfy
-$\gcd(r+1, m) = 1$ and $f(r) \ne 0$. Then $\sum_{n} f(\varphi(n) \bmod m)/2^{n}$
-is irrational. In particular $A_m = \sum_n (\varphi(n) \bmod m)/2^n$ is
-irrational for every $m \ge 3$, and $m \ge 3$ is sharp, since $A_1 = 0$ and
-$A_2 = 3/4$. The mechanism is the isolated-pulse argument of Erd\H{o}s 1948,
-and reducing $\varphi$ modulo $m$ is what makes the pulses isolated; the
-prior-art audit located no exact antecedent for the statement.
-
-This decides no instance of \#249. The coefficients of $S$ are the unreduced
-values $\varphi(n)$, and $S$ remains open. The Lean development lives in the
-private authoring tree at
-\texttt{ErdosProblems/Erdos249/ResidueClassTotientSeries.lean}, with
-\texttt{irrational\_totientObservable} at line 502, the dyadic form
-\texttt{fixed\_resolution\_observable\_irrational} at line 544 and the corollary
-\texttt{residue\_series\_irrational} at line 570. It is absent from the release
-tree at this checkpoint, so no link into the checkpoint is given.
-\coord{binary-digit} \scale{uniform} \ev{Lean}
-\end{thm}
-
-\begin{thm}[Sharp positive rank-one floor]
-\label{thm:rankonefloor}
-Put $\Theta_2=\sum_{d\ge1}\mu(d)/(2^d-1)^2$, which equals $S-1/2$ by the
-convolution identity $\ph=\mu*\mathrm{id}$ recorded by Steve Fan in his
-comment of 16 May 2026 on \texttt{erdosproblems.com/249}.  For $e\ge1$ and
-$Y\ge4$ set
-\[
-  Q(e,Y)=\frac{\bigl(\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
-               {\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{2e+2}} .
-\]
-Then $Q(e,Y)\ge Q(1,5)$ for every admissible pair with equality exactly at
-$(1,5)$; $Q(e,Y)-\Theta_2>21/320$ for every admissible pair; $1/16$ is a valid
-uniform floor and $1/15$ fails already at $(1,5)$; every nonempty finite
-positive weighted average of admissible quotients keeps the same strict
-$21/320$ separation; and $|q\Theta_2-p|>21q/320$ whenever $Q(e,Y)=p/q$ with
-$q\ge1$.  The complete positive rank-one and positive direct-sum
-approximation mechanism is therefore closed with an explicit constant.  Signed
-cancellation and genuinely coupled higher-rank approximants lie outside every
-statement here.  Novelty of the family is unassessed.
-\coord{mobius-mersenne} \scale{uniform} \ev{Lean}
-\lean{rankOneSubrankQuotient\_eq\_one\_five\_iff}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:534}
-\lean{rankOneSubrankQuotient\_sub\_theta\_two\_gt\_twentyOne\_div\_threeTwenty}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:624}
-\lean{positive\_direct\_sum\_sub\_theta\_two\_gt\_twentyOne\_div\_threeTwenty}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:655}
-\lean{primitive\_form\_abs\_gt\_twentyOne\_div\_threeTwenty}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:693}
-\end{thm}
-
-\begin{thm}[The remaining analytic obligation, stated exactly]
-\label{thm:normgap}
-Write $D_{h,N,L}=\sum_{j<L}(\ph(N+h+1+j)-\ph(N+1+j))2^{L-1-j}$, which is
-$\mathtt{windowDiscrepancy}(h,N,L)$.  Suppose that for every $h>0$ and every
-$X_0$ there are $X\ge\max(X_0,1)$ and $L$ with $16(2X+h+L+2)\le2^L$ and
-\[
-  \Bigl\|\sum_{N=X}^{2X-1}e^{2\pi iD_{h,N,L}/2^L}\Bigr\|\le\tfrac{21}{25}X .
-\]
-Then $S$ is irrational.  The chain is checked with no remaining gap: the
-complex norm saving dominates the real-part saving, a constant-saving
-first-harmonic bound on one dyadic block forces a certified non-integrality
-witness inside that block, and a cofinal supply of such witnesses is
-irrationality.  The hypothesis is the whole remaining obligation and is one
-exponential-sum cancellation bound at the resolution $2^L$ that
-$\mathtt{certifiedKill\_depth\_floor}$ forces.  Section~\ref{sec:wall} shows
-this hypothesis is inequivalent to $\mathrm{Irrational}(S)$, so a proof of it
-is strictly stronger than the target.
-\coord{binary-digit} \scale{cofinal} \ev{Lean} for the implication,
-\ev{Open} for the hypothesis.
-\lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
-\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:53}
-\lean{Erdos249257.irrational\_totient\_series\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:83}
-\end{thm}
-
-\begin{thm}[Certified continued-fraction denominator floor]
-\label{thm:cfdenom}
-Bracket $S$ by exact integers $\mathrm{lo}\le2^BS\le\mathrm{hi}$ at
-$B=80\,000$ bits and run the interval continued fraction, emitting a partial
-quotient only when both endpoints agree on it.  This forces $23\,438$ partial
-quotients, and if $S=a/q$ in lowest terms with $q>0$ then $q\ge2^{39989}$ and
-$q>10^{12038}$.  The two power bounds are checked separately against the
-integer denominator of the last certified convergent.  The bit length
-$39\,990$ and the decimal digit count $12\,039$ of that denominator are
-lengths rather than exponents; printing them as exponents overstates the
-result by one in each base, and earlier corpus prose did exactly that.  The
-preceding convergent is separated from the enclosure and the arithmetic
-reproduces the known expansions of $e$ and $\pi$.  The largest partial
-quotient in the prefix is $29\,403$ at index $15\,470$, so the prefix shows
-no anomalous rational approach.  This is an exact finite computation with no
-floating-point decision anywhere in it and with no Lean proof; it is a
-strictly larger floor than Theorem~\ref{thm:denom} and a strictly weaker
-evidence band.
-\coord{continued-fraction} \scale{bounded} \ev{Cert}
-Verifier \codeid{formal_math/probes/certified_continued_fraction.py}, receipt
-\codeid{state/formal_math/probes/erdos249_certified_cf_receipt.json}.
-\end{thm}
-
-The theorem is Theorem~\ref{thm:residueobservable}, stated at the head of this record; its Lean development is cited there.
-
-\begin{thm}[Denominator exclusion, the headline kernel-checked fact]
+\begin{thm}[Denominator exclusion --- the headline unconditional fact]
 \label{thm:denom}
 If $S \in \Q$ then its reduced denominator exceeds
 $Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}$.
 Equivalently, $S \ne p$ for every $p \in \Q$ with $p.\mathrm{den} \le Q_0$.
 The bound is sharp for the method: $q = Q_0 + 1$ is the exact first failing
 denominator, exhibited as the mediant of two explicit unimodular Farey
-neighbours.  This is the strongest kernel-checked size exclusion.  The
-strongest size exclusion of any band is Theorem~\ref{thm:cfdenom}, at
-$q>10^{12038}$, which carries no Lean proof.
+neighbours.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{Erdos249257.tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18572}
+\lean{Erdos249257.tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
 \lean{Erdos249257.gap\_check\_window\_1\_240\_first\_failure}{GapFareyBound.lean:225}
 \end{thm}
 
@@ -241,19 +135,18 @@ $\forall h\, \forall N_0\, \exists N \exists L$.
 \coord{binary-digit} \scale{fixed} \ev{Lean}
 \end{prop}
 
-\begin{prop}[Cofinal positivity and the endpoint obstruction]
+\begin{prop}[Cofinal positivity, and why it is exactly half a certificate]
 \label{prop:sign}
 The true actual-LCM tail difference is strictly positive for every $a \ge 8$,
 with no irrationality hypothesis
 (\lean{Erdos257PeriodNoncollapse.actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39},
 \lean{Erdos257PeriodNoncollapse.actualLcmTailOrbit\_pos}{TotientActualLcmOrbitSign.lean:144}).
-At a translated offset $J$ and depth $K$ satisfying
-$J+K+(a+6)<2\cdot2^a$ and $2H+J+K+2<2^K$, integrality forces the residue
-to the \emph{top edge}, exactly $2^{K} - e$
+In the same coordinate, integrality of the orbit forces the residue to the
+\emph{top edge}, exactly $2^{K} - e$
 (\lean{Erdos257PeriodNoncollapse.actualLcm\_integral\_forces\_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211}).
-This fixes the sign of the true survivor, but does not construct a
-central-band certificate.  The top-edge residue remains compatible with
-integrality and needs an independent arithmetic exclusion.
+Positivity does not exclude the top edge. So the strongest cofinal fact the
+corpus owns about the actual object supplies one of the two inequalities a
+certificate needs and provably cannot supply the other.
 \coord{actual-lcm} \scale{cofinal} \ev{Lean}
 \end{prop}
 
@@ -261,13 +154,13 @@ integrality and needs an independent arithmetic exclusion.
 \label{prop:rank}
 If $S$ is rational then, for every $e$, the dyadic carry-kernel family at
 level $e$ has $\Q$-rank at least $2^{e}-1$
-(\lean{Erdos249257.not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:301}).
+(\lean{Erdos249257.not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300}).
 The scale side is complete and uniform in $e$: the canonical family of
 $2^{e}+1$ dyadic totient-kernel channels is linearly independent over $\Q$ at
 every depth, via CRT plus Dirichlet
-(\lean{Erdos249257.linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:946}),
+(\lean{Erdos249257.linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}),
 so the full family spans an infinite-dimensional space
-(\lean{Erdos249257.not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1146}).
+(\lean{Erdos249257.not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1145}).
 \coord{carry-rank} \scale{uniform} \ev{Lean}
 \end{prop}
 
@@ -292,7 +185,7 @@ the base certificate supply and its lcm-diagonal normal form
 the directed-certificate supply and its LCM specialisation
 (\lean{Erdos257PeriodNoncollapse.CofinalDirectedLcmCertificateSupply}{TotientTailCarryPeriod.lean:866}),
 and the window-separated-pairs predicate
-(\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1775}).
+(\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1765}).
 \coord{binary-digit} \scale{cofinal} \ev{Lean}
 \end{prop}
 
@@ -310,8 +203,8 @@ sum at \texttt{:359}, aperiodicity at \texttt{:487}, parity match at \texttt{:19
 \end{prop}
 
 Propositions~\ref{prop:sign}--\ref{prop:parity} are the four facts a reader
-should carry into the next section: cofinal positivity leaves an endpoint-residue obstruction, the rank information
-runs the wrong way, its
+should carry into the next section: the corpus's best cofinal information is
+half a certificate, its best rank information runs the wrong way, its
 reformulations are equivalences rather than reductions, and every purely
 qualitative property of the coefficient word is satisfied by a rational
 countermodel.
@@ -370,8 +263,8 @@ at full resolution and bounded range, so B1 says extending them is evidence
 forever and proof never. Every unconditional \emph{cofinal} theorem (letterwise
 positivity for all $a \ge 8$, the tail bounds from $\varphi(m) \le m$,
 unbounded Mersenne-shadow denominator growth) sits at coarse resolution and
-unbounded range. Proposition~\ref{prop:sign} illustrates why such sign
-information can leave the arithmetic endpoint obstruction unresolved.
+unbounded range, and Proposition~\ref{prop:sign} proves in the corpus's own
+coordinate that this is exactly half a certificate.
 
 \subsection{B1: the finite-inspection barrier, as a theorem}
 
@@ -530,7 +423,7 @@ is never used as a premise elsewhere in this document.
   which indices to test collapses to $\mathrm{Irrational}(S)$ outright, because
   irrationality plus doubling expansivity already supplies a two-point sample
   with the required separation
-  (\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1775}).
+  (\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1765}).
   The mechanism is visible in the converse proof
   (\texttt{windowSeparatedPairsAt\_of\_cofinally\_scaled\_adjacent\_chord},
   \texttt{PivotAntiReconstruction.lean:1663}): it selects $T = \{N, N+1\}$ and
@@ -1013,40 +906,36 @@ and names an index. It is listed because it is the cleanest target for
 computational exploration --- with Theorem~\ref{thm:gamma} as the standing
 reminder that no amount of such exploration becomes a proof. \ev{Open}
 
-\subsection{Survivor 5, retired: the rationality-side rank upper bound is
-false}
+\subsection{Survivor 5: the rationality-side rank upper bound}
 
-\begin{defn}[The refuted coordinate-disjoint obligation]
+\begin{defn}[The coordinate-disjoint obligation]
 \label{defn:rankupper}
-The obligation formerly listed here asked for a constant $C$ such that for
-every $c : \N \to \N$ with $c(n) \le n$ and
+Either: there is $C$ such that for every $c : \N \to \N$ with $c(n) \le n$ and
 $T_c \notin$ the irrationals, every $v > 0$ and every tempered binary orbit
 $u$ for $(c,v)$, and every $e$,
-$\dim_{\Q} \mathrm{span}_{\Q}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C$,
+$\dim_{\Q} \mathrm{span}_{\Q}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C$;
 or the same with any $g(e)$ growing strictly slower than $2^{e}-1$ in place of
-$C$. Both versions are false. Section~\ref{ssec:rankupper-retired} exhibits a
-rational coefficient sequence satisfying every hypothesis whose tempered orbit
-has rank at least $2^{e}-1$ at every level
-(\lean{control\_temperedOrbit\_carryRank\_unbounded}{ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean:478}).
-\coord{carry-rank} \scale{uniform} \ev{Lean}
+$C$. Either version contradicts the proved floor of
+Proposition~\ref{prop:rank} and closes \#249.
+\coord{carry-rank} \scale{uniform} \ev{Open}
 \end{defn}
 
-The counterexample is much closer to $\ph$ than a generic digit
-construction. Its coefficient sequence agrees with $\ph$ at every odd
-argument and differs from it by at most $2$ everywhere, so no rank argument
-that reads only the odd channels, the size constraint $c(n)\le n$, or the
-rationality of the value can supply the missing ceiling. The surviving
-question is the totient-specific one: an upper bound for the carry orbits
-that rationality of $S$ itself would supply, proved from arithmetic of $\ph$
-that the control above fails to satisfy. That question is untouched by the
-counterexample, and it remains open. \ev{Open}
+This is the only surviving obligation that is not a residue or certificate
+statement at all, so B2's certificate completeness cannot reach it --- it is
+not a reformulation of $\mathrm{Sep}$ in any vocabulary. It evades B1 and B4
+entirely (no window, no letters, no prescribed residues) and B5 (linear algebra
+over the whole orbit, not a bounded-state summary). The scale side is finished
+and uniform in $e$ (Proposition~\ref{prop:rank}).
 
-The $\ph$-specific lower bound is unaffected (Proposition~\ref{prop:rank}),
-as is the earlier finding that the most natural route to a ceiling is dead
-(\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183})
-and that uniform eventual periodicity of the carry's dyadic sections mod $v$
-does not promote to a $\Q$-rank bound
-(Proposition~\ref{prop:period-not-rank}).
+\textbf{Honest flag, and it is severe.} B6 partly indicts this route from
+inside. The most natural approach to the upper bound is dead
+(\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}),
+and what rationality actually buys --- uniform eventual periodicity of the
+carry's dyadic sections mod $v$ --- provably does not promote to a $\Q$-rank
+bound (Proposition~\ref{prop:period-not-rank}). So this survivor is genuinely
+coordinate-disjoint from everything else, which is its whole value, but its
+obvious approach is closed and the missing input is a rigidity theorem nobody
+has stated.
 
 \section{Reading the detailed record}
 

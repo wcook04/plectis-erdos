@@ -54,7 +54,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{0ba585f632fbbbb43af2ee9532d4e83752af3f67}
+\newcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -171,32 +171,18 @@
 This paper gives a claim-bounded map of the current formal attack on Erd\H{o}s
 Problem~249, which asks whether
 $S=\sum_{n\ge1}\ph(n)/2^n$ is irrational.  The problem remains open.
-
-The strongest supported results come first.  The positive rank-one
-M\"obius--Mersenne cone is determined sharply: with
-$\Theta_2=\sum_{d\ge1}\mu(d)/(2^d-1)^2=S-1/2$, every admissible monomial
-quotient $Q(e,Y)$ exceeds $\Theta_2$ by more than $21/320$, $(1,5)$ is the
-unique minimiser, and the floor survives every nonempty finite positive
-mixture.  \ev{Lean}  The single remaining analytic obligation is named
-exactly: a cofinal first-harmonic norm gap of size $\tfrac{21}{25}X$ over a
-dyadic block implies irrationality through a chain that is checked end to end,
-and the gap itself is one exponential-sum cancellation bound.  \ev{Lean} for
-the implication, \ev{Open} for the hypothesis.  The strongest quantitative
-statement about the constant is a certified continued-fraction floor: exact
-rational bracketing at $80\,000$ bits forces $23\,438$ partial quotients, so
-$S=a/q$ in lowest terms has $q\ge2^{39989}$ and $q>10^{12038}$.  \ev{Cert},
-with no Lean proof.  The strongest kernel-checked size exclusion remains the
-Farey-mediant bound through approximately $7.96\times10^{34}$; the two figures
-carry different evidence bands and are recorded separately.
-
-The structural results follow: an explicit rational basis for the full dyadic
-totient kernel, exact rank $2^e+1$ through every level $e\ge1$, so the full
-kernel is infinite-dimensional, and finite lcm-diagonal certificates for every
-$t\le82$.  The paper also records exact equivalences between
+The unconditional headline results are an explicit rational basis for the
+full dyadic totient kernel, exact rank $2^e+1$ through every level $e\ge1$, a denominator
+exclusion through approximately $7.96\times10^{34}$, and finite
+lcm-diagonal certificates for every $t\le82$.  The full kernel is therefore
+infinite-dimensional.  The paper also records exact equivalences between
 irrationality and several cofinal certificate or tail-nonintegrality supplies.
-Those equivalences re-express the problem and do not solve it: no certificate at
-$t=83$, unbounded certificate family, or irrationality proof is obtained.  The results are organized by their proof mechanisms,
-coordinate-specific obstructions, and remaining implications.
+Those equivalences re-express rather than solve the problem: no certificate at
+$t=83$, unbounded certificate family, or irrationality proof is obtained.  The
+contribution is the audited organization of checked results,
+coordinate-specific obstructions, and open implications---not a solution, an
+exhaustive reproduction of every repository theorem, or a priority claim for
+every formalisation.
 \end{abstract}
 
 \section*{How to read this document}

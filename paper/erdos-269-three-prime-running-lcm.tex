@@ -10,8 +10,8 @@
 \usepackage{colortbl}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{0ba585f632fbbbb43af2ee9532d4e83752af3f67}
-\renewcommand{\commitshort}{32545d77c4b5}
+\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
+\renewcommand{\commitshort}{99f4bf47422a}
 \hypersetup{
   pdftitle={No finite separable representation at three prime generators (Erdős Problem 269)},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -52,7 +52,7 @@ Hecke--Mahler value.  The repeated three-prime irrationality question remains
 open.
 \end{abstract}
 
-\label{sec:problem}
+\section{Introduction}\label{sec:problem}
 Let $P$ be a finite set of at least two primes and $\mathcal S_P$ its positive
 smooth integers.  Put
 \[
@@ -128,7 +128,7 @@ Finally, $d$ separated summands would factor every $(d+1)\times(d+1)$
 restriction through a $d$-dimensional space, contradicting the nonzero minor.
 \end{proof}
 
-\noindent Both clauses are \lloc{Erdos269/PaperR7BasicAssembly.lean}{22}.
+\noindent Both clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22}{Lean source}.
 
 \begin{corollary}[the same minors modulo every admissible denominator]
 \label{res:admissible-modular-minors}
@@ -143,7 +143,7 @@ is $5^{-1}(-4/5)^{n-1}$, also a unit.  The choices of $I,J$ are independent
 of both $B$ and $k$.
 \end{proof}
 
-\noindent The statement is \lloc{Erdos269/PaperR7ModularMinors.lean}{133}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133}{Lean source}.
 
 
 
@@ -153,7 +153,7 @@ its four entries are $1,1/6,1/2,1/60$, so it equals $1/60-1/12$.
 \end{example}
 
 \noindent The four entries and the determinant are
-\lloc{Erdos269/PaperR7BasicAssembly.lean}{102}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L102}{Lean source}.
 
 \paragraph{The indices must be selected.}
 The leading $4\times4$ block at $\{2,3,5\}$ is singular:
@@ -183,7 +183,7 @@ If $k_1=0$ and $k_t=m$, then $v_0=c\,\mathbf 1$ lies in the span of the
 differences (their sum is $(1-c)\mathbf 1$), so the rank is $t-1$.
 \end{proof}
 
-\noindent The statement is \lloc{Erdos269/PaperR7FiniteCutRank.lean}{182}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182}{Lean source}.
 
 The formula classifies every finite sampled kernel rank after the row and
 column factors of Theorem~\ref{res:infinite-rank}, independently of the third
@@ -307,7 +307,7 @@ The same definition gives
 \begin{equation}\label{res:cube}
  x^3/(pqr)<\hgt(x)\le x^3.
 \end{equation}
-Both inequalities are \lloc{Erdos269/PaperR7BasicAssembly.lean}{112}.
+Both inequalities are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L112}{Lean source}.
 The height is constant between consecutive pure-power boundaries and gains
 a factor equal to the prime at each boundary.  If $F(H)$ is a height fibre
 in a finite exponent box $\mathcal B$, exact regrouping gives
@@ -346,7 +346,7 @@ most one three-power and at most one five-power.  Their optional factors,
 together with the terminal factor two, give the four radices.
 \end{proof}
 
-\noindent Both clauses are \lloc{Erdos269/PaperR7ActualOrbit.lean}{48}.
+\noindent Both clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L48}{Lean source}.
 
 \begin{proposition}[the actual recurrence and a polynomial bound]
 \label{res:actual-orbit}
@@ -370,7 +370,7 @@ $s_a\le30(a+1)^2/8^a$.  Therefore
 \]
 This proves convergence and the bound.  Splitting the first shell gives
 the recurrence because $m_a=h_{a+1}s_a$ and $h_{a+1}=b_ah_a$.
-All four clauses are \lloc{Erdos269/PaperR7SeriesIdentification.lean}{168}.
+All four clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168}{Lean source}.
 
 Put $Y_a=BX_a$.  If all sufficiently late distances are strictly below
 $1/31$, write $Y_a=z_a+e_a$ with $z_a\in\mathbb Z$ and $|e_a|<1/31$.
@@ -409,7 +409,7 @@ $BX_a=h_aA/(2^u3^v5^w)-BZ_a$ is integral.  Positivity, the recurrence
 and the bound follow from Proposition~\ref{res:actual-orbit}.
 \end{proof}
 
-\noindent The statement is \lloc{Erdos269/PaperR7RationalBridge.lean}{80}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80}{Lean source}.
 
 \section{A window test and the remaining arithmetic}
 \label{sec:escape}\label{sec:open}
@@ -439,7 +439,7 @@ Every positive representative of the residue is at least its least
 positive representative, so $\operatorname{lpr}_W(-BF)\le d\le K$.
 \end{proof}
 
-\noindent The statement is \lloc{Erdos269/PaperR7BasicAssembly.lean}{138}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138}{Lean source}.
 
 \begin{theorem}[the actual window criterion]\label{res:windowconsumer}
 The number $S$ is irrational if and only if
@@ -475,7 +475,7 @@ $K(B,\ell+h)$.  This proves~\eqref{eq:escape}, in fact from each fixed start.
 \end{proof}
 
 \noindent The equivalence, at the literal smooth-number series, is
-\lloc{Erdos269/PaperR7WindowResults.lean}{51}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51}{Lean source}.
 
 The validity of the cap is needed in the rational direction; an upper
 polynomial growth condition by itself would not suffice.  The zero cap,
@@ -483,12 +483,28 @@ for example, makes positive-residue escape automatic.
 The criterion identifies the target in window coordinates.  The unresolved
 point is the source-specific exclusion below.
 
-\begin{problem}[nonintegrality of the actual reduced tails]
-\label{prob:tails269}\label{prob:producer}
+\begin{problem}[exact nonintegrality of every reduced tail]\label{prob:tails269}
 Prove that for every $a\ge1$ and every integer $B\ge1$ coprime to $30$,
 \begin{equation}\label{eq:tail-nonintegrality}
  BX_a\notin\mathbb Z.
 \end{equation}
+\end{problem}
+\begin{problem}[actual cofinal local-window escape]\label{prob:producer}
+Prove the displayed quantifier order
+\[
+ \forall B\ge1\ (\gcd(B,30)=1),\ \forall a_0\ge1,\
+ \exists\ell\ge a_0\ \exists h\ge1:\quad
+ \operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})
+   >K^{235}(B,\ell+h).
+\]
+\end{problem}
+\begin{problem}[function-faithful two-dimensional representation]
+Express $\mathcal D_{2,3,5}$ as a nonconstant algebraic combination of values
+of a specified two-dimensional Hecke--Mahler, cone-generating or multivariate
+Mahler function and verify every hypothesis of a published value theorem; or
+give a conditional theorem under an explicit logarithmic nondegeneracy
+hypothesis; or prove that the literal series has no representation in the
+specified finite-dimensional class.
 \end{problem}
 By~\eqref{eq:prefix-lattice}, one integral value would make $S$ rational;
 the bridge proves the reverse implication after clearing its denominator.
@@ -529,27 +545,216 @@ funding.  The author declares no competing interests.
 Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 
 \appendix
-\section{Guide to the principal formal statements}\label{app:index}
-The arbitrary-order minor and non-separability statements are
-\path{exists_uniform_nonsingular_threePrimeKernel_minor_of_prime} and
-\path{not_finite_separable_threePrimeKernel} in
-\path{ErdosProblems/Erdos269/KernelCarryRank.lean}.
-The same file contains the leading-four identities.
-The interval-difference algebra behind the finite cut-rank formula is in
-\path{ErdosProblems/Erdos269/FiniteCutRank.lean}; that file by itself is
-not a formal proof of the full arithmetic normal form.
+\section{Guide to the formal sources}\label{app:sources}
 
-The running-LCM and finite shell statements are in
-\path{ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean}.
-The actual bridge is
-\path{exists_reducedCarry_of_value_eq_rat} in
-\path{ErdosProblems/Erdos269/RationalityCarryBridge.lean}.
-The finite residue argument is in
-\path{ErdosProblems/Erdos269/ResidueEscape.lean}, and its window composition
-is in \path{ErdosProblems/Erdos269/RestrictedFloorSum.lean}.
-The exact block-potential classification and its anchor condition are in
-\path{ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean}.
-These source statements retain their displayed hypotheses.
+The public snapshot used by this note is recorded by the following source links.
+
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{46}{smoothPrefixExponents},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{59}{smooth3Val_dvd_threePrimeHeight_of_mem},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{77}{smoothPrefixLcm_dvd_threePrimeHeight},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{243}{threePrimePositiveJumpSet},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{273}{threePrimeJumpSetWithOrigin},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{662}{DyadicInternalPower},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique},
+\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L688}{\leanlabel{dyadicBlockBase235}},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases},
+\lref{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval},
+\lref{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue},
+\lref{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le},
+\lref{Erdos269/ResidueEscape.lean}{52}{leastPositiveResidue_modEq},
+\lref{Erdos269/ResidueEscape.lean}{71}{ResidueEscapesWindow},
+\lref{Erdos269/ResidueEscape.lean}{76}{no_bounded_positive_state_of_residue_escape},
+\lref{Erdos269/ResidueEscape.lean}{96}{residue_le_bound_of_bounded_positive_state},
+\lref{Erdos269/ResidueEscape.lean}{110}{no_bounded_positive_int_state_of_leastPositiveResidue},
+\lref{Erdos269/RestrictedFloorSum.lean}{417}{windowBase},
+\lref{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing},
+\lref{Erdos269/RestrictedFloorSum.lean}{455}{affineRecurrence_window},
+\lref{Erdos269/RestrictedFloorSum.lean}{469}{windowForcing_const_mul},
+\lref{Erdos269/RestrictedFloorSum.lean}{480}{integralCarry_window},
+\lref{Erdos269/RestrictedFloorSum.lean}{548}{smooth3Val_dvd_threePrimeHeight_of_le},
+\lref{Erdos269/RestrictedFloorSum.lean}{581}{integralCarry_cancel_commonFactor},
+\lref{Erdos269/RestrictedFloorSum.lean}{601}{reducedCarry_pos_le_of_commonFactor},
+\lref{Erdos269/RestrictedFloorSum.lean}{612}{reducedIntegralCarry_window},
+\lref{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape},
+\lref{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val}{smooth lattice
+value},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm}{running least
+common multiple},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight}{pure-power
+height},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}{lattice
+kernel},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{46}{smoothPrefixExponents}{smooth
+prefix index set},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}{running-lcm
+identity},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{77}{smoothPrefixLcm_dvd_threePrimeHeight}{divisibility
+into the height},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents}{first},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents}{second},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents}{third},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube}{cubic
+majorant},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell}{cell
+relation},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}{cell
+constancy of the running value},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell}{cell
+constancy of the height},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell}{cell
+constancy of the kernel},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}{first},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}{second},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}{third},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep}{first
+height step},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep}{second},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}{third},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card}{positive
+jump count},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}{jump
+count with the origin},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card}{channel
+cardinality},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint}{channel
+disjointness},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers}{exclusion
+of the origin},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers}{positive
+power sets},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox}{exponent
+box},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber}{height
+fibre},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}{height-fibre
+normal form},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum}{fibre
+sum},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight}{point
+height},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}{variable-base
+tail step},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}{that names its
+expanded form},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell}{smooth
+exponent shell},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}{short-interval
+uniqueness},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}{third-coordinate
+projection},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst}{first-coordinate
+projection},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}{quadratic
+shell bound},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}{sorted
+quadratic estimate},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne}{non-separation
+witness},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin}{origin},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two}{value at two},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three}{value at
+three},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six}{value at six},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{721}{kernel_235_minor_eq_neg_one_fifteen}{rank-two
+certificate},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}{checked
+internal-power uniqueness lemma},
+\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L688}{dyadic
+block base},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}{exact
+four-case alphabet},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}{bounded-radix
+consequence},
+\lword{Erdos269/RestrictedFloorSum.lean}{548}{smooth3Val_dvd_threePrimeHeight_of_le}{checked
+absorption},
+\lword{Erdos269/RestrictedFloorSum.lean}{581}{integralCarry_cancel_commonFactor}{checked
+cancellation},
+\lword{Erdos269/RestrictedFloorSum.lean}{601}{reducedCarry_pos_le_of_commonFactor}{checked
+bound transfer},
+\lword{Erdos269/RestrictedFloorSum.lean}{612}{reducedIntegralCarry_window}{checked
+window transfer},
+\lword{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}{window base},
+\lword{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}{window forcing},
+\lword{Erdos269/RestrictedFloorSum.lean}{480}{integralCarry_window}{checked
+window identity},
+\lword{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue}{canonical
+representative},
+\lword{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le}{positive
+range},
+\lword{Erdos269/ResidueEscape.lean}{52}{leastPositiveResidue_modEq}{congruence
+to the source integer},
+\lword{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}{cofinal
+local-window escape condition},
+\lword{Erdos269/ResidueEscape.lean}{76}{no_bounded_positive_state_of_residue_escape}{finite
+contradiction},
+\lword{Erdos269/ResidueEscape.lean}{110}{no_bounded_positive_int_state_of_leastPositiveResidue}{integer
+form of the contradiction},
+\lword{Erdos269/ResidueEscape.lean}{138}{leastPositiveResidue_eq_natAbs_of_pos_le_modEq}{exact
+least-positive-residue classifier},
+\lword{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{reduced-carry
+extinction theorem},
+\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L689}{absorbed-carry extinction theorem},
+\lword{Erdos269/BoundedRadixTailEscape.lean}{89}{boundedRadix_zero_or_cofinal_far}{checked},
+\lword{Erdos269/RestrictedFloorSum.lean}{497}{leastPositiveResidue_windowForcing_eq_carry}{checked},
+\lword{Erdos269/WeightedPhaseCarry.lean}{109}{carry_eq_residueDigit_add_coboundary}{residue--coboundary form},
+\lword{Erdos269/WeightedPhaseCarry.lean}{293}{CartierRealisation}{symbolic realisation},
+\lword{Erdos269/WeightedPhaseCarry.lean}{334}{finite_realisedSpan_of_factorisation}{checked},
+\lword{Erdos269/WeightedPhaseCarry.lean}{150}{carryResidue_mem_interval}{carry interval},
+\lword{Erdos269/WeightedPhaseCarry.lean}{157}{residueDigit_mem_interval}{digit interval},
+\lword{Erdos269/ThreeChannelBlockRigidity.lean}{59}{channelBlockNull_iff_channelPotential}{potential
+classifier},
+\lword{Erdos269/CarryLiftExtinction.lean}{178}{no_carryLift_of_errorBound_below_twoPow}{one-index
+extinction},
+\lword{Erdos269/CarryLiftExtinction.lean}{238}{no_bounded_carryLift_of_blockNull_twoAnchors}{uniform
+extinction},
+\lword{Erdos269/CarryLiftExtinction.lean}{289}{binaryLift_twoAnchors_force_firstBlock_sum_one}{first-block
+sum},
+\lword{Erdos269/CarryLiftExtinction.lean}{308}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}{four-state
+obstruction}.
 
 \begin{thebibliography}{10}
 \small\raggedright
