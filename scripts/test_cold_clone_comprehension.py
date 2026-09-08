@@ -428,6 +428,15 @@ def main() -> int:
     }
     diagnostic.validate_incremental_build_contract(incremental_surfaces)
     diagnostic.validate_agent_packets(packets)
+    for route_id in diagnostic.STORY_ROUTES:
+        missing_core = copy_packet_sections(packets, "story_routes")
+        missing_core["story_routes"][route_id]["programme"]["core_claims"].pop()
+        assert_rejected(missing_core, f"exact programme core membership {route_id}")
+        changed_ceiling = copy_packet_sections(packets, "summary")
+        next(row for row in changed_ceiling["summary"]["mathematical_programmes"]
+             if row["id"] == route_id)["claim_ceiling"] = "All unrestricted objectives proved"
+        assert_rejected(changed_ceiling, f"compact programme ceiling {route_id}")
+        checks += 2
 
     mutated_paper_library = compliant_paper_library.replace(
         "## Mathematical signal first", "## Problem portfolio", 1

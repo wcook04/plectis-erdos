@@ -36,10 +36,10 @@ status:
     subsidiary theorems, formalises selected known results, verifies finite
     instances, and records conditional reductions and method barriers.
   proof_corpus_sorry_count: 0
-  sorry_count: 13
+  sorry_count: 16
   sorry_in_definitions: 0
-  trusted_challenge_sorry_count: 13
-  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041CubicPath/Challenge.lean; ExternalVerification1041CubicRootCount/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean; ExternalVerification1049ArchimedeanCap/Challenge.lean; ExternalVerification243WeightedRecordExcess/Challenge.lean; ExternalVerification249TotientKernelBasis/Challenge.lean; ExternalVerification68FiniteDenominator/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
+  trusted_challenge_sorry_count: 16
+  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041CentralFreePoint/Challenge.lean; ExternalVerification1041CubicPath/Challenge.lean; ExternalVerification1041CubicRootCount/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean; ExternalVerification1049ArchimedeanCap/Challenge.lean; ExternalVerification243WeightedRecordExcess/Challenge.lean; ExternalVerification249TotientKernelBasis/Challenge.lean; ExternalVerification68FiniteDenominator/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
   axioms:
     - "propext"
     - "Quot.sound"
@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:a27fd4dd76165434f1cffc53b0f74d6272c32563cf48b0a0950274094ee57a23"
+  problem_index_digest: "sha256:6503b5526ba8cc9d489ffd1883fb83890e74032c0acebb5c60e062b27170d20b"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1626,43 +1626,43 @@ external_verification:
       status: "open"
       checked_frontier: "The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally."
       open_frontier: "Irrationality of the factorial-denominator series."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "partially_registered"
     - id: "erdos_243"
       erdos_number: 243
       status: "open"
       checked_frontier: "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables."
       open_frontier: "The unrestricted problem."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "partially_registered"
     - id: "erdos_249"
       erdos_number: 249
       status: "open"
       checked_frontier: "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint."
       open_frontier: "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "partially_registered"
     - id: "erdos_251"
       erdos_number: 251
       status: "open"
       checked_frontier: "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise."
       open_frontier: "The target irrationality."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "partially_registered"
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
       checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
       open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "partially_registered"
     - id: "erdos_269"
       erdos_number: 269
       status: "open"
       checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
       open_frontier: "Irrationality or transcendence in any three-prime case."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "partially_registered"
     - id: "erdos_1041"
       erdos_number: 1041
       status: "open"
       checked_frontier: "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w."
       open_frontier: "Erdos Problem 1041 in unrestricted degree."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "partially_registered"
       research_frontier:
         directory: "research_corpus/Erdos1041"
         authority_posture: "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority"
@@ -1685,7 +1685,7 @@ external_verification:
       status: "open"
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "Irrationality at base three halves, or for any rational base."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
-  trusted_challenge_holes: 13
+      claim_registry_status: "partially_registered"
+  trusted_challenge_holes: 16
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

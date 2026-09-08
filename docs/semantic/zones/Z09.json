@@ -386,7 +386,7 @@
         {
           "declaration": "totientKernelReductionScalar_ne_zero",
           "module": "Erdos249257/TotientKernelConditional.lean",
-          "line": 35
+          "line": 32
         }
       ],
       "concepts": [
@@ -409,7 +409,7 @@
         {
           "declaration": "allBaseTotientKernelSeq_mul_residue_step",
           "module": "Erdos249257/TotientKernelConditional.lean",
-          "line": 54
+          "line": 51
         }
       ],
       "concepts": [
@@ -432,7 +432,7 @@
         {
           "declaration": "allBaseTotientKernelSeq_mem_span_canonical_of_le",
           "module": "Erdos249257/TotientKernelConditional.lean",
-          "line": 102
+          "line": 99
         }
       ],
       "concepts": [
@@ -455,7 +455,7 @@
         {
           "declaration": "range_canonicalAllBaseTotientKernelFamily_subset_throughLevel",
           "module": "Erdos249257/TotientKernelConditional.lean",
-          "line": 165
+          "line": 162
         }
       ],
       "concepts": [
@@ -478,7 +478,7 @@
         {
           "declaration": "span_allBaseTotientKernelThroughLevelFamily_eq_canonical",
           "module": "Erdos249257/TotientKernelConditional.lean",
-          "line": 185
+          "line": 182
         }
       ],
       "concepts": [
@@ -501,7 +501,7 @@
         {
           "declaration": "finrank_canonicalAllBaseTotientKernel_eq_of_linearIndependent",
           "module": "Erdos249257/TotientKernelConditional.lean",
-          "line": 203
+          "line": 200
         }
       ],
       "concepts": [
@@ -526,7 +526,7 @@
         {
           "declaration": "finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
           "module": "Erdos249257/TotientKernelConditional.lean",
-          "line": 215
+          "line": 212
         }
       ],
       "concepts": [
@@ -3433,85 +3433,85 @@
     },
     {
       "declaration": "allBaseTotientKernelSeq",
-      "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 25,
+      "module": "Erdos249257/AllBaseTotientKernel.lean",
+      "line": 762,
       "role": "concept",
       "statement_node": "all_base_totient_residue_scalar_step"
     },
     {
       "declaration": "totientKernelReductionScalar",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 30,
+      "line": 27,
       "role": "concept",
       "statement_node": "all_base_totient_reduction_scalar_nonzero"
     },
     {
       "declaration": "totientKernelReductionScalar_ne_zero",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 35,
+      "line": 32,
       "role": "statement",
       "statement_node": "all_base_totient_reduction_scalar_nonzero"
     },
     {
       "declaration": "allBaseTotientKernelSeq_mul_residue_step",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 54,
+      "line": 51,
       "role": "statement",
       "statement_node": "all_base_totient_residue_scalar_step"
     },
     {
       "declaration": "canonicalAllBaseTotientKernelFamily",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 81,
+      "line": 78,
       "role": "concept",
       "statement_node": "all_base_totient_channel_mem_canonical_span"
     },
     {
       "declaration": "AllBaseTotientKernelThroughLevelIndex",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 90,
+      "line": 87,
       "role": "concept",
       "statement_node": "all_base_canonical_range_in_full_truncation"
     },
     {
       "declaration": "allBaseTotientKernelThroughLevelFamily",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 94,
+      "line": 91,
       "role": "concept",
       "statement_node": "all_base_totient_canonical_span_equality"
     },
     {
       "declaration": "allBaseTotientKernelSeq_mem_span_canonical_of_le",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 102,
+      "line": 99,
       "role": "statement",
       "statement_node": "all_base_totient_channel_mem_canonical_span"
     },
     {
       "declaration": "range_canonicalAllBaseTotientKernelFamily_subset_throughLevel",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 165,
+      "line": 162,
       "role": "statement",
       "statement_node": "all_base_canonical_range_in_full_truncation"
     },
     {
       "declaration": "span_allBaseTotientKernelThroughLevelFamily_eq_canonical",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 185,
+      "line": 182,
       "role": "statement",
       "statement_node": "all_base_totient_canonical_span_equality"
     },
     {
       "declaration": "finrank_canonicalAllBaseTotientKernel_eq_of_linearIndependent",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 203,
+      "line": 200,
       "role": "statement",
       "statement_node": "all_base_totient_canonical_rank_of_linear_independence"
     },
     {
       "declaration": "finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
       "module": "Erdos249257/TotientKernelConditional.lean",
-      "line": 215,
+      "line": 212,
       "role": "statement",
       "statement_node": "all_base_totient_truncation_rank_of_linear_independence"
     },

@@ -15,9 +15,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def committed_json(path: str) -> dict:
-    return json.loads(
-        subprocess.check_output(["git", "show", f"HEAD:{path}"], cwd=ROOT, text=True)
-    )
+    from query_corpus import decode_json_transport
+    paths = [path + ".gz", path] if path == "docs/semantic_corpus.json" else [path]
+    for candidate in paths:
+        result = subprocess.run(["git", "show", f"HEAD:{candidate}"], cwd=ROOT, capture_output=True)
+        if result.returncode == 0:
+            return json.loads(decode_json_transport(result.stdout))
+    raise RuntimeError(f"committed JSON missing: {path}")
 
 
 def committed_relation_sources() -> tuple[list[tuple[str, dict]], list[tuple[str, dict]]]:

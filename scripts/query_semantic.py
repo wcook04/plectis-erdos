@@ -62,6 +62,7 @@ import re
 from collections import Counter, defaultdict
 from functools import lru_cache
 from pathlib import Path, PurePosixPath
+from query_corpus import json_transport_path, read_json_transport
 
 from build_declaration_atlas import (
     compact_signature,
@@ -73,7 +74,7 @@ from build_declaration_atlas import (
 from build_semantic_corpus import semantic_input_fingerprint
 
 ROOT = Path(__file__).resolve().parent.parent
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = json_transport_path(ROOT / "docs" / "semantic_corpus.json.gz")
 CONTRACT = ROOT / "docs" / "publication_contract.json"
 LAB = ROOT / "docs" / "theory_lab.json"
 PROBLEM_INDEX = ROOT / "docs" / "problems.json"
@@ -143,7 +144,7 @@ def load() -> dict:
         raise SystemExit(
             "docs/semantic_corpus.json missing; run python3 scripts/build_semantic_corpus.py"
         )
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    corpus = json.loads(read_json_transport(CORPUS))
     if corpus.get("semantic_input_fingerprint") != semantic_input_fingerprint():
         raise SystemExit(
             "docs/semantic_corpus.json is stale relative to its inputs; "

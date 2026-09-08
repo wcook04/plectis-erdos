@@ -326,17 +326,13 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         if route.get("title") and route.get("route_kind") != "mathematical_programme":
             row["title"] = route["title"]
         reading_routes.append(row)
+    # First read keeps programme identity and claim ceiling. Full focus, claim
+    # membership and open edges remain in the canonical --route drilldown.
     mathematical_programmes = [
         {
             "id": route["id"],
             "title": route["title"],
-            "mathematical_focus": route["mathematical_focus"],
             "claim_ceiling": route["claim_ceiling"],
-            "core_claim_count": len(route["core_claim_ids"]),
-            "representative_claim_ids": route["core_claim_ids"][:2],
-            "remaining_open_proposition_ids": route[
-                "remaining_open_proposition_ids"
-            ],
         }
         for route in machine_paper["entrypoints"]
         if route.get("route_kind") == "mathematical_programme"
@@ -347,8 +343,12 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             key: architecture["canonical_gateway"][key]
             for key in ("source", "decision")
         },
+        # Factor the repeated disposition without dropping any companion.
+        # A row-level decision overrides this explicit default.
+        "retained_companion_default_decision": "retain_as_full_problem_reasoning_record",
         "retained_companions": [
-            {key: companion[key] for key in ("source", "decision")}
+            {key: companion[key] for key in ("source", "decision")
+             if key != "decision" or companion[key] != "retain_as_full_problem_reasoning_record"}
             for companion in architecture.get("retained_companions", [])
         ],
         "qualified_future_companion": {
@@ -394,7 +394,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             {
                 key: value
                 for key, value in row.items()
-                if key not in ("paper_anchor", "status", "open_target_claim")
+                if key not in ("paper_anchor", "additional_paper_anchors", "status", "open_target_claim", "advancement_status")
             }
             for row in claims["remaining_open_propositions"]
         ],

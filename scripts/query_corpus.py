@@ -417,9 +417,40 @@ SEMANTIC_VOCABULARY = (
 )
 
 
+def json_transport_path(path: Path) -> Path:
+    """Prefer compressed semantic output, retaining old plain-checkout reads."""
+    if path.name in {"semantic_corpus.json", "semantic_corpus.json.gz"}:
+        plain = path.with_name("semantic_corpus.json")
+        compressed = path.with_name("semantic_corpus.json.gz")
+        if compressed.exists() or compressed.is_symlink():
+            return compressed
+        return plain
+    return path
+
+
+def decode_json_transport(data: bytes) -> str:
+    """Return exact logical UTF-8 bytes from plain JSON or gzip transport."""
+    if data.startswith(b"\x1f\x8b"):
+        data = gzip.decompress(data)
+    return data.decode("utf-8")
+
+
+def encode_json_transport(text: str) -> bytes:
+    """Deterministic gzip: no filename, fixed time and OS-independent header."""
+    import io
+    output = io.BytesIO()
+    with gzip.GzipFile(fileobj=output, mode="wb", filename="", mtime=0, compresslevel=9) as stream:
+        stream.write(text.encode("utf-8"))
+    return output.getvalue()
+
+
+def read_json_transport(path: Path) -> str:
+    return decode_json_transport(json_transport_path(path).read_bytes())
+
+
 @lru_cache(maxsize=None)
 def load(rel: str) -> dict[str, Any]:
-    return json.loads((ROOT / rel).read_text(encoding="utf-8"))
+    return json.loads(read_json_transport(ROOT / rel))
 
 
 def atlas_declarations(atlas: dict[str, Any]) -> list[dict[str, Any]]:
@@ -2517,12 +2548,13 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             claims_by_label.setdefault(label, []).append(compact_claim(claim))
     open_by_anchor = {
         canonical_paper_anchor_key(
-            row["paper_anchor"]["source"],
-            row["paper_anchor"]["environment"],
-            row["paper_anchor"]["title"],
+            paper_anchor["source"],
+            paper_anchor["environment"],
+            paper_anchor["title"],
         ): row
         for row in claims["remaining_open_propositions"]
-        if row.get("paper_anchor")
+        for paper_anchor in ([row["paper_anchor"]] if row.get("paper_anchor") else [])
+            + row.get("additional_paper_anchors", [])
     }
 
     inventory: list[dict[str, Any]] = []
@@ -2768,6 +2800,9 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                     bool(
                         re.match(r"Erdos\d+/", file_name)
                         or macro.startswith("m")
+                        # This preamble prefixes lref/lword with ErdosProblems,
+                        # including historical modules absent from this checkout.
+                        or re.search(r"\\input\{problem-note-preamble(?:\.tex)?\}", text)
                     ),
                 )
                 source_links.append(
@@ -9586,13 +9621,21 @@ def paper_reading_guide_packet() -> dict[str, Any]:
     }
 
 
+def orientation_programme_details(orientation: dict[str, Any], claims: dict[str, Any]) -> list[dict[str, Any]]:
+    """Expand compact programme handles from their exact canonical route owner."""
+    routes = {row["id"]: row for row in claims["machine_readable_paper"]["entrypoints"]
+              if row.get("route_kind") == "mathematical_programme"}
+    return [{**routes[row["id"]], "core_claim_count": len(routes[row["id"]]["core_claim_ids"])}
+            for row in orientation["mathematical_programmes"]]
+
+
 def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
     """Return complete bounded coverage for an unfamiliar public reader."""
     orientation = load("docs/orientation.json")
     claims = load("docs/claims.json")
     problems = load("docs/problems.json").get("problems", [])
     assembly = claims["machine_readable_paper"]["publication_assembly"]
-    programmes = orientation["mathematical_programmes"]
+    programmes = orientation_programme_details(orientation, claims)
     open_rows = orientation["remaining_open_propositions"]
     families = assembly["contribution_families"]
     statuses = orientation["status_taxonomy"]
@@ -9772,7 +9815,7 @@ def agent_tour_packet() -> dict[str, Any]:
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     status_counts = Counter(row["status"] for row in claims["claims"])
     coverage = dependency["coverage"]
-    programmes = orientation["mathematical_programmes"]
+    programmes = orientation_programme_details(orientation, claims)
     open_rows = orientation["remaining_open_propositions"]
     indexed_open_problem_count = sum(
         row.get("status") == "open" for row in problems
@@ -10856,6 +10899,10 @@ def main() -> int:
         print(render_card(packet))
     else:
         encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
+        if (packet.get("kind") == "paper_reading_guide"
+                and len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES):
+            # Keep every paper and mathematical boundary; omit only JSON whitespace.
+            encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n"
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
             print(
                 f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; use --format card",

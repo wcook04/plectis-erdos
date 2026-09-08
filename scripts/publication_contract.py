@@ -867,7 +867,18 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
         "public_claims": source["publication_claims"],
         "publication_non_claims": source["publication_non_claims"],
         "registered_mathematical_non_claims": claims["non_claims"],
-        "remaining_open_propositions": claims["remaining_open_propositions"],
+        # Keep every exact boundary and typed edge; repeated TeX coordinates
+        # remain in the digest-bound claims owner, reached by the same exact id.
+        "remaining_open_propositions": [
+            {key: value for key, value in row.items()
+             if key not in {"paper_anchor", "additional_paper_anchors"}}
+            for row in claims["remaining_open_propositions"]
+        ],
+        "remaining_open_details": {
+            "owner": "docs/claims.json::remaining_open_propositions",
+            "query": "python3 scripts/query_corpus.py --open <id>",
+            "boundary": "Full paper coordinates remain canonical; statements, statuses and typed progress edges are preserved here.",
+        },
         "research_frontier": research_frontier,
         "authority_map": {
             "nodes": source["authority_nodes"],

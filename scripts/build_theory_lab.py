@@ -33,11 +33,12 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from query_corpus import json_transport_path, read_json_transport
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = json_transport_path(ROOT / "docs" / "semantic_corpus.json.gz")
 LAB_DIR = ROOT / "docs" / "semantic" / "lab"
 OUTPUT = ROOT / "docs" / "theory_lab.json"
 
@@ -164,6 +165,8 @@ def source_provenance() -> dict:
         "identity_kind": "content_addressed_input_set",
         "declaration_atlas_digest": file_digest(ATLAS),
         "semantic_corpus_digest": file_digest(CORPUS),
+        "semantic_corpus_digest_kind": "stored_transport_bytes",
+        "semantic_corpus_transport": "gzip" if CORPUS.suffix == ".gz" else "plain_json",
         "authored_lab_source_digests": {
             f"docs/semantic/lab/{filename}": file_digest(LAB_DIR / filename)
             for filename in sorted(SOURCES.values())
@@ -179,7 +182,7 @@ def source_provenance() -> dict:
 
 def build() -> dict:
     atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    corpus = json.loads(read_json_transport(CORPUS))
 
     known_declarations = {d["name"] for d in atlas["declarations"]}
     known_nodes = {n["id"] for n in corpus["statement_nodes"]}
@@ -272,7 +275,7 @@ def build() -> dict:
             "whether the mechanisms transfer to mathematics the system was not shown."
         ),
         "layering": {
-            "below": "docs/semantic_corpus.json owns one node per distinct statement",
+            "below": "docs/semantic_corpus.json.gz owns one node per distinct statement",
             "authored_sources": sorted(f"docs/semantic/lab/{v}" for v in SOURCES.values()),
             "above": "docs/claims.json stays the curated publication ledger",
             "proof_authority": "Lean kernel; a mechanism is an explanation, never a proof",

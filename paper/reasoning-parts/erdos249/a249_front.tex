@@ -1,11 +1,11 @@
 \section{The problem, and what is actually known}
 
 Let $\varphi$ be Euler's totient function and put
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}}
   \;=\; \tfrac12 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
   \;=\; 1.3676308019850223\ldots
-\]
+$}\]
 The series converges absolutely because $\varphi(n) \le n$. Erd\H{o}s Problem
 \#249 asks whether $S$ is irrational. \emph{It is open.} Nothing in this
 document decides it, no route recorded here is a proof, and no result here
@@ -47,17 +47,17 @@ explicit witnesses $h = \varphi(\mathrm{oddPart}(r.\mathrm{den}))$, $N_0 = v_2(r
 
 So it suffices to refute integrality cofinally on every period ray. The finite
 device that refutes it is a residue certificate:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{windowDiscrepancy}(h,N,L)
   \;:=\; \sum_{j<L}\bigl(\varphi(N{+}h{+}1{+}j) - \varphi(N{+}1{+}j)\bigr)\,2^{\,L-1-j} \in \Z,
-\]
+$}\]
 the depth-$L$ truncation of $2^{L}(R_{N+h} - R_N)$, and
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{certifiedKill}(h,N,L)
   \;:\Longleftrightarrow\;
   (N{+}h{+}L{+}2) \;<\; \mathrm{windowDiscrepancy}(h,N,L) \bmod 2^{L}
   \;<\; 2^{L} - (N{+}h{+}L{+}2),
-\]
+$}\]
 a decidable condition
 (\lean{Erdos249257.TotientTailPeriodKiller.windowDiscrepancy}{TotientTailPeriodKiller.lean:66},
 \lean{Erdos249257.TotientTailPeriodKiller.certifiedKill}{TotientTailPeriodKiller.lean:72}).
@@ -71,12 +71,12 @@ The entire \#249 side of the programme therefore reduces to one obligation.
 
 \begin{defn}[The supply obligation $\mathrm{Sep}$ --- the exact open target]
 \label{defn:sep}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{Sep}
   \;:\Longleftrightarrow\;
   \forall h \ge 1\ \forall N_0\ \exists N \ge N_0\ \exists L,\;
   \mathrm{certifiedKill}(h,N,L).
-\]
+$}\]
 $\mathrm{Sep} \Rightarrow \mathrm{Irrational}(S)$
 (\lean{Erdos249257.irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394}).
 \coord{binary-digit} \scale{cofinal} \ev{Lean}
@@ -101,7 +101,7 @@ which it is actually proved.
 \begin{thm}[Denominator exclusion --- the headline unconditional fact]
 \label{thm:denom}
 If $S \in \Q$ then its reduced denominator exceeds
-$Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}$.
+$Q_0 := 79\,\allowbreak 639\,\allowbreak 646\,\allowbreak 646\,\allowbreak 701\,\allowbreak 375\,\allowbreak 323\,\allowbreak 355\,\allowbreak 774\,\allowbreak 875\,\allowbreak 831\,\allowbreak 053 \approx 7.96 \times 10^{34}$.
 Equivalently, $S \ne p$ for every $p \in \Q$ with $p.\mathrm{den} \le Q_0$.
 The bound is sharp for the method: $q = Q_0 + 1$ is the exact first failing
 denominator, exhibited as the mediant of two explicit unimodular Farey
@@ -328,11 +328,11 @@ is flagged \ev{Math} throughout for that reason.
 \begin{thm}[B1, the $\gamma$-splice: finite inspection cannot certify the supply]
 \label{thm:gamma}
 Let $B \ge 1$ and let $P > B$. Define $\gamma : \N \to \N$ by
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \gamma(n) := \varphi(n) \ \ (n \le B), \qquad
   \gamma(n) := \begin{cases} n-1, & P \mid n \\ n, & P \nmid n \end{cases}
   \ \ (n > B).
-\]
+$}\]
 Then:
 \begin{enumerate}[label=(\roman*),leftmargin=*]
 \item $\gamma(n) \le n$ for all $n$, so $\gamma$ lies in the same coefficient
@@ -354,12 +354,12 @@ agreeing with $\varphi$ on all of $[1,B]$, whose supply obligation is false.
 (i) is immediate; (ii) holds because $A_\varphi(h,N,L)$ reads $\varphi$ only at
 indices $\le N{+}h{+}L$. For (iii), since $P > B$ every multiple of $P$ exceeds
 $B$, so
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   T_\gamma
   = \sum_{n\ge1}\frac{n}{2^{n}} - \sum_{n \le B}\frac{n - \varphi(n)}{2^{n}}
     - \sum_{k \ge 1} 2^{-kP}
   = 2 - \sum_{n \le B}\frac{n-\varphi(n)}{2^{n}} - \frac{1}{2^{P}-1}.
-\]
+$}\]
 Write $D = A/2^{B}$ with $A = 2^{B+1} - \sum_{n \le B}(n-\varphi(n))2^{\,B-n} \in \Z$.
 Then $T_\gamma = \bigl(A(2^{P}-1) - 2^{B}\bigr)/\bigl(2^{B}(2^{P}-1)\bigr)$, and
 $\gcd\bigl(A(2^{P}-1) - 2^{B},\, 2^{P}-1\bigr) = \gcd(2^{B}, 2^{P}-1) = 1$
@@ -425,7 +425,7 @@ is never used as a premise elsewhere in this document.
   with the required separation
   (\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1765}).
   The mechanism is visible in the converse proof
-  (\texttt{windowSeparatedPairsAt\_of\_cofinally\_scaled\_adjacent\_chord},
+  (\texttt{\breakcode{windowSeparatedPairsAt\_of\_cofinally\_scaled\_adjacent\_chord}},
   \texttt{PivotAntiReconstruction.lean:1663}): it selects $T = \{N, N+1\}$ and
   two ordered pairs, and the counted-energy threshold
   $2\lvert T\rvert^{2}/5 = 8/5 \le 2\delta^{2}$ is met by $\delta = 9/10$.
@@ -450,7 +450,7 @@ proofs themselves and are exactly what the surviving routes in
 A corroborating instance: rank-$2$ second-difference certificates are sound but
 measurably \emph{not} shallower than rank-$1$ --- at $(h,N) = (1,8)$ rank-$1$
 fires at depth $8$ and no rank-$2$ certificate exists at depth $\le 8$
-(\texttt{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell},
+(\texttt{\breakcode{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}},
 \texttt{CertificateKernel.lean:18762}, \ev{Lean}). Separately, the claim
 sometimes made that the Farey growth law $\sup_K(b+d) = \infty$ is ``equivalent
 in difficulty to \#249'' is an argument, not an \emph{iff}: the bound produced
@@ -518,8 +518,8 @@ by it, hence $0$
 (\lean{Erdos257PeriodNoncollapse.not\_actualLcmTerminalDyadicStaircase\_of\_room}{TotientActualLcmTopEdgeStaircase.lean:251});
 and the surviving \emph{punctured} staircase pins its penultimate letter to
 exactly $2^{m-1}$ with $2^{m} < 2(2H{+}J{+}K{+}2)$, i.e.\ no slack at all
-(\texttt{puncturedDyadicStaircase\_penultimate\_eq\_half},
-\texttt{TotientActualLcmTopEdgeStaircase.lean:1187}). The repair the barrier
+(\texttt{\breakcode{puncturedDyadicStaircase\_penultimate\_eq\_half}},
+\texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1187}}). The repair the barrier
 permits is explicit: impose the half-turn on the \emph{word} rather than on one
 delta, i.e.\ ask for cofinally many $(h,N,L)$ with
 $\mathrm{windowDiscrepancy}(h,N,L) \equiv 2^{L-1} \pmod{2^{L}}$ and
@@ -587,7 +587,7 @@ kernel has trivial kernel:
 \item \emph{Shift-polynomial.} An explicit nonzero all-horizon countermodel
   agrees with every exact whole-ray anchor and survives every finite
   commensurate LCM-cube shift polynomial, at every finite rank
-  (\texttt{LcmFactorIdealPulseObstruction.lean}; module docstring, theorem
+  (\texttt{\breakcode{LcmFactorIdealPulseObstruction.lean}}; module docstring, theorem
   bodies not individually re-verified in this pass, and the construction is
   explicitly synthetic --- it does not claim its compensation letters occur as
   actual totient differences).
@@ -660,15 +660,15 @@ the space of things to try is no longer large.
 \begin{defn}[The open analytic obligation]
 \label{defn:fh}
 Write $e(x) := \exp(2\pi i x)$ and
-$\mathrm{windowFirstExp}(h,N,L) := e\bigl((\mathrm{windowDiscrepancy}(h,N,L) \bmod 2^{L})/2^{L}\bigr)$.
+\[\adjustbox{max width=\linewidth}{$\displaystyle \mathrm{windowFirstExp}(h,N,L) := e\bigl((\mathrm{windowDiscrepancy}(h,N,L) \bmod 2^{L})/2^{L}\bigr)$}\].
 $\mathrm{DTWFirstHarmonicNormGap}$ is the statement
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall h \ge 1\ \forall X_0\ \exists X, L : \quad
   \max(X_0,1) \le X, \quad
   16(2X + h + L + 2) \le 2^{L}, \quad
   \Bigl\lVert \sum_{N \in [X,\,2X)} \mathrm{windowFirstExp}(h,N,L) \Bigr\rVert
   \le \tfrac{21}{25}X .
-\]
+$}\]
 It implies $\mathrm{Irrational}(S)$.
 \coord{first-harmonic} \scale{cofinal} \ev{Lean}
 \lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
@@ -682,11 +682,11 @@ the elementary unconditional engine; the $21/25 \to 9/10$ bridge is
 \lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:53}).
 Unpacked, the required object is a constant-saving cancellation estimate for
 the dyadically weighted totient-difference exponential sum
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \sum_{X \le N < 2X}
   e\!\left(\frac{\sum_{j<L}\bigl(\varphi(N{+}h{+}1{+}j)-\varphi(N{+}1{+}j)\bigr)2^{\,L-1-j}}{2^{L}}\right),
   \qquad L \approx \log_2 X + O(1).
-\]
+$}\]
 \textbf{Not one instance of this bound is proved anywhere, at any $X$, $h$ or
 $L$.} Both trees were searched for a theorem supplying it; only consumers
 exist. \ev{Open}
@@ -791,12 +791,12 @@ bad-cofactor and non-supplier contributions and bound the four separately.
 For every $h > 0$ there are $s > 0$ and $\eta \in (0,1)$ such that for every
 $X_0$ there are $X, L$ with $\max(X_0,1) \le X$, $h \le L - s$,
 $16(2X{+}h{+}L{+}2) \le 2^{L}$, and all four of
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{Re}\,\mathrm{pivotCenteredCorrelation} \le \tfrac{14}{25}X, \quad
   \lVert \mathrm{pivotFiberMean} \rVert \le \tfrac{1}{100}X, \quad
   \lVert \mathrm{pivotBad} \rVert \le \tfrac{1}{100}X, \quad
   \lVert \mathrm{pivotNonSupplier} \rVert \le \tfrac{8}{25}X .
-\]
+$}\]
 It implies $\mathrm{Irrational}(S)$.
 \coord{first-harmonic} \scale{cofinal} \ev{Lean}
 \lean{Erdos249257.DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:569}
@@ -875,10 +875,10 @@ disk proves it at a single prime for a single $h$. It ranks below Survivor 1.
 \label{defn:apfde}
 For every $d \ge 1$ and every $N$ there is $t \ge 1$ with
 $\mathrm{certifiedKill}(td,\,N,\,td)$; unpacked,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   N + 2td + 2 \;<\; \mathrm{windowDiscrepancy}(td,N,td) \bmod 2^{td}
   \;<\; 2^{td} - (N + 2td + 2).
-\]
+$}\]
 It implies $\mathrm{Irrational}(S)$.
 \coord{period-ray} \scale{cofinal} \ev{Lean}
 \lean{ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441}

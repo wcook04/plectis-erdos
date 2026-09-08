@@ -632,6 +632,29 @@ def validate_agent_tour() -> None:
     assert run("--tour").stdout == card.stdout
 
 
+def validate_paper_json_encoding() -> None:
+    """The full shelf survives whitespace compaction; the byte ceiling remains enforced."""
+    original = query_corpus.query_args_packet
+    packet = query_corpus.paper_reading_guide_packet()
+    try:
+        for candidate, expected_exit in (
+            (packet, 0),
+            ({"kind": "paper_reading_guide", "statement": "x" * (query_corpus.OUTPUT_BUDGET_BYTES + 1)}, 2),
+        ):
+            query_corpus.query_args_packet = lambda: (candidate, "json")
+            output, error = io.StringIO(), io.StringIO()
+            with contextlib.redirect_stdout(output), contextlib.redirect_stderr(error):
+                code = query_corpus.main()
+            assert code == expected_exit
+            if code == 0:
+                assert json.loads(output.getvalue()) == candidate
+                assert len(output.getvalue().encode("utf-8")) <= query_corpus.OUTPUT_BUDGET_BYTES
+            else:
+                assert "response exceeds" in error.getvalue()
+    finally:
+        query_corpus.query_args_packet = original
+
+
 def validate_paper_guide() -> None:
     packet = query("--papers", "--format", "json")
     corpus = load("docs/papers/corpus.json")
@@ -1975,6 +1998,7 @@ def main() -> int:
     validate_research_corpus_fingerprint()
     validate_lean_code_projection()
     validate_agent_tour()
+    validate_paper_json_encoding()
     validate_paper_guide()
     validate_indexed_declaration_search_equivalence()
     validate_bounded_declaration_search_materialization()
@@ -2959,7 +2983,21 @@ def main() -> int:
         "Finite dyadic-totient rank and certificate interface"
     )
     assert totient_mahler["dependency_neighbourhood"]["receipt"]["imports_total"] == 0
-    assert totient_mahler["dependency_neighbourhood"]["receipt"]["importers_total"] == 2
+    # Check the actual finite-kernel consumers and bounded omission receipt.
+    # Both published kernel assemblies add genuine source imports.
+    expected_totient_importers = {
+        "Erdos249257",
+        "Erdos249257.AllBaseTotientKernel",
+        "Erdos249257.TotientCarryKernelRigidity",
+        "ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies",
+    }
+    for module in expected_totient_importers:
+        source = ROOT / (module.replace(".", "/") + ".lean")
+        assert "import Erdos249257.TotientMahlerDefect" in source.read_text().splitlines()
+    neighbours = totient_mahler["dependency_neighbourhood"]
+    assert neighbours["receipt"]["importers_total"] == len(expected_totient_importers)
+    assert {row["id"] for row in neighbours["importers"]} == set(sorted(expected_totient_importers)[:3])
+    assert neighbours["receipt"]["importers_omitted"] == len(expected_totient_importers) - 3
 
     aliases = json.loads((ROOT / "paper" / "module-aliases.json").read_text(encoding="utf-8"))
     assert aliases["alias_count"] == len(aliases["aliases"])
@@ -3642,6 +3680,15 @@ def main() -> int:
                 f"{link['declaration']!r}, but at its pinned commit "
                 f"{note_commit} that line reads {lines[index].strip()!r}"
             )
+    historical_staircase_links = [
+        link for anchor in anchors
+        if anchor["paper"]["source"] == "paper/erdos269-running-lcm-reasoning-surface.tex"
+        for link in anchor["source_links"]
+        if "IrrationalRotationStaircase.lean" in link["source_ref"]
+    ]
+    assert historical_staircase_links
+    assert all(link["source_ref"].startswith("ErdosProblems/Shared/")
+               for link in historical_staircase_links)
     assert live_link_count > 100, (
         f"only {live_link_count} live-atlas source links were checked"
     )
@@ -3768,6 +3815,7 @@ if __name__ == "__main__":
     if sys.argv[1:] == ["--programme-routes-only"]:
         validate_programme_routes()
         validate_agent_tour()
+        validate_paper_json_encoding()
         validate_paper_guide()
         validate_natural_language_search()
         print(

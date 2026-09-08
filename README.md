@@ -96,28 +96,49 @@ private reporting route.
 
 ## What is here
 
-One paper per problem, each pairing checked progress with its open obligation.
+Each problem has a short note and a retained long reasoning record. The
+[searchable paper corpus](docs/papers/README.md) carries both, with source
+links and the remaining obligations; the short notes are the first reading route.
 
 ## Problem papers
 
-[**#68**](erdos-68-factorial-denominator-irrationality.pdf) reduces irrationality
-to infinitely many failures of one divisibility test; producing them remains
-open.
+[**#68**](erdos-68-factorial-denominator-irrationality.pdf) proves that any
+rational representation of the factorial-gap series has denominator
+[`q > 10¹²⁰⁴⁰`](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean#L58).
+The finite certificate is checked in Lean. Irrationality is equivalent to
+infinitely many failures of a divisibility test; that infinitude remains open.
 
-[**#243**](erdos-243-reciprocal-tail-rigidity.pdf) excludes a bounded negative
-part after Koizumi's normalised vanishing. The required bound remains open.
+[**#243**](erdos-243-reciprocal-tail-rigidity.pdf) characterises eventual
+Sylvester recurrence by [summability of weighted excess at records of the
+canonical LCM orbit](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalWeightedRecords.lean#L268).
+The equivalence assumes a positive increasing integer sequence with rational
+reciprocal sum and consecutive-term ratio tending to its quadratic scale.
+The [factored growth-defect form](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos243/PaperCompleteR8/GrowthDebtSummability.lean#L234) is
+also checked, with the same hypotheses and actual LCM record indices.
+Proving the summability condition remains open.
 
-[**#249**](erdos-249-binary-totient-series.pdf) gives explicit rational bases for
-the dyadic sections of Euler's totient, exact level rank `2ᵉ + 1`, denominator
-exclusion to about `7.96 × 10³⁴`, and diagonal certificates for every `t ≤ 82`.
+[**#249**](erdos-249-binary-totient-series.pdf) gives explicit bases and
+reduction formulas for the sections of Euler's totient: [finite-level
+all-base kernels and the full dyadic kernel](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35),
+with exact dyadic level rank `2ᵉ + 1`. It also proves denominator exclusion to
+about `7.96 × 10³⁴` and diagonal certificates for every `t ≤ 82`.
 No unbounded producer is proved.
 
 [**#251**](erdos-251-prime-gap-dyadic-series.pdf) checks the prime-gap identity
 and a tail-shift equivalence. The concrete prime-tail bridge remains open.
+A [synthetic countermodel](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos251/AllResidueLogarithmicR9.lean#L503) has positive even,
+non-eventually-periodic coefficients bounded by 4 log(n+1)+24, with values
+2 and 4 recurring arbitrarily late in every index residue class. Its complete
+dyadic sum is 6, every tail shift is integral, and its cumulative positions
+satisfy P_n/(n log n)→1. These positions are not asserted to be prime.
 
 [**#257**](erdos-257-mersenne-support-subseries.pdf) checks full support,
 finite-period noncollapse, and the Mersenne achievement set's topology and
 measure. The universal statement and the `1/2` and `1/21` targets remain open.
+The [exact span bounds](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L94) place its total weight strictly
+between 1.60669 and 1.60670. A [finite-prefix certificate](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L46)
+excludes the interval (2/3,1), including 3/4; this classical gap does not settle
+either distinguished target.
 
 [**#269**](erdos-269-three-prime-running-lcm.pdf) records a two-prime
 transcendence argument. **This is not first and not formalised.** Steve Fan
@@ -133,9 +154,32 @@ The corpus also checks Newton-flow decay, ray separation, collision geometry,
 and root retention. The unrestricted path problem remains open. From the
 proof checkout, run `lake build ErdosProblems.Erdos1041.PaperCubicCompletion`.
 
-[**#1049**](erdos-1049-rational-base-lambert.pdf) checks construction-specific
-no-go theorems and four-jet cancellation at base `3/2`. It proves no
-irrationality result, and the primitive construction remains open.
+The [monic-cubic adapter](https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1041/PaperCubicMonic.lean#L32)
+derives the root enumeration from monicity and degree three. It supplies the
+same connector under the usual polynomial hypotheses; squarefreeness makes
+its endpoints distinct. A separate [central-disk theorem](https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1041/FreePointCentralCompletion.lean#L39)
+proves that, for every positive `m` and complex points with
+`|c_j| ≤ sqrt(1-exp(-2))`, the sum of the geometric row means of
+`|1-conj(c_j)c_k|` is at most `m`. This includes the analytic energy and
+variance proofs, but asserts neither an equality case nor a full-disk bound.
+It does not itself produce a short connecting path.
+
+The analytic proof now also has checked [Poisson norm-square majorization](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/PoissonNormSquare.lean#L114) for a holomorphic function continuous on the closed unit disk, and [termwise circle integration](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/CircleSeriesTransport.lean#L49) under a summable uniform norm bound. The weighted kernel identity is checked as well. These are analytic steps toward the full-disk weighted inequality; they do not enlarge the checked central-region free-point conclusion.
+
+[**#1049**](erdos-1049-rational-base-lambert.pdf) proves an
+[Archimedean obstruction for approximants valid at every base greater than
+one](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162):
+under the stated quadratic degree, height, and error asymptotics, the decay
+rate cannot exceed the degree rate. It also checks construction-specific
+obstructions and four-jet cancellation at base `3/2`. No irrationality result
+is proved; the primitive construction remains open.
+
+The [no-decay theorem](https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1049/PaperNoDecayR9.lean#L69)
+further shows that, under its base-uniform polynomial degree, height and
+error hypotheses, the actual-degree homogenised remainders cannot tend to
+zero at natural ratios `a/b` with `1 ≤ b < a < b²`. It requires no convergence
+of the normalised degrees. This is an obstruction to that approximation
+method; it asserts neither divergence nor irrationality.
 
 ## What the checks establish
 
@@ -146,6 +190,12 @@ boundary, `sorry` count, and axioms. The
 [verification packet](docs/EXTERNAL_VERIFICATION.md) covers all eight problem
 programmes. Comparator does not assess exposition, citations, computation,
 meaning, novelty, or significance.
+
+Six focused packages have authenticated positive and deliberate-mismatch
+receipts at [`3dda234b`](https://github.com/wcook04/plectis-erdos/actions/runs/34195347556).
+Those receipts cover their exact selected statements at that commit. Expanded
+packages and later analytic results require their own replay; a wrapper or
+a successful Lean build does not extend the earlier Comparator coverage.
 
 [`docs/claims.json`](docs/claims.json) owns every claim record and its status,
 [`docs/PALOMAR_RESULT_SHOWCASE.json`](docs/PALOMAR_RESULT_SHOWCASE.json) owns the
@@ -211,15 +261,15 @@ relicense the research corpus or transfer credit for participants' mathematics.
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
 ## Corpus at a glance
 
-The layer a mathematician should judge is small: 131 curated claim records in 30 contribution families, reaching Lean source through 405 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
+The layer a mathematician should judge is small: 143 curated claim records in 30 contribution families, reaching Lean source through 432 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-The rest is engineering inventory. About 93% of the 153,772 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 92% of the 154,750 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,067 |
-| Formal results and supporting lemmas | 151,471 |
-| Curated claim records | 131 |
+| Lean modules (the two library roots) | 1,143 |
+| Formal results and supporting lemmas | 152,257 |
+| Curated claim records | 143 |
 | Contribution families | 30 |
 
 Generated shards are counted as formal source and never as separate

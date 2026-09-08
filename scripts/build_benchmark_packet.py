@@ -41,6 +41,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from query_corpus import json_transport_path, read_json_transport
 import re
 import subprocess
 import sys
@@ -50,7 +51,7 @@ import validation_singleflight as singleflight
 ROOT = Path(__file__).resolve().parents[1]
 ENVIRONMENT_CONTRACT = "clean_reproduction_subprocess_environment_v1"
 GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = json_transport_path(ROOT / "docs" / "semantic_corpus.json.gz")
 LAB = ROOT / "docs" / "theory_lab.json"
 ARMS = (
     "signatures",
@@ -258,7 +259,7 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
     if arm not in ARMS:
         raise SystemExit(f"unknown arm {arm!r}; expected one of {', '.join(ARMS)}")
 
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    corpus = json.loads(read_json_transport(CORPUS))
     lab = json.loads(LAB.read_text(encoding="utf-8")) if LAB.exists() else {}
 
     sha, parent, subject = introduction_commit(target)

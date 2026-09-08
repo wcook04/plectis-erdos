@@ -1756,13 +1756,15 @@ def main(argv: list[str] | None = None) -> int:
         expected_open_ids = {
             row["id"]
             for row in data["remaining_open_propositions"]
-            if row.get("paper_anchor")
-            and canonical_paper_anchor_key(
-                row["paper_anchor"]["source"],
-                row["paper_anchor"]["environment"],
-                row["paper_anchor"]["title"],
+            if any(
+                canonical_paper_anchor_key(
+                    paper_anchor["source"],
+                    paper_anchor["environment"],
+                    paper_anchor["title"],
+                ) == anchor_key
+                for paper_anchor in ([row["paper_anchor"]] if row.get("paper_anchor") else [])
+                    + row.get("additional_paper_anchors", [])
             )
-            == anchor_key
         }
         check(observed_open_ids == expected_open_ids,
               f"paper anchor {anchor['canonical_handle']}: open proposition set drifted")
@@ -2519,13 +2521,7 @@ def main(argv: list[str] | None = None) -> int:
         {
             "id": route["id"],
             "title": route["title"],
-            "mathematical_focus": route["mathematical_focus"],
             "claim_ceiling": route["claim_ceiling"],
-            "core_claim_count": len(route["core_claim_ids"]),
-            "representative_claim_ids": route["core_claim_ids"][:2],
-            "remaining_open_proposition_ids": route[
-                "remaining_open_proposition_ids"
-            ],
         }
         for route in machine_paper["entrypoints"]
         if route.get("route_kind") == "mathematical_programme"
@@ -2548,8 +2544,14 @@ def main(argv: list[str] | None = None) -> int:
             for key in ("id", "decision")
         },
     }
-    check(orientation.get("editorial_architecture")
-          == expected_editorial_architecture,
+    projected_architecture = dict(orientation.get("editorial_architecture", {}))
+    companion_default = projected_architecture.pop("retained_companion_default_decision", None)
+    if companion_default is not None:
+        projected_architecture["retained_companions"] = [
+            dict(row, decision=row.get("decision", companion_default))
+            for row in projected_architecture.get("retained_companions", [])
+        ]
+    check(projected_architecture == expected_editorial_architecture,
           "orientation editorial architecture drifted from publication_assembly")
     editorial_state = publication_assembly["editorial_state"]
     expected_editorial_state = {

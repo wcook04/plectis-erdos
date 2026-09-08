@@ -879,7 +879,7 @@ the only machine novelty marks in this release, against 5,505 of 6,089
 statement nodes still `not_assessed`. They concentrate in the #249/#257 core
 (the totient Möbius-numerator normal form, a rank-one overshoot barrier, and
 the `1/2` tail-escape and middle-producer family). Reproduce the list from
-`docs/semantic_corpus.json` (`statement_nodes[].prior_art_state`); candidate
+`docs/semantic_corpus.json.gz` (`statement_nodes[].prior_art_state`); candidate
 status is a search outcome recorded for triage, not a novelty claim.
 
 ## What is proved

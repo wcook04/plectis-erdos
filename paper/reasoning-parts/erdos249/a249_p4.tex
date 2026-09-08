@@ -64,7 +64,7 @@ however large, is evidence and not proof. \ev{Math} \scale{n/a}
 \coord{binary-digit}.
 
 \subsection{The parity-aperiodicity countermodel
-(\texttt{TotientParityCoboundaryCountermodel})}
+(\texttt{\breakcode{TotientParityCoboundaryCountermodel}})}
 \label{sec:parity-countermodel}
 
 \textbf{(a) Route as conceived.} A natural strengthening of \#249 attempts:
@@ -119,7 +119,7 @@ literally the mechanism instantiated informally in
 Theorem~\ref{thm:gamma}'s \(\gamma\)-splice construction. It is also a
 ready-made stress-test fixture for any future parity-based sufficient
 condition proposed anywhere in the corpus. Confirms the corpus-wide lesson
-(project memory \texttt{feedback\_erdos\_reductions\_rejected\_bank\_real\_results}):
+(project memory \texttt{\breakcode{feedback\_erdos\_reductions\_rejected\_bank\_real\_results}}):
 only arguments using \emph{actual} quantitative totient/Mersenne size or
 residue information — as in the \texttt{TotientActualLcm*},
 \texttt{TotientFixedRank*} families below — can possibly close \#249; pure
@@ -450,6 +450,59 @@ with \(Q\cdot v\cdot A=\mathrm{boundary}\), \(|\mathrm{boundary}|<Q\cdot v\),
 \scale{uniform} (holds for every \(e\); existence side is unconditional, via
 Mathlib's CRT + primes-in-AP machinery) \coord{binary-digit} (dyadic
 totient-kernel — \emph{not} the Möbius coordinate).
+
+\paragraph{Integral coordinates and the complete relation module.}
+The independence statement also determines the arithmetic of the channel
+lattice.  Fix $e\ge1$, write $F_{j,r}(n)=\varphi(2^j n+r)$, and let
+$I_e=\{(j,r):0\le j\le e,\ 0\le r<2^j\}$.  Retain $F_{0,0}$,
+$F_{1,0}$, and the odd-residue channels at levels $1,\ldots,e$; call
+this retained index set $J_e$.  The totient identities reduce every omitted
+channel to $F_i=a_iF_{j(i)}$ for a retained channel $j(i)$ and an integer
+$a_i\ge0$.  Thus the retained family generates the lattice
+$L_e=\sum_{i\in I_e}\mathbb Z F_i$.  Its rational independence gives
+integer independence as well: every element of $L_e$ has unique integer
+coordinates in these $2^e+1$ retained channels.
+
+To describe \emph{all} integral relations, let $E_i$ denote the formal
+coordinate vector in $\mathbb Z^{I_e}$ and use the evaluation map
+\[\adjustbox{max width=\linewidth}{$\displaystyle
+ \operatorname{ev}_e:\mathbb Z^{I_e}\longrightarrow L_e,
+ \qquad (c_i)\longmapsto\sum_{i\in I_e}c_iF_i.
+$}\]
+For each omitted index put $R_i=E_i-a_iE_{j(i)}$.  Then
+\[\adjustbox{max width=\linewidth}{$\displaystyle
+ \ker(\operatorname{ev}_e)
+   =\bigoplus_{i\in I_e\mathbin{\backslash} J_e}\mathbb Z R_i,
+ \qquad
+ \operatorname{rank}_{\mathbb Z}\ker(\operatorname{ev}_e)=2^e-2.
+$}\]
+Indeed, subtracting $\sum_{i\notin J_e}c_iR_i$ from a relation removes
+all omitted coordinates.  The remainder is a relation among retained
+channels, so independence makes it zero.  Conversely, the coefficient of
+$E_i$ in $\sum_{h\notin J_e}b_hR_h$ is exactly $b_i$, proving uniqueness.
+The decisive feature is the unit pivot $1$ in each omitted coordinate
+(or $-1$ if a relation is oriented oppositely).  Elimination uses no division;
+it therefore identifies the integral relation lattice, not merely its
+rational span.  The depth-two example in the short note illustrates these
+two-term rows.
+
+The \href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398}{integral normal form} and the \href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156}{full dyadic rational basis} are kernel-checked in Lean.
+The formal statement gives the same construction for every integer base
+$k\ge2$, with relation rank $\sum_{j=1}^{e-1}k^j$.  The full dyadic
+assembly separately gives a basis for the infinite rational span and for
+its finitely supported rational relations.  These finite and infinite
+statements should not be confused with a claim about infinite sums of
+relations.
+
+Integral coordinates are relative to the \emph{generated} lattice $L_e$.
+They do not say that $L_e$ contains every integer-valued sequence in its
+rational span.  For $e\ge2$, the sequence $\varphi(4n+3)/2$ is integer-valued,
+since $4n+3\ge3$ and its totient is even.  Its retained-channel coordinate
+is $1/2$ at $F_{2,3}$, so uniqueness excludes it from $L_e$, although its
+double lies in $L_e$.  Thus the lattice is not saturated in that ambient
+integer-valued group.  The unit-pivot argument is elementary module
+elimination applied to the arithmetic reductions and the independence
+proved above; it requires no additional prime-distribution input.
 
 \textbf{(c) Precise scope — coordinate-relative, stated explicitly by the
 source module.} This does \emph{not} show irrationality of \(S\). It proves
@@ -812,7 +865,7 @@ hypothesis strength & Not promotable. Unconditional and uniform in both
 parameters \((c,t)\); the sole missing input is an orbit-level skip-gap
 bound on the rational half-greedy orbit, never proved and never previously
 isolated as a target anywhere in the banks. \\
-257-cofinal-rows & greedyHalfFrozenMargin\_nonneg,
+257-cofinal-rows & \texttt{\breakcode{greedyHalfFrozenMargin\_nonneg}},
 \lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1198} & scale only &
 Not promotable. The margin-nonnegativity horizon is produced by a
 \emph{non-effective} limit argument (an existential horizon from a
@@ -879,7 +932,7 @@ theorem is already at the obligation's exact quantifier shape; a single
 named arithmetic fact — a Weyl-sum cancellation bound, a one-sided residue
 gap, an orbit-level skip-gap bound — is missing and is not a re-derivation
 of anything on disk.
-\item \textbf{scale\_only} (5 rows: SEP-02, greedyHalfFrozenMargin\_nonneg,
+\item \textbf{scale\_only} (5 rows: SEP-02, \texttt{\breakcode{greedyHalfFrozenMargin\_nonneg}},
 NM-02, NM-03, NM-12). The mathematics is either already general or reduces
 to a finite verified range; what is missing is either extending a finite
 census (SEP-02) or effectivising a non-constructive existence bound

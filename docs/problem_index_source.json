@@ -84,7 +84,8 @@
         "Integral channel congruences, the lcm tax, the prime unit translator, and factorial-grid Cramer residual identities.",
         "Weighted projection and factor-split rigidity consumers with their exact modular and Archimedean hypotheses.",
         "The zero-plateau and first-exit carry dichotomy, prime-power prefix obstructions, and exact doubled-prime branch characterisations.",
-        "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; an independently regenerated exact GMP certificate at m = 300000 supplies the finite input."
+        "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; an independently regenerated exact GMP certificate at m = 300000 supplies the finite input.",
+        "A separate Lean finite certificate proves q > 10^12040 for every hypothetical positive rational denominator; it does not provide an unbounded producer."
       ],
       "what_is_not_checked": [
         "Irrationality of the factorial-denominator series.",
@@ -187,13 +188,13 @@
         "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
         "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
         "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
-        "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
+        "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon.",
+        "For the actual canonical LCM orbit, eventual Sylvester recurrence is equivalent to weighted record-excess summability, including the factored growth-defect formulation, under the stated sequence, rational-sum, ratio, and weight hypotheses."
       ],
       "what_is_not_checked": [
         "The unrestricted problem.",
-        "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
         "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
-        "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
+        "The earlier centred-state interface takes analytic hypotheses as premises. The separately checked canonical LCM weighted-record and factored growth-defect equivalences now apply to the actual positive increasing integer sequence under rational reciprocal sum and quadratic-scale ratio convergence; they still do not prove the required weighted summability."
       ],
       "open_obligations": [
         {
@@ -201,12 +202,12 @@
           "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part."
         },
         {
-          "id": "derive_the_two_analytic_hypotheses",
-          "statement": "Derive eventual strict centring and normalised vanishing from the growth hypothesis and rationality, or show that they do not follow."
+          "id": "canonical_weighted_record_summability",
+          "statement": "Prove the weighted record-excess summability condition in the checked canonical LCM equivalence under the original sequence hypotheses."
         },
         {
           "id": "formalise_the_published_criteria",
-          "statement": "Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses."
+          "statement": "Compare each cited Erdos–Straus and Duverney criterion with the exact hypotheses and conclusion of the checked canonical LCM weighted-record and growth-defect equivalences. Formalise any remaining unmatched cited criterion; no blanket formalisation of all cited criteria is asserted."
         }
       ],
       "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale."
@@ -282,7 +283,8 @@
         "That the two-by-two checkerboard kills separable backgrounds and is unique up to scale under the four row and column cancellations.",
         "An abstract four-point divisor-layer identity, stated from its four explicit factorisation hypotheses.",
         "An affine completion no-go: every residue class modulo an even modulus has a digit that recentres one carry step.",
-        "Exact producer and consumer interfaces for prime-ray layer supply, bounded-degree order witnesses, and finite-prime-support escape."
+        "Exact producer and consumer interfaces for prime-ray layer supply, bounded-degree order witnesses, and finite-prime-support escape.",
+        "Explicit all-base totient kernel coordinate and relation bases, and full dyadic kernel assemblies, are separately registered; finite-level dyadic rank is 2^e + 1."
       ],
       "what_is_not_checked": [
         "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.",
@@ -399,7 +401,8 @@
         "That the actual consecutive-prime-gap sequence is unbounded, by the factorial prime-free-interval construction, and therefore is not eventually periodic with any positive period.",
         "For any integer-digit dyadic tail recurrence, two adjacent fixed-length shifts lying strictly between -1 and 1 cannot both be integral when the corresponding digits differ.",
         "For the actual prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap excludes eventual integrality of that fixed shift.",
-        "The generic distance-to-integers core of the finite-truncation criterion: an approximation farther than its error bound from every integer certifies non-integrality."
+        "The generic distance-to-integers core of the finite-truncation criterion: an approximation farther than its error bound from every integer certifies non-integrality.",
+        "An explicit synthetic positive-even nonperiodic sequence has logarithmic coefficient growth, values 2 and 4 arbitrarily late in every residue class, dyadic sum 6, integral tail shifts, and cumulative positions asymptotic to n log n. These positions are not asserted to be primes."
       ],
       "what_is_not_checked": [
         "The target irrationality.",
@@ -451,7 +454,8 @@
       "what_is_checked": [
         "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
         "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
-        "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
+        "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero.",
+        "The full achievement set has measure one and total span strictly between 1.60669 and 1.60670; the finite-prefix tail certificate excludes (2/3,1). Neither distinguished target 1/2 nor 1/21 is decided."
       ],
       "what_is_not_checked": [
         "The universal irrationality problem, or irrationality for any new infinite support.",
@@ -670,14 +674,15 @@
         "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
         "For two translated critical values, the ray-collision locus is a real affine line with an exact one-parameter description.",
         "A finite family of ray-collision lines can be avoided by an arbitrarily small common translation.",
-        "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
+        "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc.",
+        "The complete cubic connector and its monic degree-three adapter have length strictly below two in the open lemniscate; squarefreeness ensures distinct endpoints. Separately, the free-point bound is checked on radius sqrt(1-exp(-2)), and Poisson norm-square majorization and uniformly summable termwise circle integration are checked. The full-disk weighted theorem is not thereby formalised."
       ],
       "what_is_not_checked": [
         "Erdos Problem 1041 in unrestricted degree.",
         "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block.",
         "A proof or counterexample for Proposition 12 itself; a four-pronged or cut-annulus repair may still exist.",
         "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
-        "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
+        "The global planar decomposition and metric gluing in unrestricted degree; the complete cubic connector is separately checked."
       ],
       "open_obligations": [
         {
@@ -839,7 +844,8 @@
         "That the four-jet target has exact cardinality (3^R)^2(2^S)^2 and, for positive R, any family with n at least 4R+2S forces two distinct binary selectors to collide; their {-1,0,1} difference cancels all four endpoint jets.",
         "That the rectangular Hermite-Pade threshold never improves on the classical one in the checked exponent model, with equality characterised exactly.",
         "The exact 81/200 height region: 31/4 and every positive power lie inside it and outside the earlier Bundschuh-Vaananen region, while 3/2 lies outside both.",
-        "At n = 0, the Amdeberhan-Zeilberger q-Apery operator applied to Van Assche's moving diagonal has residual -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2), which is strictly negative and nonzero for every real p > 1."
+        "At n = 0, the Amdeberhan-Zeilberger q-Apery operator applied to Van Assche's moving diagonal has residual -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2), which is strictly negative and nonzero for every real p > 1.",
+        "The base-uniform Archimedean cap and actual-degree no-decay theorem are checked under their explicit degree, height, and error hypotheses. For natural 1 <= b < a < b^2 the latter excludes convergence of the cleared remainder to zero without requiring degree convergence; it proves neither divergence nor irrationality."
       ],
       "what_is_not_checked": [
         "Irrationality at base three halves, or for any rational base.",

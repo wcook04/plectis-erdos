@@ -610,6 +610,40 @@ The third hypothesis, on its own, is available. For the actual gaps tabulated in
 
 Lean checks the factorial argument as [unboundedness of the actual gaps](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb4e24651b37cd096d3749ef299c3317930b3a3b/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L57) and the conclusion as [non-eventual periodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb4e24651b37cd096d3749ef299c3317930b3a3b/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023). The statement at the index convention displayed above is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos251/PaperCoreR7.lean#L175). Combining nonperiodicity with eventual strict smallness of one positive shift would also exclude eventual integrality, but eventual smallness at every sufficiently large index is stronger than the cofinal adjacent-pair hypothesis in Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">17</a> and is not asserted here.
 
+<a id="res:all-residue-log-countermodel"></a>
+
+## A complete countermodel in every residue class
+
+There is a synthetic integer sequence $`(a_n)_{n\ge1}`$ with all of the following properties. Each $`a_n`$ is positive and divisible by $`2`$, and
+``` math
+a_n\le 4\log(n+1)+24.
+```
+For every $`t\ge1`$, every $`0\le r<t`$, and every cutoff $`N`$, there are $`i,j\ge N`$ such that
+``` math
+i\equiv j\equiv r\pmod t,\qquad a_i=2,\quad a_j=4.
+```
+For every integer $`B`$ and cutoff $`N`$, some $`n\ge N`$ satisfies $`a_n>B`$. For every $`h\ge1`$ there is no cutoff after which $`a_{n+h}=a_n`$ for all $`n`$. Nevertheless, all the complete tails
+``` math
+U_N=\sum_{j\ge1}\frac{a_{N+j}}{2^j}\quad(N\ge0)
+```
+are integers, $`U_0=6`$, and $`U_{N+h}-U_N\in\mathbb Z`$ for every $`N,h\ge0`$. The sequence
+``` math
+P_N=3+\sum_{j=1}^{N}a_j
+```
+is strictly increasing and odd, with $`P_N/(N\log N)\to1`$. These are synthetic positions; no $`P_N`$ is asserted to be prime.
+
+To obtain every residue class, enumerate triples consisting of a positive modulus, a residue, and a repetition index. Choose the corresponding centres $`c_k`$ in the prescribed classes with $`c_0\ge100`$, $`c_{k+1}\ge c_k+3`$ and $`c_k\ge2^{k^2}`$ for $`k\ge1`$. The parity of the repetition index selects the desired value $`v_k=2`$ or $`4`$. Use the even baseline
+``` math
+b_n=6+2\left\lfloor\frac{\log(n+1)}2\right\rfloor,
+ \qquad
+ U_n=\begin{cases}2b_{n-1}-v_k,&n=c_k,\\b_n,&n\notin\{c_k:k\ge0\},\end{cases}
+```
+and define $`a_n=2U_{n-1}-U_n`$. The separation of the centres and the baseline increment bound give positivity and the displayed logarithmic bound. Finite telescoping leaves $`U_{N+m}/2^m`$, which tends to zero; thus these carries are the complete tails. The sparse changes to the baseline have negligible contribution after division by $`N\log N`$, which gives the stated growth of $`P_N`$.
+
+The full statement is [kernel-checked in Lean](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos251/AllResidueLogarithmicR9.lean#L503).
+
+This rules out an inference from these coefficient properties alone to nonintegral tail shifts. It gives no counterexample to the prime-gap problem and does not reproduce the extreme large gaps of the primes.
+
 <a id="sec:carry"></a>
 
 # Nonperiodic coefficients with a rational sum

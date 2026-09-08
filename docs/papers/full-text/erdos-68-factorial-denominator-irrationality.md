@@ -20,13 +20,15 @@ irrational?
 
 Every rational representation $`S=a/q`$, $`q>0`$, of $`S=\sum_{n\ge2}(n!-1)^{-1}`$ satisfies
 ``` math
-q\nmid299999!,\qquad q\ge2^{39990}>10^{12038}.
+q\nmid299999!,\qquad q\ge2^{39990},\qquad q>10^{12040}.
 ```
-The first exclusion follows from an exact strict-successor carry test; the second from continued fractions. An integral divisor basis determines the cancelling vectors and their attainable factorial moments. At fixed moment, every correction translates the full residual by an integer. Actual prime-power cancellations explain why common-denominator growth alone does not control reduced prefixes. The companion constant $`S-e+2`$ gives an exact factorial-orbit criterion; the remaining assertion is strict-successor divisibility failure at arbitrarily large indices.
+The first exclusion follows from an exact strict-successor carry test; the second from a rational enclosure between Farey neighbours. An integral divisor basis determines the cancelling vectors and their attainable factorial moments. At fixed moment, every correction translates the full residual by an integer. Actual prime-power cancellations explain why common-denominator growth alone does not control reduced prefixes. The companion constant $`S-e+2`$ gives an exact factorial-orbit criterion; the remaining assertion is strict-successor divisibility failure at arbitrarily large indices.
 
 <a id="sec:problem"></a>
 
 # The denominator exclusions
+
+Erdős’s original formulation begins at $`n=2`$ on [p. 102](https://www.renyi.hu/~p_erdos/1988-22.pdf#page=1) of \[erdos1988\]. Equivalently, one may write $`S=\sum_{n\ge1}((n+1)!-1)^{-1}`$ by shifting the index. The unshifted expression $`(1!-1)^{-1}`$ is not a term of this real series.
 
 Let $`S=\sum_{n\ge2}(n!-1)^{-1}`$ and
 ``` math
@@ -532,7 +534,21 @@ The exact GMP carry certificate covers $`3\le m\le300000`$. Its unit carries occ
 ```
 In particular $`b_{300000}\ne1`$, yielding $`q\nmid299999!`$ by <a href="#eq:finite-denominator-consumer" data-reference-type="eqref" data-reference="eq:finite-denominator-consumer">[eq:finite-denominator-consumer]</a>. This excludes every divisor of that factorial, including large divisors. It does not exclude all integers with small prime factors, since their multiplicities can be too large.
 
-The separate $`80000`$-bit exact rational enclosure forces $`23449`$ common continued-fraction partial quotients. Its best-approximation certificate gives $`q\ge2^{39990}>10^{12038}`$. The open-versus-closed complete-quotient endpoint convention matters for a sharper extraction; no stronger numerical floor is asserted here. The exact sources, enclosure and integer-computation receipts are retained with the long record. Neither finite calculation supplies <a href="#eq:canonical-open-target" data-reference-type="eqref" data-reference="eq:canonical-open-target">[eq:canonical-open-target]</a>.
+The size exclusion has a separate kernel-checked certificate. Put $`K=2^{80000}`$ and
+``` math
+L=\sum_{n=2}^{7053}\left\lfloor\frac{K}{n!-1}\right\rfloor.
+```
+The positive tail estimate and the $`7052`$ individual rounding errors give
+``` math
+\frac{L}{K}<S<\frac{L+7056}{K}.
+```
+The certificate supplies rational endpoints $`A/B<C/E`$ containing this interval, with $`B,E>0`$ and $`BC-AE=1`$, and checks
+``` math
+B+E\ge2^{39990},\qquad B+E>10^{12040}.
+```
+If $`S=a/q`$ with $`q>0`$, then $`u=aB-Aq`$ and $`v=Cq-aE`$ are positive integers. The determinant identity gives $`q=Eu+Bv\ge B+E`$. Thus the decimal bound holds without assuming that $`a/q`$ is reduced.
+
+The dyadic enclosure, endpoint comparisons and denominator conclusion are [kernel-checked in Lean](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean#L58). The factorial-grid exclusion above remains supported by the separate exact GMP carry computation; it is not asserted here as a checked Lean certificate. Neither finite exclusion supplies <a href="#eq:canonical-open-target" data-reference-type="eqref" data-reference="eq:canonical-open-target">[eq:canonical-open-target]</a>.
 
 <a id="app:sources"></a>
 
@@ -644,7 +660,7 @@ The public `ErdosProblems.Erdos68` package contains the checked source for this 
 
 #### Source-current companion orbit and Comparator routes.
 
-The complete infinite rationality boundary is checked in `ErdosProblems/Erdos68/CompanionOrbitRationality.lean`. Its paper-facing endpoints are `not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two` and `irrational_factorialGapSeries_iff_cofinal_companion_floor_misses`. The coherent Comparator composite `companionOrbit_completeCharacterization` routes to Theorem <a href="#res:companion-orbit-rationality-boundary" data-reference-type="ref" data-reference="res:companion-orbit-rationality-boundary">2</a> and Remark <a href="#bdry:companion-orbit-nonconcentration" data-reference-type="ref" data-reference="bdry:companion-orbit-nonconcentration">1</a>. The moving-factor Comparator endpoints route to <a href="#res:moving-factor-scale-split" data-reference-type="ref" data-reference="res:moving-factor-scale-split">[res:moving-factor-scale-split]</a>, <a href="#res:split-factor-normalized-collision" data-reference-type="ref" data-reference="res:split-factor-normalized-collision">[res:split-factor-normalized-collision]</a>, and <a href="#bdry:fixed-owner-absorption" data-reference-type="ref" data-reference="bdry:fixed-owner-absorption">[bdry:fixed-owner-absorption]</a>. These source-current modules, Comparator packages, and this manuscript stage require one common immutable public checkpoint before terminal external replay or Palomar readiness is claimed.
+The complete infinite rationality boundary is checked in `ErdosProblems/Erdos68/CompanionOrbitRationality.lean`. Its paper-facing endpoints are `not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two` and `irrational_factorialGapSeries_iff_cofinal_companion_floor_misses`. The coherent Comparator composite `companionOrbit_completeCharacterization` routes to Theorem <a href="#res:companion-orbit-rationality-boundary" data-reference-type="ref" data-reference="res:companion-orbit-rationality-boundary">2</a> and Remark <a href="#bdry:companion-orbit-nonconcentration" data-reference-type="ref" data-reference="bdry:companion-orbit-nonconcentration">1</a>. The supplementary moving-factor Comparator package records two further conditional irrationality criteria: `movingPrivateFactorScaleSplit_implies_irrational` requires a cofinal prefix-private prime with both global and local scale inequalities; `splitFactorNormalizedCollision_implies_irrational` requires cofinal prime parameters, two factors of the private modulus with distinct projected complementary residues, and a normalized collision bound. Neither supplies its cofinal certificates. Their full hypotheses are in the package `ExternalVerification68MovingFactorScaleSplit/Challenge.lean`, with proofs in its `Solution.lean`; they are supplementary to the joint criterion in Proposition <a href="#res:global-complementary-criterion" data-reference-type="ref" data-reference="res:global-complementary-criterion">7</a>. The third endpoint, `fixedOwnerPair_eventually_absorbed`, says that fixed owners $`i,j\ge2`$ have private quotients one once $`p>\max(i!-1,j!-1)`$. Indeed, both denominators then divide $`(p-1)!`$, which divides the collision core; dividing either denominator by its gcd with that core therefore gives one. These source-current modules, Comparator packages, and this manuscript stage require one common immutable public checkpoint before terminal external replay or Palomar readiness is claimed.
 
 <div class="thebibliography">
 

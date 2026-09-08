@@ -45,7 +45,7 @@ $\Theta_1 = 1/2$, and $\Theta_2 = \bigl(\sum_{n\ge 1}\varphi(n)2^{-n}\bigr) - 1/
 \end{thm}
 
 \begin{thm}[Two-atom exact Hankel gap]
-$\mathrm{TwoAtom}(r{+}1)^2 - \mathrm{TwoAtom}(r)\mathrm{TwoAtom}(r{+}2) = 4/3^{r+2}$,
+\[\adjustbox{max width=\linewidth}{$\displaystyle \mathrm{TwoAtom}(r{+}1)^2 - \mathrm{TwoAtom}(r)\mathrm{TwoAtom}(r{+}2) = 4/3^{r+2}$}\],
 hence the two-atom truncation alone is strictly log-concave at every $r$.
 \lean{Erdos249257.SignedQMomentObstruction.mobiusMersenneTwoAtom_hankelGap}{SignedQMomentObstruction.lean:311}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{mobius-mersenne}.
@@ -193,17 +193,17 @@ $\mathrm{gcdWordCoeff}$ is the positive gcd-word coefficient of
 \end{prop}
 
 \begin{prop}[Exact old/foreign split of the diagonal height increment]
-$\mathrm{diagonalHeightIncrement}(H,s) = \mathrm{oldMobiusIncrement}(H,s) +
-\mathrm{finiteForeignChannelIncrement}(H,s)$, a literal finite-sum identity,
+\[\adjustbox{max width=\linewidth}{$\displaystyle \mathrm{diagonalHeightIncrement}(H,s) = \mathrm{oldMobiusIncrement}(H,s) +
+\mathrm{finiteForeignChannelIncrement}(H,s)$}\], a literal finite-sum identity,
 not an estimate.
 \lean{Erdos249257.DiagonalFreshLossBridge.diagonalHeightIncrement_eq_oldMobius_add_finiteForeign}{DiagonalFreshLossBridge.lean:829}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:gcd-word}.
 \end{prop}
 
 \begin{thm}[Exact doubling law for the old-channel increment]
-If $H$ and $r$ are both even, $\mathrm{diagonalHeightIncrement}(2H,2r) =
-2\cdot\mathrm{diagonalHeightIncrement}(H,r)$; if $H$ is even and $r$ odd, the
-same doubled height increment equals $\mathrm{diagonalHeightIncrement}(H,r)$
+If $H$ and $r$ are both even, \[\adjustbox{max width=\linewidth}{$\displaystyle \mathrm{diagonalHeightIncrement}(2H,2r) =
+2\cdot\mathrm{diagonalHeightIncrement}(H,r)$}\]; if $H$ is even and $r$ odd, the
+same doubled height increment equals \[\adjustbox{max width=\linewidth}{$\displaystyle \mathrm{diagonalHeightIncrement}(H,r)$}\]
 unchanged.
 \lean{Erdos249257.DiagonalFreshLossBridge.diagonalHeightIncrement_two_mul_even}{DiagonalFreshLossBridge.lean:308}
 \quad \lean{Erdos249257.DiagonalFreshLossBridge.diagonalHeightIncrement_two_mul_odd}{DiagonalFreshLossBridge.lean:323}
@@ -434,8 +434,8 @@ finite floor, not evidence toward the cofinal supply.
 
 \subsubsection{Cyclotomic anchored kills: unconditional prime support, plus new exclusion certificates}
 
-The newly published \texttt{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean}
-(3222 lines, namespace \texttt{ErdosProblems.Erdos249.CyclotomicAnchoredKill})
+The newly published \texttt{\breakcode{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean}}
+(3222 lines, namespace \texttt{\breakcode{ErdosProblems.Erdos249.CyclotomicAnchoredKill}})
 discharges the abstract order-consumer producer of
 \S\ref{prime-ray-curvature} completely for the concrete polynomial $X-2$, and
 separately deposits new kernel-checked denominator exclusions. Its middle

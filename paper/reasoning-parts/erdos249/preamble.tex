@@ -14,6 +14,9 @@
 % which it is proved, and the Lean declaration that carries it.
 \usepackage{paper-house-style}
 \usepackage{array}
+\usepackage{seqsplit}
+\DeclareRobustCommand{\breakcode}[1]{\seqsplit{#1}}
+\setlength{\emergencystretch}{3em}
 \usepackage{adjustbox}
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -37,14 +40,16 @@
 % ---------------------------------------------------------------------------
 % Theorem environments.
 % ---------------------------------------------------------------------------
-\theoremstyle{plain}
+\newtheoremstyle{breakplain}{3pt}{3pt}{\itshape}{}{\bfseries}{.}{\newline}{}
+\newtheoremstyle{breakdefinition}{3pt}{3pt}{}{}{\bfseries}{.}{\newline}{}
+\theoremstyle{breakplain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
-\theoremstyle{definition}
+\theoremstyle{breakdefinition}
 \newtheorem{defn}[thm]{Definition}
-\theoremstyle{remark}
+\theoremstyle{breakdefinition}
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{obs}[thm]{Observation}
 
@@ -93,6 +98,7 @@
   }
 \newcommand{\lean}[2]{\leanlink{#2}}
 \ExplSyntaxOff
+\pdfstringdefDisableCommands{\def\breakcode#1{#1}}
 
 % Declaration names are written \mathtt{...} in maths and, unavoidably, in
 % running prose too. Rather than police every occurrence, make the command

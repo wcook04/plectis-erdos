@@ -1170,6 +1170,39 @@ $\mathcal{A}$ is a Cantor-like set of Lebesgue measure exactly $1$ -- topologica
 (nowhere dense and totally disconnected), but neither full measure in $\mathbb R$ nor full
 measure in its ambient interval $[0,E]$, whose length is $E\approx1.6067$.
 \coord{achievement-set-topology}
+
+\paragraph{Exact span and a finite gap certificate.}
+For the positive-index achievement set, write
+$S=\sum_{n\ge1}(2^n-1)^{-1}$.  Its containing span is $[0,S]$, with
+\[
+ \frac{160669}{100000}<S<\frac{160670}{100000},\qquad
+ \frac{62}{100}<\frac1S<\frac{63}{100}.
+\]
+Together with its Lebesgue measure $1$, this gives the stated relative
+measure in its span.  It is not a probability law for random selectors.
+More generally, absolute summability of arbitrary real weights suffices
+for their binary achievement image to be compact and closed; the measure-$1$
+conclusion is specific to the Mersenne weights.
+\href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L94}{The exact span and geometry statement}
+records the Mersenne conclusions; the \href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L118}{general compactness theorem}
+covers arbitrary absolutely summable real weights.
+
+Put $R_n=\sum_{k>n}(2^k-1)^{-1}$.  For a finite selector
+$F\subseteq\{1,\ldots,n\}$, every continuation lies in
+\[
+ \left[\sum_{k\in F}\frac1{2^k-1},\quad
+       \sum_{k\in F}\frac1{2^k-1}+R_n\right].
+\]
+Consequently, a proved bound $R_n\le U$ and finitely many strict comparisons
+excluding $x$ from these enlarged intervals prove nonmembership.
+This is the \href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L32}{finite-prefix exclusion criterion}.
+At $n=1$, the two intervals lie in $[0,2/3]$ and $[1,5/3]$.
+Thus every $2/3<x<1$, in particular $x=3/4$, is excluded.
+\href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L46}{The finite-prefix theorem}
+checks this classical first-gap argument.  It says nothing about the
+endpoint $2/3$, and does not decide membership of $1/2$ or $1/21$.
+
+
 \scale{n/a} \ev{Lean}\\
 \textbf{Site:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656},
 \lean{isClosed\_mersenneAchievementSet}{GreedyAchievementSet.lean:660},

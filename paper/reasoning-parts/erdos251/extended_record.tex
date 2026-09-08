@@ -1,0 +1,231 @@
+\clearpage
+\section{Extended record: displaced results, ordinary proofs and corrections}
+\label{long251:sec:erdos-251-extended-record}
+
+This section holds mathematics that belongs to the complete record for
+Problem~\#251 and sits outside the short note.  Every statement here is
+labelled by its evidence class in the same vocabulary the note uses.
+
+\subsection{The totient witness and forward propagation}
+\label{long251:sec:xr-totient}
+
+The note states the exact denominator law \eqref{long251:eq:den-law} and uses it
+directly.  The classical witness that produced it is worth recording, because
+it is the form in which the shift length first appears.
+
+\begin{proposition}[a shift of totient length]\label{long251:xr:totient}
+Let $T:\N\to\Q$ satisfy the dyadic tail recurrence with integer digits.  If the
+reduced denominator $d$ of $T_N$ is odd, then $\sigma_{\ph(d)}(N)$ is an
+integer.
+\end{proposition}
+
+\begin{proof}
+Since $d$ is odd, $2$ and $d$ are coprime, so Euler's congruence gives
+$d\mid2^{\ph(d)}-1$.  Writing $2^{\ph(d)}-1=dk$ and $T_N=u/d$ in lowest terms,
+$(2^{\ph(d)}-1)T_N=ku$ is an integer, and the integral-shift criterion
+transfers this to the shift.
+\end{proof}
+
+\begin{proposition}[propagation]\label{long251:xr:propagate}
+If $\sigma_h(N)$ is an integer, then $\sigma_h(N+k)$ is an integer for every
+$k\ge0$.
+\end{proposition}
+
+\begin{proof}
+The shift step identity gives
+$\sigma_h(N+1)=2\sigma_h(N)-(g_{N+h+1}-g_{N+1})$, an integer combination of an
+integer and two digits.  Induct on $k$.
+\end{proof}
+
+\noindent These are the totient shift and the propagation theorems cited in the
+note.  Two worked instances.  If $\operatorname{den}T_N=3$ then $\ph(3)=2$ and
+$3T_N$ is an integer, so $\sigma_2(N)$ is integral while $\sigma_1(N)$ is not;
+if $\operatorname{den}T_N=5$ then $\sigma_4(N)$ is integral.  In the orbit with
+every digit zero and $T_0=1/12$, the denominator is $12=2^2\cdot3$, the orbit
+reaches $T_2=1/3$ with odd denominator at $s=2$, and $h=\ph(3)=2$ is exactly the
+shift length seen to be integral from index $2$ onwards.  The totient is a
+witness rather than the classification: the exact criterion is
+$\operatorname{den}(T_N)\mid2^{h}-1$, and the least admissible $h$ is the
+multiplicative order of $2$ modulo the odd part.
+
+\subsection{The finite truncation criterion}\label{long251:sec:xr-truncation}
+
+The note gives the explicit remainder bound for the actual gaps.  The general
+truncation statement behind it, valid for any dominating majorant, is the
+following.
+
+\begin{proposition}[finite truncation]\label{long251:xr:truncation}
+Let $M(n)\ge g_n$ for every $n$, assume the series below converges, and put
+\[
+ S_{h,N,L}=\sum_{j=1}^{L}\frac{g_{N+h+j}-g_{N+j}}{2^{\,j}},\qquad
+ R_{h,N,L}(M)=\sum_{j>L}\frac{M(N+h+j)+M(N+j)}{2^{\,j}} .
+\]
+If for every $h\ge1$ and every $N_0$ there are $N\ge N_0$ and $L\ge1$ with
+$\operatorname{dist}(S_{h,N,L},\Z)>R_{h,N,L}(M)$, then the universal shift
+escape of Problem~\ref{long251:prob:escape} holds.
+\end{proposition}
+
+\begin{proof}
+The part of $\sum_{j\ge1}(g_{N+h+j}-g_{N+j})2^{-j}$ omitted from $S_{h,N,L}$
+has absolute value at most $R_{h,N,L}(M)$, so under the displayed inequality
+the full sum lies at positive distance from every integer.
+\end{proof}
+
+The truncation is an exact modular small-arc problem.  Writing the integral
+dyadic block
+\[
+ D_{h,N,L}=\sum_{j=1}^{L}2^{\,L-j}(g_{N+h+j}-g_{N+j}),
+ \qquad S_{h,N,L}=\frac{D_{h,N,L}}{2^{L}},
+\]
+one has
+\[
+ \operatorname{dist}(S_{h,N,L},\Z)
+ =2^{-L}\min\bigl\{D_{h,N,L}\bmod2^{L},\;
+ 2^{L}-(D_{h,N,L}\bmod2^{L})\bigr\},
+\]
+where $D_{h,N,L}\bmod2^{L}$ is the least nonnegative residue, including when
+$D_{h,N,L}<0$.  The finite criterion therefore asks the residue of
+$D_{h,N,L}$ to avoid the two arcs of radius $2^{L}R_{h,N,L}(M)$ around $0$
+modulo $2^{L}$.  A one-block certificate would be a prime-gap theorem
+producing such an avoided arc on a logarithmic block.  This rewriting is
+paper-level and carries no Lean declaration.
+
+\subsection{A weaker recurrence-level target}\label{long251:sec:xr-divisorhit}
+
+\begin{problem}[divisor-hitting shift escape]\label{long251:xr:divisor-hit}
+For every $r\ge1$, does some positive multiple of $r$ escape cofinally, in the
+sense of \eqref{long251:eq:shift-escape} at shift length $mr$ for some $m\ge1$?
+\end{problem}
+
+A hypothetical rational value produces an eventually integral fixed shift, and
+the tail-shift cocycle propagates integrality forward and through positive
+multiples of that shift, so hitting one compatible multiple suffices in place
+of escaping at every prescribed $h$.  Forward propagation is Lean-checked; the
+short multiple-in-shift closure is an elementary paper-level derivation with no
+named declaration, so this is recorded as a sharper proposed criterion rather
+than a registered equivalence.
+
+\subsection{Two ordinary proofs about the free-pair producer}
+\label{long251:sec:xr-compression}
+
+Both statements below are ordinary proofs recorded in the private research
+development.  Neither is formalised and neither carries an independent check.
+
+\paragraph{State compression.}  Exchanging the order of summation gives
+$\sum_{N\le X}T_N\le(p_{X+1}-p_0)+2T_X$.  Under rationality with reduced odd
+denominator $d$, Markov's inequality supplies for each $C>1$ a set
+$B\subseteq(X,2X]$ of density at least $1-1/C$ on which $T_N\le C\log p_{2X}$;
+on that set $T_N$ lies in $\tfrac1d\Z$ and takes at most $dC\log p_{2X}+1$
+values, so some single value is attained more than a constant multiple of
+$X/\log X$ times.  Rationality therefore makes the tail a finite-state object
+at every scale: pairs with $T_M=T_N$ are abundant for free, and the whole
+difficulty in the free-pair producer is nonintegrality of the difference.  The
+naive form $\sum_{N\le X}T_N\le p_{X+1}$ is false.
+
+\paragraph{Redundancy of the gap condition.}  Under the free-pair lattice the
+difference $T_M-T_N$ is an integer whenever the modulus divides the offset, and
+an integer cannot lie in $(\tfrac12,1)$.  The half-window component of the
+reduced event of Theorem~\ref{long251:res:signedwindow} is therefore already a
+contradiction on its own, and the gap-mismatch condition adds nothing to it.
+That changes which component a proof has to produce.
+
+\subsection{A bounded companion to the recurring-values countermodel}
+\label{long251:sec:xr-boundedpolignac}
+
+Theorem~\ref{long251:res:polignacfail} carries a logarithmic growth profile so that its
+cumulative sequence matches the primes.  The mechanism is visible in a much
+smaller example, which is recorded here because it is checkable by hand.
+
+\begin{proposition}[bounded recurring-values countermodel]\label{long251:xr:boundedpolignac}
+Put $U_0=4$ and, for $n\ge1$, $U_n=6$ when $n=k!$ for some $k\ge3$ and $U_n=4$
+otherwise, and set $a_n=2U_{n-1}-U_n$ for $n\ge1$.  Then $a_n\in\{2,4,8\}$,
+the value $2$ occurs at every index $k!$ and the value $4$ at every index
+$2\,k!$, so both recur infinitely often at indices divisible by any fixed
+$t\ge1$.  The series $\sum_{n\ge1}a_n2^{-n}$ equals $4$ and every tail
+$\sum_{j\ge1}a_{N+j}2^{-j}$ equals the integer $U_N$.
+\end{proposition}
+
+\begin{proof}
+For $k\ge3$ the index $k!$ is even and at least $6$, and $k!-1$ is odd, so the
+predecessor of a spike is an ordinary index; hence $a_{k!}=8-6=2$,
+$a_{k!+1}=12-4=8$, and $a_n=8-4=4$ elsewhere.  For $k\ge2$ one has
+$k!<2\,k!<(k+1)!$, so $2\,k!$ is not a factorial, and $2\,k!-1$ is odd so it is
+not a factorial either; therefore $a_{2k!}=4$.  Since $t\mid k!$ for every
+large $k$, both values recur in the residue class $0$ modulo $t$.  The identity
+$a_n2^{-n}=U_{n-1}2^{-(n-1)}-U_n2^{-n}$ telescopes to
+$\sum_{j=1}^{m}a_{N+j}2^{-j}=U_N-U_{N+m}2^{-m}$, and $U$ is bounded, so the
+endpoint vanishes.
+\end{proof}
+
+The cumulative sequence of this word grows linearly, which is the one property
+that separates it from the primes and the reason the note carries the
+logarithmic version instead.  Both refute the same generic implication.
+
+\subsection{The measured densities in full}\label{long251:sec:xr-densities}
+
+The note reports the range of the adjacent-mismatch density.  The per-offset
+figures below come from the same scan over the $6\,841\,648$ primes under
+$1.2\times10^{8}$, with double-precision tails.
+
+\begin{center}
+\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+$h$ & events & density & $\delta=+2$ & $\delta=-2$ & last event at prime\\
+\midrule
+1 & 56\,427 & 0.008248 & 28\,022 & 28\,405 & 119\,995\,753\\
+2 & 31\,979 & 0.004674 & 15\,742 & 16\,237 & 119\,993\,807\\
+3 & 30\,233 & 0.004419 & 15\,093 & 15\,140 & 119\,998\,321\\
+4 & 29\,262 & 0.004277 & 14\,606 & 14\,656 & 119\,993\,473\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every offset $h\le16$ has events, with minimum density $0.00418$ and maximum
+$0.008248$; the two signs are near balanced at every offset.  For $h=1$ the
+eight band densities, and the same figures after rescaling by the band mean of
+$\log p$, run
+\[
+\begin{array}{l}
+ 0.011285,\;0.008951,\;0.008303,\;0.007936,\;0.007651,\;0.007507,\;0.007253,\;0.007094;\\[2pt]
+ 0.17671,\;0.15058,\;0.14420,\;0.14067,\;0.13766,\;0.13667,\;0.13333,\;0.13148 .
+\end{array}
+\]
+The rescaled drift is $0.744$ at $h=1$ and lies between $0.744$ and $0.8121$
+across all offsets.  Theorem~\ref{long251:res:sparse} proves that the limiting density
+is zero, so the observed decline is the expected behaviour rather than a
+failure of the event.
+
+\subsection{Corrections to earlier records}\label{long251:sec:xr-corrections}
+
+\paragraph{The superseded exclusion.}  An earlier internal record narrated a
+denominator exclusion at $10^{602}$.  That figure is correct as written and is
+superseded twice over: by the kernel-decided floor $2^{589}>10^{177}$ of
+Theorem~\ref{long251:res:denominatorfloor}, which is smaller but kernel-checked, and by
+the certified continued-fraction exclusion $2^{39997}>10^{12040}$ of
+Theorem~\ref{long251:res:cfexclusion}, which supersedes it in strength.  The receipt
+records the decimal digit count $12041$; the certified decimal statement uses
+the exponent $12040$.
+
+\paragraph{The named missing input.}  An earlier record named
+Hardy-Littlewood $k$-tuple correlation of consecutive gaps at a fixed offset as
+the missing input.  With the offset freed by Theorem~\ref{long251:res:freepair} the
+route needs, for each modulus $t$, cofinally many congruent pairs with
+certified nonintegral tail difference.  A further record proposed that two even
+values differing by $2$, each occurring infinitely often inside a common index
+residue class, would supply the two-condition form.  No proof of that
+implication was ever produced, and Theorem~\ref{long251:res:polignacfail} shows that no
+proof exists at the level of integer-digit recurrences.  That entry is
+withdrawn.
+
+\paragraph{The formal boundary.}  An earlier reading of the short note placed
+the real-tail bridge and the real form of the adjacent-pair consumer on the
+paper side.  Both are kernel-checked, at
+\lword{Erdos251/RealPrimeGapTail.lean}{48}{realPrimeGapTail_recurrence}{line~48}
+and
+\lword{Erdos251/RealPrimeGapTail.lean}{99}{realTailShift_not_both_integral_of_small_pair_of_digit_ne}{line~99}
+of the real prime-gap tail module.  A second reading placed the kernel-decided
+denominator floor and the free-pair criterion outside the source revision the
+note pins.  Both modules are present at that revision, and both are linked from
+the note.
+

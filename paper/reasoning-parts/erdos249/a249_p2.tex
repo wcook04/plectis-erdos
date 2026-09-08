@@ -17,9 +17,9 @@ uniformly below and is stated here once rather than re-flagged on every row.
 \#249's own supply obligation is \emph{exactly} cofinal. The reduction chain
 (\S\ref{sec:249-scale-ladder}, and see \lean{irrational\_totientSeries\_iff\_actualLcmOrbitNonintegralitySupply}{TotientActualLcmOrbitNonintegrality.lean:37})
 shows
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{Irrational}\Bigl(\sum_{n\ge 1}\varphi(n)/2^n\Bigr) \iff \forall a_0\ \exists a\ge a_0,\ \texttt{actualLcmTailOrbit}\ a \notin \mathrm{range}(\mathbb{Z}\to\mathbb{R}),
-\]
+$}\]
 an \texttt{cofinal} statement in the exponent $a$ that indexes $H=\mathrm{periodLcm}(2^a)$. Nothing
 weaker in scale can close \#249; the entire question is whether the corpus's uniform, bounded, and
 fixed machinery can be pushed to cofinal. The table below lists every catalogued \#249 result,
@@ -274,9 +274,9 @@ it matters most: binary-digit versus M\"obius--Mersenne.
 \item[binary-digit] $S$ as the literal base-2 expansion object: \texttt{totientTail},
 \texttt{windowDiscrepancy}, \texttt{certifiedKill}. \emph{Transport to mobius-mersenne:} the
 core identity
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}=\frac12+\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}
-\]
+$}\]
 proved by \lean{tsum\_totient\_half\_pow\_eq\_half\_add\_moebius\_sq}{MersenneLambertLadder.lean:665}
 (consumed at \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:94})
 turns every binary-digit statement about $S$ into a statement about a squared M\"obius--Mersenne
@@ -310,12 +310,12 @@ feeds directly into the exact denominator-growth formula
 \lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147} in the
 Möbius--Mersenne coordinate.
 
-\item[p-adic] Fixed and growing 2-adic valuation-unit dynamics: the adelic height/denominator-tax
+\item[p-adic] Fixed and growing 2-adic valuation-unit dynamics:\newline the adelic height/denominator-tax
 law, the tropical fixed-precision no-go, the signed-Hankel terminal-parity engine, the two-adic
 pulse-block construction. \emph{Transport to farey:} the scalar-localisation complement-dvd law
 \lean{scalarLocalization\_complement\_dvd}{AdelicHeightObstruction.lean:23} together with the
 Mersenne-height corollary \lean{positiveRat\_mersenne\_height}{AdelicHeightObstruction.lean:103}
-($2^r\mid|x.\mathrm{num}|\wedge x<2/(2^n-1)\Rightarrow 2^r(2^n-1)<2\cdot x.\mathrm{den}$) is exactly
+(\[\adjustbox{max width=\linewidth}{$\displaystyle 2^r\mid|x.\mathrm{num}|\wedge x<2/(2^n-1)\Rightarrow 2^r(2^n-1)<2\cdot x.\mathrm{den}$}\]) is exactly
 a denominator lower bound of the same shape the Farey coordinate proves directly.
 
 \item[farey] Unimodular denominator exclusion:

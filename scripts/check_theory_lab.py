@@ -42,13 +42,14 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+from query_corpus import json_transport_path, decode_json_transport
 import subprocess
 import stat
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = json_transport_path(ROOT / "docs" / "semantic_corpus.json.gz")
 LAB = ROOT / "docs" / "theory_lab.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -123,7 +124,7 @@ def _safe_theory_lab_path(path: Path) -> Path:
 
 def safe_read_text(path: Path) -> str:
     """Read a theory-lab JSON input through a no-follow regular descriptor."""
-    candidate = _safe_theory_lab_path(path)
+    candidate = _safe_theory_lab_path(json_transport_path(path))
     if not candidate.is_file():
         raise UnsafeTheoryLabInput(
             f"theory-lab input is not a regular file: {candidate}"
@@ -143,9 +144,9 @@ def safe_read_text(path: Path) -> str:
             raise UnsafeTheoryLabInput(
                 f"theory-lab input is not a regular file: {candidate}"
             )
-        with os.fdopen(descriptor, "r", encoding="utf-8") as stream:
+        with os.fdopen(descriptor, "rb") as stream:
             descriptor = -1
-            return stream.read()
+            return decode_json_transport(stream.read())
     finally:
         if descriptor >= 0:
             os.close(descriptor)

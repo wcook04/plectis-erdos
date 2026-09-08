@@ -506,7 +506,7 @@ def build() -> dict[str, object]:
 
 
 def render() -> str:
-    return json.dumps(build(), ensure_ascii=False, indent=2) + "\n"
+    return json.dumps(build(), ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
 def main() -> int:

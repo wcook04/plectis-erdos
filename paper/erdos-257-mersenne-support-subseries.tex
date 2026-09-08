@@ -369,8 +369,8 @@ infinite $A\subseteq E\cup V$ and every integer $b\ge2$.
 \end{theorem}
 \begin{proof}[Proof of the combination step]
 Freeze a sufficiently large finite prefix from each component with one
-modulus.  The weighted argument supplies subsequent moduli $Q$ and
-observation ranges $M\le j<2M$ with $Q/M\to0$ and arbitrarily small
+modulus.  The weighted argument supplies a subsequent modulus $Q$ and an
+observation range $M\le j<2M$ with $M=4Q$ and arbitrarily small
 weighted-displacement mean.  By nonnegative interchange,
 \eqref{eq:mixed-finite-kernel} bounds the positive-cover tail test under
 exactly the same finite measure, with factor $1+4Q/M$.
@@ -546,10 +546,43 @@ The middle inequality follows by writing
 $w_n=2^{-n}+4^{-n}/(1-2^{-n})$ and using $n\ge N+1\ge2$.
 The coding image is a Cantor set, and the disjoint level-$N$ cylinder
 covers have total length $2^NR_N\to1$, so $\lambda(\Ach)=1$.
+
+\paragraph{Exact span and a finite gap certificate.}
+For the positive-index achievement set, write
+$S=\sum_{n\ge1}(2^n-1)^{-1}$.  Its containing span is $[0,S]$, with
+\[
+ \frac{160669}{100000}<S<\frac{160670}{100000},\qquad
+ \frac{62}{100}<\frac1S<\frac{63}{100}.
+\]
+Together with its Lebesgue measure $1$, this gives the stated relative
+measure in its span.  It is not a probability law for random selectors.
+More generally, absolute summability of arbitrary real weights suffices
+for their binary achievement image to be compact and closed; the measure-$1$
+conclusion is specific to the Mersenne weights.
+\href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L94}{The exact span and geometry statement}
+records the Mersenne conclusions; the \href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L118}{general compactness theorem}
+covers arbitrary absolutely summable real weights.
+
+Put $R_n=\sum_{k>n}(2^k-1)^{-1}$.  For a finite selector
+$F\subseteq\{1,\ldots,n\}$, every continuation lies in
+\[
+ \left[\sum_{k\in F}\frac1{2^k-1},\quad
+       \sum_{k\in F}\frac1{2^k-1}+R_n\right].
+\]
+Consequently, a proved bound $R_n\le U$ and finitely many strict comparisons
+excluding $x$ from these enlarged intervals prove nonmembership.
+This is the \href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L32}{finite-prefix exclusion criterion}.
+At $n=1$, the two intervals lie in $[0,2/3]$ and $[1,5/3]$.
+Thus every $2/3<x<1$, in particular $x=3/4$, is excluded.
+\href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L46}{The finite-prefix theorem}
+checks this classical first-gap argument.  It says nothing about the
+endpoint $2/3$, and does not decide membership of $1/2$ or $1/21$.
+
 The strict-tail antecedent is due to Kova\v{c}--Tao~\cite[Remark~4.1]{kovactao}.
-The long record proves the restricted-volume dichotomy and records the
-formula $\dim_H\Ach_J=\liminf_N\#(J\cap[1,N])/N$, together with the
-periodic-stride measure refinements.  For a specified rational target,
+The long record proves the restricted-volume dichotomy: omitting finitely
+many coordinates leaves volume $2^{-|J^c|}$, while infinitely many omissions
+give volume zero.  Injectivity persists for every restriction, and infinite
+supports give perfect achievement sets.  For a specified rational target,
 the useful consequence here is uniqueness of its possible selector.
 
 \section{The actual greedy return inequality}\label{sec:actual-repairs}

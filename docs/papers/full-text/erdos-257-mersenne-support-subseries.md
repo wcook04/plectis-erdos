@@ -253,7 +253,7 @@ The weighted class and the strengthened-cover class are incomparable. The suppor
 
 <div class="proof">
 
-*Proof of the combination step.* Freeze a sufficiently large finite prefix from each component with one modulus. The weighted argument supplies subsequent moduli $`Q`$ and observation ranges $`M\le j<2M`$ with $`Q/M\to0`$ and arbitrarily small weighted-displacement mean. By nonnegative interchange, <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a> bounds the positive-cover tail test under exactly the same finite measure, with factor $`1+4Q/M`$. Choose the two tail budgets so that the mean of their normalised sum is less than one. One common sample then makes both displacements small. Infinitude supplies strict positivity and the rational lattice excludes rationality. The full estimates and parameter schedule are in `ErdosProblems/Erdos257/MixedSupportSynchronisation.md`, Theorems 2.1 and 5.1. ◻
+*Proof of the combination step.* Freeze a sufficiently large finite prefix from each component with one modulus. The weighted argument supplies a subsequent modulus $`Q`$ and an observation range $`M\le j<2M`$ with $`M=4Q`$ and arbitrarily small weighted-displacement mean. By nonnegative interchange, <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a> bounds the positive-cover tail test under exactly the same finite measure, with factor $`1+4Q/M`$. Choose the two tail budgets so that the mean of their normalised sum is less than one. One common sample then makes both displacements small. Infinitude supplies strict positivity and the rational lattice excludes rationality. The full estimates and parameter schedule are in `ErdosProblems/Erdos257/MixedSupportSynchronisation.md`, Theorems 2.1 and 5.1. ◻
 
 </div>
 
@@ -348,7 +348,27 @@ The estimate
 ``` math
 2^{-N}<R_N\le2^{-N}+\frac23\,4^{-N}<w_N\qquad(N\ge1)
 ```
-shows that every represented value has a unique selector. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. The coding image is a Cantor set, and the disjoint level-$`N`$ cylinder covers have total length $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$. The strict-tail antecedent is due to Kovač–Tao \[kovactao, Remark 4.1\]. The long record proves the restricted-volume dichotomy and records the formula $`\dim_H\mathcal A_J=\liminf_N\#(J\cap[1,N])/N`$, together with the periodic-stride measure refinements. For a specified rational target, the useful consequence here is uniqueness of its possible selector.
+shows that every represented value has a unique selector. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. The coding image is a Cantor set, and the disjoint level-$`N`$ cylinder covers have total length $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$.
+
+<a id="exact-span-and-a-finite-gap-certificate."></a>
+
+#### Exact span and a finite gap certificate.
+
+For the positive-index achievement set, write $`S=\sum_{n\ge1}(2^n-1)^{-1}`$. Its containing span is $`[0,S]`$, with
+``` math
+\frac{160669}{100000}<S<\frac{160670}{100000},\qquad
+ \frac{62}{100}<\frac1S<\frac{63}{100}.
+```
+Together with its Lebesgue measure $`1`$, this gives the stated relative measure in its span. It is not a probability law for random selectors. More generally, absolute summability of arbitrary real weights suffices for their binary achievement image to be compact and closed; the measure-$`1`$ conclusion is specific to the Mersenne weights. [The exact span and geometry statement](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L94) records the Mersenne conclusions; the [general compactness theorem](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L118) covers arbitrary absolutely summable real weights.
+
+Put $`R_n=\sum_{k>n}(2^k-1)^{-1}`$. For a finite selector $`F\subseteq\{1,\ldots,n\}`$, every continuation lies in
+``` math
+\left[\sum_{k\in F}\frac1{2^k-1},\quad
+       \sum_{k\in F}\frac1{2^k-1}+R_n\right].
+```
+Consequently, a proved bound $`R_n\le U`$ and finitely many strict comparisons excluding $`x`$ from these enlarged intervals prove nonmembership. This is the [finite-prefix exclusion criterion](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L32). At $`n=1`$, the two intervals lie in $`[0,2/3]`$ and $`[1,5/3]`$. Thus every $`2/3<x<1`$, in particular $`x=3/4`$, is excluded. [The finite-prefix theorem](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L46) checks this classical first-gap argument. It says nothing about the endpoint $`2/3`$, and does not decide membership of $`1/2`$ or $`1/21`$.
+
+The strict-tail antecedent is due to Kovač–Tao \[kovactao, Remark 4.1\]. The long record proves the restricted-volume dichotomy: omitting finitely many coordinates leaves volume $`2^{-|J^c|}`$, while infinitely many omissions give volume zero. Injectivity persists for every restriction, and infinite supports give perfect achievement sets. For a specified rational target, the useful consequence here is uniqueness of its possible selector.
 
 <a id="sec:actual-repairs"></a>
 

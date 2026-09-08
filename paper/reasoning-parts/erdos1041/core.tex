@@ -209,7 +209,7 @@ Degree three & Ordinary theorem, complete for that degree & Roots in the open un
 Critical-value separation, general $S$ & Ordinary all-degree theorem & A simple nonzero hub and $(2S^2/n)^{1/n}\log(S/(S-1))<1$; the threshold, covering and area arguments remain ordinary; near ties and multiple saddles are excluded. \\
 Critical-value budget through degree five & Ordinary theorem; scalar Lean companion & $\sum_j|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$; the reflected-derivative comparison is checked in Lean; the complete finite-point inequalities remain ordinary proofs, and neither controls inverse-ray length. \\
 Coefficient energy to path length & Checked & Termwise differentiation and the length integral of the actual power series; the inverse branch and area bound must be supplied. \\
-Uniform central free-point region & Checked & Every positive number of points; $|c_i|^2\le a<1$ and $e^L\le1+2L$, where $L=-\log(1-a)$. \\
+Uniform central free-point region & Checked & Every positive number of points; $|c_i|\le\sqrt{1-e^{-2}}$, with no additional series hypotheses. \\
 Newton value equation $w'=-w$ & Checked & Away from critical points, along any trajectory tangent to $-f/f'$. \\
 Exponential first integral & Checked & $\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0$. \\
 Ray separation of critical values & Checked (consumer form) & Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. \\
@@ -849,7 +849,12 @@ $|v|(1-t^3)<1$ away from the root endpoint.
 The cubic reduction, zero-count lemma and path assembly are now checked in
 \texttt{ErdosProblems/Erdos1041/PaperCubicCompletion.lean}, with endpoint
 \texttt{cubic\_paper\_complete}; the supporting root count is in
-\texttt{PaperCubicSchur.lean}. The earlier research-corpus presentation is
+\texttt{PaperCubicSchur.lean}. The
+\href{https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1041/PaperCubicMonic.lean#L32}{monic-cubic endpoint} also discharges the root enumeration:
+monicity and degree three supply the factorisation over $\mathbb C$, with
+multiplicities retained.  The connector therefore starts from the polynomial
+and its open-disc root condition alone; squarefreeness gives distinct root
+endpoints. The earlier research-corpus presentation is
 historical working material, rather than the present proof boundary.  Pendyala proves the
 degree-four case \cite[Thm.~1, p.~1]{june2026}; whether degree three was
 already recorded on the Erd\H{o}s Problem~\#1041 discussion thread or in
@@ -1761,7 +1766,48 @@ three points are zero; conversely the zero configuration attains equality.
 The bound comes from this defect identity.  It is not obtained by separately
 maximising the pairwise factors.
 
+\paragraph{Poisson majorization and termwise integration.}
+For $g$ holomorphic on the unit disc and continuous on its closure, put
+$P_c(\zeta)=(1-|c|^2)/|\zeta-c|^2$ for $|\zeta|=1$.  If $|c|<1$,
+\[
+ |g(c)|^2\le\frac1{2\pi}\int_0^{2\pi}
+ P_c(e^{it})|g(e^{it})|^2\,dt.
+\]
+The \href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/PoissonNormSquare.lean#L114}{norm-square majorization}
+uses the Poisson formula for a real part and the nonnegativity of a square.
+The \href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/PoissonKernelBridge.lean#L27}{weighted kernel identity}
+identifies the pointwise Poisson mixture.  Separately,
+\href{https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/CircleSeriesTransport.lean#L49}{absolute series transport}
+justifies termwise circle integration when the terms are circle integrable
+and admit a summable uniform norm bound; its Taylor double-product form
+assumes absolute summability of both coefficient sequences.
+These statements do not yet assemble the full-disc weighted free-point
+inequality.  That theorem remains an ordinary analytic proof; the checked
+free-point conclusion below remains restricted to the central region.
+
 \paragraph{A uniform central region in every degree.}
+For every $m\ge1$, the
+\href{https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1041/FreePointCentralCompletion.lean#L39}{central-region theorem with its analytic inputs discharged}
+proves
+\[
+ |c_j|\le\sqrt{1-e^{-2}}\quad(1\le j\le m)
+ \quad\Longrightarrow\quad
+ \sum_{j=1}^m\left(\prod_{k=1}^m|1-\overline c_jc_k|\right)^{1/m}\le m.
+\]
+To see the mechanism, set
+$h_j=m^{-1}\sum_k\log|1-\overline c_jc_k|$ and
+$D_j=-\log(1-|c_j|^2)$.  The logarithmic kernel gives
+$\sum_jh_j\le0$ and
+$h_j^2\le(-m^{-1}\sum_i h_i)D_j$.  The radius bound gives $D_j\le2$.
+Writing $r^2=-m^{-1}\sum_i h_i$, the resulting bounds
+$\sum_jh_j=-mr^2$ and $|h_j|\le\sqrt2r$ feed the exponential energy
+inequality, yielding $\sum_j e^{h_j}\le m$.  Thus the series estimates are
+proved for the actual configuration, rather than assumed as suppliers.
+This checks a central equal-weight case; the short paper's ordinary
+all-disc weighted inequality has greater mathematical scope.
+
+The earlier adaptive certificate remains useful for other configurations.
+
 For $m\ge1$, let $|c_i|^2\le a<1$, with $a\ge0$, and put
 $L=-\log(1-a)$. The
 \href{https://github.com/wcook04/plectis-erdos/blob/457e0c74b2666f7fb2d825c967e49e439a600b23/ErdosProblems/Erdos1041/FreePointUniformRadius.lean#L84}{uniform-radius theorem}

@@ -143,7 +143,7 @@ The zero-one values and this thirteen-interval support are
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297}{Lean source}.
 
 \paragraph{Integral polynomials and their degrees.}
-The source's polynomial inclusion is Lemma~7, display~(23).
+The source's polynomial inclusion is Lemma~7, display~(23), on p.~161 \cite{zudilin2004}.
 Its parameter vector is $n(13,14,12,14,15,13)$, its maximum is $15n$, and
 $\beta-a_1-a_2=n>0$.  Its hypotheses therefore hold for every $n\ge1$.
 It gives
@@ -390,10 +390,45 @@ which is negative on the stated sufficient region.
 The arithmetic form of that region is
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144}{Lean source}, and the final numerical clause is
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155}{Lean source}.
-The conclusion bounds the
-sufficient cutoff furnished by the displayed degree estimate.  An exclusion for a
-particular family requires its actual degree and remainder asymptotics.
+The displayed degree upper bound furnishes a sufficient decay cutoff; the following corollary gives a separate exclusion under the same all-base hypotheses.
 \end{proof}
+
+\begin{corollary}[Undivided forms below the square boundary]
+\label{cor:no-decay-below-square}
+Under the hypotheses of Theorem~\ref{res:archimedean-cap}, for positive integers
+$a,b$ with $b<a<b^2$, the undivided forms $b^{d_n}\Lambda_n(a/b)$ do not
+tend to zero.  No limit of $d_n/n^2$ is assumed.
+\end{corollary}
+\begin{proof}
+Write $x=a/b$ and suppose $C_n=b^{d_n}\Lambda_n(x)\to0$.
+Eventual nonvanishing gives
+$\log|C_n|=d_n\log b+\log|\Lambda_n(x)|$ for all sufficiently large $n$.
+Also $|C_n|\le1$ eventually.  The lower side of the remainder asymptotic
+therefore implies
+\[
+ d_n\log b\le-\log|\Lambda_n(x)|
+       =\sigma\log x\,n^2+o(n^2).
+\]
+Set $c=\sigma\log x/\log b$.  Since $1<x<b$, we have $0<c<\sigma$,
+and the displayed inequality gives $d_n\le(c+\varepsilon)n^2$ eventually
+for each $\varepsilon>0$.  The same family thus satisfies the cap hypotheses
+with degree upper rate $c$, its original height bound, and its original
+nonvanishing and remainder asymptotics at every real base greater than one.
+The cap yields $\sigma\le c$, a contradiction.
+\end{proof}
+\noindent The no-decay conclusion is \href{https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1049/PaperNoDecayR9.lean#L69}{kernel-checked in Lean} under the stated all-base hypotheses.
+
+
+This strengthens the failure of a sufficient-cutoff test to an exclusion
+of decay under the stated all-base hypotheses.  It does not supply an
+actual-degree limit or assert divergence.  If $d_n/n^2\to d$, the separate
+exact-degree result gives the stronger conclusion
+$|b^{d_n}\Lambda_n(a/b)|\to\infty$ in the same strict region.
+Equality $a=b^2$ remains unclassified.  The corollary concerns the undivided
+forms; it does not exclude base-dependent content division or other
+irrationality methods outside its hypotheses.
+
+
 
 \section{Exact normalized-Hankel order in Zudilin's construction}
 \label{sec:hankel-order}

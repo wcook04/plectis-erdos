@@ -1688,9 +1688,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:ff4797f0ff8498c0070d365afcc75714db330ccd591f9e7c4f087b2e7e013b8c",
+    "owner_digest": "sha256:c66238b26fee78ded3e8778467ee650545e926cf29c2de276d0b7cb87566e1c8",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:a27fd4dd76165434f1cffc53b0f74d6272c32563cf48b0a0950274094ee57a23",
+    "projection_digest": "sha256:6503b5526ba8cc9d489ffd1883fb83890e74032c0acebb5c60e062b27170d20b",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1702,7 +1702,17 @@
         "status": "open",
         "question": "Is the series sum_{n >= 2} 1/(n! - 1) irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "channel_quotient_band_breakpoint",
+            "factorial_finite_size_denominator"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 5,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos68",
         "modules": [
           {
@@ -1828,7 +1838,8 @@
           "Integral channel congruences, the lcm tax, the prime unit translator, and factorial-grid Cramer residual identities.",
           "Weighted projection and factor-split rigidity consumers with their exact modular and Archimedean hypotheses.",
           "The zero-plateau and first-exit carry dichotomy, prime-power prefix obstructions, and exact doubled-prime branch characterisations.",
-          "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; an independently regenerated exact GMP certificate at m = 300000 supplies the finite input."
+          "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; an independently regenerated exact GMP certificate at m = 300000 supplies the finite input.",
+          "A separate Lean finite certificate proves q > 10^12040 for every hypothetical positive rational denominator; it does not provide an unbounded producer."
         ],
         "what_is_not_checked": [
           "Irrationality of the factorial-denominator series.",
@@ -1893,17 +1904,30 @@
         "status": "open",
         "question": "Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "bounded_negative_exclusion",
+            "bounded_rise_fresh_modulus_barrier",
+            "canonical_finite_negative_mass",
+            "canonical_lcm_weighted_record_equivalence",
+            "eventually_periodic_negative_no_go"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 8,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos243",
         "modules": [
           {
             "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
             "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
             "present": true,
-            "line_count": 2386,
-            "declaration_count": 77,
-            "theorem_count": 67,
-            "content_digest": "sha256:3145b8a5a4c3783fa4c79b726e20f55285a7a43ec58a5e876bf3e4a3d1f88ff9"
+            "line_count": 2419,
+            "declaration_count": 78,
+            "theorem_count": 68,
+            "content_digest": "sha256:e373e04f5432c5652689797a1d8123763893c03e486ab0736cefa23cbe20828f"
           },
           {
             "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
@@ -1918,10 +1942,10 @@
             "module": "ErdosProblems.Erdos243.SparseResetRecovery",
             "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
             "present": true,
-            "line_count": 543,
-            "declaration_count": 20,
-            "theorem_count": 15,
-            "content_digest": "sha256:9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e"
+            "line_count": 720,
+            "declaration_count": 23,
+            "theorem_count": 18,
+            "content_digest": "sha256:f207295595576c95ab9e7717f219eec3b1d1e33555b0a9a1a1e95c690f623177"
           },
           {
             "module": "ErdosProblems.Erdos243.DynamicCancellation",
@@ -1980,7 +2004,7 @@
         ],
         "note": {
           "artifact_id": "erdos_243_note",
-          "title": "Excluding the Bounded Negative Part",
+          "title": "Weighted LCM Records and Reciprocal-Tail Rigidity",
           "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -1996,13 +2020,13 @@
           "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
           "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
           "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
-          "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
+          "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon.",
+          "For the actual canonical LCM orbit, eventual Sylvester recurrence is equivalent to weighted record-excess summability, including the factored growth-defect formulation, under the stated sequence, rational-sum, ratio, and weight hypotheses."
         ],
         "what_is_not_checked": [
           "The unrestricted problem.",
-          "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
           "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
-          "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
+          "The earlier centred-state interface takes analytic hypotheses as premises. The separately checked canonical LCM weighted-record and factored growth-defect equivalences now apply to the actual positive increasing integer sequence under rational reciprocal sum and quadratic-scale ratio convergence; they still do not prove the required weighted summability."
         ],
         "open_obligations": [
           {
@@ -2010,18 +2034,18 @@
             "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part."
           },
           {
-            "id": "derive_the_two_analytic_hypotheses",
-            "statement": "Derive eventual strict centring and normalised vanishing from the growth hypothesis and rationality, or show that they do not follow."
+            "id": "canonical_weighted_record_summability",
+            "statement": "Prove the weighted record-excess summability condition in the checked canonical LCM equivalence under the original sequence hypotheses."
           },
           {
             "id": "formalise_the_published_criteria",
-            "statement": "Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses."
+            "statement": "Compare each cited Erdos–Straus and Duverney criterion with the exact hypotheses and conclusion of the checked canonical LCM weighted-record and growth-defect equivalences. Formalise any remaining unmatched cited criterion; no blanket formalisation of all cited criteria is asserted."
           }
         ],
         "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
         "paper": {
           "paper_id": "erdos-243-reciprocal-tail-rigidity",
-          "title": "Excluding the Bounded Negative Part",
+          "title": "Weighted LCM Records and Reciprocal-Tail Rigidity",
           "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
           "pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
           "full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
@@ -2050,7 +2074,16 @@
         "status": "open",
         "question": "Is the binary Lambert series sum phi(n)/2^n irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "strict_prime_tail_orbit_gap"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 20,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos249",
         "modules": [
           {
@@ -2094,7 +2127,8 @@
           "That the two-by-two checkerboard kills separable backgrounds and is unique up to scale under the four row and column cancellations.",
           "An abstract four-point divisor-layer identity, stated from its four explicit factorisation hypotheses.",
           "An affine completion no-go: every residue class modulo an even modulus has a digit that recentres one carry step.",
-          "Exact producer and consumer interfaces for prime-ray layer supply, bounded-degree order witnesses, and finite-prime-support escape."
+          "Exact producer and consumer interfaces for prime-ray layer supply, bounded-degree order witnesses, and finite-prime-support escape.",
+          "Explicit all-base totient kernel coordinate and relation bases, and full dyadic kernel assemblies, are separately registered; finite-level dyadic rank is 2^e + 1."
         ],
         "what_is_not_checked": [
           "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.",
@@ -2173,17 +2207,29 @@
         "status": "open",
         "question": "Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "all_residue_logarithmic_rational_countermodel",
+            "prime_gap_irrationality_equivalence",
+            "prime_gap_unboundedness_and_nonperiodicity",
+            "shifted_prime_gap_finite_counting_reduction"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 6,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos251",
         "modules": [
           {
             "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
             "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
             "present": true,
-            "line_count": 1584,
-            "declaration_count": 104,
-            "theorem_count": 82,
-            "content_digest": "sha256:453629d554e1f3b45b2dcb3e2d26431d5d0bf61c541be5506b1af24bd852e975"
+            "line_count": 1665,
+            "declaration_count": 116,
+            "theorem_count": 92,
+            "content_digest": "sha256:d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1"
           }
         ],
         "note": {
@@ -2204,7 +2250,8 @@
           "That the actual consecutive-prime-gap sequence is unbounded, by the factorial prime-free-interval construction, and therefore is not eventually periodic with any positive period.",
           "For any integer-digit dyadic tail recurrence, two adjacent fixed-length shifts lying strictly between -1 and 1 cannot both be integral when the corresponding digits differ.",
           "For the actual prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap excludes eventual integrality of that fixed shift.",
-          "The generic distance-to-integers core of the finite-truncation criterion: an approximation farther than its error bound from every integer certifies non-integrality."
+          "The generic distance-to-integers core of the finite-truncation criterion: an approximation farther than its error bound from every integer certifies non-integrality.",
+          "An explicit synthetic positive-even nonperiodic sequence has logarithmic coefficient growth, values 2 and 4 arbitrarily late in every residue class, dyadic sum 6, integral tail shifts, and cumulative positions asymptotic to n log n. These positions are not asserted to be primes."
         ],
         "what_is_not_checked": [
           "The target irrationality.",
@@ -2260,7 +2307,17 @@
         "status": "open",
         "question": "Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "greedy_achievement_geometry",
+            "terminal_scaled_vanishing_half_countermodel"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 6,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos257",
         "modules": [
           {
@@ -2283,7 +2340,8 @@
         "what_is_checked": [
           "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
           "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
-          "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
+          "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero.",
+          "The full achievement set has measure one and total span strictly between 1.60669 and 1.60670; the finite-prefix tail certificate excludes (2/3,1). Neither distinguished target 1/2 nor 1/21 is decided."
         ],
         "what_is_not_checked": [
           "The universal irrationality problem, or irrationality for any new infinite support.",
@@ -2341,7 +2399,18 @@
         "status": "open",
         "question": "For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "three_prime_cofinal_window_carry_extinction",
+            "three_prime_finite_residue_contradiction",
+            "weighted_phase_carry_finite_observer"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 9,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos269",
         "modules": [
           {
@@ -2493,7 +2562,22 @@
         "status": "open",
         "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "absolute_circle_series_transport",
+            "central_disk_free_point_mean",
+            "cubic_case_complete",
+            "monic_cubic_connector",
+            "newton_ray_separation_consumer",
+            "poisson_kernel_fraction_identity",
+            "poisson_norm_square_majorization"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 16,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos1041",
         "modules": [
           {
@@ -2519,14 +2603,15 @@
           "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
           "For two translated critical values, the ray-collision locus is a real affine line with an exact one-parameter description.",
           "A finite family of ray-collision lines can be avoided by an arbitrarily small common translation.",
-          "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
+          "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc.",
+          "The complete cubic connector and its monic degree-three adapter have length strictly below two in the open lemniscate; squarefreeness ensures distinct endpoints. Separately, the free-point bound is checked on radius sqrt(1-exp(-2)), and Poisson norm-square majorization and uniformly summable termwise circle integration are checked. The full-disk weighted theorem is not thereby formalised."
         ],
         "what_is_not_checked": [
           "Erdos Problem 1041 in unrestricted degree.",
           "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block.",
           "A proof or counterexample for Proposition 12 itself; a four-pronged or cut-annulus repair may still exist.",
           "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
-          "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
+          "The global planar decomposition and metric gluing in unrestricted degree; the complete cubic connector is separately checked."
         ],
         "open_obligations": [
           {
@@ -2618,7 +2703,21 @@
         "status": "open",
         "question": "For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "partially_registered",
+        "claim_registration": {
+          "status": "partially_registered",
+          "claim_ids": [
+            "base_uniform_archimedean_cap",
+            "base_uniform_below_square_no_decay",
+            "rational_base_cleared_tail_recurrence",
+            "rational_base_forcing_growth",
+            "three_halves_coordinatewise_corridor_no_go",
+            "van_assche_qapery_diagonal_no_go"
+          ],
+          "reading_rule": "Only these exact declaration bindings are registered. This does not assert complete module coverage, kernel acceptance or Comparator replay.",
+          "declaration_binding_count": 8,
+          "declaration_source": "docs/claims.json::claims selected by claim_ids"
+        },
         "directory": "ErdosProblems/Erdos1049",
         "modules": [
           {
@@ -2698,7 +2797,8 @@
           "That the four-jet target has exact cardinality (3^R)^2(2^S)^2 and, for positive R, any family with n at least 4R+2S forces two distinct binary selectors to collide; their {-1,0,1} difference cancels all four endpoint jets.",
           "That the rectangular Hermite-Pade threshold never improves on the classical one in the checked exponent model, with equality characterised exactly.",
           "The exact 81/200 height region: 31/4 and every positive power lie inside it and outside the earlier Bundschuh-Vaananen region, while 3/2 lies outside both.",
-          "At n = 0, the Amdeberhan-Zeilberger q-Apery operator applied to Van Assche's moving diagonal has residual -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2), which is strictly negative and nonzero for every real p > 1."
+          "At n = 0, the Amdeberhan-Zeilberger q-Apery operator applied to Van Assche's moving diagonal has residual -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2), which is strictly negative and nonzero for every real p > 1.",
+          "The base-uniform Archimedean cap and actual-degree no-decay theorem are checked under their explicit degree, height, and error hypotheses. For natural 1 <= b < a < b^2 the latter excludes convergence of the cleared remainder to zero without requiring degree convergence; it proves neither divergence nor irrationality."
         ],
         "what_is_not_checked": [
           "Irrationality at base three halves, or for any rational base.",
@@ -2755,7 +2855,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:539afe1c3acb3dc93c75aa16c3c4b6987c2da775051797708f144cb454fe1256",
+    "lakefile.toml": "sha256:3f29fc5a36274b3f42ab6c85dfb2f87d5ae63c5e21da974ed564335dbf709214",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

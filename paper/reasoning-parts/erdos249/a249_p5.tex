@@ -30,12 +30,12 @@ is \texttt{windowDiscrepancy}
 (\lean{Erdos249257.TotientTailPeriodKiller.windowDiscrepancy}{TotientTailPeriodKiller.lean:66}),
 and the base predicate named ``$\mathrm{Sep}(h,N,L)$'' in the task brief is
 literally \texttt{certifiedKill}:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{certifiedKill}(h,N,L) :\equiv
   (N+h+L+2 : \mathbb{Z}) < D(h,N,L) \bmod 2^L
   \ \wedge\
   D(h,N,L) \bmod 2^L < 2^L - (N+h+L+2).
-\]
+$}\]
 \lean{Erdos249257.TotientTailPeriodKiller.certifiedKill}{TotientTailPeriodKiller.lean:72}
 \quad \ev{Lean} (the definition; decidable, instance at line 84)
 \quad \scale{n/a} \quad \coord{other:binary-window}. In words: the residue
@@ -47,13 +47,13 @@ neighbourhood of $0$ inside the growing modulus $2^L$.
 Every reformulation below ultimately measures the same underlying real
 quantity, because certificates are \emph{complete} receipts of
 non-integrality, not merely sufficient ones:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \bigl(\exists L,\ \mathrm{certifiedKill}(h,N,L)\bigr)
   \iff
   R_{N+h} - R_N \notin \operatorname{range}\bigl((\uparrow)\colon \mathbb{Z}\to\mathbb{R}\bigr).
-\]
+$}\]
 \lean{Erdos249257.exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316}
-(wrapped as \texttt{totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\allowbreak\_not\_int} at
+(wrapped as \texttt{\breakcode{totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\allowbreak\_not\_int}} at
 \lean{Erdos249257.totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\_not\_int}{CertificateKernel.lean:19025})
 \quad \ev{Lean} \quad \scale{uniform} (holds for all $h,N$)
 \quad \coord{other:binary-window}.
@@ -68,12 +68,12 @@ real-analytic route are the same route.
 
 \begin{quote}
 \textbf{Obligation 1 (certificate-supply normal form).}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{Irrational}(S)
   \quad\Longleftrightarrow\quad
   \forall h\ge 1,\ \forall N_0,\ \exists N\ge N_0,\ \exists L,\
   \mathrm{certifiedKill}(h,N,L).
-\]
+$}\]
 \end{quote}
 This is exactly the quantifier structure named ``$\mathrm{Sep}(h,N,L)$'' in
 the task brief: $\forall h\ge 1\ \forall N_0\ge 0\ \exists N\ge N_0\ \exists L\ \mathrm{Sep}(h,N,L)$.
@@ -82,12 +82,12 @@ the task brief: $\forall h\ge 1\ \forall N_0\ge 0\ \exists N\ge N_0\ \exists L\ 
 \quad \scale{cofinal} \quad \coord{other:binary-window}.
 
 The reverse direction is by contradiction against the tail-period law: if $S$ were
-rational, \texttt{eventual\_period\_of\_not\_irrational}
+rational, \texttt{\breakcode{eventual\_period\_of\_not\_irrational}}
 (\lean{Erdos249257.eventual_period_of_not_irrational}{TotientTailPeriodKiller.lean:358},
 \ev{Lean}, unconditional) supplies a period $h>0$ and pre-period $N_0$ with
 $R_{N+h}-R_N\in\mathbb{Z}$ for all $N\ge N_0$; the certificate hypothesis
 instantiated at that $(h,N_0)$ produces an $N\ge N_0$ where
-$R_{N+h}-R_N\notin\mathbb{Z}$, a contradiction via \texttt{tail\_diff\_notMem\_int\_of\_certifiedKill}
+$R_{N+h}-R_N\notin\mathbb{Z}$, a contradiction via \texttt{\breakcode{tail\_diff\_notMem\_int\_of\_certifiedKill}}
 (\lean{Erdos249257.tail_diff_notMem_int_of_certifiedKill}{TotientTailPeriodKiller.lean:262}).
 
 For the forward direction, irrationality gives pointwise non-integrality of
@@ -114,11 +114,11 @@ also propositionally equivalent to it, even when the corpus exposes only
 the two directed constructions rather than a separately named iff.
 
 \paragraph{Multiple-period collapse (formally looser, but endpoint-equivalent).}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall h_0>0,\ \forall N_0,\ \exists m>0,\ \exists N\ge N_0,\ \exists L,\
     \mathrm{certifiedKill}(m\cdot h_0, N, L)
   \ \Longrightarrow\ \mathrm{Irrational}(S).
-\]
+$}\]
 \lean{Erdos249257.irrational_totient_series_of_multiple_certificate_supply}{CarrySurvivorExtinction.lean:502}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:lcm-period-multiple}.
 Obligation 1's hypothesis trivially implies this one (take $m=1$), while the
@@ -127,12 +127,12 @@ back to Obligation 1.  It is an easier-looking target, not progress; it
 remains exactly as open as \#249.
 
 \paragraph{Diagonal collapse — one free parameter.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{Irrational}(S)
   \ \Longleftrightarrow\
   \forall t_0,\ \exists t\ge t_0,\ \exists L,\
     \mathrm{certifiedKill}(H_t, H_t, L).
-\]
+$}\]
 \lean{Erdos249257.irrational_totient_series_iff_lcm_diagonal_certificate_supply}{LcmConeFlatness.lean:426}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:lcm-diagonal}.
 This is the canonical single-quantifier restatement: write
@@ -158,11 +158,11 @@ band is still a finite floor, not a cofinal supply; no certificate at $t=83$
 is claimed.
 
 \paragraph{Cone collapse — two multipliers, still the same wall.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall t_0,\ \exists t\ge t_0,\ \exists q,m,L,\ 0<q\ \wedge\
     \mathrm{certifiedKill}(m\cdot H_t,\, q\cdot H_t,\, L)
   \ \Longrightarrow\ \mathrm{Irrational}(S).
-\]
+$}\]
 \lean{Erdos249257.irrational_totient_series_of_lcm_cone_window_kill_supply}{CertificateKernel.lean:19014}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:lcm-cone}. The
 diagonal form above is exactly the cell $q=m=1$, so any diagonal witness
@@ -189,11 +189,11 @@ is \ev{Open}, \scale{cofinal},
 \paragraph{Pure non-integrality form — certificate vocabulary stripped out.}
 Via the completeness iff above, the diagonal and cone forms restate,
 \emph{exactly}, with no reference to $\mathrm{certifiedKill}$ at all:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall t_0,\ \exists t\ge t_0,\ R_{2H_t}-R_{H_t}\notin\mathbb{Z}
   \ \Longleftrightarrow\ \text{diagonal obligation above}
   \ \Longrightarrow\ \mathrm{Irrational}(S),
-\]
+$}\]
 \lean{Erdos249257.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply}{CertificateKernel.lean:19034}
 (cone analogue at
 \lean{Erdos249257.irrational\_totient\_series\_of\_lcm\_cone\_nonintegrality\_supply}{CertificateKernel.lean:19046})
@@ -207,20 +207,20 @@ $t$?} Nothing decides this either.
 A first-harmonic (Weyl-sum) cancellation statement is proved sufficient for
 Obligation 1 by an elementary pigeonhole argument, with no case analysis and
 no scale-degrading constants:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{DTWFirstHarmonicNormGap} :\equiv\
   \forall h>0,\ \forall X_0,\ \exists X,L,\quad
   \max(X_0,1)\le X\ \wedge\
   16\,(2X+h+L+2)\le 2^L\ \wedge\
   \Bigl\|\sum_{N\in[X,2X)} e\bigl(D(h,N,L)/2^L\bigr)\Bigr\| \le \tfrac{21}{25}X.
-\]
+$}\]
 \lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
 \quad \ev{Open} (the predicate; unproved at every $h,X_0$)
 \quad \scale{cofinal} \quad \coord{other:first-harmonic}.
 
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{DTWFirstHarmonicNormGap} \ \Longrightarrow\ \mathrm{Irrational}(S).
-\]
+$}\]
 \lean{Erdos249257.irrational_totient_series_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:first-harmonic}. The
 consumer already has Obligation 1's exact free-parameter shape ($X$ is a
@@ -262,11 +262,11 @@ what remains'' anywhere in the corpus.
 
 \begin{quote}
 \textbf{The exact equivalence.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{Irrational}(S)
   \iff
   \forall a_0,\ \exists a\ge a_0,\ \mathrm{actualLcmTailOrbit}(a)\notin\mathbb{Z}.
-\]
+$}\]
 \end{quote}
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply}{TotientActualLcmOrbitNonintegrality.lean:37}
 \quad \ev{Lean} \quad \scale{n/a} (an unconditional equivalence, not a
@@ -285,9 +285,9 @@ empty. For $a\ge 8$ and room bound $J+K+(a{+}6)<2\cdot 2^a$ with a wide
 enough modulus $2H+J+K+2<2^m$, a terminal window where \emph{every} one of
 the last $m$ letters vanishes mod its own growing power of two is
 impossible:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \neg\,\mathrm{ActualLcmTerminalDyadicStaircase}(a,J,K,m).
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.not_actualLcmTerminalDyadicStaircase_of_room}{TotientActualLcmTopEdgeStaircase.lean:251}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{mobius-mersenne}. The
 mechanism is a bare positivity/divisibility contradiction (a positive
@@ -306,12 +306,12 @@ $2^{m-1}$,
 \ev{Lean}, \scale{bounded}) and the one-sided residue-gap family below.
 
 \paragraph{The surviving one-sided target.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{ActualLcmTopEdgeResidueGap}(a,J,K,m) :\equiv
   m\le K\ \wedge\
   2H+J+K+2 < 2^m\ \wedge\
   D(H,\,H+J,\,K) \bmod 2^m \le 2^m - (2H+J+K+2).
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.ActualLcmTopEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:900}
 \quad \ev{Open} (a definition, unproved at any $a$)
 \quad \scale{bounded} \quad \coord{mobius-mersenne}.
@@ -320,9 +320,9 @@ Note this is a
 \emph{one-sided} inequality — only the upper (positive) carry arc is
 excluded, not a symmetric two-sided band — because the corridor's lower half
 is already discharged unconditionally: for $a\ge8$ and $J+(a{+}6)<2\cdot2^a$,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   0 < R_{2H+J}-R_{H+J}
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos}{TotientActualLcmOrbitSign.lean:39}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{mobius-mersenne} — a rare
 genuinely unconditional, non-hypothetical real-analytic theorem in this
@@ -337,32 +337,32 @@ would need:
 what remains,'' pinning the missing exclusion to one named residue class
 rather than leaving it implicit.
 
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{ActualLcmTopEdgeResidueGap}(a,J,K,m)\ \Longrightarrow\
   R_{2H+J}-R_{H+J}\notin\mathbb{Z}.
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_notMem_int_of_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{mobius-mersenne}.
 
 The
 cofinal target built from it:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{PowerTwoActualLcmTopEdgeResidueGapSupply} :\equiv\
   \forall a_0,\ \exists a,K,m,\quad
   a_0\le a\ \wedge\ 8\le a\ \wedge\ K+(a{+}6)<2\cdot 2^a\ \wedge\
   \mathrm{ActualLcmTopEdgeResidueGap}(a,0,K,m).
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:1325}
 \quad \ev{Open} \quad \scale{cofinal} \quad \coord{mobius-mersenne}.
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{PowerTwoActualLcmTopEdgeResidueGapSupply} \Longrightarrow \mathrm{Irrational}(S).
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_topEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:2184}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{mobius-mersenne}.
 
 \paragraph{Five strictly weaker links, each independently proved sufficient.}
 The same file proves five further cofinal predicates, each strictly weaker
-than \texttt{PowerTwoActualLcmTopEdgeResidueGapSupply} (each implies it, so
+than \texttt{\breakcode{PowerTwoActualLcmTopEdgeResidueGapSupply}} (each implies it, so
 each is an easier target), with a direct \#249 endpoint of its own —
 proving the \emph{weakest} of the six closes the entire cluster.
 
@@ -379,10 +379,10 @@ $m{+}1$ so either branch stays inside the sign corridor. \lean{Erdos257PeriodNon
 depth $m=2q+1$ the adjacent-suffix residue is exactly twice a half-word
 residue, and both directed edge widths halve to the same threshold
 $H+q+2$:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   H+q+2 \le \bigl(\text{half-word correction word}\bigr) \bmod 4^q
   \le 4^q - (H+q+2).
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoOddGuardTopEdgeHalfWordBandSupply}{TotientActualLcmTopEdgeStaircase.lean:1349}
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}. This is a substantially
 weaker demand than the earlier fixed $1/32$ central band elsewhere in the
@@ -391,17 +391,17 @@ corpus. Sufficiency:
 
 \item[(iii)] $\mathrm{PowerTwoActualFinalTopEdgeMagnitudeSupply}$: the exact
 centered-lift restatement of (ii),
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   H+q+2 \le |\mathrm{actualOddHalfCenteredLift}(a,q)|,
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualFinalTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1471}
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}. Proved
 \textbf{equivalent} (an iff, not merely sufficient) to (ii):
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{PowerTwoOddGuardTopEdgeHalfWordBandSupply}
   \iff
   \mathrm{PowerTwoActualFinalTopEdgeMagnitudeSupply}.
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.topEdgeHalfWordBandSupply_iff_actualFinalCenteredMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1479}
 \quad \ev{Lean}.
 
@@ -417,9 +417,9 @@ through (i), not through the corridor-escape chain below:
 \item[(v)] $\mathrm{PowerTwoFlexibleActualTerminalDominanceSupply}$: a
 strictly \emph{one-sided} version of (iv) — only the upper comparison, no
 absolute value:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{diagonalWindowIncrement}(2^a,\,2q{+}2) \le 2\cdot\mathrm{actualOddHalfCenteredLift}(a,q).
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:1908}
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}. Direct endpoint
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:2221}.
@@ -429,13 +429,13 @@ absolute value:
 A sixth predicate, strictly weaker again than (v) — it is the disjunction of
 (v)'s inequality with the opposite-direction escape — is the true minimum
 of the whole cluster:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply} :\equiv
   \forall a_0,\ \exists a,q,\quad \cdots\ \wedge\
   \Bigl(2u \le d - B\ \vee\ d \le 2u\Bigr),
-\]
-where $d=\mathrm{diagonalWindowIncrement}(2^a,2q{+}2)$,
-$u=\mathrm{actualOddHalfCenteredLift}(a,q)$,
+$}\]
+where \[\adjustbox{max width=\linewidth}{$\displaystyle d=\mathrm{diagonalWindowIncrement}(2^a,2q{+}2)$}\],
+\[\adjustbox{max width=\linewidth}{$\displaystyle u=\mathrm{actualOddHalfCenteredLift}(a,q)$}\],
 $B=2H+(2q{+}1)+2$.
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply}{TotientActualLcmTopEdgeStaircase.lean:1895}
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}. Direct endpoint
@@ -443,10 +443,10 @@ $B=2H+(2q{+}1)+2$.
 
 This form is not arbitrary: under integrality it is exactly one side of a
 proved identity,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   2\cdot\mathrm{actualOddHalfCenteredLift}(a,q)
   = \mathrm{diagonalWindowIncrement}(2^a,2q{+}2) - \mathrm{carryOrbit}(H,H,z,2q{+}1),
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry}{TotientActualLcmTopEdgeStaircase.lean:1678}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{mobius-mersenne} — an
 \emph{equality}, not an inequality: the doubled centered-lift state is
@@ -482,11 +482,11 @@ $\mathrm{LcmDiagonalArithmeticKill}(t,L)\iff\mathrm{certifiedKill}(H_t,H_t,L)$
 \ev{Lean}).
 
 Consequently
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{PowerTwoActualLcmShortArithmeticKillSupply} :\equiv
   \forall a_0,\ \exists a,L,\quad a_0\le a\ \wedge\ L<2\cdot2^a\ \wedge\
   \mathrm{certifiedKill}(H_{2^a}, H_{2^a}, L)
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmShortArithmeticKillSupply}{TotientActualLcmOrbitArithmetic.lean:2107}
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne} is \emph{literally the
 diagonal obligation $P(t)$ of the collapsing-free-parameters chain above, restricted to powers of two and to a
@@ -508,21 +508,21 @@ self-contained, independently interesting target, not a re-run.
 
 \paragraph{A Diophantine-flavoured alternative: the raw-approximant separation supply.}
 Unconditionally, for every $a,q$:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \bigl|\mathrm{actualLcmTailOrbit}(a) - \mathrm{actualLcmRawApprox}(a,q)\bigr|
   < \frac{4H+2(2q{+}1)+4}{2^{2q+2}},
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.abs_actualLcmTailOrbit_sub_rawApprox_lt}{TotientActualLcmOrbitSeparation.lean:141}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{mobius-mersenne}, where
 $\mathrm{actualLcmRawApprox}(a,q)$ is an explicit finite computable rational.
 This reduces the whole analytic problem to a finite question: a cofinal
 $1/32$-separation of the raw approximant from every integer,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{PowerTwoActualLcmOrbitSeparationSupply} :\equiv
   \forall a_0,\ \exists a\ge\max(2,a_0),\ \exists q,\quad
   \mathrm{oddGuardedCanonicalAdjacentSuffixDepth}(2^a)=2q{+}1\ \wedge\
   \forall z\in\mathbb{Z},\ \tfrac{1}{32}+\mathrm{errorRadius}(a,q)\le|\mathrm{actualLcmTailOrbit}(a)-z|,
-\]
+$}\]
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}, sufficient via
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply}{TotientActualLcmOrbitSeparation.lean:305}
 (\ev{Lean}). Note the depth $q$ is not a free search parameter: the supply
@@ -534,11 +534,11 @@ $\mathrm{oddGuardedCanonicalAdjacentSuffixDepth}$.
 Independently of which coordinate is used, \emph{any} tail-difference
 certificate — for arbitrary $h,N,L$, not specific to \#249 — compresses to
 a two-bit test at logarithmic depth:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \bigl(\exists L,\ \mathrm{certifiedKill}(h,N,L)\bigr)
   \iff
   \mathrm{GuardCylinderWitness}(h,N).
-\]
+$}\]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.exists_certifiedKill_iff_guardCylinderWitness}{TotientActualLcmTopEdgeStaircase.lean:844}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{seam-integer}, where the
 witness is $\exists s,b,\ \mathrm{certifiedKill}(h,N{+}s,b{+}1) \vee
@@ -566,19 +566,19 @@ Dirichlet's theorem on primes in arithmetic progression):
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:carry-kernel-rank}.
 Consequently, if $S$ is rational there is a tempered integral binary carry
 orbit $u$ with
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall e,\quad 2^e-1 \le \operatorname{rank}_{\mathbb{Q}}\operatorname{span}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr).
-\]
+$}\]
 \lean{Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:carry-kernel-rank}.
 
 An opposite inequality — a rationality-side rank \emph{upper} bound — would
 of course contradict the displayed lower bound:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \exists C,\quad \forall\text{ tempered integral binary carry orbit } u
   \text{ for a rational } S,\quad
   \forall e,\quad \operatorname{rank}_{\mathbb{Q}}\operatorname{span}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C
-\]
+$}\]
 (or any bound growing slower than $2^e-1$).  This is a logically sufficient
 new theorem schema, not an open proposition isolated by the preceding
 mathematics: the corpus gives no
@@ -607,10 +607,10 @@ upper bound.
 \paragraph{Obligation 3 (Farey growth law).}
 The corpus's strongest \emph{unconditional} statement about $S$ comes from
 a Farey-gap denominator exclusion at a single fixed window $K=240$:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall p\in\mathbb{Q},\quad p.\mathrm{den} \le 79639646646701375323355774875831053
   \ \Longrightarrow\ S\ne p.
-\]
+$}\]
 \lean{Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{farey}. This bound is
 \emph{sharp} at $K=240$ — the mediant $q=79639646646701375323355774875831054$
@@ -638,30 +638,30 @@ per-window computation, not a refinement of the existing one.
 \subsection{Equivalence map}
 
 \begin{center}
-\begin{longtable}{p{0.30\linewidth} p{0.20\linewidth} p{0.42\linewidth}}
+\begin{longtable}{p{0.28\linewidth} p{0.18\linewidth} p{0.40\linewidth}}
 \textbf{Form} & \textbf{Relation to Obligation 1} & \textbf{Site} \\
 \hline
 \endhead
-Sep$(h,N,L)$ supply (Obl.\ 1, base form) & \textbf{equivalent} to Irrational$(S)$ & LcmConeFlatness.lean:412 \\
-multiple-period supply & propositionally equivalent via Obl.\ 1; explicit directions are Obl.\ 1 $\Rightarrow$ multiple and multiple $\Rightarrow$ irrationality & CarrySurvivorExtinction.lean:502 \\
-lcm-diagonal supply $P(t)$ & \textbf{equivalent} to Irrational$(S)$; single free parameter & LcmConeFlatness.lean:426 \\
-lcm-cone supply & propositionally equivalent via Obl.\ 1; $P(t)$ is the cell $q{=}m{=}1$ & CertificateKernel.lean:18686 \\
-cone-menu (\texttt{coneNonflatCert}) supply & weaker; half the pairwise radius & CertificateKernel.lean:18812 \\
-pure non-integrality (diagonal/cone) & \textbf{equivalent} to the corresp.\ certificate form, via the completeness iff & CertificateKernel.lean:18706, :18718 \\
-DTWFirstHarmonicNormGap & sufficient for Obl.\ 1 (not shown weaker/stronger) & FirstHarmonicPivot.lean:83 \\
-actual-orbit nonintegrality supply & \textbf{equivalent} to Irrational$(S)$ itself & TotientActualLcmOrbitNonintegrality.lean:37 \\
-short-arithmetic-kill supply & special case of $P(t)$: powers of two, short window & TotientActualLcmOrbitArithmetic.lean:2107 \\
-top-edge residue-gap supply & sufficient for actual-orbit supply; one-sided & TotientActualLcmTopEdgeStaircase.lean:1325 \\
-adjacent-suffix midband supply & weaker than top-edge residue-gap & TotientActualLcmTopEdgeStaircase.lean:1334 \\
-odd-guard half-word band supply & weaker again; \textbf{equivalent} to final-magnitude form & TotientActualLcmTopEdgeStaircase.lean:1349 \\
-actual final top-edge magnitude supply & \textbf{equivalent} to odd-guard half-word band & TotientActualLcmTopEdgeStaircase.lean:1471 \\
-flexible top-edge magnitude supply & weaker than midband; feeds midband, not corridor-escape & TotientActualLcmTopEdgeStaircase.lean:1927 \\
-flexible terminal-dominance supply & weaker again; one-sided & TotientActualLcmTopEdgeStaircase.lean:1908 \\
-flexible terminal carry-corridor-escape supply & \textbf{weakest known} in this cluster & TotientActualLcmTopEdgeStaircase.lean:1895 \\
-raw-approximant separation supply & alternative (Diophantine) sufficient form, same target & TotientActualLcmOrbitSeparation.lean:305 \\
-rank-compression upper bound (Obl.\ 2) & independent obligation, different coordinate & TotientCarryKernelRigidity.lean:284 \\
-Farey growth law (Obl.\ 3) & independent obligation, different coordinate & GapFareyBound.lean, CertificateKernel.lean:18056 \\
-guard-cylinder witness & problem-agnostic normal form of \emph{any} certificate, not scale-comparable & TotientActualLcmTopEdgeStaircase.lean:844 \\
+Sep$(h,N,L)$ supply (Obl.\ 1, base form) & \textbf{equivalent} to Irrational$(S)$ & \texttt{\breakcode{LcmConeFlatness.lean:412}} \\
+multiple-period supply & propositionally equivalent via Obl.\ 1; explicit directions are Obl.\ 1 $\Rightarrow$ multiple and multiple $\Rightarrow$ irrationality & \texttt{\breakcode{CarrySurvivorExtinction.lean:502}} \\
+lcm-diagonal supply $P(t)$ & \textbf{equivalent} to Irrational$(S)$; single free parameter & \texttt{\breakcode{LcmConeFlatness.lean:426}} \\
+lcm-cone supply & propositionally equivalent via Obl.\ 1; $P(t)$ is the cell $q{=}m{=}1$ & \texttt{\breakcode{CertificateKernel.lean:18686}} \\
+cone-menu (\texttt{coneNonflatCert}) supply & weaker; half the pairwise radius & \texttt{\breakcode{CertificateKernel.lean:18812}} \\
+pure non-integrality (diagonal/cone) & \textbf{equivalent} to the corresp.\ certificate form, via the completeness iff & \texttt{\breakcode{CertificateKernel.lean:18706}}, :18718 \\
+\texttt{\breakcode{DTWFirstHarmonicNormGap}} & sufficient for Obl.\ 1; neither comparison direction is established & \texttt{\breakcode{FirstHarmonicPivot.lean:83}} \\
+actual-orbit nonintegrality supply & \textbf{equivalent} to Irrational$(S)$ itself & \texttt{\breakcode{TotientActualLcmOrbitNonintegrality.lean:37}} \\
+short-arithmetic-kill supply & special case of $P(t)$: powers of two, short window & \texttt{\breakcode{TotientActualLcmOrbitArithmetic.lean:2107}} \\
+top-edge residue-gap supply & sufficient for actual-orbit supply; one-sided & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1325}} \\
+adjacent-suffix midband supply & weaker than top-edge residue-gap & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1334}} \\
+odd-guard half-word band supply & weaker again; \textbf{equivalent} to final-magnitude form & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1349}} \\
+actual final top-edge magnitude supply & \textbf{equivalent} to odd-guard half-word band & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1471}} \\
+flexible top-edge magnitude supply & weaker than midband; feeds midband, not corridor-escape & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1927}} \\
+flexible terminal-dominance supply & weaker again; one-sided & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1908}} \\
+flexible terminal carry-corridor-escape supply & \textbf{weakest known} in this cluster & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:1895}} \\
+raw-approximant separation supply & alternative (Diophantine) sufficient form, same target & \texttt{\breakcode{TotientActualLcmOrbitSeparation.lean:305}} \\
+rank-compression upper bound (Obl.\ 2) & independent obligation, different coordinate & \texttt{\breakcode{TotientCarryKernelRigidity.lean:284}} \\
+Farey growth law (Obl.\ 3) & independent obligation, different coordinate & \texttt{\breakcode{GapFareyBound.lean}}, \texttt{\breakcode{CertificateKernel.lean:18056}} \\
+guard-cylinder witness & problem-agnostic normal form of \emph{any} certificate, not scale-comparable & \texttt{\breakcode{TotientActualLcmTopEdgeStaircase.lean:844}} \\
 \end{longtable}
 \end{center}
 

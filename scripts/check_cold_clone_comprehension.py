@@ -29,6 +29,7 @@ import subprocess
 import sys
 from functools import lru_cache
 from pathlib import Path
+from query_corpus import json_transport_path, decode_json_transport
 from typing import Any
 
 import build_corpus_descriptor
@@ -92,7 +93,7 @@ def _safe_cold_clone_path(path: Path) -> Path:
 
 def safe_read_text(rel: str) -> str:
     """Read a public cold-clone surface through a no-follow regular descriptor."""
-    candidate = _canonical_input_path(_safe_cold_clone_path(ROOT / rel))
+    candidate = _canonical_input_path(_safe_cold_clone_path(json_transport_path(ROOT / rel)))
     if not candidate.is_file():
         raise UnsafeColdCloneInput(f"cold-clone input is not a regular file: {candidate}")
     directory_flags = os.O_RDONLY
@@ -128,9 +129,9 @@ def safe_read_text(rel: str) -> str:
             raise UnsafeColdCloneInput(
                 f"cold-clone input is not a regular file: {candidate}"
             )
-        with os.fdopen(descriptor, "r", encoding="utf-8") as stream:
+        with os.fdopen(descriptor, "rb") as stream:
             descriptor = -1
-            return stream.read()
+            return decode_json_transport(stream.read())
     except OSError as exc:
         raise UnsafeColdCloneInput(
             f"cold-clone input could not be opened safely: {candidate}"
@@ -2398,7 +2399,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         )
     ), "cold-clone comprehension invariant")
     require({
-        "docs/semantic_corpus.json",
+        "docs/semantic_corpus.json.gz",
         "docs/lean_dependency_index.json",
         "scripts/proof_workbench.py",
     }.issubset(set(navigation_route["route"]["authority_owners"])), "cold-clone comprehension invariant")
@@ -2616,12 +2617,11 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         require(route["id"] == route_id, "cold-clone comprehension invariant")
         require(programme["title"] == summary_programmes[route_id]["title"], "cold-clone comprehension invariant")
         require(programme["core_claims"], "cold-clone comprehension invariant")
-        require(summary_programmes[route_id]["core_claim_count"] == len(
-            programme["core_claims"]
-        ), "cold-clone comprehension invariant")
-        require(set(summary_programmes[route_id]["representative_claim_ids"]).issubset(
-            {row["id"] for row in programme["core_claims"]}
-        ), "cold-clone comprehension invariant")
+        # Compact summary handles keep the ceiling; exact membership belongs to the route.
+        require(programme["claim_ceiling"] == summary_programmes[route_id]["claim_ceiling"],
+                "cold-clone comprehension invariant")
+        require([row["id"] for row in programme["core_claims"]] == route["core_claim_ids"],
+                "cold-clone comprehension invariant")
         require(programme["problem_targets"], "cold-clone comprehension invariant")
         require(all(row["status"] == "open" for row in programme["problem_targets"]), "cold-clone comprehension invariant")
         require(programme["remaining_open_propositions"], "cold-clone comprehension invariant")

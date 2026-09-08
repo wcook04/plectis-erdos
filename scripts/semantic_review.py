@@ -20,12 +20,13 @@ import hashlib
 import json
 import sys
 from pathlib import Path
+from query_corpus import json_transport_path, read_json_transport
 from typing import Iterable
 
 
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "docs" / "semantic" / "reviews.json"
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = json_transport_path(ROOT / "docs" / "semantic_corpus.json.gz")
 CLAIMS = ROOT / "docs" / "claims.json"
 
 REGISTRY_SCHEMA = "erdos249257-semantic-reviews/1"
@@ -236,7 +237,7 @@ def formal_source_revision(claims: dict) -> str:
 
 
 def load(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(read_json_transport(path))
 
 
 def attached_receipt_errors(

@@ -124,6 +124,20 @@ The prior-art record, not this table, supplies antecedents.
 - `remaining_open.twenty_one_actual_orbit_invariant` — Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.
 - `remaining_open.twenty_one_final_skip_exclusion` — Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.
 - `remaining_open.erdos_1041_additive_error_strip_gluing` — Assuming the decorated Reeb-tree construction, join strip trajectories into a tree containing all roots with length at most (1/(2π)) times the perimeter integral plus any positive error. The global strip-flux allocation remains open.
+- `remaining_open.erdos_243_divergent_mass_negative_excursions` — Exclude or construct a global exact natural tail orbit with a_n>1,C_n>0,quadratic multiplier ratio tending to1,normalized centered-state vanishing,cofinally unbounded negative excursions,and divergent normalized negative mass; a construction must also supply vanishing tail ratio for rational-series realization.
+- `remaining_open.erdos_243_old_factor_overlap` — For every nonterminal canonical orbit under the original243 hypotheses, decide whether limsup log gcd(A_n,a_n-1)/n>0, equivalently exponential old-factor overlap on infinitely many indices.
+- `remaining_open.erdos_243_canonical_negative_mass_supplier` — Under the original243 rationality,positivity,strict increase and quadratic growth hypotheses, prove or refute summability of max(-E_n,0)/C_n on the actual canonical integer state.
+- `remaining_open.erdos_243_variable_rise_crt_barrier` — Determine the weakest positive-increment growth condition ruling out an unbounded integer walk coprime to the infinitely many pairwise-coprime old moduli of the stated barrier; in particular decide the proposed o(log log(u_n+3)) condition.
+- `remaining_open.erdos_243_maximal_gap_coefficient` — For pairwise-coprime increasing moduli with ell(m_j)=j+O(1) and positive product sigma, decide whether the maximal normalized gap limsup of integers avoiding all modulus multiples equals sigma^(-1); the Fermat specialization predicts2.
+- `remaining_open.erdos_251_universal_prime_gap_shift_escape` — For every positive shift h and threshold N0, find N>=N0 whose actual dyadic prime-gap shift difference sum_j>=1(g_(N+h+j)-g_(N+j))/2^j is nonintegral.
+- `remaining_open.erdos_251_cofinal_adjacent_small_mismatch` — For every positive shift h and threshold N0, find N>=N0 with both |sigma_h(N)|<1 and |sigma_h(N+1)|<1 and actual prime-gap mismatch g_(N+h+1)!=g_(N+1).
+- `remaining_open.erdos_251_divisor_hitting_shift_escape` — For every r>=1, determine whether some fixed positive multiple mr has cofinal actual prime-gap shift escape; m may depend on r but not on the cofinal threshold.
+- `remaining_open.erdos_1049_common_width_endpoint_jet_construction` — Construct one common-width quadratic-scale family with primitive specialized rows, a nonzero ternary four-jet-kernel combination, and divided form 0<|rho_n|<1/n for every sufficiently large n; all displayed width and row-count bounds must hold.
+- `remaining_open.erdos_1049_four_jet_kernel_escape` — For one literal polynomially primitive family meeting the exact jet threshold, prove the collision set escapes both polynomial collapse and remainder collapse for every sufficiently large n.
+- `remaining_open.erdos_1049_first_saturated_determinant` — Specify the contiguous a0-shift matrix and its size/width, and determine whether det A_(n,13n+2) is nonzero eventually; a negative answer must identify a systematic rank relation or exact first failure.
+- `remaining_open.erdos_1049_minimal_a1_deformation` — If the saturated contiguous family collapses, determine whether one a1-shift, with unchanged cone and widths, increases rank and yields a collision outside both collapse kernels; otherwise prove a class-wide one-shift obstruction.
+- `remaining_open.erdos_1049_negative_product_formula_margin` — Prove limsup (log H_n+log|L_n|-R_n log3-S_n log2)/n^2<0, with every denominator, row content and final-combination content included in H_n and L_n.
+- `remaining_open.erdos_1049_optimal_admissible_height_threshold` — Specify a primitive noncollapsed class excluding the named scalar/content/rectangular mechanisms, and prove an explicit height-threshold improvement above81/200, an exact optimum, a converse below log2/log3, or a class-wide reduction to checked no-go mechanisms.
 
 ## Mathematical programmes
 
@@ -148,8 +162,8 @@ opens with a ten-minute verdict.
 
 Navigation inventory, not results. Generated certificate shards are
 counted as formal source, never as separate mathematical claims. The
-two roots currently expose 1,067 modules and
-153,772 declarations across #68, #243, #249,
+two roots currently expose 1,143 modules and
+154,750 declarations across #68, #243, #249,
 #251, #257, #269, #1041, and #1049; exact counts and atlas handles
 remain in `docs/orientation.json`.
 

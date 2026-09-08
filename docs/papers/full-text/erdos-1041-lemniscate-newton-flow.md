@@ -52,6 +52,8 @@ The two roots are distinct because $`\alpha\ne0`$. This is the asserted piecewis
 
 </div>
 
+The [monic-cubic formal endpoint](https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1041/PaperCubicMonic.lean#L32) starts directly from monicity, degree three and the open-disc root condition. The fundamental theorem of algebra supplies the root enumeration, including multiplicities, so no factorisation is an additional hypothesis. It produces the continuous polygonal connector and its variation bound; squarefreeness makes its two root endpoints distinct.
+
 <a id="why-a-critical-value-is-smaller-than-one."></a>
 
 #### Why a critical value is smaller than one.
@@ -690,7 +692,14 @@ The coefficient $`a_1=-\overline{\sum_jw_jc_j}`$ gives the immediate refinement
 ``` math
 \sum_jw_jG(c_j)^2\le1-\left|\sum_jw_jc_j\right|^2.
 ```
-Thus the proof records a quantitative loss when the point centroid is nonzero. The specialised four-point and central-radius proofs are retained in the long record; the all-degree inequality above removes their cardinality restriction.
+Thus the proof records a quantitative loss when the point centroid is nonzero. The specialised four-point and central-radius proofs are retained in the long record; the all-degree inequality above removes their cardinality restriction. The [checked central-region theorem](https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1041/FreePointCentralCompletion.lean#L39) now has only the point hypotheses $`m\ge1`$ and $`|c_j|\le\sqrt{1-e^{-2}}`$: it gives the equal-weight geometric row-mean bound, with the logarithmic series inputs discharged. This is a formalisation of a restricted region of the stronger ordinary weighted inequality above.
+
+For $`g`$ holomorphic on the unit disc and continuous on its closure, put $`P_c(\zeta)=(1-|c|^2)/|\zeta-c|^2`$ for $`|\zeta|=1`$. If $`|c|<1`$,
+``` math
+|g(c)|^2\le\frac1{2\pi}\int_0^{2\pi}
+ P_c(e^{it})|g(e^{it})|^2\,dt.
+```
+The [norm-square majorization](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/PoissonNormSquare.lean#L114) uses the Poisson formula for a real part and the nonnegativity of a square. The [weighted kernel identity](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/PoissonKernelBridge.lean#L27) identifies the pointwise Poisson mixture. Separately, [absolute series transport](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos1041/CircleSeriesTransport.lean#L49) justifies termwise circle integration when the terms are circle integrable and admit a summable uniform norm bound; its Taylor double-product form assumes absolute summability of both coefficient sequences. These statements do not yet assemble the full-disc weighted free-point inequality. That theorem remains an ordinary analytic proof; the checked free-point conclusion above remains restricted to the central region.
 
 <div id="res:fp-to-s" class="theorem">
 
@@ -718,7 +727,7 @@ The equal-weight quadratic theorem proves the required bound. Contracting a clos
 
 </div>
 
-The constant is attained by $`f(z)=(z-h)^n-\lambda`$ with $`|\lambda|=R^n`$. These ordinary analytic proofs are recorded in `ErdosProblems/Erdos1041/FreePointQuadraticAllDegrees.md` and `ErdosProblems/Erdos1041/CentredCircleQuadrinomialConnector.md`. The circle comparison and finite Taylor-coefficient identity have checked kernels; Poisson integration and the maximum-principle assembly remain ordinary. A critical-value mean supplies no attachment or path-length estimate by itself.
+The constant is attained by $`f(z)=(z-h)^n-\lambda`$ with $`|\lambda|=R^n`$. These ordinary analytic proofs are recorded in `ErdosProblems/Erdos1041/FreePointQuadraticAllDegrees.md` and `ErdosProblems/Erdos1041/CentredCircleQuadrinomialConnector.md`. The circle comparison, finite Taylor-coefficient identity, Poisson norm-square majorization and absolute circle-series transport have checked proofs; their full weighted-energy and maximum-principle assembly remains ordinary. A critical-value mean supplies no attachment or path-length estimate by itself.
 
 <a id="sec:orlicz"></a>
 
@@ -830,7 +839,7 @@ The remaining parent regime has $`\mu>13/25`$ and lies outside the solved famili
 
 The trinomial radial inequalities and length budget, the two-root proximity selector, the exact spoke counterexamples, and the specified finite kernels are checked in Lean at their linked source revisions. Their geometric assemblies are identified separately in the corresponding proofs.
 
-The $`13/25`$ theorem is ordinary analysis with an exact rational certificate. The $`71/10`$ theorem, the analytic inverse-map construction, the all-degree Poisson argument, and the generic slit-sheet construction are ordinary proofs. The finite coefficient identity and the polar circle comparison have checked kernels; neither substitutes for Poisson integration or the maximum principle. The complete declaration-to-claim map is retained in the long record and the formal-source guide below.
+The $`13/25`$ theorem is ordinary analysis with an exact rational certificate. The $`71/10`$ theorem, the analytic inverse-map construction, the all-degree Poisson argument, and the generic slit-sheet construction are ordinary proofs. The finite coefficient identity and the polar circle comparison have checked kernels, as do the Poisson majorization and absolute series transport above; the full weighted-energy and maximum-principle assembly remains ordinary. The complete declaration-to-claim map is retained in the long record and the formal-source guide below.
 
 Fixed-degree lower semicontinuity reduces the closed class to a dense generic metric bound. The admissible canonical-arc length estimate remains open. Raster searches supply candidate paths for finite samples; their meaning is separate from the exact rational certificates used in proved inequalities. No independent human review or resolution of the general problem is claimed.
 

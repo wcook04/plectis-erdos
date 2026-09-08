@@ -282,6 +282,30 @@ def research_corpus_facts(config: dict | None) -> dict[str, object] | None:
     }
 
 
+def claim_registration(row: dict, claims: dict | None) -> dict:
+    """Join exact declaration locations; registration is not proof/replay status."""
+    if claims is None:
+        return {"status": "unknown_registry_unavailable", "claim_ids": [], "declarations": []}
+    directory = row["directory"].rstrip("/") + "/"
+    modules = {module_path(m) for m in
+               [row["principal_module"], *row.get("companion_modules", [])]}
+    bindings = []
+    for claim in claims.get("claims", []):
+        for declaration in claim.get("declarations", []):
+            location = declaration.get("module", "")
+            if not location.endswith(".lean"):
+                location = module_path(location)
+            if location.startswith(directory) or location in modules:
+                bindings.append({"claim_id": claim["id"],
+                                 "name": declaration["name"], "module": location})
+    bindings.sort(key=lambda item: (item["claim_id"], item["module"], item["name"]))
+    return {"status": "partially_registered" if bindings else "no_registered_declaration_bindings",
+            "claim_ids": sorted({item["claim_id"] for item in bindings}),
+            "declarations": bindings,
+            "reading_rule": "Only these exact declaration bindings are registered. This does not "
+                            "assert complete module coverage, kernel acceptance or Comparator replay."}
+
+
 def build(
     source: dict,
     artifacts: dict[str, dict],
@@ -294,6 +318,7 @@ def build(
     for row in source["problems"]:
         modules = [module_facts(row["principal_module"])]
         modules.extend(module_facts(name) for name in row.get("companion_modules", []))
+        registration = claim_registration(row, claims)
         problem = {
             "problem_id": row["problem_id"],
             "erdos_number": row["erdos_number"],
@@ -301,11 +326,12 @@ def build(
             "status": row["status"],
             "question": row["question"],
             "library_root": "ErdosProblems.lean",
-            "claim_registry_status": (
-                "not_registered; the claim registry does not carry these "
-                "declarations and kernel checking them does not promote "
-                "them into reviewed public claims"
-            ),
+            "claim_registry_status": registration["status"],
+            "claim_registration": {
+                **{key: value for key, value in registration.items() if key != "declarations"},
+                "declaration_binding_count": len(registration["declarations"]),
+                "declaration_source": "docs/claims.json::claims selected by claim_ids",
+            },
             "directory": row["directory"],
             "modules": modules,
             "note": note_facts(row["note_artifact_id"], artifacts),

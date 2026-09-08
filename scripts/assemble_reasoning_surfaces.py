@@ -27,6 +27,11 @@ PARTS_ROOT = ROOT / "paper" / "reasoning-parts"
 MARKER_RE = re.compile(r"^% ---- part ([a-z0-9_]+) ----\n", re.MULTILINE)
 
 PAPERS = {
+    "269": {"output": ROOT / "paper/erdos269-running-lcm-reasoning-surface.tex", "directory": PARTS_ROOT / "erdos269", "parts": ('core', 'extended_record', 'family_catalogue', 'back')},
+    "251": {"output": ROOT / "paper/erdos251-prime-gap-reasoning-surface.tex", "directory": PARTS_ROOT / "erdos251", "parts": ('core', 'extended_record', 'family_catalogue', 'back')},
+    "243": {"output": ROOT / "paper/erdos243-reciprocal-tail-reasoning-surface.tex", "directory": PARTS_ROOT / "erdos243", "parts": ('core', 'family_catalogue', 'back')},
+    "68": {"output": ROOT / "paper/erdos68-factorial-reasoning-surface.tex", "directory": PARTS_ROOT / "erdos68", "parts": ('core', 'extended_record', 'family_catalogue', 'back')},
+    "1049": {"output": ROOT / "paper/erdos1049-rational-base-lambert-reasoning-surface.tex", "directory": PARTS_ROOT / "erdos1049", "parts": ('core', 'family_catalogue', 'back')},
     "1041": {
         "output": ROOT / "paper" / "erdos1041-lemniscate-reasoning-surface.tex",
         "directory": PARTS_ROOT / "erdos1041",

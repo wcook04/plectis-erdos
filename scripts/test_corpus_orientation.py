@@ -155,8 +155,43 @@ def test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route() -> No
     assert "--depth=1" not in profiles["release_history"]["commands"][0]
 
 
+
+def test_retained_companion_default_is_lossless_and_bounded() -> None:
+    claims = json.loads((ROOT / "docs/claims.json").read_text())
+    atlas = json.loads((ROOT / "docs/declaration_atlas.json").read_text())
+    orientation = builder.build_orientation(claims, atlas)
+    projected = orientation["editorial_architecture"]
+    expected = claims["machine_readable_paper"]["publication_assembly"]["publication_architecture"]["retained_companions"]
+    expanded = [dict(row, decision=row.get("decision", projected["retained_companion_default_decision"])) for row in projected["retained_companions"]]
+    assert expanded == [{key: row[key] for key in ("source", "decision")} for row in expected]
+    assert len((json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n").encode()) <= builder.ORIENTATION_MAX_BYTES
+    if expected:
+        expected[0]["decision"] = "test_distinct_disposition"
+        changed = builder.build_orientation(claims, atlas)
+        assert changed["editorial_architecture"]["retained_companions"][0]["decision"] == "test_distinct_disposition"
+
+
+def test_compact_programmes_preserve_open_statements_and_expand_exactly() -> None:
+    import query_corpus
+    claims = json.loads((ROOT / "docs/claims.json").read_text())
+    atlas = json.loads((ROOT / "docs/declaration_atlas.json").read_text())
+    orientation = builder.build_orientation(claims, atlas)
+    assert [(r["id"], r["statement"]) for r in orientation["remaining_open_propositions"]] == [(r["id"], r["statement"]) for r in claims["remaining_open_propositions"]]
+    assert all("advancement_status" not in row for row in orientation["remaining_open_propositions"])
+    for row in claims["remaining_open_propositions"]:
+        assert query_corpus.open_proposition_packet(row["id"])["open_proposition"]["advancement_status"] == row["advancement_status"]
+    assert [r["id"] for r in orientation["principal_claims"]] == [r["id"] for r in claims["claims"] if r.get("readme_headline")]
+    routes = [r for r in claims["machine_readable_paper"]["entrypoints"] if r.get("route_kind") == "mathematical_programme"]
+    expanded = query_corpus.orientation_programme_details(orientation, claims)
+    assert expanded == [{**r, "core_claim_count": len(r["core_claim_ids"])} for r in routes]
+    assert orientation["mathematical_programmes"] == [{k:r[k] for k in ("id", "title", "claim_ceiling")} for r in routes]
+    assert len((json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n").encode()) <= builder.ORIENTATION_MAX_BYTES
+
+
 if __name__ == "__main__":
     test_authored_readme_may_omit_generated_regions()
     test_palomar_signal_join_and_first_read_order()
     test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route()
+    test_retained_companion_default_is_lossless_and_bounded()
+    test_compact_programmes_preserve_open_statements_and_expand_exactly()
     print("corpus orientation signal contracts passed")

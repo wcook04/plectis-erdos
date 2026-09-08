@@ -35,7 +35,7 @@ result.
 Declarations in the shared tree are cited as
 \texttt{Erdos249257.name} with file and line. Declarations in the newer
 per-problem tree are cited with their path from the repository root,
-\texttt{ErdosProblems/Erdos249/File.lean:line}; the hyperlink target for
+\texttt{\breakcode{ErdosProblems/Erdos249/File.lean:line}}; the hyperlink target for
 those is the per-problem directory, not \texttt{Erdos249257/}.
 \end{rem}
 
@@ -46,25 +46,25 @@ for the local tail
 (\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak totientTail}{TotientTailPeriodKiller.lean:57}),
 and $\Phi_N=\sum_{n\le N}\varphi(n)2^{N-n}\in\Z$ for the integer prefix, so
 that $2^N S=\Phi_N+R_N$. For $h\ge 1$ set
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \alpha_h \;:=\; (2^h-1)\,S .
-\]
+$}\]
 
 \begin{lem}[Doubling normal form]\label{lem:orbit}
 For all $N\ge 0$ and $h\ge 1$,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   R_{N+1}=2R_N-\varphi(N+1),
   \qquad
   R_{N+h}-R_N \;=\; 2^N\alpha_h-\bigl(\Phi_{N+h}-\Phi_N\bigr),
-\]
+$}\]
 so $R_{N+h}-R_N \equiv 2^N\alpha_h \pmod 1$, and consequently the exact
 first character of the tail difference is the $\times 2$ orbit of one real
 number:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{tailOrbitFirstExp}(h,N)
   \;=\; e\bigl(2^N\alpha_h\bigr),
   \qquad e(x):=\exp(2\pi i x).
-\]
+$}\]
 Hence, for fixed $h$, the phases $\{\,R_{N+h}-R_N \bmod 1\,\}_{N\ge 0}$ are
 the forward orbit of $\alpha_h \bmod 1$ under $x\mapsto 2x$.
 \end{lem}
@@ -86,11 +86,11 @@ proposition makes the transfer exact, including the truncation budget.
 
 \begin{prop}[Orbit transfer]\label{prop:transfer}
 Define
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{OrbitBlockGap} :\equiv
   \forall h\ge 1\ \forall X_0\ \exists X\ge \max(X_0,1):\quad
   \sum_{N=X}^{2X-1}\cos\bigl(2\pi\,2^{N}\alpha_h\bigr)\;\le\;\tfrac{89}{100}\,X .
-\]
+$}\]
 Then $\mathrm{OrbitBlockGap}$ implies that $S$ is irrational.
 \end{prop}
 
@@ -184,11 +184,11 @@ is developed in \S\ref{sub:shape}.
 \subsection{Route 1: a constant-saving cancellation over a dyadic block}
 
 \paragraph{The exact statement needed.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall h\ge 1\ \forall X_0\ \exists X,L:\quad
   \max(X_0,1)\le X,\quad 16(2X+h+L+2)\le 2^{L},\quad
   \Bigl\|\sum_{N=X}^{2X-1} e\bigl(D(h,N,L)/2^{L}\bigr)\Bigr\|\le \tfrac{21}{25}X,
-\]
+$}\]
 where $D(h,N,L)=\sum_{j<L}\bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j}$.
 \lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75},
 consumer
@@ -199,12 +199,12 @@ weaker real-part form with constant $89/100$ suffices.
 \paragraph{What $D$ is, as an arithmetic object.}
 Dividing by $2^L$ and reindexing the two ranges onto a common variable
 $t$, with $m=N+t$,
-\begin{equation}\label{eq:window}
+\begin{equation}\adjustbox{max width=.98\linewidth}{$\displaystyle \label{eq:window}
   \frac{D(h,N,L)}{2^{L}}
   =\underbrace{-\sum_{t=1}^{h}\frac{\varphi(N+t)}{2^{t}}}_{\text{head}}
   \;+\;\underbrace{(2^{h}-1)\sum_{t=h+1}^{L}\frac{\varphi(N+t)}{2^{t}}}_{\text{body}}
   \;+\;\underbrace{\sum_{t=L+1}^{L+h}\frac{\varphi(N+t)}{2^{t-h}}}_{\text{tail}} .
-\end{equation}
+$}\end{equation}
 
 So the phase is a \emph{geometrically weighted linear form in $\varphi$ at
 $L+h$ consecutive arguments}, with the value at offset $t$ entering modulo
@@ -245,10 +245,10 @@ $p$, and sum over primes. \S\ref{sub:pivot} carries this as far as it goes.
 $E=\sum_n 1/(2^n-1)=\sum_N d(N)/2^N$, is the right shape for the
 \coord{mobius-mersenne} coordinate. That coordinate exists here and is
 exact: from $\varphi=\mu * \mathrm{id}$,
-\begin{equation}\label{eq:mobmers}
+\begin{equation}\adjustbox{max width=.98\linewidth}{$\displaystyle \label{eq:mobmers}
   S=\sum_{d\ge 1}\mu(d)\,\frac{2^{d}}{(2^{d}-1)^{2}}
   \qquad (\ev{Math};\ \text{verified to }16\ \text{digits},\ S=1.3676308019850223\ldots,\ \ev{Cert}).
-\end{equation}
+$}\end{equation}
 
 But the method does not transfer, for a reason that can be stated
 quantitatively rather than vaguely. Erd\H{o}s's argument for $E$ exploits
@@ -279,9 +279,9 @@ Let $c(n)=1$ if $n=k!$ for some $k\ge 1$ and $c(n)=0$ otherwise, so
 $0\le c(n)\le n$ for all $n\ge 1$, and let $\beta=\sum_{n\ge1}c(n)/2^{n}
 =\sum_{k\ge 1}2^{-k!}$. Then $\beta$ is irrational, and for every $h\ge 1$
 and every $X\ge 81(h+5)$,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \sum_{N=X}^{2X-1}\cos\bigl(2\pi\,2^{N}(2^{h}-1)\beta\bigr) \;>\; \tfrac{9}{10}X .
-\]
+$}\]
 Consequently the block-gap requirement fails at \emph{every} scale for
 $\beta$, while $\beta$ is irrational. No proof of the block gap for $S$ can
 therefore proceed from the irrationality of $S$ together with the growth
@@ -330,14 +330,14 @@ separating from a statement about $S$.
 For every $h\ge 1$ there must exist $s\ge 1$ and $\eta\in(0,1)$ such that for
 every $X_0$ there are $X\ge\max(X_0,1)$ and $L$ with $h\le L-s$,
 $16(2X+h+L+2)\le 2^{L}$, and all four of
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \begin{aligned}
   \operatorname{Re}\bigl(\mathrm{pivotCenteredCorrelation}\bigr) &\le \tfrac{14}{25}X,
   &\qquad \bigl\|\mathrm{pivotFiberMeanContribution}\bigr\| &\le \tfrac{1}{100}X,\\
   \bigl\|\mathrm{pivotBadContribution}\bigr\| &\le \tfrac{1}{100}X,
   &\qquad \bigl\|\mathrm{pivotNonSupplierContribution}\bigr\| &\le \tfrac{8}{25}X .
 \end{aligned}
-\]
+$}\]
 \lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:569},
 consumer
 \lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:577}
@@ -356,16 +356,16 @@ factorisation gives is the one-way containment needed for an upper bound.
 Choose the admissible depth $L$ minimally for each large $X$, with the
 predicate's previously fixed $h$ and $s$.  If
 $n=N+L-s+1$ is not a supplier, then its largest prime factor satisfies
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   P(n)\le (4+o(1))\sqrt X .
-\]
+$}\]
 Therefore
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \#\{N\in[X,2X):\neg\,\mathrm{pivotSupplier}(X,L,s,N)\}
   \le
   \Psi(2X+O(\log X),(4+o(1))\sqrt X)
   -\Psi(X+O(\log X),(4+o(1))\sqrt X).
-\]
+$}\]
 A uniform smooth-number asymptotic for this shifted interval would make the
 right side $(1-\log2+o(1))X<\tfrac8{25}X$ and would discharge the budget.
 \end{prop}
@@ -391,10 +391,10 @@ uniform shifted-interval estimate is supplied.
 For $\eta\in(0,1)$ let $B(\eta)=\{m:\varphi(m)<\eta m\}$, with natural density
 $D(\eta)$; by Schoenberg's theorem $D$ exists, is continuous, and
 $D(0+)=0$ \ev{Cited}. Then
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \#\{N\in[X,2X): N\ \text{a supplier with cofactor}\ m\in B(\eta)\}
   \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,
-\]
+$}\]
 so a single choice of $\eta$ with $D(\eta)<1/200$ meets the $\tfrac{1}{100}X$
 budget for all large $X$. Since $\eta$ is quantified existentially before
 $X_0$, and a smaller $\eta$ only enlarges the good set, this choice costs
@@ -422,10 +422,10 @@ definition of \texttt{DTWPivotResidualDecorrelation} chooses $s$ once, after
 $h$ and before the universal threshold $X_0$.  Thus $s$ is fixed as
 $X\to\infty$; it cannot be increased with $X$ to make $t$ shallow.  The room
 condition gives
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   2^L\ge16(2X+h+L+2),\qquad
   t=L-s+1\ge\log_2X-O_{h,s}(1).
-\]
+$}\]
 After removing the $2$-part of the coefficient, the prime-progression modulus
 is still typically of order $X$ up to subpolynomial factors, not
 $(\log X)^A$.  Standard Siegel--Walfisz therefore does not reach the
@@ -448,12 +448,12 @@ has a separate correlation obstruction.
 
 Factoring the pivot argument as
 $n=mp$ and dividing out the pivot phase leaves
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \operatorname{Re}\sum_{m}\ \sum_{p\,:\,mp\in[X,2X)+t}
     w(mp)\,\bigl(e\bigl(a_m(p-1)/2^{t}\bigr)-\overline{e}_m\bigr)
   \;\le\;\tfrac{14}{25}X ,
   \qquad |w|\equiv 1 ,
-\]
+$}\]
 where $\overline{e}_m$ is the fibre mean and, by \eqref{eq:window}, $w(n)$ is
 the character of the same weighted totient sum with the single offset $t$
 deleted.
@@ -470,11 +470,11 @@ of this shape into bilinear form.
 At $h=1$ and the canonical pivot the required estimate becomes fully
 explicit. There $e\bigl((p-1)/4\bigr)=i^{\,p-1}=\chi_{-4}(p)$, so what is
 needed is
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \operatorname{Re}\sum_{X<p\le 2X}\chi_{-4}(p)\,
     e\Bigl(\frac{\varphi(p+1)}{8}+\frac{\varphi(p+2)}{16}+\cdots\Bigr)
   \;\le\;\Bigl(\frac{9}{10}-\delta\Bigr)\,\bigl(\pi(2X)-\pi(X)\bigr).
-\]
+$}\]
 
 The missing input is thus a \emph{non-correlation between a fixed quadratic
 character at $p$ and the $2$-adic behaviour of $\varphi$ at the shifts
@@ -490,12 +490,12 @@ Both $\mathrm{DTWFirstHarmonicNormGap}$ and
 $\mathrm{DTWPivotResidualDecorrelation}$ ask for \emph{some} $X$ beyond each
 $X_0$, never for all $X$. Hence it suffices to prove a logarithmically
 averaged bound: if
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \sum_{k\le K}\ \frac{1}{2^{k}}
   \Bigl|\sum_{N\in[2^{k},2^{k+1})}e\bigl(D(h,N,L_k)/2^{L_k}\bigr)\Bigr|
   \;=\;o(K)
   \quad\text{for each }h,
-\]
+$}\]
 with $L_k$ any admissible depth sequence, then infinitely many blocks satisfy
 the gap and Proposition~\ref{prop:transfer} applies. Logarithmic averaging is
 exactly the regime in which the entropy-decrement method operates.
@@ -515,12 +515,12 @@ many multiplicative values. \ev{Open}
 \subsection{Route 3: uniform quantitative escape at primes}
 
 \paragraph{The exact statement needed.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \forall h\ge 1\ \forall N_0\ \exists p\ \text{prime}:\quad
   \max(N_0+h+1,\,h+5)\le p
   \ \wedge\
   \operatorname{Re}\bigl(\mathrm{tailOrbitFirstExp}(h,\,p-h-1)\bigr)<\tfrac{9}{10}.
-\]
+$}\]
 \lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157},
 consumer
 \lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
@@ -567,21 +567,21 @@ free $T$.
 
 It does not apply to a $T$ named in advance as a function of
 $(h,X,L)$, and the corpus already contains the right one:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   T_{h,X,L}\;:=\;\mathrm{pivotFiber}(X,L,L-h,1)
   \;=\;\{\,N\in[X,2X)\ :\ N+h+1\ \text{prime}\,\},
-\]
+$}\]
 a membership equality rather than a sampled surrogate
 (\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:423},
 \ev{Lean}).
 
 The proposal is to prove
-\begin{equation}\label{eq:primefibre}
+\begin{equation}\adjustbox{max width=.98\linewidth}{$\displaystyle \label{eq:primefibre}
   \forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
   16(2X+h+L+2)\le 2^{L}
   \ \wedge\
   \sum_{N\in T_{h,X,L}}\mathrm{windowFirstCos}(h,N,L)\ \le\ \tfrac{9}{10}\,\bigl|T_{h,X,L}\bigr| ,
-\end{equation}
+$}\end{equation}
 which by the landed subset consumer yields a certificate at some
 $N\ge X\ge X_0$, hence irrationality. \ev{Open}
 
@@ -619,10 +619,10 @@ is itself a well-defined finite piece of work.
 \subsection{Route 4: depth-locked full-depth escape}
 
 \paragraph{The exact statement needed.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \mathrm{ApFullDepthEscape} :\equiv
   \forall d\ge 1\ \forall N\ \exists t\ge 1:\ \mathrm{certifiedKill}(td,\,N,\,td),
-\]
+$}\]
 unpacked, $(N+2td+2:\Z)<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)$.
 \lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441},
 consumer
@@ -704,11 +704,11 @@ computation will ever be evidence for it. \ev{Open} (heuristic).
 \subsection{Route 5: the rationality-side rank bound remains open}
 
 \paragraph{The exact statement that was wanted.}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   \exists C\ \forall c:\N\to\N\ \bigl(c(n)\le n,\ \neg\,\mathrm{Irrational}(X_c)\bigr)
   \ \forall v>0\ \forall u\ \mathrm{IsTemperedBinaryOrbit}(c,v,u)\ \forall e:\quad
   \operatorname{rk}_e(u)\le C ,
-\]
+$}\]
 where $X_c=\sum_{n\ge1}c(n)/2^{n}$ and $\operatorname{rk}_e(u)$ is the
 dimension of the span of the dyadic sections of $u$ through level $e$.
 A suitable subexponential upper bound would also contradict the landed
@@ -727,9 +727,9 @@ non-$2$-regular dyadic kernel.  Those facts do not refute the desired bound
 for its carry orbit.
 
 The generic recurrence
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
   v\,c(N+1)=2u(N)-u(N+1)
-\]
+$}\]
 does express each \emph{positive-residue} level-$j$ section of $c$ as a
 linear combination of two level-$j$ sections of $u$.  It does not control the
 zero-residue section at each level.  Across levels $1,\ldots,e$ those omitted

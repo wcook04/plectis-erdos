@@ -99,7 +99,7 @@ These are the intervals $`\mathcal I`$ used to define $`J`$. The zero-one values
 
 #### Integral polynomials and their degrees.
 
-The source’s polynomial inclusion is Lemma 7, display (23). Its parameter vector is $`n(13,14,12,14,15,13)`$, its maximum is $`15n`$, and $`\beta-a_1-a_2=n>0`$. Its hypotheses therefore hold for every $`n\ge1`$. It gives
+The source’s polynomial inclusion is Lemma 7, display (23), on p. 161 \[zudilin2004\]. Its parameter vector is $`n(13,14,12,14,15,13)`$, its maximum is $`15n`$, and $`\beta-a_1-a_2=n>0`$. Its hypotheses therefore hold for every $`n\ge1`$. It gives
 ``` math
 \Lambda_n(X)=X^{-M_n}\frac{D_N(X)}{\Omega_n(X)}H_n(X)
             =U_n(X)F(X)-V_n(X),\qquad U_n,V_n\in\mathbb Z[X].
@@ -273,9 +273,30 @@ is then $`o(1)`$, hence eventually zero. Also $`a_n\ne0`$ for large $`n`$: other
 \limsup_{n\to\infty} n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
  \le \delta\log b-\sigma\log(a/b),
 ```
-which is negative on the stated sufficient region. The arithmetic form of that region is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144), and the final numerical clause is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155). The conclusion bounds the sufficient cutoff furnished by the displayed degree estimate. An exclusion for a particular family requires its actual degree and remainder asymptotics. ◻
+which is negative on the stated sufficient region. The arithmetic form of that region is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144), and the final numerical clause is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155). The displayed degree upper bound furnishes a sufficient decay cutoff; the following corollary gives a separate exclusion under the same all-base hypotheses. ◻
 
 </div>
+
+<div id="cor:no-decay-below-square" class="corollary">
+
+**Corollary 5** (Undivided forms below the square boundary). *Under the hypotheses of Theorem <a href="#res:archimedean-cap" data-reference-type="ref" data-reference="res:archimedean-cap">4</a>, for positive integers $`a,b`$ with $`b<a<b^2`$, the undivided forms $`b^{d_n}\Lambda_n(a/b)`$ do not tend to zero. No limit of $`d_n/n^2`$ is assumed.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Write $`x=a/b`$ and suppose $`C_n=b^{d_n}\Lambda_n(x)\to0`$. Eventual nonvanishing gives $`\log|C_n|=d_n\log b+\log|\Lambda_n(x)|`$ for all sufficiently large $`n`$. Also $`|C_n|\le1`$ eventually. The lower side of the remainder asymptotic therefore implies
+``` math
+d_n\log b\le-\log|\Lambda_n(x)|
+       =\sigma\log x\,n^2+o(n^2).
+```
+Set $`c=\sigma\log x/\log b`$. Since $`1<x<b`$, we have $`0<c<\sigma`$, and the displayed inequality gives $`d_n\le(c+\varepsilon)n^2`$ eventually for each $`\varepsilon>0`$. The same family thus satisfies the cap hypotheses with degree upper rate $`c`$, its original height bound, and its original nonvanishing and remainder asymptotics at every real base greater than one. The cap yields $`\sigma\le c`$, a contradiction. ◻
+
+</div>
+
+The no-decay conclusion is [kernel-checked in Lean](https://github.com/wcook04/plectis-erdos/blob/3be82b1a7340284aea72e9a5c8493cb020843921/ErdosProblems/Erdos1049/PaperNoDecayR9.lean#L69) under the stated all-base hypotheses.
+
+This strengthens the failure of a sufficient-cutoff test to an exclusion of decay under the stated all-base hypotheses. It does not supply an actual-degree limit or assert divergence. If $`d_n/n^2\to d`$, the separate exact-degree result gives the stronger conclusion $`|b^{d_n}\Lambda_n(a/b)|\to\infty`$ in the same strict region. Equality $`a=b^2`$ remains unclassified. The corollary concerns the undivided forms; it does not exclude base-dependent content division or other irrationality methods outside its hypotheses.
 
 <a id="sec:hankel-order"></a>
 
@@ -297,7 +318,7 @@ for every $`N\ge1`$ \[zudilin2016, Section 4\]. A formal moment expansion iden
 
 <div id="res:zudilin-sharp-qorder" class="theorem">
 
-**Theorem 5** (sharp normalized Hankel order). *For every $`N\ge1`$,
+**Theorem 6** (sharp normalized Hankel order). *For every $`N\ge1`$,
 ``` math
 \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
 ```
@@ -363,13 +384,13 @@ The theorem identifies the first formal term. Formal order alone would not contr
 
 <div id="res:nocorridor" class="theorem">
 
-**Theorem 6** (no corridor at base $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ is not a coordinatewise corridor.*
+**Theorem 7** (no corridor at base $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ is not a coordinatewise corridor.*
 
 </div>
 
 <div id="res:tailrec" class="theorem">
 
-**Theorem 7** (cleared-tail recurrence). *Let $`r,s,B,F\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be the cleared tail state. Then for every $`N`$,
+**Theorem 8** (cleared-tail recurrence). *Let $`r,s,B,F\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be the cleared tail state. Then for every $`N`$,
 ``` math
 U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 ```*
@@ -378,7 +399,7 @@ U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 
 <div id="res:forcing" class="theorem">
 
-**Theorem 8** (the forcing term). *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$, and put $`G_N=B\,c(N+1)\,s^{\,N+1}`$.*
+**Theorem 9** (the forcing term). *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$, and put $`G_N=B\,c(N+1)\,s^{\,N+1}`$.*
 
 1.  *If $`s\ge2`$, $`B\ge1`$ and $`c(N+1)\ge1`$, then $`2^{\,N+1}\le G_N`$.*
 
@@ -399,7 +420,7 @@ All four jets of $`(U,V)`$ vanish precisely when $`D=3^R2^S`$ divides both speci
 
 <div id="res:jetkernel" class="theorem">
 
-**Theorem 9** (binary four-jet collision). *Fix a width $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Call a subset of $`\{0,\dots,M-1\}`$, equivalently a vector of $`\{0,1\}^M`$, a *binary selector*. If the $`2^M`$ binary selectors outnumber the finite four-jet target
+**Theorem 10** (binary four-jet collision). *Fix a width $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Call a subset of $`\{0,\dots,M-1\}`$, equivalently a vector of $`\{0,1\}^M`$, a *binary selector*. If the $`2^M`$ binary selectors outnumber the finite four-jet target
 ``` math
 (\mathbb{Z}/3^R\mathbb{Z})^2\times(\mathbb{Z}/2^S\mathbb{Z})^2,
 ```
@@ -425,7 +446,7 @@ The ambient count does not use relations between the two residue coordinates. Va
 
 <div id="res:plucker-collapse" class="theorem">
 
-**Theorem 10** (Bézout–Plücker tail collapse). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every row is unimodular ($`u_n A_n+v_n B_n=1`$ for some $`u_n,v_n`$) and every adjacent minor vanishes:
+**Theorem 11** (Bézout–Plücker tail collapse). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every row is unimodular ($`u_n A_n+v_n B_n=1`$ for some $`u_n,v_n`$) and every adjacent minor vanishes:
 ``` math
 A_nB_{n+1}-B_nA_{n+1}=0\qquad(n\ge0).
 ```
@@ -476,7 +497,7 @@ A real bin records the analytic requirement alongside the modular signature. The
 
 <div id="res:boundedfibre" class="theorem">
 
-**Theorem 11** (quantitative bounded-fibre escape). *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
+**Theorem 12** (quantitative bounded-fibre escape). *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
 ``` math
 \iota(x)=\iota(y)\quad\Longrightarrow\quad |g(x)-g(y)|<\delta.
 ```
@@ -519,7 +540,7 @@ The following sufficient construction keeps source membership, primitive scaling
 
 <div id="prob:kernel" class="problem">
 
-**Problem 12** (common-width simultaneous endpoint-jet construction). Exhibit an integer constant $`C\ge1`$ and, for every sufficiently large positive integer $`n`$, positive integers $`W_n,R_n,S_n,M_n`$ such that
+**Problem 13** (common-width simultaneous endpoint-jet construction). Exhibit an integer constant $`C\ge1`$ and, for every sufficiently large positive integer $`n`$, positive integers $`W_n,R_n,S_n,M_n`$ such that
 ``` math
 n^2\le W_n,R_n,S_n\le Cn^2,
  \qquad 4R_n+2S_n\le M_n\le Cn^2,

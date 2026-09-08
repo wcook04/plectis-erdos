@@ -41,13 +41,14 @@ import os
 from collections import Counter
 import stat
 from pathlib import Path
+from query_corpus import json_transport_path, decode_json_transport
 
 from build_semantic_corpus import semantic_input_fingerprint
 from semantic_review import REGISTRY as SEMANTIC_REVIEWS
 from semantic_review import attached_receipt_errors, formal_source_revision
 
 ROOT = Path(__file__).resolve().parent.parent
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = json_transport_path(ROOT / "docs" / "semantic_corpus.json.gz")
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 MANIFEST = ROOT / "docs" / "generated_certificate_manifest.json"
 CLAIMS = ROOT / "docs" / "claims.json"
@@ -88,7 +89,7 @@ def _safe_semantic_path(path: Path) -> Path:
 
 def safe_read_text(path: Path) -> str:
     """Read a semantic-corpus input through a no-follow regular descriptor."""
-    candidate = _safe_semantic_path(path)
+    candidate = _safe_semantic_path(json_transport_path(path))
     if not candidate.is_file():
         raise UnsafeSemanticCorpusInput(
             f"semantic-corpus input is not a regular file: {candidate}"
@@ -108,9 +109,9 @@ def safe_read_text(path: Path) -> str:
             raise UnsafeSemanticCorpusInput(
                 f"semantic-corpus input is not a regular file: {candidate}"
             )
-        with os.fdopen(descriptor, "r", encoding="utf-8") as stream:
+        with os.fdopen(descriptor, "rb") as stream:
             descriptor = -1
-            return stream.read()
+            return decode_json_transport(stream.read())
     finally:
         if descriptor >= 0:
             os.close(descriptor)

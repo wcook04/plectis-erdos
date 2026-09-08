@@ -8,11 +8,11 @@ the open problem:
 
 \begin{prop}[The exact target: \#249 = cofinal actual-orbit nonintegrality]\label{prop:NI-01}
 Unconditionally,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathrm{Irrational}\Big(\textstyle\sum_n' \varphi(n)/2^n\Big)
 \iff
 \forall a_0,\ \exists a \ge a_0,\ \mathtt{actualLcmTailOrbit}\ a \notin \mathrm{range}(\mathbb{Z}\to\mathbb{R}).
-\]
+$}\]
 Nothing beyond a supply of the right-hand side is needed in principle; every
 other proposition in this subsection is a route to it.
 \scale{n/a}\ \ev{Lean}\ \coord{mobius-mersenne}\\
@@ -21,9 +21,9 @@ other proposition in this subsection is a route to it.
 
 \begin{prop}[Short-window arithmetic-kill supply]\label{prop:AR-07}
 If
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \forall a_0,\ \exists a\ge a_0,\ \exists L< 2\cdot 2^a,\quad \mathtt{LcmDiagonalArithmeticKill}(2^a,L)
-\]
+$}\]
 holds, then \#249 follows (via \mathtt{actualLcmOrbitNonintegralitySupply\_of\_shortArithmeticKill}
 then Prop.~\ref{prop:NI-01}). The predicate is exactly the residue-band exclusion of
 Appendix~A4/A6: $\mathtt{lcmDiagonalArithmeticWord}$ at scale $2^a$ escapes a shrinking
@@ -35,9 +35,9 @@ the cofinal supply is the open trigger of the actual-orbit batch.
 
 \begin{prop}[Diophantine separation supply]\label{prop:SEP-03}
 If, at canonically-guarded odd ranks $q$, cofinally many $a$ satisfy
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \big|\,\mathtt{actualLcmTailOrbit}\ a - z\,\big| > \tfrac{1}{32} + (\text{explicit error radius}) \qquad \forall z\in\mathbb Z,
-\]
+$}\]
 then \#249 follows via the landed signed-margin producer. This restates the target as
 effective irrationality-measure / anti-concentration for the actual orbit rather than
 exact residue exclusion, using the explicit approximant of Prop.~\ref{prop:SEP-02-inv}.
@@ -47,11 +47,11 @@ exact residue exclusion, using the explicit approximant of Prop.~\ref{prop:SEP-0
 
 \begin{prop}[One-sided top-edge residue-gap supply]\label{prop:TE-04}
 If, for the room bound of Prop.~\ref{prop:SGN-01} ($a\ge 8$, $J+K+(a+6)<2\cdot2^a$),
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{ActualLcmTopEdgeResidueGap}\ a\ J\ K\ m
 \quad:\iff\quad
 m\le K \ \wedge\ \big(\text{residue of }\mathtt{windowDiscrepancy}\text{ at scale }m\big)\le 2^m-(\text{room bound})
-\]
+$}\]
 holds cofinally, then \#249 follows (\mathtt{actualLcmTailDiff\_notMem\_int\_of\_topEdgeResidueGap},
 sufficiency at line~1260), because Prop.~\ref{prop:SGN-01}/\ref{prop:SGN-03} already exclude the
 negative-side residue independently — only the positive arc needs excluding. This is a strictly
@@ -64,7 +64,7 @@ target of the whole batch.
 \begin{prop}[The five-link equivalence chain below the residue-gap target]\label{prop:TE-05}
 Each of the following cofinal supplies is proved \emph{sufficient} for
 Prop.~\ref{prop:TE-04}'s target, chained in decreasing strength:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \begin{aligned}
 &\mathtt{PowerTwoActualLcmTopEdgeResidueGapSupply}
  \Leftarrow \mathtt{PowerTwoAdjacentSuffixMidbandSupply}\\
@@ -74,10 +74,10 @@ Prop.~\ref{prop:TE-04}'s target, chained in decreasing strength:
  \Leftarrow \mathtt{PowerTwoFlexibleActualTerminalDominanceSupply}\\
 &\Leftarrow \mathtt{PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply}
 \end{aligned}
-\]
+$}\]
 All six named predicates are open; none is proved. Because the chain is
 implication-only-downward, proving the single \emph{weakest} link
-(\texttt{...TerminalCarryCorridorEscapeSupply}) closes the entire cluster and hence \#249.
+(\texttt{\breakcode{...TerminalCarryCorridorEscapeSupply}}) closes the entire cluster and hence \#249.
 This is the true minimal remaining target of \texttt{TotientActualLcmTopEdgeStaircase}.
 \scale{cofinal}\ \ev{Open}\ \coord{mobius-mersenne}\\
 \lean{powerTwoActualLcmTopEdgeResidueGapSupply\_of\_adjacentSuffixMidband}{TotientActualLcmTopEdgeStaircase.lean:2108}
@@ -86,9 +86,9 @@ This is the true minimal remaining target of \texttt{TotientActualLcmTopEdgeStai
 \begin{prop}[The exact closed-form escape identity]\label{prop:TE-06}
 Under integrality of the actual orbit (representative $z$) and the half-cell fit condition
 $2(H+q+2)\le 4^q$ ($a\ge 8$, room bound as above),
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 2\cdot \mathtt{actualOddHalfCenteredLift}\ a\ q \;=\; \mathtt{diagonalWindowIncrement}(2^a)(2q+2) \;-\; \mathtt{carryOrbit}\ H\ H\ z\ (2q+1)
-\]
+$}\]
 holds \emph{exactly}. Escaping either side of this named open interval (the ``terminal/carry
 corridor'') is both necessary and sufficient for non-integrality at rank $q$
 (\mathtt{actualLcmTailOrbit\_notMem\_int\_of\_actualTerminalCarryCorridorEscape}). This is
@@ -99,9 +99,9 @@ the sharpest fully explicit statement of ``what remains to prove'' anywhere in t
 
 \begin{prop}[Extend the short-kill stub past $a_0=6$]\label{prop:SK-02}
 Currently proved only for $a_0\le 6$:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \forall a_0\le 6,\ \exists a\ L,\ a_0\le a\ \wedge\ L<2\cdot2^a\ \wedge\ \mathtt{LcmDiagonalArithmeticKill}(2^a)\ L.
-\]
+$}\]
 The module's own comment states plainly: ``the remaining endpoint gap is now precisely the
 unbounded continuation beyond this finite prefix.'' Supplying a single further instance at
 $a_0=7$ or $a_0=8$ already extends the stub and is independently interesting evidence toward
@@ -112,13 +112,13 @@ Prop.~\ref{prop:AR-07}'s full cofinal supply; the two base cases $a=4,6$ trace t
 \end{prop}
 
 \begin{prop}[Fixed-rank extremal-ordering supply]\label{prop:FR-01}
-Define $\mathtt{fixedRankSecondDifference}\ H\ j := \varphi(3H+j)-2\varphi(2H+j)+\varphi(H+j)$.
+Define \[\adjustbox{max width=\linewidth}{$\displaystyle \mathtt{fixedRankSecondDifference}\ H\ j := \varphi(3H+j)-2\varphi(2H+j)+\varphi(H+j)$}\].
 If, at $H=\mathtt{periodLcm}(2^a)$ and some fixed small $j$,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{MiddleRankTotientExtremal}\ H\ j
 \quad:\iff\quad
 \varphi(2H+j)\ \text{is a strict min or max among}\ \{\varphi(H+j),\varphi(2H+j),\varphi(3H+j)\},
-\]
+$}\]
 then $\mathtt{fixedRankSecondDifference}\ H\ j\ne 0$, with sign matching the extremum. Notably
 an \emph{ordering} suffices — no quantitative gap is required. This is a genuinely different
 coordinate from the sliding LCM window: $j$ fixed and small, only three fixed ranks examined.
@@ -130,9 +130,9 @@ cofinally in $a$.
 
 \begin{prop}[The directed/LCM-specialised certificate supply]\label{prop:CP-06}
 $\mathtt{directedCertifiedKill}\ h\ N\ L$ is sound \emph{and complete}:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 (\exists L,\ \mathtt{directedCertifiedKill}\ h\ N\ L) \iff \mathtt{totientTail}(N+h)-\mathtt{totientTail}(N)\notin \mathrm{range}(\mathbb Z\to\mathbb R),
-\]
+$}\]
 exactly, no gap; and $\mathrm{Irrational}(S)\iff \mathtt{CofinalDirectedLcmCertificateSupply}$ (the
 LCM-diagonal specialisation). The asymmetric strip is a genuine finite-depth improvement over
 the symmetric certificate (kills $t=3$ at depth~6, one level earlier than the symmetric one), but
@@ -146,9 +146,9 @@ the cofinal predicate is exactly as hard as \#249 itself.
 Given the cofinal mod-4 pulse supply of Prop.~\ref{prop:CP-05-inv}, it suffices to kill only the
 $2\bmod 4$-class candidate states (a fourfold reduction of the initial search strip) at one
 cofinal arithmetic-pulse prime per putative period, to conclude \#249:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{modFourPulseSurvivorKill} \implies \mathrm{Irrational}(S).
-\]
+$}\]
 The reduction technique (use a cofinal totient-specific pulse to legally restrict the survivor
 search to one residue class mod a small modulus) transfers wherever an analogous cofinal pulse
 can be built on the \#257 side.
@@ -157,10 +157,10 @@ can be built on the \#257 side.
 \end{prop}
 
 \begin{prop}[The wave-21 wall: certificate supply over all periods]\label{prop:A10}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \big(\forall h\ge 1,\ \forall N_0,\ \exists N\ge N_0,\ \exists L,\ \mathtt{certifiedKill}\ h\ N\ L\big)
 \iff \mathrm{Irrational}(S).
-\]
+$}\]
 This is exactly the quantifier structure $\forall h\ge1\ \forall N_0\ \exists N\ge N_0\ \exists L\ \mathrm{Sep}(h,N,L)$.
 Nothing in the corpus supplies this predicate; every other reduction in Part~B
 of the certificate bank is a logically equivalent-or-weaker reformulation of this same missing
@@ -170,10 +170,10 @@ supply, never independent progress on it.
 \end{prop}
 
 \begin{prop}[Diagonal collapse — one free parameter]\label{prop:B3}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \big(\forall t_0,\ \exists t\ge t_0,\ \exists L,\ \mathtt{certifiedKill}(\mathtt{periodLcm}\,t)(\mathtt{periodLcm}\,t)\ L\big)
 \iff \mathrm{Irrational}(S).
-\]
+$}\]
 Standing at $N=h=\mathtt{periodLcm}\,t$ beats every hypothetical rational simultaneously (any
 $t\ge\max(h_0,N_0)$ serves both parameters at once), collapsing Prop.~\ref{prop:A10}'s
 two unbounded parameters to one. Conversely, pointwise completeness supplies
@@ -184,10 +184,10 @@ restatement, not an advance.
 \end{prop}
 
 \begin{prop}[Cone collapse — annihilator umbrella]\label{prop:B7}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \big(\forall t_0,\ \exists t\ge t_0,\ \exists q\,m\,L,\ 0<q \wedge \mathtt{certifiedKill}(m\cdot\mathtt{periodLcm}\,t)(q\cdot\mathtt{periodLcm}\,t)\ L\big)
 \implies \mathrm{Irrational}(S).
-\]
+$}\]
 One certified kill \emph{anywhere} on the two-multiplier LCM cone, at arbitrarily large $t$,
 suffices; the diagonal (Prop.~\ref{prop:B3}) is the cell $q=m=1$. This is the widest known
 target still logically equivalent-in-strength to Prop.~\ref{prop:A10}.
@@ -198,9 +198,9 @@ target still logically equivalent-in-strength to Prop.~\ref{prop:A10}.
 \begin{prop}[Menu non-flatness supply — sharper than pairwise]\label{prop:B10}
 For a nonempty menu $Q$ of positive vertex multipliers with one-sided floor
 $\forall q\in Q,\ qH+L+2<2^L$ (\emph{half} the pairwise floor of \texttt{certifiedKill}),
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{coneNonflatCert}\ H\ L\ Q \implies \exists\, q_i,q_j\in Q,\ \mathtt{totientTail}(q_jH)-\mathtt{totientTail}(q_iH)\notin \mathrm{range}(\mathbb Z\to\mathbb R).
-\]
+$}\]
 If this fires at unbounded scale over a menu with $|Q|\ge3$ genuinely joint (menu inconsistent
 while every pair is separately consistent), \#249 follows via Prop.~\ref{prop:B7}. The
 argmin/Helly-avoidance proof technique is a reusable combinatorial-geometry pattern for any
@@ -212,9 +212,9 @@ modular-residue pincer with more than two points.
 \begin{prop}[Unbounded Farey growth — a second independent wall]\label{prop:C2sup}
 The Farey-gap denominator bound at window $K$ is currently $\sim 7.96\times10^{34}$ at $K=240$
 (Prop.~\ref{prop:C2-inv}). If
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \sup_K\, (b+d)(K) = \infty
-\]
+$}\]
 (the bound growing without limit as $K\to\infty$), then \#249 follows via the $C3$-style
 denominator-exclusion consumer, logically \emph{independently} of Prop.~\ref{prop:A10}'s
 certificate-supply wall. No unboundedness claim is proved or attempted in the corpus.
@@ -226,9 +226,9 @@ certificate-supply wall. No unboundedness claim is proved or attempted in the co
 By Prop.~\ref{prop:D4-inv}, the canonical dyadic totient-kernel family is unconditionally
 $(2^e+1)$-dimensional at every level $e$. Rationality of $S$ forces an associated tempered
 carry orbit with $\mathbb Q$-rank $\ge 2^e-1$ at every level (Prop.~\ref{prop:CP-02}). Formally, a theorem
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \text{bounding the dyadic-section rank of \emph{every} rationality-supplied tempered carry}
-\]
+$}\]
 would contradict this lower bound and close \#249. The corpus supplies no such theorem or
 mechanism. More strongly, its compressed-adjoint impossibility result and its explicit
 all-horizon finite-rank shift-polynomial countermodel retire the generic finite-compression
@@ -257,9 +257,9 @@ consistent with — facts a solution cannot contradict, whichever way \#249
 eventually resolves.
 
 \begin{prop}[Exact quotient-scale digit closed form, no cleanliness hypothesis]\label{prop:AR-04-inv}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{lcmRayArithmeticLetter}\ t\ j \;=\; \mathtt{deltaTotient}(\mathtt{periodLcm}\,t)(\mathtt{periodLcm}\,t + j) \;=\; \mathtt{diagonalWindowIncrement}\ t\ j,
-\]
+$}\]
 valid for \emph{both} divisor and non-divisor offsets $j$, with no side condition on which primes
 of $j$ survive in $H/j$. Every downstream sign, positivity, or residue statement about the
 diagonal word must factor through this identity; it generalises the older
@@ -302,9 +302,9 @@ consumer in this subsection implicitly uses.
 \end{prop}
 
 \begin{prop}[Exact global-to-local bridge]\label{prop:SEP-01-inv}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{actualLcmTailOrbit}\ a \;=\; 2^H(2^H-1)\Big(\textstyle\sum_n' \varphi(n)/2^n\Big) - \big(\mathtt{totientPrefix}(2H)-\mathtt{totientPrefix}(H)\big),\quad H=\mathtt{periodLcm}(2^a).
-\]
+$}\]
 Every local orbit statement is secretly a statement about the global series value minus a
 computable finite prefix; any rational-approximation or continued-fraction style separation
 argument for \#249 must express its target through this exact affine image.
@@ -323,9 +323,9 @@ finite, computable block rather than the infinite tail, at this exact error rate
 
 \begin{prop}[Unconditional positive-sign corridor — a real theorem, not a supply]\label{prop:SGN-01}
 For $a\ge8$, $J+(a+6)<2\cdot2^a$:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 0 < \mathtt{totientTail}(2H+J) - \mathtt{totientTail}(H+J),\qquad H=\mathtt{periodLcm}(2^a),
-\]
+$}\]
 with no irrationality hypothesis — the true, infinite, real translated tail difference is
 strictly positive throughout almost the entire short window, proved unconditionally from
 Prop.~\ref{prop:AR-05-inv} plus a directed one-sided tail bound. Any argument about the sign of
@@ -338,9 +338,9 @@ this gives $0<\mathtt{actualLcmTailOrbit}\ a$.
 \begin{prop}[Integrality forces the exact top-edge residue — names the obstruction]\label{prop:SGN-03}
 Under the room bound of Prop.~\ref{prop:SGN-01} plus $2H+J+K+2<2^K$: integrality of the actual
 orbit forces
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{windowDiscrepancy}\ H\ (H{+}J)\ K \bmod 2^K \;=\; 2^K - e
-\]
+$}\]
 (the top-edge representative), provably \emph{outside} the central arc required by
 $\mathtt{directedCertifiedKill}$. This documents precisely why the sign theorem alone cannot
 close \#249: any contradiction needs an independent exclusion of this specific top-edge boundary
@@ -353,9 +353,9 @@ what Prop.~\ref{prop:TE-04} sets out to exclude.
 \begin{prop}[Punctured staircase is pinned to the half-turn]\label{prop:TE-02-inv}
 Under the room bound and the punctured-staircase hypothesis (all but the last letter vanish at
 growing dyadic weight; the last letter retained below the top-edge carry band),
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{lcmRayArithmeticLetter}(2^a)(J{+}K{-}1) = 2^{m-1} \quad\text{exactly, and}\quad 2^m < 2(2H+J+K+2).
-\]
+$}\]
 The modulus must be the first dyadic scale above the room bound; any extra bit of modulus makes
 even the punctured route empty. Any attempt to revive a partial-staircase strategy must land
 exactly here.
@@ -365,9 +365,9 @@ exactly here.
 
 \begin{prop}[Any certificate reduces to a two-bit test — universal normal form]\label{prop:TE-03-inv}
 Unconditionally, for arbitrary $h,N$ (no totient content in the proof):
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 (\exists L,\ \mathtt{certifiedKill}\ h\ N\ L) \iff \mathtt{GuardCylinderWitness}\ h\ N,
-\]
+$}\]
 where the witness is a logarithmic-depth socket $(b{+}1)$ or a two-bit mixed-guard cylinder at
 scale $b=\log_2(N{+}h{+}L{+}2){+}1$. Any certificate-search algorithm or complexity bound for
 either problem's tail differences must respect this compression — an unbounded-depth search is
@@ -377,7 +377,7 @@ never truly necessary once $b$ is fixed.
 \end{prop}
 
 \begin{prop}[Primitive kernel factor of the fixed-rank curvature]\label{prop:FR-02-inv}
-On the square-root clean window $j^2\le2^a$, $a\ge4$: $2\varphi(j) \mid \mathtt{fixedRankSecondDifference}(\mathtt{periodLcm}(2^a))\ j$.
+On the square-root clean window $j^2\le2^a$, $a\ge4$: \[\adjustbox{max width=\linewidth}{$\displaystyle 2\varphi(j) \mid \mathtt{fixedRankSecondDifference}(\mathtt{periodLcm}(2^a))\ j$}\].
 The exact local factor $2\varphi(j)$ comes from the affine-rank-3 kernel $(1,-2,1)$ combined with
 the parity of three odd rough cofactors, and is provably tight — Prop.~\ref{prop:FR-03-kill}
 shows no bare application of the kernel can force one more factor of $2$. Any curvature-based
@@ -388,9 +388,9 @@ attack at fixed rank must land inside this exact divisibility ceiling.
 
 \begin{prop}[Carry displacement $\iff$ integral tail difference — central plumbing]\label{prop:CP-01-inv}
 For a positive-multiplier tempered totient carry $u$ ($\mathtt{IsTemperedBinaryOrbit}\ \varphi\ v\ u$, $v>0$):
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 (v:\mathbb Z)\mid u(N{+}k)-u(N) \iff \mathtt{totientTail}(N{+}k)-\mathtt{totientTail}(N)\in\mathrm{range}(\mathbb Z\to\mathbb R).
-\]
+$}\]
 Every statement in this batch that converts between ``carry orbit divisibility'' and ``real tail
 difference is an integer'' is an instance of this identity — the underlying machinery
 ($\mathtt{IsTemperedBinaryOrbit}$, $\mathtt{binaryCoeffTail}$) is generic over any $f$ with
@@ -429,9 +429,9 @@ $p\equiv1+2^{K-1}\pmod{2^K}$, $2^K\mid\varphi(p{+}H)$, and $2^K\mid\varphi(p{-}j
 for every $1\le j<K$ — an entire length-$(K{-}1)$ zero prefix followed by a half-turn terminal
 pulse, at arbitrary two-adic depth (Prop.~\ref{prop:CP-05-inv}'s $K=2$ case generalised to every
 $K$, via $K{-}1$ fresh Dirichlet primes glued by CRT). This forces
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathtt{windowDiscrepancy}\ H\ (p{-}K)\ K \equiv 2^{K-1}\pmod{2^K},
-\]
+$}\]
 and under eventual integrality transfers to $\exists z,\ (z:\mathbb R)=\mathtt{totientTail}(p{+}H)-\mathtt{totientTail}(p)\wedge z\equiv2^{K-1}\pmod{2^K}$.
 Any solution attempt must be consistent with the existence of this pulse family at every depth $K$.
 \scale{cofinal}\ \ev{Lean}\ \coord{p-adic}\\
@@ -627,7 +627,7 @@ $\mathtt{PowerTwoLcmMiddleRankExtremalSupply}$.
 \end{obs}
 
 \begin{obs}[The parity coboundary countermodel object]\label{prop:CM-01}
-$\mathtt{parityCoboundaryWeight}\ n := \mathtt{parityBaseWeight}\ n + 2\cdot\mathtt{largePowerTwoBit}\ n - 4\cdot\mathtt{largePowerTwoBit}(n{-}1)$,
+\[\adjustbox{max width=\linewidth}{$\displaystyle \mathtt{parityCoboundaryWeight}\ n := \mathtt{parityBaseWeight}\ n + 2\cdot\mathtt{largePowerTwoBit}\ n - 4\cdot\mathtt{largePowerTwoBit}(n{-}1)$}\],
 where $\mathtt{parityBaseWeight}$ is the eventually-constant word $0,1,1,2,4,4,4,\dots$ and
 $\mathtt{largePowerTwoBit}\ n=1$ iff $n=2^{k+3}$ (lacunary spikes starting at $8$). This is a
 hand-built adversary sequence containing \emph{no} $\varphi$ in its definition at all except via
@@ -658,7 +658,7 @@ structural, not a shortage of non-periodicity witnesses: a rational coboundary c
 \par\medskip
 
 \textbf{Doctrine consequence}
-(matches project memory \texttt{feedback\_erdos\_reductions\_rejected\_bank\_real\_results}): only
+(matches project memory \texttt{\breakcode{feedback\_erdos\_reductions\_rejected\_bank\_real\_results}}): only
 arguments using actual quantitative totient/Mersenne size or residue information (as in the
 $\mathtt{TotientActualLcm}\ast$/$\mathtt{TotientFixedRank}\ast$ families) can possibly close \#249;
 pure symbolic-word arguments cannot. This countermodel is also the ready-made stress-test fixture
@@ -696,8 +696,8 @@ reformulation with $c(n)\le n$.
 \end{obs}
 
 \begin{obs}[Rank-2 second-difference certificates: sound but measured not shallower]\label{prop:B9cert-kill}
-$\mathtt{certifiedRank2Kill}\ h\ N\ L \implies$ the second difference
-$(\mathtt{totientTail}(N{+}2h){-}\mathtt{totientTail}(N{+}h)) - (\mathtt{totientTail}(N{+}h){-}\mathtt{totientTail}\,N) \notin\mathrm{range}(\mathbb Z\to\mathbb R)$,
+\[\adjustbox{max width=\linewidth}{$\displaystyle \mathtt{certifiedRank2Kill}\ h\ N\ L \implies$}\] the second difference
+\[\adjustbox{max width=\linewidth}{$\displaystyle (\mathtt{totientTail}(N{+}2h){-}\mathtt{totientTail}(N{+}h)) - (\mathtt{totientTail}(N{+}h){-}\mathtt{totientTail}\,N) \notin\mathrm{range}(\mathbb Z\to\mathbb R)$}\],
 sound at doubled band radius versus rank~1. Measured at $(h,N)=(1,8)$: rank-1 fires at depth~8, no
 rank-2 certificate exists at depth $\le8$, rank-2 first fires at depth~9 — empirically \textbf{not}
 a shortcut over rank-1 (rank-1 at least as shallow in $30/40$ probed cells for $t\le20$).

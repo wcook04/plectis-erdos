@@ -12,9 +12,9 @@ bound), or is flagged \ev{Cited}/\ev{Open} where that is the honest status.
 \begin{defn}[The Erd\H{o}s--249 constant]
 \label{defn:S}
 Let $\varphi$ denote Euler's totient function. Define
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}} \;=\; \sum_{n : \mathbb{N}} \frac{\varphi(n)}{2^{n}},
-\]
+$}\]
 the two forms coinciding because $\varphi(0)=0$; the second, $\mathbb{N}$-indexed
 form is the one carried in the Lean source. The series converges absolutely
 since $\varphi(n) = O(n)$. \emph{Erd\H{o}s \#249 asks whether $S$ is irrational.
@@ -39,9 +39,9 @@ are catalogued here, \S\ref{ssec:certtable}).
 \begin{prop}[Digit-shift identity]
 \label{prop:shift}
 For every $N : \mathbb{N}$,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 2^{N} \cdot S \;=\; \Phi_N + R_N,
-\]
+$}\]
 where $\Phi_N := \sum_{n \le N} \varphi(n) \cdot 2^{N-n} \in \mathbb{N}$ (the
 integer prefix) and $R_N := \sum_{j \ge 0} \varphi(N+1+j)/2^{j+1}$ (the
 fractional tail, \texttt{totientTail} in Lean).
@@ -88,13 +88,13 @@ corpus, for either open problem.
 \label{prop:gapwindow}
 Let $V$ be the explicit committed totient residue for window $(N,K)=(1,240)$.
 For every $q : \mathbb{N}$ with
-\[
-0 < q \;\le\; Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \;\;(\approx 7.96\times 10^{34}),
-\]
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
+0 < q \;\le\; Q_0 := 79\,\allowbreak 639\,\allowbreak 646\,\allowbreak 646\,\allowbreak 701\,\allowbreak 375\,\allowbreak 323\,\allowbreak 355\,\allowbreak 774\,\allowbreak 875\,\allowbreak 831\,\allowbreak 053 \;\;(\approx 7.96\times 10^{34}),
+$}\]
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 (q \cdot V) \bmod 2^{240} \;+\; 243\,q \;<\; 2^{240}.
-\]
-This bound is \emph{sharp}: $q = Q_0+1 = 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,054$
+$}\]
+This bound is \emph{sharp}: $q = Q_0+1 = 79\,\allowbreak 639\,\allowbreak 646\,\allowbreak 646\,\allowbreak 701\,\allowbreak 375\,\allowbreak 323\,\allowbreak 355\,\allowbreak 774\,\allowbreak 875\,\allowbreak 831\,\allowbreak 054$
 is the exact first failing denominator, exhibited as the mediant of two
 explicit unimodular Farey neighbours.
 \coord{farey} \scale{bounded} \ev{Lean}
@@ -105,9 +105,9 @@ explicit unimodular Farey neighbours.
 \begin{thm}[Erd\H{o}s \#249 denominator exclusion --- the headline unconditional result]
 \label{thm:denom-record}
 For every $p \in \mathbb{Q}$ with reduced denominator $p.\mathrm{den} \le Q_0$,
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 S \;\neq\; p.
-\]
+$}\]
 Equivalently: \emph{if $S$ is rational, its reduced denominator exceeds}
 $Q_0 \approx 7.96 \times 10^{34}$.
 \coord{farey} \scale{bounded} \ev{Lean}
@@ -146,10 +146,10 @@ exact reformulations of the same constant, at exactly half the bound.
 \label{prop:coprime}
 Let $X,Y$ be independent random variables with $\Pr(X=n)=\Pr(Y=n)=2^{-n}$
 for $n \ge 1$ (independent fair-coin waiting times). Then
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 S \;=\; \tfrac12 \;+\; \Pr\bigl(\gcd(X,Y)=1\bigr)
 \;=\; \tfrac12 \;+\; \sum_{\substack{a,b\ge 1\\ \gcd(a,b)=1}} 2^{-(a+b)}.
-\]
+$}\]
 Equivalently, on the visible lattice: summing $2^{-(a+b)}$ over the half-open
 coprime pairs ($a\ge1$, $b\ge0$, $\gcd(a,b)=1$) recovers $\sum_n \varphi(n)/2^n$
 exactly, with no boundary correction, because the visible-point count on the
@@ -172,9 +172,9 @@ exactly; and for every $d>0$, $\Pr(d\mid X \wedge d\mid Y) = 1/(2^d-1)^2$.
 \begin{thm}[Denominator exclusion for the coprimality-probability form]
 \label{thm:denomcoprime}
 Let
-\[
-Q_1 := \left\lfloor \frac{Q_0}{2} \right\rfloor = 39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526.
-\]
+\[\adjustbox{max width=\linewidth}{$\displaystyle
+Q_1 := \left\lfloor \frac{Q_0}{2} \right\rfloor = 39\,\allowbreak 819\,\allowbreak 823\,\allowbreak 323\,\allowbreak 350\,\allowbreak 687\,\allowbreak 661\,\allowbreak 677\,\allowbreak 887\,\allowbreak 437\,\allowbreak 915\,\allowbreak 526.
+$}\]
 For every $a\in\mathbb{Z}$, $d\in\mathbb{N}$ with $0<d\le Q_1$: the visible
 coprime-pair probability $\Pr(\gcd(X,Y)=1)$ is not equal to $a/d$.
 \coord{farey} \scale{bounded} \ev{Lean}
@@ -193,8 +193,8 @@ is not equal to $a/d$.
 
 \begin{rem}[Why the bound halves, and why this is not new information]
 $Q_1 = \lfloor Q_0/2 \rfloor$ arithmetically: $Q_0$ is odd
-($Q_0 = 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053$), so
-$Q_0/2 = 39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526.5$ and
+($Q_0 = 79\,\allowbreak 639\,\allowbreak 646\,\allowbreak 646\,\allowbreak 701\,\allowbreak 375\,\allowbreak 323\,\allowbreak 355\,\allowbreak 774\,\allowbreak 875\,\allowbreak 831\,\allowbreak 053$), so
+$Q_0/2 = 39\,\allowbreak 819\,\allowbreak 823\,\allowbreak 323\,\allowbreak 350\,\allowbreak 687\,\allowbreak 661\,\allowbreak 677\,\allowbreak 887\,\allowbreak 437\,\allowbreak 915\,\allowbreak 526.5$ and
 $Q_1$ is its floor. The halving is the cost of transporting the known bound
 through the affine shift
 $S = \tfrac12 + T$ (resp.\ $S = \tfrac12 + \Pr(\gcd(X,Y)=1)$) on a
@@ -215,9 +215,9 @@ $Q_0$ exclusion for $S$.
 
 \begin{prop}[M\"obius-square reduction]
 \label{prop:mobsq}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 S \;=\; \sum_{n\ge1}\frac{\varphi(n)}{2^n} \;=\; \frac12 \;+\; \sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2},
-\]
+$}\]
 where $\mu$ is the M\"obius function, so $\mu(d)\in\{-1,0,1\}$ for every $d$.
 Consequently \emph{Erd\H{o}s \#249 $\iff$ $T:=\sum_{d\ge1}\mu(d)/(2^d-1)^2 \notin \mathbb{Q}$},
 the single reduced target every other result in this subsection and
@@ -269,9 +269,9 @@ asserting the analogy.
 \begin{prop}[Squared-Lambert transfer engine]
 \label{prop:lambertengine}
 For $w:\mathbb{N}\to\mathbb{R}$ with $|w(d)|\le d$ for all $d>0$, and $0\le r<1$:
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \sum_{d\ge1} w(d)\left(\frac{r^d}{1-r^d}\right)^2 \;=\; \sum_{n\ge1}\left(\sum_{e\mid n} w(e)\Bigl(\tfrac{n}{e}-1\Bigr)\right) r^n.
-\]
+$}\]
 \coord{mobius-mersenne} \scale{uniform} \ev{Lean}
 \lean{tsum_lambert_linear_weight_sq_pure}{GcdMomentCalculus.lean:105}
 \end{prop}
@@ -282,9 +282,9 @@ weight structure:
 
 \begin{prop}[The known $\zeta_q$-rung]
 \label{prop:zetaq}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \sum_{d\ge1} \frac{1}{(2^d-1)^2} \;=\; \sum_{n\ge1} \frac{\sigma(n)-\tau(n)}{2^n} \;=\; \zeta_q(2)-\zeta_q(1) \text{ at } q=\tfrac12,
-\]
+$}\]
 where $\sigma$ is the sum-of-divisors function and $\tau$ the number-of-divisors
 function. The \emph{identity} is machine-checked (\ev{Lean}); irrationality of
 the \emph{value} $\zeta_q(2)-\zeta_q(1)$ is \ev{Cited} (Postelmans--Van Assche
@@ -295,9 +295,9 @@ $q$-Pad\'e), \emph{not} formalised in this corpus.
 
 \begin{prop}[The Pillai/gcd-moment rung]
 \label{prop:pillai}
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \sum_{d\ge1} \frac{\varphi(d)}{(2^d-1)^2} \;=\; \sum_{n\ge1} \bigl(P(n)-n\bigr)\cdot 2^{-n} \;=\; \mathbb{E}[\gcd(X,Y)],
-\]
+$}\]
 where $P(n) := \sum_{e\mid n}\varphi(e)\cdot(n/e) = (\varphi * \mathrm{Id})(n)$
 is Pillai's gcd-sum function and $X,Y$ are the independent fair-coin waiting
 times of Proposition~\ref{prop:coprime}. The identity itself is
@@ -334,9 +334,9 @@ implied.
 \paragraph{Certificate object.} For $h,N,L : \mathbb{N}$, define the window
 discrepancy $\Delta_{h,N,L} := \sum_{j<L} (\varphi(N+h+1+j)-\varphi(N+1+j))\cdot 2^{L-1-j} \in \mathbb{Z}$
 (\lean{windowDiscrepancy}{TotientTailPeriodKiller.lean:66}, \ev{Lean}), and
-\[
+\[\adjustbox{max width=\linewidth}{$\displaystyle
 \mathrm{Sep}(h,N,L) \;:\equiv\; (N+h+L+2) < \Delta_{h,N,L} \bmod 2^{L} < 2^{L}-(N+h+L+2),
-\]
+$}\]
 (\lean{certifiedKill}{TotientTailPeriodKiller.lean:72}, \ev{Lean}, decidable). By
 completeness (\lean{exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316},
 \ev{Lean}), $(\exists L,\ \mathrm{Sep}(h,N,L)) \iff R_{N+h}-R_N \notin \mathbb{Z}$
@@ -346,7 +346,7 @@ below records the principal $(h,N,L)$-shaped and $t$-shaped anchors; none of
 them is cofinal, and none is presented as deciding \#249.
 
 \small
-\begin{longtable}{p{0.20\linewidth} p{0.40\linewidth} p{0.13\linewidth} p{0.20\linewidth}}
+\begin{longtable}{p{0.16\linewidth} p{0.39\linewidth} p{0.15\linewidth} p{0.14\linewidth}}
 \textbf{Anchor} & \textbf{Exact statement of what was checked} & \textbf{Scale} & \textbf{Site} \\
 \hline
 \endhead
@@ -424,7 +424,7 @@ depth at least $125$.
 \\
 Farey denominator floor
 &
-Every $q\in\mathbb{N}$ with $0<q\le Q_0=79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053$
+Every $q\in\mathbb{N}$ with $0<q\le Q_0=79\,\allowbreak 639\,\allowbreak 646\,\allowbreak 646\,\allowbreak 701\,\allowbreak 375\,\allowbreak 323\,\allowbreak 355\,\allowbreak 774\,\allowbreak 875\,\allowbreak 831\,\allowbreak 053$
 satisfies the window-$(N,K)=(1,240)$ gap certificate; $q=Q_0+1$ is the exact
 first failure.
 &
@@ -434,7 +434,7 @@ first failure.
 \\
 Coprimality-probability / M\"obius-square Farey floor
 &
-Every $d\in\mathbb{N}$ with $0<d\le Q_1=39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526$
+Every $d\in\mathbb{N}$ with $0<d\le Q_1=39\,\allowbreak 819\,\allowbreak 823\,\allowbreak 323\,\allowbreak 350\,\allowbreak 687\,\allowbreak 661\,\allowbreak 677\,\allowbreak 887\,\allowbreak 437\,\allowbreak 915\,\allowbreak 526$
 (exactly $\lfloor Q_0/2\rfloor$) is excluded as a denominator of
 $\Pr(\gcd(X,Y)=1)$ and, separately, of $T=\sum_d\mu(d)/(2^d-1)^2$.
 &

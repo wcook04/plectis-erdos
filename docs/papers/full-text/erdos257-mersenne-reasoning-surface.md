@@ -563,7 +563,25 @@ None of these families contains $`A`$ of the shape produced by a candidate half-
 
 <div id="thm:topology" class="thm">
 
-**Theorem 30** (Achievement-set topology and measure). *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">23</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal{A}`$ is a Cantor-like set of Lebesgue measure exactly $`1`$ – topologically thin (nowhere dense and totally disconnected), but neither full measure in $`\mathbb R`$ nor full measure in its ambient interval $`[0,E]`$, whose length is $`E\approx1.6067`$. `coord:achievement-set-topology` <span class="sans-serif">scale:n/a</span> <span class="sans-serif">\[Lean\]</span>\
+**Theorem 30** (Achievement-set topology and measure). *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">23</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal{A}`$ is a Cantor-like set of Lebesgue measure exactly $`1`$ – topologically thin (nowhere dense and totally disconnected), but neither full measure in $`\mathbb R`$ nor full measure in its ambient interval $`[0,E]`$, whose length is $`E\approx1.6067`$. `coord:achievement-set-topology`*
+
+#### Exact span and a finite gap certificate.
+
+*For the positive-index achievement set, write $`S=\sum_{n\ge1}(2^n-1)^{-1}`$. Its containing span is $`[0,S]`$, with
+``` math
+\frac{160669}{100000}<S<\frac{160670}{100000},\qquad
+ \frac{62}{100}<\frac1S<\frac{63}{100}.
+```
+Together with its Lebesgue measure $`1`$, this gives the stated relative measure in its span. It is not a probability law for random selectors. More generally, absolute summability of arbitrary real weights suffices for their binary achievement image to be compact and closed; the measure-$`1`$ conclusion is specific to the Mersenne weights. [The exact span and geometry statement](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L94) records the Mersenne conclusions; the [general compactness theorem](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/GeometryUpgrade.lean#L118) covers arbitrary absolutely summable real weights.*
+
+*Put $`R_n=\sum_{k>n}(2^k-1)^{-1}`$. For a finite selector $`F\subseteq\{1,\ldots,n\}`$, every continuation lies in
+``` math
+\left[\sum_{k\in F}\frac1{2^k-1},\quad
+       \sum_{k\in F}\frac1{2^k-1}+R_n\right].
+```
+Consequently, a proved bound $`R_n\le U`$ and finitely many strict comparisons excluding $`x`$ from these enlarged intervals prove nonmembership. This is the [finite-prefix exclusion criterion](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L32). At $`n=1`$, the two intervals lie in $`[0,2/3]`$ and $`[1,5/3]`$. Thus every $`2/3<x<1`$, in particular $`x=3/4`$, is excluded. [The finite-prefix theorem](https://github.com/wcook04/plectis-erdos/blob/d4fed71423840f70f10edf27b9ad27c22fc4f49a/ErdosProblems/Erdos257/PaperCompleteR8/FinitePrefixExclusion.lean#L46) checks this classical first-gap argument. It says nothing about the endpoint $`2/3`$, and does not decide membership of $`1/2`$ or $`1/21`$.*
+
+*<span class="sans-serif">scale:n/a</span> <span class="sans-serif">\[Lean\]</span>\
 **Site:** , , , , , . The proofs use only superincreasingness of $`\{x_n\}`$ and summability, so the argument transfers verbatim to any strictly superincreasing weight series.\
 **Chains with:** Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">31</a> below (compactness is exactly what powers every “limit of achieved points is achieved” argument used downstream, including the seam-limit route of Part 2).*
 
