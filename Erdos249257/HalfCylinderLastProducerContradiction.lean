@@ -213,8 +213,7 @@ theorem seamIntegerGreedyRemainder_thirteen_eq :
     lastProducer_seamSubsetTarget_thirteen]
   norm_num [weightedBoolSum]
 
-/-- The terminal rank `13` is skipped in the exact row-fourteen seam word. -/
-theorem seamGreedy_terminal_false_at_thirteen :
+private theorem terminal_false_thirteen :
     SeamRowWord.terminal (by omega)
       (seamGreedyWord (13 + 1)) = false := by
   change (seamGreedyWord 14) ⟨11, by omega⟩ = false
@@ -245,7 +244,7 @@ theorem exists_last_false_terminal_of_eventuallyRight
   have h13not : 13 ∉ seamWordSupport (seamGreedyWord (13 + 1)) := by
     apply (not_mem_seamWordSupport_iff_false
       (seamGreedyWord (13 + 1)) (by omega) (by omega)).2
-    simpa [SeamRowWord.terminal] using seamGreedy_terminal_false_at_thirteen
+    simpa [SeamRowWord.terminal] using terminal_false_thirteen
   have hbadNonempty : bad.Nonempty := by
     refine ⟨13, ?_⟩
     exact Finset.mem_filter.mpr
@@ -465,10 +464,10 @@ theorem half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape
 #print axioms SeamMiddleProducerSqrtEscape.toTailEscape
 #print axioms seamIntegerGreedyRemainder_fourteen_eq
 #print axioms seamIntegerGreedyRemainder_thirteen_eq
-#print axioms seamGreedy_terminal_false_at_thirteen
 #print axioms one_not_mem_insert_seamWordSupport
 #print axioms insert_seamWordSupport_subset_Iic
 #print axioms exists_last_false_terminal_of_eventuallyRight
+#print axioms upperProducer_not_last
 #print axioms middleProducer_neg_three_not_last
 #print axioms half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree
 #print axioms half_mem_mersenneAchievementSet_of_middleProducerTailEscape
