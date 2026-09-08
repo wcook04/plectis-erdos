@@ -1,0 +1,14 @@
+{
+  "schema": "focused-negative-controls/1",
+  "required_theorem_names": [
+    "Erdos249257.ExternalVerification68MomentIdealResidual.exact_moment_ideal_with_primitive_attainment",
+    "Erdos249257.ExternalVerification68MomentIdealResidual.residual_transparency"
+  ],
+  "additional_controls": [
+    {
+      "id": "residual",
+      "theorem_name": "Erdos249257.ExternalVerification68MomentIdealResidual.residual_transparency",
+      "config_path": "ExternalVerification68MomentIdealResidual/comparator-residual-negative-mismatch.json"
+    }
+  ]
+}

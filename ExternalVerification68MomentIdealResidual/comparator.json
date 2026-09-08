@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification68MomentIdealResidual.Challenge",
+  "solution_module": "Solutions.ExternalVerification68MomentIdealResidual",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68MomentIdealResidual.exact_moment_ideal_with_primitive_attainment",
+    "Erdos249257.ExternalVerification68MomentIdealResidual.residual_transparency"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

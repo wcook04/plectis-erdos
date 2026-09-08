@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification68MomentIdealResidual
+
+#print axioms Erdos249257.ExternalVerification68MomentIdealResidual.exact_moment_ideal_with_primitive_attainment
+#print axioms Erdos249257.ExternalVerification68MomentIdealResidual.residual_transparency

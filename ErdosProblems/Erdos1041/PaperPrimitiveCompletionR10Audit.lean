@@ -1,0 +1,6 @@
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
+
+#print axioms ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.monic_quintic_enumeration
+#print axioms ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.newton_moments
+#print axioms ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.two_tails_of_rootProduct
+#print axioms ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.complete_primitive_quintic

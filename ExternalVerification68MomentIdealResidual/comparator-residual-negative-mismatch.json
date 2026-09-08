@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification68MomentIdealResidual.Challenge",
+  "solution_module": "NegativeSolutions.ExternalVerification68MomentIdealResidualResidual",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68MomentIdealResidual.residual_transparency"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

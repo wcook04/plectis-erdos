@@ -140,3 +140,7 @@ globs = ["NegativeSolutions.+"]
 [[lean_lib]]
 name = "ExternalVerification1041CentralFreePoint"
 globs = ["ExternalVerification1041CentralFreePoint.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68MomentIdealResidual"
+globs = ["ExternalVerification68MomentIdealResidual.+"]

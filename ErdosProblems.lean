@@ -42,7 +42,11 @@ import ErdosProblems.Erdos68.PrimeThresholdParity
 import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
 import ErdosProblems.Erdos243.RepairEntropy
 import ErdosProblems.Erdos1041.PaperCubicCompletion
-
+import ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn
+import ErdosProblems.Erdos68.PaperCompleteTypeB
+import ErdosProblems.Erdos251.ReturnedSparseWindow
+import ErdosProblems.Erdos251.ReturnedTruncationBound
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
 
 /-!
 # Problem-centric Erdős research library

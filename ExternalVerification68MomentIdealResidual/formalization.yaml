@@ -1,0 +1,30 @@
+version: v0.4
+project:
+  name: Exact attainable moments and residual transparency for the factorial-gap series
+  description: Finite integer vectors supported on n>=2 and annihilating divisor channels 2 through D have an exact principal moment ideal with a positive primitive minimizer; low-kernel coordinates also satisfy the exact convergent residual identity.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+sources:
+- title: Exact attainable-moment ideal with primitive attainment
+  location: ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean
+  declaration: ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment
+  relationship: other
+- title: Full residual transparency in divisor coordinates
+  location: ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean
+  declaration: ErdosProblems.Erdos68.PaperComplete.residual_transparency
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Mathlib-only independent challenge definitions and direct projection of two audited source endpoints. Wrapper compile and Comparator replay pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoints compiled and were included in the clean Type B audit; the public export, wrappers, negative control, and Comparator replay remain pending in the public checkout.
+status:
+  scope: Exact finite-support moment ideal and full residual identity only; no cofinal residual nonintegrality and no irrationality theorem.
+  novelty_status: unassessed
+  canonical_claim_status: source audited; public export and wrapper checks pending

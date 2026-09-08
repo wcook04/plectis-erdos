@@ -1,0 +1,7 @@
+import ErdosProblems.Erdos251.ReturnedSparseWindow
+import ErdosProblems.Erdos251.ReturnedTruncationBound
+
+#print axioms ErdosProblems.Erdos251.PaperR7.affected_eq_extended
+#print axioms ErdosProblems.Erdos251.PaperR7.card_affected_window_le
+#print axioms ErdosProblems.Erdos251.PaperR10.discrepancy_of_bad_count
+#print axioms ErdosProblems.Erdos251.PaperR10.truncation_bound
