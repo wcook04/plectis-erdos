@@ -2,7 +2,7 @@
  "receipt": {
   "schema": "r7_public_lean_render_v1",
   "source_ref": "d2d1c2b505b66ff059aba45b28deef9da0ac9b04",
-  "target": "/Users/willcook/src/.plectis-convergence/r7-publish-20260907",
+  "target": "r7-publish-20260907",
   "planned": 3997,
   "written": 16,
   "sanitized_files": 147,
@@ -19092,13 +19092,6 @@
    "sanitized_replacements": 0
   },
   {
-   "source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrivateProjectionComputationalLab.md",
-   "public": "ErdosProblems/Erdos68/PrivateProjectionComputationalLab.md",
-   "source_sha256": "4803109131ee7d5e61da9278e4c09f832af43f40da6ba5d8a842e5dec22b884d",
-   "public_sha256": "4803109131ee7d5e61da9278e4c09f832af43f40da6ba5d8a842e5dec22b884d",
-   "sanitized_replacements": 0
-  },
-  {
    "source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/R6_IDEA.md",
    "public": "ErdosProblems/Erdos68/R6_IDEA.md",
    "source_sha256": "e810f43e5af17d7e58db6e2abd1b3c06ce2b975137c37c1bb0dee79972cd621b",
@@ -25301,13 +25294,6 @@
    "sanitized_replacements": 0
   },
   {
-   "source": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos68_wilson_prefix_private_supply_v0.json",
-   "public": "prior_art_routes/erdos68_wilson_prefix_private_supply_v0.json",
-   "source_sha256": "4dc049de4dd1ce7355d392ed7e91c3779d240b03dcd2d9e09a6c0c3a797001b3",
-   "public_sha256": "4dc049de4dd1ce7355d392ed7e91c3779d240b03dcd2d9e09a6c0c3a797001b3",
-   "sanitized_replacements": 0
-  },
-  {
    "source": "formal_math/erdos257_period_noncollapse/prior_art_routes/eventually_periodic_negative_orbit_no_go_v0.json",
    "public": "prior_art_routes/eventually_periodic_negative_orbit_no_go_v0.json",
    "source_sha256": "7dada375af38b4aae77744a6cb54223a72e5f0ad5d687c26eb3cfb3c4ac90112",
@@ -26638,20 +26624,6 @@
    "sanitized_replacements": 0
   },
   {
-   "source": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_private_owner_recurrences.py",
-   "public": "scripts/check_erdos68_private_owner_recurrences.py",
-   "source_sha256": "8d1df95695e12c9cf8332098f41c7cccda2edfd7f5e1080463e3c0b4e2b5a078",
-   "public_sha256": "8d1df95695e12c9cf8332098f41c7cccda2edfd7f5e1080463e3c0b4e2b5a078",
-   "sanitized_replacements": 0
-  },
-  {
-   "source": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_private_projections.py",
-   "public": "scripts/check_erdos68_private_projections.py",
-   "source_sha256": "16a5ef340cfc13e80ec7441e119f17069dcb2c30848d0ed5cbc0010798cfe106",
-   "public_sha256": "16a5ef340cfc13e80ec7441e119f17069dcb2c30848d0ed5cbc0010798cfe106",
-   "sanitized_replacements": 0
-  },
-  {
    "source": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_strict_successor.py",
    "public": "scripts/check_erdos68_strict_successor.py",
    "source_sha256": "d936830139d361fbc9e1da1571fd3d76d830f0bf04e97f565757bd46d2dd3f35",
@@ -26663,13 +26635,6 @@
    "public": "scripts/check_erdos68_strict_successor_gmp.cpp",
    "source_sha256": "dcf363b87bec3ba0919d35dd9bf1e6c673933373385de33ee68410acc07effd2",
    "public_sha256": "dcf363b87bec3ba0919d35dd9bf1e6c673933373385de33ee68410acc07effd2",
-   "sanitized_replacements": 0
-  },
-  {
-   "source": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_terminal_private_owners.py",
-   "public": "scripts/check_erdos68_terminal_private_owners.py",
-   "source_sha256": "56942c256c75c81242170e723b572844714cd3d5206490c09bca9f379a17a97d",
-   "public_sha256": "56942c256c75c81242170e723b572844714cd3d5206490c09bca9f379a17a97d",
    "sanitized_replacements": 0
   },
   {
