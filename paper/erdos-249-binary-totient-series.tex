@@ -514,15 +514,19 @@ least-residue irrationality when the denominator base equals the modulus;
 Section~\ref{sec:family} fixes base two and classifies dyadic observables.
 The original question appears in Erd\H{o}s and Graham~\cite[p.~61]{erdosgraham1980}.
 
-The exact all-base basis and rank, residue-series irrationality, full-depth
-amplification, canonical equivalence and positive rank-one floor have
-proofs in the supplied Lean source snapshot:
+The all-base arithmetic reduction and spanning, and exact rank conditional on
+the explicit affine-section linear-independence hypothesis, have proofs in the
+supplied Lean source snapshot.  The residue-series irrationality, full-depth
+amplification, canonical equivalence and positive rank-one floor are also
+Lean-checked:
 \lword{Erdos249/FullDepthRayAmplifier.lean}{364}{eventually_twoSyndetic_fullDepthKillMultipliers_of_seed}{amplification},
 \lword{Erdos249/CyclotomicAnchoredKill.lean}{3165}{fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational}{canonical gap}, and
 \lword{Erdos249/RankOneSharpFloor.lean}{624}{rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty}{rank-one floor}.
 The historical source links retain \texttt{\commitshort}; the all-base
-module requires a matching public source supplement.
-The integral normal form has its ordinary proof above. The periodic transport
+module requires a matching public source supplement.  The unconditional
+all-base basis and rank theorem is an ordinary conclusion above: it discharges
+the linear-independence hypothesis using Martin's external theorem.  The
+integral normal form also has its ordinary proof above. The periodic transport
 lemma is checked in \texttt{PeriodicTotientIndependence.lean}; the eventual
 version follows by the displayed threshold shift. The rational control and
 the termwise-window and prime-dilation boundaries are proved in
