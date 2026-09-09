@@ -2,8 +2,8 @@
   "schema": "public_erdos249_v8_validation_export_v1",
   "generated_at": "2026-09-09",
   "problem": 249,
-  "status": "SOURCE_EXPORTED_STATIC_CLOSURE_PASS_PUBLIC_KERNEL_REPLAY_PENDING",
-  "evidence_class": "private_source_current_Lean_PASS_plus_exact_public_namespace_compatibility_transform_and_statically_closed_12_file_public_import_graph",
+  "status": "PASS_PUBLIC_SOURCE_CURRENT_COMPILE_AND_PERMITTED_AXIOMS",
+  "evidence_class": "public_source_current_Lean_PASS_plus_exact_public_namespace_compatibility_transform_and_freshly_validated_12_file_import_closure",
   "public_checkout_base_before_export": "520e049172a7e54ad71641e5483c84e6ad6e6b29",
   "authority_source_commit": "509772f2eb683c0d91a18f991b6e8a018558e907",
   "authority_receipt": {
@@ -179,7 +179,10 @@
     "FirstHarmonicPivot_statement_preserving_public_proof_variant": true,
     "audit_has_27_unique_named_prints": true,
     "forbidden_sorry_admit_axiom_unbounded_heartbeat_in_introduced_modules": false,
-    "lean_launched_during_public_source_export": false
+    "lean_launched_during_public_source_export": false,
+    "all_12_closure_pins_validated_at_public_replay_commit": true,
+    "public_kernel_replay_passed": true,
+    "public_replay_unexpected_axioms": []
   },
   "claim_families": [
     {
@@ -253,8 +256,36 @@
     "novelty, priority, or external-review claims"
   ],
   "next_public_action": {
-    "owner": "sole Lean build owner",
+    "owner": "claim and projection metadata owner",
+    "action": "Bind only the five bounded claim families in this receipt, refresh generated projections and the formal-source checkpoint, then run release checks.",
+    "guard": "Do not promote any item in excluded_promotions or turn a conditional supplier hypothesis into an unconditional endpoint."
+  },
+  "public_replay_commit": "dff128c604b246fe48feb79379d2f9c2f5117543",
+  "public_recursive_local_import_closure_commit": "dff128c604b246fe48feb79379d2f9c2f5117543",
+  "public_kernel_replay": {
+    "receipt_private_path": "work/erdos_release_readiness_r8_20260908/returned_authoring_r11/lean_build_coordinator/erdos249_public_v8_validation_20260909.json",
+    "receipt_sha256": "a5bf94c8731a5309fa0d6b6c4b8199af87264fe09af085b127ecdacb78ab1091",
+    "status": "PASS_PUBLIC_SOURCE_CURRENT_COMPILE_AND_PERMITTED_AXIOMS",
     "target": "ErdosProblems.Erdos249.TypeBReturnV8.Audit",
-    "acceptance": "Source-current public compile exits 0 and all 27 direct axiom reports use only propext, Classical.choice, and Quot.sound; then restamp this receipt and bind only the five bounded claim families."
+    "wrapper_command": "repo-python scripts/lean_fast_build.py --jobs 1 ErdosProblems.Erdos249.TypeBReturnV8.Audit",
+    "wrapper_exit_code": 0,
+    "wrapper_log_sha256": "0f25eb58777166ed347ae19af8bc2f15448a6770a609c8acbab53e0d8e999a40",
+    "authority_command": "lake_command_guard.py env lean --tstack=65536 ErdosProblems/Erdos249/TypeBReturnV8/Audit.lean",
+    "authority_exit_code": 0,
+    "authority_log_sha256": "909346771faff221d1a417167958a17cfdfb1af6ff8134176834c118d97c5cb7",
+    "closure_module_count": 12,
+    "named_declaration_count": 27,
+    "axiom_union": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unexpected_axioms": [],
+    "scope_boundary": "This validates the 27 V8 declarations in the public namespace variant, including the existing native_decide-free FirstHarmonicPivot proof. It does not prove the remaining Erdos 249 irrationality supplier."
   }
 }
