@@ -22,6 +22,10 @@ INPUTS = {
     "NegativeSolutions/ExternalVerification249TotientKernelBasis.lean": "e60202f6caf4bdc20e75b7f3689b524d2a68795b9a7f824313eed654ce8323a0",
     "ExternalVerification249TotientKernelBasis/comparator.json": "56b6b5ad7bcb2add1306f0d5ba809e4c104d37b393701d7c3ee8f0663fcffb2d",
     "ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json": "ca4adbdeac59ac0f08307b267d7ac7858cad9e024ee93644f8d89a57bed17948",
+    "Erdos249257/AllBaseTotientKernel.lean": "83b32e134e206a012e4c4e189ff780922dc10b18fb4edf340de6c749a72488cd",
+    "ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean": "7e6260206db9907976f95ce347229965f585f7e3c517da8b13ad074e501c9268",
+    "ErdosProblems/Erdos249/PaperCompleteR8/UnitPivotBasis.lean": "e11b92bf486db8d8d8059931bdf3a1424278071b74d4f590e4231902ee020965",
+    "ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean": "3bdc0a97c931c8ceca6e5f46e5b9d013b0fb50505bfda05f8cc512f66a4a0dbd",
 }
 EXPECTED_MISMATCH = (
     "Challenge and solution theorem statement do not match: "
