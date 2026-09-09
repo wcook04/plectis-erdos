@@ -24,9 +24,18 @@ import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.TypeBReturnV8.CenteringCounterexample
 import ErdosProblems.Erdos249.TypeBReturnV8.FiniteFirstHarmonic
 import ErdosProblems.Erdos249.TypeBReturnV8.PeripheralAssembly
+import ErdosProblems.Erdos249.TypeBReturnV8.Audit
+import ErdosProblems.Erdos251.AffineCylinderCollapse
 import ErdosProblems.Erdos251.AffineShiftEscape
+import ErdosProblems.Erdos251.BoundedPerturbationCountermodel
+import ErdosProblems.Erdos251.FreePairReduction
+import ErdosProblems.Erdos251.KernelDenominatorFloor
 import ErdosProblems.Erdos251.OrderLatticeDiagonal
+import ErdosProblems.Erdos251.PolynomialGapSeriesValue
+import ErdosProblems.Erdos251.RealPrimeGapTail
 import ErdosProblems.Erdos269.CertificateSafetyR12
+import ErdosProblems.Erdos269.PaperR12WaveAAxiomAudit
+import ErdosProblems.Erdos269.PurePowerIrrationality
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.R12.OcticWindowBand
 import ErdosProblems.Erdos269.R12.PrefixExtension
@@ -45,6 +54,7 @@ import ErdosProblems.Erdos68.PrimePoleDenominator
 import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
 import ErdosProblems.Erdos243.LcmRecordExcess
 import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
+import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
 import ErdosProblems.Erdos243.RepairEntropy
 import ErdosProblems.Erdos243.SlowRiseBarrier
 
