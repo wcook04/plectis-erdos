@@ -348,7 +348,7 @@ The estimate
 ``` math
 2^{-N}<R_N\le2^{-N}+\frac23\,4^{-N}<w_N\qquad(N\ge1)
 ```
-shows that every represented value has a unique selector. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. The coding image is a Cantor set, and the disjoint level-$`N`$ cylinder covers have total length $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$. The strict-tail antecedent is due to Kovač–Tao \[kovactao, Remark 4.1\]. The long record proves the restricted-volume dichotomy and records the formula $`\dim_H\mathcal A_J=\liminf_N\#(J\cap[1,N])/N`$, together with the periodic-stride measure refinements. For a specified rational target, the useful consequence here is uniqueness of its possible selector.
+shows that every represented value has a unique selector. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. The coding image is a Cantor set, and the disjoint level-$`N`$ cylinder covers have total length $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$. Kovač–Tao record this strict-tail inequality and the Cantor conclusion in the fixed-base setting \[kovactao, Remark 4.1\]. The long record proves the restricted-volume dichotomy and records the formula $`\dim_H\mathcal A_J=\liminf_N\#(J\cap[1,N])/N`$, together with the periodic-stride measure refinements. For a specified rational target, the useful consequence here is uniqueness of its possible selector.
 
 <a id="sec:actual-repairs"></a>
 

@@ -8,7 +8,7 @@
 
 </div>
 
-For coprime integers $`a>b\ge1`$, the Lambert value $`F(a/b)=\sum_{n\ge1}((a/b)^n-1)^{-1}`$ is irrational whenever $`\log b/\log a<\theta^*`$, where the explicit constant below satisfies $`\theta^*\approx0.4056830213840605`$. In particular, $`F((31/4)^r)`$ is irrational for every integer $`r\ge1`$. The same forms bound its irrationality exponent uniformly in $`r`$. Cyclotomic factors are cancelled before the rational-base denominator is cleared; the degree of the resulting polynomial pair determines the cost. The argument does not cover $`3/2`$. For the normalised Hankel determinant in the second construction we prove
+For coprime integers $`a>b\ge1`$, the Lambert value $`F(a/b)=\sum_{n\ge1}((a/b)^n-1)^{-1}`$ is irrational whenever $`\log b/\log a<\theta^*`$, where the explicit constant below satisfies $`\theta^*\approx0.4056830213840605`$. In particular, $`F((31/4)^r)`$ is irrational for every integer $`r\ge1`$. The same forms bound its irrationality exponent uniformly in $`r`$. This is an ordinary proof: it uses the polynomial conclusion of Zudilin’s Lemma 7 before the source’s integer-specialisation step; Lean checks finite subclaims, not the irrationality theorem. Cyclotomic factors are cancelled before the rational-base denominator is cleared; the degree of the resulting polynomial pair determines the cost. The argument does not cover $`3/2`$. For the normalised Hankel determinant in the second construction we prove
 ``` math
 \operatorname{ord}_qV_N^*=\frac{N(N-1)(2N-1)}6,
  \qquad [q^{\operatorname{ord}_qV_N^*}]V_N^*

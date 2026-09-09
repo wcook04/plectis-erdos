@@ -39,14 +39,31 @@
   "promotion_gate": {
     "no_other_occurrence_changes": true,
     "private_source_current_status": "243L-C008 may be counted verified in the private source-current survey",
-    "public_status": "do not mark the public graph verified until DensityValidationAudit.lean passes in this exact checkout and the receipt is updated"
+    "public_status": "243L-C008_VERIFIED_PUBLIC_LONG_CENSUS_7_VERIFIED_58_STRICT_BLOCKERS"
   },
   "public_audit": {
     "bytes": 342,
     "command": "lake env lean Erdos243V5/DensityValidationAudit.lean",
-    "launch_state": "UNRUN_IN_PUBLIC_CHECKOUT_BY_INSTRUCTION",
+    "launch_state": "PASS_IN_PUBLIC_CHECKOUT",
     "path": "Erdos243V5/DensityValidationAudit.lean",
-    "sha256": "3aff57dc87c1aee352408debec30d8cf8d11d53112d49b830de5d7ace37ed914"
+    "sha256": "3aff57dc87c1aee352408debec30d8cf8d11d53112d49b830de5d7ace37ed914",
+    "public_commit": "41298352677c19a6491acc4294a2dcdc916fda8e",
+    "exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "authority_output_sha256": "9e52acb27116c0b1150d3b02195ed54b159ee82f424b4042c82dd66d0225dd2b",
+    "printed_declarations": [
+      "Erdos243V5.classified_profile_phase_windows",
+      "Erdos243V5.twelve_unit_profile_lower_density"
+    ],
+    "axiom_union": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unexpected_axioms": []
   },
   "public_recursive_local_import_closure": [
     {
@@ -217,7 +234,7 @@
     "preexisting_variant_preserved": true,
     "target_paths_were_absent_before_write": true
   },
-  "status": "SOURCE_EXPORTED_STATIC_PASS_PUBLIC_KERNEL_REPLAY_PENDING",
+  "status": "PASS_SOURCE_CURRENT_PUBLIC_REPLAY_AND_PERMITTED_AXIOMS",
   "upstream_exact_source_kernel_receipts": [
     {
       "axioms": [

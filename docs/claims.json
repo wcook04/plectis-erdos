@@ -1563,7 +1563,12 @@
             "first_harmonic_pivot_decomposition",
             "adjacent_phase_separation_reduction",
             "pivot_anti_reconstruction_reduction",
-            "strict_prime_tail_orbit_gap"
+            "strict_prime_tail_orbit_gap",
+            "totient_v8_conditional_peripheral_assembly",
+            "totient_v8_finite_arithmetic_threshold",
+            "totient_v8_generic_centering_countermodel",
+            "totient_v8_one_finite_first_harmonic_instance",
+            "totient_v8_peripheral_finite_budget_bridge"
           ],
           "status_summary": "Conditional harmonic and phase consumers, including an exact four-term pivot decomposition and budget, an exact window-pair equivalence, and the two-branch tail-orbit phase-density and natural-prime strict-gap producers that feed the same certificate socket.",
           "prior_art_posture": "No matching combined theorem is identified; all novelty language remains provisional.",
@@ -1617,7 +1622,11 @@
             "erdos_269",
             "three_prime_finite_residue_contradiction",
             "three_prime_cofinal_window_carry_extinction",
-            "weighted_phase_carry_finite_observer"
+            "weighted_phase_carry_finite_observer",
+            "three_prime_exact_modulus_pinning",
+            "three_prime_octic_window_equivalence",
+            "three_prime_finite_prefix_completion_boundary",
+            "three_prime_bounded_certificate_safety"
           ],
           "status_summary": "An open three-prime #269 endpoint, a finite least-positive-residue contradiction, a conditional cofinal-window extinction consumer, and the weighted-phase carry split with its finite realised-span observer.",
           "prior_art_posture": "The residue classifier and bounded-carry consumer are source-specific formal results; no novelty, priority, significance, or three-prime irrationality claim is made.",
@@ -1672,7 +1681,8 @@
             "erdos_243",
             "bounded_rise_fresh_modulus_barrier",
             "eventually_periodic_negative_no_go",
-            "bounded_negative_exclusion"
+            "bounded_negative_exclusion",
+            "cubic_survivor_phase_density"
           ],
           "status_summary": "An open eventual-Sylvester-recurrence endpoint plus unconditional bounded-rise and eventually-periodic negative-orbit obstructions, and a conditional cofinally bounded negative-magnitude exclusion.",
           "prior_art_posture": "These are source-specific formal results; no novelty, priority, significance, or #243 solution claim is made, and normalised vanishing, mixed-sign, and unbounded-negative boundaries remain explicit.",
@@ -9201,6 +9211,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.CubicNeighbourIdentity",
+          "path": "ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos243.DynamicCancellation",
           "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
           "role": "Lean proof module",
@@ -9236,6 +9252,114 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CRTObstructionDensity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicDivisorObstruction",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicDivisorObstruction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CubicPrimitiveNormalisation",
+            "ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicGcdFence",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicGcdFence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CubicWindowTransport",
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicIntegralNormalisation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicModularDensity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CubicDivisorObstruction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicPrimitiveNormalisation",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicPrimitiveNormalisation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation",
+            "ErdosProblems.Erdos243.PaperCompleteR11.CubicGcdFence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicWindowTransport",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicWindowTransport.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.FrobeniusDescent",
+            "ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.FrobeniusDescent",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/FrobeniusDescent.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.CubicNeighbourIdentity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/ReciprocalProductAmplification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR11/WindowIncidence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections",
+          "path": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.CubicNeighbourIdentity"
           ]
         },
         {
@@ -9379,6 +9503,54 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.TypeBReturnV8.Audit",
+          "path": "ErdosProblems/Erdos249/TypeBReturnV8/Audit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralAssembly",
+            "ErdosProblems.Erdos249.TypeBReturnV8.FiniteFirstHarmonic",
+            "ErdosProblems.Erdos249.TypeBReturnV8.CenteringCounterexample"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TypeBReturnV8.CenteringCounterexample",
+          "path": "ErdosProblems/Erdos249/TypeBReturnV8/CenteringCounterexample.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TypeBReturnV8.FiniteArithmetic",
+          "path": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.FirstHarmonicPivot"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TypeBReturnV8.FiniteFirstHarmonic",
+          "path": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteFirstHarmonic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.TypeBReturnV8.FiniteArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralAssembly",
+          "path": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralAssembly.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge",
+          "path": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.FirstHarmonicPivot"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
           "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
           "role": "Lean proof module",
@@ -9410,6 +9582,15 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
+          "path": "ErdosProblems/Erdos269/ActualSharpTailMajorantR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR8RankMajorant",
+            "ErdosProblems.Erdos269.JumpConstraintMajorant"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos269.BlockMassEngines",
           "path": "ErdosProblems/Erdos269/BlockMassEngines.lean",
           "role": "Lean proof module",
@@ -9427,6 +9608,22 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos269.ThreeChannelBlockRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.CertificateRangeR11",
+          "path": "ErdosProblems/Erdos269/CertificateRangeR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR9WidthData"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.CertificateSafetyR12",
+          "path": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.CertificateRangeR11"
           ]
         },
         {
@@ -9490,12 +9687,34 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.IntegralBranchWidth",
+          "path": "ErdosProblems/Erdos269/IntegralBranchWidth.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.IntegralBranchExtinction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.JumpConstraintMajorant",
+          "path": "ErdosProblems/Erdos269/JumpConstraintMajorant.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos269.KernelCarryRank",
           "path": "ErdosProblems/Erdos269/KernelCarryRank.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "ErdosProblems.Shared.IrrationalRotationStaircase"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.LongWindowCapR11",
+          "path": "ErdosProblems/Erdos269/LongWindowCapR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.SharpWindowCapR10"
           ]
         },
         {
@@ -9507,10 +9726,125 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.PaperR12WaveAAxiomAudit",
+          "path": "ErdosProblems/Erdos269/PaperR12WaveAAxiomAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.R12.ExactModulus",
+            "ErdosProblems.Erdos269.R12.OcticWindowBand",
+            "ErdosProblems.Erdos269.R12.PrefixExtension",
+            "ErdosProblems.Erdos269.CertificateSafetyR12"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR7ActualOrbit",
+          "path": "ErdosProblems/Erdos269/PaperR7ActualOrbit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7SharpShellBound",
+            "ErdosProblems.Erdos269.IntegralBranchWidth",
+            "ErdosProblems.Erdos269.DyadicRadixTailEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+          "path": "ErdosProblems/Erdos269/PaperR7BasicAssembly.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.KernelCarryRank",
+            "ErdosProblems.Erdos269.IntegralBranchExtinction",
+            "ErdosProblems.Erdos269.RestrictedFloorSum"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR7RationalBridge",
+          "path": "ErdosProblems/Erdos269/PaperR7RationalBridge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7SeriesIdentification",
+            "ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR7SeriesIdentification",
+          "path": "ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7ActualOrbit"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR7SharpShellBound",
+          "path": "ErdosProblems/Erdos269/PaperR7SharpShellBound.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.NormalizedStateWidth"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR7WindowResults",
+          "path": "ErdosProblems/Erdos269/PaperR7WindowResults.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7RationalBridge",
+            "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+            "ErdosProblems.Erdos269.JumpConstraintMajorant"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR8RankMajorant",
+          "path": "ErdosProblems/Erdos269/PaperR8RankMajorant.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7WindowResults"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR9SourceCounts",
+          "path": "ErdosProblems/Erdos269/PaperR9SourceCounts.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DyadicBlockThresholdPartition"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR9WidthData",
+          "path": "ErdosProblems/Erdos269/PaperR9WidthData.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR9SourceCounts"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos269.PurePowerIrrationality",
           "path": "ErdosProblems/Erdos269/PurePowerIrrationality.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.R12.ExactModulus",
+          "path": "ErdosProblems/Erdos269/R12/ExactModulus.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7WindowResults"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.R12.OcticWindowBand",
+          "path": "ErdosProblems/Erdos269/R12/OcticWindowBand.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.R12.ExactModulus",
+            "ErdosProblems.Erdos269.LongWindowCapR11"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.R12.PrefixExtension",
+          "path": "ErdosProblems/Erdos269/R12/PrefixExtension.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7WindowResults"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos269.RationalLatticeReduction",
@@ -9543,6 +9877,14 @@
           "imports": [
             "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "ErdosProblems.Erdos269.ResidueEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.SharpWindowCapR10",
+          "path": "ErdosProblems/Erdos269/SharpWindowCapR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.ActualSharpTailMajorantR10"
           ]
         },
         {
@@ -12780,7 +13122,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "2a115c048292e5298f556832f5abc2d0e123bd19",
+      "ref": "dff128c604b246fe48feb79379d2f9c2f5117543",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -14417,7 +14759,7 @@
         "source": "paper/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 49
+        "line": 52
       }
     },
     {
@@ -14548,7 +14890,10 @@
       "status": "open",
       "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release; the checked three-prime structure and conditional residue-escape consumer do not provide the missing rationality-to-carry bridge or cofinal escape.",
       "remaining_open_proposition_ids": [
-        "remaining_open.erdos_269_three_prime_irrationality"
+        "remaining_open.erdos_269_three_prime_irrationality",
+        "remaining_open.erdos_269_reduced_tail_nonintegrality",
+        "remaining_open.erdos_269_cofinal_local_window_escape",
+        "remaining_open.erdos_269_two_dimensional_representation"
       ],
       "paper_label": null,
       "readme_headline": false,
@@ -14786,6 +15131,124 @@
           "name": "no_positive_absorbedCarry_of_cofinalLocalWindowEscape",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
           "line": 689
+        }
+      ]
+    },
+    {
+      "id": "three_prime_exact_modulus_pinning",
+      "label": "Exact-modulus pinning for an actual #269 window",
+      "status": "conditional reduction",
+      "statement": "If an actual finite {2,3,5} window has a least-positive forcing residue no larger than the exact carry cap, then the scaled normalized launch lies within that cap divided by the actual window modulus of an integer. Irrationality plus a separately supplied exact-modulus decay estimate therefore yields cofinal local-window escape. The decay estimate and irrationality input are not proved by this claim.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_cofinal_local_window_escape"
+      ],
+      "paper_label": "res:windowconsumer",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exact_modulus_pinning",
+          "module": "ErdosProblems/Erdos269/R12/ExactModulus.lean",
+          "line": 45
+        },
+        {
+          "name": "actual_exact_modulus_pinning",
+          "module": "ErdosProblems/Erdos269/R12/ExactModulus.lean",
+          "line": 88
+        }
+      ]
+    },
+    {
+      "id": "three_prime_octic_window_equivalence",
+      "label": "Conditional o(8^a) equivalence band for #269",
+      "status": "conditional reduction",
+      "statement": "For a cap G which dominates the long-paper cap for every positive denominator and satisfies G(B,n)/8^n -> 0 for each positive B, cofinal local-window escape is equivalent to irrationality of the three-prime paper series. Both the dominance and little-o hypotheses are explicit; the theorem proves neither side unconditionally.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_cofinal_local_window_escape",
+        "remaining_open.erdos_269_three_prime_irrationality"
+      ],
+      "paper_label": "long269:res:actual-escape-endpoint",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "octic_cap_is_exactly_beaten",
+          "module": "ErdosProblems/Erdos269/R12/OcticWindowBand.lean",
+          "line": 16
+        },
+        {
+          "name": "octic_window_band",
+          "module": "ErdosProblems/Erdos269/R12/OcticWindowBand.lean",
+          "line": 74
+        }
+      ]
+    },
+    {
+      "id": "three_prime_finite_prefix_completion_boundary",
+      "label": "Finite #269 radix prefixes admit an altered rational completion",
+      "status": "unconditional progress",
+      "statement": "Every finite positive integral radix prefix with nonnegative integral digits extends to a positive rational orbit by changing the future to radix 2 and digit 1. In particular, the actual word through any finite horizon has such an abstract completion. This is a countermodel to finite-prefix-only inference and is not a rational model of the actual infinite smooth-number series.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_three_prime_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "finite_prefix_has_positive_rational_completion",
+          "module": "ErdosProblems/Erdos269/R12/PrefixExtension.lean",
+          "line": 75
+        },
+        {
+          "name": "actual_prefix_has_abstract_rational_completion",
+          "module": "ErdosProblems/Erdos269/R12/PrefixExtension.lean",
+          "line": 105
+        }
+      ]
+    },
+    {
+      "id": "three_prime_bounded_certificate_safety",
+      "label": "Size-authenticated bounded certificate checks for #269",
+      "status": "unconditional progress",
+      "statement": "The bounded width and cumulative-array checkers expose their size hypotheses, are sound on every accessed entry, compose across adjacent ranges, and carry explicit regressions showing that default-zero array access, half-height cancellation, and finite coverage cannot certify an infinite/cofinal conclusion. No paper numerical table is executed or validated by these safety theorems alone.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_cofinal_local_window_escape"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "widthCheckBoundedR12_sound",
+          "module": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "line": 14
+        },
+        {
+          "name": "widthCheckBoundedR12_actual",
+          "module": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "line": 25
+        },
+        {
+          "name": "widthCheckBoundedR12_append",
+          "module": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "line": 34
+        },
+        {
+          "name": "cumulativeCheckBoundedR12_sound",
+          "module": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "line": 54
+        },
+        {
+          "name": "width_shape_regressions_R12",
+          "module": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "line": 64
+        },
+        {
+          "name": "factor_two_cannot_be_cancelled_R12",
+          "module": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "line": 73
+        },
+        {
+          "name": "finite_coverage_not_cofinal_R12",
+          "module": "ErdosProblems/Erdos269/CertificateSafetyR12.lean",
+          "line": 84
         }
       ]
     },
@@ -18057,6 +18520,44 @@
       ]
     },
     {
+      "id": "cubic_survivor_phase_density",
+      "label": "Phase-specific density obstruction for the two cubic survivor profiles",
+      "status": "unconditional progress",
+      "statement": "For either surviving cubic profile Q_{12,c}(n)=2n(n+1)(n+2)+c with c=1 or c=-1, the exact tail recurrences force a mismatch in every sufficiently late four-index window at the corresponding phase modulo 7. The mismatch set therefore has lower density at least 1/7, and hence at least the 1/28 stated in the long paper. No phase-free or arbitrary-profile density statement is claimed.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "long243:res:modseven",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "plus_phase_hit",
+          "module": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+          "line": 117
+        },
+        {
+          "name": "minus_phase_hit",
+          "module": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+          "line": 141
+        },
+        {
+          "name": "plus_profile_one_seventh",
+          "module": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+          "line": 165
+        },
+        {
+          "name": "minus_profile_one_seventh",
+          "module": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+          "line": 175
+        },
+        {
+          "name": "lowerDensityAtLeast_of_linear_bound",
+          "module": "ErdosProblems/Erdos243/PaperCompleteR11/WindowIncidence.lean",
+          "line": 131
+        }
+      ]
+    },
+    {
       "id": "finite_period_noncollapse",
       "label": "Finite-support denominator period noncollapse",
       "status": "unconditional progress",
@@ -18144,6 +18645,206 @@
           "name": "finite_realisedSpan_of_factorisation",
           "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
           "line": 334
+        }
+      ]
+    },
+    {
+      "id": "totient_v8_conditional_peripheral_assembly",
+      "label": "Conditional peripheral-and-centred assembly for the #249 first-harmonic route",
+      "status": "conditional reduction",
+      "statement": "Under eventual peripheral estimates and a cofinal centered estimate at one shared depth function, the exact finite decomposition supplies the first-harmonic gap consumer and hence the conditional irrationality route. Both analytic suppliers remain explicit hypotheses; no unconditional Erdős #249 conclusion follows.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "card_pivotFiber_eq_card_supplierPrimes",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralAssembly.lean",
+          "line": 12
+        },
+        {
+          "name": "dtw_of_eventual_peripheral_and_cofinal_centered",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralAssembly.lean",
+          "line": 33
+        },
+        {
+          "name": "irrational_of_eventual_peripheral_and_cofinal_centered",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralAssembly.lean",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "id": "totient_v8_finite_arithmetic_threshold",
+      "label": "Exact finite arithmetic and run-threshold checks for #249",
+      "status": "unconditional progress",
+      "statement": "The four displayed discrepancy values at (h,X,L)=(1,4,9), their finite room and certified kills, the Farey denominator bound, and the corrected finite run threshold hold exactly. These finite facts do not supply a cofinal certificate producer.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "discrepancy_1_4_9",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 9
+        },
+        {
+          "name": "discrepancy_1_5_9",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 10
+        },
+        {
+          "name": "discrepancy_1_6_9",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 11
+        },
+        {
+          "name": "discrepancy_1_7_9",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 12
+        },
+        {
+          "name": "finite_room",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 13
+        },
+        {
+          "name": "four_certified_kills",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 14
+        },
+        {
+          "name": "farey_denominator_bound",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 19
+        },
+        {
+          "name": "run_length_counterexample",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 35
+        },
+        {
+          "name": "run_threshold_iff",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "id": "totient_v8_generic_centering_countermodel",
+      "label": "Generic centering countermodel for the #249 decomposition",
+      "status": "unconditional progress",
+      "statement": "A two-point complex model has vanishing peripheral mean contributions while its centered contribution remains nonzero. This refutes the generic inference from peripheral cancellation to a centered budget; it is not a counterexample to the arithmetic totient-centered predicate.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "twoPhase_unit",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/CenteringCounterexample.lean",
+          "line": 14
+        },
+        {
+          "name": "twoMean_zero",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/CenteringCounterexample.lean",
+          "line": 16
+        },
+        {
+          "name": "twoCentered_eq_two",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/CenteringCounterexample.lean",
+          "line": 18
+        },
+        {
+          "name": "twoMeanContribution_zero",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/CenteringCounterexample.lean",
+          "line": 20
+        },
+        {
+          "name": "three_peripheral_zero_do_not_force_centered_budget",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/CenteringCounterexample.lean",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "totient_v8_one_finite_first_harmonic_instance",
+      "label": "One unconditional finite first-harmonic gap instance",
+      "status": "unconditional progress",
+      "statement": "At (h,X,L)=(1,4,9), the exact finite first-harmonic expression has the certified norm gap bounded by 21X/25. This is one finite instance and does not establish DTWFirstHarmonicNormGap or any cofinal statement.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "finite_first_harmonic_norm_gap",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteFirstHarmonic.lean",
+          "line": 41
+        },
+        {
+          "name": "one_unconditional_norm_gap_instance",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/FiniteFirstHarmonic.lean",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "id": "totient_v8_peripheral_finite_budget_bridge",
+      "label": "Finite peripheral estimates assemble into PivotBudgetAt",
+      "status": "conditional reduction",
+      "statement": "Exact phase, residual, cardinality, and uniform fibre-mean estimates compose into PivotBudgetAt. The bridge proves neither the prime-distribution estimates nor the centered estimate required by the endpoint route.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "norm_pivotPhaseAt",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 24
+        },
+        {
+          "name": "norm_pivotResidualAt_v8",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 28
+        },
+        {
+          "name": "norm_pivotBadContribution_le_card",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 34
+        },
+        {
+          "name": "norm_pivotNonSupplierContribution_le_card",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 45
+        },
+        {
+          "name": "pivotGoodBases_subset_Ico",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 56
+        },
+        {
+          "name": "card_pivotGoodBases_le",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 64
+        },
+        {
+          "name": "norm_pivotFiberMeanContribution_le_of_uniform",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 76
+        },
+        {
+          "name": "pivotBudgetAt_of_peripheral_estimates",
+          "module": "ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
+          "line": 105
         }
       ]
     }

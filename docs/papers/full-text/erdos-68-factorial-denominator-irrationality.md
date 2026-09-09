@@ -361,7 +361,7 @@ The extended-real statement, with the real exponent $`3/2`$, is [Lean source](ht
 \log L_N\ge\sum_{n=N-k+1}^N\log(n!-1)
 -\binom{k+1}{3}\log N.
 ```
-Taking $`k=\lfloor\alpha\sqrt N\rfloor`$ gives leading coefficient $`\alpha-\alpha^3/6`$, maximised by $`\alpha=\sqrt2`$. The same argument applies to every fixed nonzero polynomial perturbation $`n!+P(n)`$, using
+Taking $`k=\lfloor\alpha\sqrt N\rfloor`$ gives leading coefficient $`\alpha-\alpha^3/6`$, maximised by $`\alpha=\sqrt2`$. For a fixed $`P\in\mathbb Z[X]\setminus\{0\}`$, the same ordinary argument gives this bound for $`\operatorname{lcm}_{n_0\le n\le N}(n!+P(n))`$, where $`n_0`$ is sufficiently large that all factors are positive and the collision differences below are nonzero, as in Lai’s Lemma 2.1 \[lai\]. The lower cutoff matters: $`P=-2`$ makes the factor at $`n=2`$ vanish. The argument uses
 ``` math
 \gcd(i!+P(i),j!+P(j))\mid P(j)-(j!/i!)P(i);
 ```
