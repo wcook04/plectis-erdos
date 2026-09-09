@@ -57,11 +57,11 @@
       "note_artifact_id": "erdos_68_note",
       "required_note_declarations": [
         {
-          "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
+          "module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
           "declaration": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
         },
         {
-          "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
+          "module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
           "declaration": "irrational_factorialGapSeries_of_cofinal_nonunit_carries"
         },
         {

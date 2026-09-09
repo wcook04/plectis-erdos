@@ -74,7 +74,7 @@ This order projects Palomar's mathematical `candidate_ranking`; it is independen
    - **Reader tier.** exact reduction or structural result
    - **Consequence.** Maximal endpoint proximity for #68, but it does not prove the cofinal producer.
    - **Load-bearing mechanism.** The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.
-   - **Source and evidence.** [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean); Exact committed source and Comparator transport are available.
+   - **Source and evidence.** [Lean source](../ErdosProblems/Erdos68/FactorialGapPlateauCore.lean); Exact committed source and Comparator transport are available.
    - **Boundary.** The equivalence does not supply a cofinal carry producer. **Overclaim risk.** High if the equivalence is mistaken for a cofinal carry proof.
 
 9. **Prime gap reformulation** (<code>Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap</code>; `subordinate`)
@@ -203,7 +203,7 @@ All 70 source-current review families are accounted for here. The categories pre
 
 **Open boundary.** Irrationality of the factorial-denominator series.
 
-**Read.** [Programme paper](../erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+**Read.** [Programme paper](../erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialGapPlateauCore.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -218,7 +218,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 1. **Factorial carry characterisation** (`factorial_carry_characterisation`; source-ranked frontier; global rank 8; source disposition `represented`)
    - **Why here.** Maximal endpoint proximity for #68, but it does not prove the cofinal producer.
-   - **Source.** <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries</code> in [Lean](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+   - **Source.** <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries</code> in [Lean](../ErdosProblems/Erdos68/FactorialGapPlateauCore.lean)
    - **Boundary.** The equivalence does not supply a cofinal carry producer.
    - **Relation.** `supports_without_producing` `factorial_channel_and_projection_rigidity`: Finite channel rigidity feeds the carry endpoint route but supplies no cofinal non-unit carry.
 

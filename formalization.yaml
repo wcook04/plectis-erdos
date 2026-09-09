@@ -46,7 +46,7 @@ status:
     - "Classical.choice"
   main_results:
     - declaration: "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
-      file: "ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
+      file: "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean"
       sorry_count: 0
       axioms:
         - "propext"
@@ -62,7 +62,7 @@ status:
       comparator_declaration: "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
       literature_dependencies: []
     - declaration: "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries"
-      file: "ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
+      file: "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean"
       sorry_count: 0
       axioms:
         - "propext"
@@ -916,12 +916,12 @@ alignment:
   statements:
     - source: "Irrationality is equivalent to cofinally many strict-successor divisibility failures."
       lean: "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
-      module: "ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
+      module: "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean"
       status: "proved"
       note: "The equivalence does not prove that the cofinal failures occur."
     - source: "Irrationality is equivalent to cofinally many non-unit carries."
       lean: "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries"
-      module: "ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
+      module: "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean"
       status: "proved"
       note: "The equivalence does not supply a cofinal carry producer."
     - source: "Normalised vanishing and bounded rise exclude a cofinally bounded negative part."
@@ -1617,7 +1617,7 @@ claim_review_matrix:
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:91177b9d2e7380ac4f87129649e0d716251422e68227e49141c0140a51266323"
+  problem_index_digest: "sha256:8c579cac1aaadf39bd07bd8ad5514e741786a27a3d2a7f0b92aa62266fe2da53"
   problem_count: 8
   problems:
     - id: "erdos_68"

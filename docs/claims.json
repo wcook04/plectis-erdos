@@ -2059,7 +2059,8 @@
           "path": "Erdos249257/AllBaseTotientKernel.lean",
           "role": "Lean proof module",
           "imports": [
-            "Erdos249257.TotientMahlerDefect"
+            "Erdos249257.TotientMahlerDefect",
+            "Erdos249257.TotientKernelConditional"
           ]
         },
         {
@@ -2328,8 +2329,7 @@
           "path": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean",
           "role": "Lean proof module",
           "imports": [
-            "Erdos249257.DiagonalPincerCertificates",
-            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64"
+            "Erdos249257.DiagonalPincerCertificatesT64"
           ]
         },
         {
@@ -9185,6 +9185,14 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1049.RationalBaseContour",
+          "path": "ErdosProblems/Erdos1049/RationalBaseContour.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.ZudilinHeightRegion"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.RationalBaseLambert",
           "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
           "role": "Lean proof module",
@@ -10125,9 +10133,9 @@
           "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos68.CanonicalFactorialDigits",
-            "ErdosProblems.Erdos68.PrimeUnitTranslator",
-            "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
+            "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+            "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
+            "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement"
           ]
         },
         {
@@ -13486,7 +13494,7 @@
         "review_family": "factorial_carry_characterisation",
         "contribution_class": "locally proved result; novelty unassessed",
         "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
-        "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+        "original_source": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
         "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
         "statement": "Irrationality is equivalent to cofinally many strict-successor divisibility failures.",
         "boundary": "The equivalence does not prove that the cofinal failures occur."
@@ -13497,7 +13505,7 @@
         "review_family": "factorial_carry_characterisation",
         "contribution_class": "locally proved result; novelty unassessed",
         "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
-        "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+        "original_source": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
         "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
         "statement": "Irrationality is equivalent to cofinally many non-unit carries.",
         "boundary": "The equivalence does not supply a cofinal carry producer."
