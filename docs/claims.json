@@ -2045,6 +2045,14 @@
           ]
         },
         {
+          "id": "Erdos249257.AllBaseTotientKernel",
+          "path": "Erdos249257/AllBaseTotientKernel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientMahlerDefect"
+          ]
+        },
+        {
           "id": "Erdos249257.BinaryTailWindowTransfer",
           "path": "Erdos249257/BinaryTailWindowTransfer.lean",
           "role": "Binary tail-window transfer interfaces",
@@ -9306,6 +9314,29 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral",
+          "path": "ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.AllBaseTotientKernel"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis",
+          "path": "ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral",
+            "ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis",
+          "path": "ErdosProblems/Erdos249/PaperCompleteR8/UnitPivotBasis.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos249.PeriodMultipleEscape",
           "path": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
           "role": "Lean proof module",
@@ -9379,6 +9410,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.BlockMassEngines",
+          "path": "ErdosProblems/Erdos269/BlockMassEngines.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
           "path": "ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
           "role": "Lean proof module",
@@ -9390,6 +9427,107 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos269.ThreeChannelBlockRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence",
+          "path": "ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.RationalityCarryBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DyadicBlockMassIdentity",
+          "path": "ErdosProblems/Erdos269/DyadicBlockMassIdentity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.BlockMassEngines",
+            "ErdosProblems.Erdos269.RestrictedFloorSum"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DyadicBlockThresholdPartition",
+          "path": "ErdosProblems/Erdos269/DyadicBlockThresholdPartition.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DyadicBlockMassIdentity",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DyadicOrderedTailRecurrence",
+          "path": "ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DyadicBlockThresholdPartition",
+            "ErdosProblems.Erdos269.DyadicRadixTailEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DyadicRadixTailEscape",
+          "path": "ErdosProblems/Erdos269/DyadicRadixTailEscape.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.BoundedRadixTailEscape",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DyadicShellSummability",
+          "path": "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DyadicOrderedTailRecurrence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.IntegralBranchExtinction",
+          "path": "ErdosProblems/Erdos269/IntegralBranchExtinction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DyadicShellSummability"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.KernelCarryRank",
+          "path": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+            "ErdosProblems.Shared.IrrationalRotationStaircase"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.NormalizedStateWidth",
+          "path": "ErdosProblems/Erdos269/NormalizedStateWidth.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.IntegralBranchExtinction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PurePowerIrrationality",
+          "path": "ErdosProblems/Erdos269/PurePowerIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.RationalLatticeReduction",
+          "path": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DyadicShellSummability",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.RationalityCarryBridge",
+          "path": "ErdosProblems/Erdos269/RationalityCarryBridge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.NormalizedStateWidth",
+            "ErdosProblems.Erdos269.RationalLatticeReduction"
           ]
         },
         {
@@ -11513,6 +11651,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Shared.IrrationalRotationStaircase",
+          "path": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Skip.D1",
           "path": "ErdosProblems/Skip/D1.lean",
           "role": "Lean proof module",
@@ -12636,7 +12780,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "e01f35df4d6debd1a02fb6b27fe7570f746cb82a",
+      "ref": "2a115c048292e5298f556832f5abc2d0e123bd19",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",

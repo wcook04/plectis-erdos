@@ -207,12 +207,12 @@ relicense the research corpus or transfer credit for participants' mathematics.
 
 The layer a mathematician should judge is small: 130 curated claim records in 30 contribution families, reaching Lean source through 404 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-The rest is engineering inventory. About 92% of the 154,240 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 92% of the 154,561 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,131 |
-| Formal results and supporting lemmas | 151,884 |
+| Lean modules (the two library roots) | 1,149 |
+| Formal results and supporting lemmas | 152,132 |
 | Curated claim records | 130 |
 | Contribution families | 30 |
 
