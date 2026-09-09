@@ -9255,6 +9255,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.LcmRecordExcess",
+          "path": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity",
           "path": "ErdosProblems/Erdos243/PaperCompleteR11/CRTObstructionDensity.lean",
           "role": "Lean proof module",
@@ -9384,6 +9390,14 @@
             "ErdosProblems.Erdos243.WeightedCRTRepair",
             "ErdosProblems.Erdos243.SparseResetRecovery",
             "ErdosProblems.Erdos243.PrimitivePrefixRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.SlowRiseBarrier",
+          "path": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
           ]
         },
         {
@@ -13187,11 +13201,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8",
+      "ref": "94b5ff1c77ff90c4daca7af68bf00005fdc1cbab",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-04"
+      "public_tag": "formal-source-2026-09-09"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
