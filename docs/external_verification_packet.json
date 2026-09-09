@@ -1688,9 +1688,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:ff4797f0ff8498c0070d365afcc75714db330ccd591f9e7c4f087b2e7e013b8c",
+    "owner_digest": "sha256:02e789f71e0711c2594b6a42a6635d1d933202af94099162309c6c2706eac121",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:23ad7ec2c9f39f401dea1d87b033842ff9bb8eccc67075427cc4c5957b090bae",
+    "projection_digest": "sha256:fde0d9af3b6c755f42811985a8ec14db39b511b11e67f01eb652692c0052528c",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2180,10 +2180,10 @@
             "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
             "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
             "present": true,
-            "line_count": 1584,
-            "declaration_count": 104,
-            "theorem_count": 82,
-            "content_digest": "sha256:453629d554e1f3b45b2dcb3e2d26431d5d0bf61c541be5506b1af24bd852e975"
+            "line_count": 1665,
+            "declaration_count": 116,
+            "theorem_count": 92,
+            "content_digest": "sha256:d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1"
           }
         ],
         "note": {

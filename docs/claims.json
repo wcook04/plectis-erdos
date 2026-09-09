@@ -9551,10 +9551,75 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos251.AffineCylinderCollapse",
+          "path": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.AffineShiftEscape",
+            "ErdosProblems.Erdos251.OrderLatticeDiagonal"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.AffineShiftEscape",
+          "path": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
+          "path": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.FreePairReduction",
+          "path": "ErdosProblems/Erdos251/FreePairReduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.OrderLatticeDiagonal"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.KernelDenominatorFloor",
+          "path": "ErdosProblems/Erdos251/KernelDenominatorFloor.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.OrderLatticeDiagonal",
+          "path": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PolynomialGapSeriesValue",
+          "path": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
           "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos251.RealPrimeGapTail",
+          "path": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
@@ -13122,7 +13187,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "dff128c604b246fe48feb79379d2f9c2f5117543",
+      "ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",

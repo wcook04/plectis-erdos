@@ -516,7 +516,7 @@
   ],
   "next_public_action": {
     "owner": "claim and projection metadata owner",
-    "action": "Bind only the four retained occurrence families in this receipt to the public PASS evidence, refresh generated projections and formal-source checkpoint, then run the release checks.",
+    "action": "Completed in public commit 3d2dae3102af7c7e2869048dd01808b1eaea50f8: the four retained occurrence families are bound and generated projections were refreshed; later formal-source advances preserve these bindings.",
     "guard": "Do not promote any item in excluded_promotions and do not widen a family beyond its recorded boundary."
   },
   "public_replay_commit": "6ae229ee5cd4b3b1970f68d96ddc44b9082e1306",

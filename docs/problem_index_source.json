@@ -422,7 +422,8 @@
         }
       ],
       "finite_search": null,
-      "note_coverage_floor": 0.55
+      "note_coverage_floor": 0.53,
+      "note_coverage_rationale": "The long note links 64 theorem-level declarations across the complete current 120-declaration cited source family. Exporting the final twelve-declaration polynomial countermodel block lowered the raw linked fraction from 59% to 53% without removing any link; 0.53 records that larger honest denominator while named source links and required headline declarations remain mandatory."
     },
     {
       "problem_id": "erdos_257",

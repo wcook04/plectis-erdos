@@ -192,7 +192,7 @@
         "ErdosProblems.Erdos249.TypeBReturnV8.dtw_of_eventual_peripheral_and_cofinal_centered",
         "ErdosProblems.Erdos249.TypeBReturnV8.irrational_of_eventual_peripheral_and_cofinal_centered"
       ],
-      "disposition": "PUBLIC_REPLAY_PENDING_CONDITIONAL_BRIDGE",
+      "disposition": "PUBLIC_REPLAY_PASS_CONDITIONAL_BRIDGE",
       "boundary": "Both eventual peripheral estimates and the cofinal centered estimate at one shared depth function remain explicit hypotheses; no analytic supplier and no unconditional irrationality follow."
     },
     {
@@ -208,7 +208,7 @@
         "ErdosProblems.Erdos249.TypeBReturnV8.run_length_counterexample",
         "ErdosProblems.Erdos249.TypeBReturnV8.run_threshold_iff"
       ],
-      "disposition": "PUBLIC_REPLAY_PENDING_FINITE_EXACT_FACTS",
+      "disposition": "PUBLIC_REPLAY_PASS_FINITE_EXACT_FACTS",
       "boundary": "One finite parameter tuple plus an exact Farey denominator lemma and corrected finite run threshold; no cofinal certificate producer follows."
     },
     {
@@ -220,7 +220,7 @@
         "ErdosProblems.Erdos249.TypeBReturnV8.twoMeanContribution_zero",
         "ErdosProblems.Erdos249.TypeBReturnV8.three_peripheral_zero_do_not_force_centered_budget"
       ],
-      "disposition": "PUBLIC_REPLAY_PENDING_GENERIC_NEGATIVE_BOUNDARY",
+      "disposition": "PUBLIC_REPLAY_PASS_GENERIC_NEGATIVE_BOUNDARY",
       "boundary": "A two-point complex countermodel to an inference; it is not a counterexample to the arithmetic totient-centered predicate."
     },
     {
@@ -229,7 +229,7 @@
         "ErdosProblems.Erdos249.TypeBReturnV8.finite_first_harmonic_norm_gap",
         "ErdosProblems.Erdos249.TypeBReturnV8.one_unconditional_norm_gap_instance"
       ],
-      "disposition": "PUBLIC_REPLAY_PENDING_SINGLE_FINITE_INSTANCE",
+      "disposition": "PUBLIC_REPLAY_PASS_SINGLE_FINITE_INSTANCE",
       "boundary": "Only (h,X,L)=(1,4,9) with bound 21X/25; no DTWFirstHarmonicNormGap or cofinal statement."
     },
     {
@@ -244,7 +244,7 @@
         "Erdos249257.TotientTailPeriodKiller.norm_pivotFiberMeanContribution_le_of_uniform",
         "Erdos249257.TotientTailPeriodKiller.pivotBudgetAt_of_peripheral_estimates"
       ],
-      "disposition": "PUBLIC_REPLAY_PENDING_FINITE_COMPOSITION",
+      "disposition": "PUBLIC_REPLAY_PASS_FINITE_COMPOSITION",
       "boundary": "Assembles explicit cardinal and norm estimates into PivotBudgetAt; it proves neither the prime-distribution estimates nor the centered estimate."
     }
   ],
@@ -257,7 +257,7 @@
   ],
   "next_public_action": {
     "owner": "claim and projection metadata owner",
-    "action": "Bind only the five bounded claim families in this receipt, refresh generated projections and the formal-source checkpoint, then run release checks.",
+    "action": "Completed in public commit 3d2dae3102af7c7e2869048dd01808b1eaea50f8: the five bounded families are bound and generated projections were refreshed; later formal-source advances preserve these bindings.",
     "guard": "Do not promote any item in excluded_promotions or turn a conditional supplier hypothesis into an unconditional endpoint."
   },
   "public_replay_commit": "dff128c604b246fe48feb79379d2f9c2f5117543",
