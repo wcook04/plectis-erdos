@@ -63,7 +63,7 @@ the [running least common multiple](https://github.com/wcook04/plectis-lean-erdo
 ```
 Here “smooth” always means supported on the fixed prime set, and it is not the varying-bound notion counted by $`\Psi(x,y)`$ in the Dickman–Hildebrand theory \[hildebrand1986, Theorem 1\]; no smooth-number density asymptotic is used below. For $`b\in\{p,q,r\}`$ the set of positive powers of $`b`$ is the *$`b`$-channel*.
 
-The statement of Problem #269 has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* collection \[formalconjectures269\]. That is a formal statement of the question up to a rational normalisation, since its Nat-indexed series includes the empty-prefix term, and its rational, irrational and infinite-prime assertions all end in `sorry`. Kovač and Tao \[kovactao2024\] treat several irrationality problems of Erdős for series of unit fractions by elementary means; nothing from that work is used here.
+The statement of Problem #269 has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* collection \[formalconjectures269\]. That is a formal statement of the question up to an initial constant: its Nat-indexed series includes the empty-prefix term, so its value is exactly $`1`$ plus the conventional series. Its rational, irrational and infinite-prime assertions all end in `sorry`. Kovač and Tao \[kovactao2024\] treat several irrationality problems of Erdős for series of unit fractions by elementary means; nothing from that work is used here.
 
 **Keywords.** irrationality; transcendence; least common multiple; smooth numbers; separated rank; Lean 4. **MSC 2020.** 11J72 (primary); 11A05, 11N25, 68V20 (secondary).
 
@@ -919,7 +919,7 @@ The letter’s de-duplicated assertion is made for a general finite list of prim
 
 The two-prime argument of the note is independent of the unprinted argument in the letter, and it is not the first public proof. Steve Fan posted the same factorisation, the same Hecke–Mahler reduction and the same conclusion in the discussion thread of the problem’s page on 26 June 2026 \[fan2026comment\], with follow-up remarks extending the argument to arbitrary coprime pairs; a further comment there observes that the argument does not seem to generalise immediately to $`|P|\ge3`$. The manuscript of the note was first released publicly on 22 July 2026, at commit `a9d3ab8`.
 
-The statement of the problem has been formalised as a conjecture with an unfilled proof in the *Formal Conjectures* collection \[formalconjectures269\]. Its Nat-indexed series includes the empty-prefix least-common-multiple term, so its value differs from the conventional one by a rational constant; transporting a theorem across that boundary needs an explicit series-identification lemma, which is not supplied here.
+The statement of the problem has been formalised as a conjecture with an unfilled proof in the *Formal Conjectures* collection \[formalconjectures269\]. Its Nat-indexed series includes the empty-prefix least-common-multiple term, so its value is exactly $`1`$ plus the conventional series; transporting a theorem across that boundary needs an explicit series-identification lemma, which is not supplied here.
 
 <a id="long269:long:general-carries"></a>
 

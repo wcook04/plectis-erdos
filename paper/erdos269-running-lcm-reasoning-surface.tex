@@ -210,8 +210,9 @@ used below.  For $b\in\{p,q,r\}$ the set of positive powers of $b$ is the
 The statement of Problem~\#269 has been formalised before, as a conjecture with
 an unfilled proof, in the \emph{Formal Conjectures}
 collection~\cite{formalconjectures269}.  That is a formal statement of the
-question up to a rational normalisation, since its Nat-indexed series includes
-the empty-prefix term, and its rational, irrational and infinite-prime
+question up to an initial constant: its Nat-indexed series includes the
+empty-prefix term, so its value is exactly \(1\) plus the conventional series.
+Its rational, irrational and infinite-prime
 assertions all end in \texttt{sorry}.  Kova\v{c} and Tao~\cite{kovactao2024}
 treat several irrationality problems of Erd\H{o}s for series of unit fractions
 by elementary means; nothing from that work is used here.
@@ -1610,7 +1611,6 @@ Fan.  The transcendence input is credited to Yann Bugeaud and Michel Laurent
 and to the earlier work of Loxton and van der Poorten cited by them.  The
 problem numbering and status follow the Erd\H{o}s Problems catalogue maintained
 by Thomas Bloom~\cite{erdosproblems}.
-
 % ---- part extended_record ----
 \section{Extended record: migrated arguments and finite evidence}
 \label{long269:long:extended}
@@ -1650,8 +1650,8 @@ note was first released publicly on 22 July 2026, at commit \texttt{a9d3ab8}.
 The statement of the problem has been formalised as a conjecture with an
 unfilled proof in the \emph{Formal Conjectures} collection
 \cite{formalconjectures269}.  Its Nat-indexed series includes the empty-prefix
-least-common-multiple term, so its value differs from the conventional one by a
-rational constant; transporting a theorem across that boundary needs an
+least-common-multiple term, so its value is exactly \(1\) plus the conventional
+series; transporting a theorem across that boundary needs an
 explicit series-identification lemma, which is not supplied here.
 
 \subsection{The abstract carry lemmas in their general form}
@@ -1899,7 +1899,6 @@ small-form criterion & \lref{Erdos269/PurePowerIrrationality.lean}{94}{irrationa
 conditional assembly & \lref{Erdos269/PurePowerIrrationality.lean}{156}{irrational_of_clearing_and_small_gaps}\\
 staircase index engine & \lword{Shared/IrrationalRotationStaircase.lean}{271}{exists_staircase_indices}{staircase indices}\\
 \end{longtable}
-
 % ---- part family_catalogue ----
 \clearpage
 \section{Complete result-family map}\label{sec:erdos-269-complete-family-map}

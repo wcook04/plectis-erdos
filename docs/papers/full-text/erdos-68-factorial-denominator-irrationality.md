@@ -20,7 +20,7 @@ irrational?
 
 Every rational representation $`S=a/q`$, $`q>0`$, of $`S=\sum_{n\ge2}(n!-1)^{-1}`$ satisfies
 ``` math
-q\nmid299999!,\qquad q\ge2^{39990}>10^{12038}.
+q\nmid299999!,\qquad q\ge2^{39990},\qquad q>10^{12040}.
 ```
 The first exclusion follows from an exact strict-successor carry test; the second from continued fractions. An integral divisor basis determines the cancelling vectors and their attainable factorial moments. At fixed moment, every correction translates the full residual by an integer. Actual prime-power cancellations explain why common-denominator growth alone does not control reduced prefixes. The companion constant $`S-e+2`$ gives an exact factorial-orbit criterion; the remaining assertion is strict-successor divisibility failure at arbitrarily large indices.
 
@@ -532,7 +532,7 @@ The exact GMP carry certificate covers $`3\le m\le300000`$. Its unit carries occ
 ```
 In particular $`b_{300000}\ne1`$, yielding $`q\nmid299999!`$ by <a href="#eq:finite-denominator-consumer" data-reference-type="eqref" data-reference="eq:finite-denominator-consumer">[eq:finite-denominator-consumer]</a>. This excludes every divisor of that factorial, including large divisors. It does not exclude all integers with small prime factors, since their multiplicities can be too large.
 
-The separate $`80000`$-bit exact rational enclosure forces $`23449`$ common continued-fraction partial quotients. Its best-approximation certificate gives $`q\ge2^{39990}>10^{12038}`$. The open-versus-closed complete-quotient endpoint convention matters for a sharper extraction; no stronger numerical floor is asserted here. The exact sources, enclosure and integer-computation receipts are retained with the long record. Neither finite calculation supplies <a href="#eq:canonical-open-target" data-reference-type="eqref" data-reference="eq:canonical-open-target">[eq:canonical-open-target]</a>.
+The separate $`80000`$-bit exact rational enclosure lies strictly between Farey neighbours whose denominator sum is both at least $`2^{39990}`$ and greater than $`10^{12040}`$. Hence every rational in the enclosure has denominator $`q\ge2^{39990}`$ and $`q>10^{12040}`$. The decimal bound comes from the denominator sum itself, not from the weaker binary comparison. The exact sources, enclosure and integer-computation receipts are retained with the long record. Neither finite calculation supplies <a href="#eq:canonical-open-target" data-reference-type="eqref" data-reference="eq:canonical-open-target">[eq:canonical-open-target]</a>.
 
 <a id="app:sources"></a>
 

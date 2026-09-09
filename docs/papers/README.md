@@ -98,7 +98,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-68-factorial-denominator-irrationality](full-text/erdos-68-factorial-denominator-irrationality.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries`
-  **Source declaration:** `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` via [Lean source](../../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+  **Source declaration:** `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` via [Lean source](../../ErdosProblems/Erdos68/FactorialGapPlateauCore.lean)
   **Result:** Maximal endpoint proximity for #68, but it does not prove the cofinal producer.
   **Hard mechanism:** The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.
   **Evidence:** Exact committed source and Comparator transport are available.
