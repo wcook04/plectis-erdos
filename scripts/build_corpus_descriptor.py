@@ -348,7 +348,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             for key in ("source", "decision")
         },
         "retained_companions": [
-            {key: companion[key] for key in ("source", "decision")}
+            {"source": companion["source"]}
             for companion in architecture.get("retained_companions", [])
         ],
         "qualified_future_companion": {
@@ -406,7 +406,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "formal_source_ref": claims["release"]["formal_source"]["ref"],
             "main_paper_source_digest": file_digest(MAIN_PAPER_TEX),
             "navigation_projection_identity": (
-                "content digests in corpus descriptor; no checkout commit embedded"
+                "content digests; no checkout commit embedded"
             ),
         },
         "reading_routes": reading_routes,

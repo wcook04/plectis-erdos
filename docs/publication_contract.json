@@ -282,6 +282,120 @@
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
       ]
+    },
+    {
+      "id": "erdos_1041_reasoning_record",
+      "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+      "source_content_digest": "sha256:27ca9a32515680d6e041449b4d4127b5cfef3e23d3c22e9e572715f00f8fa9d0",
+      "rendered_path": "erdos1041-lemniscate-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:a4b56ccef5c51bc5828691dd76612d795e1b8618cdc90e746cbb5ce625815f03",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Claim-bounded reasoning record for Erd\u0151s Problem 1041. It assembles Newton-flow decay, critical-value ray separation, translation-collision geometry, root retention, solved structured families, and the diagnosed gap in the claimed global saddle argument. The general spanning-tree and metric-gluing endpoint remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/assemble_reasoning_surfaces.py --check --paper 1041",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_1049_reasoning_record",
+      "title": "Rational-Base Lambert Series: Complete Reasoning Record",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "source_content_digest": "sha256:5605088544379c0110b29f34f27526eccfe63d3c3fd8f5127e782fcc76e4af6c",
+      "rendered_path": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:5a3a2de4d8ef4ec0b14a86bf92778d60bf0d5e77dcf0ecddc18329ecfd7c78eb",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Complete reasoning record for Erd\u0151s #1049, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/assemble_reasoning_surfaces.py --check --paper 1049",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_68_reasoning_record",
+      "title": "The Factorial-Denominator Series: Complete Reasoning Record",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos68-factorial-reasoning-surface.tex",
+      "source_content_digest": "sha256:0ca14ded4b7c259c244c3722be25c2690feb0df4ef3fb07d1ff1e69e5350861b",
+      "rendered_path": "erdos68-factorial-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:4522475fca605f3f57d6aef21d729c49d75d04fac5711b0ab6c3f2e36ba4f85d",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Complete reasoning record for Erd\u0151s #68, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/assemble_reasoning_surfaces.py --check --paper 68",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_243_reasoning_record",
+      "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "source_content_digest": "sha256:ed0477376d0ff7932910d3acf2fbb9c3cf6b08e42ae2545c8ba4fd61bee4a6fe",
+      "rendered_path": "erdos243-reciprocal-tail-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:1e51648823c4998ae77af8f419009db64269a0034be4843717b532692212c6ee",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Complete reasoning record for Erd\u0151s #243, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the scalar finite-negative-mass criterion without a normalised-vanishing premise. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/assemble_reasoning_surfaces.py --check --paper 243",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_251_reasoning_record",
+      "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos251-prime-gap-reasoning-surface.tex",
+      "source_content_digest": "sha256:d052c0aac9e60aa5e19f1e77a585bff47f97588d9d6e48be43351e7c42e7f3d3",
+      "rendered_path": "erdos251-prime-gap-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:13b4c5d035893d50cbbfb229f4b59bc00108e6504154978c2b523a56b03b28cc",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Complete reasoning record for Erd\u0151s #251, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the finite counting reduction for shifted prime-gap differences; the analytic sieve estimates remain assumptions. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/assemble_reasoning_surfaces.py --check --paper 251",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_269_reasoning_record",
+      "title": "The Three-Prime Running LCM: Complete Reasoning Record",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos269-running-lcm-reasoning-surface.tex",
+      "source_content_digest": "sha256:bc2bb3e931591dab362565be749ed5b6966babc33e27dcd6cab0172af4bb1bb0",
+      "rendered_path": "erdos269-running-lcm-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:f8b072b0bcdc1581df3940a938f56b4b457643281caa69a50c755476488acf7a",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Complete reasoning record for Erd\u0151s #269, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/assemble_reasoning_surfaces.py --check --paper 269",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
     }
   ],
   "entrypoints": [

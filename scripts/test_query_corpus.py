@@ -1327,7 +1327,7 @@ def validate_route_memory_cards() -> None:
     )
     assert architecture_card.startswith(
         "publication architecture | gateway=paper/erdos249-257-main-paper.tex "
-        f"| retained_companions=2 | families={expected_publication_family_count}"
+        f"| retained_companions={len(query_corpus.load('docs/claims.json')['machine_readable_paper']['publication_assembly']['publication_architecture']['retained_companions'])} | families={expected_publication_family_count}"
     )
     assert (
         "family_route | classical_full_support_and_named_257_families "
