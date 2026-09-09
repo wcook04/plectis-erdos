@@ -23,7 +23,17 @@ import ErdosProblems.Skip.LadderT67
 import ErdosProblems.Erdos68.GapScalarNormalForm
 import ErdosProblems.Erdos68.PrimeThresholdParity
 import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
+import ErdosProblems.Erdos68.CanonicalFactorialTermination
+import ErdosProblems.Erdos68.FactorialAnalyticBoundary
+import ErdosProblems.Erdos68.FactorialShiftFamilyOrbit
+import ErdosProblems.Erdos68.FactorialZeroPlateauCertificates
+import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
+import ErdosProblems.Erdos68.PrimePoleCriterion
+import ErdosProblems.Erdos68.PrimePoleDenominator
+import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
+import ErdosProblems.Erdos243.LcmRecordExcess
 import ErdosProblems.Erdos243.RepairEntropy
+import ErdosProblems.Erdos243.SlowRiseBarrier
 
 /-!
 # Problem-centric Erdős research library
