@@ -2282,13 +2282,19 @@ def formal_source_identity(claims: dict[str, Any]) -> dict[str, Any]:
 def lean_source_identity_for_paper(
     claims: dict[str, Any], paper_source: str | None
 ) -> dict[str, Any]:
-    """Return the immutable Lean identity used by one authored paper.
-
-    Every authored paper is pinned to the current committed formal-source
-    checkpoint.  A companion that cites post-tag modules cannot truthfully
-    retain the older release tag as its source identity.
-    """
-    return formal_source_identity(claims)
+    """Use a manuscript's explicit checkpoint when it differs from the registry."""
+    identity = formal_source_identity(claims)
+    if paper_source:
+        from check_problem_note_sources import note_pinned_commit
+        source = ROOT / paper_source
+        if source.is_file():
+            pinned = note_pinned_commit(source.read_text(encoding="utf-8"), identity["ref"])
+            if pinned != identity["ref"]:
+                return {"repository": identity["repository"], "ref": pinned,
+                        "ref_kind": "commit", "resolved_commit": pinned,
+                        "public_tag": None, "publication_state": "pinned_by_manuscript",
+                        "relationship_to_last_tag": "paper_specific_checkpoint"}
+    return identity
 
 
 @lru_cache(maxsize=1)
@@ -2750,7 +2756,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             )
             open_proposition = open_by_anchor.get(open_anchor_key)
             attached_open_propositions = [open_proposition] if open_proposition else []
-            if attached_open_propositions:
+            if attached_open_propositions or start["environment"] == "problem":
                 anchor_class = "remaining_open_proposition_anchor"
             elif attached_claims:
                 anchor_class = "registered_claim_anchor"
@@ -2767,6 +2773,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                     file_name,
                     bool(
                         re.match(r"Erdos\d+/", file_name)
+                        or "\\input{problem-note-preamble}" in text
                         or macro.startswith("m")
                     ),
                 )
@@ -10856,6 +10863,8 @@ def main() -> int:
         print(render_card(packet))
     else:
         encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
+        if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
+            encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n"
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
             print(
                 f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; use --format card",

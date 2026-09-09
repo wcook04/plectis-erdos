@@ -8,7 +8,13 @@
 # Notes: one short standalone note per problem in the ErdosProblems expansion
 # library. Every name here must appear exactly once in
 # docs/publication_contract.json.
-PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
+PAPERS = erdos1041-lemniscate-reasoning-surface \
+  erdos1049-rational-base-lambert-reasoning-surface \
+  erdos68-factorial-reasoning-surface \
+  erdos243-reciprocal-tail-reasoning-surface \
+  erdos251-prime-gap-reasoning-surface \
+  erdos269-running-lcm-reasoning-surface \
+  erdos249-257-main-paper claim-faithful-publication-systems-paper \
   cold-clone-to-proof-receipt open-source-mathematics-strategy \
   erdos249-totient-reasoning-surface \
   erdos257-mersenne-reasoning-surface \
@@ -57,8 +63,9 @@ erdos249-totient-reasoning-surface.tex: $(REASONING_249_PARTS) $(REASONING_ASSEM
 erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write --paper 257
 
-# The notes share one preamble, so a change there rebuilds all of them.
-$(NOTES:%=%.pdf): $(PREAMBLE)
+# Short and long problem papers share the preamble.
+$(NOTES:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
+$(PAPERS:%=%.pdf): paper-house-style.sty
 
 # Only the mathematical gateway owns Lean source-link aliases. Keeping every
 # unrelated manuscript in this prerequisite list rebuilt the complete paper
@@ -76,3 +83,21 @@ $(ALIASES): erdos249-257-main-paper.tex ../scripts/build_paper_module_aliases.py
 clean:
 	rm -f $(PAPERS:%=%.pdf) $(PAPERS:%=%.aux) $(PAPERS:%=%.log) \
 	  $(PAPERS:%=%.out) $(PAPERS:%=%.toc)
+
+erdos1041-lemniscate-reasoning-surface.tex: $(wildcard reasoning-parts/erdos1041/*.tex) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 1041
+
+erdos1049-rational-base-lambert-reasoning-surface.tex: $(wildcard reasoning-parts/erdos1049/*.tex) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 1049
+
+erdos68-factorial-reasoning-surface.tex: $(wildcard reasoning-parts/erdos68/*.tex) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 68
+
+erdos243-reciprocal-tail-reasoning-surface.tex: $(wildcard reasoning-parts/erdos243/*.tex) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 243
+
+erdos251-prime-gap-reasoning-surface.tex: $(wildcard reasoning-parts/erdos251/*.tex) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 251
+
+erdos269-running-lcm-reasoning-surface.tex: $(wildcard reasoning-parts/erdos269/*.tex) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 269

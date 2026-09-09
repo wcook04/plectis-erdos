@@ -1,0 +1,288 @@
+\section{Extended record: migrated arguments and finite evidence}
+\label{long269:long:extended}
+
+This part of the record holds material that the short note compressed or moved.
+Nothing here is an additional result; every statement is either an auxiliary
+form of a theorem of the note, a historical or bibliographic detail, or the
+exact source inventory.  The canonical references are the note's own labels.
+
+\subsection{The historical and catalogue record}\label{long269:long:history}
+
+In the primary 1988 source Erd\H{o}s states the infinite-$P$ assertion as a
+simple exercise and presents persistence for a finite number of primes greater
+than one as a probable extension, and not as a theorem
+\cite[p.~106]{erdos1988}.  The current open status is supplied by the
+catalogue \cite{erdosproblems}, and is not inferred from that conjectural
+wording.  The 1974 letter writes ``given primes $p_1,\ldots,p_r$'' without
+explicitly restricting $r$, so the singleton case, whose value is $p/(p-1)$,
+must be excluded by hand; the modern restriction $|P|\ge2$ does that.
+
+The letter's de-duplicated assertion is made for a general finite list of
+primes and supplies no proof, so it is an asserted historical result and not an
+open problem.  The note therefore restricts its open statement to the repeated
+series $\mathcal R_P$.  A recovered proof of the letter's assertion, or a
+transcendence statement for $\mathcal D_P$ with $|P|\ge3$, would be a different
+question and needs its own formulation.
+
+The two-prime argument of the note is independent of the unprinted argument in
+the letter, and it is not the first public proof.  Steve Fan posted the same
+factorisation, the same Hecke--Mahler reduction and the same conclusion in the
+discussion thread of the problem's page on 26 June 2026
+\cite{fan2026comment}, with follow-up remarks extending the argument to
+arbitrary coprime pairs; a further comment there observes that the argument
+does not seem to generalise immediately to $|P|\ge3$.  The manuscript of the
+note was first released publicly on 22 July 2026, at commit \texttt{a9d3ab8}.
+
+The statement of the problem has been formalised as a conjecture with an
+unfilled proof in the \emph{Formal Conjectures} collection
+\cite{formalconjectures269}.  Its Nat-indexed series includes the empty-prefix
+least-common-multiple term, so its value differs from the conventional one by a
+rational constant; transporting a theorem across that boundary needs an
+explicit series-identification lemma, which is not supplied here.
+
+\subsection{The abstract carry lemmas in their general form}
+\label{long269:long:general-carries}
+
+The note applies the carry machinery to the literal $\{2,3,5\}$ orbit.  The
+underlying statements are about integer sequences alone, they are reusable, and
+they are recorded here in the generality in which they are checked.
+
+Let $D=D_{\mathrm{sm}}B$ with $D_{\mathrm{sm}}=2^{u}3^{v}5^{w}$ and
+$\gcd(B,30)=1$, and let $(c_n)$ be an integer sequence satisfying
+$c_{n+1}=b_nc_n-Dm_n$ for an integer radix word $(b_n)$ and forcing word
+$(m_n)$.
+
+\begin{proposition}[conditional denominator reduction]
+\label{long269:long:denominator-reduction}
+If $c_n=D_{\mathrm{sm}}d_n$ for every $n$, with $D_{\mathrm{sm}}>0$, then the
+recurrence, positivity, upper bound and window identity for $(c_n)$ reduce to
+the same four statements for $(d_n)$ with multiplier $B$ in place of $D$.
+\end{proposition}
+
+Height absorption alone does not imply divisibility of a carry state.  The
+identity $DX_a=h_aN-Dv_a$ of Lemma~\ref{long269:res:all-scale-lattice} is what supplies
+it for the actual orbit, and Theorem~\ref{long269:res:actual-cancellation} is the
+instance in which the note uses it.  The formal consumer takes the
+common-factor form as a hypothesis.
+
+\begin{proposition}[conditional extinction of bounded carries]
+\label{long269:long:windowconsumer}
+Let $(b_n)$ and $(m_n)$ be a radix word and a forcing word, let
+$G:\N_{>0}\times\N\to\N$, and assume cofinal local-window escape against $G$.
+Fix $B>0$ coprime to $30$.  There is no integral sequence $(d_n)$ satisfying
+simultaneously $d_{n+1}=b_nd_n-Bm_n$, $d_n>0$ and $|d_n|\le G(B,n)$ for every
+$n\ge0$.
+\end{proposition}
+
+\begin{proof}
+Choose one escaping window $(\ell,h)$.  The window identity gives
+$d_{\ell+h}\equiv-BF_{\ell,h}$ modulo $|W_{\ell,h}|$.  The endpoint state is
+positive and at most $G(B,\ell+h)$, whereas the canonical positive residue of
+the right-hand side exceeds that bound, so Proposition~\ref{long269:res:consumer}
+applies.
+\end{proof}
+
+Coprimality with $30$ is used by the escape hypothesis to select a window; once
+a window is fixed, the finite contradiction does not use it.  The formalisation
+carries the edge cases: a zero window base is excluded, a zero residue is
+represented by the full modulus, and positivity prevents the endpoint carry
+from vanishing.  The packaged absorbed form takes a nonzero smooth factor, the
+exact factorisation $c_n=D_{\mathrm{sm}}d_n$, the absorbed recurrence for
+$(c_n)$ and the positive short bound for $(d_n)$, and derives the same
+contradiction in one statement.
+
+\subsection{Worked finite examples}\label{long269:long:finite-geometry}
+
+The ten smallest values of the running least common multiple at $\{2,3,5\}$ are
+tabulated in Section~\ref{long269:sec:lcm}.  They illustrate both parts of
+Proposition~\ref{long269:res:cell}: the value is constant on $\{5,6,7\}$ and on
+$\{9,10\}$, and each change multiplies by a single prime, by $2$ at
+$x=2,4,8$, by $3$ at $x=3,9$ and by $5$ at $x=5$.  Also $\Lprefix(10)=8\cdot9\cdot5=360$
+is the least common multiple of the smooth numbers $1,2,3,4,5,6,8,9,10$.
+
+For Proposition~\ref{long269:res:fibre} take $(p,q,r)=(2,3,5)$ and the box
+$\mathcal B(1,1,1)$, whose eight points carry the smooth values
+$1,2,3,5,6,10,15,30$ and the heights
+\[
+\begin{array}{c|cccccccc}
+p^{i}q^{j}r^{k}&1&2&3&5&6&10&15&30\\ \hline
+\hgt&1&2&6&60&60&360&360&10800
+\end{array}
+\]
+Six heights occur, two of them twice: the points $5$ and $6$ share the height
+$60$, and $10$ and $15$ share the height $360$.  The identity reads
+\[
+ 1+\tfrac12+\tfrac16+\tfrac1{60}+\tfrac1{60}+\tfrac1{360}+\tfrac1{360}
+ +\tfrac1{10800}
+ =1+\tfrac12+\tfrac16+\tfrac2{60}+\tfrac2{360}+\tfrac1{10800}
+ =\tfrac{18421}{10800},
+\]
+and the two coefficients $2$ carry the whole content of the regrouping on this
+box.  Where the heights are pairwise distinct the identity is a relabelling.
+
+Multiplying block radices along a run of blocks gives the product of the
+jump-word letters over that run: for instance $b_1b_2=60$ is the product of the
+four multipliers at $3,4,5,8$.  Block $4$ is the only one among the first six
+carrying an internal power in both channels, and block $5$ carries neither, so
+its radix falls back to the terminal factor alone.
+
+\subsection{The finite-scan histogram}\label{long269:long:experiments}
+
+The scan of Section~\ref{long269:sec:evidence} covers every $B\le5000$ coprime to $30$
+and every start $100\le\ell\le3000$, with search depth permitted to $24$.  It
+tested $3{,}869{,}934$ pairs, found an escaping window in every case, and the
+distribution of first successful lengths was
+\[
+\resizebox{\linewidth}{!}{$\begin{array}{c|rrrrrrrrrrrrrrr}
+h&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18\\ \hline
+\#&1&104&812&5437&51409&237423&735450&1431226&1132756&236752&34910&3076&521&49&8
+\end{array}$}
+\]
+The first case at the maximal observed length $18$ is $B=917$ at start
+$\ell=2980$, with endpoint jump index $6179$, window base
+$18139852800000000$, forcing $13196471407660025821045$, residue
+$76322101735$ and bound $3896420420$.  An earlier run of the same checker over
+every $B\le1000$ coprime to $30$ and every start $100\le\ell\le500$ tested
+$106{,}666$ pairs with maximal first successful length $14$, whose first case
+is $B=359$ at start $291$, endpoint jump index $627$, base $5038848000000$,
+forcing $25864575212865807$, residue $213175287$ and bound $15932659$.
+
+By Corollary~\ref{long269:res:no-bounded-length} these histograms describe a bounded
+region.  The observed concentration at lengths $10$ to $12$ sits just above the
+necessary depth $\bigl(\log_2K(B,\ell+h)-\log_215\bigr)/3$ supplied by
+Proposition~\ref{long269:res:window-growth}, which is what a reader should expect if
+the residues behave like generic ones inside this range.
+
+\subsection{Source inventory}\label{long269:long:sources}
+
+Each entry names an informal statement and the Lean declaration that carries it
+at the pinned source revision~\commitshort.
+
+\begin{longtable}{@{}p{.35\linewidth}p{.59\linewidth}@{}}
+informal statement & linked Lean source\\
+\endhead
+smooth lattice value & \lref{Erdos269/ThreePrimeRunningLcm.lean}{32}{smooth3Val}\\
+pure-power height & \lref{Erdos269/ThreePrimeRunningLcm.lean}{37}{threePrimeHeight}\\
+lattice kernel & \lref{Erdos269/ThreePrimeRunningLcm.lean}{41}{threePrimeKernelQ}\\
+smooth prefix index set & \lref{Erdos269/ThreePrimeRunningLcm.lean}{47}{smoothPrefixExponents}\\
+running least common multiple & \lref{Erdos269/ThreePrimeRunningLcm.lean}{54}{smoothPrefixLcm}\\
+prefix value divides the height & \lref{Erdos269/ThreePrimeRunningLcm.lean}{60}{smooth3Val_dvd_threePrimeHeight_of_mem}\\
+divisibility into the height & \lref{Erdos269/ThreePrimeRunningLcm.lean}{78}{smoothPrefixLcm_dvd_threePrimeHeight}\\
+first pure-power membership & \lref{Erdos269/ThreePrimeRunningLcm.lean}{85}{pureFirst_mem_smoothPrefixExponents}\\
+second pure-power membership & \lref{Erdos269/ThreePrimeRunningLcm.lean}{98}{pureSecond_mem_smoothPrefixExponents}\\
+third pure-power membership & \lref{Erdos269/ThreePrimeRunningLcm.lean}{111}{pureThird_mem_smoothPrefixExponents}\\
+running-lcm identity & \lref{Erdos269/ThreePrimeRunningLcm.lean}{124}{smoothPrefixLcm_eq_threePrimeHeight}\\
+cell relation & \lref{Erdos269/ThreePrimeRunningLcm.lean}{164}{SameThreePrimeLogCell}\\
+cell constancy of the height & \lref{Erdos269/ThreePrimeRunningLcm.lean}{170}{threePrimeHeight_eq_of_sameLogCell}\\
+cell constancy of the running value & \lref{Erdos269/ThreePrimeRunningLcm.lean}{180}{smoothPrefixLcm_eq_of_sameLogCell}\\
+cell constancy of the kernel & \lref{Erdos269/ThreePrimeRunningLcm.lean}{192}{threePrimeKernelQ_eq_of_sameLogCell}\\
+positive power sets & \lref{Erdos269/ThreePrimeRunningLcm.lean}{205}{positivePrimePowers}\\
+channel cardinality & \lref{Erdos269/ThreePrimeRunningLcm.lean}{209}{positivePrimePowers_card}\\
+exclusion of the origin & \lref{Erdos269/ThreePrimeRunningLcm.lean}{220}{one_not_mem_positivePrimePowers}\\
+channel disjointness & \lref{Erdos269/ThreePrimeRunningLcm.lean}{230}{positivePrimePowers_disjoint}\\
+positive jump channels & \lref{Erdos269/ThreePrimeRunningLcm.lean}{244}{threePrimePositiveJumpSet}\\
+positive jump count & \lref{Erdos269/ThreePrimeRunningLcm.lean}{250}{threePrimePositiveJumpSet_card}\\
+jump set with the origin & \lref{Erdos269/ThreePrimeRunningLcm.lean}{274}{threePrimeJumpSetWithOrigin}\\
+jump count with the origin & \lref{Erdos269/ThreePrimeRunningLcm.lean}{279}{threePrimeJumpSetWithOrigin_card}\\
+first height step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{295}{threePrimeHeight_firstLogStep}\\
+second height step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{306}{threePrimeHeight_secondLogStep}\\
+third height step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{317}{threePrimeHeight_thirdLogStep}\\
+first coordinate step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{327}{smoothPrefixLcm_firstLogStep}\\
+second coordinate step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{340}{smoothPrefixLcm_secondLogStep}\\
+third coordinate step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{353}{smoothPrefixLcm_thirdLogStep}\\
+exponent box & \lref{Erdos269/ThreePrimeRunningLcm.lean}{369}{smoothExponentBox}\\
+point height & \lref{Erdos269/ThreePrimeRunningLcm.lean}{374}{smoothPointHeight}\\
+height fibre & \lref{Erdos269/ThreePrimeRunningLcm.lean}{378}{smoothHeightFiber}\\
+fibre sum & \lref{Erdos269/ThreePrimeRunningLcm.lean}{385}{smoothHeightFiber_kernel_sum}\\
+height-fibre normal form & \lref{Erdos269/ThreePrimeRunningLcm.lean}{407}{finiteSmoothKernelSum_groupedByHeight}\\
+cubic majorant & \lref{Erdos269/ThreePrimeRunningLcm.lean}{431}{threePrimeHeight_le_cube}\\
+origin value & \lref{Erdos269/ThreePrimeRunningLcm.lean}{444}{kernel_235_origin}\\
+value at two & \lref{Erdos269/ThreePrimeRunningLcm.lean}{451}{kernel_235_two}\\
+value at three & \lref{Erdos269/ThreePrimeRunningLcm.lean}{459}{kernel_235_three}\\
+value at six & \lref{Erdos269/ThreePrimeRunningLcm.lean}{468}{kernel_235_six}\\
+non-separation witness & \lref{Erdos269/ThreePrimeRunningLcm.lean}{480}{kernel_235_not_rankOne}\\
+variable-base tail step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{488}{tailStateStep}\\
+expanded tail step & \lref{Erdos269/ThreePrimeRunningLcm.lean}{491}{tailStateStep_eq}\\
+smooth exponent shell & \lref{Erdos269/ThreePrimeRunningLcm.lean}{501}{smoothExponentShell}\\
+short-interval uniqueness & \lref{Erdos269/ThreePrimeRunningLcm.lean}{510}{exponent_unique_in_short_interval}\\
+first-coordinate projection & \lref{Erdos269/ThreePrimeRunningLcm.lean}{544}{smoothExponentShell_card_le_dropFirst}\\
+third-coordinate projection & \lref{Erdos269/ThreePrimeRunningLcm.lean}{586}{smoothExponentShell_card_le_dropThird}\\
+sorted quadratic estimate & \lref{Erdos269/ThreePrimeRunningLcm.lean}{630}{sorted_pair_quadratic}\\
+quadratic shell bound & \lref{Erdos269/ThreePrimeRunningLcm.lean}{647}{smoothExponentShell_card_quadratic}\\
+dyadic internal power & \lref{Erdos269/ThreePrimeRunningLcm.lean}{663}{DyadicInternalPower}\\
+internal-power uniqueness & \lref{Erdos269/ThreePrimeRunningLcm.lean}{669}{dyadicInternalPower_exponent_unique}\\
+dyadic block base & \lref{Erdos269/ThreePrimeRunningLcm.lean}{751}{dyadicBlockBase235}\\
+exact dyadic radix alphabet & \lref{Erdos269/ThreePrimeRunningLcm.lean}{762}{dyadicBlockBase235_cases}\\
+bounded-radix consequence & \lref{Erdos269/ThreePrimeRunningLcm.lean}{774}{dyadicBlockBase235_mem_interval}\\
+rank-two certificate & \lref{Erdos269/ThreePrimeRunningLcm.lean}{904}{kernel_235_minor_eq_neg_one_fifteen}\\
+no integer rotation orbit & \lref{Erdos269/KernelCarryRank.lean}{154}{noIntegerOrbit_logb_of_prime}\\
+height factorisation & \lref{Erdos269/KernelCarryRank.lean}{218}{threePrimeHeight_factorisation}\\
+kernel factorisation & \lref{Erdos269/KernelCarryRank.lean}{259}{threePrimeKernelQ_factorisation}\\
+two-prime outer product & \lref{Erdos269/KernelCarryRank.lean}{278}{twoPrimeKernelQ_eq_outer_product}\\
+two-prime vanishing minors & \lref{Erdos269/KernelCarryRank.lean}{298}{twoPrimeKernelQ_minor_two_eq_zero}\\
+uniform minors, general form & \lref{Erdos269/KernelCarryRank.lean}{313}{exists_uniform_nonsingular_threePrimeKernel_minor}\\
+uniform minors for primes & \lref{Erdos269/KernelCarryRank.lean}{376}{exists_uniform_nonsingular_threePrimeKernel_minor_of_prime}\\
+no finite separation & \lref{Erdos269/KernelCarryRank.lean}{388}{not_finite_separable_threePrimeKernel}\\
+second-order minor & \lref{Erdos269/KernelCarryRank.lean}{560}{kernel_235_minor2_eq_neg_one_fifteen}\\
+third-order minor & \lref{Erdos269/KernelCarryRank.lean}{570}{kernel_235_minor3_eq_one_over_81000}\\
+misleading proportional row & \lref{Erdos269/KernelCarryRank.lean}{583}{kernel_235_row_three_eq_smul_row_zero}\\
+failure of that proportionality & \lref{Erdos269/KernelCarryRank.lean}{592}{kernel_235_row_three_ne_smul_row_zero_at_four}\\
+ordered block digit & \lref{Erdos269/DyadicBlockThresholdPartition.lean}{150}{dyadicOrderedBlockDigit235}\\
+normalised state step & \lref{Erdos269/DyadicOrderedTailRecurrence.lean}{110}{dyadicNormalizedTailStateR235_succ}\\
+shell summability & \lref{Erdos269/DyadicShellSummability.lean}{142}{summable_dyadicShellMassR235}\\
+infinite tail recurrence & \lref{Erdos269/DyadicShellSummability.lean}{177}{dyadicNormalizedShellTsumTailR235_succ}\\
+integer-or-cofinally-far dichotomy & \lref{Erdos269/DyadicShellSummability.lean}{188}{dyadicShellTsumTail_integer_or_cofinal_far}\\
+boundary divisibility & \lref{Erdos269/RationalLatticeReduction.lean}{51}{smoothHeight_mul_prime_dvd_boundaryHeight}\\
+half-height identity & \lref{Erdos269/RationalLatticeReduction.lean}{101}{two_mul_heightNormalizer235}\\
+window clearing identity & \lref{Erdos269/RationalLatticeReduction.lean}{158}{heightNormalizer235_mul_windowMass_eq_int}\\
+all-scale rationality lattice & \lref{Erdos269/RationalLatticeReduction.lean}{196}{qsmul_normalizedTailState_eq_int_of_value_eq_rat}\\
+normalised-state collision & \lref{Erdos269/RationalLatticeReduction.lean}{296}{exists_normalizedTailState_collision_of_value_eq_rat}\\
+least positive residue & \lref{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue}\\
+positive representative range & \lref{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le}\\
+representative congruence & \lref{Erdos269/ResidueEscape.lean}{52}{leastPositiveResidue_modEq}\\
+escape condition & \lref{Erdos269/ResidueEscape.lean}{71}{ResidueEscapesWindow}\\
+finite natural-state contradiction & \lref{Erdos269/ResidueEscape.lean}{76}{no_bounded_positive_state_of_residue_escape}\\
+contrapositive form & \lref{Erdos269/ResidueEscape.lean}{96}{residue_le_bound_of_bounded_positive_state}\\
+integer least-positive-residue obstruction & \lref{Erdos269/ResidueEscape.lean}{110}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
+exact residue classifier & \lref{Erdos269/ResidueEscape.lean}{138}{leastPositiveResidue_eq_natAbs_of_pos_le_modEq}\\
+window base & \lref{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}\\
+window forcing & \lref{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}\\
+affine window identity & \lref{Erdos269/RestrictedFloorSum.lean}{455}{affineRecurrence_window}\\
+scaled forcing identity & \lref{Erdos269/RestrictedFloorSum.lean}{469}{windowForcing_const_mul}\\
+integral carry window & \lref{Erdos269/RestrictedFloorSum.lean}{480}{integralCarry_window}\\
+endpoint residue identification & \lref{Erdos269/RestrictedFloorSum.lean}{497}{leastPositiveResidue_windowForcing_eq_carry}\\
+absorbed smooth factor & \lref{Erdos269/RestrictedFloorSum.lean}{548}{smooth3Val_dvd_threePrimeHeight_of_le}\\
+common-factor cancellation & \lref{Erdos269/RestrictedFloorSum.lean}{581}{integralCarry_cancel_commonFactor}\\
+reduced bound transfer & \lref{Erdos269/RestrictedFloorSum.lean}{601}{reducedCarry_pos_le_of_commonFactor}\\
+reduced window transfer & \lref{Erdos269/RestrictedFloorSum.lean}{612}{reducedIntegralCarry_window}\\
+cofinal window hypothesis & \lref{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}\\
+reduced-carry extinction & \lref{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}\\
+absorbed-carry extinction & \lref{Erdos269/RestrictedFloorSum.lean}{689}{no_positive_absorbedCarry_of_cofinalLocalWindowEscape}\\
+real window identity & \lref{Erdos269/CofinalWindowEscapeEquivalence.lean}{68}{trueNormalizedState_window}\\
+escape from irrationality, general bound & \lref{Erdos269/CofinalWindowEscapeEquivalence.lean}{327}{cofinalLocalWindowEscape_of_irrational_of_beaten}\\
+escape from irrationality, quadratic family & \lref{Erdos269/CofinalWindowEscapeEquivalence.lean}{355}{cofinalLocalWindowEscape_of_irrational_of_quadratic}\\
+escape from irrationality, actual bound & \lref{Erdos269/CofinalWindowEscapeEquivalence.lean}{379}{cofinalLocalWindowEscape_of_irrational}\\
+producer equivalence, shifted tail & \lref{Erdos269/CofinalWindowEscapeEquivalence.lean}{392}{actualCofinalLocalWindowEscape_iff}\\
+producer equivalence, series value & \lref{Erdos269/CofinalWindowEscapeEquivalence.lean}{398}{actualCofinalLocalWindowEscape_iff_irrational_value}\\
+rationality-to-carry bridge & \lref{Erdos269/RationalityCarryBridge.lean}{324}{exists_reducedCarry_of_value_eq_rat}\\
+the actual producer & \lref{Erdos269/RationalityCarryBridge.lean}{397}{ActualCofinalLocalWindowEscape}\\
+irrationality from the producer & \lref{Erdos269/RationalityCarryBridge.lean}{479}{irrational_value_of_cofinalLocalWindowEscape}\\
+bounded-radix alternative & \lref{Erdos269/BoundedRadixTailEscape.lean}{89}{boundedRadix_zero_or_cofinal_far}\\
+rational value from an integral scaled tail & \lref{Erdos269/BoundedRadixTailEscape.lean}{183}{rational_of_scaledTail_integer}\\
+channel potential classifier & \lref{Erdos269/ThreeChannelBlockRigidity.lean}{59}{channelBlockNull_iff_channelPotential}\\
+one-index lift extinction & \lref{Erdos269/CarryLiftExtinction.lean}{178}{no_carryLift_of_errorBound_below_twoPow}\\
+uniform lift extinction & \lref{Erdos269/CarryLiftExtinction.lean}{238}{no_bounded_carryLift_of_blockNull_twoAnchors}\\
+first-block sum & \lref{Erdos269/CarryLiftExtinction.lean}{289}{binaryLift_twoAnchors_force_firstBlock_sum_one}\\
+four-state obstruction & \lref{Erdos269/CarryLiftExtinction.lean}{308}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}\\
+residue-coboundary form & \lref{Erdos269/WeightedPhaseCarry.lean}{110}{carry_eq_residueDigit_add_coboundary}\\
+carry interval & \lref{Erdos269/WeightedPhaseCarry.lean}{151}{carryResidue_mem_interval}\\
+digit interval & \lref{Erdos269/WeightedPhaseCarry.lean}{158}{residueDigit_mem_interval}\\
+symbolic realisation & \lref{Erdos269/WeightedPhaseCarry.lean}{294}{CartierRealisation}\\
+finite realised span & \lref{Erdos269/WeightedPhaseCarry.lean}{335}{finite_realisedSpan_of_factorisation}\\
+Cantor-state confinement & \lref{Erdos269/PurePowerIrrationality.lean}{61}{state_mem_Ioo}\\
+state gap bound & \lref{Erdos269/PurePowerIrrationality.lean}{74}{stateGap_lower_bound}\\
+small-form criterion & \lref{Erdos269/PurePowerIrrationality.lean}{94}{irrational_of_small_nonzero_forms}\\
+conditional assembly & \lref{Erdos269/PurePowerIrrationality.lean}{156}{irrational_of_clearing_and_small_gaps}\\
+staircase index engine & \lword{Shared/IrrationalRotationStaircase.lean}{271}{exists_staircase_indices}{staircase indices}\\
+\end{longtable}
+

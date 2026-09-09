@@ -54,7 +54,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from check_problem_note_sources import snapshot_lines_batch
+from check_problem_note_sources import note_pinned_commit, snapshot_lines_batch
 from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
 from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
 from publication_contract import (
@@ -1675,7 +1675,7 @@ def main(argv: list[str] | None = None) -> int:
         m = re.search(
             r"\\(?:re)?newcommand\{\\commit\}\{([^}]+)\}", paper_text
         )
-        expected_pin = formal_ref
+        expected_pin = next(row for row in paper_rows if row["source"] == paper_path).get("formal_source_ref", formal_ref)
         check(m is not None and m.group(1) == expected_pin,
               f"{paper_path} \\commit pin {m.group(1) if m else '<missing>'} != expected {expected_pin}")
         if paper_path == main_paper_row["source"]:
@@ -1762,8 +1762,8 @@ def main(argv: list[str] | None = None) -> int:
     check(re.search(rf"\\label\{{{re.escape(index_label)}\}}", paper) is not None,
           f"machine-readable paper index label {index_label!r} does not exist")
 
-    pinned_modules = {
-        decl["module"]
+    pinned_requests = {
+        (formal_ref, decl["module"])
         for claim in data["claims"]
         for decl in claim["declarations"]
     }
@@ -1778,10 +1778,10 @@ def main(argv: list[str] | None = None) -> int:
                 rel = f"ErdosProblems/{fname}"
             else:
                 rel = f"Erdos249257/{fname}"
-            pinned_modules.add(rel)
+            pinned_requests.add((note_pinned_commit(paper_text, formal_ref), rel))
     pinned_cache: dict[tuple[str, str], list[str]] = {}
     snapshot_lines_batch(
-        ((formal_ref, rel) for rel in pinned_modules),
+        pinned_requests,
         pinned_cache,
     )
     cache.update(
@@ -1804,7 +1804,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # --- 4. paper source links ----------------------------------------------
     for paper_path, paper_text in paper_sources:
-        source_ref = formal_ref
+        source_ref = note_pinned_commit(paper_text, formal_ref)
         for macro, fname, line_s, name in re.findall(
                 r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
             if fname.startswith(("Erdos249257/", "ErdosProblems/")):
@@ -2514,7 +2514,7 @@ def main(argv: list[str] | None = None) -> int:
             for key in ("source", "decision")
         },
         "retained_companions": [
-            {key: companion[key] for key in ("source", "decision")}
+            {"source": companion["source"]}
             for companion in architecture.get("retained_companions", [])
         ],
         "qualified_future_companion": {
@@ -2539,7 +2539,7 @@ def main(argv: list[str] | None = None) -> int:
             ROOT / "paper" / "erdos249-257-main-paper.tex"
         ),
         "navigation_projection_identity": (
-            "content digests in corpus descriptor; no checkout commit embedded"
+            "content digests; no checkout commit embedded"
         ),
     }
     check(orientation.get("source_provenance") == expected_source_provenance,

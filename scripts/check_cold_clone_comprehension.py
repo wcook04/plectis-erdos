@@ -1319,9 +1319,8 @@ def validate_paper_library_first_contact(
     long_tail_heading = paper_readme.find(
         "### Explicitly subordinate, rejected, and long tail"
     )
-    inventory_heading = paper_readme.find(
-        "## Problem portfolio (complete 15-paper inventory)"
-    )
+    inventory_match = re.search(r"^## Problem portfolio \(complete \d+-paper inventory\)$", paper_readme, re.MULTILINE)
+    inventory_heading = inventory_match.start() if inventory_match else -1
     positions = (
         signal_heading,
         ranked_heading,

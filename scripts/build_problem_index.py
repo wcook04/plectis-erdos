@@ -44,6 +44,8 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs" / "problem_index_source.json"
 OUTPUT = ROOT / "docs" / "problems.json"
+LIBRARY_OUTPUT = ROOT / "docs" / "problem_library.json"
+PUBLIC_REPO = "https://github.com/wcook04/plectis-erdos"
 CONTRACT = ROOT / "docs" / "publication_contract.json"
 CLAIMS = ROOT / "docs" / "claims.json"
 CORPUS = ROOT / "docs" / "papers" / "corpus.json"
@@ -355,6 +357,7 @@ def build(
                 "whether the problem is solved."
             ),
         },
+        "problem_library": "docs/problem_library.json",
         "paper_corpus": {
             "source": "docs/papers/corpus.json",
             "reading_rule": (
@@ -371,6 +374,101 @@ def build(
         ],
         "validation_commands": source["validation_commands"],
     }
+
+
+def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> dict:
+    """Public-native reading and import-map API, separate from the compact index.
+
+    Paper membership comes from the corpus subject, never a filename guess.
+    Proof seeds come from owned modules, reviewed results, and explicit claim
+    links; recursively imported local modules complete each navigable map.
+    No dependency edge is presented as a proof or credit relationship.
+    """
+    from query_corpus import lean_code_projection
+
+    claims = claims or {}
+    corpus = corpus or {}
+    source_cache = {}
+    machine = claims.get("machine_readable_paper", {})
+    modules = {n["path"]: n for n in machine.get("module_graph", {}).get("nodes", []) if n.get("path")}
+    results = claims.get("external_verification_packet", {}).get("main_results", [])
+    all_claims = {c["id"]: c for c in claims.get("claims", [])}
+    arguments = machine.get("argument_graph", {}).get("edges", [])
+    problems = {}
+    for row in source["problems"]:
+        pid = row["problem_id"]
+        number = row["erdos_number"]
+        reading = []
+        for paper in corpus.get("papers", []):
+            declared = paper.get("problem_ids") or re.findall(r"#(\d+)", paper.get("subject", ""))
+            if paper.get("publication_state") != "active" or str(number) not in {str(n).removeprefix("erdos_") for n in declared}:
+                continue
+            item = {"paper_id": paper["paper_id"], "title": paper["title"],
+                    "role": {"Problem note": "short", "Reasoning surface": "long"}.get(paper.get("form"), "paper"),
+                    "source": paper.get("local_source"), "pdf": paper.get("local_pdf"),
+                    "full_text": paper.get("local_full_text")}
+            for key in ("source", "pdf", "full_text"):
+                path = item[key]
+                if path:
+                    pure = PurePosixPath(path)
+                    if pure.is_absolute() or ".." in pure.parts or not (ROOT / path).is_file() or (ROOT / path).is_symlink():
+                        raise ValueError(f"{pid}: missing or unsafe {key}: {path}")
+            item["github"] = {key: f"{PUBLIC_REPO}/blob/main/{item[key]}" for key in ("source", "pdf", "full_text") if item[key]}
+            reading.append(item)
+        reading.sort(key=lambda p: ({"short": 0, "long": 1}.get(p["role"], 2), p["paper_id"]))
+        directory = ROOT / row["directory"]
+        if directory.is_symlink() or not directory.is_dir() or ".." in PurePosixPath(row["directory"]).parts or PurePosixPath(row["directory"]).is_absolute():
+            raise ValueError(f"{pid}: unsafe problem directory")
+        seeds = {str(p.relative_to(ROOT)) for p in directory.rglob("*.lean")}
+        seeds.update(module_path(name) for name in [row["principal_module"], *row.get("companion_modules", [])])
+        seeds.update(r["original_source"] for r in results if str(r.get("problem")) == str(number) and r.get("original_source"))
+        related = {a["from"] for a in arguments if a.get("to") == pid}
+        related.update(r["claim_id"] for r in results if str(r.get("problem")) == str(number) and r.get("claim_id"))
+        for claim_id in related:
+            seeds.update(d["module"] for d in all_claims.get(claim_id, {}).get("declarations", []) if d.get("module"))
+        included = set(seeds)
+        pending = list(seeds)
+        edges = set()
+        while pending:
+            path = pending.pop()
+            if path not in source_cache:
+                file = ROOT / path
+                if PurePosixPath(path).is_absolute() or ".." in PurePosixPath(path).parts or not file.is_file() or file.is_symlink():
+                    raise ValueError(f"{pid}: unsafe Lean path: {path}")
+                raw = file.read_bytes()
+                code = lean_code_projection(raw.decode("utf-8"))
+                imported_names = []
+                for line in code.splitlines():
+                    match = re.match(r"^\s*(?:public\s+)?import\s+(.+)$", line)
+                    if match:
+                        imported_names.extend(match[1].split())
+                source_cache[path] = (sha256(raw), imported_names)
+            for imported in source_cache[path][1]:
+                target = module_path(imported)
+                if (ROOT / target).is_file():
+                    edges.add((path, target))
+                    if target not in included:
+                        included.add(target)
+                        pending.append(target)
+        nodes = []
+        for path in sorted(included):
+            file = ROOT / path
+            if not file.is_file() or file.is_symlink() or ".." in PurePosixPath(path).parts or PurePosixPath(path).is_absolute():
+                raise ValueError(f"{pid}: missing or unsafe Lean source: {path}")
+            name = path.removesuffix(".lean").replace("/", ".")
+            nodes.append({"id": "lean-module:" + name, "label": name, "path": path,
+                          "direct": path in seeds, "content_digest": source_cache[path][0], "source_github": f"{PUBLIC_REPO}/blob/main/{path}",
+                          "role": modules.get(path, {}).get("role", "")})
+        def node_id(path):
+            return "lean-module:" + path.removesuffix(".lean").replace("/", ".")
+        problems[pid] = {"papers": reading,
+            "paper_roles": {role: [p["paper_id"] for p in reading if p["role"] == role] for role in ("short", "long")},
+            "source_map": {"nodes": nodes, "edges": [{"source": node_id(a), "target": node_id(b)} for a, b in sorted(edges)]}}
+    return {"schema": "erdos-problem-library/1", "generated_by": "scripts/build_problem_index.py",
+            "repository": PUBLIC_REPO, "link_policy": "moving_main_paths; titles and content updates preserve URLs",
+            "boundary": "Navigation only. Imports are source dependencies, not proof or credit relationships. Only local modules are mapped.",
+            "source_identity": {"problem_index": sha256(canonical(source)), "claims": sha256(canonical(claims)), "paper_corpus": sha256(canonical(corpus))},
+            "problems": problems}
 
 
 def canonical(data: dict) -> bytes:
@@ -482,12 +580,16 @@ def main() -> int:
         return 1
 
     payload = canonical(build(source, artifacts, claims, corpus))
+    library_payload = canonical(problem_library(source, claims, corpus))
     budget = source["index_max_bytes"]
     if len(payload) > budget:
         print(f"docs/problems.json exceeds its {budget}-byte budget: {len(payload)}")
         return 1
 
     if args.check:
+        if not LIBRARY_OUTPUT.is_file() or LIBRARY_OUTPUT.read_bytes() != library_payload:
+            print("docs/problem_library.json is stale; run python3 scripts/build_problem_index.py")
+            return 1
         actual = OUTPUT.read_bytes() if OUTPUT.is_file() else b""
         if actual != payload:
             print("docs/problems.json is stale; run python3 scripts/build_problem_index.py")
@@ -499,6 +601,7 @@ def main() -> int:
         return 0
 
     OUTPUT.write_bytes(payload)
+    LIBRARY_OUTPUT.write_bytes(library_payload)
     print(
         f"wrote docs/problems.json: {len(source['problems'])} problem(s), "
         f"{len(payload)} of {budget} bytes"

@@ -682,6 +682,8 @@ jobs:
       - name: Test the claim-following verb reports drift
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_verify_claims.py
+      - name: Test problem papers and source maps
+        run: python3 scripts/test_problem_library.py
       - name: Publication contract
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_publication_contract.py

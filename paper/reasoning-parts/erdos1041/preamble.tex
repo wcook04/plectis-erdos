@@ -1,0 +1,42 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% Long-form reasoning record seeded from the complete problem note.
+% The short note and this record are now independent publication units.
+% This flat manuscript is generated from reviewable parts below.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+\renewcommand{\commit}{1da2a504f8d8aa3cdc2cf686ec48bc8a67457984}
+\renewcommand{\commitshort}{1da2a504f8d8}
+\renewcommand{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}
+\renewcommand{\externalreviewobject}[3]{%
+  \begin{quote}\small
+  \textbf{Contribution.} #1\par
+  \textbf{Relation to the open problem.} #2\par
+  \textbf{Executable review object.} #3  The repository's
+  external-verification job compares these exact Lean propositions with
+  separately declared challenge statements and an axiom budget, then asks
+  Lean's kernel to check the submitted proofs.  The
+  \href{https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/formalization.yaml}%
+  {formalisation manifest} and the commit-bound CI receipt record that check;
+  they do not assess novelty, significance, or whether the original problem is
+  solved.
+  \end{quote}}
+\hypersetup{
+  pdftitle={Lemniscates and Newton flow: complete reasoning record for Erdős Problem 1041},
+  pdfsubject={Erdős Problem Notes: Problem 1041},
+  pdfkeywords={lemniscate, Newton flow, saddle connection, Morse theory, Reeb decomposition, Lean 4},
+}
+
+% The prose keeps compact declaration labels; the source appendix supplies the
+% commit-pinned links checked by the public release gate.
+\newcommand{\pdecl}[1]{\emph{\leanlabel{#1}}}
+\newcommand{\dbar}{\mathbb{D}}
+
+\runninghead{Erd\H{o}s \#1041: complete reasoning record}
+\title{Lemniscates and Newton Flow: Complete Reasoning Record}
+\subtitle{Erd\H{o}s Problem~\#1041}
+\author{Will Cook}
+\date{August 2026}
+
+\begin{document}

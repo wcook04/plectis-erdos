@@ -11,6 +11,9 @@
 /docs/SOURCE_MAP.md
 /docs/claims.json
 /docs/problems.json
+/docs/problem_library.json
+/docs/PROBLEM_LIBRARY.md
+/docs/papers/
 /paper/
 /scripts/reader-sparse-checkout
 /*.md
