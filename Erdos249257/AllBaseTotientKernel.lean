@@ -1,4 +1,5 @@
 import Erdos249257.TotientMahlerDefect
+import Erdos249257.TotientKernelConditional
 
 /-!
 # The all-base totient kernel: unconditional independence, exact rank, explicit basis
@@ -756,11 +757,6 @@ theorem allBase_totient_step_cross (k h n u : ℕ) (hh : 1 ≤ h) :
   exact Nat.totient_gcd_mul_totient_mul k (k ^ h * n + u)
 
 /-! ## The all-base totient kernel -/
-
-/-- The `(j, r)` base-`k` kernel channel of Euler's totient, viewed over `ℚ`.
-For `k = 2` this is `totientKernelSeq`. -/
-def allBaseTotientKernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
-  (Nat.totient (k ^ j * n + r) : ℚ)
 
 /-- Every positive zero-residue channel is a scalar multiple of the first
 zero-residue channel: `F_{j+1,0} = k^j • F_{1,0}`. -/
