@@ -2,8 +2,8 @@
   "schema": "public_erdos269_wavea_validation_export_v1",
   "generated_at": "2026-09-09",
   "problem": 269,
-  "status": "SOURCE_EXPORTED_STATIC_CLOSURE_PASS_PUBLIC_KERNEL_REPLAY_PENDING",
-  "evidence_class": "upstream_source_current_Lean_PASS_plus_byte_exact_target_sources_and_statically_closed_public_import_graph",
+  "status": "PASS_PUBLIC_SOURCE_CURRENT_COMPILE_AND_PERMITTED_AXIOMS",
+  "evidence_class": "public_source_current_Lean_PASS_plus_freshly_restamped_37_file_import_closure_and_exact_four_family_paper_mapping",
   "public_checkout_base_before_export": "41298352677c19a6491acc4294a2dcdc916fda8e",
   "authority_receipt": {
     "private_path": "work/erdos_release_readiness_r8_20260908/returned_authoring_r11/lean_build_coordinator/erdos269_wavea_validation_20260909.json",
@@ -306,10 +306,10 @@
     {
       "path": "ErdosProblems/Erdos269/PaperR9WidthData.lean",
       "module": "ErdosProblems.Erdos269.PaperR9WidthData",
-      "sha256": "3a275b604642fdede203553c22397ae4d127fb47d16df75a53a0ec4d731c9842",
+      "sha256": "db7e2951eb3adae520d52f2ebda3b204cc60d5eaffe2dedc4e57612f5d275e09",
       "authority_sha256": "3a275b604642fdede203553c22397ae4d127fb47d16df75a53a0ec4d731c9842",
-      "bytes": 897694,
-      "source_relation": "byte_exact_authority_source",
+      "bytes": 897702,
+      "source_relation": "finite_heartbeat_public_variant",
       "introduced_by_this_export": true
     },
     {
@@ -415,27 +415,39 @@
       "authority_sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e",
       "change": "none",
       "reason": "authority-only affineCylinder_step_nested is unused by the Wave A recursive closure; all imported ResidueEscape declarations required by Wave A already exist publicly"
+    },
+    "PaperR9WidthData.lean": {
+      "authority_sha256": "3a275b604642fdede203553c22397ae4d127fb47d16df75a53a0ec4d731c9842",
+      "public_sha256": "db7e2951eb3adae520d52f2ebda3b204cc60d5eaffe2dedc4e57612f5d275e09",
+      "change": "set_option maxHeartbeats 0 replaced by set_option maxHeartbeats 100000000",
+      "reason": "finite project-standard heartbeat bound required by public release policy; all table bytes and declarations preserved"
     }
   },
   "static_checks": {
     "closure_file_count": 37,
     "introduced_absent_file_count": 20,
     "all_37_local_import_paths_resolve": true,
-    "all_20_introduced_sources_byte_exact_to_authority": true,
+    "all_20_introduced_sources_byte_exact_to_authority": false,
     "audit_has_25_unique_named_prints": true,
     "no_preexisting_declaration_removed": true,
-    "lean_launched_in_public_checkout": false
+    "all_19_unmodified_introduced_sources_byte_exact_to_authority": true,
+    "introduced_finite_heartbeat_public_variant_count": 1,
+    "all_37_closure_pins_restamped_at_public_replay_commit": true,
+    "public_kernel_replay_passed": true,
+    "public_replay_unexpected_axioms": [],
+    "lean_launched_during_source_export": false,
+    "public_kernel_replay_launched_by_sole_owner": true
   },
   "current_authoring_papers": [
     {
       "path": "paper/erdos269-running-lcm-reasoning-surface.tex",
-      "sha256": "bc2bb3e931591dab362565be749ed5b6966babc33e27dcd6cab0172af4bb1bb0",
+      "sha256": "13356a2fa6063b3fd9924dbe1644ff0489f2fc0f03af5156839cc5950b606008",
       "bytes": 120795
     },
     {
       "path": "paper/erdos-269-three-prime-running-lcm.tex",
-      "sha256": "49b922d3995235ddd3451b1c76baa3bccdae85912e7ef1a529a34b908866119c",
-      "bytes": 40944
+      "sha256": "c32fca1ce7894f66acb77255a854a81a1ec284a50909c7df2d2df3c43e59e80c",
+      "bytes": 40479
     }
   ],
   "retained_occurrence_mapping": [
@@ -503,8 +515,38 @@
     "finite numerical results not named by this audit"
   ],
   "next_public_action": {
-    "owner": "sole Lean build owner",
-    "command": "lake env lean ErdosProblems/Erdos269/PaperR12WaveAAxiomAudit.lean",
-    "acceptance": "exit 0 and all 25 direct #print axioms outputs contain only propext, Classical.choice, Quot.sound; then update this receipt and consumer graph"
+    "owner": "claim and projection metadata owner",
+    "action": "Bind only the four retained occurrence families in this receipt to the public PASS evidence, refresh generated projections and formal-source checkpoint, then run the release checks.",
+    "guard": "Do not promote any item in excluded_promotions and do not widen a family beyond its recorded boundary."
+  },
+  "public_replay_commit": "6ae229ee5cd4b3b1970f68d96ddc44b9082e1306",
+  "public_recursive_local_import_closure_commit": "6ae229ee5cd4b3b1970f68d96ddc44b9082e1306",
+  "public_kernel_replay": {
+    "receipt_private_path": "work/erdos_release_readiness_r8_20260908/returned_authoring_r11/lean_build_coordinator/erdos269_public_wavea_validation_20260909.json",
+    "receipt_sha256": "273bfa15f2759983f61a7ccc5f9044846b3cb1d5827e3e0dcd376c434bfa0472",
+    "status": "PASS_PUBLIC_SOURCE_CURRENT_COMPILE_AND_PERMITTED_AXIOMS",
+    "target": "ErdosProblems.Erdos269.PaperR12WaveAAxiomAudit",
+    "wrapper_command": "repo-python scripts/lean_fast_build.py --jobs 1 ErdosProblems.Erdos269.PaperR12WaveAAxiomAudit",
+    "wrapper_exit_code": 0,
+    "wrapper_log_sha256": "8a5ca7e1a55fb05e69f21fcface63ca277d3198097a761e1405ab955c4255fd2",
+    "authority_command": "lake_command_guard.py env lean --tstack=65536 ErdosProblems/Erdos269/PaperR12WaveAAxiomAudit.lean",
+    "authority_exit_code": 0,
+    "authority_log_sha256": "8c9c2c0e367e4d997ce7c8680bc63625b51b6f9183951de81f9f0f4f66b8a84c",
+    "closure_module_count": 37,
+    "named_declaration_count": 25,
+    "axiom_dependency_report_count": 22,
+    "axiom_free_declaration_count": 3,
+    "axiom_union": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unexpected_axioms": [],
+    "scope_boundary": "This validates the 25 Wave A declarations at the pinned public commit. It does not establish full Erdos 269 coverage or the larger B-E chains."
   }
 }
