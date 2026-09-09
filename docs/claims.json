@@ -1768,8 +1768,7 @@
         "ErdosProblems.Decl.verify.D2",
         "ErdosProblems.Decl.verify.D3",
         "ErdosProblems.Decl.verify.D4",
-        "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
-        "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+        "ErdosProblems.Erdos1041.ReturnedR18V5FullAudit",
         "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
         "ErdosProblems.FreePosition.FreeKill18B",
         "ErdosProblems.FreePosition.FreeKill21C",
@@ -8445,8 +8444,116 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1041.AttachmentAwareReeb",
+          "path": "ErdosProblems/Erdos1041/AttachmentAwareReeb.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.CircleSeriesTransport",
+          "path": "ErdosProblems/Erdos1041/CircleSeriesTransport.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.All",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/All.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.CurveAlgebra",
+            "ErdosProblems.Erdos1041.ConnectorR18.NumericalBounds",
+            "ErdosProblems.Erdos1041.ConnectorR18.PolynomialBranches",
+            "ErdosProblems.Erdos1041.ConnectorR18.CubicBranch",
+            "ErdosProblems.Erdos1041.ConnectorR18.FiniteAssembly",
+            "ErdosProblems.Erdos1041.ConnectorR18.Averaging",
+            "ErdosProblems.Erdos1041.ConnectorR18.SupplierReduction",
+            "ErdosProblems.Erdos1041.ConnectorR18.CollectiveReduction",
+            "ErdosProblems.Erdos1041.ConnectorR18.R13Relevance"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.Averaging",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/Averaging.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.CollectiveReduction",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/CollectiveReduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.Averaging",
+            "ErdosProblems.Erdos1041.ConnectorR18.SupplierReduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.CubicBranch",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/CubicBranch.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.PolynomialBranches",
+            "ErdosProblems.Erdos1041.PaperCubicCompletion"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.CurveAlgebra",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/CurveAlgebra.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.FiniteAssembly",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/FiniteAssembly.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.CurveAlgebra",
+            "ErdosProblems.Erdos1041.ConnectorR18.NumericalBounds"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.NumericalBounds",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/NumericalBounds.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.PolynomialBranches",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/PolynomialBranches.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.CurveAlgebra"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.R13Relevance",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/R13Relevance.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.PolynomialBranches",
+            "ErdosProblems.Erdos1041.ConnectorR18.NumericalBounds",
+            "ErdosProblems.Erdos1041.SeparationCounterexampleR13"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ConnectorR18.SupplierReduction",
+          "path": "ErdosProblems/Erdos1041/ConnectorR18/SupplierReduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.CubicBranch",
+            "ErdosProblems.Erdos1041.ConnectorR18.FiniteAssembly"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
           "path": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.CubicCriticalHub",
+          "path": "ErdosProblems/Erdos1041/CubicCriticalHub.lean",
           "role": "Lean proof module",
           "imports": []
         },
@@ -8455,6 +8562,14 @@
           "path": "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.CyclicFiberMeanSquare",
+          "path": "ErdosProblems/Erdos1041/CyclicFiberMeanSquare.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TetranomialL2Selector"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase",
@@ -8471,10 +8586,216 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1041.ExponentialRemainderBound",
+          "path": "ErdosProblems/Erdos1041/ExponentialRemainderBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.FreePointCentralCompletion",
+          "path": "ErdosProblems/Erdos1041/FreePointCentralCompletion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.FreePointHilbertCertificate",
+            "ErdosProblems.Erdos1041.LogKernelCentralCertificate"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.FreePointHilbertCertificate",
+          "path": "ErdosProblems/Erdos1041/FreePointHilbertCertificate.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.FreePointTorusPshReduction",
+          "path": "ErdosProblems/Erdos1041/FreePointTorusPshReduction.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.FreePointUniformRadius",
+          "path": "ErdosProblems/Erdos1041/FreePointUniformRadius.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.LogKernelCentralCertificate"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.GroupedPoleNearZero",
+          "path": "ErdosProblems/Erdos1041/GroupedPoleNearZero.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.GroupedPolePolynomial"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.GroupedPolePolynomial",
+          "path": "ErdosProblems/Erdos1041/GroupedPolePolynomial.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.LogKernelCentralCertificate",
+          "path": "ErdosProblems/Erdos1041/LogKernelCentralCertificate.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.LogKernelVariance",
+            "ErdosProblems.Erdos1041.ExponentialRemainderBound"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.LogKernelEnergy",
+          "path": "ErdosProblems/Erdos1041/LogKernelEnergy.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.LogKernelVariance",
+          "path": "ErdosProblems/Erdos1041/LogKernelVariance.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.LogKernelEnergy"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
           "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperAnalyticTargets",
+          "path": "ErdosProblems/Erdos1041/PaperAnalyticTargets.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCurveAssembly"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCriticalValueMeanR10",
+          "path": "ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
+            "ErdosProblems.Erdos1041.PolynomialDiscNormalisationR10"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+          "path": "ErdosProblems/Erdos1041/PaperCubicCompletion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCubicSchur",
+            "ErdosProblems.Erdos1041.PaperReflectedCompletion",
+            "ErdosProblems.Erdos1041.CubicCriticalHub"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCubicFibres",
+          "path": "ErdosProblems/Erdos1041/PaperCubicFibres.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCurveAssembly",
+            "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+            "ErdosProblems.Erdos1041.CyclicFiberMeanSquare"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCubicSchur",
+          "path": "ErdosProblems/Erdos1041/PaperCubicSchur.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets",
+            "ErdosProblems.Erdos1041.PaperCubicFibres"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperCurveAssembly",
+          "path": "ErdosProblems/Erdos1041/PaperCurveAssembly.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperMetricScaling",
+          "path": "ErdosProblems/Erdos1041/PaperMetricScaling.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCurveAssembly"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperMomentConsumers",
+          "path": "ErdosProblems/Erdos1041/PaperMomentConsumers.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.FreePointTorusPshReduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
+          "path": "ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+            "ErdosProblems.Erdos1041.PaperPrimitivePath"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperPrimitivePath",
+          "path": "ErdosProblems/Erdos1041/PaperPrimitivePath.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCurveAssembly",
+            "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperReflectedBoundary",
+          "path": "ErdosProblems/Erdos1041/PaperReflectedBoundary.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperReflectedCompletion",
+          "path": "ErdosProblems/Erdos1041/PaperReflectedCompletion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperReflectedBoundary"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
+          "path": "ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedGroupedRigidityR10",
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets",
+            "ErdosProblems.Erdos1041.PaperMomentConsumers",
+            "ErdosProblems.Erdos1041.FreePointCentralCompletion",
+            "ErdosProblems.Erdos1041.FreePointUniformRadius"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PoissonKernelBridge",
+          "path": "ErdosProblems/Erdos1041/PoissonKernelBridge.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PoissonNormSquare",
+          "path": "ErdosProblems/Erdos1041/PoissonNormSquare.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PolynomialDiscNormalisationR10",
+          "path": "ErdosProblems/Erdos1041/PolynomialDiscNormalisationR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperReflectedCompletion"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
@@ -8493,6 +8814,129 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.All",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/All.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ReturnV5.CurveInfrastructure",
+            "ErdosProblems.Erdos1041.ReturnV5.CyclicCostSelection",
+            "ErdosProblems.Erdos1041.ReturnV5.FirstMergeReduction",
+            "ErdosProblems.Erdos1041.ReturnV5.LobeBarrier",
+            "ErdosProblems.Erdos1041.ReturnV5.NumericalEnvelopes",
+            "ErdosProblems.Erdos1041.ReturnV5.PrecriticalFinite",
+            "ErdosProblems.Erdos1041.ReturnV5.QuadraticBranch",
+            "ErdosProblems.Erdos1041.ReturnV5.RetainedEndpointAdapters",
+            "ErdosProblems.Erdos1041.ReturnV5.RootOccurrences",
+            "ErdosProblems.Erdos1041.ReturnV5.ValueSeparationGuardrail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.CrossReturnR18",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/CrossReturnR18.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ReturnV5.FirstMergeReduction",
+            "ErdosProblems.Erdos1041.ConnectorR18.CubicBranch"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.CurveInfrastructure",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/CurveInfrastructure.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets",
+            "ErdosProblems.Erdos1041.PaperMetricScaling"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.CyclicCostSelection",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/CyclicCostSelection.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ReturnV5.CurveInfrastructure",
+            "ErdosProblems.Erdos1041.AttachmentAwareReeb"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.FirstMergeReduction",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/FirstMergeReduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ReturnV5.QuadraticBranch"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.LobeBarrier",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/LobeBarrier.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.NumericalEnvelopes",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/NumericalEnvelopes.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.PrecriticalFinite",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/PrecriticalFinite.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.QuadraticBranch",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/QuadraticBranch.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ReturnV5.RootOccurrences"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.RetainedEndpointAdapters",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/RetainedEndpointAdapters.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ReturnV5.RootOccurrences",
+            "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
+            "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
+            "ErdosProblems.Erdos1041.PaperCriticalValueMeanR10",
+            "ErdosProblems.Erdos1041.PaperReflectedCompletion",
+            "ErdosProblems.Erdos1041.PaperCubicSchur"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.RootOccurrences",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/RootOccurrences.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ReturnV5.CurveInfrastructure"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnV5.ValueSeparationGuardrail",
+          "path": "ErdosProblems/Erdos1041/ReturnV5/ValueSeparationGuardrail.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.SeparationCounterexampleR13"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.ReturnedR18V5FullAudit",
+          "path": "ErdosProblems/Erdos1041/ReturnedR18V5FullAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.ConnectorR18.All",
+            "ErdosProblems.Erdos1041.ReturnV5.All",
+            "ErdosProblems.Erdos1041.ReturnV5.CrossReturnR18"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.SeparationCounterexampleR13",
+          "path": "ErdosProblems/Erdos1041/SeparationCounterexampleR13.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1041.SharpCollinearAlternation",
           "path": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
           "role": "Lean proof module",
@@ -8504,6 +8948,69 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos1041.SharpCollinearAlternation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorCircleEnergy",
+          "path": "ErdosProblems/Erdos1041/TaylorCircleEnergy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.CircleSeriesTransport",
+            "ErdosProblems.Erdos1041.TaylorDiagonal",
+            "ErdosProblems.Erdos1041.TaylorCoefficientMajorant",
+            "ErdosProblems.Erdos1041.TaylorCircleIdentification"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorCircleIdentification",
+          "path": "ErdosProblems/Erdos1041/TaylorCircleIdentification.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorCoefficientDeficit",
+          "path": "ErdosProblems/Erdos1041/TaylorCoefficientDeficit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TaylorCrossEnergy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorCoefficientMajorant",
+          "path": "ErdosProblems/Erdos1041/TaylorCoefficientMajorant.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorCrossEnergy",
+          "path": "ErdosProblems/Erdos1041/TaylorCrossEnergy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TaylorCircleEnergy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorDiagonal",
+          "path": "ErdosProblems/Erdos1041/TaylorDiagonal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.CircleSeriesTransport"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorEnergyBound",
+          "path": "ErdosProblems/Erdos1041/TaylorEnergyBound.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TaylorCrossEnergy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TaylorFiniteDeficitR10",
+          "path": "ErdosProblems/Erdos1041/TaylorFiniteDeficitR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TaylorCoefficientDeficit"
           ]
         },
         {
@@ -8536,6 +9043,99 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedAnalyticEnergy",
+          "path": "ErdosProblems/Erdos1041/WeightedAnalyticEnergy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedAnalyticLog",
+            "ErdosProblems.Erdos1041.TaylorEnergyBound"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedAnalyticLog",
+          "path": "ErdosProblems/Erdos1041/WeightedAnalyticLog.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedAnalyticModulus",
+          "path": "ErdosProblems/Erdos1041/WeightedAnalyticModulus.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedAnalyticLog"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedBoundaryDeficitR10",
+          "path": "ErdosProblems/Erdos1041/WeightedBoundaryDeficitR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedClosedDisc",
+            "ErdosProblems.Erdos1041.TaylorFiniteDeficitR10",
+            "ErdosProblems.Erdos1041.WeightedCauchyTransportR10"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedCauchyTransportR10",
+          "path": "ErdosProblems/Erdos1041/WeightedCauchyTransportR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedRadialIdentity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedClosedDisc",
+          "path": "ErdosProblems/Erdos1041/WeightedClosedDisc.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedInteriorRadius"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedGroupedRigidityR10",
+          "path": "ErdosProblems/Erdos1041/WeightedGroupedRigidityR10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedBoundaryDeficitR10",
+            "ErdosProblems.Erdos1041.GroupedPoleNearZero"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedInteriorBound",
+          "path": "ErdosProblems/Erdos1041/WeightedInteriorBound.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedPoissonIdentity",
+            "ErdosProblems.Erdos1041.PoissonNormSquare",
+            "ErdosProblems.Erdos1041.WeightedAnalyticModulus"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedInteriorRadius",
+          "path": "ErdosProblems/Erdos1041/WeightedInteriorRadius.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedInteriorBound"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedPoissonIdentity",
+          "path": "ErdosProblems/Erdos1041/WeightedPoissonIdentity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PoissonKernelBridge",
+            "ErdosProblems.Erdos1041.WeightedAnalyticEnergy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.WeightedRadialIdentity",
+          "path": "ErdosProblems/Erdos1041/WeightedRadialIdentity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.WeightedAnalyticLog"
           ]
         },
         {
@@ -12036,7 +12636,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "ref": "e01f35df4d6debd1a02fb6b27fe7570f746cb82a",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",

@@ -107,15 +107,15 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:29e5ff7e80495a35555ed71c1bff6c00a34af4ef3a1585b29da98d38f56f5304",
-    "docs/claims.json": "sha256:b026e595e2fb82a352cb12d733ff4cac55763acc188a317d90a38904f5e25e0b",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:c8480051b0c06cd9cd4fc45df05700bdec1b72c456e950da81a9d8f6cbdab514",
+    "docs/claims.json": "sha256:57961cf9265cdde7311ca008501f184bf74530302531b675262ae1229171561a",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:32c3f1e3370889fd022cc360e7a0b4a587058c7ae63afff074a08d8ff38a13f2",
-    "docs/publication_contract.json": "sha256:30f4528a07bd8e5c0a9c7e3e3583c42344ca943ca3b3eda55755c4d8174b9060",
+    "docs/publication_contract.json": "sha256:4960cd85b7d7312a78256ab9600e5577b10f9de54ce39e02dce11672a46ab328",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:36431013833c1100758194e835e7bced30d4d8fc5dcd7e9b57e17956aa9d8414",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:9fde0e177f1207159ccbce0a38d9b69bed05c2cc32ae377af7f79c27071cdc4c",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": "formal-source-2026-09-04",
       "publication_state": "published_committed_checkpoint",
-      "ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "ref": "e01f35df4d6debd1a02fb6b27fe7570f746cb82a",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

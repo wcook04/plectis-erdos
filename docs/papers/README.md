@@ -277,7 +277,7 @@ This paper states no reading route. Its evidence boundary is in [A basis and all
 
 **The Binary Totient Series**
 
-[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../erdos249-totient-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex) · 149 sections · `erdos249-totient-reasoning-surface` · native to this repository
+[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../erdos249-totient-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex) · 150 sections · `erdos249-totient-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The wall](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [What the wall does not block](full-text/erdos249-totient-reasoning-surface.md#sec:survivors).
 

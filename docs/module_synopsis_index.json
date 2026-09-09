@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
-  "module_count": 1058,
-  "synopsis_count": 863,
+  "source_fingerprint": "sha256:4fcf76cfb7d262846ce501fa5ce032c27a15be58747eb5cb6ed5bf411e2f680a",
+  "module_count": 1131,
+  "synopsis_count": 936,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3653,14 +3653,84 @@
       "synopsis": "Demand ledger: the open antecedents as first-class objects, and their order `docs/semantic/frontier.json` records the open antecedents of #249 and #257 in prose. Each one is in fact already a Lean `Prop`: it is the type of a named hypothesis binder on a `conditional_implication` theorem, where nothing can address it. `ErdosProblems/DemandLedger/Hyp.lean` provides `hypOf%`, which lifts such a binder into a named constant taken straight from the kernel's own `ConstantInfo` — extracted, never transcribed. `Basic` holds the 101 closed antecedents obtained that way from the 259 conditional-implication declarations. The `edges` modules hold the implication order over the 23 substantial ones. The order collapses them into 7 equivalence classes. The largest, 14 antecedents of #249, is equivalent to #249 itself (`DemandLedger.G103_iff_erdos249`, resting on the corpus theorem `irrational_totient_series_iff_pointwise_certificates`). The three #257 antecedents `G073 ≡ G075 ≡ G076` are likewise equivalent to `1/2 ∈ mersenneAchievementSet`, via `half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`. No recorded antecedent is *weaker* than the problem it is an antecedent of. Six are strictly stronger so far as the proved edges go — see the caveat in `docs/semantic/frontier.json::demand_lattice.limits`: an absent edge is unproved, not refuted, so the separations are not established."
     },
     {
+      "id": "ErdosProblems.Erdos1041.AttachmentAwareReeb",
+      "path": "ErdosProblems/Erdos1041/AttachmentAwareReeb.lean",
+      "synopsis": "Erdős #1041: the attachment-aware Reeb kernel `AttachmentAwareReeb.md` closes the topology producer and shows the closure is metrically inert. This module checks the algebraic and combinatorial steps the ordinary proof leans on. * `rayDist_sq_identity` — the one completed square behind everything: `ρ² - 2ρtc + t² - ρ²s² = (t - ρc)²`. It gives the exact distance from a point to a ray through the origin, and (with a sign flip) the exact closest approach on the extremal family. * `attachment_window_sin`, `attachment_window_cos_pos` — Theorem 2: a Newton trajectory meeting a saddle neighbourhood of value radius `δ` has value argument confined to `ρ|sin Δ| < δ` on the `cos Δ > 0` side. * `extremal_closest_approach_lower`, `extremal_closest_approach_attained`, `extremal_window` — Theorem 5 on `z^n - r^n`, whose window is `(ε/r)^n`. * `isTree_of_connected_of_card_eq` — the `k` vertices / `k-1` edges count of (1c). * `exists_le_of_sum_le_card_mul` — the averaging of Corollary 3a. * `rootStar_tangent_sum`, `cassini_endpoint_deficit_zero` — Theorem 4's evaluation, and its exact vanishing on the Cassini witness. Riemann–Hurwitz, the monodromy transposition argument, the strip diffeomorphism, and the skeleton limits of Theorem 3 are carried by the ordinary proof and are not encoded here. This is a standalone focused kernel: `ErdosProblems.Root` does not import it. Successful Lean replay validates only the algebraic and combinatorial lemmas listed above; it does not formalize the ordinary Reeb decomposition or the metric conclusion stated in `AttachmentAwareReeb.md`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.CircleSeriesTransport",
+      "path": "ErdosProblems/Erdos1041/CircleSeriesTransport.lean",
+      "synopsis": "Absolute series transport through normalized circle integration. This is the infinite interchange step needed for Taylor energy: it applies to the double index `(n,k)` once a geometric coefficient majorant has been established. No energy inequality or final integral identity is an assumed hypothesis. Candidate source, not yet compiled."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.All",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/All.lean",
+      "synopsis": "R18 overlay: all new sources AUTHORED / UNRUN. The analytic supplier hypotheses in both all-degree reductions are OPEN. Importing this module is not a proof of the unconditional paper theorem."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.Averaging",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/Averaging.lean",
+      "synopsis": "Measure-theoretic selection and the complete radial coefficient energy AUTHORED / UNRUN. The integral selection lemma keeps a supplied almost-everywhere good set, so it may be used after excluding the finite exceptional rays/levels. No assertion that polynomial coarea or a conformal inverse has been constructed is made. The coefficient theorem includes summability, not just a formal tsum."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.CollectiveReduction",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/CollectiveReduction.lean",
+      "synopsis": "Collective complete-radial budget: exact 573/100 specialization AUTHORED / UNRUN. This formalizes a consumer of the stronger ordinary route ALREADY PRESENT in `CollectiveRadialWindowBound.md`; it is not a novelty claim. No analytic supplier is constructed here. In particular, `s` and `h` below bound the two MEANS before selecting an angle. Only their SUM bounds the selected total lift length. There is no invalid simultaneous separate-mean selection hidden in the interface."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.CubicBranch",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/CubicBranch.lean",
+      "synopsis": "Scale-free cubic branch, using the supplied algebraic Schur root count AUTHORED / UNRUN. The supplied `PaperCubicCompletion` constructs unit-scale connectors. This file removes the unnecessary unit-scale restriction from its normalized hub, using the actual minimum critical modulus instead. There is no assumed root pair, area theorem, coarea theorem, or curve supplier."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.CurveAlgebra",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/CurveAlgebra.lean",
+      "synopsis": "Actual rectifiable-curve algebra for the connector construction AUTHORED / UNRUN against the supplied Lean 4.29.1 / mathlib pin. Every length below is Mathlib's `eVariationOn`. No analytic existence hypothesis is introduced in this file. The clamped-clock construction avoids assuming that an arbitrary rectifiable curve is Lipschitz or differentiable."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.FiniteAssembly",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/FiniteAssembly.lean",
+      "synopsis": "Finite energy budgets and assembly of an actual adjacent connector AUTHORED / UNRUN. Analytic energy inequalities and geometric boundary ordering are explicit INPUTS, not claimed theorems here. Once those inputs are available, this file constructs the curve itself, with the actual extended-variation bound; it does not merely produce a scalar inequality or a pair of labels."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.NumericalBounds",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/NumericalBounds.lean",
+      "synopsis": "Complete numerical specialization of the 71/10 and 57/10 budgets AUTHORED / UNRUN. In particular, no logarithm inequality is accepted as a hypothesis. The upper bound for log(40/3) uses ten elementary log bounds and Mathlib's existing certified bound for log 2; it needs no new series API."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.PolynomialBranches",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/PolynomialBranches.lean",
+      "synopsis": "Repeated occurrences and the complete quadratic connector branch AUTHORED / UNRUN. The minimum critical value is the exact `IsLeast` predicate from the paper. Derivative equations are derived from the polynomial product, not inserted as assumptions. The open-unit branch retains actual variation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.R13Relevance",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/R13Relevance.lean",
+      "synopsis": "R13 tests the hypothesis, not the conclusion of the value-separated theorem AUTHORED / UNRUN. Exact arithmetic shows that the R13 quartic has a SIMPLE MINIMIZING critical point at 1, but fails normalized critical-VALUE separation for every S>1. Its critical-POINT separation is a different assertion. The quoted point separation and exhaustive root enumeration remain available in the imported, byte-preserved R13 source; no sign sampling substitutes for it."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ConnectorR18.SupplierReduction",
+      "path": "ErdosProblems/Erdos1041/ConnectorR18/SupplierReduction.lean",
+      "synopsis": "Explicit remaining analytic interface and its proved consumer AUTHORED / UNRUN. WARNING: existence of `RayBudgetData` is NOT proved here. The final theorem is CONDITIONAL, with the supplier visibly quantified as a hypothesis. It must never be cited as an unconditional ConstantFactorPath proof. What this removes from the open interface: repeated occurrences, degrees two and three, finite energy aggregation, the adjacent-candidate average, actual curve concatenation, squarefree endpoint distinction, numerical constants, and the strict-level transport needed when 2μ = 1."
+    },
+    {
       "id": "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
       "path": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
       "synopsis": "Erdős #1041: the constant `2` from the critical-point balance alone `CassiniTreeBudget` falsifies the coarea/tree-length metric estimate: the Cassini family makes the proposed tree budget numerically smaller than the distance between two roots. That kills the route, not the conjecture — the Cassini segment itself has length `2a < 2`. This module recovers the sharp metric scale `2` by a completely different mechanism, with no coarea, no tree, and no perimeter tail. It uses only the **logarithmic balance at a critical point** together with the geometric mean of the root distances. It also checks the decisive algebraic core of the stronger global disk theorem: for roots in the closed unit disk, the two nearest roots to **every** critical point have total distance at most `2`, with no boundary-annulus exception (`two_add_le_two_of_disk_inverse_balance`). The theorem Let `c` be a point at which the logarithmic derivative vanishes, ``` ∑_k (c - z_k)⁻¹ = 0, ``` and let `r` be the geometric mean of the distances, `r^n = ∏_k ‖c - z_k‖`. Then two distinct roots satisfy ``` ‖c - z_i‖ + ‖c - z_j‖ ≤ 2r. ``` (`exists_two_roots_dist_sum_le_two_mul_geomMean`.) Combined with any bound placing some critical value inside the unit lemniscate — for roots in the open unit disc the discriminant/Hadamard bound `|Disc| < n^n` supplies one — this produces a critical point `c` and two roots whose **broken line through `c` has total length `< 2`**, which is exactly the Erdős–Herzog–Piranian scale. Why this is not yet the Erdős path The two straight spokes can leave the lemniscate. The degree-five exam"
     },
     {
+      "id": "ErdosProblems.Erdos1041.CubicCriticalHub",
+      "path": "ErdosProblems/Erdos1041/CubicCriticalHub.lean",
+      "synopsis": "Erdős #1041 for cubics: the smaller critical value selects a short hub The accompanying proof note proves the degree-three case of Erdős #1041. Its one genuinely analytic input is a Rouché/homotopy lemma for `P_b(w) = w^3 - (3/2) b w^2 + 1`: if `‖1 - b^3 / 2‖ ≥ 1`, then `P_b` has at least two zeros in the closed unit disc. This module kernel-checks the algebraic and metric consumer of those two zeros. In particular, a small normalized zero produces an entire safe straight spoke, not merely a short endpoint distance. The root-count lemma itself is currently proved in ordinary complex analysis in `CubicCriticalHub.md`; it is not asserted as an axiom here."
+    },
+    {
       "id": "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
       "path": "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
       "synopsis": "Erdős #1041: a safe cubic spoke and its cyclic-fibre consumer Every monic cubic whose three listed roots lie in the open unit disk has at least one root whose complete spoke from the origin stays in the closed unit sublevel set. The proof selects a root by a three-charge sum and then applies AM--GM to the other two root distances. The resulting envelope is exactly `(1-t)(1+t+t^2)=1-t^3`. The analytic companion pulls the selected spoke back through `w=(z-h)^q`. For `q>=2`, one safe quotient root has a regular `q`-point fibre, which supplies two distinct roots and the strict length budget. This file kernel-checks the new cubic selector and spoke estimate; finite fibre existence and the regular-orbit mean-square identity are proved in ordinary mathematics in the companion note and are not asserted as axioms here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.CyclicFiberMeanSquare",
+      "path": "ErdosProblems/Erdos1041/CyclicFiberMeanSquare.lean",
+      "synopsis": "The mean square of an actual cyclic fibre For a primitive `q`th root of unity with `q > 1`, the mixed moment of the complete orbit vanishes. Thus the mean squared distance of `h + y * ζ^k` from zero is `‖h‖² + ‖y‖²`. If all these points lie in the open unit disk, the fibre radius is strictly below one, as is the quotient root `y^q`. These are the averaging and disk-transport steps used by the translated quotient families. They do not construct a connecting path or select a safe quotient spoke. The root-transfer lemma works for an arbitrary function `P`; in the polynomial application it supplies the required complete orbit of zeros."
     },
     {
       "id": "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase",
@@ -3673,9 +3743,139 @@
       "synopsis": "Erdős #1041: the arbitrary cyclic-trinomial spoke kernel For `f(z) = (z-h)^(q*m) + a*(z-h)^(q*r) + c`, put `w=(z-h)^q`. If `w` is a root of `w^m+a*w^r+c` and `‖w‖^m ≤ ‖c‖`, then the entire radial spoke from `h` to every member of the `q`-point fibre over `w` stays below `‖c‖`. Vieta supplies such a quotient root, while the open-unit-disk hypothesis makes `‖c‖<1` and the fibre radius strictly smaller than one. More strongly, if merely `‖w‖<1` and `‖c‖<1`, then the same spoke is strictly inside the unit lemniscate. Thus every root spoke is safe for a centred trinomial, and every fibre spoke is safe after a nontrivial cyclic lift. The accompanying analytic note performs those finite root-selection and fibre steps. This file kernel-checks the load-bearing arbitrary-exponent identity and norm estimate."
     },
     {
+      "id": "ErdosProblems.Erdos1041.ExponentialRemainderBound",
+      "path": "ErdosProblems/Erdos1041/ExponentialRemainderBound.lean",
+      "synopsis": "The one-sided quadratic exponential bound The central FP4 argument needs the normalized exponential remainder to be increasing on the whole real line, including negative row logarithms. Its integral representation gives that fact without a sign restriction. This scalar input does not supply the geometric log-energy identities."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.FreePointCentralCompletion",
+      "path": "ErdosProblems/Erdos1041/FreePointCentralCompletion.lean",
+      "synopsis": "The central free-point inequality with its series inputs discharged The logarithmic kernel energy and variance theorems supply the two analytic inputs of the Hilbert certificate. Only the actual point-radius bound remains."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.FreePointHilbertCertificate",
+      "path": "ErdosProblems/Erdos1041/FreePointHilbertCertificate.lean",
+      "synopsis": "Erdős #1041: a Hilbert chord certificate and free-point control on hyperbolic geodesics For `c₁, …, c_m` in the closed unit disc write `d_{jk} = |1 - conj(c_j) c_k|`, `R_j = (∏_k d_{jk})^{1/m}` and `S_m = ∑_j R_j`. The free-point conjecture `FP_m` asserts `S_m ≤ m`, with equality only at the origin. The corpus proves `FP_m` for `m ≤ 4` (`FreePointFP4Complete.lean`, `FreePointMeanInequalityFP3.md`), reports `FP₅` closed by a box certificate (`FreePointFP5OuterBound.md`), and lands the plurisubharmonic torus bridge `FP_{n-1} ⟹ (S)_n` (`FreePointTorusPshReduction.lean`). Claim boundary **Erdős #1041 is open and nothing in this file proves it.** `FP_m` and `(S)_n` control an arithmetic mean of critical-value capacities. There is no general implication from such a mean to the existence of a short curve connecting the roots of a polynomial: arithmetic-mean control neither selects a pair of roots nor bounds the length of any single connecting arc. This module is a certificate lane for `FP_m`, not for #1041. What is proved here * `freePointSum_ofReal_le`: for a real configuration `x : Fin m → ℝ` with `|x_j| ≤ 1`, `S_m ≤ m (1 - x̄²)` — strictly stronger than `S_m ≤ m`, unconditional, every degree. * `eq_zero_of_freePointSum_ofReal_eq`: on the diameter, `S_m = m` forces `x = 0`. * `freePointSum_geodesic_le` and `freePointSum_geodesic_le_card`: `S_m ≤ m (1 - x̄²) ≤ m` for a configuration on any hyperbolic geodesic `ψ_β(x) = (x + iβ)/(1 - iβx)` with `β² ≤ 1`, in every degree. The mechanism is the exact modulus identity `|1 - conj(ψ_β(s)) ψ_β(t)| · √(1+β²s²) · √(1+β²t²) = (1-β²)(1 - st)"
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.FreePointTorusPshReduction",
+      "path": "ErdosProblems/Erdos1041/FreePointTorusPshReduction.lean",
+      "synopsis": "Erdős #1041: scalar kernel for the torus/psh FP-to-(S) bridge The analytic companion `FreePointTorusPshReduction.md` proves that `FP_m` implies the separatrix aggregate inequality in degree `m+1`. Once the plurisubharmonic boundary reduction and the torus product identity have changed the critical-value terms to nonnegative numbers `yᵢ` with `∑ i, yᵢ ≤ m`, the remaining load-bearing step is the tangent inequality `y^(m/(m+1)) ≤ (m/(m+1)) y + 1/(m+1)`. This module checks that scalar step and its finite-sum fan-in for an arbitrary exponent in `[0,1]`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.FreePointUniformRadius",
+      "path": "ErdosProblems/Erdos1041/FreePointUniformRadius.lean",
+      "synopsis": "A uniform central radius for every finite free-point mean The row certificate is produced from a common bound `a < 1` on the squared radii. With `L = -log (1-a)`, the scalar condition `exp L ≤ 1 + 2L` implies the free-point mean inequality in every positive degree."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.GroupedPoleNearZero",
+      "path": "ErdosProblems/Erdos1041/GroupedPoleNearZero.lean",
+      "synopsis": "Actual local nonvanishing of a finite rational pole sum. Candidate pending compilation; distinct centers are already grouped."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.GroupedPolePolynomial",
+      "path": "ErdosProblems/Erdos1041/GroupedPolePolynomial.lean",
+      "synopsis": "Finite grouped-pole obstruction. Candidate pending compilation. The variables `a` are the conjugated distinct nonzero centers."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.LogKernelCentralCertificate",
+      "path": "ErdosProblems/Erdos1041/LogKernelCentralCertificate.lean",
+      "synopsis": "An adaptive certificate for the free-point mean For a finite configuration in the open unit disk, the mean logarithmic interaction in each row has a controlled variance. The one-sided exponential remainder then bounds the sum of the geometric row means. The input caps are bounds on the actual logarithmic rows, not independent energy variables."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.LogKernelEnergy",
+      "path": "ErdosProblems/Erdos1041/LogKernelEnergy.lean",
+      "synopsis": "Logarithmic energy of points in the unit disk The logarithmic kernel `-log ‖1 - conj z * w‖` has a convergent power-series expansion. Summing over a finite configuration turns each coefficient into the squared norm of a power sum. This gives the ENERGY identity in the central free-point argument for actual disk points."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.LogKernelVariance",
+      "path": "ErdosProblems/Erdos1041/LogKernelVariance.lean",
+      "synopsis": "The logarithmic row-variance bound Cauchy--Schwarz on finite partial sums, followed by their established limits, bounds an actual logarithmic interaction row by the total energy times its diagonal kernel value."
+    },
+    {
       "id": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
       "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
       "synopsis": "Erdős #1041: Newton-flow ray separation For `u = -log |f|`, the normalized gradient field away from the critical points is the complex Newton field `-f / f'`. Consequently the image of a trajectory under `f` satisfies the scalar equation `w' = -w`: its argument is constant and its modulus decays exponentially. This is the exact algebraic input missing from the failed local-hole decomposition in the March 2026 candidate proof. It does not by itself prove the full path theorem: the remaining producer is a planar Morse/Reeb decomposition cut along the resulting ray-separated separatrices."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperAnalyticTargets",
+      "path": "ErdosProblems/Erdos1041/PaperAnalyticTargets.lean",
+      "synopsis": "Explicit, UNPROVED targets for the remaining analytic assemblies These are proposition DEFINITIONS, not theorems, axioms, or admitted proofs. Nothing in another returned module consumes one as an established fact. They make several major remaining paper obligations precise for the next compilation/proof pass. Creating these definitions earns no theorem coverage. All curve predicates below use actual extended variation. Root and derivative enumerations are polynomial identities and therefore retain multiplicities."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperCriticalValueMeanR10",
+      "path": "ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean",
+      "synopsis": "The actual polynomial critical-value mean, not a hypothesis-only consumer. Both paper exponents, all degrees, arbitrary disc centres, R=0, and critical multiplicities are included. All Lean builds and axiom audits are UNRUN."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperCubicCompletion",
+      "path": "ErdosProblems/Erdos1041/PaperCubicCompletion.lean",
+      "synopsis": "The complete cubic polygonal connector Uncompiled proof candidates. The root-count supplier is proved algebraically in PaperCubicSchur. The existence of a small critical value is derived from the completed reflected inequality, not from an assumed component lemma. Repeated critical points and repeated roots are retained separately."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperCubicFibres",
+      "path": "ErdosProblems/Erdos1041/PaperCubicFibres.lean",
+      "synopsis": "Complete translated cubic quotient fibres The candidates below include: root extraction for a monic cubic; existence of complex q-th roots; derivation of quotient-root bounds from the whole translated fibre; selection of a NONZERO safe quotient root; two distinct fibre endpoints; strict containment of both full segments; actual variation. The nonzero selection matters. Selecting the zero quotient root by itself would produce only the translation centre, not two distinct points. New proof source, not elaborated in this environment."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperCubicSchur",
+      "path": "ErdosProblems/Erdos1041/PaperCubicSchur.lean",
+      "synopsis": "An algebraic supplier for the normalised cubic root count Uncompiled candidates at the round-eight pin. No Rouché, homotopy, or root-count conclusion is taken as a premise. The elementary degree-two Schur inequality is applied to the reciprocals of two hypothetical exterior roots. The resulting real polynomial certificate is displayed explicitly."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperCurveAssembly",
+      "path": "ErdosProblems/Erdos1041/PaperCurveAssembly.lean",
+      "synopsis": "Rectifiable two-segment connectors for the #1041 paper campaign This file supplies actual continuous curves, not a proxy called `length`. The extended length is Mathlib's `eVariationOn`; rectifiability is `BoundedVariationOn`. Parameter time is `[0,2]`, with the hub at time one. Validation: proof source written in this return; not elaborated in this execution environment. No new axiom or admitted lemma is used."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperMetricScaling",
+      "path": "ErdosProblems/Erdos1041/PaperMetricScaling.lean",
+      "synopsis": "Affine transport of actual rectifiable connectors This discharges the metric transport step of the scale-free corollaries. It DOES NOT assume or assert the low-critical existence theorem as an axiom. The polynomial rescaling and critical-value-minimum identities remain listed separately in coverage. New source, not elaborated here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperMomentConsumers",
+      "path": "ErdosProblems/Erdos1041/PaperMomentConsumers.lean",
+      "synopsis": "Finite moment lowering, with the analytic supplier explicit No reflected-derivative estimate, maximum principle, or Poisson formula is postulated by this file. The norm-power sum entering the consumer is a hypothesis. This is partial coverage only for the critical-value budget rows. New source, not elaborated in this environment."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
+      "path": "ErdosProblems/Erdos1041/PaperPrimitiveCompletionR10.lean",
+      "synopsis": "Primitive quintic: polynomial-to-moment-to-path completion This module removes `hselected` from the paper endpoint. The five occurrences are obtained from the fundamental theorem of algebra. Missing coefficients supply the three Newton moments by exact five-point interpolation. A unit rotation feeds the existing harmonic separator, then the existing Abel and variation lemmas assemble the path. All elaboration and axiom checks: UNRUN."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperPrimitivePath",
+      "path": "ErdosProblems/Erdos1041/PaperPrimitivePath.lean",
+      "synopsis": "Primitive quintic: from the two selected tails to actual paths The missing selector-to-polynomial moment bridge is NOT smuggled in as a proved fact. It is the explicit `hselected` premise below. The constant-term bound is derived by Vieta and the remaining curve is assembled with actual variation. New source, not elaborated in this environment."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperReflectedBoundary",
+      "path": "ErdosProblems/Erdos1041/PaperReflectedBoundary.lean",
+      "synopsis": "B4: the polar boundary inequality and the reflected-value consumer Uncompiled at Lean 4.29.1 / Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6. The finite product logarithmic derivative and the boundary norm comparison have explicit proof scripts rather than hypothesis-only wrappers. The maximum-principle passage through possible boundary zeros and critical-point localisation are retained as interfaces here; PaperReflectedCompletion now supplies both source candidates and the full endpoint. None is compiled."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperReflectedCompletion",
+      "path": "ErdosProblems/Erdos1041/PaperReflectedCompletion.lean",
+      "synopsis": "The complete reflected-derivative inequality Source candidate, not elaborated in the preparation environment. Lean 4.29.1; Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6. The two targets left open in PaperReflectedBoundary are proved here. The denominator is regularised as prod(t-conj(c_k)*z), t>1, before maximum modulus is applied. It is zero-free on the CLOSED unit disc, including when some critical points lie on the unit circle. Passing t down to one avoids assuming away boundary zeros or assuming a removable-singularity theorem."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
+      "path": "ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean",
+      "synopsis": "Paper endpoints: weighted equality, centroid loss, Cauchy--Schwarz and all-degree equal-weight free points. The existing non-strict theorem is reused. All compilation and axiom audits are UNRUN."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PoissonKernelBridge",
+      "path": "ErdosProblems/Erdos1041/PoissonKernelBridge.lean",
+      "synopsis": "Pointwise algebra for the full-disc weighted free-point Poisson argument. This supplies the kernel/logarithmic-derivative identity, not the analytic norm-square majorization or the infinite Taylor energy identity. Uncompiled."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PoissonNormSquare",
+      "path": "ErdosProblems/Erdos1041/PoissonNormSquare.lean",
+      "synopsis": "Analytic Poisson majorization for the squared norm. The hypotheses are only holomorphy on the open unit disc, continuity on its closure, and an interior sampling point. No norm-square mean inequality is an assumed supplier. Candidate source: not yet compiled."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PolynomialDiscNormalisationR10",
+      "path": "ErdosProblems/Erdos1041/PolynomialDiscNormalisationR10.lean",
+      "synopsis": "Actual affine normalisation of a monic polynomial and its entire critical multiset. No continuity or labelling of moving critical roots is required. All Lean builds and axiom audits are UNRUN."
     },
     {
       "id": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
@@ -3688,6 +3888,76 @@
       "synopsis": "Erdős #1041: primitive-quintic closed-disk tails The boundary cubic separator has a harmonic extension to the open unit disk. Its sum over the five roots is still exactly `5 - 2 * r`, because only the first three Newton sums occur. A root whose full tail energy is at least one contributes at most `2 / 31`, whereas an arbitrary disk point contributes at most `4 - 2 * r`. Four unsafe roots therefore miss the exact separator mass by at least `23 / 31`. This file formalizes the finite real-algebraic core, including the zero-`a` closed-disk equality case. The companion note derives its hypotheses from the roots of the primitive sparse quintic `z^5 + a*z^4 + b*z + c` after rotating `a` to a nonnegative real number."
     },
     {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.All",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/All.lean",
+      "synopsis": "AUTHORED / UNRUN: focused ReturnV5 aggregate."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.CrossReturnR18",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/CrossReturnR18.lean",
+      "synopsis": "Cross-return composition candidate, UNRUN. The V5 exact residual reduction and R18 cubic branch isolate degree at least four. This equivalence does not prove the remaining analytic construction."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.CurveInfrastructure",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/CurveInfrastructure.lean",
+      "synopsis": "Actual closed and open connectors: elementary infrastructure AUTHORED / UNRUN. Every connector below uses `eVariationOn` and `BoundedVariationOn`. No endpoint-distance surrogate is substituted for length. These lemmas are not suppliers of first-merge geometry."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.CyclicCostSelection",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/CyclicCostSelection.lean",
+      "synopsis": "Select total connector cost, not a boundary arc in isolation AUTHORED / UNRUN. Finite cost selection and its actual-curve consumer are separate. No geometric lift, Jordan boundary, or coarea theorem is assumed to have been proved by the finite argument."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.FirstMergeReduction",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/FirstMergeReduction.lean",
+      "synopsis": "Exact residual of the constant-factor endpoint AUTHORED / UNRUN. This file proves a REDUCTION, not the remaining analytic construction. `HighDegreeFirstMergeResidual` is deliberately a proposition definition; the equivalence below is not evidence that either side holds. The repeated-root and degree-two branches have actual curve producers."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.LobeBarrier",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/LobeBarrier.lean",
+      "synopsis": "Exact polynomial barriers for the retained one-root counterexample AUTHORED / UNRUN. These are actual inequalities for z^8 - (3/2)z, not a claimed proof of Rouché, component topology, or perimeter monotonicity. The component/perimeter assembly remains an explicit coverage obligation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.NumericalEnvelopes",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/NumericalEnvelopes.lean",
+      "synopsis": "Auditable rational envelopes at the end of the connector proof AUTHORED / UNRUN. These are algebraic envelope lemmas. The square-root, logarithmic and geometric upper bounds must be separately justified; no numerical identity in this file constructs a connector."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.PrecriticalFinite",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/PrecriticalFinite.lean",
+      "synopsis": "Finite consequences of the precritical inverse-map area estimate AUTHORED / UNRUN. The first lemma extends the input's aggregation candidate; its ANALYTIC premises must still be supplied from actual inverse maps and area. These finite lemmas are not first-merge geometry producers."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.QuadraticBranch",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/QuadraticBranch.lean",
+      "synopsis": "The full degree-two geometric branch AUTHORED / UNRUN. Actual polynomial, critical minimum, contained curve and variation are supplied. The degree-two source does not assume a path-length certificate. No first-merge analytic assumption is used."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.RetainedEndpointAdapters",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/RetainedEndpointAdapters.lean",
+      "synopsis": "Exact type parity with the previously declared paper targets AUTHORED / UNRUN. The weighted, reflected, cubic-count and moment proofs already exist in the supplied source. The aliases below are TYPE CHECK targets, not claims that these results are newly proved here. The primitive selector adapter supplies its actual factorisation premise from RootEnumeration."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.RootOccurrences",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/RootOccurrences.lean",
+      "synopsis": "Root occurrences and the repeated-root branch in every degree AUTHORED / UNRUN. The polynomial identity enumerates multiplicities. A repeated occurrence is proved to be a critical point before the critical minimum is set to zero. This is not an assumption of the desired connector."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnV5.ValueSeparationGuardrail",
+      "path": "ErdosProblems/Erdos1041/ReturnV5/ValueSeparationGuardrail.lean",
+      "synopsis": "The R13 quartic is not a counterexample to the value-plane theorem AUTHORED / UNRUN. R13 refutes a proposed inference from separation in the z-plane to separation of critical values. Here the normalized value gaps at both critical points -1 and 1 are calculated exactly. They are less than one, so neither hub satisfies the paper's S > 1 value-plane hypothesis."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.ReturnedR18V5FullAudit",
+      "path": "ErdosProblems/Erdos1041/ReturnedR18V5FullAudit.lean",
+      "synopsis": "Declaration-complete audit for ConnectorR18 and ReturnV5 AUTHORED / UNRUN. This source-current roster prints every theorem declared by the 104-theorem ConnectorR18 return, the 63-theorem ReturnV5 roster, and the separate CrossReturnR18 theorem. A successful allowed-axiom audit would establish elaboration of these conditional declarations; it would not construct either analytic supplier or prove the unconditional paper endpoint."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.SeparationCounterexampleR13",
+      "path": "ErdosProblems/Erdos1041/SeparationCounterexampleR13.lean",
+      "synopsis": "Exact obstruction to the proposed full critical-value separation theorem R13. AUTHORED / UNRUN. No kernel verification is claimed. The quartic has four simple real roots in the four displayed open intervals. Together with its three explicitly known critical points these are pairwise more than 1/4 apart. The two critical values at -1 and 1 differ by 1/65536, whereas the proposed lower bound is 3/65536. The finite root-count argument below is essential: endpoint signs alone are not used as a substitute for exhaustiveness of the complex roots."
+    },
+    {
       "id": "ErdosProblems.Erdos1041.SharpCollinearAlternation",
       "path": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
       "synopsis": "Sharp constrained alternation for the collinear Erdős #1041 case This module isolates the rigidity argument behind the sharp adjacent-gap estimate. If two monic real polynomials of the same degree agree at the two endpoints, the second polynomial cannot be uniformly smaller than the first at a full alternating sequence of interior peaks: otherwise their difference has one zero between each consecutive pair of peaks as well as the two endpoint zeros, although its degree has dropped by one. The intended comparison polynomial is the endpoint-normalised scaled Chebyshev polynomial. Keeping the alternation engine independent of that instantiation makes the root-counting step reusable and auditable."
@@ -3696,6 +3966,46 @@
       "id": "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
       "path": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
       "synopsis": "The sharp Chebyshev comparator for collinear Erdos #1041 For degree `n`, put `r = cos (pi / (2n))`. The polynomial `T_n(r X) / (2^(n-1) r^n)` is monic, vanishes at `-1` and `1`, and has absolute value at most `1 / (2^(n-1) r^n)` on `[-1,1]`. Combining these facts with the constrained alternation theorem gives the sharp upper bound for one of the alternating interior peaks of any monic comparison polynomial with the same endpoint zeros."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorCircleEnergy",
+      "path": "ErdosProblems/Erdos1041/TaylorCircleEnergy.lean",
+      "synopsis": "Exact diagonal circle energy from actual Cauchy coefficients. Candidate pending focused compilation. This is Parseval's classical identity, not the full-disc weighted geometric-mean theorem."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorCircleIdentification",
+      "path": "ErdosProblems/Erdos1041/TaylorCircleIdentification.lean",
+      "synopsis": "Scalar identification of an actual analytic function and its radial logarithmic-derivative numerator with their Taylor series. These identities supply the functions occurring in absolute circle-series transport. Candidate pending focused compilation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorCoefficientDeficit",
+      "path": "ErdosProblems/Erdos1041/TaylorCoefficientDeficit.lean",
+      "synopsis": "Classical quantitative coefficient deficit for the weighted free-point proof. The signed coefficient series and all integral interchanges are derived from actual Cauchy coefficients. Candidate pending compilation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorCoefficientMajorant",
+      "path": "ErdosProblems/Erdos1041/TaylorCoefficientMajorant.lean",
+      "synopsis": "Geometric coefficient majorants from an analytic disc strictly larger than one. These supply both absolute series needed by CircleSeriesTransport. Candidate pending focused compilation; no energy inequality is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorCrossEnergy",
+      "path": "ErdosProblems/Erdos1041/TaylorCrossEnergy.lean",
+      "synopsis": "Classical degree-weighted cross energy, from actual analytic Taylor coefficients. Candidate source: neither this module nor its pending Taylor prerequisites are promoted by its presence on disk."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorDiagonal",
+      "path": "ErdosProblems/Erdos1041/TaylorDiagonal.lean",
+      "synopsis": "Unit-circle monomial orthogonality, the diagonal extraction step after absolute double-series transport. Candidate pending focused compilation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorEnergyBound",
+      "path": "ErdosProblems/Erdos1041/TaylorEnergyBound.lean",
+      "synopsis": "Classical analytic energy bound used in the weighted free-point proof. The signed coefficient series and all integral interchanges are derived from actual Cauchy coefficients. Candidate pending compilation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TaylorFiniteDeficitR10",
+      "path": "ErdosProblems/Erdos1041/TaylorFiniteDeficitR10.lean",
+      "synopsis": "Retain any finite set of positive-degree Taylor deficits. This is a candidate: all compilation and axiom audits are UNRUN. The degree-zero term is explicitly zero, so no exceptional index is hidden."
     },
     {
       "id": "ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector",
@@ -3716,6 +4026,61 @@
       "id": "ErdosProblems.Erdos1041.TetranomialTailProductSelector",
       "path": "ErdosProblems/Erdos1041/TetranomialTailProductSelector.lean",
       "synopsis": "Erdős #1041: a tail-resultant bonus for the tetranomial selector The threshold `card S - 1` in the two-safe-tail L2 argument can be raised when the product of all tail energies is retained. When that product is at most one, a family with at most one entry below one has energy at least `card S - 1 + product`. This sharp form is supplemented below by a more general, weaker common-bound variant valid without the product-at-most-one hypothesis. For tetranomial tails `c + b * w_i^s`, their product is the resultant of the polynomial and `b*X^s+c`. This module kernel-checks the finite product-bonus lemma and its signed-energy consumer. The companion note performs the resultant specialization and records deterministic coverage evidence."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedAnalyticEnergy",
+      "path": "ErdosProblems/Erdos1041/WeightedAnalyticEnergy.lean",
+      "synopsis": "Actual normalized weighted logarithmic energy, pending compilation. The rational expression is constructed from the points, not assumed to satisfy an energy inequality. Its Poisson-kernel identification is a separate step."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedAnalyticLog",
+      "path": "ErdosProblems/Erdos1041/WeightedAnalyticLog.lean",
+      "synopsis": "Actual finite weighted logarithmic function for the interior free-point argument. Candidate pending compilation; no weighted inequality is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedAnalyticModulus",
+      "path": "ErdosProblems/Erdos1041/WeightedAnalyticModulus.lean",
+      "synopsis": "Literal modulus identification for the finite analytic construction. Candidate pending compilation. No sign or normalization of weights is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedBoundaryDeficitR10",
+      "path": "ErdosProblems/Erdos1041/WeightedBoundaryDeficitR10.lean",
+      "synopsis": "Actual finite and infinite coefficient deficits on the CLOSED unit disc. The endpoint is obtained from finite sums before taking the coefficient-series supremum. All compilation and axiom audits are UNRUN."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedCauchyTransportR10",
+      "path": "ErdosProblems/Erdos1041/WeightedCauchyTransportR10.lean",
+      "synopsis": "Cauchy coefficients of the actual weighted function, at a fixed safe radius. Radial transport follows from one-dimensional power-series uniqueness. All compilation and axiom audits are UNRUN."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedClosedDisc",
+      "path": "ErdosProblems/Erdos1041/WeightedClosedDisc.lean",
+      "synopsis": "Radial passage to the closed disc. Candidate pending compilation. Zero weights use Real.rpow_zero, hence their factor is one even at a zero base. No equality characterization is asserted."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedGroupedRigidityR10",
+      "path": "ErdosProblems/Erdos1041/WeightedGroupedRigidityR10.lean",
+      "synopsis": "Equality rigidity, with repeated centres genuinely grouped. Zero-weight points are allowed and correctly disappear from the equality test. All Lean compilation and axiom audits are UNRUN."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedInteriorBound",
+      "path": "ErdosProblems/Erdos1041/WeightedInteriorBound.lean",
+      "synopsis": "Finite interior weighted point bound. Candidate pending compilation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedInteriorRadius",
+      "path": "ErdosProblems/Erdos1041/WeightedInteriorRadius.lean",
+      "synopsis": "Finite interior radius selection; candidate pending compilation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedPoissonIdentity",
+      "path": "ErdosProblems/Erdos1041/WeightedPoissonIdentity.lean",
+      "synopsis": "Unit-circle Poisson mixture identification. Candidate pending compilation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.WeightedRadialIdentity",
+      "path": "ErdosProblems/Erdos1041/WeightedRadialIdentity.lean",
+      "synopsis": "Exact radial identities of the explicit finite logarithmic construction. Candidate pending compilation; no equality classification is asserted."
     },
     {
       "id": "ErdosProblems.Erdos1049.AdelicHeightBridge",
