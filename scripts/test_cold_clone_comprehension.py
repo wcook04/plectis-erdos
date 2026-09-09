@@ -567,8 +567,13 @@ def main() -> int:
                 for path in (*diagnostic.HUMAN_SURFACES, *diagnostic.FIRST_CONTACT_ROUTED_SURFACES):
                     owner = mutated if path in mutated else mutated_routes
                     original = owner[path]
-                    owner[path] = remove_semantic_anchor(original, token)
-                    changed = changed or owner[path] != original
+                    normalized_original = diagnostic.normalized(original)
+                    normalized_token = diagnostic.normalized(token)
+                    if normalized_token.casefold() in normalized_original.casefold():
+                        owner[path] = remove_semantic_anchor(
+                            normalized_original, normalized_token
+                        )
+                        changed = True
             require(
                 changed,
                 f"human-task mutation fixture lost its source anchor: {task_id}: {alternatives}",
