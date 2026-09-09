@@ -314,6 +314,7 @@ jobs:
               Erdos249257.lean 'Erdos249257/**' \
               ErdosProblems.lean 'ErdosProblems/**' \
               ExternalVerification ExternalVerification1049 \
+              ExternalVerification249TotientKernelBasis Solutions NegativeSolutions \
               ExternalVerification1041SolvedFamilies 'verification/**' \
               lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
               docs/claims.json docs/problem_index_source.json docs/problems.json \
@@ -502,7 +503,7 @@ jobs:
           test '${{ steps.comparator.outputs.local_1049_positive_exit }}' = 0
           test '${{ steps.comparator.outputs.local_1049_negative_exit }}' != 0
           grep -q 'statement do not match' artifacts-1049-negative.log
-      - name: Enforce the dedicated #249 all-base totient-kernel packet
+      - name: "Enforce the dedicated #249 all-base totient-kernel packet"
         if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
         run: |
           positive_exit='${{ steps.comparator.outputs.totient_kernel_positive_exit }}'
