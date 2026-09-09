@@ -6,7 +6,7 @@ separate Widths modules. Finite checks use ordinary `decide`, not native_decide.
 All proof text is uncompiled; the cost of kernel reduction is unprofiled. -/
 namespace ErdosProblems.Erdos269.PaperR9
 set_option maxRecDepth 1000000
-set_option maxHeartbeats 0
+set_option maxHeartbeats 100000000
 
 /-- One independently buildable block of source-width identities. -/
 def WidthChunkCorrect (p q r : ℕ) (data : Array ℕ) (lo : ℕ) : Prop :=
