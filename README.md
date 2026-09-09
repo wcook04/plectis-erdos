@@ -67,6 +67,10 @@ reader-priority ranking. [RESULTS](docs/RESULTS.md) gives the strongest checked
 result for each problem, while [prior art](docs/PRIOR_ART.md) records earlier
 and subsuming work.
 
+The [verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight
+problem programmes. The [methodology](METHODOLOGY.md) explains what each
+check establishes.
+
 These checks establish only their stated formal and computational scope. They
 do not decide whether a formal statement captures the intended problem,
 whether a result is new, whether the exposition is clear, or whether an open
