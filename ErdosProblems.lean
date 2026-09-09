@@ -19,6 +19,7 @@ import ErdosProblems.DemandLedger
 import ErdosProblems.Erdos1041.PaperCriticalValueMeanR10
 import ErdosProblems.Erdos1041.PaperCubicCompletion
 import ErdosProblems.Erdos1041.PaperMetricScaling
+import ErdosProblems.Erdos1049.RationalBaseContour
 import ErdosProblems.Erdos249.RankOneSharpFloor
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.TypeBReturnV8.CenteringCounterexample
