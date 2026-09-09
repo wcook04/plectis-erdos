@@ -1,10 +1,10 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:a7b3a4dc51b88e27b0e02504ec65b4b1cd92b18427283dcf54819644d1f6de7f",
-  "output_digest": "sha256:1c41ae78f755a7311f1083c5c5df567b54d28e676e98e37d1531d0737be19121",
+  "input_fingerprint": "sha256:d8d35734e2d3cf87843d3ee9fbcf54f7cb3445247be050dfc583054351f43590",
+  "output_digest": "sha256:85a15f8fb1934b244c68629c3b996e4dd2aa6cef61d69e5c13847c1bd5d05da4",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
-    "declarations": 155067,
+    "declarations": 155274,
     "orphan_count": 0,
     "public_semantic_census": {
       "authored_statement_node_count": 1125,
@@ -28,7 +28,7 @@
         "equivalence_or_classification": 107,
         "finite_instance": 87,
         "generated_certificate_instance": 4,
-        "infrastructure": 6355,
+        "infrastructure": 6520,
         "reduction_or_transport": 94,
         "representation_normalisation": 161,
         "unconditional_object_theorem": 359
@@ -93,15 +93,15 @@
       "prior_art_not_assessed": {
         "1041": 605,
         "1049": 58,
-        "243": 176,
+        "243": 183,
         "249": 334,
         "251": 145,
         "257": 313,
         "269": 310,
-        "68": 694,
+        "68": 852,
         "both": 0,
         "shared_substrate": 4230,
-        "total": 6865
+        "total": 7030
       },
       "prior_art_review_queue": {
         "1041": 0,
@@ -122,15 +122,15 @@
         "257": 6
       },
       "reviewed_frontier_shortlist_count": 11,
-      "source_structural_family_node_count": 6323
+      "source_structural_family_node_count": 6488
     },
-    "statement_nodes": 7451
+    "statement_nodes": 7616
   },
   "surface_digests": {
     "docs/RESULTS.md": "sha256:f941cd24ba83229fd795f0a853be0fce68e4129c2a8b8202904ed5388b83abc6",
-    "docs/TRUTH_AUDIT.md": "sha256:df1c4dd7e2262912f91d980c4ba15668617648a887d1f79abdeffa419b2c523e",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:b77ce95e66f670688aba4d7da98b5b789c4cd403cbd4e574853fa533b187d52a",
-    "paper/cold-clone-to-proof-receipt.tex": "sha256:de70453abc97ca6afd7ec9f14c2d6f9ce42d00991a4f3319cd35e486e16ce90f"
+    "docs/TRUTH_AUDIT.md": "sha256:cc64cc329df17e95f2b0fadfe96fe9fb507ece149dae9dc4e35fdff51d53f44c",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:5a761e78c6d08fdaff11d0191cf97500dd18e0630a0e8606f9964453ab9a7716",
+    "paper/cold-clone-to-proof-receipt.tex": "sha256:12db2bdc40dcb6d4d1887a5907700fa53b40f27e559931c4b98340bb664bf9b0"
   },
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
 }

@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:d29b0fa7bfa598553dbd27e8e5f0b2361ac8aded17b6ff68325c9937be47b157",
-  "module_count": 1199,
-  "synopsis_count": 1004,
+  "source_fingerprint": "sha256:901f307689aae6a3932484f14d21b03de8b99cc11f952581a22a1dd366f0b5e4",
+  "module_count": 1214,
+  "synopsis_count": 1019,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -4618,6 +4618,16 @@
       "synopsis": "Erdős #68: canonical factorial digits For the factorial-denominator series `sum (n >= 2), 1 / (n! - 1)`. the natural factorial-scale floors give a mixed-radix digit expansion. This module develops that expansion for an arbitrary real number: the digits lie in their canonical ranges, the fractional remainders satisfy the radix recurrence, and every finite truncation has an explicit remainder term. The construction is independent of the particular series. Applied to Erdős #68, it reduces the digit approach to proving that the canonical remainder never enters a terminal zero tail."
     },
     {
+      "id": "ErdosProblems.Erdos68.CanonicalFactorialTermination",
+      "path": "ErdosProblems/Erdos68/CanonicalFactorialTermination.lean",
+      "synopsis": "Rationality and termination of canonical factorial digits This completes the converse to rational termination in `CanonicalFactorialDigits`: a zero digit tail forces its starting remainder to vanish. A positive remainder would grow under every subsequent radix, contradicting the canonical upper bound of one. The result concerns the canonical expansion of an arbitrary real number. It does not establish whether the factorial-gap series has a terminating tail."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.CarryCongruenceNormalForm",
+      "path": "ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean",
+      "synopsis": "Erdős #68: carry congruence normal form The strict successor splits exactly: `N_m = ⌊m!·P_m⌋ + 1 = E_m + ⌊F_m⌋ + 1` where `P_m = factorialGapPrefix m`, `E_m = ∑_{n=2}^{m} m!/n! ∈ ℤ`, and `F_m = ∑_{n=2}^{m} (m!/n!)/(n!−1)`. Since every term of `E_m` except the `n = m` summand is divisible by `m`, we get `E_m ≡ 1 (mod m)`, hence the **carry congruence normal form** `unit carry at m ⟺ ⌊F_m⌋ ≡ −2 (mod m)`, i.e. the frontier predicate \"m does not divide the strict successor\" is a congruence test on one explicit rational floor. Moreover `F_m = m!·C_m`, `C_m = ∑_{n=2}^{m} 1/(n!(n!−1))`, so the test only involves partial sums of the fixed constant series `C_∞ = lim C_m`; the telescoping identity `1/(n!(n!−1)) = 1/(n!−1) − 1/n!` identifies that limit with `S − (e − 2)` analytically (documented outside this module). No cofinality claim is made here."
+    },
+    {
       "id": "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
       "path": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
       "synopsis": "Channel breakpoint rigidity for Erdős problem 68 For a finite coefficient family whose indices all lie in one quotient band `[k d, (k + 1) d)`, every factorial coefficient is the same fixed multiple `(d!)^k` of its `d`-channel coefficient. Hence cancellation of that channel forces cancellation of the factorial moment. In the first band, a nonzero factorial moment together with channel cancellation requires at least one support index to reach the breakpoint `2d`. The namespace `Erdos68` is the finite-family presentation; it is distinct from the Finsupp presentation in `ErdosProblems.Erdos68`. No declaration constructs a cancelling coefficient family, treats several channels simultaneously, estimates a residual, or decides rationality of the #68 series."
@@ -4626,6 +4636,21 @@
       "id": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
       "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
       "synopsis": "Integral channel congruence for Erdős problem 68 This module compares a channel numerator with the corresponding factorial moment modulo `d! - 1`. The congruence holds for every support index, so simultaneous cancellation of the channels `2, ..., D` makes their least common multiple divide the factorial moment. The second part estimates that least common multiple. Consecutive numbers `m! - 1` are compared through their pairwise gcds; this gives an explicit finite lower bound after the gcd losses are counted. Consequently, if a positive integer `M` is divisible by the channel lcm and is smaller than `(R+1)! - 1`, then `R` must grow at least cubically along `D = 2t^2`. A later estimate improves the explicit constant to `R+1 > (3/2)t^3` for `t >= 2^32`. All conclusions after the congruence theorem retain these stated hypotheses. In particular, this file does not construct `M` or `R` from the series in Erdős problem 68, prove that its channels vanish, or decide the rationality of that series."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.CompanionConstantBridge",
+      "path": "ErdosProblems/Erdos68/CompanionConstantBridge.lean",
+      "synopsis": "Erdős #68: companion-constant telescope and lower-window certificate Two completions of the carry congruence normal form. **Telescope.** With `d_n = 1/(n!(n!−1))` for `n ≥ 2` and the factorial-gap series `S = ∑_{n≥2} 1/(n!−1)`: `(∑' d_n) + (∑' 1/n!) = S`, via the pointwise identity `d_n + 1/n! = 1/(n!−1)`. Naming the second series `e − 2` analytically, this reads `C_∞ = S − (e − 2)`: the carry congruence normal form tests congruences of one fixed constant whose irrationality-flavor is tied to `e`. **Lower-window certificate.** The gap-scalar expansion gave an upper-jump miss certificate from below-domination; here we add the symmetric lower-cylinder one: if the finite weighted digit block through `m+k` together with its explicit remainder weight stays `≤ (1+ε_m)/m`, then index `m` cannot be a unit carry — also a frontier miss. Together both windows certify every non-unit carry from finitely many certified digits. No cofinality claim is made here."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.CompanionOrbitRationality",
+      "path": "ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
+      "synopsis": "Erdős #68: full companion-orbit rationality boundary This module promotes the pointwise companion-floor arithmetic to the infinite rationality statement. The fixed companion constant is `C = ∑_{n≥2} 1/(n!(n!−1)) = S - (exp 1 - 2)`. The target normal form is that `S` is rational exactly when `⌊m! C⌋ ≡ -2 (mod m)` eventually. The forward direction uses the positive sub-unit remainder in the exponential series. The reverse direction uses the equivalent canonical digit tail `d_m(C)=m-2` and the telescoping identity `∑_{m>N} ((m-2)+1)/m! = 1/N!`. No cofinal escape claim is made here."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
+      "path": "ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean",
+      "synopsis": "Erdős #68: constant-only miss certificates Let `C = ∑' n, compConstTerm n`. The companion carrier has the form `F_m = m! * C - δ_m`, where `δ_m` is the positive scaled tail. Once `0 < δ_m < 1`, subtracting the tail can move the floor down by at most one. The correct alternatives are `⌊F_m⌋ = ⌊m! * C⌋` or `⌊F_m⌋ = ⌊m! * C⌋ - 1`. Consequently it is enough to exclude the two adjacent residues `-2` and `-1` for `⌊m! * C⌋` modulo `m`. This formulation deliberately uses two floors of the same fixed constant; it does not use a ceil, since `⌈J⌉ - 1 = ⌊J⌋` when `J` is nonintegral and therefore misses the possible downward crossing. The theorem below is the exact floor/congruence consumer. A companion-tail estimate may supply its `F_m = J - δ`, `0 < δ < 1` hypotheses without changing the arithmetic proof."
     },
     {
       "id": "ErdosProblems.Erdos68.DivisorFactorialCentre",
@@ -4638,6 +4663,11 @@
       "synopsis": "Erdős #68: collision cores, private residues, and factorial-block endpoints For a finite denominator family, the pairwise collision core records the prime powers shared by at least two denominators. Dividing each denominator by its part inside this core produces pairwise-coprime private quotients. Their product is the private modulus `R`; a weighted leave-one-out numerator is coprime to `R`, so the displayed endpoint numerator has a nonzero residue whenever `R > 1`. The abstract part of the file develops these finite gcd, lcm, CRT, and projection identities. The factorial-block specialization takes the denominators `n! - 1` for `p ≤ n < 2p`, identifies the strict-successor coefficient at `p - 1`, and defines an endpoint window. Unit carries on the whole interval `[p,2p]` force that window; so does any rational value whose denominator is already cleared by `(p-1)!`. The later theorems give several exact ways to refute the window: a large private residue, unequal leave-one-out projections, coprime factor-pair floors, or a uniquely supported prime with a sufficiently large residue. Cofinal families of any of the stated certificates imply cofinally many non-unit carries or rational-prefix divisibility failures, and hence imply irrationality through the earlier carry criterion. Every irrationality conclusion in this file is conditional. No theorem constructs the required cofinal certificate family, proves the needed projection disagreement or size inequality for arbitrarily large blocks, or supplies cofinally many uniquely supported factorial-gap primes. The finite CRT identitie"
     },
     {
+      "id": "ErdosProblems.Erdos68.FactorialAnalyticBoundary",
+      "path": "ErdosProblems/Erdos68/FactorialAnalyticBoundary.lean",
+      "synopsis": "Analytic growth boundaries for factorial-gap denominators The denominators `n! - 1` do not have quadratic successive growth, and their `2^n`-th roots tend to one. These are the two growth obstructions stated in the short Erdős #68 paper when comparing external fast-series criteria. Neither limit decides irrationality of the factorial-gap series."
+    },
+    {
       "id": "ErdosProblems.Erdos68.FactorialCarry",
       "path": "ErdosProblems/Erdos68/FactorialCarry.lean",
       "synopsis": "Erdős #68: factorial carries and prime windows For `S = ∑ n ≥ 2, 1 / (n! - 1)`, expanding each summand geometrically and regrouping by `m = n * j` produces the integral coefficient `C_m = ∑_{d ∣ m, 2 ≤ d} m! / (d!)^(m/d)`. The multinomial divisibility proved below shows directly that every summand is an integer. The same arithmetic leads to a finite interval question at prime dilations: an integral carry must lie in a prescribed residue class inside a rational window. A missed window therefore excludes that carry, and a window of length less than one contains at most one possible integer. These statements do not prove that the windows arising from the series are missed for infinitely many primes, and they do not prove irrationality."
@@ -4648,9 +4678,34 @@
       "synopsis": "Erdős #68: factorial-channel certificates For each divisor channel `d`, the weight `i! / (d!)^(⌊i/d⌋)` is integral, and consecutive weights obey the factorial recurrence except at indices divisible by `d`. The coefficient vector `λ = 2e₃ - e₄` then gives an explicit finite certificate: its channel values and factorial moment can be computed exactly, and the stated elementary enclosure for the remaining tail places its residual strictly between `-1` and `0`. This is a single finite certificate. It does not supply a cofinal family of nonzero residuals or prove irrationality of the Erdős #68 series."
     },
     {
+      "id": "ErdosProblems.Erdos68.FactorialDigitRigidity",
+      "path": "ErdosProblems/Erdos68/FactorialDigitRigidity.lean",
+      "synopsis": "Erdős #68: factorial digits and strict successors Problem-owned landing surface for exact reductions around `∑ n ≥ 2, 1 / (n! - 1)`. No declaration in this module asserts the still-open irrationality theorem."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+      "path": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+      "synopsis": "Erdős #68: factorial-gap plateau core Lightweight core for the strict-successor recurrence, carry bounds, and the exact divisibility criterion. Heavy exact-index certificates live in `FactorialZeroPlateauCertificates`; the full plateau file re-exports both."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.FactorialShiftFamilyOrbit",
+      "path": "ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean",
+      "synopsis": "Erdős's shifted-factorial family under one companion-orbit boundary Erdős asked whether `S_t = ∑_{n≥2} 1/(n!+t)` is irrational for every integer `t`; Problem #68 is the member `t = −1`. The termwise identity `1/(n!+t) = 1/n! − t/(n!(n!+t))` writes every member as `S_t = (e − 2) − t·C_t` with the shifted companion constant `C_t = ∑_{n≥2} 1/(n!(n!+t))`. The generic fixed-orbit boundary of `CompanionOrbitRationality` therefore applies uniformly: for every integer `t ≥ −1`, `S_t ∈ ℚ ⟺ ⌈t·m!·C_t⌉ ≡ 2 (mod m) for all sufficiently large m`, equivalently `S_t ∉ ℚ` iff the ceiling escapes the residue `2` cofinally. The member `t = −1` recovers `⌊m!·C⌋ ≡ −2 (mod m)`, and the member `t = 0` has `C_0`-orbit `⌈0⌉ = 0`, which never lies in the residue class `2` for `m ≥ 3`; this reproves the irrationality of `e`. No member with `t ≠ 0` is decided here. The theorem is the exact family boundary, not an irrationality proof for any nonzero shift."
+    },
+    {
       "id": "ErdosProblems.Erdos68.FactorialZeroPlateau",
       "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
       "synopsis": "Erdős #68: factorial-grid plateaux and the exact carry criterion Let `S` be the factorial-gap series and let `H_n` be its rational prefix through index `n`. The integer `strictFacTop H_n n = floor(n! H_n) + 1` is the first point of the `1 / n!` grid above `H_n`. The first part of this file proves that a rational value `S = a / q` forces this grid point to equal the cleared numerator `(n! / q) a` once `n!` clears `q`. In particular, rationality forces explicit prime-power divisibility at suitable indices. The second part compares consecutive grid points. Their exact recurrence has an integer carry `factorialGapStepCarry m`; rationality forces this carry to be one eventually, and eventual unit carries conversely make the normalized grid points stationary. Thus the series is irrational exactly when non-unit carries occur cofinally. Exact computations at indices `51`, `60`, and `67` give finite denominator lower bounds, but not the required cofinal family. The remaining theorems reformulate individual divisibility hits, doubled prime square hits, and rational first crossings. They also record two generic coboundary lemmas and an independent factorial interval inequality. The central open point is explicit: this file does not prove cofinally many non-unit carries or strict-successor divisibility failures. Consequently it does not prove the irrationality of the factorial-gap series and does not solve Erdős #68."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
+      "path": "ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean",
+      "synopsis": "Erdős #68: exact-index plateau certificates Heavy `norm_num` certificates at indices `5`, `11`, `51`, `60`, `64`, and `67`, together with the denominator lower bounds they support. Kept separate so launch entries that only need the carry recurrence avoid CI memory pressure."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement",
+      "path": "ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
+      "synopsis": "Erdős #68: factorial-gap plateau supplement Asymptotic coefficient bounds, generic coboundary lemmas, doubled-prime criteria, rational first-crossing bounds, and the independent Type-2 interval inequality. The recurrence core and exact finite certificates live in their own canonical modules; `FactorialZeroPlateau` re-exports the complete family."
     },
     {
       "id": "ErdosProblems.Erdos68.FiniteDefectAutomaton",
@@ -4661,6 +4716,16 @@
       "id": "ErdosProblems.Erdos68.GapScalarNormalForm",
       "path": "ErdosProblems/Erdos68/GapScalarNormalForm.lean",
       "synopsis": "Erdős #68: gap scalar normal form and carry-stream reconstruction The rounding carries `b_j = factorialGapStepCarry j` determine the predecessor-gap scalar `factorialGapPredecessorGap m` through an exact finite expansion with an explicit positive remainder: `g_m = (∑_{j=m}^{J} (b_j + ε_j) · (m-1)!/j!) + (m-1)!/J! · g_(J+1)` where `ε_j = 1/(j!-1)`. The rearranged radix recurrence behind it is `g_(m+1) = m · g_m - b_m - ε_m`. Combined with the sharp three-window reading of the carry (`b_m = 1` exactly when `1 + ε_m < m · g_m ≤ 2 + ε_m`), a finite block of certified digits gives an exact domination certificate for `m · g_m`, hence a non-unit-carry certificate at index `m` — one frontier miss of Erdős #68 per block. No theorem here proves cofinality; each application certifies one index."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.PrimePoleCriterion",
+      "path": "ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+      "synopsis": "Erdős #68: finite prime-pole survival This module isolates the exact finite cancellation law for a prime power in the denominator of a factorial-gap prefix. At the largest displayed `q`-adic exponent, all lower-exponent summands vanish modulo `q`; the full prime power survives prefix reduction precisely when the reciprocal sum of the maximal-hit cofactors is nonzero. The statement is deliberately finite. It assigns no `q`-adic value to the infinite real tail, and nonvanishing of one local residue is not by itself an irrationality proof."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.PrimePoleDenominator",
+      "path": "ErdosProblems/Erdos68/PrimePoleDenominator.lean",
+      "synopsis": "Prime powers surviving rational denominator reduction For a positive common denominator `L`, reduction replaces it by `L / gcd B L`. A prime divisor of `L` retains its full exponent exactly when it does not divide the numerator `B`. This is the rational-denominator step in maximal-hit cancellation for a factorial-gap prefix."
     },
     {
       "id": "ErdosProblems.Erdos68.PrimeThresholdParity",
@@ -4676,6 +4741,16 @@
       "id": "ErdosProblems.Erdos68.PrimeZeroBranch",
       "path": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
       "synopsis": "Erdős #68: the prime zero branch This module develops three linked layers of the factorial-gap series. First, exact prefix identities express the step carry through a binary endpoint flag and the canonical factorial digit. A unit carry is therefore equivalent to one of two endpoint cylinders: a zero digit with two zero flags, or the maximal digit with two one flags. Second, reduced predecessor fractions are followed prime by prime. The formalized arithmetic includes prefix-private prime powers, accumulated denominator factors, collision and residual cofactors, and exact finite records at the primes `107` and `971`. In particular, prefix-private factorial-gap hits occur cofinally and the corresponding numerator projections are nonzero under the stated divisibility hypotheses. Third, a family of conditional theorems shows that sufficiently large predecessor residues, supplied cofinally, would force irrationality. The module does **not** prove those quantitative lower bounds: a nonzero residue is not enough. It therefore proves no unconditional irrationality theorem and does not settle Erdős #68."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.SecondLayerDigit",
+      "path": "ErdosProblems/Erdos68/SecondLayerDigit.lean",
+      "synopsis": "Erdős #68: the exact finite second-layer digit The elementary split `1 / (n! - 1) = 1 / n! + 1 / (n! * (n! - 1))` separates the factorial-gap prefix into the factorial expansion of `e - 2` and a faster-decaying second layer. This file proves the exact digit law for the *finite* second-layer prefix: `digit_m(prefix₂ m) = m - 1 - factorialGapStepCarry m`. Passing from that finite prefix to the infinite second-layer sum requires a separate floor-stability hypothesis at scales `m!` and `(m-1)!`. Keeping that hypothesis explicit prevents the invalid inference that a positive tail of scaled size less than one can never cross the next integer. The file also records the correct rational factorial-digit boundary: rational numbers have eventually zero canonical digits, so they cannot have an eventually maximal canonical tail."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.ShrinkingTargetNormalForm",
+      "path": "ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean",
+      "synopsis": "Erdős #68: the shrinking-target normal form The corpus already carries two exact normal forms for the irrationality of `S = ∑ 1/(n! - 1)`: cofinal non-unit carries, and cofinal misses of the strict-successor divisibility. Both treat *every* unit carry as a failure. A unit carry has two radically different causes: the canonical orbit sits in the tiny lower endpoint cylinder, or the canonical digit is maximal. The second is harmless. This module isolates that distinction and produces a **third** exact normal form: `S ∉ ℚ ↔ ∀ B, ∃ m > B, factorialGapScaledTail m ≤ m · r_{m-1}` (`irrational_factorialGapSeries_iff_cofinal_lower_endpoint_escape`), i.e. irrationality is exactly *cofinal escape from the lower endpoint cylinder*. Since `0 < factorialGapScaledTail m < 2/m`, the trapping radius is `O(m⁻²)`: Erdős #68 is an explicit deterministic shrinking-target problem for the factorial orbit, with a quadratically small target. The escape target is strictly more permissive than the carry target (`factorialGap_lower_endpoint_escape_iff_nonunit_or_maximal_digit`), and it admits a completely **tail-free two-sided** consumer over the finite predecessor gap (`irrational_factorialGapSeries_of_cofinal_predecessorGap_outside_window`). The corpus previously exposed only the upper half of that window. Erdős #68 remains open: no theorem here produces the cofinal escape events."
     },
     {
       "id": "ErdosProblems.Erdos68.StrictSuccessorArithmetic",

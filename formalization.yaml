@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:fde0d9af3b6c755f42811985a8ec14db39b511b11e67f01eb652692c0052528c"
+  problem_index_digest: "sha256:91177b9d2e7380ac4f87129649e0d716251422e68227e49141c0140a51266323"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1649,7 +1649,7 @@ external_verification:
       erdos_number: 257
       status: "open"
       checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
-      open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
+      open_frontier: "The universal irrationality problem for arbitrary infinite supports beyond the reciprocal-summable and other registered structured families."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
     - id: "erdos_269"
       erdos_number: 269
@@ -1684,7 +1684,7 @@ external_verification:
       erdos_number: 1049
       status: "open"
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
-      open_frontier: "Irrationality at base three halves, or for any rational base."
+      open_frontier: "Lean does not check irrationality at base three halves or the paper's ordinary irrationality theorem for F(31/4) and its positive integer powers."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
   trusted_challenge_holes: 8
   packet: "docs/EXTERNAL_VERIFICATION.md"

@@ -10001,6 +10001,22 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos68.CanonicalFactorialTermination",
+          "path": "ErdosProblems/Erdos68/CanonicalFactorialTermination.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CanonicalFactorialDigits"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.CarryCongruenceNormalForm",
+          "path": "ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialGapPlateauCore"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
           "path": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
           "role": "Lean proof module",
@@ -10012,6 +10028,33 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos68.ChannelBreakpointRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.CompanionConstantBridge",
+          "path": "ErdosProblems/Erdos68/CompanionConstantBridge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CarryCongruenceNormalForm",
+            "ErdosProblems.Erdos68.GapScalarNormalForm"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.CompanionOrbitRationality",
+          "path": "ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
+            "ErdosProblems.Erdos68.SecondLayerDigit",
+            "ErdosProblems.Erdos68.FactorialDigitRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
+          "path": "ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CompanionConstantBridge"
           ]
         },
         {
@@ -10034,6 +10077,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.FactorialAnalyticBoundary",
+          "path": "ErdosProblems/Erdos68/FactorialAnalyticBoundary.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos68.FactorialCarry",
           "path": "ErdosProblems/Erdos68/FactorialCarry.lean",
           "role": "Lean proof module",
@@ -10048,6 +10097,30 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.FactorialDigitRigidity",
+          "path": "ErdosProblems/Erdos68/FactorialDigitRigidity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+          "path": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CanonicalFactorialDigits",
+            "ErdosProblems.Erdos68.PrimeUnitTranslator",
+            "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialShiftFamilyOrbit",
+          "path": "ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CompanionOrbitRationality"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.FactorialZeroPlateau",
           "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
           "role": "Lean proof module",
@@ -10055,6 +10128,22 @@
             "ErdosProblems.Erdos68.CanonicalFactorialDigits",
             "ErdosProblems.Erdos68.PrimeUnitTranslator",
             "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
+          "path": "ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialGapPlateauCore"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement",
+          "path": "ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialGapPlateauCore"
           ]
         },
         {
@@ -10072,6 +10161,21 @@
           "imports": [
             "ErdosProblems.Erdos68.FactorialZeroPlateau"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PrimePoleCriterion",
+          "path": "ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PrimeZeroBranch",
+            "ErdosProblems.Erdos68.PrimePoleDenominator"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PrimePoleDenominator",
+          "path": "ErdosProblems/Erdos68/PrimePoleDenominator.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos68.PrimeThresholdParity",
@@ -10096,6 +10200,22 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.SecondLayerDigit",
+          "path": "ErdosProblems/Erdos68/SecondLayerDigit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialGapPlateauCore"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.ShrinkingTargetNormalForm",
+          "path": "ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PrimeZeroBranch"
           ]
         },
         {
@@ -13201,11 +13321,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "94b5ff1c77ff90c4daca7af68bf00005fdc1cbab",
+      "ref": "85054358cdca543531b473684e9c9d1c0ece6dd7",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-09"
+      "public_tag": "formal-source-2026-09-09-r1"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
