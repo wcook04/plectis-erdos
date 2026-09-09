@@ -233,10 +233,6 @@ theorem hankelAssociatedCoeff_eq_reciprocal
             rw [ih, if_neg ht, if_neg hsucc]
             norm_num
 
-/-- The two source-tail families have reciprocal-coefficient numerators which
-add to the claimed transformed-row coefficient.  This is the exact algebraic
-fan-in after the associated-graded reciprocal law: the `t=0` contribution and
-the sum of `1 ≤ t ≤ j` contributions combine without cancellation. -/
 /-! ### The two source-tail reciprocal specializations -/
 
 /-- Coefficients of any genuine inverse power series satisfy exactly the
@@ -477,7 +473,10 @@ private theorem six_mul_choose_add_two_three (j : ℕ) :
       simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using
         six_mul_choose_add_three_three j
 
-
+/-- The two source-tail families have reciprocal-coefficient numerators which
+add to the claimed transformed-row coefficient.  This is the exact algebraic
+fan-in after the associated-graded reciprocal law: the `t=0` contribution and
+the sum of `1 ≤ t ≤ j` contributions combine without cancellation. -/
 theorem zudilinTransformedTailNumerators_add (j : ℤ) :
     (j + 1) * (j + 2) * (2 * j + 3) + j * (j + 1) * (j + 2) =
       3 * (j + 1) ^ 2 * (j + 2) := by
