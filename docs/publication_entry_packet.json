@@ -108,7 +108,7 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:82571f44c109214535d2d158245e908b059027ad7dfe03b725504b767f503c07",
-    "docs/claims.json": "sha256:23c4f2b3a4123e9b037ff0db6a9b146525e1dc0bb85b493c1be70edd2331ea39",
+    "docs/claims.json": "sha256:46d1345fbf3f8bae3350b61ba64fcb160d40cc54a97bb70f7f0f544e2d633de0",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:fde0d9af3b6c755f42811985a8ec14db39b511b11e67f01eb652692c0052528c",
     "docs/publication_contract.json": "sha256:a39d42963bb61391e7d57014650098e28c1a08f81d98274b79344dab032e07ac",
@@ -544,9 +544,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-10",
+      "public_tag": "formal-source-2026-09-10-r1",
       "publication_state": "published_committed_checkpoint",
-      "ref": "b471b1c9b15e0918c7458f1f90bce082c30bf4b5",
+      "ref": "6575db0f636237ee00bf3485deeebeb58d0d3af8",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
