@@ -8,7 +8,7 @@ There is no trusted certificate hypothesis in this theorem. Compilation has not
 been performed in the return environment.
 -/
 set_option maxRecDepth 1000000
-set_option maxHeartbeats 0
+set_option maxHeartbeats 100000000
 
 namespace ErdosProblems.Erdos68.PaperComplete.FiniteLead
 
