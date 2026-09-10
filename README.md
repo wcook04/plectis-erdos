@@ -47,9 +47,10 @@ find it and we make progress together instead of hoarding partial results out
 of fear of being scooped, or rebuilding the same infrastructure instead of
 improving one cumulatively.
 
-The [website](https://wcook04.github.io/plectis/maths/) is the ergonomic way
-to browse: each short paper, each long paper, and a map to the relevant Lean
-sources. The API behind it is machine generated so nothing hard-coded drifts.
+The [website](https://wcook04.github.io/plectis/) is the ergonomic way to
+browse: the [mathematics pages](https://wcook04.github.io/plectis/maths/) give
+each short paper, each long paper, and a map to the relevant Lean sources. The
+API behind it is machine generated so nothing hard-coded drifts.
 
 Ways in:
 
@@ -127,17 +128,29 @@ archive and provenance only; the papers above are the current entrances.
 
 ## What the checks establish
 
-Comparator checks nineteen proof-bearing modules against separately declared
-statements and a fixed axiom budget; [`formalization.yaml`](formalization.yaml)
-records source, boundary, `sorry` count and axioms for each. The
-[verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight problem
-programmes; the [methodology](METHODOLOGY.md) says what each check does and does
-not establish. [`docs/claims.json`](docs/claims.json) owns claim status,
+Three things sit between a Lean proof and a claim on this page. The
+[comprehension graph](docs/semantic/README.md) is the map: every declaration in
+the atlas, the statements they make, and typed relations between them, so you
+or your agent can see that a theorem is a reformulation or finite instance of
+the open problem rather than the problem itself. Comparator is a second
+formal check: nineteen proof-bearing modules against separately declared
+statements and a fixed axiom budget, with [`formalization.yaml`](formalization.yaml)
+recording source, boundary, `sorry` count and axioms for each. Palomar is
+where the release is submitted for outside registry and review;
 [`docs/PALOMAR_RESULT_SHOWCASE.json`](docs/PALOMAR_RESULT_SHOWCASE.json) owns
-reader-priority ranking, and [prior art](docs/PRIOR_ART.md) records earlier and
-subsuming work. None of it decides whether a statement captures the intended
-problem, whether a result is new, or whether a problem is solved.
-Do not infer results from private or unreleased work.
+the reader-priority ranking that goes with it.
+
+The [verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight
+problem programmes; the [methodology](METHODOLOGY.md) says what each check does
+and does not establish. [`docs/claims.json`](docs/claims.json) owns claim
+status and [prior art](docs/PRIOR_ART.md) records earlier and subsuming work.
+None of it decides whether a statement captures the intended problem, is new,
+or solves anything. Do not infer results from private or unreleased work.
+
+Two papers explain the design. [Problem-Sized Lean Worlds](claim-faithful-publication-systems-paper.pdf)
+is how finding a result, checking it and deciding what may be claimed are kept
+separate. [From Spare Compute to Cumulative Mathematics](open-source-mathematics-strategy.pdf)
+is why the work is public and how credit is recorded.
 
 ## Contribute
 
@@ -147,17 +160,14 @@ reason, clearer exposition, or a repaired check all count. Open the
 with no patch — a coding agent can fill it; the questions are ordinary
 language — or a pull request for a focused change. Accepted work gets a
 public receipt naming you, the exact files or results, the starting commit, and
-what was checked. The
-[open-source mathematics paper](open-source-mathematics-strategy.pdf) explains
-the design; the [credit policy](docs/research-commons/CREDIT_POLICY.md) gives
-the exact boundary.
+what was checked. The [credit policy](docs/research-commons/CREDIT_POLICY.md)
+gives the exact boundary.
 
 ## Read or verify locally
 
 Every command your agent can run lives in [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) and the
-[agent workbench](docs/AGENT_WORKBENCH.md), not here: the claim verifier, the
-reader-only and quick Lean checkouts, the complete proof source and the full
-release replay. [ARCHITECTURE](ARCHITECTURE.md) and the
+[agent workbench](docs/AGENT_WORKBENCH.md), not here: claim verifier, reader-only
+and quick Lean checkouts, complete proof source, full release replay. [ARCHITECTURE](ARCHITECTURE.md) and the
 [source map](docs/SOURCE_MAP.md) assume no Lean and no project history.
 
 Cloning runs no project code; there are no submodules, Git LFS filters or
