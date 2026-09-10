@@ -31,7 +31,8 @@ The repo substrate is built by and for AI agents; I would not recommend driving 
 with commands. Its navigation, validation, contribution and
 mathematical-reasoning workflows plug into your own agents. Progress varies by
 problem and is stated in [RESULTS](docs/RESULTS.md) and the source records your
-agent can find for you. Lean checks the formal statements. Coverage is not the
+agent can find for you. Lean checks the formal statements. Do not infer results
+from private or unreleased work. Coverage is not the
 100% I wanted, because I am officially out of money and time. Anyone can
 contribute, even by formalising maths already established analytically, and
 receive due credit.
