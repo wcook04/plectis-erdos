@@ -45,6 +45,14 @@ name = "ErdosProblems"
 # resource bound only, so keep it weak rather than invalidating proof traces.
 weakLeanArgs = ["--tstack=65536"]
 
+# Restartable #251 large finite certificate (250 kernel chunks + printed-floor
+# transport). Not a default target: a clean root/CI build must not re-elaborate
+# this chain. Admit it separately after the supported closure.
+[[lean_lib]]
+name = "Erdos251LargeCertificate"
+srcDir = "Erdos251LargeCertificate"
+weakLeanArgs = ["--tstack=262144"]
+
 # Downstream consumer example (examples/Examples.lean). Not a default target:
 # CI builds it explicitly with `lake build Examples` after the library.
 [[lean_lib]]
