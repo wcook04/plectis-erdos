@@ -510,6 +510,23 @@ def check_plain_check_never_builds() -> None:
     )
 
 
+def check_write_stale_requires_full_check() -> None:
+    with patch.object(
+        builder.sys,
+        "argv",
+        ["build_lean_dependency_index.py", "--check", "--write-stale"],
+    ):
+        try:
+            builder.main()
+        except SystemExit as exc:
+            require(
+                exc.code == 2,
+                "--write-stale without --full-check did not fail at parse",
+            )
+            return
+    raise AssertionError("--write-stale without --full-check was accepted")
+
+
 def main() -> int:
     check_safe_dependency_input_boundary()
     check_safe_dependency_output_boundary()
@@ -521,6 +538,7 @@ def main() -> int:
     check_guarded_metadata_refresh()
     check_environment_build_is_bounded()
     check_plain_check_never_builds()
+    check_write_stale_requires_full_check()
     print("lean dependency index cache: PASS")
     return 0
 

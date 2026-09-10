@@ -251,16 +251,11 @@ jobs:
         # explicit full check exports that already-built environment and writes
         # its exact receipt into .lake; plain --check is always noncompiling.
         continue-on-error: true
-        run: python3 scripts/build_lean_dependency_index.py --check --full-check
-      # The tracked index can only be refreshed from an elaborated environment,
-      # which is exactly what this job has just built. When the check finds the
-      # tracked index stale, export the fresh one and publish it as a run
-      # artifact so the operator can land it without a local full build. The
-      # job still fails below: the artifact is evidence for a commit, not a
-      # waiver of the check.
-      - name: Export the fresh dependency index for the operator
-        if: steps.dependency-index.outcome == 'failure'
-        run: python3 scripts/build_lean_dependency_index.py
+        run: python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale
+      # --check --full-check already ran the exporter. --write-stale keeps that
+      # in-run packet on disk when the tracked index is stale, so the upload
+      # below does not start a second 90-minute export. The job still fails:
+      # the artifact is evidence for a commit, not a waiver of the check.
       - name: Upload the fresh dependency index
         if: steps.dependency-index.outcome == 'failure'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

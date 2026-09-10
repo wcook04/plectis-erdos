@@ -999,12 +999,22 @@ def main() -> int:
         action="store_true",
         help="ignore an exact cached receipt and rerun the Lean exporter",
     )
+    parser.add_argument(
+        "--write-stale",
+        action="store_true",
+        help=(
+            "with --check --full-check, write the freshly exported index when "
+            "it differs from the tracked file, then still exit 1. Continuous "
+            "integration uses this so a stale check does not launch a second "
+            "export merely to mint the operator artifact."
+        ),
+    )
     args = parser.parse_args()
     if args.refresh_validation_metadata:
-        if args.check or args.full_check:
+        if args.check or args.full_check or args.write_stale:
             parser.error(
                 "--refresh-validation-metadata is mutually exclusive with "
-                "--check and --full-check"
+                "--check, --full-check, and --write-stale"
             )
         packet = refresh_environment_validation_metadata()
         print(
@@ -1015,6 +1025,8 @@ def main() -> int:
         return 0
     if args.full_check and not args.check:
         parser.error("--full-check requires --check")
+    if args.write_stale and not (args.check and args.full_check):
+        parser.error("--write-stale requires --check --full-check")
     if args.check and not args.full_check:
         cached = load_cached_check()
         if cached is not None:
@@ -1048,6 +1060,26 @@ def main() -> int:
         except UnsafeDependencyInput:
             current = None
         if current != content:
+            if args.write_stale:
+                safe_output_text(OUTPUT, content, root=ROOT)
+                write_check_receipt(
+                    content,
+                    packet,
+                    input_fingerprint=initial_input_fingerprint,
+                )
+                write_check_receipt(
+                    content,
+                    packet,
+                    input_fingerprint=initial_input_fingerprint,
+                    receipt_path=TRACKED_CHECK_RECEIPT,
+                    verification_posture=FULL_EXPORT_TRACKED_POSTURE,
+                )
+                print(
+                    f"wrote stale {OUTPUT} "
+                    f"({packet['coverage']['source_resolved_node_count']} nodes, "
+                    f"{packet['coverage']['source_resolved_direct_edge_count']} edges)",
+                    file=sys.stderr,
+                )
             print(f"stale Lean dependency index: {OUTPUT}", file=sys.stderr)
             return 1
         write_check_receipt(
