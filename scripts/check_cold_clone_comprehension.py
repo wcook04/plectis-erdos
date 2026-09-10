@@ -309,7 +309,13 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # contribution and reproducibility without turning the front page into a
 # setup runbook. Detailed checkout variants are validated at their routed
 # owner below.
-README_FIRST_CONTACT_BUDGET_BYTES = 12_000
+# 2026-09-10: 12_000 -> 14_000. The operator-authored front page grew by a
+# second voice pass the same day; the generated corpus table (the
+# recover_scale_and_assembly anchor) sat a few dozen bytes past 12k and
+# was being truncated mid-row. The prefix still has to contain the eight
+# papers, the evidence boundary, and the corpus heading. Funded to fit
+# the authored page rather than reshape it.
+README_FIRST_CONTACT_BUDGET_BYTES = 14_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than

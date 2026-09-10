@@ -17,40 +17,39 @@ We focused on eight arbitrarily hard Erdős problems:
 not solve any of them. It holds formal statements, Lean checks, a Comparator
 gate and a Palomar submission, and two papers per problem, one short and one
 long, written with Terence Tao's public guidance on how AI mathematics should
-be reported in mind.
+be expositioned in mind.
 
 I prioritised expository quality and a collaborative structure over trying to
-solve the problems; I hope to solve them with others rather than alone. With
+solve the problems; I hope to now solve them with others rather than alone. With
 the unreleased frontier models, these could probably be solved if enough
 compute were poured at them. The difference here is that we show every one of
-the routes that stopped, and turn intermediary findings into something reusable
+the routes that stopped, and try to turn intermediary findings into something reusable
 by mathematicians who actually understand the material, and by later models.
 Meaning, novelty and significance still need human judgement.
 
-The repo is built around AI agents; I would not recommend driving it by hand
+The repo substrate is built by and for AI agents; I would not recommend driving it by hand
 with commands. Its navigation, validation, contribution and
 mathematical-reasoning workflows plug into your own agents. Progress varies by
 problem and is stated in [RESULTS](docs/RESULTS.md) and the source records your
 agent can find for you. Lean checks the formal statements. Coverage is not the
-100% I wanted, because I am pretty broke at this point. That is why anyone can
+100% I wanted, because I am officially out of money and time. Anyone can
 contribute, even by formalising maths already established analytically, and
 receive due credit.
 
-Claude Code, Codex and Cursor agents wrote every line of code. I am
-responsible for all claims, sources and the release. Plectis is an independent, AI-assisted prototype, not
+I am responsible for all claims, sources and the release. Plectis is an independent, AI-assisted prototype, not
 something I am declaring finished. It has had no independent mathematical
-review, and I need help to get anywhere near that.
+review (trying to get this), and I need help to get anywhere near "done".
 
-If you solve a problem, the credit and the result are yours. If this repo or my
+If you solve a problem, the credit and the result are all yours. If this repo or my
 intermediary progress helped, please cite this release and say how, so others
 find it and we make progress together instead of hoarding partial results out
 of fear of being scooped, or rebuilding the same infrastructure instead of
-improving one cumulatively.
+improving one cumulatively (infra suggestions also get credit!).
 
-The [website](https://wcook04.github.io/plectis/) is the ergonomic way to
+The [website](https://wcook04.github.io/plectis/) is the homosapien-ergonomic way to
 browse: the [mathematics pages](https://wcook04.github.io/plectis/maths/) give
 each short paper, each long paper, and a map to the relevant Lean sources. The
-API behind it is machine generated so nothing hard-coded drifts.
+API behind its backend is machine generated so nothing hard-coded drifts (hopefully!).
 
 Ways in:
 
@@ -68,7 +67,7 @@ Ways in:
 
 ## Problem papers
 
-For a first look, start with **#257** for full-support irrationality and
+For a first look from a maths generalist, start with **#257** for full-support irrationality and
 achievement-set measure, or **#249** for exact kernel rank, finite certificates
 and recorded failed routes.
 
@@ -124,11 +123,11 @@ and recorded failed routes.
   construction remains open.
 
 The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) is kept for
-archive and provenance only; the papers above are the current entrances.
+archive and provenance only (OG ones I did); the papers above are the current entrances.
 
 ## What the checks establish
 
-Three things sit between a Lean proof and a claim on this page. The
+Three things come between a Lean proof and a claim in this repo (agents advised!). The
 [comprehension graph](docs/semantic/README.md) is the map: every declaration in
 the atlas, the statements they make, and typed relations between them, so you
 or your agent can see that a theorem is a reformulation or finite instance of
@@ -141,27 +140,27 @@ where the release is submitted for outside registry and review;
 the reader-priority ranking that goes with it.
 
 The [verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight
-problem programmes; the [methodology](METHODOLOGY.md) says what each check does
-and does not establish. [`docs/claims.json`](docs/claims.json) owns claim
-status and [prior art](docs/PRIOR_ART.md) records earlier and subsuming work.
+problem programmes; the [methodology](METHODOLOGY.md) outlines what each check does
+and does not establish. [`docs/claims.json`](docs/claims.json) covers claim
+status and [prior art](docs/PRIOR_ART.md) records earlier and subsuming work (WIP, out of tokens).
 None of it decides whether a statement captures the intended problem, is new,
-or solves anything. Do not infer results from private or unreleased work.
+or solves anything, which requires expert review (credit offered for this).
 
 Two papers explain the design. [Problem-Sized Lean Worlds](claim-faithful-publication-systems-paper.pdf)
 is how finding a result, checking it and deciding what may be claimed are kept
-separate. [From Spare Compute to Cumulative Mathematics](open-source-mathematics-strategy.pdf)
-is why the work is public and how credit is recorded.
+separate, just the repo paper really. [From Spare Compute to Cumulative Mathematics](open-source-mathematics-strategy.pdf)
+is why the work is public and how credit is recorded, basically the open source idea I had.
 
 ## Contribute
 
 An idea, a correction, a counterexample, a failed route with a checkable
-reason, clearer exposition, or a repaired check all count. Open the
+reason, clearer exposition, a validation/invalidation of a claim or a repaired check all count. Open the
 [plain-language research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
 with no patch — a coding agent can fill it; the questions are ordinary
 language — or a pull request for a focused change. Accepted work gets a
 public receipt naming you, the exact files or results, the starting commit, and
 what was checked. The [credit policy](docs/research-commons/CREDIT_POLICY.md)
-gives the exact boundary.
+gives the exact boundary. You can also just email me anything and I will credit you myself if that's a pain.
 
 ## Read or verify locally
 
@@ -191,7 +190,7 @@ being released now.
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
 ## Corpus at a glance
 
-The layer a mathematician should judge is small: 140 curated claim records in 30 contribution families, reaching Lean source through 449 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
+The layer a mathematician should judge has been denoised (tried): 140 curated claim records in 30 contribution families, reaching Lean source through 449 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. Again, agents advised, website or papers are what's designed for humans.
 
 The rest is engineering inventory. About 91% of the 156,245 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
@@ -203,9 +202,9 @@ The rest is engineering inventory. About 91% of the 156,245 declarations (142,66
 | Contribution families | 30 |
 
 Generated shards are counted as formal source and never as separate
-mathematical claims. Claim records span every status, including cited and
-open, and are partitioned exactly once.
-These are navigation counts, not novelty claims.
+mathematical claims. Claim records cover every status, including cited and
+open, and are partitioned once.
+These are navigation counts, not novelty claims; this needs expert validation, again: credit provided for this. With funding I would also be happy to provide some kind of compensation, alas, currently challenged in that department.
 <!-- END generated_corpus_at_a_glance -->
 
 <!-- BEGIN generated_principal_declaration_anchors -->

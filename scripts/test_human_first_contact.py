@@ -82,12 +82,13 @@ def main() -> None:
         "RESULTS does not route readers to the current README paper anchor",
     )
 
-    # 2026-09-10: 1_400 -> 1_700. The operator rewrote the front page in his own
-    # voice; the paper index now carries short/longer PDF links, one-line
-    # strongest results, and erdosproblems.com URLs that this counter charges
-    # as words. Funded with slack, not to the byte.
+    # 2026-09-10: 1_400 -> 1_700 -> 2_000. The operator rewrote the front page in
+    # his own voice (second pass the same day); the paper index carries
+    # short/longer PDF links, one-line strongest results, and erdosproblems.com
+    # URLs that this counter charges as words. The budget follows the authored
+    # page, it does not reshape it. Funded with slack, not to the byte.
     require(
-        len(prose_words(readme)) <= 1_700,
+        len(prose_words(readme)) <= 2_000,
         "README prose exceeds the human front-door budget",
     )
     # 2026-09-10, operator-directed: the front page carries no command block at
