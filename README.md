@@ -29,9 +29,8 @@ agent can find for you. Lean checks the formal statements. Coverage is not the
 contribute, even by formalising maths already established analytically, and
 receive due credit.
 
-Claude Code, Codex and Cursor agents wrote every line of code. I wrote this
-README, as you can hopefully tell, and I am responsible for all claims, sources
-and the release. Plectis is an independent, AI-assisted prototype, not
+Claude Code, Codex and Cursor agents wrote every line of code. I am
+responsible for all claims, sources and the release. Plectis is an independent, AI-assisted prototype, not
 something I am declaring finished. It has had no independent mathematical
 review, and I need help to get anywhere near that.
 
