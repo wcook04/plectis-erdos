@@ -137,12 +137,12 @@ def subject_digest(
 
 
 def receipt_payload(review: dict) -> dict:
+    # Keep rebinding history in docs/semantic/reviews.json. Copying it onto
+    # every attached corpus receipt is what pushed semantic_corpus.json over
+    # GitHub's 100 MB blob ceiling after a second formal-source restamp.
     return {
         field: review[field]
-        for field in sorted(
-            REQUIRED_RECEIPT_FIELDS
-            | {"notes", "source_refs", "evidence_rebindings"}
-        )
+        for field in sorted(REQUIRED_RECEIPT_FIELDS | {"notes", "source_refs"})
         if field in review
     }
 
