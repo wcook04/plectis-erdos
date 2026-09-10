@@ -82,11 +82,23 @@ def main() -> None:
         "RESULTS does not route readers to the current README paper anchor",
     )
 
+    # 2026-09-10: 1_400 -> 1_500. The operator rewrote the front page in his own
+    # voice and the paper index now carries both PDFs and a one-line status per
+    # problem; this counter charges every link target as a word. Funded with
+    # slack, not to the byte.
     require(
-        len(prose_words(readme)) <= 1_400,
+        len(prose_words(readme)) <= 1_500,
         "README prose exceeds the human front-door budget",
     )
-    require(readme.count("```") <= 2, "README contains more than one command block")
+    # 2026-09-10, operator-directed: the front page carries no command block at
+    # all. Commands live in REPRODUCIBILITY and the agent workbench, which the
+    # README must name; the routed-surface checks below keep them reachable.
+    require("```" not in readme, "README carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
+    require(
+        "[REPRODUCIBILITY](docs/REPRODUCIBILITY.md)" in readme
+        and "](docs/AGENT_WORKBENCH.md)" in readme,
+        "README no longer routes readers to the documents that hold its commands",
+    )
     require(
         "All eight problems remain open" in readme,
         "README does not state the global open boundary near the front",
@@ -193,13 +205,6 @@ def main() -> None:
             (ROOT / f"docs/papers/full-text/{slug}.md").is_file(),
             f"missing Markdown paper for {slug}",
         )
-
-    first_command_block = readme.find("```")
-    last_short_paper = max(readme.find(f"{slug}.pdf") for slug in paper_slugs)
-    require(
-        first_command_block > last_short_paper,
-        "README puts a command block before the complete eight-paper index",
-    )
 
     details_at = results.find("<details>")
     guide_at = results.find("### Problem-by-problem guide")

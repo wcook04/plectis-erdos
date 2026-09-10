@@ -1132,13 +1132,14 @@ def validate_human_first_contact(
     require(all(position >= 0 for position in positions), f"README first-contact surface lost section sequence {section_order}")
     require(positions == sorted(positions), "README first-contact sections are out of order")
 
-    first_command_block = readme_prefix.find("```")
+    # 2026-09-10, operator-directed: the front page carries no command block.
+    # Every command moved to REPRODUCIBILITY and the agent workbench, which the
+    # prefix must still name (asserted with FIRST_CONTACT_ROUTED_SURFACES
+    # below). The advertised verifier is still executed further down so its
+    # behaviour cannot drift away from the runbook that now describes it.
     last_problem = readme_prefix.find("**#1049**", positions[0])
-    require(first_command_block >= 0, "README first-contact surface lost its bounded local check")
-    require(
-        last_problem >= positions[0] and first_command_block > last_problem,
-        "README asks for a shell decision before exposing all eight papers",
-    )
+    require("```" not in readme_prefix, "README front page carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
+    require(last_problem >= positions[0], "README no longer exposes all eight papers under its paper index")
     require(
         "![Eight open problems:" in readme_prefix[:positions[0]]
         and "](.github/system-map.png)" in readme_prefix[:positions[0]],

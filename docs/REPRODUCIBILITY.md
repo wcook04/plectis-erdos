@@ -43,6 +43,15 @@ python3 scripts/test_downstream_example_contract.py
 python3 scripts/query_corpus.py --tour --format card
 ```
 
+To follow one public claim to its declaration, paper, receipts, and stopping
+point without installing Lean, run the tracked verifier; `--verify-all`
+re-resolves every claim locator:
+
+```sh
+python3 scripts/verify_claims.py --claim eb_full_support
+python3 scripts/verify_claims.py --verify-all
+```
+
 The quick check is a bounded navigation check, not a proof build. It confirms
 that the eight-problem entry surface, both public Lean roots, claim/source
 routes, paper handles, open-boundary routes, and environment guidance are
