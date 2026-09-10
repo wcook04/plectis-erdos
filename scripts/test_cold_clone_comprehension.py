@@ -106,29 +106,9 @@ def check_proof_plan_mutations(proof_plans: dict) -> int:
     return 2
 
 
-def assert_human_rejected(
-    summary: dict,
-    surfaces: dict[str, str],
-    label: str,
-    *,
-    routed_surfaces: dict[str, str] | None = None,
-) -> None:
-    """Require rejection after mutating direct or README-routed surfaces."""
-    original_safe_read_text = diagnostic.safe_read_text
-
-    def read_with_routed_mutations(path: str | Path) -> str:
-        route = str(path)
-        if routed_surfaces is not None and route in routed_surfaces:
-            return routed_surfaces[route]
-        return original_safe_read_text(path)
-
+def assert_human_rejected(summary: dict, surfaces: dict[str, str], label: str) -> None:
     try:
-        with patch.object(
-            diagnostic,
-            "safe_read_text",
-            side_effect=read_with_routed_mutations,
-        ):
-            diagnostic.validate_human_first_contact(summary, surfaces)
+        diagnostic.validate_human_first_contact(summary, surfaces)
     except AssertionError:
         return
     raise AssertionError(f"human first-contact mutation escaped: {label}")
@@ -352,10 +332,6 @@ def main() -> int:
     human_surfaces = {
         path: diagnostic.read(path) for path in diagnostic.HUMAN_SURFACES
     }
-    routed_human_surfaces = {
-        path: diagnostic.read(path)
-        for path in diagnostic.FIRST_CONTACT_ROUTED_SURFACES
-    }
     paper_library = diagnostic.read(diagnostic.PAPER_LIBRARY_SURFACE)
     # The generated shelf may be one exporter turn behind while this focused
     # consumer test is being landed. Build a minimal compliant fixture from
@@ -391,43 +367,37 @@ def main() -> int:
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
 
-    clone_command = (
-        "git clone --filter=blob:none "
+    lean_clone_command = (
+        "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
         "https://github.com/wcook04/plectis-erdos.git"
     )
-    require(
-        clone_command in routed_human_surfaces["docs/REPRODUCIBILITY.md"],
-        "clone-command mutation fixture lost its routed-source anchor",
+    full_clone_command = (
+        "git clone --depth=1 --filter=blob:none --single-branch "
+        "https://github.com/wcook04/plectis-erdos.git"
     )
-    mutated_shallow_clone_routes = routed_human_surfaces.copy()
-    mutated_shallow_clone_routes["docs/REPRODUCIBILITY.md"] = (
-        mutated_shallow_clone_routes["docs/REPRODUCIBILITY.md"].replace(
-            clone_command,
-            clone_command.replace("git clone ", "git clone --depth=1 "),
-            1,
-        )
+    mutated_lean_clone_surfaces = human_surfaces.copy()
+    mutated_lean_clone_surfaces["README.md"] = mutated_lean_clone_surfaces[
+        "README.md"
+    ].replace(
+        lean_clone_command,
+        lean_clone_command.replace(" --no-checkout", ""),
+        1,
     )
     assert_human_rejected(
         summary,
-        human_surfaces,
-        "shallow clone substituted for the complete-history route",
-        routed_surfaces=mutated_shallow_clone_routes,
+        mutated_lean_clone_surfaces,
+        "Lean-only partial/sparse clone option",
     )
     checks += 1
 
-    mutated_unfiltered_clone_routes = routed_human_surfaces.copy()
-    mutated_unfiltered_clone_routes["docs/REPRODUCIBILITY.md"] = (
-        mutated_unfiltered_clone_routes["docs/REPRODUCIBILITY.md"].replace(
-            clone_command,
-            clone_command.replace("--filter=blob:none ", ""),
-            1,
-        )
-    )
+    mutated_full_clone_surfaces = human_surfaces.copy()
+    mutated_full_clone_surfaces["README.md"] = mutated_full_clone_surfaces[
+        "README.md"
+    ].replace(full_clone_command, full_clone_command.replace("--filter=blob:none ", ""), 1)
     assert_human_rejected(
         summary,
-        human_surfaces,
-        "blob filter removed from the complete-history route",
-        routed_surfaces=mutated_unfiltered_clone_routes,
+        mutated_full_clone_surfaces,
+        "shallow blobless full-current clone option",
     )
     checks += 1
 
@@ -561,29 +531,12 @@ def main() -> int:
     for task_id, requirements in diagnostic.human_tasks(summary).items():
         for alternatives in requirements:
             mutated = copy.deepcopy(human_surfaces)
-            mutated_routes = copy.deepcopy(routed_human_surfaces)
-            changed = False
+            mutated["README.md"] = diagnostic.normalized(mutated["README.md"])
             for token in alternatives:
-                for path in (*diagnostic.HUMAN_SURFACES, *diagnostic.FIRST_CONTACT_ROUTED_SURFACES):
-                    owner = mutated if path in mutated else mutated_routes
-                    original = owner[path]
-                    normalized_original = diagnostic.normalized(original)
-                    normalized_token = diagnostic.normalized(token)
-                    if normalized_token.casefold() in normalized_original.casefold():
-                        owner[path] = remove_semantic_anchor(
-                            normalized_original, normalized_token
-                        )
-                        changed = True
-            require(
-                changed,
-                f"human-task mutation fixture lost its source anchor: {task_id}: {alternatives}",
-            )
-            assert_human_rejected(
-                summary,
-                mutated,
-                f"{task_id}: {alternatives}",
-                routed_surfaces=mutated_routes,
-            )
+                mutated["README.md"] = remove_semantic_anchor(
+                    mutated["README.md"], token
+                )
+            assert_human_rejected(summary, mutated, f"{task_id}: {alternatives}")
             checks += 1
 
     mutated = copy.deepcopy(human_surfaces)
@@ -620,7 +573,9 @@ def main() -> int:
         raise AssertionError("changed-cone planner deletion escaped")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
-    mutated_incremental["README.md"] = mutated_incremental["README.md"].replace(
+    mutated_incremental["docs/REPRODUCIBILITY.md"] = mutated_incremental[
+        "docs/REPRODUCIBILITY.md"
+    ].replace(
         "python3 scripts/lean_fast_build.py --jobs 2",
         "lake build",
         1,
@@ -633,7 +588,9 @@ def main() -> int:
         raise AssertionError("raw Lake command bypassed the public build wrapper")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
-    mutated_incremental["README.md"] = mutated_incremental["README.md"].replace(
+    mutated_incremental["docs/REPRODUCIBILITY.md"] = mutated_incremental[
+        "docs/REPRODUCIBILITY.md"
+    ].replace(
         "ErdosProblems.Erdos249.PeriodMultipleEscape",
         "Erdos249257",
         1,
@@ -643,7 +600,7 @@ def main() -> int:
     except AssertionError:
         checks += 1
     else:
-        raise AssertionError("full-corpus-first README regression escaped")
+        raise AssertionError("full-corpus-first runbook regression escaped")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental["docs/REPRODUCIBILITY.md"] = mutated_incremental[

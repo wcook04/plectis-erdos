@@ -53,8 +53,10 @@ equivalently
 \[
 \bigl|\,\mathrm{rem}(r+1)-2^{\,r+1}\,\bigr|\ >\ 2^{(r+5)/2}.
 \]
-Any bound $L_r=o(r)$ suffices. A uniform constant bound is \emph{false}: runs grow like
-$\log_2 r$ (\ev{Cert}, maximal observed run $19$ at row $158{,}096$).
+Any bound $L_r=o(r)$ suffices. In the exact computation through row $200{,}000$, the maximal
+observed run has length $19$, attained at row $158{,}096$ (\ev{Cert}). This finite observation
+rules out smaller bounds on that range only; a global constant bound or asymptotic unboundedness
+requires an additional proof.
 
 \emph{Form (ii), the Lean-facing form already fanned in.}
 \[
@@ -150,21 +152,14 @@ theorem strong enough to give anti-concentration of the weighted sum at scale $2
 
 This is the paragraph worth the most, so it is stated as sharply as the evidence permits.
 
-\textbf{The interval is logarithmically short, and every unconditional result for divisor sums in
-short intervals requires the interval to be a power of the modulus.} The window
-$[M+1,M+L]$ has length $L\asymp\log_2 M$. Voronoi-based technology for $\sum_{M<n\le M+H}\tau(n)$
---- including the Kloosterman-refined results of Deshouillers--Iwaniec type and every subsequent
-improvement --- produces an asymptotic only for $H\ge M^{\theta}$ with $\theta>0$ fixed, because
-the dual sum after Voronoi runs to length $\sim M/H$ and the error term is controlled only when
-that dual length is a power saving against $M$.
-
-At $H=\log M$ the dual sum is of length $M/\log M$
-and there is no saving at all: the method returns the trivial bound. This is not a deficiency of
-one paper; it is the reason short-interval divisor problems are stated with power-length windows.
-Technique family (a) is therefore not merely unproved here, it is out of range by an
-\emph{exponential} amount in the window length, and no quantitative improvement in Kloosterman
-bounds changes that, because the obstruction is the length of the dual sum, not the quality of
-its estimate.
+\textbf{Almost-all divisor-sum results can reach polylogarithmic intervals.}  Work of \href{https://arxiv.org/abs/2108.11401}{Mangerel} and
+\href{https://arxiv.org/abs/2401.08432v3}{Sun} includes divisor-bounded multiplicative functions in
+windows of this scale, so a blanket
+power-length exclusion is false.  These theorems still do not directly supply the estimate needed
+here: their starting points are almost-all points, while ours are selected by the actual greedy
+dynamics; their statistic is an ordinary mean, while ours is a dyadically weighted fractional
+part; and our required precision shrinks exponentially in the window parameter.  An application
+would need a quantitative exceptional-set/trajectory argument and control of this weighted phase.
 
 \textbf{The one technology that does reach sub-power windows delivers the wrong quantifier and
 the wrong class of function.} Matom\"aki--Radziwi\l{}\l{} theory shows that a multiplicative
@@ -477,12 +472,8 @@ unconditional) the tail at $k^2$ is at most $2\sqrt{k^{2}}+4=2k+4$, and by
 \end{proof}
 \ev{Math}; every input is landed Lean and the composition is four lines.
 
-The point is narrow and entirely technical, which is why it is worth stating: the corpus's
-recorded obstruction to closing (4) and (5) was the mismatch between $\mathtt{Nat.sqrt}$ (in
-$\mathtt{halfStripBound}$) and $\mathtt{Real.sqrt}$ (in the unconditional tail bound), for which
-Mathlib supplies only \texttt{Real.nat\_sqrt\_le\_real\_sqrt}, the wrong direction, and the
-recorded workaround was to widen the strip constant from $4$ to $6$. Restricting the cofinal
-witness depths to perfect squares dissolves the mismatch: at $n=k^{2}$ the two roots coincide
+The former square-root adapter issue is resolved by restricting cofinal witness depths to perfect
+squares: at $n=k^{2}$ the two roots coincide
 exactly and no widening is needed. Applying Lemma~\ref{lem:sqwitness} along $M=k^{2}-1$ gives (4)
 directly; taking $a$ to be the indicator of an achieving support truncated to
 $\mathtt{Fin}(M+1)$ at $M=k^{2}$, and using
@@ -495,7 +486,8 @@ $1\notin A$ (forced because $\mathtt{mersenneWeight}\,1=1>1/2$), gives the witne
 Under the standing rule that a reduction is not a result, one might discount R4. That would be a
 mistake, and the reason is the organising thesis of this document. Each biconditional is a
 theorem, not a reduction: it says a named producer socket is \emph{equivalent} to the goal, hence
-permanently not easier, hence removable from the list of things worth attempting directly. Five
+logically equivalent in the stated scope. The equivalence identifies the missing content but does
+not show that the reformulation cannot expose a useful invariant. Five
 such theorems are a systematic elimination, and a systematic elimination is a statement about the
 problem. In particular (3) settles the advertised weakening --- that no compatibility is required
 between witness supports at different endpoints --- as buying nothing: incompatible witnesses do

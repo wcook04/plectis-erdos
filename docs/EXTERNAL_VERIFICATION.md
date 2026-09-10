@@ -121,7 +121,7 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
 
 - **[#269](#programme-269) · Conditional carry escape** (`conditional_carry_escape`)<br>
   Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.<br>
-  **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.<br>
+  **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The representative remains a conditional consumer for arbitrary words. For the actual three-prime word, the rationality-to-reduced-carry bridge is established separately; the source-specific cofinal escape producer is not proved. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.<br>
   *Evidence.* conditional no-go consumer; novelty and significance unassessed · Lean kernel plus Comparator
 
 - **[#1049](#programme-1049) · Coordinatewise corridor no go** (`coordinatewise_corridor_no_go`)<br>
@@ -203,7 +203,7 @@ All 70 source-current review families are accounted for here. The categories pre
 
 **Open boundary.** Irrationality of the factorial-denominator series.
 
-**Read.** [Programme paper](../erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialGapPlateauCore.lean)
+**Read.** [Programme paper](../erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -802,7 +802,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Checked frontier.** That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.
 
-**Open boundary.** The universal irrationality problem for arbitrary infinite supports beyond the reciprocal-summable and other registered structured families.
+**Open boundary.** The universal irrationality problem, or irrationality for any new infinite support.
 
 **Read.** [Programme paper](../erdos-257-mersenne-support-subseries.pdf) · [Lean source](../ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
 
@@ -1044,14 +1044,14 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 1. **Conditional carry escape** (`conditional_carry_escape`; conditional endpoint leverage; source disposition `subordinate`)
    - **Why here.** Below the #251 small-mismatch route because both CofinalLocalWindowEscape and the rationality-to-actual-series carry bridge remain open, but above medium finite #269 machinery because the exact residue-window contradiction is the endpoint consumer that such machinery must feed.
    - **Source.** <code>Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape</code> in [Lean](../ErdosProblems/Erdos269/RestrictedFloorSum.lean)
-   - **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.
+   - **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The representative remains a conditional consumer for arbitrary words. For the actual three-prime word, the rationality-to-reduced-carry bridge is established separately; the source-specific cofinal escape producer is not proved. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.
    - **Relation.** `mechanism_support_for` `weighted_phase_carry_observer`: The residue/coboundary split exposes finite carry data but does not supply the cofinal escape or actual-series bridge.
    - **Relation.** `contrary_evidence_for` `rank_two_kernel_no_go`: The finite kernel is not rank one, ruling out a tempting separable shortcut without producing carry escape.
 
 2. **Weighted phase carry observer** (`weighted_phase_carry_observer`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The exact residue-digit/coboundary decomposition is the committed representative of the weighted-phase observer family; it does not transport the separate finite-dimensional factorization or imply the #269 endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary</code> in [Lean](../ExternalVerification/Statements.lean)
-   - **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open.
+   - **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No irrationality conclusion follows from this observer alone. The actual rationality-to-positive-reduced-carry bridge is established separately; cofinal local-window escape remains open.
    - **Relation.** `mechanism_support_for` `conditional_carry_escape`: The residue/coboundary split exposes finite carry data but does not supply the cofinal escape or actual-series bridge.
 
 3. **Rank two kernel no go** (`rank_two_kernel_no_go`; natural friction and no-go; source disposition `rejected`)
@@ -1063,7 +1063,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 4. **Height fibre and shell** (`height_fibre_and_shell`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The finite height-fibre normal form and smooth-shell bound are substantive three-prime structure, but they do not produce the divisibility bridge consumed by the carry frontier.
    - **Source authority.** Canonical review family `height_fibre_and_shell` in [claims](../docs/claims.json)
-   - **Boundary.** The fibre bounds do not provide the missing divisibility bridge.
+   - **Boundary.** These fibre bounds are counting input, not an escape producer. The separate actual-series divisibility bridge is established.
 
 5. **Dyadic block alphabet** (`dyadic_block_alphabet`; supporting and long tail; source disposition `represented`)
    - **Why here.** The exact four-symbol block alphabet is a useful finite interface, subordinate to the carry consumer, weighted observer, and rank obstruction.
@@ -1092,7 +1092,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 - **Height fibre and shell**<br>
   Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.<br>
-  **Boundary.** The fibre bounds do not provide the missing divisibility bridge.<br>
+  **Boundary.** These fibre bounds are counting input, not an escape producer. The separate actual-series divisibility bridge is established.<br>
   *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
 - **Rank two kernel no go**<br>
@@ -1107,12 +1107,12 @@ Exact registry keys and Comparator routing are listed separately.
 
 - **Conditional carry escape**<br>
   Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.<br>
-  **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.<br>
+  **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The representative remains a conditional consumer for arbitrary words. For the actual three-prime word, the rationality-to-reduced-carry bridge is established separately; the source-specific cofinal escape producer is not proved. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.<br>
   *Evidence.* conditional no-go consumer; novelty and significance unassessed · Lean kernel plus Comparator
 
 - **Weighted phase carry observer**<br>
   An exact weighted-phase carry recurrence splits into a finite residue digit and an uncontrolled integral quotient coboundary; an explicit function-faithful finite-dimensional observer then forces finite realised span.<br>
-  **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open.<br>
+  **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No irrationality conclusion follows from this observer alone. The actual rationality-to-positive-reduced-carry bridge is established separately; cofinal local-window escape remains open.<br>
   *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
 - **Three prime finite search**<br>
@@ -1279,7 +1279,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Checked frontier.** That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
 
-**Open boundary.** Lean does not check irrationality at base three halves or the paper's ordinary irrationality theorem for F(31/4) and its positive integer powers.
+**Open boundary.** Irrationality at base three halves, or for any rational base.
 
 **Read.** [Programme paper](../erdos-1049-rational-base-lambert.pdf) · [Lean source](../ErdosProblems/Erdos1049/RationalBaseLambert.lean)
 
@@ -1690,7 +1690,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Statement.** Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
-  - **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.
+  - **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The representative remains a conditional consumer for arbitrary words. For the actual three-prime word, the rationality-to-reduced-carry bridge is established separately; the source-specific cofinal escape producer is not proved. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.
 
 **#1041: Short connections inside polynomial lemniscates**
 

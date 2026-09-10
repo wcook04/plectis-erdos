@@ -36,8 +36,8 @@ note was first released publicly on 22 July 2026, at commit \texttt{a9d3ab8}.
 The statement of the problem has been formalised as a conjecture with an
 unfilled proof in the \emph{Formal Conjectures} collection
 \cite{formalconjectures269}.  Its Nat-indexed series includes the empty-prefix
-least-common-multiple term, so its value is exactly \(1\) plus the conventional
-series; transporting a theorem across that boundary needs an
+least-common-multiple term, so its value differs from the conventional one by a
+rational constant; transporting a theorem across that boundary needs an
 explicit series-identification lemma, which is not supplied here.
 
 \subsection{The abstract carry lemmas in their general form}
@@ -155,8 +155,9 @@ the residues behave like generic ones inside this range.
 
 \subsection{Source inventory}\label{long269:long:sources}
 
-Each entry names an informal statement and the Lean declaration that carries it
-at the pinned source revision~\commitshort.
+Each entry names an informal statement and the Lean declaration that carries it.
+Each link is pinned to its own immutable revision; the exact-reference inventory
+records the revisions and their comparison with the current public source commit.
 
 \begin{longtable}{@{}p{.35\linewidth}p{.59\linewidth}@{}}
 informal statement & linked Lean source\\
@@ -274,11 +275,11 @@ one-index lift extinction & \lref{Erdos269/CarryLiftExtinction.lean}{178}{no_car
 uniform lift extinction & \lref{Erdos269/CarryLiftExtinction.lean}{238}{no_bounded_carryLift_of_blockNull_twoAnchors}\\
 first-block sum & \lref{Erdos269/CarryLiftExtinction.lean}{289}{binaryLift_twoAnchors_force_firstBlock_sum_one}\\
 four-state obstruction & \lref{Erdos269/CarryLiftExtinction.lean}{308}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}\\
-residue-coboundary form & \lref{Erdos269/WeightedPhaseCarry.lean}{109}{carry_eq_residueDigit_add_coboundary}\\
-carry interval & \lref{Erdos269/WeightedPhaseCarry.lean}{150}{carryResidue_mem_interval}\\
-digit interval & \lref{Erdos269/WeightedPhaseCarry.lean}{157}{residueDigit_mem_interval}\\
-symbolic realisation & \lref{Erdos269/WeightedPhaseCarry.lean}{293}{CartierRealisation}\\
-finite realised span & \lref{Erdos269/WeightedPhaseCarry.lean}{334}{finite_realisedSpan_of_factorisation}\\
+residue-coboundary form & \lref{Erdos269/WeightedPhaseCarry.lean}{110}{carry_eq_residueDigit_add_coboundary}\\
+carry interval & \lref{Erdos269/WeightedPhaseCarry.lean}{151}{carryResidue_mem_interval}\\
+digit interval & \lref{Erdos269/WeightedPhaseCarry.lean}{158}{residueDigit_mem_interval}\\
+symbolic realisation & \lref{Erdos269/WeightedPhaseCarry.lean}{294}{CartierRealisation}\\
+finite realised span & \lref{Erdos269/WeightedPhaseCarry.lean}{335}{finite_realisedSpan_of_factorisation}\\
 Cantor-state confinement & \lref{Erdos269/PurePowerIrrationality.lean}{61}{state_mem_Ioo}\\
 state gap bound & \lref{Erdos269/PurePowerIrrationality.lean}{74}{stateGap_lower_bound}\\
 small-form criterion & \lref{Erdos269/PurePowerIrrationality.lean}{94}{irrational_of_small_nonzero_forms}\\

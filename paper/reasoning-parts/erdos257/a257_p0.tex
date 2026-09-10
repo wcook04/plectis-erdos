@@ -61,9 +61,11 @@ closure). The base-$2$ instance recovering the classical Erd\H{o}s--Borwein cons
 is \lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335}, a one-line corollary.
 \end{thm}
 
-This is the base-$b$ generalization of Erd\H{o}s's original 1948 irrationality theorem for
-$\sum 1/(2^n-1)$ (cited, in its base-$2$ form, as an input at Remark~\ref{rem:no-ties} below); its
-Lean form removes the base restriction entirely and is landed with no open hypotheses.
+This formalizes the positive-integer-base scope of
+\href{https://www.renyi.hu/~p_erdos/1948-04.pdf}{Erd\H{o}s's classical 1948 full-support theorem},
+which already covered integer bases of absolute value greater than one. The base-two
+Erd\H{o}s--Borwein constant is a particular case; the Lean theorem is landed with no open
+hypotheses.
 
 \subsubsection{Named infinite-support families}
 
@@ -127,9 +129,9 @@ measure in its ambient interval $[0,E]$, whose length is $E\approx1.6067$.
 \lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1656},
 \lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1672},
 \lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1681},
-\lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}. The proofs use only
-superincreasingness of $\{x_n\}$ and summability, so the argument transfers verbatim to any strictly
-superincreasing weight series.\\
+\lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}. Strict separation and summability give the compactness, unique coding, and Cantor topology. The
+measure assertion is Mersenne-specific: if $R_N=\sum_{n>N}x_n$, the level-$N$ cylinder length is
+$2^N R_N\to1$. Other weight sequences require their own tail asymptotic.\\
 \textbf{Chains with:} Theorem~\ref{thm:greedy-survival-record} below (compactness is exactly what powers
 every ``limit of achieved points is achieved'' argument used downstream, including the seam-limit
 route of Part~2).
@@ -151,8 +153,9 @@ reverse \lean{mem\_mersenneAchievementSet\_of\_greedy\_survival}{GreedyAchieveme
 \subsection{The greedy orbit, exactly}
 \label{ssec:greedy-orbit}
 
-Fix the target $1/2$ and the weights $x_n = 1/(2^n-1)$, $n \ge 2$ (rank $1$ contributes the
-undefined $x_1$ and is excluded by convention; all indexing below starts at rank $2$). The greedy
+Fix the target $1/2$ and the weights $x_n = 1/(2^n-1)$. Here $x_1=1$, so exponent one cannot occur
+in a representation of $1/2$ by positive summands; the half-target discussion starts at exponent
+two. (The reciprocal formula is undefined only at exponent zero.) The greedy
 orbit is the unique deterministic process forced by superincreasingness
 (Theorem~\ref{thm:greedy-survival-record}):
 

@@ -30,7 +30,10 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
-ORIENTATION_MAX_BYTES = 32_000
+# Aligned with check_release.py's on-disk 36 KB first-read ceiling. The
+# supported-root freeze added public modules and the compact orientation
+# packet crossed the older 32 KB builder cap by tens of bytes.
+ORIENTATION_MAX_BYTES = 36_000
 # Keep the human first-read projection aligned with the release scoreboard.
 # Detailed route inventories remain in the machine orientation and query API.
 #

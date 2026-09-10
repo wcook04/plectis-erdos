@@ -22,11 +22,11 @@ Scale is the load-bearing axis of the whole corpus. Both open problems are, at b
 statements: \#257 half-membership needs infinitely many exact rows or infinitely many positive
 greedy skips (Table~\ref{tab:scale-ladder}, rows C1/C3), and the unconditional track needs a
 run-length bound that holds at every reset row out to infinity, not merely to a certified depth.
-Every machine-checked theorem in the tree is fixed, bounded, or uniform. No amount of raising a
-uniform certificate's threshold, by itself, produces a cofinal witness — a uniform statement
-``$\forall n\ge N_0$'' is a single first-order sentence with no existential content past $N_0$,
-while a cofinal statement needs infinitely many \emph{witnesses to a further existential}, which is
-a strictly different logical shape.
+Each row must retain its predicate, quantified variable, and every premise. An unconditional
+eventual assertion $\forall n\ge N_0,\,P(n)$ does give cofinal witnesses to that same predicate,
+by taking $n=\max(N,N_0)$. A conditional uniform consumer $H(n)\Rightarrow C(n)$ supplies no
+witness until $H(n)$ is established, and a checked finite band supplies no assertion beyond its
+endpoints. These are different logical shapes and are recorded separately below.
 
 Table~\ref{tab:scale-ladder} samples the ladder across all four non-trivial scales, drawn from the
 \texttt{BooleanMobius}, \texttt{HalfCutLocator}, \texttt{GreedyAchievementSet}, and seam-integer
@@ -205,9 +205,9 @@ not, by itself, manufacture the next witness at a larger depth).
 
 \par\medskip
 
-This is consistent with, not a substitute for, the general logical point above: promoting a
-uniform statement to a cofinal one requires new content — an explicit witness-producing
-construction — not a change of quantifier bookkeeping.
+This is consistent with, not a substitute for, the general logical point above: an eventual-uniform proof of the same
+witness predicate already implies cofinal production. New content is required only when the
+uniform row is conditional, concerns another predicate, or covers only a finite band.
 \end{rem}
 
 \section{One orbit in four coordinates}

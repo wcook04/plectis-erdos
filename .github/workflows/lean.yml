@@ -382,6 +382,7 @@ jobs:
           COMPARATOR_REV: 789279735fe44c1c05dc54bb9f46ba4d9b8c7611
           LEAN4EXPORT_REV: 6f4e21dd70c3c11d7fbd07d39e3192792c657448
           LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+          NANODA_REV: 4c544ed4099c8227f07d5de77ad1e69fb0740a27
         run: |
           set -euo pipefail
           git clone --filter=blob:none https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
@@ -396,6 +397,12 @@ jobs:
           git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
           test "$(git -C "$RUNNER_TEMP/landrun-src" rev-parse HEAD)" = "$LANDRUN_REV"
           (cd "$RUNNER_TEMP/landrun-src" && go build -o "$RUNNER_TEMP/landrun" cmd/landrun/main.go)
+          git clone --filter=blob:none https://github.com/ammkrn/nanoda_lib.git "$RUNNER_TEMP/nanoda"
+          git -C "$RUNNER_TEMP/nanoda" checkout --detach "$NANODA_REV"
+          test "$(git -C "$RUNNER_TEMP/nanoda" rev-parse HEAD)" = "$NANODA_REV"
+          (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
+          test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
+          echo "nanoda_rev=$NANODA_REV" >> "$GITHUB_OUTPUT"
           echo "comparator_rev=$COMPARATOR_REV" >> "$GITHUB_OUTPUT"
           echo "lean4export_rev=$LEAN4EXPORT_REV" >> "$GITHUB_OUTPUT"
           echo "landrun_rev=$LANDRUN_REV" >> "$GITHUB_OUTPUT"
@@ -408,6 +415,7 @@ jobs:
           set +e
           export COMPARATOR_LANDRUN="$RUNNER_TEMP/landrun"
           export COMPARATOR_LEAN4EXPORT="$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export"
+          export COMPARATOR_NANODA="$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
           comparator="$RUNNER_TEMP/comparator/.lake/build/bin/comparator"
           systemctl --user show-environment > systemd-user-preflight.log 2>&1
           if [[ $? -eq 0 ]]; then
@@ -422,13 +430,13 @@ jobs:
             config="$1"
             if [[ "$sandbox_mode" == user-manager ]]; then
               timeout 20m systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
-                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
+                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
                 -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
                 --working-directory="$(pwd)" -- lake env "$comparator" "$config"
             elif [[ "$sandbox_mode" == system-manager-nonprivileged-unit ]]; then
               timeout 20m sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
                 --uid="$(id -un)" --gid="$(id -gn)" --pipe \
-                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
+                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
                 -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
                 --working-directory="$(pwd)" -- lake env "$comparator" "$config"
             else
@@ -519,6 +527,8 @@ jobs:
             --comparator-rev '${{ steps.tools.outputs.comparator_rev }}' \
             --lean4export-rev '${{ steps.tools.outputs.lean4export_rev }}' \
             --landrun-rev '${{ steps.tools.outputs.landrun_rev }}' \
+            --nanoda-rev '${{ steps.tools.outputs.nanoda_rev }}' \
+            --nanoda-bin "$RUNNER_TEMP/nanoda/target/release/nanoda_bin" \
             --sandbox-mode '${{ steps.comparator.outputs.sandbox_mode }}' \
             --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
             --lean4export-bin "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \

@@ -164,3 +164,4 @@ import Erdos249257.TotientTwoAdicPulseBlock
 import Erdos249257.TropicalCurvatureCarry
 import Erdos249257.TwentyOneQuotientCompactness
 import Erdos249257.TwentyOneQuotientGreedy
+import Erdos249257.AllBaseTotientKernel

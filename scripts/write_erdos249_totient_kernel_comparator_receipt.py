@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PINS = {
+    "nanoda": "4c544ed4099c8227f07d5de77ad1e69fb0740a27",
     "comparator": "789279735fe44c1c05dc54bb9f46ba4d9b8c7611",
     "lean4export": "6f4e21dd70c3c11d7fbd07d39e3192792c657448",
     "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
@@ -22,7 +23,7 @@ INPUTS = {
     "NegativeSolutions/ExternalVerification249TotientKernelBasis.lean": "e60202f6caf4bdc20e75b7f3689b524d2a68795b9a7f824313eed654ce8323a0",
     "ExternalVerification249TotientKernelBasis/comparator.json": "56b6b5ad7bcb2add1306f0d5ba809e4c104d37b393701d7c3ee8f0663fcffb2d",
     "ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json": "ca4adbdeac59ac0f08307b267d7ac7858cad9e024ee93644f8d89a57bed17948",
-    "Erdos249257/AllBaseTotientKernel.lean": "83b32e134e206a012e4c4e189ff780922dc10b18fb4edf340de6c749a72488cd",
+    "Erdos249257/AllBaseTotientKernel.lean": "5862e926deceaf81e0a4aac92a7d09467323fc563cdf3c827f465cb4e9ec5dd5",
     "ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean": "7e6260206db9907976f95ce347229965f585f7e3c517da8b13ad074e501c9268",
     "ErdosProblems/Erdos249/PaperCompleteR8/UnitPivotBasis.lean": "e11b92bf486db8d8d8059931bdf3a1424278071b74d4f590e4231902ee020965",
     "ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean": "3bdc0a97c931c8ceca6e5f46e5b9d013b0fb50505bfda05f8cc512f66a4a0dbd",
@@ -50,6 +51,8 @@ def main() -> int:
     parser.add_argument("--negative-exit", type=int, required=True)
     parser.add_argument("--positive-log", type=Path, required=True)
     parser.add_argument("--negative-log", type=Path, required=True)
+    parser.add_argument("--nanoda-rev", required=True)
+    parser.add_argument("--nanoda-bin", type=Path, required=True)
     parser.add_argument("--comparator-rev", required=True)
     parser.add_argument("--lean4export-rev", required=True)
     parser.add_argument("--landrun-rev", required=True)
@@ -64,12 +67,14 @@ def main() -> int:
     observed_inputs = {name: digest(ROOT / name) for name in INPUTS}
     input_match = observed_inputs == INPUTS
     observed_pins = {
+        "nanoda": args.nanoda_rev,
         "comparator": args.comparator_rev,
         "lean4export": args.lean4export_rev,
         "landrun": args.landrun_rev,
     }
     binary_digests = {}
     for name, path in {
+        "nanoda": args.nanoda_bin,
         "comparator": args.comparator_bin,
         "lean4export": args.lean4export_bin,
         "landrun": args.landrun_bin,

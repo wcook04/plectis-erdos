@@ -137,6 +137,7 @@ not establish. [`docs/claims.json`](docs/claims.json) owns claim status,
 reader-priority ranking, and [prior art](docs/PRIOR_ART.md) records earlier and
 subsuming work. None of it decides whether a statement captures the intended
 problem, whether a result is new, or whether a problem is solved.
+Do not infer results from private or unreleased work.
 
 ## Contribute
 
@@ -167,10 +168,12 @@ Agents arriving cold start at [`AGENTS.override.md`](AGENTS.override.md); the
 
 ## Citation and licence
 
-Cite release `v0.9.0` via [CITATION.cff](CITATION.cff). Apache-2.0, with prior
-work and the MIT-0 wrapper recorded in [REUSE.toml](REUSE.toml) and the
-[licence texts](LICENSES/Apache-2.0.txt). [SCOPE](SCOPE.md) defines the corpus;
-[`CONTRIBUTING.md`](CONTRIBUTING.md) covers corrections.
+Cite release `v0.9.0` via [CITATION.cff](CITATION.cff). Code, scripts, and
+documentation are Apache-2.0. The manuscript layer, including the paper source
+and rendered PDFs, is CC-BY-4.0. Prior work and the MIT-0 wrapper are recorded
+in [REUSE.toml](REUSE.toml) and the [licence texts](LICENSES/Apache-2.0.txt).
+[SCOPE](SCOPE.md) defines the corpus; [`CONTRIBUTING.md`](CONTRIBUTING.md)
+covers corrections.
 [Where I actually am](HUMAN_ENTRY.md#where-i-actually-am) says why this is
 being released now.
 
@@ -180,12 +183,12 @@ being released now.
 
 The layer a mathematician should judge is small: 140 curated claim records in 30 contribution families, reaching Lean source through 449 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-The rest is engineering inventory. About 92% of the 155,274 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 91% of the 156,245 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,214 |
-| Formal results and supporting lemmas | 152,720 |
+| Lean modules (the two library roots) | 1,274 |
+| Formal results and supporting lemmas | 153,502 |
 | Curated claim records | 140 |
 | Contribution families | 30 |
 

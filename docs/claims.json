@@ -934,6 +934,7 @@
       "title": "Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257",
       "source": "paper/erdos249-257-main-paper.tex",
       "rendered": "erdos249-257-main-paper.pdf",
+      "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
       "role": "Canonical gateway: status-sorted exact mathematics, common architecture, and one-page spines for both open problems.",
       "principal_declaration_index_label": "app:index",
       "claim_anchor_field": "paper_label",
@@ -942,6 +943,7 @@
           "title": "Factorial Denominator Series: a complete working record of Erdős Problem 68",
           "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
           "rendered": "paper/erdos-68-factorial-denominator-irrationality.pdf",
+          "formal_source_ref": "17b41a2a0bcf988a7612e562bfdb124536974459",
           "role": "Standalone theorem-led problem note for Erdős #68 and the factorial-channel breakpoint boundary.",
           "anchor_label_allowlist": [
             "res:bandbreakpoint"
@@ -951,6 +953,7 @@
           "title": "Running LCM Reciprocal Sums for Finite Prime Sets",
           "source": "paper/erdos-269-three-prime-running-lcm.tex",
           "rendered": "paper/erdos-269-three-prime-running-lcm.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #269 and the three-prime residue-escape boundary.",
           "anchor_label_allowlist": [
             "res:consumer",
@@ -961,6 +964,7 @@
           "title": "An Integral-Shift Criterion for Dyadic Tail Recurrences",
           "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
           "rendered": null,
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #251 and the prime-gap tail-shift boundary.",
           "anchor_label_allowlist": [
             "res:irr-equivalence",
@@ -971,6 +975,7 @@
           "title": "Newton Flow and Ray Separation in Polynomial Lemniscates",
           "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "rendered": "paper/erdos-1041-lemniscate-newton-flow.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #1041 and the finite ray-separation boundary.",
           "anchor_label_allowlist": [
             "res:ray"
@@ -980,6 +985,7 @@
           "title": "Arithmetic Boundaries at Base 3/2 for Erdős Problem 1049",
           "source": "paper/erdos-1049-rational-base-lambert.tex",
           "rendered": "erdos-1049-rational-base-lambert.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #1049 and the coordinatewise-corridor and cleared-tail boundaries.",
           "anchor_label_allowlist": [
             "res:nocorridor",
@@ -991,6 +997,7 @@
           "title": "Reciprocal-Tail Rigidity for Erdős Problem 243",
           "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered": "erdos-243-reciprocal-tail-rigidity.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #243 and the bounded-rise fresh-modulus barrier.",
           "anchor_label_allowlist": [
             "res:barrier"
@@ -1000,6 +1007,7 @@
           "title": "A Basis for the 2-Kernel of Euler's Totient",
           "source": "paper/erdos-249-binary-totient-series.tex",
           "rendered": "erdos-249-binary-totient-series.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #249 and the dyadic/all-base totient-kernel boundary.",
           "anchor_label_allowlist": [
             "res:basis",
@@ -1014,18 +1022,21 @@
           "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
           "source": "paper/erdos249-totient-reasoning-surface.tex",
           "rendered": "erdos249-totient-reasoning-surface.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Full problem-specific reasoning record for Erdős #249."
         },
         {
           "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
           "source": "paper/erdos257-mersenne-reasoning-surface.tex",
           "rendered": "erdos257-mersenne-reasoning-surface.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Full problem-specific reasoning record for Erdős #257."
         },
         {
           "title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry",
           "source": "paper/erdos-257-mersenne-support-subseries.tex",
           "rendered": "erdos-257-mersenne-support-subseries.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #257 and the 1/21 frontier.",
           "anchor_label_allowlist": [
             "res:period",
@@ -1045,42 +1056,42 @@
             "res:degree-three",
             "res:reflected-critical-value"
           ],
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "17b41a2a0bcf988a7612e562bfdb124536974459"
         },
         {
           "title": "Rational-Base Lambert Series: Complete Reasoning Record",
           "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
           "rendered": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #1049.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "17b41a2a0bcf988a7612e562bfdb124536974459"
         },
         {
           "title": "The Factorial-Denominator Series: Complete Reasoning Record",
           "source": "paper/erdos68-factorial-reasoning-surface.tex",
           "rendered": "erdos68-factorial-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #68.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "85054358cdca543531b473684e9c9d1c0ece6dd7"
         },
         {
           "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
           "source": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "85054358cdca543531b473684e9c9d1c0ece6dd7"
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
           "source": "paper/erdos251-prime-gap-reasoning-surface.tex",
           "rendered": "erdos251-prime-gap-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #251.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
         },
         {
           "title": "The Three-Prime Running LCM: Complete Reasoning Record",
           "source": "paper/erdos269-running-lcm-reasoning-surface.tex",
           "rendered": "erdos269-running-lcm-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #269.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
         }
       ]
     },
@@ -1178,7 +1189,7 @@
             "id": "erdos_269_note",
             "source": "paper/erdos-269-three-prime-running-lcm.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The running least common multiple of a three-prime smooth prefix, its literal dyadic block digits and bounded radix, exact residue/coboundary carry forms, higher-rank block and observer obstructions, and the conditional reduction to a coprime reduced carry; actual carry divisibility and cofinal window escape remain open."
+            "thesis": "The running least common multiple of a three-prime smooth prefix, its literal dyadic block digits and bounded radix, exact residue/coboundary carry forms, higher-rank block and observer obstructions, the actual rationality-to-positive-reduced-carry bridge, and the exact cofinal-window equivalence; cofinal local-window escape remains open."
           },
           {
             "id": "erdos_1041_note",
@@ -1632,7 +1643,7 @@
           "prior_art_posture": "The residue classifier and bounded-carry consumer are source-specific formal results; no novelty, priority, significance, or three-prime irrationality claim is made.",
           "primary_narrative_owner": "paper/erdos-269-three-prime-running-lcm.tex",
           "source_route": "python3 scripts/query_corpus.py --claim three_prime_finite_residue_contradiction",
-          "consumer_or_open_obligation": "The actual rationality-to-carry bridge and the denominator-dependent cofinal local-window escape remain open, so neither consumer settles the three-prime problem; the observer supplies no two-dimensional representation and excludes none.",
+          "consumer_or_open_obligation": "The actual rationality-to-positive-reduced-carry bridge is established. The denominator-dependent cofinal local-window escape remains open, so the consumers do not settle the three-prime problem; the observer supplies no two-dimensional representation and excludes none.",
           "view_decision": "problem_note_reference_detail"
         },
         {
@@ -2329,7 +2340,8 @@
           "path": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean",
           "role": "Lean proof module",
           "imports": [
-            "Erdos249257.DiagonalPincerCertificatesT64"
+            "Erdos249257.DiagonalPincerCertificates",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64"
           ]
         },
         {
@@ -9167,6 +9179,54 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1049.AllRow.Audit",
+          "path": "ErdosProblems/Erdos1049/AllRow/Audit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.AllRow.Smoke"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.AllRow.Filtered",
+          "path": "ErdosProblems/Erdos1049/AllRow/Filtered.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.AllRow.FiniteStates",
+          "path": "ErdosProblems/Erdos1049/AllRow/FiniteStates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.AllRow.Filtered"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.AllRow.Producer",
+          "path": "ErdosProblems/Erdos1049/AllRow/Producer.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.AllRow.SourcePolynomial"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.AllRow.Smoke",
+          "path": "ErdosProblems/Erdos1049/AllRow/Smoke.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.AllRow.Producer"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.AllRow.SourcePolynomial",
+          "path": "ErdosProblems/Erdos1049/AllRow/SourcePolynomial.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.AllRow.FiniteStates"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.BezoutPluckerJets",
           "path": "ErdosProblems/Erdos1049/BezoutPluckerJets.lean",
           "role": "Lean proof module",
@@ -9219,6 +9279,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient",
+          "path": "ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.AdelicHeightBridge"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.CubicNeighbourIdentity",
           "path": "ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
           "role": "Lean proof module",
@@ -9267,6 +9335,59 @@
           "path": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.NewtonV6.RegularRateExtractionSpec",
+          "path": "ErdosProblems/Erdos243/NewtonV6/RegularRateExtractionSpec.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.NewtonV8.Discrete",
+          "path": "ErdosProblems/Erdos243/NewtonV8/Discrete.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.NewtonV8.GeneralRateExtractionBridge",
+          "path": "ErdosProblems/Erdos243/NewtonV8/GeneralRateExtractionBridge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.NewtonV6.RegularRateExtractionSpec",
+            "ErdosProblems.Erdos243.NewtonV8.RisingQuotients"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.NewtonV8.NewtonClassification",
+          "path": "ErdosProblems/Erdos243/NewtonV8/NewtonClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.NewtonV8.SharpRegularRateGrowth"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.NewtonV8.NewtonClassificationAudit",
+          "path": "ErdosProblems/Erdos243/NewtonV8/NewtonClassificationAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.NewtonV8.NewtonClassification"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.NewtonV8.RisingQuotients",
+          "path": "ErdosProblems/Erdos243/NewtonV8/RisingQuotients.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.NewtonV8.Discrete"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.NewtonV8.SharpRegularRateGrowth",
+          "path": "ErdosProblems/Erdos243/NewtonV8/SharpRegularRateGrowth.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.NewtonV8.GeneralRateExtractionBridge"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity",
@@ -9573,6 +9694,17 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos251.ActualPrimePaperR11",
+          "path": "ErdosProblems/Erdos251/ActualPrimePaperR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeSourceR11",
+            "ErdosProblems.Erdos251.BinarySourceR11",
+            "ErdosProblems.Erdos251.NonconcentrationConsequencesR11",
+            "ErdosProblems.Erdos251.PerturbationGrowthR11"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos251.AffineCylinderCollapse",
           "path": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
           "role": "Lean proof module",
@@ -9588,6 +9720,29 @@
           "imports": [
             "ErdosProblems.Erdos251.PrimeGapDyadicTail"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.AllResidueCarryCountermodel",
+          "path": "ErdosProblems/Erdos251/AllResidueCarryCountermodel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.AllResidueLogarithmicR9",
+          "path": "ErdosProblems/Erdos251/AllResidueLogarithmicR9.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.AllResidueCarryCountermodel",
+            "ErdosProblems.Erdos251.LogarithmicCarryAsymptoticsR8"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.BinarySourceR11",
+          "path": "ErdosProblems/Erdos251/BinarySourceR11.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
@@ -9606,6 +9761,15 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos251.GrowingBlocksR11",
+          "path": "ErdosProblems/Erdos251/GrowingBlocksR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparsePolylogR11",
+            "ErdosProblems.Erdos251.ReturnedSparseWindow"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos251.KernelDenominatorFloor",
           "path": "ErdosProblems/Erdos251/KernelDenominatorFloor.lean",
           "role": "Lean proof module",
@@ -9614,11 +9778,94 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos251.LogarithmicCarryAsymptoticsR8",
+          "path": "ErdosProblems/Erdos251/LogarithmicCarryAsymptoticsR8.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.LogarithmicCarryR8",
+            "ErdosProblems.Erdos251.SparseScheduleDensityR8"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.LogarithmicCarryR8",
+          "path": "ErdosProblems/Erdos251/LogarithmicCarryR8.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PaperBoundedCarryR7"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.NonconcentrationConsequencesR11",
+          "path": "ErdosProblems/Erdos251/NonconcentrationConsequencesR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.NonconcentrationCoreR11",
+            "ErdosProblems.Erdos251.SparsePaperR11"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.NonconcentrationCoreR11",
+          "path": "ErdosProblems/Erdos251/NonconcentrationCoreR11.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos251.OrderLatticeDiagonal",
           "path": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PaperBoundedCarryR7",
+          "path": "ErdosProblems/Erdos251/PaperBoundedCarryR7.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PaperCoreR7"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PaperCoreR7",
+          "path": "ErdosProblems/Erdos251/PaperCoreR7.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.RealPrimeGapTail",
+            "ErdosProblems.Erdos251.PolynomialGapSeriesValue",
+            "ErdosProblems.Erdos251.FreePairReduction",
+            "ErdosProblems.Erdos251.AffineCylinderCollapse",
+            "ErdosProblems.Erdos251.BoundedPerturbationCountermodel"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PaperFiniteCertificatesR7",
+          "path": "ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PaperTailBoundsR7",
+            "ErdosProblems.Erdos251.KernelDenominatorFloor"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PaperSparseCouplingR7",
+          "path": "ErdosProblems/Erdos251/PaperSparseCouplingR7.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PaperTailBoundsR7",
+          "path": "ErdosProblems/Erdos251/PaperTailBoundsR7.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PaperCoreR7"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PerturbationGrowthR11",
+          "path": "ErdosProblems/Erdos251/PerturbationGrowthR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparsePaperR11"
           ]
         },
         {
@@ -9636,11 +9883,87 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos251.PrimeSourceR11",
+          "path": "ErdosProblems/Erdos251/PrimeSourceR11.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos251.RealPrimeGapTail",
           "path": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.ResidueFeedbackCore",
+          "path": "ErdosProblems/Erdos251/ResidueFeedbackCore.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparseRationalisationCore"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.ReturnedSparseWindow",
+          "path": "ErdosProblems/Erdos251/ReturnedSparseWindow.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PaperSparseCouplingR7"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.SparseAmbientR9",
+          "path": "ErdosProblems/Erdos251/SparseAmbientR9.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparseIntervalR8"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.SparseIntervalR8",
+          "path": "ErdosProblems/Erdos251/SparseIntervalR8.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparseScheduleDensityR8"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.SparsePaperR11",
+          "path": "ErdosProblems/Erdos251/SparsePaperR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.GrowingBlocksR11"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.SparsePolylogR11",
+          "path": "ErdosProblems/Erdos251/SparsePolylogR11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparseAmbientR9"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.SparseRationalisationCore",
+          "path": "ErdosProblems/Erdos251/SparseRationalisationCore.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos251.SparseScheduleDensityR8",
+          "path": "ErdosProblems/Erdos251/SparseScheduleDensityR8.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparseScheduleR8"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.SparseScheduleR8",
+          "path": "ErdosProblems/Erdos251/SparseScheduleR8.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.ResidueFeedbackCore"
           ]
         },
         {
@@ -10066,6 +10389,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.DivisorChannelBasis",
+          "path": "ErdosProblems/Erdos68/DivisorChannelBasis.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialChannelCertificate"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.DivisorFactorialCentre",
           "path": "ErdosProblems/Erdos68/DivisorFactorialCentre.lean",
           "role": "Lean proof module",
@@ -10133,9 +10464,9 @@
           "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos68.FactorialGapPlateauCore",
-            "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
-            "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement"
+            "ErdosProblems.Erdos68.CanonicalFactorialDigits",
+            "ErdosProblems.Erdos68.PrimeUnitTranslator",
+            "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
           ]
         },
         {
@@ -10163,11 +10494,176 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.FiniteLeadBlocks.Size000",
+          "path": "ErdosProblems/Erdos68/FiniteLeadBlocks/Size000.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FiniteLeadBlocks.Size001",
+          "path": "ErdosProblems/Erdos68/FiniteLeadBlocks/Size001.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.GapScalarNormalForm",
           "path": "ErdosProblems/Erdos68/GapScalarNormalForm.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos68.FactorialZeroPlateau"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteAsymptotics",
+          "path": "ErdosProblems/Erdos68/PaperCompleteAsymptotics.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.ChannelIntegralCongruence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
+          "path": "ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure",
+          "path": "ErdosProblems/Erdos68/PaperCompleteDyadicEnclosure.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PrimeUnitTranslator"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "path": "ErdosProblems/Erdos68/PaperCompleteExisting.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CompanionOrbitRationality",
+            "ErdosProblems.Erdos68.FactorialZeroPlateau",
+            "ErdosProblems.Erdos68.FactorialShiftFamilyOrbit",
+            "ErdosProblems.Erdos68.ShrinkingTargetNormalForm",
+            "ErdosProblems.Erdos68.PrimePoleCriterion",
+            "ErdosProblems.Erdos68.PrimePoleDenominator",
+            "ErdosProblems.Erdos68.PrimeZeroBranch",
+            "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+            "ErdosProblems.Erdos68.PrimeUnitTranslator"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteFiniteLeadArithmetic",
+          "path": "ErdosProblems/Erdos68/PaperCompleteFiniteLeadArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+          "path": "ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteFiniteSizeData",
+          "path": "ErdosProblems/Erdos68/PaperCompleteFiniteSizeData.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteFiniteLeadArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteIntegerSpan",
+          "path": "ErdosProblems/Erdos68/PaperCompleteIntegerSpan.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm",
+          "path": "ErdosProblems/Erdos68/PaperCompleteKernelFloorAlgorithm.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteKernelFloorSoundness",
+          "path": "ErdosProblems/Erdos68/PaperCompleteKernelFloorSoundness.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm",
+            "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum",
+          "path": "ErdosProblems/Erdos68/PaperCompleteKernelSizeSum.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteKernelFloorSoundness",
+            "ErdosProblems.Erdos68.PaperCompleteFiniteSizeData",
+            "ErdosProblems.Erdos68.FiniteLeadBlocks.Size000",
+            "ErdosProblems.Erdos68.FiniteLeadBlocks.Size001"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteLiminf",
+          "path": "ErdosProblems/Erdos68/PaperCompleteLiminf.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteRadiusLimit"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+          "path": "ErdosProblems/Erdos68/PaperCompleteLowKernel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
+            "ErdosProblems.Erdos68.PaperCompleteIntegerSpan"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
+          "path": "ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+          "path": "ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+            "ErdosProblems.Erdos68.PaperCompleteMomentHorizon"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteRadiusLimit",
+          "path": "ErdosProblems/Erdos68/PaperCompleteRadiusLimit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteAsymptotics"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+          "path": "ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+            "ErdosProblems.Erdos68.PrimeUnitTranslator"
           ]
         },
         {
@@ -12476,7 +12972,7 @@
           "remaining_open_effect": {
             "remaining_open_proposition_id": "remaining_open.erdos_269_three_prime_irrationality",
             "operation": "narrows",
-            "statement": "Closes the finite least-positive-residue contradiction, while the actual running-LCM rationality-to-carry bridge and cofinal window escape remain open."
+            "statement": "Closes the finite least-positive-residue contradiction. The actual running-LCM rationality-to-positive-reduced-carry bridge is established; cofinal window escape remains open."
           }
         },
         {
@@ -12486,7 +12982,7 @@
           "remaining_open_effect": {
             "remaining_open_proposition_id": "remaining_open.erdos_269_three_prime_irrationality",
             "operation": "re_expresses",
-            "statement": "Re-expresses a route to the three-prime irrationality frontier as a denominator-dependent cofinal residue-escape producer; the producer and actual-series bridge are not proved."
+            "statement": "Re-expresses the three-prime irrationality frontier exactly as a denominator-dependent cofinal residue-escape producer. The actual-series rationality-to-carry bridge is established; the escape producer is not proved."
           }
         },
         {
@@ -13329,11 +13825,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "85054358cdca543531b473684e9c9d1c0ece6dd7",
+      "ref": "17b41a2a0bcf988a7612e562bfdb124536974459",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-09-r1"
+      "public_tag": "formal-source-2026-09-09-r2"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -13967,7 +14463,7 @@
         "original_source": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
         "wrapper_declaration": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
         "statement": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound.",
-        "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
+        "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The representative remains a conditional consumer for arbitrary words. For the actual three-prime word, the rationality-to-reduced-carry bridge is established separately; the source-specific cofinal escape producer is not proved. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
       },
       {
         "id": "newton_small_translation",
@@ -14631,7 +15127,7 @@
               "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic"
             ],
             "comparator_disposition": "represented_by_three_prime_structure_target",
-            "boundary": "The fibre bounds do not provide the missing divisibility bridge."
+            "boundary": "These fibre bounds are counting input, not an escape producer. The separate actual-series divisibility bridge is established."
           },
           {
             "id": "rank_two_kernel_no_go",
@@ -14666,7 +15162,7 @@
               "ErdosProblems.Erdos269.leastPositiveResidue",
               "ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape"
             ],
-            "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
+            "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The representative remains a conditional consumer for arbitrary words. For the actual three-prime word, the rationality-to-reduced-carry bridge is established separately; the source-specific cofinal escape producer is not proved. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
           },
           {
             "id": "weighted_phase_carry_observer",
@@ -14680,7 +15176,7 @@
               "ErdosProblems.Erdos269.residueDigit_mem_interval",
               "ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation"
             ],
-            "boundary": "The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open."
+            "boundary": "The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No irrationality conclusion follows from this observer alone. The actual rationality-to-positive-reduced-carry bridge is established separately; cofinal local-window escape remains open."
           },
           {
             "id": "three_prime_finite_search",
@@ -14918,7 +15414,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 700
+        "line": 705
       }
     },
     {
@@ -14937,7 +15433,7 @@
       "id": "remaining_open.erdos_269_three_prime_irrationality",
       "status": "open",
       "open_target_claim": "erdos_269",
-      "statement": "Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three; the rationality-to-carry bridge and cofinal window escape remain open.",
+      "statement": "Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three. For {2,3,5}, the rationality-to-carry bridge is established and cofinal local-window escape remains open.",
       "paper_anchor": {
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
@@ -14990,19 +15486,19 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 486
+        "line": 489
       }
     },
     {
       "id": "remaining_open.erdos_269_cofinal_local_window_escape",
       "status": "open",
       "open_target_claim": "erdos_269",
-      "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K^235(B, ℓ+h).",
+      "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
       "paper_anchor": {
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 492
+        "line": 495
       }
     },
     {
@@ -15014,7 +15510,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 501
+        "line": 504
       }
     },
     {
@@ -15050,7 +15546,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 714
+        "line": 719
       }
     },
     {
@@ -15062,7 +15558,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 723
+        "line": 728
       }
     },
     {
@@ -15074,7 +15570,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 733
+        "line": 738
       }
     }
   ],
@@ -15095,7 +15591,7 @@
       "id": "erdos_269",
       "label": "Erdős #269: irrationality of running-LCM reciprocal sums",
       "status": "open",
-      "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release; the checked three-prime structure and conditional residue-escape consumer do not provide the missing rationality-to-carry bridge or cofinal escape.",
+      "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality",
         "remaining_open.erdos_269_reduced_tail_nonintegrality",
@@ -15322,7 +15818,7 @@
       "id": "three_prime_cofinal_window_carry_extinction",
       "label": "Conditional cofinal-window extinction of bounded carries for #269",
       "status": "conditional reduction",
-      "statement": "If the denominator-dependent cofinal local-window residue escape holds, then for every positive multiplier B coprime to 30 there is no positive integral sequence satisfying the exact cleared recurrence d_{n+1}=b_n d_n−B m_n together with the corresponding short bound. The same contradiction applies to an explicitly absorbed nonzero common-factor carry after exact cancellation. The bridge from the actual running-LCM series to this carry system and the cofinal escape remain open.",
+      "statement": "If the denominator-dependent cofinal local-window residue escape holds, then for every positive multiplier B coprime to 30 there is no positive integral sequence satisfying the exact cleared recurrence d_{n+1}=b_n d_n−B m_n together with the corresponding short bound. The same contradiction applies to an explicitly absorbed nonzero common-factor carry after exact cancellation. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is established separately; the cofinal escape producer remains open.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality"
       ],
@@ -15379,12 +15875,12 @@
         {
           "name": "octic_cap_is_exactly_beaten",
           "module": "ErdosProblems/Erdos269/R12/OcticWindowBand.lean",
-          "line": 16
+          "line": 19
         },
         {
           "name": "octic_window_band",
           "module": "ErdosProblems/Erdos269/R12/OcticWindowBand.lean",
-          "line": 74
+          "line": 77
         }
       ]
     },
@@ -17300,7 +17796,7 @@
       "declarations": [
         {
           "name": "certifiedKill_diagonal_t64",
-          "module": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean",
+          "module": "Erdos249257/DiagonalPincerCertificatesT64.lean",
           "line": 1928
         }
       ]

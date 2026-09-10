@@ -210,8 +210,8 @@ middle coordinate.
 \lean{middleProducer\_allRight\_landingExcess\_window}{HalfCylinderMiddleCarryLowerBound.lean:2547},
 \lean{middleThenAllRight\_landingExcess\_two\_le}{HalfCylinderMiddleCarryLowerBound.lean:2319}.
 \textbf{Yields:} the upper-producer ``last transition before an all-right tail'' case is
-impossible unconditionally (affine carry $\le -8$); the middle cell at coordinate $-3$ is
-excluded unconditionally. What survives: a middle producer whose landing excess $X_{D+1}$
+impossible unconditionally (affine carry $\le -8$); under the final-middle-followed-by-all-right
+hypothesis, the middle cell at coordinate $-3$ is excluded. What survives in that scenario is a middle producer whose landing excess $X_{D+1}$
 satisfies $2 \le X_{D+1} < 2\sqrt{2D+2}+8$ — a window of only $O(\sqrt D)$ integers.
 \textbf{Mismatch (\texttt{hypothesis\_strength}):} the residual bad set is an explicit
 $O(\sqrt D)$-wide integer window at each candidate last-producer row, not an interval at dyadic
@@ -232,11 +232,10 @@ propagates, by induction from a decide-checked row-5 base, the two-sided invaria
 \ge 5$: $\mathrm{rem}(s) \le 2^s \vee \mathrm{overshoot}(s) \le 2^s$.
 \textbf{Mismatch (\texttt{hypothesis\_strength}):} the hypothesis is anti-concentration at
 \emph{constant} resolution — the orbit must miss three named integers — where the obligation is
-anti-concentration at resolution $2^{(r+5)/2}$. One of the three cells ($-3$) is already closed
-in the all-right-tail configuration by \texttt{finalMiddleCell\_neg\_three\_not\_last}, leaving
-two.
-\textbf{Closes it:} exclusion of the two remaining cells ($-2$ and $-1$) for the actual seam
-orbit, plus the right-pulse-leak inequality $4\cdot\mathrm{overshoot}+\mathrm{abovePulse} \le
+anti-concentration at resolution $2^{(r+5)/2}$. Cell $-3$ is closed only in the all-right-tail configuration by
+\texttt{finalMiddleCell\_neg\_three\_not\_last}. The unrestricted induction still requires
+exclusion of all three cells at every late middle row.
+\textbf{Closes it:} exclusion of all three cells for the actual seam orbit, plus the right-pulse-leak inequality $4\cdot\mathrm{overshoot}+\mathrm{abovePulse} \le
 2^{s+2}$ under $\mathrm{overshoot} \le 2^s$.
 \end{obs}
 
@@ -312,8 +311,8 @@ without touching the deviation at all — a parallel route whose own cofinal ste
 upgrade away from 257-reset.
 \textbf{Closes it:} $\mathrm{HalfRung}(J)$ for infinitely many $J$ — explicitly \emph{not}
 promotable by re-running the existing argument: the certificate window $B(J)$ is driven by $L_J
-= \mathrm{lcm}(2,\dots,J)$, growing superexponentially in $J$, the hallmark of a proof that does
-not survive bound removal.
+= \mathrm{lcm}(2,\dots,J)$, a modulus of exponential scale in $J$. Its finite computational
+cost does not by itself rule out a cofinal argument.
 \end{obs}
 
 \subsection{257-cofinal-rows: thirteen near misses}
@@ -454,9 +453,11 @@ $|E_k|/D_k > (2k{+}1)/2^{k-2}$ at every skipped rank. Pure bookkeeping over exis
 \lean{HalfGreedySkippedFullShellNonnegative}{HalfCylinderFullShellSeamBridge.lean:604},
 \lean{half\_mem\_mersenneAchievementSet\_of\_skippedFullShellNonnegative}{HalfCylinderFullShellSeamBridge.lean:633},
 \lean{HalfGreedySkippedSeamEscape}{HalfCylinderFullShellSeamBridge.lean:687}.
-\textbf{Yields:} at every skipped rank $n \ge 3$, $0 \le \mathrm{greedyHalfFrozenMargin}(n{-}1)\,n$
-— first passage of the frozen margin by the full-shell horizon $J=k{+}1$, $k=n{-}1$. Reaches
-$1/2 \in \mathrm{mersenneAchievementSet}$ by its own consumer.
+\textbf{Open property and proved consumer:} \texttt{HalfGreedySkippedFullShellNonnegative} asks
+that every skipped rank $n\ge3$ satisfy
+$0\le\mathrm{greedyHalfFrozenMargin}(n{-}1)\,n$. Assuming this property,
+\texttt{half\_mem\_mersenneAchievementSet\_of\_skippedFullShellNonnegative} proves
+$1/2\in\mathrm{mersenneAchievementSet}$.
 \textbf{Mismatch (\texttt{quantifier\_order}):} exactly three doubling steps of horizon short.
 The exact-row socket needs margin$(k,k{-}2)\ge0$; this gives margin$(k,k{+}1)\ge0$. By the
 succ-recurrence, margin$(k,k{+}1)=8\cdot$margin$(k,k{-}2)+4\,\mathrm{sc}(2k)+2\,\mathrm{sc}(2k{+}1)
@@ -633,10 +634,12 @@ shape 257-universal actually needs.
 \textbf{Mismatch (\texttt{scale\_only}):} the headline is pinned to target $1/2$ while its engine
 $\mathrm{Odd}((\mathrm{finiteErdosSum}\,F\,2).\mathrm{den})$ is already fully general over finite
 supports.
-\textbf{Closes it:} verbatim re-derivation — $\forall t:\mathbb Q$ with even reduced denominator,
+\textbf{Sufficient specialization:} verbatim re-derivation — $\forall t:\mathbb Q$ with even reduced denominator,
 $\forall A$ finite with $0\notin A$, $\mathrm{erdosSupportSeries}\,2\,A \ne (t:\mathbb R)$. No new
-mathematics. Paired with NM-02: universal \#257 at $b{=}2$ is false iff some rational $t$ with
-even reduced denominator has an infinitely-skipping greedy Mersenne orbit.
+mathematics. Thus a represented rational with even reduced denominator would refute universal
+\#257 at $b=2$. The converse is not established. If $\mathrm{FinVal}$ denotes the finite-support
+values, the exact unrestricted condition is
+$(\mathbb Q\cap\mathrm{mersenneAchievementSet})\smallsetminus\mathrm{FinVal}\ne\varnothing$.
 \end{obs}
 
 \begin{obs}[NM-04 / dyadic-only reciprocal-mass rigidity, generalization sitting unused] \ev{Lean}
@@ -811,11 +814,9 @@ larger than $|F|$.
 
 \par\medskip
 
-\textbf{Closes it:} a common-multiple selection with divisor economy — an infinite $A$ must admit
-$L$ with $|\{a\in A: a\mid L\}| > 2\,\mathrm{binaryCoeffTail}(\mathrm{supportCoeff}\,A)(L{-}1) +
-1/v$. Since the tail is a $2^{-j}$-weighted average near $L$, this demands an anti-concentration
-statement about divisor incidence of $A$ in the window $(L,\,L{+}O(\log L)]$ — the same shape as
-the missing certificate, restated; the route as built cannot supply it.
+\textbf{Failure of the proposed inequality.} The tail already contains the contribution
+$f_A(L)/2$, so $2T_A(L-1)\ge f_A(L)$ identically. The proposed strict excess by $1/v$ is therefore
+impossible. This route supplies no sufficient condition until a different inequality is found.
 \end{obs}
 
 \begin{obs}[NM-12 / rank-gap dichotomy, target-generic killer under a target-pinned dichotomy] \ev{Lean}
@@ -858,10 +859,10 @@ terminating, terminating branch killable by a positive far tail.
 \par\medskip
 
 \textbf{Closes it:} an aperiodic version of the dichotomy — for arbitrary $A$, either
-$\mathrm{erdosSupportSeries}\,2\,A$ is irrational or $2^k\cdot$it is an integer. For infinite $A$
-the terminating branch is already excluded by \texttt{finiteErdosSum\_den\_odd}-style parity plus
-a positive far tail, so this dichotomy — if provable without periodicity — would close the
-obligation outright. Periodicity is used only to manufacture the full-block certificates
+$\mathrm{erdosSupportSeries}\,2\,A$ is irrational or $2^k\cdot$it is an integer. For arbitrary infinite $A$, exclusion of the terminating branch is itself an additional unproved
+assertion; finite-support odd-denominator parity does not pass automatically to an infinite limit.
+An aperiodic dichotomy together with a valid terminating-branch exclusion would close the
+obligation. Periodicity is used only to manufacture the full-block certificates
 (``periodicity alone manufactures the full-block certificates,'' per the file's own docstring),
 so removing it is again NM-01's missing producer, restated a third time.
 \end{obs}
@@ -907,7 +908,7 @@ every rank; the corpus supplies no finite certificate that the orbit survives fo
 completion theorem turning a long surviving prefix into membership.
 
 The reset-crossing sockets, truncation-rung ladder, and sharp-capacity inequalities feed
-sufficient conditions for a finite fatal gap. They are not proved equivalent to one another,
+sufficient conditions for membership. They are not proved equivalent to one another,
 nor is failure to find one at a given depth evidence of survival. Consequently these searches
 give at most a semi-decision procedure for \emph{nonmembership of the specific value $1/2$}.
 Halting does not prove the universal statement in \#257, and non-halting does not prove that
@@ -938,24 +939,17 @@ unconditional tail-nonnegativity lemma
 $\mathrm{erdosSupportSeries}\,2\,A\le1/2$ (line 859). \textbf{The scope limit is exact and must
 not be widened by inference:} this equivalence does \emph{not} extend to every $A$ with $1\notin
 A$ — dropping the greedy-specific $\le1/2$ fact yields only $\mathrm{hbound}\Leftrightarrow
-\delta\le0$ (a one-sided condition), not $\delta=0$. It also does \emph{not} extend to the
-sibling socket \lean{GreedyHalfCarryCofinalStripReturn}{CofinalStripReturn.lean:76}: \texttt{hbound} is stated
-in \texttt{Real.sqrt}, while \texttt{CofinalStripReturn}'s \texttt{halfStripBound} is built on
-\texttt{Nat.sqrt}, and bridging the real bound down to the tighter natural-number floor bound
-needed for a cofinal witness is an unaddressed, nontrivial gap — not routine packaging.
+\delta\le0$ (a one-sided condition), not $\delta=0$. For the sibling socket
+\lean{GreedyHalfCarryCofinalStripReturn}{CofinalStripReturn.lean:76}, the former
+\texttt{Real.sqrt}/\texttt{Nat.sqrt} adapter gap is repaired by restricting cofinal witness depths
+to perfect squares. Any remaining gap lies in the producer hypothesis, not in rounding.
 \end{rem}
 
-\begin{rem}[HalfCarryCofinalTerminalOnlyStrip, widened to constant 6, still equivalent]
-\lean{HalfCarryCofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:34}, even after widening the
-strip constant from 4 to 6 ($\mathrm{halfStripBound}'\,n = 2\,\mathrm{Nat.sqrt}\,n+6$), is
-logically equivalent to $1/2\in\mathrm{mersenneAchievementSet}$ once three small, non-circular,
-mechanical lemmas are supplied (a general one-not-in-support corollary, the discrete envelope
-inequality $\mathrm{Real.sqrt}\,n \le \mathrm{Nat.sqrt}\,n+1$, and a routine
-prefix-to-\texttt{HalfWord} construction). None of the three gaps is equivalent to \#257 or \#249
-individually — the equivalence sits one level up, at the socket itself. \textbf{This is a
-diagnostic, not a route}: it corrects TerminalOnlyCofinal.lean's own "weaker producer" framing —
-the terminal-only cofinal strip carries no strategic advantage over proving achievement
-directly.
+\begin{rem}[HalfCarryCofinalTerminalOnlyStrip: current status]
+\lean{HalfCarryCofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:34} at the original strip
+constant is logically equivalent to $1/2\in\mathrm{mersenneAchievementSet}$ after restricting
+cofinal witness depths to perfect squares and using the landed tail bound. The square-root
+conversion is no longer an open adapter; the open content is the producer itself.
 \end{rem}
 
 \begin{rem}[CofinalPositiveHalfGreedySkips is literally the problem]

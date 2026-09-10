@@ -2,6 +2,8 @@
 
 # Reciprocal-Summable Support Irrationality at Every Integer Base
 
+The source annotations in this note deliberately name two immutable revisions. Links produced by the standard note macros use `99f4bf47422a`; across this note and its long reasoning surface, fourteen paper-local coordinates link revision `f36a98bf3d3e`. These families are audited separately; a historical aggregate reference count is not asserted to be an exact inventory of this PDF.
+
 <div class="center">
 
 <span class="smallcaps">Abstract</span>

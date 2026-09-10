@@ -255,8 +255,8 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
     assert weighted["peer"]["source_declaration"].endswith(
         "finite_realisedSpan_of_factorisation"
     )
-    assert "actual three-prime running-LCM" in carry_escape["family"]["open_boundary"]
-    assert "cofinal local-window escape producer" in carry_escape["family"][
+    assert "actual three-prime word" in carry_escape["family"]["open_boundary"]
+    assert "cofinal escape producer" in carry_escape["family"][
         "open_boundary"
     ]
 

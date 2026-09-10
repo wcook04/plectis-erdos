@@ -580,7 +580,7 @@ def render_formalization(
         lines.append("      literature_dependencies:")
         if fidelity:
             for reference in fidelity.get("references", []):
-                lines.append(f"        - source: {quote(reference)}")
+                lines.append(f"        - {quote(reference)}")
             lines.extend([
                 f"      source_statement: {quote(fidelity['source_statement'])}",
                 f"      source_mapping: {quote(fidelity['mapping'])}",
@@ -646,6 +646,7 @@ def render_formalization(
                     f"        logical_dependency: {quote(fidelity['logical_dependency'])}",
                 ])
     lines.extend([
+        "acknowledgements: null",
         "external_verification:",
         "  owner: \"docs/claims.json::external_verification_packet\"",
         f"  problem_index: {quote(packet['problem_index_projection'])}",

@@ -238,13 +238,15 @@ for the concrete seam reset charge by the two-sided dyadic bound of \texttt{Half
 Three graded sockets, strongest hypothesis to weakest, all funnel into the same endpoint
 $\mathrm{half\_mem\_mersenneAchievementSet\_of\_governedFrozenMarginProducer}$.
 
-\begin{thm}[257bm:c13 --- (i) \texttt{HalfGreedySkippedFullShellNonnegative}]
+\begin{defn}[257bm:c13 --- open property \texttt{HalfGreedySkippedFullShellNonnegative}]
 \[
 \forall\ \text{skipped rank } n,\quad 0 \le \mathrm{greedyHalfFrozenMargin}(n-1,n).
 \]
-Direct, seam-free. The plainest sufficient socket in the family.
+This is an open property, not a proved theorem. It is the plainest sufficient socket in the family:
+assuming it, \texttt{half\_mem\_mersenneAchievementSet\_of\_skippedFullShellNonnegative} proves
+$1/2\in\mathrm{mersenneAchievementSet}$.
 \par\noindent\ev{Open} \scale{uniform} \coord{other:frozen-margin} \lean{HalfGreedySkippedFullShellNonnegative}{HalfCylinderFullShellSeamBridge.lean:604} \lean{half\_mem\_mersenneAchievementSet\_of\_skippedFullShellNonnegative}{HalfCylinderFullShellSeamBridge.lean:633}
-\end{thm}
+\end{defn}
 
 \begin{thm}[257bm:c14 --- (ii) \texttt{HalfGreedySkippedSeamAlignmentZero}]
 \[

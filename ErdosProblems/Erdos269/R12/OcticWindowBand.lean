@@ -7,7 +7,10 @@ import ErdosProblems.Erdos269.LongWindowCapR11
 For the actual 2,3,5 height word, 8^len/15 < W. Keeping this exact scale
 strictly enlarges the sufficient decay condition in the long paper. The
 carry-dominating lower bound is still required. No irrationality producer
-is assumed or proved unconditionally. All Lean execution UNRUN.
+is assumed or proved unconditionally. A source-current public Wave A audit checked
+the named declarations with only the permitted axioms; see
+`verification/erdos269-wavea-validation.json`. A later comment-only edit requires
+the same focused audit to refresh its byte-level source binding.
 -/
 namespace ErdosProblems.Erdos269.PaperR12
 open PaperR7 PaperR8 PaperR10 PaperR11 Filter

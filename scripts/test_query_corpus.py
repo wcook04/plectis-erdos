@@ -2440,7 +2440,10 @@ def main() -> int:
         row["name"] == "not_finiteDimensional_span_fullTotientKernel"
         for row in dyadic_totient_claim["claim"]["declarations"]
     )
-    assert dyadic_totient_claim["lean_source_identity"] == signed_moment_claim["lean_source_identity"]
+    assert dyadic_totient_claim["lean_source_identity"] == lean_source_identity_for_paper(
+        claims_document,
+        dyadic_totient_claim["paper"]["source"] if dyadic_totient_claim["paper"] else None,
+    )
 
     residual_gauge_claim = query("--claim", "residual_gauge_obstruction")
     assert residual_gauge_claim["claim"]["status"] == "proved here"
@@ -2450,7 +2453,10 @@ def main() -> int:
         "module": "Erdos249257/ResidualGaugeObstruction.lean",
         "line": 55,
     }
-    assert residual_gauge_claim["lean_source_identity"] == dyadic_totient_claim["lean_source_identity"]
+    assert residual_gauge_claim["lean_source_identity"] == lean_source_identity_for_paper(
+        claims_document,
+        residual_gauge_claim["paper"]["source"] if residual_gauge_claim["paper"] else None,
+    )
     residual_gauge_paper = query("--paper-label", "res:residualgauge")
     assert residual_gauge_paper["attachment_receipt"]["complete"] is True
     assert [row["declaration"] for row in residual_gauge_paper["source_links"]] == [

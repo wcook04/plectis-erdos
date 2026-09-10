@@ -38,7 +38,7 @@ def require_rejected(errors: list[str], expected: str, fixture: str) -> None:
     )
 
 
-def contract_errors(example: str, readme: str, lakefile: str) -> list[str]:
+def contract_errors(example: str, workbench: str, lakefile: str) -> list[str]:
     """Return missing public-interface and claim-ceiling obligations."""
     errors: list[str] = []
     example_requirements = {
@@ -57,8 +57,8 @@ def contract_errors(example: str, readme: str, lakefile: str) -> list[str]:
         if token not in example:
             errors.append(f"downstream example lost {label}")
 
-    readme_requirements = {
-        "consumer route": "[`examples/Examples.lean`](examples/Examples.lean)",
+    workbench_requirements = {
+        "consumer route": "[`examples/Examples.lean`](../examples/Examples.lean)",
         "conditional interface description":
             "conditional shell-pressure example",
         "explicit-hypothesis boundary": "leaves the analytic hypothesis explicit",
@@ -68,10 +68,12 @@ def contract_errors(example: str, readme: str, lakefile: str) -> list[str]:
     # Match on collapsed whitespace. These tokens are sentences, and a sentence
     # is the same sentence whichever column it wraps at; pinning the line break
     # made the contract fail on a reflow that changed nothing it cares about.
-    flowed_readme = " ".join(readme.split())
-    for label, token in readme_requirements.items():
-        if " ".join(token.split()) not in flowed_readme:
-            errors.append(f"README lost downstream {label}")
+    # The operator-authored README has no command block; the downstream
+    # consumer route lives on the agent workbench.
+    flowed_workbench = " ".join(workbench.split())
+    for label, token in workbench_requirements.items():
+        if " ".join(token.split()) not in flowed_workbench:
+            errors.append(f"agent workbench lost downstream {label}")
 
     try:
         lake_config = tomllib.loads(lakefile)
@@ -166,11 +168,11 @@ def portfolio_contract_errors(
 
 def main() -> int:
     example = (ROOT / "examples" / "Examples.lean").read_text(encoding="utf-8")
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    workbench = (ROOT / "docs" / "AGENT_WORKBENCH.md").read_text(encoding="utf-8")
     lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
     require_clean(
-        contract_errors(example, readme, lakefile),
-        "examples/Examples.lean, README.md, or lakefile.toml",
+        contract_errors(example, workbench, lakefile),
+        "examples/Examples.lean, docs/AGENT_WORKBENCH.md, or lakefile.toml",
     )
     problem249 = (
         ROOT / "examples" / "ExternalVerificationPortfolio" / "Problem249.lean"
@@ -192,7 +194,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(implicit_hypothesis, readme, lakefile),
+        contract_errors(implicit_hypothesis, workbench, lakefile),
         "explicit analytic hypothesis",
         "example renames the named analytic hypothesis `hupper`",
     )
@@ -203,7 +205,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(weakened_conclusion, readme, lakefile),
+        contract_errors(weakened_conclusion, workbench, lakefile),
         "exact shell-power conclusion",
         "example weakens the shell-power conclusion to `0 ≤ ...`",
     )
@@ -214,20 +216,20 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(lost_local_ceiling, readme, lakefile),
+        contract_errors(lost_local_ceiling, workbench, lakefile),
         "universal claim ceiling",
         "example doc-comment claims it proves universal Erdős #257",
     )
 
-    overstated_readme = readme.replace(
+    overstated_workbench = workbench.replace(
         "does not prove universal #257",
         "proves universal #257",
         1,
     )
     require_rejected(
-        contract_errors(example, overstated_readme, lakefile),
+        contract_errors(example, overstated_workbench, lakefile),
         "universal claim ceiling",
-        "README claims the example proves universal #257",
+        "agent workbench claims the example proves universal #257",
     )
 
     renamed_target = lakefile.replace(
@@ -236,7 +238,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(example, readme, renamed_target),
+        contract_errors(example, workbench, renamed_target),
         "exactly one Examples lean_lib",
         "lakefile renames the Examples lean_lib to ConsumerExamples",
     )
@@ -247,7 +249,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(example, readme, displaced_source),
+        contract_errors(example, workbench, displaced_source),
         "srcDir examples",
         "lakefile moves the Examples srcDir away from examples/",
     )
@@ -258,7 +260,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(example, readme, default_example),
+        contract_errors(example, workbench, default_example),
         "defaultTargets",
         "lakefile promotes Examples into defaultTargets",
     )

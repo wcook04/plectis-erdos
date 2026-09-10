@@ -1055,7 +1055,7 @@ theorem allBaseAffineIndex_ext (k : ℕ) (hk : 2 ≤ k) {e : ℕ}
           have huf : ux = uy := Fin.ext hu
           rw [hsf, huf]
 
-/-- If a residue is prime to `k` at the higher of two distinct levels, the two
+/-- If a residue is not divisible by `k` at the higher of two distinct levels, the two
 affine forms cannot be proportional. -/
 theorem allBase_pow_mul_cross_absurd {k a b Ra Rb : ℕ} (hk : 2 ≤ k) (hab : a < b)
     (hRb : ¬ k ∣ Rb) : k ^ (a + 1) * Rb ≠ k ^ (b + 1) * Ra := by
@@ -1070,7 +1070,7 @@ theorem allBase_pow_mul_cross_absurd {k a b Ra Rb : ℕ} (hk : 2 ≤ k) (hab : a
   exact Dvd.dvd.mul_right (dvd_pow_self k (by omega)) Ra
 
 /-- The restricted channels are pairwise non-proportional.  This is where `k ∤ r`
-does the work: it makes every residue prime to `k`, so two channels at different
+does the work: it keeps every retained residue indivisible by `k`, so two channels at different
 levels cannot be proportional. -/
 theorem allBaseAffine_cross (k : ℕ) (hk : 2 ≤ k) {e : ℕ}
     (x y : AllBaseAffineIndex k e) (hxy : x ≠ y) :

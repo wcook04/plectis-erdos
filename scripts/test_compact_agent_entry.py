@@ -88,10 +88,17 @@ def main() -> int:
         assert required in text, required
     assert "docs/orientation.json::agent_entry" not in text
 
+    # The operator-authored README names the compact entry and workbench; it
+    # does not keep the generated-README command-routing sentences. Exact
+    # command inventory lives on the workbench, same split as
+    # test_human_first_contact.py / test_downstream_example_contract.py.
     readme = README.read_text(encoding="utf-8")
-    assert "An agent arriving cold starts at [`AGENTS.override.md`](AGENTS.override.md)." in readme
-    assert "[The Agent Workbench](docs/AGENT_WORKBENCH.md)" in readme
-    assert "keeps machine routing and kernel\nprobes out of the human reading path" in readme
+    workbench = WORKBENCH.read_text(encoding="utf-8")
+    assert "[`AGENTS.override.md`](AGENTS.override.md)" in readme
+    assert "docs/AGENT_WORKBENCH.md" in readme
+    assert "```" not in readme
+    assert "Use this page for agent operations" in workbench
+    assert "Reader introductions belong in the README" in workbench
 
     # Projection-only checks can pass while an advertised route returns
     # "unknown route id". Exercise the public commands themselves.

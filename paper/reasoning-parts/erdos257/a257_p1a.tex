@@ -175,8 +175,9 @@ connection as \texttt{hypothesis}, not established.
 
 \begin{thm}[Governed frozen-margin producer family: three graded sockets]
 \label{thm:frozen-margin}
-Three sufficient sockets, strongest to weakest hypothesis, all funnel into
-$1/2\in\mathrm{mersenneAchievementSet}$: (i) \emph{HalfGreedySkippedFullShellNonnegative}
+Three open sufficient hypotheses, strongest to weakest, all funnel into
+$1/2\in\mathrm{mersenneAchievementSet}$ through proved consumers: (i)
+\emph{HalfGreedySkippedFullShellNonnegative}
 (at every skipped rank, $0\le\mathrm{greedyHalfFrozenMargin}(n-1)\,n$), direct and
 seam-free; (ii) \emph{HalfGreedySkippedSeamAlignmentZero} (the seam remainder is exactly
 $0$ whenever the actual word equals the seam-greedy word), proved \emph{equivalent} to
@@ -587,11 +588,11 @@ Theorem~\ref{thm:upper-reset-band}'s band-avoidance hypothesis.
 \lean{seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:883}
 \end{thm}
 
-\begin{thm}[Final-middle-cell $-3$ excluded]
+\begin{thm}[Final-middle-cell $-3$ excluded under an all-right tail]
 \label{thm:final-middle-cell}
-The first of three exceptional final-middle integer cells (coordinate
-$4\cdot\mathrm{remainder}-\mathrm{belowPulse}-4=-3$) cannot be the actual last transition
-before an all-right tail. Combines the analytic strict inequality of
+Assume a middle transition is the last one and is followed by an all-right tail. Then the first
+of three exceptional final-middle integer cells (coordinate
+$4\cdot\mathrm{remainder}-\mathrm{belowPulse}-4=-3$) is impossible. Combines the analytic strict inequality of
 Lemma~\ref{lem:eventually-right-impossible} with a two-step M\"obius-carry recurrence
 forcing the centred carry to zero then strictly negative within two more coefficient
 rows, contradicting the nonnegativity of Theorem~\ref{thm:mobius-centred-nonneg}. One of

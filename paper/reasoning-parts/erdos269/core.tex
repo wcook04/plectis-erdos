@@ -160,9 +160,8 @@ used below.  For $b\in\{p,q,r\}$ the set of positive powers of $b$ is the
 The statement of Problem~\#269 has been formalised before, as a conjecture with
 an unfilled proof, in the \emph{Formal Conjectures}
 collection~\cite{formalconjectures269}.  That is a formal statement of the
-question up to an initial constant: its Nat-indexed series includes the
-empty-prefix term, so its value is exactly \(1\) plus the conventional series.
-Its rational, irrational and infinite-prime
+question up to a rational normalisation, since its Nat-indexed series includes
+the empty-prefix term, and its rational, irrational and infinite-prime
 assertions all end in \texttt{sorry}.  Kova\v{c} and Tao~\cite{kovactao2024}
 treat several irrationality problems of Erd\H{o}s for series of unit fractions
 by elementary means; nothing from that work is used here.
@@ -1185,7 +1184,8 @@ bound that the window growth eventually beats,
 \lword{Erdos269/CofinalWindowEscapeEquivalence.lean}{327}{cofinalLocalWindowEscape_of_irrational_of_beaten}{checked},
 and in particular against every bound dominated by $c(B)(n+1)^{2}$,
 \lword{Erdos269/CofinalWindowEscapeEquivalence.lean}{355}{cofinalLocalWindowEscape_of_irrational_of_quadratic}{checked}.
-The forward direction at the fixed bound $K_0$ is
+The enlarged little-$o(8^a)$ band, with the cap-domination hypothesis retained, is checked by the
+\lword{Erdos269/R12/OcticWindowBand.lean}{74}{octic_window_band}{octic window-band equivalence}.  The forward direction at the fixed bound $K_0$ is
 \lword{Erdos269/RationalityCarryBridge.lean}{479}{irrational_value_of_cofinalLocalWindowEscape}{checked},
 over the abstract consumer
 \lword{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{checked}
@@ -1354,7 +1354,7 @@ not rational with denominator at most $2^{22482}$, about $10^{6768}$.
 The certification is by common prefix of the continued fractions of the two
 endpoints of an interval provably containing $X_1$, so no approximation
 heuristic enters, and the truncation was independently checked to agree with
-the direct smooth-number sum as an exact rational.  The recorded statistics are
+the direct smooth-number sum as an exact rational. The machine-readable witness and replay receipt for this large computation are not included in the public release, so the statement remains an archived ordinary computational certificate rather than a publicly replayed or Lean-checked result.  The recorded statistics are
 a largest denominator of $22{,}483$ bits, a largest partial quotient of
 $129{,}114$, a mean partial quotient of $23.4133$, observed Gauss--Kuzmin
 frequencies $0.4208$, $0.1665$, $0.0917$, $0.0575$, $0.0391$ against the
@@ -1444,15 +1444,15 @@ anywhere above.  The finite-observer formalisation isolates the precise
 faithfulness requirement: equality in a finite observer must imply equality
 after symbolic realisation, and a genuine finite-dimensional factorisation
 forces the realised symbolic span to be finite-dimensional
-(\lword{Erdos269/WeightedPhaseCarry.lean}{109}{carry_eq_residueDigit_add_coboundary}{residue-coboundary
+(\lword{Erdos269/WeightedPhaseCarry.lean}{110}{carry_eq_residueDigit_add_coboundary}{residue-coboundary
 form},
-\lword{Erdos269/WeightedPhaseCarry.lean}{293}{CartierRealisation}{symbolic
+\lword{Erdos269/WeightedPhaseCarry.lean}{294}{CartierRealisation}{symbolic
 realisation},
-\lword{Erdos269/WeightedPhaseCarry.lean}{334}{finite_realisedSpan_of_factorisation}{checked}),
+\lword{Erdos269/WeightedPhaseCarry.lean}{335}{finite_realisedSpan_of_factorisation}{checked}),
 with the carry residue and residue digit confined to their declared intervals
-(\lword{Erdos269/WeightedPhaseCarry.lean}{150}{carryResidue_mem_interval}{carry
+(\lword{Erdos269/WeightedPhaseCarry.lean}{151}{carryResidue_mem_interval}{carry
 interval},
-\lword{Erdos269/WeightedPhaseCarry.lean}{157}{residueDigit_mem_interval}{digit
+\lword{Erdos269/WeightedPhaseCarry.lean}{158}{residueDigit_mem_interval}{digit
 interval}).  No theorem here proves that the literal realised span is infinite.
 
 \subsection{Structural constraints already in place}
@@ -1541,8 +1541,7 @@ arithmetic and both directions of the window-escape equivalence are checked by
 the Lean~4 kernel against Mathlib with no \texttt{sorry}.  The two-prime
 transcendence theorem is an ordinary proof over the cited Bugeaud--Laurent
 theorem and carries no Lean declaration; the quadratic tail bound, the explicit
-onset $a_D$, the sharp bound $K$, the equivalence band, the window-growth law
-and Theorem~\ref{long269:res:uniform-rank} are ordinary proofs in this paper; the three
+onset $a_D$, the sharp bound $K$, and Theorem~\ref{long269:res:uniform-rank} are ordinary proofs in this paper; the window-growth law and the enlarged little-$o(8^a)$ equivalence band have named Lean endpoints; the three
 finite computations of Section~\ref{long269:sec:evidence} are computational
 certificates.
 

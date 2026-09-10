@@ -435,22 +435,20 @@ and no run. \ev{Math}
 
 \textbf{Class (b): global averages and Diophantine data.}
 
-\begin{prop}[Exponent-budget mismatch; \textsc{proved}, given a cited $\mu$]
+\begin{prop}[Weighted denominator budget; \textsc{proved}]
 \label{prop:exponent-gap}
-The skip set at row $n$ has $|\mathrm{Skip}_n| \approx n^2/4$, so an irrationality-measure exponent
-$\mu$ for the target constant yields a separation of order only $2^{-\mu n^2/4}$, while the
-required precision is $2^{-3n/2}$. The shortfall is a factor $\approx 0.42\,n$ \emph{in the
-exponent}, and it grows linearly in $n$. Since $\mu \ge 2$ for every irrational, no improvement in
-$\mu$ can close it: Zudilin's $\mu(E) \le 2.42343562\ldots$ is irrelevant to the gap, and so is any
-future bound. \coord{diophantine} \scale{cofinal} \ev{Math}\ev{Cited}
+For the denominator $D_n$ of the skip-set rational,
+$\log_2D_n\le\sum_{d\in\mathrm{Skip}_n}\log_2(2^d-1)<\sum_{d\in\mathrm{Skip}_n}d
+\le n(n-1)/2-1$. This weighted quadratic upper bound is too coarse for the orbit's
+$2^{-3n/2}$ precision. An $n^2/4$ asymptotic would require additional distribution information.
+\coord{diophantine} \scale{cofinal} \ev{Math}
 \end{prop}
 
-\textbf{Rules out.} Any argument deriving the run-length or magnitude bound from (a) arithmetic
-information at fixed finite precision or a bounded automaton state, or (b) a global average,
-density, or Diophantine-approximation quantity attached to $C = E - 3/2$. Concretely: no proposal
-to bound the R-run via an irrationality measure of a Mersenne or Erd\H{o}s--Borwein-type constant
-can work, however good the measure becomes; and no proposal defining a bounded carry state
-summarising pre-index history can determine the post-index tail.
+\textbf{Precise obstructions.} Fixed-precision automaton state cannot determine the post-index
+tail, and the displayed weighted denominator budget combined with the currently cited fixed
+irrationality-measure exponent does not yield the required run bound. These calculations do not
+exclude averaging over shifts, residues, or observation scales, nor a sharper analysis of the
+actual skip distribution.
 
 \textbf{Explains.} Prime-doubling fails for a recorded reason rather than for want of effort: $N$
 prime $\ge n$ gives $b(N) = 1$ so $J$ doubles at that step, but not cumulatively, because
@@ -471,8 +469,10 @@ as such wherever it is used below.
 \begin{thm}[One-sidedness; \textsc{proved}]
 \label{thm:one-sided}
 $1/2 \notin \mathcal{A}$ is $\Sigma^0_1$: a single finite object --- a fatal gap --- certifies it.
-$1/2 \in \mathcal{A}$ is $\Pi^0_1$, and no finite object certifies it. Consequently no finite
-computation, at any depth, can establish $1/2 \in \mathcal{A}$.
+$1/2 \in \mathcal{A}$ has a $\Pi^0_1$ survival formulation. Survival through a tested finite
+depth alone does not establish membership; a uniform theorem or inductive invariant could.
+The arithmetical-hierarchy form by itself proves neither undecidability nor the absence of finite
+proofs.
 \coord{meta} \scale{uniform} \ev{Lean}
   The statement is checked in Lean: \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos257/PaperCompleteR7/CatalogueAssemblies.lean#L50}{\textsc{Lean~source}}.
 \end{thm}
@@ -731,8 +731,8 @@ Proposition~\ref{prop:collapsed-list} must be stated verbatim in the docstrings.
 
 \textbf{Why it is here.} This route does not attempt the wall; it \emph{measures} it, which is
 exactly what makes it bankable. Each equivalence is a theorem --- a biconditional between a named
-\texttt{Prop} and half-membership --- not a reduction, and each one permanently retires a socket
-from the list of things worth chasing directly. Systematic elimination of this kind is a result
+\texttt{Prop} and half-membership --- not merely a one-way reduction. Each identifies the exact missing content of a socket; it does
+not preclude that formulation from exposing a useful invariant. Systematic elimination of this kind is a result
 about the problem in a way that a reformulation is not. The perfect-square normalisation is what
 makes it available now: it dissolves the $\lfloor\sqrt{\cdot}\rfloor$ versus $\sqrt{\cdot}$
 mismatch that previously blocked two of the five, and it needs no widening of the strip constant.
