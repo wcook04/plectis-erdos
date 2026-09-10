@@ -1382,15 +1382,18 @@ def validate_route_memory_cards() -> None:
         "--problem 249 --route erdos249_certificate_story"
     ) in search_card
     assert (
-        "publication_family | erdos249_quantitative_headline | "
-        "resume=python3 scripts/query_route_memory.py --problem 249 --route "
-        "erdos249_certificate_story"
-    ) in search_card
-    assert (
         "reading_route | erdos249_certificate_story | "
         "resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
     ) in search_card
+    ranked_card = query_corpus.render_card(
+        query_corpus.search_packet("denominator_exclusion", 8)
+    )
+    assert (
+        "publication_family | erdos249_quantitative_headline | "
+        "resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in ranked_card
 
 
 def validate_connection_query_ranking() -> None:
@@ -2953,7 +2956,7 @@ def main() -> int:
         "Finite dyadic-totient rank and certificate interface"
     )
     assert totient_mahler["dependency_neighbourhood"]["receipt"]["imports_total"] == 0
-    assert totient_mahler["dependency_neighbourhood"]["receipt"]["importers_total"] == 2
+    assert totient_mahler["dependency_neighbourhood"]["receipt"]["importers_total"] == 3
 
     aliases = json.loads((ROOT / "paper" / "module-aliases.json").read_text(encoding="utf-8"))
     assert aliases["alias_count"] == len(aliases["aliases"])

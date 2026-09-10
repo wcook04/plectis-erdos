@@ -943,7 +943,7 @@
           "title": "Factorial Denominator Series: a complete working record of Erdős Problem 68",
           "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
           "rendered": "paper/erdos-68-factorial-denominator-irrationality.pdf",
-          "formal_source_ref": "17b41a2a0bcf988a7612e562bfdb124536974459",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #68 and the factorial-channel breakpoint boundary.",
           "anchor_label_allowlist": [
             "res:bandbreakpoint"
@@ -1056,28 +1056,28 @@
             "res:degree-three",
             "res:reflected-critical-value"
           ],
-          "formal_source_ref": "17b41a2a0bcf988a7612e562bfdb124536974459"
+          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         },
         {
           "title": "Rational-Base Lambert Series: Complete Reasoning Record",
           "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
           "rendered": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #1049.",
-          "formal_source_ref": "17b41a2a0bcf988a7612e562bfdb124536974459"
+          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         },
         {
           "title": "The Factorial-Denominator Series: Complete Reasoning Record",
           "source": "paper/erdos68-factorial-reasoning-surface.tex",
           "rendered": "erdos68-factorial-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #68.",
-          "formal_source_ref": "85054358cdca543531b473684e9c9d1c0ece6dd7"
+          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         },
         {
           "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
           "source": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "85054358cdca543531b473684e9c9d1c0ece6dd7"
+          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
@@ -13829,11 +13829,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "17b41a2a0bcf988a7612e562bfdb124536974459",
+      "ref": "b471b1c9b15e0918c7458f1f90bce082c30bf4b5",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-09-r2"
+      "public_tag": "formal-source-2026-09-10"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",

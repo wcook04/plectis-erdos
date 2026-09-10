@@ -367,37 +367,28 @@ def main() -> int:
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
 
-    lean_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
-        "https://github.com/wcook04/plectis-erdos.git"
-    )
-    full_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch "
-        "https://github.com/wcook04/plectis-erdos.git"
-    )
-    mutated_lean_clone_surfaces = human_surfaces.copy()
-    mutated_lean_clone_surfaces["README.md"] = mutated_lean_clone_surfaces[
-        "README.md"
-    ].replace(
-        lean_clone_command,
-        lean_clone_command.replace(" --no-checkout", ""),
+    mutated_command_block = human_surfaces.copy()
+    mutated_command_block["README.md"] = mutated_command_block["README.md"].replace(
+        "## Read or verify locally",
+        "## Read or verify locally\n\n```sh\npython3 scripts/verify_claims.py --claim eb_full_support\n```",
         1,
     )
     assert_human_rejected(
         summary,
-        mutated_lean_clone_surfaces,
-        "Lean-only partial/sparse clone option",
+        mutated_command_block,
+        "README command block",
     )
     checks += 1
 
-    mutated_full_clone_surfaces = human_surfaces.copy()
-    mutated_full_clone_surfaces["README.md"] = mutated_full_clone_surfaces[
-        "README.md"
-    ].replace(full_clone_command, full_clone_command.replace("--filter=blob:none ", ""), 1)
+    mutated_missing_runbook = human_surfaces.copy()
+    mutated_missing_runbook["README.md"] = mutated_missing_runbook["README.md"].replace(
+        "[REPRODUCIBILITY](docs/REPRODUCIBILITY.md)",
+        "the reproducibility notes",
+    )
     assert_human_rejected(
         summary,
-        mutated_full_clone_surfaces,
-        "shallow blobless full-current clone option",
+        mutated_missing_runbook,
+        "README reproducibility route",
     )
     checks += 1
 
