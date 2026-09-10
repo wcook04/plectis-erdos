@@ -159,6 +159,7 @@ jobs:
           elif git diff --quiet "$base" "$head" -- \
             Erdos249257.lean 'Erdos249257/**' \
             ErdosProblems.lean 'ErdosProblems/**' \
+            'Erdos251LargeCertificate/**' \
             'adapters/**' 'examples/**' 'residualbench/**' \
             lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
             docs/declaration_atlas.json \
@@ -400,6 +401,15 @@ jobs:
           git clone --filter=blob:none https://github.com/ammkrn/nanoda_lib.git "$RUNNER_TEMP/nanoda"
           git -C "$RUNNER_TEMP/nanoda" checkout --detach "$NANODA_REV"
           test "$(git -C "$RUNNER_TEMP/nanoda" rev-parse HEAD)" = "$NANODA_REV"
+          # Workflow PATH is a closed /usr/bin set, so rustup/cargo are absent
+          # unless this step installs them. Exit 127 here is cargo-not-found,
+          # not a Comparator mismatch.
+          export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin"
+          if ! command -v cargo >/dev/null 2>&1; then
+            curl --proto '=https' --tlsv1.2 --fail --silent --show-error \
+              https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal
+            . "$HOME/.cargo/env"
+          fi
           (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
           test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
           echo "nanoda_rev=$NANODA_REV" >> "$GITHUB_OUTPUT"
