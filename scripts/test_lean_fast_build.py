@@ -462,6 +462,24 @@ class LeanFastBuildTests(unittest.TestCase):
         # what test_ci_does_not_repeat_required_pr_checks_after_merge forbids.
         self.assertNotIn("check_release.py", warm)
 
+    def test_ci_does_not_reexport_dependency_index_after_full_check(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(
+            "python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale",
+            workflow,
+        )
+        bare_exports = re.findall(
+            r"(?m)^\s*run:\s*python3 scripts/build_lean_dependency_index\.py\s*$",
+            workflow,
+        )
+        self.assertEqual(
+            bare_exports,
+            [],
+            "Lean CI launched a second unbounded dependency-index export after --full-check",
+        )
+
     def test_reachable_and_waves_limit_focused_target(self) -> None:
         graph = {
             "Root": {"Left", "Right"},

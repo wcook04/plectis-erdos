@@ -14,8 +14,9 @@ We focused on eight arbitrarily hard Erdős problems:
 [269](https://www.erdosproblems.com/269),
 [1041](https://www.erdosproblems.com/1041) and
 [1049](https://www.erdosproblems.com/1049). **All eight problems remain open.** This repository does
-not solve any of them. It holds formal statements, Lean checks, a Comparator
-gate and a Palomar submission, and two papers per problem, one short and one
+not solve any of them. This self-contained public Plectis checkout is not an
+entrypoint into any private development system. It holds formal statements,
+Lean checks, a Comparator gate, and two papers per problem, one short and one
 long, written with Terence Tao's public guidance on how AI mathematics should
 be expositioned in mind.
 
@@ -31,7 +32,8 @@ The repo substrate is built by and for AI agents; I would not recommend driving 
 with commands. Its navigation, validation, contribution and
 mathematical-reasoning workflows plug into your own agents. Progress varies by
 problem and is stated in [RESULTS](docs/RESULTS.md) and the source records your
-agent can find for you. Lean checks the formal statements. Coverage is not the
+agent can find for you. Lean checks the formal statements. Do not infer results
+from private or unreleased work. Coverage is not the
 100% I wanted, because I am officially out of money and time. Anyone can
 contribute, even by formalising maths already established analytically, and
 receive due credit.
