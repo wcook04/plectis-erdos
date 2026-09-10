@@ -332,6 +332,10 @@ def main() -> int:
     human_surfaces = {
         path: diagnostic.read(path) for path in diagnostic.HUMAN_SURFACES
     }
+    routed_surfaces = {
+        path: diagnostic.read(path)
+        for path in diagnostic.FIRST_CONTACT_ROUTED_SURFACES
+    }
     paper_library = diagnostic.read(diagnostic.PAPER_LIBRARY_SURFACE)
     # The generated shelf may be one exporter turn behind while this focused
     # consumer test is being landed. Build a minimal compliant fixture from
@@ -522,11 +526,16 @@ def main() -> int:
     for task_id, requirements in diagnostic.human_tasks(summary).items():
         for alternatives in requirements:
             mutated = copy.deepcopy(human_surfaces)
+            mutated.update(copy.deepcopy(routed_surfaces))
             mutated["README.md"] = diagnostic.normalized(mutated["README.md"])
+            for path in diagnostic.FIRST_CONTACT_ROUTED_SURFACES:
+                mutated[path] = diagnostic.normalized(mutated[path])
             for token in alternatives:
                 mutated["README.md"] = remove_semantic_anchor(
                     mutated["README.md"], token
                 )
+                for path in diagnostic.FIRST_CONTACT_ROUTED_SURFACES:
+                    mutated[path] = remove_semantic_anchor(mutated[path], token)
             assert_human_rejected(summary, mutated, f"{task_id}: {alternatives}")
             checks += 1
 

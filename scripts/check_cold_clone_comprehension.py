@@ -1085,10 +1085,25 @@ def validate_first_command_keeps_its_promise(readme_prefix: str) -> None:
                 f"{marker!r}; the description has outlived the behaviour")
 
 
+def first_contact_surface_text(surfaces: dict[str, str], path: str) -> str:
+    """Read a routed first-contact file from the fixture, else from disk.
+
+    The adversarial suite mutates README.md and the routed surfaces together.
+    Until 2026-09-10 it only rewrote README.md, while this check still joined
+    docs/RESULTS.md from disk, so deleting `Plectis` on the front page left the
+    token alive in RESULTS and the mutation escaped.
+    """
+    text = surfaces.get(path)
+    if text is None:
+        return safe_read_text(path)
+    return text
+
+
 def validate_human_first_contact(
     summary: dict[str, Any], surfaces: dict[str, str]
 ) -> None:
-    require(set(surfaces) == set(HUMAN_SURFACES), "cold-clone comprehension invariant")
+    allowed = set(HUMAN_SURFACES) | set(FIRST_CONTACT_ROUTED_SURFACES)
+    require(set(HUMAN_SURFACES) <= set(surfaces) <= allowed, "cold-clone comprehension invariant")
     for path, budget in HUMAN_SURFACE_BUDGET_BYTES.items():
         size = len(surfaces[path].encode("utf-8"))
         require(size <= budget, f"{path} is {size} bytes (budget {budget})")
@@ -1100,8 +1115,10 @@ def validate_human_first_contact(
     check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
-    reproducibility = safe_read_text("docs/REPRODUCIBILITY.md")
-    contribution_guide = safe_read_text("CONTRIBUTING.md")
+    reproducibility = first_contact_surface_text(
+        surfaces, "docs/REPRODUCIBILITY.md"
+    )
+    contribution_guide = first_contact_surface_text(surfaces, "CONTRIBUTING.md")
     require(
         "[REPRODUCIBILITY](docs/REPRODUCIBILITY.md)" in readme_prefix,
         "README no longer routes detailed clone and build work to REPRODUCIBILITY",
@@ -1205,7 +1222,10 @@ def validate_human_first_contact(
     # document here is not free: it has to be one the README names.
     routed_first_contact = "\n".join(
         [readme_prefix]
-        + [safe_read_text(path) for path in FIRST_CONTACT_ROUTED_SURFACES]
+        + [
+            first_contact_surface_text(surfaces, path)
+            for path in FIRST_CONTACT_ROUTED_SURFACES
+        ]
     )
     for path in FIRST_CONTACT_ROUTED_SURFACES:
         require(

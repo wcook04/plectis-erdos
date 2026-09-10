@@ -14,8 +14,9 @@ We focused on eight arbitrarily hard Erdős problems:
 [269](https://www.erdosproblems.com/269),
 [1041](https://www.erdosproblems.com/1041) and
 [1049](https://www.erdosproblems.com/1049). **All eight problems remain open.** This repository does
-not solve any of them. It holds formal statements, Lean checks, a Comparator
-gate and a Palomar submission, and two papers per problem, one short and one
+not solve any of them. This self-contained public Plectis checkout is not an
+entrypoint into any private development system. It holds formal statements,
+Lean checks, a Comparator gate, and two papers per problem, one short and one
 long, written with Terence Tao's public guidance on how AI mathematics should
 be expositioned in mind.
 
