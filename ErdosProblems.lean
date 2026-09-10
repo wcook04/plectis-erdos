@@ -25,8 +25,8 @@ import ErdosProblems.Erdos68.PrimeThresholdParity
 import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
 import ErdosProblems.Erdos243.RepairEntropy
 import ErdosProblems.Erdos243.NewtonV8.NewtonClassificationAudit
-import ErdosProblems.Erdos1049.AllRow.Audit
-
+-- AllRow / ZudilinSharpHankelCoefficient does not elaborate against the
+-- current AdelicHeightBridge surface; keep it in the auxiliary forest.
 import ErdosProblems.Erdos1049.RationalBaseContour
 import ErdosProblems.Erdos243.CubicNeighbourIdentity
 import ErdosProblems.Erdos243.LcmRecordExcess

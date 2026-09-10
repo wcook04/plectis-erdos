@@ -36,6 +36,10 @@ AUXILIARY_ROOT_PREFIXES = (
     # forest is for: independent exploratory components, navigable without
     # being forced into the monolithic import environment.
     "ErdosProblems.Erdos1041.",
+    # Uncompiled #1049 all-row / sharp Hankel authoring: independently
+    # checkable later, but it does not elaborate in the default Lake/CI cone.
+    "ErdosProblems.Erdos1049.AllRow.",
+    "ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient",
     # Uncompiled #68 size-floor kernel certificates: independently checkable,
     # but they must not enter the default Lake/CI import environment.
     "ErdosProblems.Erdos68.FiniteLeadBlocks.",
