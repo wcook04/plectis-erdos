@@ -82,12 +82,12 @@ def main() -> None:
         "RESULTS does not route readers to the current README paper anchor",
     )
 
-    # 2026-09-10: 1_400 -> 1_500. The operator rewrote the front page in his own
-    # voice and the paper index now carries both PDFs and a one-line status per
-    # problem; this counter charges every link target as a word. Funded with
-    # slack, not to the byte.
+    # 2026-09-10: 1_400 -> 1_700. The operator rewrote the front page in his own
+    # voice; the paper index now carries short/longer PDF links, one-line
+    # strongest results, and erdosproblems.com URLs that this counter charges
+    # as words. Funded with slack, not to the byte.
     require(
-        len(prose_words(readme)) <= 1_500,
+        len(prose_words(readme)) <= 1_700,
         "README prose exceeds the human front-door budget",
     )
     # 2026-09-10, operator-directed: the front page carries no command block at
@@ -198,6 +198,13 @@ def main() -> None:
         "erdos-1041-lemniscate-newton-flow",
         "erdos-1049-rational-base-lambert",
     )
+    for n in ("68", "243", "249", "251", "257", "269", "1041", "1049"):
+        require(
+            f"https://www.erdosproblems.com/{n}" in readme,
+            f"README lost the Erdős Problems catalogue link for #{n}",
+        )
+    for label in ("[short paper]", "[longer paper]"):
+        require(label in readme, f"README lost the {label} paper-index label")
     for slug in paper_slugs:
         require(f"{slug}.pdf" in readme, f"README omits the {slug} paper")
         require((ROOT / f"{slug}.pdf").is_file(), f"missing PDF for {slug}")

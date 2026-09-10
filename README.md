@@ -5,8 +5,15 @@
 
 ![Eight open problems: papers, checked results, failed routes, and open questions another researcher can continue](.github/system-map.png)
 
-We focused on eight arbitrarily hard Erdős problems: 68, 243, 249, 251, 257,
-269, 1041 and 1049. **All eight problems remain open.** This repository does
+We focused on eight arbitrarily hard Erdős problems:
+[68](https://www.erdosproblems.com/68),
+[243](https://www.erdosproblems.com/243),
+[249](https://www.erdosproblems.com/249),
+[251](https://www.erdosproblems.com/251),
+[257](https://www.erdosproblems.com/257),
+[269](https://www.erdosproblems.com/269),
+[1041](https://www.erdosproblems.com/1041) and
+[1049](https://www.erdosproblems.com/1049). **All eight problems remain open.** This repository does
 not solve any of them. It holds formal statements, Lean checks, a Comparator
 gate and a Palomar submission, and two papers per problem, one short and one
 long, written with Terence Tao's public guidance on how AI mathematics should
@@ -60,55 +67,60 @@ Ways in:
 
 ## Problem papers
 
-For a first look, start with **#257** for restricted irrationality and
-achievement sets, or **#249** for exact reductions, finite certificates and
-recorded failed routes.
+For a first look, start with **#257** for full-support irrationality and
+achievement-set measure, or **#249** for exact kernel rank, finite certificates
+and recorded failed routes.
 
-- **#68** · Factorial-denominator irrationality ·
-  [paper](erdos-68-factorial-denominator-irrationality.pdf) ·
-  [record](erdos68-factorial-reasoning-surface.pdf).
-  Reduces irrationality to infinitely many failures of one divisibility test;
-  producing those failures remains open.
-- **#243** · Reciprocal-tail rigidity ·
-  [paper](erdos-243-reciprocal-tail-rigidity.pdf) ·
-  [record](erdos243-reciprocal-tail-reasoning-surface.pdf).
-  Bounded or summably small negative error is controlled after Koizumi's
-  normalised vanishing; the unbounded mixed-sign regime remains open.
-- **#249** · Binary totient series ·
-  [paper](erdos-249-binary-totient-series.pdf) ·
-  [record](erdos249-totient-reasoning-surface.pdf).
-  Exact rank of the dyadic totient kernel, finite denominator exclusions,
-  conditional routes to irrationality, and no-go theorems for the shortcuts.
-  The infinitely many witnesses required are not produced.
-- **#251** · Prime-gap dyadic series ·
-  [paper](erdos-251-prime-gap-dyadic-series.pdf) ·
-  [record](erdos251-prime-gap-reasoning-surface.pdf).
-  The prime-gap identity, tail-shift equivalences and a coefficient-only
-  countermodel. The concrete prime-tail bridge remains open.
-- **#257** · Mersenne-support subseries ·
-  [paper](erdos-257-mersenne-support-subseries.pdf) ·
-  [record](erdos257-mersenne-reasoning-surface.pdf).
-  Irrationality for the full support in every integer base and for structured
-  supports under summability, plus the Mersenne achievement set's topology and
-  measure. Every infinite support, and the 1/2 and 1/21 branches, remain open.
-- **#269** · Three-prime running LCM ·
-  [paper](erdos-269-three-prime-running-lcm.pdf) ·
-  [record](erdos269-running-lcm-reasoning-surface.pdf).
-  Three-prime LCM cell geometry, height identities and a rank obstruction. The
-  two-prime argument in the record is Steve Fan's (erdosproblems.com, 26 June
-  2026, before this note); no priority or Lean theorem is claimed. Three or
-  more primes remain open.
-- **#1041** · Lemniscates and Newton flow ·
-  [paper](erdos-1041-lemniscate-newton-flow.pdf) ·
-  [record](erdos1041-lemniscate-reasoning-surface.pdf).
-  Newton-flow decay, ray separation, collision geometry and root retention.
-  Topology and metric gluing remain open.
-- **#1049** · Rational-base Lambert series ·
-  [paper](erdos-1049-rational-base-lambert.pdf) ·
-  [record](erdos1049-rational-base-lambert-reasoning-surface.pdf).
-  The rational-base tail recurrence and no-go theorems for specific Padé
-  constructions, including four-jet cancellation at base 3/2. No irrationality
-  result; the approximant construction remains open.
+- **[#68](https://www.erdosproblems.com/68)** · Factorial-denominator irrationality ·
+  [short paper](erdos-68-factorial-denominator-irrationality.pdf) ·
+  [longer paper](erdos68-factorial-reasoning-surface.pdf).
+  Irrationality is equivalent to cofinally many non-unit factorial carries;
+  producing those carries remains open.
+- **[#243](https://www.erdosproblems.com/243)** · Reciprocal-tail rigidity ·
+  [short paper](erdos-243-reciprocal-tail-rigidity.pdf) ·
+  [longer paper](erdos243-reciprocal-tail-reasoning-surface.pdf).
+  After Koizumi's normalised vanishing, a bounded or summably small negative
+  centred error forces eventual Sylvester recurrence. The unbounded mixed-sign
+  regime remains open.
+- **[#249](https://www.erdosproblems.com/249)** · Binary totient series ·
+  [short paper](erdos-249-binary-totient-series.pdf) ·
+  [longer paper](erdos249-totient-reasoning-surface.pdf).
+  Exact dyadic-kernel rank `2^e + 1`, denominator exclusion to about
+  `7.96 × 10³⁴`, diagonal certificates through `t ≤ 82`, and no-go theorems
+  for the shortcuts. The infinitely many witnesses for irrationality are not
+  produced.
+- **[#251](https://www.erdosproblems.com/251)** · Prime-gap dyadic series ·
+  [short paper](erdos-251-prime-gap-dyadic-series.pdf) ·
+  [longer paper](erdos251-prime-gap-reasoning-surface.pdf).
+  The prime series equals the gap series; irrationality is equivalent to
+  cofinal non-integral tail shifts. The actual-prime tail witness remains open.
+- **[#257](https://www.erdosproblems.com/257)** · Mersenne-support subseries ·
+  [short paper](erdos-257-mersenne-support-subseries.pdf) ·
+  [longer paper](erdos257-mersenne-reasoning-surface.pdf).
+  Irrationality for the full support in every integer base `b ≥ 2`, and for
+  structured supports under summability; the base-2 Mersenne achievement set has
+  measure one. Every infinite support, and the `1/2` and `1/21` branches,
+  remain open.
+- **[#269](https://www.erdosproblems.com/269)** · Three-prime running LCM ·
+  [short paper](erdos-269-three-prime-running-lcm.pdf) ·
+  [longer paper](erdos269-running-lcm-reasoning-surface.pdf).
+  Three-prime height identity, nonsingular kernel minors, and the `(2,3,5)`
+  minor `-1/15`. The two-prime transcendence argument in the longer paper is
+  Steve Fan's ([erdosproblems.com/269](https://www.erdosproblems.com/forum/thread/269),
+  26 June 2026, before this note); no priority or Lean theorem is claimed. Three
+  or more primes remain open.
+- **[#1041](https://www.erdosproblems.com/1041)** · Lemniscates and Newton flow ·
+  [short paper](erdos-1041-lemniscate-newton-flow.pdf) ·
+  [longer paper](erdos1041-lemniscate-reasoning-surface.pdf).
+  Newton-flow decay, arbitrarily small translations that separate ray arguments,
+  and perturbative root retention. A length-`<2` curve, and the hub that would
+  make one, remain open.
+- **[#1049](https://www.erdosproblems.com/1049)** · Rational-base Lambert series ·
+  [short paper](erdos-1049-rational-base-lambert.pdf) ·
+  [longer paper](erdos1049-rational-base-lambert-reasoning-surface.pdf).
+  Exact rational-base tail recurrence, sharp Hankel order, and a checked height
+  region that includes `31/4`. No irrationality at `3/2`; the approximant
+  construction remains open.
 
 The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) is kept for
 archive and provenance only; the papers above are the current entrances.

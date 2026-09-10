@@ -1137,7 +1137,7 @@ def validate_human_first_contact(
     # prefix must still name (asserted with FIRST_CONTACT_ROUTED_SURFACES
     # below). The advertised verifier is still executed further down so its
     # behaviour cannot drift away from the runbook that now describes it.
-    last_problem = readme_prefix.find("**#1049**", positions[0])
+    last_problem = readme_prefix.find("#1049", positions[0])
     require("```" not in readme_prefix, "README front page carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
     require(last_problem >= positions[0], "README no longer exposes all eight papers under its paper index")
     require(
@@ -1177,7 +1177,7 @@ def validate_human_first_contact(
     require(problem_portfolio >= 0, "README lost the all-problem discovery surface")
     require(raw_inventory >= 0, "README lost the raw corpus-inventory boundary")
     problem_positions = [
-        readme_prefix.find(f"**#{problem}**", problem_portfolio)
+        readme_prefix.find(f"#{problem}", problem_portfolio)
         for problem in sorted(INDEXED_PROBLEM_NUMBERS)
     ]
     require(
