@@ -143,7 +143,8 @@ problem, whether a result is new, or whether a problem is solved.
 An idea, a correction, a counterexample, a failed route with a checkable
 reason, clearer exposition, or a repaired check all count. Open the
 [plain-language research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
-with no patch, or a pull request for a focused change. Accepted work gets a
+with no patch — a coding agent can fill it; the questions are ordinary
+language — or a pull request for a focused change. Accepted work gets a
 public receipt naming you, the exact files or results, the starting commit, and
 what was checked. The
 [open-source mathematics paper](open-source-mathematics-strategy.pdf) explains

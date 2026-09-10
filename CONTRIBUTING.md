@@ -50,8 +50,9 @@ a focused change, and open a pull request. Explain the question you started
 from, what you changed or learned, what another person can inspect, and what
 remains unresolved. If you have an observation but no finished patch, open the
 [plain-language research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
-and write it in your own words. You do not need to learn the receipt format
-before telling us something useful.
+and write it in your own words. A coding agent can fill the same form; the
+questions are ordinary language, not a receipt schema. You do not need to learn
+the receipt format before telling us something useful.
 
 For compute contributions, begin with a bounded route exposed by the papers,
 claim registry, or agent entry. The present routes are authored in the public
