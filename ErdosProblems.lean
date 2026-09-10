@@ -120,21 +120,15 @@ import ErdosProblems.Erdos269.RationalLatticeReduction
 import ErdosProblems.Erdos269.RationalityCarryBridge
 import ErdosProblems.Erdos269.SharpWindowCapR10
 import ErdosProblems.Erdos68.CanonicalFactorialTermination
-import ErdosProblems.Erdos68.CarryCongruenceNormalForm
-import ErdosProblems.Erdos68.CompanionConstantBridge
-import ErdosProblems.Erdos68.CompanionOrbitRationality
-import ErdosProblems.Erdos68.ConstantOnlyMissCertificates
+-- FactorialGapPlateauCore duplicates FactorialZeroPlateau's factorialGapStepCarry
+-- (Root.lean already imports the latter). CompanionConstantBridge is the join
+-- that fails to elaborate; keep the Core fork in the auxiliary forest.
 import ErdosProblems.Erdos68.DivisorChannelBasis
 import ErdosProblems.Erdos68.FactorialAnalyticBoundary
 import ErdosProblems.Erdos68.FactorialDigitRigidity
-import ErdosProblems.Erdos68.FactorialGapPlateauCore
-import ErdosProblems.Erdos68.FactorialShiftFamilyOrbit
-import ErdosProblems.Erdos68.FactorialZeroPlateauCertificates
-import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
 import ErdosProblems.Erdos68.PaperCompleteAsymptotics
 import ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates
 import ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure
-import ErdosProblems.Erdos68.PaperCompleteExisting
 import ErdosProblems.Erdos68.PaperCompleteFiniteLeadArithmetic
 import ErdosProblems.Erdos68.PaperCompleteFiniteSizeData
 import ErdosProblems.Erdos68.PaperCompleteIntegerSpan
@@ -148,7 +142,6 @@ import ErdosProblems.Erdos68.PaperCompleteRadiusLimit
 import ErdosProblems.Erdos68.PaperCompleteResidualIdentity
 import ErdosProblems.Erdos68.PrimePoleCriterion
 import ErdosProblems.Erdos68.PrimePoleDenominator
-import ErdosProblems.Erdos68.SecondLayerDigit
 import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
 import ErdosProblems.Shared.IrrationalRotationStaircase
 

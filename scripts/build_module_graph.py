@@ -45,6 +45,19 @@ AUXILIARY_ROOT_PREFIXES = (
     "ErdosProblems.Erdos68.FiniteLeadBlocks.",
     "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
     "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum",
+    # Duplicate #68 plateau core: FactorialGapPlateauCore and FactorialZeroPlateau
+    # both define factorialGapStepCarry. Root.lean already uses ZeroPlateau, so
+    # the Core fork and every module that joins the two stay auxiliary.
+    "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+    "ErdosProblems.Erdos68.CarryCongruenceNormalForm",
+    "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
+    "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement",
+    "ErdosProblems.Erdos68.SecondLayerDigit",
+    "ErdosProblems.Erdos68.CompanionConstantBridge",
+    "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
+    "ErdosProblems.Erdos68.CompanionOrbitRationality",
+    "ErdosProblems.Erdos68.FactorialShiftFamilyOrbit",
+    "ErdosProblems.Erdos68.PaperCompleteExisting",
     "ErdosProblems.FreePosition.",
     "ErdosProblems.Half.",
     "ErdosProblems.Hlow.",
