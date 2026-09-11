@@ -3,49 +3,70 @@
 
 # Plectis: research on eight open Erdős problems
 
-![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
-
-The full-support Mersenne series is irrational in every integer base `b ≥ 2`,
-and the base-2 achievement set has measure one. That is a completed theorem
-family in this checkout, not a solution of Erdős #257: every infinite support,
-and the `1/2` and `1/21` branches, remain open.
-
-Plectis is the public record of that work and of seven further programmes —
-[68](https://www.erdosproblems.com/68),
-[243](https://www.erdosproblems.com/243),
-[249](https://www.erdosproblems.com/249),
-[251](https://www.erdosproblems.com/251),
-[257](https://www.erdosproblems.com/257),
-[269](https://www.erdosproblems.com/269),
-[1041](https://www.erdosproblems.com/1041) and
-[1049](https://www.erdosproblems.com/1049).
+Plectis is an open-source, AI-assisted research project organised around eight
+open Erdős problems. This repository brings together the papers, Lean proofs,
+computations, failed approaches, and questions that remain, so another
+researcher or coding agent can inspect the work and continue from it.
 **All eight problems remain open.** This repository does not solve them.
 
-The useful path is ordinary. Pick a problem. Read the short paper. Open the
-longer record for failed routes, finite evidence, and remaining obligations.
-Then read the evidence boundary before taking a next question. For a first look,
-start with **#257** for that completed theorem family, or **#249** for exact kernel rank,
-finite certificates, and recorded routes that stopped. Progress by problem is
-in [RESULTS](docs/RESULTS.md).
+**[Visit the website](https://wcook04.github.io/plectis/)** ·
+**[Explore the mathematics](https://wcook04.github.io/plectis/maths/)** ·
+[Browse all papers](https://wcook04.github.io/plectis/docs/papers.html) ·
+[About the project](https://wcook04.github.io/plectis/#why) ·
+[Contact me](https://wcook04.github.io/plectis/#contact)
+
+![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
+
+## Why this exists
+
+The idea is to make mathematical research cumulative. Once the tools for
+navigation, proof checking, recording experiments, and crediting contributions
+exist, someone else should be able to bring an idea, a correction, or spare
+compute without having to build them again. A useful partial result or a
+failed approach with a checkable reason can save the next person work, even
+while the original problem remains open.
+
+The problems were chosen for their difficulty, to expose the research process:
+reading prior work, testing ideas, checking proofs, explaining results, and
+recording what still needs to be done. Each problem keeps that record together.
 
 I am responsible for all claims, sources and the release. Plectis is an
 independent, AI-assisted prototype. It has had no independent mathematical
 review, and I need help. Novelty and significance still need human judgement.
-If you solve a problem, the credit is yours. If this repo helped, please cite
-the release and say how. Anyone can contribute, including by formalising
-mathematics already known analytically, and receive due credit. Start with
-[A reader's way in](HUMAN_ENTRY.md).
 
-The notes follow Terence Tao's public guidance on how AI mathematics should be
-expositioned; that is a writing standard, not a review of this project.
+Two papers explain the project in more detail:
 
-The [website](https://wcook04.github.io/plectis/) is the human browse path:
-[mathematics pages](https://wcook04.github.io/plectis/maths/) for each short
-and long paper. Navigation, validation and contribution workflows also plug
-into coding agents via [`AGENTS.override.md`](AGENTS.override.md); they are
-not required to read the papers.
+- **[From Spare Compute to Cumulative Mathematics](paper/systems/open-source-mathematics-strategy.pdf)**
+  explains the open-source idea, how different contributions can help, and how
+  credit is recorded.
+- **[Problem-Sized Lean Worlds](paper/systems/claim-faithful-publication-systems-paper.pdf)**
+  explains how the research is organised and how finding a result, checking it,
+  and deciding what may be claimed are kept separate.
+
+## Where to start
+
+- **Read the mathematics:** the [website's maths pages](https://wcook04.github.io/plectis/maths/)
+  give each problem and its short and long papers. [A reader's way in](HUMAN_ENTRY.md)
+  is the command-free guide in this repository.
+- **Inspect a result:** start with [RESULTS](docs/RESULTS.md), then follow the
+  [source map](docs/SOURCE_MAP.md) and the claim verifier in
+  [REPRODUCIBILITY](docs/REPRODUCIBILITY.md).
+- **Contribute:** bring an idea, review, correction, infrastructure improvement,
+  or a research run. [Contribute](#contribute) explains the return and credit paths.
+- **Use a coding agent:** navigation, validation and contribution workflows
+  start at [`AGENTS.override.md`](AGENTS.override.md). An agent is not required
+  to read the papers.
+
+The notes follow Terence Tao's public guidance on writing mathematics produced
+with AI assistance; that is a writing standard, not a review of this project.
 
 ## Problem papers
+
+Each problem has a short paper and a longer research record covering failed
+routes, finite evidence, and remaining obligations. For a first look, start
+with **#257** for full-support irrationality and achievement-set measure, or
+**#249** for exact kernel rank, finite certificates, and recorded routes that
+stopped. [RESULTS](docs/RESULTS.md) summarises progress across all eight.
 
 - **[#68](https://www.erdosproblems.com/68)** · Factorial-denominator irrationality ·
   [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
@@ -87,6 +108,7 @@ not required to read the papers.
   mathematics, not Lean). Erdős stated that coprimality-free extension; the
   note writes out an averaging proof. Full-support irrationality at every
   integer base is classical (Erdős 1948) and Lean-checked here.
+  The base-2 achievement set has measure one.
   Pairwise-coprime plus summable-reciprocal support is Lean. Arbitrary
   infinite support, and the `1/2` and `1/21` branches, remain open.
 - **[#269](https://www.erdosproblems.com/269)** · Three-prime running LCM ·
@@ -124,7 +146,7 @@ archive and provenance only; the papers above are the current entrances.
 
 ## What the checks establish
 
-Three things come between a Lean proof and a claim in this repo. The
+The checks connect the public claims to their formal statements and sources. The
 [comprehension graph](docs/semantic/README.md) is the map: every declaration in
 the atlas, the statements they make, and typed relations between them, so a
 theorem can be seen as a reformulation or finite instance of the open problem
@@ -142,11 +164,6 @@ establish. [`docs/claims.json`](docs/claims.json) covers claim status and
 decides whether a statement captures the intended problem, is new, or solves
 anything, which requires expert review.
 
-Two papers explain the design. [Problem-Sized Lean Worlds](paper/systems/claim-faithful-publication-systems-paper.pdf)
-is how finding a result, checking it and deciding what may be claimed are kept
-separate. [From Spare Compute to Cumulative Mathematics](paper/systems/open-source-mathematics-strategy.pdf)
-is why the work is public and how credit is recorded.
-
 ## Contribute
 
 An idea, a correction, a counterexample, a failed route with a checkable
@@ -155,17 +172,17 @@ count. Open the
 [plain-language research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
 or a pull request. Accepted work gets a public receipt. The
 [credit policy](docs/research-commons/CREDIT_POLICY.md) gives the exact
-boundary. You can also email me.
+boundary. You can also [email me](https://wcook04.github.io/plectis/#contact).
+
+If you solve a problem, the credit is yours. If this repo helped, please cite
+the release and say how. Anyone can contribute, including by formalising
+mathematics already known analytically, and receive due credit.
+
+To continue from one exact public revision, use the
+[frontier relay](docs/FRONTIER_RELAY.md) and [CONTRIBUTING](CONTRIBUTING.md).
+**Experts:** email me any insight. I will do the work and fully credit you.
 
 ## Read or verify locally
-
-- **Read** a problem in [A reader's way in](HUMAN_ENTRY.md).
-- **Check** a stated result with the claim verifier in
-  [REPRODUCIBILITY](docs/REPRODUCIBILITY.md).
-- **Continue** from one exact public revision via the
-  [frontier relay](docs/FRONTIER_RELAY.md) and [CONTRIBUTING](CONTRIBUTING.md).
-- **Experts:** [email me](https://wcook04.github.io/plectis/#contact) any
-  insight. I will do the work and fully credit you.
 
 Every command lives in [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) and the
 [agent workbench](docs/AGENT_WORKBENCH.md): claim verifier, reader-only and
@@ -178,15 +195,6 @@ hooks. Proof builds run the pinned Lean toolchain and Mathlib.
 [SECURITY](SECURITY.md) explains the boundary.
 Agents arriving cold start at [`AGENTS.override.md`](AGENTS.override.md); the
 [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf) explains that design.
-
-## Citation and licence
-
-Cite release `v0.10.0` via [CITATION.cff](CITATION.cff). Code, scripts, and
-documentation are Apache-2.0. The manuscript layer, including the paper source
-and rendered PDFs, is CC-BY-4.0. Prior work and the MIT-0 wrapper are recorded
-in [REUSE.toml](REUSE.toml) and the [licence texts](LICENSES/Apache-2.0.txt).
-[SCOPE](SCOPE.md) defines the corpus; [`CONTRIBUTING.md`](CONTRIBUTING.md)
-covers corrections.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
@@ -217,3 +225,12 @@ The paper links each headline result to the relevant source. For a particular
 topic, start with the [source map](docs/SOURCE_MAP.md); it gives the module
 order without asking you to decode Lean declaration names first.
 <!-- END generated_principal_declaration_anchors -->
+
+## Citation and licence
+
+Cite release `v0.10.0` via [CITATION.cff](CITATION.cff). Code, scripts, and
+documentation are Apache-2.0. The manuscript layer, including the paper source
+and rendered PDFs, is CC-BY-4.0. Prior work and the MIT-0 wrapper are recorded
+in [REUSE.toml](REUSE.toml) and the [licence texts](LICENSES/Apache-2.0.txt).
+[SCOPE](SCOPE.md) defines the corpus; [`CONTRIBUTING.md`](CONTRIBUTING.md)
+covers corrections.
