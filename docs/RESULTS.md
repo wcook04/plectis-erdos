@@ -68,12 +68,14 @@ endpoint remain open.
 through `t ≤ 82`, conditional actual-LCM and harmonic-pivot routes, and scoped
 no-go theorems. No cofinal producer reaching irrationality is proved.
 
-**[#251](https://www.erdosproblems.com/251).** A coefficient-only countermodel
-and a sparse rationalising perturbation show that polynomial growth,
-nonperiodicity, and eventual fixed-modulus congruences do not force
-irrationality. The prime-to-gap identity is Tao's (7 October 2025); Lean
-formalises it with an elementary polynomial prime bound, not the
-prime-number theorem. A prime-specific cofinal tail witness is still missing.
+**[#251](https://www.erdosproblems.com/251).** A sparse perturbation of the
+prime gaps can have a rational dyadic sum while retaining the prime growth
+scale, every fixed eventual congruence, and asymptotically the same
+short-block statistics. The later positions are not asserted to be prime.
+This is complementary to Land's conditional result, not a refutation.
+Lean checks an elementary pair-and-buffer core; the full schedule and
+block-law estimates are ordinary mathematics, not a separately published
+`SparseRationalisation.md`. The original problem remains open.
 
 **[#257](https://www.erdosproblems.com/257).** Full-support irrationality in
 every integer base `b ≥ 2`, structured-support theorems under summability,
@@ -626,6 +628,16 @@ boundaries kept together.
   Comparator interface does not assert that infinite limit. Its coefficients
   are synthetic, not actual prime gaps, so this is a methodological no-go and
   not an unconditional #251 refutation.
+- A sparse congruence-preserving perturbation of the actual prime gaps can
+  make the dyadic sum rational while retaining the prime growth scale,
+  eventual fixed-modulus congruences, and short-block statistics at the
+  stated scale. Lean checks the elementary pair identities, buffer, and
+  abstract filling core (`SparseRationalisationCore.lean`). The full
+  schedule and block-law transfer are ordinary proofs in Proposition 1.1
+  of the short paper; they are not Lean- or Comparator-verified, and
+  there is no separately published `SparseRationalisation.md`. End-to-end
+  sparse candidate sources are labelled UNRUN. The later positions are
+  not asserted to be prime, and the construction does not refute Land.
 - Open: cofinally many adjacent index pairs with small tail shifts and
   differing gaps; each smallness condition constrains a complete infinite
   tail.

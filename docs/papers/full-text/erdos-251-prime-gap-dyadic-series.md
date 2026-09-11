@@ -67,7 +67,7 @@ separate the cumulative correction from its weighted value. If $`C_j`$ is the pr
 ``` math
 w_j\le\sum_{i>j}D_iw_i.
 ```
-The allowed digits therefore have overlapping continuation intervals. Greedy selection keeps the remainder between zero and the remaining capacity, which tends to zero, and fills an interval of complete sums. The centres may be delayed to keep the corrections below $`f`$ while their spacing tends to infinity. For the polylogarithmic bound the spacing is comparable to $`\log\log n`$. At most $`m`$ starting blocks of length $`m`$ meet one changed coefficient, so the total variation error is $`O_\varepsilon(m/\log\log X)`$ for $`m=o(\log\log X)`$. The full schedule and endpoint estimates are given in the companion sparse-rationalisation proof. ◻
+The allowed digits therefore have overlapping continuation intervals. Greedy selection keeps the remainder between zero and the remaining capacity, which tends to zero, and fills an interval of complete sums. The centres may be delayed to keep the corrections below $`f`$ while their spacing tends to infinity. For the polylogarithmic bound the spacing is comparable to $`\log\log n`$. At most $`m`$ starting blocks of length $`m`$ meet one changed coefficient, so the total variation error is $`O_\varepsilon(m/\log\log X)`$ for $`m=o(\log\log X)`$. The identities used above are the Lean-checked elementary core; the explicit spacing and block-law estimates in this paragraph are ordinary mathematics. There is no separately published companion file `SparseRationalisation.md`. ◻
 
 </div>
 
@@ -784,7 +784,7 @@ The [source links](https://github.com/wcook04/plectis-lean-erdos249-257/tree/99f
 
 Lean checks each proof term against the fixed library version, and the sources linked here contain no proof placeholders and no project-defined axioms; Lean does not authorise the exposition, the citation choices, or the interpretation, for which the author remains responsible.
 
-For Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a>, the pair identities, congruence buffer and abstract variable-alphabet filling are checked in `SparseRationalisationCore.lean`. The schedule, upper Banach density, and block-law transfer have ordinary proofs in `SparseRationalisation.md`.
+For Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a>, the pair identities, congruence buffer and abstract variable-alphabet filling are checked in `SparseRationalisationCore.lean`. The schedule, upper Banach density, and block-law transfer are ordinary proofs, given in the Construction paragraph of that proposition; they are not Lean- or Comparator-verified. There is no separately published companion file `SparseRationalisation.md`. End-to-end sparse candidate sources in the repository are labelled UNRUN and are not presented as checked theorems.
 
 <a id="funding-and-competing-interests."></a>
 

@@ -69,11 +69,11 @@ not required to read the papers.
 - **[#251](https://www.erdosproblems.com/251)** · Prime-gap dyadic series ·
   [short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) ·
   [longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf).
-  The strongest supported lead is a coefficient-only countermodel and a sparse
-  rationalising perturbation. The prime-to-gap identity is already Tao's
-  (summation by parts on the forum, 7 October 2025); this checkout checks it
-  without the prime-number theorem. The cofinal small-mismatch tail witness
-  remains open.
+  A sparse perturbation of the prime gaps can have a rational dyadic sum
+  while retaining the prime growth scale, every fixed eventual congruence,
+  and asymptotically the same short-block statistics. The later positions
+  are not asserted to be prime. This is complementary to Land's conditional
+  result, not a refutation; the original problem remains open.
 - **[#257](https://www.erdosproblems.com/257)** · Mersenne-support subseries ·
   [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) ·
   [longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf).
