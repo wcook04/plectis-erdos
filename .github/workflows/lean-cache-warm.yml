@@ -26,7 +26,10 @@ on:
 
 concurrency:
   group: lean-cache-warm-${{ github.ref }}
-  cancel-in-progress: true
+  # Paper/docs-only pushes must not destroy an in-flight Lean warm. A cancelled
+  # warm leaves merge-commit chrome red without undoing the merge, and it
+  # discards the only main-ref cache producer.
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -73,6 +76,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          fetch-depth: 2
           persist-credentials: false
       - name: Install the pinned Python runtime
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -84,10 +88,44 @@ jobs:
           python3 scripts/test_lean_cache_warm_environment.py
           python3 -O scripts/test_lean_cache_warm_environment.py
 
+      - name: Detect Lean-affecting changes
+        id: lean-inputs
+        env:
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: |
+          if [[ -z "$BEFORE" || "$BEFORE" =~ ^0+$ ]]; then
+            changed=true
+          elif git diff --quiet "$BEFORE" "$SHA" -- \
+            lean/Erdos249257.lean 'lean/Erdos249257/**' \
+            lean/ErdosProblems.lean 'lean/ErdosProblems/**' \
+            'verification/Erdos251LargeCertificate/**' \
+            'research/adapters/**' 'research/examples/**' 'research/residualbench/**' \
+            'research/Erdos243V5/**' \
+            lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
+            docs/declaration_atlas.json \
+            docs/generated_certificate_manifest.json \
+            scripts/build_declaration_atlas.py \
+            scripts/build_lean_dependency_index.py \
+            scripts/export_lean_dependency_edges.lean \
+            scripts/lean_fast_build.py \
+            scripts/query_corpus.py; then
+            changed=false
+          else
+            changed=true
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "Lean-affecting changes: $changed ($BEFORE..$SHA)"
+
+      - name: Record documentation-only cache-warm skip
+        if: steps.lean-inputs.outputs.changed != 'true'
+        run: echo "No Lean source or proof-environment input changed; cache-warm is unchanged."
+
       # Same key shape as `lean.yml`, so its prefix `restore-keys` fallback
       # finds what this run saves. Diverging here would silently reintroduce
       # the stale-cache rebuild.
       - name: Restore project Lean cache
+        if: steps.lean-inputs.outputs.changed == 'true'
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake
@@ -96,6 +134,7 @@ jobs:
             lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
 
       - name: Install pinned Lean toolchain
+        if: steps.lean-inputs.outputs.changed == 'true'
         env:
           ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
           ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
@@ -113,11 +152,13 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
       - name: Fetch pinned dependency build artifacts
+        if: steps.lean-inputs.outputs.changed == 'true'
         run: |
           set -euo pipefail
           lake exe cache get
 
       - name: Memory-bounded Lean build
+        if: steps.lean-inputs.outputs.changed == 'true'
         # Warm exactly the target set consumed by the required build job under
         # one planner/singleflight owner, including its non-default consumers.
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench
@@ -126,4 +167,5 @@ jobs:
       # reuses it on an exact cache restore; without it in the saved cache the
       # next branch pays the full export again.
       - name: Export elaborated dependency index
+        if: steps.lean-inputs.outputs.changed == 'true'
         run: python3 scripts/build_lean_dependency_index.py --check --full-check

@@ -528,6 +528,63 @@ def architecture_rendered_errors(pdf: Path, text: str) -> list[str]:
     return [f"{pdf.relative_to(ROOT)}: {error}" for error in errors]
 
 
+_IFFALSE_BLOCK = re.compile(r"\\iffalse\b.*?\\fi\b", re.S)
+_TEX_LABEL = re.compile(r"\\label\{([^}]+)\}")
+_TEX_REF = re.compile(r"\\(?:eq|page|auto|c|C)?ref\*?(?:\[.*?\])?\{([^}]+)\}")
+_UNRESOLVED_RENDER = re.compile(r"\?\?")
+
+
+def _strip_tex_comments_and_disabled(text: str) -> str:
+    text = _IFFALSE_BLOCK.sub("\n", text)
+    kept: list[str] = []
+    for line in text.splitlines():
+        out: list[str] = []
+        index = 0
+        while index < len(line):
+            char = line[index]
+            if char == "%" and (index == 0 or line[index - 1] != "\\"):
+                break
+            out.append(char)
+            index += 1
+        kept.append("".join(out))
+    return "\n".join(kept)
+
+
+def publication_contract_papers() -> list[tuple[Path, Path]]:
+    contract = json.loads((ROOT / "docs" / "publication_contract.json").read_text())
+    rows: list[tuple[Path, Path]] = []
+    for artifact in contract["artifacts"]:
+        source = ROOT / artifact["source_path"]
+        rendered = ROOT / artifact["rendered_path"]
+        rows.append((source, rendered))
+    return rows
+
+
+def unmatched_tex_reference_errors(tex: Path) -> list[str]:
+    """Catch manuscript-internal \\ref targets that cannot resolve in this PDF."""
+    visible = _strip_tex_comments_and_disabled(tex.read_text(encoding="utf-8"))
+    labels = set(_TEX_LABEL.findall(visible))
+    missing: list[str] = []
+    seen: set[str] = set()
+    for match in _TEX_REF.finditer(visible):
+        for name in (part.strip() for part in match.group(1).split(",")):
+            if name and name not in labels and name not in seen:
+                seen.add(name)
+                missing.append(name)
+    return [
+        f"{tex.relative_to(ROOT)}: unresolved TeX reference {name!r}"
+        for name in missing
+    ]
+
+
+def unresolved_pdf_reference_errors(pdf: Path, text: str) -> list[str]:
+    if _UNRESOLVED_RENDER.search(text):
+        return [
+            f"{pdf.relative_to(ROOT)}: rendered PDF still contains unresolved '??' references"
+        ]
+    return []
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -538,6 +595,9 @@ def main() -> int:
     args = parser.parse_args()
 
     errors = [error for tex, _pdf in PAPERS for error in source_errors(tex)]
+    contract_papers = publication_contract_papers()
+    for tex, _pdf in contract_papers:
+        errors.extend(unmatched_tex_reference_errors(tex))
     if not args.source_only:
         pdftotext = shutil.which("pdftotext")
         pdftohtml = shutil.which("pdftohtml")
@@ -578,6 +638,30 @@ def main() -> int:
                     continue
                 errors.extend(architecture_rendered_errors(pdf, text))
                 errors.extend(first_minute_errors(pdf, pdftotext))
+            scanned_pdfs = {pdf.resolve() for _tex, pdf in PAPERS}
+            scanned_pdfs.update(pdf.resolve() for pdf in ARCHITECTURE_PAPERS)
+            for _tex, pdf in contract_papers:
+                if pdf.resolve() in scanned_pdfs:
+                    continue
+                try:
+                    safe_rendered_file(pdf)
+                    text = rendered_text(pdf, pdftotext)
+                except (UnsafeRenderedInput, RuntimeError) as error:
+                    errors.append(str(error))
+                    continue
+                errors.extend(unresolved_pdf_reference_errors(pdf, text))
+            for _tex, pdf in PAPERS:
+                try:
+                    text = rendered_text(pdf, pdftotext)
+                except RuntimeError:
+                    continue
+                errors.extend(unresolved_pdf_reference_errors(pdf, text))
+            for pdf in ARCHITECTURE_PAPERS:
+                try:
+                    text = rendered_text(pdf, pdftotext)
+                except RuntimeError:
+                    continue
+                errors.extend(unresolved_pdf_reference_errors(pdf, text))
 
     if errors:
         print(f"check_rendered_paper_boundary: {len(errors)} failure(s)")

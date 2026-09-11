@@ -20,8 +20,7 @@
   pdfkeywords={lemniscate, critical values, Newton flow, free-point inequality, saddle connection, Lean 4},
 }
 
-% The prose keeps compact declaration labels; the source appendix supplies the
-% commit-pinned links checked by the public release gate.
+% Names absent from the pinned snapshot stay as compact unlinked labels.
 \newcommand{\pdecl}[1]{\emph{\leanlabel{#1}}}
 \newcommand{\dbar}{\mathbb{D}}
 
@@ -343,7 +342,7 @@ geometric-mean identity give
 $d_i d_j^{\,n-1}\le r^n$.  After normalising by $r$, a sharp two-variable
 Bernoulli inequality yields $d_i+d_j\le2r$.  The complete complex theorem,
 including the selector and both inequalities, is checked as
-\pdecl{exists_two_roots_dist_sum_le_two_mul_geomMean}.
+\lword{Erdos1041/CriticalTwoRootProximity.lean}{289}{exists_two_roots_dist_sum_le_two_mul_geomMean}{the critical geometric-mean proximity}.
 
 This is not silently promoted to a path theorem.  The same source module
 checks two exact barriers to the most tempting completions.
@@ -358,13 +357,13 @@ outside $\{|f|<1\}$.
 \end{proposition}
 
 \noindent The certificates are exact rational-algebraic computations, checked
-as \pdecl{nearestSpoke_unique_nearest_spoke_escapes} and
-\pdecl{allStraightCubic_every_pair_midpoint_escapes}, and the displayed
-proposition itself, with both quintic and cubic exhibited as polynomials and the
-nearest-root condition quantified over every zero, is
-\lref{Erdos1041/CriticalTwoRootProximity.lean}{438}{nearestSpoke_unique_nearest_spoke_escapes}
-and
-\lref{Erdos1041/CriticalTwoRootProximity.lean}{569}{allStraightCubic_every_pair_midpoint_escapes}.
+as the
+\lword{Erdos1041/CriticalTwoRootProximity.lean}{438}{nearestSpoke_unique_nearest_spoke_escapes}{unique nearest-spoke escape}
+and the
+\lword{Erdos1041/CriticalTwoRootProximity.lean}{569}{allStraightCubic_every_pair_midpoint_escapes}{cubic all-straight midpoint obstruction},
+and the displayed proposition itself, with both quintic and cubic exhibited as
+polynomials and the nearest-root condition quantified over every zero, records
+those same two evaluations.
 \texttt{PaperStraightObstructions.lean} is not in this checkout.  The first defeats a
 tie-breaking escape hatch; the second defeats every straight root-pair
 segment.  Together with Theorem~\ref{res:critical-proximity}, they isolate the
@@ -394,8 +393,8 @@ path of length strictly less than $2$ contained in $\{|f|<1\}$.
 \noindent For cubic roots $r,s,v$, the real charges
 $\Re(r\overline{s+v})$ sum to more than $-3$, so one is greater than $-1$.
 For that root, AM--GM and the exact cyclotomic cancellation
-$(1-t)(1+t+t^2)=1-t^3$ prove that its complete origin spoke is safe.  Lean
-checks this fan-in as \pdecl{cubic_has_safe_root_spoke}.  Pulling the spoke
+$(1-t)(1+t+t^2)=1-t^3$ prove that its complete origin spoke is safe.  Lean checks
+\lword{Erdos1041/CubicQuotientFiberCase.lean}{161}{cubic_has_safe_root_spoke}{the safe cubic root-spoke fan-in}.  Pulling the spoke
 back under $y\mapsto y^q$ gives $q$ safe spokes from $h$; two different fibre
 points are joined through $h$ with length $2|y|<2$.  The finite root-of-unity
 mean-square argument and fibre assembly are ordinary, not hidden Lean claims.
@@ -426,8 +425,9 @@ interior-root condition.  The phase-sensitive boundary theorem uses the first
 three Newton moments and a cubic separator.  Its harmonic extension controls
 mixed interior/boundary configurations and shows that an unsafe interior tail
 contributes at most $2/31$.  Lean checks the finite selectors
-\pdecl{primitiveBoundary_exists_two_tailEnergy_lt_one} and
-\pdecl{primitiveInterior_exists_two_tailEnergy_lt_one}; the rotation,
+\lword{Erdos1041/PrimitiveQuinticBoundaryTail.lean}{200}{primitiveBoundary_exists_two_tailEnergy_lt_one}{two boundary tail energies below one}
+and
+\lword{Erdos1041/PrimitiveQuinticInteriorTail.lean}{272}{primitiveInterior_exists_two_tailEnergy_lt_one}{two interior tail energies below one}; the rotation,
 moment identification, Abel path estimate, and two-spoke assembly are ordinary
 mathematics.
 
@@ -436,9 +436,10 @@ mathematics.
 The complete all-degree collinear theorem appears in
 Section~\ref{sec:collinear}.  It gives the sharp Chebyshev constant, not merely
 an existence bound, and therefore belongs to the solved-family layer rather
-than the frontier layer.  Lean checks the constrained alternation engine
-\pdecl{exists_peak_le_of_monic_comparison} and its Chebyshev consumer
-\pdecl{exists_peak_le_comparisonBound}; affine normalisation, root-gap
+than the frontier layer.  Lean checks
+\lword{Erdos1041/SharpCollinearAlternation.lean}{158}{exists_peak_le_of_monic_comparison}{the constrained monic-comparison alternation}
+and
+\lword{Erdos1041/SharpCollinearChebyshev.lean}{133}{exists_peak_le_comparisonBound}{its Chebyshev comparison-bound consumer}; affine normalisation, root-gap
 selection, and transport back to the original line are ordinary.
 
 \section{Critical-value separation in every degree}
@@ -621,9 +622,10 @@ $w'(t)=-w(t)$.
 \end{theorem}
 
 \noindent The computation is one line: $w'=f'(z)\,z'=f'(z)\cdot(-f(z)/f'(z))=-f(z)=-w$.
-The kernel checks it as \pdecl{newtonFlow_value_hasDerivAt}, together with the
-differential form of the first integral,
-\pdecl{newtonFlow_scaledValue_hasDerivAt_zero}:
+The kernel checks it as
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{the Newton-flow value equation},
+together with the differential form of the first integral,
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{vanishing of the exponentially scaled value}:
 \[
   \frac{d}{dt}\Bigl(e^{t}f(z(t))\Bigr)=0,
   \qquad\text{equivalently}\qquad
@@ -641,9 +643,9 @@ not be radial.  Consequently, if two critical values lie on distinct positive
 rays, no Newton-flow saddle connection joins the corresponding critical points.
 \end{corollary}
 
-\noindent This is checked in consumer form: the kernel accepts the implication
-from the hypothesis of distinct rays to the absence of a connection.  It is the
-statement the topology needs, and it is a genuine sharpening of the criterion
+\noindent This is checked in consumer form: the kernel accepts
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}{the implication from distinct rays to the absence of a Newton connection}.
+It is the statement the topology needs, and it is a genuine sharpening of the criterion
 used in the literature.
 
 \section{Arguments, not moduli}\label{sec:arguments}
@@ -673,9 +675,12 @@ and $b+\beta$ lie on the same positive ray has the form
 
 \noindent So each pair of critical values contributes a one-real-parameter
 forbidden locus in the translation plane, given in closed form
-(\pdecl{translated_samePositiveRay_parameterization}).  A finite union of such
-loci has empty interior, so arbitrarily small translations avoid the
-finitely many ray collisions.  Fixed-degree lower semicontinuity in
+(\lword{Erdos1041/NewtonFlowRaySeparation.lean}{107}{translated_samePositiveRay_parameterization}{the ray-collision parameterization}).
+A finite union of such loci has empty interior, so
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{197}{exists_small_translation_separating_arguments}{an arbitrarily small translation separates the arguments}.
+Under an explicit margin,
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{287}{constant_perturbation_roots_in_unitDisk}{a small constant perturbation keeps the roots in the unit disc}.
+Fixed-degree lower semicontinuity in
 Section~\ref{sec:open} passes a dense-generic closed-level length bound to the
 whole coefficient class.  Quantitative forward transport of a selected curve
 requires additional control, but is not a premise of that existence argument.

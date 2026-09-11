@@ -120,6 +120,12 @@ def main() -> int:
             "nested storage was treated as temporary build output",
         )
 
+    makefile = (sync.ROOT / "paper" / "Makefile").read_text(encoding="utf-8")
+    require(
+        "tectonic -o . -Z search-path=. $<" in makefile,
+        "nested paper sources must compile into paper/<stem>.pdf via tectonic outdir/search-path",
+    )
+
     print(
         "test_sync_publication_pdfs: missing rebuild fails; verified reuse "
         "and fresh build copy remain distinct"

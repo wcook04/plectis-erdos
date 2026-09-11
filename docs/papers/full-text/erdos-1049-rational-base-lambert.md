@@ -248,6 +248,19 @@ Let $`\eta\downarrow0`$. The resulting bound is $`1+\alpha/\tau=(1-\theta)/(\the
 
 Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gives $`\log b/\log a<\theta_{\rm BV}:=1/2-1/\pi^2`$. Since $`\pi^2<10`$, one has $`\theta_{\rm BV}<2/5<\log4/\log31`$. The displayed sufficient regions therefore differ on $`[\theta_{\rm BV},\theta^*)`$. The direction $`(14,12,14;27)`$, its thirteen intervals and the constant $`\mu\approx2.46497868`$ are inherited from \[zudilin2004, p. 162\], where $`\mu`$ bounds an integer-base irrationality exponent. The rational-base extension announced in \[zudilin2016, Section 2\] has the same shape with an unspecified computable constant. Here the polynomial specialisation identifies $`\mu`$ as admissible for $`F`$; no priority claim is attached.
 
+<div id="res:sevenhalves" class="theorem">
+
+**Theorem 4** (the $`7/2`$ height condition). *The [integer power certificate](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L32) $`2^{18}<7^7`$ yields the [Archimedean height condition](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
+``` math
+\frac{\log 7}{\log(7/2)}
+ <
+ \left(\frac12+\frac1{\pi^2}\right)^{-1}.
+```*
+
+</div>
+
+This is the elementary parameter check at $`q=7/2`$ in Bundschuh and Väänänen’s Theorem 2 ($`\alpha=-1`$). Their analytic irrationality theorem is not a Lean result here.
+
 Negative bases are not treated.
 
 <a id="the-base-uniform-degree-restriction"></a>
@@ -258,7 +271,7 @@ The preceding construction uses degree and decay estimates valid at every fixed 
 
 <div id="res:archimedean-cap" class="theorem">
 
-**Theorem 4** (Archimedean cap on base-uniform rank-two families). *Let $`(U_n,V_n)`$ be pairs in $`\mathbb Z[X]^2`$ satisfying $`\Lambda_n(x)=U_n(x)F(x)-V_n(x)\ne0`$, $`\deg U_n,\deg V_n\le\delta n^2(1+o(1))`$, $`\log\max(H(U_n),H(V_n))\le h n^2(1+o(1))`$ with $`H`$ the $`\ell^1`$ coefficient norm, and $`\log|\Lambda_n(x)|=-\sigma n^2\log x\,(1+o(1))`$ for every real $`x>1`$, with $`\sigma,\delta>0`$ and $`h\ge0`$ independent of $`x`$. Then with $`d_n=\max(\deg U_n,\deg V_n)`$, the homogenised forms $`b^{d_n}\Lambda_n(a/b)`$ tend to zero whenever $`\log b/\log a<\sigma/(\sigma+\delta)`$, and $`\sigma/(\sigma+\delta)\le1/2`$.*
+**Theorem 5** (Archimedean cap on base-uniform rank-two families). *Let $`(U_n,V_n)`$ be pairs in $`\mathbb Z[X]^2`$ satisfying $`\Lambda_n(x)=U_n(x)F(x)-V_n(x)\ne0`$, $`\deg U_n,\deg V_n\le\delta n^2(1+o(1))`$, $`\log\max(H(U_n),H(V_n))\le h n^2(1+o(1))`$ with $`H`$ the $`\ell^1`$ coefficient norm, and $`\log|\Lambda_n(x)|=-\sigma n^2\log x\,(1+o(1))`$ for every real $`x>1`$, with $`\sigma,\delta>0`$ and $`h\ge0`$ independent of $`x`$. Then with $`d_n=\max(\deg U_n,\deg V_n)`$, the homogenised forms $`b^{d_n}\Lambda_n(a/b)`$ tend to zero whenever $`\log b/\log a<\sigma/(\sigma+\delta)`$, and $`\sigma/(\sigma+\delta)\le1/2`$.*
 
 </div>
 
@@ -297,7 +310,7 @@ for every $`N\ge1`$ \[zudilin2016, Section 4\]. A formal moment expansion iden
 
 <div id="res:zudilin-sharp-qorder" class="theorem">
 
-**Theorem 5** (sharp normalized Hankel order). *For every $`N\ge1`$,
+**Theorem 6** (sharp normalized Hankel order). *For every $`N\ge1`$,
 ``` math
 \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
 ```
@@ -363,13 +376,13 @@ The theorem identifies the first formal term. Formal order alone would not contr
 
 <div id="res:nocorridor" class="theorem">
 
-**Theorem 6** (no corridor at base $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ is not a coordinatewise corridor.*
+**Theorem 7** (no corridor at base $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ is not a [coordinatewise corridor](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155).*
 
 </div>
 
 <div id="res:tailrec" class="theorem">
 
-**Theorem 7** (cleared-tail recurrence). *Let $`r,s,B,F\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be the cleared tail state. Then for every $`N`$,
+**Theorem 8** (cleared-tail recurrence). *Let $`r,s,B,F\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be the cleared tail state. Then for every $`N`$ the [cleared-tail recurrence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187) is
 ``` math
 U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 ```*
@@ -378,7 +391,7 @@ U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 
 <div id="res:forcing" class="theorem">
 
-**Theorem 8** (the forcing term). *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$, and put $`G_N=B\,c(N+1)\,s^{\,N+1}`$.*
+**Theorem 9** (the forcing term). *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$, and put $`G_N=B\,c(N+1)\,s^{\,N+1}`$.*
 
 1.  *If $`s\ge2`$, $`B\ge1`$ and $`c(N+1)\ge1`$, then $`2^{\,N+1}\le G_N`$.*
 
@@ -395,11 +408,18 @@ A specialised row is primitive when its two integer coordinates have gcd one. Th
 J_{3,R}(P)=H_W(P)\pmod{3^R},\qquad
  J_{2,S}(P)=H_W(P)\pmod{2^S}.
 ```
+
+<div id="res:bottomjet" class="lemma">
+
+**Lemma 10** (bottom-jet divisibility). *Vanishing of the [bottom jet](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
+
+</div>
+
 All four jets of $`(U,V)`$ vanish precisely when $`D=3^R2^S`$ divides both specialised coordinates. The dependence on the declared width remains fixed when rows are added.
 
 <div id="res:jetkernel" class="theorem">
 
-**Theorem 9** (binary four-jet collision). *Fix a width $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Call a subset of $`\{0,\dots,M-1\}`$, equivalently a vector of $`\{0,1\}^M`$, a *binary selector*. If the $`2^M`$ binary selectors outnumber the finite four-jet target
+**Theorem 11** (binary four-jet collision). *Fix a width $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Call a subset of $`\{0,\dots,M-1\}`$, equivalently a vector of $`\{0,1\}^M`$, a *binary selector*. If the $`2^M`$ binary selectors outnumber the finite four-jet target
 ``` math
 (\mathbb{Z}/3^R\mathbb{Z})^2\times(\mathbb{Z}/2^S\mathbb{Z})^2,
 ```
@@ -425,7 +445,7 @@ The ambient count does not use relations between the two residue coordinates. Va
 
 <div id="res:plucker-collapse" class="theorem">
 
-**Theorem 10** (Bézout–Plücker tail collapse). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every row is unimodular ($`u_n A_n+v_n B_n=1`$ for some $`u_n,v_n`$) and every adjacent minor vanishes:
+**Theorem 12** (Bézout–Plücker tail collapse). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every row is unimodular ($`u_n A_n+v_n B_n=1`$ for some $`u_n,v_n`$) and every adjacent minor vanishes:
 ``` math
 A_nB_{n+1}-B_nA_{n+1}=0\qquad(n\ge0).
 ```
@@ -453,6 +473,30 @@ Primitive integer rows are unimodular modulo every modulus. A particular coordin
 
 ## One minor gcd controls two different costs
 
+<div id="res:pade" class="proposition">
+
+**Proposition 13** (Padé summand bound and exact gap). *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
+``` math
+\widetilde{P}(n,k)=2\bigl(k(n-k)+nk\bigr)+k(k-1),
+```
+``` math
+\widetilde{Q}(n,m)=2(n^{2}-n)+j^{2}+2jm+j-m^{2}+3m,
+ \qquad j=n-m-1 .
+```
+Then, for integers $`n,k,m`$:*
+
+1.  *if $`0\le k\le n`$, the [summand exponent bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30) is $`\widetilde{P}(n,k)\le\widetilde{E}_n`$, and the gap factors as $`\widetilde{E}_n-\widetilde{P}(n,k)=(n-k)(3n-k-1)`$;*
+
+2.  *the [exact gap identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L52) is $`\widetilde{E}_n-\widetilde{Q}(n,m)=2\bigl(n+m(m-1)\bigr)`$.*
+
+</div>
+
+<div id="res:content" class="proposition">
+
+**Proposition 14** (row-content determinant scaling). *Rowwise integer contents scale the [exterior determinant](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by the same factors: the [content factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and the [absolute determinant scaling](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) identify the local divisor with the Archimedean height cost.*
+
+</div>
+
 Let a rank-two lattice $`\Lambda\subset\mathbb{Z}^2`$ be generated by primitive rows, and let $`g>0`$ be the gcd of their $`2\times2`$ minors. Its Smith invariants are $`1,g`$. Therefore
 ``` math
 \bigl|\operatorname{im}(\Lambda\bmod D)\bigr|
@@ -476,7 +520,7 @@ A real bin records the analytic requirement alongside the modular signature. The
 
 <div id="res:boundedfibre" class="theorem">
 
-**Theorem 11** (quantitative bounded-fibre escape). *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
+**Theorem 15** (quantitative bounded-fibre escape). *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
 ``` math
 \iota(x)=\iota(y)\quad\Longrightarrow\quad |g(x)-g(y)|<\delta.
 ```
@@ -519,7 +563,7 @@ The following sufficient construction keeps source membership, primitive scaling
 
 <div id="prob:kernel" class="problem">
 
-**Problem 12** (common-width simultaneous endpoint-jet construction). Exhibit an integer constant $`C\ge1`$ and, for every sufficiently large positive integer $`n`$, positive integers $`W_n,R_n,S_n,M_n`$ such that
+**Problem 16** (common-width simultaneous endpoint-jet construction). Exhibit an integer constant $`C\ge1`$ and, for every sufficiently large positive integer $`n`$, positive integers $`W_n,R_n,S_n,M_n`$ such that
 ``` math
 n^2\le W_n,R_n,S_n\le Cn^2,
  \qquad 4R_n+2S_n\le M_n\le Cn^2,

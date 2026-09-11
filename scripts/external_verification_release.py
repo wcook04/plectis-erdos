@@ -35,7 +35,8 @@ def tracked_artifact_path(root: Path, relative: str) -> Path:
 
     Hosted PDF rows keep their download basenames so historical permalinks stay
     valid. Current storage may be ``paper/<id>/``; Lean comparator sources may
-    live under ``verification/``.
+    live under ``verification/``. A local ``paper/<basename>.pdf`` Makefile
+    copy must not hide the nested publication file.
     """
     direct = root / relative
     if direct.is_file():
@@ -45,6 +46,9 @@ def tracked_artifact_path(root: Path, relative: str) -> Path:
         paper = root / "paper"
         if paper.is_dir():
             matches = [path for path in paper.rglob(name) if path.is_file()]
+            nested = [path for path in matches if path.parent != paper]
+            if len(nested) == 1:
+                return nested[0]
             if len(matches) == 1:
                 return matches[0]
     nested_verification = root / "verification" / relative
