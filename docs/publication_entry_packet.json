@@ -107,7 +107,7 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:e56d672658265a6907fa128a49905f58c4b593aff912a949d4522c6cdc5f28ea",
+    "docs/claims.json": "sha256:4413a2d77f06759bca80b330381a18a8836e0d57a48b6d2fad4838874fc46711",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
     "docs/publication_contract.json": "sha256:de2b66c1fcd410fb6e1ae7cf519aa5093a78244e9d6618f37d51d497a206fbe4",
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 552,
+        "line": 566,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
