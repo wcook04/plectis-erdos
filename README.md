@@ -56,10 +56,12 @@ not required to read the papers.
 - **[#243](https://www.erdosproblems.com/243)** · Reciprocal-tail rigidity ·
   [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) ·
   [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf).
-  After Koizumi's normalised vanishing, a bounded or summably small negative
-  centred error forces eventual Sylvester recurrence. The unbounded mixed-sign
-  regime remains open. Duverney (2001) and the Tao–Kovac line are prior art
-  on the page; cubic-rate vanishing is not claimed as empty-page news.
+  After Koizumi's normalised vanishing, a bound on the upward steps of the
+  unreduced integer numerator forces eventual Sylvester recurrence; the
+  numerator itself need not be assumed bounded. Unbounded upward excursions
+  of that numerator remain open. Duverney (2001) and the Tao–Kovač line are
+  prior art on the page; cubic-rate vanishing is not claimed as empty-page
+  news.
 - **[#249](https://www.erdosproblems.com/249)** · Binary totient series ·
   [short paper](paper/249/erdos-249-binary-totient-series.pdf) ·
   [longer paper](paper/249/erdos249-totient-reasoning-surface.pdf).

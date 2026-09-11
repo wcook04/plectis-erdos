@@ -207,11 +207,11 @@
       "title": "Excluding the Bounded Negative Part",
       "artifact_class": "problem_note",
       "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_content_digest": "sha256:fea6aad3e5f426a5db882289a6cefe39705a8d1f3fede1949a8ae96fdbb2a364",
+      "source_content_digest": "sha256:ad2e77ffca32e73f22345a2024030a7dcb06fa24badd0d3fc1aa07bebbb00b31",
       "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "rendered_content_digest": "sha256:cb8872d3362418feb4193a40ec956a2884f32df78e16ab855caee5492ff5dc7e",
+      "rendered_content_digest": "sha256:0c3f766ff0297093b369216de274d1bb918fe11db92242a490cf9ad12bc2646f",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks the integer-state bounded-negative theorem, with eventual strict centring, a bounded negative part, and normalised vanishing remaining explicit hypotheses, together with constant- and periodic-negative exclusions. The original-coordinate LCM/product-defect corollary is an ordinary transfer; PaperCompleteR7/ProductDefect.lean is absent from this checkout. Koizumi supplies normalised vanishing for the canonical orbit; boundedness of its negative part is not supplied. Mixed-sign unbounded negative mass remains open, so Erdős Problem 243 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks the integer-state bounded-negative theorem, with eventual strict centring, a bounded negative part, and normalised vanishing remaining explicit hypotheses, together with constant- and periodic-negative exclusions. The original-coordinate LCM/product-defect corollary is an ordinary transfer; PaperCompleteR7/ProductDefect.lean is absent from this checkout. Koizumi supplies normalised vanishing for the canonical orbit; boundedness of its negative part is not supplied. Unbounded upward excursions of the unreduced numerator remain open, so Erdős Problem 243 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
@@ -366,7 +366,7 @@
       "rendered_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:9fde5f55609e4367cc7e1bb3a2f2ed61cb5b29fbdb2ffe6e5837ab6d4f58a8b7",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Complete reasoning record for Erdős #243. The cubic-rate irrationality theorem is ordinary mathematics, including the Chebotarev step, and is not a Lean endpoint. Lean checks the integer-state rigidity results, including a scalar finite-negative-mass criterion. The established bounded-negative regime is distinct from the remaining mixed-sign unbounded regime. The problem remains open.",
+      "claim_scope": "Complete reasoning record for Erdős #243. The cubic-rate irrationality theorem is ordinary mathematics, including the Chebotarev step, and is not a Lean endpoint. Lean checks the integer-state rigidity results, including a scalar finite-negative-mass criterion. The established bounded-negative regime is distinct from the remaining unbounded upward excursions of the unreduced numerator. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
