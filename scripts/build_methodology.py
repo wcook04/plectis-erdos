@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Build the root methodology document from docs/methodology.json."""
+"""Build the methodology guide from docs/methodology.json."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ from methodology_contract import render_markdown, validate_contract
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = ROOT / "docs" / "claims.json"
 METHODOLOGY_PATH = ROOT / "docs" / "methodology.json"
-OUTPUT = ROOT / "METHODOLOGY.md"
+OUTPUT = ROOT / "docs/METHODOLOGY.md"
 
 
 def main() -> int:
@@ -37,7 +37,7 @@ def main() -> int:
     if args.check:
         actual = OUTPUT.read_text(encoding="utf-8") if OUTPUT.is_file() else ""
         if actual != expected:
-            print("METHODOLOGY.md is stale; run python3 scripts/build_methodology.py")
+            print("docs/METHODOLOGY.md is stale; run python3 scripts/build_methodology.py")
             return 1
         print("methodology projection current")
         return 0

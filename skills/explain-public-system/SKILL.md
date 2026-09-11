@@ -11,7 +11,7 @@ Never infer private state or turn an agent summary into proof authority.
 
 ## Build the explanation from the clone
 
-1. Read `README.md` and `HUMAN_ENTRY.md` for the public promise.
+1. Read `README.md` and `docs/READING_GUIDE.md` for the public promise.
 2. Run the complete bounded overview:
 
    ```sh
@@ -24,7 +24,7 @@ Never infer private state or turn an agent summary into proof authority.
    narrower route. For a whole-system explanation, read the three companion
    papers below; for a bounded question, read only the papers and exact
    sections named by the corpus route.
-4. Read `METHODOLOGY.md` before explaining proof status, and
+4. Read `docs/METHODOLOGY.md` before explaining proof status, and
    `CONTRIBUTING.md` before explaining participation or credit.
 5. Use the companion papers when the reader wants depth:
    - `claim-faithful-publication-systems-paper.pdf` for claims and publication;

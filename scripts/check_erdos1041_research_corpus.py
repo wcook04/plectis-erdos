@@ -223,7 +223,7 @@ def check() -> tuple[int, int, int]:
 # `research_corpus/Erdos1041` is source-only: it is absent from `lakefile.toml`
 # and from both root import files, so no job in this repository elaborates it,
 # and it sits outside `check_release.py`'s `LIBRARY_ROOTS` proof-trust scan.
-# SCOPE.md already says it extends neither the checkpoint nor `docs/claims.json`,
+# docs/SCOPE.md already says it extends neither the checkpoint nor `docs/claims.json`,
 # but nothing enforced that boundary at the token level: a `sorry` or a fresh
 # `native_decide` could land here and no gate in the repository would notice.
 #

@@ -47,7 +47,7 @@ removing someone else's work. The download is a full source checkout, without
 Lean or mathlib installation; it may be substantial. No private credentials or
 API keys are needed. A failed download is retained, not automatically deleted.
 
-After reviewing the fetched source and its `AGENTS.override.md`, authorise the
+After reviewing the fetched source and its `AGENTS.md`, authorise the
 two Python entry commands:
 
 ```sh

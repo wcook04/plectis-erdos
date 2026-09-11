@@ -27,7 +27,7 @@ MUTATION_HARNESS_PATH = "scripts/run_publication_mutations.py"
 CLAIMS_PATH = "docs/claims.json"
 PROBLEMS_PATH = "docs/problems.json"
 METHODOLOGY_PATH = "docs/methodology.json"
-AGENT_ENTRY_PATH = "AGENTS.md"
+AGENT_ENTRY_PATH = "docs/AGENT_GUIDE.md"
 MAKEFILE_PATH = "paper/Makefile"
 REUSE_PATH = "REUSE.toml"
 MANUSCRIPT_LICENSE = "CC-BY-4.0"
@@ -1011,7 +1011,7 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
                 "release software preserves only relationships that people "
                 "explicitly recorded."
             ),
-            "human_start": "ARCHITECTURE.md",
+            "human_start": "docs/ARCHITECTURE.md",
             "printable_start": systems_artifact["rendered_path"],
         },
         "thesis": source["thesis"],

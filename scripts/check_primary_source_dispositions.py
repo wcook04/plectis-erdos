@@ -326,7 +326,7 @@ def notice_errors(
         if line.strip() and not line.lstrip().startswith("#")
     ]
     require(
-        "requirements-release.txt" in notice_text
+        "scripts/requirements-release.txt" in notice_text
         and f"{len(requirement_lines)} exact `name==version` records" in notice_text,
         "third-party notice must reconcile the release-validator manifest count",
         errors,
@@ -601,7 +601,7 @@ def main() -> int:
         data = json.loads(read_regular_bytes(LEDGER).decode("utf-8"))
         errors = disposition_errors(data, tracked=tracked_paths(), present=present_artifact_paths())
         notice_text = read_regular_bytes(NOTICE).decode("utf-8")
-        requirements_text = read_regular_bytes(ROOT / "requirements-release.txt").decode("utf-8")
+        requirements_text = read_regular_bytes(ROOT / "scripts/requirements-release.txt").decode("utf-8")
         lake_manifest_text = read_regular_bytes(ROOT / "lake-manifest.json").decode("utf-8")
         errors.extend(
             notice_errors(data, notice_text, requirements_text, lake_manifest_text)

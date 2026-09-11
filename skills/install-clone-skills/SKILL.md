@@ -7,7 +7,7 @@ description: Preview, install, or verify the public Plectis skills in Codex, Cla
 
 Use this skill when somebody wants the workflows in this clone to remain
 available outside the repository. Installation is optional. An agent working
-inside the clone can read `AGENTS.override.md` and `skills/*/SKILL.md` directly.
+inside the clone can read `AGENTS.md` and `skills/*/SKILL.md` directly.
 
 ## Inspect before changing anything
 
@@ -59,5 +59,5 @@ or mathematical authority. It also does not make repository commands runnable
 from an unrelated directory: locate the intended Plectis Lean checkout and run
 the workflow from its root. A harness may use a different skill convention; in
 that case keep the workflows repo-local and point the agent at
-`AGENTS.override.md`. Never claim support for a provider that has not loaded
+`AGENTS.md`. Never claim support for a provider that has not loaded
 and executed the installed skill.

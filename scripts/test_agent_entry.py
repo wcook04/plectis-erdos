@@ -17,6 +17,9 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "Improve repository first impression root organization README and consolidate redundant provider entry files": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
     "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
     "I am new here and want to understand the eight open problems": (
         "understand_repository",

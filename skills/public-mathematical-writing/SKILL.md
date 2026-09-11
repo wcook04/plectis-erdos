@@ -5,7 +5,7 @@ description: Write or revise reader-facing mathematics in this public Lean repos
 
 # Public mathematical writing
 
-Use this skill for `HUMAN_ENTRY.md`, the reader-facing parts of `README.md`,
+Use this skill for `docs/READING_GUIDE.md`, the reader-facing parts of `README.md`,
 result and scope guides, paper full text, and manuscript prose. It travels with
 the public clone and depends only on files in this repository.
 

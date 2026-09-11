@@ -7,7 +7,7 @@ description: Add a sourced mathematical problem as a new public problem world wi
 
 Use this skill to port a problem beyond the current indexed roster into the public
 corpus. This is a governed multi-surface change, not the creation of one Lean
-file. Read `AGENTS.md`, `ARCHITECTURE.md`, `docs/papers/README.md`, and
+file. Read `docs/AGENT_GUIDE.md`, `docs/ARCHITECTURE.md`, `docs/papers/README.md`, and
 `docs/problem_index_source.json` before editing.
 
 ## Entry requirements

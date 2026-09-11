@@ -21,4 +21,10 @@
 /CITATION.cff
 /LICENSE
 /REUSE.toml
-/SCOPE.md
+/docs/SCOPE.md
+/docs/AGENT_GUIDE.md
+/docs/READING_GUIDE.md
+/docs/METHODOLOGY.md
+/docs/PRIVACY.md
+/.github/SECURITY.md
+/.github/CODE_OF_CONDUCT.md

@@ -13,9 +13,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-GUIDE = ROOT / "ARCHITECTURE.md"
+GUIDE = ROOT / "docs/ARCHITECTURE.md"
 README = ROOT / "README.md"
-AGENTS = ROOT / "AGENTS.md"
+AGENTS = ROOT / "docs/AGENT_GUIDE.md"
 PAPER_README = ROOT / "paper" / "README.md"
 SYSTEMS_PAPER = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
 SYSTEMS_PDF = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.pdf"
@@ -349,7 +349,7 @@ def require(condition: bool, message: str) -> None:
 def validate_guide(text: str) -> None:
     size = len(text.encode("utf-8"))
     require(size <= MAX_GUIDE_BYTES, (
-        f"ARCHITECTURE.md is {size} bytes (budget {MAX_GUIDE_BYTES})"
+        f"docs/ARCHITECTURE.md is {size} bytes (budget {MAX_GUIDE_BYTES})"
     ))
 
     positions = [text.find(heading) for heading in SECTION_ORDER]
@@ -378,7 +378,7 @@ def validate_guide(text: str) -> None:
         if target.startswith(("http://", "https://", "#")):
             continue
         path = target.split("#", 1)[0]
-        require((ROOT / path).exists(), f"architecture guide has broken local link {target}")
+        require((GUIDE.parent / path).exists(), f"architecture guide has broken local link {target}")
 
 
 def validate_systems_paper(text: str) -> None:
@@ -442,7 +442,7 @@ def validate_entry_links(
     readme_first_impression = (
         readme.encode("utf-8")[:6_000].decode("utf-8", errors="ignore")
     )
-    require("](ARCHITECTURE.md)" in readme,
+    require("](docs/ARCHITECTURE.md)" in readme,
             "README lost the architecture guide entry link")
     require(
         re.search(
@@ -466,11 +466,11 @@ def validate_entry_links(
         require(phrase not in readme_first_impression.casefold(), (
             f"README first impression exposes unexplained phrase {phrase!r}"
         ))
-    require("ARCHITECTURE.md" in agents, "AGENTS lost the architecture guide route")
+    require("docs/ARCHITECTURE.md" in agents, "AGENTS lost the architecture guide route")
     require("plain-language human guide" in agents,
             "AGENTS lost the plain-language architecture guide route")
     compact_paper_readme = normalise(paper_readme)
-    require("[`ARCHITECTURE.md`](../ARCHITECTURE.md)" in paper_readme,
+    require("[`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md)" in paper_readme,
             "paper README lost the architecture guide route")
     require(
         "short first-read paper" in compact_paper_readme

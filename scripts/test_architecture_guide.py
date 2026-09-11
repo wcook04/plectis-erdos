@@ -212,8 +212,8 @@ def main() -> int:
     try:
         checker.validate_entry_links(
             readme.replace(
-                "[ARCHITECTURE](ARCHITECTURE.md)",
-                "architecture notes",
+                "](docs/ARCHITECTURE.md)",
+                "](missing-architecture.md)",
             ),
             agents,
             paper_readme,

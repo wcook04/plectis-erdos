@@ -50,7 +50,7 @@ RELEASE_VALIDATOR_REQUIREMENTS = (
 RELEASE_INSTALL_COMMAND = (
     "python3 -m pip install --disable-pip-version-check --no-cache-dir "
     "--require-hashes "
-    "--requirement requirements-release.txt"
+    "--requirement scripts/requirements-release.txt"
 )
 REQUIREMENT_PIN_RE = re.compile(
     r"^([A-Za-z0-9][A-Za-z0-9_.-]*)==([^\s#]+)"
@@ -157,7 +157,7 @@ def release_validator_lock_errors(
         match = REQUIREMENT_PIN_RE.fullmatch(line)
         if match is None:
             errors.append(
-                "requirements-release.txt line "
+                "scripts/requirements-release.txt line "
                 f"{line_number} must be an exact name==version pin"
             )
             continue
@@ -165,14 +165,14 @@ def release_validator_lock_errors(
 
     if parsed != list(RELEASE_VALIDATOR_REQUIREMENTS):
         errors.append(
-            "requirements-release.txt must contain exactly the pinned "
+            "scripts/requirements-release.txt must contain exactly the pinned "
             "release-validator package set"
         )
 
     if RELEASE_INSTALL_COMMAND not in workflow_text:
         errors.append(
             "release workflow must install metadata validators from "
-            "requirements-release.txt with the pinned command"
+            "scripts/requirements-release.txt with the pinned command"
         )
     if "pip install cffconvert reuse" in workflow_text:
         errors.append(
@@ -258,7 +258,7 @@ def main() -> int:
     toolchain = read_dependency_text(ROOT, "lean-toolchain")
     lakefile = read_dependency_text(ROOT, "lakefile.toml")
     manifest = read_dependency_text(ROOT, "lake-manifest.json")
-    requirements = read_dependency_text(ROOT, "requirements-release.txt")
+    requirements = read_dependency_text(ROOT, "scripts/requirements-release.txt")
     workflow = read_dependency_text(ROOT, ".github/workflows/lean.yml")
     require(
         not dependency_lock_errors(toolchain, lakefile, manifest),

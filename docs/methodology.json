@@ -966,7 +966,7 @@
       "forbidden_effects": [
         "change_open_target_status"
       ],
-      "public_consequence": "Regenerate METHODOLOGY.md and the corpus descriptor. Rules route review; they do not decide mathematics."
+      "public_consequence": "Regenerate docs/METHODOLOGY.md and the corpus descriptor. Rules route review; they do not decide mathematics."
     }
   ],
   "transition_contracts": [
@@ -1073,9 +1073,9 @@
         "repository_check"
       ],
       "requirements": [
-        "METHODOLOGY.md is regenerated exactly from docs/methodology.json.",
+        "docs/METHODOLOGY.md is regenerated exactly from docs/methodology.json.",
         "The corpus descriptor records the methodology path, schema, digest, and compact capsule.",
-        "AGENTS.md and README.md route to the methodology without duplicating its full content.",
+        "docs/AGENT_GUIDE.md and README.md route to the methodology without duplicating its full content.",
         "README.md carries no methodology machine identifiers beyond the source link."
       ],
       "checked_by": [
@@ -1148,7 +1148,7 @@
     },
     {
       "id": "release.methodology_projection_matches_source",
-      "description": "Checks that METHODOLOGY.md is the exact deterministic projection of docs/methodology.json.",
+      "description": "Checks that docs/METHODOLOGY.md is the exact deterministic projection of docs/methodology.json.",
       "serves": [
         "principle.public_checkout_explains_claims_and_open_boundary",
         "principle.claim_assurance_is_two_sided",
@@ -1158,7 +1158,7 @@
     },
     {
       "id": "release.methodology_routes_exist",
-      "description": "Checks that the claim-map entrypoint, corpus descriptor, AGENTS.md, and README.md route to the methodology source and human projection, and that README carries no methodology machine identifiers.",
+      "description": "Checks that the claim-map entrypoint, corpus descriptor, docs/AGENT_GUIDE.md, and README.md route to the methodology source and human projection, and that README carries no methodology machine identifiers.",
       "serves": [
         "principle.classify_change_before_updating_public_claims",
         "principle.separate_lean_human_and_agent_authority",

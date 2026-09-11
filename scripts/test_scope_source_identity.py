@@ -141,19 +141,19 @@ def scope_machine_handle_errors(
     errors: list[str] = []
     observed_open_ids = set(OPEN_ID_RE.findall(scope))
     for open_id in sorted(open_ids - observed_open_ids):
-        errors.append(f"SCOPE.md lost exact open identifier {open_id}")
+        errors.append(f"docs/SCOPE.md lost exact open identifier {open_id}")
     for open_id in sorted(observed_open_ids - open_ids):
-        errors.append(f"SCOPE.md carries unknown open identifier {open_id}")
+        errors.append(f"docs/SCOPE.md carries unknown open identifier {open_id}")
     for open_id in sorted(open_ids):
         command = f"python3 scripts/query_corpus.py --open {open_id}"
         if command not in scope:
-            errors.append(f"SCOPE.md lost bounded open query {command}")
+            errors.append(f"docs/SCOPE.md lost bounded open query {command}")
 
     observed_non_claim_ids = set(NON_CLAIM_ID_RE.findall(scope))
     for non_claim_id in sorted(non_claim_ids - observed_non_claim_ids):
-        errors.append(f"SCOPE.md lost exact non-claim identifier {non_claim_id}")
+        errors.append(f"docs/SCOPE.md lost exact non-claim identifier {non_claim_id}")
     for non_claim_id in sorted(observed_non_claim_ids - non_claim_ids):
-        errors.append(f"SCOPE.md carries unknown non-claim identifier {non_claim_id}")
+        errors.append(f"docs/SCOPE.md carries unknown non-claim identifier {non_claim_id}")
 
     for phrase in (
         "Finite instances, conditional reductions, cited neighbours, and named",
@@ -161,7 +161,7 @@ def scope_machine_handle_errors(
         "required by `docs/methodology.json`",
     ):
         if phrase not in scope:
-            errors.append(f"SCOPE.md lost open-transition boundary: {phrase}")
+            errors.append(f"docs/SCOPE.md lost open-transition boundary: {phrase}")
     return errors
 
 
@@ -171,7 +171,7 @@ def main() -> int:
     formal_source = claims["release"]["formal_source"]
     open_ids = {row["id"] for row in claims["remaining_open_propositions"]}
     non_claim_ids = {row["id"] for row in claims["non_claims"]}
-    scope = safe_scope_text(ROOT / "SCOPE.md")
+    scope = safe_scope_text(ROOT / "docs/SCOPE.md")
 
     require(
         re.fullmatch(r"[0-9a-f]{40}", formal_source["ref"]) is not None,

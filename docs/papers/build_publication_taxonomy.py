@@ -117,7 +117,7 @@ PEER_REVIEW_STATES = {
 # marker are recorded, so the two public repositories each cite what they
 # actually ship rather than a shared assumption.
 REVIEW_POSTURE_EVIDENCE = (
-    ("SCOPE.md", "The release is not itself a peer-reviewed publication record"),
+    ("docs/SCOPE.md", "The release is not itself a peer-reviewed publication record"),
     (
         "docs/EXTERNAL_VERIFICATION.md",
         "no human mathematical peer review is claimed",

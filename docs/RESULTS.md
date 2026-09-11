@@ -1735,7 +1735,7 @@ The two working records each close with a section titled "The wall": every
 attempted argument class is stopped by a stated bound, recorded with what it
 does not rule out.
 
-[`SCOPE.md`](../SCOPE.md) is the short boundary statement. The exact expert
+[`docs/SCOPE.md`](SCOPE.md) is the short boundary statement. The exact expert
 handoffs state what input is requested, current guess, alternatives,
 discriminating evidence, checked consumer, and endpoint-or-counterexample
 boundary. See

@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-HUMAN_ENTRY = ROOT / "HUMAN_ENTRY.md"
+HUMAN_ENTRY = ROOT / "docs/READING_GUIDE.md"
 
 
 def require(condition: bool, message: str) -> None:
@@ -68,6 +68,7 @@ def main() -> None:
     reader_surfaces = (
         ROOT / "README.md",
         HUMAN_ENTRY,
+        ROOT / "paper/README.md",
         ROOT / "docs/README.md",
         ROOT / "docs/RESULTS.md",
         ROOT / "docs/AGENT_WORKBENCH.md",
@@ -75,7 +76,7 @@ def main() -> None:
     )
     for source in reader_surfaces:
         for target in local_markdown_targets(source):
-            require(target.is_file(), f"{source.relative_to(ROOT)} has a dead local link: {target}")
+            require(target.is_file() or target.is_dir(), f"{source.relative_to(ROOT)} has a dead local link: {target}")
 
     require(
         "../README.md#problem-papers" in results,
@@ -117,16 +118,16 @@ def main() -> None:
         "README must not predict unreleased models",
     )
     require(
-        "archive and provenance" in readme,
-        "README does not label the combined manuscript as archive/provenance",
+        "paper/archive/" not in readme,
+        "README must lead with the current papers, not an archived manuscript",
     )
     require(
-        "AGENTS.override.md" in readme and "docs/AGENT_WORKBENCH.md" in readme,
+        "AGENTS.md" in readme and "docs/AGENT_WORKBENCH.md" in readme,
         "README must route agents to the separate workbench",
     )
     first_screen = readme.split("## Problem papers", 1)[0]
     require(
-        "[A reader's way in](HUMAN_ENTRY.md)" in first_screen,
+        "[A reader's way in](docs/READING_GUIDE.md)" in first_screen,
         "README does not lead human readers to the prose-first entry",
     )
     require(
@@ -147,7 +148,7 @@ def main() -> None:
         "short paper",
         "evidence boundary",
     ):
-        require(token in first_screen, f"README opening lost its project-purpose boundary: {token}")
+        require(token in " ".join(first_screen.split()), f"README opening lost its project-purpose boundary: {token}")
     require(
         "query_semantic.py" not in readme and "--publication-architecture" not in readme,
         "README exposes machine drilldowns that belong in agent documentation",
@@ -173,7 +174,7 @@ def main() -> None:
         "Comparator" in human_entry and "Palomar" in human_entry,
         "human entry does not explain the two public review surfaces",
     )
-    require("AGENTS.override.md" not in human_entry, "human entry leaks the agent router")
+    require("AGENTS.md" not in human_entry, "human entry leaks the agent router")
     require("python3 " not in human_entry, "human entry exposes shell commands")
     require("scripts/" not in human_entry, "human entry exposes implementation paths")
     require("```" not in human_entry, "human entry contains a code block")
@@ -193,7 +194,7 @@ def main() -> None:
         not re.search(
             r"(?i)(?:^|[\s(])(?:[\w.-]+/)+[\w.-]+|"
             r"\b[\w-]+\.(?:json|py|lean|toml|ya?ml)\b|::",
-            human_entry,
+            re.sub(r"\]\([^)]*\)", "]", human_entry),
         ),
         "human entry exposes implementation coordinates instead of explaining them",
     )

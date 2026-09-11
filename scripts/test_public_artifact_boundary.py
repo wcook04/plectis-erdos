@@ -352,8 +352,8 @@ def portfolio_visibility_errors(packet: dict[str, object]) -> list[str]:
 def main() -> int:
     """Assert that every first-contact surface preserves the public membrane."""
     check_read_path_boundary()
-    agents = read("AGENTS.md")
-    scope = read("SCOPE.md")
+    agents = read("docs/AGENT_GUIDE.md")
+    scope = read("docs/SCOPE.md")
     readme = read("README.md")
     claims = json.loads(read("docs/claims.json"))
     methodology = json.loads(read("docs/methodology.json"))

@@ -10,7 +10,8 @@ useful failed approach without solving one.
 
 ## Read
 
-- [The papers](papers/README.md): the eight problems and their papers.
+- [A reader's way in](READING_GUIDE.md): an introduction without commands or Lean.
+- [The papers](../paper/README.md): the current short papers and longer records.
 - [Results and open questions](RESULTS.md): the stated progress and its limits.
 - [Prior work](PRIOR_ART.md): antecedents, attribution and comparisons.
 - [Related problems](RELATED_PROBLEMS.md): connections across the collection.
@@ -28,7 +29,7 @@ commands. [External verification](EXTERNAL_VERIFICATION.md) explains the
 selected Comparator interfaces and their limits.
 
 The [claim record](claims.json) binds statements to their status and supporting
-artifacts. [Methodology](../METHODOLOGY.md) explains the separate roles of Lean,
+artifacts. [Methodology](METHODOLOGY.md) explains the separate roles of Lean,
 repository checks and mathematical review. A navigation page or a successful
 repository check does not establish a stronger mathematical statement.
 
@@ -41,7 +42,7 @@ corrections. The [research commons](research-commons/README.md) describes how
 another researcher can resume and return a longer investigation.
 
 For an AI-assisted session, use [the research-shift guide](FRONTIER_RELAY.md).
-Coding agents start at [the agent entry](../AGENTS.override.md); the
+Coding agents start at [the agent entry](../AGENTS.md); the
 [agent workbench](AGENT_WORKBENCH.md) documents the detailed tools.
 
 ## Where things live
@@ -55,7 +56,7 @@ Coding agents start at [the agent entry](../AGENTS.override.md); the
 | [Corpus orientation](ORIENTATION.md) | Generated technical navigation after choosing a problem. |
 | [Research commons](research-commons/README.md) | Contribution, review and attribution records. |
 
-[How the repository works](../ARCHITECTURE.md) explains source ownership,
+[How the repository works](ARCHITECTURE.md) explains source ownership,
 generated files and the release process. The research-system papers have a
 separate role from the eight mathematical problem papers; find both through
 [the paper catalogue](papers/README.md).
@@ -63,3 +64,22 @@ separate role from the eight mathematical problem papers; find both through
 The [earlier joint #249/#257 manuscript](../paper/archive/erdos249-257-main-paper.pdf)
 is retained as historical context. Start with the current individual problem
 papers instead.
+
+## Files at the repository root
+
+`README.md` introduces the work and `CONTRIBUTING.md` explains how to help.
+`AGENTS.md` is the shared instruction file for coding agents; Claude and Gemini
+load it through their small native adapters. Detailed agent rules live in
+[the agent guide](AGENT_GUIDE.md), so reading the root does not require a tour
+of the automation.
+
+`lakefile.toml`, `lake-manifest.json` and `lean-toolchain` configure the Lean
+project and pin its dependencies. `formalization.yaml` is the Comparator
+manifest for selected statements; [external verification](EXTERNAL_VERIFICATION.md)
+explains its coverage. `CITATION.cff` supplies citation metadata, while
+`LICENSE`, `LICENSES/` and `REUSE.toml` record the licences.
+
+The [code of conduct](../.github/CODE_OF_CONDUCT.md) and
+[security policy](../.github/SECURITY.md) live under `.github/`, alongside CI
+and contribution forms. [Privacy](PRIVACY.md), [scope](SCOPE.md) and
+[methodology](METHODOLOGY.md) live here with the other guides.

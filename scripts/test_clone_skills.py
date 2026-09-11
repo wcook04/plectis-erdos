@@ -118,7 +118,7 @@ def run(*args: str, expected: int = 0) -> subprocess.CompletedProcess[str]:
 def main() -> int:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     skill_index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")
-    entry = (ROOT / "AGENTS.override.md").read_text(encoding="utf-8")
+    entry = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
     registry = json.loads((ROOT / "skills" / "registry.json").read_text(encoding="utf-8"))
     registered = {row["id"] for row in registry["skills"]}
     skills = tuple(row["id"] for row in registry["skills"])
@@ -152,8 +152,8 @@ def main() -> int:
     command_documents[return_template] = (ROOT / return_template).read_text(encoding="utf-8")
     validate_advertised_python_commands(command_documents)
 
-    assert "[`AGENTS.override.md`](AGENTS.override.md)" in readme
-    assert "[`CONTRIBUTING.md`](CONTRIBUTING.md)" in readme
+    assert "[`AGENTS.md`](AGENTS.md)" in readme
+    assert "](CONTRIBUTING.md)" in readme
     assert 'agent_entry.py --entry "<task in ordinary language>"' in entry
     assert "agent_entry.py --skills" in entry
 

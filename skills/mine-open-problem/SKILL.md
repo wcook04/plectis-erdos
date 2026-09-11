@@ -80,7 +80,7 @@ the next open boundary. Do not decide paper prominence or Palomar readiness
 from inside the proof run; supply the evidence that lets the stewardship pass
 make those decisions against the whole corpus.
 
-Lean work follows `AGENTS.md`, the pinned toolchain, and focused validation.
+Lean work follows `docs/AGENT_GUIDE.md`, the pinned toolchain, and focused validation.
 Computation records its exact domain, program, inputs, outputs, and
 interpretation. A finite search never changes an infinite quantifier.
 

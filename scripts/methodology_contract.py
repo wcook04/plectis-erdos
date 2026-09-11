@@ -397,7 +397,7 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
 
 
 def render_markdown(methodology: dict[str, Any], claims: dict[str, Any]) -> str:
-    """Render the human root document from the machine-readable owner.
+    """Render the human methodology guide from the machine-readable owner.
 
     The projection is audience-specific: standing rules with local instances,
     evidence responsibilities, grouped principles, worked examples, the
@@ -538,7 +538,7 @@ def render_markdown(methodology: dict[str, Any], claims: dict[str, Any]) -> str:
             "",
             "Lean source checked by the pinned Lean kernel remains proof authority. `docs/claims.json` remains the owner of release identity, claim status, remaining open propositions, and argument relationships. `docs/methodology.json` owns the rules on this page and records, for every rule, its evidence classes, applicability bindings, scope limit, local references, and validation guards. The authored paper remains the owner of mathematical exposition.",
             "",
-            "`METHODOLOGY.md` is generated from `docs/methodology.json`; run `python3 scripts/build_methodology.py` after changing the source. `python3 scripts/check_release.py` checks the source schema, typed claim-transition requirements, the change-class matrix, local references, exact Markdown projection, descriptor registration, and entry routes.",
+            "`docs/METHODOLOGY.md` is generated from `docs/methodology.json`; run `python3 scripts/build_methodology.py` after changing the source. `python3 scripts/check_release.py` checks the source schema, typed claim-transition requirements, the change-class matrix, local references, exact Markdown projection, descriptor registration, and entry routes.",
             "",
             "Machine identifiers for the standing rules, in the order the rules appear above:",
             "",
