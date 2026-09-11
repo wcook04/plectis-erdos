@@ -4272,7 +4272,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:3d5423ea1b7d8a516bd96504f24d6247147794b033141e79da630a38c92ca15b",
+      "source_sha256": "sha256:e8b38efaff6e3b1a95c1bb209ea408bdead1992de755676bb13246eb20b75d5a",
       "canonical_source_commit": "eb82997bdbc7228599b88337f9c17926b47da947",
       "canonical_source_pin_status": "immutable_commit",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/257/erdos257-mersenne-reasoning-surface.tex",
@@ -5110,8 +5110,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:d72853eb25ab82706c0bf013ff5427871be4d0377ff846ba5b9c6980a676b09d",
-      "pdf_byte_count": 666115,
+      "pdf_sha256": "sha256:7729fb37b6d328c08a4ceeb22a226b2c5253506d090c37174d5269ffd6b040e7",
+      "pdf_byte_count": 667155,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5930,7 +5930,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md",
       "local_source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "source_sha256": "sha256:01f87bf717645f87a08e25cd5aa718705dc026c65041eafc9e73ecda14cca5df",
+      "source_sha256": "sha256:9238d40fede9fb8beebfcb9c0ac61a952548c8efd0d8136cb979b7d753aa2f6e",
       "canonical_source_commit": "eb82997bdbc7228599b88337f9c17926b47da947",
       "canonical_source_pin_status": "immutable_commit",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
@@ -6215,8 +6215,8 @@
         },
         {
           "level": 2,
-          "id": "metric-fan-in-without-losing-the-coefficient",
-          "title": "3. Metric fan-in without losing the coefficient",
+          "id": "metric-fan-in-after-the-printed-spanning-tree-coefficient-is-excluded",
+          "title": "3. Metric fan-in after the printed spanning-tree coefficient is excluded",
           "line": 1365
         },
         {
@@ -6300,8 +6300,8 @@
       ],
       "citations_rendered": 22,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:92b8fc40e280a1444cda9cc9ff563823eb24bd6e13edd3b42b6b6ec23688f0fe",
-      "pdf_byte_count": 282643,
+      "pdf_sha256": "sha256:884bce138194c22a983d189c154f4fe7ea307ba0d6fa5ee0fb765aa85fe2fc0c",
+      "pdf_byte_count": 283077,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",

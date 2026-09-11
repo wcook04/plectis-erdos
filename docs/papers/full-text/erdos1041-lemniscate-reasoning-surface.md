@@ -1367,9 +1367,9 @@ with connected level sections and no uncut annular component. Give an explicit f
 
 No particular formula such as $`2s+1`$ is presumed. Boundary tangencies, simultaneous levels, branch reunion through an annulus and non-Hausdorff orbit spaces must all be handled explicitly.
 
-<a id="metric-fan-in-without-losing-the-coefficient"></a>
+<a id="metric-fan-in-after-the-printed-spanning-tree-coefficient-is-excluded"></a>
 
-## 3. Metric fan-in without losing the coefficient
+## 3. Metric fan-in after the printed spanning-tree coefficient is excluded
 
 For a strip $`S`$, write
 ``` math
@@ -1386,25 +1386,33 @@ for its transverse flux. Normalising the transverse measure by $`\Phi_S`$ gives 
  =
  \frac1{\Phi_S(t_0)}\int_{a_S}^{b_S}P_S(t)\,dt .
 ```
-The flux of a strip is not an integer multiple of $`2\pi`$. For $`f(z)=z`$ and $`u=-\log|z|`$, an annular sector of angular width $`\theta`$ has $`|\nabla u|=1/r`$ and $`ds=r\,d\phi`$ on a circular level arc, so $`\Phi_S=\theta`$; for $`z^n`$ the same computation gives $`n\theta`$. A closed level curve enclosing roots does carry an integer winding flux, and cutting a regular annulus destroys that. Any recovery of the global coefficient $`1/(2\pi)`$ from per-strip estimates has therefore to account for how the individual $`\Phi_S`$ sum, without duplication and without a multiplicative loss.
+The flux of a strip is not an integer multiple of $`2\pi`$. For $`f(z)=z`$ and $`u=-\log|z|`$, an annular sector of angular width $`\theta`$ has $`|\nabla u|=1/r`$ and $`ds=r\,d\phi`$ on a circular level arc, so $`\Phi_S=\theta`$; for $`z^n`$ the same computation gives $`n\theta`$. A closed level curve enclosing roots does carry an integer winding flux, and cutting a regular annulus destroys that. Those identities explain why a per-strip average does not automatically yield a global coefficient. They do not reopen <a href="#eq:prop12-bound" data-reference-type="eqref" data-reference="eq:prop12-bound">[eq:prop12-bound]</a>. Cassini already excludes the printed coefficient $`1/(2\pi)`$ for any embedded tree that contains all $`m`$ roots: Problem <a href="#prob:saddle1041" data-reference-type="ref" data-reference="prob:saddle1041">28</a> records that no later gluing argument can retain that estimate.
 
 <div id="prob:metric1041" class="problem">
 
-**Problem 30** (additive-error strip gluing). Assuming Problem <a href="#prob:reeb1041" data-reference-type="ref" data-reference="prob:reeb1041">29</a>, select trajectories in all strips and connect them through the saddle and root neighbourhoods so that, for every $`\eta>0`$, the resulting embedded tree contains all $`m`$ roots and obeys
+**Problem 30** (strip gluing after the printed coefficient). Assuming Problem <a href="#prob:reeb1041" data-reference-type="ref" data-reference="prob:reeb1041">29</a>, do one of the following, for every $`\eta>0`$.
+
+1.  Produce an embedded tree $`G`$ containing all $`m`$ roots whose length obeys
 ``` math
 \operatorname{len}(G)
- \le\frac1{2\pi}\int_{2\alpha}^{\infty}P_V(t)\,dt+\eta.
+ \le C\int_{2\alpha}^{\infty}P_V(t)\,dt+\eta
 \tag{6.1}\label{eq:metric-fanin1041}
 ```
-The total saddle, annular-cut and root-cap cost must be below $`\eta`$ without a multiplicative loss in $`1/(2\pi)`$. The coefficient $`1/(2\pi)`$ in <a href="#eq:metric-fanin1041" data-reference-type="eqref" data-reference="eq:metric-fanin1041">[eq:metric-fanin1041]</a> is an open target and depends on a valid global allocation of the strip fluxes $`\Phi_S`$; the remaining work is not a small local cap added to an otherwise complete estimate.
+for an explicit constant $`C>1/(2\pi)`$ that accounts for attachment cost and for a valid allocation of the strip fluxes $`\Phi_S`$.
+
+2.  Connect only one pair of distinct roots, rather than spanning every root.
+
+3.  Give a different global metric inequality that is not <a href="#eq:prop12-bound" data-reference-type="eqref" data-reference="eq:prop12-bound">[eq:prop12-bound]</a>.
+
+The printed coefficient $`1/(2\pi)`$ is not an open target. Better additive control of saddle, annular-cut and root-cap cost cannot recover <a href="#eq:prop12-bound" data-reference-type="eqref" data-reference="eq:prop12-bound">[eq:prop12-bound]</a>.
 
 </div>
 
-For the final strict inequality, use the actual collar slack
+The printed collar slack
 ``` math
 q=\frac1{2\pi}\int_{\alpha}^{2\alpha}P_V(t)\,dt>0
 ```
-and give budgets that keep the perturbation, tree error and transfer cost below fixed fractions of $`q`$. Independently choosing a shortest trajectory in each strip is not enough unless the attachment mismatch is controlled.
+used the same excluded coefficient. It is not remaining budget on an otherwise complete spanning-tree estimate. Independently choosing a shortest trajectory in each strip is not enough unless the attachment mismatch is controlled, and controlling that mismatch does not restore the printed $`1/(2\pi)`$ tree bound.
 
 <a id="coefficient-perturbation-and-stability"></a>
 
