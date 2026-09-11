@@ -3766,7 +3766,9 @@ rigidity, half-carry`. This corrects the module’s own "weaker producer" framin
 
 </div>
 
-$`\mathrm{CofinalExactLocalMersenneHalfRows}\Rightarrow\mathrm{HALF}`$ is proved unconditionally via compactness of $`\mathcal{A}`$ (continuous image of $`(\mathbb{N}\to\mathrm{Fin}\,2)`$ under the digit-coding map, hence closed) (, <span class="sans-serif">\[Lean\]</span>). This direction is *strictly weaker* than $`\mathrm{HALF}`$ as currently proved: the argument uses closedness alone and discards the producing rows, so the theorem as it stands does not pin a single limiting support $`A`$; a genuine sequential-compactness extraction (Cantor-space diagonal argument over $`(\mathrm{Fin}\,2)^{\mathbb{N}}`$, using the file’s own ) would upgrade this to producing $`A`$ explicitly, and would additionally transfer $`2\in A`$ for free () — but this upgrade is itself unformalised (Survivor 1, <span class="sans-serif">\[Math, adversarially verified, weakened\]</span>). So O3 sits strictly below $`\mathrm{HALF}`$ in the current Lean state of the corpus, not merely logically.
+$`\mathrm{CofinalExactLocalMersenneHalfRows}\Rightarrow\mathrm{HALF}`$ is proved unconditionally via compactness of $`\mathcal{A}`$ (continuous image of $`(\mathbb{N}\to\mathrm{Fin}\,2)`$ under the digit-coding map, hence closed) (, <span class="sans-serif">\[Lean\]</span>). The Lean-landed theorem uses closedness of $`\mathcal{A}`$ and discards the producing rows, so it does not exhibit a single limiting support $`A`$. A genuine sequential-compactness extraction (Cantor-space diagonal argument over $`(\mathrm{Fin}\,2)^{\mathbb{N}}`$, using the file’s own ) would upgrade this to producing $`A`$ explicitly, and would additionally transfer $`2\in A`$ for free () — but this upgrade is itself unformalised (Survivor 1, <span class="sans-serif">\[Math, adversarially verified\]</span>). That is a constructive extraction task, not a proof that O3 is a strictly weaker logical condition.
+
+Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">the collapsed sockets</a> already identifies $`\mathrm{CofinalExactLocalMersenneHalfRows}`$ as logically equivalent to $`1/2\in\mathcal{A}`$. Equivalence of a membership condition, constructive extraction of a coherent support, and a rejected sufficient strengthening are not interchangeable descriptions. Absence of a Lean extraction theorem does not make O3 a strictly weaker substitute for $`\mathrm{HALF}`$. The remaining work on O3 is to supply the cofinal exact rows, or any equivalent membership condition.
 
 <a id="sharp-critical-capacity-conditions-the-booleanmöbius-lanes-producer-for-o3"></a>
 
@@ -3885,13 +3887,13 @@ max width=
 
 | Target | Relation to its endpoint | Status |
 |:---|:---|:---|
-| O1 U257 (universal) | O1 $`\Rightarrow`$ everything below is moot | <span class="sans-serif">\[Open\]</span> |
+| O1 U257 (universal) | O1 $`\Rightarrow`$ everything below is moot; $`\mathrm{O1'}`$ is false | <span class="sans-serif">\[Open\]</span> |
 | O2 HALF | pivot target; $`\neg`$O1 witness once true | <span class="sans-serif">\[Open\]</span> |
 | O2b $`1/21`$ membership | fatal-aligned branch exclusion; $`\neg`$O1 witness once true | <span class="sans-serif">\[Open\]</span> |
 | CPGS (Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">274</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | Terminal-only strip (Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">275</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | mobiusCenteredHalfCarry sqrtBound (for $`A=G`$ only) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
-| O3 CofinalExactLocalMersenneHalfRows | $`\Rightarrow`$ O2 (strict, Lean) | <span class="sans-serif">\[Open\]</span> |
+| O3 CofinalExactLocalMersenneHalfRows | $`\Leftrightarrow`$ O2 (Prop. <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">the collapsed sockets</a>(c)); Lean lands $`\Rightarrow`$ | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | (O3-supply) linear-width capacity band | $`\Rightarrow`$ O3 (Lean, given lemma) | <span class="sans-serif">\[Open\]</span> |
 | HalfGreedySkippedCriticalQuotientSupply | $`\Rightarrow`$ O3 (Lean) | <span class="sans-serif">\[Open\]</span>, strictly harder than O3-supply |
 | O4 SQRTESC / RUNBOUND | $`\Leftrightarrow`$ each other; $`\Rightarrow`$ O2 (Lean fan-in) | <span class="sans-serif">\[Open\]</span> |
@@ -3910,7 +3912,7 @@ max width=
 
 None of the following is offered as a plan of attack, and none is close. Each is stated to make the shape of the missing ingredient legible.
 
-**O1 (universal).** A producer for $`\mathrm{Cert}(A)`$ at an arbitrary infinite $`A`$ is a statement about geometrically-weighted divisor sums achieving controlled residues modulo powers of two on prescribed dyadic blocks, uniformly over all infinite supports. No general result of this shape exists in the analytic-number-theory literature surveyed for this programme; the corpus’s own honest assessment is that this is a genuinely new near-integer anti-concentration theorem for a divisor-weighted sum, not a variant of an existing one.
+**O1 (universal).** The honest target is $`\mathrm{U257}`$ itself. The stronger schema $`\mathrm{O1'}=\forall A\,\mathrm{Cert}(A)`$ is a rejected sufficient strengthening, not future work: Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">squarefree</a> already exhibits a squarefree support on which neither the digitwise nor the carry-aware block-certificate producer exists, while Duverney–Tachiya still prove that squarefree value irrational. Supplying $`\mathrm{Cert}(A)`$ for arbitrary infinite supports is therefore not an open equivalent normal form of $`\mathrm{U257}`$. Remaining work on O1 is the universal irrationality statement, or a different method that covers supports the certificate schemas cannot.
 
 **O2/O3/O5 (Mersenne-specific).** The sharp-capacity gap $`(\ast)\to(\ast\ast)`$ and the $`-2,-1`$ middle-cell exclusion are both, at bottom, requests for anti-concentration of an explicit divisor-count quantity ($`\mathtt{localBinarySuffix}`$, or $`4\cdot\mathrm{rem}-\mathrm{belowPulse}-4`$) away from a short, explicitly named integer window. These are combinatorial/arithmetic near-misses rather than analytic ones — the corpus’s own diagnosis is that a congruence or pulse-parity obstruction, not an equidistribution theorem, is the natural tool, and no such obstruction has been found.
 
@@ -3920,7 +3922,7 @@ None of the following is offered as a plan of attack, and none is close. Each is
 
 ## Summary
 
-Erdős \#257 is open in the universal form (O1), and both rational membership targets $`1/2`$ (O2) and $`1/21`$ (O2b) remain open. Every route surveyed above either (a) is proved equivalent to O2 and therefore offers no reduction, (b) is a genuine strict weakening (O3, O4, O5, O3-supply) whose own supply is unproved at cofinal scale, or (c) is certified only on a finite initial segment, however large a margin that segment exhibits. Nothing in this paper closes any of these gaps, and no claim above should be read as progress toward doing so.
+Erdős \#257 is open in the universal form (O1${}={}$U257), and both rational membership targets $`1/2`$ (O2) and $`1/21`$ (O2b) remain open. Every route surveyed above either (a) is proved equivalent to O2, including O3 by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">the collapsed sockets</a>(c), and therefore offers no logical reduction, (b) is a sufficient condition not known to be equivalent (O4, O5, O3-supply) whose own supply is unproved at cofinal scale, (c) is the rejected certificate strengthening $`\mathrm{O1'}`$, already false on squarefree support, or (d) is certified only on a finite initial segment, however large a margin that segment exhibits. Nothing in this paper closes any of these gaps, and no claim above should be read as progress toward doing so.
 
 <a id="statements-and-declarations"></a>
 
