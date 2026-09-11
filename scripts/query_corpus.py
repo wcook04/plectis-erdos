@@ -1160,6 +1160,16 @@ def declaration_row_indexes() -> dict[str, Any]:
     }
 
 
+def declarations_for_module_path(module_path: str) -> list[dict[str, Any]]:
+    """Return atlas rows for a module under either storage or identity spelling."""
+    indexes = declaration_row_indexes()["by_module"]
+    for variant in library_storage_variants(module_path):
+        rows = indexes.get(variant)
+        if rows:
+            return rows
+    return list(indexes.get(module_path, []))
+
+
 @lru_cache(maxsize=1)
 def declaration_rows_by_qualified_name() -> dict[str, dict[str, Any]]:
     """Resolve qualified handles lazily; bare-name queries use the cheap index."""
@@ -3640,7 +3650,9 @@ def module_problem_routes(
     for problem in problems:
         modules = problem.get("modules", [])
         if not any(
-            isinstance(module, Mapping) and module.get("path") == module_path
+            isinstance(module, Mapping)
+            and library_identity_path(str(module.get("path") or ""))
+            == library_identity_path(module_path)
             for module in modules
         ):
             continue
@@ -3827,7 +3839,8 @@ def claim_registry_module_family_routes(
             declaration
             for declaration in claim.get("declarations", [])
             if isinstance(declaration, Mapping)
-            and declaration.get("module") == module_path
+            and library_identity_path(str(declaration.get("module") or ""))
+            == library_identity_path(module_path)
         ]
         if not claim_declarations:
             continue
@@ -4733,7 +4746,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     }
     imported_rows = [row for row in atlas["modules"] if row["id"] in module["imports"]]
     importer_rows = [row for row in atlas["modules"] if module["id"] in row["imports"]]
-    declarations = declaration_row_indexes()["by_module"].get(module["path"], [])
+    declarations = declarations_for_module_path(module["path"])
     attached_claim_ids = sorted(
         {
             claim_id
@@ -6912,11 +6925,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         if result["kind"] != "module":
             continue
         result["route_memory"] = module_route_memory_projection(
-            [
-                declaration
-                for declaration in atlas_declarations(atlas)
-                if declaration["module"] == result["path"]
-            ],
+            declarations_for_module_path(result["path"]),
             claims,
             module_source_problem_routes(result["path"], problems, claims),
         )

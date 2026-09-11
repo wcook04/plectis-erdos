@@ -20,7 +20,9 @@ Plectis is the public record of that work and of seven further programmes —
 [1041](https://www.erdosproblems.com/1041) and
 [1049](https://www.erdosproblems.com/1049).
 **All eight problems remain open.** This repository does not solve them.
-This checkout is a self-contained public record.
+This checkout is a self-contained public record, not an entrypoint into any
+private development system. Do not infer results from private or unreleased
+work.
 
 The useful path is ordinary. Pick a problem. Read the short paper. Open the
 longer record for failed routes, finite evidence, and remaining obligations.
