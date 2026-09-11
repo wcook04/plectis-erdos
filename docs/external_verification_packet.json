@@ -181,6 +181,17 @@
       ],
       "historical_attribution": "Coons for non-k-regularity of Euler's totient sequence; Martin for the positive-density affine ordering theorem from which the paper's finite-family independence step follows.",
       "logical_dependency": "The dyadic finite-level proof is local. In the all-base development, arithmetic reduction and canonical spanning are unconditional; exact rank is conditional on an explicit linear-independence hypothesis. The paper discharges that hypothesis using Martin externally, whose positive-density theorem is not formalised."
+    },
+    "prime_gap_irrationality_equivalence": {
+      "source_statement": "The prime-value dyadic series equals 2 plus the prime-gap dyadic series by summation by parts, so one series is irrational exactly when the other is.",
+      "mapping": "The local named iff still takes a Summable hypothesis. This checkout discharges that hypothesis by the elementary polynomial bound p_n ≤ 1250(n+1)^4 and the unconditional identity, not by the prime-number theorem. Neither side is proved irrational.",
+      "references": [
+        "https://www.erdosproblems.com/forum/thread/251",
+        "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+        "docs/PRIOR_ART.md#expansion-note-principal-sources-68-243-251-269-1041-1049"
+      ],
+      "historical_attribution": "Tao, erdosproblems.com/251, 7 October 2025. Recorded as cited only on prime_gap_identity_tao. This is not a novelty or priority claim.",
+      "logical_dependency": "The Lean proof reconstructs summation by parts and an elementary prime bound locally; the forum post is attribution, not a kernel import."
     }
   },
   "main_results": [
@@ -520,11 +531,11 @@
       "id": "prime_gap_irrationality_equivalence",
       "problem": 251,
       "review_family": "prime_gap_reformulation",
-      "contribution_class": "locally proved result; novelty unassessed",
+      "contribution_class": "formalisation of existing result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
-      "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational.",
+      "statement": "Lean checks that the prime-value dyadic series is irrational exactly when the prime-gap dyadic series is, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational. The already-known identity is Tao's (7 October 2025) and is recorded separately as cited only.",
       "boundary": "The equivalence does not prove irrationality of either series.",
       "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",

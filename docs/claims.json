@@ -1651,10 +1651,11 @@
           "claim_ids": [
             "erdos_251",
             "prime_gap_unboundedness_and_nonperiodicity",
-            "prime_gap_irrationality_equivalence"
+            "prime_gap_irrationality_equivalence",
+            "prime_gap_identity_tao"
           ],
-          "status_summary": "An open prime-index endpoint, exact coefficient constraints, and a tail-shift irrationality equivalence for the still-open dyadic series.",
-          "prior_art_posture": "The prime-gap facts and tail-shift equivalence are source-specific formal results; no novelty, priority, significance, or irrationality claim is made.",
+          "status_summary": "An open prime-index endpoint, exact coefficient constraints, a Lean-formalised prime/gap irrationality equivalence under an elementary polynomial prime bound, and Tao's already-known identity recorded as cited only.",
+          "prior_art_posture": "The prime-to-gap identity is Tao's (erdosproblems.com/251, 7 October 2025). This checkout formalises a version that discharges summability without the prime-number theorem. No novelty, priority, significance, or irrationality claim is made.",
           "primary_narrative_owner": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "source_route": "python3 scripts/query_corpus.py --claim prime_gap_unboundedness_and_nonperiodicity",
           "consumer_or_open_obligation": "The exact prime-gap coefficient facts do not supply the cofinal non-integrality or small-shift escape required for Erdős #251.",
@@ -13022,7 +13023,7 @@
           "remaining_open_effect": {
             "remaining_open_proposition_id": "remaining_open.erdos_251_irrationality",
             "operation": "re_expresses",
-            "statement": "Re-expresses the prime-index irrationality question as the prime-gap tail question under the stated summability hypothesis; neither irrationality conclusion is proved."
+            "statement": "Re-expresses the prime-index irrationality question as the prime-gap tail question. Lean checks the equivalence after an elementary polynomial summability bound; Tao's identity is cited separately. Neither irrationality conclusion is proved."
           }
         },
         {
@@ -14001,6 +14002,17 @@
         ],
         "historical_attribution": "Coons for non-k-regularity of Euler's totient sequence; Martin for the positive-density affine ordering theorem from which the paper's finite-family independence step follows.",
         "logical_dependency": "The dyadic finite-level proof is local. In the all-base development, arithmetic reduction and canonical spanning are unconditional; exact rank is conditional on an explicit linear-independence hypothesis. The paper discharges that hypothesis using Martin externally, whose positive-density theorem is not formalised."
+      },
+      "prime_gap_irrationality_equivalence": {
+        "source_statement": "The prime-value dyadic series equals 2 plus the prime-gap dyadic series by summation by parts, so one series is irrational exactly when the other is.",
+        "mapping": "The local named iff still takes a Summable hypothesis. This checkout discharges that hypothesis by the elementary polynomial bound p_n ≤ 1250(n+1)^4 and the unconditional identity, not by the prime-number theorem. Neither side is proved irrational.",
+        "references": [
+          "https://www.erdosproblems.com/forum/thread/251",
+          "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "docs/PRIOR_ART.md#expansion-note-principal-sources-68-243-251-269-1041-1049"
+        ],
+        "historical_attribution": "Tao, erdosproblems.com/251, 7 October 2025. Recorded as cited only on prime_gap_identity_tao. This is not a novelty or priority claim.",
+        "logical_dependency": "The Lean proof reconstructs summation by parts and an elementary prime bound locally; the forum post is attribution, not a kernel import."
       }
     },
     "main_results": [
@@ -14271,11 +14283,11 @@
         "id": "prime_gap_irrationality_equivalence",
         "problem": 251,
         "review_family": "prime_gap_reformulation",
-        "contribution_class": "locally proved result; novelty unassessed",
+        "contribution_class": "formalisation of existing result; novelty unassessed",
         "original_declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
         "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
         "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
-        "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational.",
+        "statement": "Lean checks that the prime-value dyadic series is irrational exactly when the prime-gap dyadic series is, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational. The already-known identity is Tao's (7 October 2025) and is recorded separately as cited only.",
         "boundary": "The equivalence does not prove irrationality of either series."
       },
       {
@@ -15434,7 +15446,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 705
+        "line": 707
       }
     },
     {
@@ -15458,7 +15470,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 55
+        "line": 58
       }
     },
     {
@@ -15470,7 +15482,7 @@
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 119
+        "line": 121
       }
     },
     {
@@ -15494,7 +15506,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 102
+        "line": 107
       }
     },
     {
@@ -15506,7 +15518,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 489
+        "line": 492
       }
     },
     {
@@ -15518,7 +15530,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 495
+        "line": 498
       }
     },
     {
@@ -15530,7 +15542,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 504
+        "line": 507
       }
     },
     {
@@ -15542,7 +15554,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 534
+        "line": 547
       }
     },
     {
@@ -15566,7 +15578,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 719
+        "line": 721
       }
     },
     {
@@ -15578,7 +15590,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 728
+        "line": 730
       }
     },
     {
@@ -15590,7 +15602,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 738
+        "line": 740
       }
     }
   ],
@@ -15660,8 +15672,8 @@
     {
       "id": "prime_gap_irrationality_equivalence",
       "label": "Exact prime-gap dyadic irrationality equivalence",
-      "status": "locally proved equivalence",
-      "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational.",
+      "status": "formalised here",
+      "statement": "Lean checks that the prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The named iff still takes a Summable hypothesis; this checkout discharges that hypothesis by the elementary bound p_n ≤ 1250(n+1)^4 (not the prime-number theorem) and the unconditional identity. Neither side is proved irrational. This formalises known summation-by-parts; the public attribution of that identity is the cited-only row prime_gap_identity_tao.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_251_irrationality"
       ],
@@ -15669,11 +15681,28 @@
       "readme_headline": false,
       "declarations": [
         {
+          "name": "summable_primeDyadicTerm",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 379
+        },
+        {
+          "name": "tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 427
+        },
+        {
           "name": "irrational_tsum_primeDyadicTerm_iff_primeGap",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
           "line": 435
         }
       ]
+    },
+    {
+      "id": "prime_gap_identity_tao",
+      "label": "Tao's already-known prime-to-gap identity",
+      "status": "cited only",
+      "statement": "Tao posted the prime-to-gap identity by summation by parts (erdosproblems.com/251, 7 October 2025). That identity is already-known mathematics, not a theorem of this checkout, and is not the public lead; the supported lead is the coefficient-only countermodel and sparse rationalising perturbation.",
+      "declarations": []
     },
     {
       "id": "erdos_1041",

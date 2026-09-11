@@ -68,10 +68,12 @@ endpoint remain open.
 through `t ≤ 82`, conditional actual-LCM and harmonic-pivot routes, and scoped
 no-go theorems. No cofinal producer reaching irrationality is proved.
 
-**[#251](https://www.erdosproblems.com/251).** The prime series equals the gap
-series; irrationality is equivalent to cofinal non-integral tail shifts, with a
-coefficient-only countermodel boundary. A prime-specific cofinal tail witness
-is still missing.
+**[#251](https://www.erdosproblems.com/251).** A coefficient-only countermodel
+and a sparse rationalising perturbation show that polynomial growth,
+nonperiodicity, and eventual fixed-modulus congruences do not force
+irrationality. The prime-to-gap identity is Tao's (7 October 2025); Lean
+formalises it with an elementary polynomial prime bound, not the
+prime-number theorem. A prime-specific cofinal tail witness is still missing.
 
 **[#257](https://www.erdosproblems.com/257).** Full-support irrationality in
 every integer base `b ≥ 2`, structured-support theorems under summability,
@@ -587,15 +589,16 @@ boundaries kept together.
   `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1572`) — the
   identification of the concrete prime tail with that recurrence is
   paper-level. Claims registry: `prime_gap_unboundedness_and_nonperiodicity`
-  and `prime_gap_irrationality_equivalence`; the actual prime-tail bridge
-  remains open.
+  (`unconditional progress`), `prime_gap_irrationality_equivalence`
+  (`formalised here`: Lean iff plus elementary polynomial summability, not
+  PNT), and `prime_gap_identity_tao` (`cited only`: Tao, 7 October 2025).
+  The actual prime-tail bridge remains open.
 - The Comparator-facing boundary is also explicit: `exists_primeGap0_gt`
   proves that consecutive prime gaps are unbounded, while
-  `irrational_tsum_primeDyadicTerm_iff_primeGap` proves, for a summable prime
-  dyadic term, that its irrationality is equivalent to irrationality of the
-  prime-gap dyadic series
-  (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean`). Unbounded coefficients
-  and this equivalence alone prove irrationality of neither series.
+  `irrational_tsum_primeDyadicTerm_iff_primeGap` is the named iff under a
+  `Summable` hypothesis; `summable_primeDyadicTerm` discharges that
+  hypothesis by `p_n ≤ 1250(n+1)^4`. Unbounded coefficients and this
+  equivalence alone prove irrationality of neither series.
 - A separate public Comparator transport makes the arithmetic boundary
   explicit. For a `DyadicTailRecurrence`,
   `tailShift_integral_iff_den_dvd_mersenne` and
