@@ -62,8 +62,17 @@ Let $A\subseteq\Npos$ be infinite.  If
 then \(X_A(b)\) is irrational for every integer \(b\ge2\).
 \end{theorem}
 
-The statement is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{\leanlabel{irrational_erdosSupportSeries_of_summable_reciprocal}}.
+The statement is ordinary mathematics in this note.  This checkout has no
+module \texttt{AllBaseReciprocalSupportIrrationality.lean} and no Lean
+declaration \texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}.
+The nearby Lean theorem
+\texttt{irrational\_erdosSupportSeries\_pairwise\_coprime}
+keeps an extra pairwise-coprimality hypothesis together with summable
+reciprocal mass, and is therefore a structured-support theorem, not
+Theorem~\ref{res:reciprocal-support}.  Full support at every integer base is
+the separate Lean theorem
+\texttt{irrational\_erdosSum\_full\_support}.  Arbitrary infinite support
+remains open.
 
 For infinite $A$ and $N>0$, division of $N$ by each $a\in A$ gives
 \[
@@ -757,15 +766,17 @@ budget: every prime singleton is admitted, while the full prime support
 has displacement greater than $1/3$ at every positive shift.
 
 \section*{Statements and declarations}
-Theorem~\ref{res:reciprocal-support}, the finite-period statement and the
-general repair criterion have formal counterparts in the supplied Lean
-corpus.  Their mathematical assertions, historical antecedents and formal
-coverage are separate entries in the source record.  The principal modules
-are \texttt{AllBaseReciprocalSupportIrrationality.lean},
+Finite-period noncollapse has a Lean counterpart
+\texttt{finite\_period\_noncollapse\_rat\_den} in
+\texttt{Erdos249257/CertificateKernel.lean}.  Full-support irrationality and
+pairwise-coprime summable-reciprocal support are Lean in the same module.
+Theorem~\ref{res:reciprocal-support} itself is ordinary mathematics in this
+note and has no Lean counterpart in this checkout: the filenames
+\texttt{AllBaseReciprocalSupportIrrationality.lean},
 \texttt{SignedFinitePeriodNoncollapse.lean} and
-\texttt{GreedyRepairCriterion.lean}.
-The source checkpoint is \texttt{\commitshort}; later counterparts are
-identified separately rather than attributed to that checkpoint.
+\texttt{GreedyRepairCriterion.lean} are not present.  The source checkpoint
+is \texttt{\commitshort}; later counterparts are identified separately rather
+than attributed to that checkpoint.
 
 The weighted and cover arguments, the mixed theorem and the cost
 separations use the accompanying ordinary proofs:

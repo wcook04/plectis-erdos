@@ -38,7 +38,7 @@
       "status": "open",
       "question": "Is the series sum_{n >= 2} 1/(n! - 1) irrational?",
       "directory": "lean/ErdosProblems/Erdos68",
-      "principal_module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
+      "principal_module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
       "companion_modules": [
         "ErdosProblems.Erdos68.CanonicalFactorialDigits",
         "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
@@ -115,7 +115,8 @@
           "statement": "Construct an unbounded factorial-grid family whose exact Cramer residual is nonintegral, using a determinant, valuation, cancellation, or gcd-of-minors certificate that controls the finite sign-changing block."
         }
       ],
-      "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement."
+      "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement.",
+      "source_priority_note": "Comparator isolation in this checkout is FactorialGapPlateauCore; FactorialZeroPlateau is the default-root duplicate. Required note links remain ZeroPlateau because Core is absent from pin 99f4bf47."
     },
     {
       "problem_id": "erdos_243",
@@ -277,6 +278,9 @@
         }
       ],
       "what_is_checked": [
+        "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1.",
+        "The rational span of the full dyadic totient kernel is not finite-dimensional; for integer-valued sequence modules this is equivalent to Coons's non-k-regularity and is not an independent contribution.",
+        "Lean diagonal certificates through t = 82; neither t = 83 nor an unbounded family is supplied.",
         "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.",
         "The local s=1 and s=2 squared Möbius Euler-factor identities and the first two prime-power divisor-sum differences.",
         "That the two-by-two checkerboard kills separable backgrounds and is unique up to scale under the four row and column cancellations.",

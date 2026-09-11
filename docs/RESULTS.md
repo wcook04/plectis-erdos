@@ -53,8 +53,10 @@ problem.
 ### Problem-by-problem guide
 
 **[#68](https://www.erdosproblems.com/68).** Irrationality of `∑ 1/(n!−1)` is
-equivalent to cofinally many non-unit factorial carries, with finite channel
-obstructions. The cofinal carries are not produced.
+equivalent to cofinally many non-unit factorial carries. The isolation pin is
+`FactorialGapPlateauCore` (not the default-root `FactorialZeroPlateau`
+duplicate). Finite GMP (`m = 300000`) and continued-fraction exclusions are
+incomparable. The cofinal carries are not produced.
 
 **[#243](https://www.erdosproblems.com/243).** After Koizumi's normalised
 vanishing, a bounded or summably small negative centred error forces eventual
@@ -88,10 +90,11 @@ stated hypotheses, arbitrarily small translations that separate ray arguments,
 and perturbative root retention. A length-`<2` curve and the hub that would
 make one remain open.
 
-**[#1049](https://www.erdosproblems.com/1049).** Exact rational-base tail
-recurrence, sharp Hankel order, a checked height region that includes `31/4`,
-and finite Padé / four-jet obstructions. It does not prove irrationality at
-`3/2` or construct approximants with analytic remainder control.
+**[#1049](https://www.erdosproblems.com/1049).** Ordinary proof that `F(31/4)`
+and its positive powers are irrational (Zudilin 2004 Lemma 7 specialization);
+Lean checks supporting height-region arithmetic and selected identities, not
+that headline. It does not prove irrationality at `3/2` or construct
+approximants with analytic remainder control.
 
 This guide is not a new result ranking. The canonical order of mathematical
 attention is maintained in
@@ -279,7 +282,7 @@ boundaries kept together.
 - Irrationality is equivalent, with no hypotheses, to one integer
   divisibility test on exact rational prefixes failing infinitely often —
   `irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses`,
-  `ErdosProblems/Erdos68/FactorialZeroPlateau.lean:1090`. Checked theorem;
+  `ErdosProblems/Erdos68/FactorialGapPlateauCore.lean:986`. Checked theorem;
   exact equivalence, transporting the difficulty without reducing it;
   registry: none.
 - A separate finite quotient-band obstruction is now explicit. For a finite
@@ -294,15 +297,15 @@ boundaries kept together.
   This is a finite-family breakpoint only: it supplies no cancelling family,
   simultaneous-channel control, residual estimate, or cofinal non-unit carry.
 - The kernel-internal denominator bound is `q ≥ 67`
-  (`ErdosProblems/Erdos68/FactorialZeroPlateau.lean:940`); the `300000`
+  (`ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean:136`); the `300000`
   exclusion is a checked implication
-  (`ErdosProblems/Erdos68/FactorialZeroPlateau.lean:876`) whose evaluation is an external
+  (`ErdosProblems/Erdos68/FactorialGapPlateauCore.lean:812`) whose evaluation is an external
   computation, not a kernel result.
 - Open: produce infinitely many non-unit carries.
 - A parallel carry form makes the same boundary explicit: irrationality is
   equivalent to cofinally many non-unit carries
   (`irrational_factorialGapSeries_iff_cofinal_nonunit_carries`,
-  `ErdosProblems/Erdos68/FactorialZeroPlateau.lean`). The equivalence supplies
+  `ErdosProblems/Erdos68/FactorialGapPlateauCore.lean:945`). The equivalence supplies
   no cofinal carry producer, so #68 remains open.
 
 **#243 — does rationality force eventual Sylvester recurrence?**
@@ -837,7 +840,8 @@ core)**
   (`ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean:293`). Claims registry:
   `three_halves_coordinatewise_corridor_no_go` (`res:nocorridor`) and
   `rational_base_cleared_tail_recurrence` (`res:tailrec`); both are exact
-  formal boundaries, not an irrationality result.
+  formal boundaries. They do not replace the ordinary `F(31/4)` specialization
+  of Zudilin, which is not a Lean irrationality theorem.
 - The elementary height inequality used by Bundschuh–Väänänen's external
   irrationality criterion at `7/2` is checked
   (`ErdosProblems/Erdos1049/RationalBaseLambert.lean:83`);

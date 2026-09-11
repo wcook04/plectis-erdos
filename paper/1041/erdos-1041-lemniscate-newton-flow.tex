@@ -80,9 +80,11 @@ are nonnegative, so
 \]
 At $t=1$ the value is zero.  Concatenating the two segments gives length
 $|\zeta_1|+|\zeta_2|<2$.
-The displayed statement, with the broken line as a continuous curve of bounded
-variation and its length read as extended variation, is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L38}{Lean source}.
+The displayed statement is ordinary mathematics in this note.
+\texttt{PaperTrinomial.lean} is not in this checkout.  Lean checks Newton-flow
+decay, ray/translation geometry and root retention in
+\texttt{NewtonFlowRaySeparation.lean}, and solved-family kernels rather than
+this all-degree trinomial assembly.
 \end{proof}
 
 \paragraph{A finite convex certificate.}
@@ -111,8 +113,8 @@ Indeed, after $z=rw$, the polynomial factors as
 $r^6(w^2-1)(w^4+\tfrac65 w^2+1)$, so all six roots have modulus $r$.
 However $f_r(r/2)=-(327/320)r^6$.  Any $r$ with $320/327<r^6<1$ proves the
 assertion.  Only this prescribed spoke is excluded; other connectors remain
-available.  The statement with the radius supplied is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperTrinomial.lean#L79}{Lean source}.
+available.  The statement with the radius supplied is ordinary mathematics;
+\texttt{PaperTrinomial.lean} is not in this checkout.
 
 \section{The problem and the general regimes}\label{sec:problem}
 
@@ -360,7 +362,10 @@ as \pdecl{nearestSpoke_unique_nearest_spoke_escapes} and
 \pdecl{allStraightCubic_every_pair_midpoint_escapes}, and the displayed
 proposition itself, with both quintic and cubic exhibited as polynomials and the
 nearest-root condition quantified over every zero, is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178}{Lean source}.  The first defeats a
+\lref{Erdos1041/CriticalTwoRootProximity.lean}{438}{nearestSpoke_unique_nearest_spoke_escapes}
+and
+\lref{Erdos1041/CriticalTwoRootProximity.lean}{569}{allStraightCubic_every_pair_midpoint_escapes}.
+\texttt{PaperStraightObstructions.lean} is not in this checkout.  The first defeats a
 tie-breaking escape hatch; the second defeats every straight root-pair
 segment.  Together with Theorem~\ref{res:critical-proximity}, they isolate the
 real gap: critical-point proximity selects a short metric pair, but universal
@@ -573,7 +578,10 @@ rays, $\mu>13/25$, and
 \end{proposition}
 
 \noindent The whole proposition, including the least-modulus assertion rather
-than a supplied minimum, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189}{Lean source}.
+than a supplied minimum, is ordinary in this note.
+\texttt{PaperSeparationCounterexample.lean} is not in this checkout; the
+distinct quartic file \texttt{SeparationCounterexampleR13.lean} is not this
+cubic example.
 
 \begin{proposition}[one-root gamma bound is false]
 \label{res:one-root-gamma-false}

@@ -46,8 +46,12 @@ For every $e\ge1$, the dyadic sections of Euler's totient through level $e$
 have rational rank $2^e+1$. The two zero-residue sections and the odd-residue
 sections form a basis, and two families of scalar reductions generate every relation.
 Divisibility makes an evaluation matrix diagonal modulo a prime, with nonzero
-diagonal entries. The construction gives rank $k^e+1$ in every base $k\ge2$
-and an integral normal form.
+diagonal entries. Lean checks the dyadic rank $2^e+1$ for $e\ge1$.  The all-base rank
+$k^e+1$ uses Martin's external independence; Coons owns non-$k$-regularity
+of $\ph$, equivalently infinite-dimensionality for integer-valued sequence
+modules.  A separate ordinary argument treats bounded-residue series $A_m$.
+Finite Farey exclusion and Lean diagonal certificates through $t\le 82$ are
+finite; neither $t=83$ nor an unbounded family is supplied.
 Separately, $\sum_{n\ge1}(\ph(n)\bmod m)2^{-n}$ is irrational for every
 $m\ge3$, with a complete rationality classification at dyadic moduli.
 For $S=\sum_{n\ge1}\ph(n)2^{-n}$, one nonintegral tail shift forces
@@ -514,9 +518,11 @@ least-residue irrationality when the denominator base equals the modulus;
 Section~\ref{sec:family} fixes base two and classifies dyadic observables.
 The original question appears in Erd\H{o}s and Graham~\cite[p.~61]{erdosgraham1980}.
 
-The exact all-base basis and rank, residue-series irrationality, full-depth
-amplification, canonical equivalence and positive rank-one floor have
-proofs in the supplied Lean source snapshot:
+The dyadic finite-level rank $2^e+1$ ($e\ge1$), residue-series
+irrationality, full-depth amplification, canonical equivalence and positive
+rank-one floor have proofs in the supplied Lean source snapshot.  The
+unconditional all-base exact-rank theorem is not a Lean theorem without
+Martin's independence hypothesis:
 \lword{Erdos249/FullDepthRayAmplifier.lean}{364}{eventually_twoSyndetic_fullDepthKillMultipliers_of_seed}{amplification},
 \lword{Erdos249/CyclotomicAnchoredKill.lean}{3165}{fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational}{canonical gap}, and
 \lword{Erdos249/RankOneSharpFloor.lean}{624}{rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty}{rank-one floor}.

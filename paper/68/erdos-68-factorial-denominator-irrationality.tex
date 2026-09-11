@@ -671,10 +671,12 @@ ordinary asymptotic consequence of the finite terminal-block inequality; its
 eventual form, with the constant $2\sqrt2/3$, is checked in
 \path{PaperCompleteAsymptotics.lean}.
 
-The exact companion and carry criteria are represented by
-\path{CompanionOrbitRationality.lean} and
-\path{FactorialZeroPlateau.lean}; the unconditional correction
-\eqref{eq:companion-wrap} is in \path{CompanionConstantCarryLaw.lean}.
+The Comparator isolation pin for the carry equivalences is
+\path{FactorialGapPlateauCore.lean}.  \path{FactorialZeroPlateau.lean} is the
+default-root duplicate of that family and is not the isolation source.
+Companion-orbit rationality is in \path{CompanionOrbitRationality.lean}; the
+unconditional correction \eqref{eq:companion-wrap} is in
+\path{CompanionConstantCarryLaw.lean}.
 The pole-residue identity and the two displayed reciprocal equalities are
 in \path{PrimePoleCriterion.lean}.  The complete maximal-hit data come from
 the separate exact modular scan.  The carry census and continued-fraction
@@ -701,7 +703,8 @@ for this note.  The pinned snapshot contains fifteen cited modules:
 \texttt{EndpointWeightedPrivateSupport},
 \texttt{FactorialCarry},
 \texttt{FactorialChannelCertificate},
-\texttt{FactorialZeroPlateau},
+\texttt{FactorialGapPlateauCore} (isolation pin; \texttt{FactorialZeroPlateau}
+is the default-root duplicate),
 \texttt{FiniteDefectAutomaton},
 \texttt{GapScalarNormalForm},
 \texttt{PrimeThresholdParity},

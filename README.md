@@ -51,8 +51,9 @@ not required to read the papers.
 - **[#68](https://www.erdosproblems.com/68)** · Factorial-denominator irrationality ·
   [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
   [longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf).
-  Irrationality is equivalent to cofinally many non-unit factorial carries;
-  producing those carries remains open.
+  The Comparator isolation pin is `FactorialGapPlateauCore`; a GMP non-unit
+  carry at `m = 300000` and a continued-fraction bound `q ≥ 2^39990` are
+  incomparable finite exclusions. Producing cofinal carries remains open.
 - **[#243](https://www.erdosproblems.com/243)** · Reciprocal-tail rigidity ·
   [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) ·
   [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf).
@@ -69,16 +70,19 @@ not required to read the papers.
 - **[#251](https://www.erdosproblems.com/251)** · Prime-gap dyadic series ·
   [short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) ·
   [longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf).
-  The prime-to-gap identity is already Tao's (summation by parts on the
-  forum); this checkout checks consequences and the cofinal non-integral tail
-  shift. The actual-prime tail witness remains open.
+  The strongest supported lead is a coefficient-only countermodel and a sparse
+  rationalising perturbation. The prime-to-gap identity is already Tao's
+  (summation by parts on the forum, 7 October 2025); this checkout checks it
+  without the prime-number theorem. The cofinal small-mismatch tail witness
+  remains open.
 - **[#257](https://www.erdosproblems.com/257)** · Mersenne-support subseries ·
   [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) ·
   [longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf).
-  Irrationality for the full support in every integer base `b ≥ 2`, and for
-  structured supports under summability; the base-2 Mersenne achievement set has
-  measure one. Every infinite support, and the `1/2` and `1/21` branches,
-  remain open and are kept distinct from the full-support theorem.
+  Full-support irrationality in every integer base `b ≥ 2` is Lean.
+  Pairwise-coprime plus summable-reciprocal support is Lean. A
+  reciprocal-summable theorem without coprimality is ordinary in the short
+  paper. Arbitrary infinite support, and the `1/2` and `1/21` branches, remain
+  open and are kept distinct from those theorems.
 - **[#269](https://www.erdosproblems.com/269)** · Three-prime running LCM ·
   [short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) ·
   [longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf).
@@ -91,15 +95,18 @@ not required to read the papers.
   [short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) ·
   [longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf).
   Newton-flow decay, ray-separating translations, and perturbative root
-  retention are the checked supporting results. A length-`<2` curve remains
-  the ordinary headline here; forum discussion of a degree-7 counterexample
-  is not a theorem of this repository.
+  retention are Lean. Three solved-family kernels are Comparator-checked.
+  All-degree trinomials, the `13/25` certificate, the Poisson mean, and the
+  length-`<2` assemblies are ordinary. Forum discussion of a degree-7
+  counterexample is not a theorem of this repository.
 - **[#1049](https://www.erdosproblems.com/1049)** · Rational-base Lambert series ·
   [short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) ·
   [longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf).
-  Exact rational-base tail recurrence, sharp Hankel order, and a checked height
-  region that includes `31/4`. No irrationality at `3/2`; the approximant
-  construction remains open.
+  An ordinary specialization of Zudilin 2004 proves `F(31/4)` (and its positive
+  powers) irrational; that headline is not a Lean theorem. Lean checks
+  supporting height-region arithmetic, the `3/2` corridor exclusion, the
+  cleared-tail recurrence, and selected Hankel identities. The outstanding
+  `3/2` obligation is an approximant family with remainder control.
 
 The [joint #249/#257 manuscript](paper/archive/erdos249-257-main-paper.pdf) is
 archive and provenance only; the papers above are the current entrances.
