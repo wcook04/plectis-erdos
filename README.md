@@ -275,6 +275,13 @@ topic, start with the [source map](docs/SOURCE_MAP.md); it gives the module
 order without asking you to decode Lean declaration names first.
 <!-- END generated_principal_declaration_anchors -->
 
+## The wider project
+
+The [Plectis software repository](https://github.com/wcook04/plectis) contains
+runnable tools from the research system. The [software guide](https://wcook04.github.io/plectis/docs/index.html)
+explains what they do and how to try them. The maths papers and proofs are
+self-contained in this repository.
+
 ## Citation and licence
 
 Cite release `v0.10.0` via [CITATION.cff](CITATION.cff). Code, scripts, and
