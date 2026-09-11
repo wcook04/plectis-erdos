@@ -56,6 +56,10 @@ statement may be described publicly and what remains open. A paper supplies
 motivation, context, and an argument a mathematician can read. A finite
 calculation establishes only the range it actually covers.
 
+This repository is a self-contained public record. It is not an entrypoint
+into any private development system, and you should not infer results from
+private or unreleased work.
+
 Comparator belongs to this evidence story, but it is not a mathematical
 oracle. It gives selected statements a second, independently declared formal
 interface under a fixed set of assumptions. It helps expose mismatches between

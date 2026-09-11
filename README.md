@@ -20,9 +20,6 @@ Plectis is the public record of that work and of seven further programmes —
 [1041](https://www.erdosproblems.com/1041) and
 [1049](https://www.erdosproblems.com/1049).
 **All eight problems remain open.** This repository does not solve them.
-This checkout is a self-contained public record, not an entrypoint into any
-private development system. Do not infer results from private or unreleased
-work.
 
 The useful path is ordinary. Pick a problem. Read the short paper. Open the
 longer record for failed routes, finite evidence, and remaining obligations.
@@ -53,9 +50,9 @@ not required to read the papers.
 - **[#68](https://www.erdosproblems.com/68)** · Factorial-denominator irrationality ·
   [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
   [longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf).
-  The Comparator isolation pin is `FactorialGapPlateauCore`; a GMP non-unit
-  carry at `m = 300000` and a continued-fraction bound `q ≥ 2^39990` are
-  incomparable finite exclusions. Producing cofinal carries remains open.
+  A GMP non-unit carry at `m = 300000` and a continued-fraction bound
+  `q ≥ 2^39990` are incomparable finite exclusions. Producing cofinal carries
+  remains open.
 - **[#243](https://www.erdosproblems.com/243)** · Reciprocal-tail rigidity ·
   [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) ·
   [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf).
@@ -125,7 +122,7 @@ is declared again without its proof, then checked against a proof-bearing
 solution and a fixed axiom budget. The public wording is
 Comparator-checked against a separately declared statement and axiom budget.
 The [verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight
-problem programmes.
+problem programmes. Do not infer results from private or unreleased work.
 
 The [methodology](METHODOLOGY.md) outlines what each check does and does not
 establish. [`docs/claims.json`](docs/claims.json) covers claim status and

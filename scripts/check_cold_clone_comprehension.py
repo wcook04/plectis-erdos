@@ -334,6 +334,7 @@ OPEN_PROPOSITION_PACKET_BYTES = 400
 # following it therefore reaches. They carry the recoverable detail the front
 # page used to hold itself.
 FIRST_CONTACT_ROUTED_SURFACES = (
+    "HUMAN_ENTRY.md",
     "docs/RESULTS.md",
     "docs/AGENT_WORKBENCH.md",
     "docs/REPRODUCIBILITY.md",
