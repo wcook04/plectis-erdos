@@ -95,11 +95,15 @@ not required to read the papers.
 - **[#1041](https://www.erdosproblems.com/1041)** · Lemniscates and Newton flow ·
   [short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) ·
   [longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf).
-  Newton-flow decay, ray-separating translations, and perturbative root
-  retention are Lean. Three solved-family kernels are Comparator-checked.
-  All-degree trinomials, the `13/25` certificate, the Poisson mean, and the
-  length-`<2` assemblies are ordinary. Forum discussion of a degree-7
-  counterexample is not a theorem of this repository.
+  Every monic trinomial `z^n + a z^m + b` with roots in the open unit disc
+  has each root-to-origin segment inside `{|f|<1}`, so any two roots join
+  through the origin with length less than `2`. Separately, a sharp Poisson
+  critical-value mean holds for zeros in the closed unit disc. Both are
+  ordinary proofs. Lean checks Newton-flow decay, ray-separating translations,
+  and perturbative root retention; three solved-family kernels are
+  Comparator-checked. The unrestricted path problem remains open. Forum
+  discussion of a degree-7 counterexample is a reported external claim, not a
+  theorem of this repository.
 - **[#1049](https://www.erdosproblems.com/1049)** · Rational-base Lambert series ·
   [short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) ·
   [longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf).

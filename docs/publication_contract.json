@@ -268,7 +268,7 @@
       "rendered_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
       "rendered_content_digest": "sha256:12baa61f5783a0b645cab5aa83e70e1f4e7037da4bfb6ee09cea7e1389a7b269",
       "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of ErdosProblems.Erdos1041. Lean checks Newton-flow value decay, the exponential first integral, the oriented-ray connection obstruction, the exact common-translation collision locus, finite affine-line avoidance, and root retention under small constant perturbations. Three solved-family kernels (collinear, primitive quintic, translated cubic fibres) are Comparator-checked in ExternalVerification1041SolvedFamilies; they are kernels, not the ordinary length-<2 assemblies. The all-degree trinomial paths, the 13/25 certificate, the Poisson critical-value mean, and the separation/solved-family assemblies that turn kernels into paths are ordinary mathematics. PaperTrinomial.lean is absent. The note identifies an invalid three-ended local saddle block in the printed proof of Proposition 12 of a March 2026 manuscript; it does not refute the proposition. Erdős Problem 1041 remains open.",
+      "claim_scope": "This note gives ordinary proofs for explicit short-path families, led by all-degree monic trinomials, and separately establishes a sharp critical-value mean. Lean checks Newton-flow value decay, the exponential first integral, the oriented-ray connection obstruction, the exact common-translation collision locus, finite affine-line avoidance, and root retention under small constant perturbations. Three solved-family kernels (collinear, primitive quintic, translated cubic fibres) are Comparator-checked in ExternalVerification1041SolvedFamilies; they are kernels, not the ordinary length-<2 assemblies. The all-degree trinomial paths, the 13/25 certificate, the Poisson critical-value mean, and the separation/solved-family assemblies that turn kernels into paths are ordinary mathematics. PaperTrinomial.lean is absent. Exact obstruction examples, including a Cassini counterexample to the printed global tree budget of a March 2026 manuscript's Proposition 12, show why those estimates cannot be silently promoted to a general connector theorem. The recent degree-seven counterexample announcement is a separate external claim. Erdős Problem 1041 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
@@ -302,11 +302,11 @@
       "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
       "artifact_class": "mathematical_companion",
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-      "source_content_digest": "sha256:aae864d2959adb4e4e858c2a754e2061325aa07ea4102120758464feb444cb4b",
+      "source_content_digest": "sha256:01f87bf717645f87a08e25cd5aa718705dc026c65041eafc9e73ecda14cca5df",
       "rendered_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "rendered_content_digest": "sha256:24ae810111b2a981496b63b342926d2e9a02b1df22a83ef0327174fe672e7cac",
+      "rendered_content_digest": "sha256:92b8fc40e280a1444cda9cc9ff563823eb24bd6e13edd3b42b6b6ec23688f0fe",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Claim-bounded reasoning record for Erdős Problem 1041. It assembles Lean Newton-flow decay, ray separation, translation-collision geometry and root retention, Comparator-checked solved-family kernels, and ordinary path assemblies, together with the diagnosed gap in the claimed global saddle argument. The general spanning-tree and metric-gluing endpoint remains open.",
+      "claim_scope": "Claim-bounded reasoning record for Erdős Problem 1041. It assembles ordinary all-degree trinomial paths and a sharp critical-value mean, Lean Newton-flow decay, ray separation, translation-collision geometry and root retention, Comparator-checked solved-family kernels, and exact obstructions including the Cassini counterexample to the printed global tree budget. The unrestricted path problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
