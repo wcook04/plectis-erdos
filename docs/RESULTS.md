@@ -75,11 +75,14 @@ irrationality. The prime-to-gap identity is Tao's (7 October 2025); Lean
 formalises it with an elementary polynomial prime bound, not the
 prime-number theorem. A prime-specific cofinal tail witness is still missing.
 
-**[#257](https://www.erdosproblems.com/257).** Full-support irrationality in
-every integer base `b ≥ 2`, structured-support theorems under summability,
-eventually-periodic coefficient results, and Lebesgue measure one for the
-base-2 Mersenne achievement set. Irrationality for every infinite support and
-the `1/2` and `1/21` branches remain open.
+**[#257](https://www.erdosproblems.com/257).** For every infinite
+reciprocal-summable support, the Mersenne subseries is irrational at every
+integer base `b ≥ 2` (short paper §2; ordinary averaging argument, not
+Lean). Erdős stated that coprimality-free extension. Full-support
+irrationality at every integer base is classical (Erdős 1948) and
+Lean-checked here, as are pairwise-coprime summable-reciprocal support and
+Lebesgue measure one for the base-2 achievement set. Irrationality for
+every infinite support and the `1/2` and `1/21` branches remain open.
 
 **[#269](https://www.erdosproblems.com/269).** Three-prime height identity,
 nonsingular kernel minors, the `(2,3,5)` minor `-1/15`, and conditional carry
