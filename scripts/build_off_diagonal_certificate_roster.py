@@ -34,7 +34,7 @@ from typing import Any, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_PATH = ROOT / "ErdosProblems" / "FreePosition" / "data.jsonl"
+DATA_PATH = ROOT / "lean/ErdosProblems" / "FreePosition" / "data.jsonl"
 ZONE_PATH = ROOT / "docs" / "semantic" / "zones" / "Z27.json"
 OUTPUT = (
     ROOT

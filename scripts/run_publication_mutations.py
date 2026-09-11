@@ -26,7 +26,7 @@ import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_MANIFEST = ROOT / "experiments" / "publication_mutations.json"
+DEFAULT_MANIFEST = ROOT / "research" / "experiments" / "publication_mutations.json"
 MANIFEST_SCHEMA = "erdos249257-publication-mutation-operators/1"
 RUN_SCHEMA = "erdos249257-publication-mutation-run/1"
 VERIFY_SCHEMA = "erdos249257-publication-mutation-operator-verification/1"

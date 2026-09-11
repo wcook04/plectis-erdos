@@ -440,9 +440,11 @@ def sorry_census() -> dict:
     reach it without importing the release gate's heavier dependencies.
     """
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
+    from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings, library_source_paths
 
-    root_lean_files = {f"{root}.lean" for root in LIBRARY_ROOTS}
+    corpus_rels = {
+        path.relative_to(ROOT).as_posix() for path in library_source_paths(ROOT)
+    }
     challenge: dict[str, int] = {}
     corpus: dict[str, int] = {}
     other: dict[str, int] = {}
@@ -456,7 +458,7 @@ def sorry_census() -> dict:
         rel = path.relative_to(ROOT).as_posix()
         if path.name == CHALLENGE_FILENAME:
             challenge[rel] = count
-        elif path.parts[len(ROOT.parts)] in LIBRARY_ROOTS or rel in root_lean_files:
+        elif rel in corpus_rels:
             corpus[rel] = count
         else:
             other[rel] = count

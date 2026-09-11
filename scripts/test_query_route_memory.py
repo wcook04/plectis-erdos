@@ -364,7 +364,7 @@ def main() -> int:
     require(
         {consumer["path"] for consumer in source_current["paper_consumers"]}
         >= {
-            "paper/erdos-251-prime-gap-dyadic-series.tex",
+            "paper/251/erdos-251-prime-gap-dyadic-series.tex",
             "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
         },
         "#251 route-memory paper consumers are incomplete",
@@ -414,7 +414,7 @@ def main() -> int:
     require(
         {consumer["path"] for consumer in negative_mass["paper_consumers"]}
         == {
-            "paper/erdos-243-reciprocal-tail-rigidity.tex",
+            "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
             "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
         },
         "#243 negative-mass paper consumers drifted",
@@ -435,7 +435,7 @@ def main() -> int:
         "#243 negative-mass mechanism/distinction boundary drifted",
     )
     require(
-        "paper/erdos-243-reciprocal-tail-rigidity.tex" in negative_mass["next_research_route"]
+        "paper/243/erdos-243-reciprocal-tail-rigidity.tex" in negative_mass["next_research_route"]
         and "res:mass" in negative_mass["next_research_route"]
         and "canonical orbit" in negative_mass["next_research_route"],
         "#243 negative-mass paper route or open obligation drifted",

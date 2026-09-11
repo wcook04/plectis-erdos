@@ -71,8 +71,8 @@ CLAIMS_PATH = ROOT / "docs" / "claims.json"
 PROBLEMS_PATH = ROOT / "docs" / "problems.json"
 ATLAS_PATH = ROOT / "docs" / "declaration_atlas.json"
 METHODOLOGY_PATH = ROOT / "docs" / "methodology.json"
-MAIN_PAPER_TEX = ROOT / "paper" / "erdos249-257-main-paper.tex"
-MAIN_PAPER_PDF = ROOT / "erdos249-257-main-paper.pdf"
+MAIN_PAPER_TEX = ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex"
+MAIN_PAPER_PDF = ROOT / "paper" / "archive" / "erdos249-257-main-paper.pdf"
 PAPER_ALIASES_PATH = ROOT / "paper" / "module-aliases.json"
 PALOMAR_SHOWCASE_PATH = ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json"
 README_SCALE_BEGIN = "<!-- BEGIN generated_corpus_at_a_glance -->"
@@ -478,7 +478,7 @@ def build_access_contract(repository: str) -> dict[str, Any]:
     one already owned by this repository.
     """
     clone_url = repository if repository.endswith(".git") else f"{repository}.git"
-    checkout = "plectis-lean-erdos249-257"
+    checkout = "plectis-erdos"
     return {
         "schema": "plectis-public-corpus-access/1",
         "repository_web": repository,
@@ -1108,9 +1108,10 @@ def build() -> dict[str, Any]:
                     "content_digest": canonical_digest(orientation),
                 },
                 "human_exposition": {
-                    "source_path": "paper/erdos249-257-main-paper.tex",
+                    "source_path": "paper/archive/erdos249-257-main-paper.tex",
                     "source_content_digest": file_digest(MAIN_PAPER_TEX),
                     "rendered_path": "erdos249-257-main-paper.pdf",
+                    "storage_path": "paper/archive/erdos249-257-main-paper.pdf",
                     "rendered_content_digest": file_digest(MAIN_PAPER_PDF),
                     "artifact_role": "authored_mathematician_facing_exposition",
                     "authority_posture": "authored_editorial_surface_not_Lean_proof_authority",
@@ -1301,9 +1302,10 @@ def build() -> dict[str, Any]:
                 "check": "python3 scripts/build_methodology.py --check",
             },
             "human_exposition": {
-                "source_path": "paper/erdos249-257-main-paper.tex",
+                "source_path": "paper/archive/erdos249-257-main-paper.tex",
                 "expected_source_content_digest": file_digest(MAIN_PAPER_TEX),
                 "rendered_path": "erdos249-257-main-paper.pdf",
+                "storage_path": "paper/archive/erdos249-257-main-paper.pdf",
                 "expected_rendered_content_digest": file_digest(MAIN_PAPER_PDF),
                 "authority_posture": "authored_editorial_surface_not_Lean_proof_authority",
             },

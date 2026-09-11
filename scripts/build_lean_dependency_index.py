@@ -233,10 +233,10 @@ def sha256_text(content: str) -> str:
 
 def check_input_paths(root: Path = ROOT) -> list[Path]:
     """Return every source that can change the elaborated dependency packet."""
+    from lean_source import library_source_paths
+
     paths = [root / relative for relative in CHECK_INPUT_FILES]
-    for library_root in LEAN_ROOT_TARGETS:
-        paths.append(root / f"{library_root}.lean")
-        paths.extend(sorted((root / library_root).rglob("*.lean")))
+    paths.extend(library_source_paths(root))
     return sorted(set(paths))
 
 
@@ -545,7 +545,10 @@ EXPORT_TIMEOUT_SECONDS = 5_400
 
 
 def module_id(path: str) -> str:
-    return ".".join(Path(path).with_suffix("").parts)
+    parts = Path(path).with_suffix("").parts
+    if parts and parts[0] == "lean":
+        parts = parts[1:]
+    return ".".join(parts)
 
 
 def export_environment() -> tuple[

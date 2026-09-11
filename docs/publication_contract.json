@@ -10,26 +10,27 @@
   "artifacts": [
     {
       "id": "human_exposition",
-      "title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257",
-      "artifact_class": "mathematical_gateway",
-      "source_path": "paper/erdos249-257-main-paper.tex",
+      "title": "Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257",
+      "artifact_class": "archival_joint_manuscript",
+      "source_path": "paper/archive/erdos249-257-main-paper.tex",
       "source_content_digest": "sha256:0455d0feaf5088394eb449a6a3056b89f4021f0a2fd74338c2b3766a7437e6df",
       "rendered_path": "erdos249-257-main-paper.pdf",
       "rendered_content_digest": "sha256:5c6b1c8722ac6657b36b136cbce4aa927e452e18d9487f14bb2d7e30d6de717f",
       "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority",
-      "claim_scope": "Gateway exposition for Erd\u0151s Problems 249 and 257. For #249 it records the exact dyadic-section rank 2^e+1 for e >= 1, infinite-dimensionality, the explicit finite Farey denominator exclusion, and diagonal certificates through t = 82, but no instance at t = 83 or unbounded family. For #257 it records checked restricted-support geometry and the remaining half-value and 1/21 branches. Both problems remain open, and the shared Lambert-series change of variables transfers no irrationality theorem.",
+      "claim_scope": "Gateway exposition for Erdős Problems 249 and 257. For #249 it records the exact dyadic-section rank 2^e+1 for e >= 1, infinite-dimensionality, the explicit finite Farey denominator exclusion, and diagonal certificates through t = 82, but no instance at t = 83 or unbounded family. For #257 it records checked restricted-support geometry and the remaining half-value and 1/21 branches. Both problems remain open, and the shared Lambert-series change of variables transfers no irrationality theorem.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.canonical_gateway",
       "entry_route_id": "follow_one_claim",
       "validation": [
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/archive/erdos249-257-main-paper.pdf"
     },
     {
       "id": "repository_architecture_guide",
       "title": "Problem-Sized Lean Worlds",
       "artifact_class": "repository_architecture_guide",
-      "source_path": "paper/claim-faithful-publication-systems-paper.tex",
+      "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "source_content_digest": "sha256:d8a3179c2e59904e4b792a5da08ffe0d221368357807d393d3a7ef62047b1548",
       "rendered_path": "claim-faithful-publication-systems-paper.pdf",
       "rendered_content_digest": "sha256:82571f44c109214535d2d158245e908b059027ad7dfe03b725504b767f503c07",
@@ -58,13 +59,14 @@
         "post_repair_validation": "The intact baseline and the same false README edit were rechecked after the missing boundary was declared.",
         "post_repair_full_mutation_rerun": false,
         "forbidden_inference": "Do not report a post-repair ten-of-ten result unless all ten mutations are rerun against the extended invariant set."
-      }
+      },
+      "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     },
     {
       "id": "agent_native_navigation_guide",
       "title": "From a Cold Clone to a Proof Receipt",
       "artifact_class": "agent_navigation_guide",
-      "source_path": "paper/cold-clone-to-proof-receipt.tex",
+      "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "source_content_digest": "sha256:326364ff51be753731daee255ea78e641d0390e715a52625e575eb3d90f6ac25",
       "rendered_path": "cold-clone-to-proof-receipt.pdf",
       "rendered_content_digest": "sha256:6693bbd8a64984ca2154afaa28c937693c0fc411b6a8957fed5953c0f1331e07",
@@ -80,18 +82,19 @@
         "python3 scripts/check_cold_clone_comprehension.py --quick",
         "python3 scripts/test_lean_dependency_index_cache.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
     {
       "id": "open_source_mathematics_strategy",
       "title": "From Spare Compute to Cumulative Mathematics",
       "artifact_class": "open_source_research_strategy",
-      "source_path": "paper/open-source-mathematics-strategy.tex",
+      "source_path": "paper/systems/open-source-mathematics-strategy.tex",
       "source_content_digest": "sha256:bda180c92168800fb3ec74ab12ef6f56d8f72c2ad11a78cc3e8c8253b3298dc9",
       "rendered_path": "open-source-mathematics-strategy.pdf",
       "rendered_content_digest": "sha256:5df59aac866f6400311393473c0d690806280697ddc904b164c9a3021f1d965f",
       "authority_posture": "authored_open_source_strategy_and_contribution_protocol_not_Lean_proof_authority_and_not_community_acceptance_authority",
-      "claim_scope": "A strategy and working-prototype paper for an open research commons that accepts compute, mathematical direction, architecture improvements, cold-clone cleanup, and review. It defines role-bounded contribution packets, a candidate-to-attention funnel, provenance-preserving adoption, and evaluation measures. As of 31 August 2026 no completed external cold clone or accepted external contribution had been recorded. All eight Erd\u0151s problems remain open; the paper reports no measured discovery-rate improvement, independent mathematical review, proof of optimal architecture, or community acceptance of a new mathematical result.",
+      "claim_scope": "A strategy and working-prototype paper for an open research commons that accepts compute, mathematical direction, architecture improvements, cold-clone cleanup, and review. It defines role-bounded contribution packets, a candidate-to-attention funnel, provenance-preserving adoption, and evaluation measures. As of 31 August 2026 no completed external cold clone or accepted external contribution had been recorded. All eight Erdős problems remain open; the paper reports no measured discovery-rate improvement, independent mathematical review, proof of optimal architecture, or community acceptance of a new mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
       "entry_route_id": "understand_open_source_research_strategy",
       "validation": [
@@ -101,157 +104,166 @@
         "python3 scripts/test_contribution_entry.py",
         "python3 scripts/test_compact_agent_entry.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
     },
     {
       "id": "erdos_249_reasoning_record",
       "title": "The Binary Totient Series",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos249-totient-reasoning-surface.tex",
+      "source_path": "paper/249/erdos249-totient-reasoning-surface.tex",
       "source_content_digest": "sha256:2fc7b2e5730e31868b749698e42bf5f904687a6f918261aac3e77b4dfef7f031",
       "rendered_path": "erdos249-totient-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:b069ae60c4bfed01fb4bdcf8ce4f089e9f5486c4cbcafc9dfefcaaee62e1a5e9",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Claim-bounded reasoning record for Erd\u0151s Problem 249. It distinguishes checked premises and finite certificates from open obligations: the level-e dyadic-section rank is 2^e+1 only for e >= 1; the full span is infinite-dimensional; the finite Farey computation excludes denominators up to the stated bound; and diagonal certificates exist through t = 82, with neither t = 83 nor an unbounded family supplied. Irrationality remains open.",
+      "claim_scope": "Claim-bounded reasoning record for Erdős Problem 249. It distinguishes checked premises and finite certificates from open obligations: the level-e dyadic-section rank is 2^e+1 only for e >= 1; the full span is infinite-dimensional; the finite Farey computation excludes denominators up to the stated bound; and diagonal certificates exist through t = 82, with neither t = 83 nor an unbounded family supplied. Irrationality remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/249/erdos249-totient-reasoning-surface.pdf"
     },
     {
       "id": "erdos_257_reasoning_record",
       "title": "Reciprocal Mersenne Subseries",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos257-mersenne-reasoning-surface.tex",
+      "source_path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
       "source_content_digest": "sha256:e6ca051b1acf26b99809796daa32f0f5becdf032404c1d78c2859a8bd8a2e7bb",
       "rendered_path": "erdos257-mersenne-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:8399608da9bb18be704cbbd4a592374a171646afff4260d5c324057ef18c5e65",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Claim-bounded reasoning record for Erd\u0151s Problem 257. It separates checked finite-support and restricted-achievement-set structure from the missing Booleanisation and tail steps. No finite rank-at-least-two support represents 1/21; the primitive 2p+3q cone has the stated coverage and recurrent multiplicities, but the eventual affine-supercapacity regime survives. The universal, half-value, and 1/21 membership questions remain open.",
+      "claim_scope": "Claim-bounded reasoning record for Erdős Problem 257. It separates checked finite-support and restricted-achievement-set structure from the missing Booleanisation and tail steps. No finite rank-at-least-two support represents 1/21; the primitive 2p+3q cone has the stated coverage and recurrent multiplicities, but the eventual affine-supercapacity regime survives. The universal, half-value, and 1/21 membership questions remain open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/257/erdos257-mersenne-reasoning-surface.pdf"
     },
     {
       "id": "erdos_249_note",
       "title": "A Basis for the 2-Kernel of Euler's Totient",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-249-binary-totient-series.tex",
+      "source_path": "paper/249/erdos-249-binary-totient-series.tex",
       "source_content_digest": "sha256:7541dd33c45f97b67b36ac71eb73e1e98459e170a3b416a69bc860b6511dc98c",
       "rendered_path": "erdos-249-binary-totient-series.pdf",
       "rendered_content_digest": "sha256:21fb75589f8db5b9ec1f4a9bd250cfde263baae8f943f864c0066824478667b1",
       "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
-      "claim_scope": "Standalone exposition of Erd\u0151s Problem 249, ordered unconditional results first: the exact level-e dyadic totient section rank 2^e+1 for e >= 1 and the resulting infinite-dimensionality; the explicit finite-Farey denominator exclusion; the phi*mu Lambert weight separating #249 from the settled omega/Omega/tau series; the exact supplier-fibre bijection together with its global-isolation counterexample; and scoped method no-go theorems. Lean checks diagonal certificates for every t <= 82, but supplies neither t = 83 nor the unbounded family equivalent to irrationality. The problem remains open.",
+      "claim_scope": "Standalone exposition of Erdős Problem 249, ordered unconditional results first: the exact level-e dyadic totient section rank 2^e+1 for e >= 1 and the resulting infinite-dimensionality; the explicit finite-Farey denominator exclusion; the phi*mu Lambert weight separating #249 from the settled omega/Omega/tau series; the exact supplier-fibre bijection together with its global-isolation counterexample; and scoped method no-go theorems. Lean checks diagonal certificates for every t <= 82, but supplies neither t = 83 nor the unbounded family equivalent to irrationality. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/249/erdos-249-binary-totient-series.pdf"
     },
     {
       "id": "erdos_257_note",
       "title": "Reciprocal-Summable Support Irrationality at Every Integer Base",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-257-mersenne-support-subseries.tex",
+      "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "source_content_digest": "sha256:ac88a129ef853d707a556e3c5346387d3b7b15c6d749b11eba9da06120db4e18",
       "rendered_path": "erdos-257-mersenne-support-subseries.pdf",
       "rendered_content_digest": "sha256:364a90183beb061844930dd26e4af42bd04736e9554d0611a7b22cec9ababe39",
       "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
-      "claim_scope": "Standalone exposition of Erd\u0151s Problem 257 led by exact finite-period noncollapse, necessary structure for any rational-valued infinite support, and achievement-set geometry. Duverney\u2013Tachiya settle squarefree support for every power-of-two base, including base 2; this does not cover arbitrary bases b >= 3. The manuscript separately proves that two divisibility-first certificate engines miss this settled value and that irrationality is invariant under finite support changes via checked prefix/tail lemmas. No finite rank-at-least-two support sums to 1/21, while the quotient-greedy classification leaves an eventual affine-supercapacity regime unexcluded. Tao\u2013Ter\u00e4v\u00e4inen prove prime support at base 2. Universal Erd\u0151s #257, the half-value test, and 1/21 membership remain open.",
+      "claim_scope": "Standalone exposition of Erdős Problem 257 led by exact finite-period noncollapse, necessary structure for any rational-valued infinite support, and achievement-set geometry. Duverney–Tachiya settle squarefree support for every power-of-two base, including base 2; this does not cover arbitrary bases b >= 3. The manuscript separately proves that two divisibility-first certificate engines miss this settled value and that irrationality is invariant under finite support changes via checked prefix/tail lemmas. No finite rank-at-least-two support sums to 1/21, while the quotient-greedy classification leaves an eventual affine-supercapacity regime unexcluded. Tao–Teräväinen prove prime support at base 2. Universal Erdős #257, the half-value test, and 1/21 membership remain open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/257/erdos-257-mersenne-support-subseries.pdf"
     },
     {
       "id": "erdos_68_note",
       "title": "Two Incomparable Denominator Exclusions\\\\for $\\sum_{n\\ge2}(n!-1)^{-1}$",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-68-factorial-denominator-irrationality.tex",
+      "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "source_content_digest": "sha256:9b54aebff7460c36743c971e147c2baf8f24128bdeb88bd4ba6f495100c1727f",
       "rendered_path": "erdos-68-factorial-denominator-irrationality.pdf",
       "rendered_content_digest": "sha256:b0e0d2ca7f132a6d971a86b8d0f25b0e22b0ca34333886f9af721ee3ba1cb23d",
       "authority_posture": "authored_mathematical_exposition_of_unregistered_expansion_modules_and_an_external_finite_certificate_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos68 modules. Lean checks the exact factorial-successor and eventual-unit-carry frontiers, integral-channel and prime-translator identities, weighted projection consumers, zero-plateau and prime-power branch reductions, and the Cramer residual identity. An independently regenerated exact GMP certificate supplies one non-unit carry at m = 300000, and a Lean theorem consumes that finite fact to exclude every smaller positive rational denominator. No theorem supplies cofinally many non-unit carries, the weighted collision and complementary-residue estimates, cofinal lower-cylinder escape, doubled-prime branch failure, or Cramer residual nonintegrality; Erd\u0151s Problem 68 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos68 modules. Lean checks the exact factorial-successor and eventual-unit-carry frontiers, integral-channel and prime-translator identities, weighted projection consumers, zero-plateau and prime-power branch reductions, and the Cramer residual identity. An independently regenerated exact GMP certificate supplies one non-unit carry at m = 300000, and a Lean theorem consumes that finite fact to exclude every smaller positive rational denominator. No theorem supplies cofinally many non-unit carries, the weighted collision and complementary-residue estimates, cofinal lower-cylinder escape, doubled-prime branch failure, or Cramer residual nonintegrality; Erdős Problem 68 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/68/erdos-68-factorial-denominator-irrationality.pdf"
     },
     {
       "id": "erdos_243_note",
       "title": "Excluding the Bounded Negative Part",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+      "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "source_content_digest": "sha256:00bd33bee965b9d38fff8924348c78c14bfa32b77ae22118b11475b8505deb1f",
       "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
       "rendered_content_digest": "sha256:e22f4872b82a64120d2640240fbec20cc19495e294c60eac0bcf1246c6e838cd",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks constant- and scoped periodic-negative exclusions, eventual vanishing from an eventually bounded negative part plus normalised vanishing, and exclusion of finite normalised negative mass. Eventual strict centring is not an independent hypothesis because normalised vanishing supplies it after a finite shift. Koizumi supplies normalised vanishing for the canonical orbit; boundedness of its negative part is not supplied. Mixed-sign classification and the unbounded divergent-mass branch remain open, so Erd\u0151s Problem 243 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks constant- and scoped periodic-negative exclusions, eventual vanishing from an eventually bounded negative part plus normalised vanishing, and exclusion of finite normalised negative mass. Eventual strict centring is not an independent hypothesis because normalised vanishing supplies it after a finite shift. Koizumi supplies normalised vanishing for the canonical orbit; boundedness of its negative part is not supplied. Mixed-sign classification and the unbounded divergent-mass branch remain open, so Erdős Problem 243 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf"
     },
     {
       "id": "erdos_251_note",
       "title": "A Countermodel for Growth-and-Parity Arguments\\\\on the Prime-Gap Dyadic Series",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
+      "source_path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
       "source_content_digest": "sha256:eae712c9c61241082dbe892acd60436790648866dd256ae420a2cae8c6454e92",
       "rendered_path": "erdos-251-prime-gap-dyadic-series.pdf",
       "rendered_content_digest": "sha256:f35b0bc638871c00fb3fe0e4c3ee90d99ce99f7aac86071e729a3775c21a4105",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos251 module. Lean checks the infinite prime/gap equivalence conditional on summability, denominator collapse for rational dyadic recurrences, unboundedness and non-eventual-periodicity of the actual prime gaps, and the exact local implication from cofinally recurring adjacent small-mismatch tail shifts to failure of eventual integrality. The prime-number-theorem summability and concrete prime-gap-tail instantiation are paper proofs; no theorem supplies the required cofinal adjacent small-mismatch pairs, and Erd\u0151s Problem 251 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos251 module. Lean checks the infinite prime/gap equivalence conditional on summability, denominator collapse for rational dyadic recurrences, unboundedness and non-eventual-periodicity of the actual prime gaps, and the exact local implication from cofinally recurring adjacent small-mismatch tail shifts to failure of eventual integrality. The prime-number-theorem summability and concrete prime-gap-tail instantiation are paper proofs; no theorem supplies the required cofinal adjacent small-mismatch pairs, and Erdős Problem 251 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/251/erdos-251-prime-gap-dyadic-series.pdf"
     },
     {
       "id": "erdos_269_note",
       "title": "No Finite Separable Representation\\\\at Three Prime Generators",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-269-three-prime-running-lcm.tex",
+      "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
       "source_content_digest": "sha256:cbafdceb43c6d6e567440053147a41a7f7d15e89136b11bff3ee6bd5b14aeaf2",
       "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
       "rendered_content_digest": "sha256:8a052bc4b5dcb9533d2de88affba803cfcddfeedcd6d3bc072a9b3c6af0392af",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "The paper proves, using Bugeaud\u2013Laurent's external Hecke\u2013Mahler theorem, that for every pair of distinct primes both the de-duplicated and repeated-running-LCM sums are transcendental; these analytic deductions are not Lean-formalised. For three primes, Lean checks exact logarithmic-cell and finite height-fibre structure, the dyadic block alphabet {2,6,10,30}, residue arithmetic, and the conditional absorption-and-cancellation core. The scan over 106,666 denominator/start pairs is bounded evidence only. Rationality-to-carry identification, the required divisibility, and a cofinal escape producer are unproved; Problem 269 remains open from three primes onward.",
+      "claim_scope": "The paper proves, using Bugeaud–Laurent's external Hecke–Mahler theorem, that for every pair of distinct primes both the de-duplicated and repeated-running-LCM sums are transcendental; these analytic deductions are not Lean-formalised. For three primes, Lean checks exact logarithmic-cell and finite height-fibre structure, the dyadic block alphabet {2,6,10,30}, residue arithmetic, and the conditional absorption-and-cancellation core. The scan over 106,666 denominator/start pairs is bounded evidence only. Rationality-to-carry identification, the required divisibility, and a cofinal escape producer are unproved; Problem 269 remains open from three primes onward.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/269/erdos-269-three-prime-running-lcm.pdf"
     },
     {
       "id": "erdos_1041_note",
       "title": "Sharp Solved Families and\\\\Constant-Factor Paths in Polynomial Lemniscates",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
+      "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "source_content_digest": "sha256:9a36d21bfa3560bbcaea4fc162d6f98801fa6ca43803890ed2488f0f687f595f",
       "rendered_path": "erdos-1041-lemniscate-newton-flow.pdf",
       "rendered_content_digest": "sha256:23b8717299583315a2fddd130b3d817efa93b11ec9f8f573160ae1b34695abd7",
@@ -263,36 +275,38 @@
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
     {
       "id": "erdos_1049_note",
       "title": "Irrationality of $F(31/4)$ and the\\\\Exact Normalized Hankel Order",
       "artifact_class": "problem_note",
-      "source_path": "paper/erdos-1049-rational-base-lambert.tex",
+      "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "source_content_digest": "sha256:63da06e19a5c6c6bedb34cd9913fff3d6192ad1ade409cab560c6e37b7fe0c3f",
       "rendered_path": "erdos-1049-rational-base-lambert.pdf",
       "rendered_content_digest": "sha256:ee3322735d9efcf38c9f5381646e6836c77569a6c68c25e52981497c5325f46c",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of scoped no-go and counting results for Erd\u0151s Problem 1049, not an irrationality theorem. Lean checks scalar-content neutrality, the endpoint exclusion of 2 and 3 under unit hypotheses, four-jet cancellation at the stated rank threshold, a coordinatewise-clearing corridor obstruction and tail recurrence at 3/2, and the elementary height inequality needed by Bundschuh\u2013V\u00e4\u00e4n\u00e4nen's external criterion at 7/2. The external analytic argument is not formalised. Polynomial-factor, cross-row, primitive-family, nonzero-pair, and analytic-remainder routes remain untreated; the rational-base problem remains open.",
+      "claim_scope": "Exposition of scoped no-go and counting results for Erdős Problem 1049, not an irrationality theorem. Lean checks scalar-content neutrality, the endpoint exclusion of 2 and 3 under unit hypotheses, four-jet cancellation at the stated rank threshold, a coordinatewise-clearing corridor obstruction and tail recurrence at 3/2, and the elementary height inequality needed by Bundschuh–Väänänen's external criterion at 7/2. The external analytic argument is not formalised. Polynomial-factor, cross-row, primitive-family, nonzero-pair, and analytic-remainder routes remain untreated; the rational-base problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
         "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
-      ]
+      ],
+      "storage_path": "paper/1049/erdos-1049-rational-base-lambert.pdf"
     },
     {
       "id": "erdos_1041_reasoning_record",
       "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+      "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "source_content_digest": "sha256:27ca9a32515680d6e041449b4d4127b5cfef3e23d3c22e9e572715f00f8fa9d0",
       "rendered_path": "erdos1041-lemniscate-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:a4b56ccef5c51bc5828691dd76612d795e1b8618cdc90e746cbb5ce625815f03",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Claim-bounded reasoning record for Erd\u0151s Problem 1041. It assembles Newton-flow decay, critical-value ray separation, translation-collision geometry, root retention, solved structured families, and the diagnosed gap in the claimed global saddle argument. The general spanning-tree and metric-gluing endpoint remains open.",
+      "claim_scope": "Claim-bounded reasoning record for Erdős Problem 1041. It assembles Newton-flow decay, critical-value ray separation, translation-collision geometry, root retention, solved structured families, and the diagnosed gap in the claimed global saddle argument. The general spanning-tree and metric-gluing endpoint remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -300,18 +314,19 @@
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf"
     },
     {
       "id": "erdos_1049_reasoning_record",
       "title": "Rational-Base Lambert Series: Complete Reasoning Record",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "source_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "source_content_digest": "sha256:d912ac90cd2f6d7e1e2dd7d685cee70dcda0db3d689164dce0736418b79dc9a5",
       "rendered_path": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:ced3a9082d2ee51d6aa5f114d2ab546aed8f7401404bd6d8c5e1043e0e591df7",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Complete reasoning record for Erd\u0151s #1049, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "claim_scope": "Complete reasoning record for Erdős #1049, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -319,18 +334,19 @@
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf"
     },
     {
       "id": "erdos_68_reasoning_record",
       "title": "The Factorial-Denominator Series: Complete Reasoning Record",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos68-factorial-reasoning-surface.tex",
+      "source_path": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "source_content_digest": "sha256:744e49cf9503f5b699d1b96a11c85e4301a35a795a6d146c0acafb11716059fb",
       "rendered_path": "erdos68-factorial-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:613b572b37260469a29d2fa7db7a79d1b7c253be154a685966846b938416fb97",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Complete reasoning record for Erd\u0151s #68, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "claim_scope": "Complete reasoning record for Erdős #68, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -338,18 +354,19 @@
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/68/erdos68-factorial-reasoning-surface.pdf"
     },
     {
       "id": "erdos_243_reasoning_record",
       "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "source_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "source_content_digest": "sha256:ed0477376d0ff7932910d3acf2fbb9c3cf6b08e42ae2545c8ba4fd61bee4a6fe",
       "rendered_path": "erdos243-reciprocal-tail-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:1e51648823c4998ae77af8f419009db64269a0034be4843717b532692212c6ee",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Complete reasoning record for Erd\u0151s #243, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the scalar finite-negative-mass criterion without a normalised-vanishing premise. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "claim_scope": "Complete reasoning record for Erdős #243, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the scalar finite-negative-mass criterion without a normalised-vanishing premise. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -357,18 +374,19 @@
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf"
     },
     {
       "id": "erdos_251_reasoning_record",
       "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos251-prime-gap-reasoning-surface.tex",
+      "source_path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
       "source_content_digest": "sha256:80d226bc59d7e47db86bc4d576570d27e78d8760ba77ae38c548a53bfc9b8234",
       "rendered_path": "erdos251-prime-gap-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:28ba6a9fc4dbcf0846e7e960399c2abd3c2c2ad5a55d8353e2a10d2ed990eb9a",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Complete reasoning record for Erd\u0151s #251, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the finite counting reduction for shifted prime-gap differences; the analytic sieve estimates remain assumptions. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "claim_scope": "Complete reasoning record for Erdős #251, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the finite counting reduction for shifted prime-gap differences; the analytic sieve estimates remain assumptions. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -376,18 +394,19 @@
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/251/erdos251-prime-gap-reasoning-surface.pdf"
     },
     {
       "id": "erdos_269_reasoning_record",
       "title": "The Three-Prime Running LCM: Complete Reasoning Record",
       "artifact_class": "mathematical_companion",
-      "source_path": "paper/erdos269-running-lcm-reasoning-surface.tex",
+      "source_path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
       "source_content_digest": "sha256:1f2937f1a7fe54f8e6962491818cc026696a9408454dff82da23a49b0805ca71",
       "rendered_path": "erdos269-running-lcm-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:6523a51d74d82eac2dc14aa606cb5d08d58a362c63ad517929ba7f0d6c686bc4",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Complete reasoning record for Erd\u0151s #269, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
+      "claim_scope": "Complete reasoning record for Erdős #269, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -395,21 +414,22 @@
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_release.py"
-      ]
+      ],
+      "storage_path": "paper/269/erdos269-running-lcm-reasoning-surface.pdf"
     }
   ],
   "entrypoints": [
     {
       "id": "read_one_problem_note",
-      "title": "One Erd\u0151s problem: its note, its modules, and its surviving obligation",
-      "intent": "Read what is formalised about a single Erd\u0151s problem in the ErdosProblems expansion library, and what is not, without loading the reviewed #249/#257 corpus. These declarations carry no reviewed public claim status.",
+      "title": "One Erdős problem: its note, its modules, and its surviving obligation",
+      "intent": "Read what is formalised about a single Erdős problem in the ErdosProblems expansion library, and what is not, without loading the reviewed #249/#257 corpus. These declarations carry no reviewed public claim status.",
       "discovery_terms": [
-        "Erd\u0151s problem 68",
-        "Erd\u0151s problem 243",
-        "Erd\u0151s problem 251",
-        "Erd\u0151s problem 269",
-        "Erd\u0151s problem 1041",
-        "Erd\u0151s problem 1049",
+        "Erdős problem 68",
+        "Erdős problem 243",
+        "Erdős problem 251",
+        "Erdős problem 269",
+        "Erdős problem 1041",
+        "Erdős problem 1049",
         "problem note",
         "what is checked for this problem",
         "ErdosProblems expansion library"
@@ -464,7 +484,7 @@
       ],
       "read": [
         "ARCHITECTURE.md",
-        "paper/claim-faithful-publication-systems-paper.tex",
+        "paper/systems/claim-faithful-publication-systems-paper.tex",
         "docs/publication_contract.json",
         "docs/publication_evidence.json",
         "experiments/publication_mutations.json",
@@ -494,7 +514,7 @@
       "discovery_terms": [
         "open source mathematics strategy",
         "contribute spare compute",
-        "run an agent on an Erd\u0151s problem",
+        "run an agent on an Erdős problem",
         "improve the research architecture",
         "how are contributors credited",
         "what happens if an agent claims a solution"

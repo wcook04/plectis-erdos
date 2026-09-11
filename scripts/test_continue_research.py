@@ -304,7 +304,7 @@ def check_route_memory_corpus_contract() -> None:
     require(
         {consumer["path"] for consumer in negative_mass["paper_consumers"]}
         == {
-            "paper/erdos-243-reciprocal-tail-rigidity.tex",
+            "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
             "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
         },
         "#243 negative-mass paper route drifted",

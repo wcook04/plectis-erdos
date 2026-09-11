@@ -13,7 +13,7 @@ Read order for humans:
    programme, claim, or exact remaining open proposition.
 2. `docs/SOURCE_MAP.md` — follow that selected intention into a bounded module
    route.
-3. `paper/erdos249-257-main-paper.tex` — read the authored mathematical
+3. `paper/archive/erdos249-257-main-paper.tex` — read the authored mathematical
    exposition and its source handles.
 4. this file — recover development chronology only when chronology is the
    question.

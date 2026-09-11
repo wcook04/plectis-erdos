@@ -1909,7 +1909,11 @@ def cmd_structural_backlog(corpus: dict, args) -> int:
     atlas_index = {row["id"]: row for row in atlas["declarations"]}
     role_index = paper_citation_role_index(corpus)
     paper_selected_ids: set[str] = set()
-    paper_sources = sorted((ROOT / "paper").glob("*.tex"))
+    paper_sources = sorted(
+        path
+        for path in (ROOT / "paper").rglob("*.tex")
+        if "reasoning-parts" not in path.parts
+    )
     if args.paper:
         needle = args.paper.casefold()
         paper_sources = [
@@ -2074,7 +2078,11 @@ def cmd_population_backlog(corpus: dict, args) -> int:
     module_cap = min(args.limit, 12 if args.paper else 8)
     paper_cap = min(args.limit, 1 if args.paper else 3)
     source_rows = []
-    sources = sorted((ROOT / "paper").glob("*.tex"))
+    sources = sorted(
+        path
+        for path in (ROOT / "paper").rglob("*.tex")
+        if "reasoning-parts" not in path.parts
+    )
     if args.paper:
         needle = args.paper.casefold()
         sources = [

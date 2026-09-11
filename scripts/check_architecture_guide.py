@@ -17,8 +17,8 @@ GUIDE = ROOT / "ARCHITECTURE.md"
 README = ROOT / "README.md"
 AGENTS = ROOT / "AGENTS.md"
 PAPER_README = ROOT / "paper" / "README.md"
-SYSTEMS_PAPER = ROOT / "paper" / "claim-faithful-publication-systems-paper.tex"
-SYSTEMS_PDF = ROOT / "claim-faithful-publication-systems-paper.pdf"
+SYSTEMS_PAPER = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
+SYSTEMS_PDF = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.pdf"
 PUBLICATION_CONTRACT = ROOT / "docs" / "publication_contract.json"
 MAX_GUIDE_BYTES = 18_000
 # Keep the architecture paper bounded without accumulating one-off magic-number
@@ -169,7 +169,7 @@ REQUIRED_PATHS = (
     "scripts/check_release.py",
     "scripts/check_cold_clone_comprehension.py",
     ".github/workflows/lean.yml",
-    "paper/erdos249-257-main-paper.tex",
+    "paper/archive/erdos249-257-main-paper.tex",
 )
 
 # These labels belong to the evaluation history or to private agent doctrine.

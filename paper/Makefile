@@ -34,20 +34,15 @@ REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
 REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
 REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
+VPATH = 68:243:249:251:257:269:1041:1049:systems:archive:.
 
 .PHONY: all check clean sync-root
 
 all: $(PAPERS:%=%.pdf) sync-root
 
-# Every manuscript keeps a root copy so the published byte-parity chain
-# (root PDF == GitHub main == hosted site) stays intact.  Which manuscript a
-# reader is *routed* to is a README question, not a filesystem one: the joint
-# monograph is no longer the front door, but removing its root copy would
-# break the deploy gate that compares those bytes.
+# Hosted URLs keep the PDF basename. Repository storage is under paper/<id>/.
 sync-root: $(PAPERS:%=%.pdf)
-	@for paper in $(PAPERS); do \
-	  cp "$$paper.pdf" "../$$paper.pdf"; \
-	done
+	python3 ../scripts/sync_publication_pdfs.py
 
 check: all
 	python3 $(REASONING_COORDINATES) --check
@@ -70,7 +65,7 @@ $(PAPERS:%=%.pdf): paper-house-style.sty
 # Only the mathematical gateway owns Lean source-link aliases. Keeping every
 # unrelated manuscript in this prerequisite list rebuilt the complete paper
 # set whenever a systems paper changed.
-$(ALIASES): erdos249-257-main-paper.tex ../scripts/build_paper_module_aliases.py
+$(ALIASES): archive/erdos249-257-main-paper.tex ../scripts/build_paper_module_aliases.py
 	python3 ../scripts/build_paper_module_aliases.py
 
 %.pdf: %.tex $(ALIASES)

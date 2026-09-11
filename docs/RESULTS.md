@@ -535,7 +535,7 @@ boundaries kept together.
   than actual totient differences, nonlinear combinations are not covered,
   and no unbounded certificate supply follows.
 - Two additional checked #249 families are directly inspectable: an exact
-  [squared-Lambert gcd-moment transfer](../Erdos249257/GcdMomentCalculus.lean)
+  [squared-Lambert gcd-moment transfer](../lean/Erdos249257/GcdMomentCalculus.lean)
   at base `1/2` — `tsum_totient_div_mersenne_sq_eq_gcd_moment_series` identifies
   the totient-weighted squared-Mersenne Lambert series with the dyadic series
   of Pillai's gcd-sum function minus `n` — and the Comparator-transported
@@ -1609,7 +1609,7 @@ network access.
 ### External verification
 
 Nineteen selected Lean propositions are declared a second time, without proofs,
-in [`ExternalVerification/Statements.lean`](../ExternalVerification/Statements.lean).
+in [`ExternalVerification/Statements.lean`](../verification/ExternalVerification/Statements.lean).
 Comparator checks the proof-bearing module against those separate declarations
 and against a fixed axiom budget of `propext`, `Quot.sound`, and
 `Classical.choice`; an adversarial fixture alters one statement and must be
@@ -1681,7 +1681,7 @@ An exact final-skip band formula does not show that the actual orbit avoids
 an unsafe band.
 
 [Orientation](ORIENTATION.md) routes claims; the retained
-[mathematics paper](../erdos249-257-main-paper.pdf) preserves the joint
+[mathematics paper](../paper/archive/erdos249-257-main-paper.pdf) preserves the joint
 #249/#257 exposition.
 
 ## What remains open

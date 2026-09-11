@@ -16,10 +16,19 @@ import re
 import sys
 from pathlib import Path
 
+from lean_source import (
+    LIBRARY_ROOTS,
+    library_module_id,
+    library_root_file,
+    library_source_paths,
+)
+
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS = ROOT / "docs" / "claims.json"
-LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
-ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+ROOT_FILES = tuple(
+    library_root_file(ROOT, root).relative_to(ROOT).as_posix()
+    for root in LIBRARY_ROOTS
+)
 # These namespaces contain independently checkable exploratory/certificate
 # modules. They belong to the exhaustive public inventory, but forcing every
 # one through the compact mathematical reading root would create a
@@ -140,7 +149,7 @@ NEW_ROLES = {
 
 
 def module_id(path: Path) -> str:
-    return ".".join(path.relative_to(ROOT).with_suffix("").parts)
+    return library_module_id(path, ROOT)
 
 
 def default_role(module: str) -> str:
@@ -160,8 +169,9 @@ def build_graph(data: dict[str, object]) -> dict[str, object]:
     nodes = []
     source_paths = [
         path
-        for library_root in LIBRARY_ROOTS
-        for path in sorted((ROOT / library_root).rglob("*.lean"))
+        for path in library_source_paths(ROOT)
+        if path != library_root_file(ROOT, LIBRARY_ROOTS[0])
+        and path != library_root_file(ROOT, LIBRARY_ROOTS[1])
     ]
     for path in source_paths:
         module = module_id(path)
@@ -204,8 +214,8 @@ def build_graph(data: dict[str, object]) -> dict[str, object]:
     auxiliary_roots = sorted(auxiliary_nodes - imported_by_auxiliary)
 
     return {
-        "root": ROOT_FILES[0],
-        "additional_roots": list(ROOT_FILES[1:]),
+        "root": f"{LIBRARY_ROOTS[0]}.lean",
+        "additional_roots": [f"{LIBRARY_ROOTS[1]}.lean"],
         "auxiliary_roots": auxiliary_roots,
         "auxiliary_root_contract": {
             "posture": "exhaustive_inventory_forest_not_compact_reading_root",

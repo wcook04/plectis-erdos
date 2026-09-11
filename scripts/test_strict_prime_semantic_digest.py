@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ZONE = ROOT / "docs" / "semantic" / "zones" / "Z08.json"
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
-SOURCE = ROOT / "ErdosProblems" / "Erdos249" / "TotientStrictPrimeEscape.lean"
+SOURCE = ROOT / "lean/ErdosProblems" / "Erdos249" / "TotientStrictPrimeEscape.lean"
 MODULE = "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
 
 

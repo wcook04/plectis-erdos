@@ -464,7 +464,7 @@ SELF_APPRAISAL_PHRASES = (
     "research-grade",
     "unprecedented",
 )
-GATEWAY_PAPER = "paper/erdos249-257-main-paper.tex"
+GATEWAY_PAPER = "paper/archive/erdos249-257-main-paper.tex"
 # The slice includes the introduction and both exact proof spines through page 3.
 # 2026-09-02: raised from 12,000 to the measured size of that slice. The pin was
 # set when this manuscript was the live reading route; it is now kept for archive
@@ -1176,8 +1176,17 @@ def validate_human_first_contact(
     )
     validate_first_command_keeps_its_promise(readme_prefix)
 
-    require("[agent-navigation paper](cold-clone-to-proof-receipt.pdf)"
-        in readme_prefix, "README no longer exposes the cold-clone-to-proof-receipt paper")
+    require(
+        re.search(
+            r"\[agent-navigation paper\]\(paper/systems/cold-clone-to-proof-receipt\.pdf\)"
+            r"|\[agent-navigation paper\]\(cold-clone-to-proof-receipt\.pdf\)",
+            readme_prefix,
+        ),
+        "README no longer exposes the cold-clone-to-proof-receipt paper",
+    )
+    def readme_exposes_pdf(filename: str) -> bool:
+        return bool(re.search(rf"\]\([^)\n]*{re.escape(filename)}\)", readme_prefix))
+
     for problem, filename in (
         ("#68", "erdos-68-factorial-denominator-irrationality.pdf"),
         ("#243", "erdos-243-reciprocal-tail-rigidity.pdf"),
@@ -1188,12 +1197,12 @@ def validate_human_first_contact(
         ("#1041", "erdos-1041-lemniscate-newton-flow.pdf"),
         ("#1049", "erdos-1049-rational-base-lambert.pdf"),
     ):
-        require(problem in readme_prefix and f"]({filename})" in readme_prefix, f"README no longer exposes the individual Erdős {problem} paper")
+        require(problem in readme_prefix and readme_exposes_pdf(filename), f"README no longer exposes the individual Erdős {problem} paper")
     for filename in (
         "erdos249-totient-reasoning-surface.pdf",
         "erdos257-mersenne-reasoning-surface.pdf",
     ):
-        require(f"]({filename})" in readme_prefix, f"README no longer exposes the full reasoning record {filename}")
+        require(readme_exposes_pdf(filename), f"README no longer exposes the full reasoning record {filename}")
 
     problem_portfolio = readme_prefix.find("## Problem papers")
     raw_inventory = readme_prefix.find("## Corpus at a glance")

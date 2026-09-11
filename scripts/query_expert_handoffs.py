@@ -632,7 +632,7 @@ def critical_pair_metric_scale_candidate_handoff(
             ),
         },
         "public_reuse": {
-            "module": "examples/ExternalVerificationPortfolio/Problem1041.lean",
+            "module": "research/examples/ExternalVerificationPortfolio/Problem1041.lean",
             "declaration": "critical_balance_selects_two_roots_at_geomMean_scale",
             "reuses": CRITICAL_PAIR_COMPARATOR_DECLARATION,
             "commit": CRITICAL_PAIR_PUBLIC_REUSE_COMMIT,

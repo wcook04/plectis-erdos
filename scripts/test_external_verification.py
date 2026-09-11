@@ -503,8 +503,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         core_gate = workflow.split("- name: Detect supported-root Lean changes", 1)[1]
         core_gate = core_gate.split("- name: Test pinned proof-environment lock", 1)[0]
         self.assertNotIn("'*.lean'", core_gate)
-        self.assertIn("Erdos249257.lean 'Erdos249257/**'", core_gate)
-        self.assertIn("ErdosProblems.lean 'ErdosProblems/**'", core_gate)
+        self.assertIn("lean/Erdos249257.lean 'lean/Erdos249257/**'", core_gate)
+        self.assertIn("lean/ErdosProblems.lean 'lean/ErdosProblems/**'", core_gate)
         self.assertNotIn("ExternalVerification", core_gate)
         self.assertIn("id: external-inputs", workflow)
         self.assertIn("steps.external-inputs.outputs.changed == 'true'", workflow)

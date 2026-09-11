@@ -37,7 +37,7 @@ import sys
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_PATH = ROOT / "Erdos249257" / "GreedyAchievementSet.lean"
+SOURCE_PATH = ROOT / "lean/Erdos249257" / "GreedyAchievementSet.lean"
 OUTPUT = (
     ROOT
     / "docs"

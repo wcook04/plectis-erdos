@@ -118,15 +118,18 @@ def canonical_lean_module_path(module: str, prefer_problems: bool = False) -> st
     convention only when neither root holds the file.
     """
     if module.startswith(tuple(f"{root}/" for root in LEAN_LIBRARY_ROOTS)):
+        nested = f"lean/{module}"
+        if (ROOT / nested).is_file():
+            return nested
         return module
     roots = (
         tuple(reversed(LEAN_LIBRARY_ROOTS)) if prefer_problems else LEAN_LIBRARY_ROOTS
     )
     for root in roots:
-        candidate = f"{root}/{module}"
-        if (ROOT / candidate).is_file():
-            return candidate
-    return f"{roots[0]}/{module}"
+        for candidate in (f"lean/{root}/{module}", f"{root}/{module}"):
+            if (ROOT / candidate).is_file():
+                return candidate
+    return f"lean/{roots[0]}/{module}"
 
 
 def canonical_paper_title(title: str) -> str:
@@ -9438,13 +9441,15 @@ def paper_reading_guide_packet() -> dict[str, Any]:
     artifacts = []
     for row in contract["artifacts"]:
         source = ROOT / row["source_path"]
-        rendered = ROOT / row["rendered_path"]
+        storage = row.get("storage_path") or row["rendered_path"]
+        rendered = ROOT / storage
         artifacts.append(
             {
                 "id": row["id"],
                 "artifact_class": row["artifact_class"],
                 "source_path": row["source_path"],
                 "rendered_path": row["rendered_path"],
+                "storage_path": storage,
                 "source_available_in_checkout": source.is_file(),
                 "rendered_available_in_checkout": rendered.is_file(),
             }
@@ -9454,7 +9459,13 @@ def paper_reading_guide_packet() -> dict[str, Any]:
     for row in corpus["papers"]:
         full_text_available = (ROOT / row["local_full_text"]).is_file()
         local_pdf = row.get("local_pdf")
-        pdf_available = bool(local_pdf) and (ROOT / local_pdf).is_file()
+        pdf_path = ROOT / local_pdf if local_pdf else None
+        if pdf_path is not None and not pdf_path.is_file() and local_pdf:
+            nested = list((ROOT / "paper").rglob(Path(local_pdf).name))
+            if len(nested) == 1:
+                pdf_path = nested[0]
+                local_pdf = nested[0].relative_to(ROOT).as_posix()
+        pdf_available = bool(local_pdf) and pdf_path is not None and pdf_path.is_file()
         preferred_read_path = (
             row["local_full_text"]
             if full_text_available

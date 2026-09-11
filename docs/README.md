@@ -60,6 +60,6 @@ generated files and the release process. The research-system papers have a
 separate role from the eight mathematical problem papers; find both through
 [the paper catalogue](papers/README.md).
 
-The [earlier joint #249/#257 manuscript](../erdos249-257-main-paper.pdf)
+The [earlier joint #249/#257 manuscript](../paper/archive/erdos249-257-main-paper.pdf)
 is retained as historical context. Start with the current individual problem
 papers instead.

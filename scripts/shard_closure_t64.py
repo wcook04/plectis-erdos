@@ -17,7 +17,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / "Erdos249257" / "DiagonalPincerPrimeCertificates"
+BASE = ROOT / "lean/Erdos249257" / "DiagonalPincerPrimeCertificates"
 AGGREGATOR = BASE / "ClosureT64.lean"
 SHARD_DIR = BASE / "ClosureT64"
 MANIFEST = ROOT / "docs" / "generated_certificate_manifest.json"

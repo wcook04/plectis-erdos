@@ -18,15 +18,15 @@ PINS = {
     "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
 }
 INPUTS = {
-    "ExternalVerification249TotientKernelBasis/Challenge.lean": "a3a4e82608e3acb54f271df7b1afd3704c5ff855c995ee3b4c37db0ebed0d683",
-    "Solutions/ExternalVerification249TotientKernelBasis.lean": "4d797b6c29feec7425ff4b8cebb277492ed82f025aed5c15014c9a3a31d3316b",
-    "NegativeSolutions/ExternalVerification249TotientKernelBasis.lean": "e60202f6caf4bdc20e75b7f3689b524d2a68795b9a7f824313eed654ce8323a0",
-    "ExternalVerification249TotientKernelBasis/comparator.json": "56b6b5ad7bcb2add1306f0d5ba809e4c104d37b393701d7c3ee8f0663fcffb2d",
-    "ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json": "ca4adbdeac59ac0f08307b267d7ac7858cad9e024ee93644f8d89a57bed17948",
-    "Erdos249257/AllBaseTotientKernel.lean": "5862e926deceaf81e0a4aac92a7d09467323fc563cdf3c827f465cb4e9ec5dd5",
-    "ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean": "7e6260206db9907976f95ce347229965f585f7e3c517da8b13ad074e501c9268",
-    "ErdosProblems/Erdos249/PaperCompleteR8/UnitPivotBasis.lean": "e11b92bf486db8d8d8059931bdf3a1424278071b74d4f590e4231902ee020965",
-    "ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean": "3bdc0a97c931c8ceca6e5f46e5b9d013b0fb50505bfda05f8cc512f66a4a0dbd",
+    "verification/ExternalVerification249TotientKernelBasis/Challenge.lean": "a3a4e82608e3acb54f271df7b1afd3704c5ff855c995ee3b4c37db0ebed0d683",
+    "verification/Solutions/ExternalVerification249TotientKernelBasis.lean": "4d797b6c29feec7425ff4b8cebb277492ed82f025aed5c15014c9a3a31d3316b",
+    "verification/NegativeSolutions/ExternalVerification249TotientKernelBasis.lean": "e60202f6caf4bdc20e75b7f3689b524d2a68795b9a7f824313eed654ce8323a0",
+    "verification/ExternalVerification249TotientKernelBasis/comparator.json": "56b6b5ad7bcb2add1306f0d5ba809e4c104d37b393701d7c3ee8f0663fcffb2d",
+    "verification/ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json": "ca4adbdeac59ac0f08307b267d7ac7858cad9e024ee93644f8d89a57bed17948",
+    "lean/Erdos249257/AllBaseTotientKernel.lean": "5862e926deceaf81e0a4aac92a7d09467323fc563cdf3c827f465cb4e9ec5dd5",
+    "lean/ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean": "7e6260206db9907976f95ce347229965f585f7e3c517da8b13ad074e501c9268",
+    "lean/ErdosProblems/Erdos249/PaperCompleteR8/UnitPivotBasis.lean": "e11b92bf486db8d8d8059931bdf3a1424278071b74d4f590e4231902ee020965",
+    "lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean": "3bdc0a97c931c8ceca6e5f46e5b9d013b0fb50505bfda05f8cc512f66a4a0dbd",
 }
 EXPECTED_MISMATCH = (
     "Challenge and solution theorem statement do not match: "

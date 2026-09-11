@@ -377,7 +377,7 @@ def validate_indexed_problem_routes() -> None:
                 )
                 assert carry_anchor["canonical_handle"] == carry_anchor["source_ref"]
                 assert carry_anchor["canonical_handle"].startswith(
-                    "paper/erdos-249-binary-totient-series.tex:"
+                    "paper/249/erdos-249-binary-totient-series.tex:"
                 )
             if expected["id"] == "weighted_phase_carry_observer":
                 weighted_anchors = {
@@ -395,7 +395,7 @@ def validate_indexed_problem_routes() -> None:
                 # declarations.
                 assert weighted_anchors
                 assert all(
-                    handle.startswith("paper/erdos-269-three-prime-running-lcm.tex:")
+                    handle.startswith("paper/269/erdos-269-three-prime-running-lcm.tex:")
                     for handle in weighted_anchors
                 )
                 weighted_detail = next(
@@ -1287,7 +1287,7 @@ def validate_route_memory_cards() -> None:
     )
     assert (
         "publication family erdos249_quantitative_headline | claims=2 "
-        "| owner=paper/erdos249-257-main-paper.tex | view=gateway_headline "
+        "| owner=paper/archive/erdos249-257-main-paper.tex | view=gateway_headline "
         "| obligation=Leaves remaining_open.erdos_249_irrationality. "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
@@ -1326,7 +1326,7 @@ def validate_route_memory_cards() -> None:
         ]["contribution_families"]
     )
     assert architecture_card.startswith(
-        "publication architecture | gateway=paper/erdos249-257-main-paper.tex "
+        "publication architecture | gateway=paper/archive/erdos249-257-main-paper.tex "
         f"| retained_companions={len(query_corpus.load('docs/claims.json')['machine_readable_paper']['publication_assembly']['publication_architecture']['retained_companions'])} | families={expected_publication_family_count}"
     )
     assert (
@@ -2054,7 +2054,7 @@ def main() -> int:
     architecture = query("--publication-architecture")
     assert architecture["kind"] == "publication_architecture"
     assert architecture["architecture"]["canonical_gateway"]["source"] == (
-        "paper/erdos249-257-main-paper.tex"
+        "paper/archive/erdos249-257-main-paper.tex"
     )
     assert len(architecture["family_index"]) == len(
         publication_assembly["contribution_families"]
@@ -2098,7 +2098,7 @@ def main() -> int:
     )
     assert certificate_family["kind"] == "publication_family"
     assert certificate_family["family"]["primary_narrative_owner"] == (
-        "paper/erdos249-257-main-paper.tex"
+        "paper/archive/erdos249-257-main-paper.tex"
     )
     assert {claim["id"] for claim in certificate_family["claims"]} == {
         "certificate_reduction",
@@ -2490,7 +2490,7 @@ def main() -> int:
     }
     twenty_one_paper = query("--paper-label", "res:one-over-twenty-one-frontier")
     assert twenty_one_paper["paper"]["source"] == (
-        "paper/erdos-257-mersenne-support-subseries.tex"
+        "paper/257/erdos-257-mersenne-support-subseries.tex"
     )
     assert twenty_one_paper["anchor_class"] == "registered_claim_anchor"
     assert twenty_one_paper["attachment_receipt"] == {
@@ -2499,7 +2499,7 @@ def main() -> int:
         "source_link_count": 6,
         "complete": True,
         "owners": [
-            "paper/erdos-257-mersenne-support-subseries.tex",
+            "paper/257/erdos-257-mersenne-support-subseries.tex",
             "docs/claims.json",
         ],
     }
@@ -3072,7 +3072,7 @@ def main() -> int:
     ]
     assert exact_row_problem["paper_route"]["command"] == (
         "python3 scripts/query_corpus.py --paper-source "
-        "paper/erdos-257-mersenne-support-subseries.tex"
+        "paper/257/erdos-257-mersenne-support-subseries.tex"
     )
     assert exact_row_module["route_memory"]["status"] == "bound"
     assert exact_row_module["route_memory"]["bindings"] == [
@@ -3123,7 +3123,7 @@ def main() -> int:
         assert half_family["claim_paper_routes"] == [
             {
                 "label": "res:halfmembership",
-                "source": "paper/erdos249-257-main-paper.tex",
+                "source": "paper/archive/erdos249-257-main-paper.tex",
                 "source_ref": query_corpus.paper_anchor_packet(
                     "res:halfmembership"
                 )["paper"]["source_ref"],
@@ -3214,7 +3214,7 @@ def main() -> int:
             assert fixed_family["paper_route"]["matching_anchors"]
             assert any(
                 anchor["source_ref"].startswith(
-                    "paper/erdos-249-binary-totient-series.tex:"
+                    "paper/249/erdos-249-binary-totient-series.tex:"
                 )
                 for anchor in fixed_family["paper_route"]["matching_anchors"]
             )
@@ -3362,7 +3362,7 @@ def main() -> int:
         ]
         assert any(
             anchor["source_ref"]
-            == "paper/erdos-251-prime-gap-dyadic-series.tex:1"
+            == "paper/251/erdos-251-prime-gap-dyadic-series.tex:1"
             and set(anchor["matched_declarations"])
             == {
                 "carryPartialSum_natCast_eq",

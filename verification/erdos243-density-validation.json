@@ -8,7 +8,7 @@
     "occurrence_id": "243L-C008",
     "paper": {
       "bytes": 156171,
-      "path": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "sha256": "ed0477376d0ff7932910d3acf2fbb9c3cf6b08e42ae2545c8ba4fd61bee4a6fe"
     },
     "paper_assertion": "For c=1 at phase 0 mod 7 and c=-1 at phase 1 mod 7, every sufficiently late four-index window contains a mismatch; hence lower density is at least 1/7 and therefore at least 1/28.",
@@ -45,7 +45,7 @@
     "bytes": 342,
     "command": "lake env lean Erdos243V5/DensityValidationAudit.lean",
     "launch_state": "PASS_IN_PUBLIC_CHECKOUT",
-    "path": "Erdos243V5/DensityValidationAudit.lean",
+    "path": "research/Erdos243V5/DensityValidationAudit.lean",
     "sha256": "3aff57dc87c1aee352408debec30d8cf8d11d53112d49b830de5d7ace37ed914",
     "public_commit": "41298352677c19a6491acc4294a2dcdc916fda8e",
     "exit_codes": [
@@ -205,7 +205,7 @@
       "bytes": 3935,
       "exact_private_bytes": true,
       "module": "Erdos243V5.DensityQuantifiers",
-      "path": "Erdos243V5/DensityQuantifiers.lean",
+      "path": "research/Erdos243V5/DensityQuantifiers.lean",
       "private_source_sha256": "965cc39b2e002cd7360c3dcf5a792589b9f19c2d3f1872e26f84da69d02c49d3",
       "provenance": "byte_exact_source_export",
       "sha256": "965cc39b2e002cd7360c3dcf5a792589b9f19c2d3f1872e26f84da69d02c49d3"
@@ -214,7 +214,7 @@
       "bytes": 2693,
       "exact_private_bytes": true,
       "module": "Erdos243V5.SurvivorProfiles",
-      "path": "Erdos243V5/SurvivorProfiles.lean",
+      "path": "research/Erdos243V5/SurvivorProfiles.lean",
       "private_source_sha256": "97a57438a9142e6bc59ef1295f27327089b0b8a0be4af6e3c95a8a62f6ad78bf",
       "provenance": "byte_exact_source_export",
       "sha256": "97a57438a9142e6bc59ef1295f27327089b0b8a0be4af6e3c95a8a62f6ad78bf"
@@ -222,7 +222,7 @@
   ],
   "public_source_root": {
     "module": "Erdos243V5.SurvivorProfiles",
-    "path": "Erdos243V5/SurvivorProfiles.lean",
+    "path": "research/Erdos243V5/SurvivorProfiles.lean",
     "sha256": "97a57438a9142e6bc59ef1295f27327089b0b8a0be4af6e3c95a8a62f6ad78bf"
   },
   "schema": "public_erdos243_density_validation_export_v0",

@@ -5,7 +5,7 @@
   "authority_posture": "historical_systems_evidence_not_Lean_proof_authority_and_not_a_fresh_rerun",
   "publication_artifact_id": "repository_architecture_guide",
   "source": {
-    "manuscript": "paper/claim-faithful-publication-systems-paper.tex",
+    "manuscript": "paper/systems/claim-faithful-publication-systems-paper.tex",
     "architecture_section_label": "sec:failure",
     "reproducibility_appendix_label": "app:repro",
     "contract": "docs/publication_contract.json"

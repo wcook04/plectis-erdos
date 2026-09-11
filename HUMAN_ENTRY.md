@@ -60,10 +60,10 @@ Comparator and Palomar belong to this evidence story, but neither is a
 mathematical oracle. Comparator gives selected statements a second,
 independently declared formal interface under a fixed set of assumptions. It
 helps expose mismatches between what two formal surfaces say; it is not
-independent peer review and does not establish novelty. Palomar organises a
-small set of candidates for possible external review and records whether the
-repository is structurally ready for that process. It does not confer
-acceptance, importance, publication, or endorsement.
+independent peer review and does not establish novelty. Palomar packaging is
+a separate unfinished activity and is not a claim of this public edition. A
+local ranking file remains in the checkout; it does not confer acceptance,
+importance, publication, or endorsement.
 
 Start with the mathematical question. Read each result together with its
 stated limit, then follow the formal source when you want the exact theorem.

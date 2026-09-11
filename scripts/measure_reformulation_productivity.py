@@ -102,7 +102,7 @@ def fan_in(known: set[str]) -> tuple[Counter, dict[str, set[str]]]:
     """Count, for each known declaration, how many other declarations cite it."""
     citers: dict[str, set[str]] = defaultdict(set)
     for library in LIBRARY_ROOTS:
-        base = ROOT / library
+        base = ROOT / "lean" / library
         if not base.is_dir():
             continue
         for path in sorted(base.rglob("*.lean")):

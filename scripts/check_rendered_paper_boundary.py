@@ -41,13 +41,13 @@ ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 EXTERNAL_TOOL_TIMEOUT_SECONDS = 120
 PAPERS = (
     (
-        ROOT / "paper" / "erdos249-257-main-paper.tex",
-        ROOT / "erdos249-257-main-paper.pdf",
+        ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex",
+        ROOT / "paper" / "archive" / "erdos249-257-main-paper.pdf",
     ),
 )
 ARCHITECTURE_PAPERS = (
-    ROOT / "claim-faithful-publication-systems-paper.pdf",
-    ROOT / "cold-clone-to-proof-receipt.pdf",
+    ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.pdf",
+    ROOT / "paper" / "systems" / "cold-clone-to-proof-receipt.pdf",
 )
 ALIASES = ROOT / "paper" / "module-aliases.json"
 # Page bands are the reach a limiting statement must keep, not a layout record.

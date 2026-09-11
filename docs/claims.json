@@ -178,7 +178,7 @@
         ],
         "authority_owners": [
           "docs/claims.json::claims",
-          "paper/erdos249-257-main-paper.tex",
+          "paper/archive/erdos249-257-main-paper.tex",
           "Erdos249257.lean"
         ],
         "adjacent_handle_classes": [
@@ -857,7 +857,7 @@
         "authority_owners": [
           "docs/PRIOR_ART.md",
           "CITATION.cff",
-          "paper/erdos249-257-main-paper.tex"
+          "paper/archive/erdos249-257-main-paper.tex"
         ],
         "adjacent_handle_classes": [
           "artifact",
@@ -932,17 +932,17 @@
     ],
     "paper": {
       "title": "Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257",
-      "source": "paper/erdos249-257-main-paper.tex",
-      "rendered": "erdos249-257-main-paper.pdf",
+      "source": "paper/archive/erdos249-257-main-paper.tex",
+      "rendered": "paper/archive/erdos249-257-main-paper.pdf",
       "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-      "role": "Canonical gateway: status-sorted exact mathematics, common architecture, and one-page spines for both open problems.",
+      "role": "Archival joint manuscript for provenance. Not a current mathematical gateway.",
       "principal_declaration_index_label": "app:index",
       "claim_anchor_field": "paper_label",
       "companion_sources": [
         {
           "title": "Factorial Denominator Series: a complete working record of Erdős Problem 68",
-          "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
-          "rendered": "paper/erdos-68-factorial-denominator-irrationality.pdf",
+          "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "rendered": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #68 and the factorial-channel breakpoint boundary.",
           "anchor_label_allowlist": [
@@ -951,8 +951,8 @@
         },
         {
           "title": "Running LCM Reciprocal Sums for Finite Prime Sets",
-          "source": "paper/erdos-269-three-prime-running-lcm.tex",
-          "rendered": "paper/erdos-269-three-prime-running-lcm.pdf",
+          "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "rendered": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #269 and the three-prime residue-escape boundary.",
           "anchor_label_allowlist": [
@@ -962,7 +962,7 @@
         },
         {
           "title": "An Integral-Shift Criterion for Dyadic Tail Recurrences",
-          "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
+          "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "rendered": null,
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #251 and the prime-gap tail-shift boundary.",
@@ -973,8 +973,8 @@
         },
         {
           "title": "Newton Flow and Ray Separation in Polynomial Lemniscates",
-          "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
-          "rendered": "paper/erdos-1041-lemniscate-newton-flow.pdf",
+          "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "rendered": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #1041 and the finite ray-separation boundary.",
           "anchor_label_allowlist": [
@@ -983,8 +983,8 @@
         },
         {
           "title": "Arithmetic Boundaries at Base 3/2 for Erdős Problem 1049",
-          "source": "paper/erdos-1049-rational-base-lambert.tex",
-          "rendered": "erdos-1049-rational-base-lambert.pdf",
+          "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
+          "rendered": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #1049 and the coordinatewise-corridor and cleared-tail boundaries.",
           "anchor_label_allowlist": [
@@ -995,8 +995,8 @@
         },
         {
           "title": "Reciprocal-Tail Rigidity for Erdős Problem 243",
-          "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-          "rendered": "erdos-243-reciprocal-tail-rigidity.pdf",
+          "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+          "rendered": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #243 and the bounded-rise fresh-modulus barrier.",
           "anchor_label_allowlist": [
@@ -1005,8 +1005,8 @@
         },
         {
           "title": "A Basis for the 2-Kernel of Euler's Totient",
-          "source": "paper/erdos-249-binary-totient-series.tex",
-          "rendered": "erdos-249-binary-totient-series.pdf",
+          "source": "paper/249/erdos-249-binary-totient-series.tex",
+          "rendered": "paper/249/erdos-249-binary-totient-series.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #249 and the dyadic/all-base totient-kernel boundary.",
           "anchor_label_allowlist": [
@@ -1020,22 +1020,22 @@
         },
         {
           "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
-          "source": "paper/erdos249-totient-reasoning-surface.tex",
-          "rendered": "erdos249-totient-reasoning-surface.pdf",
+          "source": "paper/249/erdos249-totient-reasoning-surface.tex",
+          "rendered": "paper/249/erdos249-totient-reasoning-surface.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Full problem-specific reasoning record for Erdős #249."
         },
         {
           "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
-          "source": "paper/erdos257-mersenne-reasoning-surface.tex",
-          "rendered": "erdos257-mersenne-reasoning-surface.pdf",
+          "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+          "rendered": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Full problem-specific reasoning record for Erdős #257."
         },
         {
           "title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry",
-          "source": "paper/erdos-257-mersenne-support-subseries.tex",
-          "rendered": "erdos-257-mersenne-support-subseries.pdf",
+          "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "rendered": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #257 and the 1/21 frontier.",
           "anchor_label_allowlist": [
@@ -1048,10 +1048,10 @@
         },
         {
           "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
-          "source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
-          "rendered": "erdos1041-lemniscate-reasoning-surface.pdf",
+          "source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "rendered": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
           "role": "Full problem-specific reasoning record for Erdős #1041.",
-          "anchor_owner": "paper/erdos-1041-lemniscate-newton-flow.tex",
+          "anchor_owner": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "anchor_label_allowlist": [
             "res:degree-three",
             "res:reflected-critical-value"
@@ -1060,36 +1060,36 @@
         },
         {
           "title": "Rational-Base Lambert Series: Complete Reasoning Record",
-          "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "rendered": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
+          "source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+          "rendered": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #1049.",
           "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         },
         {
           "title": "The Factorial-Denominator Series: Complete Reasoning Record",
-          "source": "paper/erdos68-factorial-reasoning-surface.tex",
-          "rendered": "erdos68-factorial-reasoning-surface.pdf",
+          "source": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "rendered": "paper/68/erdos68-factorial-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #68.",
           "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         },
         {
           "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
-          "source": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "rendered": "erdos243-reciprocal-tail-reasoning-surface.pdf",
+          "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+          "rendered": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
           "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
-          "source": "paper/erdos251-prime-gap-reasoning-surface.tex",
-          "rendered": "erdos251-prime-gap-reasoning-surface.pdf",
+          "source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "rendered": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #251.",
           "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
         },
         {
           "title": "The Three-Prime Running LCM: Complete Reasoning Record",
-          "source": "paper/erdos269-running-lcm-reasoning-surface.tex",
-          "rendered": "erdos269-running-lcm-reasoning-surface.pdf",
+          "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "rendered": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #269.",
           "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
         }
@@ -1100,56 +1100,56 @@
       "coverage_rule": "Every docs/claims.json claim id appears in exactly one contribution family. The release checker enforces completeness and disjointness.",
       "publication_architecture": {
         "canonical_gateway": {
-          "source": "paper/erdos249-257-main-paper.tex",
-          "decision": "retain_and_reconstruct",
-          "thesis": "Exact certificate and achievement-set spines for Erdős Problems 249 and 257, with unconditional bounds, classical formalisation boundaries, conditional reductions, finite evidence, and unresolved producers visible before auxiliary variants."
+          "source": "paper/archive/erdos249-257-main-paper.tex",
+          "decision": "archive_only_not_current_entrance",
+          "thesis": "Archival joint #249/#257 manuscript. Current mathematical entrances are the eight short problem notes."
         },
         "retained_companions": [
           {
             "id": "erdos_249_reasoning_record",
-            "source": "paper/erdos249-totient-reasoning-surface.tex",
+            "source": "paper/249/erdos249-totient-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete working record for Erdős #249: checked premises, finite certificates, closed routes, evidence bands, and surviving obligations."
           },
           {
             "id": "erdos_257_reasoning_record",
-            "source": "paper/erdos257-mersenne-reasoning-surface.tex",
+            "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete working record for Erdős #257: checked premises, finite computations, route relations, evidence bands, and surviving obligations."
           },
           {
             "id": "erdos_1041_reasoning_record",
-            "source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+            "source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete working record for Erdős #1041: Newton-flow decay, ray separation, translation geometry, solved structural families, and the unresolved global topology and metric gluing."
           },
           {
             "id": "erdos_1049_reasoning_record",
-            "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+            "source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete reasoning record for Erdős #1049, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
           },
           {
             "id": "erdos_68_reasoning_record",
-            "source": "paper/erdos68-factorial-reasoning-surface.tex",
+            "source": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete reasoning record for Erdős #68, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
           },
           {
             "id": "erdos_243_reasoning_record",
-            "source": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+            "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete reasoning record for Erdős #243, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the scalar finite-negative-mass criterion without a normalised-vanishing premise. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
           },
           {
             "id": "erdos_251_reasoning_record",
-            "source": "paper/erdos251-prime-gap-reasoning-surface.tex",
+            "source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete reasoning record for Erdős #251, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the finite counting reduction for shifted prime-gap differences; the analytic sieve estimates remain assumptions. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
           },
           {
             "id": "erdos_269_reasoning_record",
-            "source": "paper/erdos269-running-lcm-reasoning-surface.tex",
+            "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
             "thesis": "Complete reasoning record for Erdős #269, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
           }
@@ -1157,49 +1157,49 @@
         "problem_series": [
           {
             "id": "erdos_68_note",
-            "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+            "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "The exact factorial-successor and carry normal forms, integral-channel and projection consumers, an unconditional finite denominator exclusion through 300000, and five quantified producer problems for the still-open factorial-denominator series."
           },
           {
             "id": "erdos_243_note",
-            "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+            "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "The centred integer state and defect identity, absorption of a vanishing state, descent for the nonnegative case, and exclusion of the negative case when its magnitude is constant, periodic, or bounded, the last conditional on two assumed analytic inputs; unbounded negative excursions survive."
           },
           {
             "id": "erdos_249_note",
-            "source": "paper/erdos-249-binary-totient-series.tex",
+            "source": "paper/249/erdos-249-binary-totient-series.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "A standalone theorem-led account of the exact dyadic-section ranks, infinite-dimensionality, explicit denominator exclusion, finite Euler-sieve identities, and scoped method boundaries for the still-open totient constant."
           },
           {
             "id": "erdos_251_note",
-            "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
+            "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "The exact finite prime-gap summation by parts with its endpoint retained, the integral-shift criterion and its totient consequence for an abstract dyadic tail recurrence, and the free-carry telescoping identity that closes the periodicity route."
           },
           {
             "id": "erdos_257_note",
-            "source": "paper/erdos-257-mersenne-support-subseries.tex",
+            "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "A standalone theorem-led account of finite-period noncollapse, settled support families, finite-change invariance, achievement-set geometry, and the precise surviving boundary for universal Erdős Problem 257."
           },
           {
             "id": "erdos_269_note",
-            "source": "paper/erdos-269-three-prime-running-lcm.tex",
+            "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "The running least common multiple of a three-prime smooth prefix, its literal dyadic block digits and bounded radix, exact residue/coboundary carry forms, higher-rank block and observer obstructions, the actual rationality-to-positive-reduced-carry bridge, and the exact cofinal-window equivalence; cofinal local-window escape remains open."
           },
           {
             "id": "erdos_1041_note",
-            "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
+            "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "Newton-flow value decay and critical-value ray separation, exact translation-collision geometry and root retention, plus a precise diagnosis of the invalid local saddle block in a recent claimed spanning-tree proof; the global topology and metric gluing remain open."
           },
           {
             "id": "erdos_1049_note",
-            "source": "paper/erdos-1049-rational-base-lambert.tex",
+            "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "The coordinatewise corridor and its impossibility at base three halves, exact primitive-normalisation and endpoint-jet obstructions, the 81/200 external height region with checked parameter specialisations, and precise saturated Hermite-Pade and Mahler-system questions."
           }
@@ -1215,7 +1215,7 @@
         "architecture_guides": [
           {
             "id": "repository_architecture_guide",
-            "source": "paper/claim-faithful-publication-systems-paper.tex",
+            "source": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "decision": "retain_as_primary_repository_architecture_guide",
             "thesis": "A first-principles map of the Lean source, reviewed public claims, authored documents, generated views, release commands, GitHub workflow, and the exact boundary between human judgement and automatic checks."
           }
@@ -1223,7 +1223,7 @@
         "agent_native_guides": [
           {
             "id": "agent_native_navigation_guide",
-            "source": "paper/cold-clone-to-proof-receipt.tex",
+            "source": "paper/systems/cold-clone-to-proof-receipt.tex",
             "decision": "retain_as_agent_navigation_and_receipt_guide",
             "thesis": "A cold-clone-to-proof-receipt architecture: exhaustive and selective navigation layers, bounded intent routing, a session notary whose verdicts come from Lean, focused changed-cone builds, exact dependency-index cache receipts, one replayed dogfood session, and explicit transfer limits."
           }
@@ -1247,13 +1247,13 @@
         "scope": "continuous_whole_main_paper_exposition",
         "current_priority": {
           "id": "main_paper_source_link_semantic_label_audit",
-          "surface": "paper/erdos249-257-main-paper.tex",
+          "surface": "paper/archive/erdos249-257-main-paper.tex",
           "defect_class": "A source link may resolve successfully yet still be a poor reader interface when its visible phrase is broader, narrower, or more internal than the declaration it opens. Link text should state the mathematical role a reader will find at the target without exposing module-local vocabulary unnecessarily.",
           "statement": "Audit visible Lean-link labels for semantic agreement with the surrounding theorem and linked declaration. Replace misleading or internal labels with literal mathematical descriptions, retain immutable targets and exact declaration names behind the links, rerun link and release checks, and preserve 53 pages."
         },
         "last_verified_wave": {
           "id": "main_paper_redundant_boundary_sentence_audit",
-          "surface": "paper/erdos249-257-main-paper.tex",
+          "surface": "paper/archive/erdos249-257-main-paper.tex",
           "result": "Audited repeated finite-only, does-not-prove, supplies-no, and remains-open fences by theorem cluster. Repetition at the abstract, first-reading map, local theorem, appendix entry, and final open-problem surfaces remains intentional because each is an independent reader entry point. Sharpened four generic fences by naming the unresolved actual values of C_D and comparisons with Theta_D, the after-every-cutoff Sep certificates, and the exact unbounded-supply equation. Consolidated the adjacent changing-lcm primality and t=64 certificate warnings into one verified range statement plus a reference to the 28-certificate finite record. Removed the two residual appendix labels Reader map. No theorem, formula, citation, source target, or problem status changed; the rendered boundary and 53-page target pass."
         },
         "active_inconsistencies": [],
@@ -1272,7 +1272,7 @@
           ],
           "status_summary": "Classical formalisation, cited special cases, and the open universal target.",
           "prior_art_posture": "Erdős owns full support and the pairwise-coprime family; Duverney–Tachiya own the base-2 squarefree-support theorem; Tao–Teräväinen own the base-2 prime-support theorem. The cited squarefree theorem does not cover bases b≥3, and the cited prime-power extension is remark-only. No priority claim is made for the formalised families.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim eb_full_support",
           "consumer_or_open_obligation": "Establishes the classical benchmark and leaves remaining_open.universal_257_all_infinite_supports.",
           "view_decision": "gateway_headline"
@@ -1286,7 +1286,7 @@
           ],
           "status_summary": "One classical/broader antecedent, one exact signed dichotomy, and one proved residue obstruction.",
           "prior_art_posture": "Luca–Tachiya prove the broader eventually-periodic rational-coefficient theorem by another method; the signed endpoint formalised here is only irrational-or-b-power-denominator.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim periodic_nonnegative_weight_irrationality",
           "consumer_or_open_obligation": "Supports structured #257 families; unconditional signed irrationality would require excluding base termination.",
           "view_decision": "gateway_summary_reference_detail"
@@ -1316,7 +1316,7 @@
           ],
           "status_summary": "Exact rationality characterisations and proved necessary consequences.",
           "prior_art_posture": "Han Wang supplies the closest weighted-binary carry recurrence; the abstraction, converse, and downstream constraints make no priority claim.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim tail_orbit_rigidity",
           "consumer_or_open_obligation": "Constrains any rational #257 counterexample without settling universal irrationality.",
           "view_decision": "gateway_appendix_reference_detail"
@@ -1333,7 +1333,7 @@
           ],
           "status_summary": "Classical geometry formalised, exact local bands, a conditional second channel, and scoped no-go boundaries.",
           "prior_art_posture": "Kovač–Tao supply the strict-tail subsum geometry; the classical Lambert–Möbius identity is the baseline for the scoped sign-support no-go; Crandall and Campbell concern adjacent binary-digit questions and are not proof inputs. No priority claim is made for the sign separation.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim greedy_achievement_geometry",
           "consumer_or_open_obligation": "Decide whether 1/2 belongs to the achievement set; positive membership refutes universal #257.",
           "view_decision": "gateway_headline"
@@ -1350,7 +1350,7 @@
           ],
           "status_summary": "Conditional compactness consumers from progressively weaker finite-word or carry supplies.",
           "prior_art_posture": "No executable seam/closure antecedent is recorded beyond the global achievement-set geometry.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim half_carry_reachability_compactness",
           "consumer_or_open_obligation": "Supply canonical seams, strip returns, terminal witnesses, or scaled-vanishing words cofinally.",
           "view_decision": "gateway_appendix_future_257_companion"
@@ -1380,7 +1380,7 @@
           ],
           "status_summary": "Conditional rewind/window consumers plus one verified depth-18 base.",
           "prior_art_posture": "No theorem-level match is recorded; any novelty posture remains provisional.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim selected_half_carry_window_compactness",
           "consumer_or_open_obligation": "Produce repeated object-level coefficient agreement or protected seams cofinally.",
           "view_decision": "gateway_appendix_future_257_companion"
@@ -1403,7 +1403,7 @@
           ],
           "status_summary": "Exact half-membership/nonmembership classifications, proved branch eliminations, a rank-26 phase sieve for the middle -2 cell, and explicit conditional tail consumers.",
           "prior_art_posture": "No exact local seam or last-producer antecedent is recorded beyond strict-tail achievement-set background.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim half_membership_seam_classification",
           "consumer_or_open_obligation": "Eliminate the 412 surviving classes modulo 2730 in the middle -2 cell, then handle the middle -1 and right-tail branches or prove future-tail escape directly.",
           "view_decision": "gateway_spine_future_257_companion_detail"
@@ -1420,7 +1420,7 @@
           ],
           "status_summary": "Conditional largest-skip propagation, exact pulse geometry, and finite reset-band evidence.",
           "prior_art_posture": "No close theorem-level antecedent is recorded.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim largest_skip_gap_propagation",
           "consumer_or_open_obligation": "Supply a global first-crossing or anti-concentration theorem preventing persistent right-branch pinning.",
           "view_decision": "gateway_appendix_future_257_companion"
@@ -1435,7 +1435,7 @@
           ],
           "status_summary": "An exact conditional child-gap recurrence with a cofinal half-value consequence, verified finite stages through depth 52, an exact unit drop, and a concrete scalar-seam obstruction.",
           "prior_art_posture": "Kovač–Tao supply the surrounding strict-tail achievement-set geometry. No exact antecedent for this finite carry recurrence is recorded, and no novelty claim is made.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim selected_suffix_cylinder_propagation",
           "consumer_or_open_obligation": "Establish the child-gap inequalities at arbitrarily large depths, or otherwise construct cofinal full suffix-cylinder stages.",
           "view_decision": "future_257_companion_reference_stages"
@@ -1448,7 +1448,7 @@
           ],
           "status_summary": "Classical identities formalised and one transcendental rung cited only.",
           "prior_art_posture": "Apostol, Merca, and Merca–Schmidt own the transform background; Nesterenko owns the cited transcendence theorem.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim mersenne_lambert_ladder",
           "consumer_or_open_obligation": "Provides the conceptual bridge between the classical #257 benchmark and the open #249 constant.",
           "view_decision": "gateway_spine"
@@ -1463,7 +1463,7 @@
           ],
           "status_summary": "Exact coprimality and gcd-moment identities, a Stern–Brocot cylinder law with uniform geometric convergence, and source-level Fibonacci/continuant run stability.",
           "prior_art_posture": "Classical Lambert-series, convolution, Pillai gcd-sum, probability, and Stern–Brocot background; Postelmans–Van Assche own the cited irrationality theorem for the constant-weight squared-Lambert value. No priority claim is made for this assembled formal package.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --route probabilistic_gcd_geometry",
           "consumer_or_open_obligation": "Recasts #249 and exposes independent gcd-distribution and continued-fraction structure; the run package has no endpoint consumer, and irrationality remains open.",
           "view_decision": "gateway_supporting_theorems_and_living_reference_detail"
@@ -1476,7 +1476,7 @@
           ],
           "status_summary": "One unconditional quantitative theorem and the open irrationality claim.",
           "prior_art_posture": "Farey is historical language only; no exact antecedent for the explicit bound is identified, without asserting novelty.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim denominator_exclusion",
           "consumer_or_open_obligation": "Leaves remaining_open.erdos_249_irrationality.",
           "view_decision": "gateway_headline"
@@ -1492,7 +1492,7 @@
           ],
           "status_summary": "Exact equivalence and completeness with bounded verified deposits.",
           "prior_art_posture": "Classical Lambert and Möbius identities underlie the construction; no exact certificate-equivalence antecedent is recorded, without a novelty conclusion.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim certificate_completeness",
           "consumer_or_open_obligation": "Produce certificates at unbounded parameters.",
           "view_decision": "gateway_headline_finite_matrix"
@@ -1508,7 +1508,7 @@
           ],
           "status_summary": "Exact diagonal targets, sharp enclosures and denominators, and conditional avoidance projections.",
           "prior_art_posture": "Classical Möbius/Lambert algebra only; no theorem-specific antecedent is identified.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim diagonal_pincer_reduction",
           "consumer_or_open_obligation": "Supply unbounded full-target avoidance, fresh-loss separation, or the missing analytic complement bridge.",
           "view_decision": "gateway_supporting_spine"
@@ -1525,7 +1525,7 @@
           ],
           "status_summary": "Exact local arithmetic, conditional band/slack reductions, and scoped parity ceilings.",
           "prior_art_posture": "No close statement comparison is recorded; novelty remains unasserted.",
-          "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
+          "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim canonical_jump_slack_reduction",
           "consumer_or_open_obligation": "Prove cofinal nonnegative slack or a correlated multi-rank band supply.",
           "view_decision": "gateway_appendix_reference_detail"
@@ -1609,7 +1609,7 @@
           ],
           "status_summary": "An exact actual-LCM cofinal non-integrality reformulation and an unconditional positive-corridor/top-edge boundary.",
           "prior_art_posture": "The actual-LCM tail equivalence and sign/carry analysis are source-specific; no novelty or priority claim is made.",
-          "primary_narrative_owner": "paper/erdos-249-binary-totient-series.tex",
+          "primary_narrative_owner": "paper/249/erdos-249-binary-totient-series.tex",
           "source_route": "python3 scripts/query_corpus.py --claim actual_lcm_orbit_nonintegrality_frontier",
           "consumer_or_open_obligation": "Produce a cofinal actual-LCM non-integrality supply or independently exclude the top-edge boundary.",
           "view_decision": "registry_only_after_one_sided_companion_retirement"
@@ -1622,7 +1622,7 @@
           ],
           "status_summary": "An open factorial-denominator endpoint plus an unconditional finite quotient-band factorisation and breakpoint under channel cancellation.",
           "prior_art_posture": "The quotient-band identity and its breakpoint consequence are source-specific formal results; no novelty, priority, or significance claim is made.",
-          "primary_narrative_owner": "paper/erdos-68-factorial-denominator-irrationality.tex",
+          "primary_narrative_owner": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
           "source_route": "python3 scripts/query_corpus.py --claim channel_quotient_band_breakpoint",
           "consumer_or_open_obligation": "The finite-family result supplies no cancelling family, simultaneous-channel control, residual estimate, or cofinal non-unit carry for the still-open #68 endpoint.",
           "view_decision": "problem_note_reference_detail"
@@ -1641,7 +1641,7 @@
           ],
           "status_summary": "An open three-prime #269 endpoint, a finite least-positive-residue contradiction, a conditional cofinal-window extinction consumer, and the weighted-phase carry split with its finite realised-span observer.",
           "prior_art_posture": "The residue classifier and bounded-carry consumer are source-specific formal results; no novelty, priority, significance, or three-prime irrationality claim is made.",
-          "primary_narrative_owner": "paper/erdos-269-three-prime-running-lcm.tex",
+          "primary_narrative_owner": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "source_route": "python3 scripts/query_corpus.py --claim three_prime_finite_residue_contradiction",
           "consumer_or_open_obligation": "The actual rationality-to-positive-reduced-carry bridge is established. The denominator-dependent cofinal local-window escape remains open, so the consumers do not settle the three-prime problem; the observer supplies no two-dimensional representation and excludes none.",
           "view_decision": "problem_note_reference_detail"
@@ -1655,7 +1655,7 @@
           ],
           "status_summary": "An open prime-index endpoint, exact coefficient constraints, and a tail-shift irrationality equivalence for the still-open dyadic series.",
           "prior_art_posture": "The prime-gap facts and tail-shift equivalence are source-specific formal results; no novelty, priority, significance, or irrationality claim is made.",
-          "primary_narrative_owner": "paper/erdos-251-prime-gap-dyadic-series.tex",
+          "primary_narrative_owner": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "source_route": "python3 scripts/query_corpus.py --claim prime_gap_unboundedness_and_nonperiodicity",
           "consumer_or_open_obligation": "The exact prime-gap coefficient facts do not supply the cofinal non-integrality or small-shift escape required for Erdős #251.",
           "view_decision": "problem_note_reference_detail"
@@ -1668,7 +1668,7 @@
           ],
           "status_summary": "Two conditional routes to an infinite rational half-valued Mersenne support: terminal scaled-vanishing and cofinal full-cylinder stages.",
           "prior_art_posture": "These are source-specific conditional consumers; no existence, novelty, priority, or significance claim is made for either antecedent.",
-          "primary_narrative_owner": "paper/erdos-257-mersenne-support-subseries.tex",
+          "primary_narrative_owner": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "source_route": "python3 scripts/query_corpus.py --claim terminal_scaled_vanishing_half_countermodel",
           "consumer_or_open_obligation": "Construct or refute the corresponding terminal-scaled or cofinal-cylinder antecedent; neither route settles half-membership or universal Erdős #257 without that antecedent.",
           "view_decision": "future_257_companion_reference_stages"
@@ -1681,7 +1681,7 @@
           ],
           "status_summary": "An open global short-connection endpoint plus finite Newton-flow ray-separation and perturbative root-retention inputs.",
           "prior_art_posture": "The finite ray and perturbation statements are source-specific formal results; the global endpoint remains open, and no novelty, priority, significance, or external-review claim is made.",
-          "primary_narrative_owner": "paper/erdos-1041-lemniscate-newton-flow.tex",
+          "primary_narrative_owner": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "source_route": "python3 scripts/query_corpus.py --claim newton_ray_separation_consumer",
           "consumer_or_open_obligation": "The finite conditional connection exclusion and translation consumer do not supply the global topology and length argument required for Erdős #1041.",
           "view_decision": "problem_note_reference_detail"
@@ -1697,7 +1697,7 @@
           ],
           "status_summary": "An open eventual-Sylvester-recurrence endpoint plus unconditional bounded-rise and eventually-periodic negative-orbit obstructions, and a conditional cofinally bounded negative-magnitude exclusion.",
           "prior_art_posture": "These are source-specific formal results; no novelty, priority, significance, or #243 solution claim is made, and normalised vanishing, mixed-sign, and unbounded-negative boundaries remain explicit.",
-          "primary_narrative_owner": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+          "primary_narrative_owner": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "source_route": "python3 scripts/query_corpus.py --claim bounded_rise_fresh_modulus_barrier",
           "consumer_or_open_obligation": "The three no-go consumers remove fresh-modulus avoidance, eventually-periodic negative tails, and the cofinally bounded negative branch under normalised vanishing; the original eventual-recurrence assertion still requires control of the mixed-sign unbounded orbit regime.",
           "view_decision": "problem_note_reference_detail"
@@ -1709,7 +1709,7 @@
           ],
           "status_summary": "An unconditional finite-support denominator noncollapse theorem for Mersenne-type sums, with the infinite-support irrationality boundary still open.",
           "prior_art_posture": "The finite-support order theorem is a source-specific formal result; no novelty, priority, significance, or universal #257 solution claim is made.",
-          "primary_narrative_owner": "paper/erdos-257-mersenne-support-subseries.tex",
+          "primary_narrative_owner": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "source_route": "python3 scripts/query_corpus.py --claim finite_period_noncollapse",
           "consumer_or_open_obligation": "The finite order identity supplies denominator growth for finite partial sums, but no unbounded support certificate is supplied and the universal infinite-support #257 endpoint remains open.",
           "view_decision": "problem_note_reference_detail"
@@ -1725,7 +1725,7 @@
           ],
           "status_summary": "An open universal rational-base endpoint, a base-3/2 coordinatewise exclusion, exact cleared-tail dynamics and forcing bounds, and a finite q-Apéry diagonal non-transfer result.",
           "prior_art_posture": "These are source-specific formal arithmetic results and an open target; no novelty, priority, significance, or irrationality claim is made for the new declarations.",
-          "primary_narrative_owner": "paper/erdos-1049-rational-base-lambert.tex",
+          "primary_narrative_owner": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "source_route": "python3 scripts/query_corpus.py --claim three_halves_coordinatewise_corridor_no_go",
           "consumer_or_open_obligation": "The corridor exclusion covers only its stated six-condition architecture, while the recurrence and forcing bound supply no rationality bridge or bounded-state contradiction; irrationality at 3/2 and the universal #1049 assertion remain open.",
           "view_decision": "problem_note_reference_detail"
@@ -13843,7 +13843,7 @@
     "tag": "v0.9.0",
     "date": "2026-08-17",
     "lean_toolchain": "leanprover/lean4:v4.29.1",
-    "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
+    "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
       "ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334",
       "ref_kind": "commit",
@@ -13929,7 +13929,7 @@
         "mapping": "The local theorem uses the zero-based consecutive-prime gap sequence and proves that for every bound B some indexed gap exceeds B. This is the same unboundedness statement after the repository's indexing convention is unfolded.",
         "references": [
           "docs/PRIOR_ART.md#expansion-note-principal-sources-68-243-251-269-1041-1049",
-          "paper/erdos-251-prime-gap-dyadic-series.tex"
+          "paper/251/erdos-251-prime-gap-dyadic-series.tex"
         ],
         "historical_attribution": "Classical elementary factorial prime-free interval argument; modern large-gap theorems in the paper are contextual and strictly stronger.",
         "logical_dependency": "The Lean proof reconstructs an elementary argument locally; no external prime-gap theorem is imported as a proof dependency."
@@ -13963,7 +13963,7 @@
         "references": [
           "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "docs/PRIOR_ART.md",
-          "paper/erdos-257-mersenne-support-subseries.tex"
+          "paper/257/erdos-257-mersenne-support-subseries.tex"
         ],
         "historical_attribution": "Erdos (1968), as recorded in the repository's prior-art ledger and the #257 problem note.",
         "logical_dependency": "The proof-bearing source supplies the adaptive CRT and weighted coefficient certificate argument locally; the cited source establishes historical attribution and statement fidelity, not an imported Lean dependency."
@@ -13985,7 +13985,7 @@
         "references": [
           "https://users.renyi.hu/~p_erdos/1948-04.pdf",
           "docs/PRIOR_ART.md",
-          "paper/erdos-257-mersenne-support-subseries.tex"
+          "paper/257/erdos-257-mersenne-support-subseries.tex"
         ],
         "historical_attribution": "Erdos, On arithmetical properties of Lambert series (1948), theorem on p. 63 as recorded in the repository's prior-art ledger.",
         "logical_dependency": "The theorem is independently represented and proved in Lean in this repository; the historical source is attribution and fidelity evidence, not an imported kernel dependency."
@@ -13994,7 +13994,7 @@
         "source_statement": "Coons proved that Euler's totient sequence is not k-regular for every integer k at least 2, while Martin's affine-totient ordering theorem implies linear independence of every finite family of pairwise nonproportional positive-slope affine totient sections.",
         "mapping": "The dyadic Lean development gives an independent constructive finite-level basis and rank proof. Its full-kernel infinite-dimensionality corollary is kernel-checked here but is not an independent contribution: for integer-valued sequence modules it is equivalent to Coons's non-k-regularity result. The all-base Lean modules check the zero-channel identity, the exact composite-base scalar reduction, residue coordinates, index cardinality k^e+1, and unconditional spanning by the canonical family. Lean also checks the exact-rank conclusion under an explicit linear-independence hypothesis. Martin remains the external authority for that hypothesis, so the unconditional all-base basis and rank theorem remains a paper conclusion rather than a Lean theorem without assumptions.",
         "references": [
-          "paper/erdos-249-binary-totient-series.tex",
+          "paper/249/erdos-249-binary-totient-series.tex",
           "docs/PRIOR_ART.md",
           "https://doi.org/10.1017/S0305004108001665",
           "https://doi.org/10.1007/s11139-004-4633-4"
@@ -14544,7 +14544,7 @@
     "review_matrix": [
       {
         "problem": 68,
-        "paper": "paper/erdos-68-factorial-denominator-irrationality.tex",
+        "paper": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "families": [
           {
             "id": "factorial_carry_characterisation",
@@ -14601,7 +14601,7 @@
       },
       {
         "problem": 243,
-        "paper": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "paper": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "families": [
           {
             "id": "centered_state_dynamics",
@@ -14661,7 +14661,7 @@
       },
       {
         "problem": 249,
-        "paper": "paper/erdos-249-binary-totient-series.tex",
+        "paper": "paper/249/erdos-249-binary-totient-series.tex",
         "families": [
           {
             "id": "totient_kernel_basis",
@@ -14889,7 +14889,7 @@
       },
       {
         "problem": 251,
-        "paper": "paper/erdos-251-prime-gap-dyadic-series.tex",
+        "paper": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "families": [
           {
             "id": "prime_gap_reformulation",
@@ -14972,7 +14972,7 @@
       },
       {
         "problem": 257,
-        "paper": "paper/erdos-257-mersenne-support-subseries.tex",
+        "paper": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "families": [
           {
             "id": "finite_period_noncollapse",
@@ -15119,7 +15119,7 @@
       },
       {
         "problem": 269,
-        "paper": "paper/erdos-269-three-prime-running-lcm.tex",
+        "paper": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "families": [
           {
             "id": "three_prime_lcm_cells",
@@ -15210,7 +15210,7 @@
       },
       {
         "problem": 1041,
-        "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "paper": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "families": [
           {
             "id": "newton_value_decay",
@@ -15272,7 +15272,7 @@
       },
       {
         "problem": 1049,
-        "paper": "paper/erdos-1049-rational-base-lambert.tex",
+        "paper": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "families": [
           {
             "id": "scalar_content_no_go",
@@ -15371,7 +15371,7 @@
       "open_target_claim": "erdos_68",
       "statement": "Prove that S = ∑_{n≥2} 1/(n! − 1) is irrational.",
       "paper_anchor": {
-        "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+        "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "Erdős #68",
         "line": 36
@@ -15383,7 +15383,7 @@
       "open_target_claim": "erdos_249",
       "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.",
       "paper_anchor": {
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
         "line": 4434
@@ -15395,7 +15395,7 @@
       "open_target_claim": "erdos_251",
       "statement": "Prove that Π = ∑_{n≥1} p_n/2ⁿ is irrational; the exact tail-shift equivalence and prime-gap constraints do not supply the required cofinal escape.",
       "paper_anchor": {
-        "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
+        "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "environment": "section",
         "title": "Introduction",
         "line": 57
@@ -15407,7 +15407,7 @@
       "open_target_claim": "erdos_249",
       "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.",
       "paper_anchor": {
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
         "line": 4445
@@ -15419,7 +15419,7 @@
       "open_target_claim": "universal_257",
       "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.",
       "paper_anchor": {
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
         "line": 4469
@@ -15431,7 +15431,7 @@
       "open_target_claim": "universal_257",
       "statement": "Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.",
       "paper_anchor": {
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
         "line": 705
@@ -15443,7 +15443,7 @@
       "open_target_claim": "universal_257",
       "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
       "paper_anchor": {
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
         "line": 4460
@@ -15455,7 +15455,7 @@
       "open_target_claim": "erdos_269",
       "statement": "Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three. For {2,3,5}, the rationality-to-carry bridge is established and cofinal local-window escape remains open.",
       "paper_anchor": {
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
         "line": 55
@@ -15467,7 +15467,7 @@
       "open_target_claim": "erdos_1041",
       "statement": "Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.",
       "paper_anchor": {
-        "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
         "line": 119
@@ -15479,7 +15479,7 @@
       "open_target_claim": "erdos_1049",
       "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.",
       "paper_anchor": {
-        "source": "paper/erdos-1049-rational-base-lambert.tex",
+        "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
         "line": 52
@@ -15491,7 +15491,7 @@
       "open_target_claim": "erdos_243",
       "statement": "Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.",
       "paper_anchor": {
-        "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
         "line": 102
@@ -15503,7 +15503,7 @@
       "open_target_claim": "erdos_269",
       "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
       "paper_anchor": {
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
         "line": 489
@@ -15515,7 +15515,7 @@
       "open_target_claim": "erdos_269",
       "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
       "paper_anchor": {
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
         "line": 495
@@ -15527,7 +15527,7 @@
       "open_target_claim": "erdos_269",
       "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
       "paper_anchor": {
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
         "line": 504
@@ -15539,7 +15539,7 @@
       "open_target_claim": "erdos_243",
       "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
       "paper_anchor": {
-        "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
         "line": 534
@@ -15551,7 +15551,7 @@
       "open_target_claim": "erdos_249",
       "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
       "paper_anchor": {
-        "source": "paper/erdos-249-binary-totient-series.tex",
+        "source": "paper/249/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "first-harmonic anti-concentration on supplier fibres",
         "line": 33
@@ -15563,7 +15563,7 @@
       "open_target_claim": "universal_257",
       "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
       "paper_anchor": {
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
         "line": 719
@@ -15575,7 +15575,7 @@
       "open_target_claim": "universal_257",
       "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
       "paper_anchor": {
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
         "line": 728
@@ -15587,7 +15587,7 @@
       "open_target_claim": "universal_257",
       "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
       "paper_anchor": {
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
         "line": 738

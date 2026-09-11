@@ -1,7 +1,7 @@
 {
   "schema": "plectis_paper_corpus_v0",
   "role": "clone_local_scholarly_corpus",
-  "this_repository": "plectis-lean-erdos249-257",
+  "this_repository": "plectis-erdos",
   "why_this_exists": "Cloning either public repository gives you PDFs, and only the papers that repository owns. This corpus carries every active paper as navigable text in both repositories, plus still-shipped retired manuscripts in their home repository, so an agent with no network can read, cite, and cross-check the public evidence.",
   "generated_by": "tools/meta/dissemination/export_paper_corpus.py",
   "generated_from": "the private system repository; do not hand-edit this directory",
@@ -136,7 +136,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
-      "local_source": "paper/erdos249-257-main-paper.tex",
+      "local_source": "paper/archive/erdos249-257-main-paper.tex",
       "source_sha256": "sha256:0455d0feaf5088394eb449a6a3056b89f4021f0a2fd74338c2b3766a7437e6df",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -1112,7 +1112,7 @@
         }
       ],
       "citations_rendered": 55,
-      "local_pdf": "erdos249-257-main-paper.pdf",
+      "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
       "pdf_sha256": "sha256:5c6b1c8722ac6657b36b136cbce4aa927e452e18d9487f14bb2d7e30d6de717f",
       "pdf_byte_count": 457684,
       "first_pass": {
@@ -1178,7 +1178,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
-      "local_source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+      "local_source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "source_sha256": "sha256:9b54aebff7460c36743c971e147c2baf8f24128bdeb88bd4ba6f495100c1727f",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -1300,7 +1300,7 @@
         "registry_fallback": "Two Incomparable Denominator Exclusions for $\\sum_{n\\ge2}(n!-1)^{-1}$",
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
-      "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
+      "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
       "pdf_sha256": "sha256:b0e0d2ca7f132a6d971a86b8d0f25b0e22b0ca34333886f9af721ee3ba1cb23d",
       "pdf_byte_count": 103233,
       "first_pass": {
@@ -1367,7 +1367,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos68-factorial-reasoning-surface.md",
-      "local_source": "paper/erdos68-factorial-reasoning-surface.tex",
+      "local_source": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "source_sha256": "sha256:744e49cf9503f5b699d1b96a11c85e4301a35a795a6d146c0acafb11716059fb",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -1599,7 +1599,7 @@
         }
       ],
       "citations_rendered": 24,
-      "local_pdf": "erdos68-factorial-reasoning-surface.pdf",
+      "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
       "pdf_sha256": "sha256:613b572b37260469a29d2fa7db7a79d1b7c253be154a685966846b938416fb97",
       "pdf_byte_count": 195705,
       "first_pass": {
@@ -1661,7 +1661,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
-      "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+      "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "source_sha256": "sha256:00bd33bee965b9d38fff8924348c78c14bfa32b77ae22118b11475b8505deb1f",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -1773,7 +1773,7 @@
         }
       ],
       "citations_rendered": 5,
-      "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
+      "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
       "pdf_sha256": "sha256:e22f4872b82a64120d2640240fbec20cc19495e294c60eac0bcf1246c6e838cd",
       "pdf_byte_count": 97374,
       "first_pass": {
@@ -1835,7 +1835,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
-      "local_source": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "source_sha256": "sha256:ed0477376d0ff7932910d3acf2fbb9c3cf6b08e42ae2545c8ba4fd61bee4a6fe",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -2289,7 +2289,7 @@
         }
       ],
       "citations_rendered": 34,
-      "local_pdf": "erdos243-reciprocal-tail-reasoning-surface.pdf",
+      "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
       "pdf_sha256": "sha256:1e51648823c4998ae77af8f419009db64269a0034be4843717b532692212c6ee",
       "pdf_byte_count": 283170,
       "first_pass": {
@@ -2356,7 +2356,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
-      "local_source": "paper/erdos-249-binary-totient-series.tex",
+      "local_source": "paper/249/erdos-249-binary-totient-series.tex",
       "source_sha256": "sha256:7541dd33c45f97b67b36ac71eb73e1e98459e170a3b416a69bc860b6511dc98c",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -2436,7 +2436,7 @@
         "registry_fallback": "A Basis for the 2-Kernel of Euler's Totient",
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
-      "local_pdf": "erdos-249-binary-totient-series.pdf",
+      "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
       "pdf_sha256": "sha256:21fb75589f8db5b9ec1f4a9bd250cfde263baae8f943f864c0066824478667b1",
       "pdf_byte_count": 101423,
       "first_pass": {
@@ -2498,7 +2498,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
-      "local_source": "paper/erdos249-totient-reasoning-surface.tex",
+      "local_source": "paper/249/erdos249-totient-reasoning-surface.tex",
       "source_sha256": "sha256:2fc7b2e5730e31868b749698e42bf5f904687a6f918261aac3e77b4dfef7f031",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -3408,7 +3408,7 @@
         }
       ],
       "citations_rendered": 0,
-      "local_pdf": "erdos249-totient-reasoning-surface.pdf",
+      "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
       "pdf_sha256": "sha256:b069ae60c4bfed01fb4bdcf8ce4f089e9f5486c4cbcafc9dfefcaaee62e1a5e9",
       "pdf_byte_count": 731628,
       "first_pass": {
@@ -3465,7 +3465,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
-      "local_source": "paper/erdos-251-prime-gap-dyadic-series.tex",
+      "local_source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
       "source_sha256": "sha256:eae712c9c61241082dbe892acd60436790648866dd256ae420a2cae8c6454e92",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -3631,7 +3631,7 @@
         }
       ],
       "citations_rendered": 12,
-      "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
+      "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
       "pdf_sha256": "sha256:f35b0bc638871c00fb3fe0e4c3ee90d99ce99f7aac86071e729a3775c21a4105",
       "pdf_byte_count": 140332,
       "first_pass": {
@@ -3698,7 +3698,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md",
-      "local_source": "paper/erdos251-prime-gap-reasoning-surface.tex",
+      "local_source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
       "source_sha256": "sha256:80d226bc59d7e47db86bc4d576570d27e78d8760ba77ae38c548a53bfc9b8234",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -4014,7 +4014,7 @@
         }
       ],
       "citations_rendered": 35,
-      "local_pdf": "erdos251-prime-gap-reasoning-surface.pdf",
+      "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
       "pdf_sha256": "sha256:28ba6a9fc4dbcf0846e7e960399c2abd3c2c2ad5a55d8353e2a10d2ed990eb9a",
       "pdf_byte_count": 223191,
       "first_pass": {
@@ -4086,7 +4086,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
-      "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
+      "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "source_sha256": "sha256:ac88a129ef853d707a556e3c5346387d3b7b15c6d749b11eba9da06120db4e18",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -4204,7 +4204,7 @@
         }
       ],
       "citations_rendered": 5,
-      "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
+      "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
       "pdf_sha256": "sha256:364a90183beb061844930dd26e4af42bd04736e9554d0611a7b22cec9ababe39",
       "pdf_byte_count": 126481,
       "first_pass": {
@@ -4271,7 +4271,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
-      "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
+      "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
       "source_sha256": "sha256:e6ca051b1acf26b99809796daa32f0f5becdf032404c1d78c2859a8bd8a2e7bb",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -5109,7 +5109,7 @@
         }
       ],
       "citations_rendered": 0,
-      "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
+      "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
       "pdf_sha256": "sha256:8399608da9bb18be704cbbd4a592374a171646afff4260d5c324057ef18c5e65",
       "pdf_byte_count": 665075,
       "first_pass": {
@@ -5171,7 +5171,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md",
-      "local_source": "paper/erdos269-running-lcm-reasoning-surface.tex",
+      "local_source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
       "source_sha256": "sha256:1f2937f1a7fe54f8e6962491818cc026696a9408454dff82da23a49b0805ca71",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -5421,7 +5421,7 @@
         }
       ],
       "citations_rendered": 24,
-      "local_pdf": "erdos269-running-lcm-reasoning-surface.pdf",
+      "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
       "pdf_sha256": "sha256:6523a51d74d82eac2dc14aa606cb5d08d58a362c63ad517929ba7f0d6c686bc4",
       "pdf_byte_count": 224261,
       "first_pass": {
@@ -5493,7 +5493,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
-      "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
+      "local_source": "paper/269/erdos-269-three-prime-running-lcm.tex",
       "source_sha256": "sha256:cbafdceb43c6d6e567440053147a41a7f7d15e89136b11bff3ee6bd5b14aeaf2",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -5593,7 +5593,7 @@
         }
       ],
       "citations_rendered": 7,
-      "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
+      "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
       "pdf_sha256": "sha256:8a052bc4b5dcb9533d2de88affba803cfcddfeedcd6d3bc072a9b3c6af0392af",
       "pdf_byte_count": 100033,
       "first_pass": {
@@ -5660,7 +5660,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
-      "local_source": "paper/erdos-1041-lemniscate-newton-flow.tex",
+      "local_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "source_sha256": "sha256:9a36d21bfa3560bbcaea4fc162d6f98801fa6ca43803890ed2488f0f687f595f",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -5862,7 +5862,7 @@
         }
       ],
       "citations_rendered": 10,
-      "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
+      "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
       "pdf_sha256": "sha256:23b8717299583315a2fddd130b3d817efa93b11ec9f8f573160ae1b34695abd7",
       "pdf_byte_count": 147354,
       "first_pass": {
@@ -5929,7 +5929,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md",
-      "local_source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+      "local_source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "source_sha256": "sha256:27ca9a32515680d6e041449b4d4127b5cfef3e23d3c22e9e572715f00f8fa9d0",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -6299,7 +6299,7 @@
         }
       ],
       "citations_rendered": 22,
-      "local_pdf": "erdos1041-lemniscate-reasoning-surface.pdf",
+      "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
       "pdf_sha256": "sha256:a4b56ccef5c51bc5828691dd76612d795e1b8618cdc90e746cbb5ce625815f03",
       "pdf_byte_count": 281093,
       "first_pass": {
@@ -6371,7 +6371,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
-      "local_source": "paper/erdos-1049-rational-base-lambert.tex",
+      "local_source": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "source_sha256": "sha256:63da06e19a5c6c6bedb34cd9913fff3d6192ad1ade409cab560c6e37b7fe0c3f",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -6483,7 +6483,7 @@
         }
       ],
       "citations_rendered": 8,
-      "local_pdf": "erdos-1049-rational-base-lambert.pdf",
+      "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
       "pdf_sha256": "sha256:ee3322735d9efcf38c9f5381646e6836c77569a6c68c25e52981497c5325f46c",
       "pdf_byte_count": 111114,
       "first_pass": {
@@ -6550,7 +6550,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
-      "local_source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "local_source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "source_sha256": "sha256:d912ac90cd2f6d7e1e2dd7d685cee70dcda0db3d689164dce0736418b79dc9a5",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -6908,7 +6908,7 @@
         }
       ],
       "citations_rendered": 59,
-      "local_pdf": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
+      "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
       "pdf_sha256": "sha256:ced3a9082d2ee51d6aa5f114d2ab546aed8f7401404bd6d8c5e1043e0e591df7",
       "pdf_byte_count": 297598,
       "first_pass": {
@@ -6980,7 +6980,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
-      "local_source": "paper/claim-faithful-publication-systems-paper.tex",
+      "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "source_sha256": "sha256:d8a3179c2e59904e4b792a5da08ffe0d221368357807d393d3a7ef62047b1548",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -7266,7 +7266,7 @@
         }
       ],
       "citations_rendered": 17,
-      "local_pdf": "claim-faithful-publication-systems-paper.pdf",
+      "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
       "pdf_sha256": "sha256:82571f44c109214535d2d158245e908b059027ad7dfe03b725504b767f503c07",
       "pdf_byte_count": 144793,
       "first_pass": {
@@ -7333,7 +7333,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
-      "local_source": "paper/cold-clone-to-proof-receipt.tex",
+      "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
       "source_sha256": "sha256:326364ff51be753731daee255ea78e641d0390e715a52625e575eb3d90f6ac25",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -7463,7 +7463,7 @@
         }
       ],
       "citations_rendered": 10,
-      "local_pdf": "cold-clone-to-proof-receipt.pdf",
+      "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
       "pdf_sha256": "sha256:6693bbd8a64984ca2154afaa28c937693c0fc411b6a8957fed5953c0f1331e07",
       "pdf_byte_count": 83169,
       "first_pass": {
@@ -7535,7 +7535,7 @@
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
-      "local_source": "paper/open-source-mathematics-strategy.tex",
+      "local_source": "paper/systems/open-source-mathematics-strategy.tex",
       "source_sha256": "sha256:bda180c92168800fb3ec74ab12ef6f56d8f72c2ad11a78cc3e8c8253b3298dc9",
       "canonical_source_commit": "6a8e8c4d4652176ab5f6ba36d0d517f0334effe3",
       "canonical_source_pin_status": "immutable_commit",
@@ -7719,7 +7719,7 @@
         }
       ],
       "citations_rendered": 21,
-      "local_pdf": "open-source-mathematics-strategy.pdf",
+      "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
       "pdf_sha256": "sha256:5df59aac866f6400311393473c0d690806280697ddc904b164c9a3021f1d965f",
       "pdf_byte_count": 132970,
       "first_pass": {

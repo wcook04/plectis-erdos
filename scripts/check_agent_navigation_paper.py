@@ -14,9 +14,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT / "paper" / "cold-clone-to-proof-receipt.tex"
-PAPER_PDF = ROOT / "paper" / "cold-clone-to-proof-receipt.pdf"
-ROOT_PDF = ROOT / "cold-clone-to-proof-receipt.pdf"
+SOURCE = ROOT / "paper" / "systems" / "cold-clone-to-proof-receipt.tex"
+PAPER_PDF = ROOT / "paper" / "systems" / "cold-clone-to-proof-receipt.pdf"
+ROOT_PDF = PAPER_PDF
 MAX_SOURCE_BYTES = 55_000
 
 # The spine is pinned by label, not by title prose. Section titles are authored
@@ -219,10 +219,8 @@ def main() -> int:
             "agent-navigation paper exposes private or inflated shorthand "
             f"{match.group(0) if match else '<unknown>'!r}"
         ))
-    # ``paper/*.pdf`` is deliberately ignored build output.  A fresh clone
-    # therefore has the shipped root PDF but no paper-local copy until someone
-    # runs the paper Makefile.  Compare the optional build product when it
-    # exists without making it a cold-clone prerequisite.
+    # Nested ``paper/<id>/*.pdf`` are the shipped storage copies. Compare the
+    # same bytes once; there is no longer a duplicate dump at the repository root.
     try:
         paper_local_digest = sha256(PAPER_PDF)
     except UnsafeAgentNavigationInput:

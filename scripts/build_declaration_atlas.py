@@ -20,6 +20,14 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+from lean_source import (
+    LIBRARY_ROOTS,
+    library_dir,
+    library_module_id,
+    library_root_file,
+    library_source_paths,
+)
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "declaration_atlas.json"
 CHECK_RECEIPT = ROOT / "docs" / "declaration_atlas_check.json"
@@ -47,8 +55,10 @@ KEYWORD_ONLY_RE = re.compile(
 # blank and line-comment lines are skipped, so the window stops at the first
 # line carrying content whatever that content turns out to be.
 HEAD_LOOKAHEAD = 3
-LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
-ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+ROOT_FILES = tuple(
+    library_root_file(ROOT, root).relative_to(ROOT).as_posix()
+    for root in LIBRARY_ROOTS
+)
 IMPORT_RE = re.compile(
     rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
     re.M,
@@ -161,14 +171,7 @@ def safe_atlas_output_text(path: Path, content: str, root: Path = ROOT) -> None:
 
 
 def source_paths() -> list[Path]:
-    return [
-        path
-        for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
-        for path in (
-            ROOT / root_file,
-            *sorted((ROOT / library_root).rglob("*.lean")),
-        )
-    ]
+    return library_source_paths(ROOT)
 
 
 def code_lines(lines: list[str]) -> list[bool]:
@@ -256,8 +259,7 @@ def generated_modules() -> dict[str, str]:
 
 
 def module_id(path: Path) -> str:
-    rel = path.relative_to(ROOT).with_suffix("")
-    return ".".join(rel.parts)
+    return library_module_id(path, ROOT)
 
 
 def compact_signature(lines: list[str], start: int) -> str:
@@ -497,7 +499,7 @@ def build() -> dict[str, object]:
         "declarations": declarations,
         "drilldown": {
             "principal_argument_map": "docs/claims.json",
-            "human_exposition": "paper/erdos249-257-main-paper.tex",
+            "human_exposition": "paper/archive/erdos249-257-main-paper.tex",
             "root_import": "Erdos249257.lean",
             "root_imports": list(ROOT_FILES),
             "check": "python3 scripts/build_declaration_atlas.py --check",

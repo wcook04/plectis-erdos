@@ -6,7 +6,7 @@
 name = "erdos249257"
 version = "0.9.0"
 description = "Lean 4 formalisation work on eight open Erdős problems: 68, 243, 249, 251, 257, 269, 1041, and 1049. All eight remain open. The library states what is checked and where each result stops."
-homepage = "https://github.com/wcook04/plectis-lean-erdos249-257"
+homepage = "https://github.com/wcook04/plectis-erdos"
 license = "Apache-2.0"
 licenseFiles = ["LICENSE"]
 readmeFile = "README.md"
@@ -36,10 +36,12 @@ rev = "v4.29.1"
 
 [[lean_lib]]
 name = "Erdos249257"
+srcDir = "lean"
 
 # Problem-centric statements, built on the shared machinery in Erdos249257.
 [[lean_lib]]
 name = "ErdosProblems"
+srcDir = "lean"
 # FactorialZeroPlateau's exact gcd certificates exceed Lean's default
 # interpreter stack on the public Linux runner.  This is a compile-time
 # resource bound only, so keep it weak rather than invalidating proof traces.
@@ -50,26 +52,28 @@ weakLeanArgs = ["--tstack=65536"]
 # this chain. Admit it separately after the supported closure.
 [[lean_lib]]
 name = "Erdos251LargeCertificate"
-srcDir = "Erdos251LargeCertificate"
+srcDir = "verification/Erdos251LargeCertificate"
 weakLeanArgs = ["--tstack=262144"]
 
 # Downstream consumer example (examples/Examples.lean). Not a default target:
 # CI builds it explicitly with `lake build Examples` after the library.
 [[lean_lib]]
 name = "Examples"
-srcDir = "examples"
+srcDir = "research/examples"
 
 # Statement-isolated modules used by the external Comparator packet.  This is
 # intentionally not a default target: Challenge contains the trusted statement
 # holes, while CI asks Comparator to check Solution against them explicitly.
 [[lean_lib]]
 name = "ExternalVerification"
+srcDir = "verification"
 
 # A programme-local packet for one exact #1049 numerical certificate. It is
 # separate from the nineteen-interface headline packet so adding a focused
 # reviewer handle does not silently change the reviewed headline count.
 [[lean_lib]]
 name = "ExternalVerification1049"
+srcDir = "verification"
 
 # Statement forms belonging to other formal corpora, restated verbatim here and
 # derived from this library, so that an external `formal_proof` link resolves to
@@ -79,7 +83,7 @@ name = "ExternalVerification1049"
 # overstate it.  CI builds this explicitly after Erdos249257.
 [[lean_lib]]
 name = "FormalConjecturesAdapter"
-srcDir = "adapters"
+srcDir = "research/adapters"
 # `FormalConjecturesVariants` is the other direction: statements upstream does
 # not carry at all, offered as new `variants.*` declarations rather than as
 # proofs of existing holes. Same reason it is not a default target and not
@@ -95,7 +99,7 @@ globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants"]
 # overstate it.  CI builds this explicitly.
 [[lean_lib]]
 name = "ResidualBench"
-srcDir = "residualbench"
+srcDir = "research/residualbench"
 
 # Three solved polynomial families beneath the open Erdos #1041 problem: the
 # sharp collinear Chebyshev comparison kernel, the primitive quintic two-tail
@@ -104,6 +108,7 @@ srcDir = "residualbench"
 # theorems the paper assembles from them.  Not a default target.
 [[lean_lib]]
 name = "ExternalVerification1041SolvedFamilies"
+srcDir = "verification"
 globs = ["ExternalVerification1041SolvedFamilies.*"]
 
 # Statement-isolated interface for the checked Erdős #249 all-base totient
@@ -112,12 +117,21 @@ globs = ["ExternalVerification1041SolvedFamilies.*"]
 # libraries so Comparator can compare them without widening a default build.
 [[lean_lib]]
 name = "ExternalVerification249TotientKernelBasis"
+srcDir = "verification"
 globs = ["ExternalVerification249TotientKernelBasis.+"]
 
 [[lean_lib]]
 name = "Solutions"
+srcDir = "verification"
 globs = ["Solutions.+"]
 
 [[lean_lib]]
 name = "NegativeSolutions"
+srcDir = "verification"
 globs = ["NegativeSolutions.+"]
+
+# Non-default #243 density-validation library. Selected by
+# verification/erdos243-density-validation.json, not by the compact roots.
+[[lean_lib]]
+name = "Erdos243V5"
+srcDir = "research"

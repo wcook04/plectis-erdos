@@ -19,11 +19,65 @@ this function.
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 # The two libraries whose sources are the proof corpus proper.  Everything
 # else in the tree (Challenge fixtures, adapters, research corpus) is held to
 # a different contract and is classified separately by each consumer.
 LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
+LIBRARY_SOURCE_DIR = "lean"
+
+
+def library_dir(root: Path, name: str) -> Path:
+    """Resolve a library directory after or before the lean/ consolidation."""
+    nested = root / LIBRARY_SOURCE_DIR / name
+    if nested.is_dir():
+        return nested
+    return root / name
+
+
+def library_root_file(root: Path, name: str) -> Path:
+    """Resolve ``Erdos249257.lean`` after or before the lean/ consolidation."""
+    nested = root / LIBRARY_SOURCE_DIR / f"{name}.lean"
+    if nested.is_file():
+        return nested
+    return root / f"{name}.lean"
+
+
+def library_module_parts(path: Path, root: Path) -> tuple[str, ...]:
+    """Module path parts with the storage prefix (``lean/``) removed."""
+    rel = path.resolve().relative_to(root.resolve()).with_suffix("")
+    parts = rel.parts
+    if parts and parts[0] == LIBRARY_SOURCE_DIR:
+        parts = parts[1:]
+    return parts
+
+
+def library_module_id(path: Path, root: Path) -> str:
+    """Lean module identity: ``Erdos249257.Foo``, never ``lean.Erdos249257.Foo``."""
+    return ".".join(library_module_parts(path, root))
+
+
+def library_source_paths(root: Path) -> list[Path]:
+    """Every ``.lean`` file in the two proof-corpus libraries."""
+    paths: list[Path] = []
+    seen: set[Path] = set()
+    for name in LIBRARY_ROOTS:
+        root_file = library_root_file(root, name)
+        if root_file.is_file():
+            resolved = root_file.resolve()
+            if resolved not in seen:
+                paths.append(root_file)
+                seen.add(resolved)
+        directory = library_dir(root, name)
+        if directory.is_dir():
+            for path in sorted(directory.rglob("*.lean")):
+                resolved = path.resolve()
+                if resolved not in seen:
+                    paths.append(path)
+                    seen.add(resolved)
+    return paths
+
 NON_NEWLINE_RE = re.compile(r"[^\n]")
 
 

@@ -153,7 +153,7 @@ def declarations_at(root: Path) -> set[str]:
     """
     names: set[str] = set()
     for library in LIBRARY_ROOTS:
-        base = root / library
+        base = root / "lean" / library
         if not base.is_dir():
             continue
         for path in sorted(base.rglob("*.lean")):

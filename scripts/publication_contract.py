@@ -88,12 +88,50 @@ REQUIRED_ARTIFACT_FIELDS = {
     "source_content_digest",
     "rendered_path",
     "rendered_content_digest",
+    "storage_path",
     "authority_posture",
     "claim_scope",
     "architecture_ref",
     "entry_route_id",
     "validation",
 }
+ARCHIVAL_JOINT_CLASS = "archival_joint_manuscript"
+
+
+def artifact_storage_path(artifact: dict[str, Any]) -> str:
+    """Repo-relative PDF path. Hosted URL basename stays on rendered_path."""
+    storage = artifact.get("storage_path")
+    if isinstance(storage, str) and storage.strip():
+        return storage
+    rendered = artifact.get("rendered_path")
+    if isinstance(rendered, str):
+        return rendered
+    return ""
+
+
+def artifact_hosted_filename(artifact: dict[str, Any]) -> str:
+    """Public /plectis/papers/<filename>.pdf basename."""
+    rendered = artifact.get("rendered_path")
+    if not isinstance(rendered, str):
+        return ""
+    return Path(rendered).name
+
+
+def checkout_pdf_path(root: Path, rendered_or_storage: str) -> Path:
+    """On-disk PDF for a hosted basename or a repo storage path."""
+    if "/" in rendered_or_storage:
+        return root / rendered_or_storage
+    contract_path = root / "docs" / "publication_contract.json"
+    if contract_path.is_file():
+        payload = json.loads(contract_path.read_text(encoding="utf-8"))
+        for artifact in payload.get("artifacts", []):
+            if not isinstance(artifact, dict):
+                continue
+            hosted = artifact_hosted_filename(artifact)
+            storage = artifact_storage_path(artifact)
+            if hosted == rendered_or_storage or Path(storage).name == rendered_or_storage:
+                return root / storage
+    return root / rendered_or_storage
 
 
 class RepositoryReader:
@@ -239,7 +277,6 @@ def reuse_manuscript_pdfs(data: dict[str, Any]) -> set[str]:
             if (
                 isinstance(path, str)
                 and path.endswith(".pdf")
-                and "/" not in path
                 and "*" not in path
             ):
                 paths.add(path)
@@ -1200,12 +1237,18 @@ def validate_publication_contract(
     artifact_ids = [row.get("id") for row in artifacts]
     source_paths = [row.get("source_path") for row in artifacts]
     rendered_paths = [row.get("rendered_path") for row in artifacts]
+    storage_paths = [artifact_storage_path(row) for row in artifacts]
+    hosted_names = [artifact_hosted_filename(row) for row in artifacts]
     if len(artifact_ids) != len(set(artifact_ids)):
         errors.append("publication contract contains duplicate artifact ids")
     if len(source_paths) != len(set(source_paths)):
         errors.append("publication contract contains duplicate source paths")
     if len(rendered_paths) != len(set(rendered_paths)):
         errors.append("publication contract contains duplicate rendered paths")
+    if len(storage_paths) != len(set(storage_paths)):
+        errors.append("publication contract contains duplicate storage paths")
+    if len(hosted_names) != len(set(hosted_names)):
+        errors.append("publication contract contains duplicate hosted filenames")
     errors.extend(manuscript_title_errors(reader, artifacts))
 
     route_ids = {
@@ -1221,6 +1264,8 @@ def validate_publication_contract(
             continue
         source = artifact["source_path"]
         rendered = artifact["rendered_path"]
+        storage = artifact_storage_path(artifact)
+        hosted = artifact_hosted_filename(artifact)
         if not source.startswith("paper/") or not source.endswith(".tex"):
             errors.append(
                 f"publication artifact {artifact_id!r} has invalid source path {source!r}"
@@ -1229,9 +1274,17 @@ def validate_publication_contract(
             errors.append(
                 f"publication artifact {artifact_id!r} has invalid rendered path {rendered!r}"
             )
+        if not storage.endswith(".pdf") or "*" in storage:
+            errors.append(
+                f"publication artifact {artifact_id!r} has invalid storage path {storage!r}"
+            )
+        if hosted != rendered:
+            errors.append(
+                f"publication artifact {artifact_id!r} rendered_path must be the hosted basename"
+            )
         for relative, digest_field in (
             (source, "source_content_digest"),
-            (rendered, "rendered_content_digest"),
+            (storage, "rendered_content_digest"),
         ):
             if not reader.exists(relative):
                 errors.append(
@@ -1289,7 +1342,7 @@ def validate_publication_contract(
     except (FileNotFoundError, UnicodeError, tomllib.TOMLDecodeError) as error:
         errors.append(f"{REUSE_PATH}: {error}")
         licensed_pdfs = set()
-    registered_pdfs = {path for path in rendered_paths if isinstance(path, str)}
+    registered_pdfs = {path for path in storage_paths if path}
     if licensed_pdfs != registered_pdfs:
         errors.append(
             "publication licence coverage drifted: "
@@ -1339,9 +1392,16 @@ def validate_publication_contract(
         by_class.setdefault(artifact["artifact_class"], set()).add(
             artifact["source_path"]
         )
-    if by_class.get("mathematical_gateway", set()) != {
-        architecture["canonical_gateway"]["source"]
-    }:
+    gateway_decision = architecture.get("canonical_gateway", {}).get("decision", "")
+    gateway_source = architecture.get("canonical_gateway", {}).get("source")
+    if str(gateway_decision).startswith("archive"):
+        if by_class.get("mathematical_gateway"):
+            errors.append(
+                "retired joint manuscript must not remain class mathematical_gateway"
+            )
+        if by_class.get(ARCHIVAL_JOINT_CLASS, set()) != {gateway_source}:
+            errors.append("publication archive gateway drifted from docs/claims.json")
+    elif by_class.get("mathematical_gateway", set()) != {gateway_source}:
         errors.append("publication gateway drifted from docs/claims.json")
     retained_sources = {
         row["source"] for row in architecture.get("retained_companions", [])
@@ -1532,7 +1592,11 @@ def artifact_digest_restamp_plan(
             continue
         observed: dict[str, tuple[str, str, bool]] = {}
         for path_field, digest_field in ARTIFACT_DIGEST_FIELDS:
-            relative = artifact[path_field]
+            relative = (
+                artifact_storage_path(artifact)
+                if path_field == "rendered_path"
+                else artifact[path_field]
+            )
             try:
                 actual = sha256(reader.read_bytes(relative))
             except (FileNotFoundError, OSError, ValueError, UnicodeError) as error:
@@ -1664,7 +1728,7 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     gateway = next(
         row
         for row in source_license_drift["artifacts"]
-        if row["artifact_class"] == "mathematical_gateway"
+        if row["artifact_class"] in {"mathematical_gateway", ARCHIVAL_JOINT_CLASS}
     )
     source_path = gateway["source_path"]
     original_source = reader.read_text(source_path)

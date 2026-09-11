@@ -280,7 +280,7 @@ failed. `check_release.py` remains the authority for locators.
 
 A mathematician can follow the reading order above and then trace one result
 from the [SOURCE MAP](SOURCE_MAP.md) into Lean. The per-problem papers
-are the live route; the [joint PDF](../erdos249-257-main-paper.pdf) is retired.
+are the live route; the [joint PDF](../paper/archive/erdos249-257-main-paper.pdf) is retired.
 
 A coding agent starts from an ordinary-language task. The clone-local router
 returns a bounded lane, minimum read set, and skill:
@@ -312,8 +312,8 @@ status and frontier card (`python3 scripts/proof_cockpit.py`), and
 [the Agent Workbench](AGENT_WORKBENCH.md) records typed reasoning moves
 and kernel probes under `workbench/sessions/`. The one landed prospective
 session,
-[`carry_pivot_2026_07_27`](../workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
-produced [`SuffixCylinderCarryPivot.lean`](../Erdos249257/SuffixCylinderCarryPivot.lean).
+[`carry_pivot_2026_07_27`](../research/workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
+produced [`SuffixCylinderCarryPivot.lean`](../lean/Erdos249257/SuffixCylinderCarryPivot.lean).
 Only kernel receipts assert; ledger notes and static nominations stay
 advisory.
 
@@ -351,8 +351,8 @@ full public-surface and query sweep.
 
 ## Recovered from the front page: how the repository fits together
 
-The package has two compact supported roots. [`Erdos249257.lean`](../Erdos249257.lean)
-preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](../ErdosProblems.lean)
+The package has two compact supported roots. [`Erdos249257.lean`](../lean/Erdos249257.lean)
+preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](../lean/ErdosProblems.lean)
 is the problem-owned expansion surface: work lives under its actual Erdős
 problem number instead of being forced into the historical #249/#257 tree.
 Kernel checking of that second root establishes its exact Lean propositions;
@@ -360,7 +360,7 @@ it does not by itself promote them into the reviewed claim registry or claim
 that an open problem is solved.
 
 The source has five reader-facing layers. The assembled kernel,
-[`CertificateKernel.lean`](../Erdos249257/CertificateKernel.lean), contains the
+[`CertificateKernel.lean`](../lean/Erdos249257/CertificateKernel.lean), contains the
 common series machinery, the full-support Erdős-Borwein theorem, named
 support-family interfaces, and the unconditional #249 denominator exclusion.
 The #249 reduction spine, comprising the period-killer, lcm-diagonal, cone,
@@ -427,7 +427,7 @@ python3 scripts/test_methodology_contract.py
 The pinned public Lean proof corpus contains no `sorry`, `admit`, project-defined
 `axiom`, or `native_decide`; finite computations use kernel-checked `decide`.
 One deliberate exception is outside the default build:
-[`ExternalVerification/Challenge.lean`](../ExternalVerification/Challenge.lean)
+[`ExternalVerification/Challenge.lean`](../verification/ExternalVerification/Challenge.lean)
 states the trusted propositions Comparator checks the solution against; they
 carry `sorry` by construction.
 
@@ -445,6 +445,6 @@ The problem-owned expansion surface is imported with:
 import ErdosProblems
 ```
 
-[`examples/Examples.lean`](../examples/Examples.lean) is the minimal downstream
+[`examples/Examples.lean`](../research/examples/Examples.lean) is the minimal downstream
 consumer; its conditional shell-pressure example leaves the analytic
 hypothesis explicit and does not prove universal #257.

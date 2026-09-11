@@ -1033,9 +1033,9 @@ import Pkg.TooLate
         modules = fast.discover()
         targets = fast.resolve_targets(
             [
-                "examples/ExternalVerificationPortfolio/Problem249.lean",
-                "examples/ExternalVerificationPortfolio/Problem251.lean",
-                "examples/ExternalVerificationPortfolio/Problem269.lean",
+                "research/examples/ExternalVerificationPortfolio/Problem249.lean",
+                "research/examples/ExternalVerificationPortfolio/Problem251.lean",
+                "research/examples/ExternalVerificationPortfolio/Problem269.lean",
             ],
             modules,
         )

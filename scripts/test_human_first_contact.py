@@ -208,7 +208,8 @@ def main() -> None:
         require(label in readme, f"README lost the {label} paper-index label")
     for slug in paper_slugs:
         require(f"{slug}.pdf" in readme, f"README omits the {slug} paper")
-        require((ROOT / f"{slug}.pdf").is_file(), f"missing PDF for {slug}")
+        stored = list((ROOT / "paper").rglob(f"{slug}.pdf"))
+        require(len(stored) == 1 and stored[0].is_file(), f"missing PDF for {slug}")
         require(
             (ROOT / f"docs/papers/full-text/{slug}.md").is_file(),
             f"missing Markdown paper for {slug}",

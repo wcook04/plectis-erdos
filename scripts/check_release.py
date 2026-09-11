@@ -56,7 +56,13 @@ from typing import Any
 
 from check_problem_note_sources import note_pinned_commit, snapshot_lines_batch
 from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
-from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
+from lean_source import (
+    LIBRARY_ROOTS,
+    library_dir,
+    library_root_file,
+    library_source_paths,
+    lean_code_without_comments_and_strings,
+)
 from publication_contract import (
     RepositoryReader,
     mutation_fixture_failures as publication_mutation_fixture_failures,
@@ -263,11 +269,17 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
     }
     return results
 
-ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+ROOT_FILES = tuple(
+    library_root_file(ROOT, root).relative_to(ROOT).as_posix()
+    for root in LIBRARY_ROOTS
+)
 PROOF_PATHS = tuple(
     path
-    for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
-    for path in (root_file, library_root)
+    for library_root in LIBRARY_ROOTS
+    for path in (
+        library_root_file(ROOT, library_root).relative_to(ROOT).as_posix(),
+        library_dir(ROOT, library_root).relative_to(ROOT).as_posix(),
+    )
 )
 INTERNAL_IMPORT_RE = re.compile(
     rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
@@ -976,17 +988,7 @@ def check_proof_trust() -> None:
         "chunked lexer must preserve escaped-string exclusion",
     )
     example_sources = sorted((ROOT / "examples").rglob("*.lean")) if (ROOT / "examples").is_dir() else []
-    lean_sources = (
-        [
-            path
-            for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
-            for path in (
-                *sorted((ROOT / library_root).rglob("*.lean")),
-                ROOT / root_file,
-            )
-        ]
-        + example_sources
-    )
+    lean_sources = library_source_paths(ROOT) + example_sources
     for lean in lean_sources:
         violation = proof_trust_violation_bytes(read_bytes(lean))
         check(violation is None,
@@ -2448,11 +2450,12 @@ def main(argv: list[str] | None = None) -> int:
     paper_aliases = json.loads(read(ROOT / "paper" / "module-aliases.json"))
     paper_artifacts = {
         "human_exposition": (
-            "paper/erdos249-257-main-paper.tex",
+            "paper/archive/erdos249-257-main-paper.tex",
             "erdos249-257-main-paper.pdf",
+            "paper/archive/erdos249-257-main-paper.pdf",
         ),
     }
-    for content_id, (source_path, rendered_path) in paper_artifacts.items():
+    for content_id, (source_path, rendered_path, storage_path) in paper_artifacts.items():
         content = descriptor_content.get(content_id, {})
         check(content.get("source_path") == source_path,
               f"corpus descriptor {content_id} source path is missing or incorrect")
@@ -2460,7 +2463,7 @@ def main(argv: list[str] | None = None) -> int:
               f"corpus descriptor {content_id} rendered path is missing or incorrect")
         check(content.get("source_content_digest") == file_digest(ROOT / source_path),
               f"corpus descriptor {content_id} source digest drifted")
-        check(content.get("rendered_content_digest") == file_digest(ROOT / rendered_path),
+        check(content.get("rendered_content_digest") == file_digest(ROOT / storage_path),
               f"corpus descriptor {content_id} rendered digest drifted")
         check(content.get("authority_posture") == "authored_editorial_surface_not_Lean_proof_authority",
               f"corpus descriptor {content_id} does not preserve the proof-authority boundary")

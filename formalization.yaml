@@ -157,7 +157,7 @@ status:
       boundary: "This does not prove irrationality of the totient series."
       comparator_declaration: "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq"
       literature_dependencies:
-        - "paper/erdos-249-binary-totient-series.tex"
+        - "paper/249/erdos-249-binary-totient-series.tex"
         - "docs/PRIOR_ART.md"
         - "https://doi.org/10.1017/S0305004108001665"
         - "https://doi.org/10.1007/s11139-004-4633-4"
@@ -181,7 +181,7 @@ status:
       boundary: "The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved."
       comparator_declaration: "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel"
       literature_dependencies:
-        - "paper/erdos-249-binary-totient-series.tex"
+        - "paper/249/erdos-249-binary-totient-series.tex"
         - "docs/PRIOR_ART.md"
         - "https://doi.org/10.1017/S0305004108001665"
         - "https://doi.org/10.1007/s11139-004-4633-4"
@@ -414,7 +414,7 @@ status:
       comparator_declaration: "Erdos249257.ExternalVerification.exists_primeGap0_gt"
       literature_dependencies:
         - "docs/PRIOR_ART.md#expansion-note-principal-sources-68-243-251-269-1041-1049"
-        - "paper/erdos-251-prime-gap-dyadic-series.tex"
+        - "paper/251/erdos-251-prime-gap-dyadic-series.tex"
       source_statement: "The gaps between consecutive primes are unbounded; the elementary factorial construction gives arbitrarily long prime-free intervals."
       source_mapping: "The local theorem uses the zero-based consecutive-prime gap sequence and proves that for every bound B some indexed gap exceeds B. This is the same unboundedness statement after the repository's indexing convention is unfolded."
       historical_attribution: "Classical elementary factorial prime-free interval argument; modern large-gap theorems in the paper are contextual and strictly stronger."
@@ -524,7 +524,7 @@ status:
       literature_dependencies:
         - "https://users.renyi.hu/~p_erdos/1948-04.pdf"
         - "docs/PRIOR_ART.md"
-        - "paper/erdos-257-mersenne-support-subseries.tex"
+        - "paper/257/erdos-257-mersenne-support-subseries.tex"
       source_statement: "For every integer b at least 2, the full-support Lambert--Mersenne series sum over n at least 1 of 1/(b^n-1) is irrational."
       source_mapping: "The local theorem uses Nat indexing with exponent k+1, which is exactly the source sum after reindexing n=k+1; the base assumption is the same integer condition b at least 2."
       historical_attribution: "Erdos, On arithmetical properties of Lambert series (1948), theorem on p. 63 as recorded in the repository's prior-art ledger."
@@ -547,7 +547,7 @@ status:
       literature_dependencies:
         - "https://users.renyi.hu/~p_erdos/1969-09.pdf"
         - "docs/PRIOR_ART.md"
-        - "paper/erdos-257-mersenne-support-subseries.tex"
+        - "paper/257/erdos-257-mersenne-support-subseries.tex"
       source_statement: "For every integer base b at least 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne reciprocal series is irrational."
       source_mapping: "The local theorem keeps the base, infinitude, pairwise-coprimality, and summable-reciprocal hypotheses explicit and concludes irrationality of erdosSupportSeries b A. At base 2 this is exactly the pairwise-coprime support subfamily of Erdős #257; it is a separate non-dilation representative from the full-support row."
       historical_attribution: "Erdos (1968), as recorded in the repository's prior-art ledger and the #257 problem note."
@@ -1151,7 +1151,7 @@ alignment:
       note: "This is a sharp no-go only for the explicit rectangular two-function model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Pade or Hermite-Pade no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
 claim_review_matrix:
   - problem: 68
-    paper: "paper/erdos-68-factorial-denominator-irrationality.tex"
+    paper: "paper/68/erdos-68-factorial-denominator-irrationality.tex"
     families:
       - id: "factorial_carry_characterisation"
         contribution_class: "locally proved result; novelty unassessed"
@@ -1184,7 +1184,7 @@ claim_review_matrix:
         summary: "A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem."
         boundary: "Comparator cannot certify the cited input or authored deduction."
   - problem: 243
-    paper: "paper/erdos-243-reciprocal-tail-rigidity.tex"
+    paper: "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
     families:
       - id: "centered_state_dynamics"
         contribution_class: "locally proved signed recovery/rigidity theorem; novelty unassessed"
@@ -1217,7 +1217,7 @@ claim_review_matrix:
         summary: "Under exact reciprocal-tail C/D dynamics, positive tail, the strict centered-step equation, and division-free normalized vanishing, summability of the normalized negative centered mass forces centeredState to vanish eventually and recovers the Sylvester recurrence. The load-bearing theorem is supported by the exact tail-growth bound and the finite-negative-mass stabilization theorem."
         boundary: "The exact criterion assumes a, D : ℕ → ℤ and C : ℕ → ℕ with the declared next-denominator and next-tail dynamics, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable (negativeRelativeMass C (fun n ↦ centeredState (a n) (D n) (C n))). It does not prove these hypotheses for the original Erdős #243 orbit, supply a prime-specific producer, or establish an unconditional #243 endpoint or reciprocal-tail irrationality. Any surviving canonical orbit must have divergent normalized negative mass. This is distinct from centered_state_dynamics, whose recovery criterion uses a uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
   - problem: 249
-    paper: "paper/erdos-249-binary-totient-series.tex"
+    paper: "paper/249/erdos-249-binary-totient-series.tex"
     families:
       - id: "totient_kernel_basis"
         contribution_class: "locally proved result; novelty unassessed"
@@ -1342,7 +1342,7 @@ claim_review_matrix:
         summary: "Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are exact or sufficient reformulations."
         boundary: "Equivalent producer statements are as hard as the unresolved target."
   - problem: 251
-    paper: "paper/erdos-251-prime-gap-dyadic-series.tex"
+    paper: "paper/251/erdos-251-prime-gap-dyadic-series.tex"
     families:
       - id: "prime_gap_reformulation"
         contribution_class: "locally proved result; novelty unassessed"
@@ -1381,7 +1381,7 @@ claim_review_matrix:
         summary: "The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream."
         boundary: "CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
   - problem: 257
-    paper: "paper/erdos-257-mersenne-support-subseries.tex"
+    paper: "paper/257/erdos-257-mersenne-support-subseries.tex"
     families:
       - id: "finite_period_noncollapse"
         contribution_class: "locally proved result; novelty unassessed"
@@ -1480,7 +1480,7 @@ claim_review_matrix:
         summary: "Exact greedy characterisations, finite-support exclusions, the odd 2-adic two-thirds-band bound, and two conditional rational-half countermodel frontiers isolate local constraints around the remaining 1/2 and 1/21 alternatives."
         boundary: "Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents."
   - problem: 269
-    paper: "paper/erdos-269-three-prime-running-lcm.tex"
+    paper: "paper/269/erdos-269-three-prime-running-lcm.tex"
     families:
       - id: "three_prime_lcm_cells"
         contribution_class: "locally proved result; novelty unassessed"
@@ -1531,7 +1531,7 @@ claim_review_matrix:
         summary: "A local-window checker searches 106666 denominator and start pairs and records small certificates."
         boundary: "Finite search is not a cofinal statement."
   - problem: 1041
-    paper: "paper/erdos-1041-lemniscate-newton-flow.tex"
+    paper: "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
     families:
       - id: "newton_value_decay"
         contribution_class: "locally proved result and formalised calculus; novelty unassessed"
@@ -1570,7 +1570,7 @@ claim_review_matrix:
         summary: "A bounded search records finite geometric evidence."
         boundary: "Finite evidence does not settle the universal problem."
   - problem: 1049
-    paper: "paper/erdos-1049-rational-base-lambert.tex"
+    paper: "paper/1049/erdos-1049-rational-base-lambert.tex"
     families:
       - id: "scalar_content_no_go"
         contribution_class: "no-go result"

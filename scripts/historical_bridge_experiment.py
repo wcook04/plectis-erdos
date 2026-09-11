@@ -227,7 +227,7 @@ def _future_name_in_ref(ref: str) -> list[str]:
 
 def _current_reuse_sites() -> list[str]:
     sites = []
-    for path in sorted((ROOT / "Erdos249257").glob("*.lean")):
+    for path in sorted((ROOT / "lean/Erdos249257").glob("*.lean")):
         if path.name == Path(FUTURE_MODULE).name:
             continue
         for line_number, line in enumerate(

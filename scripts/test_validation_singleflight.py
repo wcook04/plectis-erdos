@@ -71,7 +71,7 @@ class ValidationSingleflightTests(unittest.TestCase):
             root,
             Path(directory)
             / "plectis-lean"
-            / "plectis-lean-erdos249-257"
+            / "plectis-erdos"
             / "validation-singleflight-v1",
         )
         self.assertNotEqual(root.parent, ROOT)
@@ -168,19 +168,19 @@ class ValidationSingleflightTests(unittest.TestCase):
         paths = {
             row["path"] for row in specification["inputs"]["relevant_sources"]
         }
-        self.assertIn("Erdos249257.lean", paths)
+        self.assertIn("lean/Erdos249257.lean", paths)
         self.assertIn("scripts/validation_singleflight.py", paths)
         self.assertIn("scripts/lean_package_share.py", paths)
         self.assertNotIn("README.md", paths)
 
     def test_declared_lake_source_roots_resolve_for_singleflight(self) -> None:
         expected = {
-            "Examples": "examples/Examples.lean",
-            "FormalConjecturesAdapter": "adapters/FormalConjecturesAdapter.lean",
-            "FormalConjecturesVariants": "adapters/FormalConjecturesVariants.lean",
-            "ResidualBench": "residualbench/ResidualBench.lean",
+            "Examples": "research/examples/Examples.lean",
+            "FormalConjecturesAdapter": "research/adapters/FormalConjecturesAdapter.lean",
+            "FormalConjecturesVariants": "research/adapters/FormalConjecturesVariants.lean",
+            "ResidualBench": "research/residualbench/ResidualBench.lean",
             "ExternalVerificationPortfolio.Problem249": (
-                "examples/ExternalVerificationPortfolio/Problem249.lean"
+                "research/examples/ExternalVerificationPortfolio/Problem249.lean"
             ),
         }
         self.assertEqual(

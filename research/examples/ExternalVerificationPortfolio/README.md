@@ -9,14 +9,14 @@ The canonical focused check for the portfolio consumers is:
 
 ```bash
 python3 scripts/lean_fast_build.py \
-  examples/ExternalVerificationPortfolio/Problem68.lean \
-  examples/ExternalVerificationPortfolio/Problem1041.lean \
-  examples/ExternalVerificationPortfolio/Problem1049.lean \
-  examples/ExternalVerificationPortfolio/Problem243.lean \
-  examples/ExternalVerificationPortfolio/Problem249.lean \
-  examples/ExternalVerificationPortfolio/Problem251.lean \
-  examples/ExternalVerificationPortfolio/Problem257.lean \
-  examples/ExternalVerificationPortfolio/Problem269.lean
+  research/examples/ExternalVerificationPortfolio/Problem68.lean \
+  research/examples/ExternalVerificationPortfolio/Problem1041.lean \
+  research/examples/ExternalVerificationPortfolio/Problem1049.lean \
+  research/examples/ExternalVerificationPortfolio/Problem243.lean \
+  research/examples/ExternalVerificationPortfolio/Problem249.lean \
+  research/examples/ExternalVerificationPortfolio/Problem251.lean \
+  research/examples/ExternalVerificationPortfolio/Problem257.lean \
+  research/examples/ExternalVerificationPortfolio/Problem269.lean
 ```
 
 That command imports the shared `ExternalVerification.Solution` surface. A
@@ -232,9 +232,9 @@ premise.
 
 The source route is split across:
 
-- [`Erdos249257/DiagonalFreshLossBridge.lean`](../../Erdos249257/DiagonalFreshLossBridge.lean), which defines the actual power-two LCM orbit, the normalized odd-rank raw block, and the bridge identities;
-- [`Erdos249257/TotientActualLcmOrbitSeparation.lean`](../../Erdos249257/TotientActualLcmOrbitSeparation.lean), which gives the exact tail-difference, remainder, half-word-band, signed-margin, and conditional irrationality route;
-- [`ExternalVerification/Solution.lean`](../../ExternalVerification/Solution.lean), which exposes the Comparator wrapper used by the portfolio consumer.
+- [`Erdos249257/DiagonalFreshLossBridge.lean`](../../../lean/Erdos249257/DiagonalFreshLossBridge.lean), which defines the actual power-two LCM orbit, the normalized odd-rank raw block, and the bridge identities;
+- [`Erdos249257/TotientActualLcmOrbitSeparation.lean`](../../../lean/Erdos249257/TotientActualLcmOrbitSeparation.lean), which gives the exact tail-difference, remainder, half-word-band, signed-margin, and conditional irrationality route;
+- [`ExternalVerification/Solution.lean`](../../verification/ExternalVerification/Solution.lean), which exposes the Comparator wrapper used by the portfolio consumer.
 
 The hard step is the reduction from the orbit
 `R_(2H) - R_H` to the normalized odd-rank raw block, followed by the
@@ -300,7 +300,7 @@ conditional carry escape separate.
 
 The exact Comparator interface is
 `Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary`.
-Its source is [`ErdosProblems/Erdos269/WeightedPhaseCarry.lean`](../../ErdosProblems/Erdos269/WeightedPhaseCarry.lean), with the finite residue and digit interval checks and the
+Its source is [`ErdosProblems/Erdos269/WeightedPhaseCarry.lean`](../../../lean/ErdosProblems/Erdos269/WeightedPhaseCarry.lean), with the finite residue and digit interval checks and the
 `finite_realisedSpan_of_factorisation` observer consequence. The recurrence
 is decomposed into a finite residue digit and an integral quotient coboundary,
 which is the useful reusable mechanism.
@@ -316,7 +316,7 @@ rationality or irrationality statement.
 
 The exact Comparator interface is
 `Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape`.
-Its source is [`ErdosProblems/Erdos269/RestrictedFloorSum.lean`](../../ErdosProblems/Erdos269/RestrictedFloorSum.lean), which consumes
+Its source is [`ErdosProblems/Erdos269/RestrictedFloorSum.lean`](../../../lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean), which consumes
 `CofinalLocalWindowEscape` together with positive, coprime multiplier data,
 the exact integer carry recurrence, and the denominator-dependent short bound
 to derive `False`.

@@ -143,8 +143,6 @@ jobs:
             head="$PR_HEAD_SHA"
           fi
 
-          if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
-            changed=true
           # This pathspec also decides whether "Verify elaborated dependency
           # index" runs, so it has to cover every file
           # build_lean_dependency_index.CHECK_INPUT_FILES declares -- the two
@@ -156,11 +154,14 @@ jobs:
           # with changed=false, so the verification step never ran and a
           # dependency index that no longer matched the tree shipped green.
           # scripts/test_lean_fast_build.py pins the coverage.
+          if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
+            changed=true
           elif git diff --quiet "$base" "$head" -- \
-            Erdos249257.lean 'Erdos249257/**' \
-            ErdosProblems.lean 'ErdosProblems/**' \
-            'Erdos251LargeCertificate/**' \
-            'adapters/**' 'examples/**' 'residualbench/**' \
+            lean/Erdos249257.lean 'lean/Erdos249257/**' \
+            lean/ErdosProblems.lean 'lean/ErdosProblems/**' \
+            'verification/Erdos251LargeCertificate/**' \
+            'research/adapters/**' 'research/examples/**' 'research/residualbench/**' \
+            'research/Erdos243V5/**' \
             lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
             docs/declaration_atlas.json \
             docs/generated_certificate_manifest.json \
@@ -307,8 +308,8 @@ jobs:
             if [[ -z "$base" || -z "$head" ]]; then
               changed=true
             elif git diff --quiet "$base" "$head" -- \
-              Erdos249257.lean 'Erdos249257/**' \
-              ErdosProblems.lean 'ErdosProblems/**' \
+              lean/Erdos249257.lean 'lean/Erdos249257/**' \
+              lean/ErdosProblems.lean 'lean/ErdosProblems/**' \
               ExternalVerification ExternalVerification1049 \
               ExternalVerification249TotientKernelBasis Solutions NegativeSolutions \
               ExternalVerification1041SolvedFamilies 'verification/**' \
