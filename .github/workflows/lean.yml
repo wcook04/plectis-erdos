@@ -481,10 +481,10 @@ jobs:
           run_comparator verification/comparator-1049-numerical-height-negative-mismatch.json \
             > artifacts-1049-negative.log 2>&1
           local_1049_negative_exit=$?
-          run_comparator ExternalVerification249TotientKernelBasis/comparator.json \
+          run_comparator verification/ExternalVerification249TotientKernelBasis/comparator.json \
             > artifacts-249-totient-kernel-positive.log 2>&1
           totient_kernel_positive_exit=$?
-          run_comparator ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json \
+          run_comparator verification/ExternalVerification249TotientKernelBasis/comparator-negative-mismatch.json \
             > artifacts-249-totient-kernel-negative.log 2>&1
           totient_kernel_negative_exit=$?
           echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
@@ -582,9 +582,9 @@ jobs:
         run: |
           set -euo pipefail
           : > axiom-audit.log
-          for src in ExternalVerification/AxiomAudit.lean \
-                     ExternalVerification1049/AxiomAudit.lean \
-                     ExternalVerification1041SolvedFamilies/AxiomAudit.lean; do
+          for src in verification/ExternalVerification/AxiomAudit.lean \
+                     verification/ExternalVerification1049/AxiomAudit.lean \
+                     verification/ExternalVerification1041SolvedFamilies/AxiomAudit.lean; do
             printf '=== %s ===\n' "$src" >> axiom-audit.log
             lake env lean "$src" 2>&1 | tee -a axiom-audit.log
           done
