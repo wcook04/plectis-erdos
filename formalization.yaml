@@ -1185,11 +1185,11 @@ claim_review_matrix:
         summary: "Lean checks small exact misses; a hash-bound GMP scan reaches index 300000 and yields the corresponding finite denominator exclusion."
         boundary: "Finite computation does not change the cofinal quantifier."
       - id: "factorial_lcm_growth"
-        contribution_class: "paper plus external theorem"
-        evidence_mode: "paper argument plus cited theorem"
+        contribution_class: "ordinary paper argument"
+        evidence_mode: "ordinary mathematical argument"
         comparator_disposition: "not_applicable_not_a_lean_declaration"
-        summary: "A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem."
-        boundary: "Comparator cannot certify the cited input or authored deduction."
+        summary: "An elementary terminal-block argument gives liminf log L_N / (N^{3/2} log N) ≥ 2√2/3 for the lcm of factorial-gap denominators. The displayed bound needs no external multiplicity theorem; an older, weaker multiplicity-based route is historical context only."
+        boundary: "The LCM asymptotic is an ordinary paper proof, not a Lean-checked theorem. Linked asymptotic Lean files are proof candidates and are not cited as kernel verification. The finite-block inequality has a separate Lean source. Comparator cannot certify the authored deduction. The bound does not decide irrationality."
   - problem: 243
     paper: "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
     families:

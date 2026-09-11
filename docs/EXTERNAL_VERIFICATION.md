@@ -266,9 +266,9 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* finite computation · Lean finite theorem plus external exact certificate
 
 - **Factorial lcm growth**<br>
-  A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem.<br>
-  **Boundary.** Comparator cannot certify the cited input or authored deduction.<br>
-  *Evidence.* paper plus external theorem · paper argument plus cited theorem
+  An elementary terminal-block argument gives liminf log L_N / (N^{3/2} log N) ≥ 2√2/3 for the lcm of factorial-gap denominators. The displayed bound needs no external multiplicity theorem; an older, weaker multiplicity-based route is historical context only.<br>
+  **Boundary.** The LCM asymptotic is an ordinary paper proof, not a Lean-checked theorem. Linked asymptotic Lean files are proof candidates and are not cited as kernel verification. The finite-block inequality has a separate Lean source. Comparator cannot certify the authored deduction. The bound does not decide irrationality.<br>
+  *Evidence.* ordinary paper argument · ordinary mathematical argument
 
 </details>
 
