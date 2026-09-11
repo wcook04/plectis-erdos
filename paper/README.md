@@ -3,10 +3,6 @@
 
 # Papers
 
-For the repository layout, sources of truth, build path, and release
-infrastructure, start with the plain-language
-[`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) in `docs/`.
-
 Each of the eight covered Erdős problems has a short first-read paper and a
 longer complete reasoning record. All eight problems remain open. The papers
 report partial results, failed or equivalent routes, finite evidence, and the
@@ -20,7 +16,7 @@ proof authority only for the exact declarations they check, and
 interfaces.
 
 The manuscript layer (the `.tex` sources and rendered PDFs) is licensed
-CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) in `docs/`.
+CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) at the repository root.
 
 ## Problem papers
 
@@ -44,6 +40,36 @@ sketch is Proposition 1.1 of the short paper. There is no separately published
 `SparseRationalisation.md`. End-to-end sparse Lean candidates are labelled
 UNRUN and are not presented as verified.
 
+## Project papers
+
+These explain the organisation of the research, agent workflows and participation.
+
+| Role | Paper |
+|---|---|
+| Publication architecture | [Problem-Sized Lean Worlds](systems/claim-faithful-publication-systems-paper.pdf) ([source](systems/claim-faithful-publication-systems-paper.tex)) |
+| Agent navigation and validation | [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](systems/cold-clone-to-proof-receipt.tex)) |
+| Open participation and credit | [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](systems/open-source-mathematics-strategy.tex)) |
+
+For the repository layout, sources of truth, build path, and release
+infrastructure, see [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).
+The [full-text shelf](../docs/papers/README.md) provides browsable Markdown
+versions and a detailed index. [Results and limits](../docs/RESULTS.md) and the
+[source map](../docs/SOURCE_MAP.md) connect the papers to their evidence.
+
+<details>
+<summary>Earlier combined manuscript: provenance only</summary>
+
+The older joint #249/#257 paper is retained for provenance; it is not the
+entry point for either problem. Its arguments and release history can be
+inspected in the [archived PDF](archive/erdos249-257-main-paper.pdf) and
+[LaTeX source](archive/erdos249-257-main-paper.tex). Use the individual papers
+above for the current work.
+
+</details>
+
+<details>
+<summary>Commands for agents following a paper into the source</summary>
+
 ### Returning from a problem note to checked evidence
 
 The notes are exposition, not proof authority.  To return from any note to the
@@ -64,114 +90,42 @@ use the route-memory command in the last column.
 | #1041 | `python3 scripts/query_corpus.py --route erdos_1041` | `python3 scripts/query_route_memory.py --problem 1041` |
 | #1049 | `python3 scripts/query_corpus.py --route erdos_1049` | `python3 scripts/query_route_memory.py --problem 1049` |
 
-## What the two paper forms do
 
-The eight short papers are the reader entry points. The eight complete
-reasoning records preserve the wider working context and are neither proof
-authority nor substitutes for the shorter papers.
+</details>
 
-Lean files are proof authority only for the exact declarations they check;
-[`docs/claims.json`](../docs/claims.json) records selected public claim
-interfaces. Kernel checking a root module does not promote every declaration
-into a reviewed public claim. The papers also contain ordinary mathematical
-reasoning and explicitly attributed external results, with their verification
-limits stated locally.
+## Build and update
 
-The notes share `problem-note-preamble.tex`, which fixes the house macros and
-the one pinned source revision every link resolves against. Links are validated
-against that pinned commit rather than the working tree, so a note cannot decay
-when a later wave moves declarations:
+Run from the repository root, with Tectonic or a TeX Live installation:
 
 ```sh
-python3 ../scripts/check_problem_note_sources.py --coverage
+make -C paper
 ```
 
-Pinning buys safety at a price: a note whose links can never break can instead
-fall silently behind. `--coverage` is the meter for that. It reports, per
-problem, the fraction of the declarations that exist **now** which the note
-actually links, and whether the modules have changed since the pin, and it
-fails below `note_coverage_floor` in `docs/problem_index_source.json`. Drift is
-therefore a failing check with a worklist attached, not something a reader
-discovers.
+The Makefile builds the manuscripts registered in
+[`docs/publication_contract.json`](../docs/publication_contract.json) and
+copies the PDFs into their problem or systems directory under `paper/`.
+The temporary build PDFs in `paper/` are not the published copies.
 
-When a note falls through the floor: rewrite it against the current source,
-repin `\commit` in the shared preamble to a commit that is **pushed** (links
-resolve on GitHub, so an unpushed local merge is not a valid pin), rebuild, and
-refresh the digests in `docs/publication_contract.json`.
-
-That last step has a command; it is not a hand edit. `python3
-scripts/check_publication_contract.py --restamp` prints every digest that no
-longer describes the file it names, and `--restamp --apply` writes them. It
-touches nothing but those digest strings, so the title, claim scope, and
-authority posture of a row stay where a human put them — read `git diff` on the
-source first and confirm the revision is one you meant to publish, because the
-command recomputes bytes, it does not review mathematics. It refuses any row
-whose `.tex` moved while its `.pdf` did not: that pair means the published PDF
-was never rebuilt from the source beside it, and stamping the new source would
-record a manuscript the released artifact does not print. Rebuild the PDF and
-restamp the pair together.
-
-`docs/problems.json`, built by `scripts/build_problem_index.py`, is the
-machine-readable index over the same material: one row per problem naming its
-modules, its note, what is checked, what is not, and the obligation that
-survives.
-
-To add a note, write the `.tex`, add its stem to `PAPERS` and `NOTES` in the
-`Makefile`, register it once in `docs/publication_contract.json` with class
-`problem_note`, add its rendered PDF to the CC-BY override in `REUSE.toml`, add
-its row to `publication_architecture.problem_series` in `docs/claims.json`, and
-add its problem to `docs/problem_index_source.json`. The contract checker fails
-if any of those five are missing.
-
-## Systems and historical papers
-
-| Role | Paper |
-|---|---|
-| Publication architecture | [Problem-Sized Lean Worlds](systems/claim-faithful-publication-systems-paper.pdf) ([source](claim-faithful-publication-systems-paper.tex)) |
-| Agent navigation and validation | [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](cold-clone-to-proof-receipt.tex)) |
-| Open participation and credit | [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](open-source-mathematics-strategy.tex)) |
-| Retired joint #249/#257 record | [Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257](archive/erdos249-257-main-paper.pdf) ([source](erdos249-257-main-paper.tex)) |
-
-The three systems papers explain the repository architecture, cold-clone path,
-and contribution model. They make no claim of a solved endpoint, peer review,
-community acceptance, or measured improvement in mathematical discovery. The
-joint #249/#257 record remains available for provenance, while the individual
-problem papers above are the maintained reader routes.
-
-## Build
+After editing a manuscript, rebuild its PDF before updating its recorded
+digests. The following command previews digest changes; add `--apply` only
+after reviewing the source and rebuilt PDF:
 
 ```sh
-# with tectonic (recommended; fetches TeX packages on first run)
-tectonic erdos249-257-main-paper.tex
-
-# or with a TeX Live install
-pdflatex erdos249-257-main-paper.tex && pdflatex erdos249-257-main-paper.tex
-
-# or
-make
+python3 scripts/check_publication_contract.py --restamp
 ```
 
-The outputs include all 20 native manuscripts registered in
-[`docs/publication_contract.json`](../docs/publication_contract.json): eight
-short papers, eight complete reasoning records, the retired joint paper, and
-three repository-level papers. `make` currently synchronises every rendered
-PDF to the repository root; the publication contract and public links presently
-depend on that location.
+The statement links inside a paper identify the exact proof-source revision
+used for that paper. They serve reproducibility. They are not a reason to
+keep an older manuscript on the reading path. When the source changes, update
+the explanation and source links together, rebuild the PDF, and check its
+coverage against the current proofs:
 
-## Contents
+```sh
+python3 scripts/check_problem_note_sources.py --coverage
+python3 scripts/refresh_projections.py
+python3 docs/papers/check_paper_corpus.py
+```
 
-The bullets below index the archived joint record for historical navigation;
-the canonical reader route is the individual problem note for the question at
-hand. The systems paper is outlined by its description above.
-
-- The Mersenne–Lambert ladder that places both constants on one line.
-- The [composite-dilation defect](../lean/Erdos249257/CompositeDilationDefect.lean):
-  an exact foreign-divisor correction, zero on prime support, with no arbitrary-
-  support tail bound or irrationality conclusion.
-- Erdős–Borwein-type irrationality (the #257 direction): full support at every base, plus named infinite-support cases.
-- The totient constant `S` (Erdős #249): the unconditional denominator bound, the coprimality reading, and the exact reduction to finite certificates.
-- Formalisation architecture and mathematical lessons: how infinite questions are separated from finite kernel-checkable witnesses.
-- The formalisation method: how checked statements, finite computations, exact reductions, and the unresolved steps in Erdős #249 and #257 are kept distinct.
-- Artefact availability, verification, and a conclusion stating the exact open boundaries once.
-- Auxiliary binary-carry criteria and the compact declaration map in appendices.
-- The sublogarithmic zero-window theorem for divisor coverage forced by a hypothetical rational support value.
+The last check rejects a Markdown mirror or recorded PDF that no longer
+matches its manuscript. Refresh the paper corpus through its owning exporter
+when that check reports a stale mirror; do not hand-edit a generated copy.

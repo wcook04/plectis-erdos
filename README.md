@@ -10,7 +10,7 @@ that remain, so another researcher can inspect the work and continue from it.
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
-[All papers](docs/papers/README.md) ·
+[All papers](paper/README.md) ·
 [Contact me](https://wcook04.github.io/plectis/#contact)
 
 ![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
@@ -60,9 +60,6 @@ Lean-checked results and open questions.
 
 [Read the result summaries and their limits](docs/RESULTS.md#problem-by-problem-guide),
 including prior work, what was checked, and the questions that remain.
-
-The [joint #249/#257 manuscript](paper/archive/erdos249-257-main-paper.pdf) is
-archive and provenance only; use the individual papers above for current work.
 
 ## What the checks establish
 

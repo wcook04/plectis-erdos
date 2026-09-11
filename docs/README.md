@@ -11,7 +11,7 @@ useful failed approach without solving one.
 ## Read
 
 - [A reader's way in](READING_GUIDE.md): an introduction without commands or Lean.
-- [The papers](papers/README.md): the eight problems and their papers.
+- [The papers](../paper/README.md): the current short papers and longer records.
 - [Results and open questions](RESULTS.md): the stated progress and its limits.
 - [Prior work](PRIOR_ART.md): antecedents, attribution and comparisons.
 - [Related problems](RELATED_PROBLEMS.md): connections across the collection.

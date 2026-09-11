@@ -68,6 +68,7 @@ def main() -> None:
     reader_surfaces = (
         ROOT / "README.md",
         HUMAN_ENTRY,
+        ROOT / "paper/README.md",
         ROOT / "docs/README.md",
         ROOT / "docs/RESULTS.md",
         ROOT / "docs/AGENT_WORKBENCH.md",
@@ -117,8 +118,8 @@ def main() -> None:
         "README must not predict unreleased models",
     )
     require(
-        "archive and provenance" in readme,
-        "README does not label the combined manuscript as archive/provenance",
+        "paper/archive/" not in readme,
+        "README must lead with the current papers, not an archived manuscript",
     )
     require(
         "AGENTS.md" in readme and "docs/AGENT_WORKBENCH.md" in readme,
