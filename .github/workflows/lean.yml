@@ -248,17 +248,22 @@ jobs:
       - name: Verify elaborated dependency index
         id: dependency-index
         if: steps.lean-inputs.outputs.changed == 'true'
-        # The coordinated build above is the sole compilation owner. This
-        # explicit full check exports that already-built environment and writes
-        # its exact receipt into .lake; plain --check is always noncompiling.
+        # The coordinated build above is the sole compilation owner. Plain
+        # --check is always noncompiling and is enough when the tracked receipt
+        # already matches this tree (the usual follow-up after landing a CI
+        # export). --full-check is the exporter; --write-stale keeps that
+        # in-run packet on disk so a stale check does not launch a second
+        # 90-minute export. The job still fails on a miss: the artifact is
+        # evidence for a commit, not a waiver of the check.
         continue-on-error: true
         env:
           PLECTIS_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale
-      # --check --full-check already ran the exporter. --write-stale keeps that
-      # in-run packet on disk when the tracked index is stale, so the upload
-      # below does not start a second 90-minute export. The job still fails:
-      # the artifact is evidence for a commit, not a waiver of the check.
+        run: |
+          set -euo pipefail
+          if python3 scripts/build_lean_dependency_index.py --check; then
+            exit 0
+          fi
+          python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale
       # Upload the tracked JSON as "fresh" only when the exporter actually
       # completed and wrote that packet. A timeout, crash, or cancel must not
       # relabel the pre-existing tracked files as this checkout's export.

@@ -503,6 +503,12 @@ class LeanFastBuildTests(unittest.TestCase):
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"
         )
+        # A current tracked receipt must not launch the 90-minute exporter.
+        # The exporter remains the fallback when --check is stale.
+        self.assertIn(
+            "if python3 scripts/build_lean_dependency_index.py --check; then",
+            workflow,
+        )
         self.assertIn(
             "python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale",
             workflow,
