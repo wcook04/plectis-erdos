@@ -27,6 +27,7 @@ from build_module_synopsis_index import (
     QUERY_CONTRACT as MODULE_SYNOPSIS_QUERY_CONTRACT,
     SCHEMA as MODULE_SYNOPSIS_SCHEMA,
 )
+from lean_source import library_storage_path, library_storage_variants
 
 ROOT = Path(__file__).resolve().parent.parent
 DECLARATION_SEARCH_INDEX = ROOT / "docs" / "declaration_search_index.json.gz"
@@ -1130,8 +1131,9 @@ def declaration_row_indexes() -> dict[str, Any]:
     by_source: dict[tuple[str, int, str], dict[str, Any]] = {}
     for row in atlas_declarations(atlas):
         by_name.setdefault(row["name"], []).append(row)
-        by_module.setdefault(row["module"], []).append(row)
-        by_source[(row["module"], row["line"], row["name"])] = row
+        for variant in library_storage_variants(row["module"]):
+            by_module.setdefault(variant, []).append(row)
+            by_source[(variant, row["line"], row["name"])] = row
     for rows in by_module.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
     return {
@@ -2377,7 +2379,12 @@ def artifact_packet(handle: str) -> dict[str, Any]:
     matches = [
         row
         for row in artifact_inventory()
-        if handle in (row["artifact_handle"], row["content_digest"])
+        if handle
+        in (
+            row["artifact_handle"],
+            row["content_digest"],
+            Path(str(row["artifact_handle"])).name,
+        )
     ]
     if not matches:
         raise KeyError(f"unknown registered artifact or content digest: {handle}")
@@ -2407,6 +2414,8 @@ def publication_artifact_packet(artifact_id: str) -> dict[str, Any]:
     identities = []
     for variant in ("source", "rendered"):
         path = artifact[f"{variant}_path"]
+        if variant == "rendered":
+            path = artifact.get("storage_path") or path
         expected = artifact[f"{variant}_content_digest"]
         actual = "sha256:" + hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
         identities.append(
@@ -4172,7 +4181,10 @@ def declaration_externally_addressable(row: dict[str, Any]) -> bool:
 def cached_source_lines(module_path: str) -> tuple[str, ...]:
     """Read a source once for repeated coordinate and declaration queries."""
 
-    return tuple((ROOT / module_path).read_text(encoding="utf-8").splitlines())
+    path = ROOT / module_path
+    if not path.is_file():
+        path = ROOT / library_storage_path(module_path)
+    return tuple(path.read_text(encoding="utf-8").splitlines())
 
 
 def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
@@ -4281,6 +4293,14 @@ def resolve_module_handle(handle: str) -> tuple[dict[str, Any], str]:
         or indexes["by_path"].get(handle)
         or indexes["by_path"].get(normalized)
     )
+    if module is None:
+        for candidate in (handle, normalized):
+            for variant in library_storage_variants(candidate):
+                module = indexes["by_path"].get(variant)
+                if module is not None:
+                    break
+            if module is not None:
+                break
     if module is None and alias is None:
         stem_matches = indexes["by_stem"].get(
             Path(handle).name.removesuffix(".lean").casefold(), []
@@ -9490,7 +9510,6 @@ def paper_reading_guide_packet() -> dict[str, Any]:
                 "not_authority_for": row["not_authority_for"],
             }
         )
-    default_gateway = artifact_index["human_exposition"]
     paper_index = {row["paper_id"]: row for row in papers}
     paper_by_problem = {
         int(row["erdos_number"]): row["paper"]["paper_id"] for row in problems
@@ -9538,6 +9557,31 @@ def paper_reading_guide_packet() -> dict[str, Any]:
             "exact_boundary",
         )
     }
+    current_notes = [
+        row for row in artifacts if row.get("artifact_class") == "problem_note"
+    ]
+    archival_joint = next(
+        (
+            row
+            for row in artifacts
+            if row.get("artifact_class") == "archival_joint_manuscript"
+        ),
+        artifact_index.get("human_exposition"),
+    )
+    frontier_paper_id = mathematical_default_gateway["paper_id"]
+    default_gateway = next(
+        (
+            row
+            for row in current_notes
+            if Path(row["source_path"]).stem == frontier_paper_id
+            or Path(row["rendered_path"]).stem == frontier_paper_id
+        ),
+        current_notes[0] if current_notes else None,
+    )
+    if default_gateway is None:
+        raise ValueError("no current problem-note entrance is registered")
+    if archival_joint is not None and default_gateway["id"] == archival_joint["id"]:
+        raise ValueError("archived joint manuscript selected as current entrance")
     return {
         "kind": "paper_reading_guide",
         "schema_version": "erdos249257-paper-reading-guide/1",
@@ -9548,6 +9592,8 @@ def paper_reading_guide_packet() -> dict[str, Any]:
         "mathematical_signal_spine": signal,
         "papers": papers,
         "default_gateway": default_gateway,
+        "historical_joint_manuscript": archival_joint,
+        "current_mathematical_entrances": current_notes,
         "mathematical_default_gateway": mathematical_default_gateway,
         "recommended_routes": {
             "understand_the_mathematics": [

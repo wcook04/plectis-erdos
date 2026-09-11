@@ -698,7 +698,19 @@ def validate_paper_guide() -> None:
     assert packet["recommended_routes"]["understand_the_mathematics"][0][
         "path"
     ] == ranked[0]["preferred_read_path"]
-    assert packet["default_gateway"]["id"] == "human_exposition"
+    assert packet["default_gateway"]["id"] != "human_exposition"
+    assert packet["default_gateway"]["artifact_class"] == "problem_note"
+    assert packet["historical_joint_manuscript"]["id"] == "human_exposition"
+    assert packet["historical_joint_manuscript"]["artifact_class"] == (
+        "archival_joint_manuscript"
+    )
+    assert all(
+        row["artifact_class"] == "problem_note"
+        for row in packet["current_mathematical_entrances"]
+    )
+    assert "human_exposition" not in {
+        row["id"] for row in packet["current_mathematical_entrances"]
+    }
     assert all(
         row["paper_id"] == paper_by_problem[int(row["problem"])]
         for row in signal["natural_friction"]["results"]
@@ -2041,8 +2053,8 @@ def main() -> int:
         row["source_route"] for row in expected_families
     ]
     module_graph = claims_document["machine_readable_paper"]["module_graph"]
-    assert module_graph["root"] == "Erdos249257.lean"
-    assert module_graph["additional_roots"] == ["ErdosProblems.lean"]
+    assert module_graph["root"] == "lean/Erdos249257.lean"
+    assert module_graph["additional_roots"] == ["lean/ErdosProblems.lean"]
     assert summary["scale"]["module_count"] == (
         len(module_graph["nodes"])
         + 1

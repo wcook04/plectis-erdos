@@ -20,28 +20,37 @@ ROOT = Path(__file__).resolve().parent.parent
 APACHE = "Apache-2.0"
 MANUSCRIPT_LICENSE = "CC-BY-4.0"
 SPDX_LICENSE_HEADER = "SPDX-License-" "Identifier: "
-def rendered_artifacts(root: Path) -> set[str]:
-    """The rendered-artifact set as published, not every PDF under paper/.
 
-    Storage lives under ``paper/<id>/``. Makefile output may still appear as
-    ``paper/<basename>.pdf`` before sync; those copies are not the published set.
-    """
+from publication_contract import (
+    contract_publication_pdfs,
+    publication_census_errors,
+    tracked_publication_pdfs,
+)
+
+
+def expected_manuscript_binaries(root: Path) -> set[str]:
+    """License override: contract PDFs plus banner figures that exist on disk."""
     import json
 
     contract = json.loads((root / "docs" / "publication_contract.json").read_text(encoding="utf-8"))
-    found = {artifact["storage_path"] for artifact in contract["artifacts"]}
+    found = contract_publication_pdfs(contract)
     found |= {
         f".github/{path.name}"
         for path in (root / ".github").glob("*.png")
         if path.is_file()
     }
     return found
-    found |= {
+
+
+def rendered_artifacts(root: Path) -> set[str]:
+    """Independently observed publication files, not the contract registry."""
+    observed = tracked_publication_pdfs(root)
+    observed |= {
         f".github/{path.name}"
         for path in (root / ".github").glob("*.png")
         if path.is_file()
     }
-    return found
+    return observed
 
 
 MANUSCRIPT_SOURCES = {
@@ -211,7 +220,7 @@ def license_map_errors(
         errors.append("REUSE.toml must contain one CC-BY-4.0 override")
     else:
         observed = annotation_paths(manuscript_overrides[0])
-        if observed != rendered_artifacts(ROOT):
+        if observed != expected_manuscript_binaries(ROOT):
             errors.append(
                 "REUSE.toml manuscript binary override must match the exact "
                 "rendered-artifact set"
@@ -280,7 +289,7 @@ def main() -> int:
 
     incomplete_override = copy.deepcopy(config)
     incomplete_override["annotations"][1]["path"] = sorted(
-        rendered_artifacts(ROOT) - {"paper/archive/erdos249-257-main-paper.pdf"}
+        expected_manuscript_binaries(ROOT) - {"paper/archive/erdos249-257-main-paper.pdf"}
     )
     require_reports(
         license_map_errors(
