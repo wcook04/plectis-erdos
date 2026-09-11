@@ -68,125 +68,175 @@ with **#257** for full-support irrationality and achievement-set measure, or
 **#249** for exact kernel rank, finite certificates, and recorded routes that
 stopped. [RESULTS](docs/RESULTS.md) summarises progress across all eight.
 
-- **[#68](https://www.erdosproblems.com/68)** · Factorial-denominator irrationality ·
-  [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
-  [longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf).
-  A GMP non-unit carry at `m = 300000` and a continued-fraction bound
-  `q ≥ 2^39990` are incomparable finite exclusions. Producing cofinal carries
-  remains open.
-- **[#243](https://www.erdosproblems.com/243)** · Reciprocal-tail rigidity ·
-  [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) ·
-  [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf).
-  After Koizumi's normalised vanishing, a bound on the upward steps of the
-  unreduced integer numerator forces eventual Sylvester recurrence; the
-  numerator itself need not be assumed bounded. Unbounded upward excursions
-  of that numerator remain open. Duverney (2001) and the Tao–Kovač line are
-  prior art on the page; cubic-rate vanishing is not claimed as empty-page
-  news.
-- **[#249](https://www.erdosproblems.com/249)** · Binary totient series ·
-  [short paper](paper/249/erdos-249-binary-totient-series.pdf) ·
-  [longer paper](paper/249/erdos249-totient-reasoning-surface.pdf).
-  Bounded-residue series `A_m` are irrational for `m ≥ 3`, with a complete
-  dyadic-modulus classification ([§2](paper/249/erdos-249-binary-totient-series.pdf);
-  ordinary mathematics, not Lean). Separately: exact dyadic-kernel rank
-  `2^e + 1`, denominator exclusion to about `7.96 × 10³⁴`, diagonal
-  certificates through `t ≤ 82`, and no-go theorems for the shortcuts. This is
-  not an infinite witness for irrationality.
-- **[#251](https://www.erdosproblems.com/251)** · Prime-gap dyadic series ·
-  [short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) ·
-  [longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf).
-  A sparse perturbation of the prime gaps can have a rational dyadic sum
-  while retaining the prime growth scale, every fixed eventual congruence,
-  and asymptotically the same short-block statistics. The later positions
-  are not asserted to be prime. This is complementary to Land's conditional
-  result, not a refutation; the original problem remains open.
-- **[#257](https://www.erdosproblems.com/257)** · Mersenne-support subseries ·
-  [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) ·
-  [longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf).
-  For every infinite reciprocal-summable support, the Mersenne subseries is
-  irrational at every integer base `b ≥ 2` (short paper §2; ordinary
-  mathematics, not Lean). Erdős stated that coprimality-free extension; the
-  note writes out an averaging proof. Full-support irrationality at every
-  integer base is classical (Erdős 1948) and Lean-checked here.
-  The base-2 achievement set has measure one.
-  Pairwise-coprime plus summable-reciprocal support is Lean. Arbitrary
-  infinite support, and the `1/2` and `1/21` branches, remain open.
-- **[#269](https://www.erdosproblems.com/269)** · Three-prime running LCM ·
-  [short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) ·
-  [longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf).
-  Steve Fan's two-prime factorisation
-  ([erdosproblems.com/269](https://www.erdosproblems.com/forum/thread/269),
-  26 June 2026) is his; no priority or Lean theorem is claimed for it. At
-  three primes, one binary carry produces nonsingular selected kernel minors
-  of every order. The actual-series reduction is given; the source-specific
-  cofinal escape remains unproved. Three-prime irrationality remains open.
-- **[#1041](https://www.erdosproblems.com/1041)** · Lemniscates and Newton flow ·
-  [short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) ·
-  [longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf).
-  Every monic trinomial `z^n + a z^m + b` with roots in the open unit disc
-  has each root-to-origin segment inside `{|f|<1}`, so any two roots join
-  through the origin with length less than `2`. Separately, a sharp Poisson
-  critical-value mean holds for zeros in the closed unit disc. Both are
-  ordinary proofs. Lean checks Newton-flow decay, ray-separating translations,
-  and perturbative root retention; three solved-family kernels are
-  Comparator-checked. The unrestricted path problem remains open. Forum
-  discussion of a degree-7 counterexample is a reported external claim, not a
-  theorem of this repository.
-- **[#1049](https://www.erdosproblems.com/1049)** · Rational-base Lambert series ·
-  [short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) ·
-  [longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf).
-  An ordinary specialization of Zudilin 2004 proves `F(31/4)` (and its positive
-  powers) irrational; that headline is not a Lean theorem. Lean checks
-  supporting height-region arithmetic, the `3/2` corridor exclusion, the
-  cleared-tail recurrence, and selected Hankel identities. The outstanding
-  `3/2` obligation is an approximant family with remainder control.
+### #68: Factorial-denominator irrationality
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_68.html) ·
+[Original question](https://www.erdosproblems.com/68) ·
+[short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
+[longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf).
+
+A GMP non-unit carry at `m = 300000` and a continued-fraction bound
+`q ≥ 2^39990` are incomparable finite exclusions. Producing cofinal carries
+remains open.
+
+### #243: Reciprocal-tail rigidity
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_243.html) ·
+[Original question](https://www.erdosproblems.com/243) ·
+[short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) ·
+[longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf).
+
+After Koizumi's normalised vanishing, a bound on the upward steps of the
+unreduced integer numerator forces eventual Sylvester recurrence; the
+numerator itself need not be assumed bounded. Unbounded upward excursions
+of that numerator remain open. Duverney (2001) and the Tao–Kovač line are
+prior art on the page; cubic-rate vanishing is not claimed as empty-page
+news.
+
+### #249: Binary totient series
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_249.html) ·
+[Original question](https://www.erdosproblems.com/249) ·
+[short paper](paper/249/erdos-249-binary-totient-series.pdf) ·
+[longer paper](paper/249/erdos249-totient-reasoning-surface.pdf).
+
+Bounded-residue series `A_m` are irrational for `m ≥ 3`, with a complete
+dyadic-modulus classification ([§2](paper/249/erdos-249-binary-totient-series.pdf);
+ordinary mathematics, not Lean). Separately: exact dyadic-kernel rank
+`2^e + 1`, denominator exclusion to about `7.96 × 10³⁴`, diagonal
+certificates through `t ≤ 82`, and no-go theorems for the shortcuts. This is
+not an infinite witness for irrationality.
+
+### #251: Prime-gap dyadic series
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_251.html) ·
+[Original question](https://www.erdosproblems.com/251) ·
+[short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) ·
+[longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf).
+
+A sparse perturbation of the prime gaps can have a rational dyadic sum
+while retaining the prime growth scale, every fixed eventual congruence,
+and asymptotically the same short-block statistics. The later positions
+are not asserted to be prime. This is complementary to Land's conditional
+result, not a refutation; the original problem remains open.
+
+### #257: Mersenne-support subseries
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_257.html) ·
+[Original question](https://www.erdosproblems.com/257) ·
+[short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) ·
+[longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf).
+
+For every infinite reciprocal-summable support, the Mersenne subseries is
+irrational at every integer base `b ≥ 2` (short paper §2; ordinary
+mathematics, not Lean). Erdős stated that coprimality-free extension; the
+note writes out an averaging proof. Full-support irrationality at every
+integer base is classical (Erdős 1948) and Lean-checked here.
+The base-2 achievement set has measure one.
+Pairwise-coprime plus summable-reciprocal support is Lean. Arbitrary
+infinite support, and the `1/2` and `1/21` branches, remain open.
+
+### #269: Three-prime running LCM
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_269.html) ·
+[Original question](https://www.erdosproblems.com/269) ·
+[short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) ·
+[longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf).
+
+Steve Fan's two-prime factorisation
+([erdosproblems.com/269](https://www.erdosproblems.com/forum/thread/269),
+26 June 2026) is his; no priority or Lean theorem is claimed for it. At
+three primes, one binary carry produces nonsingular selected kernel minors
+of every order. The actual-series reduction is given; the source-specific
+cofinal escape remains unproved. Three-prime irrationality remains open.
+
+### #1041: Lemniscates and Newton flow
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_1041.html) ·
+[Original question](https://www.erdosproblems.com/1041) ·
+[short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) ·
+[longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf).
+
+Every monic trinomial `z^n + a z^m + b` with roots in the open unit disc
+has each root-to-origin segment inside `{|f|<1}`, so any two roots join
+through the origin with length less than `2`. Separately, a sharp Poisson
+critical-value mean holds for zeros in the closed unit disc. Both are
+ordinary proofs. Lean checks Newton-flow decay, ray-separating translations,
+and perturbative root retention; three solved-family kernels are
+Comparator-checked. The unrestricted path problem remains open. Forum
+discussion of a degree-7 counterexample is a reported external claim, not a
+theorem of this repository.
+
+### #1049: Rational-base Lambert series
+
+[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_1049.html) ·
+[Original question](https://www.erdosproblems.com/1049) ·
+[short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) ·
+[longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf).
+
+An ordinary specialization of Zudilin 2004 proves `F(31/4)` (and its positive
+powers) irrational; that headline is not a Lean theorem. Lean checks
+supporting height-region arithmetic, the `3/2` corridor exclusion, the
+cleared-tail recurrence, and selected Hankel identities. The outstanding
+`3/2` obligation is an approximant family with remainder control.
 
 The [joint #249/#257 manuscript](paper/archive/erdos249-257-main-paper.pdf) is
 archive and provenance only; the papers above are the current entrances.
 
 ## What the checks establish
 
-The checks connect the public claims to their formal statements and sources. The
-[comprehension graph](docs/semantic/README.md) is the map: every declaration in
-the atlas, the statements they make, and typed relations between them, so a
-theorem can be seen as a reformulation or finite instance of the open problem
-rather than the problem itself. Comparator is a second formal check of the 47
-selected interfaces recorded in [`formalization.yaml`](formalization.yaml): each
-is declared again without its proof, then checked against a proof-bearing
-solution and a fixed axiom budget. The public wording is
-Comparator-checked against a separately declared statement and axiom budget.
-The [verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight
-problem programmes. Do not infer results from private or unreleased work.
+Lean checks that a proof establishes the exact formal statement written in
+the source. The papers explain the mathematics; the other records let you
+trace a public claim back to its statement, evidence, and limitations.
 
-The [methodology](METHODOLOGY.md) outlines what each check does and does not
-establish. [`docs/claims.json`](docs/claims.json) covers claim status and
-[prior art](docs/PRIOR_ART.md) records earlier and subsuming work. None of it
-decides whether a statement captures the intended problem, is new, or solves
-anything, which requires expert review.
+- The [comprehension graph](docs/semantic/README.md) maps declarations,
+  their statements, and the relations between them. It helps distinguish a
+  reformulation or finite instance from the original open problem.
+- **Comparator** gives the 47 selected interfaces in
+  [`formalization.yaml`](formalization.yaml) a second formal check. Each
+  statement is declared again without its proof, then checked against a
+  proof-bearing solution and a fixed axiom budget.
+- The [verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight
+  problem programmes. The [claim records](docs/claims.json) give public claim
+  status, and [prior art](docs/PRIOR_ART.md) records earlier and subsuming work.
+
+The [methodology](METHODOLOGY.md) explains what each check establishes.
+These checks do not decide whether a statement captures the intended problem,
+is new, or solves anything. That requires expert review. Do not infer results
+from private or unreleased work.
 
 ## Contribute
 
 An idea, a correction, a counterexample, a failed route with a checkable
 reason, clearer exposition, a validation of a claim or a repaired check all
-count. Open the
-[plain-language research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
-or a pull request. Accepted work gets a public receipt. The
-[credit policy](docs/research-commons/CREDIT_POLICY.md) gives the exact
-boundary. You can also [email me](https://wcook04.github.io/plectis/#contact).
+count. You can also contribute mathematical direction, infrastructure
+improvements, or a research run using your own coding agent and compute.
+
+- **Have an idea or correction?** Use the
+  [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
+  or [email me](https://wcook04.github.io/plectis/#contact).
+- **Have a change to the repository?** Open a pull request following
+  [CONTRIBUTING](CONTRIBUTING.md).
+- **Want to work on an open question?** The
+  [eight-frontier issue](https://github.com/wcook04/plectis-erdos/issues/105)
+  lists starting points; the [frontier relay](docs/FRONTIER_RELAY.md) explains
+  how to return a research run from an exact public revision.
+
+Accepted work gets a public receipt. The
+[credit policy](docs/research-commons/CREDIT_POLICY.md) explains how contributions
+are attributed.
 
 If you solve a problem, the credit is yours. If this repo helped, please cite
 the release and say how. Anyone can contribute, including by formalising
 mathematics already known analytically, and receive due credit.
 
-To continue from one exact public revision, use the
-[frontier relay](docs/FRONTIER_RELAY.md) and [CONTRIBUTING](CONTRIBUTING.md).
 **Experts:** email me any insight. I will do the work and fully credit you.
 
 ## Read or verify locally
 
-Every command lives in [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) and the
-[agent workbench](docs/AGENT_WORKBENCH.md): claim verifier, reader-only and
-quick Lean checkouts, complete proof source, full release replay.
+[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) and the
+[agent workbench](docs/AGENT_WORKBENCH.md) contain the commands for checking a
+claim, making a small reading or Lean checkout, and replaying a full release.
 [ARCHITECTURE](ARCHITECTURE.md) and the [source map](docs/SOURCE_MAP.md)
 assume no Lean and no project history.
 
