@@ -2568,7 +2568,7 @@
       "problem": 1049,
       "status": "open",
       "frontier_summary": "The coordinatewise corridor is impossible at base 3/2 and the exact rational-base cleared-tail recurrence is checked.",
-      "open_boundary": "Irrationality at base 3/2 and for rational bases generally.",
+      "open_boundary": "The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
         "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
