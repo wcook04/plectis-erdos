@@ -42,7 +42,11 @@ from collections import Counter
 import stat
 from pathlib import Path
 
-from build_semantic_corpus import semantic_input_fingerprint
+from build_semantic_corpus import (
+    declaration_key,
+    public_atlas_declaration,
+    semantic_input_fingerprint,
+)
 from lean_source import library_storage_path
 from semantic_review import REGISTRY as SEMANTIC_REVIEWS
 from semantic_review import attached_receipt_errors, formal_source_revision
@@ -336,7 +340,12 @@ def main() -> int:
 
     nodes = {n["id"]: n for n in corpus["statement_nodes"]}
     roles = {r["id"]: r for r in corpus["declaration_roles"]}
-    atlas_rows = {r["id"]: r for r in atlas["declarations"]}
+    # Atlas storage ids are lean/…:line:name; corpus roles use public identity.
+    # Join on the identity key so both spellings resolve to one row.
+    atlas_rows = {}
+    for raw in atlas["declarations"]:
+        public = public_atlas_declaration(raw)
+        atlas_rows[public["id"]] = public
 
     review_errors = attached_receipt_errors(
         load(SEMANTIC_REVIEWS),
@@ -682,9 +691,10 @@ def main() -> int:
         consumers = row.get("consumer_declarations", [])
         check(bool(consumers), f"expert question {qid} names no checked consumer")
         for consumer in consumers:
-            key = (
-                f"{consumer.get('module')}:{consumer.get('line')}:"
-                f"{consumer.get('declaration')}"
+            key = declaration_key(
+                str(consumer.get("module") or ""),
+                str(consumer.get("declaration") or ""),
+                consumer.get("line"),
             )
             check(
                 key in atlas_rows,

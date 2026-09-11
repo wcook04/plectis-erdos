@@ -566,6 +566,27 @@ def module_synopsis(rel: str) -> str | None:
 
 
 @lru_cache(maxsize=1)
+def layout_invariant_source_fingerprint() -> str:
+    """Atlas source hash with ``lean/`` stripped from corpus-relative paths.
+
+    Nested-layout storage changes the ordinary atlas fingerprint even when
+    the Lean blobs and module identities are unchanged. The elaborated
+    dependency index is still valid in that case and must not look stale.
+    """
+    from build_declaration_atlas import (
+        _update_source_digest,
+        safe_atlas_text,
+        source_paths,
+    )
+
+    digest = hashlib.sha256()
+    for path in source_paths():
+        relative = library_identity_path(path.relative_to(ROOT).as_posix())
+        _update_source_digest(digest, relative, safe_atlas_text(path))
+    return f"sha256:{digest.hexdigest()}"
+
+
+@lru_cache(maxsize=1)
 def lean_dependency_index() -> dict[str, Any] | None:
     path = ROOT / "docs/lean_dependency_index.json"
     if not path.is_file():
@@ -575,10 +596,15 @@ def lean_dependency_index() -> dict[str, Any] | None:
         atlas = load("docs/declaration_atlas.json")
     except (json.JSONDecodeError, OSError, KeyError):
         return None
+    packet_fingerprint = packet.get("source_fingerprint")
+    atlas_fingerprint = atlas.get("source_fingerprint")
+    fingerprint_current = packet_fingerprint == atlas_fingerprint or (
+        packet_fingerprint == layout_invariant_source_fingerprint()
+    )
     if (
         packet.get("schema_version")
         != "erdos249257-lean-dependency-index/3"
-        or packet.get("source_fingerprint") != atlas.get("source_fingerprint")
+        or not fingerprint_current
         or not isinstance(packet.get("nodes"), list)
         or not isinstance(packet.get("edges"), list)
     ):
@@ -1377,9 +1403,13 @@ def formal_goal_candidate_rows() -> tuple[
     theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
     for handle, affordance in adjacency["formal_type_affordances"].items():
         node = adjacency["nodes_by_handle"][handle]
-        declaration = declarations.get(
-            (node["module"], node["line"], node["name"])
-        )
+        declaration = None
+        for variant in library_storage_variants(str(node.get("module") or "")):
+            declaration = declarations.get(
+                (variant, node["line"], node["name"])
+            )
+            if declaration is not None:
+                break
         if (
             node["declaration_kind"] not in theorem_kinds
             or declaration is None
