@@ -109,7 +109,7 @@
   "content_hashes": {
     "docs/claims.json": "sha256:02bf91b49fad171bda93a28951a6c722ae544138e177b69946d93430eacc94ab",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:2a0a41e81fa237ad97ff412b1d12faee191afb3f418e05057f5ec671cac8e443",
+    "docs/problems.json": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
     "docs/publication_contract.json": "sha256:7840b6d0fee125b9bfbc16db08a32a51c1205b14b4b5969c18b16848522a3687",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:2a0a41e81fa237ad97ff412b1d12faee191afb3f418e05057f5ec671cac8e443",
+      "content_digest": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
