@@ -190,7 +190,7 @@
         "family_id": "conditional_carry_escape",
         "tier_id": "conditional_endpoint_leverage",
         "within_tier_order": 2,
-        "relative_judgement": "Below the #251 small-mismatch route because both CofinalLocalWindowEscape and the rationality-to-actual-series carry bridge remain open, but above medium finite #269 machinery because the exact residue-window contradiction is the endpoint consumer that such machinery must feed."
+        "relative_judgement": "Below the #251 small-mismatch route because the source-specific cofinal escape remains unproved, but above medium finite #269 machinery because the exact residue-window contradiction is the endpoint consumer that such machinery must feed. The actual-series reduction is given."
       },
       {
         "family_id": "dyadic_tail_integrality_classification",
@@ -264,7 +264,7 @@
       {
         "family_id": "height_fibre_and_shell",
         "tier_id": "deep_mechanism_and_classification",
-        "relative_judgement": "The finite height-fibre normal form and smooth-shell bound are substantive three-prime structure, but they do not produce the divisibility bridge consumed by the carry frontier."
+        "relative_judgement": "The finite height-fibre normal form and smooth-shell bound are substantive three-prime structure, but they do not produce the source-specific cofinal escape. The actual-series reduction is given separately."
       },
       {
         "family_id": "dyadic_block_alphabet",
@@ -478,7 +478,7 @@
         "from_family_id": "weighted_phase_carry_observer",
         "relation": "mechanism_support_for",
         "to_family_id": "conditional_carry_escape",
-        "reason": "The residue/coboundary split exposes finite carry data but does not supply the cofinal escape or actual-series bridge."
+        "reason": "The residue/coboundary split exposes finite carry data but does not supply the cofinal escape."
       },
       {
         "from_family_id": "rank_two_kernel_no_go",
@@ -919,7 +919,7 @@
           "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
           "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
         ],
-        "reason": "Each is mathematically useful and independently retained, but the factorial and prime-gap rows are endpoint reductions without their missing producers, the #249 rank result does not itself prove irrationality or cofinal certificate supply, and the #269 carry-escape consumer retains both an open cofinal-window producer and an open actual-series/rationality bridge. Comparator admission strengthens traceability, not endpoint status."
+        "reason": "Each is mathematically useful and independently retained, but the factorial and prime-gap rows are endpoint reductions without their missing producers, the #249 rank result does not itself prove irrationality or cofinal certificate supply, and the #269 carry-escape consumer retains an open cofinal-window producer. The actual-series reduction is given; the source-specific cofinal escape remains unproved. Comparator admission strengthens traceability, not endpoint status."
       },
       {
         "disposition": "rejected",
@@ -1484,7 +1484,7 @@
         ],
         "comparator_declaration": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful reduced-carry consumer is committed in ExternalVerification at 069245df, registered in the source-current committed verification/comparator.json screen, and bound to the canonical conditional_carry_escape review family. Claims commit 68b4b2b adds the subordinate absorbed-factor bridge: after exact nonzero-factor cancellation it reaches that same committed reduced-carry consumer. Comparator admission strengthens traceability only: neither theorem supplies CofinalLocalWindowEscape or the rationality-to-carry identification for the actual three-prime running-LCM series.",
+        "transport_admission_boundary": "The source-faithful reduced-carry consumer is committed in ExternalVerification at 069245df, registered in the source-current committed verification/comparator.json screen, and bound to the canonical conditional_carry_escape review family. Claims commit 68b4b2b adds the subordinate absorbed-factor bridge: after exact nonzero-factor cancellation it reaches that same committed reduced-carry consumer. Comparator admission strengthens traceability only: neither theorem supplies CofinalLocalWindowEscape. The actual-series reduction is given; the source-specific cofinal escape remains unproved.",
         "source_declaration": "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape; ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape",
         "source_file": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
         "source_anchor": "629-650; 689",
@@ -1500,11 +1500,11 @@
         "attribution": "This is the source-current #269 conditional_carry_escape family from RestrictedFloorSum.lean:629-650, 689, transported by the committed ExternalVerification batch at 069245df and canonically extended with the absorbed-factor bridge by Claims commit 68b4b2b; novelty, priority, significance, and external review remain unassessed.",
         "limitations": [
           "CofinalLocalWindowEscape is an unproved producer predicate; the source supplies no cofinal escaping windows.",
-          "The rationality-to-carry bridge and identification with the actual three-prime running-LCM recurrence remain open.",
+          "The actual-series reduction is given; the source-specific cofinal escape remains unproved.",
           "It proves no #269 irrationality or transcendence endpoint and makes no novelty, priority, significance, or external-review claim."
         ],
-        "source_landscape_rank_relative_to": "Below direct endpoint families and the stronger actual-LCM/first-harmonic conditional routes; retained as subordinate conditional no-go evidence because the producer and actual-series bridge are both open.",
-        "reason": "Subordinate source-landscape evidence after source transport and Comparator admission: the residue-escape consumer is a precise reusable contradiction, but its cofinal producer and actual-series/rationality identification are missing, so it cannot compete with completed endpoints or be promoted as an Erdős #269 result.",
+        "source_landscape_rank_relative_to": "Below direct endpoint families and the stronger actual-LCM/first-harmonic conditional routes; retained as subordinate conditional no-go evidence because the source-specific cofinal escape remains unproved.",
+        "reason": "Subordinate source-landscape evidence after source transport and Comparator admission: the residue-escape consumer is a precise reusable contradiction, but its cofinal producer is missing, so it cannot compete with completed endpoints or be promoted as an Erdős #269 result. The actual-series reduction is given; the source-specific cofinal escape remains unproved.",
         "reversal_evidence": "A proof of the cofinal local-window escape predicate together with an actual running-LCM carry bridge would justify fresh ranking; another finite window search or residue identity would not."
       },
       {
@@ -2336,7 +2336,7 @@
       "declaration": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
       "family_id": "conditional_carry_escape",
       "disposition": "supporting_conditional_no_go",
-      "reason": "The exact window-residue contradiction is retained as subordinate #269 conditional endpoint leverage; CofinalLocalWindowEscape, the rationality-to-carry bridge, and actual three-prime-series identification remain unproved."
+      "reason": "The exact window-residue contradiction is retained as subordinate #269 conditional endpoint leverage. The actual-series reduction is given; the source-specific cofinal escape remains unproved."
     },
     {
       "declaration": "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",

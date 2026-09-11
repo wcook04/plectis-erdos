@@ -81,11 +81,11 @@ eventually-periodic coefficient results, and Lebesgue measure one for the
 base-2 Mersenne achievement set. Irrationality for every infinite support and
 the `1/2` and `1/21` branches remain open.
 
-**[#269](https://www.erdosproblems.com/269).** Three-prime height identity,
-nonsingular kernel minors, the `(2,3,5)` minor `-1/15`, and conditional carry
-observers. The two-prime transcendence argument is Steve Fan's (26 June 2026)
-and is not a Lean theorem. The actual-series carry bridge and three-prime
-irrationality remain open.
+**[#269](https://www.erdosproblems.com/269).** Steve Fan's two-prime
+factorisation (26 June 2026) is his and is not a Lean theorem. At three
+primes, one binary carry produces nonsingular selected kernel minors of every
+order. The actual-series reduction is given; the source-specific cofinal
+escape remains unproved. Three-prime irrationality remains open.
 
 **[#1041](https://www.erdosproblems.com/1041).** Newton-flow value decay under
 stated hypotheses, arbitrarily small translations that separate ray arguments,
@@ -765,10 +765,11 @@ core)**
   `ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:721`): the Comparator
   theorem `kernel_235_minor_eq_neg_one_fifteen` identifies the smallest
   displayed `2,3,5` kernel minor as exactly `-1/15`. This rules out the
-  displayed rank-one route only; it does not imply irrationality and does not
-  supply the missing rationality-to-irrationality bridge.
-- Open: any three-prime case; the rationality-to-carry bridge and the
-  cofinal window escape.
+  displayed rank-one route only; it does not imply irrationality. The paper's
+  stronger ordinary result is that selected minors of every order are
+  nonsingular; that rank theorem is not Comparator-checked.
+- Open: any three-prime case. The actual-series reduction is given; the
+  source-specific cofinal escape remains unproved.
 - The finite residue contradiction and conditional cofinal-window carry
   extinction are indexed as `three_prime_finite_residue_contradiction` and
   `three_prime_cofinal_window_carry_extinction` in `docs/claims.json`, with
@@ -795,10 +796,10 @@ core)**
   integer-valued carry, the exact multiplier recurrence, and its
   denominator-dependent short bound (`ExternalVerification/Challenge.lean:498-509`;
   `ErdosProblems/Erdos269/RestrictedFloorSum.lean:629-654`). Its hard step is
-  the cofinal window expansion against that bound. The escape producer and the
-  bridge from the actual three-prime running-LCM series (or its rationality) to
-  this carry remain unproved, so this is no #269 endpoint or irrationality
-  proof; it is distinct from the finite residue and weighted-phase observers.
+  the cofinal window expansion against that bound. The actual-series reduction
+  is given; the source-specific cofinal escape remains unproved, so this is no
+  #269 endpoint or irrationality proof; it is distinct from the finite residue
+  and weighted-phase observers.
 **#1041 — short connections inside polynomial lemniscates?**
 
 - The source-only frontier now has the sharper endpoint socket: on the

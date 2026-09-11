@@ -410,8 +410,8 @@
             "solution_export": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
             "solution_export_anchor": 1408,
             "mechanism": "A cofinal local-window escape has least positive residue above the allowed short bound, so positivity and the integral carry recurrence cannot coexist.",
-            "boundary": "Conditional obstruction only: the cofinal escape producer and the actual-series/rationality bridge remain open; this does not prove the actual #269 conclusion or make endpoint, novelty, priority, significance, or external-review claims.",
-            "next_research_route": "Produce the cofinal local-window escape for the actual three-prime running-LCM digit stream, then prove the actual-series/rationality bridge before applying this consumer."
+            "boundary": "Conditional obstruction only: the source-specific cofinal escape remains unproved. The actual-series reduction is given. This does not prove the actual #269 conclusion or make endpoint, novelty, priority, significance, or external-review claims.",
+            "next_research_route": "Produce the source-specific cofinal local-window escape for the actual three-prime running-LCM digit stream."
           },
           "three_prime_lcm_cells": {
             "route_id": "erdos_269_three_prime_lcm_cells",
