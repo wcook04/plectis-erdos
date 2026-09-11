@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:e56d672658265a6907fa128a49905f58c4b593aff912a949d4522c6cdc5f28ea",
+    "docs/claims.json": "sha256:7632e48ba738d17f543da48bd1454aa92a1a8b0794688db1e3744f0e521b7734",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
-    "docs/publication_contract.json": "sha256:0afc7b8508914f506f4f69cca0a816f02fa52d3b5eb8e754efdd603cda5f353c",
+    "docs/publication_contract.json": "sha256:8ed8c3166d1259a93fe3a23803b16c6f6a07caf2633058eeb27f541ff73af26a",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:ddc3cf9a7920b4c373847d3c39393c1377db05379ebad8d255d29c26de2e3f73",
