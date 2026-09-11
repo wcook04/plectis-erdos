@@ -680,15 +680,15 @@
       ],
       "what_is_not_checked": [
         "Erdos Problem 1041 in unrestricted degree.",
-        "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block.",
-        "A proof or counterexample for Proposition 12 itself; a four-pronged or cut-annulus repair may still exist.",
+        "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
+        "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
         "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
         "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
       ],
       "open_obligations": [
         {
           "id": "repair_or_refute_saddle_block",
-          "statement": "Replace the false three-ended interior saddle neighbourhood by a valid four-pronged or cut-annulus block and reprove the required incidence statement, or construct a polynomial counterexample to that incidence statement."
+          "statement": "The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality."
         },
         {
           "id": "compact_ray_cut_strip_decomposition",

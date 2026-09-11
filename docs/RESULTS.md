@@ -45,8 +45,9 @@ The remaining programmes have narrower but exact outcomes: Problem 68 is
 equivalent to a cofinal carry condition; Problem 243 has eventual Sylvester
 recurrence under a bounded or summable negative error; Problem 251 has the
 prime-gap identity and a tail-shift equivalence; Problem 269 has three-prime
-height and kernel-minor identities; Problem 1041 has local Newton-flow and
-ray-separation results; and Problem 1049 has an exact rational-base tail
+height and kernel-minor identities; Problem 1041 has an ordinary all-degree
+trinomial radial theorem and a sharp critical-value mean, with Lean
+Newton-flow and ray-separation inputs; and Problem 1049 has an exact rational-base tail
 recurrence together with a checked height region. None closes its Erdős
 problem.
 
@@ -87,10 +88,13 @@ observers. The two-prime transcendence argument is Steve Fan's (26 June 2026)
 and is not a Lean theorem. The actual-series carry bridge and three-prime
 irrationality remain open.
 
-**[#1041](https://www.erdosproblems.com/1041).** Newton-flow value decay under
-stated hypotheses, arbitrarily small translations that separate ray arguments,
-and perturbative root retention. A length-`<2` curve and the hub that would
-make one remain open.
+**[#1041](https://www.erdosproblems.com/1041).** Every monic trinomial with
+roots in the open unit disc has radial root-to-origin segments inside
+`{|f|<1}`, so any two roots join through the origin with length less than
+`2`. Separately, a sharp Poisson critical-value mean holds on the closed
+unit disc. Both are ordinary proofs. Lean checks Newton-flow decay,
+ray-separating translations, and perturbative root retention. The
+unrestricted path problem remains open.
 
 **[#1049](https://www.erdosproblems.com/1049).** Ordinary proof that `F(31/4)`
 and its positive powers are irrational (Zudilin 2004 Lemma 7 specialization);
@@ -801,15 +805,16 @@ core)**
   proof; it is distinct from the finite residue and weighted-phase observers.
 **#1041 — short connections inside polynomial lemniscates?**
 
-- The source-only frontier now has the sharper endpoint socket: on the
-  ray-separated locus, prove `min_c L(c) ≤ 2` over admissible hubs. Its
-  attachment and lower-semicontinuity reductions would then give the parent
-  theorem; the degree-five `SPOKE-5` instance would settle that degree. This is
-  not a Lean or Comparator theorem: hub selection, path containment, and the
-  degree-five supply remain open, while the earlier minimum-critical and
-  aggregate shortcuts are refuted (`research_corpus/Erdos1041/FRONTIER.md`).
-- Lean checks the supporting inputs: quantitative root retention under constant
-  perturbation (`constant_perturbation_roots_in_unitDisk`,
+- Ordinary all-degree theorem: every monic trinomial `z^n + a z^m + b` with
+  roots in the open unit disc has each root-to-origin segment inside `{|f|<1}`,
+  so any two roots join through the origin with length less than `2`. This is
+  coefficient-restricted, not a solution of the unrestricted path problem.
+- Ordinary sharp critical-value mean: for monic degree-`n` polynomials with
+  zeros in the closed unit disc,
+  `∑_{j=1}^{n-1} |f(c_j)|^{2/(n-1)} ≤ n-1`, with equality for `z^n − λ` when
+  `|λ| = 1`. The bound controls critical values, not connectors.
+- Lean checks supporting Newton-flow inputs: quantitative root retention under
+  constant perturbation (`constant_perturbation_roots_in_unitDisk`,
   `ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:287`) and arbitrarily
   small translations separating all pairwise ray arguments. More precisely,
   `exists_small_translation_separating_arguments` gives every finite injective
@@ -817,12 +822,13 @@ core)**
   value nonzero and every positive-ray argument distinct (`:197`). The
   exponential-decay connection equation is a hypothesis of the local
   ray-separation consumer, not a theorem (`:315`).
-- The note's main independent contribution is prose, not Lean: a specific
-  invalid three-ended local block at an interior Morse saddle in a recent
-  manuscript's load-bearing Proposition 12 — identified as a proof gap, not
-  a counterexample.
-- Open: repair or refute that decomposition; the planar topology and length
-  bookkeeping.
+- A Cassini example refutes the printed global tree budget of a March 2026
+  manuscript's Proposition 12; that obstruction is not a disproof of
+  Erdős #1041. The source-only frontier still records hub selection on the
+  ray-separated locus as an open parent carrier
+  (`research_corpus/Erdos1041/FRONTIER.md`).
+- Open: unrestricted connectors; the problem remains open. A reported
+  degree-seven counterexample announcement is a separate external claim.
 
 - Current-source boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
   is the dated route for later source-only research evidence. Read it before
