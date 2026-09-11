@@ -228,8 +228,12 @@ def main() -> int:
     )
     require(papers["paper_count"] >= 2, "paper reading guide coverage regressed")
     require(
-        papers["default_gateway"]["id"] == "human_exposition",
-        "paper gateway drifted",
+        papers["default_gateway"]["id"] != "human_exposition",
+        "archived joint manuscript was selected as the current paper gateway",
+    )
+    require(
+        papers["default_gateway"]["artifact_class"] == "problem_note",
+        "current paper gateway is not a per-problem note",
     )
     require(
         papers["default_gateway"]["rendered_available_in_checkout"],

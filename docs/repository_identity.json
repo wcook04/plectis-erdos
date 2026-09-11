@@ -2,9 +2,9 @@
   "schema": "public-repository-identity/1",
   "current": {
     "owner": "wcook04",
-    "slug": "plectis-lean-erdos249-257",
-    "origin": "https://github.com/wcook04/plectis-lean-erdos249-257",
-    "activation_state": "current_until_operator_approved_external_rename"
+    "slug": "plectis-erdos",
+    "origin": "https://github.com/wcook04/plectis-erdos",
+    "activation_state": "current_public_commons"
   },
   "contracts": {
     "current_submission_schema": "research-return-receipt/1",
@@ -23,37 +23,58 @@
   "protected_identity_globs": [
     "docs/research-commons/returns/*.json",
     "docs/research-commons/schema/research-return-receipt.schema.json",
-    "Erdos249257.lean",
-    "ErdosProblems.lean",
+    "lean/Erdos249257.lean",
+    "lean/ErdosProblems.lean",
     "lakefile.lean",
     "lake-manifest.json",
     "lean-toolchain",
-    "paper/*.tex",
-    "paper/*.sty",
-    "*.pdf",
+    "paper/**/*.tex",
+    "paper/**/*.sty",
+    "paper/**/*.pdf",
     "docs/papers/**",
     "CITATION.cff"
   ],
   "generated_owner_fan_in": [
     {
       "owner": "scripts/build_research_contributions.py",
-      "inputs": ["docs/research-commons/returns/*.json", "docs/repository_identity.json"],
-      "outputs": ["docs/research-commons/contributions.json", "docs/research-commons/CONTRIBUTIONS.md"]
+      "inputs": [
+        "docs/research-commons/returns/*.json",
+        "docs/repository_identity.json"
+      ],
+      "outputs": [
+        "docs/research-commons/contributions.json",
+        "docs/research-commons/CONTRIBUTIONS.md"
+      ]
     },
     {
       "owner": "scripts/build_corpus_descriptor.py",
-      "inputs": ["docs/claims.json", "docs/papers/corpus.json"],
-      "outputs": ["docs/corpus_descriptor.json"]
+      "inputs": [
+        "docs/claims.json",
+        "docs/papers/corpus.json"
+      ],
+      "outputs": [
+        "docs/corpus_descriptor.json"
+      ]
     },
     {
       "owner": "scripts/build_problem_index.py",
-      "inputs": ["docs/problem_index_source.json"],
-      "outputs": ["docs/problems.json"]
+      "inputs": [
+        "docs/problem_index_source.json"
+      ],
+      "outputs": [
+        "docs/problems.json"
+      ]
     },
     {
       "owner": "scripts/publication_contract.py",
-      "inputs": ["docs/publication_entry_source.json", "docs/papers/corpus.json"],
-      "outputs": ["docs/publication_contract.json", "docs/publication_entry_packet.json"]
+      "inputs": [
+        "docs/publication_entry_source.json",
+        "docs/papers/corpus.json"
+      ],
+      "outputs": [
+        "docs/publication_contract.json",
+        "docs/publication_entry_packet.json"
+      ]
     }
   ],
   "external_activation_classes": [

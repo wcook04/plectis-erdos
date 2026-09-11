@@ -58,7 +58,7 @@ def contract_errors(example: str, workbench: str, lakefile: str) -> list[str]:
             errors.append(f"downstream example lost {label}")
 
     workbench_requirements = {
-        "consumer route": "[`examples/Examples.lean`](../examples/Examples.lean)",
+        "consumer route": "[`examples/Examples.lean`](../research/examples/Examples.lean)",
         "conditional interface description":
             "conditional shell-pressure example",
         "explicit-hypothesis boundary": "leaves the analytic hypothesis explicit",
@@ -94,8 +94,8 @@ def contract_errors(example: str, workbench: str, lakefile: str) -> list[str]:
     ]
     if len(examples_targets) != 1:
         errors.append("lakefile must declare exactly one Examples lean_lib")
-    elif examples_targets[0].get("srcDir") != "examples":
-        errors.append("Examples lean_lib must use srcDir examples")
+    elif examples_targets[0].get("srcDir") != "research/examples":
+        errors.append("Examples lean_lib must use srcDir research/examples")
     return errors
 
 
@@ -143,11 +143,11 @@ def portfolio_contract_errors(
         ),
         "portfolio first target": (
             portfolio_readme,
-            "examples/ExternalVerificationPortfolio/Problem249.lean",
+            "research/examples/ExternalVerificationPortfolio/Problem249.lean",
         ),
         "portfolio second target": (
             portfolio_readme,
-            "examples/ExternalVerificationPortfolio/Problem269.lean",
+            "research/examples/ExternalVerificationPortfolio/Problem269.lean",
         ),
         "portfolio conditional claim ceiling": (
             portfolio_readme,
@@ -167,7 +167,7 @@ def portfolio_contract_errors(
 
 
 def main() -> int:
-    example = (ROOT / "examples" / "Examples.lean").read_text(encoding="utf-8")
+    example = (ROOT / "research" / "examples" / "Examples.lean").read_text(encoding="utf-8")
     workbench = (ROOT / "docs" / "AGENT_WORKBENCH.md").read_text(encoding="utf-8")
     lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
     require_clean(
@@ -175,13 +175,13 @@ def main() -> int:
         "examples/Examples.lean, docs/AGENT_WORKBENCH.md, or lakefile.toml",
     )
     problem249 = (
-        ROOT / "examples" / "ExternalVerificationPortfolio" / "Problem249.lean"
+        ROOT / "research" / "examples" / "ExternalVerificationPortfolio" / "Problem249.lean"
     ).read_text(encoding="utf-8")
     problem269 = (
-        ROOT / "examples" / "ExternalVerificationPortfolio" / "Problem269.lean"
+        ROOT / "research" / "examples" / "ExternalVerificationPortfolio" / "Problem269.lean"
     ).read_text(encoding="utf-8")
     portfolio_readme = (
-        ROOT / "examples" / "ExternalVerificationPortfolio" / "README.md"
+        ROOT / "research" / "examples" / "ExternalVerificationPortfolio" / "README.md"
     ).read_text(encoding="utf-8")
     require_clean(
         portfolio_contract_errors(problem249, problem269, portfolio_readme),
@@ -244,14 +244,14 @@ def main() -> int:
     )
 
     displaced_source = lakefile.replace(
-        'srcDir = "examples"',
+        'srcDir = "research/examples"',
         'srcDir = "consumer-examples"',
         1,
     )
     require_rejected(
         contract_errors(example, workbench, displaced_source),
-        "srcDir examples",
-        "lakefile moves the Examples srcDir away from examples/",
+        "srcDir research/examples",
+        "lakefile moves the Examples srcDir away from research/examples/",
     )
 
     default_example = lakefile.replace(

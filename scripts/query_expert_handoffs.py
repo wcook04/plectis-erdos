@@ -28,7 +28,20 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Mapping
 
+from lean_source import (
+    checkout_source_relative,
+    library_identity_path,
+    library_storage_path,
+    library_storage_variants,
+)
+from query_corpus import live_expert_consumer
+
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def checkout_file(relative: str) -> Path:
+    """Resolve a public identity path onto the nested checkout spelling."""
+    return ROOT / checkout_source_relative(relative, ROOT)
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 PROTOCOL = ROOT / "docs" / "expert_review_protocol.json"
@@ -186,20 +199,15 @@ def load_json(path: Path) -> dict[str, Any]:
 @lru_cache(maxsize=1)
 def mathematical_questions() -> list[dict[str, Any]]:
     rows = load_json(FRONTIER).get("expert_questions", [])
-    declarations = {
-        (row["module"], row["name"]): row
-        for row in load_json(ATLAS).get("declarations", [])
-    }
     # Coordinates are navigation data, not authored mathematical content.
-    # Resolve them from the exhaustive live atlas so every expert-query surface
-    # survives harmless source movement in the same way as semantic_corpus.json.
+    # Resolve them through the path-invariant atlas join so identity and
+    # storage spellings, plus nearby proof movement, stay aligned with
+    # semantic expert-question packets and coverage receipts.
     for question in rows:
-        for consumer in question.get("consumer_declarations", []):
-            declaration = declarations.get(
-                (consumer.get("module"), consumer.get("declaration"))
-            )
-            if declaration is not None:
-                consumer["line"] = declaration["line"]
+        question["consumer_declarations"] = [
+            live_expert_consumer(consumer)
+            for consumer in question.get("consumer_declarations", [])
+        ]
     return [{"domain": MATH_DOMAIN, **row} for row in rows]
 
 
@@ -372,17 +380,18 @@ def _uncached_live_source_declaration(
     useful when a nearby proof grows without copying a second declaration
     inventory into the handoff script.
     """
+    wanted = set(library_storage_variants(module))
     atlas_rows = [
         row
         for row in atlas.get("declarations", [])
-        if row.get("module") == module and row.get("name") == name
+        if row.get("name") == name and str(row.get("module") or "") in wanted
     ]
     if len(atlas_rows) != 1:
         raise ValueError(
             f"declaration atlas must expose one {module}:{name}; "
             f"found {len(atlas_rows)}"
         )
-    source_path = ROOT / module
+    source_path = checkout_file(module)
     if not source_path.is_file():
         raise ValueError(f"source declaration module is missing: {module}")
     declaration_pattern = re.compile(
@@ -406,7 +415,7 @@ def _uncached_live_source_declaration(
     return {
         "name": name,
         "kind": row.get("kind"),
-        "module": module,
+        "module": library_identity_path(module),
         "line": live_line,
         "signature": row.get("signature"),
         "docstring": row.get("docstring"),
@@ -422,12 +431,15 @@ def _canonical_declaration_index() -> dict[tuple[str, str], dict[str, Any]]:
     for row in load_json(ATLAS).get("declarations", []):
         if not isinstance(row, dict):
             continue
-        key = (str(row.get("module")), str(row.get("name")))
-        if key in index:
-            raise ValueError(
-                f"declaration atlas must expose one {key[0]}:{key[1]}; found multiple"
-            )
-        index[key] = row
+        name = str(row.get("name"))
+        for variant in library_storage_variants(str(row.get("module") or "")):
+            key = (variant, name)
+            existing = index.get(key)
+            if existing is not None and existing is not row:
+                raise ValueError(
+                    f"declaration atlas must expose one {key[0]}:{key[1]}; found multiple"
+                )
+            index[key] = row
     return index
 
 
@@ -460,7 +472,7 @@ def _live_research_declaration(module: str, name: str) -> dict[str, Any]:
     declaration line and kind, while the adjudication receipt supplies the
     checked/proof-status boundary.  It never creates a rank or claim row.
     """
-    source_path = ROOT / module
+    source_path = checkout_file(module)
     if not source_path.is_file():
         raise ValueError(f"source declaration module is missing: {module}")
     declaration_pattern = re.compile(
@@ -632,7 +644,7 @@ def critical_pair_metric_scale_candidate_handoff(
             ),
         },
         "public_reuse": {
-            "module": "examples/ExternalVerificationPortfolio/Problem1041.lean",
+            "module": "research/examples/ExternalVerificationPortfolio/Problem1041.lean",
             "declaration": "critical_balance_selects_two_roots_at_geomMean_scale",
             "reuses": CRITICAL_PAIR_COMPARATOR_DECLARATION,
             "commit": CRITICAL_PAIR_PUBLIC_REUSE_COMMIT,
@@ -760,7 +772,7 @@ def three_prime_lcm_cells_handoff(
     wrapper_pattern = re.compile(
         r"^\s*theorem\s+" + re.escape(wrapper_name.rsplit(".", 1)[-1]) + r"\b"
     )
-    wrapper_path = ROOT / wrapper_module
+    wrapper_path = checkout_file(wrapper_module)
     wrapper_line = next(
         (
             line_number
@@ -995,7 +1007,7 @@ def rank_two_kernel_no_go_handoff(
     wrapper_pattern = re.compile(
         r"^\s*theorem\s+" + re.escape(wrapper_name.rsplit(".", 1)[-1]) + r"\b"
     )
-    wrapper_path = ROOT / wrapper_module
+    wrapper_path = checkout_file(wrapper_module)
     wrapper_line = next(
         (
             line_number
@@ -1447,7 +1459,7 @@ def actual_lcm_orbit_separation_handoff(
                 (
                     line_number
                     for line_number, line in enumerate(
-                        (ROOT / "ExternalVerification/Solution.lean")
+                        checkout_file("ExternalVerification/Solution.lean")
                         .read_text(encoding="utf-8")
                         .splitlines(),
                         start=1,
@@ -1565,7 +1577,7 @@ def first_harmonic_pivot_handoff(
         (
             line_number
             for line_number, line in enumerate(
-                (ROOT / wrapper_module).read_text(encoding="utf-8").splitlines(),
+                checkout_file(wrapper_module).read_text(encoding="utf-8").splitlines(),
                 start=1,
             )
             if wrapper_pattern.search(line)

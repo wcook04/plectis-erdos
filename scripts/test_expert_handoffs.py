@@ -199,7 +199,7 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
         "verification/comparator.json"
     )
     assert candidate["public_reuse"] == {
-        "module": "examples/ExternalVerificationPortfolio/Problem1041.lean",
+        "module": "research/examples/ExternalVerificationPortfolio/Problem1041.lean",
         "declaration": "critical_balance_selects_two_roots_at_geomMean_scale",
         "reuses": (
             "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean"

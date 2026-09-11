@@ -27,6 +27,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from lean_source import library_storage_path, library_storage_variants
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
@@ -71,8 +73,8 @@ CLAIMS_PATH = ROOT / "docs" / "claims.json"
 PROBLEMS_PATH = ROOT / "docs" / "problems.json"
 ATLAS_PATH = ROOT / "docs" / "declaration_atlas.json"
 METHODOLOGY_PATH = ROOT / "docs" / "methodology.json"
-MAIN_PAPER_TEX = ROOT / "paper" / "erdos249-257-main-paper.tex"
-MAIN_PAPER_PDF = ROOT / "erdos249-257-main-paper.pdf"
+MAIN_PAPER_TEX = ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex"
+MAIN_PAPER_PDF = ROOT / "paper" / "archive" / "erdos249-257-main-paper.pdf"
 PAPER_ALIASES_PATH = ROOT / "paper" / "module-aliases.json"
 PALOMAR_SHOWCASE_PATH = ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json"
 README_SCALE_BEGIN = "<!-- BEGIN generated_corpus_at_a_glance -->"
@@ -418,7 +420,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "machine_readable_paper": "docs/claims.json::machine_readable_paper",
             "exhaustive_declarations": "docs/declaration_atlas.json",
             "mathematical_methodology": "docs/methodology.json",
-            "human_exposition": "erdos249-257-main-paper.pdf",
+            "human_exposition": "paper/archive/erdos249-257-main-paper.pdf",
             # human_exposition is one digest-bound manuscript, and it is the one
             # the corpus marks retired. An agent that started here could reach
             # it and nothing else: the thirteen active manuscripts, and the
@@ -428,8 +430,8 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "paper_source_sigils": "paper/module-aliases.json",
             "source_by_question": "docs/SOURCE_MAP.md",
             "development_chronology": "docs/WAVE_INDEX.md",
-            "supported_root_import": "Erdos249257.lean",
-            "supported_root_imports": ["Erdos249257.lean", "ErdosProblems.lean"],
+            "supported_root_import": "lean/Erdos249257.lean",
+            "supported_root_imports": ["lean/Erdos249257.lean", "lean/ErdosProblems.lean"],
         },
         "checks": {
             "release": "python3 scripts/check_release.py",
@@ -478,7 +480,7 @@ def build_access_contract(repository: str) -> dict[str, Any]:
     one already owned by this repository.
     """
     clone_url = repository if repository.endswith(".git") else f"{repository}.git"
-    checkout = "plectis-lean-erdos249-257"
+    checkout = "plectis-erdos"
     return {
         "schema": "plectis-public-corpus-access/1",
         "repository_web": repository,
@@ -764,7 +766,7 @@ def render_orientation_markdown(
             "  [`docs/claims.json`](claims.json)",
             "- Complete eight-problem proof/paper/source/frontier matrix: [`docs/SOURCE_MAP.md#complete-eight-problem-return-matrix`](SOURCE_MAP.md#complete-eight-problem-return-matrix)",
             "- Development chronology: [`docs/WAVE_INDEX.md`](WAVE_INDEX.md)",
-            "- Human mathematical account: [`erdos249-257-main-paper.pdf`](../erdos249-257-main-paper.pdf)",
+            "- Human mathematical account: [`erdos249-257-main-paper.pdf`](../paper/archive/erdos249-257-main-paper.pdf)",
             "- Machine form of this page: [`docs/orientation.json`](orientation.json)",
             "",
             "## External corpus registration",
@@ -848,13 +850,13 @@ def render_readme_scale_strip(
             # Reviewed shape first, engineering inventory second. Leading with a
             # six-figure declaration count invited the inference that most of it
             # was authored mathematics; it is not, and size is not evidence.
-            "The layer a mathematician should judge has been denoised (tried): "
+            "The reviewed layer a mathematician should judge: "
             f"{len(claims['claims']):,} curated claim records in "
             f"{len(contribution_families):,} contribution families, reaching Lean source "
             f"through {scale['principal_claim_link_count']:,} principal declaration links. "
             "`SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest "
-            "checked result per problem. Again, agents advised, website or papers "
-            "are what's designed for humans.",
+            "checked result per problem. The website and the papers are the human "
+            "reading path.",
             "",
             "The rest is engineering inventory. About "
             f"{share['generated_percent']}% of the {share['declaration_count']:,} "
@@ -873,10 +875,8 @@ def render_readme_scale_strip(
             "Generated shards are counted as formal source and never as separate",
             "mathematical claims. Claim records cover every status, including cited and",
             "open, and are partitioned once.",
-            "These are navigation counts, not novelty claims; this needs expert "
-            "validation, again: credit provided for this. With funding I would also "
-            "be happy to provide some kind of compensation, alas, currently challenged "
-            "in that department.",
+            "These are navigation counts, not novelty claims. They still need expert "
+            "validation.",
             README_SCALE_END,
         ]
     )
@@ -924,7 +924,7 @@ def render_wave_package_shape(atlas: dict[str, Any]) -> str:
 
     def source_facts(module_id: str) -> tuple[dict[str, Any], Path, int]:
         row = modules[module_id]
-        path = ROOT / row["path"]
+        path = ROOT / library_storage_path(row["path"])
         line_count = len(path.read_text(encoding="utf-8").splitlines())
         return row, path, line_count
 
@@ -1016,7 +1016,12 @@ def build() -> dict[str, Any]:
         *machine_paper["module_graph"].get("additional_roots", []),
     ]
     root_modules = {
-        root_path: next(row for row in atlas["modules"] if row["path"] == root_path)
+        root_path: next(
+            row
+            for row in atlas["modules"]
+            if row["path"] in library_storage_variants(root_path)
+            or root_path in library_storage_variants(row["path"])
+        )
         for root_path in root_paths
     }
     principal_declaration_handles = [
@@ -1108,9 +1113,10 @@ def build() -> dict[str, Any]:
                     "content_digest": canonical_digest(orientation),
                 },
                 "human_exposition": {
-                    "source_path": "paper/erdos249-257-main-paper.tex",
+                    "source_path": "paper/archive/erdos249-257-main-paper.tex",
                     "source_content_digest": file_digest(MAIN_PAPER_TEX),
-                    "rendered_path": "erdos249-257-main-paper.pdf",
+                    "rendered_path": "paper/archive/erdos249-257-main-paper.pdf",
+                    "storage_path": "paper/archive/erdos249-257-main-paper.pdf",
                     "rendered_content_digest": file_digest(MAIN_PAPER_PDF),
                     "artifact_role": "authored_mathematician_facing_exposition",
                     "authority_posture": "authored_editorial_surface_not_Lean_proof_authority",
@@ -1301,9 +1307,10 @@ def build() -> dict[str, Any]:
                 "check": "python3 scripts/build_methodology.py --check",
             },
             "human_exposition": {
-                "source_path": "paper/erdos249-257-main-paper.tex",
+                "source_path": "paper/archive/erdos249-257-main-paper.tex",
                 "expected_source_content_digest": file_digest(MAIN_PAPER_TEX),
-                "rendered_path": "erdos249-257-main-paper.pdf",
+                "rendered_path": "paper/archive/erdos249-257-main-paper.pdf",
+                "storage_path": "paper/archive/erdos249-257-main-paper.pdf",
                 "expected_rendered_content_digest": file_digest(MAIN_PAPER_PDF),
                 "authority_posture": "authored_editorial_surface_not_Lean_proof_authority",
             },

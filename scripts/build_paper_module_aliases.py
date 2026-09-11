@@ -19,11 +19,11 @@ PAPER_DIR = ROOT / "paper"
 # the same source census.  The notes carry exact problem-specific routes while
 # the gateway carries the shared public spine.
 PAPERS = (
-    PAPER_DIR / "erdos249-257-main-paper.tex",
-    PAPER_DIR / "erdos-249-binary-totient-series.tex",
-    PAPER_DIR / "erdos-243-reciprocal-tail-rigidity.tex",
-    PAPER_DIR / "erdos-251-prime-gap-dyadic-series.tex",
-    PAPER_DIR / "erdos-269-three-prime-running-lcm.tex",
+    PAPER_DIR / "archive" / "erdos249-257-main-paper.tex",
+    PAPER_DIR / "249" / "erdos-249-binary-totient-series.tex",
+    PAPER_DIR / "243" / "erdos-243-reciprocal-tail-rigidity.tex",
+    PAPER_DIR / "251" / "erdos-251-prime-gap-dyadic-series.tex",
+    PAPER_DIR / "269" / "erdos-269-three-prime-running-lcm.tex",
 )
 OUTPUT = PAPER_DIR / "module-aliases.tex"
 JSON_OUTPUT = PAPER_DIR / "module-aliases.json"

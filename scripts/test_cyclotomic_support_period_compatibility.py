@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "ErdosProblems" / "Erdos249" / "CyclotomicAnchoredKill.lean"
+SOURCE = ROOT / "lean/ErdosProblems" / "Erdos249" / "CyclotomicAnchoredKill.lean"
 PAPER = ROOT / "paper" / "erdos-249-binary-totient-series.tex"
 THEOREM = (
     "exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational"

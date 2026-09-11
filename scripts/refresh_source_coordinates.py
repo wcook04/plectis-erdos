@@ -15,6 +15,7 @@ import re
 import sys
 from pathlib import Path
 
+from lean_source import library_storage_variants
 from query_corpus import canonical_lean_module_path, canonical_paper_title
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -27,8 +28,8 @@ ATLAS = ROOT / "docs" / "declaration_atlas.json"
 # from the live atlas silently repoints it away from the commit it was
 # reviewed against, so this list must not become a glob over paper/.
 PAPERS = (
-    ROOT / "paper" / "erdos249-257-main-paper.tex",
-    ROOT / "paper" / "erdos-257-mersenne-support-subseries.tex",
+    ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex",
+    ROOT / "paper" / "257" / "erdos-257-mersenne-support-subseries.tex",
 )
 LINK_RE = re.compile(
     # \rootword carries the same {module}{line}{declaration}{label} shape as
@@ -74,8 +75,9 @@ def declaration_lines() -> dict[tuple[str, str], int]:
     atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
     rows: dict[tuple[str, str], list[int]] = {}
     for decl in atlas["declarations"]:
-        rows.setdefault((decl["module"], decl["name"]), []).append(decl["line"])
-    duplicate = {key: values for key, values in rows.items() if len(values) != 1}
+        for variant in library_storage_variants(decl["module"]):
+            rows.setdefault((variant, decl["name"]), []).append(decl["line"])
+    duplicate = {key: values for key, values in rows.items() if len(set(values)) != 1}
     if duplicate:
         raise RuntimeError(f"ambiguous declaration coordinates: {duplicate}")
     return {key: values[0] for key, values in rows.items()}

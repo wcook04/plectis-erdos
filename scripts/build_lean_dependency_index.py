@@ -43,7 +43,36 @@ FULL_EXPORT_TRACKED_POSTURE = (
     "environment_export"
 )
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
+CI_OUTCOME_SCHEMA = "erdos249257-lean-dependency-index-outcome/1"
+CI_OUTCOME_PATH = CHECK_RECEIPT.parent / "lean_dependency_index_outcome.json"
+EXPORT_DIAGNOSTIC_LOG = CHECK_RECEIPT.parent / "lean_dependency_export_diagnostics.log"
+EXIT_STALE = 1
+EXIT_INPUTS_CHANGED = 2
+EXIT_TIMEOUT = 3
+EXIT_CRASH = 4
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+
+
+class ClassifiedExportError(RuntimeError):
+    """A Lean export or pre-export build failed with a named CI outcome."""
+
+    def __init__(
+        self,
+        outcome: str,
+        exit_code: int,
+        detail: str,
+        *,
+        stdout: str = "",
+        stderr: str = "",
+    ) -> None:
+        super().__init__(detail)
+        self.outcome = outcome
+        self.exit_code = exit_code
+        self.detail = detail
+        self.stdout = stdout
+        self.stderr = stderr
+
+
 # The global single-flight environment deliberately strips ambient PATH.  The
 # documented elan install is the one deterministic toolchain location that
 # this builder must add back before launching Lake or Lean.
@@ -227,16 +256,171 @@ def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     return subprocess.run(*args, **kwargs)
 
 
+def decode_captured(payload: str | bytes | None) -> str:
+    """Keep timeout/crash diagnostics as text even when the pipe returned bytes."""
+    if payload is None:
+        return ""
+    if isinstance(payload, bytes):
+        return payload.decode("utf-8", "replace")
+    return payload
+
+
+def checkout_identity() -> dict[str, str]:
+    """Bind a CI receipt to the checkout that actually ran, not a sibling ref."""
+    checkout_revision = ""
+    try:
+        completed = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+            timeout=15,
+        )
+        if completed.returncode == 0:
+            checkout_revision = completed.stdout.strip()
+    except (OSError, subprocess.TimeoutExpired):
+        checkout_revision = ""
+    return {
+        "checkout_revision": checkout_revision,
+        "github_sha": os.environ.get("GITHUB_SHA", ""),
+        "pr_head_sha": os.environ.get("PLECTIS_PR_HEAD_SHA", ""),
+        "github_event_name": os.environ.get("GITHUB_EVENT_NAME", ""),
+    }
+
+
+def emit_github_output(payload: dict[str, Any]) -> None:
+    """Write classified step outputs when GitHub Actions has opened GITHUB_OUTPUT."""
+    path = os.environ.get("GITHUB_OUTPUT")
+    if not path:
+        return
+    try:
+        with open(path, "a", encoding="utf-8") as handle:
+            handle.write(f"outcome={payload.get('outcome', '')}\n")
+            handle.write(f"exit_code={payload.get('exit_code', '')}\n")
+            handle.write(
+                "fresh_export_written="
+                f"{'true' if payload.get('fresh_export_written') else 'false'}\n"
+            )
+            handle.write(
+                f"checkout_revision={payload.get('checkout_revision', '')}\n"
+            )
+            handle.write(f"github_sha={payload.get('github_sha', '')}\n")
+            handle.write(f"pr_head_sha={payload.get('pr_head_sha', '')}\n")
+    except OSError as exc:
+        print(f"could not write GITHUB_OUTPUT: {exc}", file=sys.stderr)
+
+
+def write_ci_outcome(
+    *,
+    outcome: str,
+    exit_code: int,
+    fresh_export_written: bool,
+    detail: str,
+) -> dict[str, Any]:
+    """Record how the dependency-index step ended without relabeling tracked files."""
+    payload = {
+        "schema": CI_OUTCOME_SCHEMA,
+        "outcome": outcome,
+        "exit_code": exit_code,
+        "fresh_export_written": fresh_export_written,
+        "detail": detail,
+        **checkout_identity(),
+    }
+    CI_OUTCOME_PATH.parent.mkdir(parents=True, exist_ok=True)
+    safe_output_text(
+        CI_OUTCOME_PATH,
+        json.dumps(payload, indent=2, sort_keys=True) + "\n",
+    )
+    emit_github_output(payload)
+    return payload
+
+
+def preserve_export_diagnostics(stdout: str, stderr: str) -> None:
+    """Keep timeout/crash output even when the tracked index must stay untouched."""
+    EXPORT_DIAGNOSTIC_LOG.parent.mkdir(parents=True, exist_ok=True)
+    body = ""
+    if stdout:
+        body += stdout if stdout.endswith("\n") else stdout + "\n"
+    if stderr:
+        body += stderr if stderr.endswith("\n") else stderr + "\n"
+    safe_output_text(EXPORT_DIAGNOSTIC_LOG, body)
+
+
+def report_ci_outcome(*, fail: bool) -> int:
+    """Print the classified dependency-index outcome bound to this checkout."""
+    if CI_OUTCOME_PATH.is_file():
+        payload = json.loads(CI_OUTCOME_PATH.read_text(encoding="utf-8"))
+    else:
+        payload = {
+            "outcome": "unfinished",
+            "exit_code": EXIT_CRASH,
+            "fresh_export_written": False,
+            "detail": (
+                "dependency-index export did not finish; refusing to treat "
+                "tracked files as a fresh export"
+            ),
+            **checkout_identity(),
+        }
+    outcome = str(payload.get("outcome") or "unfinished")
+    messages = {
+        "current": "export completed and matches the tracked dependency index",
+        "stale": (
+            "export completed and differs from the tracked dependency index; "
+            "commit the uploaded fresh packet for this checkout"
+        ),
+        "inputs_changed": (
+            "dependency verification inputs changed during the full "
+            "environment check; this is not a candidate validation"
+        ),
+        "compilation_failure": (
+            "pre-export Lean build failed; tracked files are not a fresh export"
+        ),
+        "compilation_timeout": (
+            "pre-export Lean build timed out; tracked files are not a fresh export"
+        ),
+        "export_timeout": (
+            "export timed out; diagnostics preserved; tracked files are not a "
+            "fresh export"
+        ),
+        "export_crash": (
+            "export crashed; diagnostics preserved; tracked files are not a "
+            "fresh export"
+        ),
+        "unfinished": (
+            "dependency-index export did not finish; refusing to treat "
+            "tracked files as a fresh export"
+        ),
+    }
+    print(f"dependency-index outcome: {outcome}", file=sys.stderr)
+    print(messages.get(outcome, payload.get("detail", outcome)), file=sys.stderr)
+    print(
+        "checkout_revision="
+        f"{payload.get('checkout_revision') or 'unknown'} "
+        f"github_sha={payload.get('github_sha') or 'unset'} "
+        f"pr_head_sha={payload.get('pr_head_sha') or 'unset'}",
+        file=sys.stderr,
+    )
+    if not fail or outcome == "current":
+        return 0
+    code = payload.get("exit_code")
+    try:
+        numeric = int(code)
+    except (TypeError, ValueError):
+        numeric = EXIT_CRASH
+    return numeric if numeric else EXIT_CRASH
+
+
 def sha256_text(content: str) -> str:
     return f"sha256:{hashlib.sha256(content.encode('utf-8')).hexdigest()}"
 
 
 def check_input_paths(root: Path = ROOT) -> list[Path]:
     """Return every source that can change the elaborated dependency packet."""
+    from lean_source import library_source_paths
+
     paths = [root / relative for relative in CHECK_INPUT_FILES]
-    for library_root in LEAN_ROOT_TARGETS:
-        paths.append(root / f"{library_root}.lean")
-        paths.extend(sorted((root / library_root).rglob("*.lean")))
+    paths.extend(library_source_paths(root))
     return sorted(set(paths))
 
 
@@ -502,20 +686,35 @@ def ensure_elaborated_environment() -> None:
     if os.environ.get(singleflight.HOST_LOCK_HELD_ENV) == "1":
         command.append("--singleflight-worker")
     command.extend(["--lake-staleness", *LEAN_ROOT_TARGETS])
-    completed = run(
-        command,
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-        # A cold build of both public roots is not a metadata subprocess. It
-        # exceeded the generic 30-minute validation-worker budget while still
-        # actively compiling generated prime certificates. Keep a finite
-        # upper bound, but do not kill legitimate cold bootstrap work at the
-        # same deadline used by ordinary validation children.
-        timeout=LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
-    )
+    try:
+        completed = run(
+            command,
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+            # A cold build of both public roots is not a metadata subprocess. It
+            # exceeded the generic 30-minute validation-worker budget while still
+            # actively compiling generated prime certificates. Keep a finite
+            # upper bound, but do not kill legitimate cold bootstrap work at the
+            # same deadline used by ordinary validation children.
+            timeout=LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
+        )
+    except subprocess.TimeoutExpired as exc:
+        stdout = decode_captured(exc.stdout or exc.output)
+        sys.stderr.write(stdout)
+        preserve_export_diagnostics(stdout, "")
+        raise ClassifiedExportError(
+            "compilation_timeout",
+            EXIT_TIMEOUT,
+            (
+                "bounded Lean root build timed out after "
+                f"{LEAN_ROOT_BUILD_TIMEOUT_SECONDS} seconds; tracked index was "
+                "not rewritten"
+            ),
+            stdout=stdout,
+        ) from exc
     if completed.returncode:
         sys.stderr.write(completed.stdout)
         if singleflight.is_external_termination_exit(completed.returncode):
@@ -530,8 +729,12 @@ def ensure_elaborated_environment() -> None:
                 file=sys.stderr,
             )
             raise SystemExit(signal_exit)
-        raise RuntimeError(
-            f"bounded Lean root build exited {completed.returncode}"
+        preserve_export_diagnostics(completed.stdout or "", "")
+        raise ClassifiedExportError(
+            "compilation_failure",
+            EXIT_CRASH,
+            f"bounded Lean root build exited {completed.returncode}",
+            stdout=completed.stdout or "",
         )
 
 
@@ -545,7 +748,10 @@ EXPORT_TIMEOUT_SECONDS = 5_400
 
 
 def module_id(path: str) -> str:
-    return ".".join(Path(path).with_suffix("").parts)
+    parts = Path(path).with_suffix("").parts
+    if parts and parts[0] == "lean":
+        parts = parts[1:]
+    return ".".join(parts)
 
 
 def export_environment() -> tuple[
@@ -554,15 +760,32 @@ def export_environment() -> tuple[
     dict[str, int],
     dict[str, dict[str, Any]],
 ]:
-    completed = run(
-        ["lake", "env", "lean", str(EXPORTER)],
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-        timeout=EXPORT_TIMEOUT_SECONDS,
-    )
+    try:
+        completed = run(
+            ["lake", "env", "lean", str(EXPORTER)],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            timeout=EXPORT_TIMEOUT_SECONDS,
+        )
+    except subprocess.TimeoutExpired as exc:
+        stdout = decode_captured(exc.stdout)
+        stderr = decode_captured(exc.stderr)
+        sys.stderr.write(stdout)
+        sys.stderr.write(stderr)
+        preserve_export_diagnostics(stdout, stderr)
+        raise ClassifiedExportError(
+            "export_timeout",
+            EXIT_TIMEOUT,
+            (
+                "Lean dependency exporter timed out after "
+                f"{EXPORT_TIMEOUT_SECONDS} seconds; tracked index was not rewritten"
+            ),
+            stdout=stdout,
+            stderr=stderr,
+        ) from exc
     if completed.returncode:
         sys.stderr.write(completed.stdout)
         sys.stderr.write(completed.stderr)
@@ -578,8 +801,13 @@ def export_environment() -> tuple[
                 file=sys.stderr,
             )
             raise SystemExit(signal_exit)
-        raise RuntimeError(
-            f"Lean dependency exporter exited {completed.returncode}"
+        preserve_export_diagnostics(completed.stdout or "", completed.stderr or "")
+        raise ClassifiedExportError(
+            "export_crash",
+            EXIT_CRASH,
+            f"Lean dependency exporter exited {completed.returncode}",
+            stdout=completed.stdout or "",
+            stderr=completed.stderr or "",
         )
     return parse_environment_output(completed.stdout)
 
@@ -1009,7 +1237,27 @@ def main() -> int:
             "export merely to mint the operator artifact."
         ),
     )
+    parser.add_argument(
+        "--report-ci-outcome",
+        action="store_true",
+        help="print the last classified dependency-index CI outcome and stop",
+    )
+    parser.add_argument(
+        "--fail-ci-outcome",
+        action="store_true",
+        help="with --report-ci-outcome, exit nonzero unless the outcome is current",
+    )
     args = parser.parse_args()
+    if args.report_ci_outcome:
+        if args.check or args.full_check or args.write_stale or args.refresh_validation_metadata:
+            parser.error(
+                "--report-ci-outcome is mutually exclusive with "
+                "--check, --full-check, --write-stale, and "
+                "--refresh-validation-metadata"
+            )
+        return report_ci_outcome(fail=args.fail_ci_outcome)
+    if args.fail_ci_outcome:
+        parser.error("--fail-ci-outcome requires --report-ci-outcome")
     if args.refresh_validation_metadata:
         if args.check or args.full_check or args.write_stale:
             parser.error(
@@ -1044,78 +1292,127 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
-    initial_input_fingerprint = check_input_fingerprint()
-    packet = build_packet()
-    content = encoded(packet)
-    if check_input_fingerprint() != initial_input_fingerprint:
-        print(
-            "Lean dependency verification inputs changed during the full "
-            "environment check; rerun against a stable snapshot",
-            file=sys.stderr,
-        )
-        return 2
-    if args.check:
-        try:
-            current = safe_dependency_text(OUTPUT, root=ROOT)
-        except UnsafeDependencyInput:
-            current = None
-        if current != content:
-            if args.write_stale:
-                safe_output_text(OUTPUT, content, root=ROOT)
-                write_check_receipt(
-                    content,
-                    packet,
-                    input_fingerprint=initial_input_fingerprint,
+    try:
+        initial_input_fingerprint = check_input_fingerprint()
+        packet = build_packet()
+        content = encoded(packet)
+        if check_input_fingerprint() != initial_input_fingerprint:
+            write_ci_outcome(
+                outcome="inputs_changed",
+                exit_code=EXIT_INPUTS_CHANGED,
+                fresh_export_written=False,
+                detail=(
+                    "Lean dependency verification inputs changed during the full "
+                    "environment check; rerun against a stable snapshot"
+                ),
+            )
+            print(
+                "Lean dependency verification inputs changed during the full "
+                "environment check; rerun against a stable snapshot",
+                file=sys.stderr,
+            )
+            return EXIT_INPUTS_CHANGED
+        if args.check:
+            try:
+                current = safe_dependency_text(OUTPUT, root=ROOT)
+            except UnsafeDependencyInput:
+                current = None
+            if current != content:
+                wrote = False
+                if args.write_stale:
+                    safe_output_text(OUTPUT, content, root=ROOT)
+                    write_check_receipt(
+                        content,
+                        packet,
+                        input_fingerprint=initial_input_fingerprint,
+                    )
+                    write_check_receipt(
+                        content,
+                        packet,
+                        input_fingerprint=initial_input_fingerprint,
+                        receipt_path=TRACKED_CHECK_RECEIPT,
+                        verification_posture=FULL_EXPORT_TRACKED_POSTURE,
+                    )
+                    wrote = True
+                    print(
+                        f"wrote stale {OUTPUT} "
+                        f"({packet['coverage']['source_resolved_node_count']} nodes, "
+                        f"{packet['coverage']['source_resolved_direct_edge_count']} edges)",
+                        file=sys.stderr,
+                    )
+                write_ci_outcome(
+                    outcome="stale",
+                    exit_code=EXIT_STALE,
+                    fresh_export_written=wrote,
+                    detail=f"stale Lean dependency index: {OUTPUT}",
                 )
-                write_check_receipt(
-                    content,
-                    packet,
-                    input_fingerprint=initial_input_fingerprint,
-                    receipt_path=TRACKED_CHECK_RECEIPT,
-                    verification_posture=FULL_EXPORT_TRACKED_POSTURE,
-                )
-                print(
-                    f"wrote stale {OUTPUT} "
-                    f"({packet['coverage']['source_resolved_node_count']} nodes, "
-                    f"{packet['coverage']['source_resolved_direct_edge_count']} edges)",
-                    file=sys.stderr,
-                )
-            print(f"stale Lean dependency index: {OUTPUT}", file=sys.stderr)
-            return 1
+                print(f"stale Lean dependency index: {OUTPUT}", file=sys.stderr)
+                return EXIT_STALE
+            write_check_receipt(
+                content,
+                packet,
+                input_fingerprint=initial_input_fingerprint,
+            )
+            write_ci_outcome(
+                outcome="current",
+                exit_code=0,
+                fresh_export_written=False,
+                detail="export completed and matches the tracked dependency index",
+            )
+            print(
+                "Lean dependency index: PASS "
+                f"({packet['coverage']['source_resolved_node_count']} nodes, "
+                f"{packet['coverage']['source_resolved_direct_edge_count']} edges)"
+            )
+            return 0
+        safe_output_text(OUTPUT, content, root=ROOT)
         write_check_receipt(
             content,
             packet,
             input_fingerprint=initial_input_fingerprint,
         )
+        # A full export must also mint the tracked receipt. Until 2026-09-05 only
+        # --refresh-validation-metadata wrote it, and that refresh refuses unless
+        # a tracked receipt already owns the output, so a fresh export could never
+        # be landed: the CI artifact carried a new index next to the old receipt.
+        write_check_receipt(
+            content,
+            packet,
+            input_fingerprint=initial_input_fingerprint,
+            receipt_path=TRACKED_CHECK_RECEIPT,
+            verification_posture=FULL_EXPORT_TRACKED_POSTURE,
+        )
+        write_ci_outcome(
+            outcome="current",
+            exit_code=0,
+            fresh_export_written=True,
+            detail=f"wrote {OUTPUT}",
+        )
         print(
-            "Lean dependency index: PASS "
+            f"wrote {OUTPUT} "
             f"({packet['coverage']['source_resolved_node_count']} nodes, "
             f"{packet['coverage']['source_resolved_direct_edge_count']} edges)"
         )
         return 0
-    safe_output_text(OUTPUT, content, root=ROOT)
-    write_check_receipt(
-        content,
-        packet,
-        input_fingerprint=initial_input_fingerprint,
-    )
-    # A full export must also mint the tracked receipt. Until 2026-09-05 only
-    # --refresh-validation-metadata wrote it, and that refresh refuses unless
-    # a tracked receipt already owns the output, so a fresh export could never
-    # be landed: the CI artifact carried a new index next to the old receipt.
-    write_check_receipt(
-        content,
-        packet,
-        input_fingerprint=initial_input_fingerprint,
-        receipt_path=TRACKED_CHECK_RECEIPT,
-        verification_posture=FULL_EXPORT_TRACKED_POSTURE,
-    )
-    print(
-        f"wrote {OUTPUT} "
-        f"({packet['coverage']['source_resolved_node_count']} nodes, "
-        f"{packet['coverage']['source_resolved_direct_edge_count']} edges)"
-    )
-    return 0
+    except ClassifiedExportError as exc:
+        write_ci_outcome(
+            outcome=exc.outcome,
+            exit_code=exc.exit_code,
+            fresh_export_written=False,
+            detail=exc.detail,
+        )
+        print(exc.detail, file=sys.stderr)
+        return exc.exit_code
+    except SystemExit:
+        raise
+    except Exception as exc:
+        write_ci_outcome(
+            outcome="export_crash",
+            exit_code=EXIT_CRASH,
+            fresh_export_written=False,
+            detail=f"{type(exc).__name__}: {exc}",
+        )
+        raise
 
 
 if __name__ == "__main__":

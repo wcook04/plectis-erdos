@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-MAIN_PAPER = "paper/erdos249-257-main-paper.tex"
+MAIN_PAPER = "paper/archive/erdos249-257-main-paper.tex"
 OPEN_BOUNDARY = (
     "It does not solve Erdős #249 or the universal #257 problem."
 )

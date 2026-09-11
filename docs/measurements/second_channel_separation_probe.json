@@ -3,7 +3,7 @@
  "status": "MEASURED",
  "question_id": "XQ257-second-channel-separation",
  "source_contract": {
-  "source_path": "Erdos249257/GreedyAchievementSet.lean",
+  "source_path": "lean/Erdos249257/GreedyAchievementSet.lean",
   "source_sha256": "sha256:ab3f56adfb60182d0bf4d7a2ec6e6276b3bf5c69879c9f73b16fbfa9ec6567e8",
   "definitions": [
    {

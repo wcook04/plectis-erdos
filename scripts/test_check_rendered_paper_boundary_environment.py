@@ -72,7 +72,7 @@ def main() -> int:
     }
     pdftotext = "/opt/poppler/bin/pdftotext"
     pdftohtml = "/opt/poppler/bin/pdftohtml"
-    pdf = boundary.ROOT / "erdos249-257-main-paper.pdf"
+    pdf = boundary.ROOT / "paper" / "archive" / "erdos249-257-main-paper.pdf"
     completed = [
         subprocess.CompletedProcess([], 0, stdout="plain text\n"),
         subprocess.CompletedProcess([], 0, stdout=""),

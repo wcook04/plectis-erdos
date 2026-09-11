@@ -27,6 +27,7 @@ from pathlib import Path
 from typing import Any
 
 import validation_singleflight as singleflight
+from lean_source import checkout_source_relative
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -232,7 +233,7 @@ def checked_equivalence_errors(
 
     module = value["adapter_module"]
     declaration = value["adapter_declaration"]
-    module_path = root / module
+    module_path = root / checkout_source_relative(str(module), root)
     if not module_path.is_file():
         errors.append(f"{label}: adapter module {module} is absent from this repository")
         return errors
@@ -295,8 +296,9 @@ def declaration_line_error(
 
 def local_evidence_errors(evidence: dict[str, Any]) -> list[str]:
     errors: list[str] = []
-    path = ROOT / str(evidence.get("path", ""))
-    label = str(evidence.get("path", "<missing path>"))
+    raw_path = str(evidence.get("path", ""))
+    path = ROOT / checkout_source_relative(raw_path, ROOT)
+    label = raw_path or "<missing path>"
     if not path.is_file():
         return [f"adapter evidence path is missing: {label}"]
     try:

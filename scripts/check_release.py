@@ -56,7 +56,16 @@ from typing import Any
 
 from check_problem_note_sources import note_pinned_commit, snapshot_lines_batch
 from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
-from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
+from lean_source import (
+    LIBRARY_ROOTS,
+    library_dir,
+    library_identity_path,
+    library_root_file,
+    library_source_paths,
+    library_storage_path,
+    library_storage_variants,
+    lean_code_without_comments_and_strings,
+)
 from publication_contract import (
     RepositoryReader,
     mutation_fixture_failures as publication_mutation_fixture_failures,
@@ -85,6 +94,29 @@ _PROJECTION_CHECK_RESULTS: dict[str, subprocess.CompletedProcess[str]] | None = 
 def clean_environment() -> dict[str, str]:
     """Use the canonical isolated environment for every release-gate child."""
     return singleflight.command_environment()
+
+
+def child_output(completed: subprocess.CompletedProcess[str]) -> str:
+    """Keep child exit status and both diagnostic streams."""
+    stdout = (completed.stdout or "").strip()
+    stderr = (completed.stderr or "").strip()
+    pieces = [f"exit {completed.returncode}"]
+    if stdout:
+        pieces.append(f"stdout: {stdout}")
+    if stderr:
+        pieces.append(f"stderr: {stderr}")
+    return " | ".join(pieces)
+
+
+def failed_independent_checks(
+    results: dict[str, subprocess.CompletedProcess[str]],
+) -> list[str]:
+    """Name every child that did not exit 0, with its full captured output."""
+    failures: list[str] = []
+    for check_id, completed in results.items():
+        if completed.returncode != 0:
+            failures.append(f"{check_id}: {child_output(completed)}")
+    return failures
 
 
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
@@ -263,12 +295,24 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
     }
     return results
 
-ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
-PROOF_PATHS = tuple(
-    path
-    for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
-    for path in (root_file, library_root)
+def proof_paths(root: Path | None = None) -> tuple[str, ...]:
+    """Configured corpus root files and directories for the revision at ``root``."""
+    checked = ROOT if root is None else root
+    return tuple(
+        path
+        for library_root in LIBRARY_ROOTS
+        for path in (
+            library_root_file(checked, library_root).relative_to(checked).as_posix(),
+            library_dir(checked, library_root).relative_to(checked).as_posix(),
+        )
+    )
+
+
+ROOT_FILES = tuple(
+    library_root_file(ROOT, root).relative_to(ROOT).as_posix()
+    for root in LIBRARY_ROOTS
 )
+PROOF_PATHS = proof_paths()
 INTERNAL_IMPORT_RE = re.compile(
     rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
     re.M,
@@ -633,17 +677,63 @@ def module_lines(
     if key not in cache:
         if source_ref is None:
             path = ROOT / rel
+            if not release_file_exists(path):
+                path = ROOT / library_storage_path(rel)
             cache[key] = read(path).splitlines() if release_file_exists(path) else None
         else:
+            historical = library_identity_path(rel)
             completed = run(
-                ["git", "show", f"{source_ref}:{rel}"],
+                ["git", "show", f"{source_ref}:{historical}"],
                 cwd=ROOT,
                 capture_output=True,
                 text=True,
                 check=False,
             )
+            if completed.returncode != 0 and historical != rel:
+                completed = run(
+                    ["git", "show", f"{source_ref}:{rel}"],
+                    cwd=ROOT,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
             cache[key] = completed.stdout.splitlines() if completed.returncode == 0 else None
     return cache[key]
+
+
+def _historical_library_pathspecs() -> list[str]:
+    """Pathspecs for corpus files at both nested and pre-migration spellings."""
+    specs: list[str] = []
+    for name in LIBRARY_ROOTS:
+        specs.extend(
+            (
+                f"{name}.lean",
+                name,
+                f"lean/{name}.lean",
+                f"lean/{name}",
+            )
+        )
+    return specs
+
+
+def _ls_tree_identity_blobs(formal_ref: str) -> dict[str, str] | None:
+    """Map corpus identity paths to blob ids at ``formal_ref``."""
+    completed = run(
+        ["git", "ls-tree", "-r", formal_ref, "--", *_historical_library_pathspecs()],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        return None
+    blobs: dict[str, str] = {}
+    for line in completed.stdout.splitlines():
+        parts = line.split(None, 3)
+        if len(parts) != 4 or parts[1] != "blob" or not parts[3].endswith(".lean"):
+            continue
+        blobs[library_identity_path(parts[3])] = parts[2]
+    return blobs
 
 
 def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]:
@@ -653,21 +743,51 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     Checking a declaration only with ``git show <formal_ref>:...`` is necessary,
     but it is not sufficient when a later Lean edit is present in the worktree:
     that would verify an older source while presenting the current tree.  The
-    public root and library directory are the supported proof surface; papers,
-    generated navigation, and release metadata may legitimately advance after
-    that checkpoint.
+    public proof surface may live under ``lean/`` while ``formal_ref`` still
+    stores the same bytes at the pre-migration identity path. Compare by
+    module identity, not by a single Git pathspec.
     """
-    comparison = run(
-        ["git", "diff", "--quiet", formal_ref, "--", *PROOF_PATHS],
+    historical = _ls_tree_identity_blobs(formal_ref)
+    if historical is None:
+        return False, "could not compare formal source to worktree"
+    current_paths = [
+        path.relative_to(ROOT).as_posix()
+        for path in library_source_paths(ROOT)
+    ]
+    hashed = run(
+        ["git", "hash-object", "--", *current_paths],
         cwd=ROOT,
         capture_output=True,
         text=True,
         check=False,
     )
-    if comparison.returncode not in (0, 1):
-        return False, comparison.stderr.strip() or "could not compare formal source to worktree"
+    if hashed.returncode != 0:
+        return False, hashed.stderr.strip() or "could not hash current Lean sources"
+    current_ids = [line.strip() for line in hashed.stdout.splitlines() if line.strip()]
+    if len(current_ids) != len(current_paths):
+        return False, "could not hash current Lean sources"
+    current = {
+        library_identity_path(rel): blob
+        for rel, blob in zip(current_paths, current_ids)
+    }
+    if current != historical:
+        extra = sorted(set(current) - set(historical))
+        missing = sorted(set(historical) - set(current))
+        changed = sorted(
+            identity
+            for identity in set(current) & set(historical)
+            if current[identity] != historical[identity]
+        )
+        detail = "current public Lean sources differ from formal-source checkpoint"
+        if extra:
+            detail += "; unexpected current source(s): " + ", ".join(extra)
+        if missing:
+            detail += "; missing current source(s): " + ", ".join(missing)
+        if changed:
+            detail += "; changed source(s): " + ", ".join(changed)
+        return False, detail
     untracked = run(
-        ["git", "ls-files", "--others", "--exclude-standard", "--", *PROOF_PATHS],
+        ["git", "ls-files", "--others", "--exclude-standard", "--", *proof_paths(ROOT)],
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -676,12 +796,12 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     if untracked.returncode != 0:
         return False, untracked.stderr.strip() or "could not inspect untracked Lean sources"
     extras = [line for line in untracked.stdout.splitlines() if line.endswith(".lean")]
-    if comparison.returncode == 0 and not extras:
-        return True, ""
-    detail = "current public Lean sources differ from formal-source checkpoint"
     if extras:
-        detail += "; untracked Lean source(s): " + ", ".join(extras)
-    return False, detail
+        return False, (
+            "current public Lean sources differ from formal-source checkpoint"
+            "; untracked Lean source(s): " + ", ".join(extras)
+        )
+    return True, ""
 
 
 def name_at_line(lines: list[str], name: str, line: int) -> bool:
@@ -904,6 +1024,90 @@ def proof_trust_violation_bytes(data: bytes) -> str | None:
     return match.group(0).strip() if match else None
 
 
+APPROVED_ROOT_FILES = {
+    ".gitignore",
+    "AGENTS.md",
+    "AGENTS.override.md",
+    "ARCHITECTURE.md",
+    "CITATION.cff",
+    "CLAUDE.md",
+    "CODEX.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "CURSOR.md",
+    "GEMINI.md",
+    "HUMAN_ENTRY.md",
+    "LICENSE",
+    "METHODOLOGY.md",
+    "PRIVACY.md",
+    "README.md",
+    "REUSE.toml",
+    "SCOPE.md",
+    "SECURITY.md",
+    "formalization.yaml",
+    "lake-manifest.json",
+    "lakefile.toml",
+    "lean-toolchain",
+    "requirements-release.txt",
+}
+APPROVED_ROOT_DIRS = {
+    ".agents": "host-discovery entrypoints used by integrations",
+    ".github": "CI and hosted repository metadata",
+    "LICENSES": "SPDX licence texts",
+    "docs": "human and machine documentation",
+    "lean": "proof-corpus Lean sources (Lake srcDir)",
+    "paper": "manuscripts, nested by problem or purpose",
+    "research": "supported non-default research libraries and adapters",
+    "research_corpus": "second corpus root for #1041 source-only research, not a proof library and not Challenge fixtures",
+    "scripts": "release and navigation tools",
+    "skills": "distinct public skill-distribution surface",
+    "verification": "Comparator packets, large certificates, and failed-route records",
+}
+FORBIDDEN_LOOSE_ROOT_DIRS = (
+    "Erdos243V5",
+    "Erdos249257",
+    "Erdos251LargeCertificate",
+    "ErdosProblems",
+    "ExternalVerification",
+    "ExternalVerification1041SolvedFamilies",
+    "ExternalVerification1049",
+    "ExternalVerification249TotientKernelBasis",
+    "NegativeSolutions",
+    "Solutions",
+    "adapters",
+    "examples",
+    "experiments",
+    "residualbench",
+    "workbench",
+)
+
+
+def check_root_layout() -> None:
+    """Keep the public root a purpose-named tree, not a dump of PDFs and libraries."""
+    root_pdfs = sorted(
+        path.name for path in ROOT.glob("*.pdf") if path.is_file() and not path.name.startswith(".")
+    )
+    check(not root_pdfs, f"root PDFs are forbidden after the layout migration: {root_pdfs}")
+    for name in FORBIDDEN_LOOSE_ROOT_DIRS:
+        check(
+            not (ROOT / name).exists(),
+            f"loose corpus or verification library must not sit at repository root: {name}",
+        )
+    unexplained: list[str] = []
+    for path in ROOT.iterdir():
+        name = path.name
+        if name in {".git", ".lake"}:
+            continue
+        if name in APPROVED_ROOT_FILES or name in APPROVED_ROOT_DIRS:
+            continue
+        unexplained.append(name)
+    check(
+        not unexplained,
+        "unexplained top-level entries need a functional reason: "
+        + ", ".join(sorted(unexplained)),
+    )
+
+
 def check_proof_trust() -> None:
     """Run the cheap proof-trust gate before any expensive release checks."""
     # Pin the lexical boundary: prose and strings are harmless, executable
@@ -975,18 +1179,11 @@ def check_proof_trust() -> None:
         is None,
         "chunked lexer must preserve escaped-string exclusion",
     )
-    example_sources = sorted((ROOT / "examples").rglob("*.lean")) if (ROOT / "examples").is_dir() else []
-    lean_sources = (
-        [
-            path
-            for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
-            for path in (
-                *sorted((ROOT / library_root).rglob("*.lean")),
-                ROOT / root_file,
-            )
-        ]
-        + example_sources
-    )
+    examples_root = ROOT / "research" / "examples"
+    if not examples_root.is_dir():
+        examples_root = ROOT / "examples"
+    example_sources = sorted(examples_root.rglob("*.lean")) if examples_root.is_dir() else []
+    lean_sources = library_source_paths(ROOT) + example_sources
     for lean in lean_sources:
         violation = proof_trust_violation_bytes(read_bytes(lean))
         check(violation is None,
@@ -1043,6 +1240,7 @@ def main(argv: list[str] | None = None) -> int:
     # Fail fast on the cheapest high-severity invariant.  In particular, do
     # not spend the corpus-query budget before rejecting untrusted proof code.
     check_proof_trust()
+    check_root_layout()
     if ERRORS:
         print(f"check_release: {len(ERRORS)} proof-trust failure(s) across {CHECKS} checks")
         for err in ERRORS:
@@ -1126,7 +1324,7 @@ def main(argv: list[str] | None = None) -> int:
     check(
         problem_index_check.returncode == 0,
         "generated problem-index freshness failed: "
-        f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
+        f"{child_output(problem_index_check)}",
     )
     external_verification_check = _PROJECTION_CHECK_RESULTS[
         "scripts/build_external_verification.py"
@@ -1134,7 +1332,7 @@ def main(argv: list[str] | None = None) -> int:
     check(
         external_verification_check.returncode == 0,
         "external-verification projection or statement-isolation check failed: "
-        f"{external_verification_check.stdout.strip() or external_verification_check.stderr.strip()}",
+        f"{child_output(external_verification_check)}",
     )
     external_verification_release_check = publication_stage_results[
         "external_verification_release"
@@ -1142,19 +1340,19 @@ def main(argv: list[str] | None = None) -> int:
     check(
         external_verification_release_check.returncode == 0,
         "external-verification replay or immutable release-identity contract failed: "
-        f"{external_verification_release_check.stdout.strip() or external_verification_release_check.stderr.strip()}",
+        f"{child_output(external_verification_release_check)}",
     )
     note_source_check = publication_stage_results["note_source"]
     check(
         note_source_check.returncode == 0,
         "problem-note pinned-source contract failed: "
-        f"{note_source_check.stdout.strip() or note_source_check.stderr.strip()}",
+        f"{child_output(note_source_check)}",
     )
     paper_corpus_check = publication_stage_results["paper_corpus"]
     check(
         paper_corpus_check.returncode == 0,
         "generated paper-corpus freshness failed: "
-        f"{paper_corpus_check.stdout.strip() or paper_corpus_check.stderr.strip()}",
+        f"{child_output(paper_corpus_check)}",
     )
     # Freshness is not the only way the corpus can mislead. Nothing here has
     # been externally reviewed and nothing carries an archival identifier; a
@@ -1165,7 +1363,7 @@ def main(argv: list[str] | None = None) -> int:
     check(
         publication_taxonomy_check.returncode == 0,
         "paper publication-taxonomy honesty failed: "
-        f"{publication_taxonomy_check.stdout.strip() or publication_taxonomy_check.stderr.strip()}",
+        f"{child_output(publication_taxonomy_check)}",
     )
     publication_taxonomy_current = _PROJECTION_CHECK_RESULTS[
         "docs/papers/build_publication_taxonomy.py"
@@ -1173,7 +1371,7 @@ def main(argv: list[str] | None = None) -> int:
     check(
         publication_taxonomy_current.returncode == 0,
         "paper publication-taxonomy projection is stale: "
-        f"{publication_taxonomy_current.stdout.strip() or publication_taxonomy_current.stderr.strip()}",
+        f"{child_output(publication_taxonomy_current)}",
     )
     if ERRORS:
         print(
@@ -1623,8 +1821,10 @@ def main(argv: list[str] | None = None) -> int:
               f"argument edge has unknown relation: {edge.get('relation')}")
     for claim in data["claims"]:
         for decl in claim["declarations"]:
-            check(decl["module"] in module_paths,
-                  f"claim {claim['id']}: declaration module missing from machine-readable module graph: {decl['module']}")
+            check(
+                any(path in module_paths for path in library_storage_variants(decl["module"])),
+                f"claim {claim['id']}: declaration module missing from machine-readable module graph: {decl['module']}",
+            )
     for projection in machine_paper.get("projections", []):
         check(release_file_exists(ROOT / projection["path"]),
               f"machine-readable paper projection does not exist: {projection['path']}")
@@ -2098,43 +2298,43 @@ def main(argv: list[str] | None = None) -> int:
     check(
         architecture_check.returncode == 0,
         "newcomer architecture guide failed: "
-        f"{architecture_check.stdout.strip() or architecture_check.stderr.strip()}",
+        f"{child_output(architecture_check)}",
     )
     architecture_fixture_check = mid_checks["architecture_fixtures"]
     check(
         architecture_fixture_check.returncode == 0,
         "newcomer architecture guide fixtures failed: "
-        f"{architecture_fixture_check.stdout.strip() or architecture_fixture_check.stderr.strip()}",
+        f"{child_output(architecture_fixture_check)}",
     )
     agent_entry_check = mid_checks["agent_entry"]
     check(
         agent_entry_check.returncode == 0,
         "clone-local agent entry failed: "
-        f"{agent_entry_check.stdout.strip() or agent_entry_check.stderr.strip()}",
+        f"{child_output(agent_entry_check)}",
     )
     agent_skill_catalog_check = mid_checks["agent_skill_catalog"]
     check(
         agent_skill_catalog_check.returncode == 0,
         "clone-local skill catalog failed: "
-        f"{agent_skill_catalog_check.stdout.strip() or agent_skill_catalog_check.stderr.strip()}",
+        f"{child_output(agent_skill_catalog_check)}",
     )
     clone_skills_check = mid_checks["clone_skills"]
     check(
         clone_skills_check.returncode == 0,
         "clone-local skill installation and discovery failed: "
-        f"{clone_skills_check.stdout.strip() or clone_skills_check.stderr.strip()}",
+        f"{child_output(clone_skills_check)}",
     )
     contribution_entry_check = mid_checks["contribution_entry"]
     check(
         contribution_entry_check.returncode == 0,
         "public contribution and credit entry failed: "
-        f"{contribution_entry_check.stdout.strip() or contribution_entry_check.stderr.strip()}",
+        f"{child_output(contribution_entry_check)}",
     )
     agent_navigation_paper_check = mid_checks["agent_navigation_paper"]
     check(
         agent_navigation_paper_check.returncode == 0,
         "agent-navigation paper failed: "
-        f"{agent_navigation_paper_check.stdout.strip() or agent_navigation_paper_check.stderr.strip()}",
+        f"{child_output(agent_navigation_paper_check)}",
     )
 
     contributing = read(ROOT / "CONTRIBUTING.md")
@@ -2157,7 +2357,7 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(methodology_check.returncode == 0,
-          f"methodology projection drift: {methodology_check.stdout.strip() or methodology_check.stderr.strip()}")
+          f"methodology projection drift: {child_output(methodology_check)}")
 
     module_graph_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_module_graph.py"), "--check"],
@@ -2167,7 +2367,7 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(module_graph_check.returncode == 0,
-          f"module graph drift: {module_graph_check.stdout.strip() or module_graph_check.stderr.strip()}")
+          f"module graph drift: {child_output(module_graph_check)}")
 
     atlas_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_declaration_atlas.py"), "--check"],
@@ -2177,15 +2377,15 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(atlas_check.returncode == 0,
-          f"declaration atlas drift: {atlas_check.stdout.strip() or atlas_check.stderr.strip()}")
+          f"declaration atlas drift: {child_output(atlas_check)}")
 
     certificate_probe_check = mid_checks["certificate_probe"]
     check(certificate_probe_check.returncode == 0,
-          f"certificate-supply probe drift: {certificate_probe_check.stdout.strip() or certificate_probe_check.stderr.strip()}")
+          f"certificate-supply probe drift: {child_output(certificate_probe_check)}")
 
     second_channel_probe_check = mid_checks["second_channel_probe"]
     check(second_channel_probe_check.returncode == 0,
-          f"second-channel separation probe drift: {second_channel_probe_check.stdout.strip() or second_channel_probe_check.stderr.strip()}")
+          f"second-channel separation probe drift: {child_output(second_channel_probe_check)}")
 
     off_diagonal_roster_check = run(
         [
@@ -2199,7 +2399,7 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(off_diagonal_roster_check.returncode == 0,
-          f"off-diagonal certificate roster drift: {off_diagonal_roster_check.stdout.strip() or off_diagonal_roster_check.stderr.strip()}")
+          f"off-diagonal certificate roster drift: {child_output(off_diagonal_roster_check)}")
 
     diagonal_depth_roster_check = run(
         [
@@ -2213,7 +2413,7 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(diagonal_depth_roster_check.returncode == 0,
-          f"checked diagonal depth roster drift: {diagonal_depth_roster_check.stdout.strip() or diagonal_depth_roster_check.stderr.strip()}")
+          f"checked diagonal depth roster drift: {child_output(diagonal_depth_roster_check)}")
 
     # The semantic corpus is what makes "what does this prove" a query rather
     # than a reread.  Its coverage contract is what stops a barrier from being
@@ -2227,22 +2427,22 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(semantic_build.returncode == 0,
-          f"semantic corpus drift: {semantic_build.stdout.strip() or semantic_build.stderr.strip()}")
+          f"semantic corpus drift: {child_output(semantic_build)}")
 
     semantic_contract = mid_checks["semantic_contract"]
     check(semantic_contract.returncode == 0,
-          f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
+          f"semantic coverage contract: {child_output(semantic_contract)}")
     semantic_review_check = mid_checks["semantic_review"]
     check(
         semantic_review_check.returncode == 0,
         "semantic review receipt contract: "
-        f"{semantic_review_check.stdout.strip() or semantic_review_check.stderr.strip()}",
+        f"{child_output(semantic_review_check)}",
     )
     semantic_review_fixtures = mid_checks["semantic_review_fixtures"]
     check(
         semantic_review_fixtures.returncode == 0,
         "semantic review mutation fixtures: "
-        f"{semantic_review_fixtures.stdout.strip() or semantic_review_fixtures.stderr.strip()}",
+        f"{child_output(semantic_review_fixtures)}",
     )
 
     # The theory lab is the layer that makes predictive claims -- which mechanism
@@ -2259,11 +2459,11 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(lab_build.returncode == 0,
-          f"theory lab drift: {lab_build.stdout.strip() or lab_build.stderr.strip()}")
+          f"theory lab drift: {child_output(lab_build)}")
 
     lab_contract = mid_checks["theory_lab_contract"]
     check(lab_contract.returncode == 0,
-          f"theory lab contract: {lab_contract.stdout.strip() or lab_contract.stderr.strip()}")
+          f"theory lab contract: {child_output(lab_contract)}")
     theory_lab = json.loads(read(ROOT / "docs" / "theory_lab.json"))
     check(
         theory_lab.get("schema") == "erdos249257-theory-lab/2",
@@ -2319,7 +2519,7 @@ def main(argv: list[str] | None = None) -> int:
     check(
         synopsis_check.returncode == 0,
         "module synopsis index freshness: "
-        + (synopsis_check.stdout.strip() or synopsis_check.stderr.strip()),
+        + (child_output(synopsis_check)),
     )
 
     coordinate_check = run(
@@ -2330,7 +2530,7 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(coordinate_check.returncode == 0,
-          f"source-coordinate drift: {coordinate_check.stdout.strip() or coordinate_check.stderr.strip()}")
+          f"source-coordinate drift: {child_output(coordinate_check)}")
 
     reasoning_coordinate_check = run(
         [
@@ -2369,7 +2569,7 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(corpus_check.returncode == 0,
-          f"corpus descriptor drift: {corpus_check.stdout.strip() or corpus_check.stderr.strip()}")
+          f"corpus descriptor drift: {child_output(corpus_check)}")
 
     paper_alias_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_paper_module_aliases.py"), "--check"],
@@ -2379,7 +2579,7 @@ def main(argv: list[str] | None = None) -> int:
         check=False,
     )
     check(paper_alias_check.returncode == 0,
-          f"paper module alias drift: {paper_alias_check.stdout.strip() or paper_alias_check.stderr.strip()}")
+          f"paper module alias drift: {child_output(paper_alias_check)}")
     reasoning_assembly_check = mid_checks["reasoning_assembly"]
     check(
         reasoning_assembly_check.returncode == 0,
@@ -2393,7 +2593,7 @@ def main(argv: list[str] | None = None) -> int:
     check(
         boundary.returncode == 0,
         "human-facing paper boundary failed: "
-        f"{boundary.stdout.strip() or boundary.stderr.strip()}",
+        f"{child_output(boundary)}",
     )
 
     descriptor = json.loads(read(ROOT / "docs" / "corpus_descriptor.json"))
@@ -2448,11 +2648,12 @@ def main(argv: list[str] | None = None) -> int:
     paper_aliases = json.loads(read(ROOT / "paper" / "module-aliases.json"))
     paper_artifacts = {
         "human_exposition": (
-            "paper/erdos249-257-main-paper.tex",
-            "erdos249-257-main-paper.pdf",
+            "paper/archive/erdos249-257-main-paper.tex",
+            "paper/archive/erdos249-257-main-paper.pdf",
+            "paper/archive/erdos249-257-main-paper.pdf",
         ),
     }
-    for content_id, (source_path, rendered_path) in paper_artifacts.items():
+    for content_id, (source_path, rendered_path, storage_path) in paper_artifacts.items():
         content = descriptor_content.get(content_id, {})
         check(content.get("source_path") == source_path,
               f"corpus descriptor {content_id} source path is missing or incorrect")
@@ -2460,7 +2661,7 @@ def main(argv: list[str] | None = None) -> int:
               f"corpus descriptor {content_id} rendered path is missing or incorrect")
         check(content.get("source_content_digest") == file_digest(ROOT / source_path),
               f"corpus descriptor {content_id} source digest drifted")
-        check(content.get("rendered_content_digest") == file_digest(ROOT / rendered_path),
+        check(content.get("rendered_content_digest") == file_digest(ROOT / storage_path),
               f"corpus descriptor {content_id} rendered digest drifted")
         check(content.get("authority_posture") == "authored_editorial_surface_not_Lean_proof_authority",
               f"corpus descriptor {content_id} does not preserve the proof-authority boundary")
@@ -2536,7 +2737,7 @@ def main(argv: list[str] | None = None) -> int:
     expected_source_provenance = {
         "formal_source_ref": data["release"]["formal_source"]["ref"],
         "main_paper_source_digest": file_digest(
-            ROOT / "paper" / "erdos249-257-main-paper.tex"
+            ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex"
         ),
         "navigation_projection_identity": (
             "content digests; no checkout commit embedded"
@@ -2561,24 +2762,24 @@ def main(argv: list[str] | None = None) -> int:
     late_checks = finish_independent_checks(late_executor, late_futures)
     query_check = late_checks["query"]
     check(query_check.returncode == 0,
-          f"corpus query surface failed: {query_check.stdout.strip() or query_check.stderr.strip()}")
+          f"corpus query surface failed: {child_output(query_check)}")
     mutation_harness_check = late_checks["mutation_harness"]
     check(
         mutation_harness_check.returncode == 0,
         "publication mutation harness self-test failed: "
-        f"{mutation_harness_check.stdout.strip() or mutation_harness_check.stderr.strip()}",
+        f"{child_output(mutation_harness_check)}",
     )
     public_boundary_check = late_checks["public_boundary"]
     check(
         public_boundary_check.returncode == 0,
         "public-artifact boundary contract failed: "
-        f"{public_boundary_check.stdout.strip() or public_boundary_check.stderr.strip()}",
+        f"{child_output(public_boundary_check)}",
     )
     primary_source_disposition_check = late_checks["primary_source_disposition"]
     check(
         primary_source_disposition_check.returncode == 0,
         "third-party source redistribution disposition contract failed: "
-        f"{primary_source_disposition_check.stdout.strip() or primary_source_disposition_check.stderr.strip()}",
+        f"{child_output(primary_source_disposition_check)}",
     )
     # The adversarial program starts by running the complete baseline against
     # one collected packet set, then mutates that same set.  Running the
@@ -2588,19 +2789,19 @@ def main(argv: list[str] | None = None) -> int:
     cold_clone_adversarial = late_checks["cold_clone_adversarial"]
     check(cold_clone_adversarial.returncode == 0,
           "bounded cold-clone baseline/adversarial check failed: "
-          f"{cold_clone_adversarial.stdout.strip() or cold_clone_adversarial.stderr.strip()}")
+          f"{child_output(cold_clone_adversarial)}")
 
     proof_cockpit_check = late_checks["proof_cockpit"]
     check(
         proof_cockpit_check.returncode == 0,
         "cold-clone proof cockpit check failed: "
-        f"{proof_cockpit_check.stdout.strip() or proof_cockpit_check.stderr.strip()}",
+        f"{child_output(proof_cockpit_check)}",
     )
     clone_footprint_check = late_checks["clone_footprint"]
     check(
         clone_footprint_check.returncode == 0,
         "clone-footprint budget check failed: "
-        f"{clone_footprint_check.stdout.strip() or clone_footprint_check.stderr.strip()}",
+        f"{child_output(clone_footprint_check)}",
     )
 
     # --- report ---------------------------------------------------------------------

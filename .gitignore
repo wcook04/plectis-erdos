@@ -39,6 +39,10 @@ _residual_probe.lean
 *.out
 *.toc
 
+# Makefile writes PDFs in paper/ before sync_publication_pdfs copies them into
+# paper/<id>/. Storage copies under paper/<id>/ remain tracked.
+/paper/*.pdf
+
 # Legacy checkout-local state for scripts/validation_singleflight.py. New cold
 # clones use a repository-scoped host cache so equivalent checkouts can share;
 # either location is disposable acceleration, never evidence.

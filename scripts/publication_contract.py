@@ -22,7 +22,7 @@ CONTRACT_PATH = "docs/publication_contract.json"
 EVIDENCE_PATH = "docs/publication_evidence.json"
 ENTRY_SOURCE_PATH = "docs/publication_entry_source.json"
 ENTRY_PACKET_PATH = "docs/publication_entry_packet.json"
-MUTATION_MANIFEST_PATH = "experiments/publication_mutations.json"
+MUTATION_MANIFEST_PATH = "research/experiments/publication_mutations.json"
 MUTATION_HARNESS_PATH = "scripts/run_publication_mutations.py"
 CLAIMS_PATH = "docs/claims.json"
 PROBLEMS_PATH = "docs/problems.json"
@@ -88,12 +88,180 @@ REQUIRED_ARTIFACT_FIELDS = {
     "source_content_digest",
     "rendered_path",
     "rendered_content_digest",
+    "storage_path",
     "authority_posture",
     "claim_scope",
     "architecture_ref",
     "entry_route_id",
     "validation",
 }
+ARCHIVAL_JOINT_CLASS = "archival_joint_manuscript"
+PUBLICATION_ROLE_SHORT = "short"
+PUBLICATION_ROLE_LONG = "long"
+PUBLICATION_ROLE_ARCHIVAL = "archival_joint_manuscript"
+PUBLICATION_ROLE_SYSTEMS = "systems_guide"
+ROLE_BY_ARTIFACT_CLASS = {
+    "problem_note": PUBLICATION_ROLE_SHORT,
+    "mathematical_companion": PUBLICATION_ROLE_LONG,
+    ARCHIVAL_JOINT_CLASS: PUBLICATION_ROLE_ARCHIVAL,
+    "repository_architecture_guide": PUBLICATION_ROLE_SYSTEMS,
+    "agent_navigation_guide": PUBLICATION_ROLE_SYSTEMS,
+    "open_source_research_strategy": PUBLICATION_ROLE_SYSTEMS,
+}
+SHORT_MANUSCRIPT_STEM_RE = re.compile(r"^erdos-\d+-[a-z0-9-]+$")
+TEMPORARY_BUILD_PDF_RE = re.compile(r"^paper/[^/]+\.pdf$")
+
+
+def artifact_storage_path(artifact: dict[str, Any]) -> str:
+    """Repo-relative PDF path. Hosted URL basename stays on rendered_path."""
+    storage = artifact.get("storage_path")
+    if isinstance(storage, str) and storage.strip():
+        return storage
+    rendered = artifact.get("rendered_path")
+    if isinstance(rendered, str):
+        return rendered
+    return ""
+
+
+def artifact_hosted_filename(artifact: dict[str, Any]) -> str:
+    """Public /plectis/papers/<filename>.pdf basename."""
+    rendered = artifact.get("rendered_path")
+    if not isinstance(rendered, str):
+        return ""
+    return Path(rendered).name
+
+
+def checkout_pdf_path(root: Path, rendered_or_storage: str) -> Path:
+    """On-disk PDF for a hosted basename or a repo storage path."""
+    if "/" in rendered_or_storage:
+        return root / rendered_or_storage
+    contract_path = root / "docs" / "publication_contract.json"
+    if contract_path.is_file():
+        payload = json.loads(contract_path.read_text(encoding="utf-8"))
+        for artifact in payload.get("artifacts", []):
+            if not isinstance(artifact, dict):
+                continue
+            hosted = artifact_hosted_filename(artifact)
+            storage = artifact_storage_path(artifact)
+            if hosted == rendered_or_storage or Path(storage).name == rendered_or_storage:
+                return root / storage
+    return root / rendered_or_storage
+
+
+def publication_role(artifact: dict[str, Any]) -> str:
+    """Explicit short/long/archival/systems role. Class is the default."""
+    explicit = artifact.get("publication_role")
+    if isinstance(explicit, str) and explicit.strip():
+        return explicit
+    artifact_class = artifact.get("artifact_class")
+    if isinstance(artifact_class, str):
+        return ROLE_BY_ARTIFACT_CLASS.get(artifact_class, "")
+    return ""
+
+
+def contract_publication_pdfs(contract: dict[str, Any]) -> set[str]:
+    """PDFs the publication contract expects. Independent of on-disk census."""
+    return {
+        artifact_storage_path(row)
+        for row in contract.get("artifacts", [])
+        if isinstance(row, dict) and artifact_storage_path(row)
+    }
+
+
+def is_temporary_build_pdf(relative: str) -> bool:
+    """Makefile writes ``paper/<hosted-stem>.pdf`` before sync; that is not publication."""
+    return bool(TEMPORARY_BUILD_PDF_RE.fullmatch(relative))
+
+
+def tracked_publication_pdfs(root: Path) -> set[str]:
+    """Publication PDFs actually present in the candidate, not the contract list.
+
+    Nested ``paper/<id>/`` and ``paper/archive/`` / ``paper/systems/`` copies
+    are publication. Direct ``paper/*.pdf`` build outputs are excluded. An
+    unexpected nested PDF is kept so the census can report it.
+    """
+    tracked: set[str] | None = None
+    completed = subprocess.run(
+        ["git", "-C", str(root), "ls-files", "-z", "--", "paper"],
+        capture_output=True,
+        check=False,
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        env=singleflight.command_environment(),
+    )
+    if completed.returncode == 0 and completed.stdout:
+        tracked = {
+            path.decode("utf-8")
+            for path in completed.stdout.split(b"\0")
+            if path.endswith(b".pdf")
+        }
+    if tracked is None:
+        paper = root / "paper"
+        tracked = set()
+        if paper.is_dir():
+            for path in paper.rglob("*.pdf"):
+                if path.is_file():
+                    tracked.add(path.relative_to(root).as_posix())
+    return {path for path in tracked if not is_temporary_build_pdf(path)}
+
+
+def publication_census_errors(
+    expected: set[str],
+    observed: set[str],
+    licensed: set[str] | None = None,
+) -> list[str]:
+    """Compare contract, candidate, and optional licence sets independently."""
+    errors: list[str] = []
+    missing = expected - observed
+    unexpected = observed - expected
+    if missing:
+        errors.append(
+            "publication census missing registered PDFs: " + ", ".join(sorted(missing))
+        )
+    if unexpected:
+        errors.append(
+            "publication census found unregistered tracked PDFs: "
+            + ", ".join(sorted(unexpected))
+        )
+    if licensed is not None and licensed != expected:
+        errors.append(
+            "publication licence coverage drifted: "
+            f"missing_from_contract={sorted(licensed - expected)}, "
+            f"not_CC_BY_licensed={sorted(expected - licensed)}"
+        )
+    return errors
+
+
+def publication_role_errors(artifact: dict[str, Any]) -> list[str]:
+    """Keep short vs long explicit without rewriting hosted download basenames."""
+    artifact_id = artifact.get("id", "<unknown>")
+    role = publication_role(artifact)
+    artifact_class = artifact.get("artifact_class")
+    expected_role = ROLE_BY_ARTIFACT_CLASS.get(artifact_class, "")
+    errors: list[str] = []
+    if not role:
+        errors.append(f"publication artifact {artifact_id!r} lacks a publication_role")
+        return errors
+    if expected_role and role != expected_role:
+        errors.append(
+            f"publication artifact {artifact_id!r} publication_role {role!r} "
+            f"does not match artifact_class {artifact_class!r}"
+        )
+    hosted = artifact_hosted_filename(artifact)
+    source = artifact.get("source_path", "")
+    if role == PUBLICATION_ROLE_SHORT:
+        source_stem = Path(str(source)).stem
+        hosted_stem = Path(hosted).stem
+        if not SHORT_MANUSCRIPT_STEM_RE.fullmatch(source_stem):
+            errors.append(
+                f"short artifact {artifact_id!r} source stem {source_stem!r} "
+                "must match erdos-<n>-<topic>"
+            )
+        if hosted_stem != source_stem:
+            errors.append(
+                f"short artifact {artifact_id!r} hosted basename {hosted!r} "
+                "must keep the source stem"
+            )
+    return errors
 
 
 class RepositoryReader:
@@ -239,7 +407,6 @@ def reuse_manuscript_pdfs(data: dict[str, Any]) -> set[str]:
             if (
                 isinstance(path, str)
                 and path.endswith(".pdf")
-                and "/" not in path
                 and "*" not in path
             ):
                 paths.add(path)
@@ -749,7 +916,7 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
         MUTATION_HARNESS_PATH,
         PROBLEMS_PATH,
         systems_artifact["source_path"],
-        systems_artifact["rendered_path"],
+        artifact_storage_path(systems_artifact),
         *[row["path"] for row in research_frontier["files"].values()],
     ]
     content_hashes = {
@@ -1200,12 +1367,18 @@ def validate_publication_contract(
     artifact_ids = [row.get("id") for row in artifacts]
     source_paths = [row.get("source_path") for row in artifacts]
     rendered_paths = [row.get("rendered_path") for row in artifacts]
+    storage_paths = [artifact_storage_path(row) for row in artifacts]
+    hosted_names = [artifact_hosted_filename(row) for row in artifacts]
     if len(artifact_ids) != len(set(artifact_ids)):
         errors.append("publication contract contains duplicate artifact ids")
     if len(source_paths) != len(set(source_paths)):
         errors.append("publication contract contains duplicate source paths")
     if len(rendered_paths) != len(set(rendered_paths)):
         errors.append("publication contract contains duplicate rendered paths")
+    if len(storage_paths) != len(set(storage_paths)):
+        errors.append("publication contract contains duplicate storage paths")
+    if len(hosted_names) != len(set(hosted_names)):
+        errors.append("publication contract contains duplicate hosted filenames")
     errors.extend(manuscript_title_errors(reader, artifacts))
 
     route_ids = {
@@ -1221,17 +1394,34 @@ def validate_publication_contract(
             continue
         source = artifact["source_path"]
         rendered = artifact["rendered_path"]
+        storage = artifact_storage_path(artifact)
+        hosted = artifact_hosted_filename(artifact)
         if not source.startswith("paper/") or not source.endswith(".tex"):
             errors.append(
                 f"publication artifact {artifact_id!r} has invalid source path {source!r}"
             )
-        if "/" in rendered or not rendered.endswith(".pdf"):
+        if not isinstance(rendered, str) or not rendered.endswith(".pdf") or "*" in rendered:
             errors.append(
                 f"publication artifact {artifact_id!r} has invalid rendered path {rendered!r}"
             )
+        if not storage.endswith(".pdf") or "*" in storage:
+            errors.append(
+                f"publication artifact {artifact_id!r} has invalid storage path {storage!r}"
+            )
+        if Path(rendered).name != Path(storage).name:
+            errors.append(
+                f"publication artifact {artifact_id!r} hosted download basename "
+                f"{Path(rendered).name!r} does not match storage {storage!r}"
+            )
+        if "/" in rendered and rendered != storage:
+            errors.append(
+                f"publication artifact {artifact_id!r} nested rendered_path must "
+                "equal storage_path; do not invent a second PDF location"
+            )
+        errors.extend(publication_role_errors(artifact))
         for relative, digest_field in (
             (source, "source_content_digest"),
-            (rendered, "rendered_content_digest"),
+            (storage, "rendered_content_digest"),
         ):
             if not reader.exists(relative):
                 errors.append(
@@ -1289,7 +1479,7 @@ def validate_publication_contract(
     except (FileNotFoundError, UnicodeError, tomllib.TOMLDecodeError) as error:
         errors.append(f"{REUSE_PATH}: {error}")
         licensed_pdfs = set()
-    registered_pdfs = {path for path in rendered_paths if isinstance(path, str)}
+    registered_pdfs = {path for path in storage_paths if path}
     if licensed_pdfs != registered_pdfs:
         errors.append(
             "publication licence coverage drifted: "
@@ -1298,6 +1488,9 @@ def validate_publication_contract(
         )
     if reuse is not None:
         errors.extend(reuse_manuscript_override_errors(reuse, registered_pdfs))
+    if reader.git_ref is None:
+        observed_pdfs = tracked_publication_pdfs(reader.root)
+        errors.extend(publication_census_errors(registered_pdfs, observed_pdfs))
 
     contract_routes = contract.get("entrypoints", [])
     contract_route_ids = [row.get("id") for row in contract_routes]
@@ -1339,9 +1532,16 @@ def validate_publication_contract(
         by_class.setdefault(artifact["artifact_class"], set()).add(
             artifact["source_path"]
         )
-    if by_class.get("mathematical_gateway", set()) != {
-        architecture["canonical_gateway"]["source"]
-    }:
+    gateway_decision = architecture.get("canonical_gateway", {}).get("decision", "")
+    gateway_source = architecture.get("canonical_gateway", {}).get("source")
+    if str(gateway_decision).startswith("archive"):
+        if by_class.get("mathematical_gateway"):
+            errors.append(
+                "retired joint manuscript must not remain class mathematical_gateway"
+            )
+        if by_class.get(ARCHIVAL_JOINT_CLASS, set()) != {gateway_source}:
+            errors.append("publication archive gateway drifted from docs/claims.json")
+    elif by_class.get("mathematical_gateway", set()) != {gateway_source}:
         errors.append("publication gateway drifted from docs/claims.json")
     retained_sources = {
         row["source"] for row in architecture.get("retained_companions", [])
@@ -1532,7 +1732,11 @@ def artifact_digest_restamp_plan(
             continue
         observed: dict[str, tuple[str, str, bool]] = {}
         for path_field, digest_field in ARTIFACT_DIGEST_FIELDS:
-            relative = artifact[path_field]
+            relative = (
+                artifact_storage_path(artifact)
+                if path_field == "rendered_path"
+                else artifact[path_field]
+            )
             try:
                 actual = sha256(reader.read_bytes(relative))
             except (FileNotFoundError, OSError, ValueError, UnicodeError) as error:
@@ -1664,7 +1868,7 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     gateway = next(
         row
         for row in source_license_drift["artifacts"]
-        if row["artifact_class"] == "mathematical_gateway"
+        if row["artifact_class"] in {"mathematical_gateway", ARCHIVAL_JOINT_CLASS}
     )
     source_path = gateway["source_path"]
     original_source = reader.read_text(source_path)

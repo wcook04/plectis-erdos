@@ -78,7 +78,7 @@ PROJECTIONS = (
     "docs/publication_entry_packet.json",
     "docs/WAVE_INDEX.md",
     "README.md",
-    "paper/erdos249-257-main-paper.tex",
+    "paper/archive/erdos249-257-main-paper.tex",
     "paper/module-aliases.json",
     "paper/module-aliases.tex",
 )
@@ -125,24 +125,24 @@ def check_source_coordinate_title_contract() -> None:
     """TeX and Unicode title spellings must resolve the same paper anchor."""
     anchors = (
         (
-            "paper/erdos-68-factorial-denominator-irrationality.tex",
+            "paper/68/erdos-68-factorial-denominator-irrationality.tex",
             "problem",
             "Erdős #68",
         ),
         (
-            "paper/erdos-243-reciprocal-tail-rigidity.tex",
+            "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
             "problem",
             "Erdős #243",
         ),
         (
-            "paper/erdos-1041-lemniscate-newton-flow.tex",
+            "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
             "problem",
             "Erdős #1041",
         ),
-        ("paper/erdos249-257-main-paper.tex", "problem", r"Erd\H{o}s \#249"),
-        ("paper/erdos-251-prime-gap-dyadic-series.tex", "section", "Introduction"),
-        ("paper/erdos-269-three-prime-running-lcm.tex", "section", "Introduction"),
-        ("paper/erdos-1049-rational-base-lambert.tex", "section", "Introduction"),
+        ("paper/archive/erdos249-257-main-paper.tex", "problem", r"Erd\H{o}s \#249"),
+        ("paper/251/erdos-251-prime-gap-dyadic-series.tex", "section", "Introduction"),
+        ("paper/269/erdos-269-three-prime-running-lcm.tex", "section", "Introduction"),
+        ("paper/1049/erdos-1049-rational-base-lambert.tex", "section", "Introduction"),
     )
     for source, environment, title in anchors:
         line = refresh_source_coordinates.paper_anchor_line(

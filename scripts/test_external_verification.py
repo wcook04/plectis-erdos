@@ -17,7 +17,12 @@ from pathlib import Path
 from unittest.mock import patch
 
 import build_external_verification as builder
-from build_external_verification import imports_in_text, load_owner, validate
+from build_external_verification import (
+    checkout_source_path,
+    imports_in_text,
+    load_owner,
+    validate,
+)
 from run_external_verification import (
     EXPECTED_1049_MISMATCH,
     EXPECTED_MISMATCH,
@@ -76,7 +81,10 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("not_a_reviewed_claim_registry", index["authority_posture"])
         self.assertEqual(
             packet["challenge_import_closure"]["internal_paths"],
-            ["ExternalVerification/Challenge.lean", "ExternalVerification/Statements.lean"],
+            [
+                "verification/ExternalVerification/Challenge.lean",
+                "verification/ExternalVerification/Statements.lean",
+            ],
         )
         self.assertEqual(
             packet["challenge_import_closure"]["proof_bearing_internal_import_count"], 0
@@ -229,8 +237,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         # still compiles and greps.
         for row in owner["main_results"]:
             self.assertIn(row["wrapper_declaration"], code_spans)
-        challenge = (ROOT / "ExternalVerification/Challenge.lean").read_text()
-        solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
+        challenge = checkout_source_path("ExternalVerification/Challenge.lean").read_text()
+        solution = checkout_source_path("ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
         self.assertNotIn("sorry", solution)
 
@@ -459,7 +467,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         self.assertEqual(negative["challenge_module"], positive["challenge_module"])
         self.assertNotEqual(negative["solution_module"], positive["solution_module"])
-        text = (ROOT / "ExternalVerification/NegativeSolution.lean").read_text()
+        text = checkout_source_path("ExternalVerification/NegativeSolution.lean").read_text()
         self.assertNotIn("sorry", text)
         self.assertIn("2 ^ e + 2", text)
 
@@ -479,10 +487,10 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertNotEqual(negative["solution_module"], positive["solution_module"])
         self.assertFalse(metadata["headline_interface_count_changed"])
         self.assertEqual(metadata["disposition"], "programme_local_comparator_packet")
-        statement = (ROOT / "ExternalVerification1049/Statements.lean").read_text()
-        challenge = (ROOT / "ExternalVerification1049/Challenge.lean").read_text()
-        solution = (ROOT / "ExternalVerification1049/Solution.lean").read_text()
-        mismatch = (ROOT / "ExternalVerification1049/NegativeSolution.lean").read_text()
+        statement = checkout_source_path("ExternalVerification1049/Statements.lean").read_text()
+        challenge = checkout_source_path("ExternalVerification1049/Challenge.lean").read_text()
+        solution = checkout_source_path("ExternalVerification1049/Solution.lean").read_text()
+        mismatch = checkout_source_path("ExternalVerification1049/NegativeSolution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
         self.assertNotIn("sorry", solution)
         self.assertNotIn("ErdosProblems", statement)
@@ -503,8 +511,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         core_gate = workflow.split("- name: Detect supported-root Lean changes", 1)[1]
         core_gate = core_gate.split("- name: Test pinned proof-environment lock", 1)[0]
         self.assertNotIn("'*.lean'", core_gate)
-        self.assertIn("Erdos249257.lean 'Erdos249257/**'", core_gate)
-        self.assertIn("ErdosProblems.lean 'ErdosProblems/**'", core_gate)
+        self.assertIn("lean/Erdos249257.lean 'lean/Erdos249257/**'", core_gate)
+        self.assertIn("lean/ErdosProblems.lean 'lean/ErdosProblems/**'", core_gate)
         self.assertNotIn("ExternalVerification", core_gate)
         self.assertIn("id: external-inputs", workflow)
         self.assertIn("steps.external-inputs.outputs.changed == 'true'", workflow)

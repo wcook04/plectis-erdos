@@ -63,9 +63,9 @@ def contract_pdfs() -> list[Path]:
     payload = json.loads(CONTRACT.read_text(encoding="utf-8"))
     paths: list[Path] = []
     for artifact in payload.get("artifacts", []):
-        rendered = artifact.get("rendered_path")
-        if rendered:
-            paths.append(ROOT / rendered)
+        storage = artifact.get("storage_path") or artifact.get("rendered_path")
+        if storage:
+            paths.append(ROOT / storage)
     return paths
 
 

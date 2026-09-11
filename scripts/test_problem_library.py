@@ -12,7 +12,7 @@ class ProblemLibraryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             files = {
-                'ErdosProblems/Erdos68/Main.lean': '/- import Bogus -/\nimport Shared.Base\n',
+                'lean/ErdosProblems/Erdos68/Main.lean': '/- import Bogus -/\nimport Shared.Base\n',
                 'Shared/Base.lean': 'import Shared.Leaf\n',
                 'Shared/Leaf.lean': 'def answer := 42\n',
                 'paper/short.tex': 'short', 'short.pdf': 'pdf',

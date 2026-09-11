@@ -42,8 +42,8 @@ QUICK_LEAN_COMMON_PATTERNS = (
 )
 LEAN_SPARSE_MANIFEST_PATH = ROOT / "scripts/lean-sparse-checkout"
 LEAN_SPARSE_PATTERNS = (
-    "/Erdos249257/",
-    "/ErdosProblems/",
+    "/lean/Erdos249257/",
+    "/lean/ErdosProblems/",
     "/scripts/lean_fast_build.py",
     "/scripts/lean_build_share.py",
     "/scripts/lean_package_share.py",
@@ -58,8 +58,8 @@ LEAN_SPARSE_PATTERNS = (
     "/CODEX.md",
     "/CONTRIBUTING.md",
     "/CURSOR.md",
-    "/Erdos249257.lean",
-    "/ErdosProblems.lean",
+    "/lean/Erdos249257.lean",
+    "/lean/ErdosProblems.lean",
     "/GEMINI.md",
     "/HUMAN_ENTRY.md",
     "/LICENSE",
@@ -74,7 +74,7 @@ LEAN_SPARSE_PATTERNS = (
     "/lake-manifest.json",
     "/lakefile.toml",
     "/lean-toolchain",
-    "!/ErdosProblems/FreePosition/data.jsonl",
+    "!/lean/ErdosProblems/FreePosition/data.jsonl",
 )
 LEAN_SPARSE_MANIFEST_TEXT = "\n".join(LEAN_SPARSE_PATTERNS) + "\n"
 READER_SPARSE_MANIFEST_PATH = ROOT / "scripts/reader-sparse-checkout"

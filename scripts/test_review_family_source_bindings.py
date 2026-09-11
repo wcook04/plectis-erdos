@@ -201,7 +201,7 @@ def test_backfill_stays_review_only_and_strict_prime_is_not_duplicated() -> None
 
 def test_three_prime_consumer_binding_matches_live_source() -> None:
     """The real expert handoff must expose every canonical #269 declaration."""
-    source = ROOT / "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+    source = ROOT / "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
     lines = source.read_text(encoding="utf-8").splitlines()
     declaration_pattern = re.compile(
         r"^\s*(?:def|lemma|theorem)\s+([A-Za-z0-9_]+)\b"

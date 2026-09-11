@@ -20,6 +20,8 @@ import stat
 import sys
 from pathlib import Path
 
+from lean_source import library_identity_path, library_storage_path
+
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = ROOT / "docs/claims.json"
 PROBLEM_SOURCE_PATH = ROOT / "docs/problem_index_source.json"
@@ -219,8 +221,21 @@ def load_signal_authority() -> dict:
     }
 
 
+def checkout_source_path(source: str) -> Path:
+    """Resolve a current-checkout Lean path, accepting nested storage spellings."""
+    candidates = (
+        ROOT / source,
+        ROOT / library_storage_path(source),
+        ROOT / "verification" / source,
+    )
+    for path in candidates:
+        if path.is_file():
+            return path
+    return ROOT / source
+
+
 def declaration_exists(source: str, full_name: str) -> bool:
-    path = ROOT / source
+    path = checkout_source_path(source)
     short = full_name.rsplit(".", 1)[-1]
     try:
         text = safe_text(path)
@@ -235,7 +250,8 @@ def declaration_exists(source: str, full_name: str) -> bool:
 
 
 def module_path(module: str) -> Path | None:
-    path = ROOT / (module.replace(".", "/") + ".lean")
+    rel = module.replace(".", "/") + ".lean"
+    path = checkout_source_path(rel)
     return path if path.is_file() else None
 
 
@@ -302,7 +318,9 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
             errors.append(f"missing original declaration {original} in {source}")
         short_original = original.rsplit(".", 1)[-1]
         if claim is not None and not any(
-            d.get("name") == short_original and d.get("module") == source
+            d.get("name") == short_original
+            and library_identity_path(str(d.get("module") or ""))
+            == library_identity_path(source)
             for d in claim.get("declarations", [])
         ):
             errors.append(f"result {result['id']} is not owned by claim {claim_id}")
@@ -339,8 +357,8 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
     closure = internal_import_closure(packet["comparator"]["challenge_module"])
     closure_rel = [path.relative_to(ROOT).as_posix() for path in closure]
     expected = [
-        "ExternalVerification/Challenge.lean",
-        "ExternalVerification/Statements.lean",
+        "verification/ExternalVerification/Challenge.lean",
+        "verification/ExternalVerification/Statements.lean",
     ]
     if closure_rel != expected:
         errors.append(f"challenge internal import closure drifted: {closure_rel!r}")
@@ -440,9 +458,11 @@ def sorry_census() -> dict:
     reach it without importing the release gate's heavier dependencies.
     """
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
+    from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings, library_source_paths
 
-    root_lean_files = {f"{root}.lean" for root in LIBRARY_ROOTS}
+    corpus_rels = {
+        path.relative_to(ROOT).as_posix() for path in library_source_paths(ROOT)
+    }
     challenge: dict[str, int] = {}
     corpus: dict[str, int] = {}
     other: dict[str, int] = {}
@@ -456,7 +476,7 @@ def sorry_census() -> dict:
         rel = path.relative_to(ROOT).as_posix()
         if path.name == CHALLENGE_FILENAME:
             challenge[rel] = count
-        elif path.parts[len(ROOT.parts)] in LIBRARY_ROOTS or rel in root_lean_files:
+        elif rel in corpus_rels:
             corpus[rel] = count
         else:
             other[rel] = count
@@ -803,7 +823,7 @@ def _render_ranked_candidate(candidate: dict, result: dict) -> list[str]:
             f"{candidate['mechanism_depth_and_natural_friction']}"
         ),
         (
-            f"   - **Source and evidence.** [Lean source](../{result['original_source']}); "
+            f"   - **Source and evidence.** [Lean source](../{library_storage_path(result['original_source'])}); "
             f"{candidate['evidence_certainty']}"
         ),
         (
@@ -1605,7 +1625,9 @@ def render_packet(
         for path in ("lakefile.toml", "lean-toolchain", "lake-manifest.json")
     }
     result["config_digest"] = sha256_bytes(config_bytes)
-    result["solution_source_digest"] = sha256_path(ROOT / "ExternalVerification/Solution.lean")
+    result["solution_source_digest"] = sha256_path(
+        checkout_source_path("ExternalVerification/Solution.lean")
+    )
     return json.dumps(result, indent=2, ensure_ascii=False) + "\n"
 
 

@@ -109,7 +109,7 @@
     },
     {
       "id": "test_edit_reconstruction",
-      "owner": "experiments/publication_mutations.json and scripts/run_publication_mutations.py",
+      "owner": "research/experiments/publication_mutations.json and scripts/run_publication_mutations.py",
       "role": "separately versioned deterministic reconstruction, not original raw logs"
     },
     {

@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "ErdosProblems" / "Erdos269" / "RestrictedFloorSum.lean"
+SOURCE = ROOT / "lean/ErdosProblems" / "Erdos269" / "RestrictedFloorSum.lean"
 PAPER = ROOT / "paper" / "erdos-269-three-prime-running-lcm.tex"
 THEOREM = "no_positive_absorbedCarry_of_cofinalLocalWindowEscape"
 PIN = "c5e7698474b32428e6a46ed4e7770d393b6f9dc8"

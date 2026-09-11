@@ -22,6 +22,8 @@ import sys
 from pathlib import Path
 from typing import Iterable
 
+from lean_source import library_identity_path
+
 
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "docs" / "semantic" / "reviews.json"
@@ -75,7 +77,7 @@ def node_review_material(
         "evidence": sorted(
             (
                 {
-                    "id": evidence.get("id"),
+                    "id": library_identity_path(str(evidence.get("id") or "")),
                     "kind": evidence.get("kind"),
                     "resolved": evidence.get("resolved"),
                 }

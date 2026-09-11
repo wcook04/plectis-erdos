@@ -17,8 +17,8 @@ GUIDE = ROOT / "ARCHITECTURE.md"
 README = ROOT / "README.md"
 AGENTS = ROOT / "AGENTS.md"
 PAPER_README = ROOT / "paper" / "README.md"
-SYSTEMS_PAPER = ROOT / "paper" / "claim-faithful-publication-systems-paper.tex"
-SYSTEMS_PDF = ROOT / "claim-faithful-publication-systems-paper.pdf"
+SYSTEMS_PAPER = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
+SYSTEMS_PDF = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.pdf"
 PUBLICATION_CONTRACT = ROOT / "docs" / "publication_contract.json"
 MAX_GUIDE_BYTES = 18_000
 # Keep the architecture paper bounded without accumulating one-off magic-number
@@ -158,8 +158,8 @@ REQUIRED_ANCHOR_GROUPS = {
 }
 
 REQUIRED_PATHS = (
-    "Erdos249257.lean",
-    "ErdosProblems.lean",
+    "lean/Erdos249257.lean",
+    "lean/ErdosProblems.lean",
     "docs/claims.json",
     "docs/methodology.json",
     "docs/publication_contract.json",
@@ -169,7 +169,7 @@ REQUIRED_PATHS = (
     "scripts/check_release.py",
     "scripts/check_cold_clone_comprehension.py",
     ".github/workflows/lean.yml",
-    "paper/erdos249-257-main-paper.tex",
+    "paper/archive/erdos249-257-main-paper.tex",
 )
 
 # These labels belong to the evaluation history or to private agent doctrine.
@@ -445,7 +445,10 @@ def validate_entry_links(
     require("](ARCHITECTURE.md)" in readme,
             "README lost the architecture guide entry link")
     require(
-        "](claim-faithful-publication-systems-paper.pdf)" in guide,
+        re.search(
+            r"\]\([^)]*claim-faithful-publication-systems-paper\.pdf\)",
+            guide,
+        ),
         "architecture guide lost the printable systems-paper route",
     )
     compact_guide = normalise(guide).casefold()

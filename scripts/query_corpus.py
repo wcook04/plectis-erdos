@@ -27,6 +27,20 @@ from build_module_synopsis_index import (
     QUERY_CONTRACT as MODULE_SYNOPSIS_QUERY_CONTRACT,
     SCHEMA as MODULE_SYNOPSIS_SCHEMA,
 )
+from lean_source import (
+    checkout_source_relative,
+    library_identity_path,
+    library_storage_path,
+    library_storage_variants,
+)
+
+
+def checkout_lean_file(relative: str) -> Path:
+    """Open a corpus Lean path in this checkout, accepting either storage spelling."""
+    path = ROOT / relative
+    if path.is_file():
+        return path
+    return ROOT / library_storage_path(relative)
 
 ROOT = Path(__file__).resolve().parent.parent
 DECLARATION_SEARCH_INDEX = ROOT / "docs" / "declaration_search_index.json.gz"
@@ -118,15 +132,18 @@ def canonical_lean_module_path(module: str, prefer_problems: bool = False) -> st
     convention only when neither root holds the file.
     """
     if module.startswith(tuple(f"{root}/" for root in LEAN_LIBRARY_ROOTS)):
+        nested = f"lean/{module}"
+        if (ROOT / nested).is_file():
+            return nested
         return module
     roots = (
         tuple(reversed(LEAN_LIBRARY_ROOTS)) if prefer_problems else LEAN_LIBRARY_ROOTS
     )
     for root in roots:
-        candidate = f"{root}/{module}"
-        if (ROOT / candidate).is_file():
-            return candidate
-    return f"{roots[0]}/{module}"
+        for candidate in (f"lean/{root}/{module}", f"{root}/{module}"):
+            if (ROOT / candidate).is_file():
+                return candidate
+    return f"lean/{roots[0]}/{module}"
 
 
 def canonical_paper_title(title: str) -> str:
@@ -513,20 +530,24 @@ def module_synopsis_index() -> dict[str, str | None]:
         or packet.get("owner_adoption") != MODULE_SYNOPSIS_OWNER_ADOPTION
     ):
         return {}
-    return {
-        row["path"]: row.get("synopsis")
-        for row in packet.get("modules", [])
-        if isinstance(row, dict) and isinstance(row.get("path"), str)
-    }
+    rows: dict[str, str | None] = {}
+    for row in packet.get("modules", []):
+        if not isinstance(row, dict) or not isinstance(row.get("path"), str):
+            continue
+        synopsis = row.get("synopsis")
+        for variant in library_storage_variants(row["path"]):
+            rows[variant] = synopsis
+    return rows
 
 
 @lru_cache(maxsize=512)
 def module_synopsis(rel: str) -> str | None:
     """Return a fingerprint-bound authored module header, with a local fallback."""
     indexed = module_synopsis_index()
-    if rel in indexed:
-        return indexed[rel]
-    path = ROOT / rel
+    for variant in library_storage_variants(rel):
+        if variant in indexed:
+            return indexed[variant]
+    path = checkout_lean_file(rel)
     if not path.is_file():
         return None
     with path.open(encoding="utf-8") as source:
@@ -545,6 +566,27 @@ def module_synopsis(rel: str) -> str | None:
 
 
 @lru_cache(maxsize=1)
+def layout_invariant_source_fingerprint() -> str:
+    """Atlas source hash with ``lean/`` stripped from corpus-relative paths.
+
+    Nested-layout storage changes the ordinary atlas fingerprint even when
+    the Lean blobs and module identities are unchanged. The elaborated
+    dependency index is still valid in that case and must not look stale.
+    """
+    from build_declaration_atlas import (
+        _update_source_digest,
+        safe_atlas_text,
+        source_paths,
+    )
+
+    digest = hashlib.sha256()
+    for path in source_paths():
+        relative = library_identity_path(path.relative_to(ROOT).as_posix())
+        _update_source_digest(digest, relative, safe_atlas_text(path))
+    return f"sha256:{digest.hexdigest()}"
+
+
+@lru_cache(maxsize=1)
 def lean_dependency_index() -> dict[str, Any] | None:
     path = ROOT / "docs/lean_dependency_index.json"
     if not path.is_file():
@@ -554,10 +596,15 @@ def lean_dependency_index() -> dict[str, Any] | None:
         atlas = load("docs/declaration_atlas.json")
     except (json.JSONDecodeError, OSError, KeyError):
         return None
+    packet_fingerprint = packet.get("source_fingerprint")
+    atlas_fingerprint = atlas.get("source_fingerprint")
+    fingerprint_current = packet_fingerprint == atlas_fingerprint or (
+        packet_fingerprint == layout_invariant_source_fingerprint()
+    )
     if (
         packet.get("schema_version")
         != "erdos249257-lean-dependency-index/3"
-        or packet.get("source_fingerprint") != atlas.get("source_fingerprint")
+        or not fingerprint_current
         or not isinstance(packet.get("nodes"), list)
         or not isinstance(packet.get("edges"), list)
     ):
@@ -1127,8 +1174,9 @@ def declaration_row_indexes() -> dict[str, Any]:
     by_source: dict[tuple[str, int, str], dict[str, Any]] = {}
     for row in atlas_declarations(atlas):
         by_name.setdefault(row["name"], []).append(row)
-        by_module.setdefault(row["module"], []).append(row)
-        by_source[(row["module"], row["line"], row["name"])] = row
+        for variant in library_storage_variants(row["module"]):
+            by_module.setdefault(variant, []).append(row)
+            by_source[(variant, row["line"], row["name"])] = row
     for rows in by_module.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
     return {
@@ -1136,6 +1184,48 @@ def declaration_row_indexes() -> dict[str, Any]:
         "by_module": by_module,
         "by_source": by_source,
     }
+
+
+def declarations_for_module_path(module_path: str) -> list[dict[str, Any]]:
+    """Return atlas rows for a module under either storage or identity spelling."""
+    indexes = declaration_row_indexes()["by_module"]
+    for variant in library_storage_variants(module_path):
+        rows = indexes.get(variant)
+        if rows:
+            return rows
+    return list(indexes.get(module_path, []))
+
+
+def declaration_for_module_name(
+    module: str, name: str
+) -> dict[str, Any] | None:
+    """Return one atlas row for a declaration under either path spelling."""
+    for row in declarations_for_module_path(module):
+        if row.get("name") == name:
+            return row
+    return None
+
+
+def live_expert_consumer(consumer: Mapping[str, Any]) -> dict[str, Any]:
+    """Join an expert-question consumer to the live atlas identity coordinate.
+
+    Frontier and corpus rows may spell ``lean/…`` storage or public identity
+    paths, and may carry a stale line after a nearby proof moved.  Callers
+    share this resolver so handoff packets, semantic expert-question packets,
+    and coverage receipts name the same declaration.
+    """
+    module = str(consumer.get("module") or "")
+    name = str(consumer.get("declaration") or consumer.get("name") or "")
+    refreshed = dict(consumer)
+    row = declaration_for_module_name(module, name)
+    if row is not None:
+        refreshed["module"] = library_identity_path(str(row.get("module") or module))
+        refreshed["line"] = row["line"]
+    else:
+        refreshed["module"] = library_identity_path(module)
+    if name:
+        refreshed["declaration"] = name
+    return refreshed
 
 
 @lru_cache(maxsize=1)
@@ -1345,9 +1435,13 @@ def formal_goal_candidate_rows() -> tuple[
     theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
     for handle, affordance in adjacency["formal_type_affordances"].items():
         node = adjacency["nodes_by_handle"][handle]
-        declaration = declarations.get(
-            (node["module"], node["line"], node["name"])
-        )
+        declaration = None
+        for variant in library_storage_variants(str(node.get("module") or "")):
+            declaration = declarations.get(
+                (variant, node["line"], node["name"])
+            )
+            if declaration is not None:
+                break
         if (
             node["declaration_kind"] not in theorem_kinds
             or declaration is None
@@ -1988,7 +2082,9 @@ def reviewed_result_family_atlas_source_rows(
         if not isinstance(declaration, str) or not declaration:
             continue
         for atlas_row in declaration_rows_for_handle(declaration):
-            if atlas_row.get("module") != module_path:
+            if library_identity_path(str(atlas_row.get("module") or "")) != library_identity_path(
+                module_path
+            ):
                 continue
             qualified_name = qualified_declaration_name(atlas_row)
             if qualified_name in seen:
@@ -1997,7 +2093,7 @@ def reviewed_result_family_atlas_source_rows(
             rows.append(
                 {
                     "original_declaration": qualified_name,
-                    "original_source": module_path,
+                    "original_source": library_identity_path(module_path),
                     "wrapper_declaration": None,
                     "claim_id": None,
                     "source_authority": (
@@ -2279,6 +2375,15 @@ def formal_source_identity(claims: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def formal_source_blob_repository(claims: dict[str, Any]) -> str:
+    """Host for pinned-SHA blob URLs. That SHA never had a ``lean/`` prefix."""
+    formal = claims["release"].get("formal_source") or {}
+    return str(
+        formal.get("blob_repository")
+        or "https://github.com/wcook04/plectis-lean-erdos249-257"
+    )
+
+
 def lean_source_identity_for_paper(
     claims: dict[str, Any], paper_source: str | None
 ) -> dict[str, Any]:
@@ -2374,7 +2479,12 @@ def artifact_packet(handle: str) -> dict[str, Any]:
     matches = [
         row
         for row in artifact_inventory()
-        if handle in (row["artifact_handle"], row["content_digest"])
+        if handle
+        in (
+            row["artifact_handle"],
+            row["content_digest"],
+            Path(str(row["artifact_handle"])).name,
+        )
     ]
     if not matches:
         raise KeyError(f"unknown registered artifact or content digest: {handle}")
@@ -2404,6 +2514,8 @@ def publication_artifact_packet(artifact_id: str) -> dict[str, Any]:
     identities = []
     for variant in ("source", "rendered"):
         path = artifact[f"{variant}_path"]
+        if variant == "rendered":
+            path = artifact.get("storage_path") or path
         expected = artifact[f"{variant}_content_digest"]
         actual = "sha256:" + hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
         identities.append(
@@ -2542,11 +2654,14 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         lines = text.splitlines()
         theorem_sources = [text]
         for input_match in re.finditer(r"\\input\{([^}]+)\}", text):
-            input_path = path.parent / input_match.group(1)
-            if input_path.suffix == "":
-                input_path = input_path.with_suffix(".tex")
-            if input_path.is_file():
-                theorem_sources.append(input_path.read_text(encoding="utf-8"))
+            raw = input_match.group(1)
+            candidates = [path.parent / raw, ROOT / "paper" / raw]
+            for input_path in candidates:
+                if input_path.suffix == "":
+                    input_path = input_path.with_suffix(".tex")
+                if input_path.is_file():
+                    theorem_sources.append(input_path.read_text(encoding="utf-8"))
+                    break
         environments = set(
             re.findall(
                 r"\\newtheorem\*?\{([^}]+)\}",
@@ -2777,13 +2892,14 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                         or macro.startswith("m")
                     ),
                 )
+                public_module = library_identity_path(module)
                 source_links.append(
                     {
                         "edge_kind": "authored_source_link",
                         "macro": macro,
-                        "module": module,
+                        "module": public_module,
                         "line": int(link.group("line")),
-                        "source_ref": f"{module}:{link.group('line')}",
+                        "source_ref": f"{public_module}:{link.group('line')}",
                         "source_identity": dict(lean_source_identity),
                         "declaration": link.group("name") or None,
                         "display_label": link.group("label") or None,
@@ -3367,7 +3483,7 @@ def decorate_declaration_rows(
     label_index = paper_label_index()
     sigil_by_path = {row["path"]: row["sigil"] for row in aliases}
     lean_source_identity = formal_source_identity(claims)
-    repository = lean_source_identity["repository"].rstrip("/")
+    repository = formal_source_blob_repository(claims).rstrip("/")
     source_ref = lean_source_identity["ref"]
     paper_anchors = paper_anchor_inventory()
     declarations_by_module = declaration_row_indexes()["by_module"]
@@ -3385,16 +3501,23 @@ def decorate_declaration_rows(
         decorated.append(
             {
                 **match,
+                "module": library_identity_path(match["module"]),
                 "qualified_name": qualified_declaration_name(match),
                 "externally_addressable": declaration_externally_addressable(
                     match
                 ),
-                "source_ref": f"{match['module']}:{match['line']}",
-                "source_url": f"{repository}/blob/{source_ref}/{match['module']}#L{match['line']}",
+                "source_ref": f"{library_identity_path(match['module'])}:{match['line']}",
+                "source_url": (
+                    f"{repository}/blob/{source_ref}/"
+                    f"{library_identity_path(match['module'])}#L{match['line']}"
+                ),
                 "lean_source_identity": dict(lean_source_identity),
-                "paper_sigil": sigil_by_path.get(match["module"]),
+                "paper_sigil": sigil_by_path.get(library_identity_path(match["module"]))
+                or sigil_by_path.get(match["module"]),
                 "module_role": roles.get(
-                    match["module"].removesuffix(".lean").replace("/", "."),
+                    library_identity_path(match["module"])
+                    .removesuffix(".lean")
+                    .replace("/", "."),
                     "Unclassified module",
                 ),
                 "attached_claims": attached_claims,
@@ -3406,7 +3529,8 @@ def decorate_declaration_rows(
                     }
                     for anchor in paper_anchors
                     if any(
-                        link["module"] == match["module"]
+                        library_identity_path(link["module"])
+                        == library_identity_path(match["module"])
                         and (
                             link["declaration"] == match["name"]
                             or (
@@ -3588,7 +3712,9 @@ def module_problem_routes(
     for problem in problems:
         modules = problem.get("modules", [])
         if not any(
-            isinstance(module, Mapping) and module.get("path") == module_path
+            isinstance(module, Mapping)
+            and library_identity_path(str(module.get("path") or ""))
+            == library_identity_path(module_path)
             for module in modules
         ):
             continue
@@ -3775,7 +3901,8 @@ def claim_registry_module_family_routes(
             declaration
             for declaration in claim.get("declarations", [])
             if isinstance(declaration, Mapping)
-            and declaration.get("module") == module_path
+            and library_identity_path(str(declaration.get("module") or ""))
+            == library_identity_path(module_path)
         ]
         if not claim_declarations:
             continue
@@ -3838,7 +3965,7 @@ def claim_registry_module_family_routes(
                     "claim_statement": claim.get("statement"),
                     "problem_id": problem["problem_id"],
                     "erdos_number": problem_number,
-                    "source_route": module_path,
+                    "source_route": library_identity_path(module_path),
                     "representative_declarations": representative_declarations,
                     "declaration_routes": [
                         row["command"] for row in representative_declarations
@@ -3933,8 +4060,8 @@ def reviewed_result_family_module_routes(
             matching_source_rows = [
                 row
                 for row in source_rows
-                if str(row.get("original_source", "")).removeprefix("./")
-                == module_path
+                if library_identity_path(str(row.get("original_source", "")).removeprefix("./"))
+                == library_identity_path(module_path)
             ]
             if not matching_source_rows:
                 matching_source_rows = reviewed_result_family_atlas_source_rows(
@@ -3987,7 +4114,7 @@ def reviewed_result_family_module_routes(
                     "id": family["id"],
                     "problem_id": problem["problem_id"],
                     "erdos_number": problem["erdos_number"],
-                    "source_route": module_path,
+                    "source_route": library_identity_path(module_path),
                     "representative": representative_source_row.get(
                         "original_declaration"
                     ),
@@ -4079,6 +4206,12 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     aliases = load("paper/module-aliases.json")["aliases"]
     module = next((row for row in atlas["modules"] if row["path"] == module_path), None)
     if module is None:
+        for variant in library_storage_variants(module_path):
+            module = next((row for row in atlas["modules"] if row["path"] == variant), None)
+            if module is not None:
+                module_path = variant
+                break
+    if module is None:
         raise KeyError(f"unknown Lean source module: {module_path}")
     source_lines = cached_source_lines(module_path)
     if line > len(source_lines):
@@ -4112,16 +4245,17 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     after = [row for row in module_declarations if row["line"] > line]
     roles = module_roles(claims)
     lean_source_identity = formal_source_identity(claims)
-    repository = lean_source_identity["repository"].rstrip("/")
+    repository = formal_source_blob_repository(claims).rstrip("/")
     source_ref = lean_source_identity["ref"]
+    public_module = library_identity_path(module_path)
     return {
         "kind": "source_coordinate",
         "authority_posture": "source_coordinate_navigation_not_proof_authority",
         "source": {
-            "module": module_path,
+            "module": public_module,
             "line": line,
-            "source_ref": f"{module_path}:{line}",
-            "source_url": f"{repository}/blob/{source_ref}/{module_path}#L{line}",
+            "source_ref": f"{public_module}:{line}",
+            "source_url": f"{repository}/blob/{source_ref}/{public_module}#L{line}",
             "lean_source_identity": lean_source_identity,
             "module_id": module["id"],
             "module_role": roles.get(module["id"], "Unclassified module"),
@@ -4169,7 +4303,10 @@ def declaration_externally_addressable(row: dict[str, Any]) -> bool:
 def cached_source_lines(module_path: str) -> tuple[str, ...]:
     """Read a source once for repeated coordinate and declaration queries."""
 
-    return tuple((ROOT / module_path).read_text(encoding="utf-8").splitlines())
+    path = ROOT / module_path
+    if not path.is_file():
+        path = ROOT / library_storage_path(module_path)
+    return tuple(path.read_text(encoding="utf-8").splitlines())
 
 
 def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
@@ -4178,9 +4315,9 @@ def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
         "qualified_name": qualified_declaration_name(row),
         "externally_addressable": declaration_externally_addressable(row),
         "declaration_kind": row["kind"],
-        "module": row["module"],
+        "module": library_identity_path(row["module"]),
         "line": row["line"],
-        "source_ref": f"{row['module']}:{row['line']}",
+        "source_ref": f"{library_identity_path(row['module'])}:{row['line']}",
         "claim_ids": row.get("claim_ids", []),
         "generated_certificate": bool(row.get("generated_certificate")),
     }
@@ -4190,6 +4327,8 @@ def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
 def module_namespace_events(rel: str) -> tuple[tuple[int, str], ...]:
     """Return namespace-prefix changes, respecting intervening section blocks."""
     path = ROOT / rel
+    if not path.is_file():
+        path = ROOT / library_storage_path(rel)
     if not path.is_file():
         return ((1, ""),)
     current = ""
@@ -4255,7 +4394,11 @@ def module_handle_indexes() -> dict[str, Any]:
         by_stem.setdefault(Path(row["path"]).stem.casefold(), []).append(row)
     return {
         "by_id": {row["id"]: row for row in modules},
-        "by_path": {row["path"]: row for row in modules},
+        "by_path": {
+            variant: row
+            for row in modules
+            for variant in library_storage_variants(row["path"])
+        },
         "by_stem": by_stem,
         "alias_by_sigil": {row["sigil"].casefold(): row for row in aliases},
         "alias_by_path": {row["path"]: row for row in aliases},
@@ -4278,6 +4421,14 @@ def resolve_module_handle(handle: str) -> tuple[dict[str, Any], str]:
         or indexes["by_path"].get(handle)
         or indexes["by_path"].get(normalized)
     )
+    if module is None:
+        for candidate in (handle, normalized):
+            for variant in library_storage_variants(candidate):
+                module = indexes["by_path"].get(variant)
+                if module is not None:
+                    break
+            if module is not None:
+                break
     if module is None and alias is None:
         stem_matches = indexes["by_stem"].get(
             Path(handle).name.removesuffix(".lean").casefold(), []
@@ -4299,13 +4450,15 @@ def resolve_module_handle(handle: str) -> tuple[dict[str, Any], str]:
 def compact_module(row: dict[str, Any], roles: dict[str, str]) -> dict[str, Any]:
     return {
         "id": row["id"],
-        "path": row["path"],
+        "path": library_identity_path(row["path"]),
         "role": roles.get(row["id"], "Unclassified module"),
         "declaration_count": row["declaration_count"],
     }
 
 
 def file_digest(path: Path) -> str:
+    if not path.is_file() and path.is_relative_to(ROOT):
+        path = checkout_lean_file(str(path.relative_to(ROOT)))
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
@@ -4369,7 +4522,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
 
     roles = module_roles(claims)
     by_module = {row["id"]: row for row in atlas["modules"]}
-    source_path = ROOT / module["path"]
+    source_path = checkout_lean_file(module["path"])
     source_text = source_path.read_text(encoding="utf-8")
     source_counts = identifier_counts(source_text)
     anchor_names = {row["name"] for row in declaration_matches}
@@ -4504,7 +4657,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     importer_rows = [row for row in atlas["modules"] if module["id"] in row.get("imports", [])]
     consumer_capsules = []
     for importer in importer_rows[: min(6, limit)]:
-        importer_path = ROOT / importer["path"]
+        importer_path = checkout_lean_file(importer["path"])
         importer_lines = importer_path.read_text(encoding="utf-8").splitlines()
         importer_declarations = declaration_indexes["by_module"].get(
             importer["path"], []
@@ -4643,8 +4796,10 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     module, resolution = resolve_module_handle(handle)
     module_indexes = module_handle_indexes()
     roles = module_roles(claims)
+    identity_path = library_identity_path(module["path"])
     module_view = {
         **module,
+        "path": identity_path,
         "role": roles.get(module["id"], "Unclassified module"),
         "authored_synopsis": module_synopsis(module["path"]),
         "synopsis_authority_posture": (
@@ -4653,7 +4808,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     }
     imported_rows = [row for row in atlas["modules"] if row["id"] in module["imports"]]
     importer_rows = [row for row in atlas["modules"] if module["id"] in row["imports"]]
-    declarations = declaration_row_indexes()["by_module"].get(module["path"], [])
+    declarations = declarations_for_module_path(module["path"])
     attached_claim_ids = sorted(
         {
             claim_id
@@ -4703,13 +4858,15 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         "lean_source_identity": formal_source_identity(claims),
         "module_handle_resolution": {
             "requested": requested_handle,
-            "resolved": module["path"],
+            "resolved": identity_path,
             "method": resolution,
             "authority": "docs/declaration_atlas.json::modules",
         },
         "module": module_view,
-        "paper_sigil": module_indexes["alias_by_path"].get(
-            module["path"], {}
+        "paper_sigil": (
+            module_indexes["alias_by_path"].get(identity_path)
+            or module_indexes["alias_by_path"].get(module["path"])
+            or {}
         ).get("sigil"),
         "attached_claims": claim_rows,
         "reviewed_result_families": reviewed_family_routes,
@@ -6554,7 +6711,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                     {
                         "kind": "module",
                         "id": row["id"],
-                        "path": row["path"],
+                        "path": library_identity_path(row["path"]),
                         "authored_synopsis_excerpt": (
                             synopsis[:480] if synopsis else None
                         ),
@@ -6830,11 +6987,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         if result["kind"] != "module":
             continue
         result["route_memory"] = module_route_memory_projection(
-            [
-                declaration
-                for declaration in atlas_declarations(atlas)
-                if declaration["module"] == result["path"]
-            ],
+            declarations_for_module_path(result["path"]),
             claims,
             module_source_problem_routes(result["path"], problems, claims),
         )
@@ -6892,7 +7045,7 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     declarations = declaration_row_indexes()["by_source"]
     claims = load("docs/claims.json")
     identity = formal_source_identity(claims)
-    repository = identity["repository"].rstrip("/")
+    repository = formal_source_blob_repository(claims).rstrip("/")
     source_ref = identity["ref"]
     witnesses = []
     for handle in claim.get("declarations", []):
@@ -6910,10 +7063,11 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
                 "declaration_kind": declaration["kind"],
                 "signature": declaration.get("signature"),
                 "source_ref": (
-                    f"{declaration['module']}:{declaration['line']}"
+                    f"{library_identity_path(declaration['module'])}:{declaration['line']}"
                 ),
                 "source_url": (
-                    f"{repository}/blob/{source_ref}/{declaration['module']}"
+                    f"{repository}/blob/{source_ref}/"
+                    f"{library_identity_path(declaration['module'])}"
                     f"#L{declaration['line']}"
                 ),
                 "docstring": declaration.get("docstring"),
@@ -8964,7 +9118,7 @@ def _signal_programme_spines(
             "source_disposition": source_dispositions[family_id],
             "declaration": candidate["declaration"],
             "source_declaration": result["original_declaration"],
-            "source_file": result["original_source"],
+            "source_file": checkout_source_relative(result["original_source"], ROOT),
             "why_here": candidate["consequence_and_endpoint_proximity"],
             "boundary": result["boundary"],
         }
@@ -9011,10 +9165,11 @@ def _signal_programme_spines(
             "source_declaration": (
                 result["original_declaration"] if result is not None else declaration
             ),
-            "source_file": (
+            "source_file": checkout_source_relative(
                 result["original_source"]
                 if result is not None
-                else "ExternalVerification/Statements.lean"
+                else "ExternalVerification/Statements.lean",
+                ROOT,
             ),
             "why_here": (
                 placement["relative_judgement"]
@@ -9209,7 +9364,7 @@ def mathematical_signal_spine(
             "selection_status": candidate["selection_status"],
             "consequence": candidate["consequence_and_endpoint_proximity"],
             "evidence_class": result["contribution_class"],
-            "source_file": result["original_source"],
+            "source_file": checkout_source_relative(result["original_source"], ROOT),
             "exact_boundary": result["boundary"],
         }
         if tier != "exact_reduction_or_structural_result":
@@ -9438,13 +9593,15 @@ def paper_reading_guide_packet() -> dict[str, Any]:
     artifacts = []
     for row in contract["artifacts"]:
         source = ROOT / row["source_path"]
-        rendered = ROOT / row["rendered_path"]
+        storage = row.get("storage_path") or row["rendered_path"]
+        rendered = ROOT / storage
         artifacts.append(
             {
                 "id": row["id"],
                 "artifact_class": row["artifact_class"],
                 "source_path": row["source_path"],
                 "rendered_path": row["rendered_path"],
+                "storage_path": storage,
                 "source_available_in_checkout": source.is_file(),
                 "rendered_available_in_checkout": rendered.is_file(),
             }
@@ -9454,7 +9611,13 @@ def paper_reading_guide_packet() -> dict[str, Any]:
     for row in corpus["papers"]:
         full_text_available = (ROOT / row["local_full_text"]).is_file()
         local_pdf = row.get("local_pdf")
-        pdf_available = bool(local_pdf) and (ROOT / local_pdf).is_file()
+        pdf_path = ROOT / local_pdf if local_pdf else None
+        if pdf_path is not None and not pdf_path.is_file() and local_pdf:
+            nested = list((ROOT / "paper").rglob(Path(local_pdf).name))
+            if len(nested) == 1:
+                pdf_path = nested[0]
+                local_pdf = nested[0].relative_to(ROOT).as_posix()
+        pdf_available = bool(local_pdf) and pdf_path is not None and pdf_path.is_file()
         preferred_read_path = (
             row["local_full_text"]
             if full_text_available
@@ -9479,7 +9642,6 @@ def paper_reading_guide_packet() -> dict[str, Any]:
                 "not_authority_for": row["not_authority_for"],
             }
         )
-    default_gateway = artifact_index["human_exposition"]
     paper_index = {row["paper_id"]: row for row in papers}
     paper_by_problem = {
         int(row["erdos_number"]): row["paper"]["paper_id"] for row in problems
@@ -9527,6 +9689,31 @@ def paper_reading_guide_packet() -> dict[str, Any]:
             "exact_boundary",
         )
     }
+    current_notes = [
+        row for row in artifacts if row.get("artifact_class") == "problem_note"
+    ]
+    archival_joint = next(
+        (
+            row
+            for row in artifacts
+            if row.get("artifact_class") == "archival_joint_manuscript"
+        ),
+        artifact_index.get("human_exposition"),
+    )
+    frontier_paper_id = mathematical_default_gateway["paper_id"]
+    default_gateway = next(
+        (
+            row
+            for row in current_notes
+            if Path(row["source_path"]).stem == frontier_paper_id
+            or Path(row["rendered_path"]).stem == frontier_paper_id
+        ),
+        current_notes[0] if current_notes else None,
+    )
+    if default_gateway is None:
+        raise ValueError("no current problem-note entrance is registered")
+    if archival_joint is not None and default_gateway["id"] == archival_joint["id"]:
+        raise ValueError("archived joint manuscript selected as current entrance")
     return {
         "kind": "paper_reading_guide",
         "schema_version": "erdos249257-paper-reading-guide/1",
@@ -9537,6 +9724,8 @@ def paper_reading_guide_packet() -> dict[str, Any]:
         "mathematical_signal_spine": signal,
         "papers": papers,
         "default_gateway": default_gateway,
+        "historical_joint_manuscript": archival_joint,
+        "current_mathematical_entrances": current_notes,
         "mathematical_default_gateway": mathematical_default_gateway,
         "recommended_routes": {
             "understand_the_mathematics": [
@@ -10232,7 +10421,7 @@ def render_card(packet: dict[str, Any]) -> str:
         rows = []
         for row in packet["matches"]:
             card = (
-                f"declaration {row['name']} | {row['kind']} | {row['module']}:{row['line']} "
+                f"declaration {row['name']} | {row['kind']} | {library_identity_path(row['module'])}:{row['line']} "
                 f"| claims={','.join(row['claim_ids']) or 'none'}"
             )
             rows.append(_append_route_memory_resumes(card, row.get("route_memory")))

@@ -109,7 +109,7 @@
       "mapping": "The local theorem uses the zero-based consecutive-prime gap sequence and proves that for every bound B some indexed gap exceeds B. This is the same unboundedness statement after the repository's indexing convention is unfolded.",
       "references": [
         "docs/PRIOR_ART.md#expansion-note-principal-sources-68-243-251-269-1041-1049",
-        "paper/erdos-251-prime-gap-dyadic-series.tex"
+        "paper/251/erdos-251-prime-gap-dyadic-series.tex"
       ],
       "historical_attribution": "Classical elementary factorial prime-free interval argument; modern large-gap theorems in the paper are contextual and strictly stronger.",
       "logical_dependency": "The Lean proof reconstructs an elementary argument locally; no external prime-gap theorem is imported as a proof dependency."
@@ -143,7 +143,7 @@
       "references": [
         "https://users.renyi.hu/~p_erdos/1969-09.pdf",
         "docs/PRIOR_ART.md",
-        "paper/erdos-257-mersenne-support-subseries.tex"
+        "paper/257/erdos-257-mersenne-support-subseries.tex"
       ],
       "historical_attribution": "Erdos (1968), as recorded in the repository's prior-art ledger and the #257 problem note.",
       "logical_dependency": "The proof-bearing source supplies the adaptive CRT and weighted coefficient certificate argument locally; the cited source establishes historical attribution and statement fidelity, not an imported Lean dependency."
@@ -165,7 +165,7 @@
       "references": [
         "https://users.renyi.hu/~p_erdos/1948-04.pdf",
         "docs/PRIOR_ART.md",
-        "paper/erdos-257-mersenne-support-subseries.tex"
+        "paper/257/erdos-257-mersenne-support-subseries.tex"
       ],
       "historical_attribution": "Erdos, On arithmetical properties of Lambert series (1948), theorem on p. 63 as recorded in the repository's prior-art ledger.",
       "logical_dependency": "The theorem is independently represented and proved in Lean in this repository; the historical source is attribution and fidelity evidence, not an imported kernel dependency."
@@ -174,13 +174,24 @@
       "source_statement": "Coons proved that Euler's totient sequence is not k-regular for every integer k at least 2, while Martin's affine-totient ordering theorem implies linear independence of every finite family of pairwise nonproportional positive-slope affine totient sections.",
       "mapping": "The dyadic Lean development gives an independent constructive finite-level basis and rank proof. Its full-kernel infinite-dimensionality corollary is kernel-checked here but is not an independent contribution: for integer-valued sequence modules it is equivalent to Coons's non-k-regularity result. The all-base Lean modules check the zero-channel identity, the exact composite-base scalar reduction, residue coordinates, index cardinality k^e+1, and unconditional spanning by the canonical family. Lean also checks the exact-rank conclusion under an explicit linear-independence hypothesis. Martin remains the external authority for that hypothesis, so the unconditional all-base basis and rank theorem remains a paper conclusion rather than a Lean theorem without assumptions.",
       "references": [
-        "paper/erdos-249-binary-totient-series.tex",
+        "paper/249/erdos-249-binary-totient-series.tex",
         "docs/PRIOR_ART.md",
         "https://doi.org/10.1017/S0305004108001665",
         "https://doi.org/10.1007/s11139-004-4633-4"
       ],
       "historical_attribution": "Coons for non-k-regularity of Euler's totient sequence; Martin for the positive-density affine ordering theorem from which the paper's finite-family independence step follows.",
       "logical_dependency": "The dyadic finite-level proof is local. In the all-base development, arithmetic reduction and canonical spanning are unconditional; exact rank is conditional on an explicit linear-independence hypothesis. The paper discharges that hypothesis using Martin externally, whose positive-density theorem is not formalised."
+    },
+    "prime_gap_irrationality_equivalence": {
+      "source_statement": "The prime-value dyadic series equals 2 plus the prime-gap dyadic series by summation by parts, so one series is irrational exactly when the other is.",
+      "mapping": "The local named iff still takes a Summable hypothesis. This checkout discharges that hypothesis by the elementary polynomial bound p_n ≤ 1250(n+1)^4 and the unconditional identity, not by the prime-number theorem. Neither side is proved irrational.",
+      "references": [
+        "https://www.erdosproblems.com/forum/thread/251",
+        "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+        "docs/PRIOR_ART.md#expansion-note-principal-sources-68-243-251-269-1041-1049"
+      ],
+      "historical_attribution": "Tao, erdosproblems.com/251, 7 October 2025. Recorded as cited only on prime_gap_identity_tao. This is not a novelty or priority claim.",
+      "logical_dependency": "The Lean proof reconstructs summation by parts and an elementary prime bound locally; the forum post is attribution, not a kernel import."
     }
   },
   "main_results": [
@@ -520,11 +531,11 @@
       "id": "prime_gap_irrationality_equivalence",
       "problem": 251,
       "review_family": "prime_gap_reformulation",
-      "contribution_class": "locally proved result; novelty unassessed",
+      "contribution_class": "formalisation of existing result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
-      "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational.",
+      "statement": "Lean checks that the prime-value dyadic series is irrational exactly when the prime-gap dyadic series is, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational. The already-known identity is Tao's (7 October 2025) and is recorded separately as cited only.",
       "boundary": "The equivalence does not prove irrationality of either series.",
       "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",
@@ -865,7 +876,7 @@
   "review_matrix": [
     {
       "problem": 68,
-      "paper": "paper/erdos-68-factorial-denominator-irrationality.tex",
+      "paper": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "families": [
         {
           "id": "factorial_carry_characterisation",
@@ -922,7 +933,7 @@
     },
     {
       "problem": 243,
-      "paper": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+      "paper": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "families": [
         {
           "id": "centered_state_dynamics",
@@ -982,7 +993,7 @@
     },
     {
       "problem": 249,
-      "paper": "paper/erdos-249-binary-totient-series.tex",
+      "paper": "paper/249/erdos-249-binary-totient-series.tex",
       "families": [
         {
           "id": "totient_kernel_basis",
@@ -1210,7 +1221,7 @@
     },
     {
       "problem": 251,
-      "paper": "paper/erdos-251-prime-gap-dyadic-series.tex",
+      "paper": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
       "families": [
         {
           "id": "prime_gap_reformulation",
@@ -1293,7 +1304,7 @@
     },
     {
       "problem": 257,
-      "paper": "paper/erdos-257-mersenne-support-subseries.tex",
+      "paper": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "families": [
         {
           "id": "finite_period_noncollapse",
@@ -1440,7 +1451,7 @@
     },
     {
       "problem": 269,
-      "paper": "paper/erdos-269-three-prime-running-lcm.tex",
+      "paper": "paper/269/erdos-269-three-prime-running-lcm.tex",
       "families": [
         {
           "id": "three_prime_lcm_cells",
@@ -1453,7 +1464,7 @@
         {
           "id": "two_prime_transcendence",
           "contribution_class": "paper plus external theorem",
-          "summary": "Both two-prime running-lcm series are proved transcendental by an authored deduction from an external theorem.",
+          "summary": "Steve Fan posted the two-prime factorisation, reduction and transcendence first (erdosproblems.com/269, 26 June 2026, post-7218). This checkout records that ordinary deduction from Bugeaud–Laurent and does not claim priority or a Lean theorem.",
           "evidence_mode": "paper argument plus cited theorem",
           "comparator_disposition": "not_applicable_not_a_lean_declaration",
           "boundary": "Comparator cannot certify the external analytic input."
@@ -1531,7 +1542,7 @@
     },
     {
       "problem": 1041,
-      "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+      "paper": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "families": [
         {
           "id": "newton_value_decay",
@@ -1593,7 +1604,7 @@
     },
     {
       "problem": 1049,
-      "paper": "paper/erdos-1049-rational-base-lambert.tex",
+      "paper": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "families": [
         {
           "id": "scalar_content_no_go",
@@ -1688,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:02e789f71e0711c2594b6a42a6635d1d933202af94099162309c6c2706eac121",
+    "owner_digest": "sha256:6dcd040fe30e2dc29a0766bab3cbd34d3c21691c811750d7530a8003bff7511a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:fde0d9af3b6c755f42811985a8ec14db39b511b11e67f01eb652692c0052528c",
+    "projection_digest": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1703,20 +1714,20 @@
         "question": "Is the series sum_{n >= 2} 1/(n! - 1) irrational?",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos68",
+        "directory": "lean/ErdosProblems/Erdos68",
         "modules": [
           {
-            "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
-            "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+            "module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+            "path": "lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
             "present": true,
-            "line_count": 1756,
-            "declaration_count": 63,
-            "theorem_count": 57,
-            "content_digest": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+            "line_count": 1008,
+            "declaration_count": 36,
+            "theorem_count": 31,
+            "content_digest": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
           },
           {
             "module": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
-            "path": "ErdosProblems/Erdos68/CanonicalFactorialDigits.lean",
+            "path": "lean/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean",
             "present": true,
             "line_count": 278,
             "declaration_count": 18,
@@ -1725,7 +1736,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
-            "path": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
+            "path": "lean/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
             "present": true,
             "line_count": 144,
             "declaration_count": 10,
@@ -1734,7 +1745,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
-            "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+            "path": "lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
             "present": true,
             "line_count": 1133,
             "declaration_count": 55,
@@ -1743,7 +1754,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.DivisorFactorialCentre",
-            "path": "ErdosProblems/Erdos68/DivisorFactorialCentre.lean",
+            "path": "lean/ErdosProblems/Erdos68/DivisorFactorialCentre.lean",
             "present": true,
             "line_count": 303,
             "declaration_count": 18,
@@ -1752,7 +1763,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
-            "path": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "path": "lean/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
             "present": true,
             "line_count": 6674,
             "declaration_count": 223,
@@ -1761,7 +1772,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.FactorialCarry",
-            "path": "ErdosProblems/Erdos68/FactorialCarry.lean",
+            "path": "lean/ErdosProblems/Erdos68/FactorialCarry.lean",
             "present": true,
             "line_count": 101,
             "declaration_count": 8,
@@ -1770,7 +1781,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.FactorialChannelCertificate",
-            "path": "ErdosProblems/Erdos68/FactorialChannelCertificate.lean",
+            "path": "lean/ErdosProblems/Erdos68/FactorialChannelCertificate.lean",
             "present": true,
             "line_count": 172,
             "declaration_count": 17,
@@ -1778,8 +1789,17 @@
             "content_digest": "sha256:170b6eadada6558fb37892ff30e4fbdb1e1c2474db33241da38867dcbd4213a6"
           },
           {
+            "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
+            "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+            "present": true,
+            "line_count": 1756,
+            "declaration_count": 63,
+            "theorem_count": 57,
+            "content_digest": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+          },
+          {
             "module": "ErdosProblems.Erdos68.FiniteDefectAutomaton",
-            "path": "ErdosProblems/Erdos68/FiniteDefectAutomaton.lean",
+            "path": "lean/ErdosProblems/Erdos68/FiniteDefectAutomaton.lean",
             "present": true,
             "line_count": 120,
             "declaration_count": 10,
@@ -1788,7 +1808,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.PrimeUnitTranslator",
-            "path": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
+            "path": "lean/ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
             "present": true,
             "line_count": 1730,
             "declaration_count": 91,
@@ -1797,7 +1817,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.PrimeZeroBranch",
-            "path": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "path": "lean/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
             "present": true,
             "line_count": 7293,
             "declaration_count": 187,
@@ -1806,7 +1826,7 @@
           },
           {
             "module": "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
-            "path": "ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean",
+            "path": "lean/ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean",
             "present": true,
             "line_count": 204,
             "declaration_count": 4,
@@ -1817,8 +1837,8 @@
         "note": {
           "artifact_id": "erdos_68_note",
           "title": "Two Incomparable Denominator Exclusions\\\\for $\\sum_{n\\ge2}(n!-1)^{-1}$",
-          "source_path": "paper/erdos-68-factorial-denominator-irrationality.tex",
-          "rendered_path": "erdos-68-factorial-denominator-irrationality.pdf",
+          "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "rendered_path": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
           "authority_posture": "authored_mathematical_exposition_of_unregistered_expansion_modules_and_an_external_finite_certificate_not_Lean_proof_authority"
         },
         "what_is_checked": [
@@ -1863,8 +1883,8 @@
         "paper": {
           "paper_id": "erdos-68-factorial-denominator-irrationality",
           "title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}",
-          "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
-          "pdf": "erdos-68-factorial-denominator-irrationality.pdf",
+          "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
           "full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
           "resolution": "resolved"
         },
@@ -1894,11 +1914,11 @@
         "question": "Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos243",
+        "directory": "lean/ErdosProblems/Erdos243",
         "modules": [
           {
             "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
-            "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "path": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
             "present": true,
             "line_count": 2386,
             "declaration_count": 77,
@@ -1907,7 +1927,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
-            "path": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+            "path": "lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
             "present": true,
             "line_count": 141,
             "declaration_count": 10,
@@ -1916,7 +1936,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.SparseResetRecovery",
-            "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+            "path": "lean/ErdosProblems/Erdos243/SparseResetRecovery.lean",
             "present": true,
             "line_count": 543,
             "declaration_count": 20,
@@ -1925,7 +1945,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.DynamicCancellation",
-            "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+            "path": "lean/ErdosProblems/Erdos243/DynamicCancellation.lean",
             "present": true,
             "line_count": 399,
             "declaration_count": 15,
@@ -1934,7 +1954,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.FeedbackRealizability",
-            "path": "ErdosProblems/Erdos243/FeedbackRealizability.lean",
+            "path": "lean/ErdosProblems/Erdos243/FeedbackRealizability.lean",
             "present": true,
             "line_count": 165,
             "declaration_count": 7,
@@ -1943,7 +1963,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.GlobalLcmHeight",
-            "path": "ErdosProblems/Erdos243/GlobalLcmHeight.lean",
+            "path": "lean/ErdosProblems/Erdos243/GlobalLcmHeight.lean",
             "present": true,
             "line_count": 152,
             "declaration_count": 13,
@@ -1952,7 +1972,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.LcmCriticalBoundary",
-            "path": "ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+            "path": "lean/ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
             "present": true,
             "line_count": 388,
             "declaration_count": 15,
@@ -1961,7 +1981,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
-            "path": "ErdosProblems/Erdos243/PrimitivePrefixRigidity.lean",
+            "path": "lean/ErdosProblems/Erdos243/PrimitivePrefixRigidity.lean",
             "present": true,
             "line_count": 136,
             "declaration_count": 6,
@@ -1970,7 +1990,7 @@
           },
           {
             "module": "ErdosProblems.Erdos243.WeightedCRTRepair",
-            "path": "ErdosProblems/Erdos243/WeightedCRTRepair.lean",
+            "path": "lean/ErdosProblems/Erdos243/WeightedCRTRepair.lean",
             "present": true,
             "line_count": 333,
             "declaration_count": 17,
@@ -1981,8 +2001,8 @@
         "note": {
           "artifact_id": "erdos_243_note",
           "title": "Excluding the Bounded Negative Part",
-          "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-          "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
+          "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+          "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
         },
         "what_is_checked": [
@@ -2022,8 +2042,8 @@
         "paper": {
           "paper_id": "erdos-243-reciprocal-tail-rigidity",
           "title": "Excluding the Bounded Negative Part",
-          "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-          "pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
+          "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+          "pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
           "resolution": "resolved"
         },
@@ -2051,11 +2071,11 @@
         "question": "Is the binary Lambert series sum phi(n)/2^n irrational?",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos249",
+        "directory": "lean/ErdosProblems/Erdos249",
         "modules": [
           {
             "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
-            "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+            "path": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
             "present": true,
             "line_count": 530,
             "declaration_count": 25,
@@ -2064,7 +2084,7 @@
           },
           {
             "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
-            "path": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+            "path": "lean/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
             "present": true,
             "line_count": 69,
             "declaration_count": 6,
@@ -2073,7 +2093,7 @@
           },
           {
             "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
-            "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+            "path": "lean/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
             "present": true,
             "line_count": 268,
             "declaration_count": 17,
@@ -2084,11 +2104,14 @@
         "note": {
           "artifact_id": "erdos_249_note",
           "title": "A Basis for the 2-Kernel of Euler's Totient",
-          "source_path": "paper/erdos-249-binary-totient-series.tex",
-          "rendered_path": "erdos-249-binary-totient-series.pdf",
+          "source_path": "paper/249/erdos-249-binary-totient-series.tex",
+          "rendered_path": "paper/249/erdos-249-binary-totient-series.pdf",
           "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
         },
         "what_is_checked": [
+          "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1.",
+          "The rational span of the full dyadic totient kernel is not finite-dimensional; for integer-valued sequence modules this is equivalent to Coons's non-k-regularity and is not an independent contribution.",
+          "Lean diagonal certificates through t = 82; neither t = 83 nor an unbounded family is supplied.",
           "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.",
           "The local s=1 and s=2 squared Möbius Euler-factor identities and the first two prime-power divisor-sum differences.",
           "That the two-by-two checkerboard kills separable backgrounds and is unique up to scale under the four row and column cancellations.",
@@ -2130,8 +2153,8 @@
         "paper": {
           "paper_id": "erdos-249-binary-totient-series",
           "title": "A Basis for the 2-Kernel of Euler’s Totient",
-          "source": "paper/erdos-249-binary-totient-series.tex",
-          "pdf": "erdos-249-binary-totient-series.pdf",
+          "source": "paper/249/erdos-249-binary-totient-series.tex",
+          "pdf": "paper/249/erdos-249-binary-totient-series.pdf",
           "full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
           "resolution": "resolved"
         },
@@ -2174,11 +2197,11 @@
         "question": "Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos251",
+        "directory": "lean/ErdosProblems/Erdos251",
         "modules": [
           {
             "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
-            "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "path": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
             "present": true,
             "line_count": 1665,
             "declaration_count": 116,
@@ -2189,8 +2212,8 @@
         "note": {
           "artifact_id": "erdos_251_note",
           "title": "A Countermodel for Growth-and-Parity Arguments\\\\on the Prime-Gap Dyadic Series",
-          "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
-          "rendered_path": "erdos-251-prime-gap-dyadic-series.pdf",
+          "source_path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "rendered_path": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
         },
         "what_is_checked": [
@@ -2230,8 +2253,8 @@
         "paper": {
           "paper_id": "erdos-251-prime-gap-dyadic-series",
           "title": "A Countermodel for Growth-and-Parity Arguments on the Prime-Gap Dyadic Series",
-          "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
-          "pdf": "erdos-251-prime-gap-dyadic-series.pdf",
+          "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
           "full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
           "resolution": "resolved"
         },
@@ -2261,11 +2284,11 @@
         "question": "Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos257",
+        "directory": "lean/ErdosProblems/Erdos257",
         "modules": [
           {
             "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
-            "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+            "path": "lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
             "present": true,
             "line_count": 421,
             "declaration_count": 28,
@@ -2276,8 +2299,8 @@
         "note": {
           "artifact_id": "erdos_257_note",
           "title": "Reciprocal-Summable Support Irrationality at Every Integer Base",
-          "source_path": "paper/erdos-257-mersenne-support-subseries.tex",
-          "rendered_path": "erdos-257-mersenne-support-subseries.pdf",
+          "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "rendered_path": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
         },
         "what_is_checked": [
@@ -2304,8 +2327,8 @@
         "paper": {
           "paper_id": "erdos-257-mersenne-support-subseries",
           "title": "Reciprocal-Summable Support Irrationality at Every Integer Base",
-          "source": "paper/erdos-257-mersenne-support-subseries.tex",
-          "pdf": "erdos-257-mersenne-support-subseries.pdf",
+          "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
           "resolution": "resolved"
         },
@@ -2342,11 +2365,11 @@
         "question": "For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos269",
+        "directory": "lean/ErdosProblems/Erdos269",
         "modules": [
           {
             "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
-            "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+            "path": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
             "present": true,
             "line_count": 835,
             "declaration_count": 54,
@@ -2355,7 +2378,7 @@
           },
           {
             "module": "ErdosProblems.Erdos269.ResidueEscape",
-            "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
+            "path": "lean/ErdosProblems/Erdos269/ResidueEscape.lean",
             "present": true,
             "line_count": 164,
             "declaration_count": 8,
@@ -2364,7 +2387,7 @@
           },
           {
             "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
-            "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+            "path": "lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean",
             "present": true,
             "line_count": 709,
             "declaration_count": 43,
@@ -2373,7 +2396,7 @@
           },
           {
             "module": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
-            "path": "ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
+            "path": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
             "present": true,
             "line_count": 207,
             "declaration_count": 6,
@@ -2382,7 +2405,7 @@
           },
           {
             "module": "ErdosProblems.Erdos269.CarryLiftExtinction",
-            "path": "ErdosProblems/Erdos269/CarryLiftExtinction.lean",
+            "path": "lean/ErdosProblems/Erdos269/CarryLiftExtinction.lean",
             "present": true,
             "line_count": 351,
             "declaration_count": 14,
@@ -2391,7 +2414,7 @@
           },
           {
             "module": "ErdosProblems.Erdos269.ThreeChannelBlockRigidity",
-            "path": "ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
+            "path": "lean/ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
             "present": true,
             "line_count": 128,
             "declaration_count": 6,
@@ -2400,7 +2423,7 @@
           },
           {
             "module": "ErdosProblems.Erdos269.WeightedPhaseCarry",
-            "path": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+            "path": "lean/ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
             "present": true,
             "line_count": 371,
             "declaration_count": 23,
@@ -2411,8 +2434,8 @@
         "note": {
           "artifact_id": "erdos_269_note",
           "title": "No Finite Separable Representation\\\\at Three Prime Generators",
-          "source_path": "paper/erdos-269-three-prime-running-lcm.tex",
-          "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
+          "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "rendered_path": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
         },
         "what_is_checked": [
@@ -2461,8 +2484,8 @@
         "paper": {
           "paper_id": "erdos-269-three-prime-running-lcm",
           "title": "No Finite Separable Representation at Three Prime Generators",
-          "source": "paper/erdos-269-three-prime-running-lcm.tex",
-          "pdf": "erdos-269-three-prime-running-lcm.pdf",
+          "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
           "resolution": "resolved"
         },
@@ -2494,11 +2517,11 @@
         "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos1041",
+        "directory": "lean/ErdosProblems/Erdos1041",
         "modules": [
           {
             "module": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
-            "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+            "path": "lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
             "present": true,
             "line_count": 323,
             "declaration_count": 21,
@@ -2509,8 +2532,8 @@
         "note": {
           "artifact_id": "erdos_1041_note",
           "title": "Sharp Solved Families and\\\\Constant-Factor Paths in Polynomial Lemniscates",
-          "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
-          "rendered_path": "erdos-1041-lemniscate-newton-flow.pdf",
+          "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "rendered_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
         },
         "what_is_checked": [
@@ -2554,8 +2577,8 @@
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
           "title": "Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates",
-          "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
-          "pdf": "erdos-1041-lemniscate-newton-flow.pdf",
+          "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
           "resolution": "resolved"
         },
@@ -2619,11 +2642,11 @@
         "question": "For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
-        "directory": "ErdosProblems/Erdos1049",
+        "directory": "lean/ErdosProblems/Erdos1049",
         "modules": [
           {
             "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
-            "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+            "path": "lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
             "present": true,
             "line_count": 223,
             "declaration_count": 16,
@@ -2632,7 +2655,7 @@
           },
           {
             "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
-            "path": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+            "path": "lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
             "present": true,
             "line_count": 222,
             "declaration_count": 19,
@@ -2641,7 +2664,7 @@
           },
           {
             "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
-            "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+            "path": "lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
             "present": true,
             "line_count": 450,
             "declaration_count": 36,
@@ -2650,7 +2673,7 @@
           },
           {
             "module": "ErdosProblems.Erdos1049.HermitePadeNoGo",
-            "path": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+            "path": "lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
             "present": true,
             "line_count": 153,
             "declaration_count": 10,
@@ -2659,7 +2682,7 @@
           },
           {
             "module": "ErdosProblems.Erdos1049.ZudilinHeightRegion",
-            "path": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+            "path": "lean/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
             "present": true,
             "line_count": 143,
             "declaration_count": 13,
@@ -2668,7 +2691,7 @@
           },
           {
             "module": "ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence",
-            "path": "ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
+            "path": "lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
             "present": true,
             "line_count": 102,
             "declaration_count": 11,
@@ -2679,8 +2702,8 @@
         "note": {
           "artifact_id": "erdos_1049_note",
           "title": "Irrationality of $F(31/4)$ and the\\\\Exact Normalized Hankel Order",
-          "source_path": "paper/erdos-1049-rational-base-lambert.tex",
-          "rendered_path": "erdos-1049-rational-base-lambert.pdf",
+          "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
+          "rendered_path": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
         },
         "what_is_checked": [
@@ -2720,8 +2743,8 @@
         "paper": {
           "paper_id": "erdos-1049-rational-base-lambert",
           "title": "Irrationality of F(31/4) and the Exact Normalized Hankel Order",
-          "source": "paper/erdos-1049-rational-base-lambert.tex",
-          "pdf": "erdos-1049-rational-base-lambert.pdf",
+          "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
+          "pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
           "resolution": "resolved"
         },
@@ -2748,14 +2771,14 @@
   },
   "challenge_import_closure": {
     "internal_paths": [
-      "ExternalVerification/Challenge.lean",
-      "ExternalVerification/Statements.lean"
+      "verification/ExternalVerification/Challenge.lean",
+      "verification/ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:f93c0f928a7e442f42f2bc1b947f51396a3966ea22c15d255b2833069cb86fdc",
+    "digest": "sha256:62aef0c007bb211ed45ceb59aed94316cf60f38d37bb1e8fe9006a4c3d635a5d",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:85e338bf6957f0aff3727093d892469e3926d773d6cde853746841e649f2ab61",
+    "lakefile.toml": "sha256:1747f192b131ef80222f47061a732efc147796bbfdbadbed0720809a7e4ead0d",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

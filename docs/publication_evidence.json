@@ -5,7 +5,7 @@
   "authority_posture": "historical_systems_evidence_not_Lean_proof_authority_and_not_a_fresh_rerun",
   "publication_artifact_id": "repository_architecture_guide",
   "source": {
-    "manuscript": "paper/claim-faithful-publication-systems-paper.tex",
+    "manuscript": "paper/systems/claim-faithful-publication-systems-paper.tex",
     "architecture_section_label": "sec:failure",
     "reproducibility_appendix_label": "app:repro",
     "contract": "docs/publication_contract.json"
@@ -14,10 +14,10 @@
     "raw_run_logs_registered": false,
     "executable_mutation_operators_registered": false,
     "reconstructed_executable_mutation_operators_registered": true,
-    "reconstruction_manifest": "experiments/publication_mutations.json",
+    "reconstruction_manifest": "research/experiments/publication_mutations.json",
     "reconstruction_manifest_digest": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "reconstruction_harness": "scripts/run_publication_mutations.py",
-    "reconstruction_harness_digest": "sha256:06dd9a902ff7d7ac74b3bd7930e8f50b3db659dd6125f7711ff5dffa03fc305e",
+    "reconstruction_harness_digest": "sha256:34168a755035ab14b591e981a62d7fc5030ea796774baf2243de803e1f1167b7",
     "operator_verification": "python3 scripts/run_publication_mutations.py --verify-operators",
     "reconstruction_baseline_policy": "the unmutated selected base must pass the configured gate before any mutation outcome is counted",
     "invalid_baseline_policy": "abort the run, report invalid_baseline, retain zero mutation outcomes, and return a nonzero command status",

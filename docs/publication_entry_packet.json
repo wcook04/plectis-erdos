@@ -9,19 +9,19 @@
       "release checks and GitHub continuous integration"
     ],
     "human_start": "ARCHITECTURE.md",
-    "printable_start": "claim-faithful-publication-systems-paper.pdf",
+    "printable_start": "paper/systems/claim-faithful-publication-systems-paper.pdf",
     "purpose": "This public repository separates five parts: Lean source, a human-reviewed record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded."
   },
   "artifact_owners": {
     "entry_packet": "docs/publication_entry_packet.json",
     "entry_source": "docs/publication_entry_source.json",
     "mutation_harness": "scripts/run_publication_mutations.py",
-    "mutation_manifest": "experiments/publication_mutations.json",
+    "mutation_manifest": "research/experiments/publication_mutations.json",
     "publication_artifact_id": "repository_architecture_guide",
     "publication_contract": "docs/publication_contract.json",
     "publication_evidence": "docs/publication_evidence.json",
-    "rendered_path": "claim-faithful-publication-systems-paper.pdf",
-    "source_path": "paper/claim-faithful-publication-systems-paper.tex"
+    "rendered_path": "paper/systems/claim-faithful-publication-systems-paper.pdf",
+    "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex"
   },
   "artifact_role": "generated_bounded_agent_entry_projection",
   "authority_map": {
@@ -95,7 +95,7 @@
       },
       {
         "id": "test_edit_reconstruction",
-        "owner": "experiments/publication_mutations.json and scripts/run_publication_mutations.py",
+        "owner": "research/experiments/publication_mutations.json and scripts/run_publication_mutations.py",
         "role": "separately versioned deterministic reconstruction, not original raw logs"
       },
       {
@@ -107,20 +107,20 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:82571f44c109214535d2d158245e908b059027ad7dfe03b725504b767f503c07",
-    "docs/claims.json": "sha256:ec420cb3f72c58c2fcf901b9b21ac1583757d09e5f88dbb2ab8dcbae7b66f8b2",
+    "docs/claims.json": "sha256:90ed42280af2d954bee1fd9555f54ce6b35fbc61fd2f2254a91ca76426df6b89",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:fde0d9af3b6c755f42811985a8ec14db39b511b11e67f01eb652692c0052528c",
-    "docs/publication_contract.json": "sha256:a39d42963bb61391e7d57014650098e28c1a08f81d98274b79344dab032e07ac",
-    "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
-    "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
-    "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:d8a3179c2e59904e4b792a5da08ffe0d221368357807d393d3a7ef62047b1548",
+    "docs/problems.json": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
+    "docs/publication_contract.json": "sha256:d3bedd760e6f1b88ba8bebff1a929e8ad8abb0cd28e4ad350501f45e195b956f",
+    "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
+    "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:82571f44c109214535d2d158245e908b059027ad7dfe03b725504b767f503c07",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:d8a3179c2e59904e4b792a5da08ffe0d221368357807d393d3a7ef62047b1548",
+    "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
     "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf",
-    "scripts/run_publication_mutations.py": "sha256:06dd9a902ff7d7ac74b3bd7930e8f50b3db659dd6125f7711ff5dffa03fc305e"
+    "scripts/run_publication_mutations.py": "sha256:34168a755035ab14b591e981a62d7fc5030ea796774baf2243de803e1f1167b7"
   },
   "five_sentence_summary": [
     "Lean checks formal statements and proofs; it does not read the README or papers that explain them.",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 30,
-      "curated_claim_count": 140,
+      "curated_claim_count": 141,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -271,7 +271,7 @@
       "paper_anchor": {
         "environment": "problem",
         "line": 36,
-        "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+        "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "title": "Erdős #68"
       },
       "statement": "Prove that S = ∑_{n≥2} 1/(n! − 1) is irrational.",
@@ -283,7 +283,7 @@
       "paper_anchor": {
         "environment": "problem",
         "line": 4434,
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "title": "Erd\\H{o}s \\#249"
       },
       "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.",
@@ -295,7 +295,7 @@
       "paper_anchor": {
         "environment": "section",
         "line": 57,
-        "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
+        "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "title": "Introduction"
       },
       "statement": "Prove that Π = ∑_{n≥1} p_n/2ⁿ is irrational; the exact tail-shift equivalence and prime-gap constraints do not supply the required cofinal escape.",
@@ -307,7 +307,7 @@
       "paper_anchor": {
         "environment": "problem",
         "line": 4445,
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "title": "unbounded certificate supply"
       },
       "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.",
@@ -319,7 +319,7 @@
       "paper_anchor": {
         "environment": "problem",
         "line": 4469,
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "title": "the half-value counterexample route"
       },
       "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.",
@@ -330,8 +330,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 705,
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "line": 707,
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
       "statement": "Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.",
@@ -343,7 +343,7 @@
       "paper_anchor": {
         "environment": "problem",
         "line": 4460,
-        "source": "paper/erdos249-257-main-paper.tex",
+        "source": "paper/archive/erdos249-257-main-paper.tex",
         "title": "universal Erd\\H{o}s \\#257"
       },
       "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
@@ -354,8 +354,8 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "section",
-        "line": 55,
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "line": 58,
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "Introduction"
       },
       "statement": "Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three. For {2,3,5}, the rationality-to-carry bridge is established and cofinal local-window escape remains open.",
@@ -366,8 +366,8 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 119,
-        "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "line": 121,
+        "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
       "statement": "Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.",
@@ -379,10 +379,10 @@
       "paper_anchor": {
         "environment": "section",
         "line": 52,
-        "source": "paper/erdos-1049-rational-base-lambert.tex",
+        "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
-      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.",
+      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.",
       "status": "open"
     },
     {
@@ -390,8 +390,8 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 102,
-        "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "line": 107,
+        "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
       "statement": "Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.",
@@ -402,8 +402,8 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 489,
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "line": 492,
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "exact nonintegrality of every reduced tail"
       },
       "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
@@ -414,8 +414,8 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 495,
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "line": 498,
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "actual cofinal local-window escape"
       },
       "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
@@ -426,8 +426,8 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 504,
-        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "line": 507,
+        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "function-faithful two-dimensional representation"
       },
       "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
@@ -438,8 +438,8 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 534,
-        "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "line": 547,
+        "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
       "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
@@ -451,7 +451,7 @@
       "paper_anchor": {
         "environment": "problem",
         "line": 33,
-        "source": "paper/erdos-249-binary-totient-series.tex",
+        "source": "paper/249/erdos-249-binary-totient-series.tex",
         "title": "first-harmonic anti-concentration on supplier fibres"
       },
       "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
@@ -462,8 +462,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 719,
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "line": 721,
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
       "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
@@ -474,8 +474,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 728,
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "line": 730,
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
       "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
@@ -486,8 +486,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 738,
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "line": 740,
+        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
       "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:fde0d9af3b6c755f42811985a8ec14db39b511b11e67f01eb652692c0052528c",
+      "content_digest": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -554,7 +554,7 @@
     "release_date": "2026-08-17",
     "release_tag": "v0.9.0",
     "release_version": "0.9.0",
-    "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
+    "repository": "https://github.com/wcook04/plectis-erdos",
     "revision_embedding_boundary": "A tracked file cannot contain its own Git commit id without self-reference. Content freshness is enforced by the owner hashes below; agents query the checkout revision at runtime."
   },
   "schema": "erdos249257-publication-entry-packet/1",

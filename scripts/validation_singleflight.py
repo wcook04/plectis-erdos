@@ -144,10 +144,10 @@ COMPARATOR_REPLAY_AUTHORITY_PATHS = (
     ROOT / "scripts/landrun-wrapper.sh",
     ROOT / "scripts/check_palomar_qualification.py",
     ROOT / "comparator.json",
-    ROOT / "ErdosProblems/ExternalVerificationPortfolio/comparator-negative-mismatch.json",
-    ROOT / "ErdosProblems/ExternalVerificationPortfolio/Challenge.lean",
-    ROOT / "ErdosProblems/ExternalVerificationPortfolio/Solution.lean",
-    ROOT / "ErdosProblems/ExternalVerificationPortfolio/NegativeSolution.lean",
+    ROOT / "lean/verification/comparator-negative-mismatch.json",
+    ROOT / "lean/verification/ExternalVerification/Challenge.lean",
+    ROOT / "lean/verification/ExternalVerification/Solution.lean",
+    ROOT / "lean/verification/ExternalVerification/NegativeSolution.lean",
     ROOT / "lean-toolchain",
     ROOT / "lake-manifest.json",
     ROOT / "lakefile.toml",
@@ -185,7 +185,7 @@ def default_state_root() -> Path:
         candidate = Path(override).expanduser()
         return candidate if candidate.is_absolute() else Path.cwd() / candidate
     identity_path = ROOT / "docs/repository_identity.json"
-    slug = "plectis-lean-erdos249-257"
+    slug = "plectis-erdos"
     try:
         identity = json.loads(identity_path.read_text(encoding="utf-8"))
         configured = identity.get("current", {}).get("slug")
@@ -634,7 +634,7 @@ def publication_mutation_spec(
 ) -> tuple[list[str], Path]:
     """Build one exact worker command for the publication study."""
     actions: list[str] = []
-    default_manifest = ROOT / "experiments" / "publication_mutations.json"
+    default_manifest = ROOT / "research" / "experiments" / "publication_mutations.json"
     manifest = default_manifest
     timeout_seconds = 600
     for target in targets:
@@ -923,8 +923,8 @@ def validator_spec(
             ROOT / "lean-toolchain",
             ROOT / "lake-manifest.json",
             ROOT / "scripts/verify-comparator.sh",
-            ROOT / "ErdosProblems/ExternalVerificationPortfolio/Challenge.lean",
-            ROOT / "ErdosProblems/ExternalVerificationPortfolio/Solution.lean",
+            ROOT / "lean/verification/ExternalVerification/Challenge.lean",
+            ROOT / "lean/verification/ExternalVerification/Solution.lean",
         ]
     else:  # comparator
         if targets or ref:

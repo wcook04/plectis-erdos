@@ -20,18 +20,20 @@ ROOT = Path(__file__).resolve().parent.parent
 APACHE = "Apache-2.0"
 MANUSCRIPT_LICENSE = "CC-BY-4.0"
 SPDX_LICENSE_HEADER = "SPDX-License-" "Identifier: "
-def rendered_artifacts(root: Path) -> set[str]:
-    """The rendered-artifact set as it exists on disk, not as a hand-kept list.
 
-    The override in REUSE.toml has to match the artifacts that are actually
-    published. A hardcoded mirror of that set drifts every time a paper is
-    added: on 2026-09-01 it was missing `open-source-mathematics-strategy.pdf`
-    and `.github/system-map.png`, both correctly declared CC-BY-4.0 in
-    REUSE.toml, and the contract failed against the licence data rather than
-    against a licence defect. Deriving the set here makes the assertion mean
-    what its message says.
-    """
-    found = {path.name for path in root.glob("*.pdf") if path.is_file()}
+from publication_contract import (
+    contract_publication_pdfs,
+    publication_census_errors,
+    tracked_publication_pdfs,
+)
+
+
+def expected_manuscript_binaries(root: Path) -> set[str]:
+    """License override: contract PDFs plus banner figures that exist on disk."""
+    import json
+
+    contract = json.loads((root / "docs" / "publication_contract.json").read_text(encoding="utf-8"))
+    found = contract_publication_pdfs(contract)
     found |= {
         f".github/{path.name}"
         for path in (root / ".github").glob("*.png")
@@ -40,18 +42,29 @@ def rendered_artifacts(root: Path) -> set[str]:
     return found
 
 
+def rendered_artifacts(root: Path) -> set[str]:
+    """Independently observed publication files, not the contract registry."""
+    observed = tracked_publication_pdfs(root)
+    observed |= {
+        f".github/{path.name}"
+        for path in (root / ".github").glob("*.png")
+        if path.is_file()
+    }
+    return observed
+
+
 MANUSCRIPT_SOURCES = {
-    "paper/claim-faithful-publication-systems-paper.tex",
-    "paper/cold-clone-to-proof-receipt.tex",
-    "paper/erdos-68-factorial-denominator-irrationality.tex",
-    "paper/erdos-243-reciprocal-tail-rigidity.tex",
-    "paper/erdos-251-prime-gap-dyadic-series.tex",
-    "paper/erdos-269-three-prime-running-lcm.tex",
-    "paper/erdos-1041-lemniscate-newton-flow.tex",
-    "paper/erdos-1049-rational-base-lambert.tex",
-    "paper/erdos-249-binary-totient-series.tex",
-    "paper/erdos-257-mersenne-support-subseries.tex",
-    "paper/erdos249-257-main-paper.tex",
+    "paper/systems/claim-faithful-publication-systems-paper.tex",
+    "paper/systems/cold-clone-to-proof-receipt.tex",
+    "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+    "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+    "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+    "paper/269/erdos-269-three-prime-running-lcm.tex",
+    "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+    "paper/1049/erdos-1049-rational-base-lambert.tex",
+    "paper/249/erdos-249-binary-totient-series.tex",
+    "paper/257/erdos-257-mersenne-support-subseries.tex",
+    "paper/archive/erdos249-257-main-paper.tex",
     "paper/module-aliases.tex",
 }
 
@@ -207,7 +220,7 @@ def license_map_errors(
         errors.append("REUSE.toml must contain one CC-BY-4.0 override")
     else:
         observed = annotation_paths(manuscript_overrides[0])
-        if observed != rendered_artifacts(ROOT):
+        if observed != expected_manuscript_binaries(ROOT):
             errors.append(
                 "REUSE.toml manuscript binary override must match the exact "
                 "rendered-artifact set"
@@ -276,7 +289,7 @@ def main() -> int:
 
     incomplete_override = copy.deepcopy(config)
     incomplete_override["annotations"][1]["path"] = sorted(
-        rendered_artifacts(ROOT) - {"erdos249-257-main-paper.pdf"}
+        expected_manuscript_binaries(ROOT) - {"paper/archive/erdos249-257-main-paper.pdf"}
     )
     require_reports(
         license_map_errors(
@@ -297,7 +310,7 @@ def main() -> int:
     )
 
     lost_source_header = dict(sources)
-    path = "paper/erdos249-257-main-paper.tex"
+    path = "paper/archive/erdos249-257-main-paper.tex"
     lost_source_header[path] = lost_source_header[path].replace(
         f"{SPDX_LICENSE_HEADER}{MANUSCRIPT_LICENSE}",
         f"{SPDX_LICENSE_HEADER}{APACHE}",

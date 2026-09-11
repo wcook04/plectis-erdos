@@ -14,8 +14,17 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
-ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+from lean_source import (
+    LIBRARY_ROOTS,
+    library_root_file,
+    library_source_paths,
+    library_storage_variants,
+)
+
+ROOT_FILES = tuple(
+    library_root_file(ROOT, root).relative_to(ROOT).as_posix()
+    for root in LIBRARY_ROOTS
+)
 IMPORT_RE = re.compile(
     rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
     re.M,
@@ -99,10 +108,10 @@ def registry_errors(
     for node in nodes:
         module_id = str(node["id"])
         module_path = str(node["path"])
-        expected_path = module_id.replace(".", "/") + ".lean"
-        if module_path != expected_path:
+        expected_paths = library_storage_variants(module_id.replace(".", "/") + ".lean")
+        if module_path not in expected_paths:
             errors.append(
-                f"module id/path mismatch: {module_id} should use {expected_path}, "
+                f"module id/path mismatch: {module_id} should use {expected_paths[0]}, "
                 f"not {module_path}"
             )
 
@@ -328,19 +337,19 @@ def main() -> int:
     )
     graph = claims["machine_readable_paper"]["module_graph"]
     require(
-        graph["root"] == "Erdos249257.lean",
+        graph["root"] == "lean/Erdos249257.lean",
         "machine-readable graph has the wrong primary root",
     )
     roots = [graph["root"], *graph.get("additional_roots", [])]
     require(
-        roots == list(ROOT_FILES),
+        roots == ["lean/Erdos249257.lean", "lean/ErdosProblems.lean"],
         "machine-readable graph does not expose both supported roots",
     )
     root_imports = [
         imported
-        for root in roots
+        for root_name in LIBRARY_ROOTS
         for imported in IMPORT_RE.findall(
-            safe_public_text(ROOT, ROOT / root)
+            safe_public_text(ROOT, library_root_file(ROOT, root_name))
         )
     ]
     imports_by_id = {
@@ -361,11 +370,9 @@ def main() -> int:
     )
     public_paths = {
         path.relative_to(ROOT).as_posix()
-        for library_root in LIBRARY_ROOTS
-        for path in (
-            safe_public_file(ROOT, path)
-            for path in (ROOT / library_root).rglob("*.lean")
-        )
+        for path in library_source_paths(ROOT)
+        if path != library_root_file(ROOT, LIBRARY_ROOTS[0])
+        and path != library_root_file(ROOT, LIBRARY_ROOTS[1])
     }
     auxiliary_contract = graph["auxiliary_root_contract"]
     errors = [

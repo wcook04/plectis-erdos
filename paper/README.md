@@ -26,14 +26,14 @@ CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) at the repository root.
 
 | Problem | Short paper | Complete reasoning record |
 |---|---|---|
-| #68 | [Two Incomparable Denominator Exclusions for ∑ₙ≥₂ 1/(n!−1)](../erdos-68-factorial-denominator-irrationality.pdf) ([source](erdos-68-factorial-denominator-irrationality.tex)) | [The Factorial-Denominator Series: Complete Reasoning Record](../erdos68-factorial-reasoning-surface.pdf) ([source](erdos68-factorial-reasoning-surface.tex)) |
-| #243 | [Excluding the Bounded Negative Part](../erdos-243-reciprocal-tail-rigidity.pdf) ([source](erdos-243-reciprocal-tail-rigidity.tex)) | [Reciprocal-Tail Rigidity: Complete Reasoning Record](../erdos243-reciprocal-tail-reasoning-surface.pdf) ([source](erdos243-reciprocal-tail-reasoning-surface.tex)) |
-| #249 | [A Basis for the 2-Kernel of Euler's Totient](../erdos-249-binary-totient-series.pdf) ([source](erdos-249-binary-totient-series.tex)) | [The Binary Totient Series](../erdos249-totient-reasoning-surface.pdf) ([source](erdos249-totient-reasoning-surface.tex)) |
-| #251 | [A Countermodel for Growth-and-Parity Arguments on the Prime-Gap Dyadic Series](../erdos-251-prime-gap-dyadic-series.pdf) ([source](erdos-251-prime-gap-dyadic-series.tex)) | [Prime Gaps and Dyadic Tails: Complete Reasoning Record](../erdos251-prime-gap-reasoning-surface.pdf) ([source](erdos251-prime-gap-reasoning-surface.tex)) |
-| #257 | [Reciprocal-Summable Support Irrationality at Every Integer Base](../erdos-257-mersenne-support-subseries.pdf) ([source](erdos-257-mersenne-support-subseries.tex)) | [Reciprocal Mersenne Subseries](../erdos257-mersenne-reasoning-surface.pdf) ([source](erdos257-mersenne-reasoning-surface.tex)) |
-| #269 | [No Finite Separable Representation at Three Prime Generators](../erdos-269-three-prime-running-lcm.pdf) ([source](erdos-269-three-prime-running-lcm.tex)) | [The Three-Prime Running LCM: Complete Reasoning Record](../erdos269-running-lcm-reasoning-surface.pdf) ([source](erdos269-running-lcm-reasoning-surface.tex)) |
-| #1041 | [Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates](../erdos-1041-lemniscate-newton-flow.pdf) ([source](erdos-1041-lemniscate-newton-flow.tex)) | [Lemniscates and Newton Flow: Complete Reasoning Record](../erdos1041-lemniscate-reasoning-surface.pdf) ([source](erdos1041-lemniscate-reasoning-surface.tex)) |
-| #1049 | [Irrationality of F(31/4) and the Exact Normalized Hankel Order](../erdos-1049-rational-base-lambert.pdf) ([source](erdos-1049-rational-base-lambert.tex)) | [Rational-Base Lambert Series: Complete Reasoning Record](../erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](erdos1049-rational-base-lambert-reasoning-surface.tex)) |
+| #68 | [Two Incomparable Denominator Exclusions for ∑ₙ≥₂ 1/(n!−1)](68/erdos-68-factorial-denominator-irrationality.pdf) ([source](68/erdos-68-factorial-denominator-irrationality.tex)) | [The Factorial-Denominator Series: Complete Reasoning Record](68/erdos68-factorial-reasoning-surface.pdf) ([source](68/erdos68-factorial-reasoning-surface.tex)) |
+| #243 | [Excluding the Bounded Negative Part](243/erdos-243-reciprocal-tail-rigidity.pdf) ([source](243/erdos-243-reciprocal-tail-rigidity.tex)) | [Reciprocal-Tail Rigidity: Complete Reasoning Record](243/erdos243-reciprocal-tail-reasoning-surface.pdf) ([source](243/erdos243-reciprocal-tail-reasoning-surface.tex)) |
+| #249 | [A Basis for the 2-Kernel of Euler's Totient](249/erdos-249-binary-totient-series.pdf) ([source](249/erdos-249-binary-totient-series.tex)) | [The Binary Totient Series](249/erdos249-totient-reasoning-surface.pdf) ([source](249/erdos249-totient-reasoning-surface.tex)) |
+| #251 | [A Countermodel for Growth-and-Parity Arguments on the Prime-Gap Dyadic Series](251/erdos-251-prime-gap-dyadic-series.pdf) ([source](251/erdos-251-prime-gap-dyadic-series.tex)) | [Prime Gaps and Dyadic Tails: Complete Reasoning Record](251/erdos251-prime-gap-reasoning-surface.pdf) ([source](251/erdos251-prime-gap-reasoning-surface.tex)) |
+| #257 | [Reciprocal-Summable Support Irrationality at Every Integer Base](257/erdos-257-mersenne-support-subseries.pdf) ([source](257/erdos-257-mersenne-support-subseries.tex)) | [Reciprocal Mersenne Subseries](257/erdos257-mersenne-reasoning-surface.pdf) ([source](257/erdos257-mersenne-reasoning-surface.tex)) |
+| #269 | [No Finite Separable Representation at Three Prime Generators](269/erdos-269-three-prime-running-lcm.pdf) ([source](269/erdos-269-three-prime-running-lcm.tex)) | [The Three-Prime Running LCM: Complete Reasoning Record](269/erdos269-running-lcm-reasoning-surface.pdf) ([source](269/erdos269-running-lcm-reasoning-surface.tex)) |
+| #1041 | [Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex)) | [Lemniscates and Newton Flow: Complete Reasoning Record](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex)) |
+| #1049 | [Irrationality of F(31/4) and the Exact Normalized Hankel Order](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex)) | [Rational-Base Lambert Series: Complete Reasoning Record](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex)) |
 
 The short paper is the first read. The complete reasoning record preserves the
 wider working context, including routes that failed, finite experiments, and
@@ -123,10 +123,10 @@ if any of those five are missing.
 
 | Role | Paper |
 |---|---|
-| Publication architecture | [Problem-Sized Lean Worlds](../claim-faithful-publication-systems-paper.pdf) ([source](claim-faithful-publication-systems-paper.tex)) |
-| Agent navigation and validation | [From a Cold Clone to a Proof Receipt](../cold-clone-to-proof-receipt.pdf) ([source](cold-clone-to-proof-receipt.tex)) |
-| Open participation and credit | [From Spare Compute to Cumulative Mathematics](../open-source-mathematics-strategy.pdf) ([source](open-source-mathematics-strategy.tex)) |
-| Retired joint #249/#257 record | [Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257](../erdos249-257-main-paper.pdf) ([source](erdos249-257-main-paper.tex)) |
+| Publication architecture | [Problem-Sized Lean Worlds](systems/claim-faithful-publication-systems-paper.pdf) ([source](claim-faithful-publication-systems-paper.tex)) |
+| Agent navigation and validation | [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](cold-clone-to-proof-receipt.tex)) |
+| Open participation and credit | [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](open-source-mathematics-strategy.tex)) |
+| Retired joint #249/#257 record | [Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257](archive/erdos249-257-main-paper.pdf) ([source](erdos249-257-main-paper.tex)) |
 
 The three systems papers explain the repository architecture, cold-clone path,
 and contribution model. They make no claim of a solved endpoint, peer review,
@@ -161,7 +161,7 @@ the canonical reader route is the individual problem note for the question at
 hand. The systems paper is outlined by its description above.
 
 - The Mersenne–Lambert ladder that places both constants on one line.
-- The [composite-dilation defect](../Erdos249257/CompositeDilationDefect.lean):
+- The [composite-dilation defect](../lean/Erdos249257/CompositeDilationDefect.lean):
   an exact foreign-divisor correction, zero on prime support, with no arbitrary-
   support tail bound or irrationality conclusion.
 - Erdős–Borwein-type irrationality (the #257 direction): full support at every base, plus named infinite-support cases.

@@ -480,6 +480,18 @@ class LeanFastBuildTests(unittest.TestCase):
             "Lean CI launched a second unbounded dependency-index export after --full-check",
         )
 
+    def test_ci_does_not_upload_tracked_index_as_fresh_on_incomplete_export(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("fresh_export_written == 'true'", workflow)
+        self.assertIn("--report-ci-outcome --fail-ci-outcome", workflow)
+        self.assertIn("PLECTIS_PR_HEAD_SHA", workflow)
+        self.assertNotIn(
+            "the tracked dependency index is stale; download artifact",
+            workflow,
+        )
+
     def test_reachable_and_waves_limit_focused_target(self) -> None:
         graph = {
             "Root": {"Left", "Right"},
@@ -1033,9 +1045,9 @@ import Pkg.TooLate
         modules = fast.discover()
         targets = fast.resolve_targets(
             [
-                "examples/ExternalVerificationPortfolio/Problem249.lean",
-                "examples/ExternalVerificationPortfolio/Problem251.lean",
-                "examples/ExternalVerificationPortfolio/Problem269.lean",
+                "research/examples/ExternalVerificationPortfolio/Problem249.lean",
+                "research/examples/ExternalVerificationPortfolio/Problem251.lean",
+                "research/examples/ExternalVerificationPortfolio/Problem269.lean",
             ],
             modules,
         )

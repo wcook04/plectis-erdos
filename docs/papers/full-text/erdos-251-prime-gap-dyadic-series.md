@@ -315,7 +315,7 @@ Specialising to $`P(i)=p_i`$, whose first value is $`p_0=2`$, and writing $`g_i=
 
 </div>
 
-The leading $`2`$ is $`p_0`$. At $`n=2`$ both sides equal $`19/8`$.
+The leading $`2`$ is $`p_0`$. At $`n=2`$ both sides equal $`19/8`$. The identity is the already-known summation-by-parts (Tao on the erdosproblems.com/251 thread, 7 October 2025); this checkout checks it and does not claim priority.
 
 <a id="sec:infinite"></a>
 
@@ -806,4 +806,4 @@ P. Erdős, [*Sur certaines séries à valeur irrationnelle*](https://users.reny
 
 </div>
 
-*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../paper/systems/cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.

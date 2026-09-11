@@ -708,7 +708,7 @@ def test_replay_plan() -> None:
     live_contract = release.contract(release.ROOT)
     require(
         all(
-            (release.ROOT / relative).is_file()
+            release.tracked_artifact_path(release.ROOT, relative).is_file()
             for relative in live_contract["tracked_artifacts"]
         ),
         "release contract names a missing tracked artifact",
