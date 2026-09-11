@@ -79,11 +79,13 @@ not required to read the papers.
 - **[#257](https://www.erdosproblems.com/257)** · Mersenne-support subseries ·
   [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) ·
   [longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf).
-  Full-support irrationality in every integer base `b ≥ 2` is Lean.
-  Pairwise-coprime plus summable-reciprocal support is Lean. A
-  reciprocal-summable theorem without coprimality is ordinary in the short
-  paper. Arbitrary infinite support, and the `1/2` and `1/21` branches, remain
-  open and are kept distinct from those theorems.
+  For every infinite reciprocal-summable support, the Mersenne subseries is
+  irrational at every integer base `b ≥ 2` (short paper §2; ordinary
+  mathematics, not Lean). Erdős stated that coprimality-free extension; the
+  note writes out an averaging proof. Full-support irrationality at every
+  integer base is classical (Erdős 1948) and Lean-checked here.
+  Pairwise-coprime plus summable-reciprocal support is Lean. Arbitrary
+  infinite support, and the `1/2` and `1/21` branches, remain open.
 - **[#269](https://www.erdosproblems.com/269)** · Three-prime running LCM ·
   [short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) ·
   [longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf).
