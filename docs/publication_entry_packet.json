@@ -110,7 +110,7 @@
     "docs/claims.json": "sha256:02bf91b49fad171bda93a28951a6c722ae544138e177b69946d93430eacc94ab",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:2a0a41e81fa237ad97ff412b1d12faee191afb3f418e05057f5ec671cac8e443",
-    "docs/publication_contract.json": "sha256:a3893f7a8a470c3f0cff44695144f316933893df1f2468d23740bdba6dc6ae18",
+    "docs/publication_contract.json": "sha256:7840b6d0fee125b9bfbc16db08a32a51c1205b14b4b5969c18b16848522a3687",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:82571f44c109214535d2d158245e908b059027ad7dfe03b725504b767f503c07",
