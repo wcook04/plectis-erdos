@@ -19,21 +19,22 @@ researcher or coding agent can inspect the work and continue from it.
 
 ## Why this exists
 
-The idea is to make mathematical research cumulative. Once the tools for
-navigation, proof checking, recording experiments, and crediting contributions
-exist, someone else should be able to bring an idea, a correction, or spare
-compute without having to build them again. A useful partial result or a
-failed approach with a checkable reason can save the next person work, even
-while the original problem remains open.
+I prioritised expository quality and a collaborative structure over trying to
+solve the problems; I hope to now solve them with others rather than alone.
+The idea is to turn intermediary findings into something reusable by
+mathematicians who actually understand the material, and by later models.
+That includes the routes that stopped and the reasons they stopped.
 
-The problems were chosen for their difficulty, to test the research process
-and preserve what each attempt teaches the next researcher.
+The tools for navigation, proof checking, experiments and credit are here
+so another contributor does not have to build them again.
 
 I am responsible for all claims, sources and the release. Plectis is an
-independent, AI-assisted prototype. It has had no independent mathematical
-review, and I need help. Novelty and significance still need human judgement.
+independent, AI-assisted prototype, not something I am declaring finished.
+It has had no independent mathematical review (trying to get this), and I
+need help to get anywhere near "done". Meaning, novelty and significance still
+need human judgement.
 
-Two papers explain the project in more detail:
+Two papers explain the project:
 
 - **[From Spare Compute to Cumulative Mathematics](paper/systems/open-source-mathematics-strategy.pdf)**
   explains the open-source idea, how different contributions can help, and how
@@ -44,20 +45,22 @@ Two papers explain the project in more detail:
 
 ## Where to start
 
-- **Read the mathematics:** the [website's maths pages](https://wcook04.github.io/plectis/maths/)
-  give each problem and its short and long papers. [A reader's way in](HUMAN_ENTRY.md)
-  is the command-free guide in this repository.
-- **Inspect a result:** start with [RESULTS](docs/RESULTS.md), then follow the
-  [source map](docs/SOURCE_MAP.md) and the claim verifier in
-  [REPRODUCIBILITY](docs/REPRODUCIBILITY.md).
-- **Contribute:** bring an idea, review, correction, infrastructure improvement,
-  or a research run. [Contribute](#contribute) explains the return and credit paths.
-- **Use a coding agent:** navigation, validation and contribution workflows
-  start at [`AGENTS.override.md`](AGENTS.override.md). An agent is not required
-  to read the papers.
+The [website](https://wcook04.github.io/plectis/) is the homosapien-ergonomic way
+to browse: the [mathematics pages](https://wcook04.github.io/plectis/maths/)
+give each short paper, each long paper, and a map to the relevant Lean sources.
 
-The notes follow Terence Tao's public guidance on writing mathematics produced
-with AI assistance; that is a writing standard, not a review of this project.
+- **Read:** [A reader's way in](HUMAN_ENTRY.md) is a command-free tour of the
+  problems and what the evidence establishes.
+- **Check:** [RESULTS](docs/RESULTS.md) summarises progress; the
+  [source map](docs/SOURCE_MAP.md) and [REPRODUCIBILITY](docs/REPRODUCIBILITY.md)
+  take you to the formal statements and checks.
+- **Continue from where I left off:** use the [frontier relay](docs/FRONTIER_RELAY.md)
+  and [CONTRIBUTING](CONTRIBUTING.md). Use a coding agent. This is the part I
+  am most excited about.
+
+The repository's navigation, validation and contribution workflows plug into
+your own coding agents via [`AGENTS.override.md`](AGENTS.override.md).
+You do not need an agent or Lean to read the papers.
 
 ## Problem papers
 
@@ -65,25 +68,23 @@ Each problem has a short paper and a longer research record covering failed
 routes, finite evidence, and remaining obligations. For a first look, start
 with **#257** for full-support irrationality and achievement-set measure, or
 **#249** for exact kernel rank, finite certificates, and recorded routes that
-stopped. [RESULTS](docs/RESULTS.md) summarises progress across all eight.
+stopped.
 
-### #68: Factorial-denominator irrationality
+### [#68: Factorial-denominator irrationality](https://wcook04.github.io/plectis/maths/problems/erdos_68.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_68.html) ·
 [Original question](https://www.erdosproblems.com/68) ·
-[short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
-[longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf).
+[Short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
+[Longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf)
 
 A GMP non-unit carry at `m = 300000` and a continued-fraction bound
 `q ≥ 2^39990` are incomparable finite exclusions. Producing cofinal carries
 remains open.
 
-### #243: Reciprocal-tail rigidity
+### [#243: Reciprocal-tail rigidity](https://wcook04.github.io/plectis/maths/problems/erdos_243.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_243.html) ·
 [Original question](https://www.erdosproblems.com/243) ·
-[short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) ·
-[longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf).
+[Short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) ·
+[Longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf)
 
 After Koizumi's normalised vanishing, a bound on the upward steps of the
 unreduced integer numerator forces eventual Sylvester recurrence; the
@@ -92,12 +93,11 @@ of that numerator remain open. Duverney (2001) and the Tao–Kovač line are
 prior art on the page; cubic-rate vanishing is not claimed as empty-page
 news.
 
-### #249: Binary totient series
+### [#249: Binary totient series](https://wcook04.github.io/plectis/maths/problems/erdos_249.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_249.html) ·
 [Original question](https://www.erdosproblems.com/249) ·
-[short paper](paper/249/erdos-249-binary-totient-series.pdf) ·
-[longer paper](paper/249/erdos249-totient-reasoning-surface.pdf).
+[Short paper](paper/249/erdos-249-binary-totient-series.pdf) ·
+[Longer paper](paper/249/erdos249-totient-reasoning-surface.pdf)
 
 Bounded-residue series `A_m` are irrational for `m ≥ 3`, with a complete
 dyadic-modulus classification ([§2](paper/249/erdos-249-binary-totient-series.pdf);
@@ -106,12 +106,11 @@ ordinary mathematics, not Lean). Separately: exact dyadic-kernel rank
 certificates through `t ≤ 82`, and no-go theorems for the shortcuts. This is
 not an infinite witness for irrationality.
 
-### #251: Prime-gap dyadic series
+### [#251: Prime-gap dyadic series](https://wcook04.github.io/plectis/maths/problems/erdos_251.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_251.html) ·
 [Original question](https://www.erdosproblems.com/251) ·
-[short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) ·
-[longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf).
+[Short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) ·
+[Longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf)
 
 A sparse perturbation of the prime gaps can have a rational dyadic sum
 while retaining the prime growth scale, every fixed eventual congruence,
@@ -119,12 +118,11 @@ and asymptotically the same short-block statistics. The later positions
 are not asserted to be prime. This is complementary to Land's conditional
 result, not a refutation; the original problem remains open.
 
-### #257: Mersenne-support subseries
+### [#257: Mersenne-support subseries](https://wcook04.github.io/plectis/maths/problems/erdos_257.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_257.html) ·
 [Original question](https://www.erdosproblems.com/257) ·
-[short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) ·
-[longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf).
+[Short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) ·
+[Longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf)
 
 For every infinite reciprocal-summable support, the Mersenne subseries is
 irrational at every integer base `b ≥ 2` (short paper §2; ordinary
@@ -135,12 +133,11 @@ The base-2 achievement set has measure one.
 Pairwise-coprime plus summable-reciprocal support is Lean. Arbitrary
 infinite support, and the `1/2` and `1/21` branches, remain open.
 
-### #269: Three-prime running LCM
+### [#269: Three-prime running LCM](https://wcook04.github.io/plectis/maths/problems/erdos_269.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_269.html) ·
 [Original question](https://www.erdosproblems.com/269) ·
-[short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) ·
-[longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf).
+[Short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) ·
+[Longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf)
 
 Steve Fan's two-prime factorisation
 ([erdosproblems.com/269](https://www.erdosproblems.com/forum/thread/269),
@@ -149,12 +146,11 @@ three primes, one binary carry produces nonsingular selected kernel minors
 of every order. The actual-series reduction is given; the source-specific
 cofinal escape remains unproved. Three-prime irrationality remains open.
 
-### #1041: Lemniscates and Newton flow
+### [#1041: Lemniscates and Newton flow](https://wcook04.github.io/plectis/maths/problems/erdos_1041.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_1041.html) ·
 [Original question](https://www.erdosproblems.com/1041) ·
-[short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) ·
-[longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf).
+[Short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) ·
+[Longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf)
 
 Every monic trinomial `z^n + a z^m + b` with roots in the open unit disc
 has each root-to-origin segment inside `{|f|<1}`, so any two roots join
@@ -166,12 +162,11 @@ Comparator-checked. The unrestricted path problem remains open. Forum
 discussion of a degree-7 counterexample is a reported external claim, not a
 theorem of this repository.
 
-### #1049: Rational-base Lambert series
+### [#1049: Rational-base Lambert series](https://wcook04.github.io/plectis/maths/problems/erdos_1049.html)
 
-[Problem page](https://wcook04.github.io/plectis/maths/problems/erdos_1049.html) ·
 [Original question](https://www.erdosproblems.com/1049) ·
-[short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) ·
-[longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf).
+[Short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) ·
+[Longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf)
 
 An ordinary specialization of Zudilin 2004 proves `F(31/4)` (and its positive
 powers) irrational; that headline is not a Lean theorem. Lean checks
@@ -179,14 +174,16 @@ supporting height-region arithmetic, the `3/2` corridor exclusion, the
 cleared-tail recurrence, and selected Hankel identities. The outstanding
 `3/2` obligation is an approximant family with remainder control.
 
+The notes follow Terence Tao's public guidance on writing mathematics produced
+with AI assistance; that is a writing standard, not a review of this project.
+
 The [joint #249/#257 manuscript](paper/archive/erdos249-257-main-paper.pdf) is
 archive and provenance only; the papers above are the current entrances.
 
 ## What the checks establish
 
-Lean checks that a proof establishes the exact formal statement written in
-the source. The papers explain the mathematics; the other records let you
-trace a public claim back to its statement, evidence, and limitations.
+Lean checks that a proof establishes the formal statement written in the
+source. These records connect the claims to their evidence:
 
 - The [comprehension graph](docs/semantic/README.md) maps declarations,
   their statements, and the relations between them. It helps distinguish a
@@ -208,28 +205,31 @@ from private or unreleased work.
 
 An idea, a correction, a counterexample, a failed route with a checkable
 reason, clearer exposition, a validation of a claim or a repaired check all
-count. You can also contribute mathematical direction, infrastructure
-improvements, or a research run using your own coding agent and compute.
+count. Anyone can contribute, even by formalising maths already established
+analytically, and receive due credit. Infra suggestions also get credit!
 
-- **Have an idea or correction?** Use the
+- **Ideas, corrections or review:** use the
   [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
   or [email me](https://wcook04.github.io/plectis/#contact).
-- **Have a change to the repository?** Open a pull request following
+- **Changes to the repository:** open a pull request following
   [CONTRIBUTING](CONTRIBUTING.md).
-- **Want to work on an open question?** The
+- **Your own agent and spare compute:** the
   [eight-frontier issue](https://github.com/wcook04/plectis-erdos/issues/105)
-  lists starting points; the [frontier relay](docs/FRONTIER_RELAY.md) explains
-  how to return a research run from an exact public revision.
+  lists starting points. Use the [frontier relay](docs/FRONTIER_RELAY.md) to
+  return what you find with its evidence.
 
 Accepted work gets a public receipt. The
 [credit policy](docs/research-commons/CREDIT_POLICY.md) explains how contributions
 are attributed.
 
-If you solve a problem, the credit is yours. If this repo helped, please cite
-the release and say how. Anyone can contribute, including by formalising
-mathematics already known analytically, and receive due credit.
+If you solve a problem, the credit and the result are all yours. If this repo
+or my intermediary progress helped, please cite this release and say how, so
+others find it and we make progress together instead of hoarding partial
+results out of fear of being scooped, or rebuilding the same infrastructure
+instead of improving one cumulatively.
 
-**Experts:** email me any insight. I will do the work and fully credit you.
+**Experts:** email me any insight. I will do the work and fully credit you
+for the insight and whatever follows from it.
 
 ## Read or verify locally
 
