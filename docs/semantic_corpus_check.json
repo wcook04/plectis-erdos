@@ -1,7 +1,7 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:2d9961703eeefbece0f186d7998c4155dc73d463c0ba36c05fde1e5ca904539a",
-  "output_digest": "sha256:ba45f2a3f625de00fc63dc473725074921f59a84321f9689e8eaddf1c1314a4f",
+  "input_fingerprint": "sha256:ffc6f49003f0753feba4322b998cf73187f4a6ee7d9f4f26f88d487755d8af9c",
+  "output_digest": "sha256:3a7957cbef9c45270c123d634bbe79b38ee5c2097f5b7e38b0b10e3e5dbf1348",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
     "declarations": 156245,
@@ -127,7 +127,7 @@
     "statement_nodes": 8386
   },
   "surface_digests": {
-    "docs/RESULTS.md": "sha256:bb5edf0e8fabc809be226009f87481b5ee4d41bf7cdc7c8d2a1dcfdb97cb21d9",
+    "docs/RESULTS.md": "sha256:ab0ae003468acd34e2f366a388d13f19b5893824c174c1723c3a2fd94f3adfe6",
     "docs/TRUTH_AUDIT.md": "sha256:befefa81ecd2e49c82f59c077e0f0919f16cba37d2e685c0da979d8b5646ad66",
     "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:d8a3179c2e59904e4b792a5da08ffe0d221368357807d393d3a7ef62047b1548",
     "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:326364ff51be753731daee255ea78e641d0390e715a52625e575eb3d90f6ac25"
