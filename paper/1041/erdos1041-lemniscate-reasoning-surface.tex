@@ -354,15 +354,15 @@ existence of some short connection.
 \paragraph{Evidence and exact boundary.}
 \label{bdry:trinomial}
 The identity~\eqref{eq:abel-control-polygon} is checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L123}{\texttt{abel\_controlPolygon}}, the
+\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L123}{abel control polygon}, the
 constant-term bound as
-\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L258}{\texttt{norm\_const\_lt\_one\_of\_roots\_lt\_one}},
+\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L258}{norm const lt one of roots lt one},
 the radial estimate as
-\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L219}{\texttt{trinomial\_radial\_norm\_lt\_one}},
+\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L219}{trinomial radial norm lt one},
 and their combination with the metric budget as
-\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L330}{\texttt{trinomial\_erdos1041\_conclusion}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L330}{trinomial erdos1041 conclusion}.
 Example~\ref{ex:sextic-spoke} is checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L555}{\texttt{sextic\_guardrail}}.  What the
+\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean\#L555}{sextic guardrail}.  What the
 kernel proves is the pair of radial inequalities and the bound
 $|\zeta_1|+|\zeta_2|<2$ on the sum of the two radii.  Assembling those into a
 single rectifiable path object, and the passage to the one-dimensional
@@ -815,7 +815,7 @@ Lean-checked part.  It uses the capacity identity, P\'olya's area inequality,
 Cauchy--Schwarz, the univalent-map distortion estimate, and a finite graph
 exit lemma; no external paper theorem is imported into it.  The public source
 of record is
-\texttt{research\_corpus/Erdos1041/UnconditionalConstantFactorBound.md}, which
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/UnconditionalConstantFactorBound.md}{unconditional constant factor bound}, which
 carries every rational verification quoted above.  Its
 containment level is $2\mu$ and its constant is $71/10$, so the theorem itself
 reaches neither half of the target, and the sharp constant $2$ remains open.
@@ -1472,7 +1472,7 @@ several attractive but false shortcuts.  The source of the update is pinned to
 commit
 \href{https://github.com/wcook04/plectis-erdos/tree/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041}{\texttt{f214a6b4}}
 and the dated synthesis is
-\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/FRONTIER.md}{\texttt{FRONTIER.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/FRONTIER.md}{the \#1041 frontier note}.
 The distinctions below are part of the result: a theorem, a refutation, a
 certificate, and a measurement do not have interchangeable force.
 
@@ -1481,7 +1481,7 @@ certificate, and a measurement do not have interchangeable force.
 Write $a_i=\rho_i u_i$, with $|u_i|=1$, and put
 $D=|\operatorname{disc}(f)|/n^n$.  The quantitative
 Fekete--Hadamard estimate in
-\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{\texttt{NearFeketeRadialAngularSplit.md}}
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{near fekete radial angular split}
 says that, when $D\ge1-\eta$ and
 $\eta\le1/(80n^2)$,
 \[
@@ -1523,7 +1523,7 @@ the unit circle, self-inversive realification and alternation against $z^n-c$
 select a zero-free gap on which the polynomial modulus is at most $2$; a
 harmonic normal-derivative argument transfers this arc bound strictly to the
 chord.  The complete ordinary proof is
-\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md}{\texttt{ConcyclicAlternation.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md}{concyclic alternation}.
 
 The argument is an ordinary proof outside Lean.  The
 \href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py}{exact-rational checker}
@@ -2006,7 +2006,7 @@ then Gr\"onwall's identity gives
 It replaces a P\'olya upper bound at that terminal node, but extending it to
 proper components and connecting it to the parent theorem remains open.  The
 degree-five statements and their evidence classes are recorded in
-\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/Degree5AssemblyAndSharpenedCuts.md}{\texttt{Degree5AssemblyAndSharpenedCuts.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/Degree5AssemblyAndSharpenedCuts.md}{degree5 assembly and sharpened cuts}.
 
 \subsection*{The no-go boundaries force hub selection}
 
@@ -2032,9 +2032,9 @@ The metric factor is not automatic in any of these degrees: the all-degree
 value estimate supplies no path-length aggregate.
 These two boundaries, including the distinction between the surviving
 algebraic budget and the failed length aggregate, are in
-\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/MinimalHubArmBudgetRefutation.md}{\texttt{MinimalHubArmBudgetRefutation.md}}
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/MinimalHubArmBudgetRefutation.md}{minimal hub arm budget refutation}
 and
-\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/SeparatrixAggregateReduction.md}{\texttt{SeparatrixAggregateReduction.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/SeparatrixAggregateReduction.md}{separatrix aggregate reduction}.
 
 Third, the origin is not a uniform near-Fekete hub.  An exact rational
 quintic with roots scaled by $999999/1000000$ has four of five origin spokes
@@ -2050,7 +2050,7 @@ throughout a limiting family is computational.  The witness was engineered
 against the origin selector, and a different admissible hub at the same
 configuration supplies a contained pair.  What fails here is the origin
 selector; the admissible hubs are not exhausted.  The full witness and replay route are in
-\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{\texttt{NearFeketeRadialAngularSplit.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{near fekete radial angular split}.
 
 \subsection*{The surviving carrier and the actual open endpoint}
 
@@ -2104,7 +2104,7 @@ inward on one positive ray; a zero value has no argument and remains zero.
 Thus $|f|<1$ is preserved for later times in that trajectory's existing
 interval. No global existence or description of a whole ray preimage follows
 from this scalar equation. The real-time candidate endpoint is
-\path{newtonFlow_real_value_decay} in \path{NewtonFlowTrajectory.lean}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/NewtonFlowTrajectory.lean}{newton flow real value decay} in \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/NewtonFlowTrajectory.lean}{newton flow trajectory}.
 
 \begin{corollary}[ray separation]\label{res:ray}
 Let $a<b$ and let the value trajectory $t\mapsto f(z(t))$ be continuous on
@@ -2120,9 +2120,9 @@ of such a finite connection. The trajectory in the $z$ plane need not be radial.
 
 \noindent The interior identity passes to the endpoints by continuity, not
 by evaluating $-f/f'$ at a critical endpoint. The candidate declarations
-\path{PaperNewtonEndpoints.value_decay_at_continuous_endpoints} and
-\path{PaperNewtonEndpoints.no_finite_connection_of_distinct_value_rays}
-in \path{ErdosProblems/Erdos1041/PaperNewtonEndpoints.lean} make these
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperNewtonEndpoints.lean}{value decay at continuous endpoints} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperNewtonEndpoints.lean}{no finite connection of distinct value rays}
+in \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperNewtonEndpoints.lean}{newton endpoints} make these
 premises explicit. Their compilation and axiom checks are unrun in this
 return. They construct no trajectories and supply no global monodromy theorem.
 

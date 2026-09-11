@@ -131,7 +131,7 @@ Finally, $d$ separated summands would factor every $(d+1)\times(d+1)$
 restriction through a $d$-dimensional space, contradicting the nonzero minor.
 \end{proof}
 
-\noindent Both clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22}{Lean source}.
+\noindent Both clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22}{uniform rank and nonseparation}.
 
 \begin{corollary}[the same minors modulo every admissible denominator]
 \label{res:admissible-modular-minors}
@@ -146,7 +146,7 @@ is $5^{-1}(-4/5)^{n-1}$, also a unit.  The choices of $I,J$ are independent
 of both $B$ and $k$.
 \end{proof}
 
-\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133}{Lean source}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133}{admissible modular minors}.
 
 
 
@@ -156,7 +156,7 @@ its four entries are $1,1/6,1/2,1/60$, so it equals $1/60-1/12$.
 \end{example}
 
 \noindent The four entries and the determinant are
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L102}{Lean source}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L102}{two by two fixture}.
 
 \paragraph{The indices must be selected.}
 The leading $4\times4$ block at $\{2,3,5\}$ is singular:
@@ -186,7 +186,7 @@ If $k_1=0$ and $k_t=m$, then $v_0=c\,\mathbf 1$ lies in the span of the
 differences (their sum is $(1-c)\mathbf 1$), so the rank is $t-1$.
 \end{proof}
 
-\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182}{Lean source}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182}{rank cut matrix}.
 
 The formula classifies every finite sampled kernel rank after the row and
 column factors of Theorem~\ref{res:infinite-rank}, independently of the third
@@ -308,12 +308,12 @@ powers occur among those smooth numbers; their product divides the running
 LCM because they are pairwise coprime.
 \end{proof}
 
-\noindent The statement is \lloc{Erdos269/ThreePrimeRunningLcm.lean}{124}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L124}{smooth prefix lcm equals three-prime height}.
 The same definition gives
 \begin{equation}\label{res:cube}
  x^3/(pqr)<\hgt(x)\le x^3.
 \end{equation}
-Both inequalities are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L112}{Lean source}.
+Both inequalities are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L112}{cubic height bounds}.
 The height is constant between consecutive pure-power boundaries and gains
 a factor equal to the prime at each boundary.  If $F(H)$ is a height fibre
 in a finite exponent box $\mathcal B$, exact regrouping gives
@@ -322,7 +322,7 @@ in a finite exponent box $\mathcal B$, exact regrouping gives
 \end{equation}
 Each term in $F(H)$ equals $1/H$, which proves the identity.  The
 multiplicities remain present in every subsequent infinite sum.
-The regrouping is \lloc{Erdos269/ThreePrimeRunningLcm.lean}{407}.
+The regrouping is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407}{finite smooth kernel sum grouped by height}.
 
 From now on let $P=\{2,3,5\}$ and $S=\mathcal R_P$.  For $a\ge0$ define
 \[
@@ -352,7 +352,7 @@ most one three-power and at most one five-power.  Their optional factors,
 together with the terminal factor two, give the four radices.
 \end{proof}
 
-\noindent Both clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L48}{Lean source}.
+\noindent Both clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L48}{literal integer forcing and four radices}.
 
 \begin{proposition}[the actual recurrence and a polynomial bound]
 \label{res:actual-orbit}
@@ -376,7 +376,7 @@ $s_a\le30(a+1)^2/8^a$.  Therefore
 \]
 This proves convergence and the bound.  Splitting the first shell gives
 the recurrence because $m_a=h_{a+1}s_a$ and $h_{a+1}=b_ah_a$.
-All four clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168}{Lean source}.
+All four clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168}{short actual orbit}.
 
 Put $Y_a=BX_a$.  If all sufficiently late distances are strictly below
 $1/31$, write $Y_a=z_a+e_a$ with $z_a\in\mathbb Z$ and $|e_a|<1/31$.
@@ -415,7 +415,7 @@ $BX_a=h_aA/(2^u3^v5^w)-BZ_a$ is integral.  Positivity, the recurrence
 and the bound follow from Proposition~\ref{res:actual-orbit}.
 \end{proof}
 
-\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80}{Lean source}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80}{short fixed split bridge}.
 
 \section{A window test and the remaining arithmetic}
 \label{sec:escape}\label{sec:open}
@@ -445,7 +445,7 @@ Every positive representative of the residue is at least its least
 positive representative, so $\operatorname{lpr}_W(-BF)\le d\le K$.
 \end{proof}
 
-\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138}{Lean source}.
+\noindent The statement is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138}{finite endpoint obstruction}.
 
 \begin{theorem}[the actual window criterion]\label{res:windowconsumer}
 The number $S$ is irrational if and only if
@@ -481,7 +481,7 @@ $K(B,\ell+h)$.  This proves~\eqref{eq:escape}, in fact from each fixed start.
 \end{proof}
 
 \noindent The equivalence, at the literal smooth-number series, is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51}{Lean source}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51}{short window equivalence}.
 
 The validity of the cap is needed in the rational direction; an upper
 polynomial growth condition by itself would not suffice.  The zero cap,
