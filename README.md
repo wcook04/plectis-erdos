@@ -65,9 +65,12 @@ not required to read the papers.
 - **[#249](https://www.erdosproblems.com/249)** · Binary totient series ·
   [short paper](paper/249/erdos-249-binary-totient-series.pdf) ·
   [longer paper](paper/249/erdos249-totient-reasoning-surface.pdf).
-  Exact dyadic-kernel rank `2^e + 1`, denominator exclusion to about
-  `7.96 × 10³⁴`, diagonal certificates through `t ≤ 82`, and no-go theorems
-  for the shortcuts. This is not an infinite witness for irrationality.
+  Bounded-residue series `A_m` are irrational for `m ≥ 3`, with a complete
+  dyadic-modulus classification ([§2](paper/249/erdos-249-binary-totient-series.pdf);
+  ordinary mathematics, not Lean). Separately: exact dyadic-kernel rank
+  `2^e + 1`, denominator exclusion to about `7.96 × 10³⁴`, diagonal
+  certificates through `t ≤ 82`, and no-go theorems for the shortcuts. This is
+  not an infinite witness for irrationality.
 - **[#251](https://www.erdosproblems.com/251)** · Prime-gap dyadic series ·
   [short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) ·
   [longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf).

@@ -2,17 +2,6 @@
 
 # A Basis for the 2-Kernel of Euler’s Totient
 
-<div id="prob:firstharmonic" class="problem">
-
-**Problem 1** (first-harmonic anti-concentration on supplier fibres). For each $`h\ge1`$, do there exist $`s\ge1`$ and $`0<\eta<1`$ such that, for every $`X_0`$, there are $`X,L`$ with
-``` math
-\max(X_0,1)\le X,\qquad h\le L-s,\qquad
- 16(2X+h+L+2)\le2^L,
-```
-for which the four bounds below hold?
-
-</div>
-
 <div class="center">
 
 <span class="smallcaps">Abstract</span>
@@ -357,6 +346,30 @@ Ordinary convergence and Hankel nonvanishing do not contain this denominator est
 Allouche and Shallit introduced $`k`$-regular sequences \[allouche-shallit\]. Coons proved that $`\varphi`$ is not $`k`$-regular \[coons\]; Martin’s stronger affine ordering theorem implies the independence in Section <a href="#sec:rank" data-reference-type="ref" data-reference="sec:rank">1.1</a> \[martin-phi-inequalities\]. The basis theorem gives the exact finite-level normal form. Wong \[wong2015\] proved least-residue irrationality when the denominator base equals the modulus; Section <a href="#sec:family" data-reference-type="ref" data-reference="sec:family">2</a> fixes base two and classifies dyadic observables. The original question appears in Erdős and Graham \[erdosgraham1980, p. 61\].
 
 The [dyadic finite-level rank $`2^e+1`$](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1084), residue-series irrationality, [full-depth amplification](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L364), canonical equivalence and the [positive rank-one floor](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L624) are in the public snapshot. The unconditional all-base exact-rank theorem is not a Lean theorem without Martin’s independence hypothesis; the formal transfer is [rank from an independent all-base family](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelConditional.lean#L215). The [canonical gap](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3165) is the remaining arithmetic endpoint. The historical source links retain `99f4bf47422a`. The integral normal form has its ordinary proof above. The periodic transport lemma is checked in `PeriodicTotientIndependence.lean`; the eventual version follows by the displayed threshold shift. The rational control and the termwise-window and prime-dilation boundaries are proved in `ParityPerturbedRationalControl.lean` and `PrefixValuationAndControlRigidity.lean`, respectively. Finite evaluation ranks and the all-level carry lower bound remain distinct. The long record retains the separate continued-fraction bounds $`q\ge2^{39989}`$ and $`q>10^{12038}`$ under rationality, alongside the Lean-checked Farey exclusion. Neither implies the universal gap.
+
+The remaining first-harmonic obligation is a four-term pivot budget, not an opening statement of this note. Write
+``` math
+\operatorname{Re}\,\mathrm{pivotCenteredCorrelation}\le\tfrac{14}{25}X,
+ \quad
+ \lVert\mathrm{pivotFiberMean}\rVert\le\tfrac1{100}X,
+ \quad
+ \lVert\mathrm{pivotBad}\rVert\le\tfrac1{100}X,
+ \quad
+ \lVert\mathrm{pivotNonSupplier}\rVert\le\tfrac8{25}X.
+```
+
+<div id="prob:firstharmonic" class="problem">
+
+**Problem 1** (first-harmonic anti-concentration on supplier fibres). For each $`h\ge1`$, do there exist $`s\ge1`$ and $`0<\eta<1`$ such that, for every $`X_0`$, there are $`X,L`$ with
+``` math
+\max(X_0,1)\le X,\qquad h\le L-s,\qquad
+ 16(2X+h+L+2)\le2^L,
+```
+for which those four bounds hold?
+
+</div>
+
+The quantities are defined with the [budget condition](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L543) in the long record. This note does not prove them.
 
 <a id="app:sources"></a>
 
