@@ -53,7 +53,7 @@
             ],
             "paper_consumers": [
               {
-                "path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+                "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
                 "locators": ["res:mass", "res:masshyp", "sec:bounded"]
               },
               {
@@ -82,7 +82,7 @@
             "evidence_mode": "Lean kernel source plus source-faithful ExternalVerification wrapper",
             "mechanism": "negativeRelativeMass C E n is |min (E n) 0| / C n. The tail-growth theorem bounds C (n+1) by C n * (1 + negativeRelativeMass C E n); summability of this nonnegative relative-growth factor bounds the finite products. Division-free normalized vanishing then forces the integer defect E n to be zero eventually, and the load-bearing theorem transfers centeredState = 0 to the Sylvester recurrence eventually.",
             "boundary": "Conditional state-system recovery only. It assumes the displayed nextDenState and nextTailState dynamics, C > 0, the strict centered-step equation, division-free normalized vanishing, and summability of normalized negative mass for centeredState. These hypotheses are not proved for the canonical Erdős #243 orbit, so no prime-specific producer, unconditional endpoint, or reciprocal-tail irrationality follows. It is distinct from centered_state_dynamics: that family uses a uniform lower-bound hypothesis, while this one uses summability of normalized negative mass; neither supplies the other.",
-            "next_research_route": "Paper route: paper/erdos-243-reciprocal-tail-rigidity.tex (res:mass, res:masshyp, sec:bounded) and docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md (res:mass, line:625). Read SparseResetRecovery.lean declarations 45, 155, and 175, then the ExternalVerification wrapper at Challenge.lean:111 and Solution.lean:1183. The missing obligation is a producer or refutation for summability on the canonical orbit; preserve mixed-sign and unbounded-negative regimes as open."
+            "next_research_route": "Paper route: paper/243/erdos-243-reciprocal-tail-rigidity.tex (res:mass, res:masshyp, sec:bounded) and docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md (res:mass, line:625). Read SparseResetRecovery.lean declarations 45, 155, and 175, then the ExternalVerification wrapper at Challenge.lean:111 and Solution.lean:1183. The missing obligation is a producer or refutation for summability on the canonical orbit; preserve mixed-sign and unbounded-negative regimes as open."
           }
         }
       },
@@ -176,7 +176,7 @@
             ],
             "paper_consumers": [
               {
-                "path": "paper/erdos-249-binary-totient-series.tex",
+                "path": "paper/249/erdos-249-binary-totient-series.tex",
                 "locators": ["res:foreignresidue"]
               },
               {
@@ -277,7 +277,7 @@
           },
           "paper_consumers": [
             {
-              "path": "paper/erdos-251-prime-gap-dyadic-series.tex",
+              "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
               "locators": ["res:smallpair", "prob:smallpair", "sec:open"]
             },
             {
