@@ -37,7 +37,7 @@
       "short_title": "The factorial-denominator series",
       "status": "open",
       "question": "Is the series sum_{n >= 2} 1/(n! - 1) irrational?",
-      "directory": "ErdosProblems/Erdos68",
+      "directory": "lean/ErdosProblems/Erdos68",
       "principal_module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
       "companion_modules": [
         "ErdosProblems.Erdos68.CanonicalFactorialDigits",
@@ -123,7 +123,7 @@
       "short_title": "Reciprocal-tail rigidity near the Sylvester recurrence",
       "status": "open",
       "question": "Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?",
-      "directory": "ErdosProblems/Erdos243",
+      "directory": "lean/ErdosProblems/Erdos243",
       "principal_module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
       "companion_modules": [
         "ErdosProblems.Erdos243.FiniteHorizonResidue",
@@ -219,7 +219,7 @@
       "question": "Is the binary Lambert series sum phi(n)/2^n irrational?",
       "note_coverage_floor": 0.3,
       "note_coverage_rationale": "Deliberately lowered from the 0.6 default at the v0.7.0 freeze: the block-gap conditional route (the TotientStrictPrimeEscape rewrite) landed with the release integration, after the note was written. RESULTS.md and the module docstrings route readers to the new declarations; the note will be repinned and extended to cover them in its next revision.",
-      "directory": "ErdosProblems/Erdos249",
+      "directory": "lean/ErdosProblems/Erdos249",
       "principal_module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
       "companion_modules": [
         "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -322,7 +322,7 @@
       "short_title": "The prime-gap dyadic series",
       "status": "open",
       "question": "Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
-      "directory": "ErdosProblems/Erdos251",
+      "directory": "lean/ErdosProblems/Erdos251",
       "principal_module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
       "companion_modules": [],
       "note_artifact_id": "erdos_251_note",
@@ -431,7 +431,7 @@
       "short_title": "Reciprocal sums over infinite exponent supports",
       "status": "open",
       "question": "Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?",
-      "directory": "ErdosProblems/Erdos257",
+      "directory": "lean/ErdosProblems/Erdos257",
       "principal_module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
       "companion_modules": [],
       "note_artifact_id": "erdos_257_note",
@@ -477,7 +477,7 @@
       "short_title": "Three-prime running least common multiples",
       "status": "open",
       "question": "For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.",
-      "directory": "ErdosProblems/Erdos269",
+      "directory": "lean/ErdosProblems/Erdos269",
       "principal_module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
       "companion_modules": [
         "ErdosProblems.Erdos269.ResidueEscape",
@@ -635,7 +635,7 @@
       "short_title": "Short connections inside polynomial lemniscates",
       "status": "open",
       "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?",
-      "directory": "ErdosProblems/Erdos1041",
+      "directory": "lean/ErdosProblems/Erdos1041",
       "principal_module": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
       "companion_modules": [],
       "note_artifact_id": "erdos_1041_note",
@@ -719,7 +719,7 @@
       "short_title": "Lambert-type series at rational bases",
       "status": "open",
       "question": "For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.",
-      "directory": "ErdosProblems/Erdos1049",
+      "directory": "lean/ErdosProblems/Erdos1049",
       "principal_module": "ErdosProblems.Erdos1049.RationalBaseLambert",
       "companion_modules": [
         "ErdosProblems.Erdos1049.RationalPadeArithmetic",
@@ -868,8 +868,8 @@
       "short_title": "The totient constant",
       "status": "open",
       "library_root": "Erdos249257.lean",
-      "archived_provenance": "paper/erdos249-257-main-paper.tex",
-      "problem_note": "paper/erdos-249-binary-totient-series.tex",
+      "archived_provenance": "paper/archive/erdos249-257-main-paper.tex",
+      "problem_note": "paper/249/erdos-249-binary-totient-series.tex",
       "route": "python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic",
       "note": "The individual problem paper and reviewed claim registry own the active reading route and status. The former combined manuscript is retained only as provenance."
     },
@@ -879,8 +879,8 @@
       "short_title": "Reciprocal sums over infinite exponent supports",
       "status": "open",
       "library_root": "Erdos249257.lean",
-      "archived_provenance": "paper/erdos249-257-main-paper.tex",
-      "problem_note": "paper/erdos-257-mersenne-support-subseries.tex",
+      "archived_provenance": "paper/archive/erdos249-257-main-paper.tex",
+      "problem_note": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "route": "python3 scripts/query_corpus.py --route erdos257_half_story",
       "note": "The individual problem paper and reviewed claim registry own the active reading route and status. The former combined manuscript is retained only as provenance."
     }

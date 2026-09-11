@@ -27,8 +27,8 @@ ATLAS = ROOT / "docs" / "declaration_atlas.json"
 # from the live atlas silently repoints it away from the commit it was
 # reviewed against, so this list must not become a glob over paper/.
 PAPERS = (
-    ROOT / "paper" / "erdos249-257-main-paper.tex",
-    ROOT / "paper" / "erdos-257-mersenne-support-subseries.tex",
+    ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex",
+    ROOT / "paper" / "257" / "erdos-257-mersenne-support-subseries.tex",
 )
 LINK_RE = re.compile(
     # \rootword carries the same {module}{line}{declaration}{label} shape as

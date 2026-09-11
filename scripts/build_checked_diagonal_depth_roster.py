@@ -448,7 +448,11 @@ def validate_roster_indices(
 
 def read_source(root: Path, source_path: str) -> str:
     """Read a required UTF-8 source or fail with a contract error."""
+    from lean_source import library_storage_path
+
     path = root / source_path
+    if not path.is_file():
+        path = root / library_storage_path(source_path)
     try:
         return path.read_text(encoding="utf-8")
     except FileNotFoundError as error:

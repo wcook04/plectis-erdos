@@ -50,7 +50,7 @@ class CloneFootprintTests(unittest.TestCase):
         )
         self.assertEqual(len(source_patterns), 43)
         self.assertIn(
-            "/ErdosProblems/Erdos249/PeriodMultipleEscape.lean", source_patterns
+            "/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean", source_patterns
         )
         self.assertNotIn(
             "/Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
@@ -59,7 +59,7 @@ class CloneFootprintTests(unittest.TestCase):
 
     def test_oversized_full_checkout_is_rejected(self) -> None:
         entries = [
-            {"path": "Erdos249257/A.lean", "size_bytes": 150 * footprint.MIB},
+            {"path": "lean/Erdos249257/A.lean", "size_bytes": 150 * footprint.MIB},
             {"path": "docs/generated.json", "size_bytes": 271 * footprint.MIB},
         ]
         report = footprint.build_report(entries)
@@ -70,7 +70,7 @@ class CloneFootprintTests(unittest.TestCase):
 
     def test_oversized_lean_checkout_is_rejected(self) -> None:
         entries = [
-            {"path": "Erdos249257/A.lean", "size_bytes": 161 * footprint.MIB},
+            {"path": "lean/Erdos249257/A.lean", "size_bytes": 161 * footprint.MIB},
             {"path": "docs/generated.json", "size_bytes": 200 * footprint.MIB},
         ]
         report = footprint.build_report(entries)
@@ -82,7 +82,7 @@ class CloneFootprintTests(unittest.TestCase):
     def test_readme_cannot_drop_reproducibility_route(self) -> None:
         report = footprint.build_report(
             [
-                {"path": "Erdos249257/A.lean", "size_bytes": 1},
+                {"path": "lean/Erdos249257/A.lean", "size_bytes": 1},
                 {"path": "docs/generated.json", "size_bytes": 2},
             ]
         )
@@ -93,7 +93,7 @@ class CloneFootprintTests(unittest.TestCase):
 
     def test_runbook_keeps_blob_filtered_clone(self) -> None:
         entries = [
-            {"path": "Erdos249257/A.lean", "size_bytes": 1},
+            {"path": "lean/Erdos249257/A.lean", "size_bytes": 1},
             {"path": "docs/generated.json", "size_bytes": 2},
         ]
         runbook = self.valid_runbook().replace("--filter=blob:none ", "", 1)
@@ -106,7 +106,7 @@ class CloneFootprintTests(unittest.TestCase):
 
     def test_runbook_keeps_history_fetch(self) -> None:
         entries = [
-            {"path": "Erdos249257/A.lean", "size_bytes": 1},
+            {"path": "lean/Erdos249257/A.lean", "size_bytes": 1},
             {"path": "docs/generated.json", "size_bytes": 2},
         ]
         runbook = self.valid_runbook().replace(footprint.RUNBOOK_FETCH_COMMAND, "")
@@ -119,7 +119,7 @@ class CloneFootprintTests(unittest.TestCase):
 
     def test_lean_sparse_checkout_keeps_its_build_wrapper(self) -> None:
         entries = [
-            {"path": "Erdos249257/A.lean", "size_bytes": 10},
+            {"path": "lean/Erdos249257/A.lean", "size_bytes": 10},
             {"path": "scripts/lean_fast_build.py", "size_bytes": 20},
             {"path": "docs/generated.json", "size_bytes": 40},
         ]
@@ -138,7 +138,7 @@ class CloneFootprintTests(unittest.TestCase):
         )
 
     def test_runbook_orders_lightweight_check_before_lean_build(self) -> None:
-        entries = [{"path": "Erdos249257/A.lean", "size_bytes": 1}]
+        entries = [{"path": "lean/Erdos249257/A.lean", "size_bytes": 1}]
         runbook = self.valid_runbook().replace(
             footprint.RUNBOOK_QUICK_CHECK_COMMAND,
             "placeholder",
@@ -164,15 +164,15 @@ class CloneFootprintTests(unittest.TestCase):
 
     def test_lean_sparse_checkout_omits_historical_certificate_input(self) -> None:
         entries = [
-            {"path": "ErdosProblems/FreePosition/Proof.lean", "size_bytes": 10},
-            {"path": "ErdosProblems/FreePosition/data.jsonl", "size_bytes": 20},
+            {"path": "lean/ErdosProblems/FreePosition/Proof.lean", "size_bytes": 10},
+            {"path": "lean/ErdosProblems/FreePosition/data.jsonl", "size_bytes": 20},
         ]
         report = footprint.build_report(entries)
         self.assertEqual(report["lean_sparse_checkout_bytes"], 10)
 
     def test_sparse_manifest_drift_is_rejected(self) -> None:
         report = footprint.build_report(
-            [{"path": "Erdos249257/A.lean", "size_bytes": 1}]
+            [{"path": "lean/Erdos249257/A.lean", "size_bytes": 1}]
         )
         errors = footprint.contract_errors(
             report,

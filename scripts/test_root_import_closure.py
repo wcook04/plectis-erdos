@@ -18,6 +18,7 @@ from lean_source import (
     LIBRARY_ROOTS,
     library_root_file,
     library_source_paths,
+    library_storage_variants,
 )
 
 ROOT_FILES = tuple(
@@ -107,10 +108,10 @@ def registry_errors(
     for node in nodes:
         module_id = str(node["id"])
         module_path = str(node["path"])
-        expected_path = module_id.replace(".", "/") + ".lean"
-        if module_path != expected_path:
+        expected_paths = library_storage_variants(module_id.replace(".", "/") + ".lean")
+        if module_path not in expected_paths:
             errors.append(
-                f"module id/path mismatch: {module_id} should use {expected_path}, "
+                f"module id/path mismatch: {module_id} should use {expected_paths[0]}, "
                 f"not {module_path}"
             )
 
@@ -336,12 +337,12 @@ def main() -> int:
     )
     graph = claims["machine_readable_paper"]["module_graph"]
     require(
-        graph["root"] == "Erdos249257.lean",
+        graph["root"] == "lean/Erdos249257.lean",
         "machine-readable graph has the wrong primary root",
     )
     roots = [graph["root"], *graph.get("additional_roots", [])]
     require(
-        roots == ["Erdos249257.lean", "ErdosProblems.lean"],
+        roots == ["lean/Erdos249257.lean", "lean/ErdosProblems.lean"],
         "machine-readable graph does not expose both supported roots",
     )
     root_imports = [

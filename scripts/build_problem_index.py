@@ -41,6 +41,8 @@ import re
 import sys
 from pathlib import Path, PurePosixPath
 
+from lean_source import library_storage_path
+
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs" / "problem_index_source.json"
 OUTPUT = ROOT / "docs" / "problems.json"
@@ -85,8 +87,8 @@ def sha256(data: bytes) -> str:
 
 
 def module_path(module: str) -> str:
-    """Turn a dotted Lean module name into its repository-relative path."""
-    return "/".join(module.split(".")) + ".lean"
+    """Turn a dotted Lean module name into its current-checkout storage path."""
+    return library_storage_path("/".join(module.split(".")) + ".lean")
 
 
 def module_facts(module: str) -> dict[str, object]:
@@ -416,8 +418,9 @@ def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> d
             item["github"] = {key: f"{PUBLIC_REPO}/blob/main/{item[key]}" for key in ("source", "pdf", "full_text") if item[key]}
             reading.append(item)
         reading.sort(key=lambda p: ({"short": 0, "long": 1}.get(p["role"], 2), p["paper_id"]))
-        directory = ROOT / row["directory"]
-        if directory.is_symlink() or not directory.is_dir() or ".." in PurePosixPath(row["directory"]).parts or PurePosixPath(row["directory"]).is_absolute():
+        directory_rel = library_storage_path(row["directory"])
+        directory = ROOT / directory_rel
+        if directory.is_symlink() or not directory.is_dir() or ".." in PurePosixPath(directory_rel).parts or PurePosixPath(directory_rel).is_absolute():
             raise ValueError(f"{pid}: unsafe problem directory")
         seeds = {str(p.relative_to(ROOT)) for p in directory.rglob("*.lean")}
         seeds.update(module_path(name) for name in [row["principal_module"], *row.get("companion_modules", [])])
@@ -425,7 +428,11 @@ def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> d
         related = {a["from"] for a in arguments if a.get("to") == pid}
         related.update(r["claim_id"] for r in results if str(r.get("problem")) == str(number) and r.get("claim_id"))
         for claim_id in related:
-            seeds.update(d["module"] for d in all_claims.get(claim_id, {}).get("declarations", []) if d.get("module"))
+            seeds.update(
+                library_storage_path(d["module"])
+                for d in all_claims.get(claim_id, {}).get("declarations", [])
+                if d.get("module")
+            )
         included = set(seeds)
         pending = list(seeds)
         edges = set()

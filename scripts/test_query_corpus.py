@@ -1255,7 +1255,7 @@ def validate_route_memory_cards() -> None:
     label_card = query_corpus.render_card(query_corpus.paper_label_packet("res:farey"))
     assert (
         f"paper res:farey | {anchor['paper']['source_ref']} "
-        "| rendered=erdos249-257-main-paper.pdf | claims=denominator_exclusion "
+        "| rendered=paper/archive/erdos249-257-main-paper.pdf | claims=denominator_exclusion "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
     ) in label_card

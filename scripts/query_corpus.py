@@ -27,7 +27,19 @@ from build_module_synopsis_index import (
     QUERY_CONTRACT as MODULE_SYNOPSIS_QUERY_CONTRACT,
     SCHEMA as MODULE_SYNOPSIS_SCHEMA,
 )
-from lean_source import library_storage_path, library_storage_variants
+from lean_source import (
+    library_identity_path,
+    library_storage_path,
+    library_storage_variants,
+)
+
+
+def checkout_lean_file(relative: str) -> Path:
+    """Open a corpus Lean path in this checkout, accepting either storage spelling."""
+    path = ROOT / relative
+    if path.is_file():
+        return path
+    return ROOT / library_storage_path(relative)
 
 ROOT = Path(__file__).resolve().parent.parent
 DECLARATION_SEARCH_INDEX = ROOT / "docs" / "declaration_search_index.json.gz"
@@ -3401,12 +3413,18 @@ def decorate_declaration_rows(
                 "externally_addressable": declaration_externally_addressable(
                     match
                 ),
-                "source_ref": f"{match['module']}:{match['line']}",
-                "source_url": f"{repository}/blob/{source_ref}/{match['module']}#L{match['line']}",
+                "source_ref": f"{library_identity_path(match['module'])}:{match['line']}",
+                "source_url": (
+                    f"{repository}/blob/{source_ref}/"
+                    f"{library_identity_path(match['module'])}#L{match['line']}"
+                ),
                 "lean_source_identity": dict(lean_source_identity),
-                "paper_sigil": sigil_by_path.get(match["module"]),
+                "paper_sigil": sigil_by_path.get(library_identity_path(match["module"]))
+                or sigil_by_path.get(match["module"]),
                 "module_role": roles.get(
-                    match["module"].removesuffix(".lean").replace("/", "."),
+                    library_identity_path(match["module"])
+                    .removesuffix(".lean")
+                    .replace("/", "."),
                     "Unclassified module",
                 ),
                 "attached_claims": attached_claims,
@@ -4091,6 +4109,12 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     aliases = load("paper/module-aliases.json")["aliases"]
     module = next((row for row in atlas["modules"] if row["path"] == module_path), None)
     if module is None:
+        for variant in library_storage_variants(module_path):
+            module = next((row for row in atlas["modules"] if row["path"] == variant), None)
+            if module is not None:
+                module_path = variant
+                break
+    if module is None:
         raise KeyError(f"unknown Lean source module: {module_path}")
     source_lines = cached_source_lines(module_path)
     if line > len(source_lines):
@@ -4126,14 +4150,15 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     lean_source_identity = formal_source_identity(claims)
     repository = lean_source_identity["repository"].rstrip("/")
     source_ref = lean_source_identity["ref"]
+    public_module = library_identity_path(module_path)
     return {
         "kind": "source_coordinate",
         "authority_posture": "source_coordinate_navigation_not_proof_authority",
         "source": {
-            "module": module_path,
+            "module": public_module,
             "line": line,
-            "source_ref": f"{module_path}:{line}",
-            "source_url": f"{repository}/blob/{source_ref}/{module_path}#L{line}",
+            "source_ref": f"{public_module}:{line}",
+            "source_url": f"{repository}/blob/{source_ref}/{public_module}#L{line}",
             "lean_source_identity": lean_source_identity,
             "module_id": module["id"],
             "module_role": roles.get(module["id"], "Unclassified module"),
@@ -4193,9 +4218,9 @@ def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
         "qualified_name": qualified_declaration_name(row),
         "externally_addressable": declaration_externally_addressable(row),
         "declaration_kind": row["kind"],
-        "module": row["module"],
+        "module": library_identity_path(row["module"]),
         "line": row["line"],
-        "source_ref": f"{row['module']}:{row['line']}",
+        "source_ref": f"{library_identity_path(row['module'])}:{row['line']}",
         "claim_ids": row.get("claim_ids", []),
         "generated_certificate": bool(row.get("generated_certificate")),
     }
@@ -4205,6 +4230,8 @@ def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
 def module_namespace_events(rel: str) -> tuple[tuple[int, str], ...]:
     """Return namespace-prefix changes, respecting intervening section blocks."""
     path = ROOT / rel
+    if not path.is_file():
+        path = ROOT / library_storage_path(rel)
     if not path.is_file():
         return ((1, ""),)
     current = ""
@@ -4270,7 +4297,11 @@ def module_handle_indexes() -> dict[str, Any]:
         by_stem.setdefault(Path(row["path"]).stem.casefold(), []).append(row)
     return {
         "by_id": {row["id"]: row for row in modules},
-        "by_path": {row["path"]: row for row in modules},
+        "by_path": {
+            variant: row
+            for row in modules
+            for variant in library_storage_variants(row["path"])
+        },
         "by_stem": by_stem,
         "alias_by_sigil": {row["sigil"].casefold(): row for row in aliases},
         "alias_by_path": {row["path"]: row for row in aliases},
@@ -4322,13 +4353,15 @@ def resolve_module_handle(handle: str) -> tuple[dict[str, Any], str]:
 def compact_module(row: dict[str, Any], roles: dict[str, str]) -> dict[str, Any]:
     return {
         "id": row["id"],
-        "path": row["path"],
+        "path": library_identity_path(row["path"]),
         "role": roles.get(row["id"], "Unclassified module"),
         "declaration_count": row["declaration_count"],
     }
 
 
 def file_digest(path: Path) -> str:
+    if not path.is_file() and path.is_relative_to(ROOT):
+        path = checkout_lean_file(str(path.relative_to(ROOT)))
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
@@ -4392,7 +4425,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
 
     roles = module_roles(claims)
     by_module = {row["id"]: row for row in atlas["modules"]}
-    source_path = ROOT / module["path"]
+    source_path = checkout_lean_file(module["path"])
     source_text = source_path.read_text(encoding="utf-8")
     source_counts = identifier_counts(source_text)
     anchor_names = {row["name"] for row in declaration_matches}
@@ -4527,7 +4560,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     importer_rows = [row for row in atlas["modules"] if module["id"] in row.get("imports", [])]
     consumer_capsules = []
     for importer in importer_rows[: min(6, limit)]:
-        importer_path = ROOT / importer["path"]
+        importer_path = checkout_lean_file(importer["path"])
         importer_lines = importer_path.read_text(encoding="utf-8").splitlines()
         importer_declarations = declaration_indexes["by_module"].get(
             importer["path"], []
@@ -4666,8 +4699,10 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     module, resolution = resolve_module_handle(handle)
     module_indexes = module_handle_indexes()
     roles = module_roles(claims)
+    identity_path = library_identity_path(module["path"])
     module_view = {
         **module,
+        "path": identity_path,
         "role": roles.get(module["id"], "Unclassified module"),
         "authored_synopsis": module_synopsis(module["path"]),
         "synopsis_authority_posture": (
@@ -4726,13 +4761,15 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         "lean_source_identity": formal_source_identity(claims),
         "module_handle_resolution": {
             "requested": requested_handle,
-            "resolved": module["path"],
+            "resolved": identity_path,
             "method": resolution,
             "authority": "docs/declaration_atlas.json::modules",
         },
         "module": module_view,
-        "paper_sigil": module_indexes["alias_by_path"].get(
-            module["path"], {}
+        "paper_sigil": (
+            module_indexes["alias_by_path"].get(identity_path)
+            or module_indexes["alias_by_path"].get(module["path"])
+            or {}
         ).get("sigil"),
         "attached_claims": claim_rows,
         "reviewed_result_families": reviewed_family_routes,
@@ -6577,7 +6614,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                     {
                         "kind": "module",
                         "id": row["id"],
-                        "path": row["path"],
+                        "path": library_identity_path(row["path"]),
                         "authored_synopsis_excerpt": (
                             synopsis[:480] if synopsis else None
                         ),
@@ -10289,7 +10326,7 @@ def render_card(packet: dict[str, Any]) -> str:
         rows = []
         for row in packet["matches"]:
             card = (
-                f"declaration {row['name']} | {row['kind']} | {row['module']}:{row['line']} "
+                f"declaration {row['name']} | {row['kind']} | {library_identity_path(row['module'])}:{row['line']} "
                 f"| claims={','.join(row['claim_ids']) or 'none'}"
             )
             rows.append(_append_route_memory_resumes(card, row.get("route_memory")))

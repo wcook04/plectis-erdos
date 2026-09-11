@@ -26,6 +26,7 @@ from lean_source import (
     library_module_id,
     library_root_file,
     library_source_paths,
+    library_storage_variants,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -252,9 +253,10 @@ def generated_modules() -> dict[str, str]:
     """
     manifest = json.loads(safe_atlas_text(GENERATED_MANIFEST))
     return {
-        path: family["id"]
+        variant: family["id"]
         for family in manifest["families"]
         for path in family["module_paths"]
+        for variant in library_storage_variants(path)
     }
 
 
@@ -423,7 +425,8 @@ def build() -> dict[str, object]:
     claim_refs: dict[tuple[str, str], list[str]] = {}
     for claim in claims["claims"]:
         for decl in claim["declarations"]:
-            claim_refs.setdefault((decl["module"], decl["name"]), []).append(claim["id"])
+            for variant in library_storage_variants(decl["module"]):
+                claim_refs.setdefault((variant, decl["name"]), []).append(claim["id"])
 
     paths = source_paths()
     generated_index = generated_modules()

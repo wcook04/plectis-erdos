@@ -19,7 +19,7 @@ This public commons also holds checked work on seven further Erdős problems —
 [269](https://www.erdosproblems.com/269),
 [1041](https://www.erdosproblems.com/1041) and
 [1049](https://www.erdosproblems.com/1049).
-**All eight problems remain open.** The checkout is self-contained:
+**All eight problems remain open.** This checkout does not solve them. The checkout is self-contained:
 eight short notes, eight long reasoning records, Lean sources, a Comparator
 gate, and the checks that bind claims to source. It is not an entrypoint into
 any private development system. The notes follow Terence Tao's public guidance

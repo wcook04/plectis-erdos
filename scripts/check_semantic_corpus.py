@@ -43,6 +43,7 @@ import stat
 from pathlib import Path
 
 from build_semantic_corpus import semantic_input_fingerprint
+from lean_source import library_storage_path
 from semantic_review import REGISTRY as SEMANTIC_REVIEWS
 from semantic_review import attached_receipt_errors, formal_source_revision
 
@@ -484,8 +485,14 @@ def main() -> int:
     )
 
     # 4. generated provenance is a contract, not a filename pattern
-    manifest_paths = {p for f in manifest["families"] for p in f["module_paths"]}
-    atlas_generated = {r["module"] for r in atlas["declarations"] if r["generated_certificate"]}
+    manifest_paths = {
+        library_storage_path(p) for f in manifest["families"] for p in f["module_paths"]
+    }
+    atlas_generated = {
+        library_storage_path(r["module"])
+        for r in atlas["declarations"]
+        if r["generated_certificate"]
+    }
     check(
         atlas_generated <= manifest_paths,
         f"{len(atlas_generated - manifest_paths)} module(s) marked generated in the atlas are absent from the manifest",

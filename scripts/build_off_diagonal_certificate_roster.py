@@ -195,7 +195,11 @@ def _resolve_source_path(source_file: str, source_row: int) -> Path:
             f"data.jsonl row {source_row}: Lean file must be relative"
         )
     resolved_root = ROOT.resolve()
+    from lean_source import library_storage_path
+
     resolved = (ROOT / relative_path).resolve()
+    if not resolved.is_file():
+        resolved = (ROOT / library_storage_path(relative_path.as_posix())).resolve()
     if not resolved.is_relative_to(resolved_root):
         raise RosterError(
             f"data.jsonl row {source_row}: Lean file escapes repository"

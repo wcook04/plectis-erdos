@@ -59,6 +59,7 @@ from methodology_contract import mutation_fixture_errors, render_markdown, valid
 from lean_source import (
     LIBRARY_ROOTS,
     library_dir,
+    library_identity_path,
     library_root_file,
     library_source_paths,
     library_storage_path,
@@ -670,17 +671,63 @@ def module_lines(
     if key not in cache:
         if source_ref is None:
             path = ROOT / rel
+            if not release_file_exists(path):
+                path = ROOT / library_storage_path(rel)
             cache[key] = read(path).splitlines() if release_file_exists(path) else None
         else:
+            historical = library_identity_path(rel)
             completed = run(
-                ["git", "show", f"{source_ref}:{rel}"],
+                ["git", "show", f"{source_ref}:{historical}"],
                 cwd=ROOT,
                 capture_output=True,
                 text=True,
                 check=False,
             )
+            if completed.returncode != 0 and historical != rel:
+                completed = run(
+                    ["git", "show", f"{source_ref}:{rel}"],
+                    cwd=ROOT,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
             cache[key] = completed.stdout.splitlines() if completed.returncode == 0 else None
     return cache[key]
+
+
+def _historical_library_pathspecs() -> list[str]:
+    """Pathspecs for corpus files at both nested and pre-migration spellings."""
+    specs: list[str] = []
+    for name in LIBRARY_ROOTS:
+        specs.extend(
+            (
+                f"{name}.lean",
+                name,
+                f"lean/{name}.lean",
+                f"lean/{name}",
+            )
+        )
+    return specs
+
+
+def _ls_tree_identity_blobs(formal_ref: str) -> dict[str, str] | None:
+    """Map corpus identity paths to blob ids at ``formal_ref``."""
+    completed = run(
+        ["git", "ls-tree", "-r", formal_ref, "--", *_historical_library_pathspecs()],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        return None
+    blobs: dict[str, str] = {}
+    for line in completed.stdout.splitlines():
+        parts = line.split(None, 3)
+        if len(parts) != 4 or parts[1] != "blob" or not parts[3].endswith(".lean"):
+            continue
+        blobs[library_identity_path(parts[3])] = parts[2]
+    return blobs
 
 
 def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]:
@@ -690,19 +737,35 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     Checking a declaration only with ``git show <formal_ref>:...`` is necessary,
     but it is not sufficient when a later Lean edit is present in the worktree:
     that would verify an older source while presenting the current tree.  The
-    public root and library directory are the supported proof surface; papers,
-    generated navigation, and release metadata may legitimately advance after
-    that checkpoint.
+    public proof surface may live under ``lean/`` while ``formal_ref`` still
+    stores the same bytes at the pre-migration identity path. Compare by
+    module identity, not by a single Git pathspec.
     """
-    comparison = run(
-        ["git", "diff", "--quiet", formal_ref, "--", *PROOF_PATHS],
+    historical = _ls_tree_identity_blobs(formal_ref)
+    if historical is None:
+        return False, "could not compare formal source to worktree"
+    current_paths = [
+        path.relative_to(ROOT).as_posix()
+        for path in library_source_paths(ROOT)
+    ]
+    hashed = run(
+        ["git", "hash-object", "--", *current_paths],
         cwd=ROOT,
         capture_output=True,
         text=True,
         check=False,
     )
-    if comparison.returncode not in (0, 1):
-        return False, comparison.stderr.strip() or "could not compare formal source to worktree"
+    if hashed.returncode != 0:
+        return False, hashed.stderr.strip() or "could not hash current Lean sources"
+    current_ids = [line.strip() for line in hashed.stdout.splitlines() if line.strip()]
+    if len(current_ids) != len(current_paths):
+        return False, "could not hash current Lean sources"
+    current = {
+        library_identity_path(rel): blob
+        for rel, blob in zip(current_paths, current_ids)
+    }
+    if current != historical:
+        return False, "current public Lean sources differ from formal-source checkpoint"
     untracked = run(
         ["git", "ls-files", "--others", "--exclude-standard", "--", *PROOF_PATHS],
         cwd=ROOT,
@@ -713,12 +776,12 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     if untracked.returncode != 0:
         return False, untracked.stderr.strip() or "could not inspect untracked Lean sources"
     extras = [line for line in untracked.stdout.splitlines() if line.endswith(".lean")]
-    if comparison.returncode == 0 and not extras:
-        return True, ""
-    detail = "current public Lean sources differ from formal-source checkpoint"
     if extras:
-        detail += "; untracked Lean source(s): " + ", ".join(extras)
-    return False, detail
+        return False, (
+            "current public Lean sources differ from formal-source checkpoint"
+            "; untracked Lean source(s): " + ", ".join(extras)
+        )
+    return True, ""
 
 
 def name_at_line(lines: list[str], name: str, line: int) -> bool:
@@ -2654,7 +2717,7 @@ def main(argv: list[str] | None = None) -> int:
     expected_source_provenance = {
         "formal_source_ref": data["release"]["formal_source"]["ref"],
         "main_paper_source_digest": file_digest(
-            ROOT / "paper" / "erdos249-257-main-paper.tex"
+            ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex"
         ),
         "navigation_projection_identity": (
             "content digests; no checkout commit embedded"

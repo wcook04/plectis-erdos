@@ -276,7 +276,7 @@ Lean build when a result must be checked.
    Read `docs/publication_evidence.json` for the typed historical mutation
    matrix, protocol, timings, M8 escape, post-repair rerun boundary, and
    explicit absence of registered raw run logs or executable mutation
-   operators. `experiments/publication_mutations.json` and
+   operators. `research/experiments/publication_mutations.json` and
    `scripts/run_publication_mutations.py` provide a separately versioned,
    deterministic reconstruction of the ten mutation classes; they are not the
    missing original run logs or exact targets.

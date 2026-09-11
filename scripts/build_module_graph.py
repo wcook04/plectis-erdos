@@ -214,8 +214,8 @@ def build_graph(data: dict[str, object]) -> dict[str, object]:
     auxiliary_roots = sorted(auxiliary_nodes - imported_by_auxiliary)
 
     return {
-        "root": f"{LIBRARY_ROOTS[0]}.lean",
-        "additional_roots": [f"{LIBRARY_ROOTS[1]}.lean"],
+        "root": ROOT_FILES[0],
+        "additional_roots": [ROOT_FILES[1]],
         "auxiliary_roots": auxiliary_roots,
         "auxiliary_root_contract": {
             "posture": "exhaustive_inventory_forest_not_compact_reading_root",

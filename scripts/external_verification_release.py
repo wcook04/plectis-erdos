@@ -28,6 +28,29 @@ import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTRACT_PATH = Path("verification/external-verification-release-contract.json")
+
+
+def tracked_artifact_path(root: Path, relative: str) -> Path:
+    """Resolve a tracked artifact in this checkout.
+
+    Hosted PDF rows keep their download basenames so historical permalinks stay
+    valid. Current storage may be ``paper/<id>/``; Lean comparator sources may
+    live under ``verification/``.
+    """
+    direct = root / relative
+    if direct.is_file():
+        return direct
+    name = Path(relative).name
+    if name.endswith(".pdf"):
+        paper = root / "paper"
+        if paper.is_dir():
+            matches = [path for path in paper.rglob(name) if path.is_file()]
+            if len(matches) == 1:
+                return matches[0]
+    nested_verification = root / "verification" / relative
+    if nested_verification.is_file():
+        return nested_verification
+    return direct
 SCHEMA = "erdos-external-verification-release-manifest/1"
 RUNTIME_SCHEMA = "erdos-external-verification-runtime-receipt/1"
 FULL_SHA_RE = re.compile(r"[0-9a-f]{40}")
@@ -309,7 +332,7 @@ def artifact_rows(
     repository = release_contract["repository"]
     rows = []
     for relative in release_contract["tracked_artifacts"]:
-        path = root / relative
+        path = tracked_artifact_path(root, relative)
         rows.append(
             {
                 "path": relative,

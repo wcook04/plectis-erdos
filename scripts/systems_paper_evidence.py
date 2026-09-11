@@ -14,7 +14,7 @@ from publication_contract import normalize_latex_evidence
 
 
 ROOT = Path(__file__).resolve().parent.parent
-PAPER_PATH = ROOT / "paper" / "claim-faithful-publication-systems-paper.tex"
+PAPER_PATH = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
 EVIDENCE_PATH = ROOT / "docs" / "publication_evidence.json"
 CLAIMS_PATH = ROOT / "docs" / "claims.json"
 ERDOS_PROBLEMS_ROOT = ROOT / "lean/ErdosProblems.lean"

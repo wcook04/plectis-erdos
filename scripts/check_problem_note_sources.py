@@ -39,6 +39,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import validation_singleflight as singleflight
+from lean_source import library_storage_path
 
 ROOT = Path(__file__).resolve().parent.parent
 PREAMBLE = ROOT / "paper" / "problem-note-preamble.tex"
@@ -558,6 +559,8 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
         for module in modules:
             relative = module_relative(module)
             path = ROOT / relative
+            if not path.is_file():
+                path = ROOT / library_storage_path(relative)
             try:
                 live = safe_worktree_text(path)
             except UnsafeSourceInput as error:

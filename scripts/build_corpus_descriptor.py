@@ -27,6 +27,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from lean_source import library_storage_path, library_storage_variants
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
@@ -418,7 +420,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "machine_readable_paper": "docs/claims.json::machine_readable_paper",
             "exhaustive_declarations": "docs/declaration_atlas.json",
             "mathematical_methodology": "docs/methodology.json",
-            "human_exposition": "erdos249-257-main-paper.pdf",
+            "human_exposition": "paper/archive/erdos249-257-main-paper.pdf",
             # human_exposition is one digest-bound manuscript, and it is the one
             # the corpus marks retired. An agent that started here could reach
             # it and nothing else: the thirteen active manuscripts, and the
@@ -428,8 +430,8 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "paper_source_sigils": "paper/module-aliases.json",
             "source_by_question": "docs/SOURCE_MAP.md",
             "development_chronology": "docs/WAVE_INDEX.md",
-            "supported_root_import": "Erdos249257.lean",
-            "supported_root_imports": ["Erdos249257.lean", "ErdosProblems.lean"],
+            "supported_root_import": "lean/Erdos249257.lean",
+            "supported_root_imports": ["lean/Erdos249257.lean", "lean/ErdosProblems.lean"],
         },
         "checks": {
             "release": "python3 scripts/check_release.py",
@@ -764,7 +766,7 @@ def render_orientation_markdown(
             "  [`docs/claims.json`](claims.json)",
             "- Complete eight-problem proof/paper/source/frontier matrix: [`docs/SOURCE_MAP.md#complete-eight-problem-return-matrix`](SOURCE_MAP.md#complete-eight-problem-return-matrix)",
             "- Development chronology: [`docs/WAVE_INDEX.md`](WAVE_INDEX.md)",
-            "- Human mathematical account: [`erdos249-257-main-paper.pdf`](../erdos249-257-main-paper.pdf)",
+            "- Human mathematical account: [`erdos249-257-main-paper.pdf`](../paper/archive/erdos249-257-main-paper.pdf)",
             "- Machine form of this page: [`docs/orientation.json`](orientation.json)",
             "",
             "## External corpus registration",
@@ -924,7 +926,7 @@ def render_wave_package_shape(atlas: dict[str, Any]) -> str:
 
     def source_facts(module_id: str) -> tuple[dict[str, Any], Path, int]:
         row = modules[module_id]
-        path = ROOT / row["path"]
+        path = ROOT / library_storage_path(row["path"])
         line_count = len(path.read_text(encoding="utf-8").splitlines())
         return row, path, line_count
 
@@ -1016,7 +1018,12 @@ def build() -> dict[str, Any]:
         *machine_paper["module_graph"].get("additional_roots", []),
     ]
     root_modules = {
-        root_path: next(row for row in atlas["modules"] if row["path"] == root_path)
+        root_path: next(
+            row
+            for row in atlas["modules"]
+            if row["path"] in library_storage_variants(root_path)
+            or root_path in library_storage_variants(row["path"])
+        )
         for root_path in root_paths
     }
     principal_declaration_handles = [
@@ -1110,7 +1117,7 @@ def build() -> dict[str, Any]:
                 "human_exposition": {
                     "source_path": "paper/archive/erdos249-257-main-paper.tex",
                     "source_content_digest": file_digest(MAIN_PAPER_TEX),
-                    "rendered_path": "erdos249-257-main-paper.pdf",
+                    "rendered_path": "paper/archive/erdos249-257-main-paper.pdf",
                     "storage_path": "paper/archive/erdos249-257-main-paper.pdf",
                     "rendered_content_digest": file_digest(MAIN_PAPER_PDF),
                     "artifact_role": "authored_mathematician_facing_exposition",
@@ -1304,7 +1311,7 @@ def build() -> dict[str, Any]:
             "human_exposition": {
                 "source_path": "paper/archive/erdos249-257-main-paper.tex",
                 "expected_source_content_digest": file_digest(MAIN_PAPER_TEX),
-                "rendered_path": "erdos249-257-main-paper.pdf",
+                "rendered_path": "paper/archive/erdos249-257-main-paper.pdf",
                 "storage_path": "paper/archive/erdos249-257-main-paper.pdf",
                 "expected_rendered_content_digest": file_digest(MAIN_PAPER_PDF),
                 "authority_posture": "authored_editorial_surface_not_Lean_proof_authority",

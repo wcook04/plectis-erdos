@@ -203,7 +203,7 @@ All 70 source-current review families are accounted for here. The categories pre
 
 **Open boundary.** Irrationality of the factorial-denominator series.
 
-**Read.** [Programme paper](../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+**Read.** [Programme paper](../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -224,7 +224,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 2. **Factorial conditional producers** (`factorial_conditional_producers`; conditional endpoint leverage; source disposition `subordinate`)
    - **Why here.** A single coefficient-free cofinal complementary-tail certificate would imply the #68 endpoint, but the certificate supply is an explicit unproved premise; this is a shorter conditional consumer, not an irrationality proof.
-   - **Source.** <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_of_cofinal_global_complementaryTail</code> in [Lean](../verification/ExternalVerification/Statements.lean)
+   - **Source.** <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_of_cofinal_global_complementaryTail</code> in [Lean](../ExternalVerification/Statements.lean)
    - **Boundary.** The producer hypotheses are unproved.
 
 3. **Factorial channel and projection rigidity** (`factorial_channel_and_projection_rigidity`; deep mechanism and classification; source disposition `represented`)
@@ -296,7 +296,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Open boundary.** The unrestricted problem.
 
-**Read.** [Programme paper](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [Lean source](../lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
+**Read.** [Programme paper](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [Lean source](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -401,7 +401,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Open boundary.** The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.
 
-**Read.** [Programme paper](../paper/249/erdos-249-binary-totient-series.pdf) · [Lean source](../lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean)
+**Read.** [Programme paper](../paper/249/erdos-249-binary-totient-series.pdf) · [Lean source](../ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -438,7 +438,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 4. **Totient certificate equivalences** (`totient_certificate_equivalences`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** Below the actual-LCM, first-harmonic, and strict-prime producer routes but above medium totient kernel machinery: three exact equivalences expose the endpoint and certificate sockets, while the equivalent lcm-diagonal, period-multiple-kill, and separated-window producers all remain unresolved.
-   - **Source.** <code>Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor</code> in [Lean](../verification/ExternalVerification/Statements.lean)
+   - **Source.** <code>Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor</code> in [Lean](../ExternalVerification/Statements.lean)
    - **Boundary.** Equivalent producer statements are as hard as the unresolved target.
    - **Relation.** `endpoint_normal_form_support_for` `strict_prime_tail_orbit_gap`: Certificate completeness identifies the exact finite endpoint socket but cannot manufacture the strict-prime route's missing phase-density, cofinal-prime, or uniform-margin producer.
 
@@ -684,7 +684,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Open boundary.** The target irrationality.
 
-**Read.** [Programme paper](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [Lean source](../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+**Read.** [Programme paper](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [Lean source](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -804,7 +804,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Open boundary.** The universal irrationality problem, or irrationality for any new infinite support.
 
-**Read.** [Programme paper](../paper/257/erdos-257-mersenne-support-subseries.pdf) · [Lean source](../lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
+**Read.** [Programme paper](../paper/257/erdos-257-mersenne-support-subseries.pdf) · [Lean source](../ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -1021,7 +1021,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Open boundary.** Irrationality or transcendence in any three-prime case.
 
-**Read.** [Programme paper](../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Lean source](../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+**Read.** [Programme paper](../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Lean source](../ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
 
 <details>
 <summary>Source and priority note</summary>
@@ -1050,7 +1050,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 2. **Weighted phase carry observer** (`weighted_phase_carry_observer`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The exact residue-digit/coboundary decomposition is the committed representative of the weighted-phase observer family; it does not transport the separate finite-dimensional factorization or imply the #269 endpoint.
-   - **Source.** <code>Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary</code> in [Lean](../verification/ExternalVerification/Statements.lean)
+   - **Source.** <code>Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary</code> in [Lean](../ExternalVerification/Statements.lean)
    - **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No irrationality conclusion follows from this observer alone. The actual rationality-to-positive-reduced-carry bridge is established separately; cofinal local-window escape remains open.
    - **Relation.** `mechanism_support_for` `conditional_carry_escape`: The residue/coboundary split exposes finite carry data but does not supply the cofinal escape or actual-series bridge.
 
@@ -1162,7 +1162,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Open boundary.** Erdos Problem 1041 in unrestricted degree.
 
-**Read.** [Programme paper](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Lean source](../lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+**Read.** [Programme paper](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Lean source](../ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
 
 <details>
 <summary>Source-current research frontier</summary>
@@ -1188,7 +1188,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 1. **Newton value decay** (`newton_value_decay`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The Newton value equation and exponential first integral are the load-bearing local mechanism, while metric gluing to a short curve remains open.
-   - **Source.** <code>Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean</code> in [Lean](../verification/ExternalVerification/Statements.lean)
+   - **Source.** <code>Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean</code> in [Lean](../ExternalVerification/Statements.lean)
    - **Boundary.** Value decay alone does not give a short connecting curve.
    - **Relation.** `mechanism_support_for` `ray_separation`: The exponential first integral confines a Newton trajectory to one value ray, yielding the separation obstruction.
 
@@ -1281,7 +1281,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Open boundary.** Irrationality at base three halves, or for any rational base.
 
-**Read.** [Programme paper](../paper/1049/erdos-1049-rational-base-lambert.pdf) · [Lean source](../lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
+**Read.** [Programme paper](../paper/1049/erdos-1049-rational-base-lambert.pdf) · [Lean source](../ErdosProblems/Erdos1049/RationalBaseLambert.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
