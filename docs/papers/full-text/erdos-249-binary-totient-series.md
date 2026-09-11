@@ -84,7 +84,7 @@ and the remaining form is $`km+1`$. Equality between two affine fractions would 
 ``` math
 2+\sum_{j=1}^e(k^j-k^{j-1})=k^e+1.
 ```
-This proves Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">2</a>. The scalar reduction at level $`j-t`$, with the Euler product written out, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean#L226).
+This proves Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">2</a>. The scalar reduction at level $`j-t`$, with the Euler product written out, is [maximal power reduction](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean#L226).
 
 <div id="res:basis" class="corollary">
 

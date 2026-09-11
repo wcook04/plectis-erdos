@@ -75,7 +75,7 @@ Indeed, subtracting each preceding row from the next, working upwards from the l
 
 </div>
 
-Both clauses are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22).
+Both clauses are [uniform rank and nonseparation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22).
 
 <div id="res:admissible-modular-minors" class="corollary">
 
@@ -89,7 +89,7 @@ Both clauses are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36
 
 </div>
 
-The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133).
+The statement is [admissible modular minors](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133).
 
 <div id="res:rank" class="example">
 
@@ -97,7 +97,7 @@ The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36
 
 </div>
 
-The four entries and the determinant are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L102).
+The four entries and the determinant are [two by two fixture](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L102).
 
 <a id="the-indices-must-be-selected."></a>
 
@@ -121,7 +121,7 @@ These equalities follow by evaluating the height at $`3^j`$ and $`8\cdot3^j`$. A
 
 </div>
 
-The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182).
+The statement is [rank cut matrix](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182).
 
 The formula classifies every finite sampled kernel rank after the row and column factors of Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">1</a>, independently of the third coordinate. An exact logarithm-free algorithm orders the rationals $`p^i/r^{\lfloor\log_r p^i\rfloor}`$, counts those strictly below each $`r^{\lfloor\log_r q^j\rfloor+1}/q^j`$, and applies the displayed correction. Direct elimination on the $`\{2,3,5\}`$ kernel agrees with the formula through order $`24`$; larger leading ranks recorded with the accompanying checker use the formula and exact integer phase comparisons.
 
@@ -215,21 +215,21 @@ The two-prime reduction expresses both sums through one value. The third prime l
 
 </div>
 
-The statement is [Lean source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L124). The same definition gives
+The statement is [smooth prefix lcm equals three-prime height](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L124). The same definition gives
 ``` math
 \begin{equation}
 \label{res:cube}
  x^3/(pqr)<\operatorname{H}(x)\le x^3.
 \end{equation}
 ```
-Both inequalities are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L112). The height is constant between consecutive pure-power boundaries and gains a factor equal to the prime at each boundary. If $`F(H)`$ is a height fibre in a finite exponent box $`\mathcal B`$, exact regrouping gives
+Both inequalities are [cubic height bounds](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L112). The height is constant between consecutive pure-power boundaries and gains a factor equal to the prime at each boundary. If $`F(H)`$ is a height fibre in a finite exponent box $`\mathcal B`$, exact regrouping gives
 ``` math
 \begin{equation}
 \label{res:fibre}
  \sum_{(i,j,k)\in\mathcal B}\operatorname{K}(i,j,k)=\sum_H\frac{\#F(H)}H.
 \end{equation}
 ```
-Each term in $`F(H)`$ equals $`1/H`$, which proves the identity. The multiplicities remain present in every subsequent infinite sum. The regrouping is [Lean source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407).
+Each term in $`F(H)`$ equals $`1/H`$, which proves the identity. The multiplicities remain present in every subsequent infinite sum. The regrouping is [finite smooth kernel sum grouped by height](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407).
 
 From now on let $`P=\{2,3,5\}`$ and $`S=\mathcal R_P`$. For $`a\ge0`$ define
 ``` math
@@ -259,7 +259,7 @@ Thus $`T_a`$ is the raw tail and $`X_a`$ its normalised state. The literal radix
 
 </div>
 
-Both clauses are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L48).
+Both clauses are [literal integer forcing and four radices](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L48).
 
 <div id="res:actual-orbit" class="proposition">
 
@@ -279,7 +279,7 @@ For every integer $`B\ge1`$, either some $`BX_a`$ is integral and all later stat
 X_a\le15(a+1)^2\sum_{j\ge0}\frac{(j+1)^2}{8^j}
       =\frac{8640}{343}(a+1)^2.
 ```
-This proves convergence and the bound. Splitting the first shell gives the recurrence because $`m_a=h_{a+1}s_a`$ and $`h_{a+1}=b_ah_a`$. All four clauses are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168).
+This proves convergence and the bound. Splitting the first shell gives the recurrence because $`m_a=h_{a+1}s_a`$ and $`h_{a+1}=b_ah_a`$. All four clauses are [short actual orbit](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168).
 
 Put $`Y_a=BX_a`$. If all sufficiently late distances are strictly below $`1/31`$, write $`Y_a=z_a+e_a`$ with $`z_a\in\mathbb Z`$ and $`|e_a|<1/31`$. Then $`e_{a+1}-b_ae_a`$ is an integer of absolute value less than one, so $`e_{a+1}=b_ae_a`$. The factors $`b_a\ge2`$ force a bounded such error to be zero. An integral state propagates by the integer recurrence. ◻
 
@@ -311,7 +311,7 @@ The two-exponent of $`h_a`$ is $`a-1`$. Moreover $`a\ge2v`$ gives $`2^a\ge3^v`$,
 
 </div>
 
-The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80).
+The statement is [short fixed split bridge](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80).
 
 <a id="sec:escape"></a>
 
@@ -350,7 +350,7 @@ Let $`\operatorname{lpr}_W(t)`$ be the representative in $`\{1,\ldots,W\}`$ of $
 
 </div>
 
-The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138).
+The statement is [finite endpoint obstruction](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138).
 
 <div id="res:windowconsumer" class="theorem">
 
@@ -382,7 +382,7 @@ Its exponentially growing first term eventually exceeds $`K(B,\ell+h)`$. This pr
 
 </div>
 
-The equivalence, at the literal smooth-number series, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51).
+The equivalence, at the literal smooth-number series, is [short window equivalence](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51).
 
 The validity of the cap is needed in the rational direction; an upper polynomial growth condition by itself would not suffice. The zero cap, for example, makes positive-residue escape automatic. The criterion identifies the target in window coordinates. The unresolved point is the source-specific exclusion below.
 

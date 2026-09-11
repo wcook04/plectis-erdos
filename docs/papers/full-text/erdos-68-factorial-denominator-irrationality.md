@@ -88,7 +88,7 @@ The endpoint of the exponential prefix contributes residue $`1`$ modulo $`m`$; i
 
 </div>
 
-The equivalence and its cofinal form are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L29).
+The equivalence and its cofinal form are [companion orbit boundary](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L29).
 
 <div class="proof">
 
@@ -164,7 +164,7 @@ S\notin\mathbb Q,\qquad
 
 </div>
 
-The pair of equivalences is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L47).
+The pair of equivalences is [carry characterisation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L47).
 
 <div class="proof">
 
@@ -211,7 +211,7 @@ The vectors $`e_1,U_2,U_3,\ldots`$ form an integral basis. Every finite vector h
 
 </div>
 
-The observables, the unique expansion and the coefficient formula are [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260).
+The observables, the unique expansion and the coefficient formula are [divisor channel coordinates](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260).
 
 <div class="proof">
 
@@ -230,7 +230,7 @@ U_9=9e_8-e_9-5040e_2+1680e_3.
 \label{res:translator}
 \end{equation}
 ```
-It has moment zero and only channel $`9`$ is nonzero. Thus each channel can be adjusted separately by a multiple of its own denominator. The expansion is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L17) and the observable profile is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L45).
+It has moment zero and only channel $`9`$ is nonzero. Thus each channel can be adjusted separately by a multiple of its own denominator. The expansion is [composite translator nine](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L17) and the observable profile is [composite translator nine profile](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L45).
 
 <a id="the-support-restriction-and-the-residual"></a>
 
@@ -248,7 +248,7 @@ V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}
 \label{res:congruence}
 \end{equation}
 ```
-in the equivalent integer-divisibility form [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L53), and the unique description of every low-channel kernel:
+in the equivalent integer-divisibility form [supported channel congruence](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean#L53), and the unique description of every low-channel kernel:
 ``` math
 \begin{equation}
 V_2=\cdots=V_D=0
@@ -311,7 +311,7 @@ g_D=\gcd(u_{D+1},\ldots,u_H),\qquad H<2D^2.
 
 </div>
 
-The statement is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252).
+The statement is [finite channel moment certificate](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean#L252).
 
 <div class="proof">
 
@@ -356,7 +356,7 @@ The following elementary estimate quantifies this cost:
 \ge\frac{2\sqrt2}{3}.\label{res:lcm-growth}
 \end{equation}
 ```
-The extended-real statement, with the real exponent $`3/2`$, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42). For a terminal block of $`k`$ terms, the product–lcm–gcd inequality and $`\gcd(i!-1,j!-1)\mid j!/i!-1`$ give
+The extended-real statement, with the real exponent $`3/2`$, is [common denominator growth liminf](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42). For a terminal block of $`k`$ terms, the product–lcm–gcd inequality and $`\gcd(i!-1,j!-1)\mid j!/i!-1`$ give
 ``` math
 \log L_N\ge\sum_{n=N-k+1}^N\log(n!-1)
 -\binom{k+1}{3}\log N.
@@ -415,7 +415,7 @@ v_q(\operatorname{den}H_M)=e
 \label{eq:prime-pole-survival}
 \end{equation}
 ```
-The equivalence, with the maximum and its attainment taken from the actual prefix lcm, is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L118). This first-layer test is a consequence of the general reciprocal-sum valuation formula of Louwsma and Martino \[louwsma-martino, Lemma 4.1\].
+The equivalence, with the maximum and its attainment taken from the actual prefix lcm, is [maximal prime power survival](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L118). This first-layer test is a consequence of the general reciprocal-sum valuation formula of Louwsma and Martino \[louwsma-martino, Lemma 4.1\].
 
 The actual factorial-gap examples show why the weights matter. At $`M=138`$, the maximal $`139`$-hits are $`69,122,137`$, with cofactor residues $`6,49,73`$, and
 ``` math
@@ -457,7 +457,7 @@ then $`S`$ is irrational.*
 
 </div>
 
-The criterion at natural parameters is [Lean source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156).
+The criterion at natural parameters is [global complementary criterion nat](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156).
 
 <div class="proof">
 
@@ -538,9 +538,9 @@ The separate $`80000`$-bit exact rational enclosure forces $`23449`$ common cont
 
 # Statements and declarations
 
-The finite divisor-event identities, isolated-channel recursion, vanishing moment, individual channel values, and the factor $`12`$ are checked in `DivisorChannelBasis.lean`. The unique integral basis expansion, attainable-moment formula and compressed primitive-grid construction are ordinary proofs, described in `DivisorChannelBasis.md` and, for the grid construction, in `CompressedPrimitiveChannelKernel.md`. The quadratic stopping theorem is checked in `PaperCompleteMomentHorizon.lean`, together with the scalar recurrence, the equal-block divisibility and the prime anchor it uses. The earlier lcm-envelope certificate and depth-$`4`$ moment $`1380`$ are ordinary proofs with exact checks in `check_moment_saturation.py`. The finite-source checks are in `check_finite_source.py`. The inherited generic lemmas in `TailIdealCertificate.lean` assume the lcm envelope; they do not formalise the factorial arithmetic. The growth liminf is the ordinary asymptotic consequence of the finite terminal-block inequality; its eventual form, with the constant $`2\sqrt2/3`$, is checked in `PaperCompleteAsymptotics.lean`.
+The finite divisor-event identities, isolated-channel recursion, vanishing moment, individual channel values, and the factor $`12`$ are checked in [divisor channel basis](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/DivisorChannelBasis.lean). The unique integral basis expansion, attainable-moment formula and compressed primitive-grid construction are ordinary proofs, described in [divisor channel basis](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/DivisorChannelBasis.md) and, for the grid construction, in [compressed primitive channel kernel](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/CompressedPrimitiveChannelKernel.md). The quadratic stopping theorem is checked in [complete moment horizon](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean), together with the scalar recurrence, the equal-block divisibility and the prime anchor it uses. The earlier lcm-envelope certificate and depth-$`4`$ moment $`1380`$ are ordinary proofs with exact checks in [check moment saturation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/scripts/check_moment_saturation.py). The finite-source checks are in [check finite source](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/scripts/check_finite_source.py). The inherited generic lemmas in [tail ideal certificate](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/TailIdealCertificate.lean) assume the lcm envelope; they do not formalise the factorial arithmetic. The growth liminf is the ordinary asymptotic consequence of the finite terminal-block inequality; its eventual form, with the constant $`2\sqrt2/3`$, is checked in [complete asymptotics](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteAsymptotics.lean).
 
-The Comparator isolation pin for the carry equivalences is `FactorialGapPlateauCore.lean`. `FactorialZeroPlateau.lean` is the default-root duplicate of that family and is not the isolation source. Companion-orbit rationality is in `CompanionOrbitRationality.lean`; the unconditional correction <a href="#eq:companion-wrap" data-reference-type="eqref" data-reference="eq:companion-wrap">[eq:companion-wrap]</a> is in `CompanionConstantCarryLaw.lean`. The pole-residue identity and the two displayed reciprocal equalities are in `PrimePoleCriterion.lean`. The complete maximal-hit data come from the separate exact modular scan. The carry census and continued-fraction certificate use exact integer computation outside Lean.
+The Comparator isolation pin for the carry equivalences is [factorial gap plateau core](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean). [factorial zero plateau](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/FactorialZeroPlateau.lean) is the default-root duplicate of that family and is not the isolation source. Companion-orbit rationality is in [companion orbit rationality](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/CompanionOrbitRationality.lean); the unconditional correction <a href="#eq:companion-wrap" data-reference-type="eqref" data-reference="eq:companion-wrap">[eq:companion-wrap]</a> is in [companion constant carry law](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/CompanionConstantCarryLaw.lean). The pole-residue identity and the two displayed reciprocal equalities are in [prime pole criterion](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PrimePoleCriterion.lean). The complete maximal-hit data come from the separate exact modular scan. The carry census and continued-fraction certificate use exact integer computation outside Lean.
 
 The inherited public source pin is `99f4bf47422a`. Source-current additions and that public snapshot must be reconciled at one immutable release before its links are represented as a replay of the whole note. Formal proof checking does not assess external novelty or the significance of the remaining hypothesis. The complete source register, receipts and failed-route calculations belong to the long record.
 
@@ -644,7 +644,7 @@ The public `ErdosProblems.Erdos68` package contains the checked source for this 
 
 #### Source-current companion orbit and Comparator routes.
 
-The complete infinite rationality boundary is checked in `ErdosProblems/Erdos68/CompanionOrbitRationality.lean`. Its paper-facing endpoints are `not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two` and `irrational_factorialGapSeries_iff_cofinal_companion_floor_misses`. The coherent Comparator composite `companionOrbit_completeCharacterization` routes to Theorem <a href="#res:companion-orbit-rationality-boundary" data-reference-type="ref" data-reference="res:companion-orbit-rationality-boundary">2</a> and Remark <a href="#bdry:companion-orbit-nonconcentration" data-reference-type="ref" data-reference="bdry:companion-orbit-nonconcentration">1</a>. The moving-factor Comparator endpoints route to <a href="#res:moving-factor-scale-split" data-reference-type="ref" data-reference="res:moving-factor-scale-split">[res:moving-factor-scale-split]</a>, <a href="#res:split-factor-normalized-collision" data-reference-type="ref" data-reference="res:split-factor-normalized-collision">[res:split-factor-normalized-collision]</a>, and <a href="#bdry:fixed-owner-absorption" data-reference-type="ref" data-reference="bdry:fixed-owner-absorption">[bdry:fixed-owner-absorption]</a>. These source-current modules, Comparator packages, and this manuscript stage require one common immutable public checkpoint before terminal external replay or Palomar readiness is claimed.
+The complete infinite rationality boundary is checked in [companion orbit rationality](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/CompanionOrbitRationality.lean). Its paper-facing endpoints are [not irrational factorial gap series iff eventually companion floor $`-2`$](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/CompanionOrbitRationality.lean) and [irrational factorial gap series iff cofinal companion floor misses](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/CompanionOrbitRationality.lean). The coherent Comparator composite [companion-orbit complete characterisation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/CompanionOrbitRationality.lean) routes to Theorem <a href="#res:companion-orbit-rationality-boundary" data-reference-type="ref" data-reference="res:companion-orbit-rationality-boundary">2</a> and Remark <a href="#bdry:companion-orbit-nonconcentration" data-reference-type="ref" data-reference="bdry:companion-orbit-nonconcentration">1</a>. The moving-factor Comparator endpoints route to <a href="#res:moving-factor-scale-split" data-reference-type="ref" data-reference="res:moving-factor-scale-split">[res:moving-factor-scale-split]</a>, <a href="#res:split-factor-normalized-collision" data-reference-type="ref" data-reference="res:split-factor-normalized-collision">[res:split-factor-normalized-collision]</a>, and <a href="#bdry:fixed-owner-absorption" data-reference-type="ref" data-reference="bdry:fixed-owner-absorption">[bdry:fixed-owner-absorption]</a>. These source-current modules, Comparator packages, and this manuscript stage require one common immutable public checkpoint before terminal external replay or Palomar readiness is claimed.
 
 <div class="thebibliography">
 
