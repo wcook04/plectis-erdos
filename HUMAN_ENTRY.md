@@ -56,14 +56,14 @@ statement may be described publicly and what remains open. A paper supplies
 motivation, context, and an argument a mathematician can read. A finite
 calculation establishes only the range it actually covers.
 
-Comparator and Palomar belong to this evidence story, but neither is a
-mathematical oracle. Comparator gives selected statements a second,
-independently declared formal interface under a fixed set of assumptions. It
-helps expose mismatches between what two formal surfaces say; it is not
-independent peer review and does not establish novelty. Palomar packaging is
-a separate unfinished activity and is not a claim of this public edition. A
-local ranking file remains in the checkout; it does not confer acceptance,
-importance, publication, or endorsement.
+Comparator belongs to this evidence story, but it is not a mathematical
+oracle. It gives selected statements a second, independently declared formal
+interface under a fixed set of assumptions. It helps expose mismatches between
+what two formal surfaces say; it is not independent peer review and does not
+establish novelty. Palomar packaging is a separate unfinished activity and is
+not a completed claim of this public edition. A local ranking file remains in
+the checkout; it does not confer acceptance, importance, publication, or
+endorsement.
 
 Start with the mathematical question. Read each result together with its
 stated limit, then follow the formal source when you want the exact theorem.
@@ -95,7 +95,8 @@ I am 22. I took a year out of my economics degree at Bristol for mental-health
 reasons, and working on this became my life. After a year building it largely
 alone, I am close to running out of money. That is why I am releasing the work
 now: not as a finished answer, but as something another person can inspect,
-challenge, and continue.
+challenge, and continue. With funding I would also be glad to compensate
+people who help; I cannot offer that now.
 
 I chose mathematics because a stranger does not have to trust my account of
 the project. The questions are public, the statements are explicit, and the
@@ -103,8 +104,6 @@ pinned kernel can check the formal proofs. The papers expose what is not proved
 as carefully as what is. This repository is meant to be cloned rather than
 taken on faith.
 
-The bet behind Plectis is that better models and more capable researchers
-should inherit a mapped frontier instead of starting from zero. If this work
-helps you solve one of these problems, the solution and the credit are yours.
-If you think the experiment matters, clone it, test it, question it, share it,
-or help support the next stage.
+If this work helps you solve one of these problems, the solution and the
+credit are yours. If you think the experiment matters, clone it, test it,
+question it, share it, or help support the next stage.

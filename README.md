@@ -10,7 +10,7 @@ and the base-2 achievement set has measure one. That is a completed theorem
 family in this checkout, not a solution of Erdős #257: every infinite support,
 and the `1/2` and `1/21` branches, remain open.
 
-This public commons also holds checked work on seven further Erdős problems —
+Plectis is the public record of that work and of seven further programmes —
 [68](https://www.erdosproblems.com/68),
 [243](https://www.erdosproblems.com/243),
 [249](https://www.erdosproblems.com/249),
@@ -19,21 +19,25 @@ This public commons also holds checked work on seven further Erdős problems —
 [269](https://www.erdosproblems.com/269),
 [1041](https://www.erdosproblems.com/1041) and
 [1049](https://www.erdosproblems.com/1049).
-**All eight problems remain open.** This checkout does not solve them. The checkout is self-contained:
-eight short notes, eight long reasoning records, Lean sources, a Comparator
-gate, and the checks that bind claims to source. It is not an entrypoint into
-any private development system. The notes follow Terence Tao's public guidance
-on how AI mathematics should be expositioned; that is a writing standard, not
-a review of this project.
+**All eight problems remain open.** This repository does not solve them.
+
+The useful path is ordinary. Pick a problem. Read the short paper. Open the
+longer record for failed routes, finite evidence, and remaining obligations.
+Then read the evidence boundary before taking a next question. Start with
+**#257** for that completed theorem family, or **#249** for exact kernel rank,
+finite certificates, and recorded routes that stopped. Progress by problem is
+in [RESULTS](docs/RESULTS.md).
 
 I am responsible for all claims, sources and the release. Plectis is an
 independent, AI-assisted prototype. It has had no independent mathematical
-review, and I need help. We show the routes that stopped so later models and
-mathematicians can reuse them; novelty and significance still need human judgement. If you solve a problem, the credit is yours. If this
-repo helped, please cite the release and say how. Anyone can contribute,
-including by formalising mathematics already known analytically, and receive
-due credit. Start with [A reader's way in](HUMAN_ENTRY.md). A longer personal
-note lives there as well.
+review, and I need help. Novelty and significance still need human judgement.
+If you solve a problem, the credit is yours. If this repo helped, please cite
+the release and say how. Anyone can contribute, including by formalising
+mathematics already known analytically, and receive due credit. Start with
+[A reader's way in](HUMAN_ENTRY.md).
+
+The notes follow Terence Tao's public guidance on how AI mathematics should be
+expositioned; that is a writing standard, not a review of this project.
 
 The [website](https://wcook04.github.io/plectis/) is the human browse path:
 [mathematics pages](https://wcook04.github.io/plectis/maths/) for each short
@@ -42,11 +46,6 @@ into coding agents via [`AGENTS.override.md`](AGENTS.override.md); they are
 not required to read the papers.
 
 ## Problem papers
-
-For a first look, start with **#257** for full-support irrationality and
-achievement-set measure, or **#249** for exact kernel rank, finite certificates
-and recorded failed routes. Progress by problem is in [RESULTS](docs/RESULTS.md).
-Do not infer results from private or unreleased work.
 
 - **[#68](https://www.erdosproblems.com/68)** · Factorial-denominator irrationality ·
   [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) ·
@@ -110,20 +109,19 @@ Three things come between a Lean proof and a claim in this repo. The
 [comprehension graph](docs/semantic/README.md) is the map: every declaration in
 the atlas, the statements they make, and typed relations between them, so a
 theorem can be seen as a reformulation or finite instance of the open problem
-rather than the problem itself. Comparator is a second formal check: nineteen
-proof-bearing modules against separately declared statements and a fixed axiom
-budget, with [`formalization.yaml`](formalization.yaml) recording source,
-boundary, `sorry` count and axioms for each. A separate Palomar registry cut
-is unfinished work in another session and is not a claim of this edition.
-[`docs/PALOMAR_RESULT_SHOWCASE.json`](docs/PALOMAR_RESULT_SHOWCASE.json) remains
-the local ranking projection only.
-
+rather than the problem itself. Comparator is a second formal check of the 47
+selected interfaces recorded in [`formalization.yaml`](formalization.yaml): each
+is declared again without its proof, then checked against a proof-bearing
+solution and a fixed axiom budget. The public wording is
+Comparator-checked against a separately declared statement and axiom budget.
 The [verification dossier](docs/EXTERNAL_VERIFICATION.md) covers all eight
-problem programmes; the [methodology](METHODOLOGY.md) outlines what each check does
-and does not establish. [`docs/claims.json`](docs/claims.json) covers claim
-status and [prior art](docs/PRIOR_ART.md) records earlier and subsuming work.
-None of it decides whether a statement captures the intended problem, is new,
-or solves anything, which requires expert review.
+problem programmes.
+
+The [methodology](METHODOLOGY.md) outlines what each check does and does not
+establish. [`docs/claims.json`](docs/claims.json) covers claim status and
+[prior art](docs/PRIOR_ART.md) records earlier and subsuming work. None of it
+decides whether a statement captures the intended problem, is new, or solves
+anything, which requires expert review.
 
 Two papers explain the design. [Problem-Sized Lean Worlds](paper/systems/claim-faithful-publication-systems-paper.pdf)
 is how finding a result, checking it and deciding what may be claimed are kept
@@ -170,14 +168,12 @@ and rendered PDFs, is CC-BY-4.0. Prior work and the MIT-0 wrapper are recorded
 in [REUSE.toml](REUSE.toml) and the [licence texts](LICENSES/Apache-2.0.txt).
 [SCOPE](SCOPE.md) defines the corpus; [`CONTRIBUTING.md`](CONTRIBUTING.md)
 covers corrections.
-[Where I actually am](HUMAN_ENTRY.md#where-i-actually-am) says why this is
-being released now.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
 ## Corpus at a glance
 
-The layer a mathematician should judge has been denoised (tried): 140 curated claim records in 30 contribution families, reaching Lean source through 449 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. Again, agents advised, website or papers are what's designed for humans.
+The reviewed layer a mathematician should judge: 140 curated claim records in 30 contribution families, reaching Lean source through 449 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
 The rest is engineering inventory. About 91% of the 156,245 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
@@ -191,7 +187,7 @@ The rest is engineering inventory. About 91% of the 156,245 declarations (142,66
 Generated shards are counted as formal source and never as separate
 mathematical claims. Claim records cover every status, including cited and
 open, and are partitioned once.
-These are navigation counts, not novelty claims; this needs expert validation, again: credit provided for this. With funding I would also be happy to provide some kind of compensation, alas, currently challenged in that department.
+These are navigation counts, not novelty claims. They still need expert validation.
 <!-- END generated_corpus_at_a_glance -->
 
 <!-- BEGIN generated_principal_declaration_anchors -->

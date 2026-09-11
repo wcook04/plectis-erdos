@@ -850,13 +850,13 @@ def render_readme_scale_strip(
             # Reviewed shape first, engineering inventory second. Leading with a
             # six-figure declaration count invited the inference that most of it
             # was authored mathematics; it is not, and size is not evidence.
-            "The layer a mathematician should judge has been denoised (tried): "
+            "The reviewed layer a mathematician should judge: "
             f"{len(claims['claims']):,} curated claim records in "
             f"{len(contribution_families):,} contribution families, reaching Lean source "
             f"through {scale['principal_claim_link_count']:,} principal declaration links. "
             "`SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest "
-            "checked result per problem. Again, agents advised, website or papers "
-            "are what's designed for humans.",
+            "checked result per problem. The website and the papers are the human "
+            "reading path.",
             "",
             "The rest is engineering inventory. About "
             f"{share['generated_percent']}% of the {share['declaration_count']:,} "
@@ -875,10 +875,8 @@ def render_readme_scale_strip(
             "Generated shards are counted as formal source and never as separate",
             "mathematical claims. Claim records cover every status, including cited and",
             "open, and are partitioned once.",
-            "These are navigation counts, not novelty claims; this needs expert "
-            "validation, again: credit provided for this. With funding I would also "
-            "be happy to provide some kind of compensation, alas, currently challenged "
-            "in that department.",
+            "These are navigation counts, not novelty claims. They still need expert "
+            "validation.",
             README_SCALE_END,
         ]
     )

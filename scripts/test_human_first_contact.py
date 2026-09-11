@@ -105,8 +105,16 @@ def main() -> None:
         "README does not state the global open boundary near the front",
     )
     require(
-        "docs/PALOMAR_RESULT_SHOWCASE.json" in readme and "docs/claims.json" in readme,
-        "README must defer ranking and claim status to their canonical owners",
+        "docs/claims.json" in readme,
+        "README must route claim status to its canonical owner",
+    )
+    require(
+        "Palomar" not in readme and "PALOMAR_RESULT_SHOWCASE.json" not in readme,
+        "README must not advertise Palomar as part of this public edition",
+    )
+    require(
+        "later models" not in readme,
+        "README must not predict unreleased models",
     )
     require(
         "archive and provenance" in readme,
@@ -134,9 +142,10 @@ def main() -> None:
     )
     for token in (
         "routes that stopped",
-        "later models",
         "human judgement",
         "independent, AI-assisted prototype",
+        "short paper",
+        "evidence boundary",
     ):
         require(token in first_screen, f"README opening lost its project-purpose boundary: {token}")
     require(
