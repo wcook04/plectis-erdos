@@ -20,11 +20,12 @@ Plectis is the public record of that work and of seven further programmes —
 [1041](https://www.erdosproblems.com/1041) and
 [1049](https://www.erdosproblems.com/1049).
 **All eight problems remain open.** This repository does not solve them.
+This checkout is a self-contained public record.
 
 The useful path is ordinary. Pick a problem. Read the short paper. Open the
 longer record for failed routes, finite evidence, and remaining obligations.
-Then read the evidence boundary before taking a next question. Start with
-**#257** for that completed theorem family, or **#249** for exact kernel rank,
+Then read the evidence boundary before taking a next question. For a first look,
+start with **#257** for that completed theorem family, or **#249** for exact kernel rank,
 finite certificates, and recorded routes that stopped. Progress by problem is
 in [RESULTS](docs/RESULTS.md).
 

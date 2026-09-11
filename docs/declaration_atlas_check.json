@@ -1,10 +1,10 @@
 {
-  "atlas_digest": "sha256:b1091d048d02223682921c68cc2e96c77df46c951e368af23b38362ebe2d2b94",
-  "builder_digest": "sha256:6e9e6ff5b706ed233a1d71e29ff854d3fbef42b4d2040b7cf1102baea99bf53c",
+  "atlas_digest": "sha256:5f1e8cf8a5d5e53bbedca7d3cdd32dd5683d5309c62de9fe5ea75488353a3691",
+  "builder_digest": "sha256:891f36135901a0cc8e55f0daa030915e5301cde23c68ebd9c68c8eea476890d4",
   "claim_binding_fingerprint": "sha256:9a231f474c6ba61a5575b1be5d81728db9c2a0e6264c10b39b70994eb5ee6f06",
-  "generated_manifest_digest": "sha256:54b4d0c504cd2db35723153c7fff782c87a987d228d42a78f5fd36dff440f9cc",
+  "generated_manifest_digest": "sha256:2bfcecad9a04352cf5a9b6939dca294e665a6dffe7ee25d4b451e5c7231f7bbb",
   "schema": "erdos249257-declaration-atlas-check/1",
-  "source_fingerprint": "sha256:e447af795d7251fd241016edc3824c12696d374693f6ecba5cb6c82fd87daf0f",
+  "source_fingerprint": "sha256:097694d008302c826882c890b30cf6ffe02c380882e5a51e13d24f49d74de9f5",
   "summary": {
     "declaration_count": 156245,
     "generated_certificate_declaration_count": 8171,

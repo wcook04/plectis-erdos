@@ -38,6 +38,7 @@ import query_corpus
 import query_expert_handoffs
 import query_semantic
 import validation_singleflight as singleflight
+from lean_source import library_storage_variants
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -433,8 +434,10 @@ def atlas_module_declaration_counts() -> dict[str, int]:
     counts: dict[str, int] = {}
     for row in json.loads(safe_read_text("docs/declaration_atlas.json"))["declarations"]:
         module = row.get("module")
-        if module:
-            counts[module] = counts.get(module, 0) + 1
+        if not module:
+            continue
+        for variant in library_storage_variants(module):
+            counts[variant] = counts.get(variant, 0) + 1
     return counts
 
 

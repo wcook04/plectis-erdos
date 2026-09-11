@@ -41,7 +41,7 @@ import re
 import sys
 from pathlib import Path, PurePosixPath
 
-from lean_source import library_storage_path
+from lean_source import library_identity_path, library_storage_path
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs" / "problem_index_source.json"
@@ -424,7 +424,11 @@ def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> d
             raise ValueError(f"{pid}: unsafe problem directory")
         seeds = {str(p.relative_to(ROOT)) for p in directory.rglob("*.lean")}
         seeds.update(module_path(name) for name in [row["principal_module"], *row.get("companion_modules", [])])
-        seeds.update(r["original_source"] for r in results if str(r.get("problem")) == str(number) and r.get("original_source"))
+        seeds.update(
+            library_storage_path(r["original_source"])
+            for r in results
+            if str(r.get("problem")) == str(number) and r.get("original_source")
+        )
         related = {a["from"] for a in arguments if a.get("to") == pid}
         related.update(r["claim_id"] for r in results if str(r.get("problem")) == str(number) and r.get("claim_id"))
         for claim_id in related:
@@ -462,12 +466,13 @@ def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> d
             file = ROOT / path
             if not file.is_file() or file.is_symlink() or ".." in PurePosixPath(path).parts or PurePosixPath(path).is_absolute():
                 raise ValueError(f"{pid}: missing or unsafe Lean source: {path}")
-            name = path.removesuffix(".lean").replace("/", ".")
+            identity = library_identity_path(path)
+            name = identity.removesuffix(".lean").replace("/", ".")
             nodes.append({"id": "lean-module:" + name, "label": name, "path": path,
                           "direct": path in seeds, "content_digest": source_cache[path][0], "source_github": f"{PUBLIC_REPO}/blob/main/{path}",
                           "role": modules.get(path, {}).get("role", "")})
         def node_id(path):
-            return "lean-module:" + path.removesuffix(".lean").replace("/", ".")
+            return "lean-module:" + library_identity_path(path).removesuffix(".lean").replace("/", ".")
         problems[pid] = {"papers": reading,
             "paper_roles": {role: [p["paper_id"] for p in reading if p["role"] == role] for role in ("short", "long")},
             "source_map": {"nodes": nodes, "edges": [{"source": node_id(a), "target": node_id(b)} for a, b in sorted(edges)]}}

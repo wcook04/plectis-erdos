@@ -261,8 +261,8 @@ def main() -> int:
             agents,
             paper_readme,
             guide.replace(
-                "](claim-faithful-publication-systems-paper.pdf)",
-                "](systems-paper.pdf)",
+                "claim-faithful-publication-systems-paper.pdf",
+                "systems-paper.pdf",
             ),
         )
     except AssertionError:

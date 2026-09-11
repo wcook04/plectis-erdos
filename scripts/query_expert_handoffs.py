@@ -28,6 +28,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Mapping
 
+from lean_source import library_identity_path, library_storage_path, library_storage_variants
+
 ROOT = Path(__file__).resolve().parent.parent
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
@@ -372,17 +374,20 @@ def _uncached_live_source_declaration(
     useful when a nearby proof grows without copying a second declaration
     inventory into the handoff script.
     """
+    wanted = set(library_storage_variants(module))
     atlas_rows = [
         row
         for row in atlas.get("declarations", [])
-        if row.get("module") == module and row.get("name") == name
+        if row.get("name") == name and str(row.get("module") or "") in wanted
     ]
     if len(atlas_rows) != 1:
         raise ValueError(
             f"declaration atlas must expose one {module}:{name}; "
             f"found {len(atlas_rows)}"
         )
-    source_path = ROOT / module
+    source_path = ROOT / library_storage_path(module)
+    if not source_path.is_file():
+        source_path = ROOT / module
     if not source_path.is_file():
         raise ValueError(f"source declaration module is missing: {module}")
     declaration_pattern = re.compile(
@@ -406,7 +411,7 @@ def _uncached_live_source_declaration(
     return {
         "name": name,
         "kind": row.get("kind"),
-        "module": module,
+        "module": library_identity_path(module),
         "line": live_line,
         "signature": row.get("signature"),
         "docstring": row.get("docstring"),
@@ -422,12 +427,15 @@ def _canonical_declaration_index() -> dict[tuple[str, str], dict[str, Any]]:
     for row in load_json(ATLAS).get("declarations", []):
         if not isinstance(row, dict):
             continue
-        key = (str(row.get("module")), str(row.get("name")))
-        if key in index:
-            raise ValueError(
-                f"declaration atlas must expose one {key[0]}:{key[1]}; found multiple"
-            )
-        index[key] = row
+        name = str(row.get("name"))
+        for variant in library_storage_variants(str(row.get("module") or "")):
+            key = (variant, name)
+            existing = index.get(key)
+            if existing is not None and existing is not row:
+                raise ValueError(
+                    f"declaration atlas must expose one {key[0]}:{key[1]}; found multiple"
+                )
+            index[key] = row
     return index
 
 

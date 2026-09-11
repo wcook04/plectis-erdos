@@ -60,6 +60,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Iterator
 
+from lean_source import library_storage_path, library_storage_variants
 from refresh_reasoning_source_coordinates import strip_lean_comments
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -184,7 +185,8 @@ class Atlas:
             raise ZoneCoordinateError("declaration atlas has no declarations list")
         self.by_module_name: dict[tuple[str, str], list[dict]] = defaultdict(list)
         for row in rows:
-            self.by_module_name[(row["module"], row["name"])].append(row)
+            for variant in library_storage_variants(row["module"]):
+                self.by_module_name[(variant, row["name"])].append(row)
 
     def find(self, module: str, name: str) -> dict | None:
         """Resolve a cited declaration inside the module it names.
@@ -193,16 +195,22 @@ class Atlas:
         its refusal to fall back on a bare name found in some other module. A
         refresher that resolved more widely than the corpus would write
         coordinates the corpus then reports as unresolved.
+
+        Atlas rows now carry checkout storage paths (``lean/...``). Zone pins
+        keep library identity paths. Both spellings name the same module.
         """
         if not module or not name:
             return None
-        rows = self.by_module_name.get((module, name))
-        if rows:
-            return rows[0]
-        if "." in name:
-            rows = self.by_module_name.get((module, name.rsplit(".", 1)[-1]))
+        for variant in library_storage_variants(module):
+            rows = self.by_module_name.get((variant, name))
             if rows:
                 return rows[0]
+        if "." in name:
+            short = name.rsplit(".", 1)[-1]
+            for variant in library_storage_variants(module):
+                rows = self.by_module_name.get((variant, short))
+                if rows:
+                    return rows[0]
         return None
 
 
@@ -214,7 +222,7 @@ class Sources:
 
     def lines(self, module: str) -> list[str] | None:
         if module not in self._lines:
-            path = ROOT / module
+            path = ROOT / library_storage_path(module)
             if path.is_file():
                 text = strip_lean_comments(path.read_text(encoding="utf-8"))
                 self._lines[module] = text.splitlines()

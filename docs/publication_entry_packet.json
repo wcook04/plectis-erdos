@@ -107,7 +107,7 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:aeff6dfb5cab148ed0be07c454636d1d51a1ef501ce7290a954a363440fb973a",
+    "docs/claims.json": "sha256:1abfec971841c5e9472b4262c8ba7df8bd282f9f1cf09bdfc2e5bcf8eae16609",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:4270de4e4480cdad26eac6e8f77734ad1868228d37765f93c2c264dbb29fb615",
     "docs/publication_contract.json": "sha256:5f6583fcb415ec1d6c678e19d8caa13e3c25e7203e3af7ef6b076329b8e2ef66",
@@ -382,7 +382,7 @@
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
-      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.",
+      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.",
       "status": "open"
     },
     {

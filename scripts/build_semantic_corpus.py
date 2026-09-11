@@ -54,6 +54,7 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from lean_source import library_identity_path, library_storage_variants
 from semantic_review import apply_review_registry
 from semantic_family_compiler import (
     INTERPRETATION_TIER as STRUCTURAL_INTERPRETATION_TIER,
@@ -453,7 +454,16 @@ def replace_generated_region(
 
 
 def declaration_key(module: str, name: str, line: object) -> str:
-    return f"{module}:{line}:{name}"
+    return f"{library_identity_path(module)}:{line}:{name}"
+
+
+def public_atlas_declaration(row: dict) -> dict:
+    """Emit library identity, not the current-checkout ``lean/`` storage prefix."""
+    module = library_identity_path(row["module"])
+    public = dict(row)
+    public["module"] = module
+    public["id"] = declaration_key(module, row["name"], row["line"])
+    return public
 
 
 def collect(*, defer_review_receipts: bool = False) -> dict:
@@ -471,17 +481,20 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
     claims = load(CLAIMS)
 
     # ---- evidence layer -------------------------------------------------
-    atlas_rows = {row["id"]: row for row in atlas["declarations"]}
+    atlas_declarations = [public_atlas_declaration(row) for row in atlas["declarations"]]
+    atlas_rows = {row["id"]: row for row in atlas_declarations}
     by_module_name: dict[tuple[str, str], list[dict]] = defaultdict(list)
     by_bare_name: dict[str, list[dict]] = defaultdict(list)
-    for row in atlas["declarations"]:
-        by_module_name[(row["module"], row["name"])].append(row)
+    for row in atlas_declarations:
+        for variant in library_storage_variants(row["module"]):
+            by_module_name[(variant, row["name"])].append(row)
         by_bare_name[row["name"]].append(row)
 
     generated_family_of = {
-        path: family["id"]
+        variant: family["id"]
         for family in manifest["families"]
         for path in family["module_paths"]
+        for variant in library_storage_variants(path)
     }
 
     def find_declaration(module: str, name: str) -> dict | None:
@@ -491,18 +504,20 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
         whatever namespace the module opens.  A classifier reading the source
         may record either that name or its fully qualified form, so
         ``ErdosProblems.Erdos243.sylvesterNext`` and ``sylvesterNext`` must
-        resolve to the same row.  Nothing else is guessed: the module must
-        match exactly.
+        resolve to the same row.  Module paths accept both the current
+        ``lean/`` storage spelling and the pre-migration identity spelling.
         """
         if not module or not name:
             return None
-        rows = by_module_name.get((module, name))
-        if rows:
-            return rows[0]
-        if "." in name:
-            rows = by_module_name.get((module, name.rsplit(".", 1)[-1]))
+        short = name.rsplit(".", 1)[-1] if "." in name else None
+        for variant in library_storage_variants(module):
+            rows = by_module_name.get((variant, name))
             if rows:
                 return rows[0]
+            if short is not None:
+                rows = by_module_name.get((variant, short))
+                if rows:
+                    return rows[0]
         # Deliberately no repository-wide fallback on the bare name.  An
         # earlier version resolved a name that occurred once anywhere, on the
         # theory that a classifier had named the wrong module.  The one case it
@@ -733,7 +748,7 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
         nodes[f"generated::{family['id']}"] = generated_nodes[-1]
 
     # Every generated declaration is owned by its family node.
-    for row in atlas["declarations"]:
+    for row in atlas_declarations:
         family = generated_family_of.get(row["module"])
         if family is None:
             continue
@@ -816,7 +831,7 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
         if evidence.get("resolved") and evidence.get("id")
     }
     structural_nodes, structural_role_updates = compile_source_structural_families(
-        atlas["declarations"],
+        atlas_declarations,
         roles,
         existing_direct_evidence_ids,
     )
@@ -842,7 +857,7 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
     # important ceiling: the declaration is discoverable, but no canonical
     # mathematical statement is inferred from its name or source text.
     automatic_inventory_roles = []
-    for row in atlas["declarations"]:
+    for row in atlas_declarations:
         if row["id"] in roles:
             continue
         assignment = {
@@ -883,12 +898,12 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
     }
     authored_ids = {
         row["id"]
-        for row in atlas["declarations"]
+        for row in atlas_declarations
         if not row["generated_certificate"]
     }
     authored_theorem_like_ids = {
         row["id"]
-        for row in atlas["declarations"]
+        for row in atlas_declarations
         if not row["generated_certificate"] and row["kind"] in ("theorem", "lemma")
     }
     authored_node_linked_theorem_like_ids = authored_theorem_like_ids & node_linked_ids
@@ -980,7 +995,7 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
     )
 
     # ---- summary ---------------------------------------------------------
-    authored_rows = [r for r in atlas["declarations"] if not r["generated_certificate"]]
+    authored_rows = [r for r in atlas_declarations if not r["generated_certificate"]]
     by_class = Counter(n.get("logical_class", "unclassified") for n in nodes.values())
     by_problem = Counter(n.get("problem", "unassigned") for n in nodes.values())
     by_prior_art = Counter(n.get("prior_art_state", "not_assessed") for n in nodes.values())

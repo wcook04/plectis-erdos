@@ -354,7 +354,7 @@ the limit of explicitly recorded checks.
   [`docs/publication_evidence.json`](docs/publication_evidence.json) and the
   reproducibility appendix of the systems paper.
 
-The shortest summary: Lean checks the formal proofs, people
+Summary: Lean checks the formal proofs, people
 review what the project says about them, and the release machinery keeps those
 two layers from drifting apart where the relationship has been explicitly
 recorded.

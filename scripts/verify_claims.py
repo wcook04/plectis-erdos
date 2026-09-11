@@ -72,6 +72,7 @@ from pathlib import Path
 from typing import Any
 
 import validation_singleflight as singleflight
+from lean_source import library_storage_path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = REPO_ROOT / "docs" / "claims.json"
@@ -313,7 +314,9 @@ def resolve_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
     name = declaration.get("name", "")
     module_ref = declaration.get("module", "")
     recorded = declaration.get("line")
-    module_path = REPO_ROOT / module_ref
+    module_path = REPO_ROOT / library_storage_path(module_ref)
+    if not module_path.is_file():
+        module_path = REPO_ROOT / module_ref
     result: dict[str, Any] = {
         "name": name,
         "module": module_ref,

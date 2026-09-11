@@ -165,6 +165,26 @@ def library_storage_variants(relative: str) -> tuple[str, ...]:
     return (current, identity)
 
 
+def checkout_source_relative(relative: str, root: Path) -> str:
+    """Return the on-disk checkout relative path for a public or storage spelling."""
+    identity = library_identity_path(relative)
+    candidates = (
+        library_storage_path(relative),
+        identity,
+        relative,
+        f"verification/{identity}",
+        f"verification/{relative.removeprefix('verification/')}",
+    )
+    seen: set[str] = set()
+    for candidate in candidates:
+        if not candidate or candidate in seen:
+            continue
+        seen.add(candidate)
+        if (root / candidate).is_file():
+            return candidate
+    return library_storage_path(relative)
+
+
 def _collect_library_files(root: Path, name: str, *, layout: str) -> list[Path]:
     paths: list[Path] = []
     seen: set[Path] = set()

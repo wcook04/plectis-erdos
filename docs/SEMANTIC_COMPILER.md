@@ -366,6 +366,6 @@ states that implication.
 
 The benchmark measures the questions encoded in its task table. It is evidence
 for those operator and witness contracts, not a claim of general mathematical
-omniscience. New proof work should add genuinely different questions and
-kernel-checked compositions rather than merely paraphrasing the existing
+omniscience. New proof work should add different questions and
+kernel-checked compositions rather than paraphrasing existing
 tasks.

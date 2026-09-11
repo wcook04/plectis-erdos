@@ -27,7 +27,7 @@
  },
  "inputs": {
   "data_jsonl": {
-   "path": "ErdosProblems/FreePosition/data.jsonl",
+   "path": "lean/ErdosProblems/FreePosition/data.jsonl",
    "sha256": "d5641802f28cb7ab64e6e7545b740dc95d52cbd259f29427f6d01f78f4e46f71",
    "physical_line_count": 8756
   }

@@ -158,8 +158,8 @@ REQUIRED_ANCHOR_GROUPS = {
 }
 
 REQUIRED_PATHS = (
-    "Erdos249257.lean",
-    "ErdosProblems.lean",
+    "lean/Erdos249257.lean",
+    "lean/ErdosProblems.lean",
     "docs/claims.json",
     "docs/methodology.json",
     "docs/publication_contract.json",
@@ -445,7 +445,10 @@ def validate_entry_links(
     require("](ARCHITECTURE.md)" in readme,
             "README lost the architecture guide entry link")
     require(
-        "](claim-faithful-publication-systems-paper.pdf)" in guide,
+        re.search(
+            r"\]\([^)]*claim-faithful-publication-systems-paper\.pdf\)",
+            guide,
+        ),
         "architecture guide lost the printable systems-paper route",
     )
     compact_guide = normalise(guide).casefold()

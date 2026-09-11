@@ -823,7 +823,7 @@ def _render_ranked_candidate(candidate: dict, result: dict) -> list[str]:
             f"{candidate['mechanism_depth_and_natural_friction']}"
         ),
         (
-            f"   - **Source and evidence.** [Lean source](../{result['original_source']}); "
+            f"   - **Source and evidence.** [Lean source](../{library_storage_path(result['original_source'])}); "
             f"{candidate['evidence_certainty']}"
         ),
         (

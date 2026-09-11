@@ -28,6 +28,7 @@ from build_module_synopsis_index import (
     SCHEMA as MODULE_SYNOPSIS_SCHEMA,
 )
 from lean_source import (
+    checkout_source_relative,
     library_identity_path,
     library_storage_path,
     library_storage_variants,
@@ -529,20 +530,24 @@ def module_synopsis_index() -> dict[str, str | None]:
         or packet.get("owner_adoption") != MODULE_SYNOPSIS_OWNER_ADOPTION
     ):
         return {}
-    return {
-        row["path"]: row.get("synopsis")
-        for row in packet.get("modules", [])
-        if isinstance(row, dict) and isinstance(row.get("path"), str)
-    }
+    rows: dict[str, str | None] = {}
+    for row in packet.get("modules", []):
+        if not isinstance(row, dict) or not isinstance(row.get("path"), str):
+            continue
+        synopsis = row.get("synopsis")
+        for variant in library_storage_variants(row["path"]):
+            rows[variant] = synopsis
+    return rows
 
 
 @lru_cache(maxsize=512)
 def module_synopsis(rel: str) -> str | None:
     """Return a fingerprint-bound authored module header, with a local fallback."""
     indexed = module_synopsis_index()
-    if rel in indexed:
-        return indexed[rel]
-    path = ROOT / rel
+    for variant in library_storage_variants(rel):
+        if variant in indexed:
+            return indexed[variant]
+    path = checkout_lean_file(rel)
     if not path.is_file():
         return None
     with path.open(encoding="utf-8") as source:
@@ -2005,7 +2010,9 @@ def reviewed_result_family_atlas_source_rows(
         if not isinstance(declaration, str) or not declaration:
             continue
         for atlas_row in declaration_rows_for_handle(declaration):
-            if atlas_row.get("module") != module_path:
+            if library_identity_path(str(atlas_row.get("module") or "")) != library_identity_path(
+                module_path
+            ):
                 continue
             qualified_name = qualified_declaration_name(atlas_row)
             if qualified_name in seen:
@@ -2014,7 +2021,7 @@ def reviewed_result_family_atlas_source_rows(
             rows.append(
                 {
                     "original_declaration": qualified_name,
-                    "original_source": module_path,
+                    "original_source": library_identity_path(module_path),
                     "wrapper_declaration": None,
                     "claim_id": None,
                     "source_authority": (
@@ -2296,6 +2303,15 @@ def formal_source_identity(claims: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def formal_source_blob_repository(claims: dict[str, Any]) -> str:
+    """Host for pinned-SHA blob URLs. That SHA never had a ``lean/`` prefix."""
+    formal = claims["release"].get("formal_source") or {}
+    return str(
+        formal.get("blob_repository")
+        or "https://github.com/wcook04/plectis-lean-erdos249-257"
+    )
+
+
 def lean_source_identity_for_paper(
     claims: dict[str, Any], paper_source: str | None
 ) -> dict[str, Any]:
@@ -2566,11 +2582,14 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         lines = text.splitlines()
         theorem_sources = [text]
         for input_match in re.finditer(r"\\input\{([^}]+)\}", text):
-            input_path = path.parent / input_match.group(1)
-            if input_path.suffix == "":
-                input_path = input_path.with_suffix(".tex")
-            if input_path.is_file():
-                theorem_sources.append(input_path.read_text(encoding="utf-8"))
+            raw = input_match.group(1)
+            candidates = [path.parent / raw, ROOT / "paper" / raw]
+            for input_path in candidates:
+                if input_path.suffix == "":
+                    input_path = input_path.with_suffix(".tex")
+                if input_path.is_file():
+                    theorem_sources.append(input_path.read_text(encoding="utf-8"))
+                    break
         environments = set(
             re.findall(
                 r"\\newtheorem\*?\{([^}]+)\}",
@@ -2801,13 +2820,14 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                         or macro.startswith("m")
                     ),
                 )
+                public_module = library_identity_path(module)
                 source_links.append(
                     {
                         "edge_kind": "authored_source_link",
                         "macro": macro,
-                        "module": module,
+                        "module": public_module,
                         "line": int(link.group("line")),
-                        "source_ref": f"{module}:{link.group('line')}",
+                        "source_ref": f"{public_module}:{link.group('line')}",
                         "source_identity": dict(lean_source_identity),
                         "declaration": link.group("name") or None,
                         "display_label": link.group("label") or None,
@@ -3391,7 +3411,7 @@ def decorate_declaration_rows(
     label_index = paper_label_index()
     sigil_by_path = {row["path"]: row["sigil"] for row in aliases}
     lean_source_identity = formal_source_identity(claims)
-    repository = lean_source_identity["repository"].rstrip("/")
+    repository = formal_source_blob_repository(claims).rstrip("/")
     source_ref = lean_source_identity["ref"]
     paper_anchors = paper_anchor_inventory()
     declarations_by_module = declaration_row_indexes()["by_module"]
@@ -3409,6 +3429,7 @@ def decorate_declaration_rows(
         decorated.append(
             {
                 **match,
+                "module": library_identity_path(match["module"]),
                 "qualified_name": qualified_declaration_name(match),
                 "externally_addressable": declaration_externally_addressable(
                     match
@@ -3436,7 +3457,8 @@ def decorate_declaration_rows(
                     }
                     for anchor in paper_anchors
                     if any(
-                        link["module"] == match["module"]
+                        library_identity_path(link["module"])
+                        == library_identity_path(match["module"])
                         and (
                             link["declaration"] == match["name"]
                             or (
@@ -3868,7 +3890,7 @@ def claim_registry_module_family_routes(
                     "claim_statement": claim.get("statement"),
                     "problem_id": problem["problem_id"],
                     "erdos_number": problem_number,
-                    "source_route": module_path,
+                    "source_route": library_identity_path(module_path),
                     "representative_declarations": representative_declarations,
                     "declaration_routes": [
                         row["command"] for row in representative_declarations
@@ -3963,8 +3985,8 @@ def reviewed_result_family_module_routes(
             matching_source_rows = [
                 row
                 for row in source_rows
-                if str(row.get("original_source", "")).removeprefix("./")
-                == module_path
+                if library_identity_path(str(row.get("original_source", "")).removeprefix("./"))
+                == library_identity_path(module_path)
             ]
             if not matching_source_rows:
                 matching_source_rows = reviewed_result_family_atlas_source_rows(
@@ -4017,7 +4039,7 @@ def reviewed_result_family_module_routes(
                     "id": family["id"],
                     "problem_id": problem["problem_id"],
                     "erdos_number": problem["erdos_number"],
-                    "source_route": module_path,
+                    "source_route": library_identity_path(module_path),
                     "representative": representative_source_row.get(
                         "original_declaration"
                     ),
@@ -4148,7 +4170,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     after = [row for row in module_declarations if row["line"] > line]
     roles = module_roles(claims)
     lean_source_identity = formal_source_identity(claims)
-    repository = lean_source_identity["repository"].rstrip("/")
+    repository = formal_source_blob_repository(claims).rstrip("/")
     source_ref = lean_source_identity["ref"]
     public_module = library_identity_path(module_path)
     return {
@@ -6952,7 +6974,7 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     declarations = declaration_row_indexes()["by_source"]
     claims = load("docs/claims.json")
     identity = formal_source_identity(claims)
-    repository = identity["repository"].rstrip("/")
+    repository = formal_source_blob_repository(claims).rstrip("/")
     source_ref = identity["ref"]
     witnesses = []
     for handle in claim.get("declarations", []):
@@ -6970,10 +6992,11 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
                 "declaration_kind": declaration["kind"],
                 "signature": declaration.get("signature"),
                 "source_ref": (
-                    f"{declaration['module']}:{declaration['line']}"
+                    f"{library_identity_path(declaration['module'])}:{declaration['line']}"
                 ),
                 "source_url": (
-                    f"{repository}/blob/{source_ref}/{declaration['module']}"
+                    f"{repository}/blob/{source_ref}/"
+                    f"{library_identity_path(declaration['module'])}"
                     f"#L{declaration['line']}"
                 ),
                 "docstring": declaration.get("docstring"),
@@ -9024,7 +9047,7 @@ def _signal_programme_spines(
             "source_disposition": source_dispositions[family_id],
             "declaration": candidate["declaration"],
             "source_declaration": result["original_declaration"],
-            "source_file": result["original_source"],
+            "source_file": checkout_source_relative(result["original_source"], ROOT),
             "why_here": candidate["consequence_and_endpoint_proximity"],
             "boundary": result["boundary"],
         }
@@ -9071,10 +9094,11 @@ def _signal_programme_spines(
             "source_declaration": (
                 result["original_declaration"] if result is not None else declaration
             ),
-            "source_file": (
+            "source_file": checkout_source_relative(
                 result["original_source"]
                 if result is not None
-                else "ExternalVerification/Statements.lean"
+                else "ExternalVerification/Statements.lean",
+                ROOT,
             ),
             "why_here": (
                 placement["relative_judgement"]
@@ -9269,7 +9293,7 @@ def mathematical_signal_spine(
             "selection_status": candidate["selection_status"],
             "consequence": candidate["consequence_and_endpoint_proximity"],
             "evidence_class": result["contribution_class"],
-            "source_file": result["original_source"],
+            "source_file": checkout_source_relative(result["original_source"], ROOT),
             "exact_boundary": result["boundary"],
         }
         if tier != "exact_reduction_or_structural_result":

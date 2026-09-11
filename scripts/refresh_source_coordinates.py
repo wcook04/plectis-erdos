@@ -15,6 +15,7 @@ import re
 import sys
 from pathlib import Path
 
+from lean_source import library_storage_variants
 from query_corpus import canonical_lean_module_path, canonical_paper_title
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -74,8 +75,9 @@ def declaration_lines() -> dict[tuple[str, str], int]:
     atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
     rows: dict[tuple[str, str], list[int]] = {}
     for decl in atlas["declarations"]:
-        rows.setdefault((decl["module"], decl["name"]), []).append(decl["line"])
-    duplicate = {key: values for key, values in rows.items() if len(values) != 1}
+        for variant in library_storage_variants(decl["module"]):
+            rows.setdefault((variant, decl["name"]), []).append(decl["line"])
+    duplicate = {key: values for key, values in rows.items() if len(set(values)) != 1}
     if duplicate:
         raise RuntimeError(f"ambiguous declaration coordinates: {duplicate}")
     return {key: values[0] for key, values in rows.items()}

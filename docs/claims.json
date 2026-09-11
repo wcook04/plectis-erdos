@@ -1115,43 +1115,43 @@
             "id": "erdos_257_reasoning_record",
             "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete working record for Erdős #257: checked premises, finite computations, route relations, evidence bands, and surviving obligations."
+            "thesis": "Complete working record for Erdős #257: Lean full-support and structured-support theorems, finite-support geometry, and surviving arbitrary-infinite-support obligations."
           },
           {
             "id": "erdos_1041_reasoning_record",
             "source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete working record for Erdős #1041: Newton-flow decay, ray separation, translation geometry, solved structural families, and the unresolved global topology and metric gluing."
+            "thesis": "Complete working record for Erdős #1041: Lean Newton-flow decay, ray separation, translation geometry, Comparator-checked solved-family kernels, ordinary path assemblies, and the unresolved global topology and metric gluing."
           },
           {
             "id": "erdos_1049_reasoning_record",
             "source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete reasoning record for Erdős #1049, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
+            "thesis": "Complete reasoning record for Erdős #1049. Ordinary F(31/4) and region theorems citing Zudilin; Lean supporting arithmetic, not those irrationality theorems; outstanding 3/2 approximant. The problem remains open."
           },
           {
             "id": "erdos_68_reasoning_record",
             "source": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete reasoning record for Erdős #68, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
+            "thesis": "Complete reasoning record for Erdős #68. Lean Core carry equivalences are distinct from ordinary LCM-liminf and finite prime-cancellation examples. The problem remains open."
           },
           {
             "id": "erdos_243_reasoning_record",
             "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete reasoning record for Erdős #243, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the scalar finite-negative-mass criterion without a normalised-vanishing premise. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
+            "thesis": "Complete reasoning record for Erdős #243. Lean integer-state rigidity, including a scalar finite-negative-mass criterion; cubic-rate and Chebotarev steps are ordinary. Mixed-sign unbounded regime remains open."
           },
           {
             "id": "erdos_251_reasoning_record",
             "source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete reasoning record for Erdős #251, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Includes the finite counting reduction for shifted prime-gap differences; the analytic sieve estimates remain assumptions. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
+            "thesis": "Complete reasoning record for Erdős #251. Countermodel and finite counting reduction; the prime-to-gap identity is already-known and does not use the prime-number theorem. The actual-prime tail witness remains open."
           },
           {
             "id": "erdos_269_reasoning_record",
             "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete reasoning record for Erdős #269, restored from c8e2560cdfd0e43e68e5ad091644b2052495d12a and revised. Results distinguish compiled proofs, conditional reductions and external results. The problem remains open."
+            "thesis": "Complete reasoning record for Erdős #269. Two-prime credit is Steve Fan's; three-prime Lean rank/window versus unproved cofinal escape. The problem remains open."
           }
         ],
         "problem_series": [
@@ -1159,49 +1159,49 @@
             "id": "erdos_68_note",
             "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The exact factorial-successor and carry normal forms, integral-channel and projection consumers, an unconditional finite denominator exclusion through 300000, and five quantified producer problems for the still-open factorial-denominator series."
+            "thesis": "The Core carry equivalences (FactorialGapPlateauCore isolation pin; FactorialZeroPlateau is the default-root duplicate), two incomparable finite denominator exclusions (GMP m = 300000 and continued-fraction q ≥ 2^39990), and the still-open cofinal-carry producer."
           },
           {
             "id": "erdos_243_note",
             "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The centred integer state and defect identity, absorption of a vanishing state, descent for the nonnegative case, and exclusion of the negative case when its magnitude is constant, periodic, or bounded, the last conditional on two assumed analytic inputs; unbounded negative excursions survive."
+            "thesis": "The integer-state bounded-negative theorem under explicit centring, bounded-negative, and normalised-vanishing hypotheses (Lean); the original-coordinate corollary is an ordinary transfer. Mixed-sign unbounded negative mass remains open."
           },
           {
             "id": "erdos_249_note",
             "source": "paper/249/erdos-249-binary-totient-series.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "A standalone theorem-led account of the exact dyadic-section ranks, infinite-dimensionality, explicit denominator exclusion, finite Euler-sieve identities, and scoped method boundaries for the still-open totient constant."
+            "thesis": "Exact dyadic-section rank 2^e+1 for e ≥ 1 (Lean), infinite-dimensionality equivalent to Coons for integer-valued sequence modules, all-base exact rank using Martin externally, finite Farey exclusion and t ≤ 82 certificates, and no infinite witness."
           },
           {
             "id": "erdos_251_note",
             "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The exact finite prime-gap summation by parts with its endpoint retained, the integral-shift criterion and its totient consequence for an abstract dyadic tail recurrence, and the free-carry telescoping identity that closes the periodicity route."
+            "thesis": "A coefficient-only countermodel and sparse rationalising perturbation as the supported lead; the already-known prime-to-gap identity checked without the prime-number theorem; cofinal small-mismatch tail witness open."
           },
           {
             "id": "erdos_257_note",
             "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "A standalone theorem-led account of finite-period noncollapse, settled support families, finite-change invariance, achievement-set geometry, and the precise surviving boundary for universal Erdős Problem 257."
+            "thesis": "Lean full-support irrationality and Lean structured supports (pairwise-coprime plus summable; eventually-periodic); ordinary reciprocal-summable theorem without coprimality; arbitrary infinite support and the 1/2 and 1/21 branches remain open and distinct."
           },
           {
             "id": "erdos_269_note",
             "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The running least common multiple of a three-prime smooth prefix, its literal dyadic block digits and bounded radix, exact residue/coboundary carry forms, higher-rank block and observer obstructions, the actual rationality-to-positive-reduced-carry bridge, and the exact cofinal-window equivalence; cofinal local-window escape remains open."
+            "thesis": "Three-prime Lean rank/window structure; Steve Fan's two-prime transcendence (26 June 2026) recorded as ordinary plus Bugeaud–Laurent, with no Lean theorem or priority claim; cofinal local-window escape remains open."
           },
           {
             "id": "erdos_1041_note",
             "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Newton-flow value decay and critical-value ray separation, exact translation-collision geometry and root retention, plus a precise diagnosis of the invalid local saddle block in a recent claimed spanning-tree proof; the global topology and metric gluing remain open."
+            "thesis": "Lean Newton-flow/ray/root-retention and Comparator-checked solved-family kernels; ordinary all-degree trinomial, 13/25, Poisson, and length-<2 assemblies; global topology remains open."
           },
           {
             "id": "erdos_1049_note",
             "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The coordinatewise corridor and its impossibility at base three halves, exact primitive-normalisation and endpoint-jet obstructions, the 81/200 external height region with checked parameter specialisations, and precise saturated Hermite-Pade and Mahler-system questions."
+            "thesis": "Ordinary Zudilin specialization that F(31/4) and its positive powers are irrational; Lean supporting height-region, 3/2 corridor, tail recurrence, and selected Hankel identities; outstanding 3/2 approximant with remainder control."
           }
         ],
         "problem_series_boundary": "A problem note expounds declarations of the ErdosProblems expansion root. Those declarations are exact Lean propositions and are not reviewed public claims; no note may be read as promoting one, and no Erdős problem it treats is closed.",
@@ -15132,7 +15132,7 @@
           {
             "id": "two_prime_transcendence",
             "contribution_class": "paper plus external theorem",
-            "summary": "Both two-prime running-lcm series are proved transcendental by an authored deduction from an external theorem.",
+            "summary": "Steve Fan posted the two-prime factorisation, reduction and transcendence first (erdosproblems.com/269, 26 June 2026, post-7218). This checkout records that ordinary deduction from Bugeaud–Laurent and does not claim priority or a Lean theorem.",
             "evidence_mode": "paper argument plus cited theorem",
             "comparator_disposition": "not_applicable_not_a_lean_declaration",
             "boundary": "Comparator cannot certify the external analytic input."
@@ -15477,7 +15477,7 @@
       "id": "remaining_open.erdos_1049_irrationality",
       "status": "open",
       "open_target_claim": "erdos_1049",
-      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.",
+      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.",
       "paper_anchor": {
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
@@ -15660,8 +15660,8 @@
     {
       "id": "prime_gap_irrationality_equivalence",
       "label": "Exact prime-gap dyadic irrationality equivalence",
-      "status": "conditional reduction",
-      "statement": "For a summable prime dyadic term and its discrete prime-gap difference, irrationality of the prime-index dyadic series is equivalent to irrationality of the prime-gap dyadic series; this transfers the open question without proving either side.",
+      "status": "locally proved equivalence",
+      "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_251_irrationality"
       ],
@@ -19086,7 +19086,7 @@
       "id": "erdos_1049",
       "label": "Erdős #1049: irrationality of F(t) at rational bases",
       "status": "open",
-      "statement": "The universal rational-base irrationality assertion remains open in this release; checked exclusions at 3/2 and exact recurrence identities do not prove irrationality or rationality at a new endpoint.",
+      "statement": "Universal rational-base irrationality remains open. An ordinary specialization of Zudilin 2004 proves F(31/4) and its positive powers irrational; that headline is not a Lean theorem. Lean checks supporting height-region arithmetic, the 3/2 corridor exclusion, the cleared-tail recurrence, and selected Hankel identities. The outstanding 3/2 obligation is an approximant family with remainder control.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
