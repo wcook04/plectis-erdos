@@ -59,9 +59,10 @@ duplicate). Finite GMP (`m = 300000`) and continued-fraction exclusions are
 incomparable. The cofinal carries are not produced.
 
 **[#243](https://www.erdosproblems.com/243).** After Koizumi's normalised
-vanishing, a bounded or summably small negative centred error forces eventual
-Sylvester recurrence. The unbounded mixed-sign regime and the original
-endpoint remain open.
+vanishing, a bound on the upward steps of the unreduced integer numerator
+forces eventual Sylvester recurrence; a bound on the numerator itself is
+not required. Unbounded upward excursions of that numerator, and the
+original endpoint, remain open.
 
 **[#249](https://www.erdosproblems.com/249).** Exact dyadic-kernel rank
 `2^e + 1`, denominator exclusion to about `7.96 × 10³⁴`, diagonal certificates
@@ -334,20 +335,21 @@ boundaries kept together.
   `eventually_periodic_negative_no_go`). Its exact hypotheses include
   `2 ≤ a(n)`, `0 < e(N+n) < a(N+n)`, the denominator, tail, and shape
   recurrences, and positive-period/positive-drift equations. It does not cover
-  arbitrary mixed-sign or unbounded negative behaviour, so the open boundary
+  unbounded upward excursions of the unreduced numerator, so the open boundary
   remains.
-- The Comparator interface
-  `no_cofinallyBoundedNegative_of_normalizedVanishes` makes another conditional
-  no-go exact: with `a(n) > 1`, positive `C` and `magnitude`, the coupled
-  recurrences `C(n+1) + D(n) = a(n)·C(n)` and
+- A separately declared Comparator interface
+  `no_cofinallyBoundedNegative_of_normalizedVanishes` restates another
+  conditional no-go under a fixed axiom budget: with `a(n) > 1`, positive `C`
+  and `magnitude`, the coupled recurrences `C(n+1) + D(n) = a(n)·C(n)` and
   `D(n+1) = a(n)·D(n)`, a bounded rise `C(n+1) ≤ C(n) + B`, normalized
   vanishing `K·magnitude(n) < C(n)` eventually for every `K`, and a cofinally
   bounded negative part, the hypotheses are inconsistent
   (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean`). Every dynamical,
   positivity, bounded-rise, and vanishing assumption remains explicit; this
-  does not close the original mixed-sign regime (claims registry:
-  `bounded_negative_exclusion`; source coordinate:
-  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1748`).
+  does not close unbounded upward excursions of the unreduced numerator
+  (claims registry: `bounded_negative_exclusion`; source coordinate:
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1748`). The interface is
+  not a fresh passing receipt for this release commit.
 - A distinct signed recovery family makes the centered mechanism executable:
   `boundedNegativePart_eventually_zero` assumes `a(n)>1`, `C(n)>0`, the exact
   natural dynamics `C(n+1)+D(n)=a(n)C(n)` and `D(n+1)=a(n)D(n)`,
@@ -356,12 +358,16 @@ boundaries kept together.
   eventually. With centered zero and an eventually nonzero next tail,
   `sylvesterNext_eventually_of_centered_zero` recovers the Sylvester recurrence.
   The latter two declarations are mechanism evidence for this one family, not
-  separate rows. This is not reciprocal-tail irrationality: the unbounded
-  mixed-sign negative branch and prime-specific producer remain open
-  (Comparator wrapper: `ExternalVerification/Challenge.lean:96-109`; source
+  separate rows. The analytic passage from the reciprocal series to these
+  hypotheses is ordinary mathematics, not an end-to-end Lean proof. This is
+  not reciprocal-tail irrationality: unbounded upward excursions of the
+  unreduced numerator remain open. The selected statement has a separately
+  declared Comparator interface; that is not a fresh passing receipt for this
+  release commit (Comparator wrapper:
+  `ExternalVerification/Challenge.lean:96-109`; source
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2265`, with supporting
   declarations at `:1837` and `:1799`).
-- Open: the unbounded mixed-sign regime.
+- Open: unbounded upward excursions of the unreduced numerator.
 
 **#249 — is `∑ φ(n)/2ⁿ` irrational? (reviewed core)**
 
