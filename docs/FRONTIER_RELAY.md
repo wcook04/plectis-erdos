@@ -77,7 +77,7 @@ selector when the owner has chosen a named research agent; do not use
 `--global` as a default. Start a new session and ask explicitly for a Plectis
 research shift. Keep the installed skill and the research checkout separate.
 
-Do **not** advertise `openclaw skills install git:wcook04/plectis-lean-erdos249-257`
+Do **not** advertise `openclaw skills install git:wcook04/plectis-erdos`
 as a working shortcut: direct Git installation expects `SKILL.md` at the
 repository root, while this repository contains a nested skill directory.
 
@@ -90,7 +90,7 @@ npx skills add . --skill plectis-frontier --agent openclaw
 This executes an external CLI: review and record its exact version first. Select
 only `plectis-frontier`, not every clone-local workflow. After the change is
 merged and tested on public main, the corresponding repository-discovery route
-is `npx skills add wcook04/plectis-lean-erdos249-257 --skill plectis-frontier`.
+is `npx skills add wcook04/plectis-erdos --skill plectis-frontier`.
 A directory being discoverable does not demonstrate a successful run in every
 supported client. Keep each client test and version separate.
 

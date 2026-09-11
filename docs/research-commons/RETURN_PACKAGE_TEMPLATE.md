@@ -117,8 +117,8 @@ the registered claim, and the problem boundary remain the authorities.
 - **Submitted at:** `<ISO-8601 date-time with an explicit timezone, e.g. 2026-08-27T19:30:00+01:00>`
 - **Starting release tag:** `<exact public tag, or “untagged commit”>`
 - **Starting commit:** `<full 40-character commit from git rev-parse HEAD>`
-- **Repository:** `https://github.com/wcook04/plectis-lean-erdos249-257`
-- **Repository origin recorded by the continuation session:** `https://github.com/wcook04/plectis-lean-erdos249-257`
+- **Repository:** `https://github.com/wcook04/plectis-erdos`
+- **Repository origin recorded by the continuation session:** `https://github.com/wcook04/plectis-erdos`
 - **Proposed commit:** `<full 40-character descendant of the starting commit, or null>`
 - **Public artifact commit or patch:** `<commit, attached patch, or exact file set>`
 
@@ -174,7 +174,7 @@ exactly one fresh contributor checkout for the replay; do not create a second cl
 worktree, copied tree, or duplicate dependency cache:
 
 ```sh
-git clone --filter=blob:none https://github.com/wcook04/plectis-lean-erdos249-257 <destination>
+git clone --filter=blob:none https://github.com/wcook04/plectis-erdos <destination>
 cd <destination>
 git checkout --detach <starting commit>
 test "$(git status --porcelain)" = ""
