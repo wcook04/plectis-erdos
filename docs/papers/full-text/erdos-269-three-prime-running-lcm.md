@@ -457,7 +457,7 @@ The bounded-radix alternative permits the integral branch. Infinite rank and the
 
 #### Proof sources.
 
-The two-prime argument uses the cited Hecke–Mahler value theorem. The arbitrary-order kernel theorem, the actual recurrence and the rationality bridge have the formal source locations recorded below. The finite cut-rank argument and the modular corollary are proved above; no additional formal verification claim is made for the latter.
+The two-prime argument uses the cited Hecke–Mahler value theorem and is Steve Fan’s; it is not a Lean theorem. The arbitrary-order kernel theorem, the actual recurrence and the rationality bridge are ordinary mathematics in this paper; source locations are recorded below. Comparator records the $(2,3,5)$ minor $-1/15$, the running-LCM height identity, and a conditional carry-escape consumer, not the arbitrary-order rank theorem. The finite cut-rank argument and the modular corollary are proved above; no additional formal verification claim is made for the latter. The actual-series reduction is given; the source-specific cofinal escape remains unproved.
 
 <a id="artefact-and-data-availability."></a>
 

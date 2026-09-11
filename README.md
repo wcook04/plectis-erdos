@@ -89,11 +89,12 @@ not required to read the papers.
 - **[#269](https://www.erdosproblems.com/269)** · Three-prime running LCM ·
   [short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) ·
   [longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf).
-  Three-prime height identity, nonsingular kernel minors, and the `(2,3,5)`
-  minor `-1/15`. The two-prime transcendence argument is Steve Fan's
+  Steve Fan's two-prime factorisation
   ([erdosproblems.com/269](https://www.erdosproblems.com/forum/thread/269),
-  26 June 2026); no priority or Lean theorem is claimed for that. Three or
-  more primes remain open.
+  26 June 2026) is his; no priority or Lean theorem is claimed for it. At
+  three primes, one binary carry produces nonsingular selected kernel minors
+  of every order. The actual-series reduction is given; the source-specific
+  cofinal escape remains unproved. Three-prime irrationality remains open.
 - **[#1041](https://www.erdosproblems.com/1041)** · Lemniscates and Newton flow ·
   [short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) ·
   [longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf).

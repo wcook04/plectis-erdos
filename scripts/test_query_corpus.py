@@ -1751,7 +1751,8 @@ def validate_mathematical_signal_spine() -> None:
     ]
     carry_escape = programme_spines[269][0]
     assert "CofinalLocalWindowEscape" in carry_escape["boundary"]
-    assert "rationality-to-actual-series carry bridge" in carry_escape["why_here"]
+    assert "source-specific cofinal escape remains unproved" in carry_escape["why_here"]
+    assert "actual-series reduction is given" in carry_escape["why_here"]
     # The #249 spine leads with the three families the survivor audit put on
     # the global ranked frontier; coefficient-side totient_kernel_rank sits
     # fifth, below totient_certificate_equivalences, because it is screened as

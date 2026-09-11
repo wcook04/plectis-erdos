@@ -329,7 +329,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         positions_269 = [order_269.index(marker) for marker in expected_269]
         self.assertEqual(positions_269, sorted(positions_269))
         self.assertIn("CofinalLocalWindowEscape", order_269)
-        self.assertIn("rationality-to-actual-series carry bridge", order_269)
+        self.assertIn("source-specific cofinal escape remains unproved", order_269)
+        self.assertIn("actual-series reduction is given", order_269)
 
         rows_by_problem = builder._programme_signal_rows(packet, signal_authority)
         represented = {

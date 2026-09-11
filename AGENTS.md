@@ -88,10 +88,11 @@ This library treats the three-prime case. A paper proof using Bugeaud--Laurent
 makes both two-prime versions transcendental; this is not first and not
 formalised. Steve Fan posted the same argument on the erdosproblems.com #269
 thread on 26 June 2026 and this note was first released publicly on 22 July
-2026, so no priority is claimed. For three primes, Lean checks the exact lcm
-cell geometry, jump and radix structure, a rank-two kernel obstruction, and a
-denominator-dependent carry consumer; the divisibility bridge, cofinal
-residue-window producer, and unbounded denominator exclusion remain open. Paper:
+2026, so no priority is claimed. For three primes the paper proves nonsingular
+selected minors of every order from one binary carry. Comparator checks the
+`-1/15` finite minor, the running-LCM height identity, and a conditional
+carry-escape consumer, not the arbitrary-order rank theorem. The actual-series
+reduction is given; the source-specific cofinal escape remains unproved. Paper:
 `erdos-269-three-prime-running-lcm.pdf`.
 
 **#1041 — Must two roots of a monic polynomial in the unit disc admit a curve of
