@@ -347,7 +347,8 @@ def check_route_memory_corpus_contract() -> None:
     )
     require(
         "cofinal local-window escape" in conditional["mechanism"]
-        and "actual-series/rationality bridge" in conditional["boundary"],
+        and "source-specific cofinal escape remains unproved" in conditional["boundary"]
+        and "actual-series reduction is given" in conditional["boundary"],
         "#269 conditional family mechanism or boundary drifted",
     )
     require(

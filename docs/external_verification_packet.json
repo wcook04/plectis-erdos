@@ -923,11 +923,11 @@
         },
         {
           "id": "factorial_lcm_growth",
-          "contribution_class": "paper plus external theorem",
-          "summary": "A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem.",
-          "evidence_mode": "paper argument plus cited theorem",
+          "contribution_class": "ordinary paper argument",
+          "summary": "An elementary terminal-block argument gives liminf log L_N / (N^{3/2} log N) ≥ 2√2/3 for the lcm of factorial-gap denominators. The displayed bound needs no external multiplicity theorem; an older, weaker multiplicity-based route is historical context only.",
+          "evidence_mode": "ordinary mathematical argument",
           "comparator_disposition": "not_applicable_not_a_lean_declaration",
-          "boundary": "Comparator cannot certify the cited input or authored deduction."
+          "boundary": "The LCM asymptotic is an ordinary paper proof, not a Lean-checked theorem. Linked asymptotic Lean files are proof candidates and are not cited as kernel verification. The finite-block inequality has a separate Lean source. Comparator cannot certify the authored deduction. The bound does not decide irrationality."
         }
       ]
     },
@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:6dcd040fe30e2dc29a0766bab3cbd34d3c21691c811750d7530a8003bff7511a",
+    "owner_digest": "sha256:c1192e10c82e77594f6b6c6dcfa769ea68bb3b9ece02812ca74a44dd88e5822a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
+    "projection_digest": "sha256:229edb81876b106f3dbe7eed462cc4affda18e02a814efaddc2c24b76c463777",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2546,15 +2546,15 @@
         ],
         "what_is_not_checked": [
           "Erdos Problem 1041 in unrestricted degree.",
-          "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block.",
-          "A proof or counterexample for Proposition 12 itself; a four-pronged or cut-annulus repair may still exist.",
+          "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
+          "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
           "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
           "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
         ],
         "open_obligations": [
           {
             "id": "repair_or_refute_saddle_block",
-            "statement": "Replace the false three-ended interior saddle neighbourhood by a valid four-pronged or cut-annulus block and reprove the required incidence statement, or construct a polynomial counterexample to that incidence statement."
+            "statement": "The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality."
           },
           {
             "id": "compact_ray_cut_strip_decomposition",
@@ -2724,7 +2724,7 @@
           "At n = 0, the Amdeberhan-Zeilberger q-Apery operator applied to Van Assche's moving diagonal has residual -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2), which is strictly negative and nonzero for every real p > 1."
         ],
         "what_is_not_checked": [
-          "Irrationality at base three halves, or for any rational base.",
+          "The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem.",
           "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
           "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
           "The source analytic irrationality theorem inside the 81/200 height region; only its elementary parameter specialisations are formalised.",

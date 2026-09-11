@@ -38,7 +38,11 @@ CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) at the repository root.
 The short paper is the first read. The complete reasoning record preserves the
 wider working context, including routes that failed, finite experiments, and
 open obligations. The older joint #249/#257 paper is retained for provenance;
-it is not the entry point for either problem.
+it is not the entry point for either problem. For #251, the elementary pair
+identities live in `SparseRationalisationCore.lean`; the ordinary schedule
+sketch is Proposition 1.1 of the short paper. There is no separately published
+`SparseRationalisation.md`. End-to-end sparse Lean candidates are labelled
+UNRUN and are not presented as verified.
 
 ### Returning from a problem note to checked evidence
 

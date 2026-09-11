@@ -662,10 +662,14 @@ be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.l
 \ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
 coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
 description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The
-rigidity is why every soft method fails (there is no ensemble to average over: $\mathcal{A}$ has
+rigidity constrains representation uniqueness. It does not by itself exclude averaging over
+indices, shifts, residues, observation scales or auxiliary constructions. $\mathcal{A}$ has
 Lebesgue measure exactly $1$ inside an interval of length $E\approx1.6067$ and is nowhere dense,
-and the two standard notions of ``typical''
-disagree on it); the pseudorandomness is why every arithmetic method returns no information.
+so the two standard notions of ``typical'' disagree on it; neither fact decides membership of a
+specified rational. The recorded calculations obstruct the particular models and estimates
+analysed here; no impossibility theorem for all probabilistic, measure-theoretic or averaging
+methods is claimed. Separately, the observed lack of arithmetic bias is why the specific
+arithmetic methods recorded here returned no information.
 
 \subsubsection*{The universal branch reads differently, and this weakens the one-wall thesis}
 
@@ -689,11 +693,13 @@ that ordering would overstate the unity of the wall.
 It does not determine whether a short proof exists. Nothing in a catalogue of failed methods
 bounds the length of a successful one, and this document should not pretend otherwise.
 
-It does determine, with proof rather than inference, where a short proof cannot be. It cannot
-proceed by finite inspection, by fixed-precision arithmetic, by a bounded carry state, by a
-measure or category argument, by an irrationality-measure bound on $E$ or any constant of that
-type, or --- on the universal side, as of Proposition~\ref{prop:squarefree} --- by instantiating
-the present block-certificate engine at a general support. Each of those is closed with a
-mechanism, and a mechanism is reusable in a way that a failed attempt is not. That is the
-contribution: not a proof, and not a reduction, but a map of the region in which a proof cannot
-live, drawn tightly enough that the remaining region is small and its coordinates are named.
+It records, with proof rather than inference, several closed routes. Fixed-precision arithmetic
+and a bounded carry state are obstructed by the landed no-go theorems cited above. An
+irrationality-measure bound on $E$ does not classify a specified rational in $\mathcal{A}$.
+Instantiating the present block-certificate engine at a general support is blocked, on the
+universal side, by Proposition~\ref{prop:squarefree}. Survival through any tested finite depth does
+not by itself establish membership; a fatal-gap certificate would establish non-membership. These
+facts do not decide rational-target membership, and they do not yield an impossibility theorem for
+all probabilistic, measure-theoretic or averaging methods. Each recorded obstruction is reusable
+in a way that a failed attempt is not. That is the contribution: not a proof, not a reduction, and
+not a map of every region in which a proof cannot live.

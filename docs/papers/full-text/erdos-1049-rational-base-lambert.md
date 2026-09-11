@@ -633,7 +633,9 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 # Guide to the formal sources
 
-Each linked phrase opens its Lean declaration at the pinned source revision 99f4bf47422a. The declarations of this note live in seven modules: `RationalBaseLambert`, `QAperyDiagonalNonEquivalence`, `RationalPadeArithmetic`, `ZudilinConeArithmetic`, `ZudilinHeightRegion`, `HermitePadeNoGo`, and `BezoutPluckerJets`. The first contains the corridor, cleared-tail recurrence, and elementary $`7/2`$ certificate; the second checks the finite $`n=0`$ diagonal residual; the remaining four separate the Padé exponent arithmetic, endpoint arithmetic, logarithmic comparisons, rectangular exponent model, and Bézout–Plücker tail collapse. The link coordinates are validated against that pinned revision, so they remain correct as later work moves lines in the working tree.
+The seven modules named below are linked at the pinned source revision 99f4bf47422a. Additional declarations in the body of the note are linked at a second immutable revision, `f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a`. These are separate snapshots, not one checked revision of the whole library. Each hyperlink opens the named declaration at the commit recorded in its URL.
+
+The declarations linked at 99f4bf47422a live in seven modules: `RationalBaseLambert`, `QAperyDiagonalNonEquivalence`, `RationalPadeArithmetic`, `ZudilinConeArithmetic`, `ZudilinHeightRegion`, `HermitePadeNoGo`, and `BezoutPluckerJets`. The first contains the corridor, cleared-tail recurrence, and elementary $`7/2`$ certificate; the second checks the finite $`n=0`$ diagonal residual; the remaining four separate the Padé exponent arithmetic, endpoint arithmetic, logarithmic comparisons, rectangular exponent model, and Bézout–Plücker tail collapse. The link coordinates for those seven modules are validated against that pinned revision, so they remain correct as later work moves lines in the working tree.
 
 <div class="thebibliography">
 
