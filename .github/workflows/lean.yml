@@ -252,25 +252,44 @@ jobs:
         # explicit full check exports that already-built environment and writes
         # its exact receipt into .lake; plain --check is always noncompiling.
         continue-on-error: true
+        env:
+          PLECTIS_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale
       # --check --full-check already ran the exporter. --write-stale keeps that
       # in-run packet on disk when the tracked index is stale, so the upload
       # below does not start a second 90-minute export. The job still fails:
       # the artifact is evidence for a commit, not a waiver of the check.
+      # Upload the tracked JSON as "fresh" only when the exporter actually
+      # completed and wrote that packet. A timeout, crash, or cancel must not
+      # relabel the pre-existing tracked files as this checkout's export.
       - name: Upload the fresh dependency index
-        if: steps.dependency-index.outcome == 'failure'
+        if: steps.dependency-index.outputs.fresh_export_written == 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: lean-dependency-index-${{ github.sha }}
+          name: lean-dependency-index-fresh-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
           path: |
             docs/lean_dependency_index.json
             docs/lean_dependency_index_check.json
+            .lake/aiw/lean_dependency_index_outcome.json
           if-no-files-found: error
-      - name: Fail on a stale dependency index
-        if: steps.dependency-index.outcome == 'failure'
-        run: |
-          echo "the tracked dependency index is stale; download artifact lean-dependency-index-${{ github.sha }} and commit it" >&2
-          exit 1
+      - name: Upload dependency-index diagnostics
+        if: >-
+          always() &&
+          steps.lean-inputs.outputs.changed == 'true' &&
+          steps.dependency-index.outcome != 'success' &&
+          steps.dependency-index.outputs.fresh_export_written != 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-dependency-index-diagnostics-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
+          path: |
+            .lake/aiw/lean_dependency_index_outcome.json
+            .lake/aiw/lean_dependency_export_diagnostics.log
+          if-no-files-found: warn
+      - name: Fail on a classified dependency-index miss
+        if: >-
+          steps.dependency-index.outcome == 'failure' ||
+          steps.dependency-index.outcome == 'cancelled'
+        run: python3 scripts/build_lean_dependency_index.py --report-ci-outcome --fail-ci-outcome
       - name: Record documentation-only build skip
         if: steps.lean-inputs.outputs.changed != 'true'
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."

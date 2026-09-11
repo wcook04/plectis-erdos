@@ -9,6 +9,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import subprocess
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
@@ -527,6 +528,126 @@ def check_write_stale_requires_full_check() -> None:
     raise AssertionError("--write-stale without --full-check was accepted")
 
 
+def check_export_timeout_does_not_rewrite_tracked_index() -> None:
+    """A 5400s exporter timeout must not relabel the committed index as fresh."""
+    with tempfile.TemporaryDirectory() as directory:
+        tracked = Path(directory) / "lean_dependency_index.json"
+        tracked.write_text("tracked-not-fresh\n", encoding="utf-8")
+        diagnostic = Path(directory) / "diagnostics.log"
+        with patch.object(builder, "OUTPUT", tracked):
+            with patch.object(builder, "EXPORT_DIAGNOSTIC_LOG", diagnostic):
+                with patch.object(
+                    builder,
+                    "run",
+                    side_effect=subprocess.TimeoutExpired(
+                        ["lake", "env", "lean"],
+                        5400,
+                        output=b"partial exporter output",
+                    ),
+                ):
+                    try:
+                        builder.export_environment()
+                    except builder.ClassifiedExportError as exc:
+                        require(
+                            exc.outcome == "export_timeout",
+                            "export timeout was not classified",
+                        )
+                        require(
+                            exc.exit_code == builder.EXIT_TIMEOUT,
+                            "export timeout exit drifted",
+                        )
+                    else:
+                        raise AssertionError("export timeout was not classified")
+        require(
+            tracked.read_text(encoding="utf-8") == "tracked-not-fresh\n",
+            "export timeout rewrote the tracked dependency index",
+        )
+        require(
+            diagnostic.is_file()
+            and "partial exporter output" in diagnostic.read_text(encoding="utf-8"),
+            "export timeout dropped diagnostics",
+        )
+
+
+def check_main_classifies_export_timeout_without_fresh_upload() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        github_output = Path(directory) / "github_output"
+        outcome = Path(directory) / "outcome.json"
+        tracked = Path(directory) / "tracked.json"
+        tracked.write_text("tracked-not-fresh\n", encoding="utf-8")
+        with patch.dict(
+            os.environ,
+            {
+                "GITHUB_OUTPUT": str(github_output),
+                "GITHUB_SHA": "merge-sha",
+                "PLECTIS_PR_HEAD_SHA": "head-sha",
+            },
+            clear=False,
+        ):
+            with patch.object(builder, "OUTPUT", tracked):
+                with patch.object(builder, "CI_OUTCOME_PATH", outcome):
+                    with patch.object(
+                        builder, "check_input_fingerprint", return_value="stable"
+                    ):
+                        with patch.object(
+                            builder,
+                            "build_packet",
+                            side_effect=builder.ClassifiedExportError(
+                                "export_timeout",
+                                builder.EXIT_TIMEOUT,
+                                "timed out",
+                            ),
+                        ):
+                            with patch.object(
+                                builder.sys,
+                                "argv",
+                                [
+                                    "build_lean_dependency_index.py",
+                                    "--check",
+                                    "--full-check",
+                                    "--write-stale",
+                                ],
+                            ):
+                                code = builder.main()
+        require(code == builder.EXIT_TIMEOUT, "timeout did not return classified exit")
+        require(
+            tracked.read_text(encoding="utf-8") == "tracked-not-fresh\n",
+            "timeout rewrote the tracked dependency index",
+        )
+        payload = json.loads(outcome.read_text(encoding="utf-8"))
+        require(payload["outcome"] == "export_timeout", "timeout outcome drifted")
+        require(
+            payload["fresh_export_written"] is False,
+            "timeout labeled tracked files as a fresh export",
+        )
+        emitted = github_output.read_text(encoding="utf-8")
+        require(
+            "fresh_export_written=false" in emitted,
+            "timeout did not tell Actions to skip the fresh-export upload",
+        )
+        require("head-sha" in emitted, "timeout receipt dropped the PR head SHA")
+
+
+def check_unfinished_outcome_refuses_fresh_export_label() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        missing = Path(directory) / "missing.json"
+        with patch.object(builder, "CI_OUTCOME_PATH", missing):
+            with patch.object(
+                builder.sys,
+                "argv",
+                [
+                    "build_lean_dependency_index.py",
+                    "--report-ci-outcome",
+                    "--fail-ci-outcome",
+                ],
+            ):
+                code = builder.main()
+        require(
+            code == builder.EXIT_CRASH,
+            "a missing outcome file was treated as a stale export",
+        )
+
+
 def main() -> int:
     check_safe_dependency_input_boundary()
     check_safe_dependency_output_boundary()
@@ -539,6 +660,9 @@ def main() -> int:
     check_environment_build_is_bounded()
     check_plain_check_never_builds()
     check_write_stale_requires_full_check()
+    check_export_timeout_does_not_rewrite_tracked_index()
+    check_main_classifies_export_timeout_without_fresh_upload()
+    check_unfinished_outcome_refuses_fresh_export_label()
     print("lean dependency index cache: PASS")
     return 0
 
