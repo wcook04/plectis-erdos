@@ -107,7 +107,7 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:90ed42280af2d954bee1fd9555f54ce6b35fbc61fd2f2254a91ca76426df6b89",
+    "docs/claims.json": "sha256:57e41153da50236637248f97066f63251456ebea2c6d177f52ad3ccee3b509b3",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
     "docs/publication_contract.json": "sha256:0afc7b8508914f506f4f69cca0a816f02fa52d3b5eb8e754efdd603cda5f353c",
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 707,
+        "line": 708,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 121,
+        "line": 120,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 107,
+        "line": 106,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
@@ -402,7 +402,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 492,
+        "line": 525,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "exact nonintegrality of every reduced tail"
       },
@@ -414,7 +414,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 498,
+        "line": 531,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "actual cofinal local-window escape"
       },
@@ -426,7 +426,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 507,
+        "line": 540,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "function-faithful two-dimensional representation"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 547,
+        "line": 552,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 721,
+        "line": 722,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 730,
+        "line": 731,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 740,
+        "line": 741,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },

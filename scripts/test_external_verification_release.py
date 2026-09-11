@@ -684,6 +684,24 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
     return root, contract, commit, tree, tag, receipt_path
 
 
+def test_tracked_artifact_path_prefers_nested_storage() -> None:
+    with tempfile.TemporaryDirectory(prefix="ev-artifact-") as raw:
+        root = Path(raw)
+        nested = root / "paper/68/erdos-68-factorial-denominator-irrationality.pdf"
+        nested.parent.mkdir(parents=True)
+        nested.write_bytes(b"nested")
+        (root / "paper/erdos-68-factorial-denominator-irrationality.pdf").write_bytes(
+            b"makefile-copy"
+        )
+        resolved = release.tracked_artifact_path(
+            root, "erdos-68-factorial-denominator-irrationality.pdf"
+        )
+        require(
+            resolved == nested,
+            "Makefile paper/*.pdf copy hid the nested publication PDF",
+        )
+
+
 def test_replay_plan() -> None:
     commit = "a" * 40
     tree = "b" * 40
@@ -857,6 +875,7 @@ def main() -> int:
     test_fixture_git_environment()
     test_receipt_subprocess_environment()
     test_replay_subprocess_environment()
+    test_tracked_artifact_path_prefers_nested_storage()
     test_replay_plan()
     test_public_problem_artifact_coverage()
     test_release_manifest()
