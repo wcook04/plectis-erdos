@@ -298,8 +298,9 @@ introduced next.  The de-duplicated irrationality assertion is historical
 \label{sec:actual-orbit}
 
 \begin{proposition}[the running least common multiple]\label{res:lcm}
-Let $p,q,r$ be pairwise distinct primes and $x\ge1$.  Then
-$\Lprefix(x)=\hgt(x)$.
+Let $p,q,r$ be pairwise distinct primes and $x\ge1$.  Then the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}{smooth-prefix LCM}
+equals the three-prime height: $\Lprefix(x)=\hgt(x)$.
 \end{proposition}
 \begin{proof}
 Every smooth $n\le x$ has prime exponents bounded by the corresponding
@@ -314,15 +315,44 @@ The same definition gives
  x^3/(pqr)<\hgt(x)\le x^3.
 \end{equation}
 Both inequalities are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L112}{cubic height bounds}.
-The height is constant between consecutive pure-power boundaries and gains
-a factor equal to the prime at each boundary.  If $F(H)$ is a height fibre
-in a finite exponent box $\mathcal B$, exact regrouping gives
+
+\begin{proposition}[smooth-prefix LCM cells]\label{res:cell}
+If $x,y\ge1$ lie in the same logarithmic cell, then $\Lprefix(x)=\Lprefix(y)$:
+the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}{smooth-prefix LCM cell}
+is constant.  Advancing exactly one logarithm multiplies the running value
+by the corresponding
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}{first-channel step},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}{second-channel step}
+or
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}{third-channel step}.
+The
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}{jump set with the origin},
+formed from the first $n$ positive powers in each channel together with $1$,
+has cardinality $3n+1$.
+\end{proposition}
+\begin{proof}
+Cell constancy and the three jump ratios follow from
+Proposition~\ref{res:lcm}, since the height depends on $x$ only through the
+three integer logarithms.  Within one channel the first $n$ positive powers
+are distinct; across channels a common value would be a positive power of
+two distinct primes; and $1$ is not a positive prime power.
+\end{proof}
+
+\begin{proposition}[height-fibre regrouping]\label{res:fibre-prop}
+If $F(H)$ is a height fibre in a finite exponent box $\mathcal B$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}{height-fibre regrouping}
+gives
 \begin{equation}\label{res:fibre}
  \sum_{(i,j,k)\in\mathcal B}\Kernel(i,j,k)=\sum_H\frac{\#F(H)}H.
 \end{equation}
-Each term in $F(H)$ equals $1/H$, which proves the identity.  The
-multiplicities remain present in every subsequent infinite sum.
-The regrouping is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407}{finite smooth kernel sum grouped by height}.
+\end{proposition}
+\begin{proof}
+Each term in $F(H)$ equals $1/H$.  The multiplicities remain present in
+every subsequent infinite sum.
+\end{proof}
+
+\noindent The regrouping is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407}{finite smooth kernel sum grouped by height}.
 
 From now on let $P=\{2,3,5\}$ and $S=\mathcal R_P$.  For $a\ge0$ define
 \[
@@ -340,16 +370,18 @@ The literal radix and forcing digit are
 
 \begin{lemma}[integer forcing and the four radices]
 \label{res:dyadic-alphabet}
-For every $a\ge0$, $m_a$ is a positive integer and
-$b_a\in\{2,6,10,30\}$.
+For every $a\ge0$, $m_a$ is a positive integer and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}{four-letter dyadic alphabet}
+satisfies $b_a\in\{2,6,10,30\}$.
 \end{lemma}
 \begin{proof}
 If $x<2^{a+1}$, the two-exponent of $\hgt(x)$ is at most $a$, while the
 other exponents are bounded by those of $\hgt(2^{a+1})$.  Hence
 $2\hgt(x)\mid\hgt(2^{a+1})$.  Each forcing summand is an integer,
-and the shell contains $2^a$.  Between consecutive two-powers there is at
-most one three-power and at most one five-power.  Their optional factors,
-together with the terminal factor two, give the four radices.
+and the shell contains $2^a$.  Between consecutive two-powers,
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}{internal-power uniqueness}
+leaves at most one three-power and at most one five-power.  Their optional
+factors, together with the terminal factor two, give the four radices.
 \end{proof}
 
 \noindent Both clauses are \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean#L48}{literal integer forcing and four radices}.
@@ -367,8 +399,9 @@ at arbitrarily large indices.
 \end{proposition}
 \begin{proof}
 A dyadic shell contains at most one two-exponent for each pair of three-
-and five-exponents.  Each of the latter lies between $0$ and $a$, so its
-count is at most $(a+1)^2$.  By~\eqref{res:cube},
+and five-exponents.  Each of the latter lies between $0$ and $a$, so the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}{quadratic shell bound}
+gives at most $(a+1)^2$ terms.  By~\eqref{res:cube},
 $s_a\le30(a+1)^2/8^a$.  Therefore
 \[
  X_a\le15(a+1)^2\sum_{j\ge0}\frac{(j+1)^2}{8^j}
@@ -567,10 +600,10 @@ The formal sources are recorded by the following per-link immutable revisions.
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}{smooth-prefix LCM},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}{smooth-prefix LCM cell},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card},
@@ -579,18 +612,18 @@ The formal sources are recorded by the following per-link immutable revisions.
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{243}{threePrimePositiveJumpSet},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{273}{threePrimeJumpSetWithOrigin},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}{jump set with the origin},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}{first-channel step},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}{second-channel step},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}{third-channel step},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}{height-fibre regrouping},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two},
@@ -604,11 +637,11 @@ The formal sources are recorded by the following per-link immutable revisions.
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}{quadratic shell bound},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{662}{DyadicInternalPower},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}{internal-power uniqueness},
 \href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L688}{\leanlabel{dyadicBlockBase235}},
-\lref{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}{four-letter dyadic alphabet},
 \lref{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval},
 \lref{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue},
 \lref{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le},

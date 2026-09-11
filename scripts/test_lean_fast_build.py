@@ -313,6 +313,43 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("Main is protected with both jobs", workflow)
         self.assertIn("If branch protection is relaxed, restore push validation", workflow)
 
+    def test_paper_only_skip_cannot_stand_in_for_unverified_layout_inputs(self):
+        """GitHub reports a skipped required Lean job as success.
+
+        A layout/source change that never completed Lean work, followed by a
+        paper-only child, therefore looks green while the intervening inputs
+        remain unverified. The required escape hatch is workflow_dispatch with
+        scope=all, which forces changed=true on the dispatched ref. Cache-warm
+        must not cancel an applicable in-flight producer when a later docs
+        push arrives.
+        """
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        detect = workflow.split("- name: Detect supported-root Lean changes", 1)[1]
+        detect = detect.split("- name: Test pinned proof-environment lock", 1)[0]
+        self.assertIn('EVENT_NAME" == "workflow_dispatch"', detect)
+        self.assertIn('echo "changed=true" >> "$GITHUB_OUTPUT"', detect)
+        self.assertIn("PR_BASE_SHA", detect)
+        cache_warm = (
+            fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("cancel-in-progress: false", cache_warm)
+        lean_diff = detect.split("git diff --quiet", 1)[1].split("then", 1)[0]
+        warm_diff = cache_warm.split("git diff --quiet", 1)[1].split("then", 1)[0]
+        def pathspec(block: str) -> list[str]:
+            return [
+                token
+                for line in block.splitlines()
+                for token in line.replace("\\", " ").split()
+                if token.startswith(("lean/", "verification/", "research/", "docs/", "scripts/", "lakefile", "lake-manifest", "lean-toolchain"))
+                or token.startswith("'lean/")
+                or token.startswith("'verification/")
+                or token.startswith("'research/")
+            ]
+
+        self.assertEqual(pathspec(lean_diff), pathspec(warm_diff))
+
     def test_every_lake_library_root_is_watched_by_some_ci_gate(self) -> None:
         """A Lean library nobody watches is a Lean library CI never compiles.
 

@@ -94,6 +94,14 @@ def main() -> int:
         len(re.findall(r"uses:[^\n]*@[0-9a-f]{40}(?:\s|#|$)", body)) == 3,
         "cache-warm actions are not pinned to immutable revisions",
     )
+    require(
+        re.search(r"(?m)^  cancel-in-progress: false$", workflow) is not None,
+        "docs-only main pushes must not cancel an in-flight Lean cache warm",
+    )
+    require(
+        "Detect Lean-affecting changes" in body,
+        "cache-warm must classify Lean-affecting pushes before warming",
+    )
     print("test_lean_cache_warm_environment: cache-warm commands are isolated and pinned")
     return 0
 

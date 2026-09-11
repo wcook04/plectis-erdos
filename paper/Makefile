@@ -70,9 +70,10 @@ $(ALIASES): archive/erdos249-257-main-paper.tex ../scripts/build_paper_module_al
 
 %.pdf: %.tex $(ALIASES)
 	@if command -v tectonic >/dev/null 2>&1; then \
-	  tectonic $< ; \
+	  tectonic -o . -Z search-path=. $< ; \
 	else \
-	  pdflatex $< && pdflatex $< ; \
+	  TEXINPUTS="$(CURDIR)//:$$TEXINPUTS" pdflatex -output-directory . $< && \
+	  TEXINPUTS="$(CURDIR)//:$$TEXINPUTS" pdflatex -output-directory . $< ; \
 	fi
 
 clean:

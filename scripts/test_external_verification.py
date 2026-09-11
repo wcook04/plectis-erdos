@@ -553,6 +553,30 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("sorryAx", audit_step)
         self.assertIn("depends on axioms", audit_step)
 
+    def test_human_markdown_links_use_current_storage_paths(self) -> None:
+        human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
+        self.assertNotIn("](../ErdosProblems/", human)
+        self.assertNotIn("](../ExternalVerification/", human)
+        self.assertNotIn("](../Erdos249257/", human)
+        missing: list[str] = []
+        for target in re.findall(r"\]\(\.\./([^)]+)\)", human):
+            path = ROOT / target.split("#", 1)[0]
+            if not path.exists():
+                missing.append(target)
+        self.assertEqual(missing, [])
+
+    def test_builder_resolves_identity_paths_to_checkout_storage(self) -> None:
+        self.assertEqual(
+            builder.public_markdown_href("ErdosProblems/Erdos68/FactorialZeroPlateau.lean"),
+            "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+        )
+        self.assertEqual(
+            builder.public_markdown_href(
+                "verification/ExternalVerification/Challenge.lean"
+            ),
+            "verification/ExternalVerification/Challenge.lean",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

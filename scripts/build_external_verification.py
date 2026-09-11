@@ -20,7 +20,11 @@ import stat
 import sys
 from pathlib import Path
 
-from lean_source import library_identity_path, library_storage_path
+from lean_source import (
+    checkout_source_relative,
+    library_identity_path,
+    library_storage_path,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = ROOT / "docs/claims.json"
@@ -232,6 +236,11 @@ def checkout_source_path(source: str) -> Path:
         if path.is_file():
             return path
     return ROOT / source
+
+
+def public_markdown_href(source: str) -> str:
+    """GitHub-clickable checkout path; identity paths 404 after nested layout."""
+    return checkout_source_relative(source, ROOT)
 
 
 def declaration_exists(source: str, full_name: str) -> bool:
@@ -823,7 +832,7 @@ def _render_ranked_candidate(candidate: dict, result: dict) -> list[str]:
             f"{candidate['mechanism_depth_and_natural_friction']}"
         ),
         (
-            f"   - **Source and evidence.** [Lean source](../{library_storage_path(result['original_source'])}); "
+            f"   - **Source and evidence.** [Lean source](../{public_markdown_href(result['original_source'])}); "
             f"{candidate['evidence_certainty']}"
         ),
         (
@@ -1140,7 +1149,7 @@ def _render_programme_signal(rows: list[dict]) -> list[str]:
             if row.get("source_kind") == "canonical_review_family"
             else (
                 f"   - **Source.** {_md_code(row['declaration'])} in "
-                f"[Lean](../{row['source_file']})"
+                f"[Lean](../{public_markdown_href(row['source_file'])})"
             )
         )
         lines.extend(
@@ -1384,7 +1393,7 @@ def render_human(
                 "",
                 (
                     f"**Read.** [Programme paper](../{paper['pdf']}) · "
-                    f"[Lean source](../{source_path})"
+                    f"[Lean source](../{public_markdown_href(source_path)})"
                 ),
                 "",
             ]

@@ -65,14 +65,14 @@ then \(X_A(b)\) is irrational for every integer \(b\ge2\).
 The statement is ordinary mathematics in this note.  This checkout has no
 module \texttt{AllBaseReciprocalSupportIrrationality.lean} and no Lean
 declaration \texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}.
-The nearby Lean theorem
-\texttt{irrational\_erdosSupportSeries\_pairwise\_coprime}
+The nearby
+\mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{pairwise-coprime support theorem}
 keeps an extra pairwise-coprimality hypothesis together with summable
 reciprocal mass, and is therefore a structured-support theorem, not
 Theorem~\ref{res:reciprocal-support}.  Full support at every integer base is
-the separate Lean theorem
-\texttt{irrational\_erdosSum\_full\_support}.  Arbitrary infinite support
-remains open.
+the separate
+\mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{full-support irrationality theorem}.
+Arbitrary infinite support remains open.
 
 For infinite $A$ and $N>0$, division of $N$ by each $a\in A$ gives
 \[
@@ -511,7 +511,8 @@ returns.  This mechanism already fails at the full support:
  >(2^N-1)\sum_{a>N}2^{-a}=1-2^{-N}\ge\frac12
  \qquad(N\ge1).
 \]
-The full-support value is nevertheless irrational~\cite{erdos1968}.
+The full-support value is nevertheless
+\mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{irrational}~\cite{erdos1968}.
 A universal proof must therefore control arithmetic behaviour beyond
 small returns.
 
@@ -659,14 +660,14 @@ The following statements hold.
 \end{theorem}
 
 \noindent The equivalence is
-\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{3507}{one_div_twenty_one_mem_iff_not_fatalAlignedBranch}{kernel checked};
+\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{3507}{one_div_twenty_one_mem_iff_not_fatalAlignedBranch}{one div twenty one mem iff not fatal Aligned Branch};
 the closed-row compactness step is
-\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5554}{twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows}{kernel checked};
+\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5554}{twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows}{twenty One Cofinal Even Quotient Greedy Decay of closed Rows};
 and the eventual affine regime is
-\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5658}{twentyOneFatalAlignedBranch_eventually_affine_supercapacity}{kernel checked}.
+\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5658}{twentyOneFatalAlignedBranch_eventually_affine_supercapacity}{twenty One Fatal Aligned Branch eventually affine supercapacity}.
 The denominator-specific separation theorem additionally proves that every
 closed Boolean quotient row is exactly the canonical quotient-greedy row
-(\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{231}{twentyOneClosedRow_forces_quotientGreedy}{kernel checked}).
+(\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{231}{twentyOneClosedRow_forces_quotientGreedy}{twenty One Closed Row forces quotient Greedy}).
 An aligned crossing from saturation into strict supercapacity forces a
 missing canonical ancestor and a real skipped exponent
 (\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5179}{twentyOneAlignedSaturatedCrossing_forces_canonical_ancestor_hole}{ancestor hole},
@@ -759,10 +760,12 @@ budget: every prime singleton is admitted, while the full prime support
 has displacement greater than $1/3$ at every positive shift.
 
 \section*{Statements and declarations}
-Finite-period noncollapse has a Lean counterpart
-\texttt{finite\_period\_noncollapse\_rat\_den} in
-\texttt{Erdos249257/CertificateKernel.lean}.  Full-support irrationality and
-pairwise-coprime summable-reciprocal support are Lean in the same module.
+Finite-period noncollapse has the counterpart
+\mword{Erdos249257/CertificateKernel.lean}{5246}{finite_period_noncollapse_rat_den}{rational-denominator noncollapse}.
+Full-support irrationality is
+\mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{the full-support theorem};
+pairwise-coprime summable-reciprocal support is
+\mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{the pairwise-coprime theorem}.
 Theorem~\ref{res:reciprocal-support} itself is ordinary mathematics in this
 note and has no Lean counterpart in this checkout: the filenames
 \texttt{AllBaseReciprocalSupportIrrationality.lean},
@@ -787,50 +790,52 @@ No universal irrationality conclusion is asserted.
 
 The following source links are the public snapshot used by this note.
 
-\mword{Erdos249257/CertificateKernel.lean}{5091}{finite_period_noncollapse}{checked},
-\mword{Erdos249257/CertificateKernel.lean}{5246}{finite_period_noncollapse_rat_den}{checked},
-\mword{Erdos249257/CertificateKernel.lean}{5221}{coprime_base_den_finiteErdosSum}{checked},
-\mword{Erdos249257/CertificateKernel.lean}{5260}{lcm_lt_den_finiteErdosSum}{checked}.
-(\mword{Erdos249257/GenericTailOrbitRigidity.lean}{426}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{checked}).
-\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2383}{exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction}{Lean}.
-\mword{Erdos249257/SublogDivisorCoverage.lean}{392}{supportCoeffZeroWindow_length_le_eps_logb_add}{Lean}.
-\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{1480}{one_div_oddOrder_le_reciprocalMass_of_support_fraction}{Lean}.
-\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2210}{dyadic_support_fraction_reciprocalMass_diverges_or_gt_one}{Lean}.
-\mword{Erdos249257/BooleanMobiusCarry.lean}{949}{exists_normalized_support_fraction_iff_exists_booleanMobiusCarry}{Lean}.
-  \mword{Erdos249257/CertificateKernel.lean}{9045}{irrational_erdosSupportSeries_univ}{formalised here} \\
-  (\mword{Erdos249257/CertificateKernel.lean}{9103}{irrational_erdosSupportSeries_multiples}{checked}) \\
-  \mword{Erdos249257/CertificateKernel.lean}{12811}{irrational_ratWeightSeries_eventuallyPeriodic}{checked here};
+\mword{Erdos249257/CertificateKernel.lean}{5091}{finite_period_noncollapse}{finite period noncollapse},
+\mword{Erdos249257/CertificateKernel.lean}{5246}{finite_period_noncollapse_rat_den}{finite period noncollapse rat den},
+\mword{Erdos249257/CertificateKernel.lean}{5221}{coprime_base_den_finiteErdosSum}{coprime base den finite Erdos Sum},
+\mword{Erdos249257/CertificateKernel.lean}{5260}{lcm_lt_den_finiteErdosSum}{lcm lt den finite Erdos Sum}.
+(\mword{Erdos249257/GenericTailOrbitRigidity.lean}{426}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{binary Coeff Series rational iff exists tempered Binary Orbit}).
+\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2383}{exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction}{exists unbounded shifted odd tail nat state of support fraction}.
+\mword{Erdos249257/SublogDivisorCoverage.lean}{392}{supportCoeffZeroWindow_length_le_eps_logb_add}{support Coeff Zero Window length le eps logb add}.
+\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{1480}{one_div_oddOrder_le_reciprocalMass_of_support_fraction}{one div odd Order le reciprocal Mass of support fraction}.
+\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2210}{dyadic_support_fraction_reciprocalMass_diverges_or_gt_one}{dyadic support fraction reciprocal Mass diverges or gt one}.
+\mword{Erdos249257/BooleanMobiusCarry.lean}{949}{exists_normalized_support_fraction_iff_exists_booleanMobiusCarry}{exists normalized support fraction iff exists boolean Mobius Carry}.
+  \mword{Erdos249257/CertificateKernel.lean}{9045}{irrational_erdosSupportSeries_univ}{irrational erdos Support Series univ} \\
+  (\mword{Erdos249257/CertificateKernel.lean}{9103}{irrational_erdosSupportSeries_multiples}{irrational erdos Support Series multiples}) \\
+  \mword{Erdos249257/CertificateKernel.lean}{12811}{irrational_ratWeightSeries_eventuallyPeriodic}{irrational rat Weight Series eventually Periodic};
   above (\mword{Erdos249257/CertificateKernel.lean}{11672}{irrational_erdosSupportSeries_residueClass}{residue class},
   \mword{Erdos249257/CertificateKernel.lean}{11686}{irrational_erdosSupportSeries_odd}{odd});
-  \mword{Erdos249257/CertificateKernel.lean}{6035}{irrational_erdosSum_factorial_support}{checked here} \\
-  \mword{Erdos249257/CertificateKernel.lean}{6059}{irrational_erdosSum_two_pow_support}{checked here} \\
-  \mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here} \\
-\mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{the exact checked statement};
-(\mword{Erdos249257/CertificateKernel.lean}{6272}{lcm_gap_hypothesis_fails_full_support}{checked}).
-(\mword{Erdos249257/CertificateKernel.lean}{14175}{irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic}{checked}).
-\lword{Erdos257/SquarefreeSupportIncidence.lean}{94}{card_squarefreeDivisors}{checked},
-\lword{Erdos257/SquarefreeSupportIncidence.lean}{111}{squarefreeIncidence_eq}{checked},
-\lword{Erdos257/SquarefreeSupportIncidence.lean}{140}{odd_squarefreeIncidence}{checked}.
-(\lword{Erdos257/SquarefreeSupportIncidence.lean}{71}{squarefreeDivisors_eq_image}{Lean}),
+  \mword{Erdos249257/CertificateKernel.lean}{6035}{irrational_erdosSum_factorial_support}{factorial support} \\
+  \mword{Erdos249257/CertificateKernel.lean}{6059}{irrational_erdosSum_two_pow_support}{powers-of-two support} \\
+  \mword{Erdos249257/CertificateKernel.lean}{6082}{erdos257_family_factorial_instance}{factorial-support instance} \\
+  \mword{Erdos249257/CertificateKernel.lean}{6090}{erdos257_family_two_pow_instance}{powers-of-two-support instance} \\
+  \mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{pairwise-coprime support} \\
+\mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{full-support irrationality};
+(\mword{Erdos249257/CertificateKernel.lean}{6272}{lcm_gap_hypothesis_fails_full_support}{lcm gap hypothesis fails full support}).
+(\mword{Erdos249257/CertificateKernel.lean}{14175}{irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic}{irrational or bpow mul eq int Cast int Weighted Erdos Series periodic}).
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{94}{card_squarefreeDivisors}{card squarefree Divisors},
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{111}{squarefreeIncidence_eq}{squarefree Incidence eq},
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{140}{odd_squarefreeIncidence}{odd squarefree Incidence}.
+(\lword{Erdos257/SquarefreeSupportIncidence.lean}{71}{squarefreeDivisors_eq_image}{squarefree Divisors eq image}),
 \lword{Erdos257/SquarefreeSupportIncidence.lean}{274}{not_exists_carry_certificates_squarefreeSupport}{the carry-aware no-go}
 \lword{Erdos257/SquarefreeSupportIncidence.lean}{292}{not_exists_digitwise_certificates_squarefreeSupport}{the digitwise no-go}.
 \lword{Erdos257/SquarefreeSupportIncidence.lean}{314}{supportCoeff_squarefreeShiftedSupport}{$2^{\omega(n)}$ incidence}
 \lword{Erdos257/SquarefreeSupportIncidence.lean}{335}{irrational_erdosSupportSeries_squarefreeSupport_iff_shifted}{the shift iff}.
 \lword{Erdos257/SquarefreeSupportIncidence.lean}{441}{exists_omega_ge_block}{for $\omega$}
 \lword{Erdos257/SquarefreeSupportIncidence.lean}{485}{exists_digitwise_block_squarefreeShiftedSupport}{for the shifted incidence}.
-\mword{Erdos249257/CertificateKernel.lean}{9467}{irrational_erdosSupportSeries_of_tail}{Lean}
-\mword{Erdos249257/CertificateKernel.lean}{9476}{irrational_erdosSupportSeries_tail_of_irrational}{Lean}.
+\mword{Erdos249257/CertificateKernel.lean}{9467}{irrational_erdosSupportSeries_of_tail}{irrational erdos Support Series of tail}
+\mword{Erdos249257/CertificateKernel.lean}{9476}{irrational_erdosSupportSeries_tail_of_irrational}{irrational erdos Support Series tail of irrational}.
 \mword{Erdos249257/GreedyAchievementSet.lean}{656}{isCompact_mersenneAchievementSet}{compact},
 \mword{Erdos249257/GreedyAchievementSet.lean}{1656}{perfect_mersenneAchievementSet}{perfect},
 \mword{Erdos249257/GreedyAchievementSet.lean}{1672}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
 \mword{Erdos249257/GreedyAchievementSet.lean}{1681}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
 \mword{Erdos249257/GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}{of measure one}.
-(\mword{Erdos249257/GreedyAchievementSet.lean}{1458}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}).
-(\mword{Erdos249257/GreedyAchievementSet.lean}{1784}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
-(\lword{Erdos257/MersenneSubseriesRigidity.lean}{20}{selectedMersenneTail}{definition},
-\lword{Erdos257/MersenneSubseriesRigidity.lean}{24}{summable_selectedMersenneTail}{Lean}).
-(\lword{Erdos257/MersenneSubseriesRigidity.lean}{30}{selectedMersenneTail_lt_weight}{checked}),
-(\lword{Erdos257/MersenneSubseriesRigidity.lean}{54}{supportedMersenneDigitValue_injective}{checked}),
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1458}{mem_mersenneAchievementSet_iff_greedy_survival}{mem mersenne Achievement Set iff greedy survival}).
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1784}{three_fourths_not_mem_mersenneAchievementSet}{three fourths not mem mersenne Achievement Set}).
+(\lword{Erdos257/MersenneSubseriesRigidity.lean}{20}{selectedMersenneTail}{selected Mersenne Tail},
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{24}{summable_selectedMersenneTail}{summable selected Mersenne Tail}).
+(\lword{Erdos257/MersenneSubseriesRigidity.lean}{30}{selectedMersenneTail_lt_weight}{selected Mersenne Tail lt weight}),
+(\lword{Erdos257/MersenneSubseriesRigidity.lean}{54}{supportedMersenneDigitValue_injective}{supported Mersenne Digit Value injective}),
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{45}{SupportedMersenneDigits}{digit strings vanishing off $J$}
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{49}{supportedMersenneDigitValue}{restricted digit map},
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{63}{supportedMersenneDigitSet}{supported digit set},
@@ -852,7 +857,7 @@ The following source links are the public snapshot used by this note.
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{300}{supportedMersenneAchievementSet_univ}{by definition}.
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{313}{volume_supportedMersenneAchievementSet_finset_compl_scaled}{multiplies the face volume by $2^{|F|}$}
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{349}{volume_supportedMersenneAchievementSet_finset_compl}{gives $2^{-|F|}$}.
-\lword{Erdos257/MersenneSubseriesRigidity.lean}{358}{supportedMersenneAchievementSet_mono}{checked}.
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{358}{supportedMersenneAchievementSet_mono}{supported Mersenne Achievement Set mono}.
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{368}{volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite}{measure zero}.
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{397}{volume_supportedMersenneAchievementSet_dichotomy}{the formal dichotomy}.
 \mword{Erdos249257/GreedyAchievementSet.lean}{2583}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form},
@@ -892,27 +897,27 @@ The following source links are the public snapshot used by this note.
 (\mword{Erdos249257/MobiusSignSupportNoGo.lean}{111}{tsum_negativeMobius_eq_half_add_positiveMobiusTail}{identity},
 \mword{Erdos249257/MobiusSignSupportNoGo.lean}{150}{half_add_one_div_sixty_three_le_tsum_negativeMobius}{bound}).
 \lword{Erdos257/HalfCounterexampleFrontier.lean}{61}{finiteErdosSum_ne_one_div_twenty_one}{the formal theorem}.
-(\mword{Erdos249257/Primitive23Multiplicity.lean}{52}{exists_primitive23_solution_of_eleven_le}{checked}),
-(\mword{Erdos249257/Primitive23Multiplicity.lean}{26}{no_primitive23_solution_ten}{checked}).
+(\mword{Erdos249257/Primitive23Multiplicity.lean}{52}{exists_primitive23_solution_of_eleven_le}{exists primitive23 solution of eleven le}),
+(\mword{Erdos249257/Primitive23Multiplicity.lean}{26}{no_primitive23_solution_ten}{no primitive23 solution ten}).
 (\mword{Erdos249257/Primitive23Multiplicity.lean}{38}{exists_two_primitive23_solutions_eleven}{rank eleven},
 \mword{Erdos249257/Primitive23Multiplicity.lean}{86}{exists_two_primitive23_solutions_mul_ten}{multiples of ten}).
-\mword{Erdos249257/GreedyTrapDynamics.lean}{262}{mersenneAchievementSet_eq_scaledGreedyTrap}{kernel checked},
-\mword{Erdos249257/GreedyTrapDynamics.lean}{189}{scaledGreedyRemainder_tendsto_atTop_of_not_mem}{kernel checked},
-\mword{Erdos249257/GreedyTrapDynamics.lean}{225}{mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded}{kernel checked}.
-\mword{Erdos249257/GreedyTrapDynamics.lean}{152}{rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally}{kernel checked},
-\mword{Erdos249257/GreedyTrapDynamics.lean}{283}{one_div_twentyOne_mem_iff_scaledLowerBranchCofinally}{kernel checked}.
-(\mword{Erdos249257/BooleanMobiusCarry.lean}{2117}{twentyOneGreedyDefect_add_mod_div_eq_scaled_remainder_add_tail}{checked}).
+\mword{Erdos249257/GreedyTrapDynamics.lean}{262}{mersenneAchievementSet_eq_scaledGreedyTrap}{mersenne Achievement Set eq scaled Greedy Trap},
+\mword{Erdos249257/GreedyTrapDynamics.lean}{189}{scaledGreedyRemainder_tendsto_atTop_of_not_mem}{scaled Greedy Remainder tendsto at Top of not mem},
+\mword{Erdos249257/GreedyTrapDynamics.lean}{225}{mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded}{mem mersenne Achievement Set iff scaled Remainder cofinally Bounded}.
+\mword{Erdos249257/GreedyTrapDynamics.lean}{152}{rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally}{rat mem mersenne Achievement Set iff scaled Lower Branch Cofinally},
+\mword{Erdos249257/GreedyTrapDynamics.lean}{283}{one_div_twentyOne_mem_iff_scaledLowerBranchCofinally}{one div twenty One mem iff scaled Lower Branch Cofinally}.
+(\mword{Erdos249257/BooleanMobiusCarry.lean}{2117}{twentyOneGreedyDefect_add_mod_div_eq_scaled_remainder_add_tail}{twenty One Greedy Defect add mod div eq scaled remainder add tail}).
 (\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{32}{twentyOneEvenQuotientGreedySupport}{support},
 \mword{Erdos249257/TwentyOneQuotientGreedy.lean}{39}{twentyOneEvenQuotientGreedyRemainder}{remainder}).
-\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{3507}{one_div_twenty_one_mem_iff_not_fatalAlignedBranch}{kernel checked};
-\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5554}{twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows}{kernel checked};
-\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5658}{twentyOneFatalAlignedBranch_eventually_affine_supercapacity}{kernel checked}.
-(\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{231}{twentyOneClosedRow_forces_quotientGreedy}{kernel checked}).
+\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{3507}{one_div_twenty_one_mem_iff_not_fatalAlignedBranch}{one div twenty one mem iff not fatal Aligned Branch};
+\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5554}{twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows}{twenty One Cofinal Even Quotient Greedy Decay of closed Rows};
+\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5658}{twentyOneFatalAlignedBranch_eventually_affine_supercapacity}{twenty One Fatal Aligned Branch eventually affine supercapacity}.
+(\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{231}{twentyOneClosedRow_forces_quotientGreedy}{twenty One Closed Row forces quotient Greedy}).
 (\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5179}{twentyOneAlignedSaturatedCrossing_forces_canonical_ancestor_hole}{ancestor hole},
 \mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5223}{twentyOneAlignedSaturatedCrossing_forces_scaled_greedy_skip}{scaled skip}).
-(\mword{Erdos249257/GreedyTrapDynamics.lean}{275}{one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded}{checked}).
+(\mword{Erdos249257/GreedyTrapDynamics.lean}{275}{one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded}{one div twenty One mem iff scaled Remainder cofinally Bounded}).
 (\mword{Erdos249257/BooleanMobiusCarry.lean}{2843}{one_div_twenty_one_mem_mersenneAchievementSet_of_defect_le_one_cofinally}{sufficient condition})
-(\mword{Erdos249257/BooleanMobiusCarry.lean}{1892}{twentyOneGreedyDefect_add_six}{checked}).
+(\mword{Erdos249257/BooleanMobiusCarry.lean}{1892}{twentyOneGreedyDefect_add_six}{twenty One Greedy Defect add six}).
 \mword{Erdos249257/BooleanMobiusCarry.lean}{1927}{twentyOneGreedyDefect_add_six_le_div_six_iff_repairLoad}{the exact equivalence}.
 \mword{Erdos249257/TwentyOneQuotientGreedy.lean}{3735}{lastTwentyOneSkip_erdosBorwein_fatalInterval}{an exact one-sided approximation}.
 (\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{3569}{lastTwentyOneSkip_oddDoublingOrder_eq_lcm}{order identity},
