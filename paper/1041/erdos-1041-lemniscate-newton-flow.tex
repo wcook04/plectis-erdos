@@ -225,7 +225,7 @@ radii may have overlapping shadows.  Common circle slices retain it.
 The resulting lower bound for $k$ feeds the length--area comparison until a
 short boundary connection is forced.  The complete comparison proof and
 rational certificate are in
-\path{ErdosProblems/Erdos1041/AngularBudgetLowCriticalClosure.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AngularBudgetLowCriticalClosure.md}{the angular budget low critical closure}.
 The certified terminal time is $635762889599/10^{12}$, and
 $(13/25)\exp(635762889599/10^{12})<1$.
 
@@ -304,8 +304,8 @@ strictly below the top of the window, so the path lies in $\{|f|<1\}$.
 
 The component-arity, capacity and two-root persistence-window refinements
 are retained with their complete hypotheses in
-\path{ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md} and
-\path{ErdosProblems/Erdos1041/MinimalHubWindowJoin.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md}{unconditional constant factor bound} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/MinimalHubWindowJoin.md}{minimal hub window join}.
 Their parent conclusions under $\mu\le1/2$ are already covered by
 Theorem~\ref{res:low-critical-thirteen-twentyfifths}; their additional content
 is control of a specified component or a specified descent arc.
@@ -470,7 +470,7 @@ In particular the connector is shorter than $2|v|^{1/n}$ whenever
 
 \begin{corollary}[disk-family uniform radius]\label{res:critical-value-thresholds}
 A strictly stronger disk-family theorem, proved in
-\path{ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.md}, replaces
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.md}{disk family critical value separation}, replaces
 the coefficientwise logarithm $\log(S/(S-1))$ by the Bergman segment identity
 \[
  \Bigl(\int_{-q}^{q}|h|\Bigr)^2
@@ -535,10 +535,10 @@ $2\sum_{k\ge1}|a_k|$.  Letting $R\uparrow\sqrt S$ proves the theorem.
 \paragraph{Boundary.}\label{bdry:critical-value-separation}
 The analytic continuation, the univalence, the area formula, and the
 area--capacity inequality are ordinary mathematics; they are proved in
-\path{ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparationCertificate.md}
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparationCertificate.md}{first merge critical value separation certificate}
 and are not formalised.  What Lean checks is the numerical half of the
 statement, in
-\path{ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean}:
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean}{first merge critical value separation}:
 the squared coefficient
 $\pdecl{firstMergeSquaredCoefficient}$ is antitone in the degree
 (\pdecl{firstMergeSquaredCoefficient\_antitone\_degree}), a squared connector
@@ -547,8 +547,8 @@ length below $4$ times a coefficient below $1$ forces length below $2$
 three coefficientwise regimes hold exactly
 (\pdecl{firstMerge\_exact\_convenient\_thresholds}),
 while the live uniform radius $4/3$ is checked in
-\path{ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean}.  The Comparator entry is
-\path{ExternalVerification1041FirstMergeCriticalValueSeparation}.  Lean does
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean}{disk family critical value separation}.  The Comparator entry is
+\href{https://github.com/wcook04/plectis-erdos/tree/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ExternalVerification1041FirstMergeCriticalValueSeparation}{the first-merge critical-value separation Comparator}.  Lean does
 not prove the analytic hypothesis $\ell^2\le4\,\mathrm{c}(n,S)$ that those
 consumers take as input, and nothing in this section asserts the unrestricted
 problem or the complementary near-tie regime.
@@ -563,9 +563,9 @@ every degree $n\ge3$ and supplies an explicit inverse-map length estimate.
 
 None of the following is a counterexample to Erd\H{o}s~\#1041.  Each kills a
 covering reading of a sufficient regime.  Rational cores are checked in
-\path{ErdosProblems/Erdos1041/RevisionR2ExactCores.lean}; the ordinary
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/RevisionR2ExactCores.lean}{revision r2 exact cores}; the ordinary
 arguments are in
-\path{ErdosProblems/Erdos1041/ExactObstructionsR2.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ExactObstructionsR2.md}{exact obstructions r2}.
 
 \begin{proposition}[no separation-or covering]
 \label{res:sep-or-false}
@@ -694,7 +694,7 @@ $nq^{N+1}/((N+1)(1-q))$; differentiated geometric series give the
 corresponding first and second derivative bounds.
 The complete reciprocal recurrences, zero-margin staple construction, and
 quadratic contact test are proved in the long record and
-\path{ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md}{reciprocal newton expansion}.
 Their use requires a compatible local contact; the expansion alone supplies
 no global root-pair selection.
 
@@ -981,8 +981,8 @@ boundary.  Power means give $(S)_n$, and scaling restores $R$.
 
 The constant is attained by $f(z)=(z-h)^n-\lambda$ with $|\lambda|=R^n$.
 These ordinary analytic proofs are recorded in
-\path{ErdosProblems/Erdos1041/FreePointQuadraticAllDegrees.md} and
-\path{ErdosProblems/Erdos1041/CentredCircleQuadrinomialConnector.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/FreePointQuadraticAllDegrees.md}{free point quadratic all degrees} and
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/CentredCircleQuadrinomialConnector.md}{centred circle quadrinomial connector}.
 The circle comparison and finite Taylor-coefficient identity have checked
 kernels; Poisson integration and the maximum-principle assembly remain ordinary.
 A critical-value mean supplies no attachment or path-length estimate by itself.
@@ -1050,7 +1050,7 @@ The identity explains why a linear charge per attachment age loses the
 behaviour of very young edges.  Chain allocation must retain the distribution
 of ages and the convex function $\Phi$.  The weighted Jensen bounds and the
 two-young-root selector are retained in
-\path{ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.md}{attachment age lifetime orlicz}.
 They still require a geometric compatibility estimate before they produce a
 contained connector.
 
@@ -1083,12 +1083,12 @@ segments attain length $2$.  The exact closed-class question is therefore
  \boxed{\Lambda(f)\le\Lambda(z^n-1)=2\qquad(f\in\mathcal K_n).}
 \]
 The lower-semicontinuity argument is proved in
-\path{ErdosProblems/Erdos1041/GenericSufficiencyClosure.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md}{generic sufficiency closure}.
 
 \paragraph{A sufficient canonical-arc estimate.}
 On the generic simple-critical, ray-separated class, cutting the value plane
 along critical rays gives the finite inverse-sheet construction recorded in
-\path{ErdosProblems/Erdos1041/AttachmentAwareReeb.md}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AttachmentAwareReeb.md}{attachment aware reeb}.
 Let $L_f(c)$ be the length of the canonical two-root descent arc through a
 critical point $c$.  Only critical points with $|f(c)|\le1$ give admissible
 unit-level candidates.  The sufficient metric target is
@@ -1126,7 +1126,7 @@ arity does not control capacity after subsequent mergers.  The all-degree
 critical-value inequality controls a marginal distribution; it does not
 identify compatible inverse branches.
 The ordinary note
-\path{ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md}
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/BlaschkePowerCriticalSpectra.md}{blaschke power critical spectra}
 records Blaschke-power polynomials $F_N=A^N-D^N$ that realise the sharp
 critical-value moment numerator $4s$ inside the polynomial class, including
 a high-critical nonseparated regime with exact rational certificates.  The

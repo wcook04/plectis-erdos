@@ -143,7 +143,7 @@ is zero or one.  Its support in $[0,1)$ consists of
 \]
 These are the intervals $\mathcal I$ used to define $J$.
 The zero-one values and this thirteen-interval support are
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297}{Lean source}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297}{omega indicator}.
 
 \paragraph{Integral polynomials and their degrees.}
 The source's polynomial inclusion is Lemma~7, display~(23).
@@ -244,7 +244,7 @@ Since $0\le1-\nu_\ell\le1$, it follows that
 Because $U_n,V_n$ are integral polynomials of degree at most $W_n$,
 $b^{W_n}U_n(a/b)$ and $b^{W_n}V_n(a/b)$ are integers.
 That integrality and the cleared linear-form identity it produces are
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61}{Lean source}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean#L61}{cleared linear form identity}.
 Moreover
 \[
 \begin{split}
@@ -257,7 +257,7 @@ The coefficient is negative under the theorem's hypothesis.  Thus positive
 integral linear forms in $F(a/b)$ tend to zero.  If $F(a/b)=r/s$ were rational,
 every such form would have absolute value at least $1/|s|$, a contradiction.
 The separation bound for a nonzero integral form at a rational target is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128}{Lean source}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean#L128}{rational integer linear form gap}.
 \end{proof}
 
 \begin{corollary}\label{res:thirtyone-four}
@@ -383,7 +383,7 @@ than $1$.  Thus $b_n/a_n$ is eventually a fixed rational $r$.  If
 $F(p)\ne r$ then $|L_n|\ge|F(p)-r|$; if $F(p)=r$ then $L_n=0$.  Both
 contradict the hypotheses, so $\sigma\le\delta$.
 The integer argument of this paragraph, from the two cross-product limits to
-the contradiction, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L123}{Lean source}.
+the contradiction, is \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L123}{no small forms of cross product limits}.
 The homogenised logarithm satisfies
 \[
  \limsup_{n\to\infty} n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
@@ -391,8 +391,8 @@ The homogenised logarithm satisfies
 \]
 which is negative on the stated sufficient region.
 The arithmetic form of that region is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144}{Lean source}, and the final numerical clause is
-\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155}{Lean source}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L144}{logarithmic region iff negative balance}, and the final numerical clause is
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean#L155}{half cap iff}.
 The conclusion bounds the
 sufficient cutoff furnished by the displayed degree estimate.  An exclusion for a
 particular family requires its actual degree and remainder asymptotics.
@@ -560,7 +560,7 @@ of the four cyclic-modulus cardinalities.  For \(R>0\),
 \]
 which proves the stated sufficient threshold.
 The cardinality formula, the collision, the signed \(\{-1,0,1\}\) vector and
-the sufficient width are together \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248}{Lean source}.
+the sufficient width are together \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L248}{four jet paper statement}.
 \end{proof}
 
 The ambient count does not use relations between the two residue
@@ -595,7 +595,7 @@ at most $2^S3^R$ values.  Finally
 \]
 and pigeonhole gives the two selectors.
 The ring-generic minor collapse and the modular selector collision are
-together \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269}{Lean source}.
+together \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean#L269}{plucker paper statement}.
 \end{proof}
 
 Primitive integer rows are unimodular modulo every modulus.  A particular
