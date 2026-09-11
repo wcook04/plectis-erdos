@@ -524,7 +524,7 @@
       "original_declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
-      "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational.",
+      "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational.",
       "boundary": "The equivalence does not prove irrationality of either series.",
       "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",
@@ -1453,7 +1453,7 @@
         {
           "id": "two_prime_transcendence",
           "contribution_class": "paper plus external theorem",
-          "summary": "Both two-prime running-lcm series are proved transcendental by an authored deduction from an external theorem.",
+          "summary": "Steve Fan posted the two-prime factorisation, reduction and transcendence first (erdosproblems.com/269, 26 June 2026, post-7218). This checkout records that ordinary deduction from Bugeaud–Laurent and does not claim priority or a Lean theorem.",
           "evidence_mode": "paper argument plus cited theorem",
           "comparator_disposition": "not_applicable_not_a_lean_declaration",
           "boundary": "Comparator cannot certify the external analytic input."
@@ -1688,9 +1688,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:a1d547791c470ae904d788c83aa1f2b4ae84644e27f7890179eecd3f946d4415",
+    "owner_digest": "sha256:6dcd040fe30e2dc29a0766bab3cbd34d3c21691c811750d7530a8003bff7511a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:4270de4e4480cdad26eac6e8f77734ad1868228d37765f93c2c264dbb29fb615",
+    "projection_digest": "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1706,13 +1706,13 @@
         "directory": "lean/ErdosProblems/Erdos68",
         "modules": [
           {
-            "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
-            "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+            "module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+            "path": "lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
             "present": true,
-            "line_count": 1756,
-            "declaration_count": 63,
-            "theorem_count": 57,
-            "content_digest": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+            "line_count": 1008,
+            "declaration_count": 36,
+            "theorem_count": 31,
+            "content_digest": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
           },
           {
             "module": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
@@ -1776,6 +1776,15 @@
             "declaration_count": 17,
             "theorem_count": 11,
             "content_digest": "sha256:170b6eadada6558fb37892ff30e4fbdb1e1c2474db33241da38867dcbd4213a6"
+          },
+          {
+            "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
+            "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+            "present": true,
+            "line_count": 1756,
+            "declaration_count": 63,
+            "theorem_count": 57,
+            "content_digest": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
           },
           {
             "module": "ErdosProblems.Erdos68.FiniteDefectAutomaton",
@@ -2089,6 +2098,9 @@
           "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
         },
         "what_is_checked": [
+          "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1.",
+          "The rational span of the full dyadic totient kernel is not finite-dimensional; for integer-valued sequence modules this is equivalent to Coons's non-k-regularity and is not an independent contribution.",
+          "Lean diagonal certificates through t = 82; neither t = 83 nor an unbounded family is supplied.",
           "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.",
           "The local s=1 and s=2 squared Möbius Euler-factor identities and the first two prime-power divisor-sum differences.",
           "That the two-by-two checkerboard kills separable backgrounds and is unique up to scale under the four row and column cancellations.",

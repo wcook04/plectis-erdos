@@ -447,7 +447,7 @@ status:
       local_proof_provenance: "proved_in_this_repository"
       novelty_status: "unassessed_no_priority_claim"
       contribution_class: "locally proved result; novelty unassessed"
-      statement: "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational."
+      statement: "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational."
       boundary: "The equivalence does not prove irrationality of either series."
       comparator_declaration: "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap"
       literature_dependencies: []
@@ -1029,7 +1029,7 @@ alignment:
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       status: "proved"
       note: "The wrapper proves the finite identity and the two non-eventual-periodicity statements only. It does not assert the infinite rational-sum limit of the synthetic countermodel, identify the synthetic coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
-    - source: "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational."
+    - source: "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational."
       lean: "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap"
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       status: "proved"
@@ -1492,7 +1492,7 @@ claim_review_matrix:
         contribution_class: "paper plus external theorem"
         evidence_mode: "paper argument plus cited theorem"
         comparator_disposition: "not_applicable_not_a_lean_declaration"
-        summary: "Both two-prime running-lcm series are proved transcendental by an authored deduction from an external theorem."
+        summary: "Steve Fan posted the two-prime factorisation, reduction and transcendence first (erdosproblems.com/269, 26 June 2026, post-7218). This checkout records that ordinary deduction from Bugeaud–Laurent and does not claim priority or a Lean theorem."
         boundary: "Comparator cannot certify the external analytic input."
       - id: "height_fibre_and_shell"
         contribution_class: "locally proved result; novelty unassessed"
@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:4270de4e4480cdad26eac6e8f77734ad1868228d37765f93c2c264dbb29fb615"
+  problem_index_digest: "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1636,7 +1636,7 @@ external_verification:
     - id: "erdos_249"
       erdos_number: 249
       status: "open"
-      checked_frontier: "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint."
+      checked_frontier: "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1."
       open_frontier: "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
     - id: "erdos_251"

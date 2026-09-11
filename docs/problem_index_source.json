@@ -47,6 +47,7 @@
         "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
         "ErdosProblems.Erdos68.FactorialCarry",
         "ErdosProblems.Erdos68.FactorialChannelCertificate",
+        "ErdosProblems.Erdos68.FactorialZeroPlateau",
         "ErdosProblems.Erdos68.FiniteDefectAutomaton",
         "ErdosProblems.Erdos68.PrimeUnitTranslator",
         "ErdosProblems.Erdos68.PrimeZeroBranch",

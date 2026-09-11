@@ -206,6 +206,13 @@ All 70 source-current review families are accounted for here. The categories pre
 **Read.** [Programme paper](../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
 
 <details>
+<summary>Source and priority note</summary>
+
+Comparator isolation in this checkout is FactorialGapPlateauCore; FactorialZeroPlateau is the default-root duplicate. Required note links remain ZeroPlateau because Core is absent from pin 99f4bf47.
+
+</details>
+
+<details>
 <summary>Representative checked declaration</summary>
 
 <code>ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses</code>
@@ -397,7 +404,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Question.** Is the binary Lambert series sum phi(n)/2^n irrational?
 
-**Checked frontier.** Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.
+**Checked frontier.** For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1.
 
 **Open boundary.** The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.
 
@@ -1086,7 +1093,7 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
 - **Two prime transcendence**<br>
-  Both two-prime running-lcm series are proved transcendental by an authored deduction from an external theorem.<br>
+  Steve Fan posted the two-prime factorisation, reduction and transcendence first (erdosproblems.com/269, 26 June 2026, post-7218). This checkout records that ordinary deduction from Bugeaud–Laurent and does not claim priority or a Lean theorem.<br>
   **Boundary.** Comparator cannot certify the external analytic input.<br>
   *Evidence.* paper plus external theorem · paper argument plus cited theorem
 
@@ -1557,7 +1564,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap</code>
   - **Class.** locally proved result; novelty unassessed
-  - **Statement.** The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational.
+  - **Statement.** The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is. The identity is the already-known summation-by-parts (Tao, 7 October 2025); this checkout checks it, discharging summability by an elementary polynomial prime bound rather than the prime-number theorem. Neither side is proved irrational.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The equivalence does not prove irrationality of either series.
