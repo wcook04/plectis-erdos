@@ -71,6 +71,7 @@ from build_declaration_atlas import (
     source_fingerprint as compute_declaration_atlas_source_fingerprint,
 )
 from build_semantic_corpus import semantic_input_fingerprint
+from query_corpus import live_expert_consumer
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "docs" / "semantic_corpus.json"
@@ -1462,7 +1463,16 @@ def cmd_open_antecedents(corpus: dict, args) -> int:
 def cmd_expert_questions(corpus: dict, args) -> int:
     """Exact open inputs with checked consumers and falsifiable working guesses."""
     frontier = corpus.get("frontier", {})
-    rows = frontier.get("expert_questions", [])
+    rows = [
+        {
+            **row,
+            "consumer_declarations": [
+                live_expert_consumer(consumer)
+                for consumer in row.get("consumer_declarations", [])
+            ],
+        }
+        for row in frontier.get("expert_questions", [])
+    ]
     if args.problem:
         rows = [row for row in rows if row.get("problem") == args.problem]
     if args.node_id:

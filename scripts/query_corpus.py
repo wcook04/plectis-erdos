@@ -1196,6 +1196,38 @@ def declarations_for_module_path(module_path: str) -> list[dict[str, Any]]:
     return list(indexes.get(module_path, []))
 
 
+def declaration_for_module_name(
+    module: str, name: str
+) -> dict[str, Any] | None:
+    """Return one atlas row for a declaration under either path spelling."""
+    for row in declarations_for_module_path(module):
+        if row.get("name") == name:
+            return row
+    return None
+
+
+def live_expert_consumer(consumer: Mapping[str, Any]) -> dict[str, Any]:
+    """Join an expert-question consumer to the live atlas identity coordinate.
+
+    Frontier and corpus rows may spell ``lean/…`` storage or public identity
+    paths, and may carry a stale line after a nearby proof moved.  Callers
+    share this resolver so handoff packets, semantic expert-question packets,
+    and coverage receipts name the same declaration.
+    """
+    module = str(consumer.get("module") or "")
+    name = str(consumer.get("declaration") or consumer.get("name") or "")
+    refreshed = dict(consumer)
+    row = declaration_for_module_name(module, name)
+    if row is not None:
+        refreshed["module"] = library_identity_path(str(row.get("module") or module))
+        refreshed["line"] = row["line"]
+    else:
+        refreshed["module"] = library_identity_path(module)
+    if name:
+        refreshed["declaration"] = name
+    return refreshed
+
+
 @lru_cache(maxsize=1)
 def declaration_rows_by_qualified_name() -> dict[str, dict[str, Any]]:
     """Resolve qualified handles lazily; bare-name queries use the cheap index."""

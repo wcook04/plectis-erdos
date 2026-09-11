@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from lean_source import library_identity_path, library_storage_path, library_storage_variants
+from query_corpus import live_expert_consumer
 
 ROOT = Path(__file__).resolve().parent.parent
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
@@ -188,20 +189,15 @@ def load_json(path: Path) -> dict[str, Any]:
 @lru_cache(maxsize=1)
 def mathematical_questions() -> list[dict[str, Any]]:
     rows = load_json(FRONTIER).get("expert_questions", [])
-    declarations = {
-        (row["module"], row["name"]): row
-        for row in load_json(ATLAS).get("declarations", [])
-    }
     # Coordinates are navigation data, not authored mathematical content.
-    # Resolve them from the exhaustive live atlas so every expert-query surface
-    # survives harmless source movement in the same way as semantic_corpus.json.
+    # Resolve them through the path-invariant atlas join so identity and
+    # storage spellings, plus nearby proof movement, stay aligned with
+    # semantic expert-question packets and coverage receipts.
     for question in rows:
-        for consumer in question.get("consumer_declarations", []):
-            declaration = declarations.get(
-                (consumer.get("module"), consumer.get("declaration"))
-            )
-            if declaration is not None:
-                consumer["line"] = declaration["line"]
+        question["consumer_declarations"] = [
+            live_expert_consumer(consumer)
+            for consumer in question.get("consumer_declarations", [])
+        ]
     return [{"domain": MATH_DOMAIN, **row} for row in rows]
 
 
