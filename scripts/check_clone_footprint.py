@@ -66,7 +66,6 @@ LEAN_SPARSE_PATTERNS = (
     "/CONTRIBUTING.md",
     "/lean/Erdos249257.lean",
     "/lean/ErdosProblems.lean",
-    "/GEMINI.md",
     "/docs/READING_GUIDE.md",
     "/LICENSE",
     "/docs/METHODOLOGY.md",

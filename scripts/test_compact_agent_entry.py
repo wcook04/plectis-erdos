@@ -16,9 +16,9 @@ WORKBENCH = ROOT / "docs" / "AGENT_WORKBENCH.md"
 PUBLICATION_ENTRY = ROOT / "docs" / "publication_entry_packet.json"
 README = ROOT / "README.md"
 
-# Native adapters import or point to the single root entry. Codex and Cursor
-# discover AGENTS.md directly; neither needs another root instruction file.
-PROVIDER_ADAPTERS = ("CLAUDE.md", "GEMINI.md", ".github/copilot-instructions.md")
+# Native adapters import or point to the single root entry. Codex, Cursor, and
+# Gemini discover AGENTS.md directly; they do not need another root file.
+PROVIDER_ADAPTERS = ("CLAUDE.md", ".github/copilot-instructions.md")
 
 ADAPTER_BYTE_CEILING = 1_500
 
@@ -112,9 +112,9 @@ def main() -> int:
         assert "AGENTS.md" in adapter, rel
         assert "docs/AGENT_GUIDE.md" in adapter, rel
         assert len(adapter.encode("utf-8")) <= ADAPTER_BYTE_CEILING, rel
-    for rel in ("CLAUDE.md", "GEMINI.md"):
+    for rel in ("CLAUDE.md",):
         assert "@AGENTS.md" in (ROOT / rel).read_text(encoding="utf-8"), rel
-    for retired in ("AGENTS.override.md", "CODEX.md", "CURSOR.md"):
+    for retired in ("AGENTS.override.md", "CODEX.md", "CURSOR.md", "GEMINI.md"):
         assert not (ROOT / retired).exists(), f"duplicate root entry: {retired}"
 
     packet = json.loads(PUBLICATION_ENTRY.read_text(encoding="utf-8"))

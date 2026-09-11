@@ -68,8 +68,8 @@ papers instead.
 ## Files at the repository root
 
 `README.md` introduces the work and `CONTRIBUTING.md` explains how to help.
-`AGENTS.md` is the shared instruction file for coding agents; Claude and Gemini
-load it through their small native adapters. Detailed agent rules live in
+`AGENTS.md` is the shared instruction file for coding agents. Claude Code loads
+it through `CLAUDE.md`. Detailed agent rules live in
 [the agent guide](AGENT_GUIDE.md), so reading the root does not require a tour
 of the automation.
 
