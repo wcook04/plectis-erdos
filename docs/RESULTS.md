@@ -63,10 +63,13 @@ vanishing, a bounded or summably small negative centred error forces eventual
 Sylvester recurrence. The unbounded mixed-sign regime and the original
 endpoint remain open.
 
-**[#249](https://www.erdosproblems.com/249).** Exact dyadic-kernel rank
-`2^e + 1`, denominator exclusion to about `7.96 × 10³⁴`, diagonal certificates
-through `t ≤ 82`, conditional actual-LCM and harmonic-pivot routes, and scoped
-no-go theorems. No cofinal producer reaching irrationality is proved.
+**[#249](https://www.erdosproblems.com/249).** Bounded-residue series `A_m`
+are irrational for every `m ≥ 3`, with a complete rationality classification
+at dyadic moduli (ordinary mathematics in the short note, §2; not Lean).
+Separately: exact dyadic-kernel rank `2^e + 1`, denominator exclusion to about
+`7.96 × 10³⁴`, diagonal certificates through `t ≤ 82`, conditional actual-LCM
+and harmonic-pivot routes, and scoped no-go theorems. No cofinal producer
+reaching irrationality of the original series is proved.
 
 **[#251](https://www.erdosproblems.com/251).** A coefficient-only countermodel
 and a sparse rationalising perturbation show that polynomial growth,
