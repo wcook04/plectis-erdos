@@ -124,8 +124,8 @@ and checks without assuming Lean or project history.
 | [`scripts/`](scripts/) | Navigation, build and release tools. |
 | [`skills/`](skills/README.md) | Optional workflows for coding agents. |
 
-Coding agents start at [`AGENTS.md`](AGENTS.md). `CLAUDE.md` and `GEMINI.md`
-load that same entry for their tools; the detailed commands live in the
+Coding agents start at [`AGENTS.md`](AGENTS.md). `CLAUDE.md` loads that same
+entry for Claude Code; the detailed commands live in the
 [agent workbench](docs/AGENT_WORKBENCH.md). The
 [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
 explains the design.
