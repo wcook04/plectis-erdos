@@ -27,6 +27,7 @@ from typing import Any, Mapping
 
 import validation_singleflight as singleflight
 import route_memory_receipt
+from lean_source import checkout_source_relative, library_storage_variants
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -636,7 +637,10 @@ def _safe_module_digest(root: Path, module: str) -> str:
     relative = Path(module)
     if relative.is_absolute() or ".." in relative.parts:
         raise RouteMemoryError("invented_source_path", module)
-    path = root / relative
+    resolved = Path(checkout_source_relative(module, root))
+    if resolved.is_absolute() or ".." in resolved.parts:
+        raise RouteMemoryError("invented_source_path", module)
+    path = root / resolved
     if _path_has_symlink_component(path):
         raise RouteMemoryError("unsafe_source_path", module)
     if not path.is_file() or path.is_symlink():
@@ -656,7 +660,9 @@ def _problem_module_owners(root: Path) -> dict[str, set[str]]:
         problem_id = str(problem.get("problem_id"))
         for module in problem.get("modules", []):
             if isinstance(module, Mapping) and module.get("path"):
-                owners.setdefault(str(module["path"]), set()).add(problem_id)
+                path = str(module["path"])
+                for variant in (*library_storage_variants(path), path):
+                    owners.setdefault(variant, set()).add(problem_id)
     return owners
 
 

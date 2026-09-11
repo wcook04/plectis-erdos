@@ -835,7 +835,7 @@ def main() -> int:
                 # any of those.  Assert a plausible public origin explicitly
                 # rather than depending on ambient git remote configuration.
                 "--repository-origin",
-                "https://github.com/wcook04/plectis-lean-erdos249-257",
+                "https://github.com/wcook04/plectis-erdos",
             ]
         )
         start_receipt = json.loads(started.stdout)
