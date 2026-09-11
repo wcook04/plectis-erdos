@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:4b9d051c3ad1e7198d58b1bdf52680af0761e97655c6e68a901c734802c78f29",
+    "owner_digest": "sha256:c1192e10c82e77594f6b6c6dcfa769ea68bb3b9ece02812ca74a44dd88e5822a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:4e23eb616599d3102706d5a79aac1b6633a24b3798739a556b4c692b4ed5a364",
+    "projection_digest": "sha256:229edb81876b106f3dbe7eed462cc4affda18e02a814efaddc2c24b76c463777",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2546,15 +2546,15 @@
         ],
         "what_is_not_checked": [
           "Erdos Problem 1041 in unrestricted degree.",
-          "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block.",
-          "A proof or counterexample for Proposition 12 itself; a four-pronged or cut-annulus repair may still exist.",
+          "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
+          "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
           "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
           "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
         ],
         "open_obligations": [
           {
             "id": "repair_or_refute_saddle_block",
-            "statement": "Replace the false three-ended interior saddle neighbourhood by a valid four-pronged or cut-annulus block and reprove the required incidence statement, or construct a polynomial counterexample to that incidence statement."
+            "statement": "The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality."
           },
           {
             "id": "compact_ray_cut_strip_decomposition",
