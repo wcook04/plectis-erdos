@@ -1056,28 +1056,28 @@
             "res:degree-three",
             "res:reflected-critical-value"
           ],
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334"
         },
         {
           "title": "Rational-Base Lambert Series: Complete Reasoning Record",
           "source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
           "rendered": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #1049.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334"
         },
         {
           "title": "The Factorial-Denominator Series: Complete Reasoning Record",
           "source": "paper/68/erdos68-factorial-reasoning-surface.tex",
           "rendered": "paper/68/erdos68-factorial-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #68.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334"
         },
         {
           "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
           "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "1da2a504f8d8aa3cdc2cf686ec48bc8a67457984"
+          "formal_source_ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334"
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",

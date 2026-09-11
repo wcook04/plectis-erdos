@@ -709,9 +709,9 @@ Under the exact integer dynamics, positivity, normalised vanishing, and an
 eventually bounded negative part, the centred error $E_n$ is eventually zero.
 The original sequence therefore satisfies the Sylvester recurrence from some
 point onward (Theorem~\ref{long243:res:bounded}), in the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2403}
-      {boundedNegativePart_sylvesterNext_eventually}
-      {bounded-negative-part recurrence theorem}.  Hypothesis~(5), the bound on
+bounded-negative-part recurrence theorem
+(\texttt{boundedNegativePart\_sylvesterNext\_eventually} is not in this checkout).
+Hypothesis~(5), the bound on
 the negative part, is supplied by nothing in this note.
 
 \smallskip
@@ -1007,7 +1007,7 @@ the displayed right-hand side.
 \end{proof}
 
 \noindent This is the
-\lword{Erdos243/DynamicCancellation.lean}{270}{reducedStep_secondOrder}{two-step
+\lword{Erdos243/DynamicCancellation.lean}{268}{reducedStep_secondOrder}{two-step
 primitive recurrence}.  The hard point is keeping both changing cancellation
 factors visible.  The result is stronger than a one-step congruence, though it
 remains non-autonomous and cannot by itself force $a_1=a^2-a+1$.
@@ -1031,7 +1031,7 @@ The square $q^2$ is the local remainder, while $pp_2-p_1^2$ is a discrete
 curvature term.  The right side records the change in multiplier, so the
 identity supplies a diagnostic for an anti-shadowing argument without
 asserting a sign or a global monotonicity.  It is checked as
-\lword{Erdos243/DynamicCancellation.lean}{309}{cancellationFree_curvature_square}{the
+\lword{Erdos243/DynamicCancellation.lean}{307}{cancellationFree_curvature_square}{the
 cancellation-free curvature square}; no global anti-shadowing conclusion is
 claimed.
 
