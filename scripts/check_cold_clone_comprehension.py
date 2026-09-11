@@ -158,8 +158,8 @@ ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
 HUMAN_SURFACES = (
     "README.md",
-    "ARCHITECTURE.md",
-    "SCOPE.md",
+    "docs/ARCHITECTURE.md",
+    "docs/SCOPE.md",
     "docs/ORIENTATION.md",
 )
 # The paper shelf is a generated first-contact surface with its own authority
@@ -219,7 +219,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # 2026-08-15: raised to name the Agent Workbench on the reader surface. The
     # workbench, its typed move grammar, the three-rung invention ladder, and
     # the one landed prospective session were documented in docs/ and in
-    # AGENTS.md but appeared nowhere in the README, so a human reviewer arriving
+    # docs/AGENT_GUIDE.md but appeared nowhere in the README, so a human reviewer arriving
     # at the front page could not learn that agent sessions here are append-only
     # ledgers, that stored probes replay, or that a kernel-checked module was
     # derived inside one. Reviewers judge the claim discipline as much as the
@@ -240,7 +240,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # setup-guide pointer and the toolchain sentence are the fix, and they must
     # sit above the command rather than eighteen lines below it. The second is
     # `scripts/verify_claims.py`, which landed with CI enforcement and an entry
-    # in AGENTS.md but nothing on the reader surface: the repository's cheapest
+    # in docs/AGENT_GUIDE.md but nothing on the reader surface: the repository's cheapest
     # concrete verb -- follow one claim to its source, receipts, and stopping
     # point, in under a second, with no Lean installed -- was invisible to the
     # human it was built for. Funded with slack, per the note above.
@@ -281,13 +281,13 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # intended outcome was, what Lean contributes, and why the repository is
     # public, before the results inventory.
     "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
-    "ARCHITECTURE.md": 18_000,
-    # SCOPE.md must list every remaining-open identifier and its bounded query,
+    "docs/ARCHITECTURE.md": 18_000,
+    # docs/SCOPE.md must list every remaining-open identifier and its bounded query,
     # so two lines of it are spoken for by each registered proposition: measured
     # at 139 bytes a proposition against 2,528 bytes of prose. The flat 4,000
     # was set at eleven propositions and could not survive the repository
     # registering the eight its own papers already state.
-    "SCOPE.md": 2_800
+    "docs/SCOPE.md": 2_800
     + 160
     * len(
         json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"]
@@ -334,7 +334,7 @@ OPEN_PROPOSITION_PACKET_BYTES = 400
 # following it therefore reaches. They carry the recoverable detail the front
 # page used to hold itself.
 FIRST_CONTACT_ROUTED_SURFACES = (
-    "HUMAN_ENTRY.md",
+    "docs/READING_GUIDE.md",
     "docs/RESULTS.md",
     "docs/AGENT_WORKBENCH.md",
     "docs/REPRODUCIBILITY.md",
@@ -872,7 +872,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             # reader's next-read bullet to name the superseded paper, and
             # naming the live per-problem route instead failed it.
             ["per-problem papers", "Exposition PDF", "joint PDF", "docs/papers"],
-            ["AGENTS.md"],
+            ["docs/AGENT_GUIDE.md"],
             ["docs/orientation.json"],
             ["docs/SOURCE_MAP.md"],
         ],
@@ -1116,7 +1116,7 @@ def validate_human_first_contact(
             require(phrase not in lowered, f"{path} uses self-appraisal phrase {phrase!r}; expose objective "
                 "mathematical and formal facts instead")
 
-    check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
+    check_architecture_guide.validate_guide(surfaces["docs/ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     reproducibility = first_contact_surface_text(
@@ -1250,7 +1250,7 @@ def validate_human_first_contact(
             require(contains_any(routed_first_contact, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
                 f"{alternatives}")
 
-    scope = surfaces["SCOPE.md"]
+    scope = surfaces["docs/SCOPE.md"]
     require(contains_any(scope, ["does not prove", "does not solve"]), "cold-clone comprehension invariant")
     require(contains_any(scope, ["formal-source checkpoint"]), "cold-clone comprehension invariant")
     orientation = surfaces["docs/ORIENTATION.md"]
@@ -1630,7 +1630,7 @@ def validate_gateway_opening(paper: str) -> None:
 def validate_cross_agent_entry(agents: str, claude: str) -> None:
     """Keep one shared semantic core with a small Claude-native adapter."""
     require(len(claude.encode("utf-8")) <= CLAUDE_ENTRY_BUDGET_BYTES, "cold-clone comprehension invariant")
-    for path, text in (("AGENTS.md", agents), ("CLAUDE.md", claude)):
+    for path, text in (("docs/AGENT_GUIDE.md", agents), ("CLAUDE.md", claude)):
         lowered = normalized(text).casefold()
         for phrase in SELF_APPRAISAL_PHRASES:
             require(phrase not in lowered, f"{path} uses self-appraisal phrase {phrase!r}; route to objective "
@@ -1660,29 +1660,11 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "Lean source checked by the pinned Lean kernel",
         "not an entrypoint into any private development system",
     ):
-        require(contains_any(agents, [token]), f"AGENTS.md lost shared invariant {token!r}")
-    for token in (
-        # This used to read "@AGENTS.md", and it was the reason the drift held.
-        # scripts/test_compact_agent_entry.py asserts the opposite -- that every
-        # adapter imports the compact entry -- but that test is wired into no
-        # workflow, no Makefile target and not check_release.py, so it sat red
-        # while this list, which does run on every pull request, pinned CLAUDE.md
-        # to the 31KB deep contract. Claude Code auto-loads CLAUDE.md, so a cold
-        # clone opened straight into the file the compact entry exists to defer.
-        # CODEX.md and the Plectis adapters already route to the compact entry;
-        # this token now agrees with them and with AGENTS.override.md's own
-        # description of itself as the first-contact contract.
-        "@AGENTS.override.md",
-        "Claude-specific deltas only",
-        "docs/orientation.json",
-        "mathematical programme",
-        "eight-problem cold-start card",
-        "do not query merely to learn which problems exist",
-        "larger ongoing formal-mathematics workflow",
-        "not an entrypoint into any private development system",
-    ):
-        require(contains_any(claude, [token]), f"CLAUDE.md lost native adapter token {token!r}")
-    require("## First read" not in claude, "CLAUDE.md duplicated the shared first-read manual")
+        require(contains_any(agents, [token]), f"docs/AGENT_GUIDE.md lost shared invariant {token!r}")
+    require("@AGENTS.md" in claude, "Claude must import the shared compact entry")
+    require("docs/AGENT_GUIDE.md" in claude, "Claude lost the deep-guide route")
+    require("## First read" not in claude, "Claude duplicated the shared manual")
+
 
 
 def collect_proof_plan_packets() -> dict[str, Any]:
@@ -3142,7 +3124,7 @@ def run_quick_check() -> int:
         {path: read(path) for path in CENSUS_SURFACES},
     )
     validate_gateway_opening(read(GATEWAY_PAPER))
-    validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
+    validate_cross_agent_entry(read("docs/AGENT_GUIDE.md"), read("CLAUDE.md"))
     validate_incremental_build_contract(
         {path: read(path) for path in INCREMENTAL_BUILD_SURFACES}
     )
@@ -3234,7 +3216,7 @@ def main(argv: list[str] | None = None) -> int:
         {path: read(path) for path in CENSUS_SURFACES},
     )
     validate_gateway_opening(read(GATEWAY_PAPER))
-    validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
+    validate_cross_agent_entry(read("docs/AGENT_GUIDE.md"), read("CLAUDE.md"))
     validate_incremental_build_contract(
         {path: read(path) for path in INCREMENTAL_BUILD_SURFACES}
     )

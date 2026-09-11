@@ -10,7 +10,7 @@ honesty, and replayability.
 
 Use this page for agent operations. Start with [CONTRIBUTING.md](../CONTRIBUTING.md)
 before proposing a correction, strengthening, claim change, or release change;
-then use the authority and validation contract in [AGENTS.md](../AGENTS.md).
+then use the authority and validation contract in [AGENTS.md](AGENT_GUIDE.md).
 Reader introductions belong in the README and results guide rather than here.
 
 ## Design thesis
@@ -292,9 +292,9 @@ python3 scripts/agent_entry.py --skills
 
 Skills run from the clone root. `scripts/install_agent_skills.py --list` only
 exposes them to an agent harness. Read
-[`AGENTS.override.md`](../AGENTS.override.md), then the bounded
+[`AGENTS.md`](../AGENTS.md), then the bounded
 [`orientation.json`](orientation.json), and expand one programme or claim;
-[`AGENTS.md`](../AGENTS.md) is the full reference.
+[`docs/AGENT_GUIDE.md`](AGENT_GUIDE.md) is the full reference.
 
 Whole-corpus agent navigation runs without a Lean build.
 `python3 scripts/query_corpus.py --tour --format card` and
@@ -381,7 +381,7 @@ and explicit open frontiers for one problem at a time; new entries remain
 outside the reviewed claim registry until mathematical review establishes
 their intended meaning and public framing.
 
-[SOURCE MAP](SOURCE_MAP.md) gives module order; [METHODOLOGY](../METHODOLOGY.md)
+[SOURCE MAP](SOURCE_MAP.md) gives module order; [METHODOLOGY](METHODOLOGY.md)
 governs claim changes; [WAVE INDEX](WAVE_INDEX.md) gives chronology, not
 reading order.
 

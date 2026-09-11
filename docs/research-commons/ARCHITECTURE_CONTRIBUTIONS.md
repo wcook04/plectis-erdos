@@ -71,7 +71,7 @@ agent session, so maintainers review them as executable contributions. Pull
 requests from forks run only with the permissions and secrets made safe for
 untrusted code. A proposal is never executed merely because it was submitted.
 Changes that affect public mathematical wording or reviewed claims must also
-follow the mathematical authority and release checks in [AGENTS.md](../../AGENTS.md).
+follow the mathematical authority and release checks in [AGENTS.md](../AGENT_GUIDE.md).
 
 The generated [accepted contributions](CONTRIBUTIONS.md) and
 [contribution recognition](CONTRIBUTION_RECOGNITION.md) views remain

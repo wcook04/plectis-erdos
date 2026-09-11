@@ -439,7 +439,7 @@
         "docs/problem_index_source.json",
         "lean/ErdosProblems.lean",
         "docs/publication_contract.json",
-        "SCOPE.md"
+        "docs/SCOPE.md"
       ],
       "query_steps": [
         "python3 scripts/query_corpus.py --publication-artifact <publication_artifact_id>",
@@ -483,7 +483,7 @@
         "how are shipped papers registered"
       ],
       "read": [
-        "ARCHITECTURE.md",
+        "docs/ARCHITECTURE.md",
         "paper/systems/claim-faithful-publication-systems-paper.tex",
         "docs/publication_contract.json",
         "docs/publication_evidence.json",

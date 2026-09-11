@@ -9802,7 +9802,7 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
         "schema_version": "erdos249257-repository-overview/2",
         "authority_posture": "bounded_public_orientation_not_proof_authority",
         "reader_entry": {
-            "human_entry": "HUMAN_ENTRY.md",
+            "human_entry": "docs/READING_GUIDE.md",
             "instant_orientation": (
                 "python3 scripts/query_corpus.py --route instant_orientation"
             ),

@@ -82,7 +82,7 @@ def main() -> int:
 
     for source in (
         "CONTRIBUTING.md",
-        "HUMAN_ENTRY.md",
+        "docs/READING_GUIDE.md",
         "docs/research-commons/README.md",
         "docs/research-commons/CREDIT_POLICY.md",
         "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
@@ -139,7 +139,7 @@ def main() -> int:
         require(boundary in submission_skill_flat, f"submission skill omits {boundary!r}")
 
     skill = text("skills/erdos-research-return/SKILL.md")
-    agent_entry = text("AGENTS.override.md")
+    agent_entry = text("AGENTS.md")
     for marker in (
         "scripts/continue_research.py",
         "scripts/validate_research_return.py",

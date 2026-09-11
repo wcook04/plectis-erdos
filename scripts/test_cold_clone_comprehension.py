@@ -414,7 +414,7 @@ def main() -> int:
     diagnostic.validate_public_semantic_census(census, census_surfaces)
     gateway_paper = diagnostic.read(diagnostic.GATEWAY_PAPER)
     diagnostic.validate_gateway_opening(gateway_paper)
-    agents = diagnostic.read("AGENTS.md")
+    agents = diagnostic.read("docs/AGENT_GUIDE.md")
     claude = diagnostic.read("CLAUDE.md")
     diagnostic.validate_cross_agent_entry(agents, claude)
     incremental_surfaces = {
@@ -729,13 +729,10 @@ def main() -> int:
     else:
         raise AssertionError("gateway source-inventory leak escaped")
 
-    # Delete the import the contract actually requires. This mutated
-    # "@AGENTS.md", which is not a substring of "@AGENTS.override.md", so once
-    # CLAUDE.md imported the compact entry the replace became a no-op and the
-    # harness was asserting against an unmutated file.
+    # Removing the native import must break the shared-entry contract.
     try:
         diagnostic.validate_cross_agent_entry(
-            agents, claude.replace("@AGENTS.override.md", "")
+            agents, claude.replace("@AGENTS.md", "")
         )
     except AssertionError:
         checks += 1

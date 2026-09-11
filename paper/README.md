@@ -5,7 +5,7 @@
 
 For the repository layout, sources of truth, build path, and release
 infrastructure, start with the plain-language
-[`ARCHITECTURE.md`](../ARCHITECTURE.md) at the repository root.
+[`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) in `docs/`.
 
 Each of the eight covered Erdős problems has a short first-read paper and a
 longer complete reasoning record. All eight problems remain open. The papers
@@ -20,7 +20,7 @@ proof authority only for the exact declarations they check, and
 interfaces.
 
 The manuscript layer (the `.tex` sources and rendered PDFs) is licensed
-CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) at the repository root.
+CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) in `docs/`.
 
 ## Problem papers
 

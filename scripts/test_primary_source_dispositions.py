@@ -125,7 +125,7 @@ def main() -> int:
     )
     data = json.loads(LEDGER.read_text(encoding="utf-8"))
     notice = NOTICE.read_text(encoding="utf-8")
-    requirements = (ROOT / "requirements-release.txt").read_text(encoding="utf-8")
+    requirements = (ROOT / "scripts/requirements-release.txt").read_text(encoding="utf-8")
     lake_manifest = (ROOT / "lake-manifest.json").read_text(encoding="utf-8")
     tracked = tracked_paths()
     present = present_artifact_paths()

@@ -16,13 +16,13 @@ This script verifies that every other public surface agrees with it:
      stated line.
   4. Every paper source link (\\lref / \\lrefx / \\lloc) resolves: the file
      exists and the named declaration appears at the stated line.
-  5. SCOPE.md lists exactly the machine identifiers in claims.json.
+  5. docs/SCOPE.md lists exactly the machine identifiers in claims.json.
   6. README.md carries the headline declarations, states the release tag,
      uses only taxonomy statuses in its status table, and contains none of
      the banned drift phrases.
   7. Licensing: every licence named in REUSE.toml or an SPDX header has its
      text under LICENSES/.
-  8. AGENTS.md routes agent harnesses through the public machine-readable paper
+  8. docs/AGENT_GUIDE.md routes agent harnesses through the public machine-readable paper
      without weakening the proof or open-problem boundary; CONTRIBUTING.md
      describes the cold-clone baseline-plus-adversarial program as a release
      gate rather than an advisory diagnostic; and the public conduct standard
@@ -1025,31 +1025,21 @@ def proof_trust_violation_bytes(data: bytes) -> str | None:
 
 
 APPROVED_ROOT_FILES = {
-    ".gitignore",
-    "AGENTS.md",
-    "AGENTS.override.md",
-    "ARCHITECTURE.md",
-    "CITATION.cff",
-    "CLAUDE.md",
-    "CODEX.md",
-    "CODE_OF_CONDUCT.md",
-    "CONTRIBUTING.md",
-    "CURSOR.md",
-    "GEMINI.md",
-    "HUMAN_ENTRY.md",
-    "LICENSE",
-    "METHODOLOGY.md",
-    "PRIVACY.md",
-    "README.md",
-    "REUSE.toml",
-    "SCOPE.md",
-    "SECURITY.md",
-    "formalization.yaml",
-    "lake-manifest.json",
-    "lakefile.toml",
-    "lean-toolchain",
-    "requirements-release.txt",
+    '.gitignore',
+    'AGENTS.md',
+    'CITATION.cff',
+    'CLAUDE.md',
+    'CONTRIBUTING.md',
+    'GEMINI.md',
+    'LICENSE',
+    'README.md',
+    'REUSE.toml',
+    'formalization.yaml',
+    'lake-manifest.json',
+    'lakefile.toml',
+    'lean-toolchain',
 }
+
 APPROVED_ROOT_DIRS = {
     ".agents": "host-discovery entrypoints used by integrations",
     ".github": "CI and hosted repository metadata",
@@ -1836,12 +1826,12 @@ def main(argv: list[str] | None = None) -> int:
     check(not methodology_errors,
           "methodology contract invalid: " + "; ".join(methodology_errors))
 
-    methodology_projection = ROOT / "METHODOLOGY.md"
+    methodology_projection = ROOT / "docs/METHODOLOGY.md"
     expected_methodology_projection = render_markdown(methodology, data)
-    check(release_file_exists(methodology_projection), "METHODOLOGY.md is missing")
+    check(release_file_exists(methodology_projection), "docs/METHODOLOGY.md is missing")
     if release_file_exists(methodology_projection):
         check(read(methodology_projection) == expected_methodology_projection,
-              "METHODOLOGY.md does not exactly match docs/methodology.json")
+              "docs/METHODOLOGY.md does not exactly match docs/methodology.json")
 
     for fixture_id, fixture_errors in mutation_fixture_errors(data, methodology).items():
         check(bool(fixture_errors),
@@ -2023,21 +2013,21 @@ def main(argv: list[str] | None = None) -> int:
                 check(name_at_line(lines, name, line),
                       f"{paper_path} \\{macro}: {name} not at {rel}:{line} (±{LINE_WINDOW})")
 
-    # --- 5. SCOPE.md ----------------------------------------------------------
-    scope = read(ROOT / "SCOPE.md")
+    # --- 5. docs/SCOPE.md ----------------------------------------------------------
+    scope = read(ROOT / "docs/SCOPE.md")
     declared = {nc["id"] for nc in data["non_claims"]}
     listed = set(re.findall(r"`(not_[a-z0-9_]+)`", scope))
     check(declared == listed,
-          f"SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
+          f"docs/SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
     check("does not prove" in flattened(scope),
-          "SCOPE.md must state the open boundary in plain language")
+          "docs/SCOPE.md must state the open boundary in plain language")
 
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
     check(tag in readme, f"README does not state the release tag {tag}")
     check("does not solve" in flattened(readme),
           "README must state the open boundary in plain language")
-    check("METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
+    check("docs/METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
     check(
         "formalization.yaml" in readme and "docs/EXTERNAL_VERIFICATION.md" in readme,
@@ -2106,19 +2096,17 @@ def main(argv: list[str] | None = None) -> int:
             ROOT / name
             for name in (
                 "README.md",
+                "docs/AGENT_GUIDE.md",
                 "AGENTS.md",
-                "AGENTS.override.md",
                 "CLAUDE.md",
-                "CODEX.md",
-                "CURSOR.md",
                 "GEMINI.md",
                 ".github/copilot-instructions.md",
-                "ARCHITECTURE.md",
-                "METHODOLOGY.md",
-                "SCOPE.md",
-                "CODE_OF_CONDUCT.md",
+                "docs/ARCHITECTURE.md",
+                "docs/METHODOLOGY.md",
+                "docs/SCOPE.md",
+                ".github/CODE_OF_CONDUCT.md",
                 "CONTRIBUTING.md",
-                "SECURITY.md",
+                ".github/SECURITY.md",
             )
         ]
         own_prose.extend(sorted((ROOT / "docs").glob("*.md")))
@@ -2184,16 +2172,16 @@ def main(argv: list[str] | None = None) -> int:
               f"licence {lic} is used but LICENSES/{lic}.txt is missing")
 
     # --- 8. agent entry ------------------------------------------------------------
-    agents = read(ROOT / "AGENTS.md")
+    agents = read(ROOT / "docs/AGENT_GUIDE.md")
     for required in (
-        "ARCHITECTURE.md",
+        "docs/ARCHITECTURE.md",
         "docs/orientation.json",
         "docs/ORIENTATION.md",
         "docs/claims.json",
         "docs/corpus_descriptor.json",
         "docs/methodology.json",
-        "METHODOLOGY.md",
-        "SCOPE.md",
+        "docs/METHODOLOGY.md",
+        "docs/SCOPE.md",
         "Erdos249257.lean",
         "ErdosProblems.lean",
         "scripts/check_release.py",
@@ -2205,16 +2193,16 @@ def main(argv: list[str] | None = None) -> int:
             "skills/maintain-public-infrastructure/SKILL.md",
         "scripts/query_corpus.py",
     ):
-        check(required in agents, f"AGENTS.md does not route through {required}")
+        check(required in agents, f"docs/AGENT_GUIDE.md does not route through {required}")
     flat_agents = flattened(agents)
     check("remain open" in flat_agents,
-          "AGENTS.md must preserve the open-problem boundary")
+          "docs/AGENT_GUIDE.md must preserve the open-problem boundary")
     check("proof authority" in flat_agents,
-          "AGENTS.md must state the proof-authority boundary")
+          "docs/AGENT_GUIDE.md must state the proof-authority boundary")
     check("larger ongoing formal-mathematics workflow" in flat_agents,
-          "AGENTS.md must preserve the public-projection provenance boundary")
+          "docs/AGENT_GUIDE.md must preserve the public-projection provenance boundary")
     check("mathematical programme" in flat_agents,
-          "AGENTS.md must expose mathematical programme routes")
+          "docs/AGENT_GUIDE.md must expose mathematical programme routes")
 
     mid_checks = run_independent_checks(
         {

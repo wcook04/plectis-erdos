@@ -47,7 +47,11 @@
       "family": "research",
       "stage": "expansion",
       "status": "active",
-      "composes_with": ["mine-open-problem", "propagate-research-consequences", "submit-pull-request"]
+      "composes_with": [
+        "mine-open-problem",
+        "propagate-research-consequences",
+        "submit-pull-request"
+      ]
     },
     {
       "id": "erdos-research-return",
@@ -55,7 +59,10 @@
       "family": "integration",
       "stage": "return-and-assimilation",
       "status": "active",
-      "composes_with": ["propagate-research-consequences", "submit-pull-request"]
+      "composes_with": [
+        "propagate-research-consequences",
+        "submit-pull-request"
+      ]
     },
     {
       "id": "explain-public-system",
@@ -63,7 +70,10 @@
       "family": "orientation",
       "stage": "orientation",
       "status": "active",
-      "composes_with": ["mine-open-problem", "run-coupled-research-goals"]
+      "composes_with": [
+        "mine-open-problem",
+        "run-coupled-research-goals"
+      ]
     },
     {
       "id": "install-clone-skills",
@@ -79,7 +89,9 @@
       "family": "validation",
       "stage": "validation",
       "status": "active",
-      "composes_with": ["propagate-research-consequences"]
+      "composes_with": [
+        "propagate-research-consequences"
+      ]
     },
     {
       "id": "maintain-public-infrastructure",
@@ -87,7 +99,10 @@
       "family": "stewardship",
       "stage": "continuous-dogfood",
       "status": "active",
-      "composes_with": ["propagate-research-consequences", "submit-pull-request"]
+      "composes_with": [
+        "propagate-research-consequences",
+        "submit-pull-request"
+      ]
     },
     {
       "id": "mine-open-problem",
@@ -95,7 +110,11 @@
       "family": "research",
       "stage": "bounded-discovery",
       "status": "active",
-      "composes_with": ["lean-concurrent-validation", "propagate-research-consequences", "erdos-research-return"]
+      "composes_with": [
+        "lean-concurrent-validation",
+        "propagate-research-consequences",
+        "erdos-research-return"
+      ]
     },
     {
       "id": "propagate-research-consequences",
@@ -103,7 +122,10 @@
       "family": "integration",
       "stage": "downstream-propagation",
       "status": "active",
-      "composes_with": ["erdos-research-return", "submit-pull-request"]
+      "composes_with": [
+        "erdos-research-return",
+        "submit-pull-request"
+      ]
     },
     {
       "id": "public-mathematical-writing",
@@ -111,7 +133,9 @@
       "family": "communication",
       "stage": "exposition",
       "status": "active",
-      "composes_with": ["propagate-research-consequences"]
+      "composes_with": [
+        "propagate-research-consequences"
+      ]
     },
     {
       "id": "run-coupled-research-goals",
@@ -119,7 +143,11 @@
       "family": "research",
       "stage": "sustained-discovery",
       "status": "active",
-      "composes_with": ["mine-open-problem", "propagate-research-consequences", "erdos-research-return"]
+      "composes_with": [
+        "mine-open-problem",
+        "propagate-research-consequences",
+        "erdos-research-return"
+      ]
     },
     {
       "id": "submit-pull-request",
@@ -148,7 +176,7 @@
         "explain-public-system"
       ],
       "read": [
-        "AGENTS.override.md",
+        "AGENTS.md",
         "skills/explain-public-system/SKILL.md"
       ],
       "commands": [
@@ -176,7 +204,7 @@
         "explain-public-system"
       ],
       "read": [
-        "AGENTS.override.md",
+        "AGENTS.md",
         "docs/claims.json"
       ],
       "commands": [
@@ -270,7 +298,7 @@
       ],
       "read": [
         "skills/lean-concurrent-validation/SKILL.md",
-        "AGENTS.md#validation"
+        "docs/AGENT_GUIDE.md#validation"
       ],
       "commands": [
         "python3 scripts/lean_fast_build.py --plan --changed-from HEAD"
@@ -499,7 +527,11 @@
         "skills are available",
         "repository organization",
         "contributor experience",
-        "reproducibility"
+        "reproducibility",
+        "first impression",
+        "root organization",
+        "root organisation",
+        "consolidate redundant provider entry"
       ],
       "skills": [
         "maintain-public-infrastructure"

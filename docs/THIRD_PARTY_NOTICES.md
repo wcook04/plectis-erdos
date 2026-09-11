@@ -96,7 +96,7 @@ dependency trees or package archives:
 
 | Manifest | Release evidence | Permission boundary |
 | --- | --- | --- |
-| [`requirements-release.txt`](../requirements-release.txt) | 24 exact `name==version` records, each with SHA-256 hashes; CI installs it with `pip --require-hashes`. | Package names, versions, hashes, and PyPI retrieval do not grant permission to redistribute a package payload. |
+| [`scripts/requirements-release.txt`](../scripts/requirements-release.txt) | 24 exact `name==version` records, each with SHA-256 hashes; CI installs it with `pip --require-hashes`. | Package names, versions, hashes, and PyPI retrieval do not grant permission to redistribute a package payload. |
 | [`lake-manifest.json`](../lake-manifest.json) | 9 HTTPS Git dependency records with full immutable revisions. | Git URLs and revisions identify build inputs; fetched dependency sources remain governed by their upstream terms. |
 | [`lakefile.toml`](../lakefile.toml) and [`lean-toolchain`](../lean-toolchain) | The project’s Lake and Lean input declarations. | Build declarations are not upstream license text or redistribution grants. |
 

@@ -14,7 +14,7 @@ If you want to help but do not yet have a target, begin with the pinned
 It links each problem paper and lists useful contributions beyond complete
 proofs.
 
-Participation is governed by the [code of conduct](CODE_OF_CONDUCT.md). Direct
+Participation is governed by the [code of conduct](.github/CODE_OF_CONDUCT.md). Direct
 criticism of a proof, claim, experiment, or repository decision is welcome;
 harassment and attacks on contributors are not.
 
@@ -181,5 +181,5 @@ and an accepted receipt must never silently strengthen `docs/claims.json`.
 For an ordinary source change, run the narrow checks named by the agent entry
 and the affected subsystem. Lean changes must build with the pinned toolchain.
 Changes to claims, papers, or generated projections must follow the authority
-and builder order in [AGENTS.md](AGENTS.md). CI exercises the public return
+and builder order in [AGENTS.md](docs/AGENT_GUIDE.md). CI exercises the public return
 validator, the acceptance boundary, and the accepted-only attribution views.

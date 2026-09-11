@@ -656,7 +656,7 @@ jobs:
       # This test asserts that every provider adapter imports the compact entry
       # rather than the deep contract. It was written, it was correct, and no
       # lane ran it: not this workflow, not check_release.py, not any Makefile
-      # target. It sat red on main while CLAUDE.md imported AGENTS.md, so Claude
+      # target. It sat red on main while CLAUDE.md imported docs/AGENT_GUIDE.md, so Claude
       # Code opened a cold clone straight into the 31KB deep contract that the
       # compact entry exists to defer. First contact is what this job is for.
       - name: Every provider adapter routes to the compact entry
@@ -719,7 +719,7 @@ jobs:
           python-version: "3.12.9"
       - name: Install metadata validators
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement requirements-release.txt
+        run: python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement scripts/requirements-release.txt
 
       - name: Check pinned release-validator dependency lock
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}

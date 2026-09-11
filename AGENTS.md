@@ -1,623 +1,206 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Agent entry
+# Agent instructions
 
-This is an ordinary public Lean project and a pinned scholarly artefact. It is
-not an entrypoint into any private development system. Work only from the files
-in this repository, and never infer unpublished results or private machinery.
-The checkout is nevertheless a deliberately curated public projection from a
-larger ongoing formal-mathematics workflow: its release discipline, claim
-registry, graph structure, generated atlas, and adversarial checks are public
-evidence of that workflow. They do not create hidden proof authority.
+First-contact contract. [the detailed agent guide](docs/AGENT_GUIDE.md) owns deep change,
+authority, and validation rules; open only the section the route names.
 
-Use [docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md) for the compact command
-routes and [CONTRIBUTING.md](CONTRIBUTING.md) for contribution mechanics. This
-file remains the deeper authority, mutation, and validation contract.
+This is a self-contained public Lean repository and scholarly artefact. Use only
+tracked files in this checkout. Do not depend on `ai_workflow`, sibling
+repositories, private caches, auto-memory, or unpublished state.
 
-For a cold-clone status question, continuation, proof-frontier scan, or first
-action, run `python3 scripts/proof_cockpit.py --format card` before opening
-large registries or source trees. Its public-native contract is
-[docs/PROOF_COCKPIT.md](docs/PROOF_COCKPIT.md). The card composes public facts;
-it never imports private workflow state and is not proof authority.
-
-For any reader-facing mathematical Markdown or manuscript edit, load
-[skills/public-mathematical-writing/SKILL.md](skills/public-mathematical-writing/SKILL.md).
-It keeps mathematical truth and evidence upstream of prose and keeps the human
-front door in ordinary language; agent surfaces may remain command-heavy.
-
-## Eight-problem cold-start card
-
-A blank-slate agent must receive the complete problem fleet here; it must not
-already know a query command or infer the fleet from directory names.
-**All eight indexed problems remain open.**
-
-Each entry states the mathematical target, then the checked frontier and live
-obstruction, then the standalone paper.
-
-**#68 — Is `∑_{n≥2} 1/(n!−1)` irrational?**
-
-Lean checks exact factorial-successor and carry equivalences, integral-channel
-and projection consumers, and the reduction from a non-unit carry to a
-denominator bound. An exact finite certificate reaches `300000`; no cofinal
-non-unit-carry or residual-nonintegrality producer is proved. Paper:
-`erdos-68-factorial-denominator-irrationality.pdf`.
-
-**#243 — Under rapid growth of an integer sequence, does rationality of its
-reciprocal sum force the Sylvester recurrence eventually?**
-
-Lean checks the product-cleared tail dynamics, absorbing zero state, descent on
-nonnegative centred states, and bounded or periodic negative-state barriers.
-Normalised vanishing makes strict centring redundant and is available for the
-canonical orbit through Koizumi's results; boundedness of the negative part is
-the missing hypothesis, with mixed-sign and unbounded-negative regimes still
-open. Paper: `erdos-243-reciprocal-tail-rigidity.pdf`.
-
-**#249 — Is \(\sum_{n\ge1}\varphi(n)/2^n\) irrational?**
-
-Lean checks a rational basis for the full dyadic totient kernel, true level rank
-\(2^e+1\) for \(e\ge1\), the \(7.96\times10^{34}\) finite denominator exclusion,
-and diagonal certificates for every \(t\le82\). No \(t=83\) or unbounded
-certificate producer is proved; the exact cofinal equivalences diagnose rather
-than solve the problem. Paper: `erdos-249-binary-totient-series.pdf`.
-
-**#251 — Is \(\sum_{n\ge1}p_n/2^n\) irrational, equivalently the associated
-consecutive-prime-gap dyadic series?**
-
-Lean checks finite summation by parts, the exact prime/prime-gap equivalence
-under summability, and integral-shift recurrence consumers. Cofinal
-nonintegrality or adjacent small-shift witnesses for the actual prime gaps, plus
-the concrete infinite-sum bridge, remain open. Paper:
-`erdos-251-prime-gap-dyadic-series.pdf`.
-
-**#257 — For every infinite \(A\subseteq\mathbb N_{>0}\), is
-\(\sum_{n\in A}1/(2^n-1)\) irrational?**
-
-Lean checks full support, finite-period noncollapse, named structured families,
-hereditary unique coding, and the compactness, topology, perfectness, and exact
-measure dichotomy of restricted achievement sets. Prime support at base 2 and
-squarefree support at power-of-two bases are cited prior results. No arithmetic
-obstruction covers every infinite support; the universal statement and the exact
-\(1/2\) and \(1/21\) infinite-orbit alternatives remain open. Paper:
-`erdos-257-mersenne-support-subseries.pdf`.
-
-**#269 — For a finite set of at least two primes, is the reciprocal sum of
-running lcms of the smooth numbers irrational?**
-
-This library treats the three-prime case. A paper proof using Bugeaud--Laurent
-makes both two-prime versions transcendental; this is not first and not
-formalised. Steve Fan posted the same argument on the erdosproblems.com #269
-thread on 26 June 2026 and this note was first released publicly on 22 July
-2026, so no priority is claimed. For three primes the paper proves nonsingular
-selected minors of every order from one binary carry. Comparator checks the
-`-1/15` finite minor, the running-LCM height identity, and a conditional
-carry-escape consumer, not the arbitrary-order rank theorem. The actual-series
-reduction is given; the source-specific cofinal escape remains unproved. Paper:
-`erdos-269-three-prime-running-lcm.pdf`.
-
-**#1041 — Must two roots of a monic polynomial in the unit disc admit a curve of
-length less than `2` inside its open unit lemniscate?**
-
-Lean checks Newton-flow value decay, ray separation, the translation collision
-locus, and root retention under small constant perturbations. A recent claimed
-global decomposition has an invalid printed local saddle block; repairing the
-topology and metric gluing remains open. Paper:
-`erdos-1041-lemniscate-newton-flow.pdf`.
-
-**#1049 — For which rational bases is the corresponding Lambert-type series
-irrational?**
-
-The smallest resistant explicit base here is \(3/2\). Lean checks why the
-integer-base clearing argument fails at noninteger bases, the exact
-rational-base tail recurrence, and the local Padé and endpoint arithmetic. A
-primitive-normalised noncollapsed coefficient family with surviving local gain
-and analytic remainder control remains open. Paper:
-`erdos-1049-rational-base-lambert.pdf`.
-
-This static card is first-contact information, not a novelty claim or proof
-authority. The TeX sources are under `paper/`; problem-owned Lean sources are
-under `ErdosProblems/Erdos<number>/`. Only after selecting a problem should an
-agent use `query_corpus.py`, `query_semantic.py`, or the deeper owners below.
-Every route needed for that drilldown is tracked in this public repository; no
-`ai_workflow`, sibling checkout, private cache, or network access is required.
-
-## Verdict first
-
-The likely cold-agent error here is to skim a large Lean corpus with two
-reviewed problem lanes and eight problem-owned expansion lanes, then conclude
-"restatements of the original problem." That conclusion is partly right and
-mostly wrong, and you do not have to guess which: the semantic graph classifies
-every statement, so ask it instead of reading modules.
+Route the actual task before opening broad files:
 
 ```sh
-python3 scripts/query_semantic.py nonrecurring --problem 257 --limit 12
-python3 scripts/query_semantic.py classical --problem 257 --limit 12
-python3 scripts/query_semantic.py bare-equivalences --problem 257 --limit 12
-python3 scripts/query_expert_handoffs.py              # asks, guesses, alternatives, tests
+python3 scripts/agent_entry.py --entry "<task in ordinary language>"
 ```
 
-The first three commands use #257 as a concrete example. Substitute the
-problem selected from the cold-start card, and keep a small `--limit` on the
-first pass. Omit the problem filter only for an explicit whole-corpus audit;
-otherwise the exhaustive semantic graph is a drilldown, not an orientation
-surface.
+It recommends a task lane, the smallest read set, and the relevant skills;
+`python3 scripts/agent_entry.py --skills` is the complete catalog. Its routing
+metadata is navigation, not mathematical authority.
 
-The current all-problem counts are builder-owned in
-`docs/semantic_corpus.json::summary.public_semantic_census` and projected into
-`docs/RESULTS.md` and `docs/TRUTH_AUDIT.md`; do not copy a dated #249/#257
-sample into this static entry file.
+## Route the task before reading broadly
 
-**None of those counts is a novelty claim.** `classical` is exactly the set already in
-the literature; `nonrecurring` asks whether a statement recurs *inside this
-corpus*, not whether it is new to mathematics. Novelty is a judgement for a
-human number theorist, and no query here supplies it. (The README's ten-minute
-verdict counts a different population — substantial antecedents extracted from
-conditional results — so its `23`/`17` and these totals are not in conflict.)
+### Mathematics, theorem status, problem progress, or paper synthesis
 
-Three things follow, and an agent reporting on this repository should carry all
-three rather than any one of them.
-
-1. **The reviewed mathematical weight is not exhausted by #249.** The
-   unconditional #257 material (full-support
-   irrationality for every integer base `b ≥ 2`, the achievement-set topology,
-   the exact `1/2` classification, and the excluded branches) is theorem
-   content rather than restatement. Start there, not at the #249 certificate
-   ladder.
-2. **The #249 reformulation programme is a negative result, and this repository
-   labels it as one itself.** Its bare equivalences were marked equivalent by
-   this project's own audit, not by a critic —
-   `Z06::certificate_supply_is_equivalent_to_249` says so in its own statement.
-   A reformulation provably equivalent to its target diagnoses the method; it is
-   not progress on the problem. Report it as evidence *about reformulation*, and
-   never as progress on #249.
-3. **The denominator exclusion is a valid checked theorem, but its numerical
-   size is not a novelty signal.** The `K = 240` window excludes rational
-   denominators through `7.96 × 10³⁴`. That is exactly what the classical
-   Farey/mediant argument returns for that window — the numerical improvement
-   over it is zero — and the window length is free. The local formal
-   contribution is the checked arithmetic instance, its transfers, and its
-   sharp first failure. Verify both halves directly, with no Lean build and no
-   dependencies:
-
-   ```sh
-   python3 scripts/check_farey_denominator_scaling.py
-   ```
-
-   It rebuilds the certificate from scratch, reproduces both formalised
-   constants exactly (cross-checked against brute force at small windows), and
-   then shows the same argument returning a 2,406-digit bound at `K = 16000` in
-   under a tenth of a second. Treat the magnitude as a record of the chosen
-   finite window, never as a measure of progress toward irrationality.
-
-Erdős #249 and the universal form of #257 remain open, and nothing in this
-repository is close to settling either. An agent that reports otherwise has
-misread a finite certificate, a conditional reduction, or a restatement.
-
-## First read
-
-If the task is to understand the repository architecture, release
-infrastructure, sources of truth, or newcomer path, read `ARCHITECTURE.md`
-first. It is the plain-language human guide. The machine-readable orientation
-below is the bounded route into mathematical claims and Lean source.
-
-For whole-corpus source navigation, do not compile or skim modules first. Run:
+Query the public corpus before reading papers or Lean source:
 
 ```sh
-python3 scripts/query_corpus.py --tour --format card
+python3 scripts/query_corpus.py --ask "<question>"
 ```
 
-The six-line tour reports the full scale, canonical all-problem map, exact
-loaded-root dependency graph, authority boundary, and next command. It keeps
-the all-problem open fleet distinct from the reviewed #249/#257 open-
-proposition frontier. Then run
-`python3 scripts/query_corpus.py --route agent_native_corpus_navigation` for
-the generic declaration, connection, proof-cone, workbench, and focused-build
-commands. All navigation reads committed JSON and therefore works in a cold
-clone. It does not elaborate Lean or acquire proof authority; use the pinned
-Lean build when a result must be checked.
+For a repository overview or full-coverage request, use:
 
-1. Read `docs/orientation.json`. It is the bounded first-read capsule: release
-   scale, exact open propositions, mathematical programme routes, principal
-   claim routes, and typed drilldowns. Its human projection is
-   `docs/ORIENTATION.md`. Both are generated navigation, not proof authority.
-2. Drill into `docs/claims.json` only for the selected claim or route. Its
-   `machine_readable_paper` object owns the complete map from paper claims to
-   Lean declarations, module imports, argument relationships, validation, and
-   explicit non-claims. Its `publication_assembly` partitions every public
-   claim exactly once into a contribution family with a narrative owner,
-   prior-art posture, consumer or open obligation, and rendered-view decision.
-   Do not load its exhaustive module graph merely to orient.
+```sh
+python3 scripts/query_corpus.py --overview --format card
+```
 
-   To take a single claim all the way down in one command, use
+It covers every programme, status class, exact open proposition, and paper
+family. Do not answer from one flagship or theorem count; follow its
+`answer_contract` and preserve every exact open boundary.
 
-   ```sh
-   python3 scripts/verify_claims.py --list
-   python3 scripts/verify_claims.py --claim <claim_id>
-   ```
+Follow the returned claim, remaining-open, declaration, module, and paper
+handles. For a corpus-wide progress review, the bounded route must include:
 
-   It prints the public statement, re-reads each declaration out of the Lean
-   source at its recorded position rather than reprinting the register's
-   coordinates, names the Comparator interface that restates the result under a
-   fixed axiom budget or reports that no selected interface carries this claim
-   id, resolves the claim's paper label to the write-up that carries it, and
-   ends on the typed boundary: what the status is allowed to mean, which open
-   propositions still target the claim, and what the release does not assert.
-   Do not read a Comparator binding as independent verification: it checks a
-   separately declared statement under configured axioms, and the register's own
-   boundary sentence is printed alongside it. `query_corpus.py --claim` remains
-   the route for argument-graph neighbours; this is the route for reading the
-   proof text, the second formal check, and the limit together. On a shallow clone it exits 2 and says so,
-   because a truncated history cannot answer questions about pinned identity
-   and must never be read as a failed claim.
-3. Read `docs/methodology.json` before changing a public claim. It defines
-   the evidence responsibilities, change classes, required reviews, and local
-   claim, guard, and negative-fixture references for each rule.
-   `METHODOLOGY.md` is the shorter human projection.
-4. Read `docs/corpus_descriptor.json` when another agent or system needs to
-   register this repository as a mathematical corpus. It separates the pinned
-   proof-source commit from the content-addressed navigation projection, and
-   carries bounded principal handles plus digest-bound expansion routes for
-   both authored papers and the paper-to-Lean source-sigil crosswalk. Generated
-   navigation does not pretend to contain the Git commit that first contains
-   its own bytes. These authored surfaces remain distinct from Lean proof
-   authority. The release gate keeps this registration envelope below 64 KB.
-5. Read `docs/publication_entry_packet.json` when the task concerns the
-   systems paper, publication controls, mutation evidence, or their current
-   limits. It is a generated, bounded agent packet containing the thesis,
-   checked claims and non-claims, historical and current evidence snapshots,
-   authority owners, content hashes, validation commands, and active evidence
-   residuals. It is navigation, not Lean proof authority or historical
-   evidence authority. Its authored source is
-   `docs/publication_entry_source.json`.
-6. Read `docs/publication_contract.json` for the exact inventory of shipped
-   manuscripts and PDFs, their content identities, their evidence boundaries,
-   and their entry routes. It owns publication-artifact coverage, not
-   mathematical claim status. In particular, the systems case study is
-   evidence about release controls and does not acquire Lean proof authority.
-   Read `docs/publication_evidence.json` for the typed historical mutation
-   matrix, protocol, timings, M8 escape, post-repair rerun boundary, and
-   explicit absence of registered raw run logs or executable mutation
-   operators. `research/experiments/publication_mutations.json` and
-   `scripts/run_publication_mutations.py` provide a separately versioned,
-   deterministic reconstruction of the ten mutation classes; they are not the
-   missing original run logs or exact targets.
-7. Read `SCOPE.md` before describing what the project proves. Erdős #249 and
-   the universal form of #257 remain open.
-8. For one claim, use `docs/papers/corpus.json` to resolve its `paper_label`
-   to the owning individual problem paper, then follow its `declarations` to
-   the named Lean source coordinates. The archived combined #249/#257
-   manuscript is provenance, not the default gateway. To read surrounding
-   exposition rather than locate a claim, use the generated full text in
-   `docs/papers/`, where each manuscript's own section labels are HTML anchors:
-   `grep -n '<a id="sec:unresolved">' docs/papers/full-text/*.md`.
-9. Read `docs/papers/corpus.json` when the task concerns what the papers say
-   rather than what Lean checked. It is the bounded index to every registered
-   manuscript, including the Plectis paper carried as a mirror so this clone is
-   readable offline. It names the question each paper answers, the reading
-   route each paper states for itself, every section with its label and line,
-   and what each paper is not authority for. The generated Markdown is a
-   projection: it resolves theorem numbers, cross-references, and Lean source
-   links that the `.tex` only implies, but the `.tex` remains the manuscript and
-   the hash of record. Neither is proof authority.
-10. Read `docs/problems.json` when the task names a single Erdős problem
-   covered by the `ErdosProblems` expansion library. It is the generated,
-   bounded problem-owned index: one row per currently indexed problem giving
-   its modules with declaration counts, its Erdős Problem Note, what is
-   checked, what is not checked, the obligation that survives, the standalone
-   paper that writes the problem up, and the Comparator disposition of every
-   contribution family. The last two are joins into `docs/papers/corpus.json`
-   and the review matrix in `docs/claims.json`; a disposition says whether
-   Comparator was asked to check that family, not whether it is true. The #249
-   and #257 rows index expansion modules and do not replace the separately
-   reviewed `Erdos249257` claim registry.
-   Its authored source is `docs/problem_index_source.json` and it is rebuilt by
-   `python3 scripts/build_problem_index.py`. **These declarations carry no
-   reviewed public claim status.** The claim registry has no row for them, and
-   a passing kernel check of `ErdosProblems.lean` does not create one; do not
-   report a problem as advanced because its module count grew.
-11. Use `docs/declaration_atlas.json` when you need the exhaustive mathematical
-   scale: every declaration, signature excerpt, module, import edge, generated
-   certificate marker, and principal-claim link. It is a generated navigation
-   projection; drill back to Lean before trusting a statement.
-12. Read `docs/semantic_corpus.json` when the question is *what this corpus
-   proves and how its statements relate*, rather than where one declaration
-   lives. It is the layer between the atlas and the claim registry: one node
-   per mathematically distinct statement, typed mathematical relations between
-   nodes, and an explicit semantic role for every declaration in both
-   libraries. `docs/semantic/README.md` explains the two objects and why
-   equivalences are preserved rather than deduplicated away. Do not answer
-   "what is actually proved here" by rereading modules; ask the graph:
+```sh
+python3 scripts/query_corpus.py --route instant_orientation
+python3 scripts/query_corpus.py --route erdos249_certificate_story
+python3 scripts/query_corpus.py --route erdos257_half_story
+python3 scripts/query_corpus.py --route browse_claim_status
+```
 
-   ```sh
-   python3 scripts/query_semantic.py nonrecurring --problem 257
-   python3 scripts/query_semantic.py barriers
-   python3 scripts/query_semantic.py open-antecedents
-   python3 scripts/query_semantic.py coverage
-   python3 scripts/query_semantic.py problem-registry
-   python3 scripts/query_semantic.py paper-coverage
-   python3 scripts/query_semantic.py population-backlog
-   python3 scripts/query_semantic.py structural-backlog --problem 257
-   python3 scripts/query_semantic.py semantic-reviews
-   ```
+If free text returns no semantic cells, use those stable routes; do not replace
+machine evidence with manuscript-only inference. All eight indexed problems
+remain open.
 
-   Provenance for emitted modules is owned by
-   `docs/generated_certificate_manifest.json`, never by a filename pattern: a
-   module is generated if and only if the manifest lists it.
-   `docs/semantic/reviews.json` separately records digest-bound semantic
-   reviews for selected high-value nodes and relations. A model receipt means
-   exact source-to-wording consistency review within its stated ceiling, not
-   human review, novelty authority, or Lean proof authority.
-   Read the `coverage` result by tier: `authored_statement` is mathematical
-   interpretation, `source_structural_family` is exact module/signature
-   discoverability only, and direct proposition evidence is stricter than
-   contextual membership in an authored certificate family.
-13. Read `docs/theory_lab.json` when the question is *why* a proof works, what
-   happens if the mathematics is perturbed, or whether an explanation here has
-   ever been tested. It sits above the semantic corpus and holds the mechanism
-   basis (an invariant plus a transformation plus the observable it controls),
-   typed interventions with predictions stamped before their outcomes, failure
-   receipts for routes that were tried and blocked, and blinded holdout
-   evaluations. `docs/semantic/lab/README.md` explains the design.
+### Lean proof work or source mutation
 
-   ```sh
-   python3 scripts/query_semantic.py mechanisms --problem 257
-   python3 scripts/query_semantic.py explains <node_id>
-   python3 scripts/query_semantic.py unexplained
-   python3 scripts/query_semantic.py receipts
-   python3 scripts/query_semantic.py benchmark
-   ```
+Start from a typed mathematical handle, then cross into source:
 
-   Two rules matter when you add to it. A receipt that rules a mechanism out
-   must name the sibling mechanisms it does **not** reach -- omitting that is
-   how a barrier here nearly went out described as closing a family of engines
-   while a weaker one survived. And a mechanism is not a theorem family: if the
-   record cannot be used to predict whether a *new* nearby statement is
-   reachable, it is a label and the contract rejects it.
-14. Use `Erdos249257.lean` for the reviewed #249/#257 root and
-   `ErdosProblems.lean` for the problem-owned expansion root. Kernel checking
-   the expansion root does not promote its declarations into reviewed public
-   claims. Use `docs/SOURCE_MAP.md` for intention-based routes and
-   `docs/WAVE_INDEX.md` for mathematical chronology. For arbitrary Lean,
-   including auxiliary modules intentionally excluded from compact import
-   roots, start with the module-agnostic inventory:
+```sh
+python3 scripts/query_corpus.py --goal-support "<Lean or mathematical goal>"
+python3 scripts/query_corpus.py --proof-plan "<Lean or mathematical goal>" --depth 4
+```
 
-   ```sh
-   python3 scripts/query_semantic.py problem-registry
-   python3 scripts/query_semantic.py inventory <text> \
-     --module <optional/path.lean> --role <optional-role> --zone <optional-zone>
-   ```
+Use the emitted declarations and verify applicability with Lean. Before editing,
+read [the detailed agent guide](docs/AGENT_GUIDE.md) sections `Authority and change order` and
+`Validation`, and [METHODOLOGY.md](docs/METHODOLOGY.md) when a public claim could
+change.
 
-   The inventory is exhaustive source navigation, not semantic interpretation.
-   Exact elaborated dependency neighborhoods cover declarations loaded through
-   either supported compact root. Authored statement-node links remain the only
-   statement-level semantic claims.
+### Repository architecture, agent entry, cold-clone organization, or docs routing
 
-For a bounded lookup, use `python3 scripts/query_corpus.py` with one typed
-handle:
+Route first; if selected, open
+[the infrastructure skill](skills/maintain-public-infrastructure/SKILL.md):
 
-- `--vocabulary` for the compact executable mathematical Rosetta stone:
-  question operators, ordinary-language aliases, corpus terms of art,
-  transparent query expansions, and typed route hints;
-- `--ask "<question>"` to compile ordinary mathematical language into a
-  bounded witness graph while keeping kernel, claim-status, authored-digestion,
-  and navigation provenance separate; support and trace cells use the
-  source-joined elaborated dependency index when it is fresh, and the contract
-  and evaluation levels are documented in `docs/SEMANTIC_COMPILER.md`;
-  relational trace questions with explicit `from ... to ...` endpoints resolve
-  each endpoint independently before searching for an exact formal path;
-- `--claim <id>`, `--open <remaining_open.id>`, or `--route <id>` for the
-  mathematical story and exact frontier;
-- programme routes such as `erdos249_diagonal_arithmetic`,
-  `transport_curvature_programme`, `boolean_mobius_constraints`, and
-  `erdos257_half_story` for a bounded map of one coherent mathematical
-  programme, including its exact claim ceiling and surviving open proposition;
-- `--paper-label <label>` or `--paper-anchor <label_or_source_ref>` for authored
-  exposition;
-- `--publication-family <id>` for one contribution family's status,
-  prior-art posture, narrative owner, source route, consumer, and view decision;
-- `--publication-architecture` for the gateway/companion verdict and complete
-  contribution-family index;
-- `--declaration <name>`, `--source <module.lean:line>`, or `--module <path_or_id>`
-  for checked source;
-- `--goal-support "<Lean or mathematical goal>"` for theorem candidates ranked
-  by precomputed elaborated conclusion shape, conclusion constants, exact
-  context phrases, and binder structure; this is a navigation affordance, not
-  an applicability proof, so the emitted `apply` candidates still require
-  Lean elaboration;
-- `--proof-plan "<Lean or mathematical goal>" --depth <1..8>` to extend the
-  best goal-support candidate with its Lean-classified term/proposition
-  telescope, a context-match or missing-obligation ledger, and a bounded exact
-  proof-term dependency spine;
-- `python3 scripts/proof_state_compiler.py --pilot-controls` to cross the
-  static/runtime boundary: candidate applications are executed against actual
-  Lean examples, accepted transitions become AND/OR obligation hyperedges,
-  rejected applications retain typed failures, and closed runs carry replay
-  receipts.  Use `--request-file` or `--request-stdin` for another explicit
-  bounded goal; this runtime packet is documented in
-  `docs/PROOF_STATE_COMPILER.md` and remains distinct from claim status;
-- `python3 scripts/proof_workbench.py {open,note,probe,claim,close,replay,show}`
-  for the agent-native session notary: typed cognitive moves in an
-  append-only ledger, kernel probes whose verdicts the agent cannot author,
-  claims that must cite kernel-accepted probe receipts, and byte-exact
-  session replay.  The inhabitation contract — instruments versus agent
-  policy, and the assisted / context-blind / prospective invention ladder —
-  is `docs/AGENT_WORKBENCH.md`;
-- `--proof-cone <declaration> --depth <1..8>` for a bounded,
-  theorem-prioritized cone of exact proof-term dependencies, or
-  `--dependency-path <source> <target> --depth <1..8>` for the shortest exact
-  directed path between two source-resolved declarations;
-- `--artifact <path_or_sha256>` for a registered paper, PDF, JSON owner, or
-  content identity;
-- `--publication-artifact <id>` for a shipped manuscript's typed role,
-  expected digests, current drift status, evidence boundary, and validation;
-- `--publication-evidence [MUTATION_ID]` for the historical experiment summary
-  or one exact mutation row, including its detector and evidence ceiling;
-- `--connections <module_or_declaration> --query "<task>"` after choosing a
-  source handle; and
-- `--search "what remains open for 257" --limit 10` (or another short natural
-  question) only when no typed handle is known.
+```sh
+python3 scripts/agent_entry.py --entry "<task in ordinary language>"
+```
 
-Run `python3 scripts/query_corpus.py --help` for the full grammar. Responses are
-capped at 64 KB and route exhaustive data back to its owner. Follow adjacent
-claim IDs one packet at a time; do not load the complete graph to orient. An
-exact open-proposition ID must not be replaced by finite or conditional
-progress. A paper label, declaration, source line, module sigil, or digest is a
-navigation handle, not a fabricated claim and not proof authority.
+Then run the bounded checks:
 
-## Authority and change order
+```sh
+python3 scripts/proof_cockpit.py --format card
+python3 scripts/test_compact_agent_entry.py
+python3 scripts/check_cold_clone_comprehension.py --quick
+```
 
-- Lean source checked by the pinned Lean kernel is proof authority.
-- `docs/claims.json` owns release identity, status taxonomy, declaration
-  coordinates, typed remaining-open propositions, and the machine-readable
-  navigation graph.
-- `docs/methodology.json` owns mathematical methodology and claim-transition
-  requirements. It is not proof authority and does not own claim status.
-- `docs/corpus_descriptor.json` is a generated, compact registration envelope;
-  it does not replace the claim registry, exhaustive atlas, or Lean authority.
-- The paper is authored mathematical exposition. Do not generate or rewrite its
-  prose mechanically from the registry.
-- README, scope, source maps, and other summaries must not exceed the status in
-  the claim registry.
-- Provider or model output is never proof authority.
+Open [ARCHITECTURE.md](docs/ARCHITECTURE.md) or [orientation](docs/ORIENTATION.md)
+only when routed; builders own generated projections.
 
-Before updating a public claim, classify the change against the
-`change_classes` matrix in `docs/methodology.json`: each class states its
-minimum evidence, whether human mathematical review is required, and the
-effects the change must not have. The update order stays fixed: Lean source
-first, then assumption and meaning review, then the claim registry, then
-authored exposition, then generated projections.
+### Publication, systems-paper, or artifact-boundary work
+
+Mathematical prose follows
+[the writing skill](skills/public-mathematical-writing/SKILL.md).
+
+For paper choice, role, availability, or reading order, start with:
+
+```sh
+python3 scripts/query_corpus.py --papers
+```
+
+For external assurance and release qualification, use the exact bounded routes:
+
+```sh
+python3 scripts/query_corpus.py --route comparator_assurance
+python3 scripts/query_corpus.py --route palomar_qualification
+```
+
+`comparator_assurance` reports the comparison packet, modules, axioms, and
+receipt; it does not establish novelty, significance, priority, or peer
+review. `palomar_qualification` reports repository-local policy readiness
+and its remaining operator-only decisions; it does not confer acceptance,
+registration, publication, or external endorsement.
+
+`--ask` answers ordinary requests such as “which papers should I read?”, keeps
+the gateway, companion, systems guide and Plectis route apart, and refuses to
+send a cold reader into a registered artifact absent from the checkout. After
+choosing a paper, follow its typed claim, open, declaration, source, or
+publication handles; prose is not authority. `docs/papers/README.md` is the
+human index and `docs/papers/corpus.json` the machine inventory.
+
+For publication mutation, open `docs/publication_entry_packet.json`, then the
+publication contract or emitted handle. These own organisation, not Lean proof.
+
+### Explain, install, mine, validate, propagate, or add a problem
+
+Do not guess from filenames. Run `python3 scripts/agent_entry.py --skills`, or
+route with `--entry`, before opening one `skills/<id>/SKILL.md`. The mining
+skill may coordinate subagents; the integrating agent verifies every return.
+After a stable delta, propagation gives each plausible downstream consumer a
+disposition before packaging. Submission may commit locally; it pushes or opens
+a pull request only after explicit authorisation.
+
+### Return research from a clone
+
+For contributed or resumable work, load:
+
+```sh
+cat skills/erdos-research-return/SKILL.md
+```
+
+Keep the human account in the pull request or plain-language issue. Bind public
+provenance and exact credit in the returned package. Never require a private
+repository.
+
+An older clone is still a valid source. Preserve its recorded starting commit
+and original delta, reconcile with current main, then rerun validation and
+propagation. A material conflict resolution is a separately credited change.
+
+### General Plectis machinery
+
+The companion [`plectis`](https://github.com/wcook04/plectis) repository owns
+the runnable machinery; this one owns the public mathematical corpus. Neither
+repository's authority follows from the other, and no command above needs the
+companion checkout.
+
+## Authority order
+
+1. Lean source checked by the pinned Lean kernel: proof authority.
+2. `docs/claims.json`: public claim identity, status, declarations, and exact
+   remaining-open propositions.
+3. `docs/methodology.json`: evidence responsibilities and claim-change rules.
+4. Generated orientation, declaration, module, and publication packets:
+   bounded navigation projections.
+5. Papers and human summaries: authored exposition within the registered claim
+   ceiling.
+6. Model output, plans, memory, and prose drafts: working aids only.
+
+No navigation handle, theorem count, finite computation, conditional reduction,
+paper sentence, or provider output may be promoted past that order.
+
+## Mutation and concurrency
+
+- Preserve unrelated staged and unstaged work. Do not reset, restore, clean, or
+  broad-stage a shared checkout.
+- Modify source authorities before their generated projections and run the
+  named owner builder/checker.
+- A paper edit does not authorize a claim change; a registry edit does not
+  prove a theorem; a passing navigation check does not prove mathematics.
+- Never add `sorry`, `admit`, project-defined `axiom`, `native_decide`,
+  unsafe/partial declarations, or unbounded kernel limits.
+- For Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2
+  --changed-from HEAD`; never overlap builds.
 
 ## Validation
 
-Choose one validation level. Do not run the full release gate and then rerun its
-component checks as a serial checklist.
+Use the smallest relevant proof first:
 
-- During an edit, run only the owning builder or focused test named by the
-  routed skill. For example, agent-entry work uses
-  `python3 scripts/test_agent_entry.py`; semantic projection work uses its
-  `build_*.py --check` command plus the matching contract test.
-- Before publishing a non-Lean public-surface change, run
-  `python3 scripts/check_release.py` once. It already runs the registered
-  projection freshness checks, source-coordinate checks, public-boundary
-  checks, query suite, cold-clone adversarial suite, and mutation fixtures.
-- After a Lean change, run the focused build wrapper below as the separate
-  proof-authority check. The Python release gate identifies the formal source
-  but deliberately does not elaborate Lean.
+```sh
+python3 scripts/test_compact_agent_entry.py
+python3 scripts/test_proof_cockpit.py
+python3 scripts/check_cold_clone_comprehension.py --quick
+python3 scripts/check_architecture_guide.py
+```
 
-Individual component commands remain useful for diagnosing a failing release
-gate, not as additional work after a pass. Start with the failed command named
-in the gate output. Common drilldowns are
-`python3 scripts/check_problem_note_sources.py --coverage`,
-`python3 scripts/build_semantic_corpus.py --check --full-check`,
-`python3 scripts/check_semantic_corpus.py`,
-`python3 scripts/build_module_graph.py --check`,
-`python3 scripts/refresh_source_coordinates.py --check`,
-`python3 scripts/build_publication_entry_packet.py --check`, and
-`python3 scripts/test_query_corpus.py`.
-
-When the shared worktree contains unrelated in-progress edits, validate the
-committed snapshot without cleaning or stashing anyone's files:
+For a committed-snapshot release check in a dirty shared checkout:
 
 ```sh
 python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
 ```
 
-The wrapper uses a disposable local clone and excludes all caller worktree
-changes. `--probe-only` verifies ref resolution and clone preparation without
-running the expensive release gate.
+After Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2
+--changed-from HEAD`; full roots are release-only.
 
-Validate the changed dependency cone after Lean changes:
-
-```sh
-python3 scripts/lean_fast_build.py --jobs 2 --changed-from HEAD
-```
-
-Run the untargeted two-root command only at the integration or release
-boundary. A focused PASS authorizes the edited source scope; it is not a full
-project integration receipt.
-
-The wrapper is the public concurrency boundary. Equivalent clean clones share
-one content-keyed validation future in the repository-scoped host cache.
-A different Lean target returns deferred exit 75 immediately while one
-`lean-host` owner is active, rather than silently queueing another detached
-build; retrying after the owner finishes launches the deferred target. That heavy-owner lock is above
-the repository slug, allowing cooperating public and authoring checkouts to
-share identical work without sharing mutable build trees. The detached owner
-continues if an attached caller exits; externally killed Lean children automatically resume
-from partial output for up to three attempts, with exhaustion classified as
-deferred exit 75 rather than a theorem failure. Completed output is bounded,
-and terminal state is cleaned automatically. Same-lock cold clones receive independent
-copy-on-write `.lake/packages` trees from a host seed when the filesystem
-supports it; mutable cache directories are never symlinked. Set
-`VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an
-explicitly isolated cache is required. None of this cache state is proof
-authority: the terminal receipt preserves the underlying Lake exit code.
-`python3 scripts/validation_singleflight.py status --key <key>` prints a
-bounded operational card; add `--full` only when the complete hashed source
-manifest is needed.
-The clone-local operational guide is
-[skills/lean-concurrent-validation/SKILL.md](skills/lean-concurrent-validation/SKILL.md).
-
-For agent-entry, skill-catalog, generated-projection, contribution-flow, or
-other clean-clone infrastructure repairs, load
-[skills/maintain-public-infrastructure/SKILL.md](skills/maintain-public-infrastructure/SKILL.md).
-Repair the public owner, preserve the observed task as a behavior fixture, and
-keep long-running validation productive through disjoint work rather than
-polling.
-
-After any stable theorem, counterexample, no-go, computation, correction,
-exposition change, or architecture repair, load
-[skills/propagate-research-consequences/SKILL.md](skills/propagate-research-consequences/SKILL.md)
-before packaging the work. The first pass is relative to the recorded starting
-commit. If the branch is later reconciled with a newer main branch, rerun the
-pass on the integration delta. Dependency edges nominate candidates; they do
-not author semantic consequences or strengthen claims.
-
-The release checker validates claim status, declaration coordinates, paper
-anchors, the machine-readable module and argument graphs, the exhaustive
-declaration atlas, scope, metadata, licensing, and proof-trust guards. Do not
-add `sorry`, `admit`, `axiom`, `native_decide`, unsafe/partial declarations,
-or unbounded kernel limits; finite computations use kernel-checked `decide`.
-
-After adding, removing, or rewiring Lean modules, run
-`python3 scripts/build_module_graph.py` before the other projections.  It
-derives paths and imports from source while preserving authored module roles;
-it does not author claims or paper prose.
-After declaration lines move, rebuild the declaration atlas and run
-`python3 scripts/refresh_source_coordinates.py`; it changes coordinates only,
-never declaration names or mathematical prose.
-
-A separate diagnostic checks that a cold clone stays readable:
-
-```sh
-python3 scripts/test_proof_cockpit.py
-python3 scripts/agent_entry.py --entry "<task>"
-python3 scripts/agent_entry.py --skills
-python3 scripts/agent_skill_catalog.py --check
-python3 scripts/test_agent_entry.py
-python3 scripts/test_clone_skills.py
-python3 scripts/test_contribution_entry.py
-python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/check_architecture_guide.py
-python3 scripts/test_architecture_guide.py
-python3 scripts/check_cold_clone_comprehension.py
-python3 scripts/test_cold_clone_comprehension.py
-```
-
-The `--quick` path checks the committed compact human and agent projections
-without a Lean build or typed-query sweep, so a fresh clone gets an immediate
-readability receipt. Semantic-corpus freshness is proved from the tracked
-content-addressed receipt in `docs/semantic_corpus_check.json`; the receipt is
-accepted only while the exact builder inputs, generated corpus, and projected
-census surfaces retain their recorded digests. Run
-`python3 scripts/build_semantic_corpus.py --check --full-check` to bypass that
-fast path and rebuild the projection in memory. The full diagnostic proves the first-contact boundary
-through the same bounded public query packets a cold coding agent would follow;
-it does not concatenate the claim registry, methodology, or declaration atlas
-as evidence. Both check navigation semantics and response budgets, not Lean
-proof correctness, and the full diagnostic runs in the release gate. A failure
-means a projection, route, or typed handle dropped a distinction and should be
-repaired.
-The companion adversarial test removes human semantic anchors and mutates proof
-authority, open-boundary, finite-bound, source-coordinate, and graph-link
-facts; every mutation must make the evaluator fail.
+Do not absorb the complete deep contract, declaration atlas, module graph, or
+the papers merely to find the first action.

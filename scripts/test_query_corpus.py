@@ -925,7 +925,7 @@ def validate_natural_language_search() -> None:
     )
     assert lay_overview["kind"] == "repository_overview"
     assert lay_overview["reader_entry"] == {
-        "human_entry": "HUMAN_ENTRY.md",
+        "human_entry": "docs/READING_GUIDE.md",
         "instant_orientation": (
             "python3 scripts/query_corpus.py --route instant_orientation"
         ),

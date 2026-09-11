@@ -94,8 +94,8 @@
     },
     {
       "authority": "PalomarSubmission",
-      "path": "SECURITY.md",
-      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/SECURITY.md",
+      "path": ".github/SECURITY.md",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/.github/SECURITY.md",
       "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
       "sha256": "b127d46e0d4890298fb888fe9683d5fdfbff0a13b729ac237228b74f50a2f4ed",
       "role": "submission and verifier security boundary"

@@ -4,7 +4,7 @@
 """Install this clone's Agent Skills into a user-selected skills directory.
 
 The repository works without installation: an agent can read
-``AGENTS.override.md`` and the files under ``skills/`` directly.  Installation
+``AGENTS.md`` and the files under ``skills/`` directly.  Installation
 only makes the named skills available from other working directories.
 
 The command is deliberately preview-first.  It changes the destination only

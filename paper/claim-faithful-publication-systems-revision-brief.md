@@ -30,9 +30,9 @@ reader the public meaning before a claim identifier, declaration name, file
 path, or repository-specific status label, and omit internal workflow
 vocabulary that the argument does not need.
 
-## Distinct job from `ARCHITECTURE.md`
+## Distinct job from `docs/ARCHITECTURE.md`
 
-- `ARCHITECTURE.md` is the living route map: current files, commands,
+- `docs/ARCHITECTURE.md` is the living route map: current files, commands,
   ownership, regeneration, and maintenance.
 - The PDF is the stable explanation: why authority is divided, how one claim
   crosses the boundary, and where the guarantee ends.
