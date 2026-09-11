@@ -295,18 +295,24 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
     }
     return results
 
+def proof_paths(root: Path | None = None) -> tuple[str, ...]:
+    """Configured corpus root files and directories for the revision at ``root``."""
+    checked = ROOT if root is None else root
+    return tuple(
+        path
+        for library_root in LIBRARY_ROOTS
+        for path in (
+            library_root_file(checked, library_root).relative_to(checked).as_posix(),
+            library_dir(checked, library_root).relative_to(checked).as_posix(),
+        )
+    )
+
+
 ROOT_FILES = tuple(
     library_root_file(ROOT, root).relative_to(ROOT).as_posix()
     for root in LIBRARY_ROOTS
 )
-PROOF_PATHS = tuple(
-    path
-    for library_root in LIBRARY_ROOTS
-    for path in (
-        library_root_file(ROOT, library_root).relative_to(ROOT).as_posix(),
-        library_dir(ROOT, library_root).relative_to(ROOT).as_posix(),
-    )
-)
+PROOF_PATHS = proof_paths()
 INTERNAL_IMPORT_RE = re.compile(
     rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
     re.M,
@@ -765,9 +771,23 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
         for rel, blob in zip(current_paths, current_ids)
     }
     if current != historical:
-        return False, "current public Lean sources differ from formal-source checkpoint"
+        extra = sorted(set(current) - set(historical))
+        missing = sorted(set(historical) - set(current))
+        changed = sorted(
+            identity
+            for identity in set(current) & set(historical)
+            if current[identity] != historical[identity]
+        )
+        detail = "current public Lean sources differ from formal-source checkpoint"
+        if extra:
+            detail += "; unexpected current source(s): " + ", ".join(extra)
+        if missing:
+            detail += "; missing current source(s): " + ", ".join(missing)
+        if changed:
+            detail += "; changed source(s): " + ", ".join(changed)
+        return False, detail
     untracked = run(
-        ["git", "ls-files", "--others", "--exclude-standard", "--", *PROOF_PATHS],
+        ["git", "ls-files", "--others", "--exclude-standard", "--", *proof_paths(ROOT)],
         cwd=ROOT,
         capture_output=True,
         text=True,

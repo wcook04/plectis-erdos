@@ -28,10 +28,20 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Mapping
 
-from lean_source import library_identity_path, library_storage_path, library_storage_variants
+from lean_source import (
+    checkout_source_relative,
+    library_identity_path,
+    library_storage_path,
+    library_storage_variants,
+)
 from query_corpus import live_expert_consumer
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def checkout_file(relative: str) -> Path:
+    """Resolve a public identity path onto the nested checkout spelling."""
+    return ROOT / checkout_source_relative(relative, ROOT)
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 PROTOCOL = ROOT / "docs" / "expert_review_protocol.json"
@@ -381,9 +391,7 @@ def _uncached_live_source_declaration(
             f"declaration atlas must expose one {module}:{name}; "
             f"found {len(atlas_rows)}"
         )
-    source_path = ROOT / library_storage_path(module)
-    if not source_path.is_file():
-        source_path = ROOT / module
+    source_path = checkout_file(module)
     if not source_path.is_file():
         raise ValueError(f"source declaration module is missing: {module}")
     declaration_pattern = re.compile(
@@ -464,7 +472,7 @@ def _live_research_declaration(module: str, name: str) -> dict[str, Any]:
     declaration line and kind, while the adjudication receipt supplies the
     checked/proof-status boundary.  It never creates a rank or claim row.
     """
-    source_path = ROOT / module
+    source_path = checkout_file(module)
     if not source_path.is_file():
         raise ValueError(f"source declaration module is missing: {module}")
     declaration_pattern = re.compile(
@@ -764,7 +772,7 @@ def three_prime_lcm_cells_handoff(
     wrapper_pattern = re.compile(
         r"^\s*theorem\s+" + re.escape(wrapper_name.rsplit(".", 1)[-1]) + r"\b"
     )
-    wrapper_path = ROOT / wrapper_module
+    wrapper_path = checkout_file(wrapper_module)
     wrapper_line = next(
         (
             line_number
@@ -999,7 +1007,7 @@ def rank_two_kernel_no_go_handoff(
     wrapper_pattern = re.compile(
         r"^\s*theorem\s+" + re.escape(wrapper_name.rsplit(".", 1)[-1]) + r"\b"
     )
-    wrapper_path = ROOT / wrapper_module
+    wrapper_path = checkout_file(wrapper_module)
     wrapper_line = next(
         (
             line_number
@@ -1451,7 +1459,7 @@ def actual_lcm_orbit_separation_handoff(
                 (
                     line_number
                     for line_number, line in enumerate(
-                        (ROOT / "ExternalVerification/Solution.lean")
+                        checkout_file("ExternalVerification/Solution.lean")
                         .read_text(encoding="utf-8")
                         .splitlines(),
                         start=1,
@@ -1569,7 +1577,7 @@ def first_harmonic_pivot_handoff(
         (
             line_number
             for line_number, line in enumerate(
-                (ROOT / wrapper_module).read_text(encoding="utf-8").splitlines(),
+                checkout_file(wrapper_module).read_text(encoding="utf-8").splitlines(),
                 start=1,
             )
             if wrapper_pattern.search(line)

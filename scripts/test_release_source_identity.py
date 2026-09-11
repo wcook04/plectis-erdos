@@ -73,6 +73,14 @@ def main() -> int:
         git(root, "config", "user.email", "release-test@example.invalid")
         git(root, "config", "user.name", "Release source identity test")
         (root / "Erdos249257").mkdir()
+        (root / "lakefile.toml").write_text(
+            'name = "erdos249257"\n'
+            "[[lean_lib]]\n"
+            'name = "Erdos249257"\n'
+            "[[lean_lib]]\n"
+            'name = "ErdosProblems"\n',
+            encoding="utf-8",
+        )
         root_source = "import Erdos249257.Stable\n"
         stable_source = "theorem stable : True := True.intro\n"
         (root / "Erdos249257.lean").write_text(
@@ -80,6 +88,9 @@ def main() -> int:
         )
         (root / "Erdos249257" / "Stable.lean").write_text(
             stable_source, encoding="utf-8"
+        )
+        (root / "ErdosProblems.lean").write_text(
+            "-- fixture companion root\n", encoding="utf-8"
         )
         old_ref = commit(root, "old formal source")
         (root / "Erdos249257" / "PostRef.lean").write_text(

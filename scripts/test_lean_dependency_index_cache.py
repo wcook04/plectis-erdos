@@ -14,6 +14,8 @@ import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
+from lean_source import library_dir, library_root_file
+
 
 ROOT = Path(__file__).resolve().parent.parent
 MODULE_PATH = ROOT / "scripts" / "build_lean_dependency_index.py"
@@ -81,13 +83,17 @@ def check_live_input_surface() -> None:
         "dependency-index input file set is incomplete",
     )
     for library_root in builder.LEAN_ROOT_TARGETS:
+        root_file = library_root_file(ROOT, library_root).relative_to(ROOT).as_posix()
+        descendant_prefix = (
+            library_dir(ROOT, library_root).relative_to(ROOT).as_posix() + "/"
+        )
         require(
-            f"{library_root}.lean" in relative,
-            f"dependency-index root is missing: {library_root}.lean",
+            root_file in relative,
+            f"dependency-index root is missing: {root_file}",
         )
         require(
             any(
-                name.startswith(f"{library_root}/") and name.endswith(".lean")
+                name.startswith(descendant_prefix) and name.endswith(".lean")
                 for name in relative
             ),
             f"dependency-index root has no public Lean descendants: {library_root}",

@@ -174,6 +174,8 @@ def checkout_source_relative(relative: str, root: Path) -> str:
         relative,
         f"verification/{identity}",
         f"verification/{relative.removeprefix('verification/')}",
+        f"research/{identity}",
+        f"research/{relative.removeprefix('research/')}",
     )
     seen: set[str] = set()
     for candidate in candidates:

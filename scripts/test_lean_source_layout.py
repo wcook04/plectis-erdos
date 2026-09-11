@@ -13,6 +13,7 @@ from lean_source import (
     LAYOUT_NESTED,
     LAYOUT_TRUNCATED_READER,
     LibraryLayoutError,
+    checkout_source_relative,
     library_module_id,
     library_source_paths,
 )
@@ -91,6 +92,21 @@ def main() -> int:
         require("ErdosProblems" in ids, ids)
         require(all(not module.startswith("lean.") for module in ids), ids)
         require("Challenge" not in ids and "Adapter" not in ids, ids)
+        require(
+            checkout_source_relative("Erdos249257/Only.lean", root)
+            == "lean/Erdos249257/Only.lean",
+            "library identity did not resolve onto nested storage",
+        )
+        require(
+            checkout_source_relative("Challenge.lean", root)
+            == "verification/Challenge.lean",
+            "verification identity did not resolve onto verification storage",
+        )
+        require(
+            checkout_source_relative("adapters/Adapter.lean", root)
+            == "research/adapters/Adapter.lean",
+            "adapter identity did not resolve onto research storage",
+        )
 
     with tempfile.TemporaryDirectory(prefix="lean-layout-historical-") as raw:
         root = Path(raw)
