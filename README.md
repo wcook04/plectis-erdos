@@ -26,9 +26,8 @@ compute without having to build them again. A useful partial result or a
 failed approach with a checkable reason can save the next person work, even
 while the original problem remains open.
 
-The problems were chosen for their difficulty, to expose the research process:
-reading prior work, testing ideas, checking proofs, explaining results, and
-recording what still needs to be done. Each problem keeps that record together.
+The problems were chosen for their difficulty, to test the research process
+and preserve what each attempt teaches the next researcher.
 
 I am responsible for all claims, sources and the release. Plectis is an
 independent, AI-assisted prototype. It has had no independent mathematical
