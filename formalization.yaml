@@ -1625,7 +1625,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:eeca1d9d096ca63ee25f1fc89ad659100779cdb15210832344a8374e2b2329c5"
+  problem_index_digest: "sha256:fb795da8694ddb8ed30a0fcd58e110f79de05981f2c7ff7c2945fa04335ea031"
   problem_count: 8
   problems:
     - id: "erdos_68"
