@@ -68,43 +68,107 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
         git(source, "commit", "-qm", "snapshot isolation fixture")
         commit_id = git(source, "rev-parse", "HEAD")
 
-        original_root = check_release_ref.ROOT
-        check_release_ref.ROOT = source
-        calls: list[tuple[list[str], Path]] = []
+        worktree = Path(raw) / "detached-worktree"
+        # Exercise Git under the same public, sanitized environment as snapshots.
+        added_worktree = check_release_ref.run(
+            ["git", "worktree", "add", "--detach", "--quiet", str(worktree), commit_id],
+            cwd=source,
+        )
+        require(added_worktree.returncode == 0, added_worktree.stderr)
+        expected_objects = (source / ".git" / "objects").resolve()
+        require(
+            Path(git(worktree, "rev-parse", "--absolute-git-dir")).resolve()
+            != (source / ".git").resolve(),
+            "fixture did not create a separate worktree administrative directory",
+        )
         original_run = check_release_ref.run
+        for checkout in (source, worktree):
+            calls: list[tuple[list[str], Path]] = []
 
-        def recording_run(
-            argv: list[str], *, cwd: Path, timeout: int | None = None
-        ) -> subprocess.CompletedProcess[str]:
-            calls.append((argv, cwd))
-            return original_run(argv, cwd=cwd, timeout=timeout)
+            def recording_run(
+                argv: list[str], *, cwd: Path, timeout: int | None = None
+            ) -> subprocess.CompletedProcess[str]:
+                calls.append((argv, cwd))
+                return original_run(argv, cwd=cwd, timeout=timeout)
 
-        try:
-            with patch.object(check_release_ref, "run", side_effect=recording_run):
+            with (
+                patch.object(check_release_ref, "ROOT", checkout),
+                patch.object(check_release_ref, "run", side_effect=recording_run),
+                tempfile.TemporaryDirectory(dir=raw) as parent_raw,
+            ):
+                clone = check_release_ref.prepare_clone(commit_id, Path(parent_raw))
+                require(git(clone, "rev-parse", "HEAD") == commit_id, "snapshot commit drifted")
+                require(git(clone, "status", "--porcelain") == "", "snapshot is not clean")
+                require(
+                    original_run(["git", "symbolic-ref", "--quiet", "HEAD"], cwd=clone).returncode == 1,
+                    "snapshot checkout was not detached",
+                )
+                alternates = clone / ".git/objects/info/alternates"
+                require(not alternates.is_symlink(), "snapshot alternates file is symlinked")
+                require(
+                    Path(alternates.read_text(encoding="utf-8").strip()).resolve() == expected_objects,
+                    "snapshot did not share the common repository's exact object store",
+                )
+                require(
+                    (clone / "scripts/check_release.py").read_text(encoding="utf-8")
+                    == "#!/usr/bin/env python3\nprint('fixture')\n",
+                    "snapshot did not materialize committed release commands",
+                )
+
+            require(calls, "snapshot preparation did not invoke Git")
+            clone_command, clone_cwd = calls[0]
+            require(clone_command[:2] == ["git", "clone"], "snapshot did not use git clone")
+            require("--shared" in clone_command, "snapshot clone lost shared local mode")
+            require(
+                "--no-hardlinks" not in clone_command,
+                "snapshot clone restored the multi-gigabyte object copy",
+            )
+            require(
+                "--no-checkout" in clone_command,
+                "snapshot clone checked out before the requested immutable commit",
+            )
+            require(clone_cwd == checkout, "snapshot clone used a different source checkout")
+
+        wrong_source = Path(raw) / "wrong-source"
+        wrong_source.mkdir()
+        git(wrong_source, "init", "-q")
+        wrong_objects = (wrong_source / ".git" / "objects").resolve()
+        for checkout in (source, worktree):
+            for mutation in ("wrong-store", "symlink"):
+                checkout_attempts = []
                 with tempfile.TemporaryDirectory(dir=raw) as parent_raw:
-                    clone = check_release_ref.prepare_clone(
-                        commit_id, Path(parent_raw)
-                    )
-                    require(
-                        git(clone, "rev-parse", "HEAD") == commit_id,
-                        "snapshot commit drifted",
-                    )
-        finally:
-            check_release_ref.ROOT = original_root
+                    parent = Path(parent_raw)
 
-        require(calls, "snapshot preparation did not invoke Git")
-        clone_command, clone_cwd = calls[0]
-        require(clone_command[:2] == ["git", "clone"], "snapshot did not use git clone")
-        require("--shared" in clone_command, "snapshot clone lost shared local mode")
-        require(
-            "--no-hardlinks" not in clone_command,
-            "snapshot clone restored the multi-gigabyte object copy",
-        )
-        require(
-            "--no-checkout" in clone_command,
-            "snapshot clone checked out before the requested immutable commit",
-        )
-        require(clone_cwd == source, "snapshot clone used a different source checkout")
+                    def corrupt_alternates(
+                        argv: list[str], *, cwd: Path, timeout: int | None = None
+                    ) -> subprocess.CompletedProcess[str]:
+                        if argv[:2] == ["git", "checkout"]:
+                            checkout_attempts.append(argv)
+                        completed = original_run(argv, cwd=cwd, timeout=timeout)
+                        if argv[:2] == ["git", "clone"] and completed.returncode == 0:
+                            alternates = parent / "repo/.git/objects/info/alternates"
+                            if mutation == "wrong-store":
+                                alternates.write_text(str(wrong_objects) + "\n", encoding="utf-8")
+                            else:
+                                stored = parent / "actual-alternates"
+                                alternates.rename(stored)
+                                alternates.symlink_to(stored)
+                        return completed
+
+                    with (
+                        patch.object(check_release_ref, "ROOT", checkout),
+                        patch.object(check_release_ref, "run", side_effect=corrupt_alternates),
+                    ):
+                        try:
+                            check_release_ref.prepare_clone(commit_id, parent)
+                        except check_release_ref.SnapshotError as error:
+                            require(
+                                "unexpected Git object store" in str(error),
+                                f"{mutation} did not fail at the object-store boundary: {error}",
+                            )
+                        else:
+                            raise AssertionError(f"snapshot accepted {mutation} from {checkout.name}")
+                    require(not checkout_attempts, f"{mutation} was not rejected before checkout")
 
 
 def test_receipt_destination_boundary() -> None:
