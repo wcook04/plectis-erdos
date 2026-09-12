@@ -8,6 +8,7 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -47,7 +48,7 @@ def main() -> int:
     require(lookup == "cffconvert", "metadata checker looked up the wrong tool")
     lookup_path = which.call_args.kwargs["path"]
     require(
-        lookup_path.split(os.pathsep)[0] == str(Path(sys.executable).resolve().parent),
+        lookup_path.split(os.pathsep)[0] == str(Path(sys.executable).parent.resolve()),
         "metadata lookup did not prefer the running interpreter",
     )
     require(
@@ -94,6 +95,23 @@ def main() -> int:
         == "clean_committed_snapshot_subprocess_environment_v1",
         "metadata environment contract drifted",
     )
+    # Exercise real lookup rather than mocking which: following the Python
+    # symlink itself silently loses every tool installed in a virtualenv.
+    with tempfile.TemporaryDirectory(prefix="metadata venv ") as tmp:
+        bin_dir = Path(tmp).resolve() / "bin"
+        bin_dir.mkdir()
+        interpreter = bin_dir / "python"
+        interpreter.symlink_to(Path(sys.executable).resolve())
+        validator = bin_dir / "cffconvert"
+        validator.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+        validator.chmod(0o755)
+        with patch.object(sys, "executable", str(interpreter)):
+            require(
+                check_metadata.find_tool("cffconvert") == str(validator),
+                "metadata lookup followed the Python symlink out of the venv",
+            )
+            require(check_metadata.main() == 0, "venv validator did not run")
+
     print(
         "test_check_metadata_environment: cffconvert runs with a clean snapshot "
         "environment and a bounded subprocess"
