@@ -48,7 +48,7 @@ Return work from any clone, preserve attribution, reconcile it with current main
 - [erdos-research-return](erdos-research-return/SKILL.md) — Prepare, validate, assimilate, or update a provenance-preserving public research contribution in this Lean repository.
   Routed by: Package or assimilate research from a clone
 - [propagate-research-consequences](propagate-research-consequences/SKILL.md) — Audit whether result summaries represent the strongest supported mathematics in a public clone, or propagate a stable result through its downstream consumers while preserving exact evidence and open boundaries.
-  Routed by: Audit strongest substantive result summaries, Run sustained discovery with corpus stewardship, Propagate a stable result or architecture change, Package or assimilate research from a clone
+  Routed by: Audit strongest substantive result summaries, Run sustained discovery with corpus stewardship, Propagate a stable result or architecture change, Write reader-facing mathematics, Package or assimilate research from a clone
 - [submit-pull-request](submit-pull-request/SKILL.md) — Prepare, validate, commit, and, only when explicitly authorised, push and open a pull request that returns a mathematical, architecture, exposition, or clone-experience contribution to the public repository.
   Routed by: Package or assimilate research from a clone, Prepare a contribution or pull request
 

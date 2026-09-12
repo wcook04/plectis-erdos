@@ -90,8 +90,9 @@ only when routed; builders own generated projections.
 
 ### Publication, systems-paper, or artifact-boundary work
 
-Mathematical prose follows
-[the writing skill](skills/public-mathematical-writing/SKILL.md).
+Run [writing](skills/public-mathematical-writing/SKILL.md), then
+[propagation](skills/propagate-research-consequences/SKILL.md): reconcile
+companions and consumers; teach reusable lessons to cold agents.
 
 For paper choice, role, availability, or reading order, start with:
 
@@ -196,11 +197,10 @@ python3 scripts/check_architecture_guide.py
 For a committed-snapshot release check in a dirty shared checkout:
 
 ```sh
-python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
+python3 scripts/check_release_ref.py --ref HEAD --receipt "$(pwd -P)/release-head.json"
 ```
 
 After Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2
 --changed-from HEAD`; full roots are release-only.
 
-Do not absorb the complete deep contract, declaration atlas, module graph, or
-the papers merely to find the first action.
+Do not absorb the complete deep contract merely to find the first action.

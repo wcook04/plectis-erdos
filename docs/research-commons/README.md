@@ -76,3 +76,11 @@ The [return package template](RETURN_PACKAGE_TEMPLATE.md) is the detailed
 agent-facing contract, while [accepted contributions](CONTRIBUTIONS.md) and
 [contribution recognition](CONTRIBUTION_RECOGNITION.md) are generated views of
 work that has actually been accepted.
+
+Scholarly sources and implemented external advice use a separate rail. Read
+the generated [source-attribution index](SOURCE_ATTRIBUTIONS.md), or query its
+machine-readable owner with
+`python3 scripts/build_source_attributions.py --query <name-or-problem-or-id>`.
+Check projection freshness with
+`python3 scripts/build_source_attributions.py --check`. These source records
+do not create accepted contribution receipts or imply endorsement.

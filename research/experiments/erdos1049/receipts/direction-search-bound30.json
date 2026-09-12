@@ -1,0 +1,265 @@
+{
+  "best": [
+    {
+      "direction": [
+        15,
+        12,
+        13,
+        26
+      ],
+      "mu": 2.464978683574975,
+      "theta_star": 0.40568302138406054
+    },
+    {
+      "direction": [
+        14,
+        12,
+        14,
+        27
+      ],
+      "mu": 2.464978683574975,
+      "theta_star": 0.40568302138406054
+    },
+    {
+      "direction": [
+        16,
+        13,
+        14,
+        28
+      ],
+      "mu": 2.465243561657219,
+      "theta_star": 0.4056394327738419
+    },
+    {
+      "direction": [
+        15,
+        13,
+        15,
+        29
+      ],
+      "mu": 2.465243561657219,
+      "theta_star": 0.4056394327738419
+    },
+    {
+      "direction": [
+        17,
+        14,
+        15,
+        30
+      ],
+      "mu": 2.465586939585035,
+      "theta_star": 0.40558294008821394
+    },
+    {
+      "direction": [
+        14,
+        11,
+        12,
+        24
+      ],
+      "mu": 2.4659658739080514,
+      "theta_star": 0.4055206159099049
+    },
+    {
+      "direction": [
+        13,
+        11,
+        13,
+        25
+      ],
+      "mu": 2.4659658739080514,
+      "theta_star": 0.4055206159099049
+    },
+    {
+      "direction": [
+        13,
+        10,
+        11,
+        22
+      ],
+      "mu": 2.467366279276296,
+      "theta_star": 0.4052904541977085
+    },
+    {
+      "direction": [
+        12,
+        10,
+        12,
+        23
+      ],
+      "mu": 2.467366279276296,
+      "theta_star": 0.4052904541977085
+    },
+    {
+      "direction": [
+        12,
+        9,
+        10,
+        20
+      ],
+      "mu": 2.4693697635248273,
+      "theta_star": 0.404961628173733
+    },
+    {
+      "direction": [
+        11,
+        9,
+        11,
+        21
+      ],
+      "mu": 2.4693697635248273,
+      "theta_star": 0.404961628173733
+    },
+    {
+      "direction": [
+        11,
+        8,
+        9,
+        18
+      ],
+      "mu": 2.4754754198572475,
+      "theta_star": 0.40396280729689765
+    },
+    {
+      "direction": [
+        10,
+        8,
+        10,
+        19
+      ],
+      "mu": 2.4754754198572475,
+      "theta_star": 0.40396280729689765
+    },
+    {
+      "direction": [
+        10,
+        7,
+        8,
+        16
+      ],
+      "mu": 2.4838148696527447,
+      "theta_star": 0.4026064954429584
+    },
+    {
+      "direction": [
+        9,
+        7,
+        9,
+        17
+      ],
+      "mu": 2.4838148696527447,
+      "theta_star": 0.4026064954429584
+    },
+    {
+      "direction": [
+        19,
+        13,
+        15,
+        30
+      ],
+      "mu": 2.4890823476579413,
+      "theta_star": 0.4017544863234166
+    },
+    {
+      "direction": [
+        9,
+        6,
+        7,
+        14
+      ],
+      "mu": 2.4956511479303973,
+      "theta_star": 0.400697028841264
+    },
+    {
+      "direction": [
+        8,
+        6,
+        8,
+        15
+      ],
+      "mu": 2.4956511479303973,
+      "theta_star": 0.400697028841264
+    },
+    {
+      "direction": [
+        17,
+        11,
+        13,
+        26
+      ],
+      "mu": 2.5095905008518344,
+      "theta_star": 0.3984713839411523
+    },
+    {
+      "direction": [
+        15,
+        11,
+        15,
+        28
+      ],
+      "mu": 2.5095905008518344,
+      "theta_star": 0.3984713839411523
+    },
+    {
+      "direction": [
+        17,
+        13,
+        15,
+        29
+      ],
+      "mu": 2.5210015400121466,
+      "theta_star": 0.3966677465794733
+    },
+    {
+      "direction": [
+        16,
+        13,
+        16,
+        30
+      ],
+      "mu": 2.5210015400121466,
+      "theta_star": 0.3966677465794733
+    },
+    {
+      "direction": [
+        16,
+        12,
+        14,
+        27
+      ],
+      "mu": 2.526265961958684,
+      "theta_star": 0.3958411406630648
+    },
+    {
+      "direction": [
+        15,
+        12,
+        15,
+        28
+      ],
+      "mu": 2.526265961958684,
+      "theta_star": 0.3958411406630648
+    },
+    {
+      "direction": [
+        8,
+        5,
+        6,
+        12
+      ],
+      "mu": 2.526931555370044,
+      "theta_star": 0.3957368761630585
+    }
+  ],
+  "bound": 30,
+  "claim_boundary": "The enumeration and rational breakpoints are exact, but trigamma and pi are evaluated by mpmath at 30 decimal digits. This receipt is not an interval-certified proof of the ordering, and it says nothing about directions outside the bound-30 box.",
+  "decimal_precision": 30,
+  "directions_scanned": 37533,
+  "evidence_class": "bounded numerical search",
+  "mpmath_version": "1.3.0",
+  "positive_c0_directions": 26307,
+  "prepublication_probe_sha256": "d0cd58b0a72dc5bcc98fb237b2033962fb66cf18157d281bb7758852f416fef2",
+  "reference_14_12_14_27": 0.40568302138406054,
+  "schema": "erdos1049-direction-search/1",
+  "source_formula": "Zudilin (2004), equations (25) and (26)"
+}
