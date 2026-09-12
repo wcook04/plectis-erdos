@@ -101,13 +101,15 @@ BUILDERS = (
     # placing it afterwards makes one full refresh invalidate its own output.
     "scripts/refresh_source_coordinates.py",
     "scripts/refresh_reasoning_source_coordinates.py",
+    # Normalize the paper corpus before the problem index reads its paper
+    # routes and fingerprints it in docs/problem_library.json.
+    "docs/papers/build_publication_taxonomy.py",
     # Reads the refreshed claims and writes docs/problems.json, which the
-    # corpus descriptor reads.
+    # corpus descriptor and external verification builder read.
     "scripts/build_problem_index.py",
     "scripts/build_semantic_corpus.py",
     "scripts/build_theory_lab.py",
     "scripts/build_external_verification.py",
-    "docs/papers/build_publication_taxonomy.py",
     # The corpus descriptor reads paper/module-aliases.json, so the alias
     # builder has to come first. It did not until 2026-08-31, and the symptom
     # was a full refresh that reported its own descriptor stale and blamed an
