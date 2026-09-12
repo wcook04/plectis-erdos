@@ -140,7 +140,10 @@ For every affected consumer, record **update**, **verified unchanged**,
 **defer with owner and re-entry condition**, or **outside scope**. Include
 result guides, overview/ranking metadata, claim and open-proposition records,
 short and reasoning papers, entry prose, source comments, and release copies
-when they actually depend on the selection. Use
+when they actually depend on the selection. Check repeated summaries and
+older ranking tables inside the same document: an updated opening does not
+repair a later claim that an older selection is still the strongest. Refresh
+that selection or explicitly preserve it as an earlier scoped review. Use
 `skills/public-mathematical-writing/SKILL.md` for authored mathematics and the
 named builders for generated indices, full-text mirrors, and packets. Do not
 hand-edit generated copies or invent a second authoritative ranking file.
