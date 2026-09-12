@@ -293,9 +293,9 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Prime Gaps and Dyadic Tails: Complete Reasoning Record**
 
-[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/251/erdos251-prime-gap-reasoning-surface.tex) · 51 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
+[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/paper/251/erdos251-prime-gap-reasoning-surface.tex) · 51 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
 
-This paper states no reading route. Its evidence boundary is in [Complete result-family map](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
+Sections on results and limitations (selected for this guide): [Introduction](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:problem), [The tail recurrence and the exact criteria](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:tail), [What cannot supply the missing input](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:obstructions), [The remaining obligation](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:open), [Complete result-family map](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
 
 ### Which Mersenne-support subseries are settled, what finite-period and achievement-set structure is proved, and what still blocks Erdős #257?
 

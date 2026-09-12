@@ -3671,7 +3671,7 @@
       "subject_kind": "problem",
       "form": "Reasoning surface",
       "owns": "the complete problem-specific reasoning surface for Erd\u0151s #251, including all registered result families and their boundaries",
-      "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #251, which remains open",
+      "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #251, which remains open",
       "publication_state": "active",
       "publication_class": "reasoning_surface",
       "publication_class_basis": "owns names 'reasoning surface'",
@@ -3684,11 +3684,11 @@
         "year": "2026",
         "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "eb82997bdbc7228599b88337f9c17926b47da947",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+        "canonical_source_commit": "dd6cc708f650f061de06594eba6ba43878f4de31",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/paper/251/erdos251-prime-gap-reasoning-surface.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Prime Gaps and Dyadic Tails: Complete Reasoning Record. plectis-erdos, commit eb82997bdbc7228599b88337f9c17926b47da947. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+        "text": "Will Cook (2026). Prime Gaps and Dyadic Tails: Complete Reasoning Record. plectis-erdos, commit dd6cc708f650f061de06594eba6ba43878f4de31. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/paper/251/erdos251-prime-gap-reasoning-surface.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -3699,11 +3699,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md",
       "local_source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-      "source_sha256": "sha256:80d226bc59d7e47db86bc4d576570d27e78d8760ba77ae38c548a53bfc9b8234",
-      "canonical_source_commit": "eb82997bdbc7228599b88337f9c17926b47da947",
+      "source_sha256": "sha256:36fb77678b5611fc63818b918c3bff8109df02dedbe78c911b61221cfe19701f",
+      "canonical_source_commit": "dd6cc708f650f061de06594eba6ba43878f4de31",
       "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/251/erdos251-prime-gap-reasoning-surface.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/eb82997bdbc7228599b88337f9c17926b47da947/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/dd6cc708f650f061de06594eba6ba43878f4de31/paper/251/erdos251-prime-gap-reasoning-surface.tex",
       "section_count": 51,
       "sections": [
         {
@@ -4015,31 +4015,31 @@
       ],
       "citations_rendered": 35,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:28ba6a9fc4dbcf0846e7e960399c2abd3c2c2ad5a55d8353e2a10d2ed990eb9a",
-      "pdf_byte_count": 223191,
+      "pdf_sha256": "sha256:bea3dba9b0d61f5f04f3aff7f45727614e6a149e88abf050a45914ec7ea0af82",
+      "pdf_byte_count": 223248,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
         "sections": [
           {
-            "id": "sec:problem",
-            "resolved": false,
-            "reason": "label not present in the current manuscript"
+            "id": "long251:sec:problem",
+            "title": "Introduction",
+            "line": 36
           },
           {
-            "id": "sec:tail",
-            "resolved": false,
-            "reason": "label not present in the current manuscript"
+            "id": "long251:sec:tail",
+            "title": "The tail recurrence and the exact criteria",
+            "line": 229
           },
           {
-            "id": "sec:no-go",
-            "resolved": false,
-            "reason": "label not present in the current manuscript"
+            "id": "long251:sec:obstructions",
+            "title": "What cannot supply the missing input",
+            "line": 523
           },
           {
-            "id": "sec:open",
-            "resolved": false,
-            "reason": "label not present in the current manuscript"
+            "id": "long251:sec:open",
+            "title": "The remaining obligation",
+            "line": 769
           },
           {
             "id": "sec:erdos-251-complete-family-map",
@@ -4047,7 +4047,7 @@
             "line": 1105
           }
         ],
-        "unresolved_count": 4
+        "unresolved_count": 0
       }
     },
     {
