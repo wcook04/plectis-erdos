@@ -1084,15 +1084,30 @@ The classical criteria therefore do not decide the half-space $`E_n\ge0`$. They 
 
 <div id="long243:res:coprimalitycap" class="proposition">
 
-**Proposition 36** (what whole-modulus avoidance permits). *Let $`m_0<m_1<\cdots`$ be pairwise coprime integers at least $`2`$ with $`\theta=\sum_i1/m_i<1`$. For every $`x\ge1`$ and every $`L>k/(1-\theta)`$, where $`k=\#\{i:m_i\le x+L\}`$, the window $`[x,x+L)`$ contains an integer divisible by no $`m_i`$. Consequently, if $`\ell(m_i)=i+O(1)`$ then for every $`\epsilon>0`$ some subfamily carries a walk $`u_n\to\infty`$ divisible by no $`m_i`$ with $`u_{n+1}-u_n\le(1+\epsilon)\ell(u_n)`$ for all large $`n`$.*
+**Proposition 36** (what whole-modulus avoidance permits). *Let $`m_0<m_1<\cdots`$ be pairwise coprime integers at least $`2`$ with $`\theta=\sum_i1/m_i<1`$. For all integers $`x\ge1`$ and $`L\ge1`$ satisfying $`L>k/(1-\theta)`$, where $`k=\#\{i:m_i\le x+L\}`$, the window $`[x,x+L)`$ contains an integer divisible by no $`m_i`$. Consequently, if $`\ell(m_i)=i+O(1)`$ then for every $`\epsilon>0`$ some subfamily carries a walk $`u_n\to\infty`$ divisible by no $`m_i`$ with $`u_{n+1}-u_n\le(1+\epsilon)\ell(u_n)`$ for all large $`n`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* An integer of $`[x,x+L)`$ lies in $`[1,\infty)`$ and is smaller than $`x+L`$, so a modulus exceeding $`x+L`$ divides none of them. Each of the $`k`$ remaining moduli divides at most $`L/m_i+1`$ of them, so the covered count is at most $`L\theta+k<L`$. For the walk, discard an initial segment of the family so that $`\theta<\epsilon/(1+\epsilon)`$; then $`k(y)\le\ell(y)+O(1)`$ and $`L=\lfloor k/(1-\theta)\rfloor+1\le(1+\epsilon)\ell(y)`$ for large $`y`$. Define $`u_{n+1}`$ to be an admissible integer of $`[u_n+1,u_n+1+L(u_n))`$, which the window statement supplies. ◻
+*Proof.* The interval $`[x,x+L)`$ contains exactly $`L`$ integers. Each lies in $`[1,\infty)`$ and is smaller than $`x+L`$, so a modulus exceeding $`x+L`$ divides none of them. Each of the $`k`$ remaining moduli divides at most $`L/m_i+1`$ of them, so the covered count is at most $`L\theta+k<L`$.
+
+For the walk, discard an initial segment of the family and reindex so that $`\theta<\epsilon/(1+\epsilon)`$. If $`k(z)=\#\{i:m_i\le z\}`$, the hypothesis $`\ell(m_i)=i+O(1)`$ gives $`k(z)\le\ell(z)+C`$ for all large $`z`$ and some constant $`C`$. Choose
+``` math
+(1-\theta)^{-1}<\rho<1+\epsilon,
+ \qquad L(y)=\left\lceil\rho\ell(y)\right\rceil .
+```
+Then $`L(y)=O(\ell(y))=o(y)`$, and the definition of $`\ell`$ gives $`\ell(y+1+L(y))=\ell(y)+o(1)`$. Consequently, for all large integers $`y`$,
+``` math
+\frac{k(y+1+L(y))}{1-\theta}
+ \le \frac{\ell(y)+C+o(1)}{1-\theta}
+ < \rho\ell(y)\le L(y),
+```
+while $`L(y)\le(1+\epsilon)\ell(y)`$. Starting with $`u_0`$ sufficiently large, apply the first part with $`x=u_n+1`$ and length $`L(u_n)`$, and choose $`u_{n+1}`$ in the resulting window. The sequence is strictly increasing, avoids every retained modulus, and has the required rise bound. ◻
 
 </div>
+
+The integer hypotheses are used in the first sentence of the proof. For example, the real interval $`[99.1,100.2)`$ has length $`1.1`$ but contains only the integer $`100`$; a covered count smaller than $`1.1`$ need not leave an uncovered integer.
 
 <a id="reading.-1"></a>
 
@@ -1252,9 +1267,15 @@ Formalised as the [shifted consecutive multiples](https://github.com/wcook04/ple
 
 </div>
 
+The time threshold in the proof is essential. The rise bound restricts upward jumps but permits arbitrary falls: for example, if $`M\ge1`$, then $`u_0=M`$, $`u_1=0`$, and $`u_n=n-1`$ for $`n\ge1`$ satisfies the bound with $`B=1`$ and tends to infinity, although the large height $`M`$ is already attained at time $`0`$.
+
 <div class="proof">
 
-*Proof.* Take $`B`$ of the moduli, from indices beyond any chosen point, and use Lemma <a href="#long243:res:crt" data-reference-type="ref" data-reference="long243:res:crt">41</a> to find $`t`$ far out with the $`i`$th of them dividing $`t+i`$. The interval $`[t,t+B)`$ has length $`B`$, and $`u`$ climbs by at most $`B`$ per step while tending to infinity, so some $`u_s`$ lands in it. Then $`u_s=t+i`$ for some $`i<B`$, and the $`i`$th modulus divides $`u_s`$. Since that modulus is at least $`2`$, this contradicts $`\gcd(m_i,u_s)=1`$. ◻
+*Proof.* Choose $`m_0,\ldots,m_{B-1}`$ and use Lemma <a href="#long243:res:crt" data-reference-type="ref" data-reference="long243:res:crt">41</a> to find $`t>\max(u_0,\ldots,u_B)`$ with $`m_i\mid t+i`$ for $`0\le i<B`$. Since $`u_n\to\infty`$, there is a first $`n>B`$ with $`u_n\ge t`$. Minimality and the rise bound give
+``` math
+t\le u_n\le u_{n-1}+B<t+B.
+```
+Hence $`u_n=t+i`$ for some $`0\le i<B<n`$, so $`m_i\mid u_n`$. The inequality $`i<n`$ now permits the avoidance hypothesis, which says $`\gcd(m_i,u_n)=1`$; this contradicts $`m_i\ge2`$. The argument uses the first crossing of the CRT block, not monotonicity of $`u`$. ◻
 
 </div>
 

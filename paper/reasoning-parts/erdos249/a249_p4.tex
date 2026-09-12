@@ -435,7 +435,7 @@ contradiction (or a genuine rank obstruction) might be extracted.
 
 \textbf{(b) Exact mechanism.}
 \begin{thm}[Infinite dyadic totient-kernel rank]
-For every depth \(e\ge0\), the canonical family of \(2^e+1\) dyadic
+For every depth \(e\ge1\), the canonical family of \(2^e+1\) dyadic
 totient-kernel channels (\(\mathtt{card\_totientCanonicalIndex}\),
 \lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:61}) is linearly independent over
 \(\mathbb Q\), proved via a \texttt{SeparatedMinorCertificate} (an explicit
@@ -452,9 +452,14 @@ impossibility result closes the natural repair attempt directly: a bounded
 with \(Q\cdot v\cdot A=\mathrm{boundary}\), \(|\mathrm{boundary}|<Q\cdot v\),
 \(A\ne0\) — is provably impossible,
 \lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}. \ev{Lean}
-\scale{uniform} (holds for every \(e\); existence side is unconditional, via
+\scale{uniform} (holds for every \(e\ge1\); existence side is unconditional, via
 Mathlib's CRT + primes-in-AP machinery) \coord{binary-digit} (dyadic
 totient-kernel — \emph{not} the Möbius coordinate).
+
+The Lean independence theorem is also stated for \(e=0\), but its auxiliary
+canonical index then still contains the two zero-residue channels
+\(\varphi(n)\) and \(\varphi(2n)\).  It is therefore not the actual truncation
+through level zero, which consists only of \(\varphi(n)\) and has dimension one.
 
 \paragraph{Integral coordinates and the complete relation module.}
 The independence statement also determines the arithmetic of the channel

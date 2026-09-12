@@ -29,8 +29,9 @@
 \author{Will Cook}
 \date{1 September 2026}
 
-\setlength{\emergencystretch}{2em}
-\def\UrlBreaks{\do\.\do\_\do\/}
+\setlength{\emergencystretch}{3em}
+% Permit breaks inside long declaration names in the generated catalogue.
+\usepackage{xurl}
 \begin{document}
 % ---- part core ----
 \maketitle
@@ -311,12 +312,23 @@ clearing follows from two terms; the estimate is the quantitative growth
 statement.  Theorem~\ref{long68:res:prime-pole} and the cancellations at $139$ and
 $2593$ show why the substitution fails: a prime may occupy the common
 denominator and be absent from the reduced one.  One cancelled prime is not
-an asymptotic cancellation theorem.  Bounding the reduced
-denominator from below at every index is a stronger assertion, and it is
-exactly what an irrationality proof through the clearing-scale route needs.
-That stronger assertion has not been shown to follow from rationality of
-$\Ser$ alone; it would require an extra small-tail hypothesis such as
-$d_N(\Ser-H_N)<1$.
+an asymptotic cancellation theorem.
+
+The direction of denominator control matters.  Write $H_N=A_N/Q_N$ in lowest
+terms.  Under the hypothetical identity $\Ser=a/q$, with $a\in\Z$ and
+$q\ge1$, positivity of the tail gives
+\[
+ qQ_N(\Ser-H_N)=aQ_N-qA_N\in\Z_{>0}.
+\]
+A direct clearing contradiction therefore requires an upper estimate that
+makes $qQ_N(\Ser-H_N)<1$ for some $N$; equivalently, it needs $Q_N$ to be
+small relative to the reciprocal tail.  A lower bound on $Q_N$ points in the
+opposite direction.  Indeed, the rational limit $1$ and the approximants
+$1-1/Q_N$ have arbitrarily large reduced denominators without any
+irrationality.  The inequality $d_N(\Ser-H_N)<1$ alone would not repair the
+argument, because $d_N$ generally does not clear the earlier summands of
+$H_N$.  The prime-pole analysis describes which factors survive reduction,
+but it does not yet supply the required upper control on $Q_N$.
 
 \section{Carries and the rationality boundary}\label{long68:sec:carry}
 
@@ -1172,7 +1184,7 @@ sequence form at
 little-$o$ form at
 \lword{Erdos68/ChannelIntegralCongruence.lean}{905}{not_isLittleO_square_subsequence_radius}{line 905},
 method ceiling ordinary in this record
-(\texttt{sharp\_radius\_satisfies\_square\_log\_constraint} is not in this checkout)\\
+(\nolinkurl{sharp_radius_satisfies_square_log_constraint} is not in this checkout)\\
 Prime channel corrector &
 \lword{Erdos68/PrimeUnitTranslator.lean}{1657}{exists_remote_factorialGrid_primeTranslator_reduction}{remote reduction},
 residual identity at

@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import inspect
+import ast
 import json
 import os
 import subprocess
@@ -346,6 +347,64 @@ def main() -> int:
         "deferred release batch lost a named result",
     )
 
+    # Exercise the actual scheduled key universe without running the expensive
+    # validators. A future unknown key must also fail the gate automatically.
+    main_tree = ast.parse(inspect.getsource(check_release.main))
+    mid_batch = next(
+        node.value.args[0]
+        for node in ast.walk(main_tree)
+        if isinstance(node, ast.Assign)
+        and any(isinstance(target, ast.Name) and target.id == "mid_checks" for target in node.targets)
+    )
+    mid_commands = eval(
+        compile(ast.Expression(mid_batch), "release-mid-command-fixture", "eval"),
+        vars(check_release),
+    )
+    scheduled_keys = set(publication_results) | set(mid_commands) | set(check_release.late_check_commands())
+    scheduled_keys.add("future_check_without_a_named_main_lookup")
+    saved_errors, saved_checks = check_release.ERRORS, check_release.CHECKS
+    try:
+        for failed_key in sorted(scheduled_keys):
+            check_release.ERRORS = []
+            commands = {key: [sys.executable, key] for key in scheduled_keys}
+
+            def injected_result(argv: list[str]) -> subprocess.CompletedProcess[str]:
+                return subprocess.CompletedProcess(
+                    argv, 17 if argv[-1] == failed_key else 0,
+                    "injected stdout", "injected stderr",
+                )
+
+            with patch.object(check_release, "_run_independent_check", side_effect=injected_result):
+                results = check_release.run_independent_checks(commands)
+            require(set(results) == scheduled_keys, "collector lost a scheduled result")
+            require(len(check_release.ERRORS) == 1, f"scheduled failure {failed_key} escaped the gate")
+            failure = check_release.ERRORS[0]
+            require(
+                all(value in failure for value in (failed_key, "exit 17", "injected stdout", "injected stderr")),
+                f"collector lost failure diagnostics for {failed_key}",
+            )
+
+        check_release.ERRORS = []
+        check_release._PROJECTION_CHECK_RESULTS = None
+        failed_builder = check_release.refresh_projections.BUILDERS[-1]
+
+        def failed_projection(argv: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+            code = 17 if argv[1] == str(check_release.ROOT / failed_builder) else 0
+            return subprocess.CompletedProcess(argv, code, "projection failure", "")
+
+        with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=failed_projection) as runner:
+            check_release.projection_check_results()
+            check_release.projection_check_results()
+        require(runner.call_count == len(check_release.refresh_projections.BUILDERS), "cached projections reran")
+        require(
+            len(check_release.ERRORS) == 1 and failed_builder in check_release.ERRORS[0],
+            "standalone projection collector ignored a scheduled failure",
+        )
+        require("agent_skill_catalog" not in mid_commands, "skill catalog was scheduled in two pools")
+    finally:
+        check_release.ERRORS, check_release.CHECKS = saved_errors, saved_checks
+        check_release._PROJECTION_CHECK_RESULTS = None
+
     require(
         check_release.ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",
@@ -377,6 +436,11 @@ def main() -> int:
         tuple(check_release.late_check_commands())[:2]
         == ("query", "cold_clone_adversarial"),
         "release late pool no longer starts both long readers first",
+    )
+    require(
+        check_release.late_check_commands().get("release_environment")
+        == [sys.executable, str(Path(__file__).resolve())],
+        "release gate no longer schedules its environment and result-consumption regressions",
     )
     main_source = inspect.getsource(check_release.main)
     require(

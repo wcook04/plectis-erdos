@@ -45,9 +45,10 @@ The remaining programmes have narrower but exact outcomes: Problem 68 is
 equivalent to a cofinal carry condition; Problem 243 has eventual Sylvester
 recurrence under a bounded or summable negative error; Problem 251 has the
 prime-gap identity and a tail-shift equivalence; Problem 269 has three-prime
-height and kernel-minor identities; Problem 1041 has an ordinary all-degree
-trinomial radial theorem and a sharp critical-value mean, with Lean
-Newton-flow and ray-separation inputs; and Problem 1049 has an exact rational-base tail
+height and kernel-minor identities; Problem 1041 has an all-degree trinomial
+radial theorem with ordinary path assembly and a Lean-checked sharp
+critical-value mean, alongside local Newton-flow and conditional
+ray-separation inputs; and Problem 1049 has an exact rational-base tail
 recurrence together with a checked height region. None closes its Erdős
 problem.
 
@@ -101,9 +102,12 @@ escape remains unproved. Three-prime irrationality remains open.
 roots in the open unit disc has radial root-to-origin segments inside
 `{|f|<1}`, so any two roots join through the origin with length less than
 `2`. Separately, a sharp Poisson critical-value mean holds on the closed
-unit disc. Both are ordinary proofs. Lean checks Newton-flow decay,
-ray-separating translations, and perturbative root retention. The
-unrestricted path problem remains open.
+unit disc. The trinomial path assembly is ordinary mathematics; the complete
+critical-value mean is Lean-checked with
+[source-bound audit evidence](../verification/erdos1041-returned-r18-v5-full-audit-evidence.json).
+Lean also checks local Newton derivatives, ray-separating translations, and
+perturbative root retention. Real-time integration and endpoint passage are
+separate ordinary steps. No unrestricted connector theorem is established here.
 
 **[#1049](https://www.erdosproblems.com/1049).** Ordinary proof that `F(31/4)`
 and its positive powers are irrational (Zudilin 2004 Lemma 7 specialization);
@@ -793,9 +797,14 @@ core)**
   `ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:721`): the Comparator
   theorem `kernel_235_minor_eq_neg_one_fifteen` identifies the smallest
   displayed `2,3,5` kernel minor as exactly `-1/15`. This rules out the
-  displayed rank-one route only; it does not imply irrationality. The paper's
-  stronger ordinary result is that selected minors of every order are
-  nonsingular; that rank theorem is not Comparator-checked.
+  displayed rank-one route only; it does not imply irrationality. The stronger
+  arbitrary-order minor and finite-nonseparation theorems are proved in
+  [`KernelCarryRank.lean`](../lean/ErdosProblems/Erdos269/KernelCarryRank.lean#L313),
+  whose exact source bytes belong to the successfully compiled public closure
+  in the [Wave-A validation record](../verification/erdos269-wavea-validation.json).
+  That record's named axiom audit covers the Wave-A declarations; it is not a
+  separate rank-declaration audit. Comparator covers the finite minor, not
+  the arbitrary-order theorem. The paper gives the threshold-column proof.
 - Open: any three-prime case. The actual-series reduction is given; the
   source-specific cofinal escape remains unproved.
 - The finite residue contradiction and conditional cofinal-window carry
@@ -834,10 +843,30 @@ core)**
   roots in the open unit disc has each root-to-origin segment inside `{|f|<1}`,
   so any two roots join through the origin with length less than `2`. This is
   coefficient-restricted, not a solution of the unrestricted path problem.
-- Ordinary sharp critical-value mean: for monic degree-`n` polynomials with
+- Lean-checked sharp critical-value mean: for monic degree-`n ≥ 2` polynomials with
   zeros in the closed unit disc,
   `∑_{j=1}^{n-1} |f(c_j)|^{2/(n-1)} ≤ n-1`, with equality for `z^n − λ` when
-  `|λ| = 1`. The bound controls critical values, not connectors.
+  `|λ| = 1`, counting critical points with multiplicity. The complete theorem
+  also gives `∑ |f(c_j)|^{1/n} ≤ (n−1)R` for roots in any closed disc of
+  radius `R ≥ 0`. See
+  [`paper_critical_value_mean`](../lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101)
+  and the [successful source-bound audit](../verification/erdos1041-returned-r18-v5-full-audit-evidence.json),
+  whose directly audited adapter is `ReturnV5.critical_value_mean_exact_target`.
+  The paper supplies an ordinary proof too. These moment bounds alone do not
+  construct a connecting curve or bound its length.
+- Ordinary separated-value connector theorem: let `f` be monic of degree
+  `n ≥ 3`, let `c` be a simple critical point with `0 < |v| < 1`, where
+  `v=f(c)`, and suppose some real `w₀ ∈ [0,1]` satisfies
+  `|f(d)/v − w₀| ≥ 4/3` for every other critical point `d`. Then two roots
+  have a connector of length `<2` inside `{|f|<1}`. The long paper gives the
+  two-sheeted uniformization, Bergman length estimate and component-capacity
+  argument; the numerical coefficient bound has a separate Lean kernel.
+  No existence of such a separated critical-value disk is asserted.
+- Ordinary generic topology theorem: in a unit-sublevel component, simple
+  critical points with nonzero critical values of pairwise distinct arguments
+  and moduli give a slit-sheet tree of inverse-ray root connections.
+  This identifies the topology on that stratum; it provides no uniform
+  length bound and does not resolve simultaneous critical levels.
 - Lean checks supporting Newton-flow inputs: quantitative root retention under
   constant perturbation (`constant_perturbation_roots_in_unitDisk`,
   `ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:287`) and arbitrarily

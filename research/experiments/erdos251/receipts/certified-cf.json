@@ -1,0 +1,146 @@
+{
+  "schema": "erdos251-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "The finite calculations do not prove irrationality or cofinality. No Lean kernel is run by these programs.",
+  "program": "certified_continued_fraction.py",
+  "program_sha256": "810f7ac807d21c37f368c5c3415ead4bcf3d724c335667d543060c8603f80bd2",
+  "arguments": [
+    "--problem",
+    "erdos_251",
+    "--scale-bits",
+    "80000"
+  ],
+  "recorded_original_receipt_sha256": "39e205d4bec96a0fec704a83ceca69aab04f8854a33bc0beba62c55e366b8f14",
+  "original_program_replay": "Full result matched the original saved receipt on 2026-09-12.",
+  "public_adaptation": "Numerical algorithm preserved; usage defaults, argument diagnostics and finite-scope labels clarified.",
+  "result": {
+    "certified_quotients": 23369,
+    "scale_bits": 80000,
+    "bracket_width": 1,
+    "denominator_lower_bound_bit_length": 39998,
+    "denominator_lower_bound_decimal_digits": 12041,
+    "denominator_lower_bound_power_of_two_exponent": 39997,
+    "strict_decimal_power_lower_bound": 12040,
+    "separation_verified": true,
+    "max_partial_quotient": 973919,
+    "argmax_partial_quotient_index": 16442,
+    "irrationality_exponent_witness": {
+      "q_at_least_2_pow_100": {
+        "max_exponent": 2.0481780962882983,
+        "at_index": 82
+      },
+      "q_at_least_2_pow_1000": {
+        "max_exponent": 2.0077057303035777,
+        "at_index": 708
+      },
+      "q_at_least_2_pow_10000": {
+        "max_exponent": 2.0009911247309886,
+        "at_index": 6899
+      }
+    },
+    "partial_quotient_histogram": {
+      "3": 2182,
+      "1": 9737,
+      "2": 4010,
+      "11-100": 2538,
+      "6-10": 2298,
+      "5": 928,
+      "4": 1308,
+      "101+": 368
+    },
+    "gauss_kuzmin": {
+      "1": {
+        "observed": 0.4166631006889469,
+        "expected": 0.41503749927884376,
+        "z": 0.5043435251080541
+      },
+      "2": {
+        "observed": 0.17159484787539048,
+        "expected": 0.16992500144231237,
+        "z": 0.6796875105447651
+      },
+      "3": {
+        "observed": 0.09337156061448929,
+        "expected": 0.09310940439148145,
+        "z": 0.13791325611290645
+      },
+      "4": {
+        "observed": 0.05597158628952886,
+        "expected": 0.058893689053568614,
+        "z": -1.8974128041237748
+      },
+      "5": {
+        "observed": 0.03971072788737216,
+        "expected": 0.04064198449734577,
+        "z": -0.7209607560566963
+      }
+    },
+    "levy_observed": 1.1863674661103638,
+    "levy_expected": 1.1865691104156255,
+    "levy_relative_error": 0.0001699389470800185,
+    "first_quotients": [
+      3,
+      1,
+      2,
+      13,
+      1,
+      1,
+      2,
+      7,
+      1,
+      2,
+      1,
+      2,
+      18,
+      2,
+      15,
+      1,
+      1,
+      5,
+      5,
+      1,
+      2,
+      1,
+      1,
+      9
+    ],
+    "problem_id": "erdos_251",
+    "self_check": {
+      "e_prefix": [
+        2,
+        1,
+        2,
+        1,
+        1,
+        4,
+        1,
+        1,
+        6,
+        1,
+        1,
+        8,
+        1,
+        1
+      ],
+      "pi_convergents": [
+        [
+          3,
+          1
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          333,
+          106
+        ],
+        [
+          355,
+          113
+        ]
+      ],
+      "status": "arithmetic_verified_against_known_expansions"
+    }
+  }
+}

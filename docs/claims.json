@@ -1121,7 +1121,7 @@
             "id": "erdos_1041_reasoning_record",
             "source": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete working record for Erdős #1041: Lean Newton-flow decay, ray separation, translation geometry, Comparator-checked solved-family kernels, ordinary path assemblies, and the unresolved global topology and metric gluing."
+            "thesis": "Complete working record for Erdős #1041: the Lean-checked all-degree critical-value mean, local Newton derivatives, conditional ray separation, translation geometry, Comparator-checked solved-family kernels, ordinary disk-family 4/3 path bounds and ray-separated topology; the unrestricted global topology and metric gluing remain open."
           },
           {
             "id": "erdos_1049_reasoning_record",
@@ -1195,7 +1195,7 @@
             "id": "erdos_1041_note",
             "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Lean Newton-flow/ray/root-retention and Comparator-checked solved-family kernels; ordinary all-degree trinomial, 13/25, Poisson, and length-<2 assemblies; global topology remains open."
+            "thesis": "All-degree trinomial radial containment with ordinary path assembly and a Lean-checked sharp critical-value mean; local Newton derivatives, conditional ray separation, root retention and Comparator-checked solved-family kernels; ordinary 13/25 and disk-family 4/3 length-<2 assemblies; the unrestricted problem remains open."
           },
           {
             "id": "erdos_1049_note",
@@ -15518,7 +15518,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 538
+        "line": 563
       }
     },
     {
@@ -15530,7 +15530,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 544
+        "line": 569
       }
     },
     {
@@ -15542,7 +15542,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 553
+        "line": 578
       }
     },
     {

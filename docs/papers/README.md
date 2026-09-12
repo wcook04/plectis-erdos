@@ -250,7 +250,7 @@ The [problem summaries](../RELATED_PROBLEMS.md) introduce the mathematics. `docs
 
 **Two Incomparable Denominator Exclusions for \sum_{n\ge2}(n!-1)^{-1}**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex) · 18 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex) · 19 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
 Sections on results and limitations (selected for this guide): [The denominator exclusions](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [An integral basis for factorial channels](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [One joint collision and residue estimate](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [The remaining real comparison](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
@@ -370,7 +370,7 @@ Sections on results and limitations (selected for this guide): [Introduction](fu
 
 **Rational-Base Lambert Series: Complete Reasoning Record**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 58 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 59 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 Sections on results and limitations (selected for this guide): [Complete result-family map](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
 

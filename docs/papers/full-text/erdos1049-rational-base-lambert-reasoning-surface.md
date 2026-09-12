@@ -46,6 +46,12 @@ The two forms agree by expanding $`(t^{n}-1)^{-1}=\sum_{k\ge1}t^{-nk}`$ and coll
 
 Write $`t=r/s`$ in lowest terms with $`r>s\ge1`$, so that $`s=1`$ is exactly the integer case Erdős settled. The resistant explicit base of least naive height $`H(r/s)=\max(r,s)`$ is $`t=3/2`$. A published height criterion of Bundschuh and Väänänen \[bv1994, Thm. 2, p. 177; hypotheses pp. 175–176\] settles a family of rational bases restricted by a height condition; that family contains $`7/2`$ and does not contain $`3/2`$. Between the two lies the question this note is about: what exactly stops the integer-base argument from running at $`3/2`$?
 
+<a id="structure."></a>
+
+#### Structure.
+
+The rational-base theorem and its cyclotomic degree calculation are Theorem <a href="#long1049:res:region" data-reference-type="ref" data-reference="long1049:res:region">2</a>; the first newly covered base is isolated in Theorem <a href="#long1049:res:31over4" data-reference-type="ref" data-reference="long1049:res:31over4">3</a>. The independent determinant argument is Theorem <a href="#long1049:res:zudilin-sharp-qorder" data-reference-type="ref" data-reference="long1049:res:zudilin-sharp-qorder">10</a>, whose proof identifies the unique least-order term at every rank. The result-family catalogue at the end lists the older families admitted to the public review registry. It is not an exhaustive index of the theorems proved in this record, so these three labels are the direct route to its two principal arguments.
+
 <a id="relation-to-prior-work."></a>
 
 #### Relation to prior work.
@@ -138,7 +144,7 @@ For $`R=41T`$ with $`T>1`$, the displayed $`130T+2S`$ bound is uniform and suffi
 
 Theorems <a href="#long1049:res:region" data-reference-type="ref" data-reference="long1049:res:region">2</a> and <a href="#long1049:res:31over4" data-reference-type="ref" data-reference="long1049:res:31over4">3</a> are ordinary mathematics. They consume Zudilin’s Lemma 7 together with the inputs of that lemma’s own proof, and every further step is proved in Section <a href="#long1049:sec:region" data-reference-type="ref" data-reference="long1049:sec:region">2</a>. They are not kernel-checked. The linked Lean declarations establish exact inequalities, congruences, finite collision counts, recurrence identities, and exclusions for the named models; among them are the height comparisons that place $`31/4`$ inside the enlarged logarithmic region and outside the earlier one. No Lean declaration in this release’s library carries an irrationality statement at a rational noninteger base. Bundschuh and Väänänen’s irrationality theorem at $`7/2`$, Rivin’s functional nonrationality theorem, and the two-variable Mahler theorem used below remain external results. At $`3/2`$, the missing step is still an actual primitive approximation family with nonzero remainder and an asymptotic height margin.
 
-<a id="structure."></a>
+<a id="structure.-1"></a>
 
 #### Structure.
 
@@ -495,7 +501,9 @@ Consequently the homogenised forms tend to zero whenever $`\log b/\log a<\sigma/
 
 <div class="proof">
 
-*Proof.* The displayed inequality is the identity
+*Proof.* The only point not immediate from homogenisation is the cap $`\sigma\le\delta`$. We apply the forms at arbitrarily large integer bases $`p`$: the upper bounds for their values and the two-sided remainder asymptotic give an upper bound for the irrationality exponent of $`F(p)`$, while Dirichlet’s theorem gives the lower bound $`2`$. Letting $`p`$ grow removes the base-independent height term and forces the cap.
+
+The displayed inequality is the identity
 ``` math
 \begin{aligned}
  n^{-2}\log|b^{d_n}\Lambda_n(a/b)|
@@ -505,7 +513,7 @@ Consequently the homogenised forms tend to zero whenever $`\log b/\log a<\sigma/
 ```
 together with hypothesis (2); the degree bound is what makes $`b^{d_n}U_n(a/b)`$ and $`b^{d_n}V_n(a/b)`$ integers.
 
-For $`\sigma\le\delta`$, fix an integer $`p\ge2`$, write $`\xi=F(p)`$, $`\alpha=h+\delta\log p`$ and $`\beta=\sigma\log p`$, and set $`\varepsilon_n=\Lambda_n(p)`$. Hypotheses (2) and (3) give the upper bound $`|U_n(p)|\le e^{(\alpha+o(1))n^{2}}`$, an inequality and not an equality: a degree and height bound leaves cancellation at $`p`$ possible. Hypothesis (4) gives $`\log|\varepsilon_n|=-\beta n^{2}(1+o(1))`$ on both sides, and hypothesis (1) gives $`\varepsilon_n\ne0`$. Since $`U_n(p)\xi-V_n(p)=\varepsilon_n`$ is a nonzero real tending to $`0`$ while $`U_n(p)`$ and $`V_n(p)`$ are integers, $`\xi`$ is irrational; in particular $`U_n(p)\ne0`$ for all large $`n`$, since otherwise $`\varepsilon_n=-V_n(p)`$ would be a nonzero integer tending to $`0`$.
+To prove $`\sigma\le\delta`$, fix an integer $`p\ge2`$, write $`\xi=F(p)`$, $`\alpha=h+\delta\log p`$ and $`\beta=\sigma\log p`$, and set $`\varepsilon_n=\Lambda_n(p)`$. Hypotheses (2) and (3) give the upper bound $`|U_n(p)|\le e^{(\alpha+o(1))n^{2}}`$, an inequality and not an equality: a degree and height bound leaves cancellation at $`p`$ possible. Hypothesis (4) gives $`\log|\varepsilon_n|=-\beta n^{2}(1+o(1))`$ on both sides, and hypothesis (1) gives $`\varepsilon_n\ne0`$. Since $`U_n(p)\xi-V_n(p)=\varepsilon_n`$ is a nonzero real tending to $`0`$ while $`U_n(p)`$ and $`V_n(p)`$ are integers, $`\xi`$ is irrational; in particular $`U_n(p)\ne0`$ for all large $`n`$, since otherwise $`\varepsilon_n=-V_n(p)`$ would be a nonzero integer tending to $`0`$.
 
 Let $`P/Q`$ be rational with $`Q`$ large, and let $`n`$ be least with $`|\varepsilon_n|<1/(2Q)`$. Minimality and the two-sided asymptotic give $`n^{2}\le(1+o(1))\log Q/\beta`$, hence
 ``` math
@@ -574,17 +582,19 @@ With Lemma <a href="#long1049:res:sourceheight" data-reference-type="ref" data-
 
 Among coprime $`a/b`$ with $`a\le60`$ the region of Theorem <a href="#long1049:res:region" data-reference-type="ref" data-reference="long1049:res:region">2</a> has $`137`$ members, of which $`78`$ are non-integral. The tightest members are $`53/5`$, at margin $`0.000313`$ below $`\theta^{*}`$, and $`31/4`$, at margin $`0.001985`$; the closest miss is $`52/5`$ at $`\theta=0.4073243836\ldots`$, short by $`0.001641`$. The bases new relative to \[bv1994\] are those in the strip $`s^{\mu}<r\le s^{\mu_{\mathrm{BV}}}`$, which is empty for $`s=2`$ and $`s=3`$, is $`\{31\}`$ for $`s=4`$, and is $`\{53,54,56\}`$ for $`s=5`$. The strip is infinite: its width $`s^{\mu_{\mathrm{BV}}}-s^{\mu}`$ eventually exceeds $`s`$, so for every large enough denominator it contains an integer congruent to $`1`$ modulo $`s`$. Hence $`31/4`$ is the new base of least denominator and least numerator.
 
-<a id="the-direction-is-optimal-in-its-box."></a>
+<a id="the-bounded-direction-search."></a>
 
-#### The direction is optimal in its box.
+#### The bounded direction search.
 
-Over the $`37{,}533`$ primitive directions on Zudilin’s cone with all entries at most $`30`$, the quantity $`\theta^{*}(\mathrm{dir})=C_0/C_1`$ computed from his (25) and (26) is maximised by $`(14,12,14;27)`$ and its group image $`(15,12,13;26)`$, both at $`0.4056830213840605\ldots`$; the next value is $`0.4056394327738419\ldots`$, at $`(16,13,14;28)`$. Larger boxes were not scanned, so this is a search result over that box and not a proof of optimality over the whole cone. The enumeration ranges over integer tuples $`(\alpha_0,\alpha_1,\alpha_2;\beta)`$ with $`1\le\alpha_j\le30`$, $`1\le\beta\le30`$, satisfying the cone conditions of \[zudilin2004, Sec. 5\] and taken up to the common factor of the four entries; the objective is the ratio $`C_0/C_1`$ of the source’s (25) and (26), evaluated by the same thirteen-interval trigamma sum. The two maximising tuples are exchanged by the source’s permutation group, so they are one direction.
+Over the $`37{,}533`$ primitive directions on Zudilin’s cone with all entries at most $`30`$, the quantity $`\theta^{*}(\mathrm{dir})=C_0/C_1`$ computed from his (25) and (26) has largest recorded value at $`(14,12,14;27)`$ and its group image $`(15,12,13;26)`$, both at $`0.4056830213840605\ldots`$; the next value is $`0.4056394327738419\ldots`$, at $`(16,13,14;28)`$. Larger boxes were not scanned, and the floating-point comparisons were not interval-certified, so this is numerical evidence over that box rather than an exact optimality theorem. The enumeration ranges over integer tuples $`(\alpha_0,\alpha_1,\alpha_2;\beta)`$ with $`1\le\alpha_j\le30`$, $`1\le\beta\le30`$, satisfying the cone conditions of \[zudilin2004, Sec. 5\] and taken up to the common factor of the four entries; the objective is the ratio $`C_0/C_1`$ of the source’s (25) and (26), evaluated from the exact rational breakpoints of the step-function weight and trigamma values at thirty decimal digits. The two leading tuples are exchanged by the source’s permutation group, so they are one direction.
 
 <a id="long1049:sec:receipts"></a>
 
 ## Finite receipts
 
-Four finite computations support statements above. Each is exact rational or integer arithmetic except where a numerical enclosure is named; none of them proves a statement quantified over all indices, and none is kernel-checked.
+Four finite computations support statements above. The reconstruction and degree calculations use exact rational or integer arithmetic; the constant evaluation and direction scan use the numerical precision stated below. None proves a statement quantified over all indices, and none is kernel-checked.
+
+The [public reproduction guide](https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/README.md) gives the command and dependency pin for [the direction-search program](https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/direction_search.py). Run it with `--bound 30` and the output path named there; adding `--check` compares the result without replacing the [tracked receipt](https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/receipts/direction-search-bound30.json). The receipt records mpmath 1.3.0 at thirty decimal digits. Its exact enumeration count is $`37{,}533`$, but its ordering by $`C_0/C_1`$ is numerical and has no interval certificate.
 
 The forms of Section <a href="#long1049:sec:source-forms" data-reference-type="ref" data-reference="long1049:sec:source-forms">2.1</a> were reconstructed as explicit elements of $`\mathbb{Z}[X]`$ from cyclotomic products, without rational-function arithmetic, for $`n\le4`$. At $`n=1,2,3`$ the reconstruction confirms $`\deg A_n=K_n`$ with $`K_n=587,2264,5032`$, that $`\Omega_n`$ divides both $`D_NA_n`$ and $`D_NB_n`$ with zero remainder, that $`X^{M_n}`$ divides both quotients, and that $`W_n=\deg U_n=333,1315,2944`$ with $`\deg V_n=W_n-1`$ and leading coefficients $`\pm1`$. It also confirms $`\sum_{l\le N}\varphi(l)=72,278,628`$ and $`\Sigma_n=25,94,219`$, hence $`(K_n-W_n)/n^{2}=254,949/4,232`$. The identity $`U_n(x)F(x)-V_n(x)=x^{-M_n}(D_N/\Omega_n)(x)H_n(x)`$ was then evaluated at $`x=31/4`$, $`3`$ and $`7/2`$ to relative accuracy below $`10^{-39}`$ at $`n=3`$, with $`\widehat\Lambda_n>0`$ at each, with $`b^{W_n}U_n(a/b)`$ an integer and $`b^{W_n-1}U_n(a/b)`$ not an integer at $`31/4`$ and $`7/2`$, and with $`H_n(x)`$ inside the bounds of Section <a href="#long1049:sec:integer-forms" data-reference-type="ref" data-reference="long1049:sec:integer-forms">2.4</a>.
 

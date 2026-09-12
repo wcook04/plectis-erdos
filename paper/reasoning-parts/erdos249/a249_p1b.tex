@@ -115,9 +115,11 @@ Prop.~\ref{prop:AR-07}'s full cofinal supply; the two base cases $a=4,6$ trace t
 Define $\mathtt{fixedRankSecondDifference}\ H\ j := \varphi(3H+j)-2\varphi(2H+j)+\varphi(H+j)$.
 If, at $H=\mathtt{periodLcm}(2^a)$ and some fixed small $j$,
 \[
-\mathtt{MiddleRankTotientExtremal}\ H\ j
-\quad:\iff\quad
-\varphi(2H+j)\ \text{is a strict min or max among}\ \{\varphi(H+j),\varphi(2H+j),\varphi(3H+j)\},
+\begin{aligned}
+&\mathtt{MiddleRankTotientExtremal}\ H\ j \\[2pt]
+&\quad:\iff\quad \varphi(2H+j)\ \text{is a strict minimum or maximum of} \\
+&\hspace{7em}\{\varphi(H+j),\varphi(2H+j),\varphi(3H+j)\},
+\end{aligned}
 \]
 then $\mathtt{fixedRankSecondDifference}\ H\ j\ne 0$, with sign matching the extremum. Notably
 an \emph{ordering} suffices — no quantitative gap is required. This is a genuinely different
@@ -131,7 +133,12 @@ cofinally in $a$.
 \begin{prop}[The directed/LCM-specialised certificate supply]\label{prop:CP-06}
 $\mathtt{directedCertifiedKill}\ h\ N\ L$ is sound \emph{and complete}:
 \[
-(\exists L,\ \mathtt{directedCertifiedKill}\ h\ N\ L) \iff \mathtt{totientTail}(N+h)-\mathtt{totientTail}(N)\notin \mathrm{range}(\mathbb Z\to\mathbb R),
+\begin{aligned}
+&(\exists L,\ \mathtt{directedCertifiedKill}\ h\ N\ L) \\
+&\qquad\iff
+  \mathtt{totientTail}(N+h)-\mathtt{totientTail}(N)
+  \notin \mathrm{range}(\mathbb Z\to\mathbb R),
+\end{aligned}
 \]
 exactly, no gap; and $\mathrm{Irrational}(S)\iff \mathtt{CofinalDirectedLcmCertificateSupply}$ (the
 LCM-diagonal specialisation). The asymmetric strip is a genuine finite-depth improvement over

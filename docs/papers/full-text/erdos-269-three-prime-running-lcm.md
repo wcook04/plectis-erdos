@@ -63,7 +63,14 @@ where
             r^{\lfloor\log_r q^j\rfloor}.
 \end{aligned}
 ```
-Both factors are positive. Distinct primes make $`\log_r p`$ and $`\log_r q`$ irrational, so each individual rotation is dense. For $`n\ge1`$, choose distinct row indices with $`0<x_{I(0)}<\cdots<x_{I(n-1)}<1`$. Choose $`1-y_{J(0)}`$ in $`(0,x_{I(0)})`$, and, for $`1\le b<n`$, choose $`1-y_{J(b)}`$ in $`(x_{I(b-1)},x_{I(b)})`$. The intervals are disjoint, so the column indices are distinct. These choices give
+Both factors are positive. Distinct primes make $`\log_r p`$ and $`\log_r q`$ irrational, so each individual rotation is dense. No joint density of $`(x_i,y_j)`$ is needed. For $`n\ge1`$, use density of $`(x_i)`$ to choose distinct row indices with $`0<x_{I(0)}<\cdots<x_{I(n-1)}<1`$. Now put $`s_b=1-y_{J(b)}`$. Density of $`(y_j)`$ lets us choose
+
+``` math
+s_0\in(0,x_{I(0)}),\qquad
+ s_b\in(x_{I(b-1)},x_{I(b)})\quad(1\le b<n).
+```
+
+The intervals for the $`s_b`$ are disjoint, so the column indices are distinct. The strict inequalities also avoid the threshold itself, and give $`x_{I(a)}+y_{J(b)}\ge1`$ exactly when $`b\le a`$. Thus multiplying row $`a`$ by $`U_{I(a)}(k)`$ and column $`b`$ by $`V_{J(b)}(k)`$ reduces the selected kernel minor to
 ``` math
 T_n(c)=\begin{pmatrix}
  c&1&\cdots&1\\
@@ -73,11 +80,17 @@ T_n(c)=\begin{pmatrix}
  \end{pmatrix},\qquad
  \det T_n(c)=c(c-1)^{n-1}.
 ```
-Indeed, subtracting each preceding row from the next, working upwards from the last row, leaves diagonal entries $`c,c-1,\ldots,c-1`$. The same $`I,J`$ work for every $`k`$, whose only effect is multiplication by nonzero row and column factors. The empty minor for $`n=0`$ equals $`1`$. Finally, $`d`$ separated summands would factor every $`(d+1)\times(d+1)`$ restriction through a $`d`$-dimensional space, contradicting the nonzero minor. ◻
+Indeed, subtracting each preceding row from the next, working upwards from the last row, leaves diagonal entries $`c,c-1,\ldots,c-1`$. Before normalisation, the determinant is this nonzero number times
+``` math
+\prod_{a<n}U_{I(a)}(k)^{-1}\prod_{b<n}V_{J(b)}(k)^{-1}.
+```
+The factors are nonzero, and the same $`I,J`$ work for every $`k`$. The empty minor for $`n=0`$ equals $`1`$.
+
+For the final assertion, suppose a separation with $`d`$ summands existed and fix any $`k`$. On the rows $`I(0),\ldots,I(d)`$ and columns $`J(0),\ldots,J(d)`$ its matrix would be the product of the $`(d+1)\times d`$ matrix $`(f_\ell(I(a)))_{a,\ell}`$ and the $`d\times(d+1)`$ matrix $`(G_\ell(J(b),k))_{\ell,b}`$. Its rank would be at most $`d`$, so its determinant would vanish, contrary to the minor just constructed. ◻
 
 </div>
 
-Both clauses are [uniform rank and nonseparation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22).
+The two clauses are the Lean declarations [uniform nonsingular minors](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/KernelCarryRank.lean#L376) and [no finite separation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos269/KernelCarryRank.lean#L388). Those declarations require $`p\ne r`$ and $`q\ne r`$, but not $`p\ne q`$. The theorem above keeps pairwise distinctness because it is stated for a three-prime set; allowing $`p=q`$ gives an extension of the abstract indexed kernel, not a new three-prime case of the running-LCM problem.
 
 <div id="res:admissible-modular-minors" class="corollary">
 
@@ -147,7 +160,7 @@ satisfy $`\det A=0`$ and $`\|T-A\|_{\max}=1/10<2/5`$. For the original kernel, t
 \|K-K^{(N)}\|_{\ell^1}
  \le\frac{pqr\,p^{-3N}}{(1-p^{-3})(1-q^{-3})(1-r^{-3})}.
 ```
-This follows from $`H(x)>x^3/(pqr)`$. Thus the infinite uniform obstruction coexists with geometric approximation in the summation norm. The scalar irrationality question requires arithmetic information about the actual multiplicities.
+This follows from $`\operatorname{H}(x)>x^3/(pqr)`$. Thus the infinite uniform obstruction coexists with geometric approximation in the summation norm. The scalar irrationality question requires arithmetic information about the actual multiplicities.
 
 <a id="sec:two-prime"></a>
 
@@ -459,7 +472,7 @@ The bounded-radix alternative permits the integral branch. Infinite rank and the
 
 #### Proof sources.
 
-The two-prime argument uses the cited Hecke–Mahler value theorem and is Steve Fan’s; it is not a Lean theorem. The arbitrary-order kernel theorem, the actual recurrence and the rationality bridge are ordinary mathematics in this paper; source locations are recorded below. Comparator records the $`(2,3,5)`$ minor $`-1/15`$, the running-LCM height identity, and a conditional carry-escape consumer, not the arbitrary-order rank theorem. The finite cut-rank argument and the modular corollary are proved above; no additional formal verification claim is made for the latter. The actual-series reduction is given; the source-specific cofinal escape remains unproved.
+The two-prime argument uses the cited Hecke–Mahler value theorem and is Steve Fan’s; it is not a Lean theorem. The arbitrary-order kernel theorem is proved in the Lean module `KernelCarryRank`: it contains the uniform minors and the exact finite-separation contradiction used above. The literal recurrence and the fixed-split rationality bridge likewise have the named Lean statements linked at their occurrences above. The [source-current validation receipt](https://github.com/wcook04/plectis-erdos/blob/06f57893e0f9c6d80668048f26f096367ae4cfe7/verification/erdos269-wavea-validation.json) byte-matches these modules and records their compilation inside the public recursive import closure. The receipt’s declaration-by-declaration axiom audit concerns the named R12 Wave A results, not these rank declarations. Comparator separately records the finite $`(2,3,5)`$ minor $`-1/15`$, the running-LCM height identity, and a conditional carry-escape consumer; it is not the evidence for the arbitrary-order theorem. The finite cut-rank argument and the modular corollary are proved above; no additional formal verification claim is made for the latter. The actual-series reduction is given; the source-specific cofinal escape remains unproved.
 
 <a id="artefact-and-data-availability."></a>
 

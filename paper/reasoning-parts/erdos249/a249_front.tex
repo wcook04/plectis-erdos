@@ -787,10 +787,18 @@ For every $h > 0$ there are $s > 0$ and $\eta \in (0,1)$ such that for every
 $X_0$ there are $X, L$ with $\max(X_0,1) \le X$, $h \le L - s$,
 $16(2X{+}h{+}L{+}2) \le 2^{L}$, and all four of
 \[
-  \mathrm{Re}\,\mathrm{pivotCenteredCorrelation} \le \tfrac{14}{25}X, \quad
-  \lVert \mathrm{pivotFiberMean} \rVert \le \tfrac{1}{100}X, \quad
-  \lVert \mathrm{pivotBad} \rVert \le \tfrac{1}{100}X, \quad
-  \lVert \mathrm{pivotNonSupplier} \rVert \le \tfrac{8}{25}X .
+\adjustbox{max width=\linewidth}{$\displaystyle
+\begin{aligned}
+ \mathrm{Re}\,\mathrm{pivotCenteredCorrelation}(h,X,L,s,\eta)
+   &\le \tfrac{14}{25}X,\\
+ \lVert\mathrm{pivotFiberMeanContribution}(h,X,L,s,\eta)\rVert
+   &\le \tfrac{1}{100}X,\\
+ \lVert\mathrm{pivotBadContribution}(h,X,L,s,\eta)\rVert
+   &\le \tfrac{1}{100}X,\\
+ \lVert\mathrm{pivotNonSupplierContribution}(h,X,L,s)\rVert
+   &\le \tfrac{8}{25}X .
+\end{aligned}
+$}
 \]
 It implies $\mathrm{Irrational}(S)$.
 \coord{first-harmonic} \scale{cofinal} \ev{Lean}
@@ -808,6 +816,12 @@ proved unconditionally with \texttt{\#print axioms} clean
 (\lean{Erdos249257.windowFirstExp\_sum\_eq\_pivot\_decomposition}{FirstHarmonicPivot.lean:514},
 budget consumer
 \lean{Erdos249257.first\_harmonic\_gap\_of\_pivotBudgetAt}{FirstHarmonicPivot.lean:549}).
+Its proof first partitions the block into supplier and non-supplier bases,
+then partitions the supplier bases according to the good-cofactor condition.
+On the good part, subtracting the mean residual on each pivot fibre gives
+the centred-correlation term and leaves exactly the fibre-mean term.  Thus
+the four displayed quantities sum to the original first-harmonic block;
+the identity itself provides no estimate for any of them.
 The one-sided budget lowers the hard requirement from a norm bound
 $\lVert \cdot \rVert \le X/2$ to a real-part bound $\le 14X/25$. And the pivot
 rests on genuine arithmetic rather than a sampled surrogate: on the canonical
@@ -817,8 +831,9 @@ interval of primes, proved as a membership equality
 with the totient factorisation at the pivot the honest
 $\varphi(mp) = \varphi(m)(p-1)$ and the non-divisibility discharged by size.
 
-Three of the four terms are then counting bookkeeping; only the first needs a
-genuine correlation estimate, and only in real part.
+None of the four displayed inequalities is currently proved.  The fibre-mean,
+bad-cofactor and non-supplier terms have the form of counting estimates, while
+the first is a genuine correlation estimate and is needed only in real part.
 
 \textbf{What it must respect.} B6 has a residual-gauge instance:
 a residual-blind determinant or conditioning test cannot certify that genuine
@@ -826,8 +841,8 @@ phase reconstruction rather than a locked degenerate configuration has occurred
 (\lean{Erdos249257.locked\_reconstruction\_preserves\_nonzero\_minor}{ResidualGaugeObstruction.lean:94}).
 So this route must couple rows by an extra arithmetic identity, not merely
 gauge-normalise columns. \textbf{Honest status:} strictly a repackaging of
-Survivor 1's burden; it is listed separately only because three quarters of it
-are already exact identities on disk. The module asserts no prime-distribution
+Survivor 1's burden; it is listed separately because its decomposition and
+canonical-fibre identities are already exact on disk. The module asserts no prime-distribution
 or decorrelation estimate --- the socket is deliberately empty. \ev{Open}
 
 \subsection{Survivor 3: uniform quantitative escape at cofinally many primes}

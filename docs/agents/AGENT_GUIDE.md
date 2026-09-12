@@ -88,8 +88,11 @@ This library treats the three-prime case. A paper proof using Bugeaud--Laurent
 makes both two-prime versions transcendental; this is not first and not
 formalised. Steve Fan posted the same argument on the erdosproblems.com #269
 thread on 26 June 2026 and this note was first released publicly on 22 July
-2026, so no priority is claimed. For three primes the paper proves nonsingular
-selected minors of every order from one binary carry. Comparator checks the
+2026, so no priority is claimed. For three primes the paper explains how one
+binary carry yields nonsingular selected minors of every order. The exact
+rank source belongs to the successfully compiled public closure in
+[the Wave-A record](../../verification/erdos269-wavea-validation.json);
+that record supplies no separate rank-declaration axiom audit. Comparator checks the
 `-1/15` finite minor, the running-LCM height identity, and a conditional
 carry-escape consumer, not the arbitrary-order rank theorem. The actual-series
 reduction is given; the source-specific cofinal escape remains unproved. Paper:
@@ -98,10 +101,13 @@ reduction is given; the source-specific cofinal escape remains unproved. Paper:
 **#1041 — Must two roots of a monic polynomial in the unit disc admit a curve of
 length less than `2` inside its open unit lemniscate?**
 
-Lean checks Newton-flow value decay, ray separation, the translation collision
-locus, and root retention under small constant perturbations. A recent claimed
-global decomposition has an invalid printed local saddle block; repairing the
-topology and metric gluing remains open. Paper:
+The paper proves trinomial radial containment with ordinary path assembly.
+Lean checks the complete all-degree critical-value mean, supported by
+[source-bound audit evidence](../../verification/erdos1041-returned-r18-v5-full-audit-evidence.json),
+and local Newton derivatives, ray-separation consumers, translation geometry
+and root retention. The real-time first integral uses ordinary integration;
+the ray consumer assumes its exponential endpoint relation. Neither the mean
+nor these local inputs supplies unrestricted topology and metric gluing. Paper:
 `erdos-1041-lemniscate-newton-flow.pdf`.
 
 **#1049 — For which rational bases is the corresponding Lambert-type series

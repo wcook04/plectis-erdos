@@ -1,0 +1,22 @@
+{
+  "schema": "erdos251-public-computation-source/1",
+  "author": "Will Cook",
+  "packaging": "Codex, directed by Will Cook",
+  "programs": [
+    {
+      "file": "certified_continued_fraction.py",
+      "original_program_sha256": "57a8a0895149403cfb97dfde98213a4ba464ebaebc27ece9ca6d1609c98225bf",
+      "changes": "Public usage description and finite-scope labels; numerical algorithm retained."
+    },
+    {
+      "file": "erdos251_adjacent_mismatch_density.py",
+      "original_program_sha256": "fc1aa91900eb5c167b59b12f633ad53d9c5476dc0fc4c1df7a8dadeec0e42de1",
+      "changes": "Public usage description and finite-scope labels; numerical algorithm retained."
+    },
+    {
+      "file": "erdos251_free_pair_and_state_compression.py",
+      "original_program_sha256": "6ecf22036406de92a941feebd9b1cc03b8b9ec07acfd3747cd862796d0f8f0dc",
+      "changes": "Public usage description and finite-scope labels; numerical algorithm retained."
+    }
+  ]
+}

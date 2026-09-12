@@ -218,11 +218,23 @@ The proof chooses the two smallest distances $`d_i\le d_j`$. The reciprocal bala
 ```
 Indeed, $`\log(2t^{(n-1)/n}/(1+t))`$ vanishes at $`t=1`$ and has derivative $`(n-1-t)/(nt(1+t))\ge0`$ on that interval. Consequently $`d_i+d_j\le2(d_i d_j^{\,n-1})^{1/n}\le2r`$. Without the reciprocal balance, the required restriction on $`t`$ would be missing. The complete complex theorem, including the selector and both inequalities, is checked as [the critical geometric-mean proximity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L289).
 
+<div class="corollary">
+
+**Corollary 8** (two nearest roots). *If the roots lie in the open unit disc and $`c`$ is a non-root critical point, the two nearest roots to $`c`$ have total distance strictly below $`2`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Apply the closed-disc two-nearest-root inequality after scaling by any radius $`R<1`$ containing all the roots. The ordinary reduction is recorded in the [global two-nearest-root budget](https://github.com/wcook04/plectis-erdos/blob/a729f05c40398663fd586c9da487ad874d898639/research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md); Lean checks its algebraic core as . ◻
+
+</div>
+
 This is not silently promoted to a path theorem. The same source module checks two exact barriers to the most tempting completions.
 
 <div id="res:straight-no-go" class="proposition">
 
-**Proposition 8** (two straight-path no-go families). *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight spoke to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
+**Proposition 9** (two straight-path no-go families). *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight spoke to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
 </div>
 
@@ -240,7 +252,7 @@ The following families cross that containment gap by controlling entire spokes o
 
 <div id="res:cubic-fibres" class="theorem">
 
-**Theorem 9** (translated cubic quotient fibres). *Let $`q\ge2`$, $`h\in\mathbb C`$, and let $`P`$ be a monic cubic. Put
+**Theorem 10** (translated cubic quotient fibres). *Let $`q\ge2`$, $`h\in\mathbb C`$, and let $`P`$ be a monic cubic. Put
 ``` math
 f(z)=P((z-h)^q).
 ```
@@ -256,7 +268,7 @@ For cubic roots $`r,s,v`$, the real charges $`\Re(r\overline{s+v})`$ sum to more
 
 <div id="res:primitive-quintic" class="theorem">
 
-**Theorem 10** (primitive sparse quintics). *Let
+**Theorem 11** (primitive sparse quintics). *Let
 ``` math
 p(z)=z^5+az^4+bz+c
 ```
@@ -286,19 +298,17 @@ The solved families of Section <a href="#sec:solved-families" data-reference-ty
 
 <div id="res:critical-value-separation" class="theorem">
 
-**Theorem 11** (critical-value separation). *Let $`f`$ be monic of degree $`n`$, let $`c`$ be a simple critical point with $`v=f(c)\ne0`$, and let $`S>1`$. Suppose every other critical point $`d`$ of $`f`$ satisfies
+**Theorem 12** (disk-family critical-value separation). *Let $`f`$ be monic of degree $`n\ge3`$, let $`c`$ be a simple critical point, and put $`v=f(c)\ne0`$. Fix $`w_0\in[0,1]`$ and $`S>\max(w_0,1-w_0)`$. Suppose every other critical point $`d`$ satisfies
 ``` math
-\Bigl|1-\frac{f(d)}{v}\Bigr|\ge S .
+\left|\frac{f(d)}v-w_0\right|\ge S .
 ```
-Then the square-root-resolved inverse branch through $`c`$ joins two roots of $`f`$ inside $`\{|f|\le|v|\}`$ by a path of length at most
-``` math
-2\,|v|^{1/n}(1+S)^{1/n}\sqrt{\log\frac{S}{S-1}} .
-```
-In particular the connector is shorter than $`2|v|^{1/n}`$ whenever
+Put $`p=w_0(1-w_0)`$. Then two distinct roots are joined inside $`\{|f|\le|v|\}`$ by a curve $`\Gamma`$ satisfying
 ``` math
 \begin{equation}
-\label{eq:separation-threshold}
-  (1+S)^{2/n}\log\frac{S}{S-1}<1 .
+\label{eq:disk-family-length}
+ \operatorname{length}(\Gamma)^2
+ \le 2|v|^{2/n}\Bigl(\frac{S}{n-1}\Bigr)^{2/n}
+ \log\!\frac{S^2+S+p}{S^2-S+p}.
 \end{equation}
 ```*
 
@@ -306,40 +316,68 @@ In particular the connector is shorter than $`2|v|^{1/n}`$ whenever
 
 <div id="res:critical-value-thresholds" class="corollary">
 
-**Corollary 12** (disk-family uniform radius). *A strictly stronger disk-family theorem, proved in [disk family critical value separation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.md), replaces the coefficientwise logarithm $`\log(S/(S-1))`$ by the Bergman segment identity
+**Corollary 13** (uniform radius $`4/3`$). *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc. If $`c`$ is a simple critical point with $`0<|f(c)|<1`$ and, for some $`w_0\in[0,1]`$, every other critical point $`d`$ satisfies
 ``` math
-\Bigl(\int_{-q}^{q}|h|\Bigr)^2
- \le\frac4\pi\operatorname{artanh}(q^2)\,\|h\|_{A^2}^2
+\left|\frac{f(d)}{f(c)}-w_0\right|\ge\frac43,
 ```
-and yields a uniform radius $`S=4/3`$ in every degree $`n\ge3`$, at every real centre. The smallest degree-uniform radius certified by that coefficient at centre $`a\in[0,1]`$ is $`S_\infty(a)=(A+\sqrt{A^2-4a(1-a)})/2`$ with $`A=\coth 1`$; the endpoints recover $`S_\infty(0)=S_\infty(1)=\coth1`$ already on file. An obstructing critical value may depend on the proposed centre. The older coefficientwise regimes $`S=4`$ ($`n\ge3`$), $`S=3`$ ($`n\ge4`$), and $`S=2`$ ($`n\ge6`$) remain valid and are superseded. A proposed all-degree cutoff $`S=3/2`$ for the older bound is strictly weaker than $`4/3`$ and is not used.*
+then two roots are joined inside $`\{|f|<1\}`$ by a curve of length strictly below $`2`$. In degree three the branch-centred choice $`w_0=1`$ already works with $`4/3`$ replaced by $`6/5`$.*
 
 </div>
 
 <div id="res:separation-parent" class="corollary">
 
-**Corollary 13** (a parent-problem regime). *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc, and let $`c`$ be a simple critical point with $`v=f(c)`$ and $`0<|v|<1`$. If some real centre $`w_0\in[0,1]`$ admits a radius $`S\ge4/3`$ such that $`|f(d)/v-w_0|\ge S`$ for every other critical point $`d`$, then Erdős Problem #1041 holds for $`f`$.*
+**Corollary 14** (a parent-problem regime). *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc, and let $`c`$ be a simple critical point with $`v=f(c)`$ and $`0<|v|<1`$. If some real centre $`w_0\in[0,1]`$ admits a radius $`S\ge4/3`$ such that $`|f(d)/v-w_0|\ge S`$ for every other critical point $`d`$, then Erdős Problem #1041 holds for $`f`$.*
 
 </div>
 
-The hypothesis $`|v|<1`$ is required: normalised separation controls a connector in $`\{|f|\le|v|\}`$, which lies in the unit lemniscate only when $`|v|<1`$. The Fekete chain supplies $`|v|<1`$ at a minimum-modulus critical point, but an arbitrary selected critical value need not. The hypothesis is sufficient, not necessary: it does not assert that some critical value is always separated by two, and the cubic $`z^3+(3/100)z-3/4`$ shows that no such covering statement is true.
+The hypothesis $`|v|<1`$ is required: normalised separation controls a connector in $`\{|f|\le|v|\}`$, which lies in the unit lemniscate only when $`|v|<1`$. The Fekete chain supplies $`|v|<1`$ at a minimum-modulus critical point, but an arbitrary selected critical value need not. The hypothesis is sufficient, not necessary: it does not assert that some critical value always admits such a disk. The cubic $`z^3+(3/100)z-3/4`$ shows in particular that the older separation-two condition does not cover all polynomials.
 
-The proof of Theorem <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">11</a> is the same area–capacity argument used in Section <a href="#sec:constant-factor" data-reference-type="ref" data-reference="sec:constant-factor">3</a>, run at a single saddle instead of over a merge tree. Normalise so that $`c=0`$, $`v=1`$, and $`|f''(0)|\ne0`$. The square substitution resolves the saddle, so $`f(Z(\xi))=1-\xi^2`$ has two local holomorphic solutions interchanged by $`\xi\mapsto-\xi`$. A finite branch point of the algebraic continuation of $`Z`$ requires $`f'(d)=0`$ and $`\xi^2=1-f(d)`$, and the separation hypothesis puts every such point on or outside $`|\xi|=\sqrt S`$; properness of a polynomial rules out escape to infinity over a bounded value set, so the monodromy theorem continues $`Z`$ holomorphically through $`|\xi|<\sqrt S`$. It is injective there, because $`Z(\xi_1)=Z(\xi_2)`$ forces $`\xi_1^2=\xi_2^2`$, and the two inverse sheets can meet only at an excluded branch point. Writing $`Z(\xi)=\sum_{k\ge1}a_k\xi^k`$ and fixing $`1<R<\sqrt S`$, injectivity and the area formula give
+<div class="proof">
+
+*Proof of Theorem <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">12</a>.* Set $`\rho=|v|^{1/n}`$ and
 ``` math
-\pi\sum_{k\ge1}k|a_k|^2R^{2k}=\operatorname{Area}Z(D_R),
+P(w)=\frac{f(c+\rho w)}v.
 ```
-while $`f(Z(\xi))=1-\xi^2`$ confines the image to $`\{|f|<1+R^2\}`$, whose area is bounded by $`\pi(1+R^2)^{2/n}`$ for a monic $`f`$. That bound is the absolute area inequality $`\operatorname{Area}\{|f|<T\}\le\pi T^{2/n}`$ for a polynomial with unit-modulus leading coefficient, taken from Pólya \[polya1928, printed pp. 280–282\]. No relative area inequality is used here; the disposition of Dubinin’s Theorem 1 is recorded in the bibliography entry \[dubinin\]. That theorem is a relative-area inequality under a full covering hypothesis; neither the hypothesis nor its relative conclusion is used in this proof. Cauchy–Schwarz then gives
+Then $`P(0)=1`$, $`P'(0)=0`$, $`P''(0)\ne0`$, and its leading coefficient is $`|v|/v`$, of modulus one. This is the normalization used below; lengths scale back by $`\rho`$.
+
+Let $`Q=D(w_0,S)`$ and let $`U`$ be the component of $`P^{-1}(Q)`$ containing $`0`$. The hypotheses put both $`0,1`$ and the segment $`[0,1]`$ in $`Q`$, while $`0`$ is the only critical point in $`U`$. The restriction $`P:U\to Q`$ is proper. Riemann–Hurwitz, with one simple ramification point, makes it a degree-two map and makes $`U`$ simply connected. Thus $`1-P`$ has only its double zero at $`0`$ on $`U`$ and admits a single-valued square root $`\xi^2=1-P`$. This map is proper and locally injective onto
 ``` math
-\sum_{k\ge1}|a_k|
-    \le(1+R^2)^{1/n}\Bigl(\sum_{k\ge1}\frac1{kR^{2k}}\Bigr)^{1/2}
-    =(1+R^2)^{1/n}\sqrt{\log\frac{R^2}{R^2-1}},
+\widetilde Q=\{\xi:|\xi^2-(1-w_0)|<S\},
 ```
-and termwise integration of $`|Z'|`$ over $`[-1,1]`$ bounds the connector length by $`2\sum_{k\ge1}|a_k|`$. Letting $`R\uparrow\sqrt S`$ proves the theorem.
+the connected simply connected double cover of $`Q`$. It is therefore a conformal bijection. Its inverse $`Z`$ is the global resolved branch, and $`Z([-1,1])`$ joins the two distinct points over $`P=0`$ inside $`\{|P|\le1\}`$. This component argument is what prevents the local inverse germ from changing sheets or escaping during continuation.
+
+Put $`a=1-w_0`$. The conformal map
+``` math
+\zeta(\xi)=\xi\sqrt{\frac{S}{S^2+a\xi^2-a^2}}
+       :\widetilde Q\longrightarrow\mathbb D
+```
+sends $`[-1,1]`$ to $`[-q,q]`$, where $`q^2=S/(S^2+p)`$. Applying the Bergman segment inequality to $`Z\circ\zeta^{-1}`$ gives
+``` math
+\operatorname{length}(Z([-1,1]))^2
+ \le\frac2\pi\log\!\frac{S^2+S+p}{S^2-S+p}
+       \operatorname{Area}(U).                       \tag{*}
+```
+
+The area estimate concerns this particular two-sheeted component. For $`1-w_0<S'<S`$, let $`U'`$ be the component of $`\{|P-w_0|<S'\}`$ containing $`0`$. It is a proper regular component containing exactly two zeros of $`P-w_0`$, counted with multiplicity. The exterior-fibre capacity gap gives
+``` math
+\frac{\operatorname{cap}(\overline{U'})^n}{S'}<\frac1{n-1}.
+```
+Pólya’s area–capacity inequality \[polya1928, printed pp. 280–282\] then gives $`\operatorname{Area}(U')<\pi(S'/(n-1))^{2/n}`$. The components $`U'`$ exhaust $`U`$ as $`S'\nearrow S`$, so $`\operatorname{Area}(U)\le\pi(S/(n-1))^{2/n}`$. Substitute this in (\*) and scale lengths by $`\rho`$ to obtain <a href="#eq:disk-family-length" data-reference-type="eqref" data-reference="eq:disk-family-length">[eq:disk-family-length]</a>. No relative area inequality is used here; the disposition of Dubinin’s Theorem 1 is recorded in the bibliography entry \[dubinin\]. That theorem has a full covering hypothesis; neither that hypothesis nor its relative-area conclusion is used in this proof. ◻
+
+</div>
+
+For $`4/3\le S\le2`$ and $`p\ge0`$,
+``` math
+\frac{S^2+S+p}{S^2-S+p}\le\frac{S+1}{S-1}\le7,
+ \qquad \frac{S}{n-1}\le1,
+```
+and $`\log7<2`$. Thus <a href="#eq:disk-family-length" data-reference-type="eqref" data-reference="eq:disk-family-length">[eq:disk-family-length]</a> is strictly below $`4|v|^{2/n}<4`$ under the corollary’s hypotheses. The cubic constant follows from $`(3/5)^{2/3}\log11<2`$.
 
 <a id="bdry:critical-value-separation"></a>
 
 #### Boundary.
 
-The analytic continuation, the univalence, the area formula, and the area–capacity inequality are ordinary mathematics; they are proved in [first merge critical value separation certificate](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparationCertificate.md) and are not formalised. What Lean checks is the numerical half of the statement, in [first merge critical value separation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean): the squared coefficient $`\emph{first merge squared coefficient}`$ is antitone in the degree (), a squared connector length below $`4`$ times a coefficient below $`1`$ forces length below $`2`$ (), and the older three coefficientwise regimes hold exactly (), while the live uniform radius $`4/3`$ is checked in [disk family critical value separation](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean). The Comparator entry is [the first-merge critical-value separation Comparator](https://github.com/wcook04/plectis-erdos/tree/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ExternalVerification1041FirstMergeCriticalValueSeparation). Lean does not prove the analytic hypothesis $`\ell^2\le4\,\mathrm{c}(n,S)`$ that those consumers take as input, and nothing in this section asserts the unrestricted problem or the complementary near-tie regime.
+The two-sheeted component, its square-root uniformisation, the Bergman segment inequality, the exterior-fibre capacity gap, Pólya’s inequality and the exhaustion are ordinary mathematics. Their complete immutable source is the [disk-family critical-value separation record](https://github.com/wcook04/plectis-erdos/blob/8efbccc235df64a38d83f5dc7b1949e2ad18270d/research_corpus/Erdos1041/problem/DiskFamilyCriticalValueSeparation.md). The separate [Lean numerical kernel](https://github.com/wcook04/plectis-erdos/blob/f36e325c8b05fe5c3ce8a2ca32a699f6dc6336b9/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean) checks the coefficient bound for $`n\ge3`$, $`4/3\le S\le2`$, the cubic $`S=6/5`$ inequality, and the implication from the squared bound to length below $`2`$. It does not formalise the analytic hypotheses producing <a href="#eq:disk-family-length" data-reference-type="eqref" data-reference="eq:disk-family-length">[eq:disk-family-length]</a>; the adjacent axiom-audit source audits those numerical declarations rather than the ordinary analytic theorem. Nothing in this section asserts a separated disk always exists, covers the near-tie or multiple-saddle strata, or proves the unrestricted problem. The argument uses Pólya’s absolute area–capacity inequality, not the relative covering inequality in Dubinin’s Theorem 1 \[dubinin\].
 
 Pendyala’s degree-four theorem \[june2026, Thm. 1\] has no critical-spectrum hypothesis. The present separation criterion applies in every degree $`n\ge3`$ and supplies an explicit inverse-map length estimate.
 
@@ -351,7 +389,7 @@ None of the following is a counterexample to Erdős #1041. Each kills a coverin
 
 <div id="res:sep-or-false" class="proposition">
 
-**Proposition 14** (no separation-or covering). *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
+**Proposition 15** (no separation-or covering). *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
 ``` math
 \bigl|1-f(c_-)/f(c_+)\bigr|<2/375<2.
 ```*
@@ -362,7 +400,7 @@ The whole proposition, including the least-modulus assertion rather than a suppl
 
 <div id="res:one-root-gamma-false" class="proposition">
 
-**Proposition 15** (one-root gamma bound is false). *Let $`p(z)=z^8-(3/2)z`$ and let $`C`$ be the component of $`\{|p|\le1\}`$ containing the origin. Then $`C`$ contains exactly one zero and a neighbourhood of the closed disc of radius $`5/8`$, so $`\mathcal H^1(\partial C)>5\pi/4`$. The constant $`\Gamma(1/4)^2/(2\sqrt{\pi})`$ is at most $`(\pi/2)(1+\sqrt2)<5\pi/4`$.*
+**Proposition 16** (one-root gamma bound is false). *Let $`p(z)=z^8-(3/2)z`$ and let $`C`$ be the component of $`\{|p|\le1\}`$ containing the origin. Then $`C`$ contains exactly one zero and a neighbourhood of the closed disc of radius $`5/8`$, so $`\mathcal H^1(\partial C)>5\pi/4`$. The constant $`\Gamma(1/4)^2/(2\sqrt{\pi})`$ is at most $`(\pi/2)(1+\sqrt2)<5\pi/4`$.*
 
 </div>
 
@@ -370,7 +408,7 @@ A degree-uniform one-root perimeter constant, if one exists, must be at least $`
 
 <div id="res:arity-not-capacity" class="proposition">
 
-**Proposition 16** (arity does not force a capacity gap). *Let $`g(z)=z^3-(3/400)z-3/32`$. All roots lie in the open unit disc, $`\mu=187/2000\le1/2`$, the first-merge arity is $`k_0=2`$, and the ancestor component at level $`2\mu`$ has normalised capacity $`1`$.*
+**Proposition 17** (arity does not force a capacity gap). *Let $`g(z)=z^3-(3/400)z-3/32`$. All roots lie in the open unit disc, $`\mu=187/2000\le1/2`$, the first-merge arity is $`k_0=2`$, and the ancestor component at level $`2\mu`$ has normalised capacity $`1`$.*
 
 </div>
 
@@ -386,7 +424,7 @@ Let $`I\subseteq\mathbb R`$ be an interval on which a differentiable curve $`z`$
 
 <div id="res:value" class="theorem">
 
-**Theorem 17** (value equation). *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
+**Theorem 18** (value equation). *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
 ``` math
 f(z(t))=e^{-(t-t_0)}f(z(t_0))\qquad(t,t_0\in I).
 ```*
@@ -399,7 +437,7 @@ For an existing trajectory with nonzero initial value, the value moves inward on
 
 <div id="res:ray" class="corollary">
 
-**Corollary 18** (ray separation). *Let $`a<b`$, let $`z:[a,b]\to\mathbb C`$ be continuous, and suppose $`z`$ is differentiable on $`(a,b)`$ with $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ there. Then
+**Corollary 19** (ray separation). *Let $`a<b`$, let $`z:[a,b]\to\mathbb C`$ be continuous, and suppose $`z`$ is differentiable on $`(a,b)`$ with $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ there. Then
 ``` math
 f(z(b))=e^{a-b}f(z(a)).
 ```
@@ -415,13 +453,13 @@ Apply the value equation inside $`(a,b)`$ and pass to the endpoints by continuit
 
 It is tempting to arrange a generic perturbation so that the critical values are pairwise distinct, or that their moduli are pairwise distinct, and to conclude that saddle connections are excluded. Neither is enough.
 
-Two distinct critical values can lie on one ray, and two critical values with distinct moduli certainly can: the ray records the argument, and the modulus is exactly the coordinate the flow contracts. By Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">18</a> the invariant that excludes connections is the argument. What a perturbation must therefore achieve is pairwise distinct critical-value *arguments*, which is a condition on $`n-1`$ points modulo the circle rather than on their positions in the plane.
+Two distinct critical values can lie on one ray, and two critical values with distinct moduli certainly can: the ray records the argument, and the modulus is exactly the coordinate the flow contracts. By Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">19</a> the invariant that excludes connections is the argument. What a perturbation must therefore achieve is pairwise distinct critical-value *arguments*, which is a condition on $`n-1`$ points modulo the circle rather than on their positions in the plane.
 
 The cost of that condition is also checked, and it is small.
 
 <div id="res:locus" class="theorem">
 
-**Theorem 19** (ray-collision locus). *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
+**Theorem 20** (ray-collision locus). *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 ``` math
 \beta=\frac{ra-b}{1-r},
   \qquad r\in\mathbb{R}_{>0},\ r\ne1 .
@@ -467,7 +505,7 @@ and replaces the saddle by a three-ended neighbourhood having one connected lowe
 
 This independently diagnoses a proof step, but the Cassini witness above also refutes the proposition’s statement. A different route might cut an adjoining regular annulus along a separatrix or regular flow arc before forming the block, retain a four-pronged saddle neighbourhood and change the assembly, or replace the local construction by the ray-cut decomposition proposed below. But no repair can retain <a href="#eq:prop12-bound" data-reference-type="eqref" data-reference="eq:prop12-bound">[eq:prop12-bound]</a>; it must pay a positive attachment cost, select only one short pair instead of spanning every root, or use a different global metric inequality. The shorter descriptions of the same three-ended block do not repair the four-sector topology.
 
-Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">18</a> supplies one independent input for a different route: distinct critical-value arguments exclude saddle-to-saddle Newton connections. It does not itself prove the compact planar decomposition, classify all orbit endpoints or provide the metric gluing estimate. Those are separate problems below.
+Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">19</a> supplies one independent input for a different route: distinct critical-value arguments exclude saddle-to-saddle Newton connections. It does not itself prove the compact planar decomposition, classify all orbit endpoints or provide the metric gluing estimate. Those are separate problems below.
 
 <a id="sec:finite"></a>
 
@@ -487,7 +525,7 @@ r_*=(1+c^n)^{-1/n},\qquad
 
 <div class="theorem">
 
-**Theorem 20** (complementary binomial chords). *Two adjacent zeros of $`z^n-a`$ can be joined by an explicit polygonal path inside $`\{|z^n-a|<1\}`$ of length strictly below $`2`$. For $`r\le r_*`$ the adjacent-root chord itself works. For $`r\ge r_*`$, two radial legs and an inner adjacent crossing chord work after an arbitrarily small radial contraction. These two constructions meet at $`r=r_*`$, where the outer chord attains $`|f|=1`$ at its midpoint: equality is closed containment, not the open lemniscate. Open containment at and above the switch uses the inner chord after a radial contraction.*
+**Theorem 21** (complementary binomial chords). *Two adjacent zeros of $`z^n-a`$ can be joined by an explicit polygonal path inside $`\{|z^n-a|<1\}`$ of length strictly below $`2`$. For $`r\le r_*`$ the adjacent-root chord itself works. For $`r\ge r_*`$, two radial legs and an inner adjacent crossing chord work after an arbitrarily small radial contraction. These two constructions meet at $`r=r_*`$, where the outer chord attains $`|f|=1`$ at its midpoint: equality is closed containment, not the open lemniscate. Open containment at and above the switch uses the inner chord after a radial contraction.*
 
 </div>
 
@@ -519,7 +557,7 @@ C_n=\frac{1}{2^{n-1}\cos^n(\pi/(2n))}.
 
 <div id="res:sharp-collinear-root-diameter" class="theorem">
 
-**Theorem 21** (sharp collinear root-diameter bound). *Let $`f`$ be monic of degree $`n\ge2`$, with collinear zero occurrences of diameter $`D`$. Then some two zero occurrences are joined by their straight segment, of length at most $`D`$, on which
+**Theorem 22** (sharp collinear root-diameter bound). *Let $`f`$ be monic of degree $`n\ge2`$, with collinear zero occurrences of diameter $`D`$. Then some two zero occurrences are joined by their straight segment, of length at most $`D`$, on which
 ``` math
 |f|\le C_n\left(\frac D2\right)^n.
 ```
@@ -560,7 +598,7 @@ The same points can define both an analytic geometric mean and a positive Poisso
 
 <div id="res:fp-weighted-all-degree" class="theorem">
 
-**Theorem 22** (weighted free-point inequality in every degree). *Let $`c_1,\ldots,c_m\in\overline{\mathbb D}`$ and let $`w_j>0`$ satisfy $`\sum_j w_j=1`$. Set
+**Theorem 23** (weighted free-point inequality in every degree). *Let $`c_1,\ldots,c_m\in\overline{\mathbb D}`$ and let $`w_j>0`$ satisfy $`\sum_j w_j=1`$. Set
 ``` math
 G(z)=\prod_k |1-\overline{c_k}z|^{w_k}.
 ```
@@ -605,7 +643,7 @@ Thus the proof records a quantitative loss when the point centroid is nonzero. T
 
 <div id="res:fp-to-s" class="theorem">
 
-**Theorem 23** (critical-value mean in every degree). *Let $`f`$ be monic of degree $`n\ge2`$, with roots in a closed disc of radius $`R`$, and let $`c_1,\ldots,c_{n-1}`$ be its critical points with multiplicity. Then
+**Theorem 24** (critical-value mean in every degree). *Let $`f`$ be monic of degree $`n\ge2`$, with roots in a closed disc of radius $`R`$, and let $`c_1,\ldots,c_{n-1}`$ be its critical points with multiplicity. Then
 ``` math
 \sum_{j=1}^{n-1}|f(c_j)|^{2/(n-1)}
  \le(n-1)R^{2n/(n-1)}.
@@ -648,7 +686,7 @@ The edge lifetime is written
 
 <div id="res:orlicz-currency" class="theorem">
 
-**Theorem 24** (exact attachment-age/lifetime currency). *Define
+**Theorem 25** (exact attachment-age/lifetime currency). *Define
 ``` math
 \Phi(x)=\int_0^x\frac{dt}{\log(\coth t)}\qquad(x\ge0).
 ```

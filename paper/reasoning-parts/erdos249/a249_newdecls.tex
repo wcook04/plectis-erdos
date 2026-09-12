@@ -291,9 +291,13 @@ $\Leftrightarrow$ irrationality equivalences (again reductions, flagged as
 such). The exact algebraic core underneath is reusable:
 
 \begin{prop}[Anchor defect is a squared complex distance]
-$\mathrm{firstHarmonicAnchorDefect}(h,L,T) = \sum_{N\in T}\|
-\mathrm{windowFirstExp}(h,N,L) - 1\|^2$, and it equals
-$2|T| - 2\sum_{N\in T}\mathrm{windowFirstCos}(h,N,L)$.
+\[
+\begin{aligned}
+\mathrm{firstHarmonicAnchorDefect}(h,L,T)
+  &= \sum_{N\in T}\|\mathrm{windowFirstExp}(h,N,L)-1\|^2 \\
+  &= 2|T|-2\sum_{N\in T}\mathrm{windowFirstCos}(h,N,L).
+\end{aligned}
+\]
 \lean{Erdos249257.TotientTailPeriodKiller.firstHarmonicAnchorDefect_eq_sum_norm_sq}{PivotAntiReconstruction.lean:562}
 \quad \lean{Erdos249257.TotientTailPeriodKiller.firstHarmonicAnchorDefect_eq}{PivotAntiReconstruction.lean:550}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:pivot-fiber}.
@@ -511,9 +515,10 @@ upstream obligations, not proved here.
 \subsubsection{Rank-one subrank obstruction: a uniform proved barrier}
 \label{rank-one-subrank}
 
-\texttt{RankOneSubrankObstruction} is a uniform proved barrier: it names an
-entire family of candidate linear-form constructions and proves, uniformly,
-that none of them can work.
+\texttt{RankOneSubrankObstruction} is a uniform proved barrier for primitive
+rational linear forms obtained from rank-one strict-subrank monomial quotients
+of finite Möbius--Mersenne prefixes.  It proves that no construction in this
+class can approximate \(\Theta_2\) with a small linear form.
 
 \begin{thm}[Uniform rank-one no-go]
 Let $\Theta_r$ be the Möbius--Mersenne ladder rung and let $t(Y,r)$ be its

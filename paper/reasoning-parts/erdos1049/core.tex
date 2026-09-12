@@ -92,6 +92,16 @@ height condition; that family contains $7/2$ and does not contain $3/2$.
 Between the two lies the question this note is about: what exactly stops the
 integer-base argument from running at $3/2$?
 
+\paragraph{Structure.}
+The rational-base theorem and its cyclotomic degree calculation are
+Theorem~\ref{long1049:res:region}; the first newly covered base is isolated in
+Theorem~\ref{long1049:res:31over4}.  The independent determinant argument is
+Theorem~\ref{long1049:res:zudilin-sharp-qorder}, whose proof identifies the
+unique least-order term at every rank.  The result-family catalogue at the end
+lists the older families admitted to the public review registry.  It is not an
+exhaustive index of the theorems proved in this record, so these three labels
+are the direct route to its two principal arguments.
+
 \paragraph{Relation to prior work.}
 The \emph{Formal Conjectures} file for Problem~\#1049 contains the conjecture
 and integer-base theorem as \texttt{sorry} placeholders, but it also proves
@@ -909,6 +919,13 @@ homogenised forms at $3/2$.
 \end{theorem}
 
 \begin{proof}
+The only point not immediate from homogenisation is the cap
+$\sigma\le\delta$.  We apply the forms at arbitrarily large integer bases
+$p$: the upper bounds for their values and the two-sided remainder asymptotic
+give an upper bound for the irrationality exponent of $F(p)$, while
+Dirichlet's theorem gives the lower bound $2$.  Letting $p$ grow removes the
+base-independent height term and forces the cap.
+
 The displayed inequality is the identity
 \[
  \begin{aligned}
@@ -920,7 +937,7 @@ The displayed inequality is the identity
 together with hypothesis~(2); the degree bound is what makes
 $b^{d_n}U_n(a/b)$ and $b^{d_n}V_n(a/b)$ integers.
 
-For $\sigma\le\delta$, fix an integer $p\ge2$, write $\xi=F(p)$,
+To prove $\sigma\le\delta$, fix an integer $p\ge2$, write $\xi=F(p)$,
 $\alpha=h+\delta\log p$ and $\beta=\sigma\log p$, and set
 $\varepsilon_n=\Lambda_n(p)$.  Hypotheses~(2) and~(3) give the upper bound
 $|U_n(p)|\le e^{(\alpha+o(1))n^{2}}$, an inequality and not an equality: a
@@ -1065,26 +1082,38 @@ its width $s^{\mu_{\mathrm{BV}}}-s^{\mu}$ eventually exceeds $s$, so for every
 large enough denominator it contains an integer congruent to $1$ modulo $s$.
 Hence $31/4$ is the new base of least denominator and least numerator.
 
-\paragraph{The direction is optimal in its box.}
+\paragraph{The bounded direction search.}
 Over the $37{,}533$ primitive directions on Zudilin's cone with all entries at
 most $30$, the quantity $\theta^{*}(\mathrm{dir})=C_0/C_1$ computed from his
-(25) and (26) is maximised by $(14,12,14;27)$ and its group image
+(25) and (26) has largest recorded value at $(14,12,14;27)$ and its group image
 $(15,12,13;26)$, both at $0.4056830213840605\ldots$; the next value is
 $0.4056394327738419\ldots$, at $(16,13,14;28)$.  Larger boxes were not scanned,
-so this is a search result over that box and not a proof of optimality over the
-whole cone.  The enumeration ranges over integer tuples
+and the floating-point comparisons were not interval-certified, so this is
+numerical evidence over that box rather than an exact optimality theorem.
+The enumeration ranges over integer tuples
 $(\alpha_0,\alpha_1,\alpha_2;\beta)$ with $1\le\alpha_j\le30$,
 $1\le\beta\le30$, satisfying the cone conditions of \cite[Sec.~5]{zudilin2004}
 and taken up to the common factor of the four entries; the objective is the
-ratio $C_0/C_1$ of the source's (25) and (26), evaluated by the same
-thirteen-interval trigamma sum.  The two maximising tuples are exchanged by the
-source's permutation group, so they are one direction.
+ratio $C_0/C_1$ of the source's (25) and (26), evaluated from the exact rational
+breakpoints of the step-function weight and trigamma values at thirty decimal
+digits.  The two leading tuples are exchanged by the source's permutation
+group, so they are one direction.
 
 \subsection{Finite receipts}\label{long1049:sec:receipts}
 
-Four finite computations support statements above.  Each is exact rational or
-integer arithmetic except where a numerical enclosure is named; none of them
+Four finite computations support statements above.  The reconstruction and
+degree calculations use exact rational or integer arithmetic; the constant
+evaluation and direction scan use the numerical precision stated below.  None
 proves a statement quantified over all indices, and none is kernel-checked.
+
+The \href{https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/README.md}{public reproduction guide} gives the command and dependency pin for
+\href{https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/direction_search.py}{the direction-search program}.
+Run it with \texttt{--bound 30} and the output path named there; adding
+\texttt{--check} compares the result without replacing the
+\href{https://github.com/wcook04/plectis-erdos/blob/39a0a2078c8f9fbe7fc24f912654815cc24685df/research/experiments/erdos1049/receipts/direction-search-bound30.json}{tracked receipt}.
+The receipt records mpmath~1.3.0 at thirty decimal digits.  Its exact enumeration
+count is $37{,}533$, but its ordering by $C_0/C_1$ is numerical and has no
+interval certificate.
 
 The forms of Section~\ref{long1049:sec:source-forms} were reconstructed as explicit
 elements of $\Z[X]$ from cyclotomic products, without rational-function

@@ -409,10 +409,18 @@ Same lane as Survivor 1, with the analytic burden repackaged. Split the block su
 
 **Definition 28** ($`\mathrm{DTWPivotResidualDecorrelation}`$). For every $`h > 0`$ there are $`s > 0`$ and $`\eta \in (0,1)`$ such that for every $`X_0`$ there are $`X, L`$ with $`\max(X_0,1) \le X`$, $`h \le L - s`$, $`16(2X{+}h{+}L{+}2) \le 2^{L}`$, and all four of
 ``` math
-\mathrm{Re}\,\mathrm{pivotCenteredCorrelation} \le \tfrac{14}{25}X, \quad
-  \lVert \mathrm{pivotFiberMean} \rVert \le \tfrac{1}{100}X, \quad
-  \lVert \mathrm{pivotBad} \rVert \le \tfrac{1}{100}X, \quad
-  \lVert \mathrm{pivotNonSupplier} \rVert \le \tfrac{8}{25}X .
+\adjustbox{max width=\linewidth}{$\displaystyle
+\begin{aligned}
+ \mathrm{Re}\,\mathrm{pivotCenteredCorrelation}(h,X,L,s,\eta)
+   &\le \tfrac{14}{25}X,\\
+ \lVert\mathrm{pivotFiberMeanContribution}(h,X,L,s,\eta)\rVert
+   &\le \tfrac{1}{100}X,\\
+ \lVert\mathrm{pivotBadContribution}(h,X,L,s,\eta)\rVert
+   &\le \tfrac{1}{100}X,\\
+ \lVert\mathrm{pivotNonSupplierContribution}(h,X,L,s)\rVert
+   &\le \tfrac{8}{25}X .
+\end{aligned}
+$}
 ```
 It implies $`\mathrm{Irrational}(S)`$. `coord:first-harmonic` <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Lean\]</span>
 
@@ -420,11 +428,11 @@ It implies $`\mathrm{Irrational}(S)`$. `coord:first-harmonic` <span class="sans-
 
 It inherits Survivor 1’s evasions of B1, B4, B5, B6 and B7 verbatim: the four terms are exact finite sums over canonical largest-prime supplier fibres of the same accumulated-word phases, with no sample choice and nothing prescribed. Its specific advantages are three.
 
-The decomposition is an *exact identity*, proved unconditionally with `#print axioms` clean (, budget consumer ). The one-sided budget lowers the hard requirement from a norm bound $`\lVert \cdot \rVert \le X/2`$ to a real-part bound $`\le 14X/25`$. And the pivot rests on genuine arithmetic rather than a sampled surrogate: on the canonical fibre $`m = 1`$, $`s = L-h`$ the supplier set is *literally* the shifted dyadic interval of primes, proved as a membership equality (), with the totient factorisation at the pivot the honest $`\varphi(mp) = \varphi(m)(p-1)`$ and the non-divisibility discharged by size.
+The decomposition is an *exact identity*, proved unconditionally with `#print axioms` clean (, budget consumer ). Its proof first partitions the block into supplier and non-supplier bases, then partitions the supplier bases according to the good-cofactor condition. On the good part, subtracting the mean residual on each pivot fibre gives the centred-correlation term and leaves exactly the fibre-mean term. Thus the four displayed quantities sum to the original first-harmonic block; the identity itself provides no estimate for any of them. The one-sided budget lowers the hard requirement from a norm bound $`\lVert \cdot \rVert \le X/2`$ to a real-part bound $`\le 14X/25`$. And the pivot rests on genuine arithmetic rather than a sampled surrogate: on the canonical fibre $`m = 1`$, $`s = L-h`$ the supplier set is *literally* the shifted dyadic interval of primes, proved as a membership equality (), with the totient factorisation at the pivot the honest $`\varphi(mp) = \varphi(m)(p-1)`$ and the non-divisibility discharged by size.
 
-Three of the four terms are then counting bookkeeping; only the first needs a genuine correlation estimate, and only in real part.
+None of the four displayed inequalities is currently proved. The fibre-mean, bad-cofactor and non-supplier terms have the form of counting estimates, while the first is a genuine correlation estimate and is needed only in real part.
 
-**What it must respect.** B6 has a residual-gauge instance: a residual-blind determinant or conditioning test cannot certify that genuine phase reconstruction rather than a locked degenerate configuration has occurred (). So this route must couple rows by an extra arithmetic identity, not merely gauge-normalise columns. **Honest status:** strictly a repackaging of Survivor 1’s burden; it is listed separately only because three quarters of it are already exact identities on disk. The module asserts no prime-distribution or decorrelation estimate — the socket is deliberately empty. <span class="sans-serif">\[Open\]</span>
+**What it must respect.** B6 has a residual-gauge instance: a residual-blind determinant or conditioning test cannot certify that genuine phase reconstruction rather than a locked degenerate configuration has occurred (). So this route must couple rows by an extra arithmetic identity, not merely gauge-normalise columns. **Honest status:** strictly a repackaging of Survivor 1’s burden; it is listed separately because its decomposition and canonical-fibre identities are already exact on disk. The module asserts no prime-distribution or decorrelation estimate — the socket is deliberately empty. <span class="sans-serif">\[Open\]</span>
 
 <a id="survivor-3-uniform-quantitative-escape-at-cofinally-many-primes"></a>
 
@@ -759,7 +767,18 @@ Producers conclude an existence or a supply: a witnessed object, a witnessed fin
 
 <div class="thm">
 
-**Theorem 53** (cert:d5 — `not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`). *$`\neg\mathrm{Irrational}(S) \to \exists v>0,\, \exists u:\mathbb{N}\to\mathbb{Z},\, \mathrm{IsTemperedBinaryOrbit}\,\varphi\,v\,u \wedge \forall e,\ 2^e-1 \le \mathrm{finrank}_{\mathbb{Q}}(\mathrm{span}(\mathrm{range}(\mathrm{canonicalCarryKernelFamily}\,u\,e)))`$. Rationality of $`S`$ forces its associated tempered integral binary-carry orbit to have unboundedly rich dyadic-section rank; this is a second, coordinate-independent necessary condition on rationality, parallel to cert:a9 but in the carry-kernel-rank coordinate rather than the binary-digit-periodicity coordinate. It is not by itself an irrationality proof. In particular, the later countermodels rule out treating generic finite-rank shift-polynomial or compressed-adjoint observations as the missing opposite inequality; an actual-totient-specific upper bound would be a genuinely new theorem, not a surviving consequence of the present rank machinery.*
+**Theorem 53** (cert:d5 — `not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`).
+*``` math
+\begin{aligned}
+\neg\mathrm{Irrational}(S) \ \Longrightarrow\ {}
+  &\exists v>0,\ \exists u:\mathbb{N}\to\mathbb{Z},\quad
+    \mathrm{IsTemperedBinaryOrbit}\,\varphi\,v\,u \ \wedge \\
+  &\forall e,\quad 2^e-1 \le
+    \mathrm{finrank}_{\mathbb{Q}}
+      \bigl(\mathrm{span}(\mathrm{range}(\mathrm{canonicalCarryKernelFamily}\,u\,e))\bigr).
+\end{aligned}
+```
+Rationality of $`S`$ forces its associated tempered integral binary-carry orbit to have unboundedly rich dyadic-section rank; this is a second, coordinate-independent necessary condition on rationality, parallel to cert:a9 but in the carry-kernel-rank coordinate rather than the binary-digit-periodicity coordinate. It is not by itself an irrationality proof. In particular, the later countermodels rule out treating generic finite-rank shift-polynomial or compressed-adjoint observations as the missing opposite inequality; an actual-totient-specific upper bound would be a genuinely new theorem, not a surviving consequence of the present rank machinery.*
 
 *<span class="sans-serif">scale:uniform</span> `coord:other:carry-kernel-rank`*
 
@@ -799,7 +818,16 @@ Producers conclude an existence or a supply: a witnessed object, a witnessed fin
 
 <div class="prop">
 
-**Proposition 58** (mob:b7a — denominator growth lower bound). *For $`t \ge 5`$ (Bertrand’s postulate supplies nonemptiness of $`\mathrm{upperHalfPrimes}(t)`$): $`2^{t/2} \le \prod_{p \in \mathrm{upperHalfPrimes}(t)} \mathrm{mersenne}(p) \le \big(\mathrm{lcmHeight}(t)\cdot\mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\big).\mathrm{den}`$. An exponential-in-$`t/2`$ growth lower bound for the reduced denominator at every LCM height, produced from mob:b6’s explicit surviving channel product. Denominator-only: does not by itself rule out cancellation by a foreign-defect term, hence does not by itself prove \#249.*
+**Proposition 58** (mob:b7a — denominator growth lower bound). *For $`t \ge 5`$ (Bertrand’s postulate supplies nonemptiness of $`\mathrm{upperHalfPrimes}(t)`$):
+``` math
+\begin{aligned}
+2^{t/2}
+  &\le \prod_{p \in \mathrm{upperHalfPrimes}(t)} \mathrm{mersenne}(p) \\
+  &\le \bigl(\mathrm{lcmHeight}(t)\cdot
+    \mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\bigr).\mathrm{den}.
+\end{aligned}
+```
+This is an exponential-in-$`t/2`$ growth lower bound for the reduced denominator at every LCM height, produced from mob:b6’s explicit surviving channel product. Denominator-only: does not by itself rule out cancellation by a foreign-defect term, hence does not by itself prove \#249.*
 
 *<span class="sans-serif">scale:uniform</span> `coord:mobius-mersenne`*
 
@@ -807,7 +835,19 @@ Producers conclude an existence or a supply: a witnessed object, a witnessed fin
 
 <div class="prop">
 
-**Proposition 59** (mob:b7b — exact denominator value). *For every $`t`$ (no lower bound on $`t`$ needed for this direction): $`\big(\mathrm{lcmHeight}(t)\cdot\mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\big).\mathrm{den} = \mathrm{mersenne}(\mathrm{lcmRadical}(t)) / \gcd\big(\mathrm{mersenne}(\mathrm{lcmRadical}(t)),\ \mathrm{lcmScale}(t)\cdot|\mathrm{oddJordanScalar}(\mathrm{lcmRadical}(t))|\big)`$. A fully closed form for the reduced denominator at every scale, produced (not merely bounded) as an explicit rational function of $`t`$.*
+**Proposition 59** (mob:b7b — exact denominator value). *For every $`t`$ (no lower bound on $`t`$ needed for this direction):
+``` math
+\begin{aligned}
+&\bigl(\mathrm{lcmHeight}(t)\cdot
+  \mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\bigr).\mathrm{den} \\
+&\qquad = \mathrm{mersenne}(\mathrm{lcmRadical}(t))\,\Big/ \\
+&\qquad\quad \gcd\Bigl(
+  \mathrm{mersenne}(\mathrm{lcmRadical}(t)),
+  \ \mathrm{lcmScale}(t)\cdot
+  |\mathrm{oddJordanScalar}(\mathrm{lcmRadical}(t))|\Bigr).
+\end{aligned}
+```
+This is a fully closed form for the reduced denominator at every scale, produced (not merely bounded) as an explicit rational function of $`t`$.*
 
 *<span class="sans-serif">scale:uniform</span> `coord:mobius-mersenne`*
 
@@ -1078,7 +1118,28 @@ Converters and identities move a statement between coordinates without changing 
 
 <div class="prop">
 
-**Proposition 90** (mob:b3 — radical shadow scale decomposition). *$`\mathrm{baseMobiusShadow}(r) := \mathrm{mobiusNumerator}(r)/(2^r-1)`$ (unscaled); $`\mathrm{numericMobiusShadow}(H) := \mathrm{baseMobiusShadow}(\mathrm{rad}(H))/\mathrm{rad}(H)`$; exactly $`H\cdot\mathrm{numericMobiusShadow}(H) = (H/\mathrm{rad}(H))\cdot\mathrm{baseMobiusShadow}(\mathrm{rad}(H))`$ for $`H>0`$. Reduced-denominator identity for the unscaled shadow: $`\mathrm{baseMobiusShadow}(r).\mathrm{den} = \mathrm{mersenne}(r)/\gcd(|\mathrm{mobiusNumerator}(r)|, \mathrm{mersenne}(r))`$ for $`r>0`$ — exact and generic, no coprimality assumed, no channel-survival hidden.*
+**Proposition 90** (mob:b3 — radical shadow scale decomposition). *The unscaled and numerical shadows are
+``` math
+\begin{aligned}
+\mathrm{baseMobiusShadow}(r)
+  &:= \mathrm{mobiusNumerator}(r)/(2^r-1), \\
+\mathrm{numericMobiusShadow}(H)
+  &:= \mathrm{baseMobiusShadow}(\mathrm{rad}(H))/\mathrm{rad}(H).
+\end{aligned}
+```
+For $`H>0`$, exactly
+``` math
+H\cdot\mathrm{numericMobiusShadow}(H)
+ = (H/\mathrm{rad}(H))\cdot
+   \mathrm{baseMobiusShadow}(\mathrm{rad}(H)).
+```
+The reduced-denominator identity for the unscaled shadow, for $`r>0`$, is
+``` math
+\mathrm{baseMobiusShadow}(r).\mathrm{den}
+ = \mathrm{mersenne}(r)\,\Big/
+   \gcd\bigl(|\mathrm{mobiusNumerator}(r)|,\mathrm{mersenne}(r)\bigr).
+```
+These identities are exact and generic: no coprimality is assumed and no channel survival is hidden.*
 
 *<span class="sans-serif">scale:uniform</span> `coord:mobius-mersenne`*
 
@@ -1121,8 +1182,7 @@ Converters and identities move a statement between coordinates without changing 
 | $`\mu`$ | $`L(\mu) = 1/2`$ | rational, trivial |
 | $`\varphi`$ | $`L(\varphi) = 2`$ | rational |
 | $`\mathrm{Id}`$ | $`L(\mathrm{Id}) = \sum_m \sigma(m)/2^m`$ | transcendental (Nesterenko 1996, <span class="sans-serif">\[Cited\]</span>, not formalised) |
-| $`1`$ | $`L(1) = \mathcal{E}`$, Erdős–Borwein constant | irrational, <span class="sans-serif">\[Lean\]</span> (`irrational_erdosBorwein_series`, |
-|  |  | `CertificateKernel.lean:8007`) — matches \#257’s full-support case |
+| $`1`$ | $`L(1) = \mathcal{E}`$, Erdős–Borwein constant | irrational, <span class="sans-serif">\[Lean\]</span> (`irrational_erdosBorwein_series`, `CertificateKernel.lean:8007`) — matches \#257’s full-support case |
 | $`A = \varphi*\mu`$ | $`L(A) = S`$ | **OPEN** — this is \#249 |
 
 The Mersenne–Lambert ladder five-row status table (docstring @ `CertificateKernel.lean:18063--18083`, body `MersenneLambertLadder.lean`).
@@ -1359,9 +1419,11 @@ The module’s own comment states plainly: “the remaining endpoint gap is now 
 
 **Proposition 119** (Fixed-rank extremal-ordering supply). *Define $`\mathtt{fixedRankSecondDifference}\ H\ j := \varphi(3H+j)-2\varphi(2H+j)+\varphi(H+j)`$. If, at $`H=\mathtt{periodLcm}(2^a)`$ and some fixed small $`j`$,
 ``` math
-\mathtt{MiddleRankTotientExtremal}\ H\ j
-\quad:\iff\quad
-\varphi(2H+j)\ \text{is a strict min or max among}\ \{\varphi(H+j),\varphi(2H+j),\varphi(3H+j)\},
+\begin{aligned}
+&\mathtt{MiddleRankTotientExtremal}\ H\ j \\[2pt]
+&\quad:\iff\quad \varphi(2H+j)\ \text{is a strict minimum or maximum of} \\
+&\hspace{7em}\{\varphi(H+j),\varphi(2H+j),\varphi(3H+j)\},
+\end{aligned}
 ```
 then $`\mathtt{fixedRankSecondDifference}\ H\ j\ne 0`$, with sign matching the extremum. Notably an *ordering* suffices — no quantitative gap is required. This is a genuinely different coordinate from the sliding LCM window: $`j`$ fixed and small, only three fixed ranks examined. The remaining open step is : does this ordering hold cofinally in $`a`$. <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span> `coord:other:fixed-rank-curvature`\*
 
@@ -1371,7 +1433,12 @@ then $`\mathtt{fixedRankSecondDifference}\ H\ j\ne 0`$, with sign matching the e
 
 **Proposition 120** (The directed/LCM-specialised certificate supply). *$`\mathtt{directedCertifiedKill}\ h\ N\ L`$ is sound *and complete*:
 ``` math
-(\exists L,\ \mathtt{directedCertifiedKill}\ h\ N\ L) \iff \mathtt{totientTail}(N+h)-\mathtt{totientTail}(N)\notin \mathrm{range}(\mathbb Z\to\mathbb R),
+\begin{aligned}
+&(\exists L,\ \mathtt{directedCertifiedKill}\ h\ N\ L) \\
+&\qquad\iff
+  \mathtt{totientTail}(N+h)-\mathtt{totientTail}(N)
+  \notin \mathrm{range}(\mathbb Z\to\mathbb R),
+\end{aligned}
 ```
 exactly, no gap; and $`\mathrm{Irrational}(S)\iff \mathtt{CofinalDirectedLcmCertificateSupply}`$ (the LCM-diagonal specialisation). The asymmetric strip is a genuine finite-depth improvement over the symmetric certificate (kills $`t=3`$ at depth 6, one level earlier than the symmetric one), but the file itself notes the improvement does not turn into an independent sieve theorem: supplying the cofinal predicate is exactly as hard as \#249 itself. <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span> `coord:seam-integer`\*
 
@@ -1934,8 +2001,15 @@ The 4243-line addition to `DiagonalFreshLossBridge` isolates, at the level of in
 
 <div class="prop">
 
-**Proposition 191** (Anchor defect is a squared complex distance). *$`\mathrm{firstHarmonicAnchorDefect}(h,L,T) = \sum_{N\in T}\|
-\mathrm{windowFirstExp}(h,N,L) - 1\|^2`$, and it equals $`2|T| - 2\sum_{N\in T}\mathrm{windowFirstCos}(h,N,L)`$. `coord:other:pivot-fiber`.*
+**Proposition 191** (Anchor defect is a squared complex distance).
+*``` math
+\begin{aligned}
+\mathrm{firstHarmonicAnchorDefect}(h,L,T)
+  &= \sum_{N\in T}\|\mathrm{windowFirstExp}(h,N,L)-1\|^2 \\
+  &= 2|T|-2\sum_{N\in T}\mathrm{windowFirstCos}(h,N,L).
+\end{aligned}
+```
+`coord:other:pivot-fiber`.*
 
 </div>
 
@@ -2069,7 +2143,7 @@ The newly published `ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean` (3222 l
 
 ### Rank-one subrank obstruction: a uniform proved barrier
 
-`RankOneSubrankObstruction` is a uniform proved barrier: it names an entire family of candidate linear-form constructions and proves, uniformly, that none of them can work.
+`RankOneSubrankObstruction` is a uniform proved barrier for primitive rational linear forms obtained from rank-one strict-subrank monomial quotients of finite Möbius–Mersenne prefixes. It proves that no construction in this class can approximate $`\Theta_2`$ with a small linear form.
 
 <div class="thm">
 
@@ -3904,11 +3978,13 @@ Note also the coordinate warning from the manuscript’s own Appendix C (): cone
 
 <div class="thm">
 
-**Theorem 269** (Infinite dyadic totient-kernel rank). *For every depth $`e\ge0`$, the canonical family of $`2^e+1`$ dyadic totient-kernel channels ($`\mathtt{card\_totientCanonicalIndex}`$, ) is linearly independent over $`\mathbb Q`$, proved via a `SeparatedMinorCertificate` (an explicit finite evaluation-point assignment with nonzero determinant, forced by CRT + Dirichlet’s theorem on primes in arithmetic progressions — one channel made prime, every other channel forced through a fresh prime $`\equiv1\bmod`$ a large power of $`2`$).*
+**Theorem 269** (Infinite dyadic totient-kernel rank). *For every depth $`e\ge1`$, the canonical family of $`2^e+1`$ dyadic totient-kernel channels ($`\mathtt{card\_totientCanonicalIndex}`$, ) is linearly independent over $`\mathbb Q`$, proved via a `SeparatedMinorCertificate` (an explicit finite evaluation-point assignment with nonzero determinant, forced by CRT + Dirichlet’s theorem on primes in arithmetic progressions — one channel made prime, every other channel forced through a fresh prime $`\equiv1\bmod`$ a large power of $`2`$).*
 
 </div>
 
-; consequently the full infinite family spans an infinite-dimensional $`\mathbb Q`$-space, . A companion impossibility result closes the natural repair attempt directly: a bounded *compressed-adjoint certificate* — a triple $`(Q,A,\mathrm{boundary})`$ with $`Q\cdot v\cdot A=\mathrm{boundary}`$, $`|\mathrm{boundary}|<Q\cdot v`$, $`A\ne0`$ — is provably impossible, . <span class="sans-serif">\[Lean\]</span> <span class="sans-serif">scale:uniform</span> (holds for every $`e`$; existence side is unconditional, via Mathlib’s CRT + primes-in-AP machinery) `coord:binary-digit` (dyadic totient-kernel — *not* the Möbius coordinate).
+; consequently the full infinite family spans an infinite-dimensional $`\mathbb Q`$-space, . A companion impossibility result closes the natural repair attempt directly: a bounded *compressed-adjoint certificate* — a triple $`(Q,A,\mathrm{boundary})`$ with $`Q\cdot v\cdot A=\mathrm{boundary}`$, $`|\mathrm{boundary}|<Q\cdot v`$, $`A\ne0`$ — is provably impossible, . <span class="sans-serif">\[Lean\]</span> <span class="sans-serif">scale:uniform</span> (holds for every $`e\ge1`$; existence side is unconditional, via Mathlib’s CRT + primes-in-AP machinery) `coord:binary-digit` (dyadic totient-kernel — *not* the Möbius coordinate).
+
+The Lean independence theorem is also stated for $`e=0`$, but its auxiliary canonical index then still contains the two zero-residue channels $`\varphi(n)`$ and $`\varphi(2n)`$. It is therefore not the actual truncation through level zero, which consists only of $`\varphi(n)`$ and has dimension one.
 
 <a id="integral-coordinates-and-the-complete-relation-module."></a>
 
@@ -4399,10 +4475,13 @@ The proposal is to prove
 ``` math
 \begin{equation}
 \label{eq:primefibre}
-  \forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
-  16(2X+h+L+2)\le 2^{L}
-  \ \wedge\
-  \sum_{N\in T_{h,X,L}}\mathrm{windowFirstCos}(h,N,L)\ \le\ \tfrac{9}{10}\,\bigl|T_{h,X,L}\bigr| ,
+\begin{aligned}
+&\forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
+  16(2X+h+L+2)\le 2^{L} \\
+&\qquad\wedge\quad
+  \sum_{N\in T_{h,X,L}}\mathrm{windowFirstCos}(h,N,L) \\
+&\hspace{16em}\le \tfrac{9}{10}\,\bigl|T_{h,X,L}\bigr|,
+\end{aligned}
 \end{equation}
 ```
 which by the landed subset consumer yields a certificate at some $`N\ge X\ge X_0`$, hence irrationality. <span class="sans-serif">\[Open\]</span>

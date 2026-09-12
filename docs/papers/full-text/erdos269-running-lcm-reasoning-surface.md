@@ -327,7 +327,12 @@ Every term except the last floor depends on $`i`$ and $`k`$ alone or on $`j`$ an
 ```
 The remaining matrix is independent of $`k`$, and $`x_i+y_j\in[0,2)`$, so its entries are $`1`$ and $`t`$.
 
-Each of $`\alpha`$ and $`\beta`$ is irrational, since a rational value would give an equality of positive powers of distinct primes, so each fractional-part orbit is dense in $`(0,1)`$ and each is injective. Choose indices with $`0<x_{I(0)}<\cdots<x_{I(n-1)}<1`$, then $`y_{J(0)}`$ in $`(1-x_{I(0)},1)`$ and, for $`b>0`$, $`y_{J(b)}`$ in $`(1-x_{I(b)},1-x_{I(b-1)})`$. These intervals are disjoint, so both index maps are injective, and $`x_{I(a)}+y_{J(b)}\ge1`$ exactly when $`b\le a`$. The remaining matrix is therefore
+Each of $`\alpha`$ and $`\beta`$ is irrational, since a rational value would give an equality of positive powers of distinct primes, so each fractional-part orbit is dense in $`(0,1)`$ and each is injective. No simultaneous density of the pair of rotations is required. First choose indices with $`0<x_{I(0)}<\cdots<x_{I(n-1)}<1`$. For the columns write $`s_b=1-y_{J(b)}`$, and use density of the second orbit to choose
+``` math
+s_0\in(0,x_{I(0)}),\qquad
+ s_b\in(x_{I(b-1)},x_{I(b)})\quad(1\le b<n).
+```
+The intervals are disjoint, so the $`J(b)`$ are distinct. Their strict endpoints ensure that no selected entry lies on a threshold, and $`x_{I(a)}+y_{J(b)}\ge1`$ holds exactly when $`b\le a`$. Dividing row $`a`$ by $`R_{I(a)}(k)`$ and column $`b`$ by $`C_{J(b)}(k)`$ therefore leaves
 ``` math
 C_n(t)=\begin{pmatrix}
  t&1&1&\cdots&1\\
@@ -339,13 +344,48 @@ C_n(t)=\begin{pmatrix}
  \qquad
  \det C_n(t)=t(t-1)^{n-1}\ne0 ,
 ```
-the determinant following by subtracting from each row its predecessor, working upwards from the last. Equation <a href="#long269:eq:carry-factorisation" data-reference-type="eqref" data-reference="long269:eq:carry-factorisation">[long269:eq:carry-factorisation]</a> multiplies this determinant by nonzero row and column factors, for every $`k`$, which is the asserted uniformity. Finally, a representation with $`d`$ summands would factor every $`(d+1)\times(d+1)`$ restriction through a $`d`$-dimensional space and force its determinant to vanish. ◻
+the determinant following by subtracting from each row its predecessor, working upwards from the last. Before the division, the determinant equals
+``` math
+\det C_n(t)\prod_{a<n}R_{I(a)}(k)\prod_{b<n}C_{J(b)}(k),
+```
+which is nonzero for every $`k`$; this also explains why the same indices work in every layer.
+
+For the last assertion, suppose that a representation with $`d`$ summands exists and fix $`k`$. On the selected rows $`I(0),\ldots,I(d)`$ and columns $`J(0),\ldots,J(d)`$ the resulting matrix factors as
+``` math
+(f_\ell(I(a)))_{0\le a\le d,\,\ell<d}
+ (G_\ell(J(b),k))_{\ell<d,\,0\le b\le d}.
+```
+It has rank at most $`d`$ and hence zero determinant, contradicting the nonzero minor of order $`d+1`$. ◻
 
 </div>
 
 The factorisation <a href="#long269:eq:carry-factorisation" data-reference-type="eqref" data-reference="long269:eq:carry-factorisation">[long269:eq:carry-factorisation]</a> is the [checked kernel factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/KernelCarryRank.lean#L259), over the [height factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/KernelCarryRank.lean#L218). The uniform minor family is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/KernelCarryRank.lean#L376), the exclusion of every finite separation is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/KernelCarryRank.lean#L388), and the index selection is discharged by the problem-neutral staircase engine [exists_staircase_indices](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Shared/IrrationalRotationStaircase.lean#L271), which realises the full $`n\times n`$ pattern from two rotations without integer returns and depends on Mathlib only; the absence of integer returns is the [checked irrationality of the two logarithm ratios](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/KernelCarryRank.lean#L154). The Lean forms assume that $`p`$, $`q`$ and $`r`$ are prime with $`p\ne r`$ and $`q\ne r`$, and they do not use $`p\ne q`$. The proof uses the two one-dimensional density statements separately and needs no joint equidistribution hypothesis.
 
 Index selection is essential. The leading minors of the $`\{2,3,5\}`$ kernel are not a witness: row three is $`1/120`$ times row zero for $`j\le3`$ ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/KernelCarryRank.lean#L583)), and the proportionality fails at $`j=4`$ ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/KernelCarryRank.lean#L592)). A proof that read off leading minors alone would be false.
+
+The same threshold description determines every finite sampled rank, rather than only producing one nonsingular minor.
+
+<div id="long269:res:finite-cut-rank" class="proposition">
+
+**Proposition 11** (finite sampled cut rank). *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne0,1`$. For $`0\le h\le m`$, let $`v_h`$ be the length-$`m`$ column whose first $`h`$ entries are $`1`$ and whose remaining entries are $`c`$. If the distinct columns of a matrix are the $`v_h`$ with $`h`$ in a nonempty set $`E\subseteq\{0,\ldots,m\}`$, then its rank is
+``` math
+|E|-\mathbf 1_{\{0,m\}\subseteq E}.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Write $`E=\{h_1<\cdots<h_s\}`$. The $`s-1`$ consecutive differences are
+``` math
+v_{h_{a+1}}-v_{h_a}
+   =(1-c)\mathbf 1_{\{h_a,\ldots,h_{a+1}-1\}},
+```
+so they are linearly independent because their nonempty supports are disjoint. If $`h_1>0`$ or $`h_s<m`$, those supports miss a coordinate on which $`v_{h_1}`$ is nonzero, and adjoining $`v_{h_1}`$ gives rank $`s`$. If $`h_1=0`$ and $`h_s=m`$, the differences sum to $`(1-c)\mathbf 1`$ while $`v_0=c\mathbf 1`$, so $`v_0`$ is already in their span and the rank is $`s-1`$. ◻
+
+</div>
+
+To apply the proposition, sort any chosen row phases $`x_i`$. Each normalised column is a threshold column $`v_h`$, where $`h`$ is the number of sampled phases strictly below $`1-y_j`$. Repeated threshold positions give proportional columns before column normalisation, and the nonzero row and column factors in <a href="#long269:eq:carry-factorisation" data-reference-type="eqref" data-reference="long269:eq:carry-factorisation">[long269:eq:carry-factorisation]</a> do not change rank. Thus the displayed formula is the exact rank of every finite sample.
 
 <a id="attribution-and-reach."></a>
 
@@ -370,7 +410,7 @@ which is the factor left in <a href="#long269:eq:carry-factorisation" data-refe
 
 <div id="long269:res:uniform-rank" class="theorem">
 
-**Theorem 11** (sharp uniform separated approximation). *Let $`p,q,r`$ be pairwise distinct primes and let $`C`$ be as in <a href="#long269:eq:carry-matrix" data-reference-type="eqref" data-reference="long269:eq:carry-matrix">[long269:eq:carry-matrix]</a>. Then
+**Theorem 12** (sharp uniform separated approximation). *Let $`p,q,r`$ be pairwise distinct primes and let $`C`$ be as in <a href="#long269:eq:carry-matrix" data-reference-type="eqref" data-reference="long269:eq:carry-matrix">[long269:eq:carry-matrix]</a>. Then
 ``` math
 \inf_{A}\ \sup_{i,j\ge0}\ |C(i,j)-A(i,j)|=\frac{1-t}{2}=\frac{r-1}{2r},
 ```
@@ -395,6 +435,18 @@ For sharpness take $`A(i,j)=(1+t)/2`$, which has separated rank one; every entry
 
 The compactness step is standard, and the statement is recorded here for this kernel without a claim of technique. Three qualifications fix its reach. It is a statement about the normalised carry matrix <a href="#long269:eq:carry-matrix" data-reference-type="eqref" data-reference="long269:eq:carry-matrix">[long269:eq:carry-matrix]</a>: the original kernel carries positive row and column factors that decay, so the conclusion transfers to a weighted uniform norm relative to those factors and not to the unweighted sup norm of $`\operatorname{K}`$. It bounds approximation of the whole infinite matrix, and on any finite range a separated approximant of small rank exists. And it says nothing about approximating the scalar sum, so it yields no irrationality conclusion. What it does add to Theorem <a href="#long269:res:infinite-rank" data-reference-type="ref" data-reference="long269:res:infinite-rank">10</a> is robustness: no finite separated model of the carry, however chosen, gets uniformly closer than half a carry jump. The threshold is exact in both directions, since rank one attains it.
 
+The original kernel behaves differently in the summation norm because its row and column factors decay. Let $`K^{(N)}(i,j,k)=\operatorname{K}(i,j,k)`$ for $`i<N`$ and $`K^{(N)}(i,j,k)=0`$ otherwise. This is a sum of at most $`N`$ terms separated between $`i`$ and $`(j,k)`$. Since $`\operatorname{H}(x)>x^3/(pqr)`$ for $`x>0`$, geometric summation gives
+``` math
+\begin{equation}
+\label{long269:eq:l1-finite-rank-approximation}
+ \sum_{i,j,k\ge0}|\operatorname{K}(i,j,k)-K^{(N)}(i,j,k)|
+ \le
+ \frac{pqr\,p^{-3N}}
+ {(1-p^{-3})(1-q^{-3})(1-r^{-3})}.
+\end{equation}
+```
+Hence the original summable kernel has finite separated-rank approximants in $`\ell^1`$, even though its normalised carry matrix has the sharp uniform barrier of Theorem <a href="#long269:res:uniform-rank" data-reference-type="ref" data-reference="long269:res:uniform-rank">12</a>. This norm distinction is why neither statement decides the arithmetic nature of the scalar sum.
+
 <a id="long269:sec:blocks"></a>
 
 # Dyadic blocks and the literal infinite tail
@@ -416,7 +468,7 @@ Compress the jump word of Section <a href="#long269:sec:lcm" data-reference-typ
 
 <div id="long269:res:dyadic-alphabet" class="proposition">
 
-**Proposition 12** (the dyadic block alphabet). *For every $`a`$,
+**Proposition 13** (the dyadic block alphabet). *For every $`a`$,
 ``` math
 \begin{equation}
 \label{long269:eq:dyadic-alphabet}
@@ -464,7 +516,7 @@ the integer implemented by the pinned checker and the [checked ordered digit](ht
 
 <div id="long269:res:actual-orbit" class="theorem">
 
-**Theorem 13** (the literal shell recurrence). *The shell masses are summable and $`S=\sum_{a\ge0}s_a`$. For every $`a\ge0`$,
+**Theorem 14** (the literal shell recurrence). *The shell masses are summable and $`S=\sum_{a\ge0}s_a`$. For every $`a\ge0`$,
 ``` math
 \begin{equation}
 \label{long269:eq:shell-digit-identity}
@@ -497,7 +549,7 @@ Summability is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/bl
 
 <div id="long269:res:actual-dichotomy" class="proposition">
 
-**Proposition 14** (integral state or cofinal separation). *Either $`X_a\in\mathbb{Z}`$ for some $`a\ge0`$, or for every $`a_0`$ there is $`a\ge a_0`$ with $`|X_a-z|\ge1/31`$ for every $`z\in\mathbb{Z}`$.*
+**Proposition 15** (integral state or cofinal separation). *Either $`X_a\in\mathbb{Z}`$ for some $`a\ge0`$, or for every $`a_0`$ there is $`a\ge a_0`$ with $`|X_a-z|\ge1/31`$ for every $`z\in\mathbb{Z}`$.*
 
 </div>
 
@@ -523,7 +575,7 @@ so $`n_a`$ is the sum of the three height exponents at $`2^{a}`$.
 
 <div id="long269:res:actual-tail-bound" class="theorem">
 
-**Theorem 15** (quadratic bound for the actual tail). *For every $`a\ge0`$, $`0<X_a\le Q(n_a)`$.*
+**Theorem 16** (quadratic bound for the actual tail). *For every $`a\ge0`$, $`0<X_a\le Q(n_a)`$.*
 
 </div>
 
@@ -567,7 +619,7 @@ The cutoff in <a href="#long269:eq:endpoint-index" data-reference-type="eqref" d
 
 <div id="long269:res:all-scale-lattice" class="lemma">
 
-**Lemma 16** (finite denominator clearing). *For all integers $`0\le u\le b`$ the window mass $`h_b\sum_{a=u}^{b-1}s_a`$ is a natural number. If $`S=N/D`$ with $`N\in\mathbb{Z}`$ and $`D\in\mathbb{N}_{>0}`$, then $`DX_a\in\mathbb{Z}`$ for every $`a\ge1`$, and two states $`X_i`$, $`X_j`$ with $`1\le i<j`$ differ by an integer.*
+**Lemma 17** (finite denominator clearing). *For all integers $`0\le u\le b`$ the window mass $`h_b\sum_{a=u}^{b-1}s_a`$ is a natural number. If $`S=N/D`$ with $`N\in\mathbb{Z}`$ and $`D\in\mathbb{N}_{>0}`$, then $`DX_a\in\mathbb{Z}`$ for every $`a\ge1`$, and there are indices $`1\le i<j\le D+1`$ for which $`X_i-X_j\in\mathbb{Z}`$.*
 
 </div>
 
@@ -581,7 +633,7 @@ The strict upper endpoint is what permits the division by two. Checked as the [w
 
 <div id="long269:res:actual-cancellation" class="theorem">
 
-**Theorem 17** (positive reduced carries from rationality). *<span id="long269:res:lead-carry-bridge" label="long269:res:lead-carry-bridge"></span> <span id="long269:res:actual-carry-bound" label="long269:res:actual-carry-bound"></span><span id="long269:res:denominator-reduction" label="long269:res:denominator-reduction"></span> Suppose $`S=N/D`$ with $`N\in\mathbb{Z}`$, $`D\in\mathbb{N}_{>0}`$, and write
+**Theorem 18** (positive reduced carries from rationality). *<span id="long269:res:lead-carry-bridge" label="long269:res:lead-carry-bridge"></span> <span id="long269:res:actual-carry-bound" label="long269:res:actual-carry-bound"></span><span id="long269:res:denominator-reduction" label="long269:res:denominator-reduction"></span> Suppose $`S=N/D`$ with $`N\in\mathbb{Z}`$, $`D\in\mathbb{N}_{>0}`$, and write
 ``` math
 D=2^{u}3^{v}5^{w}B,\qquad u,v,w\in\mathbb{N},\quad B\in\mathbb{N}_{>0},\quad\gcd(B,30)=1,
  \qquad a_D=u+1+2v+3w .
@@ -595,7 +647,7 @@ z_{a+1}=b_az_a-Bm_a,\qquad 1\le z_a\le K(B,a)\le90B(a+1)^{2} .
 
 <div class="proof">
 
-*Proof.* Let $`M=2^{u}3^{v}5^{w}`$. For $`a\ge a_D`$ we have $`2^{a}\ge2^{u+1}`$, $`2^{a}\ge3^{v}`$ and $`2^{a}\ge5^{w}`$, using $`3<2^{2}`$ and $`5<2^{3}`$; hence $`M\mid h_a`$. In the clearing identity $`DX_a=h_aN-Dv_a`$ of Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">16</a> both terms on the right are divisible by $`M`$, so dividing by $`M`$ shows that $`BX_a`$ is an integer. Positivity and the recurrence come from <a href="#long269:eq:shell-digit-identity" data-reference-type="eqref" data-reference="long269:eq:shell-digit-identity">[long269:eq:shell-digit-identity]</a>, and the upper bound is Theorem <a href="#long269:res:actual-tail-bound" data-reference-type="ref" data-reference="long269:res:actual-tail-bound">15</a> with the floor taken, since $`z_a`$ is an integer below $`BQ(n_a)`$. Finally $`n_a\le3a`$, so $`Q(n_a)\le a^{2}+\tfrac83a+2\le90(a+1)^{2}`$. ◻
+*Proof.* Let $`M=2^{u}3^{v}5^{w}`$. For $`a\ge a_D`$ we have $`2^{a}\ge2^{u+1}`$, $`2^{a}\ge3^{v}`$ and $`2^{a}\ge5^{w}`$, using $`3<2^{2}`$ and $`5<2^{3}`$; hence $`M\mid h_a`$. In the clearing identity $`DX_a=h_aN-Dv_a`$ of Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">17</a> both terms on the right are divisible by $`M`$, so dividing by $`M`$ shows that $`BX_a`$ is an integer. Positivity and the recurrence come from <a href="#long269:eq:shell-digit-identity" data-reference-type="eqref" data-reference="long269:eq:shell-digit-identity">[long269:eq:shell-digit-identity]</a>, and the upper bound is Theorem <a href="#long269:res:actual-tail-bound" data-reference-type="ref" data-reference="long269:res:actual-tail-bound">16</a> with the floor taken, since $`z_a`$ is an integer below $`BQ(n_a)`$. Finally $`n_a\le3a`$, so $`Q(n_a)\le a^{2}+\tfrac83a+2\le90(a+1)^{2}`$. ◻
 
 </div>
 
@@ -605,7 +657,7 @@ The integral branch has one further exact property, recorded because it constrai
 
 <div id="long269:res:pinning" class="proposition">
 
-**Proposition 18** (upward closure and rigidity). *For every $`a`$, $`X_a=(m_a+X_{a+1})/b_a>0`$, and if $`X_a\in\mathbb{Z}`$ then $`X_n\in\mathbb{Z}`$ for every $`n\ge a`$. Moreover, fix $`A`$, a positive width function $`w`$ with $`w(A+k)/2^{k}\to0`$, and a real orbit $`(y_n)_{n\ge A}`$ satisfying $`y_{n+1}=b_ny_n-m_n`$. If $`y_n`$ and $`X_n`$ both lie in $`(m_n/b_n,\;m_n/b_n+w(n)]`$ for every $`n\ge A`$, then $`y_A=X_A`$.*
+**Proposition 19** (upward closure and rigidity). *For every $`a`$, $`X_a=(m_a+X_{a+1})/b_a>0`$, and if $`X_a\in\mathbb{Z}`$ then $`X_n\in\mathbb{Z}`$ for every $`n\ge a`$. Moreover, fix $`A`$, a positive width function $`w`$ with $`w(A+k)/2^{k}\to0`$, and a real orbit $`(y_n)_{n\ge A}`$ satisfying $`y_{n+1}=b_ny_n-m_n`$. If $`y_n`$ and $`X_n`$ both lie in $`(m_n/b_n,\;m_n/b_n+w(n)]`$ for every $`n\ge A`$, then $`y_A=X_A`$.*
 
 </div>
 
@@ -640,7 +692,7 @@ for any integral carry with $`z_{n+1}=b_nz_n-Bm_n`$; the integral form is the [c
 
 <div id="long269:res:consumer" class="proposition">
 
-**Proposition 19** (the finite residue contradiction). *Let $`C>0`$ and let $`c`$ be an integer with $`0<c`$ and $`|c|\le K`$. If $`c\equiv N\pmod C`$ and $`K<\operatorname{lpr}_C(N)`$, then the hypotheses are contradictory.*
+**Proposition 20** (the finite residue contradiction). *Let $`C>0`$ and let $`c`$ be an integer with $`0<c`$ and $`|c|\le K`$. If $`c\equiv N\pmod C`$ and $`K<\operatorname{lpr}_C(N)`$, then the hypotheses are contradictory.*
 
 </div>
 
@@ -667,7 +719,7 @@ The window may depend on both $`B`$ and $`a_0`$. The general predicate is the [c
 
 <div id="long269:res:actual-escape-endpoint" class="theorem">
 
-**Theorem 20** (the equivalence band). *<span id="long269:res:lead-escape-equivalence" label="long269:res:lead-escape-equivalence"></span><span id="long269:res:windowconsumer" label="long269:res:windowconsumer"></span> Let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$ satisfy $`K(B,a)\le G(B,a)`$ for all $`B`$ and $`a`$, and $`G(B,a)/2^{a}\to0`$ as $`a\to\infty`$ for each fixed $`B`$. Then
+**Theorem 21** (the equivalence band). *<span id="long269:res:lead-escape-equivalence" label="long269:res:lead-escape-equivalence"></span><span id="long269:res:windowconsumer" label="long269:res:windowconsumer"></span> Let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$ satisfy $`K(B,a)\le G(B,a)`$ for all $`B`$ and $`a`$, and $`G(B,a)/2^{a}\to0`$ as $`a\to\infty`$ for each fixed $`B`$. Then
 ``` math
 \mathsf E(G)\quad\Longleftrightarrow\quad S\notin\mathbb{Q}.
 ```
@@ -677,29 +729,31 @@ Both $`K`$ of <a href="#long269:eq:actual-bound" data-reference-type="eqref" da
 
 <div class="proof">
 
-*Proof.* Suppose $`\mathsf E(G)`$ and suppose $`S=N/D`$ were rational. Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">17</a> supplies $`B\ge1`$ coprime to $`30`$, an onset $`a_D`$, and positive integers $`z_a=BX_a\le K(B,a)\le G(B,a)`$ for $`a\ge a_D`$ satisfying the cleared recurrence. Apply <a href="#long269:eq:actual-escape" data-reference-type="eqref" data-reference="long269:eq:actual-escape">[long269:eq:actual-escape]</a> with $`a_0=a_D`$ to obtain a window $`(\ell,h)`$ with $`\ell\ge a_D`$. By <a href="#long269:eq:window-identity" data-reference-type="eqref" data-reference="long269:eq:window-identity">[long269:eq:window-identity]</a>, $`z_{\ell+h}\equiv-BF_{\ell,h}`$ modulo $`W_{\ell,h}`$, while $`0<z_{\ell+h}\le G(B,\ell+h)<\operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})`$. Proposition <a href="#long269:res:consumer" data-reference-type="ref" data-reference="long269:res:consumer">19</a> is the contradiction, so $`S`$ is irrational.
+*Proof.* Suppose $`\mathsf E(G)`$ and suppose $`S=N/D`$ were rational. Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">18</a> supplies $`B\ge1`$ coprime to $`30`$, an onset $`a_D`$, and positive integers $`z_a=BX_a\le K(B,a)\le G(B,a)`$ for $`a\ge a_D`$ satisfying the cleared recurrence. Apply <a href="#long269:eq:actual-escape" data-reference-type="eqref" data-reference="long269:eq:actual-escape">[long269:eq:actual-escape]</a> with $`a_0=a_D`$ to obtain a window $`(\ell,h)`$ with $`\ell\ge a_D`$. By <a href="#long269:eq:window-identity" data-reference-type="eqref" data-reference="long269:eq:window-identity">[long269:eq:window-identity]</a>, $`z_{\ell+h}\equiv-BF_{\ell,h}`$ modulo $`W_{\ell,h}`$, while $`0<z_{\ell+h}\le G(B,\ell+h)<\operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})`$. Proposition <a href="#long269:res:consumer" data-reference-type="ref" data-reference="long269:res:consumer">20</a> is the contradiction, so $`S`$ is irrational.
 
 Conversely suppose $`S\notin\mathbb{Q}`$, and fix $`B\ge1`$ coprime to $`30`$ and $`a_0\ge1`$. Set $`\ell=a_0`$. In $`X_\ell=h_\ell\bigl(S-\sum_{a<\ell}s_a\bigr)`$ the finite prefix is rational and $`h_\ell`$ is a positive rational, so $`BX_\ell`$ is irrational and its distance $`\delta`$ from $`\mathbb{Z}`$ is positive. Suppose no length $`h`$ escaped, so that $`r_h=\operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})\le G(B,\ell+h)`$ for every $`h\ge1`$. Then $`k_h=(BF_{\ell,h}+r_h)/W_{\ell,h}`$ is an integer, and multiplying <a href="#long269:eq:window-identity" data-reference-type="eqref" data-reference="long269:eq:window-identity">[long269:eq:window-identity]</a> by $`B`$ gives
 ``` math
 BX_\ell-k_h=\frac{BX_{\ell+h}-r_h}{W_{\ell,h}} .
 ```
-Both $`BX_{\ell+h}`$ and $`r_h`$ are positive, the first at most $`BQ(n_{\ell+h})`$ by Theorem <a href="#long269:res:actual-tail-bound" data-reference-type="ref" data-reference="long269:res:actual-tail-bound">15</a> and the second at most $`G(B,\ell+h)`$, so the numerator has absolute value at most $`\max\bigl(BQ(n_{\ell+h}),G(B,\ell+h)\bigr)`$. Each $`b_a\ge2`$ gives $`W_{\ell,h}\ge2^{h}`$, so
+Both $`BX_{\ell+h}`$ and $`r_h`$ are positive, the first at most $`BQ(n_{\ell+h})`$ by Theorem <a href="#long269:res:actual-tail-bound" data-reference-type="ref" data-reference="long269:res:actual-tail-bound">16</a> and the second at most $`G(B,\ell+h)`$, so the numerator has absolute value at most $`\max\bigl(BQ(n_{\ell+h}),G(B,\ell+h)\bigr)`$. Each $`b_a\ge2`$ gives $`W_{\ell,h}\ge2^{h}`$, so
 ``` math
-0<\delta\le|BX_\ell-k_h|
- \le\frac{\max\bigl(BQ(n_{\ell+h}),\,G(B,\ell+h)\bigr)}{2^{h}}
- =2^{\ell}\cdot
+\begin{aligned}
+ 0<\delta\le|BX_\ell-k_h|
+ &\le\frac{\max\bigl(BQ(n_{\ell+h}),\,G(B,\ell+h)\bigr)}{2^{h}}\\
+ &=2^{\ell}\cdot
  \frac{\max\bigl(BQ(n_{\ell+h}),\,G(B,\ell+h)\bigr)}{2^{\ell+h}}
- \longrightarrow0
+ \longrightarrow0.
+ \end{aligned}
 ```
 as $`h\to\infty`$, because $`Q(n_{\ell+h})`$ is quadratic in $`\ell+h`$ and $`G(B,a)=o(2^{a})`$. This contradiction proves $`\mathsf E(G)`$.
 
-For the two named bounds, $`K\le K_0`$ by Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">17</a>, both are quadratic in $`a`$ for fixed $`B`$, and $`K\le K`$ trivially. Finally $`\operatorname{lpr}_C(N)\ge1>0`$ always, so $`\mathsf E(0)`$ holds whatever $`S`$ is, while $`0\le K`$ fails. ◻
+For the two named bounds, $`K\le K_0`$ by Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">18</a>, both are quadratic in $`a`$ for fixed $`B`$, and $`K\le K`$ trivially. Finally $`\operatorname{lpr}_C(N)\ge1>0`$ always, so $`\mathsf E(0)`$ holds whatever $`S`$ is, while $`0\le K`$ fails. ◻
 
 </div>
 
-The converse direction is checked in Lean at a strictly greater generality than the fixed bound: irrationality implies escape against any short bound that the window growth eventually beats, [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L327), and in particular against every bound dominated by $`c(B)(n+1)^{2}`$, [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L355). The enlarged little-$`o(8^a)`$ band, with the cap-domination hypothesis retained, is checked by the [octic window-band equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/R12/OcticWindowBand.lean#L74). The forward direction at the fixed bound $`K_0`$ is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/RationalityCarryBridge.lean#L479), over the abstract consumer [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L645) and its packaged absorbed form [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L689). The two directions combine into the equivalence [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L392) for the shifted tail and [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L398) for the series value itself. The Lean equivalence is stated at $`K_0`$; the band of Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">20</a> is the paper statement.
+The converse direction is checked in Lean at a strictly greater generality than the fixed bound: irrationality implies escape against any short bound that the window growth eventually beats, [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L327), and in particular against every bound dominated by $`c(B)(n+1)^{2}`$, [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L355). The enlarged little-$`o(8^a)`$ band, with the cap-domination hypothesis retained, is checked by the [octic window-band equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/R12/OcticWindowBand.lean#L74). The forward direction at the fixed bound $`K_0`$ is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/RationalityCarryBridge.lean#L479), over the abstract consumer [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L645) and its packaged absorbed form [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L689). The two directions combine into the equivalence [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L392) for the shifted tail and [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean#L398) for the series value itself. The Lean equivalence is stated at $`K_0`$; the band of Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">21</a> is the paper statement.
 
-Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">20</a> settles a question that a reader is entitled to ask about the criterion. Sharpening the bound below $`K`$ does not weaken the producer, since escape against a bound that fails to dominate the actual carries proves nothing; the zero bound is the extreme case. Enlarging the bound up to any subexponential function does not weaken it either. The producer is therefore a restatement of Erdős #269 for $`P=\{2,3,5\}`$ throughout the band, and work on it is work on the target. Equivalence preserves truth and settles nothing about difficulty, so the reformulation may still be the easier representation to attack; what it does not admit is a cheaper bound.
+Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">21</a> settles a question that a reader is entitled to ask about the criterion. Sharpening the bound below $`K`$ does not weaken the producer, since escape against a bound that fails to dominate the actual carries proves nothing; the zero bound is the extreme case. Enlarging the bound up to any subexponential function does not weaken it either. The producer is therefore a restatement of Erdős #269 for $`P=\{2,3,5\}`$ throughout the band, and work on it is work on the target. Equivalence preserves truth and settles nothing about difficulty, so the reformulation may still be the easier representation to attack; what it does not admit is a cheaper bound.
 
 Two exact countermodels rule out further shortcuts. For $`(W,F,B)=(6,4,1)`$ we have $`\operatorname{lpr}_6(-4)=2`$, so the canonical residue need not be coprime to the accumulated base. For $`(W,F,B)=(60,47,37)`$ we have $`\operatorname{lpr}_{60}(-37\cdot47)=1`$, so a fixed window has no denominator-independent lower bound on that residue. The window may therefore depend genuinely on $`B`$.
 
@@ -711,7 +765,7 @@ The crude estimate $`W_{\ell,h}\ge2^{h}`$ is all the equivalence needs. The actu
 
 <div id="long269:res:window-growth" class="proposition">
 
-**Proposition 21** (window-growth law). *Put $`\theta_3=\log_32`$ and $`\theta_5=\log_52`$. For all $`\ell\ge0`$ and $`h\ge1`$,
+**Proposition 22** (window-growth law). *Put $`\theta_3=\log_32`$ and $`\theta_5=\log_52`$. For all $`\ell\ge0`$ and $`h\ge1`$,
 ``` math
 W_{\ell,h}=2^{h}\,
  3^{\lfloor(\ell+h)\theta_3\rfloor-\lfloor\ell\theta_3\rfloor}\,
@@ -730,7 +784,7 @@ W_{\ell,h}=2^{h}\,
 
 <div id="long269:res:no-bounded-length" class="corollary">
 
-**Corollary 22** (no bounded-length escape at all starts). *Fix $`B\ge1`$ coprime to $`30`$ and $`H\ge1`$. Only finitely many starts $`\ell`$ admit an escaping window of length at most $`H`$ against the bound $`K`$.*
+**Corollary 23** (no bounded-length escape at all starts). *Fix $`B\ge1`$ coprime to $`30`$ and $`H\ge1`$. Only finitely many starts $`\ell`$ admit an escaping window of length at most $`H`$ against the bound $`K`$.*
 
 </div>
 
@@ -740,11 +794,11 @@ W_{\ell,h}=2^{h}\,
 
 </div>
 
-Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">22</a> is the exact reason a finite scan cannot approach the cofinal quantifier by widening its denominator range alone. Rearranging its inequality, an escaping window at start $`\ell`$ and endpoint $`a=\ell+h`$ must satisfy
+Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">23</a> is the exact reason a finite scan cannot approach the cofinal quantifier by widening its denominator range alone. Rearranging its inequality, an escaping window at start $`\ell`$ and endpoint $`a=\ell+h`$ must satisfy
 ``` math
 3h>\log_2K(B,a)-\log_215,
 ```
-so the necessary search depth grows like $`\bigl(\log_2B+2\log_2\ell\bigr)/3`$. This is a lower bound on the length that can possibly work, and it is not an upper bound on the first length that does. Producing the latter is exactly the open problem, and by Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">20</a> it needs effective control of $`\operatorname{dist}(BX_\ell,\mathbb{Z})`$: counting window growth is easy, and keeping a scaled tail away from the integers is the arithmetic content.
+so the necessary search depth grows like $`\bigl(\log_2B+2\log_2\ell\bigr)/3`$. This is a lower bound on the length that can possibly work, and it is not an upper bound on the first length that does. Producing the latter is exactly the open problem, and by Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">21</a> it needs effective control of $`\operatorname{dist}(BX_\ell,\mathbb{Z})`$: counting window growth is easy, and keeping a scaled tail away from the integers is the arithmetic content.
 
 *Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
 
@@ -771,7 +825,7 @@ B&\ell&h&j_{\ell+h}&W&F&R&K\\ \hline
 ```
 The first row reads as follows. The window starts at $`\ell=1`$ and has length $`2`$, so $`W=b_1b_2=6\cdot10=60`$; the accumulated forcing is $`F=47`$; and $`\operatorname{lpr}_{60}(-47)=13`$, since $`-47+60=13`$, which exceeds $`K(1,3)=\lfloor(16+40+27)/9\rfloor=9`$. The third row lies outside the domain of <a href="#long269:eq:actual-escape" data-reference-type="eqref" data-reference="long269:eq:actual-escape">[long269:eq:actual-escape]</a>, since $`\gcd(16,30)=2`$, and is displayed to illustrate the window arithmetic at greater depth.
 
-A fresh scan over every $`B\le5000`$ coprime to $`30`$ and every $`100\le\ell\le3000`$ tested $`3{,}869{,}934`$ pairs and found an escaping window in every case, of length at most $`18`$ with search depth permitted to $`24`$. The distribution of first successful lengths concentrates at $`10`$ to $`12`$, which is where Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">22</a> predicts the shortest possible window to lie over this range. The computation uses integers only and is reproducible from the pinned checker with `--max-denominator 5000 --start-min 100 --start-max 3000 --max-length 24 --assert-packet`. Neither the scan nor the three displayed certificates proves escape for unbounded $`B`$ or for cofinally many starts, and by Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">22</a> no scan at bounded length can.
+A fresh scan over every $`B\le5000`$ coprime to $`30`$ and every $`100\le\ell\le3000`$ tested $`3{,}869{,}934`$ pairs and found an escaping window in every case, of length at most $`18`$ with search depth permitted to $`24`$. The distribution of first successful lengths concentrates at $`10`$ to $`12`$, which is where Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">23</a> predicts the shortest possible window to lie over this range. The computation uses integers only and is reproducible from the pinned checker with `--max-denominator 5000 --start-min 100 --start-max 3000 --max-length 24 --assert-packet`. Neither the scan nor the three displayed certificates proves escape for unbounded $`B`$ or for cofinally many starts, and by Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">23</a> no scan at bounded length can.
 
 <a id="two-finite-denominator-exclusions"></a>
 
@@ -779,7 +833,7 @@ A fresh scan over every $`B\le5000`$ coprime to $`30`$ and every $`100\le\ell\le
 
 <div id="long269:res:lead-block-exclusion" class="theorem">
 
-**Theorem 23** (window-$`128`$ block exclusion, computational certificate). *At window length $`L=128`$, launch $`a_1=10005`$ and $`64`$ starts, no rational value of the $`\{2,3,5\}`$ running-LCM series has reduced denominator $`MB`$ with $`M`$ a $`30`$-smooth divisor of $`2^{10005}3^{6312}5^{4308}`$, $`\gcd(B,30)=1`$ and $`1<B\le B_{\max}`$, where $`B_{\max}`$ is the $`106`$-digit integer
+**Theorem 24** (window-$`128`$ block exclusion, computational certificate). *At window length $`L=128`$, launch $`a_1=10005`$ and $`64`$ starts, no rational value of the $`\{2,3,5\}`$ running-LCM series has reduced denominator $`MB`$ with $`M`$ a $`30`$-smooth divisor of $`2^{10005}3^{6312}5^{4308}`$, $`\gcd(B,30)=1`$ and $`1<B\le B_{\max}`$, where $`B_{\max}`$ is the $`106`$-digit integer
 ``` math
 \begin{aligned}
  B_{\max}={}&1134599670999687767349520845707093359257353022286558739363600235\\
@@ -790,17 +844,17 @@ so that $`\log_2B_{\max}=348.9846\ldots`$*
 
 </div>
 
-The exponent triple $`(10005,6312,4308)`$ is the height exponent triple of $`\operatorname{H}(2^{10005})`$, so the certificate normalises by the full height at its launch. Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">16</a> normalises by the half height $`h_{10005}`$; the certificate’s smooth family is accordingly the larger one. The recorded quantities are the window product with $`\log_2P=386.40993\ldots`$, the exclusion index $`J=1`$ certified from a reduced basis lying inside the per-start budget, an enclosure of width $`9.674\times10^{-227}`$, and a maximum ratio $`\max X/W=0.185997`$. This is a computational certificate and nothing else: no Lean declaration carries any part of it, so it rests on the correctness of the exact integer engine that produced it, and the certificate record is held in the author’s formal-mathematics archive, outside the public source of this release.
+The exponent triple $`(10005,6312,4308)`$ is the height exponent triple of $`\operatorname{H}(2^{10005})`$, so the certificate normalises by the full height at its launch. Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">17</a> normalises by the half height $`h_{10005}`$; the certificate’s smooth family is accordingly the larger one. The recorded quantities are the window product with $`\log_2P=386.40993\ldots`$, the exclusion index $`J=1`$ certified from a reduced basis lying inside the per-start budget, an enclosure of width $`9.674\times10^{-227}`$, and a maximum ratio $`\max X/W=0.185997`$. This is a computational certificate and nothing else: no Lean declaration carries any part of it, so it rests on the correctness of the exact integer engine that produced it, and the certificate record is held in the author’s formal-mathematics archive, outside the public source of this release.
 
 <div id="long269:res:cf-exclusion" class="theorem">
 
-**Theorem 24** (continued-fraction exclusion, computational certificate). *The normalised tail $`X_1`$ has $`13{,}109`$ certified partial quotients, so it is not rational with denominator at most $`2^{22482}`$, about $`10^{6768}`$.*
+**Theorem 25** (continued-fraction exclusion, computational certificate). *The normalised tail $`X_1`$ has $`13{,}109`$ certified partial quotients, so it is not rational with denominator at most $`2^{22482}`$, about $`10^{6768}`$.*
 
 </div>
 
 The certification is by common prefix of the continued fractions of the two endpoints of an interval provably containing $`X_1`$, so no approximation heuristic enters, and the truncation was independently checked to agree with the direct smooth-number sum as an exact rational. The machine-readable witness and replay receipt for this large computation are not included in the public release, so the statement remains an archived ordinary computational certificate rather than a publicly replayed or Lean-checked result. The recorded statistics are a largest denominator of $`22{,}483`$ bits, a largest partial quotient of $`129{,}114`$, a mean partial quotient of $`23.4133`$, observed Gauss–Kuzmin frequencies $`0.4208`$, $`0.1665`$, $`0.0917`$, $`0.0575`$, $`0.0391`$ against the predicted $`0.4150`$, $`0.1699`$, $`0.0931`$, $`0.0589`$, $`0.0406`$, and a Lévy constant of $`1.18869`$ against $`\pi^{2}/(12\log2)=1.18657`$. No Liouville behaviour and no algebraic or self-similar continued-fraction structure appears below that height.
 
-Each exclusion is finite and neither contains the other: one is indexed by a lattice at a fixed launch and fixed smooth part, the other by continued-fraction depth at $`a=1`$. Every larger denominator survives both, so neither settles an instance of the problem.
+Each exclusion is finite and neither contains the other: one is indexed by a lattice at a fixed launch and fixed smooth part, the other by continued-fraction depth at $`a=1`$. Denominators beyond the recorded finite ranges are not excluded by either certificate, so neither settles an instance of the problem.
 
 <a id="long269:sec:open"></a>
 
@@ -808,15 +862,15 @@ Each exclusion is finite and neither contains the other: one is indexed by a lat
 
 <div id="long269:prob:producer" class="problem">
 
-**Problem 25** (actual cofinal residue escape). Prove $`\mathsf E(K)`$ for the actual digits <a href="#long269:eq:actual-digit" data-reference-type="eqref" data-reference="long269:eq:actual-digit">[long269:eq:actual-digit]</a> and the bound <a href="#long269:eq:actual-bound" data-reference-type="eqref" data-reference="long269:eq:actual-bound">[long269:eq:actual-bound]</a>.
+**Problem 26** (actual cofinal residue escape). Prove $`\mathsf E(K)`$ for the actual digits <a href="#long269:eq:actual-digit" data-reference-type="eqref" data-reference="long269:eq:actual-digit">[long269:eq:actual-digit]</a> and the bound <a href="#long269:eq:actual-bound" data-reference-type="eqref" data-reference="long269:eq:actual-bound">[long269:eq:actual-bound]</a>.
 
 </div>
 
-Every term in this question is a finite integer quantity, and a proof must produce a later window for every reduced denominator and every prescribed onset. The tail estimate and the smooth-factor cancellation are proved above and are not additional hypotheses. By Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">20</a> the problem is a restatement of Erdős #269 for $`P=\{2,3,5\}`$.
+Every term in this question is a finite integer quantity, and a proof must produce a later window for every reduced denominator and every prescribed onset. The tail estimate and the smooth-factor cancellation are proved above and are not additional hypotheses. By Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">21</a> the problem is a restatement of Erdős #269 for $`P=\{2,3,5\}`$.
 
 <div id="long269:prob:tails269" class="problem">
 
-**Problem 26** (nonintegrality of every reduced tail). For every $`B\ge1`$ with $`\gcd(B,30)=1`$ and every $`a\ge1`$, prove
+**Problem 27** (nonintegrality of every reduced tail). For every $`B\ge1`$ with $`\gcd(B,30)=1`$ and every $`a\ge1`$, prove
 ``` math
 \begin{equation}
 \label{long269:eq:tail-nonintegrality}
@@ -828,17 +882,17 @@ Every term in this question is a finite integer quantity, and a proof must produ
 
 <div id="long269:res:tails-equivalence" class="proposition">
 
-**Proposition 27** (the reduced-tail question is also the target). *Statement <a href="#long269:eq:tail-nonintegrality" data-reference-type="eqref" data-reference="long269:eq:tail-nonintegrality">[long269:eq:tail-nonintegrality]</a>, quantified over every $`B\ge1`$ coprime to $`30`$ and every $`a\ge1`$, is equivalent to irrationality of $`S`$.*
+**Proposition 28** (the reduced-tail question is also the target). *Statement <a href="#long269:eq:tail-nonintegrality" data-reference-type="eqref" data-reference="long269:eq:tail-nonintegrality">[long269:eq:tail-nonintegrality]</a>, quantified over every $`B\ge1`$ coprime to $`30`$ and every $`a\ge1`$, is equivalent to irrationality of $`S`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* If $`BX_a\in\mathbb{Z}`$ for some such $`B`$ and $`a`$, then $`X_a\in\mathbb{Q}`$, and since $`S=\sum_{j<a}s_j+X_a/h_a`$ with $`h_a`$ a positive rational and the prefix a finite sum of rationals, $`S\in\mathbb{Q}`$. Conversely if $`S\in\mathbb{Q}`$, then Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">17</a> produces $`B`$ coprime to $`30`$ with $`BX_a\in\mathbb{Z}`$ for every $`a\ge a_D`$. ◻
+*Proof.* If $`BX_a\in\mathbb{Z}`$ for some such $`B`$ and $`a`$, then $`X_a\in\mathbb{Q}`$, and since $`S=\sum_{j<a}s_j+X_a/h_a`$ with $`h_a`$ a positive rational and the prefix a finite sum of rationals, $`S\in\mathbb{Q}`$. Conversely if $`S\in\mathbb{Q}`$, then Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">18</a> produces $`B`$ coprime to $`30`$ with $`BX_a\in\mathbb{Z}`$ for every $`a\ge a_D`$. ◻
 
 </div>
 
-The abstract form of the first implication is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean#L183). Problem <a href="#long269:prob:tails269" data-reference-type="ref" data-reference="long269:prob:tails269">26</a> is therefore a second restatement of the target, and its pointwise shape is the more convenient one: if $`BX_a`$ is integral at one index, the integer-coefficient recurrence makes it integral at every later index, so a single index decides it. Proposition <a href="#long269:res:actual-dichotomy" data-reference-type="ref" data-reference="long269:res:actual-dichotomy">14</a> does not exclude that branch, since it constrains $`X_a`$ alone and a rational value may keep a surviving denominator coprime to $`30`$.
+The abstract form of the first implication is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean#L183). Problem <a href="#long269:prob:tails269" data-reference-type="ref" data-reference="long269:prob:tails269">27</a> is therefore a second restatement of the target, and its pointwise shape is the more convenient one: if $`BX_a`$ is integral at one index, the integer-coefficient recurrence makes it integral at every later index, so a single index decides it. Proposition <a href="#long269:res:actual-dichotomy" data-reference-type="ref" data-reference="long269:res:actual-dichotomy">15</a> does not exclude that branch, since it constrains $`X_a`$ alone and a rational value may keep a surviving denominator coprime to $`30`$.
 
 <a id="the-analytic-route-and-what-it-would-need"></a>
 
@@ -855,7 +909,7 @@ whose dyadic coding is the joint rotation word $`\delta_{3,a}=\lfloor(a+1)\theta
 
 <div id="long269:prob:representation" class="problem">
 
-**Problem 28** (function-faithful two-dimensional representation). Express $`\mathcal D_{2,3,5}`$ as a nonconstant algebraic combination of values of a specified two-dimensional Hecke–Mahler, cone-generating or multivariate Mahler function and verify every hypothesis of a published value theorem; or give a conditional theorem under an explicit logarithmic nondegeneracy hypothesis; or prove that the literal series has no representation in the specified finite-dimensional class.
+**Problem 29** (function-faithful two-dimensional representation). Express $`\mathcal D_{2,3,5}`$ as a nonconstant algebraic combination of values of a specified two-dimensional Hecke–Mahler, cone-generating or multivariate Mahler function and verify every hypothesis of a published value theorem; or give a conditional theorem under an explicit logarithmic nondegeneracy hypothesis; or prove that the literal series has no representation in the specified finite-dimensional class.
 
 </div>
 
@@ -877,7 +931,7 @@ A single conditional single-channel criterion is also on record. For the pure $`
 
 ## Where the problem stands
 
-Erdős #269 is settled for $`|P|=2`$, at the level of transcendence, and open for every $`|P|\ge3`$. For $`P=\{2,3,5\}`$ the reduction is complete on the arithmetic side: the literal digit, the tail, the integral recurrence, the smooth-factor cancellation, the explicit onset and the sharp carry bound all refer to the same series, and Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">20</a> shows that the one remaining condition is the problem itself throughout an entire band of bounds. Three obstructions mark the limits. Arbitrary-order minors exclude every finite exact separation of the kernel, and Theorem <a href="#long269:res:uniform-rank" data-reference-type="ref" data-reference="long269:res:uniform-rank">11</a> excludes even approximate separation of its normalised carry below half a jump. The bounded-radix alternative leaves integral tails untouched. The residue countermodels show that coprimality alone gives no denominator-independent residue bound, and Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">22</a> shows that no bounded-length search can reach the cofinal quantifier. What remains is to force the literal word’s residue outside the finite carry interval, with the window allowed to depend on the denominator and to begin beyond the onset.
+Erdős #269 is settled for $`|P|=2`$, at the level of transcendence, and open for every $`|P|\ge3`$. For $`P=\{2,3,5\}`$ the reduction is complete on the arithmetic side: the literal digit, the tail, the integral recurrence, the smooth-factor cancellation, the explicit onset and the sharp carry bound all refer to the same series, and Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">21</a> shows that the one remaining condition is the problem itself throughout an entire band of bounds. Three obstructions mark the limits. Arbitrary-order minors exclude every finite exact separation of the kernel, and Theorem <a href="#long269:res:uniform-rank" data-reference-type="ref" data-reference="long269:res:uniform-rank">12</a> excludes even approximate separation of its normalised carry below half a jump. The bounded-radix alternative leaves integral tails untouched. The residue countermodels show that coprimality alone gives no denominator-independent residue bound, and Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">23</a> shows that no bounded-length search can reach the cofinal quantifier. What remains is to force the literal word’s residue outside the finite carry interval, with the window allowed to depend on the denominator and to begin beyond the onset.
 
 <a id="statements-and-declarations"></a>
 
@@ -887,7 +941,7 @@ Erdős #269 is settled for $`|P|=2`$, at the level of transcendence, and open f
 
 #### Evidence.
 
-Steve Fan’s two-prime argument is an ordinary proof over the cited Bugeaud–Laurent theorem and carries no Lean declaration. The arbitrary-order kernel minors and the exclusion of finite separation are ordinary mathematics in this paper; they are not in the Comparator manifest. Comparator names the $`(2,3,5)`$ minor $`-1/15`$, the running-LCM height identity, and a conditional carry-escape consumer. The actual-series reduction is given; the source-specific cofinal escape remains unproved. Named Lean sources below are locators, not a blanket end-to-end coverage claim. The quadratic tail bound, the explicit onset $`a_D`$, the sharp bound $`K`$, and Theorem <a href="#long269:res:uniform-rank" data-reference-type="ref" data-reference="long269:res:uniform-rank">11</a> are ordinary proofs in this paper; the three finite computations of Section <a href="#long269:sec:evidence" data-reference-type="ref" data-reference="long269:sec:evidence">8</a> are computational certificates.
+Steve Fan’s two-prime argument is an ordinary proof over the cited Bugeaud–Laurent theorem and carries no Lean declaration. The arbitrary-order kernel minors and the exclusion of finite separation are Lean theorems in `KernelCarryRank`. The named source statements for the literal recurrence and fixed-split rationality bridge are Lean theorems as well. The [source-current validation receipt](https://github.com/wcook04/plectis-erdos/blob/06f57893e0f9c6d80668048f26f096367ae4cfe7/verification/erdos269-wavea-validation.json) byte-matches these modules and records their compilation inside the public recursive import closure; its named declaration-by-declaration axiom audit is for the R12 Wave A results, not for these rank declarations. Comparator names the finite $`(2,3,5)`$ minor $`-1/15`$, the running-LCM height identity, and a conditional carry-escape consumer; it is not the evidence for the arbitrary-order theorem. The actual-series reduction is given; the source-specific cofinal escape remains unproved. Named Lean sources below are locators, not a blanket end-to-end coverage claim. The quadratic tail bound, the explicit onset $`a_D`$, the sharp bound $`K`$, and Theorem <a href="#long269:res:uniform-rank" data-reference-type="ref" data-reference="long269:res:uniform-rank">12</a> are ordinary proofs in this paper; the three finite computations of Section <a href="#long269:sec:evidence" data-reference-type="ref" data-reference="long269:sec:evidence">8</a> are computational certificates.
 
 <a id="artefact-and-data-availability."></a>
 
@@ -935,21 +989,21 @@ Let $`D=D_{\mathrm{sm}}B`$ with $`D_{\mathrm{sm}}=2^{u}3^{v}5^{w}`$ and $`\gcd(B
 
 <div id="long269:long:denominator-reduction" class="proposition">
 
-**Proposition 29** (conditional denominator reduction). *If $`c_n=D_{\mathrm{sm}}d_n`$ for every $`n`$, with $`D_{\mathrm{sm}}>0`$, then the recurrence, positivity, upper bound and window identity for $`(c_n)`$ reduce to the same four statements for $`(d_n)`$ with multiplier $`B`$ in place of $`D`$.*
+**Proposition 30** (conditional denominator reduction). *If $`c_n=D_{\mathrm{sm}}d_n`$ for every $`n`$, with $`D_{\mathrm{sm}}>0`$, then the recurrence, positivity, upper bound and window identity for $`(c_n)`$ reduce to the same four statements for $`(d_n)`$ with multiplier $`B`$ in place of $`D`$.*
 
 </div>
 
-Height absorption alone does not imply divisibility of a carry state. The identity $`DX_a=h_aN-Dv_a`$ of Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">16</a> is what supplies it for the actual orbit, and Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">17</a> is the instance in which the note uses it. The formal consumer takes the common-factor form as a hypothesis.
+Height absorption alone does not imply divisibility of a carry state. The identity $`DX_a=h_aN-Dv_a`$ of Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">17</a> is what supplies it for the actual orbit, and Theorem <a href="#long269:res:actual-cancellation" data-reference-type="ref" data-reference="long269:res:actual-cancellation">18</a> is the instance in which the note uses it. The formal consumer takes the common-factor form as a hypothesis.
 
 <div id="long269:long:windowconsumer" class="proposition">
 
-**Proposition 30** (conditional extinction of bounded carries). *Let $`(b_n)`$ and $`(m_n)`$ be a radix word and a forcing word, let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$, and assume cofinal local-window escape against $`G`$. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\le G(B,n)`$ for every $`n\ge0`$.*
+**Proposition 31** (conditional extinction of bounded carries). *Let $`(b_n)`$ and $`(m_n)`$ be a radix word and a forcing word, let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$, and assume cofinal local-window escape against $`G`$. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\le G(B,n)`$ for every $`n\ge0`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Choose one escaping window $`(\ell,h)`$. The window identity gives $`d_{\ell+h}\equiv-BF_{\ell,h}`$ modulo $`|W_{\ell,h}|`$. The endpoint state is positive and at most $`G(B,\ell+h)`$, whereas the canonical positive residue of the right-hand side exceeds that bound, so Proposition <a href="#long269:res:consumer" data-reference-type="ref" data-reference="long269:res:consumer">19</a> applies. ◻
+*Proof.* Choose one escaping window $`(\ell,h)`$. The window identity gives $`d_{\ell+h}\equiv-BF_{\ell,h}`$ modulo $`|W_{\ell,h}|`$. The endpoint state is positive and at most $`G(B,\ell+h)`$, whereas the canonical positive residue of the right-hand side exceeds that bound, so Proposition <a href="#long269:res:consumer" data-reference-type="ref" data-reference="long269:res:consumer">20</a> applies. ◻
 
 </div>
 
@@ -992,7 +1046,7 @@ h&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18\\ \hline
 ```
 The first case at the maximal observed length $`18`$ is $`B=917`$ at start $`\ell=2980`$, with endpoint jump index $`6179`$, window base $`18139852800000000`$, forcing $`13196471407660025821045`$, residue $`76322101735`$ and bound $`3896420420`$. An earlier run of the same checker over every $`B\le1000`$ coprime to $`30`$ and every start $`100\le\ell\le500`$ tested $`106{,}666`$ pairs with maximal first successful length $`14`$, whose first case is $`B=359`$ at start $`291`$, endpoint jump index $`627`$, base $`5038848000000`$, forcing $`25864575212865807`$, residue $`213175287`$ and bound $`15932659`$.
 
-By Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">22</a> these histograms describe a bounded region. The observed concentration at lengths $`10`$ to $`12`$ sits just above the necessary depth $`\bigl(\log_2K(B,\ell+h)-\log_215\bigr)/3`$ supplied by Proposition <a href="#long269:res:window-growth" data-reference-type="ref" data-reference="long269:res:window-growth">21</a>, which is what a reader should expect if the residues behave like generic ones inside this range.
+By Corollary <a href="#long269:res:no-bounded-length" data-reference-type="ref" data-reference="long269:res:no-bounded-length">23</a> these histograms describe a bounded region. The observed concentration at lengths $`10`$ to $`12`$ sits just above the necessary depth $`\bigl(\log_2K(B,\ell+h)-\log_215\bigr)/3`$ supplied by Proposition <a href="#long269:res:window-growth" data-reference-type="ref" data-reference="long269:res:window-growth">22</a>, which is what a reader should expect if the residues behave like generic ones inside this range.
 
 <a id="long269:long:sources"></a>
 

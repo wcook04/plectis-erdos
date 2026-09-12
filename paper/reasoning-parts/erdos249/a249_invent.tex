@@ -577,10 +577,13 @@ a membership equality rather than a sampled surrogate
 
 The proposal is to prove
 \begin{equation}\label{eq:primefibre}
-  \forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
-  16(2X+h+L+2)\le 2^{L}
-  \ \wedge\
-  \sum_{N\in T_{h,X,L}}\mathrm{windowFirstCos}(h,N,L)\ \le\ \tfrac{9}{10}\,\bigl|T_{h,X,L}\bigr| ,
+\begin{aligned}
+&\forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
+  16(2X+h+L+2)\le 2^{L} \\
+&\qquad\wedge\quad
+  \sum_{N\in T_{h,X,L}}\mathrm{windowFirstCos}(h,N,L) \\
+&\hspace{16em}\le \tfrac{9}{10}\,\bigl|T_{h,X,L}\bigr|,
+\end{aligned}
 \end{equation}
 which by the landed subset consumer yields a certificate at some
 $N\ge X\ge X_0$, hence irrationality. \ev{Open}
