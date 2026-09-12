@@ -1,15 +1,30 @@
 ---
 name: propagate-research-consequences
-description: Trace the mathematical and repository consequences of one accepted or candidate result, record a disposition for every plausible downstream consumer, and rerun the trace when older-clone work is reconciled with current main.
+description: Audit whether result summaries represent the strongest supported mathematics in a public clone, or propagate a stable result through its downstream consumers while preserving exact evidence and open boundaries.
 ---
 
 # Propagate research consequences
 
-Use this skill after a theorem, counterexample, no-go, corrected statement,
-computation, exposition change, or architecture repair has produced a stable
-local delta. It is the bridge between validation and return. It does not make
-the result stronger; it finds the places whose recorded meaning may now be
-stale.
+Use this skill to audit existing result summaries, or after a theorem,
+counterexample, no-go, corrected statement, computation, exposition change,
+or architecture repair has produced a stable local delta. It connects
+appraisal and validation to propagation and return. It does not make the
+result stronger; it finds descriptions and consumers that need correction.
+
+## Audit existing result summaries
+
+Use this mode when asked for the best results, the actual nontrivial progress,
+or a check that summaries have not buried stronger mathematics. No new theorem
+is required to start. Follow the
+[cold-clone result audit](references/result-summary-audit.md): establish the
+public revision, reconstruct candidates for every requested problem, compare
+their logical reach and evidence, then repair and propagate the selection.
+
+An overview's ranking and the current prose are candidates for review. They
+are not the answer to the review. The output is a source-pinned selection with
+reasons, incomparable alternatives, the exact remaining burden, and a
+disposition for every affected consumer. The audit uses only this checkout;
+private results cannot fill a gap in its public evidence.
 
 ## Continuous stewardship mode
 
