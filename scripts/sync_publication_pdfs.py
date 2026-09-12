@@ -14,6 +14,7 @@ approved build record.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
@@ -141,16 +142,14 @@ def verified_reuse(root: Path, artifact: dict[str, Any], dest: Path) -> tuple[bo
 
 def synchronize_publication_pdfs(root: Path, contract: dict[str, Any]) -> tuple[int, str]:
     reused: list[str] = []
-    copied: list[str] = []
+    copy_plan: list[tuple[str, Path, Path]] = []
     for artifact in contract["artifacts"]:
         artifact_id = artifact.get("id", "<unknown>")
         storage = artifact["storage_path"]
         built = build_output_pdf(root, artifact)
         dest = root / storage
-        dest.parent.mkdir(parents=True, exist_ok=True)
         if built.is_file():
-            shutil.copyfile(built, dest)
-            copied.append(artifact_id)
+            copy_plan.append((artifact_id, built, dest))
             continue
         ok, reason = verified_reuse(root, artifact, dest)
         if ok:
@@ -164,9 +163,17 @@ def synchronize_publication_pdfs(root: Path, contract: dict[str, Any]) -> tuple[
                 "the existing destination PDF cannot substitute"
             ),
         )
-    if reused and not copied:
+    for _, built, dest in copy_plan:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(built, dest)
+    if reused and not copy_plan:
         return 0, "publication PDFs reused from approved unchanged-artifact record"
     return 0, "publication PDFs synchronized to storage_path"
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Parse the intentionally argument-free synchronization command."""
+    return argparse.ArgumentParser(description=__doc__)
 
 
 def main(root: Path | None = None) -> int:
@@ -178,5 +185,11 @@ def main(root: Path | None = None) -> int:
     return code
 
 
+def cli(argv: list[str] | None = None) -> int:
+    """Validate CLI arguments before loading the contract or copying PDFs."""
+    build_parser().parse_args(argv)
+    return main()
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(cli())
