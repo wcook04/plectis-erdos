@@ -5,7 +5,7 @@ and calibrated evidence for a strictly weakened form of the surviving
 conjecture. Current through 2026-08-27 source audit. Erdős #1041 remains open;
 nothing below claims otherwise.
 
-Receipt: [`formal_math/probes/erdos1041_newton_flow_transport.py`](../../../../probes/erdos1041_newton_flow_transport.py).
+Receipt: `formal_math/probes/erdos1041_newton_flow_transport.py` (source not included in this checkout).
 
 ```sh
 ./repo-python formal_math/probes/erdos1041_newton_flow_transport.py --no-sweeps
@@ -413,7 +413,7 @@ and no containment side condition anywhere.
 
 **Primary-source boundary (read 2026-08-27).** The standard ingredients are
 attributed only to the downloaded primary sources recorded in
-[`value_ray_transport_polynomial_lemniscates_v0.json`](../../prior_art_routes/value_ray_transport_polynomial_lemniscates_v0.json).
+`value_ray_transport_polynomial_lemniscates_v0.json` (source not included in this checkout).
 Hatcher's *Algebraic Topology*, §1.3 Proposition 1.30 and the following
 path-homotopy paragraph (printed pp. 60--61; local PDF SHA-256
 `50b1632a200c66eeef2efba61fec49bb6d80442269f766df38817f23a01bde7c`) supports
@@ -422,9 +422,9 @@ Polynomials for Newton's Method*, §5 (printed p. 42; local PDF SHA-256
 `e0dbfa6ad56d14971d4f901dc8568731e22359feeb1efb429b240f156b88d29e`) supports
 the Newton-flow name, radial value-space trajectories, and the critical-value
 obstruction. The local files are
-[`Hatcher source.pdf`](../../../../annexes/hatcher-2002-algebraic-topology-covering-spaces/source.pdf)
+`Hatcher source.pdf` (source not included in this checkout)
 and
-[`Sutherland source.pdf`](../../../../annexes/sutherland-1992-newton-flow/source.pdf).
+`Sutherland source.pdf` (source not included in this checkout).
 Those sources do **not** state this note's endpoint-preserving polynomial
 transport, exact stretch identity, binomial falsifier, or any global
 length-below-two result. Those are ordinary arguments and diagnostics of this

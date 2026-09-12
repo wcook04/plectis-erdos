@@ -235,7 +235,7 @@ used at the start is recorded in the downloaded arXiv TeX source for Calegari,
 Dimitrov, and Tang, arXiv:2408.15403, *The linear independence of 1, zeta(2),
 and L(2, chi_-3)*: `extracted.md` lines 1615--1623, Lemma 1 (Fekete). The
 archived source bundle is
-[`source.tar.gz`](../../../../annexes/arxiv-2408-15403-calegari-dimitrov-tang-linear-independence/source.tar.gz),
+`source.tar.gz` (source not included in this checkout),
 SHA-256
 `00dd2b1078a2e6c166562e29c18f98dabb27d0c711225c455e7afae913ddce11`; the
 official record is [arXiv:2408.15403](https://arxiv.org/abs/2408.15403).

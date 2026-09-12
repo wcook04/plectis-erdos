@@ -527,7 +527,7 @@ there is one.
 
 **Primary-source boundary (read 2026-08-27).** The Pólya attribution used for
 the global area input is bound to the downloaded primary scan recorded in
-[`erdos1041_constant_factor_polya_primary_text_read_20260827d.json`](../../../../docs/formal_math/observatory_source_reaudit/erdos1041_constant_factor_polya_primary_text_read_20260827d.json).
+`erdos1041_constant_factor_polya_primary_text_read_20260827d.json` (source not included in this checkout).
 The source is George Pólya, *Beitrag zur Verallgemeinerung des Verzerrungssatzes
 auf mehrfach zusammenhängende Gebiete*, Sitzungsberichte der Preussischen
 Akademie der Wissenschaften (1928), printed pp. 280--282 (scan pp. 312--314),

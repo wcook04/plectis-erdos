@@ -210,7 +210,7 @@ used by this note for the area input is George Pólya, *Beitrag zur
 Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete*,
 Sitzungsberichte der Preussischen Akademie der Wissenschaften (1928), printed
 pp. 280--282 (scan pp. 312--314), in the downloaded primary scan recorded at
-[`erdos1041_constant_factor_polya_primary_text_read_20260827d.json`](../../../../docs/formal_math/observatory_source_reaudit/erdos1041_constant_factor_polya_primary_text_read_20260827d.json).
+`erdos1041_constant_factor_polya_primary_text_read_20260827d.json` (source not included in this checkout).
 Its SHA-256 is
 `2de0cd74d07f02ff08be81e1eaac35b5529e1c60e35e1c5c9b4c4ca0602fd205` and its
 official archive PDF is
