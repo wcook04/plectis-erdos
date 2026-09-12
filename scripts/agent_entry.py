@@ -158,12 +158,19 @@ def render_skill(catalog: dict[str, Any], skill_id: str) -> str:
     return "\n".join(lines)
 
 
+def nonempty_selector(value: str) -> str:
+    """Reject a supplied blank before loading the skill catalog."""
+    if not value.strip():
+        raise argparse.ArgumentTypeError("must not be empty or whitespace")
+    return value
+
+
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     action = result.add_mutually_exclusive_group(required=True)
-    action.add_argument("--entry", metavar="TASK", help="route a task to a bounded lane")
+    action.add_argument("--entry", type=nonempty_selector, metavar="TASK", help="route a task to a bounded lane")
     action.add_argument("--skills", action="store_true", help="list every clone-local skill and its purpose")
-    action.add_argument("--skill", metavar="ID", help="show one skill card")
+    action.add_argument("--skill", type=nonempty_selector, metavar="ID", help="show one skill card")
     result.add_argument("--json", action="store_true", help="emit machine-readable JSON")
     return result
 

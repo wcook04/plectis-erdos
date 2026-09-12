@@ -163,6 +163,81 @@ def run(*args: str) -> subprocess.CompletedProcess[str]:
     return invoke_main(query_corpus.main, SCRIPT, args)
 
 
+def validate_blank_selectors() -> None:
+    """A supplied blank is a usage error, never a corpus-wide fallback."""
+    selectors = (
+        "--claim", "--paper-label", "--paper-source", "--paper-anchor",
+        "--open", "--declaration", "--goal-support", "--proof-plan",
+        "--proof-cone", "--source", "--artifact", "--publication-artifact",
+        "--publication-evidence", "--module", "--connections", "--route",
+        "--status", "--publication-family", "--search", "--ask",
+    )
+    with patch.object(query_corpus, "load", side_effect=AssertionError("blank loaded corpus")):
+        for blank in ("", " \t\n "):
+            requests = [(selector, blank) for selector in selectors]
+            requests.extend((
+                ("--dependency-path", blank, "someDeclaration"),
+                ("--dependency-path", "someDeclaration", blank),
+            ))
+            for request in requests:
+                for format_args in ((), ("--format", "json"), ("--format", "card")):
+                    completed = run(*request, *format_args)
+                    assert completed.returncode == 2, (request, completed)
+                    assert not completed.stdout, (request, completed.stdout)
+                    assert f"argument {request[0]}:" in completed.stderr
+                    assert "must not be empty or whitespace" in completed.stderr
+                    assert "Traceback" not in completed.stderr
+                    assert len(completed.stderr.encode("utf-8")) < 4_000
+
+    bare = run()
+    assert bare.returncode == 0, bare.stderr
+    assert json.loads(bare.stdout)["kind"] == "corpus_summary"
+    with patch.object(query_corpus, "publication_evidence_packet", return_value={}) as packet:
+        value, output_format = query_corpus.query_args_packet(("--publication-evidence",))
+        packet.assert_called_once_with("summary")
+        assert value == {} and output_format == "json"
+
+
+def validate_slash_problem_scope() -> None:
+    """Keep both explicitly named problems and leave ordinary fractions alone."""
+    questions = (
+        "What remains open for Erdos 249/257?",
+        "What remains open for Erdős 249 / 257?",
+        "Compare Erdős problems #249/#257",
+        "Compare Erdős249/257",
+    )
+    for question in questions:
+        for selector in ("--ask", "--search"):
+            packet = query(selector, question, "--format", "json")
+            assert packet["kind"] == "multi_problem_query_boundary", (question, packet)
+            assert packet["requested_problem_numbers"] == [249, 257]
+            assert [row["route_id"] for row in packet["problem_routes"]] == [
+                "erdos_249", "erdos_257",
+            ]
+            assert packet["claim_effect"] == packet["comparison_effect"] == "none"
+            assert len(json.dumps(packet).encode("utf-8")) < 2_000
+        card = run("--ask", question)
+        assert card.returncode == 0, card.stderr
+        assert "requested=#249,#257" in card.stdout
+        assert "--route erdos_249" in card.stdout
+        assert "--route erdos_257" in card.stdout
+        assert len(card.stdout.splitlines()) <= 8
+        assert len(card.stdout.encode("utf-8")) < 2_000
+
+    mixed_scope = query("--ask", "What remains open for Erdős 249/300?")
+    assert mixed_scope["kind"] == "corpus_scope_boundary"
+    assert mixed_scope["covered_problem_numbers"] == [249]
+    assert mixed_scope["out_of_scope_problem_numbers"] == [300]
+    for question, expected in (
+        ("What is the exact public status of 1/21 and what remains to prove?", set()),
+        ("Compare the ratios 249/257 and 1/2", set()),
+        ("For Erdős 249, what does a 1/2 bound at parameter 257 mean in 2026?", {249}),
+        ("For Erdős 249 at parameter 257 in 2026", {249}),
+    ):
+        assert query_corpus.explicit_problem_numbers(question) == expected, question
+        assert query_corpus.multi_problem_query_boundary_packet(question) is None, question
+
+
 def semantic_query(*args: str) -> dict[str, object]:
     completed = invoke_main(query_semantic.main, SEMANTIC_SCRIPT, args)
     completed.check_returncode()
@@ -2312,6 +2387,8 @@ def validate_module_synopsis_owner_adoption() -> None:
 
 def main() -> int:
     validate_in_process_query_dispatch()
+    validate_blank_selectors()
+    validate_slash_problem_scope()
     validate_programme_routes()
     validate_indexed_problem_routes()
     validate_problem_reader_journey()

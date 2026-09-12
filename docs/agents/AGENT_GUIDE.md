@@ -235,20 +235,19 @@ Lean build when a result must be checked.
    python3 scripts/verify_claims.py --claim <claim_id>
    ```
 
-   It prints the public statement, re-reads each declaration out of the Lean
-   source at its recorded position rather than reprinting the register's
-   coordinates, names the Comparator interface that restates the result under a
-   fixed axiom budget or reports that no selected interface carries this claim
-   id, resolves the claim's paper label to the write-up that carries it, and
-   ends on the typed boundary: what the status is allowed to mean, which open
-   propositions still target the claim, and what the release does not assert.
-   Do not read a Comparator binding as independent verification: it checks a
-   separately declared statement under configured axioms, and the register's own
-   boundary sentence is printed alongside it. `query_corpus.py --claim` remains
-   the route for argument-graph neighbours; this is the route for reading the
-   proof text, the second formal check, and the limit together. On a shallow clone it exits 2 and says so,
-   because a truncated history cannot answer questions about pinned identity
-   and must never be read as a failed claim.
+   It checks recorded declaration names near their recorded source lines in the
+   current checkout and checks that the claim status is recognised. It prints
+   the paper and selected Comparator references together with the claim's
+   limits. It does not run Lean or load the recorded historical revision.
+   Comparator checks a separately declared statement under configured axioms;
+   a printed binding is not independent verification. Use
+   `query_corpus.py --claim` for argument-graph neighbours.
+
+   This `--claim` command can pass in a shallow clone because it checks current
+   records. The default history diagnostic reports missing required history
+   with exit 2; that environment result does not mean a proof failed. Follow
+   [the reproducibility guide](../REPRODUCIBILITY.md) for the separate history
+   and Lean checks.
 3. Read `docs/methodology.json` before changing a public claim. It defines
    the evidence responsibilities, change classes, required reviews, and local
    claim, guard, and negative-fixture references for each rule.

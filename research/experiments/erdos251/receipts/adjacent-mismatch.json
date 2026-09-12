@@ -3,7 +3,7 @@
   "verification_scope": "finite_computation_only",
   "claim_boundary": "The finite calculations do not prove irrationality or cofinality. No Lean kernel is run by these programs.",
   "program": "erdos251_adjacent_mismatch_density.py",
-  "program_sha256": "19f99b1f5932f218ebb6d02b1ac5c562640060a794814a5be9fa3f0615931149",
+  "program_sha256": "f4148dd1cd17ec2ef82e631a5de32ccf897dc8abc06b34a6e3521dbf6ed8b45e",
   "arguments": [
     "--limit",
     "120000000",

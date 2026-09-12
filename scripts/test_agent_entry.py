@@ -5,13 +5,17 @@
 
 from __future__ import annotations
 
+import contextlib
+import io
 import json
 import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
+import agent_entry
 from agent_entry import entry_packet
 from agent_skill_catalog import ROOT, load_catalog
 
@@ -194,7 +198,41 @@ def run_cli(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+def validate_blank_selectors() -> None:
+    """Blank selectors fail at the parser even when no catalog is available."""
+    requests = [
+        (selector, blank, *format_args)
+        for selector in ("--entry", "--skill")
+        for blank in ("", " \t\n ")
+        for format_args in ((), ("--json",))
+    ]
+    # The bare command retains its existing required-action usage error.
+    for request in [*requests, ()]:
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with (
+            patch.object(sys, "argv", ["agent_entry.py", *request]),
+            patch.object(agent_entry, "load_catalog", side_effect=AssertionError("blank loaded catalog")),
+            contextlib.redirect_stdout(stdout),
+            contextlib.redirect_stderr(stderr),
+        ):
+            try:
+                agent_entry.main()
+            except SystemExit as exc:
+                assert exc.code == 2, (request, exc.code)
+            else:
+                raise AssertionError(f"blank selector unexpectedly succeeded: {request!r}")
+        assert not stdout.getvalue(), request
+        if request:
+            assert f"argument {request[0]}:" in stderr.getvalue()
+            assert "must not be empty or whitespace" in stderr.getvalue()
+        else:
+            assert "one of the arguments --entry --skills --skill is required" in stderr.getvalue()
+        assert "Traceback" not in stderr.getvalue()
+        assert len(stderr.getvalue().encode("utf-8")) < 1_000
+
+
 def main() -> int:
+    validate_blank_selectors()
     catalog = load_catalog()
     skill_ids = {row["id"] for row in catalog["skills"]}
     disk_ids = {
