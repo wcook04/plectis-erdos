@@ -301,11 +301,16 @@ locked configuration) has occurred.
 
 \textbf{(b) Exact mechanism.}
 \begin{prop}[Locked reconstruction preserves a nonzero minor]
-For a monomial matrix \(\mathrm{residualMonomialMatrix}(e,r,z)(i,j) =
-r(i,j)\cdot z(j)^{e(i)}\) with all residual entries \(z(j)\ne0\) and
-\(e(i)=1\) for a distinguished row \(i\): \(\det(\mathrm{phasePowerMatrix})
-\ne0 \implies \det(\mathrm{residualMonomialMatrix})\ne0\), \emph{and} the
-distinguished row is identically \(1\) regardless.
+Let \(e:\mathrm{Fin}\,d\to\mathbb N\) and \(z:\mathrm{Fin}\,d\to\mathbb C\),
+with \(z(j)\ne0\) for every \(j\), and fix a row \(i_0\) with \(e(i_0)=1\).
+Use the locked column weights \(W(j)=z(j)^{-1}\), so that
+\[
+ \mathrm{residualMonomialMatrix}(e,W,z)(i,j)
+ =W(j)z(j)^{e(i)}.
+\]
+If \(\det(\mathrm{phasePowerMatrix}(e,z))\ne0\), then
+\(\det(\mathrm{residualMonomialMatrix}(e,W,z))\ne0\), and every entry
+of row \(i_0\) is \(1\).
 \end{prop}
 \lean{Erdos249257.locked\_reconstruction\_preserves\_nonzero\_minor}{ResidualGaugeObstruction.lean:94}
 (row-dependent relaxation \lean{rowResidualMonomialMatrix\_reconstructs\_phasePowerMatrix}{ResidualGaugeObstruction.lean:124}; the

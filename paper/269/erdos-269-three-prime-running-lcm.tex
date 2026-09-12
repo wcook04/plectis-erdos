@@ -73,6 +73,16 @@ For $P=\{p,q,r\}$, define
 Prime-power divisibility gives $\Lprefix=\hgt$
 (Proposition~\ref{res:lcm}).
 
+With two primes, the corresponding kernel factors into a function of each
+exponent separately, reducing the double sum to a product.  The first
+question at three primes is whether finitely many such products still
+suffice.  Theorem~\ref{res:infinite-rank} rules this out: one floor carry
+survives after all row and column factors have been removed.  We first
+explain that obstruction, then recover the two-prime comparison, and finally
+identify the arithmetic of the actual three-prime tails.  The last step is
+necessary because the rank of a kernel does not determine the irrationality
+of its sum.
+
 \section{The binary carry and arbitrary-order rank}\label{sec:rank}
 
 \begin{theorem}[arbitrary-order non-separability]\label{res:infinite-rank}
@@ -239,8 +249,11 @@ calculation also yields the de-duplicated affine formula displayed below
 \begin{theorem}[both two-prime sums]
 \label{res:two-prime-transcendence}
 \label{res:two-prime-repeated-transcendence}
-Put $\theta=\log p/\log q$ and
-$A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}$.  Then
+Let $p<q$ be distinct primes.  Put $\theta=\log p/\log q$ and
+$A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}$.  Let
+$\mathcal R_{p,q}$ sum the reciprocal running LCM at every positive
+$\{p,q\}$-smooth integer, and let $\mathcal D_{p,q}$ count each distinct
+running LCM once.  Then
 \begin{equation}\label{eq:two-prime-affine}
  \mathcal D_{p,q}=\frac{(q-p)A+p}{q-1},\qquad
  \mathcal R_{p,q}=\frac{(p+q-1)A-(p-1)A^2}{q-1}.

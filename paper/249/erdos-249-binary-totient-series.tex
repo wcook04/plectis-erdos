@@ -33,24 +33,23 @@ Problem~\#249}
 \begin{abstract}
 For every $e\ge1$, the dyadic sections of Euler's totient through level $e$
 have rational rank $2^e+1$. The two zero-residue sections and the odd-residue
-sections form a basis, and two families of scalar reductions generate every relation.
-Divisibility makes an evaluation matrix diagonal modulo a prime, with nonzero
-diagonal entries. The
+sections form a basis. Explicit scalar reductions give unique integral
+coordinates and a basis of all integral relations. The arithmetic step is
+independence: divisibility makes an evaluation matrix diagonal modulo a prime,
+with nonzero diagonal entries. The
 \mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{dyadic rank $2^e+1$}
 holds for $e\ge1$.  The all-base rank
 $k^e+1$ is the
 \mword{Erdos249257/TotientKernelConditional.lean}{215}{finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent}{rank transferred from linear independence},
-using Martin's external independence; Coons owns non-$k$-regularity
-of $\ph$, equivalently infinite-dimensionality for integer-valued sequence
-modules.  A separate ordinary argument treats bounded-residue series $A_m$.
-Finite Farey exclusion and Lean diagonal certificates through $t\le 82$ are
-finite; neither $t=83$ nor an unbounded family is supplied.
-Separately, $\sum_{n\ge1}(\ph(n)\bmod m)2^{-n}$ is irrational for every
-$m\ge3$, with a complete rationality classification at dyadic moduli.
+using Martin's external independence; Coons proved non-$k$-regularity
+of $\ph$. A separate ordinary argument uses isolated blocks to prove that
+$\sum_{n\ge1}(\ph(n)\bmod m)2^{-n}$ is irrational for every $m\ge3$,
+with a complete rationality classification for dyadic residue observables.
 For $S=\sum_{n\ge1}\ph(n)2^{-n}$, one nonintegral tail shift forces
 full-depth certificates in every sufficiently late pair of multipliers.
-Irrationality is equivalent to an explicit central-residue gap for every
-prospective denominator; its arithmetic supply remains open.
+The rank and bounded-residue results do not decide $S$: its irrationality is
+equivalent to an explicit central-residue gap for every prospective denominator,
+whose arithmetic supply remains open.
 \end{abstract}
 
 
@@ -102,6 +101,11 @@ coordinates; the omitted positive-residue sections satisfy
 
 \subsection{The evaluation matrix}\label{sec:rank}
 The two ingredients are scalar reduction and arithmetic independence.
+The reductions explain which sections must be dependent. The difficulty is
+to exclude every additional relation. We do this one coefficient at a time:
+an evaluation will annihilate all the other columns modulo a prime while
+leaving the chosen column nonzero. Thus no simultaneous primality assertion
+for several affine forms is needed.
 The local formula for $\ph$ gives the displayed reductions. For a prime
 $p\mid k$ that does not divide $u$, the argument $k^{j-t}n+u$ is a $p$-adic
 unit, so multiplication by $k^t$ contributes its power of $p$ and one factor
@@ -552,13 +556,12 @@ Lean-checked Farey exclusion. Neither implies the universal gap.
 The remaining first-harmonic obligation is a four-term pivot budget,
 not an opening statement of this note. Write
 \[
- \operatorname{Re}\,\mathrm{pivotCenteredCorrelation}\le\tfrac{14}{25}X,
- \quad
- \lVert\mathrm{pivotFiberMean}\rVert\le\tfrac1{100}X,
- \quad
- \lVert\mathrm{pivotBad}\rVert\le\tfrac1{100}X,
- \quad
- \lVert\mathrm{pivotNonSupplier}\rVert\le\tfrac8{25}X.
+ \begin{aligned}
+ \operatorname{Re}\,\mathrm{pivotCenteredCorrelation}&\le\tfrac{14}{25}X,\\
+ \lVert\mathrm{pivotFiberMean}\rVert&\le\tfrac1{100}X,\\
+ \lVert\mathrm{pivotBad}\rVert&\le\tfrac1{100}X,\\
+ \lVert\mathrm{pivotNonSupplier}\rVert&\le\tfrac8{25}X.
+ \end{aligned}
 \]
 \begin{problem}[first-harmonic anti-concentration on supplier fibres]
 \label{prob:firstharmonic}

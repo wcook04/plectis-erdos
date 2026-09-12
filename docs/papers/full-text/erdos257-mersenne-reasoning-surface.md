@@ -32,17 +32,61 @@ Erdős Problem 257 is open. No section of this document claims otherwise, and a 
 
 <a id="sec:257-problem"></a>
 
-# The problem, and what is actually known
+# Support irrationality and its proof mechanisms
+
+<a id="reciprocal-summable-supports"></a>
+
+## Reciprocal-summable supports
+
+For every infinite set $`A`$ of positive integers with $`\sum_{a\in A}1/a<\infty`$, the series
+``` math
+X_A(b)=\sum_{a\in A}\frac1{b^a-1}
+```
+is irrational at every integer base $`b\ge2`$. The proof below is ordinary mathematics and is the proof of the short paper’s Theorem `res:reciprocal-support`. Erdős’s [1968 paper, p. 222](https://users.renyi.hu/~p_erdos/1969-09.pdf) proves the pairwise-coprime case at every integer base and states the removal of coprimality without printing the details. The checked pairwise-coprime theorem listed below retains that extra hypothesis.
+
+The mechanism is to make positive displacements arbitrarily small. For $`N>0`$, write $`N=q_a a+r_a`$, $`0\le r_a<a`$. The identity
+``` math
+\frac{b^N-1}{b^a-1}
+ =b^{r_a}\sum_{j=0}^{q_a-1}b^{ja}
+  +\frac{b^{r_a}-1}{b^a-1}
+```
+shows that
+``` math
+\Delta_{b,A}(N):=\sum_{a\in A}\frac{b^{N\bmod a}-1}{b^a-1}
+ =(b^N-1)X_A(b)-J_N,\qquad J_N\in\mathbb Z.
+```
+The integer sum is finite, since $`q_a=0`$ for $`a>N`$. Every summand of $`\Delta_{b,A}(N)`$ is nonnegative and an exponent $`a>N`$ makes it positive. Thus $`X_A(b)=p/q`$ would imply $`\Delta_{b,A}(N)\ge1/q`$ for every $`N>0`$.
+
+Put $`w_{b,d}(N)=b^{N\bmod d}/(b^d-1)`$. For a fixed positive modulus $`Q`$ and $`g=(Q,d)`$, the orbit of $`Qm\bmod d`$ has length $`d/g`$. Its geometric sum gives
+``` math
+\lim_{X\to\infty}\frac1X\sum_{m=1}^Xw_{b,d}(Qm)
+ =M_{Q,b}(d):=\frac{g}{d(b^g-1)}\le\frac1d.
+```
+The important interchange is with the infinite support. Expanding the atom as $`\sum_{r\ge1}b^{-r}{\bf1}_{d\mid Qm+r}`$ and counting positive multiples of $`d`$ gives the bound
+``` math
+\frac1X\sum_{m=1}^Xw_{b,d}(Qm)
+ \le\sum_{r\ge1}b^{-r}\frac{Q+r}{d}
+ \le\frac{Q+2}{d}.
+```
+Here $`Q`$ is fixed. Dominated convergence therefore identifies the limiting mean of $`\sum_{d\in A}w_{b,d}(Qm)`$ with $`\sum_{d\in A}M_{Q,b}(d)`$.
+
+Now choose $`Q_t=\operatorname{lcm}(1,\ldots,t)`$. For each fixed $`d`$, eventually $`d\mid Q_t`$, so $`M_{Q_t,b}(d)=(b^d-1)^{-1}`$. The bound $`M_{Q_t,b}(d)\le1/d`$ permits a second dominated-convergence argument:
+``` math
+\sum_{d\in A}M_{Q_t,b}(d)\longrightarrow X_A(b).
+```
+Consequently the limiting mean of $`\Delta_{b,A}(Q_tm)`$ tends to zero. Given $`\varepsilon>0`$, first choose $`t`$ and then a sufficiently long finite average with mean below $`\varepsilon`$; one term of that average is below $`\varepsilon`$. Its strict positivity contradicts the rational lattice. This proves the assertion. <span class="sans-serif">\[Math\]</span>
+
+The order of the two limits matters: the observation length increases with $`Q_t`$ fixed before $`t`$ increases. No independence of different divisibility events is assumed. The mechanism also has a definite limit. At base two and full support, the contribution of exponents $`a>N`$ alone gives $`\Delta_{2,\mathbb N_{>0}}(N)>1-2^{-N}\ge1/2`$. Full-support irrationality therefore uses a different argument; its checked form appears below.
 
 <a id="the-object-and-the-two-exact-statements"></a>
 
 ## The object and the two exact statements
 
-For an integer $`n \ge 2`$ set $`x_n := 1/(2^n-1)`$, and for $`A \subseteq \{2,3,4,\dots\}`$ write $`x_A := \sum_{n \in A} x_n`$; the sum always converges, since $`x_n = O(2^{-n})`$. Erdős’s Problem \#257 asks a single universally quantified question about this family.
+For an integer $`n \ge 1`$ set $`x_n := 1/(2^n-1)`$, and for $`A \subseteq \{1,2,3,\dots\}`$ write $`x_A := \sum_{n \in A} x_n`$; the sum always converges, since $`x_n = O(2^{-n})`$. Erdős’s Problem \#257 asks a single universally quantified question about this family.
 
 <div id="defn:U" class="defn">
 
-**Definition 1** (Universal \#257, written (U)). Is $`x_A = \sum_{n \in A} 1/(2^n-1)`$ irrational for *every* infinite $`A \subseteq \mathbb{N}`$? **OPEN.** <span class="sans-serif">\[Open\]</span>
+**Definition 1** (Universal \#257, written (U)). Is $`x_A = \sum_{n \in A} 1/(2^n-1)`$ irrational for *every* infinite $`A \subseteq \mathbb N_{>0}`$? **OPEN.** <span class="sans-serif">\[Open\]</span>
 
 </div>
 
@@ -54,13 +98,13 @@ For an integer $`n \ge 2`$ set $`x_n := 1/(2^n-1)`$, and for $`A \subseteq \{2,3
 
 The two are joined by one elementary and completely one-sided implication. Every $`2^n-1`$ is odd, so every *finite* subset sum of $`\{x_n\}`$ has odd reduced denominator and cannot equal $`1/2`$ (). Hence a witness to $`1/2 \in \mathcal{A}`$ is necessarily an infinite $`A`$ with $`x_A = 1/2`$ rational, which refutes (U) outright. Conversely, (U) implies $`1/2 \notin \mathcal{A}`$ as one instance among uncountably many, and a proof of $`1/2 \notin \mathcal{A}`$ leaves (U) entirely open. So (H) is the maximally symmetric candidate counterexample to (U), not a restatement of it; the asymmetry is load-bearing and recurs below as Barrier <a href="#bar:asym" data-reference-type="ref" data-reference="bar:asym">2.5</a>. <span class="sans-serif">\[Math\]</span>
 
-Nothing in this document decides (U) or (H). What it does contain is (i) the unconditional record, stated with hypotheses and evidence bands, and (ii) a characterisation of *why* the recorded attacks fail — assembled so that the failures function as measurements of one obstruction rather than as a list of disappointments.
+The reciprocal-summable theorem and the checked support theorems below leave (U) and (H) open. The later countermodels identify the particular arithmetic information lost by individual approaches; they do not prove that all such failures have one common cause.
 
 <a id="the-unconditional-record-universal-direction"></a>
 
 ## The unconditional record, universal direction
 
-Every landed unconditional irrationality theorem for (U) instantiates one engine: a weighted-coefficient block certificate over the divisor incidence $`\operatorname{sc}_A(n) := \#\{d \mid n : d \in A\}`$, the generic form being `irrational_coeff_series_of_weighted_coeff_block_certificates`. The complete inventory of what that engine has been made to prove, uniformly in the base $`b \ge 2`$:
+The checked support families in the following table use weighted-coefficient block certificates over the divisor incidence $`\operatorname{sc}_A(n) := \#\{d \mid n : d \in A\}`$, the generic form being `irrational_coeff_series_of_weighted_coeff_block_certificates`. The table records their hypotheses at integer bases $`b\ge2`$; it is separate from the ordinary averaging proof above.
 
 <div class="center">
 
@@ -79,7 +123,7 @@ Every landed unconditional irrationality theorem for (U) instantiates one engine
 
 </div>
 
-Two facts about this table are worth a specialist’s attention more than any single row. First, the base restriction of the classical results is gone: the $`b=2`$ case of the first row recovers Erdős’s 1948 irrationality theorem for the Erdős–Borwein constant $`E = \sum_{n \ge 1} 1/(2^n-1)`$ as a one-line corollary, and every row holds for all $`b \ge 2`$. Second, and more important, *every* row lies inside a two-axis box — divisor independence plus a global reciprocal-tail budget — and the box is not an accident of effort. That is Barrier <a href="#bar:box" data-reference-type="ref" data-reference="bar:box">2.7</a>.
+Full-support irrationality for every integer base $`b\ge2`$ is classical (Erdős, 1948). The contribution recorded here is its Lean formalisation and the explicitly delimited structured-support developments, not a new extension from base two to arbitrary integer bases. Each support family retains its stated hypotheses; none establishes irrationality for every infinite support. The $`b=2`$ case of the first row recovers the Erdős–Borwein constant $`E = \sum_{n \ge 1} 1/(2^n-1)`$ as a one-line corollary of that classical theorem. Separately, the independence and tail estimates used by a particular certificate construction must be checked for that support. Barrier <a href="#bar:box" data-reference-type="ref" data-reference="bar:box">2.7</a> discusses those construction requirements; the averaging proof above does not assume pairwise coprimality or independence of divisor events.
 
 The one conditional extension worth naming is , which strictly generalises pairwise coprimality (cores may be arbitrary divisors of one fixed $`Q`$) but still demands globally pairwise-coprime petals and summable reciprocal petal mass, and whose selector hypothesis `SunflowerForcedSlotTailSelection` is itself an unproved cofinal supply. Despite the file name there is no dichotomy theorem in that file. <span class="sans-serif">\[Lean\]</span><span class="sans-serif">\[Open\]</span>
 
@@ -148,7 +192,7 @@ That last pair of citations is the sharpest single orientation fact available. E
 
 ## The thesis
 
-This programme has produced many reformulations of \#257 and no proof of it. That is the honest summary, and expert readers have said so. The claim of this section is that the reformulations are not a hundred separate failures. They are repeated measurements of *one* obstruction, taken in different coordinates, and once they are assembled the obstruction has a describable shape. A systematic elimination that says exactly which classes of argument cannot work, and why, is a result about the problem; a reformulation is not. The elimination is what follows.
+This programme has produced many reformulations of \#257 and no proof of it. That is the honest summary, and expert readers have said so. The claim of this section is that the reformulations are not a hundred separate failures. They are repeated measurements of *one* obstruction, taken in different coordinates, and once they are assembled the obstruction has a describable shape. A record of which attacks were tried, which landed calculations obstructed them, and which hypotheses remain, is a result about the problem; a reformulation is not. That record follows. It does not claim an impossibility theorem for every method in a named class.
 
 The generating fact is a single structural one, and it is not a convenience of the formalisation.
 
@@ -159,7 +203,7 @@ The generating fact is a single structural one, and it is not a convenience of t
 
 </div>
 
-All six barriers below are consequences of Observation <a href="#obs:no-ensemble" data-reference-type="ref" data-reference="obs:no-ensemble">9</a> in different directions: there is nothing to choose (<a href="#bar:canon" data-reference-type="ref" data-reference="bar:canon">2.2</a>), nothing weaker to prove (<a href="#bar:collapse" data-reference-type="ref" data-reference="bar:collapse">2.3</a>), nothing to average over (<a href="#bar:measure" data-reference-type="ref" data-reference="bar:measure">2.6</a>), no information at the available scales (<a href="#bar:scale" data-reference-type="ref" data-reference="bar:scale">2.4</a>), no certificate in the provable direction (<a href="#bar:asym" data-reference-type="ref" data-reference="bar:asym">2.5</a>), and, on the universal side, no way to make a general support satisfy the certificate engine’s first hypothesis (<a href="#bar:box" data-reference-type="ref" data-reference="bar:box">2.7</a>).
+All six barriers below are consequences of Observation <a href="#obs:no-ensemble" data-reference-type="ref" data-reference="obs:no-ensemble">9</a> in different directions: the recorded witness space is a singleton (<a href="#bar:canon" data-reference-type="ref" data-reference="bar:canon">2.2</a>), the listed sufficient conditions are equivalent to the goal rather than strictly weaker (<a href="#bar:collapse" data-reference-type="ref" data-reference="bar:collapse">2.3</a>), measure and category disagree on $`\mathcal{A}`$ (<a href="#bar:measure" data-reference-type="ref" data-reference="bar:measure">2.6</a>), the available information sits at the wrong scale for the short-window bound (<a href="#bar:scale" data-reference-type="ref" data-reference="bar:scale">2.4</a>), survival certificates point the wrong way for membership (<a href="#bar:asym" data-reference-type="ref" data-reference="bar:asym">2.5</a>), and, on the universal side, a general support need not satisfy the certificate engine’s first hypothesis (<a href="#bar:box" data-reference-type="ref" data-reference="bar:box">2.7</a>).
 
 <a id="bar:canon"></a>
 
@@ -257,7 +301,7 @@ Lemma <a href="#lem:sqrt-witness" data-reference-type="ref" data-reference="lem
 
 </div>
 
-**Rules out.** Every strategy of the form “the full problem is hard, so prove this weaker sufficient condition instead”. In particular the specific hope that mutually *incompatible* witnesses at different endpoints buy flexibility is void, and reading the $`\Pi^0_2`$ shape of these sockets as evidence of extra room is an error.
+**Scope of the equivalences.** These conditions are equivalent to membership, not strictly weaker substitutes. Equivalence does not make a formulation useless as an invariant, but it does mean that proving any of them is the same problem as (H). The equivalent conditions remain unproved. In particular, mutually *incompatible* witnesses at different endpoints do not buy a weaker sufficient condition, and the $`\Pi^0_2`$ shape of these sockets is not evidence of extra room.
 
 **Scope limit, preserved exactly.** Item (a) does *not* extend to every $`A`$ with $`1 \notin A`$. Dropping the greedy-specific fact $`x_G \le 1/2`$ yields only the one-sided statement $`\texttt{hbound} \iff (1/2 - x_A) \le 0`$. This limit must be stated verbatim wherever the equivalence is used.
 
@@ -312,9 +356,9 @@ The parity route is the same fact by hand: “$`K(M)`$ even $`\iff`$ $`M`$ a per
 
 </div>
 
-**Rules out.** Any programme whose plan is “extend the certified depth”. Pushing the truncation rung to $`J = 23`$, the seam to row $`10^6`$, or the macro receipt to depth $`10^8`$ cannot in principle decide the branch — each raises a lower bound on a death rank which, if the supported branch is correct, does not exist.
+**Finite search versus infinite survival.** Survival through any tested finite depth does not by itself establish membership. A discovered fatal-gap certificate would establish non-membership, while a proved uniform invariant could establish membership. Extending the computation — the truncation rung to $`J = 23`$, the seam to row $`10^6`$, or the macro receipt to depth $`10^8`$ — can therefore produce evidence or a decisive obstruction, but additional surviving prefixes are not a proof of infinite survival. If the supported branch is correct, each such extension merely raises a lower bound on a death rank that does not exist.
 
-**Explains.** Every certificate the programme owns is of this one type. The certified depths grew by roughly two orders of magnitude across the recorded history with no change whatsoever in decision status; that is not a coincidence to be pushed through, it is the theorem above being observed empirically. Accumulated survival is not convergence toward proof.
+**Explains.** Every certificate the programme currently owns is of the survival type. The certified depths grew by roughly two orders of magnitude across the recorded history with no change in membership status. Accumulated survival is not, by itself, convergence toward a membership proof.
 
 <a id="bar:measure"></a>
 
@@ -322,13 +366,13 @@ The parity route is the same fact by hand: “$`K(M)`$ even $`\iff`$ $`M`$ a per
 
 <div id="prop:soft" class="prop">
 
-**Proposition 20** (The two soft heuristics contradict each other; <span class="smallcaps">proved</span>). *$`\mathcal{A}`$ has Lebesgue measure exactly $`1`$ inside an ambient span of $`E \approx 1.6067`$, a relative density of about $`62\%`$, and is simultaneously nowhere dense, perfect and totally disconnected (Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">4</a>). Hence the measure heuristic — “a random point lies in $`\mathcal{A}`$ with probability $`\approx 0.62`$” — predicts \#257 *false*, while the category heuristic — “$`\mathcal{A}`$ is meagre, so a generic point misses it” — predicts \#257 *true*. `coord:achievement-set` <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span>*
+**Proposition 20** (Achievement-set geometry does not decide rational-target membership). *The achievement set has positive measure and is nowhere dense (Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">4</a>). Neither fact alone decides membership of a specified rational. Injectivity fixes the support of an achievable value, but it does not exclude averaging over indices, shifts, residues, observation scales or auxiliary constructions. The recorded calculations obstruct the particular models and estimates analysed here; no impossibility theorem for all probabilistic, measure-theoretic or averaging methods is claimed. `coord:achievement-set` <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Math\]</span>*
 
 </div>
 
-**Rules out.** Every soft argument: measure-theoretic, Baire-category, metric number theory (almost-all / almost-none), and probabilistic digit models. The two standard notions of “typical” disagree on this object, so neither can be the mechanism. Worse, by injectivity of the digit coding (Observation <a href="#obs:no-ensemble" data-reference-type="ref" data-reference="obs:no-ensemble">9</a>) there is no ensemble of candidate representations to average over: each rational has exactly one candidate support, so counting, second-moment and pigeonhole arguments have nothing to range over. It also rules out deciding (U) by showing $`\mathcal{A}`$ is “small”: it is not small — it is $`62\%`$ of its ambient interval by measure.
+The geometry itself is Lean-checked in Theorem <a href="#thm:geometry" data-reference-type="ref" data-reference="thm:geometry">4</a>: $`\mathcal{A}`$ has Lebesgue measure exactly $`1`$ inside an ambient span of $`E \approx 1.6067`$, a relative density of about $`62\%`$, and is simultaneously nowhere dense, perfect and totally disconnected. Those facts may hold together. They do not yield competing theorems about specified rationals. Showing that $`\mathcal{A}`$ is “small” cannot decide (U) by measure: it is $`62\%`$ of its ambient interval.
 
-**Explains.** The programme’s own probabilistic estimate sits squarely on the losing side of this split: under a Bernoulli$`(1/2)`$ digit model the expected number of counterexamples with $`n \ge 32`$ is about $`2 \times 10^{-4}`$, i.e. the model predicts $`1/2 \in \mathcal{A}`$. That estimate is worth exactly as much as the model, and the model is a measure-side object that cannot see a specific point of a nowhere-dense set having Lebesgue measure exactly $`1`$. <span class="sans-serif">\[Cert\]</span>
+**Recorded models.** Under a Bernoulli$`(1/2)`$ digit model the expected number of counterexamples with $`n \ge 32`$ is about $`2 \times 10^{-4}`$, so that model predicts $`1/2 \in \mathcal{A}`$. The estimate is worth exactly as much as the model, and the model is a measure-side object that cannot see a specific point of a nowhere-dense set of measure one. <span class="sans-serif">\[Cert\]</span>
 
 <a id="bar:box"></a>
 
@@ -2390,7 +2434,7 @@ Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab
 | Every exact row continues: doubles unboundedly, or recycles to some $`c\le n`$. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:bounded</span> | $`\forall n\ge6`$, given a row at $`n`$: $`(\ldots)\lor\exists c\le n(\ldots)`$ | `coord:mobius-mersenne` |
 | Every above-half bounded support recycles into a genuine exact row at some $`2c-2`$ with $`c\le n`$. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:bounded</span> | $`\forall E`$ bounded $`[2,n]`$: $`\exists c\le n`$ | `coord:binary-digit` |
 | (#249 cross-lane check) $`\sum\varphi(n)/2^n`$ matches no rational whose denominator divides $`2^{14}(2^h-1)`$, for any $`h\le16`$. <span class="sans-serif">\[Cert\]</span> | <span class="sans-serif">scale:bounded</span> | $`\forall h\le16`$ (explicit bound) | `coord:binary-digit` |
-| Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§<a href="#sec:four-coordinates" data-reference-type="ref" data-reference="sec:four-coordinates">8</a>, Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">196</a>). (source: truncation-rung ladder note, §5) <span class="sans-serif">\[Math\]</span>+<span class="sans-serif">\[Cert\]</span> | <span class="sans-serif">scale:bounded</span> | $`3\le J\le22`$ (finite table, exhaustive) | `coord:rung-truncation` |
+| Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§<a href="#sec:four-coordinates" data-reference-type="ref" data-reference="sec:four-coordinates">8</a>, Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">196</a>). (source: `erdos257_truncation_rung_ladder_2026_07_24.md`, §5) <span class="sans-serif">\[Math\]</span>+<span class="sans-serif">\[Cert\]</span> | <span class="sans-serif">scale:bounded</span> | $`3\le J\le22`$ (finite table, exhaustive) | `coord:rung-truncation` |
 |  |  |  |  |
 | Master achievement/greedy-survival criterion. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall x\ \forall n`$ (iff) | `coord:greedy-orbit` |
 | Membership iff every actually-skipped rank survives. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall M\in`$ skipped support | `coord:greedy-orbit` |
@@ -2409,10 +2453,10 @@ Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab
 | Payoff theorem consuming the row above: compactness of the achievement set forces $`1/2`$ itself to be achieved. <span class="sans-serif">\[Lean\]</span> (theorem proved; *hypothesis* open) | <span class="sans-serif">scale:cofinal</span> | given $`\forall N\,\exists n\ge N(\ldots)`$ | `coord:other:topological-achievement-set` |
 | Shortest known open target: the canonical rational half-greedy orbit itself has infinitely many positive skip events. <span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | $`\forall N\ \exists c\ge\max(N,4),\ 0<\mathrm{rem}(c{-}1)<w_c`$ | `coord:greedy-orbit` |
 | Payoff theorem consuming the row above, with zero further combinatorial search once supplied. <span class="sans-serif">\[Lean\]</span> (theorem proved; hypothesis open) | <span class="sans-serif">scale:cofinal</span> | given $`\forall N\,\exists c\ge N(\ldots)`$ | `coord:greedy-orbit` |
-| Master half-branch dichotomy: membership iff the greedy skip set is infinite. <span class="sans-serif">\[Lean\]</span> (iff proved; both sides cofinal-shaped) | <span class="sans-serif">scale:cofinal</span> | iff $`skippedSupport Infinite`$ | `coord:greedy-orbit` |
+| Master half-branch dichotomy: membership iff the greedy skip set is infinite. <span class="sans-serif">\[Lean\]</span> (iff proved; both sides cofinal-shaped) | <span class="sans-serif">scale:cofinal</span> | iff $`(\mathrm{skippedSupport}).\mathrm{Infinite}`$ | `coord:greedy-orbit` |
 | Seven-way classification hub: membership iff the seam word is not eventually right, iff unbounded terminal-false, iff cofinally many skipped ranks, *etc.* <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:cofinal</span> | every right-hand side is $`\exists^\infty`$/Unbounded-shaped | `coord:seam-integer` |
-| Ladder dichotomy: either infinitely many rungs survive (#257 false, explicit limit support) or an eventual bad-rank wall closes only this producer. (source: truncation-rung ladder note, Cor. 8) <span class="sans-serif">\[Math\]</span> | <span class="sans-serif">scale:cofinal</span> | open branch (a): $`\exists^\infty J,\ \mathrm{HalfRung}(J)`$ | `coord:rung-truncation` |
-| The unconditional wall, stated in its four equivalent forms (run length, deviation, distance-to-integer, greedy support). (source: sqrt-escape digit-reduction note, §5) <span class="sans-serif">\[Conjecture\]</span>/<span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | $`\forall r\ge10,\ |\mathrm{rem}(r{+}1)-2^{r+1}|>2^{(r+5)/2}`$ | `coord:seam-integer` |
+| Ladder dichotomy: either infinitely many rungs survive (#257 false, explicit limit support) or an eventual bad-rank wall closes only this producer. (source: `erdos257_truncation_rung_ladder_2026_07_24.md`, Cor. 8) <span class="sans-serif">\[Math\]</span> | <span class="sans-serif">scale:cofinal</span> | open branch (a): $`\exists^\infty J,\ \mathrm{HalfRung}(J)`$ | `coord:rung-truncation` |
+| The unconditional wall, stated in its four equivalent forms (run length, deviation, distance-to-integer, greedy support). (source: `erdos257_sqrt_escape_digit_reduction_2026_07_24.md`, §5) <span class="sans-serif">\[Conjecture\]</span>/<span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | $`\forall r\ge10,\ |\mathrm{rem}(r{+}1)-2^{r+1}|>2^{(r+5)/2}`$ | `coord:seam-integer` |
 |  |  |  |  |
 
 The scale ladder for Erdős \#257. Every row above the frontier is machine-checked or exactly certified at fixed/bounded/uniform scale; every row below it is exactly the cofinal statement an open producer needs, with its quantifier prefix made explicit so the gap cannot be mistaken for a finite verification.
@@ -3631,7 +3675,7 @@ First, coordinate-relativity. Obstructions are relative to a representation, and
 
 Second, the single exception. Exactly one row of the real orbit fails $`\sqrt{\ }`$-escape, $`r=7`$, which is also the site of the only real $`R`$-branch crossing ever observed, at $`(s,d)=(10,7)`$. A lone low-lying exception is what a random model predicts; it is also what a hidden structure with a small modulus predicts. That datum does not discriminate.
 
-Third, and this is the sharpest internal check available: pseudorandomness is a claim about the *absence* of structure, and the corpus contains an unmistakable piece of *present* structure — strict superincreasingness of the Mersenne weights, which forces the digit coding to be injective (, <span class="sans-serif">\[Lean\]</span>), collapses every witness space to a singleton, and makes the static adversarial tier coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The rigidity is why every soft method fails (there is no ensemble to average over: $`\mathcal{A}`$ has Lebesgue measure exactly $`1`$ inside an interval of length $`E\approx1.6067`$ and is nowhere dense, and the two standard notions of “typical” disagree on it); the pseudorandomness is why every arithmetic method returns no information.
+Third, and this is the sharpest internal check available: pseudorandomness is a claim about the *absence* of structure, and the corpus contains an unmistakable piece of *present* structure — strict superincreasingness of the Mersenne weights, which forces the digit coding to be injective (, <span class="sans-serif">\[Lean\]</span>), collapses every witness space to a singleton, and makes the static adversarial tier coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The rigidity constrains representation uniqueness. It does not by itself exclude averaging over indices, shifts, residues, observation scales or auxiliary constructions. $`\mathcal{A}`$ has Lebesgue measure exactly $`1`$ inside an interval of length $`E\approx1.6067`$ and is nowhere dense, so the two standard notions of “typical” disagree on it; neither fact decides membership of a specified rational. The recorded calculations obstruct the particular models and estimates analysed here; no impossibility theorem for all probabilistic, measure-theoretic or averaging methods is claimed. Separately, the observed lack of arithmetic bias is why the specific arithmetic methods recorded here returned no information.
 
 <a id="the-universal-branch-reads-differently-and-this-weakens-the-one-wall-thesis"></a>
 
@@ -3647,7 +3691,7 @@ The wall analysis’s claim that both halves converge on one missing object — 
 
 It does not determine whether a short proof exists. Nothing in a catalogue of failed methods bounds the length of a successful one, and this document should not pretend otherwise.
 
-It does determine, with proof rather than inference, where a short proof cannot be. It cannot proceed by finite inspection, by fixed-precision arithmetic, by a bounded carry state, by a measure or category argument, by an irrationality-measure bound on $`E`$ or any constant of that type, or — on the universal side, as of Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">271</a> — by instantiating the present block-certificate engine at a general support. Each of those is closed with a mechanism, and a mechanism is reusable in a way that a failed attempt is not. That is the contribution: not a proof, and not a reduction, but a map of the region in which a proof cannot live, drawn tightly enough that the remaining region is small and its coordinates are named.
+It records, with proof rather than inference, several closed routes. Fixed-precision arithmetic and a bounded carry state are obstructed by the landed no-go theorems cited above. An irrationality-measure bound on $`E`$ does not classify a specified rational in $`\mathcal{A}`$. Instantiating the present block-certificate engine at a general support is blocked, on the universal side, by Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">271</a>. Survival through any tested finite depth does not by itself establish membership; a fatal-gap certificate would establish non-membership. These facts do not decide rational-target membership, and they do not yield an impossibility theorem for all probabilistic, measure-theoretic or averaging methods. Each recorded obstruction is reusable in a way that a failed attempt is not. That is the contribution: not a proof, not a reduction, and not a map of every region in which a proof cannot live.
 
 <a id="what-is-open-stated-exactly"></a>
 
@@ -3768,7 +3812,7 @@ rigidity, half-carry`. This corrects the module’s own "weaker producer" framin
 
 $`\mathrm{CofinalExactLocalMersenneHalfRows}\Rightarrow\mathrm{HALF}`$ is proved unconditionally via compactness of $`\mathcal{A}`$ (continuous image of $`(\mathbb{N}\to\mathrm{Fin}\,2)`$ under the digit-coding map, hence closed) (, <span class="sans-serif">\[Lean\]</span>). The Lean-landed theorem uses closedness of $`\mathcal{A}`$ and discards the producing rows, so it does not exhibit a single limiting support $`A`$. A genuine sequential-compactness extraction (Cantor-space diagonal argument over $`(\mathrm{Fin}\,2)^{\mathbb{N}}`$, using the file’s own ) would upgrade this to producing $`A`$ explicitly, and would additionally transfer $`2\in A`$ for free () — but this upgrade is itself unformalised (Survivor 1, <span class="sans-serif">\[Math, adversarially verified\]</span>). That is a constructive extraction task, not a proof that O3 is a strictly weaker logical condition.
 
-Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">the collapsed sockets</a> already identifies $`\mathrm{CofinalExactLocalMersenneHalfRows}`$ as logically equivalent to $`1/2\in\mathcal{A}`$. Equivalence of a membership condition, constructive extraction of a coherent support, and a rejected sufficient strengthening are not interchangeable descriptions. Absence of a Lean extraction theorem does not make O3 a strictly weaker substitute for $`\mathrm{HALF}`$. The remaining work on O3 is to supply the cofinal exact rows, or any equivalent membership condition.
+Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">15</a>(c) already identifies $`\mathrm{CofinalExactLocalMersenneHalfRows}`$ as logically equivalent to $`1/2\in\mathcal{A}`$. Equivalence of a membership condition, constructive extraction of a coherent support, and a rejected sufficient strengthening are not interchangeable descriptions. Absence of a Lean extraction theorem does not make O3 a strictly weaker substitute for $`\mathrm{HALF}`$. The remaining work on O3 is to supply the cofinal exact rows, or any equivalent membership condition.
 
 <a id="sharp-critical-capacity-conditions-the-booleanmöbius-lanes-producer-for-o3"></a>
 
@@ -3893,7 +3937,7 @@ max width=
 | CPGS (Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">274</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | Terminal-only strip (Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">275</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | mobiusCenteredHalfCarry sqrtBound (for $`A=G`$ only) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
-| O3 CofinalExactLocalMersenneHalfRows | $`\Leftrightarrow`$ O2 (Prop. <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">the collapsed sockets</a>(c)); Lean lands $`\Rightarrow`$ | <span class="sans-serif">\[Open\]</span>, no shortcut |
+| O3 CofinalExactLocalMersenneHalfRows | $`\Leftrightarrow`$ O2 (Prop. <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">15</a>(c)); Lean lands $`\Rightarrow`$ | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | (O3-supply) linear-width capacity band | $`\Rightarrow`$ O3 (Lean, given lemma) | <span class="sans-serif">\[Open\]</span> |
 | HalfGreedySkippedCriticalQuotientSupply | $`\Rightarrow`$ O3 (Lean) | <span class="sans-serif">\[Open\]</span>, strictly harder than O3-supply |
 | O4 SQRTESC / RUNBOUND | $`\Leftrightarrow`$ each other; $`\Rightarrow`$ O2 (Lean fan-in) | <span class="sans-serif">\[Open\]</span> |
@@ -3912,7 +3956,7 @@ max width=
 
 None of the following is offered as a plan of attack, and none is close. Each is stated to make the shape of the missing ingredient legible.
 
-**O1 (universal).** The honest target is $`\mathrm{U257}`$ itself. The stronger schema $`\mathrm{O1'}=\forall A\,\mathrm{Cert}(A)`$ is a rejected sufficient strengthening, not future work: Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">squarefree</a> already exhibits a squarefree support on which neither the digitwise nor the carry-aware block-certificate producer exists, while Duverney–Tachiya still prove that squarefree value irrational. Supplying $`\mathrm{Cert}(A)`$ for arbitrary infinite supports is therefore not an open equivalent normal form of $`\mathrm{U257}`$. Remaining work on O1 is the universal irrationality statement, or a different method that covers supports the certificate schemas cannot.
+**O1 (universal).** The honest target is $`\mathrm{U257}`$ itself. The stronger schema $`\mathrm{O1'}=\forall A\,\mathrm{Cert}(A)`$ is a rejected sufficient strengthening, not future work: Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">271</a> already exhibits a squarefree support on which neither the digitwise nor the carry-aware block-certificate producer exists, while Duverney–Tachiya still prove that squarefree value irrational. Supplying $`\mathrm{Cert}(A)`$ for arbitrary infinite supports is therefore not an open equivalent normal form of $`\mathrm{U257}`$. Remaining work on O1 is the universal irrationality statement, or a different method that covers supports the certificate schemas cannot.
 
 **O2/O3/O5 (Mersenne-specific).** The sharp-capacity gap $`(\ast)\to(\ast\ast)`$ and the $`-2,-1`$ middle-cell exclusion are both, at bottom, requests for anti-concentration of an explicit divisor-count quantity ($`\mathtt{localBinarySuffix}`$, or $`4\cdot\mathrm{rem}-\mathrm{belowPulse}-4`$) away from a short, explicitly named integer window. These are combinatorial/arithmetic near-misses rather than analytic ones — the corpus’s own diagnosis is that a congruence or pulse-parity obstruction, not an equidistribution theorem, is the natural tool, and no such obstruction has been found.
 
@@ -3922,7 +3966,7 @@ None of the following is offered as a plan of attack, and none is close. Each is
 
 ## Summary
 
-Erdős \#257 is open in the universal form (O1${}={}$U257), and both rational membership targets $`1/2`$ (O2) and $`1/21`$ (O2b) remain open. Every route surveyed above either (a) is proved equivalent to O2, including O3 by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">the collapsed sockets</a>(c), and therefore offers no logical reduction, (b) is a sufficient condition not known to be equivalent (O4, O5, O3-supply) whose own supply is unproved at cofinal scale, (c) is the rejected certificate strengthening $`\mathrm{O1'}`$, already false on squarefree support, or (d) is certified only on a finite initial segment, however large a margin that segment exhibits. Nothing in this paper closes any of these gaps, and no claim above should be read as progress toward doing so.
+Erdős \#257 is open in the universal form (O1$`{}={}`$U257), and both rational membership targets $`1/2`$ (O2) and $`1/21`$ (O2b) remain open. Every route surveyed above either (a) is proved equivalent to O2, including O3 by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">15</a>(c), and therefore offers no logical reduction, (b) is a sufficient condition not known to be equivalent (O4, O5, O3-supply) whose own supply is unproved at cofinal scale, (c) is the rejected certificate strengthening $`\mathrm{O1'}`$, already false on squarefree support, or (d) is certified only on a finite initial segment, however large a margin that segment exhibits. Nothing in this paper closes any of these gaps, and no claim above should be read as progress toward doing so.
 
 <a id="statements-and-declarations"></a>
 

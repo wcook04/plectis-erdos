@@ -12,14 +12,13 @@ $J=\{n:2\le n\le M,\ v_p(d_n)=e\}$ and write $d_n=p^eu_n$ on $J$.  Then
  \sum_{n\in J}u_n^{-1}\ne0\ \hbox{ in }\mathbb F_p,
 \]
 the inverses being taken modulo $p$.  The prefixes through $138$ and $2592$
-cancel the primes $139$ and $2593$ completely.  Second, the common
-denominator itself grows fast:
+cancel the primes $139$ and $2593$ completely.  The common denominator before reduction satisfies the quantitative bound
 \[
  \liminf_{N\to\infty}\frac{\log \Lc_N}{N^{3/2}\log N}\ \ge\ \frac{2\sqrt2}{3},
 \]
 by an elementary segment argument that uses
 $\gcd(i!-1,j!-1)\mid j!/i!-1$ and no external multiplicity theorem.  The two
-statements sit either side of reduction, and the cancellations at $139$ and
+statements concern opposite sides of reduction, and the cancellations at $139$ and
 $2593$ are why the second cannot be substituted for the first.
 
 Wilson's theorem gives arbitrarily late first occurrences of primes among the
@@ -34,8 +33,8 @@ bound gives $3t^3<2(R+1)$ under the exact cancellation and factorial-size
 hypotheses, and the growth statement above raises the asymptotic constant in
 that estimate from $3/2$ to $16/9$.  Two finite computations exclude
 denominators: $q\nmid299999!$ from an exact interval carry census through
-$300000$, and the kernel-checked bounds $q\ge2^{39990}$ and
-$q>10^{12040}$ from a certified continued-fraction enclosure. The
+$300000$, and $q\ge2^{39990}>10^{12038}$ from an exact continued-fraction
+enclosure computed outside Lean. The
 factorial-grid exclusion uses the external GMP computation and remains a
 separate outstanding Lean obligation.  The irrationality of $\Ser$ is open, and the remaining
 arithmetic inputs are stated in the last section.
@@ -216,7 +215,11 @@ Taking logarithms of the resulting divisibility gives \eqref{long68:eq:segment}.
 \end{theorem}
 
 \begin{proof}
-Fix $\alpha>0$ and take $k=\lfloor\alpha\sqrt N\rfloor$, which satisfies
+A terminal block keeps every factorial near $N!$, but increasing its
+length also increases the total pairwise-gcd loss.  The gain is of order
+$kN\log N$ and the loss of order $k^3\log N$, so the useful balance is
+$k$ of order $\sqrt N$.  Fix $\alpha>0$ and take
+$k=\lfloor\alpha\sqrt N\rfloor$, which satisfies
 $2\le k\le N-1$ for all large $N$.  Put $u=N-k+1$.
 
 For the left-hand side of \eqref{long68:eq:segment}, use $n!-1\ge n!/2$ and
@@ -639,8 +642,8 @@ out of the sum.  The two consequences follow by taking $k=1$ and by
 contraposition.
 \end{proof}
 
-\noindent The hard step is the constant quotient; no valuation estimate
-enters.  A nonzero moment therefore cannot be hidden entirely below $2d$
+\noindent This is a direct consequence of the constant quotient; no valuation
+estimate enters.  A nonzero moment therefore cannot be hidden entirely below $2d$
 while the $d$-channel cancels.  This is a finite-family obstruction: it
 constructs no cancelling family and says nothing about simultaneous channels
 or residual size.
@@ -857,14 +860,16 @@ produced.
 Two finite computations constrain a hypothetical denominator $q$ in
 $\Ser=a/q$, and they constrain different features of it:
 \begin{equation}\label{long68:eq:finite-bounds}
- q\nmid299999!,\qquad q\ge2^{39990},\qquad q>10^{12040}.
+ q\nmid299999!,\qquad q\ge2^{39990}>10^{12038}.
 \end{equation}
-The size bounds hold for every integer $a$ and positive natural $q$ with
-$\Ser=a/q$; no reducedness assumption is needed. They are
-\href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean#L58}{kernel-checked in Lean}.
-The factorial-grid exclusion $q\nmid299999!$ is supported separately by the
-external GMP computation. It is not a conclusion of the linked Lean theorem;
-the full factorial-grid certificate remains an outstanding formal obligation.
+The size bound holds for every integer $a$ and positive natural $q$ with
+$\Ser=a/q$; no reducedness assumption is needed. Its evidence is the exact
+continued-fraction computation described below. The stronger candidate
+\href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/lean/ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean#L58}{finite-size Lean certificate}
+is not cited as kernel verification: its source records that the computation
+has not yet been kernel checked. The factorial-grid exclusion
+$q\nmid299999!$ is supported separately by the external GMP computation;
+its full Lean certificate also remains an outstanding formal obligation.
 
 Neither implies the other.  A denominator with no prime factor above
 $299999$ can still fail to divide $299999!$ by carrying one prime to a high

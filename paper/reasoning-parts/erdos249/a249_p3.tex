@@ -515,7 +515,7 @@ unusually strong.
 \begin{prop}[What would close it]
 A scale-uniform version of the same shape: $\exists f:\mathbb N\to\mathbb N$ with $f(N)\to\infty$
 such that $\forall N_0\ \exists N\ge N_0\ \exists L$ with $\mathtt{certifiedKill}\ h\ N\ L$ for all
-$h\le f(N)$. This implies the obligation immediately (fix $h$, take $N_0$ large enough that
+$1\le h\le f(N)$. This implies the obligation immediately (fix $h\ge1$, take $N_0$ large enough that
 $f(N)\ge h$) and, unlike the obligation, is a statement about one window at a time rather than a
 per-period search.
 \end{prop}
@@ -758,11 +758,13 @@ countermodel defeats every finite-rank shift-polynomial observation simultaneous
 amplification per se is not the missing rigidity.
 \end{rem}
 
-\begin{prop}[What would close it]
-A rationality-side rank upper bound: $\exists C$ such that any tempered integral binary carry
-orbit for a rational $\mathtt{binaryCoeffSeries}$ has
-$\mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathtt{canonicalCarryKernelFamily}\ u\ e)\le C$ for
-all $e$, or any bound growing slower than $2^e{-}1$.
+\begin{prop}[The extra hypothesis needed by a rank argument]
+A rank bound that contradicts the lower bound $2^e-1$ would have to use
+additional arithmetic of the actual totient coefficients. The generic
+proposal that every rational coefficient series has bounded tempered-carry
+rank is ruled out by the rational control recorded in the short paper:
+its carry rank is at least $2^e-1$ at every level. It is therefore not a
+remaining general lemma from which totient irrationality follows.
 \texttt{not\_irrational\_totientSeries\_implies\_mod\_period\_and\_unbounded\_rank}
 (\texttt{TotientTailCarryPeriod.lean:224}) pins the obstacle precisely: rationality buys uniform
 eventual periodicity of $u$'s dyadic sections mod $v$, and that periodicity provably does

@@ -49,7 +49,7 @@ families.  An auxiliary sharp power-sum bound
 $\sum_{j=1}^{n-1}|f(c_j)|^{1/(n-1)}\le(n-1)R^{n/(n-1)}$ holds in every degree
 $n\ge2$ for zeros in a closed disc of radius $R\ge0$.
 
-The unrestricted problem remains open.  Critical values near a tie and multiple
+These results do not settle the unrestricted problem.  Critical values near a tie and multiple
 saddles escape the separation argument, and the regime $13/25<\mu<1$ is
 untouched by the threshold argument.  Exact counterexamples show that short
 Euclidean chords and critical spokes need not stay in the lemniscate.  The
@@ -61,8 +61,9 @@ critical-value budget alone does not bound its length.
 \textbf{Trinomials.} Theorem~\ref{res:trinomial-all-degree} settles the
 Erd\H{o}s--Herzog--Piranian conclusion for every monic trinomial in every
 degree, with a prescribed path and an unrestricted middle coefficient.  The
-statement is ordinary mathematics; \texttt{PaperTrinomial.lean} is not in this
-checkout.
+statement uses checked radial inequalities and the radius budget from the
+pinned Abel control-polygon source; the final conversion to one rectifiable
+path is ordinary mathematics (Section~\ref{sec:trinomials}).
 \textbf{Separated critical values.}
 Theorem~\ref{res:critical-value-separation} bounds the length of the resolved
 inverse-ray connector at a simple isolated critical value, and
@@ -83,8 +84,8 @@ require another construction.  An admissible-hub selector is one sufficient
 route to the target; no characterization of every possible solution is proved.
 \end{paperresult}
 
-\externalreviewobject{The paper gives an ordinary all-degree path theorem for
-every monic trinomial, a separately ordinary sharp critical-value mean, a
+\externalreviewobject{The paper gives an all-degree path theorem for every monic trinomial,
+a sharp critical-value mean checked in Lean, a
 quantitative connector at a separated simple critical value whose threshold
 $S=2$ reaches every degree $n\ge3$, a short contained connector whenever the
 least critical-value modulus is at most $13/25$, a constant-factor connector
@@ -95,21 +96,20 @@ degree $3q$.  Lean checks exponential Newton-value decay, positive-ray
 collision interfaces, finite translation avoidance, and quantified root
 retention.  Exact obstruction examples, including a Cassini counterexample to
 the printed global tree budget, show why those estimates cannot be promoted to
-a general connector theorem.}{The trinomial paths, the Poisson critical-value
-mean, the separation regime, the two threshold-free theorems, the
-degree-three theorem and the solved-family path assemblies are ordinary
-mathematics.  The $13/25$ threshold, the $(71/10)$ constant and the
-degree-three theorem have no formal endpoint in the pinned corpus, and the
-regime $13/25<\mu<1$ is untouched by the threshold argument.  The checked
+a general connector theorem.}{The critical-value mean and translated cubic fibre path have complete
+Lean statements.  The trinomial radial inequalities and radius budget are
+checked at their own public pin, with the final rectifiable-path interpretation
+ordinary.  The analytic low-critical and separation arguments retain the
+source boundaries stated in their sections; the regime $13/25<\mu<1$ is
+untouched by the threshold argument.  The checked
 dynamical and perturbative inputs do not construct unrestricted connectors, so
-Problem~\#1041 remains open.  A reported degree-seven counterexample
+the unrestricted conclusion is not established here.  A reported degree-seven counterexample
 announcement is a separate external claim, not a theorem of this record.}
-{Comparator checks three solved-family kernels (collinear, primitive quintic,
-translated cubic fibres), not the ordinary length-below-two assemblies.
-Critical-value separation, including its threshold analysis, has no
-corresponding formal endpoint in the pinned corpus.  \texttt{PaperTrinomial.lean}
-and \texttt{PaperCriticalValueMeanR10.lean} are not cited as kernel-checked
-complete statements.}
+{The selected solved-family Comparator interfaces are separate from the
+full proof coverage: they check the registered kernels.  The complete
+critical-value mean and translated cubic fibre path have the source-bound
+Lean evidence cited in their sections.  Those checks provide neither a
+general connector theorem nor an assessment of novelty or significance.}
 
 The two selected perturbation interfaces have the following exact boundaries.
 For a finite type $\iota$, an injective family of critical values
@@ -129,6 +129,21 @@ and a shift of norm less than $\varepsilon$; it then places every root of
 $f+\operatorname{C}(\text{shift})$ in the open unit disc.  These are finite
 perturbation and stability interfaces only: neither row supplies the missing
 global topology or the length-$2$ gluing argument.
+
+\paragraph{The principal arguments and their dependencies.}
+The trinomial proof in Section~\ref{sec:trinomials} uses the root equation
+to control an entire radial segment; it does not use Newton flow.
+The low-critical theorem in
+Section~\ref{sec:low-critical-closure} follows a different chain:
+absence of a short connector forces separated points in a conformal disc,
+circle slices bound how many can occur at each radius, and the resulting
+root count forces too much area growth.  The finite dual inequality is the
+summation step of that argument, not a replacement for its geometric inputs.
+The later solved families and obstructions can be consulted independently.
+Sections~\ref{sec:newton}--\ref{sec:gap} distinguish the scalar Newton
+identity from the global topology and metric estimates that it does not
+supply.  This record retains those distinctions when a short-paper proof
+refers here for detail.
 
 \section{The problem}\label{sec:problem}
 
@@ -199,13 +214,13 @@ We study the Newton flow whose trajectories foliate the lemniscate.
 Statement & Status & Exact boundary \\
 \midrule
 Erd\H{o}s \#1041 & Open & No proof is claimed. \\
-Every monic trinomial $z^n+az^m+b$ & Ordinary all-degree theorem & $1\le m<n$ and every zero in the open unit disc; the middle coefficient is unrestricted and $|b|<1$ comes from Vieta.  The radial inequalities and the two-segment path are ordinary mathematics; \texttt{PaperTrinomial.lean} is not in this checkout.  Two intermediate coefficients break the radial mechanism. \\
+Every monic trinomial $z^n+az^m+b$ & Checked radial bounds; ordinary path interpretation & $1\le m<n$ and every zero in the open unit disc; the middle coefficient is unrestricted and $|b|<1$ comes from Vieta.  The pinned Abel source checks both complete spokes and the radius-sum bound.  Two intermediate coefficients can break the radial mechanism. \\
 Separated critical value, $S=2$, $n\ge3$ & Ordinary all-degree theorem & A simple selected saddle with $|1-f(d)/v|\ge2$ at every other critical point; the continuation, injectivity and area arguments are ordinary, and near ties and multiple saddles are excluded.  No existence of a separated critical value is asserted. \\
 Low critical value $\mu\le13/25$ & Ordinary all-degree theorem with an exact rational certificate & Squarefree monic, $n\ge2$, least critical-value modulus at most $13/25$; no hypothesis on root locations, component arity or component capacity.  The analytic chain and the certificate are ordinary; nothing here is Lean-checked; the regime $13/25<\mu<1$ is untouched. \\
 Unconditional constant factor $(71/10)\mu^{1/n}$ & Ordinary all-degree theorem & Monic, $n\ge2$, no further hypothesis; containment is $\{|f|\le2\mu\}$; the target set is $\{|f|<1\}$, and the constant $71/10$ exceeds the target $2$.  Degree two is the separate exact case with constant $2$. \\
 Degree three & Ordinary theorem, complete for that degree & Roots in the open unit disc, listed with multiplicity; the two selected roots are distinct in the squarefree case.  The spoke identity and its norm bound have a Lean companion in the research corpus, outside the pinned formal-source library. \\
 Critical-value separation, general $S$ & Ordinary all-degree theorem & A simple nonzero hub and $(2S^2/n)^{1/n}\log(S/(S-1))<1$; the threshold, covering and area arguments remain ordinary; near ties and multiple saddles are excluded. \\
-Critical-value budget in every degree & Ordinary theorem & $\sum_j|f(c_j)|^{1/n}\le(n-1)R$ for every $n\ge2$ and $R\ge0$, with the sharper Poisson mean $\sum_j|f(c_j)|^{2/(n-1)}\le n-1$ on the closed unit disc.  The complete mean is ordinary mathematics, not a kernel-checked assembly of \texttt{PaperCriticalValueMeanR10.lean}.  No inverse-ray length estimate is implied. \\
+Critical-value budget in every degree & Lean-checked theorem & $\sum_j|f(c_j)|^{1/n}\le(n-1)R$ for every $n\ge2$ and $R\ge0$, with the sharper Poisson mean $\sum_j|f(c_j)|^{2/(n-1)}\le n-1$ on the closed unit disc.  The complete mean is checked in \texttt{PaperCriticalValueMeanR10.lean}, with matching source-bound build evidence cited below.  No inverse-ray length estimate is implied. \\
 Coefficient energy to path length & Checked & Termwise differentiation and the length integral of the actual power series; the inverse branch and area bound must be supplied. \\
 Uniform central free-point region & Checked & Every positive number of points; $|c_i|\le\sqrt{1-e^{-2}}$, with no additional series hypotheses. \\
 Newton value equation $w'=-w$ & Checked & Away from critical points, along any trajectory tangent to $-f/f'$. \\
@@ -605,6 +620,8 @@ $66517563/9392500<71/10$.  Degree two has the exact root-segment bound
 $2\rho$.
 
 \begin{proof}[Proof architecture]
+If $f$ has a repeated zero, the constant path between two occurrences
+proves the theorem.  Otherwise $f$ is squarefree and $\mu>0$.
 Choose a critical point at level $\mu$ and a component at a regular level
 $t\in[\mu,\lambda\mu]$ that contains the corresponding first merge.  If a
 regular component $C'$ at level $\sigma$ contains $k'$ roots, winding and
@@ -1399,12 +1416,14 @@ zero value, contrary to the hypothesis.
 
 \paragraph{Formal boundary.}
 \label{rem:cubic-quotient-formal-boundary}
-Lean checks the charge identity and selection, the two-distance envelope,
-the cubic product bound, the safe-spoke disjunction in
-Theorem~\ref{lem:cubic-safe-root-spoke}, and an exact quartic falsifier for
-this charge method.  It does not check the finite $q$-fibre construction,
-root-of-unity average \emph{(14)}, zero-root fallback, pullback, or geometric
-path assembly.  These remain ordinary proof steps.
+Lean checks the charge identity, safe-spoke selection and quartic falsifier,
+and also \href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240}{the complete translated cubic fibre theorem}.  The latter supplies the finite fibre
+construction, root-of-unity average, nonzero-root selection, pullback and
+explicit rectifiable hub path under the hypotheses displayed above.
+Its exact source occurs in the successfully compiled dependency closure of
+\href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/verification/erdos1041-returned-r18-v5-full-audit-evidence.json}{the source-bound Lean build and axiom-audit record}.  The theorem gives length below $2$; the sharper
+$2\sqrt{1-|h|^2}$ reading in the proof is recorded here as an ordinary
+consequence of the mean-square identity, not as a separately audited endpoint.
 
 \paragraph{Shared assurance boundary.}
 \label{bdry:solved-polynomial-families}
@@ -1739,9 +1758,10 @@ The displayed mean, and the stronger Poisson form
 \[
  \sum_{j=1}^{n-1}|f(c_j)|^{2/(n-1)}\le(n-1)R^{2n/(n-1)},
 \]
-are ordinary mathematics in this record.
-\texttt{PaperCriticalValueMeanR10.lean} is not cited as a kernel-checked
-complete statement.
+are checked as \href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101}{the complete critical-value mean}.  This includes arbitrary centre, zero radius,
+and critical points counted with multiplicity.  The exact source hash and
+the directly audited target alias match \href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/verification/erdos1041-returned-r18-v5-full-audit-evidence.json}{the source-bound Lean build and axiom-audit record}; the source
+header's earlier candidate status predates that successful run.
 
 The stronger exponent controls concentration of the critical values.
 For $R>0$, write $r_j=|f(c_j)|^{1/n}$ and $p=n/(n-1)$. Then
@@ -2041,11 +2061,15 @@ assume $z$ is differentiable, $f'(z(t))\ne0$, and $z'(t)=N(z(t))$;
 put $w(t)=f(z(t))$.
 
 \begin{theorem}[value equation]\label{res:value}
+Let $f$ be a polynomial and $z:I\to\mathbb C$ a differentiable curve on
+an interval $I$, with $f'(z(t))\ne0$ and
+$z'(t)=-f(z(t))/f'(z(t))$ throughout $I$.  For $w=f\circ z$, one has
 $w'(t)=-w(t)$ on $I$.
 \end{theorem}
 
 \noindent The computation is one line: $w'=f'(z)\,z'=f'(z)\cdot(-f(z)/f'(z))=-f(z)=-w$.
-The kernel checks it as \lref{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}, together with the
+The kernel checks the local complex-parameter chain rule as
+\lref{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}, together with the
 differential form of the first integral,
 \lref{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}:
 \[
@@ -2053,6 +2077,8 @@ differential form of the first integral,
   \qquad\text{equivalently}\qquad
   f(z(t))=e^{-(t-t_0)}f(z(t_0)),\qquad t_0\le t,\quad t_0,t\in I .
 \]
+Integration on the real interval gives the last identity as an ordinary
+consequence of the differential equation.
 For an existing trajectory with nonzero initial value, its value moves
 inward on one positive ray; a zero value has no argument and remains zero.
 Thus $|f|<1$ is preserved for later times in that trajectory's existing
@@ -2406,8 +2432,9 @@ every degree and is conditional on the critical-value separation $S$, with the
 threshold $S=2$ reaching every degree $n\ge3$ by
 Corollary~\ref{res:critical-value-thresholds}.
 Theorem~\ref{res:trinomial-all-degree} settles the whole trinomial family in
-every degree by an ordinary radial argument.  All five are
-ordinary proofs at the level of the assembled path.  Their Lean companions check named numerical, algebraic and
+every degree by an ordinary radial argument.  Their formal coverage differs: the translated cubic fibres have a complete
+rectifiable-path theorem; the trinomial source checks both radial bounds and
+the radius sum.  The remaining companions check the named numerical, algebraic and
 power-series steps inside them, the degree-three companion lies outside the
 pinned formal-source library and carries no kernel receipt in this release,
 and the univalent branch, the area bounds and the certificate chain remain

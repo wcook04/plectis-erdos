@@ -34,6 +34,8 @@ Cyclotomic cancellation produces positive forms $`\Lambda_n=U_nF-V_n`$ with inte
 ```
 A negative exponent yields positive integral linear forms tending to zero.
 
+The order of these operations explains the region. At a rational base $`a/b`$, each remaining polynomial degree costs a power of $`b`$ when denominators are cleared. Cancelling a common cyclotomic factor first reduces that degree. The proof must then compare the actual cancelled degree with the decay of the positive remainder; divisibility alone gives neither estimate.
+
 The Hankel argument concerns a different family. Its moment expansion makes one increasing index tuple responsible for the first coefficient. The final sections explain what local cancellation can establish at $`3/2`$ and specify the real estimate that would complete that approach. The complete catalogue of other constructions and their failure witnesses is retained in the long record.
 
 <a id="sec:rational-base-irrationality"></a>
@@ -250,7 +252,7 @@ Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gi
 
 <div id="res:sevenhalves" class="theorem">
 
-**Theorem 4** (the $`7/2`$ height condition). *The [integer power certificate](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L32) $`2^{18}<7^7`$ yields the [Archimedean height condition](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
+**Theorem 4** (the $`7/2`$ height condition). *The [integer power certificate](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L32) $`2^{18}<7^7`$ yields the [Archimedean height condition](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L83)
 ``` math
 \frac{\log 7}{\log(7/2)}
  <
@@ -293,6 +295,8 @@ which is negative on the stated sufficient region. The arithmetic form of that r
 <a id="sec:hankel-order"></a>
 
 # Exact normalized-Hankel order in Zudilin’s construction
+
+Here the problem is cancellation inside a determinant. Entrywise orders give only a lower bound because terms of that order may cancel. The moment expansion below resolves this by finding one uniquely least-order index tuple, whose coefficient is nonzero. This is a formal-power-series argument; fixed-base estimates are a separate question addressed after the proof.
 
 At $`x=z=1`$, Zudilin’s normalized moments are
 ``` math
@@ -376,13 +380,13 @@ The theorem identifies the first formal term. Formal order alone would not contr
 
 <div id="res:nocorridor" class="theorem">
 
-**Theorem 7** (no corridor at base $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ is not a [coordinatewise corridor](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155).*
+**Theorem 7** (no corridor at base $`3/2`$). *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ is not a [coordinatewise corridor](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155).*
 
 </div>
 
 <div id="res:tailrec" class="theorem">
 
-**Theorem 8** (cleared-tail recurrence). *Let $`r,s,B,F\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be the cleared tail state. Then for every $`N`$ the [cleared-tail recurrence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187) is
+**Theorem 8** (cleared-tail recurrence). *Let $`r,s,B,F\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be the cleared tail state. Then for every $`N`$ the [cleared-tail recurrence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalBaseLambert.lean#L187) is
 ``` math
 U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 ```*
@@ -411,7 +415,7 @@ J_{3,R}(P)=H_W(P)\pmod{3^R},\qquad
 
 <div id="res:bottomjet" class="lemma">
 
-**Lemma 10** (bottom-jet divisibility). *Vanishing of the [bottom jet](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
+**Lemma 10** (bottom-jet divisibility). *Vanishing of the [bottom jet](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
 
 </div>
 
@@ -485,15 +489,15 @@ Primitive integer rows are unimodular modulo every modulus. A particular coordin
 ```
 Then, for integers $`n,k,m`$:*
 
-1.  *if $`0\le k\le n`$, the [summand exponent bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30) is $`\widetilde{P}(n,k)\le\widetilde{E}_n`$, and the gap factors as $`\widetilde{E}_n-\widetilde{P}(n,k)=(n-k)(3n-k-1)`$;*
+1.  *if $`0\le k\le n`$, the [summand exponent bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30) is $`\widetilde{P}(n,k)\le\widetilde{E}_n`$, and the gap factors as $`\widetilde{E}_n-\widetilde{P}(n,k)=(n-k)(3n-k-1)`$;*
 
-2.  *the [exact gap identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L52) is $`\widetilde{E}_n-\widetilde{Q}(n,m)=2\bigl(n+m(m-1)\bigr)`$.*
+2.  *the [exact gap identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L52) is $`\widetilde{E}_n-\widetilde{Q}(n,m)=2\bigl(n+m(m-1)\bigr)`$.*
 
 </div>
 
 <div id="res:content" class="proposition">
 
-**Proposition 14** (row-content determinant scaling). *Rowwise integer contents scale the [exterior determinant](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by the same factors: the [content factorisation](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and the [absolute determinant scaling](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) identify the local divisor with the Archimedean height cost.*
+**Proposition 14** (row-content determinant scaling). *Rowwise integer contents scale the [exterior determinant](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L124) by the same factors: the [content factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L94) and the [absolute determinant scaling](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L104) identify the local divisor with the Archimedean height cost.*
 
 </div>
 
@@ -615,7 +619,7 @@ The classification of Bell and Smertnig implies that $`L(z)=\sum_{n\ge1}\tau(n)z
 
 #### Artefact and data availability.
 
-The [pinned formal-source revision](https://github.com/wcook04/plectis-erdos/tree/99f4bf47422abbd8757cbb22b50ba079d764d3a7) contains the Lean sources, the fixed toolchain, and the library manifest used in the verification. The ordinary proofs used here are printed with their hypotheses.
+The [pinned formal-source revision](https://github.com/wcook04/plectis-lean-erdos249-257/tree/99f4bf47422abbd8757cbb22b50ba079d764d3a7) contains the Lean sources, the fixed toolchain, and the library manifest used in the verification. The ordinary proofs used here are printed with their hypotheses.
 
 <a id="funding-and-competing-interests."></a>
 
@@ -635,7 +639,7 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 The seven modules named below are linked at the pinned source revision 99f4bf47422a. Additional declarations in the body of the note are linked at a second immutable revision, `f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a`. These are separate snapshots, not one checked revision of the whole library. Each hyperlink opens the named declaration at the commit recorded in its URL.
 
-The declarations linked at 99f4bf47422a live in seven modules: `RationalBaseLambert`, `QAperyDiagonalNonEquivalence`, `RationalPadeArithmetic`, `ZudilinConeArithmetic`, `ZudilinHeightRegion`, `HermitePadeNoGo`, and `BezoutPluckerJets`. The first contains the corridor, cleared-tail recurrence, and elementary $`7/2`$ certificate; the second checks the finite $`n=0`$ diagonal residual; the remaining four separate the Padé exponent arithmetic, endpoint arithmetic, logarithmic comparisons, rectangular exponent model, and Bézout–Plücker tail collapse. The link coordinates for those seven modules are validated against that pinned revision, so they remain correct as later work moves lines in the working tree.
+The declarations linked at 99f4bf47422a live in seven modules: `RationalBaseLambert`, `QAperyDiagonalNonEquivalence`, `RationalPadeArithmetic`, `ZudilinConeArithmetic`, `ZudilinHeightRegion`, `HermitePadeNoGo`, and `BezoutPluckerJets`. The first contains the corridor, cleared-tail recurrence, and elementary $`7/2`$ certificate; the second checks the finite $`n=0`$ diagonal residual; the remaining four separate the Padé exponent arithmetic, endpoint arithmetic, logarithmic comparisons, rectangular exponent model, and Bézout–Plücker tail collapse. The link coordinates for those seven modules are validated against that pinned revision, so they remain correct as later work moves lines in the working tree.
 
 <div class="thebibliography">
 

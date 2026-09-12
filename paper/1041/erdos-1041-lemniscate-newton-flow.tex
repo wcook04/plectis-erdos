@@ -26,8 +26,8 @@
 
 \runninghead{Erd\H{o}s \#1041: solved families and constant-factor paths}
 \title{Sharp Solved Families and\\Constant-Factor Paths in Polynomial Lemniscates}
-\subtitle{Unconditional parent progress, exact obstructions, and frontier
-mechanisms for Erd\H{o}s Problem~\#1041}
+\subtitle{Root-to-origin segments, critical-value estimates and path
+containment for Erd\H{o}s Problem~\#1041}
 \author{Will Cook}
 \date{7 September 2026}
 
@@ -47,8 +47,8 @@ $\{|f|<(25/13)\mu\}$, with no root-location restriction.  An independent
 length--area argument and a separated-critical-value criterion give further
 geometric control.  A Poisson identity
 controls critical-value means.  Exact counterexamples isolate the geometric
-information these estimates leave undetermined.  The general problem remains
-open.
+information these estimates leave undetermined.  These results do not settle
+the unrestricted problem.
 \end{abstract}
 
 \section{Monic trinomials, in every degree}
@@ -79,11 +79,9 @@ are nonnegative, so
 \]
 At $t=1$ the value is zero.  Concatenating the two segments gives length
 $|\zeta_1|+|\zeta_2|<2$.
-The displayed statement is ordinary mathematics in this note.
-\texttt{PaperTrinomial.lean} is not in this checkout.  Lean checks Newton-flow
-decay, ray/translation geometry and root retention in
-\texttt{NewtonFlowRaySeparation.lean}, and solved-family kernels rather than
-this all-degree trinomial assembly.
+Lean checks \href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean#L330}{the trinomial radial inequalities and radius budget}, including the constant-term bound from the root-disc hypothesis.
+The conversion of those two segment inequalities and their radius-sum bound
+into the single rectifiable path stated here is an ordinary geometric step.
 \end{proof}
 
 \paragraph{A finite convex certificate.}
@@ -112,8 +110,9 @@ Indeed, after $z=rw$, the polynomial factors as
 $r^6(w^2-1)(w^4+\tfrac65 w^2+1)$, so all six roots have modulus $r$.
 However $f_r(r/2)=-(327/320)r^6$.  Any $r$ with $320/327<r^6<1$ proves the
 assertion.  Only this prescribed spoke is excluded; other connectors remain
-available.  The statement with the radius supplied is ordinary mathematics;
-\texttt{PaperTrinomial.lean} is not in this checkout.
+available.  The corresponding radial evaluation is checked in
+\href{https://github.com/wcook04/plectis-erdos/blob/0ba585f632fbbbb43af2ee9532d4e83752af3f67/ErdosProblems/Erdos1041/AbelControlPolygon.lean#L555}{the sextic guardrail}.
+The factorisation above explains the root locations.
 
 \section{The problem and the general regimes}\label{sec:problem}
 
@@ -127,6 +126,10 @@ Repeated roots give a constant path between two listed occurrences, so the
 geometric question concerns squarefree polynomials.  The original question
 is Problem~5 of Erd\H{o}s--Herzog--Piranian \cite[p.~139]{ehp1958}.
 Pendyala \cite[Thm.~1]{june2026} proves the complete degree-four case.
+A separate degree-seven counterexample has been announced on the
+\href{https://www.erdosproblems.com/1041}{problem's discussion page}.
+That external claim is not assessed in this note; the results below
+concern the stated polynomial families and sufficient conditions.
 
 Theorem~\ref{res:low-critical-thirteen-twentyfifths} treats arbitrary geometry
 when $\mu\le13/25$, without a root-location assumption.  Its scaling
@@ -197,9 +200,12 @@ lower radius $d_*>0$ and
  \sum_j\ell(d_j)\ge x:=\log(t/\mu),\qquad
  \ell(d)=-\log\tanh(d/2).
 \]
-The open balls of radius $D/2$ around the $b_j$ are disjoint.  Their
-intersections with any fixed hyperbolic circle of radius $r$ are therefore
-disjoint arcs.  The hyperbolic cosine law gives their angular half-widths
+The difficulty is to use the pairwise separation without discarding the
+radial positions of the points.  Projecting all the balls onto the circle
+of directions loses this information: balls at different radii can have
+overlapping projections.  Instead, the open balls of radius $D/2$ around
+the $b_j$ are intersected with the same hyperbolic circle of radius $r$.
+Their intersections are disjoint, possibly empty, arcs.  The hyperbolic cosine law gives their angular half-widths
 \[
  w(d,r)=\arccos\!\left[\frac{\cosh d\cosh r-\cosh(D/2)}
                               {\sinh d\sinh r}\right]_{-1}^{1},
@@ -219,10 +225,11 @@ boxed inequality is
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/PaperFiniteDual.lean#L68}{the finite dual
 arity floor, with the packing bound and the boundedness of the dual values as
 premises}; the hyperbolic supplier of those premises is ordinary.
-Angular projection alone loses the disjointness used here: balls at different
-radii may have overlapping shadows.  Common circle slices retain it.
-The resulting lower bound for $k$ feeds the length--area comparison until a
-short boundary connection is forced.  The complete comparison proof and
+The nonnegative weights combine valid bounds from several radii; the
+summation is elementary once the uniform majorant has been proved.
+Establishing that majorant and the geometric separation estimates is the
+substantive input.  The resulting lower bound for $k$ enters the
+length--area comparison until a short boundary connection is forced.  The complete comparison proof and
 rational certificate are in
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AngularBudgetLowCriticalClosure.md}{the angular budget low critical closure}.
 The certified terminal time is $635762889599/10^{12}$, and
@@ -261,6 +268,8 @@ For $n\ge3$, the choice $\lambda=2$, $r=3/20$ makes the bracket less
 than $71/10$; degree two has the exact root-segment bound $2\rho$.
 
 \begin{proof}
+A repeated zero gives a constant path of length zero, so assume $f$ is
+squarefree; then $\mu>0$.
 Write $K_t=\{|f|\le t\}$, $C_T$ for the component of $K_T$ containing a
 minimising critical point, and $A(\sigma)=\operatorname{Area}(K_\sigma\cap C_T)$.
 Degree two is the root segment of length $2\rho$ inside $K_\mu$; assume
@@ -314,10 +323,13 @@ preserved with the persistence-window argument.
 \section{Critical proximity and straight-path obstructions}
 \label{sec:critical-proximity}
 
-The strongest source-current theorem that applies in every degree is a sharp
-metric selection principle at a critical point.  It consumes the complete
-logarithmic-derivative balance rather than a degree-specific coefficient
-pattern.
+A critical point gives a different way to select two nearby roots, without
+assuming a sparse coefficient pattern.  The logarithmic-derivative balance
+prevents one root from being arbitrarily closer to the critical point than
+all the others.  This yields a bound on the sum of two distances.  To turn
+that bound into a path theorem, both connecting segments would also have to
+stay inside the lemniscate; the examples below show why that extra step
+cannot be assumed.
 
 \begin{theorem}[critical geometric-mean proximity]
 \label{res:critical-proximity}
@@ -339,8 +351,16 @@ then there are distinct indices $i,j$ such that
 \noindent The proof chooses the two smallest distances $d_i\le d_j$.
 The reciprocal balance gives $d_j\le(n-1)d_i$, while minimality and the
 geometric-mean identity give
-$d_i d_j^{\,n-1}\le r^n$.  After normalising by $r$, a sharp two-variable
-Bernoulli inequality yields $d_i+d_j\le2r$.  The complete complex theorem,
+$d_i d_j^{\,n-1}\le r^n$.  The role of the balance is visible on setting
+$t=d_j/d_i$: it restricts $t$ to $[1,n-1]$, where
+\[
+ 1+t\le2t^{(n-1)/n}.
+\]
+Indeed, $\log(2t^{(n-1)/n}/(1+t))$ vanishes at $t=1$ and has derivative
+$(n-1-t)/(nt(1+t))\ge0$ on that interval.  Consequently
+$d_i+d_j\le2(d_i d_j^{\,n-1})^{1/n}\le2r$.
+Without the reciprocal balance, the required restriction on $t$ would be
+missing.  The complete complex theorem,
 including the selector and both inequalities, is checked as
 \lword{Erdos1041/CriticalTwoRootProximity.lean}{289}{exists_two_roots_dist_sum_le_two_mul_geomMean}{the critical geometric-mean proximity}.
 
@@ -373,9 +393,10 @@ containment requires curved or topological geometry.
 \section{Solved polynomial families}
 \label{sec:solved-families}
 
-Three source-current families do cross that containment gap.  Their complete
-paper theorems are ordinary mathematics assembled from formalised
-load-bearing kernels; this section keeps that authority split explicit.
+The following families cross that containment gap by controlling entire
+spokes or segments.  The translated cubic fibre theorem has a complete
+rectifiable-path formalisation.  For the other two families, the displayed
+proofs identify the checked kernels and the ordinary geometric steps.
 
 \subsection{Translated cubic quotient fibres}
 
@@ -396,8 +417,11 @@ For that root, AM--GM and the exact cyclotomic cancellation
 $(1-t)(1+t+t^2)=1-t^3$ prove that its complete origin spoke is safe.  Lean checks
 \lword{Erdos1041/CubicQuotientFiberCase.lean}{161}{cubic_has_safe_root_spoke}{the safe cubic root-spoke fan-in}.  Pulling the spoke
 back under $y\mapsto y^q$ gives $q$ safe spokes from $h$; two different fibre
-points are joined through $h$ with length $2|y|<2$.  The finite root-of-unity
-mean-square argument and fibre assembly are ordinary, not hidden Lean claims.
+points are joined through $h$ with length $2|y|<2$.  The finite root-of-unity mean-square argument and fibre assembly are also
+formalised in \href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240}{the complete translated cubic fibre theorem}.  Its conclusion constructs the explicit
+continuous rectifiable two-segment path with strict containment and variation
+below $2$.  The exact source files occur in the successful compiled dependency
+closure of \href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/verification/erdos1041-returned-r18-v5-full-audit-evidence.json}{the source-bound Lean build and axiom-audit record}.
 
 \subsection{Primitive sparse quintics}
 
@@ -615,38 +639,53 @@ Away from the critical set, define the complex Newton field
 \[
   N(z)=-\frac{f(z)}{f'(z)} .
 \]
-Let $z(t)$ be differentiable with $z'(t)=N(z(t))$, and put $w(t)=f(z(t))$.
+Let $I\subseteq\mathbb R$ be an interval on which a differentiable curve
+$z$ satisfies $f'(z(t))\ne0$ and $z'(t)=N(z(t))$.  Put $w(t)=f(z(t))$.
 
 \begin{theorem}[value equation]\label{res:value}
-$w'(t)=-w(t)$.
+For a polynomial $f$ and a differentiable curve $z:I\to\mathbb C$ on an
+interval $I$, assume $f'(z(t))\ne0$ and
+$z'(t)=-f(z(t))/f'(z(t))$ throughout $I$.  Then $w=f\circ z$ satisfies
+$w'=-w$, and
+\[
+ f(z(t))=e^{-(t-t_0)}f(z(t_0))\qquad(t,t_0\in I).
+\]
 \end{theorem}
 
-\noindent The computation is one line: $w'=f'(z)\,z'=f'(z)\cdot(-f(z)/f'(z))=-f(z)=-w$.
-The kernel checks it as
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{the Newton-flow value equation},
-together with the differential form of the first integral,
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{vanishing of the exponentially scaled value}:
-\[
-  \frac{d}{dt}\Bigl(e^{t}f(z(t))\Bigr)=0,
-  \qquad\text{equivalently}\qquad
-  f(z(t))=e^{-t}f(z(0)) .
-\]
-Observe what this says about the geometry.  The value moves radially inward at
-exponential rate and never changes argument.  The lemniscate $\{|f|<1\}$ is
-therefore forward-invariant, and the flow lines are exactly the preimages of
-rays from the origin.
+\noindent The local computation is one line:
+$w'=f'(z)z'=-f(z)=-w$.  Multiplication by $e^t$ and integration on $I$
+give the displayed identity.  Lean checks the local complex-parameter
+chain rule as
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{the Newton-flow value equation}
+and its scaled zero-derivative form as
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{vanishing of the exponentially scaled value}.
+The integrated real-time assertion above is an ordinary consequence.
+
+For an existing trajectory with nonzero initial value, the value moves
+inward on one positive ray.  A zero value remains zero and has no argument.
+Thus a trajectory starting in $\{|f|<1\}$ stays there at later times in
+its interval of existence.  The equation neither constructs a global
+trajectory nor identifies a whole ray preimage with one flow line.
 
 \begin{corollary}[ray separation]\label{res:ray}
-The values $f$ at the endpoints of any finite Newton-flow connection lie on
-the same oriented ray from $0$ in the value plane; the trajectory in $z$ need
-not be radial.  Consequently, if two critical values lie on distinct positive
-rays, no Newton-flow saddle connection joins the corresponding critical points.
+Let $a<b$, let $z:[a,b]\to\mathbb C$ be continuous, and suppose $z$ is
+differentiable on $(a,b)$ with $f'(z(t))\ne0$ and
+$z'(t)=-f(z(t))/f'(z(t))$ there.  Then
+\[
+ f(z(b))=e^{a-b}f(z(a)).
+\]
+If the endpoint values are nonzero, they lie on the same positive ray.
+In particular, critical points whose values lie on distinct positive rays
+cannot be the endpoints of such a finite connection.
 \end{corollary}
 
-\noindent This is checked in consumer form: the kernel accepts
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}{the implication from distinct rays to the absence of a Newton connection}.
-It is the statement the topology needs, and it is a genuine sharpening of the criterion
-used in the literature.
+\noindent Apply the value equation inside $(a,b)$ and pass to the
+endpoints by continuity.  This does not evaluate $-f/f'$ at a critical
+endpoint.  Lean checks the algebraic contradiction from an assumed
+exponential endpoint relation in
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}{the distinct-ray endpoint implication};
+the existence and endpoint behaviour of trajectories are additional
+geometric questions.
 
 \section{Arguments, not moduli}\label{sec:arguments}
 
@@ -988,8 +1027,11 @@ The constant is attained by $f(z)=(z-h)^n-\lambda$ with $|\lambda|=R^n$.
 These ordinary analytic proofs are recorded in
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/FreePointQuadraticAllDegrees.md}{free point quadratic all degrees} and
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/CentredCircleQuadrinomialConnector.md}{centred circle quadrinomial connector}.
-The circle comparison and finite Taylor-coefficient identity have checked
-kernels; Poisson integration and the maximum-principle assembly remain ordinary.
+Lean checks \href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean#L101}{the complete critical-value mean}, with the complete all-degree conclusion,
+arbitrary centre, $R=0$, and critical points counted with multiplicity.
+The exact source bytes and its directly audited target alias are recorded in
+\href{https://github.com/wcook04/plectis-erdos/blob/27c2fc5fe3c55fe547feaeb4c9bb68b3cf63a5bf/verification/erdos1041-returned-r18-v5-full-audit-evidence.json}{the source-bound Lean build and axiom-audit record}.  The argument above explains that statement; the earlier
+candidate status in the source header predates the successful audit.
 A critical-value mean supplies no attachment or path-length estimate by itself.
 
 \section{The exact nonlinear lifetime currency}

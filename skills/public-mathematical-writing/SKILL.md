@@ -46,6 +46,17 @@ exists, and the present paper or result guide. Keep these distinctions intact:
 If the sources disagree, stop the prose edit and repair the authority surface
 first. A smoother paragraph cannot settle a mathematical discrepancy.
 
+A declaration present in the checkout is not, by itself, a validation receipt.
+Read candidate or unrun status notes and identify the checked source version
+before calling it Lean-checked. When reconciling short and long papers, do not
+copy the stronger evidence label merely because one version already uses it.
+Conversely, a successful audit bound to the current source bytes can supersede
+an older unrun header; read that receipt before repeating the older label.
+Compare the exact mathematical domains as well: a local complex-parameter
+chain rule does not itself formalise an integrated real-time trajectory or its
+endpoint behaviour. State separately the checked lemma and any ordinary
+argument that supplies the advertised conclusion.
+
 ## Write for the reader in front of you
 
 A human front door should first answer four ordinary questions in prose: what

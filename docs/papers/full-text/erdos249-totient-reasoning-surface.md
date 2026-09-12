@@ -26,9 +26,11 @@ This is a reasoning surface, not an exhaustive corpus export or a literature sur
 
 Erdős Problem 249 is open. No section of this document claims otherwise, and a reduction of the problem to another statement is recorded as a reduction, never as progress toward a solution.
 
-<a id="the-problem-and-what-is-actually-known"></a>
+<a id="totient-sections-tail-differences-and-the-irrationality-question"></a>
 
-# The problem, and what is actually known
+# Totient sections, tail differences, and the irrationality question
+
+The dyadic sections $`n\mapsto\varphi(2^jn+r)`$ through each level $`e\ge1`$ have exact rational rank $`2^e+1`$. The two zero-residue sections and the odd-residue sections give independent coordinates; scalar reductions recover the omitted sections. The short paper proves the corresponding integral normal form and explains the evaluation-matrix argument. This record supplies the tail identities, countermodels, and individual arithmetic constructions needed to compare that structure with the irrationality question.
 
 Let $`\varphi`$ be Euler’s totient function and put
 ``` math
@@ -36,7 +38,7 @@ S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}}
   \;=\; \tfrac12 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
   \;=\; 1.3676308019850223\ldots
 ```
-The series converges absolutely because $`\varphi(n) \le n`$. Erdős Problem \#249 asks whether $`S`$ is irrational. *It is open.* Nothing in this document decides it, no route recorded here is a proof, and no result here should be read as an approach that is close to working. What this document does is different in kind: it assembles every recorded failure, obstruction, countermodel and dead route the programme has produced against \#249, and classifies each one by the exact class of argument it eliminates. The claim being made is that those failures are not independent — they are repeated measurements of a single obstruction, and that obstruction has a shape which can be stated.
+The series converges absolutely because $`\varphi(n) \le n`$. Erdős Problem \#249 asks whether $`S`$ is irrational, which remains open. The exact rank theorem controls linear relations among coefficient sections. Irrationality requires information about their weighted infinite sum. The countermodels below explain several ways that a passage from coefficient structure to the sum can fail. Each excludes its stated assumptions; they do not establish a single obstruction theorem covering all possible methods.
 
 <div class="rem">
 
@@ -85,7 +87,7 @@ The following hold with no irrationality hypothesis. They are the results a spec
 
 <div id="thm:denom" class="thm">
 
-**Theorem 3** (Denominator exclusion — the headline unconditional fact). *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds $`Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}`$. Equivalently, $`S \ne p`$ for every $`p \in \mathbb{Q}`$ with $`p.\mathrm{den} \le Q_0`$. The bound is sharp for the method: $`q = Q_0 + 1`$ is the exact first failing denominator, exhibited as the mediant of two explicit unimodular Farey neighbours. `coord:farey` <span class="sans-serif">scale:bounded</span> <span class="sans-serif">\[Lean\]</span>*
+**Theorem 3** (Denominator exclusion from a fixed Farey window). *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds $`Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}`$. Equivalently, $`S \ne p`$ for every $`p \in \mathbb{Q}`$ with $`p.\mathrm{den} \le Q_0`$. The bound is sharp for this window: $`q = Q_0 + 1`$ is the exact first failing denominator, exhibited as the mediant of two explicit unimodular Farey neighbours. `coord:farey` <span class="sans-serif">scale:bounded</span> <span class="sans-serif">\[Lean\]</span>*
 
 </div>
 
@@ -131,29 +133,27 @@ Propositions <a href="#prop:sign" data-reference-type="ref" data-reference="pro
 
 <a id="sec:wall"></a>
 
-# The wall
+# What the countermodels exclude
 
-This programme has produced many exact reformulations of \#249 and no proof. That is the honest summary, and the rest of this section is an argument that it is also the wrong way to read the record. The reformulations do not fail independently. They fail in a small number of recurring ways, and when each failure is stated as a claim about *which class of argument it eliminates* rather than as a report that something did not work, the classes fit together into one obstruction with a describable shape. A hundred reformulations that all die are not a hundred failures; they are a hundred measurements of one wall, taken from different angles. The measurements are below.
+The countermodels distinguish information that determines a finite calculation from information that forces nonintegrality at unbounded indices. A fixed prefix, parity at every index, and a specified finite collection of linear relations are different hypotheses. The useful conclusion in each case is the precise information a rational control sequence can preserve.
 
-The thesis, in one sentence: *every barrier in the record is a bound, and the quantity a certificate measures is invariant under exactly the bounds that make an argument finite.*
+<a id="range-resolution-and-the-scope-of-an-obstruction"></a>
 
-<a id="the-plane-the-barriers-live-on"></a>
-
-## The plane the barriers live on
+## Range, resolution, and the scope of an obstruction
 
 Fix two axes for a hypothetical proof of $`\mathrm{Sep}`$ (Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a>): the *range* of indices at which it consults $`\varphi`$, and the *resolution* at which it consults them. Two derived axes matter as well: the size of the proof’s internal bookkeeping (carry state, $`\mathbb{Q}`$-rank, shift-polynomial degree), and whether the target is asserted *pointwise* at a chosen index or as an *average* over a block.
 
-- The quadrant \[full resolution $`\times`$ bounded range\] is closed by Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">13</a> (B1): $`\varphi`$ may be pinned exactly on $`[1,B]`$ and the series can still be rational.
+- Fixed-prefix information alone is excluded by Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">13</a> (B1): $`\varphi`$ may be pinned exactly on $`[1,B]`$ and the series can still be rational.
 
-- The complementary quadrant \[coarse resolution $`\times`$ unbounded range\] is closed by Proposition <a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> (B7): $`\varphi`$’s parity may be pinned at *every* index, together with boundedness, $`c(n) \le n`$, and arbitrarily strong aperiodicity, and the series can still be $`3/2`$.
+- Parity information alone is excluded by Proposition <a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> (B7): $`\varphi`$’s parity may be pinned at *every* index, together with boundedness, $`c(n) \le n`$, and arbitrarily strong aperiodicity, and the series can still be $`3/2`$.
 
-- The remaining quadrant is closed *whenever the proof compresses*: B5 (no bounded carry state, no fixed-precision signature) and B6 (four independent finite truncations of the totient kernel, all with trivial kernel).
+- B5 treats the stated bounds on carry state and precision. B6 treats the displayed linear relations and truncations. Neither is a theorem against every finite-state or compressed argument.
 
-- B4 closes the one construction that tried to reach the good quadrant by *prescribing* values: residue engineering pays for amplitude in position, and position enters the certificate radius.
+- B4 records the cost of the specified congruence construction: prescribing divisibility can increase the index, which also increases the certificate’s tail bound.
 
-- B2 closes the escape of retargeting; B3 records that no bounded result in the corpus has ever promoted.
+- B2 identifies exact equivalences; their value depends on what new estimate the changed coordinates permit. B3 records finite checks and does not supply their missing universal quantifier.
 
-The corpus’s own results partition along these axes perfectly, which is the first evidence that the axes are the right ones. Every unconditional *finite* deposit (Proposition <a href="#prop:deposits" data-reference-type="ref" data-reference="prop:deposits">4</a>, the $`K=240`$ Farey rung of Theorem <a href="#thm:denom" data-reference-type="ref" data-reference="thm:denom">3</a>, the actual-LCM orbits at $`a = 4`$ and $`a = 6`$) sits at full resolution and bounded range, so B1 says extending them is evidence forever and proof never. Every unconditional *cofinal* theorem (letterwise positivity for all $`a \ge 8`$, the tail bounds from $`\varphi(m) \le m`$, unbounded Mersenne-shadow denominator growth) sits at coarse resolution and unbounded range, and Proposition <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a> proves in the corpus’s own coordinate that this is exactly half a certificate.
+The finite certificates in Proposition <a href="#prop:deposits" data-reference-type="ref" data-reference="prop:deposits">4</a> and the $`K=240`$ Farey calculation in Theorem <a href="#thm:denom" data-reference-type="ref" data-reference="thm:denom">3</a> have bounded ranges. B1 excludes an inference from one such fixed range uniformly over the whole coefficient class. It does not exclude a proof using the arithmetic of $`\varphi`$ at arbitrarily large horizons. Likewise, the cofinal positivity theorem does not by itself separate the residue from the top edge: that is the additional information identified by Proposition <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a>.
 
 <a id="b1-the-finite-inspection-barrier-as-a-theorem"></a>
 
@@ -455,7 +455,9 @@ It is equivalent to $`\mathrm{Irrational}(S)`$. `coord:period-ray` <span class="
 
 </div>
 
-For the actual totient series, $`\mathrm{ApFullDepthEscape}`$ is equivalent to irrationality, by the full-depth amplification argument of the short note (Theorem 3.1 there). For a fixed pair $`(d,N)`$, a nonintegral tail difference supplies a certificate in every sufficiently late adjacent pair of multipliers. The missing arithmetic input is a nonintegral seed for every relevant pair, not a converse implication for the depth-locked condition. This remains an exact reformulation of the open problem, not a proof of it. It evades B1 (both $`N`$ and $`t`$ unbounded), B4 (locking depth to the period means the entire word accumulates and no letter is prescribed), B5 and B6 (no state, no rank). Its substance is pure anti-concentration: the difference of two adjacent period blocks must have central residue mod $`2^{h}`$ at some multiple period $`h = td`$, and the room condition is automatic once $`h`$ is large, so nothing but the residue’s position is at stake.
+For the actual totient series, $`\mathrm{ApFullDepthEscape}`$ is equivalent to irrationality, by the full-depth amplification argument of the short note (Theorem 3.1 there; ). For a fixed pair $`(d,N)`$, a nonintegral tail difference supplies a certificate in every sufficiently late adjacent pair of multipliers. The missing arithmetic input is a nonintegral seed for every relevant pair, not a converse implication for the depth-locked condition. This remains an exact reformulation of the open problem, not a proof of it. An older one-direction lemma () is still on disk; it is not the current classification.
+
+It evades B1 (both $`N`$ and $`t`$ unbounded), B4 (locking depth to the period means the entire word accumulates and no letter is prescribed), B5 and B6 (no state, no rank). Its substance is pure anti-concentration: via , the difference of two adjacent period blocks must have central residue mod $`2^{h}`$ at some multiple period $`h = td`$, and the room condition is automatic once $`h`$ is large, so nothing but the residue’s position is at stake.
 
 **Honest demotion,** identical to Survivor 3: it is a pointwise producer and names an index. It is listed because it is the cleanest target for computational exploration — with Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">13</a> as the standing reminder that no amount of such exploration becomes a proof. <span class="sans-serif">\[Open\]</span>
 
@@ -1939,7 +1941,7 @@ The 4243-line addition to `DiagonalFreshLossBridge` isolates, at the level of in
 
 <div class="lem">
 
-**Lemma 192** (Separated-pairs energy floor). *For a finite family $`z:T\to\mathbb{C}`$ and any set of pairs $`P\subseteq
+**Lemma 192** (Separated-pairs energy floor). *For a finite family $`z:T\to\mathbb{C}`$, a real number $`\delta\ge0`$, and any set of pairs $`P\subseteq
 T\times T`$ each separated by $`\ge\delta`$, $`|P|\cdot\delta^2 \le
 \sum_{i,j\in T}\|z_i-z_j\|^2`$. `coord:other:pivot-fiber`.*
 
@@ -3532,7 +3534,7 @@ This is an anti-concentration statement about the diagonal word’s residue at t
 
 <div class="prop">
 
-**Proposition 241** (What would close it). *A scale-uniform version of the same shape: $`\exists f:\mathbb N\to\mathbb N`$ with $`f(N)\to\infty`$ such that $`\forall N_0\ \exists N\ge N_0\ \exists L`$ with $`\mathtt{certifiedKill}\ h\ N\ L`$ for all $`h\le f(N)`$. This implies the obligation immediately (fix $`h`$, take $`N_0`$ large enough that $`f(N)\ge h`$) and, unlike the obligation, is a statement about one window at a time rather than a per-period search.*
+**Proposition 241** (What would close it). *A scale-uniform version of the same shape: $`\exists f:\mathbb N\to\mathbb N`$ with $`f(N)\to\infty`$ such that $`\forall N_0\ \exists N\ge N_0\ \exists L`$ with $`\mathtt{certifiedKill}\ h\ N\ L`$ for all $`1\le h\le f(N)`$. This implies the obligation immediately (fix $`h\ge1`$, take $`N_0`$ large enough that $`f(N)\ge h`$) and, unlike the obligation, is a statement about one window at a time rather than a per-period search.*
 
 </div>
 
@@ -3704,7 +3706,7 @@ This row runs a second, independent open obligation in parallel to 249-supply, i
 
 <div class="prop">
 
-**Proposition 262** (What would close it). *A rationality-side rank upper bound: $`\exists C`$ such that any tempered integral binary carry orbit for a rational $`\mathtt{binaryCoeffSeries}`$ has $`\mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathtt{canonicalCarryKernelFamily}\ u\ e)\le C`$ for all $`e`$, or any bound growing slower than $`2^e{-}1`$. `not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` (`TotientTailCarryPeriod.lean:224`) pins the obstacle precisely: rationality buys uniform eventual periodicity of $`u`$’s dyadic sections mod $`v`$, and that periodicity provably does *not* promote to a $`\mathbb Q`$-rank bound without extra arithmetic input.*
+**Proposition 262** (The extra hypothesis needed by a rank argument). *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that every rational coefficient series has bounded tempered-carry rank is ruled out by the rational control recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. `not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` (`TotientTailCarryPeriod.lean:224`) pins the obstacle precisely: rationality buys uniform eventual periodicity of $`u`$’s dyadic sections mod $`v`$, and that periodicity provably does *not* promote to a $`\mathbb Q`$-rank bound without extra arithmetic input.*
 
 </div>
 
@@ -3835,9 +3837,12 @@ The upstream primitive these import, and , gives the exact survival/cancellation
 
 <div class="prop">
 
-**Proposition 266** (Locked reconstruction preserves a nonzero minor). *For a monomial matrix $`\mathrm{residualMonomialMatrix}(e,r,z)(i,j) =
-r(i,j)\cdot z(j)^{e(i)}`$ with all residual entries $`z(j)\ne0`$ and $`e(i)=1`$ for a distinguished row $`i`$: $`\det(\mathrm{phasePowerMatrix})
-\ne0 \implies \det(\mathrm{residualMonomialMatrix})\ne0`$, *and* the distinguished row is identically $`1`$ regardless.*
+**Proposition 266** (Locked reconstruction preserves a nonzero minor). *Let $`e:\mathrm{Fin}\,d\to\mathbb N`$ and $`z:\mathrm{Fin}\,d\to\mathbb C`$, with $`z(j)\ne0`$ for every $`j`$, and fix a row $`i_0`$ with $`e(i_0)=1`$. Use the locked column weights $`W(j)=z(j)^{-1}`$, so that
+``` math
+\mathrm{residualMonomialMatrix}(e,W,z)(i,j)
+ =W(j)z(j)^{e(i)}.
+```
+If $`\det(\mathrm{phasePowerMatrix}(e,z))\ne0`$, then $`\det(\mathrm{residualMonomialMatrix}(e,W,z))\ne0`$, and every entry of row $`i_0`$ is $`1`$.*
 
 </div>
 
@@ -4428,7 +4433,7 @@ Three features make this the sharpest available target.
 \mathrm{ApFullDepthEscape} :\equiv
   \forall d\ge 1\ \forall N\ \exists t\ge 1:\ \mathrm{certifiedKill}(td,\,N,\,td),
 ```
-unpacked, $`(N+2td+2:\mathbb{Z})<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)`$. The depth-locked condition is equivalent to irrationality; the remaining gap is a nonintegral seed for every ray and basepoint, not an unknown converse.
+unpacked, $`(N+2td+2:\mathbb{Z})<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)`$. , consumer , ambient equivalence , equivalence . The depth-locked condition is equivalent to irrationality; the remaining gap is a nonintegral seed for every ray and basepoint, not an unknown converse.
 
 <a id="what-it-says-an-anti-self-similarity-statement-about-the-digits-of-s-alone."></a>
 
