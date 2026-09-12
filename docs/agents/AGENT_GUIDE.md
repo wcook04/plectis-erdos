@@ -3,13 +3,11 @@
 
 # Agent guide
 
-This is an ordinary public Lean project and a pinned scholarly artefact. It is
-not an entrypoint into any private development system. Work only from the files
-in this repository, and never infer unpublished results or private machinery.
-The checkout is nevertheless a deliberately curated public projection from a
-larger ongoing formal-mathematics workflow: its release discipline, claim
-registry, graph structure, generated atlas, and adversarial checks are public
-evidence of that workflow. They do not create hidden proof authority.
+This is a public Lean project and pinned scholarly artefact, not an entrypoint
+into a private development system. Work only from this repository. Its release
+discipline, claim registry, graph, atlas, and adversarial checks are public
+workflow evidence; they create no hidden proof authority. Do not infer
+unpublished results or private machinery.
 
 Use [docs/agents/AGENT_WORKBENCH.md](AGENT_WORKBENCH.md) for the compact command
 routes and [CONTRIBUTING.md](../../CONTRIBUTING.md) for contribution mechanics. This
@@ -129,11 +127,8 @@ Every route needed for that drilldown is tracked in this public repository; no
 
 ## Verdict first
 
-The likely cold-agent error here is to skim a large Lean corpus with two
-reviewed problem lanes and eight problem-owned expansion lanes, then conclude
-"restatements of the original problem." That conclusion is partly right and
-mostly wrong, and you do not have to guess which: the semantic graph classifies
-every statement, so ask it instead of reading modules.
+Do not skim the Lean corpus and classify everything as a restatement. The
+semantic graph records that classification; query it before reading modules.
 
 ```sh
 python3 scripts/query_semantic.py nonrecurring --problem 257 --limit 12
@@ -153,15 +148,12 @@ The current all-problem counts are builder-owned in
 `docs/RESULTS.md` and `docs/reference/TRUTH_AUDIT.md`; do not copy a dated #249/#257
 sample into this static entry file.
 
-**None of those counts is a novelty claim.** `classical` is exactly the set already in
-the literature; `nonrecurring` asks whether a statement recurs *inside this
-corpus*, not whether it is new to mathematics. Novelty is a judgement for a
-human number theorist, and no query here supplies it. (The README's ten-minute
-verdict counts a different population — substantial antecedents extracted from
-conditional results — so its `23`/`17` and these totals are not in conflict.)
+**None of those counts is a novelty claim.** `classical` marks literature;
+`nonrecurring` means only that a statement does not recur in this corpus.
+Novelty requires human mathematical judgement. The README's `23`/`17` counts a
+different population: substantial antecedents extracted from conditional results.
 
-Three things follow, and an agent reporting on this repository should carry all
-three rather than any one of them.
+Carry all three conclusions below when reporting on this repository.
 
 1. **The reviewed mathematical weight is not exhausted by #249.** The
    unconditional #257 material (full-support
@@ -241,40 +233,26 @@ Lean build when a result must be checked.
    python3 scripts/verify_claims.py --claim <claim_id>
    ```
 
-   It prints the public statement, re-reads each declaration out of the Lean
-   source at its recorded position rather than reprinting the register's
-   coordinates, names the Comparator interface that restates the result under a
-   fixed axiom budget or reports that no selected interface carries this claim
-   id, resolves the claim's paper label to the write-up that carries it, and
-   ends on the typed boundary: what the status is allowed to mean, which open
-   propositions still target the claim, and what the release does not assert.
-   Do not read a Comparator binding as independent verification: it checks a
-   separately declared statement under configured axioms, and the register's own
-   boundary sentence is printed alongside it. `query_corpus.py --claim` remains
-   the route for argument-graph neighbours; this is the route for reading the
-   proof text, the second formal check, and the limit together. On a shallow clone it exits 2 and says so,
-   because a truncated history cannot answer questions about pinned identity
-   and must never be read as a failed claim.
+   It re-reads each declaration from Lean source, resolves the paper, reports
+   the Comparator interface or its absence, and prints the typed status and open
+   boundary. Comparator is a separate statement checked under configured
+   axioms, not independent verification. Use `query_corpus.py --claim` for
+   argument-graph neighbours. On a shallow clone this command exits 2 because
+   truncated history cannot establish pinned identity; that is not a failed claim.
 3. Read `docs/methodology.json` before changing a public claim. It defines
    the evidence responsibilities, change classes, required reviews, and local
    claim, guard, and negative-fixture references for each rule.
    `docs/METHODOLOGY.md` is the shorter human projection.
-4. Read `docs/corpus_descriptor.json` when another agent or system needs to
-   register this repository as a mathematical corpus. It separates the pinned
-   proof-source commit from the content-addressed navigation projection, and
-   carries bounded principal handles plus digest-bound expansion routes for
-   both authored papers and the paper-to-Lean source-sigil crosswalk. Generated
-   navigation does not pretend to contain the Git commit that first contains
-   its own bytes. These authored surfaces remain distinct from Lean proof
-   authority. The release gate keeps this registration envelope below 64 KB.
-5. Read `docs/publication_entry_packet.json` when the task concerns the
-   systems paper, publication controls, mutation evidence, or their current
-   limits. It is a generated, bounded agent packet containing the thesis,
-   checked claims and non-claims, historical and current evidence snapshots,
-   authority owners, content hashes, validation commands, and active evidence
-   residuals. It is navigation, not Lean proof authority or historical
-   evidence authority. Its authored source is
-   `docs/publication_entry_source.json`.
+4. Read `docs/corpus_descriptor.json` to register this mathematical corpus. It
+   separates the pinned proof source from content-addressed navigation and
+   carries bounded handles and digest-bound expansion routes for papers and the
+   paper-to-Lean crosswalk. It is generated navigation, not proof authority,
+   and the release gate keeps it below 64 KB.
+5. Read `docs/publication_entry_packet.json` for the systems paper, publication
+   controls, mutation evidence, and their limits. This bounded navigation packet
+   records claims, non-claims, owners, hashes, commands, and residuals; its
+   authored source is `docs/publication_entry_source.json`. It is neither proof
+   authority nor historical-evidence authority.
 6. Read `docs/publication_contract.json` for the exact inventory of shipped
    manuscripts and PDFs, their content identities, their evidence boundaries,
    and their entry routes. It owns publication-artifact coverage, not
