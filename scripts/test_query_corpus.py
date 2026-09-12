@@ -3373,9 +3373,22 @@ def main() -> int:
             "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
             "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
         ]
+        coefficient_paper = "paper/251/erdos-251-prime-gap-dyadic-series.tex"
+        # These declarations now have a dedicated exposition section. Bind the
+        # route to that authored section while allowing earlier prose to grow.
+        carry_section_lines = [
+            line_number
+            for line_number, line in enumerate(
+                (ROOT / coefficient_paper).read_text(encoding="utf-8").splitlines(),
+                start=1,
+            )
+            if r"\label{sec:carry}" in line
+        ]
+        assert len(carry_section_lines) == 1
+        coefficient_anchor = f"{coefficient_paper}:{carry_section_lines[0]}"
         assert any(
             anchor["source_ref"]
-            == "paper/251/erdos-251-prime-gap-dyadic-series.tex:1"
+            == coefficient_anchor
             and set(anchor["matched_declarations"])
             == {
                 "carryPartialSum_natCast_eq",
