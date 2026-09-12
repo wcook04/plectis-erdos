@@ -93,6 +93,7 @@ REQUIRED_COMMANDS = (
     "python3 -O scripts/test_research_contributions_committed_sources.py",
     "python3 scripts/test_validate_research_return.py",
     "python3 -O scripts/test_validate_research_return.py",
+    "python3 scripts/test_proof_workbench.py",
     "python3 scripts/test_continue_research.py",
     "python3 -O scripts/test_continue_research.py",
     "python3 scripts/test_query_route_memory.py",
@@ -156,6 +157,9 @@ def workflow_errors(text: str) -> list[str]:
     for command in REQUIRED_COMMANDS:
         if text.count(command) != 1:
             errors.append(f"workflow must run exactly once: {command}")
+    for path in ("scripts/proof_workbench.py", "scripts/test_proof_workbench.py"):
+        if text.count(f'      - "{path}"') != 2:
+            errors.append(f"workflow must watch workbench changes on pull requests and pushes: {path}")
     for forbidden in FORBIDDEN_ENV:
         if forbidden in text:
             errors.append(f"workflow reintroduced a setting that breaks checkout: {forbidden}")
@@ -242,11 +246,19 @@ def main() -> int:
         "test_research_return_workflow.py",
     )
     require_rejection(workflow + "\n# actions/cache\n", "actions/cache")
+    require_rejection(
+        workflow.replace("          python3 scripts/test_proof_workbench.py\n", "", 1),
+        "must run exactly once: python3 scripts/test_proof_workbench.py",
+    )
+    require_rejection(
+        workflow.replace('      - "scripts/proof_workbench.py"\n', "", 1),
+        "must watch workbench changes",
+    )
 
     print(
         "research-return workflow contract: green; "
         f"{len(REQUIRED_COMMANDS)} required consumers, "
-        f"{len(REPRODUCIBILITY_ENV)} environment pins, 8 adversarial mutations rejected"
+        f"{len(REPRODUCIBILITY_ENV)} environment pins, 10 adversarial mutations rejected"
     )
     return 0
 

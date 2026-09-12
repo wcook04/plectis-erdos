@@ -24,6 +24,8 @@ on:
       - "scripts/build_research_contributions.py"
       - "scripts/continue_research.py"
       - "scripts/test_continue_research.py"
+      - "scripts/proof_workbench.py"
+      - "scripts/test_proof_workbench.py"
       - "scripts/test_accept_research_return.py"
       - "scripts/test_research_contributions.py"
       - "scripts/route_memory_receipt.py"
@@ -64,6 +66,8 @@ on:
       - "scripts/build_research_contributions.py"
       - "scripts/continue_research.py"
       - "scripts/test_continue_research.py"
+      - "scripts/proof_workbench.py"
+      - "scripts/test_proof_workbench.py"
       - "scripts/test_accept_research_return.py"
       - "scripts/test_research_contributions.py"
       - "scripts/route_memory_receipt.py"
@@ -236,6 +240,7 @@ jobs:
           set -euo pipefail
           python3 scripts/test_validate_research_return.py
           python3 -O scripts/test_validate_research_return.py
+          python3 scripts/test_proof_workbench.py
           python3 scripts/test_continue_research.py
           python3 -O scripts/test_continue_research.py
           python3 scripts/test_query_route_memory.py

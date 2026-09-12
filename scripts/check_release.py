@@ -252,6 +252,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_check_release_environment.py"),
         ],
+        "proof_workbench": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_proof_workbench.py"),
+        ],
         "computation_replay": [
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
@@ -2801,7 +2805,7 @@ def main(argv: list[str] | None = None) -> int:
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "computation_replay",
+        "proof_workbench", "computation_replay",
     ):
         result = late_checks[name]
         check(result.returncode == 0,

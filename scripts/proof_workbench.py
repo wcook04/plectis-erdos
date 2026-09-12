@@ -428,13 +428,24 @@ def _base_record(session: Session, kind: str) -> dict[str, Any]:
 
 
 def _require_writable_session(session: Session, action: str) -> None:
-    """Reject mutations that would append to a missing or terminal session."""
+    """Reject mutations of missing, terminal, or unterminated session ledgers."""
     if not session.exists():
         raise SystemExit(f"unknown session: {session.slug}")
     moves = session.moves()
     if not moves or moves[-1]["kind"] == "session_closed":
         raise SystemExit(
             f"{action} refused: session {session.slug} is already closed or not open"
+        )
+    try:
+        with session.ledger_path.open("rb") as handle:
+            handle.seek(-1, os.SEEK_END)
+            terminated = handle.read(1) == b"\n"
+    except OSError as exc:
+        raise SystemExit(f"cannot read workbench ledger {session.ledger_path}: {exc}") from exc
+    if not terminated:
+        raise SystemExit(
+            f"{action} refused: ledger has no final newline: {session.ledger_path}; "
+            "inspect it and restore the final newline before retrying, or use a new session name"
         )
 
 
@@ -586,21 +597,60 @@ def _validate_claim_evidence(
             _stored_probe_source(session, cited, action)
 
 
+def _rollback_session_open(
+    session: Session,
+    created: dict[Path, tuple[int, int]],
+    opening_record: bytes,
+) -> str | None:
+    """Remove this attempt's artifacts only while its exclusive ownership holds."""
+    try:
+        for path, identity in created.items():
+            status = path.lstat()
+            if (status.st_dev, status.st_ino) != identity:
+                return f"partial session retained: artifact was replaced: {path}"
+        expected_children = {
+            path for path in created if path.parent == session.directory
+        }
+        if set(session.directory.iterdir()) != expected_children:
+            return f"partial session retained: unexpected artifacts in {session.directory}"
+        if session.probes_dir in created and any(session.probes_dir.iterdir()):
+            return f"partial session retained: unexpected probe artifacts in {session.probes_dir}"
+        if session.ledger_path in created:
+            with session.ledger_path.open("rb") as handle:
+                contents = handle.read(len(opening_record) + 1)
+            if not opening_record.startswith(contents):
+                return f"partial session retained: ledger changed: {session.ledger_path}"
+            # A complete opening record is already public to normal workbench
+            # commands. A note may have succeeded after the read above, so no
+            # later snapshot check can make deleting this ledger safe. Keep a
+            # valid JSON prefix even if the final newline was not written.
+            try:
+                json.loads(contents)
+            except (UnicodeError, json.JSONDecodeError):
+                pass
+            else:
+                return (
+                    f"session retained: opening ledger is readable at {session.ledger_path}; "
+                    "inspect it before continuing, or choose a new session name to retry"
+                )
+        for path in reversed(created):
+            if path == session.ledger_path:
+                path.unlink()
+            else:
+                path.rmdir()
+    except OSError as exc:
+        return f"partial session cleanup failed: {session.directory}: {exc}"
+    return None
+
+
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     if not isinstance(args.actor, str) or not args.actor.strip():
         raise SystemExit("open refused: actor identity must be non-empty")
     if not isinstance(args.intent, str) or not args.intent.strip():
         raise SystemExit("open refused: intent must be non-empty")
-    if session.exists():
+    if session.directory.exists() or session.directory.is_symlink():
         raise SystemExit(f"session already exists: {session.directory}")
-    try:
-        session.probes_dir.mkdir(parents=True, exist_ok=True)
-        session.ledger_path.touch()
-    except OSError as exc:
-        raise SystemExit(
-            f"cannot create workbench session {session.directory}: {exc}"
-        ) from exc
     record = {
         "schema": SESSION_SCHEMA,
         "move_id": "m001",
@@ -615,7 +665,34 @@ def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
             " kernel authority"
         ),
     }
-    return session.append(record)
+    try:
+        opening_record = (json.dumps(record, sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8")
+    except UnicodeError as exc:
+        raise SystemExit("open refused: session metadata must be valid UTF-8 text") from exc
+    created: dict[Path, tuple[int, int]] = {}
+    try:
+        # A preflight existence check cannot claim a session. Only exclusive
+        # creation authorizes writes and cleanup by this attempt.
+        session.directory.mkdir(parents=True)
+        status = session.directory.lstat()
+        created[session.directory] = (status.st_dev, status.st_ino)
+        session.probes_dir.mkdir()
+        status = session.probes_dir.lstat()
+        created[session.probes_dir] = (status.st_dev, status.st_ino)
+        with session.ledger_path.open("xb") as handle:
+            status = os.fstat(handle.fileno())
+            created[session.ledger_path] = (status.st_dev, status.st_ino)
+            handle.write(opening_record)
+    except (OSError, UnicodeError) as exc:
+        cleanup_error = (
+            _rollback_session_open(session, created, opening_record)
+            if session.directory in created else None
+        )
+        detail = f"cannot create workbench session {session.directory}: {exc}"
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
+        raise SystemExit(detail) from exc
+    return record
 
 
 def cmd_note(args: argparse.Namespace, root: Path) -> dict[str, Any]:

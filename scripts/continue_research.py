@@ -442,6 +442,12 @@ def read_ledger(directory: Path, sessions_root: Path) -> list[dict[str, Any]]:
 
 def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
     validate_slug(args.session)
+    for field in ("frontier", "intent", "stop_condition", "contributor", "model_system", "provider", "operator"):
+        value = getattr(args, field)
+        if field == "operator" and value is None:
+            continue
+        if not isinstance(value, str) or not value.strip():
+            raise SystemExit(f"start refused: --{field.replace('_', '-')} must be non-empty")
     if args.problem not in PROBLEMS:
         raise SystemExit(f"problem must be one of {sorted(PROBLEMS)}")
     directory = session_dir(args.sessions_root, args.session)
