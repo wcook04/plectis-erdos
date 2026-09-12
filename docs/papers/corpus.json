@@ -4781,355 +4781,355 @@
           "level": 1,
           "id": "sec:four-coordinates",
           "title": "One orbit in four coordinates",
-          "line": 2478
+          "line": 2495
         },
         {
           "level": 2,
           "id": "one-decision-stream-four-integerisations",
           "title": "One decision stream, four integerisations",
-          "line": 2482
+          "line": 2499
         },
         {
           "level": 2,
           "id": "the-truncation-rung-ladder",
           "title": "The truncation-rung ladder",
-          "line": 2532
+          "line": 2549
         },
         {
           "level": 1,
           "id": "frontier-index-what-stands-between-the-corpus-and-a-proof",
           "title": "Frontier index: what stands between the corpus and a proof",
-          "line": 2602
+          "line": 2619
         },
         {
           "level": 2,
           "id": "the-three-257-obligations-stated-exactly",
           "title": "The three #257 obligations, stated exactly",
-          "line": 2608
+          "line": 2625
         },
         {
           "level": 2,
           "id": "reading-a-row",
           "title": "Reading a row",
-          "line": 2630
+          "line": 2647
         },
         {
           "level": 2,
           "id": "reset-sixteen-near-misses",
           "title": "257-reset: sixteen near misses",
-          "line": 2636
+          "line": 2653
         },
         {
           "level": 2,
           "id": "cofinal-rows-thirteen-near-misses",
           "title": "257-cofinal-rows: thirteen near misses",
-          "line": 2753
+          "line": 2770
         },
         {
           "level": 2,
           "id": "universal-thirteen-near-misses",
           "title": "257-universal: thirteen near misses",
-          "line": 2855
+          "line": 2872
         },
         {
           "level": 2,
           "id": "three-theorems-assembled-from-the-interface-and-where-each-still-stops",
           "title": "Three theorems assembled from the interface, and where each still stops",
-          "line": 2975
+          "line": 2992
         },
         {
           "level": 2,
           "id": "route-collapse-findings-four-traps-to-name-explicitly",
           "title": "Route-collapse findings: four traps to name explicitly",
-          "line": 3001
+          "line": 3018
         },
         {
           "level": 1,
           "id": "closed-routes-with-the-mechanism-that-closed-them",
           "title": "Closed routes, with the mechanism that closed them",
-          "line": 3035
+          "line": 3052
         },
         {
           "level": 2,
           "id": "four-closed-attack-families-on-the-wall-itself",
           "title": "Four closed attack families on the wall itself",
-          "line": 3043
+          "line": 3060
         },
         {
           "level": 2,
           "id": "sec:branch-exclusions",
           "title": "Branch exclusions at the final producer: the exceptional dyadic cells",
-          "line": 3117
+          "line": 3134
         },
         {
           "level": 2,
           "id": "no-go-countermodel-and-rigidity-modules-that-bound-the-wall-from-outside",
           "title": "No-go, countermodel, and rigidity modules that bound the wall from outside",
-          "line": 3178
+          "line": 3195
         },
         {
           "level": 2,
           "id": "the-scalar-localisation-height-obstruction",
           "title": "The scalar-localisation height obstruction",
-          "line": 3217
+          "line": 3234
         },
         {
           "level": 2,
           "id": "the-final-skip-band-formula-and-what-it-does-not-show",
           "title": "The final-skip band formula, and what it does not show",
-          "line": 3239
+          "line": 3256
         },
         {
           "level": 1,
           "id": "sec:invent-257",
           "title": "The mathematics this problem still needs",
-          "line": 3280
+          "line": 3297
         },
         {
           "level": 2,
           "id": "sec:invent-R1",
           "title": "R1. Reset \\sqrt{\\ }-escape: anti-concentration of a logarithmically short divisor sum",
-          "line": 3300
+          "line": 3317
         },
         {
           "level": 3,
           "id": "the-statement-needed",
           "title": "The statement needed",
-          "line": 3304
+          "line": 3321
         },
         {
           "level": 3,
           "id": "what-kind-of-object-would-furnish-it-and-the-exact-arithmetic-of-theta_l",
           "title": "What kind of object would furnish it, and the exact arithmetic of \\Theta_L",
-          "line": 3340
+          "line": 3357
         },
         {
           "level": 3,
           "id": "the-specific-obstacle",
           "title": "The specific obstacle",
-          "line": 3380
+          "line": 3397
         },
         {
           "level": 3,
           "id": "swings",
           "title": "Swings",
-          "line": 3396
+          "line": 3413
         },
         {
           "level": 2,
           "id": "sec:invent-R2",
           "title": "R2. Strict endpoint progress: the one place canonicalisation does not bite",
-          "line": 3445
+          "line": 3462
         },
         {
           "level": 3,
           "id": "the-statement-needed-1",
           "title": "The statement needed",
-          "line": 3449
+          "line": 3466
         },
         {
           "level": 3,
           "id": "what-kind-of-object-would-furnish-it",
           "title": "What kind of object would furnish it",
-          "line": 3472
+          "line": 3489
         },
         {
           "level": 3,
           "id": "the-specific-obstacle-1",
           "title": "The specific obstacle",
-          "line": 3482
+          "line": 3499
         },
         {
           "level": 3,
           "id": "swings-1",
           "title": "Swings",
-          "line": 3490
+          "line": 3507
         },
         {
           "level": 2,
           "id": "sec:invent-R3",
           "title": "R3. Prime support: a known theorem and an internal method boundary",
-          "line": 3507
+          "line": 3524
         },
         {
           "level": 2,
           "id": "sec:invent-R4",
           "title": "R4. Landing the route-collapse equivalences, via perfect-square witness depths",
-          "line": 3530
+          "line": 3547
         },
         {
           "level": 3,
           "id": "the-statement-needed-2",
           "title": "The statement needed",
-          "line": 3534
+          "line": 3551
         },
         {
           "level": 3,
           "id": "the-object-and-the-swing-that-supplies-it",
           "title": "The object, and the swing that supplies it",
-          "line": 3553
+          "line": 3570
         },
         {
           "level": 3,
           "id": "why-this-is-a-result-and-not-bookkeeping",
           "title": "Why this is a result and not bookkeeping",
-          "line": 3585
+          "line": 3602
         },
         {
           "level": 2,
           "id": "sec:invent-R5",
           "title": "R5. The sparse/dense trichotomy \u2014 and a proof that the present engine cannot close it",
-          "line": 3593
+          "line": 3610
         },
         {
           "level": 3,
           "id": "the-statement-needed-3",
           "title": "The statement needed",
-          "line": 3597
+          "line": 3614
         },
         {
           "level": 3,
           "id": "what-kind-of-object-would-furnish-it-1",
           "title": "What kind of object would furnish it",
-          "line": 3618
+          "line": 3635
         },
         {
           "level": 3,
           "id": "the-specific-obstacle-proved",
           "title": "The specific obstacle, proved",
-          "line": 3624
+          "line": 3641
         },
         {
           "level": 2,
           "id": "sec:invent-shape",
           "title": "What the shape of the wall suggests about the underlying object",
-          "line": 3652
+          "line": 3669
         },
         {
           "level": 3,
           "id": "the-half-value-branch-looks-pseudorandom-and-the-failures-are-the-evidence",
           "title": "The half-value branch looks pseudorandom, and the failures are the evidence",
-          "line": 3658
+          "line": 3675
         },
         {
           "level": 3,
           "id": "three-reasons-to-distrust-that-inference-stated-plainly",
           "title": "Three reasons to distrust that inference, stated plainly",
-          "line": 3670
+          "line": 3687
         },
         {
           "level": 3,
           "id": "the-universal-branch-reads-differently-and-this-weakens-the-one-wall-thesis",
           "title": "The universal branch reads differently, and this weakens the one-wall thesis",
-          "line": 3680
+          "line": 3697
         },
         {
           "level": 3,
           "id": "what-the-evidence-does-and-does-not-determine",
           "title": "What the evidence does and does not determine",
-          "line": 3688
+          "line": 3705
         },
         {
           "level": 1,
           "id": "what-is-open-stated-exactly",
           "title": "What is open, stated exactly",
-          "line": 3696
+          "line": 3713
         },
         {
           "level": 2,
           "id": "notation-fixed-for-this-section",
           "title": "Notation fixed for this section",
-          "line": 3702
+          "line": 3719
         },
         {
           "level": 2,
           "id": "target-o1-universal-erd\u0151s-257",
           "title": "Target O1 \u2014 Universal Erd\u0151s #257",
-          "line": 3711
+          "line": 3728
         },
         {
           "level": 2,
           "id": "target-o2-half-value-membership",
           "title": "Target O2 \u2014 Half-value membership",
-          "line": 3740
+          "line": 3757
         },
         {
           "level": 3,
           "id": "waypoints-that-are-actually-equivalent-to-o2-not-weaker",
           "title": "Waypoints that are actually EQUIVALENT to O2, not weaker",
-          "line": 3759
+          "line": 3776
         },
         {
           "level": 2,
           "id": "target-o3-cofinal-exact-local-mersenne-half-rows",
           "title": "Target O3 \u2014 Cofinal exact local Mersenne half rows",
-          "line": 3798
+          "line": 3815
         },
         {
           "level": 3,
           "id": "sharp-critical-capacity-conditions-the-booleanm\u00f6bius-lanes-producer-for-o3",
           "title": "Sharp critical-capacity conditions \u2014 the BooleanM\u00f6bius lane\u2019s producer for O3",
-          "line": 3817
+          "line": 3834
         },
         {
           "level": 2,
           "id": "sec:o4",
           "title": "Target O4 \u2014 Reset anti-concentration (sqrt-escape) and the R-run form",
-          "line": 3852
+          "line": 3869
         },
         {
           "level": 2,
           "id": "target-o5-the-remaining--2-1-middle-cell-exclusion",
           "title": "Target O5 \u2014 The remaining -2,-1 middle-cell exclusion",
-          "line": 3891
+          "line": 3908
         },
         {
           "level": 2,
           "id": "target-o2b-membership-of-121",
           "title": "Target O2b \u2014 Membership of 1/21",
-          "line": 3906
+          "line": 3923
         },
         {
           "level": 2,
           "id": "sec:v-table",
           "title": "Implication table",
-          "line": 3920
+          "line": 3937
         },
         {
           "level": 2,
           "id": "what-kind-of-new-mathematics-each-form-would-need",
           "title": "What kind of new mathematics each form would need",
-          "line": 3953
+          "line": 3970
         },
         {
           "level": 2,
           "id": "summary",
           "title": "Summary",
-          "line": 3965
+          "line": 3982
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 3971
+          "line": 3988
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 3975
+          "line": 3992
         },
         {
           "level": 4,
           "id": "authority-boundary.",
           "title": "Authority boundary.",
-          "line": 3981
+          "line": 3998
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 3987
+          "line": 4004
         }
       ],
       "citations_rendered": 0,

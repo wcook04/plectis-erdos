@@ -25,7 +25,47 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_markdown_render_gate() -> None:
+    """Run the CI render command through the release collector on small inputs."""
+    command = check_release.late_check_commands().get("markdown_table_render")
+    require(
+        command == [
+            sys.executable,
+            str(check_release.ROOT / "scripts" / "check_markdown_table_render.py"),
+            "--fail-on", "overflow", ".",
+        ],
+        "release gate must schedule CI's fatal Markdown overflow check",
+    )
+    with tempfile.TemporaryDirectory(prefix="release-markdown-gate-") as temporary:
+        fixture_root = Path(temporary)
+        fixture = fixture_root / "render.md"
+        for token, expected_code in (("fits", 0), ("x" * 150, 1)):
+            fixture.write_text(f"| Result |\n| --- |\n| `{token}` |\n", encoding="utf-8")
+            with (
+                patch.object(check_release, "ROOT", fixture_root),
+                patch.object(check_release, "ERRORS", []),
+                patch.object(check_release, "CHECKS", 0),
+            ):
+                executor, futures = check_release.start_independent_checks(
+                    {"markdown_table_render": command}, max_workers=2
+                )
+                results = check_release.finish_independent_checks(executor, futures)
+                result = results["markdown_table_render"]
+                require(result.returncode == expected_code, result.stdout + result.stderr)
+                if expected_code:
+                    require(len(check_release.ERRORS) == 1, "Markdown overflow escaped the release gate")
+                    require(
+                        all(text in check_release.ERRORS[0] for text in (
+                            "markdown_table_render", "exit 1", "render.md", "[overflow]",
+                        )),
+                        "release failure lost the Markdown overflow diagnosis",
+                    )
+                else:
+                    require(not check_release.ERRORS, "readable Markdown failed the release gate")
+
+
 def main() -> int:
+    check_markdown_render_gate()
     source = inspect.getsource(check_release)
     require(
         "primary_source_disposition_check = subprocess.run(" not in source,

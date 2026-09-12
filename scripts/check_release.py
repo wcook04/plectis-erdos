@@ -276,6 +276,13 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_clone_footprint.py"),
         ],
+        "markdown_table_render": [
+            sys.executable,
+            str(ROOT / "scripts" / "check_markdown_table_render.py"),
+            "--fail-on",
+            "overflow",
+            ".",
+        ],
     }
 
 

@@ -2434,7 +2434,7 @@ Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab
 | Every exact row continues: doubles unboundedly, or recycles to some $`c\le n`$. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:bounded</span> | $`\forall n\ge6`$, given a row at $`n`$: $`(\ldots)\lor\exists c\le n(\ldots)`$ | `coord:mobius-mersenne` |
 | Every above-half bounded support recycles into a genuine exact row at some $`2c-2`$ with $`c\le n`$. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:bounded</span> | $`\forall E`$ bounded $`[2,n]`$: $`\exists c\le n`$ | `coord:binary-digit` |
 | (#249 cross-lane check) $`\sum\varphi(n)/2^n`$ matches no rational whose denominator divides $`2^{14}(2^h-1)`$, for any $`h\le16`$. <span class="sans-serif">\[Cert\]</span> | <span class="sans-serif">scale:bounded</span> | $`\forall h\le16`$ (explicit bound) | `coord:binary-digit` |
-| Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§<a href="#sec:four-coordinates" data-reference-type="ref" data-reference="sec:four-coordinates">8</a>, Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">196</a>). (source: `erdos257_truncation_rung_ladder_2026_07_24.md`, §5) <span class="sans-serif">\[Math\]</span>+<span class="sans-serif">\[Cert\]</span> | <span class="sans-serif">scale:bounded</span> | $`3\le J\le22`$ (finite table, exhaustive) | `coord:rung-truncation` |
+| Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§<a href="#sec:four-coordinates" data-reference-type="ref" data-reference="sec:four-coordinates">8</a>, Theorem <a href="#thm:tr-finite-decision" data-reference-type="ref" data-reference="thm:tr-finite-decision">196</a>). [source note 1](#paper-table-note-fc5d47215b18abb4) <span class="sans-serif">\[Math\]</span>+<span class="sans-serif">\[Cert\]</span> | <span class="sans-serif">scale:bounded</span> | $`3\le J\le22`$ (finite table, exhaustive) | `coord:rung-truncation` |
 |  |  |  |  |
 | Master achievement/greedy-survival criterion. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall x\ \forall n`$ (iff) | `coord:greedy-orbit` |
 | Membership iff every actually-skipped rank survives. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall M\in`$ skipped support | `coord:greedy-orbit` |
@@ -2445,19 +2445,36 @@ Table <a href="#tab:scale-ladder" data-reference-type="ref" data-reference="tab
 | Parity kill: no finite support hits $`1/2`$ exactly. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall A`$ finite, $`0\notin A`$ | `coord:other:denominator-parity` |
 | Erdős–Borwein irrationality at every integer base. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall b\ge2`$ | `coord:mobius-mersenne` |
 | Erdős 1968: any infinite, pairwise-coprime, reciprocal-summable index set gives an irrational support series. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall b\ge2\ \forall A`$ (infinite, coprime, summable) | `coord:mobius-mersenne` |
-| Generic block-certificate engine (problem-agnostic): weighted-coefficient series is irrational given a per-precision divisibility/window certificate. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall b\ge2\ \forall c\,(\forall m,c(m)\le m)`$, given $`\forall q\,\exists N,K,L,C`$ | `coord:binary-digit` |
+| Generic block-certificate engine (problem-agnostic): weighted-coefficient series is irrational given a per-precision divisibility/window certificate. <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | [detail note 4](#paper-table-note-1c5c7a0221b6c56a) | `coord:binary-digit` |
 | Finite greedy-prefix denominators are odd (source of the parity boundary exclusion, §<a href="#sec:four-coordinates" data-reference-type="ref" data-reference="sec:four-coordinates">8</a>). <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:uniform</span> | $`\forall n`$ | `coord:other:denominator-parity` |
 |  |  |  |  |
 |  |  |  |  |
-| THE master open supply: exact rows recur at arbitrarily large endpoints, with no coherence required between witnesses. <span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | $`\forall N\ \exists n\ge N,\ \mathrm{ExactLocalMersenneHalfRow}(n)`$ | `coord:mobius-mersenne` |
+| THE master open supply: exact rows recur at arbitrarily large endpoints, with no coherence required between witnesses. <span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | [detail note 5](#paper-table-note-908a05c260f2622c) | `coord:mobius-mersenne` |
 | Payoff theorem consuming the row above: compactness of the achievement set forces $`1/2`$ itself to be achieved. <span class="sans-serif">\[Lean\]</span> (theorem proved; *hypothesis* open) | <span class="sans-serif">scale:cofinal</span> | given $`\forall N\,\exists n\ge N(\ldots)`$ | `coord:other:topological-achievement-set` |
-| Shortest known open target: the canonical rational half-greedy orbit itself has infinitely many positive skip events. <span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | $`\forall N\ \exists c\ge\max(N,4),\ 0<\mathrm{rem}(c{-}1)<w_c`$ | `coord:greedy-orbit` |
+| Shortest known open target: the canonical rational half-greedy orbit itself has infinitely many positive skip events. <span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | [detail note 6](#paper-table-note-a03b5cdd987ed9ef) | `coord:greedy-orbit` |
 | Payoff theorem consuming the row above, with zero further combinatorial search once supplied. <span class="sans-serif">\[Lean\]</span> (theorem proved; hypothesis open) | <span class="sans-serif">scale:cofinal</span> | given $`\forall N\,\exists c\ge N(\ldots)`$ | `coord:greedy-orbit` |
-| Master half-branch dichotomy: membership iff the greedy skip set is infinite. <span class="sans-serif">\[Lean\]</span> (iff proved; both sides cofinal-shaped) | <span class="sans-serif">scale:cofinal</span> | iff $`(\mathrm{skippedSupport}).\mathrm{Infinite}`$ | `coord:greedy-orbit` |
+| Master half-branch dichotomy: membership iff the greedy skip set is infinite. <span class="sans-serif">\[Lean\]</span> (iff proved; both sides cofinal-shaped) | <span class="sans-serif">scale:cofinal</span> | [detail note 7](#paper-table-note-58a33763a2ba4b8c) | `coord:greedy-orbit` |
 | Seven-way classification hub: membership iff the seam word is not eventually right, iff unbounded terminal-false, iff cofinally many skipped ranks, *etc.* <span class="sans-serif">\[Lean\]</span> | <span class="sans-serif">scale:cofinal</span> | every right-hand side is $`\exists^\infty`$/Unbounded-shaped | `coord:seam-integer` |
-| Ladder dichotomy: either infinitely many rungs survive (#257 false, explicit limit support) or an eventual bad-rank wall closes only this producer. (source: `erdos257_truncation_rung_ladder_2026_07_24.md`, Cor. 8) <span class="sans-serif">\[Math\]</span> | <span class="sans-serif">scale:cofinal</span> | open branch (a): $`\exists^\infty J,\ \mathrm{HalfRung}(J)`$ | `coord:rung-truncation` |
-| The unconditional wall, stated in its four equivalent forms (run length, deviation, distance-to-integer, greedy support). (source: `erdos257_sqrt_escape_digit_reduction_2026_07_24.md`, §5) <span class="sans-serif">\[Conjecture\]</span>/<span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | $`\forall r\ge10,\ |\mathrm{rem}(r{+}1)-2^{r+1}|>2^{(r+5)/2}`$ | `coord:seam-integer` |
+| Ladder dichotomy: either infinitely many rungs survive (#257 false, explicit limit support) or an eventual bad-rank wall closes only this producer. [source note 2](#paper-table-note-5bf11e95a6b8e7f2) <span class="sans-serif">\[Math\]</span> | <span class="sans-serif">scale:cofinal</span> | open branch (a): $`\exists^\infty J,\ \mathrm{HalfRung}(J)`$ | `coord:rung-truncation` |
+| The unconditional wall, stated in its four equivalent forms (run length, deviation, distance-to-integer, greedy support). [source note 3](#paper-table-note-5326e4dd70f7781b) <span class="sans-serif">\[Conjecture\]</span>/<span class="sans-serif">\[Open\]</span> | <span class="sans-serif">scale:cofinal</span> | [detail note 8](#paper-table-note-a03cd0d07903425e) | `coord:seam-integer` |
 |  |  |  |  |
+
+<a id="paper-table-note-fc5d47215b18abb4"></a> **Source note 1.** (source: `erdos257_truncation_rung_ladder_2026_07_24.md`, §5)
+
+<a id="paper-table-note-5bf11e95a6b8e7f2"></a> **Source note 2.** (source: `erdos257_truncation_rung_ladder_2026_07_24.md`, Cor. 8)
+
+<a id="paper-table-note-5326e4dd70f7781b"></a> **Source note 3.** (source: `erdos257_sqrt_escape_digit_reduction_2026_07_24.md`, §5)
+
+<a id="paper-table-note-1c5c7a0221b6c56a"></a> **Detail note 4.** $`\forall b\ge2\ \forall c\,(\forall m,c(m)\le m)`$, given $`\forall q\,\exists N,K,L,C`$
+
+<a id="paper-table-note-908a05c260f2622c"></a> **Detail note 5.** $`\forall N\ \exists n\ge N,\ \mathrm{ExactLocalMersenneHalfRow}(n)`$
+
+<a id="paper-table-note-a03b5cdd987ed9ef"></a> **Detail note 6.** $`\forall N\ \exists c\ge\max(N,4),\ 0<\mathrm{rem}(c{-}1)<w_c`$
+
+<a id="paper-table-note-58a33763a2ba4b8c"></a> **Detail note 7.** iff $`(\mathrm{skippedSupport}).\mathrm{Infinite}`$
+
+<a id="paper-table-note-a03cd0d07903425e"></a> **Detail note 8.** $`\forall r\ge10,\ |\mathrm{rem}(r{+}1)-2^{r+1}|>2^{(r+5)/2}`$
+
 
 The scale ladder for Erdős \#257. Every row above the frontier is machine-checked or exactly certified at fixed/bounded/uniform scale; every row below it is exactly the cofinal statement an open producer needs, with its quantifier prefix made explicit so the gap cannot be mistaken for a finite verification.
 
