@@ -8,7 +8,7 @@ body:
     id: location
     attributes:
       label: Where
-      placeholder: paper §2.1, README, docs/WAVE_INDEX.md, CITATION.cff
+      placeholder: paper §2.1, README, docs/reference/WAVE_INDEX.md, CITATION.cff
     validations:
       required: true
   - type: textarea

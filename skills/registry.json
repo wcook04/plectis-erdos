@@ -298,7 +298,7 @@
       ],
       "read": [
         "skills/lean-concurrent-validation/SKILL.md",
-        "docs/AGENT_GUIDE.md#validation"
+        "docs/agents/AGENT_GUIDE.md#validation"
       ],
       "commands": [
         "python3 scripts/lean_fast_build.py --plan --changed-from HEAD"
@@ -531,7 +531,11 @@
         "first impression",
         "root organization",
         "root organisation",
-        "consolidate redundant provider entry"
+        "consolidate redundant provider entry",
+        "crowded docs",
+        "organize docs",
+        "organise docs",
+        "documentation layout"
       ],
       "skills": [
         "maintain-public-infrastructure"

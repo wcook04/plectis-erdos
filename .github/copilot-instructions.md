@@ -4,5 +4,5 @@
 # GitHub Copilot
 
 Read [AGENTS.md](../AGENTS.md) at the repository root for the shared task entry.
-Open [the detailed agent guide](../docs/AGENT_GUIDE.md) when the task requires
+Open [the detailed agent guide](../docs/agents/AGENT_GUIDE.md) when the task requires
 its authority, change or validation rules. This adapter adds no separate rules.

@@ -268,7 +268,7 @@ def main() -> int:
             f"{error} These checks would have compiled the pilot's three "
             "causal controls and one typed-rejection probe through real "
             "Lean elaboration -- see lean-toolchain and "
-            "docs/PROOF_STATE_COMPILER.md for the setup route. The static "
+            "docs/agents/PROOF_STATE_COMPILER.md for the setup route. The static "
             "checks that do not need Lean (goal parser, minimal cuts, "
             "subprocess environment isolation, toolchain-absence signal) "
             "still ran and passed."

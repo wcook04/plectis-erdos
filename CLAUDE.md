@@ -5,5 +5,5 @@
 
 @AGENTS.md
 
-Use the shared entry above. Open [the detailed agent guide](docs/AGENT_GUIDE.md)
+Use the shared entry above. Open [the detailed agent guide](docs/agents/AGENT_GUIDE.md)
 only when the task requires its authority, change or validation rules.

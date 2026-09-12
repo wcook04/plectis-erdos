@@ -160,7 +160,7 @@ fixture tests are not that receipt. Run the existing public release gate as
 well as the new wrapper CI; keep failed checks visible.
 
 For distribution and community-specific boundaries, see
-[FRONTIER_DISTRIBUTION](FRONTIER_DISTRIBUTION.md).
+[FRONTIER_DISTRIBUTION](agents/FRONTIER_DISTRIBUTION.md).
 
 ## Packaging sources checked 4 September 2026
 

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -71,12 +72,32 @@ def main() -> None:
         ROOT / "paper/README.md",
         ROOT / "docs/README.md",
         ROOT / "docs/RESULTS.md",
-        ROOT / "docs/AGENT_WORKBENCH.md",
+        ROOT / "docs/ORIENTATION.md",
+        *sorted((ROOT / "docs/agents").glob("*.md")),
+        *sorted((ROOT / "docs/verification").glob("*.md")),
+        *sorted((ROOT / "docs/reference").glob("*.md")),
         *sorted((ROOT / "docs/papers/full-text").glob("*.md")),
     )
     for source in reader_surfaces:
         for target in local_markdown_targets(source):
             require(target.is_file() or target.is_dir(), f"{source.relative_to(ROOT)} has a dead local link: {target}")
+
+    # Folder moves must leave every specialist guide reachable from the reader
+    # hub, with links resolved from its new location, including generated pages.
+    for group in ("agents", "verification", "reference"):
+        index = ROOT / "docs" / group / "README.md"
+        require(index in local_markdown_targets(ROOT / "docs/README.md"),
+                f"documentation hub does not reach the {group} index")
+        indexed = set(local_markdown_targets(index))
+        for guide in index.parent.glob("*.md"):
+            require(guide == index or guide in indexed, f"unindexed specialist guide: {guide}")
+    orientation = json.loads((ROOT / "docs/orientation.json").read_text())
+    require(orientation["drilldowns"]["current_papers"] == "paper/README.md",
+            "machine orientation does not expose the current paper catalogue")
+    require(orientation["source_provenance"]["human_exposition_role"] == "historical_joint_manuscript",
+            "the retained historical manuscript is not labelled as such")
+    require("../paper/README.md" in (ROOT / "docs/ORIENTATION.md").read_text(),
+            "rendered orientation does not lead to the current papers")
 
     require(
         "../README.md#problem-papers" in results,
@@ -98,7 +119,7 @@ def main() -> None:
     require("```" not in readme, "README carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
     require(
         "[REPRODUCIBILITY](docs/REPRODUCIBILITY.md)" in readme
-        and "](docs/AGENT_WORKBENCH.md)" in readme,
+        and "](docs/agents/AGENT_WORKBENCH.md)" in readme,
         "README no longer routes readers to the documents that hold its commands",
     )
     require(
@@ -122,7 +143,7 @@ def main() -> None:
         "README must lead with the current papers, not an archived manuscript",
     )
     require(
-        "AGENTS.md" in readme and "docs/AGENT_WORKBENCH.md" in readme,
+        "AGENTS.md" in readme and "docs/agents/AGENT_WORKBENCH.md" in readme,
         "README must route agents to the separate workbench",
     )
     first_screen = readme.split("## Problem papers", 1)[0]

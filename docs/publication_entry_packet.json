@@ -107,8 +107,8 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:0d230cdea9719033f6f8f73b925b7d88ba92a30a37bb90af9169a66453b21677",
-    "docs/methodology.json": "sha256:2197e723f202d83b26499daaadf13bf4c003a37ca7a72a72e4ae435229ab7d2b",
+    "docs/claims.json": "sha256:32ff06ecc7a9807d386fc2a951e190938a8c2c4c6f28b9c84b054bf946663b7f",
+    "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:229edb81876b106f3dbe7eed462cc4affda18e02a814efaddc2c24b76c463777",
     "docs/publication_contract.json": "sha256:7fd9d0033cf0adcb2c9454b042b97f2d6fc0d56ae5d4afd1712c5d7ea66c4ed2",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
@@ -174,7 +174,7 @@
     "Reader error and transfer to other corpora were not measured."
   ],
   "packet_contract": {
-    "agent_entry_owner": "docs/AGENT_GUIDE.md",
+    "agent_entry_owner": "docs/agents/AGENT_GUIDE.md",
     "freshness_check": "python3 scripts/build_publication_entry_packet.py --check",
     "max_bytes": 32768
   },

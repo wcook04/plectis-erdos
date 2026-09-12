@@ -16,7 +16,7 @@ gives that agent three things it cannot give itself:
 Authority boundary: ledger notes are advisory cognition.  Only probe
 receipts computed here from the Lean exit status carry kernel authority,
 and a ``claim`` record is exactly as strong as the receipt it cites.
-The wider contract lives in ``docs/AGENT_WORKBENCH.md``.
+The wider contract lives in ``docs/agents/AGENT_WORKBENCH.md``.
 """
 
 from __future__ import annotations

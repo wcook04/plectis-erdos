@@ -414,7 +414,7 @@ def main() -> int:
     diagnostic.validate_public_semantic_census(census, census_surfaces)
     gateway_paper = diagnostic.read(diagnostic.GATEWAY_PAPER)
     diagnostic.validate_gateway_opening(gateway_paper)
-    agents = diagnostic.read("docs/AGENT_GUIDE.md")
+    agents = diagnostic.read("docs/agents/AGENT_GUIDE.md")
     claude = diagnostic.read("CLAUDE.md")
     diagnostic.validate_cross_agent_entry(agents, claude)
     incremental_surfaces = {
@@ -672,8 +672,8 @@ def main() -> int:
     checks += 1
 
     mutated_census = copy.deepcopy(census_surfaces)
-    mutated_census["docs/TRUTH_AUDIT.md"] = mutated_census[
-        "docs/TRUTH_AUDIT.md"
+    mutated_census["docs/reference/TRUTH_AUDIT.md"] = mutated_census[
+        "docs/reference/TRUTH_AUDIT.md"
     ].replace(
         (
             f"The `{census['demand_equivalent_total']}/"

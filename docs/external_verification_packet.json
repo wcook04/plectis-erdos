@@ -1693,7 +1693,7 @@
     "verification/comparator.json",
     "docs/external_verification_packet.json",
     "docs/EXTERNAL_VERIFICATION.md",
-    "docs/OUTREACH_EVIDENCE_CAPSULES.md"
+    "docs/reference/OUTREACH_EVIDENCE_CAPSULES.md"
   ],
   "authority_posture": "generated_projection_not_proof_or_claim_authority",
   "source_owner": "docs/claims.json::external_verification_packet",

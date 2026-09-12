@@ -181,5 +181,5 @@ and an accepted receipt must never silently strengthen `docs/claims.json`.
 For an ordinary source change, run the narrow checks named by the agent entry
 and the affected subsystem. Lean changes must build with the pinned toolchain.
 Changes to claims, papers, or generated projections must follow the authority
-and builder order in [AGENTS.md](docs/AGENT_GUIDE.md). CI exercises the public return
+and builder order in [AGENTS.md](docs/agents/AGENT_GUIDE.md). CI exercises the public return
 validator, the acceptance boundary, and the accepted-only attribution views.

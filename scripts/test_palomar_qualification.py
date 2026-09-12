@@ -683,7 +683,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "source_landscape_rank_relative_to"
     ]
     assert "nonintegrality" in " ".join(strict_prime["contrary_evidence"])
-    qualification_text = (ROOT / "docs" / "PALOMAR_QUALIFICATION.md").read_text(
+    qualification_text = (ROOT / "docs/verification" / "PALOMAR_QUALIFICATION.md").read_text(
         encoding="utf-8"
     )
     qualification_text_compact = " ".join(qualification_text.split())

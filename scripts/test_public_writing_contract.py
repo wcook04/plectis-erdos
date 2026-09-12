@@ -40,7 +40,7 @@ def main() -> None:
     skill = read(skill_path)
     require("ai_workflow" not in skill and "/Users/" not in skill, "public writing skill has a private dependency")
     require(skill_path in read("AGENTS.md"), "AGENTS.md does not route to the public writing skill")
-    require(skill_path in read("docs/AGENT_GUIDE.md"), "docs/AGENT_GUIDE.md does not route to the public writing skill")
+    require(skill_path in read("docs/agents/AGENT_GUIDE.md"), "docs/agents/AGENT_GUIDE.md does not route to the public writing skill")
     require(
         "public-mathematical-writing/SKILL.md" in read("skills/README.md"),
         "skills/README.md does not list the public writing skill",

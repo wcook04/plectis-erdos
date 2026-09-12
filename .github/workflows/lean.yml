@@ -339,7 +339,7 @@ jobs:
               ExternalVerification1041SolvedFamilies 'verification/**' \
               lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
               docs/claims.json docs/problem_index_source.json docs/problems.json \
-              docs/EXTERNAL_VERIFICATION.md docs/COMPARATOR_1049_NUMERICAL_HEIGHT.md \
+              docs/EXTERNAL_VERIFICATION.md docs/verification/COMPARATOR_1049_NUMERICAL_HEIGHT.md \
               docs/external_verification_packet.json \
               formalization.yaml \
               scripts/build_external_verification.py \
@@ -656,7 +656,7 @@ jobs:
       # This test asserts that every provider adapter imports the compact entry
       # rather than the deep contract. It was written, it was correct, and no
       # lane ran it: not this workflow, not check_release.py, not any Makefile
-      # target. It sat red on main while CLAUDE.md imported docs/AGENT_GUIDE.md, so Claude
+      # target. It sat red on main while CLAUDE.md imported docs/agents/AGENT_GUIDE.md, so Claude
       # Code opened a cold clone straight into the 31KB deep contract that the
       # compact entry exists to defer. First contact is what this job is for.
       - name: Every provider adapter routes to the compact entry

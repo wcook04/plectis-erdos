@@ -39,7 +39,7 @@ QUICK_LEAN_COMMON_PATTERNS = (
     "/lake-manifest.json",
     "/lakefile.toml",
     "/lean-toolchain",
-    "/docs/AGENT_GUIDE.md",
+    "/docs/agents/AGENT_GUIDE.md",
     "/docs/ARCHITECTURE.md",
     "/docs/READING_GUIDE.md",
     "/docs/METHODOLOGY.md",
@@ -47,6 +47,9 @@ QUICK_LEAN_COMMON_PATTERNS = (
     "/docs/PRIVACY.md",
     "/.github/SECURITY.md",
     "/.github/CODE_OF_CONDUCT.md",
+    "/docs/agents/README.md",
+    "/docs/verification/README.md",
+    "/docs/reference/README.md",
 )
 LEAN_SPARSE_MANIFEST_PATH = ROOT / "scripts/lean-sparse-checkout"
 LEAN_SPARSE_PATTERNS = (
@@ -58,7 +61,7 @@ LEAN_SPARSE_PATTERNS = (
     "/scripts/lean-sparse-checkout",
     "/scripts/validation_singleflight.py",
     "/.gitignore",
-    "/docs/AGENT_GUIDE.md",
+    "/docs/agents/AGENT_GUIDE.md",
     "/AGENTS.md",
     "/docs/ARCHITECTURE.md",
     "/CITATION.cff",
@@ -81,25 +84,25 @@ LEAN_SPARSE_PATTERNS = (
     "/lean-toolchain",
     "!/lean/ErdosProblems/FreePosition/data.jsonl",
     "/.github/CODE_OF_CONDUCT.md",
+    "/docs/agents/README.md",
+    "/docs/verification/README.md",
+    "/docs/reference/README.md",
 )
 LEAN_SPARSE_MANIFEST_TEXT = "\n".join(LEAN_SPARSE_PATTERNS) + "\n"
 READER_SPARSE_MANIFEST_PATH = ROOT / "scripts/reader-sparse-checkout"
 READER_SPARSE_PATTERNS = (
     "/.github/banner.png",
     "/.github/system-map.png",
-    "/docs/AGENT_WORKBENCH.md",
+    "/docs/agents/AGENT_WORKBENCH.md",
     "/docs/ARCHITECTURE.md",
-    "/docs/CONTRIBUTOR_PATH.md",
-    "/docs/CORRECTIONS.md",
     "/docs/ORIENTATION.md",
-    "/docs/PAPER_LIBRARY.md",
-    "/docs/PROOF_COCKPIT.md",
+    "/docs/agents/PROOF_COCKPIT.md",
     "/docs/REPRODUCIBILITY.md",
     "/docs/SOURCE_MAP.md",
     "/docs/claims.json",
     "/docs/problems.json",
     "/docs/problem_library.json",
-    "/docs/PROBLEM_LIBRARY.md",
+    "/docs/reference/PROBLEM_LIBRARY.md",
     "/docs/papers/",
     "/paper/",
     "/scripts/reader-sparse-checkout",
@@ -109,12 +112,15 @@ READER_SPARSE_PATTERNS = (
     "/LICENSE",
     "/REUSE.toml",
     "/docs/SCOPE.md",
-    "/docs/AGENT_GUIDE.md",
+    "/docs/agents/AGENT_GUIDE.md",
     "/docs/READING_GUIDE.md",
     "/docs/METHODOLOGY.md",
     "/docs/PRIVACY.md",
     "/.github/SECURITY.md",
     "/.github/CODE_OF_CONDUCT.md",
+    "/docs/agents/README.md",
+    "/docs/verification/README.md",
+    "/docs/reference/README.md",
 )
 READER_SPARSE_MANIFEST_TEXT = "\n".join(READER_SPARSE_PATTERNS) + "\n"
 REPRODUCIBILITY_PATH = ROOT / "docs" / "REPRODUCIBILITY.md"

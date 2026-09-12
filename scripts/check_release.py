@@ -22,7 +22,7 @@ This script verifies that every other public surface agrees with it:
      the banned drift phrases.
   7. Licensing: every licence named in REUSE.toml or an SPDX header has its
      text under LICENSES/.
-  8. docs/AGENT_GUIDE.md routes agent harnesses through the public machine-readable paper
+  8. docs/agents/AGENT_GUIDE.md routes agent harnesses through the public machine-readable paper
      without weakening the proof or open-problem boundary; CONTRIBUTING.md
      describes the cold-clone baseline-plus-adversarial program as a release
      gate rather than an advisory diagnostic; and the public conduct standard
@@ -661,7 +661,7 @@ def wave_index_entry_errors(wave_index: str) -> list[str]:
         "universal form of #257 remain open",
     )
     return [
-        f"docs/WAVE_INDEX.md lost bounded chronology boundary: {phrase}"
+        f"docs/reference/WAVE_INDEX.md lost bounded chronology boundary: {phrase}"
         for phrase in required
         if phrase not in wave_index
     ]
@@ -2095,7 +2095,7 @@ def main(argv: list[str] | None = None) -> int:
             ROOT / name
             for name in (
                 "README.md",
-                "docs/AGENT_GUIDE.md",
+                "docs/agents/AGENT_GUIDE.md",
                 "AGENTS.md",
                 "CLAUDE.md",
                 ".github/copilot-instructions.md",
@@ -2107,7 +2107,8 @@ def main(argv: list[str] | None = None) -> int:
                 ".github/SECURITY.md",
             )
         ]
-        own_prose.extend(sorted((ROOT / "docs").glob("*.md")))
+        for directory in ("docs", "docs/agents", "docs/verification", "docs/reference"):
+            own_prose.extend(sorted((ROOT / directory).glob("*.md")))
         for path in own_prose:
             if not release_file_exists(path):
                 check(False, f"release prose path is not a safe regular file: {path.relative_to(ROOT)}")
@@ -2170,7 +2171,7 @@ def main(argv: list[str] | None = None) -> int:
               f"licence {lic} is used but LICENSES/{lic}.txt is missing")
 
     # --- 8. agent entry ------------------------------------------------------------
-    agents = read(ROOT / "docs/AGENT_GUIDE.md")
+    agents = read(ROOT / "docs/agents/AGENT_GUIDE.md")
     for required in (
         "docs/ARCHITECTURE.md",
         "docs/orientation.json",
@@ -2191,16 +2192,16 @@ def main(argv: list[str] | None = None) -> int:
             "skills/maintain-public-infrastructure/SKILL.md",
         "scripts/query_corpus.py",
     ):
-        check(required in agents, f"docs/AGENT_GUIDE.md does not route through {required}")
+        check(required in agents, f"docs/agents/AGENT_GUIDE.md does not route through {required}")
     flat_agents = flattened(agents)
     check("remain open" in flat_agents,
-          "docs/AGENT_GUIDE.md must preserve the open-problem boundary")
+          "docs/agents/AGENT_GUIDE.md must preserve the open-problem boundary")
     check("proof authority" in flat_agents,
-          "docs/AGENT_GUIDE.md must state the proof-authority boundary")
+          "docs/agents/AGENT_GUIDE.md must state the proof-authority boundary")
     check("larger ongoing formal-mathematics workflow" in flat_agents,
-          "docs/AGENT_GUIDE.md must preserve the public-projection provenance boundary")
+          "docs/agents/AGENT_GUIDE.md must preserve the public-projection provenance boundary")
     check("mathematical programme" in flat_agents,
-          "docs/AGENT_GUIDE.md must expose mathematical programme routes")
+          "docs/agents/AGENT_GUIDE.md must expose mathematical programme routes")
 
     mid_checks = run_independent_checks(
         {
@@ -2331,7 +2332,7 @@ def main(argv: list[str] | None = None) -> int:
     source_map_errors = source_map_entry_errors(source_map)
     check(not source_map_errors, "; ".join(source_map_errors))
 
-    wave_index = read(ROOT / "docs" / "WAVE_INDEX.md")
+    wave_index = read(ROOT / "docs/reference" / "WAVE_INDEX.md")
     wave_index_errors = wave_index_entry_errors(wave_index)
     check(not wave_index_errors, "; ".join(wave_index_errors))
 
@@ -2721,6 +2722,7 @@ def main(argv: list[str] | None = None) -> int:
     check(orientation.get("editorial_state") == expected_editorial_state,
           "orientation editorial state drifted from publication_assembly")
     expected_source_provenance = {
+        "human_exposition_role": "historical_joint_manuscript",
         "formal_source_ref": data["release"]["formal_source"]["ref"],
         "main_paper_source_digest": file_digest(
             ROOT / "paper" / "archive" / "erdos249-257-main-paper.tex"

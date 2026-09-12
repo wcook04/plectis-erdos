@@ -2228,7 +2228,7 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
             status = str(row["status"])
             requirement_counts[status] = requirement_counts.get(status, 0) + 1
         palomar_read = [
-            "docs/PALOMAR_QUALIFICATION.md",
+            "docs/verification/PALOMAR_QUALIFICATION.md",
             palomar_owner,
             "docs/PALOMAR_RESULT_SHOWCASE.json",
         ]

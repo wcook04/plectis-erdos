@@ -56,7 +56,7 @@
 /lake-manifest.json
 /lakefile.toml
 /lean-toolchain
-/docs/AGENT_GUIDE.md
+/docs/agents/AGENT_GUIDE.md
 /docs/ARCHITECTURE.md
 /docs/READING_GUIDE.md
 /docs/METHODOLOGY.md
@@ -64,3 +64,6 @@
 /docs/PRIVACY.md
 /.github/SECURITY.md
 /.github/CODE_OF_CONDUCT.md
+/docs/agents/README.md
+/docs/verification/README.md
+/docs/reference/README.md

@@ -37,7 +37,7 @@ OUTPUTS = {
     "formalization": ROOT / "formalization.yaml",
     "packet": ROOT / "docs/external_verification_packet.json",
     "human": ROOT / "docs/EXTERNAL_VERIFICATION.md",
-    "outreach": ROOT / "docs/OUTREACH_EVIDENCE_CAPSULES.md",
+    "outreach": ROOT / "docs/reference/OUTREACH_EVIDENCE_CAPSULES.md",
 }
 
 IMPORT_LINE_RE = re.compile(r"^import\s+([^\n]+)$", re.M)
@@ -1550,7 +1550,7 @@ def render_human(
             "CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.",
             (
                 "For a reviewer-run Linux check and the immutable release-asset contract, see "
-                "`docs/EXTERNAL_VERIFICATION_REPLAY.md`."
+                "`docs/verification/EXTERNAL_VERIFICATION_REPLAY.md`."
             ),
             "",
             (
