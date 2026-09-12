@@ -58,7 +58,7 @@ def contract_errors(example: str, workbench: str, lakefile: str) -> list[str]:
             errors.append(f"downstream example lost {label}")
 
     workbench_requirements = {
-        "consumer route": "[`examples/Examples.lean`](../research/examples/Examples.lean)",
+        "consumer route": "[`examples/Examples.lean`](../../research/examples/Examples.lean)",
         "conditional interface description":
             "conditional shell-pressure example",
         "explicit-hypothesis boundary": "leaves the analytic hypothesis explicit",
