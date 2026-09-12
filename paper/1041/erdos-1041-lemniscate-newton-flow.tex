@@ -548,7 +548,9 @@ area inequality $\operatorname{Area}\{|f|<T\}\le\pi T^{2/n}$ for a polynomial
 with unit-modulus leading coefficient, taken from P\'olya
 \cite[printed pp.~280--282]{polya1928}.  No relative area inequality is used
 here; the disposition of Dubinin's Theorem~1 is recorded in the bibliography
-entry \cite{dubinin}.  Cauchy--Schwarz then gives
+entry \cite{dubinin}.  That theorem is a relative-area inequality under a
+full covering hypothesis; neither the hypothesis nor its relative conclusion
+is used in this proof.  Cauchy--Schwarz then gives
 \[
   \sum_{k\ge1}|a_k|
     \le(1+R^2)^{1/n}\Bigl(\sum_{k\ge1}\frac1{kR^{2k}}\Bigr)^{1/2}
@@ -1213,10 +1215,17 @@ No independent human review or resolution of the general problem is claimed.
 
 The original root-to-root problem is \cite[p.~139, Problem~5]{ehp1958}.
 Pendyala's degree-four theorem \cite[Thm.~1]{june2026} is directly comparable.
-His marked-point-to-boundary problem \cite{pendyala2026shortest} has different
-endpoints and does not imply the root-pair conclusion.  The exact Cassini
+His separate Erd\H{o}s Problem~\#1120 \cite{pendyala2026shortest} asks for a path
+from the origin to the unit circle inside a filled sublevel set; its endpoints differ,
+and it does not imply the root-pair conclusion.  The exact Cassini
 obstruction in Section~\ref{sec:gap} concerns the metric assertion of
-\cite[Prop.~12]{march2026}.  Downloaded-source digests, precise locators,
+\cite[Prop.~12]{march2026}.  Eremenko and Hayman prove the global boundary
+estimate
+$\operatorname{length}\{z:|p(z)|=1\}<9.173\deg p$ and show that an extremal
+level set is connected \cite[Thm.~1 and the lemma on connectedness]
+{eremenko-hayman}.  Their metric is the total length of a level curve, so this
+does not supply the short internal root-to-root connector asked for here.
+Downloaded-source digests, precise locators,
 and withdrawal history are retained in the long record.  No uniqueness or
 priority claim is inferred from this comparison.
 
@@ -1271,11 +1280,15 @@ throughout this problem-note series.
   {10.48550/arXiv.2606.24875}.
 \bibitem{pendyala2026shortest} V.~S. Pendyala,
   \emph{Shortest paths in polynomial lemniscate sublevel sets and a problem
-  of Erd\H{o}s}, arXiv:2606.19178v1 (2026),
-  Theorem~1.2 and introductory discussion, pp.~1--2.
+  of Erd\H{o}s}, arXiv:2606.19178v1 (2026), Erd\H{o}s Problem~\#1120,
+  Theorem~1.2 and introductory discussion, pp.~2--3.
   \url{https://arxiv.org/abs/2606.19178},
   doi:\href{https://doi.org/10.48550/arXiv.2606.19178}
   {10.48550/arXiv.2606.19178}.
+\bibitem{eremenko-hayman} A.~Eremenko and W.~Hayman,
+  \emph{On the length of lemniscates}, Michigan Math. J. \textbf{46}
+  (1999), 409--415.
+  \url{https://arxiv.org/abs/0805.2295}.
 \bibitem{dubinin} V.~N. Dubinin, \emph{Some inequalities for polynomials and
   rational functions associated with a lemniscate}, Zap. Nauchn. Sem. POMI
   \textbf{404} (2012), 83--99; English translation, J. Math. Sci. \textbf{193}

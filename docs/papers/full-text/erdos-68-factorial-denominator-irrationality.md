@@ -151,7 +151,7 @@ b_m=m-1-d_m(C)+\sigma_m-m\sigma_{m-1}.
 \label{eq:companion-wrap}
 \end{equation}
 ```
-This identity is unconditional. A floor-stability hypothesis is required only to discard the two wrap terms. Equality in the defining comparison is the no-wrap case. Canonical factorial expansions and their rationality criterion are classical \[cantor1869; galambos1976\].
+This identity is unconditional. A floor-stability hypothesis is required only to discard the two wrap terms. Equality in the defining comparison is the no-wrap case. Canonical factorial expansions and their rationality criterion are classical \[cantor1869; galambos1976\]. For an integer-coefficient factorial series, the standard tail-integrality argument appears in Hančl and Tijdeman \[hancl-tijdeman, Lemma 2.1 and its remark\]: a rational sum has integral normalized tails once its denominator divides the preceding factorial. Their subsequent finite-difference criteria impose regularity on the coefficients. In the present series the denominators are $`n!-1`$; the companion expansion and the two wrap terms in <a href="#eq:companion-wrap" data-reference-type="eqref" data-reference="eq:companion-wrap">[eq:companion-wrap]</a> account for that change.
 
 <div id="res:carry-characterization" class="theorem">
 
@@ -657,7 +657,7 @@ The complete infinite rationality boundary is checked in [companion orbit ration
 
 9
 
-P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). T. F. Bloom, *Erdős Problem \#68*. <https://www.erdosproblems.com/68>, accessed 28 July 2026. G. Cantor, *Über die einfachen Zahlensysteme*, Z. Math. Phys. **14** (1869), 121–128. J. Galambos, *Representations of Real Numbers by Infinite Series*, Lecture Notes in Math. **502**, Springer, 1976, Chapter 1. J. Louwsma and J. Martino, *Rational numbers with odd greedy expansion of fixed length*, arXiv:[2309.07280v1](https://arxiv.org/abs/2309.07280), 2023, Lemma 4.1, p. 10. L. Lai, *On the largest prime divisor of $`n!+1`$*, arXiv:[2103.14894v1](https://arxiv.org/abs/2103.14894), 2021, proof of Lemma 2.4, (2.5).
+P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). T. F. Bloom, *Erdős Problem \#68*. <https://www.erdosproblems.com/68>, accessed 28 July 2026. G. Cantor, *Über die einfachen Zahlensysteme*, Z. Math. Phys. **14** (1869), 121–128. J. Galambos, *Representations of Real Numbers by Infinite Series*, Lecture Notes in Math. **502**, Springer, 1976, Chapter 1. J. Hančl and R. Tijdeman, *On the irrationality of factorial series*, Acta Arith. **118** (2005), 383–401, doi:[10.4064/aa118-4-5](https://doi.org/10.4064/aa118-4-5). J. Louwsma and J. Martino, *Rational numbers with odd greedy expansion of fixed length*, arXiv:[2309.07280v1](https://arxiv.org/abs/2309.07280), 2023, Lemma 4.1, p. 10. L. Lai, *On the largest prime divisor of $`n!+1`$*, arXiv:[2103.14894v1](https://arxiv.org/abs/2103.14894), 2021, proof of Lemma 2.4, (2.5).
 
 </div>
 

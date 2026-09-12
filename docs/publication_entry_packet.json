@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:df74d45504c8d2f90fe04aaeeaafb40734f6b52c09cb0fe4edf88ac4af8e5292",
+    "docs/claims.json": "sha256:8126173bdcd53684dc336fe79571b7357cc2f9b28796bb7093198a0d06e00814",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:229edb81876b106f3dbe7eed462cc4affda18e02a814efaddc2c24b76c463777",
-    "docs/publication_contract.json": "sha256:3011a0fdba6ddba7cc4761ca6a91629abb2734a1b13d7a573a1ba5031c6a1ae5",
+    "docs/publication_contract.json": "sha256:b0140b0a532651c5bcceaa44712a58f62981cfca60fe901f7edfa48a3fb3df06",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:ddc3cf9a7920b4c373847d3c39393c1377db05379ebad8d255d29c26de2e3f73",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:e04d135267c9416d729c9ba42df364448b203abf06aabfeeac14da0f30993a8e",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:b78ca51a92b18c52c433bd63f1618e1eaaf6aaf29e92e8403aac6611da0dfe56",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:505f9a8c6ab1a1ff7003aeb123bb0db75a9a0e8149b2e73d1689ea0e13c2971e",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 566,
+        "line": 571,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "title": "first-harmonic anti-concentration on supplier fibres"
       },

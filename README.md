@@ -95,7 +95,8 @@ Infra suggestions also get credit!
 
 Accepted work gets a public receipt. The
 [credit policy](docs/research-commons/CREDIT_POLICY.md) explains how contributions
-are attributed.
+are attributed. Browse [source attributions](docs/research-commons/SOURCE_ATTRIBUTIONS.md)
+for named prior work and anonymous credit for implemented private advice.
 
 If you solve a problem, the credit and the result are all yours. If this repo
 or my intermediary progress helped, please cite this release and say how, so

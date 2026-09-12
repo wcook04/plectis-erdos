@@ -399,6 +399,8 @@ Longitudinal model comparisons should use immutable problem snapshots and held-o
 
 The present work supplies no such evaluation. It establishes an implemented case, an explicit protocol, and falsifiable measures for a later study.
 
+Yuan et al. provide a useful precedent for the missing external test: two student teams attempted an end-to-end build from public documentation for scientific hardware designed more than a decade earlier \[documentationtest\]. Their study concerns open-source hardware in large collaborations, not formal mathematics, and does not validate this repository’s route. It supplies a precedent for testing accessibility by asking outsiders to complete the documented task, rather than by asking the maintainer whether the documents and files exist.
+
 The first study should be small and diagnostic rather than a population estimate. An outside researcher receives one problem world and is asked to recover its strongest established statement, explain the main idea, state what remains unproved, distinguish a genuine obstruction from an unsuccessful attempt, and then undertake one bounded task and return it in a form the maintainer can assess without substantial reconstruction. Three presentations of the same material should be compared: the source, papers, and records in an ordinary repository; an information-equivalent static briefing written with care; and the navigation and record surfaces described here. The second condition is what separates the effect of the mechanisms from the effect of a better introductory paragraph. Failures are recorded at their own level: a command that could not be run, a source that could not be located, an interpretation that was corrected, or a result judged uninteresting are four different findings.
 
 <a id="sec:learning"></a>
@@ -615,5 +617,7 @@ B. Yanahama and A. Sannai, *Lean Atlas: An Integrated Proof Environment for Scal
 NISO, *CRediT: Contributor Roles Taxonomy*, [role definitions](https://credit.niso.org/contributor-roles-defined/), accessed August 2026.
 
 GitHub, *Preventing pwn requests*, GitHub Actions security guidance, [documentation](https://docs.github.com/en/actions/reference/security/secure-use), accessed August 2026.
+
+M. Yuan et al., *End-to-End Testing of Open-Source Hardware Documentation Developed in Large Collaborations*, 2023, [arXiv:2309.05942](https://arxiv.org/abs/2309.05942).
 
 </div>
