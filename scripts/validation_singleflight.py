@@ -1482,7 +1482,15 @@ def status(state_root: Path, key: str) -> dict[str, Any]:
     receipt = load_receipt(state, key)
     if receipt is None:
         raise ValidationError(f"unknown validation key: {key}")
-    receipt["live"] = receipt_is_live(receipt)
+    live = receipt_is_live(receipt)
+    if not live and receipt.get("state") != "terminal":
+        # The owner can publish its terminal receipt and exit between our read
+        # and liveness check. Reconcile once before declaring it unavailable;
+        # collect must still consume the real exit code and hydrate Lean output.
+        latest = load_receipt(state, key)
+        if latest is not None and latest.get("state") == "terminal":
+            receipt = latest
+    receipt["live"] = live
     return receipt
 
 
