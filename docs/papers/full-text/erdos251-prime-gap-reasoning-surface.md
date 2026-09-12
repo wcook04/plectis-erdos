@@ -13,7 +13,7 @@ Let $`p_0=2,p_1=3,\ldots`$ enumerate the primes and let $`g_n=p_{n+1}-p_n`$. Bot
 \Pi=\sum_{n\ge0}\frac{p_n}{2^{\,n+1}}
  \;=\;2+\sum_{n\ge0}\frac{g_n}{2^{\,n+1}}\;=\;2+S .
 ```
-The identity is exact, carries no hypothesis, and rests on the elementary polynomial bound $`p_n\le1250(n+1)^4`$ proved in Appendix <a href="#long251:app:prime-bound" data-reference-type="ref" data-reference="long251:app:prime-bound">9</a>. The prime number theorem is not used. Everything after it is negative knowledge or an exact reformulation, and each statement is labelled by what it is.
+The identity follows from summation by parts and the elementary polynomial bound $`p_n\le1250(n+1)^4`$ proved in Appendix <a href="#long251:app:prime-bound" data-reference-type="ref" data-reference="long251:app:prime-bound">9</a>. The substantive limitation comes from rationalising perturbations: bounded residue-preserving changes to the actual gaps can make their dyadic value rational. The record recovers this construction, the exact tail criteria, and the finite denominator exclusions; the identity provides their common normalisation.
 
 Write $`T_N=\sum_{j\ge1}g_{N+j}2^{-j}`$ for the scaled tails, so that $`T_{N+1}=2T_N-g_{N+1}`$. Irrationality of $`\Pi`$ is equivalent to nonintegrality of every positive tail shift $`T_{N+h}-T_N`$, and equivalently to the free-pair condition that for every modulus $`t`$ and every cutoff some pair of indices congruent modulo $`t`$ beyond the cutoff has nonintegral tail difference. Two adjacent shifts in $`(-1,1)`$ with unequal corresponding gaps cannot both be integral, and an explicit remainder bound certifies one such pair at $`h=1`$, $`N=2`$ by exact integer arithmetic. Every rational equal to $`\Pi`$, and hence every rational equal to $`S`$, has denominator at least $`2^{589}>10^{177}`$ by a certificate the Lean kernel decides, and at least $`2^{39997}>10^{12040}`$ by a certified continued-fraction prefix.
 
@@ -98,7 +98,7 @@ Problem #251 also appears as the unproved declaration `erdos_251` in the *Forma
 
 The digits $`p_n`$ grow, so the series is not a digit expansion in any bounded alphabet, and the standard rationality criteria for such expansions do not apply directly. The classical elementary criteria for series of this kind instead control irrationality through the growth of the denominators. Erdős and Straus named a sum $`\sum_k 1/a_k`$ over a strictly increasing sequence of positive integers an *Ahmes series* \[erdosstraus1963\]; for such a series the condition $`a_k^{1/2^k}\to\infty`$ is sufficient for irrationality, and it is sharp, since shifted Sylvester sequences grow like $`C^{2^{k}}`$ for arbitrarily large $`C`$ and have rational reciprocal sum. Both statements and their attribution are recorded in the introduction of Kovač and Tao \[kovactao2024, §1\]. Splitting each term $`p_i/2^{\,i+1}`$ into $`p_i`$ copies of $`2^{-(i+1)}`$ writes $`\Pi`$ as a sum of unit fractions with repetitions, and the denominators occurring in it are exactly the powers of two. Even ignoring the repetitions the growth hypothesis fails by every available margin, since $`(2^{\,n})^{1/2^{\,n}}\to1`$, and every arithmetic constraint has to come from the numerators instead.
 
-What replaces growth control is denominator control on the sequence of rescaled tails. Rationality of the sum is equivalent to an eventual integrality condition on differences of those tails, and that condition uses nothing about the numerators beyond the fact that they are integers. The condition does not by itself force the numerators to repeat: Proposition <a href="#long251:res:telescope" data-reference-type="ref" data-reference="long251:res:telescope">25</a>, applied to $`K_n=n`$, produces the integer sequence $`\kappa_n=n-1`$, which is unbounded and hence not eventually periodic, and whose dyadic sum is zero.
+What replaces growth control is denominator control on the sequence of rescaled tails. Rationality of the sum is equivalent to an eventual integrality condition on differences of those tails, and that condition uses nothing about the numerators beyond the fact that they are integers. The condition does not by itself force the numerators to repeat: Proposition <a href="#long251:res:telescope" data-reference-type="ref" data-reference="long251:res:telescope">26</a>, applied to $`K_n=n`$, produces the integer sequence $`\kappa_n=n-1`$, which is unbounded and hence not eventually periodic, and whose dyadic sum is zero.
 
 <a id="outline."></a>
 
@@ -127,16 +127,17 @@ Section <a href="#long251:sec:parts" data-reference-type="ref" data-reference="
 | Denominator floor $`b\ge2^{589}`$ | Lean-checked by `decide +kernel`; ordinary proof reprinted here | Theorem <a href="#long251:res:denominatorfloor" data-reference-type="ref" data-reference="long251:res:denominatorfloor">16</a>. |
 | Certified continued-fraction exclusion $`q\ge2^{39997}`$ | Exact computation over a Lean-checked tail bound | Theorem <a href="#long251:res:cfexclusion" data-reference-type="ref" data-reference="long251:res:cfexclusion">17</a>; no Lean declaration. |
 | Bounded-perturbation obstruction | Lean-checked | Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a>. |
-| Nonconcentration survives the rationalising perturbation | Ordinary proof; external lemma cited | Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">20</a> and Corollary <a href="#long251:res:nonconc-primes" data-reference-type="ref" data-reference="long251:res:nonconc-primes">21</a>. |
-| The two-window event has density zero | Ordinary proof; external lemma cited | Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">22</a>. |
-| Recurring gap values differing by $`2`$ do not suffice | Ordinary proof | Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">23</a>. |
-| Quadratic polynomial-shift countermodel | Lean-checked | Proposition <a href="#long251:res:polynomialcountermodel" data-reference-type="ref" data-reference="long251:res:polynomialcountermodel">24</a>. |
-| Rationality alone forces periodic integer coefficients | False | Proposition <a href="#long251:res:telescope" data-reference-type="ref" data-reference="long251:res:telescope">25</a>. |
-| Affine and fixed-lattice cofinal escape tests | Lean-checked; both equivalences | Theorem <a href="#long251:res:affinecollapse" data-reference-type="ref" data-reference="long251:res:affinecollapse">26</a>. |
+| Sparse rationalisation with cumulative congruences | Ordinary theorem; elementary Lean core only | Theorem <a href="#long251:res:sparse-rationalisation" data-reference-type="ref" data-reference="long251:res:sparse-rationalisation">19</a>; upper Banach density zero, arbitrarily slow eventual coefficient bound, and eventual divisibility of coefficients and cumulative corrections. The explicit schedule is proved in the paper. |
+| Nonconcentration survives the rationalising perturbation | Ordinary proof; external lemma cited | Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">21</a> and Corollary <a href="#long251:res:nonconc-primes" data-reference-type="ref" data-reference="long251:res:nonconc-primes">22</a>. |
+| The two-window event has density zero | Ordinary proof; external lemma cited | Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">23</a>. |
+| Recurring gap values differing by $`2`$ do not suffice | Ordinary proof | Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">24</a>. |
+| Quadratic polynomial-shift countermodel | Lean-checked | Proposition <a href="#long251:res:polynomialcountermodel" data-reference-type="ref" data-reference="long251:res:polynomialcountermodel">25</a>. |
+| Rationality alone forces periodic integer coefficients | False | Proposition <a href="#long251:res:telescope" data-reference-type="ref" data-reference="long251:res:telescope">26</a>. |
+| Affine and fixed-lattice cofinal escape tests | Lean-checked; both equivalences | Theorem <a href="#long251:res:affinecollapse" data-reference-type="ref" data-reference="long251:res:affinecollapse">27</a>. |
 | Actual prime gaps are unbounded and not eventually periodic | Lean-checked | Proposition <a href="#long251:res:gap-nonperiodic" data-reference-type="ref" data-reference="long251:res:gap-nonperiodic">12</a>. |
 | Adjacent-mismatch event density below $`1.2\times10^{8}`$ | Finite measurement, floating-point tails | Section <a href="#long251:sec:measurements" data-reference-type="ref" data-reference="long251:sec:measurements">7</a>. |
 | Free-pair witnesses for every $`t\le20`$ below $`2\times10^{7}`$ | Finite measurement | Section <a href="#long251:sec:measurements" data-reference-type="ref" data-reference="long251:sec:measurements">7</a>. |
-| Cofinal adjacent small mismatch | Sufficient condition; not proved | Problem <a href="#long251:prob:smallpair" data-reference-type="ref" data-reference="long251:prob:smallpair">28</a>. |
+| Cofinal adjacent small mismatch | Sufficient condition; not proved | Problem <a href="#long251:prob:smallpair" data-reference-type="ref" data-reference="long251:prob:smallpair">29</a>. |
 
 **Keywords.** irrationality; prime gaps; dyadic series; summation by parts; Lean 4. **MSC 2020.** 11J72 (primary); 11N05, 68V20 (secondary).
 
@@ -337,7 +338,7 @@ The escape condition quantifies over a fixed shift length. Freeing the offset gi
 
 </div>
 
-The offset $`M-N`$ is free, so one nonintegral congruent pair for each modulus and each cutoff suffices in place of a supply at a single fixed offset. The mechanism is exact: beyond a rational state with odd reduced denominator $`d`$, the difference $`T_M-T_N`$ is integral precisely when $`M\equiv N`$ modulo the order of $`2`$ in $`\mathbb{Z}/d\mathbb{Z}`$, the [free-pair lattice](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L92), so every rational orbit has a cutoff and a modulus at which integrality holds exactly on the congruence classes, the [lattice corollary](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L105). The criterion for the actual series is checked as the [free-pair equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L236), over the [actual real tail recurrence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L186). No antecedent for this packaging has been located; the nearest located neighbour is Schlage-Puchta’s Theorem 2 \[schlagepuchta2011\], which treats periodic base-$`b`$ digit expansions and is a different object, and the sweep of the dyadic tail-recurrence and Bézivin-style functional-equation literature has not been run.
+The offset $`M-N`$ is free, so one nonintegral congruent pair for each modulus and each cutoff suffices in place of a supply at a single fixed offset. The mechanism is exact: beyond a rational state with odd reduced denominator $`d`$, the difference $`T_M-T_N`$ is integral precisely when $`M\equiv N`$ modulo the order of $`2`$ in $`\mathbb{Z}/d\mathbb{Z}`$, the [free-pair lattice](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L92), so every rational orbit has a cutoff and a modulus at which integrality holds exactly on the congruence classes, the [lattice corollary](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L105). The criterion for the actual series is checked as the [free-pair equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L236), over the [actual real tail recurrence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/FreePairReduction.lean#L186). No antecedent for this packaging has been located; the nearest located neighbour is Schlage-Puchta’s Theorem 2 \[schlagepuchta2011\], which treats base-$`b`$ digit strings formed by concatenating a slowly growing integer sequence under a rationality hypothesis, and is a different object, and the sweep of the dyadic tail-recurrence and Bézivin-style functional-equation literature has not been run.
 
 The criterion rules out two shortcuts. Rationality makes the tail a finite-state object at every scale, so pairs with $`T_M=T_N`$ are abundant for free and the whole difficulty sits in nonintegrality of the difference. And under the free-pair lattice the difference is an integer whenever the modulus divides the offset, and an integer cannot lie in $`(\tfrac12,1)`$, so the window component of the reduced event below is already a contradiction on its own. Both derivations are ordinary proofs, recorded in the long record and not formalised.
 
@@ -421,7 +422,7 @@ The conjunction in Theorem <a href="#long251:res:smallpair" data-reference-type
 
 </div>
 
-For the actual gaps and $`N\ge1`$ every $`\delta_N`$ is even, so Theorem <a href="#long251:res:signedwindow" data-reference-type="ref" data-reference="long251:res:signedwindow">13</a> applies throughout the range where the local certificate is sought. The same computation for a real orbit is one line and is used in Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">22</a> below.
+For the actual gaps and $`N\ge1`$ every $`\delta_N`$ is even, so Theorem <a href="#long251:res:signedwindow" data-reference-type="ref" data-reference="long251:res:signedwindow">13</a> applies throughout the range where the local certificate is sought. The same computation for a real orbit is one line and is used in Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">23</a> below.
 
 <a id="an-explicit-remainder-and-a-certified-actual-pair"></a>
 
@@ -524,7 +525,7 @@ Each floor is finite, and extending either one raises the excluded range and rep
 
 # What cannot supply the missing input
 
-This section proves four boundaries. Each says that a named class of hypotheses about the prime gaps is compatible with a rational dyadic value, or that a named event is too sparse for a named method.
+The counterexamples in this section test which information about the gaps could force irrationality. They preserve selected growth, residue and nonconcentration properties while changing the dyadic value. The sparsity result has a different role: it rules out a positive-proportion lower bound for the two-window event, while leaving sparse-witness arguments available.
 
 <a id="bounded-residue-preserving-perturbations"></a>
 
@@ -544,15 +545,132 @@ This section proves four boundaries. Each says that a named class of hypotheses 
 
 The [construction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L193) is kernel checked. The invariant-property consequence—a property shared by every admissible perturbation cannot by itself force irrationality—is the ordinary logical reading of that construction, rather than a separately named Lean theorem. The construction is also checked at the actual consecutive prime gaps for every $`M\ge1`$ and every $`K`$, the [rational perturbed prime-gap series](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L208), with the perturbed gap lying in $`[g_n,g_n+M]`$ and congruent to $`g_n`$ modulo $`M`$, the [gap bounds](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L234). Consequently no theorem about the size or the residue of prime gaps that survives such a perturbation can suffice for Problem #251; that class includes the bounded-gap and large-gap theorems cited in Section <a href="#long251:sec:open" data-reference-type="ref" data-reference="long251:sec:open">8</a> and equidistribution of $`p_n`$ modulo any fixed $`q`$, on taking $`M=2q`$. The perturbed digits need not remain prime gaps.
 
+<a id="long251:sec:paired-corrections"></a>
+
+## Paired corrections and cumulative congruences
+
+The sparse construction preserves cumulative residues as well as coefficient residues. Two adjacent corrections provide a free weighted digit while fixing their unweighted total. A third coordinate is needed to repair the cumulative residue before that pair. We account separately for its location, size and contribution to the series.
+
+<div id="long251:res:sparse-rationalisation" class="theorem">
+
+**Theorem 19** (sparse rationalisation with cumulative congruences). *Let $`a_n\in\mathbb{N}`$ and $`A=\sum_{n\ge0}a_n2^{-n-1}<\infty`$. For every cutoff $`K`$ and every $`f:\mathbb{N}\to\mathbb{R}`$ tending to infinity, there are a set $`S\subseteq[K,\infty)`$ of upper Banach density zero and a nondegenerate interval $`I\subset(A,\infty)`$ with the following property. Every $`r\in I`$ has the form
+``` math
+r=\sum_{n\ge0}(a_n+e_n)2^{-n-1},
+```
+where $`e_n\in\mathbb{N}`$ is supported on $`S`$, $`e_n\le f(n)`$ eventually, and, for every integer $`q\ge1`$, there is an $`N_q`$ such that
+``` math
+q\mid e_n\quad\hbox{and}\quad q\mid\sum_{i<n}e_i
+ \qquad(n\ge N_q).
+```
+For every $`0<\varepsilon<1`$, the construction can instead be chosen with $`e_n\le(\log(n+3))^\varepsilon`$ eventually and $`|S\cap[X,2X)|=O_\varepsilon(X/\log\log X)`$. In that case the empirical distributions of original and corrected unnormalised blocks of length $`m(X)=o(\log\log X)`$, sampled at the same integer starts in $`[X,2X)`$, have total variation distance tending to zero.*
+
+</div>
+
+This theorem has an ordinary proof below. The general interval and pair algebra is covered by the elementary Lean core; the explicit schedule and its density and size estimates are not claimed to be kernel-checked.
+
+<div class="proof">
+
+*Proof.* Choose increasing centres $`n_j`$, indexed by $`j\ge0`$, together with an initial $`n_{-1}\ge K`$. Their spacings $`s_j=n_j-n_{j-1}`$ will be at least $`4`$. Let $`M_j`$ be positive integer moduli with $`M_j\mid M_{j+1}`$, and set $`D_j=2^{s_j}-1`$. These parameters will be specified below independently of all free digits.
+
+*Place the buffer before the pair.* Set $`C_0=0`$ and recursively define the deterministic integers
+``` math
+c_j=(-C_j)\bmod M_j,\qquad C_{j+1}=C_j+c_j+M_jD_j.
+```
+For any choice $`d_j\in\{0,\ldots,D_j\}`$, put
+``` math
+\begin{equation}
+\label{long251:eq:sparse-triple}
+ e_{n_j-1}=c_j,\qquad e_{n_j}=M_jd_j,\qquad
+ e_{n_j+1}=M_j(D_j-d_j),
+\end{equation}
+```
+and put $`e_n=0`$ off these triples. The spacing makes the triples disjoint. Their total is $`c_j+M_jD_j`$, independent of $`d_j`$, so $`C_j`$ really is the cumulative correction $`C_j=\sum_{i<n_j-1}e_i`$ before its buffer, for every choice of free digits. The pair alone could not repair that cumulative residue: its total is already a multiple of $`M_j`$. The buffer does, since $`M_j\mid C_j+c_j`$.
+
+For example, $`M=2,D=3`$ permits the pairs $`(0,6),(2,4),(4,2),(6,0)`$. Each has total $`6`$, but their weighted contributions have numerators $`6,8,10,12`$ over $`2^{n+2}`$. A preceding cumulative total $`C=1`$ needs the additional buffer $`c=1`$ at $`n-1`$; its weighted contribution is $`2^{-n}`$. This fixed contribution changes the location of the attainable interval, not its free-digit capacity.
+
+*Check every late coordinate.* Assume that each fixed $`q`$ divides $`M_j`$ eventually, and choose $`J`$ with $`q\mid M_J`$. At index $`n_J`$, just after its buffer, the cumulative sum is divisible by $`q`$. Both entries of the pair are also divisible by $`q`$, so every later cumulative sum through that stage remains divisible by $`q`$. Inductively $`q\mid C_j`$ and $`q\mid M_j`$ imply $`q\mid c_j`$, since $`M_j\mid C_j+c_j`$. Thus every subsequent buffer, pair entry and zero entry is divisible by $`q`$, as is every intermediate cumulative sum. We may take $`N_q=n_J`$. The first buffer need not itself be divisible by $`q`$, and its coordinate $`n_J-1`$ is deliberately outside this eventual range.
+
+*Choose a schedule for arbitrary $`f`$.* Define
+``` math
+h(n)=\inf_{m\ge n}\min(f(m),m).
+```
+This finite real number is nondecreasing in $`n`$, satisfies $`h(n)\le n`$, and tends to infinity. Choose $`n_{-1}\ge K`$ with $`h(n_{-1})\ge32`$ and recursively set
+``` math
+\begin{equation}
+\label{long251:eq:sparse-general-schedule}
+ \begin{split}
+ k_j&=\max\{k\in\mathbb{N}:k\ge2,\ k!2^{k+2}\le h(n_{j-1})\},\\
+ M_j&=k_j!,\qquad s_j=k_j+2,\qquad n_j=n_{j-1}+s_j.
+ \end{split}
+\end{equation}
+```
+The maximum exists: $`k=2`$ is eligible and $`k!2^{k+2}`$ tends to infinity. Since $`h`$ is nondecreasing, the integers $`k_j`$ are nondecreasing; since $`n_j\to\infty`$, they tend to infinity. The factorials form a divisibility chain and eventually contain every fixed divisor. At each of the three coordinates $`n`$ in stage $`j`$,
+``` math
+0\le e_n\le M_j2^{s_j}\le h(n_{j-1})\le f(n),
+ \qquad e_n\le n_{j-1}<n.
+```
+Here the buffer is smaller than $`M_j`$ and each pair entry is at most $`M_jD_j`$. Thus every correction series converges by comparison with $`\sum_n n2^{-n-1}`$.
+
+Let $`S=\bigcup_j\{n_j-1,n_j,n_j+1\}`$. It is independent of the digits. To see upper Banach density zero, fix $`H>0`$. Outside a finite initial segment, consecutive centres are at least $`H`$ apart, since $`s_j\to\infty`$. An interval of length $`L`$ therefore meets at most $`3(L/H+2)`$ late support coordinates, plus the fixed finite number of early coordinates. Divide by $`L`$, take the supremum over interval positions, then let $`L\to\infty`$ and $`H\to\infty`$.
+
+*Retain an interval of values.* Put $`w_j=M_j2^{-n_j-2}`$ and
+``` math
+F_j=\sum_{i\ge j}D_iw_i,\qquad
+ \beta=\sum_{j\ge0}\bigl(c_j2^{-n_j}+D_jw_j\bigr).
+```
+The size estimates just proved give convergence of both series, $`F_j\to0`$, and $`F_0>0`$. The baseline $`\beta`$ is positive and independent of the digits. The complete weighted correction, including every buffer, is exactly
+``` math
+\begin{equation}
+\label{long251:eq:sparse-baseline}
+ \sum_n e_n2^{-n-1}=\beta+\sum_jd_jw_j.
+\end{equation}
+```
+For $`i>j`$, we have $`M_i\ge M_j`$ and
+``` math
+D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr)
+ \ge M_j\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
+```
+Telescoping over $`i=j+1,\ldots,J`$ and letting $`J\to\infty`$ yields $`F_{j+1}\ge w_j`$. This is the needed overlap condition. The intervals $`[dw_j,dw_j+F_{j+1}]`$, for $`0\le d\le D_j`$, cover $`[0,F_j]`$. For any $`y\in[0,F_0]`$, choose successive digits leaving each remainder in $`[0,F_{j+1}]`$. Since these capacities tend to zero, the resulting series has sum $`y`$. Equation <a href="#long251:eq:sparse-baseline" data-reference-type="eqref" data-reference="long251:eq:sparse-baseline">[long251:eq:sparse-baseline]</a> therefore realises every $`r`$ in the fixed interval $`I=(A+\beta,A+\beta+F_0)\subset(A,\infty)`$.
+
+*Choose a polylogarithmic schedule.* Fix $`0<\varepsilon<1`$. Replace <a href="#long251:eq:sparse-general-schedule" data-reference-type="eqref" data-reference="long251:eq:sparse-general-schedule">[long251:eq:sparse-general-schedule]</a> by
+``` math
+\begin{equation}
+\label{long251:eq:sparse-polylog-schedule}
+ \begin{split}
+ s_j&=\left\lfloor\frac{\varepsilon}{2}
+          \log_2\log(n_{j-1}+3)\right\rfloor,\qquad n_j=n_{j-1}+s_j,\\
+ k_j&=\max\{k\in\mathbb{N}:k\ge2,\ k!\le(\log(n_{j-1}+3))^{\varepsilon/4}\},
+ \qquad M_j=k_j!.
+ \end{split}
+\end{equation}
+```
+Take the initial cutoff so large that $`s_j\ge4`$ and the maximum is nonempty from the first step. Again $`k_j`$ is nondecreasing and tends to infinity. Keep $`D_j=2^{s_j}-1`$ and the same buffer recursion. All triple entries obey
+``` math
+e_n\le M_j2^{s_j}\le(\log(n_{j-1}+3))^{3\varepsilon/4}
+ \le(\log(n+3))^\varepsilon.
+```
+These polylogarithmic bounds still give convergence of $`F_j`$ and $`\beta`$. Every argument above concerning congruences and interval filling remains valid. Also $`s_j`$ is comparable, with constants depending on $`\varepsilon`$, to $`\log\log(n_{j-1}+3)`$, and $`s_j=o(n_{j-1})`$. Hence consecutive centres near $`X`$ are separated by at least a constant multiple of $`\log\log X`$, giving $`|S\cap[X,2X)|=O_\varepsilon(X/\log\log X)`$. The same estimate holds on $`[X,3X)`$.
+
+Finally sample both length-$`m`$ blocks at the same uniform integer start in $`[X,2X)`$. They can differ only if that block meets $`S`$. Each changed coordinate belongs to at most $`m`$ such blocks, so the total variation distance is at most
+``` math
+\frac{m\,|S\cap[X,2X+m)|}{X}
+ =O_\varepsilon\!\left(\frac{m}{\log\log X}\right).
+```
+For integer $`m=m(X)=o(\log\log X)`$ this tends to zero. This comparison uses the literal, unnormalised blocks and requires no limiting distribution for the original sequence. ◻
+
+</div>
+
+The pair identities, modular repair, and conditional interval filling are the elementary core in `lean/ErdosProblems/Erdos251/SparseRationalisationCore.lean`. The source does not itself establish the schedules <a href="#long251:eq:sparse-general-schedule" data-reference-type="eqref" data-reference="long251:eq:sparse-general-schedule">[long251:eq:sparse-general-schedule]</a>–<a href="#long251:eq:sparse-polylog-schedule" data-reference-type="eqref" data-reference="long251:eq:sparse-polylog-schedule">[long251:eq:sparse-polylog-schedule]</a>, upper Banach density, or block-law transfer. Those parts are the ordinary proof above, not a new Lean or Comparator verification claim. Applied to prime gaps, the construction makes no assertion that the corrected cumulative positions remain prime.
+
 <a id="algebraic-nonconcentration-survives-the-rationalising-perturbation"></a>
 
 ## Algebraic nonconcentration survives the rationalising perturbation
 
-The obvious reply to Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a> is to demand a finer property of the actual gaps than size and residue. A relevant such property is Schlage-Puchta’s Lemma 4: for every polynomial $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$ which does not vanish identically, $`F(g_n,\ldots,g_{n+k})\ne0`$ for almost all $`n`$ \[schlagepuchta2011, Lemma 4, pp. 5–6\]. Say that an integer sequence $`a`$ has *fixed-block nonconcentration* when it satisfies that conclusion for every $`k\ge0`$ and every nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$. The property transfers across bounded perturbations with no independence or randomness assumption.
+Fixed-block polynomial nonconcentration is a finer property than size and residue, but it too survives the bounded perturbation. The relevant input is Schlage-Puchta’s Lemma 4: for every polynomial $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$ which does not vanish identically, $`F(g_n,\ldots,g_{n+k})\ne0`$ for almost all $`n`$ \[schlagepuchta2011, Lemma 4, pp. 5–6\]. Say that an integer sequence $`a`$ has *fixed-block nonconcentration* when it satisfies that conclusion for every $`k\ge0`$ and every nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$. The property transfers across bounded perturbations with no independence or randomness assumption.
 
 <div id="long251:res:shiftedcount" class="proposition">
 
-**Proposition 19** (finite counting for shifted gap differences). *Write $`p_n`$ for the primes indexed from $`p_0=2`$ and $`g_n=p_{n+1}-p_n`$. For $`h\ge2`$ and $`r\in\mathbb{Z}`$, let $`M_{h,r}(N)`$ count $`n<N`$ with $`g_{n+h}-g_n=r`$. Let $`Q_{N,H,r}`$ count triples $`(x,d,s)`$ with $`x<p_N`$, $`0<d<s\le H`$, $`d+r>0`$, and all four integers $`x,x+d,x+s,x+s+d+r`$ prime. Then, for every $`N,H\ge0`$,
+**Proposition 20** (finite counting for shifted gap differences). *Write $`p_n`$ for the primes indexed from $`p_0=2`$ and $`g_n=p_{n+1}-p_n`$. For $`h\ge2`$ and $`r\in\mathbb{Z}`$, let $`M_{h,r}(N)`$ count $`n<N`$ with $`g_{n+h}-g_n=r`$. Let $`Q_{N,H,r}`$ count triples $`(x,d,s)`$ with $`x<p_N`$, $`0<d<s\le H`$, $`d+r>0`$, and all four integers $`x,x+d,x+s,x+s+d+r`$ prime. Then, for every $`N,H\ge0`$,
 ``` math
 (H+1)M_{h,r}(N)\le
  (h+1)p_{N+h+1}+(H+1)Q_{N,H,r}.
@@ -570,7 +688,7 @@ The [finite shifted-count bound](https://github.com/wcook04/plectis-erdos/blob/d
 
 <div id="long251:res:nonconcentration" class="theorem">
 
-**Theorem 20** (nonconcentration is perturbation-stable). *Let $`a:\mathbb{N}\to\mathbb{Z}`$ have fixed-block nonconcentration, let $`E\subset\mathbb{Z}`$ be finite, and let $`b_n=a_n+e_n`$ with $`e_n\in E`$ for every $`n`$. Then $`b`$ has fixed-block nonconcentration.*
+**Theorem 21** (nonconcentration is perturbation-stable). *Let $`a:\mathbb{N}\to\mathbb{Z}`$ have fixed-block nonconcentration, let $`E\subset\mathbb{Z}`$ be finite, and let $`b_n=a_n+e_n`$ with $`e_n\in E`$ for every $`n`$. Then $`b`$ has fixed-block nonconcentration.*
 
 </div>
 
@@ -589,27 +707,27 @@ Each set on the right has density zero by hypothesis, and the union is over the 
 
 <div id="long251:res:nonconc-primes" class="corollary">
 
-**Corollary 21** (nonconcentration does not force irrationality). *Fix $`M\ge1`$ and $`K\ge0`$, and let $`b`$ be the perturbed sequence supplied by Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a> at the actual prime gaps. Then $`\sum_{n\ge0}b_n2^{-(n+1)}`$ is rational, $`b_n=g_n`$ for $`n<K`$, $`b_n-g_n\in\{0,M\}`$ and $`b_n\equiv g_n\pmod M`$ for every $`n`$, $`b`$ has fixed-block nonconcentration, and the cumulative sequence $`P_n=2+\sum_{i<n}b_i`$ satisfies $`p_n\le P_n\le p_n+Mn`$ and hence $`P_n\sim n\log n`$.*
+**Corollary 22** (nonconcentration does not force irrationality). *Fix $`M\ge1`$ and $`K\ge0`$, and let $`b`$ be the perturbed sequence supplied by Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a> at the actual prime gaps. Then $`\sum_{n\ge0}b_n2^{-(n+1)}`$ is rational, $`b_n=g_n`$ for $`n<K`$, $`b_n-g_n\in\{0,M\}`$ and $`b_n\equiv g_n\pmod M`$ for every $`n`$, $`b`$ has fixed-block nonconcentration, and the cumulative sequence $`P_n=2+\sum_{i<n}b_i`$ satisfies $`p_n\le P_n\le p_n+Mn`$ and hence $`P_n\sim n\log n`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Everything except nonconcentration is Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a> together with $`\sum_{i<n}g_i=p_n-2`$. The perturbation takes values in the fixed two-element set $`E=\{0,M\}`$, so Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">20</a> applies to the actual gaps, which have fixed-block nonconcentration by Schlage-Puchta’s Lemma 4. ◻
+*Proof.* Everything except nonconcentration is Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a> together with $`\sum_{i<n}g_i=p_n-2`$. The perturbation takes values in the fixed two-element set $`E=\{0,M\}`$, so Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">21</a> applies to the actual gaps, which have fixed-block nonconcentration by Schlage-Puchta’s Lemma 4. ◻
 
 </div>
 
 Fixed-block polynomial nonconcentration, taken together with a prescribed finite prefix of actual gaps, a pointwise bound $`b_n\le g_n+M`$, every residue modulo $`M`$, positivity and cumulative growth at the prime-number-theorem scale, is therefore compatible with a rational dyadic value. Taking $`M`$ even also preserves eventual evenness. To preserve a prescribed modulus $`q`$ together with parity, take $`M=2q`$, with the corresponding pointwise bound $`b_n\le g_n+2q`$. The boundary is exact: the terms $`P_n`$ are not asserted to be prime, and the conclusion says nothing about constraints with a block length or a polynomial family growing with the index.
 
-<a id="the-producer-is-an-event-of-density-zero"></a>
+<a id="the-two-window-event-has-density-zero"></a>
 
-## The producer is an event of density zero
+## The two-window event has density zero
 
 The same lemma bounds the event that the local certificate consumes.
 
 <div id="long251:res:sparse" class="theorem">
 
-**Theorem 22** (sparsity of the two-window event). *Fix $`h\ge1`$. The set of $`N\ge1`$ at which the three hypotheses of Theorem <a href="#long251:res:smallpair" data-reference-type="ref" data-reference="long251:res:smallpair">10</a> hold for the actual prime gaps has density zero. For the same $`h`$, the set of $`N`$ with $`g_{N+h+1}=g_{N+1}`$ also has density zero.*
+**Theorem 23** (sparsity of the two-window event). *Fix $`h\ge1`$. The set of $`N\ge1`$ at which the three hypotheses of Theorem <a href="#long251:res:smallpair" data-reference-type="ref" data-reference="long251:res:smallpair">10</a> hold for the actual prime gaps has density zero. For the same $`h`$, the set of $`N`$ with $`g_{N+h+1}=g_{N+1}`$ also has density zero.*
 
 </div>
 
@@ -619,7 +737,7 @@ The same lemma bounds the event that the local certificate consumes.
 
 </div>
 
-The two halves point in opposite directions and both are useful. The mismatch hypothesis on its own holds for almost all $`N`$, which is strictly stronger than the cofinal statement Proposition <a href="#long251:res:gap-nonperiodic" data-reference-type="ref" data-reference="long251:res:gap-nonperiodic">12</a> supplies. The full conjunction is confined to a set of density zero, because the two window conditions force the mismatch to be exactly $`\pm2`$. A producer for Problem <a href="#long251:prob:smallpair" data-reference-type="ref" data-reference="long251:prob:smallpair">28</a> therefore has to be a cofinality statement about a sparse set. Consequently, this event cannot be supplied on a set of positive lower density. A sufficient producer would have to yield cofinally many witnesses in a density-zero set; density zero alone does not exclude an averaging argument capable of detecting such sparse witnesses. The measurement reported in Section <a href="#long251:sec:measurements" data-reference-type="ref" data-reference="long251:sec:measurements">7</a> is consistent with this: the observed density at $`h=1`$ declines like $`1/\log p`$, and the observed count up to $`X`$ grows like $`X/(\log X)^2`$.
+The two halves point in opposite directions and both are useful. The mismatch hypothesis on its own holds for almost all $`N`$, which is strictly stronger than the cofinal statement Proposition <a href="#long251:res:gap-nonperiodic" data-reference-type="ref" data-reference="long251:res:gap-nonperiodic">12</a> supplies. The full conjunction is confined to a set of density zero, because the two window conditions force the mismatch to be exactly $`\pm2`$. A producer for Problem <a href="#long251:prob:smallpair" data-reference-type="ref" data-reference="long251:prob:smallpair">29</a> therefore has to be a cofinality statement about a sparse set. Consequently, this event cannot be supplied on a set of positive lower density. A sufficient producer would have to yield cofinally many witnesses in a density-zero set; density zero alone does not exclude an averaging argument capable of detecting such sparse witnesses. The measurement reported in Section <a href="#long251:sec:measurements" data-reference-type="ref" data-reference="long251:sec:measurements">7</a> is consistent with this: the observed density at $`h=1`$ declines like $`1/\log p`$, and the observed count up to $`X`$ grows like $`X/(\log X)^2`$.
 
 <a id="recurring-gap-values-differing-by-two-do-not-suffice"></a>
 
@@ -629,7 +747,7 @@ Theorem <a href="#long251:res:signedwindow" data-reference-type="ref" data-refe
 
 <div id="long251:res:polignacfail" class="theorem">
 
-**Theorem 23** (recurring values are not enough). *There is a sequence $`(a_n)_{n\ge1}`$ of positive even integers with the following properties. The values $`2`$ and $`4`$ each occur infinitely often at indices divisible by every fixed $`t\ge1`$. The sequence is unbounded, not eventually periodic, and satisfies $`a_n=O(\log n)`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`6`$, and every scaled tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ is an integer, so every tail shift is integral. The increasing odd sequence $`P_n=3+\sum_{j\le n}a_j`$ satisfies $`P_n\sim n\log n`$.*
+**Theorem 24** (recurring values are not enough). *There is a sequence $`(a_n)_{n\ge1}`$ of positive even integers with the following properties. The values $`2`$ and $`4`$ each occur infinitely often at indices divisible by every fixed $`t\ge1`$. The sequence is unbounded, not eventually periodic, and satisfies $`a_n=O(\log n)`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`6`$, and every scaled tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ is an integer, so every tail shift is integral. The increasing odd sequence $`P_n=3+\sum_{j\le n}a_j`$ satisfies $`P_n\sim n\log n`$.*
 
 </div>
 
@@ -709,7 +827,7 @@ The consequence is exact. Positivity, evenness, unboundedness, non-eventual peri
 
 <div id="long251:res:polynomialcountermodel" class="proposition">
 
-**Proposition 24** (quadratic polynomial-shift countermodel). *Put $`c_n=2(n^2+4n+2)`$ and $`U_n=2(n+4)^2`$. Then $`c_n`$ is positive, even and strictly increasing, $`U_{n+1}=2U_n-c_{n+1}`$, every shift $`U_{N+h}-U_N`$ is integral, $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$, and
+**Proposition 25** (quadratic polynomial-shift countermodel). *Put $`c_n=2(n^2+4n+2)`$ and $`U_n=2(n+4)^2`$. Then $`c_n`$ is positive, even and strictly increasing, $`U_{n+1}=2U_n-c_{n+1}`$, every shift $`U_{N+h}-U_N`$ is integral, $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$, and
 ``` math
 \sum_{j\ge1}\frac{c_j}{2^{\,j}}=32 .
 ```*
@@ -728,7 +846,7 @@ Rationality also fails to force the coefficients to repeat. Let $`K:\mathbb{N}\t
 
 <div id="long251:res:telescope" class="proposition">
 
-**Proposition 25** (exact telescoping). *For every $`n\ge0`$, $`\sum_{i=0}^{n-1}\kappa_i2^{-(i+1)}=K_0-K_n2^{-n}`$.*
+**Proposition 26** (exact telescoping). *For every $`n\ge0`$, $`\sum_{i=0}^{n-1}\kappa_i2^{-(i+1)}=K_0-K_n2^{-n}`$.*
 
 </div>
 
@@ -744,7 +862,7 @@ Finally, two escape tests that look like independent producers are equivalent to
 
 <div id="long251:res:affinecollapse" class="theorem">
 
-**Theorem 26** (affine and fixed-lattice circularity). *For every rational dyadic tail recurrence and all $`h,N,r\ge0`$, $`\mathcal A_{N,r}`$ holds if and only if $`D_N\in2\mathbb{Z}`$. Consequently, if every $`\delta_N`$ is even, cofinal failure of $`\mathcal A`$ is equivalent to nonintegrality of $`D_N`$ for arbitrarily large $`N`$. The same equivalence holds for the fixed-lattice replacement, under any bound $`|D_N|\le b(N)`$ satisfying $`2b(N+r)q<2^{r}`$ for some $`r`$ at every $`N`$ and every positive integer $`q`$.*
+**Theorem 27** (affine and fixed-lattice circularity). *For every rational dyadic tail recurrence and all $`h,N,r\ge0`$, $`\mathcal A_{N,r}`$ holds if and only if $`D_N\in2\mathbb{Z}`$. Consequently, if every $`\delta_N`$ is even, cofinal failure of $`\mathcal A`$ is equivalent to nonintegrality of $`D_N`$ for arbitrarily large $`N`$. The same equivalence holds for the fixed-lattice replacement, under any bound $`|D_N|\le b(N)`$ satisfying $`2b(N+r)q<2^{r}`$ for some $`r`$ at every $`N`$ and every positive integer $`q`$.*
 
 </div>
 
@@ -774,7 +892,7 @@ Problem #251 is open. The exact unresolved condition, equivalent to irrationali
 
 <div id="long251:prob:escape" class="problem">
 
-**Problem 27** (universal prime-gap shift escape). For every $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
+**Problem 28** (universal prime-gap shift escape). For every $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
 ``` math
 \sum_{j\ge1}\frac{g_{N+h+j}-g_{N+j}}{2^{\,j}}\notin\mathbb{Z}.
 \tag{8.1}\label{long251:eq:shift-escape}
@@ -784,7 +902,7 @@ Problem #251 is open. The exact unresolved condition, equivalent to irrationali
 
 <div id="long251:prob:smallpair" class="problem">
 
-**Problem 28** (cofinal adjacent small mismatch). For every $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
+**Problem 29** (cofinal adjacent small mismatch). For every $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
 ``` math
 \bigl|\sigma_h(N)\bigr|<1,\qquad
  \bigl|\sigma_h(N+1)\bigr|<1,\qquad
@@ -794,9 +912,9 @@ Problem #251 is open. The exact unresolved condition, equivalent to irrationali
 
 </div>
 
-Corollary <a href="#long251:res:smallpair-real" data-reference-type="ref" data-reference="long251:res:smallpair-real">11</a> makes Problem <a href="#long251:prob:smallpair" data-reference-type="ref" data-reference="long251:prob:smallpair">28</a> sufficient for Problem <a href="#long251:prob:escape" data-reference-type="ref" data-reference="long251:prob:escape">27</a>, and Theorem <a href="#long251:res:freepair" data-reference-type="ref" data-reference="long251:res:freepair">8</a> supplies an equivalent target in which the offset is free. The three formulations are equivalent or ordered by implication; none of them is an analytic saving on its own.
+Corollary <a href="#long251:res:smallpair-real" data-reference-type="ref" data-reference="long251:res:smallpair-real">11</a> makes Problem <a href="#long251:prob:smallpair" data-reference-type="ref" data-reference="long251:prob:smallpair">29</a> sufficient for Problem <a href="#long251:prob:escape" data-reference-type="ref" data-reference="long251:prob:escape">28</a>, and Theorem <a href="#long251:res:freepair" data-reference-type="ref" data-reference="long251:res:freepair">8</a> supplies an equivalent target in which the offset is free. The three formulations are equivalent or ordered by implication; none of them is an analytic saving on its own.
 
-What the proved obstructions leave. By Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a> no hypothesis stable under bounded residue-preserving perturbation can work; by Corollary <a href="#long251:res:nonconc-primes" data-reference-type="ref" data-reference="long251:res:nonconc-primes">21</a> adding fixed-block polynomial nonconcentration to that list does not repair it; the construction in Section <a href="#long251:res:all-residue-log-countermodel" data-reference-type="ref" data-reference="long251:res:all-residue-log-countermodel">6.5</a> shows that recurring gap values differing by $`2`$ in every residue class do not work at the level of integer recurrences; and by Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">22</a> the event in <a href="#long251:eq:smallpair" data-reference-type="eqref" data-reference="long251:eq:smallpair">[long251:eq:smallpair]</a> has density zero, so it must be produced cofinally on a sparse set. Isolated small gaps, isolated large gaps and average gap estimates are insufficient. Any prescribed finite prefix can be preserved while the complete sum is rationalised, so that prefix alone cannot force irrationality or a cofinal small-tail producer. A finite block together with a proved tail bound can still certify one window: both inequalities in <a href="#long251:eq:smallpair" data-reference-type="eqref" data-reference="long251:eq:smallpair">[long251:eq:smallpair]</a> contain the complete infinite continuation, and Proposition <a href="#long251:res:explicit-remainder" data-reference-type="ref" data-reference="long251:res:explicit-remainder">14</a> supplies the corresponding finite reduction. Nor does parity help, since after the first gap every $`g_n`$ is even.
+What the proved obstructions leave. By Theorem <a href="#long251:res:boundedperturbation" data-reference-type="ref" data-reference="long251:res:boundedperturbation">18</a> no hypothesis stable under bounded residue-preserving perturbation can work; by Corollary <a href="#long251:res:nonconc-primes" data-reference-type="ref" data-reference="long251:res:nonconc-primes">22</a> adding fixed-block polynomial nonconcentration to that list does not repair it; the construction in Section <a href="#long251:res:all-residue-log-countermodel" data-reference-type="ref" data-reference="long251:res:all-residue-log-countermodel">6.6</a> shows that recurring gap values differing by $`2`$ in every residue class do not work at the level of integer recurrences; and by Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">23</a> the event in <a href="#long251:eq:smallpair" data-reference-type="eqref" data-reference="long251:eq:smallpair">[long251:eq:smallpair]</a> has density zero, so it must be produced cofinally on a sparse set. Isolated small gaps, isolated large gaps and average gap estimates are insufficient. Any prescribed finite prefix can be preserved while the complete sum is rationalised, so that prefix alone cannot force irrationality or a cofinal small-tail producer. A finite block together with a proved tail bound can still certify one window: both inequalities in <a href="#long251:eq:smallpair" data-reference-type="eqref" data-reference="long251:eq:smallpair">[long251:eq:smallpair]</a> contain the complete infinite continuation, and Proposition <a href="#long251:res:explicit-remainder" data-reference-type="ref" data-reference="long251:res:explicit-remainder">14</a> supplies the corresponding finite reduction. Nor does parity help, since after the first gap every $`g_n`$ is even.
 
 The finite reduction is available. Proposition <a href="#long251:res:explicit-remainder" data-reference-type="ref" data-reference="long251:res:explicit-remainder">14</a> turns each window condition into an integer comparison at truncation length $`L`$, and for fixed $`h`$ and $`\varepsilon>0`$ the choice $`L=\lceil(4+\varepsilon)\log_2(N+2)\rceil`$ makes $`E_{h,N,L}=O_h(N^{-\varepsilon})`$. A prescribed positive margin $`\eta_h`$ therefore converts <a href="#long251:eq:smallpair" data-reference-type="eqref" data-reference="long251:eq:smallpair">[long251:eq:smallpair]</a> into a statement about the joint distribution modulo powers of two of the finite block $`(g_{N+h+1}-g_{N+1},\ldots,g_{N+h+L}-g_{N+L})`$ over a window of logarithmic length. Deciding one instance costs $`O(\log N)`$ gaps together with the elementary prime bound; producing them cofinally, with uniformity in $`h`$ and in the cutoff, is the open work.
 
@@ -808,7 +926,7 @@ Conditionally the picture is different. Tao’s comment names uniform quantitati
 
 #### What remains to be formalised.
 
-The two finite certificates of Propositions <a href="#long251:res:explicit-remainder" data-reference-type="ref" data-reference="long251:res:explicit-remainder">14</a> and <a href="#long251:res:finite-smallpair" data-reference-type="ref" data-reference="long251:res:finite-smallpair">15</a>, the continued-fraction exclusion of Theorem <a href="#long251:res:cfexclusion" data-reference-type="ref" data-reference="long251:res:cfexclusion">17</a>, the nonconcentration transfer of Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">20</a> with its corollary, the sparsity statement of Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">22</a>, and the construction of Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">23</a> are ordinary mathematical proofs with exact arithmetic replay and no Lean declaration. Everything else linked above is checked by the kernel at the pinned commit.
+The two finite certificates of Propositions <a href="#long251:res:explicit-remainder" data-reference-type="ref" data-reference="long251:res:explicit-remainder">14</a> and <a href="#long251:res:finite-smallpair" data-reference-type="ref" data-reference="long251:res:finite-smallpair">15</a>, the continued-fraction exclusion of Theorem <a href="#long251:res:cfexclusion" data-reference-type="ref" data-reference="long251:res:cfexclusion">17</a>, the nonconcentration transfer of Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">21</a> with its corollary, the sparsity statement of Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">23</a>, and the construction of Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">24</a> are ordinary mathematical proofs with exact arithmetic replay and no Lean declaration. Everything else linked above is checked by the kernel at the pinned commit.
 
 <a id="statements-and-declarations"></a>
 
@@ -832,7 +950,7 @@ This work received no external funding. The author declares no competing interes
 
 #### Acknowledgements.
 
-The problem numbering and status follow the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\]. The logarithmic-scale construction of Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">23</a> and the transfer argument of Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">20</a> arose in an external review of an earlier draft of this note; both proofs printed here were checked independently.
+The problem numbering and status follow the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\]. The logarithmic-scale construction of Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">24</a> and the transfer argument of Theorem <a href="#long251:res:nonconcentration" data-reference-type="ref" data-reference="long251:res:nonconcentration">21</a> arose in an external review of an earlier draft of this note; both proofs printed here were checked independently.
 
 <a id="long251:app:prime-bound"></a>
 
@@ -944,7 +1062,7 @@ The note states the exact denominator law <a href="#long251:eq:den-law" data-ref
 
 <div id="long251:xr:totient" class="proposition">
 
-**Proposition 29** (a shift of totient length). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits. If the reduced denominator $`d`$ of $`T_N`$ is odd, then $`\sigma_{\varphi(d)}(N)`$ is an integer.*
+**Proposition 30** (a shift of totient length). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits. If the reduced denominator $`d`$ of $`T_N`$ is odd, then $`\sigma_{\varphi(d)}(N)`$ is an integer.*
 
 </div>
 
@@ -956,7 +1074,7 @@ The note states the exact denominator law <a href="#long251:eq:den-law" data-ref
 
 <div id="long251:xr:propagate" class="proposition">
 
-**Proposition 30** (propagation). *If $`\sigma_h(N)`$ is an integer, then $`\sigma_h(N+k)`$ is an integer for every $`k\ge0`$.*
+**Proposition 31** (propagation). *If $`\sigma_h(N)`$ is an integer, then $`\sigma_h(N+k)`$ is an integer for every $`k\ge0`$.*
 
 </div>
 
@@ -976,12 +1094,12 @@ The note gives the explicit remainder bound for the actual gaps. The general tru
 
 <div id="long251:xr:truncation" class="proposition">
 
-**Proposition 31** (finite truncation). *Let $`M(n)\ge g_n`$ for every $`n`$, assume the series below converges, and put
+**Proposition 32** (finite truncation). *Let $`M(n)\ge g_n`$ for every $`n`$, assume the series below converges, and put
 ``` math
 S_{h,N,L}=\sum_{j=1}^{L}\frac{g_{N+h+j}-g_{N+j}}{2^{\,j}},\qquad
  R_{h,N,L}(M)=\sum_{j>L}\frac{M(N+h+j)+M(N+j)}{2^{\,j}} .
 ```
-If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ with $`\operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M)`$, then the universal shift escape of Problem <a href="#long251:prob:escape" data-reference-type="ref" data-reference="long251:prob:escape">27</a> holds.*
+If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ with $`\operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M)`$, then the universal shift escape of Problem <a href="#long251:prob:escape" data-reference-type="ref" data-reference="long251:prob:escape">28</a> holds.*
 
 </div>
 
@@ -1006,21 +1124,25 @@ where $`D_{h,N,L}\bmod2^{L}`$ is the least nonnegative residue, including when $
 
 <a id="long251:sec:xr-divisorhit"></a>
 
-## A weaker recurrence-level target
+## Divisor-hitting shift escape
 
 <div id="long251:xr:divisor-hit" class="problem">
 
-**Problem 32** (divisor-hitting shift escape). For every $`r\ge1`$, does some positive multiple of $`r`$ escape cofinally, in the sense of <a href="#long251:eq:shift-escape" data-reference-type="eqref" data-reference="long251:eq:shift-escape">[long251:eq:shift-escape]</a> at shift length $`mr`$ for some $`m\ge1`$?
+**Problem 33** (divisor-hitting shift escape). For every $`r\ge1`$, does some positive multiple of $`r`$ escape cofinally, in the sense of <a href="#long251:eq:shift-escape" data-reference-type="eqref" data-reference="long251:eq:shift-escape">[long251:eq:shift-escape]</a> at shift length $`mr`$ for some $`m\ge1`$?
 
 </div>
 
-A hypothetical rational value produces an eventually integral fixed shift, and the tail-shift cocycle propagates integrality forward and through positive multiples of that shift, so hitting one compatible multiple suffices in place of escaping at every prescribed $`h`$. Forward propagation is Lean-checked; the short multiple-in-shift closure is an elementary paper-level derivation with no named declaration, so this is recorded as a sharper proposed criterion rather than a registered equivalence.
+This is an exact reformulation, not a weaker mathematical target. If $`T_0`$ is irrational, every positive shift is nonintegral by the block identity, so divisor-hitting escape follows with $`m=1`$. Conversely, rationality gives a shift $`h\ge1`$ that is integral at every sufficiently late index. For each positive integer $`m`$, the identity
+``` math
+T_{N+mh}-T_N=\sum_{j=0}^{m-1}(T_{N+(j+1)h}-T_{N+jh})
+```
+makes every multiple $`mh`$ eventually integral. Taking $`r=h`$ contradicts divisor-hitting escape. This ordinary deduction uses the checked rationality classification and a finite telescope; rearranging the quantifiers supplies no new estimate for the actual prime gaps.
 
 <a id="long251:sec:xr-compression"></a>
 
 ## Two ordinary proofs about the free-pair producer
 
-Both statements below are ordinary proofs recorded in the private research development. Neither is formalised and neither carries an independent check.
+Both arguments below are ordinary mathematical deductions. Neither is formalised or independently checked here.
 
 <a id="state-compression."></a>
 
@@ -1038,11 +1160,11 @@ Under the free-pair lattice the difference $`T_M-T_N`$ is an integer whenever th
 
 ## A bounded companion to the recurring-values countermodel
 
-Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">23</a> carries a logarithmic growth profile so that its cumulative sequence matches the primes. The mechanism is visible in a much smaller example, which is recorded here because it is checkable by hand.
+Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">24</a> carries a logarithmic growth profile so that its cumulative sequence matches the primes. The mechanism is visible in a much smaller example, which is recorded here because it is checkable by hand.
 
 <div id="long251:xr:boundedpolignac" class="proposition">
 
-**Proposition 33** (bounded recurring-values countermodel). *Put $`U_0=4`$ and, for $`n\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\ge1`$. Then $`a_n\in\{2,4,8\}`$, the value $`2`$ occurs at every index $`k!`$ and the value $`4`$ at every index $`2\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\ge1`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*
+**Proposition 34** (bounded recurring-values countermodel). *Put $`U_0=4`$ and, for $`n\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\ge1`$. Then $`a_n\in\{2,4,8\}`$, the value $`2`$ occurs at every index $`k!`$ and the value $`4`$ at every index $`2\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\ge1`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*
 
 </div>
 
@@ -1078,7 +1200,7 @@ Every offset $`h\le16`$ has events, with minimum density $`0.00418`$ and maximum
  0.17671,\;0.15058,\;0.14420,\;0.14067,\;0.13766,\;0.13667,\;0.13333,\;0.13148 .
 \end{array}
 ```
-The rescaled drift is $`0.744`$ at $`h=1`$ and lies between $`0.744`$ and $`0.8121`$ across all offsets. Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">22</a> proves that the limiting density is zero, so the observed decline is the expected behaviour rather than a failure of the event.
+The rescaled drift is $`0.744`$ at $`h=1`$ and lies between $`0.744`$ and $`0.8121`$ across all offsets. Theorem <a href="#long251:res:sparse" data-reference-type="ref" data-reference="long251:res:sparse">23</a> proves that the limiting density is zero, so the observed decline is the expected behaviour rather than a failure of the event.
 
 <a id="long251:sec:xr-corrections"></a>
 
@@ -1094,7 +1216,7 @@ An earlier internal record narrated a denominator exclusion at $`10^{602}`$. Tha
 
 #### The named missing input.
 
-An earlier record named Hardy-Littlewood $`k`$-tuple correlation of consecutive gaps at a fixed offset as the missing input. With the offset freed by Theorem <a href="#long251:res:freepair" data-reference-type="ref" data-reference="long251:res:freepair">8</a> the route needs, for each modulus $`t`$, cofinally many congruent pairs with certified nonintegral tail difference. A further record proposed that two even values differing by $`2`$, each occurring infinitely often inside a common index residue class, would supply the two-condition form. No proof of that implication was ever produced, and Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">23</a> shows that no proof exists at the level of integer-digit recurrences. That entry is withdrawn.
+An earlier record named Hardy-Littlewood $`k`$-tuple correlation of consecutive gaps at a fixed offset as the missing input. With the offset freed by Theorem <a href="#long251:res:freepair" data-reference-type="ref" data-reference="long251:res:freepair">8</a> the route needs, for each modulus $`t`$, cofinally many congruent pairs with certified nonintegral tail difference. A further record proposed that two even values differing by $`2`$, each occurring infinitely often inside a common index residue class, would supply the two-condition form. No proof of that implication was ever produced, and Theorem <a href="#long251:res:polignacfail" data-reference-type="ref" data-reference="long251:res:polignacfail">24</a> shows that no proof exists at the level of integer-digit recurrences. That entry is withdrawn.
 
 <a id="the-formal-boundary."></a>
 

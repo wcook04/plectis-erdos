@@ -110,6 +110,9 @@ BUILDERS = (
     "scripts/build_semantic_corpus.py",
     "scripts/build_theory_lab.py",
     "scripts/build_external_verification.py",
+    # Authored source mappings consume the complete paper inventory and emit
+    # exhaustive bibliography/citation and Lean-comment coverage views.
+    "scripts/build_source_attributions.py",
     # The corpus descriptor reads paper/module-aliases.json, so the alias
     # builder has to come first. It did not until 2026-08-31, and the symptom
     # was a full refresh that reported its own descriptor stale and blamed an

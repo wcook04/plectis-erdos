@@ -88,8 +88,11 @@ This library treats the three-prime case. A paper proof using Bugeaud--Laurent
 makes both two-prime versions transcendental; this is not first and not
 formalised. Steve Fan posted the same argument on the erdosproblems.com #269
 thread on 26 June 2026 and this note was first released publicly on 22 July
-2026, so no priority is claimed. For three primes the paper proves nonsingular
-selected minors of every order from one binary carry. Comparator checks the
+2026, so no priority is claimed. For three primes the paper explains how one
+binary carry yields nonsingular selected minors of every order. The exact
+rank source belongs to the successfully compiled public closure in
+[the Wave-A record](../../verification/erdos269-wavea-validation.json);
+that record supplies no separate rank-declaration axiom audit. Comparator checks the
 `-1/15` finite minor, the running-LCM height identity, and a conditional
 carry-escape consumer, not the arbitrary-order rank theorem. The actual-series
 reduction is given; the source-specific cofinal escape remains unproved. Paper:
@@ -98,10 +101,13 @@ reduction is given; the source-specific cofinal escape remains unproved. Paper:
 **#1041 — Must two roots of a monic polynomial in the unit disc admit a curve of
 length less than `2` inside its open unit lemniscate?**
 
-Lean checks Newton-flow value decay, ray separation, the translation collision
-locus, and root retention under small constant perturbations. A recent claimed
-global decomposition has an invalid printed local saddle block; repairing the
-topology and metric gluing remains open. Paper:
+The paper proves trinomial radial containment with ordinary path assembly.
+Lean checks the complete all-degree critical-value mean, supported by
+[source-bound audit evidence](../../verification/erdos1041-returned-r18-v5-full-audit-evidence.json),
+and local Newton derivatives, ray-separation consumers, translation geometry
+and root retention. The real-time first integral uses ordinary integration;
+the ray consumer assumes its exponential endpoint relation. Neither the mean
+nor these local inputs supplies unrestricted topology and metric gluing. Paper:
 `erdos-1041-lemniscate-newton-flow.pdf`.
 
 **#1049 — For which rational bases is the corresponding Lambert-type series
@@ -123,11 +129,8 @@ Every route needed for that drilldown is tracked in this public repository; no
 
 ## Verdict first
 
-The likely cold-agent error here is to skim a large Lean corpus with two
-reviewed problem lanes and eight problem-owned expansion lanes, then conclude
-"restatements of the original problem." That conclusion is partly right and
-mostly wrong, and you do not have to guess which: the semantic graph classifies
-every statement, so ask it instead of reading modules.
+Do not skim the Lean corpus and classify everything as a restatement. The
+semantic graph records that classification; query it before reading modules.
 
 ```sh
 python3 scripts/query_semantic.py nonrecurring --problem 257 --limit 12
@@ -147,15 +150,12 @@ The current all-problem counts are builder-owned in
 `docs/RESULTS.md` and `docs/reference/TRUTH_AUDIT.md`; do not copy a dated #249/#257
 sample into this static entry file.
 
-**None of those counts is a novelty claim.** `classical` is exactly the set already in
-the literature; `nonrecurring` asks whether a statement recurs *inside this
-corpus*, not whether it is new to mathematics. Novelty is a judgement for a
-human number theorist, and no query here supplies it. (The README's ten-minute
-verdict counts a different population — substantial antecedents extracted from
-conditional results — so its `23`/`17` and these totals are not in conflict.)
+**None of those counts is a novelty claim.** `classical` marks literature;
+`nonrecurring` means only that a statement does not recur in this corpus.
+Novelty requires human mathematical judgement. The README's `23`/`17` counts a
+different population: substantial antecedents extracted from conditional results.
 
-Three things follow, and an agent reporting on this repository should carry all
-three rather than any one of them.
+Carry all three conclusions below when reporting on this repository.
 
 1. **The reviewed mathematical weight is not exhausted by #249.** The
    unconditional #257 material (full-support
@@ -235,39 +235,30 @@ Lean build when a result must be checked.
    python3 scripts/verify_claims.py --claim <claim_id>
    ```
 
-   It checks recorded declaration names near their recorded source lines in the
-   current checkout and checks that the claim status is recognised. It prints
-   the paper and selected Comparator references together with the claim's
-   limits. It does not run Lean or load the recorded historical revision.
-   Comparator checks a separately declared statement under configured axioms;
-   a printed binding is not independent verification. Use
-   `query_corpus.py --claim` for argument-graph neighbours.
+   It checks recorded declaration names and claim status in the current
+   checkout, and prints paper/Comparator references and limits. It does not run
+   Lean or load historical revisions. Printed Comparator bindings are not
+   independent verification. Use `query_corpus.py --claim` for argument-graph
+   neighbours.
 
-   This `--claim` command can pass in a shallow clone because it checks current
-   records. The default history diagnostic reports missing required history
-   with exit 2; that environment result does not mean a proof failed. Follow
-   [the reproducibility guide](../REPRODUCIBILITY.md) for the separate history
-   and Lean checks.
+   This `--claim` check can pass in a shallow clone. The default history
+   diagnostic exits 2 when required history is missing; that does not mean a
+   proof failed. Follow [the reproducibility guide](../REPRODUCIBILITY.md) for
+   the separate history and Lean checks.
 3. Read `docs/methodology.json` before changing a public claim. It defines
    the evidence responsibilities, change classes, required reviews, and local
    claim, guard, and negative-fixture references for each rule.
    `docs/METHODOLOGY.md` is the shorter human projection.
-4. Read `docs/corpus_descriptor.json` when another agent or system needs to
-   register this repository as a mathematical corpus. It separates the pinned
-   proof-source commit from the content-addressed navigation projection, and
-   carries bounded principal handles plus digest-bound expansion routes for
-   both authored papers and the paper-to-Lean source-sigil crosswalk. Generated
-   navigation does not pretend to contain the Git commit that first contains
-   its own bytes. These authored surfaces remain distinct from Lean proof
-   authority. The release gate keeps this registration envelope below 64 KB.
-5. Read `docs/publication_entry_packet.json` when the task concerns the
-   systems paper, publication controls, mutation evidence, or their current
-   limits. It is a generated, bounded agent packet containing the thesis,
-   checked claims and non-claims, historical and current evidence snapshots,
-   authority owners, content hashes, validation commands, and active evidence
-   residuals. It is navigation, not Lean proof authority or historical
-   evidence authority. Its authored source is
-   `docs/publication_entry_source.json`.
+4. Read `docs/corpus_descriptor.json` to register this mathematical corpus. It
+   separates the pinned proof source from content-addressed navigation and
+   carries bounded handles and digest-bound expansion routes for papers and the
+   paper-to-Lean crosswalk. It is generated navigation, not proof authority,
+   and the release gate keeps it below 64 KB.
+5. Read `docs/publication_entry_packet.json` for the systems paper, publication
+   controls, mutation evidence, and their limits. This bounded navigation packet
+   records claims, non-claims, owners, hashes, commands, and residuals; its
+   authored source is `docs/publication_entry_source.json`. It is neither proof
+   authority nor historical-evidence authority.
 6. Read `docs/publication_contract.json` for the exact inventory of shipped
    manuscripts and PDFs, their content identities, their evidence boundaries,
    and their entry routes. It owns publication-artifact coverage, not

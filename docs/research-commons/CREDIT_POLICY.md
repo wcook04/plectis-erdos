@@ -47,3 +47,13 @@ All contributions remain subject to the repository's licences and source
 attribution requirements. A contributor should cite prior work, identify any
 material collaborators, and state limitations honestly. Maintainers must keep
 the credit narrow, durable, public, and no stronger than the accepted evidence.
+
+Prior literature, catalogues, public website contributions, and implemented
+advice are indexed separately in [source attributions](SOURCE_ATTRIBUTIONS.md).
+That view is built from `source-attributions.json` with
+`python3 scripts/build_source_attributions.py`; use `--check` for freshness or
+`--query <name-or-problem-or-id>` for a bounded lookup. It is source-credit and
+navigation evidence, not an accepted-contribution receipt, authorship transfer,
+mathematical review, or endorsement. Private correspondence remains anonymous
+until the contributor confirms public naming; its private evidence stays out
+of this repository.

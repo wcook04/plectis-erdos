@@ -90,26 +90,31 @@ modulo $2^{L}$.  A one-block certificate would be a prime-gap theorem
 producing such an avoided arc on a logarithmic block.  This rewriting is
 paper-level and carries no Lean declaration.
 
-\subsection{A weaker recurrence-level target}\label{long251:sec:xr-divisorhit}
+\subsection{Divisor-hitting shift escape}\label{long251:sec:xr-divisorhit}
 
 \begin{problem}[divisor-hitting shift escape]\label{long251:xr:divisor-hit}
 For every $r\ge1$, does some positive multiple of $r$ escape cofinally, in the
 sense of \eqref{long251:eq:shift-escape} at shift length $mr$ for some $m\ge1$?
 \end{problem}
 
-A hypothetical rational value produces an eventually integral fixed shift, and
-the tail-shift cocycle propagates integrality forward and through positive
-multiples of that shift, so hitting one compatible multiple suffices in place
-of escaping at every prescribed $h$.  Forward propagation is Lean-checked; the
-short multiple-in-shift closure is an elementary paper-level derivation with no
-named declaration, so this is recorded as a sharper proposed criterion rather
-than a registered equivalence.
+This is an exact reformulation, not a weaker mathematical target.
+If $T_0$ is irrational, every positive shift is nonintegral by the block
+identity, so divisor-hitting escape follows with $m=1$.  Conversely,
+rationality gives a shift $h\ge1$ that is integral at every sufficiently
+late index.  For each positive integer $m$, the identity
+\[
+ T_{N+mh}-T_N=\sum_{j=0}^{m-1}(T_{N+(j+1)h}-T_{N+jh})
+\]
+makes every multiple $mh$ eventually integral.  Taking $r=h$ contradicts
+divisor-hitting escape.  This ordinary deduction uses the checked
+rationality classification and a finite telescope; rearranging the
+quantifiers supplies no new estimate for the actual prime gaps.
 
 \subsection{Two ordinary proofs about the free-pair producer}
 \label{long251:sec:xr-compression}
 
-Both statements below are ordinary proofs recorded in the private research
-development.  Neither is formalised and neither carries an independent check.
+Both arguments below are ordinary mathematical deductions.  Neither is
+formalised or independently checked here.
 
 \paragraph{State compression.}  Exchanging the order of summation gives
 $\sum_{N\le X}T_N\le(p_{X+1}-p_0)+2T_X$.  Under rationality with reduced odd

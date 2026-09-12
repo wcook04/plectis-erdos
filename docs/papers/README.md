@@ -250,7 +250,7 @@ The [problem summaries](../RELATED_PROBLEMS.md) introduce the mathematics. `docs
 
 **Two Incomparable Denominator Exclusions for \sum_{n\ge2}(n!-1)^{-1}**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex) · 18 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex) · 19 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
 Sections on results and limitations (selected for this guide): [The denominator exclusions](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [An integral basis for factorial channels](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [One joint collision and residue estimate](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [The remaining real comparison](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
@@ -258,7 +258,7 @@ Sections on results and limitations (selected for this guide): [The denominator 
 
 **The Factorial-Denominator Series: Complete Reasoning Record**
 
-[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/68/erdos68-factorial-reasoning-surface.tex) · 37 sections · `erdos68-factorial-reasoning-surface` · native to this repository
+[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.tex) · 37 sections · `erdos68-factorial-reasoning-surface` · native to this repository
 
 Sections on results and limitations (selected for this guide): [Complete result-family map](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
 
@@ -274,7 +274,7 @@ Sections on results and limitations (selected for this guide): [Introduction](fu
 
 **Reciprocal-Tail Rigidity: Complete Reasoning Record**
 
-[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex) · 74 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
+[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex) · 74 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
 
 Sections on results and limitations (selected for this guide): [Complete result-family map](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:erdos-243-complete-family-map).
 
@@ -290,9 +290,9 @@ Sections on results and limitations (selected for this guide): [A basis and all 
 
 **The Binary Totient Series**
 
-[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/249/erdos249-totient-reasoning-surface.tex) · 150 sections · `erdos249-totient-reasoning-surface` · native to this repository
+[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.tex) · 150 sections · `erdos249-totient-reasoning-surface` · native to this repository
 
-Sections on results and limitations (selected for this guide): [The wall](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [What the wall does not block](full-text/erdos249-totient-reasoning-surface.md#sec:survivors).
+Sections on results and limitations (selected for this guide): [What the countermodels exclude](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [What the wall does not block](full-text/erdos249-totient-reasoning-surface.md#sec:survivors).
 
 ### What tail-shift condition would prove irrationality in Erdős #251, which natural affine schedules provably cannot supply it, and what prime-gap input still survives?
 
@@ -306,7 +306,7 @@ Sections on results and limitations (selected for this guide): [Introduction](fu
 
 **Prime Gaps and Dyadic Tails: Complete Reasoning Record**
 
-[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/887aae6197bef3dbd1a56d10afba5932e6ed4ea4/paper/251/erdos251-prime-gap-reasoning-surface.tex) · 51 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
+[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.tex) · 52 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
 
 Sections on results and limitations (selected for this guide): [Introduction](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:problem), [The tail recurrence and the exact criteria](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:tail), [What cannot supply the missing input](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:obstructions), [The remaining obligation](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:open), [Complete result-family map](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
 
@@ -314,7 +314,7 @@ Sections on results and limitations (selected for this guide): [Introduction](fu
 
 **Reciprocal-Summable Support Irrationality at Every Integer Base**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex) · 18 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex) · 19 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
 Sections on results and limitations (selected for this guide): [Finite-support denominator periods](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [Where the return mechanism stops](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [Further questions](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
@@ -322,15 +322,15 @@ Sections on results and limitations (selected for this guide): [Finite-support d
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/257/erdos257-mersenne-reasoning-surface.tex) · 138 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex) · 139 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
-Sections on results and limitations (selected for this guide): [The problem, and what is actually known](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [The wall](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [What the wall does not block](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors).
+Sections on results and limitations (selected for this guide): [Support irrationality and its proof mechanisms](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [The wall](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [What the wall does not block](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors).
 
 ### What is the complete block, shell, carry, and observer record for Erdős #269, and which cofinal escape remains?
 
 **The Three-Prime Running LCM: Complete Reasoning Record**
 
-[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/269/erdos269-running-lcm-reasoning-surface.tex) · 40 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
+[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.tex) · 41 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
 
 Sections on results and limitations (selected for this guide): [Complete result-family map](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
@@ -354,7 +354,7 @@ Sections on results and limitations (selected for this guide): [The problem and 
 
 **Lemniscates and Newton Flow: Complete Reasoning Record**
 
-[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 60 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
+[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 61 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
 
 Sections on results and limitations (selected for this guide): [The problem](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:problem), [The Newton value equation](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:gap), [Complements and further questions](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:open), [Complete result-family map](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:erdos-1041-complete-family-map).
 
@@ -370,7 +370,7 @@ Sections on results and limitations (selected for this guide): [Introduction](fu
 
 **Rational-Base Lambert Series: Complete Reasoning Record**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 58 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 59 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 Sections on results and limitations (selected for this guide): [Complete result-family map](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
 
@@ -386,7 +386,7 @@ Sections on results and limitations (selected for this guide): [The whole lifecy
 
 **From a Cold Clone to a Proof Receipt**
 
-[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
+[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
 
 Sections on results and limitations (selected for this guide): [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [Four views of the mathematical library](full-text/cold-clone-to-proof-receipt.md#sec:layers), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [Compilation after comprehension](full-text/cold-clone-to-proof-receipt.md#sec:incremental), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
 
@@ -394,7 +394,7 @@ Sections on results and limitations (selected for this guide): [The cold-clone p
 
 **From Spare Compute to Cumulative Mathematics**
 
-[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/systems/open-source-mathematics-strategy.tex) · 29 sections · `open-source-mathematics-strategy` · native to this repository
+[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex) · 29 sections · `open-source-mathematics-strategy` · native to this repository
 
 Sections on results and limitations (selected for this guide): [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The public research object](full-text/open-source-mathematics-strategy.md#sec:object), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [Distributed compute without distributed authority](full-text/open-source-mathematics-strategy.md#sec:security), [Participation and growth](full-text/open-source-mathematics-strategy.md#sec:growth), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
 
@@ -402,7 +402,7 @@ Sections on results and limitations (selected for this guide): [The strategy](fu
 
 **Plectis: What a Stranger Can Check**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/a5b7d4c5c91b1b6b004f9c86e84536825b87f592/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
 
 Sections on results and limitations (selected for this guide): [The problem](full-text/plectis-public-system.md#sec:problem), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions).
 
@@ -410,7 +410,7 @@ Sections on results and limitations (selected for this guide): [The problem](ful
 
 **Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257** · **retired manuscript**
 
-[full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
+[full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
 
 The author recommends starting with [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
 
@@ -422,23 +422,23 @@ responsibility for proof verification, status and explanation as follows:
 
 > checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition.
 
-- `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
-- `erdos-68-factorial-denominator-irrationality` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #68, which remains open.
-- `erdos68-factorial-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #68, which remains open.
-- `erdos-243-reciprocal-tail-rigidity` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #243, which remains open.
-- `erdos243-reciprocal-tail-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #243, which remains open.
-- `erdos-249-binary-totient-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
-- `erdos249-totient-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
-- `erdos-251-prime-gap-dyadic-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #251, which remains open.
+- `erdos249-257-main` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, and public claim status, which belongs to docs/claims.json.
+- `erdos-68-factorial-denominator-irrationality` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #68, which remains open.
+- `erdos68-factorial-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #68, which remains open.
+- `erdos-243-reciprocal-tail-rigidity` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #243, which remains open.
+- `erdos243-reciprocal-tail-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #243, which remains open.
+- `erdos-249-binary-totient-series` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #249, which remains open.
+- `erdos249-totient-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #249, which remains open.
+- `erdos-251-prime-gap-dyadic-series` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #251, which remains open.
 - `erdos251-prime-gap-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #251, which remains open.
-- `erdos-257-mersenne-support-subseries` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, which remains open.
-- `erdos257-mersenne-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, whose universal and half-value questions remain open.
-- `erdos269-running-lcm-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #269, which remains open.
-- `erdos-269-three-prime-running-lcm` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #269, which remains open.
-- `erdos-1041-lemniscate-newton-flow` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1041, which remains open.
-- `erdos1041-lemniscate-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1041, which remains open.
-- `erdos-1049-rational-base-lambert` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1049, which remains open.
-- `erdos1049-rational-base-lambert-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1049, which remains open.
+- `erdos-257-mersenne-support-subseries` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #257, which remains open.
+- `erdos257-mersenne-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #257, whose universal and half-value questions remain open.
+- `erdos269-running-lcm-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #269, which remains open.
+- `erdos-269-three-prime-running-lcm` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #269, which remains open.
+- `erdos-1041-lemniscate-newton-flow` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1041, which remains open.
+- `erdos1041-lemniscate-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1041, which remains open.
+- `erdos-1049-rational-base-lambert` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
+- `erdos1049-rational-base-lambert-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.

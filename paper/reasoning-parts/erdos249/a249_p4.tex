@@ -301,11 +301,16 @@ locked configuration) has occurred.
 
 \textbf{(b) Exact mechanism.}
 \begin{prop}[Locked reconstruction preserves a nonzero minor]
-For a monomial matrix \(\mathrm{residualMonomialMatrix}(e,r,z)(i,j) =
-r(i,j)\cdot z(j)^{e(i)}\) with all residual entries \(z(j)\ne0\) and
-\(e(i)=1\) for a distinguished row \(i\): \(\det(\mathrm{phasePowerMatrix})
-\ne0 \implies \det(\mathrm{residualMonomialMatrix})\ne0\), \emph{and} the
-distinguished row is identically \(1\) regardless.
+Let \(e:\mathrm{Fin}\,d\to\mathbb N\) and \(z:\mathrm{Fin}\,d\to\mathbb C\),
+with \(z(j)\ne0\) for every \(j\), and fix a row \(i_0\) with \(e(i_0)=1\).
+Use the locked column weights \(W(j)=z(j)^{-1}\), so that
+\[
+ \mathrm{residualMonomialMatrix}(e,W,z)(i,j)
+ =W(j)z(j)^{e(i)}.
+\]
+If \(\det(\mathrm{phasePowerMatrix}(e,z))\ne0\), then
+\(\det(\mathrm{residualMonomialMatrix}(e,W,z))\ne0\), and every entry
+of row \(i_0\) is \(1\).
 \end{prop}
 \lean{Erdos249257.locked\_reconstruction\_preserves\_nonzero\_minor}{ResidualGaugeObstruction.lean:94}
 (row-dependent relaxation \lean{rowResidualMonomialMatrix\_reconstructs\_phasePowerMatrix}{ResidualGaugeObstruction.lean:124}; the
@@ -430,7 +435,7 @@ contradiction (or a genuine rank obstruction) might be extracted.
 
 \textbf{(b) Exact mechanism.}
 \begin{thm}[Infinite dyadic totient-kernel rank]
-For every depth \(e\ge0\), the canonical family of \(2^e+1\) dyadic
+For every depth \(e\ge1\), the canonical family of \(2^e+1\) dyadic
 totient-kernel channels (\(\mathtt{card\_totientCanonicalIndex}\),
 \lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:61}) is linearly independent over
 \(\mathbb Q\), proved via a \texttt{SeparatedMinorCertificate} (an explicit
@@ -447,9 +452,14 @@ impossibility result closes the natural repair attempt directly: a bounded
 with \(Q\cdot v\cdot A=\mathrm{boundary}\), \(|\mathrm{boundary}|<Q\cdot v\),
 \(A\ne0\) — is provably impossible,
 \lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}. \ev{Lean}
-\scale{uniform} (holds for every \(e\); existence side is unconditional, via
+\scale{uniform} (holds for every \(e\ge1\); existence side is unconditional, via
 Mathlib's CRT + primes-in-AP machinery) \coord{binary-digit} (dyadic
 totient-kernel — \emph{not} the Möbius coordinate).
+
+The Lean independence theorem is also stated for \(e=0\), but its auxiliary
+canonical index then still contains the two zero-residue channels
+\(\varphi(n)\) and \(\varphi(2n)\).  It is therefore not the actual truncation
+through level zero, which consists only of \(\varphi(n)\) and has dimension one.
 
 \paragraph{Integral coordinates and the complete relation module.}
 The independence statement also determines the arithmetic of the channel
