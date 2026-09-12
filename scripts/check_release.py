@@ -119,6 +119,14 @@ def failed_independent_checks(
     return failures
 
 
+def consume_check_results(
+    results: dict[str, subprocess.CompletedProcess[str]],
+) -> None:
+    """Bind every scheduled failure to the gate, including newly added checks."""
+    failures = failed_independent_checks(results)
+    check(not failures, "scheduled release checks failed: " + "; ".join(failures))
+
+
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run a release-gate subprocess with checkout-independent Git state."""
     kwargs["env"] = clean_environment()
@@ -167,6 +175,7 @@ def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
         _PROJECTION_CHECK_RESULTS = dict(
             executor.map(check_builder, refresh_projections.BUILDERS)
         )
+    consume_check_results(_PROJECTION_CHECK_RESULTS)
     return _PROJECTION_CHECK_RESULTS
 
 
@@ -209,7 +218,9 @@ def finish_independent_checks(
 ) -> dict[str, subprocess.CompletedProcess[str]]:
     """Collect a previously started check batch and always close its workers."""
     try:
-        return {check_id: future.result() for check_id, future in futures.items()}
+        results = {check_id: future.result() for check_id, future in futures.items()}
+        consume_check_results(results)
+        return results
     finally:
         executor.shutdown(wait=True, cancel_futures=True)
 
@@ -236,6 +247,10 @@ def late_check_commands() -> dict[str, list[str]]:
         "semantic_relation_parity": [
             sys.executable,
             str(ROOT / "scripts" / "test_semantic_relation_parity.py"),
+        ],
+        "release_environment": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_check_release_environment.py"),
         ],
         "computation_replay": [
             sys.executable,
@@ -2240,11 +2255,6 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_agent_entry.py"),
             ],
-            "agent_skill_catalog": [
-                sys.executable,
-                str(ROOT / "scripts" / "agent_skill_catalog.py"),
-                "--check",
-            ],
             "clone_skills": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_clone_skills.py"),
@@ -2337,7 +2347,7 @@ def main(argv: list[str] | None = None) -> int:
         "clone-local agent entry failed: "
         f"{child_output(agent_entry_check)}",
     )
-    agent_skill_catalog_check = mid_checks["agent_skill_catalog"]
+    agent_skill_catalog_check = _PROJECTION_CHECK_RESULTS["scripts/agent_skill_catalog.py"]
     check(
         agent_skill_catalog_check.returncode == 0,
         "clone-local skill catalog failed: "
