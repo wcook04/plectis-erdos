@@ -1328,7 +1328,7 @@ There is nevertheless a complete ordinary topology theorem on the generic stratu
 
 **Theorem 28** (ray-separated slit-sheet decomposition). *Let $`f`$ be monic, and let $`U`$ be a component of $`\{|f|<1\}`$ containing $`k\ge2`$ roots, counted with multiplicity. Suppose every critical point of $`f`$ in $`U`$ is simple, its critical value is nonzero, and these critical values have pairwise distinct arguments and pairwise distinct moduli. Then:*
 
-1.  *$`-\log|f|`$ is a proper excellent Morse function on $`U\setminus f^{-1}(0)`$, with exactly $`k-1`$ nondegenerate saddles;*
+1.  *$`-\log|f|:U\setminus f^{-1}(0)\to(0,\infty)`$ is a proper excellent Morse function, with exactly $`k-1`$ nondegenerate saddles;*
 
 2.  *cutting the value disc along the complete critical rays decomposes the preimage into conformal strips;*
 
@@ -1342,7 +1342,7 @@ There is nevertheless a complete ordinary topology theorem on the generic stratu
 
 <div class="proof">
 
-*Proof.* A polynomial sublevel component is simply connected, and $`f:U\to\mathbb D`$ is proper of degree $`k`$. Riemann–Hurwitz gives exactly $`k-1`$ simple critical points. The holomorphic Morse lemma makes them nondegenerate saddles of $`-\log|f|`$; the distinct moduli make their levels distinct, and properness follows at the boundary and at the deleted roots. Removing all critical rays leaves simply connected sectors without branch values, so every component of their preimage maps biholomorphically to its sector; logarithmic polar coordinates turn these components into strips.
+*Proof.* A polynomial sublevel component is simply connected, and $`f:U\to\mathbb D`$ is proper of degree $`k`$. Riemann–Hurwitz gives exactly $`k-1`$ simple critical points. The holomorphic Morse lemma makes them nondegenerate saddles of $`-\log|f|`$; the distinct moduli make their levels distinct. Properness here is for the displayed codomain $`(0,\infty)`$: a compact positive range stays away from both the level-one boundary and the deleted roots. Removing all critical rays leaves simply connected sectors without branch values, so every component of their preimage maps biholomorphically to its sector; logarithmic polar coordinates turn these components into strips.
 
 For the sheet tree, remove only the outward slits $`\{tf(c):1\le t<1/|f(c)|\}`$. Distinct critical-value arguments make the remaining value domain star-shaped about $`0`$, hence simply connected. Its preimage splits into $`k`$ sheets labelled by the roots. Local monodromy at a simple critical value is a transposition. The monodromy action before the slits are made is transitive because the punctured domain upstairs is connected; therefore the graph of the $`k-1`$ transpositions is connected. A connected graph with $`k`$ vertices and $`k-1`$ edges is a tree.
 

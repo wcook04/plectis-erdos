@@ -155,6 +155,22 @@ def load_catalog() -> dict[str, Any]:
         normalized_cues = [normalize(value) for value in task_cues]
         if "" in normalized_cues or len(normalized_cues) != len(set(normalized_cues)):
             raise SkillCatalogError(f"lane {lane_id} has empty or duplicate normalized task cues")
+        task_intents = lane.get("task_intents", [])
+        if not isinstance(task_intents, list):
+            raise SkillCatalogError(f"lane {lane_id} task_intents must be a list")
+        for intent in task_intents:
+            if not isinstance(intent, dict) or set(intent) != {"actions", "objects"}:
+                raise SkillCatalogError(f"lane {lane_id} task intent needs actions and objects")
+            for field in ("actions", "objects"):
+                terms = intent[field]
+                if (
+                    not isinstance(terms, list) or not terms
+                    or not all(isinstance(term, str) and TOKEN_RE.fullmatch(term) for term in terms)
+                    or len(terms) != len(set(terms))
+                ):
+                    raise SkillCatalogError(
+                        f"lane {lane_id} task intent {field} needs unique lowercase tokens"
+                    )
         for field in ("read", "commands"):
             values = lane.get(field)
             if not isinstance(values, list) or not all(
@@ -209,6 +225,17 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
             elif len(cue_tokens) == 1 and cue_tokens[0] in task_tokens:
                 matches.append(cue)
                 score += 2
+        # An explicit action and object can be separated by modifiers, e.g.
+        # "refine the short mathematical papers". Require both: the object
+        # alone must not turn a status or propagation request into authoring.
+        for intent in lane.get("task_intents", []):
+            actions = task_tokens.intersection(intent["actions"])
+            objects = task_tokens.intersection(intent["objects"])
+            if actions and objects:
+                matches.append(f"{sorted(actions)[0]} + {sorted(objects)[0]}")
+                # Two explicit intent components outweigh a generic later
+                # stage such as "propagate the downstream consequences".
+                score += 12
         # "Lean" names both a proof environment and an operational toolchain.
         # A genuine proof verb must keep proof search primary while the Lean
         # validation lane remains visible as a scored alternative.

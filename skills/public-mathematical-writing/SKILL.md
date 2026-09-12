@@ -63,6 +63,15 @@ the order of quantifiers; identify the formalized ingredients separately.
 Neither an absent Lean declaration nor an unsupported kernel label settles
 the validity of the ordinary argument.
 
+When translating a theorem type into prose, check its ambient domain and
+codomain, positive or nonzero parameters, finite index ranges, and the order
+in which witnesses are chosen. Test the smallest allowed case and one case
+outside a proposed guard before dropping it. A properness claim depends on
+its codomain; a fraction requires a nonzero denominator; a finite-minor result
+must quantify its order and say which parameters its indices may depend on.
+Keep essential guards inside the statement, even when the intended application
+automatically supplies them.
+
 ## Write for the reader in front of you
 
 A human front door should first answer four ordinary questions in prose: what

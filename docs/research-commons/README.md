@@ -3,12 +3,13 @@
 
 # The research commons
 
-The research commons lets somebody clone the repository, work independently,
-and send the result back without losing its origin, evidence, or credit. The
-whole process is public: the records, examples, checks, and accepted credit
-pages all live in this repository.
+Contributors can clone this repository, work independently, and send back a
+proof, correction, failed attempt or tooling improvement. The research commons
+documents how to record the starting commit, evidence and contributor roles,
+and how maintainers record acceptance. The records, examples, validation
+programs and accepted credit pages all live in this repository.
 
-Mathematical work and architecture work share this provenance rail. The
+Mathematical work and architecture work use the same contribution records. The
 [architecture contribution path](ARCHITECTURE_CONTRIBUTIONS.md) welcomes ideas
 and implementations for workflows, navigation, validation, reproducibility,
 tooling, governance, and contributor experience without assigning them a fake
@@ -27,10 +28,10 @@ a research objective or decide whether an agent has solved a problem. A growth
 phase should add qualified mathematical review before these packets are
 distributed at scale; such review is not claimed for every present route.
 
-An agent's `solution found` message remains an unreviewed candidate. The
-commons can replay it, ask independent contributors or agents to attack it,
-reconcile the formal and informal statements, and decide whether it deserves
-scarce specialist attention. A mature formal result may then be packaged with
+An agent's `solution found` message remains an unreviewed candidate. Maintainers
+and reviewers can rerun its evidence commands, ask independent contributors or
+agents to look for errors, compare the formal and informal statements, and
+decide whether to request specialist review. A mature formal result may then be packaged with
 Comparator for [Palomar](https://palomar-registry.org/), and relevant
 mathematical work can be placed before the
 [Erdős Problems](https://www.erdosproblems.com/) community. Those are external
@@ -38,11 +39,21 @@ routes. Palomar is a formal registry and automated filter rather than human
 peer review, and this repository cannot grant novelty, endorsement, or broad
 mathematical acceptance.
 
-There are two ways in. A person can open an ordinary pull request or a
-research-progress issue and describe the work in their own words. An agent or
-an experienced contributor can also attach the structured package produced by
-the continuation tools. That package makes later checking and attribution
-easier. It is not an entrance exam for contributors.
+A contributor can open an ordinary [pull request](../../CONTRIBUTING.md) or
+[research-progress issue](../../.github/ISSUE_TEMPLATE/research_progress.yml)
+and describe the work in their own words. Include the starting commit, changed
+files or failed route, commands actually run and their results, limitations,
+and who did the work. No structured session or JSON package is required.
+
+For an optional structured package, [start a continuation session](RETURN_PACKAGE_TEMPLATE.md#start-a-structured-continuation)
+from a clean checkout before editing. `continue_research.py start` records the
+current commit, question and identities under `workbench/sessions/<session>/`.
+After the work, [fill the return files, close the session and package them](RETURN_PACKAGE_TEMPLATE.md#fill-and-package-the-structured-return).
+The output directory contains `return.json`, `route-memory.json`, session
+records and a `package.json` manifest listing the packaged files and hashes.
+Keep the proposed commit or patch with the package: the packager does not copy
+every changed source file. The template also gives the recipient's
+[replay instructions](RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay).
 
 When maintainers accept returned work, a committed receipt ties it to the
 accepted commit. It records the contributor, collaborators, tool operators,
@@ -59,9 +70,9 @@ integration work. A later correction points back to the earlier receipt
 instead of erasing it. The history therefore records who did what, what was
 known at the time, and what the work did not establish.
 
-After a stable result, the clone-local consequence-propagation skill checks
-the Lean, claim, paper, computation, route, validation, and contributor
-surfaces that may now be stale. Each candidate is updated, verified unchanged,
+After a stable result, agents follow the clone-local consequence-propagation
+skill to inspect the Lean, claim, paper, computation, route, validation, and
+contributor files that may now be stale. Each candidate is updated, verified unchanged,
 deferred with a re-entry condition, or excluded with a reason before the
 return is packaged.
 

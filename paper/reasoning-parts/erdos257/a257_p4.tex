@@ -472,10 +472,16 @@ gives $1/2\in\mathcal A$ outright.
 
 \begin{prop}[Quantifier collapse: one critical index suffices, not $d{+}1$]
 \label{prop:critical-band-index}
-The abstract, purely combinatorial statement
+Let $d,E\in\mathbb N$ and assume $E\le2^{d+1}$. Then the purely combinatorial statement
 $\mathsf{DyadicBandEscape}(d,E) \iff \exists j,\ \mathsf{CriticalDyadicBandIndex}(d,E,j)\land
 E+2(d+j)\le 2^{d-j+1}$ collapses the $\forall j\in[0,d]$ band-avoidance condition (formally $d{+}1$
-separate inequalities) to checking exactly \emph{one} nearest-boundary index $j$. Specialised to the
+separate inequalities) to checking exactly \emph{one} nearest-boundary index $j$.
+The range assumption ensures that a dyadic threshold lies at or above $E$.
+Choose the smallest such threshold: smaller thresholds are already below
+$E$, while larger thresholds have narrower forbidden bands. Without the
+range assumption all bands escape automatically when $E>2^{d+1}$, but no
+critical index exists; $(d,E)=(0,3)$ is the smallest example.
+Specialised to the
 concrete seam reset charge, $\mathsf{SeamUpperResetCriticalBandEscape}$ is proved logically
 \emph{equivalent} to Definition~\ref{defn:band-escape}'s socket.
 \lean{Erdos249257.dyadicBandEscape\_iff\_exists\_critical}{HalfUpperResetCriticalBand.lean:108}

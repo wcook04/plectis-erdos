@@ -1202,10 +1202,15 @@ def main() -> int:
         assert package_manifest["github_intake"]["pull_request_artifact"] == "return.json"
         assert package_manifest["github_intake"]["pull_request_route_memory_receipt"] == "route-memory.json"
         assert package_manifest["github_intake"]["accepted_receipt_directory"] == "docs/research-commons/returns"
-        assert package_manifest["github_intake"]["local_validation"].endswith(
-            "--require-submitted --check-git --require-route-memory-receipt "
-            "--route-memory-receipt route-memory.json"
+        validation = package_manifest["validation"]
+        repository_validation = validation["repository_backed"]
+        assert (
+            package_manifest["github_intake"]["local_validation"]
+            == repository_validation["command"]
         )
+        assert '"$CHECKOUT/scripts/validate_research_return.py"' in repository_validation["command"]
+        assert '"$PACKAGE_DIR/return.json"' in repository_validation["command"]
+        assert '"$PACKAGE_DIR/route-memory.json"' in repository_validation["command"]
         assert "pull_request_receipt_path" not in package_manifest["github_intake"]
         assert package_manifest["public_guidance"] == {
             "continuation_guide": "docs/agents/AGENT_WORKBENCH.md",
@@ -1233,6 +1238,37 @@ def main() -> int:
         for artifact in package.rglob("*"):
             if artifact.is_file():
                 assert temporary not in artifact.read_text(encoding="utf-8")
+
+        detached_root = temp / "detached-recipient"
+        detached_package = detached_root / "delivery with spaces"
+        unrelated_cwd = detached_root / "unrelated"
+        shutil.copytree(package, detached_package)
+        unrelated_cwd.mkdir(parents=True)
+        detached_validation = subprocess.run(
+            ["/bin/sh", "-c", repository_validation["command"]],
+            cwd=unrelated_cwd,
+            env={
+                **continue_research.child_environment(),
+                "CHECKOUT": str(ROOT),
+                "PACKAGE_DIR": str(detached_package),
+                "PATH": f"{Path(sys.executable).parent}:{os.environ.get('PATH', '')}",
+            },
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
+        )
+        require(
+            detached_validation.returncode == 0,
+            (
+                detached_validation.returncode,
+                detached_validation.stdout,
+                detached_validation.stderr,
+            ),
+        )
+        detached_receipt = json.loads(detached_validation.stdout)
+        assert detached_receipt["valid"]
+        assert detached_receipt["route_memory_receipt"] == "route-memory.json"
 
         real_session_directory = sessions / "t_public_continue-real"
         session_directory = sessions / session

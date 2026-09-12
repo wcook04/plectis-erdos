@@ -117,6 +117,12 @@ obstruction, one discriminating test, authorised budget and stop condition.
 Use the `mine-open-problem` skill selected by the clone. Do not install Lean or
 start a costly proof build merely to obtain an overview.
 
+If you intend to return a structured package, [start the continuation session](research-commons/RETURN_PACKAGE_TEMPLATE.md#start-a-structured-continuation)
+**before editing or committing research changes**. The `start` command records
+the current commit, contributor and selected question; it requires a clean
+checkout by default. Keep its session name and generated files for the return.
+An ordinary issue or pull request does not require this session or JSON files.
+
 ## Return something checkable
 
 Keep the human account in ordinary language. Record the starting commit, the
@@ -129,9 +135,14 @@ Use [CONTRIBUTING](../CONTRIBUTING.md), the existing
 [research progress form](../.github/ISSUE_TEMPLATE/research_progress.yml), or the
 [research return form](../.github/ISSUE_TEMPLATE/research_return.yml).
 GitHub Discussions is optional: issue and pull-request intake already exists.
-Agents should follow the clone's `erdos-research-return` skill, preserve the
-local package and obtain approval before publishing it. Maintainer review owns
-acceptance and the existing accepted-contribution credit views.
+For a structured return, follow the clone's
+[`erdos-research-return` skill](../skills/erdos-research-return/SKILL.md) and the
+[packaging sequence](research-commons/RETURN_PACKAGE_TEMPLATE.md#fill-and-package-the-structured-return).
+Fill `return.json` and the route-memory sidecar, close the workbench session,
+then run the validation and packaging commands. The packager copies those
+inputs; it does not write the account of your work. Preserve the local package
+and obtain approval before publishing it. Maintainers decide acceptance and
+rebuild the accepted-contribution credit views from accepted receipts.
 
 Where Plectis materially helped, please cite the relevant release and explain
 its role. This is a request for accurate attribution, not a claim to a solver's
