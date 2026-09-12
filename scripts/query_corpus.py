@@ -4,7 +4,8 @@
 """Query the public mathematical corpus without loading its exhaustive files.
 
 This is a read-only navigation projection. It does not elaborate Lean and does
-not acquire proof authority. Run from any directory; output is JSON by default.
+not acquire proof authority. Run from any directory; problem routes and ordinary
+questions default to compact cards. Use --format json for machine packets.
 """
 
 from __future__ import annotations
@@ -48,6 +49,7 @@ DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
 MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
+PROBLEM_READER_RESULT_LIMIT = 3
 # Problem routes preserve every reviewed family and its exact boundary.  Eight
 # public problems currently require just under 78 KB for the largest (#249)
 # source-current route, so retain a modest fixed ceiling instead of rejecting
@@ -6188,7 +6190,7 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
 def explicit_problem_numbers(query: str) -> set[int]:
     """Return Erdős problem numbers explicitly named in ordinary text."""
     normalized_query = normalized_search_text(query)
-    return {
+    numbers = {
         int(match)
         for pattern in (
             r"\berdos(?:\s+problem)?\s*#?\s*(\d+)\b",
@@ -6196,6 +6198,18 @@ def explicit_problem_numbers(query: str) -> set[int]:
         )
         for match in re.findall(pattern, normalized_query)
     }
+    explicit_list_pattern = re.compile(
+        r"\b(?:erdos(?:\s+problems?)?|problems?)\s*#?\s*\d+"
+        r"(?:(?:\s*,\s*(?:and\s+)?|\s+(?:and|&)\s+)#?\s*\d+)+\b"
+    )
+    separator_preserving_query = "".join(
+        character
+        for character in unicodedata.normalize("NFKD", query.casefold())
+        if not unicodedata.combining(character)
+    )
+    for match in explicit_list_pattern.finditer(separator_preserving_query):
+        numbers.update(int(token) for token in re.findall(r"\d+", match.group(0)))
+    return numbers
 
 
 def explicit_erdos_problem_numbers(query: str) -> set[int]:
@@ -6247,6 +6261,51 @@ def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
             "Use a public corpus whose live problem registry includes the "
             "requested problem; this corpus will not substitute ranked results "
             "from other problems."
+        ),
+    }
+
+
+def multi_problem_query_boundary_packet(query: str) -> dict[str, Any] | None:
+    """Route explicit multi-problem questions without inventing a comparison."""
+    requested_numbers = sorted(explicit_problem_numbers(query))
+    if len(requested_numbers) <= 1:
+        return None
+
+    problem_rows = {
+        int(row["erdos_number"]): row
+        for row in load("docs/problems.json").get("problems", [])
+    }
+    if any(number not in problem_rows for number in requested_numbers):
+        return None
+    routes = [
+        {
+            "erdos_number": number,
+            "route_id": str(problem_rows[number]["problem_id"]),
+            "command": (
+                "python3 scripts/query_corpus.py --route "
+                f"{problem_rows[number]['problem_id']}"
+            ),
+        }
+        for number in requested_numbers
+    ]
+    return {
+        "kind": "multi_problem_query_boundary",
+        "authority_posture": (
+            "bounded_multi_problem_navigation_boundary_not_comparison_or_proof_authority"
+        ),
+        "query": query,
+        "status": "explicit_multi_problem_requires_individual_routes",
+        "requested_problem_numbers": requested_numbers,
+        "problem_routes": routes,
+        "expansion_commands": [route["command"] for route in routes],
+        "scope_source": "docs/problems.json",
+        "match_count": len(routes),
+        "comparison_effect": "none",
+        "claim_effect": "none",
+        "private_state_disclosure": "none",
+        "next": (
+            "Open each canonical problem route, then compare only the fields "
+            "needed for the reader's question."
         ),
     }
 
@@ -6461,6 +6520,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             exact_routes,
             selection="exact_authored_multi_route_term",
         )
+    multi_problem_boundary = multi_problem_query_boundary_packet(query)
+    if multi_problem_boundary is not None:
+        return multi_problem_boundary
     hinted_route_ids = [
         handle
         for (kind, handle), _priority in sorted(
@@ -7369,9 +7431,19 @@ def semantic_cell(
             "route_memory": packet.get("route_memory"),
         }
         if packet["kind"] == "problem_route":
-            content["mathematical_signal_spine"] = packet[
-                "mathematical_signal_spine"
-            ]
+            signal_spine = packet["mathematical_signal_spine"]
+            content["mathematical_signal_spine"] = {
+                "problem": signal_spine["problem"],
+                "ordering_contract": signal_spine["ordering_contract"],
+                "result_count": len(signal_spine.get("results", [])),
+                "detail_omission": {
+                    "fields": ["results"],
+                    "reason": "repeated_expansion_detail_in_embedded_route",
+                    "expansion_command": (
+                        f"python3 scripts/query_corpus.py --route {handle}"
+                    ),
+                },
+            }
             content["canonical_problem_route"] = (
                 f"python3 scripts/query_corpus.py --route {handle}"
             )
@@ -8130,6 +8202,8 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     if is_paper_reading_query(query):
         return paper_reading_guide_packet()
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
+    if search["kind"] == "multi_problem_query_boundary":
+        return search
     interpretation = search["query_interpretation"]
     routing_selection = search.get("routing_receipt", {}).get("selection")
     if routing_selection == "explicit_problem_number_route":
@@ -8528,6 +8602,13 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         edge for cell in cells for edge in cell["witness_edges"]
     ]
     synthesis = operator_synthesis(operator_id, cells)
+    if interpretation.get("problem_constraint"):
+        # Keep both sides of a checked-results-and-open-boundary question visible.
+        # The bounded cell selector can spend every remaining slot on open records;
+        # a result preview must therefore not depend on a spare semantic-cell slot.
+        synthesis["reader_answer"] = problem_reader_answer(
+            interpretation["problem_constraint"]["route_id"]
+        )
     if goal_support["availability"] == "available":
         synthesis = {
             **synthesis,
@@ -8794,6 +8875,102 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
             ),
         },
     }
+
+
+@lru_cache(maxsize=32)
+def problem_reader_answer(route_id: str) -> dict[str, Any]:
+    """Select a small source-grounded result preview and the entire open boundary.
+
+    Family order and wording come from the claim registry. A declaration preview
+    is a navigation witness, not a new elaboration or a promotion of a conditional
+    result. The full JSON route retains every family and signal-spine row.
+    """
+    route = route_packet(route_id)["route"]
+    families = route["result_families"]
+    results = []
+    for family in families[:PROBLEM_READER_RESULT_LIMIT]:
+        declaration_rows = [
+            row
+            for name in family["declarations"]
+            for row in declaration_rows_for_handle(name)
+        ]
+        witness = next(
+            (row for row in declaration_rows if row["kind"] in ("theorem", "lemma")),
+            next(iter(declaration_rows), None),
+        )
+        preview = compact_declaration(witness) if witness else None
+        if preview:
+            source_path = checkout_lean_file(witness["module"]).relative_to(ROOT).as_posix()
+            preview["source_ref"] = f"{source_path}:{witness['line']}"
+        results.append({
+            "id": family["id"],
+            "summary": family["summary"],
+            "contribution_class": family["contribution_class"],
+            "evidence_mode": family["evidence_mode"],
+            "boundary": family["boundary"],
+            "declaration_preview": preview,
+            "declaration_count": len(family["declarations"]),
+        })
+    claims = load("docs/claims.json")
+    targets = {route_id, f"universal_{route['erdos_number']}"}
+    exact_open = [
+        {
+            "id": row["id"],
+            "status": row["status"],
+            "statement": row["statement"],
+            "command": f"python3 scripts/query_corpus.py --open {row['id']}",
+        }
+        for row in claims["remaining_open_propositions"]
+        if row["open_target_claim"] in targets
+    ]
+    return {
+        "problem_route": route_id,
+        "problem_status": route["status"],
+        "source_directory": route["directory"],
+        "paper_source": (route.get("paper") or {}).get("source"),
+        "result_evidence": results,
+        "result_selection": "claim_registry_review_matrix_order_bounded_preview",
+        "result_family_count": len(families),
+        "omitted_result_family_count": max(0, len(families) - len(results)),
+        "exact_open_records": exact_open,
+        "open_obligations": route["open_obligations"],
+        "exhaustive_command": (
+            f"python3 scripts/query_corpus.py --route {route_id} --format json"
+        ),
+        "authority_boundary": (
+            "Registry evidence and source handles; this query does not run Lean. "
+            "Conditional premises remain premises, and the problem remains open."
+        ),
+    }
+
+
+def render_problem_reader_answer(answer: dict[str, Any]) -> list[str]:
+    rows = [
+        f"source={answer['source_directory']} | paper={answer['paper_source'] or 'unavailable'}",
+        f"results={len(answer['result_evidence'])}/{answer['result_family_count']} "
+        "| order=claim-registry review matrix",
+    ]
+    for result in answer["result_evidence"]:
+        rows.append(f"result {result['id']} | {result['contribution_class']} | {result['summary']}")
+        rows.append(f"  evidence={result['evidence_mode']}")
+        witness = result["declaration_preview"]
+        if witness:
+            rows.append(
+                f"  declaration={witness['qualified_name']} | source={witness['source_ref']} "
+                f"| claims={','.join(witness['claim_ids']) or 'none'}"
+            )
+        rows.append(f"  boundary={result['boundary']}")
+    rows.append(f"exact_open={len(answer['exact_open_records'])} | source=docs/claims.json")
+    for row in answer["exact_open_records"]:
+        rows.append(f"open {row['id']} | {row['statement']} | drilldown=--open {row['id']}")
+    for row in answer["open_obligations"]:
+        rows.append(f"open obligation {row['id']} | {row['statement']} | source=docs/problems.json")
+    rows.append(
+        f"exhaustive | omitted_result_families={answer['omitted_result_family_count']} "
+        f"| command={answer['exhaustive_command']}"
+    )
+    rows.append(f"authority | {answer['authority_boundary']}")
+    return rows
 
 
 @lru_cache(maxsize=256)
@@ -10640,6 +10817,9 @@ def render_card(packet: dict[str, Any]) -> str:
             for command in _route_memory_resume_commands(route_memory):
                 line += f" | resume={command}"
             rows.append(line)
+        reader_answer = packet["operator_synthesis"].get("reader_answer")
+        if reader_answer:
+            rows.extend(render_problem_reader_answer(reader_answer))
         rows.extend(
             f"semantic_node | {row['node_id']} | authored_semantic_followup"
             for row in packet["query_interpretation"].get(
@@ -10666,6 +10846,19 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| requested={requested} | out_of_scope={outside} "
             f"| indexed={indexed} | source={packet['scope_source']} "
             "| claim_effect=none"
+        )
+    if kind == "multi_problem_query_boundary":
+        requested = ",".join(
+            f"#{number}" for number in packet["requested_problem_numbers"]
+        )
+        routes = ";".join(
+            f"#{route['erdos_number']}={route['command']}"
+            for route in packet["problem_routes"]
+        )
+        return (
+            f"multi-problem query boundary | status={packet['status']} "
+            f"| requested={requested} | routes={routes} "
+            "| comparison_effect=none | claim_effect=none"
         )
     if kind == "claim_status":
         card = (
@@ -10745,38 +10938,15 @@ def render_card(packet: dict[str, Any]) -> str:
         return "\n".join(rows)
     if kind == "problem_route":
         route = packet["route"]
-        research = route.get("research_corpus")
-        research_summary = ""
-        if isinstance(research, dict):
-            strongest = research.get("strongest_result_summary", {})
-            research_summary = (
-                f" | research_results={strongest.get('result_count', 0)}"
-                f" | research_frontier={research['files']['frontier']['path']}"
-            )
-        paper = route.get("paper") or {}
-        paper_summary = paper.get("source") or paper.get("resolution", "")
-        card = (
-            f"problem {route['id']} | #{route['erdos_number']} | {route['status']}"
-            f" | modules={route['module_count']} | note={route['note']['artifact_id']}"
-            f" | families={len(route.get('result_families', []))}"
-            f" | paper={paper_summary}"
-            f" | open={len(route.get('open_obligations', []))}"
-            f"{research_summary}"
-        )
         rows = [
-            _append_route_memory_resumes(
-                card, route.get("follow", {}).get("route_memory")
-            )
+            f"problem {route['id']} | #{route['erdos_number']} | {route['status']} "
+            f"| {route['title']}",
+            f"question | {route['question']}",
         ]
-        rows.extend(
-            (
-                f"programme_signal #{row['programme_order']} "
-                f"| tier={row['tier_id']} | family={row['family_id']} "
-                f"| source_disposition={row['source_disposition']} "
-                f"| declaration={row['declaration']}"
-            )
-            for row in packet["mathematical_signal_spine"]["results"]
+        rows[0] = _append_route_memory_resumes(
+            rows[0], route.get("follow", {}).get("route_memory")
         )
+        rows.extend(render_problem_reader_answer(problem_reader_answer(route["id"])))
         return "\n".join(rows)
     if kind == "publication_family":
         family = packet["family"]
@@ -10991,7 +11161,8 @@ def query_args_packet(
         help=(
             "output encoding; bare --ask defaults to a bounded card except for "
             "overview and paper-reading questions, whose complete packets default "
-            "to JSON; all explicit routes also default to JSON"
+            "to JSON; canonical problem routes default to cards, with their "
+            "complete packets available through --format json"
         ),
     )
     args = parser.parse_args(argv)
@@ -11079,6 +11250,8 @@ def query_args_packet(
         packet = semantic_slice_packet(args.ask, args.limit)
     else:
         packet = summary_packet()
+    if args.route and not args.format and packet["kind"] == "problem_route":
+        output_format = "card"
     return packet, output_format
 
 

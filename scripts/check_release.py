@@ -225,6 +225,14 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
         ],
+        "semantic_queries": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
+        ],
+        "computation_replay": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
+        ],
         "mutation_harness": [
             sys.executable,
             str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
@@ -2766,6 +2774,10 @@ def main(argv: list[str] | None = None) -> int:
     query_check = late_checks["query"]
     check(query_check.returncode == 0,
           f"corpus query surface failed: {child_output(query_check)}")
+    for name in ("semantic_queries", "computation_replay"):
+        result = late_checks[name]
+        check(result.returncode == 0,
+              f"{name} behavioral checks failed: {child_output(result)}")
     mutation_harness_check = late_checks["mutation_harness"]
     check(
         mutation_harness_check.returncode == 0,

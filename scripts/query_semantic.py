@@ -71,6 +71,7 @@ from build_declaration_atlas import (
     source_fingerprint as compute_declaration_atlas_source_fingerprint,
 )
 from build_semantic_corpus import semantic_input_fingerprint
+from lean_source import LIBRARY_ROOTS, library_identity_path
 from query_corpus import live_expert_consumer
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -327,12 +328,12 @@ def _atlas_source_evidence_rows(
                     f"declaration atlas has no module for {declaration!r}"
                 )
             module_path = PurePosixPath(module)
-            library_module = module in {
-                "Erdos249257.lean",
-                "ErdosProblems.lean",
+            identity_path = PurePosixPath(library_identity_path(module))
+            library_module = str(identity_path) in {
+                f"{root}.lean" for root in LIBRARY_ROOTS
             } or (
-                len(module_path.parts) > 1
-                and module_path.parts[0] in {"Erdos249257", "ErdosProblems"}
+                len(identity_path.parts) > 1
+                and identity_path.parts[0] in LIBRARY_ROOTS
             )
             if (
                 module_path.is_absolute()
@@ -2863,6 +2864,19 @@ COMMANDS = {
     "benchmark": cmd_benchmark,
 }
 
+# These handlers read their own sources: Palomar/claims for family relations,
+# and theory_lab.json for the other six. Avoid parsing and checking the large
+# semantic projection when it supplies no evidence to the requested answer.
+CORPUS_INDEPENDENT_COMMANDS = frozenset({
+    "family-relations",
+    "mechanisms",
+    "mechanism",
+    "interventions",
+    "discrepancies",
+    "receipts",
+    "benchmark",
+})
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(
@@ -2897,10 +2911,7 @@ def main() -> int:
     )
     parser.add_argument("--limit", type=int, default=40)
     args = parser.parse_args()
-    # Family relations are sourced from the canonical Palomar/claims records,
-    # so they remain executable while the unrelated semantic-corpus projection
-    # is awaiting its owner refresh.
-    corpus = {} if args.command == "family-relations" else load()
+    corpus = {} if args.command in CORPUS_INDEPENDENT_COMMANDS else load()
     return COMMANDS[args.command](corpus, args)
 
 

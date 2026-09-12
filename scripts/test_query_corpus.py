@@ -140,6 +140,9 @@ def invoke_main(
 
 
 def query(*args: str) -> dict[str, object]:
+    # Machine consumers state the encoding explicitly; human defaults may be cards.
+    if "--format" not in args:
+        args = (*args, "--format", "json")
     completed = invoke_main(query_corpus.main, SCRIPT, args)
     completed.check_returncode()
     return json.loads(completed.stdout)
@@ -266,6 +269,82 @@ def validate_programme_routes() -> None:
         assert card.returncode == 0
         assert card.stdout.startswith(f"programme {route_id} |")
         assert "| resume=python3 scripts/query_route_memory.py --problem " in card.stdout
+
+
+def validate_problem_reader_journey() -> None:
+    """Default cold-reader commands answer both results and open obligations."""
+    claims = load("docs/claims.json")
+    for problem in load("docs/problems.json")["problems"]:
+        route_id = problem["problem_id"]
+        number = problem["erdos_number"]
+        packet = query("--route", route_id, "--format", "json")
+        answer = query_corpus.problem_reader_answer(route_id)
+        card = run("--route", route_id)
+        assert card.returncode == 0, card.stderr
+        assert card.stdout.startswith(f"problem {route_id} | #{number} | open")
+        assert len(card.stdout.encode("utf-8")) <= 8_000
+        assert len(card.stdout.splitlines()) <= 36
+        families = packet["route"]["result_families"]
+        results = answer["result_evidence"]
+        assert 1 <= len(results) <= 3
+        assert answer["omitted_result_family_count"] == len(families) - len(results)
+        for result, family in zip(results, families):
+            for field in ("id", "summary", "contribution_class", "evidence_mode", "boundary"):
+                assert result[field] == family[field]
+                assert str(result[field]) in card.stdout
+            witness = result["declaration_preview"]
+            if witness:
+                source, line = witness["source_ref"].rsplit(":", 1)
+                assert (ROOT / source).is_file(), witness
+                assert witness["qualified_name"] in card.stdout
+                assert witness["source_ref"] in card.stdout
+                assert int(line) > 0
+                assert declaration_packet(witness["qualified_name"], 1)["matches"]
+        expected_open = [
+            row for row in claims["remaining_open_propositions"]
+            if row["open_target_claim"] in {route_id, f"universal_{number}"}
+        ]
+        assert {row["id"] for row in answer["exact_open_records"]} == {
+            row["id"] for row in expected_open
+        }
+        for row in expected_open:
+            assert row["id"] in card.stdout
+            assert row["statement"] in card.stdout
+        for row in problem["open_obligations"]:
+            assert row["id"] in card.stdout
+            assert row["statement"] in card.stdout
+        assert answer["paper_source"] in card.stdout
+        assert answer["exhaustive_command"] in card.stdout
+        assert "this query does not run Lean" in card.stdout
+
+        question = f"Which Erdos {number} results are Lean-checked and what remains open?"
+        question_json = query("--ask", question, "--format", "json")
+        assert question_json["operator_synthesis"]["reader_answer"] == answer
+        question_card = run("--ask", question)
+        assert question_card.returncode == 0, question_card.stderr
+        assert len(question_card.stdout.encode("utf-8")) <= 9_000
+        assert len(question_card.stdout.splitlines()) <= 40
+        for result in results:
+            assert result["summary"] in question_card.stdout
+            assert result["boundary"] in question_card.stdout
+        for row in expected_open:
+            assert row["statement"] in question_card.stdout
+
+    # Exercise the installed script from outside the checkout, not only the
+    # in-process helper that requests JSON for machine tests.
+    for args in (
+        ("--route", "erdos_249"),
+        ("--ask", "Which Erdos 257 results are Lean-checked and what remains open?"),
+    ):
+        completed = subprocess.run(
+            [sys.executable, str(SCRIPT), *args], cwd=ROOT.parent,
+            capture_output=True, text=True, check=True,
+        )
+        assert len(completed.stdout.encode("utf-8")) <= 9_000
+        assert len(completed.stdout.splitlines()) <= 40
+        assert "result " in completed.stdout
+        assert "open remaining_open." in completed.stdout
+        assert "--format json" in completed.stdout
 
 
 def validate_indexed_problem_routes() -> None:
@@ -881,6 +960,84 @@ def validate_natural_language_search() -> None:
     )
     assert "claim_effect=none" in boundary_card.stdout
 
+    multi_problem_questions = (
+        "Compare Erdős 249 and Erdős 257",
+        "What remains open for Erdős 249 and Erdős 257?",
+        "Compare Erdős 249 and 257",
+        "Compare Erdős problems 249, 257",
+        "Compare Erdős problem 249 & 257",
+    )
+    expected_multi_routes = [
+        {
+            "erdos_number": 249,
+            "route_id": "erdos_249",
+            "command": "python3 scripts/query_corpus.py --route erdos_249",
+        },
+        {
+            "erdos_number": 257,
+            "route_id": "erdos_257",
+            "command": "python3 scripts/query_corpus.py --route erdos_257",
+        },
+    ]
+    for multi_problem_question in multi_problem_questions:
+        multi_boundary = query(
+            "--ask", multi_problem_question, "--format", "json"
+        )
+        assert multi_boundary["kind"] == "multi_problem_query_boundary"
+        assert multi_boundary["status"] == (
+            "explicit_multi_problem_requires_individual_routes"
+        )
+        assert multi_boundary["requested_problem_numbers"] == [249, 257]
+        assert multi_boundary["problem_routes"] == expected_multi_routes
+        assert multi_boundary["expansion_commands"] == [
+            row["command"] for row in expected_multi_routes
+        ]
+        assert multi_boundary["comparison_effect"] == "none"
+        assert multi_boundary["claim_effect"] == "none"
+        assert len(json.dumps(multi_boundary).encode("utf-8")) < 2_000
+        multi_card = run(
+            "--ask", multi_problem_question, "--format", "card"
+        )
+        assert multi_card.returncode == 0, multi_card.stderr
+        assert multi_card.stdout.startswith(
+            "multi-problem query boundary | "
+            "status=explicit_multi_problem_requires_individual_routes "
+            "| requested=#249,#257"
+        )
+        for row in expected_multi_routes:
+            assert row["command"] in multi_card.stdout
+
+    multi_search = query(
+        "--search", multi_problem_questions[0], "--format", "json"
+    )
+    assert multi_search["kind"] == "multi_problem_query_boundary"
+    assert multi_search["problem_routes"] == expected_multi_routes
+
+    mixed_scope = query(
+        "--ask",
+        "Compare Erdős 249 and Erdős 300",
+        "--format",
+        "json",
+    )
+    assert mixed_scope["kind"] == "corpus_scope_boundary"
+    assert mixed_scope["requested_problem_numbers"] == [249, 300]
+    assert mixed_scope["covered_problem_numbers"] == [249]
+    assert mixed_scope["out_of_scope_problem_numbers"] == [300]
+
+    dated_single_problem = query(
+        "--ask",
+        "In 2026, what remains open for Erdős 249?",
+        "--format",
+        "json",
+    )
+    assert dated_single_problem["kind"] == "semantic_slice"
+    assert dated_single_problem["query_interpretation"]["problem_constraint"][
+        "erdos_number"
+    ] == 249
+    assert query_corpus.explicit_problem_numbers(
+        "For Erdős 249 at parameter 257 in 2026"
+    ) == {249}
+
     problem_question = "What failed on Erdős 1041 and what remains open?"
     problem_bound = query("--ask", problem_question, "--format", "json")
     assert problem_bound["kind"] == "semantic_slice"
@@ -958,40 +1115,95 @@ def validate_natural_language_search() -> None:
     assert status_overview_card.returncode == 0
     assert status_overview_card.stdout.startswith("repository overview |")
 
-    problem_status_question = (
-        "Which Erdos 257 results are Lean-checked and what remains open?"
-    )
-    assert not query_corpus.is_repository_overview_query(problem_status_question)
-    problem_status = query("--ask", problem_status_question, "--format", "json")
-    assert problem_status["kind"] == "semantic_slice"
-    assert problem_status["query_interpretation"]["problem_constraint"][
-        "erdos_number"
-    ] == 257
-    embedded_route = next(
-        cell["content"]["route"] for cell in problem_status["semantic_cells"]
-        if cell["kind"] == "reading_route"
-    )
-    full_route = query_corpus.route_packet("erdos_257")["route"]
-    assert [row["id"] for row in embedded_route["result_families"]] == [
-        row["id"] for row in full_route["result_families"]
-    ]
-    for compact_family, full_family in zip(
-        embedded_route["result_families"], full_route["result_families"]
-    ):
-        for key in ("summary", "boundary", "declarations"):
-            assert compact_family.get(key) == full_family.get(key)
-    assert "declaration_routes" in full_route["result_families"][0]
-    assert "matching_anchors" in full_route["result_families"][0]["paper_route"]
-    assert embedded_route["detail_omission"]["expansion_command"].endswith(
-        "--route erdos_257"
-    )
-    problem_status_card = run(
-        "--ask", problem_status_question, "--format", "card"
-    )
-    assert problem_status_card.returncode == 0
-    assert problem_status_card.stdout.startswith(
-        f"semantic slice '{problem_status_question}'"
-    )
+    claims = load("docs/claims.json")
+    for problem_row in load("docs/problems.json")["problems"]:
+        problem_number = problem_row["erdos_number"]
+        problem_route_id = problem_row["problem_id"]
+        problem_status_question = (
+            f"Which Erdos {problem_number} results are Lean-checked and what "
+            "remains open?"
+        )
+        assert not query_corpus.is_repository_overview_query(
+            problem_status_question
+        )
+        problem_status_result = run(
+            "--ask", problem_status_question, "--format", "json"
+        )
+        assert problem_status_result.returncode == 0, (
+            problem_status_result.stderr
+        )
+        assert len(problem_status_result.stdout.encode("utf-8")) <= (
+            query_corpus.OUTPUT_BUDGET_BYTES
+        )
+        problem_status = json.loads(problem_status_result.stdout)
+        assert problem_status["kind"] == "semantic_slice"
+        assert problem_status["query_interpretation"]["problem_constraint"][
+            "erdos_number"
+        ] == problem_number
+        reading_cell = next(
+            cell
+            for cell in problem_status["semantic_cells"]
+            if cell["kind"] == "reading_route"
+        )
+        assert reading_cell["handle"] == problem_route_id
+        embedded_route = reading_cell["content"]["route"]
+        full_packet = query_corpus.route_packet(problem_route_id)
+        full_route = full_packet["route"]
+        assert [row["id"] for row in embedded_route["result_families"]] == [
+            row["id"] for row in full_route["result_families"]
+        ]
+        for compact_family, full_family in zip(
+            embedded_route["result_families"], full_route["result_families"]
+        ):
+            for key in ("summary", "boundary", "declarations"):
+                assert compact_family.get(key) == full_family.get(key)
+        assert "declaration_routes" in full_route["result_families"][0]
+        assert "matching_anchors" in full_route["result_families"][0][
+            "paper_route"
+        ]
+        assert embedded_route["detail_omission"]["expansion_command"].endswith(
+            f"--route {problem_route_id}"
+        )
+        signal_spine = reading_cell["content"]["mathematical_signal_spine"]
+        assert signal_spine["problem"] == problem_number
+        assert "results" not in signal_spine
+        assert signal_spine["result_count"] == len(
+            full_packet["mathematical_signal_spine"]["results"]
+        )
+        assert signal_spine["detail_omission"] == {
+            "fields": ["results"],
+            "reason": "repeated_expansion_detail_in_embedded_route",
+            "expansion_command": (
+                f"python3 scripts/query_corpus.py --route {problem_route_id}"
+            ),
+        }
+        expected_open_ids = query_corpus.explicit_problem_reading_route(
+            problem_status_question, claims
+        )["remaining_open_proposition_ids"]
+        emitted_open_ids = [
+            row["id"]
+            for row in problem_status["operator_synthesis"]["exact_open_records"]
+        ]
+        omitted_open_ids = [
+            row["handle"]
+            for row in problem_status["omission_receipt"][
+                "additional_match_handles"
+            ]
+            if row["kind"] == "open_proposition"
+        ]
+        assert len(emitted_open_ids) + len(omitted_open_ids) == len(
+            expected_open_ids
+        )
+        assert set(emitted_open_ids) | set(omitted_open_ids) == set(
+            expected_open_ids
+        )
+        problem_status_card = run(
+            "--ask", problem_status_question, "--format", "card"
+        )
+        assert problem_status_card.returncode == 0
+        assert problem_status_card.stdout.startswith(
+            f"semantic slice '{problem_status_question}'"
+        )
 
     dictionary = query("--vocabulary")
     assert dictionary["problem_registry_contract"]["source"] == "docs/problems.json"
@@ -1887,16 +2099,17 @@ def validate_mathematical_signal_spine() -> None:
             ],
         ),
     ):
-        route_card = query_corpus.render_card(route_packet(route_id))
-        signal_lines = [
-            line
-            for line in route_card.splitlines()
-            if line.startswith("programme_signal #")
+        # Exhaustive source-ranked order stays in the JSON packet; the human
+        # card is a bounded reviewed-family preview with an explicit drilldown.
+        packet = route_packet(route_id)
+        assert [row["family_id"] for row in packet["mathematical_signal_spine"]["results"]] == expected_families
+        route_card = query_corpus.render_card(packet)
+        result_lines = [line for line in route_card.splitlines() if line.startswith("result ")]
+        assert [line.split(" |", 1)[0].split(" ", 1)[1] for line in result_lines] == [
+            family["id"]
+            for family in packet["route"]["result_families"][:query_corpus.PROBLEM_READER_RESULT_LIMIT]
         ]
-        assert [
-            line.split("| family=", 1)[1].split(" |", 1)[0]
-            for line in signal_lines
-        ] == expected_families
+        assert f"--route {route_id} --format json" in route_card
 
     friction_ids = {
         row["family_id"] for row in signal["natural_friction"]["results"]
@@ -2040,6 +2253,7 @@ def main() -> int:
     validate_in_process_query_dispatch()
     validate_programme_routes()
     validate_indexed_problem_routes()
+    validate_problem_reader_journey()
     validate_research_corpus_fingerprint()
     validate_lean_code_projection()
     validate_agent_tour()
