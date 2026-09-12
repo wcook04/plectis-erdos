@@ -3,17 +3,27 @@
 
 # Technical reference and research records
 
-These pages answer narrower questions about how the repository records and
-presents its work. For the current mathematics, start with
-[the papers](../../paper/README.md) and [results and limits](../RESULTS.md).
+Use these records when you need to trace how the work was organised, corrected
+or published. For a current mathematical argument, start with the
+[papers](../../paper/README.md); for the result and its remaining open question,
+use [results and limits](../RESULTS.md).
 
-| Record | What it explains |
-|---|---|
-| [Paper and source library](PROBLEM_LIBRARY.md) | How each problem's papers and Lean sources reach the website. |
-| [Truth audit](TRUTH_AUDIT.md) | Corrections to earlier descriptions of what the formal results establish. |
-| [Residual progress](RESIDUAL_PROGRESS.md) | How the tools distinguish a remaining obligation from a restatement of the target. |
-| [Wave index](WAVE_INDEX.md) | Development chronology, for tracing how a result arrived. |
-| [Outreach evidence capsules](OUTREACH_EVIDENCE_CAPSULES.md) | Reusable factual descriptions of checks and their limits. |
+## Trace a record
 
-Development order is not reading order. [The documentation index](../README.md)
-gives the reader, contributor and verification routes.
+| What you are looking for | Record | How to use it |
+|---|---|---|
+| The route from a problem's papers and Lean sources to the website | [Paper and source library](PROBLEM_LIBRARY.md) | Inspect the public library format and its rebuild instructions. |
+| Corrections to earlier descriptions of formal results | [Truth audit](TRUTH_AUDIT.md) | Trace the correction, then return to the current claim or source. |
+| The distinction between a remaining obligation and a restated target | [Residual progress](RESIDUAL_PROGRESS.md) | Read how the tools classify those records and what the classification means. |
+| The order in which work arrived | [Wave index](WAVE_INDEX.md) | Follow the development history when an earlier decision or result matters. |
+| A factual account of a selected verification result | [Outreach evidence capsules](OUTREACH_EVIDENCE_CAPSULES.md) | Inspect the recorded check and its limits before reusing its description. |
+
+Development order is not reading order. Historical records explain how a
+result arrived; the [source map](../SOURCE_MAP.md) locates the current evidence,
+and [scope](../SCOPE.md) gives the release boundary. A correction or a larger
+inventory does not by itself change what has been proved.
+
+To change the indexing or publication tools, use the
+[agent guides](../agents/README.md). To replay a mathematical check, use the
+[verification guides](../verification/README.md).
+[All documentation](../README.md).

@@ -217,9 +217,12 @@ def main() -> None:
         "human judgement",
         "independent, AI-assisted prototype",
         "short paper",
-        "evidence boundary",
     ):
         require(token in " ".join(first_screen.split()), f"README opening lost its project-purpose boundary: {token}")
+    require(
+        "(docs/RESULTS.md)" in first_screen,
+        "README opening must route readers to the results and their limits",
+    )
     require(
         "query_semantic.py" not in readme and "--publication-architecture" not in readme,
         "README exposes machine drilldowns that belong in agent documentation",

@@ -1149,9 +1149,19 @@ def validate_human_first_contact(
     # The front page should answer what the project contains before asking a
     # mathematician to choose a checkout. Operational detail stays directly
     # reachable through the runbook and is tested there above.
+    sections = re.split(r"(?m)^(## .+)$", readme_prefix)
+    verification_sections = [
+        heading
+        for heading, body in zip(sections[1::2], sections[2::2])
+        if "(formalization.yaml)" in body and "(docs/EXTERNAL_VERIFICATION.md)" in body
+    ]
+    require(
+        len(verification_sections) == 1,
+        "README must have one section linking selected statements and their verification dossier",
+    )
     section_order = (
         "## Problem papers",
-        "## What the checks establish",
+        verification_sections[0],
         "## Contribute",
         "## Read or verify locally",
     )
@@ -1294,7 +1304,11 @@ def validate_paper_library_first_contact(
     long_tail_heading = paper_readme.find(
         "### Explicitly subordinate, rejected, and long tail"
     )
-    inventory_match = re.search(r"^## Problem portfolio \(complete \d+-paper inventory\)$", paper_readme, re.MULTILINE)
+    inventory_match = re.search(
+        r"^## (?:Problem portfolio \(complete \d+-paper inventory\)|All papers \(\d+\))$",
+        paper_readme,
+        re.MULTILINE,
+    )
     inventory_heading = inventory_match.start() if inventory_match else -1
     positions = (
         signal_heading,

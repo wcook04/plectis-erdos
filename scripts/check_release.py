@@ -2032,8 +2032,6 @@ def main(argv: list[str] | None = None) -> int:
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
     check(tag in readme, f"README does not state the release tag {tag}")
-    check("does not solve" in flattened(readme),
-          "README must state the open boundary in plain language")
     check("docs/METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
     check(
@@ -2058,9 +2056,18 @@ def main(argv: list[str] | None = None) -> int:
         re.escape(token) for token in (count_word, str(indexed_problem_count)) if token
     )
     check(
+        "does not solve" in flattened(readme)
+        or bool(re.search(
+            rf"all\s+(?:{count_pattern})\s+problems\s+remain\s+open",
+            flattened(readme).casefold(),
+        )),
+        "README must state the open boundary in plain language",
+    )
+    check(
         bool(
             re.search(
-                rf"covers?\s+all\s+(?:{count_pattern})\s+problem\s+programmes",
+                rf"(?:covers?\s+all\s+(?:{count_pattern})\s+problem(?:\s+programmes|s)"
+                rf"|selected\s+statements\s+across\s+all\s+(?:{count_pattern})\s+problems)",
                 flattened(readme),
             )
         ),
