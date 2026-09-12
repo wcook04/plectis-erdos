@@ -9,6 +9,12 @@ Use this skill when a reader asks what the repository is, how it works, what it
 has proved, or how they can take part. Work only from tracked public files.
 Never infer private state or turn an agent summary into proof authority.
 
+When asked whether summaries show the **best results or actual nontrivial
+progress**, first use the audit mode in
+[`propagate-research-consequences`](../propagate-research-consequences/SKILL.md).
+Do not simply repeat the overview's ranking or the current result guide. A
+plain explanation of one already selected theorem does not need a corpus audit.
+
 ## Build the explanation from the clone
 
 1. Read `README.md` and `docs/READING_GUIDE.md` for the public promise.

@@ -72,7 +72,7 @@ PROJECTIONS = (
     "docs/declaration_atlas_check.json",
     "docs/methodology.json",
     "docs/claims.json",
-    "docs/semantic_corpus.json",
+    "docs/semantic_corpus.json.gz",
     "docs/semantic_corpus_check.json",
     "docs/theory_lab.json",
     "docs/publication_entry_packet.json",

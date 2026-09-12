@@ -540,13 +540,14 @@ def main() -> int:
             checks += 1
 
     mutated = copy.deepcopy(human_surfaces)
-    # Rename a heading the section contract actually pins. "What remains open"
-    # is no longer one of them: the open boundary now sits in the line that
-    # names each problem's paper, so renaming that heading mutated nothing and
-    # the fixture stopped testing the contract it is named for.
+    # Remove a required verification destination, independent of the heading's
+    # wording. Require an actual mutation so a renamed heading cannot turn
+    # this regression into a no-op.
     mutated["README.md"] = mutated["README.md"].replace(
-        "## What the checks establish", "## Deferred questions"
+        "(docs/EXTERNAL_VERIFICATION.md)", "(docs/README.md)", 1
     )
+    require(mutated["README.md"] != human_surfaces["README.md"],
+            "first-contact fixture did not remove its verification destination")
     assert_human_rejected(summary, mutated, "first-contact section contract")
     checks += 1
 

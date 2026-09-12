@@ -32,66 +32,66 @@ ATLAS_FIXTURE_DECLARATION = (
     "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail"
 )
 ATLAS_FIXTURE_ROW_ID = (
-    "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1060:"
+    "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1060:"
     "no_eventuallyBoundedRise_reducedTail"
 )
 ATLAS_BACKED_FAMILY_COORDINATES = {
     "integral_shift_classification": (
         "ErdosProblems.Erdos251."
         "irrational_initial_iff_all_positive_tailShifts_nonintegral",
-        "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
         1551,
     ),
     "totient_certificate_equivalences": (
         "Erdos249257.TotientTailPeriodKiller."
         "irrational_totient_series_iff_lcm_diagonal_certificate_supply",
-        "Erdos249257/LcmConeFlatness.lean",
+        "lean/Erdos249257/LcmConeFlatness.lean",
         426,
     ),
     "factorial_channel_and_projection_rigidity": (
         "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band",
-        "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
+        "lean/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
         71,
     ),
     "newton_value_decay": (
         "ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt",
-        "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+        "lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
         50,
     ),
     "eventually_periodic_lambert": (
         "Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic",
-        "Erdos249257/CertificateKernel.lean",
+        "lean/Erdos249257/CertificateKernel.lean",
         12811,
     ),
     "ray_separation": (
         "ErdosProblems.Erdos1041.no_newtonConnection_of_not_samePositiveRay",
-        "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+        "lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
         315,
     ),
     "bounded_rise_coprimality": (
         "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail",
-        "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+        "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
         1060,
     ),
     "height_fibre_and_shell": (
         "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
-        "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-        406,
+        "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+        407,
     ),
     "totient_shift_propagation": (
         "ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den",
-        "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
         877,
     ),
     "totient_lambert_coefficients": (
         "MersenneLambertLadder.tsum_primWeight_div_two_pow_sub_one",
-        "Erdos249257/MersenneLambertLadder.lean",
+        "lean/Erdos249257/MersenneLambertLadder.lean",
         601,
     ),
     "dyadic_block_alphabet": (
         "ErdosProblems.Erdos269.dyadicBlockBase235_cases",
-        "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-        699,
+        "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+        762,
     ),
 }
 
@@ -466,7 +466,7 @@ def test_claims_declaration_resolves_through_current_atlas_and_direct_source() -
         "exact_atlas_declaration_rows_direct_source_verified"
     )
     assert family["source_route"] == (
-        "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+        "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
     )
     assert family["source_anchor"] == "1060"
     assert family["source_declaration"] == ATLAS_FIXTURE_DECLARATION
@@ -577,6 +577,8 @@ def test_tampered_atlas_row_fields_fail_direct_source_verification() -> None:
         ("id", "fabricated-row-id"),
         ("kind", "lemma"),
         ("module", "../outside.lean"),
+        ("module", "lean/ErdosProblems/../outside.lean"),
+        ("module", "lean/docs/outside.lean"),
         ("signature", "theorem no_eventuallyBoundedRise_reducedTail : True"),
     )
     for field, value in mutations:
@@ -726,6 +728,7 @@ def test_existing_exact_family_does_not_duplicate_atlas_source_evidence() -> Non
 def test_fast_source_fingerprint_uses_the_builder_framing() -> None:
     path = (
         query_semantic.ROOT
+        / "lean"
         / "ErdosProblems"
         / "Erdos243"
         / "ReciprocalTailRigidity.lean"
@@ -1085,6 +1088,125 @@ def test_family_relations_does_not_load_unrelated_semantic_corpus() -> None:
     ):
         assert main() == 0
     assert captured["payload"]["family"]["family_id"] == "solo"
+
+
+def test_theory_lab_queries_do_not_load_unrelated_semantic_corpus() -> None:
+    mechanism = {
+        "mechanism_id": "M257",
+        "problem_reach": "257",
+        "core_idea": "fixture mechanism",
+        "statement_nodes": ["N257"],
+    }
+    capsule = {"mechanism_id": "M257", "body": "fixture capsule"}
+    receipt = {"receipt_id": "R1", "mechanism_scope_exceeded": "M257"}
+    lab = {
+        "mechanisms": [
+            {"mechanism_id": "M249", "problem_reach": "249"},
+            mechanism,
+        ],
+        "capsules": [capsule],
+        "failure_receipts": [receipt, {"receipt_id": "R2"}],
+        "interventions": [
+            {
+                "intervention_id": "I1",
+                "operator": "remove_hypothesis",
+                "outcome_evidence": "fixture evidence",
+            },
+            {"intervention_id": "I2"},
+        ],
+        "views": {
+            "prediction_discrepancies": {
+                "entries": [
+                    {"intervention_id": "I1", "discrepancy": "fixture failure"},
+                    {"intervention_id": "I2", "discrepancy": "another failure"},
+                ]
+            }
+        },
+        "benchmark": {
+            "items": [{"item_id": "B1", "cut_commit": "1234567890"}],
+            "results": [{"result_id": "BR1"}, {"result_id": "BR2"}],
+        },
+    }
+    cases = [
+        (["mechanisms", "--problem", "257"], "mechanisms", "mechanism_id", "M257"),
+        (["interventions"], "interventions", "intervention_id", "I1"),
+        (["discrepancies"], "entries", "intervention_id", "I1"),
+        (["receipts"], "receipts", "receipt_id", "R1"),
+        (["benchmark"], "results", "result_id", "BR1"),
+    ]
+    for argv, row_key, id_key, expected_id in cases:
+        with (
+            patch("sys.argv", ["query_semantic.py", *argv, "--limit", "1"]),
+            patch("query_semantic.load", side_effect=AssertionError("must not load")),
+            patch("query_semantic.load_lab", return_value=lab) as lab_loader,
+            patch("query_semantic.emit", return_value=0) as emitter,
+        ):
+            assert main() == 0
+        lab_loader.assert_called_once_with()
+        payload = emitter.call_args.args[0]
+        assert len(payload[row_key]) == 1
+        assert payload[row_key][0][id_key] == expected_id
+        if argv[0] == "mechanisms":
+            assert payload["count"] == 1  # Filter precedes count and limit.
+            assert payload[row_key][0]["explains_nodes"] == 1
+        elif argv[0] == "benchmark":
+            assert payload["items"][0]["cut_commit"] == "12345678"
+        else:
+            assert payload["count"] == 2  # Limit does not change the census.
+        if argv[0] == "discrepancies":
+            assert payload[row_key][0]["outcome_evidence"] == "fixture evidence"
+
+    with (
+        patch("sys.argv", ["query_semantic.py", "mechanism", "M257"]),
+        patch("query_semantic.load", side_effect=AssertionError("must not load")),
+        patch("query_semantic.load_lab", return_value=lab),
+        patch("query_semantic.emit", return_value=0) as emitter,
+    ):
+        assert main() == 0
+    assert emitter.call_args.args[0] == {
+        "mechanism": mechanism, "capsule": capsule, "receipts": [receipt]
+    }
+
+
+def test_theory_lab_queries_still_require_their_own_source() -> None:
+    for command in (
+        "mechanisms", "mechanism", "interventions", "discrepancies", "receipts", "benchmark"
+    ):
+        with (
+            patch("sys.argv", ["query_semantic.py", command]),
+            patch("query_semantic.load", side_effect=AssertionError("must not load")),
+            patch("query_semantic.LAB") as lab_path,
+        ):
+            lab_path.is_file.return_value = False
+            try:
+                main()
+            except SystemExit as error:
+                assert str(error) == (
+                    "docs/theory_lab.json missing; run python3 scripts/build_theory_lab.py"
+                )
+            else:
+                raise AssertionError(f"{command} accepted a missing theory lab")
+
+
+def test_theory_lab_node_queries_still_load_semantic_evidence() -> None:
+    node = {
+        "id": "N257", "problem": "257", "logical_class": "equivalence",
+        "canonical_statement": "fixture statement",
+    }
+    lab = {"views": {"unexplained_residual": {"nodes": ["N257"]}}}
+    for argv in (["explains", "N257"], ["unexplained", "--problem", "257"]):
+        with (
+            patch("sys.argv", ["query_semantic.py", *argv]),
+            patch("query_semantic.load", return_value={"statement_nodes": [node]}) as loader,
+            patch("query_semantic.load_lab", return_value=lab),
+            patch("query_semantic.emit", return_value=0) as emitter,
+        ):
+            assert main() == 0
+        loader.assert_called_once_with()
+        payload = emitter.call_args.args[0]
+        result = payload["node"] if argv[0] == "explains" else payload["nodes"][0]
+        assert result["id"] == "N257"
+        assert result["statement"] == "fixture statement"
 
 
 if __name__ == "__main__":

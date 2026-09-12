@@ -17,6 +17,15 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "Audit the strongest substantive result summaries for each problem from a cold clone": (
+        "result_summary_audit", "propagate-research-consequences",
+    ),
+    "Do our best results show actual nontrivial progress rather than exact reformulations?": (
+        "result_summary_audit", "propagate-research-consequences",
+    ),
+    "Review theorem ranking and propagate corrected result summaries into the public clone docs": (
+        "result_summary_audit", "propagate-research-consequences",
+    ),
     "Organize crowded docs for readers, verification and agent workflows": (
         "repository_architecture", "maintain-public-infrastructure",
     ),
@@ -64,6 +73,16 @@ ROUTE_CASES = {
         "erdos-research-return",
     ),
     "prepare a PR and submit pull request": ("submit_change", "submit-pull-request"),
+    "I want to make my first useful contribution but I do not know where to start": (
+        "submit_change",
+        "submit-pull-request",
+    ),
+    "How can I contribute?": ("submit_change", "submit-pull-request"),
+    "I would like to start contributing": ("submit_change", "submit-pull-request"),
+    "I want to prove this Lean theorem as my first contribution": (
+        "bounded_research",
+        "mine-open-problem",
+    ),
     "install skills into Codex": ("install_skills", "install-clone-skills"),
     "install the clone-local skills": ("install_skills", "install-clone-skills"),
     "improve cold clone agent entry and skill discovery": (

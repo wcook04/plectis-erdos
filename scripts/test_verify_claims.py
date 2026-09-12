@@ -18,11 +18,14 @@ inside a namespace but registered under its qualified name.
 
 from __future__ import annotations
 
+import io
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
@@ -226,9 +229,128 @@ def check_optional_tool_discovery_contract() -> None:
     require(calls.count("cffconvert") == 2, "both optional-gate consumers must use the isolated lookup")
 
 
+def fixture_cli(root: Path, *args: str) -> tuple[int, str]:
+    output = io.StringIO()
+    with (
+        patch.object(verify_claims, "REPO_ROOT", root),
+        patch.object(verify_claims, "CLAIMS_PATH", root / "docs" / "claims.json"),
+        patch.object(sys, "argv", ["verify_claims.py", *args]),
+        redirect_stdout(output),
+        redirect_stderr(output),
+    ):
+        code = verify_claims.main()
+    return code, output.getvalue()
+
+
+def check_history_scope_contract() -> None:
+    """Replay record checks and history gates in real, network-free Git fixtures."""
+    def git(root: Path, *args: str) -> str:
+        completed = subprocess.run(
+            ["git", "-c", "user.name=Claim fixture", "-c", "user.email=fixture@example.invalid",
+             "-c", "commit.gpgSign=false", *args],
+            cwd=root,
+            env=verify_claims.clean_environment(),
+            text=True,
+            capture_output=True,
+            check=True,
+            timeout=30,
+        )
+        return completed.stdout.strip()
+
+    with tempfile.TemporaryDirectory(prefix="claims-history-") as raw:
+        workspace = Path(raw).resolve()
+        full = workspace / "full"
+        full.mkdir()
+        git(full, "init", "--quiet")
+        (full / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+        git(full, "add", "Sample.lean")
+        git(full, "commit", "--quiet", "-m", "Formal source")
+        formal_ref = git(full, "rev-parse", "HEAD")
+        register = build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE)])
+        register["release"]["formal_source"]["ref"] = formal_ref
+        (full / "docs").mkdir()
+        (full / "docs" / "claims.json").write_text(json.dumps(register), encoding="utf-8")
+        (full / "scripts").mkdir()
+        for name in ("check_publication_contract.py", "check_records.py"):
+            (full / "scripts" / name).write_text("print('fixture passed')\n", encoding="utf-8")
+        git(full, "add", "docs", "scripts")
+        git(full, "commit", "--quiet", "-m", "Publish claim records")
+
+        shallow = workspace / "shallow"
+        git(workspace, "clone", "--quiet", "--depth", "1", full.as_uri(), str(shallow))
+        require(git(shallow, "rev-parse", "--is-shallow-repository") == "true", "fixture is not shallow")
+
+        missing = workspace / "missing-history"
+        archive = workspace / "archive"
+        nested_archive = full / "unpacked-archive"
+        for root in (missing, archive, nested_archive):
+            root.mkdir()
+            shutil.copyfile(full / "Sample.lean", root / "Sample.lean")
+            shutil.copytree(full / "docs", root / "docs")
+            shutil.copytree(full / "scripts", root / "scripts")
+        git(missing, "init", "--quiet")
+        git(missing, "add", ".")
+        git(missing, "commit", "--quiet", "-m", "Unrelated history")
+
+        fixtures = (
+            (full, True, None),
+            (shallow, False, "git fetch --unshallow --tags origin"),
+            (missing, False, "git fetch --tags origin"),
+            (archive, False, "git clone --filter=blob:none"),
+            (nested_archive, False, "git clone --filter=blob:none"),
+        )
+        for root, history_complete, remedy in fixtures:
+            for args, report_key in ((["--claim", "sample_claim"], "claim"), (["--verify-all"], "verification")):
+                code, output = fixture_cli(root, *args, "--json")
+                payload = json.loads(output)
+                result = payload["result"]
+                require(code == 0 and payload[report_key]["verified"], f"{root.name}: valid current records failed: {output}")
+                require(result == {
+                    "verification_scope": "current_checkout_records",
+                    "status": "verified",
+                    "verified": True,
+                    "current_records_verified": True,
+                    "history_complete": history_complete,
+                    "history_verification": "not_run",
+                    "exit_code": 0,
+                }, f"{root.name}: current records and history were conflated: {result}")
+                environment = payload["environment"]
+                require(environment["history_complete"] == history_complete, f"{root.name}: wrong history classification")
+                if remedy:
+                    require(remedy in " ".join(environment["blocks"]), f"{root.name}: missing usable remedy")
+                if root in (archive, nested_archive):
+                    require(not environment["git_worktree"] and environment["head"] is None, f"{root.name}: borrowed unrelated Git history")
+                    require("git fetch" not in " ".join(environment["blocks"]), f"{root.name}: archive told to fetch")
+                code, human = fixture_cli(root, *args)
+                require(code == 0 and "Current records: verified." in human, f"{root.name}: human record verdict absent")
+                require("History-dependent gates and Lean were not run." in human, f"{root.name}: human check scope absent")
+                require(("[history advisory]" in human) == (not history_complete), f"{root.name}: history advisory lost")
+
+            code, output = fixture_cli(root, "--json")
+            require(code == (0 if history_complete else 2), f"{root.name}: environment diagnostic returned {code}: {output}")
+            code, output = fixture_cli(root, "--gates", "--json")
+            gates = json.loads(output)["gates"]
+            require(code == (0 if history_complete else 2), f"{root.name}: gates returned {code}: {output}")
+            require(gates["failed"] == 0 and gates["blocked"] == (0 if history_complete else 1), f"{root.name}: history absence reported as gate failure")
+            require(gates["passed"] == (2 if history_complete else 1), f"{root.name}: current-file gate did not run")
+
+            # Actual invalid records must fail even where history is unavailable.
+            (root / "Sample.lean").write_text(SAMPLE_MODULE.replace("alpha (", "renamed ("), encoding="utf-8")
+            for args in (["--claim", "sample_claim"], ["--verify-all"]):
+                code, output = fixture_cli(root, *args, "--json")
+                result = json.loads(output)["result"]
+                require(code == 1 and not result["current_records_verified"], f"{root.name}: invalid claim hidden by history status")
+                require(result["status"] == "invalid" and result["history_complete"] == history_complete, f"{root.name}: invalid verdict lost its scope")
+
+            (root / "scripts" / "check_records.py").write_text("raise SystemExit(1)\n", encoding="utf-8")
+            code, output = fixture_cli(root, "--gates", "--json")
+            require(code == 1 and json.loads(output)["gates"]["failed"] == 1, f"{root.name}: genuine gate failure masked")
+
+
 def main() -> int:
     check_gate_timeout_contract()
     check_optional_tool_discovery_contract()
+    check_history_scope_contract()
     failures: list[str] = []
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)
@@ -447,7 +569,9 @@ def main() -> int:
     print(
         "test_verify_claims: drift, renames, undeclared statuses, orphaned open "
         "propositions, orphaned Comparator bindings, and unresolvable paper "
-        "labels are each reported; absent paper sources are not"
+        "labels are each reported; absent paper sources are not; current-record "
+        "checks remain distinct from history gates in full, shallow, missing-history, "
+        "and source-archive fixtures"
     )
     return 0
 

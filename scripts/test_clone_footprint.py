@@ -68,6 +68,26 @@ class CloneFootprintTests(unittest.TestCase):
         )
         self.assertTrue(any("full checkout" in error for error in errors))
 
+    def test_semantic_corpus_retains_headroom_below_host_blob_cap(self) -> None:
+        report = footprint.build_report([
+            {"path": "docs/semantic_corpus.json.gz", "size_bytes": 17 * footprint.MIB},
+            {"path": "docs/larger.json", "size_bytes": 20 * footprint.MIB},
+        ])
+        errors = footprint.contract_errors(
+            report, self.valid_readme(), reproducibility=self.valid_runbook()
+        )
+        self.assertTrue(any("16 MiB headroom" in error for error in errors))
+
+    def test_legacy_semantic_corpus_cannot_hide_beside_compressed_copy(self) -> None:
+        report = footprint.build_report([
+            {"path": "docs/semantic_corpus.json.gz", "size_bytes": 6 * footprint.MIB},
+            {"path": "docs/semantic_corpus.json", "size_bytes": 99 * footprint.MIB},
+        ])
+        errors = footprint.contract_errors(
+            report, self.valid_readme(), reproducibility=self.valid_runbook()
+        )
+        self.assertTrue(any("uncompressed semantic corpus" in error for error in errors))
+
     def test_oversized_lean_checkout_is_rejected(self) -> None:
         entries = [
             {"path": "lean/Erdos249257/A.lean", "size_bytes": 161 * footprint.MIB},
@@ -187,7 +207,7 @@ class CloneFootprintTests(unittest.TestCase):
             {"path": "README.md", "size_bytes": 10},
             {"path": "paper/main.tex", "size_bytes": 20},
             {"path": "docs/claims.json", "size_bytes": 30},
-            {"path": "docs/semantic_corpus.json", "size_bytes": 1000},
+            {"path": "docs/semantic_corpus.json.gz", "size_bytes": 1000},
         ]
         report = footprint.build_report(entries)
         self.assertEqual(report["reader_sparse_checkout_bytes"], 60)

@@ -4,7 +4,7 @@
  "authority_posture": "generated_projection_over_authored_mechanism_and_intervention_records; not Lean, not the semantic corpus, and not a novelty judgement",
  "purpose": "Own the layer above the semantic corpus: the few mechanisms underneath the proofs, the typed interventions that perturb them, the failures those interventions produced, and the blinded evaluations that test whether the mechanisms transfer to mathematics the system was not shown.",
  "layering": {
-  "below": "docs/semantic_corpus.json owns one node per distinct statement",
+  "below": "docs/semantic_corpus.json.gz owns one node per distinct statement",
   "authored_sources": [
    "docs/semantic/lab/benchmark_items.json",
    "docs/semantic/lab/benchmark_results.json",
@@ -19,7 +19,7 @@
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
   "declaration_atlas_digest": "sha256:fe786a89429d34414d34bbcb7397be10af78885426ac095e451b1ddb4e2a75e5",
-  "semantic_corpus_digest": "sha256:c9f944350d5c95f800a18812034751071a43c19ad6610aa2e6d3681ef701c301",
+  "semantic_corpus_digest": "sha256:3ef96f3b7941b91e40052788a74d156b602b0e61af70c2aec3cb6e0a60603fc5",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -28,7 +28,7 @@
    "docs/semantic/lab/mechanisms.json": "sha256:f9e045f91548d9e8856b278fb979f9d9ed6d8d1a3f367b05e34b58725f76a41b",
    "docs/semantic/lab/receipts.json": "sha256:ab4f72e9b0bb7ddf925ed31c584ab7b11629c74acb509a89974b78ae9fc5d510"
   },
-  "builder_digest": "sha256:2a6053910f1ac95809c754fec4e6f7f8b5e12e0b55839a8ec84ed4d52264c3e8",
+  "builder_digest": "sha256:fd48a95a9d7a6c8b2568a50668bd1c8b85c88cef79e79094d2041ab8561b938b",
   "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
  },
  "evidence_fingerprint": "sha256:fa98ebe826261dff4c566a7d323e16664dd7d4b480807148a6d8c5435640f797",

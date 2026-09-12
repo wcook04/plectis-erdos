@@ -33,11 +33,12 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from semantic_corpus_storage import load_corpus
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = ROOT / "docs" / "semantic_corpus.json.gz"
 LAB_DIR = ROOT / "docs" / "semantic" / "lab"
 OUTPUT = ROOT / "docs" / "theory_lab.json"
 
@@ -179,7 +180,7 @@ def source_provenance() -> dict:
 
 def build() -> dict:
     atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    corpus = load_corpus(CORPUS, root=ROOT)
 
     known_declarations = {d["name"] for d in atlas["declarations"]}
     known_nodes = {n["id"] for n in corpus["statement_nodes"]}
@@ -272,7 +273,7 @@ def build() -> dict:
             "whether the mechanisms transfer to mathematics the system was not shown."
         ),
         "layering": {
-            "below": "docs/semantic_corpus.json owns one node per distinct statement",
+            "below": "docs/semantic_corpus.json.gz owns one node per distinct statement",
             "authored_sources": sorted(f"docs/semantic/lab/{v}" for v in SOURCES.values()),
             "above": "docs/claims.json stays the curated publication ledger",
             "proof_authority": "Lean kernel; a mechanism is an explanation, never a proof",

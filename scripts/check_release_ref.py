@@ -227,12 +227,15 @@ def prepare_clone(commit: str, parent: Path) -> Path:
     if cloned.returncode != 0:
         raise SnapshotError(cloned.stderr.strip() or "local clone failed")
     alternates = clone / ".git/objects/info/alternates"
-    source_git_dir = run(["git", "rev-parse", "--absolute-git-dir"], cwd=ROOT)
-    if source_git_dir.returncode != 0:
+    # Linked worktrees have their own administrative Git directory, but share
+    # objects with the common repository. Ask Git for the object path itself;
+    # its output may be relative to ROOT for an ordinary checkout.
+    source_objects = run(["git", "rev-parse", "--git-path", "objects"], cwd=ROOT)
+    if source_objects.returncode != 0:
         raise SnapshotError(
-            source_git_dir.stderr.strip() or "could not resolve source Git directory"
+            source_objects.stderr.strip() or "could not resolve source Git object store"
         )
-    expected_objects = (Path(source_git_dir.stdout.strip()) / "objects").resolve()
+    expected_objects = (ROOT / source_objects.stdout.strip()).resolve()
     try:
         shared_objects = Path(alternates.read_text(encoding="utf-8").strip()).resolve()
     except OSError as exc:

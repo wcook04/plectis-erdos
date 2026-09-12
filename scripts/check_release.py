@@ -119,6 +119,14 @@ def failed_independent_checks(
     return failures
 
 
+def consume_check_results(
+    results: dict[str, subprocess.CompletedProcess[str]],
+) -> None:
+    """Bind every scheduled failure to the gate, including newly added checks."""
+    failures = failed_independent_checks(results)
+    check(not failures, "scheduled release checks failed: " + "; ".join(failures))
+
+
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run a release-gate subprocess with checkout-independent Git state."""
     kwargs["env"] = clean_environment()
@@ -167,6 +175,7 @@ def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
         _PROJECTION_CHECK_RESULTS = dict(
             executor.map(check_builder, refresh_projections.BUILDERS)
         )
+    consume_check_results(_PROJECTION_CHECK_RESULTS)
     return _PROJECTION_CHECK_RESULTS
 
 
@@ -209,7 +218,9 @@ def finish_independent_checks(
 ) -> dict[str, subprocess.CompletedProcess[str]]:
     """Collect a previously started check batch and always close its workers."""
     try:
-        return {check_id: future.result() for check_id, future in futures.items()}
+        results = {check_id: future.result() for check_id, future in futures.items()}
+        consume_check_results(results)
+        return results
     finally:
         executor.shutdown(wait=True, cancel_futures=True)
 
@@ -224,6 +235,26 @@ def late_check_commands() -> dict[str, list[str]]:
         "cold_clone_adversarial": [
             sys.executable,
             str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
+        ],
+        "semantic_queries": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
+        ],
+        "semantic_storage": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_semantic_corpus_storage.py"),
+        ],
+        "semantic_relation_parity": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_semantic_relation_parity.py"),
+        ],
+        "release_environment": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_check_release_environment.py"),
+        ],
+        "computation_replay": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
         ],
         "mutation_harness": [
             sys.executable,
@@ -2024,8 +2055,6 @@ def main(argv: list[str] | None = None) -> int:
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
     check(tag in readme, f"README does not state the release tag {tag}")
-    check("does not solve" in flattened(readme),
-          "README must state the open boundary in plain language")
     check("docs/METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
     check(
@@ -2050,9 +2079,18 @@ def main(argv: list[str] | None = None) -> int:
         re.escape(token) for token in (count_word, str(indexed_problem_count)) if token
     )
     check(
+        "does not solve" in flattened(readme)
+        or bool(re.search(
+            rf"all\s+(?:{count_pattern})\s+problems\s+remain\s+open",
+            flattened(readme).casefold(),
+        )),
+        "README must state the open boundary in plain language",
+    )
+    check(
         bool(
             re.search(
-                rf"covers?\s+all\s+(?:{count_pattern})\s+problem\s+programmes",
+                rf"(?:covers?\s+all\s+(?:{count_pattern})\s+problem(?:\s+programmes|s)"
+                rf"|selected\s+statements\s+across\s+all\s+(?:{count_pattern})\s+problems)",
                 flattened(readme),
             )
         ),
@@ -2217,11 +2255,6 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_agent_entry.py"),
             ],
-            "agent_skill_catalog": [
-                sys.executable,
-                str(ROOT / "scripts" / "agent_skill_catalog.py"),
-                "--check",
-            ],
             "clone_skills": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_clone_skills.py"),
@@ -2314,7 +2347,7 @@ def main(argv: list[str] | None = None) -> int:
         "clone-local agent entry failed: "
         f"{child_output(agent_entry_check)}",
     )
-    agent_skill_catalog_check = mid_checks["agent_skill_catalog"]
+    agent_skill_catalog_check = _PROJECTION_CHECK_RESULTS["scripts/agent_skill_catalog.py"]
     check(
         agent_skill_catalog_check.returncode == 0,
         "clone-local skill catalog failed: "
@@ -2766,6 +2799,13 @@ def main(argv: list[str] | None = None) -> int:
     query_check = late_checks["query"]
     check(query_check.returncode == 0,
           f"corpus query surface failed: {child_output(query_check)}")
+    for name in (
+        "semantic_queries", "semantic_storage", "semantic_relation_parity",
+        "computation_replay",
+    ):
+        result = late_checks[name]
+        check(result.returncode == 0,
+              f"{name} behavioral checks failed: {child_output(result)}")
     mutation_harness_check = late_checks["mutation_harness"]
     check(
         mutation_harness_check.returncode == 0,

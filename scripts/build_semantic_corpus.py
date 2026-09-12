@@ -53,6 +53,7 @@ import stat
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+from semantic_corpus_storage import encode_corpus, write_corpus
 
 from lean_source import library_identity_path, library_storage_variants
 from semantic_review import apply_review_registry
@@ -68,7 +69,7 @@ CLAIMS = ROOT / "docs" / "claims.json"
 SEMANTIC_DIR = ROOT / "docs" / "semantic"
 ZONES_DIR = SEMANTIC_DIR / "zones"
 REVIEWS = SEMANTIC_DIR / "reviews.json"
-OUTPUT = ROOT / "docs" / "semantic_corpus.json"
+OUTPUT = ROOT / "docs" / "semantic_corpus.json.gz"
 LOCAL_CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "semantic_corpus_check.json"
 TRACKED_CHECK_RECEIPT = ROOT / "docs" / "semantic_corpus_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-semantic-corpus-check/1"
@@ -274,6 +275,7 @@ def semantic_input_paths() -> list[Path]:
         Path(__file__).resolve(),
         ROOT / "scripts" / "semantic_family_compiler.py",
         ROOT / "scripts" / "semantic_review.py",
+        ROOT / "scripts" / "semantic_corpus_storage.py",
         PROBLEM_INDEX,
     ]
     return sorted(
@@ -474,7 +476,7 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
     one caller: ``semantic_review.py --rebind``, which must see the candidate
     subjects before it can prove that a stale digest reflects only a moved
     atlas fingerprint rather than changed mathematical content. Nothing that
-    writes ``docs/semantic_corpus.json`` may use it.
+    writes ``docs/semantic_corpus.json.gz`` may use it.
     """
     atlas = load(ATLAS)
     manifest = load(MANIFEST)
@@ -1559,7 +1561,7 @@ def generated_surface_texts(payload: dict) -> dict[Path, str]:
 
 def check_receipt(
     payload: dict,
-    text: str,
+    compressed: bytes,
     surfaces: dict[Path, str],
 ) -> dict:
     """Build the compact receipt used by clone-local freshness checks."""
@@ -1567,7 +1569,7 @@ def check_receipt(
         "schema": CHECK_RECEIPT_SCHEMA,
         "builder_schema": payload["schema"],
         "input_fingerprint": payload["semantic_input_fingerprint"],
-        "output_digest": f"sha256:{hashlib.sha256(text.encode('utf-8')).hexdigest()}",
+        "output_digest": f"sha256:{hashlib.sha256(compressed).hexdigest()}",
         "surface_digests": {
             path.relative_to(ROOT).as_posix(): (
                 f"sha256:{hashlib.sha256(expected.encode('utf-8')).hexdigest()}"
@@ -1673,14 +1675,15 @@ def main() -> int:
 
     payload = collect()
     text = render(payload)
+    compressed = encode_corpus(text)
     surfaces = generated_surface_texts(payload)
-    receipt = check_receipt(payload, text, surfaces)
+    receipt = check_receipt(payload, compressed, surfaces)
 
     if args.check:
         if not OUTPUT.is_file():
             print("semantic corpus missing; run python3 scripts/build_semantic_corpus.py")
             return 1
-        if safe_read_text(OUTPUT) != text:
+        if safe_read_bytes(OUTPUT) != compressed:
             print("semantic corpus is stale; run python3 scripts/build_semantic_corpus.py")
             return 1
         stale_surfaces = [
@@ -1703,7 +1706,7 @@ def main() -> int:
         )
         return 0
 
-    safe_write_text(OUTPUT, text)
+    write_corpus(OUTPUT, compressed, root=ROOT)
     for path, expected in surfaces.items():
         safe_write_text(path, expected)
     write_check_receipt(TRACKED_CHECK_RECEIPT, receipt)

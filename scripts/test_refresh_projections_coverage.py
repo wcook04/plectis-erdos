@@ -142,6 +142,18 @@ def main() -> int:
             f"{builder} is exempt from the refresh pipeline with no reason given",
         )
 
+    # The problem library embeds the complete paper-corpus fingerprint, so a
+    # taxonomy normalization after the index build invalidates the library
+    # even when the problem's mathematical content has not changed.
+    require(
+        builders.index("build_publication_taxonomy.py")
+        < builders.index("build_problem_index.py"),
+        "build_problem_index.py reads and fingerprints docs/papers/corpus.json "
+        "in docs/problem_library.json, so build_publication_taxonomy.py must "
+        "run before it; otherwise a legitimate paper metadata refresh makes "
+        "the same full pipeline fail convergence",
+    )
+
     # The corpus descriptor reads paper/module-aliases.json. When the alias
     # builder ran after it, a full refresh reported its own descriptor stale
     # and accused a pure builder of impurity.

@@ -29,6 +29,7 @@ import subprocess
 import sys
 from functools import lru_cache
 from pathlib import Path
+from semantic_corpus_storage import load_corpus
 from typing import Any
 
 import build_corpus_descriptor
@@ -1149,9 +1150,19 @@ def validate_human_first_contact(
     # The front page should answer what the project contains before asking a
     # mathematician to choose a checkout. Operational detail stays directly
     # reachable through the runbook and is tested there above.
+    sections = re.split(r"(?m)^(## .+)$", readme_prefix)
+    verification_sections = [
+        heading
+        for heading, body in zip(sections[1::2], sections[2::2])
+        if "(formalization.yaml)" in body and "(docs/EXTERNAL_VERIFICATION.md)" in body
+    ]
+    require(
+        len(verification_sections) == 1,
+        "README must have one section linking selected statements and their verification dossier",
+    )
     section_order = (
         "## Problem papers",
-        "## What the checks establish",
+        verification_sections[0],
         "## Contribute",
         "## Read or verify locally",
     )
@@ -1294,7 +1305,11 @@ def validate_paper_library_first_contact(
     long_tail_heading = paper_readme.find(
         "### Explicitly subordinate, rejected, and long tail"
     )
-    inventory_match = re.search(r"^## Problem portfolio \(complete \d+-paper inventory\)$", paper_readme, re.MULTILINE)
+    inventory_match = re.search(
+        r"^## (?:Problem portfolio \(complete \d+-paper inventory\)|All papers \(\d+\))$",
+        paper_readme,
+        re.MULTILINE,
+    )
     inventory_heading = inventory_match.start() if inventory_match else -1
     positions = (
         signal_heading,
@@ -1437,7 +1452,7 @@ def semantic_census(receipt: dict[str, Any] | None = None) -> dict[str, Any]:
         return semantic_census_from_public(
             receipt["summary"]["public_semantic_census"]
         )
-    corpus = json.loads(read("docs/semantic_corpus.json"))
+    corpus = load_corpus(ROOT / "docs/semantic_corpus.json.gz", root=ROOT)
     return semantic_census_from_public(
         corpus["summary"]["public_semantic_census"]
     )
@@ -1719,7 +1734,7 @@ def collect_agent_packets() -> dict[str, Any]:
         row["id"] for row in expert_questions["results"]
     ]
     handoff_ids = [row["id"] for row in expert_handoffs["results"]]
-    semantic_corpus = json.loads(read("docs/semantic_corpus.json"))
+    semantic_corpus = load_corpus(ROOT / "docs/semantic_corpus.json.gz", root=ROOT)
     inventory_sample = semantic_corpus["declaration_roles"][0]
     packets: dict[str, Any] = {
         "summary": summary,
@@ -2354,7 +2369,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         )
     ), "cold-clone comprehension invariant")
     require({
-        "docs/semantic_corpus.json",
+        "docs/semantic_corpus.json.gz",
         "docs/lean_dependency_index.json",
         "scripts/proof_workbench.py",
     }.issubset(set(navigation_route["route"]["authority_owners"])), "cold-clone comprehension invariant")

@@ -11,6 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Any, Iterable
+from semantic_corpus_storage import CORPUS_RELATIVE_PATH, MAX_COMPRESSED_BYTES
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -254,6 +255,14 @@ def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
         "lean_sparse_reduction_fraction": round(reduction, 6),
         "minimum_lean_sparse_reduction_fraction": MINIMUM_LEAN_CHECKOUT_REDUCTION,
         "single_blob_limit_bytes": SINGLE_BLOB_LIMIT_BYTES,
+        "semantic_corpus_bytes": sum(
+            int(row["size_bytes"]) for row in rows
+            if row["path"] == CORPUS_RELATIVE_PATH
+        ),
+        "semantic_corpus_limit_bytes": MAX_COMPRESSED_BYTES,
+        "legacy_semantic_corpus_tracked": any(
+            row["path"] == "docs/semantic_corpus.json" for row in rows
+        ),
         "largest_blob": largest,
         "tracked_blob_count": len(rows),
         "scope": "committed_tree_checkout_bytes_not_network_pack_bytes",
@@ -269,6 +278,10 @@ def contract_errors(
     reproducibility: str = "",
 ) -> list[str]:
     errors: list[str] = []
+    if int(report.get("semantic_corpus_bytes", 0)) > MAX_COMPRESSED_BYTES:
+        errors.append("compressed semantic corpus exceeds the 16 MiB headroom budget")
+    if report.get("legacy_semantic_corpus_tracked"):
+        errors.append("uncompressed semantic corpus must not remain tracked alongside gzip storage")
     if int(report["full_checkout_bytes"]) > FULL_CHECKOUT_LIMIT_BYTES:
         errors.append("committed full checkout exceeds the 420 MiB clone budget")
     if int(report["quick_lean_sparse_checkout_bytes"]) > QUICK_LEAN_CHECKOUT_LIMIT_BYTES:

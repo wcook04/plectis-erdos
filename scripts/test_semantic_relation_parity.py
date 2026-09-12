@@ -7,6 +7,7 @@ from copy import deepcopy
 import json
 import subprocess
 from pathlib import Path
+from semantic_corpus_storage import decode_corpus
 
 import check_semantic_corpus as checker
 
@@ -15,9 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def committed_json(path: str) -> dict:
-    return json.loads(
-        subprocess.check_output(["git", "show", f"HEAD:{path}"], cwd=ROOT, text=True)
-    )
+    raw = subprocess.check_output(["git", "show", f"HEAD:{path}"], cwd=ROOT)
+    return json.loads(decode_corpus(raw) if path.endswith(".json.gz") else raw)
 
 
 def committed_relation_sources() -> tuple[list[tuple[str, dict]], list[tuple[str, dict]]]:
@@ -40,7 +40,7 @@ def committed_relation_sources() -> tuple[list[tuple[str, dict]], list[tuple[str
 
 
 def test_reordered_authored_sources_and_projection_preserve_parity() -> None:
-    corpus = committed_json("docs/semantic_corpus.json")
+    corpus = committed_json("docs/semantic_corpus.json.gz")
     zones, relation_lenses = committed_relation_sources()
     assert checker.relation_parity_errors(corpus, zones=zones, relation_lenses=relation_lenses) == []
 
@@ -61,7 +61,7 @@ def test_reordered_authored_sources_and_projection_preserve_parity() -> None:
 
 
 def test_relation_basis_and_future_boundary_loss_fail_closed() -> None:
-    corpus = committed_json("docs/semantic_corpus.json")
+    corpus = committed_json("docs/semantic_corpus.json.gz")
     zones, relation_lenses = committed_relation_sources()
 
     missing_basis = deepcopy(corpus)
@@ -87,3 +87,9 @@ def test_relation_basis_and_future_boundary_loss_fail_closed() -> None:
             corpus, zones=missing_boundary, relation_lenses=relation_lenses
         )
     )
+
+
+if __name__ == "__main__":
+    test_reordered_authored_sources_and_projection_preserve_parity()
+    test_relation_basis_and_future_boundary_loss_fail_closed()
+    print("semantic relation parity: 2 tests passed")

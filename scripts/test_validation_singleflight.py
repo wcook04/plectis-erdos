@@ -428,6 +428,69 @@ class ValidationSingleflightTests(unittest.TestCase):
                 intervals,
             )
 
+    def test_collect_prefers_terminal_published_during_owner_liveness_check(self) -> None:
+        for exit_code in (0, 1):
+            with self.subTest(exit_code=exit_code), tempfile.TemporaryDirectory() as directory:
+                state_root = Path(directory) / "state"
+                state = singleflight.ensure_state_root(state_root)
+                specification = self._safe_spec([sys.executable, "-c", "pass"])
+                running = {**specification, "state": "running"}
+                terminal = {
+                    **running,
+                    "state": "terminal",
+                    "exit_code": exit_code,
+                    "exit_state": "passed" if exit_code == 0 else "failed",
+                    "stdout": {"tail": "canonical validator result"},
+                }
+                singleflight.write_receipt(state, specification["key"], running)
+
+                def publish_then_observe_owner_exit(receipt: dict[str, object]) -> bool:
+                    self.assertEqual(receipt["state"], "running")
+                    singleflight.write_receipt(state, specification["key"], terminal)
+                    return False
+
+                with (
+                    mock.patch.object(singleflight, "receipt_is_live", side_effect=publish_then_observe_owner_exit) as live,
+                    mock.patch.object(singleflight, "load_receipt", wraps=singleflight.load_receipt) as reads,
+                    mock.patch.object(singleflight.time, "sleep", side_effect=AssertionError("collector slept")),
+                ):
+                    observed, code = singleflight.collect(state_root, specification["key"], True, 10)
+                self.assertEqual(code, exit_code)
+                self.assertEqual(observed, {**terminal, "live": False})
+                self.assertNotIn("owner_unavailable", observed)
+                self.assertEqual(live.call_count, 1)
+                self.assertEqual(reads.call_count, 2)
+
+    def test_raced_terminal_still_requires_successful_lean_materialization(self) -> None:
+        for hydration_status, expected_code in (("hydrated", 0), ("missing", 75)):
+            with self.subTest(hydration_status=hydration_status), tempfile.TemporaryDirectory() as directory:
+                state_root = Path(directory) / "state"
+                state = singleflight.ensure_state_root(state_root)
+                specification = self._safe_spec([sys.executable, "scripts/lean_fast_build.py"])
+                running = {**specification, "state": "running"}
+                terminal = {**running, "state": "terminal", "exit_code": 0, "exit_state": "passed"}
+                singleflight.write_receipt(state, specification["key"], running)
+
+                def publish_then_observe_owner_exit(_receipt: dict[str, object]) -> bool:
+                    singleflight.write_receipt(state, specification["key"], terminal)
+                    return False
+
+                materialization = {"status": hydration_status}
+                with (
+                    mock.patch.object(singleflight, "receipt_is_live", side_effect=publish_then_observe_owner_exit),
+                    mock.patch.object(build_share, "is_materialized", return_value=False),
+                    mock.patch.object(build_share, "hydrate", return_value=materialization) as hydrate,
+                    mock.patch.object(singleflight.time, "sleep", side_effect=AssertionError("collector slept")),
+                ):
+                    observed, code = singleflight.collect(state_root, specification["key"], True, 10)
+                hydrate.assert_called_once_with(singleflight.ROOT, state_root, specification["key"])
+                self.assertEqual(code, expected_code)
+                self.assertEqual(observed["state"], "terminal")
+                self.assertEqual(observed["build_materialization"], materialization)
+                self.assertNotIn("owner_unavailable", observed)
+                if expected_code == 75:
+                    self.assertEqual(observed["exit_state"], "build_output_unavailable")
+
     def test_collect_returns_promptly_when_a_nonterminal_owner_is_gone(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             state_root = Path(directory) / "state"
@@ -444,9 +507,15 @@ class ValidationSingleflightTests(unittest.TestCase):
             }
             singleflight.write_receipt(state, specification["key"], receipt)
             started = singleflight.time.monotonic()
-            observed, code = singleflight.collect(
-                state_root, specification["key"], True, 10
-            )
+            with (
+                mock.patch.object(singleflight, "load_receipt", wraps=singleflight.load_receipt) as reads,
+                mock.patch.object(singleflight.time, "sleep", side_effect=AssertionError("collector slept")),
+            ):
+                observed, code = singleflight.collect(
+                    state_root, specification["key"], True, 10
+                )
+            self.assertEqual(reads.call_count, 2)
+            self.assertEqual(singleflight.load_receipt(state, specification["key"]), receipt)
         self.assertEqual(code, 75)
         self.assertTrue(observed["owner_unavailable"])
         self.assertLess(singleflight.time.monotonic() - started, 1)

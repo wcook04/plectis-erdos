@@ -72,7 +72,8 @@
       "status": "active",
       "composes_with": [
         "mine-open-problem",
-        "run-coupled-research-goals"
+        "run-coupled-research-goals",
+        "propagate-research-consequences"
       ]
     },
     {
@@ -124,7 +125,8 @@
       "status": "active",
       "composes_with": [
         "erdos-research-return",
-        "submit-pull-request"
+        "submit-pull-request",
+        "public-mathematical-writing"
       ]
     },
     {
@@ -211,6 +213,33 @@
         "python3 scripts/query_corpus.py --ask \"<question>\""
       ],
       "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority."
+    },
+    {
+      "id": "result_summary_audit",
+      "title": "Audit strongest substantive result summaries",
+      "priority": 55,
+      "task_cues": [
+        "result summaries",
+        "result summary",
+        "best results",
+        "strongest results",
+        "strongest substantive",
+        "nontrivial progress",
+        "non trivial progress",
+        "audit mathematical progress",
+        "review theorem ranking"
+      ],
+      "skills": [
+        "propagate-research-consequences"
+      ],
+      "read": [
+        "skills/propagate-research-consequences/SKILL.md"
+      ],
+      "commands": [
+        "python3 scripts/query_corpus.py --overview --format json",
+        "python3 scripts/query_corpus.py --papers"
+      ],
+      "boundary": "Reconstruct the requested public candidate universe, compare logical reach and exact evidence, distinguish useful reductions from reformulations, then propagate a source-pinned selection without claiming a fresh proof replay."
     },
     {
       "id": "bounded_research",
@@ -425,6 +454,10 @@
       "id": "submit_change",
       "title": "Prepare a contribution or pull request",
       "task_cues": [
+        "first contribution",
+        "first useful contribution",
+        "start contributing",
+        "how can I contribute",
         "submit pull request",
         "open pull request",
         "pull request",
@@ -442,8 +475,8 @@
         "submit-pull-request"
       ],
       "read": [
-        "skills/submit-pull-request/SKILL.md",
-        "CONTRIBUTING.md"
+        "CONTRIBUTING.md",
+        "skills/submit-pull-request/SKILL.md"
       ],
       "commands": [],
       "boundary": "Local preparation is allowed; pushing or opening the pull request requires explicit authorisation."

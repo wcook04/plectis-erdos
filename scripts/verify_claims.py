@@ -41,20 +41,22 @@ register instead of paraphrased here.
 Two failure modes are separated on purpose, because conflating them is what
 makes a hostile reading go wrong.
 
-*Environment* problems are not claim problems. A shallow clone cannot see the
-pinned formal-source commit, so the pinned-history gates fail with messages that
-read like missing evidence when the evidence is merely unfetched. That is
-reported here as an environment block with the exact remedy, and it exits 2 --
-never 1 -- so that "your clone is truncated" can never be mistaken for "the
-claim does not hold".
+*Environment* problems are not claim problems. A shallow clone may not contain
+the pinned formal-source commit. A source archive has no Git history at all.
+``--claim`` and ``--verify-all`` check current checkout records, so incomplete
+history is an advisory with a remedy; their successful record checks still
+exit 0. They do not run Lean or history-dependent gates. The default environment
+diagnostic and ``--gates`` exit 2 when required history is unavailable. A genuine
+claim fault still exits 1, even if history is also incomplete.
 
 *Claim* problems are the ones worth a reader's attention: a declaration that no
 longer exists, a locator that points at the wrong line, a status outside the
 taxonomy, an open proposition pointing at a claim that was deleted. Those exit 1
 and say which claim and which declaration.
 
-Exit codes: 0 verified, 1 a claim or gate genuinely failed, 2 the environment
-could not answer the question.
+Exit codes: 0 the requested checks passed, 1 a claim or gate genuinely failed,
+2 the environment could not answer the requested question (or an unknown claim
+id was requested).
 """
 
 from __future__ import annotations
@@ -113,7 +115,7 @@ DECLARATION_MODIFIERS = frozenset(
     }
 )
 
-# Gates that read pinned history. On a shallow clone these fail for a reason
+# Gates that read pinned history. Without that history these fail for a reason
 # that has nothing to do with the mathematics, so they are reported as blocked
 # rather than failed.
 HISTORY_DEPENDENT_GATES = frozenset(
@@ -261,20 +263,30 @@ def git_output(*args: str) -> str | None:
 def describe_environment(claims: dict[str, Any]) -> dict[str, Any]:
     """Classify what this checkout can and cannot be asked.
 
-    A truncated clone is the single most common way the published test goes
-    wrong, so it is named first and named precisely.
+    Complete history here means a non-shallow checkout containing the recorded
+    formal-source commit. This availability probe does not run history gates.
     """
-    shallow = git_output("rev-parse", "--is-shallow-repository") == "true"
+    git_root = git_output("rev-parse", "--show-toplevel")
+    # An archive unpacked inside another repository must not borrow its history.
+    git_worktree = bool(git_root and Path(git_root).resolve() == REPO_ROOT.resolve())
+    shallow = git_worktree and git_output("rev-parse", "--is-shallow-repository") == "true"
     formal_ref = claims.get("release", {}).get("formal_source", {}).get("ref")
     pinned_present = False
-    if formal_ref:
+    if git_worktree and formal_ref:
         pinned_present = git_output("cat-file", "-e", f"{formal_ref}^{{commit}}") is not None
 
     blocks: list[str] = []
-    if shallow:
+    if not git_worktree:
         blocks.append(
-            "shallow clone: pinned-history gates cannot resolve the formal-source "
-            "commit. Remedy: git fetch --unshallow"
+            "Git history is unavailable for this checkout (a source archive, or "
+            "Git is unavailable). Remedy: install Git if needed, then run "
+            "git clone --filter=blob:none https://github.com/wcook04/plectis-erdos.git "
+            "and rerun this command from that clone."
+        )
+    elif shallow:
+        blocks.append(
+            "shallow clone: history is incomplete even if current claim records "
+            "resolve. Remedy: git fetch --unshallow --tags origin"
         )
     elif formal_ref and not pinned_present:
         blocks.append(
@@ -282,7 +294,9 @@ def describe_environment(claims: dict[str, Any]) -> dict[str, Any]:
             "clone. Remedy: git fetch --tags origin"
         )
     return {
+        "git_worktree": git_worktree,
         "shallow_clone": shallow,
+        "history_complete": not blocks,
         "pinned_formal_source_ref": formal_ref,
         "pinned_formal_source_present": pinned_present,
         "subprocess_environment": {
@@ -294,7 +308,7 @@ def describe_environment(claims: dict[str, Any]) -> dict[str, Any]:
                 for key in ("PATH", "LC_ALL", "LANG", "LANGUAGE")
             },
         },
-        "head": git_output("rev-parse", "HEAD"),
+        "head": git_output("rev-parse", "HEAD") if git_worktree else None,
         "missing_optional_tools": sorted(
             tool
             for tool in set(OPTIONAL_TOOL_GATES.values())
@@ -723,14 +737,19 @@ def run_gates(environment: dict[str, Any]) -> dict[str, Any]:
     """Run every committed check_*.py, classifying blocked gates as blocked."""
     scripts_dir = REPO_ROOT / "scripts"
     results: list[dict[str, Any]] = []
+    history_blocks = environment.get("blocks") or (
+        ["shallow clone"] if environment["shallow_clone"] else []
+    )
     for path in sorted(scripts_dir.glob("check_*.py")):
         name = path.name
         needed = OPTIONAL_TOOL_GATES.get(name)
         if needed and not optional_tool_available(needed):
             results.append({"gate": name, "outcome": "blocked", "reason": f"requires {needed}"})
             continue
-        if environment["shallow_clone"] and name in HISTORY_DEPENDENT_GATES:
-            results.append({"gate": name, "outcome": "blocked", "reason": "shallow clone"})
+        if history_blocks and name in HISTORY_DEPENDENT_GATES:
+            results.append(
+                {"gate": name, "outcome": "blocked", "reason": "; ".join(history_blocks)}
+            )
             continue
         try:
             completed = run(
@@ -833,6 +852,31 @@ def restamp_drifted_locators(claims: dict[str, Any]) -> list[dict[str, Any]]:
     return moved
 
 
+def verification_result(report: dict[str, Any], environment: dict[str, Any]) -> dict[str, Any]:
+    """Report the record-check scope without implying history was verified."""
+    current_records_verified = report["verified"]
+    exit_code = 0 if current_records_verified else 1
+    return {
+        "verification_scope": "current_checkout_records",
+        "status": "verified" if current_records_verified else "invalid",
+        "verified": exit_code == 0,
+        "current_records_verified": current_records_verified,
+        "history_complete": environment["history_complete"],
+        "history_verification": "not_run",
+        "exit_code": exit_code,
+    }
+
+
+def render_verification_result(result: dict[str, Any]) -> str:
+    records = "verified" if result["current_records_verified"] else "invalid"
+    history = "complete" if result["history_complete"] else "incomplete"
+    return (
+        f"Current records: {records}. History: {history}. "
+        "History-dependent gates and Lean were not run. "
+        f"Result: {result['status']} (exit {result['exit_code']})."
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Follow a public claim to its source, receipts, and boundary.",
@@ -847,9 +891,9 @@ def main() -> int:
         ),
     )
     mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("--claim", metavar="ID", help="follow one claim end to end")
+    mode.add_argument("--claim", metavar="ID", help="follow one claim and check its current checkout records")
     mode.add_argument("--list", action="store_true", help="list every claim id and status")
-    mode.add_argument("--verify-all", action="store_true", help="re-resolve every claim locator")
+    mode.add_argument("--verify-all", action="store_true", help="check every claim's current checkout records")
     mode.add_argument("--gates", action="store_true", help="run every committed check_*.py")
     mode.add_argument(
         "--restamp",
@@ -900,19 +944,24 @@ def main() -> int:
             print(f"unknown claim id: {args.claim}", file=sys.stderr)
             print("list them with: python3 scripts/verify_claims.py --list", file=sys.stderr)
             return 2
+        result = verification_result(report, environment)
         if args.json:
-            print(json.dumps({"environment": environment, "claim": report}, indent=2))
+            print(json.dumps({"environment": environment, "claim": report, "result": result}, indent=2))
         else:
             for block in environment["blocks"]:
-                print(f"[environment] {block}\n")
+                print(f"[history advisory] {block}\n")
             print(render_claim(report))
-        return 0 if report["verified"] else 1
+            print(f"\n{render_verification_result(result)}")
+        return result["exit_code"]
 
     if args.verify_all:
         report = verify_all_claims(claims)
+        result = verification_result(report, environment)
         if args.json:
-            print(json.dumps({"environment": environment, "verification": report}, indent=2))
+            print(json.dumps({"environment": environment, "verification": report, "result": result}, indent=2))
         else:
+            for block in environment["blocks"]:
+                print(f"[history advisory] {block}")
             print(
                 f"verify_claims: {report['claim_count']} claims, "
                 f"{report['declaration_count']} declarations re-resolved against Lean source"
@@ -927,7 +976,8 @@ def main() -> int:
                 print(f"  FAIL {problem}")
             if report["verified"]:
                 print("every claim locator resolves and every status is inside the taxonomy")
-        return 0 if report["verified"] else 1
+            print(render_verification_result(result))
+        return result["exit_code"]
 
     gates = run_gates(environment)
     if args.json:
@@ -945,7 +995,7 @@ def main() -> int:
         )
     if gates["failed"]:
         return 1
-    return 2 if gates["blocked"] else 0
+    return 2 if gates["blocked"] or environment["blocks"] else 0
 
 
 if __name__ == "__main__":

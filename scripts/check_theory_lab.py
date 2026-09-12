@@ -42,13 +42,14 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+from semantic_corpus_storage import load_corpus
 import subprocess
 import stat
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = ROOT / "docs" / "semantic_corpus.json.gz"
 LAB = ROOT / "docs" / "theory_lab.json"
 
 # A documented blob-filtered clone has the history but may still need to
@@ -206,7 +207,7 @@ def main() -> int:
     try:
         lab = json.loads(safe_read_text(LAB))
         atlas = json.loads(safe_read_text(ATLAS))
-        corpus = json.loads(safe_read_text(CORPUS))
+        corpus = load_corpus(CORPUS, root=ROOT)
     except UnsafeTheoryLabInput as exc:
         print(f"unsafe theory-lab input: {exc}", file=sys.stderr)
         return 1

@@ -3,18 +3,27 @@
 
 # Reproduce the public release
 
-This page is the clean-clone runbook for the standalone
-[`plectis-erdos`](https://github.com/wcook04/plectis-erdos)
-repository. It uses only files in this checkout and ordinary public tools. The
-private `ai_workflow` repository, a sibling checkout, an inherited shell state,
-and a pre-existing build cache are not prerequisites.
+Start by following one published result to its source. You can do that with
+Git and Python, then install Lean if you want to check the proof yourself.
+Everything below uses this public checkout and public tools.
+
+| What you want to do | Start here | What you need |
+|---|---|---|
+| Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
+| Rerun a finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
+| Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
+| Compile a proof | [Set up Lean](#2-reproduce-the-pinned-lean-environment) | elan, the pinned dependencies, and space for several gigabytes of cache |
+| Reproduce all public checks | [Release checks](#3-run-the-release-surface-checks) | Lean plus the pinned Python validation tools |
+
+Commands run from the repository root. Shell setup below uses macOS/Linux
+syntax; on Windows, use WSL for the same commands. To read the mathematics
+without installing anything, return to [the papers](../paper/README.md).
 
 ## 1. Start with a complete committed checkout
 
-Use a full clone when following source coordinates or any gate that compares
-the pinned history. A shallow clone is intentionally an environment with
-insufficient history; `verify_claims.py` reports that condition separately
-and exits `2` rather than presenting it as a mathematical failure.
+Keep the commit history: some checks compare the current files with a recorded
+source version. The following clone keeps that history while fetching old file
+contents only when needed.
 
 ```sh
 git clone --filter=blob:none https://github.com/wcook04/plectis-erdos.git
@@ -23,12 +32,16 @@ git fetch --tags --force
 git status --short
 ```
 
-The blob filter retains the complete commit and tag graph required by the
-pinned-history gates, but downloads old file bodies only if a later command
-actually reads them. It does not make the clone shallow. This matters because
-the current checkout is hundreds of megabytes while historical generated
-projections are much larger; eagerly transferring every obsolete body does not
-strengthen any proof or release check.
+The current checkout is hundreds of megabytes; its historical generated files
+are much larger. `--filter=blob:none` reduces that initial transfer without
+making the clone shallow. If you already used `--depth`, fetch the missing
+history with `git fetch --unshallow --tags` before running commands that
+compare pinned revisions. The default `verify_claims.py` environment
+diagnostic reports missing required history as an environment problem
+(exit `2`). That result does not mean a proof failed. In a shallow clone,
+`--gates` skips the programs that require history. The `--claim` and
+`--verify-all` modes inspect the current checkout and can succeed in a
+shallow clone.
 
 ### Try one claim without Lean
 
@@ -41,53 +54,67 @@ python3 scripts/verify_claims.py --claim eb_full_support
 The output shows the published statement, its declaration and source line,
 the selected Comparator interface, the recorded release, and the claim's
 limits. For this example, the status is **known mathematics formalised here**.
-The command checks that those records resolve; it does not run Lean or prove
-the statement again. [Section 2](#2-reproduce-the-pinned-lean-environment)
-gives the proof-build route.
+The command looks for the recorded declaration names near their recorded
+source lines in your current checkout and tests whether the claim uses a
+recognised status. It also prints the paper and Comparator references. It
+does not load the recorded historical revision, run Lean or prove the
+statement again.
+[Section 2](#2-reproduce-the-pinned-lean-environment) gives the proof-build route.
+
+For this claim, the verifier's `WRITTEN UP IN` entry points to the archived
+joint manuscript used in the recorded release. For the current exposition,
+read the [#257 short paper](../paper/257/erdos-257-mersenne-support-subseries.pdf).
+The historical source anchor and the current reading route serve different
+purposes; [the paper index](../paper/README.md) keeps the current papers together.
 
 For the full claim inventory, use `python3 scripts/verify_claims.py --verify-all`.
+This mode also uses the current checkout. It additionally reports missing
+paper labels and references to claim IDs absent from the inventory.
+
+### Reproduce a finite computation
+
+The #251 paper includes three computations with saved results and public
+programs. Start with the complete continued-fraction calculation:
+
+```sh
+python3 research/experiments/erdos251/replay.py
+```
+
+Expect `matched_recorded_result: true`; this takes about four seconds on the
+maintainer's machine and uses only the Python standard library. The
+[computation guide](../research/experiments/erdos251/README.md) explains the
+other two runs, their memory and dependency requirements, and how to change
+an input. Matching these finite results does not prove irrationality or
+cofinality, and the programs do not run Lean.
 
 ### Check the clone's navigation and metadata
 
-Run the following static, no-Lean checks. These commands use the
-committed Python and JSON surfaces and do not need Lake, elan, or Mathlib:
+For a broader check of the reader routes, run:
 
 ```sh
 python3 -VV
-python3 scripts/test_dependency_lock_contract.py
 python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/build_module_graph.py --check
-python3 scripts/refresh_source_coordinates.py --check
-python3 scripts/test_downstream_example_contract.py
 python3 scripts/query_corpus.py --tour --format card
 ```
 
-The quick check is a bounded navigation check, not a proof build. It confirms
-that the eight-problem entry surface, both public Lean roots, claim/source
-routes, paper handles, open-boundary routes, and environment guidance are
-present before any toolchain download. Its semantic-corpus freshness step uses
-the tracked content-addressed receipt in `docs/semantic_corpus_check.json`, so
-an unchanged clone hashes the relevant inputs and outputs instead of rebuilding
-the 153,000-declaration projection. Use
-`python3 scripts/build_semantic_corpus.py --check --full-check` when a full
-in-memory rebuild is the thing being tested.
+The quick command compares the documented problem selectors, entry commands
+and file counts with the recorded indexes. For the large generated index,
+it compares current file hashes with the saved hash record; if that record
+is missing or stale, it recomputes the index for comparison. The tour lists
+the available queries. Neither command compiles a proof.
 
-Before installing or building anything, a reader can return from any indexed
-problem to its public evidence with the same no-build query surface:
+To explore one problem, ask for its paper and source routes. For example:
 
 ```sh
-python3 scripts/query_corpus.py --route erdos_<n>
-# <n> is one of 68, 243, 249, 251, 257, 269, 1041, or 1049
+python3 scripts/query_corpus.py --route erdos_251
 ```
 
-The packet identifies the problem-owned note, formal directory, module
-inventory, and open-obligation handles. Expand the matching row in
-[`docs/problems.json`](problems.json) to read its complete `what_is_checked`
-result inventory and `what_is_not_checked` evidence ceiling, then follow the
-exact paper/source and frontier joins described in
-[`docs/agents/SEMANTIC_COMPILER.md`](agents/SEMANTIC_COMPILER.md).
-This route is navigation evidence only: the Lean kernel remains proof
-authority and every problem-level open boundary remains open.
+Replace `251` with any of `68`, `243`, `249`, `257`, `269`, `1041` or `1049`
+to follow another problem. The result links its paper, source modules and
+remaining questions.
+[The source map](SOURCE_MAP.md) offers a reading route through the same work;
+[the query reference](agents/SEMANTIC_COMPILER.md) explains the more detailed
+selectors.
 
 ### Check a documentation change
 
@@ -113,8 +140,6 @@ pins the Mathlib revision and its transitive dependencies.
 ```sh
 lake --version
 python3 scripts/test_dependency_lock_contract.py
-python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes \
-  --requirement scripts/requirements-release.txt
 lake exe cache get
 ```
 
@@ -123,12 +148,25 @@ from source. It may download several gigabytes. A cache is an acceleration,
 not authority: the toolchain file and manifest are the reproducibility inputs.
 
 Check one real published theorem module first. This is the short feedback path
-for confirming that the toolchain, dependency cache, and project all work:
+for confirming that the toolchain, dependency cache, and project all work;
+it uses a small #249 module:
 
 ```sh
 python3 scripts/lean_fast_build.py --jobs 2 \
   ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
+
+To follow the earlier `eb_full_support` claim into a proof build, its
+declaration lives in the larger `CertificateKernel` module:
+
+```sh
+python3 scripts/lean_fast_build.py --jobs 2 Erdos249257.CertificateKernel
+```
+
+These commands build the current checkout. The claim verifier also names the
+recorded source revision; keep that identity with any report about reproducing
+a particular release. [External replay](verification/EXTERNAL_VERIFICATION_REPLAY.md)
+describes checks tied to an immutable source commit.
 
 For a complete release replay, build the two supported public roots and the
 explicitly supported non-default consumers through one host-shared wrapper
@@ -141,86 +179,39 @@ python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
 python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
-`Erdos249257` and `ErdosProblems` are the default library targets. `Examples`
-is a downstream consumer and is deliberately not a default target. The other
-targets are separate adapter, variant, and residual-check surfaces; their
-declarations do not enlarge the reviewed mathematical corpus. Keeping all six
-targets behind the wrapper gives the clean clone one bounded scheduler owner,
-one dependency plan, and the same host-wide duplicate-build suppression used
-by focused replay and CI.
+`Erdos249257` and `ErdosProblems` are the default libraries. `Examples` checks
+that another Lean project can use the library; read its imports and example
+declarations in [research/examples/Examples.lean](../research/examples/Examples.lean).
+The remaining targets check
+adapters, statement variants and residual examples; building them does not
+add reviewed claims to the mathematical record.
 
-Both commands automatically enter the tracked public singleflight scheduler.
-On one host, identical source/toolchain requests from separate clones join the
-same future, while different Lean validations serialize behind one heavy-build
-lock. The heavy lock is host-wide and intentionally lives above any repository
-slug, so public cold clones and other cooperating Plectis checkouts queue before
-Lake starts rather than discovering contention through SIGTERM. State defaults
-to the platform cache directory under the public repository identity, not to
-the checkout. The cache retains bounded log tails
-and launches hourly terminal-state cleanup; it is disposable acceleration and
-never substitutes for the recorded Lake exit code. Lean keys cover every
-visible Lean source plus their toolchain and build
-authorities rather than the entire Git tree, so unrelated paper or README edits
-do not force a duplicate proof build. A successful owner publishes a bounded
-copy-on-write `.lake/build` seed keyed by those exact inputs. An equivalent
-clone hydrates that seed before accepting the terminal receipt, so reuse means
-the caller has local build outputs rather than only a cached success status.
-To submit without attaching the current shell, use:
-
-```sh
-python3 scripts/validation_singleflight.py submit --class lean \
-  --target ErdosProblems.Erdos249.PeriodMultipleEscape
-```
-
-The admitted owner also manages a same-lock dependency seed through
-`scripts/lean_package_share.py`. On APFS (or a Linux filesystem supporting
-reflinks), each clone keeps an independent `.lake/packages` path while
-unchanged files share physical blocks. The first healthy checkout publishes
-the host seed; later cold clones attach before building. The lane rejects dirty
-dependency repositories and mutable-cache symlinks and never falls back to a
-full byte-for-byte copy. Unsupported filesystems simply retain ordinary local
-Lake behavior. Successful macOS builds also compact large repeated
-`*.setup.json` manifests with transparent filesystem compression after checking
-byte identity and source stability. Only the current and one previous semantic
-package seed are retained.
-
-Build-output sharing follows the same no-symlink, no-full-copy rule and keeps
-only the two newest semantic seeds. Existing checkout outputs are preserved;
-matching files are updated by reflink under the same host-wide Lean lock.
-Unsupported filesystems fail closed for cross-clone receipt reuse and retain
-ordinary local build behavior.
-
-`run` is the corresponding submit-or-join-and-collect command. A later caller
-with the same semantic key reuses the in-flight or completed receipt; no human
-retry is needed to preserve the detached owner. If the host sends SIGTERM or
-SIGKILL, that owner resumes partial build output automatically for up to three
-attempts; exhaustion is recorded as deferred exit 75, not a theorem failure.
-`PLECTIS_LEAN_HOST_LOCK_ROOT` can relocate the cross-repository lock namespace
-for a container or CI worker; all cooperating processes on that host must use
-the same value.
-
-The module's `pureDyadicEndpointError_succ` identity gives the endpoint-error
-cocycle; `prime_forces_pureDyadicEndpointError_excursion` and
-`exists_late_pureDyadicEndpointError_excursion` expose the adjacent-error
-excursion forced by arbitrarily late prime positions. The directional
-`prime_successor_upper_trap_forces_bottom_lock` and its cofinal companion
-record the additional constraint under an upper-trap hypothesis. These are
-source-level constraints, not reviewed external-verification interfaces: they
-do not supply the actual-series-to-orbit bridge or prove Erdős #249
-irrationality, and the open endpoint remains open.
+The wrapper coordinates builds on the same machine. Equivalent requests share
+one running job; different heavy builds queue, and compatible clones can
+reuse build files. Keep using the wrapper if another build is in progress.
+The [concurrent-validation guide](../skills/lean-concurrent-validation/SKILL.md)
+explains detached operation, cache locations, storage sharing and exit codes.
+A successful build means Lean accepted the requested modules. The exact
+statements and their limits are in the source and [claim record](claims.json).
 
 ## 3. Run the release-surface checks
 
-These checks are ordered from cheap source/navigation checks to the broader
-release gate. They remain repository-local and do not require the private
-factory:
+The release checks inspect claim records, links, generated files, licences and
+other published metadata. Install their Python dependencies in a local virtual
+environment first. CI uses Python 3.12.9 with this hash-pinned requirements file.
 
 ```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes \
+  --requirement scripts/requirements-release.txt
 python3 scripts/check_release.py
-python3 scripts/test_projection_checkout_independence.py
-python3 scripts/test_root_import_closure.py
-python3 scripts/test_check_release_ref.py
 ```
+
+The Lean build and this Python check answer separate questions. A publication
+also needs its selected external verification receipts, described in
+[the verification guide](verification/README.md). A successful static check
+alone is not the complete release decision.
 
 The clean-ref wrapper is the later immutable-snapshot gate. It resolves one
 commit, creates a disposable local clone, and runs the configured release
@@ -232,32 +223,31 @@ gate:
 python3 scripts/check_release_ref.py --ref HEAD --probe-only
 ```
 
-Do not read a successful static check as a terminal release clearance. The
-final release pair still requires one clean immutable SHA and the separately
-managed terminal Palomar and Comparator receipts. Those gates may be
-resource-intensive and are not substituted by this runbook.
-
 ## 4. Reproduce a changed checkout safely
 
 Keep generated projections in dependency order. After changing an owning
 source, use its builder and then its `--check` mode; do not hand-edit a
-generated JSON or Markdown projection. Before a scoped commit, confirm that
-the worktree contains no unrelated path changes and that every claimed path
-is clean after landing.
+generated JSON or Markdown projection. Review and commit only the files
+belonging to your change. If other work is present in the checkout, preserve
+it and keep it out of your commit.
 
-The supported command vocabulary is intentionally environment-neutral:
+These checks cover the dependency lock, generated indexes and source links:
 
 ```sh
+python3 scripts/test_dependency_lock_contract.py
 python3 scripts/build_corpus_descriptor.py --check
 python3 scripts/build_module_graph.py --check
 python3 scripts/refresh_source_coordinates.py --check
 python3 scripts/build_lean_dependency_index.py --check
+python3 scripts/test_downstream_example_contract.py
 ```
 
 If a command reports stale generated output, regenerate from the named owning
 builder and commit the source plus all projections that builder declares. Do
 not copy files from another checkout or rely on a developer's `.lake` state.
-The ordinary dependency-index `--check` never compiles; an intentional release
+For a full in-memory rebuild of the semantic index, use
+`python3 scripts/build_semantic_corpus.py --check --full-check`. The ordinary
+dependency-index `--check` never compiles; an intentional release
 export uses `--check --full-check` after the coordinated Lean build above.
 
 ## Resource and boundary notes
@@ -273,3 +263,9 @@ export uses `--check --full-check` after the coordinated Lean build above.
 - `docs/problems.json`, `docs/claims.json`, the paper corpus, and the
   generated declaration/dependency projections are public evidence surfaces;
   this runbook describes how to replay them and is not proof authority.
+
+If a command fails, include the command, its output and `git rev-parse HEAD`
+when [reporting the problem](../CONTRIBUTING.md). That gives someone else the
+same source version and a way to reproduce it.
+
+[Back to the documentation](README.md) · [How the repository works](ARCHITECTURE.md)

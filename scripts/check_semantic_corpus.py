@@ -41,6 +41,7 @@ import os
 from collections import Counter
 import stat
 from pathlib import Path
+from semantic_corpus_storage import load_corpus
 
 from build_semantic_corpus import (
     declaration_key,
@@ -52,7 +53,7 @@ from semantic_review import REGISTRY as SEMANTIC_REVIEWS
 from semantic_review import attached_receipt_errors, formal_source_revision
 
 ROOT = Path(__file__).resolve().parent.parent
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = ROOT / "docs" / "semantic_corpus.json.gz"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 MANIFEST = ROOT / "docs" / "generated_certificate_manifest.json"
 CLAIMS = ROOT / "docs" / "claims.json"
@@ -122,6 +123,8 @@ def safe_read_text(path: Path) -> str:
 
 
 def load(path: Path) -> dict:
+    if path == CORPUS:
+        return load_corpus(path, root=ROOT)
     return json.loads(safe_read_text(path))
 
 
@@ -297,7 +300,7 @@ def main() -> int:
     args = parser.parse_args()
 
     if not CORPUS.is_file():
-        print("docs/semantic_corpus.json missing; run python3 scripts/build_semantic_corpus.py")
+        print("docs/semantic_corpus.json.gz missing; run python3 scripts/build_semantic_corpus.py")
         return 1
 
     try:
