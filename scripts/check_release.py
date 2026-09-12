@@ -229,6 +229,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
         ],
+        "semantic_storage": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_semantic_corpus_storage.py"),
+        ],
         "computation_replay": [
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),

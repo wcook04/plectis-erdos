@@ -29,6 +29,7 @@ import subprocess
 import sys
 from functools import lru_cache
 from pathlib import Path
+from semantic_corpus_storage import load_corpus
 from typing import Any
 
 import build_corpus_descriptor
@@ -1451,7 +1452,7 @@ def semantic_census(receipt: dict[str, Any] | None = None) -> dict[str, Any]:
         return semantic_census_from_public(
             receipt["summary"]["public_semantic_census"]
         )
-    corpus = json.loads(read("docs/semantic_corpus.json"))
+    corpus = load_corpus(ROOT / "docs/semantic_corpus.json.gz", root=ROOT)
     return semantic_census_from_public(
         corpus["summary"]["public_semantic_census"]
     )
@@ -1733,7 +1734,7 @@ def collect_agent_packets() -> dict[str, Any]:
         row["id"] for row in expert_questions["results"]
     ]
     handoff_ids = [row["id"] for row in expert_handoffs["results"]]
-    semantic_corpus = json.loads(read("docs/semantic_corpus.json"))
+    semantic_corpus = load_corpus(ROOT / "docs/semantic_corpus.json.gz", root=ROOT)
     inventory_sample = semantic_corpus["declaration_roles"][0]
     packets: dict[str, Any] = {
         "summary": summary,
@@ -2368,7 +2369,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         )
     ), "cold-clone comprehension invariant")
     require({
-        "docs/semantic_corpus.json",
+        "docs/semantic_corpus.json.gz",
         "docs/lean_dependency_index.json",
         "scripts/proof_workbench.py",
     }.issubset(set(navigation_route["route"]["authority_owners"])), "cold-clone comprehension invariant")

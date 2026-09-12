@@ -20,6 +20,7 @@ import hashlib
 import json
 import sys
 from pathlib import Path
+from semantic_corpus_storage import load_corpus
 from typing import Iterable
 
 from lean_source import library_identity_path
@@ -27,7 +28,7 @@ from lean_source import library_identity_path
 
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "docs" / "semantic" / "reviews.json"
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = ROOT / "docs" / "semantic_corpus.json.gz"
 CLAIMS = ROOT / "docs" / "claims.json"
 
 REGISTRY_SCHEMA = "erdos249257-semantic-reviews/1"
@@ -238,6 +239,8 @@ def formal_source_revision(claims: dict) -> str:
 
 
 def load(path: Path) -> dict:
+    if path == CORPUS:
+        return load_corpus(path, root=ROOT)
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -782,7 +785,7 @@ def _rebind_command(*, apply_changes: bool) -> int:
     if already_current and not rebindings and not refusals:
         print(
             f"semantic review rebind: {len(already_current)} receipt(s) already "
-            "bind the rebuilt declaration atlas; docs/semantic_corpus.json is "
+            "bind the rebuilt declaration atlas; docs/semantic_corpus.json.gz is "
             "the surface that has not caught up"
         )
         print("next: python3 scripts/build_semantic_corpus.py")

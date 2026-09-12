@@ -62,6 +62,7 @@ import re
 from collections import Counter, defaultdict
 from functools import lru_cache
 from pathlib import Path, PurePosixPath
+from semantic_corpus_storage import load_corpus
 
 from build_declaration_atlas import (
     compact_signature,
@@ -75,7 +76,7 @@ from lean_source import LIBRARY_ROOTS, library_identity_path
 from query_corpus import live_expert_consumer
 
 ROOT = Path(__file__).resolve().parent.parent
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = ROOT / "docs" / "semantic_corpus.json.gz"
 CONTRACT = ROOT / "docs" / "publication_contract.json"
 LAB = ROOT / "docs" / "theory_lab.json"
 PROBLEM_INDEX = ROOT / "docs" / "problems.json"
@@ -143,12 +144,12 @@ PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 def load() -> dict:
     if not CORPUS.is_file():
         raise SystemExit(
-            "docs/semantic_corpus.json missing; run python3 scripts/build_semantic_corpus.py"
+            "docs/semantic_corpus.json.gz missing; run python3 scripts/build_semantic_corpus.py"
         )
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    corpus = load_corpus(CORPUS, root=ROOT)
     if corpus.get("semantic_input_fingerprint") != semantic_input_fingerprint():
         raise SystemExit(
-            "docs/semantic_corpus.json is stale relative to its inputs; "
+            "docs/semantic_corpus.json.gz is stale relative to its inputs; "
             "run python3 scripts/build_semantic_corpus.py"
         )
     return corpus

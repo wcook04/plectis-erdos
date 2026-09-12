@@ -143,7 +143,7 @@ otherwise the exhaustive semantic graph is a drilldown, not an orientation
 surface.
 
 The current all-problem counts are builder-owned in
-`docs/semantic_corpus.json::summary.public_semantic_census` and projected into
+`docs/semantic_corpus.json.gz::summary.public_semantic_census` and projected into
 `docs/RESULTS.md` and `docs/reference/TRUTH_AUDIT.md`; do not copy a dated #249/#257
 sample into this static entry file.
 
@@ -319,7 +319,7 @@ Lean build when a result must be checked.
    scale: every declaration, signature excerpt, module, import edge, generated
    certificate marker, and principal-claim link. It is a generated navigation
    projection; drill back to Lean before trusting a statement.
-12. Read `docs/semantic_corpus.json` when the question is *what this corpus
+12. Read `docs/semantic_corpus.json.gz` when the question is *what this corpus
    proves and how its statements relate*, rather than where one declaration
    lives. It is the layer between the atlas and the claim registry: one node
    per mathematically distinct statement, typed mathematical relations between

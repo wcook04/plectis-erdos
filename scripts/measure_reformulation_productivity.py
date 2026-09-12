@@ -44,13 +44,14 @@ import argparse
 from collections import Counter, defaultdict
 import json
 from pathlib import Path
+from semantic_corpus_storage import load_corpus
 import re
 import statistics
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
-CORPUS = ROOT / "docs" / "semantic_corpus.json"
+CORPUS = ROOT / "docs" / "semantic_corpus.json.gz"
 OUTPUT = ROOT / "docs" / "reformulation_productivity.json"
 
 LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
@@ -120,7 +121,7 @@ def fan_in(known: set[str]) -> tuple[Counter, dict[str, set[str]]]:
 
 def build() -> dict:
     atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    corpus = load_corpus(CORPUS, root=ROOT)
 
     generated = {d["name"] for d in atlas["declarations"] if d.get("generated_certificate")}
     authored = {

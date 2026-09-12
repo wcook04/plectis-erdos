@@ -2,10 +2,10 @@
   "schema": "erdos249257-generated-schemas/1",
   "artifact_role": "dated_historical_generated_family_analysis_not_current_coverage_source",
   "authority_posture": "dated authored analysis at source_revision 967b4cf; not current corpus coverage, Lean proof authority, or the curated claim ledger",
-  "purpose": "Preserve the seven-family analysis performed at the recorded historical revision. Current generated-family provenance and coverage live in docs/generated_certificate_manifest.json and docs/semantic_corpus.json.",
+  "purpose": "Preserve the seven-family analysis performed at the recorded historical revision. Current generated-family provenance and coverage live in docs/generated_certificate_manifest.json and docs/semantic_corpus.json.gz.",
   "source_revision": "967b4cfcc105701b0fe276ac16c9df8bcae549a1",
   "measured_from": "DATED SNAPSHOT: docs/declaration_atlas.json at module_count 650 and declaration_count 12,809, plus direct source and emitter reads",
-  "detection_note": "Historical analysis only. Its whole-corpus totals and percentages must not be quoted as current. Use docs/generated_certificate_manifest.json for current family ownership and docs/semantic_corpus.json for current denominators.",
+  "detection_note": "Historical analysis only. Its whole-corpus totals and percentages must not be quoted as current. Use docs/generated_certificate_manifest.json for current family ownership and docs/semantic_corpus.json.gz for current denominators.",
   "families": [
     {
       "id": "emitted_direct_prime_certificate_aggregate",
