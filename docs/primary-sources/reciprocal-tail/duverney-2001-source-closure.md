@@ -15,7 +15,7 @@ solve Erdős #243.
 - **Official route:** the [University of Tokyo journal PDF](https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf).
   This is the typeset source read for the record.
 - **Bound artifact:**
-  [`duverney-2001-fast-converging-series.pdf`](duverney-2001-fast-converging-series.pdf),
+  `duverney-2001-fast-converging-series.pdf`,
   SHA-256
   `f8ab2039c94959b21ede4616e399a4159dbc7ca7d2865c7567a2f82a148115f6`;
   251001 bytes; 42 pages, printed pp. 275–316. It remains a local

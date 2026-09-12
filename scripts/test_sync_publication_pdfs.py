@@ -6,9 +6,12 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import tempfile
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 import sync_publication_pdfs as sync
 
@@ -50,7 +53,48 @@ def write_fixture(root: Path, source: str, fragment: str, published: bytes) -> d
     return artifact
 
 
+def test_cli_argument_boundary() -> None:
+    """Help and invalid arguments must exit before the mutating main function."""
+    with patch.object(sync, "main") as runner:
+        with redirect_stdout(io.StringIO()):
+            try:
+                sync.cli(["--help"])
+            except SystemExit as error:
+                require(error.code == 0, f"--help exited with {error.code}")
+            else:
+                raise AssertionError("--help did not exit through argparse")
+        runner.assert_not_called()
+
+    with patch.object(sync, "main") as runner:
+        with redirect_stderr(io.StringIO()):
+            try:
+                sync.cli(["--unsupported"])
+            except SystemExit as error:
+                require(error.code == 2, f"unsupported argument exited with {error.code}")
+            else:
+                raise AssertionError("unsupported argument was accepted")
+        runner.assert_not_called()
+
+
+def test_imported_main_root_contract() -> None:
+    """Fixtures may still invoke ``main(root=...)`` without CLI parsing."""
+    with tempfile.TemporaryDirectory(prefix="pdf-sync-main-root-") as raw:
+        root = Path(raw)
+        write_fixture(
+            root,
+            "\\input{fragment}\nhello\n",
+            "fragment body\n",
+            b"old-published-pdf",
+        )
+        with redirect_stdout(io.StringIO()):
+            code = sync.main(root=root)
+        require(code == 0, "imported main(root=...) fixture contract failed")
+
+
 def main() -> int:
+    test_cli_argument_boundary()
+    test_imported_main_root_contract()
+
     with tempfile.TemporaryDirectory(prefix="pdf-sync-rebuild-") as raw:
         root = Path(raw)
         source = "\\input{fragment}\nhello\n"
@@ -120,6 +164,37 @@ def main() -> int:
             "nested storage was treated as temporary build output",
         )
 
+    with tempfile.TemporaryDirectory(prefix="pdf-sync-atomic-plan-") as raw:
+        root = Path(raw)
+        (root / "paper/68").mkdir(parents=True)
+        first_destination = root / "paper/68/first.pdf"
+        first_destination.write_bytes(b"published-first")
+        (root / "paper/first.pdf").write_bytes(b"fresh-first")
+        contract = {
+            "artifacts": [
+                {
+                    "id": "first",
+                    "rendered_path": "first.pdf",
+                    "storage_path": "paper/68/first.pdf",
+                },
+                {
+                    "id": "missing",
+                    "rendered_path": "missing.pdf",
+                    "storage_path": "paper/69/missing.pdf",
+                },
+            ]
+        }
+        code, message = sync.synchronize_publication_pdfs(root, contract)
+        require(code == 1, f"missing later artifact was accepted: {message}")
+        require(
+            first_destination.read_bytes() == b"published-first",
+            "an earlier PDF was copied before the full artifact set validated",
+        )
+        require(
+            not (root / "paper/69").exists(),
+            "validation failure created a later destination directory",
+        )
+
     makefile = (sync.ROOT / "paper" / "Makefile").read_text(encoding="utf-8")
     require(
         "tectonic -o . -Z search-path=. $<" in makefile,
@@ -127,8 +202,9 @@ def main() -> int:
     )
 
     print(
-        "test_sync_publication_pdfs: missing rebuild fails; verified reuse "
-        "and fresh build copy remain distinct"
+        "test_sync_publication_pdfs: CLI arguments fail before mutation; "
+        "missing rebuild fails atomically; verified reuse and fresh build copy "
+        "remain distinct"
     )
     return 0
 

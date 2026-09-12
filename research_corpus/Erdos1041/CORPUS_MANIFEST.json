@@ -6,8 +6,8 @@
   "source_prefix": "source-provenance://Erdos1041",
   "public_prefix": "research_corpus/Erdos1041",
   "file_count": 839,
-  "total_bytes": 7149362,
-  "local_path_replacement_count": 1318,
+  "total_bytes": 7149012,
+  "local_path_replacement_count": 1328,
   "strongest_result_map": {
     "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
     "sha256": "57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf",
@@ -261,10 +261,10 @@
       "source_path": "source-provenance://Erdos1041/BergmanSegmentLengthBound.md",
       "public_path": "research_corpus/Erdos1041/BergmanSegmentLengthBound.md",
       "source_sha256": "1d0cf574fe023ea04842debb9e79cc72050f096e823628550dad968a3800c319",
-      "published_sha256": "ed487ba66b51bc8cec3d8b1b0927d06bd3257d4e1b7ca9ef2c9f0151c858efaf",
+      "published_sha256": "1377d95868fb04c0572e6786e89fe972915df445a93ff30091e867475e7ba3b6",
       "relation": "source_faithful_public_sanitized_copy",
-      "local_path_replacements": 3,
-      "bytes": 32505
+      "local_path_replacements": 4,
+      "bytes": 32420
     },
     {
       "source_path": "source-provenance://Erdos1041/BridgeIdentityProof.md",
@@ -441,10 +441,10 @@
       "source_path": "source-provenance://Erdos1041/ComponentCapacityFormula.md",
       "public_path": "research_corpus/Erdos1041/ComponentCapacityFormula.md",
       "source_sha256": "16c9f5bc46555c2e1fc5deb8e48b200c259b434072cc6b1fe0be533d24cdcaf5",
-      "published_sha256": "f3bd123ebde9f5fe5a28cf41b1aec035b5daaaafb7d3acdb99d5efb68a2c0dea",
+      "published_sha256": "7a36220af0dd42bd699933ed2522b00aa8f92dc7e6b443044ee62570a2053405",
       "relation": "source_faithful_public_sanitized_copy",
-      "local_path_replacements": 2,
-      "bytes": 12088
+      "local_path_replacements": 3,
+      "bytes": 12003
     },
     {
       "source_path": "source-provenance://Erdos1041/ComponentDepthRefutation.md",
@@ -621,10 +621,10 @@
       "source_path": "source-provenance://Erdos1041/CriticalBudgetLab.md",
       "public_path": "research_corpus/Erdos1041/CriticalBudgetLab.md",
       "source_sha256": "ee98940dbec187377a0a04bdbf10ecf31c1850a3e3c517b4213929fe07cc0c4e",
-      "published_sha256": "089883ef30fc91ca463cb5880209ea3300171cc41d24b29257e944ab05e91b32",
+      "published_sha256": "75b56ef3bd248804566ce4c3fbe205c23db785e533d8e2f64752d2288ccfef33",
       "relation": "source_faithful_public_sanitized_copy",
-      "local_path_replacements": 1,
-      "bytes": 73169
+      "local_path_replacements": 3,
+      "bytes": 73221
     },
     {
       "source_path": "source-provenance://Erdos1041/CriticalEllipseFreeHubLab.md",
@@ -1170,10 +1170,10 @@
       "source_path": "source-provenance://Erdos1041/HardRegimeIsNearFekete.md",
       "public_path": "research_corpus/Erdos1041/HardRegimeIsNearFekete.md",
       "source_sha256": "ce5ee096c59990a7b734000af2e29fed07ecb584c11e724d56cc1e1dbeaa1645",
-      "published_sha256": "ce5ee096c59990a7b734000af2e29fed07ecb584c11e724d56cc1e1dbeaa1645",
-      "relation": "exact_copy",
-      "local_path_replacements": 0,
-      "bytes": 13650
+      "published_sha256": "380afd26503171987f2517050c1d483ef9176859a7c5662eb1805dc81244b4c7",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 1,
+      "bytes": 13592
     },
     {
       "source_path": "source-provenance://Erdos1041/HarmonicMajorantRefutation.md",
@@ -1476,10 +1476,10 @@
       "source_path": "source-provenance://Erdos1041/NewtonFlowTransport.md",
       "public_path": "research_corpus/Erdos1041/NewtonFlowTransport.md",
       "source_sha256": "5fb6877b74093b56154a692eaae5ac04718be526181c10d55441c92050276b55",
-      "published_sha256": "5fb6877b74093b56154a692eaae5ac04718be526181c10d55441c92050276b55",
-      "relation": "exact_copy",
-      "local_path_replacements": 0,
-      "bytes": 23426
+      "published_sha256": "8c40a955f6ca41082a6335fec6d509b7fadffbe2d3c69e0ebd9dff688f2a61cc",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 4,
+      "bytes": 23304
     },
     {
       "source_path": "source-provenance://Erdos1041/OneFaceRadialScatteringTheorem.md",
@@ -3528,10 +3528,10 @@
       "source_path": "source-provenance://Erdos1041/TwoSegmentContainmentReduction.md",
       "public_path": "research_corpus/Erdos1041/TwoSegmentContainmentReduction.md",
       "source_sha256": "227a125148590fb9d4dcd8278fecd27ab754c014d9f1d93f91fab2ce334bf1e9",
-      "published_sha256": "227a125148590fb9d4dcd8278fecd27ab754c014d9f1d93f91fab2ce334bf1e9",
-      "relation": "exact_copy",
-      "local_path_replacements": 0,
-      "bytes": 12887
+      "published_sha256": "f1f1510fa609294422655fe1b5ea583f37607d97b2789cbb260cff3fa843ce2e",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 1,
+      "bytes": 12835
     },
     {
       "source_path": "source-provenance://Erdos1041/TwoSegmentLevelIdentity.md",

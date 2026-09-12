@@ -15,7 +15,7 @@ attribution and claim-boundary evidence, not proof authority for this release.
 - **Official routes:** [arXiv abstract/version page](https://arxiv.org/abs/2512.01739v2)
   and [official PDF](https://arxiv.org/pdf/2512.01739v2).
 - **Bound artifact:**
-  [`tao-teravainen-2026-prime-support.pdf`](tao-teravainen-2026-prime-support.pdf),
+  `tao-teravainen-2026-prime-support.pdf`,
   SHA-256 `ce10e83b10c6544e1dbff037a5e4efa0e387892e0fc596ae09dce76025d7b41e`;
   2,133,534 bytes; 61 PDF pages. It was retrieved from the official arXiv
   PDF route and read directly.

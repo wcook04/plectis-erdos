@@ -236,7 +236,7 @@ is lossy rather than about where the route dies.
 underlying this reduction is Venkata Siddharth Pendyala, arXiv:2606.24875,
 whose downloaded LaTeX source states the theorem at `extracted.md` lines 6--9,
 26--32 and the four-point radial lemma at lines 34--45. The source bundle is
-[`source.tar.gz`](../../../../annexes/arxiv-2606-24875-pendyala-degree-four-lemniscate-path/source.tar.gz),
+`source.tar.gz` (source not included in this checkout),
 SHA-256
 `678a6e830e1bef8fc9e64326fbb40f10616cd48c401aeee49202bc81d905d42b`; the
 official record is [arXiv:2606.24875](https://arxiv.org/abs/2606.24875).

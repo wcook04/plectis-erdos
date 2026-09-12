@@ -14,6 +14,27 @@ If you want to help but do not yet have a target, begin with the pinned
 It links each problem paper and lists useful contributions beyond complete
 proofs.
 
+## A first contribution
+
+No Lean experience is needed to report a broken link, unclear explanation,
+or mismatch between a claim and its evidence. Pick [one claim to trace](docs/REPRODUCIBILITY.md#try-one-claim-without-lean)
+and report an example someone can inspect.
+
+For a small documentation or tooling patch:
+
+1. Fork this repository and follow the [clone instructions](docs/REPRODUCIBILITY.md#1-start-with-a-complete-committed-checkout).
+2. Make one focused change and explain the reader's problem it fixes.
+3. Run the [documentation check](docs/REPRODUCIBILITY.md#check-a-documentation-change)
+   or your changed tool's test. Report the result; prose corrections need no
+   full Lean build.
+4. Open a pull request and name your preferred credit. An
+   [issue](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
+   is enough without a patch.
+
+Lean or mathematical changes follow the evidence and review requirements below.
+
+## Contribution and review boundaries
+
 Participation is governed by the [code of conduct](.github/CODE_OF_CONDUCT.md). Direct
 criticism of a proof, claim, experiment, or repository decision is welcome;
 harassment and attacks on contributors are not.

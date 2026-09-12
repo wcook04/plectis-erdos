@@ -14,7 +14,7 @@ evidence, not proof authority for this release.
   [abstract and source record](https://arxiv.org/abs/2601.20743) and
   [PDF](https://arxiv.org/pdf/2601.20743).
 - **Bound artifact:**
-  [`kaneko-suzuki-tachiya-2026-sparse-series.pdf`](kaneko-suzuki-tachiya-2026-sparse-series.pdf),
+  `kaneko-suzuki-tachiya-2026-sparse-series.pdf`,
   SHA-256 `a5eac0ee53fbd2db8e8931384f578e2a72c6a8eb0727cb3ef228f5ea0064ed6b`;
   571,434 bytes; 20 PDF pages. The complete extracted text was read and the
   theorem, application, proof, and reference pages were visually checked.

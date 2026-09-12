@@ -16,7 +16,7 @@ solve Erdős #243.
 - **Official routes:** the [IMPAN publication record](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/63/4/107785/a-theorem-on-irrationality-of-infinite-series-and-applications), which labels the article “Free download under CC-BY license,” and the [publisher-hosted PDF](https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf).
   The PDF was retrieved from the latter route and read directly.
 - **Bound artifact:**
-  [`badea-1993-infinite-series.pdf`](badea-1993-infinite-series.pdf), SHA-256
+  `badea-1993-infinite-series.pdf`, SHA-256
   `ff03df05829b9c38edf78232410f60993fd61d578057d1e42c0f1b67fba34e1f`;
   150131 bytes; 11 pages, printed pp. 313–323. It remains a local
   working-tree evidence copy rather than a public-release artifact.

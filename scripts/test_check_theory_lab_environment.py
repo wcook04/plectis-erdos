@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import os
+import argparse
 import subprocess
 import sys
 import tempfile
@@ -18,6 +19,36 @@ import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 CHECKER = ROOT / "scripts" / "check_theory_lab.py"
+
+
+def check_historical_source_contract() -> None:
+    """A slow promisor fetch or Git error must never count as a clean holdout."""
+    for code, expected in ((0, True), (1, False)):
+        with patch.object(checker, "git", return_value=(code, "cut:Proof.lean")) as run:
+            if checker.holdout_contains_target("Namespace.target", "abcdef") is not expected:
+                raise SystemExit("historical holdout result was misclassified")
+            if run.call_args.args != (
+                "grep", "-F", "-l", "-e", "Namespace.target", "abcdef", "--", "*.lean"
+            ):
+                raise SystemExit("holdout check must search every historical Lean file")
+            if run.call_args.kwargs["timeout_seconds"] <= singleflight.GIT_COMMAND_TIMEOUT_SECONDS:
+                raise SystemExit("historical blob fetch uses the short local Git timeout")
+    with patch.object(checker, "git", return_value=(128, "remote unavailable")):
+        try:
+            checker.holdout_contains_target("target", "abcdef")
+        except checker.HistoryCheckUnavailable as error:
+            if "unverified" not in str(error):
+                raise SystemExit("Git error lost the unverified boundary")
+        else:
+            raise SystemExit("Git failure was accepted as holdout absence")
+    with patch.object(checker, "git", side_effect=subprocess.TimeoutExpired("git", 300)):
+        try:
+            checker.holdout_contains_target("target", "abcdef")
+        except checker.HistoryCheckUnavailable as error:
+            if "filtered clone" not in str(error):
+                raise SystemExit("history timeout lacks clone recovery guidance")
+        else:
+            raise SystemExit("history timeout was accepted as holdout absence")
 
 
 def check_child_invocation_contract() -> None:
@@ -63,8 +94,15 @@ def check_file_boundary() -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--fixtures-only", action="store_true")
+    args = parser.parse_args()
+    check_historical_source_contract()
     check_child_invocation_contract()
     check_file_boundary()
+    if args.fixtures_only:
+        print("theory-lab Git and file-boundary fixtures: PASS")
+        return 0
     hostile = os.environ.copy()
     hostile.update(
         {

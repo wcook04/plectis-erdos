@@ -1701,7 +1701,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:c1192e10c82e77594f6b6c6dcfa769ea68bb3b9ece02812ca74a44dd88e5822a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:229edb81876b106f3dbe7eed462cc4affda18e02a814efaddc2c24b76c463777",
+    "projection_digest": "sha256:070f63407c29b0de529ccf8cb11582db5ece28a72ecbf48ac0ac5d704ebc4c41",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2615,11 +2615,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46"
+              "content_digest": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f"
+              "content_digest": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef"
             }
           },
           "strongest_result_summary": {

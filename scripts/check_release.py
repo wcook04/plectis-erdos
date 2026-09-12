@@ -2269,6 +2269,11 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "check_theory_lab.py"),
             ],
+            "theory_lab_git_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_check_theory_lab_environment.py"),
+                "--fixtures-only",
+            ],
             "reasoning_coordinates": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_reasoning_source_coordinates.py"),

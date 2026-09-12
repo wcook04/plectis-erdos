@@ -14,7 +14,7 @@ title and statement differ. Neither version is evidence for Erdős #249 or
 - **Official retrieval routes:** [arXiv v2 record](https://arxiv.org/abs/2606.24972v2)
   and [arXiv v2 PDF](https://arxiv.org/pdf/2606.24972v2).
 - **Checked artifact:**
-  [`wang-2026-v2-positive-dyadic-density.pdf`](wang-2026-v2-positive-dyadic-density.pdf),
+  `wang-2026-v2-positive-dyadic-density.pdf`,
   SHA-256
   `c0b75ab662c82026b67ac0ce781c25f7d2f80e12c4b5cb6d63557add35a3ff25`;
   32 pages. The artifact is retained as working-tree evidence and excluded

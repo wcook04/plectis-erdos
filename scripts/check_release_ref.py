@@ -523,7 +523,9 @@ def _open_receipt_descriptor(path: Path) -> int:
 
 def safe_receipt_path(path: Path) -> Path:
     """Reject symlinked receipt destinations without restricting their root."""
-    candidate = Path(os.path.abspath(path))
+    candidate = _normalize_trusted_receipt_root_alias(
+        Path(os.path.abspath(path))
+    )
     current = candidate
     while True:
         if current.is_symlink():
@@ -534,6 +536,36 @@ def safe_receipt_path(path: Path) -> Path:
     if candidate.exists() and not candidate.is_file():
         raise SnapshotError(f"receipt destination is not a regular file: {candidate}")
     return candidate
+
+
+def _normalize_trusted_receipt_root_alias(candidate: Path) -> Path:
+    """Translate only macOS's root-owned ``/tmp`` alias to its real root.
+
+    macOS installs ``/tmp`` as ``/private/tmp``.  Rewriting that exact
+    platform alias lets the descriptor walk remain no-follow while every
+    caller-created symlink still reaches the normal rejection path.
+    """
+    if sys.platform != "darwin" or candidate.parts[:2] != (os.sep, "tmp"):
+        return candidate
+
+    alias = Path("/tmp")
+    target = Path("/private/tmp")
+    try:
+        alias_stat = os.lstat(alias)
+        target_stat = os.stat(target, follow_symlinks=False)
+        alias_target = os.readlink(alias)
+    except OSError:
+        return candidate
+
+    if not (
+        stat.S_ISLNK(alias_stat.st_mode)
+        and alias_stat.st_uid == 0
+        and alias_target in ("private/tmp", "/private/tmp")
+        and stat.S_ISDIR(target_stat.st_mode)
+        and target_stat.st_uid == 0
+    ):
+        return candidate
+    return target.joinpath(*candidate.parts[2:])
 
 
 def render_text(receipt: dict[str, Any]) -> str:

@@ -18,7 +18,7 @@ proof authority for this release, and it does not solve Erdős #243.
   [preprint PDF](https://arxiv.org/pdf/2504.05933). The local artifact is the
   published PDF, not a silently substituted preprint.
 - **Bound artifact:**
-  [`koizumi-2026-integers-a28.pdf`](koizumi-2026-integers-a28.pdf), SHA-256
+  `koizumi-2026-integers-a28.pdf`, SHA-256
   `9ad8561399e36bb4f17368064dc4765a90f164d85b65330c466e79fc716624df`;
   334539 bytes; 17 pages. It was retrieved from the official journal PDF
   route and read directly.

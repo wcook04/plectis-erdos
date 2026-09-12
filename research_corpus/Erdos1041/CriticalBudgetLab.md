@@ -413,7 +413,7 @@ sees overshoot `0.000000`.
 ## A guard that was right for the wrong reason
 
 While reading the existing machinery for this lab, `polyline_upper_bound` in
-[erdos1041_geodesic.py](../../../probes/erdos1041_geodesic.py) turned out to
+erdos1041_geodesic.py (source not included in this checkout) turned out to
 certify nothing. Its docstring said the polylines were "exactly verified" and
 TrueGeodesicLab's claim boundary repeated it, but the check sampled 4000 points
 and accepted the segment if `|f| < 1` at each. `|f|` can exceed 1 strictly between
@@ -1098,7 +1098,7 @@ second category with adversarial rather than sampled evidence behind it.
 
 The bounded-degree ladder stands at four. Degree three is
 [CubicCriticalHub.md](CubicCriticalHub.md); degree four is Pendyala,
-[arXiv:2606.24875](../../../../annexes/arxiv-2606-24875-erdos1041-quartic-lemniscate-path/),
+[arXiv:2606.24875](https://arxiv.org/abs/2606.24875) (`arxiv-2606-24875-erdos1041-quartic-lemniscate-path`; source not included in this checkout),
 whose proof is exactly the two-segment mechanism — a chord when some pair is within
 distance 1, and otherwise two radial arms from the origin, supplied by his
 four-point radial lemma. The claim ceiling eliminates straight critical-hub paths

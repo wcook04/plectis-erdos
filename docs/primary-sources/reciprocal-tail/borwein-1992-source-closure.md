@@ -17,7 +17,7 @@ claim-boundary evidence, not proof authority for this release.
 - **Official routes:** the [Cambridge Core article](https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/on-the-irrationality-of-certain-series/2C16AFBB2ECE3A21B3F32EA727FB7F11)
   and [author-hosted PDF](https://www.cecm.sfu.ca/~pborwein/PAPERS/P59.pdf).
 - **Bound artifact:**
-  [`borwein-1992-irrationality.pdf`](borwein-1992-irrationality.pdf),
+  `borwein-1992-irrationality.pdf`,
   SHA-256 `a16577df6a135f2e4d8471dac2916860c4c646bfb130683ddd97ba73a2e1cca2`;
   3,425,078 bytes; six PDF pages, printed pp. 141–146. It was retrieved from
   the author route and read directly.

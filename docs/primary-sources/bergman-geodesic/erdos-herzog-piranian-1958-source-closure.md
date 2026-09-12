@@ -14,7 +14,7 @@ not proof authority, and it does not solve #1041.
   The publisher record gives the issue date as December 1958 and the receipt
   date as 8 October 1957.
 - **Bound artifact:**
-  [`erdos-herzog-piranian-1958-source.pdf`](erdos-herzog-piranian-1958-source.pdf),
+  `erdos-herzog-piranian-1958-source.pdf`,
   SHA-256 `bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9`;
   841421 bytes; 24 scanned pages corresponding to printed pages 125–148.
   The scan was recovered from the repository's historical Git object and its

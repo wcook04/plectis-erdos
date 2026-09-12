@@ -14,7 +14,7 @@ evidence, not proof authority for this release.
 - **Official route:** the [P. Erdős archive PDF](https://users.renyi.hu/~p_erdos/1969-09.pdf),
   which is the scan read for this record.
 - **Bound artifact:**
-  [`erdos-1968-series.pdf`](erdos-1968-series.pdf), SHA-256
+  `erdos-1968-series.pdf`, SHA-256
   `340fff6a8a70d2125587ebc62e8157258ed30a86bb19afe25257bb1cb2126e57`;
   436234 bytes; 5 scanned PDF pages, printed pp. 222–226. It was retrieved
   from the official archive route and read directly.

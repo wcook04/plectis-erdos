@@ -7,10 +7,12 @@ from __future__ import annotations
 
 import json
 import os
+import stat
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import check_release_ref
@@ -218,6 +220,65 @@ def test_receipt_destination_boundary() -> None:
             )
 
 
+def test_macos_tmp_receipt_alias() -> None:
+    """Accept only the root-owned macOS alias while retaining no-follow checks."""
+    root_symlink = SimpleNamespace(st_mode=stat.S_IFLNK | 0o777, st_uid=0)
+    root_directory = SimpleNamespace(st_mode=stat.S_IFDIR | 0o1777, st_uid=0)
+    with (
+        patch.object(check_release_ref.sys, "platform", "darwin"),
+        patch.object(check_release_ref.os, "lstat", return_value=root_symlink),
+        patch.object(check_release_ref.os, "stat", return_value=root_directory),
+        patch.object(check_release_ref.os, "readlink", return_value="private/tmp"),
+    ):
+        normalized = check_release_ref._normalize_trusted_receipt_root_alias(
+            Path("/tmp/release-head.json")
+        )
+        require(
+            normalized == Path("/private/tmp/release-head.json"),
+            "root-owned macOS /tmp alias was not normalized",
+        )
+
+    with (
+        patch.object(check_release_ref.sys, "platform", "darwin"),
+        patch.object(check_release_ref.os, "lstat", return_value=root_symlink),
+        patch.object(check_release_ref.os, "stat", return_value=root_directory),
+        patch.object(check_release_ref.os, "readlink", return_value="attacker/tmp"),
+    ):
+        require(
+            check_release_ref._normalize_trusted_receipt_root_alias(
+                Path("/tmp/release-head.json")
+            )
+            == Path("/tmp/release-head.json"),
+            "an arbitrary /tmp symlink target was normalized",
+        )
+
+    if sys.platform == "darwin" and Path("/tmp").resolve() == Path("/private/tmp"):
+        with tempfile.TemporaryDirectory(
+            prefix="release-ref-macos-tmp-", dir="/private/tmp"
+        ) as raw:
+            private_root = Path(raw)
+            alias_root = Path("/tmp") / private_root.name
+            require(
+                check_release_ref.safe_receipt_path(alias_root / "receipt.json")
+                == private_root / "receipt.json",
+                "live macOS /tmp alias was not normalized",
+            )
+            outside = private_root / "outside"
+            outside.mkdir()
+            linked_parent = private_root / "linked"
+            linked_parent.symlink_to(outside, target_is_directory=True)
+            try:
+                check_release_ref.safe_receipt_path(
+                    alias_root / "linked" / "receipt.json"
+                )
+            except check_release_ref.SnapshotError as error:
+                require("symlink" in str(error), str(error))
+            else:
+                raise AssertionError(
+                    "macOS /tmp normalization accepted a caller-created symlink"
+                )
+
+
 def test_singleflight_worker_flag_is_accepted() -> None:
     args = check_release_ref.build_parser().parse_args(
         ["--singleflight-worker", "--probe-only", "--ref", "HEAD"]
@@ -314,6 +375,7 @@ def main() -> int:
     test_snapshot_command_path_boundary()
     test_snapshot_clone_isolation_flags_are_pinned()
     test_receipt_destination_boundary()
+    test_macos_tmp_receipt_alias()
     test_singleflight_worker_flag_is_accepted()
     test_commit_ref_resolution_ends_git_options()
     test_release_python_commands_reuse_driver_interpreter()

@@ -5,7 +5,11 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
+import tempfile
 from pathlib import Path
+
+from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SECONDS
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,6 +43,37 @@ def local_markdown_targets(path: Path) -> list[Path]:
     return targets
 
 
+def missing_checkout_targets(
+    source: Path, tracked: set[Path]
+) -> list[Path]:
+    """Ignored author-local evidence must not make a public link look healthy."""
+    directories = {parent for path in tracked for parent in path.parents}
+    return [
+        target for target in local_markdown_targets(source)
+        if target not in tracked and target not in directories
+    ]
+
+
+def test_checkout_link_boundary() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory).resolve()
+        source = root / "guide.md"
+        public = root / "public.md"
+        ignored = root / "private-evidence.pdf"
+        public.write_text("Public evidence\n", encoding="utf-8")
+        ignored.write_bytes(b"Local evidence is not shipped")
+        source.write_text(
+            "[public](public.md#section) [private](private-evidence.pdf) "
+            "[absent](missing.md) [remote](https://example.org/paper.pdf)\n",
+            encoding="utf-8",
+        )
+        require(
+            missing_checkout_targets(source, {source, public})
+            == [ignored, root / "missing.md"],
+            "link validation must reject ignored and missing evidence alike",
+        )
+
+
 def authored_prose_blocks(text: str) -> list[str]:
     """Return ordinary prose blocks, excluding metadata and navigation syntax."""
     blocks: list[str] = []
@@ -61,6 +96,7 @@ def authored_prose_blocks(text: str) -> list[str]:
 
 
 def main() -> None:
+    test_checkout_link_boundary()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     human_entry = HUMAN_ENTRY.read_text(encoding="utf-8")
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
@@ -73,12 +109,26 @@ def main() -> None:
         ROOT / "docs/README.md",
         ROOT / "docs/RESULTS.md",
         ROOT / "docs/ORIENTATION.md",
+        ROOT / "docs/RELATED_PROBLEMS.md",
+        ROOT / "docs/papers/README.md",
+        ROOT / "research/examples/ExternalVerificationPortfolio/README.md",
+        *sorted((ROOT / "docs/primary-sources").rglob("*source-closure.md")),
         *sorted((ROOT / "docs/agents").glob("*.md")),
         *sorted((ROOT / "docs/verification").glob("*.md")),
         *sorted((ROOT / "docs/reference").glob("*.md")),
         *sorted((ROOT / "docs/papers/full-text").glob("*.md")),
     )
+    tracked = {
+        (ROOT / relative).resolve()
+        for relative in subprocess.check_output(
+            ["git", "ls-files", "-z"], cwd=ROOT, text=True,
+            env=command_environment(), timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+        ).split("\0") if relative
+    }
     for source in reader_surfaces:
+        missing = missing_checkout_targets(source, tracked)
+        require(not missing,
+                f"{source.relative_to(ROOT)} links outside the public checkout: {missing}")
         for target in local_markdown_targets(source):
             require(target.is_file() or target.is_dir(), f"{source.relative_to(ROOT)} has a dead local link: {target}")
 
@@ -239,7 +289,10 @@ def main() -> None:
         require(label in readme, f"README lost the {label} paper-index label")
     for slug in paper_slugs:
         require(f"{slug}.pdf" in readme, f"README omits the {slug} paper")
-        stored = list((ROOT / "paper").rglob(f"{slug}.pdf"))
+        stored = [
+            path for path in tracked
+            if path.is_relative_to(ROOT / "paper") and path.name == f"{slug}.pdf"
+        ]
         require(len(stored) == 1 and stored[0].is_file(), f"missing PDF for {slug}")
         require(
             (ROOT / f"docs/papers/full-text/{slug}.md").is_file(),

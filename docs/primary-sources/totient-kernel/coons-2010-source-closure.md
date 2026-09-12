@@ -17,7 +17,7 @@ proof authority for this release.
   [arXiv record](https://arxiv.org/abs/0810.3709) is an alternate public
   preprint route, not the identity of the bound artifact below.
 - **Bound artifact:**
-  [`coons-2010-nonautomaticity.pdf`](coons-2010-nonautomaticity.pdf),
+  `coons-2010-nonautomaticity.pdf`,
   SHA-256
   `04f9d06111f787acd6f322b6b375f6ba898ee964aa98725e12ce17274b907c7a`;
   795513 bytes; 15 PDF pages. The copy was retrieved from the official

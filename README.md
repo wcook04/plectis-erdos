@@ -17,14 +17,38 @@ that remain, so another researcher can inspect the work and continue from it.
 
 ## Where to start
 
+The numbers below identify questions in [Erdős Problems](https://www.erdosproblems.com/),
+a collection of mathematical problems associated with Paul Erdős. An open
+problem can still have useful results along the way: a proof for a special
+case, a computation, or an explanation of why an attempted argument fails.
+Those are part of what this repository makes available for others to use.
+
+Lean is a proof assistant: software that checks a precisely written proof
+against a precisely written statement. The papers explain the mathematics in
+ordinary mathematical notation, and say which results have a Lean proof.
+
 You do not need Lean or a coding agent to read the papers.
 [A reader's way in](docs/READING_GUIDE.md) explains the project and how to
 read the evidence. Each problem below has a short paper to start with and a
 longer research record. [Results and limits](docs/RESULTS.md) gives the
 problem-by-problem evidence boundary, including what is still missing.
 
+If you are a mathematician, choose a [problem paper](#problem-papers) and
+follow its result into the [source map](docs/SOURCE_MAP.md) when you want to
+inspect the formal proof. If your interest is computer science or AI, start
+with [how the repository works](docs/ARCHITECTURE.md) and the
+[project papers](paper/README.md#project-papers): how researchers and coding
+agents find a question, record work, and check what a public claim rests on.
+The separate [Plectis software toolkit](https://github.com/wcook04/plectis)
+contains runnable workflow components; this repository contains the mathematics.
+
 To continue from where I left off, see [CONTRIBUTING](CONTRIBUTING.md).
 Use a coding agent if you like. This is the part I am most excited about.
+
+To try the evidence tools, [follow one claim from its statement to the source](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
+That route needs Git and Python, with no Lean installation or model account.
+The clone is hundreds of megabytes; the separate proof-build route downloads
+a larger Lean and Mathlib environment.
 
 ## Why this exists
 

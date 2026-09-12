@@ -28,7 +28,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSum_full_support`
-  **Source declaration:** `Erdos249257.irrational_erdosSum_full_support` via [Lean source](../../Erdos249257/CertificateKernel.lean)
+  **Source declaration:** `Erdos249257.irrational_erdosSum_full_support` via [Lean source](../../lean/Erdos249257/CertificateKernel.lean)
   **Result:** Directly settles the canonical full-support member of Erdős #257 for every integer base b >= 2, while leaving universal arbitrary-support irrationality open.
   **Hard mechanism:** The source exposes the bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail bounds, and explicit parameter closure.
   **Evidence:** The exact source theorem is committed at Erdos249257/CertificateKernel.lean:8323-8331 and is transported by the committed Challenge/Solution pair.
@@ -38,7 +38,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime`
-  **Source declaration:** `Erdos249257.irrational_erdosSupportSeries_pairwise_coprime` via [Lean source](../../Erdos249257/CertificateKernel.lean)
+  **Source declaration:** `Erdos249257.irrational_erdosSupportSeries_pairwise_coprime` via [Lean source](../../lean/Erdos249257/CertificateKernel.lean)
   **Result:** Direct irrationality for every infinite pairwise-coprime support with summable reciprocal mass, but not for arbitrary supports.
   **Hard mechanism:** Adaptive CRT weighted coefficient certificates absorb first-block hits and control residue strays through summable reciprocals.
   **Evidence:** The exact source theorem is committed at Erdos249257/CertificateKernel.lean:10768-10782 and is transported by the committed Challenge/Solution pair.
@@ -48,7 +48,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet`
-  **Source declaration:** `Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` via [Lean source](../../Erdos249257/SupportSunflowerDichotomy.lean)
+  **Source declaration:** `Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` via [Lean source](../../lean/Erdos249257/SupportSunflowerDichotomy.lean)
   **Result:** Direct irrationality under the displayed structure, but the structural predicates are not constructed for arbitrary supports.
   **Hard mechanism:** The conditional selector is the natural friction; omitting it would turn a reduction into a false unconditional theorem.
   **Evidence:** Exact committed source and Comparator transport are available.
@@ -58,7 +58,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic`
-  **Source declaration:** `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic` via [Lean source](../../Erdos249257/CertificateKernel.lean)
+  **Source declaration:** `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic` via [Lean source](../../lean/Erdos249257/CertificateKernel.lean)
   **Result:** Close to the Lambert-series endpoint but not a universal support theorem and not the mixed-sign statement.
   **Hard mechanism:** A periodic divisor-orbit sieve and denominator clearing route are visible in the source.
   **Evidence:** Exact committed source and Comparator transport are available.
@@ -68,7 +68,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
-  **Source declaration:** `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` via [Lean source](../../Erdos249257/TotientActualLcmOrbitSeparation.lean)
+  **Source declaration:** `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` via [Lean source](../../lean/Erdos249257/TotientActualLcmOrbitSeparation.lean)
   **Result:** It points directly at the binary totient irrationality endpoint for Erdős #249, conditional on a cofinal separation supply; it does not prove that supply.
   **Hard mechanism:** The source carries a raw adjacent-suffix approximation, an explicit error radius, and uniform separation from every integer into a signed-margin producer. The cofinal PowerTwoActualLcmOrbitSeparationSupply is the natural friction and remains a premise.
   **Evidence:** The source definition and implication are committed at Erdos249257/TotientActualLcmOrbitSeparation.lean:305, and the exact wrapper is committed in ExternalVerification/Challenge.lean and ExternalVerification/Solution.lean at the configured declaration.
@@ -78,7 +78,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation`
-  **Source declaration:** `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation` via [Lean source](../../Erdos249257/FirstHarmonicPivot.lean)
+  **Source declaration:** `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation` via [Lean source](../../lean/Erdos249257/FirstHarmonicPivot.lean)
   **Result:** It points directly at Erdős #249 irrationality from an explicit cofinal analytic producer, independently of the actual-LCM orbit route; that producer remains unproved.
   **Hard mechanism:** Supplier fibres, pivot correlation, bad and non-supplier contributions, and the controlled remainder are kept separate. The finite counterexample to global isolation and the missing DTWPivotResidualDecorrelation supply are the natural friction.
   **Evidence:** The source theorem, canonical review family, and exact Comparator endpoint wrapper are committed; the cofinal decorrelation producer is explicitly absent.
@@ -88,7 +88,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`
-  **Source declaration:** `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` via [Lean source](../../ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean)
+  **Source declaration:** `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` via [Lean source](../../lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean)
   **Result:** It reaches the Erdős #249 irrationality consumer conditionally and is more than a finite normal form, but neither phase-density nor cofinal-prime producer is proved.
   **Hard mechanism:** Unit norm and the complement estimate give the exact 89/100 block bound; a 1/100 truncation budget yields the 9/10 finite gap, while the prime branch uses an adaptive positive margin and exact pivot-fibre membership. The two global producer predicates are the natural friction.
   **Evidence:** The exact source declarations, canonical strict_prime_tail_orbit_gap family, and Comparator representative are committed at Claims ddbe2870 and transport e7a58bb3.
@@ -98,7 +98,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-68-factorial-denominator-irrationality](full-text/erdos-68-factorial-denominator-irrationality.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries`
-  **Source declaration:** `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` via [Lean source](../../ErdosProblems/Erdos68/FactorialGapPlateauCore.lean)
+  **Source declaration:** `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` via [Lean source](../../lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean)
   **Result:** Maximal endpoint proximity for #68, but it does not prove the cofinal producer.
   **Hard mechanism:** The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.
   **Evidence:** Exact committed source and Comparator transport are available.
@@ -108,7 +108,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-251-prime-gap-dyadic-series](full-text/erdos-251-prime-gap-dyadic-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap`
-  **Source declaration:** `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap` via [Lean source](../../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+  **Source declaration:** `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap` via [Lean source](../../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
   **Result:** Very close to #251's target but proves neither side irrational and retains a summability premise.
   **Hard mechanism:** The key mechanism is summation-by-parts normalization; the target irrationality remains open.
   **Evidence:** Exact committed source and Comparator transport are available.
@@ -118,7 +118,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
   **Checked interface:** `Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`
-  **Source declaration:** `Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` via [Lean source](../../Erdos249257/TotientTailCarryPeriod.lean)
+  **Source declaration:** `Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` via [Lean source](../../lean/Erdos249257/TotientTailCarryPeriod.lean)
   **Result:** This is an orbit-level necessary consequence of the #249 rational branch, closer to the endpoint than coefficient-side kernel rank alone, but it derives no contradiction.
   **Hard mechanism:** The theorem couples modular orbit regularity with exponential finite-level anti-compression. Its natural friction is exact: modulo a divisor of the multiplier the forcing can vanish and the carry can become geometric, so periodicity supplies no finite-Q-rank upper bound.
   **Evidence:** The exact source theorem, canonical review family, and Comparator representative are committed; the missing finite-rank contradiction is explicit.
@@ -128,7 +128,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
   **Checked interface:** `Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`
-  **Source declaration:** `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` via [Lean source](../../Erdos249257/HalfCylinderHalfMembershipClassification.lean)
+  **Source declaration:** `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` via [Lean source](../../lean/Erdos249257/HalfCylinderHalfMembershipClassification.lean)
   **Result:** It classifies the concrete #257 half-membership endpoint exactly, closer to a usable target than an analytic recovery criterion or source-only certificate normal form, but supplies no occurrence witness.
   **Hard mechanism:** Finite integer seam construction and terminal-bit normalization expose the global supply condition in interchangeable forms. The natural friction is decisive: none of those forms is proved to occur unboundedly.
   **Evidence:** The exact source iff, canonical claims family, and committed Comparator representative are available; the absent occurrence producer is explicit.
@@ -138,7 +138,7 @@ disposition-aware spine.
 
 **Paper route:** [erdos-243-reciprocal-tail-rigidity](full-text/erdos-243-reciprocal-tail-rigidity.md)
   **Checked interface:** `Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass`
-  **Source declaration:** `ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass` via [Lean source](../../ErdosProblems/Erdos243/SparseResetRecovery.lean)
+  **Source declaration:** `ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass` via [Lean source](../../lean/ErdosProblems/Erdos243/SparseResetRecovery.lean)
   **Result:** It gives a sharp conditional structural conclusion for Erdős #243 and proves that any surviving canonical orbit must evade finite negative mass, but it does not establish the original-orbit hypotheses or reciprocal-tail irrationality.
   **Hard mechanism:** The tail-growth estimate by 1 + negativeRelativeMass feeds finite-negative-mass stabilization, killing the centered defect. The hard friction is that summability, positivity, strict centering, normalized vanishing, and the exact C/D dynamics are all premises rather than proved properties of the original orbit.
   **Evidence:** The exact source theorem, canonical review family, and committed Comparator representative are available at Claims 6bedcde3 and transport 39d0c4bd.
@@ -365,7 +365,7 @@ This paper states no reading route. Its evidence boundary is in [Complete result
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/eb82997bdbc7228599b88337f9c17926b47da947/paper/systems/claim-faithful-publication-systems-paper.tex) · 46 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex) · 46 sections · `claim-faithful-publication-systems` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The whole lifecycle in one picture](full-text/claim-faithful-publication-systems-paper.md#sec:lifecycle), [The public Lean repository](full-text/claim-faithful-publication-systems-paper.md#sec:public), [Inspection routes](full-text/claim-faithful-publication-systems-paper.md#sec:routes), [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
 
