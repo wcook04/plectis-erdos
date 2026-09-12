@@ -130,6 +130,12 @@ a stable public page or download. When an unpublished artifact is necessary
 evidence, publish it through the repository's release process before linking
 it; otherwise remove the dependency and state the evidence boundary plainly.
 
+When shortening shared entry guides, keep contract-required provenance and
+authority wording intact. Measure the whole first-read bundle, then run
+`scripts/test_cold_clone_comprehension.py` and
+`scripts/test_public_artifact_boundary.py`; a local readability check alone
+does not cover those contracts.
+
 ## Propagate each settled correction
 
 Run [propagate-research-consequences](../propagate-research-consequences/SKILL.md)

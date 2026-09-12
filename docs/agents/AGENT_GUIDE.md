@@ -3,11 +3,13 @@
 
 # Agent guide
 
-This is a public Lean project and pinned scholarly artefact, not an entrypoint
-into a private development system. Work only from this repository. Its release
-discipline, claim registry, graph, atlas, and adversarial checks are public
-workflow evidence; they create no hidden proof authority. Do not infer
-unpublished results or private machinery.
+This is an ordinary public Lean project and a pinned scholarly artefact. It is
+not an entrypoint into any private development system. Work only from the files
+in this repository, and never infer unpublished results or private machinery.
+The checkout is nevertheless a deliberately curated public projection from a
+larger ongoing formal-mathematics workflow: its release discipline, claim
+registry, graph structure, generated atlas, and adversarial checks are public
+evidence of that workflow. They do not create hidden proof authority.
 
 Use [docs/agents/AGENT_WORKBENCH.md](AGENT_WORKBENCH.md) for the compact command
 routes and [CONTRIBUTING.md](../../CONTRIBUTING.md) for contribution mechanics. This
