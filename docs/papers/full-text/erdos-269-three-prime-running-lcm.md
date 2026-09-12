@@ -94,13 +94,13 @@ The two clauses are the Lean declarations [uniform nonsingular minors](https://g
 
 <div id="res:admissible-modular-minors" class="corollary">
 
-**Corollary 2** (the same minors modulo every admissible denominator). *For $`(p,q,r)=(2,3,5)`$, the maps $`I,J`$ in Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">1</a> can be chosen so that their minors are invertible over $`\mathbb Z/B\mathbb Z`$ for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$.*
+**Corollary 2** (the same minors modulo every admissible denominator). *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Every row and column factor is a unit modulo $`B`$. The normalised determinant is $`5^{-1}(-4/5)^{n-1}`$, also a unit. The choices of $`I,J`$ are independent of both $`B`$ and $`k`$. ◻
+*Proof.* Choose the maps from Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">1</a>. Every row and column factor is a unit modulo $`B`$. The normalised determinant is $`5^{-1}(-4/5)^{n-1}`$, also a unit. ◻
 
 </div>
 

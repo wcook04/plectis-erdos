@@ -1701,7 +1701,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:c1192e10c82e77594f6b6c6dcfa769ea68bb3b9ece02812ca74a44dd88e5822a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:070f63407c29b0de529ccf8cb11582db5ece28a72ecbf48ac0ac5d704ebc4c41",
+    "projection_digest": "sha256:da4f0c2ee9cf407f29943f39cfe07764591b3cabc4ea2d49019770734e553968",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2298,7 +2298,7 @@
         ],
         "note": {
           "artifact_id": "erdos_257_note",
-          "title": "Reciprocal-Summable Support Irrationality at Every Integer Base",
+          "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
           "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "rendered_path": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
@@ -2326,7 +2326,7 @@
         "finite_search": null,
         "paper": {
           "paper_id": "erdos-257-mersenne-support-subseries",
-          "title": "Reciprocal-Summable Support Irrationality at Every Integer Base",
+          "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
           "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",

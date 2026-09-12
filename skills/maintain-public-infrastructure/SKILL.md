@@ -26,6 +26,13 @@ or command that became unusable. A file existing is not evidence that an agent
 can find or operate it. Preserve the exact task as a regression fixture when it
 reveals a reusable failure class.
 
+For a request that combines stages, verify the order of the returned skills,
+not just whether one relevant skill appears. Test natural modifiers and plural
+objects as well as the exact failed wording. Registry `task_intents` can require
+an action token and an object token without requiring adjacent words; keep both
+conditions so merely mentioning a paper does not select manuscript editing.
+Check neighboring tasks that should retain their original lane.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,
@@ -48,6 +55,12 @@ reveals a reusable failure class.
 
 This map is deliberately compact. Open the owner named by the failing journey;
 do not read every registry, graph, paper, or skill as a startup ritual.
+
+Update metadata through its full schema path and artifact role. A manuscript
+title and a theorem-environment anchor can both use a key named `title`; a
+recursive replacement would change their meanings together. Preserve the
+anchor's exact semantic target and run the coordinate builder before stamping
+publication metadata.
 
 ## Classify before changing
 

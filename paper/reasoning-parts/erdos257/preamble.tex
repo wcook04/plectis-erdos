@@ -176,26 +176,27 @@
 For $n\in\Npos$ let $w_n=(2^n-1)^{-1}$, and for $J\subseteq\Npos$ let
 $\mathcal A_J=\{\sum_{n\in J}\varepsilon_nw_n:\varepsilon_n\in\{0,1\}\}$.
 Erd\H{o}s Problem~257 asks whether every infinite-support sum is irrational.
-This paper is a Lean-backed structural audit, not a solution.  Its
-unconditional checked content includes exact finite-denominator
-noncollapse; unique coding, compactness, and nowhere density for every
-restricted achievement set $\mathcal A_J$; perfectness when $J$ is infinite;
-and the measure dichotomy $2^{-|F|}$ when $J^c=F$ is finite, versus zero when
-$J^c$ is infinite.  For squarefree support the divisor incidence is
-$2^{\omega(n)}-1$: at every even base this blocks two divisibility-first
-certificate schemas, while adjoining $1$ preserves the irrationality question
-and restores arbitrarily long base-$2$ opening blocks.  Adjacent
-suffix-cylinder words also admit an exact carry-pivot normal form.
+For an integer base $b\ge2$ and a finite nonempty prime set $\mathcal P$, put
+$h(a)=\prod_{p\in\mathcal P}p^{v_p(a)}$.  We prove by ordinary finite averaging
+that every infinite $A$ satisfying
+\[
+ \sum_{a\in A}\frac{h(a)}{a(b^{h(a)}-1)}<\infty
+\]
+has irrational $\sum_{a\in A}(b^a-1)^{-1}$.  A base-two instance gives the
+conclusion hereditarily at every integer base and includes an explicit host
+with divergent reciprocal mass.  The proof freezes a finite weighted tail,
+uses exact gcd-orbit averages on a growing prime-power modulus, and averages
+the incomplete-period error over dyadic observation lengths.  Erd\H{o}s
+already stated the weaker reciprocal-summable theorem without the
+coprimality restriction; its complete ordinary proof is also printed here.
 
-The
-targets $1/2$ and $1/21$ have no finite-support representation in the stated
-normalisation and reduce to explicit infinite-orbit alternatives; neither
-membership question is decided.
-
-Published work independently settles prime
-support at base~$2$ and squarefree support at every power-of-two base.  We
-claim no priority for those cited results.  Universal \#257 and both target
-membership questions remain open.
+The checked structural record includes finite-denominator noncollapse and
+the topology and measure of restricted achievement sets.  The targets $1/2$
+and $1/21$ reduce to explicit infinite-orbit alternatives but neither is
+decided. Published work independently settles prime support at base~$2$ and
+squarefree support at every power-of-two base; no priority is claimed here.
+The weighted theorem is not an end-to-end Lean result, and universal \#257
+and both target membership questions remain open.
 \end{abstract}
 
 \section*{How to read this document}

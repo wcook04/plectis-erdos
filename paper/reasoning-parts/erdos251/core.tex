@@ -631,14 +631,18 @@ and is a different object, and the sweep of the dyadic
 tail-recurrence and B\'ezivin-style functional-equation literature has not been
 run.
 
-The criterion rules out two shortcuts.  Rationality makes the tail a
-finite-state object at every scale, so pairs with $T_M=T_N$ are abundant for
-free and the whole difficulty sits in nonintegrality of the difference.  And
-under the free-pair lattice the difference is an integer whenever the modulus
-divides the offset, and an integer cannot lie in $(\tfrac12,1)$, so the window
-component of the reduced event below is already a contradiction on its own.
-Both derivations are ordinary proofs, recorded in the long record and not
-formalised.
+The criterion rules out two shortcuts.  For the actual prime-gap tail,
+Section~\ref{long251:sec:xr-compression} combines the prime number theorem with
+a first-moment bound to show that, under rationality, some tail value occurs
+$\gg_{C,d}X/\log X$ times in $(X,2X]$; here $d$ is the eventual odd reduced
+denominator and $C>1$ is fixed.  This is specific to the prime tail, rather
+than a consequence of rationality for arbitrary integer-digit orbits, and
+equal tails have integral difference, so they do not supply the free-pair
+producer.  Also, under the free-pair lattice the difference is an integer
+whenever the modulus divides the offset, and an integer cannot lie in
+$(\tfrac12,1)$, so the window component of the reduced event below is already
+a contradiction on its own.  Both derivations are ordinary proofs, recorded
+in the extended record and not formalised.
 
 A second exact reformulation collapses all shift lengths and basepoints onto a
 single schedule.  Let $L_0=1$ and $L_j=\lcm(1,\ldots,j)$.
@@ -1639,8 +1643,11 @@ linked here contain no proof placeholders and no project-defined axioms; Lean
 does not authorise the exposition, the citation choices, or the
 interpretation, for which the author remains responsible.  The two receipts
 named in Section~\ref{long251:sec:measurements} and the continued-fraction receipt of
-Theorem~\ref{long251:res:cfexclusion} record their generating programs with digests
-and are held in the private research development.
+Theorem~\ref{long251:res:cfexclusion}, together with their generating programs,
+are public at the immutable revision linked there.  The
+\href{https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/research/experiments/erdos251/README.md}{computation guide}
+records dependencies, replay commands, source provenance, and the exact versus
+floating-point evidence boundary.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding.  The author declares no competing interests.

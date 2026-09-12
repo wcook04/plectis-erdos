@@ -38,6 +38,7 @@ def skill_card(catalog: dict[str, Any], skill_id: str) -> dict[str, Any]:
                 "id": lane["id"],
                 "title": lane["title"],
                 "task_cues": lane["task_cues"],
+                "task_intents": lane.get("task_intents", []),
             }
             for lane in lane_cards
         ],
@@ -152,6 +153,11 @@ def render_skill(catalog: dict[str, Any], skill_id: str) -> str:
     for lane in lanes:
         lines.append(f"  - {lane['id']}: {lane['title']}")
         lines.append(f"    Recognized requests: {', '.join(lane['task_cues'])}")
+        for intent in lane.get("task_intents", []):
+            lines.append(
+                f"    Action/object intent: {'/'.join(intent['actions'])} + "
+                f"{'/'.join(intent['objects'])} (words need not be adjacent)"
+            )
     if skill["composes_with"]:
         lines.extend(("", "Common next workflows:"))
         lines.extend(f"  - {related}" for related in skill["composes_with"])

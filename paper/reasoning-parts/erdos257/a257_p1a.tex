@@ -778,13 +778,17 @@ carry bookkeeping.
 
 \begin{lem}[Rational denominator survival: general-purpose fraction-reduction algebra]
 \label{lem:denominator-survival}
-If $m\mid D$ and $m$ is coprime to numerator $a$, then $m\mid(a/D\text{ as }
-\mathrm{Rat}).\mathrm{den}$. Scaled variant: if $C\mid D$ and $C$ is coprime to $a$, then
+Let $a\in\mathbb Z$, $D\in\mathbb N_{>0}$ and $m,C,h\in\mathbb N$.
+If $m\mid D$ and $\gcd(m,|a|)=1$, then $m\mid(a/D\text{ as }
+\mathrm{Rat}).\mathrm{den}$. If $C\mid D$ and $\gcd(C,|a|)=1$, then
 $C/\gcd(C,h)\mid((h\cdot a)/D\text{ as }\mathrm{Rat}).\mathrm{den}$ — a divisor of the
-displayed denominator survives rational reduction up to exactly the part the scale
-multiplier can cancel. Zero domain content: the general-purpose ``which prime power
-survives fraction reduction'' lemma, feeding Theorem~\ref{thm:mersenne-channel-survival}
-directly, and equally applicable to any future \#249 denominator-tracking argument.
+displayed denominator survives to at least this extent after scaling.
+Indeed, reduction divides $D$ by $\gcd(D,|a|)$, so no prime power in $m$
+can be lost. After scaling, a prime $p\mid C$ can lose at most $v_p(h)$
+powers from the guaranteed divisor. This is a lower bound on the reduced
+denominator, not an equality: for $D=12$, $C=6$, $a=1$, $h=2$, it guarantees
+the divisor $3$, while the reduced denominator is $6$.
+The lemma feeds Theorem~\ref{thm:mersenne-channel-survival} directly.
 \par\ev{Lean}\scale{uniform}\coord{denominator-algebra}
 \lean{divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17}
 \lean{survivingDivisor\_dvd\_scaled\_divInt\_den}{RationalDenominatorSurvival.lean:38}

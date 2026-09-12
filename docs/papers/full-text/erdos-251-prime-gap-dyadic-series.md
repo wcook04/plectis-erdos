@@ -810,7 +810,7 @@ It controls the number of excessive omitted tails. A lower bound for the corresp
 
 #### Artefact and data availability.
 
-The [source links](https://github.com/wcook04/plectis-lean-erdos249-257/tree/99f4bf47422abbd8757cbb22b50ba079d764d3a7) identify a fixed public snapshot. More recent live declarations are identified explicitly where they are used; a local declaration locator does not establish its presence at a historical public pin. The repository’s versioned source and verification records, rather than this manuscript’s navigation links, identify the checked object.
+The [source links](https://github.com/wcook04/plectis-lean-erdos249-257/tree/99f4bf47422abbd8757cbb22b50ba079d764d3a7) identify a fixed public snapshot. More recent live declarations are identified explicitly where they are used; a local declaration locator does not establish its presence at a historical public pin. The repository’s versioned source and verification records, rather than this manuscript’s navigation links, identify the checked object. The three finite-computation receipts and their generating programs are public in the [computation guide](https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/research/experiments/erdos251/README.md) at an immutable revision. That guide records dependencies, replay commands, source provenance, and the exact versus floating-point evidence boundary.
 
 Lean checks each proof term against the fixed library version, and the sources linked here contain no proof placeholders and no project-defined axioms; Lean does not authorise the exposition, the citation choices, or the interpretation, for which the author remains responsible.
 

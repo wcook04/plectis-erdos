@@ -17,6 +17,30 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "Repair CLI error recovery and safe research session creation": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Create a research plan to prove this Lean theorem": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Refine short and long mathematical papers and propagate corrections into public guidance": (
+        "public_writing", "public-mathematical-writing",
+    ),
+    "Revise both mathematical manuscripts, then propagate the downstream consequences": (
+        "public_writing", "public-mathematical-writing",
+    ),
+    "Proofread these two papers and update consumers": (
+        "public_writing", "public-mathematical-writing",
+    ),
+    "Rewrite the abstract with a clearer proof idea": (
+        "public_writing", "public-mathematical-writing",
+    ),
+    "Propagate this stable theorem into the papers": (
+        "propagate_delta", "propagate-research-consequences",
+    ),
+    "Refine the proof search and prove this Lean theorem": (
+        "bounded_research", "mine-open-problem",
+    ),
     "Audit the strongest substantive result summaries for each problem from a cold clone": (
         "result_summary_audit", "propagate-research-consequences",
     ),
@@ -298,6 +322,17 @@ def main() -> int:
     assert skill_value["lanes"]
     assert all(row["task_cues"] for row in skill_value["route_lanes"])
 
+    writing = run_cli(ROOT, "--skill", "public-mathematical-writing", "--json")
+    assert writing.returncode == 0, writing.stderr
+    writing_lane = next(
+        row for row in json.loads(writing.stdout)["route_lanes"]
+        if row["id"] == "public_writing"
+    )
+    assert writing_lane["task_intents"], "advertised skill omits its nonadjacent intent route"
+    writing_human = run_cli(ROOT, "--skill", "public-mathematical-writing")
+    assert writing_human.returncode == 0, writing_human.stderr
+    assert "Action/object intent:" in writing_human.stdout
+
     misspelled = run_cli(ROOT, "--skill", "mine-open-problm")
     assert misspelled.returncode != 0
     assert "mine-open-problem" in misspelled.stderr
@@ -375,6 +410,16 @@ def main() -> int:
         invalid = run_cli(clone, "--skills", "--json")
         assert invalid.returncode != 0
         assert "duplicate normalized task cues" in invalid.stderr
+
+        shutil.copy2(ROOT / "skills" / "registry.json", clone_registry)
+        invalid_registry = json.loads(clone_registry.read_text(encoding="utf-8"))
+        invalid_registry["lanes"][0]["task_intents"] = [
+            {"actions": ["refine"], "objects": []}
+        ]
+        clone_registry.write_text(json.dumps(invalid_registry), encoding="utf-8")
+        invalid = run_cli(clone, "--skills", "--json")
+        assert invalid.returncode != 0
+        assert "task intent objects" in invalid.stderr
 
     print(
         "agent entry: pass "
