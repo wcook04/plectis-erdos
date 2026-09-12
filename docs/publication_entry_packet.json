@@ -109,16 +109,16 @@
   "content_hashes": {
     "docs/claims.json": "sha256:32ff06ecc7a9807d386fc2a951e190938a8c2c4c6f28b9c84b054bf946663b7f",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:229edb81876b106f3dbe7eed462cc4affda18e02a814efaddc2c24b76c463777",
+    "docs/problems.json": "sha256:070f63407c29b0de529ccf8cb11582db5ece28a72ecbf48ac0ac5d704ebc4c41",
     "docs/publication_contract.json": "sha256:67165fda6c70c5b5a49c7239cc472168156c0b43be1667bb2efa1bc5c123888b",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:fe7dca950a1abdaf01dacef16cbf3f95a2502f679e417cf2a4eb0780bd89876b",
     "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:548131e698ac9327e471f45a3b27b0793fc326037044d38ded8818ecccaa6714",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
+    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
-    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
+    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef",
     "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf",
     "scripts/run_publication_mutations.py": "sha256:34168a755035ab14b591e981a62d7fc5030ea796774baf2243de803e1f1167b7"
   },
@@ -504,7 +504,7 @@
     "directory": "research_corpus/Erdos1041",
     "files": {
       "checkpoint": {
-        "content_digest": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
+        "content_digest": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef",
         "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
       },
       "frontier": {
@@ -512,7 +512,7 @@
         "path": "research_corpus/Erdos1041/FRONTIER.md"
       },
       "manifest": {
-        "content_digest": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
+        "content_digest": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
         "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
       },
       "strongest_results": {
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:229edb81876b106f3dbe7eed462cc4affda18e02a814efaddc2c24b76c463777",
+      "content_digest": "sha256:070f63407c29b0de529ccf8cb11582db5ece28a72ecbf48ac0ac5d704ebc4c41",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
