@@ -34,9 +34,9 @@ Before changing mathematical prose, read the exact current result from its
 owning Lean declaration, the matching entry in `docs/claims.json` when one
 exists, and the present paper or result guide. Keep these distinctions intact:
 
-- a Lean-checked theorem, a cited theorem, a finite computation, a conditional
-  reduction, a counterexample, and an open conjecture are different kinds of
-  evidence;
+- a Lean-checked theorem, an ordinary authored proof, a cited theorem, a finite
+  computation, a conditional reduction, a counterexample, and an open
+  conjecture are different kinds of evidence;
 - preserve every hypothesis, quantifier, implication direction, attribution,
   and stated limit;
 - never turn acceptance by Lean, Comparator, Palomar, a maintainer, or a pull
@@ -56,6 +56,12 @@ Compare the exact mathematical domains as well: a local complex-parameter
 chain rule does not itself formalise an integrated real-time trajectory or its
 endpoint behaviour. State separately the checked lemma and any ordinary
 argument that supplies the advertised conclusion.
+
+An ordinary proof can establish a theorem before its full formalization exists.
+Check that argument on its own terms, including limiting steps, endpoints and
+the order of quantifiers; identify the formalized ingredients separately.
+Neither an absent Lean declaration nor an unsupported kernel label settles
+the validity of the ordinary argument.
 
 ## Write for the reader in front of you
 
@@ -85,6 +91,13 @@ For a paper or theorem explanation:
    exposition in citation wording.
 7. End the result where the evidence ends. State the next open implication
    plainly instead of closing with promotional language.
+
+For a substantial revision, rank the available results and reader blockers
+before allocating space. Give a difficult proof transition or a useful
+counterexample more attention than routine algebra or another equivalent
+formulation. The short paper should sustain its principal argument; the long
+record should explain the additional mechanisms and retain technical material
+in a navigable order. Do not make both versions equal-weight inventories.
 
 ## Prose pass
 
@@ -117,8 +130,40 @@ a stable public page or download. When an unpublished artifact is necessary
 evidence, publish it through the repository's release process before linking
 it; otherwise remove the dependency and state the evidence boundary plainly.
 
-After changing mathematical content, run the owning paper, corpus, and claim
-checks before the validation floor below.
+## Propagate each settled correction
+
+Run [propagate-research-consequences](../propagate-research-consequences/SKILL.md)
+as part of every substantive mathematical revision, even when no Lean file
+changes. Do this after settling the mathematics and before closing the work.
+A correction to hypotheses, a proof, evidence wording, attribution, or the
+explanation of a method's limits can change other surfaces too.
+
+Start with the exact changed statement and inspect its plausible consumers:
+
+- the title, abstract, theorem, proof and conclusion in both short and long
+  versions, including later summaries and family catalogues;
+- the matching claim family, evidence record, open obligation, and any
+  Comparator or Palomar entry that states the affected result;
+- reader guides and public query answers that compress the result; and
+- assembled sources, PDFs, full-text mirrors, source coordinates, corpus
+  metadata and publication fingerprints that depend on the edited source.
+
+Give each consumer an explicit disposition: update now, verify unchanged,
+defer with an owner and re-entry condition, or outside scope with a reason.
+Make semantic changes in the owning source and rebuild its projections; a
+successful text replacement or export does not verify the mathematics. Check
+the actual returned query or rendered passage after refreshing it.
+
+When the repair teaches a reusable lesson, update the smallest public skill,
+rule or regression check that can prevent recurrence. Keep the rule usable
+from this clone, state its limits, and verify that the cold-agent route exposes
+it. If the existing rule already covers the case, record that fact and its
+locator instead of adding another copy.
+
+Record the changed result, consumer dispositions, exact source version,
+validation and review coverage in the existing review or contribution record.
+Distinguish fully inspected proofs from sampled or unavailable material. Counts
+of papers, declarations or passing checks are not mathematical review coverage.
 
 ## Validation and boundaries
 

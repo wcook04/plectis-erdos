@@ -106,6 +106,37 @@ skills, builders, tests, generated routes, and any public paper that describes
 the changed behaviour. A local workflow lesson becomes a general skill or rule
 only when its scope and over-generalisation guard are explicit.
 
+## Paper corrections and generated consequences
+
+A manuscript correction is a propagation trigger even without a Lean diff.
+Use the companion and consumer checklist in
+[public-mathematical-writing](../public-mathematical-writing/SKILL.md#propagate-each-settled-correction).
+Evidence labels must remain consistent in later tables and catalogue entries,
+not only in the revised theorem. Preserve an ordinary proof as ordinary proof;
+do not promote or withdraw a theorem merely to make the labels uniform.
+
+Edit authored fragments before assembling a long paper, and rebuild the PDF
+before restamping its publication record. Refresh downstream coordinates and
+fingerprints after the source and full-text export are final. Use
+`python3 scripts/refresh_projections.py` for the registered projection chain,
+then inspect the affected query response. If a required export owner is absent
+from the clone, record that exact unfinished consumer for the maintainer;
+neither hand-edit its generated output nor report the package fully current.
+
+In a shared checkout, isolate all transitive build inputs, including papers,
+registries and attribution data as well as Lean. An unchanged generator can
+still consume another task's uncommitted source. Generate from the committed
+base plus the exact owned changes, copy back only owned outputs, and run
+`python3 scripts/check_release_ref.py` on the resulting commit. Choose a
+receipt path whose parent directory is canonical and contains no symlink.
+Preserve unrelated work and reuse exact existing proof receipts when the
+formal sources are unchanged.
+
+At closeout, carry any reusable failure mode into the owning public workflow
+and its discovery route. A lesson in a private chat cannot guide the next
+contributor's agent. Record the public locator and check, or explain why the
+existing rule already covers the case.
+
 ## Reconcile work from an older clone
 
 An old clone is not an invalid contribution. Its starting commit is the common

@@ -346,18 +346,30 @@
         "reader-facing",
         "rewrite readme",
         "exposition",
-        "human entry"
+        "human entry",
+        "refine paper",
+        "revise manuscript",
+        "proofread paper",
+        "short and long papers",
+        "paper refinement",
+        "evidence label",
+        "theorem hypothesis",
+        "correcting a proof",
+        "repair attribution",
+        "evidence wording"
       ],
       "skills": [
-        "public-mathematical-writing"
+        "public-mathematical-writing",
+        "propagate-research-consequences"
       ],
       "read": [
-        "skills/public-mathematical-writing/SKILL.md"
+        "skills/public-mathematical-writing/SKILL.md",
+        "skills/propagate-research-consequences/SKILL.md"
       ],
       "commands": [
         "python3 scripts/query_corpus.py --papers"
       ],
-      "boundary": "Write from exact Lean and claim evidence while preserving every hypothesis and open boundary."
+      "boundary": "Settle exact mathematics and evidence first; revise the paper, then reconcile its consumers and propagate reusable lessons before closeout."
     },
     {
       "id": "add_problem",
@@ -365,7 +377,7 @@
       "task_cues": [
         "add problem",
         "new problem",
-        "another erdős problem",
+        "another erd\u0151s problem",
         "register problem",
         "register its paper",
         "expand problem roster",

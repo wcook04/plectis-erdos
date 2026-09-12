@@ -54,6 +54,34 @@ ROUTE_CASES = {
         "public_writing",
         "public-mathematical-writing",
     ),
+    "refine the short and long papers with clearer proof intuition": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "revise manuscript hypotheses after correcting the proof": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "correct an evidence label in the manuscript": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "fix a theorem hypothesis in the paper": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "update a paper after correcting a proof": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "repair attribution in the paper": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "change the evidence wording in the long paper": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
     "add a ninth problem to the corpus": ("add_problem", "add-open-problem"),
     "package a research return from an older clone": (
         "return_research",
@@ -206,6 +234,14 @@ def main() -> int:
         assert expected_skill in {row["id"] for row in packet["skills"]}, (task, packet)
         assert packet["primary_lane"]["read"], task
         assert packet["primary_lane"]["boundary"], task
+        if expected_lane == "public_writing":
+            assert "propagate-research-consequences" in {
+                row["id"] for row in packet["skills"]
+            }, (task, "paper correction lost its downstream propagation workflow")
+            assert packet["primary_lane"]["read"][:2] == [
+                "skills/public-mathematical-writing/SKILL.md",
+                "skills/propagate-research-consequences/SKILL.md",
+            ], (task, "cold author must receive writing then propagation instructions")
 
     operational = entry_packet(
         catalog, "speed up the public Lean repo clone and build commands"
