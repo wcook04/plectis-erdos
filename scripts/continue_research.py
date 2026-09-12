@@ -1058,7 +1058,7 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
             ),
         },
         "public_guidance": {
-            "continuation_guide": "docs/AGENT_WORKBENCH.md",
+            "continuation_guide": "docs/agents/AGENT_WORKBENCH.md",
             "return_template": "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
             "resume_state_template": (
                 "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#6-resume-state-and-promotion-request"

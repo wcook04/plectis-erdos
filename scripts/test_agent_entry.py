@@ -17,6 +17,9 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "Organize crowded docs for readers, verification and agent workflows": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
     "Improve repository first impression root organization README and consolidate redundant provider entry files": (
         "repository_architecture", "maintain-public-infrastructure",
     ),

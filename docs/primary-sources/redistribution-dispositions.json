@@ -457,7 +457,7 @@
       "support_boundary_ref": "docs/primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md",
       "consumer_refs": [
         "docs/PRIOR_ART.md",
-        "docs/COMPARATOR_1049_NUMERICAL_HEIGHT.md",
+        "docs/verification/COMPARATOR_1049_NUMERICAL_HEIGHT.md",
         "docs/primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]

@@ -126,7 +126,7 @@ and checks without assuming Lean or project history.
 
 Coding agents start at [`AGENTS.md`](AGENTS.md). `CLAUDE.md` loads that same
 entry for Claude Code; the detailed commands live in the
-[agent workbench](docs/AGENT_WORKBENCH.md). The
+[agent workbench](docs/agents/AGENT_WORKBENCH.md). The
 [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
 explains the design.
 

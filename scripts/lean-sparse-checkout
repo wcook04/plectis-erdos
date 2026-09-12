@@ -6,7 +6,7 @@
 /scripts/lean-sparse-checkout
 /scripts/validation_singleflight.py
 /.gitignore
-/docs/AGENT_GUIDE.md
+/docs/agents/AGENT_GUIDE.md
 /AGENTS.md
 /docs/ARCHITECTURE.md
 /CITATION.cff
@@ -29,3 +29,6 @@
 /lean-toolchain
 !/lean/ErdosProblems/FreePosition/data.jsonl
 /.github/CODE_OF_CONDUCT.md
+/docs/agents/README.md
+/docs/verification/README.md
+/docs/reference/README.md

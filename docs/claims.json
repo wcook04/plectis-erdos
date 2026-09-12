@@ -9,7 +9,7 @@
       "docs/claims.json for release identity, status taxonomy, remaining-open propositions, coordinates, and navigation relationships",
       "docs/methodology.json for mathematical methodology and claim-transition requirements",
       "the authored exposition for mathematical explanation",
-      "README.md, docs/SCOPE.md, docs/SOURCE_MAP.md, and docs/WAVE_INDEX.md as reader projections"
+      "README.md, docs/SCOPE.md, docs/SOURCE_MAP.md, and docs/reference/WAVE_INDEX.md as reader projections"
     ],
     "projection_boundary": "The module graph records exact internal Lean imports. The argument graph is an authored navigation map, not an additional proof object and not a novelty or priority claim.",
     "entrypoints": [
@@ -80,8 +80,8 @@
           "prioritize semantic population from the papers"
         ],
         "read": [
-          "docs/AGENT_WORKBENCH.md",
-          "docs/SEMANTIC_COMPILER.md",
+          "docs/agents/AGENT_WORKBENCH.md",
+          "docs/agents/SEMANTIC_COMPILER.md",
           "docs/semantic/lab/README.md"
         ],
         "query_steps": [
@@ -204,7 +204,7 @@
         "authority_owners": [
           "docs/claims.json::machine_readable_paper.argument_graph",
           "docs/SOURCE_MAP.md",
-          "docs/WAVE_INDEX.md"
+          "docs/reference/WAVE_INDEX.md"
         ],
         "adjacent_handle_classes": [
           "claim_id",
@@ -906,7 +906,7 @@
           "how do I verify this"
         ],
         "read": [
-          "docs/AGENT_GUIDE.md",
+          "docs/agents/AGENT_GUIDE.md",
           "CONTRIBUTING.md"
         ],
         "query_steps": [
@@ -15373,7 +15373,7 @@
       "verification/comparator.json",
       "docs/external_verification_packet.json",
       "docs/EXTERNAL_VERIFICATION.md",
-      "docs/OUTREACH_EVIDENCE_CAPSULES.md"
+      "docs/reference/OUTREACH_EVIDENCE_CAPSULES.md"
     ]
   },
   "remaining_open_propositions": [

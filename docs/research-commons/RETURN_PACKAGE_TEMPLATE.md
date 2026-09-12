@@ -18,7 +18,7 @@ from `python3 scripts/query_corpus.py --route erdos_<n>` and use the
 [complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix)
 for the human crosswalk; do not invent an anchor from wave chronology.
 
-Start with the [agent workbench cold-start route](../AGENT_WORKBENCH.md) and
+Start with the [agent workbench cold-start route](../agents/AGENT_WORKBENCH.md) and
 keep the [accepted-contribution index](CONTRIBUTIONS.md) beside the return.
 For continuation, retain the route-memory sidecar described in section 4 and
 follow the selected problem's frontier route in the [complete eight-problem
@@ -60,7 +60,7 @@ python3 scripts/query_corpus.py --module <module-or-path returned by the problem
 ```
 
 The namespaced `<artifact_id>::<label>` handle keeps repeated paper labels
-attached to the correct problem note; the [public-evidence return route](../PROOF_STATE_COMPILER.md#return-to-public-evidence)
+attached to the correct problem note; the [public-evidence return route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence)
 documents the same bridge. A note's `source_path` or
 `paper.source_ref` remains a reading locator, not a selector input; the
 source-only #68 and #1041 routes continue through their returned Lean module.
@@ -94,7 +94,7 @@ the complete family census and a reverse route to one selected family, run
 `python3 scripts/query_corpus.py --publication-family <family_id>`. The returned
 `significance_rank` is a navigation order, not a novelty or priority claim. For
 the all-eight proof-to-paper/source dispatch table, use the
-[proof-state public-evidence route](../PROOF_STATE_COMPILER.md#return-to-public-evidence).
+[proof-state public-evidence route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence).
 It is a navigation aid, not proof authority.
 
 For the paper-to-formal crosswalk, use the

@@ -76,7 +76,7 @@ PROJECTIONS = (
     "docs/semantic_corpus_check.json",
     "docs/theory_lab.json",
     "docs/publication_entry_packet.json",
-    "docs/WAVE_INDEX.md",
+    "docs/reference/WAVE_INDEX.md",
     "README.md",
     "paper/archive/erdos249-257-main-paper.tex",
     "paper/module-aliases.json",

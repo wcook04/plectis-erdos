@@ -13,8 +13,7 @@ All eight mathematical problems remain open. The repository proves
 intermediate results, exact reformulations, and bounded examples around them.
 It does not claim a solution to any of them.
 
-You do not need to know Lean, the project history, or any internal naming
-scheme to use this guide.
+You do not need to know Lean or the project history to use this guide.
 
 ## What this repository is
 
@@ -43,7 +42,7 @@ on private files or unpublished work.
                                       |
                                       v
 Lean source -----------------> reviewed claim record
-Erdos249257/*.lean              docs/claims.json
+lean/Erdos249257/*.lean         docs/claims.json
        |                              |
        | lean_fast_build.py           | describes what public pages may say
        v                              v
@@ -102,10 +101,10 @@ authority. Their builder scripts say when they should be regenerated.
 ## Repository map
 
 ```text
-Erdos249257.lean                 reviewed #249/#257 root import
-Erdos249257/                     reviewed #249/#257 definitions, theorems, and certificates
-ErdosProblems.lean               problem-owned expansion root import
-ErdosProblems/Erdos<N>/          formal work grouped by actual Erdős problem number
+lean/Erdos249257.lean            reviewed #249/#257 root import
+lean/Erdos249257/                reviewed #249/#257 formal work
+lean/ErdosProblems.lean          problem-owned expansion root import
+lean/ErdosProblems/Erdos<N>/     formal work grouped by Erdős problem number
 examples/                        a small downstream Lean user of the library
 
 docs/claims.json                 reviewed record of public mathematical claims
@@ -114,11 +113,11 @@ docs/publication_contract.json   inventory of shipped papers
 docs/publication_evidence.json   evidence and limits for a historical checker exercise
 docs/problems.json               generated index of the problem-owned expansion library
 docs/problem_index_source.json   the authored source that index is built from
-docs/ORIENTATION.md              generated human reading map
+docs/ORIENTATION.md              generated technical navigation
 docs/SOURCE_MAP.md               routes from mathematical questions to Lean files
 
 README.md                        front page and short result summary
-docs/SCOPE.md                         short statement of what remains unproved
+docs/SCOPE.md                    short statement of what remains unproved
 paper/                           authored paper sources and rendered PDFs
 
 scripts/                         builders, release checks, queries, and tests
@@ -172,7 +171,7 @@ route; it is an index, not proof or claim authority.
 
 For exact statement-identity comparison with the upstream Formal Conjectures
 corpus, use the generated
-[`docs/FORMAL_CONJECTURES_CROSSWALK.md`](FORMAL_CONJECTURES_CROSSWALK.md).
+[`docs/verification/FORMAL_CONJECTURES_CROSSWALK.md`](verification/FORMAL_CONJECTURES_CROSSWALK.md).
 Each of the eight problem sections binds the pinned upstream declaration,
 source path, byte hash, and proof-status boundary to the matching canonical
 local problem route, so a reader can return from external prior art to local
@@ -278,7 +277,7 @@ claim, it also requires mathematical review and a matching claim-record update.
 ### A generated file is out of date
 
 Do not repair it by hand. Run the builder named in that file or in
-[`docs/AGENT_GUIDE.md`](AGENT_GUIDE.md), review the change, and rerun the release check.
+[`docs/agents/AGENT_GUIDE.md`](agents/AGENT_GUIDE.md), review the change, and rerun the release check.
 
 ## How the checks run
 
@@ -347,7 +346,7 @@ the limit of explicitly recorded checks.
 - **You want every distinct result family for one problem:** run
   `python3 scripts/query_corpus.py --route erdos_<problem_number>` and follow
   its paper, declaration, and open-obligation handles.
-- **You want to change the repository:** read [`docs/AGENT_GUIDE.md`](AGENT_GUIDE.md) and
+- **You want to change the repository:** read [`docs/agents/AGENT_GUIDE.md`](agents/AGENT_GUIDE.md) and
   [`CONTRIBUTING.md`](../CONTRIBUTING.md), then run the checks for the files you
   touched.
 - **You want to inspect the historical release-checking exercise:** read

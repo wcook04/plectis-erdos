@@ -38,7 +38,7 @@ reveals a reusable failure class.
 - `scripts/agent_entry.py` renders the smallest task-conditioned read set. It is
   navigation, not mathematical authority.
 - Lean source, `docs/claims.json`, and `docs/methodology.json` retain the
-  authority order described in `docs/AGENT_GUIDE.md`.
+  authority order described in `docs/agents/AGENT_GUIDE.md`.
 - `scripts/refresh_projections.py` is the single refresh route for registered
   generated projections. Never repair a generated artifact by hand.
 - `skills/erdos-research-return/SKILL.md` owns clone-to-upstream return and
@@ -96,8 +96,11 @@ system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
 When reorganising the checkout, keep one shared root `AGENTS.md` and keep
-provider adapters limited to loading that entry. Put detailed human and agent
-guides in `docs/`. Preserve root filenames required by Lake, Comparator,
+provider adapters limited to loading that entry. Keep the main reader guides
+in `docs/`, operational agent guides in `docs/agents/`, specialist checking
+instructions in `docs/verification/`, and research/tool records in
+`docs/reference/`. Link each guide from its folder index. Preserve stable
+machine-readable corpus paths when reorganising reader documents. Preserve root filenames required by Lake, Comparator,
 citation and licence tools. A move must update relative links, sparse checkout
 manifests, CI, source registries and their builders together. Pinned historical
 artifacts retain the filenames belonging to their recorded revision.

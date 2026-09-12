@@ -43,34 +43,45 @@ another researcher can resume and return a longer investigation.
 
 For an AI-assisted session, use [the research-shift guide](FRONTIER_RELAY.md).
 Coding agents start at [the agent entry](../AGENTS.md); the
-[agent workbench](AGENT_WORKBENCH.md) documents the detailed tools.
+[agent workbench](agents/AGENT_WORKBENCH.md) documents the detailed tools.
 
 ## Where things live
 
-| Location | Purpose |
+| Folder | What belongs there |
 |---|---|
-| [`paper/`](../paper/README.md) | Manuscript sources and rendered PDFs. |
-| [`docs/papers/`](papers/README.md) | Reading pages and indexes derived from the manuscripts. |
-| [Source map](SOURCE_MAP.md) | Routes into the Lean libraries, grouped by mathematical problem. |
-| [`docs/claims.json`](claims.json) | Authored public claims, evidence links and status. |
-| [Corpus orientation](ORIENTATION.md) | Generated technical navigation after choosing a problem. |
+| [Papers](../paper/README.md) | Current PDFs and manuscript sources, grouped by problem. |
+| [Paper full text](papers/README.md) | Browsable Markdown versions and a detailed paper index. |
+| [Agent guides](agents/README.md) | Commands, proof tools and rules for making changes. |
+| [Verification guides](verification/README.md) | Replay instructions, statement comparisons and submission requirements. |
+| [Technical reference](reference/README.md) | Research history, correction records and indexing details. |
 | [Research commons](research-commons/README.md) | Contribution, review and attribution records. |
+| [Semantic index](semantic/README.md) | Generated technical navigation through declarations and relationships. |
+| [Primary sources](primary-sources/) | Source provenance and redistribution records. |
+| [Measurements](measurements/) | Recorded measurements of the tools. |
+| [Release records](release/) | Audits and release identity records. |
 
-[How the repository works](ARCHITECTURE.md) explains source ownership,
-generated files and the release process. The research-system papers have a
-separate role from the eight mathematical problem papers; find both through
-[the paper catalogue](papers/README.md).
+The main guides stay here: [reading guide](READING_GUIDE.md),
+[results](RESULTS.md), [prior art](PRIOR_ART.md), [related problems](RELATED_PROBLEMS.md),
+[source map](SOURCE_MAP.md), [reproducibility](REPRODUCIBILITY.md),
+[methodology](METHODOLOGY.md), [scope](SCOPE.md) and
+[architecture](ARCHITECTURE.md).
 
-The [earlier joint #249/#257 manuscript](../paper/archive/erdos249-257-main-paper.pdf)
-is retained as historical context. Start with the current individual problem
-papers instead.
+The JSON files beside these guides are used by the query tools and website.
+[claims.json](claims.json) records public claim status;
+[methodology.json](methodology.json) records the review rules.
+The remaining indexes help locate evidence. Their filenames stay stable so
+existing tools and source links continue to work. You can read the papers
+without opening them.
+
+[Generated technical navigation](ORIENTATION.md) gives a compact view for
+readers using those indexes.
 
 ## Files at the repository root
 
 `README.md` introduces the work and `CONTRIBUTING.md` explains how to help.
 `AGENTS.md` is the shared instruction file for coding agents. Claude Code loads
 it through `CLAUDE.md`. Detailed agent rules live in
-[the agent guide](AGENT_GUIDE.md), so reading the root does not require a tour
+[the agent guide](agents/AGENT_GUIDE.md), so reading the root does not require a tour
 of the automation.
 
 `lakefile.toml`, `lake-manifest.json` and `lean-toolchain` configure the Lean

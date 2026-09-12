@@ -58,7 +58,7 @@ def contract_errors(example: str, workbench: str, lakefile: str) -> list[str]:
             errors.append(f"downstream example lost {label}")
 
     workbench_requirements = {
-        "consumer route": "[`examples/Examples.lean`](../research/examples/Examples.lean)",
+        "consumer route": "[`examples/Examples.lean`](../../research/examples/Examples.lean)",
         "conditional interface description":
             "conditional shell-pressure example",
         "explicit-hypothesis boundary": "leaves the analytic hypothesis explicit",
@@ -168,11 +168,11 @@ def portfolio_contract_errors(
 
 def main() -> int:
     example = (ROOT / "research" / "examples" / "Examples.lean").read_text(encoding="utf-8")
-    workbench = (ROOT / "docs" / "AGENT_WORKBENCH.md").read_text(encoding="utf-8")
+    workbench = (ROOT / "docs/agents" / "AGENT_WORKBENCH.md").read_text(encoding="utf-8")
     lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
     require_clean(
         contract_errors(example, workbench, lakefile),
-        "examples/Examples.lean, docs/AGENT_WORKBENCH.md, or lakefile.toml",
+        "examples/Examples.lean, docs/agents/AGENT_WORKBENCH.md, or lakefile.toml",
     )
     problem249 = (
         ROOT / "research" / "examples" / "ExternalVerificationPortfolio" / "Problem249.lean"

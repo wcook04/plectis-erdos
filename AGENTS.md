@@ -3,7 +3,7 @@
 
 # Agent instructions
 
-First-contact contract. [the detailed agent guide](docs/AGENT_GUIDE.md) owns deep change,
+First-contact contract. [the detailed agent guide](docs/agents/AGENT_GUIDE.md) owns deep change,
 authority, and validation rules; open only the section the route names.
 
 This is a self-contained public Lean repository and scholarly artefact. Use only
@@ -64,7 +64,7 @@ python3 scripts/query_corpus.py --proof-plan "<Lean or mathematical goal>" --dep
 ```
 
 Use the emitted declarations and verify applicability with Lean. Before editing,
-read [the detailed agent guide](docs/AGENT_GUIDE.md) sections `Authority and change order` and
+read [the detailed agent guide](docs/agents/AGENT_GUIDE.md) sections `Authority and change order` and
 `Validation`, and [METHODOLOGY.md](docs/METHODOLOGY.md) when a public claim could
 change.
 

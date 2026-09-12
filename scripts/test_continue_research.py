@@ -1113,7 +1113,7 @@ def main() -> int:
         )
         assert "pull_request_receipt_path" not in package_manifest["github_intake"]
         assert package_manifest["public_guidance"] == {
-            "continuation_guide": "docs/AGENT_WORKBENCH.md",
+            "continuation_guide": "docs/agents/AGENT_WORKBENCH.md",
             "return_template": "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
             "resume_state_template": (
                 "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#6-resume-state-and-promotion-request"

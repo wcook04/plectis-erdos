@@ -11,8 +11,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPACT = ROOT / "AGENTS.md"
-DEEP = ROOT / "docs/AGENT_GUIDE.md"
-WORKBENCH = ROOT / "docs" / "AGENT_WORKBENCH.md"
+DEEP = ROOT / "docs/agents/AGENT_GUIDE.md"
+WORKBENCH = ROOT / "docs/agents" / "AGENT_WORKBENCH.md"
 PUBLICATION_ENTRY = ROOT / "docs" / "publication_entry_packet.json"
 README = ROOT / "README.md"
 
@@ -80,7 +80,7 @@ def main() -> int:
     readme = README.read_text(encoding="utf-8")
     workbench = WORKBENCH.read_text(encoding="utf-8")
     assert "[`AGENTS.md`](AGENTS.md)" in readme
-    assert "docs/AGENT_WORKBENCH.md" in readme
+    assert "docs/agents/AGENT_WORKBENCH.md" in readme
     assert "```" not in readme
     assert "Use this page for agent operations" in workbench
     assert "Reader introductions belong in the README" in workbench
@@ -110,7 +110,7 @@ def main() -> int:
     for rel in PROVIDER_ADAPTERS:
         adapter = (ROOT / rel).read_text(encoding="utf-8")
         assert "AGENTS.md" in adapter, rel
-        assert "docs/AGENT_GUIDE.md" in adapter, rel
+        assert "docs/agents/AGENT_GUIDE.md" in adapter, rel
         assert len(adapter.encode("utf-8")) <= ADAPTER_BYTE_CEILING, rel
     for rel in ("CLAUDE.md",):
         assert "@AGENTS.md" in (ROOT / rel).read_text(encoding="utf-8"), rel
@@ -147,8 +147,8 @@ def main() -> int:
     assert "do not close Erdős 1041" in frontier["promotion_boundary"]
 
     deep = DEEP.read_text(encoding="utf-8")
-    assert "[docs/AGENT_WORKBENCH.md](AGENT_WORKBENCH.md)" in deep
-    assert "[CONTRIBUTING.md](../CONTRIBUTING.md)" in deep
+    assert "[docs/agents/AGENT_WORKBENCH.md](AGENT_WORKBENCH.md)" in deep
+    assert "[CONTRIBUTING.md](../../CONTRIBUTING.md)" in deep
 
     skill_router = ROOT / "scripts" / "test_agent_entry.py"
     completed = subprocess.run(

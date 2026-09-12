@@ -68,7 +68,7 @@ def orientation_markdown_budget_bytes(
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
-WAVE_INDEX_PATH = ROOT / "docs" / "WAVE_INDEX.md"
+WAVE_INDEX_PATH = ROOT / "docs/reference" / "WAVE_INDEX.md"
 CLAIMS_PATH = ROOT / "docs" / "claims.json"
 PROBLEMS_PATH = ROOT / "docs" / "problems.json"
 ATLAS_PATH = ROOT / "docs" / "declaration_atlas.json"
@@ -408,6 +408,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         "editorial_architecture": editorial_architecture,
         "editorial_state": editorial_state,
         "source_provenance": {
+            "human_exposition_role": "historical_joint_manuscript",
             "formal_source_ref": claims["release"]["formal_source"]["ref"],
             "main_paper_source_digest": file_digest(MAIN_PAPER_TEX),
             "navigation_projection_identity": (
@@ -420,6 +421,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "machine_readable_paper": "docs/claims.json::machine_readable_paper",
             "exhaustive_declarations": "docs/declaration_atlas.json",
             "mathematical_methodology": "docs/methodology.json",
+            "current_papers": "paper/README.md",
             "human_exposition": "paper/archive/erdos249-257-main-paper.pdf",
             # human_exposition is one digest-bound manuscript, and it is the one
             # the corpus marks retired. An agent that started here could reach
@@ -429,7 +431,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "paper_corpus": "docs/papers/corpus.json",
             "paper_source_sigils": "paper/module-aliases.json",
             "source_by_question": "docs/SOURCE_MAP.md",
-            "development_chronology": "docs/WAVE_INDEX.md",
+            "development_chronology": "docs/reference/WAVE_INDEX.md",
             "supported_root_import": "lean/Erdos249257.lean",
             "supported_root_imports": ["lean/Erdos249257.lean", "lean/ErdosProblems.lean"],
         },
@@ -765,8 +767,8 @@ def render_orientation_markdown(
             "- Exact statuses, statements, paper anchors, declarations, and argument edges:",
             "  [`docs/claims.json`](claims.json)",
             "- Complete eight-problem proof/paper/source/frontier matrix: [`docs/SOURCE_MAP.md#complete-eight-problem-return-matrix`](SOURCE_MAP.md#complete-eight-problem-return-matrix)",
-            "- Development chronology: [`docs/WAVE_INDEX.md`](WAVE_INDEX.md)",
-            "- Human mathematical account: [`erdos249-257-main-paper.pdf`](../paper/archive/erdos249-257-main-paper.pdf)",
+            "- Development chronology: [`docs/reference/WAVE_INDEX.md`](reference/WAVE_INDEX.md)",
+            "- Current mathematical papers: [short papers and longer research records](../paper/README.md)",
             "- Machine form of this page: [`docs/orientation.json`](orientation.json)",
             "",
             "## External corpus registration",

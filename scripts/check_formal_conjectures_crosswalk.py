@@ -32,7 +32,7 @@ from lean_source import checkout_source_relative
 
 ROOT = Path(__file__).resolve().parent.parent
 CROSSWALK_PATH = ROOT / "docs" / "formal_conjectures_crosswalk.json"
-PROJECTION_PATH = ROOT / "docs" / "FORMAL_CONJECTURES_CROSSWALK.md"
+PROJECTION_PATH = ROOT / "docs/verification" / "FORMAL_CONJECTURES_CROSSWALK.md"
 PROBLEM_INDEX_PATH = ROOT / "docs" / "problem_index_source.json"
 
 SCHEMA = "formal-conjectures-crosswalk/1"
@@ -565,7 +565,7 @@ def crosswalk_errors(
         expected_projection = render_markdown(manifest, problem_index)
         if projection_text != expected_projection:
             errors.append(
-                "docs/FORMAL_CONJECTURES_CROSSWALK.md drifted; regenerate with "
+                "docs/verification/FORMAL_CONJECTURES_CROSSWALK.md drifted; regenerate with "
                 "scripts/check_formal_conjectures_crosswalk.py --write"
             )
     return errors

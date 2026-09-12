@@ -179,13 +179,13 @@ PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = (
     * len(json.loads(safe_read_text("docs/papers/corpus.json"))["papers"])
 )
 # Volatile semantic counts live on the audit surfaces, not the compact README.
-CENSUS_SURFACES = ("docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
+CENSUS_SURFACES = ("docs/RESULTS.md", "docs/reference/TRUTH_AUDIT.md")
 INCREMENTAL_BUILD_SURFACES = (
     "README.md",
     # The build contract moved off the front page with the rest of the detail
     # when the README was cut to its reader budget. It is on the document the
     # README names, verbatim, and this contract reads both.
-    "docs/AGENT_WORKBENCH.md",
+    "docs/agents/AGENT_WORKBENCH.md",
     "docs/REPRODUCIBILITY.md",
     ".github/workflows/lean.yml",
     "scripts/lean_fast_build.py",
@@ -219,7 +219,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # 2026-08-15: raised to name the Agent Workbench on the reader surface. The
     # workbench, its typed move grammar, the three-rung invention ladder, and
     # the one landed prospective session were documented in docs/ and in
-    # docs/AGENT_GUIDE.md but appeared nowhere in the README, so a human reviewer arriving
+    # docs/agents/AGENT_GUIDE.md but appeared nowhere in the README, so a human reviewer arriving
     # at the front page could not learn that agent sessions here are append-only
     # ledgers, that stored probes replay, or that a kernel-checked module was
     # derived inside one. Reviewers judge the claim discipline as much as the
@@ -240,7 +240,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # setup-guide pointer and the toolchain sentence are the fix, and they must
     # sit above the command rather than eighteen lines below it. The second is
     # `scripts/verify_claims.py`, which landed with CI enforcement and an entry
-    # in docs/AGENT_GUIDE.md but nothing on the reader surface: the repository's cheapest
+    # in docs/agents/AGENT_GUIDE.md but nothing on the reader surface: the repository's cheapest
     # concrete verb -- follow one claim to its source, receipts, and stopping
     # point, in under a second, with no Lean installed -- was invisible to the
     # human it was built for. Funded with slack, per the note above.
@@ -336,7 +336,7 @@ OPEN_PROPOSITION_PACKET_BYTES = 400
 FIRST_CONTACT_ROUTED_SURFACES = (
     "docs/READING_GUIDE.md",
     "docs/RESULTS.md",
-    "docs/AGENT_WORKBENCH.md",
+    "docs/agents/AGENT_WORKBENCH.md",
     "docs/REPRODUCIBILITY.md",
     "CONTRIBUTING.md",
 )
@@ -872,7 +872,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             # reader's next-read bullet to name the superseded paper, and
             # naming the live per-problem route instead failed it.
             ["per-problem papers", "Exposition PDF", "joint PDF", "docs/papers"],
-            ["docs/AGENT_GUIDE.md"],
+            ["docs/agents/AGENT_GUIDE.md"],
             ["docs/orientation.json"],
             ["docs/SOURCE_MAP.md"],
         ],
@@ -912,7 +912,7 @@ def contains_any(text: str, alternatives: list[str]) -> bool:
 def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     """Keep cache reuse, focused rebuilding, and the cold-clone boundary aligned."""
     require(set(surfaces) == set(INCREMENTAL_BUILD_SURFACES), "cold-clone comprehension invariant")
-    readme = surfaces["README.md"] + "\n" + surfaces["docs/AGENT_WORKBENCH.md"]
+    readme = surfaces["README.md"] + "\n" + surfaces["docs/agents/AGENT_WORKBENCH.md"]
     readme_flat = normalized(readme)
     runbook = surfaces["docs/REPRODUCIBILITY.md"]
     workflow = surfaces[".github/workflows/lean.yml"]
@@ -1513,7 +1513,7 @@ def validate_public_semantic_census(
             ),
             "<!-- END semantic_public_census -->",
         ),
-        "docs/TRUTH_AUDIT.md": (
+        "docs/reference/TRUTH_AUDIT.md": (
             "<!-- BEGIN semantic_public_census -->",
             census_row("mechanically nonrecurring candidates", nonrecurring),
             census_row("classical/prior-art formalisations", classical),
@@ -1630,7 +1630,7 @@ def validate_gateway_opening(paper: str) -> None:
 def validate_cross_agent_entry(agents: str, claude: str) -> None:
     """Keep one shared semantic core with a small Claude-native adapter."""
     require(len(claude.encode("utf-8")) <= CLAUDE_ENTRY_BUDGET_BYTES, "cold-clone comprehension invariant")
-    for path, text in (("docs/AGENT_GUIDE.md", agents), ("CLAUDE.md", claude)):
+    for path, text in (("docs/agents/AGENT_GUIDE.md", agents), ("CLAUDE.md", claude)):
         lowered = normalized(text).casefold()
         for phrase in SELF_APPRAISAL_PHRASES:
             require(phrase not in lowered, f"{path} uses self-appraisal phrase {phrase!r}; route to objective "
@@ -1660,9 +1660,9 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "Lean source checked by the pinned Lean kernel",
         "not an entrypoint into any private development system",
     ):
-        require(contains_any(agents, [token]), f"docs/AGENT_GUIDE.md lost shared invariant {token!r}")
+        require(contains_any(agents, [token]), f"docs/agents/AGENT_GUIDE.md lost shared invariant {token!r}")
     require("@AGENTS.md" in claude, "Claude must import the shared compact entry")
-    require("docs/AGENT_GUIDE.md" in claude, "Claude lost the deep-guide route")
+    require("docs/agents/AGENT_GUIDE.md" in claude, "Claude lost the deep-guide route")
     require("## First read" not in claude, "Claude duplicated the shared manual")
 
 
@@ -3124,7 +3124,7 @@ def run_quick_check() -> int:
         {path: read(path) for path in CENSUS_SURFACES},
     )
     validate_gateway_opening(read(GATEWAY_PAPER))
-    validate_cross_agent_entry(read("docs/AGENT_GUIDE.md"), read("CLAUDE.md"))
+    validate_cross_agent_entry(read("docs/agents/AGENT_GUIDE.md"), read("CLAUDE.md"))
     validate_incremental_build_contract(
         {path: read(path) for path in INCREMENTAL_BUILD_SURFACES}
     )
@@ -3216,7 +3216,7 @@ def main(argv: list[str] | None = None) -> int:
         {path: read(path) for path in CENSUS_SURFACES},
     )
     validate_gateway_opening(read(GATEWAY_PAPER))
-    validate_cross_agent_entry(read("docs/AGENT_GUIDE.md"), read("CLAUDE.md"))
+    validate_cross_agent_entry(read("docs/agents/AGENT_GUIDE.md"), read("CLAUDE.md"))
     validate_incremental_build_contract(
         {path: read(path) for path in INCREMENTAL_BUILD_SURFACES}
     )

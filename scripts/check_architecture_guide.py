@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 GUIDE = ROOT / "docs/ARCHITECTURE.md"
 README = ROOT / "README.md"
-AGENTS = ROOT / "docs/AGENT_GUIDE.md"
+AGENTS = ROOT / "docs/agents/AGENT_GUIDE.md"
 PAPER_README = ROOT / "paper" / "README.md"
 SYSTEMS_PAPER = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.tex"
 SYSTEMS_PDF = ROOT / "paper" / "systems" / "claim-faithful-publication-systems-paper.pdf"
