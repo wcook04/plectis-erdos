@@ -1052,15 +1052,46 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
             {"path": relative, "sha256": _sha256(data), "bytes": len(data)}
             for relative, data in sorted(files.items())
         ],
+        "validation": {
+            "standalone_manifest_integrity": {
+                "manifest": "package.json::files",
+                "scope": (
+                    "A recipient can compare each bundled file's byte count and SHA-256 "
+                    "without the producer checkout. This does not validate return semantics, "
+                    "route-memory currency, or Git ancestry."
+                ),
+            },
+            "repository_backed": {
+                "context": (
+                    "Use Python 3.11 or newer. CHECKOUT must be a public plectis-erdos checkout "
+                    "containing the return's starting and proposed commits, when proposed_commit "
+                    "is present. Its current canonical route-memory bytes must match the digest "
+                    "recorded by the package sidecar; stale or different route context fails "
+                    "closed. PACKAGE_DIR is this extracted package. Replace the example "
+                    "paths below with the absolute paths on the recipient's machine."
+                ),
+                "setup": [
+                    'CHECKOUT="/absolute/path/to/plectis-erdos"',
+                    'PACKAGE_DIR="/absolute/path/to/return-package"',
+                ],
+                "command": (
+                    'python3 "$CHECKOUT/scripts/validate_research_return.py" '
+                    '"$PACKAGE_DIR/return.json" --require-submitted --check-git '
+                    '--require-route-memory-receipt '
+                    '--route-memory-receipt "$PACKAGE_DIR/route-memory.json"'
+                ),
+            },
+        },
         "github_intake": {
             "issue_form": ".github/ISSUE_TEMPLATE/research_return.yml",
             "pull_request_artifact": "return.json",
             "pull_request_route_memory_receipt": "route-memory.json",
             "accepted_receipt_directory": "docs/research-commons/returns",
             "local_validation": (
-                "python3 scripts/validate_research_return.py return.json "
-                "--require-submitted --check-git --require-route-memory-receipt "
-                "--route-memory-receipt route-memory.json"
+                'python3 "$CHECKOUT/scripts/validate_research_return.py" '
+                '"$PACKAGE_DIR/return.json" --require-submitted --check-git '
+                '--require-route-memory-receipt '
+                '--route-memory-receipt "$PACKAGE_DIR/route-memory.json"'
             ),
         },
         "public_guidance": {
