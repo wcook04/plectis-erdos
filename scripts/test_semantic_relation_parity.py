@@ -87,3 +87,9 @@ def test_relation_basis_and_future_boundary_loss_fail_closed() -> None:
             corpus, zones=missing_boundary, relation_lenses=relation_lenses
         )
     )
+
+
+if __name__ == "__main__":
+    test_reordered_authored_sources_and_projection_preserve_parity()
+    test_relation_basis_and_future_boundary_loss_fail_closed()
+    print("semantic relation parity: 2 tests passed")
