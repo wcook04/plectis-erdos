@@ -14,7 +14,7 @@ evidence, not proof authority for this release.
 - **Official route:** the [author-hosted preprint PDF](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf),
   dated 23 May 2019 in its TeX metadata.
 - **Bound artifact:**
-  [`duverney-tachiya-2019-lambert.pdf`](duverney-tachiya-2019-lambert.pdf),
+  `duverney-tachiya-2019-lambert.pdf`,
   SHA-256 `63e117c607868089e4ac6d41dc330ad742b3721f062c52d8ca92070425ae3f5e`;
   81,546 bytes; 11 PDF pages. It was retrieved from the author route and
   read directly.

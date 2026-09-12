@@ -15,7 +15,7 @@ claim-boundary evidence, not proof authority for this release.
   and its [v4 PDF](https://arxiv.org/pdf/2406.17593v4). The v4 source is dated
   14 July 2025; the journal DOI identifies the published article.
 - **Bound artifact:**
-  [`kovac-tao-2025-ahmes-series.pdf`](kovac-tao-2025-ahmes-series.pdf),
+  `kovac-tao-2025-ahmes-series.pdf`,
   SHA-256 `5ef233db5bf94a072de7e094e6d42864ba2d1f639e7cb951c02b4cf1d3d52b57`;
   550706 bytes; 28 PDF pages. It was retrieved from the arXiv v4 PDF route
   and read directly.

@@ -14,7 +14,7 @@ evidence, not proof authority for this release.
 - **Bound artifact:** [arXiv:math/0604312v1](https://arxiv.org/abs/math/0604312v1),
   submitted 13 April 2006; [PDF](https://arxiv.org/pdf/math/0604312v1).
 - **Local artifact:**
-  [`postelmans-van-assche-2007-q-zeta.pdf`](postelmans-van-assche-2007-q-zeta.pdf),
+  `postelmans-van-assche-2007-q-zeta.pdf`,
   SHA-256 `1687777a636088e1065fd7de469b8cc163f3cb146198419388d9a72eab785df9`;
   292,893 bytes; 34 PDF pages. The complete extracted text was read and
   theorem/proof/reference pages were visually checked.

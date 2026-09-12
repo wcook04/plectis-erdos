@@ -14,7 +14,7 @@ authority for this release, and it does not solve Erdős #243.
 - **Official route:** the [P. Erdős archive PDF](https://users.renyi.hu/~p_erdos/1964-19.pdf).
   This is the scanned source read for the record.
 - **Bound artifact:**
-  [`erdos-straus-1964-ahmes-series.pdf`](erdos-straus-1964-ahmes-series.pdf),
+  `erdos-straus-1964-ahmes-series.pdf`,
   SHA-256
   `349d491423317417b6a2ecaa6799aba5923b514d52f5f6bd4e343249f90836d9`;
   286458 bytes; 5 pages, printed pp. 129–133. It remains a local

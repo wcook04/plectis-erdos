@@ -41,7 +41,7 @@ For every `m ≥ 3`, the source theorem
 with the corresponding divisibility event.  Rationality forces eventual unit
 carries, while eventual unit carries conversely make the normalized
 strict-factorial successors stationary.  The exact endpoint sources are in
-[`FactorialZeroPlateau.lean`](../../ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L856).
+[`FactorialZeroPlateau.lean`](../../../lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L856).
 
 The missing input is a cofinal producer for either equivalent right-hand
 side.  Exact misses or nonunit carries at finitely many computed indices can
@@ -57,18 +57,18 @@ natural friction.  The runnable
 [`Problem1041.lean`](Problem1041.lean) remains on the repository's registered
 Lean modules; the stronger research-corpus family is linked here rather than
 restated or silently promoted.  Its Lean theorem
-[`exists_two_roots_dist_sum_le_two_mul_geomMean`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L289)
+[`exists_two_roots_dist_sum_le_two_mul_geomMean`](../../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L289)
 says that logarithmic critical balance, together with
 `r^n = ∏ k, ‖c - z k‖`, selects two distinct roots whose distances from `c`
 sum to at most `2r`.  Its hard algebraic core is
-[`two_add_le_two_of_disk_inverse_balance`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L160):
+[`two_add_le_two_of_disk_inverse_balance`](../../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L160):
 reciprocal balance gives `e ≤ (N-1)δ`; a hypothetical `δ+e>2` turns the disk
 inverse-square estimate into `N < x + (N-1)/x` for
 `1 ≤ x = e/δ ≤ N-1`, contradicting the elementary quadratic bound.
 
 The evidence split is deliberate.  Lean checks that algebraic implication and
 the geometric-mean pair selector.  The ordinary proof in
-[`GlobalCriticalTwoNearestBudget.md`](../../research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md)
+[`GlobalCriticalTwoNearestBudget.md`](../../../research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md)
 assembles the full polynomial statement: at every critical point of a monic
 polynomial whose roots lie in the closed unit disk, the two nearest root
 occurrences have total Euclidean distance at most `2`.  The consumer does not
@@ -77,9 +77,9 @@ misstate that complete assembly as one Lean theorem.
 The same source forest rules out the tempting completion.  An exact quintic
 has a unique nearest straight spoke that exits `{|f|<1}`, and an exact cubic
 has an escaping midpoint on every straight root-pair segment; see
-[`nearestSpoke_unique_nearest_spoke_escapes`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L428)
+[`nearestSpoke_unique_nearest_spoke_escapes`](../../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L428)
 and
-[`allStraightCubic_every_pair_midpoint_escapes`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L569).
+[`allStraightCubic_every_pair_midpoint_escapes`](../../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L569).
 Thus the Euclidean budget is solved, but star-shapedness, nearest-root spokes,
 and a universal straight chord are not available.  The remaining problem is
 to select contained curved descending branches, control their turning, and
@@ -132,7 +132,7 @@ exact `C/D/E` dynamics: `C (n + 1) + D n = a n * C n`,
 `D (n + 1) = a n * D n`, and `E n` is the centered state.  Strict centering,
 a uniform lower bound on `E`, and division-free normalized vanishing yield
 eventual `E = 0`.  Its source is
-[`ReciprocalTailRigidity.lean`](../../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265).
+[`ReciprocalTailRigidity.lean`](../../../lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265).
 
 The unbounded and mixed-sign branches are not discharged by this wrapper:
 the route still needs an actual-orbit producer for the lower-bound/vanishing
@@ -147,7 +147,7 @@ natural tail `C`, the centered step equation, and normalized vanishing; its
 additional premise is summability of the normalized negative mass.  The
 conclusion is eventual Sylvester recurrence, not an unconditional recurrence
 for reciprocal-tail data.  Its source is
-[`SparseResetRecovery.lean`](../../ErdosProblems/Erdos243/SparseResetRecovery.lean#L175).
+[`SparseResetRecovery.lean`](../../../lean/ErdosProblems/Erdos243/SparseResetRecovery.lean#L175).
 
 The missing producer is correspondingly stronger: neither the mixed-sign
 analysis nor a prime-specific negative-mass supply proves the required
@@ -169,7 +169,7 @@ and none should be read as a universal solution of #257.
 The exact wrapper is
 `Erdos249257.ExternalVerification.irrational_erdosSum_full_support`, with the
 single hypothesis `b : ℕ` and `2 ≤ b`. Its source is
-[`CertificateKernel.lean`](../../Erdos249257/CertificateKernel.lean#L8328).
+[`CertificateKernel.lean`](../../../lean/Erdos249257/CertificateKernel.lean#L8328).
 The hard mechanism is a completed weighted divisor-block certificate: a
 Bertrand/CRT first block, divisor-pair averaging in a middle window, and
 explicit tail closure. The conclusion is for the full-support
@@ -183,7 +183,7 @@ The exact wrapper is
 It requires `b : ℕ` with `2 ≤ b`, `A : Set ℕ` with `A.Infinite`,
 `A.Pairwise Nat.Coprime`, and
 `Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / a))`. Its source is
-[`CertificateKernel.lean`](../../Erdos249257/CertificateKernel.lean#L10776).
+[`CertificateKernel.lean`](../../../lean/Erdos249257/CertificateKernel.lean#L10776).
 Adaptive CRT absorbs small support elements at residue zero, block sizes absorb
 their deterministic hits, and summable reciprocal mass controls the strays.
 The pairwise-coprime and summability hypotheses are essential: this is not an
@@ -196,7 +196,7 @@ The exact wrapper is
 It requires `b m N₀ : ℕ`, `γ : ℕ → ℚ`, `2 ≤ b`, `0 < m`, pointwise
 `0 ≤ γ n`, eventual periodicity `γ (n + m) = γ n` for every `n ≥ N₀`, and
 some `a` with `N₀ ≤ a`, `0 < a`, and `0 < γ a`. Its source is
-[`CertificateKernel.lean`](../../Erdos249257/CertificateKernel.lean#L12811).
+[`CertificateKernel.lean`](../../../lean/Erdos249257/CertificateKernel.lean#L12811).
 The mechanism clears one common denominator on the prefix-plus-period window,
 reduces to an eventually-periodic natural weight, and applies the weighted
 certificate argument. Mixed-sign weights and arbitrary supports are outside
@@ -215,7 +215,7 @@ frame and core-times-petal rays; and summable reciprocal petal mass. The
 selector requires, for every `K > 0`, a starting point `N` whose first `K`
 support-coefficient block is divisible by `2^K` and whose binary coefficient
 tail is at most `16`. The source route is
-[`SupportSunflowerDichotomy.lean`](../../Erdos249257/SupportSunflowerDichotomy.lean#L540).
+[`SupportSunflowerDichotomy.lean`](../../../lean/Erdos249257/SupportSunflowerDichotomy.lean#L540).
 Its hard mechanism is the finite-core divisor/frame decomposition and bounded
 petal tail budget, but the selector is not proved. This is therefore a
 conditional support route, not an unconditional family, universal #257 result,
@@ -234,7 +234,7 @@ The source route is split across:
 
 - [`Erdos249257/DiagonalFreshLossBridge.lean`](../../../lean/Erdos249257/DiagonalFreshLossBridge.lean), which defines the actual power-two LCM orbit, the normalized odd-rank raw block, and the bridge identities;
 - [`Erdos249257/TotientActualLcmOrbitSeparation.lean`](../../../lean/Erdos249257/TotientActualLcmOrbitSeparation.lean), which gives the exact tail-difference, remainder, half-word-band, signed-margin, and conditional irrationality route;
-- [`ExternalVerification/Solution.lean`](../../verification/ExternalVerification/Solution.lean), which exposes the Comparator wrapper used by the portfolio consumer.
+- [`ExternalVerification/Solution.lean`](../../../verification/ExternalVerification/Solution.lean), which exposes the Comparator wrapper used by the portfolio consumer.
 
 The hard step is the reduction from the orbit
 `R_(2H) - R_H` to the normalized odd-rank raw block, followed by the
@@ -330,7 +330,7 @@ priority claim. The finite block alphabet and rank-two kernel routes remain
 supporting or contrary evidence rather than extra portfolio families.
 
 For the configured interfaces and their recorded evidence boundaries, see
-[`verification/comparator.json`](../../verification/comparator.json) and the
+[`verification/comparator.json`](../../../verification/comparator.json) and the
 exact source consumers above. The #249, #251, #257, and #269 examples are
 deliberately separate: #249 consumes an actual-LCM separation supply, #251
 consumes the dyadic-tail denominator classifier and an actual-prime mismatch

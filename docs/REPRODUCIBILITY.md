@@ -30,7 +30,26 @@ the current checkout is hundreds of megabytes while historical generated
 projections are much larger; eagerly transferring every obsolete body does not
 strengthen any proof or release check.
 
-Run the following static, no-Lean first impression. These commands use the
+### Try one claim without Lean
+
+After cloning, run:
+
+```sh
+python3 scripts/verify_claims.py --claim eb_full_support
+```
+
+The output shows the published statement, its declaration and source line,
+the selected Comparator interface, the recorded release, and the claim's
+limits. For this example, the status is **known mathematics formalised here**.
+The command checks that those records resolve; it does not run Lean or prove
+the statement again. [Section 2](#2-reproduce-the-pinned-lean-environment)
+gives the proof-build route.
+
+For the full claim inventory, use `python3 scripts/verify_claims.py --verify-all`.
+
+### Check the clone's navigation and metadata
+
+Run the following static, no-Lean checks. These commands use the
 committed Python and JSON surfaces and do not need Lake, elan, or Mathlib:
 
 ```sh
@@ -41,15 +60,6 @@ python3 scripts/build_module_graph.py --check
 python3 scripts/refresh_source_coordinates.py --check
 python3 scripts/test_downstream_example_contract.py
 python3 scripts/query_corpus.py --tour --format card
-```
-
-To follow one public claim to its declaration, paper, receipts, and stopping
-point without installing Lean, run the tracked verifier; `--verify-all`
-re-resolves every claim locator:
-
-```sh
-python3 scripts/verify_claims.py --claim eb_full_support
-python3 scripts/verify_claims.py --verify-all
 ```
 
 The quick check is a bounded navigation check, not a proof build. It confirms
@@ -78,6 +88,19 @@ exact paper/source and frontier joins described in
 [`docs/agents/SEMANTIC_COMPILER.md`](agents/SEMANTIC_COMPILER.md).
 This route is navigation evidence only: the Lean kernel remains proof
 authority and every problem-level open boundary remains open.
+
+### Check a documentation change
+
+For a small documentation contribution, check the reader routes and their
+links before opening a pull request:
+
+```sh
+python3 scripts/test_human_first_contact.py
+```
+
+For a tooling change, also run that tool's test and include the result in the
+pull request. Changes to mathematical statements or Lean proofs require the
+corresponding proof checks below.
 
 ## 2. Reproduce the pinned Lean environment
 

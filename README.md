@@ -26,6 +26,11 @@ problem-by-problem evidence boundary, including what is still missing.
 To continue from where I left off, see [CONTRIBUTING](CONTRIBUTING.md).
 Use a coding agent if you like. This is the part I am most excited about.
 
+To try the evidence tools, [follow one claim from its statement to the source](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
+That route needs Git and Python, with no Lean installation or model account.
+The clone is hundreds of megabytes; the separate proof-build route downloads
+a larger Lean and Mathlib environment.
+
 ## Why this exists
 
 I prioritised expository quality and a collaborative structure over trying to

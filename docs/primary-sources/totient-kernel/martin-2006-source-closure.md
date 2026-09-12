@@ -14,7 +14,7 @@ evidence, not proof authority for this release.
   public retrieval routes checked here. The record also exposes the arXiv
   DOI [10.48550/arXiv.math/0603053](https://doi.org/10.48550/arXiv.math/0603053).
 - **Bound artifact:**
-  [`martin-2006-simultaneous-phi-inequalities.pdf`](martin-2006-simultaneous-phi-inequalities.pdf),
+  `martin-2006-simultaneous-phi-inequalities.pdf`,
   SHA-256
   `8d967dc3018c325cf3b4a099fa916e369f4b9a915bf2ccad398d359e3b4f0705`;
   105369 bytes; 8 pages. The copy was retrieved from the official arXiv PDF

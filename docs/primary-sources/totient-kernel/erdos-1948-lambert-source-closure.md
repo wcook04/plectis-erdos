@@ -13,7 +13,7 @@ claim-boundary evidence, not proof authority for this release.
   **12** (1948), pp. 63--66. The [official author-hosted PDF](https://users.renyi.hu/~p_erdos/1948-04.pdf)
   is the authoritative public retrieval route checked here.
 - **Bound artifact:**
-  [`erdos-1948-lambert.pdf`](erdos-1948-lambert.pdf), SHA-256
+  `erdos-1948-lambert.pdf`, SHA-256
   `f263898827e415f8027be8d2082e6e24a13d2cc9fb006076baab282272ed21e3`;
   603601 bytes; 4 scanned PDF pages. The copy was retrieved from the
   official route and read directly.

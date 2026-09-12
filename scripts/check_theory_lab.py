@@ -51,6 +51,15 @@ ATLAS = ROOT / "docs" / "declaration_atlas.json"
 CORPUS = ROOT / "docs" / "semantic_corpus.json"
 LAB = ROOT / "docs" / "theory_lab.json"
 
+# A documented blob-filtered clone has the history but may still need to
+# retrieve its old Lean source. Keep local Git commands short while allowing
+# the whole-tree holdout search time to fetch those public blobs.
+HISTORICAL_SOURCE_TIMEOUT_SECONDS = 300
+
+
+class HistoryCheckUnavailable(RuntimeError):
+    """Historical source could not be read; absence has not been established."""
+
 sys.path.insert(0, str(ROOT / "scripts"))
 import validation_singleflight as singleflight  # noqa: E402
 from build_theory_lab import (  # noqa: E402
@@ -151,7 +160,10 @@ def safe_read_text(path: Path) -> str:
             os.close(descriptor)
 
 
-def git(*args: str) -> tuple[int, str]:
+def git(
+    *args: str,
+    timeout_seconds: int = singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+) -> tuple[int, str]:
     proc = subprocess.run(
         ("git",) + args,
         cwd=str(ROOT),
@@ -159,9 +171,31 @@ def git(*args: str) -> tuple[int, str]:
         text=True,
         check=False,
         env=singleflight.command_environment(),
-        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        timeout=timeout_seconds,
     )
-    return proc.returncode, proc.stdout
+    return proc.returncode, proc.stdout if proc.returncode in (0, 1) else proc.stderr
+
+
+def holdout_contains_target(target: str, cut: str) -> bool:
+    """Search the complete historical Lean tree, failing closed on Git errors."""
+    try:
+        code, detail = git(
+            "grep", "-F", "-l", "-e", target, cut, "--", "*.lean",
+            timeout_seconds=HISTORICAL_SOURCE_TIMEOUT_SECONDS,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise HistoryCheckUnavailable(
+            f"historical Lean source at {cut[:12]} was not available within "
+            f"{HISTORICAL_SOURCE_TIMEOUT_SECONDS}s. A filtered clone may need "
+            "to download historical blobs; check access to the Git remote and "
+            "rerun scripts/check_theory_lab.py. Holdout absence is unverified."
+        ) from error
+    if code not in (0, 1):
+        raise HistoryCheckUnavailable(
+            f"historical Lean search at {cut[:12]} failed (git exit {code}): "
+            f"{detail.strip()[:500]}. Holdout absence is unverified."
+        )
+    return code == 0
 
 
 def main() -> int:
@@ -405,6 +439,7 @@ def main() -> int:
                 )
 
     # 8  holdouts do not leak
+    history_errors: list[str] = []
     for item in items:
         target = item.get("target")
         cut = item.get("cut_commit")
@@ -434,8 +469,12 @@ def main() -> int:
                     "of HEAD nor of its recorded introducing commit"
                 )
                 continue
-        code, out = git("grep", "-l", target, cut, "--", "*.lean")
-        if code == 0 and out.strip():
+        try:
+            leaked = holdout_contains_target(target, cut)
+        except HistoryCheckUnavailable as error:
+            history_errors.append(f"benchmark item {iid}: {error}")
+            continue
+        if leaked:
             failures.append(
                 f"benchmark item {iid} LEAKS: {target} is already present at cut {cut[:8]}"
             )
@@ -518,11 +557,18 @@ def main() -> int:
                 f"mechanism={bucket['mechanism_recovered']}"
             )
 
+    for error in history_errors:
+        print(f"  ENVIRONMENT {error}", file=sys.stderr)
+
     if failures:
         print(f"\ncheck_theory_lab: {len(failures)} contract failure(s)", file=sys.stderr)
         for failure in failures:
             print(f"  FAIL {failure}", file=sys.stderr)
         return 1
+
+    if history_errors:
+        print("check_theory_lab: historical source check incomplete", file=sys.stderr)
+        return 2
 
     print("\ncheck_theory_lab: contract satisfied")
     return 0

@@ -17,7 +17,7 @@ release.
 - **Official routes:** [Cambridge chapter DOI](https://doi.org/10.1017/CBO9780511897184.009)
   and [Renyi-hosted scan](https://users.renyi.hu/~p_erdos/1988-22.pdf).
 - **Bound artifact:**
-  [`erdos-1988-problems-and-results.pdf`](erdos-1988-problems-and-results.pdf),
+  `erdos-1988-problems-and-results.pdf`,
   SHA-256 `b2bfc375d04b65332d6b8817633ff3968283a3f33c1f1ace366b03ac9fab8c88`;
   553,229 bytes; eight PDF pages, printed pp. 102–109. It was retrieved from
   the Renyi-hosted route and read directly.

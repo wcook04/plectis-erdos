@@ -23,7 +23,7 @@ release.
   (HTTP 403), so this record does not pretend that the bound copy is the
   journal PDF.
 - **Bound artifact:**
-  [`luca-tachiya-2014-periodic.pdf`](luca-tachiya-2014-periodic.pdf),
+  `luca-tachiya-2014-periodic.pdf`,
   SHA-256 `0acc2bf11481a63fa37bb6fd726f85da7d090e4ab7419f73fffb5884838b24cf`;
   54,900 bytes; 13 PDF pages. The artifact was retrieved from the RIMS route,
   its full extracted text was read, and theorem/proof/reference pages were

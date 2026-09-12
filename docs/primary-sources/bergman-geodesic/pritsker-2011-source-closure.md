@@ -14,7 +14,7 @@ authority.
 - **Official retrieval routes:** [arXiv record](https://arxiv.org/abs/1307.6196)
   and [publisher DOI](https://doi.org/10.1112/blms/bdq122).
 - **Checked artifact:**
-  [`pritsker-2011-inequalities-green-potentials.pdf`](pritsker-2011-inequalities-green-potentials.pdf),
+  `pritsker-2011-inequalities-green-potentials.pdf`,
   SHA-256
   `d256af21c33f92e155e9a7926c18f9c7219cc8839036a8cc4c5708d70f17094f`;
   15 pages. It is present in the working tree only and is excluded from the
