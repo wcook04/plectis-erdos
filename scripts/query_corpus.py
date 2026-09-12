@@ -7339,6 +7339,30 @@ def semantic_cell(
         packet = route_packet(handle)
         route = packet["route"]
         programme = packet.get("programme")
+        if packet["kind"] == "problem_route":
+            # A semantic slice embeds a route beside its open-proposition
+            # witnesses. Keep every family, statement boundary and declaration,
+            # but expand repetitive commands and paper-anchor lists on demand.
+            route = {
+                **route,
+                "result_families": [
+                    {
+                        **{key: value for key, value in family.items()
+                           if key not in {"declaration_routes", "paper_route"}},
+                        "paper_route": {
+                            key: value for key, value in family.get("paper_route", {}).items()
+                            if key != "matching_anchors"
+                        },
+                    }
+                    for family in route.get("result_families", [])
+                ],
+                "detail_omission": {
+                    "fields": ["result_families[].declaration_routes",
+                               "result_families[].paper_route.matching_anchors"],
+                    "reason": "repeated_expansion_detail_in_embedded_route",
+                    "expansion_command": f"python3 scripts/query_corpus.py --route {handle}",
+                },
+            }
         content = {
             "route": route,
             "programme": programme,

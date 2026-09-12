@@ -302,9 +302,11 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "Attribution and pull requests are standard practice",
     ),
     "real_public_routes": (
-        "Erdos249257.lean",
-        "ErdosProblems.lean",
+        "docs/ARCHITECTURE.md",
+        "lean/Erdos249257.lean",
+        "lean/ErdosProblems.lean",
         "docs/claims.json",
+        "docs/verification/PALOMAR_QUALIFICATION.md",
         "scripts/check_release.py",
         ".github/workflows/lean.yml",
         "docs/research-commons/CONTRIBUTIONS.md",
@@ -401,6 +403,10 @@ def validate_systems_paper(text: str) -> None:
         in text
     , "systems paper lost its plain architecture title")
     require(
+        r"\newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}" in text,
+        "systems paper repository links do not use the canonical public repository",
+    )
+    require(
         text.count("% BEGIN generated_semantic_coverage_macros") == 1
         and text.count("% END generated_semantic_coverage_macros") == 1,
         "systems paper lost its semantic-corpus builder region",
@@ -430,6 +436,10 @@ def validate_systems_paper(text: str) -> None:
     require("certified_kill_instances" not in compact, (
         "systems paper regressed from public mathematical meaning to an internal claim id"
     ))
+    for target in re.findall(r"\\repolink\{([^{}]+)\}\{", text):
+        require((ROOT / target).is_file(), (
+            f"systems paper links to missing repository file {target}"
+        ))
     require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
 
 

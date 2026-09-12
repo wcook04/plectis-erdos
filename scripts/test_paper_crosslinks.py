@@ -12,15 +12,15 @@ PAPER = ROOT / "paper"
 
 CORE = {
     "claim-faithful-publication-systems-paper.pdf": (
-        "claim-faithful-publication-systems-paper.tex",
+        "systems/claim-faithful-publication-systems-paper.tex",
         {"systems-lifecycle", "systems-public", "systems-trust", "systems-scaling"},
     ),
     "cold-clone-to-proof-receipt.pdf": (
-        "cold-clone-to-proof-receipt.tex",
+        "systems/cold-clone-to-proof-receipt.tex",
         {"cold-clone-problem", "cold-clone-authority", "cold-clone-limits"},
     ),
     "open-source-mathematics-strategy.pdf": (
-        "open-source-mathematics-strategy.tex",
+        "systems/open-source-mathematics-strategy.tex",
         {
             "strategy-protocol",
             "strategy-credit",
@@ -32,14 +32,14 @@ CORE = {
 }
 
 NOTES = (
-    "erdos-68-factorial-denominator-irrationality.tex",
-    "erdos-243-reciprocal-tail-rigidity.tex",
-    "erdos-249-binary-totient-series.tex",
-    "erdos-251-prime-gap-dyadic-series.tex",
-    "erdos-257-mersenne-support-subseries.tex",
-    "erdos-269-three-prime-running-lcm.tex",
-    "erdos-1041-lemniscate-newton-flow.tex",
-    "erdos-1049-rational-base-lambert.tex",
+    "68/erdos-68-factorial-denominator-irrationality.tex",
+    "243/erdos-243-reciprocal-tail-rigidity.tex",
+    "249/erdos-249-binary-totient-series.tex",
+    "251/erdos-251-prime-gap-dyadic-series.tex",
+    "257/erdos-257-mersenne-support-subseries.tex",
+    "269/erdos-269-three-prime-running-lcm.tex",
+    "1041/erdos-1041-lemniscate-newton-flow.tex",
+    "1049/erdos-1049-rational-base-lambert.tex",
 )
 
 

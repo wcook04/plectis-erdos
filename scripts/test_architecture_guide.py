@@ -192,6 +192,20 @@ def main() -> int:
             ),
             "self-authoring validation ceiling inflated",
         ),
+        (
+            systems_paper.replace(
+                "https://github.com/wcook04/plectis-erdos",
+                "https://github.com/wcook04/plectis-lean-erdos249-257",
+            ),
+            "repository links use a retired repository name",
+        ),
+        (
+            systems_paper.replace(
+                r"\repolink{docs/ARCHITECTURE.md}{docs/ARCHITECTURE.md}",
+                r"\repolink{ARCHITECTURE.md}{ARCHITECTURE.md}",
+            ),
+            "inspection route points to a missing repository file",
+        ),
     )
     for mutated, label in paper_mutations:
         assert mutated != systems_paper, (

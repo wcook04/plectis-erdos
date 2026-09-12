@@ -962,13 +962,29 @@ def validate_natural_language_search() -> None:
         "Which Erdos 257 results are Lean-checked and what remains open?"
     )
     assert not query_corpus.is_repository_overview_query(problem_status_question)
-    problem_status = query_corpus.semantic_slice_packet(
-        problem_status_question, query_corpus.DEFAULT_LIMIT
-    )
+    problem_status = query("--ask", problem_status_question, "--format", "json")
     assert problem_status["kind"] == "semantic_slice"
     assert problem_status["query_interpretation"]["problem_constraint"][
         "erdos_number"
     ] == 257
+    embedded_route = next(
+        cell["content"]["route"] for cell in problem_status["semantic_cells"]
+        if cell["kind"] == "reading_route"
+    )
+    full_route = query_corpus.route_packet("erdos_257")["route"]
+    assert [row["id"] for row in embedded_route["result_families"]] == [
+        row["id"] for row in full_route["result_families"]
+    ]
+    for compact_family, full_family in zip(
+        embedded_route["result_families"], full_route["result_families"]
+    ):
+        for key in ("summary", "boundary", "declarations"):
+            assert compact_family.get(key) == full_family.get(key)
+    assert "declaration_routes" in full_route["result_families"][0]
+    assert "matching_anchors" in full_route["result_families"][0]["paper_route"]
+    assert embedded_route["detail_omission"]["expansion_command"].endswith(
+        "--route erdos_257"
+    )
     problem_status_card = run(
         "--ask", problem_status_question, "--format", "card"
     )
