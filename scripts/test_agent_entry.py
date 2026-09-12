@@ -64,6 +64,16 @@ ROUTE_CASES = {
         "erdos-research-return",
     ),
     "prepare a PR and submit pull request": ("submit_change", "submit-pull-request"),
+    "I want to make my first useful contribution but I do not know where to start": (
+        "submit_change",
+        "submit-pull-request",
+    ),
+    "How can I contribute?": ("submit_change", "submit-pull-request"),
+    "I would like to start contributing": ("submit_change", "submit-pull-request"),
+    "I want to prove this Lean theorem as my first contribution": (
+        "bounded_research",
+        "mine-open-problem",
+    ),
     "install skills into Codex": ("install_skills", "install-clone-skills"),
     "install the clone-local skills": ("install_skills", "install-clone-skills"),
     "improve cold clone agent entry and skill discovery": (

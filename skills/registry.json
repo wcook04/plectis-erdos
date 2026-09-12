@@ -425,6 +425,10 @@
       "id": "submit_change",
       "title": "Prepare a contribution or pull request",
       "task_cues": [
+        "first contribution",
+        "first useful contribution",
+        "start contributing",
+        "how can I contribute",
         "submit pull request",
         "open pull request",
         "pull request",
@@ -442,8 +446,8 @@
         "submit-pull-request"
       ],
       "read": [
-        "skills/submit-pull-request/SKILL.md",
-        "CONTRIBUTING.md"
+        "CONTRIBUTING.md",
+        "skills/submit-pull-request/SKILL.md"
       ],
       "commands": [],
       "boundary": "Local preparation is allowed; pushing or opening the pull request requires explicit authorisation."
