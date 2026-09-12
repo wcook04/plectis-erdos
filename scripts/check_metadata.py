@@ -20,7 +20,9 @@ ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 
 def _tool_search_path() -> str:
     """Resolve optional tools without consulting the caller's ambient PATH."""
-    interpreter_directory = str(Path(sys.executable).resolve().parent)
+    # Venv Python is commonly a symlink to the base interpreter. Resolve the
+    # directory, not the executable, so tools installed beside it stay visible.
+    interpreter_directory = str(Path(sys.executable).parent.resolve())
     return os.pathsep.join(
         (interpreter_directory, singleflight.command_environment()["PATH"])
     )
@@ -34,7 +36,7 @@ def find_tool(executable: str) -> str | None:
 def execution_environment(executable: str) -> dict[str, str]:
     """Keep the pinned validator discoverable without inheriting ambient state."""
     environment = singleflight.command_environment()
-    executable_directory = str(Path(executable).resolve().parent)
+    executable_directory = str(Path(executable).parent.resolve())
     environment["PATH"] = os.pathsep.join(
         (executable_directory, environment["PATH"])
     )
