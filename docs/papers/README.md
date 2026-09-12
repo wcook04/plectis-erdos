@@ -12,6 +12,22 @@ companions are searchable here while their hosted publication remains pending.
 
 This checkout carries 20 active papers and 1 retired provenance paper. Pick the question you are actually asking:
 
+## Choose a reading path
+
+For the project idea and its methods, start with a system paper:
+
+- [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md)
+- [From a Cold Clone to a Proof Receipt](full-text/cold-clone-to-proof-receipt.md)
+- [From Spare Compute to Cumulative Mathematics](full-text/open-source-mathematics-strategy.md)
+- [Plectis: What a Stranger Can Check](full-text/plectis-public-system.md)
+
+For a specific mathematical question, go straight to the [problem portfolio](#problem-portfolio).
+
+Start with a paper's abstract and introduction for the question and
+main idea. Follow the section links below for the argument and its
+limits, or open the PDF or LaTeX source for the full detail. You can
+enter at any of these points.
+
 ## Mathematical signal first
 
 This reader order is the existing Palomar `candidate_ranking`, joined
@@ -227,6 +243,8 @@ not currently earn scarce first-contact attention.
 - `root_retention`: `Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
 - `rational_base_tail_recurrence`: `Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
 
+<a id="problem-portfolio"></a>
+
 ## Problem portfolio (complete 21-paper inventory)
 
 The active mathematical notes form a growing problem-by-problem portfolio: Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. Start with the named problem, then use its note for the exact checked results and remaining obligation. Retired combined manuscripts are provenance, not the portfolio's front door.
@@ -389,7 +407,7 @@ This paper states no reading route. Its evidence boundary is in [The strategy](f
 
 **Plectis: What a Stranger Can Check**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/0cc307f102b7910cfa5eb89c0c7257bf2a8dfd47/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/3d5f32b64d6ac967c9293174b4bd2fcd9c66b81c/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/plectis-public-system.md#sec:problem), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions).
 
@@ -408,23 +426,23 @@ is proof authority. In order:
 
 > checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition.
 
-- `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
-- `erdos-68-factorial-denominator-irrationality` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #68, which remains open.
-- `erdos68-factorial-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #68, which remains open.
-- `erdos-243-reciprocal-tail-rigidity` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #243, which remains open.
-- `erdos243-reciprocal-tail-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #243, which remains open.
-- `erdos-249-binary-totient-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
-- `erdos249-totient-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
-- `erdos-251-prime-gap-dyadic-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #251, which remains open.
-- `erdos251-prime-gap-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #251, which remains open.
-- `erdos-257-mersenne-support-subseries` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, which remains open.
-- `erdos257-mersenne-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, whose universal and half-value questions remain open.
-- `erdos269-running-lcm-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #269, which remains open.
-- `erdos-269-three-prime-running-lcm` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #269, which remains open.
-- `erdos-1041-lemniscate-newton-flow` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1041, which remains open.
-- `erdos1041-lemniscate-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1041, which remains open.
-- `erdos-1049-rational-base-lambert` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1049, which remains open.
-- `erdos1049-rational-base-lambert-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1049, which remains open.
+- `erdos249-257-main` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, and public claim status, which belongs to docs/claims.json.
+- `erdos-68-factorial-denominator-irrationality` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #68, which remains open.
+- `erdos68-factorial-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #68, which remains open.
+- `erdos-243-reciprocal-tail-rigidity` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #243, which remains open.
+- `erdos243-reciprocal-tail-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #243, which remains open.
+- `erdos-249-binary-totient-series` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #249, which remains open.
+- `erdos249-totient-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #249, which remains open.
+- `erdos-251-prime-gap-dyadic-series` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #251, which remains open.
+- `erdos251-prime-gap-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #251, which remains open.
+- `erdos-257-mersenne-support-subseries` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #257, which remains open.
+- `erdos257-mersenne-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #257, whose universal and half-value questions remain open.
+- `erdos269-running-lcm-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #269, which remains open.
+- `erdos-269-three-prime-running-lcm` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #269, which remains open.
+- `erdos-1041-lemniscate-newton-flow` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1041, which remains open.
+- `erdos1041-lemniscate-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1041, which remains open.
+- `erdos-1049-rational-base-lambert` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
+- `erdos1049-rational-base-lambert-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.

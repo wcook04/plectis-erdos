@@ -92,9 +92,9 @@ We study the Newton flow whose trajectories foliate the lemniscate.
 | Critical-value budget in every degree | Lean-checked theorem | $`\sum_j|f(c_j)|^{1/n}\le(n-1)R`$ for every $`n\ge2`$ and $`R\ge0`$, with the sharper Poisson mean $`\sum_j|f(c_j)|^{2/(n-1)}\le n-1`$ on the closed unit disc. The complete mean is checked in `PaperCriticalValueMeanR10.lean`, with matching source-bound build evidence cited below. No inverse-ray length estimate is implied. |
 | Coefficient energy to path length | Checked | Termwise differentiation and the length integral of the actual power series; the inverse branch and area bound must be supplied. |
 | Uniform central free-point region | Checked | Every positive number of points; $`|c_i|\le\sqrt{1-e^{-2}}`$, with no additional series hypotheses. |
-| Newton value equation $`w'=-w`$ | Checked | Away from critical points, along any trajectory tangent to $`-f/f'`$. |
-| Exponential first integral | Checked | $`\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0`$. |
-| Ray separation of critical values | Candidate finite-endpoint completion | Continuity at the endpoints and noncritical Newton evolution on the open interval imply a common positive multiplier; distinct nonzero rays exclude such a connection. No global trajectory producer is supplied. |
+| Newton value equation $`w'=-w`$ | Checked local derivative | For a complex local parameter, away from critical points and along a curve tangent to $`-f/f'`$. |
+| Scaled-value derivative | Checked local derivative | For the same complex local parameter, $`\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0`$; constancy on a real interval is an ordinary integration step. |
+| Ray separation of critical values | Lean-checked endpoint consumer plus ordinary finite-trajectory deduction | Lean contradicts distinct rays from an assumed exponential endpoint relation. Continuity at the endpoints and noncritical Newton evolution on the open interval yield that relation by ordinary integration; no global trajectory producer is supplied. |
 | Ray-collision locus | Checked | $`\beta=(ra-b)/(1-r)`$, $`r>0`$, $`r\ne1`$: one real parameter per pair. |
 | Quartic case | Cited | Proved in \[june2026, Thm. 1, p. 1\]; does not extend to general degree. |
 | Translated quartic quotient fibres | Ordinary theorem with a Lean-checked metric kernel | For $`f(z)=P((z-h)^q)`$, $`P`$ monic quartic and $`q\ge2`$; Pendyala supplies the quartic geometry, while Lean checks the root-lift density, exact primitive, and strict endpoint budget. |
@@ -1481,7 +1481,7 @@ Erdős #1041 remains open. Five separate statements are proved above, with diff
 
 # Statements and declarations
 
-Lean does not check the exposition, citation choices, or interpretation. This manuscript cites Lean only for the formal statements and proofs that the pinned kernel accepts. The checked core is the Newton value equation, the exponential first integral, the consumer form of ray separation, the finite planar-avoidance theorem, quantitative constant-translation root retention, and the ray-collision parameterisation. The decomposition and length statements of §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">13</a> are not proved. The diagnosis of Proposition 12 in §<a href="#sec:gap" data-reference-type="ref" data-reference="sec:gap">11</a> records both the invalid local saddle block and the Cassini obstruction to the printed global tree budget. The search results of §<a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">12</a> are computations.
+Lean does not check the exposition, citation choices, or interpretation. This manuscript cites Lean only for the formal statements and proofs that the pinned kernel accepts. The checked core is the local Newton value equation, the zero-derivative form of its exponentially scaled value, the algebraic consumer from an assumed exponential endpoint relation, the finite planar-avoidance theorem, quantitative constant-translation root retention, and the ray-collision parameterisation. The real-time first integral and finite-trajectory ray exclusion use the ordinary interval-integration and endpoint-continuity argument given in the paper. The decomposition and length statements of §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">13</a> are not proved. The diagnosis of Proposition 12 in §<a href="#sec:gap" data-reference-type="ref" data-reference="sec:gap">11</a> records both the invalid local saddle block and the Cassini obstruction to the printed global tree budget. The search results of §<a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">12</a> are computations.
 
 <a id="app:sources"></a>
 
@@ -1616,13 +1616,13 @@ A quantified small constant perturbation keeps every polynomial root inside the 
 
 **Reader position.** 13 of 70; display band: major result. Formal editorial disposition: split. These are separate classifications.
 
-**Reader entry.** The Newton value equation and its exponential first integral are checked exactly.
+**Reader entry.** Lean checks the local Newton value equation and the zero-derivative form of its exponentially scaled value; constancy along a real-time interval is an ordinary calculus consequence in the paper.
 
-The Newton value equation and its exponential first integral are checked exactly.
+Lean checks the local Newton value equation and the zero-derivative form of its exponentially scaled value; constancy along a real-time interval is an ordinary calculus consequence in the paper.
 
-**Authority and reach.** Lean kernel; locally proved result and formalised calculus; novelty unassessed.
+**Authority and reach.** Lean kernel plus authored synthesis; locally proved result and formalised calculus; novelty unassessed.
 
-**Exact boundary.** Value decay alone does not give a short connecting curve.
+**Exact boundary.** The cited declarations are pointwise derivative statements. The real-time first integral requires the paper’s interval integration step, and value decay alone does not construct a global trajectory or give a short connecting curve.
 
 **Result-atom population.** 95 of 681 public coordinates. The public atom catalog groups them under this family.
 
@@ -1640,13 +1640,13 @@ The Newton value equation and its exponential first integral are checked exactly
 
 **Reader position.** 25 of 70; display band: mechanism. Formal editorial disposition: split. These are separate classifications.
 
-**Reader entry.** Distinct positive rays exclude a finite Newton connection.
+**Reader entry.** Lean checks that distinct positive rays contradict an assumed exponential endpoint relation; the paper derives that relation for a finite real-time Newton trajectory by ordinary integration and endpoint continuity.
 
-Distinct positive rays exclude a finite Newton connection.
+Lean checks that distinct positive rays contradict an assumed exponential endpoint relation; the paper derives that relation for a finite real-time Newton trajectory by ordinary integration and endpoint continuity.
 
-**Authority and reach.** Lean kernel; locally proved result; novelty unassessed.
+**Authority and reach.** Lean kernel plus authored synthesis; locally proved result; novelty unassessed.
 
-**Exact boundary.** The result is a route obstruction, not the global theorem.
+**Exact boundary.** The finite-trajectory conclusion retains continuity on the closed interval, differentiability and noncritical Newton evolution on its interior, and the ordinary endpoint passage. It supplies neither global trajectory existence nor geometric length control.
 
 **Result-atom population.** 19 of 681 public coordinates. The public atom catalog groups them under this family.
 

@@ -1547,26 +1547,26 @@
         {
           "id": "newton_value_decay",
           "contribution_class": "locally proved result and formalised calculus; novelty unassessed",
-          "summary": "The Newton value equation and its exponential first integral are checked exactly.",
-          "evidence_mode": "Lean kernel",
+          "summary": "Lean checks the local Newton value equation and the zero-derivative form of its exponentially scaled value; constancy along a real-time interval is an ordinary calculus consequence in the paper.",
+          "evidence_mode": "Lean kernel plus authored synthesis",
           "declarations": [
             "ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt",
             "ErdosProblems.Erdos1041.newtonFlow_scaledValue_hasDerivAt_zero"
           ],
           "comparator_disposition": "not_selected_compact_calculus_family",
-          "boundary": "Value decay alone does not give a short connecting curve."
+          "boundary": "The cited declarations are pointwise derivative statements. The real-time first integral requires the paper’s interval integration step, and value decay alone does not construct a global trajectory or give a short connecting curve."
         },
         {
           "id": "ray_separation",
           "contribution_class": "locally proved result; novelty unassessed",
-          "summary": "Distinct positive rays exclude a finite Newton connection.",
-          "evidence_mode": "Lean kernel",
+          "summary": "Lean checks that distinct positive rays contradict an assumed exponential endpoint relation; the paper derives that relation for a finite real-time Newton trajectory by ordinary integration and endpoint continuity.",
+          "evidence_mode": "Lean kernel plus authored synthesis",
           "declarations": [
             "ErdosProblems.Erdos1041.samePositiveRay_of_real_exp_decay",
             "ErdosProblems.Erdos1041.no_newtonConnection_of_not_samePositiveRay"
           ],
           "comparator_disposition": "represented_by_translation_avoidance_targets",
-          "boundary": "The result is a route obstruction, not the global theorem."
+          "boundary": "The finite-trajectory conclusion retains continuity on the closed interval, differentiability and noncritical Newton evolution on its interior, and the ordinary endpoint passage. It supplies neither global trajectory existence nor geometric length control."
         },
         {
           "id": "translation_avoidance",
