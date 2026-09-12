@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
@@ -1720,6 +1721,271 @@ def check_session_storage_failures(tmp: Path) -> None:
         workbench.Path.open = real_open
 
 
+def check_session_open_transaction(tmp: Path) -> None:
+    sessions_root = tmp / "open transaction sessions"
+    session_path = sessions_root / "retryable"
+    ledger_path = session_path / "ledger.jsonl"
+    probes_path = session_path / "probes"
+    command = ["open", "--session", "retryable", "--actor", "Alice", "--intent", "bounded work"]
+    real_mkdir, real_open = Path.mkdir, Path.open
+
+    for stage in ("probes", "ledger", "partial_write", "close", "close_without_newline"):
+        def fail_mkdir(path: Path, *args, **kwargs):
+            if stage == "probes" and path == probes_path:
+                raise OSError(28, "No space left on device")
+            return real_mkdir(path, *args, **kwargs)
+
+        class FailingLedger:
+            def __init__(self, handle):
+                self.handle = handle
+
+            def __enter__(self):
+                self.handle.__enter__()
+                return self
+
+            def fileno(self):
+                return self.handle.fileno()
+
+            def write(self, data):
+                if stage == "partial_write":
+                    self.handle.write(data[:13])
+                    self.handle.flush()
+                    raise OSError(28, "No space left on device")
+                if stage == "close_without_newline":
+                    return self.handle.write(data.rstrip(b"\n"))
+                return self.handle.write(data)
+
+            def __exit__(self, *args):
+                result = self.handle.__exit__(*args)
+                if stage in {"close", "close_without_newline"}:
+                    raise OSError(28, "No space left on device")
+                return result
+
+        def fail_open(path: Path, mode="r", *args, **kwargs):
+            if path == ledger_path and mode in {"a", "x", "xb"}:
+                if stage == "ledger":
+                    raise OSError(28, "No space left on device")
+                return FailingLedger(real_open(path, mode, *args, **kwargs))
+            return real_open(path, mode, *args, **kwargs)
+
+        with patch.object(Path, "mkdir", fail_mkdir), patch.object(Path, "open", fail_open):
+            try:
+                _run(sessions_root, command)
+            except SystemExit as error:
+                require("No space left on device" in str(error), f"{stage}: lost storage error: {error}")
+                if stage in {"close", "close_without_newline"}:
+                    require("inspect it" in str(error) and "new session name" in str(error), f"{stage}: missing recovery guidance: {error}")
+            else:
+                raise AssertionError(f"{stage}: initialization unexpectedly succeeded")
+        moves = workbench.Session(sessions_root, "retryable").moves()
+        if stage in {"close", "close_without_newline"}:
+            require(len(moves) == 1 and moves[0]["move_id"] == "m001", f"{stage}: removed readable opening evidence")
+            try:
+                _run(sessions_root, command)
+            except SystemExit as error:
+                require("already exists" in str(error), f"{stage}: lost existing-session diagnostic")
+            else:
+                raise AssertionError(f"{stage}: retry overwrote a published ledger")
+            if stage == "close_without_newline":
+                original_bytes = ledger_path.read_bytes()
+                mutations = (
+                    ["note", "--kind", "observation", "--text", "Contributor observation"],
+                    ["close", "--outcome", "open", "--summary", "Bounded stopping point"],
+                    ["probe", "--file", str(tmp / "not-read.lean")],
+                    ["claim", "--probe", "m001", "--text", "Candidate claim"],
+                )
+                for mutation in mutations:
+                    with patch.object(workbench, "run_lean_probe", side_effect=AssertionError("unexpected Lean probe")):
+                        try:
+                            _run(sessions_root, [*mutation, "--session", "retryable"])
+                        except SystemExit as error:
+                            require("final newline" in str(error), f"{mutation[0]} lacked repair guidance: {error}")
+                        else:
+                            raise AssertionError(f"{mutation[0]} mutated an unterminated ledger")
+                    require(ledger_path.read_bytes() == original_bytes, f"{mutation[0]} changed retained evidence")
+                    require(not any(probes_path.iterdir()), f"{mutation[0]} wrote a probe artifact")
+        else:
+            require(not session_path.exists(), f"{stage}: failed opening blocked retry")
+            opened = _run(sessions_root, command)
+            moves = workbench.Session(sessions_root, "retryable").moves()
+            require(moves == [opened] and opened["move_id"] == "m001", f"{stage}: retry retained partial evidence")
+        ledger_path.unlink()
+        probes_path.rmdir()
+        session_path.rmdir()
+
+    # Existing directories, even without a ledger, belong to their creator.
+    session_path.mkdir()
+    sentinel = session_path / "contributor notes.txt"
+    sentinel.write_bytes(b"preserve this work")
+    try:
+        _run(sessions_root, command)
+    except SystemExit as error:
+        require("already exists" in str(error), f"existing session refusal changed: {error}")
+    else:
+        raise AssertionError("open adopted a pre-existing session directory")
+    require(sentinel.read_bytes() == b"preserve this work", "open changed pre-existing work")
+    require(set(session_path.iterdir()) == {sentinel}, "open added artifacts to an existing directory")
+    sentinel.unlink()
+    session_path.rmdir()
+
+    # A creator can win after the existence check and before the exclusive mkdir.
+    def concurrent_mkdir(path: Path, *args, **kwargs):
+        if path == session_path:
+            real_mkdir(path)
+            sentinel.write_bytes(b"concurrent session")
+            raise FileExistsError(17, "File exists", str(path))
+        return real_mkdir(path, *args, **kwargs)
+
+    with patch.object(Path, "mkdir", concurrent_mkdir):
+        try:
+            _run(sessions_root, command)
+        except SystemExit as error:
+            require("File exists" in str(error), f"lost concurrent-create diagnostic: {error}")
+        else:
+            raise AssertionError("open overwrote a concurrent session")
+    require(sentinel.read_bytes() == b"concurrent session", "cleanup removed a concurrent session")
+    require(set(session_path.iterdir()) == {sentinel}, "open wrote into a concurrent session")
+    sentinel.unlink()
+    session_path.rmdir()
+
+    # Once another writer changes the directory or ledger, rollback must retain it.
+    for addition in ("probe", "replaced_ledger", "appended_ledger"):
+        class ConcurrentLedger:
+            def __init__(self, handle):
+                self.handle = handle
+
+            def __enter__(self):
+                self.handle.__enter__()
+                return self
+
+            def fileno(self):
+                return self.handle.fileno()
+
+            def write(self, data):
+                if addition == "probe":
+                    (probes_path / "concurrent.txt").write_bytes(b"concurrent evidence")
+                elif addition == "replaced_ledger":
+                    ledger_path.unlink()
+                    ledger_path.write_bytes(b"replacement ledger")
+                else:
+                    self.handle.write(data + b"concurrent ledger addition\n")
+                    self.handle.flush()
+                raise OSError(28, "No space left on device")
+
+            def __exit__(self, *args):
+                return self.handle.__exit__(*args)
+
+        def concurrent_open(path: Path, mode="r", *args, **kwargs):
+            handle = real_open(path, mode, *args, **kwargs)
+            return ConcurrentLedger(handle) if path == ledger_path and mode == "xb" else handle
+
+        with patch.object(Path, "open", concurrent_open):
+            try:
+                _run(sessions_root, command)
+            except SystemExit as error:
+                require("partial session retained" in str(error), f"{addition}: missing retention diagnostic: {error}")
+            else:
+                raise AssertionError(f"{addition}: injected storage failure was ignored")
+        require(session_path.is_dir(), f"{addition}: removed concurrently changed session")
+        if addition == "probe":
+            require((probes_path / "concurrent.txt").read_bytes() == b"concurrent evidence", "lost concurrent probe")
+            (probes_path / "concurrent.txt").unlink()
+        elif addition == "replaced_ledger":
+            require(ledger_path.read_bytes() == b"replacement ledger", "lost replacement ledger")
+        else:
+            require(ledger_path.read_bytes().endswith(b"concurrent ledger addition\n"), "lost concurrent ledger addition")
+        ledger_path.unlink()
+        probes_path.rmdir()
+        session_path.rmdir()
+
+
+def check_session_open_invalid_utf8(tmp: Path) -> None:
+    sessions_root = tmp / "invalid utf8 sessions"
+    try:
+        _run(sessions_root, ["open", "--session", "utf8-review", "--actor", "Reviewer", "--intent", "\udcff"])
+    except SystemExit as error:
+        require("valid UTF-8" in str(error), f"invalid UTF-8 lacked a concise diagnostic: {error}")
+    else:
+        raise AssertionError("open accepted unencodable session metadata")
+    require(not sessions_root.exists(), "invalid UTF-8 created session artifacts")
+    if os.name == "posix":
+        completed = subprocess.run(
+            [os.fsencode(sys.executable), b"-B", os.fsencode(Path(workbench.__file__)),
+             b"--sessions-root", os.fsencode(sessions_root), b"open", b"--session", b"utf8-review",
+             b"--actor", b"Reviewer", b"--intent", b"\xff"],
+            capture_output=True,
+            env=workbench.singleflight.command_environment(),
+            timeout=30,
+        )
+        require(completed.returncode == 1, f"invalid argv byte returned {completed.returncode}")
+        require(b"valid UTF-8" in completed.stderr and b"Traceback" not in completed.stderr, f"invalid argv byte leaked a traceback: {completed.stderr!r}")
+        require(not sessions_root.exists(), "invalid argv byte created session artifacts")
+
+
+def check_session_open_preserves_published_notes(tmp: Path, *, complete: bool = True) -> None:
+    """A real note appended after rollback's snapshot must survive a late failure."""
+    sessions_root = tmp / ("published session" if complete else "unpublished session")
+    session = "concurrent-note"
+    ledger = sessions_root / session / "ledger.jsonl"
+    real_open = Path.open
+    notes = []
+    refusals = []
+    hook_fired = False
+
+    class CloseHook:
+        def __init__(self, handle, mode):
+            self.handle, self.mode = handle, mode
+
+        def __enter__(self):
+            self.handle.__enter__()
+            return self
+
+        def __getattr__(self, name):
+            return getattr(self.handle, name)
+
+        def write(self, data):
+            return self.handle.write(data if complete else data[:13])
+
+        def __exit__(self, *args):
+            nonlocal hook_fired
+            result = self.handle.__exit__(*args)
+            if self.mode == "xb":
+                raise OSError(28, "No space left on device")
+            if hook_fired:
+                return result
+            hook_fired = True
+            try:
+                notes.append(_run(sessions_root, [
+                    "note", "--session", session, "--kind", "observation",
+                    "--text", "Concurrent contributor evidence",
+                ]))
+            except SystemExit as error:
+                refusals.append(str(error))
+            return result
+
+    def hooked_open(path: Path, mode="r", *args, **kwargs):
+        handle = real_open(path, mode, *args, **kwargs)
+        return CloseHook(handle, mode) if path == ledger and mode in {"xb", "rb"} else handle
+
+    with patch.object(Path, "open", hooked_open):
+        try:
+            _run(sessions_root, ["open", "--session", session, "--actor", "Reviewer", "--intent", "Review rollback"])
+        except SystemExit as error:
+            require("No space left on device" in str(error), f"lost late failure: {error}")
+        else:
+            raise AssertionError("late write failure was ignored")
+    if not complete:
+        require(not notes and len(refusals) == 1, "partial opening admitted a concurrent note")
+        require("invalid workbench ledger JSON" in refusals[0], f"partial note failed unexpectedly: {refusals}")
+        require(not ledger.parent.exists(), "incomplete opening blocked retry")
+        opened = _run(sessions_root, ["open", "--session", session, "--actor", "Reviewer", "--intent", "Retry partial opening"])
+        require(opened["move_id"] == "m001", "partial opening retry inherited an old move")
+        return
+    require(len(notes) == 1 and notes[0]["move_id"] == "m002", "concurrent real cmd_note did not succeed")
+    moves = workbench.Session(sessions_root, session).moves()
+    require(len(moves) == 2 and moves[1] == notes[0], "rollback deleted successfully published contributor evidence")
+
+
 def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
     real_runner = workbench.run_lean_probe
     calls: list[str] = []
@@ -1994,6 +2260,10 @@ def main() -> int:
         check_environment_fingerprint_failures(tmp)
         check_child_environment_contract()
         check_session_storage_failures(tmp)
+        check_session_open_transaction(tmp)
+        check_session_open_invalid_utf8(tmp)
+        check_session_open_preserves_published_notes(tmp)
+        check_session_open_preserves_published_notes(tmp, complete=False)
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
         check_claim_gate(sessions_root, tmp)

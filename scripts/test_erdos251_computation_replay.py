@@ -20,6 +20,11 @@ COMPUTATIONS = ROOT / "research" / "experiments" / "erdos251"
 spec = importlib.util.spec_from_file_location("erdos251_replay", COMPUTATIONS / "replay.py")
 replay = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(replay)
+adjacent_spec = importlib.util.spec_from_file_location(
+    "erdos251_adjacent", COMPUTATIONS / "erdos251_adjacent_mismatch_density.py"
+)
+adjacent = importlib.util.module_from_spec(adjacent_spec)
+adjacent_spec.loader.exec_module(adjacent)
 
 
 class PublicComputationReplayTests(unittest.TestCase):
@@ -57,6 +62,63 @@ class PublicComputationReplayTests(unittest.TestCase):
                 path.write_text(json.dumps(record))
                 with self.assertRaisesRegex(ValueError, "replay command"):
                     replay.recorded_case(name)
+
+    def test_adjacent_output_refuses_replacement_and_reports_missing_parent(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            output = root / "result.json"
+            output.write_text("preserve me", encoding="utf-8")
+            with self.assertRaisesRegex(FileExistsError, "pass --force"):
+                adjacent.write_output(output, {"value": 1})
+            self.assertEqual(output.read_text(encoding="utf-8"), "preserve me")
+            with self.assertRaisesRegex(FileNotFoundError, "output directory"):
+                adjacent.write_output(root / "missing" / "result.json", {"value": 1})
+            adjacent.write_output(output, {"value": 2}, force=True)
+            self.assertEqual(json.loads(output.read_text(encoding="utf-8")), {"value": 2})
+
+    def test_adjacent_partial_write_failure_leaves_no_temp_or_target_change(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            output = root / "result.json"
+            output.write_text("preserve me", encoding="utf-8")
+            before = set(root.iterdir())
+            real_named_temporary_file = tempfile.NamedTemporaryFile
+
+            class PartialWriteFailure:
+                def __init__(self, *args, **kwargs):
+                    self.context = real_named_temporary_file(*args, **kwargs)
+
+                def __enter__(self):
+                    stream = self.context.__enter__()
+
+                    class Writer:
+                        name = stream.name
+
+                        @staticmethod
+                        def write(_value):
+                            stream.write("partial")
+                            stream.flush()
+                            raise OSError("injected partial write failure")
+
+                    return Writer()
+
+                def __exit__(self, *args):
+                    return self.context.__exit__(*args)
+
+            with patch.object(adjacent.tempfile, "NamedTemporaryFile", PartialWriteFailure):
+                with self.assertRaisesRegex(OSError, "injected partial write failure"):
+                    adjacent.write_output(output, {"value": 1}, force=True)
+            self.assertEqual(output.read_text(encoding="utf-8"), "preserve me")
+            self.assertEqual(set(root.iterdir()), before)
+
+    def test_replay_timeout_names_case_and_remedy(self):
+        with patch.object(replay, "recorded_case", return_value={}), patch.object(
+                replay.subprocess, "run",
+                side_effect=subprocess.TimeoutExpired(["python", "producer.py"], 7)):
+            with self.assertRaisesRegex(
+                ValueError, "adjacent-mismatch: computation timed out after 7 seconds.*--timeout"
+            ):
+                replay.replay("adjacent-mismatch", 7)
 
     def test_small_standard_library_example_matches_recorded_prefix(self):
         result = subprocess.run(

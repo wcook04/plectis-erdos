@@ -71,6 +71,10 @@ update the saved paper result. Include the command, output, Python version,
 and any NumPy version when reporting a discrepancy through the repository's
 [contribution route](../../../CONTRIBUTING.md).
 
+The adjacent-mismatch program accepts `--out PATH`. It refuses to replace an
+existing file; pass `--force` only when replacement is intentional. The write
+is atomic, and the parent directory must already exist.
+
 Will Cook authored the original programs. [Source provenance](source-provenance.json)
 records their original hashes; the public copies clarify usage and finite
 evidence labels. Each saved receipt binds the public program bytes and exact

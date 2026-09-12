@@ -79,10 +79,16 @@ def replay(name: str, timeout: int) -> dict:
     for key in ("PYTHONPATH", "PYTHONHOME", "PYTHONSTARTUP", "PYTHONINSPECT"):
         env.pop(key, None)
     started = time.monotonic()
-    result = subprocess.run(
-        [sys.executable, str(ROOT / program), *args], cwd=ROOT,
-        capture_output=True, text=True, env=env, timeout=timeout, check=False,
-    )
+    try:
+        result = subprocess.run(
+            [sys.executable, str(ROOT / program), *args], cwd=ROOT,
+            capture_output=True, text=True, env=env, timeout=timeout, check=False,
+        )
+    except subprocess.TimeoutExpired:
+        raise ValueError(
+            f"{name}: computation timed out after {timeout} seconds; "
+            "increase --timeout to allow a longer recorded replay"
+        ) from None
     if result.returncode:
         raise ValueError(f"{name}: computation exited {result.returncode}: {result.stderr.strip() or result.stdout[-1000:]}")
     actual = json.loads(result.stdout)

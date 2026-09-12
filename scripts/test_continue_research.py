@@ -14,6 +14,7 @@ from unittest import mock
 from pathlib import Path
 
 import continue_research
+import proof_workbench
 import route_memory_receipt
 import validation_singleflight as singleflight
 
@@ -663,6 +664,98 @@ def check_start_session_path_boundary() -> None:
         )
 
 
+def check_start_arguments_before_side_effects() -> None:
+    with tempfile.TemporaryDirectory(prefix="continue-start-arguments-") as temporary:
+        sessions = Path(temporary) / "sessions with spaces"
+        args = continue_research.build_parser().parse_args([
+            "--sessions-root", str(sessions), "start", "--session", "blank_identity",
+            "--problem", "257", "--frontier", "bounded-return", "--intent", "bounded work",
+            "--stop-condition", "stop after one check", "--contributor", "Contributor",
+            "--operator", "Operator", "--model-system", "not_used", "--provider", "not_used",
+        ])
+        for field in ("session", "frontier", "intent", "stop_condition", "contributor", "operator", "model_system", "provider"):
+            original = getattr(args, field)
+            for blank in ("", " \t"):
+                setattr(args, field, blank)
+                with mock.patch.object(continue_research, "git_output") as git, mock.patch.object(
+                    continue_research, "run_json_command"
+                ) as child:
+                    try:
+                        continue_research.cmd_start(args)
+                    except SystemExit as error:
+                        require(field.replace("_", "-") in str(error), f"{field}: missing argument diagnostic: {error}")
+                    else:
+                        raise AssertionError(f"start accepted blank {field}")
+                    git.assert_not_called()
+                    child.assert_not_called()
+                require(not sessions.exists(), f"blank {field} created session artifacts")
+            setattr(args, field, original)
+
+
+def check_partial_workbench_open_retry() -> None:
+    """A child initialization failure must leave the continuation start retryable."""
+    with tempfile.TemporaryDirectory(prefix="continue-open-retry-") as temporary:
+        sessions = Path(temporary) / "sessions with spaces"
+        session = "partial_open"
+        directory = sessions / session
+        ledger = directory / "ledger.jsonl"
+        args = continue_research.build_parser().parse_args([
+            "--sessions-root", str(sessions), "start", "--session", session,
+            "--problem", "257", "--frontier", "bounded-return", "--intent", "bounded work",
+            "--stop-condition", "stop after one check", "--contributor", "Contributor Name",
+            "--operator", "Operator Name", "--material-collaborator", "Colleague::reviewer",
+            "--repository-origin", "https://github.com/example/public", "--allow-dirty",
+        ])
+
+        def composed_command(command: list[str]) -> dict:
+            if command[1] == str(WORKBENCH):
+                child_args = proof_workbench.build_parser(ROOT).parse_args(command[2:])
+                return child_args.func(child_args, ROOT)
+            if command[1].endswith("query_corpus.py"):
+                return {"results": [{"erdos_number": 257}]}
+            if command[1].endswith("query_route_memory.py"):
+                return {"problem": {"erdos_number": 257}}
+            raise AssertionError(f"unexpected composed command: {command}")
+
+        real_open = Path.open
+
+        def fail_initial_write(path: Path, mode="r", *positional, **kwargs):
+            handle = real_open(path, mode, *positional, **kwargs)
+            if path != ledger or mode not in {"a", "x", "xb"}:
+                return handle
+
+            def partial_write(data):
+                handle.write(data[:13])
+                handle.flush()
+                raise OSError(28, "No space left on device")
+
+            wrapper = mock.MagicMock()
+            wrapper.__enter__.return_value = wrapper
+            wrapper.__exit__.side_effect = handle.__exit__
+            wrapper.fileno.return_value = handle.fileno()
+            wrapper.write.side_effect = partial_write
+            return wrapper
+
+        with mock.patch.object(continue_research, "run_json_command", side_effect=composed_command):
+            with mock.patch.object(Path, "open", fail_initial_write):
+                try:
+                    continue_research.cmd_start(args)
+                except SystemExit as error:
+                    require("No space left on device" in str(error), f"continuation lost child failure: {error}")
+                else:
+                    raise AssertionError("continuation ignored failed workbench initialization")
+            require(not directory.exists(), "partial workbench opening prevented continuation retry")
+            started = continue_research.cmd_start(args)
+
+        manifest = load(directory / "continuation.json")
+        require(started["session"] == session, "continuation retry did not complete")
+        require(manifest["identity"]["contributor"] == {"name": "Contributor Name"}, "retry changed contributor credit")
+        require(manifest["identity"]["operator"] == {"relationship": "named", "name": "Operator Name"}, "retry changed operator credit")
+        require(manifest["identity"]["material_collaborators"] == [{"name": "Colleague", "role": "reviewer"}], "retry lost collaborator credit")
+        moves = proof_workbench.Session(sessions, session).moves()
+        require([move["move_id"] for move in moves] == ["m001", "m002"], "retry retained partial ledger entries")
+
+
 def check_replay_command_boundary(sessions_root: Path, session: str) -> None:
     """Exercise the optional replay consumer without launching Lean."""
     session_directory = sessions_root / session
@@ -754,6 +847,8 @@ def main() -> int:
     check_nested_return_shape_boundary()
     check_changed_evidence_shape_boundary()
     check_start_session_path_boundary()
+    check_start_arguments_before_side_effects()
+    check_partial_workbench_open_retry()
     check_repository_origin_override()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"

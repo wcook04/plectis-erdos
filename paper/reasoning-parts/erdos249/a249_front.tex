@@ -1,4 +1,12 @@
-\section{The problem, and what is actually known}
+\section{Totient sections, tail differences, and the irrationality question}
+
+The dyadic sections $n\mapsto\varphi(2^jn+r)$ through each level $e\ge1$
+have exact rational rank $2^e+1$. The two zero-residue sections and the
+odd-residue sections give independent coordinates; scalar reductions recover
+the omitted sections. The short paper proves the corresponding integral
+normal form and explains the evaluation-matrix argument. This record supplies
+the tail identities, countermodels, and individual arithmetic constructions
+needed to compare that structure with the irrationality question.
 
 Let $\varphi$ be Euler's totient function and put
 \[
@@ -7,15 +15,12 @@ Let $\varphi$ be Euler's totient function and put
   \;=\; 1.3676308019850223\ldots
 \]
 The series converges absolutely because $\varphi(n) \le n$. Erd\H{o}s Problem
-\#249 asks whether $S$ is irrational. \emph{It is open.} Nothing in this
-document decides it, no route recorded here is a proof, and no result here
-should be read as an approach that is close to working. What this document
-does is different in kind: it assembles every recorded failure, obstruction,
-countermodel and dead route the programme has produced against \#249, and
-classifies each one by the exact class of argument it eliminates. The claim
-being made is that those failures are not independent --- they are repeated
-measurements of a single obstruction, and that obstruction has a shape which
-can be stated.
+\#249 asks whether $S$ is irrational, which remains open. The exact rank
+theorem controls linear relations among coefficient sections. Irrationality
+requires information about their weighted infinite sum. The countermodels
+below explain several ways that a passage from coefficient structure to the
+sum can fail. Each excludes its stated assumptions; they do not establish a
+single obstruction theorem covering all possible methods.
 
 \begin{rem}[Literature coordinates]
 The nearby literature serves three distinct roles.  Kova\v{c}--Tao's
@@ -98,12 +103,12 @@ The following hold with no irrationality hypothesis. They are the results a
 specialist should know before reading further; each is stated at the scale at
 which it is actually proved.
 
-\begin{thm}[Denominator exclusion --- the headline unconditional fact]
+\begin{thm}[Denominator exclusion from a fixed Farey window]
 \label{thm:denom}
 If $S \in \Q$ then its reduced denominator exceeds
 $Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}$.
 Equivalently, $S \ne p$ for every $p \in \Q$ with $p.\mathrm{den} \le Q_0$.
-The bound is sharp for the method: $q = Q_0 + 1$ is the exact first failing
+The bound is sharp for this window: $q = Q_0 + 1$ is the exact first failing
 denominator, exhibited as the mediant of two explicit unimodular Farey
 neighbours.
 \coord{farey} \scale{bounded} \ev{Lean}
@@ -209,25 +214,16 @@ reformulations are equivalences rather than reductions, and the listed size
 bound, parity and aperiodicity of the coefficient word are satisfied by a
 rational countermodel.
 
-\section{The wall}
+\section{What the countermodels exclude}
 \label{sec:wall}
 
-This programme has produced many exact reformulations of \#249 and no proof.
-That is the honest summary, and the rest of this section is an argument that
-it is also the wrong way to read the record. The reformulations do not fail
-independently. They fail in a small number of recurring ways, and when each
-failure is stated as a claim about \emph{which class of argument it
-eliminates} rather than as a report that something did not work, the classes
-fit together into one obstruction with a describable shape. A hundred
-reformulations that all die are not a hundred failures; they are a hundred
-measurements of one wall, taken from different angles. The measurements are
-below.
+The countermodels distinguish information that determines a finite calculation
+from information that forces nonintegrality at unbounded indices. A fixed
+prefix, parity at every index, and a specified finite collection of linear
+relations are different hypotheses. The useful conclusion in each case is the
+precise information a rational control sequence can preserve.
 
-The thesis, in one sentence: \emph{every barrier in the record is a bound, and
-the quantity a certificate measures is invariant under exactly the bounds that
-make an argument finite.}
-
-\subsection{The plane the barriers live on}
+\subsection{Range, resolution, and the scope of an obstruction}
 
 Fix two axes for a hypothetical proof of $\mathrm{Sep}$
 (Definition~\ref{defn:sep}): the \emph{range} of indices at which it consults
@@ -237,34 +233,31 @@ state, $\Q$-rank, shift-polynomial degree), and whether the target is asserted
 \emph{pointwise} at a chosen index or as an \emph{average} over a block.
 
 \begin{itemize}[leftmargin=*]
-\item The quadrant [full resolution $\times$ bounded range] is closed by
+\item Fixed-prefix information alone is excluded by
   Theorem~\ref{thm:gamma} (B1): $\varphi$ may be pinned exactly on $[1,B]$ and
   the series can still be rational.
-\item The complementary quadrant [coarse resolution $\times$ unbounded range]
-  is closed by Proposition~\ref{prop:parity} (B7): $\varphi$'s parity may be
+\item Parity information alone is excluded by
+  Proposition~\ref{prop:parity} (B7): $\varphi$'s parity may be
   pinned at \emph{every} index, together with boundedness, $c(n) \le n$, and
   arbitrarily strong aperiodicity, and the series can still be $3/2$.
-\item The remaining quadrant is closed \emph{whenever the proof compresses}:
-  B5 (no bounded carry state, no fixed-precision signature) and B6 (four
-  independent finite truncations of the totient kernel, all with trivial
-  kernel).
-\item B4 closes the one construction that tried to reach the good quadrant by
-  \emph{prescribing} values: residue engineering pays for amplitude in
-  position, and position enters the certificate radius.
-\item B2 closes the escape of retargeting; B3 records that no bounded result
-  in the corpus has ever promoted.
+\item B5 treats the stated bounds on carry state and precision. B6 treats
+  the displayed linear relations and truncations. Neither is a theorem
+  against every finite-state or compressed argument.
+\item B4 records the cost of the specified congruence construction:
+  prescribing divisibility can increase the index, which also increases
+  the certificate's tail bound.
+\item B2 identifies exact equivalences; their value depends on what new
+  estimate the changed coordinates permit. B3 records finite checks and
+  does not supply their missing universal quantifier.
 \end{itemize}
 
-The corpus's own results partition along these axes perfectly, which is the
-first evidence that the axes are the right ones. Every unconditional
-\emph{finite} deposit (Proposition~\ref{prop:deposits}, the $K=240$ Farey rung
-of Theorem~\ref{thm:denom}, the actual-LCM orbits at $a = 4$ and $a = 6$) sits
-at full resolution and bounded range, so B1 says extending them is evidence
-forever and proof never. Every unconditional \emph{cofinal} theorem (letterwise
-positivity for all $a \ge 8$, the tail bounds from $\varphi(m) \le m$,
-unbounded Mersenne-shadow denominator growth) sits at coarse resolution and
-unbounded range, and Proposition~\ref{prop:sign} proves in the corpus's own
-coordinate that this is exactly half a certificate.
+The finite certificates in Proposition~\ref{prop:deposits} and the $K=240$
+Farey calculation in Theorem~\ref{thm:denom} have bounded ranges. B1 excludes
+an inference from one such fixed range uniformly over the whole coefficient
+class. It does not exclude a proof using the arithmetic of $\varphi$ at
+arbitrarily large horizons. Likewise, the cofinal positivity theorem does
+not by itself separate the residue from the top edge: that is the additional
+information identified by Proposition~\ref{prop:sign}.
 
 \subsection{B1: the finite-inspection barrier, as a theorem}
 
@@ -794,10 +787,18 @@ For every $h > 0$ there are $s > 0$ and $\eta \in (0,1)$ such that for every
 $X_0$ there are $X, L$ with $\max(X_0,1) \le X$, $h \le L - s$,
 $16(2X{+}h{+}L{+}2) \le 2^{L}$, and all four of
 \[
-  \mathrm{Re}\,\mathrm{pivotCenteredCorrelation} \le \tfrac{14}{25}X, \quad
-  \lVert \mathrm{pivotFiberMean} \rVert \le \tfrac{1}{100}X, \quad
-  \lVert \mathrm{pivotBad} \rVert \le \tfrac{1}{100}X, \quad
-  \lVert \mathrm{pivotNonSupplier} \rVert \le \tfrac{8}{25}X .
+\adjustbox{max width=\linewidth}{$\displaystyle
+\begin{aligned}
+ \mathrm{Re}\,\mathrm{pivotCenteredCorrelation}(h,X,L,s,\eta)
+   &\le \tfrac{14}{25}X,\\
+ \lVert\mathrm{pivotFiberMeanContribution}(h,X,L,s,\eta)\rVert
+   &\le \tfrac{1}{100}X,\\
+ \lVert\mathrm{pivotBadContribution}(h,X,L,s,\eta)\rVert
+   &\le \tfrac{1}{100}X,\\
+ \lVert\mathrm{pivotNonSupplierContribution}(h,X,L,s)\rVert
+   &\le \tfrac{8}{25}X .
+\end{aligned}
+$}
 \]
 It implies $\mathrm{Irrational}(S)$.
 \coord{first-harmonic} \scale{cofinal} \ev{Lean}
@@ -815,6 +816,12 @@ proved unconditionally with \texttt{\#print axioms} clean
 (\lean{Erdos249257.windowFirstExp\_sum\_eq\_pivot\_decomposition}{FirstHarmonicPivot.lean:514},
 budget consumer
 \lean{Erdos249257.first\_harmonic\_gap\_of\_pivotBudgetAt}{FirstHarmonicPivot.lean:549}).
+Its proof first partitions the block into supplier and non-supplier bases,
+then partitions the supplier bases according to the good-cofactor condition.
+On the good part, subtracting the mean residual on each pivot fibre gives
+the centred-correlation term and leaves exactly the fibre-mean term.  Thus
+the four displayed quantities sum to the original first-harmonic block;
+the identity itself provides no estimate for any of them.
 The one-sided budget lowers the hard requirement from a norm bound
 $\lVert \cdot \rVert \le X/2$ to a real-part bound $\le 14X/25$. And the pivot
 rests on genuine arithmetic rather than a sampled surrogate: on the canonical
@@ -824,8 +831,9 @@ interval of primes, proved as a membership equality
 with the totient factorisation at the pivot the honest
 $\varphi(mp) = \varphi(m)(p-1)$ and the non-divisibility discharged by size.
 
-Three of the four terms are then counting bookkeeping; only the first needs a
-genuine correlation estimate, and only in real part.
+None of the four displayed inequalities is currently proved.  The fibre-mean,
+bad-cofactor and non-supplier terms have the form of counting estimates, while
+the first is a genuine correlation estimate and is needed only in real part.
 
 \textbf{What it must respect.} B6 has a residual-gauge instance:
 a residual-blind determinant or conditioning test cannot certify that genuine
@@ -833,8 +841,8 @@ phase reconstruction rather than a locked degenerate configuration has occurred
 (\lean{Erdos249257.locked\_reconstruction\_preserves\_nonzero\_minor}{ResidualGaugeObstruction.lean:94}).
 So this route must couple rows by an extra arithmetic identity, not merely
 gauge-normalise columns. \textbf{Honest status:} strictly a repackaging of
-Survivor 1's burden; it is listed separately only because three quarters of it
-are already exact identities on disk. The module asserts no prime-distribution
+Survivor 1's burden; it is listed separately because its decomposition and
+canonical-fibre identities are already exact on disk. The module asserts no prime-distribution
 or decorrelation estimate --- the socket is deliberately empty. \ev{Open}
 
 \subsection{Survivor 3: uniform quantitative escape at cofinally many primes}

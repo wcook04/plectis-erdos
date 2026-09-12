@@ -29,7 +29,17 @@ If $S$ is rational then a period exists: $\neg\mathrm{Irrational}(S) \to \exists
 \end{thm}
 
 \begin{thm}[cert:d5 --- \texttt{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}]
-$\neg\mathrm{Irrational}(S) \to \exists v>0,\, \exists u:\mathbb{N}\to\mathbb{Z},\, \mathrm{IsTemperedBinaryOrbit}\,\varphi\,v\,u \wedge \forall e,\ 2^e-1 \le \mathrm{finrank}_{\mathbb{Q}}(\mathrm{span}(\mathrm{range}(\mathrm{canonicalCarryKernelFamily}\,u\,e)))$. Rationality of $S$ forces its associated tempered integral binary-carry orbit to have unboundedly rich dyadic-section rank; this is a second, coordinate-independent necessary condition on rationality, parallel to cert:a9 but in the carry-kernel-rank coordinate rather than the binary-digit-periodicity coordinate. It is not by itself an irrationality proof. In particular, the later countermodels rule out treating generic finite-rank shift-polynomial or compressed-adjoint observations as the missing opposite inequality; an actual-totient-specific upper bound would be a genuinely new theorem, not a surviving consequence of the present rank machinery.
+\[
+\begin{aligned}
+\neg\mathrm{Irrational}(S) \ \Longrightarrow\ {}
+  &\exists v>0,\ \exists u:\mathbb{N}\to\mathbb{Z},\quad
+    \mathrm{IsTemperedBinaryOrbit}\,\varphi\,v\,u \ \wedge \\
+  &\forall e,\quad 2^e-1 \le
+    \mathrm{finrank}_{\mathbb{Q}}
+      \bigl(\mathrm{span}(\mathrm{range}(\mathrm{canonicalCarryKernelFamily}\,u\,e))\bigr).
+\end{aligned}
+\]
+Rationality of $S$ forces its associated tempered integral binary-carry orbit to have unboundedly rich dyadic-section rank; this is a second, coordinate-independent necessary condition on rationality, parallel to cert:a9 but in the carry-kernel-rank coordinate rather than the binary-digit-periodicity coordinate. It is not by itself an irrationality proof. In particular, the later countermodels rule out treating generic finite-rank shift-polynomial or compressed-adjoint observations as the missing opposite inequality; an actual-totient-specific upper bound would be a genuinely new theorem, not a surviving consequence of the present rank machinery.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:carry-kernel-rank} \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300}
 \end{thm}
 
@@ -54,12 +64,33 @@ For a scale coprime to $C = \prod_{p \in \mathrm{upperHalfPrimes}(t)} \mathrm{me
 \end{prop}
 
 \begin{prop}[mob:b7a --- denominator growth lower bound]
-For $t \ge 5$ (Bertrand's postulate supplies nonemptiness of $\mathrm{upperHalfPrimes}(t)$): $2^{t/2} \le \prod_{p \in \mathrm{upperHalfPrimes}(t)} \mathrm{mersenne}(p) \le \big(\mathrm{lcmHeight}(t)\cdot\mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\big).\mathrm{den}$. An exponential-in-$t/2$ growth lower bound for the reduced denominator at every LCM height, produced from mob:b6's explicit surviving channel product. Denominator-only: does not by itself rule out cancellation by a foreign-defect term, hence does not by itself prove \#249.
+For $t \ge 5$ (Bertrand's postulate supplies nonemptiness of $\mathrm{upperHalfPrimes}(t)$):
+\[
+\begin{aligned}
+2^{t/2}
+  &\le \prod_{p \in \mathrm{upperHalfPrimes}(t)} \mathrm{mersenne}(p) \\
+  &\le \bigl(\mathrm{lcmHeight}(t)\cdot
+    \mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\bigr).\mathrm{den}.
+\end{aligned}
+\]
+This is an exponential-in-$t/2$ growth lower bound for the reduced denominator at every LCM height, produced from mob:b6's explicit surviving channel product. Denominator-only: does not by itself rule out cancellation by a foreign-defect term, hence does not by itself prove \#249.
 \par\noindent\ev{Lean} \scale{uniform} \coord{mobius-mersenne} \lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60}
 \end{prop}
 
 \begin{prop}[mob:b7b --- exact denominator value]
-For every $t$ (no lower bound on $t$ needed for this direction): $\big(\mathrm{lcmHeight}(t)\cdot\mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\big).\mathrm{den} = \mathrm{mersenne}(\mathrm{lcmRadical}(t)) / \gcd\big(\mathrm{mersenne}(\mathrm{lcmRadical}(t)),\ \mathrm{lcmScale}(t)\cdot|\mathrm{oddJordanScalar}(\mathrm{lcmRadical}(t))|\big)$. A fully closed form for the reduced denominator at every scale, produced (not merely bounded) as an explicit rational function of $t$.
+For every $t$ (no lower bound on $t$ needed for this direction):
+\[
+\begin{aligned}
+&\bigl(\mathrm{lcmHeight}(t)\cdot
+  \mathrm{numericMobiusShadow}(\mathrm{lcmHeight}(t))\bigr).\mathrm{den} \\
+&\qquad = \mathrm{mersenne}(\mathrm{lcmRadical}(t))\,\Big/ \\
+&\qquad\quad \gcd\Bigl(
+  \mathrm{mersenne}(\mathrm{lcmRadical}(t)),
+  \ \mathrm{lcmScale}(t)\cdot
+  |\mathrm{oddJordanScalar}(\mathrm{lcmRadical}(t))|\Bigr).
+\end{aligned}
+\]
+This is a fully closed form for the reduced denominator at every scale, produced (not merely bounded) as an explicit rational function of $t$.
 \par\noindent\ev{Lean} \scale{uniform} \coord{mobius-mersenne} \lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147}
 \end{prop}
 
@@ -252,7 +283,28 @@ $\mathrm{mobiusNumeratorPolynomial}(r).\mathrm{eval}\,2 = \mathrm{mobiusNumerato
 \end{prop}
 
 \begin{prop}[mob:b3 --- radical shadow scale decomposition]
-$\mathrm{baseMobiusShadow}(r) := \mathrm{mobiusNumerator}(r)/(2^r-1)$ (unscaled); $\mathrm{numericMobiusShadow}(H) := \mathrm{baseMobiusShadow}(\mathrm{rad}(H))/\mathrm{rad}(H)$; exactly $H\cdot\mathrm{numericMobiusShadow}(H) = (H/\mathrm{rad}(H))\cdot\mathrm{baseMobiusShadow}(\mathrm{rad}(H))$ for $H>0$. Reduced-denominator identity for the unscaled shadow: $\mathrm{baseMobiusShadow}(r).\mathrm{den} = \mathrm{mersenne}(r)/\gcd(|\mathrm{mobiusNumerator}(r)|, \mathrm{mersenne}(r))$ for $r>0$ — exact and generic, no coprimality assumed, no channel-survival hidden.
+The unscaled and numerical shadows are
+\[
+\begin{aligned}
+\mathrm{baseMobiusShadow}(r)
+  &:= \mathrm{mobiusNumerator}(r)/(2^r-1), \\
+\mathrm{numericMobiusShadow}(H)
+  &:= \mathrm{baseMobiusShadow}(\mathrm{rad}(H))/\mathrm{rad}(H).
+\end{aligned}
+\]
+For $H>0$, exactly
+\[
+H\cdot\mathrm{numericMobiusShadow}(H)
+ = (H/\mathrm{rad}(H))\cdot
+   \mathrm{baseMobiusShadow}(\mathrm{rad}(H)).
+\]
+The reduced-denominator identity for the unscaled shadow, for $r>0$, is
+\[
+\mathrm{baseMobiusShadow}(r).\mathrm{den}
+ = \mathrm{mersenne}(r)\,\Big/
+   \gcd\bigl(|\mathrm{mobiusNumerator}(r)|,\mathrm{mersenne}(r)\bigr).
+\]
+These identities are exact and generic: no coprimality is assumed and no channel survival is hidden.
 \par\noindent\ev{Lean} \scale{uniform} \coord{mobius-mersenne} \lean{scaledMobiusShadow\_eq\_radicalBase}{RadicalMobiusShadow.lean:125} \lean{baseMobiusShadow\_den}{RadicalMobiusShadow.lean:150}
 \end{prop}
 
@@ -276,7 +328,11 @@ Define $L(f) := \sum_{n\ge1} f(n)/(2^n-1)$ (level 1, no square). Writing $A := \
 \par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18415}
 \end{prop}
 
-\begin{longtable}{@{}l l l@{}}
+\begin{longtable}{@{}
+  >{\raggedright\arraybackslash}p{0.14\linewidth}
+  >{\raggedright\arraybackslash}p{0.33\linewidth}
+  >{\raggedright\arraybackslash}p{0.43\linewidth}
+  @{}}
 \caption{The Mersenne--Lambert ladder five-row status table (docstring @ \texttt{CertificateKernel.lean:18063--18083}, body \texttt{MersenneLambertLadder.lean}).}\\
 \toprule
 \papertablehead
@@ -286,8 +342,7 @@ Weight $f$ & Value $L(f)$ & Status \\
 $\mu$ & $L(\mu) = 1/2$ & rational, trivial \\
 $\varphi$ & $L(\varphi) = 2$ & rational \\
 $\mathrm{Id}$ & $L(\mathrm{Id}) = \sum_m \sigma(m)/2^m$ & transcendental (Nesterenko 1996, \ev{Cited}, not formalised) \\
-$1$ & $L(1) = \mathcal{E}$, Erd\H{o}s--Borwein constant & irrational, \ev{Lean} (\texttt{irrational\_erdosBorwein\_series}, \\
- & & \texttt{CertificateKernel.lean:8007}) — matches \#257's full-support case \\
+$1$ & $L(1) = \mathcal{E}$, Erd\H{o}s--Borwein constant & irrational, \ev{Lean} (\nolinkurl{irrational_erdosBorwein_series}, \codeid{CertificateKernel.lean:8007}) — matches \#257's full-support case \\
 $A = \varphi*\mu$ & $L(A) = S$ & \textbf{OPEN} — this is \#249 \\
 \bottomrule
 \end{longtable}

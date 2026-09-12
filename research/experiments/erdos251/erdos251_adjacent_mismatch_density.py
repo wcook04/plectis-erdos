@@ -13,7 +13,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
+import tempfile
 
 try:
     import numpy as np
@@ -121,14 +123,52 @@ def run(limit: int, max_h: int, bands: int) -> dict:
     }
 
 
+def write_output(path: Path, payload: dict, *, force: bool = False) -> None:
+    """Write JSON atomically, refusing to replace an existing path by default."""
+    if not path.parent.is_dir():
+        raise FileNotFoundError(f"output directory does not exist: {path.parent}")
+    encoded = json.dumps(payload, indent=1) + "\n"
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=path.parent,
+            prefix=f".{path.name}.", suffix=".tmp", delete=False,
+        ) as stream:
+            temporary = Path(stream.name)
+            stream.write(encoded)
+        if force:
+            os.replace(temporary, path)
+        else:
+            try:
+                os.link(temporary, path)
+            except FileExistsError:
+                raise FileExistsError(
+                    f"output already exists: {path}; pass --force to replace it"
+                ) from None
+    except BaseException:
+        if temporary is not None:
+            try:
+                temporary.unlink(missing_ok=True)
+            except OSError:
+                pass
+        raise
+    else:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=50_000_000)
     ap.add_argument("--max-h", type=int, default=12)
     ap.add_argument("--bands", type=int, default=6)
     ap.add_argument("--out", type=str, default="")
+    ap.add_argument("--force", action="store_true",
+                    help="replace an existing --out file atomically")
     ap.add_argument("--json", action="store_true", help="print every recorded offset")
     args = ap.parse_args()
+    if args.force and not args.out:
+        ap.error("--force requires --out")
     if np is None:
         ap.error("this optional scan needs NumPy; install the requirements.txt next to this script in a virtual environment")
     try:
@@ -136,7 +176,10 @@ def main() -> int:
     except ValueError as exc:
         ap.error(str(exc))
     if args.out:
-        Path(args.out).write_text(json.dumps(payload, indent=1) + "\n")
+        try:
+            write_output(Path(args.out), payload, force=args.force)
+        except OSError as exc:
+            ap.error(str(exc))
     compact = {k: v for k, v in payload.items() if k != "per_h"}
     compact["per_h_sample"] = payload["per_h"][:6]
     print(json.dumps(payload if args.json else compact, indent=1))

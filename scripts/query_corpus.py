@@ -6198,17 +6198,21 @@ def explicit_problem_numbers(query: str) -> set[int]:
         )
         for match in re.findall(pattern, normalized_query)
     }
-    explicit_list_pattern = re.compile(
+    explicit_list_patterns = (
         r"\b(?:erdos(?:\s+problems?)?|problems?)\s*#?\s*\d+"
-        r"(?:(?:\s*,\s*(?:and\s+)?|\s+(?:and|&)\s+)#?\s*\d+)+\b"
+        r"(?:(?:\s*,\s*(?:and\s+)?|\s+(?:and|&)\s+)#?\s*\d+)+\b",
+        # A slash list must name Erdős: ordinary fractions are not selectors.
+        r"\berdos(?:\s+problems?)?\s*#?\s*\d+"
+        r"(?:\s*/\s*#?\s*\d+)+\b",
     )
     separator_preserving_query = "".join(
         character
         for character in unicodedata.normalize("NFKD", query.casefold())
         if not unicodedata.combining(character)
     )
-    for match in explicit_list_pattern.finditer(separator_preserving_query):
-        numbers.update(int(token) for token in re.findall(r"\d+", match.group(0)))
+    for pattern in explicit_list_patterns:
+        for match in re.finditer(pattern, separator_preserving_query):
+            numbers.update(int(token) for token in re.findall(r"\d+", match.group(0)))
     return numbers
 
 
@@ -11172,6 +11176,13 @@ def render_card(packet: dict[str, Any]) -> str:
     )
 
 
+def nonempty_selector(value: str) -> str:
+    """Reject supplied blanks without changing absent or nonblank selectors."""
+    if not value.strip():
+        raise argparse.ArgumentTypeError("must not be empty or whitespace")
+    return value
+
+
 def query_args_packet(
     argv: list[str] | tuple[str, ...] | None = None,
 ) -> tuple[dict[str, Any], str]:
@@ -11183,41 +11194,43 @@ def query_args_packet(
     """
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--claim", metavar="ID")
-    group.add_argument("--paper-label", metavar="LABEL")
-    group.add_argument("--paper-source", metavar="SOURCE_PATH")
-    group.add_argument("--paper-anchor", metavar="LABEL_OR_SOURCE_REF")
-    group.add_argument("--open", metavar="ID")
-    group.add_argument("--declaration", metavar="NAME")
-    group.add_argument("--goal-support", metavar="LEAN_OR_MATHEMATICAL_GOAL")
-    group.add_argument("--proof-plan", metavar="LEAN_OR_MATHEMATICAL_GOAL")
-    group.add_argument("--proof-cone", metavar="DECLARATION")
+    group.add_argument("--claim", type=nonempty_selector, metavar="ID")
+    group.add_argument("--paper-label", type=nonempty_selector, metavar="LABEL")
+    group.add_argument("--paper-source", type=nonempty_selector, metavar="SOURCE_PATH")
+    group.add_argument("--paper-anchor", type=nonempty_selector, metavar="LABEL_OR_SOURCE_REF")
+    group.add_argument("--open", type=nonempty_selector, metavar="ID")
+    group.add_argument("--declaration", type=nonempty_selector, metavar="NAME")
+    group.add_argument("--goal-support", type=nonempty_selector, metavar="LEAN_OR_MATHEMATICAL_GOAL")
+    group.add_argument("--proof-plan", type=nonempty_selector, metavar="LEAN_OR_MATHEMATICAL_GOAL")
+    group.add_argument("--proof-cone", type=nonempty_selector, metavar="DECLARATION")
     group.add_argument(
         "--dependency-path",
+        type=nonempty_selector,
         nargs=2,
         metavar=("SOURCE_DECLARATION", "TARGET_DECLARATION"),
     )
-    group.add_argument("--source", metavar="MODULE_DOT_LEAN:LINE")
-    group.add_argument("--artifact", metavar="PATH_OR_SHA256")
-    group.add_argument("--publication-artifact", metavar="ID")
+    group.add_argument("--source", type=nonempty_selector, metavar="MODULE_DOT_LEAN:LINE")
+    group.add_argument("--artifact", type=nonempty_selector, metavar="PATH_OR_SHA256")
+    group.add_argument("--publication-artifact", type=nonempty_selector, metavar="ID")
     group.add_argument(
         "--publication-evidence",
+        type=nonempty_selector,
         nargs="?",
         const="summary",
         metavar="MUTATION_ID",
     )
-    group.add_argument("--module", metavar="PATH_OR_ID")
-    group.add_argument("--connections", metavar="MODULE_OR_DECLARATION")
-    group.add_argument("--route", metavar="ID")
-    group.add_argument("--status", metavar="CLAIM_STATUS")
-    group.add_argument("--publication-family", metavar="ID")
+    group.add_argument("--module", type=nonempty_selector, metavar="PATH_OR_ID")
+    group.add_argument("--connections", type=nonempty_selector, metavar="MODULE_OR_DECLARATION")
+    group.add_argument("--route", type=nonempty_selector, metavar="ID")
+    group.add_argument("--status", type=nonempty_selector, metavar="CLAIM_STATUS")
+    group.add_argument("--publication-family", type=nonempty_selector, metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
     group.add_argument("--overview", action="store_true")
     group.add_argument("--papers", action="store_true")
     group.add_argument("--tour", action="store_true")
     group.add_argument("--vocabulary", action="store_true")
-    group.add_argument("--search", metavar="TEXT")
-    group.add_argument("--ask", metavar="QUESTION")
+    group.add_argument("--search", type=nonempty_selector, metavar="TEXT")
+    group.add_argument("--ask", type=nonempty_selector, metavar="QUESTION")
     parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT)
     parser.add_argument(
         "--depth",

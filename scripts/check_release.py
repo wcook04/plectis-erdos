@@ -252,6 +252,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_check_release_environment.py"),
         ],
+        "proof_workbench": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_proof_workbench.py"),
+        ],
         "computation_replay": [
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
@@ -275,6 +279,13 @@ def late_check_commands() -> dict[str, list[str]]:
         "clone_footprint": [
             sys.executable,
             str(ROOT / "scripts" / "test_clone_footprint.py"),
+        ],
+        "markdown_table_render": [
+            sys.executable,
+            str(ROOT / "scripts" / "check_markdown_table_render.py"),
+            "--fail-on",
+            "overflow",
+            ".",
         ],
     }
 
@@ -2263,6 +2274,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_contribution_entry.py"),
             ],
+            "source_attribution_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_source_attributions.py"),
+            ],
             "human_first_contact": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_human_first_contact.py"),
@@ -2364,6 +2379,12 @@ def main(argv: list[str] | None = None) -> int:
         contribution_entry_check.returncode == 0,
         "public contribution and credit entry failed: "
         f"{child_output(contribution_entry_check)}",
+    )
+    source_attribution_fixture_check = mid_checks["source_attribution_fixtures"]
+    check(
+        source_attribution_fixture_check.returncode == 0,
+        "source attribution fixture suite failed: "
+        f"{child_output(source_attribution_fixture_check)}",
     )
     agent_navigation_paper_check = mid_checks["agent_navigation_paper"]
     check(
@@ -2801,7 +2822,7 @@ def main(argv: list[str] | None = None) -> int:
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "computation_replay",
+        "proof_workbench", "computation_replay",
     ):
         result = late_checks[name]
         check(result.returncode == 0,
