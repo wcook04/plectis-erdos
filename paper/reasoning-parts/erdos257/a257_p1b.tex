@@ -579,17 +579,19 @@ If an infinite-support series (with a positive element) equals a rational $p/(2^
 is bounded, $\forall\varepsilon>0\ \exists B,\ \forall N{\ge}1\ \forall h,\
 \mathrm{SupportCoeffZeroWindow}(A,c{+}N,h) \to h\le\varepsilon\log_2 N+B$ — a rational-valued
 support series cannot have super-logarithmic gaps in its Dirichlet-incidence coefficient. Uses
-the elementary divisor-count bound $\tau(n)^k\le(k^{2^k})^k\cdot n$ (257rig:i4b) feeding a
+the elementary divisor-count bound $\tau(n)^k\le(k^{2^k})^k\cdot n$ for $n\ge1$, $k\ge1$
+(257rig:i4b), feeding a
 support-tail envelope combined with the doubling-tail recurrence.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:divisor-envelope} \lean{supportCoeffZeroWindow\_length\_le\_eps\_logb}{SublogDivisorCoverage.lean:435}
 \end{thm}
 
 \begin{prop}[257rig:i4b --- \texttt{card\_divisors\_pow\_le\_divisorSubpowerConst\_pow\_mul}]
-$\tau(n)^k \le (k^{2^k})^k\cdot n$ for all $n,k$ — a pure number-theory fact with zero
-support/problem content, directly reusable anywhere a $1/k$-power divisor-count envelope is
-needed. Would plausibly transfer to a \#249 argument bounding zero-runs of $\varphi$ itself,
-though $\varphi$'s growth is linear not polylog, so the same zero-window CONCLUSION would not
-transfer — only this underlying divisor-bound lemma might, via a different route.
+For positive integers $n,k$,
+$\tau(n)^k \le (k^{2^k})^k\cdot n$, or equivalently
+$\tau(n)\le k^{2^k}n^{1/k}$. The constant absorbs the finitely many primes
+below $2^k$; for larger primes, $(\nu+1)^k\le p^\nu$ controls each factor
+of the divisor product. This estimate can be reused independently of the
+support problem; a zero-window conclusion still needs the tail recurrence.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:divisor-envelope} \lean{card\_divisors\_pow\_le\_divisorSubpowerConst\_pow\_mul}{SublogDivisorCoverage.lean:107}
 \end{prop}
 

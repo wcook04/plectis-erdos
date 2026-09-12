@@ -55,25 +55,34 @@ open. Paper: `erdos-243-reciprocal-tail-rigidity.pdf`.
 
 **#249 — Is \(\sum_{n\ge1}\varphi(n)/2^n\) irrational?**
 
-Lean checks a rational basis for the full dyadic totient kernel, true level rank
-\(2^e+1\) for \(e\ge1\), the \(7.96\times10^{34}\) finite denominator exclusion,
-and diagonal certificates for every \(t\le82\). No \(t=83\) or unbounded
-certificate producer is proved; the exact cofinal equivalences diagnose rather
-than solve the problem. Paper: `erdos-249-binary-totient-series.pdf`.
+An ordinary proof gives section rank \(k^e+1\) for every integer base
+\(k\ge2\) and \(e\ge1\); Lean checks the dyadic rank and integral normal form.
+Under hypothetical rationality, one Lean-checked carry has section ranks at
+least \(2^e-1\) and eventually periodic congruence sections. These properties
+are not proved contradictory. Finite denominator exclusions and certificates
+through \(t=82\) supply no unbounded producer. Paper:
+`erdos-249-binary-totient-series.pdf`.
 
 **#251 — Is \(\sum_{n\ge1}p_n/2^n\) irrational, equivalently the associated
 consecutive-prime-gap dyadic series?**
 
-Lean checks finite summation by parts, the exact prime/prime-gap equivalence
-under summability, and integral-shift recurrence consumers. Cofinal
-nonintegrality or adjacent small-shift witnesses for the actual prime gaps, plus
-the concrete infinite-sum bridge, remain open. Paper:
+Lean checks the prime/prime-gap equivalence and a synthetic rational countermodel
+with positive even logarithmically bounded digits and prime-scale cumulative
+positions. For hypothetical rational actual-prime tails, an ordinary PNT
+argument forces many repeated small tail values. Equal tails have difference
+zero and do not supply the missing cofinal nonintegral tail witness. Paper:
 `erdos-251-prime-gap-dyadic-series.pdf`.
 
 **#257 — For every infinite \(A\subseteq\mathbb N_{>0}\), is
 \(\sum_{n\in A}1/(2^n-1)\) irrational?**
 
-Lean checks full support, finite-period noncollapse, named structured families,
+An ordinary weighted summability theorem covers every reciprocal-summable
+support and some supports with divergent reciprocal sum. For finite nonempty
+prime set \(P\), let \(h(a)\) be the largest \(P\)-supported divisor of \(a\).
+If \(\sum_{a\in A}h(a)/(a(b^{h(a)}-1))<\infty\), then
+\(\sum_{a\in A}1/(b^a-1)\) is irrational for that integer base \(b\ge2\).
+The long paper supplies the full ordinary proof; it is not formalised.
+Lean separately checks full support, finite-period noncollapse, named structured families,
 hereditary unique coding, and the compactness, topology, perfectness, and exact
 measure dichotomy of restricted achievement sets. Prime support at base 2 and
 squarefree support at power-of-two bases are cited prior results. No arithmetic

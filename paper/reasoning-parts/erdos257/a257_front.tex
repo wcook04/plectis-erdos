@@ -76,6 +76,246 @@ full support, the contribution of exponents $a>N$ alone gives
 $\Delta_{2,\mathbb N_{>0}}(N)>1-2^{-N}\ge1/2$. Full-support irrationality
 therefore uses a different argument; its checked form appears below.
 
+\subsection{Finite prime-part weighted mass}
+
+\begin{thm}[Finite prime-part weighted mass]
+\label{thm:257-weighted}
+Let $b\ge2$ be an integer, let $\mathcal P$ be a finite nonempty set of
+primes, and let $A\subseteq\mathbb N_{>0}$ be infinite.  Write
+\[
+ h(a)=\prod_{p\in\mathcal P}p^{v_p(a)}.
+\]
+If
+\begin{equation}\label{eq:257-weighted-mass}
+ W_{b,\mathcal P}(A):=
+ \sum_{a\in A}\frac{h(a)}{a\bigl(b^{h(a)}-1\bigr)}<\infty,
+\end{equation}
+then
+\[
+ S_b(A):=\sum_{a\in A}\frac1{b^a-1}
+\]
+is irrational.  More precisely, for
+\[
+ \Delta_{b,A}(m)=
+ \sum_{a\in A}\frac{b^{m\bmod a}-1}{b^a-1},
+\]
+for every $\varepsilon>0$ and every $N$ there is an $m\ge N$ with
+$0<\Delta_{b,A}(m)<\varepsilon$.
+\par\ev{Math}\scale{uniform}\coord{divisibility-weighted}
+\end{thm}
+
+\begin{proof}
+We first record the rational obstruction and three finite estimates used to
+defeat it.  If $m=qa+r$, $0\le r<a$, then
+\[
+ \frac{b^m-1}{b^a-1}-\frac{b^r-1}{b^a-1}
+   =\sum_{j=1}^{q}b^{m-ja}.
+\]
+Consequently
+\begin{equation}\label{eq:257-weighted-lattice}
+ \Delta_{b,A}(m)=(b^m-1)S_b(A)-J_{b,A}(m),
+ \qquad
+ J_{b,A}(m)=
+ \sum_{\substack{a\in A\\a\le m}}
+ \sum_{j=1}^{\lfloor m/a\rfloor}b^{m-ja}\in\mathbb Z.
+\end{equation}
+The integer sum is finite.  Moreover $\Delta_{b,A}(m)>0$: since $A$ is
+infinite, some $a\in A$ exceeds $m$, and its summand is positive.  Thus, if
+$S_b(A)=u/v$ with $v>0$, equation~\eqref{eq:257-weighted-lattice} gives
+$v\Delta_{b,A}(m)\in\mathbb Z$, whence
+\begin{equation}\label{eq:257-weighted-gap}
+ \Delta_{b,A}(m)\ge \frac1v\qquad(m\ge1).
+\end{equation}
+It is therefore enough to construct arbitrarily small positive displacements.
+
+Put
+\[
+ \phi_a(m)=\frac{b^{m\bmod a}}{b^a-1},
+ \qquad
+ d_a(m)=\phi_a(m)-\frac1{b^a-1}.
+\]
+Then $d_a(m)\ge0$ and $\Delta_{b,A}(m)=\sum_{a\in A}d_a(m)$.
+For $Q,a,T\ge1$, put $g=(Q,a)$.  The residues $tQ\bmod a$ have period
+$a/g$ and visit $0,g,\ldots,a-g$ once in a period, so
+\[
+ \sum_{t=1}^{a/g}\phi_a(tQ)
+ =\frac{1+b^g+\cdots+b^{a-g}}{b^a-1}
+ =\frac1{b^g-1}.
+\]
+Complete periods and at most one incomplete period therefore give
+\begin{equation}\label{eq:257-weighted-gcd-average}
+ \frac1T\sum_{t=1}^{T}d_a(tQ)
+ \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
+\end{equation}
+We shall also use that $n/(b^n-1)$ decreases for positive integers $n$;
+indeed
+\[
+ n(b^{n+1}-1)-(n+1)(b^n-1)
+ =b^n\bigl(n(b-1)-1\bigr)+1>0.
+\]
+
+The part of the support beyond the observation range has a uniform bound.  If
+$Y=QT$ and $a>Y\ge tQ$, then $tQ\bmod a=tQ$ and
+$d_a(tQ)\le2\,2^{tQ-a}$.  Hence
+\[
+ \sum_{a>Y}d_a(tQ)\le2\,2^{tQ-Y},
+ \qquad
+ \sum_{t=1}^{T}2^{tQ-Y}
+ =\sum_{j=0}^{T-1}2^{-jQ}\le2,
+\]
+and therefore
+\begin{equation}\label{eq:257-weighted-outer}
+ \frac1T\sum_{t=1}^{T}
+ \sum_{\substack{a\in A\\a>QT}}d_a(tQ)\le\frac4T.
+\end{equation}
+
+Finally, let $\alpha_a\ge0$ with $\sum_a\alpha_a/a<\infty$.  For $Q,M\ge1$,
+finite rearrangement and a geometric sum give
+\begin{equation}\label{eq:257-weighted-dyadic-average}
+ \sum_{j=M}^{2M-1}\frac1{2^j}
+       \sum_{a\le Q2^j}\alpha_a
+ \le 2Q\sum_{a\ge1}\frac{\alpha_a}{a}.
+\end{equation}
+Indeed, for each fixed $a$ the admissible indices satisfy $2^j\ge a/Q$ and
+\[
+ \sum_{\substack{M\le j<2M\\a\le Q2^j}}2^{-j}\le\frac{2Q}{a}.
+\]
+Only finitely many terms occur on the left, so no infinite interchange is
+hidden here.
+
+We now choose the diagonal scale.  Fix $\varepsilon>0$ and a lower bound
+$N$.  Select a finite $F\subseteq A$ such that
+\begin{equation}\label{eq:257-weighted-tail-choice}
+ \sum_{a\in A\setminus F}
+ \frac{h(a)}{a(b^{h(a)}-1)}<\varepsilon,
+\end{equation}
+and put $L=\operatorname{lcm}(F)$, with $L=1$ if $F$ is empty.  Write
+$p_*=\max\mathcal P$ and $r=|\mathcal P|$.  For a large integer $H\ge2p_*$,
+set
+\[
+ Q_0(H)=\prod_{p\in\mathcal P}p^{\lfloor\log_pH\rfloor},
+ \qquad Q=LQ_0(H),
+ \qquad G=\left\lfloor\frac H{p_*}\right\rfloor.
+\]
+Then $Q\le LH^r$, $G\ge1$, and every $a\in F$ divides $Q$, so its
+$d_a(tQ)$ contribution vanishes.
+
+Consider first $a\in A\setminus F$ with $a\le QT$ and $h(a)\le H$.
+Every prime-power factor of $h(a)$ occurs in $Q_0(H)$, hence
+$h(a)\mid Q_0(H)$ and $(Q,a)\ge h(a)$.  Applying
+\eqref{eq:257-weighted-gcd-average} and the monotonicity above, the total
+contribution of these $a$ is at most
+\begin{equation}\label{eq:257-weighted-small-part}
+ \varepsilon+
+ \frac1T\sum_{\substack{a\in A, a\le QT\\h(a)\le H}}
+ \frac1{b^{h(a)}-1}.
+\end{equation}
+The first term is paid for by~\eqref{eq:257-weighted-tail-choice}.
+
+For $h(a)>H$, one has $(Q,a)\ge G$.  If every $\mathcal P$-prime-power
+component of $h(a)$ is at most $H$, then $h(a)\mid Q_0(H)$ and the gcd is
+larger than $H$.  Otherwise some $p^{v_p(a)}>H$, and the gcd contains
+$p^{\lfloor\log_pH\rfloor}>H/p\ge H/p_*$.  Thus
+\eqref{eq:257-weighted-gcd-average}, enlarged from the support to all
+$a\le QT$, bounds the large-$h(a)$ part by
+\begin{equation}\label{eq:257-weighted-large-part}
+ \frac{G(1+\log(QT))+Q}{b^G-1};
+\end{equation}
+we used $\sum_{a\le QT}a^{-1}\le1+\log(QT)$ and
+$\#\{a\le QT\}/T=Q$.
+
+Let
+\[
+ \mathcal A(Q,T)=\frac1T\sum_{t=1}^{T}\Delta_{b,A}(tQ).
+\]
+Combining \eqref{eq:257-weighted-outer},
+\eqref{eq:257-weighted-small-part}, and
+\eqref{eq:257-weighted-large-part} gives
+\begin{equation}\label{eq:257-weighted-master-average}
+ \mathcal A(Q,T)\le
+ \varepsilon+
+ \frac1T\sum_{\substack{a\in A, a\le QT\\h(a)\le H}}
+       \frac1{b^{h(a)}-1}
+ +\frac{G(1+\log(QT))+Q}{b^G-1}+\frac4T.
+\end{equation}
+Choose
+\[
+ M=\left\lfloor b^{G/2}\right\rfloor
+\]
+and average~\eqref{eq:257-weighted-master-average} over
+$T=2^j$, $M\le j<2M$.  Apply
+\eqref{eq:257-weighted-dyadic-average} with
+$\alpha_a={\bf1}_A(a)/(b^{h(a)}-1)$.  Its hypothesis holds because
+\[
+ \sum_a\frac{\alpha_a}{a}
+ =\sum_{a\in A}\frac1{a(b^{h(a)}-1)}
+ \le W_{b,\mathcal P}(A).
+\]
+We obtain the explicit finite diagonal estimate
+\begin{equation}\label{eq:257-weighted-final-diagonal}
+ \frac1M\sum_{j=M}^{2M-1}\mathcal A(Q,2^j)
+ \le \varepsilon+\frac{2QW_{b,\mathcal P}(A)}M
+ +\frac{G(1+\log Q+2M\log2)+Q}{b^G-1}
+ +4\,2^{-M}.
+\end{equation}
+
+As $H\to\infty$,
+\[
+ Q\le LH^r,\qquad G=H/p_*+O(1),\qquad M\asymp b^{G/2}.
+\]
+Consequently $Q/M\to0$, $GM/b^G\to0$,
+$(G\log Q+Q)/b^G\to0$, and $2^{-M}\to0$.  For sufficiently large $H$,
+we may also arrange $Q\ge N$ and make the right side of
+\eqref{eq:257-weighted-final-diagonal} smaller than $2\varepsilon$.
+The left side is a finite average of positive numbers
+$\Delta_{b,A}(tQ)$.  One of them therefore satisfies
+\[
+ 0<\Delta_{b,A}(tQ)<2\varepsilon,
+ \qquad tQ\ge Q\ge N.
+\]
+The construction is valid for every positive $\varepsilon$; applying it with
+$\varepsilon/2$ proves the stated cofinal bound with $\Delta_{b,A}(m)<\varepsilon$.
+This contradicts~\eqref{eq:257-weighted-gap} if $S_b(A)$ is rational.
+\end{proof}
+
+Since $b^{h(a)}-1\ge2^{h(a)}-1$ for every $b\ge2$, one has
+$W_{b,\mathcal P}(A)\le W_{2,\mathcal P}(A)$.  Thus the base-two weighted
+hypothesis gives the conclusion simultaneously at every integer base.  The
+hypothesis is also hereditary under passage to infinite subsets.
+
+\paragraph{Evidence boundary.}
+This is a complete ordinary proof, not an end-to-end Lean theorem.  The finite
+orbit argument and analytic diagonal above are not discharged by a linked
+declaration.  For comparison only, the pinned corpus checks the adjacent
+pairwise-coprime support theorem
+\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776}
+and the distinct block-certificate engine
+\lean{irrational\_erdosSupportSeries\_of\_weighted\_coeff\_certificates}{CertificateKernel.lean:9031}.
+Neither declaration is presented as the finite-prime weighted theorem.
+Nothing here covers all infinite supports, supplies a quantitative
+irrationality measure, or asserts theorem priority.
+
+\paragraph{Why the hypothesis is strictly weaker than reciprocal summability.}
+At base two take
+\[
+ A_\star=\{2^k m:k\ge1,\ m\text{ odd},\ m\le2^{2^k}\}.
+\]
+Writing $N_k=2^{2^k}$, the reciprocal mass of its $k$th layer is
+\[
+ R_k=2^{-k}\!\sum_{\substack{m\le N_k\\m\text{ odd}}}\frac1m
+ =2^{-k}\bigl(H_{N_k}-\tfrac12H_{N_k/2}\bigr)
+ \longrightarrow\frac{\log2}{2}.
+\]
+Thus $\sum_{a\in A_\star}1/a$ diverges.  For $\mathcal P=\{2\}$,
+the weighted contribution of the same layer is
+\[
+ \frac{2^k}{2^{2^k}-1}R_k,
+\]
+and these contributions are summable.  The theorem therefore proves
+hereditary all-base irrationality for every infinite subset of an explicit
+reciprocal-divergent host.
+
+
 \subsection{The object and the two exact statements}
 
 For an integer $n \ge 1$ set $x_n := 1/(2^n-1)$, and for $A \subseteq \{1,2,3,\dots\}$ write
@@ -105,10 +345,10 @@ uncountably many, and a proof of $1/2 \notin \mathcal{A}$ leaves (U) entirely op
 maximally symmetric candidate counterexample to (U), not a restatement of it; the asymmetry is
 load-bearing and recurs below as Barrier~\ref{bar:asym}. \ev{Math}
 
-The reciprocal-summable theorem and the checked support theorems below leave
-(U) and (H) open. The later countermodels identify the particular arithmetic
-information lost by individual approaches; they do not prove that all such
-failures have one common cause.
+The reciprocal-summable and finite-prime weighted theorems, together with the
+checked support theorems below, leave (U) and (H) open. The later countermodels
+identify the particular arithmetic information lost by individual approaches;
+they do not prove that all such failures have one common cause.
 
 \subsection{The unconditional record, universal direction}
 

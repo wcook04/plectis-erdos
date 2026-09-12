@@ -398,7 +398,26 @@
       "commands": [
         "python3 scripts/query_corpus.py --papers"
       ],
-      "boundary": "Settle exact mathematics and evidence first; revise the paper, then reconcile its consumers and propagate reusable lessons before closeout."
+      "boundary": "Settle exact mathematics and evidence first; revise the paper, then reconcile its consumers and propagate reusable lessons before closeout.",
+      "task_intents": [
+        {
+          "actions": [
+            "edit",
+            "proofread",
+            "refine",
+            "revise",
+            "rewrite"
+          ],
+          "objects": [
+            "abstract",
+            "abstracts",
+            "manuscript",
+            "manuscripts",
+            "paper",
+            "papers"
+          ]
+        }
+      ]
     },
     {
       "id": "add_problem",
@@ -580,7 +599,9 @@
         "crowded docs",
         "organize docs",
         "organise docs",
-        "documentation layout"
+        "documentation layout",
+        "cli error recovery",
+        "research session creation"
       ],
       "skills": [
         "maintain-public-infrastructure"

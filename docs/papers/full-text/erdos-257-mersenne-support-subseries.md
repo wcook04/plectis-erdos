@@ -1,6 +1,6 @@
 <a id="erdos-257-mersenne-support-subseries"></a>
 
-# Reciprocal-Summable Support Irrationality at Every Integer Base
+# Weighted Support Criteria for Reciprocal Mersenne Subseries
 
 <div class="center">
 
@@ -8,13 +8,17 @@
 
 </div>
 
-For every infinite set $`A`$ of positive integers with $`\sum_{a\in A}1/a<\infty`$, we give a complete proof that $`\sum_{a\in A}(b^a-1)^{-1}`$ is irrational at every integer base $`b\ge2`$. Averaging modular divisor atoms produces arbitrarily small positive displacements, which rationality would confine to a fixed lattice. Erdős stated this coprimality-free extension; the all-base quantifier is already his. Finite denominator periods and the actual greedy return inequality delimit the remaining arithmetic problem. Universal irrationality remains unresolved.
+For a finite nonempty prime set $`P`$, put $`h(a)=\prod_{p\in P}p^{v_p(a)}`$. We prove that every infinite $`A`$ with
+``` math
+\sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
+```
+has irrational $`\sum_{a\in A}(b^a-1)^{-1}`$ at every integer base $`b\ge2`$. The condition is hereditary and strictly weaker than reciprocal summability: an explicit host has divergent $`\sum_{a\in A}1/a`$ while satisfying the weighted condition. Finite gcd-orbit averages and a second average over dyadic observation lengths produce arbitrarily small positive displacements, which rationality would confine to a fixed lattice. Erdős already stated the weaker coprimality-free reciprocal-summable theorem, including its all-base quantifier; a complete proof is printed here as well. Both results are ordinary mathematics rather than end-to-end Lean theorems. Universal irrationality remains unresolved.
 
 <a id="sec:problem"></a>
 
 # Introduction and main results
 
-Write $`X_A(b)=\sum_{a\in A}(b^a-1)^{-1}`$ for $`A\subseteq\mathbb{N}_{>0}`$ and an integer $`b\ge2`$. Our first result is the following.
+Write $`X_A(b)=\sum_{a\in A}(b^a-1)^{-1}`$ for $`A\subseteq\mathbb{N}_{>0}`$ and an integer $`b\ge2`$. We begin with the simpler reciprocal-summable case; Section <a href="#sec:eight-return-extensions" data-reference-type="ref" data-reference="sec:eight-return-extensions">3</a> proves the stronger finite-prime weighted criterion.
 
 <div id="res:reciprocal-support" class="theorem">
 
@@ -50,7 +54,7 @@ Thus arbitrary infinite thinnings of the powerful integers are included.
 
 </div>
 
-Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> excludes the entire reciprocal-summable region. Later sections record claimed extensions into the reciprocal-divergent region; those arguments are not independently assessable from this checkout. The final section retains the actual arithmetic constraint for a proposed rational value.
+Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> excludes the entire reciprocal-summable region. Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a> reaches a strictly larger class and an explicit reciprocal-divergent host. Later sections keep the quantitative, mixed-support, prime-power and stronger host constructions separate where their arguments are not independently assessable from this checkout. The final section retains the actual arithmetic constraint for a proposed rational value.
 
 Erdős proved the pairwise-coprime case at every integer base and stated that the coprimality condition could be removed, leaving the details unprinted \[erdos1968, p. 222\]. Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> gives a complete proof of that stated extension. The all-base quantifier is already in Erdős’s statement.
 
@@ -106,32 +110,112 @@ Thus the limiting averages of the nonnegative displacements $`\Delta_{b,A}(Q_tm)
 
 The order of limits is essential: the observation length tends to infinity with the modulus fixed, and only then does the modulus increase. Reciprocal summability controls both interchanges.
 
-Section 2 contains the complete reciprocal-summable support argument. Several stronger extensions in later sections refer to proof supplements that are not linked in this public checkout. Their exposition is therefore incomplete here, and they are not promoted as independently assessable results of this release.
+Section 2 contains the complete reciprocal-summable support argument. The next section proves a strictly weaker finite-prime weighted hypothesis. The later quantitative, mixed-support, prime-power and cost-separation claims remain separately unassessed where their proofs are not printed here.
 
 <a id="sec:eight-return-extensions"></a>
 
 # Extensions beyond reciprocal summability
 
-The weighted criterion (W), its reciprocal-divergent host example, and the quantitative criterion below are claimed extensions whose proof supplements are absent from this checkout. They are not established results of this release. The finite estimate (S) and the strengthened cover theorem later in this section have their own printed proofs and are separate from those unavailable arguments.
+The finite-prime weighted theorem below has a complete ordinary proof in this manuscript. The finite estimate (S) and strengthened cover theorem later in this section retain their separate proofs.
 
-<a id="claimed-weighted-criterion-unassessed-here"></a>
+<a id="finite-prime-part-weighted-mass"></a>
 
-## Claimed weighted criterion (unassessed here)
+## Finite prime-part weighted mass
 
-For a finite nonempty prime set $`P`$, let $`h(a)=\prod_{p\in P}p^{v_p(a)}`$. The absent supplement claims that the weighted condition
+For a finite nonempty prime set $`P`$, put $`h(a)=\prod_{p\in P}p^{v_p(a)}`$.
+
+<div id="res:weighted-support" class="theorem">
+
+**Theorem 3** (finite prime-part weighted mass). *Let $`b\ge2`$ be an integer and let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
 ``` math
-\sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
-  \tag{W}\label{eq:weighted-return}
+\begin{equation}
+\label{eq:weighted-fixed-base}
+ W_{b,P}(A):=\sum_{a\in A}
+ \frac{h(a)}{a(b^{h(a)}-1)}<\infty,
+\end{equation}
 ```
-implies irrationality of $`\sum_{a\in A}(b^a-1)^{-1}`$ for every infinite $`A`$ and every integer $`b\ge2`$. The conclusion is hereditary under passage to infinite subsets. A fixed-base version replaces $`2`$ by $`b`$ in the condition; arbitrary nested divisibility chains have the same criterion with $`h(a)`$ the largest chain element dividing $`a`$. No complete proof of these claims is present in this checkout.
-
-Here the decisive estimate is a finite orbit average. If $`g=(a,Q)`$, then
+then $`X_A(b)`$ is irrational. In particular, the base-two condition
 ``` math
-\frac1T\sum_{m=1}^T
- \frac{b^{Qm\bmod a}-1}{b^a-1}
+\begin{equation}
+\label{eq:weighted-return}
+ \sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
+ \tag{W}
+\end{equation}
+```
+implies that $`X_A(b)`$ is irrational for every integer $`b\ge2`$. Both conclusions are hereditary under passage to infinite subsets.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The rational-lattice obstruction is <a href="#eq:intro-displacement" data-reference-type="eqref" data-reference="eq:intro-displacement">[eq:intro-displacement]</a>: if $`X_A(b)=p/q`$, every positive $`\Delta_{b,A}(m)`$ is at least $`1/q`$. For $`d_a(m)=(b^{m\bmod a}-1)/(b^a-1)`$ and $`g=(Q,a)`$, one complete orbit of $`Qm\bmod a`$ gives, for $`Q,a,T\ge1`$,
+``` math
+\begin{equation}
+\label{eq:weighted-finite-orbit}
+ \frac1T\sum_{t=1}^T d_a(tQ)
  \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
+\end{equation}
 ```
-The second term cannot be discarded before summing over $`a`$. The claimed argument proceeds as follows; its truncation bounds remain unassessed. Choose $`Q`$ to freeze the finite prefix and all small $`P`$-parts. Average again over $`T=2^j`$, $`M\le j<2M`$. The incomplete-period contribution from small $`P`$-parts is at most $`2QW/M`$, where $`W`$ is the sum in <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a>; the large-part contribution is suppressed by the exponential denominator. This produces arbitrarily small positive shifted-atom displacements. The integral lattice gap then gives irrationality, and the binary atom comparison gives every larger base. The named truncation estimates and an explicit reciprocal-divergent host with gaps $`O(\log\log a)`$ are referred to a supplement that is not in this checkout.
+Indeed, the orbit has length $`a/g`$ and $`\sum_{t=1}^{a/g}b^{tQ\bmod a}/(b^a-1)=1/(b^g-1)`$; an incomplete orbit costs at most one more complete orbit. Also, for $`Y=QT`$,
+``` math
+\begin{equation}
+\label{eq:weighted-outer-short}
+ \frac1T\sum_{t=1}^T\sum_{\substack{a\in A\\a>Y}}d_a(tQ)
+ \le\frac4T,
+\end{equation}
+```
+because $`d_a(tQ)\le2\,2^{tQ-a}`$ when $`a>QT`$ and $`\sum_{t=1}^T2^{tQ-QT}\le2`$.
+
+The incomplete-orbit errors are controlled by a second finite average. For $`\alpha_a\ge0`$ with $`\sum_a\alpha_a/a<\infty`$,
+``` math
+\begin{equation}
+\label{eq:weighted-dyadic-short}
+ \sum_{j=M}^{2M-1}\frac1{2^j}\sum_{a\le Q2^j}\alpha_a
+ \le2Q\sum_{a\ge1}\frac{\alpha_a}{a};
+\end{equation}
+```
+for each fixed $`a`$, the admissible geometric tail is at most $`2Q/a`$.
+
+Fix $`\varepsilon>0`$. Choose finite nonempty $`F\subseteq A`$ so that the <a href="#eq:weighted-fixed-base" data-reference-type="eqref" data-reference="eq:weighted-fixed-base">[eq:weighted-fixed-base]</a> mass outside $`F`$ is below $`\varepsilon`$, and let $`L=\operatorname{lcm}(F)`$. With $`p_*=\max P`$, $`r=|P|`$, and large $`H\ge2p_*`$, set
+``` math
+Q=L\prod_{p\in P}p^{\lfloor\log_pH\rfloor},\qquad
+ G=\left\lfloor\frac H{p_*}\right\rfloor.
+```
+The set $`F`$ is frozen. If $`h(a)\le H`$, then $`h(a)\mid Q`$, so <a href="#eq:weighted-finite-orbit" data-reference-type="eqref" data-reference="eq:weighted-finite-orbit">[eq:weighted-finite-orbit]</a> is paid by the weighted tail plus its incomplete-orbit term. If $`h(a)>H`$, then $`(Q,a)\ge G`$, and monotonicity of $`n/(b^n-1)`$ bounds that part by
+``` math
+\frac{G(1+\log(QT))+Q}{b^G-1}.
+```
+For the gcd claim, either every $`P`$-prime-power component of $`h(a)`$ is at most $`H`$, in which case $`h(a)\mid Q`$, or some $`p^{v_p(a)}>H`$ contributes $`p^{\lfloor\log_pH\rfloor}>H/p\ge H/p_*\ge G`$ to the gcd. Combining this with <a href="#eq:weighted-outer-short" data-reference-type="eqref" data-reference="eq:weighted-outer-short">[eq:weighted-outer-short]</a>, taking $`M=\lfloor b^{G/2}\rfloor`$, averaging over $`T=2^j`$ for $`M\le j<2M`$, and using <a href="#eq:weighted-dyadic-short" data-reference-type="eqref" data-reference="eq:weighted-dyadic-short">[eq:weighted-dyadic-short]</a> with $`\alpha_a={\bf1}_A(a)/(b^{h(a)}-1)`$ yields
+``` math
+\begin{equation}
+\label{eq:weighted-main-bound}
+ \frac1M\sum_{j=M}^{2M-1}\frac1{2^j}
+ \sum_{t=1}^{2^j}\Delta_{b,A}(tQ)
+ \le \varepsilon+\frac{2QW_{b,P}(A)}M
+ +\frac{G(1+\log Q+2M\log2)+Q}{b^G-1}+4\,2^{-M}.
+\end{equation}
+```
+Here $`Q\le LH^r`$, $`G=H/p_*+O(1)`$ and $`M\asymp b^{G/2}`$, so every term after $`\varepsilon`$ tends to zero. The left side is a finite average of positive displacements, so one is below $`2\varepsilon`$ for large $`H`$; rerunning with $`\varepsilon/2`$ gives the required bound. This contradicts the rational lattice. Finally $`W_{b,P}(A)\le W_{2,P}(A)`$ for $`b\ge2`$, and weighted mass decreases on taking subsets. ◻
+
+</div>
+
+The hypothesis is genuinely weaker than reciprocal summability. Let
+``` math
+A_\star=\{2^k m:k\ge1,\ m\text{ odd},\ m\le2^{2^k}\}.
+```
+If $`N_k=2^{2^k}`$, the reciprocal mass in its $`k`$th layer is
+``` math
+R_k=2^{-k}\sum_{\substack{m\le N_k\\m\text{ odd}}}\frac1m
+ =2^{-k}\bigl(H_{N_k}-\tfrac12H_{N_k/2}\bigr)
+ \longrightarrow\frac{\log2}{2},
+```
+so $`\sum_{a\in A_\star}1/a`$ diverges. For $`P=\{2\}`$ the weighted mass of that layer is
+``` math
+\frac{2^k}{2^{2^k}-1}R_k,
+```
+and these terms are summable. Thus every infinite subset of $`A_\star`$ has irrational $`X_A(b)`$ at every integer base. This example establishes strictness only; the stronger previously proposed host with $`O(\log\log a)`$ gaps is not asserted here.
+
+The theorem and this example are complete ordinary proofs. No single Lean declaration is cited as their proof, and no priority claim is made. The arbitrary-chain, quantitative, mixed-support and prime-power extensions remain separate from Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a>.
 
 <a id="claimed-quantitative-criterion-unassessed-here"></a>
 
@@ -185,7 +269,7 @@ f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d},\qquad
 
 <div id="thm:variable-fractional-cover" class="theorem">
 
-**Theorem 3** (strengthened positive covers). *If
+**Theorem 4** (strengthened positive covers). *If
 ``` math
 \sum_{j\ge1}\frac{C_j2^{j\alpha_j}}{2^{\alpha_j}-1}<\infty,
  \tag{V}\label{eq:strengthened-cover}
@@ -213,7 +297,7 @@ The fixed rational lattice excludes rationality at base two. For every $`b\ge2`$
 
 </div>
 
-The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$, replacing $`2^{-j}`$ by $`\eta_j`$. The condition strengthens the earlier two-inverse-power cost $`\sum_jC_j2^{j\alpha_j}2^{\alpha_j}/(2^{\alpha_j}-1)^2<\infty`$. There is a squarefree support $`A^\star`$ satisfying <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a> for which every cover with that older cost, and every finite-prime weighted criterion, fails. Its complete construction is referred to *Strengthened Variable-Exponent Cover*, which is not in this checkout.
+The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$, replacing $`2^{-j}`$ by $`\eta_j`$. The condition strengthens the earlier two-inverse-power cost $`\sum_jC_j2^{j\alpha_j}2^{\alpha_j}/(2^{\alpha_j}-1)^2<\infty`$. The unavailable *Strengthened Variable-Exponent Cover* supplement claims a squarefree support $`A^\star`$ satisfying <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a> for which every cover with that older cost, and every finite-prime weighted criterion, fails. Its construction is not in this checkout and is not a result of the present release.
 
 <a id="what-every-positive-cover-must-pay"></a>
 
@@ -247,7 +331,7 @@ For the lower bound, condition on $`q\mid n`$ and write $`f_F(n)=2^Z`$. The Chin
 ```
 Thus the optimised cost is asymptotically $`eS/q`$.
 
-The weighted class and the strengthened-cover class are incomparable. The support $`A^\star`$ above lies only in the latter. In the reverse direction, disjoint prime blocks with reciprocal mass of order $`2^k`$, placed in frames $`\{2^kd:d\mid M_k\}`$, give a support $`A_W`$ satisfying <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a>; its first logarithmic moments diverge, so <a href="#eq:cover-log-obstruction" data-reference-type="eqref" data-reference="eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> excludes every strengthened cover. Exact constructions and the scalar minimisation are referred to *First Logarithmic Moment of Positive Covers*, which is not in this checkout. These comparisons concern the individual sufficient classes.
+An unavailable supplement claims that the weighted class and the strengthened-cover class are incomparable. Its proposed support $`A^\star`$ lies only in the latter. In the reverse direction, it proposes disjoint prime blocks with reciprocal mass of order $`2^k`$, placed in frames $`\{2^kd:d\mid M_k\}`$, to give a support $`A_W`$ satisfying <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a> whose first logarithmic moments diverge; then <a href="#eq:cover-log-obstruction" data-reference-type="eqref" data-reference="eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> would exclude every strengthened cover. The exact constructions are referred to *First Logarithmic Moment of Positive Covers*, which is not in this checkout, so this incomparability is not a result of the present release.
 
 <a id="combining-the-two-support-criteria"></a>
 
@@ -257,7 +341,7 @@ The following mixed statement is a claimed extension. Its complete parameter sch
 
 <div id="res:mixed-supports" class="theorem">
 
-**Theorem 4** (mixed weighted and cover supports; claimed, complete argument not in this checkout). *Suppose $`E`$ has finite weighted mass <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a> for a finite nonempty prime set, and $`V`$ admits a strengthened positive cover <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a>. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
+**Theorem 5** (mixed weighted and cover supports; claimed, complete argument not in this checkout). *Suppose $`E`$ has finite weighted mass <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a> for a finite nonempty prime set, and $`V`$ admits a strengthened positive cover <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a>. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
 </div>
 
@@ -285,7 +369,7 @@ For a finite nonempty $`F\subseteq\mathbb{N}_{>0}`$, let $`D_F`$ be the positive
 
 <div id="res:period" class="theorem">
 
-**Theorem 5** (finite-period noncollapse). *Let $`F\subseteq\mathbb{N}_{>0}`$ be finite and nonempty, let $`b\ge2`$ be an integer, and let $`D_F>0`$ be the denominator of $`x_F(b)`$ in lowest terms. Then $`D_F`$ is coprime to $`b`$, and
+**Theorem 6** (finite-period noncollapse). *Let $`F\subseteq\mathbb{N}_{>0}`$ be finite and nonempty, let $`b\ge2`$ be an integer, and let $`D_F>0`$ be the denominator of $`x_F(b)`$ in lowest terms. Then $`D_F`$ is coprime to $`b`$, and
 ``` math
 \operatorname{ord}_{D_F}(b)=\operatorname{lcm}\{n:n\in F\}.
 ```
@@ -380,7 +464,7 @@ The nonnegative integer defect obeys
 
 <div id="res:general-repair" class="theorem">
 
-**Theorem 6** (general greedy repair criterion). *For every real $`x\ge0`$, the following are equivalent:
+**Theorem 7** (general greedy repair criterion). *For every real $`x\ge0`$, the following are equivalent:
 ``` math
 \begin{gathered}
  x\in\mathcal A;\\
@@ -429,7 +513,7 @@ The preceding arguments isolate two different tasks. For new irrational supports
 
 <div id="res:one-over-twenty-one-frontier" class="theorem">
 
-**Theorem 7** (fatal-branch quotient refinement at $`1/21`$). *The following statements hold.*
+**Theorem 8** (fatal-branch quotient refinement at $`1/21`$). *The following statements hold.*
 
 1.  *$`1/21\in\mathcal A`$ if and only if $`\mathcal F_{21}`$ does not hold.*
 
@@ -443,7 +527,7 @@ The equivalence is [one div twenty one mem iff not fatal Aligned Branch](https:/
 
 <div id="res:terminalhalf" class="theorem">
 
-**Theorem 8** (terminal scaled vanishing implies the half-value). *Let $`S`$ be a `HalfTerminalOnlyScaledVanishingSequence`: its finite words exclude ranks $`0`$ and $`1`$, their depths tend to infinity, and the absolute terminal carry divided by $`2^M`$ tends to zero along the depths $`M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with*
+**Theorem 9** (terminal scaled vanishing implies the half-value). *Let $`S`$ be a `HalfTerminalOnlyScaledVanishingSequence`: its finite words exclude ranks $`0`$ and $`1`$, their depths tend to infinity, and the absolute terminal carry divided by $`2^M`$ tends to zero along the depths $`M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with*
 
 *``` math
 \sum_{a\in A}\frac1{2^a-1}=\frac12.
@@ -454,7 +538,7 @@ Consequently the universal irrationality assertion in Problem <a href="#res:pro
 
 <div id="res:cylinderhalf" class="theorem">
 
-**Theorem 9** (cofinal cylinders imply an infinite half-support). *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$ and a nonempty `CylinderStage` $`K~M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with $`0\notin A`$ and*
+**Theorem 10** (cofinal cylinders imply an infinite half-support). *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$ and a nonempty `CylinderStage` $`K~M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with $`0\notin A`$ and*
 
 *``` math
 \sum_{a\in A}\frac{1}{2^a-1}=\frac12.
@@ -465,7 +549,7 @@ Thus the universal irrationality assertion in Problem #257 is false under this 
 
 <div id="prob:one-over-twenty-one-membership" class="problem">
 
-**Problem 10** (membership of 1/21 in the Mersenne achievement set). Prove cofinal crossings of the exact moving lower separatrix
+**Problem 11** (membership of 1/21 in the Mersenne achievement set). Prove cofinal crossings of the exact moving lower separatrix
 ``` math
 2\,\operatorname{scaledGreedyRemainder}(1/21,N)
  <\operatorname{mersenneScale}(N+1).
@@ -476,7 +560,7 @@ Equivalently, exclude the explicit fatal/cofinite/aligned branch $`\mathcal F_{2
 
 <div id="prob:scaled-return" class="problem">
 
-**Problem 11** (weakest native recurrence criterion). Does the scaled actual greedy remainder return cofinally to one bounded interval?
+**Problem 12** (weakest native recurrence criterion). Does the scaled actual greedy remainder return cofinally to one bounded interval?
 ``` math
 \exists B<\infty\ \forall K\ \exists N\ge K:
  \qquad 2^N r_N\le B.
@@ -486,13 +570,13 @@ Equivalently, exclude the explicit fatal/cofinite/aligned branch $`\mathcal F_{2
 
 <div id="prob:actual-invariant" class="problem">
 
-**Problem 12** (actual-orbit invariant). Is there a finite-memory, $`2`$-adic or discrepancy invariant, using the correlated divisor pulses of the actual support, that forces a closed return or forbids permanent supercapacity? More precisely, can one use a bounded window of $`R\bmod6`$, residues of $`s_R`$, endpoint divisor counts and the finite set of eventual skips to force descent or a forbidden state? Alternatively, can one prove that no bounded-memory invariant distinguishes the true orbit from synthetic permanent-supercapacity controls?
+**Problem 13** (actual-orbit invariant). Is there a finite-memory, $`2`$-adic or discrepancy invariant, using the correlated divisor pulses of the actual support, that forces a closed return or forbids permanent supercapacity? More precisely, can one use a bounded window of $`R\bmod6`$, residues of $`s_R`$, endpoint divisor counts and the finite set of eventual skips to force descent or a forbidden state? Alternatively, can one prove that no bounded-memory invariant distinguishes the true orbit from synthetic permanent-supercapacity controls?
 
 </div>
 
 <div id="prob:fatal-interval" class="problem">
 
-**Problem 13** (final-skip Diophantine exclusion). Let $`E=\sum_{n\ge1}(2^n-1)^{-1}`$. If $`1/21\notin\mathcal A`$, let $`M`$ be the last skipped exponent, $`S_M`$ its finite skipped prefix, and
+**Problem 14** (final-skip Diophantine exclusion). Let $`E=\sum_{n\ge1}(2^n-1)^{-1}`$. If $`1/21\notin\mathcal A`$, let $`M`$ be the last skipped exponent, $`S_M`$ its finite skipped prefix, and
 ``` math
 a_M=\frac1{21}+\sum_{d\in S_M}\frac1{2^d-1}.
 ```
@@ -511,7 +595,7 @@ The logarithmic obstruction <a href="#eq:cover-log-obstruction" data-reference-t
 
 Finite-period noncollapse has the counterpart [rational-denominator noncollapse](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5246). Full-support irrationality is [the full-support theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328); pairwise-coprime summable-reciprocal support is [the pairwise-coprime theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776). Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> itself is ordinary mathematics in this note and has no Lean counterpart in this checkout: the filenames `AllBaseReciprocalSupportIrrationality.lean`, `SignedFinitePeriodNoncollapse.lean` and `GreedyRepairCriterion.lean` are not present. The source checkpoint is `99f4bf47422a`; later counterparts are identified separately rather than attributed to that checkpoint.
 
-The finite estimate <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a> and Theorem <a href="#thm:variable-fractional-cover" data-reference-type="ref" data-reference="thm:variable-fractional-cover">3</a> have complete ordinary proofs in this note and are results of this release. The weighted criterion, the quantitative criterion, the claimed support $`A^\star`$ separating the two cover costs, the mixed theorem, and prime-power thinning instead refer to ordinary proofs that are not linked in this public checkout (*Strengthened Variable-Exponent Cover*, *First Logarithmic Moment of Positive Covers*, *Mixed Support Synchronisation*, *Prime-Incidence Boundary*, and the analytic proof supplement). Those latter extensions are therefore not independently assessable here and are not promoted as results of this release. No universal irrationality conclusion is asserted.
+The finite estimate <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a> and Theorem <a href="#thm:variable-fractional-cover" data-reference-type="ref" data-reference="thm:variable-fractional-cover">4</a> have complete ordinary proofs in this note and are results of this release. The finite-prime weighted criterion, Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a>, and its simple reciprocal-divergent host also have complete ordinary proofs here. They have no end-to-end Lean counterpart in this checkout. The quantitative criterion, the stronger claimed support $`A^\star`$ separating the two cover costs, the mixed theorem, and prime-power thinning instead refer to ordinary proofs that are not linked in this public checkout (*Strengthened Variable-Exponent Cover*, *First Logarithmic Moment of Positive Covers*, *Mixed Support Synchronisation*, *Prime-Incidence Boundary*, and the analytic proof supplement). Those latter extensions are therefore not independently assessable here and are not promoted as results of this release. No universal irrationality conclusion is asserted.
 
 <a id="app:sources"></a>
 
