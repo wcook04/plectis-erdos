@@ -2234,6 +2234,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_human_first_contact.py"),
             ],
+            "downstream_example": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_downstream_example_contract.py"),
+            ],
             "agent_navigation_paper": [
                 sys.executable,
                 str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
@@ -2294,6 +2298,12 @@ def main(argv: list[str] | None = None) -> int:
         f"{child_output(architecture_fixture_check)}",
     )
     agent_entry_check = mid_checks["agent_entry"]
+    downstream_check = mid_checks["downstream_example"]
+    check(
+        downstream_check.returncode == 0,
+        "downstream example and its documentation route failed: "
+        f"{child_output(downstream_check)}",
+    )
     check(
         agent_entry_check.returncode == 0,
         "clone-local agent entry failed: "
