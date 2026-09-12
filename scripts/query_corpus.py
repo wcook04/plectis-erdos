@@ -5192,7 +5192,23 @@ def is_repository_overview_query(query: str) -> bool:
         "what is plectis lean",
         "everything interesting and non trivial in this repo",
     )
-    return any(cue in text for cue in exact_cues)
+    if any(cue in text for cue in exact_cues):
+        return True
+    result_cues = (
+        "headline result",
+        "headline theorem",
+        "lean checked",
+        "lean verified",
+    )
+    open_cues = (
+        "remain open",
+        "remains open",
+        "still open",
+        "open question",
+    )
+    return any(cue in text for cue in result_cues) and any(
+        cue in text for cue in open_cues
+    )
 
 
 def is_agent_capability_discovery_query(query: str) -> bool:
