@@ -39,6 +39,46 @@ recognition credit. Validate a saved return with
 if the return would change a reviewed claim, consult the authoritative
 [methodology](../methodology.json).
 
+## Start a structured continuation
+
+This section is optional for an ordinary issue or pull request. For a
+structured continuation package, run `start` from the repository root before
+editing or committing research changes. It records the current `HEAD`; it does
+not recover the starting commit after the work. Use Git and Python 3.11 or
+newer, as in the [clone setup](../REPRODUCIBILITY.md#1-start-with-a-complete-committed-checkout).
+The command refuses a dirty checkout by default. Record unrelated work
+explicitly if you use its `--allow-dirty` option.
+
+Replace the quoted fields with the selected route and contributor details.
+Choose a new session name; retain it for the later commands.
+
+```sh
+SESSION='<new-session-name>'
+python3 scripts/continue_research.py start \
+  --session "$SESSION" \
+  --problem '<problem number>' \
+  --frontier '<exact frontier handle>' \
+  --intent '<bounded question>' \
+  --stop-condition '<when to stop>' \
+  --contributor '<name or handle>'
+```
+
+Use `--operator` if the operator differs from the contributor. The optional
+`--model-system`, `--provider` and repeatable `--material-collaborator 'Name::Role'`
+fields record the identities known at the start; omitted model/provider fields
+are recorded as `undisclosed`. For a fork or local mirror, use
+`--repository-origin` with the public repository URL to which the return is
+addressed. This does not change the recorded starting commit.
+
+The command queries the selected problem and opens a workbench session. It
+writes `continuation.json`, `route.json`, `route-memory-consultation.json`,
+`route-memory-return-template.json` and the workbench ledger under
+`workbench/sessions/$SESSION/`, then prints JSON with the starting commit and
+next commands. The route-memory files record which previous routes were
+consulted. Keep the generated originals unchanged. `start` does not create the
+main `return.json`; [fill and package the return](#fill-and-package-the-structured-return)
+after recording the work and its outcome.
+
 ## Formal handoff from exposition
 
 Resolve the public navigation handle before filling the bounded route. For a
@@ -168,46 +208,58 @@ declaration is not automatically a reviewed claim.
 
 ## 4. Evidence and replay
 
-For a fresh-machine replay, start from the pinned public snapshot and record
-the toolchain and dependency bootstrap before running any consumer.  Use
-exactly one fresh contributor checkout for the replay; do not create a second clone,
-worktree, copied tree, or duplicate dependency cache:
+Run the evidence commands on the contributed files. The starting commit
+identifies the base of the change; checking out that commit alone does not
+reproduce a proposed patch. For a fresh-machine replay, use one new checkout
+and keep the supplied package outside it:
 
 ```sh
-git clone --filter=blob:none https://github.com/wcook04/plectis-erdos <destination>
-cd <destination>
-git checkout --detach <starting commit>
+git clone --filter=blob:none https://github.com/wcook04/plectis-erdos '<destination>'
+cd '<destination>'
+git checkout --detach '<starting commit>'
 test "$(git status --porcelain)" = ""
-test -s lean-toolchain
-toolchain="$(cat lean-toolchain)"
-elan toolchain install "$toolchain"
-test -s lake-manifest.json
-cache_receipt="$(python3 scripts/validation_singleflight.py submit --class toolchain-cache)"
-cache_key="$(printf '%s\n' "$cache_receipt" | python3 -c \
-  'import json,sys; print(json.load(sys.stdin)["key"])')"
-python3 scripts/validation_singleflight.py status --key "$cache_key"
-python3 scripts/validation_singleflight.py collect --key "$cache_key" \
-  --wait --timeout-seconds 1800
 ```
 
-The cache is an optional accelerator. The tracked source, `lean-toolchain`,
-and `lake-manifest.json` are the reproducibility inputs; do not rely on a
-machine-local cache or an ambient default toolchain. Record the exact
-parallelism, timeout, and first next action when a replay is bounded or stops.
-
-List each command actually run, from the repository root, with its exit state.
-Do not write `passed` for a command that was not run.
-
-Before running the evidence commands, start from the exact public generation
-recorded above in a clean clone:
+Then select the artifact recorded in section 1. For an attached patch, inspect
+and apply it to the recorded base, including newly added files:
 
 ```sh
-git checkout --detach <starting commit>
+git apply --stat '<supplied patch>'
+git apply --check --index '<supplied patch>'
+git apply --index '<supplied patch>'
+git diff --cached --check
+git diff --cached --stat
+```
+
+For a proposed commit, fetch that commit from the public remote named in the
+return, verify that it descends from the recorded base, and select it instead
+of applying a patch:
+
+```sh
+git fetch '<public remote containing the contribution>' '<proposed commit>'
+git merge-base --is-ancestor '<starting commit>' '<proposed commit>'
+git checkout --detach '<proposed commit>'
 git rev-parse HEAD
 ```
 
-Record that checkout as the replay ref so a later repository generation cannot
-silently change the observed result.
+Stop if the patch does not apply or the ancestry command fails; record the
+failure before attempting integration changes. For an exact file attachment,
+copy the supplied files to their declared paths in the base checkout and
+record their hashes. Record the starting commit and the tested artifact:
+proposed commit, patch hash, or file paths and hashes. Do not reset to the
+starting commit before running the evidence commands.
+
+Install Lean only when replaying a Lean proof, build or workbench probe. Follow
+[the pinned Lean environment instructions](../REPRODUCIBILITY.md#2-reproduce-the-pinned-lean-environment)
+for elan installation, the version in `lean-toolchain`, and the dependencies
+in `lake-manifest.json`. The dependency cache is an optional accelerator.
+A prose review or Python computation does not require Lean unless its recorded
+command invokes Lean. Use the dependencies required by that command. Record
+the exact parallelism, timeout, and first next action when a replay is bounded
+or stops.
+
+List each command actually run, from the repository root, with its exit state.
+Do not write `passed` for a command that was not run.
 
 ```text
 command: <exact command>
@@ -216,57 +268,93 @@ observed: <short output or failure class>
 environment: <pinned toolchain / relevant public dependency>
 ```
 
-Minimum useful evidence, as applicable:
+Select the commands relevant to the returned change. For example, a
+navigation/documentation change may use
+`python3 scripts/check_cold_clone_comprehension.py --quick`, while a problem
+route can be inspected with `python3 scripts/query_corpus.py --route erdos_<number>`.
+For Lean, include the focused build or replay command and the exact source
+module. For a finite computation, include its bounded parameters and script
+path. For an inconclusive attempt, include the last completed step and first
+next command. Validation of the return's JSON fields does not execute these
+evidence commands.
+
+### Fill and package the structured return
+
+Run this sequence in the contributor checkout containing the session opened
+above. A recipient replaying only a patch does not need to start a replacement
+session or create an accepted receipt.
+
+Choose a new directory outside the checkout for the filled return files:
 
 ```sh
-git diff --check
-python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/query_corpus.py --route erdos_<number>
-python3 scripts/validate_research_return.py return.json \
-  --require-submitted --check-git \
-  --require-route-memory-receipt \
-  --route-memory-receipt route-memory.json
+RETURN_DIR='../research-return'
+mkdir "$RETURN_DIR"
+cp "workbench/sessions/$SESSION/route-memory-return-template.json" \
+  "$RETURN_DIR/route-memory.json"
 ```
 
-For a continuation package, keep the canonical route-memory sidecar beside
-`return.json`; the sidecar-gated command above is the GitHub-intake form.
+Write `$RETURN_DIR/return.json` using the
+[return schema](schema/research-return-receipt.schema.json) and
+[JSON example](../../scripts/fixtures/research_returns/valid_inconclusive.json).
+The example is a validation fixture: replace its identity, dates, paths,
+evidence and outcomes with the actual work, and use
+`"record_kind": "submitted_return"` for a proposed return. Copy the starting
+commit, repository origin, question, stop condition and identities from the
+session's `continuation.json`; preserve the boundaries recorded in sections
+1–3 and 5–7 of this template.
 
-When the return follows a provider-neutral continuation session, run the
-session join before packaging the artifact so the public starting generation,
-repository origin, problem route, frontier, identity, and result class are
-checked against the opened session:
+Fill the copied `route-memory.json` with the same `return_id` and the actual
+relationship to the consulted routes. Preserve its canonical route-memory
+path and digest. Do not edit the generated consultation or return template
+inside the session. The packager requires both filled files; it does not
+infer them from the source diff or from this Markdown account.
+
+After recording the work and following the clone's consequence-propagation
+skill, close the workbench session with an outcome and summary:
+
+```sh
+python3 scripts/proof_workbench.py close \
+  --session "$SESSION" \
+  --outcome '<established|open|abandoned>' \
+  --summary '<actual outcome and remaining limitation>'
+```
+
+Choose one outcome. `checked_positive` requires `established`, which the
+workbench permits only with a kernel-accepted probe and an attributable claim.
+`negative` permits `established` or `abandoned`; `inconclusive` permits `open`
+or `abandoned`; `corrective` requires `established`. Use the result class supported by
+the work, not whichever makes packaging succeed.
+
+Then validate the filled records and their agreement with the opened session:
 
 ```sh
 python3 scripts/continue_research.py check \
-  --session <session> \
-  --return-json return.json \
-  --replay
-```
-
-This join check makes the return replayable from the recorded public
-generation; it does not promote a claim or bypass methodology review.
-
-When the continuation session supplies a detached `route-memory.json`, keep
-that sidecar beside `return.json` and bind it at intake. The sidecar is the
-separate authority for the consulted route and its digest; do not copy
-canonical route text into this package. Run the provider-neutral join and the
-GitHub-intake validator with the sidecar required:
-
-```sh
-python3 scripts/continue_research.py check \
-  --session <session> \
-  --return-json return.json \
-  --route-memory-receipt route-memory.json
-python3 scripts/validate_research_return.py return.json \
+  --session "$SESSION" \
+  --return-json "$RETURN_DIR/return.json" \
+  --route-memory-receipt "$RETURN_DIR/route-memory.json"
+python3 scripts/validate_research_return.py "$RETURN_DIR/return.json" \
   --require-submitted --check-git \
   --require-route-memory-receipt \
-  --route-memory-receipt route-memory.json
+  --route-memory-receipt "$RETURN_DIR/route-memory.json"
 python3 scripts/continue_research.py package \
-  --session <session> \
-  --return-json return.json \
-  --route-memory-receipt route-memory.json \
-  --output <plain-package-directory>
+  --session "$SESSION" \
+  --return-json "$RETURN_DIR/return.json" \
+  --route-memory-receipt "$RETURN_DIR/route-memory.json" \
+  --output "$RETURN_DIR/package"
 ```
+
+Run the next command only if the previous command succeeds. `check` validates
+session/return agreement but does not require closure; `package` also requires
+a closed session with a compatible outcome. Add `--replay` to `check` or
+`package` only to rerun stored workbench Lean probes in the current checkout.
+It does not apply the proposed patch or run every command listed in
+`return.json`.
+
+The package directory must not already exist. The command copies the filled
+inputs as `return.json` and `route-memory.json`, copies selected session
+records and probe files, and writes `package.json` with file hashes. Keep the
+proposed source commit, patch or file attachments beside this directory;
+packaging does not copy every changed source file or publish the return.
 
 Record the exact `route_memory.sha256`, `return_id`, route relationship, and
 changed-evidence paths from the sidecar; the validator rejects a different
