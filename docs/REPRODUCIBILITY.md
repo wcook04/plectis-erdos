@@ -10,6 +10,7 @@ Everything below uses this public checkout and public tools.
 | What you want to do | Start here | What you need |
 |---|---|---|
 | Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
+| Rerun a finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
 | Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
 | Compile a proof | [Set up Lean](#2-reproduce-the-pinned-lean-environment) | elan, the pinned dependencies, and space for several gigabytes of cache |
 | Reproduce all public checks | [Release checks](#3-run-the-release-surface-checks) | Lean plus the pinned Python validation tools |
@@ -69,6 +70,22 @@ purposes; [the paper index](../paper/README.md) keeps the current papers togethe
 For the full claim inventory, use `python3 scripts/verify_claims.py --verify-all`.
 This mode also uses the current checkout. It additionally reports missing
 paper labels and references to claim IDs absent from the inventory.
+
+### Reproduce a finite computation
+
+The #251 paper includes three computations with saved results and public
+programs. Start with the complete continued-fraction calculation:
+
+```sh
+python3 research/experiments/erdos251/replay.py
+```
+
+Expect `matched_recorded_result: true`; this takes about four seconds on the
+maintainer's machine and uses only the Python standard library. The
+[computation guide](../research/experiments/erdos251/README.md) explains the
+other two runs, their memory and dependency requirements, and how to change
+an input. Matching these finite results does not prove irrationality or
+cofinality, and the programs do not run Lean.
 
 ### Check the clone's navigation and metadata
 

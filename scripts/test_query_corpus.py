@@ -19,6 +19,7 @@ import subprocess
 import sys
 from collections.abc import Callable
 from pathlib import Path
+from unittest.mock import patch
 
 import query_corpus
 import query_semantic
@@ -269,6 +270,66 @@ def validate_programme_routes() -> None:
         assert card.returncode == 0
         assert card.stdout.startswith(f"programme {route_id} |")
         assert "| resume=python3 scripts/query_route_memory.py --problem " in card.stdout
+
+
+def validate_finite_computation_replay_queries() -> None:
+    """A replay question reaches public programs before loading the math corpus."""
+    questions = (
+        "How do I reproduce the finite computations for Erdos 251?",
+        "Replay the Erdős #251 numerical experiments",
+        "Where can I find computation receipts for problem 251?",
+        "How do I rerun the Erdos 251 continued-fraction calculation?",
+    )
+    guide = ROOT / "research/experiments/erdos251/README.md"
+    guide_text = guide.read_text(encoding="utf-8")
+    with patch.object(query_corpus, "load", side_effect=AssertionError("replay route loaded the corpus")):
+        for question in questions:
+            for option in ("--ask", "--search"):
+                packet = query(option, question, "--format", "json")
+                assert packet["kind"] == "finite_computation_replay"
+                assert packet["erdos_number"] == 251
+                assert packet["guide"] == str(guide.relative_to(ROOT))
+                assert (ROOT / packet["receipts"]).is_dir()
+                replay = packet["default_replay"]
+                assert replay["command"] == "python3 research/experiments/erdos251/replay.py"
+                assert replay["dependencies"] == "Python standard library only"
+                assert replay["expected_success"] == "matched_recorded_result: true"
+                commands = [replay["command"], packet["other_standard_library_case"],
+                            *packet["optional_numpy_case"]["commands"]]
+                assert all(command in guide_text for command in commands)
+                assert packet["verification_scope"] == "finite_computation_only"
+                assert "do not prove irrationality or cofinality" in packet["boundary"]
+                assert "do not run Lean" in packet["boundary"]
+                assert "does not rerun computations" in packet["receipt_check"]["scope"]
+                card = run(option, question, "--format", "card")
+                assert card.returncode == 0, card.stderr
+                assert packet["guide"] in card.stdout
+                assert all(command in card.stdout for command in commands)
+                assert len(card.stdout.encode("utf-8")) <= 2_500
+                assert len(card.stdout.splitlines()) <= 12
+            default_card = run("--ask", question)
+            assert default_card.stdout.startswith("finite computation replay |")
+
+    for question in (
+        "Which Erdos 251 results are Lean-checked and what remains open?",
+        "What is proved about Erdos 251?",
+        "How do I reproduce the Lean proof verification for Erdos 251?",
+        "Replay the finite computation theorem proof for Erdos 251",
+        "How do I prove Erdos 251 by reproducing its finite computations?",
+        "How do I reproduce Erdos 251?",
+        "How do I reproduce the finite computations for Erdos 249?",
+        "How do I reproduce the finite computations for Erdos 999?",
+        "How do I replay finite computations for Erdos 251 and 257?",
+    ):
+        assert query_corpus.finite_computation_replay_packet(question) is None
+    for question, expected_problem in (
+        ("What is proved about Erdos 251?", 251),
+        ("How do I reproduce the Lean proof verification for Erdos 251?", 251),
+        ("How do I reproduce the finite computations for Erdos 249?", 249),
+    ):
+        packet = query("--ask", question, "--format", "json")
+        assert packet["kind"] == "semantic_slice"
+        assert packet["query_interpretation"]["problem_constraint"]["erdos_number"] == expected_problem
 
 
 def validate_problem_reader_journey() -> None:
@@ -2254,6 +2315,7 @@ def main() -> int:
     validate_programme_routes()
     validate_indexed_problem_routes()
     validate_problem_reader_journey()
+    validate_finite_computation_replay_queries()
     validate_research_corpus_fingerprint()
     validate_lean_code_projection()
     validate_agent_tour()

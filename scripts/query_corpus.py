@@ -6265,6 +6265,61 @@ def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
     }
 
 
+def finite_computation_replay_packet(query: str) -> dict[str, Any] | None:
+    """Route an explicit #251 computation-replay request without corpus loading."""
+    if explicit_problem_numbers(query) != {251}:
+        return None
+    terms = set(normalized_search_text(query).split())
+    if terms & {"prove", "proving", "proof", "proofs", "theorem", "theorems", "lean", "kernel", "comparator"}:
+        return None
+    replay_intent = bool(terms & {"run", "rerun", "repeat", "where", "find", "locate"}) or any(
+        term.startswith(("reproduc", "replay")) for term in terms
+    )
+    computation_context = bool(terms & {"numerical", "receipts"}) or any(
+        term.startswith(("comput", "calculat", "experiment")) for term in terms
+    )
+    if not (replay_intent and computation_context):
+        return None
+    directory = "research/experiments/erdos251"
+    return {
+        "kind": "finite_computation_replay",
+        "query": query,
+        "erdos_number": 251,
+        "guide": f"{directory}/README.md",
+        "receipts": f"{directory}/receipts",
+        "python_requirement": "Python 3.11 or newer",
+        "working_directory": "repository root",
+        "default_replay": {
+            "case": "continued-fraction",
+            "command": f"python3 {directory}/replay.py",
+            "dependencies": "Python standard library only",
+            "expected_success": "matched_recorded_result: true",
+        },
+        "other_standard_library_case": f"python3 {directory}/replay.py --case free-pair",
+        "optional_numpy_case": {
+            "case": "adjacent-mismatch",
+            "requirements": f"{directory}/requirements.txt",
+            "commands": [
+                "python3 -m venv .venv-computations",
+                f".venv-computations/bin/python -m pip install -r {directory}/requirements.txt",
+                f".venv-computations/bin/python {directory}/replay.py --case adjacent-mismatch",
+            ],
+        },
+        "receipt_check": {
+            "command": f"python3 {directory}/replay.py --check",
+            "scope": "Check saved program hashes and receipt shape; does not rerun computations.",
+        },
+        "verification_scope": "finite_computation_only",
+        "authority_posture": "reproduction_navigation_not_proof_or_independent_review",
+        "boundary": (
+            "These finite computations do not prove irrationality or cofinality. "
+            "The Python programs do not run Lean. Floating-point event counts are "
+            "numerical observations, not individually certified witnesses. Matching "
+            "a saved receipt is reproducibility evidence, not independent mathematical review."
+        ),
+    }
+
+
 def multi_problem_query_boundary_packet(query: str) -> dict[str, Any] | None:
     """Route explicit multi-problem questions without inventing a comparison."""
     requested_numbers = sorted(explicit_problem_numbers(query))
@@ -6474,6 +6529,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     query = query.strip()
     if not query:
         raise ValueError("search query must not be empty")
+    replay_packet = finite_computation_replay_packet(query)
+    if replay_packet is not None:
+        return replay_packet
     scope_boundary = corpus_scope_boundary_packet(query)
     if scope_boundary is not None:
         return scope_boundary
@@ -8192,6 +8250,9 @@ def best_reading_route_result(query: str) -> dict[str, Any] | None:
 
 def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     """Compile a question into a bounded, witness-carrying semantic subgraph."""
+    replay_packet = finite_computation_replay_packet(query)
+    if replay_packet is not None:
+        return replay_packet
     scope_boundary = corpus_scope_boundary_packet(query)
     if scope_boundary is not None:
         return scope_boundary
@@ -10830,6 +10891,20 @@ def render_card(packet: dict[str, Any]) -> str:
             f"witness_edges={len(packet['minimal_witness_subgraph']['edges'])} "
             f"| omitted={packet['omission_receipt'].get('omitted_match_count', 0)}"
         )
+        return "\n".join(rows)
+    if kind == "finite_computation_replay":
+        replay = packet["default_replay"]
+        rows = [
+            f"finite computation replay | Erdős #{packet['erdos_number']} | guide={packet['guide']}",
+            f"run from {packet['working_directory']} | {packet['python_requirement']}",
+            f"default | {replay['command']} | {replay['dependencies']}",
+            f"expected success | {replay['expected_success']} | receipts={packet['receipts']}",
+            f"other stdlib case | {packet['other_standard_library_case']}",
+            "optional NumPy case | adjacent-mismatch:",
+            *packet["optional_numpy_case"]["commands"],
+            f"receipt check | {packet['receipt_check']['command']} | {packet['receipt_check']['scope']}",
+            f"boundary | {packet['boundary']}",
+        ]
         return "\n".join(rows)
     if kind == "corpus_scope_boundary":
         requested = ",".join(
