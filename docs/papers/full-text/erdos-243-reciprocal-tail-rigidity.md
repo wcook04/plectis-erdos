@@ -36,7 +36,7 @@ then $`a_{n+1}=a_n^2-a_n+1`$ for all sufficiently large $`n`$.*
 
 </div>
 
-Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">1</a> is an ordinary transfer of the integer-state theorem below, proved in Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a>. The analytic transfer is separate from the linked Lean theorem.
+Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">1</a> is an ordinary transfer of the integer-state theorem below, proved in Section <a href="#sec:transfer" data-reference-type="ref" data-reference="sec:transfer">4</a>. The analytic transfer is separate from the linked Lean theorem. The separate public Lean release [`wcook04/plectis-erdos-lean`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E243/Challenge.lean#L116) at commit `52f29ad1` states Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">1</a> itself, with the defect bounded above from some index onward, as `original_coordinate_bounded_defect` in `PalomarCorpus/E243/Challenge.lean` and proves it. That repository’s Linux replay of Palomar’s Comparator stage accepted the entry with the Lean kernel and with NanoDa ([run 34782407633](https://github.com/wcook04/plectis-erdos-lean/actions/runs/34782407633)).
 
 <a id="the-obstruction."></a>
 

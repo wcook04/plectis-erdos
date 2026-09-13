@@ -659,8 +659,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 851,
-          "line_end": 853,
+          "line_start": 875,
+          "line_end": 877,
           "expected_text": "\\bibitem{cantor1869}",
           "excerpt_sha256": "sha256:f7f783a750919f760d5509a1087835b3e7cbfd988e6d420a29ddd8357a72026c"
         },
@@ -894,8 +894,8 @@
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 778,
-          "line_end": 781,
+          "line_start": 792,
+          "line_end": 795,
           "expected_text": "\\bibitem{coons}",
           "excerpt_sha256": "sha256:7462f7ee632276c82c66d18aaf501d71868bd58a402e17cd314ed53bded10763"
         }
@@ -1467,8 +1467,8 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 827,
-          "line_end": 831,
+          "line_start": 836,
+          "line_end": 840,
           "expected_text": "\\bibitem{badea1993}",
           "excerpt_sha256": "sha256:8a9384c13600f371f64e2f766eab33714ac448cd7c07d6c0b7d31adb38f0385e"
         },
@@ -1734,8 +1734,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 890,
-          "line_end": 893,
+          "line_start": 906,
+          "line_end": 909,
           "expected_text": "\\bibitem{loxtonvdp1977}",
           "excerpt_sha256": "sha256:193d1746404fe0ae7cf8a8f2af1390886c16891dab719c551712a52d637dabb9"
         },
@@ -2316,8 +2316,8 @@
       "artifact_links": [
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 791,
-          "line_end": 794,
+          "line_start": 805,
+          "line_end": 808,
           "expected_text": "\\bibitem{fan2026totient}",
           "excerpt_sha256": "sha256:0822fac97e86223a8b6f04b6934255a94ff5a1bac5295fa89506967946301d9b"
         }
@@ -3437,8 +3437,8 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 823,
-          "line_end": 827,
+          "line_start": 832,
+          "line_end": 836,
           "expected_text": "\\bibitem{duverney2001}",
           "excerpt_sha256": "sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06"
         },
@@ -3796,8 +3796,8 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 848,
-          "line_end": 854,
+          "line_start": 857,
+          "line_end": 863,
           "expected_text": "\\bibitem{koizumi2025}",
           "excerpt_sha256": "sha256:82ba58f2cc1febdd7a2b78054bddda49230645613cb683b0986b0949f38e09fa"
         },
@@ -4311,8 +4311,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 865,
-          "line_end": 870,
+          "line_start": 881,
+          "line_end": 886,
           "expected_text": "\\bibitem{erdos1974letter}",
           "excerpt_sha256": "sha256:46bc8e13992d2c2c9223061e4f8c1771a68638e58578fcea5b1c9472e2a3729b"
         },
@@ -5422,8 +5422,8 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 831,
-          "line_end": 835,
+          "line_start": 840,
+          "line_end": 844,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:df0e63df25873358641ed4070061c15e5f66adb3d2707f788d4aba4c941addb4"
         },
@@ -5436,8 +5436,8 @@
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 788,
-          "line_end": 791,
+          "line_start": 802,
+          "line_end": 805,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:3451dd866e80517dacca63cfc17bb749148b4d10abfd461e6010a2773dc28e22"
         },
@@ -5464,8 +5464,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 855,
-          "line_end": 861,
+          "line_start": 871,
+          "line_end": 877,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:9b9152e1a2b6436e5ae1334e4d32ed81c874388f64e71686751398f2f877fb38"
         },
@@ -5852,8 +5852,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1139,
-          "line_end": 1140,
+          "line_start": 1169,
+          "line_end": 1170,
           "expected_text": "\\bibitem{erdos1948}",
           "excerpt_sha256": "sha256:3b1bc4b5fcba471ceb51cdf5ffeafc4257a5c30781360a5278ec9e20de218167"
         },
@@ -6207,8 +6207,8 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 839,
-          "line_end": 843,
+          "line_start": 848,
+          "line_end": 852,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:ac8cf0809b4c3a5582064be39d66f21a3619c7f2400196c86c570dd2203ddb55"
         },
@@ -6235,8 +6235,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1132,
-          "line_end": 1139,
+          "line_start": 1162,
+          "line_end": 1169,
           "expected_text": "\\bibitem{kovactao}",
           "excerpt_sha256": "sha256:47be7d5967eb02b0cfe2c4cc13e8e6064ec86800b2070cfc29c580a862eb9aa9"
         },
@@ -6857,8 +6857,8 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 819,
-          "line_end": 823,
+          "line_start": 828,
+          "line_end": 832,
           "expected_text": "\\bibitem{erdosstraus1964}",
           "excerpt_sha256": "sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b"
         },
@@ -7147,8 +7147,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1148,
-          "line_end": 1154,
+          "line_start": 1178,
+          "line_end": 1184,
           "expected_text": "\\bibitem{erdos1968}",
           "excerpt_sha256": "sha256:c54f4576f2f7899a114a818cc712dac75c92c6e8a9cebfac16f4be9624d79ea6"
         },
@@ -7174,8 +7174,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 117,
-          "line_end": 121,
+          "line_start": 129,
+          "line_end": 133,
           "excerpt_sha256": "sha256:97fb4fbaf28c47d99e417800ae4398b093aab3336d256f2b9534d0f93cf58c8c"
         },
         {
@@ -7639,8 +7639,8 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 844,
-          "line_end": 849,
+          "line_start": 868,
+          "line_end": 873,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb"
         },
@@ -7653,8 +7653,8 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 835,
-          "line_end": 839,
+          "line_start": 844,
+          "line_end": 848,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:41e22e226dc64038986bc97224c7c1ea74fb8cc5b4b7ea1ff0ba5a1e7b45d2c2"
         },
@@ -7688,8 +7688,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 861,
-          "line_end": 865,
+          "line_start": 877,
+          "line_end": 881,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:a90e34ce2e35d3da0f95095189eabd8008b453ab0d87c7cf0a45afa3570b26a8"
         },
@@ -8061,8 +8061,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 865,
-          "line_end": 869,
+          "line_start": 889,
+          "line_end": 893,
           "expected_text": "\\bibitem{lai}",
           "excerpt_sha256": "sha256:78aa4a4ffbb6ef78f50df8ffbe5232ce827fa433a48ba9be7cb9069a232dbc50"
         }
@@ -8620,8 +8620,8 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 843,
-          "line_end": 848,
+          "line_start": 852,
+          "line_end": 857,
           "expected_text": "\\bibitem{bado2026}",
           "excerpt_sha256": "sha256:1c76f00e8eba4632f224cf59dcb814c7ce70a0ee7880a929f3225aa9a611750f"
         }
@@ -9031,8 +9031,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1124,
-          "line_end": 1132,
+          "line_start": 1154,
+          "line_end": 1162,
           "expected_text": "\\bibitem{taoteravainen2025}",
           "excerpt_sha256": "sha256:9bd6a4ac3ce8d989e64803da969a9cc0208274609e21b3e829c8b13703504f4e"
         },
@@ -9119,8 +9119,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 860,
-          "line_end": 865,
+          "line_start": 884,
+          "line_end": 889,
           "expected_text": "\\bibitem{louwsma-martino}",
           "excerpt_sha256": "sha256:bade0d216eca6c368176aac7e67fba295653e53d2dd461bf5a587f72fb873b85"
         },
@@ -9341,8 +9341,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1114,
-          "line_end": 1124,
+          "line_start": 1144,
+          "line_end": 1154,
           "expected_text": "\\bibitem{duverneytachiya}",
           "excerpt_sha256": "sha256:33655436858a2291a1f1e6883027a8a70317f263a270d001b36f7ac2f2c23dac"
         },
@@ -9410,8 +9410,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 853,
-          "line_end": 856,
+          "line_start": 877,
+          "line_end": 880,
           "expected_text": "\\bibitem{galambos1976}",
           "excerpt_sha256": "sha256:ce3aacc46dd9982236f7b68acf0ec1f1c1aca32c57a7ead73b45c724bf7be460"
         },
@@ -9798,8 +9798,8 @@
       "artifact_links": [
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 781,
-          "line_end": 784,
+          "line_start": 795,
+          "line_end": 798,
           "expected_text": "\\bibitem{martin-phi-inequalities}",
           "excerpt_sha256": "sha256:3b0475dd33e7a1ea2d089116b3042b48e0583ce9c65fa9d5d35b7bfae3c0d8a6"
         },
@@ -10536,8 +10536,8 @@
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 775,
-          "line_end": 778,
+          "line_start": 789,
+          "line_end": 792,
           "expected_text": "\\bibitem{allouche-shallit}",
           "excerpt_sha256": "sha256:867c017fd5e319d7d8dd47a300a5aead007cebebb30c5f3d3b9fcccbf92063e2"
         }
@@ -10703,8 +10703,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 879,
-          "line_end": 890,
+          "line_start": 895,
+          "line_end": 906,
           "expected_text": "\\bibitem{bugeaudlaurent2023}",
           "excerpt_sha256": "sha256:daaae54b338d03faa10c907e93f25b9083b77395134e37af0b3775350acf0536"
         },
@@ -10863,8 +10863,8 @@
       "artifact_links": [
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 784,
-          "line_end": 788,
+          "line_start": 798,
+          "line_end": 802,
           "expected_text": "\\bibitem{wong2015}",
           "excerpt_sha256": "sha256:c051a6fd92366505b0880e9bef1e556ed2611ec3731d443530ec4ab540b599a1"
         }
@@ -10906,8 +10906,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 893,
-          "line_end": 899,
+          "line_start": 909,
+          "line_end": 915,
           "expected_text": "\\bibitem{fan2026comment}",
           "excerpt_sha256": "sha256:21a34ea032a5559c9c49b2b1038d451fa427cbf069dd30a87954d4684904226e"
         },
@@ -11103,8 +11103,8 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 849,
-          "line_end": 851,
+          "line_start": 873,
+          "line_end": 875,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:5f0b6ad6c1a9049d21841bc0ffd6cf7d1b57c719cf79d0d3de5d351e68db74b0"
         },
@@ -11117,8 +11117,8 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 854,
-          "line_end": 857,
+          "line_start": 863,
+          "line_end": 866,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:f368736822439c8534e80f5aff6ba16c1d13eb3f95e95a7dc6ba80c48fac291b"
         },
@@ -11152,8 +11152,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 870,
-          "line_end": 879,
+          "line_start": 886,
+          "line_end": 895,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:2a31cd3b3c721e68cfe80551bfab84e8df13b2751ef98c0cedd2ef9da2795477"
         },
@@ -12968,14 +12968,14 @@
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 533,
-          "line_end": 546,
+          "line_start": 547,
+          "line_end": 560,
           "excerpt_sha256": "sha256:1a3d7c9c7ee8ba031728e618f10204e0866dacaa795e7e1fa2ab5528437f6385"
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 621,
-          "line_end": 627,
+          "line_start": 635,
+          "line_end": 641,
           "excerpt_sha256": "sha256:7b396d32e0520f148c4cd2ef0776ea5898ab787c34eeebbb74efbdcf93c45865"
         },
         {
