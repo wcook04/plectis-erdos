@@ -172,7 +172,7 @@
     },
     "totient_kernel_rank": {
       "source_statement": "Coons proved that Euler's totient sequence is not k-regular for every integer k at least 2, while Martin's affine-totient ordering theorem implies linear independence of every finite family of pairwise nonproportional positive-slope affine totient sections.",
-      "mapping": "The dyadic Lean development gives an independent constructive finite-level basis and rank proof. Its full-kernel infinite-dimensionality corollary is kernel-checked here but is not an independent contribution: for integer-valued sequence modules it is equivalent to Coons's non-k-regularity result. The all-base Lean modules check the zero-channel identity, the exact composite-base scalar reduction, residue coordinates, index cardinality k^e+1, and unconditional spanning by the canonical family. Lean also checks the exact-rank conclusion under an explicit linear-independence hypothesis. Martin remains the external authority for that hypothesis, so the unconditional all-base basis and rank theorem remains a paper conclusion rather than a Lean theorem without assumptions.",
+      "mapping": "The dyadic Lean development gives an independent constructive finite-level basis and rank proof. Its full-kernel infinite-dimensionality corollary is kernel-checked here but is not an independent contribution: for integer-valued sequence modules it is equivalent to Coons's non-k-regularity result. The all-base Lean modules check zero-channel and composite-base reductions, residue coordinates, index cardinality k^e+1, canonical spanning and the reusable conditional-rank interface. Separately, AllBaseTotientKernel.lean at public checkpoint 25ef6245d15a proves canonical independence and the complete rank unconditionally by CRT and Dirichlet. This does not enlarge the Comparator target represented below or formalise Martin's broader theorem.",
       "references": [
         "paper/249/erdos-249-binary-totient-series.tex",
         "docs/PRIOR_ART.md",
@@ -180,7 +180,7 @@
         "https://doi.org/10.1007/s11139-004-4633-4"
       ],
       "historical_attribution": "Coons for non-k-regularity of Euler's totient sequence; Martin for the positive-density affine ordering theorem from which the paper's finite-family independence step follows.",
-      "logical_dependency": "The dyadic finite-level proof is local. In the all-base development, arithmetic reduction and canonical spanning are unconditional; exact rank is conditional on an explicit linear-independence hypothesis. The paper discharges that hypothesis using Martin externally, whose positive-density theorem is not formalised."
+      "logical_dependency": "Arithmetic reduction and canonical spanning are unconditional. The recorded reusable rank wrapper takes independence as an input. AllBaseTotientKernel.lean discharges that input independently; Martin's broader positive-density theorem remains cited external prior work, not an axiom of the Lean proof."
     },
     "prime_gap_irrationality_equivalence": {
       "source_statement": "The prime-value dyadic series equals 2 plus the prime-gap dyadic series by summation by parts, so one series is irrational exactly when the other is.",
@@ -1013,11 +1013,11 @@
         },
         {
           "id": "totient_kernel_all_base_index",
-          "contribution_class": "formalised unconditional spanning and conditional rank with external independence input",
+          "contribution_class": "formalised arithmetic, spanning and reusable conditional rank interface",
           "summary": "For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence.",
-          "evidence_mode": "Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence",
+          "evidence_mode": "Lean kernel for this arithmetic, finite indexing, spanning and conditional-rank interface; the independent all-base proof is a separate public source result",
           "comparator_disposition": "targeted",
-          "boundary": "Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input."
+          "boundary": "This Comparator target reviews the reusable conditional interface. AllBaseTotientKernel.lean separately proves canonical all-base independence and exact rank unconditionally at 25ef6245d15a; it does not formalise Martin's broader theorem or solve #249."
         },
         {
           "id": "totient_visible_coprime_lattice_mass",

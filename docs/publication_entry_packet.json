@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:b536ef260d8b789062642b8d1f769b65c07576e0a62ad1fc4a250348d868a4cf",
+    "docs/claims.json": "sha256:09c963c0838d0268035d0a536af80ceca269214793ed77fb3e17383b0f4f5c19",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:da4f0c2ee9cf407f29943f39cfe07764591b3cabc4ea2d49019770734e553968",
-    "docs/publication_contract.json": "sha256:9f4a6d399b0a57e756e4cf2f1817470abafd2e6da58cf3636febc8ff4d69b243",
+    "docs/publication_contract.json": "sha256:4a6c41d15f3806de7bd489c693f1bc0ad8e4a6c0d444eefe1521f0e3983549ab",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:219689514a47bb8689c78c5091b4d06e2f28367ba354124b56b5ac0910ed7371",
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 581,
+        "line": 585,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "title": "first-harmonic anti-concentration on supplier fibres"
       },
