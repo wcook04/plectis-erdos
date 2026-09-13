@@ -1,6 +1,7 @@
 # Palomar qualification: exact current candidate
 
-Status: **READY** (repository-local). Submission has not been made.
+Status: **READY** (repository-local). The first entry of the current campaign
+was submitted on 13 September 2026; the campaign section below records it.
 
 ## Current campaign (13 September 2026)
 
@@ -8,15 +9,30 @@ The submission object is no longer the single configuration described below.
 It is the eight problem-level Palomar entries `PalomarCorpus/E{68,243,249,251,257,269,1041,1049}`
 in the public Lean release repository
 [`wcook04/plectis-erdos-lean`](https://github.com/wcook04/plectis-erdos-lean),
-317 compared theorems at commit `0d009964dba79a0bfb8d31766d27d92d82eafbb6`,
-each with its own `comparator.json` and `formalization.yaml`. That repository's
-own Linux replay of Palomar's pinned Comparator stage (`.github/workflows/palomar-replay.yml`)
-accepted `E68` and rejected the other seven on definition identity between
-Challenge and Solution; the repair is in progress there and a corrected commit
-supersedes `0d009964` once its replay is green. No entry of that campaign has
-been submitted to Palomar, reviewed, or registered. This file's older
-single-configuration candidate remains a valid repository-local qualification
-record and is not the object that will be submitted.
+317 compared theorems at commit
+[`52f29ad173b04e3bac941b3663f2b9aebe5de0bb`](https://github.com/wcook04/plectis-erdos-lean/tree/52f29ad173b04e3bac941b3663f2b9aebe5de0bb),
+each with its own `comparator.json` and `formalization.yaml`. That commit
+supersedes `0d009964dba79a0bfb8d31766d27d92d82eafbb6`, whose Linux replay of
+Palomar's pinned Comparator stage (`.github/workflows/palomar-replay.yml`,
+run 34772183860) accepted `E68` and rejected the other seven on definition
+identity between Challenge and Solution. The repair gives every entry a
+Mathlib-only `Statement` module that its proof adapters import, so each
+compared constant is the same `ConstantInfo` on both sides. The replay of the
+corrected commit accepted all eight entries with the Lean kernel and with
+NanoDa ([run 34782407633](https://github.com/wcook04/plectis-erdos-lean/actions/runs/34782407633);
+the predecessor `8929dfc017cbeabe83c9b928c6359ac01734e546`, whose Comparator
+inputs are byte-identical, in run 34780073063). Palomar's own
+`verify_submission.py prepare` phase was rehearsed locally against the
+corrected commit for all eight entries and reported `ready=true` for each.
+
+`E257` was submitted to Palomar on 13 September 2026 at 21:46 UTC
+(submission `impkvgnxmpb7`); mechanical verification was in progress when this
+revision was written, and the Lean release README records each entry's
+Palomar status as it changes. The remaining seven entries follow one at a
+time under Palomar's interval between submission starts. Registration of any
+reviewed entry is a separate operator decision taken after reading the
+review. This file's older single-configuration candidate remains a valid
+repository-local qualification record and is not the object that is submitted.
 
 This is the repository-local qualification decision for the current
 main-compatible candidate. READY means the committed public checkout satisfies

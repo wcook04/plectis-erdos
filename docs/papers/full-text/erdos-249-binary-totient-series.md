@@ -169,7 +169,7 @@ For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum
 
 <div class="proof">
 
-*Proof.* If the sum has denominator $`q`$, every scaled tail $`T_j=\sum_{t\ge1}a_{j+t}2^{-t}`$ belongs to $`q^{-1}\mathbb{Z}`$. Choose $`L`$ so large that $`C2^{-L}<1/q`$. The right zero block gives $`|T_N|\le C2^{-L}<1/q`$, hence $`T_N=0`$. The left zero block now gives $`T_{N-L-1}=a_N2^{-L-1}`$, a nonzero element of $`q^{-1}\mathbb{Z}`$ with absolute value less than $`1/q`$, a contradiction. The statement is ordinary in this note (that `PaperCompleteR7` file is absent). ◻
+*Proof.* If the sum has denominator $`q`$, every scaled tail $`T_j=\sum_{t\ge1}a_{j+t}2^{-t}`$ belongs to $`q^{-1}\mathbb{Z}`$. Choose $`L`$ so large that $`C2^{-L}<1/q`$. The right zero block gives $`|T_N|\le C2^{-L}<1/q`$, hence $`T_N=0`$. The left zero block now gives $`T_{N-L-1}=a_N2^{-L-1}`$, a nonzero element of $`q^{-1}\mathbb{Z}`$ with absolute value less than $`1/q`$, a contradiction. The statement is ordinary in this note (that `PaperCompleteR7` file is absent). The separate public Lean release [`wcook04/plectis-erdos-lean`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E249/Challenge.lean#L572) at commit `52f29ad1` states this lemma as `irrational_dyadicValue_of_pulses` in `PalomarCorpus/E249/Challenge.lean` and proves it. That repository’s Linux replay of Palomar’s Comparator stage accepted the entry with the Lean kernel and with NanoDa ([run 34782407633](https://github.com/wcook04/plectis-erdos-lean/actions/runs/34782407633)). ◻
 
 </div>
 
@@ -290,7 +290,7 @@ If $`S`$ is irrational, fix $`c,v`$. Then $`vR_c`$ is nonintegral. As $`H`$ tend
 
 </div>
 
-This proof identifies the equivalent missing quantifier. It does not supply $`H`$ arithmetically without assuming the desired irrationality. The equivalence, with the modulus written as the natural quotient $`(2^H-1)/v`$ and $`v`$ odd, is ordinary in this note (that `PaperCompleteR7` file is absent). The finite residues also satisfy
+This proof identifies the equivalent missing quantifier. It does not supply $`H`$ arithmetically without assuming the desired irrationality. The equivalence, with the modulus written as the natural quotient $`(2^H-1)/v`$ and $`v`$ odd, is ordinary in this note (that `PaperCompleteR7` file is absent). The separate public Lean release `wcook04/plectis-erdos-lean` at commit `52f29ad1` states the equivalence in this form, with $`vM=2^H-1`$, as `fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational` in `PalomarCorpus/E249/Challenge.lean` and proves it; the replay receipt is cited at Lemma <a href="#lem:bounded-pulse" data-reference-type="ref" data-reference="lem:bounded-pulse">6</a>. The finite residues also satisfy
 ``` math
 \rho_{H,N+1,M}=
  \bigl(2\rho_{H,N,M}-\varphi(N+H+1)+\varphi(N+1)\bigr)\bmod M,
