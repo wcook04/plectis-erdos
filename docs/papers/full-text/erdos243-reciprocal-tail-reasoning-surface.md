@@ -1050,7 +1050,7 @@ Thus the extra assumption $`\limsup Q_n<\infty`$ supplies the eventual lower bou
 
 #### Attribution.
 
-Erdős and Straus require $`\limsup_nQ_n\le0`$ in the corresponding criterion, with the least common multiple in place of the product \[erdosstraus1964, Theorem 3, p. 132\]; Koizumi’s Corollary 4(1) uses the product form \[koizumi2025, Cor. 4(1), pp. 14–15\]. The statement above is the same Lean-checked endpoint as Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">48</a>, transported into that language, and its content over the published criteria is the passage from $`\le0`$ to $`<\infty`$. It is the only place in this note where the machine-checked theorem is written in the vocabulary of the 1964 paper.
+Erdős and Straus require $`\limsup\le0`$ in the corresponding criterion, with the least common multiple in place of the product and the growth factor one index later, so their quantity is $`[a_1,\ldots,a_n]a_{n+1}^{-1}(a_{n+1}^{2}/a_{n+2}-1)`$ \[erdosstraus1964, Theorem 3, p. 132\]; Koizumi’s Corollary 4(1) uses the product form \[koizumi2025, Cor. 4(1), pp. 14–15\]. The statement above is the same Lean-checked endpoint as Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">48</a>, transported into that language, and its content over the published criteria is the passage from $`\le0`$ to $`<\infty`$. It is the only place in this note where the machine-checked theorem is written in the vocabulary of the 1964 paper.
 
 <a id="evidence.-7"></a>
 
@@ -1453,7 +1453,7 @@ for every $`N`$. For all sufficiently large $`n`$, we have $`2^{-n-1}<1/272`$. A
 
 Problem #243 is open. The negative case has narrowed, and it is worth being precise about what is left.
 
-Each exclusion holds only in its stated regime. Theorems <a href="#long243:res:constant" data-reference-type="ref" data-reference="long243:res:constant">39</a> and <a href="#long243:res:periodic" data-reference-type="ref" data-reference="long243:res:periodic">40</a> exclude the constant and the stated periodic magnitudes on an all-negative tail, and do not exclude those patterns merely along the negative indices of a mixed-sign tail; Theorems <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">48</a> and <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">50</a> exclude a bounded negative part and finite normalised negative mass under normalised vanishing. Together with absorption and descent they fix the profile of any counterexample.
+Each exclusion holds only in its stated regime. Theorems <a href="#long243:res:constant" data-reference-type="ref" data-reference="long243:res:constant">39</a> and <a href="#long243:res:periodic" data-reference-type="ref" data-reference="long243:res:periodic">40</a> exclude the constant and the stated periodic magnitudes on an all-negative tail, and do not exclude those patterns merely along the negative indices of a mixed-sign tail; Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">48</a> excludes a bounded negative part under normalised vanishing, and Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">50</a> excludes finite normalised negative mass with no normalised-vanishing hypothesis. Together with absorption and descent they fix the profile of any counterexample.
 
 <div id="long243:res:frontier" class="proposition">
 
@@ -1541,7 +1541,7 @@ and let $`R`$ be a finite family of moduli. Suppose every $`m_q`$, $`q\in R`$, d
  K^L\operatorname{lcm}(m_q:q\in R)^2<(K+1)^L.
 \end{equation}
 ```
-This is the [repair-entropy conservation law](https://github.com/wcook04/plectis-lean-erdos249-257/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos243/RepairEntropy.lean#L48).
+This is the [repair-entropy inequality](https://github.com/wcook04/plectis-lean-erdos249-257/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos243/RepairEntropy.lean#L48).
 
 The square in <a href="#long243:eq:repair-entropy" data-reference-type="eqref" data-reference="long243:eq:repair-entropy">[long243:eq:repair-entropy]</a> is the key point. Exact denominator reduction charges $`c_n^2`$ to the scale growth, so a repaired family whose LCM is at least $`2^{|R|}`$ satisfies
 ``` math
