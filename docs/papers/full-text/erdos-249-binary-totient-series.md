@@ -312,7 +312,7 @@ The long record supplies a rational control with $`c(n)=\varphi(n)`$ for odd $`n
 ``` math
 \sum_{n\ge1}c(n)2^{-n}=\frac54.
 ```
-It has an integral tempered carry with dyadic rank at least $`2^e-1`$ at every level. Thus the same lower bound for a hypothetical totient carry is compatible with rationality. For one fixed prime $`p`$, the exact laws $`g(pn)=p g(n)`$ when $`p\mid n`$ and $`g(pn)=(p-1)g(n)`$ otherwise, together with $`g-\varphi=o(n)`$, force $`g=\varphi`$: a nonzero defect keeps a nonzero ratio to the argument along $`p^j n`$. The control fails these laws; its full coefficient rank is asserted only at measured finite depths.
+It has an integral tempered carry with dyadic rank at least $`2^e-1`$ at every level. Thus the same lower bound for a hypothetical totient carry is compatible with rationality. For one fixed prime $`p`$ and integer-valued $`g`$, the exact laws $`g(pn)=p g(n)`$ when $`p\mid n`$ and $`g(pn)=(p-1)g(n)`$ otherwise, together with $`g-\varphi=o(n)`$, force $`g=\varphi`$: a nonzero defect keeps a nonzero ratio to the argument along $`p^j n`$. The control fails these laws; its full coefficient rank is asserted only at measured finite depths.
 
 A different obstruction concerns rational approximation. Put
 ``` math

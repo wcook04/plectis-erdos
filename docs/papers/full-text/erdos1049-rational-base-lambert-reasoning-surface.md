@@ -645,7 +645,7 @@ The order and leading coefficient of $`V_N^{*}`$ were computed exactly for $`1\l
 
 # The sharp $`41/65`$ certificate
 
-The numerical obstruction at $`3/2`$ is controlled by one small exact calculation. Writing it out is useful because the upper and lower inequalities play different roles: the upper inequality proves every strict analytic threshold below, while the lower inequality establishes the sharp rational scale. Exact failure of the rank-$`41`$ selector count one row earlier uses the additional integer comparison $`2^{129}<3^{82}`$ below.
+The numerical obstruction at $`3/2`$ is controlled by one small exact calculation. Writing it out is useful because the upper and lower inequalities play different roles: the upper inequality proves every strict analytic threshold below, while the lower inequality shows that $`65`$ is the least exponent $`q`$ for which $`3^{41}<2^{q}`$. Exact failure of the rank-$`41`$ selector count one row earlier uses the additional integer comparison $`2^{129}<3^{82}`$ below.
 
 <div id="long1049:res:powerbracket" class="theorem">
 
