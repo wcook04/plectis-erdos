@@ -8,7 +8,7 @@ paper. The proof uses the actual optimised factorial segment, proves its
 square-subsequence limiting scale, and rules out every subcritical radius.
 It does not replace 16/9 by the already compiled finite 3/2 bound.
 
-STATUS: compiled end-to-end proof candidate; no new axioms or placeholders.
+STATUS: uncompiled end-to-end proof candidate; no new axioms or placeholders.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 

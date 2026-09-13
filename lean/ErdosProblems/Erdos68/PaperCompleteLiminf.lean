@@ -10,7 +10,7 @@ The displayed asymptotic theorems allow the value +infinity. The wrappers use
 EReal for the liminf and prove equivalence with the epsilon/eventual assertions
 in the main proof files. Thus no unproved upper-boundedness assumption is
 introduced merely to fit a real-valued liminf API.
-STATUS: compiled proof candidates, like their imported new proofs.
+STATUS: uncompiled proof candidates, like their imported new proofs.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 

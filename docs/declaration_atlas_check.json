@@ -1,10 +1,10 @@
 {
-  "atlas_digest": "sha256:6a03d300c5a44114a95f13f4723ef3e07ae50a2db5f303fc3407180c06b4863e",
+  "atlas_digest": "sha256:fe786a89429d34414d34bbcb7397be10af78885426ac095e451b1ddb4e2a75e5",
   "builder_digest": "sha256:891f36135901a0cc8e55f0daa030915e5301cde23c68ebd9c68c8eea476890d4",
   "claim_binding_fingerprint": "sha256:041c5d77fff88e7343c9bd2fc0b015fbadf45d8aa7f199c7e9973d52de851457",
   "generated_manifest_digest": "sha256:2bfcecad9a04352cf5a9b6939dca294e665a6dffe7ee25d4b451e5c7231f7bbb",
   "schema": "erdos249257-declaration-atlas-check/1",
-  "source_fingerprint": "sha256:e28114416f02ac2559c63c91474afe20a826a1477841a9ed87dfa2f142aed03e",
+  "source_fingerprint": "sha256:097694d008302c826882c890b30cf6ffe02c380882e5a51e13d24f49d74de9f5",
   "summary": {
     "declaration_count": 156245,
     "generated_certificate_declaration_count": 8171,

@@ -13,7 +13,7 @@ paper's index convention n≥1 before its later restriction to n≥2.
 The proof supplies spanning by triangular elimination, independence by the
 moment/channel observables, and the explicit coefficient formula. This is
 stronger than checking finitely many example matrices.
-STATUS: compiled proof candidate. No axioms or proof placeholders.
+STATUS: uncompiled proof candidate. No axioms or proof placeholders.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 

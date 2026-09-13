@@ -18,7 +18,7 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:6a03d300c5a44114a95f13f4723ef3e07ae50a2db5f303fc3407180c06b4863e",
+  "declaration_atlas_digest": "sha256:fe786a89429d34414d34bbcb7397be10af78885426ac095e451b1ddb4e2a75e5",
   "semantic_corpus_digest": "sha256:7c6f7634e7d14693e77820d1fa2261dcdfe098f43e0399b5ad7f0b53eeb15e07",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
@@ -31,7 +31,7 @@
   "builder_digest": "sha256:fd48a95a9d7a6c8b2568a50668bd1c8b85c88cef79e79094d2041ab8561b938b",
   "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
  },
- "evidence_fingerprint": "sha256:54953fb31eb307e4897a6f1c5af4866f1f4859e6aca2d66d96521a556d2fd501",
+ "evidence_fingerprint": "sha256:14145ff7617116c03b3a18c1ca7972aa52a78f97522f2e470ed5e3f29ddc4601",
  "vocabularies": {
   "intervention_operators": [
    "change_base",
