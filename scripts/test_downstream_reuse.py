@@ -62,7 +62,17 @@ class DownstreamReuseTests(unittest.TestCase):
         with patch.object(reuse.singleflight, "ensure_state_root", return_value={}), \
              patch.object(reuse.singleflight, "resource_lock_path", return_value=Path(self.temp.name) / "lock"):
             self.assertEqual(reuse.check(self.root, runner=runner), 17)
-        self.assertEqual(commands, [["elan", "run", "leanprover/lean4:v4.29.1", "lake", "env", "lean", "Consumer.lean"]])
+        self.assertEqual(commands, [[str(reuse.fast_build.LAKE), "env", "lean", "Consumer.lean"]])
+
+    def test_installed_launcher_runs_outside_the_sanitized_path(self):
+        launcher = Path(self.temp.name) / "installed toolchain" / "lake"
+        launcher.parent.mkdir()
+        launcher.write_text('#!/bin/sh\n[ "$1" = env ] && [ "$2" = lean ] && [ -f Consumer.lean ]\n')
+        launcher.chmod(0o755)
+        with patch.object(reuse.fast_build, "LAKE", launcher), \
+             patch.object(reuse.singleflight, "ensure_state_root", return_value={}), \
+             patch.object(reuse.singleflight, "resource_lock_path", return_value=Path(self.temp.name) / "lock"):
+            self.assertEqual(reuse.check(self.root), 0)
 
     def test_busy_host_does_not_launch_a_competing_process(self):
         with patch.object(reuse.singleflight, "ensure_state_root", return_value={}), \

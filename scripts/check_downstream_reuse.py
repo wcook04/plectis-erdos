@@ -13,6 +13,7 @@ import subprocess
 import tempfile
 
 import validation_singleflight as singleflight
+import lean_fast_build as fast_build
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -68,9 +69,9 @@ def check(root: Path, *, runner=subprocess.run) -> int:
     try:
         with tempfile.TemporaryDirectory(prefix="plectis-consumer-") as tmp:
             destination = Path(tmp)
-            toolchain = prepare_consumer(root, destination)
+            prepare_consumer(root, destination)
             result = runner(
-                ["elan", "run", toolchain, "lake", "env", "lean", "Consumer.lean"],
+                fast_build.lake_command("env", "lean", "Consumer.lean"),
                 cwd=destination, env=singleflight.command_environment(), timeout=300,
             )
             if result.returncode == 0:
