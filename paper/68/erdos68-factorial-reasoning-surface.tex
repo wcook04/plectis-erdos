@@ -591,15 +591,20 @@ $T_p/R_p=C_pH_{2p-1}$ is not an integer and
 a gap to the next integer.
 
 \begin{theorem}[complementary-residue criterion]\label{long68:res:global-residue}
-Suppose that for every $B$ there is a prime $p>B$ with $R_p>1$ and
+Suppose that for every $B$ there is a natural parameter $p\ge3$ with
+$p>B$, $R_p>1$, and
 \begin{equation}\label{long68:eq:global-scale}
  (2p+1)\Lc^{\mathrm{blk}}_p<K_p\rho_p .
 \end{equation}
 Then $\Ser$ is irrational.
 \end{theorem}
 
+\noindent This natural-parameter form is also the
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean\#L156-L168}{checked global complementary criterion}.
+
 \begin{proof}
-Suppose $\Ser=a/q$ with $q\ge1$, and take a block with $p>\max(q,3)$
+Suppose $\Ser=a/q$ with $q\ge1$, and take such a parameter with
+$p>\max(q,3)$
 satisfying the hypotheses.  Then $q\mid F_p$, so
 $U=\Lc^{\mathrm{blk}}_p(\Ser-H_{2p-1})$ is a positive integer, and
 $\Lc^{\mathrm{blk}}_p\Ser=R_p(C_p\Ser)$ is a multiple of $R_p$; hence

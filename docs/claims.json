@@ -1045,7 +1045,9 @@
             "res:terminalhalf",
             "res:cylinderhalf",
             "res:reciprocal-support",
-            "res:weighted-support"
+            "res:weighted-support",
+            "thm:variable-fractional-cover",
+            "res:mixed-supports"
           ]
         },
         {
@@ -1117,7 +1119,7 @@
             "id": "erdos_257_reasoning_record",
             "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
             "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete working record for Erdős #257: a complete ordinary finite-prime weighted support proof, Lean full-support and structured-support theorems, finite-support geometry, and surviving arbitrary-infinite-support obligations."
+            "thesis": "Complete working record for Erdős #257: complete ordinary finite-prime weighted and mixed weighted/positive-cover support proofs, Lean full-support and structured-support theorems, finite-support geometry, and surviving arbitrary-infinite-support obligations."
           },
           {
             "id": "erdos_1041_reasoning_record",
@@ -1185,7 +1187,7 @@
             "id": "erdos_257_note",
             "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Ordinary finite-prime weighted summability criterion, including supports with divergent reciprocal sum; Lean full-support and structured supports (pairwise-coprime plus summable; eventually-periodic); arbitrary infinite support and the 1/2 and 1/21 branches remain open and distinct."
+            "thesis": "Ordinary finite-prime weighted summability criterion, including supports with divergent reciprocal sum, and a complete ordinary common-witness proof combining weighted and positive-cover hosts; Lean full-support and structured supports (pairwise-coprime plus summable; eventually-periodic); arbitrary infinite support and the 1/2 and 1/21 branches remain open and distinct."
           },
           {
             "id": "erdos_269_note",
@@ -15448,7 +15450,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 814
+        "line": 870
       }
     },
     {
@@ -15556,7 +15558,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 581
+        "line": 595
       }
     },
     {
@@ -15580,7 +15582,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 828
+        "line": 884
       }
     },
     {
@@ -15592,7 +15594,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 837
+        "line": 893
       }
     },
     {
@@ -15604,7 +15606,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 847
+        "line": 903
       }
     }
   ],

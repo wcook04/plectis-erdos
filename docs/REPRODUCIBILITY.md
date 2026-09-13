@@ -13,6 +13,7 @@ Everything below uses this public checkout and public tools.
 | Rerun a finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
 | Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
 | Compile a proof | [Set up Lean](#2-reproduce-the-pinned-lean-environment) | elan, the pinned dependencies, and space for several gigabytes of cache |
+| Import the library in another project | [Use it as a dependency](#use-the-library-in-another-lean-project) | The same Lean toolchain and the library's dependencies |
 | Reproduce all public checks | [Release checks](#3-run-the-release-surface-checks) | Lean plus the pinned Python validation tools |
 
 Commands run from the repository root. Shell setup below uses macOS/Linux
@@ -179,8 +180,8 @@ python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
 python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
-`Erdos249257` and `ErdosProblems` are the default libraries. `Examples` checks
-that another Lean project can use the library; read its imports and example
+`Erdos249257` and `ErdosProblems` are the default libraries. `Examples` builds
+consumer examples inside this package; read their imports and example
 declarations in [research/examples/Examples.lean](../research/examples/Examples.lean).
 The remaining targets check
 adapters, statement variants and residual examples; building them does not
@@ -193,6 +194,20 @@ The [concurrent-validation guide](../skills/lean-concurrent-validation/SKILL.md)
 explains detached operation, cache locations, storage sharing and exit codes.
 A successful build means Lean accepted the requested modules. The exact
 statements and their limits are in the source and [claim record](claims.json).
+
+### Use the library in another Lean project
+
+[The dependency guide](DOWNSTREAM_REUSE.md) gives the pinned Lake package
+recipe and distinguishes a separate consumer from the internal `Examples`
+target. After the complete build above, check that package boundary with:
+
+```sh
+python3 scripts/check_downstream_reuse.py
+```
+
+The checker creates a separate Lake project and checks the unchanged consumer
+examples under the host build lock. A missing build or dependency is a failed
+check; the checker does not rebuild or download dependencies.
 
 ## 3. Run the release-surface checks
 

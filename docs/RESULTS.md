@@ -31,7 +31,10 @@ summability hypotheses, and irrationality for nonnegative rational
 eventually-periodic coefficients with a positive periodic tail. An ordinary
 averaging proof gives a weaker weighted summability criterion that also covers
 some supports with divergent reciprocal sum. The reciprocal-summable corollary
-was stated by Erdős without a printed proof. The achievement-set
+was stated by Erdős without a printed proof. The same finite averaging window
+also combines weighted supports with positive divisor covers, preserving
+irrationality for every infinite subset of their union at all integer bases.
+This combination has an ordinary proof. The achievement-set
 development adds exact topological and measure statements. Universal Problem
 257, which quantifies over every infinite support, remains open.
 
@@ -86,8 +89,20 @@ channel obstruction. The required cofinal carries are not produced. The
 public paper as proof candidates, not as registered kernel evidence for the
 `3/2` theorem.
 
-**[#243](https://www.erdosproblems.com/243).** Lean checks the following signed
-bounded-negative theorem. Let `a,C,D : ℕ → ℕ` and `E : ℕ → ℤ`. Assume
+**[#243](https://www.erdosproblems.com/243).** The short paper proves an
+ordinary original-sequence corollary. Let `a_1<a_2<⋯` be positive integers,
+`a_(n+1)/a_n²→1`, `∑ 1/a_n` rational, and `P_n=∏_{j<n} a_j`. If
+`limsup (P_n/a_n)(a_n²/a_(n+1)−1)<+∞`, then
+`a_(n+1)=a_n²−a_n+1` eventually. The needed limsup bound, or the paper's
+alternative weighted record budget, is not proved for the unrestricted problem.
+Take a positive denominator `q` of the full reciprocal sum and clear the nth
+tail by `qP_n`. The resulting integer error is minus `q` times the scaled
+defect, up to a term tending to zero. This
+cancellation turns the upper bound in the original sequence into the lower
+bound on the integer error used below.
+The analytic transfer to this corollary is ordinary mathematics; Lean checks
+the following signed bounded-negative theorem. Let `a,C,D : ℕ → ℕ` and
+`E : ℕ → ℤ`. Assume
 `a(n)>1`, `C(n)>0`, the exact recurrences
 `C(n+1)+D(n)=a(n)C(n)` and `D(n+1)=a(n)D(n)`, and that `E(n)` is the exact
 centered state with `|E(n)|<C(n)`. If one constant `B` satisfies `E(n)≥−B`
@@ -147,6 +162,11 @@ average the residues along multiples of increasingly divisible moduli, then
 choose a finite range of averaging lengths to control the error uniformly.
 This is not a Lean theorem. The short paper gives a shorter proof and an
 explicit support with divergent reciprocal sum satisfying the criterion.
+At base two, the weighted condition can also be combined with the positive
+divisor-cover criterion: the long paper proves that a common finite averaging
+window makes both displacements small. Every infinite subset of their union
+then has irrational subseries at every integer base. This ordinary combination
+does not establish the separately proposed hosts separating the two classes.
 Every infinite reciprocal-summable support satisfies it, yielding the
 coprimality-free extension stated by Erdős. Full-support
 irrationality at every integer base is classical (Erdős 1948) and

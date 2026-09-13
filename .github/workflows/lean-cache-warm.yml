@@ -109,6 +109,9 @@ jobs:
             scripts/build_lean_dependency_index.py \
             scripts/export_lean_dependency_edges.lean \
             scripts/lean_fast_build.py \
+            scripts/validation_singleflight.py \
+            scripts/check_downstream_reuse.py \
+            scripts/test_downstream_reuse.py \
             scripts/query_corpus.py; then
             changed=false
           else

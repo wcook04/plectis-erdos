@@ -322,7 +322,7 @@ Start here (selected for this guide): [Introduction and main results](full-text/
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex) · 142 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex) · 146 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Support irrationality and its proof mechanisms](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [The wall](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [What the wall does not block](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors), [What is open, stated exactly](full-text/erdos257-mersenne-reasoning-surface.md#what-is-open-stated-exactly).
 
@@ -402,7 +402,7 @@ Start here (selected for this guide): [The strategy](full-text/open-source-mathe
 
 **Plectis: What a Stranger Can Check**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/8c1246f699a43f24b87d713270a72a861e2df851/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
 
 Start here (selected for this guide): [The problem](full-text/plectis-public-system.md#sec:problem), [One public test before the general design](full-text/plectis-public-system.md#sec:early-example), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions), [What stronger evidence would look like](full-text/plectis-public-system.md#sec:stronger).
 

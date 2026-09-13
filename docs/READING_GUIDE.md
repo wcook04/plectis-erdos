@@ -48,11 +48,15 @@ happen, and gives an exact congruence criterion for irrationality. The
 congruence failures that criterion needs remain unproved.
 
 Problem 243 concerns reciprocal sums of integers growing roughly like squares.
-The paper shows that if the sum is rational and the upward steps of a certain
-integer numerator are bounded, the sequence must eventually follow the
-Sylvester recurrence. The numerator itself is not assumed bounded. A separate
-theorem proves irrationality under a specific rate of growth. The original
-problem is not settled.
+The paper proves an ordinary theorem: rationality and a one-sided bound on a
+scaled defect force the exact Sylvester recurrence eventually. The
+[results guide](RESULTS.md#problem-by-problem-guide) states the bound in the
+original sequence. The key cancellation turns the upper bound on the scaled
+defect into a lower bound on an integer error. Lean checks the underlying
+integer-state rigidity step;
+the analytic transfer is separate. The needed bound is not proved for the
+unrestricted problem. A separate ordinary theorem proves irrationality under
+a more specific rate of growth.
 
 Problem 249 asks about the binary series of Euler's totient. The paper proves
 that reducing the totient modulo any m at least 3 gives an irrational series,

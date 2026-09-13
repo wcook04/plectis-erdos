@@ -63,6 +63,22 @@ the order of quantifiers; identify the formalized ingredients separately.
 Neither an absent Lean declaration nor an unsupported kernel label settles
 the validity of the ordinary argument.
 
+Reconcile a short paper and its long record in both directions.  If either one
+states a stronger theorem, recover its full argument and compare the other
+statement before deciding which version is current.  Do not leave an
+unnecessary hypothesis in the long record when the short proof removes it, or
+let the short paper outrun the argument that the long record is meant to
+preserve.  When a weaker hypothesis gives a qualitative conclusion and a
+stronger hypothesis gives a numerical rate, state the two implications
+separately and name the source of the stronger estimate.
+
+Before combining separately existential criteria, write their quantifiers in
+one line and check that the same witness satisfies every premise.  Two
+unbounded or cofinal witness sets can be disjoint.  Finite-union closure for
+exceptional sets does not align independently chosen witnesses, and an
+iterated limit cannot be exchanged until the dependence of each threshold on
+the other parameters has been proved.
+
 When translating a theorem type into prose, check its ambient domain and
 codomain, positive or nonzero parameters, finite index ranges, and the order
 in which witnesses are chosen. Test the smallest allowed case and one case
@@ -168,6 +184,11 @@ defer with an owner and re-entry condition, or outside scope with a reason.
 Make semantic changes in the owning source and rebuild its projections; a
 successful text replacement or export does not verify the mathematics. Check
 the actual returned query or rendered passage after refreshing it.
+
+For an ordinary paper theorem, also query its exact paper anchor. If a curated
+`anchor_label_allowlist` hides the accepted result, add its existing unique
+label to the owning paper row. Preserve its unregistered authored-anchor class;
+discoverability does not require inventing a formal claim or Lean evidence.
 
 When the repair teaches a reusable lesson, update the smallest public skill,
 rule or regression check that can prevent recurrence. Keep the rule usable

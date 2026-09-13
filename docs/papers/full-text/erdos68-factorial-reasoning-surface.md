@@ -457,7 +457,7 @@ a gap to the next integer.
 
 <div id="long68:res:global-residue" class="theorem">
 
-**Theorem 12** (complementary-residue criterion). *Suppose that for every $`B`$ there is a prime $`p>B`$ with $`R_p>1`$ and
+**Theorem 12** (complementary-residue criterion). *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
 ``` math
 \begin{equation}
 \label{long68:eq:global-scale}
@@ -468,9 +468,11 @@ Then $`S`$ is irrational.*
 
 </div>
 
+This natural-parameter form is also the [checked global complementary criterion](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L156-L168).
+
 <div class="proof">
 
-*Proof.* Suppose $`S=a/q`$ with $`q\ge1`$, and take a block with $`p>\max(q,3)`$ satisfying the hypotheses. Then $`q\mid F_p`$, so $`U=L^{\mathrm{blk}}_p(S-H_{2p-1})`$ is a positive integer, and $`L^{\mathrm{blk}}_pS=R_p(C_pS)`$ is a multiple of $`R_p`$; hence $`U\equiv-T_p\pmod{R_p}`$ and $`U\ge\rho_p`$. For the other side, $`1/(n!-1)<2/n!`$ for $`n\ge3`$, and a geometric majorant gives
+*Proof.* Suppose $`S=a/q`$ with $`q\ge1`$, and take such a parameter with $`p>\max(q,3)`$ satisfying the hypotheses. Then $`q\mid F_p`$, so $`U=L^{\mathrm{blk}}_p(S-H_{2p-1})`$ is a positive integer, and $`L^{\mathrm{blk}}_pS=R_p(C_pS)`$ is a multiple of $`R_p`$; hence $`U\equiv-T_p\pmod{R_p}`$ and $`U\ge\rho_p`$. For the other side, $`1/(n!-1)<2/n!`$ for $`n\ge3`$, and a geometric majorant gives
 ``` math
 0<S-H_{2p-1}<\frac{2}{(2p)!}\cdot\frac{2p+1}{2p}=\frac{2p+1}{K_p}.
 ```
