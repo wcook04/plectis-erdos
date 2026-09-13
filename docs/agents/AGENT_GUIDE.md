@@ -126,7 +126,7 @@ nor these local inputs supplies unrestricted topology and metric gluing. Paper:
 **#1049 — For which rational bases is the corresponding Lambert-type series
 irrational?**
 
-The smallest resistant explicit base here is \(3/2\). Lean checks why the
+The first resistant explicit base here is \(3/2\). Lean checks why the
 integer-base clearing argument fails at noninteger bases, the exact
 rational-base tail recurrence, and the local Padé and endpoint arithmetic. A
 primitive-normalised noncollapsed coefficient family with surviving local gain

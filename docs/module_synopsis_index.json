@@ -4935,12 +4935,12 @@
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteAsymptotics",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteAsymptotics.lean",
-      "synopsis": "End-to-end candidate for the two displayed sharp asymptotic constants Long-record labels res:lcm-growth and res:radius-constant. `LowerLimitAtLeast f c` is the epsilon/eventual formulation of liminf f >= c: for every a<c, eventually a<f(n). It is deliberately used instead of a real-valued `Filter.liminf`, whose default value is not an extended-real infinity when the sequence diverges to +infinity. This representation places no unproved upper-boundedness hypothesis on the lcm sequence. The proof starts from the supplied finite product and Stirling inequalities. It proves the optimising Nat.sqrt limit, the moving logarithm limit, and the binomial normalisation, rather than assuming their asymptotic conclusions. STATUS: uncompiled proof candidates. These are the largest API/elaboration risks in the return. There are no admitted analytic facts or proof placeholders."
+      "synopsis": "End-to-end candidate for the two displayed sharp asymptotic constants Long-record labels res:lcm-growth and res:radius-constant. `LowerLimitAtLeast f c` is the epsilon/eventual formulation of liminf f >= c: for every a<c, eventually a<f(n). It is deliberately used instead of a real-valued `Filter.liminf`, whose default value is not an extended-real infinity when the sequence diverges to +infinity. This representation places no unproved upper-boundedness hypothesis on the lcm sequence. The proof starts from the supplied finite product and Stirling inequalities. It proves the optimising Nat.sqrt limit, the moving logarithm limit, and the binomial normalisation, rather than assuming their asymptotic conclusions. STATUS: compiled proof candidates. These are the largest API/elaboration risks in the return. There are no admitted analytic facts or proof placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean",
-      "synopsis": "Full integral coordinate theorem Short label res:divisor-channel-coordinates. The supplied library proves the isolated moment/channel values, but does not prove spanning and uniqueness. Here the auxiliary index 1 is represented by coordinate 0, and coordinate j>0 represents U_(j+1). Thus coordinates have type ℕ →₀ ℤ with no constrained coordinate. The target coefficient vectors satisfy f 0 = 0, exactly the paper's index convention n≥1 before its later restriction to n≥2. The proof supplies spanning by triangular elimination, independence by the moment/channel observables, and the explicit coefficient formula. This is stronger than checking finitely many example matrices. STATUS: uncompiled proof candidate. No axioms or proof placeholders."
+      "synopsis": "Full integral coordinate theorem Short label res:divisor-channel-coordinates. The supplied library proves the isolated moment/channel values, but does not prove spanning and uniqueness. Here the auxiliary index 1 is represented by coordinate 0, and coordinate j>0 represents U_(j+1). Thus coordinates have type ℕ →₀ ℤ with no constrained coordinate. The target coefficient vectors satisfy f 0 = 0, exactly the paper's index convention n≥1 before its later restriction to n≥2. The proof supplies spanning by triangular elimination, independence by the moment/channel observables, and the explicit coefficient formula. This is stronger than checking finitely many example matrices. STATUS: compiled proof candidate. No axioms or proof placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure",
@@ -4990,7 +4990,7 @@
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteLiminf",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean",
-      "synopsis": "Literal liminf statements, without silently assuming finite liminf values The displayed asymptotic theorems allow the value +infinity. The wrappers use EReal for the liminf and prove equivalence with the epsilon/eventual assertions in the main proof files. Thus no unproved upper-boundedness assumption is introduced merely to fit a real-valued liminf API. STATUS: uncompiled proof candidates, like their imported new proofs."
+      "synopsis": "Literal liminf statements, without silently assuming finite liminf values The displayed asymptotic theorems allow the value +infinity. The wrappers use EReal for the liminf and prove equivalence with the epsilon/eventual assertions in the main proof files. Thus no unproved upper-boundedness assumption is introduced merely to fit a real-valued liminf API. STATUS: compiled proof candidates, like their imported new proofs."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
@@ -5000,7 +5000,7 @@
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean",
-      "synopsis": "The actual factorial specialisation of the quadratic tail-gcd theorem Short-note label: res:finite-channel-moment-certificate. This file does not assume a recurrence for an arbitrary sequence or assume unordered-block divisibility. It derives the recurrence for U_n(1) from the supplied definition and obtains the block identity from Mathlib's Nat.uniformBell_mul_eq. The gcd of an infinite family is represented by its universal property (all common divisors), avoiding an arbitrary choice of a generator in Z. This is the exact gcd assertion, not a weaker bound. STATUS: uncompiled proof candidate. No new axioms, no proof placeholders."
+      "synopsis": "The actual factorial specialisation of the quadratic tail-gcd theorem Short-note label: res:finite-channel-moment-certificate. This file does not assume a recurrence for an arbitrary sequence or assume unordered-block divisibility. It derives the recurrence for U_n(1) from the supplied definition and obtains the block identity from Mathlib's Nat.uniformBell_mul_eq. The gcd of an infinite family is represented by its universal property (all common divisors), avoiding an arbitrary choice of a generator in Z. This is the exact gcd assertion, not a weaker bound. STATUS: compiled proof candidate. No new axioms, no proof placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
@@ -5010,7 +5010,7 @@
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteRadiusLimit",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteRadiusLimit.lean",
-      "synopsis": "The sharp 16/9 radius constant Long-record label res:radius-constant. Hypotheses are eventual, exactly as on paper. The proof uses the actual optimised factorial segment, proves its square-subsequence limiting scale, and rules out every subcritical radius. It does not replace 16/9 by the already compiled finite 3/2 bound. STATUS: uncompiled end-to-end proof candidate; no new axioms or placeholders."
+      "synopsis": "The sharp 16/9 radius constant Long-record label res:radius-constant. Hypotheses are eventual, exactly as on paper. The proof uses the actual optimised factorial segment, proves its square-subsequence limiting scale, and rules out every subcritical radius. It does not replace 16/9 by the already compiled finite 3/2 bound. STATUS: compiled end-to-end proof candidate; no new axioms or placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",

@@ -2,6 +2,22 @@
 
 Status: **READY** (repository-local). Submission has not been made.
 
+## Current campaign (13 September 2026)
+
+The submission object is no longer the single configuration described below.
+It is the eight problem-level Palomar entries `PalomarCorpus/E{68,243,249,251,257,269,1041,1049}`
+in the public Lean release repository
+[`wcook04/plectis-erdos-lean`](https://github.com/wcook04/plectis-erdos-lean),
+317 compared theorems at commit `0d009964dba79a0bfb8d31766d27d92d82eafbb6`,
+each with its own `comparator.json` and `formalization.yaml`. That repository's
+own Linux replay of Palomar's pinned Comparator stage (`.github/workflows/palomar-replay.yml`)
+accepted `E68` and rejected the other seven on definition identity between
+Challenge and Solution; the repair is in progress there and a corrected commit
+supersedes `0d009964` once its replay is green. No entry of that campaign has
+been submitted to Palomar, reviewed, or registered. This file's older
+single-configuration candidate remains a valid repository-local qualification
+record and is not the object that will be submitted.
+
 This is the repository-local qualification decision for the current
 main-compatible candidate. READY means the committed public checkout satisfies
 every repository-local structural requirement that `scripts/check_palomar_qualification.py`

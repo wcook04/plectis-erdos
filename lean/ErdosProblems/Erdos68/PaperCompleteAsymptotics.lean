@@ -19,7 +19,7 @@ The proof starts from the supplied finite product and Stirling inequalities.
 It proves the optimising Nat.sqrt limit, the moving logarithm limit, and the
 binomial normalisation, rather than assuming their asymptotic conclusions.
 
-STATUS: uncompiled proof candidates. These are the largest API/elaboration
+STATUS: compiled proof candidates. These are the largest API/elaboration
 risks in the return. There are no admitted analytic facts or proof placeholders.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete

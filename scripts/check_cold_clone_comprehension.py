@@ -1662,7 +1662,7 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         r"\sum_{n\in A}1/(2^n-1)",
         "running lcms of the smooth numbers",
         "open unit lemniscate",
-        "smallest resistant explicit base here is",
+        "first resistant explicit base here is",
         "erdos-68-factorial-denominator-irrationality.pdf",
         "erdos-243-reciprocal-tail-rigidity.pdf",
         "erdos-249-binary-totient-series.pdf",

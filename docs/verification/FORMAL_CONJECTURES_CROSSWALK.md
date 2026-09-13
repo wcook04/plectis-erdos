@@ -150,7 +150,7 @@ Local question: For a monic polynomial whose roots lie in the open unit disc, mu
 
 ### Erdős #1049
 
-Local question: For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.
+Local question: For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.
 
 - Canonical local return route: `python3 scripts/query_corpus.py --route erdos_1049` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 

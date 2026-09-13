@@ -723,7 +723,7 @@
       "erdos_number": 1049,
       "short_title": "Lambert-type series at rational bases",
       "status": "open",
-      "question": "For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.",
+      "question": "For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.",
       "directory": "lean/ErdosProblems/Erdos1049",
       "principal_module": "ErdosProblems.Erdos1049.RationalBaseLambert",
       "companion_modules": [
