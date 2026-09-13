@@ -147,7 +147,7 @@ The next theorem gives a weaker numerical bound through an argument that needs n
 ``` math
 \frac{71}{10}\,\rho
 ```
-inside $`K_{2\mu}`$. If $`f`$ is squarefree, their locations are distinct. If every root lies in the open unit disc and $`\mu\le1/2`$, the construction may be chosen inside $`\{|f|<1\}`$ with length at most $`5.7`$.*
+inside $`K_{2\mu}`$. If $`f`$ is squarefree, their locations are distinct. If $`\mu\le1/2`$, the construction may be chosen inside $`\{|f|<1\}`$ with length at most $`5.7`$.*
 
 </div>
 
@@ -183,7 +183,31 @@ For arguments avoiding the finitely many critical-value rays, each root in $`C_t
 ``` math
 \sum_i\frac{\mu^2}{|f'(z_i)|^2}\le\rho^2          \tag{CF2}
 ```
-then aggregates them by Cauchy–Schwarz, paying $`\sqrt{2/k}`$ rather than once per root. Coarea and (CF1) bound the high pieces only after averaging in the argument. Choose one argument realising that average, order the lift endpoints cyclically on $`\partial C_t`$, and hop along the shortest adjacent boundary arc. Averaging the two lifts and the $`k`$ arcs over adjacent pairs gives (CF). When $`\lambda\mu\le1`$ the same mean-value choice may be taken strictly below the top of the window, so the path lies in $`\{|f|<1\}`$. ◻
+then aggregates them by Cauchy–Schwarz, paying $`\sqrt{2/k}`$ rather than once per root. Coarea and (CF1) bound the high pieces only after averaging in the argument. Choose one argument realising that average, order the lift endpoints cyclically on $`\partial C_t`$, and hop along the shortest adjacent boundary arc. Averaging the two lifts and the $`k`$ arcs over adjacent pairs gives (CF). Explicitly, the three contributions to that pair average satisfy
+``` math
+\begin{aligned}
+ \frac2k\sum_i\ell_i^{\rm low}
+ &\le\frac{2r\rho}{\sqrt{k}(1-r)^2},\\
+ \frac2k\sum_i\ell_i^{\rm high}
+ &\le\sqrt{\frac2k}\sqrt{\log(\lambda/r)}\,T^{1/n},\\
+ \frac{\mathcal H^1(\partial C_t)}k
+ &\le\sqrt{\frac2k}\frac{\pi T^{1/n}}{\sqrt{\log\lambda}}.
+\end{aligned}
+```
+The low estimate is pointwise in the ray; the high estimate holds for the single ray chosen from its mean. The boundary estimate uses the level already selected. Thus these estimates apply together, and $`T^{1/n}=\lambda^{1/n}\rho`$ gives the three terms in (CF). For the final assertion, the repeated-zero case is already a constant path, and in degree two the root segment has length $`2\rho=2\sqrt\mu\le\sqrt2`$. For $`n\ge3`$, take $`\lambda=2`$ and $`r=3/20`$. Since $`k\ge2`$ and $`\mu\le1/2`$, (CF) gives
+``` math
+\begin{aligned}
+ \operatorname{length}
+ &\le \frac{60\sqrt2}{289}\mu^{1/n}
+ +(2\mu)^{1/n}\left(
+   \sqrt{\log(40/3)}+\frac{\pi}{\sqrt{\log2}}
+ \right)\\
+ &\le \frac{60\sqrt2}{289}+\sqrt{\log(40/3)}
+      +\frac{\pi}{\sqrt{\log2}}\\
+ &=5.676476\ldots<5.7.
+ \end{aligned}
+```
+Here $`2\mu\le1`$, and the mean-value choice may be taken at a regular level strictly below the top of its positive-measure window. Thus the entire path lies in $`\{|f|<1\}`$. ◻
 
 </div>
 

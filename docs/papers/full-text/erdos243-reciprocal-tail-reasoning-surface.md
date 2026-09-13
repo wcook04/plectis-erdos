@@ -745,7 +745,7 @@ This section recovers the weighted record criterion used by the short note. It i
 
 #### Evidence.
 
-The result in this section is an ordinary mathematical proof. Its finite arithmetic and charging step are kernel-checked at the pinned revision: the [freshness of a rise](https://github.com/wcook04/plectis-lean-erdos249-257/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos243/LcmRecordExcess.lean#L14), the [covered-wall excess bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos243/LcmRecordExcess.lean#L31), the [wall count](https://github.com/wcook04/plectis-lean-erdos249-257/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos243/LcmRecordExcess.lean#L47), and the [weighted wall charge](https://github.com/wcook04/plectis-lean-erdos249-257/blob/92b88dc1bbe099aa73bcc900c3c405e9ba5c2334/ErdosProblems/Erdos243/LcmRecordExcess.lean#L64). The global analytic argument, which is the passage from the per-step charge to divergence of the whole sum, is not formalised. An exact finite replay covers $`6{,}008`$ seed-modulus cases over $`6{,}000`$ distinct rational seeds, $`26{,}171`$ nonterminal transitions and $`6{,}008`$ terminal states, and every case reaches centred zero within $`15`$ steps; finite data of that kind do not prove universal termination.
+The result in this section is an ordinary mathematical proof. Its finite arithmetic and charging steps are kernel-checked at an immutable source revision: the [freshness of a rise](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0834464673e930c93010565aa1e08161adad87ee/ErdosProblems/Erdos243/LcmRecordExcess.lean#L14-L27), the [covered-wall excess bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0834464673e930c93010565aa1e08161adad87ee/ErdosProblems/Erdos243/LcmRecordExcess.lean#L31-L43), the [wall count](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0834464673e930c93010565aa1e08161adad87ee/ErdosProblems/Erdos243/LcmRecordExcess.lean#L47-L60), and the [weighted wall charge](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0834464673e930c93010565aa1e08161adad87ee/ErdosProblems/Erdos243/LcmRecordExcess.lean#L64-L72). The global analytic argument, which is the passage from the per-step charge to divergence of the whole sum, is not formalised. An exact finite replay covers $`6{,}008`$ seed-modulus cases over $`6{,}000`$ distinct rational seeds, $`26{,}171`$ nonterminal transitions and $`6{,}008`$ terminal states, and every case reaches centred zero within $`15`$ steps; finite data of that kind do not prove universal termination.
 
 <a id="what-the-record-coordinates-transfer."></a>
 
@@ -769,7 +769,7 @@ The rational tail has denominator dividing $`L_n`$, so $`U_n`$ and $`V_n`$ are i
 M_{n+1}=M_n\rho_n,\qquad
  \rho_nU_{n+1}=U_n-V_n,\qquad V_n=L_n-(a_n-1)U_n.
 ```
-Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Centring implies that every sufficiently late strict rise has $`\rho_n=1`$: otherwise $`U_{n+1}\le3U_n/4`$. Its actual jump is therefore $`d_n=U_{n+1}-U_n=-V_n`$.
+Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Strict centring already gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. Its actual jump is therefore $`d_n=U_{n+1}-U_n=-V_n`$.
 
 <div id="long243:res:arithmeticrecord" class="theorem">
 
@@ -1029,6 +1029,22 @@ Q_n=\frac{a_1a_2\cdots a_{n-1}}{a_n}
 If $`\limsup_nQ_n<\infty`$ then the sequence is eventually Sylvester. If for some $`\delta>0`$ and all large $`n`$ one has $`Q_n\le(1-\delta)\lambda\,\ell(a_1\cdots a_{n-1}/a_n)`$, where $`\lambda>0`$ depends only on the sequence, the same conclusion holds.*
 
 </div>
+
+For the bounded clause, choose $`q>0`$ clearing the reciprocal sum, put $`P_n=\prod_{j<n}a_j`$, $`x_n=\sum_{k\ge n}1/a_k`$, and use the canonical state $`D_n=qP_n`$, $`C_n=D_nx_n`$, $`E_n=D_n-(a_n-1)C_n`$. With $`\gamma_n=a_n^2/a_{n+1}-1`$, the two-term tail estimate gives
+``` math
+\begin{aligned}
+ E_n&=\frac{qP_n}{a_n}-\frac{qP_n(a_n-1)}{a_{n+1}}
+ +O\!\left(\frac{qP_na_n}{a_{n+1}^2}\right),\\
+ q\frac{P_n}{a_n}\gamma_n
+ &=\frac{qP_na_n}{a_{n+1}}-\frac{qP_n}{a_n}.
+ \end{aligned}
+```
+The leading terms cancel when these identities are added. Since $`P_n/a_n=\exp(o(n))`$ and quadratic growth makes $`a_n`$ doubly exponential,
+``` math
+E_n+qQ_n=\frac{qP_n}{a_{n+1}}
+ +O\!\left(\frac{qP_na_n}{a_{n+1}^2}\right)=o(1).
+```
+Thus the extra assumption $`\limsup Q_n<\infty`$ supplies the eventual lower bound on $`E_n`$ required by Theorem <a href="#long243:res:bounded" data-reference-type="ref" data-reference="long243:res:bounded">48</a>. This canonical-tail transfer is ordinary analysis; the linked Lean theorem begins after its state hypotheses have been supplied.
 
 <a id="attribution."></a>
 

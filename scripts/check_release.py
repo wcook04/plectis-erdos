@@ -2286,6 +2286,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_downstream_example_contract.py"),
             ],
+            "downstream_reuse": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_downstream_reuse.py"),
+            ],
             "agent_navigation_paper": [
                 sys.executable,
                 str(ROOT / "scripts" / "check_agent_navigation_paper.py"),

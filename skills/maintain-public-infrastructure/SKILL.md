@@ -62,6 +62,15 @@ recursive replacement would change their meanings together. Preserve the
 anchor's exact semantic target and run the coordinate builder before stamping
 publication metadata.
 
+Validate an immutable source link against the repository and revision named
+in the URL: the commit must exist there, the path must exist at that commit,
+and the cited line must contain the named declaration.  A filename and line
+matching the current checkout or a generated mirror do not validate an older
+URL.  When a cited module was added after a paper's global source pin, use an
+explicit module-specific immutable pin that has been checked this way.  Do not
+move the global pin merely to repair that link unless every pin-relative link
+in the paper has been audited at the proposed revision.
+
 ## Classify before changing
 
 Choose the first matching class:

@@ -169,6 +169,9 @@ jobs:
             scripts/build_lean_dependency_index.py \
             scripts/export_lean_dependency_edges.lean \
             scripts/lean_fast_build.py \
+            scripts/validation_singleflight.py \
+            scripts/check_downstream_reuse.py \
+            scripts/test_downstream_reuse.py \
             scripts/query_corpus.py; then
             changed=false
           else
@@ -234,6 +237,9 @@ jobs:
         # Raw follow-up builds would duplicate work outside the shared
         # validation key, so every supported target is named here instead.
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench
+      - name: Verify a separate Lake project can use the library
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: python3 scripts/check_downstream_reuse.py
       # actions/cache saves only when the job succeeds. A build that compiles
       # the whole tree and then fails the dependency-index check below threw
       # away the compiled oleans, so every rerun paid a cold build again.

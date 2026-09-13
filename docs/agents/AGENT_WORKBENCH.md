@@ -429,6 +429,8 @@ carry `sorry` by construction.
 
 ## Use as a Lean package
 
+Use the [dependency recipe and separate-project check](../DOWNSTREAM_REUSE.md).
+
 The reviewed #249/#257 root is imported with:
 
 ```lean

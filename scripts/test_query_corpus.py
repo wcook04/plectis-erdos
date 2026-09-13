@@ -832,19 +832,72 @@ def validate_agent_tour() -> None:
     lines = card.stdout.strip().splitlines()
     signal = packet["mathematical_signal_spine"]
     lead = signal["ranked_frontier"][0]
-    assert len(lines) <= 8
+    assert len(lines) <= 16
     assert len(card.stdout.encode("utf-8")) <= 4096
-    assert lines[0] == (
-        "corpus tour | signal_source=Palomar "
-        "| mathematical_rank_before_scale_and_inventory"
-    )
-    assert f"family={lead['family_id']}" in lines[1]
-    assert "drilldown=--route erdos_<number>" in card.stdout
-    assert "drilldown=--connections <module-or-declaration>" in card.stdout
-    assert "--route comparator_assurance" in card.stdout
-    assert "--route palomar_qualification" in card.stdout
-    assert "--tour --format json" in card.stdout
+    assert lines[0] == "Corpus tour"
+    assert lines[1] == f"First result to inspect: Erdős #{lead['problem']}"
+    assert f"Contribution: {lead['evidence_class']}" in lines
+    assert lead["consequence"] in lines
+    assert f"Boundary: {lead['exact_boundary']}" in lines
+    command = "python3 scripts/query_corpus.py"
+    for arguments in (
+        f"--route erdos_{lead['problem']}",
+        f"--declaration {lead['source_declaration']}",
+        f"--connections {lead['source_declaration']}",
+        "--papers",
+        "--route comparator_assurance",
+        "--route palomar_qualification",
+        "--tour --format json",
+    ):
+        assert f"{command} {arguments}" in card.stdout
+    assert "8 of 8 remain open." in card.stdout
+    assert "does not run Lean" in card.stdout
     assert run("--tour").stdout == card.stdout
+    source = query("--declaration", lead["source_declaration"])["matches"][0]
+    dependencies = query("--connections", lead["source_declaration"], "--limit", "4")
+    assert dependencies["anchor"]["handle_kind"] == "declaration"
+    assert query_corpus.library_identity_path(dependencies["anchor"]["file"]) == source["module"]
+    assert dependencies["declarations"][0]["qualified_name"] == source["qualified_name"]
+    validate_agent_tour_card_lead()
+
+
+def validate_agent_tour_card_lead() -> None:
+    """A changed lead keeps its own boundary and source, without changing JSON."""
+    fixture = {
+        "kind": "agent_corpus_tour",
+        "scale": {"indexed_problem_count": 2, "indexed_open_problem_count": 1},
+        "problem_map": [{"erdos_number": 249}, {"erdos_number": 257}],
+        "mathematical_signal_spine": {
+            "ranked_frontier": [
+                {
+                    "problem": 249,
+                    "reader_tier": "conditional_endpoint_route",
+                    "evidence_class": "conditional reduction",
+                    "consequence": "The target follows if the producer exists.",
+                    "exact_boundary": "The producer remains unproved.",
+                    "source_declaration": "Example.source_theorem",
+                    "declaration": "Example.Comparator.wrapper",
+                }
+            ]
+        },
+    }
+    before = json.dumps(fixture, ensure_ascii=False)
+    card = query_corpus.render_card(fixture)
+    assert json.dumps(fixture, ensure_ascii=False) == before
+    assert len(card.splitlines()) <= 16
+    assert len(card.encode("utf-8")) <= 4096
+    assert "First result to inspect: Erdős #249" in card
+    assert "Contribution: conditional reduction" in card
+    assert "The target follows if the producer exists." in card
+    assert "Boundary: The producer remains unproved." in card
+    assert "Source theorem: python3 scripts/query_corpus.py --declaration Example.source_theorem" in card
+    assert "--connections Example.source_theorem" in card
+    assert "--route erdos_249" in card
+    assert "Indexed problems: #249, #257. 1 of 2 remain open." in card
+    assert "Example.Comparator.wrapper" not in card
+    assert "completed_direct_result" not in card
+    assert "formalisation of an existing theorem" not in card
+    assert card.index("The producer remains unproved.") < card.index("Indexed problems:")
 
 
 def validate_paper_guide() -> None:
@@ -3937,6 +3990,19 @@ def main() -> int:
     assert declaration_connections["declarations"][0]["name"] == (
         "mersenneWeightRat"
     )
+    for handle in (
+        "Erdos249257.irrational_erdosSum_full_support",
+        "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+    ):
+        resolved = query("--declaration", handle)["matches"][0]
+        connected = query("--connections", handle, "--limit", "4")
+        assert connected["anchor"]["handle_kind"] == "declaration"
+        assert query_corpus.library_identity_path(connected["anchor"]["file"]) == resolved["module"]
+        assert connected["declarations"][0]["qualified_name"] == resolved["qualified_name"]
+    unknown = run("--connections", "Invented.Namespace.irrational_erdosSum_full_support")
+    assert unknown.returncode == 2
+    assert unknown.stdout == ""
+    assert "unknown connection handle" in unknown.stderr
 
     route = query("--route", "instant_orientation")
     assert route["route"]["read"][0] == "docs/orientation.json"

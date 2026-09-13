@@ -4503,9 +4503,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     # sorting the 153k-row module map inside every connection card made four
     # cards in the canonical corpus suite pay the same full scan four times.
     declaration_indexes = declaration_row_indexes()
-    declaration_matches = list(
-        declaration_indexes["by_name"].get(resolved_handle, ())
-    )
+    declaration_matches = declaration_rows_for_handle(resolved_handle)
     module = next(
         (
             row
@@ -11131,37 +11129,47 @@ def render_card(packet: dict[str, Any]) -> str:
         return "\n".join(rows)
     if kind == "agent_corpus_tour":
         scale = packet["scale"]
-        graph = packet["formal_dependency_graph"]
         signal = packet["mathematical_signal_spine"]
         lead = signal["ranked_frontier"][0]
-        problem_ids = ",".join(
+        problem_ids = ", ".join(
             f"#{row['erdos_number']}" for row in packet["problem_map"]
         )
+        command = "python3 scripts/query_corpus.py"
         rows = [
+            "Corpus tour",
+            f"First result to inspect: Erdős #{lead['problem']}",
+            f"Contribution: {lead['evidence_class']}",
+            lead["consequence"],
+            f"Boundary: {lead['exact_boundary']}",
             (
-                "corpus tour | signal_source=Palomar "
-                "| mathematical_rank_before_scale_and_inventory"
+                "Result, paper and open obligations: "
+                f"{command} --route erdos_{lead['problem']}"
             ),
             (
-                f"tour_signal #1 | problem=#{lead['problem']} "
-                f"| tier={lead['reader_tier']} | family={lead['family_id']} "
-                f"| declaration={lead['declaration']}"
+                "Source theorem: "
+                f"{command} --declaration {lead['source_declaration']}"
             ),
             (
-                f"problem map | indexed={scale['indexed_problem_count']} "
-                f"| open={scale['indexed_open_problem_count']} | ids={problem_ids} "
-                "| drilldown=--route erdos_<number>"
+                "Proof boundary: this tour reads committed records; it does not "
+                "run Lean."
             ),
             (
-                f"formal graph | roots={len(graph['loaded_library_roots'])} "
-                f"| nodes={graph['source_resolved_node_count']} "
-                f"| direct_edges={graph['source_resolved_direct_edge_count']} "
-                "| drilldown=--connections <module-or-declaration>"
+                f"Indexed problems: {problem_ids}. "
+                f"{scale['indexed_open_problem_count']} of "
+                f"{scale['indexed_problem_count']} remain open."
             ),
-            "papers | drilldown=--papers | full=--papers --format json",
-            "assurance | comparator=--route comparator_assurance | palomar=--route palomar_qualification",
-            "authority | navigation=committed projections | proof=pinned Lean kernel | meaning=maintainer review",
-            "tour_detail | command=python3 scripts/query_corpus.py --tour --format json",
+            (
+                f"For another problem, replace {lead['problem']} in the result "
+                "command with a listed number."
+            ),
+            f"Papers: {command} --papers",
+            (
+                "Source module connections (JSON): "
+                f"{command} --connections {lead['source_declaration']} --limit 4"
+            ),
+            f"Statement identity checks: {command} --route comparator_assurance",
+            f"Review scope: {command} --route palomar_qualification",
+            f"Full tour, ranking and counts (JSON): {command} --tour --format json",
         ]
         return "\n".join(rows)
     scale = packet["scale"]

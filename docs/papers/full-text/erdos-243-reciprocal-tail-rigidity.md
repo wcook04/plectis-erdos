@@ -271,6 +271,15 @@ Thus strict centring also holds eventually. These are the ordinary canonical-tai
 ```
 the two-term estimate gives
 ``` math
+\begin{aligned}
+ E_n&=\frac{qP_n}{a_n}-\frac{qP_n(a_n-1)}{a_{n+1}}
+ +O\!\left(\frac{qP_na_n}{a_{n+1}^2}\right),\\
+ q\frac{P_n}{a_n}\gamma_n
+ &=\frac{qP_na_n}{a_{n+1}}-\frac{qP_n}{a_n}.
+ \end{aligned}
+```
+Adding cancels the two terms of size $`qP_n/a_n`$ and leaves
+``` math
 \begin{equation}
 \label{eq:canonical-dictionary}
  E_n+q\frac{P_n}{a_n}\gamma_n
@@ -278,7 +287,7 @@ the two-term estimate gives
  O\!\left(\frac{qP_na_n}{a_{n+1}^2}\right)=o(1).
 \end{equation}
 ```
-The assumed upper bound therefore gives an eventual lower bound on the integer $`E_n`$. After deleting a finite prefix, all hypotheses of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a> hold. Apply Corollary <a href="#res:cor" data-reference-type="ref" data-reference="res:cor">4</a>. ◻
+Indeed, quadratic growth makes the two terms on the right respectively $`\exp(o(n))/a_n`$ and $`\exp(o(n))/a_n^2`$, up to bounded factors. The assumed upper bound therefore gives an eventual lower bound on the integer $`E_n`$. After deleting a finite prefix, all hypotheses of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">2</a> hold. Apply Corollary <a href="#res:cor" data-reference-type="ref" data-reference="res:cor">4</a>. ◻
 
 </div>
 
@@ -336,7 +345,7 @@ The rational tail has denominator dividing $`L_n`$, so $`U_n`$ and $`V_n`$ are i
 M_{n+1}=M_n\rho_n,\qquad
  \rho_nU_{n+1}=U_n-V_n,\qquad V_n=L_n-(a_n-1)U_n.
 ```
-Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Centring implies that every sufficiently late strict rise has $`\rho_n=1`$: otherwise $`U_{n+1}\le3U_n/4`$. Its actual jump is therefore $`d_n=U_{n+1}-U_n=-V_n`$.
+Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Strict centring already gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. Its actual jump is therefore $`d_n=U_{n+1}-U_n=-V_n`$.
 
 <div id="res:weightedrecord" class="theorem">
 
