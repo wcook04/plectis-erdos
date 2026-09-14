@@ -1794,6 +1794,15 @@
         "ErdosProblems.Decl.verify.D2",
         "ErdosProblems.Decl.verify.D3",
         "ErdosProblems.Decl.verify.D4",
+        "ErdosProblems.Erdos1041.Counterexample.Algebra",
+        "ErdosProblems.Erdos1041.Counterexample.Assembly",
+        "ErdosProblems.Erdos1041.Counterexample.Bottleneck",
+        "ErdosProblems.Erdos1041.Counterexample.Components",
+        "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
+        "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
+        "ErdosProblems.Erdos1041.Counterexample.InstanceCritical",
+        "ErdosProblems.Erdos1041.Counterexample.InstanceCriticalLocalisation",
+        "ErdosProblems.Erdos1041.Counterexample.Pending",
         "ErdosProblems.Erdos1041.ReturnedR18V5FullAudit",
         "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
         "ErdosProblems.Erdos1049.AllRow.Audit",
@@ -8616,6 +8625,116 @@
           "imports": [
             "ErdosProblems.Erdos1041.ConnectorR18.CubicBranch",
             "ErdosProblems.Erdos1041.ConnectorR18.FiniteAssembly"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Algebra",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Algebra.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Assembly",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierAlgebra",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierCertificates",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierAlgebra"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierGraphs",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierCertificates"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierSigns",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierGraphs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Bottleneck",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Components",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Components.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Defs",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierSigns"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.InstanceCritical",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.InstanceCriticalLocalisation",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCriticalLocalisation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Pending",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Pending.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
           ]
         },
         {
