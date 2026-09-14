@@ -1701,7 +1701,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:9e5e6259f707788e3223e51f4a43f46ac7bab8427b605fc87c0e3453b0c82c21",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:ac19641533acda1c78e3ba5dfe415d7140e718481abddc6d902547c4b0872de4",
+    "projection_digest": "sha256:24bf998918231e5ab9365f143b2f2348ef0bea5c8e3ec34c6712d7ace1bf6e35",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2535,7 +2535,7 @@
             "line_count": 670,
             "declaration_count": 62,
             "theorem_count": 59,
-            "content_digest": "sha256:a2ffb818e7aa379399c89643f4d7182186b6e6a01fe5f94b09b0b0276a378047"
+            "content_digest": "sha256:8d8a9018557ca9bf780e89f0cd69c24222dccb2471066af1ac7b5c349097b9e6"
           },
           {
             "module": "ErdosProblems.Erdos1041.Counterexample.Assembly",
@@ -2616,7 +2616,7 @@
             "line_count": 106,
             "declaration_count": 9,
             "theorem_count": 7,
-            "content_digest": "sha256:60d88ac58c5cfb728d05b0e8e4969c0b322322cc920fbcb85d22253464810eb9"
+            "content_digest": "sha256:ad8ba15297ffd0aad20bab7a59730d8dbd0fc7e3026085f5453f53c2fac8b07a"
           },
           {
             "module": "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
@@ -2634,7 +2634,7 @@
             "line_count": 4310,
             "declaration_count": 470,
             "theorem_count": 407,
-            "content_digest": "sha256:576fd2a3baf20eecc7ce4e2f0af88d345dc3bd1900c42be1c1e0f268a1b76f54"
+            "content_digest": "sha256:b2a566f3d6125a27326496c15cbc28e15c2d89098fee6b6762e27654df3bb596"
           }
         ],
         "note": {

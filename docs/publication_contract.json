@@ -266,9 +266,9 @@
       "title": "Sharp Solved Families and\\\\Constant-Factor Paths in Polynomial Lemniscates",
       "artifact_class": "problem_note",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "source_content_digest": "sha256:1bf7495a5ff42ef0f58ba9f6466aa060d4c40068ed6560e45f106f960709f444",
+      "source_content_digest": "sha256:3589651137516cb48571b8ec47454589064a8d783aec52c2a9aeab5d0f21985c",
       "rendered_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "rendered_content_digest": "sha256:ded5ea193290e552a129ca0fec6ffbee949b0b45d5b91656094c0761367dcfad",
+      "rendered_content_digest": "sha256:6bf87e9dfb52f08cd66b1dcab74fa0a7d8f6d2852e38f6d31f644ba0119a01e6",
       "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority",
       "claim_scope": "This note gives ordinary proofs for explicit short-path families, led by all-degree monic trinomials, and separately establishes a sharp critical-value mean. Lean checks Newton-flow value decay, the exponential first integral, the oriented-ray connection obstruction, the exact common-translation collision locus, finite affine-line avoidance, and root retention under small constant perturbations. Three solved-family kernels (collinear, primitive quintic, translated cubic fibres) are Comparator-checked in ExternalVerification1041SolvedFamilies; they are kernels, not the ordinary length-<2 assemblies. The all-degree trinomial paths, the 13/25 certificate, the Poisson critical-value mean, and the separation/solved-family assemblies that turn kernels into paths are ordinary mathematics. PaperTrinomial.lean is absent. Exact obstruction examples, including a Cassini counterexample to the printed global tree budget of a March 2026 manuscript's Proposition 12, show why those estimates cannot be silently promoted to a general connector theorem. The recent degree-seven counterexample announcement is a separate external claim. Erdős Problem 1041 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
@@ -279,7 +279,7 @@
         "python3 scripts/check_publication_contract.py"
       ],
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "source_input_closure_digest": "sha256:4f4934af6b7797e1b151f8c8ccc9636017ed2ba8c1b087a5ff29d65adb16b118"
+      "source_input_closure_digest": "sha256:01273bdda21da04e40ffe1b2da948c10c802413bd7b1dcd2421227c0550333dc"
     },
     {
       "id": "erdos_1049_note",

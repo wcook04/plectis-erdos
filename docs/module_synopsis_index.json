@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:097694d008302c826882c890b30cf6ffe02c380882e5a51e13d24f49d74de9f5",
-  "module_count": 1274,
-  "synopsis_count": 1079,
+  "source_fingerprint": "sha256:d2b49fdbe8a1960120a6f57e941b6c3d880c291639fa2501738c1a96abebaa1a",
+  "module_count": 1286,
+  "synopsis_count": 1091,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3716,6 +3716,66 @@
       "id": "ErdosProblems.Erdos1041.ConnectorR18.SupplierReduction",
       "path": "lean/ErdosProblems/Erdos1041/ConnectorR18/SupplierReduction.lean",
       "synopsis": "Explicit remaining analytic interface and its proved consumer AUTHORED / UNRUN. WARNING: existence of `RayBudgetData` is NOT proved here. The final theorem is CONDITIONAL, with the supplier visibly quantified as a hypothesis. It must never be cited as an unconditional ConstantFactorPath proof. What this removes from the open interface: repeated occurrences, degrees two and three, finite energy aggregation, the adjacent-candidate average, actual curve concatenation, squarefree endpoint distinction, numerical constants, and the strict-level transport needed when 2μ = 1."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.Algebra",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/Algebra.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of the algebraic identities and rational inequalities of §3 of `ani_degree7_counterexample.tex`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.Assembly",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of §5 (the length obstruction) of `ani_degree7_counterexample.tex`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.BarrierAlgebra",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.BarrierCertificates",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.BarrierGraphs",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.BarrierSigns",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.Bottleneck",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of Lemma 2.3 and Corollary 2.4 from `ani_degree7_counterexample.tex`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.Components",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/Components.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of Lemma 2.1 from `ani_degree7_counterexample.tex`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.Defs",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of the shared interface (constants, polynomials, target statement, and the slice obligations S1-S5 consumed by S6) from `ani_degree7_counterexample.tex`. Erdős problem #1041: one concrete degree-seven counterexample Erdős, Herzog and Piranian (1958, Problem 5) asked whether a monic polynomial with all zeros in the open unit disc must admit a path of length less than two inside `{z : ‖p z‖ < 1}` joining two of its zeros. The external paper answers this negatively with a one-parameter family `f_s`. This file fixes the single parameter value `s = 10⁻⁶` and carries the resulting concrete objects. What this file is A shared interface, not a proof. Every theorem below is `sorry`. The formalisation is cut into six slices; each slice proves its own obligations in its own file and consumes the other slices' obligations from here, unchanged. | slice | file | owns | |---|---|---| | S1 | `Algebra.lean` | the exact identities and rational inequalities of §3 | | S2 | `Components.lean` | Lemma 2.1 part (i) only | | S3 | `Bottleneck.lean` | Lemma 2.3 and Corollary 2.4 for an arbitrary polynomial | | S4 | `InstanceCritical.lean` | the concrete root and critical-point data for `f` | | S5 | `InstanceConnectivity.lean` | the two explicit paths inside `Ω(f)` | | S7 | `InstanceBarriers.lean` | two explicit barriers in `{‖f‖ ≥ 1}` | | S6 | `Assembly.lean` | `erdos1041_counterexample` from S1-S5 and S7 | Hard rules carried from `FORMALISATION_PLAN.md` * every constant is an exact rational or Gaussian rational; * "
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of the connections to the roots (§4.2) of `ani_degree7_counterexample.tex` at `s = 10^-6`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.Counterexample.InstanceCritical",
+      "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+      "synopsis": "External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. Formalisation of the concrete critical configuration of `ani_degree7_counterexample.tex` at `s = 10^-6`."
     },
     {
       "id": "ErdosProblems.Erdos1041.CriticalTwoRootProximity",

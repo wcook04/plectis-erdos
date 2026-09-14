@@ -6,7 +6,7 @@
 Plectis is an open-source, AI-assisted research project. This repository contains
 the papers, Lean proofs, computations, failed approaches, and questions
 that remain, so another researcher can inspect the work and continue from it.
-**Seven of the eight problems remain open.** Erdős #1041 was answered in the negative by ani on 7 September 2026, on the problem's discussion thread. This repository did not find that answer. It verified the construction exactly, formalised one instance in Lean with a kernel-checked main theorem, corrected two statements on the way, and rewrote its #1041 note to explain the mechanism. No independent expert review of the construction is claimed.
+**Seven of the eight problems remain open.** This repository does not solve any of them. Erdős #1041 was answered in the negative by ani on 7 September 2026, on the problem's discussion thread. This repository did not find that answer. It verified the construction exactly, formalised one instance in Lean with a kernel-checked main theorem, corrected two statements on the way, and rewrote its #1041 note to explain the mechanism. No independent expert review of the construction is claimed.
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·

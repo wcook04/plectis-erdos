@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:83815144cd707ee41a9f31e929c6cb494de0762eabb5dad2cbf64270298ceb4a",
+    "docs/claims.json": "sha256:2425b24d47442d5725b651021ae4e5f6f9243647fbc720730272bc3f1c33d21c",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:ac19641533acda1c78e3ba5dfe415d7140e718481abddc6d902547c4b0872de4",
-    "docs/publication_contract.json": "sha256:dce94b55ad41cbd915caa905c68359c01c7ba8c8e088ddef07e53fc3527beb85",
+    "docs/problems.json": "sha256:24bf998918231e5ab9365f143b2f2348ef0bea5c8e3ec34c6712d7ace1bf6e35",
+    "docs/publication_contract.json": "sha256:04a48aac140decf50f351aaff281e94582e050add2798ed4658190aa3a0f9a44",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:28e568be1731051b98fa6b621d11d92ffa76d9fe8a997321f84ef3a423a02519",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:ac19641533acda1c78e3ba5dfe415d7140e718481abddc6d902547c4b0872de4",
+      "content_digest": "sha256:24bf998918231e5ab9365f143b2f2348ef0bea5c8e3ec34c6712d7ace1bf6e35",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": "formal-source-2026-09-14",
       "publication_state": "published_committed_checkpoint",
-      "ref": "0037848c3df4c39dde71e8d6ce551c1111f69822",
+      "ref": "969dddcedcdd87907821e2c3db66a7fa8072fde8",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

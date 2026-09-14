@@ -975,7 +975,7 @@
           "title": "Newton Flow and Ray Separation in Polynomial Lemniscates",
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "formal_source_ref": "969dddcedcdd87907821e2c3db66a7fa8072fde8",
           "role": "Standalone theorem-led problem note for Erdős #1041 and the finite ray-separation boundary.",
           "anchor_label_allowlist": [
             "res:ray"
@@ -13952,7 +13952,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "0037848c3df4c39dde71e8d6ce551c1111f69822",
+      "ref": "969dddcedcdd87907821e2c3db66a7fa8072fde8",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
