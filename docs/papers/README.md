@@ -402,7 +402,7 @@ Start here (selected for this guide): [The strategy](full-text/open-source-mathe
 
 **Plectis: What a Stranger Can Check**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/9834bfc27fc0c5bd650ef72eea14fa4e33f37093/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/70b1dedbc294a22cb1924727b06e406fd32c8bc5/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
 
 Start here (selected for this guide): [The problem](full-text/plectis-public-system.md#sec:problem), [One public test before the general design](full-text/plectis-public-system.md#sec:early-example), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions), [What stronger evidence would look like](full-text/plectis-public-system.md#sec:stronger).
 
