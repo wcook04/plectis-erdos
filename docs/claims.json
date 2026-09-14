@@ -387,6 +387,7 @@
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --claim eb_constant",
+          "python3 scripts/query_corpus.py --claim reciprocal_summable_support",
           "python3 scripts/query_corpus.py --claim eb_full_support",
           "python3 scripts/query_corpus.py --claim support_families",
           "python3 scripts/query_corpus.py --claim periodic_nonnegative_weight_irrationality",

@@ -163,7 +163,7 @@ or project history.
 | [`docs/`](docs/README.md) | Reading guides, results, prior art and evidence records. |
 | [`research/`](research/) | Additional research libraries and experiments. |
 | [`research_corpus/`](research_corpus/Erdos1041/CORPUS_MANIFEST.json) | The separate source-only research record for #1041. |
-| [`verification/`](verification/) | Comparator interfaces, certificates and failed-route records. |
+| [`verification/`](verification/) | Comparator challenge and solution modules, certificates and failed-route records. |
 | [`scripts/`](scripts/) | Navigation, build and release tools. |
 | [`skills/`](skills/README.md) | Optional workflows for coding agents. |
 
