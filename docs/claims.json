@@ -1036,7 +1036,7 @@
           "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
           "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "rendered": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "formal_source_ref": "e060dcf7fff1e5d09f80cf755297c9cc93dd5ad7",
           "role": "Standalone theorem-led problem note for Erdős #257 and the 1/21 frontier.",
           "anchor_label_allowlist": [
             "res:period",
@@ -1267,6 +1267,7 @@
         {
           "id": "classical_full_support_and_named_257_families",
           "claim_ids": [
+            "reciprocal_summable_support",
             "eb_full_support",
             "eb_constant",
             "support_families",
@@ -1274,10 +1275,10 @@
             "prime_support_irrationality",
             "universal_257"
           ],
-          "status_summary": "Classical formalisation, cited special cases, and the open universal target.",
-          "prior_art_posture": "Erdős owns full support and the pairwise-coprime family; Duverney–Tachiya own the base-2 squarefree-support theorem; Tao–Teräväinen own the base-2 prime-support theorem. The cited squarefree theorem does not cover bases b≥3, and the cited prime-power extension is remark-only. No priority claim is made for the formalised families.",
+          "status_summary": "Reciprocal-summable supports proved irrational at every integer base with no coprimality hypothesis, classical formalisation, cited special cases, and the open universal target.",
+          "prior_art_posture": "Erdős stated the coprimality-free reciprocal-summable theorem in 1968 and printed only the pairwise-coprime case; the Lean proof here is the proof authority and no priority claim is made. Erdős owns full support and the pairwise-coprime family; Duverney–Tachiya own the base-2 squarefree-support theorem; Tao–Teräväinen own the base-2 prime-support theorem. The cited squarefree theorem does not cover bases b≥3, and the cited prime-power extension is remark-only. No priority claim is made for the formalised families.",
           "primary_narrative_owner": "paper/archive/erdos249-257-main-paper.tex",
-          "source_route": "python3 scripts/query_corpus.py --claim eb_full_support",
+          "source_route": "python3 scripts/query_corpus.py --claim reciprocal_summable_support",
           "consumer_or_open_obligation": "Establishes the classical benchmark and leaves remaining_open.universal_257_all_infinite_supports.",
           "view_decision": "gateway_headline"
         },
@@ -13871,8 +13872,8 @@
       "ref": "e060dcf7fff1e5d09f80cf755297c9cc93dd5ad7",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
-      "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-10-r2"
+      "relationship_to_last_tag": "at_last_tag",
+      "public_tag": "formal-source-2026-09-14"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",

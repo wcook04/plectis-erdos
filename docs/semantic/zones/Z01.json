@@ -2592,6 +2592,36 @@
       "prior_art_note": "Continuant Fibonacci bounds are standard; the run-induced form has not been matched to a source here. These statements are about Stern-Brocot words, not about the Erdos objects.",
       "scope_caveat": "",
       "confidence": "medium"
+    },
+    {
+      "id": "reciprocal_summable_support_irrationality",
+      "canonical_statement": "For every integer base b at least 2 and every infinite support A of natural numbers whose reciprocals sum to a finite value, the sum over a in A of 1/(b^a - 1) is irrational, with no coprimality hypothesis on A. The base-2 case is stated as a separate declaration.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "irrational_erdosSupportSeries_of_summable_reciprocal",
+          "module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "line": 395
+        },
+        {
+          "declaration": "irrational_erdosSupportSeries_two_of_summable_reciprocal",
+          "module": "Erdos249257/ReciprocalSupportIrrationality.lean",
+          "line": 1013
+        }
+      ],
+      "concepts": [
+        "support_coefficient",
+        "near_integer_criterion",
+        "tail_period_law"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "shifted support atoms with close-return extinction (module ReciprocalSupportIrrationality)",
+      "prior_art_state": "prior_art_found",
+      "prior_art_note": "Erdos 1968 (Math. Student 36, p. 222) stated this coprimality-free all-base theorem and printed only the pairwise-coprime case; the Lean proof here is the proof authority, and the curated ledger records it as proved here with no novelty assertion.",
+      "scope_caveat": "Every counterexample to universal Problem 257 must therefore have divergent reciprocal sum; the universal statement itself is not addressed.",
+      "confidence": "high"
     }
   ],
   "declaration_roles": [
@@ -8474,6 +8504,20 @@
       "line": 19269,
       "role": "statement",
       "statement_node": "menu_refuter_exactness_and_monotonicity"
+    },
+    {
+      "declaration": "irrational_erdosSupportSeries_of_summable_reciprocal",
+      "module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+      "line": 395,
+      "role": "statement",
+      "statement_node": "reciprocal_summable_support_irrationality"
+    },
+    {
+      "declaration": "irrational_erdosSupportSeries_two_of_summable_reciprocal",
+      "module": "Erdos249257/ReciprocalSupportIrrationality.lean",
+      "line": 1013,
+      "role": "statement",
+      "statement_node": "reciprocal_summable_support_irrationality"
     }
   ],
   "intra_zone_relations": [

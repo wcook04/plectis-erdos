@@ -5723,6 +5723,16 @@
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
       ]
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z01::reciprocal_summable_support_irrationality",
+      "reviewer": "Claude Fable 5.1",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "e060dcf7fff1e5d09f80cf755297c9cc93dd5ad7",
+      "reviewed_at": "2026-09-14",
+      "evidence_digest": "sha256:c1e52ddd2c9ffd56880d40ec594e2fad2e212574ad4fee5575c09b49fff3caea",
+      "review_scope": "Canonical statement checked against both cited declaration signatures at e060dcf7: irrational_erdosSupportSeries_of_summable_reciprocal (b : N) (A : Set N) (hb : 2 <= b) (hA : A.Infinite) (hsum : Summable (reciprocalSupportTerm A)) : Irrational (erdosSupportSeries b A), and irrational_erdosSupportSeries_two_of_summable_reciprocal with the same hypotheses at base 2. The wording carries exactly those hypotheses (integer base at least 2, infinite support, summable reciprocal terms) and no coprimality hypothesis, and the claim boundary reciprocal_summable_support matches. The proof's internal structure was not reviewed and is not claimed by this receipt. This is a model consistency review, not human mathematical review and not Lean proof authority."
     }
   ]
 }

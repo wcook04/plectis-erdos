@@ -401,7 +401,7 @@ Only after those theorem-level facts comes the corpus census. The current semant
 | View | #68 | #243 | #249 | #251 | #257 | #269 | #1041 | #1049 | both | shared | total |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | mechanically nonrecurring candidates | 0 | 3 | 90 | 0 | 168 | 0 | 0 | 5 | 0 | 20 | 286 |
-| classical/prior-art formalisations | 0 | 1 | 36 | 0 | 23 | 0 | 0 | 1 | 0 | 40 | 101 |
+| classical/prior-art formalisations | 0 | 1 | 36 | 0 | 24 | 0 | 0 | 1 | 0 | 40 | 102 |
 | bare open-problem equivalences | 0 | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 0 | 2 | 32 |
 
 The nonrecurring view contains 184 unconditional object theorems, 56 scoped barriers, and 46 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
