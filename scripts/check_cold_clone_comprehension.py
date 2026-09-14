@@ -1170,13 +1170,17 @@ def validate_human_first_contact(
     require(all(position >= 0 for position in positions), f"README first-contact surface lost section sequence {section_order}")
     require(positions == sorted(positions), "README first-contact sections are out of order")
 
-    # 2026-09-10, operator-directed: the front page carries no command block.
-    # Every command moved to REPRODUCIBILITY and the agent workbench, which the
-    # prefix must still name (asserted with FIRST_CONTACT_ROUTED_SURFACES
-    # below). The advertised verifier is still executed further down so its
-    # behaviour cannot drift away from the runbook that now describes it.
+    # 2026-09-10, operator-directed: the front page carried no command block.
+    # 2026-09-14, operator-directed: "we can put commands in the readme, just
+    # not an obscene number of them". The front page states one theorem and
+    # the one command that inspects it; the command inventory still lives in
+    # REPRODUCIBILITY and the agent workbench, which the prefix must name
+    # (asserted with FIRST_CONTACT_ROUTED_SURFACES below). The advertised
+    # verifier is executed further down so its behaviour cannot drift away
+    # from the runbook that describes it.
     last_problem = readme_prefix.find("#1049", positions[0])
-    require("```" not in readme_prefix, "README front page carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
+    require(readme_prefix.count("```") <= 2, "README front page carries more than one command block; the inventory belongs in REPRODUCIBILITY and the agent workbench")
+    require("git clone" not in readme_prefix, "README front page asks a cold reader to choose a checkout before showing the papers")
     require(last_problem >= positions[0], "README no longer exposes all eight papers under its paper index")
     require(
         "![Eight open problems:" in readme_prefix[:positions[0]]

@@ -366,6 +366,7 @@
           "universal_257"
         ],
         "core_claim_ids": [
+          "reciprocal_summable_support",
           "eb_constant",
           "eb_full_support",
           "support_families",
