@@ -47,7 +47,10 @@ MAX_GUIDE_BYTES = 18_000
 # reasons over before it reaches the mathematics. The paper was first tightened
 # and a duplicated drill-down ladder was cut, so the raise covers the new
 # architecture and nothing else.
-SYSTEMS_PAPER_BASE_BYTES = 73_000
+# Raised from 73_000 on 2026-09-14 after the related-work section absorbed
+# five prior-art citations (Prove2Me, two Feng et al. reports, Henkel, Li et
+# al.) that the paper had been missing; the text was trimmed twice first.
+SYSTEMS_PAPER_BASE_BYTES = 75_000
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 

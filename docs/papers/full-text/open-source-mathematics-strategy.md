@@ -223,6 +223,8 @@ The project uses a deliberately asymmetric attention funnel:
 
 6.  **Acceptance.** Mathematicians inspect, explain, criticise, reuse, publish, or reject the work over time. Broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer.
 
+Step three follows Henkel, who proposed a different model for verification than for generation on the evidence that each model is worst at grading its own proofs \[henkel; openproofcorpus\].
+
 Palomar is valuable precisely because its claim is narrower than peer review. It mechanically verifies a pinned challenge–solution interface using Comparator and kernel checking, records structured disclosure, and applies a documented automated editorial filter. It explicitly does not endorse the result, establish novelty, or provide human expert review \[palomar\]. Likewise, the Erdős Problems forum asks long proofs or partial proofs to be linked as external documents and filters implausibly incomplete claims; it is a route to relevant attention, not a substitute for that community’s judgement \[erdosproblems\].
 
 Multiple contributors can improve triage, but headcount is not mathematical evidence. What raises a bundle’s priority is costly, legible corroboration: independent replay, adversarial review, distinct contributors repairing different failure modes, a stable formal interface, and an exposition that a specialist can audit. This social proof should allocate attention, never inflate the theorem status. It lets a contributor without institutional connections accumulate a public chain of reasons for an expert to look, without requiring the expert to sift every raw agent transcript.
@@ -324,6 +326,12 @@ Mathlib uses ordinary fork-and-pull-request practice, human review, and source-l
 #### Multi-agent formal research.
 
 Agent Hunt studies bounties, locks, guarded ownership, and collaborative agents for autoformalisation \[agenthunt\]. Lean Atlas uses formal dependency information to reduce the declarations a person must inspect for semantic verification \[leanatlas\]. These mechanisms address search, coordination, and review focus. They do not by themselves provide a public commons in which mathematics and improvements to the research architecture enter one provenance-preserving adoption path.
+
+<a id="individual-research-practice."></a>
+
+#### Individual research practice.
+
+Henkel gives a framework for one mathematician working with publicly affordable models: five guiding principles, of which critical verification of every output is the second, and seven applications across the research lifecycle from ideation to writing \[henkel\]. He proposes cross-model checking on the evidence that each model grades its own proofs worst \[openproofcorpus\], and he treats acknowledgement of tool use as an emerging norm while recording that community standards for it remain to be established. His unit is one researcher at a chat window. The commons here supplies the shared record, evidence classes, and credit machinery that such a norm needs in order to hold across contributors.
 
 <a id="open-agent-platforms."></a>
 
@@ -639,6 +647,10 @@ S. Chen, K. Marwaha, X. Lu, H. Yuen, and T. Peng, *Prove2Me: An Open Collaborati
 T. Feng, T. Trinh, G. Bingham, et al., *Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erdős Problems*, 2026, [arXiv:2601.22401](https://arxiv.org/abs/2601.22401).
 
 T. Feng, T. H. Trinh, G. Bingham, et al., *Towards Autonomous Mathematics Research*, 2026, [arXiv:2602.10177](https://arxiv.org/abs/2602.10177).
+
+J. Henkel, *The Mathematician’s Assistant: Integrating AI into Research Practice*, 2025, [arXiv:2508.20236](https://arxiv.org/abs/2508.20236).
+
+J. Dekoninck et al., *The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs*, 2025, [arXiv:2506.21621](https://arxiv.org/abs/2506.21621).
 
 T. Tao, *AI contributions to Erdős problems*, community wiki, [GitHub wiki page](https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems), accessed September 2026.
 

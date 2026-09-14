@@ -4119,7 +4119,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:d3194d8f59eb6b7fd9f22cddb2177a8364f466fb73d29f41a174527fe4886da8",
+      "source_sha256": "sha256:812b5b8ad7a0230c0d66dfedf0ba04f92363f6279a2b1361a04694d2dfd56608",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex",
@@ -4214,37 +4214,37 @@
           "level": 1,
           "id": "sec:geometry",
           "title": "Unique coding and arithmetic membership",
-          "line": 466
+          "line": 468
         },
         {
           "level": 1,
           "id": "sec:actual-repairs",
           "title": "The actual greedy return inequality",
-          "line": 482
+          "line": 484
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Further questions",
-          "line": 543
+          "line": 545
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 627
+          "line": 629
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 637
+          "line": 639
         }
       ],
-      "citations_rendered": 6,
+      "citations_rendered": 10,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:dbc4442b2891f5473a168e24da650edf56a0025c12e828bc11b99f4089f2a8b8",
-      "pdf_byte_count": 150672,
+      "pdf_sha256": "sha256:20b27ebdf2442f0865df7d6395945145be059f7f89d1903f2c3704f0ed824237",
+      "pdf_byte_count": 156137,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4267,7 +4267,7 @@
           {
             "id": "sec:open",
             "title": "Further questions",
-            "line": 543
+            "line": 545
           }
         ],
         "unresolved_count": 0
@@ -7075,7 +7075,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:1d08ec179af564a11acb7ae00d7c1178b562dc3c2b577e8d1caa60eb1eee8c9d",
+      "source_sha256": "sha256:80c0c287b46068dc6e2293de354ed7f754db04c8ea06a6a680082086202166c7",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
@@ -7371,10 +7371,10 @@
           "line": 606
         }
       ],
-      "citations_rendered": 25,
+      "citations_rendered": 28,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:8e33a9a4f0fa53d8aa1e8e205a08c785663ed0bd09e3d09cbd8acc5fa68ddfc3",
-      "pdf_byte_count": 151491,
+      "pdf_sha256": "sha256:8be98aa8c63f600b5353cfdee8ab578336e5883221b50e37ad4ed5503c1acca2",
+      "pdf_byte_count": 153480,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7647,12 +7647,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:771fe1f29e70feafffc1472e446b87ff5bd114630ce89d76717ef11453503ec5",
+      "source_sha256": "sha256:13f7aade865f32012ac747a38866d074f8331835579fe38ed7bc33cfd1f27271",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/open-source-mathematics-strategy.tex",
-      "section_count": 31,
+      "section_count": 32,
       "sections": [
         {
           "level": 1,
@@ -7712,139 +7712,145 @@
           "level": 1,
           "id": "sec:credit",
           "title": "Progress, provenance, and credit",
-          "line": 230
+          "line": 232
         },
         {
           "level": 2,
           "id": "record-now-trace-consequences-later",
           "title": "Record now, trace consequences later",
-          "line": 270
+          "line": 272
         },
         {
           "level": 1,
           "id": "sec:security",
           "title": "Distributed compute without distributed authority",
-          "line": 282
+          "line": 284
         },
         {
           "level": 1,
           "id": "sec:prior",
           "title": "Precedents and the missing composition",
-          "line": 298
+          "line": 300
         },
         {
           "level": 4,
           "id": "distributed-compute.",
           "title": "Distributed compute.",
-          "line": 304
+          "line": 306
         },
         {
           "level": 4,
           "id": "distributed-mathematical-insight.",
           "title": "Distributed mathematical insight.",
-          "line": 310
+          "line": 312
         },
         {
           "level": 4,
           "id": "distributed-formalisation.",
           "title": "Distributed formalisation.",
-          "line": 316
+          "line": 318
         },
         {
           "level": 4,
           "id": "multi-agent-formal-research.",
           "title": "Multi-agent formal research.",
-          "line": 322
+          "line": 324
+        },
+        {
+          "level": 4,
+          "id": "individual-research-practice.",
+          "title": "Individual research practice.",
+          "line": 330
         },
         {
           "level": 4,
           "id": "open-agent-platforms.",
           "title": "Open agent platforms.",
-          "line": 328
+          "line": 336
         },
         {
           "level": 4,
           "id": "semi-autonomous-discovery-on-the-erd\u0151s-problems.",
           "title": "Semi-autonomous discovery on the Erd\u0151s problems.",
-          "line": 336
+          "line": 344
         },
         {
           "level": 4,
           "id": "proof-abundance.",
           "title": "Proof abundance.",
-          "line": 344
+          "line": 352
         },
         {
           "level": 1,
           "id": "sec:add-problem",
           "title": "Adding another problem world",
-          "line": 352
+          "line": 360
         },
         {
           "level": 1,
           "id": "sec:growth",
           "title": "Participation and growth",
-          "line": 370
+          "line": 378
         },
         {
           "level": 1,
           "id": "sec:evaluation",
           "title": "Evaluation",
-          "line": 392
+          "line": 400
         },
         {
           "level": 1,
           "id": "sec:learning",
           "title": "Learning from every run",
-          "line": 426
+          "line": 434
         },
         {
           "level": 2,
           "id": "sec:local-to-general",
           "title": "The local-to-general track",
-          "line": 468
+          "line": 476
         },
         {
           "level": 1,
           "id": "sec:science",
           "title": "A bounded transfer hypothesis beyond mathematics",
-          "line": 503
+          "line": 511
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and governance",
-          "line": 513
+          "line": 521
         },
         {
           "level": 1,
           "id": "sec:execution",
           "title": "Execution order",
-          "line": 537
+          "line": 545
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 559
+          "line": 567
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 569
+          "line": 577
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 603
+          "line": 611
         }
       ],
-      "citations_rendered": 35,
+      "citations_rendered": 38,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:8afcfe3efbcec812b7970246e0dd00cf3f3515718ba0c4dad7136bcfeb732f5e",
-      "pdf_byte_count": 143254,
+      "pdf_sha256": "sha256:da98ebf08404e79fee9ad349ddf879a1b61909fee6ded72f10a3334a8d325578",
+      "pdf_byte_count": 145096,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7867,12 +7873,12 @@
           {
             "id": "sec:local-to-general",
             "title": "The local-to-general track",
-            "line": 468
+            "line": 476
           },
           {
             "id": "sec:limits",
             "title": "Limits and governance",
-            "line": 513
+            "line": 521
           }
         ],
         "unresolved_count": 0
