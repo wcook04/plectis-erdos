@@ -36,15 +36,15 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1481,
-          "line_end": 1484,
+          "line_start": 1510,
+          "line_end": 1513,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:00533dbf0653285d403f4d880ae6c06199d42aedaead4cf8e51773d95b99c3ce"
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1381,
-          "line_end": 1386,
+          "line_start": 1419,
+          "line_end": 1424,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432"
         }
@@ -80,8 +80,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1401,
-          "line_end": 1406,
+          "line_start": 1439,
+          "line_end": 1444,
           "expected_text": "\\bibitem{formalconjectures}",
           "excerpt_sha256": "sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d"
         }
@@ -481,15 +481,15 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1446,
-          "line_end": 1450,
+          "line_start": 1472,
+          "line_end": 1476,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:1bbd690c4787d1f1d80dd1f1ce42127d2dbec30c78a37ad55889e085911ed906"
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1396,
-          "line_end": 1401,
+          "line_start": 1434,
+          "line_end": 1439,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0"
         },
@@ -1015,8 +1015,8 @@
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1386,
-          "line_end": 1391,
+          "line_start": 1424,
+          "line_end": 1429,
           "expected_text": "\\bibitem{carleson}",
           "excerpt_sha256": "sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e"
         }
@@ -1580,8 +1580,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1406,
-          "line_end": 1412,
+          "line_start": 1444,
+          "line_end": 1450,
           "expected_text": "\\bibitem{palomar}",
           "excerpt_sha256": "sha256:50025897e9875f1e8eb278c5a5c91ea2be1d03b9c7afc2bedf2dcec1c82f6162"
         }
@@ -1616,15 +1616,15 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1493,
-          "line_end": 1496,
+          "line_start": 1522,
+          "line_end": 1525,
           "expected_text": "\\bibitem{agenthunt}",
           "excerpt_sha256": "sha256:06270751176ee840e9cf84912d799856c76acd07dbc3c72f014dda02fc1854e3"
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1412,
-          "line_end": 1417,
+          "line_start": 1450,
+          "line_end": 1455,
           "expected_text": "\\bibitem{agenthunt}",
           "excerpt_sha256": "sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68"
         }
@@ -1659,8 +1659,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1474,
-          "line_end": 1477,
+          "line_start": 1503,
+          "line_end": 1506,
           "expected_text": "\\bibitem{jiaharman}",
           "excerpt_sha256": "sha256:efbc6debda6e31a0cdfdb49d071c431b6d93c01f84a033351248ad1b2f3f7734"
         }
@@ -1691,8 +1691,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1469,
-          "line_end": 1472,
+          "line_start": 1498,
+          "line_end": 1501,
           "expected_text": "\\bibitem{gotel}",
           "excerpt_sha256": "sha256:f17c0c478335e800131efac3fc47767edf7e649bd313b804266e2bbf30b81ba9"
         }
@@ -2146,8 +2146,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1366,
-          "line_end": 1371,
+          "line_start": 1404,
+          "line_end": 1409,
           "expected_text": "\\bibitem{boinc}",
           "excerpt_sha256": "sha256:b08b660d84c300da10b0cff0235eddaac275ba376ce6b7d77fbee66ccfb561fd"
         }
@@ -2402,8 +2402,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1422,
-          "line_end": 1427,
+          "line_start": 1465,
+          "line_end": 1470,
           "expected_text": "\\bibitem{credit}",
           "excerpt_sha256": "sha256:0e1fe3e7471b6a0f3864ce0578266000a9fbb85f892248701cd17ba615c3e182"
         }
@@ -2447,8 +2447,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1496,
-          "line_end": 1499,
+          "line_start": 1525,
+          "line_end": 1528,
           "expected_text": "\\bibitem{dreamprover}",
           "excerpt_sha256": "sha256:1b5d7bac4be42590e61a579f1d80ea2cb6adb8f6f2ce9ca2ed0c61289d5fa104"
         }
@@ -2480,10 +2480,10 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1463,
-          "line_end": 1466,
+          "line_start": 1489,
+          "line_end": 1492,
           "expected_text": "\\bibitem{econcs}",
-          "excerpt_sha256": "sha256:19d1245f526166da7a85ecfbdafa6c01ae731d583af00f955767912c814b0525"
+          "excerpt_sha256": "sha256:54abdd25410da1b47e3fb5b3fac6ade4ff7dd291f4b481a9e515560c74f3ab42"
         }
       ],
       "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
@@ -2560,8 +2560,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1505,
-          "line_end": 1508,
+          "line_start": 1534,
+          "line_end": 1537,
           "expected_text": "\\bibitem{eurekagent}",
           "excerpt_sha256": "sha256:41dc4edf06af566e300a6354dd5626e47fca1f6af7f86309ecb4f6d76d1affa0"
         }
@@ -2593,8 +2593,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1376,
-          "line_end": 1381,
+          "line_start": 1414,
+          "line_end": 1419,
           "expected_text": "\\bibitem{polymath}",
           "excerpt_sha256": "sha256:6f2b691dbea0a4758a07048f06dca1acfc4049444971d8bdfab57f8bf75e6a02"
         }
@@ -2669,8 +2669,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1371,
-          "line_end": 1376,
+          "line_start": 1409,
+          "line_end": 1414,
           "expected_text": "\\bibitem{gimps}",
           "excerpt_sha256": "sha256:3b1c1f707242e20b5d386d4825b37ac2214783f7d5eabb0ada5326605f0fc4cd"
         }
@@ -2707,8 +2707,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1477,
-          "line_end": 1479,
+          "line_start": 1506,
+          "line_end": 1508,
           "expected_text": "\\bibitem{gsn}",
           "excerpt_sha256": "sha256:e22b714a411702e74c05c8664cdaefcf8f5c4dcb370228e523cf673d46d64846"
         }
@@ -2988,8 +2988,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1472,
-          "line_end": 1474,
+          "line_start": 1501,
+          "line_end": 1503,
           "expected_text": "\\bibitem{demillo}",
           "excerpt_sha256": "sha256:2a24ff23359ad7b3c311119906da81233df24832b89222f2be5f86235548b475"
         }
@@ -3954,8 +3954,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1466,
-          "line_end": 1469,
+          "line_start": 1495,
+          "line_end": 1498,
           "expected_text": "\\bibitem{isadof}",
           "excerpt_sha256": "sha256:b538f4cc62eabdb4674393f8df9e52b4043594fc2724cb91a6cd99b1cda26ac5"
         }
@@ -3989,8 +3989,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1460,
-          "line_end": 1463,
+          "line_start": 1486,
+          "line_end": 1489,
           "expected_text": "\\bibitem{leanatlas}",
           "excerpt_sha256": "sha256:2399864b4721f4d5705dac2a1f050ccf6c91d2631e715007d632aebad0c35d25"
         },
@@ -4003,10 +4003,10 @@
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1417,
-          "line_end": 1422,
+          "line_start": 1455,
+          "line_end": 1460,
           "expected_text": "\\bibitem{leanatlas}",
-          "excerpt_sha256": "sha256:559913d433db072252f79d63ee5165385817e9da3e3afc137a0b386e7cf9d521"
+          "excerpt_sha256": "sha256:cbc96d2ca058731561fda44e70b5d2f239fbaf14f1de0bb2732381fdead4b7fe"
         }
       ],
       "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
@@ -4081,8 +4081,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1456,
-          "line_end": 1460,
+          "line_start": 1482,
+          "line_end": 1486,
           "expected_text": "\\bibitem{leanarchitect}",
           "excerpt_sha256": "sha256:db2532f557964ac96576952c8607d916e5278b3c6d7a29bd13295a77ff345e28"
         },
@@ -4126,8 +4126,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1453,
-          "line_end": 1456,
+          "line_start": 1479,
+          "line_end": 1482,
           "expected_text": "\\bibitem{leanblueprint}",
           "excerpt_sha256": "sha256:7309da2fcaace6abbd9af2aeeb912021812d164e3d40997aa7c1cb4e98c478c8"
         },
@@ -4178,8 +4178,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1484,
-          "line_end": 1486,
+          "line_start": 1513,
+          "line_end": 1515,
           "expected_text": "\\bibitem{leandojo}",
           "excerpt_sha256": "sha256:fabee45be57e7e01287e24c55801ede6426f9262dc1801b956db71edb40c2a6e"
         },
@@ -4794,15 +4794,15 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1479,
-          "line_end": 1481,
+          "line_start": 1508,
+          "line_end": 1510,
           "expected_text": "\\bibitem{taoai}",
           "excerpt_sha256": "sha256:3512dbed9859b7bdff32e6c30c9caf824a9e8638de1e2632e6009f8d0618fc41"
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1362,
-          "line_end": 1366,
+          "line_start": 1400,
+          "line_end": 1404,
           "expected_text": "\\bibitem{tao2026}",
           "excerpt_sha256": "sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a"
         }
@@ -5471,8 +5471,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1450,
-          "line_end": 1453,
+          "line_start": 1476,
+          "line_end": 1479,
           "expected_text": "\\bibitem{erdosgraham}",
           "excerpt_sha256": "sha256:851267bb83e0426f3dc46e58eca0ec223ffefbf930eeba52eeeccf56d165f807"
         },
@@ -8304,8 +8304,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1490,
-          "line_end": 1493,
+          "line_start": 1519,
+          "line_end": 1522,
           "expected_text": "\\bibitem{openprover}",
           "excerpt_sha256": "sha256:45e399824f7a91b588e0da7501989c4218fad45a476eee19f1cf5ed374601f3d"
         }
@@ -8350,8 +8350,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1486,
-          "line_end": 1490,
+          "line_start": 1515,
+          "line_end": 1519,
           "expected_text": "\\bibitem{pantograph}",
           "excerpt_sha256": "sha256:7052c9564e3a50f71416b68353c32c939efbb5b719a371014e847871a2e0b349"
         }
@@ -8585,8 +8585,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1427,
-          "line_end": 1432,
+          "line_start": 1470,
+          "line_end": 1475,
           "expected_text": "\\bibitem{githubsecurity}",
           "excerpt_sha256": "sha256:a2823f7bc0eabe07dcb16e2476c88ca0a6ae7777617c24762b0674c83ce2e1da"
         }
@@ -10123,8 +10123,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1502,
-          "line_end": 1505,
+          "line_start": 1531,
+          "line_end": 1534,
           "expected_text": "\\bibitem{symposium}",
           "excerpt_sha256": "sha256:2cb8ef505247970413bcf1ba50b6f4ccd133351e235c7f956ca8b13415b5c6da"
         }
@@ -10659,8 +10659,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1499,
-          "line_end": 1502,
+          "line_start": 1528,
+          "line_end": 1531,
           "expected_text": "\\bibitem{hep}",
           "excerpt_sha256": "sha256:f8672f9682d847ef8ecd3bf492f33dc58169ae1bc0f90b355f3f23a9dd953bff"
         }
@@ -11187,8 +11187,8 @@
         },
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "line_start": 1391,
-          "line_end": 1396,
+          "line_start": 1429,
+          "line_end": 1434,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:bb8050123710e542e010c55df517209f1e56e938a1655ebb63df13ec2e2c8c44"
         },
@@ -13052,6 +13052,54 @@
         }
       ],
       "relation": "Implemented a received pointer by comparing the cited q-Apéry construction with the #1049 rational-base programme. The public source closure verifies that the paper targets the same Lambert value, identifies the q-WZ operator and the integer-base denominator-clearing boundary, and credits both published authors in the ordinary literature row. The local Lean module separately proves that Van Assche’s different moving diagonal has a nonzero n=0 residual for the cited operator. This correspondence row credits only the private prior-art pointer; it does not claim the correspondent checked the comparison, calculations, Lean, or #1049 mathematics."
+    },
+    {
+      "id": "source-36f533b76bc247",
+      "kind": "literature",
+      "title": "Prove2Me: An Open Collaborative Platform for Scaling Math Formalization",
+      "authors": [
+        "Shuze Chen",
+        "Kunal Marwaha",
+        "Xiaoyang Lu",
+        "Henry Yuen",
+        "Tianyi Peng"
+      ],
+      "publication_years": [
+        "2026"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2608.28433"
+      ],
+      "problems": [],
+      "source_locators": [],
+      "artifact_links": [
+        {
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+          "line_start": 1492,
+          "line_end": 1495,
+          "expected_text": "\\bibitem{prove2me}",
+          "excerpt_sha256": "sha256:61accd7ec9e12f6e578df7e4223c678b33fbbb621f04ea3b8ea4742d9df7f288"
+        },
+        {
+          "path": "paper/systems/open-source-mathematics-strategy.tex",
+          "line_start": 1460,
+          "line_end": 1465,
+          "expected_text": "\\bibitem{prove2me}",
+          "excerpt_sha256": "sha256:f1e042b4fab69745f6aebce1d7c6f6bb98d6e13abe6c2a2d65acce032dcb4287"
+        }
+      ],
+      "relation": "Cited by both public systems papers as the prior published design of an open agent-native formalisation platform (arXiv v1 28 August 2026, three days before the strategy paper's first public version) and as independent concurrent work for the systems paper (first public July 2026): statement/proof separation, exact-type proof submission, audited mission cores, proof-sketch decomposition, reusable library with reuse credit, and sub-agent read-back. Neither paper claims priority over it.",
+      "verification_state": "bibliography_only",
+      "bibliography_keys": [
+        {
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+          "key": "prove2me"
+        },
+        {
+          "path": "paper/systems/open-source-mathematics-strategy.tex",
+          "key": "prove2me"
+        }
+      ]
     }
   ],
   "lean_reviews": [
