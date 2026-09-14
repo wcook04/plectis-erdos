@@ -56,6 +56,15 @@
       },
       "then": {"required": ["correction_lineage"]},
       "else": {"not": {"required": ["correction_lineage"]}}
+    },
+    {
+      "if": {"properties": {"record_kind": {"const": "validation_fixture"}}, "required": ["record_kind"]},
+      "then": {},
+      "else": {
+        "properties": {
+          "result": {"properties": {"claim_ceiling": {"not": {"const": "validation_fixture_only"}}}}
+        }
+      }
     }
   ],
   "$defs": {
@@ -230,7 +239,8 @@
             "validated_architecture_change",
             "architecture_correction",
             "cited_only",
-            "open"
+            "open",
+            "validation_fixture_only"
           ]
         },
         "surviving_boundary": {"type": "string", "minLength": 1},
@@ -246,7 +256,8 @@
             "consider_problem_proposition",
             "consider_core_promotion",
             "consider_architecture_adoption",
-            "no_promotion"
+            "no_promotion",
+            "not_requested"
           ]
         }
       }
