@@ -4,6 +4,7 @@ import Erdos249257.ActualForeignResidueProjection
 import Erdos249257.AdelicHeightObstruction
 import Erdos249257.AdjacentCarryTube
 import Erdos249257.AdjacentPhaseSeparation
+import Erdos249257.AllBaseReciprocalSupportIrrationality
 import Erdos249257.BooleanMobiusCarry
 import Erdos249257.BooleanMobiusCriticalCapacityCofinal
 import Erdos249257.BooleanMobiusCriticalCapacityGeometric
@@ -165,3 +166,4 @@ import Erdos249257.TropicalCurvatureCarry
 import Erdos249257.TwentyOneQuotientCompactness
 import Erdos249257.TwentyOneQuotientGreedy
 import Erdos249257.AllBaseTotientKernel
+import Erdos249257.ReciprocalSupportIrrationality

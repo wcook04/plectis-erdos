@@ -15,6 +15,21 @@ that remain, so another researcher can inspect the work and continue from it.
 
 ![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
+## One checked theorem
+
+For every integer base b ≥ 2 and every infinite set A of positive integers
+with ∑_{a∈A} 1/a < ∞, the series ∑_{a∈A} 1/(bᵃ − 1) is irrational. Erdős
+stated this in 1968 and printed only the pairwise-coprime case; the Lean
+kernel checks the coprimality-free proof here
+(`irrational_erdosSupportSeries_of_summable_reciprocal`). So every
+counterexample to Problem 257 must have divergent reciprocal sum. To see the
+statement, its declaration and source line, and what it does not settle, run
+this from a clone (Git and Python only, no Lean installation):
+
+```sh
+python3 scripts/verify_claims.py --claim reciprocal_summable_support
+```
+
 ## Where to start
 
 The numbers below identify questions in [Erdős Problems](https://www.erdosproblems.com/),

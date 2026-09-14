@@ -2091,6 +2091,14 @@
           ]
         },
         {
+          "id": "Erdos249257.AllBaseReciprocalSupportIrrationality",
+          "path": "lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.ReciprocalSupportIrrationality"
+          ]
+        },
+        {
           "id": "Erdos249257.AllBaseTotientKernel",
           "path": "lean/Erdos249257/AllBaseTotientKernel.lean",
           "role": "Lean proof module",
@@ -7700,6 +7708,16 @@
           "role": "Residue wraps, reciprocal mass, and unbounded carries",
           "imports": [
             "Erdos249257.BooleanMobiusCarry"
+          ]
+        },
+        {
+          "id": "Erdos249257.ReciprocalSupportIrrationality",
+          "path": "lean/Erdos249257/ReciprocalSupportIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.RationalSupportCarrySkeleton",
+            "Erdos249257.MersenneTailAtoms",
+            "Erdos249257.CarrySurvivorExtinction"
           ]
         },
         {
@@ -15803,6 +15821,29 @@
           "name": "irrational_erdosSupportSeries_pairwise_coprime",
           "module": "Erdos249257/CertificateKernel.lean",
           "line": 10776
+        }
+      ]
+    },
+    {
+      "id": "reciprocal_summable_support",
+      "label": "Reciprocal-summable supports are irrational at every integer base, with no coprimality hypothesis",
+      "status": "proved here",
+      "statement": "For every integer base b ≥ 2 and every infinite support A ⊆ ℕ with ∑_{a∈A} 1/a < ∞, the series ∑_{a∈A} 1/(bᵃ − 1) is irrational (`irrational_erdosSupportSeries_of_summable_reciprocal`). No coprimality hypothesis is assumed; the base-2 case is `irrational_erdosSupportSeries_two_of_summable_reciprocal`. Erdős stated this coprimality-free all-base theorem in 1968 and printed only the pairwise-coprime case; the Lean proof here is the proof authority. Consequently every counterexample to universal Problem 257 has divergent reciprocal sum.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:reciprocal-support",
+      "readme_headline": true,
+      "declarations": [
+        {
+          "name": "irrational_erdosSupportSeries_of_summable_reciprocal",
+          "module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "line": 395
+        },
+        {
+          "name": "irrational_erdosSupportSeries_two_of_summable_reciprocal",
+          "module": "Erdos249257/ReciprocalSupportIrrationality.lean",
+          "line": 1013
         }
       ]
     },

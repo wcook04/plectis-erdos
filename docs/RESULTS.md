@@ -24,14 +24,16 @@ the displayed implication; it does not prove that its hypotheses occur.
 
 ## The short version
 
-The repository's clearest completed mathematics is concentrated in restricted
-forms of Problem 257. Lean checks the classical full-support theorem for every
-integer base `b ≥ 2`, a pairwise-coprime support theorem under explicit
-summability hypotheses, and irrationality for nonnegative rational
+Lean checks that for every integer base `b ≥ 2` and every infinite support
+with summable reciprocals, the series `∑_{a∈A} 1/(b^a − 1)` is irrational,
+with no coprimality hypothesis
+(`irrational_erdosSupportSeries_of_summable_reciprocal`); Erdős stated this
+theorem in 1968 and printed only the pairwise-coprime case. Lean also checks
+the classical full-support theorem for every integer base, the
+pairwise-coprime support theorem, and irrationality for nonnegative rational
 eventually-periodic coefficients with a positive periodic tail. An ordinary
 averaging proof gives a weaker weighted summability criterion that also covers
-some supports with divergent reciprocal sum. The reciprocal-summable corollary
-was stated by Erdős without a printed proof. The same finite averaging window
+some supports with divergent reciprocal sum. The same finite averaging window
 also combines weighted supports with positive divisor covers, preserving
 irrationality for every infinite subset of their union at all integer bases.
 This combination has an ordinary proof. The achievement-set
@@ -174,7 +176,10 @@ window makes both displacements small. Every infinite subset of their union
 then has irrational subseries at every integer base. This ordinary combination
 does not establish the separately proposed hosts separating the two classes.
 Every infinite reciprocal-summable support satisfies it, yielding the
-coprimality-free extension stated by Erdős. Full-support
+coprimality-free extension stated by Erdős; that reciprocal-summable theorem
+is Lean-checked here at every integer base
+(`irrational_erdosSupportSeries_of_summable_reciprocal` in
+`Erdos249257/AllBaseReciprocalSupportIrrationality.lean`). Full-support
 irrationality at every integer base is classical (Erdős 1948) and
 Lean-checked here, as are pairwise-coprime summable-reciprocal support and
 Lebesgue measure one for the base-2 achievement set. Irrationality for
@@ -1097,11 +1102,16 @@ status is a search outcome recorded for triage, not a novelty claim.
 
 ### Settled support families for Problem 257
 
-The universal problem is open, but several infinite supports are settled.
-The formal source proves irrationality in every integer base `b≥2` for the
+The formal source proves irrationality in every integer base `b≥2` for every
+infinite support with summable reciprocals, with no coprimality hypothesis
+(`irrational_erdosSupportSeries_of_summable_reciprocal` in
+`Erdos249257/AllBaseReciprocalSupportIrrationality.lean`, base 2 in
+`Erdos249257/ReciprocalSupportIrrationality.lean`), and for the
 full support, factorials, powers of two, multiples of a fixed positive integer,
 residue classes, the odd numbers, eventually periodic supports, and pairwise
-coprime supports with summable reciprocals. The relevant declarations include:
+coprime supports with summable reciprocals. The universal problem is open.
+The other relevant declarations, all in `Erdos249257/CertificateKernel.lean`,
+include:
 
 - `irrational_erdosSum_full_support`;
 - `erdos257_family_factorial_instance` and
@@ -1112,9 +1122,8 @@ coprime supports with summable reciprocals. The relevant declarations include:
 - `irrational_erdosSupportSeries_eventuallyPeriodic`; and
 - `irrational_erdosSupportSeries_pairwise_coprime`.
 
-These declarations are in `Erdos249257/CertificateKernel.lean`. The prime and
-prime-power supports are literature results cited by the repository, not
-formalised here.
+The prime and prime-power supports are literature results cited by the
+repository, not formalised here.
 
 A distinct second-layer rationality normal form is now a typed public
 consumer: `exists_normalized_support_fraction_iff_exists_booleanMobiusCarry`

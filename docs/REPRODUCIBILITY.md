@@ -49,12 +49,15 @@ shallow clone.
 After cloning, run:
 
 ```sh
-python3 scripts/verify_claims.py --claim eb_full_support
+python3 scripts/verify_claims.py --claim reciprocal_summable_support
 ```
 
 The output shows the published statement, its declaration and source line,
 the selected Comparator interface, the recorded release, and the claim's
-limits. For this example, the status is **known mathematics formalised here**.
+limits. For this example, the status is **proved here**: the theorem that a
+reciprocal-summable infinite support gives an irrational series at every
+integer base, with no coprimality hypothesis, which Erdős stated in 1968
+without printing a proof.
 The command looks for the recorded declaration names near their recorded
 source lines in your current checkout and tests whether the claim uses a
 recognised status. It also prints the paper and Comparator references. It
@@ -62,11 +65,10 @@ does not load the recorded historical revision, run Lean or prove the
 statement again.
 [Section 2](#2-reproduce-the-pinned-lean-environment) gives the proof-build route.
 
-For this claim, the verifier's `WRITTEN UP IN` entry points to the archived
-joint manuscript used in the recorded release. For the current exposition,
-read the [#257 short paper](../paper/257/erdos-257-mersenne-support-subseries.pdf).
-The historical source anchor and the current reading route serve different
-purposes; [the paper index](../paper/README.md) keeps the current papers together.
+For this claim, the verifier's `WRITTEN UP IN` entry points to the
+[#257 short paper](../paper/257/erdos-257-mersenne-support-subseries.pdf),
+which states the theorem as its reciprocal-summable support result;
+[the paper index](../paper/README.md) keeps the current papers together.
 
 For the full claim inventory, use `python3 scripts/verify_claims.py --verify-all`.
 This mode also uses the current checkout. It additionally reports missing

@@ -1064,7 +1064,7 @@ FIRST_COMMAND_PROMISES = (
 
 # The exact invocation the README puts in front of a reader who has not decided
 # to read yet. Running any other one would test a command nobody was offered.
-FIRST_COMMAND_ARGV = ("--claim", "eb_full_support")
+FIRST_COMMAND_ARGV = ("--claim", "reciprocal_summable_support")
 
 
 def validate_first_command_keeps_its_promise(readme_prefix: str) -> None:
