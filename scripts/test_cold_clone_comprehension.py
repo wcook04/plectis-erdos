@@ -374,13 +374,17 @@ def main() -> int:
     mutated_command_block = human_surfaces.copy()
     mutated_command_block["README.md"] = mutated_command_block["README.md"].replace(
         "## Read or verify locally",
-        "## Read or verify locally\n\n```sh\npython3 scripts/verify_claims.py --claim eb_full_support\n```",
+        "## Read or verify locally\n\n"
+        + "\n\n".join(
+            f"```sh\npython3 scripts/verify_claims.py --claim {claim}\n```"
+            for claim in ("eb_full_support", "eb_constant", "support_families")
+        ),
         1,
     )
     assert_human_rejected(
         summary,
         mutated_command_block,
-        "README command block",
+        "README command-block budget",
     )
     checks += 1
 

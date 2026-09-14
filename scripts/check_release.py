@@ -2010,15 +2010,32 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 rel = f"Erdos249257/{fname}"
             pinned_requests.add((note_pinned_commit(paper_text, formal_ref), rel))
+    # The nesting commit moved the corpus under lean/ without changing module
+    # identity, so a pinned snapshot may spell a module either way. Request
+    # both spellings and seed the cache under the spelling the paper uses;
+    # seeding None from one failed spelling would stop module_lines() from
+    # ever trying the other (2026-09-14: every \mword in a note pinned at a
+    # nested commit reported "not found").
     pinned_cache: dict[tuple[str, str], list[str]] = {}
     snapshot_lines_batch(
-        pinned_requests,
+        {
+            (ref, spelling)
+            for ref, rel in pinned_requests
+            for spelling in library_storage_variants(rel)
+        },
         pinned_cache,
     )
     cache.update(
         {
-            (rel, ref): lines or None
-            for (ref, rel), lines in pinned_cache.items()
+            (rel, ref): next(
+                (
+                    pinned_cache[(ref, spelling)]
+                    for spelling in library_storage_variants(rel)
+                    if pinned_cache.get((ref, spelling))
+                ),
+                None,
+            )
+            for ref, rel in pinned_requests
         }
     )
 

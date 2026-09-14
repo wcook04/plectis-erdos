@@ -14,6 +14,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from semantic_review import apply_review_registry, relation_subject_id, subject_digest
+import semantic_review
 import validation_singleflight as singleflight
 
 
@@ -164,6 +165,19 @@ def main() -> int:
     assert not errors, errors
     assert nodes[node["id"]]["semantic_review"]["reviewer"] == "Codex Type A"
     assert relations[0]["semantic_review"]["reviewer"] == "Codex Type A"
+
+    # 2026-09-14: the nesting commit moved the corpus under lean/ without
+    # changing module identity. A re-review across that move compared atlas
+    # keys spelled Erdos249257/Foo.lean against lean/Erdos249257/Foo.lean and
+    # refused all 34 receipts as "statement differs". Keys follow identity.
+    assert (
+        semantic_review._signature_key("lean/Erdos249257/Foo.lean", "thm")
+        == semantic_review._signature_key("Erdos249257/Foo.lean", "thm")
+        == ("Erdos249257/Foo.lean", "thm")
+    ), "signature keys must be storage-spelling independent"
+    assert semantic_review._signature_key("verification/ExternalVerification/Challenge.lean", "x") == (
+        "verification/ExternalVerification/Challenge.lean", "x"
+    ), "non-corpus paths keep their spelling"
 
     mutations = {
         "statement wording": lambda n, r, g: n[node["id"]].__setitem__(

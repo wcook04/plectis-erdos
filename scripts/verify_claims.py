@@ -14,7 +14,7 @@ for, and a reader who guessed wrong learned nothing about the claim.
 
 This module is that verb, and it is deliberately small:
 
-    python3 scripts/verify_claims.py --claim eb_full_support
+    python3 scripts/verify_claims.py --claim reciprocal_summable_support
 
 resolves one claim id into the statement the public is given, the declarations
 that carry it, the file and line where each declaration actually sits *in this
@@ -884,7 +884,7 @@ def main() -> int:
         epilog=(
             "examples:\n"
             "  python3 scripts/verify_claims.py --list\n"
-            "  python3 scripts/verify_claims.py --claim eb_full_support\n"
+            "  python3 scripts/verify_claims.py --claim reciprocal_summable_support\n"
             "  python3 scripts/verify_claims.py --verify-all\n"
             "  python3 scripts/verify_claims.py --gates\n"
             "  python3 scripts/verify_claims.py --restamp\n"

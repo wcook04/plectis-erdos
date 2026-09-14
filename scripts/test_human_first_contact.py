@@ -25,6 +25,9 @@ def words(text: str) -> list[str]:
     return re.findall(r"[A-Za-z0-9][A-Za-z0-9'’+#./−≥≤]*", text)
 
 
+README_COMMAND_BLOCK_BUDGET = 2  # whole README; the first screen gets at most one
+
+
 def prose_words(text: str) -> list[str]:
     """Count reader prose without charging the separately bounded code block."""
 
@@ -163,10 +166,16 @@ def main() -> None:
         len(prose_words(readme)) <= 2_000,
         "README prose exceeds the human front-door budget",
     )
-    # 2026-09-10, operator-directed: the front page carries no command block at
-    # all. Commands live in REPRODUCIBILITY and the agent workbench, which the
-    # README must name; the routed-surface checks below keep them reachable.
-    require("```" not in readme, "README carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
+    # 2026-09-10, operator-directed: the front page carried no command block.
+    # 2026-09-14, operator-directed: "we can put commands in the readme, just
+    # not an obscene number of them". One theorem and the one command that
+    # inspects it belong on the first screen; the full command inventory still
+    # lives in REPRODUCIBILITY and the agent workbench, which the README must
+    # name; the routed-surface checks below keep them reachable.
+    require(
+        readme.count("```") <= 2 * README_COMMAND_BLOCK_BUDGET,
+        "README carries more command blocks than its budget; the inventory belongs in REPRODUCIBILITY and the agent workbench",
+    )
     require(
         "[REPRODUCIBILITY](docs/REPRODUCIBILITY.md)" in readme
         and "](docs/agents/AGENT_WORKBENCH.md)" in readme,
@@ -205,8 +214,14 @@ def main() -> None:
         not re.search(r"(?m)^\|.+\|$", first_screen),
         "README first screen uses a routing table instead of prose",
     )
-    require("```" not in first_screen and "git clone" not in first_screen,
-        "README asks a cold reader to choose a checkout before showing the papers")
+    require(
+        first_screen.count("```") <= 2 and "git clone" not in first_screen,
+        "README asks a cold reader to choose a checkout before showing the papers",
+    )
+    require(
+        "scripts/verify_claims.py --claim " in first_screen,
+        "README first screen no longer shows the one command that inspects its stated theorem",
+    )
     require(
         "![Eight open problems:" in first_screen
         and "](.github/system-map.png)" in first_screen,

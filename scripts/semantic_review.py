@@ -524,6 +524,18 @@ MOVED_REVISION_REASON = (
 )
 
 
+def _signature_key(module: object, name: object) -> tuple[str, str]:
+    """Key a declaration by Lean module identity, not by storage spelling.
+
+    The nesting commit moved the corpus under ``lean/`` without changing any
+    module identity; an atlas built before it spells modules as
+    ``Erdos249257/Foo.lean`` and one built after it as
+    ``lean/Erdos249257/Foo.lean``. Comparing signatures across that move must
+    not read the spelling change as a mathematical change.
+    """
+    return (library_identity_path(str(module)), str(name))
+
+
 def _atlas_signatures_at(revision: str) -> dict[tuple[str, str], tuple[str, str]]:
     """Return ``(module, name) -> (kind, signature)`` from the atlas at ``revision``."""
     import subprocess
@@ -536,7 +548,7 @@ def _atlas_signatures_at(revision: str) -> dict[tuple[str, str], tuple[str, str]
     ).stdout
     atlas = json.loads(raw)
     return {
-        (str(row.get("module")), str(row.get("name"))): (
+        _signature_key(row.get("module"), row.get("name")): (
             str(row.get("kind")),
             str(row.get("signature")),
         )
@@ -554,7 +566,7 @@ def _cited_declarations(kind: str, subject: dict, nodes_by_id: dict) -> list[tup
             if str(subject.get(end)) in nodes_by_id
         ]
     cited = {
-        (str(evidence.get("module")), str(evidence.get("declaration")))
+        _signature_key(evidence.get("module"), evidence.get("declaration"))
         for node in sources
         for evidence in node.get("evidence", [])
         if evidence.get("declaration")
@@ -608,7 +620,7 @@ def rereview_moved_revision(
             (ROOT / "docs" / "declaration_atlas.json").read_text(encoding="utf-8")
         )
         new_signatures = {
-            (str(row.get("module")), str(row.get("name"))): (
+            _signature_key(row.get("module"), row.get("name")): (
                 str(row.get("kind")),
                 str(row.get("signature")),
             )

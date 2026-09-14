@@ -38,6 +38,12 @@
 \newcommand{\commit}{8e58c395e9807ef3374d7365c62cf04d20ee6331}
 \newcommand{\commitshort}{9e231ce4371f}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}
+% Storage prefix inside the pinned snapshot. The nesting commit moved the
+% corpus under lean/ without changing module identity; a note pinned at a
+% nested commit sets \renewcommand{\sourceprefix}{lean/} so its links resolve,
+% while a note pinned at a historical root-layout commit leaves it empty.
+% scripts/check_problem_note_sources.py enforces the pairing.
+\newcommand{\sourceprefix}{}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-erdos/tree/\commit}
 \newcommand{\PX}{ErdosProblems}
 
@@ -68,9 +74,9 @@
 % work lands.  Several problems have their headline theorem in the older
 % reviewed #249/#257 corpus, and a note that could not name that library
 % would have to paraphrase a checked statement instead of linking it.
-\newcommand{\mref}[3]{\href{\repobase/#1\#L#2}{\leanlabel{#3}}}
-\newcommand{\mword}[4]{\href{\repobase/#1\#L#2}{#4}}
-\newcommand{\mloc}[2]{\href{\repobase/#1\#L#2}{Lean source}}
+\newcommand{\mref}[3]{\href{\repobase/\sourceprefix#1\#L#2}{\leanlabel{#3}}}
+\newcommand{\mword}[4]{\href{\repobase/\sourceprefix#1\#L#2}{#4}}
+\newcommand{\mloc}[2]{\href{\repobase/\sourceprefix#1\#L#2}{Lean source}}
 \emergencystretch=2em
 
 \newtheorem{theorem}{Theorem}[section]

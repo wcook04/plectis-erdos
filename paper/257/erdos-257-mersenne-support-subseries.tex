@@ -8,8 +8,9 @@
 % extensions and their mathematical boundaries, then the actual target.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{e060dcf7fff1e5d09f80cf755297c9cc93dd5ad7}
+\renewcommand{\commitshort}{e060dcf7fff1}
+\renewcommand{\sourceprefix}{lean/}
 \hypersetup{
   pdftitle={Weighted Support Criteria for Reciprocal Mersenne Subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -47,8 +48,9 @@ all-base quantifier, leaving its proof unprinted; an independent complete
 proof is printed here.  A uniform
 finite averaging estimate also combines the weighted criterion with positive
 divisor covers: their union has the same hereditary irrationality property.
-These results have ordinary proofs; their analytic steps are not end-to-end
-Lean theorems.  Universal
+The reciprocal-summable theorem is also checked end to end by the Lean
+kernel in this checkout; the weighted and mixed criteria have ordinary
+proofs whose analytic steps are not Lean theorems.  Universal
 irrationality remains unresolved.
 \end{abstract}
 
@@ -66,21 +68,22 @@ Let $A\subseteq\Npos$ be infinite.  If
 then \(X_A(b)\) is irrational for every integer \(b\ge2\).
 \end{theorem}
 
-The statement is ordinary mathematics in this note.  This checkout has no
-module \texttt{AllBaseReciprocalSupportIrrationality.lean} and no Lean
-declaration \texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}.
-The separate public Lean release
+Theorem~\ref{res:reciprocal-support} is checked by the Lean kernel in this
+checkout as the
+\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{395}{irrational_erdosSupportSeries_of_summable_reciprocal}{reciprocal-summable support theorem},
+with the base an integer at least~2, the support infinite and the reciprocal
+support terms summable; its base-two case is the
+\mword{Erdos249257/ReciprocalSupportIrrationality.lean}{1013}{irrational_erdosSupportSeries_two_of_summable_reciprocal}{binary reciprocal-summable theorem}.
+The ordinary proof printed below is independent of the formal one.  The
+separate public Lean release
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E257/Challenge.lean#L713}{\texttt{wcook04/plectis-erdos-lean}}
-states Theorem~\ref{res:reciprocal-support} at commit \texttt{52f29ad1} as
+states the same theorem at commit \texttt{52f29ad1} as
 \texttt{irrational\_supportPowerSeries\_of\_summable\_reciprocal} in
-\texttt{PalomarCorpus/E257/Challenge.lean}, with the base an integer at
-least~2, the support infinite and the reciprocal support terms summable, and
-proves it under \texttt{Solutions/PalomarCorpus/E257}.  That repository's
-Linux replay of Palomar's Comparator stage accepted the entry with the Lean
-kernel and with NanoDa
+\texttt{PalomarCorpus/E257/Challenge.lean} and proves it under
+\texttt{Solutions/PalomarCorpus/E257}; that repository's Linux replay of
+Palomar's Comparator stage accepted the entry with the Lean kernel and with
+NanoDa
 (\href{https://github.com/wcook04/plectis-erdos-lean/actions/runs/34782407633}{run 34782407633}).
-The checked proof is a later counterpart, identified separately rather than
-attributed to the checkpoint of this note.
 The nearby
 \mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{pairwise-coprime support theorem}
 keeps an extra pairwise-coprimality hypothesis together with summable
@@ -960,16 +963,12 @@ full-support statement it leaves unproved is the checked
 \mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{full-support theorem}
 cited above.
 
-Theorem~\ref{res:reciprocal-support} itself is ordinary mathematics in this
-note and has no Lean counterpart in this checkout: the filenames
-\texttt{AllBaseReciprocalSupportIrrationality.lean},
-\texttt{SignedFinitePeriodNoncollapse.lean} and
+Theorem~\ref{res:reciprocal-support} is checked in this checkout as
+\texttt{AllBaseReciprocalSupportIrrationality.lean}, cited at the theorem;
+the filenames \texttt{SignedFinitePeriodNoncollapse.lean} and
 \texttt{GreedyRepairCriterion.lean} are not present.  The source checkpoint
 is \texttt{\commitshort}; later counterparts are identified separately rather
-than attributed to that checkpoint.  One such later counterpart is the checked
-theorem \texttt{irrational\_supportPowerSeries\_of\_summable\_reciprocal} of
-the public Lean release \texttt{wcook04/plectis-erdos-lean} at commit
-\texttt{52f29ad1}, cited at Theorem~\ref{res:reciprocal-support}.
+than attributed to that checkpoint.
 
 The finite estimate~\eqref{eq:mixed-finite-kernel} and
 Theorem~\ref{thm:variable-fractional-cover} have complete ordinary proofs

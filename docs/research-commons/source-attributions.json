@@ -5852,8 +5852,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1169,
-          "line_end": 1170,
+          "line_start": 1168,
+          "line_end": 1169,
           "expected_text": "\\bibitem{erdos1948}",
           "excerpt_sha256": "sha256:3b1bc4b5fcba471ceb51cdf5ffeafc4257a5c30781360a5278ec9e20de218167"
         },
@@ -6235,8 +6235,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1162,
-          "line_end": 1169,
+          "line_start": 1161,
+          "line_end": 1168,
           "expected_text": "\\bibitem{kovactao}",
           "excerpt_sha256": "sha256:47be7d5967eb02b0cfe2c4cc13e8e6064ec86800b2070cfc29c580a862eb9aa9"
         },
@@ -7147,8 +7147,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1178,
-          "line_end": 1184,
+          "line_start": 1177,
+          "line_end": 1183,
           "expected_text": "\\bibitem{erdos1968}",
           "excerpt_sha256": "sha256:c54f4576f2f7899a114a818cc712dac75c92c6e8a9cebfac16f4be9624d79ea6"
         },
@@ -7176,7 +7176,7 @@
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "line_start": 129,
           "line_end": 133,
-          "excerpt_sha256": "sha256:97fb4fbaf28c47d99e417800ae4398b093aab3336d256f2b9534d0f93cf58c8c"
+          "excerpt_sha256": "sha256:cb16753bfc5946289bc44454675ea4ad705f140c051b8f69584c96984dd20ea3"
         },
         {
           "path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
@@ -9031,8 +9031,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1154,
-          "line_end": 1162,
+          "line_start": 1153,
+          "line_end": 1161,
           "expected_text": "\\bibitem{taoteravainen2025}",
           "excerpt_sha256": "sha256:9bd6a4ac3ce8d989e64803da969a9cc0208274609e21b3e829c8b13703504f4e"
         },
@@ -9341,8 +9341,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1144,
-          "line_end": 1154,
+          "line_start": 1143,
+          "line_end": 1153,
           "expected_text": "\\bibitem{duverneytachiya}",
           "excerpt_sha256": "sha256:33655436858a2291a1f1e6883027a8a70317f263a270d001b36f7ac2f2c23dac"
         },
@@ -11551,7 +11551,7 @@
           "path": "research/adapters/FormalConjecturesVariants.lean",
           "line_start": 390,
           "line_end": 421,
-          "excerpt_sha256": "sha256:912d421ce3a607706d9b45fcb033ab97d4d81f834be36a029c3407aca9e05ae8"
+          "excerpt_sha256": "sha256:c612cdc4818135685c7ada72d9c5a947ac06347282e36c04fef550c9f48de539"
         }
       ],
       "relation": "Exact summation-by-parts equivalence with Σ(p_{n+1}−p_n)/2^n, followed by a heuristic conditional prime-tuples/entropy route. Equivalence is exact; suggested route is not a theorem.",
@@ -12014,7 +12014,7 @@
           "path": "research/adapters/FormalConjecturesVariants.lean",
           "line_start": 471,
           "line_end": 504,
-          "excerpt_sha256": "sha256:5bd0c8f1316751bbcc0c8dd95f60449cc49b395f5984c254b1db288a24fda020"
+          "excerpt_sha256": "sha256:08a115ad570e2173934d468c9feff501a21b3c111324c30740973100a1b06105"
         }
       ],
       "relation": "Local variant restates the upstream-shaped shifted series and proves the cofinal divisibility-miss equivalence; proposed/support vocabulary, not evidence the upstream file accepted it.",
@@ -12048,7 +12048,7 @@
           "path": "research/adapters/FormalConjecturesVariants.lean",
           "line_start": 270,
           "line_end": 288,
-          "excerpt_sha256": "sha256:12a5b1f7563cefb7d10a26be861ae84e01bcba9b150a9655b9c3e2aabd93108b"
+          "excerpt_sha256": "sha256:b231cfdb89c8b673215ab05bc1b147d4f1c09254edc2557e95c3e9ae96af1e9d"
         }
       ],
       "relation": "Local variants expose dyadic totient kernel rank/basis over an upstream-shaped namespace; not an upstream accepted result.",
@@ -12082,7 +12082,7 @@
           "path": "research/adapters/FormalConjecturesVariants.lean",
           "line_start": 362,
           "line_end": 426,
-          "excerpt_sha256": "sha256:4db989ccba90a32a255fe9bd93b65967fa391e1cf1c9974d07cfa64d5d0e92c8"
+          "excerpt_sha256": "sha256:3a85b340e5a4afdb71a3371a739236added5ca3a31901508df82fdbba6e23a2e"
         }
       ],
       "relation": "Local variant implements the exact zero-based prime-gap identity and transfer over upstream-owned primeGap vocabulary.",
@@ -12116,7 +12116,7 @@
           "path": "research/adapters/FormalConjecturesVariants.lean",
           "line_start": 342,
           "line_end": 360,
-          "excerpt_sha256": "sha256:7ff63cde13f349a5f42b41b5bbc6f9160c468a7a7ae2a92d8cd54b5d8afc85d6"
+          "excerpt_sha256": "sha256:8cc28f9ca901428f25728b881c8b55ead77ed8d517227556c996e84829f04c0d"
         }
       ],
       "relation": "Local variant implements finite-period noncollapse over upstream-shaped vocabulary; universal #257 remains open.",

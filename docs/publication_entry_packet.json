@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:35c663096e9bb34d7dd733bd6073fe29440b0a515f444af8fae81110cb1755fb",
+    "docs/claims.json": "sha256:d397c68fe744bfcf3b9688b42449b9c6abb1bd7ce91de68848ea8a5a07d2aa91",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
-    "docs/publication_contract.json": "sha256:3063ea4300073f129f75bc109efe00d252642d93a9702a4897c99503772f900d",
+    "docs/publication_contract.json": "sha256:14b400f30eacae332223ac048b873fa4e73f5fe20edba9c768981d0368d9d5d9",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:78aa190d7bbc136eca3d811bfd3aca22d1a005bebba791c82c607763f57e0667",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:ef1f5a94c8b5bcb663ac5a24606887c02e293ebe93035a059a88f70e3756f3d9",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:7aacac8fa113175cb17b0cb87a02cc90bd70078d6250c3c3f604eece35789ca6",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 30,
-      "curated_claim_count": 141,
+      "curated_claim_count": 142,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 892,
+        "line": 895,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 906,
+        "line": 909,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 915,
+        "line": 918,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 925,
+        "line": 928,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -544,11 +544,11 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-10-r2",
+      "public_tag": "formal-source-2026-09-14",
       "publication_state": "published_committed_checkpoint",
-      "ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334",
+      "ref": "e060dcf7fff1e5d09f80cf755297c9cc93dd5ad7",
       "ref_kind": "commit",
-      "relationship_to_last_tag": "post_tag_checkpoint"
+      "relationship_to_last_tag": "at_last_tag"
     },
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "release_date": "2026-09-11",

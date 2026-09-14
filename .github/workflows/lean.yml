@@ -653,7 +653,7 @@ jobs:
         run: python3 -VV
       - name: Follow one claim to its source, its receipts, and its limit
         run: |
-          python3 scripts/verify_claims.py --claim eb_full_support
+          python3 scripts/verify_claims.py --claim reciprocal_summable_support
           python3 scripts/verify_claims.py --verify-all
       - name: Navigate the corpus with no Lean build
         run: |
@@ -699,7 +699,7 @@ jobs:
           printf '%s' "$output" | grep -q 'git fetch --unshallow'
       - name: Following one claim still works on a truncated clone
         run: |
-          python3 scripts/verify_claims.py --claim eb_full_support
+          python3 scripts/verify_claims.py --claim reciprocal_summable_support
           python3 scripts/verify_claims.py --verify-all
 
   release-surfaces:

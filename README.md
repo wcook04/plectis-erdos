@@ -15,6 +15,21 @@ that remain, so another researcher can inspect the work and continue from it.
 
 ![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
+## One checked theorem
+
+For every integer base b ≥ 2 and every infinite set A of positive integers
+with ∑_{a∈A} 1/a < ∞, the series ∑_{a∈A} 1/(bᵃ − 1) is irrational. Erdős
+stated this in 1968 and printed only the pairwise-coprime case; the Lean
+kernel checks the coprimality-free proof here
+(`irrational_erdosSupportSeries_of_summable_reciprocal`). So every
+counterexample to Problem 257 must have divergent reciprocal sum. To see the
+statement, its declaration and source line, and what it does not settle, run
+this from a clone (Git and Python only, no Lean installation):
+
+```sh
+python3 scripts/verify_claims.py --claim reciprocal_summable_support
+```
+
 ## Where to start
 
 The numbers below identify questions in [Erdős Problems](https://www.erdosproblems.com/),
@@ -148,7 +163,7 @@ or project history.
 | [`docs/`](docs/README.md) | Reading guides, results, prior art and evidence records. |
 | [`research/`](research/) | Additional research libraries and experiments. |
 | [`research_corpus/`](research_corpus/Erdos1041/CORPUS_MANIFEST.json) | The separate source-only research record for #1041. |
-| [`verification/`](verification/) | Comparator interfaces, certificates and failed-route records. |
+| [`verification/`](verification/) | Comparator challenge and solution modules, certificates and failed-route records. |
 | [`scripts/`](scripts/) | Navigation, build and release tools. |
 | [`skills/`](skills/README.md) | Optional workflows for coding agents. |
 
@@ -168,15 +183,15 @@ Mathlib. See the [security policy](.github/SECURITY.md) for the execution bounda
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 141 curated claim records in 30 contribution families, reaching Lean source through 451 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 142 curated claim records in 30 contribution families, reaching Lean source through 453 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 91% of the 156,245 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 91% of the 156,335 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,274 |
-| Formal results and supporting lemmas | 153,502 |
-| Curated claim records | 141 |
+| Lean modules (the two library roots) | 1,276 |
+| Formal results and supporting lemmas | 153,586 |
+| Curated claim records | 142 |
 | Contribution families | 30 |
 
 Generated shards are counted as formal source and never as separate

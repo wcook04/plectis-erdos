@@ -39,7 +39,12 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import validation_singleflight as singleflight
-from lean_source import library_storage_path
+from lean_source import (
+    LIBRARY_ROOTS,
+    LIBRARY_SOURCE_DIR,
+    library_identity_path,
+    library_storage_path,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 PREAMBLE = ROOT / "paper" / "problem-note-preamble.tex"
@@ -274,6 +279,53 @@ def git_run(*args: str) -> subprocess.CompletedProcess[str]:
         env=singleflight.command_environment(),
         timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
+
+
+NESTED_LAYOUT_PROBE = f"{LIBRARY_SOURCE_DIR}/{LIBRARY_ROOTS[0]}.lean"
+
+
+def commit_uses_nested_layout(commit: str, layout_cache: dict[str, bool]) -> bool:
+    """True when the pinned snapshot stores the corpus under ``lean/``.
+
+    The nesting commit moved ``Erdos249257/`` and ``ErdosProblems/`` under
+    ``lean/`` without changing Lean module identity. Notes keep citing the
+    module-identity spelling, so the spelling inside a pinned snapshot depends
+    on that snapshot's layout, not on the checkout running this check.
+    """
+    if commit not in layout_cache:
+        probe = git_run("cat-file", "-e", f"{commit}:{NESTED_LAYOUT_PROBE}")
+        layout_cache[commit] = probe.returncode == 0
+    return layout_cache[commit]
+
+
+def storage_relative_at(commit: str, relative: str, layout_cache: dict[str, bool]) -> str:
+    """Spelling of a corpus path inside the pinned snapshot's own layout."""
+    if commit_uses_nested_layout(commit, layout_cache):
+        return library_storage_path(relative)
+    return library_identity_path(relative)
+
+
+SOURCE_PREFIX_RE = re.compile(r"\\renewcommand\{\\sourceprefix\}\{([^}]*)\}")
+
+
+def source_prefix_failure(source: str, note_text: str, nested: bool) -> str | None:
+    """A note's rendered links must carry the pinned snapshot's storage prefix.
+
+    The preamble builds every \\mword link as ``\\repobase/\\sourceprefix<path>``.
+    A note pinned at a nested commit must declare ``lean/`` or all its links
+    404 on GitHub; a note pinned at a historical root-layout commit must not.
+    """
+    declared = [m.group(1) for m in SOURCE_PREFIX_RE.finditer(strip_comments(note_text))]
+    if len(declared) > 1:
+        return f"{source}: declares \\sourceprefix more than once"
+    prefix = declared[0] if declared else ""
+    expected = f"{LIBRARY_SOURCE_DIR}/" if nested else ""
+    if prefix != expected:
+        return (
+            f"{source}: pinned snapshot is {'nested' if nested else 'root-layout'} but "
+            f"\\sourceprefix is {prefix!r}; expected {expected!r} so rendered links resolve"
+        )
+    return None
 
 
 def snapshot_lines(
@@ -546,6 +598,7 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
     """
     lines: list[str] = []
     failures: list[str] = []
+    coverage_layouts: dict[str, bool] = {}
     index = json.loads(safe_worktree_text(INDEX_SOURCE))
     floor, floor_failures = validated_coverage_floor(index)
     failures.extend(floor_failures)
@@ -567,7 +620,9 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
                 failures.append(f"{row['problem_id']}: {error}")
                 continue
             current.extend(declarations_for_module(relative, live))
-            pinned = git_run("show", f"{commit}:{relative}")
+            pinned = git_run(
+                "show", f"{commit}:{storage_relative_at(commit, relative, coverage_layouts)}"
+            )
             if pinned.returncode != 0 or pinned.stdout != live:
                 moved.append(relative)
         if not current:
@@ -615,7 +670,9 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
             ahead = 0
             for module in modules:
                 relative = module_relative(module)
-                shown = git_run("show", f"{upstream}:{relative}")
+                shown = git_run(
+                    "show", f"{upstream}:{storage_relative_at(upstream, relative, coverage_layouts)}"
+                )
                 if shown.returncode == 0:
                     ahead += len(declarations_in(shown.stdout))
             if ahead > len(current):
@@ -648,6 +705,7 @@ def main() -> int:
     default_commit = pinned_commit()
     default_commitshort = pinned_commitshort()
     cache: dict[tuple[str, str], list[str]] = {}
+    layout_cache: dict[str, bool] = {}
     errors: list[str] = []
     checked = 0
     resolved_commits: set[str] = set()
@@ -662,8 +720,10 @@ def main() -> int:
         except UnsafeSourceInput:
             continue
         commit = note_pinned_commit(note_text, default_commit)
+        if git_run("cat-file", "-e", f"{commit}^{{commit}}").returncode != 0:
+            continue
         snapshot_requests.update(
-            (commit, library_relative(file_name))
+            (commit, storage_relative_at(commit, library_relative(file_name), layout_cache))
             for file_name, _line_number, _declaration in links(note_text)
         )
     snapshot_lines_batch(snapshot_requests, cache)
@@ -690,10 +750,17 @@ def main() -> int:
         found = links(note_text)
         if not found:
             errors.append(f"{source}: authored no formal source links")
+        prefix_failure = source_prefix_failure(
+            source, note_text, commit_uses_nested_layout(commit, layout_cache)
+        )
+        if prefix_failure is not None:
+            errors.append(prefix_failure)
         for file_name, line_number, declaration in found:
             checked += 1
             relative = library_relative(file_name)
-            lines = snapshot_lines(commit, relative, cache)
+            lines = snapshot_lines(
+                commit, storage_relative_at(commit, relative, layout_cache), cache
+            )
             if not lines:
                 errors.append(
                     f"{source}: {relative} is absent from the pinned snapshot"
