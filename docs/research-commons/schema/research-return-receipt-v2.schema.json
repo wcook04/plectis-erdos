@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research-commons/schema/research-return-receipt.schema.json",
+  "$id": "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/schema/research-return-receipt-v2.schema.json",
   "title": "Plectis research return and accepted artifact receipt",
   "description": "Provider-neutral contract for submitted research returns and accepted artifact attribution. It records review and delivery state but never replaces proof, claim, or release authority.",
   "type": "object",
@@ -20,7 +20,7 @@
     "safety"
   ],
   "properties": {
-    "schema": {"const": "research-return-receipt/1"},
+    "schema": {"const": "research-return-receipt/2"},
     "record_kind": {
       "enum": ["submitted_return", "accepted_receipt", "validation_fixture"]
     },
@@ -154,7 +154,7 @@
         "changed_paths"
       ],
       "properties": {
-        "origin": {"const": "https://github.com/wcook04/plectis-lean-erdos249-257"},
+        "origin": {"const": "https://github.com/wcook04/plectis-erdos"},
         "starting_commit": {"$ref": "#/$defs/commit"},
         "proposed_commit": {"$ref": "#/$defs/nullableCommit"},
         "accepted_commit": {"$ref": "#/$defs/nullableCommit"},

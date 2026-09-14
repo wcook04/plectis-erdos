@@ -294,7 +294,7 @@ cp "research/workbench/sessions/$SESSION/route-memory-return-template.json" \
 ```
 
 Write `$RETURN_DIR/return.json` using the
-[return schema](schema/research-return-receipt.schema.json) and
+[return schema](schema/research-return-receipt-v2.schema.json) and
 [JSON example](../../scripts/fixtures/research_returns/valid_inconclusive.json).
 The example is a validation fixture: replace its identity, dates, paths,
 evidence and outcomes with the actual work, and use
