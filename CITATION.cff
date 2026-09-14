@@ -3,7 +3,7 @@
 cff-version: 1.2.0
 type: software
 message: "If you use this release, cite the software metadata below. For a mathematical result, cite the relevant per-problem paper linked from README.md; paper/archive/erdos249-257-main-paper.tex is the archival joint #249/#257 manuscript."
-title: "Plectis: research on eight open Erdős problems"
+title: "Plectis: research on eight Erdős problems"
 version: "0.10.0"
 date-released: "2026-09-11"
 authors:

@@ -173,7 +173,7 @@ def main() -> None:
         "README no longer routes readers to the documents that hold its commands",
     )
     require(
-        "All eight problems remain open" in readme,
+        "Seven of the eight problems remain open" in readme,
         "README does not state the global open boundary near the front",
     )
     require(
@@ -208,7 +208,7 @@ def main() -> None:
     require("```" not in first_screen and "git clone" not in first_screen,
         "README asks a cold reader to choose a checkout before showing the papers")
     require(
-        "![Eight open problems:" in first_screen
+        "![Eight problems:" in first_screen
         and "](.github/system-map.png)" in first_screen,
         "README opening lost the mathematical research-record banner",
     )
@@ -243,7 +243,7 @@ def main() -> None:
         len(words(prose_blocks[0])) >= 35,
         "HUMAN_ENTRY does not explain the project before routing the reader",
     )
-    require("All eight problems remain open" in human_entry, "human entry blurs the open boundary")
+    require("Seven of the eight problems remain open" in human_entry, "human entry blurs the open boundary")
     require(
         "Comparator" in human_entry and "Palomar" in human_entry,
         "human entry does not explain the two public review surfaces",

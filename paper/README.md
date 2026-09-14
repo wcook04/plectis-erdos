@@ -9,7 +9,7 @@ its argument and the question that remains. Use the longer record when you
 want to recover a detailed step, inspect a computation, or follow an approach
 that stopped. You do not need Lean or a coding agent to read either.
 
-All eight problems remain open. The papers report partial results, failed or
+Seven of the eight problems remain open. Erdős #1041 was answered in the negative by ani on 7 September 2026, on the problem's discussion thread. This repository did not find that answer. It verified the construction exactly, formalised one instance in Lean with a kernel-checked main theorem, corrected two statements on the way, and rewrote its #1041 note to explain the mechanism. No independent expert review of the construction is claimed. The papers report partial results, failed or
 equivalent routes, finite evidence, and the exact obligations that survive.
 If the problem numbers or formalisation are unfamiliar, read
 [a reader's way in](../docs/READING_GUIDE.md) first. For the design of the tools

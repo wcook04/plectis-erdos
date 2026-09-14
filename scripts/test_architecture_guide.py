@@ -98,7 +98,7 @@ def main() -> int:
     mutations = (
         (
             guide.replace(
-                "All eight mathematical problems remain open", ""
+                "Seven of the eight mathematical problems remain open", ""
             ),
             "open-problem boundary removed",
         ),
@@ -241,7 +241,7 @@ def main() -> int:
     try:
         checker.validate_entry_links(
             readme.replace(
-                "All eight problems remain open.",
+                "Seven of the eight problems remain open.",
                 "A conditional producer would be required",
             ),
             agents,

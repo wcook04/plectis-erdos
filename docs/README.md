@@ -7,7 +7,7 @@ The [front page](../README.md) introduces the project. This index helps you
 choose what to read or do next, whether you want to understand a result, check
 its proof, continue the research, or inspect how the tools work.
 
-All eight original Erdős problems remain open. The papers report intermediate
+Seven of the eight Erdős problems remain open. Erdős #1041 was answered in the negative by ani on 7 September 2026, on the problem's discussion thread. This repository did not find that answer. It verified the construction exactly, formalised one instance in Lean with a kernel-checked main theorem, corrected two statements on the way, and rewrote its #1041 note to explain the mechanism. No independent expert review of the construction is claimed. The papers report intermediate
 results and the approaches that stopped, with enough of the record preserved
 for somebody else to inspect the argument and continue from it.
 

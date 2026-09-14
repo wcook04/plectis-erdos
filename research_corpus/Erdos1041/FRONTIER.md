@@ -1,9 +1,45 @@
-# Erdős 1041 — current frontier (2026-08-30, updated by the proof wave of that date)
+# Erdős 1041 — current frontier
+
+## 2026-09-14: the unrestricted problem has a NEGATIVE answer (external), and the counterexample is Lean-checked
+
+The erdosproblems.com contributor **ani** posted a degree-seven counterexample on the
+problem's discussion thread on 7 September 2026: monic, seven simple zeros of modulus
+`1 - s^16`, exactly one lemniscate component holding two zeros, and every path joining
+them longer than `2 + (alpha/2) s^2` for small `s`. The mechanism: all six critical values
+of the model polynomial `P(w) = w^7 + A w^3 + i B w^2 - C w` (`t = 417/40`) are purely
+imaginary, a first-order term `s Re G` opens exactly one saddle, and a bottleneck lemma
+for degree-two components confines the slit preimage to an `O(s^{5/2})` disc while the
+saddle sits `O(s^2)` off the chord between the two roots.
+
+What this repository did (2026-09-14): verified every identity of the construction
+exactly, tested the length obstruction at 260 digits, located the working regime below
+`s ~ 2e-5` (the paper's `O(s^2)` term has coefficient ~2e4; at `s = 0.1` all six critical
+points are inside the lemniscate), and **formalised the instance `s = 10^-6` in Lean 4 /
+Mathlib v4.29.1**: `lean/ErdosProblems/Erdos1041/Counterexample/` (seven modules,
+`Assembly.lean` proves `erdos1041_counterexample` with `#print axioms` = `propext`,
+`Classical.choice`, `Quot.sound`). The paper's component lemma part (ii) is false as
+printed (`z^2` at the origin) and its repair needs Riemann–Hurwitz, absent from Mathlib;
+the formalisation replaces it by explicit barrier curves in `{|f| >= 1}` plus the
+intermediate value theorem. Rouché and the argument principle are replaced by a
+covering-map construction and a ball-in-image lemma. See the note
+`paper/1041/erdos-1041-lemniscate-newton-flow.tex`, section "The degree-seven
+counterexample", and `docs/research-commons/SOURCE_ATTRIBUTIONS.md` (source
+`source-ani2026-erdos1041`). The mathematics is ani's; the verification and the Lean
+formalisation are this repository's; no independent expert review is claimed.
+
+Consequence for everything below: the positive programme (a short join for **every**
+monic polynomial with roots in the disc) is closed in the negative at degree seven. The
+surviving positive questions are the classes and degrees in which a short join exists
+(trinomials in every degree, degree four by Pendyala, the `mu <= 13/25` regime, the
+solved families) and the exact set of degrees with a positive answer. The dated record
+below is retained as history of the positive programme.
+
+# Earlier frontier (2026-08-30, updated by the proof wave of that date)
 
 Read this before `STRONGEST_RESULTS.json`.  That map is generated from the
 2026-08-28 activation lists and therefore still presents as live several rows
 that were **refuted on 2026-08-29**.  This file is the dated delta.  The
-unrestricted problem is **OPEN**.
+unrestricted problem was **OPEN** at that date; see the 2026-09-14 block above.
 
 2026-08-30 PROOF WAVE (nine-agent verification fleet + main loop; six new
 owner notes, six new checkers, all green):

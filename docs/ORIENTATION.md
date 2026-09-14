@@ -112,7 +112,7 @@ The prior-art record, not this table, supplies antecedents.
 - `remaining_open.twenty_one_permanent_affine_supercapacity` — Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.
 - `remaining_open.universal_257_all_infinite_supports` — Prove irrationality for every infinite support A, not only the named support families formalised here.
 - `remaining_open.erdos_269_three_prime_irrationality` — Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three. For {2,3,5}, the rationality-to-carry bridge is established and cofinal local-window escape remains open.
-- `remaining_open.erdos_1041_lemniscate_connection` — Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.
+- `remaining_open.erdos_1041_lemniscate_connection` — The unrestricted assertion is refuted: ani's degree-seven counterexample, formalised here, has every join between two roots longer than two. What remains open is the positive question: for which degrees n and which classes of monic polynomials with roots in the open unit disc does a join of length less than two exist inside the open lemniscate (degree four is positive by Pendyala; degree seven is negative).
 - `remaining_open.erdos_1049_irrationality` — Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.
 - `remaining_open.erdos_243_eventual_recurrence` — Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.
 - `remaining_open.erdos_269_reduced_tail_nonintegrality` — Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.
@@ -147,8 +147,8 @@ opens with a ten-minute verdict.
 
 Navigation inventory, not results. Generated certificate shards are
 counted as formal source, never as separate mathematical claims. The
-two roots currently expose 1,274 modules and
-156,245 declarations across #68, #243, #249,
+two roots currently expose 1,286 modules and
+157,156 declarations across #68, #243, #249,
 #251, #257, #269, #1041, and #1049; exact counts and atlas handles
 remain in `docs/orientation.json`.
 

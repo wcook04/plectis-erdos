@@ -3,7 +3,7 @@
 
 # How this repository works
 
-This is a public Lean project about eight unsolved problems in mathematics.
+This is a public Lean project about eight problems in mathematics, seven of them unsolved.
 It keeps the proofs, papers, computations and research records together so
 another researcher can inspect the work and continue it. This guide explains
 how those files fit together and what the checks establish.
@@ -25,7 +25,7 @@ records. Both Lean roots use the same proof checker, but adding a declaration
 to the expansion library does not add a reviewed claim to the registry.
 [Methodology](METHODOLOGY.md) explains the review and change rules.
 
-All eight mathematical problems remain open. The repository proves
+Seven of the eight mathematical problems remain open. The repository proves
 intermediate results, exact reformulations and bounded examples around them;
 it does not claim a solution to any of them. This is a self-contained public
 release: its use and its mathematical claims do not depend on private files.

@@ -31,9 +31,9 @@
       "title": "Problem-Sized Lean Worlds",
       "artifact_class": "repository_architecture_guide",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_content_digest": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273",
+      "source_content_digest": "sha256:21902f7553e4681e1870ff3cac20767593ecbb082c68feef948debc363bd40fc",
       "rendered_path": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "rendered_content_digest": "sha256:78aa190d7bbc136eca3d811bfd3aca22d1a005bebba791c82c607763f57e0667",
+      "rendered_content_digest": "sha256:28e568be1731051b98fa6b621d11d92ffa76d9fe8a997321f84ef3a423a02519",
       "authority_posture": "authored_repository_architecture_not_Lean_proof_authority",
       "claim_scope": "A first-principles architecture and access guide to the public Lean source, reviewed claim record, authored documents, generated views, release flow, CI jobs, and human trust boundary. It describes a working prototype rather than a validated multi-user service; as of 31 August 2026 no completed external cold-clone use or accepted external contribution had been recorded. A later historical example illustrates the limit of explicitly recorded checks; the guide adds no mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
@@ -60,16 +60,17 @@
         "post_repair_full_mutation_rerun": false,
         "forbidden_inference": "Do not report a post-repair ten-of-ten result unless all ten mutations are rerun against the extended invariant set."
       },
-      "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
+      "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf",
+      "source_input_closure_digest": "sha256:9a9226fbb9ff0e9f0bfe779baba0590a30248eede023c0f76283d208418d7906"
     },
     {
       "id": "agent_native_navigation_guide",
       "title": "From a Cold Clone to a Proof Receipt",
       "artifact_class": "agent_navigation_guide",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_content_digest": "sha256:093ce4fd9cb08af9213261e6b45a59afb79d8baf57338a0d326502aa2b6f3679",
+      "source_content_digest": "sha256:d16b9cd315f51fb4ef9de6e9a777df47db3ff14a36be71bdd07913fbab7b051e",
       "rendered_path": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "rendered_content_digest": "sha256:7203f10d6c38265d81edcb1185861a3f386b613d988c025f7b611f27bcdec49a",
+      "rendered_content_digest": "sha256:eac59bfcd14a65f5f0eb515e5946e974242459c9d91d8ae6a4d72ae8178533b1",
       "authority_posture": "authored_agent_navigation_and_incremental_validation_guide_not_Lean_proof_authority",
       "claim_scope": "An author-operated prototype case study of zero-build corpus navigation, explicit authority boundaries, replayable agent-session receipts, focused changed-cone builds, and exact cached dependency-index validation in this repository. As of 31 August 2026 no external contributor had completed the tour or documented return path. It does not claim autonomous proving, optimal reasoning, external mathematical novelty, demonstrated outside usability, or transfer to another project.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.agent_native_guides",
@@ -83,7 +84,8 @@
         "python3 scripts/test_lean_dependency_index_cache.py",
         "python3 scripts/check_release.py"
       ],
-      "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
+      "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf",
+      "source_input_closure_digest": "sha256:1f6d8df30f6faeae05478f508e75980a79e25a1eada0acb3f099a15948d842b4"
     },
     {
       "id": "open_source_mathematics_strategy",
@@ -264,9 +266,9 @@
       "title": "Sharp Solved Families and\\\\Constant-Factor Paths in Polynomial Lemniscates",
       "artifact_class": "problem_note",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-      "source_content_digest": "sha256:568fb8d0532b9cd06e3b3c0413ff511dac53af576f89c0b61c0ded55c66593c6",
+      "source_content_digest": "sha256:1bf7495a5ff42ef0f58ba9f6466aa060d4c40068ed6560e45f106f960709f444",
       "rendered_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "rendered_content_digest": "sha256:1c32fdf47bbbcd23a0e3be00d1fe11e97f52238edb193b07d6c3c37e44989a6e",
+      "rendered_content_digest": "sha256:ded5ea193290e552a129ca0fec6ffbee949b0b45d5b91656094c0761367dcfad",
       "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority",
       "claim_scope": "This note gives ordinary proofs for explicit short-path families, led by all-degree monic trinomials, and separately establishes a sharp critical-value mean. Lean checks Newton-flow value decay, the exponential first integral, the oriented-ray connection obstruction, the exact common-translation collision locus, finite affine-line avoidance, and root retention under small constant perturbations. Three solved-family kernels (collinear, primitive quintic, translated cubic fibres) are Comparator-checked in ExternalVerification1041SolvedFamilies; they are kernels, not the ordinary length-<2 assemblies. The all-degree trinomial paths, the 13/25 certificate, the Poisson critical-value mean, and the separation/solved-family assemblies that turn kernels into paths are ordinary mathematics. PaperTrinomial.lean is absent. Exact obstruction examples, including a Cassini counterexample to the printed global tree budget of a March 2026 manuscript's Proposition 12, show why those estimates cannot be silently promoted to a general connector theorem. The recent degree-seven counterexample announcement is a separate external claim. Erdős Problem 1041 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
@@ -276,7 +278,8 @@
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
       ],
-      "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
+      "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
+      "source_input_closure_digest": "sha256:4f4934af6b7797e1b151f8c8ccc9636017ed2ba8c1b087a5ff29d65adb16b118"
     },
     {
       "id": "erdos_1049_note",

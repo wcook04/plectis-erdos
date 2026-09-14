@@ -1794,6 +1794,7 @@
         "ErdosProblems.Decl.verify.D2",
         "ErdosProblems.Decl.verify.D3",
         "ErdosProblems.Decl.verify.D4",
+        "ErdosProblems.Erdos1041.Counterexample.Algebra",
         "ErdosProblems.Erdos1041.ReturnedR18V5FullAudit",
         "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
         "ErdosProblems.Erdos1049.AllRow.Audit",
@@ -8601,6 +8602,106 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Algebra",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Algebra.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Assembly",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs",
+            "ErdosProblems.Erdos1041.Counterexample.Components",
+            "ErdosProblems.Erdos1041.Counterexample.Bottleneck",
+            "ErdosProblems.Erdos1041.Counterexample.InstanceCritical",
+            "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
+            "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierAlgebra",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierCertificates",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierAlgebra"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierGraphs",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierCertificates"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.BarrierSigns",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierGraphs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Bottleneck",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Components"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Components",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Components.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.Defs",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.BarrierSigns"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs",
+            "ErdosProblems.Erdos1041.Counterexample.InstanceCritical"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.Counterexample.InstanceCritical",
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.Counterexample.Defs"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
           "path": "lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
           "role": "Lean proof module",
@@ -12670,6 +12771,7 @@
           "imports": [
             "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
             "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
+            "ErdosProblems.Erdos1041.Counterexample.Assembly",
             "ErdosProblems.Erdos1049.AdelicHeightBridge",
             "ErdosProblems.Erdos1049.BezoutPluckerJets",
             "ErdosProblems.Erdos1049.HermitePadeNoGo",
@@ -13850,11 +13952,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334",
+      "ref": "0037848c3df4c39dde71e8d6ce551c1111f69822",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-10-r2"
+      "public_tag": "formal-source-2026-09-14"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -13882,7 +13984,7 @@
     "schema": "erdos-external-verification-packet/1",
     "scope": "all_eight_public_problem_programmes",
     "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
-    "boundary": "All eight covered Erdős problems remain open. Comparator checks exact Lean statements, configured axioms, and kernel acceptance; it does not assess novelty, significance, source fidelity, or whether any open problem is solved.",
+    "boundary": "Seven of the eight covered Erdős problems remain open; #1041 has a negative answer (ani, September 2026) formalised in this repository. Comparator checks exact Lean statements, configured axioms, and kernel acceptance; it does not assess novelty, significance, source fidelity, or whether any open problem is solved.",
     "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
     "automation": {
       "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
@@ -15481,12 +15583,12 @@
       "id": "remaining_open.erdos_1041_lemniscate_connection",
       "status": "open",
       "open_target_claim": "erdos_1041",
-      "statement": "Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.",
+      "statement": "The unrestricted assertion is refuted: ani's degree-seven counterexample, formalised here, has every join between two roots longer than two. What remains open is the positive question: for which degrees n and which classes of monic polynomials with roots in the open unit disc does a join of length less than two exist inside the open lemniscate (degree four is positive by Pendyala; degree seven is negative).",
       "paper_anchor": {
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 126
+        "line": 139
       }
     },
     {
@@ -15712,13 +15814,27 @@
       "id": "erdos_1041",
       "label": "Erdős #1041: short connections inside polynomial lemniscates",
       "status": "open",
-      "statement": "The global short-connection assertion remains open in this release; finite ray-separation and root-retention inputs do not establish the required topology and length bound.",
+      "statement": "Answered in the negative: ani's degree-seven counterexample (erdosproblems.com thread 1041, 7 September 2026) is formalised here as Erdos1041.Counterexample.erdos1041_counterexample for the instance s = 10^-6 with the three standard axioms. The status 'open' records that this release proves no positive form of the assertion; the residual open question is the set of degrees and classes with a short join.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1041_lemniscate_connection"
       ],
       "paper_label": null,
       "readme_headline": false,
-      "declarations": []
+      "declarations": [],
+      "external_resolution": {
+        "answer": "negative",
+        "source": "ani, erdosproblems.com forum thread 1041, 7 September 2026",
+        "source_attribution_id": "source-ani2026-erdos1041",
+        "formalised_declaration": "ErdosProblems/Erdos1041/Counterexample/Assembly.lean::erdos1041_counterexample",
+        "formalised_instance": "s = 10^-6",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "repository_role": "verification and Lean formalisation only; the mathematics is the external contributor's",
+        "independent_review": "none claimed"
+      }
     },
     {
       "id": "newton_ray_separation_consumer",

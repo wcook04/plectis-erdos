@@ -3,7 +3,7 @@
 
 # Scope of this release
 
-This release does not prove Erdős #68, #243, #249, #251, #257, #269, #1041, or #1049. All eight remain open. Claims use only the immutable formal-source checkpoint in [`docs/claims.json`](claims.json); the last release tag is its citation identity, not a substitute for an exact proof-source identity.
+This release does not prove Erdős #68, #243, #249, #251, #257, #269, #1041, or #1049. Seven remain open; #1041 has a negative answer, found by ani (7 September 2026) and verified and formalised here, which is a disproof and not a proof. Claims use only the immutable formal-source checkpoint in [`docs/claims.json`](claims.json); the last release tag is its citation identity, not a substitute for an exact proof-source identity.
 
 Lean source checked by the pinned kernel is proof authority. Unreleased work, private repositories, generated/provider output, and hidden sketches are not public proof artefact. Committed `research_corpus/Erdos1041` is source-only and extends neither the checkpoint nor `docs/claims.json`; it makes no peer-review, priority, novelty, or significance claim. Later work is out of scope even if locally checked; a later tag is a separate citation action.
 

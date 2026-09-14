@@ -774,7 +774,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["not an entrypoint into any private development system"],
         ],
         "state_problem_frontier": [
-            ["All eight problems remain open"],
+            ["Seven of the eight problems remain open"],
             ["S = ∑ φ(n)/2ⁿ"],
             ["∑_{n∈A} 1/(2ⁿ - 1)"],
             ["every infinite", "for every infinite"],
@@ -1179,7 +1179,7 @@ def validate_human_first_contact(
     require("```" not in readme_prefix, "README front page carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
     require(last_problem >= positions[0], "README no longer exposes all eight papers under its paper index")
     require(
-        "![Eight open problems:" in readme_prefix[:positions[0]]
+        "![Eight problems:" in readme_prefix[:positions[0]]
         and "](.github/system-map.png)" in readme_prefix[:positions[0]],
         "README opening lost the mathematical research-record banner",
     )
@@ -1655,7 +1655,7 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "docs/claims.json",
         "Eight-problem cold-start card",
         "must not already know a query command",
-        "All eight indexed problems remain open",
+        "Seven of the eight indexed problems remain open",
         "Sylvester recurrence",
         r"\sum_{n\ge1}\varphi(n)/2^n",
         r"\sum_{n\ge1}p_n/2^n",
@@ -2394,8 +2394,8 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         summary["remaining_open_propositions"]
     ), "cold-clone comprehension invariant")
     require(tour["scale"]["indexed_problem_count"] == 8, "cold-clone comprehension invariant")
-    require(tour["scale"]["indexed_open_problem_count"] == 8, "cold-clone comprehension invariant")
-    require(tour["open_frontier_contract"]["indexed_open_problem_count"] == 8, "cold-clone comprehension invariant")
+    require(tour["scale"]["indexed_open_problem_count"] == 7, "cold-clone comprehension invariant")  # #1041 has a negative answer (ani), formalised here
+    require(tour["open_frontier_contract"]["indexed_open_problem_count"] == 7, "cold-clone comprehension invariant")
     require(tour["open_frontier_contract"][
         "reviewed_remaining_open_proposition_count"
     ] == len(summary["remaining_open_propositions"]), "cold-clone comprehension invariant")

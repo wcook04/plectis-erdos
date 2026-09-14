@@ -44,6 +44,14 @@ producer or bridge remains explicit.
 
 ## #1041 / source-current frontier
 
+**Resolved in the negative (external, 2026-09-14).** ani's degree-seven counterexample is
+formalised in `lean/ErdosProblems/Erdos1041/Counterexample/` (entry module `Assembly.lean`,
+theorem `erdos1041_counterexample`, axioms `propext`/`Classical.choice`/`Quot.sound`);
+the note's section "The degree-seven counterexample" states, verifies and explains it.
+The routes below document the positive programme and remain the guide to the solved
+families and the residual positive questions.
+
+
 Problem #1041 has a second, source-only navigation route in addition to the
 Lean-backed Newton-flow note. Start with the dated [frontier delta](../research_corpus/Erdos1041/FRONTIER.md),
 then use the [strongest-result map](../research_corpus/Erdos1041/STRONGEST_RESULTS.json)
@@ -76,7 +84,7 @@ remains the paper-facing route to the checked declarations in
 `ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean`. The research corpus is
 not part of `docs/claims.json`'s reviewed claim authority: its files preserve
 source-level premises, computations, no-go results, and open boundaries.
-Nothing in this route settles #1041; the exact continuation boundary is in
+Nothing in this route settles #1041 positively (the problem is settled negatively by the counterexample above); the exact continuation boundary is in
 `FRONTIER.md` and must be read before any new proof search.
 
 ## Complete eight-problem return matrix

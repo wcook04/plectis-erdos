@@ -77,7 +77,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
             [row["erdos_number"] for row in index["problems"]],
             [68, 243, 249, 251, 257, 269, 1041, 1049],
         )
-        self.assertEqual({row["status"] for row in index["problems"]}, {"open"})
+        self.assertTrue({row["status"] for row in index["problems"]} <= {"open", "negative_answer_external_lean_formalised"})
         self.assertIn("not_a_reviewed_claim_registry", index["authority_posture"])
         self.assertEqual(
             packet["challenge_import_closure"]["internal_paths"],
@@ -122,7 +122,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
         self.assertIn("> [!IMPORTANT]", human)
-        self.assertIn("# Plectis verification: eight open Erdős programmes", human)
+        self.assertIn("# Plectis verification: eight Erdős programmes", human)
         self.assertIn("## Mathematical signal spine", human)
         self.assertIn("**Completed direct results:**", human)
         self.assertIn("**Conditional endpoint routes:**", human)

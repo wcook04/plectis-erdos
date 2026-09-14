@@ -107,18 +107,18 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:35c663096e9bb34d7dd733bd6073fe29440b0a515f444af8fae81110cb1755fb",
+    "docs/claims.json": "sha256:83815144cd707ee41a9f31e929c6cb494de0762eabb5dad2cbf64270298ceb4a",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
-    "docs/publication_contract.json": "sha256:3063ea4300073f129f75bc109efe00d252642d93a9702a4897c99503772f900d",
+    "docs/problems.json": "sha256:ac19641533acda1c78e3ba5dfe415d7140e718481abddc6d902547c4b0872de4",
+    "docs/publication_contract.json": "sha256:dce94b55ad41cbd915caa905c68359c01c7ba8c8e088ddef07e53fc3527beb85",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:78aa190d7bbc136eca3d811bfd3aca22d1a005bebba791c82c607763f57e0667",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:28e568be1731051b98fa6b621d11d92ffa76d9fe8a997321f84ef3a423a02519",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:21902f7553e4681e1870ff3cac20767593ecbb082c68feef948debc363bd40fc",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
-    "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
-    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef",
+    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4ec19947fdf2d01f96baa11a814b7084f588ce402828a02bd35c3a5b9f53ee55",
+    "research_corpus/Erdos1041/FRONTIER.md": "sha256:732d7cfb912482d1a9d1d6a1fbf2d675b913267848942c271e35d5e0b314ee9e",
+    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:58a7cefec61e0fd117f58957f841418857ae6a5525f2bf8379a2566f96c2070d",
     "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf",
     "scripts/run_publication_mutations.py": "sha256:34168a755035ab14b591e981a62d7fc5030ea796774baf2243de803e1f1167b7"
   },
@@ -366,11 +366,11 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 126,
+        "line": 139,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
-      "statement": "Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.",
+      "statement": "The unrestricted assertion is refuted: ani's degree-seven counterexample, formalised here, has every join between two roots longer than two. What remains open is the positive question: for which degrees n and which classes of monic polynomials with roots in the open unit disc does a join of length less than two exist inside the open lemniscate (degree four is positive by Pendyala; degree seven is negative).",
       "status": "open"
     },
     {
@@ -504,15 +504,15 @@
     "directory": "research_corpus/Erdos1041",
     "files": {
       "checkpoint": {
-        "content_digest": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef",
+        "content_digest": "sha256:58a7cefec61e0fd117f58957f841418857ae6a5525f2bf8379a2566f96c2070d",
         "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
       },
       "frontier": {
-        "content_digest": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
+        "content_digest": "sha256:732d7cfb912482d1a9d1d6a1fbf2d675b913267848942c271e35d5e0b314ee9e",
         "path": "research_corpus/Erdos1041/FRONTIER.md"
       },
       "manifest": {
-        "content_digest": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
+        "content_digest": "sha256:4ec19947fdf2d01f96baa11a814b7084f588ce402828a02bd35c3a5b9f53ee55",
         "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
       },
       "strongest_results": {
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
+      "content_digest": "sha256:ac19641533acda1c78e3ba5dfe415d7140e718481abddc6d902547c4b0872de4",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -544,9 +544,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-10-r2",
+      "public_tag": "formal-source-2026-09-14",
       "publication_state": "published_committed_checkpoint",
-      "ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334",
+      "ref": "0037848c3df4c39dde71e8d6ce551c1111f69822",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

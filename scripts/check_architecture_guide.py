@@ -118,9 +118,9 @@ SECTION_ORDER = (
 
 REQUIRED_ANCHOR_GROUPS = {
     "purpose_and_boundary": (
-        "eight unsolved problems in mathematics",
+        "eight problems in mathematics, seven of them unsolved",
         "reviewed claim registry covers #249 and #257",
-        "All eight mathematical problems remain open",
+        "Seven of the eight mathematical problems remain open",
         "does not claim a solution to any of them",
         "self-contained public release",
     ),

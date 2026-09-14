@@ -2,7 +2,7 @@
   "schema": "erdos-external-verification-packet/1",
   "scope": "all_eight_public_problem_programmes",
   "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
-  "boundary": "All eight covered Erdős problems remain open. Comparator checks exact Lean statements, configured axioms, and kernel acceptance; it does not assess novelty, significance, source fidelity, or whether any open problem is solved.",
+  "boundary": "Seven of the eight covered Erdős problems remain open; #1041 has a negative answer (ani, September 2026) formalised in this repository. Comparator checks exact Lean statements, configured axioms, and kernel acceptance; it does not assess novelty, significance, source fidelity, or whether any open problem is solved.",
   "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
   "automation": {
     "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:d988c449a5a80b0d66f2084a068a6d198458756b4131b865a33dfa63d23f94be",
+    "owner_digest": "sha256:9e5e6259f707788e3223e51f4a43f46ac7bab8427b605fc87c0e3453b0c82c21",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
+    "projection_digest": "sha256:ac19641533acda1c78e3ba5dfe415d7140e718481abddc6d902547c4b0872de4",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2513,8 +2513,8 @@
         "problem_id": "erdos_1041",
         "erdos_number": 1041,
         "short_title": "Short connections inside polynomial lemniscates",
-        "status": "open",
-        "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?",
+        "status": "negative_answer_external_lean_formalised",
+        "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? Answer: no (ani, 7 September 2026, degree seven); the instance s = 10^-6 is formalised here.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
         "directory": "lean/ErdosProblems/Erdos1041",
@@ -2527,6 +2527,114 @@
             "declaration_count": 21,
             "theorem_count": 18,
             "content_digest": "sha256:8736b05c24517e4568cfdfc49f0180089951cc6397ad720d20271fbc9e5e7351"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.Algebra",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/Algebra.lean",
+            "present": true,
+            "line_count": 670,
+            "declaration_count": 62,
+            "theorem_count": 59,
+            "content_digest": "sha256:a2ffb818e7aa379399c89643f4d7182186b6e6a01fe5f94b09b0b0276a378047"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.Assembly",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+            "present": true,
+            "line_count": 332,
+            "declaration_count": 10,
+            "theorem_count": 10,
+            "content_digest": "sha256:1fa2a9e83f15ab720e5972d4d99202fbc52c1e304ca5d3cbf336de14d3cfb3d5"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.BarrierAlgebra",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean",
+            "present": true,
+            "line_count": 197,
+            "declaration_count": 33,
+            "theorem_count": 27,
+            "content_digest": "sha256:366bdb9c62fff3e81a5463460dcbd8ccd9c804cebb0eacbe1d6df1b05302c613"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.BarrierCertificates",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+            "present": true,
+            "line_count": 303,
+            "declaration_count": 21,
+            "theorem_count": 21,
+            "content_digest": "sha256:bc0fbc8361822111f0468267b47f9a40f7ba8e8c126e41873c6a62044864721b"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.BarrierGraphs",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+            "present": true,
+            "line_count": 318,
+            "declaration_count": 41,
+            "theorem_count": 29,
+            "content_digest": "sha256:8e3ee82a10ea78f41efa8839a5eb76f6a2e515e88a68adfef85bae68fbf14f91"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.BarrierSigns",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+            "present": true,
+            "line_count": 231,
+            "declaration_count": 23,
+            "theorem_count": 22,
+            "content_digest": "sha256:48d3a0e9375b0f060e06c71122309c442ffa4ff1eb02b9405c0100b62581886c"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.Bottleneck",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+            "present": true,
+            "line_count": 1585,
+            "declaration_count": 68,
+            "theorem_count": 58,
+            "content_digest": "sha256:19d669537d661da44e23700bb3a27ba945123f25244d30f6a51b509885b20712"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.Components",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/Components.lean",
+            "present": true,
+            "line_count": 298,
+            "declaration_count": 4,
+            "theorem_count": 4,
+            "content_digest": "sha256:dc8b8477222840b31b7eb8d4d4ff79e6d909b4b538646e5327bb4ca0029f8d6f"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.Defs",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+            "present": true,
+            "line_count": 238,
+            "declaration_count": 31,
+            "theorem_count": 3,
+            "content_digest": "sha256:c35ce0861699c78506b81758a9a40aec66d68493f6dc5b1f5136e8813aaf76ed"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+            "present": true,
+            "line_count": 106,
+            "declaration_count": 9,
+            "theorem_count": 7,
+            "content_digest": "sha256:60d88ac58c5cfb728d05b0e8e4969c0b322322cc920fbcb85d22253464810eb9"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+            "present": true,
+            "line_count": 1353,
+            "declaration_count": 138,
+            "theorem_count": 103,
+            "content_digest": "sha256:fe8b1208dbce3fea8aafadc08a007f6b93e3170edf5c5ff32f3fa366bf5bfd96"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.Counterexample.InstanceCritical",
+            "path": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+            "present": true,
+            "line_count": 4310,
+            "declaration_count": 470,
+            "theorem_count": 407,
+            "content_digest": "sha256:576fd2a3baf20eecc7ce4e2f0af88d345dc3bd1900c42be1c1e0f268a1b76f54"
           }
         ],
         "note": {
@@ -2537,6 +2645,12 @@
           "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
         },
         "what_is_checked": [
+          "The concrete degree-seven polynomial f (ani's family at s = 10^-6, exact Gaussian-rational coefficients, rho = 1 - 10^-96) is monic with seven distinct zeros of modulus rho < 1, and every continuous path in {|f| < 1} joining two distinct zeros has total variation greater than two (Counterexample.Assembly.erdos1041_counterexample; axioms propext, Classical.choice, Quot.sound).",
+          "A lemniscate component containing two distinct zeros contains a critical point, via: a proper local homeomorphism onto the disc is a covering map, and a covering of the simply connected disc by a connected space is injective (Counterexample.Components).",
+          "The quantitative bottleneck lemma for an arbitrary polynomial: under the disc criterion, every path between the two zeros of a degree-two component has length at least |b1 - c| + |b2 - c| - (8/3) sqrt(delta/|a|) (Counterexample.Bottleneck).",
+          "Six critical points of f localised by Kantorovich contraction certificates; five critical values of modulus above one and one below; the disc-criterion constants at the interior critical point (Counterexample.InstanceCritical).",
+          "Explicit polylines inside {|f| < 1} from the interior critical point to the two joined roots, each segment certified by a Bernstein identity with positive coefficients (Counterexample.InstanceConnectivity).",
+          "Two continuous piecewise-affine barrier functions whose zero sets lie in {|f| >= 1}, negative at the interior critical point and positive on discs around the other five roots (Counterexample.InstanceBarriers).",
           "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.",
           "The exponentially rescaled polynomial value is a first integral, so the value of a Newton trajectory remains on one oriented ray.",
           "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
@@ -2545,35 +2659,21 @@
           "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
         ],
         "what_is_not_checked": [
-          "Erdos Problem 1041 in unrestricted degree.",
-          "The spanning-tree decomposition claimed in the March 2026 manuscript; its printed Proposition 12 proof uses an invalid three-ended local saddle block, and a Cassini example refutes the printed global tree budget.",
-          "A repair of Proposition 12 that retains the printed 1/(2π) spanning-tree coefficient; any later argument must change the metric inequality.",
-          "A perturbation theorem that first makes critical values injective while preserving the relevant lemniscate component, collars, and strict length slack.",
-          "The global planar decomposition and metric gluing needed to obtain a curve of length less than two."
+          "The asymptotic form of ani's theorem (for all sufficiently small s); only the instance s = 10^-6 is formalised.",
+          "Independent expert review of the construction; the repository claims verification and formalisation only.",
+          "The remaining positive question: the exact set of degrees, and the classes within a degree, in which a short join exists."
         ],
         "open_obligations": [
           {
-            "id": "repair_or_refute_saddle_block",
-            "statement": "The printed 1/(2π) spanning-tree estimate of Proposition 12 is false. Any later argument must pay a positive attachment cost, select only one short pair, or use a different global metric inequality."
+            "id": "degrees_with_positive_answer",
+            "statement": "Determine the degrees n for which every monic polynomial with roots in the open unit disc has two roots joined by a path of length less than two inside the open lemniscate; degree four is positive (Pendyala), degree seven is negative (ani)."
           },
           {
-            "id": "compact_ray_cut_strip_decomposition",
-            "statement": "Build a compact strip or cell decomposition after cutting along critical-value rays, without presupposing the unproved local valence count."
-          },
-          {
-            "id": "metric_gluing_below_two",
-            "statement": "Glue the local pieces with strict quantitative slack while preserving the sharp one-over-two-pi length bookkeeping."
-          },
-          {
-            "id": "two_stage_stable_perturbation",
-            "statement": "First separate critical values, then apply the checked small translation, while retaining roots, the selected component, collars, ray separation, and a strict length margin."
-          },
-          {
-            "id": "relative_global_newton_flow_theorem",
-            "statement": "Prove the global relative Newton-flow theorem that turns the checked ray separation into the required root-to-root curve inside the original open lemniscate."
+            "id": "asymptotic_family_formalisation",
+            "statement": "Formalise the full one-parameter statement (existence of s_* with the length bound for all 0 < s < s_*) rather than the single instance s = 10^-6."
           }
         ],
-        "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
+        "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate. Superseded for the unrestricted question by the formalised counterexample.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
           "title": "Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates",
@@ -2607,7 +2707,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
-              "content_digest": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
+              "content_digest": "sha256:732d7cfb912482d1a9d1d6a1fbf2d675b913267848942c271e35d5e0b314ee9e"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
@@ -2615,11 +2715,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3"
+              "content_digest": "sha256:4ec19947fdf2d01f96baa11a814b7084f588ce402828a02bd35c3a5b9f53ee55"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef"
+              "content_digest": "sha256:58a7cefec61e0fd117f58957f841418857ae6a5525f2bf8379a2566f96c2070d"
             }
           },
           "strongest_result_summary": {
@@ -2778,7 +2878,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:283fc4a57d3e38d0fcc4ea122bddd07192227436807134f66ddbca7a15bd0ab8",
+    "lakefile.toml": "sha256:ccfbd0d5f4c25d0e3ac630f0ce438f2edf63d3023243ec9e96e08ccec6b15e94",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

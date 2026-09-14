@@ -278,14 +278,21 @@ grouped by the problem whose note they serve.
 
   **Boundary.** Formulation, not proof; the note's saddle-block diagnosis of a recent manuscript is prose, not Lean.
 
+- ani, [degree-seven counterexample on the Erdős Problem #1041 thread](https://www.erdosproblems.com/forum/thread/1041), 7 September 2026
+
+  Negative answer to the problem: a monic degree-seven polynomial with seven simple zeros of modulus `1 - s^16` whose only two-zero lemniscate component has every connecting path longer than two. The note verifies the construction exactly and formalises the instance `s = 10^-6` in Lean (`lean/ErdosProblems/Erdos1041/Counterexample/`, theorem `erdos1041_counterexample`, standard axioms only).
+
+  **Boundary.** The mathematics is ani's. This repository claims the exact verification and the Lean formalisation, with two statement adjustments recorded in the note (the `alpha >= 143/500` bound needs the root hypothesis; the component lemma part (ii) is replaced by computable barriers). No independent expert review is claimed.
+
 - Current evidence boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
   is the dated route for the current source-only research state, not an
   antecedent source. It records certified strategy refutations, surviving
   carriers, and open gaps that are not part of this historical bibliography.
   Read it before generated `STRONGEST_RESULTS.json`, which can lag the dated
   notes. The corpus is not thereby prior art or a reviewed claim: its rows make
-  no peer-review, priority, novelty, or significance assertion, and #1041
-  remains open.
+  no peer-review, priority, novelty, or significance assertion. #1041 has a
+  negative answer by the external counterexample above; the corpus rows record the
+  positive programme that preceded it.
 
 ### #1049
 

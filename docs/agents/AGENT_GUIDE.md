@@ -30,7 +30,7 @@ front door in ordinary language; agent surfaces may remain command-heavy.
 
 A blank-slate agent must receive the complete problem fleet here; it must not
 already know a query command or infer the fleet from directory names.
-**All eight indexed problems remain open.**
+**Seven of the eight indexed problems remain open.** Erdős #1041 was answered in the negative by ani on 7 September 2026, on the problem's discussion thread. This repository did not find that answer. It verified the construction exactly, formalised one instance in Lean with a kernel-checked main theorem, corrected two statements on the way, and rewrote its #1041 note to explain the mechanism. No independent expert review of the construction is claimed.
 
 Each entry states the mathematical target, then the checked frontier and live
 obstruction, then the standalone paper.
@@ -114,13 +114,18 @@ reduction is given; the source-specific cofinal escape remains unproved. Paper:
 **#1041 — Must two roots of a monic polynomial in the unit disc admit a curve of
 length less than `2` inside its open unit lemniscate?**
 
-The paper proves trinomial radial containment with ordinary path assembly.
+Answered in the negative by ani (7 September 2026). Lean checks the
+counterexample: `ErdosProblems.Erdos1041.Counterexample.Assembly.erdos1041_counterexample`
+(instance `s = 10^-6`, axioms `propext`, `Classical.choice`, `Quot.sound`); the
+note's counterexample section states, verifies and explains it. The earlier
+positive programme stands as recorded: the paper proves trinomial radial
+containment with ordinary path assembly, and
 Lean checks the complete all-degree critical-value mean, supported by
 [source-bound audit evidence](../../verification/erdos1041-returned-r18-v5-full-audit-evidence.json),
 and local Newton derivatives, ray-separation consumers, translation geometry
 and root retention. The real-time first integral uses ordinary integration;
-the ray consumer assumes its exponential endpoint relation. Neither the mean
-nor these local inputs supplies unrestricted topology and metric gluing. Paper:
+the ray consumer assumes its exponential endpoint relation. The remaining
+positive question is which degrees and classes admit a short join. Paper:
 `erdos-1041-lemniscate-newton-flow.pdf`.
 
 **#1049 — For which rational bases is the corresponding Lambert-type series
