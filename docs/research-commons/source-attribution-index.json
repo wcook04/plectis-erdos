@@ -3,7 +3,7 @@
   "authority_boundary": "Navigation and source-credit evidence only. It does not establish proof, novelty, endorsement, peer review, or complete historical knowledge. Lean matches are lexical candidates, not attribution.",
   "coverage": {
     "bibliography_without_curated_link_count": 1,
-    "curated_source_count": 175,
+    "curated_source_count": 176,
     "lean_candidate_awaiting_review_count": 0,
     "unmatched_citation_key_count": 0
   },
@@ -533,6 +533,12 @@
         ]
       },
       {
+        "key": "Henry Yuen",
+        "source_ids": [
+          "source-36f533b76bc247"
+        ]
+      },
+      {
         "key": "I. E. Shparlinski",
         "source_ids": [
           "source-34b520c561ee3c"
@@ -850,6 +856,12 @@
         "key": "Kaisa Matomäki",
         "source_ids": [
           "proposed-direct-4e797194f74404"
+        ]
+      },
+      {
+        "key": "Kunal Marwaha",
+        "source_ids": [
+          "source-36f533b76bc247"
         ]
       },
       {
@@ -1426,6 +1438,12 @@
         ]
       },
       {
+        "key": "Shuze Chen",
+        "source_ids": [
+          "source-36f533b76bc247"
+        ]
+      },
+      {
         "key": "Simon Kurgan",
         "source_ids": [
           "source-45ae653f011748"
@@ -1567,6 +1585,12 @@
         ]
       },
       {
+        "key": "Tianyi Peng",
+        "source_ids": [
+          "source-36f533b76bc247"
+        ]
+      },
+      {
         "key": "Timothy Poteet",
         "source_ids": [
           "arxiv_2509_13978"
@@ -1674,6 +1698,12 @@
         "key": "X. Li",
         "source_ids": [
           "source-81b67bfd835ac9"
+        ]
+      },
+      {
+        "key": "Xiaoyang Lu",
+        "source_ids": [
+          "source-36f533b76bc247"
         ]
       },
       {
@@ -2069,6 +2099,7 @@
         "key": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_ids": [
           "source-10545f868b3e88",
+          "source-36f533b76bc247",
           "source-3a21eca35f05cf",
           "source-4c664304e00cd3",
           "source-51efe25c48a86d",
@@ -2114,6 +2145,7 @@
         "source_ids": [
           "arxiv_2309_05942",
           "erdos_problems_catalog_eight_problem_context",
+          "source-36f533b76bc247",
           "source-5edeb2408c36bd",
           "source-75e79d15dfab15",
           "source-967c9acd787096",
@@ -2412,6 +2444,7 @@
           "source-2ee394177d0f38",
           "source-318ee5e7cf6d74",
           "source-34b520c561ee3c",
+          "source-36f533b76bc247",
           "source-3a21eca35f05cf",
           "source-45ae653f011748",
           "source-463b7e9f7264b1",
@@ -35351,21 +35384,21 @@
         "equivalent_source_coordinates": [],
         "key": "lean4",
         "kind": "bibliography_entry",
-        "line_end": 1450,
-        "line_start": 1446,
+        "line_end": 1476,
+        "line_start": 1472,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{erdosgraham} P.~Erd\\H{o}s and R.~L.~Graham, \\emph{Old and New Problems and Results in Combinatorial Number Theory}, Monographies de L'Enseignement Math\\'ematique 28, 1980, p.~61.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 973,
-            "line_start": 973,
+            "line_end": 975,
+            "line_start": 975,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35373,21 +35406,21 @@
         "equivalent_source_coordinates": [],
         "key": "erdosgraham",
         "kind": "bibliography_entry",
-        "line_end": 1453,
-        "line_start": 1450,
+        "line_end": 1479,
+        "line_start": 1476,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{leanblueprint} P.~Massot, \\emph{leanblueprint}, plasTeX plugin for Lean formalisation blueprints, 2020, \\href{https://github.com/PatrickMassot/leanblueprint}{software repository}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1294,
-            "line_start": 1294,
+            "line_end": 1320,
+            "line_start": 1320,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35395,21 +35428,21 @@
         "equivalent_source_coordinates": [],
         "key": "leanblueprint",
         "kind": "bibliography_entry",
-        "line_end": 1456,
-        "line_start": 1453,
+        "line_end": 1482,
+        "line_start": 1479,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{leanarchitect} T.~Zhu, P.~Monticone, S.~Welleck, and J.~Avigad, \\emph{LeanArchitect: Automating Blueprint Generation for Humans and AI}, in \\emph{17th International Conference on Interactive Theorem Proving}, LIPIcs 382, 2026, pp.~25:1--25:16.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1294,
-            "line_start": 1294,
+            "line_end": 1320,
+            "line_start": 1320,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35417,21 +35450,21 @@
         "equivalent_source_coordinates": [],
         "key": "leanarchitect",
         "kind": "bibliography_entry",
-        "line_end": 1460,
-        "line_start": 1456,
+        "line_end": 1486,
+        "line_start": 1482,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{leanatlas} B.~Yanahama and A.~Sannai, \\emph{Lean Atlas: An Integrated Proof Environment for Scalable Human--AI Collaborative Formalization}, 2026, \\href{https://doi.org/10.48550/arXiv.2604.16347}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1302,
-            "line_start": 1302,
+            "line_end": 1328,
+            "line_start": 1328,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35439,21 +35472,21 @@
         "equivalent_source_coordinates": [],
         "key": "leanatlas",
         "kind": "bibliography_entry",
-        "line_end": 1463,
-        "line_start": 1460,
+        "line_end": 1489,
+        "line_start": 1486,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{econcs} N.~Garg, \\emph{EconCSLib: AI-Assisted Lean Formalization for Economics \\& Computation Research}, 2026, \\href{https://doi.org/10.48550/arXiv.2606.13306}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1303,
-            "line_start": 1303,
+            "line_end": 1329,
+            "line_start": 1329,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35461,21 +35494,50 @@
         "equivalent_source_coordinates": [],
         "key": "econcs",
         "kind": "bibliography_entry",
-        "line_end": 1466,
-        "line_start": 1463,
+        "line_end": 1492,
+        "line_start": 1489,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-b300504b513ffb",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
+      },
+      {
+        "citation_text": "\\bibitem{prove2me} S.~Chen, K.~Marwaha, X.~Lu, H.~Yuen, and T.~Peng, \\emph{Prove2Me: An Open Collaborative Platform for Scaling Math Formalization}, 2026, \\href{https://doi.org/10.48550/arXiv.2608.28433}{arXiv}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 883,
+            "line_start": 883,
+            "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1295,
+            "line_start": 1295,
+            "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "prove2me",
+        "kind": "bibliography_entry",
+        "line_end": 1495,
+        "line_start": 1492,
+        "paper_id": "claim-faithful-publication-systems",
+        "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+        "source_id": "source-36f533b76bc247",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{isadof} A.~D.~Brucker and B.~Wolff, \\emph{Isabelle/DOF: Design and Implementation}, in \\emph{Software Engineering and Formal Methods}, 2019, pp.~275--293.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1310,
-            "line_start": 1310,
+            "line_end": 1336,
+            "line_start": 1336,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35483,21 +35545,21 @@
         "equivalent_source_coordinates": [],
         "key": "isadof",
         "kind": "bibliography_entry",
-        "line_end": 1469,
-        "line_start": 1466,
+        "line_end": 1498,
+        "line_start": 1495,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-51efe25c48a86d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{gotel} O.~C.~Z.~Gotel and A.~C.~W.~Finkelstein, \\emph{An analysis of the requirements traceability problem}, Proc. First IEEE International Conference on Requirements Engineering, 1994, pp.~94--101.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1311,
-            "line_start": 1311,
+            "line_end": 1337,
+            "line_start": 1337,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35505,21 +35567,21 @@
         "equivalent_source_coordinates": [],
         "key": "gotel",
         "kind": "bibliography_entry",
-        "line_end": 1472,
-        "line_start": 1469,
+        "line_end": 1501,
+        "line_start": 1498,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-e1665a6398558f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{demillo} R.~A.~DeMillo, R.~J.~Lipton, and F.~G.~Sayward, \\emph{Hints on test data selection}, IEEE Computer 11(4), 1978, pp.~34--41.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1328,
-            "line_start": 1328,
+            "line_end": 1354,
+            "line_start": 1354,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35527,21 +35589,21 @@
         "equivalent_source_coordinates": [],
         "key": "demillo",
         "kind": "bibliography_entry",
-        "line_end": 1474,
-        "line_start": 1472,
+        "line_end": 1503,
+        "line_start": 1501,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-c309c1132b63e3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{jiaharman} Y.~Jia and M.~Harman, \\emph{An analysis and survey of the development of mutation testing}, IEEE Transactions on Software Engineering 37(5), 2011, pp.~649--678.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1328,
-            "line_start": 1328,
+            "line_end": 1354,
+            "line_start": 1354,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35549,21 +35611,21 @@
         "equivalent_source_coordinates": [],
         "key": "jiaharman",
         "kind": "bibliography_entry",
-        "line_end": 1477,
-        "line_start": 1474,
+        "line_end": 1506,
+        "line_start": 1503,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-3a21eca35f05cf",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{gsn} SCSC Assurance Case Working Group, \\emph{Goal Structuring Notation Community Standard, Version 3}, SCSC-141C, May 2021.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1107,
-            "line_start": 1107,
+            "line_end": 1109,
+            "line_start": 1109,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35571,21 +35633,21 @@
         "equivalent_source_coordinates": [],
         "key": "gsn",
         "kind": "bibliography_entry",
-        "line_end": 1479,
-        "line_start": 1477,
+        "line_end": 1508,
+        "line_start": 1506,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-6dbbb774ff928e",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{taoai} T.~Tao, \\emph{Mathematics in the age of AI}, preprint, 2026, \\href{https://doi.org/10.48550/arXiv.2608.16753}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 927,
-            "line_start": 927,
+            "line_end": 929,
+            "line_start": 929,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35593,13 +35655,13 @@
         "equivalent_source_coordinates": [],
         "key": "taoai",
         "kind": "bibliography_entry",
-        "line_end": 1481,
-        "line_start": 1479,
+        "line_end": 1510,
+        "line_start": 1508,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{mathlib} Lean community, \\emph{Contributing to mathlib}, \\href{https://leanprover-community.github.io/contribute/index.html}% {contributor guide}, accessed August 2026.",
@@ -35615,60 +35677,16 @@
         "equivalent_source_coordinates": [],
         "key": "mathlib",
         "kind": "bibliography_entry",
-        "line_end": 1484,
-        "line_start": 1481,
+        "line_end": 1513,
+        "line_start": 1510,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{leandojo} K.~Yang et al., \\emph{LeanDojo: Theorem Proving with Retrieval-Augmented Language Models}, NeurIPS 2023.",
-        "citation_usages": [
-          {
-            "command": "cite",
-            "line_end": 1280,
-            "line_start": 1280,
-            "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-            "qualifiers": []
-          }
-        ],
-        "equivalent_source_coordinates": [],
-        "key": "leandojo",
-        "kind": "bibliography_entry",
-        "line_end": 1486,
-        "line_start": 1484,
-        "paper_id": "claim-faithful-publication-systems",
-        "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-        "source_id": "source-e2bdd690015cad",
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
-      },
-      {
-        "citation_text": "\\bibitem{pantograph} L.~Aniva, C.~Sun, B.~Miranda, C.~Barrett, and S.~Koyejo, \\emph{Pantograph: A Machine-to-Machine Interaction Interface for Advanced Theorem Proving, High Level Reasoning, and Data Extraction in Lean 4}, 2024, \\href{https://doi.org/10.48550/arXiv.2410.16429}{arXiv}.",
-        "citation_usages": [
-          {
-            "command": "cite",
-            "line_end": 1280,
-            "line_start": 1280,
-            "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-            "qualifiers": []
-          }
-        ],
-        "equivalent_source_coordinates": [],
-        "key": "pantograph",
-        "kind": "bibliography_entry",
-        "line_end": 1490,
-        "line_start": 1486,
-        "paper_id": "claim-faithful-publication-systems",
-        "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-        "source_id": "source-9a04cbea11fd0b",
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
-      },
-      {
-        "citation_text": "\\bibitem{openprover} M.~Kripner and M.~Straka, \\emph{OpenProver: Agentic and Interactive Theorem Proving with Lean 4}, 2026, \\href{https://doi.org/10.48550/arXiv.2607.09217}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
@@ -35679,18 +35697,40 @@
           }
         ],
         "equivalent_source_coordinates": [],
-        "key": "openprover",
+        "key": "leandojo",
         "kind": "bibliography_entry",
-        "line_end": 1493,
-        "line_start": 1490,
+        "line_end": 1515,
+        "line_start": 1513,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-        "source_id": "source-d31e3bc51f2784",
+        "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
-        "citation_text": "\\bibitem{agenthunt} C.~E.~Brown, C.~Kaliszyk, and J.~Urban, \\emph{Agent Hunt: Bounty Based Collaborative Autoformalization With LLM Agents}, 2026, \\href{https://doi.org/10.48550/arXiv.2603.06737}{arXiv}.",
+        "citation_text": "\\bibitem{pantograph} L.~Aniva, C.~Sun, B.~Miranda, C.~Barrett, and S.~Koyejo, \\emph{Pantograph: A Machine-to-Machine Interaction Interface for Advanced Theorem Proving, High Level Reasoning, and Data Extraction in Lean 4}, 2024, \\href{https://doi.org/10.48550/arXiv.2410.16429}{arXiv}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 1282,
+            "line_start": 1282,
+            "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "pantograph",
+        "kind": "bibliography_entry",
+        "line_end": 1519,
+        "line_start": 1515,
+        "paper_id": "claim-faithful-publication-systems",
+        "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+        "source_id": "source-9a04cbea11fd0b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
+      },
+      {
+        "citation_text": "\\bibitem{openprover} M.~Kripner and M.~Straka, \\emph{OpenProver: Agentic and Interactive Theorem Proving with Lean 4}, 2026, \\href{https://doi.org/10.48550/arXiv.2607.09217}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
@@ -35701,23 +35741,45 @@
           }
         ],
         "equivalent_source_coordinates": [],
+        "key": "openprover",
+        "kind": "bibliography_entry",
+        "line_end": 1522,
+        "line_start": 1519,
+        "paper_id": "claim-faithful-publication-systems",
+        "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+        "source_id": "source-d31e3bc51f2784",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
+      },
+      {
+        "citation_text": "\\bibitem{agenthunt} C.~E.~Brown, C.~Kaliszyk, and J.~Urban, \\emph{Agent Hunt: Bounty Based Collaborative Autoformalization With LLM Agents}, 2026, \\href{https://doi.org/10.48550/arXiv.2603.06737}{arXiv}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 1286,
+            "line_start": 1286,
+            "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
         "key": "agenthunt",
         "kind": "bibliography_entry",
-        "line_end": 1496,
-        "line_start": 1493,
+        "line_end": 1525,
+        "line_start": 1522,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-ae5cc4ddfa6af5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{dreamprover} Y.~Zhang et al., \\emph{DreamProver: Evolving Transferable Lemma Libraries via a Wake--Sleep Theorem-Proving Agent}, 2026, \\href{https://doi.org/10.48550/arXiv.2604.26311}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1285,
-            "line_start": 1285,
+            "line_end": 1287,
+            "line_start": 1287,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35725,21 +35787,21 @@
         "equivalent_source_coordinates": [],
         "key": "dreamprover",
         "kind": "bibliography_entry",
-        "line_end": 1499,
-        "line_start": 1496,
+        "line_end": 1528,
+        "line_start": 1525,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-7d871bf2920e53",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{hep} I.~Takahara and T.~Mizoguchi, \\emph{Toward Auditable AI Scientists: A Hypothesis Evolution Protocol for LLM Agents}, 2026, \\href{https://doi.org/10.48550/arXiv.2607.09195}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1317,
-            "line_start": 1317,
+            "line_end": 1343,
+            "line_start": 1343,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35747,21 +35809,21 @@
         "equivalent_source_coordinates": [],
         "key": "hep",
         "kind": "bibliography_entry",
-        "line_end": 1502,
-        "line_start": 1499,
+        "line_end": 1531,
+        "line_start": 1528,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-4c664304e00cd3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{symposium} D.~Pratt, \\emph{Symposium: Trust via Auditable Records for Communities of AI Scientist Agents}, 2026, \\href{https://doi.org/10.48550/arXiv.2608.19511}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1319,
-            "line_start": 1319,
+            "line_end": 1345,
+            "line_start": 1345,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35769,21 +35831,21 @@
         "equivalent_source_coordinates": [],
         "key": "symposium",
         "kind": "bibliography_entry",
-        "line_end": 1505,
-        "line_start": 1502,
+        "line_end": 1534,
+        "line_start": 1531,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-f9a9d10dc9c525",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{eurekagent} A.~Xin et al., \\emph{EurekAgent: Agent Environment Engineering is All You Need for Autonomous Scientific Discovery}, 2026, \\href{https://doi.org/10.48550/arXiv.2606.13662}{arXiv}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1321,
-            "line_start": 1321,
+            "line_end": 1347,
+            "line_start": 1347,
             "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
             "qualifiers": []
           }
@@ -35791,13 +35853,13 @@
         "equivalent_source_coordinates": [],
         "key": "eurekagent",
         "kind": "bibliography_entry",
-        "line_end": 1508,
-        "line_start": 1505,
+        "line_end": 1537,
+        "line_start": 1534,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-cc823e517ced81",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_text": "\\bibitem{leanblueprint} P.~Massot, \\emph{leanblueprint}, plasTeX plugin for Lean formalisation blueprints, 2020, \\href{https://github.com/PatrickMassot/leanblueprint}{software repository}, accessed 28 July 2026.",
@@ -48767,8 +48829,8 @@
           },
           {
             "command": "cite",
-            "line_end": 843,
-            "line_start": 843,
+            "line_end": 881,
+            "line_start": 881,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -48776,13 +48838,13 @@
         "equivalent_source_coordinates": [],
         "key": "tao2026",
         "kind": "bibliography_entry",
-        "line_end": 1366,
-        "line_start": 1362,
+        "line_end": 1404,
+        "line_start": 1400,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{boinc} D. P. Anderson, \\emph{BOINC: A Platform for Volunteer Computing}, Journal of Grid Computing 18 (2020), 99--122, \\href{https://doi.org/10.1007/s10723-019-09497-9}{DOI}.",
@@ -48796,15 +48858,15 @@
           },
           {
             "command": "cite",
-            "line_end": 760,
-            "line_start": 760,
+            "line_end": 762,
+            "line_start": 762,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 810,
-            "line_start": 810,
+            "line_end": 815,
+            "line_start": 815,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -48812,13 +48874,13 @@
         "equivalent_source_coordinates": [],
         "key": "boinc",
         "kind": "bibliography_entry",
-        "line_end": 1371,
-        "line_start": 1366,
+        "line_end": 1409,
+        "line_start": 1404,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{gimps} Great Internet Mersenne Prime Search, \\emph{GIMPS}, project documentation and discovery-credit record, \\href{https://www.mersenne.org/}{mersenne.org}, accessed August 2026.",
@@ -48832,15 +48894,15 @@
           },
           {
             "command": "cite",
-            "line_end": 763,
-            "line_start": 763,
+            "line_end": 765,
+            "line_start": 765,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 810,
-            "line_start": 810,
+            "line_end": 815,
+            "line_start": 815,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -48848,13 +48910,13 @@
         "equivalent_source_coordinates": [],
         "key": "gimps",
         "kind": "bibliography_entry",
-        "line_end": 1376,
-        "line_start": 1371,
+        "line_end": 1414,
+        "line_start": 1409,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-cc1c19967d418f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{polymath} Polymath Project, \\emph{General polymath rules}, \\href{https://polymathprojects.org/general-polymath-rules/}{project rules}, accessed August 2026.",
@@ -48868,8 +48930,8 @@
           },
           {
             "command": "cite",
-            "line_end": 818,
-            "line_start": 818,
+            "line_end": 823,
+            "line_start": 823,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -48877,28 +48939,28 @@
         "equivalent_source_coordinates": [],
         "key": "polymath",
         "kind": "bibliography_entry",
-        "line_end": 1381,
-        "line_start": 1376,
+        "line_end": 1419,
+        "line_start": 1414,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-af9e99293e9dd0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{mathlib} Lean community, \\emph{Contributing to mathlib}, \\href{https://leanprover-community.github.io/contribute/index.html}{contributor guide}, accessed August 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 825,
-            "line_start": 825,
+            "line_end": 830,
+            "line_start": 830,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1143,
-            "line_start": 1143,
+            "line_end": 1181,
+            "line_start": 1181,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -48906,21 +48968,21 @@
         "equivalent_source_coordinates": [],
         "key": "mathlib",
         "kind": "bibliography_entry",
-        "line_end": 1386,
-        "line_start": 1381,
+        "line_end": 1424,
+        "line_start": 1419,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{carleson} L. Becker et al., \\emph{A Blueprint for the Formalization of Carleson's Theorem on Convergence of Fourier Series}, 2025, \\href{https://arxiv.org/abs/2405.06423}{arXiv:2405.06423}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 825,
-            "line_start": 825,
+            "line_end": 830,
+            "line_start": 830,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -48928,13 +48990,13 @@
         "equivalent_source_coordinates": [],
         "key": "carleson",
         "kind": "bibliography_entry",
-        "line_end": 1391,
-        "line_start": 1386,
+        "line_end": 1429,
+        "line_start": 1424,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-984f2b78d220ea",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{erdosproblems} T. F. Bloom, \\emph{Erd\\H{o}s Problems}, problem database, sources, and forum, \\href{https://www.erdosproblems.com/}{erdosproblems.com}, accessed August 2026.",
@@ -48957,13 +49019,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdosproblems",
         "kind": "bibliography_entry",
-        "line_end": 1396,
-        "line_start": 1391,
+        "line_end": 1434,
+        "line_start": 1429,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{lean4} L. de Moura and S. Ullrich, \\emph{The Lean 4 Theorem Prover and Programming Language}, Automated Deduction---CADE 28 (2021), 625--635, \\href{https://doi.org/10.1007/978-3-030-79876-5_37}{DOI}.",
@@ -48979,13 +49041,13 @@
         "equivalent_source_coordinates": [],
         "key": "lean4",
         "kind": "bibliography_entry",
-        "line_end": 1401,
-        "line_start": 1396,
+        "line_end": 1439,
+        "line_start": 1434,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{formalconjectures} Google DeepMind, \\emph{formal-conjectures}, \\href{https://github.com/google-deepmind/formal-conjectures}{software repository}, accessed August 2026.",
@@ -48999,8 +49061,8 @@
           },
           {
             "command": "cite",
-            "line_end": 828,
-            "line_start": 828,
+            "line_end": 833,
+            "line_start": 833,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -49008,13 +49070,13 @@
         "equivalent_source_coordinates": [],
         "key": "formalconjectures",
         "kind": "bibliography_entry",
-        "line_end": 1406,
-        "line_start": 1401,
+        "line_end": 1444,
+        "line_start": 1439,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{palomar} Palomar Registry, \\emph{About Palomar} and \\emph{Contribution policy}, \\href{https://palomar-registry.org/about}{registry documentation} and \\href{https://github.com/PalomarRegistry/PalomarPolicy/blob/main/CONTRIBUTING.md}{submission standard}, accessed August 2026.",
@@ -49037,21 +49099,21 @@
         "equivalent_source_coordinates": [],
         "key": "palomar",
         "kind": "bibliography_entry",
-        "line_end": 1412,
-        "line_start": 1406,
+        "line_end": 1450,
+        "line_start": 1444,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-9733ab875d6048",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{agenthunt} C. E. Brown, C. Kaliszyk, and J. Urban, \\emph{Agent Hunt: Bounty Based Collaborative Autoformalization With LLM Agents}, 2026, \\href{https://arxiv.org/abs/2603.06737}{arXiv:2603.06737}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 833,
-            "line_start": 833,
+            "line_end": 838,
+            "line_start": 838,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -49059,21 +49121,21 @@
         "equivalent_source_coordinates": [],
         "key": "agenthunt",
         "kind": "bibliography_entry",
-        "line_end": 1417,
-        "line_start": 1412,
+        "line_end": 1455,
+        "line_start": 1450,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-ae5cc4ddfa6af5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{leanatlas} B. Yanahama and A. Sannai, \\emph{Lean Atlas: An Integrated Proof Environment for Scalable Human--AI Collaborative Formalization}, 2026, \\href{https://arxiv.org/abs/2604.16347}{arXiv:2604.16347}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 835,
-            "line_start": 835,
+            "line_end": 840,
+            "line_start": 840,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -49081,13 +49143,49 @@
         "equivalent_source_coordinates": [],
         "key": "leanatlas",
         "kind": "bibliography_entry",
-        "line_end": 1422,
-        "line_start": 1417,
+        "line_end": 1460,
+        "line_start": 1455,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
+      },
+      {
+        "citation_text": "\\bibitem{prove2me} S. Chen, K. Marwaha, X. Lu, H. Yuen, and T. Peng, \\emph{Prove2Me: An Open Collaborative Platform for Scaling Math Formalization}, 2026, \\href{https://arxiv.org/abs/2608.28433}{arXiv:2608.28433}.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 734,
+            "line_start": 734,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 776,
+            "line_start": 776,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 847,
+            "line_start": 847,
+            "path": "paper/systems/open-source-mathematics-strategy.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "prove2me",
+        "kind": "bibliography_entry",
+        "line_end": 1465,
+        "line_start": 1460,
+        "paper_id": "open-source-mathematics-strategy",
+        "path": "paper/systems/open-source-mathematics-strategy.tex",
+        "source_id": "source-36f533b76bc247",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{credit} NISO, \\emph{CRediT: Contributor Roles Taxonomy}, \\href{https://credit.niso.org/contributor-roles-defined/}{role definitions}, accessed August 2026.",
@@ -49103,21 +49201,21 @@
         "equivalent_source_coordinates": [],
         "key": "credit",
         "kind": "bibliography_entry",
-        "line_end": 1427,
-        "line_start": 1422,
+        "line_end": 1470,
+        "line_start": 1465,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-d517c8a2d6f84d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{githubsecurity} GitHub, \\emph{Preventing pwn requests}, GitHub Actions security guidance, \\href{https://docs.github.com/en/actions/reference/security/secure-use}{documentation}, accessed August 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 778,
-            "line_start": 778,
+            "line_end": 782,
+            "line_start": 782,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -49125,21 +49223,21 @@
         "equivalent_source_coordinates": [],
         "key": "githubsecurity",
         "kind": "bibliography_entry",
-        "line_end": 1432,
-        "line_start": 1427,
+        "line_end": 1475,
+        "line_start": 1470,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "source-9ef9271dbecbce",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{documentationtest} M. Yuan et al., \\emph{End-to-End Testing of Open-Source Hardware Documentation Developed in Large Collaborations}, 2023, \\href{https://arxiv.org/abs/2309.05942}{arXiv:2309.05942}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 989,
-            "line_start": 989,
+            "line_end": 1027,
+            "line_start": 1027,
             "path": "paper/systems/open-source-mathematics-strategy.tex",
             "qualifiers": []
           }
@@ -49147,13 +49245,13 @@
         "equivalent_source_coordinates": [],
         "key": "documentationtest",
         "kind": "bibliography_entry",
-        "line_end": 1437,
-        "line_start": 1432,
+        "line_end": 1480,
+        "line_start": 1475,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "source_id": "arxiv_2309_05942",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_text": "\\bibitem{runeson2009} Per Runeson and Martin H\\\"ost. ``Guidelines for Conducting and Reporting Case Study Research in Software Engineering.'' \\emph{Empirical Software Engineering}, 14(2):131--164, 2009. \\href{https://doi.org/10.1007/s10664-008-9102-8}{doi:10.1007/s10664-008-9102-8}.",
@@ -49522,273 +49620,301 @@
         "qualifiers": [],
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "prove2me",
+        "kind": "citation_usage",
+        "line_end": 883,
+        "line_start": 883,
+        "paper_id": "claim-faithful-publication-systems",
+        "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+        "qualifiers": [],
+        "source_id": "source-36f533b76bc247",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "taoai",
         "kind": "citation_usage",
-        "line_end": 927,
-        "line_start": 927,
+        "line_end": 929,
+        "line_start": 929,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "erdosgraham",
         "kind": "citation_usage",
-        "line_end": 973,
-        "line_start": 973,
+        "line_end": 975,
+        "line_start": 975,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "gsn",
         "kind": "citation_usage",
-        "line_end": 1107,
-        "line_start": 1107,
+        "line_end": 1109,
+        "line_start": 1109,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-6dbbb774ff928e",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "leandojo",
         "kind": "citation_usage",
-        "line_end": 1280,
-        "line_start": 1280,
+        "line_end": 1282,
+        "line_start": 1282,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "pantograph",
         "kind": "citation_usage",
-        "line_end": 1280,
-        "line_start": 1280,
+        "line_end": 1282,
+        "line_start": 1282,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-9a04cbea11fd0b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "openprover",
         "kind": "citation_usage",
-        "line_end": 1282,
-        "line_start": 1282,
+        "line_end": 1284,
+        "line_start": 1284,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-d31e3bc51f2784",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "agenthunt",
         "kind": "citation_usage",
-        "line_end": 1284,
-        "line_start": 1284,
+        "line_end": 1286,
+        "line_start": 1286,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-ae5cc4ddfa6af5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "dreamprover",
         "kind": "citation_usage",
-        "line_end": 1285,
-        "line_start": 1285,
+        "line_end": 1287,
+        "line_start": 1287,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-7d871bf2920e53",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "prove2me",
+        "kind": "citation_usage",
+        "line_end": 1295,
+        "line_start": 1295,
+        "paper_id": "claim-faithful-publication-systems",
+        "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+        "qualifiers": [],
+        "source_id": "source-36f533b76bc247",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "leanarchitect",
         "kind": "citation_usage",
-        "line_end": 1294,
-        "line_start": 1294,
+        "line_end": 1320,
+        "line_start": 1320,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "leanblueprint",
         "kind": "citation_usage",
-        "line_end": 1294,
-        "line_start": 1294,
+        "line_end": 1320,
+        "line_start": 1320,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "leanatlas",
         "kind": "citation_usage",
-        "line_end": 1302,
-        "line_start": 1302,
+        "line_end": 1328,
+        "line_start": 1328,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "econcs",
         "kind": "citation_usage",
-        "line_end": 1303,
-        "line_start": 1303,
+        "line_end": 1329,
+        "line_start": 1329,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-b300504b513ffb",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "isadof",
         "kind": "citation_usage",
-        "line_end": 1310,
-        "line_start": 1310,
+        "line_end": 1336,
+        "line_start": 1336,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-51efe25c48a86d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "gotel",
         "kind": "citation_usage",
-        "line_end": 1311,
-        "line_start": 1311,
+        "line_end": 1337,
+        "line_start": 1337,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-e1665a6398558f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "hep",
         "kind": "citation_usage",
-        "line_end": 1317,
-        "line_start": 1317,
+        "line_end": 1343,
+        "line_start": 1343,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-4c664304e00cd3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "symposium",
         "kind": "citation_usage",
-        "line_end": 1319,
-        "line_start": 1319,
+        "line_end": 1345,
+        "line_start": 1345,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-f9a9d10dc9c525",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "eurekagent",
         "kind": "citation_usage",
-        "line_end": 1321,
-        "line_start": 1321,
+        "line_end": 1347,
+        "line_start": 1347,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-cc823e517ced81",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "demillo",
         "kind": "citation_usage",
-        "line_end": 1328,
-        "line_start": 1328,
+        "line_end": 1354,
+        "line_start": 1354,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-c309c1132b63e3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "jiaharman",
         "kind": "citation_usage",
-        "line_end": 1328,
-        "line_start": 1328,
+        "line_end": 1354,
+        "line_start": 1354,
         "paper_id": "claim-faithful-publication-systems",
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "qualifiers": [],
         "source_id": "source-3a21eca35f05cf",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+        "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
       },
       {
         "citation_context": "in_text_citation",
@@ -57940,7 +58066,7 @@
         "qualifiers": [],
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -57954,7 +58080,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -57968,7 +58094,7 @@
         "qualifiers": [],
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -57982,7 +58108,7 @@
         "qualifiers": [],
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -57996,7 +58122,7 @@
         "qualifiers": [],
         "source_id": "source-9733ab875d6048",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -58010,7 +58136,7 @@
         "qualifiers": [],
         "source_id": "source-af9e99293e9dd0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -58024,7 +58150,7 @@
         "qualifiers": [],
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -58038,7 +58164,7 @@
         "qualifiers": [],
         "source_id": "source-cc1c19967d418f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -58052,7 +58178,7 @@
         "qualifiers": [],
         "source_id": "source-9733ab875d6048",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -58066,7 +58192,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -58080,203 +58206,245 @@
         "qualifiers": [],
         "source_id": "source-d517c8a2d6f84d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "prove2me",
+        "kind": "citation_usage",
+        "line_end": 734,
+        "line_start": 734,
+        "paper_id": "open-source-mathematics-strategy",
+        "path": "paper/systems/open-source-mathematics-strategy.tex",
+        "qualifiers": [],
+        "source_id": "source-36f533b76bc247",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "boinc",
         "kind": "citation_usage",
-        "line_end": 760,
-        "line_start": 760,
+        "line_end": 762,
+        "line_start": 762,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "gimps",
         "kind": "citation_usage",
-        "line_end": 763,
-        "line_start": 763,
+        "line_end": 765,
+        "line_start": 765,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-cc1c19967d418f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "prove2me",
+        "kind": "citation_usage",
+        "line_end": 776,
+        "line_start": 776,
+        "paper_id": "open-source-mathematics-strategy",
+        "path": "paper/systems/open-source-mathematics-strategy.tex",
+        "qualifiers": [],
+        "source_id": "source-36f533b76bc247",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "githubsecurity",
         "kind": "citation_usage",
-        "line_end": 778,
-        "line_start": 778,
+        "line_end": 782,
+        "line_start": 782,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-9ef9271dbecbce",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "boinc",
         "kind": "citation_usage",
-        "line_end": 810,
-        "line_start": 810,
+        "line_end": 815,
+        "line_start": 815,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-967c9acd787096",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "gimps",
         "kind": "citation_usage",
-        "line_end": 810,
-        "line_start": 810,
+        "line_end": 815,
+        "line_start": 815,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-cc1c19967d418f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "polymath",
         "kind": "citation_usage",
-        "line_end": 818,
-        "line_start": 818,
+        "line_end": 823,
+        "line_start": 823,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-af9e99293e9dd0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "carleson",
         "kind": "citation_usage",
-        "line_end": 825,
-        "line_start": 825,
+        "line_end": 830,
+        "line_start": 830,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-984f2b78d220ea",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "mathlib",
         "kind": "citation_usage",
-        "line_end": 825,
-        "line_start": 825,
+        "line_end": 830,
+        "line_start": 830,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "formalconjectures",
         "kind": "citation_usage",
-        "line_end": 828,
-        "line_start": 828,
+        "line_end": 833,
+        "line_start": 833,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-5edeb2408c36bd",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "agenthunt",
         "kind": "citation_usage",
-        "line_end": 833,
-        "line_start": 833,
+        "line_end": 838,
+        "line_start": 838,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-ae5cc4ddfa6af5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "leanatlas",
         "kind": "citation_usage",
-        "line_end": 835,
-        "line_start": 835,
+        "line_end": 840,
+        "line_start": 840,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "prove2me",
+        "kind": "citation_usage",
+        "line_end": 847,
+        "line_start": 847,
+        "paper_id": "open-source-mathematics-strategy",
+        "path": "paper/systems/open-source-mathematics-strategy.tex",
+        "qualifiers": [],
+        "source_id": "source-36f533b76bc247",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "tao2026",
         "kind": "citation_usage",
-        "line_end": 843,
-        "line_start": 843,
+        "line_end": 881,
+        "line_start": 881,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "documentationtest",
         "kind": "citation_usage",
-        "line_end": 989,
-        "line_start": 989,
+        "line_end": 1027,
+        "line_start": 1027,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "arxiv_2309_05942",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "mathlib",
         "kind": "citation_usage",
-        "line_end": 1143,
-        "line_start": 1143,
+        "line_end": 1181,
+        "line_start": 1181,
         "paper_id": "open-source-mathematics-strategy",
         "path": "paper/systems/open-source-mathematics-strategy.tex",
         "qualifiers": [],
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+        "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
       },
       {
         "citation_context": "in_text_citation",
@@ -59053,7 +59221,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:2fb852ead9f17ea796915e6e4b281d153d574de1c65007810d6150cf051e742a",
+  "source_registry_sha256": "sha256:77d1878552c987278b6232fe190baa9b0f02e04a15fad414db2d9d6f5caa0de9",
   "sources": [
     {
       "artifact_coordinates": [],
@@ -60667,10 +60835,10 @@
         {
           "excerpt_sha256": "sha256:bb8050123710e542e010c55df517209f1e56e938a1655ebb63df13ec2e2c8c44",
           "expected_text": "\\bibitem{erdosproblems}",
-          "line_end": 1396,
-          "line_start": 1391,
+          "line_end": 1434,
+          "line_start": 1429,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         },
         {
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed",
@@ -60920,8 +61088,8 @@
         {
           "excerpt_sha256": "sha256:bb8050123710e542e010c55df517209f1e56e938a1655ebb63df13ec2e2c8c44",
           "expected_text": "\\bibitem{erdosproblems}",
-          "line_end": 1396,
-          "line_start": 1391,
+          "line_end": 1434,
+          "line_start": 1429,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         },
         {
@@ -63101,10 +63269,10 @@
         {
           "excerpt_sha256": "sha256:851267bb83e0426f3dc46e58eca0ec223ffefbf930eeba52eeeccf56d165f807",
           "expected_text": "\\bibitem{erdosgraham}",
-          "line_end": 1453,
-          "line_start": 1450,
+          "line_end": 1479,
+          "line_start": 1476,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:df0e63df25873358641ed4070061c15e5f66adb3d2707f788d4aba4c941addb4",
@@ -63212,8 +63380,8 @@
         {
           "excerpt_sha256": "sha256:851267bb83e0426f3dc46e58eca0ec223ffefbf930eeba52eeeccf56d165f807",
           "expected_text": "\\bibitem{erdosgraham}",
-          "line_end": 1453,
-          "line_start": 1450,
+          "line_end": 1479,
+          "line_start": 1476,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
@@ -66702,20 +66870,88 @@
     {
       "artifact_coordinates": [
         {
+          "excerpt_sha256": "sha256:61accd7ec9e12f6e578df7e4223c678b33fbbb621f04ea3b8ea4742d9df7f288",
+          "expected_text": "\\bibitem{prove2me}",
+          "line_end": 1495,
+          "line_start": 1492,
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
+        },
+        {
+          "excerpt_sha256": "sha256:f1e042b4fab69745f6aebce1d7c6f6bb98d6e13abe6c2a2d65acce032dcb4287",
+          "expected_text": "\\bibitem{prove2me}",
+          "line_end": 1465,
+          "line_start": 1460,
+          "path": "paper/systems/open-source-mathematics-strategy.tex",
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
+        }
+      ],
+      "artifact_links": [
+        {
+          "excerpt_sha256": "sha256:61accd7ec9e12f6e578df7e4223c678b33fbbb621f04ea3b8ea4742d9df7f288",
+          "expected_text": "\\bibitem{prove2me}",
+          "line_end": 1495,
+          "line_start": 1492,
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:f1e042b4fab69745f6aebce1d7c6f6bb98d6e13abe6c2a2d65acce032dcb4287",
+          "expected_text": "\\bibitem{prove2me}",
+          "line_end": 1465,
+          "line_start": 1460,
+          "path": "paper/systems/open-source-mathematics-strategy.tex"
+        }
+      ],
+      "authors": [
+        "Shuze Chen",
+        "Kunal Marwaha",
+        "Xiaoyang Lu",
+        "Henry Yuen",
+        "Tianyi Peng"
+      ],
+      "bibliography_keys": [
+        {
+          "key": "prove2me",
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
+        },
+        {
+          "key": "prove2me",
+          "path": "paper/systems/open-source-mathematics-strategy.tex"
+        }
+      ],
+      "id": "source-36f533b76bc247",
+      "kind": "literature",
+      "paper_reported_coordinates": [],
+      "problems": [],
+      "publication_years": [
+        "2026"
+      ],
+      "relation": "Cited by both public systems papers as the prior published design of an open agent-native formalisation platform (arXiv v1 28 August 2026, three days before the strategy paper's first public version) and as independent concurrent work for the systems paper (first public July 2026): statement/proof separation, exact-type proof submission, audited mission cores, proof-sketch decomposition, reusable library with reuse credit, and sub-agent read-back. Neither paper claims priority over it.",
+      "source_coordinates": [],
+      "source_locators": [],
+      "title": "Prove2Me: An Open Collaborative Platform for Scaling Math Formalization",
+      "urls": [
+        "https://arxiv.org/abs/2608.28433"
+      ],
+      "verification_state": "bibliography_only"
+    },
+    {
+      "artifact_coordinates": [
+        {
           "excerpt_sha256": "sha256:efbc6debda6e31a0cdfdb49d071c431b6d93c01f84a033351248ad1b2f3f7734",
           "expected_text": "\\bibitem{jiaharman}",
-          "line_end": 1477,
-          "line_start": 1474,
+          "line_end": 1506,
+          "line_start": 1503,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:efbc6debda6e31a0cdfdb49d071c431b6d93c01f84a033351248ad1b2f3f7734",
           "expected_text": "\\bibitem{jiaharman}",
-          "line_end": 1477,
-          "line_start": 1474,
+          "line_end": 1506,
+          "line_start": 1503,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -67074,18 +67310,18 @@
         {
           "excerpt_sha256": "sha256:f8672f9682d847ef8ecd3bf492f33dc58169ae1bc0f90b355f3f23a9dd953bff",
           "expected_text": "\\bibitem{hep}",
-          "line_end": 1502,
-          "line_start": 1499,
+          "line_end": 1531,
+          "line_start": 1528,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:f8672f9682d847ef8ecd3bf492f33dc58169ae1bc0f90b355f3f23a9dd953bff",
           "expected_text": "\\bibitem{hep}",
-          "line_end": 1502,
-          "line_start": 1499,
+          "line_end": 1531,
+          "line_start": 1528,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -67845,18 +68081,18 @@
         {
           "excerpt_sha256": "sha256:b538f4cc62eabdb4674393f8df9e52b4043594fc2724cb91a6cd99b1cda26ac5",
           "expected_text": "\\bibitem{isadof}",
-          "line_end": 1469,
-          "line_start": 1466,
+          "line_end": 1498,
+          "line_start": 1495,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:b538f4cc62eabdb4674393f8df9e52b4043594fc2724cb91a6cd99b1cda26ac5",
           "expected_text": "\\bibitem{isadof}",
-          "line_end": 1469,
-          "line_start": 1466,
+          "line_end": 1498,
+          "line_start": 1495,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -68883,18 +69119,18 @@
         {
           "excerpt_sha256": "sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d",
           "expected_text": "\\bibitem{formalconjectures}",
-          "line_end": 1406,
-          "line_start": 1401,
+          "line_end": 1444,
+          "line_start": 1439,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d",
           "expected_text": "\\bibitem{formalconjectures}",
-          "line_end": 1406,
-          "line_start": 1401,
+          "line_end": 1444,
+          "line_start": 1439,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -70801,18 +71037,18 @@
         {
           "excerpt_sha256": "sha256:e22b714a411702e74c05c8664cdaefcf8f5c4dcb370228e523cf673d46d64846",
           "expected_text": "\\bibitem{gsn}",
-          "line_end": 1479,
-          "line_start": 1477,
+          "line_end": 1508,
+          "line_start": 1506,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:e22b714a411702e74c05c8664cdaefcf8f5c4dcb370228e523cf673d46d64846",
           "expected_text": "\\bibitem{gsn}",
-          "line_end": 1479,
-          "line_start": 1477,
+          "line_end": 1508,
+          "line_start": 1506,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -71266,33 +71502,33 @@
         {
           "excerpt_sha256": "sha256:3512dbed9859b7bdff32e6c30c9caf824a9e8638de1e2632e6009f8d0618fc41",
           "expected_text": "\\bibitem{taoai}",
-          "line_end": 1481,
-          "line_start": 1479,
+          "line_end": 1510,
+          "line_start": 1508,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a",
           "expected_text": "\\bibitem{tao2026}",
-          "line_end": 1366,
-          "line_start": 1362,
+          "line_end": 1404,
+          "line_start": 1400,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:3512dbed9859b7bdff32e6c30c9caf824a9e8638de1e2632e6009f8d0618fc41",
           "expected_text": "\\bibitem{taoai}",
-          "line_end": 1481,
-          "line_start": 1479,
+          "line_end": 1510,
+          "line_start": 1508,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
           "excerpt_sha256": "sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a",
           "expected_text": "\\bibitem{tao2026}",
-          "line_end": 1366,
-          "line_start": 1362,
+          "line_end": 1404,
+          "line_start": 1400,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -71699,18 +71935,18 @@
         {
           "excerpt_sha256": "sha256:1b5d7bac4be42590e61a579f1d80ea2cb6adb8f6f2ce9ca2ed0c61289d5fa104",
           "expected_text": "\\bibitem{dreamprover}",
-          "line_end": 1499,
-          "line_start": 1496,
+          "line_end": 1528,
+          "line_start": 1525,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:1b5d7bac4be42590e61a579f1d80ea2cb6adb8f6f2ce9ca2ed0c61289d5fa104",
           "expected_text": "\\bibitem{dreamprover}",
-          "line_end": 1499,
-          "line_start": 1496,
+          "line_end": 1528,
+          "line_start": 1525,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -72332,10 +72568,10 @@
         {
           "excerpt_sha256": "sha256:db2532f557964ac96576952c8607d916e5278b3c6d7a29bd13295a77ff345e28",
           "expected_text": "\\bibitem{leanarchitect}",
-          "line_end": 1460,
-          "line_start": 1456,
+          "line_end": 1486,
+          "line_start": 1482,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:1f3f3c8f59b09e017af2d71374c7c46368d97929557de076c9b6d0b5f80c83bf",
@@ -72350,8 +72586,8 @@
         {
           "excerpt_sha256": "sha256:db2532f557964ac96576952c8607d916e5278b3c6d7a29bd13295a77ff345e28",
           "expected_text": "\\bibitem{leanarchitect}",
-          "line_end": 1460,
-          "line_start": 1456,
+          "line_end": 1486,
+          "line_start": 1482,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
@@ -73553,10 +73789,10 @@
         {
           "excerpt_sha256": "sha256:7309da2fcaace6abbd9af2aeeb912021812d164e3d40997aa7c1cb4e98c478c8",
           "expected_text": "\\bibitem{leanblueprint}",
-          "line_end": 1456,
-          "line_start": 1453,
+          "line_end": 1482,
+          "line_start": 1479,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:bb8a82a2eaf9299171683c436633a3cdfe8688aba06e1bc995a951bd364c907e",
@@ -73571,8 +73807,8 @@
         {
           "excerpt_sha256": "sha256:7309da2fcaace6abbd9af2aeeb912021812d164e3d40997aa7c1cb4e98c478c8",
           "expected_text": "\\bibitem{leanblueprint}",
-          "line_end": 1456,
-          "line_start": 1453,
+          "line_end": 1482,
+          "line_start": 1479,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
@@ -73758,18 +73994,18 @@
         {
           "excerpt_sha256": "sha256:b08b660d84c300da10b0cff0235eddaac275ba376ce6b7d77fbee66ccfb561fd",
           "expected_text": "\\bibitem{boinc}",
-          "line_end": 1371,
-          "line_start": 1366,
+          "line_end": 1409,
+          "line_start": 1404,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:b08b660d84c300da10b0cff0235eddaac275ba376ce6b7d77fbee66ccfb561fd",
           "expected_text": "\\bibitem{boinc}",
-          "line_end": 1371,
-          "line_start": 1366,
+          "line_end": 1409,
+          "line_start": 1404,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -74292,18 +74528,18 @@
         {
           "excerpt_sha256": "sha256:50025897e9875f1e8eb278c5a5c91ea2be1d03b9c7afc2bedf2dcec1c82f6162",
           "expected_text": "\\bibitem{palomar}",
-          "line_end": 1412,
-          "line_start": 1406,
+          "line_end": 1450,
+          "line_start": 1444,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:50025897e9875f1e8eb278c5a5c91ea2be1d03b9c7afc2bedf2dcec1c82f6162",
           "expected_text": "\\bibitem{palomar}",
-          "line_end": 1412,
-          "line_start": 1406,
+          "line_end": 1450,
+          "line_start": 1444,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -74422,10 +74658,10 @@
         {
           "excerpt_sha256": "sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e",
           "expected_text": "\\bibitem{carleson}",
-          "line_end": 1391,
-          "line_start": 1386,
+          "line_end": 1429,
+          "line_start": 1424,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
@@ -74439,8 +74675,8 @@
         {
           "excerpt_sha256": "sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e",
           "expected_text": "\\bibitem{carleson}",
-          "line_end": 1391,
-          "line_start": 1386,
+          "line_end": 1429,
+          "line_start": 1424,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -74670,10 +74906,10 @@
         {
           "excerpt_sha256": "sha256:7052c9564e3a50f71416b68353c32c939efbb5b719a371014e847871a2e0b349",
           "expected_text": "\\bibitem{pantograph}",
-          "line_end": 1490,
-          "line_start": 1486,
+          "line_end": 1519,
+          "line_start": 1515,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
@@ -74687,8 +74923,8 @@
         {
           "excerpt_sha256": "sha256:7052c9564e3a50f71416b68353c32c939efbb5b719a371014e847871a2e0b349",
           "expected_text": "\\bibitem{pantograph}",
-          "line_end": 1490,
-          "line_start": 1486,
+          "line_end": 1519,
+          "line_start": 1515,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -74780,18 +75016,18 @@
         {
           "excerpt_sha256": "sha256:a2823f7bc0eabe07dcb16e2476c88ca0a6ae7777617c24762b0674c83ce2e1da",
           "expected_text": "\\bibitem{githubsecurity}",
-          "line_end": 1432,
-          "line_start": 1427,
+          "line_end": 1475,
+          "line_start": 1470,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:a2823f7bc0eabe07dcb16e2476c88ca0a6ae7777617c24762b0674c83ce2e1da",
           "expected_text": "\\bibitem{githubsecurity}",
-          "line_end": 1432,
-          "line_start": 1427,
+          "line_end": 1475,
+          "line_start": 1470,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -75102,10 +75338,10 @@
         {
           "excerpt_sha256": "sha256:2399864b4721f4d5705dac2a1f050ccf6c91d2631e715007d632aebad0c35d25",
           "expected_text": "\\bibitem{leanatlas}",
-          "line_end": 1463,
-          "line_start": 1460,
+          "line_end": 1489,
+          "line_start": 1486,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:3a090cc943cde6fe32e768b3fec5c8f9941b86fe85cffb0b1e502eff8703ea31",
@@ -75116,20 +75352,20 @@
           "sha256": "sha256:093ce4fd9cb08af9213261e6b45a59afb79d8baf57338a0d326502aa2b6f3679"
         },
         {
-          "excerpt_sha256": "sha256:559913d433db072252f79d63ee5165385817e9da3e3afc137a0b386e7cf9d521",
+          "excerpt_sha256": "sha256:cbc96d2ca058731561fda44e70b5d2f239fbaf14f1de0bb2732381fdead4b7fe",
           "expected_text": "\\bibitem{leanatlas}",
-          "line_end": 1422,
-          "line_start": 1417,
+          "line_end": 1460,
+          "line_start": 1455,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:2399864b4721f4d5705dac2a1f050ccf6c91d2631e715007d632aebad0c35d25",
           "expected_text": "\\bibitem{leanatlas}",
-          "line_end": 1463,
-          "line_start": 1460,
+          "line_end": 1489,
+          "line_start": 1486,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
@@ -75140,10 +75376,10 @@
           "path": "paper/systems/cold-clone-to-proof-receipt.tex"
         },
         {
-          "excerpt_sha256": "sha256:559913d433db072252f79d63ee5165385817e9da3e3afc137a0b386e7cf9d521",
+          "excerpt_sha256": "sha256:cbc96d2ca058731561fda44e70b5d2f239fbaf14f1de0bb2732381fdead4b7fe",
           "expected_text": "\\bibitem{leanatlas}",
-          "line_end": 1422,
-          "line_start": 1417,
+          "line_end": 1460,
+          "line_start": 1455,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -75187,33 +75423,33 @@
         {
           "excerpt_sha256": "sha256:06270751176ee840e9cf84912d799856c76acd07dbc3c72f014dda02fc1854e3",
           "expected_text": "\\bibitem{agenthunt}",
-          "line_end": 1496,
-          "line_start": 1493,
+          "line_end": 1525,
+          "line_start": 1522,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68",
           "expected_text": "\\bibitem{agenthunt}",
-          "line_end": 1417,
-          "line_start": 1412,
+          "line_end": 1455,
+          "line_start": 1450,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:06270751176ee840e9cf84912d799856c76acd07dbc3c72f014dda02fc1854e3",
           "expected_text": "\\bibitem{agenthunt}",
-          "line_end": 1496,
-          "line_start": 1493,
+          "line_end": 1525,
+          "line_start": 1522,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
           "excerpt_sha256": "sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68",
           "expected_text": "\\bibitem{agenthunt}",
-          "line_end": 1417,
-          "line_start": 1412,
+          "line_end": 1455,
+          "line_start": 1450,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -75504,18 +75740,18 @@
         {
           "excerpt_sha256": "sha256:6f2b691dbea0a4758a07048f06dca1acfc4049444971d8bdfab57f8bf75e6a02",
           "expected_text": "\\bibitem{polymath}",
-          "line_end": 1381,
-          "line_start": 1376,
+          "line_end": 1419,
+          "line_start": 1414,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:6f2b691dbea0a4758a07048f06dca1acfc4049444971d8bdfab57f8bf75e6a02",
           "expected_text": "\\bibitem{polymath}",
-          "line_end": 1381,
-          "line_start": 1376,
+          "line_end": 1419,
+          "line_start": 1414,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -76284,20 +76520,20 @@
     {
       "artifact_coordinates": [
         {
-          "excerpt_sha256": "sha256:19d1245f526166da7a85ecfbdafa6c01ae731d583af00f955767912c814b0525",
+          "excerpt_sha256": "sha256:54abdd25410da1b47e3fb5b3fac6ade4ff7dd291f4b481a9e515560c74f3ab42",
           "expected_text": "\\bibitem{econcs}",
-          "line_end": 1466,
-          "line_start": 1463,
+          "line_end": 1492,
+          "line_start": 1489,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
-          "excerpt_sha256": "sha256:19d1245f526166da7a85ecfbdafa6c01ae731d583af00f955767912c814b0525",
+          "excerpt_sha256": "sha256:54abdd25410da1b47e3fb5b3fac6ade4ff7dd291f4b481a9e515560c74f3ab42",
           "expected_text": "\\bibitem{econcs}",
-          "line_end": 1466,
-          "line_start": 1463,
+          "line_end": 1492,
+          "line_start": 1489,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -77132,18 +77368,18 @@
         {
           "excerpt_sha256": "sha256:1bbd690c4787d1f1d80dd1f1ce42127d2dbec30c78a37ad55889e085911ed906",
           "expected_text": "\\bibitem{lean4}",
-          "line_end": 1450,
-          "line_start": 1446,
+          "line_end": 1476,
+          "line_start": 1472,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0",
           "expected_text": "\\bibitem{lean4}",
-          "line_end": 1401,
-          "line_start": 1396,
+          "line_end": 1439,
+          "line_start": 1434,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         },
         {
           "excerpt_sha256": "sha256:5efcd594df2c1529f1d749e113f706ddbbc1e3b2abe21b568592e74352af11ae",
@@ -77186,15 +77422,15 @@
         {
           "excerpt_sha256": "sha256:1bbd690c4787d1f1d80dd1f1ce42127d2dbec30c78a37ad55889e085911ed906",
           "expected_text": "\\bibitem{lean4}",
-          "line_end": 1450,
-          "line_start": 1446,
+          "line_end": 1476,
+          "line_start": 1472,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
           "excerpt_sha256": "sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0",
           "expected_text": "\\bibitem{lean4}",
-          "line_end": 1401,
-          "line_start": 1396,
+          "line_end": 1439,
+          "line_start": 1434,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         },
         {
@@ -77525,33 +77761,33 @@
         {
           "excerpt_sha256": "sha256:00533dbf0653285d403f4d880ae6c06199d42aedaead4cf8e51773d95b99c3ce",
           "expected_text": "\\bibitem{mathlib}",
-          "line_end": 1484,
-          "line_start": 1481,
+          "line_end": 1513,
+          "line_start": 1510,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432",
           "expected_text": "\\bibitem{mathlib}",
-          "line_end": 1386,
-          "line_start": 1381,
+          "line_end": 1424,
+          "line_start": 1419,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:00533dbf0653285d403f4d880ae6c06199d42aedaead4cf8e51773d95b99c3ce",
           "expected_text": "\\bibitem{mathlib}",
-          "line_end": 1484,
-          "line_start": 1481,
+          "line_end": 1513,
+          "line_start": 1510,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
           "excerpt_sha256": "sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432",
           "expected_text": "\\bibitem{mathlib}",
-          "line_end": 1386,
-          "line_start": 1381,
+          "line_end": 1424,
+          "line_start": 1419,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -77589,18 +77825,18 @@
         {
           "excerpt_sha256": "sha256:2a24ff23359ad7b3c311119906da81233df24832b89222f2be5f86235548b475",
           "expected_text": "\\bibitem{demillo}",
-          "line_end": 1474,
-          "line_start": 1472,
+          "line_end": 1503,
+          "line_start": 1501,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:2a24ff23359ad7b3c311119906da81233df24832b89222f2be5f86235548b475",
           "expected_text": "\\bibitem{demillo}",
-          "line_end": 1474,
-          "line_start": 1472,
+          "line_end": 1503,
+          "line_start": 1501,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -77842,18 +78078,18 @@
         {
           "excerpt_sha256": "sha256:3b1c1f707242e20b5d386d4825b37ac2214783f7d5eabb0ada5326605f0fc4cd",
           "expected_text": "\\bibitem{gimps}",
-          "line_end": 1376,
-          "line_start": 1371,
+          "line_end": 1414,
+          "line_start": 1409,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:3b1c1f707242e20b5d386d4825b37ac2214783f7d5eabb0ada5326605f0fc4cd",
           "expected_text": "\\bibitem{gimps}",
-          "line_end": 1376,
-          "line_start": 1371,
+          "line_end": 1414,
+          "line_start": 1409,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -77887,18 +78123,18 @@
         {
           "excerpt_sha256": "sha256:41dc4edf06af566e300a6354dd5626e47fca1f6af7f86309ecb4f6d76d1affa0",
           "expected_text": "\\bibitem{eurekagent}",
-          "line_end": 1508,
-          "line_start": 1505,
+          "line_end": 1537,
+          "line_start": 1534,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:41dc4edf06af566e300a6354dd5626e47fca1f6af7f86309ecb4f6d76d1affa0",
           "expected_text": "\\bibitem{eurekagent}",
-          "line_end": 1508,
-          "line_start": 1505,
+          "line_end": 1537,
+          "line_start": 1534,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -78494,18 +78730,18 @@
         {
           "excerpt_sha256": "sha256:45e399824f7a91b588e0da7501989c4218fad45a476eee19f1cf5ed374601f3d",
           "expected_text": "\\bibitem{openprover}",
-          "line_end": 1493,
-          "line_start": 1490,
+          "line_end": 1522,
+          "line_start": 1519,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:45e399824f7a91b588e0da7501989c4218fad45a476eee19f1cf5ed374601f3d",
           "expected_text": "\\bibitem{openprover}",
-          "line_end": 1493,
-          "line_start": 1490,
+          "line_end": 1522,
+          "line_start": 1519,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -78814,18 +79050,18 @@
         {
           "excerpt_sha256": "sha256:0e1fe3e7471b6a0f3864ce0578266000a9fbb85f892248701cd17ba615c3e182",
           "expected_text": "\\bibitem{credit}",
-          "line_end": 1427,
-          "line_start": 1422,
+          "line_end": 1470,
+          "line_start": 1465,
           "path": "paper/systems/open-source-mathematics-strategy.tex",
-          "sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92"
+          "sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:0e1fe3e7471b6a0f3864ce0578266000a9fbb85f892248701cd17ba615c3e182",
           "expected_text": "\\bibitem{credit}",
-          "line_end": 1427,
-          "line_start": 1422,
+          "line_end": 1470,
+          "line_start": 1465,
           "path": "paper/systems/open-source-mathematics-strategy.tex"
         }
       ],
@@ -79285,18 +79521,18 @@
         {
           "excerpt_sha256": "sha256:f17c0c478335e800131efac3fc47767edf7e649bd313b804266e2bbf30b81ba9",
           "expected_text": "\\bibitem{gotel}",
-          "line_end": 1472,
-          "line_start": 1469,
+          "line_end": 1501,
+          "line_start": 1498,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:f17c0c478335e800131efac3fc47767edf7e649bd313b804266e2bbf30b81ba9",
           "expected_text": "\\bibitem{gotel}",
-          "line_end": 1472,
-          "line_start": 1469,
+          "line_end": 1501,
+          "line_start": 1498,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],
@@ -79329,10 +79565,10 @@
         {
           "excerpt_sha256": "sha256:fabee45be57e7e01287e24c55801ede6426f9262dc1801b956db71edb40c2a6e",
           "expected_text": "\\bibitem{leandojo}",
-          "line_end": 1486,
-          "line_start": 1484,
+          "line_end": 1515,
+          "line_start": 1513,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         },
         {
           "excerpt_sha256": "sha256:e1fb69819625ee4c623683e8876546bfaeba103a154bb24b05f891cf455291a5",
@@ -79347,8 +79583,8 @@
         {
           "excerpt_sha256": "sha256:fabee45be57e7e01287e24c55801ede6426f9262dc1801b956db71edb40c2a6e",
           "expected_text": "\\bibitem{leandojo}",
-          "line_end": 1486,
-          "line_start": 1484,
+          "line_end": 1515,
+          "line_start": 1513,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         },
         {
@@ -81286,18 +81522,18 @@
         {
           "excerpt_sha256": "sha256:2cb8ef505247970413bcf1ba50b6f4ccd133351e235c7f956ca8b13415b5c6da",
           "expected_text": "\\bibitem{symposium}",
-          "line_end": 1505,
-          "line_start": 1502,
+          "line_end": 1534,
+          "line_start": 1531,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273"
+          "sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:2cb8ef505247970413bcf1ba50b6f4ccd133351e235c7f956ca8b13415b5c6da",
           "expected_text": "\\bibitem{symposium}",
-          "line_end": 1505,
-          "line_start": 1502,
+          "line_end": 1534,
+          "line_start": 1531,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex"
         }
       ],

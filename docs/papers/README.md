@@ -378,7 +378,7 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex) · 46 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex) · 47 sections · `claim-faithful-publication-systems` · native to this repository
 
 Start here (selected for this guide): [The whole lifecycle in one picture](full-text/claim-faithful-publication-systems-paper.md#sec:lifecycle), [The mathematical reasoning loop](full-text/claim-faithful-publication-systems-paper.md#sec:mathloop), [One complete boundary: finite is not unbounded](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Inspection routes](full-text/claim-faithful-publication-systems-paper.md#sec:routes), [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
 
@@ -394,7 +394,7 @@ Start here (selected for this guide): [The cold-clone problem](full-text/cold-cl
 
 **From Spare Compute to Cumulative Mathematics**
 
-[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex) · 29 sections · `open-source-mathematics-strategy` · native to this repository
+[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex) · 30 sections · `open-source-mathematics-strategy` · native to this repository
 
 Start here (selected for this guide): [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
 
@@ -402,7 +402,7 @@ Start here (selected for this guide): [The strategy](full-text/open-source-mathe
 
 **Plectis: What a Stranger Can Check**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/9834bfc27fc0c5bd650ef72eea14fa4e33f37093/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/70b1dedbc294a22cb1924727b06e406fd32c8bc5/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
 
 Start here (selected for this guide): [The problem](full-text/plectis-public-system.md#sec:problem), [One public test before the general design](full-text/plectis-public-system.md#sec:early-example), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions), [What stronger evidence would look like](full-text/plectis-public-system.md#sec:stronger).
 
