@@ -7075,7 +7075,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:887d6a4dfed6c002e4b697b4251cff5612236e3151b23543fc7ea02289719d1d",
+      "source_sha256": "sha256:1d08ec179af564a11acb7ae00d7c1178b562dc3c2b577e8d1caa60eb1eee8c9d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
@@ -7371,10 +7371,10 @@
           "line": 606
         }
       ],
-      "citations_rendered": 22,
+      "citations_rendered": 25,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:37b72fb2db12e45dc686420208d41c9b35f33e6fa63717c5a4392eb8b706cb97",
-      "pdf_byte_count": 149158,
+      "pdf_sha256": "sha256:8e33a9a4f0fa53d8aa1e8e205a08c785663ed0bd09e3d09cbd8acc5fa68ddfc3",
+      "pdf_byte_count": 151491,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7647,7 +7647,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:68b4811f873f90220e373b6734d354113dc58c76be07d52752ee6056c420e16c",
+      "source_sha256": "sha256:771fe1f29e70feafffc1472e446b87ff5bd114630ce89d76717ef11453503ec5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
@@ -7772,79 +7772,79 @@
           "level": 4,
           "id": "proof-abundance.",
           "title": "Proof abundance.",
-          "line": 342
+          "line": 344
         },
         {
           "level": 1,
           "id": "sec:add-problem",
           "title": "Adding another problem world",
-          "line": 350
+          "line": 352
         },
         {
           "level": 1,
           "id": "sec:growth",
           "title": "Participation and growth",
-          "line": 368
+          "line": 370
         },
         {
           "level": 1,
           "id": "sec:evaluation",
           "title": "Evaluation",
-          "line": 390
+          "line": 392
         },
         {
           "level": 1,
           "id": "sec:learning",
           "title": "Learning from every run",
-          "line": 424
+          "line": 426
         },
         {
           "level": 2,
           "id": "sec:local-to-general",
           "title": "The local-to-general track",
-          "line": 466
+          "line": 468
         },
         {
           "level": 1,
           "id": "sec:science",
           "title": "A bounded transfer hypothesis beyond mathematics",
-          "line": 501
+          "line": 503
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and governance",
-          "line": 511
+          "line": 513
         },
         {
           "level": 1,
           "id": "sec:execution",
           "title": "Execution order",
-          "line": 535
+          "line": 537
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 557
+          "line": 559
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 567
+          "line": 569
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 601
+          "line": 603
         }
       ],
-      "citations_rendered": 29,
+      "citations_rendered": 35,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:35709c3b38dec95fe740cb830edccf2196277b2b8ebab9c715ed527bc50bae99",
-      "pdf_byte_count": 139734,
+      "pdf_sha256": "sha256:8afcfe3efbcec812b7970246e0dd00cf3f3515718ba0c4dad7136bcfeb732f5e",
+      "pdf_byte_count": 143254,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7867,12 +7867,12 @@
           {
             "id": "sec:local-to-general",
             "title": "The local-to-general track",
-            "line": 466
+            "line": 468
           },
           {
             "id": "sec:limits",
             "title": "Limits and governance",
-            "line": 511
+            "line": 513
           }
         ],
         "unresolved_count": 0
