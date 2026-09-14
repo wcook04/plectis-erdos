@@ -62,7 +62,7 @@ ANCHOR_GROUPS = {
     ),
     "zero_build_tour": (
         "require no Lean build",
-        "six-line card",
+        "short card",
         "all-problem registry",
         "The route logic names no specimen theorem or module",
         "projection schemas",
