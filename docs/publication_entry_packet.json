@@ -107,7 +107,7 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:2425b24d47442d5725b651021ae4e5f6f9243647fbc720730272bc3f1c33d21c",
+    "docs/claims.json": "sha256:81459f750247c652b5104734829f004d0b11f5ccd90abc772b5cc2fd90772ac9",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:24bf998918231e5ab9365f143b2f2348ef0bea5c8e3ec34c6712d7ace1bf6e35",
     "docs/publication_contract.json": "sha256:04a48aac140decf50f351aaff281e94582e050add2798ed4658190aa3a0f9a44",
@@ -544,7 +544,7 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-14",
+      "public_tag": "formal-source-2026-09-14-r1",
       "publication_state": "published_committed_checkpoint",
       "ref": "969dddcedcdd87907821e2c3db66a7fa8072fde8",
       "ref_kind": "commit",
