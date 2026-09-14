@@ -223,7 +223,8 @@ python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hash
 python3 scripts/check_release.py
 ```
 
-The Lean build and this Python check answer separate questions. A publication
+The release check runs for several minutes and prints only its final
+summary; it has not stalled. The Lean build and this Python check answer separate questions. A publication
 also needs its selected external verification receipts, described in
 [the verification guide](verification/README.md). A successful static check
 alone is not the complete release decision.

@@ -356,12 +356,12 @@ def rendered_source_link_errors(
         return [f"{tex.relative_to(ROOT)}: pinned source commit is missing"]
     commit = commit_match.group(1)
     prefix = (
-        "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
+        "https://github.com/wcook04/plectis-erdos/blob/"
         f"{commit}/Erdos249257/"
     )
     allowed_source_prefixes = (
         prefix,
-        "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
+        "https://github.com/wcook04/plectis-erdos/blob/"
         f"{commit}/ErdosProblems/",
     )
     expected: set[str] = set()
@@ -389,7 +389,7 @@ def rendered_source_link_errors(
             f"target(s) missing from rendered URI annotations; first is {missing[0]!r}"
         )
     repository_blob_prefix = (
-        "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
+        "https://github.com/wcook04/plectis-erdos/blob/"
     )
     stale = sorted(
         href

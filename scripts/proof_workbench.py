@@ -1017,7 +1017,7 @@ def build_parser(root: Path) -> argparse.ArgumentParser:
     parser.add_argument(
         "--sessions-root",
         type=Path,
-        default=root / "workbench" / "sessions",
+        default=root / "research" / "workbench" / "sessions",
         help="override the sessions directory (used by tests)",
     )
     sub = parser.add_subparsers(dest="command", required=True)

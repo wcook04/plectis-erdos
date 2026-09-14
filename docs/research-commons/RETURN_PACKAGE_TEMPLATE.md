@@ -73,7 +73,7 @@ addressed. This does not change the recorded starting commit.
 The command queries the selected problem and opens a workbench session. It
 writes `continuation.json`, `route.json`, `route-memory-consultation.json`,
 `route-memory-return-template.json` and the workbench ledger under
-`workbench/sessions/$SESSION/`, then prints JSON with the starting commit and
+`research/workbench/sessions/$SESSION/`, then prints JSON with the starting commit and
 next commands. The route-memory files record which previous routes were
 consulted. Keep the generated originals unchanged. `start` does not create the
 main `return.json`; [fill and package the return](#fill-and-package-the-structured-return)
@@ -289,7 +289,7 @@ Choose a new directory outside the checkout for the filled return files:
 ```sh
 RETURN_DIR='../research-return'
 mkdir "$RETURN_DIR"
-cp "workbench/sessions/$SESSION/route-memory-return-template.json" \
+cp "research/workbench/sessions/$SESSION/route-memory-return-template.json" \
   "$RETURN_DIR/route-memory.json"
 ```
 

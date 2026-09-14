@@ -24,6 +24,6 @@ body:
     id: release
     attributes:
       label: Release tag or commit
-      placeholder: v0.4.0
+      placeholder: v0.10.0
     validations:
       required: true

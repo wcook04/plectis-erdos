@@ -47,7 +47,7 @@ and who did the work. No structured session or JSON package is required.
 
 For an optional structured package, [start a continuation session](RETURN_PACKAGE_TEMPLATE.md#start-a-structured-continuation)
 from a clean checkout before editing. `continue_research.py start` records the
-current commit, question and identities under `workbench/sessions/<session>/`.
+current commit, question and identities under `research/workbench/sessions/<session>/`.
 After the work, [fill the return files, close the session and package them](RETURN_PACKAGE_TEMPLATE.md#fill-and-package-the-structured-return).
 The output directory contains `return.json`, `route-memory.json`, session
 records and a `package.json` manifest listing the packaged files and hashes.

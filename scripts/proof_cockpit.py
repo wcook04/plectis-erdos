@@ -52,7 +52,7 @@ def checkout_state(root: Path) -> dict[str, Any]:
 
 
 def workbench_state(root: Path) -> dict[str, Any]:
-    sessions_root = root / "workbench" / "sessions"
+    sessions_root = root / "research" / "workbench" / "sessions"
     ledgers = sorted(sessions_root.glob("*/ledger.jsonl"))
     outcome_counts: Counter[str] = Counter()
     move_counts: Counter[str] = Counter()

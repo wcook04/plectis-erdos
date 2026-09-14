@@ -209,7 +209,7 @@ class FrontierSkillTests(unittest.TestCase):
         self.assertLessEqual(len(fields["description"]), 1024)
         self.assertLessEqual(len(fields["compatibility"]), 500)
         self.assertIn('  author: Will Cook', front)
-        self.assertIn('  version: "0.1.0"', front)
+        self.assertIn('  version: "0.1.1"', front)
         self.assertNotIn("    ", front)
 
     def test_bundle_is_small_standalone_and_licensed(self):
