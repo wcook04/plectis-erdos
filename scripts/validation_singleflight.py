@@ -1102,6 +1102,221 @@ def terminate_process_group(process: subprocess.Popen[Any]) -> None:
             pass
 
 
+# ---------------------------------------------------------------------------
+# Bounded children that cannot outlive their owner.
+#
+# ``subprocess.run(timeout=...)`` kills only the direct child.  Every Lean
+# command here is a tree: ``lake env lean`` execs ``lean`` as a grandchild and
+# ``lake build`` forks one ``lean`` per module.  On 2026-09-14 the dependency
+# index builder timed out four times and each time its exporter grandchild
+# survived, reparented to PID 1, still holding the build slot, so every later
+# run stalled until an operator killed it by hand.  The runner below owns the
+# whole descendant tree: it is killed on timeout, on any exception unwinding
+# through the wait, and on SIGTERM to the owner.  Children keep the owner's
+# process group on purpose: a supervisor or host that kills the group must
+# still reach them, and a new session would put them out of that reach.
+# ---------------------------------------------------------------------------
+
+PROCESS_TABLE_TIMEOUT_SECONDS = 15
+KILL_TREE_GRACE_SECONDS = 2.0
+_ACTIVE_CHILDREN: set[subprocess.Popen[Any]] = set()
+
+
+def process_table() -> list[tuple[int, int, str]]:
+    """``(pid, ppid, command)`` rows for every visible process, or ``[]``."""
+    try:
+        completed = subprocess.run(
+            ["ps", "-A", "-o", "pid=,ppid=,command="],
+            capture_output=True,
+            text=True,
+            check=False,
+            env=command_environment(),
+            timeout=PROCESS_TABLE_TIMEOUT_SECONDS,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return []
+    if completed.returncode:
+        return []
+    rows: list[tuple[int, int, str]] = []
+    for line in completed.stdout.splitlines():
+        fields = line.split(None, 2)
+        if len(fields) < 2:
+            continue
+        try:
+            pid, ppid = int(fields[0]), int(fields[1])
+        except ValueError:
+            continue
+        rows.append((pid, ppid, fields[2] if len(fields) == 3 else ""))
+    return rows
+
+
+def descendant_pids(pid: int, table: list[tuple[int, int, str]] | None = None) -> list[int]:
+    """Every transitive child of ``pid``, parents before children."""
+    rows = process_table() if table is None else table
+    children: dict[int, list[int]] = {}
+    for child, parent, _ in rows:
+        children.setdefault(parent, []).append(child)
+    ordered: list[int] = []
+    frontier = list(children.get(pid, []))
+    seen: set[int] = set()
+    while frontier:
+        current = frontier.pop(0)
+        if current in seen:
+            continue
+        seen.add(current)
+        ordered.append(current)
+        frontier.extend(children.get(current, []))
+    return ordered
+
+
+def _signal_pids(pids: Iterable[int], signum: int) -> None:
+    for pid in pids:
+        try:
+            os.kill(pid, signum)
+        except (OSError, ProcessLookupError):
+            pass
+
+
+def _pid_alive(pid: int) -> bool:
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return False
+    return True
+
+
+def kill_process_tree(
+    pid: int, *, grace_seconds: float = KILL_TREE_GRACE_SECONDS
+) -> list[int]:
+    """SIGTERM then SIGKILL ``pid`` and every descendant; return the pids hit.
+
+    Descendants are enumerated before the root is signalled so that a child
+    reparented mid-kill is still on the list.
+    """
+    targets = descendant_pids(pid)
+    targets.append(pid)
+    _signal_pids(targets, signal.SIGTERM)
+    deadline = time.monotonic() + grace_seconds
+    while time.monotonic() < deadline and any(_pid_alive(target) for target in targets):
+        time.sleep(0.05)
+    survivors = [target for target in targets if _pid_alive(target)]
+    if survivors:
+        _signal_pids(survivors, signal.SIGKILL)
+    return targets
+
+
+def terminate_active_children() -> list[int]:
+    """Kill every tree started by ``run_bounded`` that is still running."""
+    killed: list[int] = []
+    for process in list(_ACTIVE_CHILDREN):
+        if process.poll() is None:
+            killed.extend(kill_process_tree(process.pid))
+    return killed
+
+
+def forward_termination_to_children(signum: int, _frame: Any) -> None:
+    """Signal handler: take the tree down, then exit with the signal's code."""
+    terminate_active_children()
+    raise SystemExit(128 + signum)
+
+
+def install_child_termination_forwarding() -> None:
+    """Make SIGTERM/SIGINT/SIGHUP to this process reach its bounded children."""
+    for signum in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP):
+        try:
+            signal.signal(signum, forward_termination_to_children)
+        except (OSError, ValueError):
+            # Not the main thread, or the platform refuses the handler; the
+            # timeout and exception paths still own the tree.
+            pass
+
+
+def run_bounded(
+    command: list[str],
+    *,
+    timeout: float | None,
+    input: str | bytes | None = None,
+    **popen_kwargs: Any,
+) -> subprocess.CompletedProcess[Any]:
+    """``subprocess.run`` whose timeout and failure paths kill the whole tree.
+
+    Raises ``subprocess.TimeoutExpired`` with the captured output exactly as
+    ``subprocess.run`` would, after the descendant tree is dead.  ``check``
+    is honoured.  Any other exception unwinding through the wait (including
+    ``SystemExit`` from a forwarded signal) also kills the tree first.
+    """
+    check = bool(popen_kwargs.pop("check", False))
+    if popen_kwargs.pop("capture_output", False):
+        if popen_kwargs.get("stdout") is not None or popen_kwargs.get("stderr") is not None:
+            raise ValueError("stdout and stderr arguments may not be used with capture_output")
+        popen_kwargs["stdout"] = subprocess.PIPE
+        popen_kwargs["stderr"] = subprocess.PIPE
+    if input is not None:
+        popen_kwargs["stdin"] = subprocess.PIPE
+    process = subprocess.Popen(command, **popen_kwargs)
+    _ACTIVE_CHILDREN.add(process)
+    try:
+        try:
+            stdout, stderr = process.communicate(input, timeout=timeout)
+        except subprocess.TimeoutExpired:
+            kill_process_tree(process.pid)
+            stdout, stderr = process.communicate()
+            raise subprocess.TimeoutExpired(
+                command, timeout or 0, output=stdout, stderr=stderr
+            ) from None
+        except BaseException:
+            kill_process_tree(process.pid)
+            process.wait()
+            raise
+    finally:
+        _ACTIVE_CHILDREN.discard(process)
+    returncode = process.poll()
+    if check and returncode:
+        raise subprocess.CalledProcessError(returncode, command, output=stdout, stderr=stderr)
+    return subprocess.CompletedProcess(command, returncode, stdout, stderr)
+
+
+LEAN_EXECUTABLES = frozenset({"lean", "lake"})
+
+
+def orphaned_lean_processes(root: Path) -> list[tuple[int, str]]:
+    """``(pid, command)`` for ``lean``/``lake`` orphans working under ``root``.
+
+    An orphan is a process whose parent is gone (reparented to PID 1) and
+    whose executable is ``lean`` or ``lake`` with ``root`` in its argv.  A
+    ``lean`` with a live parent belongs to a concurrent run and is left to the
+    one-flight lock; a ``lean`` under some other checkout is not ours.
+    """
+    marker = str(root.resolve()).rstrip("/") + "/"
+    orphans: list[tuple[int, str]] = []
+    for pid, ppid, command in process_table():
+        if ppid != 1 or not command:
+            continue
+        executable = Path(command.split(None, 1)[0]).name
+        if executable not in LEAN_EXECUTABLES:
+            continue
+        if marker in command:
+            orphans.append((pid, command))
+    return orphans
+
+
+def reap_orphaned_lean_processes(root: Path, *, stream: Any = sys.stderr) -> list[int]:
+    """Kill orphaned Lean processes left under ``root`` by a dead owner."""
+    reaped: list[int] = []
+    for pid, command in orphaned_lean_processes(root):
+        print(
+            f"reaping orphaned Lean process {pid} left by a dead owner: {command[:200]}",
+            file=stream,
+        )
+        kill_process_tree(pid)
+        reaped.append(pid)
+    return reaped
+
+
 # One validation class does work whose cost tracks the size of the library
 # rather than the size of a change: a cold full-corpus Lean build. It was
 # borrowing the shared thirty-minute worker bound and continuous integration

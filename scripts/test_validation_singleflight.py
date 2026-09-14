@@ -630,6 +630,143 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertIn('command.append("--singleflight-worker")', dependency_builder)
         self.assertNotIn("paper-render", singleflight.ROSTER_VALIDATORS)
 
+    # A child that spawns a grandchild, publishes the grandchild's pid to a
+    # file, and then sleeps: the shape of ``lake env lean`` and ``lake build``.
+    _TREE_CHILD = (
+        "import subprocess, sys, time\n"
+        "child = subprocess.Popen(['sleep', '300'])\n"
+        "open(sys.argv[1], 'w').write(str(child.pid))\n"
+        "time.sleep(300)\n"
+    )
+
+    @staticmethod
+    def _wait_for_pid_file(path: Path) -> int:
+        import time
+
+        deadline = time.monotonic() + 10
+        while time.monotonic() < deadline:
+            if path.is_file() and path.read_text().strip():
+                return int(path.read_text().strip())
+            time.sleep(0.05)
+        raise AssertionError("grandchild pid was never published")
+
+    @staticmethod
+    def _wait_until_dead(pid: int) -> bool:
+        import time
+
+        deadline = time.monotonic() + 10
+        while time.monotonic() < deadline:
+            try:
+                os.kill(pid, 0)
+            except ProcessLookupError:
+                return True
+            except OSError:
+                pass
+            time.sleep(0.05)
+        return False
+
+    def test_run_bounded_timeout_kills_the_grandchild(self) -> None:
+        # ``subprocess.run(timeout=...)`` kills only the direct child; the
+        # 2026-09-14 orphans were exporter grandchildren that outlived four
+        # timed-out builders and held the build slot.
+        with tempfile.TemporaryDirectory() as raw:
+            pid_file = Path(raw) / "grandchild.pid"
+            with self.assertRaises(subprocess.TimeoutExpired):
+                singleflight.run_bounded(
+                    [sys.executable, "-c", self._TREE_CHILD, str(pid_file)],
+                    timeout=2,
+                    capture_output=True,
+                )
+            grandchild = self._wait_for_pid_file(pid_file)
+            self.assertTrue(
+                self._wait_until_dead(grandchild),
+                f"grandchild {grandchild} survived the bounded timeout",
+            )
+            self.assertFalse(singleflight._ACTIVE_CHILDREN)
+
+    def test_run_bounded_exception_kills_the_tree(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            pid_file = Path(raw) / "grandchild.pid"
+            original = subprocess.Popen.communicate
+
+            def interrupted(self_, *args, **kwargs):
+                self_.__class__.communicate = original
+                ValidationSingleflightTests._wait_for_pid_file(pid_file)
+                raise KeyboardInterrupt
+
+            with mock.patch.object(subprocess.Popen, "communicate", interrupted):
+                with self.assertRaises(KeyboardInterrupt):
+                    singleflight.run_bounded(
+                        [sys.executable, "-c", self._TREE_CHILD, str(pid_file)],
+                        timeout=30,
+                        capture_output=True,
+                    )
+            grandchild = int(pid_file.read_text().strip())
+            self.assertTrue(self._wait_until_dead(grandchild))
+
+    def test_run_bounded_matches_subprocess_run_contract(self) -> None:
+        completed = singleflight.run_bounded(
+            [sys.executable, "-c", "import sys; print('out'); sys.exit(3)"],
+            timeout=30,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(completed.returncode, 3)
+        self.assertEqual(completed.stdout, "out\n")
+        with self.assertRaises(subprocess.CalledProcessError):
+            singleflight.run_bounded(
+                [sys.executable, "-c", "raise SystemExit(2)"],
+                timeout=30,
+                check=True,
+                capture_output=True,
+            )
+        with self.assertRaises(subprocess.TimeoutExpired) as caught:
+            singleflight.run_bounded(
+                [
+                    sys.executable,
+                    "-c",
+                    "import sys,time; print('partial', flush=True); time.sleep(60)",
+                ],
+                timeout=1,
+                capture_output=True,
+                text=True,
+            )
+        self.assertIn("partial", caught.exception.output or "")
+
+    def test_orphaned_lean_processes_select_only_reparented_lean_under_root(self) -> None:
+        root = Path("/srv/checkout")
+        table = [
+            (10, 1, f"/home/u/.elan/bin/lean {root}/scripts/export.lean"),
+            (11, 1, f"/home/u/.elan/bin/lake env lean {root}/scripts/export.lean"),
+            (12, 500, f"/home/u/.elan/bin/lean {root}/lean/X.lean"),  # live parent
+            (13, 1, "/home/u/.elan/bin/lean /srv/other/lean/X.lean"),  # other root
+            (14, 1, f"/usr/bin/python3 {root}/scripts/build.py"),  # not lean
+            (15, 1, f"/home/u/.elan/bin/lean /srv/checkout-2/{root.name}/x.lean"),
+        ]
+        with mock.patch.object(singleflight, "process_table", return_value=table):
+            found = singleflight.orphaned_lean_processes(root)
+        self.assertEqual([pid for pid, _ in found], [10, 11])
+
+    def test_descendant_pids_walks_transitively(self) -> None:
+        table = [(2, 1, "a"), (3, 2, "b"), (4, 3, "c"), (5, 2, "d"), (6, 1, "e")]
+        self.assertEqual(singleflight.descendant_pids(2, table), [3, 5, 4])
+        self.assertEqual(singleflight.descendant_pids(6, table), [])
+
+    def test_builders_route_lean_commands_through_the_bounded_runner(self) -> None:
+        for relative in (
+            "scripts/build_lean_dependency_index.py",
+            "scripts/lean_fast_build.py",
+        ):
+            with self.subTest(relative=relative):
+                text = (ROOT / relative).read_text(encoding="utf-8")
+                self.assertIn("singleflight.run_bounded(", text)
+                self.assertIn("install_child_termination_forwarding()", text)
+                self.assertNotRegex(text, r"\n    return subprocess\.run\(")
+        builder = (ROOT / "scripts/build_lean_dependency_index.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("reap_orphaned_lean_processes(ROOT)", builder)
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(

@@ -58,8 +58,12 @@ def _run(
     timeout_seconds: float,
     **kwargs: object,
 ) -> subprocess.CompletedProcess[str]:
-    """Run Git/Lake without ambient selectors and with an explicit deadline."""
-    return subprocess.run(
+    """Run Git/Lake without ambient selectors and with an explicit deadline.
+
+    ``lake build`` forks one ``lean`` per module; the bounded runner kills
+    that whole tree on timeout or failure so no ``lean`` outlives the builder.
+    """
+    return singleflight.run_bounded(
         command,
         cwd=cwd,
         env=singleflight.command_environment(),
@@ -729,6 +733,9 @@ def prepare_dependency_packages(root: Path, state_root: Path | None = None) -> i
 
 
 def main(argv: list[str] | None = None) -> int:
+    # A SIGTERM to this builder must reach its ``lake``/``lean`` tree; the
+    # bounded runner already owns the timeout and exception paths.
+    singleflight.install_child_termination_forwarding()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "targets",

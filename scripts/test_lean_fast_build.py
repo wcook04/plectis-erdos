@@ -639,7 +639,7 @@ import Pkg.TooLate
                 side_effect=AssertionError("missing output must not pay for rehash"),
             ) as stale_targets, mock.patch.object(
                 fast, "build_wave", return_value=[]
-            ), mock.patch.object(fast.subprocess, "run", return_value=completed):
+            ), mock.patch.object(fast.singleflight, "run_bounded", return_value=completed):
                 self.assertEqual(
                     fast.main(["Pkg.Root", "--lake-staleness"]),
                     0,
@@ -650,7 +650,7 @@ import Pkg.TooLate
     def test_lake_stale_targets_parses_single_verbose_verdict(self) -> None:
         output = """progress\nSome required targets logged failures:\n- Pkg.A\n- Pkg.B\n"""
         completed = fast.subprocess.CompletedProcess([], 3, output, "")
-        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+        with mock.patch.object(fast.singleflight, "run_bounded", return_value=completed) as run:
             self.assertEqual(
                 fast.lake_stale_targets(["Pkg.Root"], Path("/tmp/pkg")),
                 ["Pkg.A", "Pkg.B"],
@@ -744,7 +744,7 @@ import Pkg.TooLate
                 fast.subprocess.CompletedProcess([], 0, "Pkg/Tracked.lean\nREADME.md\n", ""),
                 fast.subprocess.CompletedProcess([], 0, "Pkg/Untracked.lean\n", ""),
             ]
-            with mock.patch.object(fast.subprocess, "run", side_effect=results) as run:
+            with mock.patch.object(fast.singleflight, "run_bounded", side_effect=results) as run:
                 self.assertEqual(
                     fast.changed_targets("HEAD~1", modules, root),
                     ["Pkg.Tracked", "Pkg.Untracked"],
@@ -761,7 +761,7 @@ import Pkg.TooLate
 
     def test_lake_commands_use_clean_environment_and_bounded_deadline(self) -> None:
         completed = fast.subprocess.CompletedProcess([], 0, "", "")
-        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+        with mock.patch.object(fast.singleflight, "run_bounded", return_value=completed) as run:
             self.assertTrue(fast.lake_targets_up_to_date(["Pkg.Leaf"]))
 
         self.assertEqual(run.call_args.kwargs["env"], singleflight.command_environment())
@@ -774,7 +774,7 @@ import Pkg.TooLate
         with mock.patch.dict(
             os.environ, {"PATH": "/private/wrong-bin"}, clear=False
         ), mock.patch.object(
-            fast.subprocess, "run", return_value=completed
+            fast.singleflight, "run_bounded", return_value=completed
         ) as run:
             self.assertTrue(fast.lake_targets_up_to_date(["Pkg.Leaf"]))
 
@@ -788,7 +788,7 @@ import Pkg.TooLate
 
     def test_changed_targets_reports_git_failure(self) -> None:
         failed = fast.subprocess.CompletedProcess([], 128, "", "bad revision")
-        with mock.patch.object(fast.subprocess, "run", return_value=failed):
+        with mock.patch.object(fast.singleflight, "run_bounded", return_value=failed):
             with self.assertRaisesRegex(RuntimeError, "bad revision"):
                 fast.changed_targets("missing", {})
 
@@ -850,7 +850,7 @@ import Pkg.TooLate
                 "",
             )
 
-        with mock.patch.object(fast.subprocess, "run", side_effect=run):
+        with mock.patch.object(fast.singleflight, "run_bounded", side_effect=run):
             self.assertEqual(
                 fast.lake_stale_targets(["Pkg.A", "Pkg.Bad", "Pkg.C"]),
                 ["Pkg.Bad"],
@@ -861,7 +861,7 @@ import Pkg.TooLate
 
     def test_lake_trace_check_uses_rehash_and_never_builds(self) -> None:
         completed = fast.subprocess.CompletedProcess([], 0, "", "")
-        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+        with mock.patch.object(fast.singleflight, "run_bounded", return_value=completed) as run:
             self.assertTrue(fast.lake_targets_up_to_date(["Pkg.Leaf"]))
 
         self.assertEqual(
@@ -885,7 +885,7 @@ import Pkg.TooLate
                 fast, "lake_stale_targets", return_value=[]
             ) as stale_targets, mock.patch.object(
                 fast, "build_wave", side_effect=AssertionError("cache hit must skip prebuild")
-            ), mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+            ), mock.patch.object(fast.singleflight, "run_bounded", return_value=completed) as run:
                 self.assertEqual(fast.main(["Pkg.Root", "--lake-staleness"]), 0)
 
             stale_targets.assert_called_once_with(["Pkg.Root"], root)
@@ -914,7 +914,7 @@ import Pkg.TooLate
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
                 fast, "lake_stale_targets", return_value=[]
             ) as stale_targets, mock.patch.object(
-                fast.subprocess, "run", return_value=completed
+                fast.singleflight, "run_bounded", return_value=completed
             ) as run:
                 self.assertEqual(fast.main(["--lake-staleness"]), 0)
 
@@ -953,7 +953,7 @@ import Pkg.TooLate
             os.utime(output, ns=(2_000_000_000, 2_000_000_000))
             completed = fast.subprocess.CompletedProcess([], 0, "", "")
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
-                fast.subprocess, "run", return_value=completed
+                fast.singleflight, "run_bounded", return_value=completed
             ) as run:
                 self.assertEqual(fast.main(["Pkg/Leaf.lean"]), 0)
 
@@ -985,7 +985,7 @@ import Pkg.TooLate
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
                 fast, "lake_stale_targets", return_value=[]
             ) as stale_targets, mock.patch.object(
-                fast.subprocess, "run", return_value=completed
+                fast.singleflight, "run_bounded", return_value=completed
             ) as run:
                 self.assertEqual(
                     fast.main(
@@ -1046,7 +1046,7 @@ import Pkg.TooLate
             )
             completed = fast.subprocess.CompletedProcess([], 0, "", "")
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
-                fast.subprocess, "run", return_value=completed
+                fast.singleflight, "run_bounded", return_value=completed
             ) as run:
                 self.assertEqual(
                     fast.main(["examples/Consumer.lean", "--jobs", "2"]),
@@ -1109,7 +1109,7 @@ import Pkg.TooLate
 
     def test_final_authority_checks_focused_modules_serially(self) -> None:
         completed = fast.subprocess.CompletedProcess([], 0, "", "")
-        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+        with mock.patch.object(fast.singleflight, "run_bounded", return_value=completed) as run:
             self.assertEqual(fast.run_final_authority_check(["Pkg.A", "Pkg.B"]), 0)
 
         self.assertEqual(
