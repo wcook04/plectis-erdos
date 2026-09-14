@@ -7,6 +7,8 @@ import json
 import re
 from pathlib import Path
 
+import repository_identity
+
 from agent_entry import entry_packet
 from agent_skill_catalog import load_catalog
 
@@ -51,6 +53,7 @@ def main() -> int:
         "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
         "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
         "docs/research-commons/schema/research-return-receipt.schema.json",
+        "docs/research-commons/schema/research-return-receipt-v2.schema.json",
         ".github/ISSUE_TEMPLATE/research_progress.yml",
         ".github/ISSUE_TEMPLATE/research_return.yml",
         ".github/ISSUE_TEMPLATE/architecture_proposal.yml",
@@ -104,7 +107,7 @@ def main() -> int:
     architecture_guide = text("docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md")
     for concept in ("idea", "accepted receipt", "conceptualization", "software", "validation", "non-scalar"):
         require(concept in architecture_guide.lower(), f"architecture contribution path omits {concept!r}")
-    receipt_schema = text("docs/research-commons/schema/research-return-receipt.schema.json")
+    receipt_schema = text(repository_identity.load_identity()["contracts"]["current_schema_path"])
     for contract in ('"architecture"', '"contribution_roles"', '"consider_architecture_adoption"'):
         require(contract in receipt_schema, f"receipt schema omits architecture contract {contract}")
 

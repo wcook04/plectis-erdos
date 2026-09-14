@@ -1,35 +1,52 @@
 {
-  "schema": "research-return-receipt/1",
+  "schema": "research-return-receipt/2",
   "record_kind": "validation_fixture",
   "return_id": "rr-fixture-valid-inconclusive",
   "submitted_at": "2026-08-27T12:00:00Z",
   "identity": {
-    "contributor": {"name": "Fixture Contributor", "handle": null, "identifiers": []},
-    "operator": {"relationship": "same_as_contributor", "name": "Fixture Contributor"},
-    "model_system": {"state": "not_used"},
-    "provider": {"state": "not_used"},
+    "contributor": {
+      "name": "Fixture Contributor",
+      "handle": null,
+      "identifiers": []
+    },
+    "operator": {
+      "relationship": "same_as_contributor",
+      "name": "Fixture Contributor"
+    },
+    "model_system": {
+      "state": "not_used"
+    },
+    "provider": {
+      "state": "not_used"
+    },
     "material_collaborators": []
   },
   "repository": {
-    "origin": "https://github.com/wcook04/plectis-lean-erdos249-257",
+    "origin": "https://github.com/wcook04/plectis-erdos",
     "starting_commit": "335e4658d69e591597b30fb2beb7200ae7f232c0",
     "proposed_commit": null,
     "accepted_commit": null,
-    "changed_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"]
+    "changed_paths": [
+      "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
+    ]
   },
   "frontier": {
     "problem": 257,
     "handle": "fixture/bounded-route",
     "bounded_question": "Can the named public replay be completed with the recorded assumptions?",
     "stop_condition": "Stop at the first missing public assumption.",
-    "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"]
+    "starting_paths": [
+      "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
+    ]
   },
   "result": {
     "class": "inconclusive",
     "summary": "The fixture records a bounded attempt stopped at a missing public assumption.",
     "claim_ceiling": "inconclusive_attempt",
     "surviving_boundary": "The universal Erdős #257 proposition remains open.",
-    "limitations": ["Validation fixture only; it is not a submitted or accepted contribution."],
+    "limitations": [
+      "Validation fixture only; it is not a submitted or accepted contribution."
+    ],
     "requested_disposition": "no_promotion"
   },
   "evidence": [
@@ -39,22 +56,79 @@
       "exit_code": null,
       "observed": "Fixture records the first next command instead of claiming it ran.",
       "environment": "Public tracked checkout.",
-      "artifacts": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+      "artifacts": [
+        "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
+      ],
       "replay_state": "pending"
     }
   ],
   "review": {
-    "structural_validation": {"state": "pending", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Pending validator run."},
-    "reproduction": {"state": "pending", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not yet replayed."},
-    "mathematical_review": {"state": "not_required", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Fixture only."},
-    "claim_boundary_review": {"state": "not_required", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Fixture only."},
-    "accepted_handoff": {"state": "pending", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not an accepted receipt."},
-    "problem_owned_proposition": {"state": "not_requested", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not requested."},
-    "core_promotion": {"state": "not_requested", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not requested."},
-    "tagged_release_inclusion": {"state": "not_requested", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not requested."}
+    "structural_validation": {
+      "state": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Pending validator run."
+    },
+    "reproduction": {
+      "state": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Not yet replayed."
+    },
+    "mathematical_review": {
+      "state": "not_required",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Fixture only."
+    },
+    "claim_boundary_review": {
+      "state": "not_required",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Fixture only."
+    },
+    "accepted_handoff": {
+      "state": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Not an accepted receipt."
+    },
+    "problem_owned_proposition": {
+      "state": "not_requested",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Not requested."
+    },
+    "core_promotion": {
+      "state": "not_requested",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Not requested."
+    },
+    "tagged_release_inclusion": {
+      "state": "not_requested",
+      "reviewer": null,
+      "decided_at": null,
+      "authority_ref": null,
+      "notes": "Not requested."
+    }
   },
   "attribution": {
-    "artifact_credit": [{"name": "Fixture Contributor", "artifact_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"]}],
+    "artifact_credit": [
+      {
+        "name": "Fixture Contributor",
+        "artifact_paths": [
+          "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
+        ]
+      }
+    ],
     "requested_display": "Fixture Contributor — validation fixture only",
     "existing_corpus_authorship_preserved": true
   },

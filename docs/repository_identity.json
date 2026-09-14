@@ -7,10 +7,10 @@
     "activation_state": "current_public_commons"
   },
   "contracts": {
-    "current_submission_schema": "research-return-receipt/1",
-    "current_schema_path": "docs/research-commons/schema/research-return-receipt.schema.json",
-    "post_rename_submission_schema": "research-return-receipt/2",
-    "post_rename_schema_path": "docs/research-commons/schema/research-return-receipt-v2.schema.json"
+    "current_submission_schema": "research-return-receipt/2",
+    "current_schema_path": "docs/research-commons/schema/research-return-receipt-v2.schema.json",
+    "post_rename_submission_schema": "research-return-receipt/3",
+    "post_rename_schema_path": "docs/research-commons/schema/research-return-receipt-v3.schema.json"
   },
   "historical_receipt_contracts": [
     {
@@ -23,6 +23,7 @@
   "protected_identity_globs": [
     "docs/research-commons/returns/*.json",
     "docs/research-commons/schema/research-return-receipt.schema.json",
+    "docs/research-commons/schema/research-return-receipt-v2.schema.json",
     "lean/Erdos249257.lean",
     "lean/ErdosProblems.lean",
     "lakefile.lean",

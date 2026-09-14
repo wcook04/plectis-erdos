@@ -2274,6 +2274,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_contribution_entry.py"),
             ],
+            "contribution_contract_agreement": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_contribution_contract_agreement.py"),
+            ],
             "source_attribution_fixtures": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_source_attributions.py"),

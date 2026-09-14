@@ -34,6 +34,8 @@ on:
       - "scripts/test_research_return_workflow.py"
       - "scripts/test_contribution_entry.py"
       - "scripts/test_validate_research_return.py"
+      - "scripts/test_contribution_contract_agreement.py"
+      - "docs/research-commons/schema/research-return-receipt-v2.schema.json"
       - "scripts/validate_research_return.py"
       - "scripts/repository_identity.py"
       - "scripts/build_research_contribution_recognition.py"
@@ -76,6 +78,8 @@ on:
       - "scripts/test_research_return_workflow.py"
       - "scripts/test_contribution_entry.py"
       - "scripts/test_validate_research_return.py"
+      - "scripts/test_contribution_contract_agreement.py"
+      - "docs/research-commons/schema/research-return-receipt-v2.schema.json"
       - "scripts/validate_research_return.py"
       - "scripts/repository_identity.py"
       - "scripts/build_research_contribution_recognition.py"
@@ -157,6 +161,8 @@ jobs:
           python3 -O scripts/test_research_return_workflow.py
           python3 scripts/test_contribution_entry.py
           python3 -O scripts/test_contribution_entry.py
+          python3 scripts/test_contribution_contract_agreement.py
+          python3 -O scripts/test_contribution_contract_agreement.py
 
       - name: Keep unaccepted GitHub returns out of promotion and recognition
         run: |
