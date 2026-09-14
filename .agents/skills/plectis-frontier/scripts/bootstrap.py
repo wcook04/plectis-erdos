@@ -15,9 +15,9 @@ import sys
 from typing import Any
 
 SOURCE_FILE = Path(__file__).resolve().parents[1] / "source.json"
-PUBLIC_URL = "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+PUBLIC_URL = "https://github.com/wcook04/plectis-erdos.git"
 REQUIRED = (
-    "AGENTS.override.md", "AGENTS.md", "docs/claims.json",
+    "AGENTS.md", "docs/claims.json",
     "scripts/agent_entry.py", "scripts/query_corpus.py",
     "skills/mine-open-problem/SKILL.md",
     "skills/erdos-research-return/SKILL.md",
@@ -127,7 +127,9 @@ def smoke(destination: Path, source: dict[str, str], allow_execution: bool) -> d
     entry = run([sys.executable, "-B", "-s", "scripts/agent_entry.py", "--entry",
                  "Attempt one bounded research continuation and prepare a checkable return", "--json"], root)
     packet = json.loads(entry)
-    if not isinstance(packet, dict) or packet.get("schema") != "plectis-agent-entry/1" or not packet.get("primary_lane"):
+    if (not isinstance(packet, dict)
+            or packet.get("schema") not in ("plectis-agent-entry/1", "plectis-agent-entry/2")
+            or not packet.get("primary_lane")):
         raise BootstrapError("Entry command did not produce its declared routing contract")
     overview = run([sys.executable, "-B", "-s", "scripts/query_corpus.py",
                     "--overview", "--format", "card"], root)

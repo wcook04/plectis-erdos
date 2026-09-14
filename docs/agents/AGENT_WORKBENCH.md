@@ -154,7 +154,7 @@ cannot do that.
 ## The move grammar
 
 A workbench session is a sequence of typed moves in an append-only
-ledger (`workbench/sessions/<slug>/ledger.jsonl`):
+ledger (`research/workbench/sessions/<slug>/ledger.jsonl`):
 
 - `observation` — what the agent read or measured, with sources.
 - `conjecture` — a falsifiable guess. Conjectures should declare their
@@ -197,7 +197,7 @@ and the rung is part of the claim:
 
 Rung-3 sessions are the point of the whole design. The first landed
 example is the carry-pivot session recorded in
-`workbench/sessions/carry_pivot_2026_07_27/`, which produced
+`research/workbench/sessions/carry_pivot_2026_07_27/`, which produced
 `Erdos249257/SuffixCylinderCarryPivot.lean`: the binary carry-pivot
 normal form for numeral-adjacent boundary words and the exact
 divisor-incidence identity that sharpens the previously landed
@@ -306,7 +306,7 @@ distinct. These are navigation projections, not proof authority.
 The [proof cockpit](PROOF_COCKPIT.md) produces one cold-clone
 status and frontier card (`python3 scripts/proof_cockpit.py`), and
 [the Agent Workbench](AGENT_WORKBENCH.md) records typed reasoning moves
-and kernel probes under `workbench/sessions/`. The one landed prospective
+and kernel probes under `research/workbench/sessions/`. The one landed prospective
 session,
 [`carry_pivot_2026_07_27`](../../research/workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
 produced [`SuffixCylinderCarryPivot.lean`](../../lean/Erdos249257/SuffixCylinderCarryPivot.lean).

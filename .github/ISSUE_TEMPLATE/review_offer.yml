@@ -32,7 +32,7 @@ body:
     id: target
     attributes:
       label: What should the review cover?
-      description: Give a problem number, claim id, declaration, paper section, or ask us to suggest one that fits your available time.
+      description: Give a problem number, claim id, declaration, paper section, or ask me to suggest one that fits your available time.
       placeholder: "Erdős #257 — or: suggest one, I have about an hour"
     validations:
       required: true
@@ -41,7 +41,7 @@ body:
     id: time
     attributes:
       label: How much time would you like to spend?
-      description: Optional. This helps us suggest a genuinely bounded target.
+      description: Optional. This helps me suggest a genuinely bounded target.
       placeholder: "About 20 minutes"
 
   - type: textarea
@@ -69,6 +69,6 @@ body:
   - type: markdown
     attributes:
       value: |
-        **What happens next:** we agree on one small target before asking for work.
+        **What happens next:** I agree one small target with you before asking for work.
         Your eventual review is recorded with its uncertainty and disagreement
         intact. A negative review is useful; silence is not treated as approval.

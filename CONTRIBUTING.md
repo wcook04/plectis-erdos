@@ -73,7 +73,7 @@ remains unresolved. If you have an observation but no finished patch, open the
 [plain-language research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
 and write it in your own words. A coding agent can fill the same form; the
 questions are ordinary language, not a receipt schema. You do not need to learn
-the receipt format before telling us something useful.
+the receipt format before telling me something useful.
 
 For compute contributions, begin with a bounded route exposed by the papers,
 claim registry, or agent entry. The present routes are authored in the public
@@ -202,5 +202,5 @@ and an accepted receipt must never silently strengthen `docs/claims.json`.
 For an ordinary source change, run the narrow checks named by the agent entry
 and the affected subsystem. Lean changes must build with the pinned toolchain.
 Changes to claims, papers, or generated projections must follow the authority
-and builder order in [AGENTS.md](docs/agents/AGENT_GUIDE.md). CI exercises the public return
+and builder order in the [agent guide](docs/agents/AGENT_GUIDE.md). CI exercises the public return
 validator, the acceptance boundary, and the accepted-only attribution views.

@@ -3,14 +3,14 @@
 cff-version: 1.2.0
 type: software
 message: "If you use this release, cite the software metadata below. For a mathematical result, cite the relevant per-problem paper linked from README.md; paper/archive/erdos249-257-main-paper.tex is the archival joint #249/#257 manuscript."
-title: "Erdős #249/#257 Lean formalisation (eight-problem corpus)"
+title: "Plectis: research on eight open Erdős problems"
 version: "0.10.0"
 date-released: "2026-09-11"
 authors:
   - family-names: "Cook"
     given-names: "Will"
 license: Apache-2.0
-abstract: "A Lean 4 / Mathlib corpus of kernel-checked results around eight Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049), with #249 and #257 as the reviewed core: exact finite-period noncollapse for every finite support and every base b ≥ 2, an explicit rational basis of dimension 2^e+1 for the dyadic sections of Euler's totient, Mersenne achievement-set geometry including the measure-one clause, six exact characterisations of #249 irrationality, unconditional denominator exclusions, diagonal certificates through t=82, and checked reductions, equivalences, and obstructions for the six expansion problems, bound to source by a reviewed claim registry. It does not solve Erdős #249 or the universal #257 problem. All eight problems remain open."
+abstract: "A Lean 4 / Mathlib corpus of kernel-checked results around eight Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049), with #249 and #257 as the reviewed core: exact finite-period noncollapse for every finite support and every base b ≥ 2, an explicit rational basis of dimension 2^e+1 for the dyadic sections of Euler's totient, Mersenne achievement-set geometry including the measure-one clause, six exact characterisations of #249 irrationality, unconditional denominator exclusions, diagonal certificates through t=82, and checked reductions, equivalences, and obstructions for the six expansion problems, bound to source by a reviewed claim registry. It does not solve Erdős #249 or the universal #257 problem. All eight problems remain open. No independent mathematical review has been recorded."
 repository-code: "https://github.com/wcook04/plectis-erdos"
 url: "https://github.com/wcook04/plectis-erdos"
 identifiers:

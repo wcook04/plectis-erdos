@@ -12,9 +12,8 @@ packages, and the continuous-integration configuration.
 
 Cloning downloads tracked files but does not run this project's Python or Lean
 code. The repository defines no submodules, Git LFS filters, or repository
-hooks. You can use the reader sparse checkout in the README to inspect the
-papers, claim records, open boundaries, and source map before executing a
-project command.
+hooks. You can read the papers, claim records, open boundaries, and source
+map on GitHub or the maths site before executing a project command.
 
 The trust boundary changes when you run code. The read-only query commands
 execute tracked Python. A Lean build also installs or invokes the exact Lean

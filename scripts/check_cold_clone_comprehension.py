@@ -798,7 +798,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["#1049"],
             ["rational bases"],
             ["no query is required"],
-            ["does not require `ai_workflow`", "does not require ai_workflow"],
+            ["does not require a private repository"],
         ],
         "distinguish_release_source_and_authority": [
             ["latest tagged release and citation anchor"],

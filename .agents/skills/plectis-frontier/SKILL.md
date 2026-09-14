@@ -5,7 +5,7 @@ license: MIT-0
 compatibility: Python 3.11+ and Git on Linux or macOS. Fetching the public corpus needs approved HTTPS access to GitHub. Reading and routing need no Lean installation or Plectis account. Formal proof checking needs the corpus-pinned Lean toolchain.
 metadata:
   author: Will Cook
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
@@ -60,7 +60,7 @@ fetch a moving `main` as a fallback. An existing destination is left untouched;
 a failed new download is retained for inspection. Downloads may be substantial.
 Do not silently upgrade the pin or treat a hash as a security audit.
 
-Read `AGENTS.override.md` in that checkout. After permission to run its public
+Read `AGENTS.md` in that checkout. After permission to run its public
 Python entry commands:
 
 ```sh

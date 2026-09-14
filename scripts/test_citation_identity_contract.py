@@ -61,7 +61,7 @@ def citation_identity_errors(
         errors,
         cff,
         "title",
-        "Erdős #249/#257 Lean formalisation (eight-problem corpus)",
+        "Plectis: research on eight open Erdős problems",
     )
     require_scalar(errors, cff, "version", str(release["version"]))
     require_scalar(errors, cff, "date-released", str(release["date"]))

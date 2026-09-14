@@ -30,7 +30,7 @@ import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
-DEFAULT_SESSIONS_ROOT = ROOT / "workbench" / "sessions"
+DEFAULT_SESSIONS_ROOT = ROOT / "research" / "workbench" / "sessions"
 SESSION_SCHEMA = "research-continuation-session/1"
 CHECK_SCHEMA = "research-continuation-check/1"
 PACKAGE_SCHEMA = "research-return-package/1"
