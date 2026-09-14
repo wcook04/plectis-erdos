@@ -1,19 +1,19 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis: research on eight open Erdős problems
+# Plectis: research on eight Erdős problems
 
 Plectis is an open-source, AI-assisted research project. This repository contains
 the papers, Lean proofs, computations, failed approaches, and questions
 that remain, so another researcher can inspect the work and continue from it.
-**All eight problems remain open.**
+**Seven of the eight problems remain open.** This repository does not solve any of them. Erdős #1041 was answered in the negative by ani on 7 September 2026, on the problem's discussion thread. This repository did not find that answer. It verified the construction exactly, formalised one instance in Lean with a kernel-checked main theorem, corrected two statements on the way, and rewrote its #1041 note to explain the mechanism. No independent expert review of the construction is claimed.
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
 [Contact me](https://wcook04.github.io/plectis/#contact)
 
-![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
+![Eight problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
 ## Where to start
 
@@ -170,12 +170,12 @@ Mathlib. See the [security policy](.github/SECURITY.md) for the execution bounda
 
 The reviewed layer a mathematician should judge: 141 curated claim records in 30 contribution families, reaching Lean source through 451 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 91% of the 156,245 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 91% of the 157,156 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,274 |
-| Formal results and supporting lemmas | 153,502 |
+| Lean modules (the two library roots) | 1,286 |
+| Formal results and supporting lemmas | 154,251 |
 | Curated claim records | 141 |
 | Contribution families | 30 |
 

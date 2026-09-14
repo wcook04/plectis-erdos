@@ -155,7 +155,7 @@ Lean build failures, broken source or paper links, missing attribution,
 exposition that hides an assumption, counterexamples to intermediate claims,
 and improvements to the clone-local checks. New formal results are welcome,
 but their public description must be no stronger than the evidence, and all
-eight headline Erdős problems remain open unless an extraordinary independent
+seven of the eight headline Erdős problems remain open unless an extraordinary independent
 mathematical process establishes otherwise.
 
 Ordinary prose, citation, and tooling corrections can arrive as normal pull

@@ -4,7 +4,7 @@
 version: "v0.4"
 project:
   name: "Eight open Erdős problems: checked subsidiary mathematics"
-  description: "Lean 4 formalization of subsidiary mathematics for eight open Erdős problems, including unconditional irrationality theorems for structured Mersenne supports, exact conditional endpoint reductions, arithmetic classifications, and method barriers; none of the eight open problems is claimed solved."
+  description: "Lean 4 formalization of subsidiary mathematics for eight Erdős problems (seven open; #1041 answered in the negative by ani and formalised here), including unconditional irrationality theorems for structured Mersenne supports, exact conditional endpoint reductions, arithmetic classifications, and method barriers; none of the eight open problems is claimed solved."
   authors:
     - "Will Cook"
   license: "Apache-2.0"
@@ -1625,7 +1625,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae"
+  problem_index_digest: "sha256:24bf998918231e5ab9365f143b2f2348ef0bea5c8e3ec34c6712d7ace1bf6e35"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1666,9 +1666,9 @@ external_verification:
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
     - id: "erdos_1041"
       erdos_number: 1041
-      status: "open"
-      checked_frontier: "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w."
-      open_frontier: "Erdos Problem 1041 in unrestricted degree."
+      status: "negative_answer_external_lean_formalised"
+      checked_frontier: "The concrete degree-seven polynomial f (ani's family at s = 10^-6, exact Gaussian-rational coefficients, rho = 1 - 10^-96) is monic with seven distinct zeros of modulus rho < 1, and every continuous path in {|f| < 1} joining two distinct zeros has total variation greater than two (Counterexample.Assembly.erdos1041_counterexample; axioms propext, Classical.choice, Quot.sound)."
+      open_frontier: "The asymptotic form of ani's theorem (for all sufficiently small s); only the instance s = 10^-6 is formalised."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
       research_frontier:
         directory: "research_corpus/Erdos1041"
@@ -1679,10 +1679,10 @@ external_verification:
         manifest: "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
         checkpoint: "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
         content_digests:
-          frontier: "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
+          frontier: "sha256:732d7cfb912482d1a9d1d6a1fbf2d675b913267848942c271e35d5e0b314ee9e"
           strongest_results: "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
-          manifest: "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3"
-          checkpoint: "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef"
+          manifest: "sha256:4ec19947fdf2d01f96baa11a814b7084f588ce402828a02bd35c3a5b9f53ee55"
+          checkpoint: "sha256:58a7cefec61e0fd117f58957f841418857ae6a5525f2bf8379a2566f96c2070d"
         activated_result_count: 45
         source_checkpoint: "867638684907b4ebd4ab2ef7b5de22dafda71e36"
         source_subtree_tree: "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d"

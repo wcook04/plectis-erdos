@@ -286,6 +286,13 @@ def snapshot_lines(
         return cache[key]
     completed = git_run("show", f"{commit}:{relative}")
     if completed.returncode != 0:
+        # A note pins a library identity path (``ErdosProblems/X.lean``); a
+        # commit after the ``lean/`` layout move stores that file at its storage
+        # path.  Resolve the same identity there before declaring it absent.
+        storage = library_storage_path(relative)
+        if storage != relative:
+            completed = git_run("show", f"{commit}:{storage}")
+    if completed.returncode != 0:
         cache[key] = []
     else:
         cache[key] = completed.stdout.splitlines()
@@ -312,7 +319,8 @@ def snapshot_lines_batch(
     )
     if completed.returncode != 0:
         for key in missing:
-            cache[key] = []
+            cache.pop(key, None)
+            snapshot_lines(key[0], key[1], cache)
         return
 
     output = completed.stdout
@@ -325,7 +333,9 @@ def snapshot_lines_batch(
         header = output[position:header_end]
         position = header_end + 1
         if header.endswith(b" missing"):
-            cache[key] = []
+            # Retry through the identity-path fallback (nested ``lean/`` layout).
+            cache.pop(key, None)
+            snapshot_lines(key[0], key[1], cache)
             continue
         fields = header.rsplit(b" ", 2)
         if len(fields) != 3 or fields[1] != b"blob":

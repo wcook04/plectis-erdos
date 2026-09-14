@@ -21,7 +21,7 @@ def main() -> None:
     require("```" not in human, "HUMAN_ENTRY must not make readers begin with commands")
     require("\n|" not in human, "HUMAN_ENTRY must remain prose rather than a table")
     require(human.count("\n\n") >= 10, "HUMAN_ENTRY has lost its prose structure")
-    for boundary in ("All eight problems remain open", "universal question", "peer review"):
+    for boundary in ("Seven of the eight problems remain open", "universal question", "peer review"):
         require(boundary in human, f"HUMAN_ENTRY lost claim boundary: {boundary}")
 
     readme = read("README.md")

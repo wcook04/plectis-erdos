@@ -1125,8 +1125,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1350,
-          "line_end": 1356,
+          "line_start": 1563,
+          "line_end": 1569,
           "expected_text": "\\bibitem{june2026}",
           "excerpt_sha256": "sha256:46dca09a9b0fb5809f8f4cc07439c501e151481a0c3304742947f4738235bebc"
         },
@@ -1249,8 +1249,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1346,
-          "line_end": 1350,
+          "line_start": 1559,
+          "line_end": 1563,
           "expected_text": "\\bibitem{march2026}",
           "excerpt_sha256": "sha256:372ad8d3f82ff0212ee04c7dd5a7269a56a5c9a52cae45f7d05245ccae260a87"
         },
@@ -2071,8 +2071,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1373,
-          "line_end": 1379,
+          "line_start": 1586,
+          "line_end": 1592,
           "expected_text": "\\bibitem{polya1928}",
           "excerpt_sha256": "sha256:2b141e0dfde916d0b14a217ccb8e68c841eb01c0d19ad4821cce29b2e13db886"
         },
@@ -4939,10 +4939,10 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1343,
-          "line_end": 1346,
+          "line_start": 1552,
+          "line_end": 1555,
           "expected_text": "\\bibitem{ehp1958}",
-          "excerpt_sha256": "sha256:8a48b0e4aa99b7179cba3135334544de4bd787d26455bdc69f074bafd1695803"
+          "excerpt_sha256": "sha256:92b848c43c95ba1eb29d13b2b61d64964093fcece3c1bee0ab65cc5317721eec"
         },
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
@@ -9588,8 +9588,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1356,
-          "line_end": 1363,
+          "line_start": 1569,
+          "line_end": 1576,
           "expected_text": "\\bibitem{pendyala2026shortest}",
           "excerpt_sha256": "sha256:006b7575e088c1f95193a347caec3ada8681c2e706f2dcd3c3febcde48d3e70d"
         }
@@ -9961,8 +9961,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1367,
-          "line_end": 1373,
+          "line_start": 1580,
+          "line_end": 1586,
           "expected_text": "\\bibitem{dubinin}",
           "excerpt_sha256": "sha256:a417f5753cf9d65bf35cd6a358cb659cef8be7de46f23b0cb3d8b627c402b0e3"
         },
@@ -11159,8 +11159,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1341,
-          "line_end": 1343,
+          "line_start": 1550,
+          "line_end": 1552,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed"
         },
@@ -12910,7 +12910,7 @@
           "path": "formalization.yaml",
           "line_start": 1,
           "line_end": 63,
-          "excerpt_sha256": "sha256:d643f118cca23cffbd77bbec684ab75b67a5db05e6c4dd712cab3d2de6395b22"
+          "excerpt_sha256": "sha256:841e7efd531f3e1d1d075e2f721755c4d0369157fdbfdd5c15e7f6e139baf181"
         },
         {
           "path": "verification/comparator.json",
@@ -12928,7 +12928,7 @@
           "path": "docs/EXTERNAL_VERIFICATION.md",
           "line_start": 4,
           "line_end": 14,
-          "excerpt_sha256": "sha256:68faf6651842e8f310a3abb90b6ae3fa71028e22c17f50e16fa88b707adb2c73"
+          "excerpt_sha256": "sha256:7d1e8b5723e652a7d4593306cdef5c2affe1f533977facdbc91bbdd0326b29dc"
         }
       ],
       "relation": "Implemented advice to classify each selected result, expose exact statements, proof provenance, novelty status, sorry count, axiom budget, and boundaries in formalization.yaml, and to provide a cheap Comparator inspection route with an altered-statement rejection fixture. The current public surface has evolved beyond the original interface count; the durable implementation is the manifest-plus-Comparator pattern and its explicit scope ceiling."
@@ -13034,8 +13034,8 @@
         },
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 298,
-          "line_end": 302,
+          "line_start": 305,
+          "line_end": 309,
           "excerpt_sha256": "sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e"
         },
         {
@@ -13052,6 +13052,53 @@
         }
       ],
       "relation": "Implemented a received pointer by comparing the cited q-Apéry construction with the #1049 rational-base programme. The public source closure verifies that the paper targets the same Lambert value, identifies the q-WZ operator and the integer-base denominator-clearing boundary, and credits both published authors in the ordinary literature row. The local Lean module separately proves that Van Assche’s different moving diagonal has a nonzero n=0 residual for the cited operator. This correspondence row credits only the private prior-art pointer; it does not claim the correspondent checked the comparison, calculations, Lean, or #1049 mathematics."
+    },
+    {
+      "id": "source-ani2026-erdos1041",
+      "kind": "website_contribution",
+      "title": "A short-path counterexample for polynomial lemniscates",
+      "authors": [
+        "ani"
+      ],
+      "publication_years": [
+        "2026"
+      ],
+      "urls": [
+        "https://www.erdosproblems.com/forum/thread/1041"
+      ],
+      "problems": [
+        "1041"
+      ],
+      "source_locators": [],
+      "artifact_links": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "line_start": 1555,
+          "line_end": 1559,
+          "expected_text": "\\bibitem{ani2026}",
+          "excerpt_sha256": "sha256:c0bd3c5e7de4f58b4bd5c2e6d025f1927ee5d7e6e2498c03edcc5b7d813f731b"
+        },
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "line_start": 149,
+          "line_end": 149,
+          "excerpt_sha256": "sha256:7adcea5e88d4527991846198faf0d5185535d879501c13bf824509c18aba33f7"
+        },
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "line_start": 1200,
+          "line_end": 1200,
+          "excerpt_sha256": "sha256:622f1b40a393eaa2624d28afe4014642f1066aeea7d38a76791fe06b5aaa53bd"
+        }
+      ],
+      "relation": "Degree-seven counterexample answering Erdős Problem #1041 in the negative, posted on the problem's discussion thread on 7 September 2026 under the handle ani. The #1041 note states the theorem with attribution, verifies every identity of the construction exactly, tests the length obstruction at 260 digits, and formalises the instance s = 10^-6 in Lean 4 under lean/ErdosProblems/Erdos1041/Counterexample/. The mathematics is ani's; the note claims the verification and the formalisation only. No independent expert review of the construction is asserted.",
+      "verification_state": "bibliography_only",
+      "bibliography_keys": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "key": "ani2026"
+        }
+      ]
     }
   ],
   "lean_reviews": [
@@ -24716,12 +24763,12 @@
     },
     {
       "path": "lean/ErdosProblems/Root.lean",
-      "line_start": 53,
-      "line_end": 53,
+      "line_start": 54,
+      "line_end": 54,
       "excerpt_sha256": "sha256:3cec22445b6cefde7d6de3f3b3057f9b335c3a522b29a7f3e3fc39f1adfd4845",
       "context": {
-        "line_start": 52,
-        "line_end": 58,
+        "line_start": 53,
+        "line_end": 59,
         "excerpt_sha256": "sha256:0555efe6703f99c9b92740d3be0898d83409c8f0ad464946794193731bb38e55"
       },
       "disposition": "not_bibliographic",

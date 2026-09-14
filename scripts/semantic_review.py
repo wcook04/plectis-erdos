@@ -536,12 +536,25 @@ def _atlas_signatures_at(revision: str) -> dict[tuple[str, str], tuple[str, str]
     ).stdout
     atlas = json.loads(raw)
     return {
-        (str(row.get("module")), str(row.get("name"))): (
+        (_identity_module(str(row.get("module"))), str(row.get("name"))): (
             str(row.get("kind")),
             str(row.get("signature")),
         )
         for row in atlas.get("declarations", [])
     }
+
+
+def _identity_module(module: str) -> str:
+    """Key atlas rows by library identity path across the ``lean/`` layout move.
+
+    The public proof sources moved under ``lean/`` after formal-source checkpoint
+    92b88dc1; an atlas written before that move spells a module as
+    ``Erdos249257/Foo.lean`` and one written after it as ``lean/Erdos249257/Foo.lean``.
+    Both name the same declaration, and ``check_release.py`` already compares the
+    checkpoint by this identity path. Without the same normalisation every cited
+    declaration looks changed across the move and no receipt can be re-issued.
+    """
+    return module[len("lean/"):] if module.startswith("lean/") else module
 
 
 def _cited_declarations(kind: str, subject: dict, nodes_by_id: dict) -> list[tuple[str, str]]:
@@ -554,7 +567,7 @@ def _cited_declarations(kind: str, subject: dict, nodes_by_id: dict) -> list[tup
             if str(subject.get(end)) in nodes_by_id
         ]
     cited = {
-        (str(evidence.get("module")), str(evidence.get("declaration")))
+        (_identity_module(str(evidence.get("module"))), str(evidence.get("declaration")))
         for node in sources
         for evidence in node.get("evidence", [])
         if evidence.get("declaration")
@@ -608,7 +621,7 @@ def rereview_moved_revision(
             (ROOT / "docs" / "declaration_atlas.json").read_text(encoding="utf-8")
         )
         new_signatures = {
-            (str(row.get("module")), str(row.get("name"))): (
+            (_identity_module(str(row.get("module"))), str(row.get("name"))): (
                 str(row.get("kind")),
                 str(row.get("signature")),
             )

@@ -4,6 +4,9 @@
 % Standalone Erdős Problem Note for #1041.  Context is deliberately repeated
 % from the sibling notes so that this file remains independently readable.
 %
+% The degree-seven counterexample is attributable to the erdosproblems.com
+% handle `ani` (forum thread 1041, 7 September 2026); the bibliography cites
+% that handle and the public thread.
 % The public March manuscript is attributable only to the erdosproblems.com
 % handle `shtuka`; the PDF contains no real-name author metadata.  The
 % bibliography therefore cites that handle and public URL conservatively.
@@ -12,12 +15,12 @@
 \documentclass[11pt]{article}
 \usepackage{longtable}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{969dddcedcdd87907821e2c3db66a7fa8072fde8}
+\renewcommand{\commitshort}{969dddcedcdd}
 \hypersetup{
   pdftitle={Sharp solved families and constant-factor paths in polynomial lemniscates for Erdős Problem 1041},
   pdfsubject={Erdős Problem Notes: Problem 1041},
-  pdfkeywords={lemniscate, critical values, Newton flow, free-point inequality, saddle connection, Lean 4},
+  pdfkeywords={lemniscate, critical values, Newton flow, free-point inequality, saddle connection, counterexample, Lean 4},
 }
 
 % Names absent from the pinned snapshot stay as compact unlinked labels.
@@ -29,14 +32,25 @@
 \subtitle{Root-to-origin segments, critical-value estimates and path
 containment for Erd\H{o}s Problem~\#1041}
 \author{Will Cook}
-\date{7 September 2026}
+\date{14 September 2026}
 
 \begin{document}
 \maketitle
 \noteprovenance
 
 \begin{abstract}
-Every monic trinomial $z^n+az^m+b$, $1\le m<n$, whose roots lie in the open
+Erd\H{o}s Problem~\#1041 has a negative answer.  A monic polynomial of degree
+seven with seven simple zeros of modulus $1-s^{16}$, posted by the
+erdosproblems.com contributor \texttt{ani} on 7~September 2026, has exactly one
+lemniscate component containing two zeros, and every path in that component
+joining them is longer than $2+\tfrac{\alpha}{2}s^2$ for all sufficiently small
+$s$.  This note verifies every identity of the construction exactly, tests
+the length obstruction at 260 digits, locates the working regime below
+$s\approx2\times10^{-5}$, and formalises one instance, $s=10^{-6}$, in Lean~4 as
+seven modules over a shared interface; the checked status of each module is
+stated in Section~\ref{sec:counterexample}.
+The positive results below describe the classes in which a short join does
+exist.  Every monic trinomial $z^n+az^m+b$, $1\le m<n$, whose roots lie in the open
 unit disc has every root-to-origin segment inside $\{|f|<1\}$; any two
 roots are joined through the origin with length less than $2$.
 The root equation reduces the radial image to a convex combination of two
@@ -54,8 +68,7 @@ $c_1,\ldots,c_{n-1}$ are its
 critical points counted with multiplicity, a Poisson identity gives the sharp
 mean $\sum_j|f(c_j)|^{2/(n-1)}\le(n-1)R^{2n/(n-1)}$; this mean alone does not
 control a connector.  Exact counterexamples isolate the geometric information
-these estimates leave undetermined.  These results do not settle the
-unrestricted problem.
+these estimates leave undetermined.
 \end{abstract}
 
 \section{Monic trinomials, in every degree}
@@ -133,10 +146,12 @@ Repeated roots give a constant path between two listed occurrences, so the
 geometric question concerns squarefree polynomials.  The original question
 is Problem~5 of Erd\H{o}s--Herzog--Piranian \cite[p.~139]{ehp1958}.
 Pendyala \cite[Thm.~1]{june2026} proves the complete degree-four case.
-A separate degree-seven counterexample has been announced on the
-\href{https://www.erdosproblems.com/1041}{problem's discussion page}.
-That external claim is not assessed in this note; the results below
-concern the stated polynomial families and sufficient conditions.
+The degree-seven counterexample of \texttt{ani} \cite{ani2026}, posted on the
+\href{https://www.erdosproblems.com/forum/thread/1041}{problem's discussion thread},
+answers the question in the negative; Section~\ref{sec:counterexample}
+verifies and formalises it.  The results between here and there concern
+the polynomial families and sufficient conditions under which a short join
+does exist.
 
 Theorem~\ref{res:low-critical-thirteen-twentyfifths} treats arbitrary geometry
 when $\mu\le13/25$, without a root-location assumption.  Its scaling
@@ -1178,6 +1193,194 @@ two-young-root selector are retained in
 They still require a geometric compatibility estimate before they produce a
 contained connector.
 
+\section{The degree-seven counterexample}\label{sec:counterexample}
+
+The answer to Problem~\ref{res:problem} is negative.  The construction is due
+to the erdosproblems.com contributor \texttt{ani}, posted on the problem's
+discussion thread on 7~September 2026 \cite{ani2026}.  This section states the
+result, records the mechanism in the vocabulary of this note, reports an exact
+independent verification, and describes the Lean formalisation.
+
+\subsection{The family and the theorem}
+
+Fix $t=417/40$ and
+\[
+ A=-5+12t-3t^2,\qquad B=-4+4t+6t^2,\qquad C=t(-8+15t-2t^2).
+\]
+For $0<s<1$ put $\varepsilon=s^2$, $\rho=1-s^{16}$,
+$a_s=A-is$, $b_s=iB+\tfrac95 s$, $c_s=-C-\tfrac{162}{25}is$, and
+\begin{align*}
+ F_s(z)&=z^7-1+\varepsilon^4(a_sz^3-\overline{a_s}z^4)
+ +\varepsilon^5(b_sz^2-\overline{b_s}z^5)
+ +\varepsilon^6(c_sz-\overline{c_s}z^6),\\
+ f_s(z)&=\rho^7F_s(z/\rho).
+\end{align*}
+The bars conjugate coefficients.  $F_s$ satisfies
+$F_s(z)=-z^7\,\overline{F_s(1/\bar z)}$, so its seven simple zeros lie on the
+unit circle, and $f_s$ moves them to modulus $\rho<1$.
+
+\begin{theorem}[\texttt{ani}, 2026]\label{res:ani-counterexample}
+There exist $s_*>0$ and $\alpha>0$ such that for $0<s<s_*$ the polynomial
+$f_s$ is monic of degree seven with seven simple zeros of modulus $\rho<1$,
+and every path in $\{|f_s|<1\}$ joining two distinct zeros has length greater
+than $2+\tfrac{\alpha}{2}s^2$.
+\end{theorem}
+
+Exactly one component of the lemniscate contains two zeros.  The theorem is
+therefore a metric obstruction: the pair is joined, and every join is too
+long.
+
+\subsection{The mechanism}
+
+Write $z=\rho\varepsilon w$.  The lemniscate condition near the origin is
+governed by
+\[
+ H_s(w)=\operatorname{Re}P(w)+s\operatorname{Re}G(w)+O(s^2),\qquad
+ P(w)=w^7+Aw^3+iBw^2-Cw,\qquad
+ G(w)=-iw^3+\tfrac95w^2-\tfrac{162}{25}iw .
+\]
+All six critical values of $P$ are purely imaginary, so at $s=0$ every saddle
+of $\operatorname{Re}P$ sits on the zero level and every one of the seven
+sectors at infinity is pinched off from its neighbours.  The first-order
+term selects which pinch opens: $\operatorname{Re}G$ is positive at exactly one
+critical point $q=iy_2$ with $y_2\in(4/5,5/6)$ and negative at the other five.
+Two explicit rays from $q$, in the directions $-2+i$ and $1-i$, stay in
+$\{\operatorname{Re}P>0\}$ and reach the sectors of $e^{6\pi i/7}$ and
+$e^{-2\pi i/7}$.  Hence the component through $q$ joins the zeros near
+$\rho e^{6\pi i/7}$ and $\rho e^{-2\pi i/7}$ and no others.
+
+The metric step is a bottleneck lemma for a degree-two lemniscate component
+$U$ with critical point $c$ and critical value $v$, $0<|v|<1$.  Removing the
+preimage of the radial slit from $v$ to the unit circle leaves a trivial
+two-sheeted cover of a slit disc, so every path between the two zeros meets
+the slit preimage, and an inverse quadratic coordinate confines that entire
+preimage to the disc $|z-c|<\tfrac43\sqrt{\delta/|a|}$ with $\delta=1-|v|$
+and $a$ the quadratic coefficient at $c$.  Any join therefore has length at
+least $|b_1-c|+|b_2-c|-\tfrac83\sqrt{\delta/|a|}$.  In the family the
+bottleneck sits at $c\approx\varepsilon q$, the gain
+$|b_1-c|+|b_2-c|-2\approx\alpha\varepsilon$ is of order $s^2$ with
+$\alpha=y_2(\sin\tfrac{2\pi}{7}-\sin\tfrac{\pi}{7})>0$, the bottleneck loss is
+of order $s^{5/2}$, and the contraction by $\rho$ costs $s^{16}$.
+
+This is the attachment cost that Section~\ref{sec:gap} identified as the
+missing term in the printed spanning-tree budget.  The saddle at
+$\varepsilon q$ is where the two root sectors attach, and the displacement of
+that saddle away from the chord between the two roots is exactly what makes
+the join longer than the sum of the two radii.
+
+\subsection{Exact verification}
+
+Every algebraic claim in the construction is an identity over $\mathbb Q$ or
+a sign of a rational number.  All of them hold exactly: the factorisations
+$S'(y)=7(y^2+y+t)T(y)$ and
+$S(y)+t^2(6t-4)=(y^2+y+t)^2[y^3-2y^2+(3-2t)y+6t-4]$ that place the six
+critical values on the imaginary axis; the sign table of $T$ and the four
+root brackets; $\operatorname{Re}G(iy)=-y(y+\tfrac{18}5)(y-\tfrac95)$ and
+$\operatorname{Re}G=-41/80$ at the two off-axis critical points; the ray
+polynomials $R_3$, $R_6$ positive on $[0,\infty)$; $d_3^7=278-29i$,
+$d_6^7=8+8i$; and $\alpha\approx0.28645$.
+
+The geometric conclusion was also tested directly at 260 significant digits.
+For $s\le10^{-5}$ exactly one critical point of $f_s$ lies inside the
+lemniscate, and the minimum of $|b_3-z|+|b_6-z|$ over the slit preimage inside
+the degree-two component tracks $2+\alpha s^2$:
+
+\begin{center}
+\begin{tabular}{lll}
+$s$ & lower bound $-\,2$ & $\alpha s^2$\\\hline
+$10^{-5}$ & $2.8626\times10^{-11}$ & $2.8645\times10^{-11}$\\
+$3\times10^{-6}$ & $2.5771\times10^{-12}$ & $2.5780\times10^{-12}$\\
+$10^{-6}$ & $2.8639\times10^{-13}$ & $2.8645\times10^{-13}$
+\end{tabular}
+\end{center}
+
+Two remarks are due to a reader who checks the paper numerically.  The
+regime is small.  The term written $O(s^2)$ in the expansion of $H_s$ at a
+critical point contains $s^2\operatorname{Re}(-\overline{a_s}w^4)$ with
+$|A|\approx206$ and $|w|^4\approx100$ at the outer critical points, a
+coefficient near $2\times10^4$, and it dominates the first-order term unless
+$s\lesssim2\times10^{-5}$.  At $s=0.1$ all six critical points lie inside the
+lemniscate and the picture is wrong; the theorem is correct with an
+unstated $s_*$ below $2\times10^{-5}$.  The display for $F_s(v\zeta_j)$ in the
+root-connection step drops a factor $\zeta_j^7$ on its first term; the
+modulus bound actually used is unaffected.
+
+\subsection{Formalisation}
+
+The formal object is one polynomial, $f=f_s$ at $s=10^{-6}$, with every
+coefficient an exact Gaussian rational, $\rho=1-10^{-96}$ and
+$\varepsilon=10^{-12}$.  Fixing $s$ removes every implicit-function
+continuation and every uniform compact-set estimate from the proof; each
+inequality becomes an explicit rational inequality.  The target statement in
+\texttt{ErdosProblems.Erdos1041.Counterexample.Defs} is
+\begin{quote}\small
+$f$ is monic of degree seven, its roots are distinct and of modulus below
+one, and for every continuous $\gamma:[0,1]\to\mathbb C$ with values in
+$\{|f|<1\}$ joining two distinct roots, the total variation of $\gamma$
+exceeds~$2$ (in $[0,\infty]$, so non-rectifiable paths count as infinite).
+\end{quote}
+The proof is split into seven modules.  \texttt{Algebra} holds the exact
+identities and rational inequalities of the model configuration.
+\texttt{Components} proves that a lemniscate component containing two
+distinct zeros contains a critical point, by showing that a proper local
+homeomorphism onto the disc is a covering map and that a covering of the disc
+by a connected space is injective.  \texttt{Bottleneck} proves the bottleneck
+lemma for an arbitrary polynomial.  \texttt{InstanceCritical} localises the
+seven roots and six critical points of $f$ with Kantorovich-type contraction
+certificates, shows five critical values have modulus above one and one has
+modulus below one, and supplies the disc-criterion constants at that point in
+the physical coordinate, where the comparison coefficient carries
+$\rho^5\varepsilon^5$ (the scaled coefficient carries $\rho^7\varepsilon^7$).
+\texttt{InstanceConnectivity} joins that critical point to the two roots
+through explicit polylines, each segment certified by a degree-fourteen
+Bernstein identity with positive coefficients.  \texttt{InstanceBarriers}
+supplies two continuous piecewise-affine functions whose zero sets lie in
+$\{|f|\ge1\}$, negative at the critical point and positive on discs around
+the other five roots, so that the intermediate value theorem excludes those
+roots from its component.  \texttt{Assembly} composes the modules and closes
+the arithmetic: the gain $\rho(2+\tfrac{143}{1000}\varepsilon)$ against a
+bottleneck loss below $\tfrac83\rho\varepsilon/5000$, an excess over two of
+$2137/(15000\cdot10^{12})$ minus the $10^{-96}$ contraction.
+
+The barrier module replaces the second half of the paper's component lemma.
+That lemma states that a component with one simple critical point has degree
+two; as printed it fails for $z^2$ at the origin, and its repaired form needs
+a Riemann--Hurwitz count that Mathlib does not yet supply.  The barriers make
+the same fact a finite computation for the one polynomial at hand.
+
+All seven modules compile on Lean~4.29.1 with Mathlib~v4.29.1, and
+\texttt{\#print axioms} for the target theorem
+\lref{Erdos1041/Counterexample/Assembly.lean}{319}{erdos1041_counterexample} reports exactly
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}: no
+\texttt{sorry}, no \texttt{native\_decide}, no floating point.  The whole
+development is under ten thousand lines; the instance-critical module carries
+the six Kantorovich localisations and disc-sign certificates as generated
+Lean text.  Two points of the paper needed adjustment in the formal
+statements.  The bound $\alpha\ge143/500$ holds at the root $y_2$ of $T$ and
+fails on the bare bracket $(4/5,5/6)$ (at $y=81/100$ the value is below
+$143/500$), so the formal statement carries the root hypothesis.  The
+Rouch\'e and argument-principle steps are replaced by a covering-map
+construction (a proper local homeomorphism onto the disc is a covering map)
+and by a ball-in-image lemma from the open mapping theorem and compactness,
+since Mathlib carries neither classical theorem.
+
+\subsection{What the resolution changes}
+
+The trinomial theorem, the $13/25$ and $71/10$ estimates, the disc-family
+theorem and the solved families of this note describe classes in which a
+join shorter than two exists.  The counterexample shows that no such class
+exhausts degree seven, and the selection problem of
+Section~\ref{sec:open} becomes the question of which polynomials admit a
+short join.  The lower-semicontinuity reduction
+to a dense generic class is unaffected as a statement about the closed
+class; its conclusion $\Lambda\le2$ now fails on $\mathcal K_7$.  Pendyala's
+degree-four theorem \cite[Thm.~1]{june2026} stands, and the remaining
+positive question is the exact set of degrees in which the answer is yes.
+
+No independent expert review of the construction is claimed here.  The
+verification above is exact symbolic and high-precision numerical checking
+plus the Lean modules named, with their checked status stated.
+
 \section{The remaining geometric selection problem}\label{sec:open}
 
 Let $\mathcal K_n$ be the compact coefficient class of monic degree-$n$
@@ -1284,7 +1487,10 @@ Fixed-degree lower semicontinuity reduces the closed class to a dense generic
 metric bound.  The admissible canonical-arc length estimate remains open.
 Raster searches supply candidate paths for finite samples; their meaning is
 separate from the exact rational certificates used in proved inequalities.
-No independent human review or resolution of the general problem is claimed.
+The degree-seven counterexample of Section~\ref{sec:counterexample} is external
+mathematics verified here by exact symbolic checks, high-precision numerics and
+the Lean modules named there, each with its checked status stated.
+No independent human review of that construction is claimed.
 
 \subsection*{Sources and adjacent results}\label{sec:1041-sources}
 
@@ -1307,13 +1513,16 @@ priority claim is inferred from this comparison.
 \appendix
 \section{Guide to the formal sources}\label{app:sources}
 
-The public \texttt{ErdosProblems.Erdos1041.NewtonFlowRaySeparation} module
-contains the checked source for this note.  The search of \S\ref{sec:finite} is
+The public \texttt{ErdosProblems.Erdos1041.Counterexample} modules contain the
+checked counterexample; \texttt{ErdosProblems.Erdos1041.NewtonFlowRaySeparation}
+contains the checked source for the Newton-flow results of this note.  The search of \S\ref{sec:finite} is
 \texttt{scripts/search\_counterexample.py} in the source package.  The
 declaration table below is pinned to the shared formal-source commit used
 throughout this problem-note series.
 
 \begin{itemize}[leftmargin=*]
+\item \lref{Erdos1041/Counterexample/Assembly.lean}{319}{erdos1041_counterexample}
+\item \lref{Erdos1041/Counterexample/Assembly.lean}{111}{erdos1041_counterexample_of_slices}
 \item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{34}{newtonFlowVector}
 \item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{38}{derivative_mul_newtonFlowVector}
 \item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}
@@ -1343,6 +1552,10 @@ throughout this problem-note series.
 \bibitem{ehp1958} P.~Erd\H{o}s, F.~Herzog, and G.~Piranian,
   \emph{Metric properties of polynomials}, J. Analyse Math. \textbf{6}
   (1958), 125--148. \url{https://doi.org/10.1007/BF02790232}
+\bibitem{ani2026} \texttt{ani},
+  \emph{A short-path counterexample for polynomial lemniscates},
+  erdosproblems.com forum thread 1041, posted 7 September 2026 (AMS-article revision).
+  \url{https://www.erdosproblems.com/forum/thread/1041}
 \bibitem{march2026} \texttt{shtuka},
   \emph{A Short Path Joining Two Zeros Inside a Polynomial Lemniscate},
   manuscript posted 24 March 2026, 48~pp.

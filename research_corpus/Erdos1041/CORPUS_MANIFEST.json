@@ -6,7 +6,7 @@
   "source_prefix": "source-provenance://Erdos1041",
   "public_prefix": "research_corpus/Erdos1041",
   "file_count": 839,
-  "total_bytes": 7149012,
+  "total_bytes": 7151588,
   "local_path_replacement_count": 1328,
   "strongest_result_map": {
     "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
@@ -908,11 +908,11 @@
     {
       "source_path": "source-provenance://Erdos1041/FRONTIER.md",
       "public_path": "research_corpus/Erdos1041/FRONTIER.md",
-      "source_sha256": "d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
-      "published_sha256": "d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
+      "source_sha256": "732d7cfb912482d1a9d1d6a1fbf2d675b913267848942c271e35d5e0b314ee9e",
+      "published_sha256": "732d7cfb912482d1a9d1d6a1fbf2d675b913267848942c271e35d5e0b314ee9e",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 31449
+      "bytes": 34025
     },
     {
       "source_path": "source-provenance://Erdos1041/FirstCriticalPairEnergyNoGo20260827.md",

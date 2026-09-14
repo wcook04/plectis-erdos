@@ -30,7 +30,7 @@ front door in ordinary language; agent surfaces may remain command-heavy.
 
 A blank-slate agent must receive the complete problem fleet here; it must not
 already know a query command or infer the fleet from directory names.
-**All eight indexed problems remain open.**
+**Seven of the eight indexed problems remain open.**
 
 Each entry states the mathematical target, then the checked frontier and live
 obstruction, then the standalone paper.
@@ -114,7 +114,7 @@ reduction is given; the source-specific cofinal escape remains unproved. Paper:
 **#1041 — Must two roots of a monic polynomial in the unit disc admit a curve of
 length less than `2` inside its open unit lemniscate?**
 
-The paper proves trinomial radial containment with ordinary path assembly.
+Answered by ani; Lean checks `Counterexample.Assembly.erdos1041_counterexample`.
 Lean checks the complete all-degree critical-value mean, supported by
 [source-bound audit evidence](../../verification/erdos1041-returned-r18-v5-full-audit-evidence.json),
 and local Newton derivatives, ray-separation consumers, translation geometry

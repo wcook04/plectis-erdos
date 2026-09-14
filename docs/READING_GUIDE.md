@@ -3,12 +3,12 @@
 
 # A reader's way in
 
-This repository follows eight unsolved problems of Paul Erdős. For each one it
+This repository follows eight Erdős problems. For each one it
 holds a short paper, a longer research record, Lean proofs of selected
 statements, finite computations, and a written account of the approaches that
 stopped and why. You do not need Lean to read the papers.
 
-All eight problems remain open. The work proves intermediate theorems, writes
+Seven of the eight problems remain open. The work proves intermediate theorems, writes
 out proofs of results that were stated but not printed in the literature,
 checks exact finite cases, and records obstructions to tempting shortcuts.
 None of it becomes a solution because a proof assistant accepted it or because

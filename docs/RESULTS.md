@@ -4,7 +4,7 @@
 # Results and limits
 
 This repository formalises finite results, reductions, equivalences, and
-obstructions related to eight open Erdős problems —
+obstructions related to eight Erdős problems, seven of them open —
 [#68](https://www.erdosproblems.com/68),
 [#243](https://www.erdosproblems.com/243),
 [#249](https://www.erdosproblems.com/249),
@@ -203,7 +203,17 @@ claim registry, that escape statement is equivalent to irrationality. This is
 an exact interface, not an easier theorem whose premise has been proved. The
 source-specific escape and three-prime irrationality remain open.
 
-**[#1041](https://www.erdosproblems.com/1041).** A source-backed
+**[#1041](https://www.erdosproblems.com/1041).** The problem has a negative
+answer. ani's degree-seven counterexample (erdosproblems.com thread 1041, 7 September
+2026) is formalised in
+[`Counterexample/Assembly.lean`](../lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean):
+the theorem `erdos1041_counterexample` states that the concrete monic degree-seven
+polynomial with seven distinct zeros inside the unit disc has every path in
+`{|f|<1}` between distinct zeros of length greater than two, and `#print axioms`
+reports only the three standard axioms. The
+[note](papers/full-text/erdos-1041-lemniscate-newton-flow.md) verifies the
+construction and records the two statement adjustments. The mathematics is ani's.
+The positive results that follow describe classes with a short join. A source-backed
 [ordinary theorem](../research_corpus/Erdos1041/ConcyclicAlternation.md) covers
 monic degree-`n` polynomials, `n≥3`, whose distinct zeros lie on a circle of
 radius `ρ` and satisfy `2ρ^n≤1`: two adjacent zeros have chord length at most
@@ -264,7 +274,7 @@ operational procedures live in the [agent workbench](agents/AGENT_WORKBENCH.md).
 
 ## Technical verdict
 
-All eight Erdős problems remain open. The development is neither a partial
+Seven of the eight Erdős problems remain open; #1041 has a negative answer (ani, 7 September 2026), verified and formalised here. The development is neither a partial
 solution nor an empty collection of restatements. For a first mathematical
 pass, the high-signal spine is:
 
