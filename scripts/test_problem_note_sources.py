@@ -258,6 +258,45 @@ def test_git_snapshot_batch_uses_one_clean_bounded_process() -> None:
     )
 
 
+def test_pinned_snapshot_spelling_follows_the_commit_layout() -> None:
+    """A note may pin a post-nesting commit and keep citing module-identity paths.
+
+    Found 2026-09-14: the #257 note pinned e060dcf7 (nested ``lean/`` layout)
+    and every one of its 150 links reported "absent from the pinned snapshot",
+    because the snapshot spelling was taken from the historical root layout
+    regardless of the pinned commit. The spelling must follow the snapshot.
+    """
+    head = scanner.git_run("rev-parse", "HEAD").stdout.strip()
+    layouts: dict[str, bool] = {}
+    link = "Erdos249257/CertificateKernel.lean"
+    nested = scanner.storage_relative_at(head, link, layouts)
+    require(
+        nested == "lean/Erdos249257/CertificateKernel.lean",
+        f"nested checkout HEAD did not map the link under lean/: {nested}",
+    )
+    require(
+        scanner.snapshot_lines(head, nested, {}),
+        "module-identity link did not resolve inside the nested pinned snapshot",
+    )
+    historical = "99f4bf47422abbd8757cbb22b50ba079d764d3a7"
+    if scanner.git_run("cat-file", "-e", f"{historical}^{{commit}}").returncode == 0:
+        root = scanner.storage_relative_at(historical, link, layouts)
+        require(root == link, f"historical root pin was rewritten under lean/: {root}")
+        require(
+            scanner.snapshot_lines(historical, root, {}),
+            "module-identity link did not resolve inside the historical root snapshot",
+        )
+    require(len(layouts) >= 1, "layout probe was not cached per commit")
+
+
+def test_nested_pin_requires_lean_source_prefix() -> None:
+    nested_ok = "\\renewcommand{\\sourceprefix}{lean/}\n\\mword{Erdos249257/X.lean}{1}{d}{w}"
+    require(scanner.source_prefix_failure("n.tex", nested_ok, True) is None, "nested pin with lean/ prefix was rejected")
+    require(scanner.source_prefix_failure("n.tex", "\\mword{Erdos249257/X.lean}{1}{d}{w}", True) is not None, "nested pin without lean/ prefix was accepted; its links would 404")
+    require(scanner.source_prefix_failure("r.tex", "\\mword{Erdos249257/X.lean}{1}{d}{w}", False) is None, "root pin without prefix was rejected")
+    require(scanner.source_prefix_failure("r.tex", nested_ok, False) is not None, "root pin with lean/ prefix was accepted; its links would 404")
+
+
 def main() -> int:
     test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()
@@ -270,6 +309,8 @@ def main() -> int:
     test_commit_override_without_matching_short_is_rejected()
     test_git_snapshot_reads_use_clean_bounded_environment()
     test_git_snapshot_batch_uses_one_clean_bounded_process()
+    test_pinned_snapshot_spelling_follows_the_commit_layout()
+    test_nested_pin_requires_lean_source_prefix()
     print(
         "test_problem_note_sources: comment injection, split heads, module "
         "collisions, required anchors, invalid floors, and mismatched source "
