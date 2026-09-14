@@ -7075,12 +7075,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:6e4169fdfa69b8a93aea4645cd067364582c030c5d819aefde307694e0011273",
+      "source_sha256": "sha256:a0c37ba2de1fa41c549d0563e96105c0cd2a391d8d61502b047f257a3cc59bda",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/claim-faithful-publication-systems-paper.tex",
-      "section_count": 46,
+      "section_count": 47,
       "sections": [
         {
           "level": 1,
@@ -7312,57 +7312,63 @@
         },
         {
           "level": 4,
+          "id": "open-formalisation-platforms.",
+          "title": "Open formalisation platforms.",
+          "line": 535
+        },
+        {
+          "level": 4,
           "id": "graphs-and-checked-exposition.",
           "title": "Graphs and checked exposition.",
-          "line": 535
+          "line": 541
         },
         {
           "level": 4,
           "id": "auditable-scientific-agents.",
           "title": "Auditable scientific agents.",
-          "line": 545
+          "line": 551
         },
         {
           "level": 4,
           "id": "contribution-and-limits.",
           "title": "Contribution and limits.",
-          "line": 553
+          "line": 559
         },
         {
           "level": 4,
           "id": "scaling-beyond-this-corpus.",
           "title": "Scaling beyond this corpus.",
-          "line": 559
+          "line": 565
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 565
+          "line": 571
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 577
+          "line": 583
         },
         {
           "level": 4,
           "id": "public-first-contact.",
           "title": "Public first contact.",
-          "line": 581
+          "line": 587
         },
         {
           "level": 4,
           "id": "dated-navigation-counts.",
           "title": "Dated navigation counts.",
-          "line": 592
+          "line": 598
         }
       ],
-      "citations_rendered": 17,
+      "citations_rendered": 19,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:78aa190d7bbc136eca3d811bfd3aca22d1a005bebba791c82c607763f57e0667",
-      "pdf_byte_count": 144474,
+      "pdf_sha256": "sha256:ce82ba93a27510b3ba2cd56c1c9982cc8275aeced3c5923e029299cc7b67c044",
+      "pdf_byte_count": 147181,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7635,12 +7641,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:d56fb09515aee3e47e343bf91e78792b5f7a5334c480350565367eb7e003ba92",
+      "source_sha256": "sha256:695672fa251f0a6ee75fe1f5c74e63a577bd68a7ed5310dab9d7fcddd304f585",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/open-source-mathematics-strategy.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/systems/open-source-mathematics-strategy.tex",
-      "section_count": 29,
+      "section_count": 30,
       "sections": [
         {
           "level": 1,
@@ -7746,81 +7752,87 @@
         },
         {
           "level": 4,
+          "id": "open-agent-platforms.",
+          "title": "Open agent platforms.",
+          "line": 324
+        },
+        {
+          "level": 4,
           "id": "proof-abundance.",
           "title": "Proof abundance.",
-          "line": 324
+          "line": 332
         },
         {
           "level": 1,
           "id": "sec:add-problem",
           "title": "Adding another problem world",
-          "line": 332
+          "line": 340
         },
         {
           "level": 1,
           "id": "sec:growth",
           "title": "Participation and growth",
-          "line": 350
+          "line": 358
         },
         {
           "level": 1,
           "id": "sec:evaluation",
           "title": "Evaluation",
-          "line": 372
+          "line": 380
         },
         {
           "level": 1,
           "id": "sec:learning",
           "title": "Learning from every run",
-          "line": 406
+          "line": 414
         },
         {
           "level": 2,
           "id": "sec:local-to-general",
           "title": "The local-to-general track",
-          "line": 448
+          "line": 456
         },
         {
           "level": 1,
           "id": "sec:science",
           "title": "A bounded transfer hypothesis beyond mathematics",
-          "line": 483
+          "line": 491
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and governance",
-          "line": 493
+          "line": 501
         },
         {
           "level": 1,
           "id": "sec:execution",
           "title": "Execution order",
-          "line": 517
+          "line": 525
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 539
+          "line": 547
         },
         {
           "level": 1,
           "id": "app:routes",
           "title": "Public entry routes",
-          "line": 549
+          "line": 557
         },
         {
           "level": 1,
           "id": "declaration-of-generative-ai-use",
           "title": "Declaration of generative AI use",
-          "line": 583
+          "line": 591
         }
       ],
-      "citations_rendered": 22,
+      "citations_rendered": 25,
       "local_pdf": "paper/systems/open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:517a63f722b9ff766901dad2329315bc7e01981ff1fe9e7ccb5fe7f6b8da9af1",
-      "pdf_byte_count": 133270,
+      "pdf_sha256": "sha256:de91214c2069d151ab5940af76b6777e866bd98e35da5bfcd86ab04e07cb518b",
+      "pdf_byte_count": 135952,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7843,12 +7855,12 @@
           {
             "id": "sec:local-to-general",
             "title": "The local-to-general track",
-            "line": 448
+            "line": 456
           },
           {
             "id": "sec:limits",
             "title": "Limits and governance",
-            "line": 493
+            "line": 501
           }
         ],
         "unresolved_count": 0
@@ -7876,11 +7888,11 @@
         "year": "2026",
         "title": "Plectis: What a Stranger Can Check",
         "repository": "plectis",
-        "canonical_source_commit": "9834bfc27fc0c5bd650ef72eea14fa4e33f37093",
-        "canonical_source_url": "https://github.com/wcook04/plectis/blob/9834bfc27fc0c5bd650ef72eea14fa4e33f37093/paper/plectis-public-system.tex",
+        "canonical_source_commit": "70b1dedbc294a22cb1924727b06e406fd32c8bc5",
+        "canonical_source_url": "https://github.com/wcook04/plectis/blob/70b1dedbc294a22cb1924727b06e406fd32c8bc5/paper/plectis-public-system.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Plectis: What a Stranger Can Check. plectis, commit 9834bfc27fc0c5bd650ef72eea14fa4e33f37093. CC-BY-4.0. https://github.com/wcook04/plectis/blob/9834bfc27fc0c5bd650ef72eea14fa4e33f37093/paper/plectis-public-system.tex",
+        "text": "Will Cook (2026). Plectis: What a Stranger Can Check. plectis, commit 70b1dedbc294a22cb1924727b06e406fd32c8bc5. CC-BY-4.0. https://github.com/wcook04/plectis/blob/70b1dedbc294a22cb1924727b06e406fd32c8bc5/paper/plectis-public-system.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7892,10 +7904,10 @@
       "local_full_text": "docs/papers/full-text/plectis-public-system.md",
       "local_source": "docs/papers/mirror/plectis-public-system.tex",
       "source_sha256": "sha256:3a8a7dc855c974a161ada83ecc836cb512a08bfa1522eada95ab2c7ba72348ac",
-      "canonical_source_commit": "9834bfc27fc0c5bd650ef72eea14fa4e33f37093",
+      "canonical_source_commit": "70b1dedbc294a22cb1924727b06e406fd32c8bc5",
       "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis/blob/9834bfc27fc0c5bd650ef72eea14fa4e33f37093/paper/plectis-public-system.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis/9834bfc27fc0c5bd650ef72eea14fa4e33f37093/paper/plectis-public-system.tex",
+      "canonical_source_url": "https://github.com/wcook04/plectis/blob/70b1dedbc294a22cb1924727b06e406fd32c8bc5/paper/plectis-public-system.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis/70b1dedbc294a22cb1924727b06e406fd32c8bc5/paper/plectis-public-system.tex",
       "section_count": 31,
       "sections": [
         {
