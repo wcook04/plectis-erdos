@@ -40,6 +40,21 @@ and the final proofs and references.
   mass, density, averaged-tail, and spacing hypotheses, concluding that
   `Σ(a(n)+b(n))/q^n` does not lie in `Q(q)`. Its proof is Section 2, PDF
   pp. 6–11, via norm estimates and tail windows.
+- **Averaged-tail mechanism:** PDF p. 3, equation (1.7), defines
+  `R_c(q,x,z) = Σ_{n<x} Σ_{j≥z} |c(n+j)|/q^j`, which the paper describes as
+  measuring the decay of the tail series on average. PDF pp. 6–7, Lemma 1,
+  derives `ξ(a+b) ∉ Q(q)` from infinitely many `N` with `ξ_N(a) > ξ_N(|b|)`
+  and `liminf ξ_N(|a+b|) S_{a+b}(N)^{d-1} = 0`, where `ξ_N` is the scaled tail
+  (2.1); for a rational integer base this says that arbitrarily small nonzero
+  scaled tails give irrationality. PDF pp. 7–8, Lemma 2, shows that
+  `w_n ξ_N(|c|) < δ` for all but `o(x_n)` of `N ≤ η x_n` under the counting
+  condition `#N_c(x_n) = o(x_n/z_n)` and `R_c(η x_n, z_n) = o(x_n/w_n)`.
+- **Counting hypotheses:** condition (iii) of Theorem 1 (PDF p. 3) and
+  condition (iv) of Theorem 3 (PDF p. 5) require
+  `#N_a(x_n), #N_b(x_n) = o(x_n/z_n)`; Theorem A (PDF p. 2) requires
+  `o(x_n)`. Divisor-incidence coefficients `#{a ∈ A : a | n}` are positive on
+  every multiple of `min A`, so no splitting of them into two sequences meets
+  these hypotheses.
 - **Concise criterion:** PDF p. 3, Theorem 2, replaces the averaged-tail
   condition with exponential-growth and summatory conditions. The proof is
   Section 3, PDF pp. 11–13.
@@ -77,8 +92,16 @@ and the final proofs and references.
   summatory/growth/support conditions, and `σ(n)` or `φ(n)` in the exponent.
 - Publication identity, arXiv route, exact local digest, and page-level
   locators recorded above.
+- Attribution of the averaged-tail quantity `R_c(q,x,z)` of (1.7) and of
+  Lemmas 1–2 (PDF pp. 6–8), which the #257 note cites beside its
+  weighted-support theorem as context for averaging the displacement.
 
 ### Does not support
+
+- An application of Theorems 1–3 or Theorem A to the divisor-incidence
+  coefficients of Mersenne–Lambert subseries: those coefficients are positive
+  on every multiple of `min A`, so the counting hypotheses fail, and their
+  scaled tail is at least the series value.
 
 - Irrationality of the release's coefficient-weighted ordinary-base series
   `Σ φ(n)/2^n`; here `φ(n)` is used as a denominator exponent in the
@@ -113,6 +136,10 @@ reproducibility without asserting permission to redistribute the PDF.
 
 - [`docs/PRIOR_ART.md`](../../PRIOR_ART.md), the nearby sparse-series row and
   its denominator/coefficient boundary.
+- [`paper/257/erdos-257-mersenne-support-subseries.tex`](../../../paper/257/erdos-257-mersenne-support-subseries.tex),
+  the paragraph after the weighted-support theorem and its bibliography entry.
+- [`paper/reasoning-parts/erdos257/a257_front.tex`](../../../paper/reasoning-parts/erdos257/a257_front.tex),
+  the averaging-antecedents paragraph and the achievement-set source remark.
 - [`redistribution-dispositions.json`](../redistribution-dispositions.json),
   the artifact-level public-release disposition record.
 - [`docs/THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md), the retrieval

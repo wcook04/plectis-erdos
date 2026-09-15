@@ -76,13 +76,15 @@ boundary of that relationship.
 
   **Pairwise-coprime support theorem.** Printed p. 222 states that if `n_1 < n_2 < ...` are pairwise coprime and `Σ 1/n_i < ∞`, then `Σ_i 1/(t^(n_i)-1)` is irrational for every integer `t ≥ 2`; the proof occupies printed pp. 223–225.
 
-  **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details; printed p. 226 also says the all-primes case is not handled. The source therefore does not support the coprimality-free extension, universal #257, the release's Lean/Comparator claims, or any novelty or priority claim.
+  **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details, and that `Σ 1/n_i < ∞` could be replaced by an unstated weaker but more complicated condition; printed p. 226 suggests `Σ_{n_i<x} 1/n_i = o(log log x)` via Brun's method for pairwise coprime supports and says the all-primes case is not handled. The source therefore does not support the coprimality-free extension, universal #257, the release's Lean/Comparator claims, or any novelty or priority claim.
 
 - D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series* (2019)](https://doi.org/10.1515/forum-2018-0299) ([author preprint](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf); [read source closure](primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md))
 
   **Squarefree-support antecedent.** Corollary 1.2 (PDF p. 4; proof pp. 10–11), specialised to `E` equal to the primes, `s=2`, `ell=1`, and `q=2`, proves linear independence of `1` and the squarefree Lambert values at bases `2^j`; Example 1.1 displays the family using `|mu(n)|`.
 
-  **Boundary.** The condition `|q|^L <= s` is essential to this specialisation, so the result does not give squarefree irrationality at every integer base and does not settle universal #257. It also does not prove the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims; no novelty or priority claim is made.
+  **Averaging antecedent.** The proof of Theorem 1.1 (Section 2, (2.3)–(2.9), PDF pp. 5–6) selects its index by averaging a local coefficient mass over an arithmetic progression and taking a term attaining the minimum. The #257 note cites this after its weighted-support theorem as the antecedent of the selection step in its displacement averaging.
+
+  **Boundary.** The condition `|q| L <= s`, a product with `L = lcm(1,...,ell)`, is essential to this specialisation, so the result does not give squarefree irrationality at every integer base and does not settle universal #257. With `s = infinity` it covers the perfect `i`th-power supports at every integer base. It also does not prove the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims; no novelty or priority claim is made.
 
 - P. B. Borwein, [*On the irrationality of ∑ 1/(q^n+r)* (1991)](https://doi.org/10.1016/S0022-314X(05)80041-1) ([publisher record](https://www.sciencedirect.com/science/article/pii/S0022314X05800411); [read source closure](primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md))
 
@@ -100,7 +102,9 @@ boundary of that relationship.
 
   Nearby current work proving irrationality for sparse series such as \(\sum d(n)^k/t^{\varphi(n)}\).
 
-  **Boundary.** Here \(\varphi(n)\) occurs in the exponent. It does not treat the coefficient-weighted constant \(\sum\varphi(n)/2^n\), its denominator bound, or its tail-certificate equivalence.
+  **Averaged-tail antecedent for #257.** The quantity \(R_c(q,x,z)\) of (1.7) (PDF p. 3) and Lemmas 1–2 (PDF pp. 6–8) derive irrationality from scaled tails that are small on average. The #257 note cites them beside its weighted-support theorem. There the divisor-incidence coefficients are positive on every multiple of \(\min A\), so the scaled tail is at least the series value and the note averages the displacement instead.
+
+  **Boundary.** Here \(\varphi(n)\) occurs in the exponent. It does not treat the coefficient-weighted constant \(\sum\varphi(n)/2^n\), its denominator bound, or its tail-certificate equivalence. The counting hypotheses of Theorems 1 and 3 fail for divisor-incidence coefficients, so these criteria do not apply to Mersenne–Lambert subseries.
 
 - T. M. Apostol, [*Introduction to Analytic Number Theory* (1976)](https://doi.org/10.1007/978-1-4757-5579-4); M. Merca, [*The Lambert series factorization theorem* (2017)](https://doi.org/10.1007/s11139-016-9856-3); M. Merca and M. D. Schmidt, [*Generating Special Arithmetic Functions by Lambert Series Factorizations* (2019)](https://doi.org/10.55016/ojs/cdm.v14i1.62425) ([official journal PDF](https://cdm.ucalgary.ca/article/download/62425/53773); [read source closure](primary-sources/totient-kernel/merca-schmidt-2017-lambert-factorizations-source-closure.md))
 

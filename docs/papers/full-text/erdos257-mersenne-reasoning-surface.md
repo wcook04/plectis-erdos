@@ -44,7 +44,7 @@ For every infinite set $`A`$ of positive integers with $`\sum_{a\in A}1/a<\infty
 ``` math
 X_A(b)=\sum_{a\in A}\frac1{b^a-1}
 ```
-is irrational at every integer base $`b\ge2`$. The proof below is ordinary mathematics and is the proof of the short paper’s Theorem `res:reciprocal-support`. Erdős’s [1968 paper, p. 222](https://users.renyi.hu/~p_erdos/1969-09.pdf) proves the pairwise-coprime case at every integer base and states the removal of coprimality without printing the details. The proof below of that stated extension is independent; no priority over Erdős is claimed and no identification with his omitted argument is asserted. The checked pairwise-coprime theorem listed below retains that extra hypothesis.
+is irrational at every integer base $`b\ge2`$. The proof below is ordinary mathematics and is the proof of the short paper’s Theorem `res:reciprocal-support`. Erdős’s [1968 paper, p. 222](https://users.renyi.hu/~p_erdos/1969-09.pdf) proves the pairwise-coprime case at every integer base and states the removal of coprimality without printing the details. The proof below of that stated extension is independent; no priority over Erdős is claimed and no identification with his omitted argument is asserted. The checked pairwise-coprime theorem listed below retains that extra hypothesis. The same paper says that $`\sum1/n_i<\infty`$ could be replaced by a weaker but more complicated condition (p. 222), and suggests that for pairwise coprime supports Brun’s method could probably replace it by $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ (p. 226). Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a> below proves irrationality under one explicit weaker condition without coprimality; no identification with his suggestions is asserted.
 
 The mechanism is to make positive displacements arbitrarily small. For $`N>0`$, write $`N=q_a a+r_a`$, $`0\le r_a<a`$. The identity
 ``` math
@@ -284,6 +284,17 @@ The construction is valid for every positive $`\varepsilon`$; applying it with $
 
 Since $`b^{h(a)}-1\ge2^{h(a)}-1`$ for every $`b\ge2`$, one has $`W_{b,\mathcal P}(A)\le W_{2,\mathcal P}(A)`$. Thus the base-two weighted hypothesis gives the conclusion simultaneously at every integer base. The hypothesis is also hereditary under passage to infinite subsets.
 
+<a id="averaging-antecedents."></a>
+
+#### Averaging antecedents.
+
+Both averaging proofs in this section end by choosing a term no larger than a finite mean. [Duverney and Tachiya](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf) choose their index in the same way in their refinement of the Chowla–Erdős method: they average a local coefficient mass over an arithmetic progression built by the Chinese remainder theorem, and a term attaining the minimum supplies the bounds that control the tail beyond it (Section 2, (2.3)–(2.9), pp. 5–6 of the author preprint). [Kaneko, Suzuki and Tachiya](https://arxiv.org/abs/2601.20743) measure the average decay of scaled tails by $`R_c(q,x,z)`$, their (1.7) on p. 3 of arXiv v1. Under a counting condition on the support and a bound on $`R_c`$, most scaled tails in a range are small, and arbitrarily small nonzero scaled tails give irrationality (Lemmas 1 and 2, pp. 6–8). The divisor-incidence coefficients $`\#\{a\in A:a\mid n\}`$ are positive on every multiple of $`\min A`$, so conditions (iii) and (iv) of their Theorems 1 and 3 fail for every splitting into two sequences, and the scaled tail
+``` math
+\sum_{r\ge1}\frac{\#\{a\in A:a\mid m+r\}}{b^r}
+ =\sum_{a\in A}\phi_a(m)=S_b(A)+\Delta_{b,A}(m)
+```
+is at least $`S_b(A)`$. The proofs above average the displacement instead, along multiples of a modulus that freezes a finite part of $`A`$; the weighted proof adds the dyadic average <a href="#eq:257-weighted-dyadic-average" data-reference-type="eqref" data-reference="eq:257-weighted-dyadic-average">[eq:257-weighted-dyadic-average]</a>. <span class="sans-serif">\[Cited\]</span>
+
 <a id="evidence-boundary."></a>
 
 #### Evidence boundary.
@@ -500,7 +511,7 @@ Two one-sided rigidity results constrain a hypothetical rational-valued support,
 
 <div class="rem">
 
-*Remark 6* (What is and is not covered in the universal direction). The pinned Lean corpus contains no theorem for $`A=`$ the primes, but this is a formalisation boundary, not a mathematical open case: Tao and Teräväinen prove the base-$`2`$ prime-support value irrational by first identifying it with $`\sum_{n\ge1}\omega(n)2^{-n}`$. Duverney and Tachiya likewise settle squarefree support at every power-of-two base. Neither result is formalised here. The statement of Problem #257 has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* [collection](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean); that file also proves the Lambert identity for the full-support value and states its irrationality, the 1948 theorem of Erdős, with proof `sorry`. It is statement-level prior art, and no theorem recorded here is derived from it. The corpus still has no general theorem for an arbitrary positive-density nonperiodic or divisor-dense support, and the universal statement remains open.
+*Remark 6* (What is and is not covered in the universal direction). The pinned Lean corpus contains no theorem for $`A=`$ the primes, but this is a formalisation boundary, not a mathematical open case: Tao and Teräväinen prove the base-$`2`$ prime-support value irrational by first identifying it with $`\sum_{n\ge1}\omega(n)2^{-n}`$. Duverney and Tachiya likewise settle squarefree support at every power-of-two base, and the perfect $`i`$th powers at every integer base (Corollary 1.2 and Example 1.1, p. 4 of the author preprint). Neither result is formalised here. The statement of Problem #257 has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* [collection](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean); that file also proves the Lambert identity for the full-support value and states its irrationality, the 1948 theorem of Erdős, with proof `sorry`. It is statement-level prior art, and no theorem recorded here is derived from it. The corpus still has no general theorem for an arbitrary positive-density nonperiodic or divisor-dense support, and the universal statement remains open.
 
 </div>
 
@@ -524,7 +535,7 @@ Two one-sided rigidity results constrain a hypothetical rational-valued support,
 
 <div class="rem">
 
-*Remark 9* (Achievement-set terminology and source boundary). We use the modern term *achievement set* for the subsum set that [Kakeya’s 1914 note](https://doi.org/10.11429/ptmps1907.7.14_250) describes as a set of partial sums. Kakeya proves perfectness for an absolutely convergent series and nowhere density under an all-index strict-tail condition; [Kovač–Tao, Remark 4.1](https://arxiv.org/abs/2406.17593v4) verifies that strict-tail condition for the fixed-base Mersenne weights. Those sources are the classical topological antecedent. The local volume dichotomy, injectivity, and greedy-membership statements above and below are Lean-checked claims of this corpus. The sparse power-series criteria of [Kaneko–Suzuki–Tachiya](https://arxiv.org/abs/2601.20743) give neighboring sparse-support context, not a theorem about arbitrary reciprocal Mersenne subseries. <span class="sans-serif">\[Cited\]</span>
+*Remark 9* (Achievement-set terminology and source boundary). We use the modern term *achievement set* for the subsum set that [Kakeya’s 1914 note](https://doi.org/10.11429/ptmps1907.7.14_250) describes as a set of partial sums. Kakeya proves perfectness for an absolutely convergent series and nowhere density under an all-index strict-tail condition; [Kovač–Tao, Remark 4.1](https://arxiv.org/abs/2406.17593v4) verifies that strict-tail condition for the fixed-base Mersenne weights. Those sources are the classical topological antecedent. The local volume dichotomy, injectivity, and greedy-membership statements above and below are Lean-checked claims of this corpus. The sparse power-series criteria of [Kaneko–Suzuki–Tachiya](https://arxiv.org/abs/2601.20743) (Theorems 1–3, pp. 3–5 of arXiv v1) assume sparse coefficient supports; their relation to the divisor-incidence coefficients of these subseries is recorded after Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a>. <span class="sans-serif">\[Cited\]</span>
 
 </div>
 
