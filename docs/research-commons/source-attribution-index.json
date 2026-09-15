@@ -3,7 +3,7 @@
   "authority_boundary": "Navigation and source-credit evidence only. It does not establish proof, novelty, endorsement, peer review, or complete historical knowledge. Lean matches are lexical candidates, not attribution.",
   "coverage": {
     "bibliography_without_curated_link_count": 1,
-    "curated_source_count": 185,
+    "curated_source_count": 187,
     "lean_candidate_awaiting_review_count": 0,
     "unmatched_citation_key_count": 0
   },
@@ -258,6 +258,12 @@
         ]
       },
       {
+        "key": "C. Lupu",
+        "source_ids": [
+          "source-b3b7518e07e159"
+        ]
+      },
+      {
         "key": "C. Pomerance",
         "source_ids": [
           "source-27575f46a101c1",
@@ -476,6 +482,7 @@
         "key": "F. Luca",
         "source_ids": [
           "source-34b520c561ee3c",
+          "source-5f85fb0bd75b8b",
           "source-6accca20cd5e44"
         ]
       },
@@ -640,7 +647,8 @@
       {
         "key": "I. E. Shparlinski",
         "source_ids": [
-          "source-34b520c561ee3c"
+          "source-34b520c561ee3c",
+          "source-5f85fb0bd75b8b"
         ]
       },
       {
@@ -780,6 +788,12 @@
         "key": "J. Shallit",
         "source_ids": [
           "source-5752bb5009e4de"
+        ]
+      },
+      {
+        "key": "J. Sprang",
+        "source_ids": [
+          "source-b3b7518e07e159"
         ]
       },
       {
@@ -1066,7 +1080,8 @@
       {
         "key": "L. Lai",
         "source_ids": [
-          "source-57adfd0cdcd8c2"
+          "source-57adfd0cdcd8c2",
+          "source-b3b7518e07e159"
         ]
       },
       {
@@ -2411,8 +2426,10 @@
         "source_ids": [
           "erdos_problems_catalog_eight_problem_context",
           "source-57adfd0cdcd8c2",
+          "source-5f85fb0bd75b8b",
           "source-8ac37c92429a46",
           "source-b378189f39ed98",
+          "source-b3b7518e07e159",
           "source-c835bc94aad831",
           "source-e13ecb7c94852a",
           "source-ef6233b59b95cb"
@@ -2424,10 +2441,13 @@
           "erdos_problems_catalog_eight_problem_context",
           "source-0f1a3708d62674",
           "source-34b520c561ee3c",
+          "source-57adfd0cdcd8c2",
+          "source-5f85fb0bd75b8b",
           "source-8ac37c92429a46",
           "source-a87fa25f28c7b0",
           "source-b0b779fff5defe",
           "source-b378189f39ed98",
+          "source-b3b7518e07e159",
           "source-c835bc94aad831",
           "source-d1710db60eae06",
           "source-e13ecb7c94852a",
@@ -2786,10 +2806,12 @@
           "source-0f1a3708d62674",
           "source-34b520c561ee3c",
           "source-57adfd0cdcd8c2",
+          "source-5f85fb0bd75b8b",
           "source-8ac37c92429a46",
           "source-a87fa25f28c7b0",
           "source-b0b779fff5defe",
           "source-b378189f39ed98",
+          "source-b3b7518e07e159",
           "source-c835bc94aad831",
           "source-d1710db60eae06",
           "source-e13ecb7c94852a",
@@ -2836,7 +2858,6 @@
           "source-4c664304e00cd3",
           "source-51efe25c48a86d",
           "source-5752bb5009e4de",
-          "source-57adfd0cdcd8c2",
           "source-5911448b65fdf9",
           "source-5b5c84cd208fff",
           "source-5edeb2408c36bd",
@@ -2995,12 +3016,15 @@
           "source-3bc828513b4d63",
           "source-40bc4064b92788",
           "source-573a79feb36d47",
+          "source-57adfd0cdcd8c2",
+          "source-5f85fb0bd75b8b",
           "source-7f1f2a3fd9238c",
           "source-8710374c3e8c9f",
           "source-892c567092d6f3",
           "source-951f70d8dfc418",
           "source-a67b8dc01791ec",
           "source-b202a3f125817d",
+          "source-b3b7518e07e159",
           "source-baker-harman-pintz-2001",
           "source-c835bc94aad831",
           "source-d471eacdba0f87",
@@ -6515,6 +6539,7 @@
             "source_id": null,
             "source_ids": [
               "source-34b520c561ee3c",
+              "source-5f85fb0bd75b8b",
               "source-6accca20cd5e44"
             ],
             "token": "luca"
@@ -6597,6 +6622,7 @@
             "source_id": null,
             "source_ids": [
               "source-34b520c561ee3c",
+              "source-5f85fb0bd75b8b",
               "source-6accca20cd5e44"
             ],
             "token": "luca"
@@ -6668,6 +6694,7 @@
             "source_id": null,
             "source_ids": [
               "source-34b520c561ee3c",
+              "source-5f85fb0bd75b8b",
               "source-6accca20cd5e44"
             ],
             "token": "luca"
@@ -6710,6 +6737,7 @@
             "source_id": null,
             "source_ids": [
               "source-34b520c561ee3c",
+              "source-5f85fb0bd75b8b",
               "source-6accca20cd5e44"
             ],
             "token": "luca"
@@ -6874,6 +6902,7 @@
             "source_id": null,
             "source_ids": [
               "source-34b520c561ee3c",
+              "source-5f85fb0bd75b8b",
               "source-6accca20cd5e44"
             ],
             "token": "luca"
@@ -7014,6 +7043,7 @@
             "source_id": null,
             "source_ids": [
               "source-34b520c561ee3c",
+              "source-5f85fb0bd75b8b",
               "source-6accca20cd5e44"
             ],
             "token": "luca"
@@ -38714,13 +38744,13 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1988",
         "kind": "bibliography_entry",
-        "line_end": 873,
-        "line_start": 868,
+        "line_end": 901,
+        "line_start": 896,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_text": "\\bibitem{bloom} T.~F. Bloom, \\emph{Erd\\H{o}s Problem \\#68}. \\url{https://www.erdosproblems.com/68}, accessed 28 July 2026.",
@@ -38736,13 +38766,13 @@
         "equivalent_source_coordinates": [],
         "key": "bloom",
         "kind": "bibliography_entry",
-        "line_end": 875,
-        "line_start": 873,
+        "line_end": 903,
+        "line_start": 901,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_text": "\\bibitem{cantor1869} G.~Cantor, \\emph{\\\"Uber die einfachen Zahlensysteme}, Z. Math. Phys. \\textbf{14} (1869), 121--128.",
@@ -38758,13 +38788,13 @@
         "equivalent_source_coordinates": [],
         "key": "cantor1869",
         "kind": "bibliography_entry",
-        "line_end": 877,
-        "line_start": 875,
+        "line_end": 905,
+        "line_start": 903,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "source_id": "source-8ac37c92429a46",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_text": "\\bibitem{galambos1976} J.~Galambos, \\emph{Representations of Real Numbers by Infinite Series}, Lecture Notes in Math. \\textbf{502}, Springer, 1976, Chapter~1.",
@@ -38780,13 +38810,13 @@
         "equivalent_source_coordinates": [],
         "key": "galambos1976",
         "kind": "bibliography_entry",
-        "line_end": 880,
-        "line_start": 877,
+        "line_end": 908,
+        "line_start": 905,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "source_id": "source-e13ecb7c94852a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_text": "\\bibitem{hancl-tijdeman} J.~Han\\v{c}l and R.~Tijdeman, \\emph{On the irrationality of factorial series}, Acta Arith. \\textbf{118} (2005), 383--401, doi:\\href{https://doi.org/10.4064/aa118-4-5}{10.4064/aa118-4-5}.",
@@ -38804,21 +38834,21 @@
         "equivalent_source_coordinates": [],
         "key": "hancl-tijdeman",
         "kind": "bibliography_entry",
-        "line_end": 884,
-        "line_start": 880,
+        "line_end": 912,
+        "line_start": 908,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "source_id": "source-c835bc94aad831",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_text": "\\bibitem{louwsma-martino} J.~Louwsma and J.~Martino, \\emph{Rational numbers with odd greedy expansion of fixed length}, arXiv:\\href{https://arxiv.org/abs/2309.07280}{2309.07280v1}, 2023, Lemma~4.1, p.~10.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 559,
-            "line_start": 559,
+            "line_end": 587,
+            "line_start": 587,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
             "qualifiers": [
               "Lemma~4.1"
@@ -38828,44 +38858,124 @@
         "equivalent_source_coordinates": [],
         "key": "louwsma-martino",
         "kind": "bibliography_entry",
-        "line_end": 889,
-        "line_start": 884,
+        "line_end": 917,
+        "line_start": 912,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "source_id": "source-ef6233b59b95cb",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
-        "citation_text": "\\bibitem{lai} L.~Lai, \\emph{On the largest prime divisor of $n!+1$}, arXiv:\\href{https://arxiv.org/abs/2103.14894}{2103.14894v1}, 2021, proof of Lemma~2.4, (2.5).",
+        "citation_text": "\\bibitem{lai} L.~Lai, \\emph{On the largest prime divisor of $n!+1$}, Bull.\\ Aust.\\ Math.\\ Soc.\\ \\textbf{113} (2026), no.~3, 390--403, doi:\\href{https://doi.org/10.1017/S0004972725100543}{10.1017/S0004972725100543}; arXiv:\\href{https://arxiv.org/abs/2103.14894}{2103.14894}. Lemma~2.1, p.~392; display~(2.5) in the proof of Lemma~2.4, p.~394.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 483,
-            "line_start": 483,
+            "line_end": 492,
+            "line_start": 492,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-            "qualifiers": []
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
           },
           {
             "command": "cite",
-            "line_end": 490,
-            "line_start": 490,
+            "line_end": 502,
+            "line_start": 502,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-            "qualifiers": [
-              "(2.5)"
-            ]
+            "qualifiers": []
           }
         ],
         "equivalent_source_coordinates": [],
         "key": "lai",
         "kind": "bibliography_entry",
-        "line_end": 893,
-        "line_start": 889,
+        "line_end": 923,
+        "line_start": 917,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "source_id": "source-57adfd0cdcd8c2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_text": "\\bibitem{luca-shparlinski} F.~Luca and I.~E. Shparlinski, \\emph{Prime divisors of shifted factorials}, Bull.\\ London Math.\\ Soc.\\ \\textbf{37} (2005), no.~6, 809--817, doi:\\href{https://doi.org/10.1112/S0024609305004923}{10.1112/S0024609305004923}. Lemma~3, p.~810; proof of Lemma~5, p.~811.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 494,
+            "line_start": 494,
+            "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 501,
+            "line_start": 501,
+            "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "luca-shparlinski",
+        "kind": "bibliography_entry",
+        "line_end": 928,
+        "line_start": 923,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_text": "\\bibitem{lai-lupu-sprang} L.~Lai, C.~Lupu, and J.~Sprang, \\emph{On the irrationality of certain $p$-adic zeta values}, Res.\\ Math.\\ Sci.\\ \\textbf{12} (2025), no.~4, Paper No.~77, doi:\\href{https://doi.org/10.1007/s40687-025-00559-x}{10.1007/s40687-025-00559-x}; arXiv:\\href{https://arxiv.org/abs/2505.23088v1}{2505.23088v1}. Numbered as in arXiv v1: Lemma~2.1, p.~3; \\S5, pp.~10--14; Lemma~7.3, p.~20; (8.1), p.~22.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 556,
+            "line_start": 556,
+            "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+            "qualifiers": [
+              "\\S5"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 557,
+            "line_start": 557,
+            "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+            "qualifiers": [
+              "Lemma~7.3"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 558,
+            "line_start": 558,
+            "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+            "qualifiers": [
+              "(8.1)"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 560,
+            "line_start": 560,
+            "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "lai-lupu-sprang",
+        "kind": "bibliography_entry",
+        "line_end": 936,
+        "line_start": 928,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_text": "\\bibitem{polya1928} G.~P\\'olya, \\emph{Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenh\\\"angende Gebiete}, Sitzungsber. Preuss. Akad. Wiss., Phys.-Math. Kl. (1928), 228--232 and 280--282.",
@@ -48949,13 +49059,13 @@
         ],
         "key": "erdos1988",
         "kind": "bibliography_entry",
-        "line_end": 1808,
-        "line_start": 1803,
+        "line_end": 1863,
+        "line_start": 1858,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-b378189f39ed98",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{bloom} T.~F. Bloom, \\emph{Erd\\H{o}s Problem \\#68}. \\url{https://www.erdosproblems.com/68}, accessed 28 July 2026.",
@@ -48985,13 +49095,13 @@
         ],
         "key": "bloom",
         "kind": "bibliography_entry",
-        "line_end": 1810,
-        "line_start": 1808,
+        "line_end": 1865,
+        "line_start": 1863,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{louwsma-martino} J.~Louwsma and J.~Martino, \\emph{Rational numbers with odd greedy expansion of fixed length}, arXiv:\\href{https://arxiv.org/abs/2309.07280v1}{2309.07280v1}, 2023, Lemma~4.1, p.~10.",
@@ -49007,8 +49117,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1217,
-            "line_start": 1217,
+            "line_end": 1272,
+            "line_start": 1272,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Lemma~4.1"
@@ -49025,8 +49135,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1181,
-            "line_start": 1181,
+            "line_end": 1236,
+            "line_start": 1236,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Lemma~4.1"
@@ -49043,42 +49153,42 @@
         ],
         "key": "louwsma-martino",
         "kind": "bibliography_entry",
-        "line_end": 1815,
-        "line_start": 1810,
+        "line_end": 1870,
+        "line_start": 1865,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-ef6233b59b95cb",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{cantor1869} G.~Cantor, \\emph{\\\"Uber die einfachen Zahlensysteme}, Z.\\ Math.\\ Phys.\\ \\textbf{14} (1869), 121--128.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 436,
-            "line_start": 436,
+            "line_end": 486,
+            "line_start": 486,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1211,
-            "line_start": 1211,
+            "line_end": 1261,
+            "line_start": 1261,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 400,
-            "line_start": 400,
+            "line_end": 450,
+            "line_start": 450,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1175,
-            "line_start": 1175,
+            "line_end": 1225,
+            "line_start": 1225,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": []
           }
@@ -49093,21 +49203,21 @@
         ],
         "key": "cantor1869",
         "kind": "bibliography_entry",
-        "line_end": 1819,
-        "line_start": 1815,
+        "line_end": 1874,
+        "line_start": 1870,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-8ac37c92429a46",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{galambos1976} J.~Galambos, \\emph{Representations of Real Numbers by Infinite Series}, Lecture Notes in Mathematics \\textbf{502}, Springer, 1976, Chapter~1. doi:\\href{https://doi.org/10.1007/BFb0081642}{10.1007/BFb0081642}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 437,
-            "line_start": 437,
+            "line_end": 487,
+            "line_start": 487,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49115,8 +49225,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1212,
-            "line_start": 1212,
+            "line_end": 1262,
+            "line_start": 1262,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49124,8 +49234,8 @@
           },
           {
             "command": "cite",
-            "line_end": 401,
-            "line_start": 401,
+            "line_end": 451,
+            "line_start": 451,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49133,8 +49243,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1176,
-            "line_start": 1176,
+            "line_end": 1226,
+            "line_start": 1226,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49151,21 +49261,21 @@
         ],
         "key": "galambos1976",
         "kind": "bibliography_entry",
-        "line_end": 1824,
-        "line_start": 1819,
+        "line_end": 1879,
+        "line_start": 1874,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-e13ecb7c94852a",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{garaev-luca-shparlinski} M.~Z. Garaev, F.~Luca, and I.~E. Shparlinski, \\emph{Character sums and congruences with $n!$}, Trans.\\ Amer.\\ Math.\\ Soc.\\ \\textbf{356} (2004), no.~12, 5089--5102. \\url{https://doi.org/10.1090/S0002-9947-04-03612-8}; arXiv:\\href{https://arxiv.org/abs/math/0403422}{math/0403422v1}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 290,
-            "line_start": 290,
+            "line_end": 297,
+            "line_start": 297,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49173,8 +49283,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1016,
-            "line_start": 1016,
+            "line_end": 1066,
+            "line_start": 1066,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49182,15 +49292,15 @@
           },
           {
             "command": "cite",
-            "line_end": 1215,
-            "line_start": 1215,
+            "line_end": 1265,
+            "line_start": 1265,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1399,
-            "line_start": 1399,
+            "line_end": 1454,
+            "line_start": 1454,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49198,8 +49308,8 @@
           },
           {
             "command": "cite",
-            "line_end": 254,
-            "line_start": 254,
+            "line_end": 261,
+            "line_start": 261,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49207,8 +49317,8 @@
           },
           {
             "command": "cite",
-            "line_end": 980,
-            "line_start": 980,
+            "line_end": 1030,
+            "line_start": 1030,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49216,8 +49326,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1179,
-            "line_start": 1179,
+            "line_end": 1229,
+            "line_start": 1229,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": []
           },
@@ -49241,13 +49351,13 @@
         ],
         "key": "garaev-luca-shparlinski",
         "kind": "bibliography_entry",
-        "line_end": 1830,
-        "line_start": 1824,
+        "line_end": 1885,
+        "line_start": 1879,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-34b520c561ee3c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{stewart2004} C.~L. Stewart, \\emph{On the greatest and least prime factors of $n!+1$, II}, Publ.\\ Math.\\ Debrecen \\textbf{65} (2004), no.~3--4, 461--480. \\url{https://publi.math.unideb.hu/paper/989/download/10_5486_PMD_2004_3190.pdf}.",
@@ -49263,8 +49373,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1210,
-            "line_start": 1210,
+            "line_end": 1260,
+            "line_start": 1260,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "p.~462, (4)"
@@ -49272,8 +49382,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1599,
-            "line_start": 1599,
+            "line_end": 1654,
+            "line_start": 1654,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "p.~464"
@@ -49290,8 +49400,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1174,
-            "line_start": 1174,
+            "line_end": 1224,
+            "line_start": 1224,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "p.~462, (4)"
@@ -49317,21 +49427,21 @@
         ],
         "key": "stewart2004",
         "kind": "bibliography_entry",
-        "line_end": 1835,
-        "line_start": 1830,
+        "line_end": 1890,
+        "line_start": 1885,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-d1710db60eae06",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{koepf-schmersau} W.~Koepf and D.~Schmersau, \\emph{Irrationality of certain infinite series II}, Analysis \\textbf{31} (2011), 117--124. \\url{https://doi.org/10.1524/anly.2011.1094}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1343,
-            "line_start": 1343,
+            "line_end": 1398,
+            "line_start": 1398,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.1, p.~117"
@@ -49339,8 +49449,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1346,
-            "line_start": 1346,
+            "line_end": 1401,
+            "line_start": 1401,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~2.2--2.3, pp.~119--120"
@@ -49375,21 +49485,21 @@
         ],
         "key": "koepf-schmersau",
         "kind": "bibliography_entry",
-        "line_end": 1840,
-        "line_start": 1835,
+        "line_end": 1895,
+        "line_start": 1890,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-a87fa25f28c7b0",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{duverney} D.~Duverney, \\emph{Irrationality of fast converging series of rational numbers}, J.\\ Math.\\ Sci.\\ Univ.\\ Tokyo \\textbf{8} (2001), 275--316. \\url{https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1099,
-            "line_start": 1099,
+            "line_end": 1149,
+            "line_start": 1149,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "pp.~275, 285--287"
@@ -49397,8 +49507,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1360,
-            "line_start": 1360,
+            "line_end": 1415,
+            "line_start": 1415,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "pp.~275, 285--286"
@@ -49406,8 +49516,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1362,
-            "line_start": 1362,
+            "line_end": 1417,
+            "line_start": 1417,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Cor.~3.2, p.~287"
@@ -49415,8 +49525,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1063,
-            "line_start": 1063,
+            "line_end": 1113,
+            "line_start": 1113,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "pp.~275, 285--287"
@@ -49451,21 +49561,21 @@
         ],
         "key": "duverney",
         "kind": "bibliography_entry",
-        "line_end": 1845,
-        "line_start": 1840,
+        "line_end": 1900,
+        "line_start": 1895,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-b0b779fff5defe",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{hancl-tijdeman} J.~Han\\v{c}l and R.~Tijdeman, \\href{https://geodesic.mathdoc.fr/articles/10.4064/aa118-4-5/} {\\emph{On the irrationality of factorial series}}, Acta Arith.\\ \\textbf{118} (2005), no.~4, 383--401. doi:10.4064/aa118-4-5.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1386,
-            "line_start": 1386,
+            "line_end": 1441,
+            "line_start": 1441,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~3.1 and Cor.~3.1, pp.~390--391"
@@ -49491,21 +49601,21 @@
         ],
         "key": "hancl-tijdeman",
         "kind": "bibliography_entry",
-        "line_end": 1851,
-        "line_start": 1845,
+        "line_end": 1906,
+        "line_start": 1900,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-c835bc94aad831",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{barreto-et-al} K.~Barreto, J.~Kang, S.-h.~Kim, V.~Kova\\v{c}, and S.~Zhang, \\emph{Irrationality of rapidly converging series: a problem of Erd\\H{o}s and Graham}, arXiv:\\href{https://arxiv.org/abs/2601.21442v3}{2601.21442v3}, 2026, Theorems~2--3 and Remark~4.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1103,
-            "line_start": 1103,
+            "line_end": 1153,
+            "line_start": 1153,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~2--3 and Rem.~4"
@@ -49513,8 +49623,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1369,
-            "line_start": 1369,
+            "line_end": 1424,
+            "line_start": 1424,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~2--3, pp.~2--4"
@@ -49522,8 +49632,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1373,
-            "line_start": 1373,
+            "line_end": 1428,
+            "line_start": 1428,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Lem.~8 and Prop.~12, pp.~6, 9--12"
@@ -49531,8 +49641,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1067,
-            "line_start": 1067,
+            "line_end": 1117,
+            "line_start": 1117,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Thms.~2--3 and Rem.~4"
@@ -49567,13 +49677,253 @@
         ],
         "key": "barreto-et-al",
         "kind": "bibliography_entry",
-        "line_end": 1857,
-        "line_start": 1851,
+        "line_end": 1912,
+        "line_start": 1906,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "source_id": "source-0f1a3708d62674",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_text": "\\bibitem{luca-shparlinski} F.~Luca and I.~E. Shparlinski, \\emph{Prime divisors of shifted factorials}, Bull.\\ London Math.\\ Soc.\\ \\textbf{37} (2005), no.~6, 809--817. doi:\\href{https://doi.org/10.1112/S0024609305004923}{10.1112/S0024609305004923}. Lemma~3, p.~810; proof of Lemma~5, p.~811.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 229,
+            "line_start": 229,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 309,
+            "line_start": 309,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1268,
+            "line_start": 1268,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1270,
+            "line_start": 1270,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 193,
+            "line_start": 193,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 273,
+            "line_start": 273,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1232,
+            "line_start": 1232,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1234,
+            "line_start": 1234,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [
+          {
+            "line_end": 65,
+            "line_start": 59,
+            "path": "paper/reasoning-parts/erdos68/back.tex",
+            "source_role": "authored_reasoning_part"
+          }
+        ],
+        "key": "luca-shparlinski",
+        "kind": "bibliography_entry",
+        "line_end": 1918,
+        "line_start": 1912,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_text": "\\bibitem{lai} L.~Lai, \\emph{On the largest prime divisor of $n!+1$}, Bull.\\ Aust.\\ Math.\\ Soc.\\ \\textbf{113} (2026), no.~3, 390--403. doi:\\href{https://doi.org/10.1017/S0004972725100543}{10.1017/S0004972725100543}; arXiv:\\href{https://arxiv.org/abs/2103.14894}{2103.14894}. Lemma~2.1, p.~392; display~(2.5) in the proof of Lemma~2.4, p.~394.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 230,
+            "line_start": 230,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 310,
+            "line_start": 310,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 1268,
+            "line_start": 1268,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1271,
+            "line_start": 1271,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 194,
+            "line_start": 194,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 274,
+            "line_start": 274,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 1232,
+            "line_start": 1232,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1235,
+            "line_start": 1235,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [
+          {
+            "line_end": 72,
+            "line_start": 65,
+            "path": "paper/reasoning-parts/erdos68/back.tex",
+            "source_role": "authored_reasoning_part"
+          }
+        ],
+        "key": "lai",
+        "kind": "bibliography_entry",
+        "line_end": 1925,
+        "line_start": 1918,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_text": "\\bibitem{lai-lupu-sprang} L.~Lai, C.~Lupu, and J.~Sprang, \\emph{On the irrationality of certain $p$-adic zeta values}, Res.\\ Math.\\ Sci.\\ \\textbf{12} (2025), no.~4, Paper No.~77. doi:\\href{https://doi.org/10.1007/s40687-025-00559-x}{10.1007/s40687-025-00559-x}; arXiv:\\href{https://arxiv.org/abs/2505.23088v1}{2505.23088v1}. Numbered as in arXiv v1: Lemma~2.1, p.~3; Lemmas~5.3--5.7, pp.~10--14; Lemma~7.3, p.~20; (8.1), p.~22.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 373,
+            "line_start": 373,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemmas~5.3--5.7 and~7.3"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 374,
+            "line_start": 374,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "(8.1)"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 376,
+            "line_start": 376,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 337,
+            "line_start": 337,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemmas~5.3--5.7 and~7.3"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 338,
+            "line_start": 338,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "(8.1)"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 340,
+            "line_start": 340,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [
+          {
+            "line_end": 80,
+            "line_start": 72,
+            "path": "paper/reasoning-parts/erdos68/back.tex",
+            "source_role": "authored_reasoning_part"
+          }
+        ],
+        "key": "lai-lupu-sprang",
+        "kind": "bibliography_entry",
+        "line_end": 1933,
+        "line_start": 1925,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_text": "\\bibitem{erdos1988} P.~Erd\\H{o}s, \\emph{On the irrationality of certain series: problems and results}, in A.~Baker (ed.), \\emph{New Advances in Transcendence Theory}, Cambridge UP, 1988, pp.~102--109, doi:\\href{https://doi.org/10.1017/CBO9780511897184.009} {10.1017/CBO9780511897184.009}.",
@@ -49599,8 +49949,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1808,
-            "line_start": 1803,
+            "line_end": 1863,
+            "line_start": 1858,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -49613,7 +49963,7 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{bloom} T.~F. Bloom, \\emph{Erd\\H{o}s Problem \\#68}. \\url{https://www.erdosproblems.com/68}, accessed 28 July 2026.",
@@ -49635,8 +49985,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1810,
-            "line_start": 1808,
+            "line_end": 1865,
+            "line_start": 1863,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -49649,7 +49999,7 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{louwsma-martino} J.~Louwsma and J.~Martino, \\emph{Rational numbers with odd greedy expansion of fixed length}, arXiv:\\href{https://arxiv.org/abs/2309.07280v1}{2309.07280v1}, 2023, Lemma~4.1, p.~10.",
@@ -49665,8 +50015,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1217,
-            "line_start": 1217,
+            "line_end": 1272,
+            "line_start": 1272,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Lemma~4.1"
@@ -49683,8 +50033,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1181,
-            "line_start": 1181,
+            "line_end": 1236,
+            "line_start": 1236,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Lemma~4.1"
@@ -49693,8 +50043,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1815,
-            "line_start": 1810,
+            "line_end": 1870,
+            "line_start": 1865,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -49707,44 +50057,44 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-ef6233b59b95cb",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{cantor1869} G.~Cantor, \\emph{\\\"Uber die einfachen Zahlensysteme}, Z.\\ Math.\\ Phys.\\ \\textbf{14} (1869), 121--128.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 436,
-            "line_start": 436,
+            "line_end": 486,
+            "line_start": 486,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1211,
-            "line_start": 1211,
+            "line_end": 1261,
+            "line_start": 1261,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 400,
-            "line_start": 400,
+            "line_end": 450,
+            "line_start": 450,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1175,
-            "line_start": 1175,
+            "line_end": 1225,
+            "line_start": 1225,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": []
           }
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1819,
-            "line_start": 1815,
+            "line_end": 1874,
+            "line_start": 1870,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -49757,15 +50107,15 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-8ac37c92429a46",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{galambos1976} J.~Galambos, \\emph{Representations of Real Numbers by Infinite Series}, Lecture Notes in Mathematics \\textbf{502}, Springer, 1976, Chapter~1. doi:\\href{https://doi.org/10.1007/BFb0081642}{10.1007/BFb0081642}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 437,
-            "line_start": 437,
+            "line_end": 487,
+            "line_start": 487,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49773,8 +50123,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1212,
-            "line_start": 1212,
+            "line_end": 1262,
+            "line_start": 1262,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49782,8 +50132,8 @@
           },
           {
             "command": "cite",
-            "line_end": 401,
-            "line_start": 401,
+            "line_end": 451,
+            "line_start": 451,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49791,8 +50141,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1176,
-            "line_start": 1176,
+            "line_end": 1226,
+            "line_start": 1226,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Ch.~1"
@@ -49801,8 +50151,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1824,
-            "line_start": 1819,
+            "line_end": 1879,
+            "line_start": 1874,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -49815,15 +50165,15 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-e13ecb7c94852a",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{garaev-luca-shparlinski} M.~Z. Garaev, F.~Luca, and I.~E. Shparlinski, \\emph{Character sums and congruences with $n!$}, Trans.\\ Amer.\\ Math.\\ Soc.\\ \\textbf{356} (2004), no.~12, 5089--5102. \\url{https://doi.org/10.1090/S0002-9947-04-03612-8}; arXiv:\\href{https://arxiv.org/abs/math/0403422}{math/0403422v1}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 290,
-            "line_start": 290,
+            "line_end": 297,
+            "line_start": 297,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49831,8 +50181,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1016,
-            "line_start": 1016,
+            "line_end": 1066,
+            "line_start": 1066,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49840,15 +50190,15 @@
           },
           {
             "command": "cite",
-            "line_end": 1215,
-            "line_start": 1215,
+            "line_end": 1265,
+            "line_start": 1265,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 1399,
-            "line_start": 1399,
+            "line_end": 1454,
+            "line_start": 1454,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49856,8 +50206,8 @@
           },
           {
             "command": "cite",
-            "line_end": 254,
-            "line_start": 254,
+            "line_end": 261,
+            "line_start": 261,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49865,8 +50215,8 @@
           },
           {
             "command": "cite",
-            "line_end": 980,
-            "line_start": 980,
+            "line_end": 1030,
+            "line_start": 1030,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "arXiv v1, Thm.~12, p.~16"
@@ -49874,8 +50224,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1179,
-            "line_start": 1179,
+            "line_end": 1229,
+            "line_start": 1229,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": []
           },
@@ -49891,8 +50241,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1830,
-            "line_start": 1824,
+            "line_end": 1885,
+            "line_start": 1879,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -49905,7 +50255,7 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-34b520c561ee3c",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{stewart2004} C.~L. Stewart, \\emph{On the greatest and least prime factors of $n!+1$, II}, Publ.\\ Math.\\ Debrecen \\textbf{65} (2004), no.~3--4, 461--480. \\url{https://publi.math.unideb.hu/paper/989/download/10_5486_PMD_2004_3190.pdf}.",
@@ -49921,8 +50271,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1210,
-            "line_start": 1210,
+            "line_end": 1260,
+            "line_start": 1260,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "p.~462, (4)"
@@ -49930,8 +50280,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1599,
-            "line_start": 1599,
+            "line_end": 1654,
+            "line_start": 1654,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "p.~464"
@@ -49948,8 +50298,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1174,
-            "line_start": 1174,
+            "line_end": 1224,
+            "line_start": 1224,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "p.~462, (4)"
@@ -49967,8 +50317,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1835,
-            "line_start": 1830,
+            "line_end": 1890,
+            "line_start": 1885,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -49981,15 +50331,15 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-d1710db60eae06",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{koepf-schmersau} W.~Koepf and D.~Schmersau, \\emph{Irrationality of certain infinite series II}, Analysis \\textbf{31} (2011), 117--124. \\url{https://doi.org/10.1524/anly.2011.1094}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1343,
-            "line_start": 1343,
+            "line_end": 1398,
+            "line_start": 1398,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.1, p.~117"
@@ -49997,8 +50347,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1346,
-            "line_start": 1346,
+            "line_end": 1401,
+            "line_start": 1401,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~2.2--2.3, pp.~119--120"
@@ -50025,8 +50375,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1840,
-            "line_start": 1835,
+            "line_end": 1895,
+            "line_start": 1890,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -50039,15 +50389,15 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-a87fa25f28c7b0",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{duverney} D.~Duverney, \\emph{Irrationality of fast converging series of rational numbers}, J.\\ Math.\\ Sci.\\ Univ.\\ Tokyo \\textbf{8} (2001), 275--316. \\url{https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1099,
-            "line_start": 1099,
+            "line_end": 1149,
+            "line_start": 1149,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "pp.~275, 285--287"
@@ -50055,8 +50405,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1360,
-            "line_start": 1360,
+            "line_end": 1415,
+            "line_start": 1415,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "pp.~275, 285--286"
@@ -50064,8 +50414,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1362,
-            "line_start": 1362,
+            "line_end": 1417,
+            "line_start": 1417,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Cor.~3.2, p.~287"
@@ -50073,8 +50423,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1063,
-            "line_start": 1063,
+            "line_end": 1113,
+            "line_start": 1113,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "pp.~275, 285--287"
@@ -50101,8 +50451,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1845,
-            "line_start": 1840,
+            "line_end": 1900,
+            "line_start": 1895,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -50115,15 +50465,15 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-b0b779fff5defe",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{hancl-tijdeman} J.~Han\\v{c}l and R.~Tijdeman, \\href{https://geodesic.mathdoc.fr/articles/10.4064/aa118-4-5/} {\\emph{On the irrationality of factorial series}}, Acta Arith.\\ \\textbf{118} (2005), no.~4, 383--401. doi:10.4064/aa118-4-5.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1386,
-            "line_start": 1386,
+            "line_end": 1441,
+            "line_start": 1441,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~3.1 and Cor.~3.1, pp.~390--391"
@@ -50141,8 +50491,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1851,
-            "line_start": 1845,
+            "line_end": 1906,
+            "line_start": 1900,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -50155,15 +50505,15 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-c835bc94aad831",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{barreto-et-al} K.~Barreto, J.~Kang, S.-h.~Kim, V.~Kova\\v{c}, and S.~Zhang, \\emph{Irrationality of rapidly converging series: a problem of Erd\\H{o}s and Graham}, arXiv:\\href{https://arxiv.org/abs/2601.21442v3}{2601.21442v3}, 2026, Theorems~2--3 and Remark~4.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 1103,
-            "line_start": 1103,
+            "line_end": 1153,
+            "line_start": 1153,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~2--3 and Rem.~4"
@@ -50171,8 +50521,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1369,
-            "line_start": 1369,
+            "line_end": 1424,
+            "line_start": 1424,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~2--3, pp.~2--4"
@@ -50180,8 +50530,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1373,
-            "line_start": 1373,
+            "line_end": 1428,
+            "line_start": 1428,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "qualifiers": [
               "Lem.~8 and Prop.~12, pp.~6, 9--12"
@@ -50189,8 +50539,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1067,
-            "line_start": 1067,
+            "line_end": 1117,
+            "line_start": 1117,
             "path": "paper/reasoning-parts/erdos68/core.tex",
             "qualifiers": [
               "Thms.~2--3 and Rem.~4"
@@ -50217,8 +50567,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 1857,
-            "line_start": 1851,
+            "line_end": 1912,
+            "line_start": 1906,
             "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -50231,7 +50581,247 @@
         "path": "paper/reasoning-parts/erdos68/back.tex",
         "source_id": "source-0f1a3708d62674",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
+      },
+      {
+        "citation_text": "\\bibitem{luca-shparlinski} F.~Luca and I.~E. Shparlinski, \\emph{Prime divisors of shifted factorials}, Bull.\\ London Math.\\ Soc.\\ \\textbf{37} (2005), no.~6, 809--817. doi:\\href{https://doi.org/10.1112/S0024609305004923}{10.1112/S0024609305004923}. Lemma~3, p.~810; proof of Lemma~5, p.~811.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 229,
+            "line_start": 229,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 309,
+            "line_start": 309,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1268,
+            "line_start": 1268,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1270,
+            "line_start": 1270,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 193,
+            "line_start": 193,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 273,
+            "line_start": 273,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1232,
+            "line_start": 1232,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1234,
+            "line_start": 1234,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          }
+        ],
+        "equivalent_source_coordinates": [
+          {
+            "line_end": 1918,
+            "line_start": 1912,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "source_role": "generated_manuscript"
+          }
+        ],
+        "key": "luca-shparlinski",
+        "kind": "bibliography_entry",
+        "line_end": 65,
+        "line_start": 59,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/back.tex",
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
+      },
+      {
+        "citation_text": "\\bibitem{lai} L.~Lai, \\emph{On the largest prime divisor of $n!+1$}, Bull.\\ Aust.\\ Math.\\ Soc.\\ \\textbf{113} (2026), no.~3, 390--403. doi:\\href{https://doi.org/10.1017/S0004972725100543}{10.1017/S0004972725100543}; arXiv:\\href{https://arxiv.org/abs/2103.14894}{2103.14894}. Lemma~2.1, p.~392; display~(2.5) in the proof of Lemma~2.4, p.~394.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 230,
+            "line_start": 230,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 310,
+            "line_start": 310,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 1268,
+            "line_start": 1268,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1271,
+            "line_start": 1271,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 194,
+            "line_start": 194,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 274,
+            "line_start": 274,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 1232,
+            "line_start": 1232,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": []
+          },
+          {
+            "command": "cite",
+            "line_end": 1235,
+            "line_start": 1235,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [
+          {
+            "line_end": 1925,
+            "line_start": 1918,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "source_role": "generated_manuscript"
+          }
+        ],
+        "key": "lai",
+        "kind": "bibliography_entry",
+        "line_end": 72,
+        "line_start": 65,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/back.tex",
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
+      },
+      {
+        "citation_text": "\\bibitem{lai-lupu-sprang} L.~Lai, C.~Lupu, and J.~Sprang, \\emph{On the irrationality of certain $p$-adic zeta values}, Res.\\ Math.\\ Sci.\\ \\textbf{12} (2025), no.~4, Paper No.~77. doi:\\href{https://doi.org/10.1007/s40687-025-00559-x}{10.1007/s40687-025-00559-x}; arXiv:\\href{https://arxiv.org/abs/2505.23088v1}{2505.23088v1}. Numbered as in arXiv v1: Lemma~2.1, p.~3; Lemmas~5.3--5.7, pp.~10--14; Lemma~7.3, p.~20; (8.1), p.~22.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 373,
+            "line_start": 373,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemmas~5.3--5.7 and~7.3"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 374,
+            "line_start": 374,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "(8.1)"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 376,
+            "line_start": 376,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 337,
+            "line_start": 337,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemmas~5.3--5.7 and~7.3"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 338,
+            "line_start": 338,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "(8.1)"
+            ]
+          },
+          {
+            "command": "cite",
+            "line_end": 340,
+            "line_start": 340,
+            "path": "paper/reasoning-parts/erdos68/core.tex",
+            "qualifiers": [
+              "Lemma~2.1"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [
+          {
+            "line_end": 1933,
+            "line_start": 1925,
+            "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+            "source_role": "generated_manuscript"
+          }
+        ],
+        "key": "lai-lupu-sprang",
+        "kind": "bibliography_entry",
+        "line_end": 80,
+        "line_start": 72,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/back.tex",
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
       },
       {
         "citation_text": "\\bibitem{tao2026} T. Tao, \\emph{Mathematics in the age of AI}, 2026, \\href{https://arxiv.org/abs/2608.16753}{arXiv:2608.16753}.",
@@ -52891,7 +53481,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
@@ -52905,7 +53495,7 @@
         "qualifiers": [],
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
@@ -52919,7 +53509,7 @@
         "qualifiers": [],
         "source_id": "source-8ac37c92429a46",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
@@ -52933,7 +53523,7 @@
         "qualifiers": [],
         "source_id": "source-e13ecb7c94852a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
@@ -52949,45 +53539,137 @@
         ],
         "source_id": "source-c835bc94aad831",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "lai",
         "kind": "citation_usage",
-        "line_end": 483,
-        "line_start": 483,
+        "line_end": 492,
+        "line_start": 492,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 494,
+        "line_start": 494,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 501,
+        "line_start": 501,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 502,
+        "line_start": 502,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "qualifiers": [],
         "source_id": "source-57adfd0cdcd8c2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
-        "key": "lai",
+        "key": "lai-lupu-sprang",
         "kind": "citation_usage",
-        "line_end": 490,
-        "line_start": 490,
+        "line_end": 556,
+        "line_start": 556,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "qualifiers": [
-          "(2.5)"
+          "\\S5"
         ],
-        "source_id": "source-57adfd0cdcd8c2",
+        "source_id": "source-b3b7518e07e159",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 557,
+        "line_start": 557,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "qualifiers": [
+          "Lemma~7.3"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 558,
+        "line_start": 558,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "qualifiers": [
+          "(8.1)"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 560,
+        "line_start": 560,
+        "paper_id": "erdos-68-factorial-denominator-irrationality",
+        "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "louwsma-martino",
         "kind": "citation_usage",
-        "line_end": 559,
-        "line_start": 559,
+        "line_end": 587,
+        "line_start": 587,
         "paper_id": "erdos-68-factorial-denominator-irrationality",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "qualifiers": [
@@ -52995,7 +53677,7 @@
         ],
         "source_id": "source-ef6233b59b95cb",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+        "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
       },
       {
         "citation_context": "in_text_citation",
@@ -59327,7 +60009,7 @@
         ],
         "source_id": "source-b378189f39ed98",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
@@ -59341,7 +60023,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
@@ -59357,7 +60039,7 @@
         ],
         "source_id": "source-ef6233b59b95cb",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
@@ -59373,15 +60055,43 @@
         ],
         "source_id": "source-d1710db60eae06",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 229,
+        "line_start": 229,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 230,
+        "line_start": 230,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "garaev-luca-shparlinski",
         "kind": "citation_usage",
-        "line_end": 290,
-        "line_start": 290,
+        "line_end": 297,
+        "line_start": 297,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59389,29 +60099,107 @@
         ],
         "source_id": "source-34b520c561ee3c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 309,
+        "line_start": 309,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 310,
+        "line_start": 310,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 373,
+        "line_start": 373,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [
+          "Lemmas~5.3--5.7 and~7.3"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 374,
+        "line_start": 374,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [
+          "(8.1)"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 376,
+        "line_start": 376,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "cantor1869",
         "kind": "citation_usage",
-        "line_end": 436,
-        "line_start": 436,
+        "line_end": 486,
+        "line_start": 486,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [],
         "source_id": "source-8ac37c92429a46",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "galambos1976",
         "kind": "citation_usage",
-        "line_end": 437,
-        "line_start": 437,
+        "line_end": 487,
+        "line_start": 487,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59419,15 +60207,15 @@
         ],
         "source_id": "source-e13ecb7c94852a",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "garaev-luca-shparlinski",
         "kind": "citation_usage",
-        "line_end": 1016,
-        "line_start": 1016,
+        "line_end": 1066,
+        "line_start": 1066,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59435,15 +60223,15 @@
         ],
         "source_id": "source-34b520c561ee3c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "duverney",
         "kind": "citation_usage",
-        "line_end": 1099,
-        "line_start": 1099,
+        "line_end": 1149,
+        "line_start": 1149,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59451,15 +60239,15 @@
         ],
         "source_id": "source-b0b779fff5defe",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "barreto-et-al",
         "kind": "citation_usage",
-        "line_end": 1103,
-        "line_start": 1103,
+        "line_end": 1153,
+        "line_start": 1153,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59467,15 +60255,15 @@
         ],
         "source_id": "source-0f1a3708d62674",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "stewart2004",
         "kind": "citation_usage",
-        "line_end": 1210,
-        "line_start": 1210,
+        "line_end": 1260,
+        "line_start": 1260,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59483,29 +60271,29 @@
         ],
         "source_id": "source-d1710db60eae06",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "cantor1869",
         "kind": "citation_usage",
-        "line_end": 1211,
-        "line_start": 1211,
+        "line_end": 1261,
+        "line_start": 1261,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [],
         "source_id": "source-8ac37c92429a46",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "galambos1976",
         "kind": "citation_usage",
-        "line_end": 1212,
-        "line_start": 1212,
+        "line_end": 1262,
+        "line_start": 1262,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59513,29 +60301,87 @@
         ],
         "source_id": "source-e13ecb7c94852a",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "garaev-luca-shparlinski",
         "kind": "citation_usage",
-        "line_end": 1215,
-        "line_start": 1215,
+        "line_end": 1265,
+        "line_start": 1265,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [],
         "source_id": "source-34b520c561ee3c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 1268,
+        "line_start": 1268,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 1268,
+        "line_start": 1268,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 1270,
+        "line_start": 1270,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 1271,
+        "line_start": 1271,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "generated_manuscript",
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "louwsma-martino",
         "kind": "citation_usage",
-        "line_end": 1217,
-        "line_start": 1217,
+        "line_end": 1272,
+        "line_start": 1272,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59543,15 +60389,15 @@
         ],
         "source_id": "source-ef6233b59b95cb",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "koepf-schmersau",
         "kind": "citation_usage",
-        "line_end": 1343,
-        "line_start": 1343,
+        "line_end": 1398,
+        "line_start": 1398,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59559,15 +60405,15 @@
         ],
         "source_id": "source-a87fa25f28c7b0",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "koepf-schmersau",
         "kind": "citation_usage",
-        "line_end": 1346,
-        "line_start": 1346,
+        "line_end": 1401,
+        "line_start": 1401,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59575,15 +60421,15 @@
         ],
         "source_id": "source-a87fa25f28c7b0",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "duverney",
         "kind": "citation_usage",
-        "line_end": 1360,
-        "line_start": 1360,
+        "line_end": 1415,
+        "line_start": 1415,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59591,15 +60437,15 @@
         ],
         "source_id": "source-b0b779fff5defe",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "duverney",
         "kind": "citation_usage",
-        "line_end": 1362,
-        "line_start": 1362,
+        "line_end": 1417,
+        "line_start": 1417,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59607,15 +60453,15 @@
         ],
         "source_id": "source-b0b779fff5defe",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "barreto-et-al",
         "kind": "citation_usage",
-        "line_end": 1369,
-        "line_start": 1369,
+        "line_end": 1424,
+        "line_start": 1424,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59623,15 +60469,15 @@
         ],
         "source_id": "source-0f1a3708d62674",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "barreto-et-al",
         "kind": "citation_usage",
-        "line_end": 1373,
-        "line_start": 1373,
+        "line_end": 1428,
+        "line_start": 1428,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59639,15 +60485,15 @@
         ],
         "source_id": "source-0f1a3708d62674",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "hancl-tijdeman",
         "kind": "citation_usage",
-        "line_end": 1386,
-        "line_start": 1386,
+        "line_end": 1441,
+        "line_start": 1441,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59655,15 +60501,15 @@
         ],
         "source_id": "source-c835bc94aad831",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "garaev-luca-shparlinski",
         "kind": "citation_usage",
-        "line_end": 1399,
-        "line_start": 1399,
+        "line_end": 1454,
+        "line_start": 1454,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59671,15 +60517,15 @@
         ],
         "source_id": "source-34b520c561ee3c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "stewart2004",
         "kind": "citation_usage",
-        "line_end": 1599,
-        "line_start": 1599,
+        "line_end": 1654,
+        "line_start": 1654,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "qualifiers": [
@@ -59687,7 +60533,7 @@
         ],
         "source_id": "source-d1710db60eae06",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+        "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
       },
       {
         "citation_context": "in_text_citation",
@@ -59703,7 +60549,7 @@
         ],
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
@@ -59717,7 +60563,7 @@
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
@@ -59733,7 +60579,7 @@
         ],
         "source_id": "source-ef6233b59b95cb",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
@@ -59749,15 +60595,43 @@
         ],
         "source_id": "source-d1710db60eae06",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 193,
+        "line_start": 193,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 194,
+        "line_start": 194,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "garaev-luca-shparlinski",
         "kind": "citation_usage",
-        "line_end": 254,
-        "line_start": 254,
+        "line_end": 261,
+        "line_start": 261,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59765,29 +60639,107 @@
         ],
         "source_id": "source-34b520c561ee3c",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 273,
+        "line_start": 273,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 274,
+        "line_start": 274,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 337,
+        "line_start": 337,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [
+          "Lemmas~5.3--5.7 and~7.3"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 338,
+        "line_start": 338,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [
+          "(8.1)"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai-lupu-sprang",
+        "kind": "citation_usage",
+        "line_end": 340,
+        "line_start": 340,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-b3b7518e07e159",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "cantor1869",
         "kind": "citation_usage",
-        "line_end": 400,
-        "line_start": 400,
+        "line_end": 450,
+        "line_start": 450,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [],
         "source_id": "source-8ac37c92429a46",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "galambos1976",
         "kind": "citation_usage",
-        "line_end": 401,
-        "line_start": 401,
+        "line_end": 451,
+        "line_start": 451,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59795,15 +60747,15 @@
         ],
         "source_id": "source-e13ecb7c94852a",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "garaev-luca-shparlinski",
         "kind": "citation_usage",
-        "line_end": 980,
-        "line_start": 980,
+        "line_end": 1030,
+        "line_start": 1030,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59811,15 +60763,15 @@
         ],
         "source_id": "source-34b520c561ee3c",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "duverney",
         "kind": "citation_usage",
-        "line_end": 1063,
-        "line_start": 1063,
+        "line_end": 1113,
+        "line_start": 1113,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59827,15 +60779,15 @@
         ],
         "source_id": "source-b0b779fff5defe",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "barreto-et-al",
         "kind": "citation_usage",
-        "line_end": 1067,
-        "line_start": 1067,
+        "line_end": 1117,
+        "line_start": 1117,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59843,15 +60795,15 @@
         ],
         "source_id": "source-0f1a3708d62674",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "stewart2004",
         "kind": "citation_usage",
-        "line_end": 1174,
-        "line_start": 1174,
+        "line_end": 1224,
+        "line_start": 1224,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59859,29 +60811,29 @@
         ],
         "source_id": "source-d1710db60eae06",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "cantor1869",
         "kind": "citation_usage",
-        "line_end": 1175,
-        "line_start": 1175,
+        "line_end": 1225,
+        "line_start": 1225,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [],
         "source_id": "source-8ac37c92429a46",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "galambos1976",
         "kind": "citation_usage",
-        "line_end": 1176,
-        "line_start": 1176,
+        "line_end": 1226,
+        "line_start": 1226,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59889,29 +60841,87 @@
         ],
         "source_id": "source-e13ecb7c94852a",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "garaev-luca-shparlinski",
         "kind": "citation_usage",
-        "line_end": 1179,
-        "line_start": 1179,
+        "line_end": 1229,
+        "line_start": 1229,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [],
         "source_id": "source-34b520c561ee3c",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 1232,
+        "line_start": 1232,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 1232,
+        "line_start": 1232,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "luca-shparlinski",
+        "kind": "citation_usage",
+        "line_end": 1234,
+        "line_start": 1234,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [],
+        "source_id": "source-5f85fb0bd75b8b",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "lai",
+        "kind": "citation_usage",
+        "line_end": 1235,
+        "line_start": 1235,
+        "paper_id": "erdos68-factorial-reasoning-surface",
+        "path": "paper/reasoning-parts/erdos68/core.tex",
+        "qualifiers": [
+          "Lemma~2.1"
+        ],
+        "source_id": "source-57adfd0cdcd8c2",
+        "source_role": "authored_reasoning_part",
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "louwsma-martino",
         "kind": "citation_usage",
-        "line_end": 1181,
-        "line_start": 1181,
+        "line_end": 1236,
+        "line_start": 1236,
         "paper_id": "erdos68-factorial-reasoning-surface",
         "path": "paper/reasoning-parts/erdos68/core.tex",
         "qualifiers": [
@@ -59919,7 +60929,7 @@
         ],
         "source_id": "source-ef6233b59b95cb",
         "source_role": "authored_reasoning_part",
-        "source_sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+        "source_sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
       },
       {
         "citation_context": "in_text_citation",
@@ -61428,7 +62438,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:9c4dd37c577c17a3beb76df5af45633e66c8fe3c6adc3742f401cb758ab31fcb",
+  "source_registry_sha256": "sha256:f75616f333689e3ca529156488d5e8ff3150cdd80a6b2d9497449469f705cef7",
   "sources": [
     {
       "artifact_coordinates": [],
@@ -62946,18 +63956,18 @@
         {
           "excerpt_sha256": "sha256:5f0b6ad6c1a9049d21841bc0ffd6cf7d1b57c719cf79d0d3de5d351e68db74b0",
           "expected_text": "\\bibitem{bloom}",
-          "line_end": 875,
-          "line_start": 873,
+          "line_end": 903,
+          "line_start": 901,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
         },
         {
           "excerpt_sha256": "sha256:e5494a50a0f7c7be61da8c4ebed885104322236b7385212b94cb1ca90db8430f",
           "expected_text": "\\bibitem{bloom}",
-          "line_end": 1810,
-          "line_start": 1808,
+          "line_end": 1865,
+          "line_start": 1863,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:f368736822439c8534e80f5aff6ba16c1d13eb3f95e95a7dc6ba80c48fac291b",
@@ -63184,14 +64194,14 @@
           "line_end": 12,
           "line_start": 10,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:6bed281aa83e0e967f07a62c0c4f9e325c6d84433a08920a1e9e738b34aa500a",
           "line_end": 54,
           "line_start": 54,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         }
       ],
       "artifact_links": [
@@ -63211,15 +64221,15 @@
         {
           "excerpt_sha256": "sha256:5f0b6ad6c1a9049d21841bc0ffd6cf7d1b57c719cf79d0d3de5d351e68db74b0",
           "expected_text": "\\bibitem{bloom}",
-          "line_end": 875,
-          "line_start": 873,
+          "line_end": 903,
+          "line_start": 901,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
         },
         {
           "excerpt_sha256": "sha256:e5494a50a0f7c7be61da8c4ebed885104322236b7385212b94cb1ca90db8430f",
           "expected_text": "\\bibitem{bloom}",
-          "line_end": 1810,
-          "line_start": 1808,
+          "line_end": 1865,
+          "line_start": 1863,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -65310,27 +66320,27 @@
     {
       "artifact_coordinates": [
         {
-          "excerpt_sha256": "sha256:e38b1e2e242e9d76d4a3d0b1bbd8a7d5d85a723524d96b8f1aea4d75677f5c6b",
+          "excerpt_sha256": "sha256:cd12daefd19d6365143bf154718d94864fa97ed1c4e4392cd67fea595e1b7ae2",
           "expected_text": "\\bibitem{barreto-et-al}",
-          "line_end": 1857,
-          "line_start": 1851,
+          "line_end": 1912,
+          "line_start": 1906,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
-          "excerpt_sha256": "sha256:e38b1e2e242e9d76d4a3d0b1bbd8a7d5d85a723524d96b8f1aea4d75677f5c6b",
+          "excerpt_sha256": "sha256:cd12daefd19d6365143bf154718d94864fa97ed1c4e4392cd67fea595e1b7ae2",
           "expected_text": "\\bibitem{barreto-et-al}",
           "line_end": 59,
           "line_start": 53,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:49d761ca3134300ac4615e2d01c5d9a85137ba548b704fc42ad9a411b916ad9e",
-          "line_end": 1067,
-          "line_start": 1067,
+          "line_end": 1117,
+          "line_start": 1117,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:926abf3e5f2b7941c4e0ffe11315010181da19788043d3d9afb2c35e7d37dacc",
@@ -65349,14 +66359,14 @@
       ],
       "artifact_links": [
         {
-          "excerpt_sha256": "sha256:e38b1e2e242e9d76d4a3d0b1bbd8a7d5d85a723524d96b8f1aea4d75677f5c6b",
+          "excerpt_sha256": "sha256:cd12daefd19d6365143bf154718d94864fa97ed1c4e4392cd67fea595e1b7ae2",
           "expected_text": "\\bibitem{barreto-et-al}",
-          "line_end": 1857,
-          "line_start": 1851,
+          "line_end": 1912,
+          "line_start": 1906,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
-          "excerpt_sha256": "sha256:e38b1e2e242e9d76d4a3d0b1bbd8a7d5d85a723524d96b8f1aea4d75677f5c6b",
+          "excerpt_sha256": "sha256:cd12daefd19d6365143bf154718d94864fa97ed1c4e4392cd67fea595e1b7ae2",
           "expected_text": "\\bibitem{barreto-et-al}",
           "line_end": 59,
           "line_start": 53,
@@ -65364,8 +66374,8 @@
         },
         {
           "excerpt_sha256": "sha256:49d761ca3134300ac4615e2d01c5d9a85137ba548b704fc42ad9a411b916ad9e",
-          "line_end": 1067,
-          "line_start": 1067,
+          "line_end": 1117,
+          "line_start": 1117,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
@@ -69026,10 +70036,10 @@
         {
           "excerpt_sha256": "sha256:72373b6f062cddf3c5fe068756219ef9a24618e1ae351afdcd65500bc036628d",
           "expected_text": "\\bibitem{garaev-luca-shparlinski}",
-          "line_end": 1830,
-          "line_start": 1824,
+          "line_end": 1885,
+          "line_start": 1879,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:72373b6f062cddf3c5fe068756219ef9a24618e1ae351afdcd65500bc036628d",
@@ -69037,28 +70047,28 @@
           "line_end": 32,
           "line_start": 26,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:0e518720857d7077a3a5e3918fd9223cb6aa2d91a39e690019698a7508c1498b",
-          "line_end": 254,
-          "line_start": 254,
+          "line_end": 261,
+          "line_start": 261,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:b27b56d099544bbbb5abad5374ab18371e01c2ed8e13e41339ca8ab9190a40b5",
-          "line_end": 980,
-          "line_start": 980,
+          "line_end": 1030,
+          "line_start": 1030,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:1ca74b0b99e561f9885f56899175bbda9fae594560bae170c1a0333b24a30fd6",
-          "line_end": 1179,
-          "line_start": 1179,
+          "line_end": 1229,
+          "line_start": 1229,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:1b58313724a34091ccaa18a82fb89592517e2c9aea9375c7f9237f594db7eda5",
@@ -69072,8 +70082,8 @@
         {
           "excerpt_sha256": "sha256:72373b6f062cddf3c5fe068756219ef9a24618e1ae351afdcd65500bc036628d",
           "expected_text": "\\bibitem{garaev-luca-shparlinski}",
-          "line_end": 1830,
-          "line_start": 1824,
+          "line_end": 1885,
+          "line_start": 1879,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -69085,20 +70095,20 @@
         },
         {
           "excerpt_sha256": "sha256:0e518720857d7077a3a5e3918fd9223cb6aa2d91a39e690019698a7508c1498b",
-          "line_end": 254,
-          "line_start": 254,
+          "line_end": 261,
+          "line_start": 261,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
           "excerpt_sha256": "sha256:b27b56d099544bbbb5abad5374ab18371e01c2ed8e13e41339ca8ab9190a40b5",
-          "line_end": 980,
-          "line_start": 980,
+          "line_end": 1030,
+          "line_start": 1030,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
           "excerpt_sha256": "sha256:1ca74b0b99e561f9885f56899175bbda9fae594560bae170c1a0333b24a30fd6",
-          "line_end": 1179,
-          "line_start": 1179,
+          "line_end": 1229,
+          "line_start": 1229,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
@@ -70757,21 +71767,129 @@
     {
       "artifact_coordinates": [
         {
-          "excerpt_sha256": "sha256:78aa4a4ffbb6ef78f50df8ffbe5232ce827fa433a48ba9be7cb9069a232dbc50",
+          "excerpt_sha256": "sha256:a0d504d3d508af2b875b5dec54bc794358303db8ea0ee2c58d70dd66309055b9",
           "expected_text": "\\bibitem{lai}",
-          "line_end": 893,
-          "line_start": 889,
+          "line_end": 923,
+          "line_start": 917,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:01d7a9293432c769f7c4e88c31adcbb2ba676eebeeb8a4c4b9bafd808fa4fb28",
+          "expected_text": "\\bibitem{lai}",
+          "line_end": 1925,
+          "line_start": 1918,
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+        },
+        {
+          "excerpt_sha256": "sha256:01d7a9293432c769f7c4e88c31adcbb2ba676eebeeb8a4c4b9bafd808fa4fb28",
+          "expected_text": "\\bibitem{lai}",
+          "line_end": 72,
+          "line_start": 65,
+          "path": "paper/reasoning-parts/erdos68/back.tex",
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
+        },
+        {
+          "excerpt_sha256": "sha256:dfe30a3d6989304d9eada5ae6d5f075a7e757937833d6734b2160719386fec6a",
+          "line_end": 492,
+          "line_start": 492,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:0000e5c2105d821932b1d5c938f44fa35d2b77c5dcd6893d2bff25f0c8d62a86",
+          "line_end": 502,
+          "line_start": 502,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:5ca1adb6ffb82e2ea61b589c2e98ea08cba156b536884ab859840210a8d8912c",
+          "line_end": 194,
+          "line_start": 194,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:610f7b518aa36dfe61ffb9e2d76965bf9ac38e8bd7d9dff8cb91bda4b2a59e97",
+          "line_end": 274,
+          "line_start": 274,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569",
+          "line_end": 1232,
+          "line_start": 1232,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:cf244f8d406dbc2b1691723895810b510a0d4cb83e857833f09d5ad2404fdf9f",
+          "line_end": 1235,
+          "line_start": 1235,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         }
       ],
       "artifact_links": [
         {
-          "excerpt_sha256": "sha256:78aa4a4ffbb6ef78f50df8ffbe5232ce827fa433a48ba9be7cb9069a232dbc50",
+          "excerpt_sha256": "sha256:a0d504d3d508af2b875b5dec54bc794358303db8ea0ee2c58d70dd66309055b9",
           "expected_text": "\\bibitem{lai}",
-          "line_end": 893,
-          "line_start": 889,
+          "line_end": 923,
+          "line_start": 917,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:01d7a9293432c769f7c4e88c31adcbb2ba676eebeeb8a4c4b9bafd808fa4fb28",
+          "expected_text": "\\bibitem{lai}",
+          "line_end": 1925,
+          "line_start": 1918,
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:01d7a9293432c769f7c4e88c31adcbb2ba676eebeeb8a4c4b9bafd808fa4fb28",
+          "expected_text": "\\bibitem{lai}",
+          "line_end": 72,
+          "line_start": 65,
+          "path": "paper/reasoning-parts/erdos68/back.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:dfe30a3d6989304d9eada5ae6d5f075a7e757937833d6734b2160719386fec6a",
+          "line_end": 492,
+          "line_start": 492,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:0000e5c2105d821932b1d5c938f44fa35d2b77c5dcd6893d2bff25f0c8d62a86",
+          "line_end": 502,
+          "line_start": 502,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:5ca1adb6ffb82e2ea61b589c2e98ea08cba156b536884ab859840210a8d8912c",
+          "line_end": 194,
+          "line_start": 194,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:610f7b518aa36dfe61ffb9e2d76965bf9ac38e8bd7d9dff8cb91bda4b2a59e97",
+          "line_end": 274,
+          "line_start": 274,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569",
+          "line_end": 1232,
+          "line_start": 1232,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:cf244f8d406dbc2b1691723895810b510a0d4cb83e857833f09d5ad2404fdf9f",
+          "line_end": 1235,
+          "line_start": 1235,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
         }
       ],
       "authors": [
@@ -70781,6 +71899,10 @@
         {
           "key": "lai",
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "key": "lai",
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         }
       ],
       "id": "source-57adfd0cdcd8c2",
@@ -70790,16 +71912,45 @@
         "68"
       ],
       "publication_years": [
-        "2021"
+        "2021",
+        "2026"
       ],
-      "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
-      "source_coordinates": [],
-      "source_locators": [],
+      "relation": "Cited in both #68 manuscripts for two steps of the common-denominator growth estimate and its polynomial-shift extension: the nonvanishing cutoff (Lemma 2.1, which restates Lemma 3 of Luca and Shparlinski with the bound n!+f(n) > 1) and the common-divisor subtraction at display (2.5). The paper's theorem concerns the largest prime divisor of n!+f(n) and gives no irrationality result for the #68 series.",
+      "source_coordinates": [
+        {
+          "locator": "Lemma 2.1, arXiv v1 p. 2: for nonzero f in Z[X] there is n_0 >= 2, depending only on f, such that f(n)(n+1)...(n+k) - f(n+k) = 0 has no integer solutions with n >= n_0 and k >= 1, and n!+f(n) > 1 and f(n) != 0 for n >= n_0. The proof refers the first assertion to Lemma 3 of Luca and Shparlinski (2005).",
+          "url": "https://arxiv.org/abs/2103.14894v1"
+        },
+        {
+          "locator": "Proof of Lemma 2.4, display (2.5), arXiv v1 p. 4: a prime power D dividing both n_i!+f(n_i) and n_j!+f(n_j) divides f(n_i)(n_i+1)...(n_j) - f(n_j), which is nonzero by Lemma 2.1 and at most 2x^(C_1+|I_1|).",
+          "url": "https://arxiv.org/abs/2103.14894v1"
+        },
+        {
+          "locator": "Published version, Bull. Aust. Math. Soc. 113 (2026), 390-403, with the same numbering: Lemma 2.1 on p. 392, Lemma 2.4 on p. 393, display (2.5) on p. 394.",
+          "url": "https://doi.org/10.1017/S0004972725100543"
+        }
+      ],
+      "source_locators": [
+        {
+          "locator": "Lemma 2.1, arXiv v1 p. 2: for nonzero f in Z[X] there is n_0 >= 2, depending only on f, such that f(n)(n+1)...(n+k) - f(n+k) = 0 has no integer solutions with n >= n_0 and k >= 1, and n!+f(n) > 1 and f(n) != 0 for n >= n_0. The proof refers the first assertion to Lemma 3 of Luca and Shparlinski (2005).",
+          "url": "https://arxiv.org/abs/2103.14894v1"
+        },
+        {
+          "locator": "Proof of Lemma 2.4, display (2.5), arXiv v1 p. 4: a prime power D dividing both n_i!+f(n_i) and n_j!+f(n_j) divides f(n_i)(n_i+1)...(n_j) - f(n_j), which is nonzero by Lemma 2.1 and at most 2x^(C_1+|I_1|).",
+          "url": "https://arxiv.org/abs/2103.14894v1"
+        },
+        {
+          "locator": "Published version, Bull. Aust. Math. Soc. 113 (2026), 390-403, with the same numbering: Lemma 2.1 on p. 392, Lemma 2.4 on p. 393, display (2.5) on p. 394.",
+          "url": "https://doi.org/10.1017/S0004972725100543"
+        }
+      ],
       "title": "On the largest prime divisor of n!+1",
       "urls": [
-        "https://arxiv.org/abs/2103.14894"
+        "https://arxiv.org/abs/2103.14894",
+        "https://doi.org/10.1017/S0004972725100543"
       ],
-      "verification_state": "bibliography_only"
+      "verification_scope": "arXiv v1 PDF read in full (11 pages); the publisher PDF text confirms the same lemma and display numbers on the printed pages given. Verifies the two cited steps only.",
+      "verification_state": "source_verified"
     },
     {
       "artifact_coordinates": [
@@ -71687,6 +72838,185 @@
         "https://store.doverpublications.com/products/9780486696300"
       ],
       "verification_state": "bibliography_only"
+    },
+    {
+      "artifact_coordinates": [
+        {
+          "excerpt_sha256": "sha256:f4b93b64e57ba9e355c17f9d32a33fad008c653623743e63b5eb9337d3d5ad50",
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "line_end": 928,
+          "line_start": 923,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:a1597d4571d5a4e76df86c113668ef9c13fb36fc9b633ca25cc16e4c4f974a91",
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "line_end": 1918,
+          "line_start": 1912,
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+        },
+        {
+          "excerpt_sha256": "sha256:a1597d4571d5a4e76df86c113668ef9c13fb36fc9b633ca25cc16e4c4f974a91",
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "line_end": 65,
+          "line_start": 59,
+          "path": "paper/reasoning-parts/erdos68/back.tex",
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
+        },
+        {
+          "excerpt_sha256": "sha256:e1073ec626d501f919294499c8b24b446ae999d3d127deae66fe3fdabdccc340",
+          "line_end": 494,
+          "line_start": 494,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:347983f8c64b53210c99c415d4f1f6f743dccf5acd126522a5df5270c2a05c2e",
+          "line_end": 501,
+          "line_start": 501,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:e21825904da9dd31c07d34f4fffbaf1e000f841c245db07d7be4431a25ff51ba",
+          "line_end": 193,
+          "line_start": 193,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:1cd908c32a4075358b4a5b28cd867611db27850b3e5d596c47128f14454d5847",
+          "line_end": 273,
+          "line_start": 273,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569",
+          "line_end": 1232,
+          "line_start": 1232,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:4919897eb071a8d7bba39212c376726b0f4797a611acc5f5c0fdbe9531b41d3d",
+          "line_end": 1234,
+          "line_start": 1234,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        }
+      ],
+      "artifact_links": [
+        {
+          "excerpt_sha256": "sha256:f4b93b64e57ba9e355c17f9d32a33fad008c653623743e63b5eb9337d3d5ad50",
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "line_end": 928,
+          "line_start": 923,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:a1597d4571d5a4e76df86c113668ef9c13fb36fc9b633ca25cc16e4c4f974a91",
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "line_end": 1918,
+          "line_start": 1912,
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:a1597d4571d5a4e76df86c113668ef9c13fb36fc9b633ca25cc16e4c4f974a91",
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "line_end": 65,
+          "line_start": 59,
+          "path": "paper/reasoning-parts/erdos68/back.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:e1073ec626d501f919294499c8b24b446ae999d3d127deae66fe3fdabdccc340",
+          "line_end": 494,
+          "line_start": 494,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:347983f8c64b53210c99c415d4f1f6f743dccf5acd126522a5df5270c2a05c2e",
+          "line_end": 501,
+          "line_start": 501,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:e21825904da9dd31c07d34f4fffbaf1e000f841c245db07d7be4431a25ff51ba",
+          "line_end": 193,
+          "line_start": 193,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:1cd908c32a4075358b4a5b28cd867611db27850b3e5d596c47128f14454d5847",
+          "line_end": 273,
+          "line_start": 273,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569",
+          "line_end": 1232,
+          "line_start": 1232,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:4919897eb071a8d7bba39212c376726b0f4797a611acc5f5c0fdbe9531b41d3d",
+          "line_end": 1234,
+          "line_start": 1234,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        }
+      ],
+      "authors": [
+        "F. Luca",
+        "I. E. Shparlinski"
+      ],
+      "bibliography_keys": [
+        {
+          "key": "luca-shparlinski",
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "key": "luca-shparlinski",
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
+        }
+      ],
+      "id": "source-5f85fb0bd75b8b",
+      "kind": "literature",
+      "paper_reported_coordinates": [],
+      "problems": [
+        "68"
+      ],
+      "publication_years": [
+        "2005"
+      ],
+      "relation": "Cited in both #68 manuscripts as the source of the nonvanishing statement behind the cutoff for polynomial shifts (Lemma 3, which Lai's Lemma 2.1 restates with the bound n!+f(n) > 1) and of the common-divisor relation for n!+f(n) and (n+k)!+f(n+k) (proof of Lemma 5), both used in the common-denominator growth estimate and its polynomial-shift extension. The paper's theorems concern large prime factors of n!+f(n) and give no irrationality result for the #68 series.",
+      "source_coordinates": [
+        {
+          "locator": "Lemma 3, printed p. 810: for nonzero f in Z[X] there is n_0, depending only on f, such that f(n)(n+1)...(n+k) - f(n+k) = 0 has no integer solutions (n, k) with n >= n_0 and k >= 1.",
+          "url": "https://doi.org/10.1112/S0024609305004923"
+        },
+        {
+          "locator": "Proof of Lemma 5, printed p. 811: an integer q >= 2 dividing both n!+f(n) and (n+k)!+f(n+k) divides f(n)(n+1)...(n+k) - f(n+k), which is nonzero for n >= n_0, so q is at most its absolute value.",
+          "url": "https://doi.org/10.1112/S0024609305004923"
+        }
+      ],
+      "source_locators": [
+        {
+          "locator": "Lemma 3, printed p. 810: for nonzero f in Z[X] there is n_0, depending only on f, such that f(n)(n+1)...(n+k) - f(n+k) = 0 has no integer solutions (n, k) with n >= n_0 and k >= 1.",
+          "url": "https://doi.org/10.1112/S0024609305004923"
+        },
+        {
+          "locator": "Proof of Lemma 5, printed p. 811: an integer q >= 2 dividing both n!+f(n) and (n+k)!+f(n+k) divides f(n)(n+1)...(n+k) - f(n+k), which is nonzero for n >= n_0, so q is at most its absolute value.",
+          "url": "https://doi.org/10.1112/S0024609305004923"
+        }
+      ],
+      "title": "Prime divisors of shifted factorials",
+      "urls": [
+        "https://doi.org/10.1112/S0024609305004923"
+      ],
+      "verification_scope": "Publisher PDF of the published version, printed pp. 809-812, visually inspected. Verifies the two cited steps only.",
+      "verification_state": "source_verified"
     },
     {
       "artifact_coordinates": [
@@ -76441,18 +77771,18 @@
         {
           "excerpt_sha256": "sha256:f7f783a750919f760d5509a1087835b3e7cbfd988e6d420a29ddd8357a72026c",
           "expected_text": "\\bibitem{cantor1869}",
-          "line_end": 877,
-          "line_start": 875,
+          "line_end": 905,
+          "line_start": 903,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
         },
         {
           "excerpt_sha256": "sha256:03e47315218fee28c4bf66355ea952ff48f9c781e1fbaeeb3d83c6c0bbcb9a85",
           "expected_text": "\\bibitem{cantor1869}",
-          "line_end": 1819,
-          "line_start": 1815,
+          "line_end": 1874,
+          "line_start": 1870,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:03e47315218fee28c4bf66355ea952ff48f9c781e1fbaeeb3d83c6c0bbcb9a85",
@@ -76460,36 +77790,36 @@
           "line_end": 21,
           "line_start": 17,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:dd9a76109764183a9fe95799985a0cd6c89a669403f323d77b3ba19d6145755a",
-          "line_end": 400,
-          "line_start": 400,
+          "line_end": 450,
+          "line_start": 450,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:d4b5fb1dba248888ffd319fc24274a2bcb70de59be08479fc8b9b752fb73f798",
-          "line_end": 1175,
-          "line_start": 1175,
+          "line_end": 1225,
+          "line_start": 1225,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:f7f783a750919f760d5509a1087835b3e7cbfd988e6d420a29ddd8357a72026c",
           "expected_text": "\\bibitem{cantor1869}",
-          "line_end": 877,
-          "line_start": 875,
+          "line_end": 905,
+          "line_start": 903,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
         },
         {
           "excerpt_sha256": "sha256:03e47315218fee28c4bf66355ea952ff48f9c781e1fbaeeb3d83c6c0bbcb9a85",
           "expected_text": "\\bibitem{cantor1869}",
-          "line_end": 1819,
-          "line_start": 1815,
+          "line_end": 1874,
+          "line_start": 1870,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -76501,14 +77831,14 @@
         },
         {
           "excerpt_sha256": "sha256:dd9a76109764183a9fe95799985a0cd6c89a669403f323d77b3ba19d6145755a",
-          "line_end": 400,
-          "line_start": 400,
+          "line_end": 450,
+          "line_start": 450,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
           "excerpt_sha256": "sha256:d4b5fb1dba248888ffd319fc24274a2bcb70de59be08479fc8b9b752fb73f798",
-          "line_end": 1175,
-          "line_start": 1175,
+          "line_end": 1225,
+          "line_start": 1225,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         }
       ],
@@ -78069,10 +79399,10 @@
         {
           "excerpt_sha256": "sha256:65ce1984f1a5bc8f6bf31f7b2dc8c91bbfec5a192332d2d80f497808ac90298d",
           "expected_text": "\\bibitem{koepf-schmersau}",
-          "line_end": 1840,
-          "line_start": 1835,
+          "line_end": 1895,
+          "line_start": 1890,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:65ce1984f1a5bc8f6bf31f7b2dc8c91bbfec5a192332d2d80f497808ac90298d",
@@ -78080,7 +79410,7 @@
           "line_end": 42,
           "line_start": 37,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:819b066e2ecb846b8387587d00825a6a7dc47bf98551fff676dcbfe8c196f80a",
@@ -78101,8 +79431,8 @@
         {
           "excerpt_sha256": "sha256:65ce1984f1a5bc8f6bf31f7b2dc8c91bbfec5a192332d2d80f497808ac90298d",
           "expected_text": "\\bibitem{koepf-schmersau}",
-          "line_end": 1840,
-          "line_start": 1835,
+          "line_end": 1895,
+          "line_start": 1890,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -78744,10 +80074,10 @@
         {
           "excerpt_sha256": "sha256:93b82e07532c595ce8c3e4690e48b8f8b4b955a46be725042a411f3faf1dabad",
           "expected_text": "\\bibitem{duverney}",
-          "line_end": 1845,
-          "line_start": 1840,
+          "line_end": 1900,
+          "line_start": 1895,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:93b82e07532c595ce8c3e4690e48b8f8b4b955a46be725042a411f3faf1dabad",
@@ -78755,14 +80085,14 @@
           "line_end": 47,
           "line_start": 42,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:a353bbd5216870d1d4db2700320a361f4a38d8923d21a55f93745248f5957a1e",
-          "line_end": 1063,
-          "line_start": 1063,
+          "line_end": 1113,
+          "line_start": 1113,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:9a6d1ba3cc568516fc81678999198956a9c082d92662305c9a4757521dbcc86b",
@@ -78816,8 +80146,8 @@
         {
           "excerpt_sha256": "sha256:93b82e07532c595ce8c3e4690e48b8f8b4b955a46be725042a411f3faf1dabad",
           "expected_text": "\\bibitem{duverney}",
-          "line_end": 1845,
-          "line_start": 1840,
+          "line_end": 1900,
+          "line_start": 1895,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -78829,8 +80159,8 @@
         },
         {
           "excerpt_sha256": "sha256:a353bbd5216870d1d4db2700320a361f4a38d8923d21a55f93745248f5957a1e",
-          "line_end": 1063,
-          "line_start": 1063,
+          "line_end": 1113,
+          "line_start": 1113,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
@@ -79496,18 +80826,18 @@
         {
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb",
           "expected_text": "\\bibitem{erdos1988}",
-          "line_end": 873,
-          "line_start": 868,
+          "line_end": 901,
+          "line_start": 896,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
         },
         {
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb",
           "expected_text": "\\bibitem{erdos1988}",
-          "line_end": 1808,
-          "line_start": 1803,
+          "line_end": 1863,
+          "line_start": 1858,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:41e22e226dc64038986bc97224c7c1ea74fb8cc5b4b7ea1ff0ba5a1e7b45d2c2",
@@ -79667,14 +80997,14 @@
           "line_end": 10,
           "line_start": 5,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:104a79c4c79eea46f102eaa2900c4d9ba3c623a39f852f60a382f3690faadb3f",
           "line_end": 52,
           "line_start": 52,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         }
       ],
       "artifact_links": [
@@ -79688,15 +81018,15 @@
         {
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb",
           "expected_text": "\\bibitem{erdos1988}",
-          "line_end": 873,
-          "line_start": 868,
+          "line_end": 901,
+          "line_start": 896,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
         },
         {
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb",
           "expected_text": "\\bibitem{erdos1988}",
-          "line_end": 1808,
-          "line_start": 1803,
+          "line_end": 1863,
+          "line_start": 1858,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -80259,6 +81589,208 @@
         "https://doi.org/10.1017/CBO9780511897184.009"
       ],
       "verification_state": "existing_source_closure"
+    },
+    {
+      "artifact_coordinates": [
+        {
+          "excerpt_sha256": "sha256:0e1f48f41e46b5c64d0cc85d3164c9734d7fecd48fade710c1be05849766f934",
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "line_end": 936,
+          "line_start": 928,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:77ec5a44baf12f7af52bf93ecd994b0c2597959d104f9e8f9bdd08fd52379874",
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "line_end": 1933,
+          "line_start": 1925,
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
+        },
+        {
+          "excerpt_sha256": "sha256:77ec5a44baf12f7af52bf93ecd994b0c2597959d104f9e8f9bdd08fd52379874",
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "line_end": 80,
+          "line_start": 72,
+          "path": "paper/reasoning-parts/erdos68/back.tex",
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
+        },
+        {
+          "excerpt_sha256": "sha256:29c6295fe12a4c23fbbcbfee9ae1abbe9bb1303b92c758ba5c17224ea9366867",
+          "line_end": 556,
+          "line_start": 556,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:58bff556d3afc6a56c40480db1cf367a4324aa5a5dbf016717484c0015aad37a",
+          "line_end": 557,
+          "line_start": 557,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:5870c5f434afc159fdfc90a83d0573a2f14fd84eeed7eaebf1387aaa24f8510c",
+          "line_end": 558,
+          "line_start": 558,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:3d474c866d55639e06b1ef14730e4337a021f2fc60cf71e6968d1d248f20eeee",
+          "line_end": 560,
+          "line_start": 560,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
+        },
+        {
+          "excerpt_sha256": "sha256:21b00254a22f32bf11e90837e00d0f531d2814ce4b95f53698972da9cea9aef4",
+          "line_end": 337,
+          "line_start": 337,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:dbef66b9e3c5d8c0a09d755196b0d01fe8b1ada7e36b96ef9d0a92eec2f71946",
+          "line_end": 338,
+          "line_start": 338,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        },
+        {
+          "excerpt_sha256": "sha256:3d474c866d55639e06b1ef14730e4337a021f2fc60cf71e6968d1d248f20eeee",
+          "line_end": 340,
+          "line_start": 340,
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
+        }
+      ],
+      "artifact_links": [
+        {
+          "excerpt_sha256": "sha256:0e1f48f41e46b5c64d0cc85d3164c9734d7fecd48fade710c1be05849766f934",
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "line_end": 936,
+          "line_start": 928,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:77ec5a44baf12f7af52bf93ecd994b0c2597959d104f9e8f9bdd08fd52379874",
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "line_end": 1933,
+          "line_start": 1925,
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:77ec5a44baf12f7af52bf93ecd994b0c2597959d104f9e8f9bdd08fd52379874",
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "line_end": 80,
+          "line_start": 72,
+          "path": "paper/reasoning-parts/erdos68/back.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:29c6295fe12a4c23fbbcbfee9ae1abbe9bb1303b92c758ba5c17224ea9366867",
+          "line_end": 556,
+          "line_start": 556,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:58bff556d3afc6a56c40480db1cf367a4324aa5a5dbf016717484c0015aad37a",
+          "line_end": 557,
+          "line_start": 557,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:5870c5f434afc159fdfc90a83d0573a2f14fd84eeed7eaebf1387aaa24f8510c",
+          "line_end": 558,
+          "line_start": 558,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:3d474c866d55639e06b1ef14730e4337a021f2fc60cf71e6968d1d248f20eeee",
+          "line_end": 560,
+          "line_start": 560,
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:21b00254a22f32bf11e90837e00d0f531d2814ce4b95f53698972da9cea9aef4",
+          "line_end": 337,
+          "line_start": 337,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:dbef66b9e3c5d8c0a09d755196b0d01fe8b1ada7e36b96ef9d0a92eec2f71946",
+          "line_end": 338,
+          "line_start": 338,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:3d474c866d55639e06b1ef14730e4337a021f2fc60cf71e6968d1d248f20eeee",
+          "line_end": 340,
+          "line_start": 340,
+          "path": "paper/reasoning-parts/erdos68/core.tex"
+        }
+      ],
+      "authors": [
+        "L. Lai",
+        "C. Lupu",
+        "J. Sprang"
+      ],
+      "bibliography_keys": [
+        {
+          "key": "lai-lupu-sprang",
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+        },
+        {
+          "key": "lai-lupu-sprang",
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
+        }
+      ],
+      "id": "source-b3b7518e07e159",
+      "kind": "literature",
+      "paper_reported_coordinates": [],
+      "problems": [
+        "68"
+      ],
+      "publication_years": [
+        "2025"
+      ],
+      "relation": "Cited in both #68 manuscripts as a comparison for the difference between a common-denominator bound and the denominator after reduction: for their linear forms in p-adic zeta values the lcm-power denominator bound is divided by a quantified product Phi_n. No result of the paper is applied to the #68 series, and the manuscripts establish no asymptotic saving of this kind for its prefixes.",
+      "source_coordinates": [
+        {
+          "locator": "Lemma 2.1, arXiv v1 p. 3, quoted there from L. Lai, Int. J. Number Theory 21 (2025), Lemma 2.1: if integer linear forms L_n satisfy max_i |l_(i,n)| |L_n(xi)|_p -> 0 along an unbounded set of n and L_n(xi) != 0 there, then some xi_i is irrational.",
+          "url": "https://arxiv.org/abs/2505.23088v1"
+        },
+        {
+          "locator": "Section 5, arXiv v1 pp. 10-14: Lemma 5.3 bounds the coefficient denominators by powers of d_n = lcm(1,...,n); Lemmas 5.4-5.7 show that the cleared coefficients remain integral after division by Phi_n, a product of powers of primes in (sqrt(pn), n].",
+          "url": "https://arxiv.org/abs/2505.23088v1"
+        },
+        {
+          "locator": "Lemma 7.3, arXiv v1 p. 20, and inequality (8.1), p. 22: Phi_n = exp(varpi_p n + o(n)), and varpi_p enters the inequality under which the rescaled forms Phi_n^(-1) d_n^(p-1+s) S_n, which have integer coefficients, meet the criterion quoted in Lemma 2.1.",
+          "url": "https://arxiv.org/abs/2505.23088v1"
+        }
+      ],
+      "source_locators": [
+        {
+          "locator": "Lemma 2.1, arXiv v1 p. 3, quoted there from L. Lai, Int. J. Number Theory 21 (2025), Lemma 2.1: if integer linear forms L_n satisfy max_i |l_(i,n)| |L_n(xi)|_p -> 0 along an unbounded set of n and L_n(xi) != 0 there, then some xi_i is irrational.",
+          "url": "https://arxiv.org/abs/2505.23088v1"
+        },
+        {
+          "locator": "Section 5, arXiv v1 pp. 10-14: Lemma 5.3 bounds the coefficient denominators by powers of d_n = lcm(1,...,n); Lemmas 5.4-5.7 show that the cleared coefficients remain integral after division by Phi_n, a product of powers of primes in (sqrt(pn), n].",
+          "url": "https://arxiv.org/abs/2505.23088v1"
+        },
+        {
+          "locator": "Lemma 7.3, arXiv v1 p. 20, and inequality (8.1), p. 22: Phi_n = exp(varpi_p n + o(n)), and varpi_p enters the inequality under which the rescaled forms Phi_n^(-1) d_n^(p-1+s) S_n, which have integer coefficients, meet the criterion quoted in Lemma 2.1.",
+          "url": "https://arxiv.org/abs/2505.23088v1"
+        }
+      ],
+      "title": "On the irrationality of certain p-adic zeta values",
+      "urls": [
+        "https://arxiv.org/abs/2505.23088v1",
+        "https://doi.org/10.1007/s40687-025-00559-x"
+      ],
+      "verification_scope": "arXiv v1 PDF read in full (24 pages). Locators refer to arXiv v1; the published numbering was not compared.",
+      "verification_state": "source_verified"
     },
     {
       "artifact_coordinates": [
@@ -80949,10 +82481,10 @@
         {
           "excerpt_sha256": "sha256:610aa0bc95650596fdb586b770690523132fd752b2c38d7e71bf028e7f0205dd",
           "expected_text": "\\bibitem{hancl-tijdeman}",
-          "line_end": 1851,
-          "line_start": 1845,
+          "line_end": 1906,
+          "line_start": 1900,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:610aa0bc95650596fdb586b770690523132fd752b2c38d7e71bf028e7f0205dd",
@@ -80960,7 +82492,7 @@
           "line_end": 53,
           "line_start": 47,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:4509bd5e1770c4bbc704abe603c8fa1e11b21a6f8df091f107f3860fd37f5357",
@@ -80974,8 +82506,8 @@
         {
           "excerpt_sha256": "sha256:610aa0bc95650596fdb586b770690523132fd752b2c38d7e71bf028e7f0205dd",
           "expected_text": "\\bibitem{hancl-tijdeman}",
-          "line_end": 1851,
-          "line_start": 1845,
+          "line_end": 1906,
+          "line_start": 1900,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -81584,10 +83116,10 @@
         {
           "excerpt_sha256": "sha256:9269a1d95c9cb51a3872a4d5fffc5a6b11d125283281b8f2b64a0a71a94197e9",
           "expected_text": "\\bibitem{stewart2004}",
-          "line_end": 1835,
-          "line_start": 1830,
+          "line_end": 1890,
+          "line_start": 1885,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:9269a1d95c9cb51a3872a4d5fffc5a6b11d125283281b8f2b64a0a71a94197e9",
@@ -81595,21 +83127,21 @@
           "line_end": 37,
           "line_start": 32,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:98e11f1b33ae8960114ddbce12be389f32f1c1b77093e00d348188e21a665344",
           "line_end": 150,
           "line_start": 150,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:d47cc382e7afc7f184344441f0e14f5174027851786e20b58d14e8c99a95145a",
-          "line_end": 1174,
-          "line_start": 1174,
+          "line_end": 1224,
+          "line_start": 1224,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:f200b0e258f381503d98f0b8572739adf2ab69e2b55df1b570dd5dc74cdcd699",
@@ -81631,8 +83163,8 @@
         {
           "excerpt_sha256": "sha256:9269a1d95c9cb51a3872a4d5fffc5a6b11d125283281b8f2b64a0a71a94197e9",
           "expected_text": "\\bibitem{stewart2004}",
-          "line_end": 1835,
-          "line_start": 1830,
+          "line_end": 1890,
+          "line_start": 1885,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -81650,8 +83182,8 @@
         },
         {
           "excerpt_sha256": "sha256:d47cc382e7afc7f184344441f0e14f5174027851786e20b58d14e8c99a95145a",
-          "line_end": 1174,
-          "line_start": 1174,
+          "line_end": 1224,
+          "line_start": 1224,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
@@ -82384,18 +83916,18 @@
         {
           "excerpt_sha256": "sha256:ce3aacc46dd9982236f7b68acf0ec1f1c1aca32c57a7ead73b45c724bf7be460",
           "expected_text": "\\bibitem{galambos1976}",
-          "line_end": 880,
-          "line_start": 877,
+          "line_end": 908,
+          "line_start": 905,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
         },
         {
           "excerpt_sha256": "sha256:cedd080125403772538229eaf126fbb69017041066d4453daada9b963109d2db",
           "expected_text": "\\bibitem{galambos1976}",
-          "line_end": 1824,
-          "line_start": 1819,
+          "line_end": 1879,
+          "line_start": 1874,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:cedd080125403772538229eaf126fbb69017041066d4453daada9b963109d2db",
@@ -82403,36 +83935,36 @@
           "line_end": 26,
           "line_start": 21,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:011aac74bb7e11d8f00fd425d894c85b3bd4993c1582a90e39564fc6de6d05d8",
-          "line_end": 401,
-          "line_start": 401,
+          "line_end": 451,
+          "line_start": 451,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:1c5ce347370e0f2e4d75a5e1a7d184f4fe313ae6393bb0e1558a58fbda582611",
-          "line_end": 1176,
-          "line_start": 1176,
+          "line_end": 1226,
+          "line_start": 1226,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:ce3aacc46dd9982236f7b68acf0ec1f1c1aca32c57a7ead73b45c724bf7be460",
           "expected_text": "\\bibitem{galambos1976}",
-          "line_end": 880,
-          "line_start": 877,
+          "line_end": 908,
+          "line_start": 905,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
         },
         {
           "excerpt_sha256": "sha256:cedd080125403772538229eaf126fbb69017041066d4453daada9b963109d2db",
           "expected_text": "\\bibitem{galambos1976}",
-          "line_end": 1824,
-          "line_start": 1819,
+          "line_end": 1879,
+          "line_start": 1874,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -82444,14 +83976,14 @@
         },
         {
           "excerpt_sha256": "sha256:011aac74bb7e11d8f00fd425d894c85b3bd4993c1582a90e39564fc6de6d05d8",
-          "line_end": 401,
-          "line_start": 401,
+          "line_end": 451,
+          "line_start": 451,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         },
         {
           "excerpt_sha256": "sha256:1c5ce347370e0f2e4d75a5e1a7d184f4fe313ae6393bb0e1558a58fbda582611",
-          "line_end": 1176,
-          "line_start": 1176,
+          "line_end": 1226,
+          "line_start": 1226,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         }
       ],
@@ -83737,18 +85269,18 @@
         {
           "excerpt_sha256": "sha256:bade0d216eca6c368176aac7e67fba295653e53d2dd461bf5a587f72fb873b85",
           "expected_text": "\\bibitem{louwsma-martino}",
-          "line_end": 889,
-          "line_start": 884,
+          "line_end": 917,
+          "line_start": 912,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106"
+          "sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2"
         },
         {
           "excerpt_sha256": "sha256:914493d46467de68f4694608090ada82775de8b29aeffdda4fe43be291dc4ee7",
           "expected_text": "\\bibitem{louwsma-martino}",
-          "line_end": 1815,
-          "line_start": 1810,
+          "line_end": 1870,
+          "line_start": 1865,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f"
+          "sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db"
         },
         {
           "excerpt_sha256": "sha256:914493d46467de68f4694608090ada82775de8b29aeffdda4fe43be291dc4ee7",
@@ -83756,36 +85288,36 @@
           "line_end": 17,
           "line_start": 12,
           "path": "paper/reasoning-parts/erdos68/back.tex",
-          "sha256": "sha256:1cc548b6790dda5e9d8b4f8c90832d16e4d7b648e9f807a388f6926efd74ea3f"
+          "sha256": "sha256:db0ac5dc54213f1aeeb641bce87a1721a6a6fe5ec5912920176fec6c908ed696"
         },
         {
           "excerpt_sha256": "sha256:8d44e1afd5543e22611e7b2e88c11f10ad3956cbb21387dfae176623c218e232",
           "line_end": 97,
           "line_start": 97,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         },
         {
           "excerpt_sha256": "sha256:186943c5320ca400ba71ec0d287f6d1f2c0b582ed19d097801bbf47073324fc9",
-          "line_end": 1181,
-          "line_start": 1181,
+          "line_end": 1236,
+          "line_start": 1236,
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "sha256": "sha256:ea4cbce2fc86a68d1dda9ed8947f81837641946d89ff27d764991b6e257334e2"
+          "sha256": "sha256:6d095fdb38c1ab1771364d228db48701b073ac6d9aae79619d8beaeabf9e9558"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:bade0d216eca6c368176aac7e67fba295653e53d2dd461bf5a587f72fb873b85",
           "expected_text": "\\bibitem{louwsma-martino}",
-          "line_end": 889,
-          "line_start": 884,
+          "line_end": 917,
+          "line_start": 912,
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
         },
         {
           "excerpt_sha256": "sha256:914493d46467de68f4694608090ada82775de8b29aeffdda4fe43be291dc4ee7",
           "expected_text": "\\bibitem{louwsma-martino}",
-          "line_end": 1815,
-          "line_start": 1810,
+          "line_end": 1870,
+          "line_start": 1865,
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex"
         },
         {
@@ -83803,8 +85335,8 @@
         },
         {
           "excerpt_sha256": "sha256:186943c5320ca400ba71ec0d287f6d1f2c0b582ed19d097801bbf47073324fc9",
-          "line_end": 1181,
-          "line_start": 1181,
+          "line_end": 1236,
+          "line_start": 1236,
           "path": "paper/reasoning-parts/erdos68/core.tex"
         }
       ],
