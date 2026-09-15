@@ -911,6 +911,7 @@ jobs:
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: |
           failed=()
+          # test_validation_singleflight is left out because it needs copy-on-write file clones, which the ubuntu runner's filesystem lacks.
           for name in \
             test_build_benchmark_packet_environment \
             test_check_metadata_environment \
@@ -943,8 +944,7 @@ jobs:
             test_semantic_review_rebind \
             test_shard_closure_t64 \
             test_source_bound_reproduction \
-            test_strict_prime_semantic_digest \
-            test_validation_singleflight
+            test_strict_prime_semantic_digest
           do
             echo "::group::$name"
             if python3 "scripts/$name.py"; then
