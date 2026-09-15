@@ -27,7 +27,7 @@ F(t)=\sum_{n\ge1}\frac1{t^n-1}
 ```
 where $`\tau(n)`$ is the number of positive divisors of $`n`$. Erdős Problem #1049 asks for irrationality at every rational $`t>1`$ \[erdos1988, p. 102\]. The theorem below proves an explicit sufficient region and settles the power family in the title.
 
-Cyclotomic cancellation produces positive forms $`\Lambda_n=U_nF-V_n`$ with integral coefficient polynomials of degree at most $`W_n`$, and
+Cyclotomic cancellation in the linear forms of Zudilin’s 2004 construction \[zudilin2004\] produces positive forms $`\Lambda_n=U_nF-V_n`$ with integral coefficient polynomials of degree at most $`W_n`$, and
 ``` math
 \log\!\bigl(b^{W_n}\Lambda_n(a/b)\bigr)
  =\bigl(C_1\log b-C_0\log a\bigr)n^2+o(n^2).
@@ -74,7 +74,7 @@ The cancellation is performed before homogenisation, so the clearing degree is t
 a_0=14n+1,\quad a_1=12n+1,\quad a_2=14n+1,\quad\beta=27n+2,
  \qquad N=15n.
 ```
-Use the coefficient pair $`A_n,B_n`$ of the source identities \[zudilin2004, (8)–(11)\], with $`H_n=A_nF-B_n`$. Put $`D_N(X)=\prod_{\ell=1}^{N}\Phi_\ell(X)`$, $`M_n=266n^2+34n+1`$, and
+Use the coefficient pair $`A_n,B_n`$ of the source identities \[zudilin2004, (8)–(11), pp. 156–157\], with $`H_n=A_nF-B_n`$. Put $`D_N(X)=\prod_{\ell=1}^{N}\Phi_\ell(X)`$, $`M_n=266n^2+34n+1`$, and
 ``` math
 \Omega_n(X)=\prod_{\ell=2}^{N}\Phi_\ell(X)^{\nu_\ell},
  \qquad \nu_\ell=\omega(n/\ell),
@@ -97,18 +97,18 @@ is zero or one. Its support in $`[0,1)`$ consists of
 [6/7,13/15),\ [13/14,14/15).
 \end{gathered}
 ```
-These are the intervals $`\mathcal I`$ used to define $`J`$. The zero-one values and this thirteen-interval support are [omega indicator](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297).
+These are the intervals $`\mathcal I`$ used to define $`J`$. The function $`\omega`$, these thirteen intervals and the exponents $`\nu_\ell=\omega(n/\ell)`$ of the source’s (22) are printed at \[zudilin2004, pp. 161–162\]. The zero-one values and this thirteen-interval support are [omega indicator](https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean#L1297).
 
 #### Integral polynomials and their degrees.
 
-The source’s polynomial inclusion is Lemma 7, display (23). Its parameter vector is $`n(13,14,12,14,15,13)`$, its maximum is $`15n`$, and $`\beta-a_1-a_2=n>0`$. Its hypotheses therefore hold for every $`n\ge1`$. It gives
+The source’s polynomial inclusion is Lemma 7, display (23) \[zudilin2004, p. 161\]. Its parameter vector is $`n(13,14,12,14,15,13)`$, its maximum is $`15n`$, and $`\beta-a_1-a_2=n>0`$, which is the positivity condition $`s>0`$ of the lemma. The conditions (14) of \[zudilin2004, p. 157\], $`a_1\le a_2`$ and $`a_1+a_2\le\beta\le a_0+a_2`$, hold as well, so the exponent in (23) is the integer (16), which equals $`M_n`$. The lemma’s hypotheses therefore hold for every $`n\ge1`$. It gives
 ``` math
 \Lambda_n(X)=X^{-M_n}\frac{D_N(X)}{\Omega_n(X)}H_n(X)
             =U_n(X)F(X)-V_n(X),\qquad U_n,V_n\in\mathbb Z[X].
 ```
-This is the polynomial conclusion before the source’s subsequent integer-specialisation step in display (24). The coefficientwise interpretation also follows by comparing the source rational coefficients: $`F`$ is not a rational function, since $`F(e^h)=h^{-1}\log(1/h)+O(h^{-1})`$ as $`h\downarrow0`$. For this estimate split the original sum at $`n=1/h`$; the remaining geometric tail is $`O(h^{-1})`$.
+This is the polynomial conclusion before the source’s subsequent integer-specialisation step in display (24) on p. 162. The coefficientwise interpretation also follows by comparing the source rational coefficients: $`F`$ is not a rational function, since $`F(e^h)=h^{-1}\log(1/h)+O(h^{-1})`$ as $`h\downarrow0`$. For this estimate split the original sum at $`n=1/h`$; the remaining geometric tail is $`O(h^{-1})`$.
 
-In the source expression for $`A_n`$, the degree of the $`k`$th summand is
+In the source expression (10) for $`A_n`$, with coefficients (8) on p. 156, the degree of the $`k`$th summand is
 ``` math
 d_k=a_0k+E_k+(a_1-1)(k-a_1)+(\beta-k-1)(k-a_2),
 ```
@@ -145,7 +145,7 @@ K_n/n^2\longrightarrow C_1,\qquad
 
 #### A positive remainder at every fixed real base.
 
-For $`x>1`$ and $`q=1/x`$, the source identity has the positive representation
+For $`x>1`$ and $`q=1/x`$, the source identity (9) on p. 156 has the positive representation
 ``` math
 H_n(x)=\sum_{t\ge0}q^{a_0t}
  \frac{(q^{t+1};q)_{a_1-1}}{(q;q)_{a_1-1}}
@@ -248,7 +248,7 @@ Let $`\eta\downarrow0`$. The resulting bound is $`1+\alpha/\tau=(1-\theta)/(\the
 
 #### Comparison and scope.
 
-Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gives $`\log b/\log a<\theta_{\rm BV}:=1/2-1/\pi^2`$. Since $`\pi^2<10`$, one has $`\theta_{\rm BV}<2/5<\log4/\log31`$. The displayed sufficient regions therefore differ on $`[\theta_{\rm BV},\theta^*)`$. The direction $`(14,12,14;27)`$, its thirteen intervals and the constant $`\mu\approx2.46497868`$ are inherited from \[zudilin2004, p. 162\], where $`\mu`$ bounds an integer-base irrationality exponent. The rational-base extension announced in \[zudilin2016, Section 2\] has the same shape with an unspecified computable constant. Here the polynomial specialisation identifies $`\mu`$ as admissible for $`F`$; no priority claim is attached.
+Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gives $`\log b/\log a<\theta_{\rm BV}:=1/2-1/\pi^2`$. Since $`\pi^2<10`$, one has $`\theta_{\rm BV}<2/5<\log4/\log31`$. The displayed sufficient regions therefore differ on $`[\theta_{\rm BV},\theta^*)`$. The direction $`(14,12,14;27)`$, its thirteen intervals and the constant $`\mu\approx2.46497868`$ are inherited from \[zudilin2004, p. 162\], where $`\mu`$ bounds an integer-base irrationality exponent \[zudilin2004, Thm. 1, p. 154\]. The extension to non-integer rational bases noted in \[zudilin2016, Sec. 2, p. 4\] has the same shape, with the computable constant left unspecified. Here the polynomial specialisation identifies $`\mu`$ as admissible for $`F`$; no priority claim is attached.
 
 <div id="res:sevenhalves" class="theorem">
 
@@ -298,7 +298,7 @@ which is negative on the stated sufficient region. The arithmetic form of that r
 
 Here the problem is cancellation inside a determinant. Entrywise orders give only a lower bound because terms of that order may cancel. The moment expansion below resolves this by finding one uniquely least-order index tuple, whose coefficient is nonzero. This is a formal-power-series argument; fixed-base estimates are a separate question addressed after the proof.
 
-At $`x=z=1`$, Zudilin’s normalized moments are
+At $`x=z=1`$, Zudilin’s normalized moments \[zudilin2016, (6), pp. 6–7\] are
 ``` math
 v_m^*=\sum_{t\ge0}q^{(m+1)t}
  \frac{(q;q)_m^3(q^{t+1};q)_m}{(q^{m+1+t};q)_{m+1}},
@@ -310,7 +310,7 @@ His row transformation proves
 \operatorname{ord}_q V_N^*\ge
  \frac{N(N-1)(2N-1)}6
 ```
-for every $`N\ge1`$ \[zudilin2016, Section 4\]. A formal moment expansion identifies the unique least-order term and shows that this estimate is always sharp.
+for every $`N\ge1`$ \[zudilin2016, Sec. 4, Lemma 1, pp. 6–7\]. A formal moment expansion identifies the unique least-order term and shows that this estimate is always sharp.
 
 <div id="res:zudilin-sharp-qorder" class="theorem">
 
@@ -645,7 +645,7 @@ The declarations linked at 99f4bf47422a live in seven modules: `RationalBaseLa
 
 99
 
-P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). P. Bundschuh and K. Väänänen, [*Arithmetical investigations of a certain infinite product*](https://numdam.org/item/CM_1994__91_2_175_0.pdf), Compositio Math. **91** (1994), no. 2, 175–199. W. Zudilin, [*Heine’s basic transform and a permutation group for $`q`$-harmonic series*](https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/), Acta Arith. **111** (2004), no. 2, 153–164, doi:10.4064/aa111-2-4. W. Zudilin, [*On the irrationality of generalized $`q`$-logarithm*](https://arxiv.org/abs/1601.02688), arXiv:1601.02688; Res. Number Theory **2** (2016), doi:[10.1007/s40993-016-0042-x](https://doi.org/10.1007/s40993-016-0042-x). The remark that the results extend to non-integer $`p=r/s`$, $`|p|>1`$, under an assumption $`\log|r|>c\log|s|`$ for a computable $`c>0`$, is at the end of Section 2; no value of $`c`$ is computed there, and the remark is made for the generalized $`q`$-logarithm of that paper. T. F. Bloom, [*Erdős Problem \#1049*](https://www.erdosproblems.com/1049), `erdosproblems.com/1049`, accessed 28 July 2026 (page displays “last edited 28 September 2025”). The current record labels the problem open, cites <span class="upright">\[Er88c, p. 102\]</span> and <span class="upright">\[Er48\]</span>, and explicitly describes its status as the website owner’s present assessment rather than a literature-completeness guarantee. J. Bell and D. Smertnig, [*Mahler series with multiplicative coefficient sequences*](https://arxiv.org/abs/2603.23456), arXiv:2603.23456v1, 24 March 2026. The introduction explicitly includes the divisor and totient functions among the examples which are not $`k`$-Mahler for any $`k\ge2`$.
+P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). P. Bundschuh and K. Väänänen, [*Arithmetical investigations of a certain infinite product*](https://numdam.org/item/CM_1994__91_2_175_0.pdf), Compositio Math. **91** (1994), no. 2, 175–199. W. Zudilin, [*Heine’s basic transform and a permutation group for $`q`$-harmonic series*](https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/), Acta Arith. **111** (2004), no. 2, 153–164, doi:[10.4064/aa111-2-4](https://doi.org/10.4064/aa111-2-4). Page references are to the printed journal pages. W. Zudilin, [*On the irrationality of generalized $`q`$-logarithm*](https://arxiv.org/abs/1601.02688), arXiv:1601.02688; Res. Number Theory **2** (2016), Art. 15, doi:[10.1007/s40993-016-0042-x](https://doi.org/10.1007/s40993-016-0042-x). Page references are to arXiv:1601.02688v2. The remark that the results extend to non-integer $`p=r/s`$, $`|p|>1`$, under an assumption $`\log|r|>c\log|s|`$ for a computable $`c>0`$, is in Section 2, p. 4, in the paragraph beginning “Finally, we remark”; no value of $`c`$ is computed there, and the remark is made for the generalized $`q`$-logarithm of that paper. T. F. Bloom, [*Erdős Problem \#1049*](https://www.erdosproblems.com/1049), `erdosproblems.com/1049`, accessed 28 July 2026 (page displays “last edited 28 September 2025”). The current record labels the problem open, cites <span class="upright">\[Er88c, p. 102\]</span> and <span class="upright">\[Er48\]</span>, and explicitly describes its status as the website owner’s present assessment rather than a literature-completeness guarantee. J. Bell and D. Smertnig, [*Mahler series with multiplicative coefficient sequences*](https://arxiv.org/abs/2603.23456), arXiv:2603.23456v1, 24 March 2026. The introduction explicitly includes the divisor and totient functions among the examples which are not $`k`$-Mahler for any $`k\ge2`$.
 
 </div>
 
