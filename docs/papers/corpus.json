@@ -1673,7 +1673,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:f7d7a8d1ad03c411bde081773a2c05228bd46d6433d741e92674253dc474d262",
+      "source_sha256": "sha256:374bbf363aa3c78623662931b06687b36e73c1c9615bd5d80d183c19ea408885",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
@@ -1756,37 +1756,37 @@
           "level": 1,
           "id": "sec:open",
           "title": "The remaining arithmetic estimate",
-          "line": 460
+          "line": 462
         },
         {
           "level": 4,
           "id": "formal-scope-and-supporting-record.",
           "title": "Formal scope and supporting record.",
-          "line": 510
+          "line": 512
         },
         {
           "level": 4,
           "id": "declarations.",
           "title": "Declarations.",
-          "line": 516
+          "line": 518
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 522
+          "line": 524
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 528
+          "line": 530
         }
       ],
-      "citations_rendered": 6,
+      "citations_rendered": 9,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:1b1d1fe1ffe6c1ea4d97993a7c10a9b5eb9a17ca0ac0c922839163c257c92503",
-      "pdf_byte_count": 104210,
+      "pdf_sha256": "sha256:a7a8992334b867634e6fa19e3da25a3a2cb85bfb86e0c59c32c16c67defc3586",
+      "pdf_byte_count": 106806,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1809,7 +1809,7 @@
           {
             "id": "sec:open",
             "title": "The remaining arithmetic estimate",
-            "line": 460
+            "line": 462
           }
         ],
         "unresolved_count": 0
@@ -1852,7 +1852,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:834135cd342e7288a7daa7a2be832b81f309e9ae0e5d31abb6502a392a6b71fc",
+      "source_sha256": "sha256:26b347c447483d4ab58357267337cfee1e112947ac9a87a42ee35a6720b7bb73",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
@@ -1929,385 +1929,385 @@
           "level": 1,
           "id": "long243:sec:priorwork",
           "title": "Prior work, and the status of the note",
-          "line": 454
+          "line": 456
         },
         {
           "level": 4,
           "id": "two-published-sufficient-conditions.",
           "title": "Two published sufficient conditions.",
-          "line": 458
+          "line": 460
         },
         {
           "level": 2,
           "id": "structure",
           "title": "Structure",
-          "line": 514
+          "line": 516
         },
         {
           "level": 1,
           "id": "long243:sec:state",
           "title": "The centred integer state",
-          "line": 520
+          "line": 522
         },
         {
           "level": 4,
           "id": "the-intended-reading-which-is-not-formalised.",
           "title": "The intended reading, which is not formalised.",
-          "line": 570
+          "line": 572
         },
         {
           "level": 1,
           "id": "long243:sec:defect",
           "title": "The defect identity and its two consequences",
-          "line": 595
+          "line": 597
         },
         {
           "level": 2,
           "id": "two-step-cancellation-and-feedback",
           "title": "Two-step cancellation and feedback",
-          "line": 646
+          "line": 648
         },
         {
           "level": 1,
           "id": "long243:sec:lcmrecords",
           "title": "Weighted first crossings of LCM records",
-          "line": 738
+          "line": 740
         },
         {
           "level": 4,
           "id": "evidence.-1",
           "title": "Evidence.",
-          "line": 744
+          "line": 746
         },
         {
           "level": 4,
           "id": "what-the-record-coordinates-transfer.",
           "title": "What the record coordinates transfer.",
-          "line": 750
+          "line": 752
         },
         {
           "level": 4,
           "id": "remaining-obligation.",
           "title": "Remaining obligation.",
-          "line": 756
+          "line": 758
         },
         {
           "level": 1,
           "id": "long243:sec:records",
           "title": "Criteria in the record coordinates",
-          "line": 857
+          "line": 859
         },
         {
           "level": 4,
           "id": "primitive-coordinates.",
           "title": "Primitive coordinates.",
-          "line": 863
+          "line": 865
         },
         {
           "level": 4,
           "id": "source-and-evidence-conventions-for-this-section.",
           "title": "Source and evidence conventions for this section.",
-          "line": 869
+          "line": 871
         },
         {
           "level": 2,
           "id": "the-record-increment-coefficient",
           "title": "The record-increment coefficient",
-          "line": 875
+          "line": 877
         },
         {
           "level": 4,
           "id": "mechanism.",
           "title": "Mechanism.",
-          "line": 891
+          "line": 893
         },
         {
           "level": 4,
           "id": "evidence.-2",
           "title": "Evidence.",
-          "line": 898
+          "line": 900
         },
         {
           "level": 4,
           "id": "remaining-obligation.-1",
           "title": "Remaining obligation.",
-          "line": 904
+          "line": 906
         },
         {
           "level": 2,
           "id": "two-exact-equivalences-under-arbitrary-cancellation",
           "title": "Two exact equivalences under arbitrary cancellation",
-          "line": 910
+          "line": 912
         },
         {
           "level": 4,
           "id": "mechanism.-1",
           "title": "Mechanism.",
-          "line": 926
+          "line": 928
         },
         {
           "level": 4,
           "id": "evidence.-3",
           "title": "Evidence.",
-          "line": 932
+          "line": 934
         },
         {
           "level": 4,
           "id": "remaining-obligation.-2",
           "title": "Remaining obligation.",
-          "line": 938
+          "line": 940
         },
         {
           "level": 4,
           "id": "mechanism.-2",
           "title": "Mechanism.",
-          "line": 950
+          "line": 952
         },
         {
           "level": 4,
           "id": "evidence.-4",
           "title": "Evidence.",
-          "line": 956
+          "line": 958
         },
         {
           "level": 4,
           "id": "relation.",
           "title": "Relation.",
-          "line": 962
+          "line": 964
         },
         {
           "level": 2,
           "id": "protected-epochs-and-the-energy-criterion",
           "title": "Protected epochs and the energy criterion",
-          "line": 968
+          "line": 970
         },
         {
           "level": 4,
           "id": "mechanism.-3",
           "title": "Mechanism.",
-          "line": 986
+          "line": 988
         },
         {
           "level": 4,
           "id": "evidence.-5",
           "title": "Evidence.",
-          "line": 992
+          "line": 994
         },
         {
           "level": 2,
           "id": "a-slow-negative-part-and-the-original-coordinates",
           "title": "A slow negative part, and the original coordinates",
-          "line": 998
+          "line": 1000
         },
         {
           "level": 4,
           "id": "mechanism.-4",
           "title": "Mechanism.",
-          "line": 1010
+          "line": 1012
         },
         {
           "level": 4,
           "id": "evidence.-6",
           "title": "Evidence.",
-          "line": 1016
+          "line": 1018
         },
         {
           "level": 4,
           "id": "attribution.",
           "title": "Attribution.",
-          "line": 1049
+          "line": 1051
         },
         {
           "level": 4,
           "id": "evidence.-7",
           "title": "Evidence.",
-          "line": 1055
+          "line": 1057
         },
         {
           "level": 2,
           "id": "what-the-method-cannot-reach",
           "title": "What the method cannot reach",
-          "line": 1070
+          "line": 1072
         },
         {
           "level": 4,
           "id": "reading.",
           "title": "Reading.",
-          "line": 1095
+          "line": 1097
         },
         {
           "level": 4,
           "id": "reading.-1",
           "title": "Reading.",
-          "line": 1128
+          "line": 1130
         },
         {
           "level": 4,
           "id": "the-exact-remaining-obstacle.",
           "title": "The exact remaining obstacle.",
-          "line": 1134
+          "line": 1136
         },
         {
           "level": 1,
           "id": "long243:sec:descent",
           "title": "Descent when the error is nonnegative",
-          "line": 1145
+          "line": 1147
         },
         {
           "level": 1,
           "id": "long243:sec:constant",
           "title": "Excluding a constant negative magnitude",
-          "line": 1167
+          "line": 1169
         },
         {
           "level": 1,
           "id": "long243:sec:periodic",
           "title": "Excluding a periodic negative magnitude",
-          "line": 1214
+          "line": 1216
         },
         {
           "level": 1,
           "id": "long243:sec:barrier",
           "title": "Bounded rise cannot remain coprime to fresh moduli",
-          "line": 1254
+          "line": 1256
         },
         {
           "level": 1,
           "id": "long243:sec:bounded",
           "title": "Excluding a bounded negative part",
-          "line": 1357
+          "line": 1359
         },
         {
           "level": 1,
           "id": "long243:sec:mass",
           "title": "Excluding finite normalised negative mass",
-          "line": 1409
+          "line": 1411
         },
         {
           "level": 1,
           "id": "long243:sec:open",
           "title": "Complements and further questions",
-          "line": 1450
+          "line": 1452
         },
         {
           "level": 2,
           "id": "global-height-and-old-factor-overlap",
           "title": "Global height and old-factor overlap",
-          "line": 1512
+          "line": 1514
         },
         {
           "level": 2,
           "id": "repair-entropy-across-a-recovery",
           "title": "Repair entropy across a recovery",
-          "line": 1522
+          "line": 1524
         },
         {
           "level": 2,
           "id": "the-direct-analytic-question",
           "title": "The direct analytic question",
-          "line": 1597
+          "line": 1599
         },
         {
           "level": 2,
           "id": "a-barrier-extension",
           "title": "A barrier extension",
-          "line": 1619
+          "line": 1621
         },
         {
           "level": 2,
           "id": "formalisation-targets",
           "title": "Formalisation targets",
-          "line": 1642
+          "line": 1644
         },
         {
           "level": 4,
           "id": "erd\u0151sstraus.",
           "title": "Erd\u0151s\u2013Straus.",
-          "line": 1646
+          "line": 1648
         },
         {
           "level": 4,
           "id": "duverney.",
           "title": "Duverney.",
-          "line": 1652
+          "line": 1654
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 1658
+          "line": 1660
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 1662
+          "line": 1664
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 1670
+          "line": 1672
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 1676
+          "line": 1678
         },
         {
           "level": 1,
           "id": "long243:app:index",
           "title": "Guide to the formal sources",
-          "line": 1682
+          "line": 1684
         },
         {
           "level": 1,
           "id": "long243:app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 1688
+          "line": 1690
         },
         {
           "level": 1,
           "id": "sec:erdos-243-complete-family-map",
           "title": "Complete result-family map",
-          "line": 1716
+          "line": 1718
         },
         {
           "level": 2,
           "id": "centered-state-dynamics",
           "title": "Centered state dynamics",
-          "line": 1722
+          "line": 1724
         },
         {
           "level": 2,
           "id": "negative-mass-recovery",
           "title": "Negative mass recovery",
-          "line": 1748
+          "line": 1750
         },
         {
           "level": 2,
           "id": "bounded-negative-exclusion",
           "title": "Bounded negative exclusion",
-          "line": 1774
+          "line": 1776
         },
         {
           "level": 2,
           "id": "bounded-rise-coprimality",
           "title": "Bounded rise coprimality",
-          "line": 1794
+          "line": 1796
         },
         {
           "level": 2,
           "id": "negative-orbit-no-go",
           "title": "Negative orbit no go",
-          "line": 1818
+          "line": 1820
         }
       ],
-      "citations_rendered": 34,
+      "citations_rendered": 37,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:eb6243f8a9b1f93ce7db5c764fcf7fa13f885c0f58a826a24fdaf00935aa800f",
-      "pdf_byte_count": 288426,
+      "pdf_sha256": "sha256:743c0fa21dee299f88a2df6df20a4c0f75cbc9d5145b18e19bb55c1c3efc3006",
+      "pdf_byte_count": 289908,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2320,17 +2320,17 @@
           {
             "id": "long243:sec:bounded",
             "title": "Excluding a bounded negative part",
-            "line": 1357
+            "line": 1359
           },
           {
             "id": "long243:sec:open",
             "title": "Complements and further questions",
-            "line": 1450
+            "line": 1452
           },
           {
             "id": "sec:erdos-243-complete-family-map",
             "title": "Complete result-family map",
-            "line": 1716
+            "line": 1718
           }
         ],
         "unresolved_count": 0
