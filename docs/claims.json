@@ -13875,11 +13875,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334",
+      "ref": "0b500c7cf8e8bb7ae343484378df02f277fb8194",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-10-r2"
+      "public_tag": "formal-source-2026-09-15-r1"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -14634,9 +14634,9 @@
             "id": "factorial_lcm_growth",
             "contribution_class": "ordinary paper argument",
             "summary": "An elementary terminal-block argument gives liminf log L_N / (N^{3/2} log N) ≥ 2√2/3 for the lcm of factorial-gap denominators. The displayed bound needs no external multiplicity theorem; an older, weaker multiplicity-based route is historical context only.",
-            "evidence_mode": "ordinary mathematical argument",
-            "comparator_disposition": "not_applicable_not_a_lean_declaration",
-            "boundary": "The LCM asymptotic is an ordinary paper proof, not a Lean-checked theorem. Linked asymptotic Lean files are proof candidates and are not cited as kernel verification. The finite-block inequality has a separate Lean source. Comparator cannot certify the authored deduction. The bound does not decide irrationality."
+            "evidence_mode": "Lean kernel plus paper argument",
+            "comparator_disposition": "not_selected_separate_release_comparator_entry",
+            "boundary": "The LCM asymptotic has an ordinary paper proof and is checked in Lean as common_denominator_growth_liminf in PaperCompleteLiminf.lean. The finite-block inequality has a separate Lean source. The Comparator entry for this bound belongs to the separate public release wcook04/plectis-erdos-lean. The bound does not decide irrationality."
           }
         ]
       },
@@ -15764,12 +15764,12 @@
         {
           "name": "samePositiveRay_of_real_exp_decay",
           "module": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
-          "line": 306
+          "line": 325
         },
         {
           "name": "no_newtonConnection_of_not_samePositiveRay",
           "module": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
-          "line": 315
+          "line": 334
         }
       ]
     },

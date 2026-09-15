@@ -368,6 +368,8 @@ No other tuple can cancel this coefficient. ◻
 
 </div>
 
+Lean checks both identities at every rank as [the exact order](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173) and [the leading coefficient](https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199).
+
 <a id="formal-order-and-fixed-base-size."></a>
 
 #### Formal order and fixed-base size.

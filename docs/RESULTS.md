@@ -84,10 +84,9 @@ it shows why clearing every summand separately cannot make the positive tail
 small, but says nothing by itself about the denominator after cancellation.
 Lean separately checks that irrationality of `∑ 1/(n!−1)` is equivalent to
 cofinally many non-unit factorial carries, and checks a finite quotient-band
-channel obstruction. The required cofinal carries are not produced. The
-`PaperCompleteAsymptotics` and `PaperCompleteLiminf` files are presented by the
-public paper as proof candidates, not as registered kernel evidence for the
-`3/2` theorem. The separate public Lean release
+channel obstruction. The required cofinal carries are not produced. Lean
+checks the `3/2` theorem as `common_denominator_growth_liminf` in
+`PaperCompleteLiminf.lean`. The separate public Lean release
 [`wcook04/plectis-erdos-lean`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E68/Challenge.lean#L249)
 states the `3/2` bound at commit `52f29ad1` as `common_denominator_growth` in
 its entry `PalomarCorpus/E68` and proves it; that repository's Linux replay of
@@ -783,11 +782,12 @@ boundaries kept together.
   make the dyadic sum rational while retaining the prime growth scale,
   eventual fixed-modulus congruences, and short-block statistics at the
   stated scale. Lean checks the elementary pair identities, buffer, and
-  abstract filling core (`SparseRationalisationCore.lean`). The full
-  schedule and block-law transfer are ordinary proofs in Proposition 1.1
-  of the short paper; they are not Lean- or Comparator-verified, and
-  there is no separately published `SparseRationalisation.md`. End-to-end
-  sparse candidate sources are labelled UNRUN. The later positions are
+  abstract filling core (`SparseRationalisationCore.lean`), and checks
+  Proposition 1.1 of the short paper end to end, including the upper Banach
+  density, a rational target and the block-law transfer
+  (`SparseAmbientR9.lean`, `SparsePaperR11.lean`, `GrowingBlocksR11.lean`).
+  The proposition has no Comparator entry, and there is no separately
+  published `SparseRationalisation.md`. The later positions are
   not asserted to be prime, and the construction does not refute Land.
 - Open: cofinally many adjacent index pairs with small tail shifts and
   differing gaps; each smallness condition constrains a complete infinite

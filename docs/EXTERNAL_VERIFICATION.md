@@ -267,8 +267,8 @@ Exact registry keys and Comparator routing are listed separately.
 
 - **Factorial lcm growth**<br>
   An elementary terminal-block argument gives liminf log L_N / (N^{3/2} log N) ≥ 2√2/3 for the lcm of factorial-gap denominators. The displayed bound needs no external multiplicity theorem; an older, weaker multiplicity-based route is historical context only.<br>
-  **Boundary.** The LCM asymptotic is an ordinary paper proof, not a Lean-checked theorem. Linked asymptotic Lean files are proof candidates and are not cited as kernel verification. The finite-block inequality has a separate Lean source. Comparator cannot certify the authored deduction. The bound does not decide irrationality.<br>
-  *Evidence.* ordinary paper argument · ordinary mathematical argument
+  **Boundary.** The LCM asymptotic has an ordinary paper proof and is checked in Lean as common_denominator_growth_liminf in PaperCompleteLiminf.lean. The finite-block inequality has a separate Lean source. The Comparator entry for this bound belongs to the separate public release wcook04/plectis-erdos-lean. The bound does not decide irrationality.<br>
+  *Evidence.* ordinary paper argument · Lean kernel plus paper argument
 
 </details>
 
@@ -288,7 +288,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>not_applicable_to_external_execution</code>
 
 - <code>factorial_lcm_growth</code><br>
-  Comparator: <code>not_applicable_not_a_lean_declaration</code>
+  Comparator: <code>not_selected_separate_release_comparator_entry</code>
 
 </details>
 

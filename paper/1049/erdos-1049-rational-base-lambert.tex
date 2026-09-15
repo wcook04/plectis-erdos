@@ -519,6 +519,10 @@ and leading coefficient
 No other tuple can cancel this coefficient.
 \end{proof}
 
+\noindent Lean checks both identities at every rank as
+\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173}{the exact order} and
+\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199}{the leading coefficient}.
+
 \paragraph{Formal order and fixed-base size.}
 The theorem identifies the first formal term.  Formal order alone would not
 control a fixed-$q$ residual: multiplying by $(1-q)^{N^3}$ preserves that first

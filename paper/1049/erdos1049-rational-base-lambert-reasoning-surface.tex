@@ -55,8 +55,8 @@ exactly: \(\operatorname{ord}_qV_N^{*}=N(N-1)(2N-1)/6\) at every rank, with
 leading coefficient \((N!)^{2}(N+1)!/2^{N}\), where the source proves the
 inequality alone. After a row transformation, one determinant term has
 uniquely least order, so its coefficient cannot cancel. This complete identification
-is ordinary mathematics. Lean source for the all-row statement is published
-outside the checked library build and has never been compiled by public CI.
+is ordinary mathematics, and Lean checks the order and the leading coefficient
+at every rank.
 The record also gives a separate positive-measure proof of
 fixed-real-base size estimates.
 
@@ -1573,32 +1573,28 @@ The generating-function identification and infinite determinant expansion
 in this argument are not yet formalised in Lean.
 
 \paragraph{Evidence decomposition.}
-The proof above is ordinary mathematics.  One part of it is kernel-checked
-in this library: the all-depth associated-graded recurrence
-\lword{Erdos1049/AdelicHeightBridge.lean}{183}{hankelAssociatedCoeff_eq_reciprocal}{checked}.
-The initial monomial of transformed row $1$ in every column, of order exactly
-$l+1$ and coefficient exactly $-6$, and the two closed forms
-$6\operatorname{ord}=N(N-1)(2N-1)$ and
-$2^{N}\mathrm{lc}=(N!)^{2}(N+1)!$, are ordinary in this record.  Lean source
-in \texttt{Erdos1049/AllRow} contains statements and proof scripts for the
-initial monomial of every transformed row and for the order and leading
-coefficient of $V_N^{*}$ at every rank, with no row hypothesis.  That source and
-\texttt{ZudilinSharpHankelCoefficient.lean}, which it imports, lie outside the
-checked library build, because the normalised moment definitions they use are
-absent from the published \texttt{AdelicHeightBridge.lean}.  Public CI has never
-compiled either file, so this record treats them as unchecked.  Independently of the proof, the order and the
+The proof above is ordinary mathematics.  Lean checks
+\lword{Erdos1049/AdelicHeightBridge.lean}{183}{hankelAssociatedCoeff_eq_reciprocal}{its all-depth associated-graded recurrence}
+and, at every rank with no row hypothesis, its conclusions.  The order and the
+leading coefficient of $V_N^{*}$ are
+\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L163}{the sharp Hankel order and coefficient},
+and the two closed forms $6\operatorname{ord}=N(N-1)(2N-1)$ and
+$2^{N}\mathrm{lc}=(N!)^{2}(N+1)!$ are
+\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173}{the closed order} and
+\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L185}{the closed leading coefficient}.
+The Lean proof composes the initial monomial of every transformed row, which
+for row $1$ has order exactly $l+1$ and coefficient exactly $-6$ in every
+column.  Independently of the proof, the order and the
 leading coefficient were computed exactly for $1\le N\le7$, giving orders
 $0,1,5,14,30,55,91$ and leading coefficients
 $1,6,108,4320,324000,40824000,8001504000$, each matching the closed forms.
 
 \paragraph{Attribution and remaining obligation.}
 The antecedent is the inequality of \cite[Sec.~4, p.~7]{zudilin2016}; the equality and
-the leading coefficient are proved here.  The remaining obligation is a formal
-one.  Lemma~\ref{long1049:res:allrowinitial} and~\eqref{long1049:eq:row-initial} give the initial monomial of every row, and the Lean
-source in \texttt{Erdos1049/AllRow} states that identity for every row.  The
-formal check still requires a bridge module carrying the moment definitions, a
-successful compilation of that source against it, and an import into the
-supported library root.  Nothing in
+the leading coefficient are proved here.
+Lemma~\ref{long1049:res:allrowinitial} and~\eqref{long1049:eq:row-initial} give the initial monomial of every row, and Lean
+states that identity for every row as
+\href{https://github.com/wcook04/plectis-erdos/blob/0b500c7cf8e8bb7ae343484378df02f277fb8194/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L143}{the all-row initial monomial}.  Nothing in
 this subsection decides the arithmetic nature of $F(3/2)$.
 
 \section{Integer scalar content is neutral}\label{long1049:sec:primitive}
