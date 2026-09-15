@@ -1179,7 +1179,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:da02c2c3a00d6120a6a894851d0678814db462cc9b6d368952ac53af465e3106",
+      "source_sha256": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex",
@@ -1301,14 +1301,14 @@
           "line": 652
         }
       ],
-      "citations_rendered": 6,
+      "citations_rendered": 12,
       "fallback_title_drift": {
         "registry_fallback": "Two Incomparable Denominator Exclusions for $\\sum_{n\\ge2}(n!-1)^{-1}$",
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:c938913743c1a382f75bb3e64cfe8dcac3633e69174db4480c53dcea0a374646",
-      "pdf_byte_count": 111143,
+      "pdf_sha256": "sha256:934c8f52833d22305ed36a824cef3123345081375c51a852c2e505d2628ffcce",
+      "pdf_byte_count": 114663,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1374,7 +1374,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos68-factorial-reasoning-surface.md",
       "local_source": "paper/68/erdos68-factorial-reasoning-surface.tex",
-      "source_sha256": "sha256:69e294f068212a49f1ac06b29936faedfa3d0303fecbcad7f60c18cfd557732f",
+      "source_sha256": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.tex",
@@ -1409,205 +1409,205 @@
           "level": 1,
           "id": "long68:sec:carry",
           "title": "Carries and the rationality boundary",
-          "line": 217
+          "line": 237
         },
         {
           "level": 2,
           "id": "long68:sec:adjacent-unit-no-go",
           "title": "Why one proposed window argument is circular",
-          "line": 283
+          "line": 303
         },
         {
           "level": 2,
           "id": "the-companion-coordinate",
           "title": "The companion coordinate",
-          "line": 297
+          "line": 317
         },
         {
           "level": 2,
           "id": "escape-from-a-smaller-interval",
           "title": "Escape from a smaller interval",
-          "line": 343
+          "line": 363
         },
         {
           "level": 2,
           "id": "the-whole-shifted-family",
           "title": "The whole shifted family",
-          "line": 400
+          "line": 420
         },
         {
           "level": 1,
           "id": "long68:sec:residue",
           "title": "From denominator structure to a scale criterion",
-          "line": 418
+          "line": 438
         },
         {
           "level": 1,
           "id": "long68:sec:channels",
           "title": "A limitation of finite-channel cancellation",
-          "line": 510
+          "line": 530
         },
         {
           "level": 2,
           "id": "the-exact-low-channel-lattice-and-residual-class",
           "title": "The exact low-channel lattice and residual class",
-          "line": 550
+          "line": 570
         },
         {
           "level": 1,
           "id": "long68:sec:finite",
           "title": "Finite denominator exclusions",
-          "line": 696
+          "line": 716
         },
         {
           "level": 1,
           "id": "long68:sec:open",
           "title": "The remaining arithmetic inputs",
-          "line": 733
+          "line": 753
         },
         {
           "level": 4,
           "id": "weighted-collisions-and-complementary-residues.",
           "title": "Weighted collisions and complementary residues.",
-          "line": 739
+          "line": 759
         },
         {
           "level": 4,
           "id": "repeated-support-valuation-amplification.",
           "title": "Repeated-support valuation amplification.",
-          "line": 754
+          "line": 774
         },
         {
           "level": 4,
           "id": "lower-interval-escape.",
           "title": "Lower-interval escape.",
-          "line": 772
+          "line": 792
         },
         {
           "level": 4,
           "id": "doubled-prime-branch-failure.",
           "title": "Doubled-prime branch failure.",
-          "line": 778
+          "line": 798
         },
         {
           "level": 4,
           "id": "a-remote-cramer-residual.",
           "title": "A remote Cramer residual.",
-          "line": 798
+          "line": 818
         },
         {
           "level": 4,
           "id": "criteria-from-the-literature-that-do-not-apply.",
           "title": "Criteria from the literature that do not apply.",
-          "line": 809
+          "line": 829
         },
         {
           "level": 1,
           "id": "sources-and-evidence",
           "title": "Sources and evidence",
-          "line": 817
+          "line": 837
         },
         {
           "level": 1,
           "id": "long68:app:sources",
           "title": "Guide to the formal sources",
-          "line": 850
+          "line": 870
         },
         {
           "level": 1,
           "id": "long68:sec:extended-record",
           "title": "Extended record",
-          "line": 960
+          "line": 980
         },
         {
           "level": 2,
           "id": "long68:sec:ext-digits",
           "title": "The canonical factorial digit kernel",
-          "line": 966
+          "line": 986
         },
         {
           "level": 2,
           "id": "long68:sec:ext-literature",
           "title": "Criteria from the literature, in full",
-          "line": 988
+          "line": 1008
         },
         {
           "level": 2,
           "id": "long68:sec:ext-superseded",
           "title": "A superseded deduction",
-          "line": 1008
+          "line": 1028
         },
         {
           "level": 2,
           "id": "long68:sec:ext-plateau",
           "title": "Plateaux, first exit, and the finite denominator ladder",
-          "line": 1022
+          "line": 1042
         },
         {
           "level": 2,
           "id": "long68:sec:ext-collision",
           "title": "The collision-core interfaces",
-          "line": 1052
+          "line": 1072
         },
         {
           "level": 2,
           "id": "long68:sec:ext-certificates",
           "title": "Finite channel and carry certificates",
-          "line": 1120
+          "line": 1140
         },
         {
           "level": 2,
           "id": "long68:sec:ext-nogo",
           "title": "Limits of fixed-coordinate arguments",
-          "line": 1134
+          "line": 1154
         },
         {
           "level": 2,
           "id": "long68:sec:ext-generic",
           "title": "The generic shape behind the lower-interval form",
-          "line": 1150
+          "line": 1170
         },
         {
           "level": 1,
           "id": "sec:erdos-68-complete-family-map",
           "title": "Complete result-family map",
-          "line": 1162
+          "line": 1182
         },
         {
           "level": 2,
           "id": "factorial-carry-characterisation",
           "title": "Factorial carry characterisation",
-          "line": 1168
+          "line": 1188
         },
         {
           "level": 2,
           "id": "factorial-channel-and-projection-rigidity",
           "title": "Factorial channel and projection rigidity",
-          "line": 1192
+          "line": 1212
         },
         {
           "level": 2,
           "id": "factorial-conditional-producers",
           "title": "Factorial conditional producers",
-          "line": 1238
+          "line": 1258
         },
         {
           "level": 2,
           "id": "factorial-lcm-growth",
           "title": "Factorial lcm growth",
-          "line": 1258
+          "line": 1278
         },
         {
           "level": 2,
           "id": "factorial-finite-certificates",
           "title": "Factorial finite certificates",
-          "line": 1278
+          "line": 1298
         }
       ],
-      "citations_rendered": 24,
+      "citations_rendered": 35,
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:b1f5caacef474e61ced7ef82d2ee1ce75c9697bddf57fa2d24b44a7f7eabf9a6",
-      "pdf_byte_count": 200584,
+      "pdf_sha256": "sha256:c1e65d16cee04b61fa8fce28a71c0f4708f6c3df5bdbf08478b7d42247382374",
+      "pdf_byte_count": 207459,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1615,22 +1615,22 @@
           {
             "id": "long68:sec:carry",
             "title": "Carries and the rationality boundary",
-            "line": 217
+            "line": 237
           },
           {
             "id": "long68:sec:finite",
             "title": "Finite denominator exclusions",
-            "line": 696
+            "line": 716
           },
           {
             "id": "long68:sec:open",
             "title": "The remaining arithmetic inputs",
-            "line": 733
+            "line": 753
           },
           {
             "id": "sec:erdos-68-complete-family-map",
             "title": "Complete result-family map",
-            "line": 1162
+            "line": 1182
           }
         ],
         "unresolved_count": 0

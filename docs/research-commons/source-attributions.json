@@ -659,15 +659,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 875,
-          "line_end": 877,
+          "line_start": 903,
+          "line_end": 905,
           "expected_text": "\\bibitem{cantor1869}",
           "excerpt_sha256": "sha256:f7f783a750919f760d5509a1087835b3e7cbfd988e6d420a29ddd8357a72026c"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1815,
-          "line_end": 1819,
+          "line_start": 1870,
+          "line_end": 1874,
           "expected_text": "\\bibitem{cantor1869}",
           "excerpt_sha256": "sha256:03e47315218fee28c4bf66355ea952ff48f9c781e1fbaeeb3d83c6c0bbcb9a85"
         },
@@ -680,14 +680,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 400,
-          "line_end": 400,
+          "line_start": 450,
+          "line_end": 450,
           "excerpt_sha256": "sha256:dd9a76109764183a9fe95799985a0cd6c89a669403f323d77b3ba19d6145755a"
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1175,
-          "line_end": 1175,
+          "line_start": 1225,
+          "line_end": 1225,
           "excerpt_sha256": "sha256:d4b5fb1dba248888ffd319fc24274a2bcb70de59be08479fc8b9b752fb73f798"
         }
       ],
@@ -2250,8 +2250,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1824,
-          "line_end": 1830,
+          "line_start": 1879,
+          "line_end": 1885,
           "expected_text": "\\bibitem{garaev-luca-shparlinski}",
           "excerpt_sha256": "sha256:72373b6f062cddf3c5fe068756219ef9a24618e1ae351afdcd65500bc036628d"
         },
@@ -2264,20 +2264,20 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 254,
-          "line_end": 254,
+          "line_start": 261,
+          "line_end": 261,
           "excerpt_sha256": "sha256:0e518720857d7077a3a5e3918fd9223cb6aa2d91a39e690019698a7508c1498b"
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 980,
-          "line_end": 980,
+          "line_start": 1030,
+          "line_end": 1030,
           "excerpt_sha256": "sha256:b27b56d099544bbbb5abad5374ab18371e01c2ed8e13e41339ca8ab9190a40b5"
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1179,
-          "line_end": 1179,
+          "line_start": 1229,
+          "line_end": 1229,
           "excerpt_sha256": "sha256:1ca74b0b99e561f9885f56899175bbda9fae594560bae170c1a0333b24a30fd6"
         },
         {
@@ -3189,8 +3189,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1835,
-          "line_end": 1840,
+          "line_start": 1890,
+          "line_end": 1895,
           "expected_text": "\\bibitem{koepf-schmersau}",
           "excerpt_sha256": "sha256:65ce1984f1a5bc8f6bf31f7b2dc8c91bbfec5a192332d2d80f497808ac90298d"
         },
@@ -3470,8 +3470,8 @@
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1840,
-          "line_end": 1845,
+          "line_start": 1895,
+          "line_end": 1900,
           "expected_text": "\\bibitem{duverney}",
           "excerpt_sha256": "sha256:93b82e07532c595ce8c3e4690e48b8f8b4b955a46be725042a411f3faf1dabad"
         },
@@ -3484,8 +3484,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1063,
-          "line_end": 1063,
+          "line_start": 1113,
+          "line_end": 1113,
           "excerpt_sha256": "sha256:a353bbd5216870d1d4db2700320a361f4a38d8923d21a55f93745248f5957a1e"
         },
         {
@@ -3542,22 +3542,22 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1851,
-          "line_end": 1857,
+          "line_start": 1906,
+          "line_end": 1912,
           "expected_text": "\\bibitem{barreto-et-al}",
-          "excerpt_sha256": "sha256:e38b1e2e242e9d76d4a3d0b1bbd8a7d5d85a723524d96b8f1aea4d75677f5c6b"
+          "excerpt_sha256": "sha256:cd12daefd19d6365143bf154718d94864fa97ed1c4e4392cd67fea595e1b7ae2"
         },
         {
           "path": "paper/reasoning-parts/erdos68/back.tex",
           "line_start": 53,
           "line_end": 59,
           "expected_text": "\\bibitem{barreto-et-al}",
-          "excerpt_sha256": "sha256:e38b1e2e242e9d76d4a3d0b1bbd8a7d5d85a723524d96b8f1aea4d75677f5c6b"
+          "excerpt_sha256": "sha256:cd12daefd19d6365143bf154718d94864fa97ed1c4e4392cd67fea595e1b7ae2"
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1067,
-          "line_end": 1067,
+          "line_start": 1117,
+          "line_end": 1117,
           "excerpt_sha256": "sha256:49d761ca3134300ac4615e2d01c5d9a85137ba548b704fc42ad9a411b916ad9e"
         },
         {
@@ -6590,8 +6590,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1830,
-          "line_end": 1835,
+          "line_start": 1885,
+          "line_end": 1890,
           "expected_text": "\\bibitem{stewart2004}",
           "excerpt_sha256": "sha256:9269a1d95c9cb51a3872a4d5fffc5a6b11d125283281b8f2b64a0a71a94197e9"
         },
@@ -6610,8 +6610,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1174,
-          "line_end": 1174,
+          "line_start": 1224,
+          "line_end": 1224,
           "excerpt_sha256": "sha256:d47cc382e7afc7f184344441f0e14f5174027851786e20b58d14e8c99a95145a"
         },
         {
@@ -7699,15 +7699,15 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 868,
-          "line_end": 873,
+          "line_start": 896,
+          "line_end": 901,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1803,
-          "line_end": 1808,
+          "line_start": 1858,
+          "line_end": 1863,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb"
         },
@@ -7936,8 +7936,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1845,
-          "line_end": 1851,
+          "line_start": 1900,
+          "line_end": 1906,
           "expected_text": "\\bibitem{hancl-tijdeman}",
           "excerpt_sha256": "sha256:610aa0bc95650596fdb586b770690523132fd752b2c38d7e71bf028e7f0205dd"
         },
@@ -8109,29 +8109,99 @@
         "L. Lai"
       ],
       "publication_years": [
-        "2021"
+        "2021",
+        "2026"
       ],
       "urls": [
-        "https://arxiv.org/abs/2103.14894"
+        "https://arxiv.org/abs/2103.14894",
+        "https://doi.org/10.1017/S0004972725100543"
       ],
       "problems": [
         "68"
       ],
-      "source_locators": [],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/2103.14894v1",
+          "locator": "Lemma 2.1, arXiv v1 p. 2: for nonzero f in Z[X] there is n_0 >= 2, depending only on f, such that f(n)(n+1)...(n+k) - f(n+k) = 0 has no integer solutions with n >= n_0 and k >= 1, and n!+f(n) > 1 and f(n) != 0 for n >= n_0. The proof refers the first assertion to Lemma 3 of Luca and Shparlinski (2005)."
+        },
+        {
+          "url": "https://arxiv.org/abs/2103.14894v1",
+          "locator": "Proof of Lemma 2.4, display (2.5), arXiv v1 p. 4: a prime power D dividing both n_i!+f(n_i) and n_j!+f(n_j) divides f(n_i)(n_i+1)...(n_j) - f(n_j), which is nonzero by Lemma 2.1 and at most 2x^(C_1+|I_1|)."
+        },
+        {
+          "url": "https://doi.org/10.1017/S0004972725100543",
+          "locator": "Published version, Bull. Aust. Math. Soc. 113 (2026), 390-403, with the same numbering: Lemma 2.1 on p. 392, Lemma 2.4 on p. 393, display (2.5) on p. 394."
+        }
+      ],
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 889,
-          "line_end": 893,
+          "line_start": 917,
+          "line_end": 923,
           "expected_text": "\\bibitem{lai}",
-          "excerpt_sha256": "sha256:78aa4a4ffbb6ef78f50df8ffbe5232ce827fa433a48ba9be7cb9069a232dbc50"
+          "excerpt_sha256": "sha256:a0d504d3d508af2b875b5dec54bc794358303db8ea0ee2c58d70dd66309055b9"
+        },
+        {
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "line_start": 1918,
+          "line_end": 1925,
+          "expected_text": "\\bibitem{lai}",
+          "excerpt_sha256": "sha256:01d7a9293432c769f7c4e88c31adcbb2ba676eebeeb8a4c4b9bafd808fa4fb28"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/back.tex",
+          "line_start": 65,
+          "line_end": 72,
+          "expected_text": "\\bibitem{lai}",
+          "excerpt_sha256": "sha256:01d7a9293432c769f7c4e88c31adcbb2ba676eebeeb8a4c4b9bafd808fa4fb28"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 492,
+          "line_end": 492,
+          "excerpt_sha256": "sha256:dfe30a3d6989304d9eada5ae6d5f075a7e757937833d6734b2160719386fec6a"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 502,
+          "line_end": 502,
+          "excerpt_sha256": "sha256:0000e5c2105d821932b1d5c938f44fa35d2b77c5dcd6893d2bff25f0c8d62a86"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 194,
+          "line_end": 194,
+          "excerpt_sha256": "sha256:5ca1adb6ffb82e2ea61b589c2e98ea08cba156b536884ab859840210a8d8912c"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 274,
+          "line_end": 274,
+          "excerpt_sha256": "sha256:610f7b518aa36dfe61ffb9e2d76965bf9ac38e8bd7d9dff8cb91bda4b2a59e97"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 1232,
+          "line_end": 1232,
+          "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 1235,
+          "line_end": 1235,
+          "excerpt_sha256": "sha256:cf244f8d406dbc2b1691723895810b510a0d4cb83e857833f09d5ad2404fdf9f"
         }
       ],
-      "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
-      "verification_state": "bibliography_only",
+      "relation": "Cited in both #68 manuscripts for two steps of the common-denominator growth estimate and its polynomial-shift extension: the nonvanishing cutoff (Lemma 2.1, which restates Lemma 3 of Luca and Shparlinski with the bound n!+f(n) > 1) and the common-divisor subtraction at display (2.5). The paper's theorem concerns the largest prime divisor of n!+f(n) and gives no irrationality result for the #68 series.",
+      "verification_state": "source_verified",
+      "verification_scope": "arXiv v1 PDF read in full (11 pages); the publisher PDF text confirms the same lemma and display numbers on the printed pages given. Verifies the two cited steps only.",
       "bibliography_keys": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "key": "lai"
+        },
+        {
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
           "key": "lai"
         }
       ]
@@ -9179,15 +9249,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 884,
-          "line_end": 889,
+          "line_start": 912,
+          "line_end": 917,
           "expected_text": "\\bibitem{louwsma-martino}",
           "excerpt_sha256": "sha256:bade0d216eca6c368176aac7e67fba295653e53d2dd461bf5a587f72fb873b85"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1810,
-          "line_end": 1815,
+          "line_start": 1865,
+          "line_end": 1870,
           "expected_text": "\\bibitem{louwsma-martino}",
           "excerpt_sha256": "sha256:914493d46467de68f4694608090ada82775de8b29aeffdda4fe43be291dc4ee7"
         },
@@ -9206,8 +9276,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1181,
-          "line_end": 1181,
+          "line_start": 1236,
+          "line_end": 1236,
           "excerpt_sha256": "sha256:186943c5320ca400ba71ec0d287f6d1f2c0b582ed19d097801bbf47073324fc9"
         }
       ],
@@ -9470,15 +9540,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 877,
-          "line_end": 880,
+          "line_start": 905,
+          "line_end": 908,
           "expected_text": "\\bibitem{galambos1976}",
           "excerpt_sha256": "sha256:ce3aacc46dd9982236f7b68acf0ec1f1c1aca32c57a7ead73b45c724bf7be460"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1819,
-          "line_end": 1824,
+          "line_start": 1874,
+          "line_end": 1879,
           "expected_text": "\\bibitem{galambos1976}",
           "excerpt_sha256": "sha256:cedd080125403772538229eaf126fbb69017041066d4453daada9b963109d2db"
         },
@@ -9491,14 +9561,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 401,
-          "line_end": 401,
+          "line_start": 451,
+          "line_end": 451,
           "excerpt_sha256": "sha256:011aac74bb7e11d8f00fd425d894c85b3bd4993c1582a90e39564fc6de6d05d8"
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1176,
-          "line_end": 1176,
+          "line_start": 1226,
+          "line_end": 1226,
           "excerpt_sha256": "sha256:1c5ce347370e0f2e4d75a5e1a7d184f4fe313ae6393bb0e1558a58fbda582611"
         }
       ],
@@ -11163,15 +11233,15 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 873,
-          "line_end": 875,
+          "line_start": 901,
+          "line_end": 903,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:5f0b6ad6c1a9049d21841bc0ffd6cf7d1b57c719cf79d0d3de5d351e68db74b0"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1808,
-          "line_end": 1810,
+          "line_start": 1863,
+          "line_end": 1865,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:e5494a50a0f7c7be61da8c4ebed885104322236b7385212b94cb1ca90db8430f"
         },
@@ -13647,6 +13717,218 @@
         }
       ],
       "verification_scope": "Primary arXiv v3 PDF, 17 pages, read in full on 15 September 2026; journal reference and DOI taken from the arXiv abstract page and the second author's publication list."
+    },
+    {
+      "id": "source-5f85fb0bd75b8b",
+      "kind": "literature",
+      "title": "Prime divisors of shifted factorials",
+      "authors": [
+        "F. Luca",
+        "I. E. Shparlinski"
+      ],
+      "publication_years": [
+        "2005"
+      ],
+      "urls": [
+        "https://doi.org/10.1112/S0024609305004923"
+      ],
+      "problems": [
+        "68"
+      ],
+      "source_locators": [
+        {
+          "url": "https://doi.org/10.1112/S0024609305004923",
+          "locator": "Lemma 3, printed p. 810: for nonzero f in Z[X] there is n_0, depending only on f, such that f(n)(n+1)...(n+k) - f(n+k) = 0 has no integer solutions (n, k) with n >= n_0 and k >= 1."
+        },
+        {
+          "url": "https://doi.org/10.1112/S0024609305004923",
+          "locator": "Proof of Lemma 5, printed p. 811: an integer q >= 2 dividing both n!+f(n) and (n+k)!+f(n+k) divides f(n)(n+1)...(n+k) - f(n+k), which is nonzero for n >= n_0, so q is at most its absolute value."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 923,
+          "line_end": 928,
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "excerpt_sha256": "sha256:f4b93b64e57ba9e355c17f9d32a33fad008c653623743e63b5eb9337d3d5ad50"
+        },
+        {
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "line_start": 1912,
+          "line_end": 1918,
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "excerpt_sha256": "sha256:a1597d4571d5a4e76df86c113668ef9c13fb36fc9b633ca25cc16e4c4f974a91"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/back.tex",
+          "line_start": 59,
+          "line_end": 65,
+          "expected_text": "\\bibitem{luca-shparlinski}",
+          "excerpt_sha256": "sha256:a1597d4571d5a4e76df86c113668ef9c13fb36fc9b633ca25cc16e4c4f974a91"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 494,
+          "line_end": 494,
+          "excerpt_sha256": "sha256:e1073ec626d501f919294499c8b24b446ae999d3d127deae66fe3fdabdccc340"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 501,
+          "line_end": 501,
+          "excerpt_sha256": "sha256:347983f8c64b53210c99c415d4f1f6f743dccf5acd126522a5df5270c2a05c2e"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 193,
+          "line_end": 193,
+          "excerpt_sha256": "sha256:e21825904da9dd31c07d34f4fffbaf1e000f841c245db07d7be4431a25ff51ba"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 273,
+          "line_end": 273,
+          "excerpt_sha256": "sha256:1cd908c32a4075358b4a5b28cd867611db27850b3e5d596c47128f14454d5847"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 1232,
+          "line_end": 1232,
+          "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 1234,
+          "line_end": 1234,
+          "excerpt_sha256": "sha256:4919897eb071a8d7bba39212c376726b0f4797a611acc5f5c0fdbe9531b41d3d"
+        }
+      ],
+      "relation": "Cited in both #68 manuscripts as the source of the nonvanishing statement behind the cutoff for polynomial shifts (Lemma 3, which Lai's Lemma 2.1 restates with the bound n!+f(n) > 1) and of the common-divisor relation for n!+f(n) and (n+k)!+f(n+k) (proof of Lemma 5), both used in the common-denominator growth estimate and its polynomial-shift extension. The paper's theorems concern large prime factors of n!+f(n) and give no irrationality result for the #68 series.",
+      "verification_state": "source_verified",
+      "verification_scope": "Publisher PDF of the published version, printed pp. 809-812, visually inspected. Verifies the two cited steps only.",
+      "bibliography_keys": [
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "key": "luca-shparlinski"
+        },
+        {
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "key": "luca-shparlinski"
+        }
+      ]
+    },
+    {
+      "id": "source-b3b7518e07e159",
+      "kind": "literature",
+      "title": "On the irrationality of certain p-adic zeta values",
+      "authors": [
+        "L. Lai",
+        "C. Lupu",
+        "J. Sprang"
+      ],
+      "publication_years": [
+        "2025"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2505.23088v1",
+        "https://doi.org/10.1007/s40687-025-00559-x"
+      ],
+      "problems": [
+        "68"
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/2505.23088v1",
+          "locator": "Lemma 2.1, arXiv v1 p. 3, quoted there from L. Lai, Int. J. Number Theory 21 (2025), Lemma 2.1: if integer linear forms L_n satisfy max_i |l_(i,n)| |L_n(xi)|_p -> 0 along an unbounded set of n and L_n(xi) != 0 there, then some xi_i is irrational."
+        },
+        {
+          "url": "https://arxiv.org/abs/2505.23088v1",
+          "locator": "Section 5, arXiv v1 pp. 10-14: Lemma 5.3 bounds the coefficient denominators by powers of d_n = lcm(1,...,n); Lemmas 5.4-5.7 show that the cleared coefficients remain integral after division by Phi_n, a product of powers of primes in (sqrt(pn), n]."
+        },
+        {
+          "url": "https://arxiv.org/abs/2505.23088v1",
+          "locator": "Lemma 7.3, arXiv v1 p. 20, and inequality (8.1), p. 22: Phi_n = exp(varpi_p n + o(n)), and varpi_p enters the inequality under which the rescaled forms Phi_n^(-1) d_n^(p-1+s) S_n, which have integer coefficients, meet the criterion quoted in Lemma 2.1."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 928,
+          "line_end": 936,
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "excerpt_sha256": "sha256:0e1f48f41e46b5c64d0cc85d3164c9734d7fecd48fade710c1be05849766f934"
+        },
+        {
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "line_start": 1925,
+          "line_end": 1933,
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "excerpt_sha256": "sha256:77ec5a44baf12f7af52bf93ecd994b0c2597959d104f9e8f9bdd08fd52379874"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/back.tex",
+          "line_start": 72,
+          "line_end": 80,
+          "expected_text": "\\bibitem{lai-lupu-sprang}",
+          "excerpt_sha256": "sha256:77ec5a44baf12f7af52bf93ecd994b0c2597959d104f9e8f9bdd08fd52379874"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 556,
+          "line_end": 556,
+          "excerpt_sha256": "sha256:29c6295fe12a4c23fbbcbfee9ae1abbe9bb1303b92c758ba5c17224ea9366867"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 557,
+          "line_end": 557,
+          "excerpt_sha256": "sha256:58bff556d3afc6a56c40480db1cf367a4324aa5a5dbf016717484c0015aad37a"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 558,
+          "line_end": 558,
+          "excerpt_sha256": "sha256:5870c5f434afc159fdfc90a83d0573a2f14fd84eeed7eaebf1387aaa24f8510c"
+        },
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "line_start": 560,
+          "line_end": 560,
+          "excerpt_sha256": "sha256:3d474c866d55639e06b1ef14730e4337a021f2fc60cf71e6968d1d248f20eeee"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 337,
+          "line_end": 337,
+          "excerpt_sha256": "sha256:21b00254a22f32bf11e90837e00d0f531d2814ce4b95f53698972da9cea9aef4"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 338,
+          "line_end": 338,
+          "excerpt_sha256": "sha256:dbef66b9e3c5d8c0a09d755196b0d01fe8b1ada7e36b96ef9d0a92eec2f71946"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos68/core.tex",
+          "line_start": 340,
+          "line_end": 340,
+          "excerpt_sha256": "sha256:3d474c866d55639e06b1ef14730e4337a021f2fc60cf71e6968d1d248f20eeee"
+        }
+      ],
+      "relation": "Cited in both #68 manuscripts as a comparison for the difference between a common-denominator bound and the denominator after reduction: for their linear forms in p-adic zeta values the lcm-power denominator bound is divided by a quantified product Phi_n. No result of the paper is applied to the #68 series, and the manuscripts establish no asymptotic saving of this kind for its prefixes.",
+      "verification_state": "source_verified",
+      "verification_scope": "arXiv v1 PDF read in full (24 pages). Locators refer to arXiv v1; the published numbering was not compared.",
+      "bibliography_keys": [
+        {
+          "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+          "key": "lai-lupu-sprang"
+        },
+        {
+          "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+          "key": "lai-lupu-sprang"
+        }
+      ]
     }
   ],
   "lean_reviews": [
