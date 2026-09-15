@@ -295,6 +295,12 @@ grouped by the problem whose note they serve.
 
 ### #1049
 
+- W. Zudilin, [*Heine's basic transform and a permutation group for $q$-harmonic series* (2004)](https://doi.org/10.4064/aa111-2-4) ([read source closure](primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md)); W. Zudilin, [*On the irrationality of generalized $q$-logarithm* (2016)](https://doi.org/10.1007/s40993-016-0042-x) ([read source closure](primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md))
+
+  The 2004 paper supplies the linear forms, Lemma 7 with display (23) on p. 161, the direction `(14, 12, 14; 27)`, the thirteen intervals, and the constant `C_1/C_0 = 2.46497868...` printed on p. 162 as an integer-base exponent bound, which defines the rational-base region of the #1049 notes. The 2016 paper proves the `q`-order inequality for the normalised Hankel determinant and remarks in its Section 2, on p. 4, that its results can be given at non-integer rational bases under a computable height restriction.
+
+  **Boundary.** Both papers state their theorems for integer bases, and the 2016 remark computes no constant. The rational specialisation, its denominator accounting, the explicit region and the equality case of the Hankel order are argued in the #1049 notes, and no priority claim is attached to them.
+
 - P. Bundschuh and K. Väänänen, *Compositio Math.* 91 (1994), Theorem 2, [official Numdam PDF](https://numdam.org/item/CM_1994__91_2_175_0.pdf) ([read source closure](primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md))
 
   External irrationality criterion at base `7/2`; the release checks only its elementary Archimedean height inequality.
