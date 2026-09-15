@@ -26,7 +26,7 @@ INPUTS = {
     "lean/Erdos249257/AllBaseTotientKernel.lean": "5862e926deceaf81e0a4aac92a7d09467323fc563cdf3c827f465cb4e9ec5dd5",
     "lean/ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean": "7e6260206db9907976f95ce347229965f585f7e3c517da8b13ad074e501c9268",
     "lean/ErdosProblems/Erdos249/PaperCompleteR8/UnitPivotBasis.lean": "e11b92bf486db8d8d8059931bdf3a1424278071b74d4f590e4231902ee020965",
-    "lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean": "3bdc0a97c931c8ceca6e5f46e5b9d013b0fb50505bfda05f8cc512f66a4a0dbd",
+    "lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean": "3bb92268cea2de3acf2ae359577e7310383bd25bdcedad33f9dabd6752a588e2",
 }
 EXPECTED_MISMATCH = (
     "Challenge and solution theorem statement do not match: "
