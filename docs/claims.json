@@ -8196,7 +8196,9 @@
             "ErdosProblems.Erdos251.PaperTailBoundsR7",
             "ErdosProblems.Erdos251.ActualPrimePaperR11",
             "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis",
-            "ErdosProblems.Erdos68.PaperCompleteLiminf"
+            "ErdosProblems.Erdos68.PaperCompleteLiminf",
+            "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
+            "ErdosProblems.Erdos243.PaperCompleteR7.Frontier"
           ]
         },
         {
@@ -9337,10 +9339,25 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.CoefficientDivisorFence",
+          "path": "lean/ErdosProblems/Erdos243/CoefficientDivisorFence.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos243.CubicNeighbourIdentity",
           "path": "lean/ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.CumulativeLcmTransfer",
+          "path": "lean/ErdosProblems/Erdos243/CumulativeLcmTransfer.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.GlobalLcmHeight",
+            "ErdosProblems.Erdos243.SlowRiseBarrier"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos243.DynamicCancellation",
@@ -9378,6 +9395,15 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.LcmRecordCrossing",
+          "path": "lean/ErdosProblems/Erdos243/LcmRecordCrossing.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.LcmRecordExcess",
+            "ErdosProblems.Erdos243.SlowRiseBarrier"
           ]
         },
         {
@@ -9540,6 +9566,78 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+            "ErdosProblems.Erdos243.DynamicCancellation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.RealTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.Frontier",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState",
+            "ErdosProblems.Erdos243.SparseResetRecovery"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect",
+            "ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmStationarity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState",
+            "ErdosProblems.Erdos243.CumulativeLcmTransfer",
+            "ErdosProblems.Erdos243.LcmCriticalBoundary",
+            "ErdosProblems.Erdos243.LcmRecordCrossing",
+            "ErdosProblems.Erdos243.CoefficientDivisorFence",
+            "ErdosProblems.Erdos243.PrimitiveRecordBarrier"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.Limits",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.RealTail",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.Limits"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections",
           "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
           "role": "Lean proof module",
@@ -9550,6 +9648,14 @@
         {
           "id": "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
           "path": "lean/ErdosProblems/Erdos243/PrimitivePrefixRigidity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.DynamicCancellation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PrimitiveRecordBarrier",
+          "path": "lean/ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos243.DynamicCancellation"
