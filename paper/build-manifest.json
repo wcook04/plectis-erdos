@@ -13,45 +13,45 @@
     },
     "erdos_1041_note": {
       "inputs": {
-        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:127fa516ccdd360c11ca2350bc1fc67556e85ed1fa54df7d9d02274eafed8189",
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:9a2db311d7be4e54c561d3a2b82845119f83db8cc79682189c30fd1ba9722786",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:5a5f7f013d16a26c0af324a4274d75a2bfd9d0121cdcfbacba47ea910af930fd",
+      "rendered_content_digest": "sha256:b6213ec3fd655452aa8359eb3b3c6108af2a108c776e4a2ea5a06e0495f73037",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
     "erdos_1041_reasoning_record": {
       "inputs": {
-        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:8b7d5b9eca8d684ec485c939a9c2f1236115a2a44fd32aaf11e1ee8e8346274e",
+        "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:a83c3fbd29791c4c1b26d76d8cd453cec9b6a53f7dffa313a2850fe84928e8c2",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:fbcb5db90f03bb200df578955eafe4d7769ee0b29479cef3f61f0f45d25b53fb",
+      "rendered_content_digest": "sha256:ee6bc07625ea7e7610908743485212b30143a50aa32af207c3962b15dffb9e11",
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "storage_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf"
     },
     "erdos_1049_note": {
       "inputs": {
-        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:0a3b79d1873053b707565dcd0142a897b510502973cafd5d2aaa172014731240",
+        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:010bba3da651f290347439be51f76b53c521fd4149d4aab5eab3f507365c6496",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:a4c673dd42e6d6a4199defe18452b7fc64026e41e56b6592a54fb6e9a0ade4a9",
+      "rendered_content_digest": "sha256:d412fc9163215ddf92620173b2f653446bc76cd1041afd6016e1aee09c2000d2",
       "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "storage_path": "paper/1049/erdos-1049-rational-base-lambert.pdf"
     },
     "erdos_1049_reasoning_record": {
       "inputs": {
-        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:54581b5a98b367977cb68ca26be30daeaf1365bdd2d3b0639b4ca7aac9625a00",
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:27ba5070408fa6e926669de124d06bbd823bd28cd1a95a9971954b1a09e5ac7f",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:f2e894fbdb8a07f53e5dbd2b0caea306ad93508363b97843d1f8539ae139ed32",
+      "rendered_content_digest": "sha256:a585d2e56b63edc71f259e50d0cc8e9fcf74e4ff937ffb125cd13000a55dc230",
       "source_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "storage_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf"
     },
@@ -145,45 +145,45 @@
     },
     "erdos_269_note": {
       "inputs": {
-        "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:e11a9dc4c27ec8d16434c561b7649f432658a6aa4871345dc58a7bd141e5ebf7",
+        "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:83d6078677d746973d14bbb9aee23dc4ef1b79db72c59e33610a7a305a858564",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:56bde9182a00a18661a1ddc8e231152c164e76ba7d476fbbad0e840dd651fe33",
+      "rendered_content_digest": "sha256:6468c6171bd41ec637505b0b87a20b0cff1951471c402b59eb1e9d8ef448d320",
       "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
       "storage_path": "paper/269/erdos-269-three-prime-running-lcm.pdf"
     },
     "erdos_269_reasoning_record": {
       "inputs": {
-        "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:aaf13efa2ce0efe4252dab9e0c5a50489c91559d29d6b87e34c36a96d993271d",
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:37d19a4e3ae506473b3e26a5afa74540fd93b630b53e168f03e055529f1a8d02",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:4625fff43aeea3a12dd49ad9b4fa9323f7f0b6ef6515c322769941792260e216",
+      "rendered_content_digest": "sha256:cde69fc2f848cb2ea9c91de49de981087a279e0716386f739f8d9c1ab4fba943",
       "source_path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
       "storage_path": "paper/269/erdos269-running-lcm-reasoning-surface.pdf"
     },
     "erdos_68_note": {
       "inputs": {
-        "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:a2ee940d1a6c498865938f2d991adf18e8fa0d789bab792da0739c3d086661e2",
+        "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:cb6d5a272f69298ef91b8337a41a98ae3f39d76f4aa72fa969e3d095c79c19fe",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:934c8f52833d22305ed36a824cef3123345081375c51a852c2e505d2628ffcce",
+      "rendered_content_digest": "sha256:f1d7acb960c1d1ace72ce24174b6558a412280f2065e146b12da5e812f96dc94",
       "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "storage_path": "paper/68/erdos-68-factorial-denominator-irrationality.pdf"
     },
     "erdos_68_reasoning_record": {
       "inputs": {
-        "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:872244f9cca9ed57e1d870d16dc24aeadeca1197f3ef5b4e163ffdf8538b28db",
+        "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:48a12f75e1f1ac462094b6812d9c3a2470d49eb1c5dbb18831226f2f3f35753b",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:823e4fd8ba12072599f42eabe22509864ef1a995a12bf5aa3df1069a012175cb"
       },
-      "rendered_content_digest": "sha256:c1e65d16cee04b61fa8fce28a71c0f4708f6c3df5bdbf08478b7d42247382374",
+      "rendered_content_digest": "sha256:4ce6e2d0f4786abd4eec32bcfcc6c1bcdc60f953d9f68276f102c0d05a1bd652",
       "source_path": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "storage_path": "paper/68/erdos68-factorial-reasoning-surface.pdf"
     },
