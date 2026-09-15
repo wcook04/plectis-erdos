@@ -1366,15 +1366,15 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1350,
-          "line_end": 1356,
+          "line_start": 1377,
+          "line_end": 1383,
           "expected_text": "\\bibitem{june2026}",
           "excerpt_sha256": "sha256:46dca09a9b0fb5809f8f4cc07439c501e151481a0c3304742947f4738235bebc"
         },
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2862,
-          "line_end": 2868,
+          "line_start": 2897,
+          "line_end": 2903,
           "expected_text": "\\bibitem{june2026}",
           "excerpt_sha256": "sha256:433341ba84d351b9d52eadb681e82e1b4fd8edf89752e767cd7d9a1b0915c10a"
         },
@@ -1387,20 +1387,20 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 196,
-          "line_end": 196,
+          "line_start": 204,
+          "line_end": 204,
           "excerpt_sha256": "sha256:1ec851451ff3afc8a03f2ce9627c388291130e0150709a0d1912251780bb979f"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 234,
-          "line_end": 234,
+          "line_start": 242,
+          "line_end": 242,
           "excerpt_sha256": "sha256:b80d03c685f1d8f9618a563d72f37b411f68112263c418010256b4706bc01bcc"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 925,
-          "line_end": 925,
+          "line_start": 933,
+          "line_end": 933,
           "excerpt_sha256": "sha256:fb236e97c44d5f78380812bdf34804604cbb1b2eb88615d7537a81d827b3d666"
         }
       ],
@@ -1490,15 +1490,15 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1346,
-          "line_end": 1350,
+          "line_start": 1373,
+          "line_end": 1377,
           "expected_text": "\\bibitem{march2026}",
           "excerpt_sha256": "sha256:372ad8d3f82ff0212ee04c7dd5a7269a56a5c9a52cae45f7d05245ccae260a87"
         },
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2853,
-          "line_end": 2862,
+          "line_start": 2888,
+          "line_end": 2897,
           "expected_text": "\\bibitem{march2026}",
           "excerpt_sha256": "sha256:72a88e5a23c5730b248edc8d8bc104d1818c8c71ea25dbdd60a7c6074bb79d61"
         },
@@ -1511,14 +1511,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 185,
-          "line_end": 185,
+          "line_start": 193,
+          "line_end": 193,
           "excerpt_sha256": "sha256:07fcf468eb97daf59fb2dc81ba8f582132d97355a60f1a6cf9d66f6fa2bef8bb"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 238,
-          "line_end": 238,
+          "line_start": 246,
+          "line_end": 246,
           "excerpt_sha256": "sha256:a5ff86424ff981f821342dcb825b979ab97b26d9f4fd64602e335a61e6c30611"
         }
       ],
@@ -1773,8 +1773,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2893,
-          "line_end": 2899,
+          "line_start": 2928,
+          "line_end": 2934,
           "expected_text": "\\bibitem{fryntovnazarov2008}",
           "excerpt_sha256": "sha256:3720b8fa4dfca075d387be79579acb9d9a034fe29edd7ebdaf205529b7e1a2cc"
         },
@@ -1787,8 +1787,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 845,
-          "line_end": 845,
+          "line_start": 853,
+          "line_end": 853,
           "excerpt_sha256": "sha256:fd9c0a34811762e7802c34c4f1519eff9d6f7e2f9d58289d888b9f4eb512f6b4"
         }
       ],
@@ -2264,8 +2264,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2848,
-          "line_end": 2853,
+          "line_start": 2883,
+          "line_end": 2888,
           "expected_text": "\\bibitem{sutherland1992}",
           "excerpt_sha256": "sha256:6fb37824293e7cce52b4b29f61ea541eb82176ad734eda23639823fb1a62191e"
         },
@@ -2278,8 +2278,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 180,
-          "line_end": 180,
+          "line_start": 188,
+          "line_end": 188,
           "excerpt_sha256": "sha256:e8e376fbbee36687769571c22032fa53c50be7653bf8cc1d475ff347bf8d486a"
         }
       ],
@@ -2312,15 +2312,15 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1373,
-          "line_end": 1379,
+          "line_start": 1414,
+          "line_end": 1420,
           "expected_text": "\\bibitem{polya1928}",
           "excerpt_sha256": "sha256:2b141e0dfde916d0b14a217ccb8e68c841eb01c0d19ad4821cce29b2e13db886"
         },
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2832,
-          "line_end": 2836,
+          "line_start": 2867,
+          "line_end": 2871,
           "expected_text": "\\bibitem{polya1928}",
           "excerpt_sha256": "sha256:ce1e5786510942a84010dd9b4dfa71aa0093743c2eec3c0ca8a106d74048de76"
         },
@@ -2339,20 +2339,20 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 571,
-          "line_end": 571,
+          "line_start": 579,
+          "line_end": 579,
           "excerpt_sha256": "sha256:83e6c51968fbb8c96b358a906f11583b5ed18f56b1f404c8b974e39cdad6e7a1"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 1024,
-          "line_end": 1024,
+          "line_start": 1032,
+          "line_end": 1032,
           "excerpt_sha256": "sha256:f9309efd3b45427b1667226a08d9d80a855001b073e3ef127be6182471cf977a"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 1108,
-          "line_end": 1108,
+          "line_start": 1116,
+          "line_end": 1116,
           "excerpt_sha256": "sha256:513d9455ccd8f11d7bcdd4c503ae02528701d9a1e8bef30b6c9cb257b35a2b5f"
         }
       ],
@@ -5277,15 +5277,15 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1343,
-          "line_end": 1346,
+          "line_start": 1370,
+          "line_end": 1373,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:8a48b0e4aa99b7179cba3135334544de4bd787d26455bdc69f074bafd1695803"
         },
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2841,
-          "line_end": 2844,
+          "line_start": 2876,
+          "line_end": 2879,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:17b9ce182390d749e10c20ef078b7abf4de2319c8819c9796b6ed8eacdf33ae6"
         },
@@ -5304,14 +5304,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 869,
-          "line_end": 869,
+          "line_start": 877,
+          "line_end": 877,
           "excerpt_sha256": "sha256:7017c69d041d5de1602c7d0c0aa782e8f2639bcdd7f243e5daeec0b2da20db57"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 927,
-          "line_end": 927,
+          "line_start": 935,
+          "line_end": 935,
           "excerpt_sha256": "sha256:ada44e7113aedfe65120a60637f41f11125d8a9f6f73c322c7626c5a9dec27fa"
         },
         {
@@ -5571,8 +5571,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2844,
-          "line_end": 2848,
+          "line_start": 2879,
+          "line_end": 2883,
           "expected_text": "\\bibitem{ghosh2023}",
           "excerpt_sha256": "sha256:c3f90c9e1c7c00acd7dabb104791a3433324b664eedf89d964eda9fe77d7634c"
         },
@@ -8625,13 +8625,17 @@
         {
           "url": "https://arxiv.org/abs/0805.2295",
           "locator": "Introduction and Theorem 1 state the EHP conjecture and prove |E(p)| <= alpha_0 d < 9.173d for monic degree-d polynomials."
+        },
+        {
+          "url": "https://arxiv.org/abs/0805.2295",
+          "locator": "Lemma 5 (arXiv v2 p. 5): some extremal polynomial for the level-curve length has all its critical points on E(p) = {|p| = 1}; Lemma 6 (p. 7): some extremal polynomial has connected E(p)."
         }
       ],
       "artifact_links": [
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2888,
-          "line_end": 2893,
+          "line_start": 2923,
+          "line_end": 2928,
           "expected_text": "\\bibitem{eremenkohayman1999}",
           "excerpt_sha256": "sha256:7331c09baa9a15a659652bbac41137f53a852794fb520657608685d0b161bdb7"
         },
@@ -8644,12 +8648,12 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 844,
-          "line_end": 844,
+          "line_start": 852,
+          "line_end": 852,
           "excerpt_sha256": "sha256:06eec9401347e3c0dd864537d4f2ea6a9c860a0eb4161cf8c2d3878c5e0f052e"
         }
       ],
-      "relation": "Level-lemniscate upper bound; contextual background rather than a theorem about shortest paths between zeros.",
+      "relation": "Level-lemniscate upper bound; contextual background rather than a theorem about shortest paths between zeros. The #1041 papers also cite Lemma 5, whose extremal has every critical point on the level curve, as a parallel to the scaled Chebyshev extremal of the sharp collinear theorem.",
       "verification_state": "source_verified",
       "bibliography_keys": [
         {
@@ -8662,6 +8666,236 @@
         }
       ],
       "verification_scope": "Primary arXiv source acquired and read; exact source locators identify the inspected statement. The stated relation bounds what is used locally."
+    },
+    {
+      "id": "eremenko_yuditskii_2012_comb_functions",
+      "kind": "literature",
+      "title": "Comb functions",
+      "authors": [
+        "A. Eremenko",
+        "P. Yuditskii"
+      ],
+      "publication_years": [
+        "2012"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/1109.1464"
+      ],
+      "problems": [
+        "1041"
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/1109.1464",
+          "locator": "Section 1 (arXiv v1 pp. 1-2) recalls the equioscillation characterisation of the monic polynomial of least deviation from zero on a compact subset of the real line; Theorem 1 (p. 5) shows that a real polynomial with real zeros is determined by its critical sequence up to a real affine change of variable z -> az+b with a > 0."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "line_start": 1394,
+          "line_end": 1397,
+          "expected_text": "\\bibitem{eremenko-yuditskii}",
+          "excerpt_sha256": "sha256:6abfd14cec2de6bd2019a8373801459e194451fa2ebafb5358d867cac3527340"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "line_start": 2939,
+          "line_end": 2944,
+          "expected_text": "\\bibitem{eremenkoyuditskii2012}",
+          "excerpt_sha256": "sha256:03a47da1118d39631b3bbe345863677d9b0ce95cfb47631e2a424fe4d9b29d98"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos1041/back.tex",
+          "line_start": 74,
+          "line_end": 79,
+          "expected_text": "\\bibitem{eremenkoyuditskii2012}",
+          "excerpt_sha256": "sha256:03a47da1118d39631b3bbe345863677d9b0ce95cfb47631e2a424fe4d9b29d98"
+        }
+      ],
+      "relation": "Vocabulary and classical characterisation for the sharp collinear theorem: the gap maxima of a real-rooted polynomial with distinct zeros are the moduli of its critical sequence, and the comparison polynomial is the Chebyshev polynomial of an interval. The collinear proof uses only the alternation count and does not depend on Theorem 1.",
+      "verification_state": "source_verified",
+      "bibliography_keys": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "key": "eremenko-yuditskii"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "key": "eremenkoyuditskii2012"
+        }
+      ]
+    },
+    {
+      "id": "eremenko_2007_markov_type_inequality_plane_continua",
+      "kind": "literature",
+      "title": "A Markov-type inequality for arbitrary plane continua",
+      "authors": [
+        "A. Eremenko"
+      ],
+      "publication_years": [
+        "2007"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/math/0606745",
+        "https://doi.org/10.1090/S0002-9939-06-08640-0"
+      ],
+      "problems": [
+        "1041"
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/math/0606745",
+          "locator": "Theorem A (arXiv p. 2) states the sharp bound sup |f'| <= 2^(1/d-1) d^2 on a connected sublevel set {|f| <= 1} of a monic degree-d polynomial, conjectured by Erdos and proved by Eremenko and Lempert, with equality exactly for c^(-d) T_d(2^(1/d-1) c z + b), |c| = 1; Theorem 2 (p. 3) gives the capacity form for a component of the sublevel set."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "line_start": 1400,
+          "line_end": 1404,
+          "expected_text": "\\bibitem{eremenko-markov}",
+          "excerpt_sha256": "sha256:ba940c186fb686dbc03385fb5086ca4d9293f7861cacc2f9bbce186f2c1f750e"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "line_start": 2950,
+          "line_end": 2958,
+          "expected_text": "\\bibitem{eremenko2007}",
+          "excerpt_sha256": "sha256:e67a45d86316bb43f89f227692bc8553160eb268b4aa44307d64426c872eae9f"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos1041/back.tex",
+          "line_start": 85,
+          "line_end": 93,
+          "expected_text": "\\bibitem{eremenko2007}",
+          "excerpt_sha256": "sha256:e67a45d86316bb43f89f227692bc8553160eb268b4aa44307d64426c872eae9f"
+        }
+      ],
+      "relation": "Record of the equality cases of the Eremenko-Lempert derivative bound (restated as Theorem A): its Chebyshev extremals, like the scaled Chebyshev polynomial in the sharp collinear theorem, have every critical value on one level circle. No argument in the #1041 papers uses the derivative bound.",
+      "verification_state": "source_verified",
+      "bibliography_keys": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "key": "eremenko-markov"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "key": "eremenko2007"
+        }
+      ]
+    },
+    {
+      "id": "eremenko_lempert_1994_extremal_problem_for_polynomials",
+      "kind": "literature",
+      "title": "An extremal problem for polynomials",
+      "authors": [
+        "A. Eremenko",
+        "L. Lempert"
+      ],
+      "publication_years": [
+        "1994"
+      ],
+      "problems": [
+        "1041"
+      ],
+      "source_locators": [],
+      "artifact_links": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "line_start": 1397,
+          "line_end": 1400,
+          "expected_text": "\\bibitem{eremenko-lempert}",
+          "excerpt_sha256": "sha256:259a8d61790b0e66ff3fac1737c3054b87d06cd10bf04dd4e31c2f47b4066851"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "line_start": 2944,
+          "line_end": 2950,
+          "expected_text": "\\bibitem{eremenkolempert1994}",
+          "excerpt_sha256": "sha256:0ae78181a0498fd68e97a7b3ddfe1c78c6648940b593286ad413ac1138ac8a5d"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos1041/back.tex",
+          "line_start": 79,
+          "line_end": 85,
+          "expected_text": "\\bibitem{eremenkolempert1994}",
+          "excerpt_sha256": "sha256:0ae78181a0498fd68e97a7b3ddfe1c78c6648940b593286ad413ac1138ac8a5d"
+        }
+      ],
+      "relation": "Original proof (Proc. Amer. Math. Soc. 122 (1994), 191-193) of the sharp bound for |f'| on a connected sublevel set {|f| <= 1} of a monic polynomial, conjectured by Erdos. Cited for attribution beside its restatement as Theorem A of Eremenko 2007; the 1994 paper itself was not consulted, and the attribution follows Eremenko 2007 (reference [5]) and Eremenko's publication list.",
+      "verification_state": "bibliography_only",
+      "bibliography_keys": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "key": "eremenko-lempert"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "key": "eremenkolempert1994"
+        }
+      ]
+    },
+    {
+      "id": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
+      "kind": "literature",
+      "title": "On the shapes of rational lemniscates",
+      "authors": [
+        "C. J. Bishop",
+        "A. Eremenko",
+        "K. Lazebnik"
+      ],
+      "publication_years": [
+        "2025"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2407.14610",
+        "https://doi.org/10.1007/s00039-025-00704-2"
+      ],
+      "problems": [
+        "1041"
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/2407.14610",
+          "locator": "Definition 1.2 (lemniscate graph, every vertex of even degree at least four) and Proposition 2.4 (every rational lemniscate is a lemniscate graph with vertices at the critical points on the level set); Corollary 1.6 (a lemniscate graph is realised by a polynomial lemniscate up to a homeomorphism of the plane exactly when it is the boundary of its unbounded face). Numbering checked against arXiv v3."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "line_start": 1404,
+          "line_end": 1408,
+          "expected_text": "\\bibitem{bishop-eremenko-lazebnik}",
+          "excerpt_sha256": "sha256:f8d7e2c7371688eef7424dd98adc281c517b947894b56f1f3ea3ea04ab41e054"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "line_start": 2958,
+          "line_end": 2966,
+          "expected_text": "\\bibitem{bishoperemenkolazebnik2025}",
+          "excerpt_sha256": "sha256:9e7fd19baa0c4857489776145f8fb3ebcb958571cea10e15db1cb481e3d82be3"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos1041/back.tex",
+          "line_start": 93,
+          "line_end": 101,
+          "expected_text": "\\bibitem{bishoperemenkolazebnik2025}",
+          "excerpt_sha256": "sha256:9e7fd19baa0c4857489776145f8fb3ebcb958571cea10e15db1cb481e3d82be3"
+        }
+      ],
+      "relation": "Topological context: a simple critical point on a level curve is a degree-four vertex of the lemniscate graph, the four-sector picture used in the proof-gap diagnosis. The results are approximation and realisation theorems up to homeomorphism and give no metric or path-length estimate.",
+      "verification_state": "source_verified",
+      "bibliography_keys": [
+        {
+          "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+          "key": "bishop-eremenko-lazebnik"
+        },
+        {
+          "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+          "key": "bishoperemenkolazebnik2025"
+        }
+      ]
     },
     {
       "id": "source-78565c625f0ea3",
@@ -10056,8 +10290,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1356,
-          "line_end": 1363,
+          "line_start": 1383,
+          "line_end": 1390,
           "expected_text": "\\bibitem{pendyala2026shortest}",
           "excerpt_sha256": "sha256:006b7575e088c1f95193a347caec3ada8681c2e706f2dcd3c3febcde48d3e70d"
         }
@@ -10436,15 +10670,15 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1367,
-          "line_end": 1373,
+          "line_start": 1408,
+          "line_end": 1414,
           "expected_text": "\\bibitem{dubinin}",
           "excerpt_sha256": "sha256:a417f5753cf9d65bf35cd6a358cb659cef8be7de46f23b0cb3d8b627c402b0e3"
         },
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2868,
-          "line_end": 2882,
+          "line_start": 2903,
+          "line_end": 2917,
           "expected_text": "\\bibitem{dubinin}",
           "excerpt_sha256": "sha256:d876dc5e496ee7a4f2cd2da6e77e8675d10922691babb4199e6de90162f2811b"
         },
@@ -10457,8 +10691,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 1095,
-          "line_end": 1095,
+          "line_start": 1103,
+          "line_end": 1103,
           "excerpt_sha256": "sha256:bf660f22b7c2b5ad1586f91c21fc4e625ed74e4ec29b524be165def32d7d016d"
         }
       ],
@@ -10633,8 +10867,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2882,
-          "line_end": 2888,
+          "line_start": 2917,
+          "line_end": 2923,
           "expected_text": "\\bibitem{borwein1995}",
           "excerpt_sha256": "sha256:67bafe888924ec8db475f42fda3d8d22fd5e0990a9617a787a952754d694b40b"
         },
@@ -10647,8 +10881,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 844,
-          "line_end": 844,
+          "line_start": 852,
+          "line_end": 852,
           "excerpt_sha256": "sha256:06eec9401347e3c0dd864537d4f2ea6a9c860a0eb4161cf8c2d3878c5e0f052e"
         }
       ],
@@ -10686,8 +10920,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2836,
-          "line_end": 2839,
+          "line_start": 2871,
+          "line_end": 2874,
           "expected_text": "\\bibitem{crane}",
           "excerpt_sha256": "sha256:637f267b342a5d120e51f20bb99a2970f890e7aea7947fb4d2f8bfc73e3add60"
         },
@@ -10903,22 +11137,22 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2899,
-          "line_end": 2904,
+          "line_start": 2934,
+          "line_end": 2939,
           "expected_text": "\\bibitem{tao2025}",
-          "excerpt_sha256": "sha256:65cd0cc2fed965e7f0b0bc1463a3cf252a1d753faf608349c3ee30fbd2568945"
+          "excerpt_sha256": "sha256:0fa51554a857863d50716dc6f4bcaadefc3df358e5ad21588d943a80bdcb25fa"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/back.tex",
           "line_start": 69,
           "line_end": 74,
           "expected_text": "\\bibitem{tao2025}",
-          "excerpt_sha256": "sha256:65cd0cc2fed965e7f0b0bc1463a3cf252a1d753faf608349c3ee30fbd2568945"
+          "excerpt_sha256": "sha256:0fa51554a857863d50716dc6f4bcaadefc3df358e5ad21588d943a80bdcb25fa"
         },
         {
           "path": "paper/reasoning-parts/erdos1041/core.tex",
-          "line_start": 846,
-          "line_end": 846,
+          "line_start": 854,
+          "line_end": 854,
           "excerpt_sha256": "sha256:4473567ae963215b952aad3e5d3b8bd450d7fbc046a6e9a84ca5c904ef3c7155"
         }
       ],
@@ -11634,15 +11868,15 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1341,
-          "line_end": 1343,
+          "line_start": 1368,
+          "line_end": 1370,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed"
         },
         {
           "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-          "line_start": 2839,
-          "line_end": 2841,
+          "line_start": 2874,
+          "line_end": 2876,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed"
         },
