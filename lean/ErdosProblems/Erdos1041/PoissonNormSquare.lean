@@ -5,7 +5,7 @@ import Mathlib.Tactic
 Analytic Poisson majorization for the squared norm. The hypotheses are only
 holomorphy on the open unit disc, continuity on its closure, and an interior
 sampling point. No norm-square mean inequality is an assumed supplier.
-Candidate source: not yet compiled.
+
 -/
 noncomputable section
 namespace ErdosProblems.Erdos1041

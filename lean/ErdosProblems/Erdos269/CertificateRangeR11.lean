@@ -4,7 +4,7 @@ import ErdosProblems.Erdos269.PaperR9WidthData
 The range is [lo, lo + len).  The evaluator uses only an explicitly supplied
 Bool; it never asks typeclass synthesis to decide an opaque universal predicate.
 No finite arithmetic is trusted merely because it occurs in a data file.
-All new Lean checks: UNRUN. -/
+-/
 namespace ErdosProblems.Erdos269.PaperR11
 open PaperR9
 

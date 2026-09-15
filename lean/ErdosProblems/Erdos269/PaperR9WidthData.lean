@@ -3,7 +3,7 @@ import ErdosProblems.Erdos269.PaperR9SourceCounts
 /-! Exact width and cumulative tables. Their correctness is NOT assumed:
 every entry is checked by the source-proved integer boundary sweep in the
 separate Widths modules. Finite checks use ordinary `decide`, not native_decide.
-All proof text is uncompiled; the cost of kernel reduction is unprofiled. -/
+-/
 namespace ErdosProblems.Erdos269.PaperR9
 set_option maxRecDepth 1000000
 set_option maxHeartbeats 100000000

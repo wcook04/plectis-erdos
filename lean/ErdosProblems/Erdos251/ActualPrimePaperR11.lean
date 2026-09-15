@@ -6,7 +6,7 @@ import ErdosProblems.Erdos251.PerturbationGrowthR11
 /-!
 # Actual-prime specialisations and explicit external-source boundaries
 
-UNRUN. SchlagePuchtaLemma4 is the fixed-polynomial, fixed-block theorem
+SchlagePuchtaLemma4 is the fixed-polynomial, fixed-block theorem
 attributed to Schlage-Puchta, not a growing-block theorem. It is an explicit
 argument, not an axiom. PrimeNumberTheorem concerns only Nat.nth Nat.Prime.
 The perturbation, its nonconcentration, its cumulative growth and all sparse

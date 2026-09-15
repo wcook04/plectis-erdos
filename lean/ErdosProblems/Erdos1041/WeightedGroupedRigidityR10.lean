@@ -3,7 +3,7 @@ import ErdosProblems.Erdos1041.GroupedPoleNearZero
 
 /-! Equality rigidity, with repeated centres genuinely grouped.
 Zero-weight points are allowed and correctly disappear from the equality test.
-All Lean compilation and axiom audits are UNRUN. -/
+-/
 set_option autoImplicit false
 open scoped BigOperators ComplexConjugate Topology
 noncomputable section

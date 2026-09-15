@@ -3,7 +3,7 @@ import Mathlib.Analysis.Real.Pi.Bounds
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 import Mathlib.Analysis.SpecialFunctions.Complex.Circle
 
-/-! Complete mathematical candidate, UNRUN. This proves one small finite
+/-! This proves one small finite
 instance only. In particular it does not prove DTWFirstHarmonicNormGap. -/
 namespace ErdosProblems.Erdos249.TypeBReturnV8
 open Erdos249257.TotientTailPeriodKiller

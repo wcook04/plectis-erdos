@@ -3,7 +3,7 @@ import ErdosProblems.Erdos251.PaperCoreR7
 /-!
 # Explicit real-tail truncation for the two papers
 
-New proof source, NOT compiled in the return environment.
+
 Targets: long `res:explicit-remainder`, short `res:truncation`, long
 `xr:truncation`. No analytic assumption is inserted into the explicit
 quartic estimate. The general majorant theorem keeps the paper's

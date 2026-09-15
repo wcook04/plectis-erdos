@@ -9,7 +9,7 @@ does not prove this sharper displayed constant.  We retain the actual shell
 mass, prove its `8^{-a}` estimate, and sum the resulting majorant exactly.
 This is NOT a proof of the separate long-record `Q(n_a)` bound.
 
-Validation: authored, not compiled in this return. No admissions.
+No admissions.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

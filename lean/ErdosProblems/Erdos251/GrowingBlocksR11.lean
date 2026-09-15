@@ -2,7 +2,7 @@ import ErdosProblems.Erdos251.SparsePolylogR11
 import ErdosProblems.Erdos251.ReturnedSparseWindow
 
 /-! # Growing unnormalised blocks: total variation and bounded tests
-UNRUN candidate. Probability is uniform over the X starting indices in
+Probability is uniform over the X starting indices in
 [X,2X). The letters themselves are not rescaled. Total variation uses the
 supremum-over-events convention, so bounded tests carry a factor two.
 -/

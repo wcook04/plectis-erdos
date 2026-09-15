@@ -2,7 +2,7 @@ import ErdosProblems.Erdos1041.TaylorCoefficientDeficit
 import Mathlib.Topology.Algebra.InfiniteSum.Real
 
 /-! Retain any finite set of positive-degree Taylor deficits.
-This is a candidate: all compilation and axiom audits are UNRUN.
+
 The degree-zero term is explicitly zero, so no exceptional index is hidden. -/
 set_option autoImplicit false
 open scoped BigOperators ComplexConjugate NNReal ENNReal

@@ -3,7 +3,7 @@ import ErdosProblems.Erdos1041.PolynomialDiscNormalisationR10
 
 /-! The actual polynomial critical-value mean, not a hypothesis-only consumer.
 Both paper exponents, all degrees, arbitrary disc centres, R=0, and critical
-multiplicities are included. All Lean builds and axiom audits are UNRUN. -/
+multiplicities are included. -/
 set_option autoImplicit false
 open scoped BigOperators ComplexConjugate
 noncomputable section

@@ -4,7 +4,7 @@ import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
 /-!
 # Nonunit constants: explicit primitive divisor obstructions
 
-Authored candidate, UNRUN. The old 1/(12*d) loss is unnecessary for a single
+The old 1/(12*d) loss is unnecessary for a single
 periodic family of disjoint two-windows. We obtain 1/(6*d) for every d >= 2,
 and 1/d when d is coprime to 6. In particular divisors 2, 3, and any divisor
 between 2 and 28 coprime to 6 give the universal 1/28 bound in this branch.

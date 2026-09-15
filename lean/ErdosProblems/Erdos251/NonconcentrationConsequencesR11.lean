@@ -2,7 +2,7 @@ import ErdosProblems.Erdos251.NonconcentrationCoreR11
 import ErdosProblems.Erdos251.SparsePaperR11
 
 /-! # Exact density-zero consumers and the limitation of the averaging remark
-UNRUN. All generic conclusions are proved from fixed-block nonconcentration;
+All generic conclusions are proved from fixed-block nonconcentration;
 no growing-polynomial-family assertion is inferred from a fixed-block premise.
 -/
 noncomputable section

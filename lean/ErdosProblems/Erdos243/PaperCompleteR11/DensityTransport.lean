@@ -1,6 +1,6 @@
 import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
 
-/-! Authored, UNRUN. Finite-prefix and constant transport for the literal
+/-! Finite-prefix and constant transport for the literal
 lower asymptotic density used throughout the R11 window arguments. -/
 
 namespace ErdosProblems.Erdos243.PaperCompleteR11

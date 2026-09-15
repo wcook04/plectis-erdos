@@ -5,7 +5,7 @@ import Mathlib.Topology.Algebra.InfiniteSum.Basic
 /-!
 # Ambient sparse rationalisation: the actual infinite coefficient word
 
-Source candidate, NOT compiled. This module discharges the ambient extension
+This module discharges the ambient extension
 and all-index congruence obligations left in SparseIntervalR8. The polylogarithmic
 rate is separate; it is not inferred from upper Banach density zero.
 

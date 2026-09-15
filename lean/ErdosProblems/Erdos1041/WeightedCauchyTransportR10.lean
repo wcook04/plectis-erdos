@@ -4,7 +4,7 @@ import Mathlib.Analysis.Analytic.Uniqueness
 
 /-! Cauchy coefficients of the actual weighted function, at a fixed safe radius.
 Radial transport follows from one-dimensional power-series uniqueness.
-All compilation and axiom audits are UNRUN. -/
+-/
 set_option autoImplicit false
 open scoped BigOperators ComplexConjugate NNReal ENNReal Topology
 noncomputable section

@@ -4,7 +4,7 @@ import ErdosProblems.Erdos1041.WeightedCauchyTransportR10
 
 /-! Actual finite and infinite coefficient deficits on the CLOSED unit disc.
 The endpoint is obtained from finite sums before taking the coefficient-series
-supremum. All compilation and axiom audits are UNRUN. -/
+supremum. -/
 set_option autoImplicit false
 open scoped BigOperators ComplexConjugate NNReal ENNReal Topology
 noncomputable section

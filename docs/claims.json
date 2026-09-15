@@ -2029,8 +2029,8 @@
           "ErdosProblems.Bit.",
           "ErdosProblems.Decl.",
           "ErdosProblems.Erdos1041.",
-          "ErdosProblems.Erdos1049.AllRow.",
-          "ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient",
+          "ErdosProblems.Erdos1049.AllRow.Audit",
+          "ErdosProblems.Erdos1049.AllRow.Smoke",
           "ErdosProblems.Erdos68.FiniteLeadBlocks.",
           "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
           "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum",
@@ -8187,7 +8187,16 @@
             "Erdos249257.FirstHarmonicPivot",
             "Erdos249257.TotientKernelConditional",
             "Erdos249257.TotientKernelIndex",
-            "Erdos249257.TotientKernelReduction"
+            "Erdos249257.TotientKernelReduction",
+            "ErdosProblems.Erdos1049.AllRow.Producer",
+            "ErdosProblems.Erdos1041.PaperCriticalValueMeanR10",
+            "ErdosProblems.Erdos1041.PaperCubicFibres",
+            "ErdosProblems.Erdos251.SparseAmbientR9",
+            "ErdosProblems.Erdos251.SparsePaperR11",
+            "ErdosProblems.Erdos251.PaperTailBoundsR7",
+            "ErdosProblems.Erdos251.ActualPrimePaperR11",
+            "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis",
+            "ErdosProblems.Erdos68.PaperCompleteLiminf"
           ]
         },
         {
@@ -8818,6 +8827,22 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos1041.PaperReflectedBoundary"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperSeparationCounterexample",
+          "path": "lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.NewtonFlowRaySeparation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PaperStraightObstructions",
+          "path": "lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.CriticalTwoRootProximity"
           ]
         },
         {

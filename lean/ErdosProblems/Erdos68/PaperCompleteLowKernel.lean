@@ -7,7 +7,7 @@ import Mathlib.Algebra.BigOperators.GroupWithZero.Action
 The literal low-channel kernel and its unique integral classification.
 Coordinate j>0 denotes U_(j+1); coordinate 0 denotes e_1.  Thus the tail
 condition j>=D is precisely the paper's unit-index condition n>D.
-New Lean checks: UNRUN.
+
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 open scoped BigOperators

@@ -3,7 +3,7 @@ import Mathlib.Data.Int.GCD
 
 /-!
 Constructive integer-span tools for the attainable-moment theorem.
-New compilation and axiom checks: UNRUN.  No unproved span hypothesis is used.
+No unproved span hypothesis is used.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 open scoped BigOperators

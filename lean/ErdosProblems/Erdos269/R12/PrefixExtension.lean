@@ -8,7 +8,7 @@ positive rational completion, obtained by solving backwards from state 1
 and continuing with radix 2 and digit 1. This is a countermodel for inference
 from an abstract finite word. It is NOT a rational model of the actual
 infinite smooth-number source; the continuation is explicitly changed.
-Lean proof scripts UNRUN.
+
 -/
 namespace ErdosProblems.Erdos269.PaperR12
 

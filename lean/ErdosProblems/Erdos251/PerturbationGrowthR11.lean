@@ -1,7 +1,7 @@
 import ErdosProblems.Erdos251.SparsePaperR11
 
 /-! # The cumulative growth assertions for bounded and sublogarithmic corrections
-Candidate source, UNRUN. The stability lemmas expose a PNT input only for the
+The stability lemmas expose a PNT input only for the
 original position sequence, never for the perturbed sequence being proved.
 -/
 noncomputable section

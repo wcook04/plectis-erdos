@@ -4,7 +4,7 @@ import ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification
 /-!
 # From actual modular cubic roots to the exceptional-set density
 
-Authored candidate, UNRUN. Rational profile coefficients are cleared over the
+Rational profile coefficients are cleared over the
 integers before reduction. There is deliberately no ring homomorphism from
 `ℚ` to `ZMod p`. The final theorem is conditional on an actual divergent family
 of good primes; producing that family from a number-field nonsquare remains a
