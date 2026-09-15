@@ -346,7 +346,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-269-three-p
 
 **Sharp Solved Families and Constant-Factor Paths in Polynomial Lemniscates**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 32 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 33 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
 Start here (selected for this guide): [Monic trinomials, in every degree](full-text/erdos-1041-lemniscate-newton-flow.md#sec:trinomial), [Low critical values and a uniform path bound](full-text/erdos-1041-lemniscate-newton-flow.md#sec:constant-factor), [A proof gap in the unrestricted argument](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [The remaining geometric selection problem](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
 
@@ -354,7 +354,7 @@ Start here (selected for this guide): [Monic trinomials, in every degree](full-t
 
 **Lemniscates and Newton Flow: Complete Reasoning Record**
 
-[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 61 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
+[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 62 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [An unconditional regime: a small least critical value](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:low-critical-closure), [Three exact solved polynomial families](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:solved-polynomial-families), [A proof gap in the unrestricted argument](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:gap), [Complete result-family map](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:erdos-1041-complete-family-map).
 
