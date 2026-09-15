@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 29,
-    "artifact_count": 29,
+    "working_tree_only_count": 31,
+    "artifact_count": 31,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 29,
+    "link_and_digest_only_count": 31,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -523,6 +523,46 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group.pdf",
+      "sha256": "0948a67eda0310b1fc354f417007317898b3c7582f992260763e85a4e138700e",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://doi.org/10.4064/aa111-2-4",
+        "https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/zudilin-2004-heine-permutation-group-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm.pdf",
+      "sha256": "53947bb2fc82e853c12ccfdb293a526229f6fe2ac99d9c991d2170ae6e1266e3",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/1601.02688",
+        "https://arxiv.org/pdf/1601.02688v2",
+        "https://link.springer.com/article/10.1007/s40993-016-0042-x",
+        "https://doi.org/10.1007/s40993-016-0042-x"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/zudilin-2016-generalized-q-logarithm-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     },
