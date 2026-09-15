@@ -258,41 +258,41 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1499,
-          "line_end": 1503,
+          "line_start": 1522,
+          "line_end": 1526,
           "expected_text": "\\bibitem{formalconjectures251}",
           "excerpt_sha256": "sha256:20d0fa1cecb44a85957559d4295b5c682025127653f92ab2c92369a70eb82998"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2444,
-          "line_end": 2448,
+          "line_start": 2476,
+          "line_end": 2480,
           "expected_text": "\\bibitem{formalconjectures251}",
           "excerpt_sha256": "sha256:20d0fa1cecb44a85957559d4295b5c682025127653f92ab2c92369a70eb82998"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 119,
-          "line_end": 123,
+          "line_start": 126,
+          "line_end": 130,
           "expected_text": "\\bibitem{formalconjectures251}",
           "excerpt_sha256": "sha256:20d0fa1cecb44a85957559d4295b5c682025127653f92ab2c92369a70eb82998"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 205,
-          "line_end": 205,
+          "line_start": 227,
+          "line_end": 227,
           "excerpt_sha256": "sha256:c384e283f82a7af357601d537bf3fea0643aec17edef2b2d3fe55664a758a772"
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1499,
-          "line_end": 1501,
+          "line_start": 1522,
+          "line_end": 1524,
           "excerpt_sha256": "sha256:169850d8c7256693be47fa564c61523bcb8732119a4097833460d59e5ed9722e"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 239,
-          "line_end": 239,
+          "line_start": 261,
+          "line_end": 261,
           "excerpt_sha256": "sha256:c384e283f82a7af357601d537bf3fea0643aec17edef2b2d3fe55664a758a772"
         }
       ],
@@ -467,15 +467,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1455,
-          "line_end": 1462,
+          "line_start": 1472,
+          "line_end": 1479,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:5efcd594df2c1529f1d749e113f706ddbbc1e3b2abe21b568592e74352af11ae"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2380,
-          "line_end": 2387,
+          "line_start": 2406,
+          "line_end": 2413,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:5efcd594df2c1529f1d749e113f706ddbbc1e3b2abe21b568592e74352af11ae"
         },
@@ -495,15 +495,15 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 55,
-          "line_end": 62,
+          "line_start": 56,
+          "line_end": 63,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:5efcd594df2c1529f1d749e113f706ddbbc1e3b2abe21b568592e74352af11ae"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 250,
-          "line_end": 251,
+          "line_start": 272,
+          "line_end": 273,
           "excerpt_sha256": "sha256:4e7766b5028243ec605f7c1a65b5d48267b0332cf1424f52897938f30cb6624e"
         }
       ],
@@ -562,29 +562,29 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1462,
-          "line_end": 1469,
+          "line_start": 1479,
+          "line_end": 1486,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:921d0f1924fcf25d854d8fae83c000baea9f2861378bfd0b72fa87603c9135b4"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2387,
-          "line_end": 2395,
+          "line_start": 2413,
+          "line_end": 2421,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:f841f06592bb69d248722d3cf2fdd0e24f0e0be3208a88ea688c6f38084dd5b9"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 62,
-          "line_end": 70,
+          "line_start": 63,
+          "line_end": 71,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:f841f06592bb69d248722d3cf2fdd0e24f0e0be3208a88ea688c6f38084dd5b9"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 252,
-          "line_end": 252,
+          "line_start": 274,
+          "line_end": 274,
           "excerpt_sha256": "sha256:2e18db0cadc2506770ccc086348627699a4238aef81e62da13be41def3a92a0f"
         }
       ],
@@ -1055,22 +1055,22 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2372,
-          "line_end": 2380,
+          "line_start": 2398,
+          "line_end": 2406,
           "expected_text": "\\bibitem{land2026}",
           "excerpt_sha256": "sha256:fd3c426390b219a634332e902baa261a6828da620ce6016c66adeb4d9dd5bf6f"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 47,
-          "line_end": 55,
+          "line_start": 48,
+          "line_end": 56,
           "expected_text": "\\bibitem{land2026}",
           "excerpt_sha256": "sha256:fd3c426390b219a634332e902baa261a6828da620ce6016c66adeb4d9dd5bf6f"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 110,
-          "line_end": 110,
+          "line_start": 117,
+          "line_end": 117,
           "excerpt_sha256": "sha256:f0efe662cb069205ae23e5ac27895f193cd1638b1392cbaba8b0f563f510294d"
         },
         {
@@ -1081,8 +1081,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1620,
-          "line_end": 1620,
+          "line_start": 1645,
+          "line_end": 1645,
           "excerpt_sha256": "sha256:ad49b5aa94a8d9963ee6dcb001d2d84dc32e0776315128832b860e41fd3a9cf0"
         }
       ],
@@ -2181,29 +2181,29 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1481,
-          "line_end": 1485,
+          "line_start": 1504,
+          "line_end": 1508,
           "expected_text": "\\bibitem{zhang2014}",
           "excerpt_sha256": "sha256:7ffbe3a18fcc2808a45a6fc6d3b8d29670d77d000a80937d21d998f7eba07100"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2416,
-          "line_end": 2420,
+          "line_start": 2448,
+          "line_end": 2452,
           "expected_text": "\\bibitem{zhang2014}",
           "excerpt_sha256": "sha256:7ffbe3a18fcc2808a45a6fc6d3b8d29670d77d000a80937d21d998f7eba07100"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 91,
-          "line_end": 95,
+          "line_start": 98,
+          "line_end": 102,
           "expected_text": "\\bibitem{zhang2014}",
           "excerpt_sha256": "sha256:7ffbe3a18fcc2808a45a6fc6d3b8d29670d77d000a80937d21d998f7eba07100"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1603,
-          "line_end": 1603,
+          "line_start": 1628,
+          "line_end": 1628,
           "excerpt_sha256": "sha256:49174f4f955bc156d5dff6e9688b866e0626abb36fea0ef44d690620f0640e33"
         },
         {
@@ -2356,8 +2356,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2363,
-          "line_end": 2368,
+          "line_start": 2388,
+          "line_end": 2393,
           "expected_text": "\\bibitem{khinchin1964}",
           "excerpt_sha256": "sha256:f3d4bd2ba58ad8313db4eaff5b5408fcdff69ea44d5594c581766ebcbdd68e7c"
         },
@@ -2370,8 +2370,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 891,
-          "line_end": 891,
+          "line_start": 913,
+          "line_end": 913,
           "excerpt_sha256": "sha256:1a21578311ec910b492dfd5ac3f1f15adb4799f596f0741ccb86280e6c55aa81"
         }
       ],
@@ -4634,15 +4634,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1437,
-          "line_end": 1443,
+          "line_start": 1453,
+          "line_end": 1459,
           "expected_text": "\\bibitem{fgkmt2018}",
           "excerpt_sha256": "sha256:20d02c5973a1a874c6f11d3b29edf04eb2d58bf4d3e901c20899c984dc5c4939"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2357,
-          "line_end": 2363,
+          "line_start": 2382,
+          "line_end": 2388,
           "expected_text": "\\bibitem{fgkmt2018}",
           "excerpt_sha256": "sha256:6c877b3de5543496434c0302c82515676be3b3947b0761c79da231164ed345a9"
         },
@@ -4655,14 +4655,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 740,
-          "line_end": 740,
+          "line_start": 762,
+          "line_end": 762,
           "excerpt_sha256": "sha256:4825da1c1a4563510f00f6082213673382fbe87eeb61a99a395507739f85527f"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1611,
-          "line_end": 1611,
+          "line_start": 1636,
+          "line_end": 1636,
           "excerpt_sha256": "sha256:eaaaa84d309b1a0c1d56fc36e531a59a4fa33af5709a256b9b48f214908ca467"
         },
         {
@@ -5080,15 +5080,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1473,
-          "line_end": 1481,
+          "line_start": 1490,
+          "line_end": 1498,
           "expected_text": "\\bibitem{mv2007}",
-          "excerpt_sha256": "sha256:3af4651118b554cb72fc1d529ded6f4b2a02f08212da2d18b419b72782534f24"
+          "excerpt_sha256": "sha256:ac57c0809e1042c1d45f3cc3c27a707b685b9c0c049f33100d2b980ee40499f7"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2049,
-          "line_end": 2050,
+          "line_start": 2074,
+          "line_end": 2075,
           "expected_text": "\\cite[Ch.~6]{mv2007}",
           "excerpt_sha256": "sha256:c44e132030013c5f8edb13f0a69f4bb3d45e4978267d1ce5a72c5a0a5fca04fb"
         },
@@ -5101,15 +5101,15 @@
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2399,
-          "line_end": 2407,
+          "line_start": 2425,
+          "line_end": 2433,
           "expected_text": "\\bibitem{mv2007}",
           "excerpt_sha256": "sha256:4b01eff339c66e66b98dc697ebe2c82744ff4c603509c6dbdc134ff471ceb523"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 74,
-          "line_end": 82,
+          "line_start": 75,
+          "line_end": 83,
           "expected_text": "\\bibitem{mv2007}",
           "excerpt_sha256": "sha256:4b01eff339c66e66b98dc697ebe2c82744ff4c603509c6dbdc134ff471ceb523"
         }
@@ -5443,15 +5443,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1419,
-          "line_end": 1423,
+          "line_start": 1435,
+          "line_end": 1439,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:77deb132053702c64190a6a7499fe28db4f1a53a36a8f410c0069a7178993e57"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2339,
-          "line_end": 2343,
+          "line_start": 2364,
+          "line_end": 2368,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:77deb132053702c64190a6a7499fe28db4f1a53a36a8f410c0069a7178993e57"
         },
@@ -6195,6 +6195,18 @@
           "line_start": 104,
           "line_end": 104,
           "excerpt_sha256": "sha256:ac920fb89761ef5829e0b263bb2b060e644f34bc9f180a1132fc4ed9defe2740"
+        },
+        {
+          "url": "https://arxiv.org/abs/2406.17593v4",
+          "locator": "PDF p. 11, Remark 3.1: for a nonincreasing summable positive sequence, the sums of subseries form a finite union of closed intervals exactly when every late term is at most the sum of all later terms, credited to Kakeya."
+        },
+        {
+          "url": "https://arxiv.org/abs/2406.17593v4",
+          "locator": "PDF pp. 14-15, Lemma 5.1 and proof: nested covering of the intervals of attainable tail sums, I_n = I_{n+1} + {1/j : j in J_n}, under condition (5.1)."
+        },
+        {
+          "url": "https://arxiv.org/abs/2406.17593v4",
+          "locator": "PDF pp. 7 and 16-17, Theorem 2.5, its proof and the closing example of Section 5: some b_n in {1,...,5} give sum 1/(2^n+b_n) = 3/4, a negative answer to the Erdős-Graham question about 2^n."
         }
       ],
       "artifact_links": [
@@ -6221,17 +6233,17 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1443,
-          "line_end": 1446,
+          "line_start": 1459,
+          "line_end": 1463,
           "expected_text": "\\bibitem{kovactao2024}",
-          "excerpt_sha256": "sha256:2a2d244d7c824fe95d67ed5f87230e9f08e518f4dc0a21da6953965e655a597e"
+          "excerpt_sha256": "sha256:06a36adeb282bbcc0aa7f139bf3794a9199ab0e54592f27e0497bf11222b1b81"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2368,
-          "line_end": 2372,
+          "line_start": 2393,
+          "line_end": 2398,
           "expected_text": "\\bibitem{kovactao2024}",
-          "excerpt_sha256": "sha256:e8bdc5d6a4fef2465bd8ab86fb7a2871dbf30f510afb246354cf73f6f5630b9f"
+          "excerpt_sha256": "sha256:02d51eec1db3f20d4d8be66c951af79ab561978d94292f20681aebf208944f37"
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
@@ -6295,14 +6307,14 @@
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
           "line_start": 43,
-          "line_end": 47,
+          "line_end": 48,
           "expected_text": "\\bibitem{kovactao2024}",
-          "excerpt_sha256": "sha256:e8bdc5d6a4fef2465bd8ab86fb7a2871dbf30f510afb246354cf73f6f5630b9f"
+          "excerpt_sha256": "sha256:02d51eec1db3f20d4d8be66c951af79ab561978d94292f20681aebf208944f37"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 221,
-          "line_end": 221,
+          "line_start": 243,
+          "line_end": 243,
           "excerpt_sha256": "sha256:1eaf060df05df129216afd1e30bb11b8752f09144e3d5223018473b9836c3390"
         },
         {
@@ -6343,6 +6355,54 @@
           "line_end": 613,
           "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7",
           "expected_text": "/-- Exact next-interval overlap for the factorial-gap specialization of"
+        },
+        {
+          "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "line_start": 157,
+          "line_end": 157,
+          "excerpt_sha256": "sha256:b0911c07481375d9196e8e76aacf7abd6db17f54f8fc15ee1c48def5ae8e0ba4"
+        },
+        {
+          "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "line_start": 252,
+          "line_end": 252,
+          "excerpt_sha256": "sha256:23c36a15d6c427ad9d2c6b84db105b987fe7b32dca6bcd9b66582b73b15a54a7"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos251/core.tex",
+          "line_start": 209,
+          "line_end": 209,
+          "excerpt_sha256": "sha256:976e2b7c6429f891b855d61841e48da146a0153d684a53bc962fc05f7add9649"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos251/core.tex",
+          "line_start": 217,
+          "line_end": 217,
+          "excerpt_sha256": "sha256:63566ee707a904f479db907c82584109453d46c62f4e3815466ac0827609f5ef"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos251/core.tex",
+          "line_start": 1107,
+          "line_end": 1107,
+          "excerpt_sha256": "sha256:134dddf55c74e49a6bfd8b977f7a852c7f7bc017bb2544b6ef5de21d420f70db"
+        },
+        {
+          "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "line_start": 243,
+          "line_end": 243,
+          "excerpt_sha256": "sha256:976e2b7c6429f891b855d61841e48da146a0153d684a53bc962fc05f7add9649"
+        },
+        {
+          "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "line_start": 251,
+          "line_end": 251,
+          "excerpt_sha256": "sha256:63566ee707a904f479db907c82584109453d46c62f4e3815466ac0827609f5ef"
+        },
+        {
+          "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "line_start": 1141,
+          "line_end": 1141,
+          "excerpt_sha256": "sha256:134dddf55c74e49a6bfd8b977f7a852c7f7bc017bb2544b6ef5de21d420f70db"
         }
       ],
       "relation": "Prior art for the strict-tail inequality, injectivity of fixed-base Lambert subsums, and their Cantor-set structure, PDF p. 13, Remark 4.1. - The published authors' statement of the unresolved fixed-base subseries question and the prime-support open example, PDF pp. 4–5. - The merged multi-base rational-sum construction under its explicit mass hypothesis, PDF p. 5, Theorem 2.3, with proof pp. 13–14. - The growth and shifted-Sylvester context for Ahmes-series irrationality questions, PDF p. 2 and §§2.1.2–2.1.3. - The publication identity, arXiv version, official routes, digest, and page-level locators recorded above. The docstring explicitly identifies Kovač–Tao Lemma 5.1 and bounds the local result to the elementary interval inequality; the analytic hypotheses and existence/rationality conclusion are not formalized here. Supplement copy of the Kovač–Tao Lemma 5.1 specialization and its explicit non-formalization boundary.",
@@ -6459,28 +6519,28 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1494,
-          "line_end": 1499,
+          "line_start": 1517,
+          "line_end": 1522,
           "expected_text": "\\bibitem{kovac2026}",
           "excerpt_sha256": "sha256:900a91b50c25e813d52e226b434f7ed63de8a76a672159d0674e6751533d8f99"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2438,
-          "line_end": 2444,
+          "line_start": 2470,
+          "line_end": 2476,
           "expected_text": "\\bibitem{kovac2026}",
           "excerpt_sha256": "sha256:34802f92918c67937f7bcf181bac1f5ca71c9e6528656eafd85d2d4096117c22"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 103,
-          "line_end": 103,
+          "line_start": 110,
+          "line_end": 110,
           "excerpt_sha256": "sha256:87e96b7013e341a9a7174d67487c068725ab753e218167435945e185e962236f"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 113,
-          "line_end": 119,
+          "line_start": 120,
+          "line_end": 126,
           "expected_text": "\\bibitem{kovac2026}",
           "excerpt_sha256": "sha256:34802f92918c67937f7bcf181bac1f5ca71c9e6528656eafd85d2d4096117c22"
         },
@@ -6492,8 +6552,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1440,
-          "line_end": 1440,
+          "line_start": 1465,
+          "line_end": 1465,
           "excerpt_sha256": "sha256:c4bf31aa7c0ed75968bdd75d3778b733e0689dd379b9cc4560880451c0643921"
         }
       ],
@@ -6871,15 +6931,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1434,
-          "line_end": 1437,
+          "line_start": 1450,
+          "line_end": 1453,
           "expected_text": "\\bibitem{erdosstraus1963}",
           "excerpt_sha256": "sha256:4534a543d1afe85f69bf29561cd83f5af60b7189e5f777e680f7faeab2d42b39"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2354,
-          "line_end": 2357,
+          "line_start": 2379,
+          "line_end": 2382,
           "expected_text": "\\bibitem{erdosstraus1963}",
           "excerpt_sha256": "sha256:4534a543d1afe85f69bf29561cd83f5af60b7189e5f777e680f7faeab2d42b39"
         },
@@ -6917,8 +6977,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 216,
-          "line_end": 216,
+          "line_start": 238,
+          "line_end": 238,
           "excerpt_sha256": "sha256:eaa1d49db16032d9a995bc268a5e64df15540715982aacd7d504bd007c69cab4"
         },
         {
@@ -7667,15 +7727,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1430,
-          "line_end": 1434,
+          "line_start": 1446,
+          "line_end": 1450,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:8d4a8df5b565485d5e5da0fb889c4c30a0c531c8a743b1dbbcb0846f7e3591d9"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2350,
-          "line_end": 2354,
+          "line_start": 2375,
+          "line_end": 2379,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:8d4a8df5b565485d5e5da0fb889c4c30a0c531c8a743b1dbbcb0846f7e3591d9"
         },
@@ -8097,15 +8157,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1423,
-          "line_end": 1430,
+          "line_start": 1439,
+          "line_end": 1446,
           "expected_text": "\\bibitem{erdospomerance1978}",
           "excerpt_sha256": "sha256:00273238c13a5b94ca73f9d3af864fdd7b7bdfb42537d0e3b2729afae0c69a55"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2343,
-          "line_end": 2350,
+          "line_start": 2368,
+          "line_end": 2375,
           "expected_text": "\\bibitem{erdospomerance1978}",
           "excerpt_sha256": "sha256:00273238c13a5b94ca73f9d3af864fdd7b7bdfb42537d0e3b2729afae0c69a55"
         },
@@ -9854,35 +9914,35 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1469,
-          "line_end": 1472,
+          "line_start": 1486,
+          "line_end": 1489,
           "expected_text": "\\bibitem{maynard2015}",
           "excerpt_sha256": "sha256:1358405e0bd0645ca7abca12c2e3f1406e0c941d1c637f739832e42e53b80a97"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2395,
-          "line_end": 2398,
+          "line_start": 2421,
+          "line_end": 2424,
           "expected_text": "\\bibitem{maynard2015}",
           "excerpt_sha256": "sha256:1358405e0bd0645ca7abca12c2e3f1406e0c941d1c637f739832e42e53b80a97"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 70,
-          "line_end": 73,
+          "line_start": 71,
+          "line_end": 74,
           "expected_text": "\\bibitem{maynard2015}",
           "excerpt_sha256": "sha256:1358405e0bd0645ca7abca12c2e3f1406e0c941d1c637f739832e42e53b80a97"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1606,
-          "line_end": 1606,
+          "line_start": 1631,
+          "line_end": 1631,
           "excerpt_sha256": "sha256:1c353b92a6150c3c1fd31caf9ea67c600326deef9ecc2bd683a7fda752871261"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1607,
-          "line_end": 1609,
+          "line_start": 1632,
+          "line_end": 1634,
           "excerpt_sha256": "sha256:5f61747ac0acd497463a358e52d51e382ac1756c802a14995f9dc17e53475e2a"
         },
         {
@@ -10054,15 +10114,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1411,
-          "line_end": 1419,
+          "line_start": 1427,
+          "line_end": 1435,
           "expected_text": "\\bibitem{erdos1958}",
           "excerpt_sha256": "sha256:5219033aacc7429c8bddb2a4b90c7ddffe7412bf06132d235d2142265ff0e13b"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2330,
-          "line_end": 2339,
+          "line_start": 2355,
+          "line_end": 2364,
           "expected_text": "\\bibitem{erdos1958}",
           "excerpt_sha256": "sha256:58b2745b6fa7777eed8e8d54cdf9a0771e5e59cd1804234da7a860d3650c7693"
         },
@@ -10307,17 +10367,17 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2407,
-          "line_end": 2416,
+          "line_start": 2433,
+          "line_end": 2442,
           "expected_text": "\\bibitem{schlagepuchta2011}",
-          "excerpt_sha256": "sha256:1cc09afae0caf35793624a0161e5308b89cffdbddc2e34feec572173f7d90d8f"
+          "excerpt_sha256": "sha256:8a0766b03b9a2ef543169ef625d4116ae5899556dfe31f1e4143a25181f1f2fd"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 82,
-          "line_end": 91,
+          "line_start": 83,
+          "line_end": 92,
           "expected_text": "\\bibitem{schlagepuchta2011}",
-          "excerpt_sha256": "sha256:1cc09afae0caf35793624a0161e5308b89cffdbddc2e34feec572173f7d90d8f"
+          "excerpt_sha256": "sha256:8a0766b03b9a2ef543169ef625d4116ae5899556dfe31f1e4143a25181f1f2fd"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
@@ -10333,14 +10393,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 630,
-          "line_end": 630,
+          "line_start": 652,
+          "line_end": 652,
           "excerpt_sha256": "sha256:c636df7f4467f057caa18103dd5e9add9f401f689a916825d6347a2a57ab37d8"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1140,
-          "line_end": 1141,
+          "line_start": 1165,
+          "line_end": 1166,
           "excerpt_sha256": "sha256:5a4f605adbe4bbba39b889ba7030dcb38ab8b0287c2d1254cca406ab74aa49cd"
         },
         {
@@ -10984,22 +11044,22 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2430,
-          "line_end": 2438,
+          "line_start": 2462,
+          "line_end": 2470,
           "expected_text": "\\bibitem{erdosproblems251thread}",
           "excerpt_sha256": "sha256:9fca11ccce8bd3e1f8991533614a59cbf280c5e2447338a96e262d81834811f7"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 105,
-          "line_end": 113,
+          "line_start": 112,
+          "line_end": 120,
           "expected_text": "\\bibitem{erdosproblems251thread}",
           "excerpt_sha256": "sha256:9fca11ccce8bd3e1f8991533614a59cbf280c5e2447338a96e262d81834811f7"
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 118,
-          "line_end": 118,
+          "line_start": 125,
+          "line_end": 125,
           "excerpt_sha256": "sha256:f28be0b3adcc2253d4812f1fa6cabe0e810b0ce5d54dd20f6c99448874e83ceb"
         },
         {
@@ -11010,8 +11070,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1618,
-          "line_end": 1618,
+          "line_start": 1643,
+          "line_end": 1643,
           "excerpt_sha256": "sha256:12505b93fd9fe42cc2789467c5e348722fb0f6684320328f30690cdcc31c269c"
         }
       ],
@@ -11131,15 +11191,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1485,
-          "line_end": 1494,
+          "line_start": 1508,
+          "line_end": 1517,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:d68be54d52bf9e3ed72d19ffc5de70c812d5d9bb4c01596c2f62aa742602b88a"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2420,
-          "line_end": 2430,
+          "line_start": 2452,
+          "line_end": 2462,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:d811f289543251ac4fe24a5a25d6d306937e5061b9bf9d137aad48604e454a25"
         },
@@ -11251,8 +11311,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/back.tex",
-          "line_start": 95,
-          "line_end": 105,
+          "line_start": 102,
+          "line_end": 112,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:d811f289543251ac4fe24a5a25d6d306937e5061b9bf9d137aad48604e454a25"
         },
@@ -11276,8 +11336,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1658,
-          "line_end": 1658,
+          "line_start": 1683,
+          "line_end": 1683,
           "excerpt_sha256": "sha256:abc060a4e621f266ea418ab11a5d8bebd16a6d47e09579c280edd582cddf6e07"
         },
         {
@@ -11537,8 +11597,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 498,
-          "line_end": 504,
+          "line_start": 514,
+          "line_end": 520,
           "excerpt_sha256": "sha256:cb2e5e5ae4a5f38a9e1f721526f90a807386a7ec76a15c8ab4c067b1037e7751"
         },
         {
@@ -13486,6 +13546,107 @@
           "key": "bkkkz2026"
         }
       ]
+    },
+    {
+      "id": "source-892c567092d6f3",
+      "kind": "literature",
+      "title": "Lacunary sequences whose reciprocal sums represent all rational numbers in an interval",
+      "authors": [
+        "W. van Doorn",
+        "V. Kovač"
+      ],
+      "publication_years": [
+        "2025",
+        "2026"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2509.24971v3",
+        "https://doi.org/10.4064/aa251001-13-1",
+        "https://arxiv.org/abs/2509.24971"
+      ],
+      "problems": [
+        "251"
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/2509.24971v3",
+          "locator": "PDF pp. 7-8, Lemma 7 and proof: if x_1 > ... > x_m > 0 and x_i <= x_{i+1} + ... + x_m + x_m for i < m, the finite subset sums fill [0, x_1 + ... + x_m] with gaps at most x_m."
+        },
+        {
+          "url": "https://arxiv.org/abs/2509.24971v3",
+          "locator": "PDF pp. 8-9, Proposition 8 and proof: if every positive integer divides some n_i, each distinguished n_{m_k} is divisible by all earlier terms, and inequality (3.1) holds, then the finite reciprocal sums are exactly the rationals in [0, sum 1/n_i)."
+        },
+        {
+          "url": "https://doi.org/10.4064/aa251001-13-1",
+          "locator": "Journal version, Acta Arith. 223 (2026), 275-295; the notes cite statement numbers from arXiv v3."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "line_start": 1498,
+          "line_end": 1504,
+          "expected_text": "\\bibitem{vandoornkovac2025}",
+          "excerpt_sha256": "sha256:520825fff76ae13edf4bf13a5e3ebf355a4a764dc48246e8a6f289f1cabb663c"
+        },
+        {
+          "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "line_start": 2442,
+          "line_end": 2448,
+          "expected_text": "\\bibitem{vandoornkovac2025}",
+          "excerpt_sha256": "sha256:520825fff76ae13edf4bf13a5e3ebf355a4a764dc48246e8a6f289f1cabb663c"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos251/back.tex",
+          "line_start": 92,
+          "line_end": 98,
+          "expected_text": "\\bibitem{vandoornkovac2025}",
+          "excerpt_sha256": "sha256:520825fff76ae13edf4bf13a5e3ebf355a4a764dc48246e8a6f289f1cabb663c"
+        },
+        {
+          "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "line_start": 256,
+          "line_end": 256,
+          "excerpt_sha256": "sha256:aced47a67e42c26231eb70737511e22060c8a227bdeef8365cd5bef03cecb830"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos251/core.tex",
+          "line_start": 221,
+          "line_end": 221,
+          "excerpt_sha256": "sha256:32ea04e51abe835493854beb5440e45e02c513481a497fe6b7ba37f30ad0e4f0"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos251/core.tex",
+          "line_start": 1067,
+          "line_end": 1067,
+          "excerpt_sha256": "sha256:4bb5c965a6c97930918d73aac6a90230480aa0e07852ddc5f444a141e20b74eb"
+        },
+        {
+          "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "line_start": 255,
+          "line_end": 255,
+          "excerpt_sha256": "sha256:32ea04e51abe835493854beb5440e45e02c513481a497fe6b7ba37f30ad0e4f0"
+        },
+        {
+          "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "line_start": 1101,
+          "line_end": 1101,
+          "excerpt_sha256": "sha256:4bb5c965a6c97930918d73aac6a90230480aa0e07852ddc5f444a141e20b74eb"
+        }
+      ],
+      "relation": "Prior work cited in the Problem 251 notes beside the interval-filling and divisibility-chain steps of the sparse rationalisation construction. Proposition 8 combines dense filling (Lemma 7) with a divisibility chain among distinguished terms that eventually absorbs every positive integer, so that finite reciprocal sums take every rational value in an interval. The notes use a chain of factorial moduli for eventual congruence preservation of the corrections; the source is cited as a related construction and is not claimed to imply the Problem 251 statement.",
+      "verification_state": "source_verified",
+      "bibliography_keys": [
+        {
+          "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "key": "vandoornkovac2025"
+        },
+        {
+          "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+          "key": "vandoornkovac2025"
+        }
+      ],
+      "verification_scope": "Primary arXiv v3 PDF, 17 pages, read in full on 15 September 2026; journal reference and DOI taken from the arXiv abstract page and the second author's publication list."
     }
   ],
   "lean_reviews": [

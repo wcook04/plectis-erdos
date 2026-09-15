@@ -3497,7 +3497,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
       "local_source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-      "source_sha256": "sha256:00e5736d3b55ab197256c0a12ef1e88dc1211057818ddd42408b16e7cb16af63",
+      "source_sha256": "sha256:873f53c6f6f07df3f93db8acc66b8b7768f5b8f902071b57053cd8c0ee3117a6",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.tex",
@@ -3661,10 +3661,10 @@
           "line": 831
         }
       ],
-      "citations_rendered": 13,
+      "citations_rendered": 16,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:bb4004e3767f425d3d4c8289a9f87e50ddf04669e244bdee60f92576f904f7e8",
-      "pdf_byte_count": 149338,
+      "pdf_sha256": "sha256:13a418bcffb0c4bc3079bf3efcba81db478a1c5643e20bc1cdbbfee80213ffb1",
+      "pdf_byte_count": 151544,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3730,7 +3730,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md",
       "local_source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-      "source_sha256": "sha256:b97193aecad73353d4b0e7aa9f90b5a9d3ba42a35ad578ee10498daaa62f438a",
+      "source_sha256": "sha256:d6ccd5438f69adb27baeff9daf13758e00e80a4575bedd1078452b17b67df14d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.tex",
@@ -3765,295 +3765,295 @@
           "level": 4,
           "id": "the-strategy.",
           "title": "The strategy.",
-          "line": 95
+          "line": 97
         },
         {
           "level": 4,
           "id": "outline.",
           "title": "Outline.",
-          "line": 103
+          "line": 105
         },
         {
           "level": 1,
           "id": "long251:sec:parts",
           "title": "Summation by parts, with the endpoint retained",
-          "line": 144
+          "line": 146
         },
         {
           "level": 2,
           "id": "long251:sec:infinite",
           "title": "The infinite identity and the irrationality equivalence",
-          "line": 187
+          "line": 189
         },
         {
           "level": 1,
           "id": "long251:sec:tail",
           "title": "The tail recurrence and the exact criteria",
-          "line": 230
+          "line": 232
         },
         {
           "level": 4,
           "id": "the-actual-prime-gap-orbit.",
           "title": "The actual prime-gap orbit.",
-          "line": 313
+          "line": 315
         },
         {
           "level": 2,
           "id": "long251:sec:freepair",
           "title": "The free-pair criterion and the lcm diagonal",
-          "line": 323
+          "line": 325
         },
         {
           "level": 1,
           "id": "long251:sec:local-certificate",
           "title": "A local certificate, and one actual pair",
-          "line": 361
+          "line": 363
         },
         {
           "level": 2,
           "id": "an-explicit-remainder-and-a-certified-actual-pair",
           "title": "An explicit remainder and a certified actual pair",
-          "line": 427
+          "line": 429
         },
         {
           "level": 1,
           "id": "long251:sec:denominator-floor",
           "title": "Two denominator floors",
-          "line": 479
+          "line": 481
         },
         {
           "level": 1,
           "id": "long251:sec:obstructions",
           "title": "What cannot supply the missing input",
-          "line": 524
+          "line": 526
         },
         {
           "level": 2,
           "id": "bounded-residue-preserving-perturbations",
           "title": "Bounded residue-preserving perturbations",
-          "line": 530
+          "line": 532
         },
         {
           "level": 2,
           "id": "long251:sec:paired-corrections",
           "title": "Paired corrections and cumulative congruences",
-          "line": 548
+          "line": 550
         },
         {
           "level": 2,
           "id": "algebraic-nonconcentration-survives-the-rationalising-perturbation",
           "title": "Algebraic nonconcentration survives the rationalising perturbation",
-          "line": 665
+          "line": 667
         },
         {
           "level": 2,
           "id": "the-two-window-event-has-density-zero",
           "title": "The two-window event has density zero",
-          "line": 722
+          "line": 724
         },
         {
           "level": 2,
           "id": "recurring-gap-values-differing-by-two-do-not-suffice",
           "title": "Recurring gap values differing by two do not suffice",
-          "line": 742
+          "line": 744
         },
         {
           "level": 2,
           "id": "long251:res:all-residue-log-countermodel",
           "title": "A complete countermodel in every residue class",
-          "line": 788
+          "line": 790
         },
         {
           "level": 2,
           "id": "two-further-boundaries",
           "title": "Two further boundaries",
-          "line": 824
+          "line": 826
         },
         {
           "level": 1,
           "id": "long251:sec:measurements",
           "title": "What is measured",
-          "line": 877
+          "line": 879
         },
         {
           "level": 1,
           "id": "long251:sec:open",
           "title": "The remaining obligation",
-          "line": 887
+          "line": 889
         },
         {
           "level": 4,
           "id": "what-remains-to-be-formalised.",
           "title": "What remains to be formalised.",
-          "line": 925
+          "line": 927
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 931
+          "line": 933
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 935
+          "line": 937
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 943
+          "line": 945
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 949
+          "line": 951
         },
         {
           "level": 1,
           "id": "long251:app:prime-bound",
           "title": "An elementary polynomial bound for the primes",
-          "line": 955
+          "line": 957
         },
         {
           "level": 1,
           "id": "long251:app:certificates",
           "title": "Integer certificates",
-          "line": 979
+          "line": 981
         },
         {
           "level": 1,
           "id": "long251:app:index",
           "title": "Guide to the formal sources",
-          "line": 1045
+          "line": 1047
         },
         {
           "level": 1,
           "id": "long251:sec:erdos-251-extended-record",
           "title": "Extended record: displaced results, ordinary proofs and corrections",
-          "line": 1051
+          "line": 1053
         },
         {
           "level": 2,
           "id": "long251:sec:xr-totient",
           "title": "The totient witness and forward propagation",
-          "line": 1057
+          "line": 1059
         },
         {
           "level": 2,
           "id": "long251:sec:xr-truncation",
           "title": "The finite truncation criterion",
-          "line": 1089
+          "line": 1091
         },
         {
           "level": 2,
           "id": "long251:sec:xr-divisorhit",
           "title": "Divisor-hitting shift escape",
-          "line": 1125
+          "line": 1127
         },
         {
           "level": 2,
           "id": "long251:sec:xr-compression",
           "title": "Two ordinary proofs about the free-pair producer",
-          "line": 1141
+          "line": 1143
         },
         {
           "level": 4,
           "id": "state-compression.",
           "title": "State compression.",
-          "line": 1147
+          "line": 1149
         },
         {
           "level": 4,
           "id": "redundancy-of-the-gap-condition.",
           "title": "Redundancy of the gap condition.",
-          "line": 1167
+          "line": 1169
         },
         {
           "level": 2,
           "id": "long251:sec:xr-boundedpolignac",
           "title": "A bounded companion to the recurring-values countermodel",
-          "line": 1173
+          "line": 1175
         },
         {
           "level": 2,
           "id": "long251:sec:xr-densities",
           "title": "The measured densities in full",
-          "line": 1193
+          "line": 1195
         },
         {
           "level": 2,
           "id": "long251:sec:xr-corrections",
           "title": "Corrections to earlier records",
-          "line": 1219
+          "line": 1221
         },
         {
           "level": 4,
           "id": "the-superseded-exclusion.",
           "title": "The superseded exclusion.",
-          "line": 1223
+          "line": 1225
         },
         {
           "level": 4,
           "id": "the-named-missing-input.",
           "title": "The named missing input.",
-          "line": 1229
+          "line": 1231
         },
         {
           "level": 4,
           "id": "the-formal-boundary.",
           "title": "The formal boundary.",
-          "line": 1235
+          "line": 1237
         },
         {
           "level": 1,
           "id": "sec:erdos-251-complete-family-map",
           "title": "Complete result-family map",
-          "line": 1241
+          "line": 1243
         },
         {
           "level": 2,
           "id": "prime-gap-reformulation",
           "title": "Prime gap reformulation",
-          "line": 1247
+          "line": 1249
         },
         {
           "level": 2,
           "id": "dyadic-tail-integrality-classification",
           "title": "Dyadic tail integrality classification",
-          "line": 1267
+          "line": 1269
         },
         {
           "level": 2,
           "id": "integral-shift-classification",
           "title": "Integral shift classification",
-          "line": 1295
+          "line": 1297
         },
         {
           "level": 2,
           "id": "small-mismatch-criterion",
           "title": "Small mismatch criterion",
-          "line": 1323
+          "line": 1325
         },
         {
           "level": 2,
           "id": "coefficient-only-no-go",
           "title": "Coefficient only no go",
-          "line": 1353
+          "line": 1355
         },
         {
           "level": 2,
           "id": "totient-shift-propagation",
           "title": "Totient shift propagation",
-          "line": 1379
+          "line": 1381
         }
       ],
-      "citations_rendered": 36,
+      "citations_rendered": 41,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f4ec443d6faf0a73ac5ea4d16cb08b7ce0e2d14fcf196452ee184d259b6a9511",
-      "pdf_byte_count": 242947,
+      "pdf_sha256": "sha256:241dcc1898b292bf245954ca01e1329f5acb99dfcb27d9e1314e3bbb45ae4d36",
+      "pdf_byte_count": 246113,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4061,22 +4061,22 @@
           {
             "id": "long251:sec:tail",
             "title": "The tail recurrence and the exact criteria",
-            "line": 230
+            "line": 232
           },
           {
             "id": "long251:sec:obstructions",
             "title": "What cannot supply the missing input",
-            "line": 524
+            "line": 526
           },
           {
             "id": "long251:sec:open",
             "title": "The remaining obligation",
-            "line": 887
+            "line": 889
           },
           {
             "id": "sec:erdos-251-complete-family-map",
             "title": "Complete result-family map",
-            "line": 1241
+            "line": 1243
           }
         ],
         "unresolved_count": 0
