@@ -17,6 +17,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+import lean_source
 import query_corpus
 import validation_singleflight as singleflight
 
@@ -253,7 +254,28 @@ def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     # longer than the short timeout used for metadata-only Git queries, so keep
     # them inside the same bounded worker budget as the validation owner.
     kwargs.setdefault("timeout", singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS)
-    return subprocess.run(*args, **kwargs)
+    # Both commands are process trees (``lake env lean`` execs ``lean``; the
+    # fast builder forks ``lake`` which forks one ``lean`` per module).  The
+    # bounded runner kills the whole tree on timeout, exception, or forwarded
+    # signal, so a dead builder never leaves an exporter holding the slot.
+    return singleflight.run_bounded(*args, **kwargs)
+
+
+def reap_orphans_before_lean_work() -> None:
+    """Kill Lean orphans a previous dead builder left under this checkout.
+
+    Four times on 2026-09-14 a timed-out builder left ``lake env lean`` alive
+    with no parent, and every later run stalled behind it.  A fresh builder
+    now clears such orphans before touching the toolchain; processes with a
+    live parent are a concurrent run and are left to the one-flight lock.
+    """
+    reaped = singleflight.reap_orphaned_lean_processes(ROOT)
+    if reaped:
+        print(
+            f"reaped {len(reaped)} orphaned Lean process(es) under {ROOT}: "
+            + ", ".join(str(pid) for pid in reaped),
+            file=sys.stderr,
+        )
 
 
 def decode_captured(payload: str | bytes | None) -> str:
@@ -1292,7 +1314,12 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
+    singleflight.install_child_termination_forwarding()
     try:
+        notice = lean_source.describe_unindexed_library_sources(ROOT)
+        if notice:
+            print(f"Lean dependency index: {notice}", file=sys.stderr)
+        reap_orphans_before_lean_work()
         initial_input_fingerprint = check_input_fingerprint()
         packet = build_packet()
         content = encoded(packet)

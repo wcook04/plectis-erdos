@@ -422,7 +422,7 @@ def check_environment_build_is_bounded() -> None:
         "PATH": "/private/wrong-bin",
     }
     with patch.dict(os.environ, hostile_environment, clear=False):
-        with patch.object(builder.subprocess, "run") as run:
+        with patch.object(builder.singleflight, "run_bounded") as run:
             run.return_value.returncode = 0
             builder.ensure_elaborated_environment()
     require(
@@ -472,7 +472,7 @@ def check_environment_build_is_bounded() -> None:
         {builder.singleflight.HOST_LOCK_HELD_ENV: "1"},
         clear=False,
     ):
-        with patch.object(builder.subprocess, "run") as run:
+        with patch.object(builder.singleflight, "run_bounded") as run:
             run.return_value.returncode = 0
             builder.ensure_elaborated_environment()
     require(

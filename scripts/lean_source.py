@@ -19,6 +19,7 @@ this function.
 from __future__ import annotations
 
 import re
+import subprocess
 from pathlib import Path
 
 # The two libraries whose sources are the proof corpus proper.  Everything
@@ -187,33 +188,119 @@ def checkout_source_relative(relative: str, root: Path) -> str:
     return library_storage_path(relative)
 
 
-def _collect_library_files(root: Path, name: str, *, layout: str) -> list[Path]:
-    paths: list[Path] = []
+GIT_INDEX_QUERY_TIMEOUT_SECONDS = 60
+LEAN_IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)", re.MULTILINE)
+
+
+def _git_unindexed_files(root: Path, paths: list[Path]) -> set[Path] | None:
+    """Files under ``paths`` that are absent from the Git index.
+
+    Returns ``None`` when ``root`` is not inside a Git worktree (tarball
+    checkouts, temporary test roots), which is the only case in which the
+    on-disk glob is the whole truth.  Any other Git failure raises: a builder
+    that silently fell back to the glob would fingerprint whatever happened to
+    be lying in the tree, which is exactly the defect this query exists to
+    prevent.  ``--others`` without ``--exclude-standard`` lists ignored files
+    too, because an ignored ``.lean`` file is just as absent from every clone.
+    """
+    existing = [path for path in paths if path.exists()]
+    if not existing:
+        return set()
+    command = ["git", "-C", str(root), "ls-files", "--others", "-z", "--"]
+    command.extend(str(path.relative_to(root)) for path in existing)
+    try:
+        completed = subprocess.run(
+            command,
+            capture_output=True,
+            check=False,
+            timeout=GIT_INDEX_QUERY_TIMEOUT_SECONDS,
+        )
+    except FileNotFoundError:
+        return None
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise LibraryLayoutError(f"Git index query failed under {root}: {exc}") from exc
+    if completed.returncode:
+        stderr = completed.stderr.decode("utf-8", errors="replace")
+        if completed.returncode == 128 and "not a git repository" in stderr.lower():
+            return None
+        raise LibraryLayoutError(
+            f"Git index query exited {completed.returncode} under {root}: {stderr.strip()}"
+        )
+    unindexed: set[Path] = set()
+    for raw in completed.stdout.split(b"\0"):
+        if raw:
+            unindexed.add((root / raw.decode("utf-8", errors="surrogateescape")).resolve())
+    return unindexed
+
+
+def _collect_library_files(
+    root: Path, name: str, *, layout: str
+) -> tuple[list[Path], list[Path]]:
+    """Return ``(indexed, unindexed)`` corpus files for one library root.
+
+    Enumeration follows the Git index, not the directory glob.  A file that is
+    on disk but not in the index (untracked or ignored) does not exist in any
+    clone, so a projection fingerprinted over it disagrees with every clone
+    and with continuous integration.  On 2026-09-14 another lane staged
+    untracked ``lean/ErdosProblems/Erdos1041/Counterexample/*.lean`` into the
+    shared canonical checkout and every atlas and dependency-index build in
+    that tree became irreproducible.  Outside Git the glob is authoritative.
+    """
+    candidates: list[Path] = []
     seen: set[Path] = set()
     root_file = library_root_file(root, name, layout=layout)
     if root_file.is_file():
         resolved = root_file.resolve()
-        paths.append(root_file)
+        candidates.append(root_file)
         seen.add(resolved)
     directory = library_dir(root, name, layout=layout)
     if directory.is_dir():
         for path in sorted(directory.rglob("*.lean")):
             resolved = path.resolve()
             if resolved not in seen:
-                paths.append(path)
+                candidates.append(path)
                 seen.add(resolved)
-    return paths
+    unindexed = _git_unindexed_files(root, [root_file, directory])
+    if unindexed is None:
+        return candidates, []
+    indexed = [path for path in candidates if path.resolve() not in unindexed]
+    excluded = [path for path in candidates if path.resolve() in unindexed]
+    return indexed, excluded
 
 
-def library_source_paths(
+def _unindexed_import_violations(
+    root: Path, indexed: list[Path], unindexed: list[Path]
+) -> list[str]:
+    """Indexed modules that import a module absent from the Git index."""
+    unindexed_ids = {library_module_id(path, root) for path in unindexed}
+    if not unindexed_ids:
+        return []
+    violations: list[str] = []
+    for path in indexed:
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeError):
+            continue
+        code = lean_code_without_comments_and_strings(text)
+        for imported in LEAN_IMPORT_RE.findall(code):
+            if imported in unindexed_ids:
+                violations.append(
+                    f"{path.relative_to(root).as_posix()} imports {imported}"
+                )
+    return violations
+
+
+def library_source_inventory(
     root: Path, *, layout: str = LAYOUT_FULL_SOURCE
-) -> list[Path]:
-    """Every ``.lean`` file in the two proof-corpus libraries.
+) -> dict[str, list[Path]]:
+    """Corpus files split into ``paths`` (Git-indexed) and ``unindexed``.
 
-    ``full_source`` (release validation) rejects a missing configured root and
-    rejects the same module owned by both the old root layout and ``lean/``.
-    Historical and truncated-reader modes are explicit; they never silently
-    merge whichever directory happens to exist.
+    ``paths`` is what every projection builder must fingerprint and parse:
+    it is the set every clone of the current index reproduces.  ``unindexed``
+    is reported so that a builder can say what it left out.  When an indexed
+    module imports an unindexed one the corpus is not reproducible at all
+    (a clone's root build fails on the missing import), so that case raises
+    instead of producing a projection nobody else can rebuild.
     """
     if layout == LAYOUT_FULL_SOURCE:
         configured = _lakefile_corpus_src_dirs(root)
@@ -245,9 +332,11 @@ def library_source_paths(
                 )
 
     paths: list[Path] = []
+    unindexed: list[Path] = []
     seen_ids: dict[str, Path] = {}
     for name in LIBRARY_ROOTS:
-        collected = _collect_library_files(root, name, layout=layout)
+        collected, excluded = _collect_library_files(root, name, layout=layout)
+        unindexed.extend(excluded)
         if layout == LAYOUT_FULL_SOURCE and not collected:
             raise LibraryLayoutError(f"configured corpus root {name} contains no Lean sources")
         for path in collected:
@@ -261,7 +350,51 @@ def library_source_paths(
                 )
             seen_ids[module_id] = path
             paths.append(path)
-    return paths
+    violations = _unindexed_import_violations(root, paths, unindexed)
+    if violations:
+        raise LibraryLayoutError(
+            "indexed corpus modules import Lean sources that are not in the Git "
+            "index; no clone can rebuild this tree, so no projection is built "
+            "from it. Add the sources with `git add` or remove the imports: "
+            + "; ".join(violations)
+        )
+    return {"paths": paths, "unindexed": unindexed}
+
+
+def unindexed_library_sources(
+    root: Path, *, layout: str = LAYOUT_FULL_SOURCE
+) -> list[Path]:
+    """Corpus ``.lean`` files on disk that no clone of the Git index has."""
+    return library_source_inventory(root, layout=layout)["unindexed"]
+
+
+def describe_unindexed_library_sources(
+    root: Path, *, layout: str = LAYOUT_FULL_SOURCE
+) -> str | None:
+    """One operator-facing notice naming excluded sources, or ``None``."""
+    excluded = unindexed_library_sources(root, layout=layout)
+    if not excluded:
+        return None
+    listed = ", ".join(path.relative_to(root).as_posix() for path in excluded)
+    return (
+        f"excluded {len(excluded)} Lean source(s) absent from the Git index "
+        f"(untracked or ignored; no clone has them): {listed}"
+    )
+
+
+def library_source_paths(
+    root: Path, *, layout: str = LAYOUT_FULL_SOURCE
+) -> list[Path]:
+    """Every Git-indexed ``.lean`` file in the two proof-corpus libraries.
+
+    ``full_source`` (release validation) rejects a missing configured root and
+    rejects the same module owned by both the old root layout and ``lean/``.
+    Historical and truncated-reader modes are explicit; they never silently
+    merge whichever directory happens to exist.  Files on disk but absent
+    from the Git index are excluded (see ``library_source_inventory``).
+    """
+    return library_source_inventory(root, layout=layout)["paths"]
+
 
 NON_NEWLINE_RE = re.compile(r"[^\n]")
 
