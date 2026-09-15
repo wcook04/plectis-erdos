@@ -744,7 +744,9 @@ def ensure_elaborated_environment() -> None:
 # development host and the index could not be rebuilt at all, which left every
 # proof plan reporting itself unavailable. This is the export's own budget; the
 # shared worker budget still governs the shorter calls around it.
-EXPORT_TIMEOUT_SECONDS = 5_400
+# The 15 September 2026 root additions (the #1049 all-row producer and four #1041
+# modules) pushed the elaborated export past 5400 seconds on the hosted runner.
+EXPORT_TIMEOUT_SECONDS = 10_800
 
 
 def module_id(path: str) -> str:
