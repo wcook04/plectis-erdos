@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:780dc81ff70c6656cbb83906dc0009230aa085363b45e76da0e391d5712dfe6b",
+    "docs/claims.json": "sha256:27692a7013e48100e26f7a7096a64e98f11b4b1ff5ab057cfc467b4105e58fd4",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
-    "docs/publication_contract.json": "sha256:6647621f80d3c6798ba1e0229313db4856173bbc75db90e74866f4bfad7f6a40",
+    "docs/publication_contract.json": "sha256:f8c878123602db97d2569fe134dcbbed83a8876ccfa2f73b8a3ed5f833980d1e",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:8be98aa8c63f600b5353cfdee8ab578336e5883221b50e37ad4ed5503c1acca2",
@@ -402,7 +402,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 564,
+        "line": 569,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "exact nonintegrality of every reduced tail"
       },
@@ -414,7 +414,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 570,
+        "line": 575,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "actual cofinal local-window escape"
       },
@@ -426,7 +426,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 579,
+        "line": 584,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "function-faithful two-dimensional representation"
       },

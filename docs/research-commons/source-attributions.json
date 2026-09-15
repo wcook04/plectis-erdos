@@ -350,8 +350,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2154,
-          "line_end": 2158,
+          "line_start": 2171,
+          "line_end": 2175,
           "expected_text": "\\bibitem{formalconjectures269}",
           "excerpt_sha256": "sha256:7b0b0dd73febcea1a9242a18756e46d2d756b59d9fe81ac7cd8da21e428c8d58"
         },
@@ -364,8 +364,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 141,
-          "line_end": 141,
+          "line_start": 143,
+          "line_end": 143,
           "excerpt_sha256": "sha256:558860d2fb987f19c40ea022ef55298f3c596600a2a465cae5a8e7263d08a42e"
         },
         {
@@ -376,8 +376,8 @@
         },
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 191,
-          "line_end": 192,
+          "line_start": 193,
+          "line_end": 194,
           "excerpt_sha256": "sha256:f7aed53628d03ee04f97abc084a236d388c08b1fea509170db40e9bbe3d6f545"
         }
       ],
@@ -1968,15 +1968,15 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2189,
-          "line_end": 2194,
+          "line_start": 2206,
+          "line_end": 2211,
           "expected_text": "\\bibitem{loxtonvdp1977}",
           "excerpt_sha256": "sha256:3c81099ff08107cb9d89690dc701a1f2b33082c551d8970f42b69ffbb1059df4"
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 906,
-          "line_end": 909,
+          "line_start": 920,
+          "line_end": 923,
           "expected_text": "\\bibitem{loxtonvdp1977}",
           "excerpt_sha256": "sha256:193d1746404fe0ae7cf8a8f2af1390886c16891dab719c551712a52d637dabb9"
         },
@@ -2001,8 +2001,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 454,
-          "line_end": 454,
+          "line_start": 461,
+          "line_end": 461,
           "excerpt_sha256": "sha256:c5b3131b86ecb2aefeb070e8c5f4a98a5a37f0cb54aa34700e06b8aa898bf646"
         }
       ],
@@ -3329,8 +3329,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2158,
-          "line_end": 2162,
+          "line_start": 2175,
+          "line_end": 2179,
           "expected_text": "\\bibitem{apostol1976}",
           "excerpt_sha256": "sha256:41d6c6f2c2ceeb55582dedbd99f3003f0774006807f24eb9c7d50a8641720580"
         },
@@ -3343,14 +3343,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 191,
-          "line_end": 191,
+          "line_start": 193,
+          "line_end": 193,
           "excerpt_sha256": "sha256:f1af3289f81080571c3109c6c480c43838a68a8643e4f3567d8da7b027700607"
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 192,
-          "line_end": 192,
+          "line_start": 194,
+          "line_end": 194,
           "excerpt_sha256": "sha256:ae9003df70e006b492fb20f62768c18d36e6b5688b9761956881698ba8882fe8"
         },
         {
@@ -4667,15 +4667,15 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2139,
-          "line_end": 2145,
+          "line_start": 2156,
+          "line_end": 2162,
           "expected_text": "\\bibitem{erdos1974letter}",
           "excerpt_sha256": "sha256:f412b0eda03f33547d4c3246414916c32a30814e1ce1a591c6ac2205b47970aa"
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 881,
-          "line_end": 886,
+          "line_start": 895,
+          "line_end": 900,
           "expected_text": "\\bibitem{erdos1974letter}",
           "excerpt_sha256": "sha256:46bc8e13992d2c2c9223061e4f8c1771a68638e58578fcea5b1c9472e2a3729b"
         },
@@ -5820,15 +5820,15 @@
         },
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2129,
-          "line_end": 2135,
+          "line_start": 2146,
+          "line_end": 2152,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:9b9152e1a2b6436e5ae1334e4d32ed81c874388f64e71686751398f2f877fb38"
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 871,
-          "line_end": 877,
+          "line_start": 885,
+          "line_end": 891,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:9b9152e1a2b6436e5ae1334e4d32ed81c874388f64e71686751398f2f877fb38"
         },
@@ -6617,8 +6617,8 @@
         },
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2172,
-          "line_end": 2179,
+          "line_start": 2189,
+          "line_end": 2196,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:f484ba9d0732a84a0ef7c0138504704191e48f38031d5dfbfc3eb1932fbf4ce1"
         },
@@ -6689,8 +6689,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 144,
-          "line_end": 144,
+          "line_start": 146,
+          "line_end": 146,
           "excerpt_sha256": "sha256:79230fdd55c96aabd26bb3143421cd7032b162de08edf11e8c2caf03f85c6c21"
         },
         {
@@ -8218,15 +8218,15 @@
         },
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2135,
-          "line_end": 2139,
+          "line_start": 2152,
+          "line_end": 2156,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:a90e34ce2e35d3da0f95095189eabd8008b453ab0d87c7cf0a45afa3570b26a8"
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 877,
-          "line_end": 881,
+          "line_start": 891,
+          "line_end": 895,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:a90e34ce2e35d3da0f95095189eabd8008b453ab0d87c7cf0a45afa3570b26a8"
         },
@@ -9081,8 +9081,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2162,
-          "line_end": 2166,
+          "line_start": 2179,
+          "line_end": 2183,
           "expected_text": "\\bibitem{hildebrand1986}",
           "excerpt_sha256": "sha256:5f2f6075d83bb312a4846b05e61dfa0ce46a27bcc5204b3bb36ae704be5bba24"
         },
@@ -9095,8 +9095,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 135,
-          "line_end": 135,
+          "line_start": 137,
+          "line_end": 137,
           "excerpt_sha256": "sha256:81cc09d42344dba4c01fc04ff310d1a7dcb00b36f50bd511bf86e03f6caa7574"
         }
       ],
@@ -11383,8 +11383,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2166,
-          "line_end": 2172,
+          "line_start": 2183,
+          "line_end": 2189,
           "expected_text": "\\bibitem{montgomeryvaughan2007}",
           "excerpt_sha256": "sha256:e06e613c21fdb907f3ad19771974b64f69e53a3900727d6b40a487de0e2c0433"
         },
@@ -11397,8 +11397,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 194,
-          "line_end": 194,
+          "line_start": 196,
+          "line_end": 196,
           "excerpt_sha256": "sha256:b6fbd16fb60c4a2591194058b1abd9288fc465ff3a874a4fd66f5f719a7a2ad4"
         }
       ],
@@ -11601,15 +11601,15 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2179,
-          "line_end": 2189,
+          "line_start": 2196,
+          "line_end": 2206,
           "expected_text": "\\bibitem{bugeaudlaurent2023}",
           "excerpt_sha256": "sha256:ed54f1baf48e90f0f605b0afacb805775274f5ba0a98bc29485a8fd68b2fa297"
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 895,
-          "line_end": 906,
+          "line_start": 909,
+          "line_end": 920,
           "expected_text": "\\bibitem{bugeaudlaurent2023}",
           "excerpt_sha256": "sha256:daaae54b338d03faa10c907e93f25b9083b77395134e37af0b3775350acf0536"
         },
@@ -11628,8 +11628,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 452,
-          "line_end": 452,
+          "line_start": 459,
+          "line_end": 459,
           "excerpt_sha256": "sha256:1befc559197af20d33b7d88062553e5a2635859bb6d220c3a424f7baf25c04fe"
         }
       ],
@@ -11804,48 +11804,48 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2194,
-          "line_end": 2200,
+          "line_start": 2211,
+          "line_end": 2217,
           "expected_text": "\\bibitem{fan2026comment}",
-          "excerpt_sha256": "sha256:5cfa24ff95176a53a32a7fd8f0e928896343f60a321f8cd45d09b4e68f2739d2"
+          "excerpt_sha256": "sha256:f007dbc2ffb8702cf5eb2440409154a2d2658374557f27e4e6a62f0249d4b1e3"
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 909,
-          "line_end": 915,
+          "line_start": 923,
+          "line_end": 929,
           "expected_text": "\\bibitem{fan2026comment}",
-          "excerpt_sha256": "sha256:21a34ea032a5559c9c49b2b1038d451fa427cbf069dd30a87954d4684904226e"
+          "excerpt_sha256": "sha256:c3d5f6339be814f37255329d21c0904ee6dc32da94a4738ebc14a4eaa9cbbcb4"
         },
         {
           "path": "paper/reasoning-parts/erdos269/back.tex",
           "line_start": 70,
           "line_end": 76,
           "expected_text": "\\bibitem{fan2026comment}",
-          "excerpt_sha256": "sha256:5cfa24ff95176a53a32a7fd8f0e928896343f60a321f8cd45d09b4e68f2739d2"
+          "excerpt_sha256": "sha256:f007dbc2ffb8702cf5eb2440409154a2d2658374557f27e4e6a62f0249d4b1e3"
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
           "line_start": 90,
           "line_end": 90,
-          "excerpt_sha256": "sha256:8b964031e4228a0af564c8bc55cf396ab6af0b018b31bb454c841fc80951e83a"
+          "excerpt_sha256": "sha256:95d46b758e468907a6b8d08aa905cf98bfba012636c8037f9e8baa4459defeea"
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 195,
-          "line_end": 195,
+          "line_start": 197,
+          "line_end": 197,
           "excerpt_sha256": "sha256:3281926307fad92583cc89b85bf8fa7cd6b19d3ddaddaa821068b0a2af69b801"
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 687,
-          "line_end": 687,
+          "line_start": 694,
+          "line_end": 694,
           "excerpt_sha256": "sha256:9a2b41a4b6db48cafbf92f453f6670dfc4c262b50b0db42143521debfa3321ba"
         },
         {
           "path": "paper/reasoning-parts/erdos269/extended_record.tex",
           "line_start": 31,
           "line_end": 31,
-          "excerpt_sha256": "sha256:6e66d707f89c5347fa087b97dba7064a3914921a0c88cf5ae16599cce07768a4"
+          "excerpt_sha256": "sha256:0e2b2a4cdf9b7fd6c55d499515bea3230f8e6b37602499415da29e171103abed"
         }
       ],
       "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
@@ -12050,15 +12050,15 @@
         },
         {
           "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-          "line_start": 2145,
-          "line_end": 2154,
+          "line_start": 2162,
+          "line_end": 2171,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:f6313f84ee4cae2831248cfded852aa5b91aa593b75b4c003a6ff8319ed3043c"
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 886,
-          "line_end": 895,
+          "line_start": 900,
+          "line_end": 909,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:2a31cd3b3c721e68cfe80551bfab84e8df13b2751ef98c0cedd2ef9da2795477"
         },
@@ -12200,8 +12200,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos269/core.tex",
-          "line_start": 1617,
-          "line_end": 1617,
+          "line_start": 1634,
+          "line_end": 1634,
           "excerpt_sha256": "sha256:d0559e3f93ab362bb16be698bc158dd0b137805f14ac89688540eb87a7ddd97a"
         },
         {
@@ -14749,6 +14749,153 @@
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
           "key": "lai-lupu-sprang"
+        }
+      ]
+    },
+    {
+      "id": "source-5ee4a583f9ca3f",
+      "kind": "literature",
+      "title": "The van der Corput property for sums of two squares",
+      "authors": [
+        "Steve Fan",
+        "Andrew Lott"
+      ],
+      "publication_years": [
+        "2026"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2606.29185"
+      ],
+      "problems": [
+        "269"
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/2606.29185v1",
+          "locator": "arXiv v1 (28 June 2026) PDF read in full on 2026-09-15; Section 3, pp. 4-8, defines the coefficients from the representations d=v^2(x^2+y^2); p. 5 explains that averaging over v places the complete sums in a fixed sector; Corollary 4.4, p. 12, proves the sector bound."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "line_start": 2217,
+          "line_end": 2224,
+          "expected_text": "\\bibitem{fanlott2026}",
+          "excerpt_sha256": "sha256:faba7205469228a0b3a418034506266ce59c0373f70e31c87da8d2d175fe04b1"
+        },
+        {
+          "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "line_start": 929,
+          "line_end": 936,
+          "expected_text": "\\bibitem{fanlott2026}",
+          "excerpt_sha256": "sha256:faba7205469228a0b3a418034506266ce59c0373f70e31c87da8d2d175fe04b1"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos269/back.tex",
+          "line_start": 76,
+          "line_end": 83,
+          "expected_text": "\\bibitem{fanlott2026}",
+          "excerpt_sha256": "sha256:faba7205469228a0b3a418034506266ce59c0373f70e31c87da8d2d175fe04b1"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos269/core.tex",
+          "line_start": 329,
+          "line_end": 329,
+          "expected_text": "{fanlott2026}",
+          "excerpt_sha256": "sha256:8056959fc9b1f66fd554b59906556744acc0dfb1825f85edb3d25b6a2e2cbfbc"
+        },
+        {
+          "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "line_start": 399,
+          "line_end": 399,
+          "expected_text": "{fanlott2026}",
+          "excerpt_sha256": "sha256:a95522c632d708172c756e2ccc0a8d642ce85126475da95633b40aa0906a264d"
+        }
+      ],
+      "relation": "Cited by both #269 papers at the height-fibre regrouping as a comparison: the van der Corput coefficients on sums of two squares sum smooth weights over the representations d=v^2(x^2+y^2), and averaging over v keeps the complete sums in a fixed sector (Corollary 4.4). No input from the paper is used in a #269 argument.",
+      "verification_state": "source_verified",
+      "verification_scope": "The cited preprint's identity, authors, version and the quoted section, lemma, corollary and page locators were directly checked against the v1 PDF. This does not certify the mathematics or imply local adoption.",
+      "bibliography_keys": [
+        {
+          "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "key": "fanlott2026"
+        },
+        {
+          "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "key": "fanlott2026"
+        }
+      ]
+    },
+    {
+      "id": "source-71fb76f6e1363b",
+      "kind": "literature",
+      "title": "Strongly complete sets and a conjecture of Erdős",
+      "authors": [
+        "Steve Fan"
+      ],
+      "publication_years": [
+        "2026"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2607.14071"
+      ],
+      "problems": [
+        "269"
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/2607.14071v1",
+          "locator": "arXiv v1 (15 July 2026) PDF read in full on 2026-09-15; Lemma 3.1, p. 7, countability of the theta with dist(a_n theta, Z) -> 0 for unbounded positive integers with a_{n+1} <= lambda a_n; the paragraph before it credits Eggleston (1952) and Erdős-Taylor (1957); Theorem 1.1 and Corollary 1.2 answer the conjecture listed as Erdős Problem #254."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "line_start": 2224,
+          "line_end": 2234,
+          "expected_text": "\\bibitem{fan2026strongly}",
+          "excerpt_sha256": "sha256:6591f6a2f5c12461b4c6f5a379daa0b2e5974bda0b7b7a1919d290e303ecbe83"
+        },
+        {
+          "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "line_start": 936,
+          "line_end": 946,
+          "expected_text": "\\bibitem{fan2026strongly}",
+          "excerpt_sha256": "sha256:6591f6a2f5c12461b4c6f5a379daa0b2e5974bda0b7b7a1919d290e303ecbe83"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos269/back.tex",
+          "line_start": 83,
+          "line_end": 93,
+          "expected_text": "\\bibitem{fan2026strongly}",
+          "excerpt_sha256": "sha256:6591f6a2f5c12461b4c6f5a379daa0b2e5974bda0b7b7a1919d290e303ecbe83"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos269/core.tex",
+          "line_start": 941,
+          "line_end": 941,
+          "expected_text": "{fan2026strongly}",
+          "excerpt_sha256": "sha256:f5650658f49332f099ba18d1efff893ea8a24d1fa1e5f5e070be9428da85e16e"
+        },
+        {
+          "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "line_start": 601,
+          "line_end": 601,
+          "expected_text": "{fan2026strongly}",
+          "excerpt_sha256": "sha256:6aa737beb1f1dbcedb949f2b389de77429a1b733a7ec8f6d3cff9daa1c0d72e3"
+        }
+      ],
+      "relation": "Cited by both #269 papers beside the bounded-radix alternative: its Lemma 3.1 makes the exceptional set countable for integer sequences with bounded ratios, and the #269 argument identifies that set for B h_a as the xi with B h_a xi eventually integral, which contains S for some B exactly when S is rational. The paper states nothing about #269.",
+      "verification_state": "source_verified",
+      "verification_scope": "The cited preprint's identity, authors, version and the quoted section, lemma, corollary and page locators were directly checked against the v1 PDF. This does not certify the mathematics or imply local adoption.",
+      "bibliography_keys": [
+        {
+          "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "key": "fan2026strongly"
+        },
+        {
+          "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+          "key": "fan2026strongly"
         }
       ]
     }
