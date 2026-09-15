@@ -26,6 +26,7 @@ import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
 import ErdosProblems.Erdos243.RepairEntropy
 import ErdosProblems.Erdos243.NewtonV8.NewtonClassificationAudit
 import ErdosProblems.Erdos1049.AllRow.Producer
+import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
 import ErdosProblems.Erdos1041.PaperCriticalValueMeanR10
 import ErdosProblems.Erdos1041.PaperCubicFibres
 import ErdosProblems.Erdos1041.PaperStraightObstructions
