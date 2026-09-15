@@ -23,9 +23,9 @@ proof authority for this release, and it does not solve Erdős #243.
   334539 bytes; 17 pages. It was retrieved from the official journal PDF
   route and read directly.
 
-The published article is the preferred source for attribution. The note's
-existing bracketed aliases retain the arXiv-v1 numbering; the crosswalk below
-keeps those references auditable against the final article.
+The published article is the preferred source for attribution. Both #243
+manuscripts cite its numbering; the crosswalk below keeps references to the
+arXiv-v1 numbering auditable against the final article.
 
 ## Read state and exact locators
 
@@ -63,11 +63,13 @@ boundary.
 
 ## Final-article / arXiv-v1 locator crosswalk
 
-The checked final article renumbers material that the paper currently cites by
-arXiv-v1 labels:
+The checked final article renumbers the arXiv-v1 labels that earlier
+revisions of the #243 manuscripts cited:
 
-| Published article | arXiv v1 used by the note | Role |
+| Published article | arXiv v1 | Role |
 | --- | --- | --- |
+| Question 1, p. 3 | Question 5, p. 3 | the Erdős–Graham question, Erdős #243 |
+| Conjecture 1, p. 4 | Conjecture 6, p. 3 | eventual vanishing of a gap sequence tending to zero |
 | Corollary 3, p. 9 | Corollary 10, p. 8 | eventual pseudo-greedy transfer and gap convergence |
 | Lemma 3, p. 10 | Lemma 13, p. 9 | zero-gap absorption |
 | Lemma 4, pp. 11–12 | Lemma 15, p. 9 | rational state coordinates and updates |
