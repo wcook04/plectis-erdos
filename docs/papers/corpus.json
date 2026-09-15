@@ -2373,7 +2373,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/249/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:8436611e9df1d0d6fc4c0d69b40f361f577c080489b5fea554111e1e81961c85",
+      "source_sha256": "sha256:a20aa973355e9a96fa37d15c8a24f5111568d9b6d3e430af84554e46fbdeaff5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.tex",
@@ -2402,59 +2402,59 @@
           "level": 2,
           "id": "a-reusable-consequence",
           "title": "A reusable consequence",
-          "line": 126
+          "line": 130
         },
         {
           "level": 1,
           "id": "sec:family",
           "title": "Bounded residues and rationality",
-          "line": 148
+          "line": 152
         },
         {
           "level": 1,
           "id": "sec:carry-rank",
           "title": "The actual series and the remaining residue gap",
-          "line": 190
+          "line": 194
         },
         {
           "level": 2,
           "id": "one-seed-removes-the-full-depth-restriction",
           "title": "One seed removes the full-depth restriction",
-          "line": 209
+          "line": 213
         },
         {
           "level": 2,
           "id": "sec:frontier",
           "title": "A single canonical endpoint",
-          "line": 258
+          "line": 262
         },
         {
           "level": 1,
           "id": "sec:nogo",
           "title": "Information that does not force the gap",
-          "line": 301
+          "line": 305
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Antecedents and proof record",
-          "line": 342
+          "line": 346
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 373
+          "line": 377
         }
       ],
-      "citations_rendered": 6,
+      "citations_rendered": 9,
       "fallback_title_drift": {
         "registry_fallback": "A Basis for the 2-Kernel of Euler's Totient",
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:6b961992a8141cad72f7e87e572d1996048bd2f7eb73a193358879e625f67d95",
-      "pdf_byte_count": 114080,
+      "pdf_sha256": "sha256:4f906e527004906309384f9c5eab6711acfde97d3cbef6cfd3914459901aaa65",
+      "pdf_byte_count": 117116,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2467,17 +2467,17 @@
           {
             "id": "sec:carry-rank",
             "title": "The actual series and the remaining residue gap",
-            "line": 190
+            "line": 194
           },
           {
             "id": "sec:frontier",
             "title": "A single canonical endpoint",
-            "line": 258
+            "line": 262
           },
           {
             "id": "sec:nogo",
             "title": "Information that does not force the gap",
-            "line": 301
+            "line": 305
           }
         ],
         "unresolved_count": 0
@@ -2520,7 +2520,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/249/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:e9494f2d6749914a4d730213174e0a6346a52232d1e8c647cabf15f6ee9cfb8e",
+      "source_sha256": "sha256:e2eeb0c6f4b247e0759949be2aa34518e2a4187821e8e116120da62e48c39837",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.tex",
@@ -3430,8 +3430,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:a040ecf7abb962ca47b073d705afa39e2098a806d1a31775f2a4320a0ee0bca9",
-      "pdf_byte_count": 734647,
+      "pdf_sha256": "sha256:d9ee25348f0de25de226d9e72a454488b48992fd31689f00bb17c15a8021cb85",
+      "pdf_byte_count": 737150,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

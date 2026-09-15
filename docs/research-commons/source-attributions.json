@@ -733,11 +733,11 @@
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
-          "locator": "PDF pages were read. PDF pp. 1--2, 10--11, and 15 were also visually checked;",
+          "locator": "PDF pages were read, and all 15 PDF pages were visually checked;",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
           "line_start": 34,
           "line_end": 34,
-          "excerpt_sha256": "sha256:9c42422310883a4d672c7f3e3df342cb778c8530b385a2d1561d4c0e273524a6"
+          "excerpt_sha256": "sha256:1410b72834950319ff39e175ea1e6ab1d943df489eba4b11a9614731af76356f"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
@@ -749,11 +749,11 @@
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
-          "locator": "- **Regularity framework:** Printed p. 348 (PDF p. 10) defines a",
+          "locator": "- **Regularity framework:** Printed p. 348 (PDF p. 11) defines a",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
           "line_start": 43,
           "line_end": 43,
-          "excerpt_sha256": "sha256:8e68199305aed17c66048df13fe00488794e6ba133a17a1359dcbadb9d73bc8a"
+          "excerpt_sha256": "sha256:af5e53e655bb52f61766c9a0eb30121b900a2c049d4f87c8a2bc82f658c190e4"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
@@ -781,107 +781,107 @@
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
-          "locator": "- **Totient theorem:** Printed p. 349 (PDF p. 11) states **Theorem 3.2**:",
+          "locator": "- **Totient theorem:** Printed p. 348 (PDF p. 11) states **Theorem 3.2**:",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
           "line_start": 48,
           "line_end": 48,
-          "excerpt_sha256": "sha256:46188025d1d8547d0eb4f43c4f677d083f894c6322142aa3ee60307c48a73f51"
+          "excerpt_sha256": "sha256:bd6ced376d899850294ed71f0a4325ed6dbe53f1d010a77dea2df441dfe450fa"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "zero-counting input and Corollary 3.1. This is the exact external source",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 52,
-          "line_end": 52,
+          "line_start": 53,
+          "line_end": 53,
           "excerpt_sha256": "sha256:04d3fbc77c1be68349072754b54077375487ebf9289180a465312d053f3fde28"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "- **Bibliographic and rights boundary:** Printed p. 352 (PDF p. 15) gives",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 55,
-          "line_end": 55,
+          "line_start": 56,
+          "line_end": 56,
           "excerpt_sha256": "sha256:c631e4b4ad8f4acc98ada9b96d49b362a1b64ce57469ed87c59a26ae72bb1a6c"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "determinant construction, Erdős Problem #249, and the repository's theorem",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 65,
-          "line_end": 65,
+          "line_start": 66,
+          "line_end": 66,
           "excerpt_sha256": "sha256:191d2abf4699c0400d647a6289b73710ce6d6dc821763ddf66ea3933d0a3f450"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "names; none occurs. The source states the global non-`k`-regularity theorem,",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 66,
-          "line_end": 66,
+          "line_start": 67,
+          "line_end": 67,
           "excerpt_sha256": "sha256:d7cd6c531113fe0c0f1ee18d7162571416ff8d498816f06ec12193ec1cfa63b0"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "or the separate all-base conditional theorem.",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 68,
-          "line_end": 68,
+          "line_start": 69,
+          "line_end": 69,
           "excerpt_sha256": "sha256:cc6dcda3ad6f41695c3c040fc1b2bdaa9532c816ea7cdac634443daecd156cbb"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "- Attribution of the theorem that Euler's totient function is not",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 74,
-          "line_end": 74,
+          "line_start": 75,
+          "line_end": 75,
           "excerpt_sha256": "sha256:27f831370968efaee240ceea929a26e31c50a14c8a07c1d3aaca13702208ccfc"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
-          "locator": "`k`-regular for any integer `k ≥ 2` to Coons, Theorem 3.2, printed p. 349.",
+          "locator": "`k`-regular for any integer `k ≥ 2` to Coons, Theorem 3.2, stated on",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 75,
-          "line_end": 75,
-          "excerpt_sha256": "sha256:82261ebbf314d856a6e89e6e7d6bb48b58a95af08bc8e7326655e7a1dd26f650"
+          "line_start": 76,
+          "line_end": 77,
+          "excerpt_sha256": "sha256:5540d6f46ec3d169c3e8794a380cb475b874e3992a8100f49239e9b4b2ebea2d"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "`k`-kernel over `ℤ`, printed p. 348.",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 77,
-          "line_end": 77,
+          "line_start": 79,
+          "line_end": 79,
           "excerpt_sha256": "sha256:0f8c8bd51e2ee741b3312842d608e2ede4561b704bad48e5d1dd3662482f0db4"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "totient non-regularity theorem, printed p. 349.",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 79,
-          "line_end": 79,
+          "line_start": 81,
+          "line_end": 81,
           "excerpt_sha256": "sha256:a7043dddcd63fd8e9d684084397a457d5d513e4a788cf2cb2893dc414ebf7dbe"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "- The all-base affine-totient independence theorem attributed to Martin, or",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 88,
-          "line_end": 88,
+          "line_start": 90,
+          "line_end": 90,
           "excerpt_sha256": "sha256:35759d20ed54220226e68afcd7b798013a5c091d8d8fda09ddcb258bc3f47d68"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
           "locator": "the global non-`k`-regularity theorem settles Erdős Problem #249.",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 92,
-          "line_end": 92,
+          "line_start": 94,
+          "line_end": 94,
           "excerpt_sha256": "sha256:8aed77853873b35719eb99fbf8d81cf90e83fef1ef638258968509adcd574ec1"
         },
         {
           "url": "https://doi.org/10.5802/jtnb.718",
-          "locator": "rank theorem stated by Coons.",
+          "locator": "rank theorem stated by Coons. The bridge is elementary for integer-valued",
           "evidence_path": "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
-          "line_start": 97,
-          "line_end": 97,
-          "excerpt_sha256": "sha256:7aca53ff823f1b9cc8f1a9b1c1b3b0a12e94731ea463e01b735a660e780b557c"
+          "line_start": 99,
+          "line_end": 103,
+          "excerpt_sha256": "sha256:f168468fd271f0d0443c2503f52f5c0c1aa0ea41ef5d6eabea36563983e9876f"
         }
       ],
       "artifact_links": [
@@ -894,13 +894,76 @@
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 792,
-          "line_end": 795,
+          "line_start": 819,
+          "line_end": 822,
           "expected_text": "\\bibitem{coons}",
-          "excerpt_sha256": "sha256:7462f7ee632276c82c66d18aaf501d71868bd58a402e17cd314ed53bded10763"
+          "excerpt_sha256": "sha256:194853409620739b24e9e5f5091f02d4da4f73e1ad951e0d17e4f967d1139524"
+        },
+        {
+          "path": "paper/249/erdos-249-binary-totient-series.tex",
+          "line_start": 43,
+          "line_end": 44,
+          "expected_text": "Coons proved non-$k$-regularity",
+          "excerpt_sha256": "sha256:e93e9a1a573057be005b8ebb661c5ecca22d1e0bff3fbb42b2512d3f7085d843"
+        },
+        {
+          "path": "paper/249/erdos-249-binary-totient-series.tex",
+          "line_start": 237,
+          "line_end": 246,
+          "expected_text": "Coons proved that the",
+          "excerpt_sha256": "sha256:33b525f46eb76dbc41a7fde3ef5d290e0aae4ad21bb44b5cf9e0dc9009986a66"
+        },
+        {
+          "path": "paper/249/erdos-249-binary-totient-series.tex",
+          "line_start": 575,
+          "line_end": 576,
+          "expected_text": "\\cite[Thm.~3.2]{coons}",
+          "excerpt_sha256": "sha256:398ca032230c6f56e30b00e6acd398308511c9719a80d6368cab584e770cab4e"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/preamble.tex",
+          "line_start": 178,
+          "line_end": 179,
+          "expected_text": "Coons's theorem",
+          "excerpt_sha256": "sha256:0d4b4d5d2a680973d0656d41b77d76e0b096774cd75e73655aeb1334402dc06b"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/a249_front.tex",
+          "line_start": 169,
+          "line_end": 169,
+          "expected_text": "Coons's non-regularity theorem",
+          "excerpt_sha256": "sha256:48a3dc935a9efd4f525b4196ade8751cfd054cab2285d0b3acf1c074f18578f9"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/a249_invent.tex",
+          "line_start": 727,
+          "line_end": 733,
+          "expected_text": "Coons, Theorem~3.2",
+          "excerpt_sha256": "sha256:ada54334fe51c9d8996ba7a8c50ad6589a7ec29353303c2fd70e65fc719dbd60"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/a249_p4.tex",
+          "line_start": 434,
+          "line_end": 437,
+          "expected_text": "Coons, Theorem~3.2",
+          "excerpt_sha256": "sha256:3c22c1483d8b27b07d31075664a6f9d76aeacb994d9934c04e280fe23cd94c3c"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/a249_p4.tex",
+          "line_start": 521,
+          "line_end": 522,
+          "expected_text": "Coons's theorem cited",
+          "excerpt_sha256": "sha256:287e2329dd6f0b29c0f4a3203679ff00fbb12a876b47f08001c265b67446b1e3"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/a249_p5.tex",
+          "line_start": 595,
+          "line_end": 595,
+          "expected_text": "Coons's non-regularity theorem",
+          "excerpt_sha256": "sha256:9bb63e98c41d2fe494420b4de204eb623d74f0573079ceb08b0867b42219d9a8"
         }
       ],
-      "relation": "Attribution of the theorem that Euler's totient function is not `k`-regular for any integer `k ≥ 2` to Coons, Theorem 3.2, printed p. 349. - The source-level definition of `k`-regularity as finite generation of the `k`-kernel over `ℤ`, printed p. 348. - The Dirichlet-series identity and proof mechanism used by Coons for the totient non-regularity theorem, printed p. 349. - The published bibliographic identity, official retrieval routes, exact local digest, and conservative rights posture recorded above.",
+      "relation": "Attribution of the theorem that Euler's totient function is not `k`-regular for any integer `k ≥ 2` to Coons, Theorem 3.2, stated on printed p. 348 and proved on p. 349. - The source-level definition of `k`-regularity as finite generation of the `k`-kernel over `ℤ`, printed p. 348. - The Dirichlet-series identity and proof mechanism used by Coons for the totient non-regularity theorem, printed p. 349. - The published bibliographic identity, official retrieval routes, exact local digest, and conservative rights posture recorded above.",
       "verification_state": "existing_source_closure",
       "bibliography_keys": [
         {
@@ -910,6 +973,184 @@
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
           "key": "coons"
+        }
+      ]
+    },
+    {
+      "id": "source-296ff41148fff7",
+      "kind": "literature",
+      "title": "Regular sequences and the joint spectral radius",
+      "authors": [
+        "M. Coons"
+      ],
+      "publication_years": [
+        "2017"
+      ],
+      "urls": [
+        "https://doi.org/10.1142/S0129054117500095",
+        "https://arxiv.org/abs/1511.07535"
+      ],
+      "problems": [
+        "249"
+      ],
+      "artifact_links": [
+        {
+          "path": "paper/249/erdos-249-binary-totient-series.tex",
+          "line_start": 822,
+          "line_end": 826,
+          "expected_text": "\\bibitem{coons-jsr}",
+          "excerpt_sha256": "sha256:dfad4fe35939edaab05c181a64c042dffdf2b6a2ee9e318fdf0f7c37c86c58e0"
+        },
+        {
+          "path": "paper/249/erdos-249-binary-totient-series.tex",
+          "line_start": 244,
+          "line_end": 244,
+          "expected_text": "\\cite[App.~A]{coons-jsr}",
+          "excerpt_sha256": "sha256:ba2623fd0d16d511439ef0687c6297f7daa8de19a37077c607d2130b31b303ec"
+        },
+        {
+          "path": "paper/249/erdos-249-binary-totient-series.tex",
+          "line_start": 248,
+          "line_end": 260,
+          "expected_text": "joint spectral radius",
+          "excerpt_sha256": "sha256:a19f3f512e83dcae6f5c0db90a66f47195ed3b0619df9a340797d8966da61a3b"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/a249_p4.tex",
+          "line_start": 504,
+          "line_end": 505,
+          "expected_text": "Coons, Theorem~1",
+          "excerpt_sha256": "sha256:e04dc67f318d119bf17a44db675615d6e63a92ebf331a69436baf1f687626e18"
+        }
+      ],
+      "relation": "Attribution of the theorem that, for a `k`-regular sequence, matrices associated to a basis of the kernel span compute the growth exponent through their joint spectral radius, to Coons, Theorem 1, PDF p. 1. - Attribution of the upper bound from any spanning set, and of the comparison between bases and spanning sets, to Proposition 4 (PDF p. 2) and Corollary 7 (PDF p. 3), with the strictness example on PDF p. 4. - The evaluation argument of Appendix A (PDF p. 4): the evaluation vectors of a basis of sequences span the coefficient space. The #249 short note cites these for the basis-versus-spanning-family distinction and for the evaluation argument in its equivalence between finite generation and finite rational dimension of an integer-valued kernel. The source does not concern Euler's totient, and its growth theorem is not applied to the non-regular totient. Locators follow arXiv:1511.07535v1.",
+      "verification_state": "existing_source_closure",
+      "bibliography_keys": [
+        {
+          "path": "paper/249/erdos-249-binary-totient-series.tex",
+          "key": "coons-jsr"
+        }
+      ],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "`03fbaca88796cc63f376d2e6e4680ec94632143794df871066df501b5675e7ef`;",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 26,
+          "line_end": 26,
+          "excerpt_sha256": "sha256:197e288af0b6a0b027495fbdc2549c956183d49b67c2a7d9e82806895b6cb467"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "127459 bytes; 5 PDF pages. A fresh download from the official arXiv v1 PDF",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 27,
+          "line_end": 27,
+          "excerpt_sha256": "sha256:b5d57c7580595a3f359077dc1cf9c060b26a160c4b802157485152be7abe3297"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "`read_complete` for the bound PDF. All five pages were read and visually",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 35,
+          "line_end": 35,
+          "excerpt_sha256": "sha256:73b98415e36b19bc922b8f7bd8d725f93605980446cd51179a04eb52cb89cf07"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- **Definitions and main theorem:** PDF p. 1 defines the `k`-kernel, calls a",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 39,
+          "line_end": 39,
+          "excerpt_sha256": "sha256:15af4bc4aa629949a61c4c7ea5b3a1ff0a40272240333439413cf8b19a01b1cc"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "exponent and the joint spectral radius, and states **Theorem 1**: for a",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 42,
+          "line_end": 42,
+          "excerpt_sha256": "sha256:1df5f85511e67a50deda2eeb1b7cfaeb4d4bb988a65f11f828defaecd081c511"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- **Upper bound from any spanning set:** PDF p. 2 notes that Theorem 1 holds",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 46,
+          "line_end": 46,
+          "excerpt_sha256": "sha256:b9c20d8cee5e16f89d76fc72f1eb302e24879c01606d20d7347b55333a77d05a"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "**Proposition 4**: matrices associated to any spanning set of the kernel",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 48,
+          "line_end": 48,
+          "excerpt_sha256": "sha256:e12ab92295154dc0436af59a4245ceb7bd3b9d6bba257ba7f42593654672604f"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- **Lower bound from a basis, and the comparison:** PDF p. 3 states",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 51,
+          "line_end": 51,
+          "excerpt_sha256": "sha256:8a8f1da6f7b5da7ffbffe3a642b300da7104687b7ba4853eba008467c73bf96a"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "**Corollary 7**: the joint spectral radius for a basis is at most that for",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 55,
+          "line_end": 55,
+          "excerpt_sha256": "sha256:c78c71c749ba21740e1cdf538789652ea5224210e65b7f5d4fde78dacd4dda08"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- **Strictness and the evaluation argument:** PDF p. 4 gives an example in",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 57,
+          "line_end": 57,
+          "excerpt_sha256": "sha256:3207b6e031c9803de0a451797083fca28ebca61f985db5ae466f6135f9d51026"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "**Appendix A**, which begins on the same page, shows that for a basis",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 59,
+          "line_end": 59,
+          "excerpt_sha256": "sha256:ce7847bca9f3078ff1ed9930b76795ef280ac62f46cb57b2e49cce2249beee88"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- **Bibliographic boundary:** PDF p. 5 completes Appendix A and gives the",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 63,
+          "line_end": 63,
+          "excerpt_sha256": "sha256:525cc0266772aa981b337e12bf1e7660c3ccf8deb581ecfdd3acff2e172d825c"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- Attribution of the theorem that, for a `k`-regular sequence, matrices",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 78,
+          "line_end": 78,
+          "excerpt_sha256": "sha256:d6fa3a3c6102a7f0e5f8f2ab1db9d12cd7487b457163c0f6de69a05627b90ada"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- Attribution of the upper bound from any spanning set, and of the comparison",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 81,
+          "line_end": 81,
+          "excerpt_sha256": "sha256:d3a2db3f7107bf11fc4956cf45a8f5ecdcdd77dba4a31fd280a265026f8e63db"
+        },
+        {
+          "url": "https://arxiv.org/abs/1511.07535",
+          "locator": "- The evaluation argument of Appendix A (PDF p. 4): the evaluation vectors of",
+          "evidence_path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+          "line_start": 84,
+          "line_end": 84,
+          "excerpt_sha256": "sha256:5e78ca6f76fb557d7a05e8fa6a20230ff37d7519b58e0aaa6f3401c547361ac2"
         }
       ]
     },
@@ -2316,8 +2557,8 @@
       "artifact_links": [
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 805,
-          "line_end": 808,
+          "line_start": 836,
+          "line_end": 839,
           "expected_text": "\\bibitem{fan2026totient}",
           "excerpt_sha256": "sha256:0822fac97e86223a8b6f04b6934255a94ff5a1bac5295fa89506967946301d9b"
         }
@@ -5436,8 +5677,8 @@
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 802,
-          "line_end": 805,
+          "line_start": 833,
+          "line_end": 836,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:3451dd866e80517dacca63cfc17bb749148b4d10abfd461e6010a2773dc28e22"
         },
@@ -9928,8 +10169,8 @@
       "artifact_links": [
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 795,
-          "line_end": 798,
+          "line_start": 826,
+          "line_end": 829,
           "expected_text": "\\bibitem{martin-phi-inequalities}",
           "excerpt_sha256": "sha256:3b0475dd33e7a1ea2d089116b3042b48e0583ce9c65fa9d5d35b7bfae3c0d8a6"
         },
@@ -9953,6 +10194,13 @@
           "line_end": 18,
           "excerpt_sha256": "sha256:bb1cbd9adcabf879040179a1dda4145da0903770eb95510584365a88131340ba",
           "expected_text": "/-!"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos249/a249_p4.tex",
+          "line_start": 526,
+          "line_end": 526,
+          "expected_text": "Martin, Theorem~1",
+          "excerpt_sha256": "sha256:2dbd7f0d45fe7526bd594df5c9ee18003963911c8ad097aea117921cb42671fc"
         }
       ],
       "relation": "Attribution of the positive-lower-density ratio-comparison input for nonproportional affine forms to Martin's Theorem 1. - The symmetry-based availability of strict orderings and the source's φ-to-σ transfer in Corollary 4. - The source identity, version, exact public routes, and the locators above for the prior-art comparison. Explicit attribution section names Greg Martin, title, arXiv identifier, and Theorem 1. It states Martin’s result is stronger and subsumes the local independence conclusion; the local file contributes a self-contained elementary proof and explicitly disclaims originality. The theorem docstring explicitly calls the result a corollary of Martin, arXiv:math/0603053, Theorem 1. Explicit source boundary: Martin is identified as the external mathematical comparison/input, while no theorem of Martin is formalized or assumed as an axiom.",
@@ -10666,8 +10914,8 @@
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 789,
-          "line_end": 792,
+          "line_start": 816,
+          "line_end": 819,
           "expected_text": "\\bibitem{allouche-shallit}",
           "excerpt_sha256": "sha256:867c017fd5e319d7d8dd47a300a5aead007cebebb30c5f3d3b9fcccbf92063e2"
         }
@@ -10993,8 +11241,8 @@
       "artifact_links": [
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 798,
-          "line_end": 802,
+          "line_start": 829,
+          "line_end": 833,
           "expected_text": "\\bibitem{wong2015}",
           "excerpt_sha256": "sha256:c051a6fd92366505b0880e9bef1e556ed2611ec3731d443530ec4ab540b599a1"
         }
@@ -11573,8 +11821,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 221,
-          "line_end": 225,
+          "line_start": 227,
+          "line_end": 231,
           "excerpt_sha256": "sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289"
         },
         {
@@ -11745,8 +11993,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 229,
-          "line_end": 233,
+          "line_start": 235,
+          "line_end": 239,
           "excerpt_sha256": "sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a"
         },
         {
@@ -11973,8 +12221,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 261,
-          "line_end": 265,
+          "line_start": 267,
+          "line_end": 271,
           "excerpt_sha256": "sha256:02b7a5fb6ec6414051189b65c6c9f2a8dd2efedd07a902ef54cbbb4256862c97"
         }
       ],
@@ -13087,25 +13335,25 @@
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
           "line_start": 23,
-          "line_end": 53,
-          "excerpt_sha256": "sha256:cbaecda8e465751af3465648f063d9b8a79f5e53c20a01897428f0b113e6ab14"
+          "line_end": 54,
+          "excerpt_sha256": "sha256:2ff03a3c73bbf0d16b8407a4098ca4e42c941f20de36ecbb2ac007e6fc92a8b8"
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 58,
-          "line_end": 97,
+          "line_start": 59,
+          "line_end": 98,
           "excerpt_sha256": "sha256:e41398ec47e5e177eb90c627543a2ebd43045fb38047a74ca4f41b45e4758993"
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 547,
-          "line_end": 560,
-          "excerpt_sha256": "sha256:1a3d7c9c7ee8ba031728e618f10204e0866dacaa795e7e1fa2ab5528437f6385"
+          "line_start": 573,
+          "line_end": 587,
+          "excerpt_sha256": "sha256:65030d24bd92830c0e89a616c55cda5c509544127dae9f395367324baa4f8eb3"
         },
         {
           "path": "paper/249/erdos-249-binary-totient-series.tex",
-          "line_start": 635,
-          "line_end": 641,
+          "line_start": 662,
+          "line_end": 668,
           "excerpt_sha256": "sha256:7b396d32e0520f148c4cd2ef0776ea5898ab787c34eeebbb74efbdcf93c45865"
         },
         {
@@ -13164,8 +13412,8 @@
         },
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 298,
-          "line_end": 302,
+          "line_start": 304,
+          "line_end": 308,
           "excerpt_sha256": "sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e"
         },
         {
