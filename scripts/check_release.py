@@ -66,6 +66,7 @@ from lean_source import (
     library_storage_variants,
     lean_code_without_comments_and_strings,
 )
+from paper_build_manifest import manifest_errors as paper_build_manifest_errors
 from publication_contract import (
     RepositoryReader,
     mutation_fixture_failures as publication_mutation_fixture_failures,
@@ -1288,6 +1289,11 @@ def main(argv: list[str] | None = None) -> int:
     check(
         not publication_errors,
         "publication artifact contract failed: " + "; ".join(publication_errors),
+    )
+    paper_build_errors = paper_build_manifest_errors(publication_reader)
+    check(
+        not paper_build_errors,
+        "paper build manifest failed: " + "; ".join(paper_build_errors),
     )
     publication_fixture_failures = publication_mutation_fixture_failures(
         publication_reader
