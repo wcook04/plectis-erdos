@@ -740,6 +740,17 @@ def module_lines(
                     text=True,
                     check=False,
                 )
+            storage = library_storage_path(historical)
+            if completed.returncode != 0 and storage not in {historical, rel}:
+                # A pin taken after both libraries moved under lean/ stores the
+                # module at its storage spelling, not at the identity path.
+                completed = run(
+                    ["git", "show", f"{source_ref}:{storage}"],
+                    cwd=ROOT,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
             cache[key] = completed.stdout.splitlines() if completed.returncode == 0 else None
     return cache[key]
 
@@ -2021,10 +2032,13 @@ def main(argv: list[str] | None = None) -> int:
         pinned_requests,
         pinned_cache,
     )
+    # Record only hits: a miss at the identity path may still resolve at the
+    # lean/ storage spelling, which module_lines tries when it reads the tree.
     cache.update(
         {
-            (rel, ref): lines or None
+            (rel, ref): lines
             for (ref, rel), lines in pinned_cache.items()
+            if lines
         }
     )
 

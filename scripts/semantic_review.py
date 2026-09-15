@@ -616,6 +616,19 @@ def rereview_moved_revision(
         }
     if old_signatures is None:
         old_signatures = _atlas_signatures_at(old_revision)
+    # The atlas spells each module by its storage path, which gained a
+    # ``lean/`` prefix when both libraries moved under ``lean/``, while corpus
+    # evidence cites the identity path. Key both sides by identity so that a
+    # layout move alone never reads as a changed statement; kind and signature
+    # are still compared byte for byte.
+    old_signatures = {
+        (library_identity_path(module), name): value
+        for (module, name), value in old_signatures.items()
+    }
+    new_signatures = {
+        (library_identity_path(module), name): value
+        for (module, name), value in new_signatures.items()
+    }
 
     reissues: list[dict] = []
     for review in reviews:

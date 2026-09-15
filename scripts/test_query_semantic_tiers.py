@@ -66,7 +66,7 @@ ATLAS_BACKED_FAMILY_COORDINATES = {
     "ray_separation": (
         "ErdosProblems.Erdos1041.no_newtonConnection_of_not_samePositiveRay",
         "lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
-        315,
+        334,
     ),
     "bounded_rise_coprimality": (
         "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail",
