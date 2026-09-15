@@ -235,6 +235,18 @@ Solve $t\equiv-i\pmod{m_i}$ by the Chinese remainder theorem, then add
 multiples of $\prod_i m_i$.
 \end{proof}
 
+\noindent Lemma~\ref{res:crt} matches each modulus $m_i$ to its own multiple
+$t+i$ inside a window of $B$ consecutive integers. Matchings of a set of
+integers to distinct multiples in an interval are the subject of
+Erd\H{o}s Problem~\#650, solved by van Doorn, Li and Tang: for every set $S$
+of $k$ positive integers, every open interval of length $2\max S$ contains
+distinct multiples of at least $\min(k,\lceil 2\sqrt{k}\,\rceil)$ elements of
+$S$, and this count is optimal \cite[Theorem~2.1]{vandoornlitang2026}. Their
+extremal construction uses the same Chinese remaindering for moduli that need
+not be pairwise coprime, with their Claim~3.2 supplying the divisibility of
+residue differences by greatest common divisors that the generalised theorem
+requires \cite[pp.~4--5]{vandoornlitang2026}.
+
 \begin{theorem}[bounded-rise obstruction]\label{res:barrier}
 Let $u_n\in\N$ tend to infinity with $u_{n+1}\le u_n+B$, for a fixed
 integer $B>0$. There is no infinite pairwise coprime family $m_i\ge2$
@@ -865,6 +877,10 @@ polynomial division.
   \href{https://arxiv.org/abs/2406.17593}{\emph{On several irrationality
   problems for Ahmes series}}, Acta Math. Hungar. \textbf{175} (2025),
   572--608; preprint arXiv:2406.17593v4.
+\bibitem{vandoornlitang2026} W.~van Doorn, Y.~Li and Q.~Tang,
+  \href{https://arxiv.org/abs/2603.28636}{\emph{Optimal bounds for an
+  Erd\H{o}s problem on matching integers to distinct multiples}},
+  preprint arXiv:2603.28636v1, 2026.
 \bibitem{bado2026} I.~O. Bado,
   \emph{Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics:
   Partial Progress on Erd\H{o}s Problem~\#243}, author-posted preprint,
