@@ -1673,7 +1673,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:374bbf363aa3c78623662931b06687b36e73c1c9615bd5d80d183c19ea408885",
+      "source_sha256": "sha256:d335f601d434f1302ff0a6acff2395583b7dcf2282ff5af7e7db727b916cd442",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
@@ -1726,67 +1726,67 @@
           "level": 2,
           "id": "reduction-and-stabilisation",
           "title": "Reduction and stabilisation",
-          "line": 203
+          "line": 205
         },
         {
           "level": 1,
           "id": "sec:transfer",
           "title": "Transfer to a reciprocal series",
-          "line": 242
+          "line": 244
         },
         {
           "level": 1,
           "id": "sec:mass",
           "title": "A scalar finite-mass criterion",
-          "line": 303
+          "line": 305
         },
         {
           "level": 1,
           "id": "sec:lcmrecords",
           "title": "Weighted first crossings of LCM records",
-          "line": 332
+          "line": 334
         },
         {
           "level": 1,
           "id": "sec:secondaryrate",
           "title": "Further consequences",
-          "line": 431
+          "line": 433
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining arithmetic estimate",
-          "line": 462
+          "line": 464
         },
         {
           "level": 4,
           "id": "formal-scope-and-supporting-record.",
           "title": "Formal scope and supporting record.",
-          "line": 512
+          "line": 514
         },
         {
           "level": 4,
           "id": "declarations.",
           "title": "Declarations.",
-          "line": 518
+          "line": 520
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 524
+          "line": 526
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 530
+          "line": 532
         }
       ],
-      "citations_rendered": 9,
+      "citations_rendered": 11,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:a7a8992334b867634e6fa19e3da25a3a2cb85bfb86e0c59c32c16c67defc3586",
-      "pdf_byte_count": 106806,
+      "pdf_sha256": "sha256:73ed10e13386aa2373a0cb4f397fca989946e0eb7039c4318eab8a968ed0848d",
+      "pdf_byte_count": 106351,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1809,7 +1809,7 @@
           {
             "id": "sec:open",
             "title": "The remaining arithmetic estimate",
-            "line": 462
+            "line": 464
           }
         ],
         "unresolved_count": 0
@@ -1852,7 +1852,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:26b347c447483d4ab58357267337cfee1e112947ac9a87a42ee35a6720b7bb73",
+      "source_sha256": "sha256:6c43b6044b33d35ae81c729660680d8adb4b8ef654ed2b1408aaf38236554649",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
@@ -2175,139 +2175,139 @@
           "level": 1,
           "id": "long243:sec:bounded",
           "title": "Excluding a bounded negative part",
-          "line": 1359
+          "line": 1361
         },
         {
           "level": 1,
           "id": "long243:sec:mass",
           "title": "Excluding finite normalised negative mass",
-          "line": 1411
+          "line": 1413
         },
         {
           "level": 1,
           "id": "long243:sec:open",
           "title": "Complements and further questions",
-          "line": 1452
+          "line": 1454
         },
         {
           "level": 2,
           "id": "global-height-and-old-factor-overlap",
           "title": "Global height and old-factor overlap",
-          "line": 1514
+          "line": 1516
         },
         {
           "level": 2,
           "id": "repair-entropy-across-a-recovery",
           "title": "Repair entropy across a recovery",
-          "line": 1524
+          "line": 1526
         },
         {
           "level": 2,
           "id": "the-direct-analytic-question",
           "title": "The direct analytic question",
-          "line": 1599
+          "line": 1601
         },
         {
           "level": 2,
           "id": "a-barrier-extension",
           "title": "A barrier extension",
-          "line": 1621
+          "line": 1623
         },
         {
           "level": 2,
           "id": "formalisation-targets",
           "title": "Formalisation targets",
-          "line": 1644
+          "line": 1646
         },
         {
           "level": 4,
           "id": "erd\u0151sstraus.",
           "title": "Erd\u0151s\u2013Straus.",
-          "line": 1648
+          "line": 1650
         },
         {
           "level": 4,
           "id": "duverney.",
           "title": "Duverney.",
-          "line": 1654
+          "line": 1656
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 1660
+          "line": 1662
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 1664
+          "line": 1666
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 1672
+          "line": 1674
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 1678
+          "line": 1680
         },
         {
           "level": 1,
           "id": "long243:app:index",
           "title": "Guide to the formal sources",
-          "line": 1684
+          "line": 1686
         },
         {
           "level": 1,
           "id": "long243:app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 1690
+          "line": 1692
         },
         {
           "level": 1,
           "id": "sec:erdos-243-complete-family-map",
           "title": "Complete result-family map",
-          "line": 1718
+          "line": 1720
         },
         {
           "level": 2,
           "id": "centered-state-dynamics",
           "title": "Centered state dynamics",
-          "line": 1724
+          "line": 1726
         },
         {
           "level": 2,
           "id": "negative-mass-recovery",
           "title": "Negative mass recovery",
-          "line": 1750
+          "line": 1752
         },
         {
           "level": 2,
           "id": "bounded-negative-exclusion",
           "title": "Bounded negative exclusion",
-          "line": 1776
+          "line": 1778
         },
         {
           "level": 2,
           "id": "bounded-rise-coprimality",
           "title": "Bounded rise coprimality",
-          "line": 1796
+          "line": 1798
         },
         {
           "level": 2,
           "id": "negative-orbit-no-go",
           "title": "Negative orbit no go",
-          "line": 1820
+          "line": 1822
         }
       ],
-      "citations_rendered": 37,
+      "citations_rendered": 39,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:743c0fa21dee299f88a2df6df20a4c0f75cbc9d5145b18e19bb55c1c3efc3006",
-      "pdf_byte_count": 289908,
+      "pdf_sha256": "sha256:b4773cd231ff44c82cfa378c2f9a8d5d9b0d494450ef8ade41f9edee24d32576",
+      "pdf_byte_count": 289823,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2320,17 +2320,17 @@
           {
             "id": "long243:sec:bounded",
             "title": "Excluding a bounded negative part",
-            "line": 1359
+            "line": 1361
           },
           {
             "id": "long243:sec:open",
             "title": "Complements and further questions",
-            "line": 1452
+            "line": 1454
           },
           {
             "id": "sec:erdos-243-complete-family-map",
             "title": "Complete result-family map",
-            "line": 1718
+            "line": 1720
           }
         ],
         "unresolved_count": 0
