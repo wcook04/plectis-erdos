@@ -42,7 +42,7 @@ Corollary <a href="#res:originalbounded" data-reference-type="ref" data-referen
 
 #### The obstruction.
 
-Clear the rational reciprocal tail as $`C_n/D_n`$. On a Sylvester tail, $`D_n=(a_n-1)C_n`$; the integer error $`E_n=D_n-(a_n-1)C_n`$ measures the failure of this identity. Its update $`C_{n+1}=C_n-E_n`$ turns a bound on negative error into a bound on upward increments. Small increments alone are insufficient. The arithmetic input is that, after the common divisor stabilises, every old multiplier must remain coprime to every later numerator. The Chinese remainder theorem then produces a block of forbidden heights that no permitted jump can cross. A numerator tending to infinity would have to cross it. Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">6</a> adapts this crossing argument when only jumps setting new records are charged.
+Clear the rational reciprocal tail as $`C_n/D_n`$. On a Sylvester tail, $`D_n=(a_n-1)C_n`$; the integer error $`E_n=D_n-(a_n-1)C_n`$ measures the failure of this identity. Its update $`C_{n+1}=C_n-E_n`$ turns a bound on negative error into a bound on upward increments. Small increments alone are insufficient. The arithmetic input is that, after the common divisor stabilises, every old multiplier must remain coprime to every later reduced numerator. The Chinese remainder theorem then produces a block of forbidden heights that no permitted jump can cross. A numerator tending to infinity would have to cross it. Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">6</a> adapts this crossing argument when only jumps setting new records are charged.
 
 <div class="samepage">
 
@@ -64,11 +64,11 @@ Write $`\operatorname{ctr}(a,D,C)=D-(a-1)C`$. The following integer-state theore
 
 6.  **normalised vanishing*: for every $`K`$ there is an $`N`$ with $`K\,|E_n|<C_n`$ for all $`n\ge N`$.*
 
-*Then $`E_n=0`$ for all sufficiently large $`n`$: this is the [bounded-negative-part rigidity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265).*
+*Then $`E_n=0`$ for all sufficiently large $`n`$: this is the [eventual bounded-negative rigidity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2352).*
 
 </div>
 
-The eventual form follows by shifting past the centring and lower-bound thresholds; its exact source is linked in the formal-scope paragraph below.
+The Lean proof shifts the orbit past the centring and lower-bound thresholds and applies the [bounded-negative-part rigidity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265), with centring and bound at every index.
 
 </div>
 
