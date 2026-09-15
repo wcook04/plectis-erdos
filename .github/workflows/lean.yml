@@ -847,6 +847,15 @@ jobs:
       - name: Test publication digest restamp refusals
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_contract_restamp.py
+      # Those two digests are independent, so a rebased .tex and a PDF built
+      # before the rebase can both be restamped. paper/build-manifest.json
+      # records the inputs each committed PDF was compiled from. These fixtures
+      # keep its refusals, and the PDF sync that writes it, honest.
+      - name: Test paper build manifest refusals
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: |
+          python3 scripts/test_paper_build_manifest.py
+          python3 scripts/test_sync_publication_pdfs.py
       - name: Test exact claim packet boundaries
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_claim_packet_boundaries.py
