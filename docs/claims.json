@@ -19811,7 +19811,7 @@
         {
           "name": "no_boundedRise_of_tailAvoidance",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 897
+          "line": 903
         }
       ]
     },
@@ -19829,7 +19829,7 @@
         {
           "name": "no_eventuallyPeriodicNegative_orbit",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 796
+          "line": 802
         }
       ]
     },
@@ -19847,7 +19847,7 @@
         {
           "name": "no_cofinallyBoundedNegative_of_normalizedVanishes",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1748
+          "line": 1754
         }
       ]
     },
