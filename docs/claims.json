@@ -15522,7 +15522,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 564
+        "line": 569
       }
     },
     {
@@ -15534,7 +15534,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 570
+        "line": 575
       }
     },
     {
@@ -15546,7 +15546,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 579
+        "line": 584
       }
     },
     {
