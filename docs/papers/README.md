@@ -334,7 +334,7 @@ Start here (selected for this guide): [Support irrationality and its proof mecha
 
 Start here (selected for this guide): [The problem, and what is settled](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [The rank phase transition](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [Complete result-family map](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
-### For Erdős #269, which two-prime running-LCM sums are transcendental, what infinite-rank structure is proved at three primes, and which escape condition remains open?
+### For Erdős #269, what infinite-rank structure is proved at three primes, which two-prime running-LCM sums are transcendental, and which escape condition remains open?
 
 **No Finite Separable Representation at Three Prime Generators**
 

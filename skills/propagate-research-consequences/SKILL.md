@@ -135,7 +135,10 @@ before restamping its publication record. Refresh downstream coordinates and
 fingerprints after the source and full-text export are final. For an assembled
 manuscript, reanchor citation and excerpt records in the edited fragments as
 well as the assembled output. Preserve an excerpt hash when only its location
-moved; if its text changed, investigate the change before restamping it. Use
+moved; if its text changed, investigate the change before restamping it.
+`python3 scripts/reanchor_source_attributions.py` applies this rule to the
+source-attribution registry: a dry run prints every recomputed anchor for
+review, and `--write` saves the registry once every anchor resolves. Use
 `python3 scripts/refresh_projections.py` for the registered projection chain,
 then inspect the affected query response. If a required export owner is absent
 from the clone, record that exact unfinished consumer for the maintainer;

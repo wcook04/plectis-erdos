@@ -103,14 +103,14 @@ def validate_range(path: Path, row: dict[str, Any], *, label: str) -> tuple[int,
         raise AttributionError(f"{label}: line_end must be >= line_start")
     lines=file_text(path).splitlines(); count=len(lines)
     if end > count:
-        raise AttributionError(f"{label}: line range exceeds {path}")
+        raise AttributionError(f"{label}: line range exceeds {path}; after an edit to that file run python3 scripts/reanchor_source_attributions.py")
     excerpt = "\n".join(lines[start - 1:end]) + "\n"
     if "expected_text" in row and (not isinstance(row["expected_text"], str) or row["expected_text"] not in excerpt):
-        raise AttributionError(f"{label}: expected_text is absent from selected lines")
+        raise AttributionError(f"{label}: expected_text is absent from selected lines; after an edit to that file run python3 scripts/reanchor_source_attributions.py")
     expected_digest = row.get("excerpt_sha256")
     actual_digest = "sha256:" + hashlib.sha256(excerpt.encode()).hexdigest()
     if expected_digest is not None and expected_digest != actual_digest:
-        raise AttributionError(f"{label}: excerpt_sha256 does not match selected lines")
+        raise AttributionError(f"{label}: excerpt_sha256 does not match selected lines; after an edit to that file run python3 scripts/reanchor_source_attributions.py")
     return start, end
 
 
@@ -404,7 +404,7 @@ def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str,
                 lean_candidates.append(candidate)
     candidate_coordinates={(c["path"],c["line_start"],c["line_end"]) for c in lean_candidates}
     orphan_reviews=sorted(key for key in lean_reviews if key not in candidate_coordinates)
-    if orphan_reviews: raise AttributionError(f"Lean reviews do not match current lexical candidates: {orphan_reviews[:5]}")
+    if orphan_reviews: raise AttributionError(f"Lean reviews do not match current lexical candidates: {orphan_reviews[:5]}; if a Lean edit moved them run python3 scripts/reanchor_source_attributions.py")
     enriched = []
     for source in sources:
         row = {field: source[field] for field in sorted(SOURCE_FIELDS) if field in source}
