@@ -11,7 +11,7 @@ The total smooth-series reindexing is supplied separately in
 `PaperR7SeriesIdentification`; nothing here silently identifies a formal tsum
 with the smooth-number series without that bridge.
 
-Validation: authored, not compiled. No admissions.
+No admissions.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

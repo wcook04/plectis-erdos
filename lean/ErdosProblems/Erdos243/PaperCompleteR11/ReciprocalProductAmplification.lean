@@ -3,7 +3,7 @@ import ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity
 /-!
 # Removing the prime-size loss
 
-Authored candidate, UNRUN. These proofs use only a finite product inequality:
+These proofs use only a finite product inequality:
 `(1 + sum x) * product (1 - x) ≤ 1` for `0 ≤ x ≤ 1`.
 Consequently divergence of the reciprocal-prime sum supplies finite CRT unions
 of density as close to one as desired. This is a genuine analytic hypothesis

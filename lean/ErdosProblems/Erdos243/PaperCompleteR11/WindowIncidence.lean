@@ -4,7 +4,7 @@ import Mathlib
 /-!
 # Window incidences and quantitative exceptional density
 
-Authored candidate, UNRUN. Every hit is charged to an exceptional index together
+Every hit is charged to an exceptional index together
 with its offset. Overlapping windows therefore cost at most their length, not
 the number of residue classes. No density assumption is hidden in the counting
 lemmas. `LowerDensityAtLeast` uses the usual epsilon / eventual-prefix definition

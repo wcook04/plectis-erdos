@@ -10,7 +10,7 @@ assembly names every clause printed under its paper label. These conjunctions
 are intentionally explicit: a nearby individual helper is not silently counted
 as an end-to-end paper theorem.
 
-Validation: authored, not compiled. Dependencies are copied unchanged from the
+Dependencies are copied unchanged from the
 packet and retain their original evidence status. No admissions.
 -/
 

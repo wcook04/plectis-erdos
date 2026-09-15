@@ -16,7 +16,7 @@ Nat.uniformBell_mul_eq. The gcd of an infinite family is represented by its
 universal property (all common divisors), avoiding an arbitrary choice of a
 generator in Z. This is the exact gcd assertion, not a weaker bound.
 
-STATUS: uncompiled proof candidate. No new axioms, no proof placeholders.
+No new axioms, no proof placeholders.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 

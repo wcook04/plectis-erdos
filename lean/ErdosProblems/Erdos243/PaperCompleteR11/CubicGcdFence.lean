@@ -4,7 +4,7 @@ import ErdosProblems.Erdos243.ReciprocalTailRigidity
 /-!
 # A uniform four-window gcd reduction for cubic profiles
 
-Authored candidate, UNRUN. The reduction works below density `1/4`, not only
+The reduction works below density `1/4`, not only
 under density zero. Four agreeing values give the exact third difference;
 every earlier common divisor divides that difference. No upper growth estimate,
 record restart, denominator reduction, or prime-existence hypothesis is needed.

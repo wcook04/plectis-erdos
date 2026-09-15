@@ -1,7 +1,7 @@
 import ErdosProblems.Erdos269.CertificateRangeR11
 
 /-! R12 shape-authenticated checkers and scope counterexamples.
-These are complete candidate proof bodies, all UNRUN. The original total-getD
+The original total-getD
 soundness theorem is not false: the extra checks authenticate array coverage,
 which is a distinct claim. No axiom and no native proof admission is added. -/
 namespace ErdosProblems.Erdos269.PaperR12

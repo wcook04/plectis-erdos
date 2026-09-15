@@ -5,7 +5,7 @@ import Mathlib.Order.Filter.AtTopBot.Basic
 /-!
 # A schedule for an arbitrary divergent envelope (round 8)
 
-New, UNCOMPILED source. The schedule is no longer an input hypothesis.
+The schedule is no longer an input hypothesis.
 It constructs increasing centres, a cofinal level, amplitude bounds and
 an integer next-site overlap inequality. The separate module
 `SparseScheduleDensityR8` supplies uniform counting from this schedule.

@@ -5,7 +5,7 @@ import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
 /-!
 # Quantitative counting for the actual envelope-driven sparse schedule
 
-Candidate source, UNRUN. The rate is derived from explicit readiness
+The rate is derived from explicit readiness
 thresholds, not from upper Banach density zero. The extended-window theorem
 covers [X,2X+m), including all right-edge coordinates of an m-block.
 -/

@@ -4,7 +4,7 @@ import Mathlib.Data.ZMod.QuotientRing
 /-!
 # Combining all finite good-prime obstructions
 
-Authored candidate, UNRUN. The Chinese remainder equivalence is constructed by
+The Chinese remainder equivalence is constructed by
 mathlib, and the cardinality is proved by an explicit equivalence of the
 avoiding subtype with a product of punctured residue fields. No independence
 or density formula is supplied as a hypothesis. Moduli may be any positive

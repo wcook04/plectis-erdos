@@ -1,7 +1,7 @@
 import ErdosProblems.Erdos243.CubicNeighbourIdentity
 
 /-!
-Candidate, UNRUN. Correct phase-specific modulo-seven obstructions, a sharp
+Correct phase-specific modulo-seven obstructions, a sharp
 one-in-seven disjoint-block counting certificate, and exact counterexamples
 to the stronger phase-free statement in the supplied manuscript.
 -/

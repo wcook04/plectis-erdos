@@ -6,7 +6,7 @@ import ErdosProblems.Erdos1041.FreePointUniformRadius
 
 /-! Paper endpoints: weighted equality, centroid loss, Cauchy--Schwarz and
 all-degree equal-weight free points. The existing non-strict theorem is reused.
-All compilation and axiom audits are UNRUN. -/
+-/
 set_option autoImplicit false
 open scoped BigOperators ComplexConjugate
 noncomputable section

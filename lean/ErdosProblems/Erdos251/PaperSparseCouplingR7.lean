@@ -3,7 +3,7 @@ import Mathlib
 /-!
 # Finite block coupling for the sparse-rationalisation proposition
 
-NEW uncompiled proof source. These estimates discharge the finite
+These estimates discharge the finite
 combinatorial/statistical part of `res:sparserationalisation`; they do NOT
 construct the sparse support or prove its analytic density bounds. The
 coverage file therefore keeps the displayed proposition incomplete.

@@ -7,7 +7,7 @@ import Mathlib.Analysis.SpecificLimits.Normed
 /-!
 # Interval filling on the constructed sparse centres
 
-UNCOMPILED round-8 source. Unlike the inherited feedback theorem, the
+Round-8 source. Unlike the inherited feedback theorem, the
 capacity, overlap and vanishing inputs here are proved for a schedule
 actually constructed from the arbitrary divergent envelope.
 

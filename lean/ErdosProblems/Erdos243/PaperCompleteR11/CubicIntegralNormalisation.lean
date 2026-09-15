@@ -4,7 +4,7 @@ import Mathlib.Data.Nat.Choose.Basic
 /-!
 # Integral normalisation at the quarter-density threshold
 
-Authored candidate; Lean and axiom audits UNRUN. The integral coefficients are
+The integral coefficients are
 constructed from one clean four-window. In particular they are conclusions,
 not hidden hypotheses in an arbitrary rational-profile statement.
 - A non-integral constant or non-integral third difference gives density >= 1/4.

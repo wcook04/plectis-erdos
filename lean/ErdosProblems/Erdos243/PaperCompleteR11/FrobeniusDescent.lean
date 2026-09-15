@@ -3,7 +3,7 @@ import ErdosProblems.Erdos243.CubicNeighbourIdentity
 /-!
 # The algebraic descent after a good Frobenius prime is supplied
 
-UNRUN. No prime-existence theorem is declared here. The ordinary number-field
+No prime-existence theorem is declared here. The ordinary number-field
 specialisation argument, its finite exceptional set, and the missing formal
 Chebotarev dependency are stated explicitly in analytic_proofs.md.
 -/
