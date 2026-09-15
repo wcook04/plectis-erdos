@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:3b965c344cb18dbc5693bc101e388419ced3e95e53c2db4dae0c4d90640bf009",
+    "docs/claims.json": "sha256:c2bc9120a135a9f5ea3c536200f1aa801a86b3e7d283b1574995a29318573513",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
-    "docs/publication_contract.json": "sha256:01a6d6fac7627242d871c56443e1037a5b1e7faf077a843987c467ded25fe63b",
+    "docs/publication_contract.json": "sha256:1a8ff8f09db6d1db08897b012875f0dac06c23ed86f7959a23ee0256d7bab6ae",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:8be98aa8c63f600b5353cfdee8ab578336e5883221b50e37ad4ed5503c1acca2",
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 958,
+        "line": 920,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 620,
+        "line": 632,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 972,
+        "line": 934,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 981,
+        "line": 943,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 991,
+        "line": 953,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },

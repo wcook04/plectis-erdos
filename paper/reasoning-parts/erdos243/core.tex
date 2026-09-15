@@ -1996,6 +1996,19 @@ then add multiples of $\prod_i m_i$ to pass the bound.
 \lword{Erdos243/ReciprocalTailRigidity.lean}{833}{exists_shifted_consecutiveMultiples}{shifted
 consecutive multiples}.
 
+\noindent Lemma~\ref{long243:res:crt} matches each modulus $m_i$ to its own
+multiple $t+i$ inside a window of $B$ consecutive integers. Matchings of a set
+of integers to distinct multiples in an interval are the subject of
+Erd\H{o}s Problem~\#650, solved by van Doorn, Li and Tang: for every set $S$
+of $k$ positive integers, every open interval of length $2\max S$ contains
+distinct multiples of at least $\min(k,\lceil 2\sqrt{k}\,\rceil)$ elements of
+$S$, and this count is optimal \cite[Theorem~2.1]{vandoornlitang2026}. Their
+extremal construction uses the same Chinese remaindering for moduli that need
+not be pairwise coprime, with their Claim~3.2 supplying the divisibility of
+residue differences by greatest common divisors that the generalised theorem
+requires \cite[pp.~4--5]{vandoornlitang2026}. The first-crossing argument
+below needs only the pairwise coprime case.
+
 \begin{example}[a block of three consecutive multiples]\label{long243:ex:crt}
 Take $B=3$ and $(m_0,m_1,m_2)=(3,4,5)$.  The congruences $t\equiv0\pmod3$,
 $t\equiv3\pmod4$ and $t\equiv3\pmod5$ hold exactly when $t\equiv3\pmod{60}$.
