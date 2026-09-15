@@ -3152,8 +3152,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 712,
-          "line_end": 716,
+          "line_start": 748,
+          "line_end": 752,
           "excerpt_sha256": "sha256:9d2bb989c3eea3bf5a65a49fe1b886c24712e515ff22e273c2459b9c97c8d2f4"
         },
         {
@@ -6093,8 +6093,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1197,
-          "line_end": 1199,
+          "line_start": 1249,
+          "line_end": 1251,
           "expected_text": "\\bibitem{erdos1948}",
           "excerpt_sha256": "sha256:12e925bb796b6215db708d25b5d1ab1c5640c351e7f3683e2c91ae968206b259"
         },
@@ -6138,8 +6138,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 712,
-          "line_end": 719,
+          "line_start": 748,
+          "line_end": 755,
           "excerpt_sha256": "sha256:216cd24cebd7dc2ee03b275075ee12c235c59319f44725a34321a358ce72c354"
         },
         {
@@ -6488,8 +6488,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1190,
-          "line_end": 1197,
+          "line_start": 1242,
+          "line_end": 1249,
           "expected_text": "\\bibitem{kovactao}",
           "excerpt_sha256": "sha256:47be7d5967eb02b0cfe2c4cc13e8e6064ec86800b2070cfc29c580a862eb9aa9"
         },
@@ -6579,9 +6579,9 @@
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 657,
-          "line_end": 669,
-          "excerpt_sha256": "sha256:36db42298b5655acf70336567bd89dc8fc08cdf838f4d34e2d639ee6ae00656c"
+          "line_start": 692,
+          "line_end": 705,
+          "excerpt_sha256": "sha256:b6d42331242112d32c82f0792671503ef38b50d4552f68a585be8fd618262030"
         },
         {
           "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
@@ -6712,8 +6712,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 718,
-          "line_end": 722,
+          "line_start": 754,
+          "line_end": 758,
           "excerpt_sha256": "sha256:b7df2e208b87bda4ef0e65b64ed7fc248f55353da466b2fb43ae947c666e4bdd"
         },
         {
@@ -7337,104 +7337,104 @@
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "- **Additional open examples:** printed p. 223 (PDF p. 2) says the recurrence",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 44,
-          "line_end": 44,
+          "line_start": 47,
+          "line_end": 47,
           "excerpt_sha256": "sha256:c44ea5ed2a27983811313b0ac51387dc29e4f99212e927694dde901248fcb3a8"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "- **Coefficient identity and congruences:** printed pp. 223–224 (PDF pp. 2–3),",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 48,
-          "line_end": 48,
+          "line_start": 51,
+          "line_end": 51,
           "excerpt_sha256": "sha256:f7680a8550ad0bfe6270a544445d03f6099dbf89cbfd8c3bb90bf7e26a062ce6"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "- **Long zero block and non-termination:** printed pp. 224–225 (PDF pp. 3–4),",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 53,
-          "line_end": 53,
+          "line_start": 56,
+          "line_end": 56,
           "excerpt_sha256": "sha256:42837f2d218a7fa39bf9dbd1a3c96a6cdc5a935580a0556250a0fb1c9d9a5524"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "theorem.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 57,
-          "line_end": 57,
+          "line_start": 60,
+          "line_end": 60,
           "excerpt_sha256": "sha256:193ae9befb617b81329f19d8eaf249272b5418985dc436aeeb25c8e05418c68d"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "- **Closing boundary:** printed p. 226 (PDF p. 5) says the proof without the",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 58,
-          "line_end": 58,
+          "line_start": 61,
+          "line_end": 61,
           "excerpt_sha256": "sha256:4c5557a1d47bbe339202d52cd2ab4735fc8b60cf94fa1aac4a5e7f766e281e12"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "- Attribution to Erdős of the irrationality theorem for pairwise-coprime",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 68,
-          "line_end": 68,
+          "line_start": 72,
+          "line_end": 72,
           "excerpt_sha256": "sha256:aef52390b576e0ce11fb1d3b3491386cb319d22bd6a16f75aa198941e71e7ed9"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "`t >= 2`, printed p. 222 with proof on pp. 223–225.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 70,
-          "line_end": 70,
+          "line_start": 74,
+          "line_end": 74,
           "excerpt_sha256": "sha256:cdfd96c04b3739df4fd85902f1d482b23c5a254fb715e270794075832fc50a9a"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "long-base-`t` zero-block mechanism in the proof, printed pp. 223–225.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 72,
-          "line_end": 72,
+          "line_start": 76,
+          "line_end": 76,
           "excerpt_sha256": "sha256:34d9a4820749bc72bf30d31098f508195934fab46b8da160fc8b9b09848bb83d"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "proved theorem has pairwise-coprime support and `sum 1/n_i < infinity`.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 82,
-          "line_end": 82,
+          "line_start": 86,
+          "line_end": 86,
           "excerpt_sha256": "sha256:f6802e9f02f23657e67df511dbf8a46577d1e6e21ab69558cdec581ed1fda925"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "weaker growth condition as a theorem; the paper supplies no proof for those",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 84,
-          "line_end": 84,
+          "line_start": 88,
+          "line_end": 88,
           "excerpt_sha256": "sha256:48a0024eaf0ac99ae761e175badcae4534132b0a464b7ce1fa194fc39a62d582"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "- Any theorem about the Euler-totient series or the #249 totient kernel.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 89,
-          "line_end": 89,
+          "line_start": 93,
+          "line_end": 93,
           "excerpt_sha256": "sha256:b8c7847db9960dd3022cb29f448c96fcbfb9fdc2835b3d2d5a233501f6c1bf52"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "Comparator theorem names, totient-kernel rank/basis statements, Erdős #249,",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 94,
-          "line_end": 94,
+          "line_start": 98,
+          "line_end": 98,
           "excerpt_sha256": "sha256:8d2df853efcd2ca7b6390b196df23d8eac46636392edd9f5a9adb4d37f236466"
         },
         {
           "url": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
           "locator": "and a proof of universal #257; none occurs. The explicit p. 222 theorem and",
           "evidence_path": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
-          "line_start": 95,
-          "line_end": 95,
+          "line_start": 99,
+          "line_end": 99,
           "excerpt_sha256": "sha256:51bd4bd0c026f96e329085396a41b92c0cf197576d2729c3408b3c4bcf9f4a8a"
         }
       ],
@@ -7448,10 +7448,10 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1206,
-          "line_end": 1212,
+          "line_start": 1258,
+          "line_end": 1267,
           "expected_text": "\\bibitem{erdos1968}",
-          "excerpt_sha256": "sha256:75c5e54b31e767d68ef5250e231e166942d7b0e6fb32973862408799b26f09cd"
+          "excerpt_sha256": "sha256:ad5ccfbcda340d6e818982f18447e527e69cce95965a85312a1c865b3344b858"
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
@@ -7475,8 +7475,8 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 129,
-          "line_end": 133,
+          "line_start": 132,
+          "line_end": 136,
           "excerpt_sha256": "sha256:97fb4fbaf28c47d99e417800ae4398b093aab3336d256f2b9534d0f93cf58c8c"
         },
         {
@@ -7484,6 +7484,18 @@
           "line_start": 266,
           "line_end": 270,
           "excerpt_sha256": "sha256:b20052cc9aac13a39d09551db2a071d9d9e04bcb94b0e4006e7679ee2329cd33"
+        },
+        {
+          "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "line_start": 138,
+          "line_end": 144,
+          "excerpt_sha256": "sha256:ab7fd74fe0eb9c94e53e674e98846dcb41494a1ab47a6b8bed5e364fd738bfb5"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos257/a257_front.tex",
+          "line_start": 26,
+          "line_end": 33,
+          "excerpt_sha256": "sha256:989352be6560cb02802aeb2a564cbd8e365d31c7cd9755f8dcb93af529758e4f"
         }
       ],
       "relation": "Attribution to Erdős of the irrationality theorem for pairwise-coprime supports with convergent reciprocal support sum, at every integer base `t >= 2`, printed p. 222 with proof on pp. 223–225. - The divisor-count coefficient identity, congruence construction, and long-base-`t` zero-block mechanism in the proof, printed pp. 223–225. - The paper's explicit record of the unproved pairwise-coprimality removal, the unresolved all-primes case, and the other open examples, printed pp. 222–223 and 226. - The publication identity, official retrieval route, exact digest, and page-level locators recorded above. The docstring explicitly identifies the pairwise-coprime support theorem as Erdős (1968) and states the hypotheses retained by the Lean theorem. Corrected attribution: this section develops the pairwise-coprime support theorem whose explicit theorem at lines 10768–10779 and the primary source closure identify as Erdős (1968), not the 1948 full-support Lambert paper.",
@@ -8642,8 +8654,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 657,
-          "line_end": 665,
+          "line_start": 692,
+          "line_end": 700,
           "excerpt_sha256": "sha256:5bf648df15310f8ec341bdeaddd6e394ffc24bab4a40f501ad5003ff02989a26"
         }
       ],
@@ -9402,21 +9414,21 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1182,
-          "line_end": 1190,
+          "line_start": 1234,
+          "line_end": 1242,
           "expected_text": "\\bibitem{taoteravainen2025}",
           "excerpt_sha256": "sha256:9bd6a4ac3ce8d989e64803da969a9cc0208274609e21b3e829c8b13703504f4e"
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 607,
-          "line_end": 615,
-          "excerpt_sha256": "sha256:18a59cdf6b52b54bbd6be4cc591e3b575bfeceaf4254f9ec9b4e0a5540eb1da7"
+          "line_start": 640,
+          "line_end": 651,
+          "excerpt_sha256": "sha256:dfca4813823f9e6877ab989e482075886ea1c687d9cca66733d6781c929b1cd1"
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 1218,
-          "line_end": 1228,
+          "line_start": 1254,
+          "line_end": 1264,
           "excerpt_sha256": "sha256:f5fb8a3b745a2c9cdda458fb09318e454fffd7f481f16ee58afae4be79a97d8a"
         },
         {
@@ -9577,129 +9589,137 @@
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- **Main irrationality mechanism:** PDF pp. 2–3, Theorem 1.1, assumes the",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 33,
-          "line_end": 33,
+          "line_start": 38,
+          "line_end": 38,
           "excerpt_sha256": "sha256:53db315848a0650c3e7e8ef8d2eb015f391e91dc8acc715dd75f83a6703d8d1d"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "PDF p. 3, Theorem 1.2, lifts this to linear dependence among finitely",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 37,
-          "line_end": 37,
+          "line_start": 42,
+          "line_end": 42,
           "excerpt_sha256": "sha256:c509a86461692334f38242d7738fa4fcefd4887180e64842008387646a0aa95f"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- **Support-family definitions:** PDF p. 3, equation (1.11), defines",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 39,
-          "line_end": 39,
+          "line_start": 44,
+          "line_end": 44,
           "excerpt_sha256": "sha256:fa8a3982e9d0bef7c8eade4d85fa5e47f6e871bac089fc40e9c571e02f23972f"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- **Exact #257-relevant corollary:** PDF p. 4, Corollary 1.2, states that if",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 43,
-          "line_end": 43,
+          "line_start": 54,
+          "line_end": 54,
           "excerpt_sha256": "sha256:22fe03907ebb824e44972a9f422ba3c2e8abc9d3280086176812cb560f935a41"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- **Concrete squarefree family:** PDF p. 4, Example 1.1, writes the",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 48,
-          "line_end": 48,
+          "line_start": 65,
+          "line_end": 65,
           "excerpt_sha256": "sha256:64e9a3d92f08fd7b69e3bd26e57f772c3f775b61948907e6ffa6bb5de579258c"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "linear independence. The proof of Corollary 1.2 is on PDF pp. 10–11;",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 51,
-          "line_end": 51,
+          "line_start": 68,
+          "line_end": 68,
           "excerpt_sha256": "sha256:6d535738f9370c007d1ee230f584a091b119db4b187e7c14bff38da842f27d77"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- **Conjectural context:** PDF p. 4 recalls the Erdős–Graham conjecture for",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 54,
-          "line_end": 54,
+          "line_start": 71,
+          "line_end": 71,
           "excerpt_sha256": "sha256:b04e71ed5320eeeb4dee28143dc03358885f46a8a935ed93ea15610d2b320199"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "arbitrary increasing supports and says Corollary 1.2 gives irrationality",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 55,
-          "line_end": 55,
+          "line_start": 72,
+          "line_end": 72,
           "excerpt_sha256": "sha256:fc48aa6569fde70033f18a7209747a6281058ba630b3d29dd5a9dc7f6c5daed6"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- **End matter:** PDF p. 11 records the references and acknowledgments,",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 58,
-          "line_end": 58,
+          "line_start": 75,
+          "line_end": 75,
           "excerpt_sha256": "sha256:e3f90856577cbbfb3a10f842bb97f09cc4eb3e79509875d4d78aa392d8c41434"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- Attribution to Duverney and Tachiya of the linear-independence theorem for",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 66,
-          "line_end": 66,
+          "line_start": 83,
+          "line_end": 83,
           "excerpt_sha256": "sha256:f735652c1434a44d5aee02eff1e4eed7a81ca09f6d3dd58de9cee223dfc9b73a"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
-          "locator": "Lambert series over `F_s(E)` under `|q|^L <= s`, PDF p. 4, Corollary 1.2,",
+          "locator": "Lambert series over `F_s(E)` under `|q| L <= s`, PDF p. 4, Corollary 1.2,",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 67,
-          "line_end": 67,
-          "excerpt_sha256": "sha256:ce9d6362341d84851a0b7e8e801991443980b055298d063cb9be86cb39ce20d8"
+          "line_start": 84,
+          "line_end": 84,
+          "excerpt_sha256": "sha256:54924c0f3d8a9377ca608b8a78eebdf0ba82cebb64ce8e0c5aebd428b3898c36"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "independent family at bases `2^j`, PDF p. 4, Example 1.1.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 70,
-          "line_end": 70,
+          "line_start": 90,
+          "line_end": 90,
           "excerpt_sha256": "sha256:2db9c9823bc5a03e10dfd54a099b3eef40f6bfff308a4a3b7966ba22f1073bd2"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "the specialisation applicable, PDF pp. 3–4 and 10–11.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 72,
-          "line_end": 72,
+          "line_start": 92,
+          "line_end": 92,
           "excerpt_sha256": "sha256:6e27b42d630508d4ad7f7f434da90b176cd22bdadea34430fcab1bd49ff3085d"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "- Any theorem about the Euler-totient series or the #249 totient kernel.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 85,
-          "line_end": 85,
+          "line_start": 105,
+          "line_end": 105,
           "excerpt_sha256": "sha256:b8c7847db9960dd3022cb29f448c96fcbfb9fdc2835b3d2d5a233501f6c1bf52"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "Comparator theorem names, totient-kernel rank/basis statements, Erdős #249,",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 92,
-          "line_end": 92,
+          "line_start": 112,
+          "line_end": 112,
           "excerpt_sha256": "sha256:8d2df853efcd2ca7b6390b196df23d8eac46636392edd9f5a9adb4d37f236466"
         },
         {
           "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
           "locator": "the `q=2`, `s=2`, `ell=1` specialisation above, not a universal-base theorem.",
           "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
-          "line_start": 94,
-          "line_end": 94,
+          "line_start": 114,
+          "line_end": 114,
           "excerpt_sha256": "sha256:03854e89639d1a0e5edb427a44656348414de43a768117d0a1e70e6837464615"
+        },
+        {
+          "url": "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
+          "locator": "- **Index selection by averaging:** PDF pp. 5–6, Section 2, proof of",
+          "evidence_path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
+          "line_start": 48,
+          "line_end": 48,
+          "excerpt_sha256": "sha256:9387367ef5641bd0b2f9d14527a6b46c9c800b709401a44096b40032c0d489c5"
         }
       ],
       "artifact_links": [
@@ -9712,21 +9732,21 @@
         },
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1172,
-          "line_end": 1182,
+          "line_start": 1210,
+          "line_end": 1225,
           "expected_text": "\\bibitem{duverneytachiya}",
-          "excerpt_sha256": "sha256:33655436858a2291a1f1e6883027a8a70317f263a270d001b36f7ac2f2c23dac"
+          "excerpt_sha256": "sha256:2709aab4a1ed5bcf9e76780349a649d3d43d9f1ec5125a7cecc5eadce27df86d"
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 607,
-          "line_end": 615,
-          "excerpt_sha256": "sha256:18a59cdf6b52b54bbd6be4cc591e3b575bfeceaf4254f9ec9b4e0a5540eb1da7"
+          "line_start": 640,
+          "line_end": 651,
+          "excerpt_sha256": "sha256:dfca4813823f9e6877ab989e482075886ea1c687d9cca66733d6781c929b1cd1"
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 712,
-          "line_end": 717,
+          "line_start": 748,
+          "line_end": 753,
           "excerpt_sha256": "sha256:574840882ce4400f3c704d39cf7123aa174fc3d5c18b3a6a8d254cae363c7601"
         },
         {
@@ -9746,9 +9766,33 @@
           "line_start": 383,
           "line_end": 387,
           "excerpt_sha256": "sha256:6149cf3feccb99f13e1dc7f422701f0657eb31bc70f59c9f26b0699391cec919"
+        },
+        {
+          "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "line_start": 115,
+          "line_end": 117,
+          "excerpt_sha256": "sha256:1feaacdba37f43f9c96e7c6a45e1ca87289d130ebe38f7fa18d2f87715ca2ac8"
+        },
+        {
+          "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "line_start": 335,
+          "line_end": 341,
+          "excerpt_sha256": "sha256:7dd0d8b8beeab740868cbfd3976ebd67b17b3b14fe028224267ba224243f1f5a"
+        },
+        {
+          "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "line_start": 729,
+          "line_end": 733,
+          "excerpt_sha256": "sha256:697bc76dfb08a6522b9b904bca48696ca7de30dda22d3a2a09931c3e07108c88"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos257/a257_front.tex",
+          "line_start": 295,
+          "line_end": 319,
+          "excerpt_sha256": "sha256:6bb6ee3e89f79566028b13a30d09ae06a616eb86ecadf1ff44369448a83b8514"
         }
       ],
-      "relation": "Attribution to Duverney and Tachiya of the linear-independence theorem for Lambert series over `F_s(E)` under `|q|^L <= s`, PDF p. 4, Corollary 1.2, with proof on pp. 10–11. - Attribution of the squarefree specialisation `F_2(primes)` and the independent family at bases `2^j`, PDF p. 4, Example 1.1. - The divisibility/growth hypotheses and the support construction that make the specialisation applicable, PDF pp. 3–4 and 10–11. - The publication identity, official retrieval route, exact digest, and page-level locators recorded above.",
+      "relation": "Attribution to Duverney and Tachiya of the linear-independence theorem for Lambert series over `F_s(E)` under `|q| L <= s`, PDF p. 4, Corollary 1.2, with proof on pp. 10–11. - Attribution of the squarefree specialisation `F_2(primes)` and the independent family at bases `2^j`, PDF p. 4, Example 1.1. - The divisibility/growth hypotheses and the support construction that make the specialisation applicable, PDF pp. 3–4 and 10–11. - The publication identity, official retrieval route, exact digest, and page-level locators recorded above.",
       "verification_state": "existing_source_closure",
       "bibliography_keys": [
         {
@@ -10642,8 +10686,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 718,
-          "line_end": 722,
+          "line_start": 754,
+          "line_end": 758,
           "excerpt_sha256": "sha256:b7df2e208b87bda4ef0e65b64ed7fc248f55353da466b2fb43ae947c666e4bdd"
         }
       ],
@@ -11821,8 +11865,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 227,
-          "line_end": 231,
+          "line_start": 231,
+          "line_end": 235,
           "excerpt_sha256": "sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289"
         },
         {
@@ -11993,8 +12037,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 235,
-          "line_end": 239,
+          "line_start": 239,
+          "line_end": 243,
           "excerpt_sha256": "sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a"
         },
         {
@@ -12071,8 +12115,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 129,
-          "line_end": 133,
+          "line_start": 133,
+          "line_end": 137,
           "excerpt_sha256": "sha256:badb6c16b351f142047e83c1c8631e63319c82edabf1973f16a616deead6f4d6"
         },
         {
@@ -12221,8 +12265,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 267,
-          "line_end": 271,
+          "line_start": 271,
+          "line_end": 275,
           "excerpt_sha256": "sha256:02b7a5fb6ec6414051189b65c6c9f2a8dd2efedd07a902ef54cbbb4256862c97"
         }
       ],
@@ -12750,21 +12794,68 @@
         {
           "url": "https://arxiv.org/abs/2601.20743",
           "locator": "Primary public record metadata verified 2026-09-12."
+        },
+        {
+          "url": "https://arxiv.org/abs/2601.20743",
+          "locator": "- **Bound publication identity:** arXiv:2601.20743v1, dated 28 January 2026;",
+          "evidence_path": "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md",
+          "line_start": 13,
+          "line_end": 13,
+          "excerpt_sha256": "sha256:3a8da6e6756062db272c2ac8606e088e6f2e9d160c41c5c86b14c20038f272e3"
+        },
+        {
+          "url": "https://arxiv.org/abs/2601.20743",
+          "locator": "- **Averaged-tail mechanism:** PDF p. 3, equation (1.7), defines",
+          "evidence_path": "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md",
+          "line_start": 43,
+          "line_end": 43,
+          "excerpt_sha256": "sha256:cdc797a893ec5bf2ea2a1354c689b769998b412ea60d9653b7eabfac9ba176f3"
+        },
+        {
+          "url": "https://arxiv.org/abs/2601.20743",
+          "locator": "- **Counting hypotheses:** condition (iii) of Theorem 1 (PDF p. 3) and",
+          "evidence_path": "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md",
+          "line_start": 52,
+          "line_end": 52,
+          "excerpt_sha256": "sha256:1d429596d94833c8203b6983df7e027e49ea732a84d6c6d10fb606bc933c6341"
         }
       ],
       "artifact_links": [
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 667,
-          "line_end": 669,
-          "excerpt_sha256": "sha256:f7214f7373f32194984dbd99b9612819f784fb2ae4cfa2d8cfbe30e346c548a0"
+          "line_start": 702,
+          "line_end": 705,
+          "excerpt_sha256": "sha256:8f3549258b94df73f469cb3b206cbbe3516d68f335e2b4a0e92a0ddcc6d38873"
+        },
+        {
+          "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "line_start": 335,
+          "line_end": 359,
+          "excerpt_sha256": "sha256:373ff532af045159e1209a05fd97ba3a06545a57c2068e68cd24a26020a24f9d"
+        },
+        {
+          "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "line_start": 1225,
+          "line_end": 1234,
+          "expected_text": "\\bibitem{kanekosuzukitachiya}",
+          "excerpt_sha256": "sha256:e1c9a7e977d277168a7f609b18fd5aa7bb5def6e444adb9dd43868cc0b0e5692"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos257/a257_front.tex",
+          "line_start": 295,
+          "line_end": 319,
+          "excerpt_sha256": "sha256:6bb6ee3e89f79566028b13a30d09ae06a616eb86ecadf1ff44369448a83b8514"
         }
       ],
-      "relation": "Neighboring sparse-support criteria; not a theorem about arbitrary reciprocal Mersenne subseries.",
-      "verification_state": "source_verified",
-      "bibliography_keys": [],
-      "mapping_status": "direct_prose_source_absent_from_refined_literature",
-      "verification_scope": "Public source identity or public contribution text is verified. The stated relation and exact local anchors delimit the use; this does not assert a complete source-to-Lean theorem correspondence."
+      "relation": "Sparse power-series irrationality criteria for Pisot or Salem bases (Theorems 1-3), with arithmetic-function applications. The #257 note cites the averaged-tail quantity R_c of (1.7) and Lemmas 1-2 beside its weighted-support theorem as context for averaging the displacement. Divisor-incidence coefficients of Mersenne-Lambert subseries fail the counting hypotheses of Theorems 1 and 3, so the criteria do not apply to those subseries.",
+      "verification_state": "existing_source_closure",
+      "bibliography_keys": [
+        {
+          "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "key": "kanekosuzukitachiya"
+        }
+      ],
+      "verification_scope": "The complete bound preprint was read and its pages were checked as images; the source closure records the locators and the counting-hypothesis boundary. This does not certify the paper's mathematics or imply that the note adopts its criteria."
     },
     {
       "id": "proposed-direct-6c67db53ef5f8c",
@@ -13000,8 +13091,8 @@
       "artifact_links": [
         {
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-          "line_start": 712,
-          "line_end": 716,
+          "line_start": 748,
+          "line_end": 752,
           "excerpt_sha256": "sha256:9d2bb989c3eea3bf5a65a49fe1b886c24712e515ff22e273c2459b9c97c8d2f4"
         },
         {
@@ -13412,8 +13503,8 @@
         },
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 304,
-          "line_end": 308,
+          "line_start": 308,
+          "line_end": 312,
           "excerpt_sha256": "sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e"
         },
         {
@@ -13813,8 +13904,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1212,
-          "line_end": 1218,
+          "line_start": 1267,
+          "line_end": 1273,
           "expected_text": "\\bibitem{erdos1975}",
           "excerpt_sha256": "sha256:0ffa1b9604849fafd2410ef3bb64c295024350a23bcfd1348eac1ae548a50fa2"
         }
@@ -13850,8 +13941,8 @@
       "artifact_links": [
         {
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "line_start": 1218,
-          "line_end": 1227,
+          "line_start": 1273,
+          "line_end": 1282,
           "expected_text": "\\bibitem{bkkkz2026}",
           "excerpt_sha256": "sha256:6a67739920bd09eb64cca1d9522bc299d0dfa3c8b89c32658c42a4e14644dd31"
         }

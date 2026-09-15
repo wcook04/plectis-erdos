@@ -39,8 +39,11 @@ symbols and subscripts; the page images control the mathematical boundary.
   `sum_i 1/(t^(n_i)-1)` is irrational for every integer `t >= 2`.
 - **Unproved extensions:** the same p. 222 paragraph says that pairwise
   coprimality can supposedly be removed by more complicated arguments but
-  does not give those details. It also presents weaker growth conditions as
-  expectations, not as proved hypotheses or conclusions.
+  does not give those details. It adds that the condition
+  `sum 1/n_i < infinity` is not very relevant and could be replaced by a
+  weaker but more complicated condition, which that page does not state. It
+  also presents weaker growth conditions as expectations, not as proved
+  hypotheses or conclusions.
 - **Additional open examples:** printed p. 223 (PDF p. 2) says the recurrence
   `u_(n+1) = t u_n + t - 1` does not yield a proved irrationality result for
   arbitrary positive integral `u_1`, even at `t=2`, and notes that the
@@ -57,8 +60,9 @@ symbols and subscripts; the page images control the mathematical boundary.
   theorem.
 - **Closing boundary:** printed p. 226 (PDF p. 5) says the proof without the
   pairwise-coprime assumption is more complicated and is not supplied. It
-  records a possible Brun-method weakening and explicitly says the all-primes
-  case is not handled. The reference on that page identifies Erdős's 1948
+  suggests that, for pairwise coprime supports, Brun's method could probably
+  replace `sum 1/n_i < infinity` by `sum_(n_i<x) 1/n_i = o(log log x)`, and
+  explicitly says the all-primes case is not handled. The reference on that page identifies Erdős's 1948
   Lambert-series paper.
 
 ## Attribution and claim ceiling
