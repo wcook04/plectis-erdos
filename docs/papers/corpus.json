@@ -1785,8 +1785,8 @@
       ],
       "citations_rendered": 11,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:73ed10e13386aa2373a0cb4f397fca989946e0eb7039c4318eab8a968ed0848d",
-      "pdf_byte_count": 106351,
+      "pdf_sha256": "sha256:4333094c61aed682934393399114dec6ced79fd2a1122bd58394c93a0b6824de",
+      "pdf_byte_count": 109110,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2306,8 +2306,8 @@
       ],
       "citations_rendered": 39,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:b4773cd231ff44c82cfa378c2f9a8d5d9b0d494450ef8ade41f9edee24d32576",
-      "pdf_byte_count": 289823,
+      "pdf_sha256": "sha256:5517a9c6b5c08c9fcad214b75d3142f4d1246a31638e1dd66a31ba3a03b252f6",
+      "pdf_byte_count": 291287,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
