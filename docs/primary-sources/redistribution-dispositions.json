@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 28,
-    "artifact_count": 28,
+    "working_tree_only_count": 29,
+    "artifact_count": 29,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 28,
+    "link_and_digest_only_count": 29,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -153,6 +153,27 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius.pdf",
+      "sha256": "03fbaca88796cc63f376d2e6e4680ec94632143794df871066df501b5675e7ef",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/1511.07535",
+        "https://arxiv.org/pdf/1511.07535v1",
+        "https://doi.org/10.48550/arXiv.1511.07535",
+        "https://doi.org/10.1142/S0129054117500095"
+      ],
+      "source_record": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     },

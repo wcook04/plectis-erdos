@@ -11,9 +11,9 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `187` curated sources across `21` registered papers and `1274` Lean library files.
+The registry contains `188` curated sources across `21` registered papers and `1274` Lean library files.
 
-Source review states: `bibliography_only`: `108`; `existing_source_closure`: `24`; `external_claim_unverified`: `2`; `implemented_advice`: `3`; `source_verified`: `50`.
+Source review states: `bibliography_only`: `108`; `existing_source_closure`: `25`; `external_claim_unverified`: `2`; `implemented_advice`: `3`; `source_verified`: `50`.
 
 Bibliography coverage records attribution already present in the corpus. A `bibliography_only` record still needs direct source-passage verification; a completed lexical review does not certify a source-to-theorem correspondence.
 
@@ -32,7 +32,7 @@ Implemented advice whose identity is awaiting confirmation:
 - **Erdős #1041**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [A short-path counterexample for polynomial lemniscates (external cl…](#source-erdos1041-ani-degree-seven-candidate-counterexample), [Independent check of candidate degree-seven counterexample](#source-erdos1041-morluto-independent-check), [Quartic case of Erdős #1041](#source-erdos1041-pendyala-quartic), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [The maximal length of the Erdős–Herzog–Piranian lemniscate in high…](#source-source-0e12f93aeac487), [Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zu…](#source-source-2ec6bf87654604), [Bad Polynomials for Newton's Method](#source-source-318ee5e7cf6d74), [The area of polynomial images and preimages](#source-source-40bc4064b92788), [Metric properties of polynomials](#source-source-61ce6ad8b2f0ff), [On the length of lemniscates](#source-source-7f1f2a3fd9238c), [Shortest paths in polynomial lemniscate sublevel sets and a problem…](#source-source-8710374c3e8c9f), [The arc length of the lemniscate |p(z)|=1](#source-source-89b9a294db76bb), [A Degree-Four Lemniscate Path Theorem](#source-source-951f70d8dfc418), [Number of Components of Polynomial Lemniscates: A Problem of Erdős,…](#source-source-97b4e6a82335a7), [New estimates for the length of the Erdős–Herzog–Piranian lemniscate](#source-source-a67b8dc01791ec), [Some inequalities for polynomials and rational functions associated…](#source-source-dcbe400c96be59), [A Short Path Joining Two Zeros Inside a Polynomial Lemniscate](#source-source-f300911fb03a5c)
 - **Erdős #1049**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [Prior-art comparison advice](#source-correspondence-003), [Retrieval of Chowla 1947 original scan](#source-erdos1049-bloom-chowla-scan-retrieval), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #1049](#source-formal-conjectures-adapter-problem-1049), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [A problem about Mahler functions](#source-source-0a6b8c93371570), [Heine's basic transform and a permutation group for q-harmonic series](#source-source-120bebce1ffe8c), [À propos de la série ∑\_{n≥1} x^n/(q^n−1)](#source-source-169c3d67838965), [On a permutation group related to ζ(2)](#source-source-176d35cb60b651), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [On an incomplete argument of Erdős on the irrationality of Lambert…](#source-source-5911448b65fdf9), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [On the irrationality of ∑ 1/(q^n+r)](#source-source-62f9190aeb7d34), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [q-Apéry irrationality proofs by q-WZ pairs](#source-source-7935fe19eb831b), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Zero Coefficients of Rational Power Series and Rational Lambert Series](#source-source-aa2d5c249362f1), [On the irrationality of generalized q-logarithm](#source-source-ae9859af28fdcd), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [Little q-Legendre polynomials and irrationality of certain Lambert…](#source-source-cd126799fede94), [FormalConjectures.ErdosProblems.1049](#source-source-d7a43109c64c0c), [Arithmetical investigations of a certain infinite product](#source-source-e553241a97e580), [New irrationality measures for q-logarithms](#source-source-e5f2924d82c59f)
 - **Erdős #243**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [Koizumi pseudo-greedy equivalence and computation pointer](#source-erdos243-kovac-koizumi-pointer), [Rational-tail deterministic pair recurrence and open-boundary reduc…](#source-erdos243-tao-tail-pair-recurrence), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [FormalConjectures.ErdosProblems.243](#source-source-1713b9ad6350bd), [Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partia…](#source-source-2a3af2a360bb15), [A theorem on irrationality of infinite series and applications](#source-source-318b37ba5af2eb), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Irrationality of the reciprocal sum of doubly exponential sequences](#source-source-86d1745e2d139b), [Irrationality of fast converging series of rational numbers](#source-source-b0b779fff5defe), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f)
-- **Erdős #249**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [Theorem-first packaging and literature-comparison advice](#source-correspondence-002), [Möbius-transform identity for the binary totient constant](#source-erdos249-fan-mobius-transform), [Irrationality of the n=2^m sparse totient subseries](#source-erdos249-rafik-sparse-power-two-subseries), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #249](#source-formal-conjectures-adapter-problem-249), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [On correlations of certain multiplicative functions](#source-proposed-direct-595203db1f6891), [Erdős–Gál lacunary-series law of the iterated logarithm (two-part s…](#source-proposed-direct-7f278004ad452a), [Adamczewski–Bugeaud subword-complexity method context](#source-proposed-direct-d4ac203509248c), [Note on normal numbers](#source-proposed-direct-f7f90747134dba), [The googol-th bit of the Erdős--Borwein constant](#source-source-0dd4239a1d50da), [On the set of partial sums of an infinite series](#source-source-0ecb074e507b86), [Answer to An infinite sum based on the mod-parity of Euler's totien…](#source-source-0f61ad0796acdf), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Simultaneous inequalities among values of the Euler phi-function](#source-source-11b46a0435368f), [On a curious property of vulgar fractions](#source-source-2aa4970cfda278), [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [The ring of k -regular sequences](#source-source-5752bb5009e4de), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c), [Modular functions and transcendence questions](#source-source-6346eeeac5036d), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [The Lambert series factorization theorem](#source-source-8935df46fb4693), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [Comment on Erdős Problem #249](#source-source-99c2f3cb190b95), [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the binary digits of the Erdős--Borwein constant](#source-source-eca9e699590922), [Positive dyadic density for rational weighted binary expansions](#source-source-f4ad17717c8fd4)
+- **Erdős #249**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [Theorem-first packaging and literature-comparison advice](#source-correspondence-002), [Möbius-transform identity for the binary totient constant](#source-erdos249-fan-mobius-transform), [Irrationality of the n=2^m sparse totient subseries](#source-erdos249-rafik-sparse-power-two-subseries), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #249](#source-formal-conjectures-adapter-problem-249), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [On correlations of certain multiplicative functions](#source-proposed-direct-595203db1f6891), [Erdős–Gál lacunary-series law of the iterated logarithm (two-part s…](#source-proposed-direct-7f278004ad452a), [Adamczewski–Bugeaud subword-complexity method context](#source-proposed-direct-d4ac203509248c), [Note on normal numbers](#source-proposed-direct-f7f90747134dba), [The googol-th bit of the Erdős--Borwein constant](#source-source-0dd4239a1d50da), [On the set of partial sums of an infinite series](#source-source-0ecb074e507b86), [Answer to An infinite sum based on the mod-parity of Euler's totien…](#source-source-0f61ad0796acdf), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Simultaneous inequalities among values of the Euler phi-function](#source-source-11b46a0435368f), [Regular sequences and the joint spectral radius](#source-source-296ff41148fff7), [On a curious property of vulgar fractions](#source-source-2aa4970cfda278), [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [The ring of k -regular sequences](#source-source-5752bb5009e4de), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c), [Modular functions and transcendence questions](#source-source-6346eeeac5036d), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [The Lambert series factorization theorem](#source-source-8935df46fb4693), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [Comment on Erdős Problem #249](#source-source-99c2f3cb190b95), [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the binary digits of the Erdős--Borwein constant](#source-source-eca9e699590922), [Positive dyadic density for rational weighted binary expansions](#source-source-f4ad17717c8fd4)
 - **Erdős #251**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [Schlage-Puchta Theorem 2 literature pointer](#source-erdos251-alfaiz-schlage-puchta-pointer), [Counterexample to Erdős variable-denominator expectation](#source-erdos251-kovac-variable-denominator-counterexample), [Conditional #251 proof under Kuperberg Conjecture 1.3 and Lean form…](#source-erdos251-land-conditional-proof-lean), [Prime-gap summation-by-parts equivalence and conditional route](#source-erdos251-tao-prime-gap-equivalence), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #251](#source-formal-conjectures-adapter-problem-251), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Multiplicative Number Theory I: Classical Theory](#source-source-0aca0e5e4e03c0), [On the Erdős problem #251](#source-source-0ec7ca07508557), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Erdős Problems discussion thread #251](#source-source-21738452dcb95c), [On the largest prime factors of n and n+1](#source-source-27575f46a101c1), [Sur certaines séries à valeur irrationnelle](#source-source-2ee394177d0f38), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Continued Fractions](#source-source-5ee5f85bd606ee), [Small gaps between primes](#source-source-6564b203677735), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3), [FormalConjectures.ErdosProblems.251](#source-source-b202a3f125817d), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [The difference between consecutive primes, II](#source-source-baker-harman-pintz-2001), [Bounded gaps between primes](#source-source-c32d672658410d), [Long gaps between primes](#source-source-d3995db1508bc9), [The irrationality of some number theoretical series](#source-source-d471eacdba0f87), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f), [A conditional proof of the irrationality of ∑\_{n≥1} p\_n 2^{−n} unde…](#source-source-f42f9e04743a4c)
 - **Erdős #257**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [Earlier variants, interval-filling negative variant, and fat-Cantor…](#source-erdos257-kovac-context-bundle), [Older Erdős and Borwein attribution for even/odd supports](#source-erdos257-kovac-older-special-case-attribution), [Period-two Lambert theorem applied to even and odd supports](#source-erdos257-tang-tachiya-period-two), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #257](#source-formal-conjectures-adapter-problem-257), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Diophantine Problems for q-Zeta Values](#source-proposed-direct-0ef4f73f93ceed), [Refinements of Erdős's irrationality criterion for certain sparse i…](#source-proposed-direct-329775d58148a9), [Divisor-bounded multiplicative functions in short intervals](#source-proposed-direct-6c67db53ef5f8c), [The critical-window profile for d\_k in short intervals](#source-proposed-direct-6f90767d1d01dd), [The googol-th bit of the Erdős--Borwein constant](#source-source-0dd4239a1d50da), [On the set of partial sums of an infinite series](#source-source-0ecb074e507b86), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [On a curious property of vulgar fractions](#source-source-2aa4970cfda278), [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [The ring of k -regular sequences](#source-source-5752bb5009e4de), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c), [Modular functions and transcendence questions](#source-source-6346eeeac5036d), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [The Lambert series factorization theorem](#source-source-8935df46fb4693), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the binary digits of the Erdős--Borwein constant](#source-source-eca9e699590922), [Positive dyadic density for rational weighted binary expansions](#source-source-f4ad17717c8fd4)
 - **Erdős #269**: [Formalization classification and cheap inspection advice](#source-correspondence-001), [Infinite-prime-set irrationality proof and correction chain](#source-erdos269-fan-infinite-p-proof-repair), [Two-prime Hecke–Mahler factorisation and transcendence disclosure](#source-erdos269-fan-two-prime-disclosure), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [The Prime Number Theorem](#source-source-06457731c60720), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Comment on Erdős Problem #269](#source-source-21cdeefea4c8ec), [Letter to the Editor](#source-source-22aba734190d65), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [FormalConjectures.ErdosProblems.269](#source-source-573a79feb36d47), [On the number of positive integers ≤ x and free of prime factors \> y](#source-source-78565c625f0ea3), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [Transcendence and continued fraction expansion of values of Hecke--…](#source-source-b9d7160919621f), [Arithmetic properties of certain functions in several variables III](#source-source-fcf73a15ff9c7c)
@@ -230,7 +230,7 @@ Implemented advice whose identity is awaiting confirmation:
 - **Luke Alexander**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
 - **Luke Zerrer**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **Lyuba Konova**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
-- **M. Coons**: [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9)
+- **M. Coons**: [Regular sequences and the joint spectral radius](#source-source-296ff41148fff7), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9)
 - **M. D. Schmidt**: [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c)
 - **M. Harman**: [An analysis and survey of the development of mutation testing](#source-source-3a21eca35f05cf)
 - **M. Kripner**: [OpenProver: Agentic and Interactive Theorem Proving with Lean 4](#source-source-d31e3bc51f2784)
@@ -522,10 +522,10 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L23-L53) — lines `23–53`; excerpt `sha256:cbaecda8e465751af3465648f063d9b8a79f5e53c20a01897428f0b113e6ab14`
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L58-L97) — lines `58–97`; excerpt `sha256:e41398ec47e5e177eb90c627543a2ebd43045fb38047a74ca4f41b45e4758993`
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L547-L560) — lines `547–560`; excerpt `sha256:1a3d7c9c7ee8ba031728e618f10204e0866dacaa795e7e1fa2ab5528437f6385`
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L635-L641) — lines `635–641`; excerpt `sha256:7b396d32e0520f148c4cd2ef0776ea5898ab787c34eeebbb74efbdcf93c45865`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L23-L54) — lines `23–54`; excerpt `sha256:2ff03a3c73bbf0d16b8407a4098ca4e42c941f20de36ecbb2ac007e6fc92a8b8`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L59-L98) — lines `59–98`; excerpt `sha256:e41398ec47e5e177eb90c627543a2ebd43045fb38047a74ca4f41b45e4758993`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L573-L587) — lines `573–587`; excerpt `sha256:65030d24bd92830c0e89a616c55cda5c509544127dae9f395367324baa4f8eb3`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L662-L668) — lines `662–668`; excerpt `sha256:7b396d32e0520f148c4cd2ef0776ea5898ab787c34eeebbb74efbdcf93c45865`
 - [lean/Erdos249257/TotientMahlerDefect.lean](../../lean/Erdos249257/TotientMahlerDefect.lean#L935-L1145) — lines `935–1145`; excerpt `sha256:e4bbeef9407526e58653fc7ed307d51530c41af7bd6d225f36388486dc845a6e`
 - [formalization.yaml](../../formalization.yaml#L162-L219) — lines `162–219`; excerpt `sha256:b323e9a098414f61b29469d542453a446713a6650efbe384accb4d657f9a1e7e`
 - [docs/EXTERNAL\_VERIFICATION.md](../../docs/EXTERNAL_VERIFICATION.md#L522-L532) — lines `522–532`; excerpt `sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b`
@@ -550,7 +550,7 @@ Public implementation or evidence coordinates:
 
 - [docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md](../../docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md#L1-L41) — lines `1–41`; excerpt `sha256:2dd1c6e867a779af56358ca64dc97076e8c0c4f4fe8db1128aed5624673e206b`
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L168-L224) — lines `168–224`; excerpt `sha256:4788e4d316aec27743943cf64b21291abb4c14c83ebe583fbafe24fb71fff5ab`
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L298-L302) — lines `298–302`; excerpt `sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L304-L308) — lines `304–308`; excerpt `sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L1-L100) — lines `1–100`; excerpt `sha256:2869c3db2da5857a4c9fc56be272d52f5a7b1242f3633bd8ed0b01f0da016724`
 - [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L848-L868) — lines `848–868`; excerpt `sha256:e8ae32450cbc9049293293d2f552e05daf3d0a63c406bd2a0968063fa4a14b0d`
 
@@ -644,7 +644,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L221-L225) — lines `221–225`; excerpt `sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L227-L231) — lines `227–231`; excerpt `sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289`
 - [docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md](../../docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md#L1-L1) — lines `1–1`; excerpt `sha256:6126bfd0669f6bbbaf09f65bc95f02fb185baddaac42274887a3cba79bdb3118`
 
 <a id="source-erdos243-tao-tail-pair-recurrence"></a>
@@ -731,7 +731,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L229-L233) — lines `229–233`; excerpt `sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L235-L239) — lines `235–239`; excerpt `sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a`
 - [lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean](../../lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L27-L30) — lines `27–30`; excerpt `sha256:1fdbe78f7474100bd312810adac9f1ef95fe6de93652e252348899dffa4e15c6`
 
 <a id="source-erdos251-land-conditional-proof-lean"></a>
@@ -869,7 +869,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L261-L265) — lines `261–265`; excerpt `sha256:02b7a5fb6ec6414051189b65c6c9f2a8dd2efedd07a902ef54cbbb4256862c97`
+- [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L267-L271) — lines `267–271`; excerpt `sha256:02b7a5fb6ec6414051189b65c6c9f2a8dd2efedd07a902ef54cbbb4256862c97`
 
 <a id="source-erdos-problems-catalog-eight-problem-context"></a>
 
@@ -1559,11 +1559,11 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L798-L802) — lines `798–802`; excerpt `sha256:c051a6fd92366505b0880e9bef1e556ed2611ec3731d443530ec4ab540b599a1`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L829-L833) — lines `829–833`; excerpt `sha256:c051a6fd92366505b0880e9bef1e556ed2611ec3731d443530ec4ab540b599a1`
 
 Paper citation usages:
 
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:556](../../paper/249/erdos-249-binary-totient-series.tex#L556-L556)
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:583](../../paper/249/erdos-249-binary-totient-series.tex#L583-L583)
 
 <a id="source-source-10545f868b3e88"></a>
 
@@ -1601,7 +1601,7 @@ Public implementation or evidence coordinates:
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5315-L5318) — lines `5315–5318`; excerpt `sha256:89ad0eb6d9dac773cb478c008d67b4ac6ad8b50cdf587f23feda6a8d1825acf6`
 - [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L840-L844) — lines `840–844`; excerpt `sha256:df0e63df25873358641ed4070061c15e5f66adb3d2707f788d4aba4c941addb4`
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2979-L2983) — lines `2979–2983`; excerpt `sha256:df0e63df25873358641ed4070061c15e5f66adb3d2707f788d4aba4c941addb4`
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L802-L805) — lines `802–805`; excerpt `sha256:3451dd866e80517dacca63cfc17bb749148b4d10abfd461e6010a2773dc28e22`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L833-L836) — lines `833–836`; excerpt `sha256:3451dd866e80517dacca63cfc17bb749148b4d10abfd461e6010a2773dc28e22`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L1435-L1439) — lines `1435–1439`; excerpt `sha256:77deb132053702c64190a6a7499fe28db4f1a53a36a8f410c0069a7178993e57`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2364-L2368) — lines `2364–2368`; excerpt `sha256:77deb132053702c64190a6a7499fe28db4f1a53a36a8f410c0069a7178993e57`
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2129-L2135) — lines `2129–2135`; excerpt `sha256:9b9152e1a2b6436e5ae1334e4d32ed81c874388f64e71686751398f2f877fb38`
@@ -1617,7 +1617,7 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:993](../../paper/systems/claim-faithful-publication-systems-paper.tex#L993-L993)
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:560](../../paper/249/erdos-249-binary-totient-series.tex#L560-L560)
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:587](../../paper/249/erdos-249-binary-totient-series.tex#L587-L587)
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:233](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L233-L233)
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:66](../../paper/269/erdos-269-three-prime-running-lcm.tex#L66-L66)
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:93](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L93-L93), [cite at paper/reasoning-parts/erdos243/core.tex:51](../../paper/reasoning-parts/erdos243/core.tex#L51-L51)
@@ -1664,14 +1664,15 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L795-L798) — lines `795–798`; excerpt `sha256:3b0475dd33e7a1ea2d089116b3042b48e0583ce9c65fa9d5d35b7bfae3c0d8a6`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L826-L829) — lines `826–829`; excerpt `sha256:3b0475dd33e7a1ea2d089116b3042b48e0583ce9c65fa9d5d35b7bfae3c0d8a6`
 - [lean/Erdos249257/AllBaseTotientKernel.lean](../../lean/Erdos249257/AllBaseTotientKernel.lean#L4-L61) — lines `4–61`; excerpt `sha256:a7583f78b57fbb25305024044671d8303e0dfd61da003f0de23f3c82ca558fb4`
 - [lean/Erdos249257/AllBaseTotientKernel.lean](../../lean/Erdos249257/AllBaseTotientKernel.lean#L642-L644) — lines `642–644`; excerpt `sha256:f2847f43a004d01715e61f5510732df2e0014e197cb1796803035180a98f88f6`
 - [lean/Erdos249257/TotientKernelConditional.lean](../../lean/Erdos249257/TotientKernelConditional.lean#L5-L18) — lines `5–18`; excerpt `sha256:bb1cbd9adcabf879040179a1dda4145da0903770eb95510584365a88131340ba`
+- [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L526-L526) — lines `526–526`; excerpt `sha256:2dbd7f0d45fe7526bd594df5c9ee18003963911c8ad097aea117921cb42671fc`
 
 Paper citation usages:
 
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:553](../../paper/249/erdos-249-binary-totient-series.tex#L553-L553)
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:580](../../paper/249/erdos-249-binary-totient-series.tex#L580-L580)
 
 <a id="source-source-120bebce1ffe8c"></a>
 
@@ -1937,6 +1938,47 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:928](../../docs/papers/mirror/plectis-public-system.tex#L928-L928)
+
+<a id="source-source-296ff41148fff7"></a>
+
+### [Regular sequences and the joint spectral radius](https://doi.org/10.1142/S0129054117500095)
+
+- Source id: `source-296ff41148fff7`
+- Author or public identity: M. Coons
+- Kind: `literature`
+- Problems: #249
+- Relationship and boundary: Attribution of the theorem that, for a \`k\`-regular sequence, matrices associated to a basis of the kernel span compute the growth exponent through their joint spectral radius, to Coons, Theorem 1, PDF p. 1. - Attribution of the upper bound from any spanning set, and of the comparison between bases and spanning sets, to Proposition 4 (PDF p. 2) and Corollary 7 (PDF p. 3), with the strictness example on PDF p. 4. - The evaluation argument of Appendix A (PDF p. 4): the evaluation vectors of a basis of sequences span the coefficient space. The #249 short note cites these for the basis-versus-spanning-family distinction and for the evaluation argument in its equivalence between finite generation and finite rational dimension of an integer-valued kernel. The source does not concern Euler's totient, and its growth theorem is not applied to the non-regular totient. Locators follow arXiv:1511.07535v1.
+- Source verification: `existing\_source\_closure` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- [\`03fbaca88796cc63f376d2e6e4680ec94632143794df871066df501b5675e7ef\`;](https://arxiv.org/abs/1511.07535)
+- [127459 bytes; 5 PDF pages. A fresh download from the official arXiv v1 PDF](https://arxiv.org/abs/1511.07535)
+- [\`read\_complete\` for the bound PDF. All five pages were read and visually](https://arxiv.org/abs/1511.07535)
+- [- \*\*Definitions and main theorem:\*\* PDF p. 1 defines the \`k\`-kernel, calls a](https://arxiv.org/abs/1511.07535)
+- [exponent and the joint spectral radius, and states \*\*Theorem 1\*\*: for a](https://arxiv.org/abs/1511.07535)
+- [- \*\*Upper bound from any spanning set:\*\* PDF p. 2 notes that Theorem 1 holds](https://arxiv.org/abs/1511.07535)
+- [\*\*Proposition 4\*\*: matrices associated to any spanning set of the kernel](https://arxiv.org/abs/1511.07535)
+- [- \*\*Lower bound from a basis, and the comparison:\*\* PDF p. 3 states](https://arxiv.org/abs/1511.07535)
+- [\*\*Corollary 7\*\*: the joint spectral radius for a basis is at most that for](https://arxiv.org/abs/1511.07535)
+- [- \*\*Strictness and the evaluation argument:\*\* PDF p. 4 gives an example in](https://arxiv.org/abs/1511.07535)
+- [\*\*Appendix A\*\*, which begins on the same page, shows that for a basis](https://arxiv.org/abs/1511.07535)
+- [- \*\*Bibliographic boundary:\*\* PDF p. 5 completes Appendix A and gives the](https://arxiv.org/abs/1511.07535)
+- [- Attribution of the theorem that, for a \`k\`-regular sequence, matrices](https://arxiv.org/abs/1511.07535)
+- [- Attribution of the upper bound from any spanning set, and of the comparison](https://arxiv.org/abs/1511.07535)
+- [- The evaluation argument of Appendix A (PDF p. 4): the evaluation vectors of](https://arxiv.org/abs/1511.07535)
+
+Public implementation or evidence coordinates:
+
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L822-L826) — lines `822–826`; excerpt `sha256:dfad4fe35939edaab05c181a64c042dffdf2b6a2ee9e318fdf0f7c37c86c58e0`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L244-L244) — lines `244–244`; excerpt `sha256:ba2623fd0d16d511439ef0687c6297f7daa8de19a37077c607d2130b31b303ec`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L248-L260) — lines `248–260`; excerpt `sha256:a19f3f512e83dcae6f5c0db90a66f47195ed3b0619df9a340797d8966da61a3b`
+- [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L504-L505) — lines `504–505`; excerpt `sha256:e04dc67f318d119bf17a44db675615d6e63a92ebf331a69436baf1f687626e18`
+
+Paper citation usages:
+
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:244](../../paper/249/erdos-249-binary-totient-series.tex#L244-L244), [cite at paper/249/erdos-249-binary-totient-series.tex:251](../../paper/249/erdos-249-binary-totient-series.tex#L251-L251)
 
 <a id="source-source-2a3af2a360bb15"></a>
 
@@ -2493,11 +2535,11 @@ Paper citation usages:
 Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5344-L5352) — lines `5344–5352`; excerpt `sha256:28fc1b15f89dedfd49214bfcd5a49cc05823f44376740a8e9ad7fc0e987fb378`
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L789-L792) — lines `789–792`; excerpt `sha256:867c017fd5e319d7d8dd47a300a5aead007cebebb30c5f3d3b9fcccbf92063e2`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L816-L819) — lines `816–819`; excerpt `sha256:867c017fd5e319d7d8dd47a300a5aead007cebebb30c5f3d3b9fcccbf92063e2`
 
 Paper citation usages:
 
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:548](../../paper/249/erdos-249-binary-totient-series.tex#L548-L548)
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:574](../../paper/249/erdos-249-binary-totient-series.tex#L574-L574)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3184](../../paper/archive/erdos249-257-main-paper.tex#L3184-L3184)
 
 <a id="source-source-57adfd0cdcd8c2"></a>
@@ -3048,41 +3090,50 @@ Paper citation usages:
 - Author or public identity: M. Coons
 - Kind: `literature`
 - Problems: #249, #257
-- Relationship and boundary: Attribution of the theorem that Euler's totient function is not \`k\`-regular for any integer \`k ≥ 2\` to Coons, Theorem 3.2, printed p. 349. - The source-level definition of \`k\`-regularity as finite generation of the \`k\`-kernel over \`ℤ\`, printed p. 348. - The Dirichlet-series identity and proof mechanism used by Coons for the totient non-regularity theorem, printed p. 349. - The published bibliographic identity, official retrieval routes, exact local digest, and conservative rights posture recorded above.
+- Relationship and boundary: Attribution of the theorem that Euler's totient function is not \`k\`-regular for any integer \`k ≥ 2\` to Coons, Theorem 3.2, stated on printed p. 348 and proved on p. 349. - The source-level definition of \`k\`-regularity as finite generation of the \`k\`-kernel over \`ℤ\`, printed p. 348. - The Dirichlet-series identity and proof mechanism used by Coons for the totient non-regularity theorem, printed p. 349. - The published bibliographic identity, official retrieval routes, exact local digest, and conservative rights posture recorded above.
 - Source verification: `existing\_source\_closure` — scope not separately recorded
 - Local mapping: `not recorded`
 
 Exact source locations:
 
 - [795513 bytes; 15 PDF pages. The copy was retrieved from the official](https://doi.org/10.5802/jtnb.718)
-- [PDF pages were read. PDF pp. 1--2, 10--11, and 15 were also visually checked;](https://doi.org/10.5802/jtnb.718)
+- [PDF pages were read, and all 15 PDF pages were visually checked;](https://doi.org/10.5802/jtnb.718)
 - [- \*\*Definitions and scope:\*\* Printed pp. 339--340 (PDF pp. 2--3) define the](https://doi.org/10.5802/jtnb.718)
-- [- \*\*Regularity framework:\*\* Printed p. 348 (PDF p. 10) defines a](https://doi.org/10.5802/jtnb.718)
+- [- \*\*Regularity framework:\*\* Printed p. 348 (PDF p. 11) defines a](https://doi.org/10.5802/jtnb.718)
 - [\`ℤ\`-module. The same page states Theorem 3.1, the meromorphic-continuation](https://doi.org/10.5802/jtnb.718)
 - [property for Dirichlet series of \`k\`-regular sequences, and Corollary 3.1,](https://doi.org/10.5802/jtnb.718)
 - [the non-regularity criteria used in the next theorem.](https://doi.org/10.5802/jtnb.718)
-- [- \*\*Totient theorem:\*\* Printed p. 349 (PDF p. 11) states \*\*Theorem 3.2\*\*:](https://doi.org/10.5802/jtnb.718)
+- [- \*\*Totient theorem:\*\* Printed p. 348 (PDF p. 11) states \*\*Theorem 3.2\*\*:](https://doi.org/10.5802/jtnb.718)
 - [zero-counting input and Corollary 3.1. This is the exact external source](https://doi.org/10.5802/jtnb.718)
 - [- \*\*Bibliographic and rights boundary:\*\* Printed p. 352 (PDF p. 15) gives](https://doi.org/10.5802/jtnb.718)
 - [determinant construction, Erdős Problem #249, and the repository's theorem](https://doi.org/10.5802/jtnb.718)
 - [names; none occurs. The source states the global non-\`k\`-regularity theorem,](https://doi.org/10.5802/jtnb.718)
 - [or the separate all-base conditional theorem.](https://doi.org/10.5802/jtnb.718)
 - [- Attribution of the theorem that Euler's totient function is not](https://doi.org/10.5802/jtnb.718)
-- [\`k\`-regular for any integer \`k ≥ 2\` to Coons, Theorem 3.2, printed p. 349.](https://doi.org/10.5802/jtnb.718)
+- [\`k\`-regular for any integer \`k ≥ 2\` to Coons, Theorem 3.2, stated on](https://doi.org/10.5802/jtnb.718)
 - [\`k\`-kernel over \`ℤ\`, printed p. 348.](https://doi.org/10.5802/jtnb.718)
 - [totient non-regularity theorem, printed p. 349.](https://doi.org/10.5802/jtnb.718)
 - [- The all-base affine-totient independence theorem attributed to Martin, or](https://doi.org/10.5802/jtnb.718)
 - [the global non-\`k\`-regularity theorem settles Erdős Problem #249.](https://doi.org/10.5802/jtnb.718)
-- [rank theorem stated by Coons.](https://doi.org/10.5802/jtnb.718)
+- [rank theorem stated by Coons. The bridge is elementary for integer-valued](https://doi.org/10.5802/jtnb.718)
 
 Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5352-L5358) — lines `5352–5358`; excerpt `sha256:4a7aa0cbb0dba5d29390adbbc95554c796fb3eee93f2efae803d6c97270c9768`
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L792-L795) — lines `792–795`; excerpt `sha256:7462f7ee632276c82c66d18aaf501d71868bd58a402e17cd314ed53bded10763`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L819-L822) — lines `819–822`; excerpt `sha256:194853409620739b24e9e5f5091f02d4da4f73e1ad951e0d17e4f967d1139524`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L43-L44) — lines `43–44`; excerpt `sha256:e93e9a1a573057be005b8ebb661c5ecca22d1e0bff3fbb42b2512d3f7085d843`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L237-L246) — lines `237–246`; excerpt `sha256:33b525f46eb76dbc41a7fde3ef5d290e0aae4ad21bb44b5cf9e0dc9009986a66`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L575-L576) — lines `575–576`; excerpt `sha256:398ca032230c6f56e30b00e6acd398308511c9719a80d6368cab584e770cab4e`
+- [paper/reasoning-parts/erdos249/preamble.tex](../../paper/reasoning-parts/erdos249/preamble.tex#L178-L179) — lines `178–179`; excerpt `sha256:0d4b4d5d2a680973d0656d41b77d76e0b096774cd75e73655aeb1334402dc06b`
+- [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L169-L169) — lines `169–169`; excerpt `sha256:48a3dc935a9efd4f525b4196ade8751cfd054cab2285d0b3acf1c074f18578f9`
+- [paper/reasoning-parts/erdos249/a249\_invent.tex](../../paper/reasoning-parts/erdos249/a249_invent.tex#L727-L733) — lines `727–733`; excerpt `sha256:ada54334fe51c9d8996ba7a8c50ad6589a7ec29353303c2fd70e65fc719dbd60`
+- [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L434-L437) — lines `434–437`; excerpt `sha256:3c22c1483d8b27b07d31075664a6f9d76aeacb994d9934c04e280fe23cd94c3c`
+- [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L521-L522) — lines `521–522`; excerpt `sha256:287e2329dd6f0b29c0f4a3203679ff00fbb12a876b47f08001c265b67446b1e3`
+- [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L595-L595) — lines `595–595`; excerpt `sha256:9bb63e98c41d2fe494420b4de204eb623d74f0573079ceb08b0867b42219d9a8`
 
 Paper citation usages:
 
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:549](../../paper/249/erdos-249-binary-totient-series.tex#L549-L549)
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:240](../../paper/249/erdos-249-binary-totient-series.tex#L240-L240), [cite at paper/249/erdos-249-binary-totient-series.tex:575](../../paper/249/erdos-249-binary-totient-series.tex#L575-L575)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3187](../../paper/archive/erdos249-257-main-paper.tex#L3187-L3187)
 
 <a id="source-source-75e79d15dfab15"></a>
@@ -3799,11 +3850,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L805-L808) — lines `805–808`; excerpt `sha256:0822fac97e86223a8b6f04b6934255a94ff5a1bac5295fa89506967946301d9b`
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L836-L839) — lines `836–839`; excerpt `sha256:0822fac97e86223a8b6f04b6934255a94ff5a1bac5295fa89506967946301d9b`
 
 Paper citation usages:
 
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:518](../../paper/249/erdos-249-binary-totient-series.tex#L518-L518)
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:544](../../paper/249/erdos-249-binary-totient-series.tex#L544-L544)
 
 <a id="source-source-9a04cbea11fd0b"></a>
 

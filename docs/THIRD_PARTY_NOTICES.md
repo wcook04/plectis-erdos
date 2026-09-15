@@ -32,6 +32,7 @@ official route, review its current terms, and verify the manifest digest.
 | `docs/primary-sources/reciprocal-tail/koizumi-2026-integers-a28.pdf` | `9ad8561399e36bb4f17368064dc4765a90f164d85b65330c466e79fc716624df` | <https://math.colgate.edu/~integers/aa28/aa28.pdf>; <https://arxiv.org/abs/2504.05933>; <https://arxiv.org/pdf/2504.05933>; <https://doi.org/10.5281/zenodo.18714404> |
 | `docs/primary-sources/totient-kernel/martin-2006-simultaneous-phi-inequalities.pdf` | `8d967dc3018c325cf3b4a099fa916e369f4b9a915bf2ccad398d359e3b4f0705` | <https://arxiv.org/abs/math/0603053>; <https://arxiv.org/pdf/math/0603053>; <https://doi.org/10.48550/arXiv.math/0603053> |
 | `docs/primary-sources/totient-kernel/coons-2010-nonautomaticity.pdf` | `04f9d06111f787acd6f322b6b375f6ba898ee964aa98725e12ce17274b907c7a` | <https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.718/>; <https://jtnb.centre-mersenne.org/item/10.5802/jtnb.718.pdf>; <https://doi.org/10.5802/jtnb.718>; <https://arxiv.org/abs/0810.3709> |
+| `docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius.pdf` | `03fbaca88796cc63f376d2e6e4680ec94632143794df871066df501b5675e7ef` | <https://arxiv.org/abs/1511.07535>; <https://arxiv.org/pdf/1511.07535v1>; <https://doi.org/10.48550/arXiv.1511.07535>; <https://doi.org/10.1142/S0129054117500095> |
 | `docs/primary-sources/totient-kernel/erdos-1948-lambert.pdf` | `f263898827e415f8027be8d2082e6e24a13d2cc9fb006076baab282272ed21e3` | <https://users.renyi.hu/~p_erdos/1948-04.pdf> |
 | `docs/primary-sources/reciprocal-tail/erdos-straus-1964-ahmes-series.pdf` | `349d491423317417b6a2ecaa6799aba5923b514d52f5f6bd4e343249f90836d9` | <https://users.renyi.hu/~p_erdos/1964-19.pdf> |
 | `docs/primary-sources/reciprocal-tail/kovac-tao-2025-ahmes-series.pdf` | `5ef233db5bf94a072de7e094e6d42864ba2d1f639e7cb951c02b4cf1d3d52b57` | <https://arxiv.org/abs/2406.17593>; <https://arxiv.org/pdf/2406.17593v4>; <https://doi.org/10.1007/s10474-025-01528-0> |
@@ -64,6 +65,7 @@ column carrying these paths pushed the table past the rendered width, and a
 - `docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md` — `docs/primary-sources/reciprocal-tail/koizumi-2026-integers-a28.pdf`
 - `docs/primary-sources/totient-kernel/martin-2006-source-closure.md` — `docs/primary-sources/totient-kernel/martin-2006-simultaneous-phi-inequalities.pdf`
 - `docs/primary-sources/totient-kernel/coons-2010-source-closure.md` — `docs/primary-sources/totient-kernel/coons-2010-nonautomaticity.pdf`
+- `docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius-source-closure.md` — `docs/primary-sources/totient-kernel/coons-2017-joint-spectral-radius.pdf`
 - `docs/primary-sources/totient-kernel/erdos-1948-lambert-source-closure.md` — `docs/primary-sources/totient-kernel/erdos-1948-lambert.pdf`
 - `docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md` — `docs/primary-sources/reciprocal-tail/erdos-straus-1964-ahmes-series.pdf`
 - `docs/primary-sources/reciprocal-tail/kovac-tao-2025-source-closure.md` — `docs/primary-sources/reciprocal-tail/kovac-tao-2025-ahmes-series.pdf`
