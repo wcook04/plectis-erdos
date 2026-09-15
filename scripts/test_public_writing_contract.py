@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Check the public split between human mathematical prose and agent machinery."""
 
+import json
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+NUMBER_WORDS = (
+    "zero", "one", "two", "three", "four", "five", "six",
+    "seven", "eight", "nine", "ten", "eleven", "twelve",
+)
 
 
 def read(path: str) -> str:
@@ -16,13 +21,42 @@ def require(condition: bool, message: str) -> None:
         raise SystemExit(message)
 
 
+def open_status_sentence() -> str:
+    """Return the guide's status sentence, with its count read from the problem index.
+
+    docs/problems.json records each problem's status. When a problem is
+    answered, the sentence the guide must carry changes with it.
+    """
+    index = json.loads(read("docs/problems.json"))
+    problems = index["problems"]
+    total = len(problems)
+    require(total == index["problem_count"], "docs/problems.json problem_count disagrees with its rows")
+    still_open = sum(1 for problem in problems if problem["status"] == "open")
+    require(
+        0 < still_open <= total < len(NUMBER_WORDS),
+        f"no status sentence is defined for {still_open} open problems of {total}",
+    )
+    if still_open == total:
+        return f"All {NUMBER_WORDS[total]} problems remain open"
+    verb = "remains" if still_open == 1 else "remain"
+    return f"{NUMBER_WORDS[still_open].capitalize()} of the {NUMBER_WORDS[total]} problems {verb} open"
+
+
 def main() -> None:
     human = read("docs/READING_GUIDE.md")
     require("```" not in human, "HUMAN_ENTRY must not make readers begin with commands")
     require("\n|" not in human, "HUMAN_ENTRY must remain prose rather than a table")
     require(human.count("\n\n") >= 10, "HUMAN_ENTRY has lost its prose structure")
-    for boundary in ("All eight problems remain open", "universal question", "peer review"):
-        require(boundary in human, f"HUMAN_ENTRY lost claim boundary: {boundary}")
+    # Boundaries are matched across line wrapping, so reflowing a paragraph
+    # cannot hide or fake one.
+    prose = " ".join(human.split())
+    boundaries = (
+        open_status_sentence(),
+        "Universal irrationality and the proposed target values remain open",
+        "peer review",
+    )
+    for boundary in boundaries:
+        require(boundary in prose, f"HUMAN_ENTRY lost claim boundary: {boundary}")
 
     readme = read("README.md")
     human_link = readme.find("docs/READING_GUIDE.md")

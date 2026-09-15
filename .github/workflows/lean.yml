@@ -796,7 +796,10 @@ jobs:
       # and the corpus-integrity step above is their authoritative gate.
       - name: Markdown tables fit the rendered column
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/check_markdown_table_render.py --fail-on overflow .
+        run: |
+          python3 scripts/check_markdown_table_render.py --fail-on overflow .
+          # The checker's unit tests import it as scripts.check_markdown_table_render.
+          python3 -m unittest scripts.test_markdown_table_render -v
       # The freshness comparison above is only meaningful if a projection is a
       # pure function of the committed tree. This test exports HEAD without Git
       # metadata, injects hostile ambient Git/Python settings, and requires every
@@ -834,6 +837,11 @@ jobs:
       - name: Test downstream example claim boundary
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_downstream_example_contract.py
+      # The reader's guide carries the open-problem count and the review
+      # boundary. The test reads the count from docs/problems.json.
+      - name: Test the reader's guide keeps its claim boundaries
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: python3 scripts/test_public_writing_contract.py
       - name: Test adversarial methodology transitions
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_methodology_contract.py
@@ -895,3 +903,59 @@ jobs:
       - name: Test semantic licence map
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_license_map_contract.py
+      # Each script below passed on 2026-09-15 while no other step and no
+      # check_release.py command ran it, so a regression could merge unseen.
+      # Every test runs after an earlier failure too, and the step fails if
+      # any of them failed.
+      - name: Contract tests with no other CI caller
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: |
+          failed=()
+          for name in \
+            test_build_benchmark_packet_environment \
+            test_check_metadata_environment \
+            test_check_rendered_paper_boundary_environment \
+            test_checked_diagonal_depth_roster \
+            test_corpus_orientation \
+            test_declaration_atlas \
+            test_expansion_semantic_zones \
+            test_full_coverage_agent_entry \
+            test_historical_bridge_environment \
+            test_layout_conservation \
+            test_lean_package_share \
+            test_lean_source_layout \
+            test_off_diagonal_certificate_roster \
+            test_palomar_qualification_order_contract \
+            test_primary_source_dispositions \
+            test_probe_certificate_supply \
+            test_probe_second_channel_separation \
+            test_problem_note_sources \
+            test_proof_state_compiler \
+            test_public_paper_links \
+            test_publication_artifact_census \
+            test_reanchor_source_attributions \
+            test_refresh_projections_coverage \
+            test_refresh_projections_environment \
+            test_release_child_status \
+            test_repository_identity \
+            test_semantic_corpus_check_receipt \
+            test_semantic_family_compiler \
+            test_semantic_review_rebind \
+            test_shard_closure_t64 \
+            test_source_bound_reproduction \
+            test_strict_prime_semantic_digest \
+            test_validation_singleflight
+          do
+            echo "::group::$name"
+            if python3 "scripts/$name.py"; then
+              echo "::endgroup::"
+            else
+              echo "::endgroup::"
+              echo "::error title=$name::scripts/$name.py failed"
+              failed+=("$name")
+            fi
+          done
+          if (( ${#failed[@]} )); then
+            echo "failed: ${failed[*]}"
+            exit 1
+          fi
