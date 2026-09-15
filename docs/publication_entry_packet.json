@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:53da069a611d905e904f8d44232919af614b4752156b380603e3d4c2937d808d",
+    "docs/claims.json": "sha256:ef1fbe4b6974e963ab038b0d4bdf890103a0d96a62b98ef4916735a15c863325",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
     "docs/problems.json": "sha256:bce8cae8e26f4c0bd0c0772f59c5fe50fc3ffcfd379546173e03b7374a0e1dae",
-    "docs/publication_contract.json": "sha256:bf6436f26761ffdc1d94d6a1f635a1f35b5c1cf474da07d7f74e8d514f5a280b",
+    "docs/publication_contract.json": "sha256:23cfacb64e597c26e9e1fbcff64fee106c498cdf3b384816d5887dfc52e24c83",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:8be98aa8c63f600b5353cfdee8ab578336e5883221b50e37ad4ed5503c1acca2",
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 958,
+        "line": 974,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 127,
+        "line": 129,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 634,
+        "line": 667,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 626,
+        "line": 644,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "title": "first-harmonic anti-concentration on supplier fibres"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 972,
+        "line": 988,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 981,
+        "line": 997,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 991,
+        "line": 1007,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },

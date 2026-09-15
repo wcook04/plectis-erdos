@@ -220,13 +220,15 @@ $\varphi$ leaves open.
 \paragraph{Which technique family is even the right shape.}
 Four candidates, in decreasing order of relevance.
 
-\emph{Weyl differencing and van der Corput} are the wrong shape and can be
-dismissed exactly. Both require the phase to be a smooth or polynomial
-function of the summation variable so that a difference operator lowers its
-degree. Here $N\mapsto D(h,N,L)/2^{L}$ is, by Lemma~\ref{lem:orbit}, the
+\emph{Weyl differencing and van der Corput} do not simplify this phase. The
+van der Corput inequality holds for arbitrary bounded complex
+sequences~\cite[Theorem~2.1]{edeko-vdc}, so it applies here, but it leaves the
+correlations of the phase with its shifts to be estimated; Weyl differencing
+gains when a difference operator lowers the degree of a polynomial phase.
+Here $N\mapsto D(h,N,L)/2^{L}$ is, by Lemma~\ref{lem:orbit}, the
 $\times 2$ orbit map: differencing in $N$ multiplies the phase by $2$ and
 subtracts an integer, so the difference operator is an exact isometry of the
-problem and lowers nothing. This is not a heuristic --- it is
+problem and lowers nothing. This is
 $R_{N+1}=2R_N-\varphi(N+1)$ read modulo $1$.
 
 \emph{The large sieve} needs a family of well-separated frequencies and a
@@ -242,7 +244,7 @@ prime factor, use $\varphi(mp)=\varphi(m)(p-1)$ to linearise the phase in
 $p$, and sum over primes. \S\ref{sub:pivot} carries this as far as it goes.
 
 \emph{Erd\H{o}s's 1948 digit method}, which proved irrationality of
-$E=\sum_n 1/(2^n-1)=\sum_N d(N)/2^N$, is the right shape for the
+$E=\sum_n 1/(2^n-1)=\sum_N d(N)/2^N$~\cite{erdos1948lambert}, is the right shape for the
 \coord{mobius-mersenne} coordinate. That coordinate exists here and is
 exact: from $\varphi=\mu * \mathrm{id}$,
 \begin{equation}\label{eq:mobmers}
@@ -250,16 +252,16 @@ exact: from $\varphi=\mu * \mathrm{id}$,
   \qquad (\ev{Math};\ \text{verified to }16\ \text{digits},\ S=1.3676308019850223\ldots,\ \ev{Cert}).
 \end{equation}
 
-But the method does not transfer, for a reason that can be stated
-quantitatively rather than vaguely. Erd\H{o}s's argument for $E$ exploits
-that the coefficient $d(N)$ has enormous multiplicative fluctuation: over
+But the method does not transfer directly, for a reason that can be stated
+quantitatively. Erd\H{o}s's argument for $E$ solves congruences that make the
+divisor counts along a block divisible by increasing powers of $2$, and a tail
+bound then forces a long run of zero digits~\cite[pp.~63--66]{erdos1948lambert}.
+That uses the large divisibility available to $d(N)$: over
 $N\le Y$ the ratio of its maximum to its typical value is
-$Y^{(\log 2+o(1))/\log\log Y}$, so certain highly composite $N$ deposit
-identifiable spikes into the digit stream. The coefficient here is
+$Y^{(\log 2+o(1))/\log\log Y}$. The coefficient here is
 $\varphi(N)$, which satisfies $\varphi(N)/N\in[c/\log\log N,1]$: its
 multiplicative fluctuation over $N\le Y$ is a factor $e^{\gamma}\log\log Y$,
-that is, $\log\log Y$ rather than $Y^{c/\log\log Y}$. There are no spikes to
-find.
+that is, $\log\log Y$, far below $Y^{c/\log\log Y}$.
 
 In the M\"obius--Mersenne coordinate \eqref{eq:mobmers} the situation is
 worse rather than better: the coefficients $\mu(d)$ change sign, so the
@@ -274,7 +276,7 @@ inequivalent to irrationality, and argues the point from the structure of a
 collapse proof. It can be settled outright, and the witness lives in the
 same coefficient class that carries barriers B1 and B7.
 
-\begin{thm}[The gap is strictly stronger than irrationality]\label{thm:lacunary}
+\begin{thm}[Within the class $0\le c(n)\le n$, the gap is strictly stronger than irrationality]\label{thm:lacunary}
 Let $c(n)=1$ if $n=k!$ for some $k\ge 1$ and $c(n)=0$ otherwise, so
 $0\le c(n)\le n$ for all $n\ge 1$, and let $\beta=\sum_{n\ge1}c(n)/2^{n}
 =\sum_{k\ge 1}2^{-k!}$. Then $\beta$ is irrational, and for every $h\ge 1$
@@ -306,7 +308,8 @@ $X\ge 81(h+5)$.
 \noindent
 \ev{Math} \quad \scale{cofinal} \quad \coord{other:binary-window}. This
 upgrades the corpus's ``no collapse mechanism is known to apply'' to ``no
-collapse mechanism can exist''. It also says precisely what the missing
+collapse mechanism using only irrationality and the bound $0\le c(n)\le n$ can
+exist''. It also says precisely what the missing
 input must do: it must rule out that $S$ behaves, in its doubling orbit,
 like a Liouville number. That is the content of Corollary~\ref{cor:digitform},
 and it is why the requirement is a digit-statistics statement and not an
@@ -314,8 +317,10 @@ irrationality statement.
 
 \paragraph{Size of the quantity, honestly calibrated.}
 Under any model in which the binary digits of $\alpha_h$ behave like fair
-coin flips, $\rho_h(X)\to 1/2$ and the block sum is $O(\sqrt{X\log\log X})$
-by the Erd\H{o}s--G\'al law of the iterated logarithm for lacunary series
+coin flips, $\rho_h(X)\to 1/2$ and the block sum is $O(\sqrt{X\log\log X})$;
+for Lebesgue-almost every phase that is the law of the iterated logarithm of
+Erd\H{o}s and G\'al for lacunary series~\cite[p.~65]{erdos-gal}, which says
+nothing at the particular phase carried by $S$
 \ev{Cited}. The requirement is $\rho_h\ge 0.11$ and a saving of a constant
 factor. The measured values in Table~\ref{tab:blocks} are $\rho_h\approx 0.50$ and a block
 average of order $X^{-1/2}$. So the analytic requirement is weaker than the
@@ -382,7 +387,9 @@ asymptotic equality for the non-supplier count.
 
 \noindent
 \ev{Math} for the containment; \ev{Cited} for the smooth-number estimate
-needed to finish the numerical budget.  In particular the earlier identity
+needed to finish the numerical budget, namely
+$\Psi(x,x^{1/u})\sim\rho(u)x$ for fixed $u$~\cite[(1.1), p.~268]{granville-smooth}
+with $\rho(u)=1-\log u$ on $[1,2]$~\cite[(1.3), p.~268]{granville-smooth}.  In particular the earlier identity
 with Dickman density, and numerical extrapolations of an exact crossover
 scale, are not claimed.  The implication is sufficient if the required
 uniform shifted-interval estimate is supplied.
@@ -390,7 +397,8 @@ uniform shifted-interval estimate is supplied.
 \begin{prop}[The bad-cofactor budget]\label{prop:badcof}
 For $\eta\in(0,1)$ let $B(\eta)=\{m:\varphi(m)<\eta m\}$, with natural density
 $D(\eta)$; by Schoenberg's theorem $D$ exists, is continuous, and
-$D(0+)=0$ \ev{Cited}. Then
+$D(0+)=0$~\cite[\S17, p.~193]{schoenberg1928}, in the framework
+of~\cite[Theorem~1, pp.~318--319, and \S8, p.~323]{schoenberg1936} \ev{Cited}. Then
 \[
   \#\{N\in[X,2X): N\ \text{a supplier with cofactor}\ m\in B(\eta)\}
   \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,
@@ -409,12 +417,13 @@ and use that the logarithmic density of $B(\eta)$ tends to $D(\eta)$.
 \end{proof}
 
 \noindent
-\ev{Math} \quad \scale{cofinal}. The choice is not tight: the least element
-of $B(1/5)$ is $2\cdot3\cdot5\cdot7\cdot11\cdot13=30030$, with
+\ev{Math} \quad \scale{cofinal}. The least element of $B(1/5)$ is
+$2\cdot3\cdot5\cdot7\cdot11\cdot13=30030$, with
 $\varphi(m)/m=5760/30030=0.19181$, and the logarithmic density of $B(1/5)$ up
-to $3\cdot10^{5}$ is $3\cdot 10^{-5}$ \ev{Cert}. So $\eta=1/5$ is already
-defensible pending an explicit numerical bound on $D(1/5)$, and that bound is
-itself a finite computation a reader could start today.
+to $3\cdot10^{5}$ is $3\cdot 10^{-5}$ \ev{Cert}. Using $\eta=1/5$ itself would
+require a rigorous upper bound for the limiting density $D(1/5)$, including
+the part of $B(1/5)$ beyond the enumeration; the finite count does not supply
+one.
 
 \paragraph{The pivot quantifiers force a deep modulus.}
 The pivot sits at offset $t=L-s+1$ in \eqref{eq:window}.  Crucially, the
@@ -480,9 +489,16 @@ The missing input is thus a \emph{non-correlation between a fixed quadratic
 character at $p$ and the $2$-adic behaviour of $\varphi$ at the shifts
 $p+1,p+2,\dots$}: a correlation statement for two arithmetic functions at
 shifted arguments, of Chowla--Elliott type. The unconditional results in that
-family --- Matom\"aki--Radziwi\l{}\l{} in almost all short intervals, Tao's
-logarithmically averaged Chowla, Tao--Ter\"av\"ainen for odd order
-\ev{Cited} --- are averaged, never pointwise at a single scale.
+family concern bounded multiplicative functions at fixed shifts, and they are
+averaged: Matom\"aki and Radziwi\l{}\l{} compare short and long averages of
+real multiplicative functions bounded by $1$, outside an exceptional set of
+short intervals~\cite[Theorem~1]{matomaki-radziwill}; Tao proves the
+logarithmically averaged two-point Chowla and Elliott
+conjectures~\cite[Theorems~1.2--1.3]{tao-elliott}; and Tao and Ter\"av\"ainen
+prove the odd-order logarithmically averaged Chowla
+conjecture~\cite[Theorem~1.1]{tao-teravainen} \ev{Cited}. The phase here
+depends on $\varphi$ at a growing window of shifts, so none of these applies
+directly.
 
 \paragraph{A swing: the predicate needs only cofinally many $X$, so average
 over $X$.} This is the one place where the shape of the obligation is a gift.
@@ -674,11 +690,13 @@ A statement that a sequence does not almost repeat at some multiple of every
 gap, to logarithmic precision, is a \emph{subword-complexity} statement, and
 the mature technology for such statements about a specific real number is the
 Adamczewski--Bugeaud method: the Schmidt subspace theorem applied to the
-$b$-ary expansion, which shows that an algebraic irrational cannot have too
-many long repetitions \ev{Cited}. The shape fits exactly. The hypothesis does
+$b$-ary expansion, which shows that the block complexity $p(n)$ of the base-$b$
+expansion of an irrational algebraic number satisfies $\liminf_n
+p(n)/n=+\infty$~\cite[Theorem~1, p.~549]{adamczewski-bugeaud} \ev{Cited}. The
+shape fits exactly. The hypothesis does
 not: the method conditions on algebraicity, and $S$ is not known to be
-algebraic --- indeed it is not known to be irrational, which is the whole
-problem. There is no version of the method that runs from an analytic
+algebraic; indeed it is not known to be irrational, which is the whole
+problem. No version of the method is known that runs from an analytic
 description of the constant. That is the entire obstruction, and it is worth
 stating plainly because it explains why Route 4 looks so much easier than it
 is: the required combinatorial property is weak, but the only machine that
@@ -724,12 +742,13 @@ $\varphi$-specific floor
 
 \paragraph{The right vocabulary, and the audited gap.}
 Finite-dimensional span of all dyadic sections is the definition of a
-$2$-regular sequence in the sense of Allouche and Shallit \ev{Cited}.  For
+$2$-regular sequence in the sense of Allouche and
+Shallit~\cite[Definition~2.1]{allouche-shallit} \ev{Cited}.  For
 integer-valued sequences this is equivalent to finite generation of the
 $\mathbb Z$-module generated by the sections: if their span has dimension $d$,
 some $d$ evaluations embed it in $\mathbb Q^d$ and that module in
 $\mathbb Z^d$ \ev{Math}.
-\href{https://doi.org/10.5802/jtnb.718}{Coons, Theorem~3.2} proved that
+Coons~\cite[Theorem~3.2]{coons} proved that
 $\varphi$ is not $k$-regular for any $k\ge2$ \ev{Cited}.  The
 unconditional theorem
 \lean{Erdos249257.\allowbreak not_finiteDimensional_\allowbreak span_fullTotientKernel}{TotientMahlerDefect.lean:1145}
@@ -822,11 +841,10 @@ $X^{-1/2}$ against a permitted $0.89$ (Table~\ref{tab:blocks}, \ev{Cert}). (b) T
 requirements are weaker than the apparent truth by a factor $\sqrt X$; a
 proof does not need to understand the digits, only to exclude a pathology.
 (c) All countermodels are constructed lacunary objects. (d) The one
-coordinate in which $S$ has classical structure --- the M\"obius--Mersenne
-form \eqref{eq:mobmers} --- is an alternating sum of rational functions of
-$2^{d}$ with no functional equation, no modularity, no continued-fraction
-structure, and no algebraicity: there is no hidden object to find, which is
-consistent with genericity.
+coordinate in which $S$ has classical structure, the M\"obius--Mersenne
+form \eqref{eq:mobmers}, is an alternating sum of rational functions of
+$2^{d}$ for which no functional equation, modular structure or
+continued-fraction structure is known.
 
 \emph{Against, or at least complicating.} (a) B4's self-cancellation is
 exact, unconditional, and holds at every depth $K$: the cost of forcing a
@@ -837,10 +855,7 @@ the one place where the object itself pushes back. (b) The exact census
 records residues approaching the forbidden edge --- a closest central margin
 of about $2.2\cdot10^{-4}$ of the modulus at $t=100$ --- which is what a
 uniform model predicts and which rules out, permanently, any argument that
-proceeds by a crude uniform margin. (c) Proposition~\ref{prop:dickman} shows
-that even the pieces of the frontier that are provable become true only past
-$X\approx10^{30}$--$10^{40}$; a genuinely simple object would not usually
-require asymptotics that begin so late.
+proceeds by a crude uniform margin.
 
 \emph{Verdict, flagged as inference.} The evidence supports ``the digits of
 $S$ are generic and the wall is technological'' over ``the object is

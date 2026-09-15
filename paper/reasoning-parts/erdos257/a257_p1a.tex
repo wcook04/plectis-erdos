@@ -54,8 +54,8 @@ only at actually-skipped ranks, not at every rank.
 \label{thm:second-channel}
 If the greedy second-channel phase (\emph{greedyMersenneSecondChannelPhaseRat}) stays
 separated (\emph{HalfSecondChannelSeparatedRat}) at every skipped rank, then
-$1/2\in\mathrm{mersenneAchievementSet}$; a rational specialization discharges the
-hypothesis from row $7$ on.
+$1/2\in\mathrm{mersenneAchievementSet}$; the rational specialization proves the rational
+separation at ranks $n\le6$ and assumes it for $n\ge7$.
 \par\ev{Lean}\scale{uniform}\coord{second-channel-phase}
 \lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3118}
 \lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3151}
@@ -91,7 +91,7 @@ factors entirely through one local arithmetic step.
 \label{thm:middle-producer-escape}
 If, at every late middle-branch row, $\mathrm{card}(\mathrm{support})+\mathrm{belowPulse}+5
 < 4\cdot\mathrm{remainder}$ (\emph{SeamMiddleProducerCardEscape}), then
-$1/2\in\mathrm{mersenneAchievementSet}$. The strictly weaker-hypothesis, stronger-conclusion
+$1/2\in\mathrm{mersenneAchievementSet}$. The
 socket \emph{SeamMiddleProducerRowEscape} ($s\le\mathrm{remainder}$ at every late middle
 row) implies the card escape and hence also closes the branch.
 \par\ev{Lean}\scale{uniform}\coord{seam-integer}
@@ -193,7 +193,8 @@ $0$ whenever the actual word equals the seam-greedy word), proved \emph{equivale
 \begin{thm}[Erd\H{o}s--Borwein full-support irrationality, unconditional]
 \label{thm:full-support-catalogue}
 For every base $b\ge 2$: $\sum'_{n\ge 1} 1/(b^n-1)$ is irrational, unconditionally. No
-open obligations. Base $2$ is the classical Erd\H{o}s--Borwein constant. This is the
+open obligations. The theorem is Erd\H{o}s's~\cite{erdos1948}; base $2$ is the classical
+Erd\H{o}s--Borwein constant. This is the
 terminal target every other rigidity/support theorem in this catalogue is measured
 against.
 \par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
@@ -256,6 +257,11 @@ Theorem~\ref{thm:full-support-catalogue}.
 \lean{erdosSupportSeries\_multiples\_eq\_pow\_base\_full\_support}{CertificateKernel.lean:9054}
 \end{thm}
 
+Luca and Tachiya proved irrationality for every purely periodic integer weight that is not
+identically zero~\cite[Theorem~A, p.~139]{lucatachiya2017}.  The periodic, eventually periodic,
+residue-class and odd-support statements below follow from their theorem; the declarations are
+formal proofs of these cases, and the mechanism described is that of the certificate proof.
+
 \begin{thm}[Periodic-support irrationality: the periodic divisor-orbit sieve]
 \label{thm:periodic-support}
 For every $b\ge 2$ and every $m$-periodic support $A$ ($\forall n,\, n{+}m\in A
@@ -282,12 +288,16 @@ threshold $N_0$ on has $\mathrm{erdosSupportSeries}\,b\,A$ irrational.
 \label{thm:residue-odd}
 For every $b\ge 2$, modulus $m\ge 1$, residue $c$: $\sum_{n\equiv c\,(m)} 1/(b^n-1)$ is
 irrational. Specializing $m=2,c=1$: $\sum_{n\text{ odd}} 1/(b^n-1)$ is irrational for
-every $b\ge 2$ — the first support class of density strictly between $0$ and $1$ to
-land.
+every $b\ge 2$, the case treated explicitly in~\cite[Example~2, p.~140]{lucatachiya2017}.
 \par\ev{Lean}\scale{uniform}\coord{periodic-sieve}
 \lean{irrational\_erdosSupportSeries\_residueClass}{CertificateKernel.lean:11672}
 \lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11686}
 \end{thm}
+
+\paragraph{Comparison with the known theorem.} Luca and Tachiya proved irrationality for every
+nonzero purely periodic integer weight, of any signs~\cite[Theorem~A, p.~139]{lucatachiya2017}, so
+the terminating branch below occurs only for the zero weight.  The theorem records the dichotomy
+reached by the certificate method, together with its one-sided closures.
 
 \begin{thm}[Signed periodic-weight dichotomy and its unconditional one-sided closures]
 \label{thm:signed-periodic}
@@ -307,10 +317,10 @@ is unconditionally irrational.
 \label{thm:mersenne-channel-survival}
 For a finite family $P$ of ``upper-half'' primes (each $p$ with $t<2p$ for scale $t$,
 each dividing a squarefree radical $r$ all of whose prime factors are $\le t$): the
-pairwise-coprime Mersenne product $C=\prod_{p\in P}(2^p-1)$ survives fraction reduction —
-$C/\gcd(C,h)\mid (h\cdot\mathrm{mobiusNumerator}(r)/\mathrm{mersenne}(r))\mathrm{.den}$
-— exactly when $C$ is coprime to scale $h$ (or, weaker, when every prime factor of $h$ is
-$\le t$). This is the load-bearing quantitative step behind
+pairwise-coprime Mersenne product $C=\prod_{p\in P}(2^p-1)$ survives fraction reduction in the
+following sense: $C/\gcd(C,h)$ divides the reduced denominator of
+$h\cdot\mathrm{mobiusNumerator}(r)/\mathrm{mersenne}(r)$, and when $C$ is coprime to the scale $h$
+the whole product $C$ divides it. This is the load-bearing quantitative step behind
 Theorem~\ref{thm:full-support-catalogue}.
 \par\ev{Lean}\scale{uniform}\coord{cyclotomic}
 \lean{upperHalfChannel\_survivorProduct\_dvd\_den}{MersenneShadowCyclotomicNoncollapse.lean:766}
@@ -345,10 +355,11 @@ new automated fatal-gap search at small depth.
 \label{obs:period-four-obstruction}
 The explicit period-$4$ sign pattern $1,0,-1,0$ (\emph{periodFourSignWeight}) has
 $\mathrm{intWeightedCoeff}\,w\,n = 0$ identically for every $n\equiv 3\pmod 4$, via the
-divisor-involution $d\mapsto n/d$. This is exactly why the general signed-periodic case
-(Theorem~\ref{thm:signed-periodic}) only reaches a dichotomy rather than an unconditional
-theorem: no residue-blind selection can force a nonzero protected residue for every
-periodic signed weight.
+divisor-involution $d\mapsto n/d$. This is why the certificate method for the general signed-periodic case
+(Theorem~\ref{thm:signed-periodic}) reaches only a dichotomy: no residue-blind selection can
+force a nonzero protected residue for every periodic signed weight. Luca and Tachiya's theorem
+gives irrationality for every nonzero periodic weight by another
+argument~\cite[Theorem~A, p.~139]{lucatachiya2017}.
 \par\ev{Lean}\scale{fixed}\coord{signed-divisor-calculus}
 \lean{intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14226}
 \end{obs}
@@ -575,7 +586,8 @@ bookkeeping consumed inside the largest-skip-late induction
 \begin{thm}[Critical dyadic-band index: a problem-agnostic quantifier collapse]
 \label{thm:critical-dyadic-band}
 \emph{CriticalDyadicBandIndex}$\,d\,E\,j$ picks out the unique nearest dyadic power
-$2^{d-j+1}\ge E$. Fully abstract, pure $\mathbb N$ arithmetic, zero seam content:
+$2^{d-j+1}\ge E$. Fully abstract, pure $\mathbb N$ arithmetic, zero seam content: for
+$E\le 2^{d+1}$,
 $\mathrm{DyadicBandEscape}\,d\,E \iff \exists j,\,\mathrm{CriticalDyadicBandIndex}\,d\,E\,j
 \land E+2(d+j)\le 2^{d-j+1}$ — the $\forall j$ band-avoidance condition collapses to
 checking exactly \emph{one} critical index, reducing a check of $d{+}1$ separate

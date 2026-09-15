@@ -353,8 +353,9 @@ finite window $[4,L_J/2]$, not a cofinite complement to be checked one at a time
 \begin{lem}[Mod-12 filter, $J\ge7$]
 \label{lem:tr-mod12}
 For $J\ge7$: $\mu_J(M)\le\tfrac{11}{15}\Rightarrow 12\mid M$ (case analysis on $M\bmod4$ and
-$M\bmod3$). Combined with Corollary~\ref{cor:tr-half-lcm}, the search for possibly-bad ranks inside
-$[4,L_J/2]$ can be restricted to multiples of $12$, a $12\times$ speedup with no loss of coverage.
+$M\bmod3$). Combined with Corollary~\ref{cor:tr-half-lcm}, a rank $n\in[4,L_J/2]$ needs only the
+candidate witnesses $M\in[n,2n-2]$ that are multiples of $12$; every rank in that window is still
+checked.
 \end{lem}
 
 \begin{thm}[Finite decision procedure]

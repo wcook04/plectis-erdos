@@ -36,13 +36,16 @@ $\mathrm{TailAfterTwo}(r) := \sum_{n\ge 0}\mu(n+3)/(2^{n+3}-1)^r$.
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{mobius-mersenne}.
 \end{defn}
 
-\begin{thm}[Two low rungs are exact rationals tied to \#249]
+\begin{thm}[The first two rungs: a rational value and the totient offset]
 $\Theta_1 = 1/2$, and $\Theta_2 = \bigl(\sum_{n\ge 1}\varphi(n)2^{-n}\bigr) - 1/2$
 --- the second rung is literally $S - 1/2$.
 \lean{Erdos249257.SignedQMomentObstruction.mobiusMersenneTheta_one}{SignedQMomentObstruction.lean:197}
 \quad \lean{Erdos249257.SignedQMomentObstruction.mobiusMersenneTheta_two_eq_totient_offset}{SignedQMomentObstruction.lean:214}
 \quad \ev{Lean} \quad \scale{fixed} \quad \coord{mobius-mersenne}.
 \end{thm}
+
+\noindent The second equality is the M\"obius-square identity credited in
+\S\ref{ssec:coprime}; whether $\Theta_2$ is rational is \#249 itself.
 
 \begin{thm}[Two-atom exact Hankel gap]
 $\mathrm{TwoAtom}(r{+}1)^2 - \mathrm{TwoAtom}(r)\mathrm{TwoAtom}(r{+}2) = 4/3^{r+2}$,

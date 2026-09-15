@@ -360,11 +360,10 @@ cofinal target built from it:
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_topEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:2184}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{mobius-mersenne}.
 
-\paragraph{Five strictly weaker links, each independently proved sufficient.}
-The same file proves five further cofinal predicates, each strictly weaker
-than \texttt{PowerTwoActualLcmTopEdgeResidueGapSupply} (each implies it, so
-each is an easier target), with a direct \#249 endpoint of its own —
-proving the \emph{weakest} of the six closes the entire cluster.
+\paragraph{Five further links, each proved sufficient.}
+The same file proves five further cofinal predicates, each of which implies
+\texttt{PowerTwoActualLcmTopEdgeResidueGapSupply} and has a direct \#249
+endpoint of its own; proving any one of them closes \#249.
 
 \begin{enumerate}
 \item[(i)] $\mathrm{PowerTwoAdjacentSuffixMidbandSupply}$: replaces the
@@ -425,10 +424,9 @@ absolute value:
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:2221}.
 \end{enumerate}
 
-\paragraph{The weakest known link, and the exact identity pinning it.}
-A sixth predicate, strictly weaker again than (v) — it is the disjunction of
-(v)'s inequality with the opposite-direction escape — is the true minimum
-of the whole cluster:
+\paragraph{A sixth link, and the exact identity pinning it.}
+A sixth predicate is the disjunction of (v)'s inequality with the
+opposite-direction escape:
 \[
   \mathrm{PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply} :\equiv
   \forall a_0,\ \exists a,q,\quad \cdots\ \wedge\
@@ -473,7 +471,8 @@ $2(H{+}q{+}2)\le 4^q$) for non-integrality at that rank.
 \paragraph{A second, independent finite-window target: the short-arithmetic-kill supply.}
 A separate reduction ties the diagonal form (the collapsing-free-parameters chain above) to this actual-orbit
 lane via an exact digit formula with no cleanliness hypothesis at all,
-$\mathrm{lcmRayArithmeticLetter}(t,j) = \varphi(H_t+j)-\varphi(H_t)$ for
+$\mathrm{lcmRayArithmeticLetter}(t,j) = \varphi(2H_t+j)-\varphi(H_t+j)$, with
+$H_t=\mathrm{periodLcm}(t)$, for
 \emph{every} offset $j$
 (\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter_eq_deltaTotient}{TotientActualLcmOrbitArithmetic.lean:298},
 \ev{Lean}), and
@@ -699,7 +698,7 @@ argument of this shape is attempted or proved anywhere in the corpus.
 target, in every one of its six equivalent-or-sufficient guises, reduces
 under the exact identity of the actual-orbit lane above to control of a single \emph{terminal
 arithmetic letter}: the value $\mathrm{diagonalWindowIncrement}(2^a,2q{+}2)
-= \varphi(2H{+}2q{+}2)-\varphi(2H)$ measured against twice a centred
+= \varphi(2H{+}2q{+}2)-\varphi(H{+}2q{+}2)$ measured against twice a centred
 carry-lift state. What is needed is not a new certificate mechanism — the
 whole apparatus of arithmetic letters, centred lifts, and carry orbits is
 already exact and unconditional — but a genuine size or residue statement
@@ -726,5 +725,148 @@ claim that Problem 249 is solved.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding. The author declares no competing interests.
+
+\clearpage
+\begin{thebibliography}{99}
+\small
+\raggedright
+\setlength{\itemsep}{0pt}
+\bibitem{allouche-shallit}
+J.-P.~Allouche and J.~Shallit, \emph{The ring of $k$-regular sequences},
+Theoret.\ Comput.\ Sci.\ \textbf{98} (1992), no.~2, 163--197,
+doi:\href{https://doi.org/10.1016/0304-3975(92)90001-V}{10.1016/0304-3975(92)90001-V}.
+Definitions and early statements are cited with the author preprint's numbering.
+\bibitem{coons}
+M.~Coons, \emph{(Non)Automaticity of number theoretic functions},
+J.\ Th\'eor.\ Nombres Bordeaux \textbf{22} (2010), no.~2, 339--352,
+doi:\href{https://doi.org/10.5802/jtnb.718}{10.5802/jtnb.718}.
+Theorem~3.2, p.~348.
+\bibitem{coons-jsr}
+M.~Coons, \emph{Regular sequences and the joint spectral radius},
+Internat.\ J.\ Found.\ Comput.\ Sci.\ \textbf{28} (2017), no.~2, 135--140,
+doi:\href{https://doi.org/10.1142/S0129054117500095}{10.1142/S0129054117500095};
+arXiv:\href{https://arxiv.org/abs/1511.07535v1}{1511.07535v1}.
+Theorem~1, Proposition~4 and Corollary~7 are cited with the arXiv v1 numbering.
+\bibitem{martin-phi-inequalities}
+G.~Martin, \emph{Simultaneous inequalities among values of the Euler
+phi-function}, arXiv:\href{https://arxiv.org/abs/math/0603053v1}{math/0603053v1}, 2006.
+Theorem~1, pp.~1--2.
+\bibitem{wong2015}
+E.~Wong, \href{https://math.stackexchange.com/a/1211557}{answer 1211557} to
+\emph{An infinite sum based on the mod-parity of Euler's totient function},
+Mathematics Stack Exchange, 29 March 2015, accessed 15 September 2026.
+\bibitem{eldar2026oeis}
+A.~Eldar, comment and formula added to OEIS A256936 (revisions 28 and 31),
+15 March 2026, \url{https://oeis.org/history?seq=A256936},
+accessed 16 September 2026.
+\bibitem{fan2026totient}
+S.~Fan, comment on Erd\H{o}s Problem \#249, 16 May 2026, 19:01,
+\href{https://www.erdosproblems.com/forum/thread/249}{Erd\H{o}s Problems
+discussion thread}, accessed 16 September 2026.
+\bibitem{erdosgraham1980}
+P.~Erd\H{o}s and R.~L.~Graham, \emph{Old and New Problems and Results in
+Combinatorial Number Theory}, Monographies de L'Enseignement
+Math\'ematique \textbf{28}, 1980, p.~61.
+\bibitem{erdos1948lambert}
+P.~Erd\H{o}s, \emph{On arithmetical properties of Lambert series},
+J.\ Indian Math.\ Soc.\ (N.S.) \textbf{12} (1948), 63--66,
+\url{https://users.renyi.hu/~p_erdos/1948-04.pdf}.
+\bibitem{postelmans-vanassche}
+K.~Postelmans and W.~Van Assche, \emph{Irrationality of $\zeta_q(1)$ and
+$\zeta_q(2)$}, J.\ Number Theory \textbf{126} (2007), no.~1, 119--154,
+doi:\href{https://doi.org/10.1016/j.jnt.2006.11.011}{10.1016/j.jnt.2006.11.011};
+arXiv:\href{https://arxiv.org/abs/math/0604312v1}{math/0604312v1}.
+Theorem~1.3 is cited with the arXiv v1 pagination, p.~3.
+\bibitem{nesterenko1996}
+Yu.~V.~Nesterenko, \emph{Modular functions and transcendence questions},
+Sb.\ Math.\ \textbf{187} (1996), no.~9, 1319--1348,
+doi:\href{https://doi.org/10.1070/SM1996v187n09ABEH000158}{10.1070/SM1996v187n09ABEH000158}.
+Corollary~2, p.~1320.
+\bibitem{schramm-gcd}
+W.~Schramm, \emph{The Fourier transform of functions of the greatest common
+divisor}, Integers \textbf{8} (2008), \#A50,
+\url{https://math.colgate.edu/~integers/i50/i50.pdf}.
+Theorem and equation~(2), p.~2.
+\bibitem{toth-gcd}
+L.~T\'oth, \emph{A survey of gcd-sum functions}, J.\ Integer Seq.\ \textbf{13}
+(2010), Article~10.8.1,
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL13/Toth/toth10.pdf}.
+\S1, equations (1)--(2).
+\bibitem{merca-schmidt}
+M.~Merca and M.~D.~Schmidt, \emph{Generating special arithmetic functions by
+Lambert series factorizations}, Contrib.\ Discrete Math.\ \textbf{14} (2019),
+no.~1, 31--45,
+doi:\href{https://doi.org/10.55016/ojs/cdm.v14i1.62425}{10.55016/ojs/cdm.v14i1.62425};
+arXiv:\href{https://arxiv.org/abs/1706.00393v2}{1706.00393v2}.
+Equation~(1) is cited with the arXiv v2 pagination, p.~2.
+\bibitem{merca2017}
+M.~Merca, \emph{The Lambert series factorization theorem},
+Ramanujan J.\ \textbf{44} (2017), 417--435,
+doi:\href{https://doi.org/10.1007/s11139-016-9856-3}{10.1007/s11139-016-9856-3}.
+Theorem~1.2, p.~420.
+\bibitem{kovac-tao}
+V.~Kova\v{c} and T.~Tao, \emph{On several irrationality problems for Ahmes
+series}, Acta Math.\ Hungar.\ \textbf{175} (2025), no.~2, 572--608,
+doi:\href{https://doi.org/10.1007/s10474-025-01528-0}{10.1007/s10474-025-01528-0};
+arXiv:\href{https://arxiv.org/abs/2406.17593v4}{2406.17593v4}.
+Theorem~2.3 is cited with the arXiv v4 pagination, p.~5.
+\bibitem{bgs2016}
+R.~Balasubramanian, S.~Giri and P.~Srivastav, \emph{On correlations of certain
+multiplicative functions}, J.\ Number Theory \textbf{174} (2017), 221--238,
+doi:\href{https://doi.org/10.1016/j.jnt.2016.10.001}{10.1016/j.jnt.2016.10.001};
+arXiv:\href{https://arxiv.org/abs/1511.02221v3}{1511.02221v3}.
+Theorem~2.2 is cited with the arXiv v3 pagination, p.~2.
+\bibitem{granville-smooth}
+A.~Granville, \emph{Smooth numbers: computational number theory and beyond},
+in \emph{Algorithmic Number Theory}, MSRI Publ.\ \textbf{44} (2008), 267--323,
+\url{https://library.slmath.org/books/Book44/files/09andrew.pdf}.
+Equations (1.1) and (1.3), p.~268.
+\bibitem{schoenberg1928}
+I.~Schoenberg, \emph{\"Uber die asymptotische Verteilung reeller Zahlen
+mod~1}, Math.\ Z.\ \textbf{28} (1928), 171--199,
+doi:\href{https://doi.org/10.1007/BF01181156}{10.1007/BF01181156}.
+\S17, p.~193, for the distribution of $\varphi(n)/n$.
+\bibitem{schoenberg1936}
+I.~J.~Schoenberg, \emph{On asymptotic distributions of arithmetical
+functions}, Trans.\ Amer.\ Math.\ Soc.\ \textbf{39} (1936), no.~2, 315--330.
+Theorem~1, pp.~318--319; \S8, p.~323.
+\bibitem{edeko-vdc}
+N.~Edeko, H.~Kreidler and R.~Nagel, \emph{A dynamical proof of the van der
+Corput inequality}, Dyn.\ Syst.\ \textbf{37} (2022), no.~4, 648--665,
+doi:\href{https://doi.org/10.1080/14689367.2022.2100244}{10.1080/14689367.2022.2100244};
+arXiv:\href{https://arxiv.org/abs/2106.11835v3}{2106.11835v3}.
+Theorem~2.1 is cited with the arXiv v3 pagination, p.~4.
+\bibitem{matomaki-radziwill}
+K.~Matom\"aki and M.~Radziwi\l\l, \emph{Multiplicative functions in short
+intervals}, Ann.\ of Math.\ \textbf{183} (2016), no.~3, 1015--1056,
+doi:\href{https://doi.org/10.4007/annals.2016.183.3.6}{10.4007/annals.2016.183.3.6};
+arXiv:\href{https://arxiv.org/abs/1501.04585v4}{1501.04585v4}.
+Theorem~1 is cited with the arXiv v4 pagination, pp.~1--2.
+\bibitem{tao-elliott}
+T.~Tao, \emph{The logarithmically averaged Chowla and Elliott conjectures for
+two-point correlations}, Forum Math.\ Pi \textbf{4} (2016), e8,
+doi:\href{https://doi.org/10.1017/fmp.2016.6}{10.1017/fmp.2016.6};
+arXiv:\href{https://arxiv.org/abs/1509.05422v4}{1509.05422v4}.
+Theorems~1.2--1.3 are cited with the arXiv v4 pagination, pp.~2 and~5.
+\bibitem{tao-teravainen}
+T.~Tao and J.~Ter\"av\"ainen, \emph{Odd order cases of the logarithmically
+averaged Chowla conjecture}, J.\ Th\'eor.\ Nombres Bordeaux \textbf{30}
+(2018), no.~3, 997--1015,
+doi:\href{https://doi.org/10.5802/jtnb.1062}{10.5802/jtnb.1062};
+arXiv:\href{https://arxiv.org/abs/1710.02112v1}{1710.02112v1}.
+Theorem~1.1 is cited with the arXiv v1 pagination, p.~2.
+\bibitem{adamczewski-bugeaud}
+B.~Adamczewski and Y.~Bugeaud, \emph{On the complexity of algebraic numbers
+I. Expansions in integer bases}, Ann.\ of Math.\ \textbf{165} (2007), no.~2,
+547--565. Theorem~1, p.~549.
+\bibitem{everest-periodic}
+G.~Everest, A.~J.~van der Poorten, Y.~Puri and T.~Ward, \emph{Integer
+sequences and periodic points}, J.\ Integer Seq.\ \textbf{5} (2002),
+Article~02.2.3. Lemma~3.1 is cited with the preprint pagination, p.~5.
+\bibitem{erdos-gal}
+P.~Erd\H{o}s and I.~S.~G\'al, \emph{On the law of the iterated logarithm.~I},
+Proc.\ Kon.\ Ned.\ Akad.\ Wetensch.\ Ser.~A \textbf{58} $=$ Indag.\ Math.\
+\textbf{17} (1955), 65--76, \url{https://www.renyi.hu/~p_erdos/1955-06.pdf}.
+\end{thebibliography}
 
 \end{document}

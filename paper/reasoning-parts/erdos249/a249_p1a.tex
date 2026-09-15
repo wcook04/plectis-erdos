@@ -308,6 +308,13 @@ These identities are exact and generic: no coprimality is assumed and no channel
 \par\noindent\ev{Lean} \scale{uniform} \coord{mobius-mersenne} \lean{scaledMobiusShadow\_eq\_radicalBase}{RadicalMobiusShadow.lean:125} \lean{baseMobiusShadow\_den}{RadicalMobiusShadow.lean:150}
 \end{prop}
 
+\noindent The constant in mob:b4 is the value of the gcd word at a primitive
+$m$-th root of unity.  Since the $X^k$ coefficient of that word depends only on
+$\gcd(k,r)$, the value is a discrete Fourier coefficient of a function of the
+greatest common divisor, which Schramm expresses through Ramanujan
+sums~\cite[Theorem and (2), p.~2]{schramm-gcd}; mob:b4 specialises this to the
+present numerator polynomial and proves the integral cyclotomic consequence.
+
 \begin{prop}[mob:b4 --- cyclotomic congruence, T2, \texttt{cyclotomic\_dvd\_mobiusNumeratorPolynomial\_sub}]
 For $r$ squarefree, $m \mid r$: $\Phi_m \mid \big(\mathrm{mobiusNumeratorPolynomial}(r) - C(\mu(m)\cdot J_2(r/m))\big)$ in $\mathbb{Z}[X]$, where $J_2 = \mu * \mathrm{id}^2$ is the Jordan totient. Evaluated: $\mathrm{cyclotomicEval}(m) \mid \mathrm{mobiusNumerator}(r) - \mu(m)\cdot J_2(r/m)$. Every cyclotomic fibre $\Phi_m(2)$ of the numerator is congruent to an explicit constant depending only on $\mu(m)$ and the Jordan totient of the cofactor. Setting $m=r$ gives mob:b5 (top fibre survives).
 \par\noindent\ev{Lean} \scale{uniform} \coord{cyclotomic} \lean{cyclotomic\_dvd\_mobiusNumeratorPolynomial\_sub}{CyclotomicProjectionOfShadow.lean:299} \lean{mobiusNumerator\_mod\_cyclotomicEval}{CyclotomicProjectionOfShadow.lean:310}
@@ -341,7 +348,7 @@ Weight $f$ & Value $L(f)$ & Status \\
 \endfirsthead
 $\mu$ & $L(\mu) = 1/2$ & rational, trivial \\
 $\varphi$ & $L(\varphi) = 2$ & rational \\
-$\mathrm{Id}$ & $L(\mathrm{Id}) = \sum_m \sigma(m)/2^m$ & transcendental (Nesterenko 1996, \ev{Cited}, not formalised) \\
+$\mathrm{Id}$ & $L(\mathrm{Id}) = \sum_m \sigma(m)/2^m$ & transcendental, since $1-24L(\mathrm{Id})$ is Ramanujan's $P(1/2)$ (Nesterenko~\cite[Cor.~2, p.~1320]{nesterenko1996}, \ev{Cited}, not formalised) \\
 $1$ & $L(1) = \mathcal{E}$, Erd\H{o}s--Borwein constant & irrational, \ev{Lean} (\nolinkurl{irrational_erdosBorwein_series}, \codeid{CertificateKernel.lean:8007}) — matches \#257's full-support case \\
 $A = \varphi*\mu$ & $L(A) = S$ & \textbf{OPEN} — this is \#249 \\
 \bottomrule
