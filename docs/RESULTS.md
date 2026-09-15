@@ -113,11 +113,15 @@ centered state with `|E(n)|<C(n)`. If one constant `B` satisfies `E(n)≥−B`
 for every `n`, and for every `K` one eventually has `K|E(n)|<C(n)`, then
 `E(n)=0` eventually (`boundedNegativePart_eventually_zero`). The checked
 centered-zero theorem then gives the Sylvester recurrence once the exact
-product-cleared orbit has an eventually nonzero next-tail state. The passage
-from the original reciprocal sequence to every displayed hypothesis is not an
-end-to-end Lean theorem; in particular, no uniform lower bound on its centered
-error is proved. Unbounded negative excursions and the full Erdős endpoint
-remain open.
+product-cleared orbit has an eventually nonzero next-tail state. Lean carries
+that chain to the original denominators in
+`boundedNegativePart_sylvesterNext_eventually`, and checks the LCM-weighted
+bounded-defect corollary from the rational reciprocal sum in
+`original_coordinate_lcm_bounded_defect`
+(`ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean:49`); the paper derives
+the displayed `P_n` form from that corollary by `A_n | P_n`. For the
+state-system endpoint, no uniform lower bound on the centered error is proved.
+Unbounded negative excursions and the full Erdős endpoint remain open.
 
 **[#249](https://www.erdosproblems.com/249).** Bounded-residue series `A_m`
 are irrational for every `m ≥ 3`, with a complete rationality classification
@@ -239,9 +243,10 @@ ordinary proof that `F(a/b)` is irrational for coprime integers `a>b≥1` when
 conclusion of Zudilin's 2004 Lemma 7, together with the arithmetic and growth
 estimates used in its proof, before that source's integer-specialisation step.
 It makes no priority claim for the rational-base extension. In particular,
-`F((31/4)^r)` is irrational for every integer `r≥1`. Lean checks supporting
-arithmetic, the rational-base tail recurrence, and specific route exclusions;
-it does not check this irrationality theorem. The base `3/2` lies outside the
+`F((31/4)^r)` is irrational for every integer `r≥1`. Lean checks that
+specialization with the source supply applied rather than assumed, together
+with the supporting arithmetic, the rational-base tail recurrence, and
+specific route exclusions. The base `3/2` lies outside the
 sufficient region, and the required approximants with analytic remainder
 control remain open.
 
@@ -504,8 +509,14 @@ boundaries kept together.
   eventually. With centered zero and an eventually nonzero next tail,
   `sylvesterNext_eventually_of_centered_zero` recovers the Sylvester recurrence.
   The latter two declarations are mechanism evidence for this one family, not
-  separate rows. The analytic passage from the reciprocal series to these
-  hypotheses is ordinary mathematics, not an end-to-end Lean proof. This is
+  separate rows. Lean carries the chain to the original denominators in
+  `boundedNegativePart_sylvesterNext_eventually`
+  (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2412`), and checks the
+  LCM-weighted bounded-defect corollary from the rational reciprocal sum in
+  `original_coordinate_lcm_bounded_defect`
+  (`ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean:49`). The frontier
+  profile of a counterexample is checked in `canonical_frontier`
+  (`ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean:151`). This is
   not reciprocal-tail irrationality: unbounded upward excursions of the
   unreduced numerator remain open. The selected statement has a separately
   declared Comparator interface; that is not a fresh passing receipt for this
@@ -1034,8 +1045,9 @@ core)**
   (`ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean:293`). Claims registry:
   `three_halves_coordinatewise_corridor_no_go` (`res:nocorridor`) and
   `rational_base_cleared_tail_recurrence` (`res:tailrec`); both are exact
-  formal boundaries. They do not replace the ordinary `F(31/4)` specialization
-  of Zudilin, which is not a Lean irrationality theorem.
+  formal boundaries. They sit beside the ordinary `F(31/4)` specialization
+  of Zudilin, whose consequence Lean checks in
+  `ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean`.
 - The elementary height inequality used by Bundschuh–Väänänen's external
   irrationality criterion at `7/2` is checked
   (`ErdosProblems/Erdos1049/RationalBaseLambert.lean:83`);

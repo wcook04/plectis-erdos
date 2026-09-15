@@ -376,13 +376,21 @@ and is not always the least such number.
 \paragraph{Results and boundary.}
 Theorems~\ref{long1049:res:region} and~\ref{long1049:res:31over4} are ordinary mathematics.  They
 consume Zudilin's Lemma~7 together with the inputs of that lemma's own proof,
-and every further step is proved in Section~\ref{long1049:sec:region}.  They are not
-kernel-checked.  The linked Lean declarations establish exact inequalities,
+and every further step is proved in Section~\ref{long1049:sec:region}.  Lean checks
+both statements, with the source supply applied rather than assumed: the region
+theorem is
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L113}{the rational-base region},
+and the power family is
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117}{the powers of \(31/4\)}
+with
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L121}{the base \(31/4\)}.
+The construction of the approximations is Zudilin's
+\cite{zudilin2004,zudilin2016}; what is checked here is the Lean formalisation
+of its consequence.  The linked Lean declarations also establish exact inequalities,
 congruences, finite collision counts, recurrence identities, and exclusions for
 the named models; among them are the height comparisons that place \(31/4\)
-inside the enlarged logarithmic region and outside the earlier one.  No Lean
-declaration in this release's library carries an irrationality statement at a
-rational noninteger base.  Bundschuh and V\"a\"an\"anen's irrationality theorem
+inside the enlarged logarithmic region and outside the earlier one.
+Bundschuh and V\"a\"an\"anen's irrationality theorem
 at \(7/2\), Rivin's functional nonrationality theorem, and the two-variable
 Mahler theorem used below remain external results.  At \(3/2\), the missing
 step is still an actual primitive approximation family with nonzero remainder
@@ -895,8 +903,10 @@ Section~\ref{long1049:sec:regionbracket}, and the four integer identities of the
 step in Section~\ref{long1049:sec:degrees}.  Checked by exact computation are the
 reconstructions of $U_n$ and $V_n$ for $n\le4$, together with the numerical
 values of $J$, $C_0$ and $\theta^{*}$; those are computational receipts, and
-the reconstruction is described in Section~\ref{long1049:sec:receipts}.  No part of
-Theorem~\ref{long1049:res:region} is a Lean theorem.
+the reconstruction is described in Section~\ref{long1049:sec:receipts}.
+Theorem~\ref{long1049:res:region} is checked in Lean as
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L113}{the rational-base region},
+with the source supply applied rather than assumed.
 
 \paragraph{Attribution.}
 Bundschuh and V\"a\"an\"anen proved the irrationality of this value on the

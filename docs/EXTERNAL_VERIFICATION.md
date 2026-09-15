@@ -351,7 +351,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 Exact registry keys and Comparator routing are listed separately.
 
 - **Centered state dynamics**<br>
-  Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero.<br>
+  Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero. boundedNegativePart_sylvesterNext_eventually packages that recovery as the paper-facing endpoint on the original denominators.<br>
   **Boundary.** The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows.<br>
   *Evidence.* locally proved signed recovery/rigidity theorem; novelty unassessed · Lean kernel plus Comparator
 
@@ -1286,7 +1286,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Checked frontier.** That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
 
-**Open boundary.** The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem.
+**Open boundary.** The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched.
 
 **Read.** [Programme paper](../paper/1049/erdos-1049-rational-base-lambert.pdf) · [Lean source](../lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
 

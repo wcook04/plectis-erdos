@@ -419,7 +419,7 @@ If $`\limsup Z_n<\infty`$, then the sequence is eventually Sylvester.*
 
 </div>
 
-Erdős–Straus Theorem 3 uses a nonpositive limsup in the corresponding next-index LCM expression \[erdosstraus1964\]. Here any finite upper bound suffices under the quadratic-limit assumption. Since $`A_n\mid P_n`$, this also implies Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">1</a>: multiplication by a factor in $`(0,1]`$ preserves an upper bound, including at negative values.
+Erdős–Straus Theorem 3 uses a nonpositive limsup in the corresponding next-index LCM expression \[erdosstraus1964\]. Here any finite upper bound suffices under the quadratic-limit assumption. Since $`A_n\mid P_n`$, this also implies Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">1</a>: multiplication by a factor in $`(0,1]`$ preserves an upper bound, including at negative values. Lean checks the LCM-weighted bounded defect as [the original-coordinate LCM bounded defect](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49). That declaration takes the rational reciprocal sum and the quadratic growth limit as hypotheses, with the finite upper limsup recorded as an eventual upper bound on $`Z_n`$; it assumes no divisibility of the denominator by the prefix LCM.
 
 Duverney proved a conditional signed form of the problem itself: for signs $`\epsilon_n\in\{-1,1\}`$, if $`\sum_{n\ge0}(a_{n+1}/a_n^{2}-1)`$ converges, then the reciprocal sum with numerators $`\epsilon_n`$ is rational if and only if
 ``` math
@@ -494,7 +494,7 @@ at infinitely many indices?
 
 </div>
 
-The canonical necessary profile is ordinary in this note. `PaperCompleteR7/Frontier.lean` is not in this checkout.
+The canonical necessary profile is ordinary in this note, and Lean checks it as [the canonical frontier profile](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151), from the rational reciprocal sum and the quadratic growth limit.
 
 For $`B\ge0`$ put
 ``` math
@@ -515,7 +515,7 @@ The obstruction is the exact unit-numerator feedback at the record sources. The 
 
 #### Formal scope and supporting record.
 
-The bounded-negative state theorem is checked in Lean 4 against Mathlib at the stated source checkpoint: [eventual bounded-negative rigidity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2352). The canonical analytic transfer and the global weighted, polynomial and slow-negative arguments are ordinary proofs; the scalar finite-mass proof is printed in full above. The auxiliary source guide, the [eventual constant exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L350) and the [eventual periodic exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L796), primitive feedback, finite certificates and unsuccessful global extensions belong to the accompanying reasoning record. Their stronger global producer hypotheses remain explicit.
+The bounded-negative state theorem is checked in Lean 4 against Mathlib at the stated source checkpoint: [eventual bounded-negative rigidity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2352). Lean also checks the endpoint that carries that theorem to the original denominators, as [the bounded-negative-part recurrence theorem](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412), and the canonical analytic transfer of the LCM-weighted bounded defect, as [the original-coordinate LCM bounded defect](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49). The global weighted, polynomial and slow-negative arguments are ordinary proofs; the scalar finite-mass proof is printed in full above. The auxiliary source guide, the [eventual constant exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L350) and the [eventual periodic exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L796), primitive feedback, finite certificates and unsuccessful global extensions belong to the accompanying reasoning record. Their stronger global producer hypotheses remain explicit.
 
 <a id="declarations."></a>
 

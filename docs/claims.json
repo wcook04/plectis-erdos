@@ -15198,7 +15198,7 @@
           {
             "id": "centered_state_dynamics",
             "contribution_class": "locally proved signed recovery/rigidity theorem; novelty unassessed",
-            "summary": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero.",
+            "summary": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero. boundedNegativePart_sylvesterNext_eventually packages that recovery as the paper-facing endpoint on the original denominators.",
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "declarations": [
@@ -16069,7 +16069,7 @@
       "id": "remaining_open.erdos_1049_irrationality",
       "status": "open",
       "open_target_claim": "erdos_1049",
-      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.",
+      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) and its positive powers are settled by an ordinary Zudilin specialization that Lean checks; the 3/2 approximant with remainder control and the universal assertion remain open.",
       "paper_anchor": {
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
@@ -16134,7 +16134,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 634
+        "line": 641
       }
     },
     {
@@ -19695,7 +19695,7 @@
       "id": "erdos_1049",
       "label": "Erdős #1049: irrationality of F(t) at rational bases",
       "status": "open",
-      "statement": "Universal rational-base irrationality remains open. An ordinary specialization of Zudilin 2004 proves F(31/4) and its positive powers irrational; that headline is not a Lean theorem. Lean checks supporting height-region arithmetic, the 3/2 corridor exclusion, the cleared-tail recurrence, and selected Hankel identities. The outstanding 3/2 obligation is an approximant family with remainder control.",
+      "statement": "Universal rational-base irrationality remains open. An ordinary specialization of Zudilin 2004 proves F(31/4) and its positive powers irrational, and Lean checks that specialization with the source supply applied rather than assumed; the construction of the approximations is Zudilin's. Lean also checks supporting height-region arithmetic, the 3/2 corridor exclusion, the cleared-tail recurrence, and selected Hankel identities. The outstanding 3/2 obligation is an approximant family with remainder control.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],

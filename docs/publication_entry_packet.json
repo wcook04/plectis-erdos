@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:b897172079ef80b21fb204aa46a619a97dfe581666285a802673c67ea7a08be8",
+    "docs/claims.json": "sha256:8f5a463f6fa59091bb09c317ba693f60e8ee09ad86f774678e24095ad9672405",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:872bbd08460fe0325738b85ce0f90f9db6fb2ea0f433c2ffa5c65d72d9a36c88",
-    "docs/publication_contract.json": "sha256:47e07b57b45136f6d82166d73138a2ad75ebe7799f5664ac25aac7d152cb1686",
+    "docs/problems.json": "sha256:d32dbf193823bdff7fdae1e2baca7b2e083c80a6d102e4ea704cbb757552ccdb",
+    "docs/publication_contract.json": "sha256:3219322ddb8d913d343870b54a3df33fcbfdea09f535ee9e00cc1bfec890bbb7",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:924f4da136dfd133d0abebda53601541ae9884dee1a70ff6269fbe2b3516363e",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:86a499cb55567c2006b446f48861cd647d511d549535465cae6887885d6df2e8",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:14b5930e9d0843fbe2b64251c81ecc0560e600bfe4ef46525c8421f9b3a172ef",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:4bdb619393c15253fd969eb2356ce1c9541452da51b2ee79e735222e01aff360",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
@@ -382,7 +382,7 @@
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
-      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) is an ordinary Zudilin specialization, not a Lean theorem; the 3/2 approximant with remainder control and the universal assertion remain open.",
+      "statement": "Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1. F(31/4) and its positive powers are settled by an ordinary Zudilin specialization that Lean checks; the 3/2 approximant with remainder control and the universal assertion remain open.",
       "status": "open"
     },
     {
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 634,
+        "line": 641,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:872bbd08460fe0325738b85ce0f90f9db6fb2ea0f433c2ffa5c65d72d9a36c88",
+      "content_digest": "sha256:d32dbf193823bdff7fdae1e2baca7b2e083c80a6d102e4ea704cbb757552ccdb",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

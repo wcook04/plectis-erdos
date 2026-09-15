@@ -297,6 +297,17 @@ Finally, the logarithmic ratio and coprimality are preserved by a common
 positive integer power.
 \end{proof}
 
+\noindent Lean checks Theorem~\ref{res:rational-base-threshold} as
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L113}{the rational-base region},
+and Corollary~\ref{res:thirtyone-four} as
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117}{the powers of $31/4$},
+with
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L121}{the base $31/4$}
+as the case $r=1$.  Both declarations apply the source supply rather than
+assuming it.  The construction of the approximations is Zudilin's
+\cite{zudilin2004,zudilin2016}.  What is checked here is the Lean
+formalisation of that construction's consequence.
+
 \begin{corollary}[an irrationality measure uniform over powers]
 \label{cor:rational-base-measure}
 For coprime $a>b\ge1$ with $\theta=\log b/\log a<\theta^*$ and every

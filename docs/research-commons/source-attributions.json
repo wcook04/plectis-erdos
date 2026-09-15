@@ -120,8 +120,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3184,
-          "line_end": 3190,
+          "line_start": 3194,
+          "line_end": 3200,
           "expected_text": "\\bibitem{formalconjectures1049}",
           "excerpt_sha256": "sha256:c25f49535bb41622d57001597d91a9d0235dce0d09f719c90462c775d4374cb0"
         },
@@ -189,8 +189,8 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3040,
-          "line_end": 3046,
+          "line_start": 3045,
+          "line_end": 3051,
           "expected_text": "\\bibitem{formalconjectures243}",
           "excerpt_sha256": "sha256:631c8248ffd17035b17d23474e85ff6ce39cda1d8357ecb3ddcbd2ad433513b3"
         },
@@ -1174,8 +1174,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3122,
-          "line_end": 3129,
+          "line_start": 3132,
+          "line_end": 3139,
           "expected_text": "\\bibitem{duverney1996}",
           "excerpt_sha256": "sha256:2e85c59828644ad3c8fb345c8b459c4f9c86946c02a53b466028be600adf3dcf"
         },
@@ -1194,8 +1194,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 910,
-          "line_end": 910,
+          "line_start": 920,
+          "line_end": 920,
           "excerpt_sha256": "sha256:fbce7f2db65bdd8d9f109301fb1bc86d09291626cd9714baf8b44fb0defea1c4"
         }
       ],
@@ -1441,8 +1441,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3136,
-          "line_end": 3142,
+          "line_start": 3146,
+          "line_end": 3152,
           "expected_text": "\\bibitem{adamczewskibell2013}",
           "excerpt_sha256": "sha256:325fd9971f39e31720c2be3d5a0c3fb9c93d1d5d268e57ecfed14f0e6cab25f6"
         },
@@ -1455,8 +1455,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2737,
-          "line_end": 2737,
+          "line_start": 2747,
+          "line_end": 2747,
           "excerpt_sha256": "sha256:ce3fd0079ee84f22a2d17abef53c20ec753607f81e4a199f0f77f697689b6b07"
         }
       ],
@@ -1708,15 +1708,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 866,
-          "line_end": 870,
+          "line_start": 880,
+          "line_end": 884,
           "expected_text": "\\bibitem{badea1993}",
           "excerpt_sha256": "sha256:8a9384c13600f371f64e2f766eab33714ac448cd7c07d6c0b7d31adb38f0385e"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3002,
-          "line_end": 3006,
+          "line_start": 3007,
+          "line_end": 3011,
           "expected_text": "\\bibitem{badea1993}",
           "excerpt_sha256": "sha256:8a9384c13600f371f64e2f766eab33714ac448cd7c07d6c0b7d31adb38f0385e"
         },
@@ -2135,15 +2135,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 952,
-          "line_end": 956,
+          "line_start": 963,
+          "line_end": 967,
           "expected_text": "\\bibitem{bv1994}",
           "excerpt_sha256": "sha256:623747e79169932488ca0b99e1c9df909dedfc28fc4c657e52f3d92b524d2d32"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3101,
-          "line_end": 3105,
+          "line_start": 3111,
+          "line_end": 3115,
           "expected_text": "\\bibitem{bv1994}",
           "excerpt_sha256": "sha256:623747e79169932488ca0b99e1c9df909dedfc28fc4c657e52f3d92b524d2d32"
         },
@@ -2174,32 +2174,32 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 746,
-          "line_end": 746,
+          "line_start": 754,
+          "line_end": 754,
           "excerpt_sha256": "sha256:821db0226f401eecde809f078e52fe48c1b83dedf30a7d27c9ca623edaa567df"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 904,
-          "line_end": 904,
+          "line_start": 914,
+          "line_end": 914,
           "excerpt_sha256": "sha256:01c1ac66a7f33792d44a423457acee487c1e732800512e90d7bee1fb3494bef4"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 923,
-          "line_end": 923,
+          "line_start": 933,
+          "line_end": 933,
           "excerpt_sha256": "sha256:30f757d949ac9157e8f267f8e3d786527c53103fc9398c0a3d0c1341553aa05e"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1145,
-          "line_end": 1145,
+          "line_start": 1155,
+          "line_end": 1155,
           "excerpt_sha256": "sha256:19609efc10df322b4467f32e01c06e8968470d9eb8e7d6b858482e82964a1de8"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2315,
-          "line_end": 2315,
+          "line_start": 2325,
+          "line_end": 2325,
           "excerpt_sha256": "sha256:d2c829624073677f01d8249e65502cefe988ed95a2fdda5ea915e1dcb2d758bc"
         }
       ],
@@ -3048,15 +3048,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 956,
-          "line_end": 962,
+          "line_start": 967,
+          "line_end": 973,
           "expected_text": "\\bibitem{zudilin2004}",
           "excerpt_sha256": "sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3105,
-          "line_end": 3111,
+          "line_start": 3115,
+          "line_end": 3121,
           "expected_text": "\\bibitem{zudilin2004}",
           "excerpt_sha256": "sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728"
         },
@@ -3087,98 +3087,98 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 423,
-          "line_end": 423,
+          "line_start": 431,
+          "line_end": 431,
           "excerpt_sha256": "sha256:37cd72a6efc5eb3acb6952cb0f3d42aa44ead04857cca12a24a5735e373cca79"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 447,
-          "line_end": 447,
+          "line_start": 455,
+          "line_end": 455,
           "excerpt_sha256": "sha256:db231b20665b729f8c7ec2e7f89904ad755b2b3a9ecbfd689a4ced32a99224bb"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 448,
-          "line_end": 448,
+          "line_start": 456,
+          "line_end": 456,
           "excerpt_sha256": "sha256:a0396c7789ce596deda34f77b100163452fc9398ef65e1308aaa35c78a672fc0"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 458,
-          "line_end": 458,
+          "line_start": 466,
+          "line_end": 466,
           "excerpt_sha256": "sha256:e6e2039e5a33ba1aaa7cdbfe71df15de66d095edca131fb33ce483539843af7e"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 486,
-          "line_end": 486,
+          "line_start": 494,
+          "line_end": 494,
           "excerpt_sha256": "sha256:c64b3006eebab2c8cd1bcd1534baa567d51d8bd516b0efb846b8857b40d5d892"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 515,
-          "line_end": 515,
+          "line_start": 523,
+          "line_end": 523,
           "excerpt_sha256": "sha256:b56e99939457c23e3fa356d1919c8071199573269707da69a7096e7eccdf9304"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 526,
-          "line_end": 526,
+          "line_start": 534,
+          "line_end": 534,
           "excerpt_sha256": "sha256:306ea250ac23a5042f85be2322d4da1fd831b9b0b09106fd47e55b4f38fe462d"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 557,
-          "line_end": 557,
+          "line_start": 565,
+          "line_end": 565,
           "excerpt_sha256": "sha256:08831681946cb587743ea5652cd44c5d40c121c26979ec401714b5e612a28994"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 884,
-          "line_end": 884,
+          "line_start": 892,
+          "line_end": 892,
           "excerpt_sha256": "sha256:951d1c71b8e0224f9dfbbe0a3c79c29e8f205d77b569dad902d45af2ca584d25"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 915,
-          "line_end": 915,
+          "line_start": 925,
+          "line_end": 925,
           "excerpt_sha256": "sha256:32c9e33a6ee7b0d3f3571013f0b5b112589809cbdc59d45b9d9d1a0c364a7b48"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 928,
-          "line_end": 928,
+          "line_start": 938,
+          "line_end": 938,
           "excerpt_sha256": "sha256:9f19f0b630bd0451eabe2e109df547555b2111948d220cc2c8516ce815b2fed3"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1162,
-          "line_end": 1162,
+          "line_start": 1172,
+          "line_end": 1172,
           "excerpt_sha256": "sha256:3066de01b9b99a44fe58c88624ccd5b57084b1de5c0e2c2f4799ed6d9d1835bf"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1205,
-          "line_end": 1205,
+          "line_start": 1215,
+          "line_end": 1215,
           "excerpt_sha256": "sha256:523ececf7f27097e12aac8c6cc4eb679b4311650483bcb0d9697ff8fca228584"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1682,
-          "line_end": 1682,
+          "line_start": 1692,
+          "line_end": 1692,
           "excerpt_sha256": "sha256:60bc260e6180f4e4c28004912f1df4f348d7d287ce7e7a48d57e26f4120096fa"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1842,
-          "line_end": 1842,
+          "line_start": 1852,
+          "line_end": 1852,
           "excerpt_sha256": "sha256:0a87fd3031fa5ae394fff12555a14f74004112a45b47b8940ea53deec9e622ec"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2108,
-          "line_end": 2108,
+          "line_start": 2118,
+          "line_end": 2118,
           "excerpt_sha256": "sha256:e445fa0250477e2d9dfd5398015bc17c9a86914dcf814404ec0df31a5c949f0a"
         },
         {
@@ -3709,15 +3709,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 862,
-          "line_end": 866,
+          "line_start": 876,
+          "line_end": 880,
           "expected_text": "\\bibitem{duverney2001}",
           "excerpt_sha256": "sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 2998,
-          "line_end": 3002,
+          "line_start": 3003,
+          "line_end": 3007,
           "expected_text": "\\bibitem{duverney2001}",
           "excerpt_sha256": "sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06"
         },
@@ -3736,8 +3736,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2666,
-          "line_end": 2666,
+          "line_start": 2671,
+          "line_end": 2671,
           "excerpt_sha256": "sha256:dcf5805cdc2b24f32e9bcb43272cc7feb8a413d7ae8078b50aee921519da62f3"
         },
         {
@@ -4068,15 +4068,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 891,
-          "line_end": 897,
+          "line_start": 905,
+          "line_end": 911,
           "expected_text": "\\bibitem{koizumi2025}",
           "excerpt_sha256": "sha256:a7fff38b70147af835ec66fe6b2e3f2406eb0739c4c949076fcd9d16cd8929ea"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3022,
-          "line_end": 3029,
+          "line_start": 3027,
+          "line_end": 3034,
           "expected_text": "\\bibitem{koizumi2025}",
           "excerpt_sha256": "sha256:e5efae2159fedd38b28f94c15c20b2e0e7fbfe89713968189181f2402ba23304"
         },
@@ -4137,74 +4137,74 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 1604,
-          "line_end": 1604,
+          "line_start": 1603,
+          "line_end": 1603,
           "excerpt_sha256": "sha256:2ad07416a77899227fd7e2888d66482831b68ceb742e668e0ba07d9514d6ede7"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 1627,
-          "line_end": 1627,
+          "line_start": 1626,
+          "line_end": 1626,
           "excerpt_sha256": "sha256:eeac143c733145a415a6d53c418cf76281d86d1a95add3fb500723c8b5f17b75"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 1959,
-          "line_end": 1959,
+          "line_start": 1958,
+          "line_end": 1958,
           "excerpt_sha256": "sha256:defbf180f87e5ba028000d259f179ca3fd71717e5148725119465b34155f9fb2"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 1963,
-          "line_end": 1963,
+          "line_start": 1962,
+          "line_end": 1962,
           "excerpt_sha256": "sha256:bb240f64d97e29cb62798640609aaf6e82822c4dde63673a16ccb026e77fd6e8"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2282,
-          "line_end": 2282,
+          "line_start": 2281,
+          "line_end": 2281,
           "excerpt_sha256": "sha256:023622060f795bf356ce736a86de990eeeb4f1e751035696204276ab0e835d8f"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2286,
-          "line_end": 2286,
+          "line_start": 2285,
+          "line_end": 2285,
           "excerpt_sha256": "sha256:8812ed8a7f1053b61926b32196f4c95770e6e55d5b863cf4afce90c7dbd34522"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2299,
-          "line_end": 2299,
+          "line_start": 2298,
+          "line_end": 2298,
           "excerpt_sha256": "sha256:646ee49259eb30b191c74886cceb51d61b93d0653070c1621a241f120fc627d7"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2345,
-          "line_end": 2345,
+          "line_start": 2344,
+          "line_end": 2344,
           "excerpt_sha256": "sha256:075ca4776a7543626811b0f79754e35bc339ef0ffdee18fecbe8a672f42727ae"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2347,
-          "line_end": 2347,
+          "line_start": 2346,
+          "line_end": 2346,
           "excerpt_sha256": "sha256:887bd21b281dce434597c63a46816b5c7649806c1b760cb5928e6a7d6cde15c8"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2607,
-          "line_end": 2607,
+          "line_start": 2612,
+          "line_end": 2612,
           "excerpt_sha256": "sha256:ade1a9ab17ee7686d6193e846890167f84e666076a76d935baa2a4169820bf32"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2610,
-          "line_end": 2610,
+          "line_start": 2615,
+          "line_end": 2615,
           "excerpt_sha256": "sha256:663e2c741d9573a39feb67032fb34a9e00cd13d18a94496d64313d05c01ed111"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2618,
-          "line_end": 2618,
+          "line_start": 2623,
+          "line_end": 2623,
           "excerpt_sha256": "sha256:5ef3af47c1d813f3ef03136859db73357c70bf3bc688b3af1f07c5a89790e242"
         }
       ],
@@ -4267,15 +4267,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 897,
-          "line_end": 901,
+          "line_start": 911,
+          "line_end": 915,
           "expected_text": "\\bibitem{koizumiyokoi2026}",
           "excerpt_sha256": "sha256:31ea198a9daf259ca23e51740b76f15a0d4e634894d402cf43507d84497249c0"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3029,
-          "line_end": 3033,
+          "line_start": 3034,
+          "line_end": 3038,
           "expected_text": "\\bibitem{koizumiyokoi2026}",
           "excerpt_sha256": "sha256:31ea198a9daf259ca23e51740b76f15a0d4e634894d402cf43507d84497249c0"
         },
@@ -4743,8 +4743,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3156,
-          "line_end": 3162,
+          "line_start": 3166,
+          "line_end": 3172,
           "expected_text": "\\bibitem{lucatachiya2017}",
           "excerpt_sha256": "sha256:354430e5876812fdea114cb3f1de816f6f07020ab13b9e355babcd01496ccfe4"
         },
@@ -4912,8 +4912,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3147,
-          "line_end": 3152,
+          "line_start": 3157,
+          "line_end": 3162,
           "expected_text": "\\bibitem{vanassche2001}",
           "excerpt_sha256": "sha256:a69c1e38c94f44808cdaf55b4edfad5ceb492e5823620e0dad5fd6b88b51c095"
         },
@@ -4944,8 +4944,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 926,
-          "line_end": 926,
+          "line_start": 936,
+          "line_end": 936,
           "excerpt_sha256": "sha256:5e2e6c2c874886e16da148e50ad853ae95b8bd51917063f56898eede0c49e406"
         },
         {
@@ -5092,21 +5092,21 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 980,
-          "line_end": 986,
+          "line_start": 991,
+          "line_end": 997,
           "expected_text": "\\bibitem{bellsmertnig2026}",
           "excerpt_sha256": "sha256:2320b9dc49154910c7ee5a4a4867154c0d1ca5f34cf5c7f5afa6f17e713a2d91"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2744,
-          "line_end": 2751,
+          "line_start": 2754,
+          "line_end": 2761,
           "excerpt_sha256": "sha256:d7a5601c0bf5ee79e28680c035954f88c9595fe58e44b0961b306093b310bc54"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 2769,
-          "line_end": 2776,
+          "line_start": 2779,
+          "line_end": 2786,
           "excerpt_sha256": "sha256:d7a5601c0bf5ee79e28680c035954f88c9595fe58e44b0961b306093b310bc54"
         },
         {
@@ -5118,8 +5118,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3178,
-          "line_end": 3183,
+          "line_start": 3188,
+          "line_end": 3193,
           "expected_text": "\\bibitem{bellsmertnig2026}",
           "excerpt_sha256": "sha256:05bb3c29b6380bcd11a35ad104d589587f9f13182aa1d9fb5b81de34e93cd607"
         }
@@ -5553,8 +5553,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3129,
-          "line_end": 3136,
+          "line_start": 3139,
+          "line_end": 3146,
           "expected_text": "\\bibitem{matalaaho2006}",
           "excerpt_sha256": "sha256:ca3ad143147a5d2804f66fa9a2b445b365c705a19273a1ae8c77f2c257c09062"
         },
@@ -5791,15 +5791,15 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 870,
-          "line_end": 874,
+          "line_start": 884,
+          "line_end": 888,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:df0e63df25873358641ed4070061c15e5f66adb3d2707f788d4aba4c941addb4"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3006,
-          "line_end": 3010,
+          "line_start": 3011,
+          "line_end": 3015,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:df0e63df25873358641ed4070061c15e5f66adb3d2707f788d4aba4c941addb4"
         },
@@ -5983,8 +5983,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3142,
-          "line_end": 3147,
+          "line_start": 3152,
+          "line_end": 3157,
           "expected_text": "\\bibitem{rhinviola1996}",
           "excerpt_sha256": "sha256:b75b67635c18f80de0c876644a0d855886ffebd57e78291c56d2b76c6f5fe91f"
         },
@@ -6003,8 +6003,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1841,
-          "line_end": 1841,
+          "line_start": 1851,
+          "line_end": 1851,
           "excerpt_sha256": "sha256:5c49ddfe53b2fd3db9c587f08d6f0191b7c956806bdaaf388250ce58e1b8f4dd"
         }
       ],
@@ -6037,8 +6037,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3152,
-          "line_end": 3156,
+          "line_start": 3162,
+          "line_end": 3166,
           "expected_text": "\\bibitem{vandehey2013}",
           "excerpt_sha256": "sha256:ec00799c8a18f226c11ddb3397de2c15b0fb2a0863bb9126f6ebb34db8f890d0"
         },
@@ -6228,8 +6228,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3078,
-          "line_end": 3082,
+          "line_start": 3088,
+          "line_end": 3092,
           "expected_text": "\\bibitem{erdos1948}",
           "excerpt_sha256": "sha256:cf446c3cbb0c405bcc80ec2c25d599a8a83cd781fed2f9312d32338c1383374d"
         },
@@ -6588,15 +6588,15 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 878,
-          "line_end": 882,
+          "line_start": 892,
+          "line_end": 896,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:cf37e937376ea8c587dfe7f9020c59e64518678e4042b44e24eee03372b521cc"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3014,
-          "line_end": 3018,
+          "line_start": 3019,
+          "line_end": 3023,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:cf37e937376ea8c587dfe7f9020c59e64518678e4042b44e24eee03372b521cc"
         },
@@ -6630,8 +6630,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3167,
-          "line_end": 3171,
+          "line_start": 3177,
+          "line_end": 3181,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:94ba45c785a36cdde046a477ed007cff43a5b8913afbae90ae2d2668457b4f78"
         },
@@ -6866,15 +6866,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 882,
-          "line_end": 886,
+          "line_start": 896,
+          "line_end": 900,
           "expected_text": "\\bibitem{vandoornlitang2026}",
           "excerpt_sha256": "sha256:92db23ab73e16a5ff23047431abcb3eadb8501f56c588a651c01c454513a268d"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3018,
-          "line_end": 3022,
+          "line_start": 3023,
+          "line_end": 3027,
           "expected_text": "\\bibitem{vandoornlitang2026}",
           "excerpt_sha256": "sha256:d1521927de67d3175dadffc4db2ca2b2786b8297ec43e4eec74b73a350d2d98c"
         },
@@ -6894,8 +6894,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2005,
-          "line_end": 2005,
+          "line_start": 2004,
+          "line_end": 2004,
           "expected_text": "\\cite[Theorem~2.1]{vandoornlitang2026}",
           "excerpt_sha256": "sha256:7031adbd8ee1ddab8aa252c4d2184fcfd608e6225a7ebbe27418145af8fd95d2"
         }
@@ -7217,8 +7217,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3086,
-          "line_end": 3090,
+          "line_start": 3096,
+          "line_end": 3100,
           "expected_text": "\\bibitem{borwein1991}",
           "excerpt_sha256": "sha256:ba25c19782edca439fc59536016a13c5d36a33cd2f359c1c6f2080fb7a229a6d"
         },
@@ -7388,15 +7388,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 858,
-          "line_end": 862,
+          "line_start": 872,
+          "line_end": 876,
           "expected_text": "\\bibitem{erdosstraus1964}",
           "excerpt_sha256": "sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 2994,
-          "line_end": 2998,
+          "line_start": 2999,
+          "line_end": 3003,
           "expected_text": "\\bibitem{erdosstraus1964}",
           "excerpt_sha256": "sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b"
         },
@@ -7429,14 +7429,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 1602,
-          "line_end": 1603,
+          "line_start": 1601,
+          "line_end": 1602,
           "excerpt_sha256": "sha256:11e0342054d7c4e8c78eb3a2b9cf3e14eb83e8083b84fd50f4647051eaf4635d"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2662,
-          "line_end": 2662,
+          "line_start": 2667,
+          "line_end": 2667,
           "excerpt_sha256": "sha256:5b1834a94ad5fbf151d67607e7d1b9f259aeeeb2f02cf778d733f143e34533dc"
         },
         {
@@ -7956,8 +7956,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3090,
-          "line_end": 3096,
+          "line_start": 3100,
+          "line_end": 3106,
           "expected_text": "\\bibitem{borwein1992}",
           "excerpt_sha256": "sha256:62e9f12c9446297c621f7f486af4e1739cd6b6e5b979419191df4d31b8bb4cdc"
         },
@@ -8196,15 +8196,15 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 874,
-          "line_end": 878,
+          "line_start": 888,
+          "line_end": 892,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:41e22e226dc64038986bc97224c7c1ea74fb8cc5b4b7ea1ff0ba5a1e7b45d2c2"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3010,
-          "line_end": 3014,
+          "line_start": 3015,
+          "line_end": 3019,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:41e22e226dc64038986bc97224c7c1ea74fb8cc5b4b7ea1ff0ba5a1e7b45d2c2"
         },
@@ -8238,15 +8238,15 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 948,
-          "line_end": 952,
+          "line_start": 959,
+          "line_end": 963,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:46dc589925f18c98a38b701dc32978cf7bf47298f8b19fc97e2d6eb3b37ddaf2"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3082,
-          "line_end": 3086,
+          "line_start": 3092,
+          "line_end": 3096,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:5dc4499ba85b2a90c1b7eeae654d404e424be3f9aa288c8eaf30e698ab7cf0e8"
         },
@@ -8498,15 +8498,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 962,
-          "line_end": 973,
+          "line_start": 973,
+          "line_end": 984,
           "expected_text": "\\bibitem{zudilin2016}",
           "excerpt_sha256": "sha256:be0da1a7ed806e19dbd7d03c5ebef8d7b1bb7c9df9bb3f56f66f7ac7c36987a1"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3111,
-          "line_end": 3122,
+          "line_start": 3121,
+          "line_end": 3132,
           "expected_text": "\\bibitem{zudilin2016}",
           "excerpt_sha256": "sha256:3796633e94db161e5510b162d2a9d0f0f8e5ba2d689356d8c5278a6d95c40429"
         },
@@ -8525,32 +8525,32 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 913,
-          "line_end": 913,
+          "line_start": 923,
+          "line_end": 923,
           "excerpt_sha256": "sha256:3e98a97c395214cdb4ed51c973a3d6eac7d63374f7409fd37c5d693242008cc6"
-        },
-        {
-          "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1354,
-          "line_end": 1354,
-          "excerpt_sha256": "sha256:33ee2f9a69f1ef1092a438ef1e40bedf0229f951312ecf0a04112573693455d3"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
           "line_start": 1364,
           "line_end": 1364,
+          "excerpt_sha256": "sha256:33ee2f9a69f1ef1092a438ef1e40bedf0229f951312ecf0a04112573693455d3"
+        },
+        {
+          "path": "paper/reasoning-parts/erdos1049/core.tex",
+          "line_start": 1374,
+          "line_end": 1374,
           "excerpt_sha256": "sha256:16a8294cc2c54d3e9c3a0ff2463e78c32cea842f7dc1abc67eeeb715c487cd0e"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1379,
-          "line_end": 1379,
+          "line_start": 1389,
+          "line_end": 1389,
           "excerpt_sha256": "sha256:9c9f4ab17e2bd61028893e5453258ab9f963a6a4c5391bcfebd52882c8970f9a"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1568,
-          "line_end": 1568,
+          "line_start": 1578,
+          "line_end": 1578,
           "excerpt_sha256": "sha256:84baaf0fba645123571d368f33d5c2b16dd3bd0252e8bf3531fcf64cfc3604d3"
         },
         {
@@ -9492,8 +9492,8 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 886,
-          "line_end": 891,
+          "line_start": 900,
+          "line_end": 905,
           "expected_text": "\\bibitem{bado2026}",
           "excerpt_sha256": "sha256:1c76f00e8eba4632f224cf59dcb814c7ce70a0ee7880a929f3225aa9a611750f"
         }
@@ -9636,8 +9636,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3096,
-          "line_end": 3101,
+          "line_start": 3106,
+          "line_end": 3111,
           "expected_text": "\\bibitem{az1998}",
           "excerpt_sha256": "sha256:5e80bcb89c7b84fba7acc2b3bfc3cc6b460b903f1bcd6e3fffceae62cd8f68c5"
         },
@@ -11708,8 +11708,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3162,
-          "line_end": 3167,
+          "line_start": 3172,
+          "line_end": 3177,
           "expected_text": "\\bibitem{rivin2026}",
           "excerpt_sha256": "sha256:2d8704f9fd85012ec1f6f999666aeea29f54fc183b19717abba7a33de88a8f71"
         },
@@ -11734,8 +11734,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2739,
-          "line_end": 2739,
+          "line_start": 2749,
+          "line_end": 2749,
           "excerpt_sha256": "sha256:04460620821776cd394a005083318c889c68c93c4a7b5c16d5dc341484037d26"
         }
       ],
@@ -12028,15 +12028,15 @@
         },
         {
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-          "line_start": 901,
-          "line_end": 904,
+          "line_start": 915,
+          "line_end": 918,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:f368736822439c8534e80f5aff6ba16c1d13eb3f95e95a7dc6ba80c48fac291b"
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 3033,
-          "line_end": 3040,
+          "line_start": 3038,
+          "line_end": 3045,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:a82238cd268701b267206867227541e7cda1a1934fffdb55b471779e3192d009"
         },
@@ -12084,15 +12084,15 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 973,
-          "line_end": 980,
+          "line_start": 984,
+          "line_end": 991,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:43408f7d298cd4d9f67a8bde8169b5811d789752c86ce742c8a1a4f6d69fe4d5"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3171,
-          "line_end": 3177,
+          "line_start": 3181,
+          "line_end": 3187,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:b995402f056f7f2c322ca73a63c6daabeda8be2242e4999da7b00b8e65a63557"
         },
@@ -12131,8 +12131,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2814,
-          "line_end": 2814,
+          "line_start": 2824,
+          "line_end": 2824,
           "excerpt_sha256": "sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b"
         },
         {
@@ -12156,8 +12156,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 2689,
-          "line_end": 2689,
+          "line_start": 2694,
+          "line_end": 2694,
           "excerpt_sha256": "sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b"
         },
         {
@@ -14004,8 +14004,8 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 865,
-          "line_end": 885,
+          "line_start": 876,
+          "line_end": 896,
           "excerpt_sha256": "sha256:e8ae32450cbc9049293293d2f552e05daf3d0a63c406bd2a0968063fa4a14b0d"
         }
       ],
@@ -19196,12 +19196,12 @@
     },
     {
       "path": "lean/ErdosProblems.lean",
-      "line_start": 152,
-      "line_end": 152,
+      "line_start": 155,
+      "line_end": 155,
       "excerpt_sha256": "sha256:69f43da3fcc8d64822212a7d32ab1be5d3dc7b4462cf66cd9dd72754b4fd3583",
       "context": {
-        "line_start": 151,
-        "line_end": 156,
+        "line_start": 154,
+        "line_end": 159,
         "excerpt_sha256": "sha256:3ce0d6c3361e3b38dee534f3a752dba0c64c9b6efcb7ac5335ad63375474d1d0"
       },
       "disposition": "not_bibliographic",
@@ -21310,12 +21310,12 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos243/DynamicCancellation.lean",
-      "line_start": 4,
-      "line_end": 4,
+      "line_start": 6,
+      "line_end": 6,
       "excerpt_sha256": "sha256:d1578485f9e132e074da1f8e9663431936a09efdc83a73b17b648986c469ecef",
       "context": {
-        "line_start": 3,
-        "line_end": 10,
+        "line_start": 5,
+        "line_end": 12,
         "excerpt_sha256": "sha256:005b4f8fac7513189f067dcd46261484a7bbedd412d6c0308e031cbec14a1541"
       },
       "disposition": "not_bibliographic",
@@ -21492,12 +21492,12 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line_start": 1891,
-      "line_end": 1891,
+      "line_start": 1897,
+      "line_end": 1897,
       "excerpt_sha256": "sha256:7c49e26afde5e7bcb4ff5820e7397f6d3af498a2423c8acbecf830b89eb6036d",
       "context": {
-        "line_start": 1882,
-        "line_end": 1892,
+        "line_start": 1888,
+        "line_end": 1898,
         "excerpt_sha256": "sha256:251b8338aa80843befbc09c0ac63e7eb1c4fadbeca9d6667b89db9af05df352f"
       },
       "disposition": "not_bibliographic",

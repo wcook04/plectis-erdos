@@ -1197,7 +1197,7 @@ claim_review_matrix:
         contribution_class: "locally proved signed recovery/rigidity theorem; novelty unassessed"
         evidence_mode: "Lean kernel plus Comparator"
         comparator_disposition: "targeted"
-        summary: "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero."
+        summary: "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero. boundedNegativePart_sylvesterNext_eventually packages that recovery as the paper-facing endpoint on the original denominators."
         boundary: "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows."
       - id: "negative_orbit_no_go"
         contribution_class: "no-go result"
@@ -1625,7 +1625,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:872bbd08460fe0325738b85ce0f90f9db6fb2ea0f433c2ffa5c65d72d9a36c88"
+  problem_index_digest: "sha256:d32dbf193823bdff7fdae1e2baca7b2e083c80a6d102e4ea704cbb757552ccdb"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1691,7 +1691,7 @@ external_verification:
       erdos_number: 1049
       status: "open"
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
-      open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem."
+      open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
   trusted_challenge_holes: 8
   packet: "docs/EXTERNAL_VERIFICATION.md"
