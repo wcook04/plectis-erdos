@@ -733,7 +733,8 @@ petal decomposition), so the class can only be widened, never promoted to univer
 line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148).
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall N_0$: $A$ infinite and $m$-periodic above
 $N_0$ $\Rightarrow$ irrational. Plus: the class of supports with irrational series is closed
-under finite symmetric difference in both directions.
+under finite symmetric difference in both directions. The statement follows from the periodic
+theorem of Luca and Tachiya~\cite[Theorem~A, p.~139]{lucatachiya2017}.
 
 \par\medskip
 
@@ -846,6 +847,8 @@ full verification; this is recorded as a strong promotability hypothesis, not a 
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall$ $\mathbb Z$-valued $m$-periodic weight
 $w$: irrational$(\sum w(a)/(b^a-1))$ $\vee$ $\exists k,z,\ b^k x=z$; the terminating branch closes
 unconditionally as soon as $\mathrm{intWeightedCoeff}\,w$ is one-signed and frequently nonzero.
+Luca and Tachiya's theorem already gives irrationality for every nonzero periodic
+weight~\cite[Theorem~A, p.~139]{lucatachiya2017}.
 
 \par\medskip
 
@@ -874,17 +877,15 @@ correct assembly of the corpus's proved pieces plus one clearly named open step;
 \#257.
 
 \begin{thm}[A — reset-crossing unification]
-The 257-reset target exponent $(r+5)/2$ is not a fitted constant but a \emph{derived} one: it
-follows from sqrt-scale reset anti-concentration together with the run-length-to-crossing
-geometry of oa-2's deficit/excess pair above, and every correction constant in the derivation is
-exact (no asymptotic $O(\cdot)$ notation is hiding a table). Concretely: the deficit-side run law
-(oa-2, unconditional and uniform) converts any anti-concentration bound $2^{\varepsilon r}$ on
-$|\Delta_r|$ into a run-length ceiling $L_r \lesssim (1-\varepsilon)\cdot 2r$; matching this
-against the certified maximum observed run growth (SE-7: $\max L_r \sim \log_2(\mathrm{row})$,
-row 200{,}000) pins $\varepsilon = 1/2$ as the exact crossover exponent, not merely a plausible
-guess. Theorem A is the unification of the deficit-run and excess-run geometry into one crossing
-socket at that derived exponent; the open step is exactly the anti-concentration input identified
-in the G5/H4/F5b/oa-3b rows above.
+Assume sqrt-scale reset anti-concentration. Together with the run-length-to-crossing geometry of
+oa-2's deficit/excess pair above, it gives the 257-reset target exponent $(r+5)/2$, with every
+correction constant in the derivation exact. The deficit-side run law (oa-2, unconditional and
+uniform) converts any anti-concentration bound $2^{\varepsilon r}$ on $|\Delta_r|$ into a
+run-length ceiling $L_r \lesssim (1-\varepsilon)\cdot 2r$, and Theorem A joins the deficit-run and
+excess-run geometry into one crossing socket at $\varepsilon=1/2$. The certified maximum observed
+run growth (SE-7: $\max L_r \sim \log_2(\mathrm{row})$ through row $200{,}000$) is finite data and
+does not determine the exponent. The open step is the anti-concentration input identified in the
+G5/H4/F5b/oa-3b rows above.
 \end{thm}
 
 \begin{thm}[B — rigidity of dangerous resets]
@@ -892,11 +893,11 @@ A dangerous reset (one within $2^{(r+5)/2}$ of the sqrt-escape threshold) that i
 long pure R-run pins its own deviation to a single pulse-determined integer (RC-5 above), not a
 free real number: the affine excess recurrence (rc-2) is exact, so once the run length and the
 pulse word are fixed, $w_{r_0+1}$ is one of at most two integers with no remaining degree of
-freedom. Consequently a chain of $n$ dangerous resets is not $n$ independent near-misses; it is
-a single tower of $n{-}1$ nested exact integer coincidences, each individually as unlikely as an
-explicit arithmetic accident and none free to vary once the pulse stream is fixed. Failure of
-sqrt-escape therefore requires an exact integer-coincidence tower, not a generic accumulation of
-small errors — the open step is excluding the two pinned values (RC-5's own closing condition).
+freedom. Consequently a chain of $n$ dangerous resets is a tower of $n{-}1$ nested exact integer
+conditions, none free to vary once the pulse stream is fixed. Failure of sqrt-escape therefore
+requires such an integer-coincidence tower. No probability model is supplied, so these conditions
+do not by themselves make dangerous resets unlikely; the open step is excluding the two pinned
+values (RC-5's own closing condition).
 \end{thm}
 
 \begin{thm}[C — the one-sided finite decision boundary]
