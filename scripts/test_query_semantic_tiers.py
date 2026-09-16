@@ -32,7 +32,7 @@ ATLAS_FIXTURE_DECLARATION = (
     "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail"
 )
 ATLAS_FIXTURE_ROW_ID = (
-    "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1060:"
+    "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1066:"
     "no_eventuallyBoundedRise_reducedTail"
 )
 ATLAS_BACKED_FAMILY_COORDINATES = {
@@ -71,7 +71,7 @@ ATLAS_BACKED_FAMILY_COORDINATES = {
     "bounded_rise_coprimality": (
         "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail",
         "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-        1060,
+        1066,
     ),
     "height_fibre_and_shell": (
         "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
@@ -468,11 +468,11 @@ def test_claims_declaration_resolves_through_current_atlas_and_direct_source() -
     assert family["source_route"] == (
         "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
     )
-    assert family["source_anchor"] == "1060"
+    assert family["source_anchor"] == "1066"
     assert family["source_declaration"] == ATLAS_FIXTURE_DECLARATION
     assert family["open_boundary"] in family["source_evidence"][0]["limitations"]
     evidence = family["source_evidence"][0]
-    assert evidence["source_line"] == 1060
+    assert evidence["source_line"] == 1066
     assert evidence["candidate_id"] == f"atlas:{ATLAS_FIXTURE_ROW_ID}"
     assert evidence["source_kind"] == "claims_declaration_atlas_coordinate"
     assert evidence["atlas_provenance"]["atlas_row_id"] == ATLAS_FIXTURE_ROW_ID
