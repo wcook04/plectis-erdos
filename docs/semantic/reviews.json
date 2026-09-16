@@ -181,6 +181,12 @@
         {
           "previous_evidence_digest": "sha256:8b436ef930197c2d4a67eeb109e2ebd26295e7fb209a7a68a89fae56d1402a7f",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6ab22a773d23e66699d92d46c52fdd77d82ced273867995c20af7125d0be6ecb",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -348,6 +354,12 @@
         {
           "previous_evidence_digest": "sha256:3b43f2dfe31aa70b42761f1aaad3571d2d2cc08fbdc60c9d41089ac6b3b70b5e",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:90af2b7f93cd5407685042910e88e10801d1a2909ca3b01614db76e01e3cecbd",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -515,6 +527,12 @@
         {
           "previous_evidence_digest": "sha256:33239df05344ba0704f24bc958b67c1ddc9bfe14955e5a3c3c273d4d80b445c8",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:00c2d7271d6a5864f116dedccdd6093004fd4beb198e707acaa9c08b65e5c4f7",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -682,6 +700,12 @@
         {
           "previous_evidence_digest": "sha256:665c391ca804ed0b5991979123824f63446f44015149abdb802a4c241e2723ac",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e9d2dfa2cb7272248ce5ade59db5945cd9f098a5e27d01d6b8a3b7a69bc2ef2c",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -849,6 +873,12 @@
         {
           "previous_evidence_digest": "sha256:984801e6ee03f8a71001c8879ba7faeeceb66459c8758181e4012caf9ac52672",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6201cc44b7e6876ba422abe894ad652064d8440168df667a102d2504d6f7f76e",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -1016,6 +1046,12 @@
         {
           "previous_evidence_digest": "sha256:7ee89970eb34a701a3d2050c6f70fa408947b4d213b6002cf452006dbd1f53fa",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6be60d51e8ec91d794462ee64bb80716b5cbfccf13ccb09fb7711caf359d94ce",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -1183,6 +1219,12 @@
         {
           "previous_evidence_digest": "sha256:8717d1cf4fcbca2f9b7b5884c801c35d2ea569b3868f5660e9b05f331e588c96",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:4c07541318184e32d6c5c4cb733618ccd6969c7136cc59d5febb534f35d2f22f",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -1350,6 +1392,12 @@
         {
           "previous_evidence_digest": "sha256:fbd03eb342eac874eeef7061bb05cb09098c4cba374730c357f2f35a566e6a17",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:230ee625c1716fe012af67c8be24e5ba908ba6391dbc117f12eebac39a57ecdf",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -1517,6 +1565,12 @@
         {
           "previous_evidence_digest": "sha256:9876b025b2a622c5caf687ce6aa648ede29b3d67a7984359af925740860b3c61",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:0a7cd58aa57d052753666eb8dad2c81fdf25f7fa1e8a0050f11764249c018e59",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -1684,6 +1738,12 @@
         {
           "previous_evidence_digest": "sha256:8f972817f35636b55111e1532dc884737f7c704997dd0f5c0a9933c93b07d2c9",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:220ce5ba8ebe8d7003027d5dc9cdeed7fe16b795a3e80d83023b133be0d8f9ae",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -1850,6 +1910,12 @@
         {
           "previous_evidence_digest": "sha256:f397d811a1d2074e58dd41a6f833ea70ee91b39125af3f0e627bde7ec6ea8a31",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:539a1df79fe3cd93bf87dce885109ed8bbaed57300e417793d7b00c62b419341",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -2017,6 +2083,12 @@
         {
           "previous_evidence_digest": "sha256:8438f1e20ff0af46117d70217448e6337a4fa23774c3c96af1352329cc98c887",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6fe59dbb06efeda7d5f8d3d5adcfe5ea9ec1c6ebf14be5c913fd288ca5b1bac8",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -2183,6 +2255,12 @@
         {
           "previous_evidence_digest": "sha256:38ca1617dfc8b1569a76c7469be59e3a1bf47951532f9ebe9ad505b7b9f09416",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:1f7de1d3ebb4d8099b2308a9035957eed983a7c1997aca2d60c95e639f471eff",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -2350,6 +2428,12 @@
         {
           "previous_evidence_digest": "sha256:2a64db433d530b6211a499f26cfac7603b5425815424785b8e7da1d9dbbb239a",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:317211d170b9e9ef46b71a8b387ced5187d798f2a0cbc140987db2138488b273",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -2515,6 +2599,12 @@
         {
           "previous_evidence_digest": "sha256:3f5c033da0244fed6f9cf8c42484b62a5fa673be0c2d05d87032951a0dbe3598",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f26dda3ac7b10ad16e30542e703aa3c95e819e7d663fed7869b087bbdb82c3d9",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -2682,6 +2772,12 @@
         {
           "previous_evidence_digest": "sha256:7cbf6f570a4d828a43edac71b23cfff8757907e371a2bcb0c339bffaff97291d",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6ea5d6098e866a404a0744f1163d52aa69cc8d20340e5b67f1054a44c868e669",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -2849,6 +2945,12 @@
         {
           "previous_evidence_digest": "sha256:b6fdb6e0e2cb2ed0e01a3adae5936d82a6189b90e26f4ac7c2c457b0fc1295a3",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:fd8f3bdde0ae49d97079e2dbb60549dbee610d73002ddeb7ff0b00367ba205cb",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -3016,6 +3118,12 @@
         {
           "previous_evidence_digest": "sha256:830d9b2811d75c40f54564f3ee117f6918ee7c19c61510e28c58bb408179c100",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b47031bfa03cc26d2cdad056ba164f6b882f28e87616900ffca490c9d416ceec",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -3183,6 +3291,12 @@
         {
           "previous_evidence_digest": "sha256:a4b9e41e2a1b4cbdc66470ee5d66b933fb0c5515d7c1e41e8e3928e708e8364f",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:87f874c3a7a4ed345810e9c2d556b0971f1d7480935544eee15b90cdf33c0621",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -3350,6 +3464,12 @@
         {
           "previous_evidence_digest": "sha256:7f9f37755be98f617ae8d805654fcc04bf70c3a6d842c884006c0e79350e8583",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f86f8c5c27dbd7f075f500ee3a865c510d273df5a7bddb3b6cfa3399f54432cb",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -3517,6 +3637,12 @@
         {
           "previous_evidence_digest": "sha256:e00f4790b17bb3bf54ef2c7057b3f6fbb2eecf74ccbfdf1f8d7da05007924304",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c7172a14c39453f6fc22db7b422405deb7c4f24db0fe9077c3dfcccb00584911",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -3684,6 +3810,12 @@
         {
           "previous_evidence_digest": "sha256:3be9f8dcfcf54601e4afcd1f40ad1094b9e880eaddd8d1957e45a707bc2f6f74",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:3562ce8e2c6e1276e7cfdefbb4d59f780ea1baef16850bbe9ba41fde4b298718",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -3851,6 +3983,12 @@
         {
           "previous_evidence_digest": "sha256:c80fb6640411964b869e3e8d8f9f872d4f8cfd65924fa92a298147e941095fc5",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c40e476bb44bcb1cd4b02e5f35c2bcc1fba8396c9b98531d6363d0e72fab248e",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -4018,6 +4156,12 @@
         {
           "previous_evidence_digest": "sha256:52561393ec4a0be1ca80b68fe4c7ba2b5596da0874567ad10b66d140bea8aee9",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:0d8006392de931f4056592a6809f9caa66d6b0334911d3705c412045203cb4f2",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -4185,6 +4329,12 @@
         {
           "previous_evidence_digest": "sha256:6e7af1bbe894fc3ed78e7873c1d680dda8e9079a8ab21b1725dc85fdf0bdeb85",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f6a9602441b90f744dd17653e37b34cda8bbf1bd7fd676b6b6d25c08f0726090",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -4352,6 +4502,12 @@
         {
           "previous_evidence_digest": "sha256:f755eb5c0745611da41bd309cedef40afb7f6b9a6416f2acded584cc1483c8ec",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:99e80a7c6591820c26121a67a4db2c3d5074e93b7c2a804cee25c144070eb771",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -4519,6 +4675,12 @@
         {
           "previous_evidence_digest": "sha256:d63f369d55779ba531cfee82862b0b44a0065516ff8b6a5174dc4a3916e2a298",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e2184c0e47ac521e259d1603084e04667f798ad247b07050e8e4b6cba3c04607",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -4686,6 +4848,12 @@
         {
           "previous_evidence_digest": "sha256:81afbe24f1f0dc856949eb119a333b3133349dc7cfc70c36ecbd3b1a638dfc6f",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b8bd79f623158df7708115367ce0172d6da9e46bfd5fd0871284291026b8a315",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -4853,6 +5021,12 @@
         {
           "previous_evidence_digest": "sha256:96c31fc9e2d05deb52b36916b039a951cdf23570b105c21aacb4ed5d30bcaafd",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:1700b4838437924b924be0cad264a25dc15821d22a3ece5fdb7d327157ea3d62",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -5020,6 +5194,12 @@
         {
           "previous_evidence_digest": "sha256:094ef4e1b02a1053c8a7011c4eaf04e5d68f436b753b326dfdf4ef00754a8cf0",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ecf3c6cf92b636e924ac56f4dd2d09fc3b100525ba7839ebeb8965c304142e8e",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -5187,6 +5367,12 @@
         {
           "previous_evidence_digest": "sha256:2a52049e1c239f24620de45a250c4523ffe0fb126a9a18f1761a17aa29c44c7a",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2f28b1d618cf6f621cdcc7878f0111367b002f9e3e5cdbe60019aeb2921f3c4c",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -5354,6 +5540,12 @@
         {
           "previous_evidence_digest": "sha256:395d2f0bd9837c7b905a58dd0a6c62e2e5ca543aec715bd196c23021a0b47ce5",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:5507ee44d773f1023e6f9699f061eec0ec9df6d3eb10740087c0ac180d03c033",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
@@ -5521,6 +5713,12 @@
         {
           "previous_evidence_digest": "sha256:c3c884606bf7c68b12f89ed9b846ade5643f3493263a08fa2499b97b875e744a",
           "previous_evidence_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+          "evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2ac1ea92544eb932bd3b1913a3a16276edbd620889ca552f4a707ecdd8f91481",
+          "previous_evidence_fingerprint": "sha256:0ba4574c72777fe9ca7fa761a06693aed7876ebb80eadd46e674b8b5ffd9b081",
           "evidence_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
