@@ -2520,7 +2520,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/249/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:4cd5db77471457b753e952d1eb53e2ed86c2bbbc1e82450be5631b3fc942e119",
+      "source_sha256": "sha256:f0ef88ef6a17417194886359536f9b5450dce8d017e36c171720ce791ff78d69",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.tex",
@@ -2619,8 +2619,8 @@
         },
         {
           "level": 2,
-          "id": "survivor-5-the-rationality-side-rank-upper-bound",
-          "title": "Survivor 5: the rationality-side rank upper bound",
+          "id": "retired-shortcut-a-rationality-side-rank-upper-bound",
+          "title": "Retired shortcut: a rationality-side rank upper bound",
           "line": 472
         },
         {
@@ -3213,14 +3213,14 @@
         },
         {
           "level": 2,
-          "id": "route-5-the-rationality-side-rank-bound-remains-open",
-          "title": "Route 5: the rationality-side rank bound remains open",
+          "id": "a-counterfactual-rank-criterion-not-a-live-route",
+          "title": "A counterfactual rank criterion, not a live route",
           "line": 4584
         },
         {
           "level": 4,
-          "id": "the-exact-statement-that-was-wanted.",
-          "title": "The exact statement that was wanted.",
+          "id": "the-exact-statement-that-was-considered.",
+          "title": "The exact statement that was considered.",
           "line": 4588
         },
         {
@@ -3237,8 +3237,8 @@
         },
         {
           "level": 4,
-          "id": "first-a-fact-rather-than-an-inference-the-routes-are-one-route-in-five-coordinates.",
-          "title": "First, a fact rather than an inference: the routes are one route in five coordinates.",
+          "id": "first-a-fact-rather-than-an-inference-the-four-live-routes-and-one-retired-shortcut-concern-the-same-digit-sequence.",
+          "title": "First, a fact rather than an inference: the four live routes and one retired shortcut concern the same digit sequence.",
           "line": 4619
         },
         {
@@ -3430,8 +3430,8 @@
       ],
       "citations_rendered": 38,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:15a630bac5677955e4ca11042e810ee66d67f548bc40ea4b28147ce086261411",
-      "pdf_byte_count": 755997,
+      "pdf_sha256": "sha256:a16dbc86d57e75cbb018d3cb23ccb83b2e9bd7e54d6ac5fc5a0dc4a060b871d9",
+      "pdf_byte_count": 756422,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

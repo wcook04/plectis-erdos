@@ -469,19 +469,19 @@ It evades B1 (both $`N`$ and $`t`$ unbounded), B4 (locking depth to the period m
 
 **Honest demotion,** identical to Survivor 3: it is a pointwise producer and names an index. It is listed because it is the cleanest target for computational exploration — with Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">13</a> as the standing reminder that no amount of such exploration becomes a proof. <span class="sans-serif">\[Open\]</span>
 
-<a id="survivor-5-the-rationality-side-rank-upper-bound"></a>
+<a id="retired-shortcut-a-rationality-side-rank-upper-bound"></a>
 
-## Survivor 5: the rationality-side rank upper bound
+## Retired shortcut: a rationality-side rank upper bound
 
 <div id="defn:rankupper" class="defn">
 
-**Definition 31** (The coordinate-disjoint obligation). Either: there is $`C`$ such that for every $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le n`$ and $`T_c \notin`$ the irrationals, every $`v > 0`$ and every tempered binary orbit $`u`$ for $`(c,v)`$, and every $`e`$, $`\dim_{\mathbb{Q}} \mathrm{span}_{\mathbb{Q}}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C`$; or the same with any $`g(e)`$ growing strictly slower than $`2^{e}-1`$ in place of $`C`$. Either version contradicts the proved floor of Proposition <a href="#prop:rank" data-reference-type="ref" data-reference="prop:rank">6</a> and closes \#249. `coord:carry-rank` <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Open\]</span>
+**Definition 31** (A counterfactual rank criterion). Either: there is $`C`$ such that for every $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le n`$ and $`T_c \notin`$ the irrationals, every $`v > 0`$ and every tempered binary orbit $`u`$ for $`(c,v)`$, and every $`e`$, $`\dim_{\mathbb{Q}} \mathrm{span}_{\mathbb{Q}}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C`$; or the same with any $`g(e)`$ growing strictly slower than $`2^{e}-1`$ in place of $`C`$. Either assertion would contradict the proved floor of Proposition <a href="#prop:rank" data-reference-type="ref" data-reference="prop:rank">6</a> and would therefore close \#249. `coord:carry-rank` <span class="sans-serif">scale:uniform</span>
 
 </div>
 
-This is the only surviving obligation that is not a residue or certificate statement at all, so B2’s certificate completeness cannot reach it — it is not a reformulation of $`\mathrm{Sep}`$ in any vocabulary. It evades B1 and B4 entirely (no window, no letters, no prescribed residues) and B5 (linear algebra over the whole orbit, not a bounded-state summary). The scale side is finished and uniform in $`e`$ (Proposition <a href="#prop:rank" data-reference-type="ref" data-reference="prop:rank">6</a>).
+This is not one of the paper’s live open propositions. It is a logically sufficient theorem schema in a coordinate disjoint from the residue and certificate statements, and B2’s certificate completeness cannot reach it. The proved scale side is uniform in $`e`$ (Proposition <a href="#prop:rank" data-reference-type="ref" data-reference="prop:rank">6</a>), but the present mathematics supplies no reason for rationality to impose the opposite rank bound.
 
-**Honest flag, and it is severe.** B6 partly indicts this route from inside. The most natural approach to the upper bound is dead (), and what rationality actually buys — uniform eventual periodicity of the carry’s dyadic sections mod $`v`$ — provably does not promote to a $`\mathbb{Q}`$-rank bound (Proposition <a href="#prop:period-not-rank" data-reference-type="ref" data-reference="prop:period-not-rank">7</a>). So this survivor is genuinely coordinate-disjoint from everything else, which is its whole value, but its obvious approach is closed and the missing input is a rigidity theorem nobody has stated.
+**The generic shortcut is retired.** The most natural approach to the upper bound is dead (), and what rationality actually buys — uniform eventual periodicity of the carry’s dyadic sections mod $`v`$ — provably does not promote to a $`\mathbb{Q}`$-rank bound (Proposition <a href="#prop:period-not-rank" data-reference-type="ref" data-reference="prop:period-not-rank">7</a>). Any viable rank argument would therefore need new arithmetic specific to the actual totient carry. The criterion is retained to record that logical possibility and the no-go result, not as a fifth surviving frontier.
 
 <a id="reading-the-detailed-record"></a>
 
@@ -1524,7 +1524,7 @@ If this fires at unbounded scale over a menu with $`|Q|\ge3`$ genuinely joint (m
 ``` math
 \text{bounding the dyadic-section rank of \emph{every} rationality-supplied tempered carry}
 ```
-would contradict this lower bound and close \#249. The corpus supplies no such theorem or mechanism. More strongly, its compressed-adjoint impossibility result and its explicit all-horizon finite-rank shift-polynomial countermodel retire the generic finite-compression shortcut (Observation <a href="#prop:B4b-kill" data-reference-type="ref" data-reference="prop:B4b-kill">166</a>). Thus the displayed upper bound is only a logically sufficient new input, not a third live frontier and not evidence that existing rank machinery is close to a contradiction. <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Open\]</span> `coord:other:carry-kernel-rank`\*
+would contradict this lower bound and close \#249. The corpus supplies no such theorem or mechanism. More strongly, its compressed-adjoint impossibility result and its explicit all-horizon finite-rank shift-polynomial countermodel retire the generic finite-compression shortcut (Observation <a href="#prop:B4b-kill" data-reference-type="ref" data-reference="prop:B4b-kill">166</a>). Thus the displayed upper bound is only a logically sufficient new input, not a third live frontier and not evidence that existing rank machinery is close to a contradiction. The evidence label below applies to the proved rank floor and no-go results, not to the counterfactual upper bound. <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span> `coord:other:carry-kernel-rank`\*
 
 </div>
 
@@ -3808,9 +3808,9 @@ First, the single closest approach to 249-supply is the first-harmonic reduction
 
 Second, the top-edge staircase (TE-04 through TE-05-weakest, `coord:actual-lcm-top-edge`) is the only row where the corpus has both halved the obligation (one-sided instead of symmetric) and exposed, via the exact identity of Observation <a href="#obs:staircase-tension" data-reference-type="ref" data-reference="obs:staircase-tension">229</a>, precisely which of two logically symmetric escape branches survives the sign machinery already proved elsewhere in the same file family. Five sufficient forms are already proved, related by the implications of Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">226</a>, and proving any one of them closes \#249.
 
-Third, the d4/d5 rank obligation is structurally independent of the residue-coordinate rows above: it is a second, self-contained sufficient condition for \#249 (an upper rank bound contradicting the proved $`2^e{-}1`$ lower bound), in a coordinate (carry-kernel rank) where a natural finite-rank strengthening is already proved impossible. A rank upper bound, if found, would not need to route through $`\mathtt{certifiedKill}`$ at all.
+Third, the retired d4/d5 rank shortcut is structurally independent of the residue-coordinate rows above. An upper rank bound would contradict the proved $`2^e{-}1`$ lower bound, but the corpus supplies no reason for such a bound, and a natural finite-rank strengthening is already proved impossible. It is therefore a counterfactual sufficient input and a useful no-go record, not a third live obligation.
 
-No row in this index is a solution, a partial solution in the sense of resolved cases, or evidence that \#249 is likely true or false. Every open producer listed is exactly as open as the original Erdős–Borwein question it reduces to; what the index adds is the exact remaining content, verified against the live Lean tree, of each reduction.
+No row in this index is a solution, a partial solution in the sense of resolved cases, or evidence that \#249 is likely true or false. Every actual open producer listed is exactly as open as the original Erdős–Borwein question it reduces to; the d4/d5 row is retained only as the explicitly retired shortcut. What the index adds is the exact remaining content, verified against the live Lean tree, of each reduction.
 
 <a id="closed-routes-with-the-mechanism-that-closed-them"></a>
 
@@ -4581,20 +4581,20 @@ At $`N=300`$, the least $`t`$ with $`\mathrm{certifiedKill}(td,300,td)`$ exists 
 
 Under a uniform model for $`\|2^{N}(2^{h}-1)S\|`$ the failure probability at depth $`h=td`$ is $`\approx 4(N+2h+2)/2^{h}`$, which is $`\approx 1`$ at the first admissible $`t`$ and falls by a factor $`2^{d}`$ at each subsequent $`t`$. The probability that a given $`(d,N)`$ fails at every $`t`$ is therefore a product $`\prod_{j\ge0}\min(1,\,c\,2^{-jd})`$, super-exponentially small, and the expected number of failing pairs $`(d,N)`$ over all $`N`$ converges. At $`d=1`$, $`N=300`$ the product evaluates to about $`10^{-5}`$, and the observed value is a success at the very first admissible depth. The model therefore predicts Route 4 holds with enormous margin — which is precisely why no finite computation will ever be evidence for it. <span class="sans-serif">\[Open\]</span> (heuristic).
 
-<a id="route-5-the-rationality-side-rank-bound-remains-open"></a>
+<a id="a-counterfactual-rank-criterion-not-a-live-route"></a>
 
-## Route 5: the rationality-side rank bound remains open
+## A counterfactual rank criterion, not a live route
 
-<a id="the-exact-statement-that-was-wanted."></a>
+<a id="the-exact-statement-that-was-considered."></a>
 
-#### The exact statement that was wanted.
+#### The exact statement that was considered.
 
 ``` math
 \exists C\ \forall c:\mathbb{N}\to\mathbb{N}\ \bigl(c(n)\le n,\ \neg\,\mathrm{Irrational}(X_c)\bigr)
   \ \forall v>0\ \forall u\ \mathrm{IsTemperedBinaryOrbit}(c,v,u)\ \forall e:\quad
   \operatorname{rk}_e(u)\le C ,
 ```
-where $`X_c=\sum_{n\ge1}c(n)/2^{n}`$ and $`\operatorname{rk}_e(u)`$ is the dimension of the span of the dyadic sections of $`u`$ through level $`e`$. A suitable subexponential upper bound would also contradict the landed $`\varphi`$-specific floor . No such rationality-side upper bound is proved.
+where $`X_c=\sum_{n\ge1}c(n)/2^{n}`$ and $`\operatorname{rk}_e(u)`$ is the dimension of the span of the dyadic sections of $`u`$ through level $`e`$. A suitable subexponential upper bound would also contradict the landed $`\varphi`$-specific floor . No such rationality-side upper bound is proved. It is a logically sufficient new theorem schema, but the preceding mathematics does not isolate it as an open proposition, so it is not counted among the surviving routes.
 
 <a id="the-right-vocabulary-and-the-audited-gap."></a>
 
@@ -4606,9 +4606,9 @@ The generic recurrence
 ``` math
 v\,c(N+1)=2u(N)-u(N+1)
 ```
-does express each *positive-residue* level-$`j`$ section of $`c`$ as a linear combination of two level-$`j`$ sections of $`u`$. It does not control the zero-residue section at each level. Across levels $`1,\ldots,e`$ those omitted sections can contribute up to $`e`$ new directions, not a fixed $`O(1)`$ error. Consequently non-$`2`$-regularity of $`c`$ alone does not imply unbounded $`\operatorname{rk}_e(u)`$, and the previously claimed bound $`\operatorname{rk}_e(u)\ge2^{e-1}-3`$ has no valid proof here. The proposed greedy set construction therefore supplies neither a counterexample nor a reason to retire the route. <span class="sans-serif">\[Gap\]</span> <span class="sans-serif">scale:uniform</span> `coord:other:carry-kernel`.
+does express each *positive-residue* level-$`j`$ section of $`c`$ as a linear combination of two level-$`j`$ sections of $`u`$. It does not control the zero-residue section at each level. Across levels $`1,\ldots,e`$ those omitted sections can contribute up to $`e`$ new directions, not a fixed $`O(1)`$ error. Consequently non-$`2`$-regularity of $`c`$ alone does not imply unbounded $`\operatorname{rk}_e(u)`$, and the previously claimed bound $`\operatorname{rk}_e(u)\ge2^{e-1}-3`$ has no valid proof here. The proposed greedy set construction therefore supplies neither a counterexample nor support for the criterion, and it does not restore the generic shortcut. <span class="sans-serif">\[Gap\]</span> <span class="sans-serif">scale:uniform</span> `coord:other:carry-kernel`.
 
-The Lean theorem for $`\varphi`$ remains valid: it uses the special structure and independently proved linear independence of the totient kernel, not the invalid generic $`O(1)`$ bridge. The honest status is thus asymmetric. The large $`\varphi`$-specific rank floor is proved; a rationality-driven ceiling is open; and the generic countermodel attempt is inconclusive.
+The Lean theorem for $`\varphi`$ remains valid: it uses the special structure and independently proved linear independence of the totient kernel, not the invalid generic $`O(1)`$ bridge. The honest status is thus asymmetric. The large $`\varphi`$-specific rank floor is proved; a rationality-driven ceiling is only a counterfactual sufficient input; and the generic countermodel attempt is inconclusive.
 
 <a id="sub:shape"></a>
 
@@ -4616,9 +4616,9 @@ The Lean theorem for $`\varphi`$ remains valid: it uses the special structure an
 
 Everything in this subsection is inference from the assembled evidence, not theorem. It is written because the assembly makes one inference available that no individual reformulation does, and because refusing to draw it would be a different kind of dishonesty than drawing it carelessly.
 
-<a id="first-a-fact-rather-than-an-inference-the-routes-are-one-route-in-five-coordinates."></a>
+<a id="first-a-fact-rather-than-an-inference-the-four-live-routes-and-one-retired-shortcut-concern-the-same-digit-sequence."></a>
 
-#### First, a fact rather than an inference: the routes are one route in five coordinates.
+#### First, a fact rather than an inference: the four live routes and one retired shortcut concern the same digit sequence.
 
 Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">271</a> collapses the coordinate spread that made the corpus look like many independent attacks.
 
@@ -4629,11 +4629,11 @@ Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit"
 | 1, 2 | at least $`11\%`$ of positions carry a digit change; mean run length $`\le 9.1`$ in one block per scale | a full dyadic block of $`\alpha_h`$ |
 | 3 | one run of length $`\le 3`$ | positions $`p-h`$, $`p`$ prime, in $`\alpha_h`$ |
 | 4 | the tails at gap $`h`$ differ by more than $`2(N+2h+2)2^{-h}`$ | every basepoint, some multiple of every ray, in $`S`$ |
-| 5 | an open rationality-side upper bound on the carry-orbit kernel rank | all dyadic sections through level $`e`$ |
+| 5 (retired) | a counterfactual rationality-side upper bound on the carry-orbit kernel rank | all dyadic sections through level $`e`$ |
 
 </div>
 
-This is the honest content of the operator’s “hundred measurements of one wall”. The measurements are of one thing, and the thing is the binary digit sequence of $`S`$ and of its multiples $`(2^{h}-1)S`$. The routes differ in which positions they interrogate and how uniform a margin they demand; they do not differ in subject.
+This is the honest content of the operator’s “hundred measurements of one wall”. The four live routes measure the binary digit sequence of $`S`$ and of its multiples $`(2^{h}-1)S`$ at different positions and margins. The fifth row is retained only to show why a generic rank-compression proof does not supply another route.
 
 <a id="second-the-wall-is-a-wall-about-explicit-constants-not-about-varphi."></a>
 
@@ -5030,7 +5030,7 @@ One natural strengthening is proved to be a hard ceiling, not a route to unbound
 | flexible terminal-dominance supply | weaker again; one-sided | TotientActualLcmTopEdgeStaircase.lean:1908 |
 | flexible terminal carry-corridor-escape supply | **weakest known** in this cluster | TotientActualLcmTopEdgeStaircase.lean:1895 |
 | raw-approximant separation supply | alternative (Diophantine) sufficient form, same target | TotientActualLcmOrbitSeparation.lean:305 |
-| rank-compression upper bound (Obl. 2) | independent obligation, different coordinate | TotientCarryKernelRigidity.lean:284 |
+| rank-compression upper bound | counterfactual sufficient input; generic shortcut retired | TotientCarryKernelRigidity.lean:284 |
 | Farey growth law (Obl. 3) | independent obligation, different coordinate | GapFareyBound.lean, CertificateKernel.lean:18056 |
 | guard-cylinder witness | problem-agnostic normal form of *any* certificate, not scale-comparable | TotientActualLcmTopEdgeStaircase.lean:844 |
 
