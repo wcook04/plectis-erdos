@@ -2,18 +2,20 @@
 \label{long269:long:extended}
 
 This part of the record holds material that the short note compressed or moved.
-Nothing here is an additional result; every statement is either an auxiliary
-form of a theorem of the note, a historical or bibliographic detail, or the
-exact source inventory.  The canonical references are the note's own labels.
+It separates auxiliary arguments, historical reports and exact source
+coordinates.  The mathematical references are this record's labels;
+archived computations are not promoted to theorem inputs by appearing in
+an appendix.
 
 \subsection{The historical and catalogue record}\label{long269:long:history}
 
 In the primary 1988 source Erd\H{o}s states the infinite-$P$ assertion as a
 simple exercise and presents persistence for a finite number of primes greater
 than one as a probable extension, and not as a theorem
-\cite[p.~106]{erdos1988}.  The current open status is supplied by the
-catalogue \cite{erdosproblems}, and is not inferred from that conjectural
-wording.  The 1974 letter writes ``given primes $p_1,\ldots,p_r$'' without
+\cite[p.~106]{erdos1988}.  The catalogue snapshot cited in the supplied
+manuscript records an open problem \cite{erdosproblems}; that historical
+status is not inferred from the conjectural wording and has not been
+reverified against the live page for this revision.  The 1974 letter writes ``given primes $p_1,\ldots,p_r$'' without
 explicitly restricting $r$, so the singleton case, whose value is $p/(p-1)$,
 must be excluded by hand; the modern restriction $|P|\ge2$ does that.
 
@@ -29,9 +31,9 @@ two-prime factorisation, the Hecke--Mahler reduction and the transcendence
 conclusion in the discussion thread of the problem's page
 \cite{fan2026comment}; the comment itself notes that the argument does not seem
 to generalise immediately to $|P|\ge3$, and a reply there observes that it
-applies to arbitrary coprime pairs.  The note's two-prime argument was found
-independently, and its manuscript was first released publicly on 22 July 2026,
-at commit \texttt{a9d3ab8}.
+applies to arbitrary coprime pairs.  The supplied publication record dates the note's first public manuscript
+to 22 July 2026, at commit \texttt{a9d3ab8}, after Fan's post.  We retain
+the calculation as exposition and make no priority claim for it.
 
 The statement of the problem has been formalised as a conjecture with an
 unfilled proof in the \emph{Formal Conjectures} collection
@@ -131,30 +133,30 @@ its radix falls back to the terminal factor alone.
 
 \subsection{The finite-scan histogram}\label{long269:long:experiments}
 
-The scan of Section~\ref{long269:sec:evidence} covers every $B\le5000$ coprime to $30$
-and every start $100\le\ell\le3000$, with search depth permitted to $24$.  It
-tested $3{,}869{,}934$ pairs, found an escaping window in every case, and the
-distribution of first successful lengths was
+The archived scan report described in Section~\ref{long269:sec:evidence}
+claims coverage of $B\le5000$ coprime to $30$ and $100\le\ell\le3000$,
+with search depth $24$.  It reports $3{,}869{,}934$ pairs, an escape in
+every case, and the following first-success histogram.  These figures were
+not rerun for this revision and are retained as historical data:
 \[
 \resizebox{\linewidth}{!}{$\begin{array}{c|rrrrrrrrrrrrrrr}
 h&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18\\ \hline
 \#&1&104&812&5437&51409&237423&735450&1431226&1132756&236752&34910&3076&521&49&8
 \end{array}$}
 \]
-The first case at the maximal observed length $18$ is $B=917$ at start
+The report's first case at its maximal observed length $18$ is $B=917$ at start
 $\ell=2980$, with endpoint jump index $6179$, window base
 $18139852800000000$, forcing $13196471407660025821045$, residue
-$76322101735$ and bound $3896420420$.  An earlier run of the same checker over
-every $B\le1000$ coprime to $30$ and every start $100\le\ell\le500$ tested
+$76322101735$ and bound $3896420420$.  An earlier archived run of the same checker over
+$B\le1000$ coprime to $30$ and $100\le\ell\le500$ reports
 $106{,}666$ pairs with maximal first successful length $14$, whose first case
 is $B=359$ at start $291$, endpoint jump index $627$, base $5038848000000$,
 forcing $25864575212865807$, residue $213175287$ and bound $15932659$.
 
-By Corollary~\ref{long269:res:no-bounded-length} these histograms describe a bounded
-region.  The observed concentration at lengths $10$ to $12$ sits just above the
-necessary depth $\bigl(\log_2K(B,\ell+h)-\log_215\bigr)/3$ supplied by
-Proposition~\ref{long269:res:window-growth}, which is what a reader should expect if
-the residues behave like generic ones inside this range.
+These histograms concern a bounded region.  The window-growth law gives
+a necessary lower bound on a possible escape length, not a distribution
+law for residues or first successful lengths.  No generic-residue model is
+used as evidence for cofinal escape.
 
 \subsection{Source inventory}\label{long269:long:sources}
 

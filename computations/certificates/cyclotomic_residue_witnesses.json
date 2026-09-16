@@ -1,0 +1,862 @@
+[
+  {
+    "rank": 1,
+    "cyclotomic_index": 1,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "1"
+    ]
+  },
+  {
+    "rank": 1,
+    "cyclotomic_index": 2,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "-1"
+    ]
+  },
+  {
+    "rank": 1,
+    "cyclotomic_index": 3,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "0",
+      "1"
+    ]
+  },
+  {
+    "rank": 1,
+    "cyclotomic_index": 4,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "0",
+      "1"
+    ]
+  },
+  {
+    "rank": 1,
+    "cyclotomic_index": 5,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "0",
+      "1",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "rank": 1,
+    "cyclotomic_index": 6,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "0",
+      "1"
+    ]
+  },
+  {
+    "rank": 1,
+    "cyclotomic_index": 7,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "rank": 1,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 1,
+    "residue_coefficients_low_to_high": [
+      "0",
+      "1",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 1,
+    "assignment_bound": 4,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-9"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 2,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-16"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 3,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "0",
+      "27"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 4,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-12",
+      "-16"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 5,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "10",
+      "0",
+      "15",
+      "-5"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 6,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "8",
+      "-3"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 7,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "16",
+      "-5",
+      "0",
+      "10",
+      "4",
+      "3"
+    ]
+  },
+  {
+    "rank": 2,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-8",
+      "-4",
+      "10",
+      "-12"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 1,
+    "assignment_bound": 15,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "567648"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 2,
+    "assignment_bound": 4,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-589824"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 3,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-19683",
+      "0"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 4,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "22528",
+      "-47104"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 5,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-68375",
+      "-66750",
+      "24250",
+      "61500"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 6,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-88479",
+      "-77112"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 7,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-35672",
+      "-31164",
+      "-34692",
+      "-44394",
+      "-37142",
+      "-1813"
+    ]
+  },
+  {
+    "rank": 3,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-2752",
+      "20192",
+      "1888",
+      "11264"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 1,
+    "assignment_bound": 32,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-529263258603264"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 2,
+    "assignment_bound": 8,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "347892350976"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 3,
+    "assignment_bound": 4,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "1162261467",
+      "0"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 4,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "84934656",
+      "0"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 5,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-5078125",
+      "-68750000",
+      "37890625",
+      "69531250"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 6,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-2913247296",
+      "10137567312"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 7,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-4912114662",
+      "-5072823196",
+      "-803761161",
+      "5109563298",
+      "7947307599",
+      "5698077210"
+    ]
+  },
+  {
+    "rank": 4,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "458923008",
+      "5817972736",
+      "7774234624",
+      "5064046592"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 1,
+    "assignment_bound": 55,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "48912078593401336068518707200"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 2,
+    "assignment_bound": 19,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-184065071131987726565376"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 3,
+    "assignment_bound": 8,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "18530201888518410",
+      "18530201888518410"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 4,
+    "assignment_bound": 4,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "27212912787456",
+      "24739011624960"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 5,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "976562500000",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 6,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-1260901168128",
+      "15861396589056"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 7,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-95234552873607",
+      "383702231805893",
+      "1070217244528467",
+      "1452138550596629",
+      "1239379686133288",
+      "591866273161786"
+    ]
+  },
+  {
+    "rank": 5,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "1239326044192768",
+      "9949273682608128",
+      "12832600836014080",
+      "8194818138177536"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 1,
+    "assignment_bound": 84,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-1821343862930273872651877638557226068753776640000"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 2,
+    "assignment_bound": 30,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-6232723485324062966305127689736945664"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 3,
+    "assignment_bound": 12,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-79766443076872509863361",
+      "0"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 4,
+    "assignment_bound": 8,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-1564226251375339634688",
+      "2101199442145978613760"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 5,
+    "assignment_bound": 4,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-437736511230468750",
+      "652313232421875000",
+      "-51498413085937500",
+      "-330448150634765625"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 6,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-24794911296000000",
+      "0"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 7,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-1078876570903818260",
+      "-1509025990396839530",
+      "-1035520482748873086",
+      "27301191574463646",
+      "894462969834665217",
+      "864650996444514573"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "439203027759617015808",
+      "1780416663539599540224",
+      "2078666790345216360448",
+      "1159239584155632140288"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 9,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-36280410879758941981359",
+      "-13419033662897176112469",
+      "15721425940785318680949",
+      "1225078444702382615793",
+      "28321438456589292601245",
+      "42165915516045882488214"
+    ]
+  },
+  {
+    "rank": 6,
+    "cyclotomic_index": 10,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "635917271792737146250000",
+      "-26997050145280585000000",
+      "376333540010056153750000",
+      "-420015543971179915000000"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 1,
+    "assignment_bound": 119,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "84375052214813722988951288387733639953506268477899209589963043635200000000"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 2,
+    "assignment_bound": 47,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "199673459464006365500477032309116558314307307445982068736"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 3,
+    "assignment_bound": 23,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "649707917740468042297019573277393696",
+      "-649707917740468042297019573277393696"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 4,
+    "assignment_bound": 12,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-380724590519595936731866595328",
+      "1410091075998503469377283686400"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 5,
+    "assignment_bound": 8,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-212325341999530792236328125",
+      "21107308566570281982421875",
+      "-147313624620437622070312500",
+      "-122766382992267608642578125"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 6,
+    "assignment_bound": 4,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "41464025640954838288171008",
+      "-51496406174948326555779072"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 7,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-1221539804750142123309",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-2748037194569608002011136",
+      "-2441037304455117806764032",
+      "-702073363492139436081152",
+      "1446640342470616361730048"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 9,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-8650654248170176127307038970",
+      "-3343793570101364770243225179",
+      "3527673348401722918786460670",
+      "97840890904371334503556392",
+      "6532010687882293505892829332",
+      "9909784277986795255281376485"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 10,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-828094719666557046137500000000",
+      "490214003017455672462500000000",
+      "-208821764518279953037500000000",
+      "1002004687694097567362500000000"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 11,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "5628496734438523495248237133804",
+      "12816515317227691125829830597386",
+      "19281910247409511030956090992385",
+      "22971964644225705848435690103318",
+      "22715112074851698789005987414344",
+      "18592901544629137855337242987502",
+      "11914105754598928786989793190547",
+      "4799195069426939695289096654344",
+      "-492896408587972995814664299030",
+      "-2281967352478021210976372488023"
+    ]
+  },
+  {
+    "rank": 7,
+    "cyclotomic_index": 12,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-192274648447647808165955633086464",
+      "-186354775165828285803879239712768",
+      "61773358074111369210681874612224",
+      "146674684952783648162580183810048"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 1,
+    "assignment_bound": 160,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-12523270696155578474884486474679358234464883207282057952410702509365301958566931077761377239040000000000000"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 2,
+    "assignment_bound": 64,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "409395249528557984231780752282512082228057156517514706339106773539672394039296"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 3,
+    "assignment_bound": 34,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "2143241526727960451369867850307498598173327029703680",
+      "0"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 4,
+    "assignment_bound": 16,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "34066659688847004070788586416013049856",
+      "0"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 5,
+    "assignment_bound": 12,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-13890303307562135159969329833984375",
+      "-32673706300556659698486328125000000",
+      "8804927347227931022644042968750000",
+      "-44488751882454380393028259277343750"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 6,
+    "assignment_bound": 8,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-103522797689434756606799547262304256",
+      "90365655529931438520889332014776320"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 7,
+    "assignment_bound": 4,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "106345460818820637547514829315",
+      "131850409410459535345829959554",
+      "94600202144608597974950415177",
+      "-11576537490103496484428984661",
+      "-84812176795914089288587983645",
+      "-68304029772711059204983658973"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 8,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "106341808682864896865468416",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 9,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "4989245531298683200514963341227",
+      "111764980293428212924366652751",
+      "-4817865591540408128577854508270",
+      "-2503837015043851175256342108891",
+      "-6550488944004652707682137125700",
+      "-7531971528625400502311125517721"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 10,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-225484657232032524106875000000000000",
+      "249724504738849461970625000000000000",
+      "14981049686640461955625000000000000",
+      "389081686847294696018125000000000000"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 11,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "258663434932939640492141882388919225",
+      "-2595955389998557771796243424638942558",
+      "-7657535168231487430999781765947272384",
+      "-13319060084351919367295085184563740750",
+      "-17783035976910462362859046027432155173",
+      "-19632182046648447971697248427548602411",
+      "-18279407473822717252654292363536071307",
+      "-14154208636621452002360662674770058332",
+      "-8566307008716878198157942610324591535",
+      "-3289821883607840417684868788940607952"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 12,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-4831609816265841682412163909749858893824",
+      "1990632630183124937277567626413565018112",
+      "13111096487213333992244072702128253042688",
+      "10359226314304066459785822906019385180160"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 13,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-26645990201331785218175833205926245834524",
+      "-59292581611567910590437973192392468417045",
+      "-90460833572597489292171676067531360421112",
+      "-113010475178112699672607423494799120412079",
+      "-121775655289404423875266624575288556455590",
+      "-114748376774118892946690450536043874844327",
+      "-93538504453161022800281262324911547063694",
+      "-63004964467493465223820066625264162703519",
+      "-30142622859979194215806123035517531946449",
+      "-2479846057534462392720795015470647470830",
+      "13646157145829354335026786873684680056591",
+      "14541113756684894073700951375040409969950"
+    ]
+  },
+  {
+    "rank": 8,
+    "cyclotomic_index": 14,
+    "assignment_bound": 0,
+    "Y": 0,
+    "residue_coefficients_low_to_high": [
+      "-469198313055784168034716324331071478187040",
+      "-231066188360749293735341934145333553354576",
+      "-561568528730480028947858012341424501070192",
+      "-166445377288670535290070043478739504174496",
+      "-352755635066675871038672763254917536853344",
+      "145201644454647942120159593172816157938992"
+    ]
+  }
+]

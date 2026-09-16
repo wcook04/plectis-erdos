@@ -1,0 +1,56 @@
+{
+  "schema": "erdos269_execution_receipt_v2",
+  "revision": "pass2",
+  "python": "3.13.5",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "checks/check_structures.py",
+        "--n",
+        "256",
+        "--output",
+        "checks/exact_checks.json"
+      ],
+      "started_utc": "2026-09-16T15:27:59.544255+00:00",
+      "elapsed_seconds": 1.276,
+      "returncode": 0,
+      "script_sha256": "7019a6b56a43ddbd44f200b287cffd6d7ea0fa023751536a8455acc693111c3b"
+    },
+    {
+      "command": [
+        "python3",
+        "checks/check_new_lemmas.py",
+        "--n",
+        "256",
+        "--output",
+        "checks/new_ordinary_checks.json"
+      ],
+      "started_utc": "2026-09-16T15:28:00.820053+00:00",
+      "elapsed_seconds": 1.79,
+      "returncode": 0,
+      "script_sha256": "f10f02e0a030097d92016039238e6b70f482a1da336b69c1aa13b6c440b32f11"
+    },
+    {
+      "command": [
+        "python3",
+        "checks/check_pass2.py",
+        "--output-dir",
+        "checks"
+      ],
+      "started_utc": "2026-09-16T15:28:02.610594+00:00",
+      "elapsed_seconds": 4.489,
+      "returncode": 0,
+      "script_sha256": "5ad995bfecd7bf5ca45fd1b4151374168c71aeb13a4690f24404e527b419347d"
+    }
+  ],
+  "outputs_sha256": {
+    "exact_checks.json": "178d1e924785cc402bc8547c9d2e4c03d69ac32453cd1c58a7eeb6ac0ef93fc7",
+    "new_ordinary_checks.json": "519561eed43756cd7c8ca8029e289967ec70802ab4dcb70289a7cef0445bf1c0",
+    "pass2_checks.json": "0a288a7d6ac327413e469f72d2be295308d57a86b435043c564641a691014243",
+    "pass2_certificates.json": "d8985dab56e6d3f86bf2ea6f97cc4aa79e76e6106f0e6af975b98586a074751e"
+  },
+  "formal_build_performed": false,
+  "historical_large_scan_rerun": false,
+  "network_used_by_checkers": false
+}

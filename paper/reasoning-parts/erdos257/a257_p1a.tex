@@ -329,10 +329,15 @@ Theorem~\ref{thm:full-support-catalogue}.
 
 \begin{thm}[Mersenne-channel exponential denominator growth]
 \label{thm:mersenne-channel-growth}
-Via Bertrand's postulate, at every scale $t\ge 5$ there is an upper-half prime $p$ with
-$2^{t/2}\le 2^{p-1}\le\mathrm{mersenne}(p)$, giving the explicit exponential lower bound
-$2^{t/2}\le(\text{reduced denominator of the scaled M\"obius shadow at LCM-height }t)$.
-The exact reduced denominator at every LCM height is also computed in closed form.
+Let $D_t$ denote the reduced denominator of the scaled M\"obius shadow
+at LCM-height $t$.  The cited upper-half prime estimate gives, for every
+$t\ge5$, a prime $p$ with
+\[
+ 2^{t/2}\le 2^{p-1}\le\mathrm{mersenne}(p)\le D_t.
+\]
+Thus $D_t\ge2^{t/2}$.  The second cited result also gives an exact formula
+for $D_t$.  This denominator estimate is not by itself an approximation-error
+bound.
 \par\ev{Lean}\scale{uniform}\coord{cyclotomic}
 \lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60}
 \lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147}

@@ -1,0 +1,63 @@
+{
+  "schema": "erdos269_pass2_checks_v1",
+  "python": "3.13.5",
+  "independent_certificate_verification": {
+    "no_crossing_rows": 4,
+    "row_endpoint_inequalities": 136,
+    "cubic_numerators": [
+      1,
+      195,
+      723,
+      1582
+    ],
+    "cubic_D": 45,
+    "finite_pairs": 2496,
+    "window_witnesses": 2496,
+    "finite_failures": 0,
+    "first_escape_min": 1,
+    "first_escape_max": 10,
+    "B_max": 97,
+    "starts": [
+      1,
+      96
+    ],
+    "max_length_searched": 24
+  },
+  "strip_identity_cases": 25,
+  "exact_denominator_cases": 14000,
+  "minimal_onset_fixtures": 125,
+  "direct_recoding_indices": 150,
+  "explicit_D_bound_cases": 3900,
+  "mutation_tests": [
+    {
+      "mutation": "row_count",
+      "rejected": true
+    },
+    {
+      "mutation": "floor_crossing",
+      "rejected": true
+    },
+    {
+      "mutation": "cubic_result",
+      "rejected": true
+    },
+    {
+      "mutation": "window_residue",
+      "rejected": true
+    },
+    {
+      "mutation": "window_cap",
+      "rejected": true
+    },
+    {
+      "mutation": "grid_extent",
+      "rejected": true
+    }
+  ],
+  "formal_systems_run": [],
+  "limitations": [
+    "Finite checks do not prove irrationality, eventual sparse defects, or a general obstruction to all operators.",
+    "Denominator tests use synthetic reduced rational values, not an assertion that the target series is rational.",
+    "No large historical scan or missing denominator-exclusion certificate was reconstructed."
+  ]
+}

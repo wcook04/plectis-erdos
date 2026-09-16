@@ -1,0 +1,28 @@
+{
+  "schema": "erdos68_independent_cf_recomputation_v1",
+  "review_date": "2026-09-16",
+  "evidence_class": "external_exact_integer_computation",
+  "not_verified": [
+    "Lean consumer replay",
+    "historical driver identity",
+    "300000 carry census"
+  ],
+  "python": "3.14.7",
+  "scale_bits": 80000,
+  "N": 7054,
+  "width": 7053,
+  "common_partial_quotients": 23449,
+  "last_denominator_bit_length": 39991,
+  "quotient_trace_sha256": "a0cd386342ba92e952e9de5aef09817da34bf5bc82edfe989110b5127a3465b0",
+  "checks": {
+    "first_tail_index_7054": true,
+    "width_7053": true,
+    "common_prefix_length_23449": true,
+    "last_denominator_has_39991_bits": true,
+    "last_denominator_ge_2_pow_39990": true,
+    "2_pow_39990_gt_10_pow_12038": true,
+    "trace_digest_matches_independent_review": true
+  },
+  "elapsed_seconds": 6.54,
+  "implementation_sha256": "c504f1fe50a6c1e612af1094671b31d5f833e8b67500a847b8b866326305235c"
+}

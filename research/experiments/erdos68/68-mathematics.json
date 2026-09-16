@@ -1,0 +1,142 @@
+{
+  "schema": "erdos68_pass2_exact_mathematics_v1",
+  "review_date": "2026-09-16",
+  "python": "3.14.7",
+  "critical_witness": {
+    "prime": 12487,
+    "primality_method": "trial division through floor(sqrt(q))",
+    "gap": 12,
+    "monic_gcd_coefficients_ascending": [
+      5139,
+      13,
+      1
+    ],
+    "roots": [
+      4626,
+      7848
+    ],
+    "central_point": 6237,
+    "compressed_square": 4587,
+    "factorial_harmonic_values": {
+      "4626": {
+        "factorial": 442,
+        "harmonic": 11117
+      },
+      "4638": {
+        "factorial": 442,
+        "harmonic": 11117
+      },
+      "7848": {
+        "factorial": 6300,
+        "harmonic": 11117
+      },
+      "7860": {
+        "factorial": 6300,
+        "harmonic": 11117
+      }
+    },
+    "conclusion": "r_q(12)=2, but neither root is a factorial-value-1 joint hit"
+  },
+  "even_gap_symmetry": {
+    "prime_limit_exclusive": 151,
+    "max_even_gap": 16,
+    "pointwise_polynomial_identities": 36094,
+    "root_count_identities": 249
+  },
+  "moment_ideal_regressions": {
+    "depths_checked": [
+      {
+        "D": 2,
+        "ell": 2,
+        "H": 6,
+        "gcd": 12
+      },
+      {
+        "D": 3,
+        "ell": 3,
+        "H": 15,
+        "gcd": 12
+      },
+      {
+        "D": 4,
+        "ell": 3,
+        "H": 20,
+        "gcd": 60
+      },
+      {
+        "D": 5,
+        "ell": 5,
+        "H": 45,
+        "gcd": 60
+      },
+      {
+        "D": 6,
+        "ell": 5,
+        "H": 54,
+        "gcd": 840
+      },
+      {
+        "D": 7,
+        "ell": 7,
+        "H": 91,
+        "gcd": 840
+      },
+      {
+        "D": 8,
+        "ell": 7,
+        "H": 104,
+        "gcd": 7560
+      },
+      {
+        "D": 9,
+        "ell": 7,
+        "H": 117,
+        "gcd": 7560
+      },
+      {
+        "D": 10,
+        "ell": 7,
+        "H": 130,
+        "gcd": 83160
+      },
+      {
+        "D": 11,
+        "ell": 11,
+        "H": 231,
+        "gcd": 83160
+      },
+      {
+        "D": 12,
+        "ell": 11,
+        "H": 252,
+        "gcd": 2162160
+      }
+    ],
+    "extended_coefficient_limit": 504,
+    "D4_minimum_moment": 1380,
+    "D4_support_through_6_minimum": 4140,
+    "D4_support_equation_coefficients": [
+      12,
+      253,
+      -11
+    ],
+    "consecutive_coprimality_test_range": [
+      3,
+      100
+    ],
+    "scope": "Finite regression checks only; general proofs are in the manuscripts"
+  },
+  "weighted_collision_identity": {
+    "exponent_vectors_tested": 19530,
+    "max_vector_length": 6,
+    "max_exponent": 4
+  },
+  "not_proved": [
+    "A near-linear averaged critical-root bound",
+    "Uniform unequal-product selection for the remaining gap range",
+    "An E2 saving or an lcm exponent of 5/3",
+    "Irrationality of the factorial-denominator series"
+  ],
+  "implementation_sha256": "eae5d7e2d4cdd78a82e0e7fdceb858772cf3a8dff982ee594dd381057c452bc1",
+  "elapsed_seconds": 0.099
+}

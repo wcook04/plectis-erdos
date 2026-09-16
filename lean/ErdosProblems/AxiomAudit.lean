@@ -14,6 +14,10 @@ import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos68.PaperCompleteLiminf
 import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
 import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+import ErdosProblems.Erdos243.ProtectedEpochEnergy
+import ErdosProblems.Erdos243.RecordIncrementBarrier
+import ErdosProblems.Erdos243.SaturatedSquareTransport
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
 import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
 
 /-!
@@ -197,7 +201,11 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
 #print axioms ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf
 #print axioms ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually
+#print axioms ErdosProblems.Erdos243.protected_epoch_energy_integer
+#print axioms ErdosProblems.Erdos243.recordIncrementOne_sylvesterNext_eventually
+#print axioms ErdosProblems.Erdos243.recordAmplified_error_after_cancellation
 #print axioms ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect
+#print axioms ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.complete_primitive_quintic
 #print axioms ErdosProblems.Erdos1049.PaperR17.actual_cancelled_supply
 #print axioms ErdosProblems.Erdos1049.PaperR17.actual_contour_source_supply
 #print axioms ErdosProblems.Erdos1049.PaperR17.rational_base_region

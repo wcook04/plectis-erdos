@@ -1097,6 +1097,7 @@ APPROVED_ROOT_DIRS = {
     ".agents": "host-discovery entrypoints used by integrations",
     ".github": "CI and hosted repository metadata",
     "LICENSES": "SPDX licence texts",
+    "computations": "exact finite computer-algebra certificates cited by the #1049 notes, not Lean",
     "docs": "human and machine documentation",
     "lean": "proof-corpus Lean sources (Lake srcDir)",
     "paper": "manuscripts, nested by problem or purpose",

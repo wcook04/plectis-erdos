@@ -1,0 +1,51 @@
+{
+  "authority": {
+    "arithmetic": "exact_gmpxx_integers",
+    "backend_version": "6.3.0",
+    "floating_point_used": false,
+    "gmp_source_sha256": "43308ddc3902dd537b789ae6e0648054a0d752adf07e5d6e1d829811e9342083",
+    "lean_boundary": "Lean proves that a rational representation S=a/q with q<=m-1 forces factorialGapStepCarry m=1.  This receipt computes the corresponding finite carries independently.",
+    "source_sha256": "f25b5bd8ffbfd66bdbb42ca6a07a936aab9b4eb7d3a57446725be55acb642191"
+  },
+  "certificate": {
+    "asserted_carry_cells": 299998,
+    "event_trace_sha256": "d27377bc7638901ff8837e3501b402de9b8397c05833ce6b486cd0fd7185a5fe",
+    "final_interval": {
+      "lower_sha256": "4a54be4b7a9b2ca1d7f2d3ae8bd264be6a078dab1cef70295e66fa0ec49384dd",
+      "upper_sha256": "9c9615642414d66d5da6b8b9976c94cac0b3c0ce048cbcf51b385b4e6c47daba",
+      "width_bits": 5025581
+    },
+    "final_strict_successor_sha256": "16e7241ef579ff3959f03590148dd8ff8953ca59be37bd17888e4bd5c2d59da2",
+    "last_unit_carry": 21236,
+    "terminal_carry_is_nonunit": true,
+    "unit_carries": [
+      52,
+      591,
+      1030,
+      1407,
+      1438,
+      2164,
+      4258,
+      10991,
+      21236
+    ],
+    "unit_carry_count": 9
+  },
+  "mathematical_consequence": {
+    "claim": "Every displayed rational representation S=a/q with q>0 has q>=300000.",
+    "logical_reach": "finite_denominator_exclusion",
+    "not_claimed": [
+      "cofinally many non-unit carries",
+      "irrationality of the series"
+    ],
+    "reason": "factorialGapStepCarry 300000 is certified non-unit; the checked Lean consumer rational_denominator_ge_of_nonunit_carry converts that finite fact to the displayed denominator bound."
+  },
+  "parameters": {
+    "guard_bits": 96,
+    "max_index": 300000,
+    "precision_bits": 5025679,
+    "scale": "2^5025679"
+  },
+  "receipt_payload_sha256": "044ef27a60f7294c39b8279b7f04e22e1234a942e2862e9e8c64eb66505af29b",
+  "schema": "erdos68_strict_successor_exact_interval_v1"
+}

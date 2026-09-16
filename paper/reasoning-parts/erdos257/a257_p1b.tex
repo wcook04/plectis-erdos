@@ -3,7 +3,7 @@
 The BooleanM\"obius lane (repo root \texttt{Erdos257PeriodNoncollapse/}, mirrored at
 \texttt{Erdos249257/} for the modules that have been made public) is where the reduction
 of Erd\H{o}s \#257 to a single arithmetic socket actually lives. Sixteen of its modules
-have never been published: \texttt{BooleanMobiusCofinalExactRows},
+were described as unpublished in the historical source fragment: \texttt{BooleanMobiusCofinalExactRows},
 \texttt{BooleanMobiusCriticalCapacityCofinal}, \texttt{BooleanMobiusCriticalCapacityGeometric},
 \texttt{BooleanMobiusExactRowCrossing}, \texttt{BooleanMobiusExactRowDichotomy},
 \texttt{BooleanMobiusExactRowDoubling}, \texttt{BooleanMobiusExactRowRankTwo},
@@ -12,7 +12,7 @@ have never been published: \texttt{BooleanMobiusCofinalExactRows},
 \texttt{BooleanMobiusLocalRepair}, \texttt{BooleanMobiusSkipRow},
 \texttt{BooleanMobiusSkipRowCofinal}, \texttt{BooleanMobiusSkippedCoreCriticalCapacity},
 \texttt{BooleanMobiusSkippedCoreExactRow}; plus three sibling modules on the half-membership
-track, also never published: \texttt{HalfGapMass}, \texttt{HalfGreedyFatalGap},
+track, likewise described there as unpublished: \texttt{HalfGapMass}, \texttt{HalfGreedyFatalGap},
 \texttt{HalfUpperResetCriticalBand}. Every one of the nineteen is covered below. Consumers
 in this subsection are theorems whose conclusion is a genuine payoff
 ($(1/2:\mathbb{R})\in\mathrm{mersenneAchievementSet}$, or an infinite counterexample support)
@@ -320,7 +320,7 @@ already on disk: $\mathrm{binaryCoeffTail\_eq\_finiteCoeffWindow\_add\_shiftedTa
 $\mathrm{gap} = \mathrm{tail}(k+1+J)/2^J$, and 257bm:i2 (the tail growth bound) gives
 $\mathrm{tail}(m)\le m+2$. What would close it: $\mathrm{margin}(k,J)\ge0$ as soon as
 $(k+J+3)/2^J < |\mathrm{halfGreedyNextDyadicExcessNumerator}(k)|/\mathrm{halfGreedyPrefixDenominator}(k)$
-— pure bookkeeping over existing lemmas, no new idea.
+The displayed inequality remains an obligation: the cited identities alone do not prove that the required margin holds at that prescribed horizon.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:frozen-margin} \lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1198} \lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1229}
 \end{thm}
 
