@@ -5,10 +5,10 @@ import ErdosProblems.Erdos1049.AdelicHeightBridge
 
 Zudilin (Res. Number Theory 2 (2016), Art. 15, §4) proves the *lower* bound
 `ord_q V_N^* ≥ B_N = ∑_{j<N} j²` for the normalized Hankel determinant
-`V_N^* = det (v_{i+j}^*)_{0 ≤ i,j < N}`.  The source stops at that bound.
-Equality, and the exact leading coefficient
-`C_N = ∏_{j<N} (j+1)²(j+2)/2 = (N!)² (N+1)! / 2^N`, are proved on top of his
-construction, and this module formalizes the determinant-level half.
+`V_N^* = det (v_{i+j}^*)_{0 ≤ i,j < N}`.  Equality, and the exact leading
+coefficient `C_N = ∏_{j<N} (j+1)²(j+2)/2 = (N!)² (N+1)! / 2^N`, are *not* in the
+source; they are the new content, of which this module formalizes the
+determinant-level half.
 
 `AdelicHeightBridge.lean` already carries the order half of the bridge
 (`order_det_eq_of_unique_minimizing_permutation`) together with the
