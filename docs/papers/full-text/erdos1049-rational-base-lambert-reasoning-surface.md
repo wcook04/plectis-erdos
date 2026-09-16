@@ -10,7 +10,7 @@
 
 We prove that $`F(a/b)=\sum_{n\ge1}((a/b)^n-1)^{-1}`$ is irrational for every pair of coprime integers $`a>b\ge1`$ with $`b^{\mu}<a`$, where $`\mu=C_1/C_0=2.464978683574975\ldots`$, equivalently $`\log b/\log a<\theta^{*}=1/\mu=0.40568302138406054\ldots`$, and where $`C_1=1091/2`$ and $`C_0=266-(3/\pi^{2})(225-J)`$ are the constants printed by Zudilin in 2004 for his $`(14,12,14;27)`$ direction, whose ratio is the integer-base irrationality-exponent bound proved there. This region contains $`31/4`$ and every power $`(31/4)^r`$, $`r\ge1`$, beyond the published sufficient region of Bundschuh and Väänänen. The same construction gives $`\mu_{\rm irr}(F((a/b)^r))\le(1-\theta)/(\theta^{*}-\theta)`$, uniformly for every integer $`r\ge1`$, and in particular a bound below $`301`$ for every power of $`31/4`$.
 
-The proof cancels cyclotomic factors before clearing the rational-base denominator. The degree of the cancelled polynomial pair measures the cost, and positivity prevents the remainder from vanishing. This is an ordinary proof using the polynomial conclusion of Zudilin’s Lemma 7; Lean checks supporting finite arithmetic, not the irrationality theorem.
+The proof cancels cyclotomic factors before clearing the rational-base denominator. The degree of the cancelled polynomial pair measures the cost, and positivity prevents the remainder from vanishing. This is an ordinary proof using the polynomial conclusion of Zudilin’s Lemma 7. Lean checks the irrationality statements, with the source supply applied.
 
 A separate degree-budget theorem bounds the sufficient cutoff delivered by the stated base-uniform estimates by $`1/2`$. It does not exclude every approximation family at $`3/2`$.
 
