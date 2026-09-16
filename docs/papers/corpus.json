@@ -1673,7 +1673,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:32c1a9a1052a531fc4ef549596cd4bb07e29c323d280edb2a97de7bc979f10ce",
+      "source_sha256": "sha256:c15cbb5294ef281c7739070f4f1d07c7192b02a759ecdef0dd42d887381c55dd",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex",
@@ -1750,43 +1750,43 @@
           "level": 1,
           "id": "sec:secondaryrate",
           "title": "Further consequences",
-          "line": 439
+          "line": 441
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining arithmetic estimate",
-          "line": 470
+          "line": 472
         },
         {
           "level": 4,
           "id": "formal-scope-and-supporting-record.",
           "title": "Formal scope and supporting record.",
-          "line": 542
+          "line": 544
         },
         {
           "level": 4,
           "id": "declarations.",
           "title": "Declarations.",
-          "line": 548
+          "line": 550
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 554
+          "line": 556
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 560
+          "line": 562
         }
       ],
       "citations_rendered": 27,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:0e24c6ca54d35ab03079185a2730f8b0dc1ca98ea85b16c94d2550eadc8ed0ee",
-      "pdf_byte_count": 116353,
+      "pdf_sha256": "sha256:7707860b347283b06ff866d4bf53822dc56a8f63e75faee786661ea1cb5d42f1",
+      "pdf_byte_count": 117186,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1809,7 +1809,7 @@
           {
             "id": "sec:open",
             "title": "The remaining arithmetic estimate",
-            "line": 470
+            "line": 472
           }
         ],
         "unresolved_count": 0
@@ -1852,7 +1852,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:5e07ff09f0f7bff3a17c00c141c04c0801659bd03a57e98bf8075105abc0b5fc",
+      "source_sha256": "sha256:b42045682cd1c36f7052431397ebf54fef0c92f908c490db459996d29c0d82e1",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
@@ -2193,121 +2193,121 @@
           "level": 2,
           "id": "global-height-and-old-factor-overlap",
           "title": "Global height and old-factor overlap",
-          "line": 1531
+          "line": 1533
         },
         {
           "level": 2,
           "id": "repair-entropy-across-a-recovery",
           "title": "Repair entropy across a recovery",
-          "line": 1541
+          "line": 1543
         },
         {
           "level": 2,
           "id": "the-direct-analytic-question",
           "title": "The direct analytic question",
-          "line": 1616
+          "line": 1618
         },
         {
           "level": 2,
           "id": "a-barrier-extension",
           "title": "A barrier extension",
-          "line": 1638
+          "line": 1640
         },
         {
           "level": 2,
           "id": "formalisation-targets",
           "title": "Formalisation targets",
-          "line": 1661
+          "line": 1663
         },
         {
           "level": 4,
           "id": "erd\u0151sstraus.",
           "title": "Erd\u0151s\u2013Straus.",
-          "line": 1665
+          "line": 1667
         },
         {
           "level": 4,
           "id": "duverney.",
           "title": "Duverney.",
-          "line": 1671
+          "line": 1673
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 1677
+          "line": 1679
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 1681
+          "line": 1683
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 1689
+          "line": 1691
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 1695
+          "line": 1697
         },
         {
           "level": 1,
           "id": "long243:app:index",
           "title": "Guide to the formal sources",
-          "line": 1701
+          "line": 1703
         },
         {
           "level": 1,
           "id": "long243:app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 1707
+          "line": 1709
         },
         {
           "level": 1,
           "id": "sec:erdos-243-complete-family-map",
           "title": "Complete result-family map",
-          "line": 1735
+          "line": 1737
         },
         {
           "level": 2,
           "id": "centered-state-dynamics",
           "title": "Centered state dynamics",
-          "line": 1741
+          "line": 1743
         },
         {
           "level": 2,
           "id": "negative-mass-recovery",
           "title": "Negative mass recovery",
-          "line": 1767
+          "line": 1769
         },
         {
           "level": 2,
           "id": "bounded-negative-exclusion",
           "title": "Bounded negative exclusion",
-          "line": 1793
+          "line": 1795
         },
         {
           "level": 2,
           "id": "bounded-rise-coprimality",
           "title": "Bounded rise coprimality",
-          "line": 1813
+          "line": 1815
         },
         {
           "level": 2,
           "id": "negative-orbit-no-go",
           "title": "Negative orbit no go",
-          "line": 1837
+          "line": 1839
         }
       ],
       "citations_rendered": 52,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:8ce3d7c3e791fdf14656688734642327f3526fba128f25961e214b5a41623e29",
-      "pdf_byte_count": 298299,
+      "pdf_sha256": "sha256:8cf5c8315a6a2915741dc850877ccf88ac46896d2e06d4cc9791c3a45fd9c9f0",
+      "pdf_byte_count": 298512,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2330,7 +2330,7 @@
           {
             "id": "sec:erdos-243-complete-family-map",
             "title": "Complete result-family map",
-            "line": 1735
+            "line": 1737
           }
         ],
         "unresolved_count": 0
@@ -6489,7 +6489,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/1049/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:f63a8a21373c43d7ee33e963f4d9b31b94014eea209d888a54a114a0a0b9611a",
+      "source_sha256": "sha256:2755cfabc98c7818e23c6c60347dfd79f89630b3bf31538b355520ebeb11f772",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.tex",
@@ -6518,91 +6518,91 @@
           "level": 4,
           "id": "comparison-and-scope.",
           "title": "Comparison and scope.",
-          "line": 247
+          "line": 249
         },
         {
           "level": 2,
           "id": "the-base-uniform-degree-restriction",
           "title": "The base-uniform degree restriction",
-          "line": 268
+          "line": 270
         },
         {
           "level": 1,
           "id": "sec:hankel-order",
           "title": "Exact normalized-Hankel order in Zudilin\u2019s construction",
-          "line": 295
+          "line": 297
         },
         {
           "level": 4,
           "id": "formal-order-and-fixed-base-size.",
           "title": "Formal order and fixed-base size.",
-          "line": 373
+          "line": 375
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Local cancellation and the remaining real estimate",
-          "line": 379
+          "line": 381
         },
         {
           "level": 2,
           "id": "one-minor-gcd-controls-two-different-costs",
           "title": "One minor gcd controls two different costs",
-          "line": 480
+          "line": 482
         },
         {
           "level": 2,
           "id": "a-collision-must-have-a-small-nonzero-real-remainder",
           "title": "A collision must have a small nonzero real remainder",
-          "line": 525
+          "line": 527
         },
         {
           "level": 2,
           "id": "the-source-specific-endpoint-question",
           "title": "The source-specific endpoint question",
-          "line": 568
+          "line": 570
         },
         {
           "level": 4,
           "id": "functional-equations.",
           "title": "Functional equations.",
-          "line": 614
+          "line": 616
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 620
+          "line": 622
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 624
+          "line": 626
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 630
+          "line": 632
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 636
+          "line": 638
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 642
+          "line": 644
         }
       ],
-      "citations_rendered": 21,
+      "citations_rendered": 22,
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:3f2194ba26f18adaad30f2f4c3c7c7f24d1198760cfa621f15a095fe85051040",
-      "pdf_byte_count": 124183,
+      "pdf_sha256": "sha256:ec47d71ad11131a1aab481321b0bca074ed50968c0ecbb1273cb6ad402d1f922",
+      "pdf_byte_count": 125237,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6620,12 +6620,12 @@
           {
             "id": "sec:hankel-order",
             "title": "Exact normalized-Hankel order in Zudilin\u2019s construction",
-            "line": 295
+            "line": 297
           },
           {
             "id": "sec:open",
             "title": "Local cancellation and the remaining real estimate",
-            "line": 379
+            "line": 381
           }
         ],
         "unresolved_count": 0
@@ -6668,7 +6668,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
       "local_source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-      "source_sha256": "sha256:64c4d881ab34619276d4c2a4e1f25911e6044878fddb7bb5a0e2a5fe682b4f9e",
+      "source_sha256": "sha256:2a576da93aea1537e594c1a9f1b625345384eba2b149b57fda22ff83172af740",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
@@ -7032,8 +7032,8 @@
       ],
       "citations_rendered": 88,
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:7d38efc8baffc66f5c12522032557da7953f06a90037676490992f6cb74cfe64",
-      "pdf_byte_count": 313882,
+      "pdf_sha256": "sha256:a140f9d025a31068a659b7b0a3fc40cac21e60ef89176dacafe247b941b6015a",
+      "pdf_byte_count": 314204,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7099,7 +7099,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:86a499cb55567c2006b446f48861cd647d511d549535465cae6887885d6df2e8",
+      "source_sha256": "sha256:4bdb619393c15253fd969eb2356ce1c9541452da51b2ee79e735222e01aff360",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex",
@@ -7397,8 +7397,8 @@
       ],
       "citations_rendered": 28,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:96e162a2fff8b8c02c25049cea22c8914cacfecf87aa92929594df05973255be",
-      "pdf_byte_count": 153482,
+      "pdf_sha256": "sha256:9facd1034c73ff2562394bd4ccd835306eff85abf364ae51921a7bdfbf9984e6",
+      "pdf_byte_count": 153479,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7469,7 +7469,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:ef4635b8f85a3409b7fde448ab3bf3cbe48f6ed79ae91fa26211e17a6a937200",
+      "source_sha256": "sha256:c473b668608c5fc1d3e693ab74e011ee68917104a3d8ced64ab5d1c165380e8a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/cold-clone-to-proof-receipt.tex",
@@ -7599,8 +7599,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:16062d2ecac3ce8550df1c7754d5ea2670fd25e4eb7ee7384209f06190b04045",
-      "pdf_byte_count": 85943,
+      "pdf_sha256": "sha256:1cd6aa53803d2aaf20f84e59377006d060ce9620e1b9d9771ea8d0cf6287ff77",
+      "pdf_byte_count": 85942,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

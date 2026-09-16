@@ -1497,6 +1497,8 @@ In particular, negative indices occur infinitely often. Thus the remaining regim
 
 </div>
 
+Lean checks Proposition <a href="#long243:res:frontier" data-reference-type="ref" data-reference="long243:res:frontier">52</a> as [the canonical frontier profile](https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151), from the rational reciprocal sum, the quadratic growth limit, and the failure of eventual Sylvester behaviour. The divergent normalised negative mass is recorded there as divergence of the partial sums.
+
 Put
 ``` math
 \delta_n:=\frac{(-E_n)_+}{C_n}.
