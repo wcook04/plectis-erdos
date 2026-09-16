@@ -2116,14 +2116,14 @@ Some nondegeneracy is essential.  The three rows $(1,0),(0,0),(0,1)$ have
 zero adjacent minors but outer minor one; a zero middle row transmits no
 information between its neighbours.
 
-\noindent The unimodular
-\href{https://github.com/wcook04/plectis-erdos/blob/0cfa24a7fe555d75a9d9e7f119da4720a88c1396/ErdosProblems/Erdos1049/BezoutPluckerJets.lean\#L191}{adjacent-to-pairwise determinant propagation}
-and the resulting
-\href{https://github.com/wcook04/plectis-erdos/blob/0cfa24a7fe555d75a9d9e7f119da4720a88c1396/ErdosProblems/Erdos1049/BezoutPluckerJets.lean\#L280}{modular selector collision}
-are proved in Lean at the linked revision, including the
-\href{https://github.com/wcook04/plectis-erdos/blob/0cfa24a7fe555d75a9d9e7f119da4720a88c1396/ErdosProblems/Erdos1049/BezoutPluckerJets.lean\#L299}{explicit $S+2R$ threshold}.
-The unit-coordinate statements are special cases of the stronger
-rowwise-coprime theorem.
+\noindent Lean checks the unit-coordinate form inside the supported root: the
+\href{https://github.com/wcook04/plectis-erdos/blob/7148c5ae4a4a2f3802cccdeed62c394f64593340/lean/ErdosProblems/Erdos1049/BezoutPluckerJets.lean\#L191}{adjacent-to-pairwise determinant propagation},
+the resulting
+\href{https://github.com/wcook04/plectis-erdos/blob/7148c5ae4a4a2f3802cccdeed62c394f64593340/lean/ErdosProblems/Erdos1049/BezoutPluckerJets.lean\#L230}{modular selector collision},
+and the
+\href{https://github.com/wcook04/plectis-erdos/blob/7148c5ae4a4a2f3802cccdeed62c394f64593340/lean/ErdosProblems/Erdos1049/BezoutPluckerJets.lean\#L249}{explicit $S+2R$ threshold}.
+Each of the three assumes that the second coordinate of every row is a unit.
+The rowwise-coprime statement proved above is the stronger one.
 This conditional theorem is stronger than the ambient four-jet count only
 after its minor-vanishing hypothesis has been established.  No such all-tail
 hypothesis is proved here for an actual $q$-Ap\'ery or Zudilin family, and the
