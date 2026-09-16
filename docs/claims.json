@@ -14426,11 +14426,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "0b500c7cf8e8bb7ae343484378df02f277fb8194",
+      "ref": "3f5ea2f34c2af25bf270a7a2f484a1602133b9ff",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-15-r1"
+      "public_tag": "formal-source-2026-09-16"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
