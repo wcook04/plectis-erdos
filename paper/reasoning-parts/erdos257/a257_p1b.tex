@@ -215,7 +215,7 @@ the strict-upper separation clause.
 \subsubsection*{The dyadic-band quantifier-collapse consumer (\texttt{HalfUpperResetCriticalBand})}
 
 \begin{thm}[257bm:c11 --- \texttt{DyadicBandEscape} $\Leftrightarrow$ \texttt{CriticalDyadicBandIndex}, PROBLEM-AGNOSTIC quantifier collapse]
-Pure $\N$-arithmetic, zero seam or Mersenne content: for $d,E,j$ with $\mathrm{CriticalDyadicBandIndex}(d,E,j)$ the unique nearest dyadic power $2^{d-j+1}\ge E$,
+Pure $\N$-arithmetic, zero seam or Mersenne content: for $d,E$ with $E\le2^{d+1}$, where $\mathrm{CriticalDyadicBandIndex}(d,E,j)$ selects the unique nearest dyadic power $2^{d-j+1}\ge E$,
 \[
 \mathrm{DyadicBandEscape}(d,E) \;\Longleftrightarrow\; \exists j,\ \mathrm{CriticalDyadicBandIndex}(d,E,j) \wedge E + 2(d+j) \le 2^{d-j+1}.
 \]

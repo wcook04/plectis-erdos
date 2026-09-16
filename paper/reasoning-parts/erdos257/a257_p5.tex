@@ -398,10 +398,9 @@ obstruction has been found.
 
 \textbf{O4 (sqrt-escape).} The required input is a near-integer anti-concentration bound for
 $\sum_{i\le L}\delta_n(M+i)2^{-i}$, a geometrically weighted divisor sum in a short interval, at
-resolution $2^{(r+5)/2}$. This is stated in the source material to not exist in the literature in
-any form, and it is explicitly noted to be the same missing ingredient, on the opposite side of
-the Erd\H{o}s \#249/\#257 pair, as the totient-window discrepancy anti-concentration input needed
-to close \#249's certificate-supply obligation (Part IV). The two open problems, in their
+resolution $2^{(r+5)/2}$. No proof of this input is identified in this record. The same shape of
+input, a totient-window discrepancy anti-concentration bound, is needed on the other side of the
+Erd\H{o}s \#249/\#257 pair to close \#249's certificate-supply obligation (Part IV). The two open problems, in their
 Lean-nearest forms, terminate at structurally the same missing analytic statement, applied to two
 different arithmetic functions (a Mersenne binary-digit count versus Euler's totient).
 
@@ -430,5 +429,98 @@ claim that Problem 257 is solved.
 
 \paragraph{Funding and competing interests.} This work received no external
 funding. The author declares no competing interests.
+
+\begin{thebibliography}{99}
+\small
+\raggedright
+\setlength{\itemsep}{0pt}
+\bibitem{erdos1948} P.~Erd\H{o}s,
+  \href{https://www.renyi.hu/~p_erdos/1948-04.pdf}{\emph{On arithmetical
+  properties of Lambert series}}, J.~Indian Math.\ Soc.\ 12 (1948), 63--66.
+\bibitem{erdos1968} P.~Erd\H{o}s,
+  \href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\emph{On the
+  irrationality of certain series}}, Math.\ Student 36 (1968), 222--226
+  (issued 1969).  The theorem on p.~222 treats pairwise-coprime support with
+  convergent reciprocal sum at every integer base $b\ge2$; the claimed
+  removal of pairwise coprimality is stated without proof.  The same page
+  says the reciprocal-sum condition could be replaced by a weaker but more
+  complicated condition, and p.~226 suggests
+  $\sum_{n_i<x}1/n_i=o(\log\log x)$ for pairwise coprime supports.
+\bibitem{lucatachiya2017} F.~Luca and Y.~Tachiya,
+  \href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf}
+  {\emph{Linear independence results for the values of divisor functions
+  series}}, RIMS K\^oky\^uroku No.~2014 (2017), 138--150.  Theorem~A (p.~139)
+  restates Theorem~1.1 of their paper \emph{Irrationality of Lambert series
+  associated with a periodic sequence}, Int.\ J.~Number Theory 10 (2014),
+  no.~3, 623--636,
+  \href{https://doi.org/10.1142/S1793042113501121}{DOI}: for a purely periodic
+  integer sequence $a(n)$, not identically zero,
+  $\sum_{n\ge1}a(n)/(q^n-1)$ is irrational for every integer $q$ with $|q|>1$.
+  Example~2 (p.~140) treats the odd support.
+\bibitem{nitecki2013} Z.~Nitecki,
+  \href{https://arxiv.org/abs/1106.3779v2}{\emph{Subsum sets: intervals, Cantor
+  sets, and Cantorvals}}, arXiv:1106.3779v2 (2013).  Theorem~4 (p.~9) shows
+  that when every term exceeds its tail the subsum set is a Cantor set of
+  Lebesgue measure $\lim_n2^nX_n$, where $X_n$ is the $n$th tail, and credits
+  this to H.~Hornich (1941).
+\bibitem{kanekosuzukitachiya} H.~Kaneko, Y.~Suzuki, and Y.~Tachiya,
+  \href{https://arxiv.org/abs/2601.20743v1}{\emph{Refinements of Erd\H{o}s's
+  irrationality criterion for certain sparse infinite series}},
+  arXiv:2601.20743v1 (2026).  The averaged tail $R_c(q,x,z)$, a sum over
+  offsets $j\ge z$, is~(1.7) and Theorem~1 is on p.~3; its rational-integer
+  form, Theorem~3, is on p.~5.  Lemma~1 (pp.~6--7) derives irrationality from
+  arbitrarily small nonzero scaled tails, and Lemma~2 (pp.~7--8) shows that
+  most scaled tails in a range are small under a counting condition on the
+  support.  Their criteria assume sparse coefficient supports.
+\bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya,
+  \href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf}
+  {\emph{Refinement of the Chowla--Erd\H{o}s method and linear independence
+  of certain Lambert series}},
+  Forum Math.\ 31 (2019), no.~6, 1557--1566,
+  \href{https://doi.org/10.1515/forum-2018-0299}{DOI}.  Page numbers refer to
+  the linked author preprint.  Theorem~1.1 (pp.~2--3) is the refined
+  Chowla--Erd\H{o}s criterion; its proof in Section~2 (pp.~5--7) selects an
+  index by minimising a local coefficient mass along an arithmetic
+  progression, (2.3)--(2.9).  Corollary~1.2 gives the general $F_s(E)$
+  theorem and its monomial images under $|q|\operatorname{lcm}(1,\dots,\ell)\le s$, and at
+  every integer base when $s=\infty$; Example~1.1 gives the joint squarefree
+  family at all bases \(2^j\), \(j\ge1\).  Both are on p.~4, which also
+  relates Corollary~1.2 to the conjecture of Erd\H{o}s and Graham; the proof
+  of Corollary~1.2 is on pp.~10--11.
+\bibitem{taoteravainen2025} T.~Tao and J.~Ter\"av\"ainen,
+  \href{https://arxiv.org/abs/2512.01739v2}{\emph{Quantitative correlations and
+  some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2
+  (submitted December 2025, revised April 2026).  Theorem~1.3 (p.~4) proves
+  $\sum_{n\ge1}\omega(n)/2^n=\sum_p(2^p-1)^{-1}$ irrational, settling the
+  prime-support case of \#257 at base~$2$; the paragraph after it states that
+  the method extends to every integer base and to the prime-power support,
+  leaving the modifications to the reader.  Theorem~3.1 is on p.~24, and the
+  proof of Theorem~1.3 is Section~5, pp.~44--56.
+\bibitem{zudilin2004} W.~Zudilin, \emph{Heine's basic transform and a
+  permutation group for $q$-harmonic series}, Acta Arith.\ 111 (2004), no.~2,
+  153--164, \href{https://doi.org/10.4064/aa111-2-4}{DOI}.  Theorem~1 (p.~154)
+  gives $\mu(h_p(1))\le2.46497868\ldots$ for $h_p(1)=\sum_{n\ge1}1/(p^n-1)$,
+  uniformly in the integer $p$ with $|p|\ge2$; the remark at the end of
+  Section~3 (p.~159) corrects the computation of the author's earlier paper.
+\bibitem{campbell2026} J.~M.~Campbell,
+  \href{https://arxiv.org/abs/2605.24160v1}{\emph{On the binary digits of the
+  Erd\H{o}s--Borwein constant}}, arXiv:2605.24160v1 (2026).  Theorem~1 (p.~12)
+  proves that the block \texttt{11} occurs infinitely often in the binary
+  expansion of $\sum_{n\ge1}1/(2^n-1)$, answering a question of Crandall
+  recalled in the introduction.
+\bibitem{matomakiradziwill} K.~Matom\"aki and M.~Radziwi\l\l,
+  \emph{Multiplicative functions in short intervals}, Ann.\ of Math.\ (2) 183
+  (2016), no.~3, 1015--1056,
+  \href{https://doi.org/10.4007/annals.2016.183.3.6}{DOI}.  Page numbers
+  refer to arXiv:1501.04585v4.
+\bibitem{mangerel2021} A.~P.~Mangerel, \emph{Divisor-bounded multiplicative
+  functions in short intervals}, Res.\ Math.\ Sci.\ 10 (2023), no.~1, Paper
+  No.~12, \href{https://doi.org/10.1007/s40687-023-00376-0}{DOI}.  Page numbers
+  refer to arXiv:2108.11401v2.
+\bibitem{sun2026} Y.-C.~Sun,
+  \href{https://arxiv.org/abs/2401.08432v3}{\emph{The critical-window profile
+  for the $k$-fold divisor function in almost all short intervals}},
+  arXiv:2401.08432v3 (2026).
+\end{thebibliography}
 
 \end{document}

@@ -99,8 +99,8 @@ $|\mathrm{Skip}_n|\le n-2$. For the denominator $D_n$ of the corresponding ratio
 An $n^2/4$ asymptotic would require additional distribution information. This weighted budget
 is too coarse to yield the required $2^{-3n/2}$ separation from the known irrationality measure.
 
-Zudilin's bound $\mu(E)\le 2.42343562\ldots$ (Math.\ Notes 72 (2002) 858--862; the cited
-erratum gives $2.46497868\ldots$) does not repair this quadratic-versus-linear budget.
+Zudilin's bound $\mu(E)\le 2.46497868\ldots$~\cite[Theorem~1, p.~154]{zudilin2004} does not
+repair this quadratic-versus-linear budget.
 
 \textbf{Scope.} The displayed denominator estimate combined with a fixed irrationality-measure
 exponent does not derive the wall. A sharper denominator analysis using the actual skip
@@ -322,13 +322,13 @@ $\mathrm{card}(\mathrm{State})\ge\mathrm{radius}+1$, unbounded in $m$.
 (fan-out lower bound at
 \lean{Erdos249257.balancedPulse\_fanout\_unbounded}{GenericTailOrbitRigidity.lean:237}).
 
-\textbf{Scope.} Rules out, for \emph{either} \#249 or \#257, any proof strategy that tries to define
-a bounded/autonomous "carry state" summarizing pre-$m$ history and use it to exactly determine the
-post-$m$ tail — completely general, no dependence on whether the coefficients are $\varphi$ or a
-Möbius-support indicator.
+\textbf{Scope.} Excludes bounded-state encodings of pre-$m$ history that must distinguish every
+member of the displayed balanced-pulse family, whether the coefficients are $\varphi$ or a
+Möbius-support indicator. Applying it to \#249 or \#257 requires showing that the relevant orbit
+realises that family, and it does not rule out every finite-state proof strategy.
 \coord{binary-digit, generic}\ \textbf{Object or representation:} about a \emph{representation}
-class (any finite-automaton encoding of history) — it says nothing about $C$ or $\mathcal A$
-directly, only that this whole family of encodings is too weak.
+class, the encodings of history that separate the balanced-pulse family; it says nothing about $C$
+or $\mathcal A$ directly.
 \ev{Lean}\scale{n/a}
 \end{prop}
 

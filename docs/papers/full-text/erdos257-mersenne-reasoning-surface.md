@@ -14,7 +14,7 @@ For $`n\in\mathbb{N}_{>0}`$ let $`w_n=(2^n-1)^{-1}`$, and for $`J\subseteq\mathb
 ```
 has irrational $`\sum_{a\in A}(b^a-1)^{-1}`$. A base-two instance gives the conclusion hereditarily at every integer base and includes an explicit host with divergent reciprocal mass. The proof freezes a finite prefix, uses exact gcd-orbit averages on a growing prime-power modulus, and averages the incomplete-period error over dyadic observation lengths. Erdős already stated the weaker reciprocal-summable theorem without the coprimality restriction; its complete ordinary proof is also printed here. A finite estimate uniform in the moving modulus lets the weighted and positive-cover arguments share one observation window. This proves the same hereditary all-base conclusion for the union of their two hosts.
 
-The checked structural record includes finite-denominator noncollapse and the topology and measure of restricted achievement sets. The targets $`1/2`$ and $`1/21`$ reduce to explicit infinite-orbit alternatives but neither is decided. Published work independently settles prime support at base $`2`$ and squarefree support at every power-of-two base; no priority is claimed here. These analytic proofs are not end-to-end Lean results, and universal \#257 and both target membership questions remain open.
+The checked structural record includes formal proofs of classical support theorems, among them Erdős’s full-support theorem and cases of the periodic theorem of Luca and Tachiya, together with finite-denominator noncollapse and the topology and measure of restricted achievement sets, where the strict-tail measure formula goes back to Hornich. The targets $`1/2`$ and $`1/21`$ reduce to explicit infinite-orbit alternatives but neither is decided. Published work independently settles prime support at base $`2`$ and squarefree support at every power-of-two base; no priority is claimed here. These analytic proofs are not end-to-end Lean results, and universal \#257 and both target membership questions remain open.
 
 <a id="how-to-read-this-document"></a>
 
@@ -288,12 +288,12 @@ Since $`b^{h(a)}-1\ge2^{h(a)}-1`$ for every $`b\ge2`$, one has $`W_{b,\mathcal P
 
 #### Averaging antecedents.
 
-Both averaging proofs in this section end by choosing a term no larger than a finite mean. [Duverney and Tachiya](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf) choose their index in the same way in their refinement of the Chowla–Erdős method: they average a local coefficient mass over an arithmetic progression built by the Chinese remainder theorem, and a term attaining the minimum supplies the bounds that control the tail beyond it (Section 2, (2.3)–(2.9), pp. 5–6 of the author preprint). [Kaneko, Suzuki and Tachiya](https://arxiv.org/abs/2601.20743) measure the average decay of scaled tails by $`R_c(q,x,z)`$, their (1.7) on p. 3 of arXiv v1. Under a counting condition on the support and a bound on $`R_c`$, most scaled tails in a range are small, and arbitrarily small nonzero scaled tails give irrationality (Lemmas 1 and 2, pp. 6–8). The divisor-incidence coefficients $`\#\{a\in A:a\mid n\}`$ are positive on every multiple of $`\min A`$, so conditions (iii) and (iv) of their Theorems 1 and 3 fail for every splitting into two sequences, and the scaled tail
+Both averaging proofs in this section end by choosing a term no larger than a finite mean. [Duverney and Tachiya](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf) choose their index in the same way in their refinement of the Chowla–Erdős method: they average a local coefficient mass over an arithmetic progression built by the Chinese remainder theorem, and a term attaining the minimum supplies the bounds that control the tail beyond it (Section 2, (2.3)–(2.9), pp. 5–6 of the author preprint). [Kaneko, Suzuki and Tachiya](https://arxiv.org/abs/2601.20743) measure the average decay of scaled tails by $`R_c(q,x,z)`$, their (1.7) on p. 3 of arXiv v1. Under a counting condition on the support and a bound on $`R_c`$, most scaled tails in a range are small, and arbitrarily small nonzero scaled tails give irrationality (Lemmas 1 and 2, pp. 6–8). The divisor-incidence coefficients $`\#\{a\in A:a\mid n\}`$ are positive on every multiple of $`\min A`$. For any splitting into two sequences the two coefficient supports therefore cover a set of positive lower density, which is incompatible with the support-counting conditions \[kanekosuzukitachiya, Theorem 1(iii), p. 3, and Theorem 3(iv), p. 5\] requiring both counts to be $`o(x_n/z_n)`$ with $`z_n\ge1`$. Their remote-tail quantity $`R_c(q,x,z)`$ sums only offsets $`j\ge z`$, whereas the full scaled tail
 ``` math
 \sum_{r\ge1}\frac{\#\{a\in A:a\mid m+r\}}{b^r}
  =\sum_{a\in A}\phi_a(m)=S_b(A)+\Delta_{b,A}(m)
 ```
-is at least $`S_b(A)`$. The proofs above average the displacement instead, along multiples of a modulus that freezes a finite part of $`A`$; the weighted proof adds the dyadic average <a href="#eq:257-weighted-dyadic-average" data-reference-type="eqref" data-reference="eq:257-weighted-dyadic-average">[eq:257-weighted-dyadic-average]</a>. <span class="sans-serif">\[Cited\]</span>
+is at least $`S_b(A)`$, which gives no lower bound for $`R_c`$. The proofs above average the displacement instead, along multiples of a modulus that freezes a finite part of $`A`$; the weighted proof adds the dyadic average <a href="#eq:257-weighted-dyadic-average" data-reference-type="eqref" data-reference="eq:257-weighted-dyadic-average">[eq:257-weighted-dyadic-average]</a>. <span class="sans-serif">\[Cited\]</span>
 
 <a id="evidence-boundary."></a>
 
@@ -484,6 +484,8 @@ The reciprocal-summable and finite-prime weighted theorems, together with the ch
 
 ## The unconditional record, universal direction
 
+Full-support irrationality is Erdős’s theorem \[erdos1948\]. The pairwise-coprime case is Erdős’s theorem of 1968, where he also stated that the coprimality condition can be removed \[erdos1968, p. 222\]. Luca and Tachiya proved irrationality for every purely periodic integer weight that is not identically zero \[lucatachiya2017, Theorem A, p. 139\]; the purely periodic, eventually periodic, residue-class, odd-support and periodic-weight rows below follow from their theorem, and odd support is their Example 2 \[lucatachiya2017, p. 140\]. The lcm-gap supports, including factorials and powers of two, have summable reciprocals, so they fall under the reciprocal-summable theorem stated by Erdős. The Lean declarations in the table are formal proofs of these statements.
+
 The checked support families in the following table use weighted-coefficient block certificates over the divisor incidence $`\operatorname{sc}_A(n) := \#\{d \mid n : d \in A\}`$, the generic form being `irrational_coeff_series_of_weighted_coeff_block_certificates`. The table records their hypotheses at integer bases $`b\ge2`$; it is separate from the ordinary averaging proof above.
 
 <div class="center">
@@ -535,7 +537,7 @@ Two one-sided rigidity results constrain a hypothetical rational-valued support,
 
 <div class="rem">
 
-*Remark 9* (Achievement-set terminology and source boundary). We use the modern term *achievement set* for the subsum set that [Kakeya’s 1914 note](https://doi.org/10.11429/ptmps1907.7.14_250) describes as a set of partial sums. Kakeya proves perfectness for an absolutely convergent series and nowhere density under an all-index strict-tail condition; [Kovač–Tao, Remark 4.1](https://arxiv.org/abs/2406.17593v4) verifies that strict-tail condition for the fixed-base Mersenne weights. Those sources are the classical topological antecedent. The local volume dichotomy, injectivity, and greedy-membership statements above and below are Lean-checked claims of this corpus. The sparse power-series criteria of [Kaneko–Suzuki–Tachiya](https://arxiv.org/abs/2601.20743) (Theorems 1–3, pp. 3–5 of arXiv v1) assume sparse coefficient supports; their relation to the divisor-incidence coefficients of these subseries is recorded after Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a>. <span class="sans-serif">\[Cited\]</span>
+*Remark 9* (Achievement-set terminology and source boundary). We use the modern term *achievement set* for the subsum set that [Kakeya’s 1914 note](https://doi.org/10.11429/ptmps1907.7.14_250) describes as a set of partial sums. Kakeya proves perfectness for an absolutely convergent series and nowhere density under an all-index strict-tail condition; [Kovač–Tao, Remark 4.1](https://arxiv.org/abs/2406.17593v4) verifies that strict-tail condition for the fixed-base Mersenne weights. Nitecki proves that a subsum set whose terms all exceed their tails is a Cantor set of measure $`\lim_n2^nR_n`$, and credits this to Hornich \[nitecki2013, Theorem 4(1), p. 9\]; this is the classical source for the topology and measure used here. The local volume dichotomy, injectivity, and greedy-membership statements above and below are Lean-checked claims of this corpus. The sparse power-series criteria of [Kaneko–Suzuki–Tachiya](https://arxiv.org/abs/2601.20743) (Theorems 1–3, pp. 3–5 of arXiv v1) assume sparse coefficient supports; their relation to the divisor-incidence coefficients of these subseries is recorded after Theorem <a href="#thm:257-weighted" data-reference-type="ref" data-reference="thm:257-weighted">1</a>. <span class="sans-serif">\[Cited\]</span>
 
 </div>
 
@@ -558,11 +560,11 @@ A half-trapping macro receipt reaches depth $`13{,}548{,}057`$ (labelled in its 
 
 <div class="rem">
 
-*Remark 11* (Literature, exactly). $`E`$ is irrational (Erdős 1948). Zudilin’s irrationality measure is $`\mu(E) \le 2.42343562\ldots`$ (*Math. Notes* 72 (2002) 858–862; the erratum, *Acta Arith.* 111 (2004) 153–164, gives $`2.46497868\ldots`$). Transcendence of $`E`$ is unknown (Duverney–Tachiya, *Forum Math.* 31 (2019) 1557–1566), and the Erdős–Graham conjecture that every such subset sum is irrational — i.e. (U) — is itself open. For binary digit runs of $`E`$ the only rigorous result is a *lower* bound: Erdős constructs a $`0`$-run of length $`\ge c \log^{1/10} N`$ among the first $`N`$ bits; Crandall (*INTEGERS* 12 (2012) \#A23, §7) records the longest observed $`0`$-run as $`47`$ in the first $`2^{43}`$ bits and states that he does not know how to show that `11` appears infinitely often. Campbell (arXiv:2605.24160, 2026) settles that occurrence question affirmatively. <span class="sans-serif">\[Cited\]</span>
+*Remark 11* (Literature, exactly). $`E`$ is irrational \[erdos1948\]. Zudilin proves the irrationality measure bound $`\mu(E)\le2.46497868\ldots`$ \[zudilin2004, Theorem 1, p. 154\], correcting an earlier computation (see the remark at the end of his Section 3, p. 159). Transcendence of $`E`$ is unknown \[duverneytachiya, p. 2\], and the Erdős–Graham conjecture that every such subset sum is irrational, i.e. (U), is itself open. For the binary digits of $`E`$, Erdős’s proof produces arbitrarily long runs of zeros. Crandall asked whether the block `11` occurs infinitely often in the binary expansion of $`E`$, and Campbell proves that it does \[campbell2026, Theorem 1, p. 12\]. <span class="sans-serif">\[Cited\]</span>
 
 </div>
 
-That last pair of citations is the sharpest single orientation fact available. Every rigorous result in the literature about the digits of $`E`$ points the wrong way: they produce long runs, or guarantee that patterns occur. What (H) needs is that a pattern *never* occurs for long. No result of that logical type exists.
+The digit results cited here produce long runs or guarantee that patterns occur. The finite irrationality exponent bounds runs of equal binary digits of $`E`$ only linearly: a run of length $`L`$ after the $`N`$th place forces $`L<(\mu(E)-1+\varepsilon)N`$ for large $`N`$. What (H) needs is that a pattern *never* occurs for long, and no result of that kind is identified in this record.
 
 <a id="sec:257-wall"></a>
 
@@ -772,7 +774,7 @@ The geometry itself is Lean-checked in Theorem <a href="#thm:geometry" data-ref
 
 ## What the six barriers converge on
 
-Both halves of \#257 terminate at the same missing object, stated twice in two coordinates. On the half-value side it is a near-integer anti-concentration bound for $`\sum_{i \le L} (\tau(M+i) - 1)\,2^{-i}`$, a geometrically weighted divisor sum in a short interval. On the universal side it is the dense-branch producer: for a divisor-dense $`A`$, a block of $`K`$ consecutive indices with $`2^K \mid \sum_{r=1}^{K} \operatorname{sc}_A(N+r)\,2^{K-r}`$ and a bounded middle window. These are the same statement in the incidence coordinate. No result of that shape exists in the literature in any form, and the only rigorous results in that direction — lower bounds on runs, and guarantees that patterns occur — have the opposite logical type. That convergence, from two independent directions, is the strongest evidence the corpus offers that there is exactly one wall here rather than several.
+Both halves of \#257 terminate at the same missing object, stated twice in two coordinates. On the half-value side it is a near-integer anti-concentration bound for $`\sum_{i \le L} (\tau(M+i) - 1)\,2^{-i}`$, a geometrically weighted divisor sum in a short interval. On the universal side it is the dense-branch producer: for a divisor-dense $`A`$, a block of $`K`$ consecutive indices with $`2^K \mid \sum_{r=1}^{K} \operatorname{sc}_A(N+r)\,2^{K-r}`$ and a bounded middle window. These are the same statement in the incidence coordinate. No proof of it is identified in this record, and the digit results cited above produce long runs or guarantee that patterns occur. The two directions meet at one missing estimate; this correspondence does not by itself show that one estimate settles every remaining obligation.
 
 <a id="sec:257-survivors"></a>
 
@@ -784,7 +786,7 @@ Six barriers eliminate a great deal. What they do not eliminate is a short, spec
 
 ## Route 1: the reset $`\sqrt{\ }`$-escape / R-run anti-concentration target
 
-**What it needs.** Any one of three forms, in decreasing strength.
+**What it needs.** One of the first two forms below, in decreasing strength; the sign law (iii) is a weaker target whose transport to half-membership is untested.
 
 1.  *Run-length form.* For every reset row $`r \ge 31`$ the maximal pure-R run starting at $`r`$ satisfies $`L_r < (r-3)/2`$; equivalently $`|\mathrm{rem}(r+1) - 2^{r+1}| > 2^{(r+5)/2}`$. Any sublinear bound $`L_r = o(r)`$ suffices.
 
@@ -867,7 +869,7 @@ The first disjunct contradicts whenever the series is rational; the second close
 
 ## Ranking, stated plainly
 
-Route 4 is the only one that can be completed with the mathematics currently in hand; it produces theorems, not progress on the wall. Route 3 is the only one that would produce a new irrationality theorem for a named constant, and its missing input is a windowed Mertens estimate, which is ordinary analytic number theory rather than a new phenomenon. Route 2 is the only place in the half-value branch with a non-singleton witness space, which makes it the best target for search. Route 1 is where the actual obstruction lives, and Route 5 is Route 1 in another coordinate. Neither problem is close to being solved, and no route above is a proof of anything.
+Route 4 is the only one that can be completed with the mathematics currently in hand; it produces theorems, not progress on the wall. Route 3 concerns the prime-support constant, which Tao and Teräväinen have proved irrational \[taoteravainen2025, Theorem 1.3, p. 4\]; completing it would reprove that theorem in the coordinates of this record, and its missing input is a windowed Mertens estimate, which is ordinary analytic number theory. Route 2 is the only place in the half-value branch with a non-singleton witness space, which makes it the best target for search. Route 1 is where the actual obstruction lives, and Route 5 is Route 1 in another coordinate. Neither problem is close to being solved, and no route above is a proof of anything.
 
 <a id="sec:257-howto"></a>
 
@@ -949,7 +951,7 @@ This formalizes the positive-integer-base scope of [Erdős’s classical 1948 fu
 
 ### Named infinite-support families
 
-Beyond full support ($`A = \{1,2,3,\dots\}`$, i.e. $`m=1`$ below), the following named infinite families are each proved irrational unconditionally, for every base $`b \ge 2`$:
+Beyond full support ($`A = \{1,2,3,\dots\}`$, i.e. $`m=1`$ below), the following named infinite families are each proved irrational unconditionally, for every base $`b \ge 2`$. The purely periodic, eventually periodic, residue-class and odd supports follow from the periodic theorem of Luca and Tachiya \[lucatachiya2017, Theorem A, p. 139\], and the declarations below are formal proofs of these cases:
 
 <div class="thm">
 
@@ -975,7 +977,7 @@ A\}`$. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`N_0 \in \mathbb{N}`$, eventua
 
 <div class="thm">
 
-**Theorem 32** (Odd support – first density-strictly-between-0-and-1 class). *For every $`b \ge 2`$: $`\sum_{n \text{ odd}} 1/(b^n-1)`$ is irrational. This is the first landed support class with natural density strictly between $`0`$ and $`1`$ (odd $`n`$ has density $`1/2`$ inside $`\mathbb{N}`$), as opposed to the density-$`1`$ full-support case or density-$`1/m`$ residue classes for large $`m`$. `coord:odd-support` <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span>\
+**Theorem 32** (Odd support). *For every $`b \ge 2`$: $`\sum_{n \text{ odd}} 1/(b^n-1)`$ is irrational. This density-$`1/2`$ support is the case treated explicitly by Luca and Tachiya \[lucatachiya2017, Example 2, p. 140\]. `coord:odd-support` <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span>\
 **Site:** (specializes residue-class support at $`m=2,c=1`$).*
 
 </div>
@@ -989,7 +991,7 @@ None of these families contains $`A`$ of the shape produced by a candidate half-
 <div id="thm:topology" class="thm">
 
 **Theorem 33** (Achievement-set topology and measure). *$`\mathcal{A}`$ (Definition <a href="#defn:half-question" data-reference-type="ref" data-reference="defn:half-question">26</a>) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal{A}`$ is a Cantor-like set of Lebesgue measure exactly $`1`$ – topologically thin (nowhere dense and totally disconnected), but neither full measure in $`\mathbb R`$ nor full measure in its ambient interval $`[0,E]`$, whose length is $`E\approx1.6067`$. `coord:achievement-set-topology` <span class="sans-serif">scale:n/a</span> <span class="sans-serif">\[Lean\]</span>\
-**Site:** , , , , , . Strict separation and summability give the compactness, unique coding, and Cantor topology. The measure assertion is Mersenne-specific: if $`R_N=\sum_{n>N}x_n`$, the level-$`N`$ cylinder length is $`2^N R_N\to1`$. Other weight sequences require their own tail asymptotic.\
+**Site:** , , , , , . Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
 **Chains with:** Theorem <a href="#thm:greedy-survival-record" data-reference-type="ref" data-reference="thm:greedy-survival-record">34</a> below (compactness is exactly what powers every “limit of achieved points is achieved” argument used downstream, including the seam-limit route of Part 2).*
 
 </div>
@@ -1181,7 +1183,7 @@ This section catalogues machinery for Erdős \#257 (is $`\sum_{n\in A} 1/(2^n-1)
 
 <div id="thm:second-channel" class="thm">
 
-**Theorem 47** (Second-channel phase separation sufficiency). *If the greedy second-channel phase (*greedyMersenneSecondChannelPhaseRat*) stays separated (*HalfSecondChannelSeparatedRat*) at every skipped rank, then $`1/2\in\mathrm{mersenneAchievementSet}`$; a rational specialization discharges the hypothesis from row $`7`$ on.*
+**Theorem 47** (Second-channel phase separation sufficiency). *If the greedy second-channel phase (*greedyMersenneSecondChannelPhaseRat*) stays separated (*HalfSecondChannelSeparatedRat*) at every skipped rank, then $`1/2\in\mathrm{mersenneAchievementSet}`$; the rational specialization proves the rational separation at ranks $`n\le6`$ and assumes it for $`n\ge7`$.*
 
 *<span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:uniform</span>`coord:second-channel-phase`*
 
@@ -1207,7 +1209,7 @@ This section catalogues machinery for Erdős \#257 (is $`\sum_{n\in A} 1/(2^n-1)
 <div id="thm:middle-producer-escape" class="thm">
 
 **Theorem 50** (Middle-producer card/row escape sockets). *If, at every late middle-branch row, $`\mathrm{card}(\mathrm{support})+\mathrm{belowPulse}+5
-< 4\cdot\mathrm{remainder}`$ (*SeamMiddleProducerCardEscape*), then $`1/2\in\mathrm{mersenneAchievementSet}`$. The strictly weaker-hypothesis, stronger-conclusion socket *SeamMiddleProducerRowEscape* ($`s\le\mathrm{remainder}`$ at every late middle row) implies the card escape and hence also closes the branch.*
+< 4\cdot\mathrm{remainder}`$ (*SeamMiddleProducerCardEscape*), then $`1/2\in\mathrm{mersenneAchievementSet}`$. The socket *SeamMiddleProducerRowEscape* ($`s\le\mathrm{remainder}`$ at every late middle row) implies the card escape and hence also closes the branch.*
 
 *<span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:uniform</span>`coord:seam-integer`*
 
@@ -1268,7 +1270,7 @@ This section catalogues machinery for Erdős \#257 (is $`\sum_{n\in A} 1/(2^n-1)
 
 <div id="thm:full-support-catalogue" class="thm">
 
-**Theorem 57** (Erdős–Borwein full-support irrationality, unconditional). *For every base $`b\ge 2`$: $`\sum'_{n\ge 1} 1/(b^n-1)`$ is irrational, unconditionally. No open obligations. Base $`2`$ is the classical Erdős–Borwein constant. This is the terminal target every other rigidity/support theorem in this catalogue is measured against.*
+**Theorem 57** (Erdős–Borwein full-support irrationality, unconditional). *For every base $`b\ge 2`$: $`\sum'_{n\ge 1} 1/(b^n-1)`$ is irrational, unconditionally. No open obligations. The theorem is Erdős’s \[erdos1948\]; base $`2`$ is the classical Erdős–Borwein constant. This is the terminal target every other rigidity/support theorem in this catalogue is measured against.*
 
 *<span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:uniform</span>`coord:mobius-mersenne`*
 
@@ -1317,6 +1319,8 @@ This section catalogues machinery for Erdős \#257 (is $`\sum_{n\in A} 1/(2^n-1)
 
 </div>
 
+Luca and Tachiya proved irrationality for every purely periodic integer weight that is not identically zero \[lucatachiya2017, Theorem A, p. 139\]. The periodic, eventually periodic, residue-class and odd-support statements below follow from their theorem; the declarations are formal proofs of these cases, and the mechanism described is that of the certificate proof.
+
 <div id="thm:periodic-support" class="thm">
 
 **Theorem 63** (Periodic-support irrationality: the periodic divisor-orbit sieve). *For every $`b\ge 2`$ and every $`m`$-periodic support $`A`$ ($`\forall n,\, n{+}m\in A
@@ -1336,11 +1340,17 @@ This section catalogues machinery for Erdős \#257 (is $`\sum_{n\in A} 1/(2^n-1)
 
 <div id="thm:residue-odd" class="thm">
 
-**Theorem 65** (Residue-class and odd-support irrationality). *For every $`b\ge 2`$, modulus $`m\ge 1`$, residue $`c`$: $`\sum_{n\equiv c\,(m)} 1/(b^n-1)`$ is irrational. Specializing $`m=2,c=1`$: $`\sum_{n\text{ odd}} 1/(b^n-1)`$ is irrational for every $`b\ge 2`$ — the first support class of density strictly between $`0`$ and $`1`$ to land.*
+**Theorem 65** (Residue-class and odd-support irrationality). *For every $`b\ge 2`$, modulus $`m\ge 1`$, residue $`c`$: $`\sum_{n\equiv c\,(m)} 1/(b^n-1)`$ is irrational. Specializing $`m=2,c=1`$: $`\sum_{n\text{ odd}} 1/(b^n-1)`$ is irrational for every $`b\ge 2`$, the case treated explicitly in \[lucatachiya2017, Example 2, p. 140\].*
 
 *<span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:uniform</span>`coord:periodic-sieve`*
 
 </div>
+
+<a id="comparison-with-the-known-theorem."></a>
+
+#### Comparison with the known theorem.
+
+Luca and Tachiya proved irrationality for every nonzero purely periodic integer weight, of any signs \[lucatachiya2017, Theorem A, p. 139\], so the terminating branch below occurs only for the zero weight. The theorem records the dichotomy reached by the certificate method, together with its one-sided closures.
 
 <div id="thm:signed-periodic" class="thm">
 
@@ -1352,7 +1362,7 @@ This section catalogues machinery for Erdős \#257 (is $`\sum_{n\in A} 1/(2^n-1)
 
 <div id="thm:mersenne-channel-survival" class="thm">
 
-**Theorem 67** (Mersenne-channel denominator survival, T4). *For a finite family $`P`$ of “upper-half” primes (each $`p`$ with $`t<2p`$ for scale $`t`$, each dividing a squarefree radical $`r`$ all of whose prime factors are $`\le t`$): the pairwise-coprime Mersenne product $`C=\prod_{p\in P}(2^p-1)`$ survives fraction reduction — $`C/\gcd(C,h)\mid (h\cdot\mathrm{mobiusNumerator}(r)/\mathrm{mersenne}(r))\mathrm{.den}`$ — exactly when $`C`$ is coprime to scale $`h`$ (or, weaker, when every prime factor of $`h`$ is $`\le t`$). This is the load-bearing quantitative step behind Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">57</a>.*
+**Theorem 67** (Mersenne-channel denominator survival, T4). *For a finite family $`P`$ of “upper-half” primes (each $`p`$ with $`t<2p`$ for scale $`t`$, each dividing a squarefree radical $`r`$ all of whose prime factors are $`\le t`$): the pairwise-coprime Mersenne product $`C=\prod_{p\in P}(2^p-1)`$ survives fraction reduction in the following sense: $`C/\gcd(C,h)`$ divides the reduced denominator of $`h\cdot\mathrm{mobiusNumerator}(r)/\mathrm{mersenne}(r)`$, and when $`C`$ is coprime to the scale $`h`$ the whole product $`C`$ divides it. This is the load-bearing quantitative step behind Theorem <a href="#thm:full-support-catalogue" data-reference-type="ref" data-reference="thm:full-support-catalogue">57</a>.*
 
 *<span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:uniform</span>`coord:cyclotomic`*
 
@@ -1382,7 +1392,7 @@ W(\{2,3,6,7\}) = 1/16002`$ exactly (*finiteErdosSum*); $`\mathrm{mersenneCorrect
 
 <div id="obs:period-four-obstruction" class="obs">
 
-*Observation 70* (Period-4 sign weight vanishes on a residue class). The explicit period-$`4`$ sign pattern $`1,0,-1,0`$ (*periodFourSignWeight*) has $`\mathrm{intWeightedCoeff}\,w\,n = 0`$ identically for every $`n\equiv 3\pmod 4`$, via the divisor-involution $`d\mapsto n/d`$. This is exactly why the general signed-periodic case (Theorem <a href="#thm:signed-periodic" data-reference-type="ref" data-reference="thm:signed-periodic">66</a>) only reaches a dichotomy rather than an unconditional theorem: no residue-blind selection can force a nonzero protected residue for every periodic signed weight.
+*Observation 70* (Period-4 sign weight vanishes on a residue class). The explicit period-$`4`$ sign pattern $`1,0,-1,0`$ (*periodFourSignWeight*) has $`\mathrm{intWeightedCoeff}\,w\,n = 0`$ identically for every $`n\equiv 3\pmod 4`$, via the divisor-involution $`d\mapsto n/d`$. This is why the certificate method for the general signed-periodic case (Theorem <a href="#thm:signed-periodic" data-reference-type="ref" data-reference="thm:signed-periodic">66</a>) reaches only a dichotomy: no residue-blind selection can force a nonzero protected residue for every periodic signed weight. Luca and Tachiya’s theorem gives irrationality for every nonzero periodic weight by another argument \[lucatachiya2017, Theorem A, p. 139\].
 
 <span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:fixed</span>`coord:signed-divisor-calculus`
 
@@ -1534,7 +1544,7 @@ This turns half-membership into an infinite conjunction over *actually skipped* 
 
 <div id="thm:critical-dyadic-band" class="thm">
 
-**Theorem 86** (Critical dyadic-band index: a problem-agnostic quantifier collapse). **CriticalDyadicBandIndex*$`\,d\,E\,j`$ picks out the unique nearest dyadic power $`2^{d-j+1}\ge E`$. Fully abstract, pure $`\mathbb N`$ arithmetic, zero seam content: $`\mathrm{DyadicBandEscape}\,d\,E \iff \exists j,\,\mathrm{CriticalDyadicBandIndex}\,d\,E\,j
+**Theorem 86** (Critical dyadic-band index: a problem-agnostic quantifier collapse). **CriticalDyadicBandIndex*$`\,d\,E\,j`$ picks out the unique nearest dyadic power $`2^{d-j+1}\ge E`$. Fully abstract, pure $`\mathbb N`$ arithmetic, zero seam content: for $`E\le 2^{d+1}`$, $`\mathrm{DyadicBandEscape}\,d\,E \iff \exists j,\,\mathrm{CriticalDyadicBandIndex}\,d\,E\,j
 \land E+2(d+j)\le 2^{d-j+1}`$ — the $`\forall j`$ band-avoidance condition collapses to checking exactly *one* critical index, reducing a check of $`d{+}1`$ separate inequalities to one nearest-boundary check per row. Specialized to the seam reset charge (with $`E\le 2^{d+1}`$ automatically supplied by Theorem <a href="#thm:two-sided-dyadic" data-reference-type="ref" data-reference="thm:two-sided-dyadic">52</a>), the reduced socket *SeamUpperResetCriticalBandEscape* is proved logically equivalent to Theorem <a href="#thm:upper-reset-band" data-reference-type="ref" data-reference="thm:upper-reset-band">53</a>’s band-avoidance hypothesis.*
 
 *<span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:uniform</span>`coord:dyadic-boundary`*
@@ -1926,7 +1936,7 @@ there is an exact row $`E`$ at endpoint $`2c-2`$ with $`D\subseteq E`$ and every
 
 <div class="thm">
 
-**Theorem 122** (257bm:c11 — `DyadicBandEscape` $`\Leftrightarrow`$ `CriticalDyadicBandIndex`, PROBLEM-AGNOSTIC quantifier collapse). *Pure $`\mathbb{N}`$-arithmetic, zero seam or Mersenne content: for $`d,E,j`$ with $`\mathrm{CriticalDyadicBandIndex}(d,E,j)`$ the unique nearest dyadic power $`2^{d-j+1}\ge E`$,
+**Theorem 122** (257bm:c11 — `DyadicBandEscape` $`\Leftrightarrow`$ `CriticalDyadicBandIndex`, PROBLEM-AGNOSTIC quantifier collapse). *Pure $`\mathbb{N}`$-arithmetic, zero seam or Mersenne content: for $`d,E`$ with $`E\le2^{d+1}`$, where $`\mathrm{CriticalDyadicBandIndex}(d,E,j)`$ selects the unique nearest dyadic power $`2^{d-j+1}\ge E`$,
 ``` math
 \mathrm{DyadicBandEscape}(d,E) \;\Longleftrightarrow\; \exists j,\ \mathrm{CriticalDyadicBandIndex}(d,E,j) \wedge E + 2(d+j) \le 2^{d-j+1}.
 ```
@@ -2747,7 +2757,7 @@ This module works in the new `ErdosProblems.Erdos257` namespace and states in it
 
 </div>
 
-(, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:uniform</span>, `coord:mobius-mersenne`). The finite case is an exact doubling induction over inserted coordinates (, <span class="sans-serif">\[Lean\]</span>, using disjointness of the two coordinate-split faces, , <span class="sans-serif">\[Lean\]</span>, which is exactly where unique binary coding is spent). None of this module touches irrationality of any subseries value; it is a self-contained measure-and-topology classification of achievement sets, orthogonal to O1–O5.
+(, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:uniform</span>, `coord:mobius-mersenne`). The finite case is an exact doubling induction over inserted coordinates (, <span class="sans-serif">\[Lean\]</span>, using disjointness of the two coordinate-split faces, , <span class="sans-serif">\[Lean\]</span>, which is exactly where unique binary coding is spent). None of this module touches irrationality of any subseries value; it is a self-contained measure-and-topology classification of achievement sets, orthogonal to O1–O5. The dichotomy is the case of retained coordinates of Hornich’s strict-tail measure formula \[nitecki2013, Theorem 4(1), p. 9\]: the retained Mersenne weights still exceed their tails, and the Mersenne tail estimate supplies the values $`2^{-|F|}`$ and $`0`$.
 
 <a id="new-half-counterexample-frontier-tree"></a>
 
@@ -2980,7 +2990,7 @@ fatality at rank $`n`$ is impossible for every prefix simultaneously (not merely
 
 <div id="lem:tr-mod12" class="lem">
 
-**Lemma 198** (Mod-12 filter, $`J\ge7`$). *For $`J\ge7`$: $`\mu_J(M)\le\tfrac{11}{15}\Rightarrow 12\mid M`$ (case analysis on $`M\bmod4`$ and $`M\bmod3`$). Combined with Corollary <a href="#cor:tr-half-lcm" data-reference-type="ref" data-reference="cor:tr-half-lcm">197</a>, the search for possibly-bad ranks inside $`[4,L_J/2]`$ can be restricted to multiples of $`12`$, a $`12\times`$ speedup with no loss of coverage.*
+**Lemma 198** (Mod-12 filter, $`J\ge7`$). *For $`J\ge7`$: $`\mu_J(M)\le\tfrac{11}{15}\Rightarrow 12\mid M`$ (case analysis on $`M\bmod4`$ and $`M\bmod3`$). Combined with Corollary <a href="#cor:tr-half-lcm" data-reference-type="ref" data-reference="cor:tr-half-lcm">197</a>, a rank $`n\in[4,L_J/2]`$ needs only the candidate witnesses $`M\in[n,2n-2]`$ that are multiples of $`12`$; every rank in that window is still checked.*
 
 </div>
 
@@ -3318,7 +3328,7 @@ irrational in Theorem 1.3 of [their 2025 preprint](https://arxiv.org/abs/2512.0
 
 <div class="obs">
 
-*Observation 240* (NM-08 / eventual periodicity, widest unconditional class, asymptotic obstruction). <span class="sans-serif">\[Lean\]</span> (engine line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148). **Yields:** $`\forall b\ge2\ \forall m{>}0\ \forall N_0`$: $`A`$ infinite and $`m`$-periodic above $`N_0`$ $`\Rightarrow`$ irrational. Plus: the class of supports with irrational series is closed under finite symmetric difference in both directions.
+*Observation 240* (NM-08 / eventual periodicity, widest unconditional class, asymptotic obstruction). <span class="sans-serif">\[Lean\]</span> (engine line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148). **Yields:** $`\forall b\ge2\ \forall m{>}0\ \forall N_0`$: $`A`$ infinite and $`m`$-periodic above $`N_0`$ $`\Rightarrow`$ irrational. Plus: the class of supports with irrational series is closed under finite symmetric difference in both directions. The statement follows from the periodic theorem of Luca and Tachiya \[lucatachiya2017, Theorem A, p. 139\].
 
 **Mismatch (`hypothesis_strength`):** the widest unconditional class landed (all moduli, all thresholds, no bound anywhere), but eventual periodicity is a measure-zero, countable condition; the complement is everything interesting. The two-way finite-perturbation transfer shows the good class is a union of finite-symmetric-difference equivalence classes — precisely why it cannot be enlarged by prefix surgery; the obstruction is asymptotic.
 
@@ -3361,7 +3371,7 @@ q{>}0`$, $`\neg\exists U`$ with $`\mathrm{IsTemperedBinaryOrbit}(\mathrm{support
 
 <div class="obs">
 
-*Observation 245* (NM-13 / signed periodic dichotomy, sign machinery free but periodicity still required). <span class="sans-serif">\[Lean\]</span> , (nonpos mirror line 14315). **Yields:** $`\forall b\ge2\ \forall m{>}0\ \forall`$ $`\mathbb Z`$-valued $`m`$-periodic weight $`w`$: irrational$`(\sum w(a)/(b^a-1))`$ $`\vee`$ $`\exists k,z,\ b^k x=z`$; the terminating branch closes unconditionally as soon as $`\mathrm{intWeightedCoeff}\,w`$ is one-signed and frequently nonzero.
+*Observation 245* (NM-13 / signed periodic dichotomy, sign machinery free but periodicity still required). <span class="sans-serif">\[Lean\]</span> , (nonpos mirror line 14315). **Yields:** $`\forall b\ge2\ \forall m{>}0\ \forall`$ $`\mathbb Z`$-valued $`m`$-periodic weight $`w`$: irrational$`(\sum w(a)/(b^a-1))`$ $`\vee`$ $`\exists k,z,\ b^k x=z`$; the terminating branch closes unconditionally as soon as $`\mathrm{intWeightedCoeff}\,w`$ is one-signed and frequently nonzero. Luca and Tachiya’s theorem already gives irrationality for every nonzero periodic weight \[lucatachiya2017, Theorem A, p. 139\].
 
 **Mismatch (`multiple`):** two mismatches. (i) periodicity of the weight is still required — this is the signed lift of NM-08, not an escape from it. (ii) the one-sidedness clause is *free* for \#257 (a 0/1 support indicator gives $`\mathrm{supportCoeff}\,A\ge0`$ automatically) — the sign machinery buys nothing here; it was built for the signed \#249 lane. The genuinely transferable content is the dichotomy shape itself: irrational-or-$`b`$-adically- terminating, terminating branch killable by a positive far tail.
 
@@ -3377,13 +3387,13 @@ q{>}0`$, $`\neg\exists U`$ with $`\mathrm{IsTemperedBinaryOrbit}(\mathrm{support
 
 <div class="thm">
 
-**Theorem 246** (A — reset-crossing unification). *The 257-reset target exponent $`(r+5)/2`$ is not a fitted constant but a *derived* one: it follows from sqrt-scale reset anti-concentration together with the run-length-to-crossing geometry of oa-2’s deficit/excess pair above, and every correction constant in the derivation is exact (no asymptotic $`O(\cdot)`$ notation is hiding a table). Concretely: the deficit-side run law (oa-2, unconditional and uniform) converts any anti-concentration bound $`2^{\varepsilon r}`$ on $`|\Delta_r|`$ into a run-length ceiling $`L_r \lesssim (1-\varepsilon)\cdot 2r`$; matching this against the certified maximum observed run growth (SE-7: $`\max L_r \sim \log_2(\mathrm{row})`$, row 200,000) pins $`\varepsilon = 1/2`$ as the exact crossover exponent, not merely a plausible guess. Theorem A is the unification of the deficit-run and excess-run geometry into one crossing socket at that derived exponent; the open step is exactly the anti-concentration input identified in the G5/H4/F5b/oa-3b rows above.*
+**Theorem 246** (A — reset-crossing unification). *Assume sqrt-scale reset anti-concentration. Together with the run-length-to-crossing geometry of oa-2’s deficit/excess pair above, it gives the 257-reset target exponent $`(r+5)/2`$, with every correction constant in the derivation exact. The deficit-side run law (oa-2, unconditional and uniform) converts any anti-concentration bound $`2^{\varepsilon r}`$ on $`|\Delta_r|`$ into a run-length ceiling $`L_r \lesssim (1-\varepsilon)\cdot 2r`$, and Theorem A joins the deficit-run and excess-run geometry into one crossing socket at $`\varepsilon=1/2`$. The certified maximum observed run growth (SE-7: $`\max L_r \sim \log_2(\mathrm{row})`$ through row $`200{,}000`$) is finite data and does not determine the exponent. The open step is the anti-concentration input identified in the G5/H4/F5b/oa-3b rows above.*
 
 </div>
 
 <div class="thm">
 
-**Theorem 247** (B — rigidity of dangerous resets). *A dangerous reset (one within $`2^{(r+5)/2}`$ of the sqrt-escape threshold) that is preceded by a long pure R-run pins its own deviation to a single pulse-determined integer (RC-5 above), not a free real number: the affine excess recurrence (rc-2) is exact, so once the run length and the pulse word are fixed, $`w_{r_0+1}`$ is one of at most two integers with no remaining degree of freedom. Consequently a chain of $`n`$ dangerous resets is not $`n`$ independent near-misses; it is a single tower of $`n{-}1`$ nested exact integer coincidences, each individually as unlikely as an explicit arithmetic accident and none free to vary once the pulse stream is fixed. Failure of sqrt-escape therefore requires an exact integer-coincidence tower, not a generic accumulation of small errors — the open step is excluding the two pinned values (RC-5’s own closing condition).*
+**Theorem 247** (B — rigidity of dangerous resets). *A dangerous reset (one within $`2^{(r+5)/2}`$ of the sqrt-escape threshold) that is preceded by a long pure R-run pins its own deviation to a single pulse-determined integer (RC-5 above), not a free real number: the affine excess recurrence (rc-2) is exact, so once the run length and the pulse word are fixed, $`w_{r_0+1}`$ is one of at most two integers with no remaining degree of freedom. Consequently a chain of $`n`$ dangerous resets is a tower of $`n{-}1`$ nested exact integer conditions, none free to vary once the pulse stream is fixed. Failure of sqrt-escape therefore requires such an integer-coincidence tower. No probability model is supplied, so these conditions do not by themselves make dangerous resets unlikely; the open step is excluding the two pinned values (RC-5’s own closing condition).*
 
 </div>
 
@@ -3480,7 +3490,7 @@ Throughout, $`\mathrm{rem}(s)`$ is the seam-row remainder, $`\lambda_n := \Delta
 ```
 An $`n^2/4`$ asymptotic would require additional distribution information. This weighted budget is too coarse to yield the required $`2^{-3n/2}`$ separation from the known irrationality measure.
 
-Zudilin’s bound $`\mu(E)\le 2.42343562\ldots`$ (Math. Notes 72 (2002) 858–862; the cited erratum gives $`2.46497868\ldots`$) does not repair this quadratic-versus-linear budget.
+Zudilin’s bound $`\mu(E)\le 2.46497868\ldots`$ \[zudilin2004, Theorem 1, p. 154\] does not repair this quadratic-versus-linear budget.
 
 **Scope.** The displayed denominator estimate combined with a fixed irrationality-measure exponent does not derive the wall. A sharper denominator analysis using the actual skip distribution, or a simultaneous approximation theorem with additional structure, is outside this calculation and is not excluded. `coord:diophantine-approximation`
 
@@ -3582,7 +3592,7 @@ The digit-carry route is not merely unclimbed; a family of general-purpose no-go
 
 **Proposition 261** (Finite-state no-go: no bounded carry-state summary can recover history). *For a "balanced pulse" family at location $`m`$ (radius $`r=(m{+}1)/2`$, moving mass between positions $`m`$ and $`m{+}1`$ without changing the series value), if a predecessor state is constant across the whole family, then no function $`\mathrm{decode}:\mathrm{State}\to\mathbb N`$ can recover the parameter $`r`$ from $`\mathrm{state}(r)`$ for every $`r`$ — fan-out is unbounded ($`\ge\lfloor m/2\rfloor+2`$ at $`m=2k`$). More strongly, any finite $`\mathrm{Fintype}\ \mathrm{State}`$ needs $`\mathrm{card}(\mathrm{State})\ge\mathrm{radius}+1`$, unbounded in $`m`$. (fan-out lower bound at ).*
 
-***Scope.** Rules out, for *either* \#249 or \#257, any proof strategy that tries to define a bounded/autonomous "carry state" summarizing pre-$`m`$ history and use it to exactly determine the post-$`m`$ tail — completely general, no dependence on whether the coefficients are $`\varphi`$ or a Möbius-support indicator. `coord:binary-digit, generic` **Object or representation:** about a *representation* class (any finite-automaton encoding of history) — it says nothing about $`C`$ or $`\mathcal A`$ directly, only that this whole family of encodings is too weak. <span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:n/a</span>*
+***Scope.** Excludes bounded-state encodings of pre-$`m`$ history that must distinguish every member of the displayed balanced-pulse family, whether the coefficients are $`\varphi`$ or a Möbius-support indicator. Applying it to \#249 or \#257 requires showing that the relevant orbit realises that family, and it does not rule out every finite-state proof strategy. `coord:binary-digit, generic` **Object or representation:** about a *representation* class, the encodings of history that separate the balanced-pulse family; it says nothing about $`C`$ or $`\mathcal A`$ directly. <span class="sans-serif">\[Lean\]</span><span class="sans-serif">scale:n/a</span>*
 
 </div>
 
@@ -3702,7 +3712,7 @@ $`\Theta_L`$ is the analytic content of the universal recursion $`K(2)=1`$, $`K(
 
 ### The statement needed
 
-Three forms, in decreasing strength; each closes the half-value branch, i.e. yields $`(1/2:\mathbb{R})\in\mathcal{A}`$ and hence a counterexample to universal \#257.
+Three forms, in decreasing strength. Forms (i) and (ii) each close the half-value branch through the stated consumers, i.e. yield $`(1/2:\mathbb{R})\in\mathcal{A}`$ and hence a counterexample to universal \#257. Form (iii) is a weaker target whose transport to half-membership is untested.
 
 *Form (i), the run-length form.* Writing $`\mathrm{rem}(s)`$ for the integer seam greedy remainder at row $`s`$, $`w_s := \mathrm{rem}(s)-2^{s}`$ for the deviation, and $`L_r`$ for the length of the maximal pure-$`R`$ run of the branch word beginning at a reset row $`r`$:
 ``` math
@@ -3764,15 +3774,15 @@ Lemma <a href="#lem:odometer" data-reference-type="ref" data-reference="lem:odo
 \Psi:\widehat{\mathbb{Z}}\to\mathbb{R}\cup\{\infty\},\qquad
 \Psi(x)\ :=\ \sum_{d\ge2}\frac{2^{-i_d(x)}}{1-2^{-d}},\qquad i_d(x)\in[1,d],\ i_d(x)\equiv -x\ (\mathrm{mod}\ d),
 ```
-truncated at level $`L`$ in the obvious way. Then $`\Theta_L(M)=\Psi_L(M)`$ where $`M`$ is viewed in $`\widehat{\mathbb{Z}}`$, and the map $`M\mapsto M+1`$ is the odometer, which is uniquely ergodic with respect to Haar measure.
+truncated at level $`L`$ in the obvious way. Then $`\Theta_L(M)=\Psi_L(M)`$ where $`M`$ is viewed in $`\widehat{\mathbb{Z}}`$, and the map $`M\mapsto M+1`$ is the odometer, which is uniquely ergodic with respect to Haar measure. Unique ergodicity controls averages of continuous functions, and $`\Psi_L`$ is not one: for Haar-almost every $`x`$ infinitely many primes $`p`$ divide $`x+1`$, so $`\Psi_L(x)=\infty`$. For fixed $`D`$ the truncation to $`2\le d\le D`$ is periodic in $`M`$ with period dividing $`\operatorname{lcm}(1,\ldots,D)`$, and its average over a period is an exact finite residue average; passing to all $`d`$, and then to the reset rows, needs separate estimates.
 
 The corpus’s own Reduction (A), $`F(n)=\sum_{d\in D_n} 2^{\,d-i_d(n)}/(2^d-1)`$, is *the same functional* $`\sum_d 2^{-i_d}/(1-2^{-d})`$ restricted to the greedy take-set $`D_n`$ instead of to all $`d\ge2`$. That two reductions derived years and coordinates apart are one functional on $`\widehat{\mathbb{Z}}`$ evaluated on two divisor sets is, to my knowledge, not recorded anywhere in the corpus; it is the cleanest available statement of what the two halves of the seam identity share. <span class="sans-serif">\[Math\]</span> for the identification; <span class="sans-serif">\[Open\]</span> for any consequence.
 
-So the object required is: *an effective equidistribution statement for the odometer orbit against $`\Psi`$, with the precision growing linearly in the index.* Unique ergodicity gives equidistribution with no rate. What is needed is a rate, pointwise along a sparse subsequence (the reset rows), at scale $`2^{-r/2}`$ where $`r`$ is the index. Equivalently, in the form a specialist will recognise: a lower bound for $`\mathrm{dist}(\Theta_L(M),\mathbb{Z})`$ with $`L\asymp \log_2 M`$, valid for all large $`M`$ in a specified set, at precision $`2^{-L/2}`$.
+So the object required is: *an effective equidistribution statement for the odometer orbit against $`\Psi`$, with the precision growing linearly in the index.* Unique ergodicity gives equidistribution with no rate for continuous functions, such as the truncations to $`d\le D`$. What is needed is a rate, pointwise along a sparse subsequence (the reset rows), at scale $`2^{-r/2}`$ where $`r`$ is the index. Equivalently, in the form a specialist will recognise: a lower bound for $`\mathrm{dist}(\Theta_L(M),\mathbb{Z})`$ with $`L\asymp \log_2 M`$, valid for all large $`M`$ in a specified set, at precision $`2^{-L/2}`$.
 
 Three technique families are the plausible shapes, and it is worth being explicit about which.
 
-*(a) Voronoi summation / delta method for the divisor function.* $`\tau`$ has an exact Voronoi expansion, and the natural attack is to bound $`\sum_{M\in[X,2X]} e\bigl(a\,\Theta_L(M)\bigr)`$ for $`1\le|a|\le 2^{L}`$ by opening each $`\tau(M+i)`$ and estimating the resulting Kloosterman-type sums. *(b) Fourier analysis on $`\widehat{\mathbb{Z}}`$ / Ramanujan expansions.* By Lemma <a href="#lem:odometer" data-reference-type="ref" data-reference="lem:odometer">272</a> the phase is a function of $`M`$ modulo the $`d`$’s, so its Fourier expansion is over the characters of $`\mathbb{Z}/d`$, i.e. over Ramanujan sums $`c_d(\cdot)`$; the required estimate becomes decay of the Ramanujan coefficients of $`\Psi_L`$ plus a bound on their tails. *(c) Second-moment / local-limit machinery.* Prove that the vector $`(\tau(M+1),\dots,\tau(M+L))`$, $`L\asymp\log M`$, obeys a *local* limit theorem strong enough to give anti-concentration of the weighted sum at scale $`2^{-L/2}`$.
+*(a) Voronoi summation / delta method for the divisor function.* $`\tau`$ has an exact Voronoi expansion, and the natural attack is to bound $`\sum_{M\in[X,2X]} e\bigl(a\,\Theta_L(M)\bigr)`$ for $`1\le|a|\le 2^{L}`$ by opening each $`\tau(M+i)`$ and estimating the resulting Kloosterman-type sums. *(b) Fourier analysis on $`\widehat{\mathbb{Z}}`$ / Ramanujan expansions.* By Lemma <a href="#lem:odometer" data-reference-type="ref" data-reference="lem:odometer">272</a> the phase is a function of $`M`$ modulo the $`d`$’s, so its finite truncations expand in the additive characters of $`\mathbb{Z}/d`$; an expansion in Ramanujan sums $`c_d(\cdot)`$ needs further symmetry, and the required estimate would then be decay of those coefficients of $`\Psi_L`$ plus a bound on their tails. *(c) Second-moment / local-limit machinery.* Prove that the vector $`(\tau(M+1),\dots,\tau(M+L))`$, $`L\asymp\log M`$, obeys a *local* limit theorem strong enough to give anti-concentration of the weighted sum at scale $`2^{-L/2}`$.
 
 <a id="the-specific-obstacle"></a>
 
@@ -3780,11 +3790,11 @@ Three technique families are the plausible shapes, and it is worth being explici
 
 This is the paragraph worth the most, so it is stated as sharply as the evidence permits.
 
-**Almost-all divisor-sum results can reach polylogarithmic intervals.** Work of [Mangerel](https://arxiv.org/abs/2108.11401) and [Sun](https://arxiv.org/abs/2401.08432v3) includes divisor-bounded multiplicative functions in windows of this scale, so a blanket power-length exclusion is false. These theorems still do not directly supply the estimate needed here: their starting points are almost-all points, while ours are selected by the actual greedy dynamics; their statistic is an ordinary mean, while ours is a dyadically weighted fractional part; and our required precision shrinks exponentially in the window parameter. An application would need a quantitative exceptional-set/trajectory argument and control of this weighted phase.
+**Almost-all short-interval results reach polylogarithmic windows.** Matomäki and Radziwiłł prove that a real-valued multiplicative function bounded by $`1`$ has, in almost all windows $`[x,x+h]`$ with $`h\to\infty`$, essentially its long average \[matomakiradziwill, Theorem 1, pp. 1–2\]. Mangerel extends such bounds to a class of divisor-bounded multiplicative functions \[mangerel2021, Theorem 1.7, p. 7, and Corollary 1.8, pp. 7–8\], and Sun describes the almost-all transition profile of the $`k`$-fold divisor function at its critical polylogarithmic window \[sun2026, Theorem 1.1 and Corollary 1.2, p. 3\]. These theorems do not directly supply the estimate needed here, for two reasons.
 
-**The one technology that does reach sub-power windows delivers the wrong quantifier and the wrong class of function.** Matomäki–Radziwiłł theory shows that a multiplicative function bounded by $`1`$ has, in almost all windows $`[x,x+h]`$ with $`h\to\infty`$ arbitrarily slowly, essentially its long average. Two mismatches, both fatal as stated. First, the conclusion is *almost all* $`x`$, whereas the seam needs *every* reset row $`r\ge31`$; a set of exceptional $`x`$ of density zero can still contain every reset row, because the reset rows are themselves a density-zero set defined by the orbit rather than independently of it.
+First, their conclusions hold for almost all $`x`$, whereas the seam needs *every* reset row $`r\ge31`$; an exceptional set of density zero can contain all the starting points selected by the orbit, since those points form a set of density zero.
 
-Second, $`\tau`$ is not bounded by $`1`$ and the relevant statistic is not an average of a multiplicative function but the distance to $`\mathbb{Z}`$ of a *dyadically weighted* sum of $`\tau`$-values; the weights $`2^{-i}`$ mean that a single value $`\tau(M+1)`$ contributes half the phase, so no averaging statement over the window can control it. Anything that averages within the window destroys the quantity, exactly as the wall analysis says of every scale-mismatched tool.
+Second, $`\tau`$ is not bounded by $`1`$, and the relevant statistic is the distance to $`\mathbb{Z}`$ of a *dyadically weighted* sum of $`\tau`$-values at a precision shrinking exponentially in the window parameter; a single value $`\tau(M+1)`$ contributes half the phase, so an average over the window does not by itself control it. An application would need a quantitative exceptional-set argument along the greedy trajectory and control of this weighted phase.
 
 **The joint-distribution literature is at CLT scale, not local scale.** Erdős–Kac and its descendants, and the Hildebrand–Elliott-type results on the joint normality of $`\omega(n),\omega(n+1)`$, give distribution functions to accuracy $`o(1)`$ and average over $`n\le X`$. The requirement here is anti-concentration to accuracy $`2^{-L/2}`$ for a fixed $`L`$-tuple of consecutive arguments, i.e. a local limit theorem with an error term exponentially small in $`L`$ where $`L\asymp\log M`$. No result of that strength is known even for $`L=2`$.
 
@@ -3829,7 +3839,7 @@ So the fractional part of $`\Theta_L`$ behaves like Haar measure with a mildly h
 \ \approx\ 1.0\times 10^{-3},
 ```
 
-so under the Haar model the expected number of reset rows beyond the certified range that violate $`\sqrt{\ }`$-escape is about $`10^{-3}`$, and Borel–Cantelli gives “finitely many failures” with room to spare. This is consistent with, and independently derived from, the corpus’s own $`\approx 2\times10^{-4}`$ digit-model estimate. It is a heuristic. Its only rigorous content is that the required inequality is not delicate: it asks for a bound $`2^{15}`$ times weaker at $`r=31`$, and exponentially weaker thereafter, than what the measured law delivers. That is a useful thing for a specialist to know before deciding whether to spend effort here.
+so under the Haar model the expected number of reset rows beyond the certified range that violate $`\sqrt{\ }`$-escape is about $`10^{-3}`$, and Borel–Cantelli gives “finitely many failures” with room to spare. This is consistent with, and independently derived from, the corpus’s own $`\approx 2\times10^{-4}`$ digit-model estimate. It is a heuristic about a model fitted to a finite sample and gives no probability bound for the deterministic reset orbit. Within that model the required inequality is not delicate: it asks for a bound $`2^{15}`$ times weaker at $`r=31`$, and exponentially weaker thereafter, than what the fitted law delivers. That is a useful thing for a specialist to know before deciding whether to spend effort here.
 
 *Swing 3: attack the sign law first, and here is the reduction to try.* <span class="sans-serif">\[Open\]</span>.
 
@@ -4357,7 +4367,7 @@ None of the following is offered as a plan of attack, and none is close. Each is
 
 **O2/O3/O5 (Mersenne-specific).** The sharp-capacity gap $`(\ast)\to(\ast\ast)`$ and the $`-2,-1`$ middle-cell exclusion are both, at bottom, requests for anti-concentration of an explicit divisor-count quantity ($`\mathtt{localBinarySuffix}`$, or $`4\cdot\mathrm{rem}-\mathrm{belowPulse}-4`$) away from a short, explicitly named integer window. These are combinatorial/arithmetic near-misses rather than analytic ones — the corpus’s own diagnosis is that a congruence or pulse-parity obstruction, not an equidistribution theorem, is the natural tool, and no such obstruction has been found.
 
-**O4 (sqrt-escape).** The required input is a near-integer anti-concentration bound for $`\sum_{i\le L}\delta_n(M+i)2^{-i}`$, a geometrically weighted divisor sum in a short interval, at resolution $`2^{(r+5)/2}`$. This is stated in the source material to not exist in the literature in any form, and it is explicitly noted to be the same missing ingredient, on the opposite side of the Erdős \#249/#257 pair, as the totient-window discrepancy anti-concentration input needed to close \#249’s certificate-supply obligation (Part IV). The two open problems, in their Lean-nearest forms, terminate at structurally the same missing analytic statement, applied to two different arithmetic functions (a Mersenne binary-digit count versus Euler’s totient).
+**O4 (sqrt-escape).** The required input is a near-integer anti-concentration bound for $`\sum_{i\le L}\delta_n(M+i)2^{-i}`$, a geometrically weighted divisor sum in a short interval, at resolution $`2^{(r+5)/2}`$. No proof of this input is identified in this record. The same shape of input, a totient-window discrepancy anti-concentration bound, is needed on the other side of the Erdős \#249/#257 pair to close \#249’s certificate-supply obligation (Part IV). The two open problems, in their Lean-nearest forms, terminate at structurally the same missing analytic statement, applied to two different arithmetic functions (a Mersenne binary-digit count versus Euler’s totient).
 
 <a id="summary"></a>
 
@@ -4386,3 +4396,11 @@ Kernel checking establishes that a proposition was proved; it does not authorise
 #### Funding and competing interests.
 
 This work received no external funding. The author declares no competing interests.
+
+<div class="thebibliography">
+
+99
+
+P. Erdős, [*On arithmetical properties of Lambert series*](https://www.renyi.hu/~p_erdos/1948-04.pdf), J. Indian Math. Soc. 12 (1948), 63–66. P. Erdős, [*On the irrationality of certain series*](https://users.renyi.hu/~p_erdos/1969-09.pdf), Math. Student 36 (1968), 222–226 (issued 1969). The theorem on p. 222 treats pairwise-coprime support with convergent reciprocal sum at every integer base $`b\ge2`$; the claimed removal of pairwise coprimality is stated without proof. The same page says the reciprocal-sum condition could be replaced by a weaker but more complicated condition, and p. 226 suggests $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ for pairwise coprime supports. F. Luca and Y. Tachiya, [*Linear independence results for the values of divisor functions series*](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf), RIMS Kôkyûroku No. 2014 (2017), 138–150. Theorem A (p. 139) restates Theorem 1.1 of their paper *Irrationality of Lambert series associated with a periodic sequence*, Int. J. Number Theory 10 (2014), no. 3, 623–636, [DOI](https://doi.org/10.1142/S1793042113501121): for a purely periodic integer sequence $`a(n)`$, not identically zero, $`\sum_{n\ge1}a(n)/(q^n-1)`$ is irrational for every integer $`q`$ with $`|q|>1`$. Example 2 (p. 140) treats the odd support. Z. Nitecki, [*Subsum sets: intervals, Cantor sets, and Cantorvals*](https://arxiv.org/abs/1106.3779v2), arXiv:1106.3779v2 (2013). Theorem 4 (p. 9) shows that when every term exceeds its tail the subsum set is a Cantor set of Lebesgue measure $`\lim_n2^nX_n`$, where $`X_n`$ is the $`n`$th tail, and credits this to H. Hornich (1941). H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). The averaged tail $`R_c(q,x,z)`$, a sum over offsets $`j\ge z`$, is (1.7) and Theorem 1 is on p. 3; its rational-integer form, Theorem 3, is on p. 5. Lemma 1 (pp. 6–7) derives irrationality from arbitrarily small nonzero scaled tails, and Lemma 2 (pp. 7–8) shows that most scaled tails in a range are small under a counting condition on the support. Their criteria assume sparse coefficient supports. D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. Theorem 1.1 (pp. 2–3) is the refined Chowla–Erdős criterion; its proof in Section 2 (pp. 5–7) selects an index by minimising a local coefficient mass along an arithmetic progression, (2.3)–(2.9). Corollary 1.2 gives the general $`F_s(E)`$ theorem and its monomial images under $`|q|\operatorname{lcm}(1,\dots,\ell)\le s`$, and at every integer base when $`s=\infty`$; Example 1.1 gives the joint squarefree family at all bases $`2^j`$, $`j\ge1`$. Both are on p. 4, which also relates Corollary 1.2 to the conjecture of Erdős and Graham; the proof of Corollary 1.2 is on pp. 10–11. T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). Theorem 1.3 (p. 4) proves $`\sum_{n\ge1}\omega(n)/2^n=\sum_p(2^p-1)^{-1}`$ irrational, settling the prime-support case of \#257 at base $`2`$; the paragraph after it states that the method extends to every integer base and to the prime-power support, leaving the modifications to the reader. Theorem 3.1 is on p. 24, and the proof of Theorem 1.3 is Section 5, pp. 44–56. W. Zudilin, *Heine’s basic transform and a permutation group for $`q`$-harmonic series*, Acta Arith. 111 (2004), no. 2, 153–164, [DOI](https://doi.org/10.4064/aa111-2-4). Theorem 1 (p. 154) gives $`\mu(h_p(1))\le2.46497868\ldots`$ for $`h_p(1)=\sum_{n\ge1}1/(p^n-1)`$, uniformly in the integer $`p`$ with $`|p|\ge2`$; the remark at the end of Section 3 (p. 159) corrects the computation of the author’s earlier paper. J. M. Campbell, [*On the binary digits of the Erdős–Borwein constant*](https://arxiv.org/abs/2605.24160v1), arXiv:2605.24160v1 (2026). Theorem 1 (p. 12) proves that the block `11` occurs infinitely often in the binary expansion of $`\sum_{n\ge1}1/(2^n-1)`$, answering a question of Crandall recalled in the introduction. K. Matomäki and M. Radziwiłł, *Multiplicative functions in short intervals*, Ann. of Math. (2) 183 (2016), no. 3, 1015–1056, [DOI](https://doi.org/10.4007/annals.2016.183.3.6). Page numbers refer to arXiv:1501.04585v4. A. P. Mangerel, *Divisor-bounded multiplicative functions in short intervals*, Res. Math. Sci. 10 (2023), no. 1, Paper No. 12, [DOI](https://doi.org/10.1007/s40687-023-00376-0). Page numbers refer to arXiv:2108.11401v2. Y.-C. Sun, [*The critical-window profile for the $`k`$-fold divisor function in almost all short intervals*](https://arxiv.org/abs/2401.08432v3), arXiv:2401.08432v3 (2026).
+
+</div>

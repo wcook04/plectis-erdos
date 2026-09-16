@@ -16,9 +16,9 @@ For two distinct primes, both the repeated and de-duplicated running-LCM
 series are transcendental.  They are nonconstant polynomials in one
 Hecke--Mahler value, whose transcendence follows from the theorem of Loxton
 and van der Poorten in the form given by Bugeaud and Laurent.  Steve Fan
-posted the factorisation, reduction and conclusion first, on 26 June 2026.
-The argument recorded here uses that external theorem; it is not a Lean
-formalisation of the two-prime result.
+posted the factorisation, reduction and conclusion first, on the problem's
+forum thread on 26 June 2026.  The record gives an independent proof over that
+external theorem; the two-prime result is not formalised in Lean.
 
 For the repeated $\{2,3,5\}$ series, the complete record constructs the
 literal tail recurrence and proves that rationality forces eventually
@@ -51,9 +51,10 @@ in $P$.  Erd\H{o}s Problem~\#269 asks whether
 \]
 is irrational, where $[a_1,\ldots,a_n]$ is the least common
 multiple~\cite[p.~65]{erdosgraham1980}\cite[p.~106]{erdos1988}.  Bloom's
-catalogue records the problem as open~\cite{erdosproblems}.  This note settles
-every instance with $|P|=2$, at the level of transcendence, and the unresolved
-finite cases begin at $|P|=3$.
+catalogue records the problem as open~\cite{erdosproblems}.
+Theorem~\ref{long269:res:lead-two-prime} settles every instance with $|P|=2$,
+at the level of transcendence, and Fan posted that argument
+first~\cite{fan2026comment}; the unresolved finite cases begin at $|P|=3$.
 
 The restriction $|P|\ge2$ is necessary.  For $P=\{p\}$ the enumeration is
 $a_n=p^{\,n-1}$, so $[a_1,\ldots,a_n]=p^{\,n-1}$ and the sum is $p/(p-1)$.  For
@@ -66,9 +67,10 @@ multiple contributes its reciprocal once.  The two differ because the running
 value is constant along stretches of the enumeration.  In a letter written on
 1~January 1973 Erd\H{o}s recorded that he could prove irrationality of the
 de-duplicated sum~\cite[p.~335]{erdos1974letter}.  He states that assertion for
-a general finite list of primes and supplies no proof, so the historical record
-already covers $\mathcal D_P$ for every finite $P$; the open question addressed
-by the catalogue is $\mathcal R_P$.
+given primes $p_1,\ldots,p_r$ and supplies no proof; for a single prime the
+de-duplicated sum is again $p/(p-1)$, so the assertion concerns sets of at
+least two primes.  The open question addressed by the catalogue is
+$\mathcal R_P$; its two-prime case is Theorem~\ref{long269:res:lead-two-prime}.
 
 \begin{theorem}[two-prime transcendence]\label{long269:res:lead-two-prime}
 Let $p$ and $q$ be distinct primes.  Then $\mathcal R_{\{p,q\}}$ and
@@ -78,8 +80,8 @@ $\mathcal D_{\{p,q\}}$ are transcendental.
 Section~\ref{long269:sec:two-prime} proves this.  Both values are explicit polynomials
 in one Hecke--Mahler boundary sum $A$, the coefficients are nonzero rationals,
 and transcendence of $A$ is the theorem of Loxton and van der Poorten
-\cite[p.~40, Theorem~8]{loxtonvdp1977} in the modern form of Bugeaud and Laurent's
-Theorem~1.1 \cite[p.~61, Theorem~1.1]{bugeaudlaurent2023}.  The evidence class
+\cite[Theorem~8, p.~40]{loxtonvdp1977} in the modern form of Bugeaud and
+Laurent \cite[Theorem~1.1]{bugeaudlaurent2023}.  The evidence class
 is an ordinary proof in this paper over a cited external theorem, and no Lean
 declaration formalises it.
 
@@ -91,7 +93,7 @@ the discussion thread of the problem's page on 26 June
 applies to arbitrary coprime pairs, and Fan's response proposed the wider
 setting of nonzero algebraic numbers whose logarithms are linearly independent
 over $\Q$.  The priority for the two-prime case is his.  The
-proof below is independent and is given in full because it fixes the $|P|=2$
+proof below was found independently and is given in full because it fixes the $|P|=2$
 boundary of the problem and because the same boundary sum drives the
 three-prime discussion.  The identity of Theorem~\ref{long269:res:lcm} is cited to him.
 
@@ -101,7 +103,10 @@ and column factors, the two-prime kernel is an outer product and the
 three-prime kernel retains one binary floor carry.  That carry is enough to
 produce nonsingular minors of every order, uniformly in the third coordinate,
 and to make the normalised carry matrix inapproximable by finite separated sums
-below half its own jump.  Sections~\ref{long269:sec:blocks} to~\ref{long269:sec:escape} take a
+below half its own jump.  The minors use only row and column rescaling, the
+density of the rotations by $\log_rp$ and $\log_rq$ taken separately, and a
+staircase determinant, and one choice of indices serves every layer of the
+literal kernel.  Sections~\ref{long269:sec:blocks} to~\ref{long269:sec:escape} take a
 second route on the literal $\{2,3,5\}$ series: dyadic shells give an
 integer-coefficient tail recurrence, a strict endpoint clears the smooth part
 of a hypothetical denominator, and the surviving carry is trapped between a
@@ -134,7 +139,7 @@ kernel}
 \]
 Here ``smooth'' always means supported on the fixed prime set, and it is not
 the varying-bound notion counted by $\Psi(x,y)$ in the Dickman--Hildebrand
-theory \cite[Theorem~1]{hildebrand1986}; no smooth-number density asymptotic is
+theory \cite{hildebrand1986}; no smooth-number density asymptotic is
 used below.  For $b\in\{p,q,r\}$ the set of positive powers of $b$ is the
 \emph{$b$-channel}.
 
@@ -190,11 +195,10 @@ and
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{111}{pureThird_mem_smoothPrefixExponents}{third}.
 The unrestricted analogue is classical: iterating the prime-exponent maximum
 rule gives $\lcm(1,\ldots,N)=\prod_{t\le N}t^{\lfloor\log_t N\rfloor}$ over the
-primes $t\le N$~\cite[Ex.~1.21(a), p.~22]{apostol1976}, equivalently
-$\log\lcm(1,\ldots,N)=\psi(N)$~\cite[\S4.2, p.~75]{apostol1976}, and
-Montgomery and Vaughan state the identity directly in Exercise~6.2.7
-\cite[p.~183]{montgomeryvaughan2007}.  Fan states the $P$-restricted form for
-every $|P|$~\cite{fan2026comment}.  The pairwise distinctness hypothesis is
+primes $t\le N$, equivalently $\log\lcm(1,\ldots,N)=\psi(N)$; see
+Apostol~\cite{apostol1976} and Montgomery and
+Vaughan~\cite{montgomeryvaughan2007}.  Fan's forum post states the
+$P$-restricted form for every $|P|$~\cite{fan2026comment}.  The pairwise distinctness hypothesis is
 used exactly once, in the coprimality step.
 
 At $(p,q,r)=(2,3,5)$ the first ten values are
@@ -322,11 +326,7 @@ height}.  At $(2,3,5)$ on $\mathcal B(1,1,1)$ the eight smooth values
 $1,2,3,5,6,10,15,30$ carry heights $1,2,6,60,60,360,360,10800$, so two
 coefficients equal $2$ and the identity reads $18421/10800$ on both sides.  The
 identity is between two finite sums over a box, so it is not a statement about
-$\Lprefix$ at a cutoff.  Fan and Lott build their van der Corput coefficients
-on sums of two squares by the same kind of regrouping: up to normalisation, the
-coefficient at $d$ sums a smooth weight over the representations
-$d=v^2(x^2+y^2)$, and the average over $v$ keeps the associated complete sums in
-a fixed sector \cite[\S3 and Corollary~4.4]{fanlott2026}.  The same Lean
+$\Lprefix$ at a cutoff.  The same Lean
 module records the one-step map
 $\tau(b,d,s)=b(s-d)$, the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{488}{tailStateStep}{variable-base
@@ -456,9 +456,9 @@ $\bigl((1-y)/y\bigr)F_\theta(x,y)=x/(1-x)-(A-1)$, that is
 Bugeaud and Laurent's Theorem~1.1 states, in particular, that
 $F_\theta(\beta,\alpha)$ is transcendental when $\theta\in(0,1)$ is irrational,
 $\alpha$ and $\beta$ are nonzero algebraic numbers, $|\beta|<1$ and
-$|\beta\alpha^\theta|<1$ \cite[p.~61, Theorem~1.1]{bugeaudlaurent2023}; the
+$|\beta\alpha^\theta|<1$ \cite[Theorem~1.1]{bugeaudlaurent2023}; the
 $\rho=0$ case used here goes back to Loxton and van der Poorten
-\cite[p.~40, Theorem~8]{loxtonvdp1977}.  Take $(\beta,\alpha)=(x,y)$: then
+\cite[Theorem~8, p.~40]{loxtonvdp1977}.  Take $(\beta,\alpha)=(x,y)$: then
 $|\beta|=1/p<1$ and
 \[
  |xy^{\theta}|=\frac1p\left(\frac1q\right)^{\log p/\log q}=\frac1{p^{2}}<1 .
@@ -487,7 +487,8 @@ one-dimensional criteria.  At two generators that hope is exactly correct, and
 at three it fails at every finite order.
 
 \begin{proposition}[two generators separate]\label{long269:res:two-prime-rank}
-For $p,q>1$ and all $i,j$, the two-prime kernel
+For real $p,q>1$, with $L_{p,q}(t)=p^{\lfloor\log_p t\rfloor}q^{\lfloor\log_q t\rfloor}$
+as above, and all integers $i,j\ge0$, the two-prime kernel
 $\Kernel_2(i,j)=1/L_{p,q}(p^iq^j)$ is the outer product
 \[
  \Kernel_2(i,j)
@@ -498,14 +499,18 @@ so every two-by-two minor of $\Kernel_2$ vanishes.
 \end{proposition}
 
 \begin{proof}
-By the two-variable form of Theorem~\ref{long269:res:lcm} the exponents of $p$ and of
-$q$ in $L_{p,q}(p^iq^j)$ are $i+\lfloor\log_p q^{j}\rfloor$ and
-$j+\lfloor\log_q p^{i}\rfloor$, each depending on one index only.  A matrix
-whose entries are a product of a row function and a column function has
-vanishing two-by-two minors.
+Since $i$ and $j$ are integers,
+$\lfloor\log_p(p^iq^j)\rfloor=i+\lfloor\log_p q^{j}\rfloor$ and
+$\lfloor\log_q(p^iq^j)\rfloor=j+\lfloor\log_q p^{i}\rfloor$.  Hence
+$L_{p,q}(p^iq^j)$ is the product of $p^{i}q^{\lfloor\log_q p^{i}\rfloor}$,
+which depends on $i$ alone, and $p^{\lfloor\log_p q^{j}\rfloor}q^{j}$, which
+depends on $j$ alone.  A matrix whose entries are a product of a row function
+and a column function has vanishing two-by-two minors.  For distinct primes
+$p,q$ the product $L_{p,q}$ is the running least common multiple by the
+argument of Theorem~\ref{long269:res:lcm}.
 \end{proof}
 
-\noindent Checked as the
+\noindent For integers $p,q>1$ this is checked as the
 \lword{Erdos269/KernelCarryRank.lean}{278}{twoPrimeKernelQ_eq_outer_product}{outer-product
 identity} and the
 \lword{Erdos269/KernelCarryRank.lean}{298}{twoPrimeKernelQ_minor_two_eq_zero}{vanishing
@@ -914,6 +919,24 @@ for the genuine infinite tail}, over the
 \lword{Erdos269/DyadicOrderedTailRecurrence.lean}{110}{dyadicNormalizedTailStateR235_succ}{normalised
 state step}.
 
+Since $h_0=1/2$, the last identity at $a=0$ writes $S/2=X_0$ as the Cantor
+series $\sum_{j\ge0}m_j/(b_0\cdots b_j)$, and $X_a$ is its normalised tail.
+Such tails, with their integer carry recurrence, are the classical tool for
+the rationality of Cantor series.  Erd\H{o}s and Straus characterise
+rationality by integer carries
+\cite[Theorem~2.1 and (2.4), pp.~85--86]{erdosstraus1974}, and Han\v{c}l and
+Tijdeman give a practical form of that criterion through tails $R_n$ with
+$a_nR_n=b_n+R_{n+1}$, which is the recurrence above in their notation
+\cite[\S\S2--3 and Theorem~3.1, pp.~372--375]{hancltijdeman2004}.
+Koutsoukou-Argyraki and Li formalised the Erd\H{o}s--Straus criteria in
+Isabelle/HOL~\cite{afperdosstraus2020}.  Both criteria assume that the $n$th
+numerator is $o(a_{n-1}a_n)$, where $a_n$ is the $n$th base.  Here $m_a\ge1$
+and $b_{a-1}b_a\le900$, so neither criterion applies.  The passage from
+rationality to integral tails is the standard denominator clearing, proved for
+this series in Section~\ref{long269:sec:actual-orbit}; the work specific to
+this series is the literal forcing with its multiplicities, the strict
+endpoint normalisation and the explicit bounds.
+
 \begin{proposition}[integral state or cofinal separation]\label{long269:res:actual-dichotomy}
 Either $X_a\in\Z$ for some $a\ge0$, or for every $a_0$ there is $a\ge a_0$ with
 $|X_a-z|\ge1/31$ for every $z\in\Z$.
@@ -937,8 +960,10 @@ nothing about a rational value whose reduced denominator has a factor coprime
 to $30$: that case is the subject of Section~\ref{long269:sec:actual-orbit}.
 If $(g_a)$ is an unbounded sequence of positive integers with bounded
 successive ratios, the real $\xi$ with $\operatorname{dist}(g_a\xi,\Z)\to0$ form
-a countable set, a phenomenon going back to Eggleston
-\cite[\S3 and Lemma~3.1]{fan2026strongly}.  For an integer $B\ge1$ and $g_a=Bh_a$ $(a\ge1)$ the ratios
+a countable set.  For increasing sequences this is due to Erd\H{o}s and Taylor
+\cite[Theorem~1, p.~600]{erdostaylor1957}, who obtain it by modifying
+Eggleston's proof of his Theorem~16, and Fan proves the form stated here
+\cite[Lemma~3.1, p.~7]{fan2026strongly}.  For an integer $B\ge1$ and $g_a=Bh_a$ $(a\ge1)$ the ratios
 are the integers $b_a$ of~\eqref{long269:eq:dyadic-alphabet}, and the argument
 above identifies the set: it consists of the $\xi$ for which $Bh_a\xi$ is
 eventually an integer.  Since $X_a-h_aS$ is an integer for $a\ge1$
@@ -1004,15 +1029,17 @@ and summing the majorant is the argument above.
 The bound is used at the endpoint of a window, where the natural index is the
 positive prime-power jump count strictly below the cutoff.  Put
 \begin{equation}\label{long269:eq:endpoint-index}
- j_a=\#\{p^{e}<2^{a}:p\in\{2,3,5\},\ e\ge1\}=n_a-1 ,
+ j_a=\#\{p^{e}<2^{a}:p\in\{2,3,5\},\ e\ge1\}=n_a-1\qquad(a\ge1),
 \end{equation}
-the equality holding because the powers of $2$ below $2^{a}$ number $a-1$ while
-the powers of $3$ and of $5$ below $2^{a}$ number $\lfloor\log_3 2^{a}\rfloor$
-and $\lfloor\log_5 2^{a}\rfloor$.  Substituting $n_a=j_a+1$ into $Q$ gives the
+the equality holding for $a\ge1$ because the powers of $2$ below $2^{a}$ number
+$a-1$ while the powers of $3$ and of $5$ below $2^{a}$ number
+$\lfloor\log_3 2^{a}\rfloor$ and $\lfloor\log_5 2^{a}\rfloor$; at $a=0$ the
+count is $j_0=0$ and $n_0-1=-1$.  Substituting $n_a=j_a+1$ into $Q$ gives the
 integer bound used throughout the rest of the note:
 \begin{equation}\label{long269:eq:actual-bound}
- K(B,a)=\bigl\lfloor B\,Q(n_a)\bigr\rfloor
- =\left\lfloor\frac{B(j_a^{2}+10j_a+27)}9\right\rfloor .
+ K(B,a)=\bigl\lfloor B\,Q(n_a)\bigr\rfloor,
+ \qquad
+ K(B,a)=\left\lfloor\frac{B(j_a^{2}+10j_a+27)}9\right\rfloor\quad(a\ge1).
 \end{equation}
 The cutoff in \eqref{long269:eq:endpoint-index} is $2^{a}$ and it is strict.
 
@@ -1263,16 +1290,16 @@ for the shifted tail and
 for the series value itself.  The Lean equivalence is stated at $K_0$; the band
 of Theorem~\ref{long269:res:actual-escape-endpoint} is the paper statement.
 
-Theorem~\ref{long269:res:actual-escape-endpoint} settles a question that a reader is
-entitled to ask about the criterion.  Sharpening the bound below $K$ does not
-weaken the producer, since escape against a bound that fails to dominate the
-actual carries proves nothing; the zero bound is the extreme case.  Enlarging
-the bound up to any subexponential function does not weaken it either.  The
-producer is therefore a restatement of Erd\H{o}s~\#269 for $P=\{2,3,5\}$
-throughout the band, and work on it is work on the target.  Equivalence
-preserves truth and settles nothing about difficulty, so the reformulation may
-still be the easier representation to attack; what it does not admit is a
-cheaper bound.
+Theorem~\ref{long269:res:actual-escape-endpoint} makes the producer a
+restatement of Erd\H{o}s~\#269 for $P=\{2,3,5\}$ throughout the band, so work
+on it is work on the target.  The rational direction needs a bound valid for
+every actual positive carry.  The bound $K$ is one such bound, and a smaller
+bound proved valid for the actual carries could replace it; the zero bound is
+invalid, and $\Esc(0)$ holds vacuously.  Enlarging the bound to any $G\ge K$
+with $G(B,a)=o(2^{a})$, in particular to any subexponential bound above $K$,
+preserves the equivalence.  Equivalence preserves truth and settles nothing
+about difficulty, so the reformulation may still be the easier representation
+to attack.
 
 Two exact countermodels rule out further shortcuts.  For $(W,F,B)=(6,4,1)$ we
 have $\lpr_6(-4)=2$, so the canonical residue need not be coprime to the
@@ -1358,8 +1385,8 @@ $R=\lpr_{W}(-BF)$ and the bound $K$ of~\eqref{long269:eq:actual-bound}.
 \begin{array}{c|c|c|c|r|r|r|r}
 B&\ell&h&j_{\ell+h}&W&F&R&K\\ \hline
 1&1&2&4&60&47&13&9\\
-7&1&3&5&360&289&137&95\\
-16&1&4&7&10800&8735&640&352
+7&1&3&6&360&289&137&95\\
+16&1&4&9&10800&8735&640&352
 \end{array}
 \]
 The first row reads as follows.  The window starts at $\ell=1$ and has length
@@ -1407,8 +1434,8 @@ basis lying inside the per-start budget, an enclosure of width
 $9.674\times10^{-227}$, and a maximum ratio $\max X/W=0.185997$.  This is a
 computational certificate and nothing else: no Lean declaration carries any
 part of it, so it rests on the correctness of the exact integer engine that
-produced it, and the certificate record is held in the author's
-formal-mathematics archive, outside the public source of this release.
+produced it, and the certificate record is not part of the public source of
+this release.
 
 \begin{theorem}[continued-fraction exclusion, computational certificate]
 \label{long269:res:cf-exclusion}
@@ -1417,16 +1444,20 @@ not rational with denominator at most $2^{22482}$, about $10^{6768}$.
 \end{theorem}
 
 The certification is by common prefix of the continued fractions of the two
-endpoints of an interval provably containing $X_1$, so no approximation
-heuristic enters, and the truncation was independently checked to agree with
-the direct smooth-number sum as an exact rational. The machine-readable witness and replay receipt for this large computation are not included in the public release, so the statement remains an archived ordinary computational certificate rather than a publicly replayed or Lean-checked result.  The recorded statistics are
+endpoints of an interval provably containing $X_1$; the numbers with a given
+prefix of partial quotients form an interval
+\cite[Lemma~10.1.2, p.~106]{bosmaCF}, so no approximation heuristic enters,
+and the truncation was independently checked to agree with
+the direct smooth-number sum as an exact rational. The machine-readable witness and replay receipt for this large computation are not included in the public release, so the statement is an ordinary computational certificate that has been neither publicly replayed nor checked in Lean.  The recorded statistics are
 a largest denominator of $22{,}483$ bits, a largest partial quotient of
 $129{,}114$, a mean partial quotient of $23.4133$, observed Gauss--Kuzmin
 frequencies $0.4208$, $0.1665$, $0.0917$, $0.0575$, $0.0391$ against the
 predicted $0.4150$, $0.1699$, $0.0931$, $0.0589$, $0.0406$, and a L\'evy
-constant of $1.18869$ against $\pi^{2}/(12\log2)=1.18657$.  No Liouville
-behaviour and no algebraic or self-similar continued-fraction structure appears
-below that height.
+constant of $1.18869$ against $\pi^{2}/(12\log2)=1.18657$.  The predicted
+values are the almost-everywhere frequencies of Gauss's law and L\'evy's
+almost-everywhere constant \cite[pp.~288--289 and footnote~5]{levy1936}.
+These statistics describe a finite prefix and do not bear on whether $X_1$ is a
+Liouville number, algebraic, or rational with a larger denominator.
 
 Each exclusion is finite and neither contains the other: one is indexed by a
 lattice at a fixed launch and fixed smooth part, the other by continued-fraction
@@ -1580,7 +1611,7 @@ series, so no irrationality statement follows from them here.
 Erd\H{o}s~\#269 is settled for $|P|=2$, at the level of transcendence, and open
 for every $|P|\ge3$.  For $P=\{2,3,5\}$ the reduction is complete on the
 arithmetic side: the literal digit, the tail, the integral recurrence, the
-smooth-factor cancellation, the explicit onset and the sharp carry bound all
+smooth-factor cancellation, the explicit onset and the explicit quadratic carry bound all
 refer to the same series, and Theorem~\ref{long269:res:actual-escape-endpoint} shows
 that the one remaining condition is the problem itself throughout an entire
 band of bounds.  Three obstructions mark the limits.  Arbitrary-order minors
@@ -1597,8 +1628,10 @@ the denominator and to begin beyond the onset.
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
 
-\paragraph{Evidence.}  Steve Fan's two-prime argument is an ordinary proof over
-the cited Bugeaud--Laurent theorem and carries no Lean declaration.  The
+\paragraph{Evidence.}  The two-prime theorem has an ordinary proof in this
+record over the Hecke--Mahler value theorem of Loxton and van der Poorten, in
+the form of Bugeaud and Laurent, and carries no Lean declaration; Steve Fan
+posted the same argument first~\cite{fan2026comment}.  The
 arbitrary-order kernel minors and the exclusion of finite separation are Lean
 theorems in \texttt{KernelCarryRank}.  The named source statements for the
 literal recurrence and fixed-split rationality bridge are Lean theorems as
@@ -1612,7 +1645,7 @@ conditional carry-escape consumer; it is not the evidence for the
 arbitrary-order theorem.  The actual-series reduction is given;
 the source-specific cofinal escape remains unproved.  Named Lean sources below
 are locators, not a blanket end-to-end coverage claim.  The quadratic tail
-bound, the explicit onset $a_D$, the sharp bound $K$, and
+bound, the explicit onset $a_D$, the explicit bound $K$, and
 Theorem~\ref{long269:res:uniform-rank} are ordinary proofs in this paper; the
 three finite computations of Section~\ref{long269:sec:evidence} are
 computational certificates.
@@ -1626,9 +1659,10 @@ present text is exposition and navigation.
 \paragraph{Funding and competing interests.} This work received no external
 funding.  The author declares no competing interests.
 
-\paragraph{Acknowledgements.} The two-prime factorisation, its Hecke--Mahler
-reduction and the running-LCM identity for every $|P|$ are credited to Steve
-Fan.  The transcendence input is credited to Yann Bugeaud and Michel Laurent
-and to the earlier work of Loxton and van der Poorten cited by them.  The
+\paragraph{Acknowledgements.} Priority for the two-prime factorisation, its
+Hecke--Mahler reduction and the running-LCM identity for every $|P|$ belongs to
+Steve Fan's forum post of 26 June 2026~\cite{fan2026comment}.  The
+transcendence input is due to Yann Bugeaud and Michel Laurent and to the
+earlier work of Loxton and van der Poorten cited by them.  The
 problem numbering and status follow the Erd\H{o}s Problems catalogue maintained
 by Thomas Bloom~\cite{erdosproblems}.

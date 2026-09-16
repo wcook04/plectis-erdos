@@ -183,8 +183,8 @@ exact remaining content.
 
 \begin{defn}
 The \emph{actual LCM tail orbit} at exponent $a$ is
-$\mathtt{actualLcmTailOrbit}\ a = R_{2H+2H} - R_{H+... }$, precisely
-$\mathrm{totientTail}(2H)-\mathrm{totientTail}(H)$ where $H = \mathtt{periodLcm}(2^a)$
+$\mathtt{actualLcmTailOrbit}\ a = R_{2H}-R_H
+=\mathrm{totientTail}(2H)-\mathrm{totientTail}(H)$, where $H = \mathtt{periodLcm}(2^a)$
 (\lean{actualLcmTailOrbit_pos}{TotientActualLcmOrbitSign.lean:144}).
 \end{defn}
 
@@ -246,12 +246,13 @@ $A_{H,H,K}$ (where $H=\mathtt{periodLcm}(2^a)$) below the top strip at even one 
 reduces the condition to the last $m$ arithmetic letters of the word alone.
 \end{defn}
 
-\begin{prop}[The five strictly weaker sufficient links --- proving any one closes \#249]
+\begin{prop}[Five sufficient links, each closing \#249 if proved]
 \label{prop:te-chain}
 All five are proved sufficient for
 \lean{PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:1325} in the
-same module, and each is \emph{strictly weaker} in the sense that it drops a hypothesis, widens a
-band, or asks only for magnitude rather than a signed inequality.
+same module. Each changes the form of the target by dropping a hypothesis, widening a band, or
+asking only for magnitude in place of a signed inequality; no strict separation between them is
+proved.
 \begin{enumerate}[leftmargin=*]
   \item \lean{PowerTwoAdjacentSuffixMidbandSupply}{TotientActualLcmTopEdgeStaircase.lean:1334}
     (\ev{Open}, \scale{cofinal}):
@@ -715,8 +716,9 @@ Either (i) a Dirichlet-criterion bridge in the shape of
 rationals $u_t$ with $u_t\ne S$ and $\mathrm{den}(u_t)\cdot|S-u_t|\to 0$, which requires the
 approximation error to beat the denominator, not merely the denominator to grow; or (ii) a
 transport map from ``channel of size $\ge 2^{t/2}$ survives in the denominator'' to ``windowDiscrepancy
-residue avoids the arc,'' which does not exist in the corpus. Route (i) needs the growth rate
-raised from $2^{t/2}$ to beat the shadow's own truncation error.
+residue avoids the arc,'' which does not exist in the corpus. Route (i) needs truncation errors
+with $\mathrm{den}(u_t)\cdot|S-u_t|\to0$; a larger lower bound for the surviving denominator,
+such as $2^{t/2}$, makes this requirement harder.
 \end{prop}
 
 \subsubsection{d4/d5 --- the parallel rank obligation, and a corrected pair of citations (\coord{carry-rank})}
@@ -787,9 +789,8 @@ Second, the top-edge staircase (TE-04 through TE-05-weakest, \coord{actual-lcm-t
 only row where the corpus has both halved the obligation (one-sided instead of symmetric) and
 exposed, via the exact identity of Observation~\ref{obs:staircase-tension}, precisely which of two
 logically symmetric escape branches survives the sign machinery already proved elsewhere in the
-same file family. That five strictly weaker equivalent or sufficient forms are already proved
-inter-derivable (Proposition~\ref{prop:te-chain}) means effort here is not fragmented across
-restatements: proving any one closes the others automatically.
+same file family. Five sufficient forms are already proved, related by the implications of
+Proposition~\ref{prop:te-chain}, and proving any one of them closes \#249.
 
 Third, the d4/d5 rank obligation is structurally independent of the residue-coordinate rows above:
 it is a second, self-contained sufficient condition for \#249 (an upper rank bound contradicting

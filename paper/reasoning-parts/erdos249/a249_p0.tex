@@ -141,6 +141,13 @@ extrapolate.
 The exact finite Farey record behind Theorem~\ref{thm:denom-record} is not tied to
 the $\varphi(n)/2^n$ presentation of $S$; it transfers verbatim to two other
 exact reformulations of the same constant, at exactly half the bound.
+Amiram Eldar posted both reformulations to OEIS A256936 on 15 March 2026: an
+equivalent coprimality interpretation of Proposition~\ref{prop:coprime} in
+revision~28, and the M\"obius-square formula of Proposition~\ref{prop:mobsq}
+in revision~31~\cite{eldar2026oeis}.  Steve Fan posted the M\"obius-square
+formula on the problem's forum thread on 16 May 2026~\cite{fan2026totient}.
+Both identities follow here from M\"obius inversion and geometric sums, with
+the proofs recorded in the linked declarations.
 
 \begin{prop}[Fair-coin coprimality form]
 \label{prop:coprime}
@@ -231,11 +238,11 @@ the single reduced target every other result in this subsection and
 The identity of Proposition~\ref{prop:mobsq} rewrites $S$ (equivalently $T$)
 as a \emph{M\"obius-twisted Lambert-squared series}: the numerator weight
 $\mu(d)$ is bounded, $|\mu(d)|\le1$ for every $d$, uniformly in $d$. This
-places $T$ in exactly the coefficient regime of the classical Erd\H{o}s (1948)
-near-integer irrationality criterion and of the level-1 sibling identity
-$L(\mu):=\sum_d \mu(d)/(2^d-1) = \tfrac12$ (rational, trivially) alongside
-$L(1) = \sum_d 1/(2^d-1) = E$, the Erd\H{o}s--Borwein constant, which
-\emph{is} proved irrational in this same kernel
+places $T$ beside the level-1 sibling identity
+$L(\mu):=\sum_d \mu(d)/(2^d-1) = \tfrac12$ (rational, trivially) and
+$L(1) = \sum_d 1/(2^d-1) = E$, the Erd\H{o}s--Borwein constant, whose
+irrationality Erd\H{o}s proved in 1948~\cite{erdos1948lambert} and which
+\emph{is} also proved irrational in this same kernel
 (\lean{irrational_erdosBorwein_series}{CertificateKernel.lean:8335}, \ev{Lean}).
 
 \par\medskip
@@ -245,15 +252,18 @@ This is the opposite regime from Proposition~\ref{prop:shift}'s
 $0\le\varphi(n)\le n$ and is unbounded.  The function $\varphi$ has average
 order $6n/\pi^2$, equivalently
 $\sum_{k\le x}\varphi(k)\sim 3x^2/\pi^2$, but there is no pointwise estimate
-$\varphi(n)=\Theta(n)$. A
-near-integer/Dirichlet-approximation argument of Erd\H{o}s-1948 shape
+$\varphi(n)=\Theta(n)$. A near-integer irrationality criterion
 (formalised generically as
 \lean{irrational_of_int_mul_near_int}{CertificateKernel.lean:6120} and its
 base-power specialisation
 \lean{irrational_of_pow_mul_near_int}{CertificateKernel.lean:6149}, both
-\ev{Lean}, \coord{n/a}, fully coordinate-free) has a genuine chance of
-transferring to $T$ precisely because its weight is bounded, in a way it does
-not have a chance of transferring directly to the raw $\varphi(n)/2^n$ series.
+\ev{Lean}, \coord{n/a}, fully coordinate-free) applies more plausibly to $T$,
+whose weight is bounded, than to the raw $\varphi(n)/2^n$ series.
+Erd\H{o}s's 1948 argument is itself a proof for the specific Lambert series:
+it chooses arguments by a system of congruences so that the divisor counts
+along a block are divisible by increasing powers of the base, and a tail bound
+then forces a long run of zero digits~\cite[pp.~63--66]{erdos1948lambert}.
+Boundedness of a signed weight supplies none of that divisibility input.
 
 \par\medskip
 
@@ -276,6 +286,12 @@ For $w:\mathbb{N}\to\mathbb{R}$ with $|w(d)|\le d$ for all $d>0$, and $0\le r<1$
 \lean{tsum_lambert_linear_weight_sq_pure}{GcdMomentCalculus.lean:105}
 \end{prop}
 
+\noindent The identity follows by expanding $r^d/(1-r^d)$ as a geometric
+series and interchanging absolutely convergent sums.  It is the squared
+analogue of the classical divisor-sum Lambert identity
+$\sum_na_nq^n/(1-q^n)=\sum_m\bigl(\sum_{d\mid m}a_d\bigr)q^m$~\cite[(1),
+p.~2]{merca-schmidt}.
+
 This one identity, at $r=1/2$, specialises to every squared-Lambert rung the
 corpus computes; two instances are exact and directly relevant to \#249's
 weight structure:
@@ -286,9 +302,14 @@ weight structure:
 \sum_{d\ge1} \frac{1}{(2^d-1)^2} \;=\; \sum_{n\ge1} \frac{\sigma(n)-\tau(n)}{2^n} \;=\; \zeta_q(2)-\zeta_q(1) \text{ at } q=\tfrac12,
 \]
 where $\sigma$ is the sum-of-divisors function and $\tau$ the number-of-divisors
-function. The \emph{identity} is machine-checked (\ev{Lean}); irrationality of
-the \emph{value} $\zeta_q(2)-\zeta_q(1)$ is \ev{Cited} (Postelmans--Van Assche
-$q$-Pad\'e), \emph{not} formalised in this corpus.
+function. The \emph{identity} is machine-checked (\ev{Lean}).  With
+$\zeta_q(s)=\sum_{n\ge1}n^{s-1}q^n/(1-q^n)$, Postelmans and Van Assche prove
+that $1,\zeta_q(1),\zeta_q(2)$ are linearly independent over $\mathbb{Q}$ for
+$q=1/p$ with an integer $p\ge2$~\cite[Theorem~1.3, p.~3]{postelmans-vanassche};
+at $q=\tfrac12$ this gives the irrationality of the \emph{value}
+$\zeta_q(2)-\zeta_q(1)$ (\ev{Cited}, \emph{not} formalised in this corpus).
+Two irrational numbers can have a rational difference, so the separate
+irrationality of the two values would not suffice.
 \coord{mobius-mersenne} \scale{n/a}
 \lean{tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series}{GcdMomentCalculus.lean:216}
 \end{prop}
@@ -299,7 +320,8 @@ $q$-Pad\'e), \emph{not} formalised in this corpus.
 \sum_{d\ge1} \frac{\varphi(d)}{(2^d-1)^2} \;=\; \sum_{n\ge1} \bigl(P(n)-n\bigr)\cdot 2^{-n} \;=\; \mathbb{E}[\gcd(X,Y)],
 \]
 where $P(n) := \sum_{e\mid n}\varphi(e)\cdot(n/e) = (\varphi * \mathrm{Id})(n)$
-is Pillai's gcd-sum function and $X,Y$ are the independent fair-coin waiting
+is Pillai's gcd-sum function $P(n)=\sum_{k\le n}\gcd(k,n)$~\cite[\S1,
+(1)--(2)]{toth-gcd} and $X,Y$ are the independent fair-coin waiting
 times of Proposition~\ref{prop:coprime}. The identity itself is
 machine-checked (\ev{Lean}); the value $\mathbb{E}[\gcd(X,Y)]$ is \ev{Open} ---
 a cousin rung to \#249, not \#249 itself.

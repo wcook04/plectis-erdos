@@ -24,14 +24,14 @@ series $\mathcal R_P$.  A recovered proof of the letter's assertion, or a
 transcendence statement for $\mathcal D_P$ with $|P|\ge3$, would be a different
 question and needs its own formulation.
 
-The two-prime argument of the note is independent of the unprinted argument in
-the letter, and it is not the first public proof.  Steve Fan posted the same
-factorisation, the same Hecke--Mahler reduction and the same conclusion in the
-discussion thread of the problem's page on 26 June 2026
+The letter prints no argument.  On 26 June 2026 Steve Fan posted the
+two-prime factorisation, the Hecke--Mahler reduction and the transcendence
+conclusion in the discussion thread of the problem's page
 \cite{fan2026comment}; the comment itself notes that the argument does not seem
 to generalise immediately to $|P|\ge3$, and a reply there observes that it
-applies to arbitrary coprime pairs.  The manuscript of the
-note was first released publicly on 22 July 2026, at commit \texttt{a9d3ab8}.
+applies to arbitrary coprime pairs.  The note's two-prime argument was found
+independently, and its manuscript was first released publicly on 22 July 2026,
+at commit \texttt{a9d3ab8}.
 
 The statement of the problem has been formalised as a conjecture with an
 unfilled proof in the \emph{Formal Conjectures} collection
@@ -45,7 +45,10 @@ explicit series-identification lemma, which is not supplied here.
 
 The note applies the carry machinery to the literal $\{2,3,5\}$ orbit.  The
 underlying statements are about integer sequences alone, they are reusable, and
-they are recorded here in the generality in which they are checked.
+they are recorded here in the generality in which they are checked.  They are
+conditional carry lemmas in the Cantor-series tradition described after
+Theorem~\ref{long269:res:actual-orbit}, and each assumes its divisibility or
+escape hypothesis.
 
 Let $D=D_{\mathrm{sm}}B$ with $D_{\mathrm{sm}}=2^{u}3^{v}5^{w}$ and
 $\gcd(B,30)=1$, and let $(c_n)$ be an integer sequence satisfying
