@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:d988c449a5a80b0d66f2084a068a6d198458756b4131b865a33dfa63d23f94be",
+    "owner_digest": "sha256:d88a95d06846401cb6a37cb15d6990c6003f8dcb774df19b7338b80806febd19",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:872bbd08460fe0325738b85ce0f90f9db6fb2ea0f433c2ffa5c65d72d9a36c88",
+    "projection_digest": "sha256:d32dbf193823bdff7fdae1e2baca7b2e083c80a6d102e4ea704cbb757552ccdb",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1920,10 +1920,10 @@
             "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
             "path": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
             "present": true,
-            "line_count": 2386,
-            "declaration_count": 77,
-            "theorem_count": 67,
-            "content_digest": "sha256:3145b8a5a4c3783fa4c79b726e20f55285a7a43ec58a5e876bf3e4a3d1f88ff9"
+            "line_count": 2441,
+            "declaration_count": 78,
+            "theorem_count": 68,
+            "content_digest": "sha256:516544a9e64edd668a83d9b0ea0179d32c2dbeea7a3bea773d498d6897695f18"
           },
           {
             "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
@@ -1938,19 +1938,19 @@
             "module": "ErdosProblems.Erdos243.SparseResetRecovery",
             "path": "lean/ErdosProblems/Erdos243/SparseResetRecovery.lean",
             "present": true,
-            "line_count": 543,
-            "declaration_count": 20,
-            "theorem_count": 15,
-            "content_digest": "sha256:9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e"
+            "line_count": 720,
+            "declaration_count": 23,
+            "theorem_count": 18,
+            "content_digest": "sha256:f207295595576c95ab9e7717f219eec3b1d1e33555b0a9a1a1e95c690f623177"
           },
           {
             "module": "ErdosProblems.Erdos243.DynamicCancellation",
             "path": "lean/ErdosProblems/Erdos243/DynamicCancellation.lean",
             "present": true,
-            "line_count": 399,
-            "declaration_count": 15,
-            "theorem_count": 15,
-            "content_digest": "sha256:82f16b7f678b422b2c939a1587d27c0fc8c3be08272079e6965eb184bb28d2d6"
+            "line_count": 624,
+            "declaration_count": 21,
+            "theorem_count": 21,
+            "content_digest": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76"
           },
           {
             "module": "ErdosProblems.Erdos243.FeedbackRealizability",
@@ -2724,7 +2724,7 @@
           "At n = 0, the Amdeberhan-Zeilberger q-Apery operator applied to Van Assche's moving diagonal has residual -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2), which is strictly negative and nonzero for every real p > 1."
         ],
         "what_is_not_checked": [
-          "The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem.",
+          "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched.",
           "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
           "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
           "The source analytic irrationality theorem inside the 81/200 height region; only its elementary parameter specialisations are formalised.",
@@ -2783,5 +2783,5 @@
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
   "config_digest": "sha256:a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-  "solution_source_digest": "sha256:d30a98f75037ef23d3a0f75992c229a6f336d215ff8127cc8ee06f9b2f382e0a"
+  "solution_source_digest": "sha256:61c54d5b3c23e854d896a20e3a3c0896195debc6b7347a661eec975157565fc7"
 }

@@ -1625,7 +1625,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:872bbd08460fe0325738b85ce0f90f9db6fb2ea0f433c2ffa5c65d72d9a36c88"
+  problem_index_digest: "sha256:d32dbf193823bdff7fdae1e2baca7b2e083c80a6d102e4ea704cbb757552ccdb"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1691,7 +1691,7 @@ external_verification:
       erdos_number: 1049
       status: "open"
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
-      open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The 31/4 power family has an ordinary proof in the paper; it is not an end-to-end Lean theorem."
+      open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
   trusted_challenge_holes: 8
   packet: "docs/EXTERNAL_VERIFICATION.md"

@@ -4,7 +4,7 @@ import Mathlib.Tactic
 /-!
 Pointwise algebra for the full-disc weighted free-point Poisson argument.
 This supplies the kernel/logarithmic-derivative identity, not the analytic
-norm-square majorization or the infinite Taylor energy identity. Uncompiled.
+norm-square majorization or the infinite Taylor energy identity.
 -/
 
 namespace ErdosProblems.Erdos1041

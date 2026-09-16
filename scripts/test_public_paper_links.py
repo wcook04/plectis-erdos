@@ -36,6 +36,22 @@ def test_offline_audit_rejects_local_and_missing_cross_pdf(monkeypatch) -> None:
     assert receipt["missing_cross_pdf_rows"][0]["target"] == "absent.pdf"
 
 
+def test_offline_audit_accepts_flattened_shipped_pdf_name(monkeypatch) -> None:
+    monkeypatch.setattr(
+        MODULE,
+        "contract_pdfs",
+        lambda: [MODULE.ROOT / "paper" / "one" / "one.pdf", MODULE.ROOT / "paper" / "two" / "two.pdf"],
+    )
+    monkeypatch.setattr(
+        MODULE,
+        "pdf_links",
+        lambda _paths: [MODULE.LinkOccurrence("paper/one/one.pdf", 1, "cross_pdf", "two.pdf")],
+    )
+    receipt = MODULE.audit(network=False, jobs=1, timeout=1.0)
+    assert receipt["ok"]
+    assert receipt["missing_cross_pdf_rows"] == []
+
+
 def test_network_classification_distinguishes_broken_and_access_control(monkeypatch) -> None:
     monkeypatch.setattr(MODULE, "contract_pdfs", lambda: [MODULE.ROOT / "one.pdf"])
     monkeypatch.setattr(

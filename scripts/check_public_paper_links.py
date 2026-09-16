@@ -166,13 +166,20 @@ def run_network(urls: Iterable[str], *, jobs: int, timeout: float) -> list[Netwo
 
 
 def audit(*, network: bool, jobs: int, timeout: float) -> dict:
-    links = pdf_links(contract_pdfs())
+    pdfs = contract_pdfs()
+    links = pdf_links(pdfs)
     uri_rows = [row for row in links if row.kind == "uri"]
     cross_rows = [row for row in links if row.kind == "cross_pdf"]
     local_uri_rows = [
         row for row in uri_rows if any(marker in row.target for marker in LOCAL_URI_MARKERS)
     ]
-    missing_cross_rows = [row for row in cross_rows if not (ROOT / row.target).is_file()]
+    # The publication bundle flattens its PDFs into one public directory, so
+    # cross-document actions intentionally carry sibling filenames rather than
+    # repository-relative storage paths.
+    shipped_pdf_names = {path.name for path in pdfs}
+    missing_cross_rows = [
+        row for row in cross_rows if Path(row.target).name not in shipped_pdf_names
+    ]
 
     network_rows = run_network(
         (row.target for row in uri_rows), jobs=jobs, timeout=timeout
@@ -194,7 +201,7 @@ def audit(*, network: bool, jobs: int, timeout: float) -> dict:
         "schema": "public_paper_link_audit_v1",
         "ok": ok,
         "network_checked": network,
-        "pdf_count": len(contract_pdfs()),
+        "pdf_count": len(pdfs),
         "annotation_count": len(links),
         "uri_annotation_count": len(uri_rows),
         "distinct_public_target_count": len({without_fragment(row.target) for row in uri_rows}),

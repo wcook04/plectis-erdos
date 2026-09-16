@@ -12,6 +12,9 @@ import ErdosProblems.Erdos251.PaperTailBoundsR7
 import ErdosProblems.Erdos251.ActualPrimePaperR11
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos68.PaperCompleteLiminf
+import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
+import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -193,3 +196,10 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form
 #print axioms ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
 #print axioms ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf
+#print axioms ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually
+#print axioms ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect
+#print axioms ErdosProblems.Erdos1049.PaperR17.actual_cancelled_supply
+#print axioms ErdosProblems.Erdos1049.PaperR17.actual_contour_source_supply
+#print axioms ErdosProblems.Erdos1049.PaperR17.rational_base_region
+#print axioms ErdosProblems.Erdos1049.PaperR17.thirtyone_four_powers
+#print axioms ErdosProblems.Erdos1049.PaperR17.thirtyone_four

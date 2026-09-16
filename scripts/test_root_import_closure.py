@@ -29,6 +29,14 @@ IMPORT_RE = re.compile(
     rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
     re.M,
 )
+# Every CI build elaborates the supported-root closure, so a module header in it that
+# calls the module unrun or uncompiled is false. Such prose was read as status by
+# external reviewers and held checked results back (15 September 2026).
+BUILD_STATUS_PROSE_RE = re.compile(
+    r"\bUNRUN\b|\bUNCOMPILED\b|\b[Uu]ncompiled\b|\bNOT (?:been |yet )?compiled\b"
+    r"|\bnot (?:been |yet )?compiled\b|No local compilation|not a compilation receipt"
+)
+BUILD_STATUS_HEADER_LINES = 60
 
 
 def require(condition: bool, message: str) -> None:
@@ -167,6 +175,39 @@ def closure_errors(
     for module in sorted(set(imports_by_id) - reachable):
         errors.append(f"public module is outside supported root-import closure: {module}")
     return errors
+
+
+def build_status_prose_errors(texts_by_module: dict[str, str]) -> list[str]:
+    """Return header lines of supported-root modules that describe their build status in prose."""
+    errors = []
+    for module, text in sorted(texts_by_module.items()):
+        for number, line in enumerate(text.splitlines()[:BUILD_STATUS_HEADER_LINES], 1):
+            if BUILD_STATUS_PROSE_RE.search(line):
+                errors.append(
+                    f"supported-root module {module} line {number} states its build status "
+                    f"in prose; CI compiles it, so remove: {line.strip()}"
+                )
+    return errors
+
+
+def check_build_status_prose_fixtures() -> None:
+    stale = {
+        "Erdos249257.A": "/-!\nCandidate source, UNRUN. One support is chosen first.\n-/\n",
+        "Erdos249257.B": "/-!\nNew proof source, NOT compiled in the return environment.\n-/\n",
+        "Erdos249257.C": "/-!\nUncompiled candidates.  The state theorem is assembled.\n-/\n",
+    }
+    found = build_status_prose_errors(stale)
+    require(len(found) == 3, f"build-status prose fixture missed a stale header: {found}")
+    clean = {
+        "Erdos249257.D": "/-!\nThe candidate root is checked against every residue class.\n-/\n",
+        "Erdos249257.E": "/-!\nProves F(a/b) irrational on the contour region.\n-/\n",
+    }
+    require(
+        build_status_prose_errors(clean) == [],
+        "build-status prose check flagged a mathematical use of the word candidate",
+    )
+    late = {"Erdos249257.F": "\n" * BUILD_STATUS_HEADER_LINES + "-- UNRUN note far below the header\n"}
+    require(build_status_prose_errors(late) == [], "build-status prose check read past the header window")
 
 
 def check_fixtures() -> None:
@@ -332,6 +373,7 @@ def check_fixtures() -> None:
 
 def main() -> int:
     check_fixtures()
+    check_build_status_prose_fixtures()
     claims = json.loads(
         safe_public_text(ROOT, ROOT / "docs" / "claims.json")
     )
@@ -384,6 +426,16 @@ def main() -> int:
             tuple(auxiliary_contract["allowed_prefixes"]),
         ),
     ]
+    paths_by_id = {str(node["id"]): str(node["path"]) for node in graph["nodes"]}
+    errors.extend(
+        build_status_prose_errors(
+            {
+                module: safe_public_text(ROOT, ROOT / paths_by_id[module])
+                for module in supported_root_reachable
+                if module in paths_by_id
+            }
+        )
+    )
     require(not errors, "\n".join(errors))
     print(
         "test_root_import_closure: registry exactly matches disk and compact "

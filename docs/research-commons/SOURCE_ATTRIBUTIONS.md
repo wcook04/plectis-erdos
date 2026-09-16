@@ -11,7 +11,7 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `231` curated sources across `21` registered papers and `1276` Lean library files.
+The registry contains `231` curated sources across `21` registered papers and `1340` Lean library files.
 
 Source review states: `bibliography_only`: `74`; `existing_source_closure`: `28`; `external_claim_unverified`: `2`; `implemented_advice`: `3`; `source_verified`: `124`.
 
@@ -25,7 +25,7 @@ Implemented advice whose identity is awaiting confirmation:
 
 - Unmatched citation keys: `0`
 - Bibliography entries awaiting curated links: `0`
-- Lean candidates awaiting review: `117` (`2` direct URL/DOI/arXiv rows; `1009` surname/key rows; categories may overlap).
+- Lean candidates awaiting review: `138` (`2` direct URL/DOI/arXiv rows; `1030` surname/key rows; categories may overlap).
 
 ## Browse by problem
 
@@ -626,7 +626,7 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L176-L241) — lines `176–241`; excerpt `sha256:c61e65e1c2df266220c2b4b4516173bffdef07266e5909c7af5fb1c253f10cec`
 - [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L356-L360) — lines `356–360`; excerpt `sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L1-L100) — lines `1–100`; excerpt `sha256:2869c3db2da5857a4c9fc56be272d52f5a7b1242f3633bd8ed0b01f0da016724`
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L895-L915) — lines `895–915`; excerpt `sha256:e8ae32450cbc9049293293d2f552e05daf3d0a63c406bd2a0968063fa4a14b0d`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L907-L927) — lines `907–927`; excerpt `sha256:e8ae32450cbc9049293293d2f552e05daf3d0a63c406bd2a0968063fa4a14b0d`
 
 <a id="source-erdos1041-ani-degree-seven-candidate-counterexample"></a>
 
@@ -974,26 +974,26 @@ Public implementation or evidence coordinates:
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5441-L5452) — lines `5441–5452`; excerpt `sha256:f4a1bd463f398d1bcf67d88f273df4a9fc0dc2d42efadf85db1519f432cadfb5`
 - [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L927-L929) — lines `927–929`; excerpt `sha256:5f0b6ad6c1a9049d21841bc0ffd6cf7d1b57c719cf79d0d3de5d351e68db74b0`
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1955-L1957) — lines `1955–1957`; excerpt `sha256:11545fdfff7ab6df4b8945ca9bc2918a4915e2536aaf15190e2cac335631084a`
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L968-L973) — lines `968–973`; excerpt `sha256:22ea268bdd5721c6b5d429ddf66e51cb19180e552657b6ad768c856331f15d85`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3104-L3111) — lines `3104–3111`; excerpt `sha256:a82238cd268701b267206867227541e7cda1a1934fffdb55b471779e3192d009`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L982-L987) — lines `982–987`; excerpt `sha256:22ea268bdd5721c6b5d429ddf66e51cb19180e552657b6ad768c856331f15d85`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3109-L3116) — lines `3109–3116`; excerpt `sha256:a82238cd268701b267206867227541e7cda1a1934fffdb55b471779e3192d009`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L1534-L1538) — lines `1534–1538`; excerpt `sha256:fb28c46e0811f1eedcc1ff068cfbd61d4b77f76eda138c7266d21c7f09df0131`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2492-L2496) — lines `2492–2496`; excerpt `sha256:fb28c46e0811f1eedcc1ff068cfbd61d4b77f76eda138c7266d21c7f09df0131`
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2199-L2208) — lines `2199–2208`; excerpt `sha256:c4882fdf71319f1ed7a0391ff52224f397804fd38bcfdb251413db54e5932e13`
 - [paper/269/erdos-269-three-prime-running-lcm.tex](../../paper/269/erdos-269-three-prime-running-lcm.tex#L917-L926) — lines `917–926`; excerpt `sha256:6f6bdf256a236676ce6c92a03d9092bab5c345f88e95a6c794bad28693911f78`
 - [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1418-L1420) — lines `1418–1420`; excerpt `sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed`
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2967-L2969) — lines `2967–2969`; excerpt `sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed`
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1017-L1024) — lines `1017–1024`; excerpt `sha256:43408f7d298cd4d9f67a8bde8169b5811d789752c86ce742c8a1a4f6d69fe4d5`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3274-L3280) — lines `3274–3280`; excerpt `sha256:b995402f056f7f2c322ca73a63c6daabeda8be2242e4999da7b00b8e65a63557`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1029-L1036) — lines `1029–1036`; excerpt `sha256:43408f7d298cd4d9f67a8bde8169b5811d789752c86ce742c8a1a4f6d69fe4d5`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3282-L3288) — lines `3282–3288`; excerpt `sha256:b995402f056f7f2c322ca73a63c6daabeda8be2242e4999da7b00b8e65a63557`
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1530-L1535) — lines `1530–1535`; excerpt `sha256:bb8050123710e542e010c55df517209f1e56e938a1655ebb63df13ec2e2c8c44`
 - [paper/reasoning-parts/erdos1041/back.tex](../../paper/reasoning-parts/erdos1041/back.tex#L14-L16) — lines `14–16`; excerpt `sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L168-L168) — lines `168–168`; excerpt `sha256:e9329131513727827f691a8adcbddeb8844020368e191c429b44ad5d861c23d0`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L145-L151) — lines `145–151`; excerpt `sha256:b995402f056f7f2c322ca73a63c6daabeda8be2242e4999da7b00b8e65a63557`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L90-L90) — lines `90–90`; excerpt `sha256:2acece92cbe12cf8d2122b9eb4aef91cc653e63156de43e4a58c9d754b1ab9b0`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2869-L2869) — lines `2869–2869`; excerpt `sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2877-L2877) — lines `2877–2877`; excerpt `sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L64-L71) — lines `64–71`; excerpt `sha256:a82238cd268701b267206867227541e7cda1a1934fffdb55b471779e3192d009`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L53-L53) — lines `53–53`; excerpt `sha256:d30e9d0fcb43e28ef7b77c3b6bc103a2246ad103c759135d548469c0406c1aac`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L605-L605) — lines `605–605`; excerpt `sha256:4bda527bbb4746f493a2fd85d3a740e85652145cfb20dca2bcc3fa8d61b23ba8`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2736-L2736) — lines `2736–2736`; excerpt `sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2741-L2741) — lines `2741–2741`; excerpt `sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b`
 - [paper/reasoning-parts/erdos251/back.tex](../../paper/reasoning-parts/erdos251/back.tex#L104-L108) — lines `104–108`; excerpt `sha256:fb28c46e0811f1eedcc1ff068cfbd61d4b77f76eda138c7266d21c7f09df0131`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L76-L76) — lines `76–76`; excerpt `sha256:9f04beaac5e7dd3af0894b6b61a24c8fb6607b9301597da0cf33784a2b105954`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L1720-L1720) — lines `1720–1720`; excerpt `sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b`
@@ -1008,14 +1008,14 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:135](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L135-L135)
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:881](../../paper/1049/erdos-1049-rational-base-lambert.tex#L881-L881)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:893](../../paper/1049/erdos-1049-rational-base-lambert.tex#L893-L893)
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:141](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L141-L141)
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:1366](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L1366-L1366)
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:684](../../paper/269/erdos-269-three-prime-running-lcm.tex#L684-L684)
 - `erdos-68-factorial-denominator-irrationality`: [cite at paper/68/erdos-68-factorial-denominator-irrationality.tex:92](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L92-L92)
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:211](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L211-L211), [cite at paper/reasoning-parts/erdos1041/core.tex:168](../../paper/reasoning-parts/erdos1041/core.tex#L168-L168)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:115](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L115-L115), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2894](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2894-L2894), [cite at paper/reasoning-parts/erdos1049/core.tex:90](../../paper/reasoning-parts/erdos1049/core.tex#L90-L90), [cite at paper/reasoning-parts/erdos1049/core.tex:2869](../../paper/reasoning-parts/erdos1049/core.tex#L2869-L2869)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:95](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L95-L95), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:647](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L647-L647), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2778](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2778-L2778), [cite at paper/reasoning-parts/erdos243/core.tex:53](../../paper/reasoning-parts/erdos243/core.tex#L53-L53), [cite at paper/reasoning-parts/erdos243/core.tex:605](../../paper/reasoning-parts/erdos243/core.tex#L605-L605), [cite at paper/reasoning-parts/erdos243/core.tex:2736](../../paper/reasoning-parts/erdos243/core.tex#L2736-L2736)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:115](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L115-L115), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2902](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2902-L2902), [cite at paper/reasoning-parts/erdos1049/core.tex:90](../../paper/reasoning-parts/erdos1049/core.tex#L90-L90), [cite at paper/reasoning-parts/erdos1049/core.tex:2877](../../paper/reasoning-parts/erdos1049/core.tex#L2877-L2877)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:95](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L95-L95), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:647](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L647-L647), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2783](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2783-L2783), [cite at paper/reasoning-parts/erdos243/core.tex:53](../../paper/reasoning-parts/erdos243/core.tex#L53-L53), [cite at paper/reasoning-parts/erdos243/core.tex:605](../../paper/reasoning-parts/erdos243/core.tex#L605-L605), [cite at paper/reasoning-parts/erdos243/core.tex:2741](../../paper/reasoning-parts/erdos243/core.tex#L2741-L2741)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:197](../../paper/archive/erdos249-257-main-paper.tex#L197-L197), [cite at paper/archive/erdos249-257-main-paper.tex:4524](../../paper/archive/erdos249-257-main-paper.tex#L4524-L4524)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:110](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L110-L110), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1754](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1754-L1754), [cite at paper/reasoning-parts/erdos251/core.tex:76](../../paper/reasoning-parts/erdos251/core.tex#L76-L76), [cite at paper/reasoning-parts/erdos251/core.tex:1720](../../paper/reasoning-parts/erdos251/core.tex#L1720-L1720)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:105](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L105-L105), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1719](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1719-L1719), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1735](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1735-L1735), [cite at paper/reasoning-parts/erdos269/core.tex:54](../../paper/reasoning-parts/erdos269/core.tex#L54-L54), [cite at paper/reasoning-parts/erdos269/core.tex:1668](../../paper/reasoning-parts/erdos269/core.tex#L1668-L1668), [cite at paper/reasoning-parts/erdos269/extended\_record.tex:15](../../paper/reasoning-parts/erdos269/extended_record.tex#L15-L15)
@@ -1351,18 +1351,18 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/reasoning-parts/erdos249/a249\_invent.tex](../../paper/reasoning-parts/erdos249/a249_invent.tex#L488-L501) — lines `488–501`; excerpt `sha256:34b77dd2b2a049e25b5726927638e2f80be6a1c9ee608951ea6686641d463215`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7507-L7513) — lines `7507–7513`; excerpt `sha256:f37eea22c3c2e50c9106c29e8480d8c2ab20d0f3f59a7faec27317f14c9ea473`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7516-L7522) — lines `7516–7522`; excerpt `sha256:f37eea22c3c2e50c9106c29e8480d8c2ab20d0f3f59a7faec27317f14c9ea473`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L839-L845) — lines `839–845`; excerpt `sha256:f37eea22c3c2e50c9106c29e8480d8c2ab20d0f3f59a7faec27317f14c9ea473`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7513-L7519) — lines `7513–7519`; excerpt `sha256:e35aaa04403be003a4b96499d83a53616643be3a1bc6ec591562551be6db9bf5`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7522-L7528) — lines `7522–7528`; excerpt `sha256:e35aaa04403be003a4b96499d83a53616643be3a1bc6ec591562551be6db9bf5`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L845-L851) — lines `845–851`; excerpt `sha256:e35aaa04403be003a4b96499d83a53616643be3a1bc6ec591562551be6db9bf5`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7519-L7526) — lines `7519–7526`; excerpt `sha256:4ca7b4c0db1de3a40807dc6214421cb78ee688d52511a96a2204550ee24c19a4`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7528-L7535) — lines `7528–7535`; excerpt `sha256:4ca7b4c0db1de3a40807dc6214421cb78ee688d52511a96a2204550ee24c19a4`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L851-L858) — lines `851–858`; excerpt `sha256:4ca7b4c0db1de3a40807dc6214421cb78ee688d52511a96a2204550ee24c19a4`
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L7300-L7305) — lines `7300–7305`; excerpt `sha256:0b4989fd169ff765ea3d5b38ef8e6aea0f4cd59a60283d86861edd55ca023917`
 - [paper/reasoning-parts/erdos257/a257\_p5.tex](../../paper/reasoning-parts/erdos257/a257_p5.tex#L511-L516) — lines `511–516`; excerpt `sha256:0b4989fd169ff765ea3d5b38ef8e6aea0f4cd59a60283d86861edd55ca023917`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6275](../../paper/249/erdos249-totient-reasoning-surface.tex#L6275-L6275), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6277](../../paper/249/erdos249-totient-reasoning-surface.tex#L6277-L6277), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6279](../../paper/249/erdos249-totient-reasoning-surface.tex#L6279-L6279), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:495](../../paper/reasoning-parts/erdos249/a249_invent.tex#L495-L495), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:497](../../paper/reasoning-parts/erdos249/a249_invent.tex#L497-L497), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:499](../../paper/reasoning-parts/erdos249/a249_invent.tex#L499-L499)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6279](../../paper/249/erdos249-totient-reasoning-surface.tex#L6279-L6279), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6281](../../paper/249/erdos249-totient-reasoning-surface.tex#L6281-L6281), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6283](../../paper/249/erdos249-totient-reasoning-surface.tex#L6283-L6283), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:495](../../paper/reasoning-parts/erdos249/a249_invent.tex#L495-L495), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:497](../../paper/reasoning-parts/erdos249/a249_invent.tex#L497-L497), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:499](../../paper/reasoning-parts/erdos249/a249_invent.tex#L499-L499)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:6244](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L6244-L6244), [cite at paper/reasoning-parts/erdos257/a257\_invent.tex:163](../../paper/reasoning-parts/erdos257/a257_invent.tex#L163-L163)
 
 <a id="source-proposed-direct-595203db1f6891"></a>
@@ -1387,7 +1387,7 @@ Public implementation or evidence coordinates:
 
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L25-L47) — lines `25–47`; excerpt `sha256:1964e6ddeec8bb90c934b89b878d1d1a1472a86d6d1e23dc0ac35363484a9012`
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L871-L877) — lines `871–877`; excerpt `sha256:ff2700e49a422b5e8a3854664a84323ebfee647eb4822c2d7783e1204f362294`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7481-L7487) — lines `7481–7487`; excerpt `sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7490-L7496) — lines `7490–7496`; excerpt `sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L813-L819) — lines `813–819`; excerpt `sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712`
 
 Paper citation usages:
@@ -1589,13 +1589,13 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3214-L3223) — lines `3214–3223`; excerpt `sha256:559ea13819baf75b04cc9d7303f6c7c0c031c962cc19c07bc95ad20eac0a8832`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3222-L3231) — lines `3222–3231`; excerpt `sha256:559ea13819baf75b04cc9d7303f6c7c0c031c962cc19c07bc95ad20eac0a8832`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L85-L94) — lines `85–94`; excerpt `sha256:559ea13819baf75b04cc9d7303f6c7c0c031c962cc19c07bc95ad20eac0a8832`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2794-L2794) — lines `2794–2794`; excerpt `sha256:255e468ab972fcdcc21a815a58d107099746c2882b841d319f2239751a44e4fe`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2802-L2802) — lines `2802–2802`; excerpt `sha256:255e468ab972fcdcc21a815a58d107099746c2882b841d319f2239751a44e4fe`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2819](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2819-L2819), [cite at paper/reasoning-parts/erdos1049/core.tex:2794](../../paper/reasoning-parts/erdos1049/core.tex#L2794-L2794)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2827](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2827-L2827), [cite at paper/reasoning-parts/erdos1049/core.tex:2802](../../paper/reasoning-parts/erdos1049/core.tex#L2802-L2802)
 
 <a id="source-source-0aca0e5e4e03c0"></a>
 
@@ -1710,12 +1710,12 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7497-L7501) — lines `7497–7501`; excerpt `sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7506-L7510) — lines `7506–7510`; excerpt `sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L829-L833) — lines `829–833`; excerpt `sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6181](../../paper/249/erdos249-totient-reasoning-surface.tex#L6181-L6181), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:401](../../paper/reasoning-parts/erdos249/a249_invent.tex#L401-L401)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6185](../../paper/249/erdos249-totient-reasoning-surface.tex#L6185-L6185), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:401](../../paper/reasoning-parts/erdos249/a249_invent.tex#L401-L401)
 
 <a id="source-source-0ec7ca07508557"></a>
 
@@ -1817,7 +1817,7 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L858-L862) — lines `858–862`; excerpt `sha256:6a55d9dd03c7696ffe1aa2c5a2737a8f049a95714e471bb30b7e43314e7506a9`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7422-L7426) — lines `7422–7426`; excerpt `sha256:a550ec768381cedd7a6eeb6b4523783c7294044d1c637ec4e2264bb7d9a4439e`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7431-L7435) — lines `7431–7435`; excerpt `sha256:a550ec768381cedd7a6eeb6b4523783c7294044d1c637ec4e2264bb7d9a4439e`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L754-L758) — lines `754–758`; excerpt `sha256:a550ec768381cedd7a6eeb6b4523783c7294044d1c637ec4e2264bb7d9a4439e`
 
 Paper citation usages:
@@ -1860,8 +1860,8 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5315-L5318) — lines `5315–5318`; excerpt `sha256:89ad0eb6d9dac773cb478c008d67b4ac6ad8b50cdf587f23feda6a8d1825acf6`
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L943-L947) — lines `943–947`; excerpt `sha256:8d04873393ce01957978e7bf822e3411f2a23947e1a44f04f81a2db2f17c6332`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3062-L3066) — lines `3062–3066`; excerpt `sha256:8d04873393ce01957978e7bf822e3411f2a23947e1a44f04f81a2db2f17c6332`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L957-L961) — lines `957–961`; excerpt `sha256:8d04873393ce01957978e7bf822e3411f2a23947e1a44f04f81a2db2f17c6332`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3067-L3071) — lines `3067–3071`; excerpt `sha256:8d04873393ce01957978e7bf822e3411f2a23947e1a44f04f81a2db2f17c6332`
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L868-L871) — lines `868–871`; excerpt `sha256:e79adb56b67cd11616132762fbeadb6b20811b0217440e25c49e7a4f695da264`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L1460-L1464) — lines `1460–1464`; excerpt `sha256:b15ff1f4f868239639eebe6f5a89f57685df4652b87c84a85444a252f4620e9d`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2398-L2402) — lines `2398–2402`; excerpt `sha256:b15ff1f4f868239639eebe6f5a89f57685df4652b87c84a85444a252f4620e9d`
@@ -1874,7 +1874,7 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L74-L74) — lines `74–74`; excerpt `sha256:4c3c5dd1c1ebb3509e07a046edfac9dffdc9e0e6b050cba5793b0f60efd13cf3`
 - [paper/reasoning-parts/erdos269/back.tex](../../paper/reasoning-parts/erdos269/back.tex#L5-L11) — lines `5–11`; excerpt `sha256:9b9152e1a2b6436e5ae1334e4d32ed81c874388f64e71686751398f2f877fb38`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L53-L53) — lines `53–53`; excerpt `sha256:d0733b0ee5c6accbfe80049f5f21794ad925c50ddd26f96b9cfd62ade1f3a3b8`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7434-L7438) — lines `7434–7438`; excerpt `sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7443-L7447) — lines `7443–7447`; excerpt `sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L766-L770) — lines `766–770`; excerpt `sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03`
 
 Paper citation usages:
@@ -1936,13 +1936,13 @@ Public implementation or evidence coordinates:
 - [lean/Erdos249257/AllBaseTotientKernel.lean](../../lean/Erdos249257/AllBaseTotientKernel.lean#L642-L644) — lines `642–644`; excerpt `sha256:f2847f43a004d01715e61f5510732df2e0014e197cb1796803035180a98f88f6`
 - [lean/Erdos249257/TotientKernelConditional.lean](../../lean/Erdos249257/TotientKernelConditional.lean#L5-L18) — lines `5–18`; excerpt `sha256:bb1cbd9adcabf879040179a1dda4145da0903770eb95510584365a88131340ba`
 - [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L525-L525) — lines `525–525`; excerpt `sha256:38d469369b6e9917995a1f40cb4505819f82980a74a6ecb33f67a666d8ff0097`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7418-L7422) — lines `7418–7422`; excerpt `sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7427-L7431) — lines `7427–7431`; excerpt `sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L750-L754) — lines `750–754`; excerpt `sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c`
 
 Paper citation usages:
 
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:65](../../paper/249/erdos-249-binary-totient-series.tex#L65-L65), [cite at paper/249/erdos-249-binary-totient-series.tex:285](../../paper/249/erdos-249-binary-totient-series.tex#L285-L285), [cite at paper/249/erdos-249-binary-totient-series.tex:597](../../paper/249/erdos-249-binary-totient-series.tex#L597-L597)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:262](../../paper/249/erdos249-totient-reasoning-surface.tex#L262-L262), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5234](../../paper/249/erdos249-totient-reasoning-surface.tex#L5234-L5234), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5323](../../paper/249/erdos249-totient-reasoning-surface.tex#L5323-L5323), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:31](../../paper/reasoning-parts/erdos249/a249_front.tex#L31-L31), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:436](../../paper/reasoning-parts/erdos249/a249_p4.tex#L436-L436), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:525](../../paper/reasoning-parts/erdos249/a249_p4.tex#L525-L525)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:262](../../paper/249/erdos249-totient-reasoning-surface.tex#L262-L262), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5238](../../paper/249/erdos249-totient-reasoning-surface.tex#L5238-L5238), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5327](../../paper/249/erdos249-totient-reasoning-surface.tex#L5327-L5327), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:31](../../paper/reasoning-parts/erdos249/a249_front.tex#L31-L31), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:436](../../paper/reasoning-parts/erdos249/a249_p4.tex#L436-L436), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:525](../../paper/reasoning-parts/erdos249/a249_p4.tex#L525-L525)
 
 <a id="source-source-120bebce1ffe8c"></a>
 
@@ -1974,28 +1974,28 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L990-L996) — lines `990–996`; excerpt `sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3166-L3172) — lines `3166–3172`; excerpt `sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1002-L1008) — lines `1002–1008`; excerpt `sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3174-L3180) — lines `3174–3180`; excerpt `sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L37-L43) — lines `37–43`; excerpt `sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L84-L84) — lines `84–84`; excerpt `sha256:db93d2af68dcea339033ff0bf8e8df04e6b481b0765913610ddb8209a0f70abe`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L233-L233) — lines `233–233`; excerpt `sha256:6f601bf1d1572f94d23aa1f1693395b6dcd7a894654bec48dd6afce44897ce6b`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L272-L272) — lines `272–272`; excerpt `sha256:578cf36c905631e1b76289ea892e06b4546c4ef63f52f23ebeacfbaca6933a5b`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L448-L448) — lines `448–448`; excerpt `sha256:37cd72a6efc5eb3acb6952cb0f3d42aa44ead04857cca12a24a5735e373cca79`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L472-L472) — lines `472–472`; excerpt `sha256:db231b20665b729f8c7ec2e7f89904ad755b2b3a9ecbfd689a4ced32a99224bb`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L473-L473) — lines `473–473`; excerpt `sha256:a0396c7789ce596deda34f77b100163452fc9398ef65e1308aaa35c78a672fc0`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L483-L483) — lines `483–483`; excerpt `sha256:e6e2039e5a33ba1aaa7cdbfe71df15de66d095edca131fb33ce483539843af7e`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L513-L513) — lines `513–513`; excerpt `sha256:c64b3006eebab2c8cd1bcd1534baa567d51d8bd516b0efb846b8857b40d5d892`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L546-L546) — lines `546–546`; excerpt `sha256:b56e99939457c23e3fa356d1919c8071199573269707da69a7096e7eccdf9304`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L559-L559) — lines `559–559`; excerpt `sha256:306ea250ac23a5042f85be2322d4da1fd831b9b0b09106fd47e55b4f38fe462d`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L590-L590) — lines `590–590`; excerpt `sha256:08831681946cb587743ea5652cd44c5d40c121c26979ec401714b5e612a28994`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L924-L924) — lines `924–924`; excerpt `sha256:299421710fa8f15bd438887339c9a7660def9f820976a4c72622959641f9eb73`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L955-L955) — lines `955–955`; excerpt `sha256:32c9e33a6ee7b0d3f3571013f0b5b112589809cbdc59d45b9d9d1a0c364a7b48`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L968-L968) — lines `968–968`; excerpt `sha256:9f19f0b630bd0451eabe2e109df547555b2111948d220cc2c8516ce815b2fed3`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1204-L1204) — lines `1204–1204`; excerpt `sha256:3066de01b9b99a44fe58c88624ccd5b57084b1de5c0e2c2f4799ed6d9d1835bf`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1247-L1247) — lines `1247–1247`; excerpt `sha256:523ececf7f27097e12aac8c6cc4eb679b4311650483bcb0d9697ff8fca228584`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1736-L1736) — lines `1736–1736`; excerpt `sha256:60bc260e6180f4e4c28004912f1df4f348d7d287ce7e7a48d57e26f4120096fa`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1898-L1898) — lines `1898–1898`; excerpt `sha256:0a87fd3031fa5ae394fff12555a14f74004112a45b47b8940ea53deec9e622ec`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2164-L2164) — lines `2164–2164`; excerpt `sha256:e445fa0250477e2d9dfd5398015bc17c9a86914dcf814404ec0df31a5c949f0a`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L454-L454) — lines `454–454`; excerpt `sha256:37cd72a6efc5eb3acb6952cb0f3d42aa44ead04857cca12a24a5735e373cca79`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L478-L478) — lines `478–478`; excerpt `sha256:db231b20665b729f8c7ec2e7f89904ad755b2b3a9ecbfd689a4ced32a99224bb`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L479-L479) — lines `479–479`; excerpt `sha256:a0396c7789ce596deda34f77b100163452fc9398ef65e1308aaa35c78a672fc0`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L489-L489) — lines `489–489`; excerpt `sha256:e6e2039e5a33ba1aaa7cdbfe71df15de66d095edca131fb33ce483539843af7e`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L519-L519) — lines `519–519`; excerpt `sha256:c64b3006eebab2c8cd1bcd1534baa567d51d8bd516b0efb846b8857b40d5d892`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L552-L552) — lines `552–552`; excerpt `sha256:b56e99939457c23e3fa356d1919c8071199573269707da69a7096e7eccdf9304`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L565-L565) — lines `565–565`; excerpt `sha256:306ea250ac23a5042f85be2322d4da1fd831b9b0b09106fd47e55b4f38fe462d`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L596-L596) — lines `596–596`; excerpt `sha256:08831681946cb587743ea5652cd44c5d40c121c26979ec401714b5e612a28994`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L930-L930) — lines `930–930`; excerpt `sha256:299421710fa8f15bd438887339c9a7660def9f820976a4c72622959641f9eb73`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L963-L963) — lines `963–963`; excerpt `sha256:32c9e33a6ee7b0d3f3571013f0b5b112589809cbdc59d45b9d9d1a0c364a7b48`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L976-L976) — lines `976–976`; excerpt `sha256:9f19f0b630bd0451eabe2e109df547555b2111948d220cc2c8516ce815b2fed3`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1212-L1212) — lines `1212–1212`; excerpt `sha256:3066de01b9b99a44fe58c88624ccd5b57084b1de5c0e2c2f4799ed6d9d1835bf`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1255-L1255) — lines `1255–1255`; excerpt `sha256:523ececf7f27097e12aac8c6cc4eb679b4311650483bcb0d9697ff8fca228584`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1744-L1744) — lines `1744–1744`; excerpt `sha256:60bc260e6180f4e4c28004912f1df4f348d7d287ce7e7a48d57e26f4120096fa`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1906-L1906) — lines `1906–1906`; excerpt `sha256:0a87fd3031fa5ae394fff12555a14f74004112a45b47b8940ea53deec9e622ec`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2172-L2172) — lines `2172–2172`; excerpt `sha256:e445fa0250477e2d9dfd5398015bc17c9a86914dcf814404ec0df31a5c949f0a`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L768-L776) — lines `768–776`; excerpt `sha256:c1306309b26f1d604e32b43b332f15c7a58dba1c94c99ff03ab31fac2cb0d8d9`
 - [paper/reasoning-parts/erdos257/a257\_p4.tex](../../paper/reasoning-parts/erdos257/a257_p4.tex#L102-L103) — lines `102–103`; excerpt `sha256:047bb82a2e1f785ee6b050744f7ba743f2870d2b45b3d41d03971bcd38d1c72b`
 - [lean/ErdosProblems/Erdos1049/RationalBaseContour.lean](../../lean/ErdosProblems/Erdos1049/RationalBaseContour.lean#L8-L36) — lines `8–36`; excerpt `sha256:580a0329d38f93ac21807ae3e4b5576bc7cc0a60f32dc890b169224bff93a983`
@@ -2008,8 +2008,8 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:71](../../paper/1049/erdos-1049-rational-base-lambert.tex#L71-L71), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:98](../../paper/1049/erdos-1049-rational-base-lambert.tex#L98-L98), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:100](../../paper/1049/erdos-1049-rational-base-lambert.tex#L100-L100), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:137](../../paper/1049/erdos-1049-rational-base-lambert.tex#L137-L137), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:165](../../paper/1049/erdos-1049-rational-base-lambert.tex#L165-L165), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:171](../../paper/1049/erdos-1049-rational-base-lambert.tex#L171-L171), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:174](../../paper/1049/erdos-1049-rational-base-lambert.tex#L174-L174), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:215](../../paper/1049/erdos-1049-rational-base-lambert.tex#L215-L215), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:253](../../paper/1049/erdos-1049-rational-base-lambert.tex#L253-L253), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:331](../../paper/1049/erdos-1049-rational-base-lambert.tex#L331-L331), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:383](../../paper/1049/erdos-1049-rational-base-lambert.tex#L383-L383)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:116](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L116-L116), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:258](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L258-L258), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:297](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L297-L297), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:423](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L423-L423), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:426](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L426-L426), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:473](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L473-L473), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:497](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L497-L497), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:498](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L498-L498), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:508](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L508-L508), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:538](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L538-L538), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:553](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L553-L553), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:571](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L571-L571), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:583](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L583-L583), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:584](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L584-L584), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:615](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L615-L615), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:703](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L703-L703), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:731](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L731-L732), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:949](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L949-L949), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:950](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L950-L950), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:955](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L955-L955), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:980](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L980-L980), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:993](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L993-L993), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1218](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1218-L1218), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1229](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1229-L1229), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1272](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1272-L1272), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1761](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1761-L1761), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1923](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1923-L1923), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2189](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2189-L2189), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3213](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3213-L3213), [cite at paper/reasoning-parts/erdos1049/back.tex:84](../../paper/reasoning-parts/erdos1049/back.tex#L84-L84), [cite at paper/reasoning-parts/erdos1049/core.tex:91](../../paper/reasoning-parts/erdos1049/core.tex#L91-L91), [cite at paper/reasoning-parts/erdos1049/core.tex:233](../../paper/reasoning-parts/erdos1049/core.tex#L233-L233), [cite at paper/reasoning-parts/erdos1049/core.tex:272](../../paper/reasoning-parts/erdos1049/core.tex#L272-L272), [cite at paper/reasoning-parts/erdos1049/core.tex:398](../../paper/reasoning-parts/erdos1049/core.tex#L398-L398), [cite at paper/reasoning-parts/erdos1049/core.tex:401](../../paper/reasoning-parts/erdos1049/core.tex#L401-L401), [cite at paper/reasoning-parts/erdos1049/core.tex:448](../../paper/reasoning-parts/erdos1049/core.tex#L448-L448), [cite at paper/reasoning-parts/erdos1049/core.tex:472](../../paper/reasoning-parts/erdos1049/core.tex#L472-L472), [cite at paper/reasoning-parts/erdos1049/core.tex:473](../../paper/reasoning-parts/erdos1049/core.tex#L473-L473), [cite at paper/reasoning-parts/erdos1049/core.tex:483](../../paper/reasoning-parts/erdos1049/core.tex#L483-L483), [cite at paper/reasoning-parts/erdos1049/core.tex:513](../../paper/reasoning-parts/erdos1049/core.tex#L513-L513), [cite at paper/reasoning-parts/erdos1049/core.tex:528](../../paper/reasoning-parts/erdos1049/core.tex#L528-L528), [cite at paper/reasoning-parts/erdos1049/core.tex:546](../../paper/reasoning-parts/erdos1049/core.tex#L546-L546), [cite at paper/reasoning-parts/erdos1049/core.tex:558](../../paper/reasoning-parts/erdos1049/core.tex#L558-L558), [cite at paper/reasoning-parts/erdos1049/core.tex:559](../../paper/reasoning-parts/erdos1049/core.tex#L559-L559), [cite at paper/reasoning-parts/erdos1049/core.tex:590](../../paper/reasoning-parts/erdos1049/core.tex#L590-L590), [cite at paper/reasoning-parts/erdos1049/core.tex:678](../../paper/reasoning-parts/erdos1049/core.tex#L678-L678), [cite at paper/reasoning-parts/erdos1049/core.tex:706](../../paper/reasoning-parts/erdos1049/core.tex#L706-L707), [cite at paper/reasoning-parts/erdos1049/core.tex:924](../../paper/reasoning-parts/erdos1049/core.tex#L924-L924), [cite at paper/reasoning-parts/erdos1049/core.tex:925](../../paper/reasoning-parts/erdos1049/core.tex#L925-L925), [cite at paper/reasoning-parts/erdos1049/core.tex:930](../../paper/reasoning-parts/erdos1049/core.tex#L930-L930), [cite at paper/reasoning-parts/erdos1049/core.tex:955](../../paper/reasoning-parts/erdos1049/core.tex#L955-L955), [cite at paper/reasoning-parts/erdos1049/core.tex:968](../../paper/reasoning-parts/erdos1049/core.tex#L968-L968), [cite at paper/reasoning-parts/erdos1049/core.tex:1193](../../paper/reasoning-parts/erdos1049/core.tex#L1193-L1193), [cite at paper/reasoning-parts/erdos1049/core.tex:1204](../../paper/reasoning-parts/erdos1049/core.tex#L1204-L1204), [cite at paper/reasoning-parts/erdos1049/core.tex:1247](../../paper/reasoning-parts/erdos1049/core.tex#L1247-L1247), [cite at paper/reasoning-parts/erdos1049/core.tex:1736](../../paper/reasoning-parts/erdos1049/core.tex#L1736-L1736), [cite at paper/reasoning-parts/erdos1049/core.tex:1898](../../paper/reasoning-parts/erdos1049/core.tex#L1898-L1898), [cite at paper/reasoning-parts/erdos1049/core.tex:2164](../../paper/reasoning-parts/erdos1049/core.tex#L2164-L2164)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:72](../../paper/1049/erdos-1049-rational-base-lambert.tex#L72-L72), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:99](../../paper/1049/erdos-1049-rational-base-lambert.tex#L99-L99), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:101](../../paper/1049/erdos-1049-rational-base-lambert.tex#L101-L101), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:138](../../paper/1049/erdos-1049-rational-base-lambert.tex#L138-L138), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:166](../../paper/1049/erdos-1049-rational-base-lambert.tex#L166-L166), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:172](../../paper/1049/erdos-1049-rational-base-lambert.tex#L172-L172), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:175](../../paper/1049/erdos-1049-rational-base-lambert.tex#L175-L175), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:216](../../paper/1049/erdos-1049-rational-base-lambert.tex#L216-L216), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:254](../../paper/1049/erdos-1049-rational-base-lambert.tex#L254-L254), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:326](../../paper/1049/erdos-1049-rational-base-lambert.tex#L326-L326), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:343](../../paper/1049/erdos-1049-rational-base-lambert.tex#L343-L343), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:395](../../paper/1049/erdos-1049-rational-base-lambert.tex#L395-L395)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:116](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L116-L116), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:258](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L258-L258), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:297](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L297-L297), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:423](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L423-L423), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:426](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L426-L426), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:479](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L479-L479), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:503](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L503-L503), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:504](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L504-L504), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:514](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L514-L514), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:544](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L544-L544), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:559](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L559-L559), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:577](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L577-L577), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:589](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L589-L589), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:590](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L590-L590), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:621](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L621-L621), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:709](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L709-L709), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:737](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L737-L738), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:955](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L955-L955), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:956](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L956-L956), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:961](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L961-L961), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:988](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L988-L988), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1001](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1001-L1001), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1226](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1226-L1226), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1237](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1237-L1237), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1280](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1280-L1280), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1769](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1769-L1769), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1931](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1931-L1931), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2197](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2197-L2197), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3221](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3221-L3221), [cite at paper/reasoning-parts/erdos1049/back.tex:84](../../paper/reasoning-parts/erdos1049/back.tex#L84-L84), [cite at paper/reasoning-parts/erdos1049/core.tex:91](../../paper/reasoning-parts/erdos1049/core.tex#L91-L91), [cite at paper/reasoning-parts/erdos1049/core.tex:233](../../paper/reasoning-parts/erdos1049/core.tex#L233-L233), [cite at paper/reasoning-parts/erdos1049/core.tex:272](../../paper/reasoning-parts/erdos1049/core.tex#L272-L272), [cite at paper/reasoning-parts/erdos1049/core.tex:398](../../paper/reasoning-parts/erdos1049/core.tex#L398-L398), [cite at paper/reasoning-parts/erdos1049/core.tex:401](../../paper/reasoning-parts/erdos1049/core.tex#L401-L401), [cite at paper/reasoning-parts/erdos1049/core.tex:454](../../paper/reasoning-parts/erdos1049/core.tex#L454-L454), [cite at paper/reasoning-parts/erdos1049/core.tex:478](../../paper/reasoning-parts/erdos1049/core.tex#L478-L478), [cite at paper/reasoning-parts/erdos1049/core.tex:479](../../paper/reasoning-parts/erdos1049/core.tex#L479-L479), [cite at paper/reasoning-parts/erdos1049/core.tex:489](../../paper/reasoning-parts/erdos1049/core.tex#L489-L489), [cite at paper/reasoning-parts/erdos1049/core.tex:519](../../paper/reasoning-parts/erdos1049/core.tex#L519-L519), [cite at paper/reasoning-parts/erdos1049/core.tex:534](../../paper/reasoning-parts/erdos1049/core.tex#L534-L534), [cite at paper/reasoning-parts/erdos1049/core.tex:552](../../paper/reasoning-parts/erdos1049/core.tex#L552-L552), [cite at paper/reasoning-parts/erdos1049/core.tex:564](../../paper/reasoning-parts/erdos1049/core.tex#L564-L564), [cite at paper/reasoning-parts/erdos1049/core.tex:565](../../paper/reasoning-parts/erdos1049/core.tex#L565-L565), [cite at paper/reasoning-parts/erdos1049/core.tex:596](../../paper/reasoning-parts/erdos1049/core.tex#L596-L596), [cite at paper/reasoning-parts/erdos1049/core.tex:684](../../paper/reasoning-parts/erdos1049/core.tex#L684-L684), [cite at paper/reasoning-parts/erdos1049/core.tex:712](../../paper/reasoning-parts/erdos1049/core.tex#L712-L713), [cite at paper/reasoning-parts/erdos1049/core.tex:930](../../paper/reasoning-parts/erdos1049/core.tex#L930-L930), [cite at paper/reasoning-parts/erdos1049/core.tex:931](../../paper/reasoning-parts/erdos1049/core.tex#L931-L931), [cite at paper/reasoning-parts/erdos1049/core.tex:936](../../paper/reasoning-parts/erdos1049/core.tex#L936-L936), [cite at paper/reasoning-parts/erdos1049/core.tex:963](../../paper/reasoning-parts/erdos1049/core.tex#L963-L963), [cite at paper/reasoning-parts/erdos1049/core.tex:976](../../paper/reasoning-parts/erdos1049/core.tex#L976-L976), [cite at paper/reasoning-parts/erdos1049/core.tex:1201](../../paper/reasoning-parts/erdos1049/core.tex#L1201-L1201), [cite at paper/reasoning-parts/erdos1049/core.tex:1212](../../paper/reasoning-parts/erdos1049/core.tex#L1212-L1212), [cite at paper/reasoning-parts/erdos1049/core.tex:1255](../../paper/reasoning-parts/erdos1049/core.tex#L1255-L1255), [cite at paper/reasoning-parts/erdos1049/core.tex:1744](../../paper/reasoning-parts/erdos1049/core.tex#L1744-L1744), [cite at paper/reasoning-parts/erdos1049/core.tex:1906](../../paper/reasoning-parts/erdos1049/core.tex#L1906-L1906), [cite at paper/reasoning-parts/erdos1049/core.tex:2172](../../paper/reasoning-parts/erdos1049/core.tex#L2172-L2172)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1020](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1020-L1020), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:5656](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L5656-L5656), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:770](../../paper/reasoning-parts/erdos257/a257_front.tex#L770-L770), [cite at paper/reasoning-parts/erdos257/a257\_p4.tex:102](../../paper/reasoning-parts/erdos257/a257_p4.tex#L102-L102)
 
 <a id="source-source-169c3d67838965"></a>
@@ -2030,14 +2030,14 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3200-L3207) — lines `3200–3207`; excerpt `sha256:2e85c59828644ad3c8fb345c8b459c4f9c86946c02a53b466028be600adf3dcf`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3208-L3215) — lines `3208–3215`; excerpt `sha256:2e85c59828644ad3c8fb345c8b459c4f9c86946c02a53b466028be600adf3dcf`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L71-L78) — lines `71–78`; excerpt `sha256:2e85c59828644ad3c8fb345c8b459c4f9c86946c02a53b466028be600adf3dcf`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L267-L267) — lines `267–267`; excerpt `sha256:49510e1a864a805185edeb7b4d7df442d89a7ba8c9b353c4e285195caf16aa5e`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L950-L950) — lines `950–950`; excerpt `sha256:fbce7f2db65bdd8d9f109301fb1bc86d09291626cd9714baf8b44fb0defea1c4`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L958-L958) — lines `958–958`; excerpt `sha256:fbce7f2db65bdd8d9f109301fb1bc86d09291626cd9714baf8b44fb0defea1c4`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:292](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L292-L292), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:975](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L975-L975), [cite at paper/reasoning-parts/erdos1049/core.tex:267](../../paper/reasoning-parts/erdos1049/core.tex#L267-L267), [cite at paper/reasoning-parts/erdos1049/core.tex:950](../../paper/reasoning-parts/erdos1049/core.tex#L950-L950)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:292](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L292-L292), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:983](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L983-L983), [cite at paper/reasoning-parts/erdos1049/core.tex:267](../../paper/reasoning-parts/erdos1049/core.tex#L267-L267), [cite at paper/reasoning-parts/erdos1049/core.tex:958](../../paper/reasoning-parts/erdos1049/core.tex#L958-L958)
 
 <a id="source-source-1713b9ad6350bd"></a>
 
@@ -2057,7 +2057,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3111-L3117) — lines `3111–3117`; excerpt `sha256:631c8248ffd17035b17d23474e85ff6ce39cda1d8357ecb3ddcbd2ad433513b3`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3116-L3122) — lines `3116–3122`; excerpt `sha256:631c8248ffd17035b17d23474e85ff6ce39cda1d8357ecb3ddcbd2ad433513b3`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L71-L77) — lines `71–77`; excerpt `sha256:631c8248ffd17035b17d23474e85ff6ce39cda1d8357ecb3ddcbd2ad433513b3`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L699-L699) — lines `699–699`; excerpt `sha256:adfa536049be0e74065800037ce0ba5a0d022d83f1cf5dfdd9d4c0dda34e205f`
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L741-L741) — lines `741–741`; excerpt `sha256:adfa536049be0e74065800037ce0ba5a0d022d83f1cf5dfdd9d4c0dda34e205f`
@@ -2080,14 +2080,14 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3223-L3228) — lines `3223–3228`; excerpt `sha256:b75b67635c18f80de0c876644a0d855886ffebd57e78291c56d2b76c6f5fe91f`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3231-L3236) — lines `3231–3236`; excerpt `sha256:b75b67635c18f80de0c876644a0d855886ffebd57e78291c56d2b76c6f5fe91f`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L94-L99) — lines `94–99`; excerpt `sha256:b75b67635c18f80de0c876644a0d855886ffebd57e78291c56d2b76c6f5fe91f`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L236-L236) — lines `236–236`; excerpt `sha256:8adebc999545c9df48229cb147487a72adb2aada21714a86818b1e4081a89c83`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1897-L1897) — lines `1897–1897`; excerpt `sha256:5c49ddfe53b2fd3db9c587f08d6f0191b7c956806bdaaf388250ce58e1b8f4dd`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1905-L1905) — lines `1905–1905`; excerpt `sha256:5c49ddfe53b2fd3db9c587f08d6f0191b7c956806bdaaf388250ce58e1b8f4dd`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:261](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L261-L261), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1922](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1922-L1922), [cite at paper/reasoning-parts/erdos1049/core.tex:236](../../paper/reasoning-parts/erdos1049/core.tex#L236-L236), [cite at paper/reasoning-parts/erdos1049/core.tex:1897](../../paper/reasoning-parts/erdos1049/core.tex#L1897-L1897)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:261](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L261-L261), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1930](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1930-L1930), [cite at paper/reasoning-parts/erdos1049/core.tex:236](../../paper/reasoning-parts/erdos1049/core.tex#L236-L236), [cite at paper/reasoning-parts/erdos1049/core.tex:1905](../../paper/reasoning-parts/erdos1049/core.tex#L1905-L1905)
 
 <a id="source-source-1a7535a5e17a8c"></a>
 
@@ -2139,13 +2139,13 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3094-L3098) — lines `3094–3098`; excerpt `sha256:d1521927de67d3175dadffc4db2ca2b2786b8297ec43e4eec74b73a350d2d98c`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3099-L3103) — lines `3099–3103`; excerpt `sha256:d1521927de67d3175dadffc4db2ca2b2786b8297ec43e4eec74b73a350d2d98c`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L54-L58) — lines `54–58`; excerpt `sha256:d1521927de67d3175dadffc4db2ca2b2786b8297ec43e4eec74b73a350d2d98c`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2040-L2040) — lines `2040–2040`; excerpt `sha256:7031adbd8ee1ddab8aa252c4d2184fcfd608e6225a7ebbe27418145af8fd95d2`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2039-L2039) — lines `2039–2039`; excerpt `sha256:7031adbd8ee1ddab8aa252c4d2184fcfd608e6225a7ebbe27418145af8fd95d2`
 
 Paper citation usages:
 
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2082](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2082-L2082), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2086](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2086-L2086), [cite at paper/reasoning-parts/erdos243/core.tex:2040](../../paper/reasoning-parts/erdos243/core.tex#L2040-L2040), [cite at paper/reasoning-parts/erdos243/core.tex:2044](../../paper/reasoning-parts/erdos243/core.tex#L2044-L2044)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2081](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2081-L2081), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2085](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2085-L2085), [cite at paper/reasoning-parts/erdos243/core.tex:2039](../../paper/reasoning-parts/erdos243/core.tex#L2039-L2039), [cite at paper/reasoning-parts/erdos243/core.tex:2043](../../paper/reasoning-parts/erdos243/core.tex#L2043-L2043)
 
 <a id="source-source-20c650f8cf3744"></a>
 
@@ -2276,7 +2276,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7458-L7463) — lines `7458–7463`; excerpt `sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7467-L7472) — lines `7467–7472`; excerpt `sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L790-L795) — lines `790–795`; excerpt `sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5`
 
 Paper citation usages:
@@ -2302,12 +2302,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3193-L3200) — lines `3193–3200`; excerpt `sha256:037d8d669c712adb2ce488ddaad6988ca8a9e433e3271c97496d29be910f9ded`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3201-L3208) — lines `3201–3208`; excerpt `sha256:037d8d669c712adb2ce488ddaad6988ca8a9e433e3271c97496d29be910f9ded`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L64-L71) — lines `64–71`; excerpt `sha256:037d8d669c712adb2ce488ddaad6988ca8a9e433e3271c97496d29be910f9ded`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1421](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1421-L1421), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1423](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1423-L1423), [cite at paper/reasoning-parts/erdos1049/core.tex:1396](../../paper/reasoning-parts/erdos1049/core.tex#L1396-L1396), [cite at paper/reasoning-parts/erdos1049/core.tex:1398](../../paper/reasoning-parts/erdos1049/core.tex#L1398-L1398)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1429](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1429-L1429), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1431](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1431-L1431), [cite at paper/reasoning-parts/erdos1049/core.tex:1404](../../paper/reasoning-parts/erdos1049/core.tex#L1404-L1404), [cite at paper/reasoning-parts/erdos1049/core.tex:1406](../../paper/reasoning-parts/erdos1049/core.tex#L1406-L1406)
 
 <a id="source-source-25efc27ed2130d"></a>
 
@@ -2399,7 +2399,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3240-L3244) — lines `3240–3244`; excerpt `sha256:009f0d973b996ec8f00395a65152d98054ea2ab49f230fdc01672a16b260f5cc`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3248-L3252) — lines `3248–3252`; excerpt `sha256:009f0d973b996ec8f00395a65152d98054ea2ab49f230fdc01672a16b260f5cc`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L111-L115) — lines `111–115`; excerpt `sha256:009f0d973b996ec8f00395a65152d98054ea2ab49f230fdc01672a16b260f5cc`
 
 Paper citation usages:
@@ -2444,13 +2444,13 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L250-L250) — lines `250–250`; excerpt `sha256:ba2623fd0d16d511439ef0687c6297f7daa8de19a37077c607d2130b31b303ec`
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L254-L266) — lines `254–266`; excerpt `sha256:a19f3f512e83dcae6f5c0db90a66f47195ed3b0619df9a340797d8966da61a3b`
 - [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L504-L504) — lines `504–504`; excerpt `sha256:56fdec6410c26f8914c14fa0ed7570a72d4d32a7732a20d469535683c1238267`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7412-L7418) — lines `7412–7418`; excerpt `sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7421-L7427) — lines `7421–7427`; excerpt `sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L744-L750) — lines `744–750`; excerpt `sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa`
 
 Paper citation usages:
 
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:250](../../paper/249/erdos-249-binary-totient-series.tex#L250-L250), [cite at paper/249/erdos-249-binary-totient-series.tex:257](../../paper/249/erdos-249-binary-totient-series.tex#L257-L257)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:5302](../../paper/249/erdos249-totient-reasoning-surface.tex#L5302-L5302), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:504](../../paper/reasoning-parts/erdos249/a249_p4.tex#L504-L504)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:5306](../../paper/249/erdos249-totient-reasoning-surface.tex#L5306-L5306), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:504](../../paper/reasoning-parts/erdos249/a249_p4.tex#L504-L504)
 
 <a id="source-source-2a3af2a360bb15"></a>
 
@@ -2473,14 +2473,14 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L952-L957) — lines `952–957`; excerpt `sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3078-L3083) — lines `3078–3083`; excerpt `sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L966-L971) — lines `966–971`; excerpt `sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3083-L3088) — lines `3083–3088`; excerpt `sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L38-L43) — lines `38–43`; excerpt `sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111`
 
 Paper citation usages:
 
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:153](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L153-L153), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:261](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L261-L261), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:453](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L453-L453), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:454](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L454-L454)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1245](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1245-L1245), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2136](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2136-L2136), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2431](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2431-L2431), [cite at paper/reasoning-parts/erdos243/core.tex:1203](../../paper/reasoning-parts/erdos243/core.tex#L1203-L1203), [cite at paper/reasoning-parts/erdos243/core.tex:2094](../../paper/reasoning-parts/erdos243/core.tex#L2094-L2094), [cite at paper/reasoning-parts/erdos243/core.tex:2389](../../paper/reasoning-parts/erdos243/core.tex#L2389-L2389)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1244](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1244-L1244), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2135](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2135-L2135), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2430](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2430-L2430), [cite at paper/reasoning-parts/erdos243/core.tex:1202](../../paper/reasoning-parts/erdos243/core.tex#L1202-L1202), [cite at paper/reasoning-parts/erdos243/core.tex:2093](../../paper/reasoning-parts/erdos243/core.tex#L2093-L2093), [cite at paper/reasoning-parts/erdos243/core.tex:2388](../../paper/reasoning-parts/erdos243/core.tex#L2388-L2388)
 
 <a id="source-source-2a86f52125aec0"></a>
 
@@ -2635,7 +2635,7 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos-257-mersenne-support-subseries.tex](../../paper/257/erdos-257-mersenne-support-subseries.tex#L341-L347) — lines `341–347`; excerpt `sha256:7dd0d8b8beeab740868cbfd3976ebd67b17b3b14fe028224267ba224243f1f5a`
 - [paper/257/erdos-257-mersenne-support-subseries.tex](../../paper/257/erdos-257-mersenne-support-subseries.tex#L743-L747) — lines `743–747`; excerpt `sha256:697bc76dfb08a6522b9b904bca48696ca7de30dda22d3a2a09931c3e07108c88`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L295-L324) — lines `295–324`; excerpt `sha256:4c826c780a5296522d1a4bb05dee5946679132595a7b864f311b471a89f0aed5`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3254-L3261) — lines `3254–3261`; excerpt `sha256:d84745edafcc3ae3ed868569f0e1e327404f0c2a6ff86a0c327422d4a6ddbebd`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3262-L3269) — lines `3262–3269`; excerpt `sha256:d84745edafcc3ae3ed868569f0e1e327404f0c2a6ff86a0c327422d4a6ddbebd`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L125-L132) — lines `125–132`; excerpt `sha256:d84745edafcc3ae3ed868569f0e1e327404f0c2a6ff86a0c327422d4a6ddbebd`
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L7264-L7279) — lines `7264–7279`; excerpt `sha256:639844231444857a119025ab8e330a05e28514cf1dc9e9c65fdc92da1d687928`
 - [paper/reasoning-parts/erdos257/a257\_p5.tex](../../paper/reasoning-parts/erdos257/a257_p5.tex#L475-L490) — lines `475–490`; excerpt `sha256:639844231444857a119025ab8e330a05e28514cf1dc9e9c65fdc92da1d687928`
@@ -2684,14 +2684,14 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L934-L939) — lines `934–939`; excerpt `sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3053-L3058) — lines `3053–3058`; excerpt `sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L948-L953) — lines `948–953`; excerpt `sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3058-L3063) — lines `3058–3063`; excerpt `sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L13-L18) — lines `13–18`; excerpt `sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L633-L634) — lines `633–634`; excerpt `sha256:b8bce3dbb006b380408cee1cb7080191cb231fcd79249a80ab5b4f4bb4da6a10`
 
 Paper citation usages:
 
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:146](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L146-L146), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:191](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L191-L191), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:596](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L596-L596)
+- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:146](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L146-L146), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:191](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L191-L191), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:603](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L603-L603)
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:675](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L675-L676), [cite at paper/reasoning-parts/erdos243/core.tex:633](../../paper/reasoning-parts/erdos243/core.tex#L633-L634)
 
 <a id="source-source-318ee5e7cf6d74"></a>
@@ -2789,12 +2789,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7534-L7538) — lines `7534–7538`; excerpt `sha256:9b119180e0dcb8b3b8d371a6874fc62b9eed3c22728663cd5ddf27726ff12885`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7543-L7547) — lines `7543–7547`; excerpt `sha256:9b119180e0dcb8b3b8d371a6874fc62b9eed3c22728663cd5ddf27726ff12885`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L866-L870) — lines `866–870`; excerpt `sha256:9b119180e0dcb8b3b8d371a6874fc62b9eed3c22728663cd5ddf27726ff12885`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6102](../../paper/249/erdos249-totient-reasoning-surface.tex#L6102-L6102), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:322](../../paper/reasoning-parts/erdos249/a249_invent.tex#L322-L322)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6106](../../paper/249/erdos249-totient-reasoning-surface.tex#L6106-L6106), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:322](../../paper/reasoning-parts/erdos249/a249_invent.tex#L322-L322)
 
 <a id="source-source-3a21eca35f05cf"></a>
 
@@ -2837,16 +2837,16 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5358-L5363) — lines `5358–5363`; excerpt `sha256:b3f91ee983a8672978d0cb4683a9eac57121a743ff8449aa943c718486e5f24d`
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1024-L1030) — lines `1024–1030`; excerpt `sha256:819a1f10e31a530cd62bdc6d0498382904fe9de8bbe84bcb3c98001de80d4853`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2801-L2806) — lines `2801–2806`; excerpt `sha256:724491b4a92be4ba614ed9d362591ede262b3186da756a9696f3205425196cd8`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2826-L2831) — lines `2826–2831`; excerpt `sha256:724491b4a92be4ba614ed9d362591ede262b3186da756a9696f3205425196cd8`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1036-L1042) — lines `1036–1042`; excerpt `sha256:819a1f10e31a530cd62bdc6d0498382904fe9de8bbe84bcb3c98001de80d4853`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2809-L2814) — lines `2809–2814`; excerpt `sha256:724491b4a92be4ba614ed9d362591ede262b3186da756a9696f3205425196cd8`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2834-L2839) — lines `2834–2839`; excerpt `sha256:724491b4a92be4ba614ed9d362591ede262b3186da756a9696f3205425196cd8`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L152-L157) — lines `152–157`; excerpt `sha256:cc50bbad0efa2944eb4173a765d58c97fb832b81daacf5277b29b4d3d4e86ace`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3281-L3286) — lines `3281–3286`; excerpt `sha256:cc50bbad0efa2944eb4173a765d58c97fb832b81daacf5277b29b4d3d4e86ace`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3289-L3294) — lines `3289–3294`; excerpt `sha256:cc50bbad0efa2944eb4173a765d58c97fb832b81daacf5277b29b4d3d4e86ace`
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:865](../../paper/1049/erdos-1049-rational-base-lambert.tex#L865-L865)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2798](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2798-L2798), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3222](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3222-L3222), [cite at paper/reasoning-parts/erdos1049/back.tex:93](../../paper/reasoning-parts/erdos1049/back.tex#L93-L93), [cite at paper/reasoning-parts/erdos1049/core.tex:2773](../../paper/reasoning-parts/erdos1049/core.tex#L2773-L2773)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:877](../../paper/1049/erdos-1049-rational-base-lambert.tex#L877-L877)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2806](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2806-L2806), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3230](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3230-L3230), [cite at paper/reasoning-parts/erdos1049/back.tex:93](../../paper/reasoning-parts/erdos1049/back.tex#L93-L93), [cite at paper/reasoning-parts/erdos1049/core.tex:2781](../../paper/reasoning-parts/erdos1049/core.tex#L2781-L2781)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3192](../../paper/archive/erdos249-257-main-paper.tex#L3192-L3192)
 
 <a id="source-source-3d300ccd5e4cbb"></a>
@@ -2867,12 +2867,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7501-L7507) — lines `7501–7507`; excerpt `sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7510-L7516) — lines `7510–7516`; excerpt `sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L833-L839) — lines `833–839`; excerpt `sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6005](../../paper/249/erdos249-totient-reasoning-surface.tex#L6005-L6005), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:225](../../paper/reasoning-parts/erdos249/a249_invent.tex#L225-L225)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6009](../../paper/249/erdos249-totient-reasoning-surface.tex#L6009-L6009), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:225](../../paper/reasoning-parts/erdos249/a249_invent.tex#L225-L225)
 
 <a id="source-source-40bc4064b92788"></a>
 
@@ -3064,12 +3064,12 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5391-L5395) — lines `5391–5395`; excerpt `sha256:e74d62894afb08f0bf9f352f2a81f1d8436fc4947ccc8847ea8044e669d88d61`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3071-L3078) — lines `3071–3078`; excerpt `sha256:cc6aca2237133e921cd97b74d25252bfe07f4ac85f0f29888f9c09d741fbe072`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3076-L3083) — lines `3076–3083`; excerpt `sha256:cc6aca2237133e921cd97b74d25252bfe07f4ac85f0f29888f9c09d741fbe072`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L1481-L1486) — lines `1481–1486`; excerpt `sha256:3dffd2d864bf4180ebe9991870e99f1cbd5648bbe6df0506137b0e9ca59a10b5`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2432-L2438) — lines `2432–2438`; excerpt `sha256:f71fd90e02b56e5a7f3db61553681bc3a011dd1d60bdb5626288fe0bdadfe1a3`
 - [paper/257/erdos-257-mersenne-support-subseries.tex](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1263-L1270) — lines `1263–1270`; excerpt `sha256:68f7878d4d571f3d4d39d779c6a3979e9742dd6e14cac02fbad6e1399988f303`
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2226-L2233) — lines `2226–2233`; excerpt `sha256:f484ba9d0732a84a0ef7c0138504704191e48f38031d5dfbfc3eb1932fbf4ce1`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3267-L3274) — lines `3267–3274`; excerpt `sha256:31734bb5dbd8d4b44ac368c926cf6ce72c577a3e05d74dab77682764ee7da3da`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3275-L3282) — lines `3275–3282`; excerpt `sha256:31734bb5dbd8d4b44ac368c926cf6ce72c577a3e05d74dab77682764ee7da3da`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L138-L145) — lines `138–145`; excerpt `sha256:31734bb5dbd8d4b44ac368c926cf6ce72c577a3e05d74dab77682764ee7da3da`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L245-L245) — lines `245–245`; excerpt `sha256:1102bfe9b1f75f0d5960a2f3d22f55f277c362853922162565b2ad5506af83b9`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L31-L38) — lines `31–38`; excerpt `sha256:cc6aca2237133e921cd97b74d25252bfe07f4ac85f0f29888f9c09d741fbe072`
@@ -3092,7 +3092,7 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L248-L248) — lines `248–248`; excerpt `sha256:976e2b7c6429f891b855d61841e48da146a0153d684a53bc962fc05f7add9649`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L256-L256) — lines `256–256`; excerpt `sha256:63566ee707a904f479db907c82584109453d46c62f4e3815466ac0827609f5ef`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1155-L1155) — lines `1155–1155`; excerpt `sha256:b347be12be8e15a88977678b9ffe62e10fd2185f0e7f7c1468615a0d36ef5360`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7475-L7481) — lines `7475–7481`; excerpt `sha256:aa7e7a743f9042755d99379ed9c411c18d6b86186718b25aa42a57c133a0f41e`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7484-L7490) — lines `7484–7490`; excerpt `sha256:aa7e7a743f9042755d99379ed9c411c18d6b86186718b25aa42a57c133a0f41e`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L807-L813) — lines `807–813`; excerpt `sha256:aa7e7a743f9042755d99379ed9c411c18d6b86186718b25aa42a57c133a0f41e`
 
 Paper citation usages:
@@ -3223,14 +3223,14 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5344-L5352) — lines `5344–5352`; excerpt `sha256:28fc1b15f89dedfd49214bfcd5a49cc05823f44376740a8e9ad7fc0e987fb378`
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L839-L843) — lines `839–843`; excerpt `sha256:822cceaa2102882ca659544f6f24812353e6082e3f3fd963beaa90ce4be4a49a`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7402-L7407) — lines `7402–7407`; excerpt `sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7411-L7416) — lines `7411–7416`; excerpt `sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L734-L739) — lines `734–739`; excerpt `sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f`
 
 Paper citation usages:
 
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:243](../../paper/249/erdos-249-binary-totient-series.tex#L243-L243), [cite at paper/249/erdos-249-binary-totient-series.tex:591](../../paper/249/erdos-249-binary-totient-series.tex#L591-L591)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3184](../../paper/archive/erdos249-257-main-paper.tex#L3184-L3184)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6526](../../paper/249/erdos249-totient-reasoning-surface.tex#L6526-L6526), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:746](../../paper/reasoning-parts/erdos249/a249_invent.tex#L746-L746)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6533](../../paper/249/erdos249-totient-reasoning-surface.tex#L6533-L6533), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:749](../../paper/reasoning-parts/erdos249/a249_invent.tex#L749-L749)
 
 <a id="source-source-57adfd0cdcd8c2"></a>
 
@@ -3288,12 +3288,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3287-L3291) — lines `3287–3291`; excerpt `sha256:1f93dd63fdcecc1c50a9e4192bb21b88580fe393bef2b1a4a2bd32200489b8f2`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3295-L3299) — lines `3295–3299`; excerpt `sha256:1f93dd63fdcecc1c50a9e4192bb21b88580fe393bef2b1a4a2bd32200489b8f2`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L158-L162) — lines `158–162`; excerpt `sha256:1f93dd63fdcecc1c50a9e4192bb21b88580fe393bef2b1a4a2bd32200489b8f2`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1575](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1575-L1575), [cite at paper/reasoning-parts/erdos1049/core.tex:1550](../../paper/reasoning-parts/erdos1049/core.tex#L1550-L1550)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1583](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1583-L1583), [cite at paper/reasoning-parts/erdos1049/core.tex:1558](../../paper/reasoning-parts/erdos1049/core.tex#L1558-L1558)
 
 <a id="source-source-5911448b65fdf9"></a>
 
@@ -3313,7 +3313,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3244-L3248) — lines `3244–3248`; excerpt `sha256:ec00799c8a18f226c11ddb3397de2c15b0fb2a0863bb9126f6ebb34db8f890d0`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3252-L3256) — lines `3252–3256`; excerpt `sha256:ec00799c8a18f226c11ddb3397de2c15b0fb2a0863bb9126f6ebb34db8f890d0`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L115-L119) — lines `115–119`; excerpt `sha256:ec00799c8a18f226c11ddb3397de2c15b0fb2a0863bb9126f6ebb34db8f890d0`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L215-L215) — lines `215–215`; excerpt `sha256:4cba849220b6d89a05527440677a635fe05b976de1d3d125b3c7d9e3b37a61fe`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L218-L218) — lines `218–218`; excerpt `sha256:fd92ac482f370cb8afab84fb13484fe7a5d23e8d666f012ce7c6ae806b86f950`
@@ -3379,7 +3379,7 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5307-L5310) — lines `5307–5310`; excerpt `sha256:20b0b33ebb4cd3cbf86a87600342b42670e722c45b2b8f83015e0c8f3160e9da`
 - [paper/257/erdos-257-mersenne-support-subseries.tex](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1270-L1272) — lines `1270–1272`; excerpt `sha256:12e925bb796b6215db708d25b5d1ab1c5640c351e7f3683e2c91ae968206b259`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3134-L3138) — lines `3134–3138`; excerpt `sha256:cf446c3cbb0c405bcc80ec2c25d599a8a83cd781fed2f9312d32338c1383374d`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3142-L3146) — lines `3142–3146`; excerpt `sha256:cf446c3cbb0c405bcc80ec2c25d599a8a83cd781fed2f9312d32338c1383374d`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L5-L9) — lines `5–9`; excerpt `sha256:cf446c3cbb0c405bcc80ec2c25d599a8a83cd781fed2f9312d32338c1383374d`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L87-L87) — lines `87–87`; excerpt `sha256:5c2702a8cde3c232738e8827b542bc16923457da7f595c51367ae5f0782ba8e8`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L130-L130) — lines `130–130`; excerpt `sha256:1d8fc66588d2076dad018be4bac71a70910db63d9b53ba28738dd383a7359aec`
@@ -3399,7 +3399,7 @@ Public implementation or evidence coordinates:
 - [lean/Erdos249257/MersenneLambertLadder.lean](../../lean/Erdos249257/MersenneLambertLadder.lean#L47-L53) — lines `47–53`; excerpt `sha256:b45aeb51359d86c158845274d46ed767649efa27afd80d32195fc657d97717bd`
 - [lean/Erdos249257/GcdMomentCalculus.lean](../../lean/Erdos249257/GcdMomentCalculus.lean#L42-L45) — lines `42–45`; excerpt `sha256:e52069568abc708f08d10023d2061bcfdd5c0f984b8a5a65ed3e8571e54ee9bd`
 - [lean/Erdos249257/CertificateKernel.lean](../../lean/Erdos249257/CertificateKernel.lean#L18621-L18623) — lines `18621–18623`; excerpt `sha256:7baad49acd6e8043e207763ff59a2f21df42069c613ca2bc3b8ba3b297dda26e`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7438-L7442) — lines `7438–7442`; excerpt `sha256:83ff6ef68815bf0b391a143e9e5336b1ff5b127bd0fbcac01ed9f7a399d02225`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7447-L7451) — lines `7447–7451`; excerpt `sha256:83ff6ef68815bf0b391a143e9e5336b1ff5b127bd0fbcac01ed9f7a399d02225`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L770-L774) — lines `770–774`; excerpt `sha256:83ff6ef68815bf0b391a143e9e5336b1ff5b127bd0fbcac01ed9f7a399d02225`
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L7226-L7229) — lines `7226–7229`; excerpt `sha256:7a684bfaefd18d542b221d902849314551f3d7d7c0bdd860824a938e6896ecd7`
 - [paper/reasoning-parts/erdos257/a257\_p5.tex](../../paper/reasoning-parts/erdos257/a257_p5.tex#L437-L440) — lines `437–440`; excerpt `sha256:7a684bfaefd18d542b221d902849314551f3d7d7c0bdd860824a938e6896ecd7`
@@ -3409,7 +3409,7 @@ Paper citation usages:
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:738](../../paper/257/erdos-257-mersenne-support-subseries.tex#L738-L738)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:112](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L112-L112), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:155](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L155-L155), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:309](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L309-L309), [cite at paper/reasoning-parts/erdos1049/core.tex:87](../../paper/reasoning-parts/erdos1049/core.tex#L87-L87), [cite at paper/reasoning-parts/erdos1049/core.tex:130](../../paper/reasoning-parts/erdos1049/core.tex#L130-L130), [cite at paper/reasoning-parts/erdos1049/core.tex:284](../../paper/reasoning-parts/erdos1049/core.tex#L284-L284)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:115](../../paper/archive/erdos249-257-main-paper.tex#L115-L115), [cite at paper/archive/erdos249-257-main-paper.tex:630](../../paper/archive/erdos249-257-main-paper.tex#L630-L630), [cite at paper/archive/erdos249-257-main-paper.tex:633](../../paper/archive/erdos249-257-main-paper.tex#L633-L633)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1465](../../paper/249/erdos249-totient-reasoning-surface.tex#L1465-L1465), [cite at paper/249/erdos249-totient-reasoning-surface.tex:1486](../../paper/249/erdos249-totient-reasoning-surface.tex#L1486-L1486), [cite at paper/249/erdos249-totient-reasoning-surface.tex:3948](../../paper/249/erdos249-totient-reasoning-surface.tex#L3948-L3948), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6027](../../paper/249/erdos249-totient-reasoning-surface.tex#L6027-L6027), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6038](../../paper/249/erdos249-totient-reasoning-surface.tex#L6038-L6038), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:247](../../paper/reasoning-parts/erdos249/a249_invent.tex#L247-L247), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:258](../../paper/reasoning-parts/erdos249/a249_invent.tex#L258-L258), [cite at paper/reasoning-parts/erdos249/a249\_p0.tex:244](../../paper/reasoning-parts/erdos249/a249_p0.tex#L244-L244), [cite at paper/reasoning-parts/erdos249/a249\_p0.tex:265](../../paper/reasoning-parts/erdos249/a249_p0.tex#L265-L265), [cite at paper/reasoning-parts/erdos249/a249\_p2.tex:357](../../paper/reasoning-parts/erdos249/a249_p2.tex#L357-L357)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1465](../../paper/249/erdos249-totient-reasoning-surface.tex#L1465-L1465), [cite at paper/249/erdos249-totient-reasoning-surface.tex:1486](../../paper/249/erdos249-totient-reasoning-surface.tex#L1486-L1486), [cite at paper/249/erdos249-totient-reasoning-surface.tex:3950](../../paper/249/erdos249-totient-reasoning-surface.tex#L3950-L3950), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6031](../../paper/249/erdos249-totient-reasoning-surface.tex#L6031-L6031), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6042](../../paper/249/erdos249-totient-reasoning-surface.tex#L6042-L6042), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:247](../../paper/reasoning-parts/erdos249/a249_invent.tex#L247-L247), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:258](../../paper/reasoning-parts/erdos249/a249_invent.tex#L258-L258), [cite at paper/reasoning-parts/erdos249/a249\_p0.tex:244](../../paper/reasoning-parts/erdos249/a249_p0.tex#L244-L244), [cite at paper/reasoning-parts/erdos249/a249\_p0.tex:265](../../paper/reasoning-parts/erdos249/a249_p0.tex#L265-L265), [cite at paper/reasoning-parts/erdos249/a249\_p2.tex:357](../../paper/reasoning-parts/erdos249/a249_p2.tex#L357-L357)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:841](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L841-L841), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1019](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1019-L1019), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2191](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2191-L2191), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:591](../../paper/reasoning-parts/erdos257/a257_front.tex#L591-L591), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:769](../../paper/reasoning-parts/erdos257/a257_front.tex#L769-L769), [cite at paper/reasoning-parts/erdos257/a257\_p1a.tex:196](../../paper/reasoning-parts/erdos257/a257_p1a.tex#L196-L196)
 
 <a id="source-source-5cac1ad51acb12"></a>
@@ -3430,12 +3430,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7530-L7534) — lines `7530–7534`; excerpt `sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7539-L7543) — lines `7539–7543`; excerpt `sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L862-L866) — lines `862–866`; excerpt `sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:2934](../../paper/249/erdos249-totient-reasoning-surface.tex#L2934-L2934), [cite at paper/reasoning-parts/erdos249/a249\_p1b.tex:778](../../paper/reasoning-parts/erdos249/a249_p1b.tex#L778-L778)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:2936](../../paper/249/erdos249-totient-reasoning-surface.tex#L2936-L2936), [cite at paper/reasoning-parts/erdos249/a249\_p1b.tex:780](../../paper/reasoning-parts/erdos249/a249_p1b.tex#L780-L780)
 
 <a id="source-source-5edeb2408c36bd"></a>
 
@@ -3561,7 +3561,7 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5331-L5335) — lines `5331–5335`; excerpt `sha256:3a65bfeacf2ad8a25e0f67d84cbd49de341eed686e5744522532edb843972cc8`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L25-L47) — lines `25–47`; excerpt `sha256:1964e6ddeec8bb90c934b89b878d1d1a1472a86d6d1e23dc0ac35363484a9012`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7463-L7470) — lines `7463–7470`; excerpt `sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7472-L7479) — lines `7472–7479`; excerpt `sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L795-L802) — lines `795–802`; excerpt `sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2`
 
 Paper citation usages:
@@ -3671,7 +3671,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3142-L3146) — lines `3142–3146`; excerpt `sha256:ba25c19782edca439fc59536016a13c5d36a33cd2f359c1c6f2080fb7a229a6d`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3150-L3154) — lines `3150–3154`; excerpt `sha256:ba25c19782edca439fc59536016a13c5d36a33cd2f359c1c6f2080fb7a229a6d`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L13-L17) — lines `13–17`; excerpt `sha256:ba25c19782edca439fc59536016a13c5d36a33cd2f359c1c6f2080fb7a229a6d`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L150-L150) — lines `150–150`; excerpt `sha256:c2aaa0c462b306e178c3f673ec026c7a33d2885dc0bdb20b45061a7ba1d2ad52`
 
@@ -3699,16 +3699,16 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5363-L5369) — lines `5363–5369`; excerpt `sha256:77bdb4aaccf3767207aeaa531daa9b36b72b6f99ea6282713f5fedd223ebf6a0`
 - [paper/reasoning-parts/erdos249/a249\_p1a.tex](../../paper/reasoning-parts/erdos249/a249_p1a.tex#L351-L351) — lines `351–351`; excerpt `sha256:18bf395f3f7709c9becd4665ef18292d1284189d731e98e4d8ea5e52e0201426`
-- [paper/reasoning-parts/erdos249/a249\_p1b.tex](../../paper/reasoning-parts/erdos249/a249_p1b.tex#L544-L548) — lines `544–548`; excerpt `sha256:e3ba4374feae2d0065f1c1a3ead7015a56680c89af15c711b4c71423b946272b`
+- [paper/reasoning-parts/erdos249/a249\_p1b.tex](../../paper/reasoning-parts/erdos249/a249_p1b.tex#L546-L550) — lines `546–550`; excerpt `sha256:e3ba4374feae2d0065f1c1a3ead7015a56680c89af15c711b4c71423b946272b`
 - [lean/Erdos249257/CertificateKernel.lean](../../lean/Erdos249257/CertificateKernel.lean#L18396-L18404) — lines `18396–18404`; excerpt `sha256:6d631a23b443180906d917bb60d1a6c65c9fd2a705b5a9ed4ed4e026e91ae20d`
 - [lean/Erdos249257/MersenneLambertLadder.lean](../../lean/Erdos249257/MersenneLambertLadder.lean#L15-L27) — lines `15–27`; excerpt `sha256:b17ccf4eb86418af3ba24ecd888e62fe5e23ef5fbf22c02f21fad26eef0562d0`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7448-L7453) — lines `7448–7453`; excerpt `sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7457-L7462) — lines `7457–7462`; excerpt `sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L780-L785) — lines `780–785`; excerpt `sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38`
 
 Paper citation usages:
 
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:529](../../paper/archive/erdos249-257-main-paper.tex#L529-L529), [cite at paper/archive/erdos249-257-main-paper.tex:560](../../paper/archive/erdos249-257-main-paper.tex#L560-L560)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:2058](../../paper/249/erdos249-totient-reasoning-surface.tex#L2058-L2058), [cite at paper/249/erdos249-totient-reasoning-surface.tex:2703](../../paper/249/erdos249-totient-reasoning-surface.tex#L2703-L2703), [cite at paper/reasoning-parts/erdos249/a249\_p1a.tex:351](../../paper/reasoning-parts/erdos249/a249_p1a.tex#L351-L351), [cite at paper/reasoning-parts/erdos249/a249\_p1b.tex:547](../../paper/reasoning-parts/erdos249/a249_p1b.tex#L547-L547)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:2058](../../paper/249/erdos249-totient-reasoning-surface.tex#L2058-L2058), [cite at paper/249/erdos249-totient-reasoning-surface.tex:2705](../../paper/249/erdos249-totient-reasoning-surface.tex#L2705-L2705), [cite at paper/reasoning-parts/erdos249/a249\_p1a.tex:351](../../paper/reasoning-parts/erdos249/a249_p1a.tex#L351-L351), [cite at paper/reasoning-parts/erdos249/a249\_p1b.tex:549](../../paper/reasoning-parts/erdos249/a249_p1b.tex#L549-L549)
 
 <a id="source-source-63a234b13e4427"></a>
 
@@ -3850,7 +3850,7 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5376-L5383) — lines `5376–5383`; excerpt `sha256:690f1f58f32c3dd75fa57e5966f1e713460a42c814f9ab411c04c7e2183ee0b0`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3248-L3254) — lines `3248–3254`; excerpt `sha256:7edeec595003b28ac91040a61c50d3a57a5872bbc9871d704d9ba32a048e1a23`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3256-L3262) — lines `3256–3262`; excerpt `sha256:7edeec595003b28ac91040a61c50d3a57a5872bbc9871d704d9ba32a048e1a23`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L119-L125) — lines `119–125`; excerpt `sha256:7edeec595003b28ac91040a61c50d3a57a5872bbc9871d704d9ba32a048e1a23`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L223-L223) — lines `223–223`; excerpt `sha256:21196a6cc9019dd41d30945a6a3d9e8e466447c7c1830ee9e83704db25a0ef1f`
 - [lean/Erdos249257/CertificateKernel.lean](../../lean/Erdos249257/CertificateKernel.lean#L11735-L11740) — lines `11735–11740`; excerpt `sha256:563923daea706e56c4f2e7175d13053380af2dc3a24ac50d9212c2b0b6d7634e`
@@ -3911,7 +3911,7 @@ Public implementation or evidence coordinates:
 - [lean/Erdos249257/CertificateKernel.lean](../../lean/Erdos249257/CertificateKernel.lean#L18614-L18619) — lines `18614–18619`; excerpt `sha256:1ddc9c03c740ef6c475f6cab866ca8afd592972f666408305d7d85b4399ccba6`
 - [lean/Erdos249257/GcdMomentCalculus.lean](../../lean/Erdos249257/GcdMomentCalculus.lean#L31-L37) — lines `31–37`; excerpt `sha256:df63d9348b43000b662da16518b601491c3fd177be47b864cb61bf0db772b86c`
 - [lean/Erdos249257/GcdMomentCalculus.lean](../../lean/Erdos249257/GcdMomentCalculus.lean#L210-L216) — lines `210–216`; excerpt `sha256:f2f4533d57864d5d1c1ccb3b19e15365cab99d16e5b432b8737687af0eb24265`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7442-L7448) — lines `7442–7448`; excerpt `sha256:d225e8a6b24e1aa1895e5b08441a48c78042c267387c9e1c0073591e2991cb37`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7451-L7457) — lines `7451–7457`; excerpt `sha256:d225e8a6b24e1aa1895e5b08441a48c78042c267387c9e1c0073591e2991cb37`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L774-L780) — lines `774–780`; excerpt `sha256:d225e8a6b24e1aa1895e5b08441a48c78042c267387c9e1c0073591e2991cb37`
 
 Paper citation usages:
@@ -3963,7 +3963,7 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L862-L865) — lines `862–865`; excerpt `sha256:56a8f02f756379e8b9f86571b2146e088317bf4d41df88c247647efa76da475f`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7426-L7430) — lines `7426–7430`; excerpt `sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7435-L7439) — lines `7435–7439`; excerpt `sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L758-L762) — lines `758–762`; excerpt `sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1`
 
 Paper citation usages:
@@ -4047,18 +4047,18 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L592-L593) — lines `592–593`; excerpt `sha256:398ca032230c6f56e30b00e6acd398308511c9719a80d6368cab584e770cab4e`
 - [paper/reasoning-parts/erdos249/preamble.tex](../../paper/reasoning-parts/erdos249/preamble.tex#L178-L179) — lines `178–179`; excerpt `sha256:0d4b4d5d2a680973d0656d41b77d76e0b096774cd75e73655aeb1334402dc06b`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L178-L178) — lines `178–178`; excerpt `sha256:48a3dc935a9efd4f525b4196ade8751cfd054cab2285d0b3acf1c074f18578f9`
-- [paper/reasoning-parts/erdos249/a249\_invent.tex](../../paper/reasoning-parts/erdos249/a249_invent.tex#L751-L751) — lines `751–751`; excerpt `sha256:e14e7da856f6a2d0aa03f1b0e9404a2fe16d42b6f66a8acfbaccc1abef2ec9d5`
+- [paper/reasoning-parts/erdos249/a249\_invent.tex](../../paper/reasoning-parts/erdos249/a249_invent.tex#L754-L754) — lines `754–754`; excerpt `sha256:e14e7da856f6a2d0aa03f1b0e9404a2fe16d42b6f66a8acfbaccc1abef2ec9d5`
 - [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L434-L434) — lines `434–434`; excerpt `sha256:c90fc22a533f6d65b5eab75bb6cfda36c07d4f5fd6c4955c7057fd4d4286d83a`
 - [paper/reasoning-parts/erdos249/a249\_p4.tex](../../paper/reasoning-parts/erdos249/a249_p4.tex#L520-L521) — lines `520–521`; excerpt `sha256:287e2329dd6f0b29c0f4a3203679ff00fbb12a876b47f08001c265b67446b1e3`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L594-L594) — lines `594–594`; excerpt `sha256:9bb63e98c41d2fe494420b4de204eb623d74f0573079ceb08b0867b42219d9a8`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7407-L7412) — lines `7407–7412`; excerpt `sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7416-L7421) — lines `7416–7421`; excerpt `sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L739-L744) — lines `739–744`; excerpt `sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48`
 
 Paper citation usages:
 
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:62](../../paper/249/erdos-249-binary-totient-series.tex#L62-L62), [cite at paper/249/erdos-249-binary-totient-series.tex:246](../../paper/249/erdos-249-binary-totient-series.tex#L246-L246), [cite at paper/249/erdos-249-binary-totient-series.tex:592](../../paper/249/erdos-249-binary-totient-series.tex#L592-L592)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3187](../../paper/archive/erdos249-257-main-paper.tex#L3187-L3187)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:259](../../paper/249/erdos249-totient-reasoning-surface.tex#L259-L259), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5232](../../paper/249/erdos249-totient-reasoning-surface.tex#L5232-L5232), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6531](../../paper/249/erdos249-totient-reasoning-surface.tex#L6531-L6531), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:28](../../paper/reasoning-parts/erdos249/a249_front.tex#L28-L28), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:751](../../paper/reasoning-parts/erdos249/a249_invent.tex#L751-L751), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:434](../../paper/reasoning-parts/erdos249/a249_p4.tex#L434-L434)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:259](../../paper/249/erdos249-totient-reasoning-surface.tex#L259-L259), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5236](../../paper/249/erdos249-totient-reasoning-surface.tex#L5236-L5236), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6538](../../paper/249/erdos249-totient-reasoning-surface.tex#L6538-L6538), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:28](../../paper/reasoning-parts/erdos249/a249_front.tex#L28-L28), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:754](../../paper/reasoning-parts/erdos249/a249_invent.tex#L754-L754), [cite at paper/reasoning-parts/erdos249/a249\_p4.tex:434](../../paper/reasoning-parts/erdos249/a249_p4.tex#L434-L434)
 
 <a id="source-source-75e79d15dfab15"></a>
 
@@ -4132,7 +4132,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3152-L3158) — lines `3152–3158`; excerpt `sha256:d5178dbf9e857836e9898ea177d620546af9d24a1826f669a5c173ec6dea9c58`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3160-L3166) — lines `3160–3166`; excerpt `sha256:d5178dbf9e857836e9898ea177d620546af9d24a1826f669a5c173ec6dea9c58`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L23-L29) — lines `23–29`; excerpt `sha256:d5178dbf9e857836e9898ea177d620546af9d24a1826f669a5c173ec6dea9c58`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L162-L162) — lines `162–162`; excerpt `sha256:75792309c5f22a093e68bc18d6a4e7dd19d522e7ab337a513950b4990527fb0c`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L88-L95) — lines `88–95`; excerpt `sha256:2223d196ea50c7aa4910ff7135c17302d35865756bc58597c18dfb8b05e931ac`
@@ -4197,12 +4197,12 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7526-L7530) — lines `7526–7530`; excerpt `sha256:48c8f377367df5c421434058ed0f1e7474c781ee36061cf7ab0d39eda785c36d`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7535-L7539) — lines `7535–7539`; excerpt `sha256:48c8f377367df5c421434058ed0f1e7474c781ee36061cf7ab0d39eda785c36d`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L858-L862) — lines `858–862`; excerpt `sha256:48c8f377367df5c421434058ed0f1e7474c781ee36061cf7ab0d39eda785c36d`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6475](../../paper/249/erdos249-totient-reasoning-surface.tex#L6475-L6475), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:695](../../paper/reasoning-parts/erdos249/a249_invent.tex#L695-L695)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6479](../../paper/249/erdos249-totient-reasoning-surface.tex#L6479-L6479), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:695](../../paper/reasoning-parts/erdos249/a249_invent.tex#L695-L695)
 
 <a id="source-source-7d871bf2920e53"></a>
 
@@ -4469,8 +4469,8 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L962-L968) — lines `962–968`; excerpt `sha256:82ba58f2cc1febdd7a2b78054bddda49230645613cb683b0986b0949f38e09fa`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3098-L3104) — lines `3098–3104`; excerpt `sha256:6c4206a8f262d7e2abb394f4bf7a999b935666274bd2db5376f99cdd9c82b469`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L976-L982) — lines `976–982`; excerpt `sha256:82ba58f2cc1febdd7a2b78054bddda49230645613cb683b0986b0949f38e09fa`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3103-L3109) — lines `3103–3109`; excerpt `sha256:6c4206a8f262d7e2abb394f4bf7a999b935666274bd2db5376f99cdd9c82b469`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L58-L64) — lines `58–64`; excerpt `sha256:6c4206a8f262d7e2abb394f4bf7a999b935666274bd2db5376f99cdd9c82b469`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L593-L593) — lines `593–593`; excerpt `sha256:5f55e922f4e4000c69c443bec4dd3f66f61238dcb912a5f81f4e771c448be455`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L608-L608) — lines `608–608`; excerpt `sha256:b853390c2eb432a340b5f174de6fffd1421174221a928ef59b48b8e8c354b9e4`
@@ -4480,23 +4480,23 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L660-L660) — lines `660–660`; excerpt `sha256:d11b7a084474ca7943b0f6468d4efb68b1bcfc4d92558ea5c5bf3bb281034bea`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L663-L663) — lines `663–663`; excerpt `sha256:71060f7d6c73cd364f0c74267bc8d684476c8d1b8212539f3b3a80e1f6231b90`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L669-L669) — lines `669–669`; excerpt `sha256:80ff1c5de38eda3deb617464f28d1489b0602249b272c5d4c980bd809b6d9ca1`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1624-L1624) — lines `1624–1624`; excerpt `sha256:eada32990703165030515ce98286240fc0f12c50c37f638a00cac535d2d6cb7f`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1652-L1652) — lines `1652–1652`; excerpt `sha256:333a0be87406a104810d8400bc1cb166e334cc53ab4e37950779372b79ae11e4`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1994-L1994) — lines `1994–1994`; excerpt `sha256:defbf180f87e5ba028000d259f179ca3fd71717e5148725119465b34155f9fb2`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1998-L1998) — lines `1998–1998`; excerpt `sha256:bb240f64d97e29cb62798640609aaf6e82822c4dde63673a16ccb026e77fd6e8`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2322-L2322) — lines `2322–2322`; excerpt `sha256:023622060f795bf356ce736a86de990eeeb4f1e751035696204276ab0e835d8f`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2326-L2326) — lines `2326–2326`; excerpt `sha256:8812ed8a7f1053b61926b32196f4c95770e6e55d5b863cf4afce90c7dbd34522`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2339-L2339) — lines `2339–2339`; excerpt `sha256:646ee49259eb30b191c74886cceb51d61b93d0653070c1621a241f120fc627d7`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2392-L2392) — lines `2392–2392`; excerpt `sha256:075ca4776a7543626811b0f79754e35bc339ef0ffdee18fecbe8a672f42727ae`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2394-L2394) — lines `2394–2394`; excerpt `sha256:887bd21b281dce434597c63a46816b5c7649806c1b760cb5928e6a7d6cde15c8`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2654-L2654) — lines `2654–2654`; excerpt `sha256:ade1a9ab17ee7686d6193e846890167f84e666076a76d935baa2a4169820bf32`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2657-L2657) — lines `2657–2657`; excerpt `sha256:663e2c741d9573a39feb67032fb34a9e00cd13d18a94496d64313d05c01ed111`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2665-L2665) — lines `2665–2665`; excerpt `sha256:5ef3af47c1d813f3ef03136859db73357c70bf3bc688b3af1f07c5a89790e242`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1623-L1623) — lines `1623–1623`; excerpt `sha256:eada32990703165030515ce98286240fc0f12c50c37f638a00cac535d2d6cb7f`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1651-L1651) — lines `1651–1651`; excerpt `sha256:333a0be87406a104810d8400bc1cb166e334cc53ab4e37950779372b79ae11e4`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1993-L1993) — lines `1993–1993`; excerpt `sha256:defbf180f87e5ba028000d259f179ca3fd71717e5148725119465b34155f9fb2`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1997-L1997) — lines `1997–1997`; excerpt `sha256:bb240f64d97e29cb62798640609aaf6e82822c4dde63673a16ccb026e77fd6e8`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2321-L2321) — lines `2321–2321`; excerpt `sha256:023622060f795bf356ce736a86de990eeeb4f1e751035696204276ab0e835d8f`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2325-L2325) — lines `2325–2325`; excerpt `sha256:8812ed8a7f1053b61926b32196f4c95770e6e55d5b863cf4afce90c7dbd34522`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2338-L2338) — lines `2338–2338`; excerpt `sha256:646ee49259eb30b191c74886cceb51d61b93d0653070c1621a241f120fc627d7`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2391-L2391) — lines `2391–2391`; excerpt `sha256:075ca4776a7543626811b0f79754e35bc339ef0ffdee18fecbe8a672f42727ae`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2393-L2393) — lines `2393–2393`; excerpt `sha256:887bd21b281dce434597c63a46816b5c7649806c1b760cb5928e6a7d6cde15c8`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2659-L2659) — lines `2659–2659`; excerpt `sha256:ade1a9ab17ee7686d6193e846890167f84e666076a76d935baa2a4169820bf32`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2662-L2662) — lines `2662–2662`; excerpt `sha256:663e2c741d9573a39feb67032fb34a9e00cd13d18a94496d64313d05c01ed111`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2670-L2670) — lines `2670–2670`; excerpt `sha256:5ef3af47c1d813f3ef03136859db73357c70bf3bc688b3af1f07c5a89790e242`
 
 Paper citation usages:
 
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:91](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L91-L91), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:147](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L147-L147), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:150](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L150-L150), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:188](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L188-L188), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:189](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L189-L189), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:190](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L190-L190), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:335](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L335-L335), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:359](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L359-L359), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:361](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L361-L361), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:394](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L394-L394), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:623](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L623-L623), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:876](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L876-L877)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:175](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L175-L175), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:635](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L635-L635), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:650](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L650-L650), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:680](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L680-L680), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:685](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L685-L685), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:701](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L701-L701), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:702](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L702-L702), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:705](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L705-L705), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:711](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L711-L711), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:860](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L860-L860), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1666](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1666-L1666), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1677](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1677-L1677), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1694](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1694-L1694), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1700](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1700-L1700), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1748](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1748-L1748), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2036](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2036-L2036), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2040](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2040-L2040), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2364](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2364-L2364), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2368](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2368-L2368), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2381](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2381-L2381), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2434](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2434-L2434), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2436](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2436-L2436), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2696](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2696-L2696), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2699](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2699-L2699), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2707](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2707-L2707), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2890](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2890-L2891), [cite at paper/reasoning-parts/erdos243/core.tex:133](../../paper/reasoning-parts/erdos243/core.tex#L133-L133), [cite at paper/reasoning-parts/erdos243/core.tex:593](../../paper/reasoning-parts/erdos243/core.tex#L593-L593), [cite at paper/reasoning-parts/erdos243/core.tex:608](../../paper/reasoning-parts/erdos243/core.tex#L608-L608), [cite at paper/reasoning-parts/erdos243/core.tex:638](../../paper/reasoning-parts/erdos243/core.tex#L638-L638), [cite at paper/reasoning-parts/erdos243/core.tex:643](../../paper/reasoning-parts/erdos243/core.tex#L643-L643), [cite at paper/reasoning-parts/erdos243/core.tex:659](../../paper/reasoning-parts/erdos243/core.tex#L659-L659), [cite at paper/reasoning-parts/erdos243/core.tex:660](../../paper/reasoning-parts/erdos243/core.tex#L660-L660), [cite at paper/reasoning-parts/erdos243/core.tex:663](../../paper/reasoning-parts/erdos243/core.tex#L663-L663), [cite at paper/reasoning-parts/erdos243/core.tex:669](../../paper/reasoning-parts/erdos243/core.tex#L669-L669), [cite at paper/reasoning-parts/erdos243/core.tex:818](../../paper/reasoning-parts/erdos243/core.tex#L818-L818), [cite at paper/reasoning-parts/erdos243/core.tex:1624](../../paper/reasoning-parts/erdos243/core.tex#L1624-L1624), [cite at paper/reasoning-parts/erdos243/core.tex:1635](../../paper/reasoning-parts/erdos243/core.tex#L1635-L1635), [cite at paper/reasoning-parts/erdos243/core.tex:1652](../../paper/reasoning-parts/erdos243/core.tex#L1652-L1652), [cite at paper/reasoning-parts/erdos243/core.tex:1658](../../paper/reasoning-parts/erdos243/core.tex#L1658-L1658), [cite at paper/reasoning-parts/erdos243/core.tex:1706](../../paper/reasoning-parts/erdos243/core.tex#L1706-L1706), [cite at paper/reasoning-parts/erdos243/core.tex:1994](../../paper/reasoning-parts/erdos243/core.tex#L1994-L1994), [cite at paper/reasoning-parts/erdos243/core.tex:1998](../../paper/reasoning-parts/erdos243/core.tex#L1998-L1998), [cite at paper/reasoning-parts/erdos243/core.tex:2322](../../paper/reasoning-parts/erdos243/core.tex#L2322-L2322), [cite at paper/reasoning-parts/erdos243/core.tex:2326](../../paper/reasoning-parts/erdos243/core.tex#L2326-L2326), [cite at paper/reasoning-parts/erdos243/core.tex:2339](../../paper/reasoning-parts/erdos243/core.tex#L2339-L2339), [cite at paper/reasoning-parts/erdos243/core.tex:2392](../../paper/reasoning-parts/erdos243/core.tex#L2392-L2392), [cite at paper/reasoning-parts/erdos243/core.tex:2394](../../paper/reasoning-parts/erdos243/core.tex#L2394-L2394), [cite at paper/reasoning-parts/erdos243/core.tex:2654](../../paper/reasoning-parts/erdos243/core.tex#L2654-L2654), [cite at paper/reasoning-parts/erdos243/core.tex:2657](../../paper/reasoning-parts/erdos243/core.tex#L2657-L2657), [cite at paper/reasoning-parts/erdos243/core.tex:2665](../../paper/reasoning-parts/erdos243/core.tex#L2665-L2665), [cite at paper/reasoning-parts/erdos243/core.tex:2848](../../paper/reasoning-parts/erdos243/core.tex#L2848-L2849)
+- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:91](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L91-L91), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:147](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L147-L147), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:150](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L150-L150), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:188](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L188-L188), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:189](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L189-L189), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:190](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L190-L190), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:335](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L335-L335), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:359](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L359-L359), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:361](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L361-L361), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:394](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L394-L394), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:630](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L630-L630), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:890](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L890-L891)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:175](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L175-L175), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:635](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L635-L635), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:650](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L650-L650), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:680](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L680-L680), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:685](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L685-L685), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:701](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L701-L701), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:702](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L702-L702), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:705](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L705-L705), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:711](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L711-L711), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:859](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L859-L859), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1665](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1665-L1665), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1676](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1676-L1676), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1693](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1693-L1693), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1699](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1699-L1699), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1747](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1747-L1747), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2035](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2035-L2035), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2039](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2039-L2039), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2363](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2363-L2363), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2367](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2367-L2367), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2380](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2380-L2380), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2433](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2433-L2433), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2435](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2435-L2435), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2701](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2701-L2701), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2704](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2704-L2704), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2712](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2712-L2712), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2895](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2895-L2896), [cite at paper/reasoning-parts/erdos243/core.tex:133](../../paper/reasoning-parts/erdos243/core.tex#L133-L133), [cite at paper/reasoning-parts/erdos243/core.tex:593](../../paper/reasoning-parts/erdos243/core.tex#L593-L593), [cite at paper/reasoning-parts/erdos243/core.tex:608](../../paper/reasoning-parts/erdos243/core.tex#L608-L608), [cite at paper/reasoning-parts/erdos243/core.tex:638](../../paper/reasoning-parts/erdos243/core.tex#L638-L638), [cite at paper/reasoning-parts/erdos243/core.tex:643](../../paper/reasoning-parts/erdos243/core.tex#L643-L643), [cite at paper/reasoning-parts/erdos243/core.tex:659](../../paper/reasoning-parts/erdos243/core.tex#L659-L659), [cite at paper/reasoning-parts/erdos243/core.tex:660](../../paper/reasoning-parts/erdos243/core.tex#L660-L660), [cite at paper/reasoning-parts/erdos243/core.tex:663](../../paper/reasoning-parts/erdos243/core.tex#L663-L663), [cite at paper/reasoning-parts/erdos243/core.tex:669](../../paper/reasoning-parts/erdos243/core.tex#L669-L669), [cite at paper/reasoning-parts/erdos243/core.tex:817](../../paper/reasoning-parts/erdos243/core.tex#L817-L817), [cite at paper/reasoning-parts/erdos243/core.tex:1623](../../paper/reasoning-parts/erdos243/core.tex#L1623-L1623), [cite at paper/reasoning-parts/erdos243/core.tex:1634](../../paper/reasoning-parts/erdos243/core.tex#L1634-L1634), [cite at paper/reasoning-parts/erdos243/core.tex:1651](../../paper/reasoning-parts/erdos243/core.tex#L1651-L1651), [cite at paper/reasoning-parts/erdos243/core.tex:1657](../../paper/reasoning-parts/erdos243/core.tex#L1657-L1657), [cite at paper/reasoning-parts/erdos243/core.tex:1705](../../paper/reasoning-parts/erdos243/core.tex#L1705-L1705), [cite at paper/reasoning-parts/erdos243/core.tex:1993](../../paper/reasoning-parts/erdos243/core.tex#L1993-L1993), [cite at paper/reasoning-parts/erdos243/core.tex:1997](../../paper/reasoning-parts/erdos243/core.tex#L1997-L1997), [cite at paper/reasoning-parts/erdos243/core.tex:2321](../../paper/reasoning-parts/erdos243/core.tex#L2321-L2321), [cite at paper/reasoning-parts/erdos243/core.tex:2325](../../paper/reasoning-parts/erdos243/core.tex#L2325-L2325), [cite at paper/reasoning-parts/erdos243/core.tex:2338](../../paper/reasoning-parts/erdos243/core.tex#L2338-L2338), [cite at paper/reasoning-parts/erdos243/core.tex:2391](../../paper/reasoning-parts/erdos243/core.tex#L2391-L2391), [cite at paper/reasoning-parts/erdos243/core.tex:2393](../../paper/reasoning-parts/erdos243/core.tex#L2393-L2393), [cite at paper/reasoning-parts/erdos243/core.tex:2659](../../paper/reasoning-parts/erdos243/core.tex#L2659-L2659), [cite at paper/reasoning-parts/erdos243/core.tex:2662](../../paper/reasoning-parts/erdos243/core.tex#L2662-L2662), [cite at paper/reasoning-parts/erdos243/core.tex:2670](../../paper/reasoning-parts/erdos243/core.tex#L2670-L2670), [cite at paper/reasoning-parts/erdos243/core.tex:2853](../../paper/reasoning-parts/erdos243/core.tex#L2853-L2854)
 
 <a id="source-source-8710374c3e8c9f"></a>
 
@@ -4585,7 +4585,7 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5328-L5331) — lines `5328–5331`; excerpt `sha256:2cc1d6adac4a799350b2f110f64e22883a9a6da730739cce9c316980e35947b3`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L25-L47) — lines `25–47`; excerpt `sha256:1964e6ddeec8bb90c934b89b878d1d1a1472a86d6d1e23dc0ac35363484a9012`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7470-L7475) — lines `7470–7475`; excerpt `sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7479-L7484) — lines `7479–7484`; excerpt `sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L802-L807) — lines `802–807`; excerpt `sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998`
 
 Paper citation usages:
@@ -4658,11 +4658,11 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1007-L1012) — lines `1007–1012`; excerpt `sha256:3e8d9bba274ba0d1fa7883a36808baad3612c511dcd54421d1fb5d61d279fd1e`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1019-L1024) — lines `1019–1024`; excerpt `sha256:3e8d9bba274ba0d1fa7883a36808baad3612c511dcd54421d1fb5d61d279fd1e`
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:724](../../paper/1049/erdos-1049-rational-base-lambert.tex#L724-L724)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:736](../../paper/1049/erdos-1049-rational-base-lambert.tex#L736-L736)
 
 <a id="source-source-92b0dfb67f5009"></a>
 
@@ -4813,7 +4813,7 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5322-L5325) — lines `5322–5325`; excerpt `sha256:a2986b3c4ad5444edff29257bbeccf1dbda70fa87ceb63468d3192cdd636ac3b`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3146-L3152) — lines `3146–3152`; excerpt `sha256:62e9f12c9446297c621f7f486af4e1739cd6b6e5b979419191df4d31b8bb4cdc`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3154-L3160) — lines `3154–3160`; excerpt `sha256:62e9f12c9446297c621f7f486af4e1739cd6b6e5b979419191df4d31b8bb4cdc`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L17-L23) — lines `17–23`; excerpt `sha256:62e9f12c9446297c621f7f486af4e1739cd6b6e5b979419191df4d31b8bb4cdc`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L178-L178) — lines `178–178`; excerpt `sha256:5fd985589a096c7284944042b00248690d1d7fceed1258356a6e91864e8e051c`
 
@@ -4939,7 +4939,7 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L865-L868) — lines `865–868`; excerpt `sha256:2fd518712f78c5863c24df2988af2303d5d5610ce069a736fcb6f69c30c4d37b`
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7430-L7434) — lines `7430–7434`; excerpt `sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7439-L7443) — lines `7439–7443`; excerpt `sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L762-L766) — lines `762–766`; excerpt `sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c`
 
 Paper citation usages:
@@ -5221,15 +5221,15 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3261-L3267) — lines `3261–3267`; excerpt `sha256:547a282df5e35d2d260581efbb9d6958a6a3bf47c2d9a4d9b39949fd65e27f76`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3269-L3275) — lines `3269–3275`; excerpt `sha256:547a282df5e35d2d260581efbb9d6958a6a3bf47c2d9a4d9b39949fd65e27f76`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L132-L138) — lines `132–138`; excerpt `sha256:547a282df5e35d2d260581efbb9d6958a6a3bf47c2d9a4d9b39949fd65e27f76`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L134-L134) — lines `134–134`; excerpt `sha256:b5343bdda9eb10f05393fa410f344c3530bbc1327366be45d9704d78b9f6444d`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L139-L139) — lines `139–139`; excerpt `sha256:dfa7085590f70ee1f427373ade48dba5016bb3538108b3756725573ffbee56ea`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2796-L2796) — lines `2796–2796`; excerpt `sha256:04460620821776cd394a005083318c889c68c93c4a7b5c16d5dc341484037d26`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2804-L2804) — lines `2804–2804`; excerpt `sha256:04460620821776cd394a005083318c889c68c93c4a7b5c16d5dc341484037d26`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:159](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L159-L159), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:164](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L164-L164), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2821](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2821-L2821), [cite at paper/reasoning-parts/erdos1049/core.tex:134](../../paper/reasoning-parts/erdos1049/core.tex#L134-L134), [cite at paper/reasoning-parts/erdos1049/core.tex:139](../../paper/reasoning-parts/erdos1049/core.tex#L139-L139), [cite at paper/reasoning-parts/erdos1049/core.tex:2796](../../paper/reasoning-parts/erdos1049/core.tex#L2796-L2796)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:159](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L159-L159), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:164](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L164-L164), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2829](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2829-L2829), [cite at paper/reasoning-parts/erdos1049/core.tex:134](../../paper/reasoning-parts/erdos1049/core.tex#L134-L134), [cite at paper/reasoning-parts/erdos1049/core.tex:139](../../paper/reasoning-parts/erdos1049/core.tex#L139-L139), [cite at paper/reasoning-parts/erdos1049/core.tex:2804](../../paper/reasoning-parts/erdos1049/core.tex#L2804-L2804)
 
 <a id="source-source-abedb02f9939e5"></a>
 
@@ -5249,7 +5249,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3088-L3094) — lines `3088–3094`; excerpt `sha256:114c6c590cc9d93a8ef21180697160ce21e5fd0ef2e6801cfa8c3bd3dc16e78c`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3093-L3099) — lines `3093–3099`; excerpt `sha256:114c6c590cc9d93a8ef21180697160ce21e5fd0ef2e6801cfa8c3bd3dc16e78c`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L48-L54) — lines `48–54`; excerpt `sha256:114c6c590cc9d93a8ef21180697160ce21e5fd0ef2e6801cfa8c3bd3dc16e78c`
 
 Paper citation usages:
@@ -5326,15 +5326,15 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L996-L1007) — lines `996–1007`; excerpt `sha256:ded7a6e73c64eb888bff8d92fdf9045c0912b78b36a09aaf5d4f28ab76caf53f`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3172-L3183) — lines `3172–3183`; excerpt `sha256:28607cac7b070bebdf820b61863c3daadc81c336a532ef5ffb850e0444467fbe`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1008-L1019) — lines `1008–1019`; excerpt `sha256:ded7a6e73c64eb888bff8d92fdf9045c0912b78b36a09aaf5d4f28ab76caf53f`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3180-L3191) — lines `3180–3191`; excerpt `sha256:28607cac7b070bebdf820b61863c3daadc81c336a532ef5ffb850e0444467fbe`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L43-L54) — lines `43–54`; excerpt `sha256:28607cac7b070bebdf820b61863c3daadc81c336a532ef5ffb850e0444467fbe`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L256-L256) — lines `256–256`; excerpt `sha256:7f7b7e03e5c722d8297c8cf2da6d8eb4158df6a60047dc0a2affeab27fe55bd9`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L953-L953) — lines `953–953`; excerpt `sha256:3e98a97c395214cdb4ed51c973a3d6eac7d63374f7409fd37c5d693242008cc6`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1404-L1404) — lines `1404–1404`; excerpt `sha256:33ee2f9a69f1ef1092a438ef1e40bedf0229f951312ecf0a04112573693455d3`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1414-L1414) — lines `1414–1414`; excerpt `sha256:7f14ab85ae77d06b332fde61d34c5cd7ed84907af8601150f2b286f3a895ceef`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1431-L1431) — lines `1431–1431`; excerpt `sha256:9c9f4ab17e2bd61028893e5453258ab9f963a6a4c5391bcfebd52882c8970f9a`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1622-L1622) — lines `1622–1622`; excerpt `sha256:84baaf0fba645123571d368f33d5c2b16dd3bd0252e8bf3531fcf64cfc3604d3`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L961-L961) — lines `961–961`; excerpt `sha256:3e98a97c395214cdb4ed51c973a3d6eac7d63374f7409fd37c5d693242008cc6`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1412-L1412) — lines `1412–1412`; excerpt `sha256:33ee2f9a69f1ef1092a438ef1e40bedf0229f951312ecf0a04112573693455d3`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1422-L1422) — lines `1422–1422`; excerpt `sha256:7f14ab85ae77d06b332fde61d34c5cd7ed84907af8601150f2b286f3a895ceef`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1439-L1439) — lines `1439–1439`; excerpt `sha256:9c9f4ab17e2bd61028893e5453258ab9f963a6a4c5391bcfebd52882c8970f9a`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1630-L1630) — lines `1630–1630`; excerpt `sha256:84baaf0fba645123571d368f33d5c2b16dd3bd0252e8bf3531fcf64cfc3604d3`
 - [lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean](../../lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean#L3-L12) — lines `3–12`; excerpt `sha256:2c6a0d27c905ea48c1f25e9aa96f3007e323409c7b093d69e63e5d6389c5dd78`
 - [lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean](../../lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean#L294-L341) — lines `294–341`; excerpt `sha256:079ff692126bd3e4d34f548fea370a492cd0c13ef7f93ce3fb3dd3ad6697e51f`
 - [lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean](../../lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean#L1373-L1380) — lines `1373–1380`; excerpt `sha256:00ffa8698a1534c856de8c5358848f0e1631280815d61cd62dccca5b31c96703`
@@ -5344,8 +5344,8 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:382](../../paper/1049/erdos-1049-rational-base-lambert.tex#L382-L382), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:460](../../paper/1049/erdos-1049-rational-base-lambert.tex#L460-L460), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:472](../../paper/1049/erdos-1049-rational-base-lambert.tex#L472-L472)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:281](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L281-L281), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:978](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L978-L978), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1421](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1421-L1421), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1424](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1424-L1424), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1429](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1429-L1429), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1439](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1439-L1439), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1456](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1456-L1456), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1647](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1647-L1647), [cite at paper/reasoning-parts/erdos1049/core.tex:256](../../paper/reasoning-parts/erdos1049/core.tex#L256-L256), [cite at paper/reasoning-parts/erdos1049/core.tex:953](../../paper/reasoning-parts/erdos1049/core.tex#L953-L953), [cite at paper/reasoning-parts/erdos1049/core.tex:1396](../../paper/reasoning-parts/erdos1049/core.tex#L1396-L1396), [cite at paper/reasoning-parts/erdos1049/core.tex:1399](../../paper/reasoning-parts/erdos1049/core.tex#L1399-L1399), [cite at paper/reasoning-parts/erdos1049/core.tex:1404](../../paper/reasoning-parts/erdos1049/core.tex#L1404-L1404), [cite at paper/reasoning-parts/erdos1049/core.tex:1414](../../paper/reasoning-parts/erdos1049/core.tex#L1414-L1414), [cite at paper/reasoning-parts/erdos1049/core.tex:1431](../../paper/reasoning-parts/erdos1049/core.tex#L1431-L1431), [cite at paper/reasoning-parts/erdos1049/core.tex:1622](../../paper/reasoning-parts/erdos1049/core.tex#L1622-L1622)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:326](../../paper/1049/erdos-1049-rational-base-lambert.tex#L326-L326), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:394](../../paper/1049/erdos-1049-rational-base-lambert.tex#L394-L394), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:472](../../paper/1049/erdos-1049-rational-base-lambert.tex#L472-L472), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:484](../../paper/1049/erdos-1049-rational-base-lambert.tex#L484-L484)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:281](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L281-L281), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:986](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L986-L986), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1429](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1429-L1429), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1432](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1432-L1432), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1437](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1437-L1437), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1447](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1447-L1447), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1464](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1464-L1464), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1655](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1655-L1655), [cite at paper/reasoning-parts/erdos1049/core.tex:256](../../paper/reasoning-parts/erdos1049/core.tex#L256-L256), [cite at paper/reasoning-parts/erdos1049/core.tex:961](../../paper/reasoning-parts/erdos1049/core.tex#L961-L961), [cite at paper/reasoning-parts/erdos1049/core.tex:1404](../../paper/reasoning-parts/erdos1049/core.tex#L1404-L1404), [cite at paper/reasoning-parts/erdos1049/core.tex:1407](../../paper/reasoning-parts/erdos1049/core.tex#L1407-L1407), [cite at paper/reasoning-parts/erdos1049/core.tex:1412](../../paper/reasoning-parts/erdos1049/core.tex#L1412-L1412), [cite at paper/reasoning-parts/erdos1049/core.tex:1422](../../paper/reasoning-parts/erdos1049/core.tex#L1422-L1422), [cite at paper/reasoning-parts/erdos1049/core.tex:1439](../../paper/reasoning-parts/erdos1049/core.tex#L1439-L1439), [cite at paper/reasoning-parts/erdos1049/core.tex:1630](../../paper/reasoning-parts/erdos1049/core.tex#L1630-L1630)
 
 <a id="source-source-af9e99293e9dd0"></a>
 
@@ -5411,11 +5411,11 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L930-L934) — lines `930–934`; excerpt `sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3049-L3053) — lines `3049–3053`; excerpt `sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L944-L948) — lines `944–948`; excerpt `sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3054-L3058) — lines `3054–3058`; excerpt `sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L9-L13) — lines `9–13`; excerpt `sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L622-L622) — lines `622–622`; excerpt `sha256:041b2b0724ccd906861e8883f033bba1d825fd23b427fc24c8b01a0224a1788f`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2713-L2713) — lines `2713–2713`; excerpt `sha256:dcf5805cdc2b24f32e9bcb43272cc7feb8a413d7ae8078b50aee921519da62f3`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2718-L2718) — lines `2718–2718`; excerpt `sha256:dcf5805cdc2b24f32e9bcb43272cc7feb8a413d7ae8078b50aee921519da62f3`
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1998-L2003) — lines `1998–2003`; excerpt `sha256:93b82e07532c595ce8c3e4690e48b8f8b4b955a46be725042a411f3faf1dabad`
 - [paper/reasoning-parts/erdos68/back.tex](../../paper/reasoning-parts/erdos68/back.tex#L53-L58) — lines `53–58`; excerpt `sha256:93b82e07532c595ce8c3e4690e48b8f8b4b955a46be725042a411f3faf1dabad`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1167-L1167) — lines `1167–1167`; excerpt `sha256:8d82cab7eb54c0409e9de1dfa0e14834f85387199df848bb7a00812911e08a28`
@@ -5424,8 +5424,8 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:586](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L586-L586)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:664](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L664-L664), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2755](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2755-L2755), [cite at paper/reasoning-parts/erdos243/core.tex:622](../../paper/reasoning-parts/erdos243/core.tex#L622-L622), [cite at paper/reasoning-parts/erdos243/core.tex:2713](../../paper/reasoning-parts/erdos243/core.tex#L2713-L2713)
+- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:593](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L593-L593)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:664](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L664-L664), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2760](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2760-L2760), [cite at paper/reasoning-parts/erdos243/core.tex:622](../../paper/reasoning-parts/erdos243/core.tex#L622-L622), [cite at paper/reasoning-parts/erdos243/core.tex:2718](../../paper/reasoning-parts/erdos243/core.tex#L2718-L2718)
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1203](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1203-L1203), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1482](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1482-L1482), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1485](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1485-L1485), [cite at paper/reasoning-parts/erdos68/core.tex:1167](../../paper/reasoning-parts/erdos68/core.tex#L1167-L1167), [cite at paper/reasoning-parts/erdos68/extended\_record.tex:74](../../paper/reasoning-parts/erdos68/extended_record.tex#L74-L74), [cite at paper/reasoning-parts/erdos68/extended\_record.tex:77](../../paper/reasoning-parts/erdos68/extended_record.tex#L77-L77)
 
 <a id="source-source-b202a3f125817d"></a>
@@ -5521,14 +5521,14 @@ Public implementation or evidence coordinates:
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5318-L5322) — lines `5318–5322`; excerpt `sha256:ef4a3136894b8a7edf6c08674740c39ae6802868494e203a59f1f0b740884aad`
 - [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L922-L927) — lines `922–927`; excerpt `sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb`
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1950-L1955) — lines `1950–1955`; excerpt `sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb`
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L947-L952) — lines `947–952`; excerpt `sha256:78f98ff5782c3f26518953792349ad37efb90e1c262886d330c17b9bd9667677`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3066-L3071) — lines `3066–3071`; excerpt `sha256:eaf6cb9470a050bc0ac5978773ab824fd5e2486d1c128ad600ecc049ec5e1863`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L961-L966) — lines `961–966`; excerpt `sha256:78f98ff5782c3f26518953792349ad37efb90e1c262886d330c17b9bd9667677`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3071-L3076) — lines `3071–3076`; excerpt `sha256:eaf6cb9470a050bc0ac5978773ab824fd5e2486d1c128ad600ecc049ec5e1863`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L1469-L1473) — lines `1469–1473`; excerpt `sha256:b88cd5f1bc6cefbc5e905045ca863ca7401870655349d35df731df209f602711`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2407-L2411) — lines `2407–2411`; excerpt `sha256:a7879cfdd934566a241e3e3308255f7da36361150fbac8a520cdbdd7df7b86fb`
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2189-L2193) — lines `2189–2193`; excerpt `sha256:a90e34ce2e35d3da0f95095189eabd8008b453ab0d87c7cf0a45afa3570b26a8`
 - [paper/269/erdos-269-three-prime-running-lcm.tex](../../paper/269/erdos-269-three-prime-running-lcm.tex#L907-L911) — lines `907–911`; excerpt `sha256:a90e34ce2e35d3da0f95095189eabd8008b453ab0d87c7cf0a45afa3570b26a8`
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L978-L982) — lines `978–982`; excerpt `sha256:46dc589925f18c98a38b701dc32978cf7bf47298f8b19fc97e2d6eb3b37ddaf2`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3138-L3142) — lines `3138–3142`; excerpt `sha256:5dc4499ba85b2a90c1b7eeae654d404e424be3f9aa288c8eaf30e698ab7cf0e8`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L990-L994) — lines `990–994`; excerpt `sha256:46dc589925f18c98a38b701dc32978cf7bf47298f8b19fc97e2d6eb3b37ddaf2`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3146-L3150) — lines `3146–3150`; excerpt `sha256:5dc4499ba85b2a90c1b7eeae654d404e424be3f9aa288c8eaf30e698ab7cf0e8`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L9-L13) — lines `9–13`; excerpt `sha256:5dc4499ba85b2a90c1b7eeae654d404e424be3f9aa288c8eaf30e698ab7cf0e8`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L81-L81) — lines `81–81`; excerpt `sha256:daac0a1d16bf29ee1a7aed78143060b303b0c73e76e968b083ac1748e249105f`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L26-L31) — lines `26–31`; excerpt `sha256:eaf6cb9470a050bc0ac5978773ab824fd5e2486d1c128ad600ecc049ec5e1863`
@@ -5546,7 +5546,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:65](../../paper/1049/erdos-1049-rational-base-lambert.tex#L65-L65)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:66](../../paper/1049/erdos-1049-rational-base-lambert.tex#L66-L66)
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:140](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L140-L140)
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:240](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L240-L240)
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:67](../../paper/269/erdos-269-three-prime-running-lcm.tex#L67-L67)
@@ -5719,12 +5719,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7487-L7492) — lines `7487–7492`; excerpt `sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7496-L7501) — lines `7496–7501`; excerpt `sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L819-L824) — lines `819–824`; excerpt `sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6171](../../paper/249/erdos249-totient-reasoning-surface.tex#L6171-L6171), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6172](../../paper/249/erdos249-totient-reasoning-surface.tex#L6172-L6172), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:391](../../paper/reasoning-parts/erdos249/a249_invent.tex#L391-L391), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:392](../../paper/reasoning-parts/erdos249/a249_invent.tex#L392-L392)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6175](../../paper/249/erdos249-totient-reasoning-surface.tex#L6175-L6175), [cite at paper/249/erdos249-totient-reasoning-surface.tex:6176](../../paper/249/erdos249-totient-reasoning-surface.tex#L6176-L6176), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:391](../../paper/reasoning-parts/erdos249/a249_invent.tex#L391-L391), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:392](../../paper/reasoning-parts/erdos249/a249_invent.tex#L392-L392)
 
 <a id="source-source-bd5fabd398bdfa"></a>
 
@@ -5884,7 +5884,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7453-L7458) — lines `7453–7458`; excerpt `sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7462-L7467) — lines `7462–7467`; excerpt `sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L785-L790) — lines `785–790`; excerpt `sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e`
 
 Paper citation usages:
@@ -5942,7 +5942,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3234-L3240) — lines `3234–3240`; excerpt `sha256:b6b59c3f516fe753628de797f741e46ad1554bcd562427e309cfd40f794a23f8`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3242-L3248) — lines `3242–3248`; excerpt `sha256:b6b59c3f516fe753628de797f741e46ad1554bcd562427e309cfd40f794a23f8`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L105-L111) — lines `105–111`; excerpt `sha256:b6b59c3f516fe753628de797f741e46ad1554bcd562427e309cfd40f794a23f8`
 
 Paper citation usages:
@@ -5963,14 +5963,14 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L939-L943) — lines `939–943`; excerpt `sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3058-L3062) — lines `3058–3062`; excerpt `sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L953-L957) — lines `953–957`; excerpt `sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3063-L3067) — lines `3063–3067`; excerpt `sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L18-L22) — lines `18–22`; excerpt `sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6`
 
 Paper citation usages:
 
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:573](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L573-L573), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:597](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L597-L597)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:653](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L653-L653), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1749](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1749-L1749), [cite at paper/reasoning-parts/erdos243/core.tex:611](../../paper/reasoning-parts/erdos243/core.tex#L611-L611), [cite at paper/reasoning-parts/erdos243/core.tex:1707](../../paper/reasoning-parts/erdos243/core.tex#L1707-L1707)
+- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:573](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L573-L573), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:604](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L604-L604)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:653](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L653-L653), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1748](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1748-L1748), [cite at paper/reasoning-parts/erdos243/core.tex:611](../../paper/reasoning-parts/erdos243/core.tex#L611-L611), [cite at paper/reasoning-parts/erdos243/core.tex:1706](../../paper/reasoning-parts/erdos243/core.tex#L1706-L1706)
 
 <a id="source-source-cc1c19967d418f"></a>
 
@@ -6046,19 +6046,19 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3228-L3234) — lines `3228–3234`; excerpt `sha256:caca3710f524135671e299fa1162e5d77947646ae83681362b020268b6f0aac0`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3236-L3242) — lines `3236–3242`; excerpt `sha256:caca3710f524135671e299fa1162e5d77947646ae83681362b020268b6f0aac0`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L99-L105) — lines `99–105`; excerpt `sha256:caca3710f524135671e299fa1162e5d77947646ae83681362b020268b6f0aac0`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L154-L154) — lines `154–154`; excerpt `sha256:db55e75e74985bffb379ecf20c9d2e96d4c7951fc0a715f0d1b50c9f44b4e164`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L157-L157) — lines `157–157`; excerpt `sha256:8444d9a52e9d844dd060541101c5c242fac57224203c9f7d526daee3b4b72c56`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L177-L177) — lines `177–177`; excerpt `sha256:75f183a4516f9c063e390842908eca4c0e33ee429eb7e8a40b1f2f9805c4568c`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L966-L966) — lines `966–966`; excerpt `sha256:5e2e6c2c874886e16da148e50ad853ae95b8bd51917063f56898eede0c49e406`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L974-L974) — lines `974–974`; excerpt `sha256:5e2e6c2c874886e16da148e50ad853ae95b8bd51917063f56898eede0c49e406`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L4-L13) — lines `4–13`; excerpt `sha256:9e02e269f490c0d8ee088d184d3cf2b53af45d9b0144a4623c9110e7230e7af9`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L19-L32) — lines `19–32`; excerpt `sha256:ed4a3e5b020b06b3f16f2771e4c9518cf5e0c23e46e275e30a93b5b498f5db23`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L58-L62) — lines `58–62`; excerpt `sha256:6fab9c0293d1ca17fe26b54f24d0f7366711b09b71d8f6e869df1315fb5c2dbc`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:179](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L179-L179), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:182](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L182-L182), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:202](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L202-L202), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:991](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L991-L991), [cite at paper/reasoning-parts/erdos1049/core.tex:154](../../paper/reasoning-parts/erdos1049/core.tex#L154-L154), [cite at paper/reasoning-parts/erdos1049/core.tex:157](../../paper/reasoning-parts/erdos1049/core.tex#L157-L157), [cite at paper/reasoning-parts/erdos1049/core.tex:177](../../paper/reasoning-parts/erdos1049/core.tex#L177-L177), [cite at paper/reasoning-parts/erdos1049/core.tex:966](../../paper/reasoning-parts/erdos1049/core.tex#L966-L966)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:179](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L179-L179), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:182](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L182-L182), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:202](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L202-L202), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:999](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L999-L999), [cite at paper/reasoning-parts/erdos1049/core.tex:154](../../paper/reasoning-parts/erdos1049/core.tex#L154-L154), [cite at paper/reasoning-parts/erdos1049/core.tex:157](../../paper/reasoning-parts/erdos1049/core.tex#L157-L157), [cite at paper/reasoning-parts/erdos1049/core.tex:177](../../paper/reasoning-parts/erdos1049/core.tex#L177-L177), [cite at paper/reasoning-parts/erdos1049/core.tex:974](../../paper/reasoning-parts/erdos1049/core.tex#L974-L974)
 
 <a id="source-source-ce5fddc99aff3f"></a>
 
@@ -6252,7 +6252,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3291-L3297) — lines `3291–3297`; excerpt `sha256:c25f49535bb41622d57001597d91a9d0235dce0d09f719c90462c775d4374cb0`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3299-L3305) — lines `3299–3305`; excerpt `sha256:c25f49535bb41622d57001597d91a9d0235dce0d09f719c90462c775d4374cb0`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L162-L168) — lines `162–168`; excerpt `sha256:c25f49535bb41622d57001597d91a9d0235dce0d09f719c90462c775d4374cb0`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L121-L121) — lines `121–121`; excerpt `sha256:7ca3faafcf4b5c6e96101f2b67ab383bc16510022d0240ba9237766b8e7af01b`
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L143-L146) — lines `143–146`; excerpt `sha256:be4c5ae88c67a0cc23d71ca72524fb2cc5273fdf65a4f0ac220fae55ed91bfb4`
@@ -6422,13 +6422,13 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L926-L930) — lines `926–930`; excerpt `sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3045-L3049) — lines `3045–3049`; excerpt `sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L940-L944) — lines `940–944`; excerpt `sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3050-L3054) — lines `3050–3054`; excerpt `sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2415-L2418) — lines `2415–2418`; excerpt `sha256:8ffb24de85055473b210544129d443b7f4f1053369bca9b80a5a390f3e9d03ac`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L5-L9) — lines `5–9`; excerpt `sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L601-L601) — lines `601–601`; excerpt `sha256:cd8c27ae9a8135017858c7376e2262d083102fff1a40102ceb91b626a90f84c1`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1622-L1623) — lines `1622–1623`; excerpt `sha256:11e0342054d7c4e8c78eb3a2b9cf3e14eb83e8083b84fd50f4647051eaf4635d`
-- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2709-L2709) — lines `2709–2709`; excerpt `sha256:5b1834a94ad5fbf151d67607e7d1b9f259aeeeb2f02cf778d733f143e34533dc`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1621-L1622) — lines `1621–1622`; excerpt `sha256:11e0342054d7c4e8c78eb3a2b9cf3e14eb83e8083b84fd50f4647051eaf4635d`
+- [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2714-L2714) — lines `2714–2714`; excerpt `sha256:5b1834a94ad5fbf151d67607e7d1b9f259aeeeb2f02cf778d733f143e34533dc`
 - [paper/reasoning-parts/erdos251/back.tex](../../paper/reasoning-parts/erdos251/back.tex#L27-L30) — lines `27–30`; excerpt `sha256:8ffb24de85055473b210544129d443b7f4f1053369bca9b80a5a390f3e9d03ac`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L245-L245) — lines `245–245`; excerpt `sha256:eaa1d49db16032d9a995bc268a5e64df15540715982aacd7d504bd007c69cab4`
 - [lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean](../../lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1125-L1127) — lines `1125–1127`; excerpt `sha256:1139eed2569eedcc245358cbde7bff884c8a36c06c78b0a38246a82257dae3ec`
@@ -6437,7 +6437,7 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:571](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L571-L571)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:643](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L643-L643), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1664](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1664-L1665), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2751](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2751-L2751), [cite at paper/reasoning-parts/erdos243/core.tex:601](../../paper/reasoning-parts/erdos243/core.tex#L601-L601), [cite at paper/reasoning-parts/erdos243/core.tex:1622](../../paper/reasoning-parts/erdos243/core.tex#L1622-L1623), [cite at paper/reasoning-parts/erdos243/core.tex:2709](../../paper/reasoning-parts/erdos243/core.tex#L2709-L2709)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:643](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L643-L643), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1663](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1663-L1664), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2756](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2756-L2756), [cite at paper/reasoning-parts/erdos243/core.tex:601](../../paper/reasoning-parts/erdos243/core.tex#L601-L601), [cite at paper/reasoning-parts/erdos243/core.tex:1621](../../paper/reasoning-parts/erdos243/core.tex#L1621-L1622), [cite at paper/reasoning-parts/erdos243/core.tex:2714](../../paper/reasoning-parts/erdos243/core.tex#L2714-L2714)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:279](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L279-L279), [cite at paper/reasoning-parts/erdos251/core.tex:245](../../paper/reasoning-parts/erdos251/core.tex#L245-L245)
 
 <a id="source-source-e553241a97e580"></a>
@@ -6470,22 +6470,22 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L982-L986) — lines `982–986`; excerpt `sha256:e84ccbfd298ca45cdf1dc99cde6fa6c5c320db56fdd37d12d9716a81ae36f325`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3158-L3162) — lines `3158–3162`; excerpt `sha256:e84ccbfd298ca45cdf1dc99cde6fa6c5c320db56fdd37d12d9716a81ae36f325`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L994-L998) — lines `994–998`; excerpt `sha256:e84ccbfd298ca45cdf1dc99cde6fa6c5c320db56fdd37d12d9716a81ae36f325`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3166-L3170) — lines `3166–3170`; excerpt `sha256:e84ccbfd298ca45cdf1dc99cde6fa6c5c320db56fdd37d12d9716a81ae36f325`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L29-L33) — lines `29–33`; excerpt `sha256:e84ccbfd298ca45cdf1dc99cde6fa6c5c320db56fdd37d12d9716a81ae36f325`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L101-L101) — lines `101–101`; excerpt `sha256:6b9a9140a61bd1b858f2cbfd7a2201e226e80ac6e68674e910574cb3ddade3bc`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L249-L249) — lines `249–249`; excerpt `sha256:1d967e5b79978158028dec08e2da903dffe3ccf2adea4daa8aab1ec945c0074b`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L382-L382) — lines `382–382`; excerpt `sha256:9f8ab6319a7f69bec66a3b5d934fd0f1c4987b6fbc452dd9f31be0818e4f91cf`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L786-L786) — lines `786–786`; excerpt `sha256:821db0226f401eecde809f078e52fe48c1b83dedf30a7d27c9ca623edaa567df`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L944-L944) — lines `944–944`; excerpt `sha256:01c1ac66a7f33792d44a423457acee487c1e732800512e90d7bee1fb3494bef4`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L963-L963) — lines `963–963`; excerpt `sha256:30f757d949ac9157e8f267f8e3d786527c53103fc9398c0a3d0c1341553aa05e`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1185-L1185) — lines `1185–1185`; excerpt `sha256:c39b151bd9022f9c220a5aed4013998c921ddfa2b8061c70c8af2769ab82ee23`
-- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2371-L2371) — lines `2371–2371`; excerpt `sha256:d2c829624073677f01d8249e65502cefe988ed95a2fdda5ea915e1dcb2d758bc`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L792-L792) — lines `792–792`; excerpt `sha256:821db0226f401eecde809f078e52fe48c1b83dedf30a7d27c9ca623edaa567df`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L952-L952) — lines `952–952`; excerpt `sha256:01c1ac66a7f33792d44a423457acee487c1e732800512e90d7bee1fb3494bef4`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L971-L971) — lines `971–971`; excerpt `sha256:30f757d949ac9157e8f267f8e3d786527c53103fc9398c0a3d0c1341553aa05e`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L1193-L1193) — lines `1193–1193`; excerpt `sha256:c39b151bd9022f9c220a5aed4013998c921ddfa2b8061c70c8af2769ab82ee23`
+- [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2379-L2379) — lines `2379–2379`; excerpt `sha256:d2c829624073677f01d8249e65502cefe988ed95a2fdda5ea915e1dcb2d758bc`
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:374](../../paper/1049/erdos-1049-rational-base-lambert.tex#L374-L374)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:126](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L126-L126), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:274](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L274-L274), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:407](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L407-L407), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:811](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L811-L811), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:969](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L969-L969), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:988](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L988-L988), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1210](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1210-L1210), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2396](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2396-L2396), [cite at paper/reasoning-parts/erdos1049/core.tex:101](../../paper/reasoning-parts/erdos1049/core.tex#L101-L101), [cite at paper/reasoning-parts/erdos1049/core.tex:249](../../paper/reasoning-parts/erdos1049/core.tex#L249-L249), [cite at paper/reasoning-parts/erdos1049/core.tex:382](../../paper/reasoning-parts/erdos1049/core.tex#L382-L382), [cite at paper/reasoning-parts/erdos1049/core.tex:786](../../paper/reasoning-parts/erdos1049/core.tex#L786-L786), [cite at paper/reasoning-parts/erdos1049/core.tex:944](../../paper/reasoning-parts/erdos1049/core.tex#L944-L944), [cite at paper/reasoning-parts/erdos1049/core.tex:963](../../paper/reasoning-parts/erdos1049/core.tex#L963-L963), [cite at paper/reasoning-parts/erdos1049/core.tex:1185](../../paper/reasoning-parts/erdos1049/core.tex#L1185-L1185), [cite at paper/reasoning-parts/erdos1049/core.tex:2371](../../paper/reasoning-parts/erdos1049/core.tex#L2371-L2371)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:386](../../paper/1049/erdos-1049-rational-base-lambert.tex#L386-L386)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:126](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L126-L126), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:274](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L274-L274), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:407](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L407-L407), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:817](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L817-L817), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:977](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L977-L977), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:996](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L996-L996), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1218](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1218-L1218), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2404](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2404-L2404), [cite at paper/reasoning-parts/erdos1049/core.tex:101](../../paper/reasoning-parts/erdos1049/core.tex#L101-L101), [cite at paper/reasoning-parts/erdos1049/core.tex:249](../../paper/reasoning-parts/erdos1049/core.tex#L249-L249), [cite at paper/reasoning-parts/erdos1049/core.tex:382](../../paper/reasoning-parts/erdos1049/core.tex#L382-L382), [cite at paper/reasoning-parts/erdos1049/core.tex:792](../../paper/reasoning-parts/erdos1049/core.tex#L792-L792), [cite at paper/reasoning-parts/erdos1049/core.tex:952](../../paper/reasoning-parts/erdos1049/core.tex#L952-L952), [cite at paper/reasoning-parts/erdos1049/core.tex:971](../../paper/reasoning-parts/erdos1049/core.tex#L971-L971), [cite at paper/reasoning-parts/erdos1049/core.tex:1193](../../paper/reasoning-parts/erdos1049/core.tex#L1193-L1193), [cite at paper/reasoning-parts/erdos1049/core.tex:2379](../../paper/reasoning-parts/erdos1049/core.tex#L2379-L2379)
 
 <a id="source-source-e5f2924d82c59f"></a>
 
@@ -6505,7 +6505,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3207-L3214) — lines `3207–3214`; excerpt `sha256:ca3ad143147a5d2804f66fa9a2b445b365c705a19273a1ae8c77f2c257c09062`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3215-L3222) — lines `3215–3222`; excerpt `sha256:ca3ad143147a5d2804f66fa9a2b445b365c705a19273a1ae8c77f2c257c09062`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L78-L85) — lines `78–85`; excerpt `sha256:ca3ad143147a5d2804f66fa9a2b445b365c705a19273a1ae8c77f2c257c09062`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L273-L273) — lines `273–273`; excerpt `sha256:a9816f01cbbbed3606bb3c7105e1f1bc81607266eee3e3bc860ed90c8624c684`
 
@@ -6604,14 +6604,14 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L957-L962) — lines `957–962`; excerpt `sha256:4f8587ccc9d3ff6bd5567484e14f2aa9d86692a0e97b0f0dc1e5fafd523db4a2`
-- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3083-L3088) — lines `3083–3088`; excerpt `sha256:236ca478c9d32bf29f2608b9adab8ca4659107af2b10009ff37abc7040948631`
+- [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L971-L976) — lines `971–976`; excerpt `sha256:4f8587ccc9d3ff6bd5567484e14f2aa9d86692a0e97b0f0dc1e5fafd523db4a2`
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3088-L3093) — lines `3088–3093`; excerpt `sha256:236ca478c9d32bf29f2608b9adab8ca4659107af2b10009ff37abc7040948631`
 - [paper/reasoning-parts/erdos243/back.tex](../../paper/reasoning-parts/erdos243/back.tex#L43-L48) — lines `43–48`; excerpt `sha256:236ca478c9d32bf29f2608b9adab8ca4659107af2b10009ff37abc7040948631`
 
 Paper citation usages:
 
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:438](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L438-L438)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1861](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1861-L1861), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2429](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2429-L2429), [cite at paper/reasoning-parts/erdos243/core.tex:1819](../../paper/reasoning-parts/erdos243/core.tex#L1819-L1819), [cite at paper/reasoning-parts/erdos243/core.tex:2387](../../paper/reasoning-parts/erdos243/core.tex#L2387-L2387)
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1860](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1860-L1860), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2428](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2428-L2428), [cite at paper/reasoning-parts/erdos243/core.tex:1818](../../paper/reasoning-parts/erdos243/core.tex#L1818-L1818), [cite at paper/reasoning-parts/erdos243/core.tex:2386](../../paper/reasoning-parts/erdos243/core.tex#L2386-L2386)
 
 <a id="source-source-eeff3fa685af8a"></a>
 
@@ -6631,12 +6631,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7492-L7497) — lines `7492–7497`; excerpt `sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca`
+- [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L7501-L7506) — lines `7501–7506`; excerpt `sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca`
 - [paper/reasoning-parts/erdos249/a249\_p5.tex](../../paper/reasoning-parts/erdos249/a249_p5.tex#L824-L829) — lines `824–829`; excerpt `sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca`
 
 Paper citation usages:
 
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6180](../../paper/249/erdos249-totient-reasoning-surface.tex#L6180-L6180), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:400](../../paper/reasoning-parts/erdos249/a249_invent.tex#L400-L400)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:6184](../../paper/249/erdos249-totient-reasoning-surface.tex#L6184-L6184), [cite at paper/reasoning-parts/erdos249/a249\_invent.tex:400](../../paper/reasoning-parts/erdos249/a249_invent.tex#L400-L400)
 
 <a id="source-source-ef6233b59b95cb"></a>
 
@@ -6688,14 +6688,14 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L986-L990) — lines `986–990`; excerpt `sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3162-L3166) — lines `3162–3166`; excerpt `sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L998-L1002) — lines `998–1002`; excerpt `sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3170-L3174) — lines `3170–3174`; excerpt `sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L33-L37) — lines `33–37`; excerpt `sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c`
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:217](../../paper/1049/erdos-1049-rational-base-lambert.tex#L217-L217)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:427](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L427-L427), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:556](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L556-L556), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:705](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L705-L705), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:956](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L956-L956), [cite at paper/reasoning-parts/erdos1049/core.tex:402](../../paper/reasoning-parts/erdos1049/core.tex#L402-L402), [cite at paper/reasoning-parts/erdos1049/core.tex:531](../../paper/reasoning-parts/erdos1049/core.tex#L531-L531), [cite at paper/reasoning-parts/erdos1049/core.tex:680](../../paper/reasoning-parts/erdos1049/core.tex#L680-L680), [cite at paper/reasoning-parts/erdos1049/core.tex:931](../../paper/reasoning-parts/erdos1049/core.tex#L931-L931)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:218](../../paper/1049/erdos-1049-rational-base-lambert.tex#L218-L218)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:427](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L427-L427), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:562](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L562-L562), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:711](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L711-L711), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:962](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L962-L962), [cite at paper/reasoning-parts/erdos1049/core.tex:402](../../paper/reasoning-parts/erdos1049/core.tex#L402-L402), [cite at paper/reasoning-parts/erdos1049/core.tex:537](../../paper/reasoning-parts/erdos1049/core.tex#L537-L537), [cite at paper/reasoning-parts/erdos1049/core.tex:686](../../paper/reasoning-parts/erdos1049/core.tex#L686-L686), [cite at paper/reasoning-parts/erdos1049/core.tex:937](../../paper/reasoning-parts/erdos1049/core.tex#L937-L937)
 
 <a id="source-source-f213b302ada43a"></a>
 
@@ -6862,14 +6862,14 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1012-L1017) — lines `1012–1017`; excerpt `sha256:76708e9e1ba9cb5b881eb2f319d5a6bf94dc5132c846fc6c1ebd51aef0fb72d4`
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3183-L3188) — lines `3183–3188`; excerpt `sha256:41ce33a37be85c639d04c7e0ffada3de52abc55e55f352d0e27837ed17fce6db`
+- [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1024-L1029) — lines `1024–1029`; excerpt `sha256:76708e9e1ba9cb5b881eb2f319d5a6bf94dc5132c846fc6c1ebd51aef0fb72d4`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3191-L3196) — lines `3191–3196`; excerpt `sha256:41ce33a37be85c639d04c7e0ffada3de52abc55e55f352d0e27837ed17fce6db`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L54-L59) — lines `54–59`; excerpt `sha256:41ce33a37be85c639d04c7e0ffada3de52abc55e55f352d0e27837ed17fce6db`
 
 Paper citation usages:
 
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:515](../../paper/1049/erdos-1049-rational-base-lambert.tex#L515-L515)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1607](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1607-L1607), [cite at paper/reasoning-parts/erdos1049/core.tex:1582](../../paper/reasoning-parts/erdos1049/core.tex#L1582-L1582)
+- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:527](../../paper/1049/erdos-1049-rational-base-lambert.tex#L527-L527)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1615](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1615-L1615), [cite at paper/reasoning-parts/erdos1049/core.tex:1590](../../paper/reasoning-parts/erdos1049/core.tex#L1590-L1590)
 
 <a id="source-source-f6e839bcb8a60f"></a>
 
@@ -6929,12 +6929,12 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3188-L3193) — lines `3188–3193`; excerpt `sha256:bd1db09a836b7bae7294afc1da1a7ae1ba135a083600d289e0dd8b45d24c10e4`
+- [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3196-L3201) — lines `3196–3201`; excerpt `sha256:bd1db09a836b7bae7294afc1da1a7ae1ba135a083600d289e0dd8b45d24c10e4`
 - [paper/reasoning-parts/erdos1049/back.tex](../../paper/reasoning-parts/erdos1049/back.tex#L59-L64) — lines `59–64`; excerpt `sha256:bd1db09a836b7bae7294afc1da1a7ae1ba135a083600d289e0dd8b45d24c10e4`
 
 Paper citation usages:
 
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1420](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1420-L1420), [cite at paper/reasoning-parts/erdos1049/core.tex:1395](../../paper/reasoning-parts/erdos1049/core.tex#L1395-L1395)
+- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1428](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1428-L1428), [cite at paper/reasoning-parts/erdos1049/core.tex:1403](../../paper/reasoning-parts/erdos1049/core.tex#L1403-L1403)
 
 <a id="source-source-fb4194cadb150b"></a>
 
@@ -7001,7 +7001,7 @@ These gaps are shown explicitly so the catalogue cannot be mistaken for complete
 - Registered papers scanned: `21`; TeX source files scanned after local includes: `73`.
 - Citation keys without a local bibliography definition: `0`
 - Bibliography entries without a curated source link: `0`
-- Lean lexical candidates awaiting review: `117`
+- Lean lexical candidates awaiting review: `138`
 - Unresolved local TeX includes: `0`
 
 Machine-readable inventories, hashes, unresolved keys, and lexical candidates: [source-attribution-index.json](source-attribution-index.json).

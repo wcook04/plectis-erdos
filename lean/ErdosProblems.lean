@@ -26,11 +26,14 @@ import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
 import ErdosProblems.Erdos243.RepairEntropy
 import ErdosProblems.Erdos243.NewtonV8.NewtonClassificationAudit
 import ErdosProblems.Erdos1049.AllRow.Producer
+import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
 import ErdosProblems.Erdos1041.PaperCriticalValueMeanR10
 import ErdosProblems.Erdos1041.PaperCubicFibres
 import ErdosProblems.Erdos1041.PaperStraightObstructions
 import ErdosProblems.Erdos1041.PaperSeparationCounterexample
 import ErdosProblems.Erdos1049.RationalBaseContour
+import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
 import ErdosProblems.Erdos243.CubicNeighbourIdentity
 import ErdosProblems.Erdos243.LcmRecordExcess
 import ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity

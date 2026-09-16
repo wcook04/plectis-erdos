@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
-  "module_count": 1276,
-  "synopsis_count": 1081,
+  "source_fingerprint": "sha256:5250d9cea4194349d7b051b723f437f6aec860390da40bb35db97f5501af33dd",
+  "module_count": 1340,
+  "synopsis_count": 1145,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3855,7 +3855,7 @@
     {
       "id": "ErdosProblems.Erdos1041.PaperReflectedBoundary",
       "path": "lean/ErdosProblems/Erdos1041/PaperReflectedBoundary.lean",
-      "synopsis": "B4: the polar boundary inequality and the reflected-value consumer Uncompiled at Lean 4.29.1 / Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6. The finite product logarithmic derivative and the boundary norm comparison have explicit proof scripts rather than hypothesis-only wrappers. The maximum-principle passage through possible boundary zeros and critical-point localisation are retained as interfaces here; PaperReflectedCompletion now supplies both source candidates and the full endpoint. None is compiled."
+      "synopsis": "B4: the polar boundary inequality and the reflected-value consumer Pinned to Lean 4.29.1 / Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6. The finite product logarithmic derivative and the boundary norm comparison have explicit proof scripts rather than hypothesis-only wrappers. The maximum-principle passage through possible boundary zeros and critical-point localisation are retained as interfaces here; PaperReflectedCompletion now supplies both source candidates and the full endpoint. None is compiled."
     },
     {
       "id": "ErdosProblems.Erdos1041.PaperReflectedCompletion",
@@ -3880,7 +3880,7 @@
     {
       "id": "ErdosProblems.Erdos1041.PoissonKernelBridge",
       "path": "lean/ErdosProblems/Erdos1041/PoissonKernelBridge.lean",
-      "synopsis": "Pointwise algebra for the full-disc weighted free-point Poisson argument. This supplies the kernel/logarithmic-derivative identity, not the analytic norm-square majorization or the infinite Taylor energy identity. Uncompiled."
+      "synopsis": "Pointwise algebra for the full-disc weighted free-point Poisson argument. This supplies the kernel/logarithmic-derivative identity, not the analytic norm-square majorization or the infinite Taylor energy identity."
     },
     {
       "id": "ErdosProblems.Erdos1041.PoissonNormSquare",
@@ -4098,6 +4098,31 @@
       "synopsis": "Exact radial identities of the explicit finite logarithmic construction. Candidate pending compilation; no equality classification is asserted."
     },
     {
+      "id": "ErdosProblems.Erdos1049.ActualAGrowthR14",
+      "path": "lean/ErdosProblems/Erdos1049/ActualAGrowthR14.lean",
+      "synopsis": "Fixed-base growth of the actual alternating A polynomial Proves two-sided fixed-base bounds and the quadratic log rate of A_n(p). Gaussian reciprocity is proved from finite factorial identities. Every earlier summand loses at least n powers against the last one. The resulting tail is bounded by a constant times n*q^n, which tends to zero. Thus possible alternating cancellation is controlled before logarithms or a quadratic rate are asserted."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.ActualMomentGeneratingR12",
+      "path": "lean/ErdosProblems/Erdos1049/ActualMomentGeneratingR12.lean",
+      "synopsis": "The actual analytic moment generating identity Proves summability, positivity, and the identity v_m^* = P^4 G_q(q^(m+1)). Unlike a positive-measure consumer, this file starts with the literal finite q-product summand in the 2016 normalised moment. It proves summability and performs the finite/infinite product cancellation at w=q^(m+1). No moment identity, atom identity, summability, or product nonvanishing is a premise. The subsequent coefficient expansion of G, comparison of its coefficients, and infinite Cauchy--Binet passage are separate obligations; this file does not mislabel those consequences as established merely by the identity below."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.ActualSourceAnalyticIdentityR14",
+      "path": "lean/ErdosProblems/Erdos1049/ActualSourceAnalyticIdentityR14.lean",
+      "synopsis": "The actual analytic identity A_n F - B_n = H_n Proves A_n F - B_n = H_n for the literal source at every 0 < q < 1. The proof uses the actual residues, proves that the first 12*n terms vanish, and shifts the absolutely convergent series. The last Pochhammer has length 13*n+1, including n=0. No source identity or summability assertion is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.ActualSourceRemainderR14",
+      "path": "lean/ErdosProblems/Erdos1049/ActualSourceRemainderR14.lean",
+      "synopsis": "Evaluation and nonvanishing of the actual cancelled remainder Proves the cancelled remainder is positive, with an exact log formula. The real normalisation is proved directly from the actual integral inclusions. No nonzero source error, analytic identity, or substitute polynomial pair is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.ActualSourceResiduesR14",
+      "path": "lean/ErdosProblems/Erdos1049/ActualSourceResiduesR14.lean",
+      "synopsis": "Residues of the literal 2004 rational kernel Proves the partial-fraction residues of the 2004 rational kernel. The denominator has 13*n+1 factors, as in the corrected analytic source. Its residues are proved to be the existing integral A_s evaluated at 1/q, with the exact pole-power factor. No abstract A/B pair is substituted."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.AdelicHeightBridge",
       "path": "lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
       "synopsis": "Erdős #1049: one integer certificate controls four separate obstructions The single two-sided bracket `2 ^ 64 < 3 ^ 41 < 2 ^ 65` sharpens every parameter obstruction already recorded for `3 / 2`. * The Archimedean height deficit against the Bundschuh--Väänänen frontier is bigger than `3 / 13`, uniformly over the whole admissible rectangular Hermite--Padé cone (`threeHalves_rectangular_hp_gap_gt_threeThirteenths`). The previous certificate `3 ^ 81 < 2 ^ 200` only gave `81 / 200` for the ratio itself and no cone-uniform gap at all. * The four-jet counting threshold at bottom depth `41` drops from the `4 R + 2 S = 164 + 2 S` of `exists_distinct_binary_selectors_same_fourJet_of_rank` to `130 + 2 S`, and `130` is *exactly* optimal (`fourJet_card_gt_two_pow_of_rank_41`). * The cubic Hankel producer must remove more than `39 / 41` of its raw denominator charge (`threeHalves_hankelChargeThreshold_lt_eightFortyOne`). * The scalar cone misses by a fixed relative margin `17 / 41` (`three_two_scalar_margin_lt_explicit`). The final section adds a general **bounded-fibre escape** pigeonhole, which turns a bound on the multiplicity of equal analytic remainders into a four-jet collision that escapes the remainder nullspace. The middle sections concern the `q`-order of Zudilin's normalized Hankel determinant `V_N^*` (Zudilin 2016, Res. Number Theory 2, Art. 15, §4). Their exact Lean reach is: the associated-graded recurrence and both tail reciprocals; the exact source tails, their step identity and first step coefficient; the determinant-preserving backward shift; the leading matrix as a sc"
@@ -4138,14 +4163,164 @@
       "synopsis": "Erdős #1049: the Bézout–Plücker normal form for endpoint jets `ZudilinConeArithmetic.fourJetSignature_card` counts the *whole ambient* endpoint-jet target, `(3^R)^2 · (2^S)^2`, and its binary-selector pigeonhole therefore needs rank `4R + 2S`. That count is wasteful whenever the rows share arithmetic: the four jets are two coordinates modulo `N = 2^S·3^R` by CRT, and one determinant-one shear makes one of those coordinates *free* while the other consists exactly of exterior minors. The normal form Fix an anchor `(a,b)` that is unimodular modulo `N`, i.e. `u·a + v·b = 1` for some `u, v`. The shear `T = ![![u, v], ![-b, a]]`, `det T = u·a + v·b = 1` sends the anchor to `(1,0)` and a general row `(A,B)` to `(u·A + v·B, a·B - b·A)`. Its second coordinate **is** the exterior minor against the anchor. Hence the subgroup generated by the rows is `R × ⟨minors⟩`, so `|H_N| = N²/d` with `d = gcd(N, minors)`, and the cokernel is cyclic of order `d` — every `2`-adic anchor-minor depth saves one selector and every `3`-adic depth saves two, with no logarithmic estimate. At maximal collapse (`d = N`, every anchor minor vanishing) the target has only `N` elements instead of `N²`, so the ambient rank threshold `4R + 2S` drops to `2R + S`. `binary_row_collision_of_anchor_det_zero` is that halving, proved from `card R < 2 ^ card ι` rather than from `card (R × R)`. Claim ceiling **Erdős #1049 remains open.** This is the linear-algebraic half only. It supplies a smaller jet target; it does not supply the analytic remainder non-vanishing, and `ZudilinConeArithmetic` continues to record that the "
     },
     {
+      "id": "ErdosProblems.Erdos1049.CyclotomicCircleHeightR13",
+      "path": "lean/ErdosProblems/Erdos1049/CyclotomicCircleHeightR13.lean",
+      "synopsis": "Cyclotomic complement and actual cancelled-pair coefficient bounds Bounds every coefficient of the cancelled pair U, V by a circle majorant. Möbius inversion is applied to the actual nonzero complex evaluations. Counting all divisor incidences gives the deliberately safe n*log(n)^2 scale; no false O(n*log(n)) cyclotomic estimate is used."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.FiniteFourierCoefficientR13",
+      "path": "lean/ErdosProblems/Erdos1049/FiniteFourierCoefficientR13.lean",
+      "synopsis": "Coefficient extraction from a finite circle, without complex integration The sampling order is strictly larger than the actual polynomial degree; this condition is essential to prevent aliasing. The extraction identity uses every sample and the complete polynomial support."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.FiniteResidueInterpolationR14",
+      "path": "lean/ErdosProblems/Erdos1049/FiniteResidueInterpolationR14.lean",
+      "synopsis": "Finite simple-pole interpolation, without a partial-fractions assumption Interpolation in the pole basis and the finite simple-pole expansion. The numerator is reconstructed from its values at the inverse pole parameters. The only degree premise is the ordinary proper-fraction degree condition; there is no premise asserting the partial-fraction identity. The following source module supplies the concrete parameters and the numerator degree."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.FirstNewBaseR10",
+      "path": "lean/ErdosProblems/Erdos1049/FirstNewBaseR10.lean",
+      "synopsis": "The least new denominator and numerator These are the actual infinite-contour parameter statements. They do not assert irrationality of a Lambert value. The sharper upper contour is proved by a convergent-series tail bound, not a decimal oracle."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.G02ArithmeticR16",
+      "path": "lean/ErdosProblems/Erdos1049/G02ArithmeticR16.lean",
+      "synopsis": "G02 arithmetic suppliers: the summatory totient with an explicit error Proves |Σ_{d≤y} φ(d) - (3/π²)y²| ≤ 2y(1 + log(1+y)) for every real y ≥ 0. The definitions below are genuine totient/Möbius sums. No asymptotic supplier is assumed as an axiom, typeclass field, or theorem premise."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.G02CyclotomicR16",
+      "path": "lean/ErdosProblems/Erdos1049/G02CyclotomicR16.lean",
+      "synopsis": "G02 fixed-base cyclotomic logarithms The factors are the literal integer cyclotomic polynomials, including Φ₁. The all-index O_p(n) estimate uses a uniform summable-log majorant, rather than an incorrect O(log l) estimate near the moving unit circle. Proves the quadratic log rate of the source complement at each real p > 1."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.G02RateCalculusR16",
+      "path": "lean/ErdosProblems/Erdos1049/G02RateCalculusR16.lean",
+      "synopsis": "Quadratic-rate transport lemmas and strict-rate dominance for the source. The V step follows from strict separation of the U and remainder rates."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.G02SourceRatesR16",
+      "path": "lean/ErdosProblems/Erdos1049/G02SourceRatesR16.lean",
+      "synopsis": "G02 literal source-rate assembly Every endpoint below specialises the actual R11/R13 U,V and R9 remainder. No totient, cyclotomic, degree, or remainder rate is a hypothesis of the final source theorem. Proves exact quadratic rates of U, V, A and the remainder. This is not a construction of a new common-width four-jet family."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.G02WeightedBlocksR16",
+      "path": "lean/ErdosProblems/Erdos1049/G02WeightedBlocksR16.lean",
+      "synopsis": "Literal thirteen-block supplier: the complement degree has quadratic rate."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.GaussianCircleBoundsR12",
+      "path": "lean/ErdosProblems/Erdos1049/GaussianCircleBoundsR12.lean",
+      "synopsis": "Actual source A on a complex circle The bound uses the complete Gaussian coefficient mass and the exact source summand degrees. It applies to every point of the closed disk, not just the positive real radius. No coefficient-height assumption is made. The separate cyclotomic-complement and cancelled-B estimates remain separate suppliers."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.GaussianCoefficientsR11",
+      "path": "lean/ErdosProblems/Erdos1049/GaussianCoefficientsR11.lean",
+      "synopsis": "Coefficient bounds for the actual Gaussian recurrence This is a supplier for Gaussian factors, not an assertion of a bound on a cancelled rational coefficient that has not yet been identified as a polynomial."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.GaussianDegreeR12",
+      "path": "lean/ErdosProblems/Erdos1049/GaussianDegreeR12.lean",
+      "synopsis": "Exact Gaussian and actual A degrees The unique highest summand is proved at every index; finite reconstructions are not used to infer a polynomial identity. The integer coefficient mass of each Gaussian is also evaluated exactly, rather than bounding one coefficient and silently treating that as an l1 bound."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.HermitePadeNoGo",
       "path": "lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
       "synopsis": "Erdős #1049: a rectangular Hermite--Padé threshold comparison The functions below encode the decay, height, and cyclotomic-saving exponents of one rectangular two-function Hermite--Padé model. In the admissible region `rho ≥ 0` and `sigma ≥ 1 + rho`, its threshold never exceeds the classical one-function margin `1 / 2 - 1 / π²`. Equality occurs only at `rho = 0`, `sigma = 1`; no upper bound on `rho` is needed. This is a comparison theorem for the explicit exponent model defined here. It constructs no approximating polynomials or remainders, does not show that every rational-base method has this form, and does not decide the arithmetic nature of the Lambert value at `3 / 2`."
     },
     {
+      "id": "ErdosProblems.Erdos1049.IrrationalityExponentR11",
+      "path": "lean/ErdosProblems/Erdos1049/IrrationalityExponentR11.lean",
+      "synopsis": "The supremum definition of the irrationality exponent Bounds the supremum exponent, real and extended, from quadratic linear forms. Denominators are positive naturals and numerators are arbitrary integers. Finiteness of the numerators at bounded denominators is proved, not assumed. The extended-real definition also covers an unbounded exponent set."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.LambertSourceSummationR14",
+      "path": "lean/ErdosProblems/Erdos1049/LambertSourceSummationR14.lean",
+      "synopsis": "Absolutely convergent Lambert-window summation for the literal source B Proves A_n F - B_n equals the absolutely convergent pole series. The finite correction terms are exactly those of `sourceBReal`, not a newly chosen constant term. All geometric and Lambert sums below have a summability proof before `tsum` is used. The terminal theorem identifies A*F-B with the actual partial-fraction series. The separate residue/interpolation calculation must still identify that series with the positive hypergeometric H."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.MeasureConstantsR10",
+      "path": "lean/ErdosProblems/Erdos1049/MeasureConstantsR10.lean",
+      "synopsis": "Exact constants for the power-uniform 31/4 bound Finite rational sums bound the actual infinite trigamma constant from below. These are unconditional parameter theorems, not an assertion that the analytic source-form supplier has been formalised."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperAsymptoticsR9",
+      "path": "lean/ErdosProblems/Erdos1049/PaperAsymptoticsR9.lean",
+      "synopsis": "Quadratic asymptotic transfer, revision of the round-8 return. The asymptotic hypotheses below are estimates, not assumptions of the conclusions. In particular `cross_product_limits` proves both successor products. The integer contradiction is the desk's repaired PaperRankTwoCapR7 theorem, reused unchanged. Pinned API: Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6. Filter/metric API: Order/Filter/AtTopBot/Basic.lean and Topology/MetricSpace/Pseudo/Defs.lean. Exponential/log API: Analysis/SpecialFunctions/Exp.lean and Log/Basic.lean. Elementary ordered-field algebra is handled by ring, linarith and explicitly supplied polynomial facts."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperHomogenisationR7",
+      "path": "lean/ErdosProblems/Erdos1049/PaperHomogenisationR7.lean",
+      "synopsis": "R7: integral homogeneous evaluation at a rational base This is the finite algebraic bridge in the main irrationality proof, not the existence or asymptotics of the cancelled source forms. It reuses `homEval`; it does not define a different clearing. All degrees below are natural degrees. This is harmless for a zero polynomial: its natural degree is zero and every displayed evaluation identity still holds."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperLinearFormsR7",
+      "path": "lean/ErdosProblems/Erdos1049/PaperLinearFormsR7.lean",
+      "synopsis": "R7: the integer-form irrationality consumer and its polynomial bridge No axioms and no admitted proofs. `CancelledApproximationSupply` is an OPEN analytic/source obligation. There is no declaration asserting that it exists. In particular the conditional region and power corollaries below are not advertised as proofs of the displayed unconditional irrationality theorems. The coverage ledger retains that gap."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperLongCapR9",
+      "path": "lean/ErdosProblems/Erdos1049/PaperLongCapR9.lean",
+      "synopsis": "The LONG-record cap: maximum coefficient height, actual degrees and logarithmic limits. This module is deliberately separate from the short-note l1-height statement. Pinned APIs: Order/LiminfLimsup.lean (`limsup_eq`, `csInf_le`), Algebra/Order/Ring/Int.lean (`Nat.cast_natAbs`), and the metric/filter APIs cited in PaperAsymptoticsR9. Finite support maxima are over naturals, including the zero polynomial without an artificial positive-height premise."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperNoDecayR9",
+      "path": "lean/ErdosProblems/Erdos1049/PaperNoDecayR9.lean",
+      "synopsis": "A failure of homogenised decay below the square boundary, without assuming that the normalised degrees converge. Decay would itself give a global upper degree rate smaller than sigma, contradicting the checked polynomial cap. This does not assert full-sequence divergence or irrationality of the value."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperOmegaIndicatorR7",
+      "path": "lean/ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean",
+      "synopsis": "R7: the exact 48-cell proof of `res:omega-indicator` Full proof-source candidate, NOT compiler-checked in this environment. The theorem is over real x, includes every left endpoint, and excludes each right endpoint. Rational midpoint checks are not substituted for the proof: each cell supplies four floor bounds and an interval-containment argument. No `sorry`, extra axiom, or native_decide is used."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR17.Constants",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR17/Constants.lean",
+      "synopsis": "Exact identification of the supplier and retained-paper constants Each theorem identifies a supplier constant with a retained-paper constant. These are equalities of the literal definitions, not decimal comparisons."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperR17.SourceConsumers",
+      "path": "lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean",
+      "synopsis": "The literal G02 supplier, the original R7 consumer, and the power-uniform measure Proves F(a/b) irrational on the contour region and F((31/4)^r) irrational. No source-supply, rate, nonvanishing or positivity hypothesis is left in the source endpoints. Homogeneous evaluations use the actual pair width."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperRankTwoCapR7",
+      "path": "lean/ErdosProblems/Erdos1049/PaperRankTwoCapR7.lean",
+      "synopsis": "R7: the rank-two obstruction inside the degree-budget cap No admitted proofs. This completes the INTEGER-SEQUENCE part of the cap argument. It does not silently assume the paper's degree/height/logarithmic limits imply the two cross-product limits: that analytic transfer remains a coverage obligation."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.PaperShortCapR9",
+      "path": "lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean",
+      "synopsis": "The complete short-note cap. This is not an additional source-supply axiom: the hypotheses are the displayed polynomial degree, l1 height, nonvanishing and logarithmic-rate hypotheses. `QuadUpper` makes the paper's upper o(n^2) inequalities precise. The result is proved for any real target function, hence also for the actual paperLambert. No condition uniform in x beyond common constants is required: each fixed x has its own eventual estimates, exactly as in the paper. The long-record max-coefficient-height and limsup conclusions are separate."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence",
       "path": "lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
       "synopsis": "Erdős #1049: the q-Apéry recurrence fails on Van Assche's diagonal This module checks one finite polynomial identity. Van Assche's diagonal `P_n(p^n | p⁻¹)` has the three displayed initial values below. Substitution in the `n = 0` Amdeberhan--Zeilberger operator leaves a strictly negative residual for every real `p > 1`. Hence that diagonal does not satisfy that operator. No general recurrence, endpoint asymptotic, or irrationality statement is asserted here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
+      "path": "lean/ErdosProblems/Erdos1049/QBinomialUnitIdentity.lean",
+      "synopsis": "Erdős #1049: finite q-binomial algebra for the 2004 small-p unit Zudilin, Acta Arith. 111 (2004), displays (8)–(11). After the published integrality exponent `M` is removed, the second source coefficient is a unit at `p = 0`. The new algebra is the finite q-binomial theorem, the vanishing range for exponents that hit `1`, and the constant term of `(q^α; q)_n` for `α ≥ 1`. This module Lean-checks those identities. It does not construct the source sums `A(p), B(p)`, does not prove irrationality of `F(3/2)`, and is not the 2016 Hankel family. The Gaussian binomial uses the same Pascal recurrence as `AdelicHeightBridge.zudilinQBinomialPS`, as a ring element rather than a power series."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.QLucasR13",
+      "path": "lean/ErdosProblems/Erdos1049/QLucasR13.lean",
+      "synopsis": "q-Lucas for the project's actual Pascal-recursive Gaussian The theorem is derived from Pascal's recursion and vanishing of the intermediate entries in the first root block. It is not an axiom or a statement about a different library Gaussian."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.QProductBoundsR10",
+      "path": "lean/ErdosProblems/Erdos1049/QProductBoundsR10.lean",
+      "synopsis": "Positive q-products and q-binomial ratio coefficients The infinite product is constructed from an absolutely convergent logarithmic series, and is proved to be the limit of its finite products. Its positivity is therefore not an assumed supplier."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.QuadraticMeasureR10",
+      "path": "lean/ErdosProblems/Erdos1049/QuadraticMeasureR10.lean",
+      "synopsis": "A complete quadratic-mesh irrationality-measure consumer The conclusion is uniform over all integer numerators and all sufficiently large positive denominators. No independence assumption on successive coefficient pairs is used. The actual 2004 source construction is NOT asserted by this module."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.RationalApproximationSeparation",
+      "path": "lean/ErdosProblems/Erdos1049/RationalApproximationSeparation.lean",
+      "synopsis": "Finite separation at a rational test point. The result uses the already present rational_integerLinearForm_gap, handles the zero determinant case, and avoids requiring two independent approximating rows. The asymptotic source estimates needed for an irrationality measure are not proved here."
     },
     {
       "id": "ErdosProblems.Erdos1049.RationalBaseContour",
@@ -4163,6 +4338,91 @@
       "synopsis": "Erdős #1049: finite arithmetic for rational Padé homogenisation This module isolates the polynomial denominator-exponent calculations in the rational-base Padé packet. Every exponent is doubled, so the statements live over `ℤ` and contain no floor or parity bookkeeping. They certify only the finite homogenisation arithmetic; positivity of the Padé remainder and its asymptotics remain separate analytic obligations."
     },
     {
+      "id": "ErdosProblems.Erdos1049.ReciprocalPochhammerR14",
+      "path": "lean/ErdosProblems/Erdos1049/ReciprocalPochhammerR14.lean",
+      "synopsis": "Reciprocal factorials and reflected finite products Reversal of finite q-factorials and the erased pole product. These are finite algebraic identities. In particular no analytic source identity is used as a premise."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.RootUnityLocalCancellationR13",
+      "path": "lean/ErdosProblems/Erdos1049/RootUnityLocalCancellationR13.lean",
+      "synopsis": "Root-window cancellation for the actual Omega carry pattern The two independent variables are important. The second Gaussian's lower argument may exceed its upper argument in a residue block. Replacing the integer exponent w-a+1 by truncated natural subtraction is incorrect. This file proves the finite local identity with the integer exponent, including these zero terms. It does not assume a local vanishing conclusion. The remaining passage from source summands to residue blocks is separately recorded, and is not smuggled in as an axiom here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceBCircleR13",
+      "path": "lean/ErdosProblems/Erdos1049/SourceBCircleR13.lean",
+      "synopsis": "Uniform complex bound for literal B and the actual cancelled pair The deliberately simple bound costs a polynomial factor 29*n^2 at radius 1+1/n, rather than a harmonic factor. Its logarithm is still O(log n). All cancellation identities use the actual canonical U,V and the universal Omega theorem, not an assumed polynomial inclusion."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceBClearingR12",
+      "path": "lean/ErdosProblems/Erdos1049/SourceBClearingR12.lean",
+      "synopsis": "Literal B coefficient and its first polynomial clearing This constructs the finite source expression itself, including its negative powers, and proves D*B is an integral polynomial. It does NOT claim the additional X^M or Omega cancellation. No polynomial-inclusion hypothesis is used in the construction or the clearing theorem."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceBInitialR12",
+      "path": "lean/ErdosProblems/Erdos1049/SourceBInitialR12.lean",
+      "synopsis": "Exact initial coefficient of the actual B numerator The numerator is divisible by X^M but not X^(M+1): at every n>=1 its coefficient at M is exactly 1. This is proved by isolating the actual j=n, s=0 channel. No finite reconstruction or initial-order hypothesis is used."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceBMonomialR12",
+      "path": "lean/ErdosProblems/Erdos1049/SourceBMonomialR12.lean",
+      "synopsis": "The actual B monomial cancellation The late j-channel is treated by a homogeneous finite identity in Z[X]. No endpoint divisibility, Laurent membership, source package, or initial-order assertion is assumed. This removes X^M from the actual integral numerator D*B. The additional cyclotomic Omega cancellation is a different theorem and is not asserted in this file."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceBTopDegreeR13",
+      "path": "lean/ErdosProblems/Erdos1049/SourceBTopDegreeR13.lean",
+      "synopsis": "Exact top degree of the literal cleared B numerator The unique leading term is the unshifted pair (s,l)=(13*n,1). This is a finite polynomial proof: neither A*F-B=H nor Omega divisibility is an assumption. The canonical monic quotient V is defined even before its remainder is known to vanish; its degree is not misrepresented as proof that this remainder vanishes."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceFiniteTransformR12",
+      "path": "lean/ErdosProblems/Erdos1049/SourceFiniteTransformR12.lean",
+      "synopsis": "The missing free-variable finite source transform The variable z is independent of q. Consequently the identity can be specialised in any commutative ring, including a Laurent polynomial ring; it is not limited to z=q^alpha with alpha a natural number. The proof uses only two finite q-binomial expansions."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceHeightRateR14",
+      "path": "lean/ErdosProblems/Erdos1049/SourceHeightRateR14.lean",
+      "synopsis": "Subquadratic coefficient heights of the actual cancelled source pair Proves the cancelled pair's coefficient heights have zero quadratic log rate. This file uses the actual `sourceU` and `sourceV`, the all-index coefficient bound from R13, and the unchanged maximum/l1 height definitions of the papers. The analytic limit and the degree+1 transport are proved here, not assumed. The intentionally conservative numerical envelope is 5000*n*(1+log(n+2))^2."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceHomogeneousR12",
+      "path": "lean/ErdosProblems/Erdos1049/SourceHomogeneousR12.lean",
+      "synopsis": "Homogeneous finite transform and monomial cancellation tools Homogenisation removes the need to assert that a Laurent expression is an integral polynomial. The identity is first proved in a field, then pulled back through the injective fraction-field map. The final displayed identity is entirely in Z[X]."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceOmegaCancellationR13",
+      "path": "lean/ErdosProblems/Erdos1049/SourceOmegaCancellationR13.lean",
+      "synopsis": "Actual all-index Omega cancellation for the literal cleared B At an ell-th primitive root only denominators with ell | j survive. Their precise values need not be divided by an integer: the global block identity is valid for an arbitrary function of the cutoff floor. This avoids a spurious division at a root and also works in positive characteristic in the finite-field stage. Descent to Z[X] uses a primitive complex root, the cyclotomic minimal polynomial, coprimality over Q[X], and monic descent. Distinct cyclotomic polynomials are NOT assumed comaximal over Z[X]."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourcePolynomialR11",
+      "path": "lean/ErdosProblems/Erdos1049/SourcePolynomialR11.lean",
+      "synopsis": "Actual finite 2004 A coefficient and its normalisation The reindexing k = 14*n+1+s makes every exponent nonnegative. In particular A is an actual integral polynomial, not a postulated source package. This module proves the A-channel inclusion for every n, including n=0. It does not assert the missing B-channel cancellation or the analytic source identity. Those obligations are recorded separately, not hidden in a premise."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourcePositiveHBoundsR10",
+      "path": "lean/ErdosProblems/Erdos1049/SourcePositiveHBoundsR10.lean",
+      "synopsis": "The actual positive 2004 source series in direction (14,12,14;27) This module CONSTRUCTS the positive hypergeometric series, proves its convergence, proves uniform two-sided bounds, and proves its exact zero quadratic logarithmic rate. In particular none of those properties is an added hypothesis. The last denominator has length 13*n+1. Replacing it by 13*n would be the historical off-by-one error identified in the supplied notes. The identity with the cancelled integer polynomial linear form is not asserted here: that algebraic/arithmetic source transport remains separately identified."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceRootBlocksR13",
+      "path": "lean/ErdosProblems/Erdos1049/SourceRootBlocksR13.lean",
+      "synopsis": "Global residue-block cancellation at the literal source indices A weight depending on floor((2*n+s)/ell) is constant on the nonzero local residues. This gives cancellation for every such weight, including the harmonic weight that occurs in the cleared B numerator."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.SourceRootCarriesR13",
+      "path": "lean/ErdosProblems/Erdos1049/SourceRootCarriesR13.lean",
+      "synopsis": "Exact source carry geometry and the first Omega channel The carry expressions are linked to the literal sourceWeight. The first carry case is carried through to the actual cleared B polynomial. The second case supplies its exact local-window geometry and constant harmonic floor; its global residue-block assembly is not asserted by this file."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.TwoSelectorRemainderEscape",
+      "path": "lean/ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean",
+      "synopsis": "Erdős #1049: two-selector analytic-nullspace escape Two modular selector collisions can evade the same analytic remainder nullspace only if their exact coefficient-pair sums are collinear. The theorem below is the source-independent algebraic consumer of the computational rank-two certificate."
+    },
+    {
+      "id": "ErdosProblems.Erdos1049.WeightedFloorBlocksR12",
+      "path": "lean/ErdosProblems/Erdos1049/WeightedFloorBlocksR12.lean",
+      "synopsis": "Exact weighted floor blocks for the actual thirteen intervals Rewrites the weighted totient sum as thirteen reciprocal floor blocks. The lower reciprocal endpoint is strict and the upper one weak. This file constructs the literal finite weighted sums and identifies each block with a difference of totient prefixes. It does not label this finite identity as an asymptotic estimate or assume a summatory-totient error bound."
+    },
+    {
       "id": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
       "path": "lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
       "synopsis": "Erdős #1049: endpoint arithmetic for the Heine--Zudilin cone This module isolates the source-independent arithmetic behind the returned scalar-cone obstruction at the rational base `3 / 2`. It does not construct the Zudilin coefficient polynomials or import their analytic asymptotics. The key finite observation is that homogeneous evaluation at `(3,2)` sees the bottom polynomial endpoint modulo `3` and the top endpoint modulo `2`. Consequently a unit at either endpoint prevents a common local factor. The endpoint-jet definitions record the exact additive congruence problem left after scalar and multiplicative deformations have been exhausted."
@@ -4178,9 +4438,19 @@
       "synopsis": "Erdős #1049: the exact leading coefficient of Zudilin's normalized Hankel determinant Zudilin (Res. Number Theory 2 (2016), Art. 15, §4) proves the *lower* bound `ord_q V_N^* ≥ B_N = ∑_{j<N} j²` for the normalized Hankel determinant `V_N^* = det (v_{i+j}^*)_{0 ≤ i,j < N}`. Equality, and the exact leading coefficient `C_N = ∏_{j<N} (j+1)²(j+2)/2 = (N!)² (N+1)! / 2^N`, are *not* in the source; they are the new content, of which this module formalizes the determinant-level half. `AdelicHeightBridge.lean` already carries the order half of the bridge (`order_det_eq_of_unique_minimizing_permutation`) together with the associated-graded leading matrix, its Vandermonde determinant and its exact order `∑_{j<N} j²`. What was missing there, and is supplied here, is: * `coeff_prod_eq_zero_of_lt_sum` / `coeff_prod_sum_eq_prod_coeff`: the filtered-product coefficient calculus — a finite product of power series has no coefficient below the sum of the entrywise thresholds, and at that degree its coefficient is the product of the entrywise threshold coefficients; * `coeff_det_eq_of_unique_minimizing_permutation`: the *coefficient* analogue of the landed order principle, i.e. the Leibniz bridge which reads the first determinant coefficient off the entrywise initial monomials as soon as one permutation minimizes the entry-order weight strictly; * `sum_zudilinLeadingEntryOrder_lt_of_ne_revPerm`: the reversing permutation is the *unique* minimizer of the Hankel entry-order weight `e (j, l) = j(j+1)/2 + j·l`, proved through the exact square identity `∑_i (σ i + i - (N-1))² = 2 ∑_i (σ i)·i - 2 ∑_"
     },
     {
+      "id": "ErdosProblems.Erdos243.CoefficientDivisorFence",
+      "path": "lean/ErdosProblems/Erdos243/CoefficientDivisorFence.lean",
+      "synopsis": "Coefficient-independent divisor fences (r5) Finite transition algebra only. This module does not claim the global CRT supply theorem, the analytic positive-numerator transfer, or the Erdős #243 endpoint. The covering hypothesis is explicit: producing such a cover is a separate CRT argument, and producing the required old divisors is a separate record argument. Not imported into `ErdosProblems/Root.lean`. Erdős #243 remains open."
+    },
+    {
       "id": "ErdosProblems.Erdos243.CubicNeighbourIdentity",
       "path": "lean/ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
       "synopsis": "Erdős #243: cubic neighbouring-value identity and the two mod-7 words The Type B r2 cubic argument extracts a primitive rising-factorial cubic `Q(X) = (m/6) X(X+1)(X+2) + c` with `c = ±1`, then forces a field-square condition in `ℚ(α)` from neighbouring values at a root `α`. For an irreducible cubic there is no rational root, so the previous `α : ℚ` interface did not instantiate that number-field step. This module kernel-checks the *denominator-cleared ring identities* over an arbitrary commutative ring, recovers the old rational divided forms as corollaries, evaluates the two residue words at `m = 12`, and excludes exact three-step transport of those words over `ZMod 7`. It does not formalise Chebotarev, gcd stabilisation, or the density quantifier. The integer identity `4 * 7 = 28` records word-period accounting only (`1/(4·7) = 1/28`); it is not a density theorem. Erdős #243 remains open."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.CumulativeLcmTransfer",
+      "path": "lean/ErdosProblems/Erdos243/CumulativeLcmTransfer.lean",
+      "synopsis": "Erdős #243: cumulative-LCM transfer `GlobalLcmHeight.lean` introduces the cumulative LCM `Λₙ`, the product-cleared denominator scale `Dₙ`, the overlap debt `Mₙ`, and the exact relocation identity `Mₙ Λₙ = Dₙ`. What it does not supply is the transfer of that identity to the *numerator*: whether the irreversible overlap payments recorded in `Mₙ` are actually carried by the reciprocal-tail state `Cₙ`. This module lands that transfer and its consequences. * `cumulativeOverlapDebt_dvd_tailNumerator`: `Mₙ ∣ Cₙ`, by induction using only `ρₙ ∣ Λₙ` and `ρₙ ∣ aₙ`. No positivity hypothesis is needed: `Mₙ₊₁` divides `aₙ Cₙ` and `Dₙ` separately, hence their difference. * `cumulativeOverlapDebt_dvd_centeredState`: `Mₙ ∣ Eₙ` over `ℤ`. * The LCM-normalised state `Uₙ = Cₙ / Mₙ`, `Vₙ = Λₙ - (aₙ - 1) Uₙ`, with the exact reconstruction `Mₙ Uₙ = Cₙ`, `Mₙ Vₙ = Eₙ` and the exact recurrence `ρₙ Uₙ₊₁ = Uₙ - Vₙ`. `Vₙ` is *defined* by the centred formula, so the centring identity is definitional and no truncated division appears in any equation. * `pow_lcmNonFreshCount_le_overlapDebt`: the division-free freshness budget `2^{#{j<n : ρⱼ > 1}} ≤ Mₙ`, hence `≤ Cₙ`. This is the exact finite inequality behind \"LCM freshness has density one\". * `lcmFresh_pairwiseCoprime`: multipliers at LCM-fresh indices are coprime to every earlier multiplier. * `lcmNonFreshCount_sublinear_of_subexponential` and its exact-orbit specialisation: subexponential tail growth makes the non-fresh count sublinear in the division-free sense `K · count < n`. * `no_lcmState_of_freshBlock`: the finite shifted-CRT first-crossing contra"
     },
     {
       "id": "ErdosProblems.Erdos243.DynamicCancellation",
@@ -4206,6 +4476,11 @@
       "id": "ErdosProblems.Erdos243.LcmCriticalBoundary",
       "path": "lean/ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
       "synopsis": "Erdős 243: the LCM critical boundary This module formalizes the strict-rise CRT consumer and weighted block telescope arising from the LCM-cleared tail state."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.LcmRecordCrossing",
+      "path": "lean/ErdosProblems/Erdos243/LcmRecordCrossing.lean",
+      "synopsis": "Counting the CRT heights crossed by one arithmetic step The heights are the actual arithmetic progression `x + k * P`, not an assumed cardinality bound. This supplies the finite local charging step in the weighted-record argument of `LcmRecordExcess.md`. First-crossing existence, uniqueness, and the finite partition across time require no monotonicity of the numerator sequence. The existing CRT construction supplies the covering from any finite family of sufficiently large pairwise-coprime old divisors. Producing that family from an infinite canonical orbit and the analytic divergence argument are not asserted by this module."
     },
     {
       "id": "ErdosProblems.Erdos243.LcmRecordExcess",
@@ -4308,6 +4583,46 @@
       "synopsis": "Window incidences and quantitative exceptional density Every hit is charged to an exceptional index together with its offset. Overlapping windows therefore cost at most their length, not the number of residue classes. No density assumption is hidden in the counting lemmas. `LowerDensityAtLeast` uses the usual epsilon / eventual-prefix definition of a lower bound for the lower asymptotic density (prefixes start at zero)."
     },
     {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+      "synopsis": "Paper-complete campaign, round 7: exact algebra and signed descent Proofs for the 7 September 2026 paper snapshot. No result is represented as a new kernel-checked theorem in theorem_coverage.json. The original declarations are reused. New statements below assemble the combined paper environments, extend the natural second-order identity to the displayed integer domain, and prove signed eventual descent."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+      "synopsis": "Constructing the canonical integer state and its analytic hypotheses The rational sum is supplied by its explicit integer numerator p and positive natural denominator q; it is NOT replaced by an assumed integer-tail representation. The cleared numerator is an explicit integer finite sum. Its positivity is derived from the positive real tail. All casting, exact natural recurrences, and normalised-vanishing inputs are then concluded."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.Frontier",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean",
+      "synopsis": "State-level assembly behind the canonical frontier proposition The state theorem is first assembled separately. The final theorem constructs the canonical state from the explicit rational sum and quadratic growth, then concludes the paper's whole frontier, including divergence of the nonnegative partial sums."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean",
+      "synopsis": "Original-coordinate LCM-prefactor corollary End-to-end proof for short-note `res:lcmbounded`. The rational denominator q is NOT assumed to divide the prefix LCM. The proof constructs the lifted integer state, derives its small-error hypothesis, supplies its one-sided bound from the printed LCM-weighted expression, and invokes the global CRT argument, not a supply hypothesis."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmStationarity.lean",
+      "synopsis": "Global boundedness and stationarity of the actual LCM state Unlike the existing finite CRT consumers, the principal theorem constructs its old fresh multipliers from the unbounded orbit. No old-prime supply, global avoidance hypothesis, or preconstructed cover is a premise. Strict increase of the given denominators supplies multipliers larger than the fixed bound."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.Limits",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+      "synopsis": "Real limits and the division-free hypotheses used by the corpus In particular, the real limit in the sparse-gcd paper statement is not silently replaced by an assumed arithmetic bound. The equivalence is proved here. Little-o of the count relative to N is expressed as convergence of count/N to zero (the denominator is eventually positive)."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean",
+      "synopsis": "The original-coordinate bounded-product-defect corollary This module supplies the analytic error dictionary rather than assuming bounded centred error. Finite upper limsup is stated as eventual boundedness above by a real constant; the finite initial segment is irrelevant. Rationality is given by p/q and HasSum. The proof avoids assuming a pre-existing double-exponential estimate: P_n/a_n^2 tends to zero by its successive-ratio identity. This suffices for the exact two-term error dictionary."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR7.RealTail",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+      "synopsis": "Analytic part of the canonical tail bridge The principal analytic assertion is proved, not postulated: if positive summable terms have successive ratio tending to zero, their tail divided by the leading term tends to one. The final theorem derives normalised vanishing from quadratic growth and an exact tail representation. It does NOT claim to have constructed the canonical integer state, proved its integrality, or obtained the sharper O(1/a_n) expansion required elsewhere in the papers."
+    },
+    {
       "id": "ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
       "synopsis": "Correct phase-specific modulo-seven obstructions, a sharp one-in-seven disjoint-block counting certificate, and exact counterexamples to the stronger phase-free statement in the supplied manuscript."
@@ -4316,6 +4631,11 @@
       "id": "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
       "path": "lean/ErdosProblems/Erdos243/PrimitivePrefixRigidity.lean",
       "synopsis": "Erdős #243: primitive prefix rigidity Suppose a reduced tail has no cancellation on a block and satisfies `u (n + 1) + v n = a n * u n` and `v (n + 1) = a n * v n` there. The first two theorems give the exact finite-block transfer and approximation formula; the last two isolate the divisibility forced by a complete prefix product. The approximation numerator is the terminal primitive numerator itself, so ordinary rational separation yields only its positivity. No theorem here proves that an actual #243 orbit has arbitrarily long cancellation-free blocks, produces a large prefix gcd, or derives a contradiction."
+    },
+    {
+      "id": "ErdosProblems.Erdos243.PrimitiveRecordBarrier",
+      "path": "lean/ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean",
+      "synopsis": "Erdős 243: prime-power barriers for record numerator jumps This module formalises the finite arithmetic of the record-jump barrier for a *dynamically reduced* reciprocal tail, i.e. one in which an arbitrary cancellation factor `hc n` is removed at every step. Writing the reduced tail as `u n / v n` in lowest terms, the step is the division-free cocycle * `w n + v n = a n * u n` (raw next numerator), * `w n = hc n * u (n + 1)` (reduced next numerator), * `a n * v n = hc n * v (n + 1)` (reduced next denominator). `DynamicCancellation` already supplies the primitive identities `Nat.gcd (w n) (a n * v n) = Nat.gcd (w n) (a n ^ 2)` and `Nat.Coprime (u n) (w n)`; the second gives `Nat.Coprime (u n) (u (n + 1))` because `u (n + 1) ∣ w n`. The chain proved here is: 1. `primitive_valuation_no_drop` — a prime power `p ^ l ∣ v n` cannot leave the reduced denominator while the *raw* numerator stays below `p ^ (l + 1)`. This is the only place where arbitrary cancellation is controlled: no bound on `hc n` is used anywhere. 2. `protectedPrimePower_persists` — the persistence of that prime power up to and including the first index at which `u` reaches a height `H` with `3 * H < 2 * p ^ (l + 1)`. 3. `odd_record_cut` — if `H` is an *odd* multiple of `p` above the running numerator maximum, the orbit can never reach `H` at all, provided every record-setting step rises by at most `2`. The first crossing would have to be a record; `p ∣ v` kills the landing `u = H`, and the only other option `(H - 1, H + 1)` has both endpoints even, contradicting adjacent-numerator coprimality. 4. `recordRiseTwo"
     },
     {
       "id": "ErdosProblems.Erdos243.ReciprocalTailRigidity",

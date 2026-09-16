@@ -48,8 +48,8 @@ of $31/4$.
 The proof cancels cyclotomic factors before clearing the rational-base
 denominator. The degree of the cancelled polynomial pair measures the cost,
 and positivity prevents the remainder from vanishing. This is an ordinary
-proof using the polynomial conclusion of Zudilin's Lemma~7; Lean checks
-supporting finite arithmetic, not the irrationality theorem.
+proof using the polynomial conclusion of Zudilin's Lemma~7. Lean checks the
+irrationality statements, with the source supply applied.
 
 A separate degree-budget theorem bounds the sufficient cutoff delivered by
 the stated base-uniform estimates by \(1/2\). It does not exclude every
@@ -427,12 +427,18 @@ cyclotomic limits are its Lemmas~1--2 \cite[p.~155]{zudilin2004}, proved by
 the method of \cite[Lemma~1, p.~466]{zudilin2002}.  The rational
 specialisation, the cancelled-degree accounting and the remainder estimates
 are this paper's own work and are proved in Section~\ref{long1049:sec:region}.
-The two theorems are not kernel-checked.  The linked Lean declarations establish exact inequalities,
+Lean checks both theorems, with the source supply applied rather than assumed:
+the region theorem is
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L113}{the rational-base region},
+and the power family is
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117}{the powers of \(31/4\)}
+with
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L121}{the base \(31/4\)}.
+The linked Lean declarations establish exact inequalities,
 congruences, finite collision counts, recurrence identities, and exclusions for
 the named models; among them are the height comparisons that place \(31/4\)
-inside the enlarged logarithmic region and outside the earlier one.  No Lean
-declaration in this release's library carries an irrationality statement at a
-rational noninteger base.  Bundschuh and V\"a\"an\"anen's irrationality theorem
+inside the enlarged logarithmic region and outside the earlier one.
+Bundschuh and V\"a\"an\"anen's irrationality theorem
 at \(7/2\), Rivin's functional nonrationality theorem, and the two-variable
 Mahler theorem used below remain external results.  At \(3/2\), the missing
 step is still an actual primitive approximation family with nonzero remainder
@@ -960,8 +966,10 @@ Section~\ref{long1049:sec:regionbracket}, and the four integer identities of the
 step in Section~\ref{long1049:sec:degrees}.  Checked by exact computation are the
 reconstructions of $U_n$ and $V_n$ for $n\le4$; the values of $J$, $C_0$ and
 $\theta^{*}$ are numerical evaluations.  Both are computational receipts, and
-the reconstruction is described in Section~\ref{long1049:sec:receipts}.  No part of
-Theorem~\ref{long1049:res:region} is a Lean theorem.
+the reconstruction is described in Section~\ref{long1049:sec:receipts}.
+Theorem~\ref{long1049:res:region} is checked in Lean as
+\href{https://github.com/wcook04/plectis-erdos/blob/f4e61ed8a6941571310049e22dc239baa1b04e12/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L113}{the rational-base region},
+with the source supply applied rather than assumed.
 
 \paragraph{Attribution.}
 Bundschuh and V\"a\"an\"anen proved the irrationality of this value on the

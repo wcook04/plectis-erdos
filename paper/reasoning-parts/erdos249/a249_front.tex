@@ -931,36 +931,36 @@ and names an index. It is listed because it is the cleanest target for
 computational exploration --- with Theorem~\ref{thm:gamma} as the standing
 reminder that no amount of such exploration becomes a proof. \ev{Open}
 
-\subsection{Survivor 5: the rationality-side rank upper bound}
+\subsection{Retired shortcut: a rationality-side rank upper bound}
 
-\begin{defn}[The coordinate-disjoint obligation]
+\begin{defn}[A counterfactual rank criterion]
 \label{defn:rankupper}
 Either: there is $C$ such that for every $c : \N \to \N$ with $c(n) \le n$ and
 $T_c \notin$ the irrationals, every $v > 0$ and every tempered binary orbit
 $u$ for $(c,v)$, and every $e$,
 $\dim_{\Q} \mathrm{span}_{\Q}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C$;
 or the same with any $g(e)$ growing strictly slower than $2^{e}-1$ in place of
-$C$. Either version contradicts the proved floor of
-Proposition~\ref{prop:rank} and closes \#249.
-\coord{carry-rank} \scale{uniform} \ev{Open}
+$C$. Either assertion would contradict the proved floor of
+Proposition~\ref{prop:rank} and would therefore close \#249.
+\coord{carry-rank} \scale{uniform}
 \end{defn}
 
-This is the only surviving obligation that is not a residue or certificate
-statement at all, so B2's certificate completeness cannot reach it --- it is
-not a reformulation of $\mathrm{Sep}$ in any vocabulary. It evades B1 and B4
-entirely (no window, no letters, no prescribed residues) and B5 (linear algebra
-over the whole orbit, not a bounded-state summary). The scale side is finished
-and uniform in $e$ (Proposition~\ref{prop:rank}).
+This is not one of the paper's live open propositions.  It is a logically
+sufficient theorem schema in a coordinate disjoint from the residue and
+certificate statements, and B2's certificate completeness cannot reach it.
+The proved scale side is uniform in $e$ (Proposition~\ref{prop:rank}), but the
+present mathematics supplies no reason for rationality to impose the opposite
+rank bound.
 
-\textbf{Honest flag, and it is severe.} B6 partly indicts this route from
-inside. The most natural approach to the upper bound is dead
+\textbf{The generic shortcut is retired.} The most natural approach to the
+upper bound is dead
 (\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}),
 and what rationality actually buys --- uniform eventual periodicity of the
 carry's dyadic sections mod $v$ --- provably does not promote to a $\Q$-rank
-bound (Proposition~\ref{prop:period-not-rank}). So this survivor is genuinely
-coordinate-disjoint from everything else, which is its whole value, but its
-obvious approach is closed and the missing input is a rigidity theorem nobody
-has stated.
+bound (Proposition~\ref{prop:period-not-rank}). Any viable rank argument would
+therefore need new arithmetic specific to the actual totient carry.  The
+criterion is retained to record that logical possibility and the no-go result,
+not as a fifth surviving frontier.
 
 \section{Reading the detailed record}
 
