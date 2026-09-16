@@ -40,8 +40,9 @@ anti-concentration of a logarithmically short divisor sum}
 
 \subsubsection*{The statement needed}
 
-Three forms, in decreasing strength; each closes the half-value branch, i.e.\ yields
-$(1/2:\R)\in\mathcal{A}$ and hence a counterexample to universal \#257.
+Three forms, in decreasing strength. Forms (i) and (ii) each close the half-value branch through
+the stated consumers, i.e.\ yield $(1/2:\R)\in\mathcal{A}$ and hence a counterexample to universal
+\#257. Form (iii) is a weaker target whose transport to half-membership is untested.
 
 \emph{Form (i), the run-length form.} Writing $\mathrm{rem}(s)$ for the integer seam greedy
 remainder at row $s$, $w_s := \mathrm{rem}(s)-2^{s}$ for the deviation, and $L_r$ for the length
@@ -119,7 +120,11 @@ profinite integers along the $+1$-orbit. Define
 \]
 truncated at level $L$ in the obvious way. Then $\Theta_L(M)=\Psi_L(M)$ where $M$ is viewed in
 $\widehat{\Z}$, and the map $M\mapsto M+1$ is the odometer, which is uniquely ergodic with respect
-to Haar measure.
+to Haar measure. Unique ergodicity controls averages of continuous functions, and $\Psi_L$ is not
+one: for Haar-almost every $x$ infinitely many primes $p$ divide $x+1$, so $\Psi_L(x)=\infty$.
+For fixed $D$ the truncation to $2\le d\le D$ is periodic in $M$ with period dividing
+$\operatorname{lcm}(1,\ldots,D)$, and its average over a period is an exact finite residue average;
+passing to all $d$, and then to the reset rows, needs separate estimates.
 
 The corpus's own Reduction~(A), $F(n)=\sum_{d\in D_n} 2^{\,d-i_d(n)}/(2^d-1)$,
 is \emph{the same functional} $\sum_d 2^{-i_d}/(1-2^{-d})$ restricted to the greedy take-set
@@ -130,7 +135,7 @@ identity share. \ev{Math} for the identification; \ev{Open} for any consequence.
 
 So the object required is: \emph{an effective equidistribution statement for the odometer orbit
 against $\Psi$, with the precision growing linearly in the index.} Unique ergodicity gives
-equidistribution with no rate. What is needed is a rate, pointwise along a sparse subsequence
+equidistribution with no rate for continuous functions, such as the truncations to $d\le D$. What is needed is a rate, pointwise along a sparse subsequence
 (the reset rows), at scale $2^{-r/2}$ where $r$ is the index. Equivalently, in the form a
 specialist will recognise: a lower bound for $\mathrm{dist}(\Theta_L(M),\Z)$ with
 $L\asymp \log_2 M$, valid for all large $M$ in a specified set, at precision $2^{-L/2}$.
@@ -142,9 +147,9 @@ expansion, and the natural attack is to bound
 $\sum_{M\in[X,2X]} e\bigl(a\,\Theta_L(M)\bigr)$ for $1\le|a|\le 2^{L}$ by opening each
 $\tau(M+i)$ and estimating the resulting Kloosterman-type sums. \emph{(b) Fourier analysis on
 $\widehat{\Z}$ / Ramanujan expansions.} By Lemma~\ref{lem:odometer} the phase is a function of
-$M$ modulo the $d$'s, so its Fourier expansion is over the characters of $\Z/d$, i.e.\ over
-Ramanujan sums $c_d(\cdot)$; the required estimate becomes decay of the Ramanujan coefficients of
-$\Psi_L$ plus a bound on their tails. \emph{(c) Second-moment / local-limit machinery.} Prove
+$M$ modulo the $d$'s, so its finite truncations expand in the additive characters of $\Z/d$;
+an expansion in Ramanujan sums $c_d(\cdot)$ needs further symmetry, and the required estimate would
+then be decay of those coefficients of $\Psi_L$ plus a bound on their tails. \emph{(c) Second-moment / local-limit machinery.} Prove
 that the vector $(\tau(M+1),\dots,\tau(M+L))$, $L\asymp\log M$, obeys a \emph{local} limit
 theorem strong enough to give anti-concentration of the weighted sum at scale $2^{-L/2}$.
 
@@ -152,29 +157,25 @@ theorem strong enough to give anti-concentration of the weighted sum at scale $2
 
 This is the paragraph worth the most, so it is stated as sharply as the evidence permits.
 
-\textbf{Almost-all divisor-sum results can reach polylogarithmic intervals.}  Work of \href{https://arxiv.org/abs/2108.11401}{Mangerel} and
-\href{https://arxiv.org/abs/2401.08432v3}{Sun} includes divisor-bounded multiplicative functions in
-windows of this scale, so a blanket
-power-length exclusion is false.  These theorems still do not directly supply the estimate needed
-here: their starting points are almost-all points, while ours are selected by the actual greedy
-dynamics; their statistic is an ordinary mean, while ours is a dyadically weighted fractional
-part; and our required precision shrinks exponentially in the window parameter.  An application
-would need a quantitative exceptional-set/trajectory argument and control of this weighted phase.
+\textbf{Almost-all short-interval results reach polylogarithmic windows.}  Matom\"aki and
+Radziwi\l{}\l{} prove that a real-valued multiplicative function bounded by $1$ has, in almost all
+windows $[x,x+h]$ with $h\to\infty$, essentially its long
+average~\cite[Theorem~1, pp.~1--2]{matomakiradziwill}.  Mangerel extends such bounds to a class of
+divisor-bounded multiplicative
+functions~\cite[Theorem~1.7, p.~7, and Corollary~1.8, pp.~7--8]{mangerel2021}, and Sun describes the
+almost-all transition profile of the $k$-fold divisor function at its critical polylogarithmic
+window~\cite[Theorem~1.1 and Corollary~1.2, p.~3]{sun2026}.  These theorems do not directly supply
+the estimate needed here, for two reasons.
 
-\textbf{The one technology that does reach sub-power windows delivers the wrong quantifier and
-the wrong class of function.} Matom\"aki--Radziwi\l{}\l{} theory shows that a multiplicative
-function bounded by $1$ has, in almost all windows $[x,x+h]$ with $h\to\infty$ arbitrarily
-slowly, essentially its long average. Two mismatches, both fatal as stated. First, the conclusion
-is \emph{almost all} $x$, whereas the seam needs \emph{every} reset row $r\ge31$; a set of
-exceptional $x$ of density zero can still contain every reset row, because the reset rows are
-themselves a density-zero set defined by the orbit rather than independently of it.
+First, their conclusions hold for almost all $x$, whereas the seam needs \emph{every} reset row
+$r\ge31$; an exceptional set of density zero can contain all the starting points selected by the
+orbit, since those points form a set of density zero.
 
-Second,
-$\tau$ is not bounded by $1$ and the relevant statistic is not an average of a multiplicative
-function but the distance to $\Z$ of a \emph{dyadically weighted} sum of $\tau$-values; the
-weights $2^{-i}$ mean that a single value $\tau(M+1)$ contributes half the phase, so no averaging
-statement over the window can control it. Anything that averages within the window destroys the
-quantity, exactly as the wall analysis says of every scale-mismatched tool.
+Second, $\tau$ is not bounded by $1$, and the relevant statistic is the distance to $\Z$ of a
+\emph{dyadically weighted} sum of $\tau$-values at a precision shrinking exponentially in the window
+parameter; a single value $\tau(M+1)$ contributes half the phase, so an average over the window does
+not by itself control it.  An application would need a quantitative exceptional-set argument along
+the greedy trajectory and control of this weighted phase.
 
 \textbf{The joint-distribution literature is at CLT scale, not local scale.} Erd\H{o}s--Kac and
 its descendants, and the Hildebrand--Elliott-type results on the joint normality of
@@ -251,9 +252,10 @@ $c\approx 2.5$. Feeding the required precision $2^{-(r-5)/2}$ into that profile,
 so under the Haar model the expected number of reset rows beyond the certified range that violate
 $\sqrt{\ }$-escape is about $10^{-3}$, and Borel--Cantelli gives ``finitely many failures'' with
 room to spare. This is consistent with, and independently derived from, the corpus's own
-$\approx 2\times10^{-4}$ digit-model estimate. It is a heuristic. Its only rigorous content is
-that the required inequality is not delicate: it asks for a bound $2^{15}$ times weaker at
-$r=31$, and exponentially weaker thereafter, than what the measured law delivers. That is a
+$\approx 2\times10^{-4}$ digit-model estimate. It is a heuristic about a model fitted to a finite
+sample and gives no probability bound for the deterministic reset orbit. Within that model the
+required inequality is not delicate: it asks for a bound $2^{15}$ times weaker at
+$r=31$, and exponentially weaker thereafter, than what the fitted law delivers. That is a
 useful thing for a specialist to know before deciding whether to spend effort here.
 
 \emph{Swing 3: attack the sign law first, and here is the reduction to try.} \ev{Open}.

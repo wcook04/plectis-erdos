@@ -28,19 +28,16 @@ proof.
 \textbf{(b) Exact mechanism that closed it.} The manuscript's own remark
 (\ev{Math}, prose-only, not formalised in Lean:
 \emph{\S5.4, ``finite inspection cannot establish the supply''}) gives an
-explicit splice construction. Take any coefficient stream \(\gamma:\mathbb
-N\to\mathbb N\) that agrees with \(\varphi\) on every index \(\le B\), and
-alter \(\gamma\) at one residue class beyond \(B\) so that the resulting
-binary series \(\sum\gamma(n)/2^n\) is forced \emph{rational}. Such a
-\(\gamma\) exists for every \(B\) (this is the same coboundary-splice
-technique that produces \S\ref{sec:parity-countermodel}'s
-\texttt{parityCoboundaryWeight} witness, generalised: insert a lacunary
-zero-valued coboundary edit \(2/2^m - 4/2^{m+1} = 0\) at some \(m>B\)). Because
-\(\gamma\) agrees with \(\varphi\) on every index \(\le B\), \(\gamma\) passes
-every finite certificate that only inspects indices \(\le B\) — in
-particular every instance of \(\mathrm{Sep}(h,N,L)\) with \(N+L\le B\) that
-\(\varphi\) itself passes or fails. Yet \(\sum\gamma(n)/2^n\in\mathbb Q\) by
-construction.
+explicit splice construction. Choose an integer \(P>B\), set
+\(\gamma(n)=\varphi(n)\) for \(n\le B\), and \(\gamma(n)=n-\mathbf 1_{P\mid n}\)
+for \(n>B\). Then \(0\le\gamma(n)\le n\), and the binary series
+\(\sum\gamma(n)/2^n\) is \emph{rational}: it is a finite rational prefix, plus
+the tail of \(\sum_n n2^{-n}\), minus a geometric sum over the multiples of
+\(P\) beyond \(B\). Because \(\gamma\) agrees with \(\varphi\) on every index
+\(\le B\), \(\gamma\) passes every finite certificate that only inspects
+indices \(\le B\); in particular it passes or fails every instance of
+\(\mathrm{Sep}(h,N,L)\) with \(N+h+L\le B\) exactly as \(\varphi\) does. Yet
+\(\sum\gamma(n)/2^n\in\mathbb Q\) by construction.
 
 \textbf{(c) Precise scope.} This is a statement about \emph{proof method},
 not about \(\varphi\): it does not touch \(S\) at all. What it excludes is
@@ -218,10 +215,11 @@ The upstream
 primitive these import,
 \lean{Erdos249257.RationalDenominatorSurvival.divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17} and
 \lean{survivingDivisor\_dvd\_scaled\_divInt\_den}{RationalDenominatorSurvival.lean:38}, gives the exact
-survival/cancellation law: a divisor \(m\mid D\) of a displayed denominator
-survives reduction of \(a/D\) iff \(m\) is coprime to \(a\); after scaling the
-numerator by \(h\), a surviving coprime divisor \(C\mid D\) shrinks to
-exactly \(C/\gcd(C,h)\), never further. \ev{Lean} \scale{uniform}
+survival/cancellation law: the reduced denominator of \(a/D\) is
+\(D/\gcd(a,D)\), so a divisor \(m\mid D\) coprime to \(a\) divides it
+(coprimality is sufficient and not necessary: \(2/8=1/4\) keeps \(m=2\)); after
+scaling the numerator by \(h\), such a divisor \(C\mid D\) still leaves the
+divisor \(C/\gcd(C,h)\) of the reduced denominator. \ev{Lean} \scale{uniform}
 \coord{other:rational-height}.
 
 \textbf{(c) Precise scope.} This is pure \(\mathbb Q\)-arithmetic with zero
@@ -433,8 +431,10 @@ channels \(n\mapsto\varphi(2^jn+r)\) that would compress the infinite
 family to a finite-dimensional space, from which a rationality-forcing
 contradiction (or a genuine rank obstruction) might be extracted.  Such a
 compression would make the totient $2$-regular, which
-\href{https://doi.org/10.5802/jtnb.718}{Coons, Theorem~3.2} had already
-excluded for every base $k\ge2$ \ev{Cited}.
+Coons~\cite[Theorem~3.2]{coons} had already
+excluded for every base $k\ge2$ \ev{Cited}.  Martin's Theorem~1 already implies
+the linear independence proved below~\cite[Theorem~1]{martin-phi-inequalities};
+the argument recorded here is a separate CRT--Dirichlet proof.
 
 \textbf{(b) Exact mechanism.}
 \begin{thm}[Infinite dyadic totient-kernel rank]
@@ -501,8 +501,7 @@ two-term rows.  The distinction between the retained basis and the redundant
 spanning family of all channels already matters for regular sequences, where
 matrices associated to a basis compute the growth exponent through their joint
 spectral radius and a spanning family gives only an upper bound
-(\href{https://arxiv.org/abs/1511.07535}{Coons, Theorem~1, Proposition~4 and
-Corollary~7}) \ev{Cited}.  The totient is not regular, so that theorem does not
+(Coons~\cite[Theorem~1, Proposition~4 and Corollary~7]{coons-jsr}) \ev{Cited}.  The totient is not regular, so that theorem does not
 apply; the short note records how the section maps act on the retained bases
 from one level to the next.
 
@@ -523,7 +522,7 @@ of Coons's theorem cited in~(a); the formal record adds the exact rank
 $2^e+1$ at every level $e\ge1$, the explicit basis, and the integral relation
 module.  Martin's Theorem~1 gives linear independence for any family of
 totient channels along pairwise nonproportional affine forms with positive
-slopes (\href{https://arxiv.org/abs/math/0603053}{Martin, Theorem~1})
+slopes~\cite[Theorem~1]{martin-phi-inequalities}
 \ev{Cited}; in the canonical family only $\varphi(n)$ and $\varphi(2n)$ have
 proportional forms, and one further evaluation separates them, as in the short
 note.  The Lean proof does not use Martin's theorem.
@@ -760,15 +759,16 @@ open obligation's shape that a routine strengthening (raising a scale bound,
 widening a hypothesis, or reindexing a quantifier) might close the gap
 without new mathematics. Fifty-six near-miss rows were catalogued across the
 four obligations; eighteen of them were flagged \texttt{promotable\_claimed:
-True} on this first pass. \textbf{Every one of the eighteen proofs was then
-opened and read in full}, not merely re-inspected at the statement level,
-and the promotion claim was checked against the actual proof body. The
-audit table below reports the verdict for all eighteen.
+True} on this first pass. The eighteen promotion claims were then checked
+against the proofs, with the review depth stated per row; in particular the
+NM-12 endpoint proof bodies were not read in that pass. The audit table
+below reports the verdict for all eighteen.
 
-Of the eighteen, \textbf{sixteen are conclusively NOT\_PROMOTABLE}: reading
-the proof body exposes a documented arithmetic, logical, or coordinate
-obstruction that a routine strengthening cannot cross, and the row's own
-record states exactly what new input would be required.
+Of the eighteen, \textbf{sixteen are recorded as NOT\_PROMOTABLE}. For
+fifteen of them, reading the proof body exposes a documented arithmetic,
+logical, or coordinate obstruction that a routine strengthening cannot cross,
+and the row's own record states exactly what new input would be required;
+NM-12 is unverified, since its endpoint proofs were not read.
 
 \textbf{Two}
 (\texttt{NM-02}, \texttt{NM-03} in the \(\#257\)-universal obligation) are
@@ -780,12 +780,10 @@ value to a family of targets, without touching the missing arithmetic
 content (a cofinal certificate supply, a rank upper bound, an anti-concentration
 estimate) that every genuine closure of \(\#249\) or \(\#257\) requires.
 
-So
-while the promotion audit is not literally eighteen-for-eighteen at the level
-of ``can this exact statement be re-derived for a wider scope,'' it is
-eighteen-for-eighteen at the level that matters for this paper's obligations:
-\textbf{no promotion candidate in the audited set supplies missing arithmetic
-content toward closing \#249 or \#257}. The two mechanically-widenable rows
+So, at the level that matters for this paper's obligations,
+\textbf{no verified promotion candidate in the audited set supplies missing
+arithmetic content toward closing \#249 or \#257}; NM-12 remains an unverified
+widening. The two mechanically-widenable rows
 are recorded honestly below rather than folded into the sixteen, because
 collapsing that distinction would itself be exactly the kind of
 quantifier-slippage error this paper's accuracy rules forbid.
@@ -936,9 +934,9 @@ strong promotability hypothesis, not a verified promotion, since a
 \end{longtable}
 \end{landscape}
 
-\subsection*{Classification of the sixteen genuine blockers}
+\subsection*{Classification of the blockers}
 
-Reading all eighteen proof bodies rather than trusting the \texttt{yields}
+Reading the proof bodies, where the table records them as read, in place of the \texttt{yields}
 clause exposes a small, recurring taxonomy of blocker shapes, tagged by
 \texttt{gap\_kind} in the table above:
 
@@ -975,7 +973,7 @@ row with a genuine quantifier-order mismatch (e.g. \texttt{a12}'s
 at first read and excluded from the eighteen entirely, rather than surviving
 to a full proof-body audit. The eighteen audited here are precisely the rows
 whose \emph{stated} hypotheses looked closest to the obligation; that even
-this most-favourable subset yields sixteen genuine blockers and only two
+this most-favourable subset yields fifteen verified blockers, one unverified row and only two
 costless-but-empty restatements is the paper's evidence that the corpus's
 bounds are load-bearing in the strict sense: no amount of routine
 strengthening of what is already proved, at the level the audit checked,

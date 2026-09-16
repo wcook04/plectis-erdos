@@ -61,9 +61,9 @@ target of the whole batch.
 \lean{PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:1325}
 \end{prop}
 
-\begin{prop}[The five-link equivalence chain below the residue-gap target]\label{prop:TE-05}
+\begin{prop}[The five-link implication chain below the residue-gap target]\label{prop:TE-05}
 Each of the following cofinal supplies is proved \emph{sufficient} for
-Prop.~\ref{prop:TE-04}'s target, chained in decreasing strength:
+Prop.~\ref{prop:TE-04}'s target, with the displayed proved implications:
 \[
 \begin{aligned}
 &\mathtt{PowerTwoActualLcmTopEdgeResidueGapSupply}
@@ -75,10 +75,10 @@ Prop.~\ref{prop:TE-04}'s target, chained in decreasing strength:
 &\Leftarrow \mathtt{PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply}
 \end{aligned}
 \]
-All six named predicates are open; none is proved. Because the chain is
-implication-only-downward, proving the single \emph{weakest} link
-(\texttt{...TerminalCarryCorridorEscapeSupply}) closes the entire cluster and hence \#249.
-This is the true minimal remaining target of \texttt{TotientActualLcmTopEdgeStaircase}.
+All six named predicates are open; none is proved. Each arrow points from a
+proved sufficient condition to the statement it implies, so proving the last
+link (\texttt{...TerminalCarryCorridorEscapeSupply}) implies every link above
+it and hence \#249.
 \scale{cofinal}\ \ev{Open}\ \coord{mobius-mersenne}\\
 \lean{powerTwoActualLcmTopEdgeResidueGapSupply\_of\_adjacentSuffixMidband}{TotientActualLcmTopEdgeStaircase.lean:2108}
 \end{prop}
@@ -544,7 +544,7 @@ Writing $L(f):=\sum_{n\ge1}f(n)/(2^n-1)$: $L(\mu)=1/2$, $L(\varphi)=2$ (exactly 
 machine-checked), $L(1)=E$ = the Erd\H os-Borwein constant, proved \textbf{irrational} in this
 same kernel; $L(A)=S$ for $A=\varphi*\mu$ is exactly \#249 restated in ``positive
 Erd\H os-Borwein form,'' still open; $L(\mathrm{Id})=\sum\sigma(m)/2^m$ is transcendental by
-Nesterenko 1996 (cited, not formalised). Any proof of \#249 sits on this Dirichlet-convolution
+Nesterenko~\cite[Cor.~2, p.~1320]{nesterenko1996} (cited, not formalised). Any proof of \#249 sits on this Dirichlet-convolution
 ladder next to a proved irrational neighbour ($L(1)$) and a proved rational neighbour
 ($L(\varphi)$); this is the clearest bridge into \#257's native Lambert-series coordinate.
 \scale{n/a}\ \ev{Lean, Cited}\ \coord{mobius-mersenne}\\
@@ -772,7 +772,11 @@ the module's own docstring states.
 
 \begin{obs}[No fixed integer clears every normalised primitive-Euler coordinate]\label{prop:D6-kill}
 $\forall D>0,\ \neg\forall n>0,\ \exists z{:}\mathbb Z,\ D\cdot(A(n)/n)=z$, where $A=\varphi*\mu$ is
-the Mersenne-Lambert primitive weight (so $S=L(A)$, Prop.~\ref{prop:D7-inv}). Any $D$ clearing
+the Mersenne-Lambert primitive weight (so $S=L(A)$, Prop.~\ref{prop:D7-inv}).
+The coordinates $A(n)/n$ are the M\"obius-inverted orbit counts of $\varphi$,
+whose integrality, together with nonnegativity, characterises the sequences
+realisable as periodic-point counts~\cite[Lemma~3.1, p.~5]{everest-periodic};
+only the integrality part is used here. Any $D$ clearing
 normalised coordinates through horizon $N$ must be divisible by every odd prime $p\le N$, every
 $p^2\le N$, and by $4$ once $N\ge4$ — so no fixed $D$ works for all $n$. \textbf{Kills}: any
 strategy seeking a single fixed integer denominator that simultaneously integralises every

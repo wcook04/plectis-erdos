@@ -8,7 +8,7 @@
 
 </div>
 
-For coprime integers $`a>b\ge1`$, the Lambert value $`F(a/b)=\sum_{n\ge1}((a/b)^n-1)^{-1}`$ is irrational whenever $`\log b/\log a<\theta^*`$, where the explicit constant below satisfies $`\theta^*\approx0.4056830213840605`$. In particular, $`F((31/4)^r)`$ is irrational for every integer $`r\ge1`$. The same forms bound its irrationality exponent uniformly in $`r`$. This is an ordinary proof: it uses the polynomial conclusion of Zudilin’s Lemma 7 before the source’s integer-specialisation step. Lean checks the theorem and the corollary below, with the source supply applied. Cyclotomic factors are cancelled before the rational-base denominator is cleared; the degree of the resulting polynomial pair determines the cost. The argument does not cover $`3/2`$. For the normalised Hankel determinant in the second construction we prove
+Specialising Zudilin’s 2004 construction for $`q`$-harmonic series to rational bases, we prove that for coprime integers $`a>b\ge1`$ the Lambert value $`F(a/b)=\sum_{n\ge1}((a/b)^n-1)^{-1}`$ is irrational whenever $`\log b/\log a<\theta^*=0.4056830213840605\ldots`$, the reciprocal of Zudilin’s integer-base exponent bound $`2.46497868\ldots`$. In particular, $`F((31/4)^r)`$ is irrational for every integer $`r\ge1`$, and the same forms bound its irrationality exponent uniformly in $`r`$. The linear forms, their permutation-group integrality, the direction and the constants come from Zudilin’s 2004 paper. The rational specialisation is this paper’s own work: it uses the polynomial form of Lemma 7 there before the integer specialisation, cancels cyclotomic factors before clearing the rational-base denominator, and proves the degree and remainder estimates that measure the cost. The proof is an ordinary proof, and Lean checks finite subclaims. The argument does not reach $`3/2`$. Zudilin bounded the $`q`$-order of his 2016 normalised Hankel determinant $`V_N^*`$ from below; we prove
 ``` math
 \operatorname{ord}_qV_N^*=\frac{N(N-1)(2N-1)}6,
  \qquad [q^{\operatorname{ord}_qV_N^*}]V_N^*
@@ -25,7 +25,7 @@ For $`t>1`$, expansion of each geometric series gives
 F(t)=\sum_{n\ge1}\frac1{t^n-1}
      =\sum_{n\ge1}\frac{\tau(n)}{t^n},
 ```
-where $`\tau(n)`$ is the number of positive divisors of $`n`$. Erdős Problem #1049 asks for irrationality at every rational $`t>1`$ \[erdos1988, p. 102\]. The theorem below proves an explicit sufficient region and settles the power family in the title.
+where $`\tau(n)`$ is the number of positive divisors of $`n`$. Chowla conjectured that $`F(t)`$ is irrational for every rational $`t>1`$, as Erdős records \[erdos1988, p. 102\]; this is Erdős Problem #1049. Specialising Zudilin’s 2004 construction to rational bases, Theorem <a href="#res:rational-base-threshold" data-reference-type="ref" data-reference="res:rational-base-threshold">1</a> proves irrationality on an explicit region that contains the power family in the title.
 
 Cyclotomic cancellation in the linear forms of Zudilin’s 2004 construction \[zudilin2004\] produces positive forms $`\Lambda_n=U_nF-V_n`$ with integral coefficient polynomials of degree at most $`W_n`$, and
 ``` math
@@ -42,7 +42,7 @@ The Hankel argument concerns a different family. Its moment expansion makes one 
 
 # A rational base at which $`F`$ is irrational
 
-Write $`\psi_1(u)=\sum_{k\ge0}(k+u)^{-2}`$. Let $`\mathcal I`$ be the thirteen intervals listed in the proof and put
+The direction $`(14,12,14;27)`$, the thirteen intervals and the constants $`C_1,C_0`$ below are those of Zudilin’s construction \[zudilin2004, §5, pp. 161–162\]; there $`C_1/C_0=2.46497868\ldots`$ is his bound for the irrationality exponent at integer bases \[zudilin2004, Thm. 1, p. 154\]. Write $`\psi_1(u)=\sum_{k\ge0}(k+u)^{-2}`$. Let $`\mathcal I`$ be the thirteen intervals listed in the proof and put
 ``` math
 C_1=\frac{1091}{2},\qquad
  J=\sum_{[u,v)\in\mathcal I}\bigl(\psi_1(u)-\psi_1(v)\bigr),\qquad
@@ -52,7 +52,7 @@ Thus $`\theta^*=C_0/C_1`$ and $`\mu=C_1/C_0`$ are defined exactly.
 
 <div id="res:rational-base-threshold" class="theorem">
 
-**Theorem 1** (rational-base region). *Let $`a>b\ge1`$ be coprime integers with
+**Theorem 1** (rational-base region for Zudilin’s forms). *Let $`a>b\ge1`$ be coprime integers with
 ``` math
 \begin{gathered}
  b^{\mu}<a,\qquad\text{equivalently}\qquad
@@ -126,7 +126,7 @@ For fixed $`n`$, the positive representation below gives $`H_n(x)=O(1)`$ as $`x\
 
 #### The limiting degree cost.
 
-The elementary summatory estimate $`\sum_{\ell\le y}\varphi(\ell)=3y^2/\pi^2+O(y\log y)`$ gives
+The limits below are the cyclotomic limits of \[zudilin2004, Lemmas 1–2, p. 155\]. The proof uses the argument through reciprocal intervals, the summatory totient estimate and the trigamma function from the proof of \[zudilin2002, Lemma 1, p. 466\], with an explicit truncation of the block sum. The elementary summatory estimate $`\sum_{\ell\le y}\varphi(\ell)=3y^2/\pi^2+O(y\log y)`$ gives
 ``` math
 \frac1{n^2}\sum_{\ell\le15n}\varphi(\ell)\longrightarrow\frac{675}{\pi^2}.
 ```
@@ -151,7 +151,7 @@ H_n(x)=\sum_{t\ge0}q^{a_0t}
  \frac{(q^{t+1};q)_{a_1-1}}{(q;q)_{a_1-1}}
  \frac{(q;q)_{\beta-a_2-1}}{(q^{a_2+t};q)_{\beta-a_2}}.
 ```
-The last denominator has length $`\beta-a_2`$, as required by the source’s gamma expression (7) and residues (8). The shorter length in one unnumbered product on printed p. 156 is an indexing discrepancy. Every finite product lies between $`P=(q;q)_\infty>0`$ and $`1`$, so
+The last denominator has length $`\beta-a_2`$, the length given by the gamma expression (7) and the residues (8) of \[zudilin2004, p. 156\]. The unnumbered display of $`R(T)`$ on that page prints the length $`\beta-a_2-1`$; the numbered identities fix the normalisation used here. Every finite product lies between $`P=(q;q)_\infty>0`$ and $`1`$, so
 ``` math
 P^2\le H_n(x)\le\frac{P^{-2}}{1-q^{a_0}}.
 ```
@@ -220,7 +220,7 @@ Here $`\mu_{\rm irr}(\xi)`$ is the supremum of the exponents $`\nu`$ for which $
 
 <div class="proof">
 
-*Proof.* The raw source coefficient is a sum of $`O(n)`$ Laurent monomials times two Gaussian polynomials, each of coefficient sum at most $`2^{27n+2}`$. Its coefficient norm is $`\exp(O(n))`$, and every exponent is at most $`K_n`$. The same normalising multiplier used above therefore gives
+*Proof.* The passage from the forms to an exponent bound is the standard one that Zudilin uses at integer bases \[zudilin2004, p. 162\]; the estimates below make it uniform in $`r`$. The raw source coefficient is a sum of $`O(n)`$ Laurent monomials times two Gaussian polynomials, each of coefficient sum at most $`2^{27n+2}`$. Its coefficient norm is $`\exp(O(n))`$, and every exponent is at most $`K_n`$. The same normalising multiplier used above therefore gives
 ``` math
 |U_n(x)|\le x^{W_n}\exp(O_x(n))\qquad(x>1\text{ fixed}).
 ```
@@ -248,7 +248,7 @@ Let $`\eta\downarrow0`$. The resulting bound is $`1+\alpha/\tau=(1-\theta)/(\the
 
 #### Comparison and scope.
 
-Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gives $`\log b/\log a<\theta_{\rm BV}:=1/2-1/\pi^2`$. Since $`\pi^2<10`$, one has $`\theta_{\rm BV}<2/5<\log4/\log31`$. The displayed sufficient regions therefore differ on $`[\theta_{\rm BV},\theta^*)`$. The direction $`(14,12,14;27)`$, its thirteen intervals and the constant $`\mu\approx2.46497868`$ are inherited from \[zudilin2004, p. 162\], where $`\mu`$ bounds an integer-base irrationality exponent \[zudilin2004, Thm. 1, p. 154\]. The extension to non-integer rational bases noted in \[zudilin2016, Sec. 2, p. 4\] has the same shape, with the computable constant left unspecified. Here the polynomial specialisation identifies $`\mu`$ as admissible for $`F`$; no priority claim is attached.
+Bundschuh and Väänänen’s Theorem 2 at $`\alpha=-1`$ \[bv1994, p. 177\] gives irrationality for $`\log b/\log a<\theta_{\rm BV}:=1/2-1/\pi^2`$. Since $`\pi^2<10`$, one has $`\theta_{\rm BV}<2/5<\log4/\log31`$, so $`31/4`$ lies outside that sufficient region. The two sufficient regions differ on $`[\theta_{\rm BV},\theta^*)`$. For the generalized $`q`$-logarithm, Zudilin remarks that his results extend to non-integer rational bases $`p=r/s`$ under an assumption $`\log|r|>c\log|s|`$ for a computable constant $`c>0`$, without computing $`c`$ \[zudilin2016, Sec. 2, p. 4\]. For $`F`$, the specialisation above shows that $`c=\mu`$, the exponent bound of \[zudilin2004, p. 162\], is admissible.
 
 <div id="res:sevenhalves" class="theorem">
 
@@ -346,7 +346,7 @@ G_0(w)=\frac{1+2w}{(1-w)^4},\qquad
  a_k(0)=\frac{(k+1)^2(k+2)}2=:c_k>0.
 ```
 
-Apply Cauchy–Binet to a finite truncation of the moment sum and then pass coefficientwise to the limit. This is legitimate because only finitely many increasing index tuples contribute to any fixed $`q`$-degree. It gives
+The expansion below is Heine’s formula for a Hankel determinant of moments as a sum of squared Vandermonde products; Zudilin uses its integral form and reproduces its proof in \[zudilin2017det, Sec. 2, (2)–(5), pp. 2–3\]. Apply Cauchy–Binet to a finite truncation of the moment sum and then pass coefficientwise to the limit. This is legitimate because only finitely many increasing index tuples contribute to any fixed $`q`$-degree. It gives
 ``` math
 V_N^*=\sum_{k_0<\cdots<k_{N-1}}
  \left(\prod_{i=0}^{N-1}a_{k_i}(q)q^{k_i}\right)
@@ -379,6 +379,8 @@ The theorem identifies the first formal term. Formal order alone would not contr
 <a id="sec:open"></a>
 
 # Local cancellation and the remaining real estimate
+
+The tools of this section are elementary: congruences at the endpoints, the pigeonhole principle and Bézout’s identity for unimodular rows. The hypotheses on minors, multiplicities and real remainders are stated explicitly where they enter.
 
 <div id="res:nocorridor" class="theorem">
 
@@ -479,9 +481,11 @@ Primitive integer rows are unimodular modulo every modulus. A particular coordin
 
 ## One minor gcd controls two different costs
 
+The next proposition compares two explicit exponent polynomials of a Padé-type denominator model. No coefficient formula producing them is derived here, so the proposition by itself gives no integrality, nonvanishing or approximation estimate.
+
 <div id="res:pade" class="proposition">
 
-**Proposition 13** (Padé summand bound and exact gap). *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
+**Proposition 13** (exponent model: summand bound and exact gap). *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
 ``` math
 \widetilde{P}(n,k)=2\bigl(k(n-k)+nk\bigr)+k(k-1),
 ```
@@ -503,7 +507,7 @@ Then, for integers $`n,k,m`$:*
 
 </div>
 
-Let a rank-two lattice $`\Lambda\subset\mathbb{Z}^2`$ be generated by primitive rows, and let $`g>0`$ be the gcd of their $`2\times2`$ minors. Its Smith invariants are $`1,g`$. Therefore
+Let a rank-two lattice $`\Lambda\subset\mathbb{Z}^2`$ be generated by primitive rows, and let $`g>0`$ be the gcd of their $`2\times2`$ minors. By the description of Smith invariants through gcds of minors \[stanley2016, Thms. 2.3–2.4, p. 3\], its Smith invariants are $`1,g`$. Therefore
 ``` math
 \bigl|\operatorname{im}(\Lambda\bmod D)\bigr|
        =\frac{D^2}{\gcd(g,D)},\qquad
@@ -611,7 +615,7 @@ For the literal two-parameter source deformations, the long record keeps the row
 
 #### Functional equations.
 
-The classification of Bell and Smertnig implies that $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ is not $`k`$-Mahler for any $`k\ge2`$ \[bellsmertnig2026, Introduction\]. The earlier simultaneous-$`2`$/$`3`$ obstruction is consequently subsumed by this known single-base result. A construction using additional functions or functional relations must specify those functions and its closure conditions; the single-base statement is not an obstruction to every approximation method.
+Bell and Smertnig’s classification of Mahler series with multiplicative coefficients shows that $`L(z)=\sum_{n\ge1}\tau(n)z^n`$ is not $`k`$-Mahler for any $`k\ge2`$ \[bellsmertnig2026, Thm. 1.3 and the consequences on p. 3\]. The earlier simultaneous-$`2`$/$`3`$ obstruction is consequently subsumed by this known single-base result. A construction using additional functions or functional relations must specify those functions and its closure conditions; the single-base statement is not an obstruction to every approximation method.
 
 <a id="statements-and-declarations"></a>
 
@@ -647,7 +651,7 @@ The declarations linked at 99f4bf47422a live in seven modules: `RationalBaseLa
 
 99
 
-P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). P. Bundschuh and K. Väänänen, [*Arithmetical investigations of a certain infinite product*](https://numdam.org/item/CM_1994__91_2_175_0.pdf), Compositio Math. **91** (1994), no. 2, 175–199. W. Zudilin, [*Heine’s basic transform and a permutation group for $`q`$-harmonic series*](https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/), Acta Arith. **111** (2004), no. 2, 153–164, doi:[10.4064/aa111-2-4](https://doi.org/10.4064/aa111-2-4). Page references are to the printed journal pages. W. Zudilin, [*On the irrationality of generalized $`q`$-logarithm*](https://arxiv.org/abs/1601.02688), arXiv:1601.02688; Res. Number Theory **2** (2016), Art. 15, doi:[10.1007/s40993-016-0042-x](https://doi.org/10.1007/s40993-016-0042-x). Page references are to arXiv:1601.02688v2. The remark that the results extend to non-integer $`p=r/s`$, $`|p|>1`$, under an assumption $`\log|r|>c\log|s|`$ for a computable $`c>0`$, is in Section 2, p. 4, in the paragraph beginning “Finally, we remark”; no value of $`c`$ is computed there, and the remark is made for the generalized $`q`$-logarithm of that paper. T. F. Bloom, [*Erdős Problem \#1049*](https://www.erdosproblems.com/1049), `erdosproblems.com/1049`, accessed 28 July 2026 (page displays “last edited 28 September 2025”). The current record labels the problem open, cites <span class="upright">\[Er88c, p. 102\]</span> and <span class="upright">\[Er48\]</span>, and explicitly describes its status as the website owner’s present assessment rather than a literature-completeness guarantee. J. Bell and D. Smertnig, [*Mahler series with multiplicative coefficient sequences*](https://arxiv.org/abs/2603.23456), arXiv:2603.23456v1, 24 March 2026. The introduction explicitly includes the divisor and totient functions among the examples which are not $`k`$-Mahler for any $`k\ge2`$.
+P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). P. Bundschuh and K. Väänänen, [*Arithmetical investigations of a certain infinite product*](https://numdam.org/item/CM_1994__91_2_175_0.pdf), Compositio Math. **91** (1994), no. 2, 175–199. W. Zudilin, *Remarks on irrationality of $`q`$-harmonic series*, Manuscripta Math. **107** (2002), no. 4, 463–477, doi:[10.1007/s002290200249](https://doi.org/10.1007/s002290200249). W. Zudilin, [*Heine’s basic transform and a permutation group for $`q`$-harmonic series*](https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/), Acta Arith. **111** (2004), no. 2, 153–164, doi:[10.4064/aa111-2-4](https://doi.org/10.4064/aa111-2-4). Page references are to the printed journal pages. W. Zudilin, [*On the irrationality of generalized $`q`$-logarithm*](https://arxiv.org/abs/1601.02688v2), arXiv:1601.02688; Res. Number Theory **2** (2016), Art. 15, doi:[10.1007/s40993-016-0042-x](https://doi.org/10.1007/s40993-016-0042-x). Page references are to arXiv:1601.02688v2. The remark that the results extend to non-integer $`p=r/s`$, $`|p|>1`$, under an assumption $`\log|r|>c\log|s|`$ for a computable $`c>0`$, is in Section 2, p. 4, in the paragraph beginning “Finally, we remark”; no value of $`c`$ is computed there, and the remark is made for the generalized $`q`$-logarithm of that paper. R. P. Stanley, *Smith normal form in combinatorics*, J. Combin. Theory Ser. A **144** (2016), 476–495, doi:[10.1016/j.jcta.2016.06.013](https://doi.org/10.1016/j.jcta.2016.06.013); arXiv:[1602.00166v1](https://arxiv.org/abs/1602.00166v1). Page references are to arXiv:1602.00166v1. W. Zudilin, *A determinantal approach to irrationality*, Constr. Approx. **45** (2017), no. 2, 301–310, doi:[10.1007/s00365-016-9333-7](https://doi.org/10.1007/s00365-016-9333-7); arXiv:[1507.05697v1](https://arxiv.org/abs/1507.05697v1). Page and equation references are to arXiv:1507.05697v1. T. F. Bloom, [*Erdős Problem \#1049*](https://www.erdosproblems.com/1049), `erdosproblems.com/1049`, accessed 28 July 2026 (page displays “last edited 28 September 2025”). The current record labels the problem open, cites <span class="upright">\[Er88c, p. 102\]</span> and <span class="upright">\[Er48\]</span>, and explicitly describes its status as the website owner’s present assessment rather than a literature-completeness guarantee. J. Bell and D. Smertnig, [*Mahler series with multiplicative coefficient sequences*](https://arxiv.org/abs/2603.23456v1), arXiv:2603.23456v1, 24 March 2026. Theorem 1.3 is on pp. 2–3; its stated consequences on p. 3 include that the divisor and totient generating series are not $`k`$-Mahler for any $`k\ge2`$.
 
 </div>
 

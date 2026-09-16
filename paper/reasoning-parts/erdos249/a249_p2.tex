@@ -70,7 +70,7 @@ cone-menu nonintegral pair & \lean{exists\_nonintegral\_pair\_of\_coneNonflatCer
 survivorKill engine (carry-orbit route) & \lean{tail\_diff\_notMem\_int\_of\_survivorKill}{CarrySurvivorExtinction.lean:428} & uniform & $\forall h\,\forall N\,\forall K$, given \texttt{survivorKill} & other-carry-orbit\\
 Farey neighbour denominator law & \lean{farey\_gap}{GapFareyBound.lean:51} & uniform & $\forall a\,b\,c\,d\,r\,s{:}\mathbb{Z}$, $b{>}0,d{>}0,bc{-}ad{=}1$, unimodular-between & farey\\
 Dirichlet near-integer criterion & \lean{irrational\_of\_den\_mul\_abs\_sub\_tendsto\_zero}{CertificateKernel.lean:5371} & uniform & $\forall u{:}\mathbb{N}\to\mathbb{Q}\,\forall x{:}\mathbb{R}$ & n/a (generic)\\
-Erd\H{o}s 1948 near-integer criterion & \lean{irrational\_of\_int\_mul\_near\_int}{CertificateKernel.lean:6120} & uniform & $\forall \xi{:}\mathbb{R}$, $\forall q{>}0\,\exists m\,z\,0{<}|m\xi{-}z|{<}1/q$ & n/a (generic)\\
+near-integer irrationality criterion & \lean{irrational\_of\_int\_mul\_near\_int}{CertificateKernel.lean:6120} & uniform & $\forall \xi{:}\mathbb{R}$, $\forall q{>}0\,\exists m\,z\,0{<}|m\xi{-}z|{<}1/q$ & n/a (generic)\\
 finite-minor $\Rightarrow$ linear independence & \lean{linearIndependent\_of\_separatedMinorCertificate}{TotientMahlerDefect.lean:91} & uniform & $\forall\,\mathrm{family}{:}\iota\to\mathbb{N}\to\mathbb{Q}$, given SeparatedMinorCertificate & n/a (generic)\\
 dyadic totient-kernel rank $=2^e{+}1$ & \lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935} & uniform & $\forall e$ & other-dyadic-kernel-rank\\
 rationality forces unbounded carry-kernel rank & \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300} & uniform & $\lnot\mathrm{Irrational}\,S\to\exists v{>}0\,\exists u\,\forall e$ & other-carry-kernel-rank\\
@@ -243,7 +243,7 @@ growth rate, while height-minimal integer-relation minimizers regrow the echo te
 — for every tested family, the two costs cannot both be driven to zero as the scale parameter
 grows. The interface index records the same phenomenon for
 \texttt{HalfRung}$(J)$-shaped truncation rungs: the certificate window $B(J)$ is driven by
-$L_J=\mathrm{lcm}(2,\dots,J)$, which grows super-exponentially in $J$, so the per-$J$ constant
+$L_J=\mathrm{lcm}(2,\dots,J)$, which grows exponentially in $J$ ($\log L_J=\psi(J)\sim J$), so the per-$J$ constant
 degrades with the very parameter the cofinal claim needs to range over — ``the hallmark of a proof
 that does not survive bound removal'' (interface index, row \texttt{d-3a/d-3b}).
 \end{enumerate}
@@ -351,8 +351,11 @@ statement about \texttt{windowDiscrepancy}.
 \subsection{Obstructions are coordinate-relative: the binary-digit vs.\ M\"obius--Mersenne case}
 
 The clearest instance of coordinate-relative obstruction in the whole \#249 corpus is the fate of
-the classical Erd\H{o}s (1948) near-integer digit method. That method needs, in essence, a finite
-automaton: a bounded amount of state carried forward from one digit block to the next, so that the
+the classical Erd\H{o}s (1948) digit method. Erd\H{o}s's argument for $\sum_n1/(2^n-1)$ chooses
+arguments by a system of congruences so that the divisor counts along a block are divisible by
+increasing powers of the base, and a tail bound then forces a long run of zero
+digits~\cite[pp.~63--66]{erdos1948lambert}; it uses no finite automaton. The route considered in
+this corpus instead carries a bounded amount of state forward from one digit block to the next, so that the
 value of a far-away digit block can be recovered from a bounded summary of everything before it. In
 the binary-digit coordinate this is exactly what fails, and it fails as a proved Lean theorem, not
 a heuristic remark: \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247}

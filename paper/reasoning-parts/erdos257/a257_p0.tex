@@ -70,7 +70,10 @@ hypotheses.
 \subsubsection{Named infinite-support families}
 
 Beyond full support ($A = \{1,2,3,\dots\}$, i.e.\ $m=1$ below), the following named infinite
-families are each proved irrational unconditionally, for every base $b \ge 2$:
+families are each proved irrational unconditionally, for every base $b \ge 2$.  The purely
+periodic, eventually periodic, residue-class and odd supports follow from the periodic theorem of
+Luca and Tachiya~\cite[Theorem~A, p.~139]{lucatachiya2017}, and the declarations below are formal
+proofs of these cases:
 
 \begin{thm}[Purely periodic support]
 For every $b \ge 2$, every modulus $m \ge 1$, and every $m$-periodic $A \subseteq \mathbb{N}$ (i.e.\
@@ -97,11 +100,10 @@ irrational. \coord{residue-class-support} \scale{uniform} \ev{Lean}\\
 (specializes purely periodic support).
 \end{thm}
 
-\begin{thm}[Odd support -- first density-strictly-between-0-and-1 class]
-For every $b \ge 2$: $\sum_{n \text{ odd}} 1/(b^n-1)$ is irrational. This is the first landed support
-class with natural density strictly between $0$ and $1$ (odd $n$ has density $1/2$ inside
-$\mathbb{N}$), as opposed to the density-$1$ full-support case or density-$1/m$ residue classes for
-large $m$. \coord{odd-support} \scale{uniform} \ev{Lean}\\
+\begin{thm}[Odd support]
+For every $b \ge 2$: $\sum_{n \text{ odd}} 1/(b^n-1)$ is irrational. This density-$1/2$ support is
+the case treated explicitly by Luca and Tachiya~\cite[Example~2, p.~140]{lucatachiya2017}.
+\coord{odd-support} \scale{uniform} \ev{Lean}\\
 \textbf{Site:} \lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11686}
 (specializes residue-class support at $m=2,c=1$).
 \end{thm}
@@ -129,9 +131,11 @@ measure in its ambient interval $[0,E]$, whose length is $E\approx1.6067$.
 \lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1656},
 \lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1672},
 \lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1681},
-\lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}. Strict separation and summability give the compactness, unique coding, and Cantor topology. The
-measure assertion is Mersenne-specific: if $R_N=\sum_{n>N}x_n$, the level-$N$ cylinder length is
-$2^N R_N\to1$. Other weight sequences require their own tail asymptotic.\\
+\lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}. Strict separation and summability give the compactness, unique coding, and Cantor topology, and
+Hornich's strict-tail theorem, as proved by Nitecki~\cite[Theorem~4(1), p.~9]{nitecki2013}, gives
+the measure as $\lim_N2^NR_N$ with $R_N=\sum_{n>N}x_n$: each level-$N$ cylinder has length $R_N$,
+and the $2^N$ disjoint cylinders have total length $2^NR_N$. The Mersenne-specific input is
+$2^NR_N\to1$. Other weight sequences require their own tail asymptotic.\\
 \textbf{Chains with:} Theorem~\ref{thm:greedy-survival-record} below (compactness is exactly what powers
 every ``limit of achieved points is achieved'' argument used downstream, including the seam-limit
 route of Part~2).
