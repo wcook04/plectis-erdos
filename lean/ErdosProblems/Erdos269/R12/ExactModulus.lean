@@ -6,7 +6,7 @@ import ErdosProblems.Erdos269.PaperR7WindowResults
 The precise denominator is the actual window product, not its lower bound
 2^len. A nonintegral real (even a nonintegral rational) is separated from the
 integers. This yields eventual escape when the relative bound tends to zero.
-These are new proof scripts, not compiler or axiom-check receipts. UNRUN.
+
 -/
 namespace ErdosProblems.Erdos269.PaperR12
 open PaperR7 Filter

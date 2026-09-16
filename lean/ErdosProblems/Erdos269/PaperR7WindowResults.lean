@@ -10,7 +10,7 @@ They are separately named. No validity claim about the latter is inferred from
 the former. The bounded-length obstruction needs only growth of the long cap,
 so it can be proved without assuming the unresolved `X_a <= Q(n_a)` bridge.
 
-Validation: authored, not compiled. No admissions.
+No admissions.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

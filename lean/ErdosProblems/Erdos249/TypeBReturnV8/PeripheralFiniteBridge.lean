@@ -3,7 +3,7 @@ import Erdos249257.FirstHarmonicPivot
 /-!
 # Finite bridge for the three peripheral first-harmonic pivot budgets
 
-Authoring status: UNRUN in the Type-B environment.
+
 
 This file contains no PNT or Schoenberg theorem.  It formalises the finite
 last mile needed once arithmetic estimates have supplied:

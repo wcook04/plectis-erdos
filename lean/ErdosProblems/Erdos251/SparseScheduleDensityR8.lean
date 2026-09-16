@@ -5,7 +5,7 @@ import Mathlib.Order.Interval.Finset.Nat
 /-!
 # Uniform interval counting for the round-8 sparse schedule
 
-New UNCOMPILED source. Upper Banach density zero is stated in the equivalent
+Upper Banach density zero is stated in the equivalent
 integer-reciprocal form: for every positive R, eventually every length-L
 interval has at most L/R support points. This is uniform in the interval's
 starting point, not merely natural density zero.

@@ -323,7 +323,7 @@
         ],
         "conclusion": "Distinct positive value rays exclude the exact finite Newton connection, without supplying the global lemniscate theorem.",
         "hard_mechanism": "The exponential first integral multiplies by a strictly positive real scalar and therefore preserves argument; distinct rays contradict that invariant.",
-        "attribution": "Source-current Lean in NewtonFlowRaySeparation.lean:306,315, canonically bound by Claims commit 06198c0a; no novelty, priority, significance, or external-review claim is made.",
+        "attribution": "Source-current Lean in NewtonFlowRaySeparation.lean:325,334, canonically bound by Claims commit 06198c0a; no novelty, priority, significance, or external-review claim is made.",
         "limitations": [
           "No global compatible critical-value ray assignment or perturbation/gluing theorem is supplied.",
           "Translation avoidance and root retention are supporting Comparator inputs, not transports of this exact ray theorem.",

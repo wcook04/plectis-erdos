@@ -64,9 +64,45 @@ def check_git_fixture_environment() -> None:
     )
 
 
+def check_nested_layout_pin_resolves_identity_path() -> None:
+    """A pin taken after the move under lean/ resolves an identity-spelled link.
+
+    Paper links name modules by identity path (Erdos249257/...). The formal
+    source pinned on 2026-09-15 stores both libraries under lean/, and the
+    release gate then reported every archive-paper link as missing there.
+    """
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        git(root, "init", "-q")
+        git(root, "config", "user.email", "release-test@example.invalid")
+        git(root, "config", "user.name", "Release source identity test")
+        (root / "lean" / "Erdos249257").mkdir(parents=True)
+        (root / "lean" / "Erdos249257" / "Nested.lean").write_text(
+            "theorem nestedOnly : True := True.intro\n", encoding="utf-8"
+        )
+        nested_ref = commit(root, "nested formal source")
+        original_root = check_release.ROOT
+        check_release.ROOT = root
+        try:
+            cache: dict[tuple[str, str | None], list[str] | None] = {}
+            lines = check_release.module_lines(cache, "Erdos249257/Nested.lean", nested_ref)
+            require(lines is not None, "identity-spelled module was not found at a nested-layout pin")
+            require(
+                check_release.name_at_line(lines, "nestedOnly", 1),
+                "nested-layout module declaration was not found at its line",
+            )
+            require(
+                check_release.module_lines(cache, "Erdos249257/Absent.lean", nested_ref) is None,
+                "an absent module resolved at a nested-layout pin",
+            )
+        finally:
+            check_release.ROOT = original_root
+
+
 def main() -> int:
     """A later worktree file must not satisfy a historical source reference."""
     check_git_fixture_environment()
+    check_nested_layout_pin_resolves_identity_path()
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
         git(root, "init", "-q")

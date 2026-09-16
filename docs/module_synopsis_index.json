@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:097694d008302c826882c890b30cf6ffe02c380882e5a51e13d24f49d74de9f5",
-  "module_count": 1274,
-  "synopsis_count": 1079,
+  "source_fingerprint": "sha256:56a5faca1becfe686a590e66231d66ab3494d1f0070c563ac8008d3a7f0f401d",
+  "module_count": 1276,
+  "synopsis_count": 1081,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3665,7 +3665,7 @@
     {
       "id": "ErdosProblems.Erdos1041.CircleSeriesTransport",
       "path": "lean/ErdosProblems/Erdos1041/CircleSeriesTransport.lean",
-      "synopsis": "Absolute series transport through normalized circle integration. This is the infinite interchange step needed for Taylor energy: it applies to the double index `(n,k)` once a geometric coefficient majorant has been established. No energy inequality or final integral identity is an assumed hypothesis. Candidate source, not yet compiled."
+      "synopsis": "Absolute series transport through normalized circle integration. This is the infinite interchange step needed for Taylor energy: it applies to the double index `(n,k)` once a geometric coefficient majorant has been established. No energy inequality or final integral identity is an assumed hypothesis."
     },
     {
       "id": "ErdosProblems.Erdos1041.ConnectorR18.All",
@@ -3810,7 +3810,7 @@
     {
       "id": "ErdosProblems.Erdos1041.PaperCriticalValueMeanR10",
       "path": "lean/ErdosProblems/Erdos1041/PaperCriticalValueMeanR10.lean",
-      "synopsis": "The actual polynomial critical-value mean, not a hypothesis-only consumer. Both paper exponents, all degrees, arbitrary disc centres, R=0, and critical multiplicities are included. All Lean builds and axiom audits are UNRUN."
+      "synopsis": "The actual polynomial critical-value mean, not a hypothesis-only consumer. Both paper exponents, all degrees, arbitrary disc centres, R=0, and critical multiplicities are included."
     },
     {
       "id": "ErdosProblems.Erdos1041.PaperCubicCompletion",
@@ -3863,9 +3863,19 @@
       "synopsis": "The complete reflected-derivative inequality Source candidate, not elaborated in the preparation environment. Lean 4.29.1; Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6. The two targets left open in PaperReflectedBoundary are proved here. The denominator is regularised as prod(t-conj(c_k)*z), t>1, before maximum modulus is applied. It is zero-free on the CLOSED unit disc, including when some critical points lie on the unit circle. Passing t down to one avoids assuming away boundary zeros or assuming a removable-singularity theorem."
     },
     {
+      "id": "ErdosProblems.Erdos1041.PaperSeparationCounterexample",
+      "path": "lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean",
+      "synopsis": "The complete elementary separation-or counterexample Target: short_note/res:sep-or-false. The root-disc claim is proved directly from the root equation and a norm inequality; Rouché is not assumed. The statement includes monicity, degree, the exhaustive list of critical points, their simplicity, their values, a least-modulus witness, distinct positive rays, and the strict normalised separation bound. No axioms or admitted steps are added."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PaperStraightObstructions",
+      "path": "lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean",
+      "synopsis": "Complete polynomial straight-path obstructions Paper target: short_note/res:straight-no-go. The quintic certificate is assembled into a polynomial, with exhaustive root classification and the actual critical-point/spoke assertions. The cubic argument quantifies over ALL its roots directly; it is not restricted to a supplied root enumeration. New proof source, not elaborated in this environment."
+    },
+    {
       "id": "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
       "path": "lean/ErdosProblems/Erdos1041/PaperWeightedRefinementsR10.lean",
-      "synopsis": "Paper endpoints: weighted equality, centroid loss, Cauchy--Schwarz and all-degree equal-weight free points. The existing non-strict theorem is reused. All compilation and axiom audits are UNRUN."
+      "synopsis": "Paper endpoints: weighted equality, centroid loss, Cauchy--Schwarz and all-degree equal-weight free points. The existing non-strict theorem is reused."
     },
     {
       "id": "ErdosProblems.Erdos1041.PoissonKernelBridge",
@@ -3875,12 +3885,12 @@
     {
       "id": "ErdosProblems.Erdos1041.PoissonNormSquare",
       "path": "lean/ErdosProblems/Erdos1041/PoissonNormSquare.lean",
-      "synopsis": "Analytic Poisson majorization for the squared norm. The hypotheses are only holomorphy on the open unit disc, continuity on its closure, and an interior sampling point. No norm-square mean inequality is an assumed supplier. Candidate source: not yet compiled."
+      "synopsis": "Analytic Poisson majorization for the squared norm. The hypotheses are only holomorphy on the open unit disc, continuity on its closure, and an interior sampling point. No norm-square mean inequality is an assumed supplier."
     },
     {
       "id": "ErdosProblems.Erdos1041.PolynomialDiscNormalisationR10",
       "path": "lean/ErdosProblems/Erdos1041/PolynomialDiscNormalisationR10.lean",
-      "synopsis": "Actual affine normalisation of a monic polynomial and its entire critical multiset. No continuity or labelling of moving critical roots is required. All Lean builds and axiom audits are UNRUN."
+      "synopsis": "Actual affine normalisation of a monic polynomial and its entire critical multiset. No continuity or labelling of moving critical roots is required."
     },
     {
       "id": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
@@ -4010,7 +4020,7 @@
     {
       "id": "ErdosProblems.Erdos1041.TaylorFiniteDeficitR10",
       "path": "lean/ErdosProblems/Erdos1041/TaylorFiniteDeficitR10.lean",
-      "synopsis": "Retain any finite set of positive-degree Taylor deficits. This is a candidate: all compilation and axiom audits are UNRUN. The degree-zero term is explicitly zero, so no exceptional index is hidden."
+      "synopsis": "Retain any finite set of positive-degree Taylor deficits. The degree-zero term is explicitly zero, so no exceptional index is hidden."
     },
     {
       "id": "ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector",
@@ -4050,12 +4060,12 @@
     {
       "id": "ErdosProblems.Erdos1041.WeightedBoundaryDeficitR10",
       "path": "lean/ErdosProblems/Erdos1041/WeightedBoundaryDeficitR10.lean",
-      "synopsis": "Actual finite and infinite coefficient deficits on the CLOSED unit disc. The endpoint is obtained from finite sums before taking the coefficient-series supremum. All compilation and axiom audits are UNRUN."
+      "synopsis": "Actual finite and infinite coefficient deficits on the CLOSED unit disc. The endpoint is obtained from finite sums before taking the coefficient-series supremum."
     },
     {
       "id": "ErdosProblems.Erdos1041.WeightedCauchyTransportR10",
       "path": "lean/ErdosProblems/Erdos1041/WeightedCauchyTransportR10.lean",
-      "synopsis": "Cauchy coefficients of the actual weighted function, at a fixed safe radius. Radial transport follows from one-dimensional power-series uniqueness. All compilation and axiom audits are UNRUN."
+      "synopsis": "Cauchy coefficients of the actual weighted function, at a fixed safe radius. Radial transport follows from one-dimensional power-series uniqueness."
     },
     {
       "id": "ErdosProblems.Erdos1041.WeightedClosedDisc",
@@ -4065,7 +4075,7 @@
     {
       "id": "ErdosProblems.Erdos1041.WeightedGroupedRigidityR10",
       "path": "lean/ErdosProblems/Erdos1041/WeightedGroupedRigidityR10.lean",
-      "synopsis": "Equality rigidity, with repeated centres genuinely grouped. Zero-weight points are allowed and correctly disappear from the equality test. All Lean compilation and axiom audits are UNRUN."
+      "synopsis": "Equality rigidity, with repeated centres genuinely grouped. Zero-weight points are allowed and correctly disappear from the equality test."
     },
     {
       "id": "ErdosProblems.Erdos1041.WeightedInteriorBound",
@@ -4090,7 +4100,7 @@
     {
       "id": "ErdosProblems.Erdos1049.AdelicHeightBridge",
       "path": "lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-      "synopsis": "Erdős #1049: one integer certificate controls four separate obstructions The single two-sided bracket `2 ^ 64 < 3 ^ 41 < 2 ^ 65` sharpens every parameter obstruction already recorded for `3 / 2`. * The Archimedean height deficit against the Bundschuh--Väänänen frontier is bigger than `3 / 13`, uniformly over the whole admissible rectangular Hermite--Padé cone (`threeHalves_rectangular_hp_gap_gt_threeThirteenths`). The previous certificate `3 ^ 81 < 2 ^ 200` only gave `81 / 200` for the ratio itself and no cone-uniform gap at all. * The four-jet counting threshold at bottom depth `41` drops from the `4 R + 2 S = 164 + 2 S` of `exists_distinct_binary_selectors_same_fourJet_of_rank` to `130 + 2 S`, and `130` is *exactly* optimal (`fourJet_card_gt_two_pow_of_rank_41`). * The cubic Hankel producer must remove more than `39 / 41` of its raw denominator charge (`threeHalves_hankelChargeThreshold_lt_eightFortyOne`). * The scalar cone misses by a fixed relative margin `17 / 41` (`three_two_scalar_margin_lt_explicit`). The final section adds a general **bounded-fibre escape** pigeonhole. Once an analytic remainder is supplied as `g` together with a fibre bound, the generic theorem yields a four-jet collision separated by `g`; no such concrete remainder instantiation is formalized here. No theorem here decides the arithmetic nature of the Lambert value at `3 / 2`."
+      "synopsis": "Erdős #1049: one integer certificate controls four separate obstructions The single two-sided bracket `2 ^ 64 < 3 ^ 41 < 2 ^ 65` sharpens every parameter obstruction already recorded for `3 / 2`. * The Archimedean height deficit against the Bundschuh--Väänänen frontier is bigger than `3 / 13`, uniformly over the whole admissible rectangular Hermite--Padé cone (`threeHalves_rectangular_hp_gap_gt_threeThirteenths`). The previous certificate `3 ^ 81 < 2 ^ 200` only gave `81 / 200` for the ratio itself and no cone-uniform gap at all. * The four-jet counting threshold at bottom depth `41` drops from the `4 R + 2 S = 164 + 2 S` of `exists_distinct_binary_selectors_same_fourJet_of_rank` to `130 + 2 S`, and `130` is *exactly* optimal (`fourJet_card_gt_two_pow_of_rank_41`). * The cubic Hankel producer must remove more than `39 / 41` of its raw denominator charge (`threeHalves_hankelChargeThreshold_lt_eightFortyOne`). * The scalar cone misses by a fixed relative margin `17 / 41` (`three_two_scalar_margin_lt_explicit`). The final section adds a general **bounded-fibre escape** pigeonhole, which turns a bound on the multiplicity of equal analytic remainders into a four-jet collision that escapes the remainder nullspace. The middle sections concern the `q`-order of Zudilin's normalized Hankel determinant `V_N^*` (Zudilin 2016, Res. Number Theory 2, Art. 15, §4). Their exact Lean reach is: the associated-graded recurrence and both tail reciprocals; the exact source tails, their step identity and first step coefficient; the determinant-preserving backward shift; the leading matrix as a sc"
     },
     {
       "id": "ErdosProblems.Erdos1049.AllRow.Audit",
@@ -4240,67 +4250,67 @@
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CRTObstructionDensity.lean",
-      "synopsis": "Combining all finite good-prime obstructions Authored candidate, UNRUN. The Chinese remainder equivalence is constructed by mathlib, and the cardinality is proved by an explicit equivalence of the avoiding subtype with a product of punctured residue fields. No independence or density formula is supplied as a hypothesis. Moduli may be any positive pairwise coprime natural numbers; the application uses distinct primes."
+      "synopsis": "Combining all finite good-prime obstructions The Chinese remainder equivalence is constructed by mathlib, and the cardinality is proved by an explicit equivalence of the avoiding subtype with a product of punctured residue fields. No independence or density formula is supplied as a hypothesis. Moduli may be any positive pairwise coprime natural numbers; the application uses distinct primes."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicDivisorObstruction",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicDivisorObstruction.lean",
-      "synopsis": "Nonunit constants: explicit primitive divisor obstructions Authored candidate, UNRUN. The old 1/(12*d) loss is unnecessary for a single periodic family of disjoint two-windows. We obtain 1/(6*d) for every d >= 2, and 1/d when d is coprime to 6. In particular divisors 2, 3, and any divisor between 2 and 28 coprime to 6 give the universal 1/28 bound in this branch. This does not discard constants whose prime factors are all >= 29."
+      "synopsis": "Nonunit constants: explicit primitive divisor obstructions The old 1/(12*d) loss is unnecessary for a single periodic family of disjoint two-windows. We obtain 1/(6*d) for every d >= 2, and 1/d when d is coprime to 6. In particular divisors 2, 3, and any divisor between 2 and 28 coprime to 6 give the universal 1/28 bound in this branch. This does not discard constants whose prime factors are all >= 29."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicGcdFence",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicGcdFence.lean",
-      "synopsis": "A uniform four-window gcd reduction for cubic profiles Authored candidate, UNRUN. The reduction works below density `1/4`, not only under density zero. Four agreeing values give the exact third difference; every earlier common divisor divides that difference. No upper growth estimate, record restart, denominator reduction, or prime-existence hypothesis is needed."
+      "synopsis": "A uniform four-window gcd reduction for cubic profiles The reduction works below density `1/4`, not only under density zero. Four agreeing values give the exact third difference; every earlier common divisor divides that difference. No upper growth estimate, record restart, denominator reduction, or prime-existence hypothesis is needed."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicIntegralNormalisation.lean",
-      "synopsis": "Integral normalisation at the quarter-density threshold Authored candidate; Lean and axiom audits UNRUN. The integral coefficients are constructed from one clean four-window. In particular they are conclusions, not hidden hypotheses in an arbitrary rational-profile statement. - A non-integral constant or non-integral third difference gives density >= 1/4. - The argument needs only an integer-valued sequence, not a recurrence. - No claim that an integral constant must be +1 or -1 is made here."
+      "synopsis": "Integral normalisation at the quarter-density threshold The integral coefficients are constructed from one clean four-window. In particular they are conclusions, not hidden hypotheses in an arbitrary rational-profile statement. - A non-integral constant or non-integral third difference gives density >= 1/4. - The argument needs only an integer-valued sequence, not a recurrence. - No claim that an integral constant must be +1 or -1 is made here."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicModularDensity.lean",
-      "synopsis": "Single-prime cubic obstructions without the window-length loss Authored, UNRUN. A fixed prime p >= 3 supplies disjoint three-windows with lower exceptional density 1/p, rather than 1/(3*p). A concrete modulo-five corollary constructs the prime, root, and nonsquare witness. This corollary is unconditional; it does not postulate a good-prime family."
+      "synopsis": "Single-prime cubic obstructions without the window-length loss A fixed prime p >= 3 supplies disjoint three-windows with lower exceptional density 1/p, rather than 1/(3*p). A concrete modulo-five corollary constructs the prime, root, and nonsquare witness. This corollary is unconditional; it does not postulate a good-prime family."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicPrimitiveNormalisation",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicPrimitiveNormalisation.lean",
-      "synopsis": "Constructed primitive cubic tails below quarter density Authored candidate; all Lean checks UNRUN. The stabilising divisor, the exact natural quotient recurrence, the integral profile coefficients, and their Bezout certificate are produced from the original orbit. The index is never reset: division by a fixed gcd does not replace n by n-N in the polynomial. This eliminates a normalisation supplier, but does NOT prove that the primitive constant is a unit. Integral primitive profiles with other constants remain in the universal-density problem."
+      "synopsis": "Constructed primitive cubic tails below quarter density The stabilising divisor, the exact natural quotient recurrence, the integral profile coefficients, and their Bezout certificate are produced from the original orbit. The index is never reset: division by a fixed gcd does not replace n by n-N in the polynomial. This eliminates a normalisation supplier, but does NOT prove that the primitive constant is a unit. Integral primitive profiles with other constants remain in the universal-density problem."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicWindowTransport",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicWindowTransport.lean",
-      "synopsis": "From actual modular cubic roots to the exceptional-set density Authored candidate, UNRUN. Rational profile coefficients are cleared over the integers before reduction. There is deliberately no ring homomorphism from `ℚ` to `ZMod p`. The final theorem is conditional on an actual divergent family of good primes; producing that family from a number-field nonsquare remains a separate global obligation, not a premise silently claimed to have been proved."
+      "synopsis": "From actual modular cubic roots to the exceptional-set density Rational profile coefficients are cleared over the integers before reduction. There is deliberately no ring homomorphism from `ℚ` to `ZMod p`. The final theorem is conditional on an actual divergent family of good primes; producing that family from a number-field nonsquare remains a separate global obligation, not a premise silently claimed to have been proved."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean",
-      "synopsis": "The complete zero-lower-density primitive-shape reduction Authored candidate, UNRUN. The manuscript's primitive-shape lemma is stated under zero lower density, not under the universal positive threshold. Its unit-constant conclusion is proved here at exactly that hypothesis. The arbitrary positive-threshold theorem must not reuse that conclusion."
+      "synopsis": "The complete zero-lower-density primitive-shape reduction The manuscript's primitive-shape lemma is stated under zero lower density, not under the universal positive threshold. Its unit-constant conclusion is proved here at exactly that hypothesis. The arbitrary positive-threshold theorem must not reuse that conclusion."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean",
-      "synopsis": "Authored, UNRUN. Finite-prefix and constant transport for the literal lower asymptotic density used throughout the R11 window arguments."
+      "synopsis": "Finite-prefix and constant transport for the literal lower asymptotic density used throughout the R11 window arguments."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.FrobeniusDescent",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/FrobeniusDescent.lean",
-      "synopsis": "The algebraic descent after a good Frobenius prime is supplied UNRUN. No prime-existence theorem is declared here. The ordinary number-field specialisation argument, its finite exceptional set, and the missing formal Chebotarev dependency are stated explicitly in analytic_proofs.md."
+      "synopsis": "The algebraic descent after a good Frobenius prime is supplied No prime-existence theorem is declared here. The ordinary number-field specialisation argument, its finite exceptional set, and the missing formal Chebotarev dependency are stated explicitly in analytic_proofs.md."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/ReciprocalProductAmplification.lean",
-      "synopsis": "Removing the prime-size loss Authored candidate, UNRUN. These proofs use only a finite product inequality: `(1 + sum x) * product (1 - x) ≤ 1` for `0 ≤ x ≤ 1`. Consequently divergence of the reciprocal-prime sum supplies finite CRT unions of density as close to one as desired. This is a genuine analytic hypothesis on the available primes, not a formal good-prime existence theorem."
+      "synopsis": "Removing the prime-size loss These proofs use only a finite product inequality: `(1 + sum x) * product (1 - x) ≤ 1` for `0 ≤ x ≤ 1`. Consequently divergence of the reciprocal-prime sum supplies finite CRT unions of density as close to one as desired. This is a genuine analytic hypothesis on the available primes, not a formal good-prime existence theorem."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/WindowIncidence.lean",
-      "synopsis": "Window incidences and quantitative exceptional density Authored candidate, UNRUN. Every hit is charged to an exceptional index together with its offset. Overlapping windows therefore cost at most their length, not the number of residue classes. No density assumption is hidden in the counting lemmas. `LowerDensityAtLeast` uses the usual epsilon / eventual-prefix definition of a lower bound for the lower asymptotic density (prefixes start at zero)."
+      "synopsis": "Window incidences and quantitative exceptional density Every hit is charged to an exceptional index together with its offset. Overlapping windows therefore cost at most their length, not the number of residue classes. No density assumption is hidden in the counting lemmas. `LowerDensityAtLeast` uses the usual epsilon / eventual-prefix definition of a lower bound for the lower asymptotic density (prefixes start at zero)."
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
-      "synopsis": "Candidate, UNRUN. Correct phase-specific modulo-seven obstructions, a sharp one-in-seven disjoint-block counting certificate, and exact counterexamples to the stronger phase-free statement in the supplied manuscript."
+      "synopsis": "Correct phase-specific modulo-seven obstructions, a sharp one-in-seven disjoint-block counting certificate, and exact counterexamples to the stronger phase-free statement in the supplied manuscript."
     },
     {
       "id": "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
@@ -4360,7 +4370,7 @@
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean",
-      "synopsis": "The integral relation-module basis missing from the paper New r8 proof source. The r7 coordinate basis is reused unchanged. The map below has the free Z-module on ALL channels as its domain and the actual integral span as its codomain. Its kernel has the unit-pivot basis, not just a spanning set. Maximal reductions are identified by uniqueness of canonical coordinates. No local compilation was possible. Pinned Mathlib source comments identify APIs opened at 5e932f97dd25535344f80f9dd8da3aab83df0fe6."
+      "synopsis": "The integral relation-module basis missing from the paper New r8 proof source. The r7 coordinate basis is reused unchanged. The map below has the free Z-module on ALL channels as its domain and the actual integral span as its codomain. Its kernel has the unit-pivot basis, not just a spanning set. Maximal reductions are identified by uniqueness of canonical coordinates. Pinned Mathlib source comments identify APIs opened at 5e932f97dd25535344f80f9dd8da3aab83df0fe6."
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis",
@@ -4395,37 +4405,37 @@
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.Audit",
       "path": "lean/ErdosProblems/Erdos249/TypeBReturnV8/Audit.lean",
-      "synopsis": "UNRUN audit target. These commands are not an axiom receipt until executed."
+      "synopsis": "Axiom audit."
     },
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.CenteringCounterexample",
       "path": "lean/ErdosProblems/Erdos249/TypeBReturnV8/CenteringCounterexample.lean",
-      "synopsis": "UNRUN candidate. A generic finite countermodel to an inference, not a counterexample to the arithmetic totient-centred predicate."
+      "synopsis": "A generic finite countermodel to an inference, not a counterexample to the arithmetic totient-centred predicate."
     },
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.FiniteArithmetic",
       "path": "lean/ErdosProblems/Erdos249/TypeBReturnV8/FiniteArithmetic.lean",
-      "synopsis": "UNRUN candidate. All arithmetic decisions below are intended to be kernel reduction or proof-producing tactics; no native_decide and no custom axioms."
+      "synopsis": "All arithmetic decisions below are intended to be kernel reduction or proof-producing tactics; no native_decide and no custom axioms."
     },
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.FiniteFirstHarmonic",
       "path": "lean/ErdosProblems/Erdos249/TypeBReturnV8/FiniteFirstHarmonic.lean",
-      "synopsis": "Complete mathematical candidate, UNRUN. This proves one small finite instance only. In particular it does not prove DTWFirstHarmonicNormGap."
+      "synopsis": "This proves one small finite instance only. In particular it does not prove DTWFirstHarmonicNormGap."
     },
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralAssembly",
       "path": "lean/ErdosProblems/Erdos249/TypeBReturnV8/PeripheralAssembly.lean",
-      "synopsis": "Complete candidate source; UNRUN. No prime-distribution theorem is supplied by this finite/compositional module. The two analytic hypotheses remain visible. The depth in the two hypotheses must be the SAME function."
+      "synopsis": "No prime-distribution theorem is supplied by this finite/compositional module. The two analytic hypotheses remain visible. The depth in the two hypotheses must be the SAME function."
     },
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge",
       "path": "lean/ErdosProblems/Erdos249/TypeBReturnV8/PeripheralFiniteBridge.lean",
-      "synopsis": "Finite bridge for the three peripheral first-harmonic pivot budgets Authoring status: UNRUN in the Type-B environment. This file contains no PNT or Schoenberg theorem. It formalises the finite last mile needed once arithmetic estimates have supplied: * a cardinal bound for bad supplier bases; * a cardinal bound for non-supplier bases; and * a uniform norm bound on every good fibre mean. It deliberately leaves the centred residual real-part estimate visible."
+      "synopsis": "Finite bridge for the three peripheral first-harmonic pivot budgets This file contains no PNT or Schoenberg theorem. It formalises the finite last mile needed once arithmetic estimates have supplied: * a cardinal bound for bad supplier bases; * a cardinal bound for non-supplier bases; and * a uniform norm bound on every good fibre mean. It deliberately leaves the centred residual real-part estimate visible."
     },
     {
       "id": "ErdosProblems.Erdos251.ActualPrimePaperR11",
       "path": "lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean",
-      "synopsis": "Actual-prime specialisations and explicit external-source boundaries UNRUN. SchlagePuchtaLemma4 is the fixed-polynomial, fixed-block theorem attributed to Schlage-Puchta, not a growing-block theorem. It is an explicit argument, not an axiom. PrimeNumberTheorem concerns only Nat.nth Nat.Prime. The perturbation, its nonconcentration, its cumulative growth and all sparse support/statistics conclusions are proved, not postulated."
+      "synopsis": "Actual-prime specialisations and explicit external-source boundaries SchlagePuchtaLemma4 is the fixed-polynomial, fixed-block theorem attributed to Schlage-Puchta, not a growing-block theorem. It is an explicit argument, not an axiom. PrimeNumberTheorem concerns only Nat.nth Nat.Prime. The perturbation, its nonconcentration, its cumulative growth and all sparse support/statistics conclusions are proved, not postulated."
     },
     {
       "id": "ErdosProblems.Erdos251.AffineCylinderCollapse",
@@ -4450,7 +4460,7 @@
     {
       "id": "ErdosProblems.Erdos251.BinarySourceR11",
       "path": "lean/ErdosProblems/Erdos251/BinarySourceR11.lean",
-      "synopsis": "Relocated binary-encoding proof Proof-bearing source slice from BoundedPerturbationCountermodel.lean, pinned d4fed71423840f70f10edf27b9ad27c22fc4f49a. The binary construction is not redone: its proof is reused in a fresh namespace with a Mathlib-only import. Source relocation requires a fresh Lean check; UNRUN here."
+      "synopsis": "Relocated binary-encoding proof Proof-bearing source slice from BoundedPerturbationCountermodel.lean, pinned d4fed71423840f70f10edf27b9ad27c22fc4f49a. The binary construction is not redone: its proof is reused in a fresh namespace with a Mathlib-only import."
     },
     {
       "id": "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
@@ -4465,7 +4475,7 @@
     {
       "id": "ErdosProblems.Erdos251.GrowingBlocksR11",
       "path": "lean/ErdosProblems/Erdos251/GrowingBlocksR11.lean",
-      "synopsis": "Growing unnormalised blocks: total variation and bounded tests UNRUN candidate. Probability is uniform over the X starting indices in [X,2X). The letters themselves are not rescaled. Total variation uses the supremum-over-events convention, so bounded tests carry a factor two."
+      "synopsis": "Growing unnormalised blocks: total variation and bounded tests Probability is uniform over the X starting indices in [X,2X). The letters themselves are not rescaled. Total variation uses the supremum-over-events convention, so bounded tests carry a factor two."
     },
     {
       "id": "ErdosProblems.Erdos251.KernelDenominatorFloor",
@@ -4475,17 +4485,17 @@
     {
       "id": "ErdosProblems.Erdos251.LogarithmicCarryAsymptoticsR8",
       "path": "lean/ErdosProblems/Erdos251/LogarithmicCarryAsymptoticsR8.lean",
-      "synopsis": "Cumulative n log n growth for the value-6 word New UNCOMPILED source. This file uses only the synthetic factorial spike sets. It does NOT assume the prime number theorem. The baseline mean is proved using Stirling's factorial bound, and the sparse modification error is controlled by the proved zero density of the factorial sites. Pinned source APIs: * Analysis/SpecialFunctions/Stirling.lean: le_log_factorial_stirling. * Data/Nat/Factorial/Basic.lean: factorial_le_pow, factorial_succ. * Topology/MetricSpace/Pseudo/Defs.lean: Metric.tendsto_atTop. * Topology/MetricSpace/Pseudo/Lemmas.lean: squeeze_zero'. * Order/Filter/AtTopBot/Archimedean.lean: tendsto_natCast_atTop_atTop."
+      "synopsis": "Cumulative n log n growth for the value-6 word This file uses only the synthetic factorial spike sets. It does NOT assume the prime number theorem. The baseline mean is proved using Stirling's factorial bound, and the sparse modification error is controlled by the proved zero density of the factorial sites. Pinned source APIs: * Analysis/SpecialFunctions/Stirling.lean: le_log_factorial_stirling. * Data/Nat/Factorial/Basic.lean: factorial_le_pow, factorial_succ. * Topology/MetricSpace/Pseudo/Defs.lean: Metric.tendsto_atTop. * Topology/MetricSpace/Pseudo/Lemmas.lean: squeeze_zero'. * Order/Filter/AtTopBot/Archimedean.lean: tendsto_natCast_atTop_atTop."
     },
     {
       "id": "ErdosProblems.Erdos251.LogarithmicCarryR8",
       "path": "lean/ErdosProblems/Erdos251/LogarithmicCarryR8.lean",
-      "synopsis": "The logarithmically growing value-6 countermodel New UNCOMPILED proof source for the construction part of res:polignacfail. This is not the already-checked bounded value-4 word. The existential paper statement permits a different baseline from its proof: we use B(n) = 6 + 2 floor(log(n+1)/2), so B(0)=6 is definitional up to simp. All endpoint values, factorial locations, and eventual growth requirements are unchanged. The PNT-scale cumulative assertion is in the companion file. Pinned source APIs: * Algebra/Order/Floor/Ring.lean: floor_mono, floor_add_one, lt_floor_add_one, floor_le (the latter imported from the floor definition). * Analysis/SpecialFunctions/Log/Basic.lean: log_le_log, log_mul, log_le_sub_one_of_pos, tendsto_log_atTop. * Data/Nat/Factorial/Basic.lean: factorial_pos, factorial_le, dvd_factorial. * Order/Filter/AtTopBot/Archimedean.lean: tendsto_natCast_atTop_atTop."
+      "synopsis": "The logarithmically growing value-6 countermodel Proof source for the construction part of res:polignacfail. This is not the already-checked bounded value-4 word. The existential paper statement permits a different baseline from its proof: we use B(n) = 6 + 2 floor(log(n+1)/2), so B(0)=6 is definitional up to simp. All endpoint values, factorial locations, and eventual growth requirements are unchanged. The PNT-scale cumulative assertion is in the companion file. Pinned source APIs: * Algebra/Order/Floor/Ring.lean: floor_mono, floor_add_one, lt_floor_add_one, floor_le (the latter imported from the floor definition). * Analysis/SpecialFunctions/Log/Basic.lean: log_le_log, log_mul, log_le_sub_one_of_pos, tendsto_log_atTop. * Data/Nat/Factorial/Basic.lean: factorial_pos, factorial_le, dvd_factorial. * Order/Filter/AtTopBot/Archimedean.lean: tendsto_natCast_atTop_atTop."
     },
     {
       "id": "ErdosProblems.Erdos251.NonconcentrationConsequencesR11",
       "path": "lean/ErdosProblems/Erdos251/NonconcentrationConsequencesR11.lean",
-      "synopsis": "Exact density-zero consumers and the limitation of the averaging remark UNRUN. All generic conclusions are proved from fixed-block nonconcentration; no growing-polynomial-family assertion is inferred from a fixed-block premise."
+      "synopsis": "Exact density-zero consumers and the limitation of the averaging remark All generic conclusions are proved from fixed-block nonconcentration; no growing-polynomial-family assertion is inferred from a fixed-block premise."
     },
     {
       "id": "ErdosProblems.Erdos251.NonconcentrationCoreR11",
@@ -4500,7 +4510,7 @@
     {
       "id": "ErdosProblems.Erdos251.PaperBoundedCarryR7",
       "path": "lean/ErdosProblems/Erdos251/PaperBoundedCarryR7.lean",
-      "synopsis": "The long record's bounded recurring-values countermodel Target: `xr:boundedpolignac`, including the complete infinite tails. This is NEW proof source, not a compilation receipt. The factorial occurrences in the paper are read with their stated range k >= 3. The distinct logarithmically growing countermodel `res:polignacfail` is NOT claimed by this bounded construction."
+      "synopsis": "The long record's bounded recurring-values countermodel Target: `xr:boundedpolignac`, including the complete infinite tails. The factorial occurrences in the paper are read with their stated range k >= 3. The distinct logarithmically growing countermodel `res:polignacfail` is NOT claimed by this bounded construction."
     },
     {
       "id": "ErdosProblems.Erdos251.PaperCoreR7",
@@ -4510,22 +4520,22 @@
     {
       "id": "ErdosProblems.Erdos251.PaperFiniteCertificatesR7",
       "path": "lean/ErdosProblems/Erdos251/PaperFiniteCertificatesR7.lean",
-      "synopsis": "Exact finite certificates appearing in the long record New proof source, not compiled in the return environment. All numerical claims below use exact arithmetic. No numerical approximation to an infinite tail is used: the Farey bracket is proved from the supplied kernel-verifiable certificate and its unconditional tail bound."
+      "synopsis": "Exact finite certificates appearing in the long record All numerical claims below use exact arithmetic. No numerical approximation to an infinite tail is used: the Farey bracket is proved from the supplied kernel-verifiable certificate and its unconditional tail bound."
     },
     {
       "id": "ErdosProblems.Erdos251.PaperSparseCouplingR7",
       "path": "lean/ErdosProblems/Erdos251/PaperSparseCouplingR7.lean",
-      "synopsis": "Finite block coupling for the sparse-rationalisation proposition NEW uncompiled proof source. These estimates discharge the finite combinatorial/statistical part of `res:sparserationalisation`; they do NOT construct the sparse support or prove its analytic density bounds. The coverage file therefore keeps the displayed proposition incomplete."
+      "synopsis": "Finite block coupling for the sparse-rationalisation proposition These estimates discharge the finite combinatorial/statistical part of `res:sparserationalisation`; they do NOT construct the sparse support or prove its analytic density bounds. The coverage file therefore keeps the displayed proposition incomplete."
     },
     {
       "id": "ErdosProblems.Erdos251.PaperTailBoundsR7",
       "path": "lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean",
-      "synopsis": "Explicit real-tail truncation for the two papers New proof source, NOT compiled in the return environment. Targets: long `res:explicit-remainder`, short `res:truncation`, long `xr:truncation`. No analytic assumption is inserted into the explicit quartic estimate. The general majorant theorem keeps the paper's summability and cofinal certificate hypotheses explicit."
+      "synopsis": "Explicit real-tail truncation for the two papers Targets: long `res:explicit-remainder`, short `res:truncation`, long `xr:truncation`. No analytic assumption is inserted into the explicit quartic estimate. The general majorant theorem keeps the paper's summability and cofinal certificate hypotheses explicit."
     },
     {
       "id": "ErdosProblems.Erdos251.PerturbationGrowthR11",
       "path": "lean/ErdosProblems/Erdos251/PerturbationGrowthR11.lean",
-      "synopsis": "The cumulative growth assertions for bounded and sublogarithmic corrections Candidate source, UNRUN. The stability lemmas expose a PNT input only for the original position sequence, never for the perturbed sequence being proved."
+      "synopsis": "The cumulative growth assertions for bounded and sublogarithmic corrections The stability lemmas expose a PNT input only for the original position sequence, never for the perturbed sequence being proved."
     },
     {
       "id": "ErdosProblems.Erdos251.PolynomialGapSeriesValue",
@@ -4540,7 +4550,7 @@
     {
       "id": "ErdosProblems.Erdos251.PrimeSourceR11",
       "path": "lean/ErdosProblems/Erdos251/PrimeSourceR11.lean",
-      "synopsis": "Standalone actual-prime source slice The elementary convergence proofs below are relocated from the pinned PrimeGapDyadicTail.lean, commit d4fed71423840f70f10edf27b9ad27c22fc4f49a. The original definitions are unchanged. A fresh namespace prevents duplicate names when this packet is integrated into the full parent project. This is source reuse, not a new convergence argument or a new verification receipt. All declarations in this relocated module require fresh elaboration: UNRUN."
+      "synopsis": "Standalone actual-prime source slice The elementary convergence proofs below are relocated from the pinned PrimeGapDyadicTail.lean, commit d4fed71423840f70f10edf27b9ad27c22fc4f49a. The original definitions are unchanged. A fresh namespace prevents duplicate names when this packet is integrated into the full parent project. This is source reuse, not a new convergence argument or a new verification receipt."
     },
     {
       "id": "ErdosProblems.Erdos251.RealPrimeGapTail",
@@ -4550,7 +4560,7 @@
     {
       "id": "ErdosProblems.Erdos251.ResidueFeedbackCore",
       "path": "lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean",
-      "synopsis": "Single-site residue feedback UNCOMPILED RESEARCH DRAFT. This file has not been checked by Lean in the review environment. It reuses the supplied variableDigit_spec and gives an explicit one-step selector and an abstract infinite-sum endpoint. The logarithmic sparse schedule, its counting asymptotic, the Hausdorff dimension argument and the application to prime gaps remain ordinary proofs in proofs/SharpSparseFeedback.md. No registered declaration is changed. The mathematical improvement is that the next residue may depend on the accumulated sum. A common continuation interval replaces separate repair sites and a digit-independent pair total."
+      "synopsis": "Single-site residue feedback It reuses the supplied variableDigit_spec and gives an explicit one-step selector and an abstract infinite-sum endpoint. The logarithmic sparse schedule, its counting asymptotic, the Hausdorff dimension argument and the application to prime gaps remain ordinary proofs in proofs/SharpSparseFeedback.md. No registered declaration is changed. The mathematical improvement is that the next residue may depend on the accumulated sum. A common continuation interval replaces separate repair sites and a digit-independent pair total."
     },
     {
       "id": "ErdosProblems.Erdos251.ReturnedSparseWindow",
@@ -4560,22 +4570,22 @@
     {
       "id": "ErdosProblems.Erdos251.SparseAmbientR9",
       "path": "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean",
-      "synopsis": "Ambient sparse rationalisation: the actual infinite coefficient word Source candidate, NOT compiled. This module discharges the ambient extension and all-index congruence obligations left in SparseIntervalR8. The polylogarithmic rate is separate; it is not inferred from upper Banach density zero. Pinned Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6: * Logic/Function/Basic.lean: Function.extend, Injective.extend_apply, Function.extend_apply'. * Topology/Algebra/InfiniteSum/Basic.lean: hasSum_extend_zero (generated by to_additive from hasProd_extend_one), HasSum.congr. * Algebra/BigOperators/Group/Finset/Basic.lean: sum_subset, sum_image. * Order/Filter/AtTopBot/Basic.lean: eventually_atTop. Nat.find_spec / Nat.find_min' are inherited core APIs."
+      "synopsis": "Ambient sparse rationalisation: the actual infinite coefficient word This module discharges the ambient extension and all-index congruence obligations left in SparseIntervalR8. The polylogarithmic rate is separate; it is not inferred from upper Banach density zero. Pinned Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6: * Logic/Function/Basic.lean: Function.extend, Injective.extend_apply, Function.extend_apply'. * Topology/Algebra/InfiniteSum/Basic.lean: hasSum_extend_zero (generated by to_additive from hasProd_extend_one), HasSum.congr. * Algebra/BigOperators/Group/Finset/Basic.lean: sum_subset, sum_image. * Order/Filter/AtTopBot/Basic.lean: eventually_atTop. Nat.find_spec / Nat.find_min' are inherited core APIs."
     },
     {
       "id": "ErdosProblems.Erdos251.SparseIntervalR8",
       "path": "lean/ErdosProblems/Erdos251/SparseIntervalR8.lean",
-      "synopsis": "Interval filling on the constructed sparse centres UNCOMPILED round-8 source. Unlike the inherited feedback theorem, the capacity, overlap and vanishing inputs here are proved for a schedule actually constructed from the arbitrary divergent envelope. This file stops at the indexed correction sum. Ambient zero-extension and its all-index cumulative congruences, and the polylogarithmic support-rate specialisation, remain explicitly listed in the handoff. It is NOT labelled a proof of the complete displayed sparse proposition. Pinned Mathlib sources checked before using their APIs: * Analysis/SpecificLimits/Normed.lean: summable_pow_mul_geometric_of_norm_lt_one. * Topology/Algebra/InfiniteSum/Group.lean: Summable.comp_injective, tsum_sub. * Topology/Algebra/InfiniteSum/ENNReal.lean: Summable.of_nonneg_of_le. * Topology/Algebra/InfiniteSum/NatInt.lean: summable_nat_add_iff, Summable.tsum_eq_zero_add, tendsto_sum_nat_add. * Topology/Algebra/InfiniteSum/Order.lean: tsum_nonneg, Summable.le_tsum."
+      "synopsis": "Interval filling on the constructed sparse centres Round-8 source. Unlike the inherited feedback theorem, the capacity, overlap and vanishing inputs here are proved for a schedule actually constructed from the arbitrary divergent envelope. This file stops at the indexed correction sum. Ambient zero-extension and its all-index cumulative congruences, and the polylogarithmic support-rate specialisation, remain explicitly listed in the handoff. It is NOT labelled a proof of the complete displayed sparse proposition. Pinned Mathlib sources checked before using their APIs: * Analysis/SpecificLimits/Normed.lean: summable_pow_mul_geometric_of_norm_lt_one. * Topology/Algebra/InfiniteSum/Group.lean: Summable.comp_injective, tsum_sub. * Topology/Algebra/InfiniteSum/ENNReal.lean: Summable.of_nonneg_of_le. * Topology/Algebra/InfiniteSum/NatInt.lean: summable_nat_add_iff, Summable.tsum_eq_zero_add, tendsto_sum_nat_add. * Topology/Algebra/InfiniteSum/Order.lean: tsum_nonneg, Summable.le_tsum."
     },
     {
       "id": "ErdosProblems.Erdos251.SparsePaperR11",
       "path": "lean/ErdosProblems/Erdos251/SparsePaperR11.lean",
-      "synopsis": "End-to-end sparse rationalisation and growing-block preservation Candidate source, UNRUN. One support is chosen before the target value. There is no density, overlap or statistical conclusion among the inputs."
+      "synopsis": "End-to-end sparse rationalisation and growing-block preservation One support is chosen before the target value. There is no density, overlap or statistical conclusion among the inputs."
     },
     {
       "id": "ErdosProblems.Erdos251.SparsePolylogR11",
       "path": "lean/ErdosProblems/Erdos251/SparsePolylogR11.lean",
-      "synopsis": "Quantitative counting for the actual envelope-driven sparse schedule Candidate source, UNRUN. The rate is derived from explicit readiness thresholds, not from upper Banach density zero. The extended-window theorem covers [X,2X+m), including all right-edge coordinates of an m-block."
+      "synopsis": "Quantitative counting for the actual envelope-driven sparse schedule The rate is derived from explicit readiness thresholds, not from upper Banach density zero. The extended-window theorem covers [X,2X+m), including all right-edge coordinates of an m-block."
     },
     {
       "id": "ErdosProblems.Erdos251.SparseRationalisationCore",
@@ -4585,12 +4595,12 @@
     {
       "id": "ErdosProblems.Erdos251.SparseScheduleDensityR8",
       "path": "lean/ErdosProblems/Erdos251/SparseScheduleDensityR8.lean",
-      "synopsis": "Uniform interval counting for the round-8 sparse schedule New UNCOMPILED source. Upper Banach density zero is stated in the equivalent integer-reciprocal form: for every positive R, eventually every length-L interval has at most L/R support points. This is uniform in the interval's starting point, not merely natural density zero. Pinned Mathlib APIs: * Data/Finset/Card.lean: card_bij, card_le_card_of_injOn, card_union_le. * Order/Interval/Finset/Nat.lean: membership in Ico."
+      "synopsis": "Uniform interval counting for the round-8 sparse schedule Upper Banach density zero is stated in the equivalent integer-reciprocal form: for every positive R, eventually every length-L interval has at most L/R support points. This is uniform in the interval's starting point, not merely natural density zero. Pinned Mathlib APIs: * Data/Finset/Card.lean: card_bij, card_le_card_of_injOn, card_union_le. * Order/Interval/Finset/Nat.lean: membership in Ico."
     },
     {
       "id": "ErdosProblems.Erdos251.SparseScheduleR8",
       "path": "lean/ErdosProblems/Erdos251/SparseScheduleR8.lean",
-      "synopsis": "A schedule for an arbitrary divergent envelope (round 8) New, UNCOMPILED source. The schedule is no longer an input hypothesis. It constructs increasing centres, a cofinal level, amplitude bounds and an integer next-site overlap inequality. The separate module `SparseScheduleDensityR8` supplies uniform counting from this schedule. No prime distribution assertion is used. Pinned APIs checked at Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6: * Data/Nat/Factorial/Basic: factorial_pos, factorial_le, dvd_factorial. * Order/Filter/AtTopBot/Basic: eventually_atTop, tendsto_atTop_atTop. * Order/Filter/AtTopBot/Tendsto: StrictMono.tendsto_atTop."
+      "synopsis": "A schedule for an arbitrary divergent envelope (round 8) The schedule is no longer an input hypothesis. It constructs increasing centres, a cofinal level, amplitude bounds and an integer next-site overlap inequality. The separate module `SparseScheduleDensityR8` supplies uniform counting from this schedule. No prime distribution assertion is used. Pinned APIs checked at Mathlib 5e932f97dd25535344f80f9dd8da3aab83df0fe6: * Data/Nat/Factorial/Basic: factorial_pos, factorial_le, dvd_factorial. * Order/Filter/AtTopBot/Basic: eventually_atTop, tendsto_atTop_atTop. * Order/Filter/AtTopBot/Tendsto: StrictMono.tendsto_atTop."
     },
     {
       "id": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
@@ -4610,7 +4620,7 @@
     {
       "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
       "path": "lean/ErdosProblems/Erdos269/ActualSharpTailMajorantR10.lean",
-      "synopsis": "The jump-constrained bound for the literal tail The extra growth is proved directly for the three floor logarithms. This avoids assuming an enumeration of the jump word or an unproved majorisation supplier. At a dyadic starting point, d₂ ≤ 2d₃+1. Consequently the first k rank increases multiply the height by at least 2^(k-j)3^j, j=(k+1)/3. The residue-three sum then gives precisely the printed Q̃, with the existing actual rank-fibre bound. Candidate source. All Lean builds and axiom audits are UNRUN."
+      "synopsis": "The jump-constrained bound for the literal tail The extra growth is proved directly for the three floor logarithms. This avoids assuming an enumeration of the jump word or an unproved majorisation supplier. At a dyadic starting point, d₂ ≤ 2d₃+1. Consequently the first k rank increases multiply the height by at least 2^(k-j)3^j, j=(k+1)/3. The residue-three sum then gives precisely the printed Q̃, with the existing actual rank-fibre bound."
     },
     {
       "id": "ErdosProblems.Erdos269.BlockMassEngines",
@@ -4630,12 +4640,12 @@
     {
       "id": "ErdosProblems.Erdos269.CertificateRangeR11",
       "path": "lean/ErdosProblems/Erdos269/CertificateRangeR11.lean",
-      "synopsis": "A Boolean range checker with a propositional soundness theorem. The range is [lo, lo + len). The evaluator uses only an explicitly supplied Bool; it never asks typeclass synthesis to decide an opaque universal predicate. No finite arithmetic is trusted merely because it occurs in a data file. All new Lean checks: UNRUN."
+      "synopsis": "A Boolean range checker with a propositional soundness theorem. The range is [lo, lo + len). The evaluator uses only an explicitly supplied Bool; it never asks typeclass synthesis to decide an opaque universal predicate. No finite arithmetic is trusted merely because it occurs in a data file."
     },
     {
       "id": "ErdosProblems.Erdos269.CertificateSafetyR12",
       "path": "lean/ErdosProblems/Erdos269/CertificateSafetyR12.lean",
-      "synopsis": "R12 shape-authenticated checkers and scope counterexamples. These are complete candidate proof bodies, all UNRUN. The original total-getD soundness theorem is not false: the extra checks authenticate array coverage, which is a distinct claim. No axiom and no native proof admission is added."
+      "synopsis": "R12 shape-authenticated checkers and scope counterexamples. The original total-getD soundness theorem is not false: the extra checks authenticate array coverage, which is a distinct claim. No axiom and no native proof admission is added."
     },
     {
       "id": "ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence",
@@ -4705,32 +4715,32 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR7ActualOrbit",
       "path": "lean/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean",
-      "synopsis": "Round 7: literal forcing, infinite digit expansion and scaled dichotomy Targets: short-note `res:dyadic-alphabet`, the dynamical clauses of `res:actual-orbit`, and long-record `res:actual-orbit`. The total smooth-series reindexing is supplied separately in `PaperR7SeriesIdentification`; nothing here silently identifies a formal tsum with the smooth-number series without that bridge. Validation: authored, not compiled. No admissions."
+      "synopsis": "Round 7: literal forcing, infinite digit expansion and scaled dichotomy Targets: short-note `res:dyadic-alphabet`, the dynamical clauses of `res:actual-orbit`, and long-record `res:actual-orbit`. The total smooth-series reindexing is supplied separately in `PaperR7SeriesIdentification`; nothing here silently identifies a formal tsum with the smooth-number series without that bridge. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
       "path": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean",
-      "synopsis": "Round 7: whole displayed statements assembled from the supplied library No replacement definitions of the underlying geometry are introduced. Each assembly names every clause printed under its paper label. These conjunctions are intentionally explicit: a nearby individual helper is not silently counted as an end-to-end paper theorem. Validation: authored, not compiled. Dependencies are copied unchanged from the packet and retain their original evidence status. No admissions."
+      "synopsis": "Round 7: whole displayed statements assembled from the supplied library No replacement definitions of the underlying geometry are introduced. Each assembly names every clause printed under its paper label. These conjunctions are intentionally explicit: a nearby individual helper is not silently counted as an end-to-end paper theorem. Dependencies are copied unchanged from the packet and retain their original evidence status. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7RationalBridge",
       "path": "lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean",
-      "synopsis": "Round 7: the fixed denominator split and the literal original value The existing bridge existentially chooses a split and a carry. The paper fixes `D = 2^u 3^v 5^w B`, fixes the onset, and identifies that carry with `B X_a`. This file proves those equality data rather than citing a nearby existential. The long-record sharper `Q`-cap remains a separate obligation. Validation: authored, not compiled. No admissions."
+      "synopsis": "Round 7: the fixed denominator split and the literal original value The existing bridge existentially chooses a split and a carry. The paper fixes `D = 2^u 3^v 5^w B`, fixes the onset, and identifies that carry with `B X_a`. This file proves those equality data rather than citing a nearby existential. The long-record sharper `Q`-cap remains a separate obligation. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7SeriesIdentification",
       "path": "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean",
-      "synopsis": "Round 7: identify the original smooth-number series with the shell tsum The distinction is material: a theorem about `dyadicShellTsumTailR235 0` is not an end-to-end theorem about the paper's `S` until reindexing has been proved. We build the exponent/smooth-number and shell/exponent equivalences, prove summability, and identify the literal running-LCM series. Validation: authored, not compiled. No admissions."
+      "synopsis": "Round 7: identify the original smooth-number series with the shell tsum The distinction is material: a theorem about `dyadicShellTsumTailR235 0` is not an end-to-end theorem about the paper's `S` until reindexing has been proved. We build the exponent/smooth-number and shell/exponent equivalences, prove summability, and identify the literal running-LCM series. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7SharpShellBound",
       "path": "lean/ErdosProblems/Erdos269/PaperR7SharpShellBound.lean",
-      "synopsis": "Round 7: the literal `8640 / 343` shell bound Target: the bound in short-note `res:actual-orbit`. The supplied bound `90` does not prove this sharper displayed constant. We retain the actual shell mass, prove its `8^{-a}` estimate, and sum the resulting majorant exactly. This is NOT a proof of the separate long-record `Q(n_a)` bound. Validation: authored, not compiled in this return. No admissions."
+      "synopsis": "Round 7: the literal `8640 / 343` shell bound Target: the bound in short-note `res:actual-orbit`. The supplied bound `90` does not prove this sharper displayed constant. We retain the actual shell mass, prove its `8^{-a}` estimate, and sum the resulting majorant exactly. This is NOT a proof of the separate long-record `Q(n_a)` bound. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7WindowResults",
       "path": "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean",
-      "synopsis": "Round 7: exact window statements at the correct bounds The short cap is `90 B (a+1)^2`. The long cap is `floor(B Q(n_a))`. They are separately named. No validity claim about the latter is inferred from the former. The bounded-length obstruction needs only growth of the long cap, so it can be proved without assuming the unresolved `X_a <= Q(n_a)` bridge. Validation: authored, not compiled. No admissions."
+      "synopsis": "Round 7: exact window statements at the correct bounds The short cap is `90 B (a+1)^2`. The long cap is `floor(B Q(n_a))`. They are separately named. No validity claim about the latter is inferred from the former. The bounded-length obstruction needs only growth of the long cap, so it can be proved without assuming the unresolved `X_a <= Q(n_a)` bridge. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR8RankMajorant",
@@ -4740,12 +4750,12 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR9SourceCounts",
       "path": "lean/ErdosProblems/Erdos269/PaperR9SourceCounts.lean",
-      "synopsis": "Exact source-count normalisation for certificate reconstruction This module does not certify a generated list by fiat. It starts with the library's actual strictSmoothPairs / strictSmoothExponents and proves the one-dimensional pair count, cumulative pure-power count, threshold difference, and complete ordered dyadic digit formula. The executable pair evaluator uses successive division. It does not enumerate a box of side `x` or compute real logarithms. Its boundary sweep is linear in the two exponent bounds. No unproved logarithmic-interval or Euclidean floor-sum optimisation is used by this return. Source APIs reused: RestrictedFloorSum.lean, strictSmoothShell_card, restrictedPurePowerCount_eq_restrictedLogFloorSum, restrictedLogFloorSum_succ_sub; Mathlib/Data/Nat/Log.lean; Lean src/Init/Data/Nat/Div/Basic.lean. Finset.card_eq_sum_card_fiberwise is reused exactly as in the supplied RestrictedFloorSum.lean:332. All new proofs remain uncompiled."
+      "synopsis": "Exact source-count normalisation for certificate reconstruction This module does not certify a generated list by fiat. It starts with the library's actual strictSmoothPairs / strictSmoothExponents and proves the one-dimensional pair count, cumulative pure-power count, threshold difference, and complete ordered dyadic digit formula. The executable pair evaluator uses successive division. It does not enumerate a box of side `x` or compute real logarithms. Its boundary sweep is linear in the two exponent bounds. No unproved logarithmic-interval or Euclidean floor-sum optimisation is used by this return. Source APIs reused: RestrictedFloorSum.lean, strictSmoothShell_card, restrictedPurePowerCount_eq_restrictedLogFloorSum, restrictedLogFloorSum_succ_sub; Mathlib/Data/Nat/Log.lean; Lean src/Init/Data/Nat/Div/Basic.lean. Finset.card_eq_sum_card_fiberwise is reused exactly as in the supplied RestrictedFloorSum.lean:332."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR9WidthData",
       "path": "lean/ErdosProblems/Erdos269/PaperR9WidthData.lean",
-      "synopsis": "Exact width and cumulative tables. Their correctness is NOT assumed: every entry is checked by the source-proved integer boundary sweep in the separate Widths modules. Finite checks use ordinary `decide`, not native_decide. All proof text is uncompiled; the cost of kernel reduction is unprofiled."
+      "synopsis": "Exact width and cumulative tables. Their correctness is NOT assumed: every entry is checked by the source-proved integer boundary sweep in the separate Widths modules. Finite checks use ordinary `decide`, not native_decide."
     },
     {
       "id": "ErdosProblems.Erdos269.PurePowerIrrationality",
@@ -4755,7 +4765,7 @@
     {
       "id": "ErdosProblems.Erdos269.R12.ExactModulus",
       "path": "lean/ErdosProblems/Erdos269/R12/ExactModulus.lean",
-      "synopsis": "Exact-modulus pinning and eventual escape at a fixed start The precise denominator is the actual window product, not its lower bound 2^len. A nonintegral real (even a nonintegral rational) is separated from the integers. This yields eventual escape when the relative bound tends to zero. These are new proof scripts, not compiler or axiom-check receipts. UNRUN."
+      "synopsis": "Exact-modulus pinning and eventual escape at a fixed start The precise denominator is the actual window product, not its lower bound 2^len. A nonintegral real (even a nonintegral rational) is separated from the integers. This yields eventual escape when the relative bound tends to zero."
     },
     {
       "id": "ErdosProblems.Erdos269.R12.OcticWindowBand",
@@ -4765,7 +4775,7 @@
     {
       "id": "ErdosProblems.Erdos269.R12.PrefixExtension",
       "path": "lean/ErdosProblems/Erdos269/R12/PrefixExtension.lean",
-      "synopsis": "A finite word alone cannot force irrationality of every compatible orbit A positive integral radix prefix with nonnegative integral digits has a positive rational completion, obtained by solving backwards from state 1 and continuing with radix 2 and digit 1. This is a countermodel for inference from an abstract finite word. It is NOT a rational model of the actual infinite smooth-number source; the continuation is explicitly changed. Lean proof scripts UNRUN."
+      "synopsis": "A finite word alone cannot force irrationality of every compatible orbit A positive integral radix prefix with nonnegative integral digits has a positive rational completion, obtained by solving backwards from state 1 and continuing with radix 2 and digit 1. This is a countermodel for inference from an abstract finite word. It is NOT a rational model of the actual infinite smooth-number source; the continuation is explicitly changed."
     },
     {
       "id": "ErdosProblems.Erdos269.RationalLatticeReduction",
@@ -4790,7 +4800,7 @@
     {
       "id": "ErdosProblems.Erdos269.SharpWindowCapR10",
       "path": "lean/ErdosProblems/Erdos269/SharpWindowCapR10.lean",
-      "synopsis": "Endpoint composition of the actual constrained majorant. This is an additional valid escape criterion, not an assertion that escape has been produced. The original paper cap and its quantifiers are left unchanged. All Lean builds and audits are UNRUN."
+      "synopsis": "Endpoint composition of the actual constrained majorant. This is an additional valid escape criterion, not an assertion that escape has been produced. The original paper cap and its quantifiers are left unchanged."
     },
     {
       "id": "ErdosProblems.Erdos269.ThreeChannelBlockRigidity",
@@ -4935,12 +4945,12 @@
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteAsymptotics",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteAsymptotics.lean",
-      "synopsis": "End-to-end candidate for the two displayed sharp asymptotic constants Long-record labels res:lcm-growth and res:radius-constant. `LowerLimitAtLeast f c` is the epsilon/eventual formulation of liminf f >= c: for every a<c, eventually a<f(n). It is deliberately used instead of a real-valued `Filter.liminf`, whose default value is not an extended-real infinity when the sequence diverges to +infinity. This representation places no unproved upper-boundedness hypothesis on the lcm sequence. The proof starts from the supplied finite product and Stirling inequalities. It proves the optimising Nat.sqrt limit, the moving logarithm limit, and the binomial normalisation, rather than assuming their asymptotic conclusions. STATUS: uncompiled proof candidates. These are the largest API/elaboration risks in the return. There are no admitted analytic facts or proof placeholders."
+      "synopsis": "End-to-end candidate for the two displayed sharp asymptotic constants Long-record labels res:lcm-growth and res:radius-constant. `LowerLimitAtLeast f c` is the epsilon/eventual formulation of liminf f >= c: for every a<c, eventually a<f(n). It is deliberately used instead of a real-valued `Filter.liminf`, whose default value is not an extended-real infinity when the sequence diverges to +infinity. This representation places no unproved upper-boundedness hypothesis on the lcm sequence. The proof starts from the supplied finite product and Stirling inequalities. It proves the optimising Nat.sqrt limit, the moving logarithm limit, and the binomial normalisation, rather than assuming their asymptotic conclusions. These are the largest API/elaboration risks in the return. There are no admitted analytic facts or proof placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean",
-      "synopsis": "Full integral coordinate theorem Short label res:divisor-channel-coordinates. The supplied library proves the isolated moment/channel values, but does not prove spanning and uniqueness. Here the auxiliary index 1 is represented by coordinate 0, and coordinate j>0 represents U_(j+1). Thus coordinates have type ℕ →₀ ℤ with no constrained coordinate. The target coefficient vectors satisfy f 0 = 0, exactly the paper's index convention n≥1 before its later restriction to n≥2. The proof supplies spanning by triangular elimination, independence by the moment/channel observables, and the explicit coefficient formula. This is stronger than checking finitely many example matrices. STATUS: uncompiled proof candidate. No axioms or proof placeholders."
+      "synopsis": "Full integral coordinate theorem Short label res:divisor-channel-coordinates. The supplied library proves the isolated moment/channel values, but does not prove spanning and uniqueness. Here the auxiliary index 1 is represented by coordinate 0, and coordinate j>0 represents U_(j+1). Thus coordinates have type ℕ →₀ ℤ with no constrained coordinate. The target coefficient vectors satisfy f 0 = 0, exactly the paper's index convention n≥1 before its later restriction to n≥2. The proof supplies spanning by triangular elimination, independence by the moment/channel observables, and the explicit coefficient formula. This is stronger than checking finitely many example matrices. No axioms or proof placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure",
@@ -4970,7 +4980,7 @@
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteIntegerSpan",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteIntegerSpan.lean",
-      "synopsis": "Constructive integer-span tools for the attainable-moment theorem. New compilation and axiom checks: UNRUN. No unproved span hypothesis is used."
+      "synopsis": "Constructive integer-span tools for the attainable-moment theorem. No unproved span hypothesis is used."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm",
@@ -4990,32 +5000,32 @@
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteLiminf",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean",
-      "synopsis": "Literal liminf statements, without silently assuming finite liminf values The displayed asymptotic theorems allow the value +infinity. The wrappers use EReal for the liminf and prove equivalence with the epsilon/eventual assertions in the main proof files. Thus no unproved upper-boundedness assumption is introduced merely to fit a real-valued liminf API. STATUS: uncompiled proof candidates, like their imported new proofs."
+      "synopsis": "Literal liminf statements, without silently assuming finite liminf values The displayed asymptotic theorems allow the value +infinity. The wrappers use EReal for the liminf and prove equivalence with the epsilon/eventual assertions in the main proof files. Thus no unproved upper-boundedness assumption is introduced merely to fit a real-valued liminf API."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteLowKernel.lean",
-      "synopsis": "The literal low-channel kernel and its unique integral classification. Coordinate j>0 denotes U_(j+1); coordinate 0 denotes e_1. Thus the tail condition j>=D is precisely the paper's unit-index condition n>D. New Lean checks: UNRUN."
+      "synopsis": "The literal low-channel kernel and its unique integral classification. Coordinate j>0 denotes U_(j+1); coordinate 0 denotes e_1. Thus the tail condition j>=D is precisely the paper's unit-index condition n>D."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean",
-      "synopsis": "The actual factorial specialisation of the quadratic tail-gcd theorem Short-note label: res:finite-channel-moment-certificate. This file does not assume a recurrence for an arbitrary sequence or assume unordered-block divisibility. It derives the recurrence for U_n(1) from the supplied definition and obtains the block identity from Mathlib's Nat.uniformBell_mul_eq. The gcd of an infinite family is represented by its universal property (all common divisors), avoiding an arbitrary choice of a generator in Z. This is the exact gcd assertion, not a weaker bound. STATUS: uncompiled proof candidate. No new axioms, no proof placeholders."
+      "synopsis": "The actual factorial specialisation of the quadratic tail-gcd theorem Short-note label: res:finite-channel-moment-certificate. This file does not assume a recurrence for an arbitrary sequence or assume unordered-block divisibility. It derives the recurrence for U_n(1) from the supplied definition and obtains the block identity from Mathlib's Nat.uniformBell_mul_eq. The gcd of an infinite family is represented by its universal property (all common divisors), avoiding an arbitrary choice of a generator in Z. This is the exact gcd assertion, not a weaker bound. No new axioms, no proof placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean",
-      "synopsis": "Exact attainable moments, finite Bezout attainment and primitive minimisers. The endpoint uses the actual isolated-channel recurrence and its proved finite horizon, not an assumed lattice/span supplier. All new Lean checks are UNRUN."
+      "synopsis": "Exact attainable moments, finite Bezout attainment and primitive minimisers. The endpoint uses the actual isolated-channel recurrence and its proved finite horizon, not an assumed lattice/span supplier."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteRadiusLimit",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteRadiusLimit.lean",
-      "synopsis": "The sharp 16/9 radius constant Long-record label res:radius-constant. Hypotheses are eventual, exactly as on paper. The proof uses the actual optimised factorial segment, proves its square-subsequence limiting scale, and rules out every subcritical radius. It does not replace 16/9 by the already compiled finite 3/2 bound. STATUS: uncompiled end-to-end proof candidate; no new axioms or placeholders."
+      "synopsis": "The sharp 16/9 radius constant Long-record label res:radius-constant. Hypotheses are eventual, exactly as on paper. The proof uses the actual optimised factorial segment, proves its square-subsequence limiting scale, and rules out every subcritical radius. It does not replace 16/9 by the already compiled finite 3/2 bound. No new axioms or placeholders."
     },
     {
       "id": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
       "path": "lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean",
-      "synopsis": "The actual convergent full channel residual, not a newly defined surrogate. Finite corrections are summed only after proving their finite support. New Lean compilation and axiom checks: UNRUN."
+      "synopsis": "The actual convergent full channel residual, not a newly defined surrogate. Finite corrections are summed only after proving their finite support."
     },
     {
       "id": "ErdosProblems.Erdos68.PrimePoleCriterion",

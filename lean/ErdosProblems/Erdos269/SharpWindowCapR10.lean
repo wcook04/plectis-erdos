@@ -3,7 +3,7 @@ import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
 /-! Endpoint composition of the actual constrained majorant. This is an
 additional valid escape criterion, not an assertion that escape has been
 produced. The original paper cap and its quantifiers are left unchanged.
-All Lean builds and audits are UNRUN. -/
+-/
 namespace ErdosProblems.Erdos269.PaperR10
 open PaperR7 PaperR8
 

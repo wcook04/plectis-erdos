@@ -7,7 +7,7 @@ import Mathlib.Data.Nat.Periodic
 /-!
 # The logarithmically growing value-6 countermodel
 
-New UNCOMPILED proof source for the construction part of res:polignacfail.
+Proof source for the construction part of res:polignacfail.
 This is not the already-checked bounded value-4 word.
 
 The existential paper statement permits a different baseline from its proof:

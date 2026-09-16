@@ -10,7 +10,7 @@ At a dyadic starting point, d₂ ≤ 2d₃+1. Consequently the first k rank incr
 multiply the height by at least 2^(k-j)3^j, j=(k+1)/3. The residue-three sum
 then gives precisely the printed Q̃, with the existing actual rank-fibre bound.
 
-Candidate source. All Lean builds and axiom audits are UNRUN.
+
 -/
 
 namespace ErdosProblems.Erdos269.PaperR10

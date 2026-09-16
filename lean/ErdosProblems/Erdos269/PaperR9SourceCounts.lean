@@ -19,7 +19,7 @@ restrictedPurePowerCount_eq_restrictedLogFloorSum, restrictedLogFloorSum_succ_su
 Mathlib/Data/Nat/Log.lean; Lean src/Init/Data/Nat/Div/Basic.lean.
 Finset.card_eq_sum_card_fiberwise is reused exactly as in the supplied
 RestrictedFloorSum.lean:332.
-All new proofs remain uncompiled.
+
 -/
 namespace ErdosProblems.Erdos269.PaperR9
 open Finset

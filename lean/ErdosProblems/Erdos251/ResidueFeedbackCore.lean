@@ -3,9 +3,9 @@ import ErdosProblems.Erdos251.SparseRationalisationCore
 /-!
 # Single-site residue feedback
 
-UNCOMPILED RESEARCH DRAFT. This file has not been checked by Lean in the
-review environment. It reuses the supplied variableDigit_spec and gives
-an explicit one-step selector and an abstract infinite-sum endpoint.
+It reuses the supplied variableDigit_spec and gives an explicit one-step
+selector and an abstract infinite-sum endpoint.
+
 
 The logarithmic sparse schedule, its counting asymptotic, the Hausdorff
 dimension argument and the application to prime gaps remain ordinary

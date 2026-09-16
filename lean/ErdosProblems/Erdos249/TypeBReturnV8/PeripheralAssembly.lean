@@ -1,6 +1,6 @@
 import ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge
 
-/-! Complete candidate source; UNRUN. No prime-distribution theorem is supplied
+/-! No prime-distribution theorem is supplied
 by this finite/compositional module. The two analytic hypotheses remain visible.
 The depth in the two hypotheses must be the SAME function. -/
 

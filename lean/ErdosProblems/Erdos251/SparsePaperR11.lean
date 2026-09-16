@@ -1,7 +1,7 @@
 import ErdosProblems.Erdos251.GrowingBlocksR11
 
 /-! # End-to-end sparse rationalisation and growing-block preservation
-Candidate source, UNRUN. One support is chosen before the target value.
+One support is chosen before the target value.
 There is no density, overlap or statistical conclusion among the inputs.
 -/
 noncomputable section

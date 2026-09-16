@@ -5,7 +5,7 @@ import Mathlib.Data.Int.GCD
 /-!
 # Constructed primitive cubic tails below quarter density
 
-Authored candidate; all Lean checks UNRUN. The stabilising divisor, the exact
+The stabilising divisor, the exact
 natural quotient recurrence, the integral profile coefficients, and their
 Bezout certificate are produced from the original orbit. The index is never
 reset: division by a fixed gcd does not replace n by n-N in the polynomial.

@@ -405,6 +405,47 @@ def check_substantive_projection_excludes_only_the_pin() -> None:
     )
 
 
+def layout_cited_corpus(fingerprint: str) -> dict:
+    corpus = cited_corpus(fingerprint)
+    for node in corpus["statement_nodes"]:
+        for evidence in node["evidence"]:
+            evidence["module"] = "Erdos249257/Example.lean"
+            evidence["id"] = "Erdos249257/Example.lean:3:example_theorem"
+    return corpus
+
+
+def check_moved_revision_across_layout_move_is_reissued() -> None:
+    """A formal-source move across the ``lean/`` storage migration is not a statement change.
+
+    The atlas at a pre-migration revision spells modules at the repository
+    root and the rebuilt atlas spells them under ``lean/``. Observed on the
+    2026-09-15 move from 92b88dc1 to 0b500c7c: every receipt was refused with
+    byte-identical signatures because the two atlases keyed the same module
+    under different spellings.
+    """
+    statement = ("theorem", "theorem example_theorem : True")
+    old = {("Erdos249257/Example.lean", "example_theorem"): statement}
+    new = {("lean/Erdos249257/Example.lean", "example_theorem"): statement}
+    committed = layout_cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = layout_cited_corpus(NEW_FINGERPRINT)
+    reissues, refusals = rereview(registry, committed, candidate, old=old, new=new)
+    require(not refusals, f"a layout-only move was refused: {refusals}")
+    require(len(reissues) == 3, f"expected every receipt re-issued, got {len(reissues)}")
+
+    changed = {
+        ("lean/Erdos249257/Example.lean", "example_theorem"):
+            ("theorem", "theorem example_theorem : False")
+    }
+    registry = sample_registry(committed)
+    reissues, refusals = rereview(registry, committed, candidate, old=old, new=changed)
+    require(not reissues, "a changed statement was re-issued across a layout move")
+    require(
+        refusals and all("statement differs" in refusal for refusal in refusals),
+        f"a changed statement across a layout move was not refused by name: {refusals}",
+    )
+
+
 def main() -> int:
     check_fingerprint_only_move_is_allowed()
     check_changed_mathematics_is_refused()
@@ -417,6 +458,7 @@ def main() -> int:
     check_moved_revision_with_identical_statements_is_reissued()
     check_moved_revision_with_changed_statement_is_refused()
     check_moved_revision_with_vanished_declaration_is_refused()
+    check_moved_revision_across_layout_move_is_reissued()
     check_unmoved_revision_is_not_rereviewed()
     print(
         "semantic review rebind guard: PASS; a rebind moves the declaration-atlas "

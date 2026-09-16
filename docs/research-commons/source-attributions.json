@@ -120,8 +120,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3295,
-          "line_end": 3301,
+          "line_start": 3291,
+          "line_end": 3297,
           "expected_text": "\\bibitem{formalconjectures1049}",
           "excerpt_sha256": "sha256:c25f49535bb41622d57001597d91a9d0235dce0d09f719c90462c775d4374cb0"
         },
@@ -258,8 +258,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2500,
-          "line_end": 2504,
+          "line_start": 2506,
+          "line_end": 2510,
           "expected_text": "\\bibitem{formalconjectures251}",
           "excerpt_sha256": "sha256:65d97a24898b9cf4b66cf98d8960c881e75b5eab750754664bbd7a968dfccc61"
         },
@@ -278,8 +278,8 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1537,
-          "line_end": 1538,
+          "line_start": 1546,
+          "line_end": 1547,
           "excerpt_sha256": "sha256:f066c43fe016a0bf23685d72ea25d12c4921986e03226a04cf1cf67a3ec1a922"
         },
         {
@@ -456,15 +456,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1487,
-          "line_end": 1494,
+          "line_start": 1496,
+          "line_end": 1503,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:5efcd594df2c1529f1d749e113f706ddbbc1e3b2abe21b568592e74352af11ae"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2441,
-          "line_end": 2448,
+          "line_start": 2447,
+          "line_end": 2454,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:5efcd594df2c1529f1d749e113f706ddbbc1e3b2abe21b568592e74352af11ae"
         },
@@ -564,15 +564,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1494,
-          "line_end": 1501,
+          "line_start": 1503,
+          "line_end": 1510,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:921d0f1924fcf25d854d8fae83c000baea9f2861378bfd0b72fa87603c9135b4"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2448,
-          "line_end": 2455,
+          "line_start": 2454,
+          "line_end": 2461,
           "expected_text": "\\bibitem{mathlib}",
           "excerpt_sha256": "sha256:921d0f1924fcf25d854d8fae83c000baea9f2861378bfd0b72fa87603c9135b4"
         },
@@ -664,15 +664,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 932,
-          "line_end": 934,
+          "line_start": 929,
+          "line_end": 931,
           "expected_text": "\\bibitem{cantor1869}",
           "excerpt_sha256": "sha256:7cb95cf0781da5f95062e4741db51ada3ff2a4450b96b59f0b9af1a0a10c3c07"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1968,
-          "line_end": 1972,
+          "line_start": 1969,
+          "line_end": 1973,
           "expected_text": "\\bibitem{cantor1869}",
           "excerpt_sha256": "sha256:03e47315218fee28c4bf66355ea952ff48f9c781e1fbaeeb3d83c6c0bbcb9a85"
         },
@@ -691,8 +691,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1283,
-          "line_end": 1283,
+          "line_start": 1284,
+          "line_end": 1284,
           "excerpt_sha256": "sha256:9a3a39b1a40d8924e21ef01a29b59ec78ae2f53ec3c91fc06164c2ee79a965c5"
         }
       ],
@@ -1237,8 +1237,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3204,
-          "line_end": 3211,
+          "line_start": 3200,
+          "line_end": 3207,
           "expected_text": "\\bibitem{duverney1996}",
           "excerpt_sha256": "sha256:2e85c59828644ad3c8fb345c8b459c4f9c86946c02a53b466028be600adf3dcf"
         },
@@ -1371,8 +1371,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2436,
-          "line_end": 2441,
+          "line_start": 2442,
+          "line_end": 2447,
           "expected_text": "\\bibitem{land2026}",
           "excerpt_sha256": "sha256:6914052eac09cdba710ae22de58a0b9599c8d8206e06497b779a0c3f2075b131"
         },
@@ -1391,14 +1391,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1673,
-          "line_end": 1673,
+          "line_start": 1679,
+          "line_end": 1679,
           "excerpt_sha256": "sha256:ad49b5aa94a8d9963ee6dcb001d2d84dc32e0776315128832b860e41fd3a9cf0"
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1482,
-          "line_end": 1487,
+          "line_start": 1491,
+          "line_end": 1496,
           "expected_text": "\\bibitem{land2026}",
           "excerpt_sha256": "sha256:6914052eac09cdba710ae22de58a0b9599c8d8206e06497b779a0c3f2075b131"
         }
@@ -1462,8 +1462,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1427,
-          "line_end": 1432,
+          "line_start": 1428,
+          "line_end": 1433,
           "expected_text": "\\bibitem{june2026}",
           "excerpt_sha256": "sha256:de6f7f3e7ce0991e2f6ce37362689f9baf718419396e29df27966f24fa9d4a1f"
         },
@@ -1543,8 +1543,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3218,
-          "line_end": 3227,
+          "line_start": 3214,
+          "line_end": 3223,
           "expected_text": "\\bibitem{adamczewskibell2013}",
           "excerpt_sha256": "sha256:559ea13819baf75b04cc9d7303f6c7c0c031c962cc19c07bc95ad20eac0a8832"
         },
@@ -1557,8 +1557,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2798,
-          "line_end": 2798,
+          "line_start": 2794,
+          "line_end": 2794,
           "excerpt_sha256": "sha256:255e468ab972fcdcc21a815a58d107099746c2882b841d319f2239751a44e4fe"
         }
       ],
@@ -1595,8 +1595,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1423,
-          "line_end": 1427,
+          "line_start": 1424,
+          "line_end": 1428,
           "expected_text": "\\bibitem{march2026}",
           "excerpt_sha256": "sha256:372ad8d3f82ff0212ee04c7dd5a7269a56a5c9a52cae45f7d05245ccae260a87"
         },
@@ -2267,15 +2267,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 978,
-          "line_end": 982,
+          "line_start": 982,
+          "line_end": 986,
           "expected_text": "\\bibitem{bv1994}",
           "excerpt_sha256": "sha256:e84ccbfd298ca45cdf1dc99cde6fa6c5c320db56fdd37d12d9716a81ae36f325"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3162,
-          "line_end": 3166,
+          "line_start": 3158,
+          "line_end": 3162,
           "expected_text": "\\bibitem{bv1994}",
           "excerpt_sha256": "sha256:e84ccbfd298ca45cdf1dc99cde6fa6c5c320db56fdd37d12d9716a81ae36f325"
         },
@@ -2330,8 +2330,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2375,
-          "line_end": 2375,
+          "line_start": 2371,
+          "line_end": 2371,
           "excerpt_sha256": "sha256:d2c829624073677f01d8249e65502cefe988ed95a2fdda5ea915e1dcb2d758bc"
         }
       ],
@@ -2458,8 +2458,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1487,
-          "line_end": 1493,
+          "line_start": 1488,
+          "line_end": 1494,
           "expected_text": "\\bibitem{polya1928}",
           "excerpt_sha256": "sha256:e614301f017a6a8cd24c2b1a48783bbe7f9a6e1ed033a33327cd5ca72857afbc"
         },
@@ -2567,15 +2567,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1519,
-          "line_end": 1525,
+          "line_start": 1528,
+          "line_end": 1534,
           "expected_text": "\\bibitem{zhang2014}",
           "excerpt_sha256": "sha256:88a9ff7643f795fed6848c2a9e649417e43e1264590a9983dca910acda68ca88"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2480,
-          "line_end": 2486,
+          "line_start": 2486,
+          "line_end": 2492,
           "expected_text": "\\bibitem{zhang2014}",
           "excerpt_sha256": "sha256:88a9ff7643f795fed6848c2a9e649417e43e1264590a9983dca910acda68ca88"
         },
@@ -2588,8 +2588,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1656,
-          "line_end": 1656,
+          "line_start": 1662,
+          "line_end": 1662,
           "excerpt_sha256": "sha256:ceedd22f69501c4b1b5acabea6d0f609c06f2f790135b63db6aea91ad763243a"
         },
         {
@@ -2645,8 +2645,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1978,
-          "line_end": 1985,
+          "line_start": 1979,
+          "line_end": 1986,
           "expected_text": "\\bibitem{garaev-luca-shparlinski}",
           "excerpt_sha256": "sha256:9731dc6520e779b801338ec71dc1aa29e10792859834ffb6a39fa817a3fd3644"
         },
@@ -2671,8 +2671,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1291,
-          "line_end": 1291,
+          "line_start": 1292,
+          "line_end": 1292,
           "excerpt_sha256": "sha256:1ca74b0b99e561f9885f56899175bbda9fae594560bae170c1a0333b24a30fd6"
         },
         {
@@ -2790,8 +2790,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2424,
-          "line_end": 2426,
+          "line_start": 2430,
+          "line_end": 2432,
           "expected_text": "\\bibitem{khinchin1964}",
           "excerpt_sha256": "sha256:fdbb43337c95dfc60fae13b0ab781cda8c2d70d0e962cce6ba8b33c614accd2b"
         },
@@ -3324,15 +3324,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 986,
-          "line_end": 992,
+          "line_start": 990,
+          "line_end": 996,
           "expected_text": "\\bibitem{zudilin2004}",
           "excerpt_sha256": "sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3170,
-          "line_end": 3176,
+          "line_start": 3166,
+          "line_end": 3172,
           "expected_text": "\\bibitem{zudilin2004}",
           "excerpt_sha256": "sha256:3d622530e87391575051f4e80e3d30e5081ea41b34fdf3c95cb324b83e6b3728"
         },
@@ -3441,20 +3441,20 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1740,
-          "line_end": 1740,
+          "line_start": 1736,
+          "line_end": 1736,
           "excerpt_sha256": "sha256:60bc260e6180f4e4c28004912f1df4f348d7d287ce7e7a48d57e26f4120096fa"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1902,
-          "line_end": 1902,
+          "line_start": 1898,
+          "line_end": 1898,
           "excerpt_sha256": "sha256:0a87fd3031fa5ae394fff12555a14f74004112a45b47b8940ea53deec9e622ec"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2168,
-          "line_end": 2168,
+          "line_start": 2164,
+          "line_end": 2164,
           "excerpt_sha256": "sha256:e445fa0250477e2d9dfd5398015bc17c9a86914dcf814404ec0df31a5c949f0a"
         },
         {
@@ -3798,8 +3798,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1991,
-          "line_end": 1997,
+          "line_start": 1992,
+          "line_end": 1998,
           "expected_text": "\\bibitem{koepf-schmersau}",
           "excerpt_sha256": "sha256:469696d5df25a323f9c7efd3039c07cc411a17a1c70509512f880e4aba01684b"
         },
@@ -3824,8 +3824,8 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 938,
-          "line_end": 943,
+          "line_start": 935,
+          "line_end": 940,
           "expected_text": "\\bibitem{koepf-schmersau}",
           "excerpt_sha256": "sha256:09633e31b3015b266e2fee61dc6c7ad00aa16d6a2cce41904d0b25c5b496c4a2"
         }
@@ -4105,8 +4105,8 @@
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1997,
-          "line_end": 2002,
+          "line_start": 1998,
+          "line_end": 2003,
           "expected_text": "\\bibitem{duverney}",
           "excerpt_sha256": "sha256:93b82e07532c595ce8c3e4690e48b8f8b4b955a46be725042a411f3faf1dabad"
         },
@@ -4190,8 +4190,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 2007,
-          "line_end": 2014,
+          "line_start": 2008,
+          "line_end": 2015,
           "expected_text": "\\bibitem{barreto-et-al}",
           "excerpt_sha256": "sha256:2e23d9b26a4a77fb89bdfc9bb1456ff271ac73c2ccb28a061e805d8dedb20edd"
         },
@@ -4681,8 +4681,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3244,
-          "line_end": 3248,
+          "line_start": 3240,
+          "line_end": 3244,
           "expected_text": "\\bibitem{koizumiyokoi2026}",
           "excerpt_sha256": "sha256:009f0d973b996ec8f00395a65152d98054ea2ab49f230fdc01672a16b260f5cc"
         },
@@ -5165,8 +5165,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3252,
-          "line_end": 3258,
+          "line_start": 3248,
+          "line_end": 3254,
           "expected_text": "\\bibitem{lucatachiya2017}",
           "excerpt_sha256": "sha256:7edeec595003b28ac91040a61c50d3a57a5872bbc9871d704d9ba32a048e1a23"
         },
@@ -5379,8 +5379,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3232,
-          "line_end": 3238,
+          "line_start": 3228,
+          "line_end": 3234,
           "expected_text": "\\bibitem{vanassche2001}",
           "excerpt_sha256": "sha256:caca3710f524135671e299fa1162e5d77947646ae83681362b020268b6f0aac0"
         },
@@ -5480,15 +5480,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1464,
-          "line_end": 1469,
+          "line_start": 1473,
+          "line_end": 1478,
           "expected_text": "\\bibitem{fgkmt2018}",
           "excerpt_sha256": "sha256:8470359e3946941442ab68a0b5c1f299da554b5626a50a19858b237991c9d6d2"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2416,
-          "line_end": 2421,
+          "line_start": 2422,
+          "line_end": 2427,
           "expected_text": "\\bibitem{fgkmt2018}",
           "excerpt_sha256": "sha256:8470359e3946941442ab68a0b5c1f299da554b5626a50a19858b237991c9d6d2"
         },
@@ -5507,8 +5507,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1664,
-          "line_end": 1664,
+          "line_start": 1670,
+          "line_end": 1670,
           "excerpt_sha256": "sha256:eaaaa84d309b1a0c1d56fc36e531a59a4fa33af5709a256b9b48f214908ca467"
         },
         {
@@ -5581,21 +5581,21 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 1020,
-          "line_end": 1026,
+          "line_start": 1024,
+          "line_end": 1030,
           "expected_text": "\\bibitem{bellsmertnig2026}",
           "excerpt_sha256": "sha256:819a1f10e31a530cd62bdc6d0498382904fe9de8bbe84bcb3c98001de80d4853"
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2805,
-          "line_end": 2810,
+          "line_start": 2801,
+          "line_end": 2806,
           "excerpt_sha256": "sha256:724491b4a92be4ba614ed9d362591ede262b3186da756a9696f3205425196cd8"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 2830,
-          "line_end": 2835,
+          "line_start": 2826,
+          "line_end": 2831,
           "excerpt_sha256": "sha256:724491b4a92be4ba614ed9d362591ede262b3186da756a9696f3205425196cd8"
         },
         {
@@ -5607,8 +5607,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3285,
-          "line_end": 3290,
+          "line_start": 3281,
+          "line_end": 3286,
           "expected_text": "\\bibitem{bellsmertnig2026}",
           "excerpt_sha256": "sha256:cc50bbad0efa2944eb4173a765d58c97fb832b81daacf5277b29b4d3d4e86ace"
         }
@@ -5813,8 +5813,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1419,
-          "line_end": 1423,
+          "line_start": 1420,
+          "line_end": 1424,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:eacde95a2a008044b34dad3bc740d3a6e33953232b7364e5c222730a382b3f1e"
         },
@@ -5990,15 +5990,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1507,
-          "line_end": 1513,
+          "line_start": 1516,
+          "line_end": 1522,
           "expected_text": "\\bibitem{mv2007}",
           "excerpt_sha256": "sha256:03f7f2c55d7f1d7a5d51e858245f1ed0bffcadc403fdbeaed28e1567ef9344b5"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2106,
-          "line_end": 2107,
+          "line_start": 2112,
+          "line_end": 2113,
           "expected_text": "\\cite[Ch.~6]{mv2007}",
           "excerpt_sha256": "sha256:c44e132030013c5f8edb13f0a69f4bb3d45e4978267d1ce5a72c5a0a5fca04fb"
         },
@@ -6011,8 +6011,8 @@
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2461,
-          "line_end": 2467,
+          "line_start": 2467,
+          "line_end": 2473,
           "expected_text": "\\bibitem{mv2007}",
           "excerpt_sha256": "sha256:ca03483f7e5f0fc4d0d69ac5180ec9b6210fe1153296a9b8ae097ac44c31ecc7"
         },
@@ -6102,8 +6102,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3211,
-          "line_end": 3218,
+          "line_start": 3207,
+          "line_end": 3214,
           "expected_text": "\\bibitem{matalaaho2006}",
           "excerpt_sha256": "sha256:ca3ad143147a5d2804f66fa9a2b445b365c705a19273a1ae8c77f2c257c09062"
         },
@@ -6378,15 +6378,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1451,
-          "line_end": 1455,
+          "line_start": 1460,
+          "line_end": 1464,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:b15ff1f4f868239639eebe6f5a89f57685df4652b87c84a85444a252f4620e9d"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2392,
-          "line_end": 2396,
+          "line_start": 2398,
+          "line_end": 2402,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:b15ff1f4f868239639eebe6f5a89f57685df4652b87c84a85444a252f4620e9d"
         },
@@ -6567,8 +6567,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3227,
-          "line_end": 3232,
+          "line_start": 3223,
+          "line_end": 3228,
           "expected_text": "\\bibitem{rhinviola1996}",
           "excerpt_sha256": "sha256:b75b67635c18f80de0c876644a0d855886ffebd57e78291c56d2b76c6f5fe91f"
         },
@@ -6587,8 +6587,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1901,
-          "line_end": 1901,
+          "line_start": 1897,
+          "line_end": 1897,
           "excerpt_sha256": "sha256:5c49ddfe53b2fd3db9c587f08d6f0191b7c956806bdaaf388250ce58e1b8f4dd"
         }
       ],
@@ -6626,8 +6626,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3248,
-          "line_end": 3252,
+          "line_start": 3244,
+          "line_end": 3248,
           "expected_text": "\\bibitem{vandehey2013}",
           "excerpt_sha256": "sha256:ec00799c8a18f226c11ddb3397de2c15b0fb2a0863bb9126f6ebb34db8f890d0"
         },
@@ -6833,8 +6833,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3138,
-          "line_end": 3142,
+          "line_start": 3134,
+          "line_end": 3138,
           "expected_text": "\\bibitem{erdos1948}",
           "excerpt_sha256": "sha256:cf446c3cbb0c405bcc80ec2c25d599a8a83cd781fed2f9312d32338c1383374d"
         },
@@ -7260,15 +7260,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1472,
-          "line_end": 1477,
+          "line_start": 1481,
+          "line_end": 1486,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:3dffd2d864bf4180ebe9991870e99f1cbd5648bbe6df0506137b0e9ca59a10b5"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2426,
-          "line_end": 2432,
+          "line_start": 2432,
+          "line_end": 2438,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:f71fd90e02b56e5a7f3db61553681bc3a011dd1d60bdb5626288fe0bdadfe1a3"
         },
@@ -7288,8 +7288,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3271,
-          "line_end": 3278,
+          "line_start": 3267,
+          "line_end": 3274,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:31734bb5dbd8d4b44ac368c926cf6ce72c577a3e05d74dab77682764ee7da3da"
         },
@@ -7683,15 +7683,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1533,
-          "line_end": 1539,
+          "line_start": 1542,
+          "line_end": 1548,
           "expected_text": "\\bibitem{kovac2026}",
           "excerpt_sha256": "sha256:1096adf0ad2995f353c03f6055b89fdfd9ff0deff02c31587f068d520c22bdf6"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2494,
-          "line_end": 2500,
+          "line_start": 2500,
+          "line_end": 2506,
           "expected_text": "\\bibitem{kovac2026}",
           "excerpt_sha256": "sha256:0399091977509a4683c10fb00a9080853d3411de91629927dd6214ce1f895b76"
         },
@@ -7710,8 +7710,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1482,
-          "line_end": 1485,
+          "line_start": 1488,
+          "line_end": 1491,
           "excerpt_sha256": "sha256:75fc88ebb9e71df2b144b73b7ba7f83d1a4d8bf52f0e0a1f225033501dc8b50f"
         }
       ],
@@ -7765,8 +7765,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1985,
-          "line_end": 1991,
+          "line_start": 1986,
+          "line_end": 1992,
           "expected_text": "\\bibitem{stewart2004}",
           "excerpt_sha256": "sha256:d372b96b2e935696dacf7f2d4130cbfe63dbfa74d1a9a20d0c5eebf4a8744bf5"
         },
@@ -7785,8 +7785,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1281,
-          "line_end": 1281,
+          "line_start": 1282,
+          "line_end": 1282,
           "excerpt_sha256": "sha256:d47cc382e7afc7f184344441f0e14f5174027851786e20b58d14e8c99a95145a"
         },
         {
@@ -7924,8 +7924,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3146,
-          "line_end": 3150,
+          "line_start": 3142,
+          "line_end": 3146,
           "expected_text": "\\bibitem{borwein1991}",
           "excerpt_sha256": "sha256:ba25c19782edca439fc59536016a13c5d36a33cd2f359c1c6f2080fb7a229a6d"
         },
@@ -8118,8 +8118,8 @@
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2409,
-          "line_end": 2412,
+          "line_start": 2415,
+          "line_end": 2418,
           "expected_text": "\\bibitem{erdosstraus1963}",
           "excerpt_sha256": "sha256:8ffb24de85055473b210544129d443b7f4f1053369bca9b80a5a390f3e9d03ac"
         },
@@ -8475,8 +8475,8 @@
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2412,
-          "line_end": 2416,
+          "line_start": 2418,
+          "line_end": 2422,
           "expected_text": "\\bibitem{erdosstraus1974}",
           "excerpt_sha256": "sha256:f7bda653254934731b1c480ce676d26be6555827aa8b4981f2bfc0f7ec7f641b"
         },
@@ -8750,8 +8750,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3150,
-          "line_end": 3156,
+          "line_start": 3146,
+          "line_end": 3152,
           "expected_text": "\\bibitem{borwein1992}",
           "excerpt_sha256": "sha256:62e9f12c9446297c621f7f486af4e1739cd6b6e5b979419191df4d31b8bb4cdc"
         },
@@ -8998,15 +8998,15 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 925,
-          "line_end": 930,
+          "line_start": 922,
+          "line_end": 927,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1949,
-          "line_end": 1954,
+          "line_start": 1950,
+          "line_end": 1955,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:384777592d7ca1953cae0bd40238b8fd41ad0252431a1f5ebc4ab35e4a06e0fb"
         },
@@ -9026,15 +9026,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1460,
-          "line_end": 1464,
+          "line_start": 1469,
+          "line_end": 1473,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:b88cd5f1bc6cefbc5e905045ca863ca7401870655349d35df731df209f602711"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2401,
-          "line_end": 2405,
+          "line_start": 2407,
+          "line_end": 2411,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:a7879cfdd934566a241e3e3308255f7da36361150fbac8a520cdbdd7df7b86fb"
         },
@@ -9054,15 +9054,15 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 974,
-          "line_end": 978,
+          "line_start": 978,
+          "line_end": 982,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:46dc589925f18c98a38b701dc32978cf7bf47298f8b19fc97e2d6eb3b37ddaf2"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3142,
-          "line_end": 3146,
+          "line_start": 3138,
+          "line_end": 3142,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:5dc4499ba85b2a90c1b7eeae654d404e424be3f9aa288c8eaf30e698ab7cf0e8"
         },
@@ -9252,8 +9252,8 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 2002,
-          "line_end": 2007,
+          "line_start": 2003,
+          "line_end": 2008,
           "expected_text": "\\bibitem{hancl-tijdeman}",
           "excerpt_sha256": "sha256:6451f28fb9eb6a57bbacf77a2b846a9910d1a83bcc28ed87e114f263447d42fe"
         },
@@ -9272,8 +9272,8 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 943,
-          "line_end": 947,
+          "line_start": 940,
+          "line_end": 944,
           "expected_text": "\\bibitem{hancl-tijdeman}",
           "excerpt_sha256": "sha256:1f09afd7bd4a8cd5830f4d945faa7d1fdb35a293b2aa3fb854a93d112b02d9e5"
         }
@@ -9355,15 +9355,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 992,
-          "line_end": 1003,
+          "line_start": 996,
+          "line_end": 1007,
           "expected_text": "\\bibitem{zudilin2016}",
           "excerpt_sha256": "sha256:ded7a6e73c64eb888bff8d92fdf9045c0912b78b36a09aaf5d4f28ab76caf53f"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3176,
-          "line_end": 3187,
+          "line_start": 3172,
+          "line_end": 3183,
           "expected_text": "\\bibitem{zudilin2016}",
           "excerpt_sha256": "sha256:28607cac7b070bebdf820b61863c3daadc81c336a532ef5ffb850e0444467fbe"
         },
@@ -9406,8 +9406,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 1624,
-          "line_end": 1624,
+          "line_start": 1622,
+          "line_end": 1622,
           "excerpt_sha256": "sha256:84baaf0fba645123571d368f33d5c2b16dd3bd0252e8bf3531fcf64cfc3604d3"
         },
         {
@@ -9433,8 +9433,8 @@
         },
         {
           "path": "lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-          "line_start": 160,
-          "line_end": 167,
+          "line_start": 177,
+          "line_end": 184,
           "excerpt_sha256": "sha256:48cded238c23f3b69267c7634831949873ba61edbfc1d81d7be4e4f53a9dfa1f",
           "expected_text": "/-! ## Associated-graded Hankel row coefficients -/"
         },
@@ -9514,15 +9514,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 952,
-          "line_end": 958,
+          "line_start": 949,
+          "line_end": 955,
           "expected_text": "\\bibitem{lai}",
           "excerpt_sha256": "sha256:46d46557785c10c150443d76e3e2ee18863327c20497921f117a6e24c3b28dfc"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 2020,
-          "line_end": 2027,
+          "line_start": 2021,
+          "line_end": 2028,
           "expected_text": "\\bibitem{lai}",
           "excerpt_sha256": "sha256:0c9b92dd60faa1776a2fd347411c2b3d6e7e6cf572e7000724099c0819e02c64"
         },
@@ -9559,14 +9559,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1294,
-          "line_end": 1294,
+          "line_start": 1295,
+          "line_end": 1295,
           "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569"
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1297,
-          "line_end": 1297,
+          "line_start": 1298,
+          "line_end": 1298,
           "excerpt_sha256": "sha256:cf244f8d406dbc2b1691723895810b510a0d4cb83e857833f09d5ad2404fdf9f"
         }
       ],
@@ -9615,15 +9615,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1455,
-          "line_end": 1460,
+          "line_start": 1464,
+          "line_end": 1469,
           "expected_text": "\\bibitem{erdospomerance1978}",
           "excerpt_sha256": "sha256:04ed9eaa8a173523ce6b41b7edd8abcdefbd6e60e6043c9467908571358cf61f"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2396,
-          "line_end": 2401,
+          "line_start": 2402,
+          "line_end": 2407,
           "expected_text": "\\bibitem{erdospomerance1978}",
           "excerpt_sha256": "sha256:04ed9eaa8a173523ce6b41b7edd8abcdefbd6e60e6043c9467908571358cf61f"
         },
@@ -9720,8 +9720,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1456,
-          "line_end": 1461,
+          "line_start": 1457,
+          "line_end": 1462,
           "expected_text": "\\bibitem{eremenko-hayman}",
           "excerpt_sha256": "sha256:03547751579bddb06550186cbd4cd5363e790e059ff80b147b313232f2329016"
         }
@@ -9780,8 +9780,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1461,
-          "line_end": 1465,
+          "line_start": 1462,
+          "line_end": 1466,
           "expected_text": "\\bibitem{eremenko-yuditskii}",
           "excerpt_sha256": "sha256:97ed6ed938a762a7aa078c24d5e27afbbef833b6e4baddc2c4ebde5eff3f4607"
         },
@@ -9844,8 +9844,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1470,
-          "line_end": 1476,
+          "line_start": 1471,
+          "line_end": 1477,
           "expected_text": "\\bibitem{eremenko-markov}",
           "excerpt_sha256": "sha256:9b66ac2741824a4fb126ce6c85cdddc7806daa4534b4f393e06ebf1a210dbd9c"
         },
@@ -9904,8 +9904,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1465,
-          "line_end": 1470,
+          "line_start": 1466,
+          "line_end": 1471,
           "expected_text": "\\bibitem{eremenko-lempert}",
           "excerpt_sha256": "sha256:a3161ac11344fd8199bdbbb63800da9443a64e2a1d3fdd2007366848b954d26f"
         },
@@ -9980,8 +9980,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1476,
-          "line_end": 1482,
+          "line_start": 1477,
+          "line_end": 1483,
           "expected_text": "\\bibitem{bishop-eremenko-lazebnik}",
           "excerpt_sha256": "sha256:bfae70e92b17ff0eb46d5a89787ab01a60a09ee1c2fa3385ddf8b2ff8854f038"
         },
@@ -10629,8 +10629,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3156,
-          "line_end": 3162,
+          "line_start": 3152,
+          "line_end": 3158,
           "expected_text": "\\bibitem{az1998}",
           "excerpt_sha256": "sha256:d5178dbf9e857836e9898ea177d620546af9d24a1826f669a5c173ec6dea9c58"
         },
@@ -11014,15 +11014,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 947,
-          "line_end": 952,
+          "line_start": 944,
+          "line_end": 949,
           "expected_text": "\\bibitem{louwsma-martino}",
           "excerpt_sha256": "sha256:4e3224554ec0bd4c1a32071ce7ef73aeb9bcfb3968944623e0fb91c4fe2be78b"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1963,
-          "line_end": 1968,
+          "line_start": 1964,
+          "line_end": 1969,
           "expected_text": "\\bibitem{louwsma-martino}",
           "excerpt_sha256": "sha256:914493d46467de68f4694608090ada82775de8b29aeffdda4fe43be291dc4ee7"
         },
@@ -11041,8 +11041,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1298,
-          "line_end": 1298,
+          "line_start": 1299,
+          "line_end": 1299,
           "excerpt_sha256": "sha256:1bbb73cec93fb8cd3f3824f593f64ab2d98b58f67b7b6807d7abbffeba3fddec"
         }
       ],
@@ -11322,8 +11322,8 @@
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3258,
-          "line_end": 3265,
+          "line_start": 3254,
+          "line_end": 3261,
           "expected_text": "\\bibitem{duverneytachiya2019}",
           "excerpt_sha256": "sha256:d84745edafcc3ae3ed868569f0e1e327404f0c2a6ff86a0c327422d4a6ddbebd"
         },
@@ -11399,15 +11399,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 934,
-          "line_end": 938,
+          "line_start": 931,
+          "line_end": 935,
           "expected_text": "\\bibitem{galambos1976}",
           "excerpt_sha256": "sha256:0dbe18f1d6cf57ce36e35451b07e5631c6ff744a0fa9e2d6acf4bdb403dd3326"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1972,
-          "line_end": 1978,
+          "line_start": 1973,
+          "line_end": 1979,
           "expected_text": "\\bibitem{galambos1976}",
           "excerpt_sha256": "sha256:2f4faeedbf42dce2a7a43762c976d5510d66605594c181ab56b25a6d5c0708cf"
         },
@@ -11426,8 +11426,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1286,
-          "line_end": 1286,
+          "line_start": 1287,
+          "line_end": 1287,
           "excerpt_sha256": "sha256:8e71594d5453900bb3a8a2c6acf3fc948991dc535477977a42735a9b01f0d756"
         }
       ],
@@ -11585,8 +11585,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1432,
-          "line_end": 1438,
+          "line_start": 1433,
+          "line_end": 1439,
           "expected_text": "\\bibitem{pendyala2026shortest}",
           "excerpt_sha256": "sha256:82d28a8215cfaad9830f9c69ac73ab8a39b6b8fde4ba10c62ec7be6337dc3ff0"
         }
@@ -11890,15 +11890,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1501,
-          "line_end": 1506,
+          "line_start": 1510,
+          "line_end": 1515,
           "expected_text": "\\bibitem{maynard2015}",
           "excerpt_sha256": "sha256:69bc7fb529f44d28f49f649b27b96cd60ebca94fe9a4d91e5742fb4bd8922ef7"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2455,
-          "line_end": 2460,
+          "line_start": 2461,
+          "line_end": 2466,
           "expected_text": "\\bibitem{maynard2015}",
           "excerpt_sha256": "sha256:69bc7fb529f44d28f49f649b27b96cd60ebca94fe9a4d91e5742fb4bd8922ef7"
         },
@@ -11911,14 +11911,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1659,
-          "line_end": 1659,
+          "line_start": 1665,
+          "line_end": 1665,
           "excerpt_sha256": "sha256:1c353b92a6150c3c1fd31caf9ea67c600326deef9ecc2bd683a7fda752871261"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1660,
-          "line_end": 1662,
+          "line_start": 1666,
+          "line_end": 1668,
           "excerpt_sha256": "sha256:893593c80e9facc478fed0db5597ea63f2703a99c2c3dec78f5e87fcd9b36ec6"
         },
         {
@@ -12000,8 +12000,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1482,
-          "line_end": 1487,
+          "line_start": 1483,
+          "line_end": 1488,
           "expected_text": "\\bibitem{dubinin}",
           "excerpt_sha256": "sha256:ada915f17a1ed537b753f4f88aa73ca8631254a748c99e5c556dd0dcde0016c1"
         },
@@ -12102,15 +12102,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1446,
-          "line_end": 1451,
+          "line_start": 1455,
+          "line_end": 1460,
           "expected_text": "\\bibitem{erdos1958}",
           "excerpt_sha256": "sha256:885e2efa2417e35f8645dc4e4fbca381274bf01432956910f3a61dd84a407526"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2387,
-          "line_end": 2392,
+          "line_start": 2393,
+          "line_end": 2398,
           "expected_text": "\\bibitem{erdos1958}",
           "excerpt_sha256": "sha256:885e2efa2417e35f8645dc4e4fbca381274bf01432956910f3a61dd84a407526"
         },
@@ -12298,8 +12298,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1443,
-          "line_end": 1449,
+          "line_start": 1444,
+          "line_end": 1450,
           "expected_text": "\\bibitem{crane}",
           "excerpt_sha256": "sha256:cd02a3f4bd4ab2831d4e82f0258f2e99b98627ee1ba71dc7fcd33aaae61f7342"
         }
@@ -12396,8 +12396,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2467,
-          "line_end": 2470,
+          "line_start": 2473,
+          "line_end": 2476,
           "expected_text": "\\bibitem{schlagepuchta2011}",
           "excerpt_sha256": "sha256:e135f5a084dcdee6a7d59d49839738142b5895b3ff79525a4310e2cdfe84e67d"
         },
@@ -12428,15 +12428,15 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1179,
-          "line_end": 1180,
+          "line_start": 1185,
+          "line_end": 1186,
           "excerpt_sha256": "sha256:5a4f605adbe4bbba39b889ba7030dcb38ab8b0287c2d1254cca406ab74aa49cd"
         },
         {
           "path": "lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean",
           "line_start": 7,
           "line_end": 23,
-          "excerpt_sha256": "sha256:35f90f0c043ed51d0cc8a2e1cf385e76e165fcf5bde71ee4a19f4c839f3f7d6f",
+          "excerpt_sha256": "sha256:321f1f193ba6cea89edee0e703684bdf6234e2bc38d8b5dc53a6395d1b42cf33",
           "expected_text": "# Actual-prime specialisations and explicit external-source boundaries"
         }
       ],
@@ -12963,8 +12963,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3265,
-          "line_end": 3271,
+          "line_start": 3261,
+          "line_end": 3267,
           "expected_text": "\\bibitem{rivin2026}",
           "excerpt_sha256": "sha256:547a282df5e35d2d260581efbb9d6958a6a3bf47c2d9a4d9b39949fd65e27f76"
         },
@@ -12989,8 +12989,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2800,
-          "line_end": 2800,
+          "line_start": 2796,
+          "line_end": 2796,
           "excerpt_sha256": "sha256:04460620821776cd394a005083318c889c68c93c4a7b5c16d5dc341484037d26"
         }
       ],
@@ -13172,8 +13172,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2490,
-          "line_end": 2494,
+          "line_start": 2496,
+          "line_end": 2500,
           "expected_text": "\\bibitem{erdosproblems251thread}",
           "excerpt_sha256": "sha256:25d0d238298b947a119420c92dd5b3f9a40685eee78a190093855d454226987b"
         },
@@ -13198,14 +13198,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1671,
-          "line_end": 1671,
+          "line_start": 1677,
+          "line_end": 1677,
           "excerpt_sha256": "sha256:12505b93fd9fe42cc2789467c5e348722fb0f6684320328f30690cdcc31c269c"
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1529,
-          "line_end": 1533,
+          "line_start": 1538,
+          "line_end": 1542,
           "expected_text": "\\bibitem{erdosproblems251thread}",
           "excerpt_sha256": "sha256:25d0d238298b947a119420c92dd5b3f9a40685eee78a190093855d454226987b"
         }
@@ -13302,15 +13302,15 @@
         },
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 930,
-          "line_end": 932,
+          "line_start": 927,
+          "line_end": 929,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:5f0b6ad6c1a9049d21841bc0ffd6cf7d1b57c719cf79d0d3de5d351e68db74b0"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1954,
-          "line_end": 1956,
+          "line_start": 1955,
+          "line_end": 1957,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:11545fdfff7ab6df4b8945ca9bc2918a4915e2536aaf15190e2cac335631084a"
         },
@@ -13330,15 +13330,15 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1525,
-          "line_end": 1529,
+          "line_start": 1534,
+          "line_end": 1538,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:fb28c46e0811f1eedcc1ff068cfbd61d4b77f76eda138c7266d21c7f09df0131"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2486,
-          "line_end": 2490,
+          "line_start": 2492,
+          "line_end": 2496,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:fb28c46e0811f1eedcc1ff068cfbd61d4b77f76eda138c7266d21c7f09df0131"
         },
@@ -13358,8 +13358,8 @@
         },
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1417,
-          "line_end": 1419,
+          "line_start": 1418,
+          "line_end": 1420,
           "expected_text": "\\bibitem{bloom}",
           "excerpt_sha256": "sha256:b93ff125a99b72635bb970f16de63ead752a365b8b956999f315d6f346c08fed"
         },
@@ -13372,15 +13372,15 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 1013,
-          "line_end": 1020,
+          "line_start": 1017,
+          "line_end": 1024,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:43408f7d298cd4d9f67a8bde8169b5811d789752c86ce742c8a1a4f6d69fe4d5"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3278,
-          "line_end": 3284,
+          "line_start": 3274,
+          "line_end": 3280,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:b995402f056f7f2c322ca73a63c6daabeda8be2242e4999da7b00b8e65a63557"
         },
@@ -13419,8 +13419,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos1049/core.tex",
-          "line_start": 2873,
-          "line_end": 2873,
+          "line_start": 2869,
+          "line_end": 2869,
           "excerpt_sha256": "sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b"
         },
         {
@@ -13463,14 +13463,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1714,
-          "line_end": 1714,
+          "line_start": 1720,
+          "line_end": 1720,
           "excerpt_sha256": "sha256:0a42744281855ae29a6800bb29de6d24059a49ac3582e8a3a08e7b704d62af5b"
         },
         {
           "path": "paper/reasoning-parts/erdos251/core.tex",
-          "line_start": 1713,
-          "line_end": 1713,
+          "line_start": 1719,
+          "line_end": 1719,
           "excerpt_sha256": "sha256:abc060a4e621f266ea418ab11a5d8bebd16a6d47e09579c280edd582cddf6e07"
         },
         {
@@ -15492,8 +15492,8 @@
         },
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 891,
-          "line_end": 911,
+          "line_start": 895,
+          "line_end": 915,
           "excerpt_sha256": "sha256:e8ae32450cbc9049293293d2f552e05daf3d0a63c406bd2a0968063fa4a14b0d"
         }
       ],
@@ -15897,8 +15897,8 @@
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 1956,
-          "line_end": 1963,
+          "line_start": 1957,
+          "line_end": 1964,
           "expected_text": "\\bibitem{erdos1975}",
           "excerpt_sha256": "sha256:04e6219e8807be257cf6767d86b7576df0196eef7d47706b134f7cb523633e1d"
         },
@@ -16051,15 +16051,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1513,
-          "line_end": 1519,
+          "line_start": 1522,
+          "line_end": 1528,
           "expected_text": "\\bibitem{vandoornkovac2025}",
           "excerpt_sha256": "sha256:5c52d7df705f9f622db00f3fd33ba79f7046b1a7892c7b67a9f86901f071332b"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2474,
-          "line_end": 2480,
+          "line_start": 2480,
+          "line_end": 2486,
           "expected_text": "\\bibitem{vandoornkovac2025}",
           "excerpt_sha256": "sha256:5c52d7df705f9f622db00f3fd33ba79f7046b1a7892c7b67a9f86901f071332b"
         },
@@ -16145,15 +16145,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 958,
-          "line_end": 963,
+          "line_start": 955,
+          "line_end": 960,
           "expected_text": "\\bibitem{luca-shparlinski}",
           "excerpt_sha256": "sha256:f4b93b64e57ba9e355c17f9d32a33fad008c653623743e63b5eb9337d3d5ad50"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 2014,
-          "line_end": 2020,
+          "line_start": 2015,
+          "line_end": 2021,
           "expected_text": "\\bibitem{luca-shparlinski}",
           "excerpt_sha256": "sha256:419ef0c604e9f32935856c24f397ca424959dcf2dba320e3289a5703003310a1"
         },
@@ -16190,14 +16190,14 @@
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1294,
-          "line_end": 1294,
+          "line_start": 1295,
+          "line_end": 1295,
           "excerpt_sha256": "sha256:9354cad1ad2267a087e6ca551a3a34d423bc684537f84c7b28e1aaefa5ab2569"
         },
         {
           "path": "paper/reasoning-parts/erdos68/core.tex",
-          "line_start": 1296,
-          "line_end": 1296,
+          "line_start": 1297,
+          "line_end": 1297,
           "excerpt_sha256": "sha256:4919897eb071a8d7bba39212c376726b0f4797a611acc5f5c0fdbe9531b41d3d"
         }
       ],
@@ -16263,15 +16263,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 963,
-          "line_end": 971,
+          "line_start": 960,
+          "line_end": 968,
           "expected_text": "\\bibitem{lai-lupu-sprang}",
           "excerpt_sha256": "sha256:5e66b432b976ca0211610aa25ee81f3dfe523ccae3d64ea3e020dbdb4b9d904b"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 2027,
-          "line_end": 2035,
+          "line_start": 2028,
+          "line_end": 2036,
           "expected_text": "\\bibitem{lai-lupu-sprang}",
           "excerpt_sha256": "sha256:5e66b432b976ca0211610aa25ee81f3dfe523ccae3d64ea3e020dbdb4b9d904b"
         },
@@ -16466,8 +16466,8 @@
         },
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1539,
-          "line_end": 1545,
+          "line_start": 1548,
+          "line_end": 1554,
           "expected_text": "\\bibitem{ringer2026}",
           "excerpt_sha256": "sha256:5a4775d616f8afb7208d218827caaa8943d0688d7d17d473e02391db51e834ca"
         },
@@ -16479,8 +16479,8 @@
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2504,
-          "line_end": 2510,
+          "line_start": 2510,
+          "line_end": 2516,
           "expected_text": "\\bibitem{ringer2026}",
           "excerpt_sha256": "sha256:5a4775d616f8afb7208d218827caaa8943d0688d7d17d473e02391db51e834ca"
         },
@@ -16541,15 +16541,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 971,
-          "line_end": 976,
+          "line_start": 968,
+          "line_end": 973,
           "expected_text": "\\bibitem{lai-2adic}",
           "excerpt_sha256": "sha256:f5b73d6ec57e7a658e97ddcb990fa3bb4c1c73ab03943d9e3f60cf86a255ef5e"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 2035,
-          "line_end": 2040,
+          "line_start": 2036,
+          "line_end": 2041,
           "expected_text": "\\bibitem{lai-2adic}",
           "excerpt_sha256": "sha256:f5b73d6ec57e7a658e97ddcb990fa3bb4c1c73ab03943d9e3f60cf86a255ef5e"
         },
@@ -16604,15 +16604,15 @@
       "artifact_links": [
         {
           "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-          "line_start": 976,
-          "line_end": 980,
+          "line_start": 973,
+          "line_end": 977,
           "expected_text": "\\bibitem{nist-dlmf}",
           "excerpt_sha256": "sha256:7932929fa84de4644c25d9cb102f10c973f5b5443af4f9be4625dbc2d933bf1a"
         },
         {
           "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
-          "line_start": 2040,
-          "line_end": 2044,
+          "line_start": 2041,
+          "line_end": 2045,
           "expected_text": "\\bibitem{nist-dlmf}",
           "excerpt_sha256": "sha256:7932929fa84de4644c25d9cb102f10c973f5b5443af4f9be4625dbc2d933bf1a"
         },
@@ -16906,8 +16906,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1438,
-          "line_end": 1443,
+          "line_start": 1439,
+          "line_end": 1444,
           "expected_text": "\\bibitem{kozen-stefansson1997}",
           "excerpt_sha256": "sha256:ed2e1d97e25042a1c3cc333a2f890caed82f4b663b8b32c55aee9808f3380583"
         },
@@ -16978,8 +16978,8 @@
       "artifact_links": [
         {
           "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-          "line_start": 1449,
-          "line_end": 1456,
+          "line_start": 1450,
+          "line_end": 1457,
           "expected_text": "\\bibitem{eks2010}",
           "excerpt_sha256": "sha256:0b086dc6c508b56a163e9e87eadee8f83406883c0bb951c90f8c3195b296ef03"
         },
@@ -17094,15 +17094,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 982,
-          "line_end": 986,
+          "line_start": 986,
+          "line_end": 990,
           "expected_text": "\\bibitem{zudilin2002}",
           "excerpt_sha256": "sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3166,
-          "line_end": 3170,
+          "line_start": 3162,
+          "line_end": 3166,
           "expected_text": "\\bibitem{zudilin2002}",
           "excerpt_sha256": "sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c"
         },
@@ -17156,8 +17156,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 1003,
-          "line_end": 1008,
+          "line_start": 1007,
+          "line_end": 1012,
           "expected_text": "\\bibitem{stanley2016}",
           "excerpt_sha256": "sha256:3e8d9bba274ba0d1fa7883a36808baad3612c511dcd54421d1fb5d61d279fd1e"
         }
@@ -17204,15 +17204,15 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
-          "line_start": 1008,
-          "line_end": 1013,
+          "line_start": 1012,
+          "line_end": 1017,
           "expected_text": "\\bibitem{zudilin2017det}",
           "excerpt_sha256": "sha256:76708e9e1ba9cb5b881eb2f319d5a6bf94dc5132c846fc6c1ebd51aef0fb72d4"
         },
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3187,
-          "line_end": 3192,
+          "line_start": 3183,
+          "line_end": 3188,
           "expected_text": "\\bibitem{zudilin2017det}",
           "excerpt_sha256": "sha256:41ce33a37be85c639d04c7e0ffada3de52abc55e55f352d0e27837ed17fce6db"
         },
@@ -17266,8 +17266,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3192,
-          "line_end": 3197,
+          "line_start": 3188,
+          "line_end": 3193,
           "expected_text": "\\bibitem{bundschuhzudilin2008}",
           "excerpt_sha256": "sha256:bd1db09a836b7bae7294afc1da1a7ae1ba135a083600d289e0dd8b45d24c10e4"
         },
@@ -17324,8 +17324,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3197,
-          "line_end": 3204,
+          "line_start": 3193,
+          "line_end": 3200,
           "expected_text": "\\bibitem{krvz2009}",
           "excerpt_sha256": "sha256:037d8d669c712adb2ce488ddaad6988ca8a9e433e3271c97496d29be910f9ded"
         },
@@ -17376,8 +17376,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3238,
-          "line_end": 3244,
+          "line_start": 3234,
+          "line_end": 3240,
           "expected_text": "\\bibitem{coussementsmet2007}",
           "excerpt_sha256": "sha256:b6b59c3f516fe753628de797f741e46ad1554bcd562427e309cfd40f794a23f8"
         },
@@ -17426,8 +17426,8 @@
       "artifact_links": [
         {
           "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-          "line_start": 3291,
-          "line_end": 3295,
+          "line_start": 3287,
+          "line_end": 3291,
           "expected_text": "\\bibitem{dlmf}",
           "excerpt_sha256": "sha256:1f93dd63fdcecc1c50a9e4192bb21b88580fe393bef2b1a4a2bd32200489b8f2"
         },
@@ -17980,8 +17980,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2405,
-          "line_end": 2409,
+          "line_start": 2411,
+          "line_end": 2415,
           "expected_text": "\\bibitem{erdos1932}",
           "excerpt_sha256": "sha256:e7b8bde0148417f15de8121eb090b925a27988e7e449afc3e8ba127708c3a130"
         },
@@ -18034,15 +18034,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1469,
-          "line_end": 1472,
+          "line_start": 1478,
+          "line_end": 1481,
           "expected_text": "\\bibitem{fridy1966}",
           "excerpt_sha256": "sha256:6644869a390c6df1e30387d25b3c5592d9d878c9854b4326ec4eb243888bff67"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2421,
-          "line_end": 2424,
+          "line_start": 2427,
+          "line_end": 2430,
           "expected_text": "\\bibitem{fridy1966}",
           "excerpt_sha256": "sha256:36d0f43be9ee428d7412c2cde1d63a123701cc35bc5604b814c15ee53db6b29b"
         },
@@ -18099,15 +18099,15 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
-          "line_start": 1478,
-          "line_end": 1482,
+          "line_start": 1487,
+          "line_end": 1491,
           "expected_text": "\\bibitem{kuperberg2023}",
           "excerpt_sha256": "sha256:9a193f5ed65b6af328658c655d7a073b11199470b4b23c8d0d7c39a8176a3033"
         },
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2432,
-          "line_end": 2436,
+          "line_start": 2438,
+          "line_end": 2442,
           "expected_text": "\\bibitem{kuperberg2023}",
           "excerpt_sha256": "sha256:9a193f5ed65b6af328658c655d7a073b11199470b4b23c8d0d7c39a8176a3033"
         },
@@ -18160,8 +18160,8 @@
       "artifact_links": [
         {
           "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "line_start": 2470,
-          "line_end": 2474,
+          "line_start": 2476,
+          "line_end": 2480,
           "expected_text": "\\bibitem{short2009}",
           "excerpt_sha256": "sha256:38fb335c9aece1c41352bd970772c5fce3fac88907f8fb0a946cd20a64f47ef5"
         },
@@ -22626,12 +22626,12 @@
     },
     {
       "path": "lean/ErdosProblems.lean",
-      "line_start": 149,
-      "line_end": 149,
+      "line_start": 152,
+      "line_end": 152,
       "excerpt_sha256": "sha256:69f43da3fcc8d64822212a7d32ab1be5d3dc7b4462cf66cd9dd72754b4fd3583",
       "context": {
-        "line_start": 148,
-        "line_end": 153,
+        "line_start": 151,
+        "line_end": 156,
         "excerpt_sha256": "sha256:3ce0d6c3361e3b38dee534f3a752dba0c64c9b6efcb7ac5335ad63375474d1d0"
       },
       "disposition": "not_bibliographic",
@@ -24128,13 +24128,13 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-      "line_start": 7,
-      "line_end": 7,
+      "line_start": 12,
+      "line_end": 12,
       "excerpt_sha256": "sha256:bc4f05a16cadfe2b5371af0221ec15e37fbbc80e57bf90d988440526d8017a90",
       "context": {
-        "line_start": 6,
-        "line_end": 35,
-        "excerpt_sha256": "sha256:892a069e0ab31b70f5a1c73c2960044f2a72c33b309721503818a9c2be8b1393"
+        "line_start": 11,
+        "line_end": 54,
+        "excerpt_sha256": "sha256:09b7fe3f944d889bfe061ece106cf68b1eb6b8780dce7e90562075e553a354cd"
       },
       "disposition": "not_bibliographic",
       "source_ids": [],
@@ -24142,12 +24142,12 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-      "line_start": 102,
-      "line_end": 102,
+      "line_start": 119,
+      "line_end": 119,
       "excerpt_sha256": "sha256:2e44ae36fdb46e4693d85072309c60e6818294a868307507f2187b48be0c81df",
       "context": {
-        "line_start": 102,
-        "line_end": 102,
+        "line_start": 119,
+        "line_end": 119,
         "excerpt_sha256": "sha256:2e44ae36fdb46e4693d85072309c60e6818294a868307507f2187b48be0c81df"
       },
       "disposition": "not_bibliographic",
@@ -24156,12 +24156,12 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-      "line_start": 130,
-      "line_end": 130,
+      "line_start": 147,
+      "line_end": 147,
       "excerpt_sha256": "sha256:10df50c90807fdea9ea04d947c76a6693c3e1606acaf62efc345bb6a10136515",
       "context": {
-        "line_start": 130,
-        "line_end": 130,
+        "line_start": 147,
+        "line_end": 147,
         "excerpt_sha256": "sha256:10df50c90807fdea9ea04d947c76a6693c3e1606acaf62efc345bb6a10136515"
       },
       "disposition": "not_bibliographic",
@@ -24170,12 +24170,12 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-      "line_start": 165,
-      "line_end": 165,
+      "line_start": 182,
+      "line_end": 182,
       "excerpt_sha256": "sha256:4724b56f34c777156fdfbe00857f8d80ebb3a7c92838c3c15cd38ade788c1961",
       "context": {
-        "line_start": 162,
-        "line_end": 166,
+        "line_start": 179,
+        "line_end": 183,
         "excerpt_sha256": "sha256:24faec0315edde7b43e0c062b5ce94c581e5a04d3fe11eb3387573343603144d"
       },
       "disposition": "reviewed_citation_or_comparison",
@@ -24622,7 +24622,7 @@
       "context": {
         "line_start": 3,
         "line_end": 50,
-        "excerpt_sha256": "sha256:36f8f8903fad75f66a369c1ec4b90368dc388a145ffdbf01d0517dcce7f2cdd3"
+        "excerpt_sha256": "sha256:7f78dee70bbd26444de47a6c242d8fb5fb36a6f6e2a96393f65337325a5d9114"
       },
       "disposition": "reviewed_citation_or_comparison",
       "source_ids": [
@@ -24638,7 +24638,7 @@
       "context": {
         "line_start": 3,
         "line_end": 50,
-        "excerpt_sha256": "sha256:36f8f8903fad75f66a369c1ec4b90368dc388a145ffdbf01d0517dcce7f2cdd3"
+        "excerpt_sha256": "sha256:7f78dee70bbd26444de47a6c242d8fb5fb36a6f6e2a96393f65337325a5d9114"
       },
       "disposition": "reviewed_citation_or_comparison",
       "source_ids": [
@@ -25628,7 +25628,7 @@
       "context": {
         "line_start": 6,
         "line_end": 14,
-        "excerpt_sha256": "sha256:4872aa71fb0811f79e6dcc0f89309d91d90b01b47d22d62af69e9be82e5ad62c"
+        "excerpt_sha256": "sha256:0edcad8013319de4705ad646e763ffb081c2b5f2385fb78571e991e1548c3906"
       },
       "disposition": "reviewed_citation_or_comparison",
       "source_ids": [
@@ -26019,7 +26019,7 @@
       "context": {
         "line_start": 4,
         "line_end": 11,
-        "excerpt_sha256": "sha256:cfbb116fbcc8aef4036e8d5df3481bedce8d70c9759acfdabf0ac40746da0190"
+        "excerpt_sha256": "sha256:4b732a660c577c0ed5f2b3b4809950730f14cbed58c76c4aa46051df65c10a97"
       },
       "disposition": "not_bibliographic",
       "source_ids": [],
@@ -26089,7 +26089,7 @@
       "context": {
         "line_start": 3,
         "line_end": 12,
-        "excerpt_sha256": "sha256:be4674c2950a16f36191300fcd2057543819981fb4e23153b91728a2773441de"
+        "excerpt_sha256": "sha256:21dc35de0da68ab10207c327296b754bf41b46f60b7aa787112e9af2eb850291"
       },
       "disposition": "not_bibliographic",
       "source_ids": [],
@@ -26103,7 +26103,7 @@
       "context": {
         "line_start": 5,
         "line_end": 20,
-        "excerpt_sha256": "sha256:cd9b623a88b4a723e323468c6e451850c2df1d2d76629250a251b29eba3fa7ed"
+        "excerpt_sha256": "sha256:c787d37a9fbc7d5d8c0a9835a7f5f2882b361cace71cd1d67fa24989d6a1e5f6"
       },
       "disposition": "not_bibliographic",
       "source_ids": [],
@@ -26117,7 +26117,7 @@
       "context": {
         "line_start": 7,
         "line_end": 26,
-        "excerpt_sha256": "sha256:5ef4ba0189cc3374adebc85a8eddb610a31d4f45c1ad501bcea3f2f8f07ab3cf"
+        "excerpt_sha256": "sha256:dea0bf9615d8ae6770ae864f9e2821d80c942684f0e39a91bfb7aed9db8d7255"
       },
       "disposition": "not_bibliographic",
       "source_ids": [],

@@ -10,7 +10,7 @@ not an end-to-end theorem about the paper's `S` until reindexing has been
 proved. We build the exponent/smooth-number and shell/exponent equivalences,
 prove summability, and identify the literal running-LCM series.
 
-Validation: authored, not compiled. No admissions.
+No admissions.
 -/
 
 namespace ErdosProblems.Erdos269.PaperR7

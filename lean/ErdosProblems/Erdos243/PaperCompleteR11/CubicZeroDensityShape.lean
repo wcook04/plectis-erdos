@@ -3,7 +3,7 @@ import ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity
 /-!
 # The complete zero-lower-density primitive-shape reduction
 
-Authored candidate, UNRUN. The manuscript's primitive-shape lemma is stated
+The manuscript's primitive-shape lemma is stated
 under zero lower density, not under the universal positive threshold. Its
 unit-constant conclusion is proved here at exactly that hypothesis.
 The arbitrary positive-threshold theorem must not reuse that conclusion.

@@ -8,7 +8,7 @@ PrimeGapDyadicTail.lean, commit d4fed71423840f70f10edf27b9ad27c22fc4f49a.
 The original definitions are unchanged. A fresh namespace prevents duplicate
 names when this packet is integrated into the full parent project. This is
 source reuse, not a new convergence argument or a new verification receipt.
-All declarations in this relocated module require fresh elaboration: UNRUN.
+
 -/
 noncomputable section
 open Filter Topology Finset

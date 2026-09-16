@@ -3,7 +3,7 @@ import ErdosProblems.Erdos243.PaperCompleteR11.CubicDivisorObstruction
 /-!
 # Single-prime cubic obstructions without the window-length loss
 
-Authored, UNRUN. A fixed prime p >= 3 supplies disjoint three-windows with
+A fixed prime p >= 3 supplies disjoint three-windows with
 lower exceptional density 1/p, rather than 1/(3*p). A concrete modulo-five
 corollary constructs the prime, root, and nonsquare witness. This corollary
 is unconditional; it does not postulate a good-prime family.

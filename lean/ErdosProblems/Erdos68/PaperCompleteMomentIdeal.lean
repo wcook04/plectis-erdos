@@ -4,7 +4,7 @@ import ErdosProblems.Erdos68.PaperCompleteMomentHorizon
 /-!
 Exact attainable moments, finite Bezout attainment and primitive minimisers.
 The endpoint uses the actual isolated-channel recurrence and its proved finite
-horizon, not an assumed lattice/span supplier.  All new Lean checks are UNRUN.
+horizon, not an assumed lattice/span supplier.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 open scoped BigOperators

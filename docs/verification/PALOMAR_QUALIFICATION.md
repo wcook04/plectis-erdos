@@ -157,7 +157,7 @@ length-below-two fan-in required by Erdős #1041.
 The same audit keeps the source-only `ray_separation`
 family explicit rather than leaving its role implicit behind Comparator's
 translation-avoidance and root-retention rows. In
-`NewtonFlowRaySeparation.lean:306,315`, the exact endpoint relation multiplies
+`NewtonFlowRaySeparation.lean:325,334`, the exact endpoint relation multiplies
 the starting Newton value by the strictly positive real scalar
 `exp(-time)`, so a finite connection preserves its positive value ray;
 values on distinct rays therefore cannot be connected in that form. This is

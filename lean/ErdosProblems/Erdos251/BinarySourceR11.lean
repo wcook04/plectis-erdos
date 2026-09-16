@@ -6,7 +6,7 @@ import Mathlib
 Proof-bearing source slice from BoundedPerturbationCountermodel.lean,
 pinned d4fed71423840f70f10edf27b9ad27c22fc4f49a. The binary construction is
 not redone: its proof is reused in a fresh namespace with a Mathlib-only
-import. Source relocation requires a fresh Lean check; UNRUN here.
+import.
 -/
 noncomputable section
 open Filter Topology Finset

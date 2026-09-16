@@ -2,7 +2,7 @@ import ErdosProblems.Erdos1041.PaperReflectedCompletion
 
 /-! Actual affine normalisation of a monic polynomial and its entire critical
 multiset. No continuity or labelling of moving critical roots is required.
-All Lean builds and axiom audits are UNRUN. -/
+-/
 set_option autoImplicit false
 open scoped BigOperators ComplexConjugate
 noncomputable section
