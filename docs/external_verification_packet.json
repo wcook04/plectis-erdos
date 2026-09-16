@@ -938,7 +938,7 @@
         {
           "id": "centered_state_dynamics",
           "contribution_class": "locally proved signed recovery/rigidity theorem; novelty unassessed",
-          "summary": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero. boundedNegativePart_sylvesterNext_eventually packages that recovery as the paper-facing endpoint on the original denominators.",
+          "summary": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "declarations": [
