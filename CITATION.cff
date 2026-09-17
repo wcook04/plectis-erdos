@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 cff-version: 1.2.0
 type: software
-message: "If you use this release, cite the software metadata below. For a mathematical result, cite the relevant per-problem paper linked from README.md; paper/archive/erdos249-257-main-paper.tex is the archival joint #249/#257 manuscript."
+message: "If you use this release, cite the software metadata below; for later work on main, also record the commit used. For a mathematical result, cite the relevant per-problem paper linked from README.md and its original sources; see docs/PRIOR_ART.md and docs/research-commons/SOURCE_ATTRIBUTIONS.md for attribution; paper/archive/erdos249-257-main-paper.tex is the archival joint #249/#257 manuscript."
 title: "Plectis: research on eight open Erdős problems"
 version: "0.10.0"
 date-released: "2026-09-11"
@@ -214,15 +214,17 @@ references:
     doi: "10.48550/arXiv.2512.01739"
     url: "https://arxiv.org/abs/2512.01739v2"
   - type: article
-    title: "Positive dyadic density for rational weighted binary expansions"
+    title: "Sparse Polynomial-Weighted Expansions"
     authors:
       - family-names: "Wang"
         given-names: "Han"
-      - family-names: "Grau Ribas"
-        given-names: "Jose Maria"
     year: 2026
-    url: "https://arxiv.org/abs/2606.24972"
+    url: "https://arxiv.org/abs/2606.24972v4"
     doi: "10.48550/arXiv.2606.24972"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-f4ad17717c8fd4"
+        description: "Source attribution and exact local uses"
   - type: article
     title: "The googol-th bit of the Erdős-Borwein constant"
     authors:
@@ -242,3 +244,90 @@ references:
     year: 2026
     url: "https://arxiv.org/abs/2605.24160"
     doi: "10.48550/arXiv.2605.24160"
+  - type: article
+    title: "(Non)automaticity of number theoretic functions"
+    authors:
+      - family-names: "Coons"
+        given-names: "M."
+    year: 2010
+    url: "https://doi.org/10.5802/jtnb.718"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-741da55b02c5a9"
+        description: "Source attribution and exact local uses"
+  - type: article
+    title: "Simultaneous inequalities among values of the Euler phi-function"
+    authors:
+      - family-names: "Martin"
+        given-names: "Greg"
+    year: 2006
+    url: "https://arxiv.org/abs/math/0603053v1"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-11b46a0435368f"
+        description: "Source attribution and exact local uses"
+  - type: article
+    title: "Multiplicative functions and k-automatic sequences"
+    authors:
+      - family-names: "Yazdani"
+        given-names: "Soroosh"
+    year: 2001
+    url: "https://www.numdam.org/item/JTNB_2001__13_2_651_0.pdf"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-a0d109b4492fba"
+        description: "Source attribution and exact local uses"
+  - type: generic
+    title: "Answer to An infinite sum based on the mod-parity of Euler's totient function"
+    authors:
+      - family-names: "Wong"
+        given-names: "Erick"
+    year: 2015
+    url: "https://math.stackexchange.com/a/1211557"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-0f61ad0796acdf"
+        description: "Source attribution and exact local uses"
+  - type: article
+    title: "How to prove that a sequence is not automatic"
+    authors:
+      - family-names: "Allouche"
+        given-names: "Jean-Paul"
+      - family-names: "Shallit"
+        given-names: "Jeffrey"
+      - family-names: "Yassawi"
+        given-names: "Reem"
+    year: 2022
+    url: "https://doi.org/10.1016/j.exmath.2021.08.001"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-6b460d123159d9"
+        description: "Source attribution and exact local uses"
+  - type: article
+    title: "Transcendence of generating functions whose coefficients are multiplicative"
+    authors:
+      - family-names: "Bell"
+        given-names: "Jason P."
+      - family-names: "Bruin"
+        given-names: "Nils"
+      - family-names: "Coons"
+        given-names: "Michael"
+    year: 2012
+    url: "https://doi.org/10.1090/S0002-9947-2011-05479-6"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-b791f5b49e0da6"
+        description: "Source attribution and exact local uses"
+  - type: article
+    title: "Mahler series with multiplicative coefficient sequences"
+    authors:
+      - family-names: "Bell"
+        given-names: "J."
+      - family-names: "Smertnig"
+        given-names: "D."
+    year: 2026
+    url: "https://arxiv.org/abs/2603.23456v1"
+    identifiers:
+      - type: url
+        value: "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-source-3bc828513b4d63"
+        description: "Source attribution and exact local uses"

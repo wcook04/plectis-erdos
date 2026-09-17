@@ -896,7 +896,9 @@ jobs:
         run: python3 scripts/check_metadata.py
       - name: Test citation release identity
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_citation_identity_contract.py
+        run: |
+          python3 scripts/test_citation_identity_contract.py
+          python3 scripts/test_checkout_sync.py
       - name: REUSE licensing lint
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: reuse lint

@@ -86,6 +86,42 @@ def citation_identity_errors(
     return errors
 
 
+def citation_attribution_errors(cff: str, registry: dict[str, object]) -> list[str]:
+    """Check explicitly linked CFF references against the authored credit owner.
+
+    This reads the repository's block-style CFF, not arbitrary YAML. Full CFF
+    schema validation remains the separate cffconvert CI step. Unlinked older
+    references remain selected bibliography entries, not verified comparisons.
+    """
+    sources = {row["id"]: row for row in registry["sources"]}
+    errors: list[str] = []
+    prefix = "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-"
+    for block in re.split(r"(?m)^  - type: ", cff.split("\nreferences:\n", 1)[-1])[1:]:
+        links = re.findall(re.escape(prefix) + r'([^"\s]+)', block)
+        if not links:
+            continue
+        if len(links) != 1 or links[0] not in sources:
+            errors.append("CFF reference has an unknown or duplicated source attribution")
+            continue
+        source = sources[links[0]]
+        scalar = "\n".join(line[4:] for line in block.splitlines()[1:])
+        if top_level_values(scalar, "title") != [source["title"]]:
+            errors.append(f"{source['id']}: CFF title differs from source registry")
+        # Deliberately preserve initials as recorded, rather than guessing names.
+        authors = re.findall(
+            r'      - family-names: "([^"\n]+)"\n        given-names: "([^"\n]+)"', block
+        )
+        if [f"{given} {family}" for family, given in authors] != source["authors"]:
+            errors.append(f"{source['id']}: CFF authors differ from source registry")
+        urls = top_level_values(scalar, "url")
+        if len(urls) != 1 or urls[0] not in source["urls"]:
+            errors.append(f"{source['id']}: CFF source version is absent from registry")
+    for route in ("docs/PRIOR_ART.md", "docs/research-commons/SOURCE_ATTRIBUTIONS.md"):
+        if route not in top_level_values(cff, "message")[0]:
+            errors.append(f"CFF message lost attribution route {route}")
+    return errors
+
+
 def main() -> int:
     claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
     release = claims["release"]
@@ -95,6 +131,20 @@ def main() -> int:
         not citation_identity_errors(cff, release),
         "canonical CITATION.cff identity contract failed",
     )
+
+    registry = json.loads((ROOT / "docs/research-commons/source-attributions.json").read_text())
+    require(not citation_attribution_errors(cff, registry), "CFF/source-credit agreement failed")
+    # A valid YAML/CFF record can still misattribute a source or drift to another version.
+    for old, replacement in (
+        ('given-names: "Han"', 'given-names: "Wrong"'),
+        ('title: "Sparse Polynomial-Weighted Expansions"', 'title: "Old title"'),
+        ('url: "https://arxiv.org/abs/2606.24972v4"', 'url: "https://arxiv.org/abs/2606.24972v99"'),
+        ('#source-source-f4ad17717c8fd4', '#source-unknown-source'),
+        ('docs/PRIOR_ART.md and ', ''),
+    ):
+        require(old in cff, f"fixture target missing: {old}")
+        require(bool(citation_attribution_errors(cff.replace(old, replacement, 1), registry)),
+                f"attribution drift fixture was not rejected: {old}")
 
     wrong_repository = cff.replace(
         str(release["repository"]),
@@ -165,7 +215,7 @@ def main() -> int:
     print(
         "test_citation_identity_contract: citation metadata retains the exact "
         "repository, tag, paper route, and open boundary; "
-        "6 negative fixtures rejected"
+        "11 identity and attribution negative fixtures rejected"
     )
     return 0
 
