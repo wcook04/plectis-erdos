@@ -359,7 +359,7 @@ Across dyadic lengths satisfying $`d\le L2^j`$, the reciprocal-length errors sum
  \le\frac{LB^L}{d(B^L-1)}
  \le\frac{2L}{d(B-1)}.
 ```
-Summing the main terms and these two error budgets proves <a href="#eq:257-mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:257-mixed-finite-kernel">[eq:257-mixed-finite-kernel]</a>. The complete-cycle mass $`1/(B-1)`$, the bound $`g/(B^g-1)\le1/(B-1)`$ used for complete cycles, and the no-wrap inequality $`\sum_{i<d}B^i\ge dB^{(d-1)/2}`$ are ordinary in this note; `PaperCompleteR7/CoverKernel.lean` is not in this checkout. Nonnegative interchange permits summation against any coefficients $`c_d`$ with $`\sum_dc_d/d<\infty`$.
+Summing the main terms and these two error budgets proves <a href="#eq:257-mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:257-mixed-finite-kernel">[eq:257-mixed-finite-kernel]</a>. The release snapshot contains a proof body for the full estimate in [*DyadicKernel*, `dyadicMean_kernelWeight_le`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean#L207). Its complete-cycle and no-wrap scalar ingredients are in [*CoverKernel*](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L130). These are source locators, not a fresh compilation or axiom-audit receipt; the argument displayed here is an ordinary proof. Nonnegative interchange permits summation against any coefficients $`c_d`$ with $`\sum_dc_d/d<\infty`$.
 
 <a id="positive-fractional-divisor-covers"></a>
 
@@ -405,7 +405,7 @@ This is possible since $`\varepsilon^{-\alpha_j}\le\max(1,\varepsilon^{-1})`$. C
 ``` math
 0<\Delta_{2,A}(N)\le\sum_{j>J}U_j(N)\le\varepsilon.
 ```
-The fixed rational lattice excludes rationality at base two. For every $`b\ge2`$, the elementary atom inequality $`(b^r-1)/(b^d-1)\le2(2^r-1)/(2^d-1)`$ for $`0\le r<d`$ gives the same conclusion at base $`b`$; that inequality is ordinary in this note (`CoverKernel.lean` is absent). Any prescribed positive divisor can be included in $`L`$, so the witnesses can also be required to be arbitrarily large. ◻
+The fixed rational lattice excludes rationality at base two. For every $`b\ge2`$, the elementary atom inequality $`(b^r-1)/(b^d-1)\le2(2^r-1)/(2^d-1)`$ for $`0\le r<d`$ gives the same conclusion at base $`b`$; that inequality is an ordinary proof step here, with a corresponding source body in [*CoverKernel*, `atom_base_transfer`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L232). This locator is not a fresh Lean verification. Any prescribed positive divisor can be included in $`L`$, so the witnesses can also be required to be arbitrarily large. ◻
 
 </div>
 
@@ -452,7 +452,7 @@ Overlaps between the supports only improve the inequality. Infinitude of $`A`$ m
 
 </div>
 
-The analytic estimates and their synchronisation are ordinary proofs. No Lean declaration in this checkout is offered as their complete proof. This theorem does not establish strict enlargement over both individual classes; the short note keeps the proposed separation hosts unassessed. It also leaves universal irrationality and the quantitative and prime-power thinning claims open here. <span class="sans-serif">\[Math\]</span>
+The analytic estimates and their synchronisation are ordinary proofs. The release snapshot contains end-to-end bodies for the strengthened cover conclusion in [*PositiveCoverReturn*](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241) and for the weighted and mixed conclusions in [*WeightedReturn*](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L98). This identifies conclusion-level formal support, not a fresh build or a certification of every step of the prose sampling schedule. The arbitrary-positive-weight variant is an ordinary deduction here. This theorem does not establish strict enlargement over both individual classes. The weighted non-cover host has a separate source body in [*AnalyticSeparationReturn*](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L16); the proposed cover-only host is not established here. It also leaves universal irrationality and the quantitative and prime-power thinning claims open here. <span class="sans-serif">\[Math\]</span>
 
 With arbitrary positive cover weights, the class of subsets of such mixed hosts is closed under finite unions and finite changes. For weighted supports use the union of the two finite prime sets: the prime part grows and $`h/(2^h-1)`$ decreases. For two covers, interleave their frames with weights $`\eta_j/2`$ and $`\theta_j/2`$; the total cost grows by at most two, since $`2^{\alpha_j}\le2`$. Subsets inherit the same hosts, and finite sets have finite weighted mass. This argument uses the positive-weight variant; it does not silently reindex the dyadic weights in <a href="#eq:257-strengthened-cover" data-reference-type="eqref" data-reference="eq:257-strengthened-cover">[eq:257-strengthened-cover]</a>. Countable unions require a tail budget. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$.
 
@@ -4393,6 +4393,230 @@ None of the following is offered as a plan of attack, and none is close. Each is
 
 Erdős \#257 is open in the universal form (O1$`{}={}`$U257), and both rational membership targets $`1/2`$ (O2) and $`1/21`$ (O2b) remain open. Every route surveyed above either (a) is proved equivalent to O2, including O3 by Proposition <a href="#prop:collapsed-list" data-reference-type="ref" data-reference="prop:collapsed-list">18</a>(c), and therefore offers no logical reduction, (b) is a sufficient condition not known to be equivalent (O4, O5, O3-supply) whose own supply is unproved at cofinal scale, (c) is the rejected certificate strengthening $`\mathrm{O1'}`$, already false on squarefree support, or (d) is certified only on a finite initial segment, however large a margin that segment exhibits. Nothing in this paper closes any of these gaps, and no claim above should be read as progress toward doing so.
 
+<a id="sec:257-logarithmic-sampling"></a>
+
+### Logarithmic cost under arithmetic sampling
+
+Positive fractional covers retain their geometric-kernel estimate, but their optimised cost cannot be bounded uniformly by a positive logarithmic divisor cost. The obstruction occurs on complete arithmetic periods, rather than only in incomplete-period errors. We give the construction and the surviving initial-interval estimate here; the short note records their consequences beside its cube-family calculation.
+
+The proofs in this section are ordinary arguments from the 17 September research note \[endpoint2026, Theorem 1, Corollary 3 and Proposition 4\]. They have not had independent review or a fresh Lean verification. For the underlying Lambert subseries, Kovač–Tao treat the same fixed-base object in \[kovactao, Section 2.1.2 and Remark 4.1\]; their strict-tail argument gives distinct support coding and Cantor topology. Van Doorn–Kovač distinguish finite reciprocal sums from achievement sets and prove an interval-representation threshold in a different, freely chosen lacunary-denominator setting \[vandoornkovac, Theorem 1, Lemma 4 and Corollary 5\]. Those results provide context, not an arithmetic logarithmic estimate or a solution of fixed-base rational membership. The proof dependencies below are positive divisor majorisation, elementary prime selection, the Chinese remainder theorem, and the original kernel estimate <a href="#eq:257-mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:257-mixed-finite-kernel">[eq:257-mixed-finite-kernel]</a>. The short note’s logarithmic lower bound and cube-family calculation concern the same fractional-cover cost; their structured upper bound is not a uniform logarithmic converse.
+
+<a id="the-two-finite-costs"></a>
+
+#### The two finite costs
+
+Let $`F`$ be a finite nonempty subset of $`\mathbb N_{>0}`$, and write
+``` math
+Q=\operatorname{lcm}(F),\qquad f_F(n)=\#\{a\in F:a\mid n\},\qquad
+ U_F(N)=\sum_{r\ge1}2^{-r}f_F(N+r)
+       =\sum_{a\in F}\frac{2^{N\bmod a}}{2^a-1}.
+```
+For $`0<t\le1`$ define, with natural logarithms,
+``` math
+\begin{equation}
+ \kappa_1(F;t)=\min\left\{\sum_{d\mid Q}\frac{c_d}{d}:
+ c_d\ge0,\quad
+ \log(1+f_F(s)/t)\le\sum_{d\mid s}c_d\quad(s\mid Q)\right\}.
+ \label{eq:257-logarithmic-cost}
+\end{equation}
+```
+The constraints also hold at every positive integer $`n`$, by replacing $`n`$ with $`\gcd(n,Q)`$. The programme is finite and feasible; a bounded cost sublevel bounds each coefficient, so its minimum is attained. For $`L\ge1`$, let $`\mathbb P_L`$ be uniform sampling of $`N=Lm`$ over a period of $`U_F(Lm)`$, for which $`Q/\gcd(Q,L)`$ is a permissible length. This notation does not assert that the displayed period is least.
+
+We use $`K_*(F)`$ for the infimum of the existing fractional-cover cost
+``` math
+\begin{equation}
+ K=\sum_j\frac{C_j\eta_j^{-\alpha_j}}{2^{\alpha_j}-1},\qquad
+ C_j=\sum_{d\ge1}\frac{c_{j,d}}d,
+ \label{eq:257-optimised-cover-cost}
+\end{equation}
+```
+over finite or countable families of finite positive frames $`F_j`$ covering $`F`$, exponents $`0<\alpha_j\le1`$, weights $`\eta_j>0`$ with $`\sum_j\eta_j=1`$, and coefficients $`c_{j,d}\ge0`$ satisfying $`f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d}`$ for every $`n\ge1`$. The frames need not be disjoint or contained in $`F`$. Covers of infinite cost do not lower the infimum, and a finite-cost cover exists, for example one frame $`F`$ with exponent one. This is the manuscript’s fractional cost, not a redefinition of the logarithmic cost.
+
+<div id="thm:257-logarithmic-counterexample" class="thm">
+
+**Theorem 285** (arithmetic logarithmic counterexample). *For every integer $`H\ge2`$ and every real $`A_0\ge0`$, there are a squarefree positive integer $`L`$ and a finite nonempty set $`F`$ of distinct squarefree positive integers such that
+``` math
+\min F>\max\{L,A_0\},\qquad
+ \kappa_1(F;1)\le\frac{30\log2}{H},\qquad
+ \mathbb P_L(U_F>1)\ge1-e^{-1}.
+```
+For these $`F,L`$, some $`R\ge0`$ satisfies $`\mathscr D_{L;R,L}\mathbf1_{\{U_F>1\}}>1/2`$. Consequently, no absolute constant $`C`$ satisfies
+``` math
+\begin{equation*}
+ \mathscr D_{L;R,M}\mathbf1_{\{U_F>t\}}
+ \le C(1+L/M)\kappa_1(F;t)
+ \tag{E}
+\end{equation*}
+```
+uniformly in finite $`F`$, positive integers $`L,M`$, integers $`R\ge0`$, and $`0<t\le1`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The modulus makes many small divisor conditions automatic. Fresh tag primes then make the remaining incidences independent, and taking all least common multiples turns their number into an exponential incidence. A logarithm pays only for the individual tags, while the shifted potential can exceed one at many different offsets.
+
+Choose a finite set of primes $`P`$ such that, with
+``` math
+L=\prod_{p\in P}p,\qquad D=\tau(L),\qquad
+ B=\prod_{p\in P}(1+1/p),
+```
+we have $`B\ge H^2`$. Such a set exists because the sum of reciprocal primes diverges and $`\log(1+1/p)\ge1/(2p)`$. Here $`\tau`$ counts positive divisors and $`\sigma`$ denotes their sum. Complementary divisors satisfy
+``` math
+\frac{\sigma(r)}r\,
+ \frac{\sigma(L/r)}{L/r}=B\qquad(r\mid L).
+```
+Thus the set $`G=\{r\mid L:\sigma(r)/r\ge H\}`$ has at least $`D/2`$ elements. Also $`D\ge B\ge H^2`$.
+
+Choose a finite set $`\mathcal B`$ of parent primes, all exceeding $`\max\{L,H,D,A_0\}`$, with
+``` math
+\frac4D\le\sum_{q\in\mathcal B}\frac1q\le\frac5D.
+```
+Divergence of the prime reciprocal sum after any finite cutoff permits stopping at the first crossing of $`4/D`$; the overshoot is less than $`1/D`$. For each $`q\in\mathcal B`$ and $`d\mid L`$, choose a finite set $`T_{q,d}`$ of tag primes, all greater than $`H`$, disjoint from $`P`$, from $`\mathcal B`$, and from every other tag set, such that
+``` math
+\frac{4d}{H}\le S_{q,d}:=\sum_{p\in T_{q,d}}\frac1p\le\frac{5d}{H}.
+```
+The same stopping argument works successively: each new reciprocal is less than $`1/H\le d/H`$, and only finitely many primes have been excluded. No bound on the size of these prime sets is needed.
+
+Let $`\mathcal I_q=\{(d,p):d\mid L,\ p\in T_{q,d}\}`$, and define
+``` math
+F_q=\left\{q\operatorname{lcm}\{dp:(d,p)\in I\}:
+                         I\subseteq\mathcal I_q\right\},
+ \qquad F=\bigcup_{q\in\mathcal B}F_q,
+```
+where the least common multiple of the empty set is one. Every tag prime occurs in just one labelled pair. Its presence in the least common multiple therefore recovers whether that pair was selected. Hence different subsets give distinct exponents. All exponents are squarefree; different parent primes give disjoint frames, since no parent prime occurs in any other frame. Their minimum is greater than $`\max\{L,A_0\}`$. The nonempty tag sets with $`d=L`$ also show $`L\mid Q`$.
+
+For an integer $`n\ge1`$ put $`Z_q(n)=\sum_{(d,p)\in\mathcal I_q}\mathbf1_{\{dp\mid n\}}`$. The least-common-multiple encoding gives the exact identity
+``` math
+f_{F_q}(n)=\mathbf1_{\{q\mid n\}}2^{Z_q(n)}.
+```
+Indeed, when $`q\mid n`$, a selected least common multiple divides $`n`$ exactly when every selected pair does. Consequently
+``` math
+\log(1+f_{F_q}(n))
+ \le(\log2)\left(\mathbf1_{\{q\mid n\}}
+          +\sum_{(d,p)\in\mathcal I_q}\mathbf1_{\{qdp\mid n\}}\right).
+```
+All moduli in this majorant divide $`\operatorname{lcm}(F_q)`$. Its cost is at most
+``` math
+\begin{equation}
+ \frac{\log2}{q}\left(1+\sum_{d\mid L}\frac{S_{q,d}}d\right)
+ \le\frac{\log2}{q}(1+5D/H).
+ \label{eq:257-parent-log-cost}
+\end{equation}
+```
+
+Now sample $`N`$ uniformly modulo $`Q`$, subject to $`L\mid N`$. For $`r\in G`$, the event $`q\mid N+r`$ has probability $`1/q`$. For a fixed parent these events are disjoint as $`1\le r\le L<q`$. Conditional on one such event, the tag-prime events remain independent by the Chinese remainder theorem. Since $`d\mid N+r`$ is equivalent to $`d\mid r`$, the mean of $`Z_q(N+r)`$ is
+``` math
+\mu_r=\sum_{d\mid r}S_{q,d}
+ \ge\frac4H\sigma(r)\ge4r,
+```
+and its variance is at most $`\mu_r`$. Chebyshev’s inequality gives
+``` math
+\mathbb P_L\bigl(Z_q(N+r)<r\mid q\mid N+r\bigr)
+ \le\frac{\mu_r}{(\mu_r-r)^2}
+ \le\frac4{9r}\le\frac49.
+```
+Thus success has conditional probability at least $`1/2`$. On success the $`r`$th term of $`U_{F_q}(N)`$ is at least $`2^{-r}2^r=1`$. Later positive terms, for example those supplied by the exponent $`q\in F_q`$, make $`U_{F_q}(N)>1`$ strictly. The event $`E_q`$ of success for some $`r\in G`$ consequently satisfies
+``` math
+\mathbb P_L(E_q)\ge\frac{|G|}{2q}\ge\frac{D}{4q}.
+```
+Different parent groups depend on disjoint prime coordinates, so the $`E_q`$ are independent under this conditional uniform measure. It follows that
+``` math
+\mathbb P_L(U_F>1)\ge
+ 1-\prod_{q\in\mathcal B}(1-\mathbb P_L(E_q))
+ \ge1-\exp\left(-\frac D4\sum_{q\in\mathcal B}\frac1q\right)
+ \ge1-e^{-1}.
+```
+Since $`f_F=\sum_qf_{F_q}`$ and $`\log(1+\sum_qx_q)\le\sum_q\log(1+x_q)`$ for $`x_q\ge0`$, we may sum the positive majorants in <a href="#eq:257-parent-log-cost" data-reference-type="eqref" data-reference="eq:257-parent-log-cost">[eq:257-parent-log-cost]</a>:
+``` math
+\kappa_1(F;1)\le\frac{5\log2}{D}(1+5D/H)
+ \le\frac{30\log2}{H}.
+```
+
+Since $`L\mid Q`$, write $`P_0=Q/L`$ and $`p=\mathbb P_L(U_F>1)`$. The bounded periodic sequence $`\mathbf1_{\{U_F(Lm)>1\}}`$ satisfies, for every integer $`T\ge1`$,
+``` math
+\left|\frac1T\sum_{m=1}^{T}\mathbf1_{\{U_F(Lm)>1\}}-p\right|
+ \le\frac{P_0}{T}.
+```
+Summing over the dyadic window gives
+``` math
+\left|\mathscr D_{L;R,M}\mathbf1_{\{U_F>1\}}-p\right|
+ \le\frac{2P_0}{M2^R}.
+```
+Take $`M=L`$ and $`2^R\ge16P_0`$. The error is at most $`1/8`$, whereas $`p\ge1-e^{-1}>5/8`$, so the mean exceeds $`1/2`$. A putative bound (E) would instead give at most $`60C\log2/H`$. Choosing an integer $`H>120C\log2`$ contradicts it. ◻
+
+</div>
+
+<a id="the-arithmetic-lower-bound-for-every-fractional-cover"></a>
+
+#### The arithmetic lower bound for every fractional cover
+
+<div id="cor:257-logarithmic-separation" class="cor">
+
+**Corollary 286** (finite-functional separation). *For every finite nonempty $`F`$, with $`Q=\operatorname{lcm}(F)`$,
+``` math
+\begin{equation}
+ K_*(F)\ge\max_{\ell\mid Q}
+   \mathbb P\bigl(U_F(N)>1\mid\ell\mid N\bigr),
+ \label{eq:257-arithmetic-cover-lower}
+\end{equation}
+```
+where $`N`$ is uniform modulo $`Q`$. The supports of Theorem <a href="#thm:257-logarithmic-counterexample" data-reference-type="ref" data-reference="thm:257-logarithmic-counterexample">285</a> satisfy $`K_*(F)\ge1-e^{-1}`$ and $`\kappa_1(F;1)\le30\log2/H`$. In particular, no absolute $`C`$ gives $`K_*(F)\le C\kappa_1(F;1)`$ for all finite nonempty $`F`$, even after all frames, exponents, coefficients and positive weights have been optimised.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Fix one finite-cost cover in <a href="#eq:257-optimised-cover-cost" data-reference-type="eqref" data-reference="eq:257-optimised-cover-cost">[eq:257-optimised-cover-cost]</a>, and write $`U_j=U_{F_j}`$ and $`B_j=2^{\alpha_j}`$. Coverage gives $`U_F\le\sum_jU_j`$. If $`U_F>1`$, then $`U_j>\eta_j`$ for at least one index. Subadditivity and the divisor majorants therefore give the pointwise estimate
+``` math
+\mathbf1_{\{U_F>1\}}
+ \le\sum_j\eta_j^{-\alpha_j}U_j^{\alpha_j}
+ \le\sum_{j,d}\eta_j^{-\alpha_j}c_{j,d}w_{B_j,d}.
+```
+Nonnegative interchange and the original geometric-kernel estimate <a href="#eq:257-mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:257-mixed-finite-kernel">[eq:257-mixed-finite-kernel]</a>, with its factor $`1+4L/M`$, imply
+``` math
+\mathscr D_{L;R,M}\mathbf1_{\{U_F>1\}}\le(1+4L/M)K.
+```
+For fixed $`L,M`$, let $`R`$ tend to infinity. Periodicity of the left-hand indicator gives $`\mathbb P_L(U_F>1)\le(1+4L/M)K`$. Then let $`M`$ tend to infinity, with $`L`$ fixed, to obtain $`\mathbb P_L(U_F>1)\le K`$. For $`L=\ell\mid Q`$ this is the conditional probability in the statement. It holds for every admissible cover, so take their infimum and the maximum over the finitely many divisors $`\ell`$. Finally use the constructed $`L\mid Q`$ and let $`H`$ tend to infinity. ◻
+
+</div>
+
+<a id="what-survives-without-arithmetic-restriction"></a>
+
+#### What survives without arithmetic restriction
+
+<div id="prop:257-logarithmic-initial-interval" class="prop">
+
+**Proposition 287** (ordinary initial intervals). *For every finite nonempty $`F`$, integer $`X\ge1`$, and $`0<t\le1`$,
+``` math
+\frac1X\#\{1\le N\le X:U_F(N)>t\}
+ \le\frac{2}{\log(4/3)}\kappa_1(F;t).
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Choose a positive logarithmic divisor majorant $`g(n)=\sum_{d\mid n}c_d`$ of cost $`K=\sum_{d\mid Q}c_d/d`$, putting $`c_d=0`$ when $`d\nmid Q`$, and let $`a=\log(4/3)`$. For positive integers $`n,Y`$,
+``` math
+g(n)\le Kn,\qquad
+ \sum_{n=1}^{Y}g(n)=\sum_{d\mid Q}c_d\lfloor Y/d\rfloor\le KY.
+```
+If $`U_F(N)>t`$, there is an $`r\ge1`$ with $`\log(1+f_F(N+r)/t)>ar`$. Otherwise every $`f_F(N+r)/t\le(4/3)^r-1`$, and
+``` math
+\frac{U_F(N)}t\le\sum_{r\ge1}2^{-r}\bigl((4/3)^r-1\bigr)=1,
+```
+a contradiction. If $`K\ge a/2`$ the required counting bound is trivial. For $`K<a/2`$, a witnessing integer $`n=N+r`$ satisfies $`a(n-N)<g(n)\le Kn`$, whence $`n<aN/(a-K)\le2X`$ when $`N\le X`$. A fixed $`n`$ can witness fewer than or equal to $`g(n)/a`$ integer values of $`N`$, since $`1\le n-N<g(n)/a`$. The union bound thus gives
+``` math
+\#\{1\le N\le X:U_F(N)>t\}
+ \le\frac1a\sum_{n=1}^{2X}g(n)\le\frac{2KX}{a}.
+```
+Take the infimum over the admissible majorants. ◻
+
+</div>
+
+The proposition also bounds every $`L=1`$ dyadic observation window, since such a window averages ordinary initial-interval means. It does not bound conditional arithmetic sampling uniformly in $`L`$. Freezing a finite initial support in the irrationality argument requires exactly that arithmetic restriction. The proposed logarithmic-tail irrationality corollary therefore loses this proof; its conclusion is not disproved. The corollary above separates finite functionals, not infinite-support irrationality classes. The weighted, fractional-cover, mixed and finite-period noncollapse results are unchanged. No conclusion here decides universal \#257 or membership of $`1/2`$ or $`1/21`$.
+
 <a id="two-proof-details-and-source-comparators"></a>
 
 ### Two proof details and source comparators
@@ -4445,5 +4669,7 @@ W. Van Assche, *Little $`q`$-Legendre polynomials and irrationality of certain 
 H. Hornich, *Über beliebige Teilsummen absolut konvergenter Reihen*, Monatshefte für Mathematik und Physik **49** (1941), 316–320. [doi:10.1007/BF01707309](https://doi.org/10.1007/BF01707309).
 
 S. Głąb and F. Prus-Wiśniowski, *Achievement sets – current results and open problems*, arXiv:2512.17285v1 (2025), preprint. <https://arxiv.org/abs/2512.17285v1>.
+
+V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. 175 (2025), no. 2, 572–608, [DOI](https://doi.org/10.1007/s10474-025-01528-0). Page numbers refer to arXiv:2406.17593v4. Remark 4.1 (p. 13) records the strict tail inequality and the Cantor structure. Theorem 2.3 (p. 5; proof pp. 13–14) constructs rational merged sums from several bases under its mass hypothesis; the construction merges several bases and leaves fixed-base \#257 untouched. *The logarithmic endpoint fails under arithmetic sampling*, AI-assisted ordinary proof note, 17 September 2026. Theorem 1, Corollary 3 and Proposition 4. Unpublished working note; independent review and fresh Lean verification are outstanding. W. van Doorn and V. Kovač, *Lacunary sequences whose reciprocal sums represent all rational numbers in an interval*, arXiv:2509.24971v3 (3 December 2025). <https://arxiv.org/abs/2509.24971v3>. Theorem 1 is on p. 2; Lemma 4 and Corollary 5 are on pp. 5–7.
 
 </div>
