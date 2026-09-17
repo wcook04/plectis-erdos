@@ -10681,14 +10681,15 @@
     {
       "id": "source-f4ad17717c8fd4",
       "kind": "literature",
-      "title": "Positive dyadic density for rational weighted binary expansions",
+      "title": "Sparse Polynomial-Weighted Expansions",
       "authors": [
-        "H. Wang"
+        "Han Wang"
       ],
       "publication_years": [
         "2026"
       ],
       "urls": [
+        "https://arxiv.org/abs/2606.24972v4",
         "https://arxiv.org/abs/2606.24972v2",
         "https://doi.org/10.48550/arXiv.2606.24972"
       ],
@@ -10698,7 +10699,7 @@
       ],
       "source_locators": [
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- Printed p. 1 gives the title, sole author “HAN WANG”, arXiv version/date,",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 29,
@@ -10706,7 +10707,7 @@
           "excerpt_sha256": "sha256:c515ef79f43cdfb0f3da8240fc8ba95fe0580e27c2bd76e1d65072b4cc941a06"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "consequence of this source's theorem, not as a result about Erdős #249 or",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 32,
@@ -10714,7 +10715,7 @@
           "excerpt_sha256": "sha256:80555ab9c37f07e655189474548bcbc2f815d12cbbeff3b1f87dd95965721ae4"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- Printed p. 2, Theorem 1.1 (“Polynomial-window density”), states that for an",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 34,
@@ -10722,7 +10723,7 @@
           "excerpt_sha256": "sha256:c1fd41d44f743518fbbeadecc6f28cab21877371abd6508f9bfe20c0c8e3aa32"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- Printed p. 3, Corollary 1.2 (“Density and gaps”), states the positive lower",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 39,
@@ -10730,7 +10731,7 @@
           "excerpt_sha256": "sha256:ebdf7c95716e38720c0aba7fae7086f19fd6ae9c301dc93b8a2e9612c9cb311d"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "sparse-support consequence. Printed p. 3, Lemma 2.1 (“Carries and gaps”),",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 41,
@@ -10738,7 +10739,7 @@
           "excerpt_sha256": "sha256:80cf4481c41463201ba2f39c27cfdd98fb0a0b33dfd124105282641d48cdb7d1"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- Printed p. 5, Lemma 2.4 (“Polynomial locking”), gives the rational polynomial",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 45,
@@ -10746,7 +10747,7 @@
           "excerpt_sha256": "sha256:d5cda822f4c8fb407203c2130e22d5c462a04c5ea043192e02df58615371d0bf"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "Printed p. 5, its proof records the determinant/divisibility step used to",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 47,
@@ -10754,7 +10755,7 @@
           "excerpt_sha256": "sha256:bb528fdd3e855a89dcf0e063a97059a9b22125826db1a74c33ac0a9c098762e4"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- Printed p. 6, equation (7), gives the normalized leading-coefficient map",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 49,
@@ -10762,7 +10763,7 @@
           "excerpt_sha256": "sha256:1e5cc830a2970135edfce7f09b17880a932734d13aa8ea90eb0546f377002293"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "`mu -> b^g mu - 1`; Lemma 2.5 gives the interior/exterior dichotomy and the",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 50,
@@ -10770,7 +10771,7 @@
           "excerpt_sha256": "sha256:1a0a61e95567cf3333d254118de132925e7386efbb9502358ef6c2be9231b3af"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "at-most-one interior successor-gap statement. Printed p. 6, Proposition 3.1",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 51,
@@ -10778,7 +10779,7 @@
           "excerpt_sha256": "sha256:6f77932eabfd6342bc0202dc7836555c75ef93d011025553312caa86a0929877"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- Printed p. 10, the proof of Theorem 1.1 combines the preceding estimates and",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 53,
@@ -10786,7 +10787,7 @@
           "excerpt_sha256": "sha256:b9c8fbd4ccc5a930d0b13efc3a1a3a7326499745a0ae2a7e66279c8f79e7eab8"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "lines 162–183 contain the source theorem corresponding to printed p. 2,",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 58,
@@ -10794,7 +10795,7 @@
           "excerpt_sha256": "sha256:2bd514c84b4488a822eca075a0f3a6642309a1e0830136be93510ce4da8e58a8"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- The printed p. 1 classification and keywords identify the source as Erdős",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 79,
@@ -10802,7 +10803,7 @@
           "excerpt_sha256": "sha256:363808afbbb557a97268d8e33e10a132d61307cf77627409a223921e3628197f"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "#249 or #257 as a target. The printed p. 2 Theorem 1.1 is conditional on",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 81,
@@ -10810,7 +10811,7 @@
           "excerpt_sha256": "sha256:7cdf6d51c5383b38820996185a38fb86982c78740ef1f89ec999de2b077c7eff"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- Printed p. 3, Corollary 1.2 records the source's binary-linear consequence",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 84,
@@ -10818,7 +10819,7 @@
           "excerpt_sha256": "sha256:a1c77e53821a0ed25ac8ac586429c2ed656dd0ed7859aa6660d6847872fe61a0"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "series of #249 or all infinite-support subseries of #257. Printed pp. 5–10",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 86,
@@ -10826,7 +10827,7 @@
           "excerpt_sha256": "sha256:de9b1fd9ac96e267a85d9eb7447e888e80dc6e946219a22bd2edfa2fc462817c"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "theorem to those problems.",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 88,
@@ -10834,7 +10835,7 @@
           "excerpt_sha256": "sha256:812de30a47c2e449e79332ba70f0066810240531a68cddbdbe012141710e54ef"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "- The source's final disclosure on printed p. 10 describes AI assistance and",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 89,
@@ -10842,7 +10843,7 @@
           "excerpt_sha256": "sha256:15d48eb5d9b03f08e9a34695e2b94993f0bccfd77a441204abd1f6ddaac98e4f"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "a formalisation commit for this source's theorem. It contains no peer-review,",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 90,
@@ -10850,7 +10851,7 @@
           "excerpt_sha256": "sha256:7658785df2f54845c0b213205a5d13864c28be0f4a49acd30ac7995ed8de1dda"
         },
         {
-          "url": "https://arxiv.org/abs/2606.24972v2",
+          "url": "https://arxiv.org/abs/2606.24972v4",
           "locator": "boundary, not unresolved implications of its theorem.",
           "evidence_path": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
           "line_start": 93,
@@ -10867,7 +10868,7 @@
           "excerpt_sha256": "sha256:4caf7a23e043524edc0b28f6c56ff51ffc65fbd8e9bcea766fda7d8bd0b07263"
         }
       ],
-      "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
+      "relation": "The archival joint manuscript cites an earlier version under the title Positive dyadic density for rational weighted binary expansions. The tracked source closure verifies version 4, Sparse Polynomial-Weighted Expansions, by Han Wang alone; its polynomial-weighted expansion theorem is not a result about Erdős #249 or #257.",
       "verification_state": "existing_source_closure",
       "bibliography_keys": [
         {
@@ -14274,8 +14275,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 259,
-          "line_end": 263,
+          "line_start": 262,
+          "line_end": 266,
           "excerpt_sha256": "sha256:eaf3b2d51c02f396311adf2ef91d0f021cca117e79f8f4b020ac851aa8ba0289"
         },
         {
@@ -14446,8 +14447,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 267,
-          "line_end": 271,
+          "line_start": 270,
+          "line_end": 274,
           "excerpt_sha256": "sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a"
         },
         {
@@ -14524,8 +14525,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 143,
-          "line_end": 147,
+          "line_start": 146,
+          "line_end": 150,
           "excerpt_sha256": "sha256:badb6c16b351f142047e83c1c8631e63319c82edabf1973f16a616deead6f4d6"
         },
         {
@@ -14674,8 +14675,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 311,
-          "line_end": 327,
+          "line_start": 314,
+          "line_end": 330,
           "excerpt_sha256": "sha256:f4d1278504a386c4d49236ab4efd039ef5ddd233f5bae878c29728b527bd5417"
         }
       ],
@@ -14803,8 +14804,8 @@
       "artifact_links": [
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 73,
-          "line_end": 77,
+          "line_start": 76,
+          "line_end": 80,
           "excerpt_sha256": "sha256:c2864518e4865dd44a4a7f0e412686c80f1580a48114e8077d016e2b7ddcb64b"
         },
         {
@@ -16154,8 +16155,8 @@
         },
         {
           "path": "docs/PRIOR_ART.md",
-          "line_start": 366,
-          "line_end": 370,
+          "line_start": 369,
+          "line_end": 373,
           "excerpt_sha256": "sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e"
         },
         {

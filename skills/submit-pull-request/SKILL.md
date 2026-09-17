@@ -118,3 +118,17 @@ accepted, that a formal statement matches its intended mathematics, that a
 result is novel, or that an Erdős problem has been solved. Maintainer review,
 accepted-receipt creation, public claim changes, Comparator, Palomar, and
 external mathematical acceptance remain separate steps.
+
+## Keep publication and local checkout state distinct
+
+Before publication, run `python3 scripts/check_checkout_sync.py --fetch`.
+Read both directions of divergence: an old feature branch can contain useful
+unmerged work while missing later public papers and fixes. Preserve it in a
+separate worktree; do not use its generated files to overwrite current main.
+Review the PR's exact head and failed checks before attempting reconciliation.
+
+After an authorised merge, fast-forward the canonical local main checkout
+with `python3 scripts/check_checkout_sync.py --sync-main`. Recheck the actual
+remote head and record any remaining feature work separately. A successful
+remote merge is not evidence that a different local checkout was updated.
+Never reset or discard a branch or untracked files to obtain equality.
