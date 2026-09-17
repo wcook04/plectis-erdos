@@ -281,7 +281,7 @@ Across dyadic lengths satisfying $`d\le L2^j`$, the reciprocal-length errors sum
  \le\frac{LB^L}{d(B^L-1)}
  \le\frac{2L}{d(B-1)}.
 ```
-Summing the main terms and these two error budgets proves <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a>. The complete-cycle mass $`1/(B-1)`$, the bound $`g/(B^g-1)\le1/(B-1)`$ used for complete cycles, and the no-wrap inequality $`\sum_{i<d}B^i\ge dB^{(d-1)/2}`$ are ordinary in this note; `PaperCompleteR7/CoverKernel.lean` is not in this checkout. Nonnegative interchange permits summation against any coefficients $`c_d`$ with $`\sum_dc_d/d<\infty`$.
+Summing the main terms and these two error budgets proves <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a>. The release snapshot contains a proof body for the full estimate in [*DyadicKernel*, `dyadicMean_kernelWeight_le`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean#L207). Its complete-cycle and no-wrap scalar ingredients are in [*CoverKernel*](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L130). These are source locators, not a fresh compilation or axiom-audit receipt; the argument displayed here is an ordinary proof. Nonnegative interchange permits summation against any coefficients $`c_d`$ with $`\sum_dc_d/d<\infty`$.
 
 <a id="positive-fractional-divisor-covers"></a>
 
@@ -350,7 +350,7 @@ For every finite $`F`$ covered by the frames,
  \label{eq:cover-log-obstruction}
 \end{equation}
 ```
-Indeed, at a point where $`f_F(n)=t>0`$, some frame has $`f_{F_j}(n)\ge\eta_jt`$. Otherwise summing contradicts coverage. The corresponding weighted majorant is at least $`\Psi(t)`$. Averaging and using $`\lfloor X/d\rfloor/X\le1/d`$ proves the first inequality. Convexity gives $`2^\alpha-1\le\alpha`$, and $`e^u/u\ge e`$ proves the second. Those two scalar steps, and the bound $`t^\alpha/(2^\alpha-1)\ge e\log t`$ at every admissible exponent, are ordinary in this note (`CoverKernel.lean` is absent).
+Indeed, at a point where $`f_F(n)=t>0`$, some frame has $`f_{F_j}(n)\ge\eta_jt`$. Otherwise summing contradicts coverage. The corresponding weighted majorant is at least $`\Psi(t)`$. Averaging and using $`\lfloor X/d\rfloor/X\le1/d`$ proves the first inequality. Convexity gives $`2^\alpha-1\le\alpha`$, and $`e^u/u\ge e`$ proves the second. Those scalar steps have corresponding source bodies in [*CoverKernel*, lines 170–214](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L170), including the bound $`t^\alpha/(2^\alpha-1)\ge e\log t`$. This does not by itself formalise the assembled averaging argument, and no fresh Lean verification is claimed.
 
 This bound survives optimisation over all covers. For $`F(q,P)=\{qd:d\mid\prod_{p\in P}p\}`$, where $`q\ge2`$ and no $`p\in P`$ divides $`q`$, put $`S=\sum_{p\in P}1/p`$. If $`S\ge1`$, the infimum $`K_*`$ over all covers satisfies
 ``` math
@@ -370,7 +370,42 @@ for $`0\le z\le1`$ the claimed lower bound is nonpositive. This proves $`\Psi(2^
 ```
 Thus the optimised cost is asymptotically $`eS/q`$.
 
-An unavailable supplement claims that the weighted class and the strengthened-cover class are incomparable. Its proposed support $`A^\star`$ lies only in the latter. In the reverse direction, it proposes disjoint prime blocks with reciprocal mass of order $`2^k`$, placed in frames $`\{2^kd:d\mid M_k\}`$, to give a support $`A_W`$ satisfying <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a> whose first logarithmic moments diverge; then <a href="#eq:cover-log-obstruction" data-reference-type="eqref" data-reference="eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> would exclude every strengthened cover. The exact constructions are referred to *First Logarithmic Moment of Positive Covers*, which is not in this checkout, so this incomparability is not a result of the present release.
+<a id="arithmetic-sampling-and-logarithmic-cost."></a>
+
+#### Arithmetic sampling and logarithmic cost.
+
+The cube-family upper bound is specific to that family. To state the limitation, let $`F`$ be finite and nonempty, put $`Q=\operatorname{lcm}(F)`$, and use natural logarithms to define
+``` math
+\kappa_1(F;t)=\min\left\{\sum_{d\mid Q}\frac{c_d}{d}:c_d\ge0,\quad
+ \log(1+f_F(s)/t)\le\sum_{d\mid s}c_d\quad(s\mid Q)\right\},
+ \qquad 0<t\le1.
+```
+Write $`U_F(N)=\sum_{r\ge1}2^{-r}f_F(N+r)`$ and let $`\mathbb P_L`$ be uniform sampling of $`N=Lm`$ over a complete period. Here $`K_*(F)`$ is the infimum of the cost $`K`$ above over all finite or countable fractional covers of $`F`$, including the choice of frames, exponents and positive weights. The arithmetic form of the cover lower bound is
+``` math
+K_*(F)\ge\max_{\ell\mid Q}
+     \mathbb P\bigl(U_F(N)>1\mid\ell\mid N\bigr),
+```
+with $`N`$ uniform modulo $`Q`$. Indeed, every cover gives $`\mathbf1_{\{U_F>1\}}\le\sum_{j,d}\eta_j^{-\alpha_j}c_{j,d}w_{2^{\alpha_j},d}`$. Apply <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a>, first let $`R\to\infty`$ with $`L,M`$ fixed, then let $`M\to\infty`$, and finally take the infimum over covers.
+
+For every integer $`H\ge2`$ and cutoff $`A_0\ge0`$, there are a squarefree $`L`$ and a finite nonempty set $`F`$ of distinct squarefree exponents with
+``` math
+\min F>\max\{L,A_0\},\qquad
+ \kappa_1(F;1)\le\frac{30\log2}{H},\qquad
+ \mathbb P_L(U_F>1)\ge1-e^{-1}.
+```
+For these examples $`L\mid Q`$, so $`K_*(F)\ge1-e^{-1}`$. Parent primes and disjoint tag primes encode all subsets by least common multiples; on multiples of $`L`$ many divisor conditions become automatic, while the remaining tag events are independent. Their incidence is exponential in the number of successful tags, although its logarithmic majorant pays only linearly. Complete-period approximation then gives $`\mathscr D_{L;R,L}\mathbf1_{\{U_F>1\}}>1/2`$ for sufficiently large $`R`$. Thus neither $`K_*(F)\le C\kappa_1(F;1)`$ nor $`\mathscr D_{L;R,M}\mathbf1_{\{U_F>t\}}\le C(1+L/M)\kappa_1(F;t)`$ holds with an absolute $`C`$.
+
+Ordinary initial intervals nevertheless satisfy
+``` math
+\frac1X\#\{1\le N\le X:U_F(N)>t\}
+ \le\frac{2}{\log(4/3)}\kappa_1(F;t)
+ \qquad(X\ge1,\ 0<t\le1).
+```
+The complete construction and proofs are in the companion record, Section *Logarithmic cost under arithmetic sampling*, and \[endpoint2026, Theorem 1, Corollary 3 and Proposition 4\]. These are ordinary arguments, without independent review or fresh Lean verification. The $`L=1`$ bound cannot replace a uniform arithmetic bound when a finite initial support must be frozen. The finite-functional separation neither refutes <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a> nor compares the infinite-support irrationality classes.
+
+The fixed-base Lambert object and its strict-tail geometry already occur in Kovač–Tao \[kovactao, Section 2.1.2 and Remark 4.1\]. Van Doorn–Kovač’s lacunary reciprocal-sum results concern finite representations in a freely chosen denominator sequence \[vandoornkovac, Theorem 1, Lemma 4 and Corollary 5\]; that distinct setting supplies no fixed-base rational-membership conclusion here.
+
+The proposed cover-only host $`A^\star`$ is not established by the arguments here. In the reverse direction, the release snapshot contains [an end-to-end weighted non-cover host declaration](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L16), with transport to the literal strengthened-cover predicate, rather than only a differently typed logarithmic obstruction. This corrects the source-availability record; it is not a fresh Lean verification or a proof here of two-way incomparability. This infinite-host statement is separate from the finite-functional separation above.
 
 <a id="combining-the-two-support-criteria"></a>
 
@@ -663,13 +698,15 @@ Can the complete final-skip signatures be used to prove $`|E-a_M|\ge\operatornam
 
 </div>
 
-The logarithmic obstruction <a href="#eq:cover-log-obstruction" data-reference-type="eqref" data-reference="eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> is necessary for a finite-cost positive cover. Determining when a converse holds would give an intrinsic description of that sufficient class. The mixed class is a finite-union ideal. Countable gluing needs an explicit tail budget: every prime singleton is admitted, while the full prime support has displacement greater than $`1/3`$ at every positive shift.
+The logarithmic obstruction <a href="#eq:cover-log-obstruction" data-reference-type="eqref" data-reference="eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> remains necessary for a finite-cost positive cover, but there is no uniform finite-functional comparison $`K_*(F)\le C\kappa_1(F;1)`$. This does not identify or compare the corresponding infinite-support irrationality classes. The mixed class is a finite-union ideal. Countable gluing needs an explicit tail budget: every prime singleton is admitted, while the full prime support has displacement greater than $`1/3`$ at every positive shift.
 
 <a id="proof-and-verification-scope"></a>
 
 # Proof and verification scope
 
 The 1968 Erdős full text was not recovered in this pass. The historical attribution is retained from the supplied source trail, and its page references have not been upgraded to a fresh primary-text audit. The original Luca–Tachiya publisher PDFs and Hornich paper were likewise not fully retrieved; the exact statements used were checked in the identified later expositions. The source register records these differences. All proofs asserted in the body are ordinary mathematical arguments. Appendix <a href="#app:sources" data-reference-type="ref" data-reference="app:sources">11</a> maps selected statements to the supplied formal source snapshots. A declaration in a challenge file is not, by itself, a solution proof; the corresponding solution wrapper and its hypotheses must be inspected. Conversely, a missing old filename does not show that a later counterpart is absent. No Lean replay or new axiom audit was run for this revision.
+
+The release snapshot also contains end-to-end bodies for the strengthened cover conclusion in [*PositiveCoverReturn*](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241) and for the weighted and mixed conclusions in [*WeightedReturn*](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L98). The arbitrary-positive-weight variants and the newly added logarithmic counterexample arguments are ordinary deductions here. No independent review of the new arguments or fresh Lean build is asserted.
 
 The periodic support cases are attributed to Luca and Tachiya’s original periodic-sequence paper \[lucatachiya2014periodic\]; the precise statement used here was checked in their own later account \[lucatachiya2017, Theorem A and Example 2, pp. 139–140\]. The *Formal Conjectures* record \[formalconjectures257\] is statement-level prior art, not a proof dependency. Neither that record nor any result in this paper resolves arbitrary infinite support.
 
@@ -709,7 +746,7 @@ The endpoint and the open lower bound $`\alpha>0`$ are both included in this cal
 
 # Guide to the formal sources
 
-The source annotations in this note deliberately name two immutable revisions. Links produced by the standard note macros use `99f4bf47422a`; across this note and its long reasoning surface, fourteen paper-local coordinates link revision `f36a98bf3d3e`. These families are audited separately; a historical aggregate reference count is not asserted to be an exact inventory of this PDF.
+The source annotations retain the historical public revisions and now also identify the release snapshot `52f29ad173b0`. Links produced by the standard note macros use `99f4bf47422a`; across this note and its long reasoning surface, fourteen paper-local coordinates link revision `f36a98bf3d3e`. These families are audited separately; a historical aggregate reference count is not asserted to be an exact inventory of this PDF.
 
 The following source links are the public snapshot used by this note.
 
@@ -731,6 +768,8 @@ F. Luca and Y. Tachiya, *Linear independence of certain Lambert series*, Proce
 W. Van Assche, *Little $`q`$-Legendre polynomials and irrationality of certain Lambert series*, The Ramanujan Journal **5** (2001), 295–310. [doi:10.1023/A:1012930828917](https://doi.org/10.1023/A:1012930828917); [arXiv:math/0101187v1](https://arxiv.org/abs/math/0101187v1).
 
 H. Hornich, *Über beliebige Teilsummen absolut konvergenter Reihen*, Monatshefte für Mathematik und Physik **49** (1941), 316–320. [doi:10.1007/BF01707309](https://doi.org/10.1007/BF01707309).
+
+*The logarithmic endpoint fails under arithmetic sampling*, AI-assisted ordinary proof note, 17 September 2026. Theorem 1, Corollary 3 and Proposition 4. Unpublished working note; independent review and fresh Lean verification are outstanding. W. van Doorn and V. Kovač, *Lacunary sequences whose reciprocal sums represent all rational numbers in an interval*, arXiv:2509.24971v3 (3 December 2025). <https://arxiv.org/abs/2509.24971v3>. Theorem 1 is on p. 2; Lemma 4 and Corollary 5 are on pp. 5–7.
 
 </div>
 

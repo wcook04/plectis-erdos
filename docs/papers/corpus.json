@@ -2299,10 +2299,6 @@
         }
       ],
       "citations_rendered": 59,
-      "fallback_title_drift": {
-        "registry_fallback": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
-        "manuscript_title": "Reciprocal-Tail Rigidity: Theorems, Proofs and Questions"
-      },
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
       "pdf_sha256": "sha256:8c903f5500bed25ff284108bf22aca7db4def66c8f228e5a4d9c43e7f35236f0",
       "pdf_byte_count": 314224,
@@ -2447,7 +2443,7 @@
       ],
       "citations_rendered": 21,
       "fallback_title_drift": {
-        "registry_fallback": "A Basis for the 2-Kernel of Euler's Totient",
+        "registry_fallback": "Bases and Integral Relations for the $k$-Kernel of Euler's Totient",
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
@@ -3589,7 +3585,7 @@
       ],
       "citations_rendered": 36,
       "fallback_title_drift": {
-        "registry_fallback": "A Countermodel for Growth-and-Parity Arguments on the Prime-Gap Dyadic Series",
+        "registry_fallback": "Sparse Congruence-Preserving Perturbations\\\\of Dyadic Series",
         "manuscript_title": "Sparse Congruence-Preserving Perturbations of Dyadic Series"
       },
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
@@ -4006,7 +4002,7 @@
       ],
       "citations_rendered": 63,
       "fallback_title_drift": {
-        "registry_fallback": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
+        "registry_fallback": "Prime-Gap Dyadic Series:\\\\Perturbations, Exact Criteria and Certificates",
         "manuscript_title": "Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates"
       },
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
@@ -4077,12 +4073,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:73ea290014a1c5d4daa570df5f986df156566cda5d59098f4772cdc0afc06563",
+      "source_sha256": "sha256:7df42db696ae8a71ad6627a9f1f56c645b6a83334e841698d9c2de98501f748e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/257/erdos-257-mersenne-support-subseries.tex",
-      "section_count": 23,
+      "section_count": 24,
       "sections": [
         {
           "level": 1,
@@ -4139,94 +4135,100 @@
           "line": 336
         },
         {
+          "level": 4,
+          "id": "arithmetic-sampling-and-logarithmic-cost.",
+          "title": "Arithmetic sampling and logarithmic cost.",
+          "line": 373
+        },
+        {
           "level": 2,
           "id": "combining-the-two-support-criteria",
           "title": "Combining the two support criteria",
-          "line": 375
+          "line": 410
         },
         {
           "level": 4,
           "id": "the-prime-power-regime.",
           "title": "The prime-power regime.",
-          "line": 420
+          "line": 455
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 428
+          "line": 463
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 455
+          "line": 490
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Where the return mechanism stops",
-          "line": 470
+          "line": 505
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Unique coding and arithmetic membership",
-          "line": 497
+          "line": 532
         },
         {
           "level": 1,
           "id": "sec:actual-repairs",
           "title": "The actual greedy return inequality",
-          "line": 513
+          "line": 548
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Further questions",
-          "line": 576
+          "line": 611
         },
         {
           "level": 4,
           "id": "two-extension-tests.",
           "title": "Two extension tests.",
-          "line": 580
+          "line": 615
         },
         {
           "level": 1,
           "id": "proof-and-verification-scope",
           "title": "Proof and verification scope",
-          "line": 668
+          "line": 703
         },
         {
           "level": 1,
           "id": "app:elementary-details",
           "title": "Elementary details used in the proofs",
-          "line": 676
+          "line": 713
         },
         {
           "level": 4,
           "id": "cyclotomic-prime-power-fact.",
           "title": "Cyclotomic prime-power fact.",
-          "line": 680
+          "line": 717
         },
         {
           "level": 4,
           "id": "exact-scalar-cover-cost.",
           "title": "Exact scalar cover cost.",
-          "line": 695
+          "line": 732
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 708
+          "line": 745
         }
       ],
-      "citations_rendered": 24,
+      "citations_rendered": 27,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:e8b0bd01c0e94638539afc904f0f1c8c5cff1d8b595aa861b666f9d2c33246f3",
-      "pdf_byte_count": 174280,
+      "pdf_sha256": "sha256:f4df54acb02ec9fb14b6f2f146570929d6d916f14c71093bb047577a170116e3",
+      "pdf_byte_count": 181956,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4249,7 +4251,7 @@
           {
             "id": "sec:open",
             "title": "Further questions",
-            "line": 576
+            "line": 611
           }
         ],
         "unresolved_count": 0
@@ -4292,12 +4294,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:9167e32b7d65a572be1c6a2b0651b4e0107280b8e77dc2fbf8e0a16c171bf88b",
+      "source_sha256": "sha256:34a9d4258db842d3596668ac17c25a9067deacec7a96fe9fc06cdb1e3e58ee2e",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "section_count": 154,
+      "section_count": 158,
       "sections": [
         {
           "level": 1,
@@ -5195,39 +5197,63 @@
         },
         {
           "level": 3,
+          "id": "sec:257-logarithmic-sampling",
+          "title": "Logarithmic cost under arithmetic sampling",
+          "line": 4396
+        },
+        {
+          "level": 4,
+          "id": "the-two-finite-costs",
+          "title": "The two finite costs",
+          "line": 4404
+        },
+        {
+          "level": 4,
+          "id": "the-arithmetic-lower-bound-for-every-fractional-cover",
+          "title": "The arithmetic lower bound for every fractional cover",
+          "line": 4550
+        },
+        {
+          "level": 4,
+          "id": "what-survives-without-arithmetic-restriction",
+          "title": "What survives without arithmetic restriction",
+          "line": 4584
+        },
+        {
+          "level": 3,
           "id": "two-proof-details-and-source-comparators",
           "title": "Two proof details and source comparators",
-          "line": 4396
+          "line": 4620
         },
         {
           "level": 3,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 4413
+          "line": 4637
         },
         {
           "level": 6,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 4417
+          "line": 4641
         },
         {
           "level": 6,
           "id": "authority-boundary.",
           "title": "Authority boundary.",
-          "line": 4423
+          "line": 4647
         },
         {
           "level": 6,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 4429
+          "line": 4653
         }
       ],
-      "citations_rendered": 33,
+      "citations_rendered": 36,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:6890a22f3e23c16bff732daccde4dced058c9662e9f55dcec475886d1db73206",
-      "pdf_byte_count": 743363,
+      "pdf_sha256": "sha256:2ca9bf8f066b8b518a614eeaf6946f3cb9931194a874b10926a3b725dcd9ce07",
+      "pdf_byte_count": 772698,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6667,7 +6693,7 @@
       ],
       "citations_rendered": 30,
       "fallback_title_drift": {
-        "registry_fallback": "Irrationality of F(31/4) and the Exact Normalized Hankel Order",
+        "registry_fallback": "Zudilin's Forms at Rational Bases\\\\and the Exact Normalised Hankel Order",
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases and the Exact Normalised Hankel Order"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
@@ -7126,7 +7152,7 @@
       ],
       "citations_rendered": 100,
       "fallback_title_drift": {
-        "registry_fallback": "Rational-Base Lambert Series: Complete Reasoning Record",
+        "registry_fallback": "Zudilin's Forms at Rational Bases:\\\\Proofs and Research Record",
         "manuscript_title": "Zudilin\u2019s Forms at Rational Bases: Proofs and Research Record"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",

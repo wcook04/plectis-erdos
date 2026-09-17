@@ -398,10 +398,12 @@ For that length the geometric sum and convexity give
  \le\frac{2L}{d(B-1)}.
 \]
 Summing the main terms and these two error budgets proves~\eqref{eq:257-mixed-finite-kernel}.
-The complete-cycle mass $1/(B-1)$, the bound
-$g/(B^g-1)\le1/(B-1)$ used for complete cycles, and the no-wrap
-inequality $\sum_{i<d}B^i\ge dB^{(d-1)/2}$ are ordinary in this note;
-\texttt{PaperCompleteR7/CoverKernel.lean} is not in this checkout.
+The release snapshot contains a proof body for the full estimate in
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean#L207}{\emph{DyadicKernel}, \texttt{dyadicMean\_kernelWeight\_le}}.
+Its complete-cycle and no-wrap scalar ingredients are in
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L130}{\emph{CoverKernel}}.
+These are source locators, not a fresh compilation or axiom-audit receipt;
+the argument displayed here is an ordinary proof.
 Nonnegative interchange permits summation against any coefficients $c_d$
 with $\sum_dc_d/d<\infty$.
 
@@ -456,7 +458,9 @@ The fixed rational lattice excludes rationality at base two.
 For every $b\ge2$, the elementary atom inequality
 $(b^r-1)/(b^d-1)\le2(2^r-1)/(2^d-1)$ for $0\le r<d$
 gives the same conclusion at base $b$; that inequality is
-ordinary in this note (\texttt{CoverKernel.lean} is absent).
+an ordinary proof step here, with a corresponding source body in
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L232}{\emph{CoverKernel}, \texttt{atom\_base\_transfer}}.
+This locator is not a fresh Lean verification.
 Any prescribed positive divisor can be included in $L$, so the witnesses
 can also be required to be arbitrarily large.
 \end{proof}
@@ -521,9 +525,18 @@ the fixed rational lattice then excludes rationality.
 \end{proof}
 
 The analytic estimates and their synchronisation are ordinary proofs.
-No Lean declaration in this checkout is offered as their complete proof.
+The release snapshot contains end-to-end bodies for the strengthened
+cover conclusion in
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241}{\emph{PositiveCoverReturn}}
+and for the weighted and mixed conclusions in
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L98}{\emph{WeightedReturn}}.
+This identifies conclusion-level formal support, not a fresh build or a
+certification of every step of the prose sampling schedule.  The
+arbitrary-positive-weight variant is an ordinary deduction here.
 This theorem does not establish strict enlargement over both individual
-classes; the short note keeps the proposed separation hosts unassessed.
+classes.  The weighted non-cover host has a separate source body in
+\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L16}{\emph{AnalyticSeparationReturn}};
+the proposed cover-only host is not established here.
 It also leaves universal irrationality and the quantitative and prime-power
 thinning claims open here. \ev{Math}
 
