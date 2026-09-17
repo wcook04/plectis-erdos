@@ -1878,8 +1878,10 @@ Martin externally, and #269's two-prime result is not first.
 
 `v0.10.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](claims.json) pins the exact formal-source checkpoint
-this release ships. Lean source checked by the pinned Lean kernel is
-proof authority; do not infer results from private or unreleased work.
+this release ships. Continuing work uses `main` and the mathematics site;
+that tag is a frozen edition, not the working copy. Lean source checked by the
+pinned Lean kernel is proof authority; do not infer results from private or
+unreleased work.
 
 ### What the formal source establishes
 
