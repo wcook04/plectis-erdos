@@ -232,17 +232,26 @@ def test_git_snapshot_batch_uses_one_clean_bounded_process() -> None:
     first = ("a" * 40, "ErdosProblems/First.lean")
     second = ("b" * 40, "ErdosProblems/Missing.lean")
     first_blob = b"theorem first : True\n"
-    output = (
-        f"{'1' * 40} blob {len(first_blob)}\n".encode()
-        + first_blob
-        + b"\n"
-        + f"{second[0]}:{second[1]} missing\n".encode()
-    )
-    completed = scanner.subprocess.CompletedProcess(
-        ["git", "cat-file", "--batch"], 0, stdout=output, stderr=b""
-    )
+
+    def fake_run(args, input=None, **kwargs):
+        require(args[:2] == ["git", "cat-file"], f"unexpected git argv {args!r}")
+        body = b""
+        for raw in (input or b"").split(b"\n"):
+            if not raw:
+                continue
+            spec = raw.decode()
+            _commit, _, path = spec.partition(":")
+            if path == "ErdosProblems/First.lean":
+                body += f"{'1' * 40} blob {len(first_blob)}\n".encode()
+                body += first_blob + b"\n"
+            else:
+                body += spec.encode() + b" missing\n"
+        return scanner.subprocess.CompletedProcess(
+            args, 0, stdout=body, stderr=b""
+        )
+
     cache: dict[tuple[str, str], list[str]] = {}
-    with patch.object(scanner.subprocess, "run", return_value=completed) as run:
+    with patch.object(scanner.subprocess, "run", side_effect=fake_run) as run:
         scanner.snapshot_lines_batch([first, second, first], cache)
     require(cache[first] == ["theorem first : True"], "batch lost a Git blob")
     require(cache[second] == [], "batch did not type a missing Git blob")
@@ -258,6 +267,32 @@ def test_git_snapshot_batch_uses_one_clean_bounded_process() -> None:
     )
 
 
+def test_nested_layout_snapshot_falls_back_from_identity_path() -> None:
+    nested_blob = "theorem nested : True\n"
+    calls: list[str] = []
+
+    def fake_run(args, **kwargs):
+        spec = args[2] if len(args) > 2 else ""
+        calls.append(spec)
+        if spec.endswith("lean/ErdosProblems/Nested.lean"):
+            return scanner.subprocess.CompletedProcess(
+                args, 0, stdout=nested_blob, stderr=""
+            )
+        return scanner.subprocess.CompletedProcess(
+            args, 128, stdout="", stderr="missing"
+        )
+
+    with patch.object(scanner.subprocess, "run", side_effect=fake_run):
+        lines = scanner.snapshot_lines(
+            "c" * 40, "ErdosProblems/Nested.lean", {}
+        )
+    require(lines == ["theorem nested : True"], "nested layout blob was not used")
+    require(
+        any(spec.endswith("lean/ErdosProblems/Nested.lean") for spec in calls),
+        "nested storage path was never queried",
+    )
+
+
 def main() -> int:
     test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()
@@ -270,6 +305,7 @@ def main() -> int:
     test_commit_override_without_matching_short_is_rejected()
     test_git_snapshot_reads_use_clean_bounded_environment()
     test_git_snapshot_batch_uses_one_clean_bounded_process()
+    test_nested_layout_snapshot_falls_back_from_identity_path()
     print(
         "test_problem_note_sources: comment injection, split heads, module "
         "collisions, required anchors, invalid floors, and mismatched source "

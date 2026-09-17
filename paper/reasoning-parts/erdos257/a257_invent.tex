@@ -1,4 +1,4 @@
-\section{The mathematics this problem still needs}
+\section{Unproved inputs for the recorded implications}
 \label{sec:invent-257}
 
 Everything in Parts I--IV of this document is either an unconditional theorem at a fixed or
@@ -13,9 +13,10 @@ where possible attempts an actual construction, estimate or reduction. Attempts 
 honestly: \ev{Math} where the argument is complete ordinary mathematics, \ev{Cert} where the
 support is exact computation, \ev{Open} where the item is a proposal and nothing more.
 
-The organising fact, established in the wall analysis and not repeated here, is that both halves
-of \#257 --- the universal statement and the half-value instance --- converge on one missing
-object. It has a name in this section:
+One recurring quantity in the half-target calculations is the short-window
+divisor phase defined below.  Its role in particular universal-support
+criteria is discussed separately; it is not a proved common necessary
+obstruction for the two problems.
 
 \begin{defn}[The short-window divisor phase]
 \label{defn:theta}
@@ -597,83 +598,52 @@ irrationality proof follows.  The durable conclusion is methodological:
 test a no-go statement under rational finite changes before attributing it
 to the underlying value.
 
-\subsection{What the shape of the wall suggests about the underlying object}
+\subsection{What the experiments and obstructions do not imply}
 \label{sec:invent-shape}
 
 Everything in this subsection is inference from the accumulated failures, not theorem. It is
 labelled that way throughout, and where the evidence does not determine the answer it says so
 rather than manufacturing a story.
 
-\subsubsection*{The half-value branch looks pseudorandom, and the failures are the evidence}
+\subsubsection*{Finite observations and their limits}
+The recorded obstructions concern specified coordinate systems.  Fixed
+precision, a bounded carry state and a prescribed suffix can lose
+information needed by the actual-selector condition.  They do not show
+that the underlying deterministic sequence has no arithmetic structure.
+The relevant exact statements remain
+\lean{fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137},
+\lean{balancedPulse_no_autonomous_decoder}{GenericTailOrbitRigidity.lean:247}
+and
+\lean{affineBinaryOrbit_mod_twoPow_eq}{GenericTailOrbitRigidity.lean:307}.
+Their hypotheses, rather than the fact that an attempted argument failed,
+determine their scope.
 
-The strongest available inference is about the \emph{kind} of difficulty, and it comes from the
-manner in which the attacks failed rather than the fact that they failed.
+The inherited experiment log reports $200{,}000$ seam rows with counts
+$R:M:U=100197:49899:49898$, a roughly geometric run-length histogram, and a
+longest equal run of $15$ in $40{,}000$ binary digits.  It also reports
+agreement with OEIS A211706 and a near-integer phase constant of about
+$2.5$.  These computations and the external digit comparison were not rerun
+in this revision.  They are descriptive reports, not certificates of
+normality, independence, a random sampling model, or an infinite
+anti-concentration estimate.  A statement about ``sampling noise'' would
+require a specified probabilistic model that is not supplied here.
 
-When a hard problem conceals structure, partial attacks typically return partial information: a
-bias, a correlation, an exceptional set, a bound with the wrong constant. That is not what
-happened here. Parity returned a tautology --- the identity $J(M+1)\equiv\delta(M+1)\pmod2$ holds
-for \emph{any} digit stream obeying the recursion shape, so it forbids no residue and no run.
-Fixed-precision valuation data returned a proved no-go: for any starting carry and any word of
-odd-unit symbols, a compatible centred completion exists
-(\lean{fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137}, \ev{Lean}). Bounded carry
-state returned an unbounded fan-out
-(\lean{balancedPulse_no_autonomous_decoder}{GenericTailOrbitRigidity.lean:247}, \ev{Lean}). Long
-common suffixes returned exact erasure of the predecessor
-(\lean{affineBinaryOrbit_mod_twoPow_eq}{GenericTailOrbitRigidity.lean:307}, \ev{Lean}).
-Prime-doubling returned a witness where three primes sit inside an eleven-step quiet run. These
-are not near misses. They are the signature of a coordinate in which there is no arithmetic bias
-to find --- which is what one expects if the digit stream really is pseudorandom.
+The previously reported exceptional row $r=7$ and crossing $(s,d)=(10,7)$
+are likewise statements about the tested range only.  The exact range and
+reproduction artefacts must accompany them before they are used as
+numerical evidence outside this historical record.  No claim that this is
+the only exceptional row of the infinite orbit is made.
 
-The positive measurements point the same way and are quantitative. The branch counts over
-$200{,}000$ seam rows are $R:M:U = 100197:49899:49898$, matching the balanced-signed-digit
-prediction to within sampling noise. The run-length histogram is geometric with ratio $\approx2$.
-The binary expansion of $C=E-3/2$ agrees bit-for-bit with OEIS A211706 and has longest equal run
-$15$ in $40{,}000$ bits. And the measurement in Swing~2 above shows the fractional part of the
-short-window divisor phase $\Theta_L$ is, to three significant figures, Haar-distributed, with a
-near-integer tail constant $c\approx2.5$ against the uniform value $2$.
+These coordinates all descend from the same greedy-carry representation;
+they are not independent tests of a common random hypothesis.  Strict
+superincreasingness gives an injective coding, but says neither that its
+digits are random nor that averaging over indices is impossible.  The
+measure-one and nowhere-dense properties of the achievement set do not
+decide membership of a specified rational.  The correct research question
+is whether a precise arithmetic estimate can be proved for the actual
+selector, not whether finite data resemble a random model.
 
-\emph{Inference (not theorem).} The object behind the half-value branch is most likely
-\textbf{simple in description and pseudorandom in behaviour}. Its description is two lines:
-$K(2)=1$, $K(M+1)=2K(M)-(\tau(M+1)-1)$, together with a superincreasing greedy orbit. Its
-behaviour is, on every statistic yet measured, indistinguishable from a fair coin. If that is
-right, then the missing theorem is a \emph{pseudorandomness} statement about an explicit
-deterministic sequence, and it belongs to the same family as normality of specific constants, or
-Chowla-type independence: elegant to state, and hard for the structural reason that there is no
-structure to exploit. On this reading the wall is not hiding a mechanism; it is the absence of
-one.
-
-\subsubsection*{Three reasons to distrust that inference, stated plainly}
-
-First, coordinate-relativity. Obstructions are relative to a representation, and all nine
-coordinates the corpus built --- rung, seam row, integer margin, sharp tail margin, half-carry,
-reverse-carry word, Boolean--M\"obius exact row, fatal-cell packing, Dedekind cut-locator --- are
-descendants of one family, the superincreasing greedy carry. Their agreement is therefore
-\emph{not} nine independent votes. A genuinely foreign coordinate (a $p$-adic dynamical one, a
-representation-theoretic one, an automatic-sequence one) has not been tried, and ``no bias in
-these nine'' is weaker evidence than it looks.
-
-Second, the single exception. Exactly one row of the real orbit fails $\sqrt{\ }$-escape, $r=7$,
-which is also the site of the only real $R$-branch crossing ever observed, at $(s,d)=(10,7)$. A
-lone low-lying exception is what a random model predicts; it is also what a hidden structure with
-a small modulus predicts. That datum does not discriminate.
-
-Third, and this is the sharpest internal check available: pseudorandomness is a claim about the
-\emph{absence} of structure, and the corpus contains an unmistakable piece of \emph{present}
-structure --- strict superincreasingness of the Mersenne weights, which forces the digit coding to
-be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1582},
-\ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
-coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
-description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The
-rigidity constrains representation uniqueness. It does not by itself exclude averaging over
-indices, shifts, residues, observation scales or auxiliary constructions. $\mathcal{A}$ has
-Lebesgue measure exactly $1$ inside an interval of length $E\approx1.6067$ and is nowhere dense,
-so the two standard notions of ``typical'' disagree on it; neither fact decides membership of a
-specified rational. The recorded calculations obstruct the particular models and estimates
-analysed here; no impossibility theorem for all probabilistic, measure-theoretic or averaging
-methods is claimed. Separately, the observed lack of arithmetic bias is why the specific
-arithmetic methods recorded here returned no information.
-
-\subsubsection*{The universal branch reads differently, and this weakens the one-wall thesis}
+\subsubsection*{Why the support and rational-target problems remain distinct}
 
 Proposition~\ref{prop:squarefree} is a reason to separate the two halves
 rather than assimilate them.  On the universal side the present
@@ -683,12 +653,12 @@ power-of-two bases, and adjoining $1$ removes the opening-block obstruction
 without changing irrationality.  Thus the no-go diagnoses this engine; it
 does not diagnose the value or the universal problem.
 
-The wall analysis's claim that both halves converge on one missing object --- short-window
-near-integer anti-concentration of a divisor-weighted sum --- survives, but with a correction: on
-the universal side that object is the \emph{second} obstruction, not the first, and it becomes
-relevant only after one chooses an engine whose opening condition is
-invariant under rational finite changes. Reporting the convergence without
-that ordering would overstate the unity of the wall.
+Short-window near-integer anti-concentration is one possible missing
+input for the particular mechanisms analysed here.  No equivalence shows
+that it is necessary for either problem, and no argument identifies it as
+a common necessary obstruction to both.  The squarefree example shows why
+finite rational changes of support must be checked before an opening-block
+failure is interpreted as a property of the value.
 
 \subsubsection*{What the evidence does and does not determine}
 

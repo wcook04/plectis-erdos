@@ -1,3 +1,6 @@
+\clearpage
+\part*{V. Outstanding obligations and provenance}
+\addcontentsline{toc}{part}{V. Outstanding obligations and provenance}
 \section{What is open, stated exactly}
 
 Erd\H{o}s \#257 asks whether $\sum_{n\in A}1/(2^n-1)$ is irrational for \emph{every} infinite
@@ -416,6 +419,38 @@ only on a finite initial segment, however large a margin that segment exhibits. 
 paper closes any of these gaps, and no claim above should be read as progress toward doing so.
 
 \clearpage
+\section*{Two proof details and source comparators}
+The elementary atom comparison can be sharpened to
+$\Delta_{b,A}(N)\le\Delta_{2,A}(N)$ for all real $b\ge2$.
+After cancelling $b-1$, differentiate the ratio
+$\sum_{i<r}b^i/\sum_{i<d}b^i$: its numerator is
+$\sum_{i<r\le j<d}(i-j)b^{i+j-1}\le0$.
+Only the rational-lattice step needs an integer base.
+
+For the scalar positive-cover cost, put $z=\log_2t$.  Direct differentiation
+of $y^z/(y-1)$ on $1<y\le2$ gives
+\[
+ \Psi(t)=t\quad(1\le t\le4),\qquad
+ \Psi(t)=\frac{z^z}{(z-1)^{z-1}}\quad(t>4).
+\]
+These are ordinary proof details, not additional replayed declarations.
+
+The original periodic and linear-independence papers of Luca and Tachiya
+are now distinguished from their later overview
+\cite{lucatachiya2014periodic,lucatachiya2014independence,lucatachiya2017}.
+Their theorem formulations used in this revision were read in the
+supplied author-written overview; the two original publisher PDFs were
+not successfully retrieved in this pass.  Van Assche's nonvanishing and
+small-linear-form argument for the full Lambert series
+\cite[Lemma~1 and (34)--(35)]{vanassche2001} is a comparator for the missing
+upper-height control, not a result for arbitrary thinnings.
+
+For achievement-set background, Hornich's original bibliographic record
+\cite{hornich1941} is separated from the exposition actually used here
+\cite{nitecki2013}.  G\l\k{a}b and Prus-Wi\'sniowski's survey
+\cite{glabprus2025} provides a modern map of geometry and cardinality
+questions, not a rational-membership theorem for the present set.
+
 \section*{Statements and declarations}
 
 \paragraph{Artefact and data availability.} The linked Lean declarations,
@@ -521,6 +556,37 @@ funding. The author declares no competing interests.
   \href{https://arxiv.org/abs/2401.08432v3}{\emph{The critical-window profile
   for the $k$-fold divisor function in almost all short intervals}},
   arXiv:2401.08432v3 (2026).
+\bibitem{lucatachiya2014periodic}
+F.~Luca and Y.~Tachiya,
+\emph{Irrationality of Lambert series associated with a periodic sequence},
+International Journal of Number Theory \textbf{10} (2014), no.~3, 623--636.
+\href{https://doi.org/10.1142/S1793042113501121}{doi:10.1142/S1793042113501121}.
+
+\bibitem{lucatachiya2014independence}
+F.~Luca and Y.~Tachiya,
+\emph{Linear independence of certain Lambert series},
+Proceedings of the American Mathematical Society \textbf{142} (2014), no.~10, 3411--3419.
+\href{https://doi.org/10.1090/S0002-9939-2014-12102-2}{doi:10.1090/S0002-9939-2014-12102-2}.
+
+\bibitem{vanassche2001}
+W.~Van Assche,
+\emph{Little $q$-Legendre polynomials and irrationality of certain Lambert series},
+The Ramanujan Journal \textbf{5} (2001), 295--310.
+\href{https://doi.org/10.1023/A:1012930828917}{doi:10.1023/A:1012930828917};
+\href{https://arxiv.org/abs/math/0101187v1}{arXiv:math/0101187v1}.
+
+\bibitem{hornich1941}
+H.~Hornich,
+\emph{\"Uber beliebige Teilsummen absolut konvergenter Reihen},
+Monatshefte f\"ur Mathematik und Physik \textbf{49} (1941), 316--320.
+\href{https://doi.org/10.1007/BF01707309}{doi:10.1007/BF01707309}.
+
+\bibitem{glabprus2025}
+S.~G\l\k{a}b and F.~Prus-Wi\'sniowski,
+\emph{Achievement sets -- current results and open problems},
+arXiv:2512.17285v1 (2025), preprint.
+\url{https://arxiv.org/abs/2512.17285v1}.
+
 \end{thebibliography}
 
 \end{document}

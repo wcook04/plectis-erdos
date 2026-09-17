@@ -1,0 +1,106 @@
+{
+  "checked_files": [
+    {
+      "file": "s_hankel_rank1_shift1.json",
+      "identical": true,
+      "sha256": "abcc9d820c33d23e0afa39f1101c4ed81ae64939bf12ffe276b70f340580bb67"
+    },
+    {
+      "file": "s_hankel_rank8_shift1.json",
+      "identical": true,
+      "sha256": "3034633d862cd8a3b1bc63366966e8c09e95f1690fe104d16ea5734328d31d7e"
+    },
+    {
+      "file": "s_hankel_rank5_shift0.json",
+      "identical": true,
+      "sha256": "548d97557ce554f569ecd7a00a4fe348d8fc23e21725a3f917395fd51f22f939"
+    },
+    {
+      "file": "s_hankel_rank4_shift1.json",
+      "identical": true,
+      "sha256": "b60ab7a5df8b66ab1865775c7d0ef48aee3dd6673595d0bc7b7247846d605bb7"
+    },
+    {
+      "file": "s_hankel_rank7_shift0.json",
+      "identical": true,
+      "sha256": "4cc8d24463c2255935f1cf2c5a6cf014b26daef971802f79bbfd58f60540a7af"
+    },
+    {
+      "file": "s_hankel_rank1_shift0.json",
+      "identical": true,
+      "sha256": "56c7ce1b1f783201e282915da11bc434d44a30aebc3dc6a69c212b6041e01e44"
+    },
+    {
+      "file": "s_hankel_rank7_shift1.json",
+      "identical": true,
+      "sha256": "5645a3af2856f42341c3a02b4f1e6ec7358678d69664dc1b80c437a89535e8d9"
+    },
+    {
+      "file": "s_hankel_rank2_shift1.json",
+      "identical": true,
+      "sha256": "c96a38653aad78feb7acb3bdf7630698055df225c149a09f96769916d79765f9"
+    },
+    {
+      "file": "s_hankel_rank4_shift0.json",
+      "identical": true,
+      "sha256": "f9e019526c1c3ba69e2fb230ab2e0e8a28b17eaf62ba832982157be8f48d522a"
+    },
+    {
+      "file": "full_contents.json",
+      "identical": true,
+      "sha256": "c0d2b7cc5fe9667f5efcbfb94737c20cd429d480046f8c40848e84d8e951ca23"
+    },
+    {
+      "file": "s_hankel_rank6_shift1.json",
+      "identical": true,
+      "sha256": "3ff7dc2d05635906fe60f598aae1fb81bbc820583d83b88d3f4bf587a0811aaa"
+    },
+    {
+      "file": "s_hankel_rank3_shift1.json",
+      "identical": true,
+      "sha256": "81fea64ff9446637cc1e628b8637eb678edabc0e006c461188d6ab4063a983bb"
+    },
+    {
+      "file": "s_hankel_rank6_shift0.json",
+      "identical": true,
+      "sha256": "399ad0aa0c33414fb8cf4d78132f7bad5e994056723c61f4ce2f7f207b365d3f"
+    },
+    {
+      "file": "s_hankel_rank2_shift0.json",
+      "identical": true,
+      "sha256": "55f61a8fe7f1d1f06c7f95e2b6f1d5e386a4476167c4ecce662fef14181a7bdd"
+    },
+    {
+      "file": "finite_moment_results.json",
+      "identical": true,
+      "sha256": "36be918eb8c3603c0c6b9d2c5d721cef1559f6fde9360de543baed5c051e5e25"
+    },
+    {
+      "file": "s_hankel_rank8_shift0.json",
+      "identical": true,
+      "sha256": "c4c249b17263ba1fb0ef3ae5635302fa388ac0415a2f05a687014001bc0e67d9"
+    },
+    {
+      "file": "s_hankel_rank3_shift0.json",
+      "identical": true,
+      "sha256": "6bb3e61b11ee168a903010bfaa289ce8b0d5774eaec0b09ff2e01216feaf52f5"
+    },
+    {
+      "file": "cyclotomic_residue_witnesses.json",
+      "identical": true,
+      "sha256": "5b9b5dcfbb24bcd9b043d94a914c6f9e6ae4604ed1fbe7b86c618f60ac2f114b"
+    },
+    {
+      "file": "s_hankel_rank5_shift1.json",
+      "identical": true,
+      "sha256": "3bc829f396335b412dc1ed6424a0dd020b162c16ccb89a994c4dffdf3ca520b2"
+    }
+  ],
+  "final_script_hashes": {
+    "polynomials.py": "b26613cb071ed683b6ad3ea285e69554253d77f8de7f96ed85b54a60729d02d6",
+    "reproduce.py": "268f97719fa90e906603aa867eb17f0e1798c185fe5e1ba57378a4076973a7b5",
+    "intervals.py": "cc152e93fc3f28951f0abd9164611b6b9c5e93c66bf038dc988949b48faa6149",
+    "check_independently.py": "5c98b6ac116b6486a56943a59e447ec48416fff1e439e486f8ed7e2484a6c7ef"
+  },
+  "note": "A second fresh execution with the final guarded polynomial definitions reproduced all 19 determinant/content/residue JSON files byte for byte. Timing metadata is allowed to differ."
+}

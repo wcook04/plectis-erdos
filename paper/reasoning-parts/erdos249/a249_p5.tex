@@ -578,12 +578,12 @@ of course contradict the displayed lower bound:
   \text{ for a rational } S,\quad
   \forall e,\quad \operatorname{rank}_{\mathbb{Q}}\operatorname{span}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C
 \]
-(or any bound growing slower than $2^e-1$).  This is a logically sufficient
-new theorem schema, not an open proposition isolated by the preceding
-mathematics: the corpus gives no
-reason rationality should force it, and explicit finite-rank
-shift-polynomial countermodels show that periodic denominator data alone do
-not.
+(or any bound growing slower than $2^e-1$). For arbitrary rational
+coefficient series this schema is refuted by the $5/4$ control and
+\texttt{control\_temperedOrbit\_carryRank\_unbounded}, line~478 of
+\texttt{ParityPerturbedRationalControl.lean}. An upper bound for the actual
+totient carry would therefore require additional arithmetic hypotheses;
+rationality and periodic denominator data alone are insufficient.
 
 The most direct generic construction is also impossible: no
 \texttt{CompressedAdjointCertificate} ($Q\cdot v\cdot A =
@@ -659,7 +659,7 @@ flexible top-edge magnitude supply & weaker than midband; feeds midband, not cor
 flexible terminal-dominance supply & weaker again; one-sided & TotientActualLcmTopEdgeStaircase.lean:1908 \\
 flexible terminal carry-corridor-escape supply & \textbf{weakest known} in this cluster & TotientActualLcmTopEdgeStaircase.lean:1895 \\
 raw-approximant separation supply & alternative (Diophantine) sufficient form, same target & TotientActualLcmOrbitSeparation.lean:305 \\
-rank-compression upper bound & counterfactual sufficient input; generic shortcut retired & TotientCarryKernelRigidity.lean:284 \\
+rank-compression upper bound & generic ceiling refuted by the $5/4$ control; any totient-specific replacement needs extra hypotheses & ParityPerturbedRationalControl.lean:478 \\
 Farey growth law (Obl.\ 3) & independent obligation, different coordinate & GapFareyBound.lean, CertificateKernel.lean:18056 \\
 guard-cylinder witness & problem-agnostic normal form of \emph{any} certificate, not scale-comparable & TotientActualLcmTopEdgeStaircase.lean:844 \\
 \end{longtable}
@@ -867,6 +867,34 @@ Article~02.2.3. Lemma~3.1 is cited with the preprint pagination, p.~5.
 P.~Erd\H{o}s and I.~S.~G\'al, \emph{On the law of the iterated logarithm.~I},
 Proc.\ Kon.\ Ned.\ Akad.\ Wetensch.\ Ser.~A \textbf{58} $=$ Indag.\ Math.\
 \textbf{17} (1955), 65--76, \url{https://www.renyi.hu/~p_erdos/1955-06.pdf}.
+\bibitem{yazdani2001} S.~Yazdani,
+\emph{Multiplicative functions and $k$-automatic sequences},
+J.\ Th\'eor.\ Nombres Bordeaux \textbf{13} (2001), no.~2, 651--658,
+\url{https://www.numdam.org/item/JTNB_2001__13_2_651_0/}.
+Theorem~2 and its proof, pp.~652--653; Corollary~4, p.~654.
+\bibitem{allouche-shallit-yassawi} J.-P.~Allouche, J.~Shallit and R.~Yassawi,
+\emph{How to prove that a sequence is not automatic},
+Exposition.\ Math.\ \textbf{40} (2022), no.~1, 1--22,
+doi:\href{https://doi.org/10.1016/j.exmath.2021.08.001}{10.1016/j.exmath.2021.08.001};
+arXiv:\href{https://arxiv.org/abs/2104.13072v1}{2104.13072v1}.
+Theorem and example numbering follows the arXiv v1 (2021).
+\bibitem{bell-smertnig2026} J.~Bell and D.~Smertnig,
+\emph{Mahler series with multiplicative coefficient sequences},
+arXiv:\href{https://arxiv.org/abs/2603.23456v1}{2603.23456v1},
+24 March 2026, preprint. Theorem~1.3, p.~2; Lemma~3.3, p.~9.
+\bibitem{bell-bruin-coons} J.~P.~Bell, N.~Bruin and M.~Coons,
+\emph{Transcendence of generating functions whose coefficients are multiplicative},
+Trans.\ Amer.\ Math.\ Soc.\ \textbf{364} (2012), no.~2, 933--959,
+doi:\href{https://doi.org/10.1090/S0002-9947-2011-05479-6}{10.1090/S0002-9947-2011-05479-6};
+arXiv:\href{https://arxiv.org/abs/1003.2221v2}{1003.2221v2}.
+Theorems~1.5--1.6 are cited with the arXiv v2 pagination, p.~2.
+\bibitem{adamczewski-drmota-mullner} B.~Adamczewski, M.~Drmota and C.~M\"ullner,
+\emph{(Logarithmic) densities for automatic sequences along primes and squares},
+Trans.\ Amer.\ Math.\ Soc.\ \textbf{375} (2022), no.~1, 455--499,
+doi:\href{https://doi.org/10.1090/tran/8476}{10.1090/tran/8476};
+arXiv:\href{https://arxiv.org/abs/2009.14773v2}{2009.14773v2}.
+Theorem~1.4 and Remark~1.5, p.~4, and the proof at the end of Section~7,
+p.~19, refer to the arXiv v2 (2021).
 \end{thebibliography}
 
 \end{document}

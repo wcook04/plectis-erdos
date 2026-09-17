@@ -30,6 +30,7 @@ import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
 import ErdosProblems.Erdos1041.PaperCriticalValueMeanR10
 import ErdosProblems.Erdos1041.PaperCubicFibres
 import ErdosProblems.Erdos1041.PaperStraightObstructions
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
 import ErdosProblems.Erdos1041.PaperSeparationCounterexample
 import ErdosProblems.Erdos1049.RationalBaseContour
 import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
@@ -50,6 +51,9 @@ import ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification
 import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
 import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
 import ErdosProblems.Erdos243.SlowRiseBarrier
+import ErdosProblems.Erdos243.ProtectedEpochEnergy
+import ErdosProblems.Erdos243.RecordIncrementBarrier
+import ErdosProblems.Erdos243.SaturatedSquareTransport
 import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis

@@ -13,7 +13,7 @@ The note states the exact denominator law \eqref{long251:eq:den-law} and uses it
 directly.  The classical witness that produced it is worth recording, because
 it is the form in which the shift length first appears.
 
-\begin{proposition}[a shift of totient length]\label{long251:xr:totient}
+\begin{proposition}[a shift of totient length]\label{long251:xr:totient}\compatlabel{res:totient}
 Let $T:\N\to\Q$ satisfy the dyadic tail recurrence with integer digits.  If the
 reduced denominator $d$ of $T_N$ is odd, then $\sigma_{\ph(d)}(N)$ is an
 integer.
@@ -26,9 +26,11 @@ $(2^{\ph(d)}-1)T_N=ku$ is an integer, and the integral-shift criterion
 transfers this to the shift.
 \end{proof}
 
-\begin{proposition}[propagation]\label{long251:xr:propagate}
-If $\sigma_h(N)$ is an integer, then $\sigma_h(N+k)$ is an integer for every
-$k\ge0$.
+\begin{proposition}[propagation]\label{long251:xr:propagate}\compatlabel{res:propagate}
+Let $T:\N\to\R$ satisfy $T_{n+1}=2T_n-a_{n+1}$ with integer digits,
+and define $\sigma_h(N)=T_{N+h}-T_N$.  For fixed $h,N\ge0$,
+if $\sigma_h(N)$ is an integer, then $\sigma_h(N+k)$ is an integer
+for every $k\ge0$.
 \end{proposition}
 
 \begin{proof}
@@ -90,9 +92,27 @@ modulo $2^{L}$.  A one-block certificate would be a prime-gap theorem
 producing such an avoided arc on a logarithmic block.  This rewriting is
 paper-level and carries no Lean declaration.
 
+\begin{proposition}[completeness of finite separation]\label{long251:res:complete-truncation}
+Suppose $D\in\R$, $S_L\in\R$ and $R_L\ge0$ satisfy
+$|D-S_L|\le R_L$ and $R_L\to0$.  Then
+\[
+ D\notin\Z\quad\Longleftrightarrow\quad
+ \text{there exists }L\text{ with }\operatorname{dist}(S_L,\Z)>R_L.
+\]
+\end{proposition}
+\begin{proof}
+The reverse implication follows from the triangle inequality.
+For the forward implication put $\delta=\operatorname{dist}(D,\Z)>0$
+and choose $R_L<\delta/2$.  The distance to $\Z$ is $1$-Lipschitz, so
+$\operatorname{dist}(S_L,\Z)\ge\delta-R_L>R_L$.
+\end{proof}
+Thus existence of an arbitrarily deep finite certificate is an exact
+reformulation of nonintegrality, not a new prime-gap estimate.  A useful
+analytic producer must control the separation as well as the tail.
+
 \subsection{Divisor-hitting shift escape}\label{long251:sec:xr-divisorhit}
 
-\begin{problem}[divisor-hitting shift escape]\label{long251:xr:divisor-hit}
+\begin{problem}[divisor-hitting shift escape]\label{long251:xr:divisor-hit}\compatlabel{prob:divisor-hit}
 For every $r\ge1$, does some positive multiple of $r$ escape cofinally, in the
 sense of \eqref{long251:eq:shift-escape} at shift length $mr$ for some $m\ge1$?
 \end{problem}
@@ -225,14 +245,17 @@ failure of the event.
 
 \subsection{Corrections to earlier records}\label{long251:sec:xr-corrections}
 
-\paragraph{The superseded exclusion.}  An earlier internal record narrated a
-denominator exclusion at $10^{602}$.  That figure is correct as written and is
-superseded twice over: by the kernel-decided floor $2^{589}>10^{177}$ of
-Theorem~\ref{long251:res:denominatorfloor}, which is smaller but kernel-checked, and by
-the certified continued-fraction exclusion $2^{39997}>10^{12040}$ of
-Theorem~\ref{long251:res:cfexclusion}, which supersedes it in strength.  The receipt
-records the decimal digit count $12041$; the certified decimal statement uses
-the exponent $12040$.
+\paragraph{Two different improvements to the exclusion record.}
+An earlier internal record gave a denominator exclusion at $10^{602}$.
+The kernel-decided floor $2^{589}>10^{177}$ of
+Theorem~\ref{long251:res:denominatorfloor} is numerically smaller but has a
+different verification status.  It does not supersede $10^{602}$ in
+numerical strength.  The continued-fraction exclusion
+$2^{39997}>10^{12040}$ of Theorem~\ref{long251:res:cfexclusion} is the larger
+numerical bound.  Its receipt's digit count $12041$ must not be substituted
+for the exponent $12040$.  The independent integer replay supplied with
+this revision reproduces the stated larger exclusion by a separate
+interval and Farey-neighbour calculation; it is not a new Lean replay.
 
 \paragraph{The named missing input.}  An earlier record named
 Hardy-Littlewood $k$-tuple correlation of consecutive gaps at a fixed offset as
@@ -248,9 +271,9 @@ withdrawn.
 \paragraph{The formal boundary.}  An earlier reading of the short note placed
 the real-tail bridge and the real form of the adjacent-pair consumer on the
 paper side.  Both are kernel-checked, at
-\lword{Erdos251/RealPrimeGapTail.lean}{48}{realPrimeGapTail_recurrence}{line~48}
+\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean\#L48}{line~48}
 and
-\lword{Erdos251/RealPrimeGapTail.lean}{99}{realTailShift_not_both_integral_of_small_pair_of_digit_ne}{line~99}
+\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean\#L99}{line~99}
 of the real prime-gap tail module.  A second reading placed the kernel-decided
 denominator floor and the free-pair criterion outside the source revision the
 note pins.  Both modules are present at that revision, and both are linked from

@@ -1,140 +1,109 @@
 \clearpage
-\section{Complete result-family map}\label{sec:erdos-251-complete-family-map}
+\section{Complete affine-lattice statement from the short note}
+\label{long251:app:affine-detail}
+The following expands the compact circularity statement formerly printed
+in the body of this record.  In particular the fixed-lattice predicate
+and its strict growth hypothesis are stated, not left implicit.
 
-This section places every registered family for this problem in the shared 70-family reader order.  The five display bands control exposition only; the separate promotion state currently covers 6 families and is reported but does not hide or strengthen any family.  Mathematical statements and evidence modes come from the public claim registry.  Across all eight problems the public result-atom catalog contains 681 exact packet coordinates; this problem contributes 30.  The recovered source catalog contains 682 rows; 1 row(s) belong to families absent from the current claim registry and remain disclosed as detached source rows.  Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
+Here $D_N=\sigma_h(N)$ and
+$\delta_N=g_{N+h+1}-g_{N+1}$, with $h$ fixed.  For a longer block, set
+\[
+ B_{h,N,r}=\sum_{i=0}^{r-1}2^{r-1-i}\delta_{N+i};
+ \qquad D_{N+r}=2^rD_N-B_{h,N,r}.
+\]
+Call the data-dependent affine condition
+\[
+ \mathcal A_{N,r}:\qquad
+ D_{N+r}\in -B_{h,N,r}+2^{r+1}\Z.
+\]
 
-\subsection{Prime gap reformulation}
-\textbf{Reader position.} 4 of 70; display band: front door.  Formal editorial disposition: promote.  These are separate classifications.
+\begin{theorem}[affine and fixed-lattice circularity]\label{long251:res:affinecollapse}\compatlabel{res:affinecollapse}
+For every rational dyadic tail recurrence and all $h,N,r\ge0$,
+\begin{equation}
+ \mathcal A_{N,r}\quad\Longleftrightarrow\quad D_N\in2\Z.
+\label{eq:affinecollapse}\compatlabel{long251:eq:affinecollapse}
+\end{equation}
+Consequently, if every $\delta_N$ is even, then
+\begin{equation}
+ \bigl(\forall N_0\ \exists N,r:\ N_0<N\text{ and }\neg\mathcal A_{N,r}\bigr)
+ \quad\Longleftrightarrow\quad
+ D_N\notin\Z\text{ for arbitrarily large }N.
+\label{eq:affinecofinal}\compatlabel{long251:eq:affinecofinal}
+\end{equation}
 
-\textbf{Reader entry.} Exact finite summation by parts, the unconditional infinite prime-gap identity, and irrationality equivalence.
+There is a second equivalence.  Let $b:\N\to\Q$ satisfy
+$|D_N|\le b(N)$ for every $N$, and suppose that for every $N$ and every
+positive integer $q$ there is an $r$ with
+\begin{equation}
+ 2b(N+r)q<2^r.
+\label{eq:dyadicscale}\compatlabel{long251:eq:dyadicscale}
+\end{equation}
+Then
+\begin{equation}
+ \begin{split}
+ &\forall N_0\ \exists N,r:\ N_0<N\text{ and }
+   \forall z\in\Z,\quad
+   b(N+r)<|B_{h,N,r}-2^rz|\\
+ &\hspace{35mm}\Longleftrightarrow\quad
+ D_N\notin\Z\text{ for arbitrarily large }N.
+ \end{split}
+\label{eq:fixedcollapse}\compatlabel{long251:eq:fixedcollapse}
+\end{equation}
+\end{theorem}
 
-Exact finite summation by parts, the unconditional infinite prime-gap identity, and irrationality equivalence.
+\begin{proof}
+Substituting $D_{N+r}=2^rD_N-B_{h,N,r}$ into $\mathcal A_{N,r}$ cancels the
+observed block from both sides and leaves $D_N=2z$.  This proves
+\eqref{eq:affinecollapse}.  After one recurrence step, evenness of
+$\delta_N$ identifies even integrality at $N+1$ with ordinary integrality at
+$N$.  The forward implication in~\eqref{eq:affinecofinal} follows, while the
+reverse implication chooses a nonintegral $D_N$ and the legal depth $r=0$.
 
-\textbf{Authority and reach.} Lean kernel; Comparator-selected; locally proved result; novelty unassessed.
+For~\eqref{eq:fixedcollapse}, eventual integrality and the block identity give
+some $z\in\Z$ with
+\[
+ B_{h,N,r}-2^rz=-D_{N+r},
+\]
+so the displayed strict separation contradicts $|D_{N+r}|\le b(N+r)$.
+Conversely, if $D_N$ is nonintegral and has reduced denominator $q$, then its
+distance from every integer is at least $1/q$.  Choose $r$ from
+\eqref{eq:dyadicscale}, scale this separation by $2^r$, and use the block
+identity together with $|D_{N+r}|\le b(N+r)$.  The triangle inequality gives
+$|B_{h,N,r}-2^rz|>b(N+r)$ for every integer $z$.
+\end{proof}
 
-\textbf{Exact boundary.} The equivalence does not prove irrationality of either series.
+\noindent The three displayed equivalences are assembled in one declaration,
+\href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/PaperCoreR7.lean\#L241}{affine circularity bundle}.
 
-\textbf{Result-atom population.} 4 of 681 public coordinates. The public atom catalog groups them under this family.
+The first equivalence shows that the apparent affine hierarchy contains no
+depth-dependent information: it is the pullback of even integrality through
+the recurrence identity.  The fixed lattice removes that data dependence, but
+under the stated growth condition rational denominator separation already
+forces every required escape.  Hence neither cofinal condition is an
+independent source of information about consecutive primes.
 
-\textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+\section{Mathematical and evidence map}\label{sec:erdos-251-complete-family-map}
+\paragraph{Perturbations.}
+The bounded construction and the sparse congruence-preserving theorem are
+existence results for altered integer words.  Their conclusion is not a
+prime-producing construction.  The ordinary sparse proof and the formal
+existence proof have different witnesses.
+\paragraph{Exact criteria.}
+Summation by parts identifies the actual tails.  Integral-shift, free-pair
+and lcm-diagonal criteria then classify rationality at the recurrence level.
+Their equivalence does not supply the missing prime-specific witnesses.
+\paragraph{Obstructions.}
+Polynomial growth, bounded residues, fixed-block nonconcentration and
+recurring gap values do not by themselves force the needed tail behaviour.
+The numbered constructions above give the precise counterexamples.
+\paragraph{Certificates.}
+Finite window comparisons and denominator exclusions are exact finite
+statements once the proved analytic remainder bounds are supplied.  A
+large rational-denominator floor is not an irrationality theorem.
+\paragraph{Formal evidence.}
+The revision's declaration ledger records the file, line, immutable
+revision and supplied build status of each linked declaration.  The older
+administrative family catalogue is retained verbatim with that ledger;
+counts of registry rows or project-wide families do not strengthen any
+mathematical statement.
 
-\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
-
-\subsection{Dyadic tail integrality classification}
-\textbf{Reader position.} 11 of 70; display band: major result.  Formal editorial disposition: merge.  These are separate classifications.
-
-\textbf{Reader entry.} For any integer-digit dyadic tail recurrence T(N+1) = 2*T(N) - g(N+1), the rational h-shift is integral exactly when the reduced denominator of T(N) divides 2\textasciicircum{}h - 1, equivalently when 2\textasciicircum{}h is congruent to 1 modulo that denominator. For the real recurrence, the load-bearing normal form says that irrationality of T(0) is equivalent to every positive tail shift being nonintegral; the eventual-integrality equivalence and denominator/order laws are supporting mechanism evidence.
-
-For any integer-digit dyadic tail recurrence T(N+1) = 2*T(N) - g(N+1), the rational h-shift is integral exactly when the reduced denominator of T(N) divides 2\textasciicircum{}h - 1, equivalently when 2\textasciicircum{}h is congruent to 1 modulo that denominator. For the real recurrence, the load-bearing normal form says that irrationality of T(0) is equivalent to every positive tail shift being nonintegral; the eventual-integrality equivalence and denominator/order laws are supporting mechanism evidence.
-
-\textbf{Authority and reach.} Lean kernel; Comparator-selected; abstract Lean-checked classification and normal form; novelty unassessed.
-
-\textbf{Exact boundary.} These exact statements cover arbitrary integer-digit dyadic tail recurrences with the declared rational and real state types; they classify integrality and give an irrationality normal form but do not supply a cofinal nonintegral shift for the consecutive-prime-gap recurrence. The generic hypotheses therefore do not close the prime-specific producer gap: no prime-gap irrationality, novelty, significance, or external review is claimed, and Erdős \#251 remains open. This is one abstract classification family, distinct from prime\_gap\_reformulation, not a duplicate frontier claim.
-
-\textbf{Result-atom population.} 10 of 681 public coordinates. The public atom catalog groups them under this family.
-
-\textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
-
-\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
-
-\begin{itemize}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one}
-  \item \nolinkurl{ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift}
-  \item \nolinkurl{ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral}
-\end{itemize}
-
-\subsection{Integral shift classification}
-\textbf{Reader position.} 27 of 70; display band: mechanism.  Formal editorial disposition: merge.  These are separate classifications.
-
-\textbf{Reader entry.} Block identities and exact denominator criteria classify rationality through integral positive tail shifts.
-
-Block identities and exact denominator criteria classify rationality through integral positive tail shifts.
-
-\textbf{Authority and reach.} Lean kernel; locally proved result; novelty unassessed.
-
-\textbf{Exact boundary.} The concrete prime-gap producer remains missing.
-
-\textbf{Result-atom population.} 1 of 681 public coordinates. The public atom catalog groups them under this family.
-
-\textbf{Comparator assurance.} not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
-
-\textbf{Publication placement.} This family is also admitted to the short note.
-
-\begin{itemize}
-  \item \nolinkurl{ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral}
-  \item \nolinkurl{ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one}
-\end{itemize}
-
-\subsection{Small mismatch criterion}
-\textbf{Reader position.} 45 of 70; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
-
-\textbf{Reader entry.} For the actual prime-gap dyadic tail, cofinally many adjacent pairs of strictly small h-shifts with unequal corresponding prime gaps force failure of eventual RatIntegral h-shifts. The adjacent-pair zero obstruction is the load-bearing mechanism; exact non-eventual periodicity of consecutive prime gaps supplies the actual-prime-gap contrast.
-
-For the actual prime-gap dyadic tail, cofinally many adjacent pairs of strictly small h-shifts with unequal corresponding prime gaps force failure of eventual RatIntegral h-shifts. The adjacent-pair zero obstruction is the load-bearing mechanism; exact non-eventual periodicity of consecutive prime gaps supplies the actual-prime-gap contrast.
-
-\textbf{Authority and reach.} Lean kernel; Comparator-selected; conditional actual-prime-gap endpoint reduction; novelty and significance unassessed.
-
-\textbf{Exact boundary.} The representative assumes T : \ensuremath{\mathbb{N}} \ensuremath{\to} \ensuremath{\mathbb{Q}}, the DyadicTailRecurrence for the actual prime-gap digits, and for every N\ensuremath{_{0}} an N \ensuremath{\ge} N\ensuremath{_{0}} whose adjacent h-shifts both lie strictly in (-1, 1) while the corresponding prime gaps differ. Under that cofinal small-mismatch supply it excludes eventual RatIntegral h-shifts; it does not prove the supply or actual smallness. rationalPrimeGapTail\_has\_positive\_shift\_not\_eventually\_small records the contrary rational-state obstruction for at least one positive shift. This is a conditional reduction only: no \#251 irrationality, infinite rational-sum limit, universal producer, novelty, priority, significance, or external-review claim is made; \#251 remains open. The actual-prime-gap specialization is distinct from coefficient\_only\_no\_go and does not duplicate prime\_gap\_reformulation.
-
-\textbf{Result-atom population.} 10 of 681 public coordinates. The public atom catalog groups them under this family.
-
-\textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
-
-\textbf{Publication placement.} This family is also admitted to the short note.
-
-\begin{itemize}
-  \item \nolinkurl{ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}
-  \item \nolinkurl{ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne}
-  \item \nolinkurl{ErdosProblems.Erdos251.primeGap0_not_eventually_periodic}
-  \item \nolinkurl{ErdosProblems.Erdos251.rationalPrimeGapTail_has_positive_shift_not_eventually_small}
-\end{itemize}
-
-\subsection{Coefficient only no go}
-\textbf{Reader position.} 51 of 70; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
-
-\textbf{Reader entry.} The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream.
-
-The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream.
-
-\textbf{Authority and reach.} Lean kernel plus authored synthesis; coefficient-only barrier; novelty and significance unassessed.
-
-\textbf{Exact boundary.} CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove \#251 irrationality, or make novelty, priority, significance, or external-review claims.
-
-\textbf{Result-atom population.} 3 of 681 public coordinates. The public atom catalog groups them under this family.
-
-\textbf{Comparator assurance.} exact selected interface; 2 executable interface(s), 2 repository-registered selected result interface(s).
-
-\textbf{Publication placement.} This family is also admitted to the short note.
-
-\begin{itemize}
-  \item \nolinkurl{ErdosProblems.Erdos251.carryPartialSum_natCast_eq}
-  \item \nolinkurl{ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic}
-  \item \nolinkurl{ErdosProblems.Erdos251.primeGap0_not_eventually_periodic}
-\end{itemize}
-
-\subsection{Totient shift propagation}
-\textbf{Reader position.} 60 of 70; display band: technical support.  Formal editorial disposition: merge.  These are separate classifications.
-
-\textbf{Reader entry.} Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.
-
-Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.
-
-\textbf{Authority and reach.} Lean kernel; locally proved result; novelty unassessed.
-
-\textbf{Exact boundary.} This describes rational states and supplies no contradiction for actual prime gaps.
-
-\textbf{Result-atom population.} 2 of 681 public coordinates. The public atom catalog groups them under this family.
-
-\textbf{Comparator assurance.} represented by selected interface; 0 executable interface(s), 0 repository-registered selected result interface(s).
-
-\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
-
-\begin{itemize}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_integral_succ}
-  \item \nolinkurl{ErdosProblems.Erdos251.tailShift_integral_add}
-\end{itemize}

@@ -1,5 +1,6 @@
 import ErdosProblems.Erdos1041.CriticalTwoRootProximity
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
+import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
 import ErdosProblems.Erdos1049.AdelicHeightBridge
 import ErdosProblems.Erdos1049.BezoutPluckerJets
 import ErdosProblems.Erdos1049.HermitePadeNoGo
@@ -17,6 +18,9 @@ import ErdosProblems.Erdos243.PrimitivePrefixRigidity
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos243.WeightedCRTRepair
+import ErdosProblems.Erdos243.ProtectedEpochEnergy
+import ErdosProblems.Erdos243.RecordIncrementBarrier
+import ErdosProblems.Erdos243.SaturatedSquareTransport
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.FiniteEulerSieve
 import ErdosProblems.Erdos249.FullDepthRayAmplifier

@@ -24,7 +24,7 @@
 \usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,
   citecolor=linkinternal]{hyperref}
 \hypersetup{bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
-  pdftitle={The Binary Totient Series: a detailed map of the current attack on Erdos Problem 249},
+  pdftitle={The Binary Totient Series: results and remaining arithmetic conditions for Erdos Problem 249},
   pdfauthor={Will Cook},pdflang={en-GB}}
 % Lean declaration names are full of underscores and are typeset in text mode.
 % Category codes are fixed when TeX READS a line, not when a macro expands, so
@@ -158,9 +158,9 @@
 
 \runninghead{Erd\H{o}s \#249: the binary totient series}
 \title{The Binary Totient Series}
-\subtitle{A detailed map of the current attack on Erd\H{o}s Problem~\#249}
+\subtitle{Results, proof dependencies and remaining arithmetic conditions\newline for Erd\H{o}s Problem~\#249}
 \author{Will Cook}
-\date{July 2026}
+\date{July 2026; revised 16 September 2026}
 
 \begin{document}
 \maketitle
@@ -171,15 +171,19 @@
 This paper gives a claim-bounded map of the current formal attack on Erd\H{o}s
 Problem~249, which asks whether
 $S=\sum_{n\ge1}\ph(n)/2^n$ is irrational.  The problem remains open.
-The unconditional headline results are an explicit rational basis for the
-full dyadic totient kernel, exact rank $2^e+1$ through every level $e\ge1$, a denominator
+The coefficient results include an explicit rational basis for the full
+dyadic totient kernel and rank $2^e+1$ through every level $e\ge1$;
+the companion short paper proves the all-base rank $k^e+1$ and integral
+normal form. Further results include a denominator
 exclusion through approximately $7.96\times10^{34}$, and finite
 lcm-diagonal certificates for every $t\le82$.  The full kernel is therefore
 infinite-dimensional, which recovers the case $k=2$ of Coons's theorem that
 $\ph$ is not $k$-regular.  The paper also records exact equivalences between
 irrationality and several cofinal certificate or tail-nonintegrality supplies.
-Those equivalences re-express rather than solve the problem: no certificate at
-$t=83$, unbounded certificate family, or irrationality proof is obtained.  The
+Those equivalences do not establish irrationality. The supplied record has
+no certificate at $t=83$ and no cofinal lcm-diagonal supply. It does contain
+unbounded full-depth families on a fixed ray once a seed is given;
+the unresolved obligation is a seed for every required ray and basepoint.  The
 contribution is the audited organization of checked results,
 coordinate-specific obstructions, and open implications---not a solution, an
 exhaustive reproduction of every repository theorem, or a priority claim for
@@ -194,13 +198,15 @@ open interfaces before work begins.  The machine-readable corpus remains the
 current inventory when later theorem waves outrun this exposition.  Three
 conventions carry the paper's claim boundary.
 
-\emph{Evidence bands.}  Every statement is tagged.  \ev{Lean} means a proof term
-was checked by the pinned Lean kernel.  \ev{Cert} means an exact finite
-computation, with no floating-point decision anywhere in it.  \ev{Math} means
-proved in ordinary mathematics in the sources but not formalised.  \ev{Cited}
-means established in the published literature.  \ev{Open} means not proved.
-These are never blurred, and a statement carrying one band is never described in
-language belonging to another.
+\emph{Evidence and logical scope.} \ev{Lean} identifies a formal theorem
+and its pinned source or supplied checking receipt; this editorial revision
+is not a fresh kernel replay. \ev{Cert} identifies an exact finite
+computation. \ev{Math} identifies an ordinary mathematical proof.
+\ev{Cited} identifies an external result, with a preprint labelled as such.
+\ev{Open} identifies an unproved assertion. A checked implication
+$P\Rightarrow Q$ does not establish $Q$ when $P$ remains open. Accordingly,
+proof authority and the scope of the assumptions must be read separately;
+a conditional Lean theorem can have an open arithmetic input.
 
 \emph{Scale.}  Every parameter-indexed statement is tagged \scale{fixed} (proved
 at specific listed values), \scale{bounded} (proved below an explicit bound),
@@ -222,9 +228,10 @@ identity or reduction, and \emph{socket} for the precise place where the
 missing hypothesis enters.  These are local navigation terms, not additional
 mathematical objects or evidence classes.
 
-Erd\H{o}s Problem 249 is open.  No section of this document claims
-otherwise, and a reduction of the problem to another statement is recorded as a
-reduction, never as progress toward a solution.
+No section of this document proves the irrationality of $S$. An equivalence
+identifies an alternative statement of that question; it does not discharge
+its arithmetic hypothesis. Independent structural results, finite
+certificates and conditional implications are therefore reported separately.
 \clearpage
 \tableofcontents
 \clearpage

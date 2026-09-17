@@ -12,17 +12,45 @@ For a finite nonempty prime set $`P`$, put $`h(a)=\prod_{p\in P}p^{v_p(a)}`$. We
 ``` math
 \sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
 ```
-has irrational $`\sum_{a\in A}(b^a-1)^{-1}`$ at every integer base $`b\ge2`$. The condition is hereditary and strictly weaker than reciprocal summability: an explicit host has divergent $`\sum_{a\in A}1/a`$ while satisfying the weighted condition. Finite gcd-orbit averages and a second average over dyadic observation lengths produce arbitrarily small positive displacements, which rationality would confine to a fixed lattice. Erdős already stated the weaker coprimality-free reciprocal-summable theorem, including its all-base quantifier, leaving its proof unprinted; an independent complete proof is printed here. A uniform finite averaging estimate also combines the weighted criterion with positive divisor covers: their union has the same hereditary irrationality property. These results have ordinary proofs; their analytic steps are not end-to-end Lean theorems. Universal irrationality remains unresolved.
+has irrational $`\sum_{a\in A}(b^a-1)^{-1}`$ at every integer base $`b\ge2`$. The condition is hereditary and strictly weaker than reciprocal summability: an explicit host has divergent $`\sum_{a\in A}1/a`$ while satisfying the weighted condition. Finite gcd-orbit averages and a second average over dyadic observation lengths produce arbitrarily small positive displacements, which rationality would confine to a fixed lattice. Erdős already stated the weaker coprimality-free reciprocal-summable theorem, including its all-base quantifier, leaving its proof unprinted; an independent complete proof is printed here. A uniform finite averaging estimate also combines the weighted criterion with positive divisor covers: their union has the same hereditary irrationality property. These are sufficient support criteria, not a resolution for arbitrary infinite support. The finite arithmetic and rational-target questions are kept distinct from the irrationality results.
 
 <a id="sec:problem"></a>
 
 # Introduction and main results
 
-Write $`X_A(b)=\sum_{a\in A}(b^a-1)^{-1}`$ for $`A\subseteq\mathbb{N}_{>0}`$ and an integer $`b\ge2`$. We begin with the simpler reciprocal-summable case; Section <a href="#sec:eight-return-extensions" data-reference-type="ref" data-reference="sec:eight-return-extensions">3</a> proves the stronger finite-prime weighted criterion and its combination with positive divisor covers.
+For $`A\subseteq\mathbb{N}_{>0}`$ and a real $`b>1`$, write
+``` math
+X_A(b)=\sum_{a\in A}\frac1{b^a-1}.
+```
+All these series converge: $`(b^a-1)^{-1}\le b^{1-a}/(b-1)`$. Our main sufficient condition uses a finite nonempty set $`P`$ of primes and its prime part $`h(a)=\prod_{p\in P}p^{v_p(a)}`$.
+
+<div id="res:weighted-support" class="theorem">
+
+**Theorem 1** (finite prime-part weighted mass). *Let $`b\ge2`$ be an integer and let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
+``` math
+\begin{equation}
+\label{eq:weighted-fixed-base}
+ W_{b,P}(A):=\sum_{a\in A}
+ \frac{h(a)}{a(b^{h(a)}-1)}<\infty,
+\end{equation}
+```
+then $`X_A(b)`$ is irrational. In particular, the base-two condition
+``` math
+\begin{equation*}
+\label{eq:weighted-return}
+ \sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
+ \tag{W}
+\end{equation*}
+```
+implies that $`X_A(b)`$ is irrational for every integer $`b\ge2`$. Both conclusions are hereditary under passage to infinite subsets.*
+
+</div>
+
+The proof is in Section <a href="#sec:eight-return-extensions" data-reference-type="ref" data-reference="sec:eight-return-extensions">3</a>. Its conclusion is obtained by finite averaging, not by passing to an uncontrolled infinite mean. The reciprocal-summable theorem below supplies a simpler model for the argument. Since $`h/(2^h-1)\le1`$ for integers $`h\ge1`$, its hypothesis implies the base-two weighted condition. Strictness is witnessed by the host constructed after the proof of Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a>.
 
 <div id="res:reciprocal-support" class="theorem">
 
-**Theorem 1** (reciprocal-summable supports). *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
+**Theorem 2** (reciprocal-summable supports). *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
 ``` math
 \sum_{a\in A}\frac1a<\infty,
 ```
@@ -30,7 +58,9 @@ then $`X_A(b)`$ is irrational for every integer $`b\ge2`$.*
 
 </div>
 
-Erdős stated Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a>, with its all-base quantifier, and printed a proof only for pairwise coprime supports \[erdos1968, p. 222\]; the history is recalled below. The statement is ordinary mathematics in this note. This checkout has no module `AllBaseReciprocalSupportIrrationality.lean` and no Lean declaration `irrational_erdosSupportSeries_of_summable_reciprocal`. The separate public Lean release [`wcook04/plectis-erdos-lean`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E257/Challenge.lean#L713) states Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> at commit `52f29ad1` as `irrational_supportPowerSeries_of_summable_reciprocal` in `PalomarCorpus/E257/Challenge.lean`, with the base an integer at least 2, the support infinite and the reciprocal support terms summable, and proves it under `Solutions/PalomarCorpus/E257`. That repository’s Linux replay of Palomar’s Comparator stage accepted the entry with the Lean kernel and with NanoDa ([run 34782407633](https://github.com/wcook04/plectis-erdos-lean/actions/runs/34782407633)). The checked proof is a later counterpart, identified separately rather than attributed to the checkpoint of this note. The nearby [pairwise-coprime support theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776) keeps an extra pairwise-coprimality hypothesis together with summable reciprocal mass, and is therefore a structured-support theorem, not Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a>. Full support at every integer base is the separate [full-support irrationality theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328). Arbitrary infinite support remains open.
+Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a>, including its all-base quantifier, is attributed to Erdős \[erdos1968, p. 222\]; the printed coprime argument and the stated coprimality-free extension must not be conflated. The proof below is supplied independently, without identifying it with his omitted argument. The historical source-access limitation and the formal counterparts are recorded in Appendix <a href="#app:sources" data-reference-type="ref" data-reference="app:sources">11</a>. The supplied release at `52f29ad173b0` includes solution wrappers for reciprocal support, weighted support, variable-exponent covers and the mixed criterion. Their selected source files and statement comparisons are distributed with this revision. The existential weighted host wrapper must not be cited as a proof of the particular explicit host $`A_\star`$. The latter has its own ordinary proof above. Historical links below are retained as source locators, not presented as newly verified URLs.
+
+The nearby [pairwise-coprime support theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776) keeps an extra pairwise-coprimality hypothesis together with summable reciprocal mass, and is therefore a structured-support theorem, not Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a>. Full support at every integer base is the separate [full-support irrationality theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328). Arbitrary infinite support remains open.
 
 Erdős remarks that without coprimality the proof becomes more complicated and uses the fact that $`\alpha`$ is irrational when the fractional parts of $`t^n\alpha`$ take infinitely many values \[erdos1968, p. 226\]. For infinite $`A`$ and $`N>0`$, division of $`N`$ by each $`a\in A`$ gives
 ``` math
@@ -39,24 +69,30 @@ Erdős remarks that without coprimality the proof becomes more complicated and u
  =(b^N-1)X_A(b)-J_{b,A}(N),\qquad J_{b,A}(N)\in\mathbb{Z}.
  \label{eq:intro-displacement}\tag{D}
 ```
-Only $`a\le N`$ contribute to $`J_{b,A}(N)`$. Every summand in the displacement is nonnegative, and an exponent $`a>N`$ gives a positive summand; such an exponent exists because $`A`$ is infinite. Rationality $`X_A(b)=p/q`$ would force every positive displacement to be at least $`1/q`$. The proof makes these positive displacements arbitrarily small by averaging along multiples of a growing divisibility modulus.
+Here the integer is the evaluation of the finite polynomial
+``` math
+J_A(N;x)=\sum_{\substack{a\in A\\a\le N}}
+             \sum_{j=1}^{\lfloor N/a\rfloor}x^{N-ja},
+ \qquad J_{b,A}(N)=J_A(N;b).
+```
+The identity holds for every real $`b>1`$; integrality uses the integer-base hypothesis. Every summand in the displacement is nonnegative, and an exponent $`a>N`$ gives a positive summand; such an exponent exists because $`A`$ is infinite. Rationality $`X_A(b)=p/q`$ would force every positive displacement to be at least $`1/q`$. The proof makes these positive displacements arbitrarily small by averaging along multiples of a growing divisibility modulus.
 
 The conclusion is hereditary: every infinite subset of such an $`A`$ satisfies the theorem at every base. For example, every powerful integer can be written as $`u^2v^3`$, so
 ``` math
 \sum_{\substack{a\ge1\\a\text{ powerful}}}\frac1a
  \le\zeta(2)\zeta(3)<\infty.
 ```
-Thus arbitrary infinite thinnings of the powerful integers are included. For the full set of perfect $`i`$th powers, $`i\ge2`$, irrationality at every integer base is also a case of Corollary 1.2 of Duverney and Tachiya, taken with $`E`$ the primes and $`s=\infty`$ \[duverneytachiya, p. 4\].
+Thus arbitrary infinite thinnings of the powerful integers are included. For the full set of perfect $`i`$th powers, $`i\ge2`$, irrationality at every integer base is also a case of Corollary 1.2 of Duverney and Tachiya, taken with $`E`$ the primes and $`s=\infty`$ \[duverneytachiya, p. 4\]. Their refinement belongs to the linear-independence line that includes Luca and Tachiya’s earlier paper \[lucatachiya2014independence\]; the hereditary thinning conclusion above should still be stated separately from full-support instances.
 
 <div id="res:problem" class="problem">
 
-**Problem 2** (Erdős \#257). Is $`X_A(2)`$ irrational for every infinite $`A\subseteq\mathbb{N}_{>0}`$?
+**Problem 3** (Erdős \#257). Is $`X_A(2)`$ irrational for every infinite $`A\subseteq\mathbb{N}_{>0}`$?
 
 </div>
 
-Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> excludes the entire reciprocal-summable region. Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a> reaches a strictly larger class and an explicit reciprocal-divergent host. Theorem <a href="#res:mixed-supports" data-reference-type="ref" data-reference="res:mixed-supports">5</a> combines weighted supports and positive covers by producing a common small displacement. Later sections keep the quantitative, prime-power and stronger host constructions separate where their arguments are not independently assessable from this checkout. The final section retains the actual arithmetic constraint for a proposed rational value.
+Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a> gives the principal support criterion; Theorem <a href="#res:mixed-supports" data-reference-type="ref" data-reference="res:mixed-supports">5</a> combines it with positive divisor covers by producing a common small displacement. Sections <a href="#sec:forced" data-reference-type="ref" data-reference="sec:forced">5</a> and <a href="#sec:actual-repairs" data-reference-type="ref" data-reference="sec:actual-repairs">8</a> distinguish irrationality tests from the membership problem for a specified rational. Claims depending on missing supplements are catalogued separately, not used as premises of these proofs.
 
-Erdős proved the pairwise-coprime case at every integer base and stated that the coprimality condition could be removed, leaving the details unprinted \[erdos1968, p. 222\]. Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> gives a complete proof of that stated extension, obtained independently. The all-base quantifier is already in Erdős’s statement. No priority over Erdős is claimed and no identification with his omitted argument is asserted. Erdős also wrote that the condition $`\sum1/n_i<\infty`$ could be replaced by a weaker but more complicated condition, and that for pairwise coprime supports Brun’s method could probably replace it by $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ \[erdos1968, pp. 222 and 226\]. Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a> proves irrationality under one explicit weaker condition, without coprimality; no identification with the conditions he suggested is asserted.
+Erdős proved the pairwise-coprime case at every integer base and stated that the coprimality condition could be removed, leaving the details unprinted \[erdos1968, p. 222\]. Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a> gives a complete proof of that stated extension, obtained independently. The all-base quantifier is already in Erdős’s statement. No priority over Erdős is claimed and no identification with his omitted argument is asserted. Erdős also wrote that the condition $`\sum1/n_i<\infty`$ could be replaced by a weaker but more complicated condition, and that for pairwise coprime supports Brun’s method could probably replace it by $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ \[erdos1968, pp. 222 and 226\]. Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a> proves irrationality under one explicit weaker condition, without coprimality; no identification with the conditions he suggested is asserted.
 
 The coefficient sequence throughout is the divisor transform of one Boolean selector:
 ``` math
@@ -66,7 +102,7 @@ The coefficient sequence throughout is the divisor transform of one Boolean sele
  \label{eq:incidence}
 \end{equation}
 ```
-Nonnegative interchange proves this identity. The coefficients may exceed one, and their common origin in a single support will matter below.
+Tonelli’s theorem applied to $`(b^a-1)^{-1}=\sum_{j\ge1}b^{-aj}`$ proves the identity. Moreover $`0\le c_A(n)\le\tau(n)`$. The coefficients need not be Boolean: it is the selector $`1_A`$, not its divisor transform $`c_A`$, that takes values in $`\{0,1\}`$. All subsequent orbit conditions must retain that common origin.
 
 <a id="sec:reciprocal-support"></a>
 
@@ -97,7 +133,7 @@ For example, at $`b=2`$, $`Q=4`$ and $`d=6`$, the orbit is $`4,2,0`$ modulo $`6`
  =\frac{Q/(b-1)+b/(b-1)^2}{d}\le\frac{Q+2}{d}.
 \end{align*}
 ```
-Indeed, the counted multiples are distinct and at most $`QX+r`$. Reciprocal summability now permits dominated convergence, so the Cesaro mean of $`T_{Qm}^{(b)}`$ tends to $`\sum_{d\in A}M_{Q,b}(d)`$.
+Indeed, the counted multiples are distinct and at most $`QX+r`$. For this fixed $`Q`$, the majorant $`(Q+2)/d`$ is summable over $`A`$. Dominated convergence therefore takes the observation-length limit inside the sum over $`d`$, giving the Cesàro mean $`\sum_{d\in A}M_{Q,b}(d)`$. This majorant is not uniform in growing $`Q`$.
 
 Next let $`Q_t=\operatorname{lcm}(1,\ldots,t)`$. For each fixed $`d`$, eventually $`d\mid Q_t`$ and $`M_{Q_t,b}(d)=(b^d-1)^{-1}`$. A second dominated-convergence argument, using $`M_{Q_t,b}(d)\le1/d`$, yields
 ``` math
@@ -106,17 +142,17 @@ Next let $`Q_t=\operatorname{lcm}(1,\ldots,t)`$. For each fixed $`d`$, eventuall
  \label{eq:lcm-prefix-orbit-limit}
 \end{equation}
 ```
-Thus the limiting averages of the nonnegative displacements $`\Delta_{b,A}(Q_tm)`$ tend to zero. Choose $`t`$, then a sufficiently long finite average, and finally a term no larger than that average. This gives arbitrarily small positive displacements, contradicting the rational lattice in <a href="#eq:intro-displacement" data-reference-type="eqref" data-reference="eq:intro-displacement">[eq:intro-displacement]</a>. This proves Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> directly at every integer base.
+Thus the limiting averages of the nonnegative displacements $`\Delta_{b,A}(Q_tm)`$ tend to zero. Choose $`t`$, then a sufficiently long finite average, and finally a term no larger than that average. This gives arbitrarily small positive displacements, contradicting the rational lattice in <a href="#eq:intro-displacement" data-reference-type="eqref" data-reference="eq:intro-displacement">[eq:intro-displacement]</a>. This proves Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a> directly at every integer base.
 
 The order of limits is essential: the observation length tends to infinity with the modulus fixed, and only then does the modulus increase. Reciprocal summability controls both interchanges.
 
-Section 2 contains the complete reciprocal-summable support argument. The next section proves a strictly weaker finite-prime weighted hypothesis. The later quantitative, prime-power and cost-separation claims remain separately unassessed where their proofs are not printed here.
+The weighted proof cannot use the same summable $`1/d`$ majorant. Its replacement is a finite estimate that keeps both the modulus and the observation length visible until the parameters have been chosen.
 
 <a id="sec:eight-return-extensions"></a>
 
 # Extensions beyond reciprocal summability
 
-The finite-prime weighted theorem below has a complete ordinary proof in this manuscript. The finite estimate (S) and strengthened cover theorem later in this section retain their separate proofs.
+Three inputs are used in order: a finite orbit estimate for each exponent, a dyadic average controlling incomplete periods, and a summable weighted tail after a finite head has been frozen. The estimate (S) below supplies the uniformity needed to use the same finite distribution for covers.
 
 <a id="finite-prime-part-weighted-mass"></a>
 
@@ -124,27 +160,7 @@ The finite-prime weighted theorem below has a complete ordinary proof in this ma
 
 For a finite nonempty prime set $`P`$, put $`h(a)=\prod_{p\in P}p^{v_p(a)}`$.
 
-<div id="res:weighted-support" class="theorem">
-
-**Theorem 3** (finite prime-part weighted mass). *Let $`b\ge2`$ be an integer and let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
-``` math
-\begin{equation}
-\label{eq:weighted-fixed-base}
- W_{b,P}(A):=\sum_{a\in A}
- \frac{h(a)}{a(b^{h(a)}-1)}<\infty,
-\end{equation}
-```
-then $`X_A(b)`$ is irrational. In particular, the base-two condition
-``` math
-\begin{equation*}
-\label{eq:weighted-return}
- \sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
- \tag{W}
-\end{equation*}
-```
-implies that $`X_A(b)`$ is irrational for every integer $`b\ge2`$. Both conclusions are hereditary under passage to infinite subsets.*
-
-</div>
+Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a> was stated in the introduction. We prove its fixed-base version; the base-two condition implies every integer-base instance because $`b^{h(a)}-1\ge2^{h(a)}-1`$.
 
 <div class="proof">
 
@@ -195,7 +211,7 @@ For the gcd claim, either every $`P`$-prime-power component of $`h(a)`$ is at mo
  +\frac{G(1+\log Q+2M\log2)+Q}{b^G-1}+4\,2^{-M}.
 \end{equation}
 ```
-Here $`Q\le LH^r`$, $`G=H/p_*+O(1)`$ and $`M\asymp b^{G/2}`$, so every term after $`\varepsilon`$ tends to zero. The left side is a finite average of positive displacements, so one is below $`2\varepsilon`$ for large $`H`$; rerunning with $`\varepsilon/2`$ gives the required bound. This contradicts the rational lattice. Finally $`W_{b,P}(A)\le W_{2,P}(A)`$ for $`b\ge2`$, and weighted mass decreases on taking subsets. ◻
+The choices have the following order: fix the tail budget $`\varepsilon`$, choose the finite head and its common multiple $`L`$, and only then let $`H\to\infty`$. With $`L`$ fixed, $`Q\le LH^r`$, $`G=H/p_*+O(1)`$ and $`M\asymp b^{G/2}`$, so every term after $`\varepsilon`$ tends to zero. This proves existence of small returns, not a specified decay rate in the final index $`N=Qt`$. The left side is a finite average of positive displacements, so one is below $`2\varepsilon`$ for large $`H`$; rerunning with $`\varepsilon/2`$ gives the required bound. This contradicts the rational lattice. Finally $`W_{b,P}(A)\le W_{2,P}(A)`$ for $`b\ge2`$, and weighted mass decreases on taking subsets. ◻
 
 </div>
 
@@ -215,9 +231,9 @@ so $`\sum_{a\in A_\star}1/a`$ diverges. For $`P=\{2\}`$ the weighted mass of tha
 ```
 and these terms are summable. Thus every infinite subset of $`A_\star`$ has irrational $`X_A(b)`$ at every integer base. This example establishes strictness only; the stronger previously proposed host with $`O(\log\log a)`$ gaps is not asserted here.
 
-The theorem and this example are complete ordinary proofs. No single Lean declaration is cited as their proof, and no priority claim is made. The arbitrary-chain, quantitative and prime-power extensions remain separate from Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a>.
+The theorem and this example have the ordinary proofs just given. The explicit host calculation is separate from the existential host statements in the supplied formal release; they are not identified solely by name. The arbitrary-chain, quantitative and prime-power extensions remain separate from Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a>.
 
-The proofs of Theorems <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> and <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a> select a term no larger than a finite average. Duverney and Tachiya select their index in the same way in their refinement of the Chowla–Erdős method. They average a local coefficient mass over an arithmetic progression built by the Chinese remainder theorem, and a term attaining the minimum supplies the bounds that control the tail beyond it \[duverneytachiya, Section 2, (2.3)–(2.9), pp. 5–6\]. Kaneko, Suzuki and Tachiya measure the average decay of scaled tails by the quantity $`R_c(q,x,z)`$ of their (1.7). Under a counting condition on the support and a bound on $`R_c`$ they show that most scaled tails in a range are small, and arbitrarily small nonzero scaled tails give irrationality \[kanekosuzukitachiya, p. 3; Lemmas 1 and 2, pp. 6–8\]. The incidence coefficients <a href="#eq:incidence" data-reference-type="eqref" data-reference="eq:incidence">[eq:incidence]</a> are positive on every multiple of $`\min A`$. For any splitting of $`c_A`$ into two sequences the two coefficient supports therefore cover a set of positive lower density, which is incompatible with the support-counting conditions \[kanekosuzukitachiya, Theorem 1(iii), p. 3, and Theorem 3(iv), p. 5\] requiring both counts to be $`o(x_n/z_n)`$ with $`z_n\ge1`$. Their remote-tail quantity $`R_c(q,x,z)`$ sums only offsets $`j\ge z`$, whereas the full scaled tail
+The proofs of Theorems <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a> and <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">1</a> select a term no larger than a finite average. Duverney and Tachiya select their index in the same way in their refinement of the Chowla–Erdős method. They average a local coefficient mass over an arithmetic progression built by the Chinese remainder theorem, and a term attaining the minimum supplies the bounds that control the tail beyond it \[duverneytachiya, Section 2, (2.3)–(2.9), pp. 5–6\]. Kaneko, Suzuki and Tachiya measure the average decay of scaled tails by the quantity $`R_c(q,x,z)`$ of their (1.7). Under a counting condition on the support and a bound on $`R_c`$ they show that most scaled tails in a range are small, and arbitrarily small nonzero scaled tails give irrationality \[kanekosuzukitachiya, p. 3; Lemmas 1 and 2, pp. 6–8\]. The incidence coefficients <a href="#eq:incidence" data-reference-type="eqref" data-reference="eq:incidence">[eq:incidence]</a> are positive on every multiple of $`\min A`$. For any splitting of $`c_A`$ into two sequences the two coefficient supports therefore cover a set of positive lower density, which is incompatible with the support-counting conditions \[kanekosuzukitachiya, Theorem 1(iii), p. 3, and Theorem 3(iv), p. 5\] requiring both counts to be $`o(x_n/z_n)`$ with $`z_n\ge1`$. Their remote-tail quantity $`R_c(q,x,z)`$ sums only offsets $`j\ge z`$, whereas the full scaled tail
 ``` math
 \sum_{r\ge1}\frac{c_A(N+r)}{b^r}
  =\sum_{a\in A}\frac{b^{N\bmod a}}{b^a-1}
@@ -311,7 +327,7 @@ This is possible since $`\varepsilon^{-\alpha_j}\le\max(1,\varepsilon^{-1})`$. C
 ``` math
 0<\Delta_{2,A}(N)\le\sum_{j>J}U_j(N)\le\varepsilon.
 ```
-The fixed rational lattice excludes rationality at base two. For every $`b\ge2`$, the elementary atom inequality $`(b^r-1)/(b^d-1)\le2(2^r-1)/(2^d-1)`$ for $`0\le r<d`$ gives the same conclusion at base $`b`$; that inequality is ordinary in this note (`CoverKernel.lean` is absent). Any prescribed positive divisor can be included in $`L`$, so the witnesses can also be required to be arbitrarily large. ◻
+The fixed rational lattice excludes rationality at base two. For $`0\le r<d`$, the function $`(b^r-1)/(b^d-1)`$ is nonincreasing on $`b>1`$. For $`r>0`$, cancel $`b-1`$ and write it as $`A(b)/(A(b)+C(b))`$, where $`A(b)=\sum_{i<r}b^i`$ and $`C(b)=\sum_{r\le j<d}b^j`$. Its derivative has the sign of $`A'C-AC'=\sum_{i<r\le j<d}(i-j)b^{i+j-1}<0`$. Thus $`\Delta_{b,A}(N)\le\Delta_{2,A}(N)`$ for every real $`b\ge2`$; when $`b`$ is an integer, the same rational-lattice argument applies. Any prescribed positive divisor can be included in $`L`$, so the witnesses can also be required to be arbitrarily large. ◻
 
 </div>
 
@@ -321,7 +337,7 @@ The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: 
 
 ## What every positive cover must pay
 
-The strengthening has a cover-independent boundary. For finite $`F`$, write $`\mathbb E_F`$ for the uniform mean modulo $`\operatorname{lcm}(F)`$. More generally allow weights $`\eta_j>0`$ with $`\sum_j\eta_j=1`$, and set
+The strengthening has a cover-independent boundary. For finite $`F`$, write $`\mathbb E_F`$ for the uniform mean modulo $`\operatorname{lcm}(F)`$, with $`\operatorname{lcm}(\varnothing)=1`$ and $`f_{\varnothing}=0`$. More generally allow weights $`\eta_j>0`$ with $`\sum_j\eta_j=1`$, and set
 ``` math
 K=\sum_j\frac{C_j\eta_j^{-\alpha_j}}{2^{\alpha_j}-1},\qquad
  \Psi(0)=0,\quad
@@ -343,7 +359,12 @@ This bound survives optimisation over all covers. For $`F(q,P)=\{qd:d\mid\prod_{
  \label{eq:optimal-cube-cost}
 \end{equation}
 ```
-For the lower bound, condition on $`q\mid n`$ and write $`f_F(n)=2^Z`$. The Chinese remainder theorem gives $`\mathbb EZ=S`$, and direct minimisation gives $`\Psi(2^z)\ge e(z-1)`$. For the upper bound, use the single frame, $`z=1/S`$, and $`\alpha=\log_2(1+z)`$; its exact positive expansion has cost
+For the lower bound, condition on $`q\mid n`$ and write $`f_F(n)=2^Z`$. The Chinese remainder theorem gives $`\mathbb EZ=S`$. For $`z\ge0`$ and $`v=\alpha\log2>0`$,
+``` math
+\frac{2^{\alpha z}}{2^\alpha-1}
+ \ge\frac{e^{(z-1)v}}v\ge e(z-1)\quad(z>1);
+```
+for $`0\le z\le1`$ the claimed lower bound is nonpositive. This proves $`\Psi(2^z)\ge e(z-1)`$ without an unstated minimisation. For the upper bound, use the single frame, $`z=1/S`$, and $`\alpha=\log_2(1+z)`$; its exact positive expansion has cost
 ``` math
 \frac1{qz}\prod_{p\in P}(1+z/p)\le\frac{eS}q.
 ```
@@ -394,7 +415,7 @@ Overlaps between the supports only improve the inequality. Infinitude of $`A`$ m
 
 This is a complete ordinary proof. It does not establish the unavailable constructions $`A_W,A^\star`$ or strict enlargement over both individual classes. Those separation claims retain the boundary stated above.
 
-With arbitrary positive cover weights, the class of subsets of such mixed hosts is closed under finite unions and finite changes. For weighted supports use the union of the two finite prime sets: the prime part grows and $`h/(2^h-1)`$ decreases. For two covers, interleave their frames with weights $`\eta_j/2`$ and $`\theta_j/2`$; the total cost grows by at most two, since $`2^{\alpha_j}\le2`$. Subsets inherit the same hosts, and finite sets have finite weighted mass. This argument uses the positive-weight variant; it does not silently reindex the dyadic weights in (V). Countable unions require a tail budget. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$. The reciprocal-summable class is contained in the weighted class, since $`h/(2^h-1)\le1`$. Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> supplies the direct proof of that baseline case.
+With arbitrary positive cover weights, the class of subsets of such mixed hosts is closed under finite unions and finite changes. For weighted supports use the union of the two finite prime sets: the prime part grows and $`h/(2^h-1)`$ decreases. For two covers, interleave their frames with weights $`\eta_j/2`$ and $`\theta_j/2`$; the total cost grows by at most two, since $`2^{\alpha_j}\le2`$. Subsets inherit the same hosts, and finite sets have finite weighted mass. This argument uses the positive-weight variant; it does not silently reindex the dyadic weights in (V). Countable unions require a tail budget. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$. The reciprocal-summable class is contained in the weighted class, since $`h/(2^h-1)\le1`$. Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a> supplies the direct proof of that baseline case.
 
 <a id="the-prime-power-regime."></a>
 
@@ -416,7 +437,7 @@ For a finite nonempty $`F\subseteq\mathbb{N}_{>0}`$, let $`D_F`$ be the positive
 ``` math
 \operatorname{ord}_{D_F}(b)=\operatorname{lcm}\{n:n\in F\}.
 ```
-If moreover $`\operatorname{lcm}(F)\ge2`$, then $`\operatorname{lcm}(F)<D_F`$.*
+If moreover $`\operatorname{lcm}(F)\ge2`$, then $`\operatorname{lcm}(F)<D_F`$. We use $`\operatorname{ord}_1(b)=1`$, so the statement includes $`F=\{1\}`$ at $`b=2`$.*
 
 </div>
 
@@ -424,12 +445,12 @@ Coprimality is [base coprimality of the reduced denominator](https://github.com/
 
 Put $`L=\operatorname{lcm}(F)`$. Clearing denominators gives $`D_F\mid b^L-1`$, so the upper divisibility for the order is immediate. For the reverse, choose $`n\ge2`$ maximal under divisibility in $`F`$ and a prime $`\ell\mid\Phi_n(b)`$. If $`e=v_\ell(b^n-1)`$, the full prime power $`\ell^e`$ has $`\operatorname{ord}_{\ell^e}(b)=n`$. Every other selected exponent $`m`$ has $`n\nmid m`$, hence $`v_\ell(b^m-1)<e`$. The $`n`$th summand has uniquely smallest $`\ell`$-adic valuation and cannot cancel. Thus $`\ell^e\mid D_F`$ and $`n\mid\operatorname{ord}_{D_F}(b)`$. Taking all maximal selected exponents proves the order statement; the size bound follows from $`\operatorname{ord}_{D_F}(b)\mid\varphi(D_F)<D_F`$ when $`L\ge2`$. The case $`F=\{1\}`$ has order one directly.
 
-The same unique-valuation argument permits any signs $`\pm1`$ on the finite summands; that signed extension is ordinary in this note (`SignedFinitePeriodNoncollapse.lean` is not in this checkout). Its cyclotomic prime-power lemma, including the $`2`$-adic case, is proved in *Finite Denominator Realisation*. The distinction between primes and prime powers is visible in
+The same unique-valuation argument permits any signs $`\pm1`$ on the finite summands; that signed extension is ordinary in this note (`SignedFinitePeriodNoncollapse.lean` is not in this checkout). The required cyclotomic prime-power fact is proved in Appendix <a href="#app:elementary-details" data-reference-type="ref" data-reference="app:elementary-details">10</a>; no unavailable supplement is needed for this argument. The distinction between primes and prime powers is visible in
 ``` math
 X_{\{2,3\}}(2)=\frac{10}{21},\qquad
  X_{\{2,6\}}(2)=\frac{22}{63}.
 ```
-Both denominators have order six. The first combines orders two and three, while the second retains the order-six prime power $`9`$; no prime divisor of $`63`$ itself has order six. The boundary $`F=\{1\}`$ at base two has $`D_F=L=1`$. These lower denominator bounds give no upper height control for infinite partial sums and do not decide an infinite-support value.
+Both denominators have order six. The first combines orders two and three, while the second retains the order-six prime power $`9`$; no prime divisor of $`63`$ itself has order six. The boundary $`F=\{1\}`$ at base two has $`D_F=L=1`$. These lower denominator bounds give no upper height control for infinite partial sums and do not decide an infinite-support value. By contrast, Van Assche constructs approximants for the full Lambert series and proves both nonvanishing and decay of the associated integer linear forms \[vanassche2001, Lemma 1 and (34)–(35)\]. That approximation mechanism does not follow from denominator survival alone.
 
 <a id="sec:forced"></a>
 
@@ -444,7 +465,7 @@ when $`X_A(2)=p/v`$. The sequence $`c_A`$ is determined by one Boolean selector.
 
 Two elementary facts explain why size information alone has little force here. If $`a_0=\min A`$, every $`a_0`$ consecutive integers contain a multiple of $`a_0`$, so a divisor-incidence zero window has length at most $`a_0-1`$. If $`A`$ is infinite, choose $`k`$ exponents and a common multiple $`L`$; then $`c_A(L)\ge k`$ and $`T_{L-1}^{(2)}\ge k/2`$. Both facts hold without rationality. The arithmetic information lies in the lattice and in the compatibility of all coefficients with the same selector.
 
-Precisely, Dirichlet convolution gives $`\mu*c_A=\mathbf1_A`$, where $`\mu`$ is the Möbius function. A putative recurrence with integral forcing must therefore satisfy $`(\mu*c_A)(n)\in\{0,1\}`$ for all $`n`$. The complete Boolean–Möbius scaled-tail correspondence and its finite example are retained in the long record, under *Exact descriptions of a rational-valued support* (Theorem `thm:bmc`). The correspondence permits finite supports; infinitude remains a separate requirement for a counterexample to Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">2</a>.
+Precisely, Dirichlet convolution gives $`\mu*c_A=\mathbf1_A`$, where $`\mu`$ is the Möbius function. A putative recurrence with integral forcing must therefore satisfy $`(\mu*c_A)(n)\in\{0,1\}`$ for all $`n`$. The complete Boolean–Möbius scaled-tail correspondence and its finite example are retained in the long record, under *Exact descriptions of a rational-valued support* (Theorem `thm:bmc`). The correspondence permits finite supports; infinitude remains a separate requirement for a counterexample to Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>.
 
 <a id="sec:map"></a>
 
@@ -458,9 +479,9 @@ The preceding criteria establish irrationality through small positive returns. T
 ```
 The full-support value is nevertheless [irrational](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328) \[erdos1948\]. A universal proof must therefore control arithmetic behaviour beyond small returns.
 
-The distinction also appears in the squarefree support. Its series is irrational at every base $`2^j`$, $`j\ge1`$, by Corollary 1.2 and Example 1.1 of Duverney and Tachiya \[duverneytachiya, p. 4\]. Their corollary covers the $`s`$-free products of any pairwise coprime sequence of polynomial growth, and they present it as support for the conjecture of Erdős and Graham stated here as Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">2</a>. The zero-window obstruction for one normalised certificate scheme concerns that scheme’s hypotheses. It gives no obstruction to irrationality of the value. The precise normalisation counterexamples are retained in the long record, together with the complete catalogue of known support families.
+The distinction also appears in the squarefree support. Its series is irrational at every base $`2^j`$, $`j\ge1`$, by Corollary 1.2 and Example 1.1 of Duverney and Tachiya \[duverneytachiya, p. 4\]. Their corollary covers the $`s`$-free products of any pairwise coprime sequence of polynomial growth, and they present it as support for the conjecture of Erdős and Graham stated here as Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a>. The zero-window obstruction for one normalised certificate scheme concerns that scheme’s hypotheses. It gives no obstruction to irrationality of the value. The precise normalisation counterexamples are retained in the long record, together with the complete catalogue of known support families.
 
-A separate sufficient condition family is stated in terms of growth alone. Erdős proved irrationality of $`\sum_n1/a_n`$ for increasing integers with $`a_n>n^{1+\tau}`$ for some $`\tau>0`$ and all large $`n`$, together with $`\limsup_na_n^{1/2^n}=\infty`$ \[erdos1975, Theorem 1, p. 1\]. At $`a_n=2^{c_n}-1`$ the polynomial hypothesis is automatic, since $`c_n\ge n`$ gives $`a_n\ge2^n-1`$, and $`\log_2(2^{c_n}-1)`$ differs from $`c_n`$ by at most $`1`$, so the growth hypothesis reduces to $`\limsup_nc_n/2^n=\infty`$. The criterion therefore proves irrationality, at every integer base, for every support with $`\limsup_nc_n/2^n=\infty`$. That class and the reciprocal-summable class of Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> are incomparable. The squares are reciprocal summable, and $`c_n=n^2`$ gives $`c_n/2^n\to0`$. In the other direction, take blocks of consecutive integers, the $`k`$th block being the $`4^{n_k}`$ integers from $`4^{n_k}`$ to $`2\cdot4^{n_k}-1`$ starting at index $`n_k`$, with $`n_{k+1}=n_k+4^{n_k}`$; then $`c_{n_k}/2^{n_k}=2^{n_k}\to\infty`$ while each block contributes reciprocal mass tending to $`\log2`$, so $`\sum_{a\in A}1/a`$ diverges. The extension of this lane to products of consecutive terms \[bkkkz2026\] settles Erdős Problem 1051 at the golden-ratio exponent and adds nothing beyond the $`d=1`$ case used above. Its rational-valued counterexamples are built by interval filling, which selects each term from a full discrete interval $`[\beta_n,\gamma_n]\cap\mathbb{N}`$ with $`\beta_n/\gamma_n\to0`$, so that consecutive choices differ by one and the attainable sums cover an interval. The strict tail inequality of Section <a href="#sec:geometry" data-reference-type="ref" data-reference="sec:geometry">7</a> makes the Mersenne achievement set totally disconnected, so no interval is ever attained and interval filling is unavailable here, on terms and on exponents alike. This excludes that construction here and does not decide the problem.
+A separate sufficient condition family is stated in terms of growth alone. Erdős proved irrationality of $`\sum_n1/a_n`$ for increasing integers with $`a_n>n^{1+\tau}`$ for some $`\tau>0`$ and all large $`n`$, together with $`\limsup_na_n^{1/2^n}=\infty`$ \[erdos1975, Theorem 1, p. 1\]. At $`a_n=2^{c_n}-1`$ the polynomial hypothesis is automatic, since $`c_n\ge n`$ gives $`a_n\ge2^n-1`$, and $`\log_2(2^{c_n}-1)`$ differs from $`c_n`$ by at most $`1`$, so the growth hypothesis reduces to $`\limsup_nc_n/2^n=\infty`$. The criterion therefore proves irrationality, at every integer base, for every support with $`\limsup_nc_n/2^n=\infty`$. That class and the reciprocal-summable class of Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">2</a> are incomparable. The squares are reciprocal summable, and $`c_n=n^2`$ gives $`c_n/2^n\to0`$. In the other direction, take blocks of consecutive integers, the $`k`$th block being the $`4^{n_k}`$ integers from $`4^{n_k}`$ to $`2\cdot4^{n_k}-1`$ starting at index $`n_k`$, with $`n_{k+1}=n_k+4^{n_k}`$; then $`c_{n_k}/2^{n_k}=2^{n_k}\to\infty`$ while each block contributes reciprocal mass tending to $`\log2`$, so $`\sum_{a\in A}1/a`$ diverges. The extension of this lane to products of consecutive terms \[bkkkz2026\] settles Erdős Problem 1051 at the golden-ratio exponent and adds nothing beyond the $`d=1`$ case used above. Its rational-valued counterexamples are built by interval filling, which selects each term from a full discrete interval $`[\beta_n,\gamma_n]\cap\mathbb{N}`$ with $`\beta_n/\gamma_n\to0`$, so that consecutive choices differ by one and the attainable sums cover an interval. The strict tail inequality of Section <a href="#sec:geometry" data-reference-type="ref" data-reference="sec:geometry">7</a> makes the Mersenne achievement set totally disconnected, so no interval is ever attained and interval filling is unavailable here, on terms and on exponents alike. This excludes that construction here and does not decide the problem.
 
 A related independence boundary concerns prime-incidence arguments. Writing $`f_A(n)=\sum_{a\in A}{\bf1}_{a\mid n}`$, the local identity
 ``` math
@@ -487,7 +508,7 @@ The estimate
 ``` math
 2^{-N}<R_N\le2^{-N}+\frac23\,4^{-N}<w_N\qquad(N\ge1)
 ```
-shows that every represented value has a unique selector. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. Since every weight exceeds its tail, Hornich’s theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], shows that the coding image is a Cantor set of measure $`\lim_N2^NR_N`$; the estimate above gives $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$. Kovač–Tao record this strict-tail inequality and the Cantor conclusion in the fixed-base setting \[kovactao, Remark 4.1\]. The long record proves the restricted-volume dichotomy and records the formula $`\dim_H\mathcal A_J=\liminf_N\#(J\cap[1,N])/N`$, together with the periodic-stride measure refinements. For a specified rational target, the useful consequence here is uniqueness of its possible selector.
+shows that every represented value has a unique selector. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. Since every weight exceeds its tail, Hornich’s theorem \[hornich1941\], as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], shows that the coding image is a Cantor set of measure $`\lim_N2^NR_N`$; the estimate above gives $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$. Kovač–Tao record this strict-tail inequality and the Cantor conclusion in the fixed-base setting \[kovactao, Remark 4.1\]. The long record proves the restricted-volume dichotomy and records the formula $`\dim_H\mathcal A_J=\liminf_N\#(J\cap[1,N])/N`$, together with the periodic-stride measure refinements. For a specified rational target, the useful consequence here is uniqueness of its possible selector.
 
 <a id="sec:actual-repairs"></a>
 
@@ -521,7 +542,7 @@ The nonnegative integer defect obeys
 
 </div>
 
-The cofinal and windowed equivalences are ordinary in this note; `GreedyRepairCriterion.lean` and `PaperCompleteR7/Assemblies.lean` are not in this checkout. The separate public Lean release [`wcook04/plectis-erdos-lean`](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E257/Challenge.lean#L512) at commit `52f29ad1` states both equivalences, with the same window $`[K,K+2\lfloor\sqrt K\rfloor+12)`$, as `mem_iff_greedyBinaryDefect_cofinal_repairs` and `mem_iff_greedyBinaryDefect_sqrt_windows` in `PalomarCorpus/E257/Challenge.lean` and proves them; the replay receipt is cited at Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a>.
+The following is an ordinary proof. The supplied solution wrapper `Solutions/PalomarCorpus/E257/GeneralRepairCriterion.lean` contains the two named equivalences, with explicit bridges to the challenge definitions and the same square-root window. Its provenance is the separate release `52f29ad173b0`. This static comparison is not a new replay; a challenge declaration alone is not cited as a proof.
 
 <div class="proof">
 
@@ -538,6 +559,8 @@ Conversely, if $`x\notin\mathcal A`$, then $`\delta=x-X_{A_x}(2)>0`$. The Lamber
 
 The explicit square-root estimate is uniform in the target. The ordinary subpower refinement replaces its window length by $`\lceil C_\varepsilon(K+1)^\varepsilon\rceil`$ for every $`0<\varepsilon<1`$, using $`\tau(n)=O_\delta(n^\delta)`$. This changes the permissible deadline without proving any occurrence for a specified target.
 
+The supplied release source `Solutions/PalomarCorpus/E257/GeneralRepairCriterion.lean` contains the cofinal-repair and square-root-window equivalences after explicit definition bridges. This is a static statement match, not a fresh replay. The subpower refinement above remains an ordinary argument; it is not identified with that square-root declaration.
+
 At $`x=1/2`$, the digits $`\beta_N`$ vanish for $`N\ge1`$; at $`x=1/21`$ they are six-periodic. Thus the unresolved arithmetic input is
 ``` math
 \begin{equation}
@@ -553,6 +576,14 @@ Both $`Q_N`$ and $`c_x`$ must arise from the same greedy selector. The long reco
 <a id="sec:open"></a>
 
 # Further questions
+
+<a id="two-extension-tests."></a>
+
+#### Two extension tests.
+
+Small real-base returns alone do not reproduce the integer-base proof. For $`\beta=(3+\sqrt5)/2`$, $`u=\beta^{-1}`$, the finite prefix identity and an algebraic norm show that $`\Delta_{\beta,H}(N)(1+J_H(N;u))\to0`$ along a sequence would exclude $`X_A(\beta)`$ from $`\mathbb{Q}(\sqrt5)`$ for every infinite $`A\subseteq H`$. Here $`H=\{2^km:k\ge2,\ m\text{ odd},\ m\le2^{2^k}\}`$. The conjugate prefix is essential; the stated product estimate is unproved. The accompanying research note gives the finite norm calculation and isolates the remaining off-diagonal terms.
+
+A different extension requires squarefree remote-tail control and a weighted displacement to be small at the same indices. CRT establishes compatibility of the finite opening divisibility conditions, but not this simultaneous smallness. Neither extension is asserted as a theorem here.
 
 The preceding arguments isolate two different tasks. For new irrational supports, one needs a summable or uniformly averaged control of the shifted divisor atoms, or an arithmetic functional that also detects supports whose positive displacements stay separated from zero. For a proposed rational target, one needs the actual-selector inequality <a href="#eq:actual-selector-obligation" data-reference-type="eqref" data-reference="eq:actual-selector-obligation">[eq:actual-selector-obligation]</a>; synthetic recurrences satisfying only growth and integrality conditions do not provide it.
 
@@ -577,7 +608,7 @@ The equivalence is [one div twenty one mem iff not fatal Aligned Branch](https:/
 *``` math
 \sum_{a\in A}\frac1{2^a-1}=\frac12.
 ```
-Consequently the universal irrationality assertion in Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">2</a> is false under this hypothesis. This is a conditional implication, not a construction of $`S`$ and not a solution of Problem #257.*
+Consequently the universal irrationality assertion in Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">3</a> is false under this hypothesis. This is a conditional implication, not a construction of $`S`$ and not a solution of Problem #257.*
 
 </div>
 
@@ -634,15 +665,45 @@ Can the complete final-skip signatures be used to prove $`|E-a_M|\ge\operatornam
 
 The logarithmic obstruction <a href="#eq:cover-log-obstruction" data-reference-type="eqref" data-reference="eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> is necessary for a finite-cost positive cover. Determining when a converse holds would give an intrinsic description of that sufficient class. The mixed class is a finite-union ideal. Countable gluing needs an explicit tail budget: every prime singleton is admitted, while the full prime support has displacement greater than $`1/3`$ at every positive shift.
 
-<a id="statements-and-declarations"></a>
+<a id="proof-and-verification-scope"></a>
 
-# Statements and declarations
+# Proof and verification scope
 
-Finite-period noncollapse has the counterpart [rational-denominator noncollapse](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5246). Full-support irrationality is [the full-support theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328); pairwise-coprime summable-reciprocal support is [the pairwise-coprime theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776). The residue-class, odd-support, eventually periodic and periodic-weight declarations listed in the appendix are formal proofs of statements that follow from the periodic theorem of Luca and Tachiya \[lucatachiya2017, Theorem A, p. 139, and Example 2, p. 140\]. The statement of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">2</a> has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* collection \[formalconjectures257\]. That collection proves the Lambert identity for the full-support value and states its irrationality, the 1948 theorem of Erdős, with proof `sorry`. Its role here is statement-level prior art; no theorem in this note is derived from it, and the full-support statement it leaves unproved is the checked [full-support theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328) cited above.
+The 1968 Erdős full text was not recovered in this pass. The historical attribution is retained from the supplied source trail, and its page references have not been upgraded to a fresh primary-text audit. The original Luca–Tachiya publisher PDFs and Hornich paper were likewise not fully retrieved; the exact statements used were checked in the identified later expositions. The source register records these differences. All proofs asserted in the body are ordinary mathematical arguments. Appendix <a href="#app:sources" data-reference-type="ref" data-reference="app:sources">11</a> maps selected statements to the supplied formal source snapshots. A declaration in a challenge file is not, by itself, a solution proof; the corresponding solution wrapper and its hypotheses must be inspected. Conversely, a missing old filename does not show that a later counterpart is absent. No Lean replay or new axiom audit was run for this revision.
 
-Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a> itself is ordinary mathematics in this note and has no Lean counterpart in this checkout: the filenames `AllBaseReciprocalSupportIrrationality.lean`, `SignedFinitePeriodNoncollapse.lean` and `GreedyRepairCriterion.lean` are not present. The source checkpoint is `99f4bf47422a`; later counterparts are identified separately rather than attributed to that checkpoint. One such later counterpart is the checked theorem `irrational_supportPowerSeries_of_summable_reciprocal` of the public Lean release `wcook04/plectis-erdos-lean` at commit `52f29ad1`, cited at Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a>.
+The periodic support cases are attributed to Luca and Tachiya’s original periodic-sequence paper \[lucatachiya2014periodic\]; the precise statement used here was checked in their own later account \[lucatachiya2017, Theorem A and Example 2, pp. 139–140\]. The *Formal Conjectures* record \[formalconjectures257\] is statement-level prior art, not a proof dependency. Neither that record nor any result in this paper resolves arbitrary infinite support.
 
-The finite estimate <a href="#eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a> and Theorem <a href="#thm:variable-fractional-cover" data-reference-type="ref" data-reference="thm:variable-fractional-cover">4</a> have complete ordinary proofs in this note and are results of this release. The finite-prime weighted criterion, Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a>, and its simple reciprocal-divergent host, the mixed theorem <a href="#res:mixed-supports" data-reference-type="ref" data-reference="res:mixed-supports">5</a>, and the prime-incidence calculation also have complete ordinary proofs here. They have no end-to-end Lean counterpart in this checkout. The separate public Lean release `wcook04/plectis-erdos-lean` at commit `52f29ad1` states both clauses of Theorem <a href="#res:weighted-support" data-reference-type="ref" data-reference="res:weighted-support">3</a> as `divisibilityWeightedClaim`, a reciprocal-divergent weighted host as `exists_weighted_not_strengthened_host`, and Theorem <a href="#res:mixed-supports" data-reference-type="ref" data-reference="res:mixed-supports">5</a> for a strengthened positive cover host as `mixedSupportClaim`, all in `PalomarCorpus/E257/Challenge.lean`, and proves them; the replay receipt is cited at Theorem <a href="#res:reciprocal-support" data-reference-type="ref" data-reference="res:reciprocal-support">1</a>. The quantitative criterion, the stronger claimed support $`A^\star`$ separating the two cover costs, and prime-power thinning instead refer to ordinary proofs that are not linked in this public checkout (*Strengthened Variable-Exponent Cover*, *First Logarithmic Moment of Positive Covers*, and the analytic proof supplement). Those latter extensions are therefore not independently assessable here and are not promoted as results of this release. No universal irrationality conclusion is asserted.
+<a id="app:elementary-details"></a>
+
+# Elementary details used in the proofs
+
+<a id="cyclotomic-prime-power-fact."></a>
+
+#### Cyclotomic prime-power fact.
+
+Let $`b\ge2`$, $`n\ge2`$, $`\ell\mid\Phi_n(b)`$ be prime and $`e=v_\ell(b^n-1)`$. Then $`\operatorname{ord}_{\ell^e}(b)=n`$. Here is a proof including the exceptional $`2`$-adic behaviour. For odd $`\ell`$, put $`d=\operatorname{ord}_{\ell}(b)`$ and $`s=v_\ell(b^d-1)`$. The elementary lifting identity $`v_\ell(b^{dt}-1)=s+v_\ell(t)`$ follows by factoring a geometric sum when $`\ell\nmid t`$ and by a binomial expansion for a factor $`\ell`$. In the factorisation $`b^n-1=\prod_{r\mid n}\Phi_r(b)`$, subtracting these valuations over proper divisors gives
+``` math
+v_\ell(\Phi_n(b))=
+ \begin{cases}s&n=d,\\1&n=d\ell^j,\ j\ge1,\\0&\text{otherwise.}\end{cases}
+```
+If $`n=d`$, no smaller positive exponent gives $`b^m\equiv1\pmod\ell`$. If $`n=d\ell^j`$, the full valuation is $`e=s+j`$; the same lifting identity shows that the least exponent giving valuation $`e`$ is $`d\ell^j=n`$. For $`\ell=2`$, $`b`$ is odd. Factoring $`b^{2t}-1`$ gives
+``` math
+v_2(b^{2^j}-1)=v_2(b-1)+v_2(b+1)+j-1\qquad(j\ge1).
+```
+The only possible indices $`n\ge2`$ are $`n=2^j`$: $`v_2(\Phi_2(b))=v_2(b+1)`$ and $`v_2(\Phi_{2^j}(b))=1`$ for $`j\ge2`$; all other indices have valuation zero. The displayed identity again makes $`2^j`$ the least exponent with the full valuation. This proves the fact. Finally $`\Phi_n(b)>1`$: each primitive $`n`$th root $`\zeta`$ satisfies $`|b-\zeta|>1`$, and their product is $`\Phi_n(b)`$.
+
+<a id="exact-scalar-cover-cost."></a>
+
+#### Exact scalar cover cost.
+
+For $`t\ge1`$, put $`z=\log_2t`$. The substitution $`y=2^\alpha`$ reduces the infimum defining $`\Psi(t)`$ to $`y^z/(y-1)`$ on $`1<y\le2`$. Its derivative has the sign of $`(z-1)y-z`$. Hence
+``` math
+\Psi(t)=
+ \begin{cases}t,&1\le t\le4,\\
+ z^z/(z-1)^{z-1},&t>4.
+ \end{cases}
+```
+The endpoint and the open lower bound $`\alpha>0`$ are both included in this calculation. This scalar identity does not supply a converse to the positive-cover criterion.
 
 <a id="app:sources"></a>
 
@@ -663,7 +724,13 @@ The following source links are the public snapshot used by this note.
 
 <div class="thebibliography">
 
-99 D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. Theorem 1.1 (pp. 2–3) is the refined Chowla–Erdős criterion; its proof in Section 2 (pp. 5–7) selects an index by minimising a local coefficient mass along an arithmetic progression, (2.3)–(2.9). Corollary 1.2 gives the general $`F_s(E)`$ theorem and its monomial images under $`|q|\operatorname{lcm}(1,\dots,\ell)\le s`$, and at every integer base when $`s=\infty`$; Example 1.1 gives the joint squarefree family at all bases $`2^j`$, $`j\ge1`$. Both are on p. 4, which also relates Corollary 1.2 to the conjecture of Erdős and Graham; the proof of Corollary 1.2 is on pp. 10–11. H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). The averaged tail $`R_c(q,x,z)`$, a sum over offsets $`j\ge z`$, is (1.7) and Theorem 1 is on p. 3; its rational-integer form, Theorem 3, is on p. 5. Lemma 1 (pp. 6–7) derives irrationality from arbitrarily small nonzero scaled tails, and Lemma 2 (pp. 7–8) shows that most scaled tails in a range are small under a counting condition on the support. Their criteria assume sparse coefficient supports. T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). Theorem 1.3 (p. 4) proves $`\sum_{n\ge1}\omega(n)/2^n=\sum_p(2^p-1)^{-1}`$ irrational, settling the prime-support case of \#257 at base $`2`$; the paragraph after it states that the method extends to every integer base and to the prime-power support, leaving the modifications to the reader. Theorem 3.1 is on p. 24, and the proof of Theorem 1.3 is Section 5, pp. 44–56. V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. 175 (2025), no. 2, 572–608, [DOI](https://doi.org/10.1007/s10474-025-01528-0). Page numbers refer to arXiv:2406.17593v4. Remark 4.1 (p. 13) records the strict tail inequality and the Cantor structure. Theorem 2.3 (p. 5; proof pp. 13–14) constructs rational merged sums from several bases under its mass hypothesis; the construction merges several bases and leaves fixed-base \#257 untouched. P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. 12 (1948), 63–66. The Formal Conjectures Authors, [*FormalConjectures.ErdosProblems.`257`*](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean), Lean source at commit `f776d2f`, 2025, accessed 13 September 2026. Its statement of the problem ends in `sorry`; the Lambert identity `tsum_top_eq` is proved there and the full-support irrationality variant `tsum_top` ends in `sorry`. P. Erdős, [*On the irrationality of certain series*](https://users.renyi.hu/~p_erdos/1969-09.pdf), Math. Student 36 (1968), 222–226 (issued 1969). The theorem on p. 222 treats pairwise-coprime support with convergent reciprocal sum at every integer base $`b\ge2`$; the claimed removal of pairwise coprimality is stated without proof. The same page says the reciprocal-sum condition could be replaced by a weaker but more complicated condition, and p. 226 suggests $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ for pairwise coprime supports. P. Erdős, *Some problems and results on the irrationality of the sum of infinite series*, J. Math. Sci. 10 (1975), 1–7. Theorem 1 (p. 1) proves irrationality of $`\sum_k1/n_k`$ for increasing integers with $`\limsup_kn_k^{1/2^k}=\infty`$ and $`n_k>k^{1+\varepsilon}`$ for some $`\varepsilon>0`$ and all large $`k`$; Remark 4(4) of \[bkkkz2026\] restates it. K. Barreto, J. Kang, S.-H. Kim, V. Kovač, and S. Zhang, [*Irrationality of rapidly converging series: a problem of Erdős and Graham*](https://arxiv.org/abs/2601.21442v3), arXiv:2601.21442v3 (2026), to appear in Bull. London Math. Soc. Theorem 2 (pp. 2–3) settles Erdős Problem 1051 at the golden-ratio exponent and Theorem 5 (p. 5) shows the threshold is sharp; Remark 4(4) (p. 5) identifies the case $`d=1`$ of its Theorem 3 with \[erdos1975, Theorem 1\]; Lemma 14 (p. 13) is the interval-filling lemma. The paper does not treat Problem 257. Z. Nitecki, [*Subsum sets: intervals, Cantor sets, and Cantorvals*](https://arxiv.org/abs/1106.3779v2), arXiv:1106.3779v2 (2013). Theorem 4 (p. 9) shows that when every term exceeds its tail the subsum set is a Cantor set of Lebesgue measure $`\lim_n2^nX_n`$, where $`X_n`$ is the $`n`$th tail, and credits this to H. Hornich (1941). F. Luca and Y. Tachiya, [*Linear independence results for the values of divisor functions series*](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf), RIMS Kôkyûroku No. 2014 (2017), 138–150. Theorem A (p. 139) restates Theorem 1.1 of their paper *Irrationality of Lambert series associated with a periodic sequence*, Int. J. Number Theory 10 (2014), no. 3, 623–636, [DOI](https://doi.org/10.1142/S1793042113501121): for a purely periodic integer sequence $`a(n)`$, not identically zero, $`\sum_{n\ge1}a(n)/(q^n-1)`$ is irrational for every integer $`q`$ with $`|q|>1`$. Example 2 (p. 140) treats the odd support.
+99 D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. Theorem 1.1 (pp. 2–3) is the refined Chowla–Erdős criterion; its proof in Section 2 (pp. 5–7) selects an index by minimising a local coefficient mass along an arithmetic progression, (2.3)–(2.9). Corollary 1.2 gives the general $`F_s(E)`$ theorem and its monomial images under $`|q|\operatorname{lcm}(1,\dots,\ell)\le s`$, and at every integer base when $`s=\infty`$; Example 1.1 gives the joint squarefree family at all bases $`2^j`$, $`j\ge1`$. Both are on p. 4, which also relates Corollary 1.2 to the conjecture of Erdős and Graham; the proof of Corollary 1.2 is on pp. 10–11. H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). The averaged tail $`R_c(q,x,z)`$, a sum over offsets $`j\ge z`$, is (1.7) and Theorem 1 is on p. 3; its rational-integer form, Theorem 3, is on p. 5. Lemma 1 (pp. 6–7) derives irrationality from arbitrarily small nonzero scaled tails, and Lemma 2 (pp. 7–8) shows that most scaled tails in a range are small under a counting condition on the support. Their criteria assume sparse coefficient supports. T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). Theorem 1.3 (p. 4) proves $`\sum_{n\ge1}\omega(n)/2^n=\sum_p(2^p-1)^{-1}`$ irrational, settling the prime-support case of \#257 at base $`2`$; the paragraph after it states that the method extends to every integer base and to the prime-power support, leaving the modifications to the reader. Theorem 3.1 is on p. 24, and the proof of Theorem 1.3 is Section 5, pp. 44–56. V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. 175 (2025), no. 2, 572–608, [DOI](https://doi.org/10.1007/s10474-025-01528-0). Page numbers refer to arXiv:2406.17593v4. Remark 4.1 (p. 13) records the strict tail inequality and the Cantor structure. Theorem 2.3 (p. 5; proof pp. 13–14) constructs rational merged sums from several bases under its mass hypothesis; the construction merges several bases and leaves fixed-base \#257 untouched. P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. 12 (1948), 63–66. The Formal Conjectures Authors, [*FormalConjectures.ErdosProblems.`257`*](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean), Lean source at commit `f776d2f`, 2025, accessed 13 September 2026. Its statement of the problem ends in `sorry`; the Lambert identity `tsum_top_eq` is proved there and the full-support irrationality variant `tsum_top` ends in `sorry`. P. Erdős, [*On the irrationality of certain series*](https://users.renyi.hu/~p_erdos/1969-09.pdf), Math. Student 36 (1968), 222–226 (issued 1969). The theorem on p. 222 treats pairwise-coprime support with convergent reciprocal sum at every integer base $`b\ge2`$; the claimed removal of pairwise coprimality is stated without proof. The same page says the reciprocal-sum condition could be replaced by a weaker but more complicated condition, and p. 226 suggests $`\sum_{n_i<x}1/n_i=o(\log\log x)`$ for pairwise coprime supports. P. Erdős, *Some problems and results on the irrationality of the sum of infinite series*, J. Math. Sci. 10 (1975), 1–7. Theorem 1 (p. 1) proves irrationality of $`\sum_k1/n_k`$ for increasing integers with $`\limsup_kn_k^{1/2^k}=\infty`$ and $`n_k>k^{1+\varepsilon}`$ for some $`\varepsilon>0`$ and all large $`k`$; Remark 4(4) of \[bkkkz2026\] restates it. K. Barreto, J. Kang, S.-H. Kim, V. Kovač, and S. Zhang, [*Irrationality of rapidly converging series: a problem of Erdős and Graham*](https://arxiv.org/abs/2601.21442v3), arXiv:2601.21442v3 (2026), to appear in Bull. London Math. Soc. Theorem 2 (pp. 2–3) settles Erdős Problem 1051 at the golden-ratio exponent and Theorem 5 (p. 5) shows the threshold is sharp; Remark 4(4) (p. 5) identifies the case $`d=1`$ of its Theorem 3 with \[erdos1975, Theorem 1\]; Lemma 14 (p. 13) is the interval-filling lemma. The paper does not treat Problem 257. Z. Nitecki, [*Subsum sets: intervals, Cantor sets, and Cantorvals*](https://arxiv.org/abs/1106.3779v2), arXiv:1106.3779v2 (2013). Theorem 4 (p. 9) shows that when every term exceeds its tail the subsum set is a Cantor set of Lebesgue measure $`\lim_n2^nX_n`$, where $`X_n`$ is the $`n`$th tail, and credits this to H. Hornich (1941). F. Luca and Y. Tachiya, [*Linear independence results for the values of divisor functions series*](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf), RIMS Kôkyûroku No. 2014 (2017), 138–150. Theorem A (p. 139) restates Theorem 1.1 of their paper *Irrationality of Lambert series associated with a periodic sequence*, Int. J. Number Theory 10 (2014), no. 3, 623–636, [DOI](https://doi.org/10.1142/S1793042113501121): for a purely periodic integer sequence $`a(n)`$, not identically zero, $`\sum_{n\ge1}a(n)/(q^n-1)`$ is irrational for every integer $`q`$ with $`|q|>1`$. Example 2 (p. 140) treats the odd support. F. Luca and Y. Tachiya, *Irrationality of Lambert series associated with a periodic sequence*, International Journal of Number Theory **10** (2014), no. 3, 623–636. [doi:10.1142/S1793042113501121](https://doi.org/10.1142/S1793042113501121).
+
+F. Luca and Y. Tachiya, *Linear independence of certain Lambert series*, Proceedings of the American Mathematical Society **142** (2014), no. 10, 3411–3419. [doi:10.1090/S0002-9939-2014-12102-2](https://doi.org/10.1090/S0002-9939-2014-12102-2).
+
+W. Van Assche, *Little $`q`$-Legendre polynomials and irrationality of certain Lambert series*, The Ramanujan Journal **5** (2001), 295–310. [doi:10.1023/A:1012930828917](https://doi.org/10.1023/A:1012930828917); [arXiv:math/0101187v1](https://arxiv.org/abs/math/0101187v1).
+
+H. Hornich, *Über beliebige Teilsummen absolut konvergenter Reihen*, Monatshefte für Mathematik und Physik **49** (1941), 316–320. [doi:10.1007/BF01707309](https://doi.org/10.1007/BF01707309).
 
 </div>
 

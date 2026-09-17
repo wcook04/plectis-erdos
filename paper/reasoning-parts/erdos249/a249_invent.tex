@@ -676,31 +676,25 @@ $\Z$ is exactly a certified kill at depth $h$.
 \end{proof}
 
 \noindent
-\ev{Math}. So Route 4 asks: \emph{for every ray $d$ and every basepoint $N$,
-some multiple $h=td$ is such that the tail of the binary expansion of $S$
-beginning at position $N+1$ and the tail beginning at position $N+h+1$, read
-as reals in $[0,1)$, are more than $2(N+2h+2)/2^{h}$ apart in $\R/\Z$.} Two
-things follow. First, unlike Routes 1--3, this involves only $S$ itself, not
-the multiples $\alpha_h$. Second, the required precision grows only like
-$\log_2(N+2h)$ while the available depth grows linearly in $t$: the demand
-weakens rapidly along each ray.
+\ev{Math}. Proposition~\ref{prop:route4} gives a sufficient analytic
+criterion for Route~4: for each $d\ge1$ and $N\ge0$, it is enough to find
+$h=td$, $t\ge1$, for which the displayed distance exceeds the stated
+threshold. The criterion is not asserted to be equivalent to each individual
+finite certificate. It involves the phase of $S$ itself, and the threshold
+tends to zero exponentially along a fixed ray. The earlier full-depth
+amplifier explains why a nonintegral seed produces late certificates; it
+does not supply seeds for all $d,N$.
 
-\paragraph{Which technique family fits, and why it is unavailable.}
-A statement that a sequence does not almost repeat at some multiple of every
-gap, to logarithmic precision, is a \emph{subword-complexity} statement, and
-the mature technology for such statements about a specific real number is the
-Adamczewski--Bugeaud method: the Schmidt subspace theorem applied to the
-$b$-ary expansion, which shows that the block complexity $p(n)$ of the base-$b$
-expansion of an irrational algebraic number satisfies $\liminf_n
-p(n)/n=+\infty$~\cite[Theorem~1, p.~549]{adamczewski-bugeaud} \ev{Cited}. The
-shape fits exactly. The hypothesis does
-not: the method conditions on algebraicity, and $S$ is not known to be
-algebraic; indeed it is not known to be irrational, which is the whole
-problem. No version of the method is known that runs from an analytic
-description of the constant. That is the entire obstruction, and it is worth
-stating plainly because it explains why Route 4 looks so much easier than it
-is: the required combinatorial property is weak, but the only machine that
-produces such properties needs an input we do not have.
+\paragraph{A distinction from digit-complexity methods.}
+The phase inequality above is a quantitative statement at specified
+positions and period multiples. A general block-complexity assertion is a
+different quantified statement, of the kind treated by the
+Adamczewski--Bugeaud method for algebraic numbers
+\cite[Theorem~1, p.~549]{adamczewski-bugeaud}. No implication from such an
+assertion to the required inequality is established here. In particular, this record
+does not justify describing one existing method as the only possible route,
+or algebraicity as the sole missing input. The arithmetic nonintegrality
+obligation must be stated and proved in its own right.
 
 \paragraph{What the data says.}
 At $N=300$, the least $t$ with $\mathrm{certifiedKill}(td,300,td)$ exists
@@ -713,17 +707,17 @@ $d=23$, against edge radii $3.1\cdot10^{-1}$, $8.0\cdot10^{-2}$,
 $2.0\cdot10^{-2}$, $2.6\cdot10^{-3}$, $4.1\cdot10^{-5}$ \ev{Cert}. This is a
 floor, not a trend, exactly as barrier B1 requires; it decides nothing.
 
-\paragraph{A heuristic size computation.}
-Under a uniform model for $\|2^{N}(2^{h}-1)S\|$ the failure probability at
-depth $h=td$ is $\approx 4(N+2h+2)/2^{h}$, which is $\approx 1$ at the first
-admissible $t$ and falls by a factor $2^{d}$ at each subsequent $t$. The
-probability that a given $(d,N)$ fails at every $t$ is therefore a product
-$\prod_{j\ge0}\min(1,\,c\,2^{-jd})$, super-exponentially small, and the
-expected number of failing pairs $(d,N)$ over all $N$ converges. At $d=1$,
-$N=300$ the product evaluates to about $10^{-5}$, and the observed value is a
-success at the very first admissible depth. The model therefore predicts
-Route 4 holds with enormous margin --- which is precisely why no finite
-computation will ever be evidence for it. \ev{Open} (heuristic).
+\paragraph{A single-phase heuristic, not a probability proof.}
+If a phase $U$ were uniform on $\R/\Z$, then
+$\Pr(\|U\|\le\epsilon)=\min(1,2\epsilon)$ for $\epsilon\ge0$.
+At $\epsilon=2(N+2h+2)2^{-h}$ this gives the marginal model
+$\min(1,4(N+2h+2)2^{-h})$. The phases
+$2^N(2^{td}-1)S$ on a fixed ray are arithmetically dependent; no independence
+model or uniform distribution theorem for this orbit is proved here.
+Consequently the marginal estimate cannot be multiplied across depths, and
+no summability conclusion over all basepoints follows from it. The finite
+experiments remain finite evidence, not a proof of the all-ray supply.
+\ev{Open} (heuristic only).
 
 \subsection{A counterfactual rank criterion, not a live route}
 
@@ -739,9 +733,17 @@ A suitable subexponential upper bound would also contradict the landed
 $\varphi$-specific floor
 \lean{Erdos249257.\allowbreak not_irrational_totientSeries_\allowbreak implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
 \quad \ev{Lean}.  No such rationality-side upper bound is proved.  It is a
-logically sufficient new theorem schema, but the preceding mathematics does
-not isolate it as an open proposition, so it is not counted among the surviving
-routes.
+logically sufficient theorem schema for $\varphi$, but the generic schema
+as displayed is false. The rational control in
+\texttt{ParityPerturbedRationalControl.lean} satisfies $0\le c(n)\le n$,
+agrees with $\varphi(n)$ at every odd $n$, and has binary sum $5/4$.
+It has a tempered integral carry of rank at least $2^e-1$ for every $e$
+(\texttt{control\_series}, line~379, and
+\texttt{control\_temperedOrbit\_carryRank\_unbounded}, line~478, in the
+supplied separate Lean release). Thus neither a uniform nor a subexponential
+generic carry-rank ceiling follows from rationality and these size bounds.
+This $5/4$ control is distinct from the bounded $3/2$ parity control in
+Proposition~\ref{prop:parity}.
 
 \paragraph{The right vocabulary, and the audited gap.}
 Finite-dimensional span of all dyadic sections is the definition of a
@@ -778,10 +780,11 @@ support for the criterion, and it does not restore the generic shortcut.
 
 The Lean theorem for $\varphi$ remains valid: it uses the special structure
 and independently proved linear independence of the totient kernel, not the
-invalid generic $O(1)$ bridge.  The honest status is thus asymmetric.  The
-large $\varphi$-specific rank floor is proved; a rationality-driven ceiling is
-only a counterfactual sufficient input; and the generic countermodel attempt
-is inconclusive.
+invalid generic $O(1)$ bridge. The greedy construction above remains a
+record of an unsuccessful argument. It is not the current status of the
+generic ceiling: the separate $5/4$ control refutes that ceiling directly.
+Any replacement upper bound must use additional totient-specific hypotheses
+that this control does not satisfy.
 
 \subsection{What the shape of the wall suggests about the object}\label{sub:shape}
 

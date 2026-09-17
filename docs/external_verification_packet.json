@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:d88a95d06846401cb6a37cb15d6990c6003f8dcb774df19b7338b80806febd19",
+    "owner_digest": "sha256:a2dbfa3d8cb217528864948417c4b95431c031841c236eff0dfdfe0f0fba98a5",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:d32dbf193823bdff7fdae1e2baca7b2e083c80a6d102e4ea704cbb757552ccdb",
+    "projection_digest": "sha256:d29832d1d252e54e380d1d5058aa5a35d6410e6d6cc5bb408f8e9c8411898a2c",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1848,7 +1848,7 @@
           "Integral channel congruences, the lcm tax, the prime unit translator, and factorial-grid Cramer residual identities.",
           "Weighted projection and factor-split rigidity consumers with their exact modular and Archimedean hypotheses.",
           "The zero-plateau and first-exit carry dichotomy, prime-power prefix obstructions, and exact doubled-prime branch characterisations.",
-          "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; an independently regenerated exact GMP certificate at m = 300000 supplies the finite input."
+          "A Lean-checked implication from one exact non-unit carry to a rational-denominator lower bound; a fresh exact GMP certificate at m = 300000 supplies the finite input used by the papers; the event-trace and unit carries match the previously retained receipt."
         ],
         "what_is_not_checked": [
           "Irrationality of the factorial-denominator series.",
@@ -1879,7 +1879,7 @@
             "statement": "Construct an unbounded factorial-grid family whose exact Cramer residual is nonintegral, using a determinant, valuation, cancellation, or gcd-of-minors certificate that controls the finite sign-changing block."
           }
         ],
-        "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement.",
+        "finite_search": "A retained exact GMP receipt through m = 300000 records a non-unit carry at that index, so every positive rational denominator satisfies q ∤ 299999!. A byte-identical regeneration of that receipt with the current driver is outstanding in this revision; a separate exact replay through 4000 reproduces the unit-carry prefix. The Lean consumer turns one non-unit carry at m into q >= m; it does not prove a cofinal statement. An independent continued-fraction enclosure gives q ≥ 2^39990. At the prime 12487 and gap 12, exact polynomial arithmetic exhibits two critical roots 4626 and 7848, so the small-prime pattern of at most one critical root is not uniform; those roots have factorial values 442 and 6300, not 1.",
         "paper": {
           "paper_id": "erdos-68-factorial-denominator-irrationality",
           "title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}",
@@ -2103,7 +2103,7 @@
         ],
         "note": {
           "artifact_id": "erdos_249_note",
-          "title": "A Basis for the 2-Kernel of Euler's Totient",
+          "title": "Bases and Integral Relations for the $k$-Kernel of Euler's Totient",
           "source_path": "paper/249/erdos-249-binary-totient-series.tex",
           "rendered_path": "paper/249/erdos-249-binary-totient-series.pdf",
           "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
@@ -2152,7 +2152,7 @@
         "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate.",
         "paper": {
           "paper_id": "erdos-249-binary-totient-series",
-          "title": "A Basis for the 2-Kernel of Euler’s Totient",
+          "title": "Bases and Integral Relations for the k-Kernel of Euler’s Totient",
           "source": "paper/249/erdos-249-binary-totient-series.tex",
           "pdf": "paper/249/erdos-249-binary-totient-series.pdf",
           "full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
@@ -2211,7 +2211,7 @@
         ],
         "note": {
           "artifact_id": "erdos_251_note",
-          "title": "A Countermodel for Growth-and-Parity Arguments\\\\on the Prime-Gap Dyadic Series",
+          "title": "Sparse Congruence-Preserving Perturbations\\\\of Dyadic Series",
           "source_path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "rendered_path": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2252,7 +2252,7 @@
         "finite_search": null,
         "paper": {
           "paper_id": "erdos-251-prime-gap-dyadic-series",
-          "title": "A Countermodel for Growth-and-Parity Arguments on the Prime-Gap Dyadic Series",
+          "title": "Sparse Congruence-Preserving Perturbations of Dyadic Series",
           "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
           "full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
@@ -2701,7 +2701,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1049_note",
-          "title": "Irrationality of $F(31/4)$ and the\\\\Exact Normalized Hankel Order",
+          "title": "Zudilin's Forms at Rational Bases\\\\and the Exact Normalised Hankel Order",
           "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "rendered_path": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2742,7 +2742,7 @@
         "finite_search": null,
         "paper": {
           "paper_id": "erdos-1049-rational-base-lambert",
-          "title": "Irrationality of F(31/4) and the Exact Normalized Hankel Order",
+          "title": "Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order",
           "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",

@@ -39,7 +39,12 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import validation_singleflight as singleflight
-from lean_source import library_storage_path
+from lean_source import (
+    LIBRARY_ROOTS,
+    library_identity_path,
+    library_storage_path,
+    library_storage_variants,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 PREAMBLE = ROOT / "paper" / "problem-note-preamble.tex"
@@ -276,6 +281,23 @@ def git_run(*args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+def snapshot_blob_candidates(relative: str) -> tuple[str, ...]:
+    """Identity path first, then nested ``lean/`` storage, then any alias.
+
+    Problem notes pin some snapshots before the nested-layout move and some
+    after it.  The cache key stays the identity path used in diagnostics;
+    Git is asked for every on-disk spelling that can hold that blob.
+    """
+    ordered: list[str] = []
+    seen: set[str] = set()
+    identity = library_identity_path(relative)
+    for path in (relative, identity, *library_storage_variants(relative)):
+        if path and path not in seen:
+            seen.add(path)
+            ordered.append(path)
+    return tuple(ordered)
+
+
 def snapshot_lines(
     commit: str,
     relative: str,
@@ -284,12 +306,48 @@ def snapshot_lines(
     key = (commit, relative)
     if key in cache:
         return cache[key]
-    completed = git_run("show", f"{commit}:{relative}")
-    if completed.returncode != 0:
-        cache[key] = []
-    else:
-        cache[key] = completed.stdout.splitlines()
+    for candidate in snapshot_blob_candidates(relative):
+        completed = git_run("show", f"{commit}:{candidate}")
+        if completed.returncode == 0:
+            cache[key] = completed.stdout.splitlines()
+            return cache[key]
+    cache[key] = []
     return cache[key]
+
+
+def _parse_cat_file_batch(
+    queries: list[tuple[str, str]], output: bytes
+) -> dict[tuple[str, str], list[str]]:
+    """Decode one ``git cat-file --batch`` body into per-query line lists."""
+    blobs: dict[tuple[str, str], list[str]] = {}
+    position = 0
+    for key in queries:
+        header_end = output.find(b"\n", position)
+        if header_end < 0:
+            blobs[key] = []
+            continue
+        header = output[position:header_end]
+        position = header_end + 1
+        if header.endswith(b" missing"):
+            blobs[key] = []
+            continue
+        fields = header.rsplit(b" ", 2)
+        if len(fields) != 3 or fields[1] != b"blob":
+            blobs[key] = []
+            continue
+        try:
+            size = int(fields[2])
+        except ValueError:
+            blobs[key] = []
+            continue
+        end = position + size
+        if end > len(output):
+            blobs[key] = []
+            position = len(output)
+            continue
+        blobs[key] = output[position:end].decode("utf-8").splitlines()
+        position = end + 1
+    return blobs
 
 
 def snapshot_lines_batch(
@@ -300,10 +358,18 @@ def snapshot_lines_batch(
     missing = sorted(set(requests) - set(cache))
     if not missing:
         return
+    queries: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for commit, relative in missing:
+        for candidate in snapshot_blob_candidates(relative):
+            git_key = (commit, candidate)
+            if git_key not in seen:
+                seen.add(git_key)
+                queries.append(git_key)
     completed = subprocess.run(
         ["git", "cat-file", "--batch"],
         cwd=ROOT,
-        input="".join(f"{commit}:{relative}\n" for commit, relative in missing).encode(),
+        input="".join(f"{commit}:{path}\n" for commit, path in queries).encode(),
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
@@ -315,44 +381,26 @@ def snapshot_lines_batch(
             cache[key] = []
         return
 
-    output = completed.stdout
-    position = 0
-    for key in missing:
-        header_end = output.find(b"\n", position)
-        if header_end < 0:
-            cache[key] = []
-            continue
-        header = output[position:header_end]
-        position = header_end + 1
-        if header.endswith(b" missing"):
-            cache[key] = []
-            continue
-        fields = header.rsplit(b" ", 2)
-        if len(fields) != 3 or fields[1] != b"blob":
-            cache[key] = []
-            continue
-        try:
-            size = int(fields[2])
-        except ValueError:
-            cache[key] = []
-            continue
-        end = position + size
-        if end > len(output):
-            cache[key] = []
-            position = len(output)
-            continue
-        cache[key] = output[position:end].decode("utf-8").splitlines()
-        position = end + 1
+    blobs = _parse_cat_file_batch(queries, completed.stdout)
+    for commit, relative in missing:
+        lines: list[str] = []
+        for candidate in snapshot_blob_candidates(relative):
+            hit = blobs.get((commit, candidate), [])
+            if hit:
+                lines = hit
+                break
+        cache[(commit, relative)] = lines
 
 
 def library_relative(file_name: str) -> str:
     """Repository path for a link target named in a note.
 
     Unqualified names stay relative to the expansion library; a name whose
-    first segment is a sibling library is already repository-relative.
+    first segment is already a corpus root (or a sibling library) is the
+    identity path and must not be prefixed again.
     """
     head = file_name.split("/", 1)[0]
-    if head in SIBLING_LIBRARIES:
+    if head in LIBRARY_ROOTS or head in SIBLING_LIBRARIES:
         return file_name
     return f"{LIBRARY_PREFIX}/{file_name}"
 
@@ -567,8 +615,13 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
                 failures.append(f"{row['problem_id']}: {error}")
                 continue
             current.extend(declarations_for_module(relative, live))
-            pinned = git_run("show", f"{commit}:{relative}")
-            if pinned.returncode != 0 or pinned.stdout != live:
+            pinned_text = None
+            for candidate in snapshot_blob_candidates(relative):
+                pinned = git_run("show", f"{commit}:{candidate}")
+                if pinned.returncode == 0:
+                    pinned_text = pinned.stdout
+                    break
+            if pinned_text is None or pinned_text != live:
                 moved.append(relative)
         if not current:
             continue
@@ -615,9 +668,14 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
             ahead = 0
             for module in modules:
                 relative = module_relative(module)
-                shown = git_run("show", f"{upstream}:{relative}")
-                if shown.returncode == 0:
-                    ahead += len(declarations_in(shown.stdout))
+                shown_text = None
+                for candidate in snapshot_blob_candidates(relative):
+                    shown = git_run("show", f"{upstream}:{candidate}")
+                    if shown.returncode == 0:
+                        shown_text = shown.stdout
+                        break
+                if shown_text is not None:
+                    ahead += len(declarations_in(shown_text))
             if ahead > len(current):
                 lines.append(
                     f"      upstream {upstream} is {ahead - len(current)} "

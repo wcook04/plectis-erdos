@@ -3,8 +3,10 @@
 The dyadic sections $n\mapsto\varphi(2^jn+r)$ through each level $e\ge1$
 have exact rational rank $2^e+1$. The two zero-residue sections and the
 odd-residue sections give independent coordinates; scalar reductions recover
-the omitted sections. The short paper proves the corresponding integral
-normal form and explains the evaluation-matrix argument. This record supplies
+the omitted sections. The short paper proves the all-base theorem
+$\dim_{\Q}V_{k,e}=k^e+1$ for $e\ge1$, its integral normal form and the
+evaluation-matrix argument. For composite $k$ the retained condition is
+$k\nmid r$, not $\gcd(k,r)=1$. This record supplies
 the tail identities, countermodels, and individual arithmetic constructions
 needed to compare that structure with the irrationality question.
 
@@ -23,13 +25,23 @@ sum can fail. Each excludes its stated assumptions; they do not establish a
 single obstruction theorem covering all possible methods.
 
 \begin{rem}[Literature]
-Erd\H{o}s and Graham record the irrationality of $S$ as probably hopeless to
-prove at present~\cite[p.~61]{erdosgraham1980}.  Coons proved that $\varphi$
+Erd\H{o}s and Graham record the irrationality question for
+$S$~\cite[p.~61]{erdosgraham1980}. Coons proved that $\varphi$
 is not $k$-regular for any $k\ge2$~\cite[Theorem~3.2]{coons}, and Martin's
 Theorem~1 implies that the functions $n\mapsto\varphi(a_in+b_i)$ are linearly
 independent for pairwise nonproportional affine forms with positive integer
-slopes~\cite[Theorem~1]{martin-phi-inequalities}; the exact kernel ranks of
-\S\ref{sec:mahler-defect} refine both.  Erick Wong posted a proof that
+slopes~\cite[Theorem~1]{martin-phi-inequalities}. The exact ranks in
+\S\ref{sec:mahler-defect}, together with the all-base normal form in the
+short paper, identify the retained sections and every relation among them.
+The independence itself is not claimed as new. The CRT--Dirichlet separation
+method is already present in Yazdani's Theorem~2 and proof, which explicitly
+credit Shallit~\cite[pp.~652--653]{yazdani2001}; our evaluation matrix uses
+one such separation for each column. Yazdani also proves non-automaticity of
+$\varphi(n)\bmod m$ for every $m\ge3$ in every base~\cite[Cor.~4]{yazdani2001}.
+Allouche, Shallit and Yassawi give a survey account~\cite[Thm.~3,
+Ex.~4 and Rem.~7]{allouche-shallit-yassawi}.
+
+Erick Wong posted a proof that
 $\sum_{n\ge1}(\varphi(n)\bmod k)k^{-n}$ is irrational for every integer $k>2$
 on Mathematics Stack Exchange on 29 March 2015~\cite{wong2015}; there the base
 equals the modulus.  The M\"obius-square form of $S$ and its coprimality
@@ -44,7 +56,24 @@ asymptotics for shifted convolutions of the divisor-convolution class that
 contains $\varphi(n)/n$~\cite[Theorem~2.2]{bgs2016}; that theorem does not
 supply the dyadic residue small-ball or phase anti-concentration required by
 $\mathrm{Sep}$.  The remaining sources are cited where their hypotheses are
-used. \ev{Cited}
+used.
+
+At the generating-function level, the characteristic-zero multiplicative
+classification of Bell and Smertnig gives $k$-Mahler $\Rightarrow$
+$k$-regular, and hence rules out $k$-Mahler equations for the totient series
+in every base~\cite[Thm.~1.3 and p.~3]{bell-smertnig2026}.
+The algebraic and $D$-finite classifications of Bell, Bruin and Coons
+belong to the same function-level context~\cite[Thms.~1.5--1.6]{bell-bruin-coons}.
+They do not by themselves decide the value at $z=1/2$.
+
+Automatic prime-sampling theorems address a different issue.
+Adamczewski, Drmota and M\"ullner identify a computable local coprimality
+condition governing the relevant logarithmic densities, with a conditional
+ordinary-density transfer~\cite[Thm.~1.4 and Rem.~1.5]{adamczewski-drmota-mullner}.
+Their theorem does not assert that every output state has positive density
+on a prescribed prime progression, nor does it prove independence with
+automatic coefficient weights. Any use for that purpose needs its own
+compatibility argument. \ev{Cited}
 \end{rem}
 
 The open question has a sharp equivalent inside the corpus, and it is the
@@ -91,8 +120,12 @@ The entire \#249 side of the programme therefore reduces to one obligation.
   \forall h \ge 1\ \forall N_0\ \exists N \ge N_0\ \exists L,\;
   \mathrm{certifiedKill}(h,N,L).
 \]
-$\mathrm{Sep} \Rightarrow \mathrm{Irrational}(S)$
-(\lean{Erdos249257.irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394}).
+$\mathrm{Sep} \Longleftrightarrow \mathrm{Irrational}(S)$
+(\lean{irrational\_totient\_series\_iff\_certificate\_supply}{LcmConeFlatness.lean:412}).
+The forward implication is also
+\lean{Erdos249257.irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394}.
+The equivalence identifies the missing quantified input; it supplies no
+certificate by itself.
 \coord{binary-digit} \scale{cofinal} \ev{Lean}
 \end{defn}
 
@@ -141,15 +174,18 @@ endpoint \lean{Erdos249257.certifiedKill\_diagonal\_t64}{DiagonalPincerCertifica
 all shifts $h \in [1,16]$ simultaneously at $(N,L) = (14,9)$, by
 \texttt{decide}
 (\lean{Erdos249257.certifiedKill\_all\_upto\_sixteen}{CarrySurvivorExtinction.lean:574});
-and eight further period deposits at $N = 300$. Every deposit fires within a
-small additive constant of the minimum depth permitted by
-$\mathrm{certifiedKill\_depth\_floor}$. Note the quantifier order: this deposit
+and eight further period deposits at $N = 300$. These are historical
+sub-banks. The supplied source also proves a complete diagonal band for
+$1\le t\le82$, with no omitted scales
+(\lean{exists\_diagonalKill\_le\_82}{ErdosProblems/Skip/LadderT67.lean:71264}).
+This is bounded coverage, not a cofinal diagonal family.
+Note the quantifier order: the simultaneous small-shift deposit
 proves $\exists N \exists L\, \forall h \le 16$, whereas $\mathrm{Sep}$ needs
 $\forall h\, \forall N_0\, \exists N \exists L$.
 \coord{binary-digit} \scale{fixed} \ev{Lean}
 \end{prop}
 
-\begin{prop}[Cofinal positivity, and why it is exactly half a certificate]
+\begin{prop}[Cofinal positivity and the remaining top-edge condition]
 \label{prop:sign}
 The true actual-LCM tail difference is strictly positive for every $a \ge 8$,
 with no irrationality hypothesis
@@ -158,9 +194,11 @@ with no irrationality hypothesis
 In the same coordinate, integrality of the orbit forces the residue to the
 \emph{top edge}, exactly $2^{K} - e$
 (\lean{Erdos257PeriodNoncollapse.actualLcm\_integral\_forces\_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211}).
-Positivity does not exclude the top edge. So the strongest cofinal fact the
-corpus owns about the actual object supplies one of the two inequalities a
-certificate needs and provably cannot supply the other.
+Positivity excludes the nonnegative endpoint survivor in this coordinate;
+under integrality the negative survivor and its top-edge residue remain.
+Thus positivity alone does not establish the central-residue inequalities.
+This is a statement about these hypotheses, not an obstruction to every
+possible use of the actual-LCM coordinate.
 \coord{actual-lcm} \scale{cofinal} \ev{Lean}
 \end{prop}
 
@@ -170,8 +208,8 @@ If $S$ is rational then, for every $e$, the dyadic carry-kernel family at
 level $e$ has $\Q$-rank at least $2^{e}-1$
 (\lean{Erdos249257.not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300}).
 The scale side is complete and uniform in $e$: the canonical family of
-$2^{e}+1$ dyadic totient-kernel channels is linearly independent over $\Q$ at
-every depth, via CRT plus Dirichlet
+$2^{e}+1$ canonical dyadic channels is linearly independent over $\Q$
+for $e\ge1$, via CRT plus Dirichlet
 (\lean{Erdos249257.linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}),
 so the full family spans an infinite-dimensional space
 (\lean{Erdos249257.not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1145}),
@@ -181,10 +219,15 @@ the case $k=2$ of Coons's non-regularity theorem (\S\ref{sec:mahler-defect}).
 
 \begin{prop}[What rationality actually buys, and what it does not]
 \label{prop:period-not-rank}
-Rationality gives uniform eventual periodicity of the carry's dyadic sections
-modulo $v$; that periodicity provably does \emph{not} promote to any $\Q$-rank
-bound on the carry family
+If $S$ is rational, its carry has both uniform eventual periodicity of its
+dyadic sections modulo $v$ and unbounded rational section rank
 (\lean{Erdos257PeriodNoncollapse.not\_irrational\_totientSeries\_implies\_mod\_period\_and\_unbounded\_rank}{TotientTailCarryPeriod.lean:224}).
+This conditional theorem alone is not a counterexample to a general
+periodicity-to-rank implication: its antecedent is not established.
+The separate $5/4$ control supplies a concrete counterexample to the generic
+rationality-driven rank ceiling; see
+\texttt{control\_temperedOrbit\_carryRank\_unbounded}, line~478 of
+\texttt{ParityPerturbedRationalControl.lean}.
 \coord{carry-rank} \scale{uniform} \ev{Lean}
 \end{prop}
 
@@ -204,7 +247,7 @@ and the window-separated-pairs predicate
 \coord{binary-digit} \scale{cofinal} \ev{Lean}
 \end{prop}
 
-\begin{prop}[A rational sequence indistinguishable from $\varphi$ by every coarse invariant]
+\begin{prop}[A rational sequence preserving size bounds, parity and aperiodicity]
 \label{prop:parity}
 There is $c : \N \to \N$ with $c(n) \le 6$ and $c(n) \le n$ for all $n$,
 $c(n) \equiv \varphi(n) \pmod 2$ for \emph{every} $n$, and $c$ not eventually
@@ -217,12 +260,12 @@ sum at \texttt{:359}, aperiodicity at \texttt{:487}, parity match at \texttt{:19
 \coord{coefficient-word} \scale{uniform} \ev{Lean}
 \end{prop}
 
-Propositions~\ref{prop:sign}--\ref{prop:parity} are the four facts a reader
-should carry into the next section: the corpus's best cofinal information is
-half a certificate, its best rank information runs the wrong way, its
-reformulations are equivalences rather than reductions, and the listed size
-bound, parity and aperiodicity of the coefficient word are satisfied by a
-rational countermodel.
+These propositions separate several logical obligations. Positivity leaves
+a top-edge condition; a large rational carry rank is not a contradiction;
+and exact equivalences still require a certificate supply. The stated size
+bounds, parity and aperiodicity also hold for a rational control. Each
+conclusion concerns its stated hypotheses, not all possible arithmetic
+information about $\varphi$.
 
 \section{What the countermodels exclude}
 \label{sec:wall}
@@ -945,12 +988,13 @@ Proposition~\ref{prop:rank} and would therefore close \#249.
 \coord{carry-rank} \scale{uniform}
 \end{defn}
 
-This is not one of the paper's live open propositions.  It is a logically
-sufficient theorem schema in a coordinate disjoint from the residue and
-certificate statements, and B2's certificate completeness cannot reach it.
-The proved scale side is uniform in $e$ (Proposition~\ref{prop:rank}), but the
-present mathematics supplies no reason for rationality to impose the opposite
-rank bound.
+The generic assertion in Definition~\ref{defn:rankupper} is false, not a
+live open proposition. The $5/4$ control in
+\texttt{ParityPerturbedRationalControl.lean} has $0\le c(n)\le n$ and a
+tempered integral carry of rank at least $2^e-1$ at every depth
+(\texttt{control\_temperedOrbit\_carryRank\_unbounded}, line~478).
+It refutes both proposed generic ceilings. A bound restricted by additional
+totient-specific hypotheses would be a different assertion.
 
 \textbf{The generic shortcut is retired.} The most natural approach to the
 upper bound is dead

@@ -5,6 +5,9 @@
 % barrier analysis, the surviving routes, and the reading contract. Everything
 % before the premise catalogue.
 
+\clearpage
+\part*{I. Support theorems and their proofs}
+\addcontentsline{toc}{part}{I. Support theorems and their proofs}
 \section{Support irrationality and its proof mechanisms}
 \label{sec:257-problem}
 
@@ -622,7 +625,7 @@ Odd support (density $1/2$) & --- & \lean{irrational\_erdosSupportSeries\_odd}{C
 Lacunary (lcm gap) & $a_k$ outgrows $\operatorname{lcm}\{a_0,\dots,a_{k-1}\}$ & \lean{irrational\_erdosSum\_of\_lcm\_gap}{CertificateKernel.lean:5883} \\
 Factorials; powers of two & instances of the lcm-gap theorem & \lean{irrational\_erdosSum\_factorial\_support}{CertificateKernel.lean:6035}, \lean{irrational\_erdosSum\_two\_pow\_support}{CertificateKernel.lean:6059} \\
 Pairwise coprime (Erd\H{o}s 1968) & $A$ infinite, pairwise coprime, \emph{and} $\sum_{a \in A} 1/a < \infty$ & \lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776} \\
-Signed periodic weights & periodic integer weights, nonnegative, frequently nonzero & \lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583} \\
+Signed periodic weights & periodic integer weights; their divisor-transformed coefficients are nonnegative and frequently nonzero & \lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583} \\
 \hline
 \end{longtable}
 \end{center}
@@ -674,6 +677,15 @@ is derived from it.  The corpus still has no general theorem for an
 arbitrary positive-density nonperiodic or divisor-dense support, and the
 universal statement remains open.
 \end{rem}
+
+\paragraph{Periodic weights: the two hypothesis sets.}
+The periodic sequence theorem belongs to Luca and Tachiya
+\cite{lucatachiya2014periodic}; their later author-written account states
+it as Theorem~A~\cite[p.~139]{lucatachiya2017}.  In the displayed Lean
+row above, nonnegativity and frequent nonvanishing are assumptions on
+$c_w(n)=\sum_{d\mid n}w(d)$, not on $w(n)$ itself.  The formal row must
+therefore be read as a separately specified instance, not as an exact
+transcription of every clause of the published theorem.
 
 \subsection{The unconditional record, half-value direction}
 
@@ -781,22 +793,22 @@ irrationality exponent bounds runs of equal binary digits of $E$ only linearly: 
 after the $N$th place forces $L<(\mu(E)-1+\varepsilon)N$ for large $N$. What (H) needs is that a
 pattern \emph{never} occurs for long, and no result of that kind is identified in this record.
 
-\section{The wall}
+\clearpage
+\part*{II. Limitations and extensions of recorded methods}
+\addcontentsline{toc}{part}{II. Limitations and extensions of recorded methods}
+\section{Limitations of the recorded methods}
 \label{sec:257-wall}
 
 \subsection{The thesis}
 
-This programme has produced many reformulations of \#257 and no proof of it. That is the honest
-summary, and expert readers have said so. The claim of this section is that the reformulations are
-not a hundred separate failures. They are repeated measurements of \emph{one} obstruction, taken in
-different coordinates, and once they are assembled the obstruction has a describable shape. A
-record of which attacks were tried, which landed calculations obstructed them, and which
-hypotheses remain, is a result about the problem; a reformulation is not. That record follows. It
-does not claim an impossibility theorem for every method in a named class.
+This section studies the scope of particular reformulations and
+certificate mechanisms.  Several share the greedy representation, but no
+proof identifies a single necessary obstruction to all methods.  The
+statements below are useful insofar as they specify which hypotheses fail,
+which implications are equivalences, and which parameters must be uniform.
+The first structural fact is uniqueness at a fixed target and depth.
 
-The generating fact is a single structural one, and it is not a convenience of the formalisation.
-
-\begin{obs}[The problem admits no ensemble]
+\begin{obs}[Uniqueness within the fixed-target coding]
 \label{obs:no-ensemble}
 The Mersenne weights are strictly superincreasing. Consequently the digit coding is injective
 (Theorem~\ref{thm:geometry}), the greedy orbit is the unique candidate support for any target, and
@@ -804,29 +816,31 @@ distinct subset sums of a row of seam weights are separated by at least $2^{s+1}
 nine coordinates the corpus has built --- truncation rung $J$, seam row $s$, integer margin, sharp
 tail margin, half-carry $K_n$, reverse-carry word, Boolean--M\"obius exact row, fatal-cell interval
 packing, Dedekind cut-locator --- is therefore a coordinate on the binary digits of \emph{one}
-specific real orbit. There is no family to range over.
+specific real orbit.  This removes freedom to choose a different support
+with the same value in this coding.  It does not exclude averaging over
+indices, moduli, nearby targets, or auxiliary constructions.
 \coord{meta} \scale{uniform} \ev{Lean}\ev{Math}\\
 \textbf{Sites:} \lean{weightedBoolSum\_separated}{HalfCylinderIntegerGreedy.lean:447},
 \lean{three\_mul\_tailWeight\_add\_exactLateGap\_eq\_three\_mul\_headWeight}{HalfCylinderLargestSkipGap.lean:230},
 \lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1582}.
 \end{obs}
 
-All six barriers below are consequences of Observation~\ref{obs:no-ensemble} in different
-directions: the recorded witness space is a singleton (\ref{bar:canon}), the listed sufficient
-conditions are equivalent to the goal rather than strictly weaker (\ref{bar:collapse}), measure and
-category disagree on $\mathcal{A}$ (\ref{bar:measure}), the available information sits at the wrong
-scale for the short-window bound (\ref{bar:scale}), survival certificates point the wrong way for
-membership (\ref{bar:asym}), and, on the universal side, a general support need not satisfy the
-certificate engine's first hypothesis (\ref{bar:box}).
+The six limitations below require separate arguments.  Fixed-target
+uniqueness explains canonicalisation (\ref{bar:canon}); the recorded
+identities determine which sufficient conditions are equivalent to their
+goal (\ref{bar:collapse}).  Measure and category (\ref{bar:measure}),
+observation scales (\ref{bar:scale}), finite versus infinite membership
+(\ref{bar:asym}), and the hypotheses of the support certificate
+(\ref{bar:box}) do not follow from injectivity alone.
 
 \subsection{Barrier 1: canonicalisation --- the witness space is a singleton}
 \label{bar:canon}
 
 \begin{prop}[Canonicalisation; \textsc{proved}]
 \label{prop:canon}
-For the half-target in strictly superincreasing Mersenne weights, every finite object satisfying an
-approximate-hit condition at depth $d$ \emph{is} the canonical greedy prefix at depth $d$.
-Precisely: (i) every straddling word at depth $d$ agrees bit-for-bit with the greedy support of
+For the half-target in strictly superincreasing Mersenne weights, the three
+specified finite conditions below force the indicated canonical greedy word.
+The claim is not about every possible approximation condition.  Precisely: (i) every straddling word at depth $d$ agrees bit-for-bit with the greedy support of
 $1/2$ on $(0,d]$; (ii) every below-half core $D$ whose crossing deficit is smaller than the next
 weight is forced to equal $\texttt{halfGreedyPrefixSupport}(c-1)$, so the universally quantified
 $\forall D$ in the lane's headline socket collapses onto one orbit; (iii) a remainder below the gap
@@ -837,10 +851,11 @@ is equivalent to being the integer greedy bit-word.
 \lean{remainder\_lt\_gap\_iff\_eq\_integerGreedyBits}{BooleanMobiusGreedyReduction.lean:918}.
 \end{prop}
 
-\textbf{Rules out.} Every argument whose leverage comes from \emph{choosing} a favourable witness:
-a support $D$, a Boolean word, a straddle prefix, an adversarial late word, or a lattice/covering
-configuration. At each depth the admissible set has one element, so there is no choice to exploit
-and no adversary to defeat.
+\textbf{Excludes at fixed depth.} Under the three canonicalisation
+hypotheses just stated, a proof cannot gain freedom by choosing a different
+admissible word for the same target and depth.  This says nothing about
+families satisfying different approximation conditions, or about averaging
+over depths or auxiliary data.
 
 \textbf{Explains.} Three recorded attack families die for exactly this reason, and their deaths
 look superficially unrelated. (1) \emph{Generic lattice covering} proves the wrong sign: the free
@@ -1144,17 +1159,16 @@ therefore does not recover that external theorem.
 
 \subsection{What the six barriers converge on}
 
-Both halves of \#257 terminate at the same missing object, stated twice in two coordinates. On the
-half-value side it is a near-integer anti-concentration bound for
-$\sum_{i \le L} (\tau(M+i) - 1)\,2^{-i}$, a geometrically weighted divisor sum in a short interval.
-On the universal side it is the dense-branch producer: for a divisor-dense $A$, a block of $K$
-consecutive indices with $2^K \mid \sum_{r=1}^{K} \operatorname{sc}_A(N+r)\,2^{K-r}$ and a bounded
-middle window. These are the same statement in the incidence coordinate. No proof of it is identified in
-this record, and the digit results cited above produce long runs or guarantee that patterns
-occur. The two directions meet at one missing estimate; this correspondence does not by itself
-show that one estimate settles every remaining obligation.
+The half-target analysis involves a geometrically weighted divisor sum
+$\sum_{i\le L}(\tau(M+i)-1)2^{-i}$ and possible near-integer estimates.
+One universal-support certificate instead asks for an opening divisible
+block together with a controlled middle window.  These inputs are related
+through incidence identities, but the displayed arguments do not prove
+them equivalent for all supports.  They should therefore be retained as
+separate obligations.  Digit-pattern occurrence results do not by
+themselves supply either required uniform estimate.
 
-\section{What the wall does not block}
+\section{Extensions not excluded by these obstructions}
 \label{sec:257-survivors}
 
 Six barriers eliminate a great deal. What they do not eliminate is a short, specific list, and the
@@ -1345,16 +1359,17 @@ in the incidence coordinate. That is not a reason to discard the route --- the r
 genuinely a different coordinate, and a proof might be easier there --- but it is a reason not to
 count it as an independent line of attack. \ev{Open}
 
-\subsection{Ranking, stated plainly}
+\subsection{Comparison of the remaining inputs}
 
-Route 4 is the only one that can be completed with the mathematics currently in hand; it produces
-theorems, not progress on the wall. Route 3 concerns the prime-support constant, which Tao and
-Ter\"av\"ainen have proved irrational~\cite[Theorem~1.3, p.~4]{taoteravainen2025}; completing it
-would reprove that theorem in the coordinates of this record, and its missing input is a windowed
-Mertens estimate, which is ordinary analytic number theory. Route 2 is the only place in the
-half-value branch with a non-singleton witness space, which makes it the best target for search.
-Route 1 is where the actual obstruction lives, and Route 5 is Route 1 in another coordinate.
-Neither problem is close to being solved, and no route above is a proof of anything.
+Route~4 packages recorded equivalences; it does not establish their
+unproved existence hypotheses.  Route~3 must be compared with the external
+prime-support theorem of Tao and Ter\"av\"ainen
+\cite[Theorem~1.3]{taoteravainen2025}; reproducing it in this framework
+requires its own analytic input.  Route~2 offers a different finite
+search space under the conditions stated there.  Routes~1 and~5 share
+some incidence identities, but this is not a proof that every missing
+hypothesis is equivalent.  The appropriate comparison is the input each
+route needs, its quantifiers, and what a successful estimate would imply.
 
 \section{Reading the detailed record}
 \label{sec:257-howto}

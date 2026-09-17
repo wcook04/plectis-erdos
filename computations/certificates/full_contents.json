@@ -1,0 +1,22 @@
+[
+  {
+    "rank": 1,
+    "monic_content": "p"
+  },
+  {
+    "rank": 2,
+    "monic_content": "p**5*(p - 1)**4"
+  },
+  {
+    "rank": 3,
+    "monic_content": "p**14*(p - 1)**15*(p + 1)**4"
+  },
+  {
+    "rank": 4,
+    "monic_content": "p**30*(p - 1)**32*(p + 1)**8*(p**2 + p + 1)**4"
+  },
+  {
+    "rank": 5,
+    "monic_content": "p**55*(p - 1)**55*(p + 1)**19*(p**2 + 1)**4*(p**2 + p + 1)**8"
+  }
+]
