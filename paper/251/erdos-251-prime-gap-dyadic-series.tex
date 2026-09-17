@@ -498,6 +498,16 @@ The companion record and supplied integer program give all prime indices,
 both original enclosures and the new one-tail test.
 One certified pair says nothing about arbitrarily late pairs or all $h$.
 
+\section{Nonperiodic coefficients with a rational sum}\label{sec:carry}
+There is an exact finite obstruction recorded in the pinned source: a second
+example has finite sum $-n/2^n$ and non-eventually-periodic coefficients
+(\lword{Erdos251/PrimeGapDyadicTail.lean}{1157}{carryPartialSum_natCast_eq}{finite endpoint};
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1163}{carryCoeff_natCast_not_eventually_periodic}{coefficient nonperiodicity}).
+The actual prime gaps are also not eventually periodic
+(\lword{Erdos251/PrimeGapDyadicTail.lean}{1023}{primeGap0_not_eventually_periodic}{prime-gap nonperiodicity}),
+but that fact alone is insufficient. The polynomial comparison below is a
+synthetic countermodel, not a prime-gap construction.
+
 \section{What the countermodels exclude}\label{sec:open}
 The joint countermodel of Corollary~\ref{res:jointcountermodel} shows that
 the stated prefix, congruence, growth, nonconcentration and growing-block
@@ -540,6 +550,17 @@ companion includes the free-pair alternative, affine-lattice obstructions,
 the complete countermodels and separate denominator exclusions.  A lower
 bound on the denominator of a hypothetical rational value is neither a
 proof of irrationality nor an irrationality-exponent estimate.
+
+\begin{corollary}[exact irrationality reformulation]\label{res:irr-equivalence}
+The prime-value dyadic series is irrational if and only if the prime-gap
+dyadic series is. The named equivalence still takes a summability hypothesis
+which this checkout discharges; neither side is proved irrational.
+\end{corollary}
+
+\begin{proposition}[prime gaps do not become periodic]\label{res:gap-nonperiodic}
+For every positive $h$, the actual consecutive-prime-gap sequence is not
+eventually periodic with period $h$.
+\end{proposition}
 
 \subsection*{Attribution and verification}
 The finite-choice covering step is credited where it is used.
@@ -622,6 +643,8 @@ Line numbers are those of the commit named by \texttt{\textbackslash commit}.
 \item \lref{Erdos251/PrimeGapDyadicTail.lean}{1023}{primeGap0_not_eventually_periodic}
 \item \lref{Erdos251/PrimeGapDyadicTail.lean}{1129}{carryCoeff}
 \item \lref{Erdos251/PrimeGapDyadicTail.lean}{1137}{carryPartialSum_eq}
+\item \lref{Erdos251/PrimeGapDyadicTail.lean}{1157}{carryPartialSum_natCast_eq}
+\item \lref{Erdos251/PrimeGapDyadicTail.lean}{1163}{carryCoeff_natCast_not_eventually_periodic}
 \item \lref{Erdos251/PrimeGapDyadicTail.lean}{1097}{rationalPrimeGapTail_has_positive_shift_not_eventually_small}
 \item \lref{Erdos251/PrimeGapDyadicTail.lean}{106}{prime0DisplayedPartialSumQ}
 \item \lref{Erdos251/PrimeGapDyadicTail.lean}{124}{dyadicPartialSumQ_succ}

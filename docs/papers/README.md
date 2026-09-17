@@ -298,7 +298,7 @@ Start here (selected for this guide): [The unconditional record](full-text/erdos
 
 **Sparse Congruence-Preserving Perturbations of Dyadic Series**
 
-[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.tex) · 13 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
+[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.tex) · 14 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-251-prime-gap-dyadic-series.md#sec:problem), [Integral shifts: an exact algebraic classification](full-text/erdos-251-prime-gap-dyadic-series.md#sec:tail), [A local certificate and the missing prime input](full-text/erdos-251-prime-gap-dyadic-series.md#sec:local-certificate), [What the countermodels exclude](full-text/erdos-251-prime-gap-dyadic-series.md#sec:open).
 

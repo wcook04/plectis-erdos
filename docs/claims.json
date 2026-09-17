@@ -997,7 +997,7 @@
           "title": "Reciprocal-Tail Rigidity for Erdős Problem 243",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "formal_source_ref": "3d6d938d696fed0fb71dd55115a18a73738ff223",
           "role": "Standalone theorem-led problem note for Erdős #243 and the bounded-rise fresh-modulus barrier.",
           "anchor_label_allowlist": [
             "res:barrier"
@@ -1081,14 +1081,14 @@
           "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "92b88dc1bbe099aa73bcc900c3c405e9ba5c2334"
+          "formal_source_ref": "3d6d938d696fed0fb71dd55115a18a73738ff223"
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
           "source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
           "rendered": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #251.",
-          "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
+          "formal_source_ref": "3d6d938d696fed0fb71dd55115a18a73738ff223"
         },
         {
           "title": "The Three-Prime Running LCM: Complete Reasoning Record",
@@ -14458,11 +14458,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "3f5ea2f34c2af25bf270a7a2f484a1602133b9ff",
+      "ref": "beaf0866976c908539fba0a96075374dd658f44a",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-16"
+      "public_tag": "formal-source-2026-09-16-r1"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -16129,8 +16129,8 @@
       "paper_anchor": {
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
-        "title": "the repeated three-prime target",
-        "line": 620
+        "title": "exact nonintegrality of every reduced tail",
+        "line": 623
       }
     },
     {
@@ -16141,8 +16141,8 @@
       "paper_anchor": {
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
-        "title": "the repeated three-prime target",
-        "line": 620
+        "title": "actual cofinal local-window escape",
+        "line": 629
       }
     },
     {
@@ -16166,7 +16166,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 764
+        "line": 769
       }
     },
     {

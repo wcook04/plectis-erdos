@@ -441,17 +441,27 @@ Its exponentially growing first term eventually exceeds $`K(B,\ell+h)`$. This pr
 
 The validity of the cap is needed in the rational direction; an upper polynomial growth condition by itself would not suffice. The zero cap, for example, makes positive-residue escape automatic. The criterion identifies the target in window coordinates. The unresolved point is the source-specific exclusion below.
 
+<div class="problem">
+
+**Problem 15** (the repeated three-prime target). Prove that $`S=\mathcal R_{\{2,3,5\}}`$ is irrational.
+
+</div>
+
 <div id="prob:tails269" class="problem">
 
-**Problem 15** (the repeated three-prime target). <span id="prob:producer" label="prob:producer"></span> Prove that $`S=\mathcal R_{\{2,3,5\}}`$ is irrational. Equivalently, prove
+**Problem 16** (exact nonintegrality of every reduced tail). Prove that for every $`a\ge1`$ and every integer $`B\ge1`$ coprime to $`30`$,
 ``` math
 \begin{equation}
 \label{eq:tail-nonintegrality}
- BX_a\notin\mathbb Z
- \quad\text{for every }a\ge1\text{ and every }B\ge1\text{ coprime to }30,
+ BX_a\notin\mathbb Z.
 \end{equation}
 ```
-or prove the cofinal window condition <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a>.
+
+</div>
+
+<div id="prob:producer" class="problem">
+
+**Problem 17** (actual cofinal local-window escape). Prove the cofinal window condition <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a>.
 
 </div>
 

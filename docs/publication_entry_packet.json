@@ -107,13 +107,13 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:1b98e8512e7d4018658fd2d62b56a3ec0262c3f4791306e16f2b65a1168bb70f",
+    "docs/claims.json": "sha256:e14ce0fc0599e4faaee604747d2c6f31d6d1133267ca89bb4cf92f4e55055539",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:284bb03f2cfdfe63d9741638bf85f49a178b46711c586d5fb9868cf40cd169a4",
-    "docs/publication_contract.json": "sha256:098cd29b3b23a1ad98e8b47601b7fb2ee267cb03552c8250e254cad0d49de9b9",
+    "docs/problems.json": "sha256:d29832d1d252e54e380d1d5058aa5a35d6410e6d6cc5bb408f8e9c8411898a2c",
+    "docs/publication_contract.json": "sha256:aa4f8bd09afd53adfdb40ef4a524b4002c9781e433786d1a3b9bc204154c4738",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:fe52034ea387e2b7ac8514d91ef3ef2ee4128a200d5668db52441c37fdd1dd21",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:607409a9207f0c76056fcfc54000a9a0c406a0cbb95e015f78b3a64a19c84467",
     "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:a288ad871c7b8b529c62927a809496251e0d597a2fd8c3f507cec20768d80fb9",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3",
@@ -402,9 +402,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 620,
+        "line": 623,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "the repeated three-prime target"
+        "title": "exact nonintegrality of every reduced tail"
       },
       "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
       "status": "open"
@@ -414,9 +414,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 620,
+        "line": 629,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "the repeated three-prime target"
+        "title": "actual cofinal local-window escape"
       },
       "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
       "status": "open"
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 764,
+        "line": 769,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:284bb03f2cfdfe63d9741638bf85f49a178b46711c586d5fb9868cf40cd169a4",
+      "content_digest": "sha256:d29832d1d252e54e380d1d5058aa5a35d6410e6d6cc5bb408f8e9c8411898a2c",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -544,9 +544,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-16",
+      "public_tag": "formal-source-2026-09-16-r1",
       "publication_state": "published_committed_checkpoint",
-      "ref": "3f5ea2f34c2af25bf270a7a2f484a1602133b9ff",
+      "ref": "beaf0866976c908539fba0a96075374dd658f44a",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

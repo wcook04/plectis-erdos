@@ -1368,13 +1368,13 @@ Then
 
 <div class="proof">
 
-*Proof.* Substituting $`D_{N+r}=2^rD_N-B_{h,N,r}`$ into $`\mathcal A_{N,r}`$ cancels the observed block from both sides and leaves $`D_N=2z`$. This proves <a href="#long251:eq:affinecollapse" data-reference-type="eqref" data-reference="long251:eq:affinecollapse">[long251:eq:affinecollapse]</a>. After one recurrence step, evenness of $`\delta_N`$ identifies even integrality at $`N+1`$ with ordinary integrality at $`N`$. The forward implication in <a href="#long251:eq:affinecofinal" data-reference-type="eqref" data-reference="long251:eq:affinecofinal">[long251:eq:affinecofinal]</a> follows, while the reverse implication chooses a nonintegral $`D_N`$ and the legal depth $`r=0`$.
+*Proof.* Substituting $`D_{N+r}=2^rD_N-B_{h,N,r}`$ into $`\mathcal A_{N,r}`$ cancels the observed block from both sides and leaves $`D_N=2z`$. This proves <a href="#eq:affinecollapse" data-reference-type="eqref" data-reference="eq:affinecollapse">[eq:affinecollapse]</a>. After one recurrence step, evenness of $`\delta_N`$ identifies even integrality at $`N+1`$ with ordinary integrality at $`N`$. The forward implication in <a href="#eq:affinecofinal" data-reference-type="eqref" data-reference="eq:affinecofinal">[eq:affinecofinal]</a> follows, while the reverse implication chooses a nonintegral $`D_N`$ and the legal depth $`r=0`$.
 
-For <a href="#long251:eq:fixedcollapse" data-reference-type="eqref" data-reference="long251:eq:fixedcollapse">[long251:eq:fixedcollapse]</a>, eventual integrality and the block identity give some $`z\in\mathbb{Z}`$ with
+For <a href="#eq:fixedcollapse" data-reference-type="eqref" data-reference="eq:fixedcollapse">[eq:fixedcollapse]</a>, eventual integrality and the block identity give some $`z\in\mathbb{Z}`$ with
 ``` math
 B_{h,N,r}-2^rz=-D_{N+r},
 ```
-so the displayed strict separation contradicts $`|D_{N+r}|\le b(N+r)`$. Conversely, if $`D_N`$ is nonintegral and has reduced denominator $`q`$, then its distance from every integer is at least $`1/q`$. Choose $`r`$ from <a href="#long251:eq:dyadicscale" data-reference-type="eqref" data-reference="long251:eq:dyadicscale">[long251:eq:dyadicscale]</a>, scale this separation by $`2^r`$, and use the block identity together with $`|D_{N+r}|\le b(N+r)`$. The triangle inequality gives $`|B_{h,N,r}-2^rz|>b(N+r)`$ for every integer $`z`$. ◻
+so the displayed strict separation contradicts $`|D_{N+r}|\le b(N+r)`$. Conversely, if $`D_N`$ is nonintegral and has reduced denominator $`q`$, then its distance from every integer is at least $`1/q`$. Choose $`r`$ from <a href="#eq:dyadicscale" data-reference-type="eqref" data-reference="eq:dyadicscale">[eq:dyadicscale]</a>, scale this separation by $`2^r`$, and use the block identity together with $`|D_{N+r}|\le b(N+r)`$. The triangle inequality gives $`|B_{h,N,r}-2^rz|>b(N+r)`$ for every integer $`z`$. ◻
 
 </div>
 

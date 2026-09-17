@@ -1701,7 +1701,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:a2dbfa3d8cb217528864948417c4b95431c031841c236eff0dfdfe0f0fba98a5",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:284bb03f2cfdfe63d9741638bf85f49a178b46711c586d5fb9868cf40cd169a4",
+    "projection_digest": "sha256:d29832d1d252e54e380d1d5058aa5a35d6410e6d6cc5bb408f8e9c8411898a2c",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2103,7 +2103,7 @@
         ],
         "note": {
           "artifact_id": "erdos_249_note",
-          "title": "A Basis for the 2-Kernel of Euler's Totient",
+          "title": "Bases and Integral Relations for the $k$-Kernel of Euler's Totient",
           "source_path": "paper/249/erdos-249-binary-totient-series.tex",
           "rendered_path": "paper/249/erdos-249-binary-totient-series.pdf",
           "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
@@ -2211,7 +2211,7 @@
         ],
         "note": {
           "artifact_id": "erdos_251_note",
-          "title": "A Countermodel for Growth-and-Parity Arguments\\\\on the Prime-Gap Dyadic Series",
+          "title": "Sparse Congruence-Preserving Perturbations\\\\of Dyadic Series",
           "source_path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "rendered_path": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2701,7 +2701,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1049_note",
-          "title": "Irrationality of $F(31/4)$ and the\\\\Exact Normalized Hankel Order",
+          "title": "Zudilin's Forms at Rational Bases\\\\and the Exact Normalised Hankel Order",
           "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "rendered_path": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"

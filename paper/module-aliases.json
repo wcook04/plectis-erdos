@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 117,
+  "alias_count": 125,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -584,6 +584,46 @@
       "sigil": "TotStrPriEsc",
       "module": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
       "path": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
+    },
+    {
+      "sigil": "PriGapDyaTai",
+      "module": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "path": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+    },
+    {
+      "sigil": "BouRadTaiEsc",
+      "module": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
+      "path": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean"
+    },
+    {
+      "sigil": "CarLifExt",
+      "module": "lean/ErdosProblems/Erdos269/CarryLiftExtinction.lean",
+      "path": "lean/ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+    },
+    {
+      "sigil": "ResEsc",
+      "module": "lean/ErdosProblems/Erdos269/ResidueEscape.lean",
+      "path": "lean/ErdosProblems/Erdos269/ResidueEscape.lean"
+    },
+    {
+      "sigil": "ResFloSum",
+      "module": "lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "path": "lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean"
+    },
+    {
+      "sigil": "ThrChaBloRig",
+      "module": "lean/ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
+      "path": "lean/ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean"
+    },
+    {
+      "sigil": "ThrPriRunLcm",
+      "module": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "path": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+    },
+    {
+      "sigil": "WeiPhaCar",
+      "module": "lean/ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+      "path": "lean/ErdosProblems/Erdos269/WeightedPhaseCarry.lean"
     },
     {
       "sigil": "LadT67",

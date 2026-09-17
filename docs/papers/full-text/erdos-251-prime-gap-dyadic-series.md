@@ -317,6 +317,12 @@ P(x)=x^4+8x^3+36x^2+104x+150,\qquad
 ```
 The identity $`2P(x)=(x+1)^4+P(x+1)`$ telescopes the weighted quartic tail; the bound $`g_n\le p_{n+1}\le1250(n+2)^4`$ completes its proof. The companion record and supplied integer program give all prime indices, both original enclosures and the new one-tail test. One certified pair says nothing about arbitrarily late pairs or all $`h`$.
 
+<a id="sec:carry"></a>
+
+# Nonperiodic coefficients with a rational sum
+
+There is an exact finite obstruction recorded in the pinned source: a second example has finite sum $`-n/2^n`$ and non-eventually-periodic coefficients ([finite endpoint](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1157); [coefficient nonperiodicity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1163)). The actual prime gaps are also not eventually periodic ([prime-gap nonperiodicity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023)), but that fact alone is insufficient. The polynomial comparison below is a synthetic countermodel, not a prime-gap construction.
+
 <a id="sec:open"></a>
 
 # What the countermodels exclude
@@ -333,6 +339,18 @@ The digits are positive, even and strictly increasing, and their adjacent differ
 Bounded gaps \[zhang2014\], bounded clusters of each fixed size \[maynard2015; polymath2014\], and extreme large gaps \[fgkmt2018\] concern different distributional data. In particular Polymath’s $`\liminf_n(p_{n+1}-p_n)\le246`$ \[polymath2014, Theorem 1.4(i)\] improves the earlier bound $`600`$; no exact small-gap bound used here supplies a signed weighted-tail window. With the polynomial majorant, $`L=\lceil(4+\eta)\log_2(N+h+2)\rceil`$ for fixed $`h`$ makes the remainder small. It certifies a window only when the finite sum also has a larger margin from the boundary. A fixed positive margin is a convenient stronger sufficient condition, not a consequence of strict membership in an open window.
 
 The remaining task is a quantitative prime-gap estimate producing the required separation or sparse signed-window witnesses. The construction, classification and finite certificates above do not supply it. The companion includes the free-pair alternative, affine-lattice obstructions, the complete countermodels and separate denominator exclusions. A lower bound on the denominator of a hypothetical rational value is neither a proof of irrationality nor an irrationality-exponent estimate.
+
+<div id="res:irr-equivalence" class="corollary">
+
+**Corollary 9** (exact irrationality reformulation). *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. The named equivalence still takes a summability hypothesis which this checkout discharges; neither side is proved irrational.*
+
+</div>
+
+<div id="res:gap-nonperiodic" class="proposition">
+
+**Proposition 10** (prime gaps do not become periodic). *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
+
+</div>
 
 <a id="attribution-and-verification"></a>
 
@@ -455,6 +473,10 @@ The following declarations are this note’s pin-faithful source inventory. Line
 - [](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1129)
 
 - [](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1137)
+
+- [](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1157)
+
+- [](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1163)
 
 - [](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1097)
 
