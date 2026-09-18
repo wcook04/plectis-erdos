@@ -9,6 +9,9 @@ before proposing a correction, strengthening, claim change, or release change;
 then use the authority and validation contract in [AGENTS.md](AGENT_GUIDE.md).
 Reader introductions belong in the README and results guide rather than here.
 
+For clone setup and a copyable task prompt, see the
+[agent quickstart](README.md#start-with-current-public-work).
+
 ## Design thesis
 
 Every mechanized proof-search policy we examined ends the same way: an
@@ -142,14 +145,6 @@ forest; exact dependency neighborhoods cover both compact roots. Entry:
 ```sh
 python3 scripts/query_semantic.py inventory
 ```
-
-The corpus is the quiet load-bearing one. This environment is deep
-rather than broad: decades-hard problems, attacked far past the first
-wall, with the failures formalized alongside the successes. Depth is
-what makes probes decisive. When an agent conjectures here, the corpus
-usually answers back — with a landed counterexample, a no-go theorem,
-or an exact boundary — instead of with silence. A broad shallow corpus
-cannot do that.
 
 ## The move grammar
 

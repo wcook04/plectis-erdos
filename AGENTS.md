@@ -20,6 +20,11 @@ It recommends a task lane, the smallest read set, and the relevant skills;
 `python3 scripts/agent_entry.py --skills` is the complete catalog. Its routing
 metadata is navigation, not mathematical authority.
 
+Entry reports the local revision and edits. For latest-work tasks, run
+`python3 scripts/agent_entry.py --checkout --check-upstream`; this compares with
+public main without changing files. Record the revision; preserve older work.
+[Setup and prompts](docs/agents/README.md#start-with-current-public-work).
+
 ## Route the task before reading broadly
 
 ### Mathematics, theorem status, problem progress, or paper synthesis
@@ -113,12 +118,9 @@ review. `palomar_qualification` reports repository-local policy readiness
 and its remaining operator-only decisions; it does not confer acceptance,
 registration, publication, or external endorsement.
 
-`--ask` answers ordinary requests such as “which papers should I read?”, keeps
-the gateway, companion, systems guide and Plectis route apart, and refuses to
-send a cold reader into a registered artifact absent from the checkout. After
-choosing a paper, follow its typed claim, open, declaration, source, or
-publication handles; prose is not authority. `docs/papers/README.md` is the
-human index and `docs/papers/corpus.json` the machine inventory.
+After choosing a paper, follow its typed claim and source handles; prose is not
+authority. `docs/papers/README.md` indexes papers; `docs/papers/corpus.json` owns
+their machine inventory. `--ask` routes ordinary paper questions.
 
 For publication mutation, open `docs/publication_entry_packet.json`, then the
 publication contract or emitted handle. These own organisation, not Lean proof.
@@ -200,7 +202,6 @@ For a committed-snapshot release check in a dirty shared checkout:
 python3 scripts/check_release_ref.py --ref HEAD --receipt "$(pwd -P)/release-head.json"
 ```
 
-After Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2
---changed-from HEAD`; full roots are release-only.
+Full Lean roots are release-only.
 
 Do not absorb the complete deep contract merely to find the first action.

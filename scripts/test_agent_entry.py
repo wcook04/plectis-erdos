@@ -16,7 +16,8 @@ from pathlib import Path
 from unittest.mock import patch
 
 import agent_entry
-from agent_entry import entry_packet
+
+from agent_entry import PUBLIC_REPOSITORY, checkout_card, entry_packet
 from agent_skill_catalog import ROOT, load_catalog
 
 
@@ -53,6 +54,16 @@ ROUTE_CASES = {
     ),
     "Review theorem ranking and propagate corrected result summaries into the public clone docs": (
         "result_summary_audit", "propagate-research-consequences",
+    ),
+
+    "Independently reproduce the checked claim eb_full_support": (
+        "reproduce_claim", "explain-public-system",
+    ),
+    "Good first contribution: independently reproduce one checked claim": (
+        "reproduce_claim", "explain-public-system",
+    ),
+    "Verify a claim without installing Lean": (
+        "reproduce_claim", "explain-public-system",
     ),
     "Organize crowded docs for readers, verification and agent workflows": (
         "repository_architecture", "maintain-public-infrastructure",
@@ -278,13 +289,74 @@ def validate_blank_selectors() -> None:
             assert f"argument {request[0]}:" in stderr.getvalue()
             assert "must not be empty or whitespace" in stderr.getvalue()
         else:
-            assert "one of the arguments --entry --skills --skill is required" in stderr.getvalue()
+            assert "one of the arguments --entry --skills --skill --checkout is required" in stderr.getvalue()
         assert "Traceback" not in stderr.getvalue()
         assert len(stderr.getvalue().encode("utf-8")) < 1_000
 
 
 def main() -> int:
     validate_blank_selectors()
+
+    # Real temporary repositories exercise clone, fork, tag, dirty-tree and
+    # archive behavior. Only the remote response is mocked: tests stay offline.
+    with tempfile.TemporaryDirectory(prefix="plectis-checkout-") as temporary:
+        repo = Path(temporary)
+
+        def git(*args: str) -> str:
+            return subprocess.check_output(
+                ["git", "-C", str(repo), *args], text=True, stderr=subprocess.DEVNULL
+            ).strip()
+
+        assert checkout_card(repo)["commit"] is None
+        git("init", "-b", "main")
+        assert checkout_card(repo)["commit"] is None
+        (repo / "tracked.txt").write_text("initial\n")
+        git("add", "tracked.txt")
+        git("-c", "user.name=Test", "-c", "user.email=test@example.invalid",
+            "commit", "-m", "initial")
+        head = git("rev-parse", "HEAD")
+        git("remote", "add", "origin", "https://example.invalid/contributor/fork.git")
+        git("update-ref", "refs/remotes/origin/main", head)
+        card = checkout_card(repo)
+        assert card["commit"] == head and card["branch"] == "main"
+        assert card["worktree"] == "clean"
+        assert card["upstream_status"] == "not_checked", "cached origin/main is not live evidence"
+        git("tag", "v0.10.0")
+        git("checkout", "--detach", "v0.10.0")
+        (repo / "tracked.txt").write_text("local research\n")
+        card = checkout_card(repo)
+        assert card["exact_tag"] == "v0.10.0" and card["branch"] is None
+        assert card["worktree"] == "modified"
+        before = git("status", "--porcelain")
+        real_run = subprocess.run
+
+        def remote_result(revision: str | None):
+            def run(command, **kwargs):
+                if "ls-remote" in command:
+                    assert PUBLIC_REPOSITORY in command, "must check upstream, not the fork origin"
+                    assert kwargs["timeout"] == 10
+                    if revision is None:
+                        raise subprocess.TimeoutExpired(command, 10)
+                    return subprocess.CompletedProcess(
+                        command, 0, f"{revision}\trefs/heads/main\n", ""
+                    )
+                assert "fetch" not in command and "pull" not in command
+                return real_run(command, **kwargs)
+            return run
+
+        for revision, expected in ((head, "matches_main"), ("f" * 40, "differs_from_main"), (None, "unavailable")):
+            with patch("agent_entry.subprocess.run", side_effect=remote_result(revision)):
+                card = checkout_card(repo, check_upstream=True)
+            assert card["upstream_status"] == expected, card
+            assert card["worktree"] == "modified", "remote equality must not hide local edits"
+        assert git("status", "--porcelain") == before
+        # An archive nested inside a different repository must not borrow its HEAD.
+        archive = repo / "archive"
+        archive.mkdir()
+        assert checkout_card(archive)["commit"] is None
+        with patch("agent_entry.subprocess.run", side_effect=FileNotFoundError("git")):
+            assert checkout_card(repo)["worktree"] == "unknown"
+
     catalog = load_catalog()
     skill_ids = {row["id"] for row in catalog["skills"]}
     disk_ids = {
@@ -388,6 +460,10 @@ def main() -> int:
     routed = run_cli(ROOT, "--entry", "run a lean build", "--json")
     assert routed.returncode == 0, routed.stderr
     assert json.loads(routed.stdout)["primary_lane"]["id"] == "lean_validation"
+    assert json.loads(routed.stdout)["checkout"]["upstream_status"] == "not_checked"
+    checkout = run_cli(ROOT, "--checkout", "--json")
+    assert checkout.returncode == 0, checkout.stderr
+    assert json.loads(checkout.stdout)["schema"] == "plectis-agent-checkout/1"
 
     # Re-run the public command in a miniature cold clone containing only its
     # declared tracked inputs. This catches accidental imports from the parent
@@ -407,6 +483,7 @@ def main() -> int:
         cold = run_cli(clone, "--entry", "improve cold clone navigation", "--json")
         assert cold.returncode == 0, cold.stderr
         assert json.loads(cold.stdout)["primary_lane"]["id"] == "repository_architecture"
+        assert json.loads(cold.stdout)["checkout"]["commit"] is None
 
         catalog_script = clone / "scripts" / "agent_skill_catalog.py"
         current = subprocess.run(
