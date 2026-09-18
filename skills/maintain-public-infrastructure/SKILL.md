@@ -33,6 +33,19 @@ an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
 Check neighboring tasks that should retain their original lane.
 
+For reports that an outside agent missed recent capabilities, inspect the
+checkout provenance returned by `agent_entry.py` before repairing the router.
+Use `--checkout --check-upstream` for an explicit live comparison with canonical
+public main. Never label a cached remote ref, a release tag, or an offline
+checkout as latest. Preserve older-clone work and its starting commit; a
+different revision is not evidence that the contributor's work is invalid.
+Keep the human clone/prompt instructions in `docs/agents/README.md`
+and the behavioral provenance cases in `scripts/test_agent_entry.py`, which
+the release gate already runs. Exercise forks, tags, archives, dirty worktrees,
+and unavailable network access without requiring a network in tests. Check the
+combined first-contact route budget as well as each entry file: newcomer setup
+belongs in the agent index, not in an already full technical reading bundle.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,

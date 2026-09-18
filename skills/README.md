@@ -19,7 +19,7 @@ silently become a second catalog.
 Enter, explain, and optionally install the public workflows without requiring a private system.
 
 - [explain-public-system](explain-public-system/SKILL.md) — Explain this public mathematical research system to a lay reader, mathematician, formaliser, compute contributor, reviewer, or infrastructure contributor from clone-local evidence.
-  Routed by: Understand or explain the public system, Inspect theorem status or mathematical progress
+  Routed by: Independently reproduce a recorded claim trail without Lean, Understand or explain the public system, Inspect theorem status or mathematical progress
 - [install-clone-skills](install-clone-skills/SKILL.md) — Preview, install, or verify the public Plectis skills in Codex, Claude, or another directory-based agent harness.
   Routed by: Install clone-local skills into an agent harness
 

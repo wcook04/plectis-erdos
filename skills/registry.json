@@ -162,6 +162,27 @@
   ],
   "lanes": [
     {
+      "id": "reproduce_claim",
+      "title": "Independently reproduce a recorded claim trail without Lean",
+      "task_cues": [
+        "reproduce a claim",
+        "reproduce one checked claim",
+        "reproduce the checked claim",
+        "independently reproduce",
+        "verify a claim",
+        "verify the claim",
+        "verify_claims",
+        "claim trail"
+      ],
+      "skills": ["explain-public-system"],
+      "read": ["skills/explain-public-system/SKILL.md#reproduce-one-recorded-claim"],
+      "commands": [
+        "python3 scripts/verify_claims.py --list",
+        "python3 scripts/verify_claims.py --claim <claim_id>"
+      ],
+      "boundary": "Verify the recorded claim trail at the reported checkout commit; this does not run Lean, prove a new theorem, or establish novelty."
+    },
+    {
       "id": "understand_repository",
       "title": "Understand or explain the public system",
       "task_cues": [
