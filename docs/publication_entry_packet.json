@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:ce04342d5ba1e90520b16176d2b0bebd29f0bd9fcab5e16fe8ad43b46e69ba42",
+    "docs/claims.json": "sha256:cbc29f71ec1afd8f909bd29b17ac7201d2b60fdca4a142c616a6452f88910ebc",
     "docs/methodology.json": "sha256:c5e73c5e376b45f89d1f63a444a3090ebacfaee6f27fa23575e32d53cc94b2cc",
-    "docs/problems.json": "sha256:d29832d1d252e54e380d1d5058aa5a35d6410e6d6cc5bb408f8e9c8411898a2c",
-    "docs/publication_contract.json": "sha256:1bdc87e860903b159df51577c31147a74a8e8299cc3b1ab22d3cefbb38cf8206",
+    "docs/problems.json": "sha256:28facf7677ab602eb59ff6a87e01c103a791eb92b1a4ec0dc8ff38e089344a23",
+    "docs/publication_contract.json": "sha256:1ae74435a9eb94278f8be0ffc231d0796d2fdb60a9b2bf64b95422c6ee904871",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:e7027c51a85643e024a2b86c313f883e7d40a36a6ab0d0c08f4f35d509d4af87",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:607409a9207f0c76056fcfc54000a9a0c406a0cbb95e015f78b3a64a19c84467",
@@ -270,7 +270,7 @@
       "open_target_claim": "erdos_68",
       "paper_anchor": {
         "environment": "problem",
-        "line": 36,
+        "line": 32,
         "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "title": "Erdős #68"
       },
@@ -294,7 +294,7 @@
       "open_target_claim": "erdos_251",
       "paper_anchor": {
         "environment": "section",
-        "line": 48,
+        "line": 49,
         "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "title": "Introduction"
       },
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1103,
+        "line": 1084,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -354,7 +354,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "section",
-        "line": 59,
+        "line": 48,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "Introduction"
       },
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 120,
+        "line": 122,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 54,
+        "line": 49,
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 140,
+        "line": 133,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
@@ -402,9 +402,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 623,
+        "line": 574,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "exact nonintegrality of every reduced tail"
+        "title": "no reduced tail is an integer"
       },
       "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
       "status": "open"
@@ -414,9 +414,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 629,
+        "line": 580,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "actual cofinal local-window escape"
+        "title": "residue inequalities after every starting index"
       },
       "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
       "status": "open"
@@ -426,9 +426,9 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1738,
+        "line": 2222,
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-        "title": "function-faithful two-dimensional representation"
+        "title": "an exact function representing the distinct-height sum"
       },
       "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
       "status": "open"
@@ -438,9 +438,9 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 769,
+        "line": 799,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-        "title": "global overlap-height growth"
+        "title": "growth of repeated denominator factors"
       },
       "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
       "status": "open"
@@ -450,9 +450,9 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 666,
+        "line": 709,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
-        "title": "first-harmonic anti-concentration on supplier fibres"
+        "title": "Four estimates for the first-harmonic sum"
       },
       "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
       "status": "open"
@@ -462,9 +462,9 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1117,
+        "line": 1100,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-        "title": "weakest native recurrence criterion"
+        "title": "bounded returns of the scaled remainder"
       },
       "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
       "status": "open"
@@ -474,9 +474,9 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1126,
+        "line": 1109,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-        "title": "actual-orbit invariant"
+        "title": "arithmetic tests for the greedy sequence"
       },
       "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
       "status": "open"
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1136,
+        "line": 1120,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:d29832d1d252e54e380d1d5058aa5a35d6410e6d6cc5bb408f8e9c8411898a2c",
+      "content_digest": "sha256:28facf7677ab602eb59ff6a87e01c103a791eb92b1a4ec0dc8ff38e089344a23",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
