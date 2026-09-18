@@ -590,8 +590,8 @@ def validate_indexed_problem_routes() -> None:
                         "totient_carry_modEq_geometric_of_dvd_multiplier",
                     }
                 )
-                assert carry_anchor["canonical_handle"] == carry_anchor["source_ref"]
-                assert carry_anchor["canonical_handle"].startswith(
+                assert carry_anchor["canonical_handle"] == "res:rank"
+                assert carry_anchor["source_ref"].startswith(
                     "paper/249/erdos-249-binary-totient-series.tex:"
                 )
             if expected["id"] == "weighted_phase_carry_observer":
