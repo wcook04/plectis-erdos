@@ -100,6 +100,7 @@ import ErdosProblems.Erdos251.SparsePolylogR11
 import ErdosProblems.Erdos251.SparseRationalisationCore
 import ErdosProblems.Erdos251.SparseScheduleDensityR8
 import ErdosProblems.Erdos251.SparseScheduleR8
+import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
 import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
 import ErdosProblems.Erdos269.BlockMassEngines
 import ErdosProblems.Erdos269.CertificateRangeR11

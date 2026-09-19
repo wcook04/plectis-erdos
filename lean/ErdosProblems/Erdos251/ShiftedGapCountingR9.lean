@@ -3,7 +3,7 @@ import ErdosProblems.Erdos251.GapDifferenceCountingR8
 /-!
 # Four-prime finite reduction for EVERY separated gap shift
 
-UNCOMPILED. This extends the R8 adjacent (three-prime) reduction to h >= 2.
+This extends the R8 adjacent (three-prime) reduction to h >= 2.
 The target configuration is x, x+d, x+s, x+s+d+r, with four DISTINCT
 prime positions. The intervening h-1 primes need not be prescribed for
 an upper bound. Large complete spans are removed by an exact first moment.
