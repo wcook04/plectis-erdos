@@ -7,16 +7,16 @@
       "domain": "systems",
       "classification": "external_validation",
       "status": "OPEN",
-      "exact_ask": "Starting from a fresh public clone and no prior project context, spend at most 600 seconds following the advertised human reading route. Record reviewer and clone provenance, then return the structured response below: the status of both Erdős problems, the provenance and numerical delta of the finite Farey bound, the 17/23 self-diagnosis, at least two non-restatement results for each problem in your own words, the resulting one-sentence verdict, the paths used, and the first confusing surface.",
-      "payoff": "When the response is supplied by an identified independent reviewer who followed the protocol, acceptance is evidence that the public first-contact layer communicated the intended verdict within ten minutes. A rejected response yields field-level repair targets rather than a vague readability complaint.",
-      "boundary": "This evaluates discoverability and claim calibration only. The validator does not authenticate the reviewer or elapsed time, and it does not establish mathematical correctness, priority, novelty, or either open problem.",
+      "exact_ask": "For this historical two-programme reader protocol (#249 and #257), start from a fresh public clone and no prior project context, spend at most 600 seconds following the advertised human reading route. Record reviewer and clone provenance, then return the structured response below: the status of Erdős #249 and #257, the provenance and numerical delta of the finite Farey bound, the historical DemandLedger audit (17 endpoint-equivalent hypotheses among its 23 selected substantial hypotheses), at least two non-restatement results for each problem in your own words, the resulting one-sentence verdict, the paths used, and the first confusing surface.",
+      "payoff": "When the response is supplied by an identified independent reviewer who followed the protocol, acceptance is evidence that the specified two-programme reading route communicated the intended verdict within ten minutes. A rejected response yields field-level repair targets rather than a vague readability complaint.",
+      "boundary": "This protocol covers the earlier #249/#257 reading route. Its DemandLedger counts describe a historical selected audit, not the current eight-programme corpus or its mathematical value. It evaluates discoverability and claim calibration only; the validator does not authenticate reviewer or timing provenance, or establish mathematical correctness, priority, novelty, or resolution of either problem.",
       "known_obstruction": "The repository's cold-clone checker is self-authored and can verify that facts are present, but it cannot certify that an independent human actually finds and interprets them in time. That independence remains an external provenance requirement.",
-      "current_hypothesis": "An independent reader will recover that both problems are open and that the Farey delta is zero, but may still underweight the concrete non-restatement results within 600 seconds. Confidence is low because the only external verdict predates the rewritten entry surfaces.",
+      "current_hypothesis": "An independent reader will recover that Erdős #249 and #257 remain open and that the Farey delta is zero, but may still underweight the concrete non-restatement results within 600 seconds. Confidence is low because the only external verdict predates the rewritten entry surfaces.",
       "hypothesis_confidence": "low",
       "plausible_alternatives": [
         {
           "id": "calibrated_verdict",
-          "statement": "The reader recovers the open boundaries, Farey provenance, 17/23 self-diagnosis and at least two concrete results per problem.",
+          "statement": "The reader recovers the open boundaries, Farey provenance, the historical DemandLedger audit's limited scope and at least two concrete results per problem.",
           "consequence": "The current first-contact route earns the intended neither-near-solution-nor-nothing-here verdict."
         },
         {
@@ -84,7 +84,7 @@
       "manual_review_rubric": {
         "problem_249_summaries_faithful": "Each #249 summary identifies a reviewed non-restatement result in its own words, associates it with #249, and does not turn a finite result, barrier, or coefficient theorem into irrationality.",
         "problem_257_summaries_faithful": "Each #257 summary identifies a reviewed non-restatement result in its own words, associates it with #257, and does not turn a support-family theorem, barrier, or half-value reduction into universal #257.",
-        "verdict_calibrated": "The verdict says both problems remain open, recognizes concrete checked non-restatement content, recognizes the self-diagnosed endpoint-equivalent reformulations, and makes no unsupported novelty claim.",
+        "verdict_calibrated": "The verdict keeps #249 and universal #257 open, identifies concrete checked non-restatement content, distinguishes the historical DemandLedger sample from the current corpus, and makes no unsupported novelty claim.",
         "evidence_paths_support_response": "The listed repository paths actually support the scalar answers, summaries, and verdict.",
         "confusion_report_actionable": "The first confusing surface is named precisely enough to reproduce, or is explicitly recorded as none."
       },

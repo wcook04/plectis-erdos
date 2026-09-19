@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:a0e1faa35379bbb9f709bb2479099da83279e77ebfbd421df3f193361625ebf3",
-  "module_count": 1446,
-  "synopsis_count": 1250,
+  "source_fingerprint": "sha256:48d4bca02f035fdb37f4826dee5123408e6f8df2ad8097b25cfdae6bf6b17d64",
+  "module_count": 1448,
+  "synopsis_count": 1252,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -4978,6 +4978,11 @@
       "synopsis": "Integral coordinates and the paper's Euler-product scalar Targets: thm:kkernelrank and the integral-basis clause of cor:integral-normal-form. The rational basis is reused without reproving its CRT independence theorem. Its integral span is proved separately: rational spanning alone would not establish the assertion over Z. Build status: complete proof-source candidates; NOT COMPILED in this return. The assertion that the named relation rows form a basis is NOT hidden inside this file's integral coordinate theorem. Its remaining integration is recorded separately in the coverage file."
     },
     {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+      "synopsis": "Rational-valued dyadic observables: the missing paper assembly Targets: short-note `res:residueseries`; long-record `thm:dyadic-classification`, and the sharpness clause of `thm:residueobservable`. `positiveValue` subtracts the n=0 contribution explicitly. The integer observable in the imported library includes n=0 and assumes f(0)=0; confusing these conventions would give the wrong rational-value formula. The proof clears finitely many rational denominators, invokes the existing integer-observable theorem, and evaluates the eventually constant tail. No new CRT, Dirichlet, or isolated-pulse hypothesis is assumed."
+    },
+    {
       "id": "ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean",
       "synopsis": "Full displayed basis statements All finite-level arithmetic and the full odd-core independence theorem are inherited from the repaired library. No new CRT or limiting assertion is assumed. The full relation module uses finite-support coefficient vectors; this is what makes passage to the union of all levels precise. Mathlib API (pinned source opened): * LinearAlgebra/Basis/Basic.lean: Module.Basis.span, coe_span_apply. * Algebra/Module/Submodule/Equiv.lean: LinearEquiv.coe_ofEq_apply. * LinearAlgebra/Finsupp/LinearCombination.lean: linearCombination_single, mem_span_range_iff_exists_finsupp. * LinearAlgebra/LinearIndependent/Defs.lean: independence is injectivity of finite-support evaluation. Build status belongs to source-bound validation receipts."
@@ -5011,6 +5016,11 @@
       "id": "ErdosProblems.Erdos249.RankOneSubrankObstruction",
       "path": "lean/ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
       "synopsis": "Erdős #249: a uniform obstruction to rank-one subrank extraction Let `Θᵣ` be the Möbius--Mersenne ladder and let `t Y r` be its first `Y` atoms. The rank-one monomial Schur quotient `(t Y (e + 2))² / t Y (2 * e + 2)` does not approach `Θ₂`: for every `e ≥ 1` and `Y ≥ 4` it lies more than `1 / 480` above `Θ₂`. Thus this entire strict-subrank family cannot supply the primitive rational linear forms needed to prove irrationality of the binary totient series. The proof is deliberately uniform. Every rung `r ≥ 3` lies in the interval `[1429/1512, 1)`, and every prefix after four atoms is within `1/3584` of its rung. Those two interval facts already force the quotient gap."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.ResidueClassTotientSeries",
+      "path": "lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+      "synopsis": "Erdős #249: residue-class totient series and the isolated-pulse separation This file formalises the reusable core of the \"fixed resolution\" attack on `S = ∑_{n ≥ 1} φ(n) / 2 ^ n`. Nothing here proves that `S` is irrational. What is proved is the exact mechanism that makes every *fixed-resolution* projection of the totient word irrational, together with the quantitative separation it supplies. Main results * `isolated_pulse_separation` — the abstract Diophantine core. If `a : ℕ → ℤ` is bounded by `C`, and `a` has a nonzero letter `t` at position `p = N+1+L` surrounded on both sides by a block of `L` zeros, then for every `q ≥ 1` with `2 ^ L > 2 * q * C` the real number `q * ∑ a n / 2 ^ n` stays at distance at least `q * (|t| - C / 2 ^ L) / 2 ^ p` from every integer. Both the left and the right zero block are used: the right block makes the tail nonzero, the left block makes the tail small enough to be the distance to `ℤ`. * `two_sided_prime_isolation` — the arithmetic supply. For `m ≥ 2` and any `r` with `gcd (r+1, m) = 1` there are arbitrarily large primes `p` with `φ p ≡ r [MOD m]` and `m ∣ φ (p ± j)` for every `0 < j ≤ L`. Auxiliary primes `ℓ_j ≡ 1 [MOD m]` are produced by Dirichlet's theorem and glued by the Chinese remainder theorem; `ℓ_j ∣ p ± j` forces `ℓ_j - 1 ∣ φ (p ± j)`. * `irrational_totientObservable` — the general special-value theorem. If an integer letter map `f` vanishes at the zero residue and is nonzero at some residue `r < m` with `gcd (r+1, m) = 1`, then `∑ f (φ n mod m) / 2 ^ n` is irrational. `fixed_resolution_observable_irrational` is the `m = 2 ^ k` "
     },
     {
       "id": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",

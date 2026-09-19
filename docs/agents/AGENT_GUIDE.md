@@ -59,7 +59,7 @@ One recorded result: For every e >= 1, the complete dyadic totient kernel throug
 
 [Short paper](../../paper/249/erdos-249-binary-totient-series.pdf) · [Source](../../paper/249/erdos-249-binary-totient-series.tex)
 
-**#251 — Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?**
+**#251 — Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?**
 
 The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps.
 
@@ -71,7 +71,7 @@ One recorded result: The finite summation-by-parts identity relating the prime d
 
 Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised.
 
-One recorded result: That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.
+One recorded result: Irrationality at every integer base for the classical full support, reciprocal-summable supports, and the finite-prime weighted supports in divisibilityWeightedClaim.
 
 [Short paper](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [Source](../../paper/257/erdos-257-mersenne-support-subseries.tex)
 

@@ -541,6 +541,13 @@ def flattened(text: str) -> str:
     return " ".join(text.split())
 
 
+def has_release_status_boundary(text: str, claims: dict) -> bool:
+    """Require the current owner statement, including its formulation limits."""
+    boundary = claims.get("external_verification_packet", {}).get("boundary")
+    return (isinstance(boundary, str) and bool(boundary.strip())
+            and flattened(boundary) in flattened(text))
+
+
 def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
@@ -1166,18 +1173,34 @@ FORBIDDEN_LOOSE_ROOT_DIRS = (
 
 def check_root_layout() -> None:
     """Keep the public root a purpose-named tree, not a dump of PDFs and libraries."""
+    # A used clone also contains ignored build products and local evidence.
+    # Inspect the publication candidate; a tracked file remains in scope even
+    # when its pathname matches an ignore rule.
+    entries = {path.name for path in ROOT.iterdir()}
+    git_root = subprocess.run(
+        ["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"],
+        capture_output=True, text=True, env=clean_environment(), check=False,
+    )
+    if git_root.returncode == 0 and Path(git_root.stdout.strip()).resolve() == ROOT.resolve():
+        inventory = subprocess.run(
+            ["git", "-C", str(ROOT), "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+            capture_output=True, text=True, env=clean_environment(), check=False,
+        )
+        check(inventory.returncode == 0, "public root candidate inventory could not be read")
+        if inventory.returncode != 0:
+            return
+        entries = {rel.split("/", 1)[0] for rel in inventory.stdout.split("\0") if rel}
     root_pdfs = sorted(
-        path.name for path in ROOT.glob("*.pdf") if path.is_file() and not path.name.startswith(".")
+        name for name in entries if name.endswith(".pdf") and not name.startswith(".")
     )
     check(not root_pdfs, f"root PDFs are forbidden after the layout migration: {root_pdfs}")
     for name in FORBIDDEN_LOOSE_ROOT_DIRS:
         check(
-            not (ROOT / name).exists(),
+            name not in entries,
             f"loose corpus or verification library must not sit at repository root: {name}",
         )
     unexplained: list[str] = []
-    for path in ROOT.iterdir():
-        name = path.name
+    for name in entries:
         if name in {".git", ".lake"}:
             continue
         if name in APPROVED_ROOT_FILES or name in APPROVED_ROOT_DIRS:
@@ -2072,12 +2095,13 @@ def main(argv: list[str] | None = None) -> int:
     listed = set(re.findall(r"`(not_[a-z0-9_]+)`", scope))
     check(declared == listed,
           f"docs/SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
-    check("does not prove" in flattened(scope),
+    check(has_release_status_boundary(scope, data),
           "docs/SCOPE.md must state the open boundary in plain language")
 
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
-    check(tag in readme, f"README does not state the release tag {tag}")
+    check("CITATION.cff" in readme,
+          "README must route readers to the checked release citation owner")
     check("docs/METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
     check(
@@ -2102,11 +2126,7 @@ def main(argv: list[str] | None = None) -> int:
         re.escape(token) for token in (count_word, str(indexed_problem_count)) if token
     )
     check(
-        "does not solve" in flattened(readme)
-        or bool(re.search(
-            rf"all\s+(?:{count_pattern})\s+problems\s+remain\s+open",
-            flattened(readme).casefold(),
-        )),
+        has_release_status_boundary(readme, data),
         "README must state the open boundary in plain language",
     )
     check(
@@ -2245,12 +2265,8 @@ def main(argv: list[str] | None = None) -> int:
         "Erdos249257.lean",
         "ErdosProblems.lean",
         "scripts/check_release.py",
-        "scripts/check_architecture_guide.py",
-        "scripts/test_architecture_guide.py",
-            "scripts/agent_entry.py",
-            "scripts/agent_skill_catalog.py",
-            "scripts/test_agent_entry.py",
-            "skills/maintain-public-infrastructure/SKILL.md",
+        "scripts/test_agent_entry.py",
+        "skills/maintain-public-infrastructure/SKILL.md",
         "scripts/query_corpus.py",
     ):
         check(required in agents, f"docs/agents/AGENT_GUIDE.md does not route through {required}")

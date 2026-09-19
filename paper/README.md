@@ -74,11 +74,10 @@ CC-BY-4.0; see [`REUSE.toml`](../REUSE.toml) at the repository root.
 <details>
 <summary>Source note for the #251 sparse construction</summary>
 
-For #251, the elementary pair identities live in
-`SparseRationalisationCore.lean`; the ordinary schedule sketch is Proposition
-1.1 of the short paper. There is no separately published
-`SparseRationalisation.md`. Lean checks the proposition end to end in
-`SparseAmbientR9.lean`, `SparsePaperR11.lean` and `GrowingBlocksR11.lean`.
+For #251, [the results guide](../docs/RESULTS.md#strongest-checked-results-by-problem)
+identifies the formal sparse construction and the differences in quantifier
+order between it and the printed proof. The short paper's attribution section
+explains those differences before its source index.
 
 </details>
 

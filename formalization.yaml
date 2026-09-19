@@ -1621,7 +1621,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:06d72c7125f44a5c262d73dcc5a49ce453b403e513eb0d24659bef35975bcbbb"
+  problem_index_digest: "sha256:4efc26ba2f1d626b78a92f9fe341a2d5a0e7dfd5c46fa7842bb0c8608a136121"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1651,8 +1651,8 @@ external_verification:
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
-      checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
-      open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
+      checked_frontier: "Irrationality at every integer base for the classical full support, reciprocal-summable supports, and the finite-prime weighted supports in divisibilityWeightedClaim."
+      open_frontier: "Universal irrationality over all infinite supports, or the proposed rational values 1/2 and 1/21."
       claim_registry_status: "programme_only"
     - id: "erdos_269"
       erdos_number: 269

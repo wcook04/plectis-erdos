@@ -49,6 +49,7 @@ OUTPUT = ROOT / "docs" / "problems.json"
 LIBRARY_OUTPUT = ROOT / "docs" / "problem_library.json"
 AGENT_GUIDE = ROOT / "docs" / "agents" / "AGENT_GUIDE.md"
 RESULTS = ROOT / "docs" / "RESULTS.md"
+READING_GUIDE = ROOT / "docs" / "READING_GUIDE.md"
 CARD_BEGIN = "<!-- BEGIN problem_programme_card -->"
 CARD_END = "<!-- END problem_programme_card -->"
 PUBLIC_REPO = "https://github.com/wcook04/plectis-erdos"
@@ -207,13 +208,18 @@ def render_programme_card(payload: dict, claims: dict) -> str:
 
 def update_programme_card(document: str, card: str) -> str:
     if document.count(CARD_BEGIN) != 1 or document.count(CARD_END) != 1:
-        raise ValueError("agent guide must contain one programme-card region")
+        raise ValueError("document must contain one programme-card region")
     before, rest = document.split(CARD_BEGIN, 1)
     _, after = rest.split(CARD_END, 1)
     return before + CARD_BEGIN + "\n" + card + "\n" + CARD_END + after
 
 
-def render_problem_questions(payload: dict) -> str:
+def render_problem_questions(payload: dict, *, prose: bool = False) -> str:
+    if prose:
+        return "\n\n".join(
+            f"[Problem {row['erdos_number']}](../{row['note']['rendered_path']}). {row['question']}"
+            for row in payload["problems"]
+        )
     lines = ["_Questions generated from `docs/problem_index_source.json`._", "",
              "| Problem | Question |", "|---|---|"]
     for row in payload["problems"]:
@@ -669,12 +675,17 @@ def main() -> int:
     )
     results_text = RESULTS.read_text(encoding="utf-8")
     results_projection = update_programme_card(results_text, render_problem_questions(problem_index))
+    reading_text = READING_GUIDE.read_text(encoding="utf-8")
+    reading_projection = update_programme_card(reading_text, render_problem_questions(problem_index, prose=True))
     budget = source["index_max_bytes"]
     if len(payload) > budget:
         print(f"docs/problems.json exceeds its {budget}-byte budget: {len(payload)}")
         return 1
 
     if args.check:
+        if reading_text != reading_projection:
+            print("reading-guide question inventory is stale; run python3 scripts/build_problem_index.py")
+            return 1
         if results_text != results_projection:
             print("results question inventory is stale; run python3 scripts/build_problem_index.py")
             return 1
@@ -698,6 +709,7 @@ def main() -> int:
     LIBRARY_OUTPUT.write_bytes(library_payload)
     AGENT_GUIDE.write_text(guide_projection, encoding="utf-8")
     RESULTS.write_text(results_projection, encoding="utf-8")
+    READING_GUIDE.write_text(reading_projection, encoding="utf-8")
     print(
         f"wrote docs/problems.json: {len(source['problems'])} problem(s), "
         f"{len(payload)} of {budget} bytes"

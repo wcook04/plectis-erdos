@@ -799,7 +799,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["#249"],
             ["∑ φ(n)/2ⁿ"],
             ["#251"],
-            ["∑ p_n/2ⁿ", "sum p_n/2^n"],
+            ["∑ p_n/2ⁿ", "sum p_n/2^n", "dyadic series of consecutive primes"],
             ["#257"],
             ["every infinite"],
             ["#269"],

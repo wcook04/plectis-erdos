@@ -4,6 +4,8 @@
 import json
 from pathlib import Path
 
+from check_release import has_release_status_boundary
+
 
 ROOT = Path(__file__).resolve().parents[1]
 def read(path: str) -> str:
@@ -24,6 +26,17 @@ def release_status_boundary() -> str:
 
 
 def main() -> None:
+    claims = json.loads(read("docs/claims.json"))
+    boundary = release_status_boundary()
+    require(has_release_status_boundary(boundary.replace(". ", ".\n"), claims),
+            "release boundary check must tolerate line wrapping")
+    for missing in ("", "All eight problems remain open.",
+                    "The degree-seven example refutes Erdős #1041."):
+        require(not has_release_status_boundary(missing, claims),
+                "release boundary check accepted missing formulation or review limits")
+    for path in ("README.md", "docs/SCOPE.md"):
+        require(has_release_status_boundary(read(path), claims),
+                f"{path} differs from the current claim-owner boundary")
     human = read("docs/READING_GUIDE.md")
     require("```" not in human, "HUMAN_ENTRY must not make readers begin with commands")
     require("\n|" not in human, "HUMAN_ENTRY must remain prose rather than a table")
@@ -33,11 +46,25 @@ def main() -> None:
     prose = " ".join(human.split())
     boundaries = (
         release_status_boundary(),
-        "Universal irrationality and the proposed target values remain open",
+        "The other seven target problems are not resolved here",
+        "Independent human review of correspondence with the historical curve-length formulation has not been recorded",
         "peer review",
     )
     for boundary in boundaries:
         require(boundary in prose, f"HUMAN_ENTRY lost claim boundary: {boundary}")
+
+    # Current systems manuscripts are also public entry points. Their examples
+    # may be historical, but their descriptions of the present corpus must not
+    # restore the superseded blanket status split.
+    for path in (ROOT / "paper/systems").glob("*.tex"):
+        manuscript = " ".join(path.read_text(encoding="utf-8").split())
+        for stale in (
+            "all eight problems remain open",
+            "All eight problems remain open",
+            "all eight endpoint problems remain open",
+            "are the two principal reviewed programmes",
+        ):
+            require(stale not in manuscript, f"{path.name} repeats obsolete corpus status: {stale}")
 
     readme = read("README.md")
     human_link = readme.find("docs/READING_GUIDE.md")

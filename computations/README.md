@@ -35,7 +35,7 @@ Full contents are monic gcds over **Q[p]**, not integer contents over Z[p]. Valu
 
 ## Independent checks
 
-The separate checker uses Fraction Gaussian elimination at p=1,3/2,2 for 48 moment determinant comparisons; it checks 45 positive Stieltjes coefficients and three formal series through degree fifteen; and it compares 40 residue calculations with exhaustive permutations. It also checks six invalid-input cases and nonempty-output refusal under optimised Python. These are different implementation paths, but pointwise checks do not replace all-base polynomial identities.
+The separate checker uses Fraction Gaussian elimination at the integer bases named in the paper, together with the rational base 3/2. It checks positive Stieltjes coefficients and formal series through degree fifteen, and compares residue calculations with exhaustive permutations. It also checks invalid inputs and nonempty-output refusal under optimised Python. The selected bases and check counts are recorded in [the generated result](certificates/independent_checks.json). These are different implementation paths, but pointwise checks do not replace all-base polynomial identities.
 
 The interval certificate bounds π with Machin's formula and alternating arctangent series, the positive trigamma tail with integral inequalities, and logarithms with rational atanh series. It encloses the inherited constants and the 31/4 exponent bound strictly below 301. It is an ordinary exact-arithmetic verification, not a fresh Lean theorem.
 

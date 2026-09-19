@@ -1212,6 +1212,29 @@ def encoded(packet: dict[str, Any]) -> str:
     ) + "\n"
 
 
+def coordinated_export(*, check: bool, full_check: bool, write_stale: bool) -> int:
+    """Hold the existing host owner across root preparation and environment export."""
+    state_root = singleflight.default_state_root()
+    specification = singleflight.validator_spec(
+        "dependency-index", [], None, state_root, check=check,
+        dependency_full_check=full_check, dependency_write_stale=write_stale,
+    )
+    receipt = singleflight.submit(specification, state_root)
+    terminal, code = singleflight.collect(
+        state_root, receipt["key"], True, LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
+    )
+    if terminal.get("state") != "terminal":
+        print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+        return code
+    for stream, destination in (("stdout", sys.stdout), ("stderr", sys.stderr)):
+        output = terminal.get(stream, {}).get("tail")
+        if output:
+            print(output, end="" if output.endswith("\n") else "\n", file=destination)
+    print(f"dependency-index: shared validation key={receipt['key'][:12]} exit={code}",
+          file=sys.stderr)
+    return code
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
@@ -1294,6 +1317,10 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
+    if not args.singleflight_worker:
+        return coordinated_export(
+            check=args.check, full_check=args.full_check, write_stale=args.write_stale,
+        )
     try:
         initial_input_fingerprint = check_input_fingerprint()
         packet = build_packet()

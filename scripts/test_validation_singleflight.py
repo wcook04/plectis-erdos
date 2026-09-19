@@ -366,6 +366,24 @@ class ValidationSingleflightTests(unittest.TestCase):
             "tree_and_dirty_content_checkout_independent",
         )
 
+    def test_dependency_export_modes_have_distinct_shared_owner_keys(self) -> None:
+        with mock.patch.object(singleflight, "worktree_fingerprint", return_value={}), \
+             mock.patch.object(singleflight, "regular_digest_rows", return_value=[]):
+            modes = [(False, False, False), (True, False, False),
+                     (True, True, False), (True, True, True)]
+            specs = [singleflight.validator_spec(
+                "dependency-index", [], None, Path("/tmp/dependency-spec"), check=check,
+                dependency_full_check=full, dependency_write_stale=write,
+            ) for check, full, write in modes]
+        self.assertEqual(len({spec["key"] for spec in specs}), 4)
+        self.assertIn("--singleflight-worker", specs[-1]["command"])
+        self.assertIn("--full-check", specs[-1]["command"])
+        self.assertIn("--write-stale", specs[-1]["command"])
+        self.assertEqual(singleflight.RESOURCE_GROUPS["dependency-index"], "lean-host")
+        with self.assertRaises(singleflight.ValidationError):
+            singleflight.validator_spec("dependency-index", [], None, Path("/tmp/spec"),
+                                        dependency_full_check=True)
+
     def test_identical_jobs_join_and_distinct_lean_jobs_defer_without_queueing(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             singleflight, "automatic_cleanup", return_value={"status": "fixture"}

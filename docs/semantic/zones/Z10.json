@@ -2342,6 +2342,27 @@
       "prior_art_note": "A standard CRT construction for prescribed prime-factor counts on consecutive shifts; classical in flavour, and the corpus makes no novelty claim.",
       "scope_caveat": "",
       "confidence": "high"
+    },
+    {
+      "id": "finite_prime_weighted_support_irrationality",
+      "canonical_statement": "For every integer base b >= 2 and infinite set A of positive integers, summability over A of Ppart(a)/(a*(b^Ppart(a)-1)) for some finite nonempty set P of primes implies irrationality of the support series sum over a in A of 1/(b^a-1), where Ppart(a) is the product of the full p-power parts of a for p in P. If a positive host H satisfies this weighted summability at base 2, then every infinite subset of H has irrational support series at every integer base b >= 2.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "divisibilityWeightedClaim",
+          "module": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+          "line": 120
+        }
+      ],
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite weighted sampling and the displacement-return irrationality criterion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No novelty or priority assessment is made by this source-to-wording review.",
+      "scope_caveat": "The positive-support and finite-prime weighted summability hypotheses are essential. This sufficient criterion does not resolve universal Erdős #257 or assert that every infinite support satisfies it.",
+      "confidence": "high"
     }
   ],
   "declaration_roles": [
@@ -5942,6 +5963,13 @@
       "line": 485,
       "role": "statement",
       "statement_node": "adjoining_one_is_value_free_and_repairs_the_parity"
+    },
+    {
+      "declaration": "divisibilityWeightedClaim",
+      "module": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+      "line": 120,
+      "role": "statement",
+      "statement_node": "finite_prime_weighted_support_irrationality"
     }
   ],
   "intra_zone_relations": [

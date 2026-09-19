@@ -30,13 +30,13 @@ The repository's clearest completed mathematics is concentrated in restricted
 forms of Problem 257. Lean checks the classical full-support theorem for every
 integer base `b ≥ 2`, a pairwise-coprime support theorem under explicit
 summability hypotheses, and irrationality for nonnegative rational
-eventually-periodic coefficients with a positive periodic tail. An ordinary
-averaging proof gives a weaker weighted summability criterion that also covers
-some supports with divergent reciprocal sum. The reciprocal-summable corollary
+eventually-periodic coefficients with a positive periodic tail. A formalised finite-prime
+weighted summability criterion also covers some supports with divergent
+reciprocal sum; the papers explain its averaging proof. The reciprocal-summable corollary
 was stated by Erdős without a printed proof. The same finite averaging window
 also combines weighted supports with positive divisor covers, preserving
 irrationality for every infinite subset of their union at all integer bases.
-This combination has an ordinary proof. The achievement-set
+Lean checks this combination as `mixedSupportClaim`. The achievement-set
 development adds exact topological and measure statements. Universal Problem
 257, which quantifies over every infinite support, remains open.
 
@@ -56,7 +56,7 @@ unconstructed.
 
 The other programmes have substantive but sharply bounded outcomes. For
 Problem 68, every positive rational denominator misses `299999!` and satisfies
-`q ≥ 2^{39990}`; an ordinary proof gives a `3/2` lower growth exponent for the
+`q ≥ 2^{39990}`; Lean also checks the `3/2` lower growth exponent for the
 uncleared common denominator, while Lean gives exact carry equivalences and
 finite channel obstructions. Problem 243 has a checked signed recovery theorem: exact
 centered-state dynamics, strict centering, a uniform lower bound on the signed
@@ -91,7 +91,7 @@ divisibility constraint from a fresh exact GMP carry census through
 retained certificate, while an
 independent replay through `4000` reproduces the unit-carry prefix. The second
 is an independent continued-fraction size bound. Neither implication yields
-the other, and neither proves irrationality. An ordinary proof gives
+the other, and neither proves irrationality. The paper and Lean proof give
 `liminf log L_N/(N^(3/2) log N) ≥ 2√2/3`. This is a common-denominator theorem:
 it shows why clearing every summand separately cannot make the positive tail
 small, but says nothing by itself about the denominator after cancellation.
@@ -120,8 +120,8 @@ tail by `qP_n`. The resulting integer error is minus `q` times the scaled
 defect, up to a term tending to zero. This
 cancellation turns the upper bound in the original sequence into the lower
 bound on the integer error used below.
-The analytic transfer to this corollary is ordinary mathematics; Lean checks
-the following signed bounded-negative theorem. Let `a,C,D : ℕ → ℕ` and
+The proof passes through a signed bounded-negative theorem. Lean checks
+that theorem and the canonical tail transfer described below. Let `a,C,D : ℕ → ℕ` and
 `E : ℕ → ℤ`. Assume
 `a(n)>1`, `C(n)>0`, the exact recurrences
 `C(n+1)+D(n)=a(n)C(n)` and `D(n+1)=a(n)D(n)`, and that `E(n)` is the exact
@@ -175,9 +175,11 @@ Independently, a sparse perturbation of the prime gaps can have a rational
 dyadic sum while retaining the prime growth scale, every fixed eventual
 congruence, and asymptotically the same short-block statistics. The later
 positions are not asserted to be prime. This is complementary to Land's
-conditional result, not a refutation. Lean checks the finite pair, buffer, and
-filling identities; the infinite schedule and block-law transfer are ordinary
-mathematics in the short paper. This obstruction shows that those coarse
+conditional result, not a refutation. Lean checks the sparse rational-target
+construction and the polylogarithmic schedule with growing-block transfer in
+`SparsePaperR11.lean`. The printed construction additionally gives congruence
+cutoffs uniform in the target; the linked Lean statement quantifies those
+cutoffs after the target. The prime-growth corollary uses cited analytic results. This obstruction shows that those coarse
 statistics alone do not force irrationality. The exact prime-gap
 summation-by-parts equivalence still proves neither the prime-gap series nor
 the original series irrational; a prime-specific sieve or tail bridge remains
@@ -188,16 +190,19 @@ primes `P` and let `h(a)` be the largest divisor of `a` supported on `P`.
 For an infinite support `A` and an integer base `b ≥ 2`, finiteness of
 `∑_{a∈A} h(a)/(a(b^{h(a)}−1))` implies irrationality of
 `∑_{a∈A} 1/(b^a−1)`. The
-[long paper gives the complete ordinary proof](../paper/257/erdos257-mersenne-reasoning-surface.pdf):
+[long paper explains the proof](../paper/257/erdos257-mersenne-reasoning-surface.pdf):
 average the residues along multiples of increasingly divisible moduli, then
 choose a finite range of averaging lengths to control the error uniformly.
-This is not a Lean theorem. The short paper gives a shorter proof and an
+Lean proves this as `divisibilityWeightedClaim` in
+[`WeightedReturn.lean`](../lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean).
+The short paper gives a shorter proof and an
 explicit support with divergent reciprocal sum satisfying the criterion.
 At base two, the weighted condition can also be combined with the positive
 divisor-cover criterion: the long paper proves that a common finite averaging
 window makes both displacements small. Every infinite subset of their union
-then has irrational subseries at every integer base. This ordinary combination
-does not establish the separately proposed hosts separating the two classes.
+then has irrational subseries at every integer base. Lean proves this as
+`mixedSupportClaim` in the same module. Neither theorem establishes the
+separately proposed hosts separating the two classes.
 Every infinite reciprocal-summable support satisfies it, yielding the
 coprimality-free extension stated by Erdős. Full-support
 irrationality at every integer base is classical (Erdős 1948) and
@@ -431,13 +436,13 @@ Only after those theorem-level facts comes the corpus census. The current semant
 
 | View | #68 | #243 | #249 | #251 | #257 | #269 | #1041 | #1049 | both | shared | total |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| mechanically nonrecurring candidates | 0 | 3 | 90 | 0 | 168 | 0 | 0 | 5 | 0 | 20 | 286 |
+| mechanically nonrecurring candidates | 0 | 3 | 90 | 0 | 169 | 0 | 0 | 5 | 0 | 20 | 287 |
 | classical/prior-art formalisations | 0 | 1 | 36 | 0 | 23 | 0 | 0 | 1 | 0 | 40 | 101 |
 | bare open-problem equivalences | 0 | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 0 | 2 | 32 |
 
-The nonrecurring view contains 184 unconditional object theorems, 56 scoped barriers, and 46 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
+The nonrecurring view contains 185 unconditional object theorems, 56 scoped barriers, and 46 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
 
-The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 231 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
+The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 232 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
 
 The [historical hypothesis audit](reference/TRUTH_AUDIT.md) describes a selected extraction, not the current corpus or a measure of mathematical value. Use the problem and theorem routes above to inspect the results and their exact boundaries.
 <!-- END semantic_public_census -->
@@ -501,8 +506,10 @@ boundaries kept together.
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:897`. Checked theorem;
   reusable obstruction; claims registry: `bounded_rise_fresh_modulus_barrier`
   (`res:barrier`).
-- Given normalised vanishing — supplied for the canonical orbit by Koizumi
-  (Integers 26 (2026), A28; cited, prose bridge) — a bounded negative part or
+- Normalised vanishing for the canonical orbit is derived in
+  `PaperCompleteR7/CanonicalState.lean` from the original growth and rationality
+  hypotheses. The paper credits Koizumi (Integers 26 (2026), A28). With this
+  vanishing, a bounded negative part or
   finite normalised negative mass forces the error to vanish and the
   Sylvester recurrence to begin
   (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2177`,
@@ -823,11 +830,13 @@ boundaries kept together.
 - A sparse congruence-preserving perturbation of the actual prime gaps can
   make the dyadic sum rational while retaining the prime growth scale,
   eventual fixed-modulus congruences, and short-block statistics at the
-  stated scale. Lean checks the elementary pair identities, buffer, and
-  abstract filling core (`SparseRationalisationCore.lean`), and checks
-  Proposition 1.1 of the short paper end to end, including the upper Banach
-  density, a rational target and the block-law transfer
-  (`SparseAmbientR9.lean`, `SparsePaperR11.lean`, `GrowingBlocksR11.lean`).
+  stated scale. Lean checks the finite core, the sparse rational-target
+  construction, and the growing-block transfer (`SparseAmbientR9.lean`,
+  `SparsePaperR11.lean`, `GrowingBlocksR11.lean`). The support, interval and
+  support-count bound precede the target; the formal congruence cutoffs
+  follow it. The paper proves common congruence cutoffs for its different
+  triple construction. Keep that quantifier distinction when citing
+  Proposition 1.1; the source links do not verify every printed strengthening.
   The proposition has no Comparator entry, and there is no separately
   published `SparseRationalisation.md`. The later positions are
   not asserted to be prime, and the construction does not refute Land.
@@ -1156,9 +1165,11 @@ coprime supports with summable reciprocals. The relevant declarations include:
 - `irrational_erdosSupportSeries_eventuallyPeriodic`; and
 - `irrational_erdosSupportSeries_pairwise_coprime`.
 
-These declarations are in `Erdos249257/CertificateKernel.lean`. The prime and
-prime-power supports are literature results cited by the repository, not
-formalised here.
+These declarations are in `Erdos249257/CertificateKernel.lean`. The later
+reciprocal-summable, finite-prime weighted and mixed-support theorems remove
+some of these restrictions; their exact hypotheses appear in the
+[programme summary](#problem-by-problem-guide). Cited prime and prime-power
+results retain their literature attribution.
 
 A distinct second-layer rationality normal form is now a typed public
 consumer: `exists_normalized_support_fraction_iff_exists_booleanMobiusCarry`
@@ -1479,13 +1490,11 @@ coordinates; operational lookup details live in the
 
 A demand is an unproved hypothesis extracted from a conditional theorem and
 stored as a named Lean proposition. `ErdosProblems/DemandLedger/Basic.lean`
-contains 101 named closed propositions; 23 are labelled substantive and the
-rest are side conditions. The current prose frontier contains 52 entries.
-
-The extraction snapshot in the audit log records 144 proved implication edges
-among the 23 substantive demands, producing seven equivalence classes.
-Seventeen substantive demands collapse to restatements of an open target rather
-than smaller subproblems. For example:
+preserves a historical extraction for #249 and #257. The
+[dated audit](reference/TRUTH_AUDIT.md) records its selected population and
+implication graph. Its seventeen endpoint-equivalent hypotheses among
+twenty-three selected substantive demands describe that extraction, not the
+current eight-programme corpus or the value of its results. For example:
 
 - `G103_iff_erdos249` in
   `ErdosProblems/DemandLedger/edges/Discharge3_G103.lean` proves that the
@@ -1757,10 +1766,11 @@ positiveMersenneSupportValue_eq_erdosSupportSeries
 
 The repository cannot certify its own human legibility. It therefore exposes a
 second `OPEN` question: can an independent reader, starting from a fresh clone,
-recover the calibrated verdict in at most ten minutes? The request is exact,
+recover the historical #249/#257 audit verdict in at most ten minutes? The request is exact,
 including the response schema, its consumer, payoff, and boundary:
 
-The low-confidence working guess is that a reader will recover both open
+This scoped protocol does not assess the full eight-programme corpus. Its
+low-confidence working guess is that a reader will recover both open
 boundaries and the zero Farey delta, but may still underweight the concrete
 non-restatement results. The protocol distinguishes that failure from the
 opposite error—mistaking finite or conditional results for a near-solution.
@@ -1839,7 +1849,7 @@ _Questions generated from `docs/problem_index_source.json`._
 | [#68](../paper/68/erdos-68-factorial-denominator-irrationality.pdf) | Is the series sum_{n >= 2} 1/(n! - 1) irrational? |
 | [#243](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) | Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually? |
 | [#249](../paper/249/erdos-249-binary-totient-series.pdf) | Is the binary Lambert series sum phi(n)/2^n irrational? |
-| [#251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) | Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational? |
+| [#251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) | Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational? |
 | [#257](../paper/257/erdos-257-mersenne-support-subseries.pdf) | Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational? |
 | [#269](../paper/269/erdos-269-three-prime-running-lcm.pdf) | For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. |
 | [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question. |

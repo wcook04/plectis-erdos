@@ -1564,10 +1564,8 @@ def validate_publication_contract(
         errors.append(
             "publication agent-navigation guides drifted from docs/claims.json"
         )
-    # A problem note expounds the expansion library, whose declarations carry no
-    # reviewed claim status.  The class is compared like the others so that a
-    # note cannot be shipped without a matching registry row, and its posture is
-    # required to say in words that it is not proof authority for a public claim.
+    # A paper can discuss registered and unregistered statements. Its artifact
+    # class grants no formal status: the claim registry owns status per statement.
     problem_note_sources = {
         row["source"] for row in architecture.get("problem_series", [])
     }
@@ -1580,9 +1578,14 @@ def validate_publication_contract(
     for artifact in artifacts:
         if artifact.get("artifact_class") != NOTE_ARTIFACT_CLASS:
             continue
-        if "unregistered_expansion_module" not in artifact.get("authority_posture", ""):
+        posture = artifact.get("authority_posture", "")
+        if (
+            "not_Lean_proof_authority" not in posture
+            or "public_status_is_owned_per_claim_by_docs/claims.json" not in posture
+            or "unregistered_expansion_module" in posture
+        ):
             errors.append(
-                f"problem note {artifact.get('id')!r} lost its unregistered-module posture"
+                f"problem note {artifact.get('id')!r} must defer formal status to individual claims"
             )
 
     rejected_ids = set(contract.get("rejected_artifact_ids", []))

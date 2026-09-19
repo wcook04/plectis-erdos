@@ -712,11 +712,17 @@ def validator_spec(
     *,
     lean_jobs: int = 2,
     lean_lake_staleness: bool = False,
+    dependency_full_check: bool = False,
+    dependency_write_stale: bool = False,
 ) -> dict[str, Any]:
     if kind not in ROSTER_VALIDATORS:
         raise ValidationError(f"unknown validation class: {kind}")
     if check and kind != "dependency-index":
         raise ValidationError("--check is only valid for dependency-index validation")
+    if dependency_full_check and (kind != "dependency-index" or not check):
+        raise ValidationError("--full-check requires dependency-index --check")
+    if dependency_write_stale and not dependency_full_check:
+        raise ValidationError("--write-stale requires --check --full-check")
     if kind == "toolchain-cache":
         if targets or ref:
             raise ValidationError("toolchain-cache validation accepts no targets or ref arguments")
@@ -884,6 +890,10 @@ def validator_spec(
         command = [sys.executable, "scripts/build_lean_dependency_index.py"]
         if check:
             command.append("--check")
+        if dependency_full_check:
+            command.append("--full-check")
+        if dependency_write_stale:
+            command.append("--write-stale")
         command.append("--singleflight-worker")
         authority_paths = [
             ROOT / "scripts/build_lean_dependency_index.py",
@@ -1102,13 +1112,13 @@ def terminate_process_group(process: subprocess.Popen[Any]) -> None:
             pass
 
 
-# One validation class does work whose cost tracks the size of the library
-# rather than the size of a change: a cold full-corpus Lean build. It was
-# borrowing the shared thirty-minute worker bound and continuous integration
-# killed it at that mark with every module it had reached reporting 0 -- not a
-# failure, a clock. It gets its own bound; every other class keeps the shared
-# one, because for them a thirty-minute worker really is a hang.
-WORKER_TIMEOUT_SECONDS_BY_KIND = {"lean": 3 * 60 * 60}
+# Whole-library operations need their own bounded budgets. Dependency export
+# includes its two-hour root-build budget and three-hour exporter budget;
+# allow one further minute for serialization and cleanup around those children.
+WORKER_TIMEOUT_SECONDS_BY_KIND = {
+    "lean": 3 * 60 * 60,
+    "dependency-index": 5 * 60 * 60 + 60,
+}
 
 
 def worker_timeout_seconds(receipt: dict[str, Any] | None) -> float:
@@ -1745,6 +1755,8 @@ def add_validation_request_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--ref")
     parser.add_argument("--format", dest="output_format", choices=("card", "json"))
     parser.add_argument("--check", action="store_true", help="check generated output instead of replacing it")
+    parser.add_argument("--full-check", action="store_true", help="with dependency-index --check, rerun the environment exporter")
+    parser.add_argument("--write-stale", action="store_true", help="with --check --full-check, preserve fresh stale output while retaining failure")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -1800,6 +1812,8 @@ def main(argv: list[str] | None = None) -> int:
                     args.state_root,
                     args.output_format,
                     args.check,
+                    dependency_full_check=args.full_check,
+                    dependency_write_stale=args.write_stale,
                 ),
                 args.state_root,
             )

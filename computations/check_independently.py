@@ -60,7 +60,7 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
     if a.output.exists():ap.error('refusing to overwrite output')
     rows=[]
-    for x in [F(1),F(3,2),F(2)]:
+    for x in [F(1),F(3,2),F(2),F(3),F(5),F(11)]:
         s=moment_values(x);D=[F(1)];E=[F(1)]
         for h,target in [(0,D),(1,E)]:
             for n in range(1,9):
@@ -101,5 +101,7 @@ def main():
     result={'schema':'independent_finite_cross_checks_v1','fraction_elimination_samples':rows,'exhaustive_permutation_residue_checks':comparisons,'invalid_input_checks':invalid,'nonempty_output_guard_under_optimised_python':True,'scope':'Pointwise cross-checks do not independently prove polynomial identities; the full coefficient calculation is the primary finite certificate. No Lean run.'}
     a.output.parent.mkdir(parents=True,exist_ok=True)
     with a.output.open('x') as f:json.dump(result,f,indent=2);f.write('\n')
-    print('48 exact pointwise determinant comparisons; 45 Stieltjes coefficients; 40 exhaustive residue comparisons passed.')
+    print(f'{sum(r["moment_determinants_checked"] for r in rows)} exact pointwise determinant comparisons; '
+          f'{sum(r["Stieltjes_coefficients_checked"] for r in rows)} Stieltjes coefficients; '
+          f'{comparisons} exhaustive residue comparisons passed.')
 if __name__=='__main__':main()

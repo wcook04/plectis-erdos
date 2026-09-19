@@ -1163,13 +1163,13 @@
             "id": "erdos_68_note",
             "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The Core carry equivalences (FactorialGapPlateauCore isolation pin; FactorialZeroPlateau is the default-root duplicate), two incomparable finite denominator exclusions (GMP m = 300000 and continued-fraction q ≥ 2^39990), and the still-open cofinal-carry producer."
+            "thesis": "The factorial-series carry equivalences, two incomparable finite denominator exclusions, and the still-open cofinal-carry producer. FactorialGapPlateauCore owns the carry definitions; FactorialZeroPlateau retains compatibility imports."
           },
           {
             "id": "erdos_243_note",
             "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The integer-state bounded-negative theorem under explicit centring, bounded-negative, and normalised-vanishing hypotheses (Lean); the original-coordinate corollary is an ordinary transfer. Mixed-sign unbounded negative mass remains open."
+            "thesis": "The integer-state bounded-negative theorem and its original-coordinate transfer, with the signed-error lower-bound obligation kept explicit. The original-coordinate transfer derives centring and normalised vanishing from the sequence and sum hypotheses; it does not discharge that lower bound."
           },
           {
             "id": "erdos_249_note",
@@ -10728,6 +10728,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.ResidueClassTotientSeries"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies",
           "path": "lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean",
           "role": "Lean proof module",
@@ -10785,6 +10793,12 @@
           "imports": [
             "Erdos249257.SignedQMomentObstruction"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.ResidueClassTotientSeries",
+          "path": "lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
@@ -15387,7 +15401,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "1d0d5e5797300d0e7aed1a6c65ec2ac75155f8b1",
+      "ref": "f3f54798508b29ded6e854e0fa5784a560bd6cc7",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -21205,7 +21219,7 @@
           "name": "weightedDyadicMeanTarget"
         },
         {
-          "line": 99,
+          "line": 120,
           "module": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
           "name": "divisibilityWeightedClaim"
         }
@@ -21217,7 +21231,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.universal_257_all_infinite_supports"
       ],
-      "statement": "For every integer base b >= 2, every infinite positive support A with finite weighted mass for some finite nonempty prime set P has irrational support series. If a host H has finite base-two weighted mass, then every infinite subset A of H has irrational support series at every integer base b >= 2. This is a sufficient support criterion, not the universal statement.",
+      "statement": "For every integer base b >= 2, every infinite positive support A with finite weighted mass for some finite nonempty prime set P has irrational support series. If a host H of positive integers has finite base-two weighted mass, then every infinite subset A of H has irrational support series at every integer base b >= 2. This is a sufficient support criterion, not the universal statement.",
       "status": "formalised here"
     },
     {
@@ -21241,7 +21255,7 @@
     {
       "declarations": [
         {
-          "line": 105,
+          "line": 126,
           "module": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
           "name": "mixedSupportClaim"
         }
