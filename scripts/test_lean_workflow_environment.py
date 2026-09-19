@@ -15,6 +15,11 @@ WARM_WORKFLOW = ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
 SETUP_PYTHON_ACTION = "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97"
 PINNED_PYTHON_VERSION = 'python-version: "3.12.9"'
 PINNED_PYTHON_JOBS = ("build", "external-verification", "release-surfaces")
+PINNED_VALIDATOR_PATH_EXPORT = (
+    "python_bin_dir=\"$(python3 -c 'import os, sys; "
+    "print(os.path.dirname(sys.executable))')\"\n"
+    '          echo "$python_bin_dir" >> "$GITHUB_PATH"'
+)
 REQUIRED_KEYS = {
     "GIT_CONFIG_NOSYSTEM",
     "GIT_CONFIG_GLOBAL",
@@ -97,6 +102,25 @@ def require_pinned_python(workflow: str) -> None:
         )
 
 
+def require_release_validator_path(workflow: str) -> None:
+    """Keep pinned console scripts reachable after the isolated PATH reset."""
+    release_body = job_body(workflow, "release-surfaces")
+    install_match = re.search(
+        r"(?ms)^      - name: Install metadata validators\n"
+        r"(?P<body>.*?)(?=^      - |\Z)",
+        release_body,
+    )
+    require(
+        install_match is not None,
+        "release-surfaces lost the metadata-validator install step",
+    )
+    install_body = install_match.group("body") if install_match is not None else ""
+    require(
+        install_body.count(PINNED_VALIDATOR_PATH_EXPORT) == 1,
+        "release-surfaces must export setup-python's executable directory exactly once",
+    )
+
+
 def main() -> int:
     environment = workflow_environment(WORKFLOW)
     warm_environment = workflow_environment(WARM_WORKFLOW)
@@ -115,6 +139,7 @@ def main() -> int:
         )
     workflow = WORKFLOW.read_text(encoding="utf-8")
     require_pinned_python(workflow)
+    require_release_validator_path(workflow)
     require(
         re.search(r"(?m)^    env:\n", workflow) is None,
         "a Lean job added a job-level environment that could override the baseline",

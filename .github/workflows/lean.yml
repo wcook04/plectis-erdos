@@ -725,7 +725,10 @@ jobs:
           python-version: "3.12.9"
       - name: Install metadata validators
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement scripts/requirements-release.txt
+        run: |
+          python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement scripts/requirements-release.txt
+          python_bin_dir="$(python3 -c 'import os, sys; print(os.path.dirname(sys.executable))')"
+          echo "$python_bin_dir" >> "$GITHUB_PATH"
 
       - name: Check pinned release-validator dependency lock
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
