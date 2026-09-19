@@ -5,8 +5,8 @@ import Mathlib.Tactic
 /-!
 # Finite cut-rank algebra for the three-prime carry matrix
 
-Ordinary Type B r5 (memorandum Proposition 2.1) classifies the rank of every
-finite sampled two-valued threshold matrix: if the distinct columns are the
+Every finite sampled two-valued threshold matrix has an exact rank formula:
+if the distinct columns are the
 cut vectors `v_k` for `k ∈ E`, then `rank = |E| - 1_{0,m ∈ E}`.
 
 This module formalises the linear-algebra engine of that formula: interval
