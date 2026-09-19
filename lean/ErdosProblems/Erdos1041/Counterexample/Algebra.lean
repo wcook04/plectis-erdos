@@ -1,5 +1,5 @@
 /- STATEMENT DELTA: s1_alpha_ge adds T(y) = 0 because the interval-only assertion is false.
-NAMESPACE DELTA: proofs live in Erdos1041.Counterexample.Algebra, avoiding imported stub collisions. -/
+NAMESPACE DELTA: proofs live in Erdos1041.Counterexample.Algebra, avoiding interface-name collisions. -/
 import ErdosProblems.Erdos1041.Counterexample.Defs
 import Mathlib
 
@@ -10,7 +10,7 @@ Formalisation of the algebraic identities and rational inequalities of §3 of
 /-!
 Proofs are developed in the nested namespace `Erdos1041.Counterexample.Algebra`
 and re-exported at the end of this file at the nineteen contract names
-`Erdos1041.Counterexample.s1_*`, each restated verbatim from the archived stub
+`Erdos1041.Counterexample.s1_*`, each restated verbatim from the archived
 interface so that any drift is a compile error rather than a silent weakening.
 
 Verification status: elaborated and kernel-checked on the pinned toolchain
@@ -560,7 +560,7 @@ end Erdos1041.Counterexample.Algebra
 
 The nineteen S1 obligations at their original fully qualified names
 `Erdos1041.Counterexample.s1_*`.  Each statement is restated verbatim from the
-archived stub interface, so any drift between the proofs above and the contract
+archived interface, so any drift between the proofs above and the contract
 is a compile error here rather than a silent weakening.  The single accepted
 delta is `s1_alpha_ge`, which carries the root hypothesis `hT`; the original
 interval-only form is refuted by `s1_alpha_original_counterexample` and the

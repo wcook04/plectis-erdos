@@ -10,7 +10,6 @@ supplies the literal prefix/common-denominator equality, derives the maximum
 and attainment hypotheses from the actual LCM, proves its cofactor a unit,
 and joins the two existing results. No new analytic premise is used.
 
-STATUS: uncompiled proof candidate; see theorem_coverage.json.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 

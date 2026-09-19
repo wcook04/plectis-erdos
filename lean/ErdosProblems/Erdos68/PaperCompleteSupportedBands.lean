@@ -8,7 +8,6 @@ The assumptions below concern only nonzero coefficients in lambda.support.
 They do not require an arbitrary list's zero-coefficient entries to satisfy
 support restrictions. These are the Finsupp forms of long res:normalform and
 res:bandbreakpoint. All pointwise arithmetic is reused from the supplied source.
-STATUS: uncompiled proof candidates.
 -/
 namespace ErdosProblems.Erdos68.PaperComplete
 
