@@ -116,10 +116,18 @@ occurrences, give a constant path; the substantive case is therefore
 squarefree.
 
 \noindent The problem numbering follows Bloom's Erd\H{o}s problem catalogue
-\cite{bloom}.  A degree-seven counterexample to the unrestricted assertion has been
-reported to the author. Its proof is not reproduced or independently verified
-in this revision. We therefore refer to the displayed assertion as the
-historical question, not as an assertion that the unrestricted bound remains open.
+\cite{bloom}.  \phantomsection\label{res:ani-degree-seven-counterexample-long}
+A degree-seven counterexample due to the
+\href{https://www.erdosproblems.com/1041}{erdosproblems.com contributor \texttt{ani}} makes the unrestricted total-variation assertion false.  For
+one explicit monic polynomial of degree seven whose roots are distinct and
+lie in the open unit disc, every continuous path in the strict unit lemniscate
+joining two distinct roots has total variation greater than~$2$.\footnote{Lean
+checks this instance in
+\href{https://github.com/wcook04/plectis-erdos/blob/f70679d47178bf1174309cb29f5b31748609cc04/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean\#L25}{\texttt{erdos1041\_ani\_degree\_seven}}.
+The formal result concerns one polynomial; it does not formalise the reported
+small-parameter family or a Hausdorff-measure comparison, and its correspondence
+with the historical formulation has not received independent human review.}
+Thus this polynomial has no continuous root-to-root parametrisation of total variation less than~$2$.
 The original source is Problem~5 on printed p.~139 of
 Erd\H{o}s--Herzog--Piranian \cite[Problem~5, p.~139]{ehp1958}; the preceding paragraph records the
 known input that one component of the lemniscate contains at least two zeros.
@@ -3958,8 +3966,7 @@ subdivision, together with exact root enclosures.  No such certificate is
 attached to the numbers above.  They are grid distances for the sampled
 configurations, and the apparent decrease with degree is a property of the
 sample, from which we draw no conjecture.  Even a finite collection of proved instances would not establish
-the universal statement. These searches also cannot adjudicate a
-counterexample reported elsewhere.
+the universal statement. These searches do not test \texttt{ani}'s degree-seven counterexample.
 Useful stress tests for particular path constructions include near-degenerate
 saddles, thin necks, boundary-critical configurations, and almost-connected
 separatrices.  They should report those diagnostics.  Raster paths remain candidate
@@ -4374,9 +4381,9 @@ The critical-value moment does not choose a contained pair.
 The ordinary generic slit-sheet topology has classical antecedents; the
 earlier proposed sufficient estimate concerned the lengths of particular
 inverse-ray curves. Their minimum need not equal the infimum over all
-contained curves. A reported counterexample to the unrestricted assertion
-would rule out the corresponding universal estimate for these particular
-curves too, without invalidating conditional estimates on smaller classes.
+contained curves. The degree-seven counterexample above rules out the corresponding universal
+estimate for these particular curves too, without invalidating conditional
+estimates on smaller classes.
 
 \paragraph{Adjacent inverse-map methods.}
 Crane \cite[Lemma~2.1, Theorem~2.2 and \S\S3--4]{crane2007smale}
