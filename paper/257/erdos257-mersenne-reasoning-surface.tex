@@ -387,7 +387,7 @@ $\varepsilon$. Its strict positivity contradicts the rational lattice.
 This proves the assertion.  The exact all-base statement, with hypotheses
 $b\ge2$, infinitude of $A$, and summability of $a\mapsto\mathbf1_A(a)/a$,
 is kernel-checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{\texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}}. \ev{Lean}
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{\texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}}. \ev{Lean}
 
 The order of the two limits matters: the observation length increases with
 $Q_t$ fixed before $t$ increases. No independence of different divisibility
@@ -700,7 +700,7 @@ proof adds the dyadic average~\eqref{eq:257-weighted-dyadic-average}.
 \paragraph{Evidence boundary.}
 The exact interface of Theorem~\ref{thm:257-weighted}, including its
 fixed-base conclusion and hereditary all-base clause, is kernel-checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L99}{\texttt{divisibilityWeightedClaim}}.  Its public dependency closure was
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L99}{\texttt{divisibilityWeightedClaim}}.  Its public dependency closure was
 replayed under Lean~4.29.1.  This does not cover all infinite supports,
 supply a quantitative irrationality measure, or assert theorem priority.
 
@@ -897,9 +897,9 @@ the fixed rational lattice then excludes rationality.
 \end{proof}
 
 The strengthened cover conclusion is kernel-checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241}{\texttt{strengthenedPositiveCoverClaim}}, and the common-witness conclusion is
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241}{\texttt{strengthenedPositiveCoverClaim}}, and the common-witness conclusion is
 kernel-checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L105}{\texttt{mixedSupportClaim}}.  Their public dependency closure was replayed
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L105}{\texttt{mixedSupportClaim}}.  Their public dependency closure was replayed
 under Lean~4.29.1.  The arbitrary-positive-weight variant remains an ordinary
 deduction here.
 This theorem does not establish strict enlargement over both individual

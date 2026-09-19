@@ -9,7 +9,7 @@
       "scope": "21-file adapted weighted/cover/mixed proof closure for Erdos 257; verified by public Lean 4.29.1 replay at 065e0952"
     },
     {
-      "commit": "065e0952d7a3a0c9f87275323d50aaedb78f481f",
+      "commit": "065e09523286894dfb57ba205e69666843817009",
       "scope": "ErdosProblems aggregator import for the weighted endpoint and verified #251 status-comment cleanup"
     },
     {
@@ -462,12 +462,12 @@
         {
           "kind": "short",
           "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "sha256": "e03a7a0ad73fb7c9622a1732abe314a46f5af1c97a6180d31b18dc22c2b433ea"
+          "sha256": "827089d860bd8e0d3ba3f61d6a83129dac5ca063d79e42bd1dbc7f86f4c9031f"
         },
         {
           "kind": "long",
           "path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-          "sha256": "c15f42db0cc26bcc41723715f287259752dba3568c159bc303370a0975bf71a3"
+          "sha256": "820aac01852b98e4a6134476f5b83dd5d27b7bbc170df5896c6ebd067fe3f2c4"
         }
       ],
       "remaining": "The long paper cofinal-return sentence has no single named exact wrapper, although the weighted mean theorem carries an arbitrary positive lower bound. The explicit A_star example is proved in ordinary mathematics; the existing existential host wrapper does not verify that named example. The retracted logarithmic endpoint estimate is independent of the reciprocal-summable module closure.",
@@ -648,18 +648,25 @@
     }
   ],
   "provenance": {
+    "git_pin_correction": {
+      "invalid_extrapolated_value": "065e0952d7a3a0c9f87275323d50aaedb78f481f",
+      "resolved_commit": "065e09523286894dfb57ba205e69666843817009",
+      "task_ledger_event": "wie_20260919T113039Z_41bc93d0",
+      "verification": "git rev-parse plus git cat-file commit/path checks passed"
+    },
     "historical_257_source_commit": "e060dcf7fff",
     "migration_note": "The initial 257 reciprocal-summable modules came from the checked historical public source; the 249/251 modules are byte-exact checked private sources. The strongest 257 weighted/cover/mixed closure is proof-code equivalent to the Palomar closure after adapting imports and namespaces to the broad public repository.",
     "task_ledger_events": [
       "wie_20260919T100912Z_39069a3d",
-      "wie_20260919T102941Z_79cda99d"
+      "wie_20260919T102941Z_79cda99d",
+      "wie_20260919T113039Z_41bc93d0"
     ]
   },
   "schema": "eight_paper_lean_coverage_group_receipt_v1",
   "source_basis": {
     "group_b_source_commit": "7d7b5968986b53bf224637f2e4c0395e170eba7d",
-    "integrated_source_head": "065e0952d7a3a0c9f87275323d50aaedb78f481f",
-    "public_evidence_commit": "065e0952d7a3a0c9f87275323d50aaedb78f481f",
+    "integrated_source_head": "065e09523286894dfb57ba205e69666843817009",
+    "public_evidence_commit": "065e09523286894dfb57ba205e69666843817009",
     "toolchain": "leanprover/lean4:v4.29.1",
     "upstream_base": "a9c17ee851a4b3559379d840b6109a58e45aaa42"
   },
@@ -743,8 +750,8 @@
       "commit": "e4ef0da4cc8323f08617a9db99a3626feb9c22c4",
       "paths": {
         "docs/agents/AGENT_GUIDE.md": "ee92cfef39f56fec06afdf73518c0c3190f957364d5e11c7c4f7f3d16f62b709",
-        "paper/257/erdos-257-mersenne-support-subseries.tex": "e03a7a0ad73fb7c9622a1732abe314a46f5af1c97a6180d31b18dc22c2b433ea",
-        "paper/257/erdos257-mersenne-reasoning-surface.tex": "c15f42db0cc26bcc41723715f287259752dba3568c159bc303370a0975bf71a3"
+        "paper/257/erdos-257-mersenne-support-subseries.tex": "827089d860bd8e0d3ba3f61d6a83129dac5ca063d79e42bd1dbc7f86f4c9031f",
+        "paper/257/erdos257-mersenne-reasoning-surface.tex": "820aac01852b98e4a6134476f5b83dd5d27b7bbc170df5896c6ebd067fe3f2c4"
       },
       "status": "committed"
     },

@@ -218,7 +218,7 @@ with the modulus fixed, and only then does the modulus increase.
 Reciprocal summability controls both interchanges.  The exact all-base result,
 with hypotheses $b\ge2$, infinitude of $A$, and summability of $a\mapsto
 \mathbf1_A(a)/a$, is kernel-checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{\texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{\texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}}.
 
 \section{Extensions beyond reciprocal summability}
 \label{sec:eight-return-extensions}
@@ -318,7 +318,7 @@ subsets.
 
 The exact interface of Theorem~\ref{res:weighted-support}, including its
 fixed-base conclusion and hereditary all-base clause, is kernel-checked as
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L99}{\texttt{divisibilityWeightedClaim}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L99}{\texttt{divisibilityWeightedClaim}}.
 
 \subsection{An example beyond reciprocal summability}
 The hypothesis is genuinely weaker than reciprocal summability.  Let
@@ -1190,9 +1190,9 @@ positive-cover criterion.
 The public proof closure at \texttt{065e0952d7a3} was replayed under
 Lean~4.29.1.  Besides the reciprocal and weighted declarations cited above,
 the replay checked the exact strengthened positive-cover conclusion in
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241}{\texttt{strengthenedPositiveCoverClaim}}
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241}{\texttt{strengthenedPositiveCoverClaim}}
 and the common-witness conclusion in
-\href{https://github.com/wcook04/plectis-erdos/blob/065e0952d7a3a0c9f87275323d50aaedb78f481f/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L105}{\texttt{mixedSupportClaim}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L105}{\texttt{mixedSupportClaim}}.
 The axiom audit for these endpoints reports only \texttt{propext},
 \texttt{Classical.choice}, and \texttt{Quot.sound}.  The ordinary proof for
 $A_\star$ remains separate from the existential host wrapper, which does not
