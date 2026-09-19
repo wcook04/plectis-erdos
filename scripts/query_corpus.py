@@ -3474,6 +3474,76 @@ def open_proposition_packet(open_id: str) -> dict[str, Any]:
     }
 
 
+OPEN_INDEX_SELECTOR = "__all_open_propositions__"
+
+
+def open_proposition_problem(proposition: dict[str, Any]) -> str:
+    """Read the problem number from the open target claim id."""
+    match = re.search(r"\d+", proposition["open_target_claim"])
+    return match.group(0) if match else "other"
+
+
+def open_proposition_index_packet() -> dict[str, Any]:
+    """List every registered remaining-open proposition, grouped by problem.
+
+    This is the answer to "what can I work on?".  Rows keep registry order
+    inside each problem; the listing is a menu, not a ranking.
+    """
+    claims = load("docs/claims.json")
+    advancing = Counter(
+        edge["remaining_open_effect"]["remaining_open_proposition_id"]
+        for edge in claims["machine_readable_paper"]["argument_graph"]["edges"]
+        if edge.get("remaining_open_effect")
+    )
+    rows = []
+    for order, proposition in enumerate(claims["remaining_open_propositions"]):
+        anchor = proposition.get("paper_anchor") or {}
+        rows.append(
+            {
+                "id": proposition["id"],
+                "problem": open_proposition_problem(proposition),
+                "statement": proposition["statement"],
+                "open_target_claim": proposition["open_target_claim"],
+                "paper_anchor": (
+                    {
+                        "source": anchor.get("source"),
+                        "line": anchor.get("line"),
+                        "title": anchor.get("title"),
+                    }
+                    if anchor
+                    else None
+                ),
+                "advancing_claim_count": advancing.get(proposition["id"], 0),
+                "follow": f"python3 scripts/query_corpus.py --open {proposition['id']}",
+                "registry_order": order,
+            }
+        )
+
+    def problem_key(problem: str) -> tuple[int, int]:
+        return (0, int(problem)) if problem.isdigit() else (1, 0)
+
+    rows.sort(key=lambda row: (problem_key(row["problem"]), row["registry_order"]))
+    return {
+        "kind": "open_proposition_index",
+        "authority_posture": "authored_open_boundary_navigation_not_proof_authority",
+        "count": len(rows),
+        "problems": sorted({row["problem"] for row in rows}, key=problem_key),
+        "ordering": (
+            "problem number, then registry order; not a ranking of difficulty "
+            "or mathematical value"
+        ),
+        "open_propositions": rows,
+        "boundary": (
+            "Each row is an authored statement of what remains open. Settling a "
+            "row settles only what its statement says; its --open packet gives "
+            "the checked results that bear on it and its exact boundary."
+        ),
+        "follow": "python3 scripts/query_corpus.py --open <id>",
+        "source": "docs/claims.json::remaining_open_propositions",
+        "validation": "python3 scripts/check_release.py",
+    }
+
+
 def decorate_declaration_rows(
     matches: list[dict[str, Any]], limit: int
 ) -> list[dict[str, Any]]:
@@ -9037,6 +9107,47 @@ def render_problem_reader_answer(answer: dict[str, Any]) -> list[str]:
 
 
 @lru_cache(maxsize=256)
+def routes_index_packet() -> dict[str, Any]:
+    """List every stable route id, so a reader never has to guess one."""
+    claims = load("docs/claims.json")
+    rows = [
+        {
+            "id": route["id"],
+            "route_kind": route.get("route_kind") or "orientation",
+            "title": route.get("title") or route.get("intent") or "",
+            "follow": f"python3 scripts/query_corpus.py --route {route['id']}",
+        }
+        for route in all_entrypoints(claims)
+    ]
+    problems = sorted(
+        {
+            int(open_proposition_problem(row))
+            for row in claims["remaining_open_propositions"]
+            if open_proposition_problem(row).isdigit()
+        }
+    )
+    for number in problems:
+        route_id = f"erdos_{number}"
+        if problem_registry_route(route_id) is None:
+            continue
+        rows.append(
+            {
+                "id": route_id,
+                "route_kind": "problem",
+                "title": f"Erdős #{number}: the question, status, results and what remains",
+                "follow": f"python3 scripts/query_corpus.py --route {route_id}",
+            }
+        )
+    return {
+        "kind": "route_index",
+        "authority_posture": "navigation_index_not_claim_or_proof_authority",
+        "count": len(rows),
+        "routes": rows,
+        "follow": "python3 scripts/query_corpus.py --route <id>",
+        "source": "docs/claims.json and docs/orientation.json reading routes",
+    }
+
+
 def route_packet(route_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     route = next(
@@ -9050,7 +9161,10 @@ def route_packet(route_id: str) -> dict[str, Any]:
     if route is None:
         problem_route = problem_registry_route(route_id)
         if problem_route is None:
-            raise KeyError(f"unknown route id: {route_id}")
+            raise KeyError(
+                f"unknown route id: {route_id}; list the route ids with "
+                "python3 scripts/query_corpus.py --routes"
+            )
         problem_number = int(problem_route["erdos_number"])
         signal = mathematical_signal_spine(claims, include_programme_detail=True)
         programme_signal = next(
@@ -10791,6 +10905,38 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| advancing_claims={len(packet['advancing_claims'])}"
         )
         return _append_route_memory_resumes(card, packet.get("route_memory"))
+    if kind == "open_proposition_index":
+        rows = [
+            f"open propositions | {packet['count']} across "
+            f"{len(packet['problems'])} problems | {packet['ordering']}"
+        ]
+        current = None
+        for row in packet["open_propositions"]:
+            if row["problem"] != current:
+                current = row["problem"]
+                rows.append(f"#{current}" if current.isdigit() else current)
+            statement = row["statement"]
+            if len(statement) > 220:
+                statement = statement[:217].rstrip() + "..."
+            rows.append(
+                f"  {row['id']} | checked results bearing on it="
+                f"{row['advancing_claim_count']}"
+            )
+            rows.append(f"    {statement}")
+            anchor = row["paper_anchor"]
+            if anchor and anchor.get("source"):
+                rows.append(f"    paper: {anchor['source']}:{anchor.get('line')}")
+        rows.append(f"next: {packet['follow']}")
+        return "\n".join(rows)
+    if kind == "route_index":
+        rows = [f"routes | {packet['count']} stable route ids"]
+        for row in packet["routes"]:
+            line = f"  {row['id']} | {row['route_kind']}"
+            if row["title"]:
+                line += f" | {row['title']}"
+            rows.append(line)
+        rows.append(f"next: {packet['follow']}")
+        return "\n".join(rows)
     if kind == "module":
         module = packet["module"]
         dependency = packet["dependency_neighbourhood"]["receipt"]
@@ -10893,6 +11039,17 @@ def render_card(packet: dict[str, Any]) -> str:
             f"witness_edges={len(packet['minimal_witness_subgraph']['edges'])} "
             f"| omitted={packet['omission_receipt'].get('omitted_match_count', 0)}"
         )
+        if not packet["semantic_cells"]:
+            # An empty slice used to end here in silence.  Name the stable
+            # surfaces instead of leaving the reader to guess a route id.
+            rows.extend(
+                (
+                    "no cells matched this wording; the stable surfaces are:",
+                    "  python3 scripts/query_corpus.py --open      # every open question",
+                    "  python3 scripts/query_corpus.py --routes    # every stable route id",
+                    "  python3 scripts/query_corpus.py --overview --format card",
+                )
+            )
         return "\n".join(rows)
     if kind == "finite_computation_replay":
         replay = packet["default_replay"]
@@ -11206,7 +11363,17 @@ def query_args_packet(
     group.add_argument("--paper-label", type=nonempty_selector, metavar="LABEL")
     group.add_argument("--paper-source", type=nonempty_selector, metavar="SOURCE_PATH")
     group.add_argument("--paper-anchor", type=nonempty_selector, metavar="LABEL_OR_SOURCE_REF")
-    group.add_argument("--open", type=nonempty_selector, metavar="ID")
+    group.add_argument(
+        "--open",
+        type=nonempty_selector,
+        nargs="?",
+        const=OPEN_INDEX_SELECTOR,
+        metavar="ID",
+        help=(
+            "one remaining-open proposition; with no ID, list every open "
+            "proposition grouped by problem"
+        ),
+    )
     group.add_argument("--declaration", type=nonempty_selector, metavar="NAME")
     group.add_argument("--goal-support", type=nonempty_selector, metavar="LEAN_OR_MATHEMATICAL_GOAL")
     group.add_argument("--proof-plan", type=nonempty_selector, metavar="LEAN_OR_MATHEMATICAL_GOAL")
@@ -11230,6 +11397,9 @@ def query_args_packet(
     group.add_argument("--module", type=nonempty_selector, metavar="PATH_OR_ID")
     group.add_argument("--connections", type=nonempty_selector, metavar="MODULE_OR_DECLARATION")
     group.add_argument("--route", type=nonempty_selector, metavar="ID")
+    group.add_argument(
+        "--routes", action="store_true", help="list every stable route id"
+    )
     group.add_argument("--status", type=nonempty_selector, metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", type=nonempty_selector, metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
@@ -11285,6 +11455,10 @@ def query_args_packet(
         packet = paper_source_packet(args.paper_source)
     elif args.paper_anchor:
         packet = paper_anchor_packet(args.paper_anchor)
+    elif args.open == OPEN_INDEX_SELECTOR:
+        packet = open_proposition_index_packet()
+        if not args.format:
+            output_format = "card"
     elif args.open:
         packet = open_proposition_packet(args.open)
     elif args.declaration:
@@ -11326,6 +11500,10 @@ def query_args_packet(
         packet = connection_card(args.connections, args.limit, args.query)
     elif args.route:
         packet = route_packet(args.route)
+    elif args.routes:
+        packet = routes_index_packet()
+        if not args.format:
+            output_format = "card"
     elif args.status:
         packet = claim_status_packet(args.status, args.limit)
     elif args.publication_family:

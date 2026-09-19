@@ -29,13 +29,13 @@ public main without changing files. Record the revision; preserve older work.
 
 ### Mathematics, theorem status, problem progress, or paper synthesis
 
-Query the public corpus before reading papers or Lean source:
+Query the corpus before reading papers or Lean source:
 
 ```sh
 python3 scripts/query_corpus.py --ask "<question>"
 ```
 
-For a repository overview or full-coverage request, use:
+For an overview or full coverage, use:
 
 ```sh
 python3 scripts/query_corpus.py --overview --format card
@@ -55,9 +55,10 @@ python3 scripts/query_corpus.py --route erdos257_half_story
 python3 scripts/query_corpus.py --route browse_claim_status
 ```
 
-If free text returns no semantic cells, use those stable routes; do not replace
+If free text returns no cells, use those routes; do not replace
 machine evidence with manuscript-only inference. All eight indexed problems
 remain open.
+Choose work: `python3 scripts/query_corpus.py --open`.
 
 ### Lean proof work or source mutation
 

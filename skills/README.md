@@ -30,7 +30,7 @@ Select a bounded frontier, sustain discovery, or add a sourced problem world whi
 - [add-open-problem](add-open-problem/SKILL.md) — Add a sourced mathematical problem as a new public problem world without silently promoting expansion work into a reviewed claim or pretending that the indexed roster is fixed.
   Routed by: Add or incubate another open problem
 - [mine-open-problem](mine-open-problem/SKILL.md) — Select and attack one bounded open mathematical route from this clone using reading, computation, analytic reasoning, Lean, and optional subagents, then return the smallest evidence-bearing delta without overclaiming it.
-  Routed by: Attack one bounded open frontier, Run sustained discovery with corpus stewardship
+  Routed by: Choose an open question to work on, Attack one bounded open frontier, Run sustained discovery with corpus stewardship
 - [run-coupled-research-goals](run-coupled-research-goals/SKILL.md) — Coordinate an event-driven discovery goal and corpus-stewardship goal over one public mathematical frontier without collapsing proof, appraisal, exposition, or work-allocation authority.
   Routed by: Run sustained discovery with corpus stewardship
 
