@@ -73,8 +73,8 @@ straight-spoke selection alone.
 ## Durable replay
 
 ```bash
-./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_nearest_spoke.py
-./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_nearest_spoke.py --check
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_nearest_spoke.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_nearest_spoke.py --check
 ```
 
 The receipt

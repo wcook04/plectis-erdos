@@ -101,4 +101,3 @@ The source-current conclusion is therefore `(M4)--(M5)`, not the returned
 same-critical two-full-spoke allocation theorem. The latter is already
 contradicted by the quartic straight-spoke authority, and curvature or a
 component-aware allocation remains necessary.
-

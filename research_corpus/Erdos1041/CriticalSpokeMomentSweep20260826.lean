@@ -28,4 +28,3 @@ theorem critical_spoke_witness_reciprocal_balance_im :
   norm_num
 
 end ErdosProblems.Erdos1041
-

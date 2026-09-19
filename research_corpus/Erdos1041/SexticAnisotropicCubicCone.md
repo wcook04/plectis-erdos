@@ -133,4 +133,3 @@ coordinate can no longer diverge in the normalized second-mode atlas.
 The next owner should combine (6), the \(4/5\) first-mode overlap, the pure
 second-mode phase circle, and the canonical null-box cells into one finite
 compact atlas, then spend strict margins on the origin-anchored remainder.
-

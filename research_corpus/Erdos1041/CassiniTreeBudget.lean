@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
+import research_corpus.Erdos1041.NewtonFlowRaySeparation
 import Mathlib.Analysis.Complex.RealDeriv
 import Mathlib.Analysis.Calculus.Deriv.Comp
 import Mathlib.Analysis.Calculus.MeanValue

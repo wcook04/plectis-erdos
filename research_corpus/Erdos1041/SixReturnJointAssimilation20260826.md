@@ -31,7 +31,7 @@ and the conditional critical-pole consumer
 Replay the companion module from the repository root with:
 
 ```sh
-lake env lean research_corpus/Erdos1041/SixReturnJointAssimilation20260826.lean
+./lake env lean research_corpus/Erdos1041/SixReturnJointAssimilation20260826.lean
 ```
 
 These declarations check only the scalar fan-in and conditional charge

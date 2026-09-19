@@ -85,4 +85,3 @@ print(f"  arm-U Bernstein max={max(arm_u)}")
 print(f"  arm-V Bernstein max={max(arm_v)}")
 print(f"  tail-V cutoff value={tail_v.subs(r, R)}")
 print(f"  metric length={sp.N(sp.sqrt(dist_u_sq) + sp.sqrt(dist_v_sq), 20)} < 2 < 2R")
-

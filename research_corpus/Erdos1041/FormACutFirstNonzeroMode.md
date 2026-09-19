@@ -142,4 +142,3 @@ python3 research_corpus/Erdos1041/scripts/check_erdos1041_form_a_cut_first_nonze
 The checker enumerates all mode quotients through degree 80, audits every
 half-plane event and intervening phase cell, verifies (M) on a deterministic
 grid, and includes `n=3,m=1` as the required negative control.
-

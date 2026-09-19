@@ -56,7 +56,7 @@ PRIOR_ART_REF = (
     "erdos1041_lemniscate_short_path_v0.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "source-provenance://private-authoring-project/receipts/"
+    "research_corpus/Erdos1041/"
     "erdos1041_candidate_tree_budget_source_audit_receipt.json"
 )
 

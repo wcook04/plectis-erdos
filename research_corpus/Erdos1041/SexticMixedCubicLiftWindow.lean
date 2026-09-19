@@ -1,5 +1,5 @@
-import ErdosProblems.Erdos1041.SexticMixedTruncatedNeighborhood
-import ErdosProblems.Erdos1041.SexticSecondModeCubicLift
+import research_corpus.Erdos1041.SexticMixedTruncatedNeighborhood
+import research_corpus.Erdos1041.SexticSecondModeCubicLift
 import Mathlib.Tactic
 
 /-!

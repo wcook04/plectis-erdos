@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail
+import research_corpus.Erdos1041.PrimitiveQuinticBoundaryTail
 
 /-!
 # Erdős #1041: primitive-quintic closed-disk tails

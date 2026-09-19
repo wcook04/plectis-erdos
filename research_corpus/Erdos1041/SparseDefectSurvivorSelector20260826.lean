@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.AttachmentAgeLifetimeOrlicz
+import research_corpus.Erdos1041.AttachmentAgeLifetimeOrlicz
 
 /-!
 # Erdős 1041: sparse-defect survivor selector kernels

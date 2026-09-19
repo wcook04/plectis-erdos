@@ -135,10 +135,18 @@ through the centre of a smallest enclosing disc. That centre need not be
 a critical point. The results here concern specified polynomial families
 and sufficient conditions; no priority claim is made.
 
-A degree-seven counterexample to the unrestricted assertion has been
-reported to the author. Its proof is not reproduced or independently
-verified in this revision. We use Problem~1041 as the historical question,
-not as an assertion here that the unrestricted bound remains open.
+\phantomsection\label{res:ani-degree-seven-counterexample}
+A degree-seven counterexample due to the
+\href{https://www.erdosproblems.com/1041}{erdosproblems.com contributor \texttt{ani}} makes the unrestricted total-variation assertion false.  For
+one explicit monic polynomial of degree seven whose roots are distinct and
+lie in the open unit disc, every continuous path in the strict unit lemniscate
+joining two distinct roots has total variation greater than~$2$.\footnote{Lean
+checks this instance in
+\href{https://github.com/wcook04/plectis-erdos/blob/f70679d47178bf1174309cb29f5b31748609cc04/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean\#L25}{\texttt{erdos1041\_ani\_degree\_seven}}.
+The formal result concerns one polynomial; it does not formalise the reported
+small-parameter family or a Hausdorff-measure comparison, and its correspondence
+with the historical formulation has not received independent human review.}
+Thus this polynomial has no continuous root-to-root parametrisation of total variation less than~$2$.
 
 The trinomial proof prescribes a path for every pair of distinct roots.
 The area-growth argument in Section~\ref{sec:constant-factor} has a

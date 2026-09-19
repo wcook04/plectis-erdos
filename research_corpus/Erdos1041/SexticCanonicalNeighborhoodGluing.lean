@@ -1,5 +1,5 @@
-import ErdosProblems.Erdos1041.SexticNullBranchTransverseSelector
-import ErdosProblems.Erdos1041.SexticNullBranchGlobalBoxAtlas
+import research_corpus.Erdos1041.SexticNullBranchTransverseSelector
+import research_corpus.Erdos1041.SexticNullBranchGlobalBoxAtlas
 import Mathlib.Tactic
 
 /-!

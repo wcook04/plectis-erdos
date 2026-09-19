@@ -636,7 +636,7 @@ def main(trials=90, seed=20260824, lam=2.0):
                exact_sixty_fourth_critical_capacity_certificate=exact_sixty_fourth_capacity,
                sqrt2_varpi=SQRT2_VARPI)
     print(json.dumps(out, indent=1, default=float))
-    receipt = Path('source-provenance://private-authoring-project/receipts/'
+    receipt = Path('research_corpus/Erdos1041/'
                    'erdos1041_constant_factor_bound_receipt.json')
     try:
         receipt.parent.mkdir(parents=True, exist_ok=True)

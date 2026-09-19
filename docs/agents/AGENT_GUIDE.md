@@ -30,7 +30,7 @@ front door in ordinary language; agent surfaces may remain command-heavy.
 
 A blank-slate agent must receive the complete problem fleet here; it must not
 already know a query command or infer the fleet from directory names.
-**All eight indexed problems remain open.**
+**The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence.**
 
 Each entry states the mathematical target, then the checked frontier and live
 obstruction, then the standalone paper.
@@ -81,11 +81,11 @@ support and some supports with divergent reciprocal sum. For finite nonempty
 prime set \(P\), let \(h(a)\) be the largest \(P\)-supported divisor of \(a\).
 If \(\sum_{a\in A}h(a)/(a(b^{h(a)}-1))<\infty\), then
 \(\sum_{a\in A}1/(b^a-1)\) is irrational for that integer base \(b\ge2\).
-The long paper supplies the full ordinary proof; it is not formalised.
-An ordinary common-witness proof also combines a base-two weighted host
-with a positive divisor-cover host: every infinite subseries on their union
-is irrational at every integer base. The proposed separation hosts remain
-unassessed.
+The full theorem, including the hereditary all-base clause from the base-two
+hypothesis, is formalised in Lean.  Lean also checks the common-witness theorem
+combining a base-two weighted host with a positive divisor-cover host: every
+infinite subseries on their union is irrational at every integer base.  The
+proposed separation hosts remain unassessed.
 Lean separately checks full support, finite-period noncollapse, named structured families,
 hereditary unique coding, and the compactness, topology, perfectness, and exact
 measure dichotomy of restricted achievement sets. Prime support at base 2 and

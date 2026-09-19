@@ -4,7 +4,7 @@
 # Results and limits
 
 This repository formalises finite results, reductions, equivalences, and
-obstructions related to eight open Erdős problems —
+obstructions related to eight Erdős problem programmes —
 [#68](https://www.erdosproblems.com/68),
 [#243](https://www.erdosproblems.com/243),
 [#249](https://www.erdosproblems.com/249),
@@ -297,9 +297,9 @@ operational procedures live in the [agent workbench](agents/AGENT_WORKBENCH.md).
 
 ## Technical verdict
 
-All eight Erdős problems remain open. The development is neither a partial
-solution nor an empty collection of restatements. For a first mathematical
-pass, the high-signal spine is:
+The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence. The development is neither an empty collection of restatements nor
+a claim to settle the seven unresolved targets or the unadjudicated historical
+#1041 formulation. For a first mathematical pass, the high-signal spine is:
 
 - **#257, a completed unconditional endpoint theorem in the full-support
   case.** The checked divisor-block proof combines a bounded Bertrand/CRT first

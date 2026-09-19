@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.QuinticTraceMaxUniversalChamber
+import research_corpus.Erdos1041.QuinticTraceMaxUniversalChamber
 
 /-!
 # Erdős 1041: algebra for the central `μ = -10` curved-excess certificate

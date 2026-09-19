@@ -3,8 +3,8 @@
 # Refresh: python3 scripts/build_external_verification.py
 version: "v0.4"
 project:
-  name: "Eight open Erdős problems: checked subsidiary mathematics"
-  description: "Lean 4 formalization of subsidiary mathematics for eight open Erdős problems, including unconditional irrationality theorems for structured Mersenne supports, exact conditional endpoint reductions, arithmetic classifications, and method barriers; none of the eight open problems is claimed solved."
+  name: "Eight Erdős problem programmes: checked mathematics"
+  description: "Lean 4 formalization across eight Erdős problem programmes, including unconditional theorems, exact conditional endpoint reductions, arithmetic classifications, counterexamples, and method barriers. The precise release boundary is recorded below."
   authors:
     - "Will Cook"
   license: "Apache-2.0"
@@ -31,10 +31,7 @@ sources:
     license: "CC-BY-4.0"
     author_endorsement: "n/a"
 status:
-  scope: >-
-    All eight covered Erdős problems remain open. This repository checks
-    subsidiary theorems, formalises selected known results, verifies finite
-    instances, and records conditional reductions and method barriers.
+  scope: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
   proof_corpus_sorry_count: 0
   sorry_count: 8
   sorry_in_definitions: 0
@@ -916,8 +913,7 @@ review:
   reviewers: []
   notes: "self-assessed and agent-checked; no human mathematical peer review is claimed"
 fidelity:
-  divergences: >-
-    The checked results are subsidiary results or formalised prior mathematics; none is the open problem statement. Comparator checks formal statement identity and axioms, not informal significance, novelty, or source fidelity.
+  divergences: "The degree-seven example refutes the total-variation formulation of Erdős #1041. The other seven target problems are not resolved here. Independent human review of correspondence with the historical curve-length formulation has not been recorded. Comparator checks only its selected exact statements, configured axioms and kernel acceptance; it does not assess novelty or historical correspondence."
 alignment:
   namespace: "Erdos249257.ExternalVerification"
   statements:
@@ -1625,7 +1621,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:28facf7677ab602eb59ff6a87e01c103a791eb92b1a4ec0dc8ff38e089344a23"
+  problem_index_digest: "sha256:ca83a7fb9a4f7002269dcb65c8e6cd69183f38d4e5031e6f884b993dd7400a31"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1667,25 +1663,25 @@ external_verification:
     - id: "erdos_1041"
       erdos_number: 1041
       status: "open"
-      checked_frontier: "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w."
-      open_frontier: "Erdos Problem 1041 in unrestricted degree."
+      checked_frontier: "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation."
+      open_frontier: "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
       research_frontier:
         directory: "research_corpus/Erdos1041"
         authority_posture: "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority"
-        reading_rule: "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims."
+        reading_rule: "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims."
         frontier: "research_corpus/Erdos1041/FRONTIER.md"
         strongest_results: "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
         manifest: "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
         checkpoint: "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
         content_digests:
-          frontier: "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
-          strongest_results: "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
-          manifest: "sha256:5f753c8b8ce8bc2962f340e6d2205ec51b5d883b3d426d3b934c80b4e915f9f3"
-          checkpoint: "sha256:48a02a5b1696ff92107629cee6767bd7e7243a8dd1f8dc3f8a4edb6fe23680ef"
-        activated_result_count: 45
-        source_checkpoint: "867638684907b4ebd4ab2ef7b5de22dafda71e36"
-        source_subtree_tree: "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d"
+          frontier: "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299"
+          strongest_results: "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f"
+          manifest: "sha256:d72594f2dd335f7caf82ea91fea17c2e0005015e8a091b61ca804ddfd4e8d3a9"
+          checkpoint: "sha256:a46179ff4b41f37df19ae58dee79ff973195c2c4e3fc2d70e367c2ab3743181b"
+        activated_result_count: 294
+        source_checkpoint: "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac"
+        source_subtree_tree: null
         promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_1049"
       erdos_number: 1049

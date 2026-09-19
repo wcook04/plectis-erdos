@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticFirstModeDominantTangentCone
+import research_corpus.Erdos1041.SexticFirstModeDominantTangentCone
 import Mathlib.Tactic
 
 /-!

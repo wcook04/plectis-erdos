@@ -13,7 +13,7 @@ and the fibre displacement budget
 Replay the complete Lean module from the repository root with:
 
 ```sh
-lake env lean research_corpus/Erdos1041/CyclicTrinomialFiberCase.lean
+./lake env lean research_corpus/Erdos1041/CyclicTrinomialFiberCase.lean
 ```
 
 These declarations certify the spoke identity, strict unit-lemniscate

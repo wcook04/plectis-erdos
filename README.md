@@ -1,19 +1,24 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis: research on eight open Erdős problems
+# Plectis: research on eight Erdős problem programmes
 
 Plectis is an open-source, AI-assisted research project. This repository contains
-the papers, Lean proofs, computations, failed approaches, and questions
-that remain, so another researcher can inspect the work and continue from it.
-**All eight problems remain open.**
+the papers, Lean proofs, computations, failed approaches, and remaining
+questions, so another researcher can inspect the work and continue from it.
+**The degree-seven example refutes the total-variation formulation of
+Erdős #1041. The other seven target problems are not resolved here. Independent
+human review of correspondence with the historical curve-length formulation
+has not been recorded. Comparator checks only its selected exact statements,
+configured axioms and kernel acceptance; it does not assess novelty or
+historical correspondence.**
 
 **[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
 [Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
 [Contact me](https://wcook04.github.io/plectis/#contact)
 
-![Eight open problems: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
+![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
 ## Where to start
 
@@ -203,16 +208,16 @@ Mathlib. See the [security policy](.github/SECURITY.md) for the execution bounda
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 141 curated claim records in 30 contribution families, reaching Lean source through 451 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 148 curated claim records in 33 contribution families, reaching Lean source through 463 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 91% of the 157,402 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 90% of the 158,846 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,343 |
-| Formal results and supporting lemmas | 154,477 |
-| Curated claim records | 141 |
-| Contribution families | 30 |
+| Lean modules (the two library roots) | 1,405 |
+| Formal results and supporting lemmas | 155,672 |
+| Curated claim records | 148 |
+| Contribution families | 33 |
 
 Generated shards are counted as formal source and never as separate
 mathematical claims. Claim records cover every status, including cited and

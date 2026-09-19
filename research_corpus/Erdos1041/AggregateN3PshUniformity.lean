@@ -1,4 +1,5 @@
 import Mathlib.Tactic
+import Mathlib.Analysis.Real.Pi.Bounds
 
 /-!
 # Erdős #1041: scalar kernel for the AGG3 psh tangent cone

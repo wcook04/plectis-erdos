@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticNullBranch
+import research_corpus.Erdos1041.SexticNullBranch
 
 /-!
 # Erdős #1041: strict companion to the sextic null branch

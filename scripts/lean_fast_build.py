@@ -291,6 +291,15 @@ def direct_source_lake_imports(
 def default_root_targets(modules: dict[str, Path], root: Path = ROOT) -> list[str]:
     """Return the package roots without relying on Lake's unbounded default."""
 
+    lakefile = root / "lakefile.toml"
+    if lakefile.is_file():
+        config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
+        declared = config.get("defaultTargets")
+        if isinstance(declared, list) and declared:
+            missing = [name for name in declared if name not in modules]
+            if missing:
+                raise ValueError(f"declared default Lean roots not found: {missing}")
+            return list(dict.fromkeys(declared))
     resolved_root = root.resolve()
     targets = sorted(
         name
@@ -333,17 +342,11 @@ def changed_lean_paths(base: str, root: Path = ROOT) -> set[Path]:
 def changed_targets_from_paths(
     changed_paths: Iterable[Path], modules: dict[str, Path], root: Path = ROOT
 ) -> list[str]:
-    resolved_root = root.resolve()
-    changed: set[str] = set()
-    for path in changed_paths:
-        resolved_path = path.resolve()
-        try:
-            name = module_name(resolved_path, resolved_root)
-        except ValueError:
-            continue
-        if name in modules and modules[name].resolve() == resolved_path:
-            changed.add(name)
-    return sorted(changed)
+    # Discovery already resolved Lake srcDir. Reconstructing module names from
+    # repository-relative paths silently drops every module under lean/.
+    names_by_path = {source.resolve(): name for name, source in modules.items()}
+    return sorted({names_by_path[path.resolve()] for path in changed_paths
+                   if path.resolve() in names_by_path})
 
 
 def changed_targets(

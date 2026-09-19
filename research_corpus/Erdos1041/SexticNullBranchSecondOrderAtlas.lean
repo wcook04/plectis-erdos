@@ -1,5 +1,5 @@
-import ErdosProblems.Erdos1041.SexticNullBranchTransverseSelector
-import ErdosProblems.Erdos1041.SexticCanonicalMixedSlice
+import research_corpus.Erdos1041.SexticNullBranchTransverseSelector
+import research_corpus.Erdos1041.SexticCanonicalMixedSlice
 
 /-!
 # Erdős #1041: the sextic null-branch second-order atlas

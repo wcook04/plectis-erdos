@@ -231,10 +231,12 @@ estimate, and a finite computation establishes only its stated range.
 
 The short source tags distinguish the kind of evidence being cited.
 \ev{Lean} identifies a cited formal-source declaration at the specified
-revision and follows the status recorded in the supplied material.
-Some supplied files are uncompiled handoff drafts; the tag alone is not
-a claim that they were accepted by the kernel.  No fresh compilation
-of those sources was performed for this editorial revision.  \ev{Cert} identifies a reported exact finite computation.
+revision and follows the status recorded in the supplied material.  The four
+support endpoints cited in Part~I were replayed with their dependency closure
+under Lean~4.29.1 at public commit \texttt{065e09523286}; their axiom audit
+reports only \texttt{propext}, \texttt{Classical.choice}, and
+\texttt{Quot.sound}.  Other supplied files retain their individually stated
+status.  \ev{Cert} identifies a reported exact finite computation.
 \ev{Math} identifies an ordinary argument, without asserting that no formal
 counterpart exists.  \ev{Cited} refers to the literature, and \ev{Open}
 marks an assumption or conclusion not proved here.  A statement may carry
@@ -244,9 +246,9 @@ values.
 
 The source links are for checking precise definitions and proof terms.
 They are not additional hypotheses and do not replace an explanation of
-the mathematics.  No fresh Lean build or independent verification of every
-proof is claimed.  Neither the universal problem nor either rational-target
-question is resolved in this paper.
+the mathematics.  No independent verification of every other proof is
+claimed.  Neither the universal problem nor either rational-target question
+is resolved in this paper.
 \subsection*{Notation used throughout}
 For $A\subseteq\mathbb N_{>0}$ and an integer $b\ge2$, put
 \[
@@ -382,7 +384,10 @@ Consequently the limiting mean of $\Delta_{b,A}(Q_tm)$ tends to zero.
 Given $\varepsilon>0$, first choose $t$ and then a sufficiently long finite
 average with mean below $\varepsilon$; one term of that average is below
 $\varepsilon$. Its strict positivity contradicts the rational lattice.
-This proves the assertion. \ev{Math}
+This proves the assertion.  The exact all-base statement, with hypotheses
+$b\ge2$, infinitude of $A$, and summability of $a\mapsto\mathbf1_A(a)/a$,
+is kernel-checked as
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{\texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}}. \ev{Lean}
 
 The order of the two limits matters: the observation length increases with
 $Q_t$ fixed before $t$ increases. No independence of different divisibility
@@ -693,18 +698,11 @@ proof adds the dyadic average~\eqref{eq:257-weighted-dyadic-average}.
 \ev{Cited}
 
 \paragraph{Evidence boundary.}
-The proof above is an ordinary argument.  The two declarations cited in this
-paragraph concern different hypotheses and do not verify its averaging steps.
-The release-snapshot source for the weighted conclusion is identified after
-Theorem~\ref{thm:257-mixed-supports}; that source is not a fresh build of the
-proof printed here.  For comparison, the older pinned corpus contains the
-pairwise-coprime support theorem
-\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776}
-and the distinct block-certificate engine
-\lean{irrational\_erdosSupportSeries\_of\_weighted\_coeff\_certificates}{CertificateKernel.lean:9031}.
-Neither declaration is presented as the finite-prime weighted theorem.
-Nothing here covers all infinite supports, supplies a quantitative
-irrationality measure, or asserts theorem priority.
+The exact interface of Theorem~\ref{thm:257-weighted}, including its
+fixed-base conclusion and hereditary all-base clause, is kernel-checked as
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L99}{\texttt{divisibilityWeightedClaim}}.  Its public dependency closure was
+replayed under Lean~4.29.1.  This does not cover all infinite supports,
+supply a quantitative irrationality measure, or assert theorem priority.
 
 \subsection{A finite estimate on common observation scales}\label{sec:257-common-kernel}
 For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
@@ -898,15 +896,12 @@ proof transfers arbitrarily small displacements to every integer base;
 the fixed rational lattice then excludes rationality.
 \end{proof}
 
-The analytic estimates and their synchronisation are ordinary proofs.
-The release snapshot contains end-to-end bodies for the strengthened
-cover conclusion in
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241}{the positive-cover conclusion}
-and for the weighted and mixed conclusions in
-\href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L98}{the weighted and mixed conclusions}.
-This identifies conclusion-level formal support, not a fresh build or a
-certification of every step of the prose sampling schedule.  The
-arbitrary-positive-weight variant is an ordinary deduction here.
+The strengthened cover conclusion is kernel-checked as
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241}{\texttt{strengthenedPositiveCoverClaim}}, and the common-witness conclusion is
+kernel-checked as
+\href{https://github.com/wcook04/plectis-erdos/blob/065e09523286894dfb57ba205e69666843817009/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L105}{\texttt{mixedSupportClaim}}.  Their public dependency closure was replayed
+under Lean~4.29.1.  The arbitrary-positive-weight variant remains an ordinary
+deduction here.
 This theorem does not establish strict enlargement over both individual
 classes.  The weighted non-cover host has a separate source body in
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L16}{the weighted support without a strengthened cover};

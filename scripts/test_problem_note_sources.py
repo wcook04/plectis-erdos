@@ -293,7 +293,25 @@ def test_nested_layout_snapshot_falls_back_from_identity_path() -> None:
     )
 
 
+def test_explicit_immutable_headline_links_require_exact_source() -> None:
+    note = (r"\href{https://github.com/wcook04/plectis-erdos/blob/" + "a" * 40
+            + r"/lean/ErdosProblems/Synthetic/Headline.lean\#L1}"
+            + r"{\texttt{checked\_headline}}")
+    key = ("ErdosProblems/Synthetic/Headline.lean", "checked_headline")
+    with patch.object(scanner, "snapshot_lines", return_value=["theorem checked_headline : True := by trivial"]):
+        require(key in linked_declaration_keys(note), "exact immutable link not recognized")
+        require(key not in linked_declaration_keys(note.replace("L1", "L8")), "wrong line counted")
+        require(key not in linked_declaration_keys(note.replace("wcook04/", "other/")), "foreign repository counted")
+        require(key not in linked_declaration_keys(note.replace("a" * 40, "main")), "moving ref counted")
+        require(key not in linked_declaration_keys("% " + note), "commented link counted")
+    with patch.object(scanner, "snapshot_lines", return_value=[]):
+        require(key not in linked_declaration_keys(note), "missing snapshot counted")
+    with patch.object(scanner, "snapshot_lines", return_value=["/- theorem checked_headline : True -/"]):
+        require(key not in linked_declaration_keys(note), "commented declaration counted")
+
+
 def main() -> int:
+    test_explicit_immutable_headline_links_require_exact_source()
     test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()
     test_split_declaration_head_resolves_at_keyword_line()

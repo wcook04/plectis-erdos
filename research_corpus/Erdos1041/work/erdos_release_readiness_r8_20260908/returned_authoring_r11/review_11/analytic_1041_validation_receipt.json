@@ -1,0 +1,356 @@
+{
+  "schema": "erdos1041_r11_analytic_hash_bound_validation_v1",
+  "completed_at": "2026-09-08T18:14:57.026744+00:00",
+  "authority_verdict": "r10_chain_and_r11_leaf_aggregate_smoke_320_print_audits_passed",
+  "return_zip_sha256": "2ed21f11a3fb8ccb65cdfce4616ecb706acf43020c98eea30566e871d4a5e018",
+  "claims": {
+    "adopted_paths_session": "r11-root-1041-analytic",
+    "renewal_read_receipt_id": "wlr_baf12a79f47c4fd4",
+    "source_current_navigation_receipt_id": "wln_d169cbc788484350",
+    "dependency_claims": [
+      {
+        "session": "medium-r11-1041-r10-dependencies",
+        "read_receipt": "wlr_bd76e5f923fc406b",
+        "navigation_receipt": "wln_18861237b7a24072"
+      },
+      {
+        "session": "medium-r11-1041-r10-details",
+        "read_receipt": "wlr_98f6e0eba61d41ad",
+        "navigation_receipt": "wln_96751d26198d4e7c"
+      },
+      {
+        "session": "medium-r11-1041-r10-smoke",
+        "read_receipt": "wlr_6145a96a37cc416a",
+        "navigation_receipt": "wln_8b71ea7e48574d71"
+      }
+    ]
+  },
+  "repairs": [
+    {
+      "file": "PaperWeightedRefinementsR10.lean",
+      "change": "returned exact two-line simp compatibility repair; add mul_one and one_mul",
+      "source_mode": "exact returned repair"
+    },
+    {
+      "file": "PaperCriticalConsequencesR10.lean",
+      "change": "alpha-rename unicode lambda identifier to lam for parser compatibility"
+    },
+    {
+      "file": "PaperAnalyticDetailsR10.lean",
+      "change": "make the norm-one contradiction explicit after rewriting hlt"
+    },
+    {
+      "file": "PaperAnalyticSmokeR10.lean",
+      "change": "qualify polynomial type as Polynomial ℂ"
+    },
+    {
+      "file": "ThreePointDefectR11.lean",
+      "change": "mark section noncomputable for Real division"
+    },
+    {
+      "file": "PaperAnalyticSmokeR11.lean",
+      "change": "use NNReal and Polynomial ℂ compatibility names; normalize Nat zero cast; expose endpoint theorem as typed abbrev after binding implicit v,a,b"
+    }
+  ],
+  "canonical_sources": [
+    {
+      "path": "research_corpus/Erdos1041/PaperWeightedRefinementsR10.lean",
+      "sha256": "e70409434832a40204eaf30821bdd2519c5b4bfe36cbe4f0bfeddc5c5807e544"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperCriticalConsequencesR10.lean",
+      "sha256": "93153693e09057ce2becc3a1d0be20b92060c8ca8444b8595bac9fbb0e7323b0"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticDetailsR10.lean",
+      "sha256": "14ec9f52930e1b0d1bc6fe5339e9a049ab1b741e84adaf5e4928ae948b35546e"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticR10.lean",
+      "sha256": "73c9029688c96399e6ecdb65ecfad8c7e4abb1fc79b896ad9e9d19e247b9bb36"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticSmokeR10.lean",
+      "sha256": "77c57a74c43e5c8262e220012f4a8fb9b5725a52e4d34d489767a137682fc1e2"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticR10Audit.lean",
+      "sha256": "c945e51c9caa1f52da731ecbe1958b660e9efaba6c35f480605ad88502d34a7e"
+    },
+    {
+      "path": "research_corpus/Erdos1041/ThreePointDefectR11.lean",
+      "sha256": "480f4be1ead2549e9dec220b80c0b00cd099865d4871b1f2f7d584550d527e7e"
+    },
+    {
+      "path": "research_corpus/Erdos1041/ReciprocalLogSeriesR11.lean",
+      "sha256": "61ada6f611ea13f73272d55dc8f9d5704aa1077a9a64efbc5f9d069c55d62af7"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperWeightedCoverageR11.lean",
+      "sha256": "4f8692ab2231a20dc9e3080ebb9848543987ee7538d44614ca88808c943e356e"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticR11.lean",
+      "sha256": "5ae38dd5a9c8cb15f932ebc7b048beafcbcace6b30854bf3385f25553feb35db"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticSmokeR11.lean",
+      "sha256": "bbd15d66368f14937eb976bb683fc9d805a0d619d75037a6182c70c7a650677f"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticR11Audit.lean",
+      "sha256": "c49702a2ab84c2c99d535ca8b7e4b2dbc09b3bf2281dabe6b28b0b4d4b59d0e1"
+    },
+    {
+      "path": "research_corpus/Erdos1041/PaperAnalyticClosureAuditR11.lean",
+      "sha256": "ee472332af6837fe4ca9f5e39518b41fbbb46ae88e056a580889e38058256f9e"
+    }
+  ],
+  "terminal_wave_receipts": [
+    {
+      "wave": "r11_1041_weighted_refinements_20260908T1752Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_weighted_refinements_20260908T1752Z/receipt.json",
+      "receipt_sha256": "a424c4254e6632e7dd5bed312ea527313cd2d77ecfe3106216c8536379b7256a",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "e70409434832a40204eaf30821bdd2519c5b4bfe36cbe4f0bfeddc5c5807e544",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_critical_consequences_retry1_20260908T1757Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_critical_consequences_retry1_20260908T1757Z/receipt.json",
+      "receipt_sha256": "f9277cd86b1ea8b902e20093923879b418fc5a2d6101165484bbda7e8417af9f",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperCriticalConsequencesR10",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "93153693e09057ce2becc3a1d0be20b92060c8ca8444b8595bac9fbb0e7323b0",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_analytic_details_retry1_20260908T1801Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_analytic_details_retry1_20260908T1801Z/receipt.json",
+      "receipt_sha256": "5cbc504afc6e332db9867d42c9d2f5e6124988586d41e83820d39acae3a80b69",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticDetailsR10",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "14ec9f52930e1b0d1bc6fe5339e9a049ab1b741e84adaf5e4928ae948b35546e",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_r10_aggregate_smoke_audit_retry2_20260908T1803Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_r10_aggregate_smoke_audit_retry2_20260908T1803Z/receipt.json",
+      "receipt_sha256": "d8b167c687e96fe236f5f0e46e2c44f4629d0a597dbfb986d70f3ab6892689da",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticR10",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "73c9029688c96399e6ecdb65ecfad8c7e4abb1fc79b896ad9e9d19e247b9bb36",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticSmokeR10",
+          "status": "failed",
+          "exit_code": 1,
+          "source_sha256": "b5ccf5a525dab05a72e87adfd4223f7eb7148dfb282603f9df9f295c897b3962",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticR10Audit",
+          "status": "deferred_after_dependency_failure",
+          "exit_code": null,
+          "source_sha256": "c945e51c9caa1f52da731ecbe1958b660e9efaba6c35f480605ad88502d34a7e",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_r10_smoke_audit_retry3_20260908T1806Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_r10_smoke_audit_retry3_20260908T1806Z/receipt.json",
+      "receipt_sha256": "94ba1aee922554ff80cec09a02f4ebeebd8fbf291003c120743db0ebe0e568d7",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticSmokeR10",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "77c57a74c43e5c8262e220012f4a8fb9b5725a52e4d34d489767a137682fc1e2",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticR10Audit",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "c945e51c9caa1f52da731ecbe1958b660e9efaba6c35f480605ad88502d34a7e",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_r11_leaves_20260908T1810Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_r11_leaves_20260908T1810Z/receipt.json",
+      "receipt_sha256": "9ff996413d4456239e0df3fcbdfffa37d7b3af0d4181fdfd5b3e368dbb220bc3",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.ThreePointDefectR11",
+          "status": "failed",
+          "exit_code": 1,
+          "source_sha256": "d642c5d53ad1227d502dba8271183a22f17c553707b268f811a34b5dd505f71d",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.ReciprocalLogSeriesR11",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "61ada6f611ea13f73272d55dc8f9d5704aa1077a9a64efbc5f9d069c55d62af7",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperWeightedCoverageR11",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "4f8692ab2231a20dc9e3080ebb9848543987ee7538d44614ca88808c943e356e",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_threepoint_retry1_20260908T1812Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_threepoint_retry1_20260908T1812Z/receipt.json",
+      "receipt_sha256": "45391d33c4cc593bb126ec0b8dcd50ae35b913f01d286672185f4f0291d138e8",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.ThreePointDefectR11",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "480f4be1ead2549e9dec220b80c0b00cd099865d4871b1f2f7d584550d527e7e",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_r11_aggregate_smoke_audits_20260908T1813Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_r11_aggregate_smoke_audits_20260908T1813Z/receipt.json",
+      "receipt_sha256": "644504f42a21741b02976b4183dd67aa449ab01ba40c0636a89ecc923ee4543d",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticR11",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "5ae38dd5a9c8cb15f932ebc7b048beafcbcace6b30854bf3385f25553feb35db",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticSmokeR11",
+          "status": "failed",
+          "exit_code": 1,
+          "source_sha256": "4b7af721129ea4fbc576101849102c11e21d50fe99624c3e76c6117396c02b89",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticR11Audit",
+          "status": "deferred_after_dependency_failure",
+          "exit_code": null,
+          "source_sha256": "c49702a2ab84c2c99d535ca8b7e4b2dbc09b3bf2281dabe6b28b0b4d4b59d0e1",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticClosureAuditR11",
+          "status": "deferred_after_dependency_failure",
+          "exit_code": null,
+          "source_sha256": "ee472332af6837fe4ca9f5e39518b41fbbb46ae88e056a580889e38058256f9e",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_r11_smoke_retry4_20260908T1822Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_r11_smoke_retry4_20260908T1822Z/receipt.json",
+      "receipt_sha256": "2def4e8f58d3635edac472a16ec0c7270cd3369aa25113f9667306089d8ec7dc",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticSmokeR11",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "bbd15d66368f14937eb976bb683fc9d805a0d619d75037a6182c70c7a650677f",
+          "inputs_unchanged": true
+        }
+      ]
+    },
+    {
+      "wave": "r11_1041_r11_audits_retry1_20260908T1824Z",
+      "receipt": "work/erdos_1041/r8_assimilation_20260908/r11_1041_r11_audits_retry1_20260908T1824Z/receipt.json",
+      "receipt_sha256": "f8c516d796c1661fb7436289384cf209e0e6fbb0775aeb9def4c69498c623f14",
+      "results": [
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticR11Audit",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "c49702a2ab84c2c99d535ca8b7e4b2dbc09b3bf2281dabe6b28b0b4d4b59d0e1",
+          "inputs_unchanged": true
+        },
+        {
+          "target": "ErdosProblems.Erdos1041.PaperAnalyticClosureAuditR11",
+          "status": "focused_build_pass",
+          "exit_code": 0,
+          "source_sha256": "ee472332af6837fe4ca9f5e39518b41fbbb46ae88e056a580889e38058256f9e",
+          "inputs_unchanged": true
+        }
+      ]
+    }
+  ],
+  "audit_verification": [
+    {
+      "source": "PaperAnalyticR10Audit.lean",
+      "print_count": 80,
+      "matched_log_reports": 80,
+      "axiom_set": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "status": "pass"
+    },
+    {
+      "source": "PaperAnalyticR11Audit.lean",
+      "print_count": 42,
+      "matched_log_reports": 42,
+      "axiom_set": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "status": "pass"
+    },
+    {
+      "source": "PaperAnalyticClosureAuditR11.lean",
+      "print_count": 198,
+      "matched_log_reports": 198,
+      "axiom_set": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "status": "pass"
+    }
+  ],
+  "audit_total_prints": 320,
+  "validation_boundary": [
+    "private focused builds only",
+    "no full root build",
+    "no public/root/paper/status promotion",
+    "no commit or push"
+  ]
+}

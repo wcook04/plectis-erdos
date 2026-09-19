@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.CyclicTrinomialFiberCase
+import research_corpus.Erdos1041.CyclicTrinomialFiberCase
 
 /-!
 # Erdős #1041: a coefficient-controlled cyclic tetranomial class

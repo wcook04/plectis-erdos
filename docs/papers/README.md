@@ -250,7 +250,7 @@ The [problem summaries](../RELATED_PROBLEMS.md) introduce the mathematics. `docs
 
 **Two Incomparable Denominator Exclusions for \sum_{n\ge2}(n!-1)^{-1}**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos-68-factorial-denominator-irrationality.tex) · 29 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/68/erdos-68-factorial-denominator-irrationality.tex) · 29 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
 Start here (selected for this guide): [The denominator exclusions](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [Integer vectors for cancelling weighted sums](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Comparing the tail with the distance to an integer](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [The remaining real comparison](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
@@ -258,7 +258,7 @@ Start here (selected for this guide): [The denominator exclusions](full-text/erd
 
 **Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}**
 
-[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/68/erdos68-factorial-reasoning-surface.tex) · 39 sections · `erdos68-factorial-reasoning-surface` · native to this repository
+[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/68/erdos68-factorial-reasoning-surface.tex) · 39 sections · `erdos68-factorial-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Rationality and the next integer above a scaled partial sum](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:carry), [Finite denominator exclusions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:finite), [The remaining arithmetic inputs](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:open), [Relations among the criteria](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
 
@@ -266,7 +266,7 @@ Start here (selected for this guide): [Rationality and the next integer above a 
 
 **Bounded Increments and Rational Reciprocal Sums**
 
-[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos-243-reciprocal-tail-rigidity.tex) · 20 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
+[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/243/erdos-243-reciprocal-tail-rigidity.tex) · 20 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Proof under a lower bound on the error](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [The first-crossing obstruction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:barrier), [The remaining arithmetic estimate](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
 
@@ -274,7 +274,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-243-recipro
 
 **Reciprocal-Tail Rigidity: Theorems, Proofs and Questions**
 
-[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex) · 61 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
+[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/243/erdos243-reciprocal-tail-reasoning-surface.tex) · 61 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Irrationality at the cubic rate](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:cubicrate), [A lower bound on the error forces eventual zero](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:bounded), [Complements and further questions](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:open), [Result map and proof dependencies](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:erdos-243-complete-family-map).
 
@@ -282,7 +282,7 @@ Start here (selected for this guide): [Irrationality at the cubic rate](full-tex
 
 **Bases and Integral Relations for the k-Kernel of Euler’s Totient**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/249/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
 
 Start here (selected for this guide): [A basis and all its relations](full-text/erdos-249-binary-totient-series.md#sec:results), [Tail differences and finite residue tests](full-text/erdos-249-binary-totient-series.md#sec:carry-rank), [An equivalent residue condition for each hypothetical denominator](full-text/erdos-249-binary-totient-series.md#sec:frontier), [Information that does not force the gap](full-text/erdos-249-binary-totient-series.md#sec:nogo).
 
@@ -290,7 +290,7 @@ Start here (selected for this guide): [A basis and all its relations](full-text/
 
 **The Binary Totient Series**
 
-[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/249/erdos249-totient-reasoning-surface.tex) · 161 sections · `erdos249-totient-reasoning-surface` · native to this repository
+[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/249/erdos249-totient-reasoning-surface.tex) · 161 sections · `erdos249-totient-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Rational comparison sequences](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [Conditions that would imply irrationality](full-text/erdos249-totient-reasoning-surface.md#sec:survivors), [Series identities and finite exclusions](full-text/erdos249-totient-reasoning-surface.md#sec:series), [Exact dyadic rank and the limits of a rank argument](full-text/erdos249-totient-reasoning-surface.md#sec:mahler-defect).
 
@@ -298,7 +298,7 @@ Start here (selected for this guide): [Rational comparison sequences](full-text/
 
 **Sparse Congruence-Preserving Perturbations of Dyadic Series**
 
-[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos-251-prime-gap-dyadic-series.tex) · 13 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
+[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/251/erdos-251-prime-gap-dyadic-series.tex) · 13 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-251-prime-gap-dyadic-series.md#sec:problem), [Integral shifts: an exact algebraic classification](full-text/erdos-251-prime-gap-dyadic-series.md#sec:tail), [A local certificate and the missing prime input](full-text/erdos-251-prime-gap-dyadic-series.md#sec:local-certificate), [Consequences and limits](full-text/erdos-251-prime-gap-dyadic-series.md#sec:open).
 
@@ -306,7 +306,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-251-prime-g
 
 **Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates**
 
-[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/251/erdos251-prime-gap-reasoning-surface.tex) · 64 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
+[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/251/erdos251-prime-gap-reasoning-surface.tex) · 64 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The tail recurrence and the exact criteria](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:tail), [What cannot supply the missing input](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:obstructions), [Remaining prime-gap estimates](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:open), [Conclusions](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
 
@@ -314,7 +314,7 @@ Start here (selected for this guide): [The tail recurrence and the exact criteri
 
 **Weighted Support Criteria for Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos-257-mersenne-support-subseries.tex) · 38 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/257/erdos-257-mersenne-support-subseries.tex) · 38 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
 Start here (selected for this guide): [Introduction and main results](full-text/erdos-257-mersenne-support-subseries.md#sec:problem), [Reciprocal-summable supports at every integer base](full-text/erdos-257-mersenne-support-subseries.md#sec:reciprocal-support), [Extensions beyond reciprocal summability](full-text/erdos-257-mersenne-support-subseries.md#sec:eight-return-extensions), [Further questions](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
@@ -322,7 +322,7 @@ Start here (selected for this guide): [Introduction and main results](full-text/
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/257/erdos257-mersenne-reasoning-surface.tex) · 164 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/257/erdos257-mersenne-reasoning-surface.tex) · 164 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Support criteria and their proofs](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [Limitations of the recorded methods](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [Unproved inputs for further arguments](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors), [Reading the detailed record](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-howto).
 
@@ -330,7 +330,7 @@ Start here (selected for this guide): [Support criteria and their proofs](full-t
 
 **The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic**
 
-[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos269-running-lcm-reasoning-surface.tex) · 44 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
+[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/269/erdos269-running-lcm-reasoning-surface.tex) · 44 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The problem, and what is settled](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [Why the third prime prevents finite separation](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [What the results use and what they do not prove](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
@@ -338,7 +338,7 @@ Start here (selected for this guide): [The problem, and what is settled](full-te
 
 **No Finite Separable Representation at Three Prime Generators**
 
-[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/269/erdos-269-three-prime-running-lcm.tex) · 16 sections · `erdos-269-three-prime-running-lcm` · native to this repository
+[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/269/erdos-269-three-prime-running-lcm.tex) · 16 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [Nonsingular minors of every order](full-text/erdos-269-three-prime-running-lcm.md#sec:rank), [The recurrence for the repeated sum](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [A window test and the remaining arithmetic](full-text/erdos-269-three-prime-running-lcm.md#sec:escape).
 
@@ -346,7 +346,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-269-three-p
 
 **Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 39 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 39 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
 Start here (selected for this guide): [Monic trinomials, in every degree](full-text/erdos-1041-lemniscate-newton-flow.md#sec:trinomial), [Low critical values and a uniform path bound](full-text/erdos-1041-lemniscate-newton-flow.md#sec:constant-factor), [Why the proposed spanning-tree estimate fails](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [What a universal path estimate would require](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
 
@@ -354,7 +354,7 @@ Start here (selected for this guide): [Monic trinomials, in every degree](full-t
 
 **Paths in Polynomial Lemniscates: Proofs and Examples**
 
-[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 67 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
+[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 67 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [A small least critical value](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:low-critical-closure), [Collinear roots and two sparse polynomial families](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:solved-polynomial-families), [Why the proposed spanning-tree estimate fails](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:gap), [Guide to the results](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:erdos-1041-complete-family-map).
 
@@ -362,7 +362,7 @@ Start here (selected for this guide): [A small least critical value](full-text/e
 
 **Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos-1049-rational-base-lambert.tex) · 30 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/1049/erdos-1049-rational-base-lambert.tex) · 30 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [A region of rational bases at which F is irrational](full-text/erdos-1049-rational-base-lambert.md#sec:rational-base-irrationality), [The first nonzero term of Zudilin’s Hankel determinant](full-text/erdos-1049-rational-base-lambert.md#sec:hankel-order), [Supplementary arithmetic at 3/2](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
@@ -370,7 +370,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 **Zudilin’s Forms at Rational Bases: Proofs and Research Record**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 58 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 58 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open), [Publication scope](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
 
@@ -378,7 +378,7 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/claim-faithful-publication-systems-paper.tex) · 48 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/systems/claim-faithful-publication-systems-paper.tex) · 48 sections · `claim-faithful-publication-systems` · native to this repository
 
 Start here (selected for this guide): [The whole lifecycle in one picture](full-text/claim-faithful-publication-systems-paper.md#sec:lifecycle), [The mathematical reasoning loop](full-text/claim-faithful-publication-systems-paper.md#sec:mathloop), [One complete boundary: finite is not unbounded](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Inspection routes](full-text/claim-faithful-publication-systems-paper.md#sec:routes), [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
 
@@ -386,7 +386,7 @@ Start here (selected for this guide): [The whole lifecycle in one picture](full-
 
 **From a Cold Clone to a Proof Receipt**
 
-[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
+[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
 
 Start here (selected for this guide): [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [A short tour with exact follow-up queries](full-text/cold-clone-to-proof-receipt.md#sec:tour), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [A replayed case study](full-text/cold-clone-to-proof-receipt.md#sec:dogfood), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
 
@@ -394,7 +394,7 @@ Start here (selected for this guide): [The cold-clone problem](full-text/cold-cl
 
 **From Spare Compute to Cumulative Mathematics**
 
-[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/systems/open-source-mathematics-strategy.tex) · 32 sections · `open-source-mathematics-strategy` · native to this repository
+[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/systems/open-source-mathematics-strategy.tex) · 32 sections · `open-source-mathematics-strategy` · native to this repository
 
 Start here (selected for this guide): [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
 
@@ -410,7 +410,7 @@ Start here (selected for this guide): [The problem](full-text/plectis-public-sys
 
 **Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257** · **retired manuscript**
 
-[full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/1ed38b5c5ad53f5af189ddb2e6046ff214100d69/paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
+[full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/ffa694d23a1547f08018ceffbc05ddf9d4aec9bc/paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
 
 The author recommends starting with [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
 

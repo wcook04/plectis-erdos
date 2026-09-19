@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector
+import research_corpus.Erdos1041.TetranomialProductSensitiveSelector
 
 /-!
 # Erdős #1041: a tail-resultant bonus for the tetranomial selector

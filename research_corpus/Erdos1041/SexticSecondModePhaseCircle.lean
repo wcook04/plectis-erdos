@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.SexticCanonicalMixedSlice
+import research_corpus.Erdos1041.SexticCanonicalMixedSlice
 import Mathlib.Tactic
 
 /-!

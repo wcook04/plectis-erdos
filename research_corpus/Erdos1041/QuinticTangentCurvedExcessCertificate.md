@@ -232,4 +232,3 @@ the algebraic-number interval guards, the two oscillation bounds, and the
 final rational fan-in.  Lean checks the new critical-gap collapse and final
 rational margin.  The rest of the compact universal chamber `(EX-U)`, the
 real-scale transfer, degree five, and unrestricted Erdős 1041 remain open.
-

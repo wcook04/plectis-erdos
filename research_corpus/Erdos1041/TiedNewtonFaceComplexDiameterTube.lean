@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos1041.TiedNewtonFaceAsymmetricDiameterTube
+import research_corpus.Erdos1041.TiedNewtonFaceAsymmetricDiameterTube
 import Mathlib.Tactic
 
 /-!

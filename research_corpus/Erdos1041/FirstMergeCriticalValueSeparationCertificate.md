@@ -31,12 +31,17 @@ Three exact convenient thresholds are:
 ```text
 n >= 3:  S=4;
 n >= 4:  S=3;
-n >= 7:  S=2.
+n >= 6:  S=2.
 ```
 
 The latter two substantially shrink the unresolved critical-value cluster in
 higher degree; they are consequences of the same theorem, not computational
 observations.
+
+Every cutoff is the first degree at which its inequality holds, since the
+squared coefficient reads 1.43841 at `(n, S) = (2, 4)`, 1.02171 at `(3, 3)`
+and 1.07566 at `(5, 2)`.  The radius-two case is the tight one: the
+coefficient at `(6, 2)` is 0.99969.
 
 Let `P` be a degree-`n` polynomial, `n >= 3`, whose leading coefficient has
 modulus one.  Suppose
