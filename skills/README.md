@@ -19,7 +19,7 @@ silently become a second catalog.
 Enter, explain, and optionally install the public workflows without requiring a private system.
 
 - [explain-public-system](explain-public-system/SKILL.md) — Explain this public mathematical research system to a lay reader, mathematician, formaliser, compute contributor, reviewer, or infrastructure contributor from clone-local evidence.
-  Routed by: Understand or explain the public system, Inspect theorem status or mathematical progress
+  Routed by: Independently reproduce a recorded claim trail without Lean, Understand or explain the public system, Inspect theorem status or mathematical progress
 - [install-clone-skills](install-clone-skills/SKILL.md) — Preview, install, or verify the public Plectis skills in Codex, Claude, or another directory-based agent harness.
   Routed by: Install clone-local skills into an agent harness
 
@@ -30,7 +30,7 @@ Select a bounded frontier, sustain discovery, or add a sourced problem world whi
 - [add-open-problem](add-open-problem/SKILL.md) — Add a sourced mathematical problem as a new public problem world without silently promoting expansion work into a reviewed claim or pretending that the indexed roster is fixed.
   Routed by: Add or incubate another open problem
 - [mine-open-problem](mine-open-problem/SKILL.md) — Select and attack one bounded open mathematical route from this clone using reading, computation, analytic reasoning, Lean, and optional subagents, then return the smallest evidence-bearing delta without overclaiming it.
-  Routed by: Attack one bounded open frontier, Run sustained discovery with corpus stewardship
+  Routed by: Choose an open question to work on, Attack one bounded open frontier, Run sustained discovery with corpus stewardship
 - [run-coupled-research-goals](run-coupled-research-goals/SKILL.md) — Coordinate an event-driven discovery goal and corpus-stewardship goal over one public mathematical frontier without collapsing proof, appraisal, exposition, or work-allocation authority.
   Routed by: Run sustained discovery with corpus stewardship
 
