@@ -188,4 +188,7 @@ theorem displayed_canonical_and_full_dyadic :
   intro e
   exact ⟨card_totientCanonicalIndex e, linearIndependent_canonicalTotientKernelFamily e⟩
 
+#print axioms displayed_all_base_kernel
+#print axioms displayed_full_dyadic_basis
+
 end ErdosProblems.Erdos249.PaperCompleteR8

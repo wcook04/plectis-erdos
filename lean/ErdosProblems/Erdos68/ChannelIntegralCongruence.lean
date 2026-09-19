@@ -549,6 +549,48 @@ theorem factorialGapSegment_prod_le_channelLCM_mul_pow_choose
   simpa [pairDistanceExponent_eq_choose] using
     factorialGapSegment_prod_le_channelLCM_mul_pow hkD
 
+/-- Reindex the consecutive list as the finite interval used in the paper. -/
+theorem factorialGapFrom_prod_eq_prod_range (m k : ℕ) :
+    (factorialGapFrom m k).prod =
+      ∏ i ∈ Finset.range k, ((m + i).factorial - 1) := by
+  induction k generalizing m with
+  | zero => simp [factorialGapFrom]
+  | succ k ih =>
+      rw [factorialGapFrom, List.prod_cons, Finset.prod_range_succ']
+      simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm, Nat.mul_comm] using
+        congrArg (fun x => (m.factorial - 1) * x) (ih (m + 1))
+
+/-- The exact logarithmic segment inequality, on the paper's index interval.
+The Ico endpoint D+1 includes D. No asymptotic estimate or Stirling loss is
+used to pass from the checked product inequality to this statement. -/
+theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
+    {D k : ℕ} (hkD : k < D) :
+    (∑ n ∈ Finset.Ico (D + 1 - k) (D + 1),
+      Real.log ((n.factorial - 1 : ℕ) : ℝ)) ≤
+      Real.log (channelLCM D : ℝ) +
+        (((k + 1).choose 3 : ℕ) : ℝ) * Real.log (D : ℝ) := by
+  have hDpos : (0 : ℝ) < D := by exact_mod_cast (show 0 < D by omega)
+  have hnat := factorialGapSegment_prod_le_channelLCM_mul_pow_choose hkD
+  have hbase : 2 ≤ D + 1 - k := by omega
+  have hpos := factorialGapFrom_prod_pos (k := k) hbase
+  have hcast : ((factorialGapSegment D k).prod : ℝ) ≤
+      (channelLCM D : ℝ) * (D : ℝ) ^ ((k + 1).choose 3) := by
+    exact_mod_cast hnat
+  have hlog := Real.log_le_log
+    (by exact_mod_cast hpos : (0 : ℝ) < (factorialGapSegment D k).prod) hcast
+  have hprod : ((factorialGapSegment D k).prod : ℝ) =
+      ∏ i ∈ Finset.range k, (((D + 1 - k + i).factorial - 1 : ℕ) : ℝ) := by
+    rw [factorialGapSegment, factorialGapFrom_prod_eq_prod_range, Nat.cast_prod]
+  rw [hprod, Real.log_prod (fun i _ => by
+    have hp : 0 < (D + 1 - k + i).factorial - 1 :=
+      Nat.sub_pos_of_lt (Nat.one_lt_factorial.mpr (by omega))
+    exact_mod_cast hp.ne'),
+    Real.log_mul (by exact_mod_cast (channelLCM_pos D).ne') (by positivity),
+    Real.log_pow] at hlog
+  rw [Finset.sum_Ico_eq_sum_range]
+  have hlen : D + 1 - (D + 1 - k) = k := by omega
+  simpa only [hlen] using hlog
+
 /-- Exact finite lower constraint on the channel lcm.  It combines the
 smallest gap in the final `k`-block with the pairwise-gcd upper bound. -/
 theorem factorialGapSegment_base_pow_le_channelLCM_mul_pow_choose
@@ -1141,6 +1183,7 @@ theorem no_eventual_square_subsequence_three_halves_upper
 #print axioms gcd_factorial_sub_one_dvd_descFactorial_sub_one
 #print axioms factorial_gap_gcd_exact
 #print axioms pairDistanceExponent_eq_choose
+#print axioms factorialGapSegment_log_sum_le_channelLCM_add_choose
 #print axioms factorialGapSegment_prod_le_channelLCM_mul_pow_choose
 #print axioms factorialGapSegment_base_pow_lt_radiusFactorial_mul_pow
 #print axioms factorialGapSegment_log_radius_constraint
