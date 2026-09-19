@@ -20,13 +20,12 @@ docs/declaration_atlas.json          exhaustive declaration inventory
 docs/semantic_corpus.json.gz            statement nodes, typed relations, coverage receipt
 docs/semantic_corpus_check.json      content-addressed fast-check receipt
     ↓  selected_as
-docs/claims.json                     curated ledger: 100 reviewed claims
+docs/claims.json                     curated public claim ledger
     ↓  rendered_as
 problem notes · README · packets
 ```
 
-The atlas knows that a declaration exists. The claims ledger knows that 300
-declarations were reviewed and published. Neither knows that a theorem is a
+The atlas knows that a declaration exists. The claims ledger records the selected public declarations and their status. Neither knows that a theorem is a
 reformulation of the open problem, that a finite computation instantiates an
 infinite family nobody has proved, or that a barrier closes two engines and
 leaves a third alive.

@@ -131,6 +131,25 @@ def test_invalid_coverage_floor_is_rejected() -> None:
     assert failures == []
 
 
+def test_relocated_owner_keeps_the_immutable_paper_anchor() -> None:
+    row = {
+        "problem_id": "synthetic", "principal_module": "ErdosProblems.Synthetic.Core",
+        "required_note_declarations": [{"module": "ErdosProblems.Synthetic.Old",
+            "current_module": "ErdosProblems.Synthetic.Core", "declaration": "headline"}],
+    }
+    current = {("ErdosProblems/Synthetic/Core.lean", "headline")}
+    linked = {("ErdosProblems/Synthetic/Old.lean", "headline")}
+    require(not required_note_declaration_failures(row, current, linked),
+            "explicit relocation lost the historical citation")
+    require(bool(required_note_declaration_failures(row, set(), linked)),
+            "missing current declaration accepted")
+    require(bool(required_note_declaration_failures(row, current, current)),
+            "current source cannot substitute for the actual paper citation")
+    row["required_note_declarations"][0]["current_module"] = "ErdosProblems.Unowned.Core"
+    require(bool(required_note_declaration_failures(row, current, linked)),
+            "relocation outside indexed problem accepted")
+
+
 def test_erdos257_headline_anchors_are_required() -> None:
     index = json.loads(
         (ROOT / "docs" / "problem_index_source.json").read_text(encoding="utf-8")
@@ -318,6 +337,7 @@ def main() -> int:
     test_wrong_module_name_collision_is_not_coverage()
     test_missing_required_anchor_is_rejected()
     test_invalid_coverage_floor_is_rejected()
+    test_relocated_owner_keeps_the_immutable_paper_anchor()
     test_erdos257_headline_anchors_are_required()
     test_mismatched_note_commitshort_is_rejected()
     test_commit_override_without_matching_short_is_rejected()

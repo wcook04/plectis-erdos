@@ -59,6 +59,14 @@ GitHub Actions.
 
 ## Release-cut contract
 
+Local release validation can check a committed source candidate before it is
+published. In `docs/claims.json`, that state is
+`committed_checkpoint_pending_remote_publication` with `public_tag: null`.
+It asserts a source identity, not a kernel pass or public release. A published
+checkpoint instead requires an annotated `formal-source-...` tag resolving to
+that exact source commit. The artifact procedure below applies to a published
+release and retains its stronger tag requirement.
+
 An Actions artifact is temporary evidence, not a durable release identity. A
 release carrying the external-verification claim must attach both:
 

@@ -1621,7 +1621,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:856c501c573e5434da1f37df4f4a93607b95f78fadb24c77aa75599da6d2f602"
+  problem_index_digest: "sha256:06d72c7125f44a5c262d73dcc5a49ce453b403e513eb0d24659bef35975bcbbb"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1629,43 +1629,43 @@ external_verification:
       status: "open"
       checked_frontier: "The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally."
       open_frontier: "Irrationality of the factorial-denominator series."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_243"
       erdos_number: 243
       status: "open"
       checked_frontier: "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables."
       open_frontier: "The unrestricted problem."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_249"
       erdos_number: 249
       status: "open"
       checked_frontier: "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1."
       open_frontier: "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_251"
       erdos_number: 251
       status: "open"
       checked_frontier: "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise."
       open_frontier: "The target irrationality."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
       checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
       open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "programme_only"
     - id: "erdos_269"
       erdos_number: 269
       status: "open"
       checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
       open_frontier: "Irrationality or transcendence in any three-prime case."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
     - id: "erdos_1041"
       erdos_number: 1041
       status: "open"
       checked_frontier: "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation."
       open_frontier: "A Hausdorff-measure comparison between the historical curve-length formulation and the checked extended-total-variation formulation."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
       research_frontier:
         directory: "research_corpus/Erdos1041"
         authority_posture: "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority"
@@ -1688,7 +1688,7 @@ external_verification:
       status: "open"
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched."
-      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      claim_registry_status: "registered_declarations"
   trusted_challenge_holes: 8
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

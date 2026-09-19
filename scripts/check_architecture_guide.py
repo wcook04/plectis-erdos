@@ -406,9 +406,15 @@ def validate_guide(text: str) -> None:
             f"architecture guide exposes private or evaluation shorthand {pattern.pattern!r}"
         ))
 
+    local_targets = {
+        (GUIDE.parent / target.split("#", 1)[0]).resolve()
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text)
+        if not target.startswith(("http://", "https://", "#"))
+    }
     for rel in REQUIRED_PATHS:
         require((ROOT / rel).exists(), f"architecture guide names missing path {rel}")
-        require(rel in text, f"architecture guide no longer routes through {rel}")
+        require((ROOT / rel).resolve() in local_targets or rel in text,
+                f"architecture guide no longer links to {rel}")
 
     for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
         if target.startswith(("http://", "https://", "#")):

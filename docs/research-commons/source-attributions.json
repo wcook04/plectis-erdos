@@ -7717,13 +7717,6 @@
           "excerpt_sha256": "sha256:2f13d854d17862e3e84cfe8260e36f3e508b7165189455204d23c133aeac237e"
         },
         {
-          "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-          "line_start": 1698,
-          "line_end": 1708,
-          "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7",
-          "expected_text": "/-- Exact next-interval overlap for the factorial-gap specialization of"
-        },
-        {
           "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
           "line_start": 603,
           "line_end": 613,
@@ -8569,13 +8562,6 @@
           "line_start": 617,
           "line_end": 617,
           "excerpt_sha256": "sha256:eaa1d49db16032d9a995bc268a5e64df15540715982aacd7d504bd007c69cab4"
-        },
-        {
-          "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-          "line_start": 1125,
-          "line_end": 1127,
-          "excerpt_sha256": "sha256:1139eed2569eedcc245358cbde7bff884c8a36c06c78b0a38246a82257dae3ec",
-          "expected_text": "/-- The carry-defect coefficients satisfy the exact asymptotic hypothesis"
         },
         {
           "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
@@ -32013,7 +31999,7 @@
       "context": {
         "line_start": 311,
         "line_end": 317,
-        "excerpt_sha256": "sha256:474630337d784fcb3439daa813230cf9d7492fb38fa0300be754acf9addde70c"
+        "excerpt_sha256": "sha256:b9f4cca0dd01522c9ef8a036782aebe2510991854b52fa17c450ab907df87b34"
       },
       "disposition": "not_bibliographic",
       "source_ids": [],
@@ -32161,12 +32147,12 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 7,
-      "line_end": 7,
+      "line_start": 6,
+      "line_end": 6,
       "excerpt_sha256": "sha256:493deb59fd73241e4ca9714a4a0eaa34be41a2b3624d36e149f5b2886ef69c88",
       "context": {
-        "line_start": 6,
-        "line_end": 35,
+        "line_start": 5,
+        "line_end": 34,
         "excerpt_sha256": "sha256:4aa637fed60be768a2acd1acd9f363bfae7c057c51137aa47d62d1767b6c1745"
       },
       "disposition": "not_bibliographic",
@@ -32175,229 +32161,17 @@
     },
     {
       "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 34,
-      "line_end": 34,
+      "line_start": 33,
+      "line_end": 33,
       "excerpt_sha256": "sha256:3957c06b743161a67be642b53ab238bca938aa3843e31c1b8549866379c09cea",
       "context": {
-        "line_start": 6,
-        "line_end": 35,
+        "line_start": 5,
+        "line_end": 34,
         "excerpt_sha256": "sha256:4aa637fed60be768a2acd1acd9f363bfae7c057c51137aa47d62d1767b6c1745"
       },
       "disposition": "not_bibliographic",
       "source_ids": [],
       "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 267,
-      "line_end": 267,
-      "excerpt_sha256": "sha256:7aaabed037fd73e543e98fadb6bb573e8ea8f16e14bc29adaa04ae22d5cf8429",
-      "context": {
-        "line_start": 267,
-        "line_end": 267,
-        "excerpt_sha256": "sha256:7aaabed037fd73e543e98fadb6bb573e8ea8f16e14bc29adaa04ae22d5cf8429"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 282,
-      "line_end": 282,
-      "excerpt_sha256": "sha256:09f0f34eb3238e4f9496224d47379e69ae04d156e6131c616184659335694c86",
-      "context": {
-        "line_start": 282,
-        "line_end": 284,
-        "excerpt_sha256": "sha256:ade0807a90c107a566ee8fa5d0166999ae2fb5534b126485f3bbf24ef2bf1eb5"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 336,
-      "line_end": 336,
-      "excerpt_sha256": "sha256:3a88517b1f432a044b227a9bc82fc8b8ca2c4a64e76a60888e9dfbac9db73477",
-      "context": {
-        "line_start": 335,
-        "line_end": 337,
-        "excerpt_sha256": "sha256:799414a99ded387ac9ef51b26364c922ba4404f991b12f8b22d80786416cb96b"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 397,
-      "line_end": 397,
-      "excerpt_sha256": "sha256:02af5ccc2d3f3cc5a4290b9e7e98a83b7d76433a62aa4ab4abe821a5d589d079",
-      "context": {
-        "line_start": 396,
-        "line_end": 398,
-        "excerpt_sha256": "sha256:0c6e6020d203ee90138ee519a9aeac2fe1a37a6d2bff3bc611c2aecc751d4f0c"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 480,
-      "line_end": 480,
-      "excerpt_sha256": "sha256:03f674c794c2a1b2f27a13d0ca8d21770e40608083d62242f18b1cdf66da41f2",
-      "context": {
-        "line_start": 480,
-        "line_end": 481,
-        "excerpt_sha256": "sha256:fe68e9da78047e7127a367087945f6beff82196b8dfa7a647ec9f55afcc2f8fd"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 494,
-      "line_end": 494,
-      "excerpt_sha256": "sha256:15d66e2550f3a68346518d3c2e467b9e1cc68138a24148f58bd0959c26f54b40",
-      "context": {
-        "line_start": 493,
-        "line_end": 495,
-        "excerpt_sha256": "sha256:556d63313c3dd9a99f1ad87dd46b9470a5fc8b35457d37d5488d5f24c085068a"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 556,
-      "line_end": 556,
-      "excerpt_sha256": "sha256:bf71269a3118aba93580e05e13eed2616cc3bbde58244040a883c093f66ee130",
-      "context": {
-        "line_start": 555,
-        "line_end": 556,
-        "excerpt_sha256": "sha256:4114beb22dc418e2cbc699c6e4b4bb862411a0d30408b95d3dfbdb08bec5a7dc"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 712,
-      "line_end": 712,
-      "excerpt_sha256": "sha256:20cc704f74a50404caeb982c0457dae9a5df7cef54116c3bc6e78c19e79e5260",
-      "context": {
-        "line_start": 712,
-        "line_end": 714,
-        "excerpt_sha256": "sha256:1ba1a7616affbdc7f73542f2e8f699794fc66d6c968fc6c81fcc256c57245850"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 764,
-      "line_end": 764,
-      "excerpt_sha256": "sha256:aac0f19ec74c24bd1b4f98b1b644d7d645dbfc8bb4e6275ae4250f7b6501c109",
-      "context": {
-        "line_start": 764,
-        "line_end": 765,
-        "excerpt_sha256": "sha256:f54d8064ef4488db98c2910d63e69b50d027bbce9b8d7d95ec610f69a9cf404f"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 914,
-      "line_end": 914,
-      "excerpt_sha256": "sha256:17b900707c2f7fd7e84342d181a73432600bf63df7cb5151050a4ffa1aebb58d",
-      "context": {
-        "line_start": 914,
-        "line_end": 915,
-        "excerpt_sha256": "sha256:f06b104b9a372fe2bc49646254a3dcceb59694bdcd3fc8d517fe6e6acc1102ac"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 952,
-      "line_end": 952,
-      "excerpt_sha256": "sha256:9a944cf74137e1d6da0d541ae4928d132618d5a28654bd25f67e8fd815b70767",
-      "context": {
-        "line_start": 951,
-        "line_end": 952,
-        "excerpt_sha256": "sha256:bb6c02aed0f9b1e9cb91ab6b8b02fadc88bbfdd7ea1e6b7619d0efefcef0007b"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 1386,
-      "line_end": 1386,
-      "excerpt_sha256": "sha256:eb97e01b491073ecdf34aadd6d449cdf4a8bcef3f6c7c70bfb2d213a02405a2f",
-      "context": {
-        "line_start": 1385,
-        "line_end": 1388,
-        "excerpt_sha256": "sha256:38cff1583a0be9d06b732c8b2d3985052206517ec2b9a71c11a7e33a21ed94d4"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 1457,
-      "line_end": 1457,
-      "excerpt_sha256": "sha256:b4f5abfa7b827ac038c3ea8305c548d05add7f4d52cb7a1e946f3898498ac522",
-      "context": {
-        "line_start": 1456,
-        "line_end": 1458,
-        "excerpt_sha256": "sha256:e0d6ec954d3373abcca607cab701cf9b6a5aba8421f82dcb18da2d7f9f86ce32"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 1472,
-      "line_end": 1472,
-      "excerpt_sha256": "sha256:bbb6e1739d967038e88031e69ca687312c046603fde0d98e342702d39843c2d9",
-      "context": {
-        "line_start": 1471,
-        "line_end": 1473,
-        "excerpt_sha256": "sha256:9fc5a949fcd50925b9fb204f191190a25048786f901db2577b42de759f2c504d"
-      },
-      "disposition": "not_bibliographic",
-      "source_ids": [],
-      "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution."
-    },
-    {
-      "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "line_start": 1708,
-      "line_end": 1708,
-      "excerpt_sha256": "sha256:58553132c56950502dbe82d3f600c433c517952bff1e3bf4968798b2869337b7",
-      "context": {
-        "line_start": 1698,
-        "line_end": 1708,
-        "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7"
-      },
-      "disposition": "reviewed_citation_or_comparison",
-      "source_ids": [
-        "source-4f5fd0d7405e29"
-      ],
-      "reason": "The complete enclosing comment was read and matched to the bounded source-link relation."
     },
     {
       "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean",
@@ -34841,12 +34615,12 @@
     },
     {
       "path": "lean/ErdosProblems/Root.lean",
-      "line_start": 75,
-      "line_end": 75,
+      "line_start": 81,
+      "line_end": 81,
       "excerpt_sha256": "sha256:3cec22445b6cefde7d6de3f3b3057f9b335c3a522b29a7f3e3fc39f1adfd4845",
       "context": {
-        "line_start": 74,
-        "line_end": 80,
+        "line_start": 80,
+        "line_end": 86,
         "excerpt_sha256": "sha256:0555efe6703f99c9b92740d3be0898d83409c8f0ad464946794193731bb38e55"
       },
       "disposition": "not_bibliographic",

@@ -4,7 +4,7 @@
   "coverage": {
     "bibliography_without_curated_link_count": 8,
     "curated_source_count": 290,
-    "lean_candidate_awaiting_review_count": 285,
+    "lean_candidate_awaiting_review_count": 290,
     "unmatched_citation_key_count": 0
   },
   "facets": {
@@ -4339,8 +4339,8 @@
   },
   "generated_by": "scripts/build_source_attributions.py",
   "lean_inventory": {
-    "awaiting_review_count": 285,
-    "candidate_count": 1178,
+    "awaiting_review_count": 290,
+    "candidate_count": 1168,
     "candidate_policy": "Comments only. Generic infrastructure tokens are excluded. Explicit URL/DOI/arXiv references are separated from bibliography-key and curated-surname clues. Authored lean_reviews bind exact path, line range, and excerpt digest; only missing or unresolved reviews remain queued.",
     "direct_reference_candidate_count": 3,
     "excluded_generic_tokens": [
@@ -25779,6 +25779,80 @@
       },
       {
         "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:669c24047fc605e450abdc6b4fbfd16970a6b709620a4c75398037a75b77b128",
+        "line_end": 6,
+        "line_start": 6,
+        "matches": [
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": null,
+            "source_ids": [
+              "proposed-direct-7f278004ad452a",
+              "proposed-direct-f7f90747134dba",
+              "source-10545f868b3e88",
+              "source-20c650f8cf3744",
+              "source-22aba734190d65",
+              "source-27575f46a101c1",
+              "source-2ee394177d0f38",
+              "source-3fb9e4907eec24",
+              "source-43a734be32736f",
+              "source-5c72388a6ca10f",
+              "source-61ce6ad8b2f0ff",
+              "source-62ee65065db497",
+              "source-7dc956ce55b7a0",
+              "source-b378189f39ed98",
+              "source-e33bdf934f939f"
+            ],
+            "token": "erdős"
+          },
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": "source-6dbbb774ff928e",
+            "source_ids": [
+              "source-6dbbb774ff928e"
+            ],
+            "token": "group"
+          }
+        ],
+        "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/GroupAPaperEndpointsAudit.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:60c08f921214b182cc8a50202ecc95ea087c76d86bf398b87705b689e5e0d3c1"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:7deb417f8d250b77bb4befc2a5cf93f69b482401916043e0db8f52018cb3e9c5",
+        "line_end": 11,
+        "line_start": 11,
+        "matches": [
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": null,
+            "source_ids": [
+              "proposed-direct-7f278004ad452a",
+              "proposed-direct-f7f90747134dba",
+              "source-10545f868b3e88",
+              "source-20c650f8cf3744",
+              "source-22aba734190d65",
+              "source-27575f46a101c1",
+              "source-2ee394177d0f38",
+              "source-3fb9e4907eec24",
+              "source-43a734be32736f",
+              "source-5c72388a6ca10f",
+              "source-61ce6ad8b2f0ff",
+              "source-62ee65065db497",
+              "source-7dc956ce55b7a0",
+              "source-b378189f39ed98",
+              "source-e33bdf934f939f"
+            ],
+            "token": "erdős"
+          }
+        ],
+        "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/GroupAPaperEndpointsAudit.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:60c08f921214b182cc8a50202ecc95ea087c76d86bf398b87705b689e5e0d3c1"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:fc474857e5895ebf3990cdb35abae35e887ab85e78edd463167089fba15e3125",
         "line_end": 19,
         "line_start": 19,
@@ -25833,6 +25907,33 @@
       },
       {
         "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:b0e6666c82b9f0742b20432ad8885c15715270e8934296a05f19661d84c83739",
+        "line_end": 102,
+        "line_start": 102,
+        "matches": [
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": "source-endpoint2026-logarithmic-repair",
+            "source_ids": [
+              "source-endpoint2026-logarithmic-repair"
+            ],
+            "token": "note"
+          },
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": "source-9b23918ce33c38",
+            "source_ids": [
+              "source-9b23918ce33c38"
+            ],
+            "token": "short"
+          }
+        ],
+        "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:f5ea5f108719f54a3b53985b674de245f78962988cfd7cf0f18e1724d999904f"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:0c593b88c4262c08ba53fe458ccab48ba992d2b1e861aa1fecd91cef3ad6f35d",
         "line_end": 17,
         "line_start": 17,
@@ -25848,7 +25949,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos243/PaperCompleteR8/WeightAnalysis.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:b760c3b1ef6f924ee5d9d409492134b53056b51f0c090096adefde8ca3d2cd90"
+        "source_sha256": "sha256:cc63497bdf32d10e3fbaee848bacd9d3e49d9af9531f257b7586de6904b0088c"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -25867,7 +25968,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos243/PaperCompleteR8/WeightAnalysis.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:b760c3b1ef6f924ee5d9d409492134b53056b51f0c090096adefde8ca3d2cd90"
+        "source_sha256": "sha256:cc63497bdf32d10e3fbaee848bacd9d3e49d9af9531f257b7586de6904b0088c"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -25886,7 +25987,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos243/PaperCompleteR8/WeightAnalysis.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:b760c3b1ef6f924ee5d9d409492134b53056b51f0c090096adefde8ca3d2cd90"
+        "source_sha256": "sha256:cc63497bdf32d10e3fbaee848bacd9d3e49d9af9531f257b7586de6904b0088c"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -25905,7 +26006,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos243/PaperCompleteR8/WeightedRecords.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:a470552294686bdb4bdb500fb55185b02cdf7d5095453cbcb7d092105624c331"
+        "source_sha256": "sha256:a3d75ab4eab6f84c27f48f22377eb2904cbdbb84f826bdc81a936f32d37f957a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -25924,7 +26025,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos243/PaperCompleteR8/WeightedRecords.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:a470552294686bdb4bdb500fb55185b02cdf7d5095453cbcb7d092105624c331"
+        "source_sha256": "sha256:a3d75ab4eab6f84c27f48f22377eb2904cbdbb84f826bdc81a936f32d37f957a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -26720,6 +26821,39 @@
         },
         "review_status": "reviewed",
         "source_sha256": "sha256:f207295595576c95ab9e7717f219eec3b1d1e33555b0a9a1a1e95c690f623177"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:062a2ab723b39fa6320b89e1c297d13bb4165588118a33fb3b69a760e650c574",
+        "line_end": 10,
+        "line_start": 10,
+        "matches": [
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": null,
+            "source_ids": [
+              "proposed-direct-7f278004ad452a",
+              "proposed-direct-f7f90747134dba",
+              "source-10545f868b3e88",
+              "source-20c650f8cf3744",
+              "source-22aba734190d65",
+              "source-27575f46a101c1",
+              "source-2ee394177d0f38",
+              "source-3fb9e4907eec24",
+              "source-43a734be32736f",
+              "source-5c72388a6ca10f",
+              "source-61ce6ad8b2f0ff",
+              "source-62ee65065db497",
+              "source-7dc956ce55b7a0",
+              "source-b378189f39ed98",
+              "source-e33bdf934f939f"
+            ],
+            "token": "erdős"
+          }
+        ],
+        "path": "lean/ErdosProblems/Erdos243/UncentredRecordCharge.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:04c4306f89c159c39f833500781778b79eeb4616fcb5042a1335839cd2ebc8a3"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -30548,7 +30682,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/TailGluing.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:f6f8986f24efbe7b9ca23cbede19074f7cfa01e9502c0bcfcab2acced574dca3"
+        "source_sha256": "sha256:f661d3227e25b8a053c353b8c8ba6420df2770887844321d1a2642c8bb347581"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -32027,6 +32161,44 @@
       },
       {
         "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:f9d1be4bae93a7702674f034df93645c1ea105b764ae75128f2a58070f604799",
+        "line_end": 9,
+        "line_start": 9,
+        "matches": [
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": "source-9b23918ce33c38",
+            "source_ids": [
+              "source-9b23918ce33c38"
+            ],
+            "token": "short"
+          }
+        ],
+        "path": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:a67ae2aa8415541d0bbd8728e933f3342d6223722214d78d462d1341fabfe092"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:9b1d6794c0f533540168107f232cfac9d14896ba07a40fa575631b0bd17c75ca",
+        "line_end": 293,
+        "line_start": 293,
+        "matches": [
+          {
+            "match_kind": "curated_author_surname",
+            "source_id": "source-9b23918ce33c38",
+            "source_ids": [
+              "source-9b23918ce33c38"
+            ],
+            "token": "short"
+          }
+        ],
+        "path": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:a67ae2aa8415541d0bbd8728e933f3342d6223722214d78d462d1341fabfe092"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:cee31436bc49f8dcfb31054fb74e9bf5386dac309f886c3357e1241d81ac94ab",
         "line_end": 21,
         "line_start": 21,
@@ -33234,7 +33406,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:ea7c7f97d774c1cbb9021eb6708da60dcc09ecf6e3c872323aef312b6a026c97"
+        "source_sha256": "sha256:5bf90115c4391dfa5743053f8ee3c27e3375e0f67c9812e6d86f67c29b232efa"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -33277,7 +33449,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:ea7c7f97d774c1cbb9021eb6708da60dcc09ecf6e3c872323aef312b6a026c97"
+        "source_sha256": "sha256:5bf90115c4391dfa5743053f8ee3c27e3375e0f67c9812e6d86f67c29b232efa"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34294,7 +34466,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34337,7 +34509,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34380,7 +34552,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34414,7 +34586,7 @@
         "path": "lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
         "review": {
           "context": {
-            "excerpt_sha256": "sha256:474630337d784fcb3439daa813230cf9d7492fb38fa0300be754acf9addde70c",
+            "excerpt_sha256": "sha256:b9f4cca0dd01522c9ef8a036782aebe2510991854b52fa17c450ab907df87b34",
             "line_end": 317,
             "line_start": 311
           },
@@ -34423,7 +34595,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34466,7 +34638,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34509,7 +34681,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34552,7 +34724,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34595,7 +34767,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34638,7 +34810,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34681,7 +34853,7 @@
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -34858,8 +35030,8 @@
       {
         "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:493deb59fd73241e4ca9714a4a0eaa34be41a2b3624d36e149f5b2886ef69c88",
-        "line_end": 7,
-        "line_start": 7,
+        "line_end": 6,
+        "line_start": 6,
         "matches": [
           {
             "match_kind": "curated_author_surname",
@@ -34888,21 +35060,21 @@
         "review": {
           "context": {
             "excerpt_sha256": "sha256:4aa637fed60be768a2acd1acd9f363bfae7c057c51137aa47d62d1767b6c1745",
-            "line_end": 35,
-            "line_start": 6
+            "line_end": 34,
+            "line_start": 5
           },
           "disposition": "not_bibliographic",
           "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+        "source_sha256": "sha256:6c91bdef6b22856b59952eed00003fb2617d3cc6dff9a14eac475c9b05db0c62"
       },
       {
         "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:3957c06b743161a67be642b53ab238bca938aa3843e31c1b8549866379c09cea",
-        "line_end": 34,
-        "line_start": 34,
+        "line_end": 33,
+        "line_start": 33,
         "matches": [
           {
             "match_kind": "curated_author_surname",
@@ -34931,681 +35103,15 @@
         "review": {
           "context": {
             "excerpt_sha256": "sha256:4aa637fed60be768a2acd1acd9f363bfae7c057c51137aa47d62d1767b6c1745",
-            "line_end": 35,
-            "line_start": 6
+            "line_end": 34,
+            "line_start": 5
           },
           "disposition": "not_bibliographic",
           "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:7aaabed037fd73e543e98fadb6bb573e8ea8f16e14bc29adaa04ae22d5cf8429",
-        "line_end": 267,
-        "line_start": 267,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:7aaabed037fd73e543e98fadb6bb573e8ea8f16e14bc29adaa04ae22d5cf8429",
-            "line_end": 267,
-            "line_start": 267
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:09f0f34eb3238e4f9496224d47379e69ae04d156e6131c616184659335694c86",
-        "line_end": 282,
-        "line_start": 282,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:ade0807a90c107a566ee8fa5d0166999ae2fb5534b126485f3bbf24ef2bf1eb5",
-            "line_end": 284,
-            "line_start": 282
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:3a88517b1f432a044b227a9bc82fc8b8ca2c4a64e76a60888e9dfbac9db73477",
-        "line_end": 336,
-        "line_start": 336,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:799414a99ded387ac9ef51b26364c922ba4404f991b12f8b22d80786416cb96b",
-            "line_end": 337,
-            "line_start": 335
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:02af5ccc2d3f3cc5a4290b9e7e98a83b7d76433a62aa4ab4abe821a5d589d079",
-        "line_end": 397,
-        "line_start": 397,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:0c6e6020d203ee90138ee519a9aeac2fe1a37a6d2bff3bc611c2aecc751d4f0c",
-            "line_end": 398,
-            "line_start": 396
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:03f674c794c2a1b2f27a13d0ca8d21770e40608083d62242f18b1cdf66da41f2",
-        "line_end": 480,
-        "line_start": 480,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:fe68e9da78047e7127a367087945f6beff82196b8dfa7a647ec9f55afcc2f8fd",
-            "line_end": 481,
-            "line_start": 480
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:15d66e2550f3a68346518d3c2e467b9e1cc68138a24148f58bd0959c26f54b40",
-        "line_end": 494,
-        "line_start": 494,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:556d63313c3dd9a99f1ad87dd46b9470a5fc8b35457d37d5488d5f24c085068a",
-            "line_end": 495,
-            "line_start": 493
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:bf71269a3118aba93580e05e13eed2616cc3bbde58244040a883c093f66ee130",
-        "line_end": 556,
-        "line_start": 556,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:4114beb22dc418e2cbc699c6e4b4bb862411a0d30408b95d3dfbdb08bec5a7dc",
-            "line_end": 556,
-            "line_start": 555
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:20cc704f74a50404caeb982c0457dae9a5df7cef54116c3bc6e78c19e79e5260",
-        "line_end": 712,
-        "line_start": 712,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:1ba1a7616affbdc7f73542f2e8f699794fc66d6c968fc6c81fcc256c57245850",
-            "line_end": 714,
-            "line_start": 712
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:aac0f19ec74c24bd1b4f98b1b644d7d645dbfc8bb4e6275ae4250f7b6501c109",
-        "line_end": 764,
-        "line_start": 764,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:f54d8064ef4488db98c2910d63e69b50d027bbce9b8d7d95ec610f69a9cf404f",
-            "line_end": 765,
-            "line_start": 764
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:17b900707c2f7fd7e84342d181a73432600bf63df7cb5151050a4ffa1aebb58d",
-        "line_end": 914,
-        "line_start": 914,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:f06b104b9a372fe2bc49646254a3dcceb59694bdcd3fc8d517fe6e6acc1102ac",
-            "line_end": 915,
-            "line_start": 914
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:9a944cf74137e1d6da0d541ae4928d132618d5a28654bd25f67e8fd815b70767",
-        "line_end": 952,
-        "line_start": 952,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:bb6c02aed0f9b1e9cb91ab6b8b02fadc88bbfdd7ea1e6b7619d0efefcef0007b",
-            "line_end": 952,
-            "line_start": 951
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:eb97e01b491073ecdf34aadd6d449cdf4a8bcef3f6c7c70bfb2d213a02405a2f",
-        "line_end": 1386,
-        "line_start": 1386,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:38cff1583a0be9d06b732c8b2d3985052206517ec2b9a71c11a7e33a21ed94d4",
-            "line_end": 1388,
-            "line_start": 1385
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:3a99f7caa62c7bf9873f6b266fcdc2e2e137552044f3131fa92dbe38342232c1",
-        "line_end": 1416,
-        "line_start": 1416,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": "source-9b23918ce33c38",
-            "source_ids": [
-              "source-9b23918ce33c38"
-            ],
-            "token": "short"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review_status": "awaiting_review",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:b4f5abfa7b827ac038c3ea8305c548d05add7f4d52cb7a1e946f3898498ac522",
-        "line_end": 1457,
-        "line_start": 1457,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:e0d6ec954d3373abcca607cab701cf9b6a5aba8421f82dcb18da2d7f9f86ce32",
-            "line_end": 1458,
-            "line_start": 1456
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:bbb6e1739d967038e88031e69ca687312c046603fde0d98e342702d39843c2d9",
-        "line_end": 1472,
-        "line_start": 1472,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:9fc5a949fcd50925b9fb204f191190a25048786f901db2577b42de759f2c504d",
-            "line_end": 1473,
-            "line_start": 1471
-          },
-          "disposition": "not_bibliographic",
-          "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
-          "source_ids": []
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-      },
-      {
-        "classification": "lexical_candidate_not_attribution",
-        "excerpt_sha256": "sha256:58553132c56950502dbe82d3f600c433c517952bff1e3bf4968798b2869337b7",
-        "line_end": 1708,
-        "line_start": 1708,
-        "matches": [
-          {
-            "match_kind": "curated_author_surname",
-            "source_id": null,
-            "source_ids": [
-              "proposed-direct-7f278004ad452a",
-              "proposed-direct-f7f90747134dba",
-              "source-10545f868b3e88",
-              "source-20c650f8cf3744",
-              "source-22aba734190d65",
-              "source-27575f46a101c1",
-              "source-2ee394177d0f38",
-              "source-3fb9e4907eec24",
-              "source-43a734be32736f",
-              "source-5c72388a6ca10f",
-              "source-61ce6ad8b2f0ff",
-              "source-62ee65065db497",
-              "source-7dc956ce55b7a0",
-              "source-b378189f39ed98",
-              "source-e33bdf934f939f"
-            ],
-            "token": "erdős"
-          }
-        ],
-        "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-        "review": {
-          "context": {
-            "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7",
-            "line_end": 1708,
-            "line_start": 1698
-          },
-          "disposition": "reviewed_citation_or_comparison",
-          "reason": "The complete enclosing comment was read and matched to the bounded source-link relation.",
-          "source_ids": [
-            "source-4f5fd0d7405e29"
-          ]
-        },
-        "review_status": "reviewed",
-        "source_sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+        "source_sha256": "sha256:6c91bdef6b22856b59952eed00003fb2617d3cc6dff9a14eac475c9b05db0c62"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -36855,7 +36361,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:69c82d69701691113567ee532bb086f212e71ae484cb10acff9a4f507db7d59d"
+        "source_sha256": "sha256:ecf0e297c7086f86b9b16c2e4c2299a00015f307f425324898977dc31b6def9e"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -36882,7 +36388,7 @@
         ],
         "path": "lean/ErdosProblems/Erdos68/PaperCompleteSupplementary.lean",
         "review_status": "awaiting_review",
-        "source_sha256": "sha256:69c82d69701691113567ee532bb086f212e71ae484cb10acff9a4f507db7d59d"
+        "source_sha256": "sha256:ecf0e297c7086f86b9b16c2e4c2299a00015f307f425324898977dc31b6def9e"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -42508,8 +42014,8 @@
       {
         "classification": "lexical_candidate_not_attribution",
         "excerpt_sha256": "sha256:3cec22445b6cefde7d6de3f3b3057f9b335c3a522b29a7f3e3fc39f1adfd4845",
-        "line_end": 75,
-        "line_start": 75,
+        "line_end": 81,
+        "line_start": 81,
         "matches": [
           {
             "match_kind": "curated_author_surname",
@@ -42538,15 +42044,15 @@
         "review": {
           "context": {
             "excerpt_sha256": "sha256:0555efe6703f99c9b92740d3be0898d83409c8f0ad464946794193731bb38e55",
-            "line_end": 80,
-            "line_start": 74
+            "line_end": 86,
+            "line_start": 80
           },
           "disposition": "not_bibliographic",
           "reason": "Complete comment reviewed: “Erdős” occurs only in a problem number, namespace, statement-family label, or mathematical eponym, with no publication attribution.",
           "source_ids": []
         },
         "review_status": "reviewed",
-        "source_sha256": "sha256:6e42011084950d746ebf7f6e28f2443b79eee19f595e4233910e2778a4be61b5"
+        "source_sha256": "sha256:3ad4dd14d166c04debea758b866af070ebb69852907ee1fee9cb7651291964da"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -45378,9 +44884,9 @@
         "source_sha256": "sha256:3e67dbcd782aaf87f105fcf22321757be9fcf2d634c47a3b5428aca364887ba6"
       }
     ],
-    "library_file_denominator": 1415,
-    "named_or_key_candidate_count": 1177,
-    "reviewed_count": 893,
+    "library_file_denominator": 1446,
+    "named_or_key_candidate_count": 1167,
+    "reviewed_count": 878,
     "unresolved_count": 0
   },
   "paper_inventory": {
@@ -45397,7 +44903,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-b6603e42453ff3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{erdosgraham} P.~Erd\\H{o}s and R.~L.~Graham, \\emph{Old and New Problems and Results in Combinatorial Number Theory}, Monographies de L'Enseignement Math\\'ematique 28, 1980, p.~61.",
@@ -45419,7 +44925,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{leanblueprint} P.~Massot, \\emph{leanblueprint}, plasTeX plugin for Lean formalisation blueprints, 2020, \\href{https://github.com/PatrickMassot/leanblueprint}{software repository}.",
@@ -45441,7 +44947,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{leanarchitect} T.~Zhu, P.~Monticone, S.~Welleck, and J.~Avigad, \\emph{LeanArchitect: Automating Blueprint Generation for Humans and AI}, in \\emph{17th International Conference on Interactive Theorem Proving}, LIPIcs 382, 2026, pp.~25:1--25:16.",
@@ -45463,7 +44969,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{leanatlas} B.~Yanahama and A.~Sannai, \\emph{Lean Atlas: An Integrated Proof Environment for Scalable Human--AI Collaborative Formalization}, 2026, \\href{https://doi.org/10.48550/arXiv.2604.16347}{arXiv}.",
@@ -45485,7 +44991,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{econcs} N.~Garg, \\emph{EconCSLib: AI-Assisted Lean Formalization for Economics \\& Computation Research}, 2026, \\href{https://doi.org/10.48550/arXiv.2606.13306}{arXiv}.",
@@ -45507,7 +45013,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-b300504b513ffb",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{prove2me} S.~Chen, K.~Marwaha, X.~Lu, H.~Yuen, and T.~Peng, \\emph{Prove2Me: An Open Collaborative Platform for Scaling Math Formalization}, 2026, \\href{https://doi.org/10.48550/arXiv.2608.28433}{arXiv}.",
@@ -45536,7 +45042,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{aletheia} T.~Feng, T.~Trinh, G.~Bingham, et al., \\emph{Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on the Erd\\H{o}s Problems}, 2026, \\href{https://doi.org/10.48550/arXiv.2601.22401}{arXiv}.",
@@ -45572,7 +45078,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{autonomousmath} T.~Feng, T.~H.~Trinh, G.~Bingham, et al., \\emph{Towards Autonomous Mathematics Research}, 2026, \\href{https://doi.org/10.48550/arXiv.2602.10177}{arXiv}.",
@@ -45608,7 +45114,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{henkel} J.~Henkel, \\emph{The Mathematician's Assistant: Integrating AI into Research Practice}, 2025, \\href{https://doi.org/10.48550/arXiv.2508.20236}{arXiv}.",
@@ -45637,7 +45143,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-0d338bb41b8987",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{openproofcorpus} J.~Dekoninck et al., \\emph{The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs}, 2025, \\href{https://doi.org/10.48550/arXiv.2506.21621}{arXiv}.",
@@ -45659,7 +45165,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-a38774d9a4f1f9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{lihai} C.~Li, Z.~Lai, D.~An, J.~Hu, and Z.~Wen, \\emph{Advancing Mathematical Research via Human-AI Interactive Theorem Proving}, 2025, \\href{https://doi.org/10.48550/arXiv.2512.09443}{arXiv}.",
@@ -45681,7 +45187,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-6ade6fbcd34d79",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{taowiki} T.~Tao, \\emph{AI contributions to Erd\\H{o}s problems}, \\href{https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems}{GitHub}, accessed September 2026.",
@@ -45703,7 +45209,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-e99ce64694b554",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{isadof} A.~D.~Brucker and B.~Wolff, \\emph{Isabelle/DOF: Design and Implementation}, in \\emph{Software Engineering and Formal Methods}, 2019, pp.~275--293.",
@@ -45725,7 +45231,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-51efe25c48a86d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{gotel} O.~C.~Z.~Gotel and A.~C.~W.~Finkelstein, \\emph{An analysis of the requirements traceability problem}, Proc. First IEEE International Conference on Requirements Engineering, 1994, pp.~94--101.",
@@ -45747,7 +45253,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-e1665a6398558f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{demillo} R.~A.~DeMillo, R.~J.~Lipton, and F.~G.~Sayward, \\emph{Hints on test data selection}, IEEE Computer 11(4), 1978, pp.~34--41.",
@@ -45769,7 +45275,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-c309c1132b63e3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{jiaharman} Y.~Jia and M.~Harman, \\emph{An analysis and survey of the development of mutation testing}, IEEE Transactions on Software Engineering 37(5), 2011, pp.~649--678.",
@@ -45791,7 +45297,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-3a21eca35f05cf",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{gsn} SCSC Assurance Case Working Group, \\emph{Goal Structuring Notation Community Standard, Version 3}, SCSC-141C, May 2021.",
@@ -45813,7 +45319,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-6dbbb774ff928e",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{taoai} T.~Tao, \\emph{Mathematics in the age of AI}, preprint, 2026, \\href{https://doi.org/10.48550/arXiv.2608.16753}{arXiv}.",
@@ -45835,7 +45341,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{mathlib} Lean community, \\emph{Contributing to mathlib}, \\href{https://leanprover-community.github.io/contribute/index.html}% {contributor guide}, accessed August 2026.",
@@ -45857,7 +45363,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{leandojo} K.~Yang et al., \\emph{LeanDojo: Theorem Proving with Retrieval-Augmented Language Models}, NeurIPS 2023.",
@@ -45879,7 +45385,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{pantograph} L.~Aniva, C.~Sun, B.~Miranda, C.~Barrett, and S.~Koyejo, \\emph{Pantograph: A Machine-to-Machine Interaction Interface for Advanced Theorem Proving, High Level Reasoning, and Data Extraction in Lean 4}, 2024, \\href{https://doi.org/10.48550/arXiv.2410.16429}{arXiv}.",
@@ -45901,7 +45407,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-9a04cbea11fd0b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{openprover} M.~Kripner and M.~Straka, \\emph{OpenProver: Agentic and Interactive Theorem Proving with Lean 4}, 2026, \\href{https://doi.org/10.48550/arXiv.2607.09217}{arXiv}.",
@@ -45923,7 +45429,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-d31e3bc51f2784",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{agenthunt} C.~E.~Brown, C.~Kaliszyk, and J.~Urban, \\emph{Agent Hunt: Bounty Based Collaborative Autoformalization With LLM Agents}, 2026, \\href{https://doi.org/10.48550/arXiv.2603.06737}{arXiv}.",
@@ -45945,7 +45451,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-ae5cc4ddfa6af5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{dreamprover} Y.~Zhang et al., \\emph{DreamProver: Evolving Transferable Lemma Libraries via a Wake--Sleep Theorem-Proving Agent}, 2026, \\href{https://doi.org/10.48550/arXiv.2604.26311}{arXiv}.",
@@ -45967,7 +45473,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-7d871bf2920e53",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{hep} I.~Takahara and T.~Mizoguchi, \\emph{Toward Auditable AI Scientists: A Hypothesis Evolution Protocol for LLM Agents}, 2026, \\href{https://doi.org/10.48550/arXiv.2607.09195}{arXiv}.",
@@ -45989,7 +45495,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-4c664304e00cd3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{symposium} D.~Pratt, \\emph{Symposium: Trust via Auditable Records for Communities of AI Scientist Agents}, 2026, \\href{https://doi.org/10.48550/arXiv.2608.19511}{arXiv}.",
@@ -46011,7 +45517,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-f9a9d10dc9c525",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{eurekagent} A.~Xin et al., \\emph{EurekAgent: Agent Environment Engineering is All You Need for Autonomous Scientific Discovery}, 2026, \\href{https://doi.org/10.48550/arXiv.2606.13662}{arXiv}.",
@@ -46033,7 +45539,7 @@
         "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
         "source_id": "source-cc823e517ced81",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_text": "\\bibitem{leanblueprint} P.~Massot, \\emph{leanblueprint}, plasTeX plugin for Lean formalisation blueprints, 2020, \\href{https://github.com/PatrickMassot/leanblueprint}{software repository}, accessed 28 July 2026.",
@@ -46055,7 +45561,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{leanarchitect} T.~Zhu, P.~Monticone, S.~Welleck, and J.~Avigad, \\emph{LeanArchitect: Automating Blueprint Generation for Humans and AI}, in \\emph{17th International Conference on Interactive Theorem Proving}, LIPIcs 382, 2026, pp.~25:1--25:16, \\href{https://doi.org/10.4230/LIPIcs.ITP.2026.25}{DOI}.",
@@ -46077,7 +45583,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{carleson} L.~Becker et al., \\emph{A Blueprint for the Formalization of Carleson's Theorem on Convergence of Fourier Series}, 2025, \\href{https://doi.org/10.48550/arXiv.2405.06423}{arXiv:2405.06423}.",
@@ -46099,7 +45605,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-984f2b78d220ea",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{leandojo} K.~Yang, A.~M.~Swope, A.~Gu, R.~Chalamala, P.~Song, S.~Yu, S.~Godil, R.~Prenger, and A.~Anandkumar, \\emph{LeanDojo: Theorem Proving with Retrieval-Augmented Language Models}, in \\emph{Advances in Neural Information Processing Systems 36}, 2023, \\href{https://doi.org/10.48550/arXiv.2306.15626}{arXiv:2306.15626}.",
@@ -46128,7 +45634,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{pantograph} L.~Aniva, C.~Sun, B.~Miranda, C.~Barrett, and S.~Koyejo, \\emph{Pantograph: A Machine-to-Machine Interaction Interface for Advanced Theorem Proving, High Level Reasoning, and Data Extraction in Lean 4}, in \\emph{Tools and Algorithms for the Construction and Analysis of Systems}, 2025, pp.~116--137, \\href{https://doi.org/10.1007/978-3-031-90643-5_6}{DOI}.",
@@ -46157,7 +45663,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-9a04cbea11fd0b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{theoremgraph} S.~Kurgan et al., \\emph{TheoremGraph: Bridging Formal and Informal Mathematics}, 2026, \\href{https://doi.org/10.48550/arXiv.2606.25363}{arXiv:2606.25363}.",
@@ -46179,7 +45685,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-45ae653f011748",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{mathlibnetwork} X.~Li, N.~Peng, S.~Severini, and P.~Shafto, \\emph{The Network Structure of Mathlib}, 2026, \\href{https://doi.org/10.48550/arXiv.2604.24797}{arXiv:2604.24797}.",
@@ -46201,7 +45707,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-81b67bfd835ac9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{leanexplore} J.~Asher, \\emph{LeanExplore: A Search Engine for Lean 4 Declarations}, 2025, \\href{https://doi.org/10.48550/arXiv.2506.11085}{arXiv:2506.11085}.",
@@ -46223,7 +45729,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-608828559136f9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{leansearchv2} G.~Gao et al., \\emph{LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving}, 2026, \\href{https://doi.org/10.48550/arXiv.2605.13137}{arXiv:2605.13137}.",
@@ -46245,7 +45751,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-82459d858b7d75",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{growingmathlib} A.~Baanen, M.~R.~Ballard, J.~Commelin, B.~Gin-ge Chen, M.~Rothgang, and D.~Testa, \\emph{Growing Mathlib: Maintenance of a Large Scale Mathematical Library}, in \\emph{Intelligent Computer Mathematics}, 2025, \\href{https://doi.org/10.48550/arXiv.2508.21593}{arXiv:2508.21593}.",
@@ -46267,7 +45773,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-07d2ca69e611b7",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{leanatlas} B.~Yanahama and A.~Sannai, \\emph{Lean Atlas: An Integrated Proof Environment for Scalable Human--AI Collaborative Formalization}, 2026, \\href{https://doi.org/10.48550/arXiv.2604.16347}{arXiv:2604.16347}.",
@@ -46289,7 +45795,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{workflowprovenance} R.~Souza, T.~Poteet, B.~Etz, D.~Rosendo, A.~Gueroudji, W.~Shin, P.~Balaprakash, and R.~Ferreira da Silva, \\emph{LLM Agents for Interactive Workflow Provenance: Reference Architecture and Evaluation Methodology}, WORKS at the ACM/IEEE International Conference for High Performance Computing, Networking, Storage and Analysis, 2025, \\href{https://doi.org/10.1145/3731599.3767582}{DOI}.",
@@ -46311,7 +45817,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "arxiv_2509_13978",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{repokg} S.~Abedu, S.~Khatoonabadi, and E.~Shihab, \\emph{Synergizing LLMs and Knowledge Graphs: A Novel Approach to Software Repository-Related Question Answering}, 2024, revised 2025, \\href{https://arxiv.org/abs/2412.03815}{arXiv:2412.03815}.",
@@ -46333,7 +45839,7 @@
         "path": "paper/systems/cold-clone-to-proof-receipt.tex",
         "source_id": "arxiv_2412_03815",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_text": "\\bibitem{bloom} T.~F. Bloom, \\emph{Erd\\H{o}s Problems}, problem~1041. \\url{https://www.erdosproblems.com/1041}",
@@ -79977,7 +79483,7 @@
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -79991,7 +79497,7 @@
         "qualifiers": [],
         "source_id": "source-c29036ef9c4da8",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80005,7 +79511,7 @@
         "qualifiers": [],
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80019,7 +79525,7 @@
         "qualifiers": [],
         "source_id": "source-75e79d15dfab15",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80033,7 +79539,7 @@
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80047,7 +79553,7 @@
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80061,7 +79567,7 @@
         "qualifiers": [],
         "source_id": "source-0d338bb41b8987",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80075,7 +79581,7 @@
         "qualifiers": [],
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80089,7 +79595,7 @@
         "qualifiers": [],
         "source_id": "source-6dbbb774ff928e",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80103,7 +79609,7 @@
         "qualifiers": [],
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80117,7 +79623,7 @@
         "qualifiers": [],
         "source_id": "source-9a04cbea11fd0b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80131,7 +79637,7 @@
         "qualifiers": [],
         "source_id": "source-d31e3bc51f2784",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80145,7 +79651,7 @@
         "qualifiers": [],
         "source_id": "source-ae5cc4ddfa6af5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80159,7 +79665,7 @@
         "qualifiers": [],
         "source_id": "source-7d871bf2920e53",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80173,7 +79679,7 @@
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80187,7 +79693,7 @@
         "qualifiers": [],
         "source_id": "source-0d338bb41b8987",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80201,7 +79707,7 @@
         "qualifiers": [],
         "source_id": "source-a38774d9a4f1f9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80215,7 +79721,7 @@
         "qualifiers": [],
         "source_id": "source-36f533b76bc247",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80229,7 +79735,7 @@
         "qualifiers": [],
         "source_id": "source-79afab8abaf9d5",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80243,7 +79749,7 @@
         "qualifiers": [],
         "source_id": "source-a028dc6bb31c0c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80257,7 +79763,7 @@
         "qualifiers": [],
         "source_id": "source-6ade6fbcd34d79",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80271,7 +79777,7 @@
         "qualifiers": [],
         "source_id": "source-e99ce64694b554",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80285,7 +79791,7 @@
         "qualifiers": [],
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80299,7 +79805,7 @@
         "qualifiers": [],
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80313,7 +79819,7 @@
         "qualifiers": [],
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80327,7 +79833,7 @@
         "qualifiers": [],
         "source_id": "source-b300504b513ffb",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80341,7 +79847,7 @@
         "qualifiers": [],
         "source_id": "source-51efe25c48a86d",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80355,7 +79861,7 @@
         "qualifiers": [],
         "source_id": "source-e1665a6398558f",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80369,7 +79875,7 @@
         "qualifiers": [],
         "source_id": "source-4c664304e00cd3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80383,7 +79889,7 @@
         "qualifiers": [],
         "source_id": "source-f9a9d10dc9c525",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80397,7 +79903,7 @@
         "qualifiers": [],
         "source_id": "source-cc823e517ced81",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80411,7 +79917,7 @@
         "qualifiers": [],
         "source_id": "source-c309c1132b63e3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80425,7 +79931,7 @@
         "qualifiers": [],
         "source_id": "source-3a21eca35f05cf",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+        "source_sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
       },
       {
         "citation_context": "in_text_citation",
@@ -80439,7 +79945,7 @@
         "qualifiers": [],
         "source_id": "arxiv_2509_13978",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80453,7 +79959,7 @@
         "qualifiers": [],
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80467,7 +79973,7 @@
         "qualifiers": [],
         "source_id": "source-9a04cbea11fd0b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80481,7 +79987,7 @@
         "qualifiers": [],
         "source_id": "source-944a1a754b1f3a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80495,7 +80001,7 @@
         "qualifiers": [],
         "source_id": "source-80c9ae60b7f7be",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80509,7 +80015,7 @@
         "qualifiers": [],
         "source_id": "source-984f2b78d220ea",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80523,7 +80029,7 @@
         "qualifiers": [],
         "source_id": "source-e2bdd690015cad",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80537,7 +80043,7 @@
         "qualifiers": [],
         "source_id": "source-9a04cbea11fd0b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80551,7 +80057,7 @@
         "qualifiers": [],
         "source_id": "source-81b67bfd835ac9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80565,7 +80071,7 @@
         "qualifiers": [],
         "source_id": "source-45ae653f011748",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80579,7 +80085,7 @@
         "qualifiers": [],
         "source_id": "source-608828559136f9",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80593,7 +80099,7 @@
         "qualifiers": [],
         "source_id": "source-82459d858b7d75",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80607,7 +80113,7 @@
         "qualifiers": [],
         "source_id": "arxiv_2412_03815",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80621,7 +80127,7 @@
         "qualifiers": [],
         "source_id": "source-07d2ca69e611b7",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -80635,7 +80141,7 @@
         "qualifiers": [],
         "source_id": "source-ae32306341559a",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+        "source_sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
       },
       {
         "citation_context": "in_text_citation",
@@ -101628,7 +101134,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:642f1f3f3947cb6cf1fcbc0b0c040ba512e5bbd5de965f3488ce162c183fae97",
+  "source_registry_sha256": "sha256:5ea61719997ac53c2e5232c89f241ce3cddb4131e18aa0ef30246b5d2877639d",
   "sources": [
     {
       "artifact_coordinates": [],
@@ -102054,7 +101560,7 @@
           "line_end": 60,
           "line_start": 1,
           "path": "formalization.yaml",
-          "sha256": "sha256:acb3b742a8fbe40f6c9a126153f2c36261a772e33b2fba051c93515cb10dfb4d"
+          "sha256": "sha256:d6eb18156e59c75ac7840b02ced083cf1e7c80d05046258943383a69f1b46905"
         },
         {
           "excerpt_sha256": "sha256:59da13809c33a93943095066b40909da907617aa28592c6201635ba1b55d5e81",
@@ -102174,7 +101680,7 @@
           "line_end": 216,
           "line_start": 159,
           "path": "formalization.yaml",
-          "sha256": "sha256:acb3b742a8fbe40f6c9a126153f2c36261a772e33b2fba051c93515cb10dfb4d"
+          "sha256": "sha256:d6eb18156e59c75ac7840b02ced083cf1e7c80d05046258943383a69f1b46905"
         },
         {
           "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
@@ -106075,7 +105581,7 @@
           "line_end": 679,
           "line_start": 674,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -106363,7 +105869,7 @@
           "line_end": 1579,
           "line_start": 1576,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:6ab1870a7b04b9f3cc30d59640dcc05a0b6fcd49f9ea44245ecb129aba0f4c4e",
@@ -107325,7 +106831,7 @@
           "line_end": 1554,
           "line_start": 1551,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:8d04873393ce01957978e7bf822e3411f2a23947e1a44f04f81a2db2f17c6332",
@@ -113560,7 +113066,7 @@
           "line_end": 1570,
           "line_start": 1567,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:c89d595871311eec76167add03b720a82202963564fd46493036b4e96b08de98",
@@ -113793,7 +113299,7 @@
           "line_end": 1599,
           "line_start": 1596,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -114830,7 +114336,7 @@
           "line_end": 665,
           "line_start": 662,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -115209,7 +114715,7 @@
           "line_end": 1624,
           "line_start": 1621,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -115393,14 +114899,6 @@
           "line_start": 1034,
           "path": "paper/reasoning-parts/erdos257/a257_front.tex",
           "sha256": "sha256:85f09c78fa3b95d8a877afc1a1985ee4498fe9a4d68b58f21bf64250ccb50c07"
-        },
-        {
-          "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7",
-          "expected_text": "/-- Exact next-interval overlap for the factorial-gap specialization of",
-          "line_end": 1708,
-          "line_start": 1698,
-          "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-          "sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
         },
         {
           "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7",
@@ -115624,13 +115122,6 @@
           "line_end": 1034,
           "line_start": 1034,
           "path": "paper/reasoning-parts/erdos257/a257_front.tex"
-        },
-        {
-          "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7",
-          "expected_text": "/-- Exact next-interval overlap for the factorial-gap specialization of",
-          "line_end": 1708,
-          "line_start": 1698,
-          "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
         },
         {
           "excerpt_sha256": "sha256:c989aa24e7d0cd4a81a2207dea6e4647a9e1d349d2fb8a86a8fcd45cc9386fd7",
@@ -116362,7 +115853,7 @@
           "line_end": 1591,
           "line_start": 1588,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -118604,7 +118095,7 @@
           "line_end": 671,
           "line_start": 668,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -121158,7 +120649,7 @@
           "line_end": 1585,
           "line_start": 1582,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -121663,7 +121154,7 @@
           "line_end": 1601,
           "line_start": 1599,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -122622,7 +122113,7 @@
           "line_end": 1603,
           "line_start": 1601,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a",
@@ -123436,7 +122927,7 @@
           "line_end": 1573,
           "line_start": 1570,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:35c50b80ea4e9bece2ad431b8db8fe260367c76ed945564205813263b357e81f",
@@ -123879,7 +123370,7 @@
           "line_end": 1621,
           "line_start": 1618,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -124901,7 +124392,7 @@
           "line_end": 1561,
           "line_start": 1557,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:1f3f3c8f59b09e017af2d71374c7c46368d97929557de076c9b6d0b5f80c83bf",
@@ -124909,7 +124400,7 @@
           "line_end": 648,
           "line_start": 643,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -125185,7 +124676,7 @@
           "line_end": 668,
           "line_start": 665,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -125234,7 +124725,7 @@
           "line_end": 674,
           "line_start": 671,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -127131,7 +126622,7 @@
           "line_end": 1557,
           "line_start": 1554,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:bb8a82a2eaf9299171683c436633a3cdfe8688aba06e1bc995a951bd364c907e",
@@ -127139,7 +126630,7 @@
           "line_end": 643,
           "line_start": 639,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -128056,7 +127547,7 @@
           "line_end": 651,
           "line_start": 648,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         },
         {
           "excerpt_sha256": "sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e",
@@ -128367,7 +127858,7 @@
           "line_end": 662,
           "line_start": 656,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         },
         {
           "excerpt_sha256": "sha256:7052c9564e3a50f71416b68353c32c939efbb5b719a371014e847871a2e0b349",
@@ -128375,7 +127866,7 @@
           "line_end": 1612,
           "line_start": 1608,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -129071,7 +128562,7 @@
           "line_end": 1576,
           "line_start": 1573,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:17dfc81b2347996ae518d9ae35b9f4cbbe428802c4df971c821bb500a90d87de",
@@ -129257,7 +128748,7 @@
           "line_end": 1582,
           "line_start": 1579,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:d7199ff140a739a7be732b44e20113885c623918791626d0f99bd6c7e2a83cc2",
@@ -129933,7 +129424,7 @@
           "line_end": 1564,
           "line_start": 1561,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:3a090cc943cde6fe32e768b3fec5c8f9941b86fe85cffb0b1e502eff8703ea31",
@@ -129941,7 +129432,7 @@
           "line_end": 683,
           "line_start": 679,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         },
         {
           "excerpt_sha256": "sha256:cbc96d2ca058731561fda44e70b5d2f239fbaf14f1de0bb2732381fdead4b7fe",
@@ -130019,7 +129510,7 @@
           "line_end": 1618,
           "line_start": 1615,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68",
@@ -131362,7 +130853,7 @@
           "line_end": 1567,
           "line_start": 1564,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -132749,7 +132240,7 @@
           "line_end": 1551,
           "line_start": 1547,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0",
@@ -133633,7 +133124,7 @@
           "line_end": 1606,
           "line_start": 1603,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432",
@@ -133698,7 +133189,7 @@
           "line_end": 1596,
           "line_start": 1594,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -134728,7 +134219,7 @@
           "line_end": 1630,
           "line_start": 1627,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -135608,7 +135099,7 @@
           "line_end": 1615,
           "line_start": 1612,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -136597,7 +136088,7 @@
           "line_end": 1594,
           "line_start": 1591,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [
@@ -136642,7 +136133,7 @@
           "line_end": 1608,
           "line_start": 1606,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:e1fb69819625ee4c623683e8876546bfaeba103a154bb24b05f891cf455291a5",
@@ -136650,7 +136141,7 @@
           "line_end": 656,
           "line_start": 651,
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
-          "sha256": "sha256:0f3b71f36662d43c627435a43358e1713ab55ac0a647aa151fecf2d1427be681"
+          "sha256": "sha256:27e013a732e0a56b6da8ae345f9e5306beb94c54c72f43d618dbf4327ddd08b4"
         }
       ],
       "artifact_links": [
@@ -136780,14 +136271,6 @@
         {
           "excerpt_sha256": "sha256:1139eed2569eedcc245358cbde7bff884c8a36c06c78b0a38246a82257dae3ec",
           "expected_text": "/-- The carry-defect coefficients satisfy the exact asymptotic hypothesis",
-          "line_end": 1127,
-          "line_start": 1125,
-          "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-          "sha256": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
-        },
-        {
-          "excerpt_sha256": "sha256:1139eed2569eedcc245358cbde7bff884c8a36c06c78b0a38246a82257dae3ec",
-          "expected_text": "/-- The carry-defect coefficients satisfy the exact asymptotic hypothesis",
           "line_end": 32,
           "line_start": 30,
           "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
@@ -136853,13 +136336,6 @@
           "line_end": 617,
           "line_start": 617,
           "path": "paper/reasoning-parts/erdos251/core.tex"
-        },
-        {
-          "excerpt_sha256": "sha256:1139eed2569eedcc245358cbde7bff884c8a36c06c78b0a38246a82257dae3ec",
-          "expected_text": "/-- The carry-defect coefficients satisfy the exact asymptotic hypothesis",
-          "line_end": 1127,
-          "line_start": 1125,
-          "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
         },
         {
           "excerpt_sha256": "sha256:1139eed2569eedcc245358cbde7bff884c8a36c06c78b0a38246a82257dae3ec",
@@ -138010,7 +137486,7 @@
           "line_end": 1588,
           "line_start": 1585,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         },
         {
           "excerpt_sha256": "sha256:4fa78969a75193c23aeb06cdd0323df94e0a5887673d1bf5c44d740748d12774",
@@ -140085,7 +139561,7 @@
           "line_end": 1627,
           "line_start": 1624,
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "sha256": "sha256:0969e4e1ca3c8f90b7e3ec84555672cac0dcace44e4f8af2e7a6ce173ea57ea4"
+          "sha256": "sha256:1323a4685edec51740301cb49ec3ced63b0d79f0f95f12365766ea93e14347ba"
         }
       ],
       "artifact_links": [

@@ -790,6 +790,44 @@ def _ls_tree_identity_blobs(formal_ref: str) -> dict[str, str] | None:
     return blobs
 
 
+def formal_source_publication_errors(formal_source: dict) -> list[str]:
+    """Validate publication identity independently of source/proof validation.
+
+    A local candidate has a committed source ref but no public tag. Published
+    checkpoints retain the stronger annotated, immutable tag contract.
+    """
+    errors: list[str] = []
+    if formal_source.get("ref_kind") != "commit":
+        errors.append("release.formal_source.ref_kind must be 'commit'")
+    if formal_source.get("relationship_to_last_tag") not in {
+        "at_last_tag", "post_tag_checkpoint",
+    }:
+        errors.append("release.formal_source has an unsupported relationship_to_last_tag")
+    state = formal_source.get("publication_state")
+    public_tag = formal_source.get("public_tag")
+    if state == "committed_checkpoint_pending_remote_publication":
+        if public_tag is not None:
+            errors.append("pending formal-source publication must have public_tag: null")
+        return errors
+    if state != "published_committed_checkpoint":
+        errors.append("release.formal_source has an unsupported publication_state")
+        return errors
+    if not isinstance(public_tag, str) or re.fullmatch(
+        r"formal-source-\d{4}-\d{2}-\d{2}(?:-r[1-9]\d*)?", public_tag,
+    ) is None:
+        errors.append("published formal source requires a dated formal-source tag, "
+                      "optionally with a positive correction revision")
+        return errors
+    options = dict(cwd=ROOT, capture_output=True, text=True, check=False)
+    tag_kind = run(["git", "cat-file", "-t", public_tag], **options)
+    if tag_kind.returncode != 0 or tag_kind.stdout.strip() != "tag":
+        errors.append("release.formal_source.public_tag must resolve to an annotated tag")
+    resolved_tag = run(["git", "rev-parse", f"{public_tag}^{{}}"], **options)
+    if resolved_tag.returncode != 0 or resolved_tag.stdout.strip() != formal_source.get("ref"):
+        errors.append("release.formal_source.public_tag does not peel to formal_source.ref")
+    return errors
+
+
 def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]:
     """Whether the current public proof sources are exactly ``formal_ref``.
 
@@ -1441,55 +1479,8 @@ def main(argv: list[str] | None = None) -> int:
     version, tag = release["version"], release["tag"]
     check(tag == f"v{version}", f"release tag {tag} does not match version {version}")
     if isinstance(formal_source, dict):
-        check(formal_source.get("ref_kind") == "commit",
-              "release.formal_source.ref_kind must be 'commit'")
-        check(formal_source.get("publication_state") in {
-            "committed_checkpoint_pending_remote_publication",
-            "published_committed_checkpoint",
-        }, "release.formal_source has an unsupported publication_state")
-        check(formal_source.get("relationship_to_last_tag") in {
-            "at_last_tag", "post_tag_checkpoint",
-        }, "release.formal_source has an unsupported relationship_to_last_tag")
-        public_tag = formal_source.get("public_tag")
-        check(
-            isinstance(public_tag, str)
-            and re.fullmatch(
-                r"formal-source-\d{4}-\d{2}-\d{2}(?:-r[1-9]\d*)?",
-                public_tag,
-            )
-            is not None,
-            "release.formal_source.public_tag must be a dated formal-source "
-            "tag, optionally with a positive correction revision",
-        )
-        if isinstance(public_tag, str):
-            tag_kind = run(
-                ["git", "cat-file", "-t", public_tag],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            check(
-                tag_kind.returncode == 0 and tag_kind.stdout.strip() == "tag",
-                "release.formal_source.public_tag must resolve to an annotated tag",
-            )
-            resolved_tag = run(
-                ["git", "rev-parse", f"{public_tag}^{{}}"],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            check(
-                resolved_tag.returncode == 0
-                and resolved_tag.stdout.strip() == formal_ref,
-                "release.formal_source.public_tag does not peel to formal_source.ref",
-            )
-            check(
-                formal_source.get("publication_state")
-                == "published_committed_checkpoint",
-                "a public formal-source tag requires published_committed_checkpoint state",
-            )
+        for error in formal_source_publication_errors(formal_source):
+            check(False, error)
     public_projection = release.get("public_projection")
     check(isinstance(public_projection, dict),
           "release must name its public_projection provenance posture")
@@ -2345,6 +2336,14 @@ def main(argv: list[str] | None = None) -> int:
             "semantic_rebind_fixtures": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_semantic_review_rebind.py"),
+            ],
+            "formal_source_identity_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_release_source_identity.py"),
+            ],
+            "palomar_qualification_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_palomar_qualification.py"),
             ],
             "theory_lab_contract": [
                 sys.executable,

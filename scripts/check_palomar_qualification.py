@@ -18,6 +18,7 @@ import re
 import stat
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 from typing import Any
 
@@ -199,6 +200,29 @@ def committed_file_exists(root: Path, path: str) -> bool:
     return True
 
 
+def committed_lean_path(root: Path, identity: str) -> str:
+    """Resolve a module's storage from the committed Lake configuration.
+
+    A relocated library keeps its module identity. Never consult a worktree
+    file to supply a missing source or select the layout of committed HEAD.
+    """
+    from lean_source import library_identity_path
+
+    identity = library_identity_path(identity)
+    path = Path(identity)
+    if path.is_absolute() or ".." in path.parts or path.suffix != ".lean":
+        raise ValueError(f"invalid Lean source identity: {identity}")
+    namespace = path.parts[0].removesuffix(".lean")
+    config = tomllib.loads(committed_text(root, "lakefile.toml"))
+    libraries = [row for row in config.get("lean_lib", []) if row.get("name") == namespace]
+    if len(libraries) != 1:
+        raise ValueError(f"missing or ambiguous committed Lean library: {namespace}")
+    prefix = Path(libraries[0].get("srcDir", "."))
+    if prefix.is_absolute() or ".." in prefix.parts:
+        raise ValueError(f"invalid committed Lean source directory: {prefix}")
+    return (prefix / path).as_posix()
+
+
 def committed_head(root: Path) -> str:
     result = subprocess.run(
         ["git", "-C", str(root), "rev-parse", "HEAD"],
@@ -309,8 +333,8 @@ def repository_intake_evidence(root: Path) -> dict[str, Any]:
     entries = committed_tree_entries(root)
     by_path = {entry["path"]: entry for entry in entries}
     comparator = json.loads(committed_bytes(root, "verification/comparator.json"))
-    challenge_path = comparator["challenge_module"].replace(".", "/") + ".lean"
-    solution_path = comparator["solution_module"].replace(".", "/") + ".lean"
+    challenge_path = committed_lean_path(root, comparator["challenge_module"].replace(".", "/") + ".lean")
+    solution_path = committed_lean_path(root, comparator["solution_module"].replace(".", "/") + ".lean")
     challenge = committed_bytes(root, challenge_path)
     formalization = committed_bytes(root, "formalization.yaml")
     license_paths = sorted(entry["path"] for entry in entries if _license_name(entry["path"]))
@@ -1165,9 +1189,9 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
         root, "lake-manifest.json"
     ):
         errors.append("lakefile.toml and lake-manifest.json must both be present")
-    if not committed_file_exists(root, "ExternalVerification/Challenge.lean"):
+    if not committed_file_exists(root, committed_lean_path(root, "ExternalVerification/Challenge.lean")):
         errors.append("ExternalVerification/Challenge.lean is missing")
-    if not committed_file_exists(root, "ExternalVerification/Solution.lean"):
+    if not committed_file_exists(root, committed_lean_path(root, "ExternalVerification/Solution.lean")):
         errors.append("ExternalVerification/Solution.lean is missing")
     if not tool_version or tuple(map(int, tool_version.groups())) < (4, 28, 0):
         errors.append("lean-toolchain is below Palomar's v4.28.0 minimum")
@@ -1183,10 +1207,9 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
     if selected_name not in roster:
         errors.append("selected showcase candidate is absent from the committed Comparator roster")
     source_path = selected.get("source_file", "")
-    source_file = root / source_path
     short_name = selected_name.rsplit(".", 1)[-1]
     try:
-        source_text = committed_text(root, source_path)
+        source_text = committed_text(root, committed_lean_path(root, source_path))
     except (OSError, ValueError, subprocess.CalledProcessError):
         source_text = ""
     source_short_name = selected.get("source_declaration", "").rsplit(".", 1)[-1]

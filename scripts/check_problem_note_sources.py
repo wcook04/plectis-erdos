@@ -577,6 +577,11 @@ def required_note_declaration_failures(
             )
             continue
         key = (module_relative(module), declaration)
+        current_module = anchor.get("current_module", module)
+        if not isinstance(current_module, str) or not current_module:
+            failures.append(f"{row['problem_id']}: required note declaration has invalid current module")
+            continue
+        current_key = (module_relative(current_module), declaration)
         if key in seen:
             failures.append(
                 f"{row['problem_id']}: duplicate required note declaration "
@@ -584,15 +589,15 @@ def required_note_declaration_failures(
             )
             continue
         seen.add(key)
-        if key[0] not in allowed_modules:
+        if current_key[0] not in allowed_modules:
             failures.append(
                 f"{row['problem_id']}: required note declaration module "
-                f"{key[0]} is outside the indexed problem modules"
+                f"{current_key[0]} is outside the indexed problem modules"
             )
-        elif key not in current:
+        elif current_key not in current:
             failures.append(
                 f"{row['problem_id']}: required note declaration "
-                f"{key[0]}::{key[1]} is absent from current source"
+                f"{current_key[0]}::{key[1]} is absent from current source"
             )
         elif key not in linked:
             failures.append(

@@ -741,7 +741,10 @@ def main() -> int:
 
     for token, label in (
         ("## Eight-problem cold-start card", "agent direct fleet card"),
-        (r"\sum_{n\ge1}p_n/2^n", "agent #251 mathematical statement"),
+        (next(row["question"] for row in json.loads(
+            diagnostic.read("docs/problem_index_source.json")
+        )["problems"] if row["problem_id"] == "erdos_251"),
+         "agent #251 mathematical statement"),
         ("`ai_workflow`", "agent standalone boundary"),
     ):
         try:

@@ -2704,14 +2704,8 @@ def main() -> int:
     assert descriptor["identity"]["formal_source"]["public_tag"] == (
         formal_source["public_tag"]
     )
-    resolved_public_tag = subprocess.run(
-        ["git", "rev-parse", f"{formal_source['public_tag']}^{{}}"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=True,
-    ).stdout.strip()
-    assert resolved_public_tag == formal_source["ref"]
+    from check_release import formal_source_publication_errors
+    assert not formal_source_publication_errors(formal_source)
 
     claim = query("--claim", "denominator_exclusion")
     assert claim["claim"]["status"] == "formalised here"

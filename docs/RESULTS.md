@@ -15,7 +15,9 @@ obstructions related to eight Erdős problem programmes —
 [#1049](https://www.erdosproblems.com/1049).
 Each problem has a short paper and a longer reasoning record; the retired
 combined #249/#257 manuscript is archive/provenance only, not a current
-gateway. Nothing here solves any of the eight.
+gateway. The degree-seven example refutes the total-variation formulation of
+#1041; its correspondence with the historical curve-length problem has no
+recorded independent human review. The other seven targets remain open.
 
 Lean source checked by the pinned Lean kernel is proof authority. The audit log
 reports the headline declarations below with kernel assumptions
@@ -75,7 +77,8 @@ length less than `(5/2)μ^{1/n}` in `{|f|<(25/13)μ}`, separated-critical-value
 connectors, bounded-radius concyclic, and generic-topology theorems; its sharp
 critical-value mean is Lean-checked, as are supporting Newton-flow inputs. Problem 1049 has an ordinary irrationality
 region for rational bases, together with a Lean-checked rational-base tail
-recurrence, height region, and route exclusions. None closes its Erdős problem.
+recurrence, height region, and route exclusions. These results leave their corresponding universal targets open; the
+#1041 total-variation counterexample is discussed separately below.
 
 ### Problem-by-problem guide
 
@@ -1827,61 +1830,37 @@ significance, or the still-open Erdős endpoints.
 </details>
 
 ## Problem statements, verification and status
-The problem statements, the external-verification summary, and the status tables the front page points to follow.
 
-### Problem statements
+<!-- BEGIN problem_programme_card -->
+_Questions generated from `docs/problem_index_source.json`._
 
-[`docs/papers/corpus.json`](papers/corpus.json) is the machine-readable
-index of the papers.
-
-| Problem | Mathematical statement |
+| Problem | Question |
 |---|---|
-| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? |
-| **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? |
-| **#249** | Is `∑ φ(n)/2ⁿ` irrational? |
-| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? |
-| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? |
-| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? |
-| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? |
-| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? |
+| [#68](../paper/68/erdos-68-factorial-denominator-irrationality.pdf) | Is the series sum_{n >= 2} 1/(n! - 1) irrational? |
+| [#243](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) | Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually? |
+| [#249](../paper/249/erdos-249-binary-totient-series.pdf) | Is the binary Lambert series sum phi(n)/2^n irrational? |
+| [#251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) | Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational? |
+| [#257](../paper/257/erdos-257-mersenne-support-subseries.pdf) | Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational? |
+| [#269](../paper/269/erdos-269-three-prime-running-lcm.pdf) | For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. |
+| [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question. |
+| [#1049](../paper/1049/erdos-1049-rational-base-lambert.pdf) | For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. |
+<!-- END problem_programme_card -->
 
-The table is the complete problem inventory: no query is required to learn
-which problems exist or what they ask, and reading it
-does not require a private repository, a sibling checkout, a cache, or network access. It is navigation, not proof
-authority or a novelty claim. Drilldown is optional and uses only tracked
-public files; it needs no private checkout, sibling repository, cache, or
-network access.
+The questions above are readable here: no query is required, and this page
+does not require a private repository. The [problem papers](../paper/README.md#problem-papers) explain the eight questions.
+[Scope](SCOPE.md) records the public claim boundaries and status labels;
+[external verification](EXTERNAL_VERIFICATION.md) lists the selected Comparator
+interfaces, axioms and replay limits. The [claim registry](claims.json) owns
+source identity and current status. These are generated from their owners.
 
-### External verification
-
-Nineteen selected Lean propositions are declared a second time, without proofs,
-in [`ExternalVerification/Statements.lean`](../verification/ExternalVerification/Statements.lean).
-Comparator checks the proof-bearing module against those separate declarations
-and against a fixed axiom budget of `propext`, `Quot.sound`, and
-`Classical.choice`; an adversarial fixture alters one statement and must be
-rejected. [`formalization.yaml`](../formalization.yaml) records, per selected
-result, the contribution class, exact statement, source declaration, boundary,
-`sorry` count, and axioms. Manifest and [verification packet](EXTERNAL_VERIFICATION.md)
-cover all eight problem programmes; [replay](verification/EXTERNAL_VERIFICATION_REPLAY.md)
-gives the reviewer-run Linux route. The same check runs in continuous
-integration against the reviewed source commit. Comparator checks propositions
-only: no paper deduction, cited theorem, external computation, intended
-meaning, novelty, or significance.
-
-[RESULTS](RESULTS.md) gives each strongest checked result and its limit;
-[prior art](PRIOR_ART.md) records classical, subsuming, and earlier public
-work. The finite #249 result is the
-classical Farey/mediant bound (numerical delta `0`): Farey's method supplies
-the number directly, exactly the Farey bound, not an improvement. Full-kernel
-infinite rank is Coons's prior result, the all-base rank paper theorem uses
-Martin externally, and #269's two-prime result is not first.
-
-`v0.10.0` is the latest tagged release and citation anchor;
-[`docs/claims.json`](claims.json) pins the exact formal-source checkpoint
-this release ships. Lean source checked by the pinned Lean kernel is
-proof authority; do not infer results from private or unreleased work.
+The claim registry pins the immutable formal-source checkpoint; this is not a
+new tagged release. Its release tag is the latest tagged release and citation
+anchor, kept separate from the source currently under validation.
 
 ### What the formal source establishes
+
+Farey's method supplies the number directly; it is not an improvement on the
+classical bound.
 
 Labels are descriptions, not scores. **Formalised here** means a statement
 rendered and kernel-checked in Lean, which for a known theorem is a checked
@@ -1929,6 +1908,7 @@ an unsafe band.
 [Orientation](ORIENTATION.md) routes claims; the retained
 [mathematics paper](../paper/archive/erdos249-257-main-paper.pdf) preserves the joint
 #249/#257 exposition.
+
 
 ## What remains open
 

@@ -45,6 +45,24 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_qualification_follows_selection_without_claiming_service_status(self) -> None:
+        authority = builder.load_signal_authority()
+        original = builder.render_qualification(authority)
+        selection = authority["candidate_selection"]
+        selection["statement"] = "A changed exact statement."
+        selection["open_boundary"] = "A changed open boundary."
+        selection["declaration"] = "Fixture.selected"
+        updated = builder.render_qualification(authority)
+        self.assertNotEqual(original, updated)
+        for value in (selection["statement"], selection["open_boundary"], selection["declaration"]):
+            self.assertIn(value, updated)
+        self.assertNotIn("Status: **READY**", updated)
+        self.assertIn("Inspect `ok` as well as the recorded `decision`", updated)
+        self.assertIn("No command above submits or registers a result", updated)
+        del selection["declaration"]
+        with self.assertRaises(KeyError):
+            builder.render_qualification(authority)
+
     def test_generated_human_signal_spine_is_frontier_first(self) -> None:
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
         spine_start = human.index("## Mathematical signal spine")

@@ -2072,16 +2072,6 @@
           "ErdosProblems.Erdos68.FiniteLeadBlocks.",
           "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
           "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum",
-          "ErdosProblems.Erdos68.FactorialGapPlateauCore",
-          "ErdosProblems.Erdos68.CarryCongruenceNormalForm",
-          "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
-          "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement",
-          "ErdosProblems.Erdos68.SecondLayerDigit",
-          "ErdosProblems.Erdos68.CompanionConstantBridge",
-          "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
-          "ErdosProblems.Erdos68.CompanionOrbitRationality",
-          "ErdosProblems.Erdos68.FactorialShiftFamilyOrbit",
-          "ErdosProblems.Erdos68.PaperCompleteExisting",
           "ErdosProblems.FreePosition.",
           "ErdosProblems.Half.",
           "ErdosProblems.Hlow.",
@@ -10121,11 +10111,46 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.ArithmeticWeightedRecord",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/ArithmeticWeightedRecord.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords",
+            "ErdosProblems.Erdos243.LcmRecordExcess"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity",
           "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CRTObstructionDensity.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CanonicalGrowthBounds",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalGrowthBounds.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.GrowthRecordEquivalence",
+            "ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.IntegralWeights",
+            "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.CoprimeCores",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CoprimeCores.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility"
           ]
         },
         {
@@ -10205,11 +10230,156 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.GroupAPaperEndpointsAudit",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/GroupAPaperEndpointsAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.ArithmeticWeightedRecord",
+            "ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport",
+            "ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.GrowthRecordEquivalence",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/GrowthRecordEquivalence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords",
+            "ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveBoundaryFinite",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveBoundaryFinite.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveRecordAssembly",
+            "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveBoundaryFinite"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveRecordAssembly",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveRecordAssembly.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.RecordGcdReduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveTowerBlocks",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/InclusiveTowerBlocks.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.OrbitBlockArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.IntegralWeights",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/IntegralWeights.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.UncentredSeries"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.LogLogNormaliser",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/LogLogNormaliser.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.CanonicalGrowthBounds"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.OrbitBlockArithmetic",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/OrbitBlockArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.LogLogNormaliser",
+            "ErdosProblems.Erdos243.PaperCompleteR11.CoprimeCores"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.PresievedCRT",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/PresievedCRT.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveRecordBoundary",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveRecordBoundary.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.SubcriticalRecordBoundary",
+            "ErdosProblems.Erdos243.PaperCompleteR11.PresievedCRT",
+            "ErdosProblems.Erdos243.PaperCompleteR7.Reduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup",
+            "ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification",
           "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/ReciprocalProductAmplification.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/RecordDivisibility.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR9Packets"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.RecordGcdReduction",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/RecordGcdReduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveRecordBoundary"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.SubcriticalRecordBoundary",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/SubcriticalRecordBoundary.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveTowerBlocks"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.UncentredFinite",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/UncentredFinite.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility",
+            "ErdosProblems.Erdos243.UncentredRecordCharge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR11.UncentredSeries",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/UncentredSeries.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR11.UncentredFinite"
           ]
         },
         {
@@ -10301,6 +10471,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR7.Reduction",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalNegativeMass",
           "path": "lean/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalNegativeMass.lean",
           "role": "Lean proof module",
@@ -10354,11 +10532,55 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR9.AdaptiveCoefficients",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/AdaptiveCoefficients.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.CumulativeLcmTransfer"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR9.CoefficientHeight",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/CoefficientHeight.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections",
           "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos243.CubicNeighbourIdentity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR9.ValuationPayment",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/ValuationPayment.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.CumulativeLcmTransfer"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR9.WeightedRecurrence",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/WeightedRecurrence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR9.CoefficientHeight"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR9Packets",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR9Packets.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR9.AdaptiveCoefficients",
+            "ErdosProblems.Erdos243.PaperCompleteR9.CoefficientHeight",
+            "ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections",
+            "ErdosProblems.Erdos243.PaperCompleteR9.ValuationPayment",
+            "ErdosProblems.Erdos243.PaperCompleteR9.WeightedRecurrence"
           ]
         },
         {
@@ -10431,6 +10653,15 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.UncentredRecordCharge",
+          "path": "lean/ErdosProblems/Erdos243/UncentredRecordCharge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.CoefficientDivisorFence",
+            "ErdosProblems.Erdos243.LcmRecordCrossing"
           ]
         },
         {
@@ -11341,6 +11572,22 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "path": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7RationalBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperFixedStartResidueR14",
+          "path": "lean/ErdosProblems/Erdos269/PaperFixedStartResidueR14.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR7WindowResults"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos269.PaperR12WaveAAxiomAudit",
           "path": "lean/ErdosProblems/Erdos269/PaperR12WaveAAxiomAudit.lean",
           "role": "Lean proof module",
@@ -11349,6 +11596,15 @@
             "ErdosProblems.Erdos269.R12.OcticWindowBand",
             "ErdosProblems.Erdos269.R12.PrefixExtension",
             "ErdosProblems.Erdos269.CertificateSafetyR12"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.PaperR14StatementAxiomAudit",
+          "path": "lean/ErdosProblems/Erdos269/PaperR14StatementAxiomAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+            "ErdosProblems.Erdos269.PaperFixedStartResidueR14"
           ]
         },
         {
@@ -11695,9 +11951,9 @@
           "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos68.CanonicalFactorialDigits",
-            "ErdosProblems.Erdos68.PrimeUnitTranslator",
-            "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
+            "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+            "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
+            "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement"
           ]
         },
         {
@@ -13921,6 +14177,7 @@
           "path": "lean/ErdosProblems/Root.lean",
           "role": "Lean proof module",
           "imports": [
+            "ErdosProblems.Erdos68.FactorialZeroPlateau",
             "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
             "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
             "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
@@ -13940,6 +14197,7 @@
             "ErdosProblems.Erdos243.FiniteHorizonResidue",
             "ErdosProblems.Erdos243.GlobalLcmHeight",
             "ErdosProblems.Erdos243.LcmCriticalBoundary",
+            "ErdosProblems.Erdos243.PaperCompleteR11.GroupAPaperEndpointsAudit",
             "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalNegativeMass",
             "ErdosProblems.Erdos243.PaperCompleteR8.GrowthDebtSummability",
             "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
@@ -13962,10 +14220,13 @@
             "ErdosProblems.Erdos251.ShiftedGapCountingR9",
             "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
             "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+            "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim",
             "ErdosProblems.Erdos257.SquarefreeSupportIncidence",
             "ErdosProblems.Erdos269.BoundedRadixTailEscape",
             "ErdosProblems.Erdos269.CarryLiftExtinction",
             "ErdosProblems.Erdos269.FiniteCutRank",
+            "ErdosProblems.Erdos269.PaperR14StatementAxiomAudit",
             "ErdosProblems.Erdos269.PaperR7FiniteCutRank",
             "ErdosProblems.Erdos269.PaperR7ModularMinors",
             "ErdosProblems.Erdos269.ResidueEscape",
@@ -13992,7 +14253,8 @@
             "ErdosProblems.Erdos68.PrimeUnitTranslator",
             "ErdosProblems.Erdos68.PrimeZeroBranch",
             "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
-            "ErdosProblems.Erdos68.TailIdealCertificate"
+            "ErdosProblems.Erdos68.TailIdealCertificate",
+            "ErdosProblems.EightPaperGroupAAudit"
           ]
         },
         {
@@ -15125,11 +15387,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "db85e5a109e9dab9edff872f9a8629ad356a545c",
+      "ref": "1d0d5e5797300d0e7aed1a6c65ec2ac75155f8b1",
       "ref_kind": "commit",
-      "publication_state": "published_committed_checkpoint",
+      "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-19-r1"
+      "public_tag": null
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",

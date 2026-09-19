@@ -97,11 +97,15 @@ project's authorship and current review position.
 | What is ready for Palomar? | [docs/verification/PALOMAR_QUALIFICATION.md](verification/PALOMAR_QUALIFICATION.md) and [docs/PALOMAR_POLICY_RECONCILIATION.json](PALOMAR_POLICY_RECONCILIATION.json) | Repository qualification, with external actions and outcomes recorded separately. |
 | Which checks govern a release? | [scripts/check_release.py](../scripts/check_release.py) and [the GitHub workflow](../.github/workflows/lean.yml) | The local checks and the checks run on pushes and pull requests. |
 
-The papers and guides are authored explanations. The JSON records make
-selected relationships explicit so the tools can check them. Generated files
-such as [docs/ORIENTATION.md](ORIENTATION.md), the declaration atlas and the
-module index reorganise those records for browsing; their builders own their
-contents.
+Keep mathematical explanations and reviewed interpretations authored. Generate
+volatile facts—paper lists, source locations, selected interfaces and status
+summaries—from the records that own them. The programme card in the
+[agent guide](agents/AGENT_GUIDE.md) comes from the problem and claim owners;
+[Palomar qualification](verification/PALOMAR_QUALIFICATION.md) comes from its
+selection record. The [orientation](ORIENTATION.md), atlas and module index
+are generated too. `python3 scripts/refresh_projections.py` updates these
+surfaces; the release gate rejects stale copies. Dated development and campaign
+records live in [technical reference](reference/README.md).
 
 The eight individual problem papers are the active mathematical routes. The
 former combined manuscript,

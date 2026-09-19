@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:e6a9e28a5b615ec5391bb22d24f61c9484215ea665c665c4072265480e374adc",
+    "owner_digest": "sha256:8f4e12b606d6e7f127aebc593970445b1550275f5ef66578e2c59cc38d637a85",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:856c501c573e5434da1f37df4f4a93607b95f78fadb24c77aa75599da6d2f602",
+    "projection_digest": "sha256:06d72c7125f44a5c262d73dcc5a49ce453b403e513eb0d24659bef35975bcbbb",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1713,7 +1713,18 @@
         "status": "open",
         "question": "Is the series sum_{n >= 2} 1/(n! - 1) irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "registered_declarations",
+        "claim_registration": {
+          "state": "registered_declarations",
+          "source": "docs/claims.json",
+          "programme_claim_id": "erdos_68",
+          "registered_claim_ids": [
+            "channel_quotient_band_breakpoint"
+          ],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure."
+        },
         "directory": "lean/ErdosProblems/Erdos68",
         "modules": [
           {
@@ -1723,7 +1734,7 @@
             "line_count": 1008,
             "declaration_count": 36,
             "theorem_count": 31,
-            "content_digest": "sha256:2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+            "content_digest": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a"
           },
           {
             "module": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
@@ -1747,10 +1758,10 @@
             "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
             "path": "lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
             "present": true,
-            "line_count": 1133,
-            "declaration_count": 55,
-            "theorem_count": 46,
-            "content_digest": "sha256:ea7c7f97d774c1cbb9021eb6708da60dcc09ecf6e3c872323aef312b6a026c97"
+            "line_count": 1155,
+            "declaration_count": 56,
+            "theorem_count": 47,
+            "content_digest": "sha256:5bf90115c4391dfa5743053f8ee3c27e3375e0f67c9812e6d86f67c29b232efa"
           },
           {
             "module": "ErdosProblems.Erdos68.DivisorFactorialCentre",
@@ -1792,10 +1803,10 @@
             "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
             "path": "lean/ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
             "present": true,
-            "line_count": 1756,
-            "declaration_count": 63,
-            "theorem_count": 57,
-            "content_digest": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+            "line_count": 37,
+            "declaration_count": 0,
+            "theorem_count": 0,
+            "content_digest": "sha256:6c91bdef6b22856b59952eed00003fb2617d3cc6dff9a14eac475c9b05db0c62"
           },
           {
             "module": "ErdosProblems.Erdos68.FiniteDefectAutomaton",
@@ -1839,7 +1850,7 @@
           "title": "Two Incomparable Denominator Exclusions\\\\for $\\sum_{n\\ge2}(n!-1)^{-1}$",
           "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
           "rendered_path": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-          "authority_posture": "authored_mathematical_exposition_of_unregistered_expansion_modules_and_an_external_finite_certificate_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally.",
@@ -1913,7 +1924,20 @@
         "status": "open",
         "question": "Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "registered_declarations",
+        "claim_registration": {
+          "state": "registered_declarations",
+          "source": "docs/claims.json",
+          "programme_claim_id": "erdos_243",
+          "registered_claim_ids": [
+            "bounded_negative_exclusion",
+            "bounded_rise_fresh_modulus_barrier",
+            "eventually_periodic_negative_no_go"
+          ],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved."
+        },
         "directory": "lean/ErdosProblems/Erdos243",
         "modules": [
           {
@@ -2003,7 +2027,7 @@
           "title": "Bounded Increments and Rational Reciprocal Sums",
           "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-          "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
@@ -2070,7 +2094,18 @@
         "status": "open",
         "question": "Is the binary Lambert series sum phi(n)/2^n irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "registered_declarations",
+        "claim_registration": {
+          "state": "registered_declarations",
+          "source": "docs/claims.json",
+          "programme_claim_id": "erdos_249",
+          "registered_claim_ids": [
+            "strict_prime_tail_orbit_gap"
+          ],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "Not proved by this release. The reductions convert it into the unboundedness of the certificate supply, which is untouched."
+        },
         "directory": "lean/ErdosProblems/Erdos249",
         "modules": [
           {
@@ -2106,7 +2141,7 @@
           "title": "Bases and Integral Relations for the $k$-Kernel of Euler's Totient",
           "source_path": "paper/249/erdos-249-binary-totient-series.tex",
           "rendered_path": "paper/249/erdos-249-binary-totient-series.pdf",
-          "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1.",
@@ -2196,7 +2231,19 @@
         "status": "open",
         "question": "Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "registered_declarations",
+        "claim_registration": {
+          "state": "registered_declarations",
+          "source": "docs/claims.json",
+          "programme_claim_id": "erdos_251",
+          "registered_claim_ids": [
+            "prime_gap_irrationality_equivalence",
+            "prime_gap_unboundedness_and_nonperiodicity"
+          ],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps."
+        },
         "directory": "lean/ErdosProblems/Erdos251",
         "modules": [
           {
@@ -2214,7 +2261,7 @@
           "title": "Sparse Congruence-Preserving Perturbations\\\\of Dyadic Series",
           "source_path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "rendered_path": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-          "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise.",
@@ -2283,7 +2330,16 @@
         "status": "open",
         "question": "Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "programme_only",
+        "claim_registration": {
+          "state": "programme_only",
+          "source": "docs/claims.json",
+          "programme_claim_id": "universal_257",
+          "registered_claim_ids": [],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised."
+        },
         "directory": "lean/ErdosProblems/Erdos257",
         "modules": [
           {
@@ -2301,7 +2357,7 @@
           "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
           "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "rendered_path": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-          "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
@@ -2364,7 +2420,20 @@
         "status": "open",
         "question": "For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "registered_declarations",
+        "claim_registration": {
+          "state": "registered_declarations",
+          "source": "docs/claims.json",
+          "programme_claim_id": "erdos_269",
+          "registered_claim_ids": [
+            "three_prime_cofinal_window_carry_extinction",
+            "three_prime_finite_residue_contradiction",
+            "weighted_phase_carry_finite_observer"
+          ],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch."
+        },
         "directory": "lean/ErdosProblems/Erdos269",
         "modules": [
           {
@@ -2436,7 +2505,7 @@
           "title": "No Finite Separable Representation\\\\at Three Prime Generators",
           "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered_path": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-          "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.",
@@ -2516,7 +2585,19 @@
         "status": "open",
         "question": "For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate? The registry has not adjudicated whether the checked total-variation formulation exactly matches this historical curve-length question.",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "registered_declarations",
+        "claim_registration": {
+          "state": "registered_declarations",
+          "source": "docs/claims.json",
+          "programme_claim_id": "erdos_1041",
+          "registered_claim_ids": [
+            "ani_degree_seven_total_variation_counterexample",
+            "newton_ray_separation_consumer"
+          ],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "The historical curve-length formulation remains an unadjudicated programme target in this registry. The separate checked degree-seven example refutes the universal formulation using total variation of continuous paths in the strict unit lemniscate. No Hausdorff-measure comparison or independent human review of historical correspondence is recorded."
+        },
         "directory": "lean/ErdosProblems/Erdos1041",
         "modules": [
           {
@@ -2543,7 +2624,7 @@
           "title": "Paths in Polynomial Lemniscates:\\\\Trinomials and Critical-Value Bounds",
           "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-          "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "An explicit monic degree-seven polynomial with distinct roots in the open unit disc has the property that every continuous path in its strict unit lemniscate joining distinct roots has extended total variation greater than two. This refutes the universal total-variation formulation.",
@@ -2656,7 +2737,21 @@
         "status": "open",
         "question": "For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.",
         "library_root": "ErdosProblems.lean",
-        "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+        "claim_registry_status": "registered_declarations",
+        "claim_registration": {
+          "state": "registered_declarations",
+          "source": "docs/claims.json",
+          "programme_claim_id": "erdos_1049",
+          "registered_claim_ids": [
+            "rational_base_cleared_tail_recurrence",
+            "rational_base_forcing_growth",
+            "three_halves_coordinatewise_corridor_no_go",
+            "van_assche_qapery_diagonal_no_go"
+          ],
+          "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
+          "programme_status": "open",
+          "programme_statement": "For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here."
+        },
         "directory": "lean/ErdosProblems/Erdos1049",
         "modules": [
           {
@@ -2719,7 +2814,7 @@
           "title": "Zudilin's Forms at Rational Bases\\\\and the Exact Normalised Hankel Order",
           "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "rendered_path": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-          "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+          "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.",
@@ -2798,5 +2893,5 @@
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
   "config_digest": "sha256:a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-  "solution_source_digest": "sha256:61c54d5b3c23e854d896a20e3a3c0896195debc6b7347a661eec975157565fc7"
+  "solution_source_digest": "sha256:a6d0163b48cd6617e3d7fcab2d5336e9c7bf94012f8a8b38008bdabd5975b227"
 }

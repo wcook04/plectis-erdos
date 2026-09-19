@@ -178,23 +178,9 @@ def main() -> int:
         "formal-source reference is not a full lowercase Git id",
     )
     require(formal_source["ref_kind"] == "commit", "formal-source ref is not a commit")
-    require(
-        re.fullmatch(
-            r"formal-source-\d{4}-\d{2}-\d{2}(?:-r[1-9]\d*)?",
-            formal_source["public_tag"],
-        )
-        is not None,
-        "formal-source public tag is not immutable and date-qualified",
-    )
-    require(
-        formal_source["publication_state"] == "published_committed_checkpoint",
-        "formal-source checkpoint is not published and committed",
-    )
-    require(
-        formal_source["relationship_to_last_tag"]
-        in {"at_last_tag", "post_tag_checkpoint"},
-        "formal-source relationship to the citation tag is invalid",
-    )
+    from check_release import formal_source_publication_errors
+    publication_errors = formal_source_publication_errors(formal_source)
+    require(not publication_errors, "; ".join(publication_errors))
     require(
         re.search(r"immutable\s+formal-source checkpoint", scope) is not None,
         "scope omits the immutable formal-source checkpoint",

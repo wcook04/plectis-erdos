@@ -786,20 +786,20 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
         ],
         "state_problem_frontier": [
             [release_status_boundary()],
-            ["S = ∑ φ(n)/2ⁿ"],
-            ["∑_{n∈A} 1/(2ⁿ - 1)"],
+            ["S = ∑ φ(n)/2ⁿ", "Is the binary Lambert series sum phi(n)/2^n irrational?"],
+            ["∑_{n∈A} 1/(2ⁿ - 1)", "sum of 1/(2^n-1) over every infinite set"],
             ["every infinite", "for every infinite"],
         ],
         "recover_blank_slate_problem_card": [
             ["#68"],
             ["n!−1", "n!-1"],
             ["#243"],
-            ["rapidly growing"],
+            ["rapidly growing", "rapid-growth"],
             ["Sylvester recurrence"],
             ["#249"],
             ["∑ φ(n)/2ⁿ"],
             ["#251"],
-            ["∑ p_n/2ⁿ"],
+            ["∑ p_n/2ⁿ", "sum p_n/2^n"],
             ["#257"],
             ["every infinite"],
             ["#269"],
@@ -1658,13 +1658,6 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "docs/claims.json",
         "Eight-problem cold-start card",
         "must not already know a query command",
-        "Sylvester recurrence",
-        r"\sum_{n\ge1}\varphi(n)/2^n",
-        r"\sum_{n\ge1}p_n/2^n",
-        r"\sum_{n\in A}1/(2^n-1)",
-        "running lcms of the smooth numbers",
-        "open unit lemniscate",
-        "first resistant explicit base here is",
         "erdos-68-factorial-denominator-irrationality.pdf",
         "erdos-243-reciprocal-tail-rigidity.pdf",
         "erdos-249-binary-totient-series.pdf",
@@ -1678,6 +1671,18 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "not an entrypoint into any private development system",
     ):
         require(contains_any(agents, [token]), f"docs/agents/AGENT_GUIDE.md lost shared invariant {token!r}")
+    # The card is generated from the same authored questions and claim owner
+    # as the query index. Check every exact question and boundary, rather than
+    # freezing a second set of mathematical spellings in this validator.
+    source = json.loads(read("docs/problem_index_source.json"))
+    claims = {row["id"]: row for row in json.loads(read("docs/claims.json"))["claims"]}
+    for row in source["problems"]:
+        require(contains_any(agents, [row["question"]]),
+                f"agent card lost question {row['problem_id']}")
+        target = claims.get(row["programme_claim_id"])
+        require(target is not None, f"agent card lacks registered target {row['problem_id']}")
+        require(contains_any(agents, [target["statement"]]),
+                f"agent card lost programme boundary {row['problem_id']}")
     require(
         contains_any(agents, [release_status_boundary()]),
         "docs/agents/AGENT_GUIDE.md lost the authority-owned release status boundary",

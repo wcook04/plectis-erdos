@@ -14,13 +14,13 @@
       "root": "Erdos249257.lean",
       "role": "reviewed_corpus",
       "claim_registry": "docs/claims.json",
-      "note": "Declarations under this root carry reviewed public claim status recorded in the claim registry."
+      "note": "Public status is assigned per claim and declaration in docs/claims.json. Library membership and a kernel build do not imply reviewed correspondence or publication status."
     },
     {
       "root": "ErdosProblems.lean",
       "role": "problem_owned_expansion",
-      "claim_registry": null,
-      "note": "Declarations under this root are exact Lean propositions accepted by the pinned kernel. They are not reviewed public mathematical claims, and kernel checking this root does not promote them into one."
+      "claim_registry": "docs/claims.json",
+      "note": "Public status is assigned per claim and declaration in docs/claims.json. Library membership and a kernel build do not imply reviewed correspondence or publication status."
     }
   ],
   "status_vocabulary": {
@@ -59,11 +59,15 @@
       "required_note_declarations": [
         {
           "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
-          "declaration": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
+          "declaration": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+          "current_module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+          "relocation_boundary": "The paper retains its immutable monolith citation. The declaration signature is unchanged in the split core; the old module re-exports it."
         },
         {
           "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
-          "declaration": "irrational_factorialGapSeries_of_cofinal_nonunit_carries"
+          "declaration": "irrational_factorialGapSeries_of_cofinal_nonunit_carries",
+          "current_module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+          "relocation_boundary": "The paper retains its immutable monolith citation. The declaration signature is unchanged in the split core; the old module re-exports it."
         },
         {
           "module": "ErdosProblems.Erdos68.PrimeZeroBranch",
@@ -117,7 +121,8 @@
         }
       ],
       "finite_search": "A retained exact GMP receipt through m = 300000 records a non-unit carry at that index, so every positive rational denominator satisfies q ∤ 299999!. A byte-identical regeneration of that receipt with the current driver is outstanding in this revision; a separate exact replay through 4000 reproduces the unit-carry prefix. The Lean consumer turns one non-unit carry at m into q >= m; it does not prove a cofinal statement. An independent continued-fraction enclosure gives q ≥ 2^39990. At the prime 12487 and gap 12, exact polynomial arithmetic exhibits two critical roots 4626 and 7848, so the small-prime pattern of at most one critical root is not uniform; those roots have factorial values 442 and 6300, not 1.",
-      "source_priority_note": "Comparator isolation in this checkout is FactorialGapPlateauCore; FactorialZeroPlateau is the default-root duplicate. Required note links remain ZeroPlateau because Core is absent from pin 99f4bf47."
+      "source_priority_note": "Comparator isolation in this checkout is FactorialGapPlateauCore; FactorialZeroPlateau is the default-root duplicate. Required note links remain ZeroPlateau because Core is absent from pin 99f4bf47.",
+      "programme_claim_id": "erdos_68"
     },
     {
       "problem_id": "erdos_243",
@@ -211,7 +216,8 @@
           "statement": "Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses."
         }
       ],
-      "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale."
+      "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
+      "programme_claim_id": "erdos_243"
     },
     {
       "problem_id": "erdos_249",
@@ -319,7 +325,8 @@
           "statement": "Prove the sharp cusp asymptotic and then supply a non-formal bridge from the geometric parameter regime to the exact totient value."
         }
       ],
-      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate."
+      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate.",
+      "programme_claim_id": "erdos_249"
     },
     {
       "problem_id": "erdos_251",
@@ -428,7 +435,8 @@
       ],
       "finite_search": null,
       "note_coverage_floor": 0.53,
-      "note_coverage_rationale": "The long note links 64 theorem-level declarations across the complete current 120-declaration cited source family. Exporting the final twelve-declaration polynomial countermodel block lowered the raw linked fraction from 59% to 53% without removing any link; 0.53 records that larger honest denominator while named source links and required headline declarations remain mandatory."
+      "note_coverage_rationale": "The long note links 64 theorem-level declarations across the complete current 120-declaration cited source family. Exporting the final twelve-declaration polynomial countermodel block lowered the raw linked fraction from 59% to 53% without removing any link; 0.53 records that larger honest denominator while named source links and required headline declarations remain mandatory.",
+      "programme_claim_id": "erdos_251"
     },
     {
       "problem_id": "erdos_257",
@@ -474,7 +482,8 @@
           "statement": "Extend the measure dichotomy to Bernoulli laws and periodic-stride dimensions without implying arithmetic consequences."
         }
       ],
-      "finite_search": null
+      "finite_search": null,
+      "programme_claim_id": "universal_257"
     },
     {
       "problem_id": "erdos_269",
@@ -632,7 +641,8 @@
         }
       ],
       "finite_search": "The integer-only dyadic-window checker reproduces three exact packet certificates and, for all 106,666 pairs with denominator B <= 1000 coprime to 30 and dyadic start 100 <= a <= 500, finds an escaping window of length at most 18; the largest first successful length is 14. This is finite proof-consumer evidence only and proves neither unbounded-denominator nor cofinal escape.",
-      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it."
+      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it.",
+      "programme_claim_id": "erdos_269"
     },
     {
       "problem_id": "erdos_1041",
@@ -728,7 +738,8 @@
         "checkpoint": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
         "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
         "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not adjudicate correspondence with the historical curve-length formulation or promote research-corpus rows into Comparator claims."
-      }
+      },
+      "programme_claim_id": "erdos_1041"
     },
     {
       "problem_id": "erdos_1049",
@@ -875,7 +886,8 @@
           "statement": "After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction."
         }
       ],
-      "finite_search": null
+      "finite_search": null,
+      "programme_claim_id": "erdos_1049"
     }
   ],
   "reviewed_problems": [
