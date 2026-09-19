@@ -58,7 +58,9 @@ import ErdosProblems.Erdos68.DivisorFactorialCentre
 import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
 import ErdosProblems.Erdos68.FactorialCarry
 import ErdosProblems.Erdos68.FactorialChannelCertificate
-import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FactorialGapPlateauCore
+import ErdosProblems.Erdos68.FactorialZeroPlateauCertificates
+import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
 import ErdosProblems.Erdos68.FiniteDefectAutomaton
 import ErdosProblems.Erdos68.MultiplicativeSuccessorRigidity
 import ErdosProblems.Erdos68.PaperCompletePrimePole
