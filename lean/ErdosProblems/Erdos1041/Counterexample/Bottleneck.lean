@@ -8,8 +8,8 @@ Formalisation of Lemma 2.3 and Corollary 2.4 from `ani_degree7_counterexample.te
 This module owns slice S3 and declares `s3_bottleneck_length` at the interface
 name and statement, with no `sorry`.
 
-The route departs from the Type B return, which stopped at two topological
-hypotheses.  The covering hypothesis is `s3_bottleneck_isCoveringMap`.  The
+The proof isolates two topological hypotheses.  The covering hypothesis is
+`s3_bottleneck_isCoveringMap`.  The
 connectedness hypothesis is replaced by the sharper
 `bottleneck_slit_preimage_near`: the holomorphic square root of `𝒜/â` supplies
 the paper's quadratic coordinate `ψ`, its two branches `ψ = ±η` give two

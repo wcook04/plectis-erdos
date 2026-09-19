@@ -15,8 +15,8 @@ obligations are re-exported at the interface names
 `Erdos1041.Counterexample.s4_f_monic_degree`, `s4_roots_on_circle`,
 `s4_roots_nodup` at the end of the file.
 
-The root argument follows the Type B return's Cayley-transform route rather than
-the packet's nested Rouché disks: with `chi x = (1 + i x)/(1 - i x)` one has the
+The root argument follows a Cayley-transform route.  With
+`chi x = (1 + i x)/(1 - i x)` one has the
 exact Gaussian-rational identity `(1 - i x)^7 F(chi x) = 2 i H(x)` for an
 explicit degree-seven *real* polynomial `H`, and seven exact rational sign
 changes of `H` produce seven distinct roots of `F` of modulus exactly one.

@@ -18,7 +18,7 @@ fully qualified name.
 
 `erdos1041_counterexample_of_slices` treats the eight directly used interface
 obligations as hypotheses, with their original types. This separates the
-assembly proof from the unfinished proofs in the supplied interface.
+assembly implication from the proofs of the modular hypotheses.
 `erdos1041_counterexample` specialises it to the named interface declarations.
 
 The S4 projection certificate already incorporates the S1 projection and sine
@@ -106,7 +106,7 @@ theorem barrier_excludes (p : Polynomial ℂ) (zs w : ℂ)
 
 end AssemblyAux
 
-/-- The S6 implication, independently of the proof terms of the slice stubs.
+/-- The S6 implication, independently of the proof terms of the slice obligations.
 Every hypothesis below is the unchanged type of its corresponding obligation. -/
 theorem erdos1041_counterexample_of_slices
     (hS2 :
