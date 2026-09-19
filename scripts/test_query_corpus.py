@@ -3439,7 +3439,21 @@ def main() -> int:
         "Finite dyadic-totient rank and certificate interface"
     )
     assert totient_mahler["dependency_neighbourhood"]["receipt"]["imports_total"] == 0
-    assert totient_mahler["dependency_neighbourhood"]["receipt"]["importers_total"] == 3
+    expected_totient_mahler_importers = {
+        row["id"]
+        for row in query_corpus.load("docs/declaration_atlas.json")["modules"]
+        if "Erdos249257.TotientMahlerDefect" in row.get("imports", [])
+    }
+    totient_mahler_neighbourhood = totient_mahler["dependency_neighbourhood"]
+    assert totient_mahler_neighbourhood["receipt"]["importers_total"] == len(
+        expected_totient_mahler_importers
+    )
+    assert {
+        row["id"] for row in totient_mahler_neighbourhood["importers"]
+    } <= expected_totient_mahler_importers
+    assert totient_mahler_neighbourhood["receipt"]["importers_omitted"] == max(
+        len(expected_totient_mahler_importers) - 3, 0
+    )
 
     aliases = json.loads((ROOT / "paper" / "module-aliases.json").read_text(encoding="utf-8"))
     assert aliases["alias_count"] == len(aliases["aliases"])
