@@ -4,6 +4,7 @@ import Erdos249257.ActualForeignResidueProjection
 import Erdos249257.AdelicHeightObstruction
 import Erdos249257.AdjacentCarryTube
 import Erdos249257.AdjacentPhaseSeparation
+import Erdos249257.AllBaseReciprocalSupportIrrationality
 import Erdos249257.BooleanMobiusCarry
 import Erdos249257.BooleanMobiusCriticalCapacityCofinal
 import Erdos249257.BooleanMobiusCriticalCapacityGeometric
@@ -115,6 +116,7 @@ import Erdos249257.PrimitiveSupportBridge
 import Erdos249257.PrimitiveWeightCertificate
 import Erdos249257.RadicalMobiusShadow
 import Erdos249257.RationalSupportCarrySkeleton
+import Erdos249257.ReciprocalSupportIrrationality
 import Erdos249257.RepunitMobiusNumerator
 import Erdos249257.ResidualGaugeObstruction
 import Erdos249257.RewindBoundaryPairCounterexample
