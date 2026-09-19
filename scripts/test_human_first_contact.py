@@ -328,6 +328,20 @@ def main() -> None:
         "documentation guide does not classify generated orientation correctly",
     )
 
+    start_here = (ROOT / ".github/START_HERE_ISSUE.md").read_text(encoding="utf-8")
+    require(
+        "releases/download/" not in start_here,
+        "start-here issue must not send people to frozen release PDFs",
+    )
+    require(
+        "wcook04.github.io/plectis/maths/problems/erdos_257.html" in start_here,
+        "start-here issue lost the live #257 problem page",
+    )
+    require(
+        "blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf" in start_here,
+        "start-here issue lost the live #257 short paper on main",
+    )
+
     print("human-first-contact: PASS")
 
 

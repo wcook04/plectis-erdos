@@ -247,7 +247,8 @@ names it where a result is replayed there.
 
 ## Citation and licence
 
-Cite release `v0.10.0` via [CITATION.cff](CITATION.cff). Code, scripts and
+Cite the frozen edition `v0.10.0` via [CITATION.cff](CITATION.cff). For later
+work on `main`, also record the commit used. Code, scripts and
 documentation are Apache-2.0; manuscript sources and PDFs are CC-BY-4.0.
 [REUSE.toml](REUSE.toml) records the file-level licences and exceptions.
 [Scope](docs/SCOPE.md), [privacy](docs/PRIVACY.md) and the
