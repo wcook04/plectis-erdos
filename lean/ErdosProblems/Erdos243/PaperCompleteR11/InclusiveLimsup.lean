@@ -101,9 +101,8 @@ theorem recordTheta_le_negativeError_limsup
     (U : ℕ → ℕ) (E : ℕ → ℤ)
     (hstep : ∀ n, (U (n + 1) : ℤ) = (U n : ℤ) - E n) :
     recordTheta U ≤ limsup (fun n ↦ (negativeErrorLogLogCharge U E n : EReal)) atTop := by
-  apply limsup_le_limsup
-  exact Eventually.of_forall fun n ↦ EReal.coe_le_coe_iff.mpr
-    (recordLogLogCharge_le_negativeError U E hstep n)
+  exact limsup_le_limsup (Eventually.of_forall fun n ↦ EReal.coe_le_coe_iff.mpr
+    (recordLogLogCharge_le_negativeError U E hstep n))
 
 /-- Exact strict contrapositive of the printed inclusive log-log boundary. -/
 theorem canonical_negativeError_limsup_gt_one

@@ -21,11 +21,10 @@ open scoped Topology
 theorem ereal_le_limsup_of_cofinal_lt (f : ℕ → ℝ) (c : ℝ)
     (h : ∀ T : ℕ, ∃ n, T ≤ n ∧ c < f n) :
     (c : EReal) ≤ limsup (fun n ↦ (f n : EReal)) atTop := by
-  apply le_limsup_of_frequently_le
-  apply frequently_atTop.2
-  intro T
-  obtain ⟨n, hn, hc⟩ := h T
-  exact ⟨n, hn, EReal.coe_le_coe_iff.mpr hc.le⟩
+  exact le_limsup_of_frequently_le (frequently_atTop.2 (by
+    intro T
+    obtain ⟨n, hn, hc⟩ := h T
+    exact ⟨n, hn, EReal.coe_le_coe_iff.mpr hc.le⟩))
 
 /-- Taking all strict real lower bounds does not require boundedness of the sequence. -/
 theorem ereal_le_of_all_real_lt (x : ℝ) (z : EReal)
@@ -63,10 +62,9 @@ theorem recordLogLogCharge_nonneg (U : ℕ → ℕ) (n : ℕ) :
     (one_le_recordLogLog _))
 
 theorem recordTheta_nonneg (U : ℕ → ℕ) : (0 : EReal) ≤ recordTheta U := by
-  apply le_limsup_of_frequently_le
   have h : ∀ᶠ n in atTop, (0 : EReal) ≤ (recordLogLogCharge U n : EReal) :=
     Eventually.of_forall fun n ↦ by exact_mod_cast recordLogLogCharge_nonneg U n
-  exact h.frequently
+  exact le_limsup_of_frequently_le h.frequently
 
 /-- Absence of an eventual cap gives frequent large values of the original charge. -/
 theorem cofinal_charge_of_no_record_cap (U : ℕ → ℕ) (c : ℝ)
@@ -246,7 +244,9 @@ theorem RecordGrowthOrbit.quantitative_dichotomy (O : RecordGrowthOrbit) :
       apply (lt_div_iff₀ hphi).2
       have ht : (Nat.totient W : ℝ) < W := by exact_mod_cast Nat.totient_lt W hW
       exact mul_lt_mul_of_pos_left ht (by exact_mod_cast hg)
-    exact (by exact_mod_cast hstrict).trans_le (hbound (N + 2) le_rfl)
+    have hstrictE : (g : EReal) < (((g : ℝ) * W / Nat.totient W : ℝ) : EReal) := by
+      exact_mod_cast hstrict
+    exact hstrictE.trans_le (hbound (N + 2) le_rfl)
   · have hunbounded : ∀ B : ℕ, ∃ n, B < Nat.gcd (O.U n) (O.D n) := by
       intro B
       by_contra h
@@ -330,7 +330,8 @@ theorem canonical_recordTheta_eq_zero_iff
     by_contra hnot
     have hh := canonical_recordTheta_gt_one a ha hapos p q hq hs hgrowth hnot
     rw [hz] at hh
-    norm_num at hh
+    have h01 : (0 : EReal) ≤ 1 := by exact_mod_cast (zero_le_one : (0 : ℝ) ≤ 1)
+    exact (not_lt_of_ge h01) hh
   · intro hrec
     exact recordTheta_eq_zero_of_bounded _
       (canonical_bounded_of_eventual_sylvester a ha hapos p q hq hs hrec)

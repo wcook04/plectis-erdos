@@ -57,7 +57,7 @@ theorem RecordGrowthOrbit.no_inclusive_record_cap (O : RecordGrowthOrbit) :
         have hpos := V.a_pos 0
         omega
       have hmul := Nat.mul_le_mul ha2 (show 1 ≤ V.D 1 by have := V.D_pos 1; omega)
-      have hstep := V.D_step 1
+      have hstep : V.D 2 = V.a 1 * V.D 1 := V.D_step 1
       dsimp [W]
       omega
     have hphi : (0 : ℝ) < Nat.totient W := by
@@ -151,7 +151,7 @@ theorem canonical_unbounded_of_not_sylvester
       have hh := Int.natAbs_pos.mpr hne
       omega
     have hmul := Nat.mul_le_mul_left H habs
-    have hh := hN n hn
+    have hh : H * Int.natAbs (E n) < C n := hN n hn
     have hb := hbound n
     omega
   apply hnot
@@ -172,11 +172,11 @@ noncomputable def canonicalRecordGrowthOrbit
     (hgrowth : Tendsto (fun n ↦ (a (n + 1) : ℝ) / (a n : ℝ) ^ 2) atTop (𝓝 1))
     (hnot : ¬ ∃ N, ∀ n, N ≤ n → (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ)) :
     RecordGrowthOrbit := by
-  obtain ⟨hCpos, hDpos, hC, hD, htail⟩ := canonical_integer_tail a hapos p q hq hs
+  have htail := canonical_integer_tail a hapos p q hq hs
   refine {
     a := a, U := canonicalNaturalNumerator a p q, D := canonicalDenominator a q
-    increasing := ha, a_pos := hapos, U_pos := hCpos, D_pos := hDpos
-    U_step := hC, D_step := hD
+    increasing := ha, a_pos := hapos, U_pos := htail.1, D_pos := htail.2.1
+    U_step := htail.2.2.1, D_step := htail.2.2.2.1
     lower := ?_
     record_bound := canonical_runningMax_binary_exponent a ha hapos p q hq hs hgrowth
     den_bound := canonical_denominator_binaryTower_bound a ha hapos q hgrowth
@@ -197,7 +197,8 @@ theorem canonical_inclusive_record_boundary
       runningMax (canonicalNaturalNumerator a p q) n < canonicalNaturalNumerator a p q (n + 1) ∧
       c * recordLogLog (runningMax (canonicalNaturalNumerator a p q) n) <
         ((canonicalNaturalNumerator a p q (n + 1) -
-          runningMax (canonicalNaturalNumerator a p q) n : ℕ) : ℝ) :=
-  (canonicalRecordGrowthOrbit a ha hapos p q hq hs hgrowth hnot).cofinal_inclusive_record
+          runningMax (canonicalNaturalNumerator a p q) n : ℕ) : ℝ) := by
+  simpa only [canonicalRecordGrowthOrbit] using
+    (canonicalRecordGrowthOrbit a ha hapos p q hq hs hgrowth hnot).cofinal_inclusive_record
 
 end ErdosProblems.Erdos243.PaperCompleteR11

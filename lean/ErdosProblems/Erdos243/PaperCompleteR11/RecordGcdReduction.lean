@@ -118,11 +118,12 @@ def RecordGrowthOrbit.quotientAt (O : RecordGrowthOrbit) (s g : ℕ)
     rw [show s + (n + 1) = (s + n) + 1 by omega, O.D_step]
     exact Nat.mul_div_assoc _ (hdiv n).2
   · obtain ⟨N, hN⟩ := O.lower
-    refine ⟨N, fun k ↦ (hN k).trans ?_⟩
-    by_cases hs : s = 0
-    · subst s
-      exact le_rfl
-    · exact Nat.le_of_lt (O.increasing (by omega))
+    refine ⟨N, fun k ↦ ?_⟩
+    have hshift : O.a (N + k) ≤ O.a (s + (N + k)) := by
+      by_cases hs : s = 0
+      · simpa [hs]
+      · exact Nat.le_of_lt (O.increasing (by omega))
+    exact (hN k).trans hshift
   · obtain ⟨K, hK⟩ := O.record_bound
     refine ⟨K + s, fun n ↦ ?_⟩
     simpa only [Nat.add_assoc] using (runningMax_shift_div_le O.U s g n).trans (hK (s + n))
